@@ -11,7 +11,7 @@ user_name: "Riyaz"
 date: "2026-03-21"
 web_research_enabled: true
 source_verification: true
-scope_note: "Learner-focused; global online Japanese learning; open-source and local-first product category called out explicitly."
+scope_note: "Learner-focused; global online Japanese learning; open-source and local-first product category called out explicitly. Product platform intent (per brainstorming, 2026-03-29): Android, iOS, and local desktop (e.g. Electron + React Native Web)—no hosted product web app."
 ---
 
 # Research Report: market
@@ -27,6 +27,8 @@ scope_note: "Learner-focused; global online Japanese learning; open-source and l
 This report examines the **competitive and user landscape** for Japanese learning through the eyes of **learners**, with emphasis on how **open-source** and **local-first / offline-capable** offerings fit next to mainstream subscription apps and textbook-led study. Industry sizing figures for “Japanese language learning” and “online Japanese learning platforms” **vary materially by definition** (software vs. platforms vs. tutoring); multiple independent estimates nonetheless point to **strong growth** in digital Japanese study, driven by mobile use, JLPT-oriented learners, and interest tied to Japanese media.
 
 **Key learner-facing takeaways:** (1) Most serious learners **assemble a stack** (SRS + grammar + input tools) rather than expecting one app to do everything. (2) **Cost stacking** (multiple subscriptions) and **review overload** are recurring friction points. (3) **Anki + community decks** and **dictionary/reader tooling** (e.g. Yomitan-style workflows) anchor the “power user” segment where OSS and local data are normalized. (4) **Privacy and offline** are emerging positioning axes, though evidence is stronger for **offline/continuity** than for mass-market “privacy-first” purchasing behavior.
+
+**Product direction (aligned with brainstorming, updated 2026-03-29):** The app is planned for **Android, iOS, and desktop** from **one codebase**. Desktop is **local-only**—for example **Electron** (or an equivalent shell) loading a **React Native Web** bundle—so there is **no hosted product web app**. React Native Web here means **shared UI with mobile**, rendered inside the desktop runtime, not a separate public website.
 
 The sections below follow the BMAD market research structure: initialization scope, customer behavior, pain points, decision journey, competitive landscape, then strategic synthesis, methodology, and sources.
 
@@ -232,7 +234,7 @@ _Sources:_ [KaniManabu](https://github.com/Atelier-Shiori/KaniManabu), [nihongo-
 
 ### Executive Summary
 
-Learners treat **Japanese** as a **multi-tool problem**: mass-market apps capture **breadth and habit**, while **serious progression** often involves **paid specialists** (kanji/grammar) or **Anki + immersion stack**. **Open-source / local-first** products win when they **remove lock-in**, **work offline**, and **connect skills** (kanji ↔ vocab ↔ grammar ↔ reading) better than a patched bundle of tabs. The main go-to-market challenge is **not pedagogy alone**—it is **trust, content quality, and onboarding** that match Duolingo-level simplicity for the casual cohort **without** sacrificing depth for optimizers.
+Learners treat **Japanese** as a **multi-tool problem**: mass-market apps capture **breadth and habit**, while **serious progression** often involves **paid specialists** (kanji/grammar) or **Anki + immersion stack**. **Open-source / local-first** products win when they **remove lock-in**, **work offline**, and **connect skills** (kanji ↔ vocab ↔ grammar ↔ reading) better than a patched bundle of tabs. A **native mobile + local desktop** footprint (no hosted product web app) matches learners who already split time between **phone drills** and **desktop literacy workflows**. The main go-to-market challenge is **not pedagogy alone**—it is **trust, content quality, and onboarding** that match Duolingo-level simplicity for the casual cohort **without** sacrificing depth for optimizers.
 
 ### Positioning Recommendations
 
@@ -244,7 +246,7 @@ Learners treat **Japanese** as a **multi-tool problem**: mass-market apps captur
 
 ### Risks to Mitigate
 
-- **Underestimating UX:** learners abandon OSS that feels like engineering homework.
+- **Underestimating UX:** learners abandon OSS that feels like engineering homework on **mobile or desktop**.
 - **Overpromising “all-in-one”** before listening/speaking depth exists.
 - **Community moderation** failures erode trust faster than proprietary competitors.
 
@@ -263,7 +265,7 @@ Learners treat **Japanese** as a **multi-tool problem**: mass-market apps captur
 
 - **Web search** (March 2026) for industry sizing, official pricing, representative OSS repos, and learner-behavior commentary.
 - **Triangulation** where sources conflict (especially **market size**).
-- **Brainstorming input** aligned to product direction: `_bmad-output/brainstorming/brainstorming-session-2026-03-14-1530.md`.
+- **Brainstorming input** aligned to product direction: `_bmad-output/brainstorming/brainstorming-session-2026-03-14-1530.md` (platforms: **Android, iOS, local desktop** via **Electron + React Native Web**; no hosted web app for the product).
 
 ### Primary URLs Consulted
 

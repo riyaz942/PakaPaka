@@ -2,7 +2,7 @@
 stepsCompleted: [1, 2, 3, 4]
 inputDocuments: []
 session_topic: 'All-in-one Japanese learning application (open source, local-first, cross-platform)'
-session_goals: 'Free, open-source, cross-platform app combining WaniKani-style kanji/vocab, Bunpro-style grammar, AI conversation, image/audio extraction, verb conjugation — all local-first'
+session_goals: 'Free, open-source, cross-platform app (Android, iOS, local desktop via Electron + RN Web) combining WaniKani-style kanji/vocab, Bunpro-style grammar, AI conversation, image/audio extraction, verb conjugation — all local-first, no hosted product web app'
 selected_approach: 'ai-recommended'
 techniques_used: ['Morphological Analysis', 'Cross-Pollination', 'First Principles Thinking']
 ideas_generated: [19]
@@ -24,7 +24,7 @@ workflow_completed: true
 
 **Goals:**
 - SRS-based kanji, vocabulary, grammar, and verb conjugation learning
-- Cross-platform (Android, iOS, Web) with local data storage
+- Cross-platform **Android, iOS, and desktop** with local data storage (no hosted product web app; desktop is a **local** app)
 - Open-source with community-contributed data
 - AI-powered listening/conversation practice
 - Image and audio text extraction
@@ -38,7 +38,7 @@ _No external context file provided._
 
 ### Session Setup
 
-_Riyaz wants to brainstorm around building a comprehensive, free, open-source Japanese learning app that rivals paid services like WaniKani and Bunpro. The app should run on Android, iOS, and Web with a local-first data architecture — no server hosting costs. Key differentiators include community-driven data contributions, AI-powered features (conversation, listening, image/audio extraction), and smart input systems with typo detection. The technology stack needs to support all these requirements while remaining accessible to open-source contributors._
+_Riyaz wants to brainstorm around building a comprehensive, free, open-source Japanese learning app that rivals paid services like WaniKani and Bunpro. The app should run on **Android, iOS, and desktop** with a local-first data architecture — no server hosting costs and **no requirement to host a public web application**; the desktop experience is delivered as a **local** shell (e.g. **Electron**) loading a **React Native Web** build so the UI stays on the same React/RN codebase as mobile. Key differentiators include community-driven data contributions, AI-powered features (conversation, listening, image/audio extraction), and smart input systems with typo detection. The technology stack needs to support all these requirements while remaining accessible to open-source contributors._
 
 ## Technique Selection
 
@@ -128,9 +128,9 @@ _Novelty:_ Turns open-ended AI chat into a structured, pedagogical tool that dir
 
 ## Idea Generation: Technical Architecture & Input Systems
 
-**[Tech #1]: Unified Codebase via Expo (React Native + Web)**
-_Concept:_ Use Expo to manage the React Native codebase. Expo natively supports React Native Web under the hood, allowing a single codebase to compile to iOS, Android, and a PWA (Web) simultaneously. 
-_Novelty:_ Maximizes the open-source contributor pool (React devs) while achieving true write-once-run-anywhere without needing separate web and mobile repositories.
+**[Tech #1]: Unified Codebase — Mobile (RN) + Local Desktop (Electron + React Native Web)**
+_Concept:_ Use Expo (or equivalent) to manage the **React Native** codebase for **Android** and **iOS**. Use **React Native Web** to produce a DOM-targeted bundle that is **not** deployed as a hosted website; instead, ship it **inside a desktop shell** such as **Electron** so the desktop app runs **entirely locally** (offline-capable UI, no product hosting). One repository, shared components and logic, with platform splits only where native vs. web rendering requires it.
+_Novelty:_ Satisfies **local-first** and **no hosting** while still giving **three installable targets** (Android, iOS, desktop) from one codebase—desktop is “web tech in a box,” not a SaaS web app.
 
 **[Tech #2]: JSON-to-SQLite Pipeline for Human-Readable Reviews**
 _Concept:_ The GitHub repository stores all core data as structured JSON files (not SQLite, and not CSV, because JSON handles nested data like arrays of radicals/meanings best and has excellent GitHub diff UI). When a PR is merged, a GitHub Action automatically compiles the JSON into an optimized SQLite database file. The app downloads this pre-compiled SQLite file on startup if the version has changed.
@@ -144,7 +144,7 @@ _Novelty:_ Replicates the highly-polished input feel of premium web apps inside 
 We stripped the app concept down to its architectural foundations. Instead of just "an app with all the features," we designed a self-sustaining ecosystem where the data structure (JSON → SQLite), the review logic (Hybrid SRS with invisible nudges), and the community moderation (Gamified PR approvals) all work together to create an app that improves itself over time without drowning maintainers or overwhelming users.
 
 ### Creative Facilitation Narrative
-_Riyaz came in with a clear vision for an all-in-one Japanese learning app but needed to solve the massive architectural challenge of making it free, local-first, and community-driven. Through Morphological Analysis, we mapped out a hybrid SRS system that links vocab, kanji, and grammar invisibly. We then designed a brilliant GitHub-backed contribution pipeline that turns app users into open-source contributors seamlessly. Finally, we locked in the technical stack (Expo + SQLite) to make it a reality._
+_Riyaz came in with a clear vision for an all-in-one Japanese learning app but needed to solve the massive architectural challenge of making it free, local-first, and community-driven. Through Morphological Analysis, we mapped out a hybrid SRS system that links vocab, kanji, and grammar invisibly. We then designed a brilliant GitHub-backed contribution pipeline that turns app users into open-source contributors seamlessly. Finally, we locked in the technical direction: **Expo/React Native** for mobile, **React Native Web + Electron** (or similar) for **local desktop**, with **SQLite** for on-device data—no hosted web app required for the product itself._
 
 ### Session Highlights
 **User Creative Strengths:** Exceptional at balancing ideal user experience with realistic technical constraints. Quickly identified the flaws in raw JSON data fetching and the need for a hybrid SRS approach.
@@ -187,7 +187,7 @@ _Focus: Making the app feel good and using AI as an enhancer, not a crutch._
 
 1. **Initialize the Core Data Repo:** Create the GitHub repository and define the JSON schemas for Kanji, Radical, Vocab, and Grammar.
 2. **Build the SQLite Pipeline:** Write a quick script (for a GitHub Action) that ingests those JSON files and spits out a SQLite database.
-3. **Setup Expo Skeleton:** Initialize the React Native Expo app and verify the local SQLite database reading works on iOS, Android, and Web.
+3. **Setup app skeleton:** Initialize the React Native (Expo) app and the **desktop shell** path (e.g. Electron loading the **React Native Web** build). Verify local SQLite database reading works on **iOS, Android, and desktop** (no dependency on a hosted web deployment).
 4. **Build the SM-2 Engine:** Implement the basic SM-2 logic for the local user data trackers.
 
 ## Session Summary and Insights
