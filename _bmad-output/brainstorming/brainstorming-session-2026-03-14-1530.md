@@ -89,7 +89,7 @@ _Concept:_ Users use their own AI keys to generate content (like reading passage
 _Novelty:_ The community dataset grows organically through actual learning sessions powered by distributed AI compute.
 
 **[Core #9]: Hybrid SRS Architecture**
-_Concept:_ Separate SRS trackers for each item type (Kanji, Vocab, etc.) using SM-2, connected by a static Relationship Layer (e.g., kanji_to_vocab).
+_Concept:_ Separate SRS trackers for each item type (Kanji, Vocab, etc.) using **FSRS**, connected by a static Relationship Layer (e.g., kanji_to_vocab).
 _Novelty:_ Balances the simplicity of flat data structures (easy for open source) with the power of interconnected learning.
 
 **[Core #10]: Invisible Nudge System & Unified Review Mixer**
@@ -115,7 +115,7 @@ _Concept:_ A "Community Review" mode built into the app (swiping left/right to a
 _Novelty:_ Distributed moderation. It solves the open-source maintainer bottleneck by making the user base moderate itself.
 
 **[Community #5]: Threshold-Based Auto-Merge**
-_Concept:_ PRs are automatically validated by GitHub Actions (schema checks). Then, instead of just raw numbers, they require a percentage consensus from the Community Review mode—e.g., at least 15 reviews, with a 60% approval threshold. If met, the PR auto-merges.
+_Concept:_ PRs are automatically validated by GitHub Actions (schema checks). Then, instead of just raw numbers, they require community approval — initially **5 approvals** (scaling up as the community grows). If met, the PR auto-merges.
 _Novelty:_ A fully automated, trustless, self-sustaining content pipeline. The core team only steps in for system-level changes or dispute resolution.
 
 **[UX #1]: The Cognitive Load Ring (Fitness App Cross-Pollination)**
@@ -160,18 +160,18 @@ _Riyaz came in with a clear vision for an all-in-one Japanese learning app but n
 _Focus: How data is stored, shipped, and consumed without a server._
 - JSON core data stored on GitHub for human-readable diffs and PRs.
 - GitHub Actions automatically compile JSON into a highly-optimized SQLite file.
-- App downloads the SQLite file via GitHub Releases on startup for 0-latency offline access.
+- App downloads the SQLite file (stored in GitHub repo with **Git LFS**) on startup for 0-latency offline access. Binary media (audio, images) served from **Cloudflare R2**.
 
 **Theme 2: Self-Sustaining Community Moderation**
 _Focus: Solving the open-source maintainer bottleneck._
 - Invisible PR generation: users submit edits directly in-app; app handles the git fork/branch/PR flow silently.
 - App includes a "Community Review" mode (Tinder-style swipe to approve/reject PRs).
 - Gamified mandate: to submit an edit, you must review others' edits.
-- Percentage-based auto-merge (e.g., 60% approval from 15 reviews).
+- Threshold-based auto-merge (initially **5 approvals**; threshold scales up with community growth).
 
 **Theme 3: The Hybrid SRS Engine**
 _Focus: Making learning interconnected without making data a mess._
-- SM-2 based individual trackers for Kanji, Vocab, and Grammar.
+- **FSRS**-based individual trackers for Kanji, Vocab, and Grammar.
 - A static "Relationship Layer" maps links (e.g., Kanji↔Vocab).
 - An "Invisible Nudge" system where reviewing one item slightly boosts/penalizes related items.
 - A Unified Review Mixer that intelligently interleaves different content types.
@@ -188,7 +188,7 @@ _Focus: Making the app feel good and using AI as an enhancer, not a crutch._
 1. **Initialize the Core Data Repo:** Create the GitHub repository and define the JSON schemas for Kanji, Radical, Vocab, and Grammar.
 2. **Build the SQLite Pipeline:** Write a quick script (for a GitHub Action) that ingests those JSON files and spits out a SQLite database.
 3. **Setup app skeleton:** Initialize the React Native (Expo) app and the **desktop shell** path (e.g. Electron loading the **React Native Web** build). Verify local SQLite database reading works on **iOS, Android, and desktop** (no dependency on a hosted web deployment).
-4. **Build the SM-2 Engine:** Implement the basic SM-2 logic for the local user data trackers.
+4. **Build the FSRS Engine:** Implement the FSRS scheduling logic for the local user data trackers.
 
 ## Session Summary and Insights
 
@@ -199,3 +199,61 @@ _Focus: Making the app feel good and using AI as an enhancer, not a crutch._
 
 **Session Reflections:**
 This session took a highly complex, multi-faceted product idea and distilled it into a series of elegant technical solutions. By pushing hard on "First Principles," we avoided the trap of building a heavy backend server, and instead designed a truly decentralized, self-healing open-source ecosystem. The app is not just a tool for learning Japanese; it is an engine for crowdsourcing the best Japanese curriculum in the world.
+
+---
+
+## Open Questions — Resolved (2026-04-18)
+
+_Follow-up decisions made after the original brainstorm and market research sessions._
+
+### 1. Cross-Device Sync Model
+
+**Decision:** Manual export/import. The app produces an export file; the user transfers it to another device by whatever means they choose (AirDrop, USB, cloud drive, email). The receiving app has an import option to ingest that file. No server, no automatic sync, no conflict resolution required — the import replaces or merges based on the file.
+
+### 2. GitHub Login: Contributors Only, Not Mandatory
+
+**Decision:** GitHub login is **not** required to use the app. Users learn, review, and study without any account. When a user makes a meaningful local edit (synonym, mnemonic, correction) or generates content via their own AI key, the app presents a **contextual, non-intrusive prompt**: _"Would you like to help the community by contributing this?"_ If yes, the user logs in with GitHub at that point. Local edits can accumulate and be batch-contributed later to avoid prompt fatigue.
+
+### 3. Community Moderation Ramp-Up
+
+**Decision:** During early growth, the project creator (Riyaz) acts as **sole admin** reviewing and merging contributions manually. The initial auto-merge threshold is **5 approvals** (reduced from the original 15-review / 60% model to match early community size). As the community scales, the threshold can be raised and the percentage-consensus system takes over. Known risks (gaming, disputed pedagogy, sockpuppets) are accepted trade-offs for v1 with lightweight mitigations planned for later:
+- **Rate-limiting** contributions per account (e.g. max 10 PRs/day)
+- **Disputed flag** — if a merged item receives X downvotes post-merge, it auto-reverts pending maintainer review
+- **Trusted reviewer tier** — after N accepted contributions, a user's reviews carry more weight
+
+### 4. Image and Audio Extraction (OCR / ASR)
+
+**Decision:** Local-first with BYO-key fallback. All libraries must be verified for availability across **Electron (desktop), Android, and iOS**.
+- **OCR (image → text):** On-device by default using **Tesseract** (via `tesseract.js` on Electron, native wrappers on Android/iOS) with Japanese trained data (`jpn`, `jpn_vert`). Functional for printed text without requiring a network connection.
+- **ASR (audio → text):** On-device where feasible; **BYO-key cloud API** (e.g. OpenAI Whisper API, Google Speech-to-Text) as fallback when a local model is not available or practical for the platform.
+- **Constraint:** Library availability must be confirmed across all three targets (Electron, Android, iOS) during architecture. If a local option is unavailable on a given platform, the app gracefully falls back to the BYO-key cloud path.
+
+### 5. Desktop Stack: Electron + React Native Web (Tauri Ruled Out)
+
+**Decision:** **Tauri is off the table.** The desktop app uses **Electron** loading a **React Native Web** build. React Native Web also targets **Android and iOS** directly, so the entire product ships from **one codebase**. Key engineering items to resolve during architecture/spikes:
+- **Library compatibility:** Identify which RN libraries have web-compatible equivalents (SQLite, secure storage, notifications, file system access) and where platform-specific shims are needed.
+- **Secure token storage:** GitHub OAuth tokens need platform-appropriate secure storage — Keychain on macOS/iOS, Credential Manager on Windows, libsecret on Linux, Android Keystore on mobile.
+- **Build, packaging, and auto-update:** Electron Builder (or Electron Forge) for desktop signing and distribution per OS; Expo/EAS for mobile builds.
+- **Target desktop OSes:** macOS, Windows, and Linux.
+
+### 6. Audio and Media Content: AI-Generated, Stored on Cloudflare R2
+
+**Decision:** All audio is **AI-generated** (e.g. OpenAI TTS or Google Cloud TTS — providers whose terms allow redistribution of generated output). Audio files are tagged with `generated_by: ai` metadata. A LICENSE note in the audio/media folder documents the generation method and provider terms.
+
+**Storage — split model:**
+- **Binary media (audio, images, etc.):** Stored on **Cloudflare R2** (S3-compatible object storage). First 10 GB free; cost accepted beyond that. The app downloads media assets from R2. This avoids bloating the Git repository with large binary files.
+- **Compiled SQLite database:** Stored in the **GitHub repository** with **Git LFS** enabled. The database is the compiled output of the JSON→SQLite pipeline and is versioned alongside the source data.
+- **Source JSON data:** Lives directly in the GitHub repository (no LFS needed — small text files with good diff support).
+
+### 7. SRS Algorithm: FSRS
+
+**Decision:** Use **FSRS** (Free Spaced Repetition Scheduler) — MIT-licensed, research-backed, and adopted by Anki. It measurably outperforms SM-2 on retention per review. SM-2 was the original candidate but FSRS is the better choice given it is equally open-source with no licensing restrictions and delivers superior scheduling.
+
+### 8. Distribution: App Store, Play Store, Desktop Download
+
+**Decision:** The app will be published to:
+- **Google Play Store** (Android)
+- **Apple App Store** (iOS)
+- **Desktop download page** (macOS, Windows, Linux installers/packages)
+
+Cost of app store fees is accepted. Signing and review requirements are engineering items for the build pipeline.

@@ -225,7 +225,7 @@ _Sources:_ [KaniManabu](https://github.com/Atelier-Shiori/KaniManabu), [nihongo-
 
 **Strengths:** no subscription for core; **data portability**; appeals to **privacy** and **tinkerers**; can integrate **community content**; aligns with **offline** needs.  
 **Weaknesses:** **content moderation** burden; **discovery** vs incumbents; **polish** expectations set by paid apps; **AI features** require careful trust model (BYO key helps).  
-**Opportunities:** **integration** (kanji + grammar + reading) learners already patch together; **JLPT** as map; **JSON→SQLite** distribution model reducing server costs (your brainstorm).  
+**Opportunities:** **integration** (kanji + grammar + reading) learners already patch together; **JLPT** as map; **JSON→SQLite** distribution model with media on **Cloudflare R2**, reducing server costs (your brainstorm).  
 **Threats:** incumbents add **AI** and **mobile polish**; free JLPT apps cover “good enough” exam prep; **maintenance** of community pipelines.
 
 ---
