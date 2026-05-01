@@ -12,7 +12,7 @@ author: Riyaz
 
 ## Executive Summary
 
-japanese-learning is a free, open-source, local-first Japanese learning application that unifies kanji, vocabulary, grammar, reading, listening, and AI-powered conversation practice into a single cross-platform app (Android, iOS, desktop). It replaces the fragmented and expensive multi-tool stack that serious Japanese learners are forced to assemble today — delivering WaniKani-level rigor with input-based testing powered by FSRS, JLPT-aligned progression across all skill domains, and a polished, rewarding UX with cognitive load management and streak celebrations. The core app is completely free with no subscriptions; AI features are optional via bring-your-own-key. A community-driven content pipeline — where users contribute and review curriculum improvements through a gamified in-app process — ensures the learning material improves continuously without burning out maintainers. All user data stays on-device, the app works fully offline, and the entire codebase and curriculum are open-source.
+japanese-learning is a free, open-source, local-first Japanese learning application that unifies kanji, vocabulary, grammar, and reading into a single cross-platform app (Android & iOS). It replaces the fragmented and expensive multi-tool stack that serious Japanese learners are forced to assemble today — delivering WaniKani-level rigor with input-based testing powered by FSRS, JLPT-aligned progression across all skill domains, and a polished, rewarding UX with cognitive load management and streak celebrations. The core app is completely free with no subscriptions; AI features (personalized reading story generation) are available via bring-your-own-key or through purchasing API access via OpenRouter for non-technical users. AI-generated visual mnemonics for radicals provide a memorable, visually-rich learning experience from Day 1. All user data stays on-device, the app works fully offline, and the entire codebase and curriculum are open-source.
 
 ---
 
@@ -43,22 +43,22 @@ Japanese learners today are forced to assemble a fragmented, expensive stack of 
 A single, free, open-source application that covers the full breadth of Japanese learning with real depth:
 
 - **Input-based SRS testing** across all content types — learners type their answers, not self-grade on flashcards — powered by FSRS for research-backed optimal scheduling.
-- **JLPT-aligned parallel progression** (N5→N1) across kanji, vocabulary, grammar, reading, and listening — learners advance through a universally understood framework, not proprietary levels.
+- **JLPT-aligned parallel progression** (N5→N1) across kanji, vocabulary, grammar, and reading — learners advance through a universally understood framework, not proprietary levels.
 - **Interconnected learning** where reviewing kanji reinforces related vocabulary, grammar examples prioritize known words, and a unified review mixer intelligently interleaves content types.
-- **AI as optional enhancement** (BYO-key) for conversation practice, personalized mnemonics, and content generation — the core app works 100% offline without AI.
-- **"Wild capture"** via camera (OCR) and microphone (ASR) — learners encounter Japanese in movies, books, or signs and pull it directly into their study flow.
+- **AI-generated reading stories** that use exactly the kanji, vocabulary, and grammar the learner is currently studying — creating reinforcement through narrative context. Stories unlock as the learner reaches sufficient proficiency in their current building blocks. Available via BYO-key or through purchasing API access via OpenRouter.
+- **Visual mnemonics for radicals** — AI-generated images for each radical that create memorable visual associations. A baseline set is pre-generated and served from Cloudflare R2, giving every learner a rich visual learning experience from Day 1.
 - **Rewarding, polished UX** — cognitive load ring (adapts like a fitness tracker), progressive streaks with milestone animations, and a design that feels as inviting as Duolingo while delivering WaniKani-level substance.
-- **Community-powered curriculum** — users contribute mnemonics, corrections, and content through a frictionless in-app flow (invisible GitHub PRs). A gamified review system and threshold-based auto-merge keep quality high without maintainer burnout.
-- **Cross-platform from one codebase** — Android, iOS, and local desktop (Electron + React Native Web), all offline-capable, all with local data storage.
+- **Cross-platform from one codebase** — Android and iOS, all offline-capable, all with local data storage.
 
 ### Key Differentiators
 
-1. **All-in-one with depth:** Not a shallow phrase app — WaniKani-level rigor across kanji, vocabulary, grammar, reading, listening, and conversation in a single product.
-2. **Free forever (core):** No subscriptions, no paywalls, no ads. AI features are optional via bring-your-own-key. Replaces $150–$450/year in stacked subscriptions.
+1. **All-in-one with depth:** Not a shallow phrase app — WaniKani-level rigor across kanji, vocabulary, grammar, and reading in a single product.
+2. **Free forever (core):** No subscriptions, no paywalls, no ads. AI features are optional via bring-your-own-key or OpenRouter purchase. Replaces $150–$450/year in stacked subscriptions.
 3. **Input-based SRS with FSRS:** Learners prove knowledge by typing answers. Scheduling uses FSRS — the same research-backed algorithm adopted by Anki — not an honor system.
-4. **Self-improving through community:** A gamified contribution and review pipeline turns everyday users into open-source contributors. The curriculum gets better over time, automatically.
-5. **Local-first / offline:** All data on-device. Works on the train, on a plane, with no signal. No vendor lock-in — your progress is yours.
-6. **Rewarding UX that prevents burnout:** Cognitive load ring manages daily mental energy. Streak celebrations with progressive animations. The app feels accomplishing, not overwhelming.
+4. **AI-powered reading that reinforces what you're learning:** Stories generated specifically from the learner's active kanji, vocabulary, and grammar. This creates a felt interconnection no multi-app stack can replicate — the "aha moment" that makes learners feel their current setup is inefficient.
+5. **Visual mnemonics from Day 1:** AI-generated mnemonic images for radicals make the building blocks of kanji memorable and visually engaging immediately — a richer experience than plain text definitions.
+6. **Local-first / offline:** All data on-device. Works on the train, on a plane, with no signal. No vendor lock-in — your progress is yours.
+7. **Rewarding UX that prevents burnout:** Cognitive load ring manages daily mental energy. Streak celebrations with progressive animations. The app feels accomplishing, not overwhelming.
 
 ---
 
@@ -100,9 +100,9 @@ A single, free, open-source application that covers the full breadth of Japanese
 
 ### Secondary Users
 
-**Community Contributors**
+**Community Contributors (Post-MVP)**
 
-Advanced learners (N2–N1 level or native speakers) who are motivated by improving the curriculum for others. They contribute mnemonics, fix errors, propose better example sentences, and review others' contributions through the gamified in-app review system. They may also be open-source developers interested in contributing to the codebase. Their engagement keeps the content pipeline alive and high-quality.
+Advanced learners (N2–N1 level or native speakers) who are motivated by improving the curriculum for others. They contribute mnemonics, fix errors, and propose better example sentences through an in-app contribution pipeline (post-MVP). They may also be open-source developers interested in contributing to the codebase directly via GitHub. Their engagement keeps the content pipeline alive and high-quality once the community contribution features ship.
 
 ### User Journey
 
@@ -114,9 +114,7 @@ Advanced learners (N2–N1 level or native speakers) who are motivated by improv
 
 **Aha moment (Week 1–2):** The learner notices the app connecting things — a kanji they learned yesterday appears in a grammar example today, using vocabulary they already know. The interlinked learning feels smarter than juggling separate apps. The streak counter starts to matter.
 
-**Routine (Month 1+):** The app becomes a daily ritual — 15–30 minutes in the morning or evening, mostly on phone, occasionally on desktop for longer sessions. The cognitive load ring adapts as they grow stronger, like upgrading from 1km to 2km runs. Streak milestone animations (50 days, 100 days) feel rewarding. They encounter Japanese in the wild — a sign, a movie scene — and use the camera or microphone to capture it into their study flow.
-
-**Contribution (Month 3+):** The learner writes a mnemonic that helps them remember a tricky kanji. The app offers to contribute it to the community. They log in with GitHub, and the contribution flows silently into the review pipeline. They start reviewing others' contributions too. The curriculum gets better because they use the app.
+**Routine (Month 1+):** The app becomes a daily ritual — 15–30 minutes in the morning or evening on their phone. The cognitive load ring adapts as they grow stronger, like upgrading from 1km to 2km runs. AI-generated reading stories use the exact kanji and grammar they've been studying — reading feels like a natural extension of their review sessions, not a separate activity.
 
 **Long-term (Month 6+):** The learner levels up through JLPT tiers. They can see real improvement — reading manga panels, catching grammar in anime dialogue, navigating a Japanese website. The app is their single tool. They tell other learners about it.
 
@@ -136,10 +134,10 @@ Advanced learners (N2–N1 level or native speakers) who are motivated by improv
 The aha moment occurs in Week 1–2, when a learner notices the interconnection — a kanji they reviewed yesterday appears in a grammar example today, using vocabulary they already know. They realize this one app is doing what three separate apps couldn't: connecting the dots across skill domains. Combined with the cognitive load ring telling them "you've done enough for today" instead of showing 200 pending reviews, the app earns trust as a sustainable daily practice tool.
 
 **User Value Signals:**
-- Users explore the full breadth of the app (kanji, grammar, reading, listening) rather than using only one domain.
-- Users capture wild content (camera/microphone) and pull it into their study flow.
+- Users explore the full breadth of the app (kanji, grammar, reading) rather than using only one domain.
+- Users generate AI reading stories and complete comprehension questions — a sign the interconnected learning is landing.
 - Users write personal mnemonics or notes — a sign of deep engagement.
-- Users choose to contribute content back to the community — the strongest signal of perceived value.
+- Users set up an AI key (BYO or via OpenRouter) — indicating they see enough value to invest in the AI features.
 
 ### Business Objectives
 
@@ -173,8 +171,8 @@ Since japanese-learning is a free, open-source project with no revenue model, "b
 **Leading indicators (early signals of future success):**
 - First-session completion rate (do users finish their first review session?)
 - Day 7 return rate (do users come back after the first week?)
-- First community contribution (how quickly does the first non-creator PR arrive?)
-- Wild capture usage (are users engaging with OCR/ASR features?)
+- AI story generation usage (are users with keys generating and reading stories?)
+- Multi-domain engagement in week 1 (do users touch kanji + grammar + reading early?)
 
 **Metrics we explicitly avoid (vanity metrics):**
 - Total downloads without retention context
@@ -191,97 +189,106 @@ Since japanese-learning is a free, open-source project with no revenue model, "b
 - JLPT-aligned kanji and vocabulary progression (N5→N1), with parallel progression within each level.
 - Input-based SRS testing — users type readings and meanings, no honor-system self-grading.
 - FSRS scheduling for research-backed optimal review intervals.
-- Radicals taught as building blocks for kanji. Bidirectional reinforcement: reviewing kanji nudges related vocabulary and radicals via the invisible nudge system.
+- Radicals taught as building blocks for kanji with AI-generated visual mnemonics (pre-generated baseline images stored on Cloudflare R2). Bidirectional reinforcement: reviewing kanji nudges related vocabulary and radicals via the invisible nudge system.
 - Mnemonics displayed for each item. Users can write personal (local-only) mnemonics.
 - Smart input with embedded WanaKana (romaji-to-hiragana conversion) and Levenshtein-based typo detection (accept with warning for English typos, reject with "close!" hint for Japanese typos).
 
-**2. Grammar Learning**
+**2. Visual Mnemonics for Radicals**
+- Each radical has an AI-generated visual mnemonic image that creates a memorable visual association with the radical's meaning.
+- Baseline image set is pre-generated by the project creator and stored on Cloudflare R2 — available to all users without an AI key.
+- Images are referenced in the app's curriculum data and downloaded alongside the SQLite database content.
+- Post-MVP: Users with an AI API key can regenerate alternative mnemonic images if they don't connect with the default ones.
+
+**3. Grammar Learning**
 - JLPT-aligned grammar points (N5→N1) with input-based SRS testing.
 - Grammar examples dynamically prioritize vocabulary the user has already learned (reducing cognitive load).
 - Grammar points taught with example sentences drawn from reading passages where possible.
 - FSRS scheduling for grammar review intervals.
 
-**3. Reading Passages (BYO-Key AI + Community Content)**
-- AI-generated short stories/passages tailored to the user's current knowledge level — built from kanji, vocabulary, and grammar they have already learned. Requires user's own AI API key.
-- Comprehension questions attached to each passage — users answer questions about what they read to validate understanding, not just passive reading.
-- Community-contributed reading passages available to all users (no AI key required). AI-generated passages can be contributed back to the community repo for others to access as static content.
-- Reading passages tagged by JLPT level.
+**4. AI-Generated Reading Stories**
+- Once a learner reaches a sufficient level of learned building blocks (kanji, vocabulary, grammar), the app generates short reading stories that specifically use the content they are currently studying — reinforcing the connection between kanji, vocabulary, and grammar through narrative context.
+- Stories are generated by AI and unlock progressively as the learner advances. The story difficulty and content are tailored to the learner's current active material.
+- Comprehension questions attached to each story validate understanding — not just passive reading.
+- AI access model:
+  - **Bring your own API key:** Technical users provide their own OpenAI/Anthropic/etc. API key, stored securely on-device.
+  - **Purchase via OpenRouter:** Non-technical users are redirected to OpenRouter to purchase API credits/subscription. After purchase, the OpenRouter API key is returned to the app. This keeps the app out of payment processing entirely.
+- Stories tagged by JLPT level and the specific content they reinforce.
 
-**4. Unified Review Mixer**
+**5. Unified Review Mixer**
 - A single review session that intelligently interleaves kanji, vocabulary, and grammar items.
 - The invisible nudge system applies micro-adjustments to related items when one is reviewed (e.g., reviewing a kanji slightly boosts its associated vocabulary).
 - Cognitive load ring tracks daily mental strain — heavier items (new kanji) cost more energy than light reviews (mature vocabulary). The ring fills as the user studies, visually communicating when they've done enough for the day.
 
-**5. Streak System**
+**6. Streak System**
 - Daily streak tracking with animations for maintaining consistency.
 - Cognitive load ring adapts over time as the user grows stronger (like upgrading from 1km to 2km runs in fitness).
 
-**6. Onboarding & Customization**
+**7. Onboarding & Customization**
 - First-launch setup: select starting JLPT level (N5 for beginners, or higher for existing learners).
 - Manual item management: mark individual kanji, vocabulary, or grammar points as "already known" (skip), "in progress" (add to SRS at appropriate interval), or "not started."
 - Session intensity preference: relaxed (~15 min) or intense (~30 min) daily sessions.
+- AI key setup: option to enter BYO API key or redirect to OpenRouter for purchase.
 - No account required to start learning.
-
-**7. Community Contribution Pipeline (Simplified)**
-- Users can contribute updates to kanji descriptions, readings, grammar details, synonyms, and AI-generated reading passages through the in-app PR flow (invisible GitHub PRs using the user's GitHub token).
-- GitHub login only required when a user chooses to contribute — not for general app usage.
-- Contributions can accumulate locally and be batch-submitted to avoid prompt fatigue.
-- Admin-reviewed: Riyaz and designated admins manually review and merge PRs via GitHub. No gamified in-app review for MVP.
 
 **8. CI/CD & Data Pipeline**
 - Core curriculum data stored as structured JSON files in the GitHub repository.
 - GitHub Actions automatically compile JSON into an optimized SQLite database when PRs are merged.
 - SQLite database stored in the repository with Git LFS. App downloads the updated database on startup if the version has changed.
-- Binary media (audio for future listening features) planned for Cloudflare R2 — not required for MVP.
+- Visual mnemonic images for radicals stored on Cloudflare R2 and referenced by the curriculum data.
 
 **9. Platform: Android & iOS**
 - React Native (Expo) codebase targeting Android and iOS.
 - Local SQLite database for all curriculum and user progress data.
-- Fully offline-capable after initial content download.
+- Fully offline-capable after initial content download (except AI story generation which requires network).
 - Published to Google Play Store and Apple App Store.
 
 ### Out of Scope for MVP
 
 | Feature | Rationale | Target Phase |
 | --- | --- | --- |
+| **Community contribution pipeline** | In-app PR generation, GitHub OAuth, batch submissions, admin review flow. Adds significant complexity without contributing to the "aha moment" in week 1. Creator seeds all initial content. | Post-MVP Phase 1 |
+| **Regeneratable visual mnemonics** | Users re-generating alternative radical mnemonic images with their own AI key. Baseline pre-generated images are sufficient for MVP. | Post-MVP Phase 1 |
 | **Listening practice** | Requires AI-generated audio pipeline and Cloudflare R2 media delivery. Core learning loop works without it. | Post-MVP Phase 1 |
-| **Wild capture (OCR/ASR)** | Camera and microphone input adds complexity across platforms. Not essential for the core SRS learning loop. | Post-MVP Phase 1 |
+| **Wild capture (OCR/ASR)** | Camera and microphone input adds complexity across platforms. Not essential for the core SRS learning loop. | Post-MVP Phase 2 |
 | **AI conversation practice** | BYO-key conversational AI with SRS-targeted practice modes. Valuable but not core to MVP learning loop. | Post-MVP Phase 2 |
-| **AI-generated personalized mnemonics** | Enhancement to existing mnemonic system. Users can write their own mnemonics in MVP. | Post-MVP Phase 2 |
-| **AI content generation (beyond reading)** | AI-generated vocabulary examples, grammar explanations, etc. Reading passages cover the MVP AI use case. | Post-MVP Phase 2 |
+| **AI-generated personalized mnemonics** | AI-generated text mnemonics beyond the visual radical images. Users can write their own in MVP. | Post-MVP Phase 2 |
 | **Desktop app (Electron)** | Electron + React Native Web adds significant build complexity. Mobile covers primary use case (daily practice on phone). | Post-MVP Phase 2 |
-| **Gamified community review** | Swipe-to-review, mandatory review-before-contribute gate, threshold-based auto-merge. Admin review sufficient for MVP scale. | Post-MVP Phase 2 |
+| **Gamified community review** | Swipe-to-review, mandatory review-before-contribute gate, threshold-based auto-merge. | Post-MVP Phase 2 |
 | **Streak milestone celebrations** | Animated celebrations for 50-day, 100-day milestones. Basic streak counter and cognitive load ring sufficient for MVP. | Post-MVP Phase 1 |
 | **Advanced UX polish** | Milestone animations, transition effects, celebration sequences. Core UX (cognitive load ring, streak counter) ships in MVP. | Post-MVP Phase 1 |
 | **WaniKani / Bunpro import** | Automated import from other tools. Manual item marking (skip/in-progress) covers the switcher use case for MVP. | Post-MVP Phase 2 |
 | **Cross-device sync** | Manual export/import decided in brainstorming. Not essential for MVP single-device usage. | Post-MVP Phase 2 |
-| **Bounded upvote/downvote system** | Community content voting and ranking. Admin curation sufficient at MVP scale. | Post-MVP Phase 2 |
+| **Bounded upvote/downvote system** | Community content voting and ranking. | Post-MVP Phase 2 |
 
 ### MVP Success Criteria
 
 The MVP is considered successful when:
 
 1. **Core learning loop works:** Users can learn kanji, vocabulary, and grammar through input-based SRS testing with FSRS scheduling across Android and iOS.
-2. **Reading feature delivers:** Users with an AI key can generate reading passages with comprehension questions tailored to their knowledge. Community-contributed passages are accessible to all users.
-3. **Interconnection is felt:** The unified review mixer interleaves content types, and the invisible nudge system creates the "aha moment" — kanji showing up in grammar examples using known vocabulary.
-4. **Cognitive load ring functions:** Users see their daily mental energy tracked and get a clear signal of when they've done enough.
-5. **Contribution pipeline flows:** Users can submit content improvements via in-app PR generation. Merged PRs trigger CI/CD to rebuild the SQLite database automatically.
+2. **Visual mnemonics are compelling:** Radical mnemonic images are pre-generated, stored on R2, and displayed in-app — making the radical learning experience visually richer than any competitor from Day 1.
+3. **AI reading stories deliver:** Users with an AI key (BYO or via OpenRouter purchase) can generate reading stories that use their active learning material, creating a felt reinforcement loop.
+4. **Interconnection is felt:** The unified review mixer interleaves content types, and the invisible nudge system creates the "aha moment" — kanji showing up in grammar examples using known vocabulary, and reading stories reinforcing current learning.
+5. **Cognitive load ring functions:** Users see their daily mental energy tracked and get a clear signal of when they've done enough.
 6. **App is stable and published:** Available on Google Play Store and Apple App Store with stable performance.
+
+**The switching trigger:** Users experience within their first 1-2 weeks that this single app creates learning connections their multi-app stack never could — through cross-domain nudges, vocabulary-aware grammar, and AI reading stories built from exactly what they're studying.
 
 **Go/no-go for post-MVP expansion:** No specific targets required. Once MVP is running and available to users, post-MVP features begin development immediately.
 
 ### Future Vision
 
 **Post-MVP Phase 1 (near-term enhancements):**
+- Community contribution pipeline — in-app PR generation, GitHub OAuth, batch submissions, admin review workflow. Enables the self-improving curriculum model.
+- Regeneratable visual mnemonics — users with an AI key can generate alternative radical images if the default set doesn't resonate.
 - Listening practice with AI-generated audio (Cloudflare R2 delivery).
-- Wild capture — camera (OCR) and microphone (ASR) for pulling real-world Japanese into the study flow.
 - Streak milestone celebrations with progressive animations (50 days, 100 days).
 - Additional UX polish and transition animations.
 
 **Post-MVP Phase 2 (ecosystem expansion):**
 - Desktop app via Electron + React Native Web (macOS, Windows, Linux).
+- Wild capture — camera (OCR) and microphone (ASR) for pulling real-world Japanese into the study flow.
 - AI conversation practice with three targeting modes (manual, SRS integration, random challenge).
-- AI-generated personalized mnemonics and expanded content generation.
+- AI-generated personalized text mnemonics and expanded content generation.
 - Gamified community review system (swipe to approve/reject, mandatory review gate, threshold-based auto-merge).
 - WaniKani and Bunpro import tools for switchers.
 - Cross-device sync via manual export/import.
