@@ -275,6 +275,7 @@ Mobile accessibility best practices apply:
 
 ### Privacy & Data
 
+- The app targets users aged 13 and older. COPPA does not apply: no user accounts are created, no personal data is collected, and no information from children (or any user) is transmitted or stored externally.
 - No user accounts required for core functionality. No personal data collected or transmitted.
 - All learning progress, weakness detection statistics, and user data stored locally on-device in SQLite.
 - WaniKani and Bunpro API keys used during import are stored in platform-appropriate secure storage (Keychain on iOS, Android Keystore on Android) and can be discarded after import completes.
@@ -589,11 +590,11 @@ The app is designed offline-first — network is the exception, not the requirem
 - FR23: Learners can mark individual kanji, vocabulary, or grammar items as "already known" (skip), "in progress" (add to SRS at appropriate interval), or "not started."
 - FR24: Learners can bulk-mark items when importing existing knowledge (e.g., mark all N5 kanji as known).
 - FR25: Learners can select session intensity preference (relaxed ~15 min or intense ~30 min daily sessions).
-- FR26b: Learners can begin using the app without creating an account or providing personal information.
+- FR26: Learners can begin using the app without creating an account or providing personal information.
 
 ### Personal Content
 
-- FR26: Learners can write personal mnemonics for any kanji, vocabulary, or grammar item, stored locally on-device.
+- FR26b: Learners can write personal mnemonics for any kanji, vocabulary, or grammar item, stored locally on-device.
 - FR27: Learners can view the pre-generated visual mnemonic images for radicals and text mnemonics for kanji, vocabulary, and grammar items.
 - FR28: Learners can view their weakness detection statistics — per-item error history, confusion clusters, and pattern accuracy trends over time.
 
@@ -651,14 +652,15 @@ The app is designed offline-first — network is the exception, not the requirem
 - FR46: The app stores all curriculum data, user progress, and weakness detection statistics locally in SQLite on-device.
 - FR47: The app functions fully offline after the initial content download. All SRS review, weakness detection, time compression display, and reading features work without network.
 - FR48: The app checks for curriculum database updates on launch and downloads the updated database if a new version is available.
-- FR49-data: Visual mnemonic images are cached locally after first load — subsequent views work offline.
+- FR49: Visual mnemonic images are cached locally after first load — subsequent views work offline.
 - FR50: WaniKani and Bunpro import require a one-time network connection to access their respective APIs. After import, all data is local.
+- FR51: The app receives over-the-air JavaScript bundle updates without requiring a new app store submission, enabling rapid bug fixes and non-native code changes.
 
 ### Accessibility
 
-- FR49: The app supports screen readers (TalkBack on Android, VoiceOver on iOS) for navigation, review sessions, and results.
-- FR50: The app provides sufficient color contrast ratios for all UI elements including the cognitive load ring.
-- FR51: The app supports scalable text for all learning content.
+- FR52: The app supports screen readers (TalkBack on Android, VoiceOver on iOS) for navigation, review sessions, and results.
+- FR53: The app provides sufficient color contrast ratios for all UI elements including the cognitive load ring.
+- FR54: The app supports scalable text for all learning content.
 
 ## Non-Functional Requirements
 

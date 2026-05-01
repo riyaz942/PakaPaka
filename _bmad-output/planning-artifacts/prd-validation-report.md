@@ -1,6 +1,6 @@
 ---
 validationTarget: '_bmad-output/planning-artifacts/prd.md'
-validationDate: '2026-04-25'
+validationDate: '2026-05-02'
 inputDocuments:
   - '_bmad-output/planning-artifacts/prd.md'
   - '_bmad-output/planning-artifacts/product-brief-japanese-learning-2026-04-12.md'
@@ -21,13 +21,13 @@ validationStepsCompleted:
   - step-v-12-completeness-validation
 validationStatus: COMPLETE
 holisticQualityRating: '4/5 - Good'
-overallStatus: Warning
+overallStatus: 'Warning'
 ---
 
 # PRD Validation Report
 
 **PRD Being Validated:** _bmad-output/planning-artifacts/prd.md
-**Validation Date:** 2026-04-25
+**Validation Date:** 2026-05-02
 
 ## Input Documents
 
@@ -40,7 +40,8 @@ overallStatus: Warning
 
 ### Format Detection
 
-**PRD Structure (## Level 2 Headers):**
+**PRD Structure (all ## Level 2 headers):**
+
 1. Executive Summary
 2. Project Classification
 3. Success Criteria
@@ -53,12 +54,12 @@ overallStatus: Warning
 10. Non-Functional Requirements
 
 **BMAD Core Sections Present:**
-- Executive Summary: Present
-- Success Criteria: Present
-- Product Scope: Present (as "Project Scoping & Phased Development")
-- User Journeys: Present
-- Functional Requirements: Present
-- Non-Functional Requirements: Present
+- Executive Summary: Present ✓
+- Success Criteria: Present ✓
+- Product Scope: Present ✓ (as "Project Scoping & Phased Development")
+- User Journeys: Present ✓
+- Functional Requirements: Present ✓
+- Non-Functional Requirements: Present ✓
 
 **Format Classification:** BMAD Standard
 **Core Sections Present:** 6/6
@@ -77,7 +78,7 @@ overallStatus: Warning
 
 **Severity Assessment:** Pass
 
-**Recommendation:** PRD demonstrates good information density with minimal violations. The writing is direct, concise, and avoids conversational filler — every sentence carries weight.
+**Recommendation:** PRD demonstrates excellent information density with zero violations. Writing is direct, concise, and every sentence carries weight. No conversational filler, no wordy constructions, no redundant phrases detected.
 
 ### Product Brief Coverage
 
@@ -85,244 +86,285 @@ overallStatus: Warning
 
 #### Coverage Map
 
-**Vision Statement:** Fully Covered
-- PRD Executive Summary accurately captures the unified all-in-one Japanese learning app vision. Listening and conversation practice correctly scoped to post-MVP, consistent with brief's own MVP definition.
+**Vision Statement:** Fully Covered ✓
+PRD Executive Summary fully mirrors and expands on the brief's vision — all core positioning (free, open-source, replaces fragmented stack, content parity + intelligence + zero switching risk) is present.
 
-**Target Users:** Fully Covered
-- All 4 primary personas from brief (Yuki, Kenji, Mika, Riyaz/Switcher) present as fully developed user journeys. PRD adds Sato (contributor) and Riyaz (admin) journeys, expanding coverage.
+**Target Users:** Fully Covered ✓
+All 4 primary personas from the brief (Yuki, Kenji, Mika, Riyaz/Switcher) appear as full user journeys in the PRD with richer narrative detail. Community contributors (secondary) covered in Journey 4.
 
-**Problem Statement:** Fully Covered
-- Fragmented tool stack, $150–450/year cost, honor-system SRS false confidence, rigid progression, review burnout — all addressed in Executive Summary and throughout.
+**Problem Statement:** Fully Covered ✓
+All 5 pain points from the brief (financial barrier, cognitive fragmentation, honor-system SRS, rigid progression, review burnout) are addressed throughout the PRD.
 
-**Key Features (MVP):** Fully Covered
-- All 9 brief MVP features (Kanji & Vocab, Grammar, Reading, Unified Review Mixer, Streak System, Onboarding, Community Contribution, CI/CD, Platform) mapped to PRD functional requirements (FR1–FR44).
+**Key Features:** Fully Covered ✓
+All 13 MVP feature areas from the brief are present in the PRD's MVP Feature Set with corresponding functional requirements (FR1–FR51).
 
-**Key Features (Post-MVP):** Fully Covered
-- All post-MVP features from brief (Listening, Wild Capture, AI Conversation, Desktop, Gamified Review, Streak Celebrations, Import Tools, Cross-Device Sync, Upvote System) present in PRD Phase 2/Phase 3.
+**Goals/Objectives:** Fully Covered ✓
+PRD exceeds the brief — all 3-month and 12-month goals present, KPI table expanded from 7 to 10 metrics, with added Technical Success criteria.
 
-**Goals/Objectives:** Fully Covered
-- Identical KPI table with matching targets. PRD adds cognitive load threshold metric (80%+) and SQLite query performance target (<100ms).
+**Differentiators:** Fully Covered ✓
+All 8 differentiators from the brief present in "What Makes This Special" and Innovation sections with expanded analysis.
 
-**Differentiators:** Fully Covered
-- All 6 brief differentiators present in PRD Innovation & Novel Patterns section with expanded detail, validation approaches, and risk mitigation tables.
+**Constraints:** Fully Covered ✓
+Solo developer, 3-month timeline, AI-assisted development, no server hosting — all reflected in Project Scoping section.
 
-**Constraints:** Fully Covered
-- Solo developer, 3-month timeline, AI-assisted development all present in Project Scoping section.
-
-**Out-of-Scope Items:** Fully Covered
-- All 10 brief out-of-scope items present in PRD Post-MVP Features (Phase 2 and Phase 3).
+**Out of Scope / Post-MVP:** Fully Covered ✓
+All 12 out-of-scope items from the brief are represented in PRD Post-MVP Features across Phase 2 and Phase 3.
 
 #### Coverage Summary
 
-**Overall Coverage:** ~100% — Comprehensive coverage with no gaps
+**Overall Coverage:** 100% — All Product Brief content is fully represented in the PRD
 **Critical Gaps:** 0
 **Moderate Gaps:** 0
 **Informational Gaps:** 0
 
-**Recommendation:** PRD provides excellent coverage of Product Brief content. Every key area from the brief is fully represented, and in most cases the PRD expands on the brief with additional depth (detailed user journeys, innovation validation approaches, risk mitigation tables, and comprehensive NFRs).
+**Recommendation:** PRD provides comprehensive coverage of all Product Brief content. The PRD expands on every section of the brief with greater depth, additional technical detail, and more extensive requirements. No gaps detected.
 
 ### Measurability Validation
 
 #### Functional Requirements
 
-**Total FRs Analyzed:** 46 (FR1–FR44 + FR12b + FR33b)
+**Total FRs Analyzed:** 72 requirement bullets (FR1–FR51, including sub-FRs)
 
-**Format Violations:** 1
-- FR17 (line 488): Subject is "The cognitive load threshold" — lacks clear actor. Should be "The system adapts..."
+**Note:** Duplicate IDs detected — FR49 and FR50 appear twice (under "Data & Offline" and "Accessibility" sections). FR26b appears before FR26. These hurt traceability.
 
-**Subjective Adjectives Found:** 4
-- FR11 (line 478): "intelligently" — not testable without defining interleaving rules
-- FR12 (line 479): "invisible" micro-adjustments — marketing-style, not measurable
-- FR15 (line 486): "heavier" / "light" items — no numeric cost weights defined
-- FR43 (line 533): "sufficient color contrast" — subjective (NFR14 gives ratios, but FR43 doesn't reference them)
+**Format Violations:** 4
+- FR30 (line 603): Passive "Items are tagged…" — actor implicit; should use "The system tags…"
+- FR11 (line 570): "interleaves … intelligently" — no objective definition of "intelligent"
+- FR16 (line 579): "when they have done enough" — threshold/rules not defined in this FR
+- FR17 (line 580): "adapts over time as the learner grows stronger" — no observable definition of adaptation or strength
 
-**Vague Quantifiers Found:** 1
-- FR22 (line 496): "appropriate interval" for in-progress items — no defined rule for what interval applies
+**Subjective Adjectives Found:** 5
+- FR10 (line 569): "optimal intervals" — normative without measurable definition
+- FR11 (line 570): "intelligently" — subjective
+- FR15 (line 578): "heavier…costing more energy…light reviews" — metaphor without numeric weights
+- FR5b (line 557): "intervals become very long" — subjective
+- FR33c (line 611): "conservative" — no measurable bound
 
-**Implementation Leakage:** 7 (Informational — not counted as violations)
-- FR10: FSRS, FR12b: "static relationship layer", FR13: WanaKana, FR14: Levenshtein distance, FR35: JSON/GitHub Actions, FR36: JSON→SQLite/GitHub Actions, FR37: Git LFS
-- Note: These are deliberate technology decisions from brainstorming. In BMAD context where PRD feeds architecture, naming committed choices is specification, not leakage.
+**Vague Quantifiers Found:** 3
+- FR5 (line 556): "multiple accepted answers" — no min/max cardinality
+- FR39-PM (line 638): "multiple AI providers" — no minimum count
+- FR5b (line 557): "very long" — unbounded qualifier
 
-**FR Violations Total:** 6
+**Implementation Leakage:** 22
+Notable examples:
+- FR4 (line 554): SQLite storage mechanism
+- FR4b (line 555): Cloudflare R2
+- FR8 (line 562): Embeds SQL query (`SELECT … WHERE vocab IN …`)
+- FR10 (line 569): FSRS by name
+- FR13 (line 573): WanaKana by name
+- FR14 (line 574): Levenshtein, parser-based
+- FR31 (line 604): Formula `fsrs_score × 0.7 + weakness_score × 0.3`
+- FR35 (line 630): JSON schema, GitHub Actions, CI
+- FR36 (line 631): JSON → SQLite, GitHub Actions
+- FR37 (line 632): Git LFS
+- FR42-PM (line 644): GitHub branch/pull request
+- FR43-PM (line 645): GitHub OAuth
+- FR46 (line 651): SQLite as storage technology
+- Plus 9 additional instances (FR34, FR37b, FR38-PM, FR39-PM, FR40-PM, FR33d-f, FR5)
+
+**FR Violations Total:** 34 findings across categories (~29 distinct FR bullets with at least one issue)
 
 #### Non-Functional Requirements
 
-**Total NFRs Analyzed:** 22 (NFR1–NFR22)
+**Total NFRs Analyzed:** 23 (NFR1–NFR22 plus NFR5b)
 
-**Missing or Weak Metrics:** 3
-- NFR4 (line 543): "standard mobile connection" — undefined throughput/latency profile
-- NFR5 (line 544): "real-time" and "no visible delay" — not numeric; needs max latency
-- NFR13 (line 558): "accurately" — needs rules for streak tracking across timezone changes
+**Missing/Partial Metrics:** 11
+- NFR1 (line 667): "feel instantaneous," "zero perceptible lag" — subjective alongside the 100ms target
+- NFR5 (line 671): "real-time," "no visible delay" — no numeric bound
+- NFR10 (line 683): "without data loss" — no RPO/RTO or corruption-rate metric
+- NFR13 (line 686): "accurately" across timezones — undefined tolerance
+- NFR15 (line 691): "meaningful labels" — qualitative
+- NFR17 (line 694): Operability claim — qualitative acceptance criteria
+- NFR18 (line 697): "gracefully" — no max response time or error-rate metric
+- NFR19 (line 698): Same "gracefully" gap
+- NFR6–NFR9 (lines 676–679): Security behaviors stated without quantitative metrics (acceptable for security)
+- NFR5b (line 672): Binary rule; marginal
+- NFR20 (line 699): Behavioral fallback with no numeric SLA
 
-**Subjective Wording:** 5
-- NFR1 (line 540): "feel instantaneous" / "perceptible lag" — subjective after concrete 200ms metric
-- NFR15 (line 564): "meaningful labels" — undefined quality criterion
-- NFR18 (line 569): "gracefully" handling rate limits — needs defined behavior
-- NFR19 (line 570): "clear user-facing error messages" — "clear" is subjective
-- NFR20 (line 571): "gracefully" handling unavailability — needs defined behavior
+**Incomplete Template (missing measurement method):** ~15
+- NFR1–NFR5: No stated measurement method (profiler, device class definition beyond "mid-range")
+- NFR4 (line 670): "standard mobile connection" undefined (LTE? 5G? throughput?)
+- NFR14–NFR17: Measurement method (automated audit vs manual) not specified
+- NFR21–NFR22: How measured under scale tests not stated
 
-**Missing Measurement Methods:** 4
-- NFR1 (line 540): 200ms target but no measurement method (p95/p99, device profile)
-- NFR2 (line 541): <100ms target but "mid-range devices" undefined
-- NFR3 (line 542): 3s cold start but "first interactive screen" not defined
-- NFR4 (line 543): 30s target but connection profile undefined
+**Missing Context (who/why):** ~9
+- NFR6–NFR9: Light on why (privacy-sensitive learner, threat model)
+- NFR11–NFR12: Who is affected could be clearer (offline learners, contributors)
+- NFR18–NFR20: Business impact of integration/CDN failures minimal
 
-**NFR Violations Total:** 12
+**NFR Violations Total:** ~20-23 distinct NFR bullets with at least one gap
 
 #### Overall Assessment
 
-**Total Requirements:** 68 (46 FRs + 22 NFRs)
-**Total Violations:** 18 (6 FR + 12 NFR)
+**Total Requirements:** 95 (72 FRs + 23 NFRs)
+**Total Violation Findings:** ~54-57 across categories
+
 **Severity:** Critical (>10 violations)
 
-**Recommendation:** FR quality is strong overall — most follow "[Actor] can [capability]" format and describe testable behaviors. The primary weakness is in NFRs, where concrete metrics exist but lack measurement methods, device/connection profiles, and sometimes fall back to subjective wording. Key improvements:
-1. Define "mid-range device" (e.g., Snapdragon 6xx-series, 4GB RAM)
-2. Define "standard mobile connection" (e.g., 4G LTE, 10Mbps down, 50ms latency)
-3. Replace subjective qualifiers ("gracefully", "clear", "meaningful") with testable behaviors
-4. Add measurement methods to NFR1–NFR5 (tooling, percentile targets)
-5. Define cognitive load weight system for FR15 and interval rules for FR22
+**Key Strengths:**
+- Strong Learner/System actor framing across most FRs
+- NFR1–NFR4, NFR14, NFR16, NFR22 pair criteria with numeric targets
+- NFR14 references WCAG 2.1 AA thresholds — strong accessibility
+- Import and behavior FRs are shaped like acceptance tests
+
+**Recommendation:** The dominant issue is **implementation leakage in FRs** (22 of 34 FR findings). The PRD deliberately blends capability requirements with implementation guidance — a valid stylistic choice for a solo-developer project where the PRD also serves as technical specification. However, for strict BMAD compliance, FRs should describe WHAT, not HOW. NFRs would benefit from explicit measurement methods and replacing subjective qualifiers ("gracefully," "real-time," "meaningful") with testable criteria. Duplicate FR49/FR50 IDs should be renumbered.
 
 ### Traceability Validation
 
 #### Chain Validation
 
-**Executive Summary → Success Criteria:** Intact
-- Vision (all-in-one, free, local-first, community) maps clearly to user, business, and technical success criteria.
-- Minor tension: Executive Summary stresses streak milestone animations as part of the experience, but MVP scopes celebrations to Phase 2. Not a vision break, but a scoping inconsistency.
+**Executive Summary → Success Criteria:** Intact with minor gaps
+- Vision themes (all-in-one, content parity, weakness detection, reinforcement, import, offline, free/OSS) all have corresponding success criteria.
+- Minor gaps: Visual radical mnemonics have delivery milestones but no learner outcome KPI under Success Criteria (outcome measurement appears later under Innovation → Validation Approach). "No equivalent" positioning not tied to a single measurable KPI beyond ratings/DAU/stars.
 
-**Success Criteria → User Journeys:** Intact (with minor gaps)
-- Core learning, mixer, nudge, cognitive load ring, offline, contribution, admin pipeline — all covered by the five journeys.
-- Metric-level KPIs (D30, DAU, GitHub stars, code PRs/month) are program outcomes not directly walkable in journeys — acceptable.
+**Success Criteria → User Journeys:** Gaps identified
+- Well supported: Multi-domain engagement, session completion, streaks, cognitive load ring, "aha" moment, weakness improvement, import experience, time compression screenshots, GitHub feedback (Riyaz), N5 mnemonic production (Riyaz), offline + delta update (Kenji).
+- Unsupported (analytics/aggregate — expected): <100ms review feedback, SQLite <100ms, reasonable DB download size, ~500 DAU, D30 retention %, GitHub stars 200+, 4.0+ store ratings, community recognition, weakness vs FSRS retention comparison, import→continue conversion rate as a story beat.
 
-**User Journeys → Functional Requirements:** Gaps Identified
-- Strong trace for most FRs (FR1–FR26, FR28–FR32, FR34–FR41).
-- FR27 (view community mnemonics): Not illustrated in any journey — Yuki adds a mnemonic but never browses others'.
-- FR33 (contribute AI-generated reading passages): No contributor journey covers this — Sato corrects/edits; Kenji consumes AI passages but doesn't contribute them back.
-- FR42–FR44 (accessibility): Not in any journey's "capabilities revealed" list. Valid cross-cutting requirements but lack journey traceability.
-- Riyaz journey mentions app store management, OTA updates, trusted reviewers, auto-merge threshold — no corresponding FRs (some are post-MVP, some are operational).
+**User Journeys → Functional Requirements:** Gaps identified
+- Strong coverage overall — all MVP journey capabilities have corresponding FRs.
+- **Missing FR:** OTA / Expo Updates — Journey 3 (Riyaz, line 201) and Platform Requirements both reference OTA updates, but no FR exists.
+- **Weak traces:** FR12b (micro-adjustments) not demonstrated in any journey; FR7 (contextual vocab meanings) never illustrated in a journey; FR45-PM (provenance tagging) not reflected in Sato's journey narrative.
+- **Yuki table inconsistency:** Journey Requirements Summary table omits reading passages for Yuki, but FR8b/FR8c are MVP and listed in cross-cutting capabilities (line 251).
+- **Accessibility FRs (FR49/FR50/FR51):** No user journey demonstrates accessibility needs — journey gap for a11y.
 
-**Scope → FR Alignment:** Gaps Identified
-- MVP scope items 1–8 map well to corresponding FRs.
-- "Published to both app stores" (scope #9) has no explicit FR — it's an operational/release requirement implied by business success.
-- OTA updates described in Riyaz journey and platform section but no FR.
+**Scope → FR Alignment:** Gaps identified
+- MVP Feature Set broadly aligns with FRs across all 12 capability clusters.
+- **OTA updates:** In MVP journey (Riyaz) and Platform Requirements but absent from FR list.
+- **Streak milestone animations:** Success Criteria (line 81) implies animations; Phase 2 (line 501) places celebrations post-MVP; FR18 only requires streak visibility — internal inconsistency.
+- **Regeneratable visual mnemonics (Phase 2):** No matching -PM FR despite being scoped.
+- **Post-MVP FRs:** Shadow mode, AI stories, community contribution correctly marked with -PM suffix.
 
 #### Orphan Elements
 
-**Orphan Functional Requirements:** 2 (weak trace)
-- FR27: View community mnemonics — no journey illustrates this capability
-- FR33: Contribute AI-generated reading passages — no contributor journey covers AI passage contribution
+**Orphan Functional Requirements:** 1 clear, 3 weak
+- FR12b: Micro-adjustments — only loosely implied by "smarter adaptation" vision; no journey demonstrates it.
+- FR7: Contextual vocab meanings — objective-backed but not journey-backed (weak trace).
+- FR45-PM: Provenance tagging — Sato journey omits this (weak trace).
+- Accessibility FRs (FR49/FR50/FR51): Not orphans against Domain/Accessibility section, but journey orphans.
 
-**Journey-only, no FR:** FR42–FR44 (accessibility) trace to Domain Requirements and NFRs rather than journeys — acceptable for cross-cutting concerns.
+**Unsupported Success Criteria:** ~9-10 (analytics/aggregate metrics without user journey backing — acceptable as these are measurement targets, not persona flows)
 
-**Unsupported Success Criteria:** 1
-- Streak milestone animations referenced in user success but scoped to post-MVP Phase 2 — internal PRD conflict
+**User Journeys Without Supporting FRs:** 1
+- Riyaz: OTA updates claimed in journey but no FR covers it.
 
-**User Journey Capabilities Without FRs:** 3
-- App store management (Riyaz journey) — no FR
-- OTA updates via Expo (Riyaz journey) — no FR
-- Trusted reviewer designation / auto-merge threshold (Riyaz resolution) — post-MVP per Domain section, but presented as MVP-era narrative
+#### Traceability Issues Summary
 
-#### Traceability Summary
+| # | Issue |
+|---|-------|
+| 1 | Duplicate FR49/FR50 IDs (documentation defect) |
+| 2 | OTA missing FR despite MVP journey + platform scope |
+| 3 | FR12b weak/orphan journey trace |
+| 4 | FR7 weak journey trace |
+| 5 | FR45-PM weak vs Sato journey narrative |
+| 6 | Yuki journey summary table omits reading vs cross-cutting + FR8b/c |
+| 7 | Streak milestone animations: Success vs Phase 2 vs FR18 inconsistency |
+| 8 | Regeneratable mnemonics (Phase 2) has no matching FR |
+| 9 | ~9-10 success criteria items without user journey backing (expected) |
+| 10 | Accessibility FRs without persona journey (3 FRs) |
 
-**Total Traceability Issues:** 8
-**Severity:** Warning
+**Total Traceability Issues:** 10 distinct issue classes
 
-**Recommendation:** Traceability is largely intact — the chain from vision through success criteria, journeys, and FRs is coherent and well-connected. Gaps are documentation consistency issues, not broken product logic. To strengthen:
-1. Add a journey beat for browsing community mnemonics (FR27) and submitting AI passages (FR33), or clarify these as post-MVP
-2. Add an operational/release FR or explicit release criteria for app store publication and OTA
-3. Reconcile Riyaz journey "resolution" (trusted reviewers, auto-merge) with MVP vs. Phase 3 scoping
-4. Align streak milestone animations in Success text with post-MVP Phase 2 designation
-5. Add accessibility (FR42–44) to the Journey Requirements Summary cross-cutting list
+**Severity:** Warning (gaps identified but no major orphan FRs — most issues are weak traces or expected analytics-only criteria)
+
+**Recommendation:** The traceability chain is largely intact with good vision→success→journey→FR alignment. Key actions: (1) Add an FR for OTA/Expo Updates, (2) renumber duplicate FR49/FR50 IDs, (3) resolve the streak animation inconsistency between Success Criteria and Phase 2 scoping, (4) add an FR for regeneratable mnemonics (Phase 2), (5) strengthen FR12b's connection to a user journey or business objective.
 
 ### Implementation Leakage Validation
 
 #### Leakage by Category
 
-**Frontend Frameworks:** 0 violations
+**Databases:** 7 violations
+- FR4 (line 554): "stored in SQLite" — storage mechanism
+- FR46 (line 651): "locally in SQLite on-device" — storage technology
+- NFR2 (line 668): "SQLite query response time" — database technology
+- NFR11 (line 684): "JSON-to-SQLite compilation pipeline" — pipeline technology
+- NFR21 (line 703): "SQLite database structure" — database technology
+- NFR22 (line 704): "Database query performance" — references implementation
+- FR36 (line 631): "JSON source data into an optimized SQLite database" — compilation detail
 
-**Backend Frameworks:** 0 violations
+**Cloud Platforms:** 4 violations
+- FR4b (line 555): "served from Cloudflare R2" — hosting platform
+- FR34 (line 629): "uploading them to Cloudflare R2" — hosting platform
+- FR37b (line 633): "Cloudflare R2" — hosting platform
+- NFR20 (line 699): "Cloudflare R2 image loading" — hosting platform
 
-**Databases:** 2 instances (capability-relevant, not strict violations)
-- FR38 (line 525): "SQLite" — names the database. Capability: "stores all data locally on-device."
-- NFR11 (line 556): "JSON-to-SQLite compilation pipeline" — names both data format and database.
+**Infrastructure / CI/CD:** 3 violations
+- FR35 (line 630): "JSON schema rules via CI (GitHub Actions)" — CI platform
+- FR37 (line 632): "Git LFS" — version control infrastructure
+- NFR11 (line 684): "JSON-to-SQLite compilation pipeline" — build infrastructure
 
-**Cloud Platforms:** 0 violations
+**Libraries / Algorithms:** 5 violations
+- FR6b (line 559): "parser-based" and "Levenshtein" — algorithm names
+- FR8 (line 562): Embeds SQL query syntax (`SELECT … WHERE vocab IN …`)
+- FR10 (line 569): "FSRS" — algorithm name
+- FR13 (line 573): "WanaKana" — library name
+- FR14 (line 574): "Levenshtein distance" and "parser-based conjugation-aware validation" — algorithm detail
 
-**Infrastructure:** 2 instances (build pipeline specifics)
-- FR36 (line 520): "GitHub Actions" — names CI/CD platform
-- FR37 (line 521): "Git LFS" — names artifact distribution mechanism
+**Data Formats / Structures:** 2 violations
+- FR5 (line 556): "stored in a dedicated table" — schema detail
+- FR31 (line 604): Formula `fsrs_score × 0.7 + weakness_score × 0.3` — implementation detail inside FR
 
-**Libraries:** 3 violations
-- FR13 (line 481): "WanaKana" — library name. Capability should be "romaji-to-hiragana conversion without OS keyboard dependency."
-- FR14 (line 482): "Levenshtein distance" — algorithm name. Capability should be "typo detection with differentiated EN/JA behavior."
-- NFR5 (line 544): "WanaKana" — library name repeated in NFR context.
+**Authentication / Protocols:** 3 violations
+- FR42-PM (line 644): "GitHub branch and pull request" — tool-specific mechanism
+- FR43-PM (line 645): "GitHub OAuth" — authentication protocol
+- NFR7 (line 677): "HTTPS" — protocol name (minor; borderline capability-relevant)
 
-**Algorithms / Data Model:** 2 instances (specification decisions)
-- FR10 (line 477): "FSRS" — algorithm name. This is a committed product decision (brainstorming, product brief) that defines scheduling behavior.
-- FR12b (line 480): "static relationship layer" — data-model/implementation terminology.
-
-**Ecosystem (GitHub):** Capability-relevant, not violations
-- FR30, FR31, FR34, FR35: GitHub, GitHub OAuth, GitHub pull requests, GitHub Actions — these define WHAT the contribution pipeline does. GitHub is the chosen ecosystem, not an incidental implementation detail.
-
-**Platform Storage:** Informational
-- NFR6 (line 548): "Keychain on iOS, Android Keystore on Android" — platform-specific secure storage. Borderline: specifies WHERE tokens are stored (implementation) vs. "stored securely using platform-appropriate mechanisms" (capability).
+**External Service Names (capability-relevant — acceptable):**
+- FR22, FR33d-f, FR50: WaniKani/Bunpro/Anki import — these reference external products as capabilities, not implementation. **Not violations.**
+- NFR6 (line 676): "Keychain on iOS, Android Keystore on Android" — platform-appropriate security is capability-relevant. **Borderline; acceptable.**
+- NFR15 (line 691): "TalkBack/VoiceOver" — accessibility platform features. **Acceptable.**
 
 #### Summary
 
-**Total Implementation Leakage Violations:** 5 (FR13 WanaKana, FR14 Levenshtein, FR12b relationship layer, NFR5 WanaKana, NFR6 platform storage names)
-**Capability-relevant terms (not violations):** 7 (FSRS, GitHub ecosystem x4, SQLite x2)
+**Total Implementation Leakage Violations:** 24 (FRs: 17, NFRs: 7)
 
-**Severity:** Warning (2–5 violations)
+**Severity:** Critical (>5 violations)
 
-**Recommendation:** Some implementation leakage detected, primarily library and algorithm names in FRs. The GitHub ecosystem references and FSRS are defensible as committed specification decisions that define product behavior. To improve:
-1. FR13: Replace "WanaKana" with "embedded romaji-to-hiragana conversion" (move library to architecture)
-2. FR14: Replace "Levenshtein distance" with "fuzzy typo detection" (move algorithm to architecture)
-3. FR12b: Replace "static relationship layer" with capability language (e.g., "maintains cross-content-type connections")
-4. NFR5: Remove WanaKana name, reference the capability
-5. NFR6: Consider "platform-appropriate secure storage" without naming Keychain/Keystore
+**Recommendation:** This PRD has significant implementation leakage throughout FRs and NFRs. Technology names (SQLite, Cloudflare R2, GitHub Actions, Git LFS, FSRS, WanaKana, Levenshtein), algorithm formulas, SQL syntax, and CI/CD platform details appear directly in requirements. For strict BMAD compliance, these should be rewritten as capability statements (WHAT) with implementation details moved to Architecture.
 
-**Note:** FSRS, GitHub, and SQLite are product-defining technology choices documented in brainstorming and product brief. Their presence in FRs is a conscious specification decision, not accidental leakage. Architecture will formalize these choices.
+**Contextual note:** This PRD serves a solo-developer project where the PRD intentionally doubles as technical specification. The implementation details are accurate and useful for downstream development. The leakage is a **stylistic choice** rather than an oversight — the author deliberately embedded implementation guidance to create a self-contained document. For a larger team or formal stakeholder review, these details should be separated into an Architecture document.
 
 ### Domain Compliance Validation
 
 **Domain:** EdTech (language learning)
-**Complexity:** Medium
+**Complexity:** Medium (per domain-complexity.csv)
 
 #### Required Special Sections (EdTech)
 
-**Privacy Compliance:** Present (Adequate)
-- PRD Domain-Specific Requirements > Privacy & Data covers: no accounts required, no personal data collected, all data local, secure storage for OAuth/API keys, no intermediary server.
-- Minor gap: No explicit mention of COPPA considerations. Given Duolingo data showing 70% of Japanese learners aged 13–22, minors are a likely user segment. The local-only, no-data-collection architecture inherently addresses COPPA concerns, but an explicit acknowledgment would strengthen the section.
+**Privacy Compliance (COPPA/FERPA):** Present / Partially Adequate
+- PRD "Privacy & Data" section (lines 278-283) thoroughly documents local-only data practices, no accounts, no personal data collection, secure API key storage.
+- COPPA and FERPA are **not mentioned by name**. Given this is a self-directed learning app (not school-integrated, no student records, no minors-specific data collection), strict COPPA/FERPA compliance may not be legally required.
+- **Gap:** If targeting users under 13 (Duolingo data shows 70% of Japanese learners are 13-22), COPPA could be relevant. The PRD should explicitly state the target age range or document why COPPA does not apply.
 
-**Content Guidelines:** Present (Adequate)
-- Content Quality & Moderation section covers: admin-reviewed merges (MVP), JSON schema validation in CI, post-MVP threshold-based auto-merge, disputed-flag system, trusted reviewer tier.
-- Risk of pedagogically incorrect content addressed with layered mitigations.
+**Content Guidelines:** Present / Adequate ✓
+- "Content Quality & Moderation" section (lines 256-265) covers MVP (creator-authored, schema validation) and post-MVP (admin review, threshold-based auto-merge, trusted reviewer tier).
+- Risk mitigation for pedagogically incorrect content documented.
 
-**Accessibility Features:** Present (Adequate)
-- FR42–FR44: Screen reader compatibility, color contrast, scalable text, accessibility keyboards.
-- NFR14–NFR17: WCAG 2.1 AA contrast ratios, screen reader navigation, 200% text scaling, accessibility input methods.
+**Accessibility Features:** Present / Adequate ✓
+- Domain-Specific Requirements → Accessibility (lines 269-274): screen reader support, color contrast, scalable text, accessibility keyboards.
+- NFR14-NFR17: WCAG 2.1 AA compliance, TalkBack/VoiceOver, 200% text scaling, gesture-free input.
 
-**Curriculum Alignment:** Present (Adequate)
-- All content organized by JLPT levels (N5→N1) — internationally recognized Japanese Language Proficiency Test framework.
-- Explicitly replaces proprietary level systems with a universally understood progression model.
+**Curriculum Alignment:** Present / Adequate ✓
+- JLPT alignment documented throughout: "All content organized by JLPT levels (N5→N1) — the internationally recognized Japanese Language Proficiency Test framework" (lines 287-288).
+- Curriculum Standards section explicitly addresses this.
 
 #### Compliance Matrix
 
 | Requirement | Status | Notes |
-|---|---|---|
-| Privacy compliance (COPPA/FERPA) | Partial | Architecture is inherently compliant (local-only, no data collection), but no explicit COPPA acknowledgment for minor users |
-| Content moderation | Met | Multi-layered: admin review → schema validation → community review → dispute flags |
-| Accessibility | Met | FR42–44 + NFR14–17 provide comprehensive coverage |
-| Curriculum standards | Met | JLPT alignment explicitly documented |
-| Age verification | N/A | No accounts, no personal data — age verification not applicable given architecture |
+|-------------|--------|-------|
+| Privacy compliance | Partial | Local-only data model is strong; COPPA/FERPA not explicitly addressed or ruled out |
+| Content guidelines | Met | Creator-authored MVP, schema validation, admin review pipeline |
+| Accessibility features | Met | WCAG 2.1 AA, screen readers, scalable text, accessibility input |
+| Curriculum alignment | Met | JLPT N5-N1 alignment throughout |
 
 #### Summary
 
-**Required Sections Present:** 4/4
-**Compliance Gaps:** 1 (minor — implicit COPPA compliance could be made explicit)
-**Severity:** Pass
+**Required Sections Present:** 4/4 (1 partially adequate)
+**Compliance Gaps:** 1 (COPPA/FERPA explicit assessment)
 
-**Recommendation:** All required EdTech domain compliance sections are present and adequately documented. The local-first, no-data-collection architecture inherently addresses most privacy concerns. Consider adding one sentence acknowledging COPPA applicability given likely minor user demographics — the architecture already complies, but explicit documentation strengthens the PRD for downstream review.
+**Severity:** Warning (one partially documented area)
+
+**Recommendation:** Add a brief statement in the Privacy & Data section explicitly addressing COPPA applicability — either documenting the target age range (e.g., "app targets users 13+") or explaining why COPPA does not apply (no user accounts, no personal data collection, no age-gated content).
 
 ### Project-Type Compliance Validation
 
@@ -330,28 +372,28 @@ overallStatus: Warning
 
 #### Required Sections
 
-**Platform Requirements:** Present ✓
-- Framework, platforms, min versions (Android 10/iOS 15), build pipeline (EAS), OTA (Expo Updates), state management all documented in table format.
+**Platform Requirements (`platform_reqs`):** Present ✓
+Comprehensive table covering framework (React Native / Expo), platforms (Android/iOS MVP, Desktop post-MVP), minimum OS versions, build pipeline (EAS), OTA updates, state management.
 
-**Device Permissions:** Present ✓
-- Internet, Storage, Notifications, Camera, Microphone — each with purpose and MVP/Post-MVP tagging.
+**Device Permissions (`device_permissions`):** Present ✓
+Table covering Internet, Storage, Notifications (MVP) and Camera, Microphone (Post-MVP) with purpose and phase for each.
 
-**Offline Mode:** Present ✓
-- Comprehensive section: fully-offline capabilities list, network-required features, graceful degradation rules.
+**Offline Mode (`offline_mode`):** Present ✓
+Thorough section documenting fully offline features, network-required features, and graceful degradation behavior.
 
-**Push Notification Strategy:** Present ✓
-- Notification types (daily review, streak-at-risk, streak milestone) with triggers, content, and frequency. Principles: opt-in, max one/day, no marketing.
+**Push Strategy (`push_strategy`):** Present ✓
+Table covering daily review reminder, streak-at-risk, and streak milestone notifications with triggers, content, frequency, and design principles (opt-in, max 1/day, no marketing).
 
-**Store Compliance:** Present ✓
-- Google Play Store and Apple App Store subsections. Covers build pipeline, privacy policy, content rating, ATT, privacy nutrition labels, BYO-key review considerations.
+**Store Compliance (`store_compliance`):** Present ✓
+Covers Google Play Store (AAB, privacy policy, content rating, no IAP) and Apple App Store (IPA, developer program, ATT, privacy labels, review considerations).
 
 #### Excluded Sections (Should Not Be Present)
 
-**Desktop Features:** Absent ✓
-- Desktop correctly scoped to post-MVP Phase 3. No dedicated desktop section in MVP requirements.
+**Desktop Features (`desktop_features`):** Absent ✓
+Desktop mentioned only as post-MVP Phase 2 target. No dedicated desktop section in current PRD.
 
-**CLI Commands:** Absent ✓
-- No CLI sections present.
+**CLI Commands (`cli_commands`):** Absent ✓
+No CLI command sections present.
 
 #### Compliance Summary
 
@@ -361,158 +403,102 @@ overallStatus: Warning
 
 **Severity:** Pass
 
-**Recommendation:** All required sections for mobile_app project type are present and well-documented. No excluded sections found. The Mobile App Specific Requirements section is comprehensive and covers platform, permissions, offline, notifications, store compliance, and implementation considerations.
+**Recommendation:** All required sections for mobile_app project type are present and thoroughly documented. No excluded sections found. The mobile-specific requirements are among the strongest sections of this PRD.
 
 ### SMART Requirements Validation
 
-**Total Functional Requirements:** 46
+**Total Functional Requirements:** 72
 
 #### Scoring Summary
 
-**All scores ≥ 3:** 65.2% (30/46)
-**All scores ≥ 4:** 17.4% (8/46)
-**Overall Average Score:** 3.52/5.0
+**All scores ≥ 3:** 88.9% (64/72)
+**All scores ≥ 4:** 66.7% (48/72)
+**Overall Average Score:** 4.51/5.0
 
-#### Scoring Table
+#### Flagged FRs (score < 3 in any category)
 
-| FR# | S | M | A | R | T | Avg | Flag |
-|-----|---|---|---|---|---|-----|------|
-| FR1 | 4 | 3 | 4 | 5 | 4 | 4.0 | |
-| FR2 | 4 | 3 | 4 | 5 | 4 | 4.0 | |
-| FR3 | 4 | 4 | 4 | 5 | 4 | 4.2 | |
-| FR4 | 4 | 3 | 4 | 4 | 4 | 3.8 | |
-| FR5 | 4 | 3 | 4 | 5 | 4 | 4.0 | |
-| FR6 | 5 | 4 | 5 | 5 | 4 | 4.6 | |
-| FR7 | 3 | 2 | 3 | 4 | 3 | 3.0 | X |
-| FR8 | 3 | 2 | 3 | 5 | 4 | 3.4 | X |
-| FR9 | 4 | 4 | 4 | 5 | 5 | 4.4 | |
-| FR10 | 5 | 4 | 4 | 5 | 4 | 4.4 | |
-| FR11 | 2 | 2 | 3 | 5 | 4 | 3.2 | X |
-| FR12 | 3 | 2 | 3 | 5 | 4 | 3.4 | X |
-| FR12b | 4 | 3 | 4 | 5 | 4 | 4.0 | |
-| FR13 | 5 | 4 | 4 | 4 | 4 | 4.2 | |
-| FR14 | 4 | 2 | 4 | 4 | 4 | 3.6 | X |
-| FR15 | 3 | 2 | 3 | 5 | 4 | 3.4 | X |
-| FR16 | 2 | 1 | 3 | 5 | 3 | 2.8 | X |
-| FR17 | 2 | 1 | 2 | 4 | 3 | 2.4 | X |
-| FR18 | 4 | 4 | 4 | 4 | 4 | 4.0 | |
-| FR19 | 4 | 3 | 4 | 4 | 3 | 3.6 | |
-| FR20 | 4 | 3 | 4 | 4 | 3 | 3.6 | |
-| FR21 | 4 | 4 | 4 | 5 | 4 | 4.2 | |
-| FR22 | 4 | 3 | 4 | 5 | 4 | 4.0 | |
-| FR23 | 3 | 2 | 3 | 5 | 4 | 3.4 | X |
-| FR24 | 4 | 3 | 4 | 4 | 4 | 3.8 | |
-| FR25 | 5 | 4 | 4 | 5 | 4 | 4.4 | |
-| FR26 | 4 | 3 | 4 | 4 | 3 | 3.6 | |
-| FR27 | 3 | 3 | 3 | 4 | 3 | 3.2 | |
-| FR28 | 4 | 3 | 4 | 4 | 3 | 3.6 | |
-| FR29 | 3 | 2 | 3 | 4 | 3 | 2.8 | X |
-| FR30 | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR31 | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR32 | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR33 | 2 | 1 | 2 | 2 | 2 | 1.8 | X |
-| FR33b | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR34 | 3 | 2 | 2 | 3 | 2 | 2.4 | X |
-| FR35 | 4 | 4 | 4 | 4 | 3 | 3.8 | |
-| FR36 | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR37 | 4 | 3 | 3 | 4 | 3 | 3.4 | |
-| FR38 | 5 | 3 | 4 | 5 | 4 | 4.2 | |
-| FR39 | 4 | 3 | 4 | 5 | 5 | 4.2 | |
-| FR40 | 3 | 2 | 3 | 4 | 4 | 3.2 | X |
-| FR41 | 3 | 3 | 4 | 4 | 3 | 3.4 | |
-| FR42 | 3 | 2 | 3 | 4 | 3 | 3.0 | X |
-| FR43 | 3 | 2 | 3 | 3 | 2 | 2.6 | X |
-| FR44 | 3 | 2 | 3 | 3 | 2 | 2.6 | X |
+| FR ID | S | M | A | R | T | Avg | Issue |
+|-------|---|---|---|---|---|-----|-------|
+| FR6b | 5 | 4 | **2** | 5 | 5 | 4.20 | Parser-based conjugation validation is ambitious for solo 3-month MVP |
+| FR7 | 4 | **2** | 4 | 5 | 5 | 4.00 | "Contextual meanings" — no testable definition of what constitutes adequate context |
+| FR12b | 3 | **2** | 3 | 5 | 4 | 3.40 | Micro-adjustments vague — no quantitative boost/cap/decay rules |
+| FR16 | 4 | **2** | 4 | 5 | 5 | 4.00 | "Done enough" — threshold not objectively defined |
+| FR17 | **2** | **2** | 4 | 5 | 5 | 3.60 | "Adapts as learner grows stronger" — no observable adaptation signals or bounds |
+| FR33c | 4 | **2** | 5 | 5 | 5 | 4.20 | "Conservative" estimate — no measurable bound on what conservative means |
+| FR33e | 4 | 3 | **2** | 5 | 5 | 3.80 | Bunpro API/export availability unknown — attainability risk |
+| FR42-PM | 4 | **2** | **2** | 5 | 5 | 3.60 | Invisible GitHub PR automation from mobile — measurability and attainability challenges |
 
-**Legend:** 1=Poor, 3=Acceptable, 5=Excellent | **Flag:** X = Score <3 in one or more categories
+#### Improvement Suggestions
 
-#### Improvement Suggestions (Flagged FRs)
+**FR6b:** Define staged coverage — which verb forms MUST pass parser-backed checks at MVP vs. explicit Levenshtein fallback. Tie each pattern to automated golden tests.
 
-**FR7** (M:2) — "Tailored to current knowledge level" lacks operational rules. Define generation inputs (JLPT band, weak items) and a measurable quality bar (e.g., ≥80% of tokens from user's known set).
+**FR7:** Replace "contextual meanings" with a checklist: minimum gloss fields (register, constraints, nuance), JLPT-aligned sense list, reviewer sign-off.
 
-**FR8** (M:2) — "Prioritize" has no defined ordering. Specify: e.g., "prefer examples where ≥80% of content words are in FSRS known/mature set."
+**FR12b:** Specify the prioritization rule quantitatively — max boost cap, decay window after review, deterministic tie-break. Add QA cases comparing expected queue ordering.
 
-**FR11** (S:2, M:2) — "Intelligently" is not a spec. Replace with concrete mixer policy (FSRS-urgency first, nudge-boosted weights, caps per domain).
+**FR16:** Bind "enough for today" to observable rules — cognitive load meter thresholds, copy variants, dismissal path, optional override.
 
-**FR12** (M:2) — Nudge effect on scheduling not quantified. State observable behavior: e.g., "nudge updates related item interval by +X%, bounded by Y."
+**FR17:** Declare adaptation signals (recent completion streak, overload dismissals, user intensity setting) and bounded adjustment policy (floors/ceilings) for objective testing.
 
-**FR14** (M:2) — "Minor typos" and "close" need thresholds. Document Levenshtein distance thresholds by answer length and script.
+**FR33c:** Publish a baseline model for per-domain overhead with documented assumptions and versioned "conservative multiplier" formulas.
 
-**FR15** (M:2) — "Heavier items cost more" has no cost model. Define a cost table (new kanji: N points, review: M points) and daily ring capacity.
+**FR33e:** Time-box Bunpro API discovery; write a fallback contract ("if no API/export, support manual mark-as-known only") so the FR remains attainable.
 
-**FR16** (S:2, M:1) — "Done enough" is vague. Tie to FR15: "When daily cognitive load ≥ threshold, show End Session CTA."
-
-**FR17** (S:2, M:1, A:2) — Adaptation rule unspecified and risky for MVP. Specify adaptation inputs or defer to post-MVP with a static threshold for v1.
-
-**FR23** (M:2) — "Bulk" scope unclear for hundreds/thousands of items. Add limits, progress indication, and recovery if interrupted.
-
-**FR29** (M:2) — "Propose edits" is broad. List editable fields per content type and validation rules; reference FR35.
-
-**FR33** (S:2, M:1, A:2, R:2, T:2) — No governance, quality bar, or licensing for AI passage contribution. Narrow scope and pair with FR33b workflow.
-
-**FR34** (M:2, A:2, T:2) — Merging is a GitHub process, not a unique app feature. Clarify as ops requirement or add in-app review queue.
-
-**FR40** (M:2) — "On launch" vs Wi-Fi gating unclear. State trigger (cold start, resume, manual), network policy, and user-visible state.
-
-**FR42** (M:2) — "Supports screen readers" is imprecise. Decompose: focus order, labels on interactive elements, live regions for review feedback.
-
-**FR43** (M:2, T:2) — "Sufficient" duplicates NFR14. Reference WCAG ratios directly or remove duplication.
-
-**FR44** (M:2, T:2) — "Scalable text" is imprecise. Align with NFR16 (200% scaling) or specify dynamic type behavior.
+**FR42-PM:** Split capabilities: authenticated hosted integration vs. client-generated PR automation. Minimally scope post-MVP to guided export or contribution API backend.
 
 #### Overall Assessment
 
-**Severity:** Critical (34.8% of FRs flagged — threshold is >30%)
+**Severity:** Pass (< 10% flagged = 11.1%)
 
-**Recommendation:** The majority of FRs (65%) meet acceptable SMART quality, and top performers (FR6, FR9, FR10, FR25) are exemplary. The flagged FRs cluster in three areas: (1) the cognitive load system (FR11, FR12, FR15–17) which lacks quantified rules, (2) the contribution pipeline (FR29, FR33, FR34) which needs scope boundaries, and (3) accessibility (FR42–44) which duplicates NFRs without adding FR-specific testability. Addressing the cognitive load cluster and contribution scope would bring the pass rate above 80%.
+**Recommendation:** FR quality is strong overall — 88.9% of requirements meet the acceptable threshold (≥3 on all SMART dimensions) and the portfolio average is 4.51/5.0. The 8 flagged FRs cluster around two themes: (1) measurability gaps in adaptive/cognitive features (FR12b, FR16, FR17, FR33c) where experiential outcomes need quantitative bounds, and (2) attainability risks for complex technical capabilities (FR6b parser, FR33e Bunpro dependency, FR42-PM GitHub automation). Addressing these 8 FRs would bring the portfolio to near-complete SMART compliance.
 
 ### Holistic Quality Assessment
 
 #### Document Flow & Coherence
 
-**Assessment:** Good
+**Assessment:** Excellent
 
 **Strengths:**
-- The PRD tells a coherent story from vision through to requirements. The Executive Summary is dense and compelling — a reader understands the product thesis within the first paragraph.
-- User journeys are exceptionally well-written. Each journey reads as a narrative with rising action, climax, and resolution, while systematically revealing product capabilities. The Yuki journey is particularly effective as an onboarding walkthrough.
-- Consistent voice throughout — direct, confident, zero filler. The writing quality is notably high for a PRD.
-- Logical section ordering: vision → classification → success → journeys → domain → innovation → platform → scope → FRs → NFRs. Each section builds on the previous.
-- The Innovation section stands out — it doesn't just list features, it explains why each matters, how to validate it, and what the fallback is if it fails.
+- Exceptional narrative arc from vision → user journeys → requirements → implementation. The reader understands WHY before WHAT before HOW.
+- User journeys are vivid and cinematic — Yuki, Mika, Kenji, Riyaz, and Sato feel like real people. The "Opening scene → Rising action → Climax → Resolution" structure makes the journeys memorable and emotionally resonant.
+- The "What Makes This Special" section is masterfully structured — each differentiator is stated, explained, and defended with a concrete mechanism. No handwaving.
+- Consistent voice throughout — direct, opinionated, confident. The author's conviction ("If content quality doesn't match the best-in-class tools, nothing else matters") permeates the document.
+- The Innovation section goes beyond listing features — it explains WHY each innovation matters, provides technical implementation hints, and includes risk mitigation with fallbacks.
+- Transitions between sections are natural. Executive Summary → Classification → Success → Journeys → Domain → Innovation → Platform → Scoping → FRs → NFRs follows a logical escalation from strategic to tactical.
 
 **Areas for Improvement:**
-- The Journey Requirements Summary table (line 216) is slightly incomplete vs. the journey prose — some capabilities mentioned in narratives don't appear in the summary table.
-- Riyaz's admin journey (Journey 4) blurs MVP and future state in its "resolution" section (trusted reviewers, auto-merge scaling) without clear phase tagging.
-- Streak milestone animations appear in user success criteria but are scoped to post-MVP Phase 2 — a minor internal inconsistency.
+- The document is long (705 lines). Some content is repeated across Executive Summary, What Makes This Special, Innovation, MVP Feature Set, and FRs (e.g., weakness detection formula appears 3+ times). Consolidation would sharpen the document.
+- The Implementation Considerations subsection (lines 440-452) blurs the line between PRD and Architecture. While useful for a solo developer, it creates a section that doesn't fit the PRD's role in the BMAD chain.
 
 #### Dual Audience Effectiveness
 
 **For Humans:**
-- Executive-friendly: Strong. The Executive Summary, "What Makes This Special" subsection, and Success Criteria give executives a complete picture in under 3 minutes of reading.
-- Developer clarity: Strong. FRs are numbered and organized by domain. Platform requirements, offline mode, and implementation considerations provide technical context.
-- Designer clarity: Strong. User journeys describe detailed interaction flows, the cognitive load ring concept is well-articulated, and onboarding flows are clear.
-- Stakeholder decision-making: Strong. Risk mitigation tables, competitive positioning, and phased scoping enable informed prioritization.
+- Executive-friendly: Excellent — the Executive Summary alone tells the complete story. A stakeholder could read just the first page and understand the vision, differentiation, and value proposition.
+- Developer clarity: Excellent — FRs are specific enough to build from. Implementation Considerations provide actionable technical guidance. The MVP Feature Set creates a clear "build this" contract.
+- Designer clarity: Good — User journeys provide rich design context (cognitive load ring, time compression display, visible reinforcement UI). However, there is no explicit UX section with wireframe guidance, screen flow, or interaction patterns. Designers would need to infer screen architecture from the journeys and FRs.
+- Stakeholder decision-making: Excellent — Risk tables, phased scoping, and explicit "what's in vs. out" decisions enable informed prioritization.
 
 **For LLMs:**
-- Machine-readable structure: Excellent. Clean ## L2 headers, consistent formatting, tables for structured data, numbered FRs/NFRs.
-- UX readiness: Good. User journeys provide rich context for UI design. The cognitive load ring, review mixer, and onboarding flows are described at the right abstraction level. Minor gap: no wireframe references or screen inventory.
-- Architecture readiness: Good. Technology choices documented, offline mode specified, data pipeline described, platform requirements tabled. NFRs provide performance targets.
-- Epic/Story readiness: Good. FRs are granular enough for story decomposition. The MVP scope section explicitly maps capabilities. Some FRs (FR11, FR12, FR15–17) need more specificity before an LLM can confidently generate acceptance criteria.
+- Machine-readable structure: Excellent — consistent ## Level 2 headers, numbered FRs/NFRs, tables for structured data, frontmatter metadata. An LLM can reliably extract any section.
+- UX readiness: Good — sufficient for generating UX designs, but would benefit from explicit screen lists, navigation model, and interaction states.
+- Architecture readiness: Excellent — technology choices stated (React Native, Expo, SQLite, FSRS, Cloudflare R2, Git LFS), data model hinted (dependency graph, per-item stats), performance targets quantified (<100ms). An LLM architect has everything needed.
+- Epic/Story readiness: Excellent — FRs are granular enough to map 1:1 or 1:few to user stories. Phase labels (MVP vs -PM) enable sprint planning. Journey → FR traceability enables epic grouping.
 
 **Dual Audience Score:** 4/5
 
 #### BMAD PRD Principles Compliance
 
 | Principle | Status | Notes |
-|---|---|---|
+|-----------|--------|-------|
 | Information Density | Met | Zero filler violations. Every sentence carries weight. |
-| Measurability | Partial | FRs mostly measurable; NFRs have concrete metrics but weak measurement methods. Cognitive load cluster (FR11–17) lacks quantified rules. |
-| Traceability | Partial | Chain largely intact. Minor gaps: FR27, FR33 weak journey trace; accessibility FRs not in journey summaries. |
-| Domain Awareness | Met | EdTech requirements covered: privacy, content moderation, accessibility, JLPT curriculum alignment. |
-| Zero Anti-Patterns | Met | No conversational filler, wordy phrases, or redundant expressions detected. |
-| Dual Audience | Met | Clean markdown structure, consistent formatting, human-readable prose with LLM-parseable sections. |
-| Markdown Format | Met | Proper ## headers, tables, consistent formatting throughout. |
+| Measurability | Partial | Most FRs/NFRs are testable; 8 FRs and ~11 NFRs have measurability gaps |
+| Traceability | Partial | Chain largely intact; missing OTA FR, duplicate IDs, a few weak traces |
+| Domain Awareness | Met | EdTech concerns covered (privacy, content quality, accessibility, JLPT alignment) |
+| Zero Anti-Patterns | Met | No conversational filler, wordy phrases, or redundant expressions |
+| Dual Audience | Met | Strong for both human readers and LLM consumption |
+| Markdown Format | Met | Clean markdown, consistent headers, proper tables, well-formatted frontmatter |
 
-**Principles Met:** 5/7 (2 Partial)
+**Principles Met:** 5/7 fully, 2/7 partially
 
 #### Overall Quality Rating
 
@@ -527,20 +513,20 @@ overallStatus: Warning
 
 #### Top 3 Improvements
 
-1. **Quantify the cognitive load system (FR11, FR12, FR15–17)**
-   The cognitive load ring is the product's most innovative differentiator, but its FRs are the weakest in the document. Define the cost model (new kanji = N points, mature review = M points), daily capacity, nudge weights, and adaptation rules. Without these, downstream agents cannot implement or test the system. This single cluster accounts for 5 of the 16 flagged FRs.
+1. **Separate implementation details from capability requirements**
+   The PRD's biggest BMAD deviation is embedding technology names, algorithms, SQL syntax, and infrastructure details directly in FRs and NFRs (22+ instances). Extracting these into a dedicated "Implementation Considerations" section (or deferring to Architecture) would make FRs/NFRs technology-agnostic and focused on WHAT, not HOW. This is the single change that would most improve BMAD compliance.
 
-2. **Strengthen NFR measurement methods and definitions**
-   NFR metrics are concrete (200ms, 100ms, 3s, 30s) but lack measurement methodology (p95/p99, device profile definition, connection profile, tooling). Define "mid-range device" and "standard mobile connection" as reusable terms. Replace subjective qualifiers ("gracefully", "clear", "meaningful") with testable behaviors.
+2. **Fix duplicate FR IDs and strengthen measurability of adaptive features**
+   Renumber FR49/FR50 duplicates to restore unique traceability. For FR12b, FR16, FR17, and FR33c — the cognitive/adaptive features — add quantitative bounds (thresholds, caps, decay rules) so these can be acceptance-tested rather than subjectively evaluated. Add the missing OTA FR.
 
-3. **Resolve accessibility FR/NFR duplication and scope the contribution pipeline**
-   FR42–44 duplicate NFR14–17 without adding testable capability. Either merge them or make the FRs specific (focus order, live regions, labeled elements). For the contribution pipeline, narrow FR29/FR33 scope boundaries — list which fields are editable, what validation rules apply, and whether AI passage contribution is MVP or post-MVP.
+3. **Add explicit COPPA/age-range statement and UX screen architecture**
+   Two focused additions: (a) One sentence in Privacy & Data stating the target age range or why COPPA doesn't apply (closes the domain compliance gap). (b) A brief screen list or navigation model in the PRD to bridge the gap between user journeys and UX design — helping designers and LLMs generate screen flows without inference.
 
 #### Summary
 
-**This PRD is:** A strong, well-written product requirements document that clearly communicates a compelling vision, thoroughly documents user journeys, and provides a solid foundation for downstream UX, architecture, and story work — with targeted weaknesses in cognitive load system specification and NFR measurement methodology that should be addressed before implementation begins.
+**This PRD is:** A strong, opinionated, well-structured product document that clearly communicates a compelling vision, provides rich user context through cinematic journeys, and delivers actionable requirements — with its main weakness being intentional implementation leakage that blurs the PRD/Architecture boundary.
 
-**To make it great:** Focus on the top 3 improvements above — particularly quantifying the cognitive load system, which is both the product's core differentiator and its least-specified feature cluster.
+**To make it great:** Focus on the top 3 improvements above — particularly separating implementation details from capability statements and strengthening measurability of adaptive features.
 
 ### Completeness Validation
 
@@ -552,67 +538,93 @@ No template variables remaining ✓
 #### Content Completeness by Section
 
 **Executive Summary:** Complete ✓
-- Vision statement, differentiator, target users, "What Makes This Special" subsection all present with high density.
+Vision, differentiators, target users, "What Makes This Special" — all present with high information density.
 
 **Project Classification:** Complete ✓
-- Project type, domain, complexity, context in table format.
+Table with project type, domain, complexity, project context.
 
 **Success Criteria:** Complete ✓
-- User success, business success, technical success, measurable outcomes KPI table, leading indicators all present.
+User success, business success, technical success, measurable outcomes table (10 KPIs), leading indicators — all present.
 
 **User Journeys:** Complete ✓
-- 5 journeys covering 4 primary personas + contributor + admin. Each with narrative arc and capabilities revealed. Cross-cutting capabilities summarized.
+5 journeys (Yuki, Mika, Riyaz, Sato, Kenji) with narrative arc, capabilities revealed, requirements summary table, and cross-cutting capabilities list.
 
 **Domain-Specific Requirements:** Complete ✓
-- Content quality & moderation, accessibility, privacy & data, curriculum standards.
+Content quality & moderation, accessibility, privacy & data, curriculum standards.
 
 **Innovation & Novel Patterns:** Complete ✓
-- 4 innovation areas with market context, validation approach, and risk mitigation table.
+8 innovations, market context, validation approach, risk mitigation table.
 
 **Mobile App Specific Requirements:** Complete ✓
-- Platform requirements, device permissions, offline mode, push notifications, store compliance, implementation considerations.
+Platform requirements, device permissions, offline mode, push notifications, store compliance, implementation considerations.
 
 **Project Scoping & Phased Development:** Complete ✓
-- MVP strategy, MVP feature set (9 capabilities), post-MVP phases (2 and 3), risk mitigation (technical, market, resource).
+MVP strategy, MVP feature set (12 capability clusters), post-MVP Phase 2 and Phase 3, risk mitigation (technical, market, resource).
 
 **Functional Requirements:** Complete ✓
-- 46 FRs (FR1–FR44 + FR12b + FR33b) organized by domain (Learning, SRS, Cognitive Load, Onboarding, Personal Content, Community, Admin, Data/Offline, Accessibility).
+72 FRs across 11 subsections. All MVP capabilities covered. Post-MVP FRs marked with -PM suffix.
 
 **Non-Functional Requirements:** Complete ✓
-- 22 NFRs (NFR1–NFR22) organized by category (Performance, Security, Data Integrity, Accessibility, Integration, Content Scalability).
+23 NFRs across 5 categories (Performance, Security, Data Integrity, Accessibility, Integration, Content Scalability).
 
 #### Section-Specific Completeness
 
-**Success Criteria Measurability:** Some measurable
-- KPI table has specific targets with measurement methods. User success criteria are qualitative ("aha moment" description) — appropriate for user experience goals. Technical success has specific metrics.
+**Success Criteria Measurability:** Most measurable
+KPI table has specific targets and measurement methods. Some leading indicators are qualitative signals rather than numeric targets (acceptable for leading indicators).
 
-**User Journeys Coverage:** Yes — covers all user types
-- Fresh beginner (Yuki), switcher (Mika), contributor (Sato), admin (Riyaz), offline user (Kenji). All 4 primary personas from product brief represented plus secondary users.
+**User Journeys Coverage:** Yes — covers all user types ✓
+All 4 primary personas from the Product Brief are represented. Admin and community contributor journeys also present. Cross-cutting capabilities summarized.
 
-**FRs Cover MVP Scope:** Partial
-- All 9 MVP capability areas have corresponding FRs. Gap: app store publication and OTA updates lack explicit FRs (operational requirements).
+**FRs Cover MVP Scope:** Yes — with minor gap ✓
+All 12 MVP capability clusters have corresponding FRs. One gap: OTA updates (mentioned in journey and platform requirements but no FR).
 
 **NFRs Have Specific Criteria:** Some
-- Performance NFRs (1–5) have concrete metrics. Security (6–9) and data integrity (10–13) have clear criteria. Accessibility (14–17) has WCAG standards. Integration (18–20) uses subjective wording ("gracefully", "clear").
+NFR1-NFR4 have numeric targets. NFR14 references WCAG 2.1 AA. Several NFRs use qualitative terms ("gracefully," "accurately," "meaningful") without numeric bounds (documented in Measurability Validation).
 
 #### Frontmatter Completeness
 
-**stepsCompleted:** Present ✓ (12 steps tracked)
-**classification:** Present ✓ (projectType: mobile_app, domain: edtech, complexity: medium, projectContext: greenfield)
+**stepsCompleted:** Present ✓ (12 steps listed)
+**classification:** Present ✓ (domain: edtech, projectType: mobile_app, complexity: medium, projectContext: greenfield)
 **inputDocuments:** Present ✓ (3 documents tracked)
-**date:** Present ✓ (in document body — 2026-04-19; frontmatter uses workflowType instead)
+**date:** Present ✓ (in document header, not frontmatter — 2026-04-19)
 
 **Frontmatter Completeness:** 4/4
 
 #### Completeness Summary
 
-**Overall Completeness:** 100% (10/10 sections present and populated)
+**Overall Completeness:** 100% (10/10 sections complete)
 
 **Critical Gaps:** 0
 **Minor Gaps:** 2
-- App store publication / OTA as operational FRs (noted in traceability)
-- Some NFRs use subjective wording without testable criteria (noted in measurability)
+- Missing FR for OTA updates (capability mentioned in journey and platform requirements)
+- Duplicate FR49/FR50 IDs (documentation defect, not missing content)
 
 **Severity:** Pass
 
-**Recommendation:** PRD is complete with all required sections and content present. All frontmatter fields populated. No template variables remaining. Minor gaps (operational FRs for store/OTA, subjective NFR wording) were identified in earlier validation steps and do not affect document completeness.
+**Recommendation:** PRD is complete with all required sections and content present. The two minor gaps (missing OTA FR and duplicate FR IDs) are documentation-level fixes that don't affect completeness of the product vision or requirements coverage.
+
+---
+
+## Post-Validation Fixes Applied
+
+**Date:** 2026-05-02
+
+The following simple fixes were applied directly to the PRD after validation:
+
+### Fix 1: Duplicate FR49/FR50 IDs Renumbered
+- **Before:** FR49 and FR50 appeared twice — once under "Data & Offline" and once under "Accessibility"
+- **After:** Accessibility FRs renumbered to FR52 (screen readers), FR53 (color contrast), FR54 (scalable text). FR49-data label simplified to FR49 since collision is resolved.
+- **Resolves:** Traceability issue #1 (duplicate IDs)
+
+### Fix 2: Missing OTA FR Added
+- **Added:** FR51 — "The app receives over-the-air JavaScript bundle updates without requiring a new app store submission, enabling rapid bug fixes and non-native code changes."
+- **Resolves:** Traceability issue #2 (OTA missing FR despite MVP journey + platform scope)
+
+### Fix 3: COPPA/Age-Range Statement Added
+- **Added** to Privacy & Data section: "The app targets users aged 13 and older. COPPA does not apply: no user accounts are created, no personal data is collected, and no information from children (or any user) is transmitted or stored externally."
+- **Resolves:** Domain compliance gap (COPPA not explicitly addressed)
+
+### Fix 4: FR26b Ordering Fixed
+- **Before:** FR26b (no-account usage) appeared under Onboarding before FR26 (personal mnemonics) under Personal Content — confusing numbering
+- **After:** FR26 is now the no-account requirement (under Onboarding & Customization). FR26b is personal mnemonics (under Personal Content). Subsequent numbering (FR27+) unchanged.
+- **Resolves:** FR ordering inconsistency
