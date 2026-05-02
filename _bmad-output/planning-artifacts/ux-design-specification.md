@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 inputDocuments:
   - "planning-artifacts/product-brief-japanese-learning-2026-04-12.md"
   - "planning-artifacts/prd.md"
@@ -361,11 +361,12 @@ NativeWind brings Tailwind CSS's utility-first approach to React Native, providi
 - `ReviewCard` — the core review loop item display (prompt, input field, result)
 - `CognitiveLoadRing` — SVG-based circular progress with color gradient
 - `WanaKanaInput` — text input with real-time romaji-to-hiragana conversion
-- `ReinforcementHighlight` — inline text annotation ("← you learned this yesterday")
+- `ReinforcementHighlight` — optional inline reinforcement; for grammar prompts, content is revealed via progressive **Hint** control instead of always-on text
 - `TimeCompressionSummary` — post-session summary card with domain breakdown
 - `SRSStageIndicator` — color-coded mastery level badge
 - `WeaknessStatCard` — pattern accuracy trend display
 - `StreakCounter` — simple daily streak display
+- `ProgressiveHint` — grammar (and optionally other) items: tap-to-reveal stacked hint levels; final level may show full cross-domain reinforcement
 
 ### Customization Strategy
 
@@ -412,7 +413,7 @@ Users arrive with one of two mental models, depending on their background:
 **Where users will get confused without clear design:**
 - Reading vs. meaning prompts — "What type of answer do you want?" must be instantly obvious (color coding, label, input placeholder).
 - Cognitive load ring — novel concept, needs immediate visual legibility without explanation. The ring should be self-evident: empty → filling → full = done.
-- Cross-domain reinforcement highlights — "← you learned this yesterday" must feel like helpful context, not visual clutter. If it's too prominent, it distracts from the review. If it's too subtle, users miss the defining differentiator.
+- Cross-domain reinforcement highlights — for **grammar prompts**, use progressive **Hint** instead of always-on text; for **other** item types, subtle annotations must feel like helpful context, not clutter.
 
 ### Success Criteria
 
@@ -442,7 +443,7 @@ The defining experience combines established patterns with three novel elements:
 
 1. **Cognitive load ring.** Borrowed from fitness tracking (Apple Watch activity rings), applied to SRS learning. Users understand "fill the ring" from fitness apps. The metaphor transfers: empty ring = fresh start, filling = doing work, full = goal reached. No tutorial needed if the visual design is clear. Color gradient (green → yellow → orange → complete) provides additional signal without words.
 
-2. **Visible cross-domain reinforcement.** No learning app highlights connections between content types in real-time. The "← you learned this yesterday" annotation is a new UI pattern. Design challenge: it must be noticeable on first encounter but not distracting on the 50th. Solution: subtle color tint + small text, positioned below or beside the connected word — present but not competing with the review prompt.
+2. **Visible cross-domain reinforcement (with grammar exception on the prompt).** Grammar cloze items use a **progressive Hint** button instead of showing "← you learned this yesterday" on the initial question. Other item types may show subtle ties to prior study when appropriate. The full reinforcement line is available after enough hint taps or on the result screen — still a new pattern versus competitors, but gated so the review loop stays uncluttered for users who want zero hints.
 
 3. **Time compression display.** No learning app shows "equivalent time in your old stack" as a post-session metric. This is a comparison-framing pattern borrowed from utility bill comparisons ("you used 20% less energy than similar homes"). Design challenge: must feel credible, not marketing. Solution: show raw numbers (items × domains × minutes) alongside the comparison estimate, so users can verify the math.
 
@@ -463,7 +464,7 @@ Each item in the loop follows this sequence:
 - **Prompt appears:** Item displayed with clear type indicator (radical/kanji/vocabulary/grammar). For kanji: the character is shown large and centered. For grammar: a cloze sentence with a blank. A label or color code indicates what's being asked (reading vs. meaning).
 - **User types:** Input field is pre-focused. For reading questions: romaji input converts to hiragana in real-time via WanaKana. For meaning questions: standard English keyboard. The user types their answer and submits (Enter key or submit button).
 - **Result displays immediately (<100ms):** Correct → green flash, answer confirmed, brief display of item details (mnemonic, additional readings, SRS stage). Incorrect → red flash, correct answer shown, "close!" hint if near-miss, weakness pattern note if applicable. The cognitive load ring increments visibly.
-- **Cross-domain reinforcement (contextual):** If the current item connects to something the user recently studied, a subtle annotation appears: "食べる ← you learned this yesterday" or "Uses radical 口 (mouth) — Guru stage." Present but not blocking.
+- **Cross-domain reinforcement (contextual):** For **kanji, vocabulary, and reading** items, if the prompt connects to something the user recently studied, a subtle annotation may appear beside the prompt (e.g. "Uses radical 口 (mouth) — Guru stage"). For **grammar** cloze prompts, reinforcement is **not** shown by default — the learner uses a **Hint** control that reveals progressively richer context on each tap (grammar scope → lesson tie-in → full cross-domain line such as "食べる — you learned this yesterday"). This keeps the initial grammar question clean while preserving the "felt intelligence" for those who want it. After submission, the **result** screen may show full explanation and cross-domain notes without progressive disclosure.
 - **Next item:** Appears immediately. No transition animation. No "tap to continue." The loop continues until the user stops or the cognitive load ring signals completion.
 
 **3. Feedback — During Session:**
@@ -679,3 +680,632 @@ All text/background combinations meet WCAG 2.1 AA minimum requirements:
 - Zero animations in the review loop (by design — performance principle). This also benefits users with vestibular disorders.
 - The cognitive load ring fill animation is subtle and continuous (not pulsing or flashing). Can be disabled in accessibility settings.
 - No auto-playing animations anywhere in the app. All transitions are optional and interruptible.
+
+## Design Direction Decision
+
+### Design Directions Explored
+
+Interactive mockups live at `_bmad-output/planning-artifacts/ux-design-directions.html` (six directions: compact vs spacious review, home + stats, post-session, grammar hints, onboarding). Stakeholder review completed 2026-05-02.
+
+### Chosen Direction
+
+| Area | Decision |
+| --- | --- |
+| **Review layout density** | **Direction A (compact)** — default review loop: tight header, focal kanji/grammar, full-width input; fastest eye path. Direction B retained only as a reference for accessibility or optional "comfort" mode later. |
+| **Home screen** | **Simplified home (revised Direction C):** cognitive load ring with subtle **hero graphics** behind it; primary actions **Review** and **Learn** as large buttons each with a **dedicated icon/illustration**; **streak** card; **JLPT progress bar** (thin bar + compact Kanji/Grammar/Vocab counts) visible on the first view below the streak. **SRS stage counts** (Apprentice / Guru / Master / Enlightened / Burned) move to the **Stats** tab so the home screen stays focused. |
+| **Post-session summary** | **Direction D** approved as-is — screenshot-worthy completion screen with time compression centerpiece. |
+| **Grammar — cross-domain hints** | **Progressive disclosure:** the initial grammar **question** shows **no** automatic reinforcement line (e.g. no "食べる ← you learned this yesterday" until the user opts in). A **Hint** control advances through stacked levels (e.g. conjugation scope → lesson tie-in → full reinforcement including kanji/radical context). After answer reveal, the **result** state may show full explanation and cross-domain notes without requiring hint taps. |
+| **Onboarding** | **Direction F** approved as-is. |
+
+### Design Rationale
+
+- **Compact review** matches the PRD performance bar and "serious tool" positioning; spacious layout remains documented for edge cases.
+- **Home information hierarchy:** daily action (Review / Learn), capacity (ring), habit (streak), and **JLPT level progress bar** belong on Home — the bar is compact and gives a sense of curriculum momentum without overwhelming. Deep inventory (SRS stage buckets, weakness trends) belongs on Stats — reduces cognitive load at open while keeping data one tap away.
+- **Grammar hints:** preserves cross-domain intelligence without spoiling the challenge or cluttering the prompt; power users can still drill into connections via Hint; aligns with "intelligence visible without noise."
+- **NativeWind + custom components** (unchanged): `ProgressiveHint` / hint panel styling follows `reinforcement-*` tokens where final hint content matches reinforcement tone.
+
+### Implementation Approach
+
+- Build **Home** with ring + `action-stack` (Review + Learn) + streak; route SRS breakdown and N5 progress to **Stats** screen per navigation model in mockups.
+- Add **SVG or vector assets** for Review (queue / cards metaphor) and Learn (book / lesson metaphor) and optional soft **hero background** behind the ring (non-interactive, low contrast).
+- Implement **grammar hint state machine**: `hintLevel` 0…N, button label reflects remaining depth, disabled state when all hints revealed; ensure screen reader announces each new hint panel.
+- Keep **post-session** layout aligned with Direction D for shareability.
+
+**HTML reference:** `_bmad-output/planning-artifacts/ux-design-directions.html` — updated to reflect stakeholder feedback (simplified home, Stats tab mockup, progressive grammar hints, A marked chosen).
+
+## User Journey Flows
+
+Five critical interaction flows designed from the PRD user journeys (Yuki, Mika, Kenji, Riyaz, Sato). Flows 1–5 cover the MVP-relevant paths; patterns extracted from all five inform reusable UX conventions.
+
+### Flow 1: First Launch → First Session Complete (Yuki — Fresh Beginner)
+
+```mermaid
+flowchart TD
+    A[App Store Download] --> B[Launch — no account required]
+    B --> C{Onboarding: Select level}
+    C -->|"N5 Beginner"| D[Select session intensity]
+    C -->|"I have existing knowledge"| IMPORT[→ Flow 3: Import]
+    D -->|"Relaxed ~15 min"| E[Configure initial queue]
+    D -->|"Standard ~25 min"| E
+    D -->|"Intensive ~40 min"| E
+    E --> F[Lesson: First 5 radicals]
+    F --> G[Each radical: mnemonic image + meaning]
+    G --> H[Lesson: First 3 kanji from those radicals]
+    H --> I[Input-based test — type reading]
+    I --> J{Answer correct?}
+    J -->|Correct| K[✓ feedback + reinforcement annotation]
+    J -->|Typo detected| L["Close!" hint — not a knowledge gap]
+    J -->|Incorrect| M[✗ feedback + correct answer shown]
+    K --> N{More items in session?}
+    L --> N
+    M --> N
+    N -->|Yes| I
+    N -->|No — ring full| O[Post-Session Summary]
+    O --> P[Time compression: "15 min ≈ 30 min across apps"]
+    P --> Q[Streak started: Day 1 🔥]
+    Q --> R[Return to Home screen]
+```
+
+- **Entry point:** App Store → first launch (zero friction — no sign-up).
+- **Key decision:** Level selection determines entire curriculum path; intensity sets the cognitive load ring threshold.
+- **Success signal:** Post-session summary with time compression + streak = "this was worth it."
+- **Failure recovery:** Typo detection prevents false negatives from frustrating new users on their very first session.
+
+### Flow 2: Daily Review Loop (Core Session)
+
+```mermaid
+flowchart TD
+    A[Open app → Home screen] --> B{Reviews pending?}
+    B -->|"42 reviews"| C[Tap Review button]
+    B -->|"0 reviews"| D[Review button disabled / "All caught up"]
+    C --> E[Load unified review queue]
+    E --> F[Display item — kanji, vocab, or grammar]
+    F --> G[Cognitive load ring visible in header]
+    G --> H[User types answer via WanaKana input]
+    H --> I{Evaluate answer}
+    I -->|Correct| J[✓ Green flash + SRS stage advance]
+    I -->|Typo| K[~ Typo detected — re-prompt]
+    I -->|Incorrect| L[✗ Red + correct answer + mnemonic]
+    J --> M{Cross-domain link exists?}
+    M -->|Yes| N["Reinforcement: '← you learned 食 in kanji'"]
+    M -->|No| O[Next item]
+    N --> O
+    K --> H
+    L --> O
+    O --> P{Session complete?}
+    P -->|"Ring full / items exhausted"| Q[Post-Session Summary]
+    P -->|More items| F
+    Q --> R["Time compression + domain breakdown"]
+    R --> S[Screenshot-worthy summary card]
+    S --> T[Return to Home — streak updated]
+```
+
+- **Entry point:** Home screen — the Review button with pending count.
+- **Key mechanic:** The cognitive load ring governs session length, not a fixed item count. Users stop when *capacity* is full, not when an arbitrary number is hit.
+- **Progressive disclosure:** Cross-domain reinforcement appears only on correct answers — it rewards success, doesn't distract during struggle.
+- **Delight moment:** Post-session summary is designed to be screenshot-worthy (time compression centerpiece).
+
+### Flow 3: Data Import → First Calibrated Session (Mika — Switcher)
+
+```mermaid
+flowchart TD
+    A[Onboarding: "I have existing knowledge"] --> B{Select import source}
+    B -->|WaniKani| C[Enter WaniKani API key]
+    B -->|Bunpro| D[Enter Bunpro credentials]
+    B -->|Anki| E[Select Anki deck file]
+    B -->|Skip — manual level select| F[Select JLPT level manually]
+    C --> G[Fetch & map progress]
+    D --> G
+    E --> G
+    G --> H[Import Summary screen]
+    H --> I["Mapped: 1,200 kanji, 340 grammar points"]
+    I --> J["SRS mapping: burned→burned, apprentice→short interval"]
+    J --> K["New items identified: N3 grammar gaps"]
+    K --> L{User confirms import?}
+    L -->|Confirm| M[Build calibrated review queue]
+    L -->|"Adjust / re-import"| B
+    M --> N[First review: mix of review + new items]
+    N --> O[Items use vocabulary user already knows]
+    O --> P["Reinforcement: '← you know this from WaniKani'"]
+    P --> Q[Session feels personalized from minute one]
+    Q --> R[Post-Session Summary with time compression]
+```
+
+- **Entry point:** Onboarding screen — "I have existing knowledge" branch.
+- **Key UX principle:** The import summary must be **transparent** — show exactly what was mapped, what the SRS intervals will be, and what's new. No black box. Trust is critical for switchers leaving paid tools.
+- **Error recovery:** If import seems wrong (too many items burned, gaps unexpected), user can adjust or re-import.
+- **Delight moment:** First session already uses vocabulary the user knows in grammar examples — immediate proof the import worked.
+
+### Flow 4: Grammar Review with Progressive Hints
+
+```mermaid
+flowchart TD
+    A[Grammar item appears in review queue] --> B["Prompt: 昨日、ラーメンを＿＿。(past tense)"]
+    B --> C[Hint button visible: "💡 Hint"]
+    C --> D{User action}
+    D -->|Types answer directly| E{Evaluate answer}
+    D -->|Taps Hint| F["Hint 1: Conjugation scope — 'る-verb, past tense'"]
+    F --> G["Hint button updates: '💡 Hint 2 of 3'"]
+    G --> H{User action}
+    H -->|Types answer| E
+    H -->|Taps Hint again| I["Hint 2: Lesson context — 'Covered in て-form lesson'"]
+    I --> J["Hint button updates: '💡 Hint 3 of 3'"]
+    J --> K{User action}
+    K -->|Types answer| E
+    K -->|Taps Hint again| L["Hint 3: Full reinforcement — '食べる ← you learned this yesterday'"]
+    L --> M[Hints exhausted — button disabled]
+    M --> N[User types answer]
+    N --> E
+    E -->|Correct| O["✓ Result + full explanation + cross-domain notes"]
+    E -->|Incorrect| P["✗ Correct answer + explanation + all hints shown"]
+    O --> Q[Next item]
+    P --> Q
+```
+
+- **Entry point:** Any grammar item in the unified review queue.
+- **Key UX principle:** No spoilers on the prompt. Hints are opt-in and layered — each tap reveals more context without giving away the answer directly. Preserves active recall while providing scaffolding for stuck users.
+- **Hint economics:** Using hints does not penalize the SRS interval (hints help learning, not cheat it). But the weakness engine notes which items needed hints — patterns of hint usage feed into weakness detection.
+- **After answer:** The result screen shows the full picture (all cross-domain connections, explanation) regardless of how many hints were used.
+
+### Flow 5: Offline Session with Background Sync (Kenji — Metro)
+
+```mermaid
+flowchart TD
+    A[Open app — no network] --> B{Local data available?}
+    B -->|Yes — always| C[Home screen loads instantly]
+    B -->|"First launch without network"| D["Limited: onboarding needs no network, all content bundled"]
+    C --> E[Tap Review — queue from local SQLite]
+    E --> F[Full review session — all features work]
+    F --> G[Progress saved to local SQLite]
+    G --> H[Post-Session Summary — calculated locally]
+    H --> I[Return to Home]
+    I --> J[..."Later, network available"...]
+    J --> K{Background check: curriculum update?}
+    K -->|New version available| L[Download SQLite delta]
+    L --> M[Merge — user progress untouched]
+    M --> N[Updated content ready for next session]
+    K -->|No update| O[Nothing to do]
+```
+
+- **Entry point:** Any app launch, any network state.
+- **Key UX principle:** The user should **never know** they're offline. No spinners, no error banners, no degraded mode indicators. The app works identically — this is the local-first promise.
+- **Sync model:** Background delta download when network is available. Never blocks the user. Never overwrites progress.
+- **Edge case:** First launch requires no network either — the initial curriculum is bundled with the app binary.
+
+### Journey Patterns
+
+Reusable patterns extracted across all five flows:
+
+**Navigation Patterns:**
+- **Hub-and-spoke from Home:** Home is always the return point. Review, Learn, Stats, Settings are spokes. No deep nesting beyond two levels.
+- **Session as a modal context:** Once a review session starts, the user is in a focused mode (header + focal + input zones). Navigation out requires an explicit exit — no accidental back-swipes losing progress.
+
+**Decision Patterns:**
+- **Binary entry split:** Onboarding has exactly one decision that forks the entire flow — "beginner" vs "existing knowledge." Everything downstream calibrates from this.
+- **Opt-in complexity:** Hints, import details, SRS stage breakdowns — all available but never forced. The default path is the simplest path.
+
+**Feedback Patterns:**
+- **Immediate + contextual:** Every answer gets instant visual feedback (color + icon). Correct answers may additionally show cross-domain reinforcement. Incorrect answers show the correct answer + mnemonic.
+- **Session-level summary:** Individual feedback is ephemeral; the post-session summary aggregates it into a durable, shareable artifact (time compression display).
+- **Silent background operations:** Sync, updates, and SRS recalculations never produce user-facing notifications unless the user explicitly checks (Stats tab).
+
+### Flow Optimization Principles
+
+1. **Zero steps to first value.** No account creation, no email verification, no tutorial carousel. Download → select level → start learning. Three taps to first radical.
+2. **Cognitive load ring as session governor.** Users never face "287 reviews pending" anxiety. The ring fills; when it's full, the session is done. Tomorrow brings a fresh ring. This reframes SRS from a debt ledger into a daily capacity budget.
+3. **Reinforcement rewards success.** Cross-domain annotations appear on correct answers and in post-session summaries — never as distractions during the challenge. The grammar hint system is the one exception, and even there it's opt-in.
+4. **Import earns trust through transparency.** Switchers (Mika) are high-value users leaving paid tools. The import summary must over-communicate: exactly how many items mapped, what SRS stages they landed in, what gaps were found. Opacity here means churn.
+5. **Offline is not a mode.** There's no "offline mode" toggle. The app is local-first by architecture. Network availability improves content freshness but never gates functionality.
+
+## Component Strategy
+
+### Design System Components
+
+**Styling engine:** NativeWind (Tailwind CSS for React Native) — provides utility classes for layout, color, typography, and spacing. No pre-built component library; all interactive elements are custom-built.
+
+**Available from React Native / Expo (foundation primitives):**
+
+| Primitive | Usage |
+| --- | --- |
+| `TextInput` | Base for `WanaKanaInput` |
+| `ScrollView` / `FlatList` | Scrollable containers (stats, settings, lesson lists) |
+| `Pressable` | Tap targets for all interactive elements |
+| `SafeAreaView` | Platform safe-area handling |
+| `Modal` | Overlay/sheet presentation (session exit confirmation, import flow) |
+| `KeyboardAvoidingView` | Keyboard-aware layout during review input |
+| `expo-haptics` | Tactile feedback on correct/incorrect |
+| `expo-sqlite` | Local-first data store |
+| `expo-secure-store` | API key storage (WaniKani import) |
+| `expo-file-system` | Anki deck file import |
+
+### Custom Components
+
+#### `CognitiveLoadRing`
+
+- **Purpose:** Visualizes remaining cognitive capacity during a study session. The defining UX innovation — transforms SRS from a debt ledger into a daily capacity budget.
+- **Anatomy:** SVG circle with animated fill arc; percentage label centered; color gradient from green → yellow → orange → complete glow.
+- **States:** Empty (0%), filling (1–99%), full (100% — session complete), idle (home screen — shows today's starting point).
+- **Variants:** Large (home screen hero — ~160px), small (review session header — ~32px).
+- **Accessibility:** `accessibilityRole="progressbar"`, `accessibilityValue` with min/max/now. Announces "Cognitive load: 72 percent." Color gradient paired with numeric percentage — never color-only.
+- **Interaction:** Non-interactive (display only). Fills as a side-effect of answering items.
+
+#### `ReviewCard`
+
+- **Purpose:** Core review interaction — displays a prompt, accepts typed input, shows result.
+- **Anatomy:** Prompt area (Japanese character or grammar sentence), input field (full-width, WanaKana-powered), result area (correct/incorrect + mnemonic/explanation + optional reinforcement).
+- **States:** `prompting` (showing question, input active), `evaluating` (brief processing), `correct` (green feedback + reinforcement), `incorrect` (red + correct answer + mnemonic), `typo` (amber + re-prompt).
+- **Variants:** Kanji variant (large character display), vocabulary variant (word + reading), grammar variant (sentence with blank + hint button).
+- **Accessibility:** Input field: `accessibilityLabel="Type your answer"`. Result state announced: "Correct, meaning: [meaning]" or "Incorrect, correct answer is [answer]".
+- **Interaction:** Type → submit (Enter key or button) → result → tap or auto-advance to next item.
+
+#### `WanaKanaInput`
+
+- **Purpose:** Text input converting romaji to hiragana/katakana in real-time as the user types.
+- **Anatomy:** Full-width TextInput with subtle placeholder ("type in romaji..."), conversion on each keystroke.
+- **States:** Empty, typing (live conversion visible), submitted, disabled (during result display).
+- **Accessibility:** `accessibilityLabel="Answer input, type in romaji"`. Announces converted text on submission.
+- **Interaction:** Keystroke → WanaKana `toHiragana()` → displayed as kana in real-time. Enter key submits.
+
+#### `ProgressiveHint`
+
+- **Purpose:** Layered hint disclosure for grammar (and optionally other) review items. Preserves active recall while scaffolding stuck users.
+- **Anatomy:** Pill-shaped button ("💡 Hint") → on tap, `hint-panel` slides in below with current hint level. Button label updates ("💡 Hint 2 of 3"). When exhausted, button shows disabled state.
+- **States:** `available` (hint button active, no hints shown), `revealing` (1+ hints shown, more available), `exhausted` (all hints shown, button disabled).
+- **Content per level:** Level 1 = conjugation scope / grammar category. Level 2 = lesson context / study timeline. Level 3 = full cross-domain reinforcement.
+- **Accessibility:** Button: `accessibilityRole="button"`, `accessibilityLabel="Hint, tap to reveal"`. Each hint panel announced on appearance. After exhaustion: `accessibilityLabel="All hints revealed"`.
+- **Interaction:** Tap → reveal next hint → update button → repeat until exhausted.
+
+#### `ReinforcementHighlight`
+
+- **Purpose:** Inline cross-domain annotation shown on correct answers — "← you learned 食 in kanji."
+- **Anatomy:** Small text block with `reinforcement-bg` background, `reinforcement-text` color, connecting arrow icon.
+- **States:** Visible (on correct answer with cross-domain link), hidden (no link exists or during prompt).
+- **Accessibility:** `accessibilityLabel` reads the full reinforcement text. Marked as supplementary information.
+
+#### `TimeCompressionSummary`
+
+- **Purpose:** Post-session card proving the app is faster than a multi-tool stack. The screenshot-worthy artifact.
+- **Anatomy:** Domain breakdown row (Kanji: N | Grammar: N | Vocab: N), session time, compression comparison ("18 min ≈ 35 min across separate apps"), session date.
+- **States:** Default (showing data), share-ready (optimized layout for screenshot).
+- **Variants:** Standard (in-app post-session), shareable (high-contrast card for external sharing).
+- **Accessibility:** All numbers use `accessibilityLabel` with full context: "Kanji: 8 items reviewed, Grammar: 6 items reviewed…"
+
+#### `PostSessionShareCard`
+
+- **Purpose:** Screenshot-optimized version of the post-session summary for social sharing.
+- **Anatomy:** App branding + session stats + time compression + streak count. Designed for Twitter/Reddit screenshot dimensions.
+- **States:** Single state — rendered on demand after session.
+- **Interaction:** "Share" button triggers native share sheet or saves image to camera roll.
+
+#### `ImportSummaryCard`
+
+- **Purpose:** Transparent import results display for switchers. Builds trust by showing exactly what was mapped.
+- **Anatomy:** Source badge (WaniKani / Bunpro / Anki), item counts (mapped vs total), SRS stage mapping table, gaps identified, confirm/re-import actions.
+- **States:** `loading` (fetching from API), `summary` (displaying results), `confirmed` (user accepted), `error` (import failed — with retry).
+- **Accessibility:** Summary table uses `accessibilityRole="summary"`. Each mapping line announced clearly.
+
+#### `LevelProgressBar`
+
+- **Purpose:** Compact JLPT level progress indicator on Home screen.
+- **Anatomy:** Level label ("N5 Progress"), thin gradient bar (fill percentage), domain counts row (Kanji X/Y, Grammar X/Y, Vocab X/Y).
+- **States:** Default (showing current progress), level-up animation (transitioning N5→N4).
+- **Accessibility:** `accessibilityRole="progressbar"`, `accessibilityValue` reports overall percentage and domain breakdown.
+
+#### `SRSStageIndicator`
+
+- **Purpose:** Color-coded mastery level badge for individual items.
+- **Anatomy:** Small pill badge with SRS stage name and stage color (apprentice / guru / master / enlightened / burned).
+- **States:** One per SRS stage (5 states), each with distinct color from design tokens.
+- **Accessibility:** `accessibilityLabel="SRS stage: [stage name]"`. Never color-only — text label always present.
+
+#### `WeaknessStatCard`
+
+- **Purpose:** Pattern accuracy trend display for the Stats tab.
+- **Anatomy:** Pattern name (e.g. "て-form conjugation"), accuracy percentage, mini trend line (last 7 sessions), improvement indicator.
+- **States:** Improving (green trend), declining (red trend), stable (neutral).
+- **Accessibility:** Announces pattern name, current accuracy, and trend direction.
+
+#### `StreakCounter`
+
+- **Purpose:** Daily streak display on home screen.
+- **Anatomy:** Flame emoji + day count + "Current streak" label.
+- **States:** Active (streak > 0), at risk (close to reset time), broken (0 — encouraging restart message).
+- **Accessibility:** `accessibilityLabel="Current streak: [N] days"`.
+
+#### `SessionHeader`
+
+- **Purpose:** Fixed header during review sessions — persistent context without competing with focal zone.
+- **Anatomy:** Small cognitive load ring (32px), session progress count ("12 / 42"), item type indicator (kanji / vocab / grammar badge).
+- **States:** Active (during session), paused (session exit confirmation shown).
+- **Accessibility:** Announces session progress on focus: "Item 12 of 42, cognitive load 65 percent, grammar item."
+
+#### `OnboardingStep`
+
+- **Purpose:** Reusable onboarding card for first-launch and import flows.
+- **Anatomy:** Illustration slot (top), heading, description, action button(s), optional skip link.
+- **States:** Default, completed (checkmark), skipped.
+- **Interaction:** Primary action advances flow; skip bypasses current step.
+
+#### `TabBar`
+
+- **Purpose:** Bottom tab navigation across main app sections.
+- **Anatomy:** 5 tabs — Home, Learn, Read, Stats, Settings. Each with icon + label.
+- **States:** Active tab (highlighted), inactive (muted), badge (notification dot for pending reviews on Home).
+- **Accessibility:** `accessibilityRole="tabbar"`. Each tab: `accessibilityRole="tab"`, `accessibilityState` for selected.
+
+### Component Implementation Strategy
+
+**Foundation layer:** All components built from NativeWind utility classes. Design tokens in `tailwind.config.js` are the single source of truth for colors, spacing, typography, border radius.
+
+**Composition model:** Components compose via React Native's standard prop/children patterns. No component inheritance hierarchy. Each custom component is a self-contained file importing only NativeWind utilities and design tokens.
+
+**Platform handling:** `Platform.select()` inside components for iOS/Android differences (safe areas, haptics, keyboard behavior). Tailwind layer stays platform-agnostic.
+
+**Accessibility from day one:** Every component ships with `accessibilityRole`, `accessibilityLabel`, `accessibilityHint`, and `accessibilityValue` as applicable. Not retrofitted — baked in from the first implementation.
+
+### Implementation Roadmap
+
+**Phase 1 — Core Review Loop (MVP critical path):**
+- `ReviewCard` + `WanaKanaInput` — the heart of the app
+- `CognitiveLoadRing` (both variants) — the defining UX element
+- `SessionHeader` — review context
+- `ProgressiveHint` — grammar review mechanic
+- `ReinforcementHighlight` — correct-answer reinforcement
+
+**Phase 2 — Home + Navigation + Session Endings:**
+- `TabBar` — bottom navigation
+- `StreakCounter` — home screen
+- `LevelProgressBar` — home screen
+- `TimeCompressionSummary` + `PostSessionShareCard` — session endings
+- `OnboardingStep` — first launch flow
+
+**Phase 3 — Stats + Import:**
+- `SRSStageIndicator` — stats tab
+- `WeaknessStatCard` — stats tab
+- `ImportSummaryCard` — switcher onboarding (Flow 3)
+
+## UX Consistency Patterns
+
+### Button Hierarchy
+
+| Level | Style | Usage | Examples |
+| --- | --- | --- | --- |
+| **Primary** | Solid fill, `feedback-info` blue, full-width, 16px padding, 600 weight | One per screen — the main action | "Review" (home), "Submit" (answer), "Continue" (onboarding) |
+| **Secondary** | Solid fill, `content-grammar` teal gradient, full-width | Alternate main action when two coexist | "Learn" (home, paired with Review) |
+| **Tertiary** | `surface-elevated` background, `text-secondary` color, no border | Supporting action | "Skip" (onboarding), "Re-import" (import flow) |
+| **Ghost** | Transparent background, `text-secondary` color, underline on press | Dismissive or navigational — lowest visual weight | "Cancel" (exit session), "Not now" |
+| **Pill** | `surface-elevated` background, `radius-full`, small padding | Inline functional controls | "💡 Hint" (progressive hint), SRS stage badges |
+
+**Rules:**
+- Maximum one primary button per visible screen. If two actions coexist (Review + Learn), one is primary and one is secondary — never two primaries.
+- Disabled buttons use 40% opacity of their normal style. Never remove a button to indicate unavailability — show it disabled with an explanation.
+- All buttons have minimum 44×44px touch target (Apple HIG / Material guidelines).
+- Submit during review is oversized — full-width, tall — easy thumb target while keyboard is up.
+
+### Feedback Patterns
+
+**Immediate answer feedback (review loop):**
+
+| Result | Visual | Haptic | Duration | Content |
+| --- | --- | --- | --- | --- |
+| **Correct** | `feedback-correct` green flash, ✓ icon | Light success haptic | 600ms before auto-advance (or tap) | Meaning/reading + optional `ReinforcementHighlight` |
+| **Incorrect** | `feedback-incorrect` red flash, ✗ icon | Medium error haptic | Stays until user taps (no auto-advance) | Correct answer + mnemonic + explanation |
+| **Typo** | `feedback-warning` amber, ~ icon | Soft haptic | Re-prompt immediately | "Close! Try again." — input re-activates |
+
+**Rules:**
+- Correct answers auto-advance after configurable pause (0.5s / 1s / 2s / manual). Incorrect answers never auto-advance.
+- Haptic feedback follows platform conventions and can be disabled in accessibility settings.
+- Feedback is always color + icon + text. Never color alone.
+
+**System feedback (non-review):**
+
+| Type | Visual | Usage |
+| --- | --- | --- |
+| **Success** | Green banner, top of screen, auto-dismiss 3s | Import complete, curriculum update downloaded |
+| **Error** | Red banner, persistent until dismissed or retried | Import failed, file read error |
+| **Info** | Blue subtle banner, auto-dismiss 5s | "New curriculum version available" |
+| **Warning** | Amber banner, persistent | "Streak at risk — review before midnight" |
+
+**Rules:**
+- Banners appear at top, push content down (not overlay). Respect safe areas.
+- During review sessions, **no banners**. System notifications queue until session end. The review loop is interruption-free.
+
+### Form & Input Patterns
+
+**WanaKana input (primary form pattern):**
+- Full-width, `space-md` horizontal padding, `surface-elevated` background, `radius-sm` border radius.
+- Placeholder: "type in romaji..." in `text-muted`.
+- Active state: 1px `feedback-info` border. Focus maintained until submission.
+- Real-time conversion: user types "ta" → sees "た" on each keystroke.
+- Submit via Enter key (hardware keyboard) or dedicated submit button.
+- On incorrect → re-prompt: input clears, cursor re-focuses.
+
+**API key / credential input (import flow):**
+- `secureTextEntry` for sensitive fields.
+- Inline validation: green checkmark (valid format), red X (invalid).
+- Helper text explains where to find the API key.
+- "Paste" button alongside input.
+
+**Settings forms:**
+- Toggle switches for booleans (haptics, auto-advance).
+- Segmented control for multi-option (session intensity).
+- All changes save immediately — no "Save" button. Subtle checkmark confirmation for 1s.
+
+### Navigation Patterns
+
+**Tab bar (primary navigation):**
+- 5 tabs: Home, Learn, Read, Stats, Settings.
+- Active: `text-primary` + filled icon. Inactive: `text-muted` + outline icon.
+- Tab bar **hidden** during review sessions.
+- Badge dot on Home tab when reviews are pending.
+
+**Session modal context:**
+- Entering review removes the tab bar — focused mode (header + focal + input zones).
+- Exit requires explicit action: swipe-down or tap X → confirmation: "End session? Progress is saved."
+- No accidental back-swipe exits. Progress always saved.
+
+**Onboarding flow:**
+- Linear horizontal progression. Progress dots at top.
+- "Skip" on optional steps. Back button returns to previous step.
+
+**Drill-down (Learn, Stats):**
+- Stack navigation: list → detail → back. Maximum depth: 2 levels.
+
+### Empty States & Loading States
+
+| State | Where | Content |
+| --- | --- | --- |
+| **No reviews pending** | Home (Review button) | Button disabled: "All caught up! Next review in 4h." |
+| **First launch, no data** | Stats tab | Illustration + "Complete your first session to see stats here." |
+| **No lessons available** | Learn tab | "You've completed all N5 lessons! Level up when your reviews are ready." + progress bar. |
+| **Import loading** | Import flow | Skeleton loader matching `ImportSummaryCard` layout. |
+| **Search no results** | Future: search | "No results for '[query]'. Try a different reading or meaning." |
+
+**Rules:**
+- Empty states always have: (1) illustration/icon, (2) explanation, (3) next action or timeline. Never a blank screen.
+- Loading states use skeleton loaders matching final layout — not generic spinners.
+- During review, no loading states — all data pre-loaded from local SQLite before session starts.
+
+### Modal & Overlay Patterns
+
+| Pattern | Trigger | Behavior |
+| --- | --- | --- |
+| **Session exit confirmation** | Back/X during review | Bottom sheet: "End session? Progress is saved." → "End session" / "Keep going". |
+| **Import flow** | Onboarding "existing knowledge" | Full-screen modal with own navigation. Dismissible via X → returns to onboarding. |
+| **Level-up celebration** | Complete all items at current JLPT level | Brief full-screen overlay with animation → auto-dismiss 3s or tap. Only non-review animation. |
+| **Streak recovery** | Return after broken streak | Soft bottom sheet: "Your streak was 23 days. Start a new one today?" No guilt. |
+
+**Rules:**
+- Bottom sheets for lightweight confirmations (1–2 actions). Full-screen modals for multi-step flows.
+- All modals have clear dismiss mechanism (X, swipe down, or tap outside).
+- Modals never appear during review sessions.
+
+### Design System Integration
+
+All patterns use NativeWind utility classes and design tokens from `tailwind.config.js`:
+- Button colors: semantic tokens (`feedback-info`, `content-grammar`, `surface-elevated`).
+- Feedback colors: `feedback-correct`, `feedback-incorrect`, `feedback-warning`.
+- Spacing: `space-*` scale. Touch targets enforce `min-h-[44px] min-w-[44px]`.
+- Border radius: `radius-sm` (inputs), `radius-md` (buttons/cards), `radius-full` (pills).
+
+**Custom pattern rules:**
+1. Review loop has zero system interruptions — feedback, banners, and modals queue until session end.
+2. Haptic feedback follows platform conventions, always paired with visual feedback.
+3. Disabled states use 40% opacity, never removal — the user always knows an action exists.
+
+## Responsive Design & Accessibility
+
+### Responsive Strategy
+
+**Platform scope:** Mobile only — Android phones/tablets, iPhones, iPads. No web, no desktop.
+
+**Phone-first, tablet-aware:** The primary design target is a phone held in portrait mode (commute scenario). Tablet is a secondary context — optimize for the smaller screen first, gracefully expand.
+
+| Device class | Screen width | Layout approach |
+| --- | --- | --- |
+| **Small phone** (iPhone SE, older Android) | 320–374px | Baseline. Full-width everything. Cognitive load ring at 120px. Tight spacing. |
+| **Standard phone** (iPhone 14, Pixel 7) | 375–429px | Primary target. Ring at 160px. Standard `space-*` tokens. |
+| **Large phone** (iPhone Pro Max, Galaxy Ultra) | 430–767px | Same layout, larger ring (180px), more breathing room. |
+| **Tablet portrait** (iPad, Android tablets) | 768–1023px | Centered content column (max-width ~500px). Extra margin on sides. Review layout unchanged. |
+| **Tablet landscape** | 1024px+ | Not MVP. Same centered column as tablet portrait. Future: optional side panel for stats alongside review. |
+
+**Key responsive decisions:**
+
+1. **Review loop is layout-stable.** The three-zone model (header / focal / input) does not change across screen sizes. Only the ring size and spacing tokens scale. Muscle memory stays consistent.
+2. **Home screen scales the hero.** Cognitive load ring and action buttons grow proportionally. No layout restructuring.
+3. **Stats and Learn use scrollable lists.** Naturally responsive — `FlatList` fills width, content column capped at ~500px on tablets.
+4. **No landscape mode for phones.** Portrait-locked on phones — review loop optimized for one-handed, portrait typing. Landscape supported on tablets only.
+
+### Breakpoint Strategy
+
+NativeWind responsive prefixes mapped to React Native's `Dimensions` API:
+
+| Breakpoint | Width | Tailwind prefix | Usage |
+| --- | --- | --- | --- |
+| `sm` (default) | 0–374px | (no prefix) | Small phone baseline |
+| `md` | 375px+ | `md:` | Standard phone — primary target |
+| `lg` | 768px+ | `lg:` | Tablet portrait |
+| `xl` | 1024px+ | `xl:` | Tablet landscape (future) |
+
+**Implementation:**
+- Mobile-first: base styles target smallest phone. `md:` / `lg:` prefixes add enhancements.
+- Cognitive load ring: `w-[120px] md:w-[160px] lg:w-[180px]`.
+- Content column on tablets: `lg:max-w-[500px] lg:mx-auto`.
+
+### Accessibility Strategy
+
+**Compliance target: WCAG 2.1 Level AA** (PRD requirements NFR14–NFR17).
+
+Color contrast, color-independent communication, touch targets, text scaling, and motion foundations are established in the Visual Design section. This section adds the operational strategy.
+
+**Screen reader support (FR52, NFR15):**
+
+| Platform | Screen reader | Approach |
+| --- | --- | --- |
+| iOS | VoiceOver | Test every screen and flow. Verify focus order, labels, state announcements. |
+| Android | TalkBack | Same coverage. Verify `accessibilityRole`, `accessibilityLabel`, `accessibilityState` map correctly. |
+
+**Screen reader flow requirements:**
+- **Review session:** Announces prompt ("Kanji: 食. Type the reading."), focuses input. On submission, announces result and reinforcement. Hint button announces availability and each level on reveal.
+- **Home screen:** Reads ring value, Review button with count, Learn button, streak, progress bar.
+- **Navigation:** Tab bar announces current tab and selection state. Screen transitions announce new screen title.
+
+**Keyboard and input accessibility (FR54, NFR17):**
+- WanaKana input works with accessibility keyboards, Bluetooth keyboards, voice-to-text.
+- No gesture-only interactions — every action has a tap target. Swipe gestures always have button alternatives.
+- External keyboard: Tab focuses input, Enter submits — full review loop via keyboard.
+
+**Text scaling (FR54, NFR16):**
+- All text scales to 200% without layout breakage (iOS Dynamic Type, Android font scale).
+- Focal zone uses flexible height — expands for scaled text within `KeyboardAvoidingView`.
+- Japanese display text (48px base) at 200% = 96px — still fits focal zone on smallest phone.
+
+**Color and contrast (FR53, NFR14):**
+- All ratios validated: minimum 4.5:1 normal text, 3:1 large text. All pairings meet or exceed AA.
+- SRS stages, feedback states, and cognitive load ring use color + text/icon — never color-only.
+- Future "high contrast" toggle in Settings trivial to add via token system.
+
+### Testing Strategy
+
+**Responsive testing:**
+
+| Test | Tool | Frequency |
+| --- | --- | --- |
+| Small phone (320px) | iPhone SE simulator / real device | Every PR touching layout |
+| Standard phone (375px) | iPhone 14 simulator / real device | Primary dev device |
+| Large phone (430px) | iPhone Pro Max simulator | Spot checks |
+| Tablet portrait (768px) | iPad simulator / real device | Every sprint |
+| Tablet landscape (1024px) | iPad simulator | Post-MVP |
+
+**Accessibility testing:**
+
+| Test | Tool | Frequency |
+| --- | --- | --- |
+| Automated a11y audit | `react-native-a11y` / Axe integration | CI — every PR |
+| VoiceOver manual | iOS device | Every new screen / component |
+| TalkBack manual | Android device | Every new screen / component |
+| Color contrast | Automated token validation | On design token changes |
+| Text scaling (200%) | iOS Dynamic Type / Android font scale | Every layout change |
+| Keyboard-only navigation | Bluetooth keyboard | Every interactive flow |
+| Color blindness simulation | Simulator filters (deuteranopia, protanopia, tritanopia) | Every sprint |
+
+**User testing (post-launch):**
+- Include users with visual impairments in beta testing.
+- Gather screen reader feedback specifically for the review loop.
+- Test Japanese input methods (IME) with VoiceOver/TalkBack enabled.
+
+### Implementation Guidelines
+
+**Responsive development:**
+- NativeWind responsive prefixes (`md:`, `lg:`) for breakpoint-aware styling. Base styles target smallest phone.
+- `useWindowDimensions` for programmatic layout decisions (ring size calculation).
+- Cap content column on tablets: `lg:max-w-[500px] lg:mx-auto`.
+- Lock phone orientation to portrait via `expo-screen-orientation`. Landscape on tablets only.
+- Test `KeyboardAvoidingView` on all device sizes — input field must remain visible with keyboard up.
+
+**Accessibility development:**
+- Every custom component ships with `accessibilityRole`, `accessibilityLabel`, `accessibilityHint`, `accessibilityValue` from first implementation (per-component specs in Component Strategy).
+- Use `accessibilityLiveRegion="polite"` for dynamic content (hint reveals, answer feedback, ring changes).
+- Focus management: after submission → focus result area. After advance → focus prompt. Screen reader users never lose place in review loop.
+- `WanaKanaInput` with VoiceOver/TalkBack: announced text must be converted kana, not raw romaji.
+- Mnemonic images: `accessibilityLabel` with full mnemonic description. Screen reader users learn from the description.

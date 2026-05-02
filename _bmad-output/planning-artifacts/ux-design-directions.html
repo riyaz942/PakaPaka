@@ -169,11 +169,47 @@
   .ring-center-text .label { font-size: 11px; color: var(--text-secondary); }
 
   .review-btn {
-    display: block; width: 100%; padding: 16px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; padding: 16px 18px;
     background: var(--feedback-info); color: white;
-    border: none; border-radius: 12px; font-size: 18px; font-weight: 600;
-    cursor: pointer; margin: 16px 0; text-align: center;
+    border: none; border-radius: 12px; font-size: 17px; font-weight: 600;
+    cursor: pointer; margin: 0; text-align: center;
+    box-shadow: 0 4px 20px rgba(68,136,238,0.25);
   }
+  .review-btn .btn-icon { flex-shrink: 0; }
+  .learn-btn {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; padding: 16px 18px;
+    background: linear-gradient(135deg, #2A4A6A 0%, var(--content-grammar) 100%);
+    color: white; border: 1px solid rgba(34,187,170,0.35);
+    border-radius: 12px; font-size: 17px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(34,187,170,0.2);
+  }
+  .action-stack { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 24px; }
+
+  .home-hero-wrap {
+    position: relative; margin: 8px 0 4px; padding: 20px 0 8px;
+    border-radius: 16px; overflow: hidden;
+    background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(68,136,238,0.12) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 60% at 80% 100%, rgba(34,187,170,0.08) 0%, transparent 50%);
+  }
+  .home-hero-svg { position: absolute; inset: 0; opacity: 0.45; pointer-events: none; }
+  .home-hero-wrap .ring-large { position: relative; z-index: 1; }
+
+  .hint-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; margin-top: 16px;
+    background: var(--surface-elevated); border: 1px solid var(--border);
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    color: var(--text-secondary); cursor: default;
+  }
+  .hint-panel {
+    margin-top: 10px; padding: 12px 14px;
+    background: var(--reinforcement-bg); border: 1px solid var(--border);
+    border-radius: 10px; font-size: 13px; color: var(--reinforcement-text);
+    line-height: 1.45; max-width: 100%;
+  }
+  .hint-level-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 6px; }
 
   .stats-row { display: flex; gap: 12px; margin-bottom: 16px; }
   .stat-card {
@@ -286,23 +322,23 @@
 
 <div class="page-header">
   <h1>japanese-learning — Design Directions</h1>
-  <p>Six design direction mockups exploring layout density, visual weight, and interaction style. All built on the established visual foundation.</p>
+  <p>Six design direction mockups. <strong>Review density:</strong> Direction A (compact) is the chosen default. <strong>Home:</strong> simplified — ring, Review &amp; Learn with icons, streak; SRS stage counts live on Stats. <strong>Grammar:</strong> hints are progressive (tap to reveal), not shown on the initial prompt.</p>
 </div>
 
 <nav class="nav-bar">
-  <button class="nav-btn active" onclick="scrollToSection('dir-a')">A: Compact Review</button>
-  <button class="nav-btn" onclick="scrollToSection('dir-b')">B: Spacious Review</button>
-  <button class="nav-btn" onclick="scrollToSection('dir-c')">C: Dashboard</button>
-  <button class="nav-btn" onclick="scrollToSection('dir-d')">D: Post-Session</button>
-  <button class="nav-btn" onclick="scrollToSection('dir-e')">E: Grammar Review</button>
-  <button class="nav-btn" onclick="scrollToSection('dir-f')">F: Onboarding</button>
+  <button class="nav-btn active" onclick="scrollToSection('dir-a', this)">A: Compact Review ✓</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-b', this)">B: Spacious Review</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-c', this)">C: Home + Stats</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-d', this)">D: Post-Session</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-e', this)">E: Grammar + Hints</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-f', this)">F: Onboarding</button>
 </nav>
 
-<!-- DIRECTION A: Compact Review (Kanji — Correct) -->
+<!-- DIRECTION A: Compact Review (chosen) -->
 <div class="section" id="dir-a">
-  <div class="direction-tag" style="background:rgba(68,136,238,0.15);color:var(--feedback-info);">Direction A</div>
-  <div class="section-title">Compact Review — Maximum Density</div>
-  <div class="section-desc">Tight spacing, smaller ring, more content visible. Optimized for speed — minimum eye travel between prompt and input. Favors experienced users who want maximum throughput.</div>
+  <div class="direction-tag" style="background:rgba(68,136,238,0.25);color:var(--feedback-info);">Direction A — Chosen</div>
+  <div class="section-title">Compact Review — Default Density</div>
+  <div class="section-desc">Tight spacing, smaller ring, maximum throughput. This is the default review layout for japanese-learning.</div>
 
   <div class="mockup-pair">
     <div>
@@ -375,11 +411,11 @@
 
 <div class="divider"></div>
 
-<!-- DIRECTION B: Spacious Review (Kanji — Incorrect) -->
+<!-- DIRECTION B: Spacious Review (reference) -->
 <div class="section" id="dir-b">
   <div class="direction-tag" style="background:rgba(170,68,221,0.15);color:var(--content-vocabulary);">Direction B</div>
-  <div class="section-title">Spacious Review — Breathing Room</div>
-  <div class="section-desc">More generous spacing, larger kanji display, prominent ring. The character dominates the screen. Favors beginners who need to study stroke details and users who prefer a calmer visual pace.</div>
+  <div class="section-title">Spacious Review — Reference Only</div>
+  <div class="section-desc">Alternate spacing for accessibility or user preference. <strong>Not the default.</strong> Direction A (compact) is chosen for the core review loop.</div>
 
   <div class="mockup-pair">
     <div>
@@ -451,31 +487,57 @@
 
 <div class="divider"></div>
 
-<!-- DIRECTION C: Dashboard -->
+<!-- DIRECTION C: Home + Stats -->
 <div class="section" id="dir-c">
   <div class="direction-tag" style="background:rgba(34,204,136,0.15);color:var(--feedback-correct);">Direction C</div>
-  <div class="section-title">Dashboard — Home Screen</div>
-  <div class="section-desc">The cognitive load ring as the visual anchor. One-tap review entry. Streak, JLPT progress, and SRS stage breakdown at a glance. Comfortable spacing for browsability.</div>
+  <div class="section-title">Home &amp; Stats — Simplified Home</div>
+  <div class="section-desc"><strong>Home</strong> focuses on cognitive load ring, illustrated <strong>Review</strong> and <strong>Learn</strong> actions, and streak — less at-a-glance noise. <strong>Apprentice / Guru / Master / Burned</strong> counts and similar SRS breakdowns move to the <strong>Stats</strong> tab. Decorative hero graphics frame the ring on Home.</div>
 
   <div class="mockup-pair">
     <div>
-      <div class="mockup-label">Fresh Day — Ring Empty</div>
+      <div class="mockup-label">Home — Fresh day</div>
       <div class="phone-frame">
         <div class="phone-status-bar"><span>9:41</span><span>⚡ 92%</span></div>
         <div class="phone-body-scroll">
           <div class="dashboard-content">
-            <div class="ring-large">
-              <svg viewBox="0 0 160 160">
-                <circle class="ring-bg" cx="80" cy="80" r="68"/>
-                <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-green)" stroke-dasharray="0 427"/>
+            <div class="home-hero-wrap">
+              <svg class="home-hero-svg" viewBox="0 0 335 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4488EE" stop-opacity="0.35"/><stop offset="100%" stop-color="#22BBAA" stop-opacity="0.1"/></linearGradient>
+                </defs>
+                <circle cx="280" cy="40" r="90" fill="url(#hg1)"/>
+                <circle cx="40" cy="160" r="70" fill="rgba(136,68,204,0.15)"/>
+                <path d="M120 30 L200 20 L180 100 Z" fill="rgba(68,136,238,0.12)"/>
               </svg>
-              <div class="ring-center-text">
-                <div class="pct">0%</div>
-                <div class="label">Today's Load</div>
+              <div class="ring-large">
+                <svg viewBox="0 0 160 160">
+                  <circle class="ring-bg" cx="80" cy="80" r="68"/>
+                  <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-green)" stroke-dasharray="0 427"/>
+                </svg>
+                <div class="ring-center-text">
+                  <div class="pct">0%</div>
+                  <div class="label">Today's Load</div>
+                </div>
               </div>
             </div>
 
-            <button class="review-btn">Review — 42 items ready</button>
+            <div class="action-stack">
+              <button type="button" class="review-btn">
+                <svg class="btn-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="4" y="6" width="10" height="20" rx="2" fill="white" fill-opacity="0.95"/>
+                  <rect x="18" y="6" width="10" height="20" rx="2" fill="white" fill-opacity="0.55"/>
+                  <path d="M8 10h2M8 14h2M8 18h2" stroke="#4488EE" stroke-width="1.2"/>
+                </svg>
+                <span>Review — 42 ready</span>
+              </button>
+              <button type="button" class="learn-btn">
+                <svg class="btn-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 6h14a2 2 0 0 1 2 2v18a1 1 0 0 1-1.55.83L16 24l-6.45 2.83A1 1 0 0 1 8 26V8a2 2 0 0 1 2-2z" fill="white" fill-opacity="0.9"/>
+                  <path d="M12 11h8M12 15h6" stroke="#1a3a38" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+                <span>Learn — new lessons</span>
+              </button>
+            </div>
 
             <div class="streak-card">
               <span class="streak-flame">🔥</span>
@@ -485,34 +547,15 @@
               </div>
             </div>
 
-            <div class="stats-row">
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-apprentice);">34</div>
-                <div class="stat-label">Apprentice</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-guru);">67</div>
-                <div class="stat-label">Guru</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-master);">128</div>
-                <div class="stat-label">Master</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-burned);">45</div>
-                <div class="stat-label">Burned</div>
-              </div>
-            </div>
-
             <div class="level-section">
               <div class="level-header">N5 Progress</div>
               <div class="level-bar-container">
                 <div class="level-bar-fill" style="width:72%;background:linear-gradient(90deg,var(--srs-guru),var(--srs-master));"></div>
               </div>
               <div class="level-stats">
-                <span>Kanji: 68/103</span>
-                <span>Grammar: 42/80</span>
-                <span>Vocab: 156/250</span>
+                <span>Kanji 68/103</span>
+                <span>Grammar 42/80</span>
+                <span>Vocab 156/250</span>
               </div>
             </div>
           </div>
@@ -529,23 +572,47 @@
       </div>
     </div>
     <div>
-      <div class="mockup-label">Mid-Day — Ring Filling</div>
+      <div class="mockup-label">Home — Mid session</div>
       <div class="phone-frame">
         <div class="phone-status-bar"><span>12:34</span><span>⚡ 78%</span></div>
         <div class="phone-body-scroll">
           <div class="dashboard-content">
-            <div class="ring-large">
-              <svg viewBox="0 0 160 160">
-                <circle class="ring-bg" cx="80" cy="80" r="68"/>
-                <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-yellow)" stroke-dasharray="280 427"/>
+            <div class="home-hero-wrap">
+              <svg class="home-hero-svg" viewBox="0 0 335 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#EECC44" stop-opacity="0.25"/><stop offset="100%" stop-color="#4488EE" stop-opacity="0.08"/></linearGradient>
+                </defs>
+                <circle cx="260" cy="50" r="85" fill="url(#hg2)"/>
+                <circle cx="50" cy="150" r="65" fill="rgba(34,187,170,0.12)"/>
               </svg>
-              <div class="ring-center-text">
-                <div class="pct">66%</div>
-                <div class="label">Today's Load</div>
+              <div class="ring-large">
+                <svg viewBox="0 0 160 160">
+                  <circle class="ring-bg" cx="80" cy="80" r="68"/>
+                  <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-yellow)" stroke-dasharray="280 427"/>
+                </svg>
+                <div class="ring-center-text">
+                  <div class="pct">66%</div>
+                  <div class="label">Today's Load</div>
+                </div>
               </div>
             </div>
 
-            <button class="review-btn">Review — 18 items ready</button>
+            <div class="action-stack">
+              <button type="button" class="review-btn">
+                <svg class="btn-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="4" y="6" width="10" height="20" rx="2" fill="white" fill-opacity="0.95"/>
+                  <rect x="18" y="6" width="10" height="20" rx="2" fill="white" fill-opacity="0.55"/>
+                </svg>
+                <span>Review — 18 ready</span>
+              </button>
+              <button type="button" class="learn-btn">
+                <svg class="btn-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 6h14a2 2 0 0 1 2 2v18a1 1 0 0 1-1.55.83L16 24l-6.45 2.83A1 1 0 0 1 8 26V8a2 2 0 0 1 2-2z" fill="white" fill-opacity="0.9"/>
+                  <path d="M12 11h8M12 15h6" stroke="#1a3a38" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+                <span>Learn — new lessons</span>
+              </button>
+            </div>
 
             <div class="streak-card">
               <span class="streak-flame">🔥</span>
@@ -555,34 +622,15 @@
               </div>
             </div>
 
-            <div class="stats-row">
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-apprentice);">28</div>
-                <div class="stat-label">Apprentice</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-guru);">71</div>
-                <div class="stat-label">Guru</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-master);">130</div>
-                <div class="stat-label">Master</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" style="color:var(--srs-burned);">47</div>
-                <div class="stat-label">Burned</div>
-              </div>
-            </div>
-
             <div class="level-section">
               <div class="level-header">N5 Progress</div>
               <div class="level-bar-container">
                 <div class="level-bar-fill" style="width:74%;background:linear-gradient(90deg,var(--srs-guru),var(--srs-master));"></div>
               </div>
               <div class="level-stats">
-                <span>Kanji: 70/103</span>
-                <span>Grammar: 44/80</span>
-                <span>Vocab: 160/250</span>
+                <span>Kanji 70/103</span>
+                <span>Grammar 44/80</span>
+                <span>Vocab 160/250</span>
               </div>
             </div>
           </div>
@@ -592,6 +640,80 @@
             <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
             <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
             <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-pair" style="margin-top: 32px;">
+    <div>
+      <div class="mockup-label">Stats tab — SRS breakdown</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 92%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content" style="padding-top: 20px;">
+            <div style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Stats</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">SRS stages across all items</div>
+
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-apprentice);">34</div>
+                <div class="stat-label">Apprentice</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-guru);">67</div>
+                <div class="stat-label">Guru</div>
+              </div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-master);">128</div>
+                <div class="stat-label">Master</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-enlightened);">41</div>
+                <div class="stat-label">Enlightened</div>
+              </div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-card" style="flex: 1;">
+                <div class="stat-value" style="color:var(--srs-burned);">2,660</div>
+                <div class="stat-label">Burned</div>
+              </div>
+            </div>
+
+            <div class="level-section" style="margin-top: 8px;">
+              <div class="level-header">N5 curriculum progress</div>
+              <div class="level-bar-container">
+                <div class="level-bar-fill" style="width:72%;background:linear-gradient(90deg,var(--srs-guru),var(--srs-master));"></div>
+              </div>
+              <div class="level-stats">
+                <span>Kanji 68/103</span>
+                <span>Grammar 42/80</span>
+                <span>Vocab 156/250</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; gap: 12px;">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="20" cy="20" r="16" stroke="var(--feedback-info)" stroke-width="2" fill="none"/>
+                <path d="M20 12v8l5 3" stroke="var(--feedback-info)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <div style="font-size: 14px; font-weight: 600;">Weakness trends</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">Pattern accuracy, confusion clusters</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-item"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
+            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item active"><span class="tab-icon">📊</span>Stats</div>
             <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
           </div>
         </div>
@@ -682,13 +804,13 @@
 <!-- DIRECTION E: Grammar Review -->
 <div class="section" id="dir-e">
   <div class="direction-tag" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">Direction E</div>
-  <div class="section-title">Grammar Review — Cloze with Reinforcement</div>
-  <div class="section-desc">Grammar cloze sentence with visible cross-domain reinforcement. The "← you learned this yesterday" annotation is the defining differentiator — subtle but present.</div>
+  <div class="section-title">Grammar Review — Progressive Hints</div>
+  <div class="section-desc">On the <strong>initial prompt</strong>, cross-domain reinforcement is <strong>not</strong> shown automatically. A dedicated <strong>Hint</strong> control reveals more context on each tap (e.g. grammar scope → recent lesson tie-in → full "you learned this yesterday" line). After submission, the <strong>result</strong> screen can show full explanation and reinforcement without progressive disclosure.</div>
 
   <div class="mockup-pair">
     <div>
-      <div class="mockup-label">Grammar Prompt</div>
-      <div class="phone-frame">
+      <div class="mockup-label">Initial prompt — no hints</div>
+      <div class="phone-frame compact">
         <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
         <div class="phone-body">
           <div class="review-header">
@@ -703,25 +825,130 @@
             <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
           </div>
           <div class="focal-zone">
-            <div class="prompt-label" style="margin-bottom:24px;">Complete the sentence</div>
+            <div class="prompt-label" style="margin-bottom:20px;">Complete the sentence</div>
             <div class="grammar-sentence">
               昨日、ラーメンを<span class="grammar-blank"></span>。
             </div>
-            <div class="reinforcement-note">食べる ← you learned this yesterday</div>
-            <div style="margin-top:16px;font-size:13px;color:var(--text-secondary);">
-              Grammar: Past tense (た-form)
+            <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);">
+              Past tense (た-form)
             </div>
+            <span class="hint-btn">💡 Hint — tap for more</span>
           </div>
           <div class="input-zone">
-            <input class="text-input" type="text" placeholder="Type in hiragana..." value="たべた" readonly>
+            <input class="text-input" type="text" placeholder="Type in hiragana..." readonly>
           </div>
         </div>
         <div class="phone-home-indicator"></div>
       </div>
     </div>
     <div>
-      <div class="mockup-label">Grammar Correct</div>
-      <div class="phone-frame">
+      <div class="mockup-label">After 1st hint tap</div>
+      <div class="phone-frame compact">
+        <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="50 97.4"/>
+              </svg>
+              <span class="ring-pct">51%</span>
+            </div>
+            <span class="review-count">22 of 42</span>
+            <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
+          </div>
+          <div class="focal-zone">
+            <div class="grammar-sentence" style="margin-bottom:8px;">
+              昨日、ラーメンを<span class="grammar-blank"></span>。
+            </div>
+            <div class="hint-panel">
+              <div class="hint-level-tag">Hint 1 of 3</div>
+              Conjugate the main verb in this sentence into the past tense (た-form).
+            </div>
+            <span class="hint-btn">💡 Hint — tap again</span>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" placeholder="Type in hiragana..." readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">After 2nd hint tap</div>
+      <div class="phone-frame compact">
+        <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="50 97.4"/>
+              </svg>
+              <span class="ring-pct">51%</span>
+            </div>
+            <span class="review-count">22 of 42</span>
+            <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
+          </div>
+          <div class="focal-zone">
+            <div class="grammar-sentence" style="margin-bottom:8px;">
+              昨日、ラーメンを<span class="grammar-blank"></span>。
+            </div>
+            <div class="hint-panel">
+              <div class="hint-level-tag">Hint 2 of 3</div>
+              The verb you need appears in a lesson you completed this week — it's a godan verb ending in る.
+            </div>
+            <span class="hint-btn">💡 Hint — one more</span>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" placeholder="Type in hiragana..." readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">After 3rd hint — full reinforcement</div>
+      <div class="phone-frame compact">
+        <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="50 97.4"/>
+              </svg>
+              <span class="ring-pct">51%</span>
+            </div>
+            <span class="review-count">22 of 42</span>
+            <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
+          </div>
+          <div class="focal-zone">
+            <div class="grammar-sentence" style="margin-bottom:8px;">
+              昨日、ラーメンを<span class="grammar-blank"></span>。
+            </div>
+            <div class="hint-panel">
+              <div class="hint-level-tag">Hint 3 of 3</div>
+              <span style="color:var(--text-primary);">食べる</span> — you learned this yesterday · 口 (mouth) radical — Burned
+            </div>
+            <span class="hint-btn" style="opacity:0.5;">All hints revealed</span>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" placeholder="Type in hiragana..." readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Grammar — correct result</div>
+      <div class="phone-frame compact">
         <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
         <div class="phone-body">
           <div class="review-header">
@@ -750,7 +977,7 @@
               </div>
               <span class="srs-badge" style="background:rgba(0,170,221,0.2);color:var(--srs-enlightened);">Master → Enlightened</span>
             </div>
-            <div class="reinforcement-note">食べる ← you learned this yesterday · 口 (mouth) radical — Burned</div>
+            <div class="reinforcement-note">Cross-domain: 食べる appeared in 3 grammar examples this week</div>
           </div>
           <div class="input-zone">
             <input class="text-input" type="text" value="たべた" readonly style="border-color:var(--feedback-correct);">
@@ -887,10 +1114,11 @@
 <div style="height:80px;"></div>
 
 <script>
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+function scrollToSection(id, btn) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
 }
 </script>
 
