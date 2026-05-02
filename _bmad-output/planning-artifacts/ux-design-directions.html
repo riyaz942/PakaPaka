@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>japanese-learning — Design Direction Mockups</title>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --surface: #141420;
+    --surface-elevated: #1E1E2E;
+    --surface-hover: #252538;
+    --border: #2A2A3C;
+    --text-primary: #EEEEF0;
+    --text-secondary: #9898A8;
+    --text-muted: #5C5C6E;
+    --srs-apprentice: #DD4488;
+    --srs-guru: #8844CC;
+    --srs-master: #3388DD;
+    --srs-enlightened: #00AADD;
+    --srs-burned: #CCAA00;
+    --feedback-correct: #22CC88;
+    --feedback-incorrect: #EE4466;
+    --feedback-warning: #EEAA22;
+    --feedback-info: #4488EE;
+    --content-radical: #44AAEE;
+    --content-kanji: #EE4488;
+    --content-vocabulary: #AA44DD;
+    --content-grammar: #22BBAA;
+    --content-reading: #EEAA22;
+    --reinforcement-text: #6688BB;
+    --reinforcement-bg: #1A2233;
+    --ring-green: #22CC88;
+    --ring-yellow: #EECC44;
+    --ring-orange: #EE8833;
+    --ring-complete: #44BBEE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #060608;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .page-header {
+    text-align: center;
+    padding: 48px 24px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .page-header p { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 4px; padding: 8px 16px;
+    overflow-x: auto; white-space: nowrap;
+  }
+  .nav-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-secondary); padding: 8px 16px; border-radius: 8px;
+    cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.15s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--surface-elevated); color: var(--text-primary); border-color: var(--feedback-info); }
+
+  .section { padding: 48px 24px; max-width: 900px; margin: 0 auto; }
+  .section-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; }
+
+  /* Phone frame */
+  .phone-frame {
+    width: 375px; height: 812px; margin: 0 auto;
+    background: var(--bg); border-radius: 40px;
+    border: 3px solid #333; overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .phone-status-bar {
+    height: 44px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; font-size: 12px; font-weight: 600; color: var(--text-primary);
+  }
+  .phone-home-indicator {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    width: 134px; height: 5px; background: var(--text-muted); border-radius: 3px;
+  }
+
+  /* Direction mockups */
+  .mockup-pair {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .mockup-label {
+    text-align: center; font-size: 13px; font-weight: 600;
+    color: var(--text-secondary); margin-bottom: 16px; text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Review header */
+  .review-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 20px; height: 56px;
+  }
+  .ring-small {
+    width: 36px; height: 36px; position: relative;
+  }
+  .ring-small svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring-small .ring-bg { fill: none; stroke: var(--border); stroke-width: 3; }
+  .ring-small .ring-fill { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .ring-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 9px; font-weight: 700;
+  }
+  .review-count { font-size: 13px; color: var(--text-secondary); }
+  .item-type-badge {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px;
+  }
+
+  /* Focal zone */
+  .focal-zone {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 0 20px;
+  }
+  .kanji-display { font-size: 96px; font-weight: 700; margin-bottom: 12px; }
+  .prompt-label { font-size: 18px; color: var(--text-secondary); margin-bottom: 4px; }
+  .grammar-sentence { font-size: 20px; text-align: center; line-height: 1.6; margin-bottom: 12px; }
+  .grammar-blank { border-bottom: 2px solid var(--text-secondary); display: inline-block; min-width: 80px; }
+  .reinforcement-note {
+    font-size: 12px; color: var(--reinforcement-text);
+    background: var(--reinforcement-bg); padding: 4px 10px;
+    border-radius: 6px; margin-top: 8px;
+  }
+
+  /* Result states */
+  .result-correct { background: rgba(34,204,136,0.08); border: 1px solid rgba(34,204,136,0.2); border-radius: 12px; padding: 16px; width: 100%; }
+  .result-incorrect { background: rgba(238,68,102,0.08); border: 1px solid rgba(238,68,102,0.2); border-radius: 12px; padding: 16px; width: 100%; }
+  .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .result-icon { font-size: 20px; }
+  .result-answer { font-size: 18px; font-weight: 600; }
+  .result-details { font-size: 13px; color: var(--text-secondary); }
+  .srs-badge { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; display: inline-block; margin-top: 4px; }
+
+  /* Input zone */
+  .input-zone { padding: 12px 20px; }
+  .text-input {
+    width: 100%; padding: 14px 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text-primary);
+    font-size: 18px; outline: none;
+  }
+  .text-input:focus { border-color: var(--feedback-info); }
+  .text-input::placeholder { color: var(--text-muted); }
+
+  /* Dashboard components */
+  .dashboard-content { padding: 0 20px; flex: 1; overflow-y: auto; }
+  .ring-large { width: 160px; height: 160px; margin: 24px auto 8px; position: relative; }
+  .ring-large svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring-large .ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
+  .ring-large .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; }
+  .ring-center-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  .ring-center-text .pct { font-size: 32px; font-weight: 700; }
+  .ring-center-text .label { font-size: 11px; color: var(--text-secondary); }
+
+  .review-btn {
+    display: block; width: 100%; padding: 16px;
+    background: var(--feedback-info); color: white;
+    border: none; border-radius: 12px; font-size: 18px; font-weight: 600;
+    cursor: pointer; margin: 16px 0; text-align: center;
+  }
+
+  .stats-row { display: flex; gap: 12px; margin-bottom: 16px; }
+  .stat-card {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; text-align: center;
+  }
+  .stat-value { font-size: 24px; font-weight: 700; }
+  .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+
+  .streak-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px; display: flex;
+    align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .streak-flame { font-size: 28px; }
+  .streak-info .streak-count { font-size: 20px; font-weight: 700; }
+  .streak-info .streak-label { font-size: 12px; color: var(--text-secondary); }
+
+  .level-section { margin-bottom: 24px; }
+  .level-header { font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; }
+  .level-bar-container { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; margin-bottom: 6px; }
+  .level-bar-fill { height: 100%; border-radius: 3px; }
+  .level-stats { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); }
+
+  /* Post-session summary */
+  .summary-content { padding: 0 20px; display: flex; flex-direction: column; align-items: center; }
+  .summary-title { font-size: 22px; font-weight: 700; margin-top: 8px; margin-bottom: 4px; }
+  .summary-subtitle { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; }
+  .domain-row { display: flex; gap: 10px; width: 100%; margin-bottom: 16px; }
+  .domain-card {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px; text-align: center;
+  }
+  .domain-value { font-size: 22px; font-weight: 700; }
+  .domain-label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  .time-compression-card {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 16px;
+  }
+  .time-actual { font-size: 36px; font-weight: 700; }
+  .time-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+  .time-comparison {
+    font-size: 14px; color: var(--ring-complete);
+    background: rgba(68,187,238,0.08); padding: 8px 16px;
+    border-radius: 8px; display: inline-block;
+  }
+
+  .weakness-card {
+    width: 100%; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  }
+  .weakness-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; }
+  .weakness-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .weakness-pattern { font-size: 14px; }
+  .weakness-trend { font-size: 13px; font-weight: 600; }
+
+  /* Bottom tab bar */
+  .tab-bar {
+    display: flex; height: 56px; border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .tab-item {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 2px; font-size: 10px; color: var(--text-muted);
+  }
+  .tab-item.active { color: var(--feedback-info); }
+  .tab-icon { font-size: 20px; }
+
+  /* Direction variations */
+  .direction-tag {
+    display: inline-block; padding: 4px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: 600; margin-bottom: 16px;
+  }
+
+  /* Compact direction for A */
+  .compact .review-header { padding: 4px 16px; height: 44px; }
+  .compact .focal-zone { padding: 0 16px; }
+  .compact .kanji-display { font-size: 80px; }
+  .compact .input-zone { padding: 8px 16px; }
+  .compact .text-input { padding: 10px 14px; font-size: 16px; }
+
+  /* Spacious direction for B */
+  .spacious .review-header { padding: 12px 24px; height: 64px; }
+  .spacious .focal-zone { padding: 0 32px; }
+  .spacious .kanji-display { font-size: 112px; }
+  .spacious .input-zone { padding: 16px 24px; }
+
+  .divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+  /* Scroll areas */
+  .phone-body {
+    display: flex; flex-direction: column;
+    height: calc(100% - 44px - 20px);
+  }
+  .phone-body-scroll {
+    display: flex; flex-direction: column;
+    height: calc(100% - 44px - 56px - 20px);
+    overflow: hidden;
+  }
+
+  /* Responsive */
+  @media (max-width: 850px) {
+    .mockup-pair { flex-direction: column; align-items: center; }
+    .phone-frame { transform: scale(0.85); transform-origin: top center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>japanese-learning — Design Directions</h1>
+  <p>Six design direction mockups exploring layout density, visual weight, and interaction style. All built on the established visual foundation.</p>
+</div>
+
+<nav class="nav-bar">
+  <button class="nav-btn active" onclick="scrollToSection('dir-a')">A: Compact Review</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-b')">B: Spacious Review</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-c')">C: Dashboard</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-d')">D: Post-Session</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-e')">E: Grammar Review</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-f')">F: Onboarding</button>
+</nav>
+
+<!-- DIRECTION A: Compact Review (Kanji — Correct) -->
+<div class="section" id="dir-a">
+  <div class="direction-tag" style="background:rgba(68,136,238,0.15);color:var(--feedback-info);">Direction A</div>
+  <div class="section-title">Compact Review — Maximum Density</div>
+  <div class="section-desc">Tight spacing, smaller ring, more content visible. Optimized for speed — minimum eye travel between prompt and input. Favors experienced users who want maximum throughput.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Prompt State</div>
+      <div class="phone-frame compact">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 87%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="62 97.4"/>
+              </svg>
+              <span class="ring-pct">64%</span>
+            </div>
+            <span class="review-count">18 of 42</span>
+            <span class="item-type-badge" style="background:rgba(238,68,136,0.15);color:var(--content-kanji);">KANJI</span>
+          </div>
+          <div class="focal-zone">
+            <div class="prompt-label">Reading</div>
+            <div class="kanji-display">食</div>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" placeholder="Type reading in hiragana..." value="しょく" readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Correct Result</div>
+      <div class="phone-frame compact">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 87%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="64 97.4"/>
+              </svg>
+              <span class="ring-pct">66%</span>
+            </div>
+            <span class="review-count">19 of 42</span>
+            <span class="item-type-badge" style="background:rgba(238,68,136,0.15);color:var(--content-kanji);">KANJI</span>
+          </div>
+          <div class="focal-zone">
+            <div class="kanji-display" style="font-size:64px;">食</div>
+            <div class="result-correct">
+              <div class="result-header">
+                <span class="result-icon">✓</span>
+                <span class="result-answer" style="color:var(--feedback-correct);">しょく</span>
+              </div>
+              <div class="result-details">
+                On'yomi: しょく · じき<br>
+                Kun'yomi: た.べる · く.う
+              </div>
+              <span class="srs-badge" style="background:rgba(136,68,204,0.2);color:var(--srs-guru);">Guru → Master</span>
+            </div>
+            <div class="reinforcement-note">食べる — used in 3 grammar sentences you've studied</div>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" value="しょく" readonly style="border-color:var(--feedback-correct);">
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION B: Spacious Review (Kanji — Incorrect) -->
+<div class="section" id="dir-b">
+  <div class="direction-tag" style="background:rgba(170,68,221,0.15);color:var(--content-vocabulary);">Direction B</div>
+  <div class="section-title">Spacious Review — Breathing Room</div>
+  <div class="section-desc">More generous spacing, larger kanji display, prominent ring. The character dominates the screen. Favors beginners who need to study stroke details and users who prefer a calmer visual pace.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Prompt State</div>
+      <div class="phone-frame spacious">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 87%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-green)" stroke-dasharray="30 97.4"/>
+              </svg>
+              <span class="ring-pct">31%</span>
+            </div>
+            <span class="review-count">8 of 42</span>
+            <span class="item-type-badge" style="background:rgba(238,68,136,0.15);color:var(--content-kanji);">KANJI</span>
+          </div>
+          <div class="focal-zone">
+            <div class="prompt-label">Meaning</div>
+            <div class="kanji-display" style="font-size:112px;">山</div>
+          </div>
+          <div class="input-zone" style="padding:16px 24px;">
+            <input class="text-input" type="text" placeholder="Type the meaning..." readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Incorrect Result</div>
+      <div class="phone-frame spacious">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 87%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-green)" stroke-dasharray="33 97.4"/>
+              </svg>
+              <span class="ring-pct">34%</span>
+            </div>
+            <span class="review-count">9 of 42</span>
+            <span class="item-type-badge" style="background:rgba(238,68,136,0.15);color:var(--content-kanji);">KANJI</span>
+          </div>
+          <div class="focal-zone">
+            <div class="kanji-display" style="font-size:80px;">山</div>
+            <div class="result-incorrect">
+              <div class="result-header">
+                <span class="result-icon">✗</span>
+                <span class="result-answer" style="color:var(--feedback-incorrect);">hill → mountain</span>
+              </div>
+              <div class="result-details">
+                Correct: <strong>mountain</strong><br>
+                Mnemonic: The three peaks of a mountain range
+              </div>
+              <span class="srs-badge" style="background:rgba(221,68,136,0.2);color:var(--srs-apprentice);">Guru → Apprentice</span>
+            </div>
+          </div>
+          <div class="input-zone" style="padding:16px 24px;">
+            <input class="text-input" type="text" value="hill" readonly style="border-color:var(--feedback-incorrect);">
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION C: Dashboard -->
+<div class="section" id="dir-c">
+  <div class="direction-tag" style="background:rgba(34,204,136,0.15);color:var(--feedback-correct);">Direction C</div>
+  <div class="section-title">Dashboard — Home Screen</div>
+  <div class="section-desc">The cognitive load ring as the visual anchor. One-tap review entry. Streak, JLPT progress, and SRS stage breakdown at a glance. Comfortable spacing for browsability.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Fresh Day — Ring Empty</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 92%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content">
+            <div class="ring-large">
+              <svg viewBox="0 0 160 160">
+                <circle class="ring-bg" cx="80" cy="80" r="68"/>
+                <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-green)" stroke-dasharray="0 427"/>
+              </svg>
+              <div class="ring-center-text">
+                <div class="pct">0%</div>
+                <div class="label">Today's Load</div>
+              </div>
+            </div>
+
+            <button class="review-btn">Review — 42 items ready</button>
+
+            <div class="streak-card">
+              <span class="streak-flame">🔥</span>
+              <div class="streak-info">
+                <div class="streak-count">23 days</div>
+                <div class="streak-label">Current streak</div>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-apprentice);">34</div>
+                <div class="stat-label">Apprentice</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-guru);">67</div>
+                <div class="stat-label">Guru</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-master);">128</div>
+                <div class="stat-label">Master</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-burned);">45</div>
+                <div class="stat-label">Burned</div>
+              </div>
+            </div>
+
+            <div class="level-section">
+              <div class="level-header">N5 Progress</div>
+              <div class="level-bar-container">
+                <div class="level-bar-fill" style="width:72%;background:linear-gradient(90deg,var(--srs-guru),var(--srs-master));"></div>
+              </div>
+              <div class="level-stats">
+                <span>Kanji: 68/103</span>
+                <span>Grammar: 42/80</span>
+                <span>Vocab: 156/250</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-item active"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
+            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Mid-Day — Ring Filling</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>12:34</span><span>⚡ 78%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content">
+            <div class="ring-large">
+              <svg viewBox="0 0 160 160">
+                <circle class="ring-bg" cx="80" cy="80" r="68"/>
+                <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-yellow)" stroke-dasharray="280 427"/>
+              </svg>
+              <div class="ring-center-text">
+                <div class="pct">66%</div>
+                <div class="label">Today's Load</div>
+              </div>
+            </div>
+
+            <button class="review-btn">Review — 18 items ready</button>
+
+            <div class="streak-card">
+              <span class="streak-flame">🔥</span>
+              <div class="streak-info">
+                <div class="streak-count">23 days</div>
+                <div class="streak-label">Current streak</div>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-apprentice);">28</div>
+                <div class="stat-label">Apprentice</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-guru);">71</div>
+                <div class="stat-label">Guru</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-master);">130</div>
+                <div class="stat-label">Master</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" style="color:var(--srs-burned);">47</div>
+                <div class="stat-label">Burned</div>
+              </div>
+            </div>
+
+            <div class="level-section">
+              <div class="level-header">N5 Progress</div>
+              <div class="level-bar-container">
+                <div class="level-bar-fill" style="width:74%;background:linear-gradient(90deg,var(--srs-guru),var(--srs-master));"></div>
+              </div>
+              <div class="level-stats">
+                <span>Kanji: 70/103</span>
+                <span>Grammar: 44/80</span>
+                <span>Vocab: 160/250</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-bar">
+            <div class="tab-item active"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
+            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION D: Post-Session Summary -->
+<div class="section" id="dir-d">
+  <div class="direction-tag" style="background:rgba(68,187,238,0.15);color:var(--ring-complete);">Direction D</div>
+  <div class="section-title">Post-Session Summary — The Viral Moment</div>
+  <div class="section-desc">Screenshot-worthy completion screen. Cognitive load ring completed with cyan glow. Time compression as the centerpiece. Domain breakdown and weakness trend. Designed for sharing.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Session Complete</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>10:02</span><span>⚡ 84%</span></div>
+        <div class="phone-body">
+          <div class="summary-content">
+            <div class="ring-large">
+              <svg viewBox="0 0 160 160">
+                <circle class="ring-bg" cx="80" cy="80" r="68"/>
+                <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-complete)" stroke-dasharray="427 427"/>
+              </svg>
+              <div class="ring-center-text">
+                <div class="pct" style="color:var(--ring-complete);">✓</div>
+                <div class="label">Complete</div>
+              </div>
+            </div>
+            <div class="summary-title">Session Complete</div>
+            <div class="summary-subtitle">35 items reviewed across 3 domains</div>
+
+            <div class="domain-row">
+              <div class="domain-card">
+                <div class="domain-value" style="color:var(--content-kanji);">12</div>
+                <div class="domain-label">Kanji</div>
+              </div>
+              <div class="domain-card">
+                <div class="domain-value" style="color:var(--content-grammar);">8</div>
+                <div class="domain-label">Grammar</div>
+              </div>
+              <div class="domain-card">
+                <div class="domain-value" style="color:var(--content-vocabulary);">15</div>
+                <div class="domain-label">Vocab</div>
+              </div>
+            </div>
+
+            <div class="time-compression-card">
+              <div class="time-label">SESSION TIME</div>
+              <div class="time-actual">18 min</div>
+              <div class="time-comparison">≈ 35–40 min across separate apps</div>
+            </div>
+
+            <div class="weakness-card">
+              <div class="weakness-title">Weakness Trends</div>
+              <div class="weakness-item">
+                <span class="weakness-pattern">て-form accuracy</span>
+                <span class="weakness-trend" style="color:var(--feedback-correct);">52% → 58% ↑</span>
+              </div>
+              <div class="weakness-item">
+                <span class="weakness-pattern">Reading vs. meaning</span>
+                <span class="weakness-trend" style="color:var(--feedback-warning);">71% → 70% →</span>
+              </div>
+            </div>
+
+            <div class="streak-card" style="width:100%;">
+              <span class="streak-flame">🔥</span>
+              <div class="streak-info">
+                <div class="streak-count">24 days</div>
+                <div class="streak-label">Streak continues!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION E: Grammar Review -->
+<div class="section" id="dir-e">
+  <div class="direction-tag" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">Direction E</div>
+  <div class="section-title">Grammar Review — Cloze with Reinforcement</div>
+  <div class="section-desc">Grammar cloze sentence with visible cross-domain reinforcement. The "← you learned this yesterday" annotation is the defining differentiator — subtle but present.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Grammar Prompt</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="50 97.4"/>
+              </svg>
+              <span class="ring-pct">51%</span>
+            </div>
+            <span class="review-count">22 of 42</span>
+            <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
+          </div>
+          <div class="focal-zone">
+            <div class="prompt-label" style="margin-bottom:24px;">Complete the sentence</div>
+            <div class="grammar-sentence">
+              昨日、ラーメンを<span class="grammar-blank"></span>。
+            </div>
+            <div class="reinforcement-note">食べる ← you learned this yesterday</div>
+            <div style="margin-top:16px;font-size:13px;color:var(--text-secondary);">
+              Grammar: Past tense (た-form)
+            </div>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" placeholder="Type in hiragana..." value="たべた" readonly>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Grammar Correct</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:45</span><span>⚡ 85%</span></div>
+        <div class="phone-body">
+          <div class="review-header">
+            <div class="ring-small">
+              <svg viewBox="0 0 36 36">
+                <circle class="ring-bg" cx="18" cy="18" r="15.5"/>
+                <circle class="ring-fill" cx="18" cy="18" r="15.5" stroke="var(--ring-yellow)" stroke-dasharray="53 97.4"/>
+              </svg>
+              <span class="ring-pct">54%</span>
+            </div>
+            <span class="review-count">23 of 42</span>
+            <span class="item-type-badge" style="background:rgba(34,187,170,0.15);color:var(--content-grammar);">GRAMMAR</span>
+          </div>
+          <div class="focal-zone">
+            <div class="grammar-sentence" style="font-size:18px;margin-bottom:16px;">
+              昨日、ラーメンを<strong style="color:var(--feedback-correct);">食べた</strong>。
+            </div>
+            <div class="result-correct">
+              <div class="result-header">
+                <span class="result-icon">✓</span>
+                <span class="result-answer" style="color:var(--feedback-correct);">食べた (たべた)</span>
+              </div>
+              <div class="result-details">
+                Past tense of 食べる (to eat)<br>
+                た-form: Replace る with た
+              </div>
+              <span class="srs-badge" style="background:rgba(0,170,221,0.2);color:var(--srs-enlightened);">Master → Enlightened</span>
+            </div>
+            <div class="reinforcement-note">食べる ← you learned this yesterday · 口 (mouth) radical — Burned</div>
+          </div>
+          <div class="input-zone">
+            <input class="text-input" type="text" value="たべた" readonly style="border-color:var(--feedback-correct);">
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION F: Onboarding -->
+<div class="section" id="dir-f">
+  <div class="direction-tag" style="background:rgba(238,170,34,0.15);color:var(--feedback-warning);">Direction F</div>
+  <div class="section-title">Onboarding — Level Selection & Import</div>
+  <div class="section-desc">First launch experience. No account required. Select starting level or import existing progress. Clean, minimal, gets to the first review session fast.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Level Selection</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:41</span><span>⚡ 95%</span></div>
+        <div class="phone-body">
+          <div style="padding:48px 24px; flex:1; display:flex; flex-direction:column;">
+            <div style="font-size:28px;font-weight:700;margin-bottom:8px;">Where are you starting?</div>
+            <div style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;">No account needed. You can change this later.</div>
+
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1;">
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;">
+                <div style="font-size:16px;font-weight:600;margin-bottom:4px;">I'm a beginner</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Start from N5 — radicals, basic kanji, grammar foundations</div>
+                <div style="margin-top:8px;"><span class="srs-badge" style="background:rgba(34,204,136,0.15);color:var(--feedback-correct);">Recommended for new learners</span></div>
+              </div>
+
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;">
+                <div style="font-size:16px;font-weight:600;margin-bottom:4px;">I know some Japanese</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Choose your JLPT level and mark what you already know</div>
+              </div>
+
+              <div style="background:var(--surface);border:2px solid var(--feedback-info);border-radius:12px;padding:16px;cursor:pointer;">
+                <div style="font-size:16px;font-weight:600;margin-bottom:4px;color:var(--feedback-info);">Import my progress</div>
+                <div style="font-size:13px;color:var(--text-secondary);">From WaniKani, Bunpro, or Anki — keep everything you've learned</div>
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                  <span style="font-size:11px;padding:3px 8px;background:var(--surface-elevated);border-radius:4px;color:var(--text-secondary);">WaniKani API</span>
+                  <span style="font-size:11px;padding:3px 8px;background:var(--surface-elevated);border-radius:4px;color:var(--text-secondary);">Bunpro</span>
+                  <span style="font-size:11px;padding:3px 8px;background:var(--surface-elevated);border-radius:4px;color:var(--text-secondary);">Anki (.apkg)</span>
+                </div>
+              </div>
+
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;">
+                <div style="font-size:16px;font-weight:600;margin-bottom:4px;">Session intensity</div>
+                <div style="display:flex;gap:12px;margin-top:8px;">
+                  <div style="flex:1;text-align:center;padding:10px;background:var(--surface-elevated);border-radius:8px;border:1px solid var(--feedback-info);">
+                    <div style="font-size:14px;font-weight:600;">Relaxed</div>
+                    <div style="font-size:11px;color:var(--text-secondary);">~15 min/day</div>
+                  </div>
+                  <div style="flex:1;text-align:center;padding:10px;background:var(--surface-elevated);border-radius:8px;">
+                    <div style="font-size:14px;font-weight:600;">Intense</div>
+                    <div style="font-size:11px;color:var(--text-secondary);">~30 min/day</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="review-btn" style="margin-top:16px;">Start Learning →</button>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Import Summary</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:42</span><span>⚡ 95%</span></div>
+        <div class="phone-body">
+          <div style="padding:48px 24px;flex:1;display:flex;flex-direction:column;">
+            <div style="font-size:28px;font-weight:700;margin-bottom:8px;">Import Complete</div>
+            <div style="font-size:14px;color:var(--text-secondary);margin-bottom:24px;">Your WaniKani progress has been imported.</div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+              <div style="font-size:14px;font-weight:600;margin-bottom:12px;">Items Imported</div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:14px;">Kanji</span>
+                <span style="font-size:14px;font-weight:600;">1,247 mapped</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:14px;">Vocabulary</span>
+                <span style="font-size:14px;font-weight:600;">3,891 mapped</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:14px;">Radicals</span>
+                <span style="font-size:14px;font-weight:600;">412 mapped</span>
+              </div>
+            </div>
+
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+              <div style="font-size:14px;font-weight:600;margin-bottom:12px;">SRS State Preserved</div>
+              <div class="stats-row" style="margin-bottom:0;">
+                <div style="text-align:center;flex:1;">
+                  <div style="font-size:18px;font-weight:700;color:var(--srs-apprentice);">89</div>
+                  <div style="font-size:10px;color:var(--text-secondary);">Apprentice</div>
+                </div>
+                <div style="text-align:center;flex:1;">
+                  <div style="font-size:18px;font-weight:700;color:var(--srs-guru);">234</div>
+                  <div style="font-size:10px;color:var(--text-secondary);">Guru</div>
+                </div>
+                <div style="text-align:center;flex:1;">
+                  <div style="font-size:18px;font-weight:700;color:var(--srs-master);">567</div>
+                  <div style="font-size:10px;color:var(--text-secondary);">Master</div>
+                </div>
+                <div style="text-align:center;flex:1;">
+                  <div style="font-size:18px;font-weight:700;color:var(--srs-burned);">2,660</div>
+                  <div style="font-size:10px;color:var(--text-secondary);">Burned</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:rgba(34,204,136,0.08);border:1px solid rgba(34,204,136,0.2);border-radius:12px;padding:16px;text-align:center;margin-bottom:16px;">
+              <div style="font-size:14px;color:var(--feedback-correct);font-weight:600;">Your burned kanji stay burned.</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">Apprentice items enter at short intervals. No re-learning.</div>
+            </div>
+
+            <button class="review-btn" style="margin-top:auto;">Start Your First Review →</button>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height:80px;"></div>
+
+<script>
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
