@@ -1,0 +1,122 @@
+# generated: 2026-05-03T12:00:00
+# last_updated: 2026-05-03T12:00:00
+# project: japanese-learning
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: "2026-05-03T12:00:00"
+last_updated: "2026-05-03T12:00:00"
+project: japanese-learning
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  epic-1: backlog
+  1-1-bootstrap-expo-sdk-55-app-with-ci-and-ota-hooks: backlog
+  1-2-nativewind-design-tokens-and-global-styling: backlog
+  1-3-dual-sqlite-databases-on-first-launch: backlog
+  1-4-five-tab-app-shell-with-hidden-review-route-placeholder: backlog
+  1-5-curriculum-json-validation-sqlite-compile-actions-lfs-and-bundled-seed: backlog
+  1-6-curriculum-version-check-and-atomic-on-device-update: backlog
+  1-7-cached-radical-mnemonic-images-and-maintainer-r2-workflow: backlog
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-welcome-and-jlpt-starting-level-without-sign-up: backlog
+  2-2-session-intensity-preference: backlog
+  2-3-per-item-study-status-known-in-progress-not-started: backlog
+  2-4-bulk-mark-known-items-for-a-level-or-preset: backlog
+  2-5-onboarding-completion-gate-to-main-tabs: backlog
+  epic-2-retrospective: optional
+
+  epic-3: backlog
+  3-1-secure-storage-for-import-credentials: backlog
+  3-2-wanikani-v2-import-with-mapping-and-fsrs-conversion: backlog
+  3-3-bunpro-import-or-documented-fallback: backlog
+  3-4-local-anki-apkg-import: backlog
+  3-5-import-summary-and-unmatched-transparency: backlog
+  3-6-onboarding-branch-to-import-sources: backlog
+  epic-3-retrospective: optional
+
+  epic-4: backlog
+  4-1-jlpt-learn-hub-and-per-type-item-lists: backlog
+  4-2-radical-detail-with-mnemonic-image: backlog
+  4-3-kanji-detail-with-readings-meanings-mnemonics: backlog
+  4-4-vocabulary-detail-with-contextual-meanings: backlog
+  4-5-grammar-point-detail-with-structured-rules-and-examples: backlog
+  4-6-reading-passages-with-comprehension-prompts: backlog
+  4-7-dependency-graph-visibility-for-unlock-status: backlog
+  4-8-personal-mnemonics-editor: backlog
+  epic-4-retrospective: optional
+
+  epic-5: backlog
+  5-1-due-queue-builder-with-cross-type-interleaving: backlog
+  5-2-review-session-layout-session-header-and-exit-confirmation: backlog
+  5-3-reviewcard-prompting-and-answer-type-clarity: backlog
+  5-4-wanakana-powered-answer-input: backlog
+  5-5-meaning-answers-with-levenshtein-and-close-behavior: backlog
+  5-6-grammar-cloze-validation-with-conjugation-parser-and-fallback: backlog
+  5-7-progressive-hints-and-reinforcement-on-results: backlog
+  5-8-related-item-micro-adjustments-after-reviews: backlog
+  5-9-fsrs-state-updates-and-srs-stage-display-on-results: backlog
+  5-10-prefetch-upcoming-review-items: backlog
+  epic-5-retrospective: optional
+
+  epic-6: backlog
+  6-1-record-per-item-errors-and-types-for-weakness: backlog
+  6-2-pattern-tags-and-confusion-cluster-detection: backlog
+  6-3-weakness-biased-queue-ordering: backlog
+  6-4-stats-tab-with-weakness-trends-and-srs-stage-breakdown: backlog
+  6-5-cognitive-load-ring-data-model-and-ui: backlog
+  6-6-guidance-when-daily-cognitive-threshold-is-met: backlog
+  6-7-streak-tracking-and-home-display: backlog
+  6-8-opt-in-notifications-for-daily-review-and-streak-risk: backlog
+  6-9-post-session-summary-time-compression-and-share-card: backlog
+  6-10-home-screen-composition-per-chosen-ux-direction: backlog
+  epic-6-retrospective: optional
+
+  epic-7: backlog
+  7-1-screen-reader-semantics-for-navigation-and-review: backlog
+  7-2-color-contrast-verification-against-tokens: backlog
+  7-3-dynamic-type-font-scaling-to-200: backlog
+  7-4-hardware-keyboard-and-accessibility-keyboard-support-in-review: backlog
+  7-5-automated-accessibility-checks-in-ci: backlog
+  7-6-reduced-motion-and-optional-ring-animation-disable: backlog
+  epic-7-retrospective: optional
+
+  epic-8: backlog
+  8-1-shadow-mode-positioning-and-comparative-session-stats: backlog
+  8-2-shadow-mode-gentle-switch-prompts: backlog
+  8-3-ai-generated-reading-and-community-contribution-backlog: backlog
+  epic-8-retrospective: optional
