@@ -1,6 +1,6 @@
 # Story 1.1: Bootstrap Expo SDK 55 app with CI and OTA hooks
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -32,7 +32,8 @@ So that **the team has a reproducible app entrypoint aligned with architecture (
   - [x] Initialize with `npx create-expo-app@latest japanese-learning --template default@sdk-55` **or** equivalent committed tree if app lives in monorepo root (document chosen layout in `README.md`).
   - [x] Confirm **TypeScript strict** in `tsconfig.json` (no implicit any; align with Expo defaults and fix any template drift).
   - [x] Confirm **Expo Router** uses **`src/app`** (SDK 55 default layout); root `_layout.tsx` loads without route errors on simulators.
-  - [x] Verify **iOS + Android** builds locally (`npx expo run:ios` / `npx expo run:android` or documented Expo-equivalent) — note any emulator prerequisites in README.
+  - [x] Verify **Android** native run locally (`npx expo run:android` or documented equivalent) — maintainer confirmed **2026-05-17**; README notes emulator prerequisites.
+  - [x] **iOS simulator run (`npx expo run:ios`):** not executed on maintainer machine (disk/space; **Android-only** dev for now). README still documents iOS/Xcode steps for others and for future EAS/App Store builds — accepted to close this story **2026-05-17**.
 
 - [x] **AC1 — CI workflow**
   - [x] Add `.github/workflows/ci.yml` that runs on PR (and optionally push to `main`): install deps, **lint**, **`tsc --noEmit`**, **tests**.
@@ -92,7 +93,7 @@ If the repo root is **not** only the mobile app (e.g. `_bmad-output` coexists), 
 
 - **CI:** At least one Jest test passing.
 - **Local:** Developer can run the same commands as CI (`npm test` / `yarn test`, `npm run lint`, `npx tsc --noEmit`).
-- **Manual:** Launch app on iOS + Android simulators; confirm no red screen on startup.
+- **Manual:** Launch on a simulator or device and confirm no red screen on startup. **Maintainer (2026-05-17):** Android verified locally; iOS deferred on this workstation — README remains the source for iOS when space or CI/EAS runs it.
 
 ### Previous story intelligence
 
@@ -100,7 +101,7 @@ None — first story in Epic 1.
 
 ### Git intelligence summary
 
-Recent commits are planning artifacts (epics, architecture, sprint status). **No application code yet** — this story establishes the initial mobile codebase and CI.
+The **`mobile/`** Expo SDK 55 app, CI workflow, and related root docs are in the repository. Treat this story as the source of truth for what 1.1 delivered; use git history for line-level diffs.
 
 ### Latest technical information
 
@@ -122,7 +123,7 @@ No `project-context.md` found in repo — rely on this story + `_bmad-output/pla
 
 ### Agent Model Used
 
-Cursor / Composer (automated dev-story run).
+Cursor / Composer (automated dev-story run). **Code review follow-up (2026-05-17):** Composer — aligned task checkboxes with verification reality (Android confirmed by Riyaz), expanded File List, cleared stale “no app code” note. **Closure (2026-05-17):** Story marked **done**; maintainer accepts **Android-only** local dev (disk/space); iOS native run waived for this story with README left for team/EAS.
 
 ### Debug Log References
 
@@ -138,7 +139,7 @@ None.
 - Fixed template **`tsc`** gap: `mobile/src/types/css-modules.d.ts` for `*.module.css` imports on web.
 - Pinned **`@types/jest@29.5.14`** to satisfy `expo-doctor` / Expo SDK 55 dependency alignment.
 - Root **`README.md`**: monorepo layout, commands, OTA / FR51 notes, simulator prerequisites; root **`.gitignore`** extended for `node_modules` and `.DS_Store`.
-- **Simulator note:** `npx expo run:ios` / `run:android` were not executed in the agent environment; README documents prerequisites and commands for local verification.
+- **Native runs:** **Android** — maintainer verified `npx expo run:android` successfully on **2026-05-17**. **iOS** — not run locally on maintainer machine (space); README documents `npx expo run:ios` for others and release pipelines.
 
 ### File List
 
@@ -146,8 +147,18 @@ None.
 - `README.md`
 - `.github/workflows/ci.yml`
 - `_bmad-output/implementation-artifacts/sprint-status.yaml`
-- `mobile/` (full Expo SDK 55 baseline tree from template, plus: `app.json`, `eas.json`, `tsconfig.json`, `eslint.config.js`, `package.json`, `package-lock.json`, `src/app/_layout.tsx`, `src/lib/safe-updates-metadata.ts`, `src/types/css-modules.d.ts`, `__tests__/smoke.test.ts`, `__tests__/safe-updates-metadata.test.ts`)
+- `mobile/app.json`, `mobile/eas.json`, `mobile/tsconfig.json`, `mobile/eslint.config.js`, `mobile/package.json`, `mobile/package-lock.json`
+- `mobile/src/app/_layout.tsx`, `mobile/src/app/index.tsx`, `mobile/src/app/explore.tsx`
+- `mobile/src/lib/safe-updates-metadata.ts`
+- `mobile/src/types/css-modules.d.ts`
+- `mobile/src/constants/theme.ts`
+- `mobile/src/components/app-tabs.tsx`, `mobile/src/components/app-tabs.web.tsx`, `mobile/src/components/animated-icon.tsx`, `mobile/src/components/animated-icon.web.tsx`, `mobile/src/components/hint-row.tsx`, `mobile/src/components/themed-text.tsx`, `mobile/src/components/themed-view.tsx`, `mobile/src/components/web-badge.tsx`, `mobile/src/components/external-link.tsx`, `mobile/src/components/ui/collapsible.tsx`
+- `mobile/src/hooks/use-color-scheme.ts`, `mobile/src/hooks/use-color-scheme.web.ts`, `mobile/src/hooks/use-theme.ts`
+- `mobile/__tests__/smoke.test.ts`, `mobile/__tests__/safe-updates-metadata.test.ts`
+- Plus template assets, config, and other generated **`mobile/`** files from `default@sdk-55` not named here (see repo tree).
 
 ## Change Log
 
+- **2026-05-17 (later):** Story **done** — maintainer Android-only dev (disk/space); iOS simulator task closed with documented waiver; README unchanged as iOS reference; sprint status → **done**.
+- **2026-05-17:** Code review (option 1) — Android native run verified by maintainer; split iOS/Android verification tasks; expanded File List; stale git summary removed; status **review → in-progress** until iOS `run:ios` verified for AC1.
 - **2026-05-03:** Story 1.1 implemented — Expo app in `mobile/`, GitHub Actions CI, Jest, `expo-updates` + `runtimeVersion`, `eas.json` skeleton, README OTA/FR51 documentation; sprint status → review.

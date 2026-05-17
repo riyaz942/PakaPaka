@@ -13,7 +13,10 @@ export function readUpdatesRuntimeMetadata(): {
       runtimeVersion: Updates.runtimeVersion ?? null,
       isEmbeddedLaunch: Updates.isEmbeddedLaunch,
     };
-  } catch {
+  } catch (error) {
+    if (__DEV__) {
+      console.warn('[safe-updates-metadata] Failed to read Expo Updates metadata', error);
+    }
     return { runtimeVersion: null, isEmbeddedLaunch: undefined };
   }
 }
