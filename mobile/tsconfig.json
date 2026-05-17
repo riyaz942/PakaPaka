@@ -13,6 +13,7 @@
     }
   },
   "include": [
+    "nativewind-env.d.ts",
     "src/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",

@@ -1,6 +1,6 @@
 # Story 1.2: NativeWind design tokens and global styling
 
-Status: ready-for-dev
+Status: review
 
 <!-- Ultimate context engine analysis completed - comprehensive developer guide created -->
 
@@ -147,29 +147,29 @@ So that **later screens match the UX spec without ad-hoc styles (UX-DR1–UX-DR3
 
 ## Tasks / Subtasks
 
-- [ ] **AC1 — Install & wire NativeWind**
-  - [ ] Add `nativewind@^4.1.23` and `tailwindcss@^3.4.17` (architecture-pinned; verify lockfile) plus any peer deps the official [NativeWind Expo setup](https://www.nativewind.dev/) requires for v4.
-  - [ ] Add `mobile/babel.config.js` (or extend existing) with `nativewind/babel` per current docs.
-  - [ ] Add `mobile/metro.config.js` using `withNativeWind` from `nativewind/metro`; set `input` to the CSS file path you standardize on (`./src/global.css` recommended to match existing file).
-  - [ ] Replace contents of `mobile/src/global.css` with Tailwind directives; add any `:root` font variables to `@layer base` or keep separate web font rules without breaking RN.
-  - [ ] Import global CSS from `mobile/src/app/_layout.tsx` once; remove redundant import from `theme.ts` if still present.
+- [x] **AC1 — Install & wire NativeWind**
+  - [x] Add `nativewind@^4.1.23` and `tailwindcss@^3.4.17` (architecture-pinned; verify lockfile) plus any peer deps the official [NativeWind Expo setup](https://www.nativewind.dev/) requires for v4.
+  - [x] Add `mobile/babel.config.js` (or extend existing) with `nativewind/babel` per current docs.
+  - [x] Add `mobile/metro.config.js` using `withNativeWind` from `nativewind/metro`; set `input` to the CSS file path you standardize on (`./src/global.css` recommended to match existing file).
+  - [x] Replace contents of `mobile/src/global.css` with Tailwind directives; add any `:root` font variables to `@layer base` or keep separate web font rules without breaking RN.
+  - [x] Import global CSS from `mobile/src/app/_layout.tsx` once; remove redundant import from `theme.ts` if still present.
 
-- [ ] **AC2–AC3 — `tailwind.config.js`**
-  - [ ] `content` globs cover `./src/**/*.{ts,tsx}` (and other roots if needed).
-  - [ ] Implement all token groups listed in AC2 and AC3; comment each group with `// UX-DR2` / `// UX-DR3` for traceability.
-  - [ ] Add `nativewind/preset` to `presets`.
-  - [ ] Create `mobile/src/utils/cn.ts` — export `cn(...inputs)` wrapping `clsx` + `twMerge` per architecture component pattern. Install `clsx` and `tailwind-merge`.
-  - [ ] Create `mobile/nativewind-env.d.ts` — reference triple-slash directive for NativeWind `className` augmentation.
+- [x] **AC2–AC3 — `tailwind.config.js`**
+  - [x] `content` globs cover `./src/**/*.{ts,tsx}` (and other roots if needed).
+  - [x] Implement all token groups listed in AC2 and AC3; comment each group with `// UX-DR2` / `// UX-DR3` for traceability.
+  - [x] Add `nativewind/preset` to `presets`.
+  - [x] Create `mobile/src/utils/cn.ts` — export `cn(...inputs)` wrapping `clsx` + `twMerge` per architecture component pattern. Install `clsx` and `tailwind-merge`.
+  - [x] Create `mobile/nativewind-env.d.ts` — reference triple-slash directive for NativeWind `className` augmentation.
 
-- [ ] **AC4 — Color scheme**
-  - [ ] Set `darkMode: 'media'` in `tailwind.config.js` — follows system color scheme automatically via `useColorScheme`. Dark is the default; use `light:` prefix for light overrides (architecture: "Dark-first — base classes are dark theme, `light:` prefix for light theme").
-  - [ ] Ensure first-run screens (index / tabs shell) use token classes for background + text on at least one screen to prove toggling works.
+- [x] **AC4 — Color scheme**
+  - [x] Set `darkMode: 'media'` in `tailwind.config.js` — follows system color scheme automatically via `useColorScheme`. Dark is the default; use `light:` prefix for light overrides (architecture: "Dark-first — base classes are dark theme, `light:` prefix for light theme").
+  - [x] Ensure first-run screens (index / tabs shell) use token classes for background + text on at least one screen to prove toggling works.
 
-- [ ] **AC5 — Template cleanup**
-  - [ ] Remove `import '@/global.css'` from `theme.ts` (single import now in `_layout.tsx`).
-  - [ ] Add `@deprecated` JSDoc comment to the `Colors` object pointing to Tailwind tokens.
-  - [ ] Keep `Fonts`, `Spacing`, `BottomTabInset`, `MaxContentWidth` exports untouched for now.
-  - [ ] Run `npm run lint`, `npm run typecheck`, `npm test` locally; fix any ESLint/TypeScript issues from `className` typings.
+- [x] **AC5 — Template cleanup**
+  - [x] Remove `import '@/global.css'` from `theme.ts` (single import now in `_layout.tsx`).
+  - [x] Add `@deprecated` JSDoc comment to the `Colors` object pointing to Tailwind tokens.
+  - [x] Keep `Fonts`, `Spacing`, `BottomTabInset`, `MaxContentWidth` exports untouched for now.
+  - [x] Run `npm run lint`, `npm run typecheck`, `npm test` locally; fix any ESLint/TypeScript issues from `className` typings.
 
 ## Dev Notes
 
@@ -254,14 +254,41 @@ No `project-context.md` in repo — use this story + `_bmad-output/planning-arti
 
 ### Agent Model Used
 
-(To be filled by dev agent)
+Composer (Cursor)
 
 ### Debug Log References
 
+- Jest failed until `nativewind/babel` was moved from `plugins` to `presets` (it returns a preset-shaped config via `react-native-css-interop/babel`).
+
 ### Completion Notes List
 
+- Wired NativeWind v4 (`babel-preset-expo` + `nativewind/babel` preset, `withNativeWind` Metro, `tailwind.config.js` with `nativewind/preset`, semantic tokens UX-DR2/UX-DR3).
+- Dark-first surfaces/text use CSS custom properties in `global.css` with `@media (prefers-color-scheme: light)`; Tailwind `light:` variant plugin added for future conditional utilities.
+- Single `import '@/global.css'` from `src/app/_layout.tsx`; root `View` uses `bg-background`. Home and Explore use token `className`s for primary backgrounds/text where specified.
+- Added `cn` helper (`clsx` + `tailwind-merge`) and Jest coverage for merge behavior.
+- Deprecated `Colors` in `theme.ts` with JSDoc; aligned legacy palette to UX hex for `Themed*` / tabs until full migration.
+
 ### File List
+
+- `mobile/package.json`
+- `mobile/package-lock.json`
+- `mobile/babel.config.js`
+- `mobile/metro.config.js`
+- `mobile/tailwind.config.js`
+- `mobile/nativewind-env.d.ts`
+- `mobile/tsconfig.json`
+- `mobile/src/global.css`
+- `mobile/src/app/_layout.tsx`
+- `mobile/src/app/index.tsx`
+- `mobile/src/app/explore.tsx`
+- `mobile/src/constants/theme.ts`
+- `mobile/src/components/themed-text.tsx`
+- `mobile/src/utils/cn.ts`
+- `mobile/src/utils/cn.test.ts`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+- `_bmad-output/implementation-artifacts/1-2-nativewind-design-tokens-and-global-styling.md`
 
 ## Change Log
 
 - **2026-05-17:** Story created via `create-story` workflow — status **ready-for-dev**.
+- **2026-05-18:** Implemented NativeWind pipeline, design tokens, `cn`, layout/CSS import cleanup, tests — status **review**.
