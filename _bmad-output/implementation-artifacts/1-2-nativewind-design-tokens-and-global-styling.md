@@ -1,6 +1,6 @@
 # Story 1.2: NativeWind design tokens and global styling
 
-Status: review
+Status: done
 
 <!-- Ultimate context engine analysis completed - comprehensive developer guide created -->
 
@@ -263,10 +263,11 @@ Composer (Cursor)
 ### Completion Notes List
 
 - Wired NativeWind v4 (`babel-preset-expo` + `nativewind/babel` preset, `withNativeWind` Metro, `tailwind.config.js` with `nativewind/preset`, semantic tokens UX-DR2/UX-DR3).
-- Dark-first surfaces/text use CSS custom properties in `global.css` with `@media (prefers-color-scheme: light)`; Tailwind `light:` variant plugin added for future conditional utilities.
+- Dark-first surfaces/text use CSS custom properties in `global.css` with `@media (prefers-color-scheme: light)`; legacy `Themed*` hooks use `resolveColorScheme()` so JS theme matches the same dark-first default as NativeWind `:root`.
 - Single `import '@/global.css'` from `src/app/_layout.tsx`; root `View` uses `bg-background`. Home and Explore use token `className`s for primary backgrounds/text where specified.
 - Added `cn` helper (`clsx` + `tailwind-merge`) and Jest coverage for merge behavior.
 - Deprecated `Colors` in `theme.ts` with JSDoc; aligned legacy palette to UX hex for `Themed*` / tabs until full migration.
+- Code review: added `resolveColorScheme()` (dark-first), shared `design-tokens.js` for expo splash StyleSheet colors, web hydration default dark.
 
 ### File List
 
@@ -285,10 +286,34 @@ Composer (Cursor)
 - `mobile/src/components/themed-text.tsx`
 - `mobile/src/utils/cn.ts`
 - `mobile/src/utils/cn.test.ts`
+- `mobile/src/utils/resolve-color-scheme.ts`
+- `mobile/src/utils/resolve-color-scheme.test.ts`
+- `mobile/src/constants/design-tokens.js`
+- `mobile/src/constants/design-tokens.d.ts`
+- `mobile/src/components/animated-icon.tsx`
+- `mobile/src/hooks/use-theme.ts`
+- `mobile/src/hooks/use-color-scheme.web.ts`
 - `_bmad-output/implementation-artifacts/sprint-status.yaml`
 - `_bmad-output/implementation-artifacts/1-2-nativewind-design-tokens-and-global-styling.md`
+
+## Senior Developer Review (AI)
+
+**Reviewer:** Riyaz (Composer) · **2026-05-24**
+
+**Outcome:** Approve after fixes
+
+**Findings addressed (7):**
+
+- HIGH: `useTheme()` null/unspecified handling — `resolveColorScheme()` dark-first helper
+- HIGH: Navigation `ThemeProvider` null scheme — same helper in `_layout.tsx`
+- HIGH: Dual theme systems — documented alignment; shared dark-first resolver for JS + CSS-var NativeWind
+- MEDIUM: Removed unused `light:` Tailwind plugin (CSS vars handle scheme)
+- MEDIUM: Web hydration pre-paint — default `'dark'` in `use-color-scheme.web.ts`
+- MEDIUM: `animated-icon` raw hex — `design-tokens.js` shared with `tailwind.config.js`
+- MEDIUM: `nativewind` range aligned to `^4.1.23` per architecture
 
 ## Change Log
 
 - **2026-05-17:** Story created via `create-story` workflow — status **ready-for-dev**.
 - **2026-05-18:** Implemented NativeWind pipeline, design tokens, `cn`, layout/CSS import cleanup, tests — status **review**.
+- **2026-05-24:** Code review fixes (color-scheme resolver, design-tokens, web hydration) — status **done**.

@@ -7,15 +7,17 @@ import { useColorScheme, View } from 'react-native';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import AppTabs from '@/components/app-tabs';
 import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
+import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 export default function TabLayout() {
   useEffect(() => {
     readUpdatesRuntimeMetadata();
   }, []);
   const colorScheme = useColorScheme();
+  const isDark = resolveColorScheme(colorScheme) === 'dark';
   return (
     <View className="flex-1 bg-background">
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <AnimatedSplashOverlay />
         <AppTabs />
       </ThemeProvider>

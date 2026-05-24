@@ -1,3 +1,5 @@
+const { expoBrand } = require('./src/constants/design-tokens');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'media',
@@ -45,6 +47,11 @@ module.exports = {
         // UX-DR2 — reinforcement
         'reinforcement-text': '#6688bb',
         'reinforcement-bg': '#1a2233',
+
+        // Expo template splash/icon (design-tokens.js — programmatic StyleSheet only)
+        'expo-splash': expoBrand.splash,
+        'expo-splash-light': expoBrand.splashGradientStart,
+        'expo-splash-dark': expoBrand.splashGradientEnd,
       },
       // UX-DR3 — typography scale
       fontSize: {
@@ -75,9 +82,4 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    function ({ addVariant }) {
-      addVariant('light', '@media (prefers-color-scheme: light)');
-    },
-  ],
 };
