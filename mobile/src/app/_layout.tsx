@@ -7,6 +7,7 @@ import { useColorScheme, View } from 'react-native';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import AppTabs from '@/components/app-tabs';
 import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
+import { DatabaseProvider } from '@/providers/DatabaseProvider';
 import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 export default function TabLayout() {
@@ -18,8 +19,10 @@ export default function TabLayout() {
   return (
     <View className="flex-1 bg-background">
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
-        <AnimatedSplashOverlay />
-        <AppTabs />
+        <DatabaseProvider>
+          <AnimatedSplashOverlay />
+          <AppTabs />
+        </DatabaseProvider>
       </ThemeProvider>
     </View>
   );

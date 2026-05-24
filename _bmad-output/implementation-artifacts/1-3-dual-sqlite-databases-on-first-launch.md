@@ -1,6 +1,6 @@
 # Story 1.3: Dual SQLite databases on first launch
 
-Status: ready-for-dev
+Status: done
 
 <!-- Ultimate context engine analysis completed - comprehensive developer guide created -->
 
@@ -45,49 +45,49 @@ So that **curriculum can be replaced later without touching my progress (FR46, N
 
 ## Tasks / Subtasks
 
-- [ ] **AC1 — Install `expo-sqlite`**
-  - [ ] Add `expo-sqlite` at SDK 55 compatible version (`npx expo install expo-sqlite`).
-  - [ ] Do **not** add `op-sqlite` unless benchmarking later proves need (architecture fallback only).
+- [x] **AC1 — Install `expo-sqlite`**
+  - [x] Add `expo-sqlite` at SDK 55 compatible version (`npx expo install expo-sqlite`).
+  - [x] Do **not** add `op-sqlite` unless benchmarking later proves need (architecture fallback only).
 
-- [ ] **AC1 — Minimal bundled `curriculum.db` stub**
-  - [ ] Create `mobile/assets/curriculum-seed/curriculum.db` (committed binary) with **only** tables needed to prove open + future swap contract:
+- [x] **AC1 — Minimal bundled `curriculum.db` stub**
+  - [x] Create `mobile/assets/curriculum-seed/curriculum.db` (committed binary) with **only** tables needed to prove open + future swap contract:
     - `curriculum_metadata` (`version` TEXT PRIMARY KEY, `build_date` TEXT NOT NULL, `content_hash` TEXT NULL)
     - One seed row: `version = '0.0.0-stub'`, `build_date` = ISO UTC at creation
-  - [ ] Document in file header comment or `mobile/assets/curriculum-seed/README.md` that Story **1.5** replaces this with CI-compiled N5 seed — **do not** duplicate full curriculum schema here.
-  - [ ] `require()` the asset from data layer (Metro bundles `.db` when required).
+  - [x] Document in file header comment or `mobile/assets/curriculum-seed/README.md` that Story **1.5** replaces this with CI-compiled N5 seed — **do not** duplicate full curriculum schema here.
+  - [x] `require()` the asset from data layer (Metro bundles .db when required).
 
-- [ ] **AC1 — `user.db` migration `001_initial`**
-  - [ ] `mobile/src/data/migrations/migrations.types.ts` — `Migration` type (`version: number`, `name: string`, `up: (db) => void`).
-  - [ ] `mobile/src/data/migrations/001_initial.ts` — creates:
+- [x] **AC1 — `user.db` migration `001_initial`**
+  - [x] `mobile/src/data/migrations/migrations.types.ts` — `Migration` type (`version: number`, `name: string`, `up: (db) => void`).
+  - [x] `mobile/src/data/migrations/001_initial.ts` — creates:
     - `schema_migrations` (`version INTEGER PRIMARY KEY`, `applied_at TEXT NOT NULL`)
     - `user_preferences` (`key TEXT PRIMARY KEY`, `value TEXT NOT NULL`, `updated_at TEXT NOT NULL`)
-  - [ ] `mobile/src/data/migrations/migrationRunner.ts` — read max version, run pending `up` in transactions, insert migration row; idempotent on re-run.
+  - [x] `mobile/src/data/migrations/migrationRunner.ts` — read max version, run pending `up` in transactions, insert migration row; idempotent on re-run.
 
-- [ ] **AC1 — Database initialization module**
-  - [ ] `mobile/src/types/result.types.ts` — `Result<T, E>`, `AppError` per architecture (if not already present).
-  - [ ] `mobile/src/data/database.ts` — `initializeDatabases(): Promise<Result<DatabaseHandles, AppError>>`:
+- [x] **AC1 — Database initialization module**
+  - [x] `mobile/src/types/result.types.ts` — `Result<T, E>`, `AppError` per architecture (if not already present).
+  - [x] `mobile/src/data/database.ts` — `initializeDatabases(): Promise<Result<DatabaseHandles, AppError>>`:
     - Import bundled curriculum via expo-sqlite asset import → open `curriculum.db` connection
     - Open/create `user.db`, run `migrationRunner`
     - Return `{ curriculumDb, userDb }` typed handles
-  - [ ] Export `DatabaseHandles` type; **do not** expose raw DB to components — context only.
+  - [x] Export `DatabaseHandles` type; **do not** expose raw DB to components — context only.
 
-- [ ] **AC3 — Provider + context**
-  - [ ] `mobile/src/providers/DatabaseProvider.tsx` — loading / error / ready states; call `initializeDatabases` once on mount.
-  - [ ] `mobile/src/providers/DatabaseContext.tsx` (or co-located) — context value: `{ curriculumDb, userDb, isReady, error }`.
-  - [ ] `mobile/src/data/hooks/useDatabase.ts` — consumer hook with guard if not ready.
-  - [ ] Wrap children in `mobile/src/app/_layout.tsx` **inside** existing `ThemeProvider` tree (after `global.css` import, before tabs).
+- [x] **AC3 — Provider + context**
+  - [x] `mobile/src/providers/DatabaseProvider.tsx` — loading / error / ready states; call `initializeDatabases` once on mount.
+  - [x] `mobile/src/providers/DatabaseContext.tsx` (or co-located) — context value: `{ curriculumDb, userDb, isReady, error }`.
+  - [x] `mobile/src/data/hooks/useDatabase.ts` — consumer hook with guard if not ready.
+  - [x] Wrap children in `mobile/src/app/_layout.tsx` **inside** existing `ThemeProvider` tree (after `global.css` import, before tabs).
 
-- [ ] **AC2 — Curriculum/user isolation guard**
-  - [ ] In `database.ts`, add a short comment + **no** shared migration path between DB files.
-  - [ ] Ensure curriculum open path never runs `DROP`/`DELETE` on user DB (separate functions/files).
+- [x] **AC2 — Curriculum/user isolation guard**
+  - [x] In `database.ts`, add a short comment + **no** shared migration path between DB files.
+  - [x] Ensure curriculum open path never runs `DROP`/`DELETE` on user DB (separate functions/files).
 
-- [ ] **AC4 — Tests**
-  - [ ] `mobile/__mocks__/expo-sqlite.ts` — in-memory or jest mock implementing `openDatabaseAsync`, `execAsync`, `runSync`, `getAllSync`, `withTransactionSync`, `importDatabaseFromAssetAsync`.
-  - [ ] `mobile/src/data/migrations/migrationRunner.test.ts` — fresh DB gets version 1; re-run does not duplicate migrations.
-  - [ ] `mobile/src/data/database.test.ts` — mocked import + user migration success path.
+- [x] **AC4 — Tests**
+  - [x] `mobile/__mocks__/expo-sqlite.ts` — in-memory or jest mock implementing `openDatabaseAsync`, `execAsync`, `runSync`, `getAllSync`, `withTransactionSync`, `importDatabaseFromAssetAsync`.
+  - [x] `mobile/src/data/migrations/migrationRunner.test.ts` — fresh DB gets version 1; re-run does not duplicate migrations.
+  - [x] `mobile/src/data/database.test.ts` — mocked import + user migration success path.
 
-- [ ] **AC4 — Manual smoke**
-  - [ ] Android: cold start twice; confirm no redbox; optional dev-only log of `curriculum_metadata.version` and `schema_migrations` count.
+- [x] **AC4 — Manual smoke**
+  - [x] Android: cold start twice; confirm no redbox; optional dev-only log of `curriculum_metadata.version` and `schema_migrations` count.
 
 ## Dev Notes
 
@@ -207,14 +207,62 @@ No `project-context.md` in repo — use this story + `_bmad-output/planning-arti
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Composer (Cursor)
 
 ### Debug Log References
 
+- Jest `@/assets/*` path required explicit `moduleNameMapper` entry (general `@/` mapping pointed at `src/`).
+- Mock `expo-sqlite` needed parameterized `INSERT` handling separate from literal-value parser.
+
 ### Completion Notes List
 
+- Installed `expo-sqlite` (~55.x) with Expo config plugin in `app.json`.
+- Added bundled stub `curriculum.db` with `curriculum_metadata` row `0.0.0-stub`.
+- Implemented user DB migration runner (`001_initial`: `schema_migrations`, `user_preferences`) with transactional, idempotent apply.
+- Added `initializeDatabases()` returning `Result<DatabaseHandles, AppError>`; curriculum import via `importDatabaseFromAssetAsync`, user DB migrated separately.
+- Wrapped app in `DatabaseProvider` inside `ThemeProvider`; dev-only logs curriculum version and migration count on init.
+- Unit tests cover migration runner idempotency and database init (mocked asset import + user migration).
+- CI: `npm run lint`, `npm run typecheck`, `npm test` all pass (12 tests).
+- Code review: second-init idempotency + `user_preferences` preservation tests; provider closes DB handles on unmount.
+
 ### File List
+
+- mobile/app.json
+- mobile/package.json
+- mobile/package-lock.json
+- mobile/assets/curriculum-seed/README.md
+- mobile/assets/curriculum-seed/curriculum.db
+- mobile/__mocks__/expo-sqlite.ts
+- mobile/src/types/result.types.ts
+- mobile/src/types/assets.d.ts
+- mobile/src/data/database.ts
+- mobile/src/data/database.test.ts
+- mobile/src/data/migrations/migrations.types.ts
+- mobile/src/data/migrations/001_initial.ts
+- mobile/src/data/migrations/index.ts
+- mobile/src/data/migrations/migrationRunner.ts
+- mobile/src/data/migrations/migrationRunner.test.ts
+- mobile/src/data/hooks/useDatabase.ts
+- mobile/src/providers/DatabaseContext.tsx
+- mobile/src/providers/DatabaseProvider.tsx
+- mobile/src/app/_layout.tsx
+- _bmad-output/implementation-artifacts/sprint-status.yaml
+
+## Senior Developer Review (AI)
+
+**Reviewer:** Riyaz (Composer) · **2026-05-24**
+
+**Outcome:** Approve after fixes
+
+**Findings addressed (4):**
+
+- MEDIUM: Added `initializeDatabases` orchestration tests — second init idempotent; `user_preferences` preserved across re-init
+- MEDIUM: `DatabaseProvider` closes curriculum/user handles on unmount (Fast Refresh / remount safety)
+- MEDIUM: Documented intentional use of `importDatabaseFromAssetAsync` vs `SQLiteProvider` in `database.ts`
+- MEDIUM: Added `sprint-status.yaml` to File List
 
 ## Change Log
 
 - **2026-05-24:** Story created via `create-story` workflow — status **ready-for-dev**.
+- **2026-05-24:** Implemented dual SQLite init (curriculum + user DB), provider/context, migrations, and tests — status **review**.
+- **2026-05-24:** Code review fixes (init tests, provider cleanup, API comment) — status **done**.
