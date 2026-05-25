@@ -1,0 +1,65 @@
+{
+  "jlpt_level": "N5",
+  "passages": [
+    {
+      "title": "自己紹介",
+      "body": "はじめまして。私は学生です。よろしくお願いします。",
+      "sort_order": 1,
+      "questions": [
+        {
+          "prompt": "話している人は何ですか？",
+          "accepted_answers": [
+            "学生",
+            "がくせい"
+          ],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "買い物",
+      "body": "これは本です。それは水です。",
+      "sort_order": 2,
+      "questions": [
+        {
+          "prompt": "「それ」は何ですか？",
+          "accepted_answers": [
+            "水",
+            "みず"
+          ],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "学校",
+      "body": "今日、学校に行きます。先生に会います。",
+      "sort_order": 3,
+      "questions": [
+        {
+          "prompt": "今日どこに行きますか？",
+          "accepted_answers": [
+            "学校",
+            "がっこう"
+          ],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "時間",
+      "body": "今、何時ですか。朝です。",
+      "sort_order": 4,
+      "questions": [
+        {
+          "prompt": "今はいつですか？",
+          "accepted_answers": [
+            "朝",
+            "あさ"
+          ],
+          "sort_order": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "japanese-learning-curriculum",
+  "private": true,
+  "description": "Curriculum JSON validation and SQLite compile scripts (repo root; mobile app is separate)",
+  "scripts": {
+    "validate-schema": "tsx scripts/validate-schema.ts",
+    "compile-curriculum": "tsx scripts/compile-curriculum.ts",
+    "test": "jest --config jest.config.cjs"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "better-sqlite3": "^11.8.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.6",
+    "tsx": "^4.19.3",
+    "typescript": "~5.9.2"
+  }
+}

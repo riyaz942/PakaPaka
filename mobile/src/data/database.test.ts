@@ -29,7 +29,7 @@ describe('initializeDatabases', () => {
       'SELECT COUNT(*) AS count FROM schema_migrations',
     );
 
-    expect(curriculumVersion?.version).toBe('0.0.0-stub');
+    expect(curriculumVersion?.version).toBe('1.0.0-n5-seed');
     expect(migrationCount?.count).toBe(1);
   });
 

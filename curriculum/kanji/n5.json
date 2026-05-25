@@ -1,0 +1,940 @@
+{
+  "jlpt_level": "N5",
+  "items": [
+    {
+      "slug": "n5-ichi",
+      "primary_form": "一",
+      "meaning": "one",
+      "mnemonic_text": "Kanji one",
+      "sort_order": 1,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いち",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "one",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いち"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ni",
+      "primary_form": "二",
+      "meaning": "two",
+      "mnemonic_text": "Kanji two",
+      "sort_order": 2,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "に",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ふた",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "two",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "に"
+        }
+      ]
+    },
+    {
+      "slug": "n5-san",
+      "primary_form": "三",
+      "meaning": "three",
+      "mnemonic_text": "Kanji three",
+      "sort_order": 3,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "さん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みっ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "three",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "さん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-yon",
+      "primary_form": "四",
+      "meaning": "four",
+      "mnemonic_text": "Kanji four",
+      "sort_order": 4,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "よん",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "four",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        }
+      ]
+    },
+    {
+      "slug": "n5-go",
+      "primary_form": "五",
+      "meaning": "five",
+      "mnemonic_text": "Kanji five",
+      "sort_order": 5,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ご",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "いつ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "five",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ご"
+        }
+      ]
+    },
+    {
+      "slug": "n5-roku",
+      "primary_form": "六",
+      "meaning": "six",
+      "mnemonic_text": "Kanji six",
+      "sort_order": 6,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ろく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "むっ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "six",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ろく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nana",
+      "primary_form": "七",
+      "meaning": "seven",
+      "mnemonic_text": "Kanji seven",
+      "sort_order": 7,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しち",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "seven",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しち"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hachi",
+      "primary_form": "八",
+      "meaning": "eight",
+      "mnemonic_text": "Kanji eight",
+      "sort_order": 8,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "はち",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "やっ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "eight",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "はち"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kyuu",
+      "primary_form": "九",
+      "meaning": "nine",
+      "mnemonic_text": "Kanji nine",
+      "sort_order": 9,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ここの",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "nine",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-juu",
+      "primary_form": "十",
+      "meaning": "ten",
+      "mnemonic_text": "Kanji ten",
+      "sort_order": 10,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ten",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nichi",
+      "primary_form": "日",
+      "meaning": "day",
+      "mnemonic_text": "Kanji day",
+      "sort_order": 11,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "にち",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "day",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "にち"
+        }
+      ]
+    },
+    {
+      "slug": "n5-gatsu",
+      "primary_form": "月",
+      "meaning": "month",
+      "mnemonic_text": "Kanji month",
+      "sort_order": 12,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "げつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つき",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "month",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "げつ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-toshi",
+      "primary_form": "年",
+      "meaning": "year",
+      "mnemonic_text": "Kanji year",
+      "sort_order": 13,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ねん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "year",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ねん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-jikan",
+      "primary_form": "時間",
+      "meaning": "time",
+      "mnemonic_text": "Kanji time",
+      "sort_order": 14,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とき",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "time",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hito",
+      "primary_form": "人",
+      "meaning": "person",
+      "mnemonic_text": "Kanji person",
+      "sort_order": 15,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "person",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kodomo",
+      "primary_form": "子",
+      "meaning": "child",
+      "mnemonic_text": "Kanji child",
+      "sort_order": 16,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "こ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "child",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        }
+      ]
+    },
+    {
+      "slug": "n5-onna",
+      "primary_form": "女",
+      "meaning": "woman",
+      "mnemonic_text": "Kanji woman",
+      "sort_order": 17,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "おんな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "woman",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じょ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-otoko",
+      "primary_form": "男",
+      "meaning": "man",
+      "mnemonic_text": "Kanji man",
+      "sort_order": 18,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "だん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "おとこ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "man",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "だん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-sensei",
+      "primary_form": "先生",
+      "meaning": "teacher",
+      "mnemonic_text": "Kanji teacher",
+      "sort_order": 19,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "teacher",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-gakkou",
+      "primary_form": "学校",
+      "meaning": "school",
+      "mnemonic_text": "Kanji school",
+      "sort_order": 20,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "がく",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "school",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "がく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hon",
+      "primary_form": "本",
+      "meaning": "book",
+      "mnemonic_text": "Kanji book",
+      "sort_order": 21,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ほん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "book",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ほん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-mizu-k",
+      "primary_form": "水",
+      "meaning": "water",
+      "mnemonic_text": "Kanji water",
+      "sort_order": 22,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "すい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みず",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "water",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "すい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hi-k",
+      "primary_form": "火",
+      "meaning": "fire",
+      "mnemonic_text": "Kanji fire",
+      "sort_order": 23,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "か",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "fire",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "か"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ki-k",
+      "primary_form": "木",
+      "meaning": "tree",
+      "mnemonic_text": "Kanji tree",
+      "sort_order": 24,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "き",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tree",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kane-k",
+      "primary_form": "金",
+      "meaning": "money",
+      "mnemonic_text": "Kanji money",
+      "sort_order": 25,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かね",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "money",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-tabi",
+      "primary_form": "食",
+      "meaning": "eat",
+      "mnemonic_text": "Kanji eat",
+      "sort_order": 26,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょく",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "eat",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しょく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nomu",
+      "primary_form": "飲",
+      "meaning": "drink",
+      "mnemonic_text": "Kanji drink",
+      "sort_order": 27,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "drink",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-iku",
+      "primary_form": "行",
+      "meaning": "go",
+      "mnemonic_text": "Kanji go",
+      "sort_order": 28,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "い",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "go",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kuru",
+      "primary_form": "来",
+      "meaning": "come",
+      "mnemonic_text": "Kanji come",
+      "sort_order": 29,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "らい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "く",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "come",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "らい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-miru",
+      "primary_form": "見",
+      "meaning": "see",
+      "mnemonic_text": "Kanji see",
+      "sort_order": 30,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "けん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "み",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "see",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "けん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kiku",
+      "primary_form": "聞",
+      "meaning": "hear",
+      "mnemonic_text": "Kanji hear",
+      "sort_order": 31,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぶん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "き",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "hear",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぶん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hanasu",
+      "primary_form": "話",
+      "meaning": "speak",
+      "mnemonic_text": "Kanji speak",
+      "sort_order": 32,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "わ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "speak",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "わ"
+        }
+      ]
+    }
+  ]
+}

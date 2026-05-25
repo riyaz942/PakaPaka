@@ -227,9 +227,14 @@ export async function importDatabaseFromAssetAsync(
   const state = getDatabaseState(databaseName);
   state.tables.set('curriculum_metadata', [
     {
-      version: '0.0.0-stub',
-      build_date: '2026-05-24T00:00:00.000Z',
-      content_hash: null,
+      version: '1.0.0-n5-seed',
+      build_date: '2026-05-25T00:00:00.000Z',
+      content_hash: 'mock-content-hash',
+      item_count: 114,
+      radical_count: 25,
+      kanji_count: 32,
+      vocabulary_count: 41,
+      grammar_count: 16,
     },
   ]);
 }

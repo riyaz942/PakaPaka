@@ -1,0 +1,18 @@
+{
+  "edges": [
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n5-ichi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "n5-ichi",
+      "from_type": "kanji",
+      "to_slug": "ichi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    }
+  ]
+}

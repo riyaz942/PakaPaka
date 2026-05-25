@@ -1,0 +1,10 @@
+{
+  "jlpt_level": "N5",
+  "passages": [
+    {
+      "title": "Test",
+      "body": "テストです。",
+      "questions": [{ "prompt": "What?", "accepted_answers": ["test"] }]
+    }
+  ]
+}

@@ -4,3 +4,7 @@ _bmad/
 
 node_modules/
 .DS_Store
+
+# Curriculum compile temp files (atomic write uses *.db.tmp)
+mobile/assets/curriculum-seed/*.db.tmp
+dist/

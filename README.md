@@ -8,11 +8,36 @@ Planning artifacts live under `_bmad-output/`. The **Expo (React Native) app** f
 - **iOS:** Xcode and a simulator (for `npx expo run:ios`).
 - **Android:** Android Studio, SDK, and an emulator (for `npx expo run:android`).
 
+## Git LFS (curriculum database)
+
+The compiled N5 seed at `mobile/assets/curriculum-seed/curriculum.db` is a large binary tracked with [Git LFS](https://git-lfs.com/). After clone:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+Without LFS, you may see a tiny pointer file instead of the database; `importDatabaseFromAssetAsync` will fail on first launch. Install Git LFS and run `git lfs pull` to recover.
+
+## Curriculum pipeline (repo root)
+
+JSON sources live under `curriculum/`. Validate and compile before committing an updated bundled DB:
+
+```bash
+npm ci
+npm run validate-schema
+npm run compile-curriculum
+```
+
+CI workflow `.github/workflows/compile-curriculum.yml` runs the same steps on changes to `curriculum/**`, `scripts/**`, or root `package.json`. It writes `dist/curriculum.db` as an artifact; maintainers still commit `mobile/assets/curriculum-seed/curriculum.db` when content changes.
+
 ## Bootstrap (clean checkout)
 
 From the repository root:
 
 ```bash
+git lfs install
+git lfs pull
 cd mobile
 npm install
 ```
@@ -57,4 +82,7 @@ This project uses **`expo-updates`** (Expo Updates) for **JavaScript-only** fixe
 
 ## CI
 
-GitHub Actions workflow **`.github/workflows/ci.yml`** runs on pull requests and on pushes to `main`: install, **lint**, **`tsc --noEmit`**, and **Jest** inside `mobile/`.
+GitHub Actions:
+
+- **`.github/workflows/ci.yml`** — `mobile/` install, **lint**, **`tsc --noEmit`**, **Jest**
+- **`.github/workflows/compile-curriculum.yml`** — root `npm ci`, **validate-schema**, **compile-curriculum** when curriculum sources change

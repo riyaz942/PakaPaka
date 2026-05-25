@@ -1,0 +1,458 @@
+{
+  "jlpt_level": "N5",
+  "items": [
+    {
+      "slug": "desu",
+      "primary_form": "です",
+      "meaning": "copula (is/am)",
+      "structure": "Noun + です",
+      "mnemonic_text": "Grammar: copula (is/am)",
+      "sort_order": 1,
+      "conjugation_rules": {
+        "polite": true
+      },
+      "accepted_forms": [
+        "です",
+        "だ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：ですの使い方",
+          "english": "Example for copula (is/am).",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "watashi"
+      ]
+    },
+    {
+      "slug": "masu",
+      "primary_form": "ます",
+      "meaning": "polite verb ending",
+      "structure": "Verb stem + ます",
+      "mnemonic_text": "Grammar: polite verb ending",
+      "sort_order": 2,
+      "conjugation_rules": {
+        "polite": true
+      },
+      "accepted_forms": [
+        "ます"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：ますの使い方",
+          "english": "Example for polite verb ending.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "anata"
+      ]
+    },
+    {
+      "slug": "wo",
+      "primary_form": "を",
+      "meaning": "object marker",
+      "structure": "Noun + を + Verb",
+      "mnemonic_text": "Grammar: object marker",
+      "sort_order": 3,
+      "conjugation_rules": {
+        "particle": "object"
+      },
+      "accepted_forms": [
+        "を",
+        "ヲ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：をの使い方",
+          "english": "Example for object marker.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare"
+      ]
+    },
+    {
+      "slug": "ga",
+      "primary_form": "が",
+      "meaning": "subject marker",
+      "structure": "Noun + が + Predicate",
+      "mnemonic_text": "Grammar: subject marker",
+      "sort_order": 4,
+      "conjugation_rules": {
+        "particle": "subject"
+      },
+      "accepted_forms": [
+        "が"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：がの使い方",
+          "english": "Example for subject marker.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kanojo"
+      ]
+    },
+    {
+      "slug": "ni",
+      "primary_form": "に",
+      "meaning": "direction/time",
+      "structure": "Noun + に",
+      "mnemonic_text": "Grammar: direction/time",
+      "sort_order": 5,
+      "conjugation_rules": {
+        "particle": "direction"
+      },
+      "accepted_forms": [
+        "に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：にの使い方",
+          "english": "Example for direction/time.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kore"
+      ]
+    },
+    {
+      "slug": "de",
+      "primary_form": "で",
+      "meaning": "location/means",
+      "structure": "Noun + で + Verb",
+      "mnemonic_text": "Grammar: location/means",
+      "sort_order": 6,
+      "conjugation_rules": {
+        "particle": "location"
+      },
+      "accepted_forms": [
+        "で"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：での使い方",
+          "english": "Example for location/means.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sore"
+      ]
+    },
+    {
+      "slug": "kara",
+      "primary_form": "から",
+      "meaning": "from/because",
+      "structure": "Noun + から",
+      "mnemonic_text": "Grammar: from/because",
+      "sort_order": 7,
+      "conjugation_rules": {
+        "particle": "source"
+      },
+      "accepted_forms": [
+        "から"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：からの使い方",
+          "english": "Example for from/because.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "are"
+      ]
+    },
+    {
+      "slug": "made",
+      "primary_form": "まで",
+      "meaning": "until",
+      "structure": "Noun + まで",
+      "mnemonic_text": "Grammar: until",
+      "sort_order": 8,
+      "conjugation_rules": {
+        "particle": "limit"
+      },
+      "accepted_forms": [
+        "まで"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：までの使い方",
+          "english": "Example for until.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kono"
+      ]
+    },
+    {
+      "slug": "to",
+      "primary_form": "と",
+      "meaning": "and/with",
+      "structure": "Noun + と + Noun",
+      "mnemonic_text": "Grammar: and/with",
+      "sort_order": 9,
+      "conjugation_rules": {
+        "particle": "conjunction"
+      },
+      "accepted_forms": [
+        "と"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：との使い方",
+          "english": "Example for and/with.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sono"
+      ]
+    },
+    {
+      "slug": "mo",
+      "primary_form": "も",
+      "meaning": "also",
+      "structure": "Noun + も",
+      "mnemonic_text": "Grammar: also",
+      "sort_order": 10,
+      "conjugation_rules": {
+        "particle": "inclusive"
+      },
+      "accepted_forms": [
+        "も"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：もの使い方",
+          "english": "Example for also.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ano"
+      ]
+    },
+    {
+      "slug": "no-p",
+      "primary_form": "の",
+      "meaning": "possessive",
+      "structure": "Noun + の + Noun",
+      "mnemonic_text": "Grammar: possessive",
+      "sort_order": 11,
+      "conjugation_rules": {
+        "particle": "possessive"
+      },
+      "accepted_forms": [
+        "の"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：のの使い方",
+          "english": "Example for possessive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "dare"
+      ]
+    },
+    {
+      "slug": "te-form",
+      "primary_form": "て形",
+      "meaning": "te-form",
+      "structure": "Verb て + continuation",
+      "mnemonic_text": "Grammar: te-form",
+      "sort_order": 12,
+      "conjugation_rules": {
+        "conjugation": "te"
+      },
+      "accepted_forms": [
+        "て",
+        "で"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：て形の使い方",
+          "english": "Example for te-form.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nani"
+      ]
+    },
+    {
+      "slug": "tai",
+      "primary_form": "たい",
+      "meaning": "want to",
+      "structure": "Verb stem + たい",
+      "mnemonic_text": "Grammar: want to",
+      "sort_order": 13,
+      "conjugation_rules": {
+        "conjugation": "desire"
+      },
+      "accepted_forms": [
+        "たい"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：たいの使い方",
+          "english": "Example for want to.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "doko"
+      ]
+    },
+    {
+      "slug": "nai",
+      "primary_form": "ない",
+      "meaning": "negative plain",
+      "structure": "Verb ない",
+      "mnemonic_text": "Grammar: negative plain",
+      "sort_order": 14,
+      "conjugation_rules": {
+        "conjugation": "negative"
+      },
+      "accepted_forms": [
+        "ない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：ないの使い方",
+          "english": "Example for negative plain.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "itsu"
+      ]
+    },
+    {
+      "slug": "mashita",
+      "primary_form": "ました",
+      "meaning": "past polite",
+      "structure": "Verb stem + ました",
+      "mnemonic_text": "Grammar: past polite",
+      "sort_order": 15,
+      "conjugation_rules": {
+        "polite": true,
+        "past": true
+      },
+      "accepted_forms": [
+        "ました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：ましたの使い方",
+          "english": "Example for past polite.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "naze"
+      ]
+    },
+    {
+      "slug": "mashou",
+      "primary_form": "ましょう",
+      "meaning": "let us",
+      "structure": "Verb stem + ましょう",
+      "mnemonic_text": "Grammar: let us",
+      "sort_order": 16,
+      "conjugation_rules": {
+        "polite": true,
+        "volitional": true
+      },
+      "accepted_forms": [
+        "ましょう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "例文：ましょうの使い方",
+          "english": "Example for let us.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "anata"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "dou"
+      ]
+    }
+  ]
+}

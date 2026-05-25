@@ -1,0 +1,53 @@
+name: Compile curriculum
+
+on:
+  pull_request:
+    paths:
+      - 'curriculum/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'jest.config.cjs'
+      - '.github/workflows/compile-curriculum.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'curriculum/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'jest.config.cjs'
+      - '.github/workflows/compile-curriculum.yml'
+
+jobs:
+  compile:
+    name: validate and compile curriculum
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.13.0'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate JSON schema
+        run: npm run validate-schema
+
+      - name: Run curriculum script tests
+        run: npm test
+
+      - name: Compile curriculum database
+        run: COMPILE_OUTPUT_PATH=dist/curriculum.db npm run compile-curriculum
+
+      - name: Upload compiled artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: curriculum-db
+          path: dist/curriculum.db
+          if-no-files-found: error

@@ -1,0 +1,579 @@
+{
+  "jlpt_level": "N5",
+  "items": [
+    {
+      "slug": "watashi",
+      "primary_form": "私",
+      "meaning": "I",
+      "mnemonic_text": "Vocabulary: I",
+      "sort_order": 1,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "I",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "anata",
+      "primary_form": "あなた",
+      "meaning": "you",
+      "mnemonic_text": "Vocabulary: you",
+      "sort_order": 2,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "you",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kare",
+      "primary_form": "彼",
+      "meaning": "he",
+      "mnemonic_text": "Vocabulary: he",
+      "sort_order": 3,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "he",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kanojo",
+      "primary_form": "彼女",
+      "meaning": "she",
+      "mnemonic_text": "Vocabulary: she",
+      "sort_order": 4,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "she",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kore",
+      "primary_form": "これ",
+      "meaning": "this",
+      "mnemonic_text": "Vocabulary: this",
+      "sort_order": 5,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "this",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "sore",
+      "primary_form": "それ",
+      "meaning": "that",
+      "mnemonic_text": "Vocabulary: that",
+      "sort_order": 6,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "are",
+      "primary_form": "あれ",
+      "meaning": "that over there",
+      "mnemonic_text": "Vocabulary: that over there",
+      "sort_order": 7,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that over there",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kono",
+      "primary_form": "この",
+      "meaning": "this (adj)",
+      "mnemonic_text": "Vocabulary: this (adj)",
+      "sort_order": 8,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "this (adj)",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "sono",
+      "primary_form": "その",
+      "meaning": "that (adj)",
+      "mnemonic_text": "Vocabulary: that (adj)",
+      "sort_order": 9,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that (adj)",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "ano",
+      "primary_form": "あの",
+      "meaning": "that (adj)",
+      "mnemonic_text": "Vocabulary: that (adj)",
+      "sort_order": 10,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "that (adj)",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "dare",
+      "primary_form": "誰",
+      "meaning": "who",
+      "mnemonic_text": "Vocabulary: who",
+      "sort_order": 11,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "who",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "nani",
+      "primary_form": "何",
+      "meaning": "what",
+      "mnemonic_text": "Vocabulary: what",
+      "sort_order": 12,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "what",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "doko",
+      "primary_form": "どこ",
+      "meaning": "where",
+      "mnemonic_text": "Vocabulary: where",
+      "sort_order": 13,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "where",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "itsu",
+      "primary_form": "いつ",
+      "meaning": "when",
+      "mnemonic_text": "Vocabulary: when",
+      "sort_order": 14,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "when",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "naze",
+      "primary_form": "なぜ",
+      "meaning": "why",
+      "mnemonic_text": "Vocabulary: why",
+      "sort_order": 15,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "why",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "dou",
+      "primary_form": "どう",
+      "meaning": "how",
+      "mnemonic_text": "Vocabulary: how",
+      "sort_order": 16,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "how",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "ichi-v",
+      "primary_form": "一",
+      "meaning": "one",
+      "mnemonic_text": "Vocabulary: one",
+      "sort_order": 17,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "one",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "ni-v",
+      "primary_form": "二",
+      "meaning": "two",
+      "mnemonic_text": "Vocabulary: two",
+      "sort_order": 18,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "two",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "san-v",
+      "primary_form": "三",
+      "meaning": "three",
+      "mnemonic_text": "Vocabulary: three",
+      "sort_order": 19,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "three",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "yon-v",
+      "primary_form": "四",
+      "meaning": "four",
+      "mnemonic_text": "Vocabulary: four",
+      "sort_order": 20,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "four",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "go-v",
+      "primary_form": "五",
+      "meaning": "five",
+      "mnemonic_text": "Vocabulary: five",
+      "sort_order": 21,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "five",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "gakkou-v",
+      "primary_form": "学校",
+      "meaning": "school",
+      "mnemonic_text": "Vocabulary: school",
+      "sort_order": 22,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "school",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "sensei-v",
+      "primary_form": "先生",
+      "meaning": "teacher",
+      "mnemonic_text": "Vocabulary: teacher",
+      "sort_order": 23,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "teacher",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "seito",
+      "primary_form": "生徒",
+      "meaning": "student",
+      "mnemonic_text": "Vocabulary: student",
+      "sort_order": 24,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "student",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "hon-v",
+      "primary_form": "本",
+      "meaning": "book",
+      "mnemonic_text": "Vocabulary: book",
+      "sort_order": 25,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "book",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "mizu-v",
+      "primary_form": "水",
+      "meaning": "water",
+      "mnemonic_text": "Vocabulary: water",
+      "sort_order": 26,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "water",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "tabemono",
+      "primary_form": "食べ物",
+      "meaning": "food",
+      "mnemonic_text": "Vocabulary: food",
+      "sort_order": 27,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "food",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "nomimono",
+      "primary_form": "飲み物",
+      "meaning": "drink",
+      "mnemonic_text": "Vocabulary: drink",
+      "sort_order": 28,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "drink",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "asa",
+      "primary_form": "朝",
+      "meaning": "morning",
+      "mnemonic_text": "Vocabulary: morning",
+      "sort_order": 29,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "morning",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "hiru",
+      "primary_form": "昼",
+      "meaning": "noon",
+      "mnemonic_text": "Vocabulary: noon",
+      "sort_order": 30,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "noon",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "yoru",
+      "primary_form": "夜",
+      "meaning": "night",
+      "mnemonic_text": "Vocabulary: night",
+      "sort_order": 31,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "night",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kyou",
+      "primary_form": "今日",
+      "meaning": "today",
+      "mnemonic_text": "Vocabulary: today",
+      "sort_order": 32,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "today",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kinou",
+      "primary_form": "昨日",
+      "meaning": "yesterday",
+      "mnemonic_text": "Vocabulary: yesterday",
+      "sort_order": 33,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "yesterday",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "ashita",
+      "primary_form": "明日",
+      "meaning": "tomorrow",
+      "mnemonic_text": "Vocabulary: tomorrow",
+      "sort_order": 34,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tomorrow",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "iku-v",
+      "primary_form": "行く",
+      "meaning": "to go",
+      "mnemonic_text": "Vocabulary: to go",
+      "sort_order": 35,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to go",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kuru-v",
+      "primary_form": "来る",
+      "meaning": "to come",
+      "mnemonic_text": "Vocabulary: to come",
+      "sort_order": 36,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to come",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "taberu",
+      "primary_form": "食べる",
+      "meaning": "to eat",
+      "mnemonic_text": "Vocabulary: to eat",
+      "sort_order": 37,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to eat",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "nomu-v",
+      "primary_form": "飲む",
+      "meaning": "to drink",
+      "mnemonic_text": "Vocabulary: to drink",
+      "sort_order": 38,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to drink",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "miru-v",
+      "primary_form": "見る",
+      "meaning": "to see",
+      "mnemonic_text": "Vocabulary: to see",
+      "sort_order": 39,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to see",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "kiku-v",
+      "primary_form": "聞く",
+      "meaning": "to hear",
+      "mnemonic_text": "Vocabulary: to hear",
+      "sort_order": 40,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to hear",
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "slug": "hanasu-v",
+      "primary_form": "話す",
+      "meaning": "to speak",
+      "mnemonic_text": "Vocabulary: to speak",
+      "sort_order": 41,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "to speak",
+          "is_primary": true
+        }
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@ export type DatabaseHandles = {
  * Curriculum and user databases are fully isolated — no shared migration path.
  * Curriculum import/swap (Story 1.6) must never run DROP/DELETE against user.db.
  *
- * TODO Story 1.5: add attachCurriculumForQuery(userDb) when repositories need cross-DB joins.
+ * TODO Epic 4/5: add attachCurriculumForQuery(userDb) when repositories need cross-DB joins.
  */
 export async function initializeDatabases(): Promise<Result<DatabaseHandles, AppError>> {
   let curriculumDb: SQLiteDatabase | null = null;
