@@ -1,6 +1,6 @@
 # Story 1.4: Five-tab app shell with hidden review route placeholder
 
-Status: in-progress
+Status: done
 
 <!-- Ultimate context engine analysis completed - comprehensive developer guide created -->
 
@@ -101,7 +101,7 @@ So that **navigation matches the UX model before features land (UX-DR18 skeleton
 - [x] **AC3/AC5 — Web + regression**
   - [x] Update `app-tabs.web.tsx` / web routing so five tabs work on web (Expo Router UI tabs pattern already in repo).
   - [x] Run `npm run lint`, `npm run typecheck`, `npm test`.
-  - [ ] Manual: Android — tap all 5 tabs; open review placeholder; rotate phone (should stay portrait); verify DB init still works (no redbox on launch).
+  - [x] Manual: Android — tap all 5 tabs; open review placeholder; rotate phone (should stay portrait); verify DB init still works (no redbox on launch).
 
 ## Dev Notes
 
@@ -270,7 +270,7 @@ Composer
 
 **Reviewer:** Riyaz (AI code review) — **2026-05-24**
 
-**Outcome:** Changes requested → fixes applied. Story remains **in-progress** until manual Android checklist completes.
+**Outcome:** Approved — code review fixes applied; manual Android verification passed (Riyaz, 2026-05-24).
 
 **Fixes applied (code review):**
 
@@ -313,3 +313,4 @@ Composer
 - **2026-05-24:** Story created via `create-story` workflow — status **ready-for-dev**.
 - **2026-05-24:** Implemented five-tab shell, review placeholder route, portrait lock, web tabs — status **review**.
 - **2026-05-24:** Code review fixes (tablet orientation, semantic token SSOT, web tab tokens, web hook guard) — status **in-progress**.
+- **2026-05-24:** Manual Android verification passed — status **done**.
