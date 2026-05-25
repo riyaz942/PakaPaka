@@ -10,6 +10,24 @@ const expoBrand = {
   splashGradientEnd: '#0274df',
 };
 
+/**
+ * UX-DR2 semantic palette for APIs that need raw hex (e.g. NativeTabs).
+ * Keep in sync with `src/global.css` :root / prefers-color-scheme light overrides.
+ */
+const semanticColors = {
+  light: {
+    background: '#f8f8fa',
+    primary: '#1a1a2e',
+    secondary: '#686878',
+  },
+  dark: {
+    background: '#0a0a0f',
+    primary: '#eeeef0',
+    secondary: '#9898a8',
+  },
+};
+
 module.exports = {
   expoBrand,
+  semanticColors,
 };
