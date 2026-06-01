@@ -27,3 +27,7 @@ Commit the updated `curriculum.db` when JSON changes. CI (`.github/workflows/com
 ## Without Git LFS
 
 If `curriculum.db` is a small pointer file (~130 bytes), run `git lfs pull` after clone. The app will fail to import curriculum until the real binary is present.
+
+## On-device updates (Story 1.6)
+
+See `mobile/assets/curriculum-manifest/README.md` for mock manifest URL config and dev testing of atomic curriculum swaps.

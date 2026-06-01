@@ -1,8 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { checkAndApplyCurriculumUpdate } from '@/data/curriculum/curriculumUpdate';
 import { initializeDatabases } from '@/data/database';
+import {
+  CurriculumUpdateContext,
+  type CurriculumUpdateContextValue,
+} from '@/providers/CurriculumUpdateContext';
 import {
   DatabaseContext,
   type DatabaseContextValue,
@@ -20,9 +25,15 @@ type ProviderState =
 
 export function DatabaseProvider({ children }: DatabaseProviderProps) {
   const [state, setState] = useState<ProviderState>({ status: 'loading' });
+  const [showCurriculumUpdatedBanner, setShowCurriculumUpdatedBanner] = useState(false);
   const handlesRef = useRef<{ curriculumDb: SQLiteDatabase; userDb: SQLiteDatabase } | null>(
     null,
   );
+  const updateStartedRef = useRef(false);
+
+  const dismissCurriculumUpdatedBanner = useCallback(() => {
+    setShowCurriculumUpdatedBanner(false);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -77,6 +88,88 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (state.status !== 'ready' || updateStartedRef.current) {
+      return;
+    }
+
+    updateStartedRef.current = true;
+    let cancelled = false;
+
+    async function runBackgroundUpdate() {
+      const handles = handlesRef.current;
+      if (!handles) {
+        return;
+      }
+
+      const updateResult = await checkAndApplyCurriculumUpdate(handles);
+
+      if (cancelled) {
+        if (updateResult.status === 'success') {
+          await updateResult.curriculumDb.closeAsync();
+        }
+        return;
+      }
+
+      if (updateResult.status === 'success') {
+        handlesRef.current = {
+          curriculumDb: updateResult.curriculumDb,
+          userDb: handles.userDb,
+        };
+
+        setState((current) => {
+          if (current.status !== 'ready') {
+            return current;
+          }
+          return {
+            status: 'ready',
+            curriculumDb: updateResult.curriculumDb,
+            userDb: current.userDb,
+          };
+        });
+
+        setShowCurriculumUpdatedBanner(true);
+
+        if (__DEV__) {
+          console.log('[DatabaseProvider] curriculum updated to', updateResult.version);
+        }
+        return;
+      }
+
+      if (updateResult.status === 'error' && updateResult.curriculumDb) {
+        const recoveredCurriculumDb = updateResult.curriculumDb;
+        handlesRef.current = {
+          curriculumDb: recoveredCurriculumDb,
+          userDb: handles.userDb,
+        };
+
+        setState((current) => {
+          if (current.status !== 'ready') {
+            return current;
+          }
+          return {
+            status: 'ready',
+            curriculumDb: recoveredCurriculumDb,
+            userDb: current.userDb,
+          };
+        });
+
+        if (__DEV__) {
+          console.log(
+            '[DatabaseProvider] curriculum swap failed; restored DB handle:',
+            updateResult.error.message,
+          );
+        }
+      }
+    }
+
+    void runBackgroundUpdate();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [state.status]);
+
   if (state.status === 'error') {
     return (
       <View className="flex-1 items-center justify-center bg-background px-6">
@@ -105,5 +198,16 @@ export function DatabaseProvider({ children }: DatabaseProviderProps) {
     error: null,
   };
 
-  return <DatabaseContext.Provider value={contextValue}>{children}</DatabaseContext.Provider>;
+  const curriculumUpdateContextValue: CurriculumUpdateContextValue = {
+    showCurriculumUpdatedBanner,
+    dismissCurriculumUpdatedBanner,
+  };
+
+  return (
+    <DatabaseContext.Provider value={contextValue}>
+      <CurriculumUpdateContext.Provider value={curriculumUpdateContextValue}>
+        {children}
+      </CurriculumUpdateContext.Provider>
+    </DatabaseContext.Provider>
+  );
 }

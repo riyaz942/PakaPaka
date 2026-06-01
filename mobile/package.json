@@ -17,12 +17,16 @@
     "@react-navigation/native": "^7.1.33",
     "clsx": "^2.1.1",
     "expo": "~55.0.23",
+    "expo-asset": "~55.0.17",
     "expo-constants": "~55.0.16",
+    "expo-crypto": "~55.0.15",
     "expo-device": "~55.0.16",
+    "expo-file-system": "~55.0.22",
     "expo-font": "~55.0.7",
     "expo-glass-effect": "~55.0.11",
     "expo-image": "~55.0.10",
     "expo-linking": "~55.0.15",
+    "expo-network": "~55.0.14",
     "expo-router": "~55.0.14",
     "expo-screen-orientation": "~55.0.16",
     "expo-splash-screen": "~55.0.20",
@@ -42,11 +46,13 @@
     "react-native-screens": "~4.23.0",
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.7.4",
+    "semver": "^7.8.1",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/react": "~19.2.2",
+    "@types/semver": "^7.7.1",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~55.0.0",
     "jest": "^29.7.0",
@@ -63,8 +69,13 @@
     ],
     "moduleNameMapper": {
       "^@/assets/(.*)$": "<rootDir>/assets/$1",
+      "^@/test-support/(.*)$": "<rootDir>/test-support/$1",
       "^@/(.*)$": "<rootDir>/src/$1",
-      "^expo-sqlite$": "<rootDir>/__mocks__/expo-sqlite.ts"
+      "^expo-sqlite$": "<rootDir>/__mocks__/expo-sqlite.ts",
+      "^expo-file-system/legacy$": "<rootDir>/__mocks__/expo-file-system.ts",
+      "^expo-network$": "<rootDir>/__mocks__/expo-network.ts",
+      "^expo-crypto$": "<rootDir>/__mocks__/expo-crypto.ts",
+      "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts"
     }
   }
 }

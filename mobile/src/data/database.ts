@@ -4,11 +4,15 @@ import {
   type SQLiteDatabase,
 } from 'expo-sqlite';
 
+import { CURRICULUM_DB_NAME } from '@/data/curriculum/curriculumConfig';
 import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
+import {
+  getCurriculumUpdateSource,
+  setCurriculumInstallMetadata,
+} from '@/data/user/preferencesRepository';
 import type { AppError, Result } from '@/types/result.types';
 
-const CURRICULUM_DB_NAME = 'curriculum.db';
 const USER_DB_NAME = 'user.db';
 
 // Metro bundles .db assets when required from the data layer.
@@ -19,8 +23,80 @@ export type DatabaseHandles = {
   userDb: SQLiteDatabase;
 };
 
+function readCurriculumVersion(curriculumDb: SQLiteDatabase): string | null {
+  const metadata = curriculumDb.getFirstSync<{ version: string }>(
+    'SELECT version FROM curriculum_metadata LIMIT 1',
+  );
+  return metadata?.version ?? null;
+}
+
 /**
- * Opens curriculum.db (bundled, read-only usage) and user.db (sandbox read-write).
+ * Imports bundled seed only on first launch (no curriculum_update_source preference yet).
+ * Downloaded curriculum (Story 1.6) must never be overwritten by the bundled asset.
+ */
+export async function openCurriculumDatabase(
+  userDb: SQLiteDatabase,
+): Promise<Result<SQLiteDatabase, AppError>> {
+  try {
+    const updateSource = getCurriculumUpdateSource(userDb);
+    const shouldImportBundled = updateSource === null;
+
+    if (shouldImportBundled) {
+      // importDatabaseFromAssetAsync is @hidden in expo-sqlite typings but matches the
+      // architecture dual-DB init contract (imperative bundled import, not SQLiteProvider).
+      await importDatabaseFromAssetAsync(CURRICULUM_DB_NAME, {
+        assetId: CURRICULUM_ASSET,
+      });
+    }
+
+    const curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
+
+    if (shouldImportBundled) {
+      const version = readCurriculumVersion(curriculumDb);
+      if (version) {
+        const metadata = curriculumDb.getFirstSync<{ content_hash: string | null }>(
+          'SELECT content_hash FROM curriculum_metadata LIMIT 1',
+        );
+        setCurriculumInstallMetadata(userDb, {
+          version,
+          source: 'bundled',
+          contentHash: metadata?.content_hash ?? null,
+        });
+      }
+    }
+
+    return { ok: true, value: curriculumDb };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'DB_CURRICULUM_OPEN_ERROR',
+        message: String(cause),
+        cause,
+      },
+    };
+  }
+}
+
+/** Reopens curriculum.db after an on-disk atomic swap (Story 1.6). Never touches user.db. */
+export async function reopenCurriculumDatabase(): Promise<Result<SQLiteDatabase, AppError>> {
+  try {
+    const curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
+    return { ok: true, value: curriculumDb };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'DB_CURRICULUM_REOPEN_ERROR',
+        message: String(cause),
+        cause,
+      },
+    };
+  }
+}
+
+/**
+ * Opens curriculum.db (bundled on first launch) and user.db (sandbox read-write).
  *
  * Curriculum and user databases are fully isolated — no shared migration path.
  * Curriculum import/swap (Story 1.6) must never run DROP/DELETE against user.db.
@@ -32,14 +108,15 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
   let userDb: SQLiteDatabase | null = null;
 
   try {
-    // importDatabaseFromAssetAsync is @hidden in expo-sqlite typings but matches the
-    // architecture dual-DB init contract (imperative bundled import, not SQLiteProvider).
-    await importDatabaseFromAssetAsync(CURRICULUM_DB_NAME, {
-      assetId: CURRICULUM_ASSET,
-    });
-
-    curriculumDb = await openDatabaseAsync(CURRICULUM_DB_NAME);
     userDb = await openDatabaseAsync(USER_DB_NAME);
+
+    const curriculumResult = await openCurriculumDatabase(userDb);
+    if (!curriculumResult.ok) {
+      await userDb.closeAsync();
+      return curriculumResult;
+    }
+
+    curriculumDb = curriculumResult.value;
 
     const migrationResult = runMigrations(userDb, migrations);
     if (!migrationResult.ok) {

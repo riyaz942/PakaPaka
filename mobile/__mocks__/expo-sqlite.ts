@@ -8,6 +8,28 @@ type MockDatabaseState = {
 const databases = new Map<string, MockDatabaseState>();
 const importedAssets = new Map<number, string>();
 
+const SEED_METADATA: Row = {
+  version: '1.0.0-n5-seed',
+  build_date: '2026-05-25T00:00:00.000Z',
+  content_hash: 'mock-content-hash',
+  item_count: 114,
+  radical_count: 25,
+  kanji_count: 32,
+  vocabulary_count: 41,
+  grammar_count: 16,
+};
+
+const DOWNLOAD_METADATA: Row = {
+  version: '1.0.1-n5-seed-mock',
+  build_date: '2026-06-01T00:00:00.000Z',
+  content_hash: '7cd5775ec3adfb962f406348983f5f72d81224602c1dad34ecc47d2568724c20',
+  item_count: 114,
+  radical_count: 25,
+  kanji_count: 32,
+  vocabulary_count: 41,
+  grammar_count: 16,
+};
+
 function getDatabaseState(databaseName: string): MockDatabaseState {
   const existing = databases.get(databaseName);
   if (existing) {
@@ -49,6 +71,18 @@ function parseInsert(sql: string): { table: string; columns: string[]; values: u
   });
 
   return { table, columns, values };
+}
+
+function upsertPreference(state: MockDatabaseState, key: unknown, value: unknown, updatedAt: unknown) {
+  const rows = state.tables.get('user_preferences') ?? [];
+  const existingIndex = rows.findIndex((row) => row.key === key);
+  const nextRow = { key, value, updated_at: updatedAt };
+  if (existingIndex >= 0) {
+    rows[existingIndex] = nextRow;
+  } else {
+    rows.push(nextRow);
+  }
+  state.tables.set('user_preferences', rows);
 }
 
 function applySql(state: MockDatabaseState, sql: string, params: unknown[] = []): void {
@@ -99,14 +133,13 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO user_preferences/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    upsertPreference(state, params[0], params[1], params[2]);
+    return;
+  }
+
   if (/^INSERT INTO user_preferences/i.test(trimmed) && trimmed.includes('?')) {
-    const rows = state.tables.get('user_preferences') ?? [];
-    rows.push({
-      key: params[0],
-      value: params[1],
-      updated_at: params[2],
-    });
-    state.tables.set('user_preferences', rows);
+    upsertPreference(state, params[0], params[1], params[2]);
     return;
   }
 }
@@ -215,6 +248,11 @@ class MockSQLiteDatabase {
 }
 
 export async function openDatabaseAsync(databaseName: string) {
+  if (databaseName === 'curriculum.db.download') {
+    const state = getDatabaseState(databaseName);
+    state.tables.set('curriculum_metadata', [{ ...DOWNLOAD_METADATA }]);
+  }
+
   return new MockSQLiteDatabase(databaseName);
 }
 
@@ -225,18 +263,13 @@ export async function importDatabaseFromAssetAsync(
   importedAssets.set(assetSource.assetId, databaseName);
 
   const state = getDatabaseState(databaseName);
-  state.tables.set('curriculum_metadata', [
-    {
-      version: '1.0.0-n5-seed',
-      build_date: '2026-05-25T00:00:00.000Z',
-      content_hash: 'mock-content-hash',
-      item_count: 114,
-      radical_count: 25,
-      kanji_count: 32,
-      vocabulary_count: 41,
-      grammar_count: 16,
-    },
-  ]);
+  state.tables.set('curriculum_metadata', [{ ...SEED_METADATA }]);
+}
+
+export function __mockApplyDownloadedCurriculumToActive() {
+  const state = getDatabaseState('curriculum.db');
+  state.tables.set('curriculum_metadata', [{ ...DOWNLOAD_METADATA }]);
+  databases.delete('curriculum.db.download');
 }
 
 export function __mockResetSqlite() {
@@ -244,8 +277,16 @@ export function __mockResetSqlite() {
   importedAssets.clear();
 }
 
+export function __mockClearImportedAssets() {
+  importedAssets.clear();
+}
+
 export function __mockGetImportedAssetDatabase(assetId: number) {
   return importedAssets.get(assetId);
+}
+
+export function __mockGetImportedAssetCount() {
+  return importedAssets.size;
 }
 
 export type SQLiteDatabase = MockSQLiteDatabase;
