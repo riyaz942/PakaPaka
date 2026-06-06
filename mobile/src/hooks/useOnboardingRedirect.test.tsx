@@ -9,6 +9,7 @@ import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   PREFERENCE_KEYS,
   setPreference,
+  setSessionIntensity,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 import { useOnboardingRedirect } from '@/hooks/useOnboardingRedirect';
@@ -71,6 +72,49 @@ describe('useOnboardingRedirect', () => {
 
     await waitFor(() => {
       expect(mockReplace).toHaveBeenCalledWith('/onboarding/intensity');
+    });
+  });
+
+  it('redirects to calibrate when level and intensity are set', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N4');
+    setSessionIntensity(db, 'relaxed');
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+    });
+  });
+
+  it('does not redirect away from intensity when intensity is missing', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N4');
+    mockSegments = ['onboarding', 'intensity'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from calibrate when level and intensity are set', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N4');
+    setSessionIntensity(db, 'intense');
+    mockSegments = ['onboarding', 'calibrate'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
     });
   });
 

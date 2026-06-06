@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
+  getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
@@ -17,16 +18,19 @@ export function useOnboardingRedirect(): void {
       return;
     }
 
-    const level = getStartingJlptLevel(userDb);
     const completed = isOnboardingCompleted(userDb);
 
     if (completed) {
       return;
     }
 
+    const level = getStartingJlptLevel(userDb);
+    const intensity = getSessionIntensity(userDb);
     const segmentList = segments as string[];
     const inOnboarding = segmentList[0] === 'onboarding';
+    const onWelcome = inOnboarding && segmentList[1] === 'welcome';
     const onIntensity = inOnboarding && segmentList[1] === 'intensity';
+    const onCalibrate = inOnboarding && segmentList[1] === 'calibrate';
 
     if (!level) {
       if (!inOnboarding) {
@@ -35,8 +39,17 @@ export function useOnboardingRedirect(): void {
       return;
     }
 
-    if (!onIntensity) {
-      router.replace('/onboarding/intensity');
+    if (!intensity) {
+      if (!onIntensity) {
+        router.replace('/onboarding/intensity');
+      }
+      return;
+    }
+
+    if (!onCalibrate && !onWelcome && !onIntensity) {
+      if (!inOnboarding || segmentList[1] === 'import') {
+        router.replace('/onboarding/calibrate');
+      }
     }
   }, [userDb, segments, navigationState?.key]);
 }

@@ -2,12 +2,17 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { CurriculumUpdateSource } from '@/data/curriculum/curriculumManifest.types';
 import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
+import {
+  isSessionIntensity,
+  type SessionIntensity,
+} from '@/data/user/sessionIntensity.types';
 
 export const PREFERENCE_KEYS = {
   installedCurriculumVersion: 'installed_curriculum_version',
   installedCurriculumContentHash: 'installed_curriculum_content_hash',
   curriculumUpdateSource: 'curriculum_update_source',
   startingJlptLevel: 'starting_jlpt_level',
+  sessionIntensity: 'session_intensity',
   onboardingCompleted: 'onboarding_completed',
 } as const;
 
@@ -60,6 +65,24 @@ export function setStartingJlptLevel(userDb: SQLiteDatabase, level: JLPTLevel): 
     throw new Error(`Invalid JLPT level: ${level}`);
   }
   setPreference(userDb, PREFERENCE_KEYS.startingJlptLevel, level);
+}
+
+export function getSessionIntensity(userDb: SQLiteDatabase): SessionIntensity | null {
+  const value = getPreference(userDb, PREFERENCE_KEYS.sessionIntensity);
+  if (value && isSessionIntensity(value)) {
+    return value;
+  }
+  return null;
+}
+
+export function setSessionIntensity(
+  userDb: SQLiteDatabase,
+  intensity: SessionIntensity,
+): void {
+  if (!isSessionIntensity(intensity)) {
+    throw new Error(`Invalid session intensity: ${intensity}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.sessionIntensity, intensity);
 }
 
 export function isOnboardingCompleted(userDb: SQLiteDatabase): boolean {

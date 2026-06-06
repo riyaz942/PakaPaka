@@ -6,9 +6,11 @@ import { isJlptLevel } from '@/data/curriculum/curriculum.types';
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setSessionIntensity,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 
@@ -53,5 +55,40 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
   it('reads onboarding_completed as false when unset', async () => {
     const db = await createUserDb();
     expect(isOnboardingCompleted(db)).toBe(false);
+  });
+
+  it('round-trips session_intensity', async () => {
+    const db = await createUserDb();
+
+    expect(getSessionIntensity(db)).toBeNull();
+
+    setSessionIntensity(db, 'intense');
+    expect(getSessionIntensity(db)).toBe('intense');
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.sessionIntensity,
+      )?.value,
+    ).toBe('intense');
+  });
+
+  it('rejects invalid session intensity values', async () => {
+    const db = await createUserDb();
+
+    expect(() => setSessionIntensity(db, 'standard' as 'relaxed')).toThrow(
+      'Invalid session intensity',
+    );
+  });
+
+  it('treats corrupt session_intensity as unset', async () => {
+    const db = await createUserDb();
+    db.runSync(
+      `INSERT INTO user_preferences (key, value, updated_at) VALUES (?, ?, ?)`,
+      PREFERENCE_KEYS.sessionIntensity,
+      'invalid-value',
+      new Date().toISOString(),
+    );
+
+    expect(getSessionIntensity(db)).toBeNull();
   });
 });

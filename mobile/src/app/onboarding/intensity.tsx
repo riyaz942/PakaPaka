@@ -1,18 +1,41 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
+import React, { useState } from 'react';
 
-export default function IntensityPlaceholderScreen() {
-  const insets = useSafeAreaInsets();
+import { OnboardingStep } from '@/components/common/OnboardingStep';
+import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
+import { useDatabase } from '@/data/hooks/useDatabase';
+import { setSessionIntensity } from '@/data/user/preferencesRepository';
+import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
+
+export default function IntensityScreen() {
+  const { userDb } = useDatabase();
+  const [selectedIntensity, setSelectedIntensity] = useState<SessionIntensity | null>('relaxed');
+
+  const handleContinue = () => {
+    if (!selectedIntensity) {
+      return;
+    }
+
+    setSessionIntensity(userDb, selectedIntensity);
+    router.replace('/onboarding/calibrate');
+  };
 
   return (
-    <View
-      className="flex-1 bg-background px-6"
-      style={{ paddingTop: insets.top + 48, paddingBottom: insets.bottom + 16 }}>
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
-        Session intensity
-      </Text>
-      <Text className="mt-2 text-body-sm text-secondary">Session intensity — coming next</Text>
-    </View>
+    <OnboardingStep
+      title="How much time can you study?"
+      description="You can change this anytime in Settings."
+      stepIndex={2}
+      stepCount={4}
+      primaryAction={{
+        label: 'Continue',
+        onPress: handleContinue,
+        disabled: !selectedIntensity,
+      }}>
+      <SessionIntensityPicker
+        selectedIntensity={selectedIntensity}
+        onSelect={setSelectedIntensity}
+        testID="session-intensity-picker"
+      />
+    </OnboardingStep>
   );
 }
