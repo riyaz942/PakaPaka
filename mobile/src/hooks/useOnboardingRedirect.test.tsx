@@ -118,6 +118,36 @@ describe('useOnboardingRedirect', () => {
     });
   });
 
+  it('does not redirect away from bulk when level and intensity are set', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N4');
+    setSessionIntensity(db, 'relaxed');
+    mockSegments = ['onboarding', 'bulk'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from complete when level and intensity are set', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N4');
+    setSessionIntensity(db, 'relaxed');
+    mockSegments = ['onboarding', 'complete'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
   it('does not redirect away when already inside onboarding without a level', async () => {
     const db = await openDatabaseAsync('user.db');
     runMigrations(db, [migration001Initial]);

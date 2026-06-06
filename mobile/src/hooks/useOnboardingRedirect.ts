@@ -31,6 +31,8 @@ export function useOnboardingRedirect(): void {
     const onWelcome = inOnboarding && segmentList[1] === 'welcome';
     const onIntensity = inOnboarding && segmentList[1] === 'intensity';
     const onCalibrate = inOnboarding && segmentList[1] === 'calibrate';
+    const onBulk = inOnboarding && segmentList[1] === 'bulk';
+    const onComplete = inOnboarding && segmentList[1] === 'complete';
 
     if (!level) {
       if (!inOnboarding) {
@@ -46,7 +48,7 @@ export function useOnboardingRedirect(): void {
       return;
     }
 
-    if (!onCalibrate && !onWelcome && !onIntensity) {
+    if (!onCalibrate && !onWelcome && !onIntensity && !onBulk && !onComplete) {
       if (!inOnboarding || segmentList[1] === 'import') {
         router.replace('/onboarding/calibrate');
       }

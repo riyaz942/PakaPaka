@@ -70,6 +70,32 @@ export function setStudyStatus(
   );
 }
 
+export function bulkSetStudyStatusKnown(
+  userDb: SQLiteDatabase,
+  itemIds: string[],
+): { updatedCount: number } {
+  if (itemIds.length === 0) {
+    return { updatedCount: 0 };
+  }
+
+  const numericIds = itemIds.map(parseItemId);
+  const updatedAt = new Date().toISOString();
+
+  userDb.withTransactionSync(() => {
+    for (const itemId of numericIds) {
+      userDb.runSync(
+        `INSERT INTO item_study_status (item_id, status, updated_at) VALUES (?, ?, ?)
+         ON CONFLICT(item_id) DO UPDATE SET status = 'known', updated_at = excluded.updated_at`,
+        itemId,
+        'known',
+        updatedAt,
+      );
+    }
+  });
+
+  return { updatedCount: numericIds.length };
+}
+
 export function listStudyStatusesForItems(
   userDb: SQLiteDatabase,
   itemIds: string[],

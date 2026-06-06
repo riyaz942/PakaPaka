@@ -11,6 +11,13 @@ export const ITEM_TYPES: readonly ItemType[] = [
   'grammar',
 ] as const;
 
+export const ITEM_TYPE_LABELS: Record<ItemType, string> = {
+  radical: 'Radicals',
+  kanji: 'Kanji',
+  vocabulary: 'Vocabulary',
+  grammar: 'Grammar',
+};
+
 export type CurriculumListItem = {
   id: string;
   slug: string;

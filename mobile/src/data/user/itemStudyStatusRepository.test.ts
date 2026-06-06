@@ -6,6 +6,7 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  bulkSetStudyStatusKnown,
   clearStudyStatus,
   getStudyStatus,
   getStudyStatusOrDefault,
@@ -76,5 +77,50 @@ describe('itemStudyStatusRepository', () => {
     expect(() => setStudyStatus(db, '1', 'mastered' as 'known')).toThrow(
       'Invalid study status',
     );
+  });
+
+  it('bulkSetStudyStatusKnown returns updatedCount 0 for empty itemIds', async () => {
+    const db = await createUserDb();
+
+    expect(bulkSetStudyStatusKnown(db, [])).toEqual({ updatedCount: 0 });
+  });
+
+  it('bulkSetStudyStatusKnown writes known status in a transaction', async () => {
+    const db = await createUserDb();
+
+    const result = bulkSetStudyStatusKnown(db, ['1', '2', '3']);
+
+    expect(result).toEqual({ updatedCount: 3 });
+    expect(getStudyStatus(db, '1')).toBe('known');
+    expect(getStudyStatus(db, '2')).toBe('known');
+    expect(getStudyStatus(db, '3')).toBe('known');
+  });
+
+  it('bulkSetStudyStatusKnown overwrites in_progress to known', async () => {
+    const db = await createUserDb();
+
+    setStudyStatus(db, '5', 'in_progress');
+    bulkSetStudyStatusKnown(db, ['5']);
+
+    expect(getStudyStatus(db, '5')).toBe('known');
+  });
+
+  it('bulkSetStudyStatusKnown is idempotent when items are already known', async () => {
+    const db = await createUserDb();
+
+    setStudyStatus(db, '8', 'known');
+    const first = bulkSetStudyStatusKnown(db, ['8']);
+    const second = bulkSetStudyStatusKnown(db, ['8']);
+
+    expect(first).toEqual({ updatedCount: 1 });
+    expect(second).toEqual({ updatedCount: 1 });
+    expect(getStudyStatus(db, '8')).toBe('known');
+  });
+
+  it('bulkSetStudyStatusKnown rejects invalid item ids', async () => {
+    const db = await createUserDb();
+
+    expect(() => bulkSetStudyStatusKnown(db, ['abc'])).toThrow('Invalid item id');
+    expect(() => bulkSetStudyStatusKnown(db, ['1', '0'])).toThrow('Invalid item id');
   });
 });
