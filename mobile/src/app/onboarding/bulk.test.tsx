@@ -122,6 +122,17 @@ describe('BulkScreen', () => {
     return { userDb, curriculumDb };
   }
 
+  it('hides loading indicator after presets load', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderBulkScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('bulk-preset-kanji')).toBeTruthy();
+    });
+
+    expect(screen.queryByLabelText('Loading presets')).toBeNull();
+  });
+
   it('renders preset cards with counts at step 4 of 4', async () => {
     const { userDb, curriculumDb } = await createDatabases();
     renderBulkScreen(curriculumDb, userDb);

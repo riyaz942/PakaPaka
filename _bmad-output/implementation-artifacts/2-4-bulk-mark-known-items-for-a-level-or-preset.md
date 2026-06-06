@@ -1,6 +1,6 @@
 # Story 2.4: Bulk mark known items for a level or preset
 
-Status: review
+Status: done
 
 <!-- Ultimate context engine analysis completed - comprehensive developer guide created -->
 
@@ -314,14 +314,18 @@ Composer
 - Fixed `useOnboardingRedirect` allowlist for `bulk` and `complete` segments so onboarding step 4 is usable.
 - Tests: repository bulk cases, `bulk.test.tsx` screen integration, redirect allowlist extensions; `npm run lint`, `typecheck`, and full `npm test` pass (102 tests).
 - Regenerated local `mobile/.expo/types/router.d.ts` for `/onboarding/complete` typed route (gitignored Expo artifact).
+- Code review fixes: deduplicated `ITEM_TYPE_LABELS` in calibrate and `CalibrationItemTypePicker`; added bulk loading-state test.
 
 ### File List
 
+- _bmad-output/implementation-artifacts/sprint-status.yaml
 - mobile/src/app/onboarding/_layout.tsx
 - mobile/src/app/onboarding/bulk.tsx
 - mobile/src/app/onboarding/bulk.test.tsx
+- mobile/src/app/onboarding/calibrate.tsx
 - mobile/src/app/onboarding/complete.tsx
 - mobile/src/components/onboarding/BulkMarkPresetCard.tsx
+- mobile/src/components/onboarding/CalibrationItemTypePicker.tsx
 - mobile/src/data/curriculum/itemRepository.ts
 - mobile/src/data/hooks/useBulkMarkPresets.ts
 - mobile/src/data/user/itemStudyStatusRepository.ts
@@ -329,6 +333,22 @@ Composer
 - mobile/src/hooks/useOnboardingRedirect.ts
 - mobile/src/hooks/useOnboardingRedirect.test.tsx
 
+### Senior Developer Review (AI)
+
+_Reviewer: Riyaz on 2026-06-06_
+
+**Outcome:** Approve (after fixes)
+
+**Findings addressed:**
+- [x] [MEDIUM] `ITEM_TYPE_LABELS` duplicated in `calibrate.tsx` — now imports from `itemRepository`
+- [x] [MEDIUM] `CalibrationItemTypePicker` label drift risk — now derives from `ITEM_TYPES` + `ITEM_TYPE_LABELS`
+- [x] [MEDIUM] `sprint-status.yaml` missing from File List — documented
+- [x] [LOW] Bulk loading indicator untested — added `hides loading indicator after presets load`
+
+**Deferred (acceptable for 2.5 placeholder):**
+- Complete screen shares step 4/4 with bulk until Story 2.5 finalizes onboarding flow
+
 ### Change Log
 
 - 2026-06-06: Story 2.4 — bulk mark-known presets, transactional repository write, redirect allowlist, complete placeholder, and tests.
+- 2026-06-06: Code review — deduplicated item type labels, loading test, story/sprint status → done.

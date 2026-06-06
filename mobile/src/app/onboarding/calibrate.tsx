@@ -6,7 +6,10 @@ import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { CalibrationItemRow } from '@/components/onboarding/CalibrationItemRow';
 import { CalibrationItemTypePicker } from '@/components/onboarding/CalibrationItemTypePicker';
 import type { ItemType } from '@/data/curriculum/itemRepository';
-import { getRequiredParentLabelsForItems } from '@/data/curriculum/itemRepository';
+import {
+  getRequiredParentLabelsForItems,
+  ITEM_TYPE_LABELS,
+} from '@/data/curriculum/itemRepository';
 import { useCalibrationItems } from '@/data/hooks/useCalibrationItems';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
@@ -15,13 +18,6 @@ import {
 } from '@/data/user/itemStudyStatusRepository';
 import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
 import type { StudyStatus } from '@/data/user/studyStatus.types';
-
-const ITEM_TYPE_LABELS: Record<ItemType, string> = {
-  radical: 'Radicals',
-  kanji: 'Kanji',
-  vocabulary: 'Vocabulary',
-  grammar: 'Grammar',
-};
 
 export default function CalibrateScreen() {
   const { curriculumDb, userDb } = useDatabase();

@@ -1,20 +1,17 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import type { ItemType } from '@/data/curriculum/itemRepository';
+import {
+  ITEM_TYPES,
+  ITEM_TYPE_LABELS,
+  type ItemType,
+} from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
 
-type TypeOption = {
-  value: ItemType;
-  label: string;
-};
-
-const TYPE_OPTIONS: TypeOption[] = [
-  { value: 'radical', label: 'Radicals' },
-  { value: 'kanji', label: 'Kanji' },
-  { value: 'vocabulary', label: 'Vocabulary' },
-  { value: 'grammar', label: 'Grammar' },
-];
+const TYPE_OPTIONS = ITEM_TYPES.map((value) => ({
+  value,
+  label: ITEM_TYPE_LABELS[value],
+}));
 
 type CalibrationItemTypePickerProps = {
   selectedType: ItemType;
