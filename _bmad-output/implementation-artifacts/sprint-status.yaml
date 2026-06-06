@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-01"
+last_updated: "2026-06-06"
 project: japanese-learning
 project_key: NOKEY
 tracking_system: file-system
@@ -49,7 +49,7 @@ development_status:
   1-4-five-tab-app-shell-with-hidden-review-route-placeholder: done
   1-5-curriculum-json-validation-sqlite-compile-actions-lfs-and-bundled-seed: done
   1-6-curriculum-version-check-and-atomic-on-device-update: done
-  1-7-cached-radical-mnemonic-images-and-maintainer-r2-workflow: backlog
+  1-7-cached-radical-mnemonic-images-and-maintainer-r2-workflow: done
   epic-1-retrospective: optional
 
   epic-2: backlog

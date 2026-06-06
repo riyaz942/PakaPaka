@@ -50,8 +50,10 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^29.5.14",
     "@types/react": "~19.2.2",
+    "@types/react-test-renderer": "^19.1.0",
     "@types/semver": "^7.7.1",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~55.0.0",
@@ -75,7 +77,8 @@
       "^expo-file-system/legacy$": "<rootDir>/__mocks__/expo-file-system.ts",
       "^expo-network$": "<rootDir>/__mocks__/expo-network.ts",
       "^expo-crypto$": "<rootDir>/__mocks__/expo-crypto.ts",
-      "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts"
+      "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
+      "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx"
     }
   }
 }

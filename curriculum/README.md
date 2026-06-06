@@ -25,7 +25,9 @@ Radical rows store full HTTPS URLs in `visual_mnemonic_url`, compiled to `items.
 
 `https://assets.japanese-learning.app/radicals/n5/{slug}.png`
 
-Story 1.7 adds maintainer upload to Cloudflare R2; placeholder URLs are valid HTTPS until assets ship.
+See **[docs/radical-mnemonic-images.md](../docs/radical-mnemonic-images.md)** for the full maintainer workflow: asset spec, R2 upload, curriculum re-compile, and verification.
+
+Placeholder URLs are valid HTTPS until assets ship. The app shows **text fallback** (`mnemonic_text` or meaning label) when an image 404s or is offline-uncached — do not block releases on CDN going live.
 
 ## Item ID assignment
 

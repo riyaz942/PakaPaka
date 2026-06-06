@@ -192,6 +192,26 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return [...rows];
   }
 
+  if (/FROM items/i.test(trimmed)) {
+    let rows = [...(state.tables.get('items') ?? [])];
+
+    if (/item_type = 'radical'/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {
+      rows = rows.filter(
+        (row) => row.item_type === 'radical' && row.jlpt_level === params[0],
+      );
+    } else if (/item_type = \?/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {
+      rows = rows.filter(
+        (row) => row.item_type === params[0] && row.jlpt_level === params[1],
+      );
+    }
+
+    if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+
+    return rows;
+  }
+
   return [];
 }
 
@@ -270,6 +290,11 @@ export function __mockApplyDownloadedCurriculumToActive() {
   const state = getDatabaseState('curriculum.db');
   state.tables.set('curriculum_metadata', [{ ...DOWNLOAD_METADATA }]);
   databases.delete('curriculum.db.download');
+}
+
+export function __mockSetItems(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('items', rows.map((row) => ({ ...row })));
 }
 
 export function __mockResetSqlite() {
