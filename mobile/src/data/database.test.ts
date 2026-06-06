@@ -39,7 +39,7 @@ describe('initializeDatabases', () => {
     );
 
     expect(curriculumVersion?.version).toBe('1.0.0-n5-seed');
-    expect(migrationCount?.count).toBe(1);
+    expect(migrationCount?.count).toBe(2);
     expect(updateSource?.value).toBe('bundled');
   });
 
@@ -57,7 +57,7 @@ describe('initializeDatabases', () => {
       'SELECT COUNT(*) AS count FROM schema_migrations',
     );
 
-    expect(migrationCount?.count).toBe(1);
+    expect(migrationCount?.count).toBe(2);
   });
 
   it('does not re-import bundled asset on second initializeDatabases', async () => {

@@ -7,6 +7,7 @@ export default function OnboardingLayout() {
       <Stack.Screen name="welcome" />
       <Stack.Screen name="intensity" />
       <Stack.Screen name="calibrate" />
+      <Stack.Screen name="bulk" />
       <Stack.Screen name="import" />
     </Stack>
   );

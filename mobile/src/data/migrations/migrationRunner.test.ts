@@ -1,6 +1,7 @@
 import { __mockResetSqlite, openDatabaseAsync } from '../../../__mocks__/expo-sqlite';
 
 import { migration001Initial } from '@/data/migrations/001_initial';
+import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 
 describe('runMigrations', () => {
@@ -33,5 +34,33 @@ describe('runMigrations', () => {
     expect(firstRun.ok).toBe(true);
     expect(secondRun.ok).toBe(true);
     expect(db.getAllSync('SELECT version FROM schema_migrations')).toHaveLength(1);
+  });
+
+  it('applies 002_item_study_status after 001_initial', async () => {
+    const db = await openDatabaseAsync('user.db');
+
+    const result = runMigrations(db, [migration001Initial, migration002ItemStudyStatus]);
+
+    expect(result.ok).toBe(true);
+    expect(db.getAllSync('SELECT version FROM schema_migrations ORDER BY version')).toEqual([
+      expect.objectContaining({ version: 1 }),
+      expect.objectContaining({ version: 2 }),
+    ]);
+    expect(
+      db.getAllSync(
+        "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'item_study_status'",
+      ),
+    ).toHaveLength(1);
+  });
+
+  it('is idempotent when 002 is re-run on an already migrated database', async () => {
+    const db = await openDatabaseAsync('user.db');
+
+    const firstRun = runMigrations(db, [migration001Initial, migration002ItemStudyStatus]);
+    const secondRun = runMigrations(db, [migration001Initial, migration002ItemStudyStatus]);
+
+    expect(firstRun.ok).toBe(true);
+    expect(secondRun.ok).toBe(true);
+    expect(db.getAllSync('SELECT version FROM schema_migrations')).toHaveLength(2);
   });
 });

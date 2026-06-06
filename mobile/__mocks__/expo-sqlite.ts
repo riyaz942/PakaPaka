@@ -73,6 +73,23 @@ function parseInsert(sql: string): { table: string; columns: string[]; values: u
   return { table, columns, values };
 }
 
+function upsertStudyStatus(
+  state: MockDatabaseState,
+  itemId: unknown,
+  status: unknown,
+  updatedAt: unknown,
+) {
+  const rows = state.tables.get('item_study_status') ?? [];
+  const existingIndex = rows.findIndex((row) => row.item_id === itemId);
+  const nextRow = { item_id: itemId, status, updated_at: updatedAt };
+  if (existingIndex >= 0) {
+    rows[existingIndex] = nextRow;
+  } else {
+    rows.push(nextRow);
+  }
+  state.tables.set('item_study_status', rows);
+}
+
 function upsertPreference(state: MockDatabaseState, key: unknown, value: unknown, updatedAt: unknown) {
   const rows = state.tables.get('user_preferences') ?? [];
   const existingIndex = rows.findIndex((row) => row.key === key);
@@ -142,6 +159,20 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     upsertPreference(state, params[0], params[1], params[2]);
     return;
   }
+
+  if (/^INSERT INTO item_study_status/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    upsertStudyStatus(state, params[0], params[1], params[2]);
+    return;
+  }
+
+  if (/^DELETE FROM item_study_status/i.test(trimmed)) {
+    const rows = state.tables.get('item_study_status') ?? [];
+    state.tables.set(
+      'item_study_status',
+      rows.filter((row) => row.item_id !== params[0]),
+    );
+    return;
+  }
 }
 
 function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []): Row[] {
@@ -158,6 +189,9 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     }
     if (/name = 'user_preferences'/i.test(trimmed)) {
       return names.includes('user_preferences') ? [{ name: 'user_preferences' }] : [];
+    }
+    if (/name = 'item_study_status'/i.test(trimmed)) {
+      return names.includes('item_study_status') ? [{ name: 'item_study_status' }] : [];
     }
     return names.map((name) => ({ name }));
   }
@@ -190,6 +224,53 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows.filter((row) => row.key === params[0]);
     }
     return [...rows];
+  }
+
+  if (/FROM item_study_status/i.test(trimmed)) {
+    let rows = [...(state.tables.get('item_study_status') ?? [])];
+
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.item_id === params[0]);
+    }
+
+    if (/WHERE item_id IN/i.test(trimmed)) {
+      const allowedIds = new Set(params);
+      return rows.filter((row) => allowedIds.has(row.item_id));
+    }
+
+    return rows;
+  }
+
+  if (/FROM item_relationships/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
+    const relationships = [...(state.tables.get('item_relationships') ?? [])];
+    const items = state.tables.get('items') ?? [];
+
+    const childIds = /child_item_id IN/i.test(trimmed)
+      ? new Set(params)
+      : new Set([params[0]]);
+
+    return relationships
+      .filter(
+        (relationship) =>
+          childIds.has(relationship.child_item_id) &&
+          relationship.relationship_type === 'requires',
+      )
+      .map((relationship) => {
+        const parent = items.find((item) => item.id === relationship.parent_item_id);
+        return {
+          child_item_id: relationship.child_item_id,
+          primary_form: parent?.primary_form ?? '',
+          meaning: parent?.meaning ?? '',
+          sort_order: parent?.sort_order ?? 0,
+        };
+      })
+      .sort((left, right) => {
+        const childCompare = Number(left.child_item_id) - Number(right.child_item_id);
+        if (childCompare !== 0) {
+          return childCompare;
+        }
+        return Number(left.sort_order) - Number(right.sort_order);
+      });
   }
 
   if (/FROM items/i.test(trimmed)) {
@@ -295,6 +376,11 @@ export function __mockApplyDownloadedCurriculumToActive() {
 export function __mockSetItems(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('items', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetItemRelationships(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('item_relationships', rows.map((row) => ({ ...row })));
 }
 
 export function __mockResetSqlite() {

@@ -1,0 +1,117 @@
+import { openDatabaseAsync } from 'expo-sqlite';
+
+import {
+  __mockResetSqlite,
+  __mockSetItemRelationships,
+  __mockSetItems,
+} from '../../../__mocks__/expo-sqlite';
+
+import {
+  getRequiredParentLabels,
+  getRequiredParentLabelsForItems,
+  ITEM_TYPES,
+  listItemsByLevelAndType,
+} from '@/data/curriculum/itemRepository';
+
+const N5_COUNTS: Record<(typeof ITEM_TYPES)[number], number> = {
+  radical: 25,
+  kanji: 32,
+  vocabulary: 41,
+  grammar: 16,
+};
+
+function buildN5Items() {
+  const items = [];
+  let id = 1;
+
+  for (const itemType of ITEM_TYPES) {
+    const count = N5_COUNTS[itemType];
+    for (let index = 0; index < count; index += 1) {
+      items.push({
+        id,
+        item_type: itemType,
+        jlpt_level: 'N5',
+        slug: `${itemType}-${id}`,
+        primary_form: `${itemType}-${id}`,
+        meaning: `meaning-${id}`,
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: index + 1,
+      });
+      id += 1;
+    }
+  }
+
+  return items;
+}
+
+describe('itemRepository', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  it('returns N5 counts per item type ordered by sort_order', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', buildN5Items());
+
+    for (const itemType of ITEM_TYPES) {
+      const items = listItemsByLevelAndType(db, 'N5', itemType);
+      expect(items).toHaveLength(N5_COUNTS[itemType]);
+      expect(items[0]?.itemType).toBe(itemType);
+      expect(items[0]?.sortOrder).toBe(1);
+      expect(items.at(-1)?.sortOrder).toBe(N5_COUNTS[itemType]);
+    }
+  });
+
+  it('returns required parent labels for single and batched kanji ids', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 11,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'book',
+        primary_form: '本',
+        meaning: 'book',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'requires',
+      },
+    ]);
+
+    expect(getRequiredParentLabels(db, '10')).toEqual(['日']);
+    expect(getRequiredParentLabelsForItems(db, ['10', '11']).get('10')).toEqual(['日']);
+    expect(getRequiredParentLabelsForItems(db, ['10', '11']).has('11')).toBe(false);
+  });
+});
