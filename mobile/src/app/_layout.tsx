@@ -11,6 +11,7 @@ import { Banner } from '@/components/common/Banner';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
 import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
 import { DatabaseProvider } from '@/providers/DatabaseProvider';
+import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
@@ -37,10 +38,12 @@ function RootLayoutContent() {
     <View className="flex-1 bg-background">
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
+          <OnboardingRedirect />
           <CurriculumUpdateBannerHost />
           <AnimatedSplashOverlay />
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
             <Stack.Screen
               name="review"
               options={{ headerShown: false, presentation: 'fullScreenModal' }}

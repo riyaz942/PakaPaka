@@ -1,11 +1,14 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { CurriculumUpdateSource } from '@/data/curriculum/curriculumManifest.types';
+import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 
 export const PREFERENCE_KEYS = {
   installedCurriculumVersion: 'installed_curriculum_version',
   installedCurriculumContentHash: 'installed_curriculum_content_hash',
   curriculumUpdateSource: 'curriculum_update_source',
+  startingJlptLevel: 'starting_jlpt_level',
+  onboardingCompleted: 'onboarding_completed',
 } as const;
 
 export function getPreference(
@@ -42,6 +45,25 @@ export function getCurriculumUpdateSource(
     return value;
   }
   return null;
+}
+
+export function getStartingJlptLevel(userDb: SQLiteDatabase): JLPTLevel | null {
+  const value = getPreference(userDb, PREFERENCE_KEYS.startingJlptLevel);
+  if (value && isJlptLevel(value)) {
+    return value;
+  }
+  return null;
+}
+
+export function setStartingJlptLevel(userDb: SQLiteDatabase, level: JLPTLevel): void {
+  if (!isJlptLevel(level)) {
+    throw new Error(`Invalid JLPT level: ${level}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.startingJlptLevel, level);
+}
+
+export function isOnboardingCompleted(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.onboardingCompleted) === 'true';
 }
 
 export function setCurriculumInstallMetadata(
