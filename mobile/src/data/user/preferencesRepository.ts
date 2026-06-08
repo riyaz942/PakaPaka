@@ -89,6 +89,14 @@ export function isOnboardingCompleted(userDb: SQLiteDatabase): boolean {
   return getPreference(userDb, PREFERENCE_KEYS.onboardingCompleted) === 'true';
 }
 
+export function setOnboardingCompleted(userDb: SQLiteDatabase): void {
+  setPreference(userDb, PREFERENCE_KEYS.onboardingCompleted, 'true');
+}
+
+export function clearOnboardingCompleted(userDb: SQLiteDatabase): void {
+  userDb.runSync('DELETE FROM user_preferences WHERE key = ?', PREFERENCE_KEYS.onboardingCompleted);
+}
+
 export function setCurriculumInstallMetadata(
   userDb: SQLiteDatabase,
   options: {

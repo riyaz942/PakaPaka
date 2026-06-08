@@ -161,17 +161,46 @@ describe('useOnboardingRedirect', () => {
     });
   });
 
-  it('does not redirect when onboarding is completed', async () => {
+  it('does not redirect when onboarding is completed and user is on tabs', async () => {
     const db = await openDatabaseAsync('user.db');
     runMigrations(db, [migration001Initial]);
     setStartingJlptLevel(db, 'N3');
     setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    mockSegments = ['(tabs)'];
 
     const wrapper = await createWrapper(db);
     renderHook(() => useOnboardingRedirect(), { wrapper });
 
     await waitFor(() => {
       expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('redirects to tabs when onboarding is completed on complete screen', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    mockSegments = ['onboarding', 'complete'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+    });
+  });
+
+  it('redirects to tabs when onboarding is completed on welcome screen', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setPreference(db, PREFERENCE_KEYS.onboardingCompleted, 'true');
+    mockSegments = ['onboarding', 'welcome'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
     });
   });
 });

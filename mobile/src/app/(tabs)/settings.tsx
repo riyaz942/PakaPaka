@@ -1,11 +1,14 @@
+import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Button } from '@/components/common/Button';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
+  clearOnboardingCompleted,
   getSessionIntensity,
   setSessionIntensity,
 } from '@/data/user/preferencesRepository';
@@ -23,6 +26,11 @@ export default function SettingsScreen() {
   const handleSelect = (intensity: SessionIntensity) => {
     setSessionIntensity(userDb, intensity);
     setSelectedIntensity(intensity);
+  };
+
+  const handleResetOnboarding = () => {
+    clearOnboardingCompleted(userDb);
+    router.replace('/onboarding/welcome');
   };
 
   return (
@@ -53,6 +61,22 @@ export default function SettingsScreen() {
           />
         </View>
       </View>
+
+      {__DEV__ ? (
+        <View className="mt-10">
+          <Text className="text-body font-semibold text-primary">Developer</Text>
+          <Text className="mt-1 text-body-sm text-secondary">
+            Clears onboarding completion only. Level and intensity preferences are kept.
+          </Text>
+          <Button
+            label="Reset onboarding"
+            onPress={handleResetOnboarding}
+            variant="secondary"
+            className="mt-4 w-full"
+            testID="dev-reset-onboarding"
+          />
+        </View>
+      ) : null}
     </View>
   );
 }

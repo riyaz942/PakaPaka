@@ -19,14 +19,18 @@ export function useOnboardingRedirect(): void {
     }
 
     const completed = isOnboardingCompleted(userDb);
+    const segmentList = segments as string[];
 
     if (completed) {
+      const inOnboarding = segmentList[0] === 'onboarding';
+      if (inOnboarding) {
+        router.replace('/(tabs)');
+      }
       return;
     }
 
     const level = getStartingJlptLevel(userDb);
     const intensity = getSessionIntensity(userDb);
-    const segmentList = segments as string[];
     const inOnboarding = segmentList[0] === 'onboarding';
     const onWelcome = inOnboarding && segmentList[1] === 'welcome';
     const onIntensity = inOnboarding && segmentList[1] === 'intensity';

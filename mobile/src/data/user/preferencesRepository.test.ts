@@ -6,10 +6,12 @@ import { isJlptLevel } from '@/data/curriculum/curriculum.types';
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  clearOnboardingCompleted,
   getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setOnboardingCompleted,
   setSessionIntensity,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
@@ -55,6 +57,30 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
   it('reads onboarding_completed as false when unset', async () => {
     const db = await createUserDb();
     expect(isOnboardingCompleted(db)).toBe(false);
+  });
+
+  it('round-trips onboarding_completed via set and clear', async () => {
+    const db = await createUserDb();
+
+    expect(isOnboardingCompleted(db)).toBe(false);
+
+    setOnboardingCompleted(db);
+    expect(isOnboardingCompleted(db)).toBe(true);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.onboardingCompleted,
+      )?.value,
+    ).toBe('true');
+
+    clearOnboardingCompleted(db);
+    expect(isOnboardingCompleted(db)).toBe(false);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.onboardingCompleted,
+      ),
+    ).toBeNull();
   });
 
   it('round-trips session_intensity', async () => {

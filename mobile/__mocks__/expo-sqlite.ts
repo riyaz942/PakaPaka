@@ -173,6 +173,15 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     );
     return;
   }
+
+  if (/^DELETE FROM user_preferences/i.test(trimmed)) {
+    const rows = state.tables.get('user_preferences') ?? [];
+    state.tables.set(
+      'user_preferences',
+      rows.filter((row) => row.key !== params[0]),
+    );
+    return;
+  }
 }
 
 function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []): Row[] {
