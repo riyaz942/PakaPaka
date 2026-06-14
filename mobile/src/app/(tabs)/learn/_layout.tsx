@@ -6,6 +6,7 @@ export default function LearnTabLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="[level]" />
+      <Stack.Screen name="item/[id]" />
     </Stack>
   );
 }

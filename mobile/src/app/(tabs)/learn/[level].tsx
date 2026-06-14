@@ -1,4 +1,4 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { type Href, router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,12 +8,14 @@ import { CalibrationItemTypePicker } from '@/components/onboarding/CalibrationIt
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
 import { isJlptLevel } from '@/data/curriculum/curriculum.types';
 import {
+  getRequiredParentsForItems,
   ITEM_TYPE_LABELS,
   type ItemType,
 } from '@/data/curriculum/itemRepository';
+import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLearnItems } from '@/data/hooks/useLearnItems';
 
-const LEARN_ITEM_TYPES: readonly ItemType[] = ['kanji', 'vocabulary', 'grammar'];
+const LEARN_ITEM_TYPES: readonly ItemType[] = ['radical', 'kanji', 'vocabulary', 'grammar'];
 
 function isLearnItemType(value: string): value is ItemType {
   return (LEARN_ITEM_TYPES as readonly string[]).includes(value);
@@ -28,10 +30,19 @@ export default function LearnLevelScreen() {
   const jlptLevel = isJlptLevel(params.level) ? params.level : 'N5';
   const [itemType, setItemType] = useState<ItemType>(() => resolveItemType(params.type));
   const { items, loading } = useLearnItems(jlptLevel, itemType);
+  const { curriculumDb } = useDatabase();
 
   useEffect(() => {
     setItemType(resolveItemType(params.type));
   }, [params.type]);
+
+  const dependencyParentsByItemId = useMemo(() => {
+    if (itemType !== 'kanji') {
+      return new Map();
+    }
+    const kanjiIds = items.map((item) => item.id);
+    return getRequiredParentsForItems(curriculumDb, kanjiIds);
+  }, [curriculumDb, itemType, items]);
 
   const emptyMessage = useMemo(() => {
     return `No ${ITEM_TYPE_LABELS[itemType]} at ${jlptLevel} yet.`;
@@ -77,7 +88,16 @@ export default function LearnLevelScreen() {
             data={items}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <LearnItemRow item={item} testID={`learn-item-${item.id}`} />
+              <LearnItemRow
+                item={item}
+                testID={`learn-item-${item.id}`}
+                onPress={
+                  item.itemType === 'radical'
+                    ? () => router.push(`/learn/item/${item.id}` as Href)
+                    : undefined
+                }
+                dependencyParents={dependencyParentsByItemId.get(item.id)}
+              />
             )}
           />
         )}

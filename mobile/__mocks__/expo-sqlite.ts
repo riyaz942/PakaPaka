@@ -389,8 +389,10 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
         const parent = items.find((item) => item.id === relationship.parent_item_id);
         return {
           child_item_id: relationship.child_item_id,
+          id: parent?.id,
           primary_form: parent?.primary_form ?? '',
           meaning: parent?.meaning ?? '',
+          item_type: parent?.item_type,
           sort_order: parent?.sort_order ?? 0,
         };
       })
@@ -405,6 +407,10 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM items/i.test(trimmed)) {
     let rows = [...(state.tables.get('items') ?? [])];
+
+    if (/WHERE id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.id === params[0]);
+    }
 
     if (/item_type = 'radical'/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {
       rows = rows.filter(

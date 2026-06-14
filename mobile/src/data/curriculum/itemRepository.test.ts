@@ -9,8 +9,10 @@ import {
 import {
   countItemsByLevel,
   countItemsByLevelAndType,
+  getItemById,
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
+  getRequiredParentsForItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
 } from '@/data/curriculum/itemRepository';
@@ -127,5 +129,95 @@ describe('itemRepository', () => {
     expect(getRequiredParentLabels(db, '10')).toEqual(['日']);
     expect(getRequiredParentLabelsForItems(db, ['10', '11']).get('10')).toEqual(['日']);
     expect(getRequiredParentLabelsForItems(db, ['10', '11']).has('11')).toBe(false);
+  });
+
+  it('returns item detail by id', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'one',
+        primary_form: '一',
+        meaning: 'one',
+        mnemonic_text: 'Radical one (一)',
+        visual_mnemonic_url: 'https://example.com/one.png',
+        sort_order: 1,
+      },
+    ]);
+
+    const detail = getItemById(db, '1');
+    expect(detail).toEqual({
+      id: '1',
+      slug: 'one',
+      itemType: 'radical',
+      jlptLevel: 'N5',
+      primaryForm: '一',
+      meaning: 'one',
+      mnemonicText: 'Radical one (一)',
+      visualMnemonicUrl: 'https://example.com/one.png',
+    });
+    expect(getItemById(db, '999')).toBeNull();
+  });
+
+  it('returns required parents with ids for batched kanji ids', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'mouth',
+        primary_form: '口',
+        meaning: 'mouth',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'requires',
+      },
+      {
+        child_item_id: 10,
+        parent_item_id: 2,
+        relationship_type: 'requires',
+      },
+    ]);
+
+    const parents = getRequiredParentsForItems(db, ['10']);
+    expect(parents.get('10')).toEqual([
+      { id: '1', primaryForm: '日', itemType: 'radical' },
+      { id: '2', primaryForm: '口', itemType: 'radical' },
+    ]);
   });
 });

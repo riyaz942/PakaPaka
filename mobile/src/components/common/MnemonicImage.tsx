@@ -15,6 +15,7 @@ export type MnemonicImageProps = {
   primaryForm?: string | null;
   className?: string;
   testID?: string;
+  onLoadError?: () => void;
 };
 
 export function MnemonicImage({
@@ -24,6 +25,7 @@ export function MnemonicImage({
   primaryForm,
   className,
   testID,
+  onLoadError,
 }: MnemonicImageProps) {
   const [hasError, setHasError] = useState(false);
 
@@ -60,7 +62,10 @@ export function MnemonicImage({
         accessibilityLabel={accessibilityLabel}
         cachePolicy="disk"
         contentFit="contain"
-        onError={() => setHasError(true)}
+        onError={() => {
+          setHasError(true);
+          onLoadError?.();
+        }}
         source={{ uri: imageUrl!.trim() }}
         style={{ height: '100%', width: '100%' }}
       />

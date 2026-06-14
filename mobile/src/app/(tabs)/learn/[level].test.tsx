@@ -3,18 +3,20 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { __mockResetSqlite, __mockSetItems } from '../../../../__mocks__/expo-sqlite';
+import { __mockResetSqlite, __mockSetItemRelationships, __mockSetItems } from '../../../../__mocks__/expo-sqlite';
 
 import { DatabaseContext } from '@/providers/DatabaseContext';
 
 import LearnLevelScreen from './[level]';
 
 const mockBack = jest.fn();
+const mockPush = jest.fn();
 const mockUseLocalSearchParams = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
     back: () => mockBack(),
+    push: (...args: unknown[]) => mockPush(...args),
   },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
 }));
@@ -47,6 +49,7 @@ describe('LearnLevelScreen', () => {
   beforeEach(() => {
     __mockResetSqlite();
     mockBack.mockClear();
+    mockPush.mockClear();
     mockUseLocalSearchParams.mockReturnValue({ level: 'N5', type: 'kanji' });
   });
 
@@ -157,5 +160,84 @@ describe('LearnLevelScreen', () => {
     await waitFor(() => {
       expect(screen.getByText('No Kanji at N5 yet.')).toBeTruthy();
     });
+  });
+
+  it('renders radical list and navigates to detail on row press', async () => {
+    const curriculumDb = await openDatabaseAsync('curriculum.db.test');
+    const userDb = await openDatabaseAsync('user.db');
+    mockUseLocalSearchParams.mockReturnValue({ level: 'N5', type: 'radical' });
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'one',
+        primary_form: '一',
+        meaning: 'one',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-1')).toBeTruthy();
+      expect(screen.getByText('一')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-item-1'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/item/1');
+  });
+
+  it('navigates to radical detail when a kanji dependency link is pressed', async () => {
+    const curriculumDb = await openDatabaseAsync('curriculum.db.test');
+    const userDb = await openDatabaseAsync('user.db');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'requires',
+      },
+    ]);
+
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-10-dependencies-1')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-item-10-dependencies-1'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/item/1');
   });
 });

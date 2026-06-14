@@ -1,20 +1,31 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
-import type { CurriculumListItem } from '@/data/curriculum/itemRepository';
+import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
+import type {
+  CurriculumListItem,
+  CurriculumParentItem,
+} from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
 
 type LearnItemRowProps = {
   item: CurriculumListItem;
   testID?: string;
+  onPress?: () => void;
+  dependencyParents?: CurriculumParentItem[];
 };
 
-export function LearnItemRow({ item, testID }: LearnItemRowProps) {
+export function LearnItemRow({
+  item,
+  testID,
+  onPress,
+  dependencyParents,
+}: LearnItemRowProps) {
   const isGrammar = item.itemType === 'grammar';
   const isJapaneseForm = item.itemType === 'radical' || item.itemType === 'kanji';
 
-  return (
-    <View testID={testID} className="border-b border-border py-4">
+  const content = (
+    <>
       <Text
         className={cn(
           isJapaneseForm ? 'text-display text-primary' : 'text-body text-primary',
@@ -23,6 +34,32 @@ export function LearnItemRow({ item, testID }: LearnItemRowProps) {
         {item.primaryForm}
       </Text>
       <Text className="mt-1 text-body text-primary">{item.meaning}</Text>
+
+      {dependencyParents && dependencyParents.length > 0 ? (
+        <KanjiDependencyHints
+          parents={dependencyParents}
+          testID={testID ? `${testID}-dependencies` : undefined}
+        />
+      ) : null}
+    </>
+  );
+
+  if (onPress) {
+    return (
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${item.primaryForm}, ${item.meaning}`}
+        onPress={onPress}
+        testID={testID}
+        className="border-b border-border py-4">
+        {content}
+      </Pressable>
+    );
+  }
+
+  return (
+    <View testID={testID} className="border-b border-border py-4">
+      {content}
     </View>
   );
 }

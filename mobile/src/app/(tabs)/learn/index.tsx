@@ -14,7 +14,7 @@ import { useDatabase } from '@/data/hooks/useDatabase';
 import { useItemCountsByLevel } from '@/data/hooks/useItemCountsByLevel';
 import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
 
-const HUB_ITEM_TYPES: readonly ItemType[] = ['kanji', 'vocabulary', 'grammar'];
+const HUB_ITEM_TYPES: readonly ItemType[] = ['radical', 'kanji', 'vocabulary', 'grammar'];
 
 export default function LearnScreen() {
   const { userDb } = useDatabase();

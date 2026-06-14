@@ -104,6 +104,28 @@ describe('LearnScreen', () => {
         visual_mnemonic_url: null,
         sort_order: 1,
       },
+      {
+        id: 5,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'one',
+        primary_form: '一',
+        meaning: 'one',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 6,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'mouth',
+        primary_form: '口',
+        meaning: 'mouth',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
     ]);
 
     return { userDb, curriculumDb };
@@ -119,6 +141,7 @@ describe('LearnScreen', () => {
       expect(screen.getByLabelText('Kanji, 2 items')).toBeTruthy();
       expect(screen.getByLabelText('Vocabulary, 1 items')).toBeTruthy();
       expect(screen.getByLabelText('Grammar, 1 items')).toBeTruthy();
+      expect(screen.getByLabelText('Radicals, 2 items')).toBeTruthy();
     });
   });
 
@@ -187,5 +210,18 @@ describe('LearnScreen', () => {
     fireEvent.press(screen.getByTestId('learn-type-card-kanji'));
 
     expect(mockPush).toHaveBeenCalledWith('/learn/N5?type=kanji');
+  });
+
+  it('navigates to the radical level list when the Radicals card is pressed', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderLearnScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-type-card-radical')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-type-card-radical'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/N5?type=radical');
   });
 });

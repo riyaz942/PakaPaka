@@ -27,6 +27,23 @@ export type CurriculumListItem = {
   sortOrder: number;
 };
 
+export type CurriculumItemDetail = {
+  id: string;
+  slug: string;
+  itemType: ItemType;
+  jlptLevel: JLPTLevel;
+  primaryForm: string;
+  meaning: string;
+  mnemonicText: string | null;
+  visualMnemonicUrl: string | null;
+};
+
+export type CurriculumParentItem = {
+  id: string;
+  primaryForm: string;
+  itemType: ItemType;
+};
+
 type ItemRow = {
   id: number | string;
   slug: string;
@@ -103,15 +120,57 @@ export function listItemsByLevelAndType(
   return rows.map(mapRowToListItem);
 }
 
-type ParentLabelRow = {
-  child_item_id: number | string;
+type ItemDetailRow = {
+  id: number | string;
+  slug: string;
+  item_type: ItemType;
+  jlpt_level: JLPTLevel;
   primary_form: string;
   meaning: string;
+  mnemonic_text: string | null;
+  visual_mnemonic_url: string | null;
+};
+
+function mapRowToDetail(row: ItemDetailRow): CurriculumItemDetail {
+  return {
+    id: String(row.id),
+    slug: row.slug,
+    itemType: row.item_type,
+    jlptLevel: row.jlpt_level,
+    primaryForm: row.primary_form,
+    meaning: row.meaning,
+    mnemonicText: row.mnemonic_text,
+    visualMnemonicUrl: row.visual_mnemonic_url,
+  };
+}
+
+export function getItemById(
+  db: SQLiteDatabase,
+  id: string,
+): CurriculumItemDetail | null {
+  const row = db.getFirstSync<ItemDetailRow>(
+    `SELECT id, slug, item_type, jlpt_level, primary_form, meaning, mnemonic_text, visual_mnemonic_url
+     FROM items WHERE id = ?`,
+    Number(id),
+  );
+  return row ? mapRowToDetail(row) : null;
+}
+
+type ParentRow = {
+  child_item_id: number | string;
+  id: number | string;
+  primary_form: string;
+  meaning: string;
+  item_type: ItemType;
   sort_order: number;
 };
 
-function mapParentLabelRow(row: ParentLabelRow): string {
-  return row.primary_form || row.meaning;
+function mapParentRow(row: ParentRow): CurriculumParentItem {
+  return {
+    id: String(row.id),
+    primaryForm: row.primary_form || row.meaning,
+    itemType: row.item_type,
+  };
 }
 
 export function getRequiredParentLabels(
@@ -121,11 +180,11 @@ export function getRequiredParentLabels(
   return getRequiredParentLabelsForItems(db, [itemId]).get(itemId) ?? [];
 }
 
-export function getRequiredParentLabelsForItems(
+export function getRequiredParentsForItems(
   db: SQLiteDatabase,
   itemIds: string[],
-): Map<string, string[]> {
-  const result = new Map<string, string[]>();
+): Map<string, CurriculumParentItem[]> {
+  const result = new Map<string, CurriculumParentItem[]>();
 
   if (itemIds.length === 0) {
     return result;
@@ -134,8 +193,8 @@ export function getRequiredParentLabelsForItems(
   const numericIds = itemIds.map((itemId) => Number(itemId));
   const placeholders = numericIds.map(() => '?').join(', ');
 
-  const rows = db.getAllSync<ParentLabelRow>(
-    `SELECT r.child_item_id, p.primary_form, p.meaning, p.sort_order
+  const rows = db.getAllSync<ParentRow>(
+    `SELECT r.child_item_id, p.id, p.primary_form, p.meaning, p.item_type, p.sort_order
      FROM item_relationships r
      JOIN items p ON p.id = r.parent_item_id
      WHERE r.child_item_id IN (${placeholders}) AND r.relationship_type = 'requires'
@@ -145,9 +204,26 @@ export function getRequiredParentLabelsForItems(
 
   for (const row of rows) {
     const itemId = String(row.child_item_id);
-    const labels = result.get(itemId) ?? [];
-    labels.push(mapParentLabelRow(row));
-    result.set(itemId, labels);
+    const parents = result.get(itemId) ?? [];
+    parents.push(mapParentRow(row));
+    result.set(itemId, parents);
+  }
+
+  return result;
+}
+
+export function getRequiredParentLabelsForItems(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, string[]> {
+  const parentsByItemId = getRequiredParentsForItems(db, itemIds);
+  const result = new Map<string, string[]>();
+
+  for (const [itemId, parents] of parentsByItemId) {
+    result.set(
+      itemId,
+      parents.map((parent) => parent.primaryForm),
+    );
   }
 
   return result;
