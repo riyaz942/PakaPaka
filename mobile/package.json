@@ -29,6 +29,7 @@
     "expo-network": "~55.0.14",
     "expo-router": "~55.0.14",
     "expo-screen-orientation": "~55.0.16",
+    "expo-secure-store": "~55.0.14",
     "expo-splash-screen": "~55.0.20",
     "expo-sqlite": "~55.0.16",
     "expo-status-bar": "~55.0.6",
@@ -77,6 +78,7 @@
       "^expo-file-system/legacy$": "<rootDir>/__mocks__/expo-file-system.ts",
       "^expo-network$": "<rootDir>/__mocks__/expo-network.ts",
       "^expo-crypto$": "<rootDir>/__mocks__/expo-crypto.ts",
+      "^expo-secure-store$": "<rootDir>/__mocks__/expo-secure-store.ts",
       "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
       "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx"
     }
