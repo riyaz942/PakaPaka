@@ -3,6 +3,7 @@ type Row = Record<string, unknown>;
 type MockDatabaseState = {
   tables: Map<string, Row[]>;
   inTransaction: boolean;
+  transactionSnapshot: Map<string, Row[]> | null;
 };
 
 const databases = new Map<string, MockDatabaseState>();
@@ -39,6 +40,7 @@ function getDatabaseState(databaseName: string): MockDatabaseState {
   const created: MockDatabaseState = {
     tables: new Map(),
     inTransaction: false,
+    transactionSnapshot: null,
   };
   databases.set(databaseName, created);
   return created;
@@ -88,6 +90,75 @@ function upsertStudyStatus(
     rows.push(nextRow);
   }
   state.tables.set('item_study_status', rows);
+}
+
+function cloneTableRows(rows: Row[] | undefined): Row[] {
+  return (rows ?? []).map((row) => ({ ...row }));
+}
+
+function snapshotTables(state: MockDatabaseState, tableNames: string[]): Map<string, Row[]> {
+  const snapshot = new Map<string, Row[]>();
+  for (const tableName of tableNames) {
+    snapshot.set(tableName, cloneTableRows(state.tables.get(tableName)));
+  }
+  return snapshot;
+}
+
+function restoreTables(state: MockDatabaseState, snapshot: Map<string, Row[]>): void {
+  for (const [tableName, rows] of snapshot.entries()) {
+    state.tables.set(tableName, cloneTableRows(rows));
+  }
+}
+
+function upsertSrsState(
+  state: MockDatabaseState,
+  params: unknown[],
+) {
+  const [
+    itemId,
+    stability,
+    difficulty,
+    dueDate,
+    fsrsState,
+    reps,
+    lapses,
+    isBurned,
+    srsStageLabel,
+    updatedAt,
+  ] = params;
+
+  const rows = state.tables.get('srs_states') ?? [];
+  const nextRow = {
+    item_id: itemId,
+    stability,
+    difficulty,
+    due_date: dueDate,
+    fsrs_state: fsrsState,
+    reps,
+    lapses,
+    is_burned: isBurned,
+    srs_stage_label: srsStageLabel,
+    updated_at: updatedAt,
+  };
+  const existingIndex = rows.findIndex((row) => row.item_id === itemId);
+  if (existingIndex >= 0) {
+    rows[existingIndex] = nextRow;
+  } else {
+    rows.push(nextRow);
+  }
+  state.tables.set('srs_states', rows);
+}
+
+function insertImportMetadata(state: MockDatabaseState, params: unknown[]) {
+  const rows = state.tables.get('import_metadata') ?? [];
+  rows.push({
+    id: rows.length + 1,
+    source: params[0],
+    imported_at: params[1],
+    mapped_count: params[2],
+    unmatched_count: params[3],
+  });
+  state.tables.set('import_metadata', rows);
 }
 
 function upsertPreference(state: MockDatabaseState, key: unknown, value: unknown, updatedAt: unknown) {
@@ -162,6 +233,27 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
 
   if (/^INSERT INTO item_study_status/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertStudyStatus(state, params[0], params[1], params[2]);
+    return;
+  }
+
+  if (/^INSERT INTO srs_states/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    upsertSrsState(state, params);
+    return;
+  }
+
+  if (/^INSERT INTO import_metadata/i.test(trimmed)) {
+    insertImportMetadata(state, params);
+    return;
+  }
+
+  if (/^INSERT INTO external_id_mappings/i.test(trimmed) && trimmed.includes('?')) {
+    const rows = state.tables.get('external_id_mappings') ?? [];
+    rows.push({
+      source: params[0],
+      external_id: params[1],
+      item_id: params[2],
+    });
+    state.tables.set('external_id_mappings', rows);
     return;
   }
 
@@ -247,6 +339,35 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows.filter((row) => allowedIds.has(row.item_id));
     }
 
+    return rows;
+  }
+
+  if (/FROM srs_states/i.test(trimmed)) {
+    const rows = state.tables.get('srs_states') ?? [];
+    if (/COUNT\(\*\)/i.test(trimmed)) {
+      return [{ count: rows.length }];
+    }
+    return [...rows];
+  }
+
+  if (/FROM import_metadata/i.test(trimmed)) {
+    const rows = state.tables.get('import_metadata') ?? [];
+    if (/COUNT\(\*\)/i.test(trimmed)) {
+      return [{ count: rows.length }];
+    }
+    return [...rows];
+  }
+
+  if (/FROM external_id_mappings/i.test(trimmed)) {
+    let rows = [...(state.tables.get('external_id_mappings') ?? [])];
+    if (/source = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.source === params[0]);
+      const externalIds = params.slice(1);
+      if (/external_id IN/i.test(trimmed) && externalIds.length > 0) {
+        const allowed = new Set(externalIds.map(String));
+        rows = rows.filter((row) => allowed.has(String(row.external_id)));
+      }
+    }
     return rows;
   }
 
@@ -344,9 +465,17 @@ class MockSQLiteDatabase {
 
   withTransactionSync(task: () => void): void {
     const state = getDatabaseState(this.databaseName);
+    const snapshot = snapshotTables(state, [
+      'srs_states',
+      'import_metadata',
+      'item_study_status',
+    ]);
     state.inTransaction = true;
     try {
       task();
+    } catch (error) {
+      restoreTables(state, snapshot);
+      throw error;
     } finally {
       state.inTransaction = false;
     }
@@ -390,6 +519,11 @@ export function __mockSetItems(databaseName: string, rows: Row[]) {
 export function __mockSetItemRelationships(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('item_relationships', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetExternalIdMappings(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('external_id_mappings', rows.map((row) => ({ ...row })));
 }
 
 export function __mockResetSqlite() {

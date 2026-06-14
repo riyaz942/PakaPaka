@@ -1,0 +1,152 @@
+import type { SQLiteDatabase } from 'expo-sqlite';
+
+import type { ImportSummary, MappedImportItem } from '@/core/import/import.types';
+import { mapWaniKaniAssignments } from '@/core/import/wanikaniMapper';
+import { getExternalIdMappings } from '@/data/curriculum/externalIdMappingRepository';
+import { fetchWaniKaniAssignments, type WaniKaniClientDeps } from '@/data/import/wanikaniClient';
+import { discardImportCredential, getImportCredential } from '@/data/user/credentialStore';
+import { bulkSetStudyStatusKnown, setStudyStatus } from '@/data/user/itemStudyStatusRepository';
+import type { AppError, Result } from '@/types/result.types';
+
+type PersistMappedImportOptions = {
+  onBeforeInsert?: (item: MappedImportItem, index: number) => void;
+};
+
+function parseItemId(itemId: string): number {
+  const parsed = Number(itemId);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(`Invalid item id: ${itemId}`);
+  }
+  return parsed;
+}
+
+export function persistMappedImportItems(
+  userDb: SQLiteDatabase,
+  mapped: MappedImportItem[],
+  summary: ImportSummary,
+  options: PersistMappedImportOptions = {},
+): Result<void, AppError> {
+  try {
+    const updatedAt = new Date().toISOString();
+    const burnedItemIds: string[] = [];
+
+    userDb.withTransactionSync(() => {
+      for (const [index, item] of mapped.entries()) {
+        options.onBeforeInsert?.(item, index);
+
+        userDb.runSync(
+          `INSERT INTO srs_states (
+             item_id, stability, difficulty, due_date, fsrs_state,
+             reps, lapses, is_burned, srs_stage_label, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT(item_id) DO UPDATE SET
+             stability = excluded.stability,
+             difficulty = excluded.difficulty,
+             due_date = excluded.due_date,
+             fsrs_state = excluded.fsrs_state,
+             reps = excluded.reps,
+             lapses = excluded.lapses,
+             is_burned = excluded.is_burned,
+             srs_stage_label = excluded.srs_stage_label,
+             updated_at = excluded.updated_at`,
+          parseItemId(item.itemId),
+          item.fsrsState.stability,
+          item.fsrsState.difficulty,
+          item.fsrsState.dueDate,
+          item.fsrsState.state,
+          item.fsrsState.reps,
+          item.fsrsState.lapses,
+          item.fsrsState.isBurned ? 1 : 0,
+          item.fsrsState.srsStageLabel,
+          updatedAt,
+        );
+
+        if (item.fsrsState.isBurned) {
+          burnedItemIds.push(item.itemId);
+        } else {
+          setStudyStatus(userDb, item.itemId, 'in_progress');
+        }
+      }
+
+      if (burnedItemIds.length > 0) {
+        bulkSetStudyStatusKnown(userDb, burnedItemIds);
+      }
+
+      userDb.runSync(
+        `INSERT INTO import_metadata (source, imported_at, mapped_count, unmatched_count)
+         VALUES (?, ?, ?, ?)`,
+        summary.source,
+        updatedAt,
+        summary.mappedCount,
+        summary.unmatchedCount,
+      );
+    });
+
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'import_persist_failed',
+        message: 'Failed to persist imported progress',
+        userMessage: 'Import could not be saved. Your previous progress was not changed.',
+        cause,
+      },
+    };
+  }
+}
+
+export async function runWaniKaniImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  deps: WaniKaniClientDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const credentialResult = await getImportCredential('wanikani');
+  if (!credentialResult.ok) {
+    return credentialResult;
+  }
+
+  if (!credentialResult.value) {
+    return {
+      ok: false,
+      error: {
+        code: 'import_credential_missing',
+        message: 'WaniKani API key is not stored',
+        userMessage: 'Add your WaniKani API key before importing.',
+      },
+    };
+  }
+
+  const assignmentsResult = await fetchWaniKaniAssignments(credentialResult.value, deps);
+  if (!assignmentsResult.ok) {
+    return assignmentsResult;
+  }
+
+  const externalIds = assignmentsResult.value.map((assignment) => String(assignment.subject_id));
+  const mappingLookup = getExternalIdMappings(curriculumDb, 'wanikani', externalIds);
+  const mapResult = mapWaniKaniAssignments(assignmentsResult.value, mappingLookup);
+
+  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
+  if (!persistResult.ok) {
+    return persistResult;
+  }
+
+  const discardResult = await discardImportCredential('wanikani');
+  if (!discardResult.ok) {
+    return discardResult;
+  }
+
+  return { ok: true, value: mapResult.summary };
+}
+
+export function countSrsStates(userDb: SQLiteDatabase): number {
+  const row = userDb.getFirstSync<{ count: number }>('SELECT COUNT(*) AS count FROM srs_states');
+  return row?.count ?? 0;
+}
+
+export function countImportMetadataRows(userDb: SQLiteDatabase): number {
+  const row = userDb.getFirstSync<{ count: number }>(
+    'SELECT COUNT(*) AS count FROM import_metadata',
+  );
+  return row?.count ?? 0;
+}
