@@ -414,6 +414,23 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       rows = rows.filter(
         (row) => row.item_type === params[0] && row.jlpt_level === params[1],
       );
+    } else if (/jlpt_level = \?/i.test(trimmed) && !/item_type = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.jlpt_level === params[0]);
+    }
+
+    if (/COUNT\(\*\)/i.test(trimmed)) {
+      if (/GROUP BY item_type/i.test(trimmed)) {
+        const counts = new Map<string, number>();
+        for (const row of rows) {
+          const itemType = String(row.item_type);
+          counts.set(itemType, (counts.get(itemType) ?? 0) + 1);
+        }
+        return Array.from(counts.entries()).map(([item_type, count]) => ({
+          item_type,
+          count,
+        }));
+      }
+      return [{ count: rows.length }];
     }
 
     if (/ORDER BY sort_order ASC/i.test(trimmed)) {

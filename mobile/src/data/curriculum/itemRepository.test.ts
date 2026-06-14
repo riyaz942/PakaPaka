@@ -7,6 +7,8 @@ import {
 } from '../../../__mocks__/expo-sqlite';
 
 import {
+  countItemsByLevel,
+  countItemsByLevelAndType,
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
   ITEM_TYPES,
@@ -50,7 +52,7 @@ describe('itemRepository', () => {
     __mockResetSqlite();
   });
 
-  it('returns N5 counts per item type ordered by sort_order', async () => {
+  it('returns N5 items per type ordered by sort_order', async () => {
     const db = await openDatabaseAsync('curriculum.db.test');
     __mockSetItems('curriculum.db.test', buildN5Items());
 
@@ -61,6 +63,18 @@ describe('itemRepository', () => {
       expect(items[0]?.sortOrder).toBe(1);
       expect(items.at(-1)?.sortOrder).toBe(N5_COUNTS[itemType]);
     }
+  });
+
+  it('returns count by level and type without loading full lists', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', buildN5Items());
+
+    for (const itemType of ITEM_TYPES) {
+      expect(countItemsByLevelAndType(db, 'N5', itemType)).toBe(N5_COUNTS[itemType]);
+    }
+
+    const batchCounts = countItemsByLevel(db, 'N5');
+    expect(batchCounts).toEqual(N5_COUNTS);
   });
 
   it('returns required parent labels for single and batched kanji ids', async () => {

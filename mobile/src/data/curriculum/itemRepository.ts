@@ -47,6 +47,45 @@ function mapRowToListItem(row: ItemRow): CurriculumListItem {
   };
 }
 
+export function countItemsByLevelAndType(
+  db: SQLiteDatabase,
+  jlptLevel: JLPTLevel,
+  itemType: ItemType,
+): number {
+  const row = db.getFirstSync<{ count: number }>(
+    `SELECT COUNT(*) AS count FROM items WHERE item_type = ? AND jlpt_level = ?`,
+    itemType,
+    jlptLevel,
+  );
+  return row?.count ?? 0;
+}
+
+export function countItemsByLevel(
+  db: SQLiteDatabase,
+  jlptLevel: JLPTLevel,
+): Record<ItemType, number> {
+  const rows = db.getAllSync<{ item_type: ItemType; count: number }>(
+    `SELECT item_type, COUNT(*) AS count
+     FROM items
+     WHERE jlpt_level = ?
+     GROUP BY item_type`,
+    jlptLevel,
+  );
+
+  const counts: Record<ItemType, number> = {
+    radical: 0,
+    kanji: 0,
+    vocabulary: 0,
+    grammar: 0,
+  };
+
+  for (const row of rows) {
+    counts[row.item_type] = row.count;
+  }
+
+  return counts;
+}
+
 export function listItemsByLevelAndType(
   db: SQLiteDatabase,
   jlptLevel: JLPTLevel,

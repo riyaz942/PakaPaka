@@ -17,19 +17,24 @@ type CalibrationItemTypePickerProps = {
   selectedType: ItemType;
   onSelect: (type: ItemType) => void;
   testID?: string;
+  allowedTypes?: readonly ItemType[];
 };
 
 export function CalibrationItemTypePicker({
   selectedType,
   onSelect,
   testID,
+  allowedTypes,
 }: CalibrationItemTypePickerProps) {
+  const options = allowedTypes
+    ? TYPE_OPTIONS.filter((option) => allowedTypes.includes(option.value))
+    : TYPE_OPTIONS;
   return (
     <View
       accessibilityRole="tablist"
       testID={testID}
       className="flex-row flex-wrap gap-2">
-      {TYPE_OPTIONS.map((option) => {
+      {options.map((option) => {
         const selected = selectedType === option.value;
 
         return (
