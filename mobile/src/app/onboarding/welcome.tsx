@@ -7,7 +7,7 @@ import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
 import { LevelPathCard } from '@/components/onboarding/LevelPathCard';
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
-import { setStartingJlptLevel } from '@/data/user/preferencesRepository';
+import { setOnboardingPath, setStartingJlptLevel } from '@/data/user/preferencesRepository';
 
 type PathChoice = 'beginner' | 'intermediate' | null;
 
@@ -25,6 +25,7 @@ export default function WelcomeScreen() {
     }
 
     setStartingJlptLevel(userDb, resolvedLevel);
+    setOnboardingPath(userDb, selectedPath === 'beginner' ? 'beginner' : 'manual');
     router.replace('/onboarding/intensity');
   };
 
@@ -71,10 +72,13 @@ export default function WelcomeScreen() {
         </LevelPathCard>
 
         <LevelPathCard
-          title="Import my progress"
-          description="From WaniKani, Bunpro, or Anki — keep everything you've learned"
+          title="I have existing knowledge"
+          description="Import from WaniKani, Bunpro, or Anki — keep everything you've learned"
           accentBorder
-          onPress={() => router.push('/onboarding/import')}
+          onPress={() => {
+            setOnboardingPath(userDb, 'import');
+            router.push('/onboarding/import');
+          }}
           testID="path-import">
           <View className="mt-3 flex-row flex-wrap gap-2">
             {['WaniKani API', 'Bunpro', 'Anki (.apkg)'].map((label) => (

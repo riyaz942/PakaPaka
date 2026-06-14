@@ -7,6 +7,11 @@ import { ImportSummaryCard, type ImportSummaryCardState } from '@/components/imp
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { clearImportPreview, getImportPreview } from '@/data/import/importPreviewStore';
 import { confirmCredentialedImport } from '@/data/user/importRepository';
+import {
+  getStartingJlptLevel,
+  setOnboardingPath,
+  setStartingJlptLevel,
+} from '@/data/user/preferencesRepository';
 
 function getImportErrorMessage(error: { userMessage?: string; message: string }): string {
   return error.userMessage ?? error.message;
@@ -49,7 +54,11 @@ export default function ImportSummaryScreen() {
 
     clearImportPreview();
     setCardState('confirmed');
-    router.replace('/onboarding/complete');
+    setOnboardingPath(userDb, 'import');
+    if (!getStartingJlptLevel(userDb)) {
+      setStartingJlptLevel(userDb, 'N3');
+    }
+    router.replace('/onboarding/intensity');
   }, [cardState, preview, userDb]);
 
   return (

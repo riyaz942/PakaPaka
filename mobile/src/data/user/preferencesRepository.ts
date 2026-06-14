@@ -7,6 +7,8 @@ import {
   type SessionIntensity,
 } from '@/data/user/sessionIntensity.types';
 
+export type OnboardingPath = 'beginner' | 'manual' | 'import';
+
 export const PREFERENCE_KEYS = {
   installedCurriculumVersion: 'installed_curriculum_version',
   installedCurriculumContentHash: 'installed_curriculum_content_hash',
@@ -14,7 +16,14 @@ export const PREFERENCE_KEYS = {
   startingJlptLevel: 'starting_jlpt_level',
   sessionIntensity: 'session_intensity',
   onboardingCompleted: 'onboarding_completed',
+  onboardingPath: 'onboarding_path',
 } as const;
+
+const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
+
+function isOnboardingPath(value: string): value is OnboardingPath {
+  return (ONBOARDING_PATHS as readonly string[]).includes(value);
+}
 
 export function getPreference(
   userDb: SQLiteDatabase,
@@ -91,6 +100,21 @@ export function isOnboardingCompleted(userDb: SQLiteDatabase): boolean {
 
 export function setOnboardingCompleted(userDb: SQLiteDatabase): void {
   setPreference(userDb, PREFERENCE_KEYS.onboardingCompleted, 'true');
+}
+
+export function getOnboardingPath(userDb: SQLiteDatabase): OnboardingPath | null {
+  const value = getPreference(userDb, PREFERENCE_KEYS.onboardingPath);
+  if (value && isOnboardingPath(value)) {
+    return value;
+  }
+  return null;
+}
+
+export function setOnboardingPath(userDb: SQLiteDatabase, path: OnboardingPath): void {
+  if (!isOnboardingPath(path)) {
+    throw new Error(`Invalid onboarding path: ${path}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.onboardingPath, path);
 }
 
 export function clearOnboardingCompleted(userDb: SQLiteDatabase): void {

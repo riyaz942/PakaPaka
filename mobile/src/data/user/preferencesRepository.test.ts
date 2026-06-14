@@ -7,11 +7,13 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   clearOnboardingCompleted,
+  getOnboardingPath,
   getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
   setOnboardingCompleted,
+  setOnboardingPath,
   setSessionIntensity,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
@@ -116,5 +118,43 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
     );
 
     expect(getSessionIntensity(db)).toBeNull();
+  });
+
+  it('round-trips onboarding_path', async () => {
+    const db = await createUserDb();
+
+    expect(getOnboardingPath(db)).toBeNull();
+
+    setOnboardingPath(db, 'import');
+    expect(getOnboardingPath(db)).toBe('import');
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.onboardingPath,
+      )?.value,
+    ).toBe('import');
+
+    setOnboardingPath(db, 'manual');
+    expect(getOnboardingPath(db)).toBe('manual');
+  });
+
+  it('rejects invalid onboarding_path values', async () => {
+    const db = await createUserDb();
+
+    expect(() => setOnboardingPath(db, 'invalid' as 'import')).toThrow(
+      'Invalid onboarding path',
+    );
+  });
+
+  it('treats corrupt onboarding_path as unset', async () => {
+    const db = await createUserDb();
+    db.runSync(
+      `INSERT INTO user_preferences (key, value, updated_at) VALUES (?, ?, ?)`,
+      PREFERENCE_KEYS.onboardingPath,
+      'not-a-path',
+      new Date().toISOString(),
+    );
+
+    expect(getOnboardingPath(db)).toBeNull();
   });
 });

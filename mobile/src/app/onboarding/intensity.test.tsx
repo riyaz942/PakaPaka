@@ -6,8 +6,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 
 import { migration001Initial } from '@/data/migrations/001_initial';
+import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_srs_states_and_import_metadata';
 import { runMigrations } from '@/data/migrations/migrationRunner';
-import { getSessionIntensity } from '@/data/user/preferencesRepository';
+import { getSessionIntensity, setOnboardingPath } from '@/data/user/preferencesRepository';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
 import IntensityScreen from './intensity';
@@ -96,6 +97,29 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('intense');
+    expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+  });
+
+  it('routes import path to complete on Continue', async () => {
+    const db = await createUserDb();
+    runMigrations(db, [migration003SrsStatesAndImportMetadata]);
+    setOnboardingPath(db, 'import');
+    renderIntensityScreen(db);
+
+    fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+
+    expect(getSessionIntensity(db)).toBe('relaxed');
+    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+  });
+
+  it('offers manual marking on import path', async () => {
+    const db = await createUserDb();
+    setOnboardingPath(db, 'import');
+    renderIntensityScreen(db);
+
+    fireEvent.press(screen.getByTestId('mark-items-manually'));
+
+    expect(getSessionIntensity(db)).toBe('relaxed');
     expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
   });
 });

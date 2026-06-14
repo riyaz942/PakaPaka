@@ -108,7 +108,7 @@ describe('ImportSummaryScreen', () => {
     expect(mockConfirmCredentialedImport).not.toHaveBeenCalled();
   });
 
-  it('confirms import and routes to onboarding complete', async () => {
+  it('confirms import and routes to onboarding intensity', async () => {
     setImportPreview(preview);
     mockConfirmCredentialedImport.mockResolvedValue({ ok: true, value: undefined });
 
@@ -119,7 +119,7 @@ describe('ImportSummaryScreen', () => {
 
     await waitFor(() => {
       expect(mockConfirmCredentialedImport).toHaveBeenCalled();
-      expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+      expect(mockReplace).toHaveBeenCalledWith('/onboarding/intensity');
     });
   });
 

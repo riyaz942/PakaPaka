@@ -8,6 +8,7 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   PREFERENCE_KEYS,
+  setOnboardingPath,
   setPreference,
   setSessionIntensity,
   setStartingJlptLevel,
@@ -158,6 +159,79 @@ describe('useOnboardingRedirect', () => {
 
     await waitFor(() => {
       expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from import-summary when starting level is absent', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    mockSegments = ['onboarding', 'import-summary'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from import-summary when intensity is missing', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N3');
+    mockSegments = ['onboarding', 'import-summary'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from import when level is set but intensity is missing', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N3');
+    setOnboardingPath(db, 'import');
+    mockSegments = ['onboarding', 'import'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('does not redirect away from welcome when import branch is pending', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N3');
+    setOnboardingPath(db, 'import');
+    mockSegments = ['onboarding', 'welcome'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+  });
+
+  it('redirects import path users to complete instead of calibrate', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N3');
+    setSessionIntensity(db, 'relaxed');
+    setOnboardingPath(db, 'import');
+    mockSegments = ['(tabs)'];
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
     });
   });
 

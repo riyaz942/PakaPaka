@@ -3,6 +3,10 @@ import { useEffect } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
+  isImportOnboardingPath,
+  isPendingImportBranch,
+} from '@/data/user/onboardingPathUtils';
+import {
   getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
@@ -32,11 +36,16 @@ export function useOnboardingRedirect(): void {
     const level = getStartingJlptLevel(userDb);
     const intensity = getSessionIntensity(userDb);
     const inOnboarding = segmentList[0] === 'onboarding';
-    const onWelcome = inOnboarding && segmentList[1] === 'welcome';
-    const onIntensity = inOnboarding && segmentList[1] === 'intensity';
-    const onCalibrate = inOnboarding && segmentList[1] === 'calibrate';
-    const onBulk = inOnboarding && segmentList[1] === 'bulk';
-    const onComplete = inOnboarding && segmentList[1] === 'complete';
+    const currentStep = segmentList[1];
+    const onWelcome = inOnboarding && currentStep === 'welcome';
+    const onIntensity = inOnboarding && currentStep === 'intensity';
+    const onCalibrate = inOnboarding && currentStep === 'calibrate';
+    const onBulk = inOnboarding && currentStep === 'bulk';
+    const onComplete = inOnboarding && currentStep === 'complete';
+    const onImport = inOnboarding && currentStep === 'import';
+    const onImportSummary = inOnboarding && currentStep === 'import-summary';
+    const onImportBranch = onImport || onImportSummary;
+    const importPath = isImportOnboardingPath(userDb);
 
     if (!level) {
       if (!inOnboarding) {
@@ -46,16 +55,30 @@ export function useOnboardingRedirect(): void {
     }
 
     if (!intensity) {
-      if (!onIntensity) {
+      const mayStayOnWelcome = onWelcome && isPendingImportBranch(userDb);
+      if (!onIntensity && !onImportBranch && !mayStayOnWelcome) {
         router.replace('/onboarding/intensity');
       }
       return;
     }
 
-    if (!onCalibrate && !onWelcome && !onIntensity && !onBulk && !onComplete) {
-      if (!inOnboarding || segmentList[1] === 'import') {
-        router.replace('/onboarding/calibrate');
+    if (importPath) {
+      const allowedSteps = new Set([
+        'intensity',
+        'complete',
+        'import',
+        'import-summary',
+        'calibrate',
+        'bulk',
+      ]);
+      if (!inOnboarding || (currentStep && !allowedSteps.has(currentStep))) {
+        router.replace('/onboarding/complete');
       }
+      return;
+    }
+
+    if (!onCalibrate && !onWelcome && !onIntensity && !onBulk && !onComplete && !onImportBranch) {
+      router.replace('/onboarding/calibrate');
     }
   }, [userDb, segments, navigationState?.key]);
 }

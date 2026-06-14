@@ -5,6 +5,8 @@ import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-nativ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
+import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setImportPreview } from '@/data/import/importPreviewStore';
 import { saveImportCredential } from '@/data/user/credentialStore';
@@ -13,8 +15,16 @@ import {
   previewBunproImport,
   previewWaniKaniImport,
 } from '@/data/user/importRepository';
+import {
+  getStartingJlptLevel,
+  setOnboardingPath,
+  setStartingJlptLevel,
+} from '@/data/user/preferencesRepository';
 
 type ImportSource = 'wanikani' | 'bunpro' | 'anki';
+
+const NETWORK_NOTICE =
+  'Requires a one-time internet connection. Data stays on your device after import.';
 
 function getImportErrorMessage(error: { userMessage?: string; message: string }): string {
   return error.userMessage ?? error.message;
@@ -22,8 +32,11 @@ function getImportErrorMessage(error: { userMessage?: string; message: string })
 
 export default function ImportScreen() {
   const insets = useSafeAreaInsets();
-  const { curriculumDb } = useDatabase();
+  const { curriculumDb, userDb } = useDatabase();
   const [selectedSource, setSelectedSource] = useState<ImportSource>('wanikani');
+  const [selectedJlptLevel, setSelectedJlptLevel] = useState<JLPTLevel | null>(
+    () => getStartingJlptLevel(userDb) ?? 'N3',
+  );
   const [wanikaniApiKey, setWanikaniApiKey] = useState('');
   const [bunproToken, setBunproToken] = useState('');
   const [ankiFileUri, setAnkiFileUri] = useState<string | null>(null);
@@ -31,7 +44,29 @@ export default function ImportScreen() {
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [isImporting, setIsImporting] = useState(false);
 
+  function persistJlptLevel(level: JLPTLevel) {
+    setSelectedJlptLevel(level);
+    setStartingJlptLevel(userDb, level);
+  }
+
+  function handleSkipImport() {
+    if (!selectedJlptLevel) {
+      setStatusMessage('Select your JLPT level first.');
+      return;
+    }
+
+    setStartingJlptLevel(userDb, selectedJlptLevel);
+    setOnboardingPath(userDb, 'manual');
+    router.push('/onboarding/intensity');
+  }
+
   async function handleWaniKaniImportPress() {
+    if (!selectedJlptLevel) {
+      setStatusMessage('Select your JLPT level first.');
+      return;
+    }
+
+    setStartingJlptLevel(userDb, selectedJlptLevel);
     setStatusMessage(null);
     setIsImporting(true);
 
@@ -57,6 +92,12 @@ export default function ImportScreen() {
   }
 
   async function handleBunproImportPress() {
+    if (!selectedJlptLevel) {
+      setStatusMessage('Select your JLPT level first.');
+      return;
+    }
+
+    setStartingJlptLevel(userDb, selectedJlptLevel);
     setStatusMessage(null);
     setIsImporting(true);
 
@@ -103,6 +144,12 @@ export default function ImportScreen() {
       return;
     }
 
+    if (!selectedJlptLevel) {
+      setStatusMessage('Select your JLPT level first.');
+      return;
+    }
+
+    setStartingJlptLevel(userDb, selectedJlptLevel);
     setStatusMessage(null);
     setIsImporting(true);
 
@@ -138,6 +185,15 @@ export default function ImportScreen() {
         Bring SRS progress from another study tool. Credentials stay in secure storage only for the
         import and are removed after a successful import.
       </Text>
+
+      <View className="mt-6">
+        <Text className="text-body font-semibold text-primary">What level are you studying toward?</Text>
+        <JlptLevelPicker
+          selectedLevel={selectedJlptLevel}
+          onSelect={persistJlptLevel}
+          testID="import-jlpt-picker"
+        />
+      </View>
 
       <View className="mt-6 flex-row gap-3">
         <Pressable
@@ -179,6 +235,7 @@ export default function ImportScreen() {
             Import from WaniKani maps your assignments to this app&apos;s curriculum and converts SRS
             stages to FSRS.
           </Text>
+          <Text className="mt-2 text-body text-secondary">{NETWORK_NOTICE}</Text>
           <TextInput
             accessibilityLabel="WaniKani API key"
             autoCapitalize="none"
@@ -207,6 +264,7 @@ export default function ImportScreen() {
               Log into bunpro.jp in a browser, open Developer Tools, and find{' '}
               <Text className="font-semibold">frontend_api_token</Text> in your cookies.
             </Text>
+            <Text className="mt-2 text-body text-secondary">{NETWORK_NOTICE}</Text>
           </View>
 
           <Text className="mt-6 text-body font-semibold text-primary">Bunpro frontend token</Text>
@@ -222,21 +280,6 @@ export default function ImportScreen() {
             secureTextEntry
             value={bunproToken}
           />
-
-          <View className="mt-4 gap-2">
-            <Button
-              disabled={isImporting}
-              label="Skip Bunpro import"
-              onPress={() => router.push('/onboarding/bulk')}
-              variant="secondary"
-            />
-            <Button
-              disabled={isImporting}
-              label="Mark grammar manually"
-              onPress={() => router.push('/onboarding/calibrate')}
-              variant="secondary"
-            />
-          </View>
         </View>
       ) : null}
 
@@ -308,6 +351,12 @@ export default function ImportScreen() {
             onPress={handleAnkiImportPress}
           />
         ) : null}
+        <Button
+          disabled={isImporting}
+          label="Mark manually instead"
+          onPress={handleSkipImport}
+          variant="secondary"
+        />
         <Button label="Back" onPress={() => router.back()} variant="secondary" />
       </View>
     </View>
