@@ -44,6 +44,13 @@ export type ImportSummary = {
   warningMessage?: string;
 };
 
+export type ImportPreview = {
+  source: ImportSource;
+  mapped: MappedImportItem[];
+  unmatched: UnmatchedImportItem[];
+  summary: ImportSummary;
+};
+
 export type WaniKaniMapResult = {
   mapped: MappedImportItem[];
   unmatched: UnmatchedImportItem[];

@@ -10,6 +10,7 @@ export default function OnboardingLayout() {
       <Stack.Screen name="bulk" />
       <Stack.Screen name="complete" />
       <Stack.Screen name="import" />
+      <Stack.Screen name="import-summary" />
     </Stack>
   );
 }

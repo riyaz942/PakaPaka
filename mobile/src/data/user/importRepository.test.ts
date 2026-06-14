@@ -9,9 +9,14 @@ import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_sr
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import { saveImportCredential, getImportCredential } from '@/data/user/credentialStore';
 import {
+  confirmCredentialedImport,
+  confirmImport,
   countImportMetadataRows,
   countSrsStates,
   persistMappedImportItems,
+  previewAnkiImport,
+  previewBunproImport,
+  previewWaniKaniImport,
   runAnkiImport,
   runBunproImport,
   runWaniKaniImport,
@@ -573,5 +578,242 @@ describe('importRepository', () => {
     }
     expect(countSrsStates(userDb)).toBe(0);
     expect(countImportMetadataRows(userDb)).toBe(0);
+  });
+
+  it('previewWaniKaniImport returns mapped data without writing to user.db', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('wanikani', apiKey);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'wanikani',
+      '42',
+      1,
+    );
+
+    const fetchImpl = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers: new Headers({ 'RateLimit-Remaining': '59' }),
+      json: async () => ({
+        object: 'collection',
+        pages: { next_url: null },
+        data: [
+          {
+            object: 'assignment',
+            data: {
+              id: 1,
+              subject_id: 42,
+              srs_stage: 2,
+              srs_stage_name: 'apprentice',
+              burned_at: null,
+            },
+          },
+          {
+            object: 'assignment',
+            data: {
+              id: 2,
+              subject_id: 999,
+              srs_stage: 4,
+              srs_stage_name: 'apprentice',
+              burned_at: null,
+            },
+          },
+        ],
+      }),
+    });
+
+    const result = await previewWaniKaniImport(curriculumDb, { fetchImpl });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.source).toBe('wanikani');
+      expect(result.value.mapped).toHaveLength(1);
+      expect(result.value.unmatched).toHaveLength(1);
+      expect(result.value.summary.mappedCount).toBe(1);
+    }
+
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+
+    const credentialResult = await getImportCredential('wanikani');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBe(apiKey);
+    }
+  });
+
+  it('confirmImport persists preview data and confirmCredentialedImport discards credential', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('wanikani', apiKey);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'wanikani',
+      '42',
+      1,
+    );
+
+    const fetchImpl = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers: new Headers({ 'RateLimit-Remaining': '59' }),
+      json: async () => ({
+        object: 'collection',
+        pages: { next_url: null },
+        data: [
+          {
+            object: 'assignment',
+            data: {
+              id: 1,
+              subject_id: 42,
+              srs_stage: 2,
+              srs_stage_name: 'apprentice',
+              burned_at: null,
+            },
+          },
+        ],
+      }),
+    });
+
+    const previewResult = await previewWaniKaniImport(curriculumDb, { fetchImpl });
+    expect(previewResult.ok).toBe(true);
+    if (!previewResult.ok) {
+      return;
+    }
+
+    expect(countSrsStates(userDb)).toBe(0);
+
+    const confirmResult = await confirmCredentialedImport(userDb, previewResult.value);
+    expect(confirmResult.ok).toBe(true);
+    expect(countSrsStates(userDb)).toBe(1);
+    expect(countImportMetadataRows(userDb)).toBe(1);
+
+    const credentialResult = await getImportCredential('wanikani');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBeNull();
+    }
+  });
+
+  it('previewBunproImport does not write to user.db or discard credential', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'bunpro',
+      '42',
+      1,
+    );
+
+    const sleep = jest.fn().mockResolvedValue(undefined);
+    const fetchImpl = jest.fn().mockImplementation((url: string) => {
+      if (url.includes('apprentice_1')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 42, srs_stage: 2, srs_stage_name: 'apprentice' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => ({ data: [], meta: { next_page: null } }),
+      });
+    });
+
+    const result = await previewBunproImport(curriculumDb, { fetchImpl, sleep });
+
+    expect(result.ok).toBe(true);
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+
+    const credentialResult = await getImportCredential('bunpro');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBe(bunproToken);
+    }
+  });
+
+  it('previewAnkiImport returns mapped data without persisting', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'anki',
+      '水',
+      1,
+    );
+
+    const result = await previewAnkiImport(curriculumDb, 'file:///mock/deck.apkg', {
+      readFileBase64: async () => 'ZmFrZQ==',
+      makeTempDir: () => 'file:///mock/anki-temp/',
+      unzipArchive: async () => ({ ok: true, value: ['collection.anki21'] }),
+      queryCollectionDatabase: async () => ({
+        ok: true,
+        value: {
+          notes: [
+            {
+              id: 1,
+              guid: 'n1',
+              mid: 1,
+              flds: '水',
+              sfld: '水',
+              tags: '',
+            },
+          ],
+          cards: [
+            {
+              id: 10,
+              nid: 1,
+              did: 1,
+              ivl: 7,
+              factor: 2500,
+              reps: 4,
+              lapses: 0,
+              queue: 2,
+              type: 2,
+            },
+          ],
+          decksJson: JSON.stringify({ '1': { name: 'Core' } }),
+        },
+      }),
+      deletePath: async () => undefined,
+    });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.summary.mappedCount).toBe(1);
+    }
+
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+  });
+
+  it('confirmImport persists Anki preview without discarding credentials', async () => {
+    const { userDb } = await createDatabases();
+    const mapped = [buildMappedItem('1')];
+
+    const preview = {
+      source: 'anki' as const,
+      mapped,
+      unmatched: [],
+      summary: {
+        source: 'anki' as const,
+        mappedCount: 1,
+        unmatchedCount: 0,
+        burnedCount: 0,
+        apprenticeCount: 1,
+      },
+    };
+
+    const result = confirmImport(userDb, preview);
+    expect(result.ok).toBe(true);
+    expect(countSrsStates(userDb)).toBe(1);
+    expect(countImportMetadataRows(userDb)).toBe(1);
   });
 });

@@ -5,10 +5,14 @@ import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-nativ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
-import type { ImportSummary } from '@/core/import/import.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { setImportPreview } from '@/data/import/importPreviewStore';
 import { saveImportCredential } from '@/data/user/credentialStore';
-import { runAnkiImport, runBunproImport, runWaniKaniImport } from '@/data/user/importRepository';
+import {
+  previewAnkiImport,
+  previewBunproImport,
+  previewWaniKaniImport,
+} from '@/data/user/importRepository';
 
 type ImportSource = 'wanikani' | 'bunpro' | 'anki';
 
@@ -16,25 +20,9 @@ function getImportErrorMessage(error: { userMessage?: string; message: string })
   return error.userMessage ?? error.message;
 }
 
-function formatBunproImportSuccessMessage(summary: ImportSummary): string {
-  let message = `Imported ${summary.mappedCount} grammar points (${summary.unmatchedCount} unmatched).`;
-  if (summary.warningMessage) {
-    message += ` ${summary.warningMessage}`;
-  }
-  return message;
-}
-
-function formatAnkiImportSuccessMessage(summary: ImportSummary): string {
-  let message = `Imported ${summary.mappedCount} mapped cards (${summary.unmatchedCount} unmatched).`;
-  if (summary.warningMessage) {
-    message += ` ${summary.warningMessage}`;
-  }
-  return message;
-}
-
 export default function ImportScreen() {
   const insets = useSafeAreaInsets();
-  const { curriculumDb, userDb } = useDatabase();
+  const { curriculumDb } = useDatabase();
   const [selectedSource, setSelectedSource] = useState<ImportSource>('wanikani');
   const [wanikaniApiKey, setWanikaniApiKey] = useState('');
   const [bunproToken, setBunproToken] = useState('');
@@ -54,16 +42,15 @@ export default function ImportScreen() {
         return;
       }
 
-      const importResult = await runWaniKaniImport(userDb, curriculumDb);
-      if (!importResult.ok) {
-        setStatusMessage(getImportErrorMessage(importResult.error));
+      const previewResult = await previewWaniKaniImport(curriculumDb);
+      if (!previewResult.ok) {
+        setStatusMessage(getImportErrorMessage(previewResult.error));
         return;
       }
 
-      setStatusMessage(
-        `Imported ${importResult.value.mappedCount} mapped items (${importResult.value.unmatchedCount} unmatched).`,
-      );
+      setImportPreview(previewResult.value);
       setWanikaniApiKey('');
+      router.push('./import-summary');
     } finally {
       setIsImporting(false);
     }
@@ -80,14 +67,15 @@ export default function ImportScreen() {
         return;
       }
 
-      const importResult = await runBunproImport(userDb, curriculumDb);
-      if (!importResult.ok) {
-        setStatusMessage(getImportErrorMessage(importResult.error));
+      const previewResult = await previewBunproImport(curriculumDb);
+      if (!previewResult.ok) {
+        setStatusMessage(getImportErrorMessage(previewResult.error));
         return;
       }
 
-      setStatusMessage(formatBunproImportSuccessMessage(importResult.value));
+      setImportPreview(previewResult.value);
       setBunproToken('');
+      router.push('./import-summary');
     } finally {
       setIsImporting(false);
     }
@@ -119,15 +107,16 @@ export default function ImportScreen() {
     setIsImporting(true);
 
     try {
-      const importResult = await runAnkiImport(userDb, curriculumDb, ankiFileUri);
-      if (!importResult.ok) {
-        setStatusMessage(getImportErrorMessage(importResult.error));
+      const previewResult = await previewAnkiImport(curriculumDb, ankiFileUri);
+      if (!previewResult.ok) {
+        setStatusMessage(getImportErrorMessage(previewResult.error));
         return;
       }
 
-      setStatusMessage(formatAnkiImportSuccessMessage(importResult.value));
+      setImportPreview(previewResult.value);
       setAnkiFileUri(null);
       setAnkiFileName(null);
+      router.push('./import-summary');
     } finally {
       setIsImporting(false);
     }

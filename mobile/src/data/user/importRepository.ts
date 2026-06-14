@@ -1,6 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import type { ImportSummary, MappedImportItem } from '@/core/import/import.types';
+import type { ImportPreview, ImportSummary, MappedImportItem } from '@/core/import/import.types';
 import { mapAnkiCards } from '@/core/import/ankiMapper';
 import { mapBunproGrammarItems } from '@/core/import/bunproMapper';
 import { mapWaniKaniAssignments } from '@/core/import/wanikaniMapper';
@@ -107,11 +107,10 @@ export function persistMappedImportItems(
   }
 }
 
-export async function runWaniKaniImport(
-  userDb: SQLiteDatabase,
+export async function previewWaniKaniImport(
   curriculumDb: SQLiteDatabase,
   deps: WaniKaniClientDeps = {},
-): Promise<Result<ImportSummary, AppError>> {
+): Promise<Result<ImportPreview, AppError>> {
   const credentialResult = await getImportCredential('wanikani');
   if (!credentialResult.ok) {
     return credentialResult;
@@ -137,24 +136,21 @@ export async function runWaniKaniImport(
   const mappingLookup = getExternalIdMappings(curriculumDb, 'wanikani', externalIds);
   const mapResult = mapWaniKaniAssignments(assignmentsResult.value, mappingLookup);
 
-  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
-  if (!persistResult.ok) {
-    return persistResult;
-  }
-
-  const discardResult = await discardImportCredential('wanikani');
-  if (!discardResult.ok) {
-    return discardResult;
-  }
-
-  return { ok: true, value: mapResult.summary };
+  return {
+    ok: true,
+    value: {
+      source: 'wanikani',
+      mapped: mapResult.mapped,
+      unmatched: mapResult.unmatched,
+      summary: mapResult.summary,
+    },
+  };
 }
 
-export async function runBunproImport(
-  userDb: SQLiteDatabase,
+export async function previewBunproImport(
   curriculumDb: SQLiteDatabase,
   deps: BunproClientDeps = {},
-): Promise<Result<ImportSummary, AppError>> {
+): Promise<Result<ImportPreview, AppError>> {
   const credentialResult = await getImportCredential('bunpro');
   if (!credentialResult.ok) {
     return credentialResult;
@@ -185,25 +181,22 @@ export async function runBunproImport(
     mapResult.summary.warningMessage = BUNPRO_PARTIAL_IMPORT_WARNING;
   }
 
-  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
-  if (!persistResult.ok) {
-    return persistResult;
-  }
-
-  const discardResult = await discardImportCredential('bunpro');
-  if (!discardResult.ok) {
-    return discardResult;
-  }
-
-  return { ok: true, value: mapResult.summary };
+  return {
+    ok: true,
+    value: {
+      source: 'bunpro',
+      mapped: mapResult.mapped,
+      unmatched: mapResult.unmatched,
+      summary: mapResult.summary,
+    },
+  };
 }
 
-export async function runAnkiImport(
-  userDb: SQLiteDatabase,
+export async function previewAnkiImport(
   curriculumDb: SQLiteDatabase,
   filePath: string,
   deps: AnkiFileReaderDeps = {},
-): Promise<Result<ImportSummary, AppError>> {
+): Promise<Result<ImportPreview, AppError>> {
   const parseResult = await readAnkiApkgFile(filePath, deps);
   if (!parseResult.ok) {
     await cleanupAnkiImportFile(filePath, deps);
@@ -214,14 +207,95 @@ export async function runAnkiImport(
   const mappingLookup = getExternalIdMappings(curriculumDb, 'anki', externalIds);
   const mapResult = mapAnkiCards(parseResult.value, mappingLookup);
 
-  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
   await cleanupAnkiImportFile(filePath, deps);
 
+  return {
+    ok: true,
+    value: {
+      source: 'anki',
+      mapped: mapResult.mapped,
+      unmatched: mapResult.unmatched,
+      summary: mapResult.summary,
+    },
+  };
+}
+
+export function confirmImport(
+  userDb: SQLiteDatabase,
+  preview: ImportPreview,
+): Result<void, AppError> {
+  return persistMappedImportItems(userDb, preview.mapped, preview.summary);
+}
+
+export async function confirmCredentialedImport(
+  userDb: SQLiteDatabase,
+  preview: ImportPreview,
+): Promise<Result<void, AppError>> {
+  const persistResult = confirmImport(userDb, preview);
   if (!persistResult.ok) {
     return persistResult;
   }
 
-  return { ok: true, value: mapResult.summary };
+  if (preview.source === 'wanikani' || preview.source === 'bunpro') {
+    return discardImportCredential(preview.source);
+  }
+
+  return { ok: true, value: undefined };
+}
+
+export async function runWaniKaniImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  deps: WaniKaniClientDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const previewResult = await previewWaniKaniImport(curriculumDb, deps);
+  if (!previewResult.ok) {
+    return previewResult;
+  }
+
+  const confirmResult = await confirmCredentialedImport(userDb, previewResult.value);
+  if (!confirmResult.ok) {
+    return confirmResult;
+  }
+
+  return { ok: true, value: previewResult.value.summary };
+}
+
+export async function runBunproImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  deps: BunproClientDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const previewResult = await previewBunproImport(curriculumDb, deps);
+  if (!previewResult.ok) {
+    return previewResult;
+  }
+
+  const confirmResult = await confirmCredentialedImport(userDb, previewResult.value);
+  if (!confirmResult.ok) {
+    return confirmResult;
+  }
+
+  return { ok: true, value: previewResult.value.summary };
+}
+
+export async function runAnkiImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  filePath: string,
+  deps: AnkiFileReaderDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const previewResult = await previewAnkiImport(curriculumDb, filePath, deps);
+  if (!previewResult.ok) {
+    return previewResult;
+  }
+
+  const persistResult = confirmImport(userDb, previewResult.value);
+  if (!persistResult.ok) {
+    return persistResult;
+  }
+
+  return { ok: true, value: previewResult.value.summary };
 }
 
 export function countSrsStates(userDb: SQLiteDatabase): number {
