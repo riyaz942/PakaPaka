@@ -1,9 +1,15 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { ImportSummary, MappedImportItem } from '@/core/import/import.types';
+import { mapAnkiCards } from '@/core/import/ankiMapper';
 import { mapBunproGrammarItems } from '@/core/import/bunproMapper';
 import { mapWaniKaniAssignments } from '@/core/import/wanikaniMapper';
 import { getExternalIdMappings } from '@/data/curriculum/externalIdMappingRepository';
+import {
+  cleanupAnkiImportFile,
+  readAnkiApkgFile,
+  type AnkiFileReaderDeps,
+} from '@/data/import/ankiFileReader';
 import { fetchBunproGrammarProgress, type BunproClientDeps } from '@/data/import/bunproClient';
 import { fetchWaniKaniAssignments, type WaniKaniClientDeps } from '@/data/import/wanikaniClient';
 import { discardImportCredential, getImportCredential } from '@/data/user/credentialStore';
@@ -187,6 +193,32 @@ export async function runBunproImport(
   const discardResult = await discardImportCredential('bunpro');
   if (!discardResult.ok) {
     return discardResult;
+  }
+
+  return { ok: true, value: mapResult.summary };
+}
+
+export async function runAnkiImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  filePath: string,
+  deps: AnkiFileReaderDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const parseResult = await readAnkiApkgFile(filePath, deps);
+  if (!parseResult.ok) {
+    await cleanupAnkiImportFile(filePath, deps);
+    return parseResult;
+  }
+
+  const externalIds = parseResult.value.notes.map((note) => note.sfld);
+  const mappingLookup = getExternalIdMappings(curriculumDb, 'anki', externalIds);
+  const mapResult = mapAnkiCards(parseResult.value, mappingLookup);
+
+  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
+  await cleanupAnkiImportFile(filePath, deps);
+
+  if (!persistResult.ok) {
+    return persistResult;
   }
 
   return { ok: true, value: mapResult.summary };

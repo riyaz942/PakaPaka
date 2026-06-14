@@ -21,6 +21,7 @@
     "expo-constants": "~55.0.16",
     "expo-crypto": "~55.0.15",
     "expo-device": "~55.0.16",
+    "expo-document-picker": "~55.0.13",
     "expo-file-system": "~55.0.22",
     "expo-font": "~55.0.7",
     "expo-glass-effect": "~55.0.11",
@@ -37,6 +38,7 @@
     "expo-system-ui": "~55.0.17",
     "expo-updates": "~55.0.21",
     "expo-web-browser": "~55.0.15",
+    "jszip": "^3.10.1",
     "nativewind": "^4.1.23",
     "react": "19.2.0",
     "react-dom": "19.2.0",
@@ -53,6 +55,7 @@
   "devDependencies": {
     "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^29.5.14",
+    "@types/jszip": "^3.4.0",
     "@types/react": "~19.2.2",
     "@types/react-test-renderer": "^19.1.0",
     "@types/semver": "^7.7.1",
@@ -80,7 +83,8 @@
       "^expo-crypto$": "<rootDir>/__mocks__/expo-crypto.ts",
       "^expo-secure-store$": "<rootDir>/__mocks__/expo-secure-store.ts",
       "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
-      "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx"
+      "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx",
+      "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts"
     }
   }
 }

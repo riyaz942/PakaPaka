@@ -1,4 +1,4 @@
-import type { FsrsImportState } from '@/core/import/import.types';
+import type { AnkiCard, FsrsImportState } from '@/core/import/import.types';
 
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
@@ -129,4 +129,104 @@ export function convertBunproStageToFsrs(
   now: Date = new Date(),
 ): FsrsImportState | null {
   return convertStageToFsrs(srsStage, now);
+}
+
+const ANKI_EASE_MIN = 1300;
+const ANKI_EASE_MAX = 3500;
+const SECOND_MS = 1000;
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function convertAnkiEaseToDifficulty(factor: number): number {
+  const normalized = clamp(factor, ANKI_EASE_MIN, ANKI_EASE_MAX);
+  const difficulty = 10 - ((normalized - ANKI_EASE_MIN) / (ANKI_EASE_MAX - ANKI_EASE_MIN)) * 8;
+  return clamp(difficulty, 1, 10);
+}
+
+function getAnkiSrsStageLabel(card: AnkiCard): string {
+  if (card.type === 0) {
+    return 'new';
+  }
+  if (card.type === 1 || card.queue === 1 || card.queue === 3) {
+    return 'learning';
+  }
+  if (card.type === 3) {
+    return 'relearning';
+  }
+  if (card.ivl >= 365 && card.queue !== -1) {
+    return 'burned';
+  }
+  if (card.ivl > 30) {
+    return 'master';
+  }
+  if (card.ivl >= 7) {
+    return 'guru';
+  }
+  return 'apprentice';
+}
+
+export function convertAnkiCardToFsrs(
+  card: AnkiCard,
+  now: Date = new Date(),
+): FsrsImportState | null {
+  if (card.type === 0 && card.reps === 0) {
+    return null;
+  }
+
+  const difficulty = convertAnkiEaseToDifficulty(card.factor);
+  const reps = card.reps;
+  const lapses = card.lapses;
+  const srsStageLabel = getAnkiSrsStageLabel(card);
+
+  if (card.type === 3) {
+    const stability = Math.max(0.5, card.ivl < 0 ? Math.abs(card.ivl) / 86400 : card.ivl || 0.5);
+    const dueOffsetMs = card.ivl < 0 ? Math.abs(card.ivl) * SECOND_MS : card.ivl * DAY_MS;
+    return {
+      stability,
+      difficulty,
+      dueDate: new Date(now.getTime() + dueOffsetMs).toISOString(),
+      state: 'relearning',
+      reps,
+      lapses,
+      isBurned: false,
+      srsStageLabel,
+    };
+  }
+
+  if (card.type === 1 || card.queue === 1 || card.queue === 3) {
+    const stability = Math.max(0.5, card.ivl < 0 ? Math.abs(card.ivl) / 86400 : card.ivl || 0.5);
+    const dueOffsetMs = card.ivl < 0 ? Math.abs(card.ivl) * SECOND_MS : card.ivl * DAY_MS;
+    return {
+      stability,
+      difficulty,
+      dueDate: new Date(now.getTime() + dueOffsetMs).toISOString(),
+      state: 'learning',
+      reps,
+      lapses,
+      isBurned: false,
+      srsStageLabel,
+    };
+  }
+
+  if (card.type === 2 || card.queue === -1 || card.queue === -2) {
+    const intervalDays = Math.max(card.ivl, 0);
+    const stability = intervalDays > 0 ? intervalDays : 0.5;
+    const isBurned = intervalDays >= 365 && card.queue !== -1;
+    const dueOffsetMs = intervalDays > 0 ? intervalDays * DAY_MS : 0;
+
+    return {
+      stability: isBurned ? Math.min(intervalDays, 365) : stability,
+      difficulty,
+      dueDate: new Date(now.getTime() + dueOffsetMs).toISOString(),
+      state: 'review',
+      reps,
+      lapses,
+      isBurned,
+      srsStageLabel: isBurned ? 'burned' : srsStageLabel,
+    };
+  }
+
+  return null;
 }

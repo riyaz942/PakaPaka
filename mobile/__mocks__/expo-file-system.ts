@@ -74,6 +74,19 @@ export async function readAsStringAsync(
   return contents;
 }
 
+export async function writeAsStringAsync(
+  uri: string,
+  contents: string,
+  options?: { encoding?: (typeof EncodingType)[keyof typeof EncodingType] },
+) {
+  const files = getMockFileStore();
+  if (options?.encoding === EncodingType.Base64) {
+    files.set(uri, contents);
+    return;
+  }
+  files.set(uri, contents);
+}
+
 export async function downloadAsync(uri: string, fileUri: string) {
   const files = getMockFileStore();
   const existing = files.get(uri);

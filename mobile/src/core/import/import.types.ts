@@ -66,3 +66,36 @@ export type BunproMapResult = {
   unmatched: UnmatchedImportItem[];
   summary: ImportSummary;
 };
+
+export type AnkiCard = {
+  id: number;
+  nid: number;
+  did: number;
+  ivl: number;
+  factor: number;
+  reps: number;
+  lapses: number;
+  queue: number;
+  type: number;
+};
+
+export type AnkiNote = {
+  id: number;
+  guid: string;
+  mid: number;
+  flds: string;
+  sfld: string;
+  tags: string;
+};
+
+export type AnkiParseResult = {
+  notes: AnkiNote[];
+  cards: AnkiCard[];
+  deckName: string;
+};
+
+export type AnkiMapResult = {
+  mapped: MappedImportItem[];
+  unmatched: UnmatchedImportItem[];
+  summary: ImportSummary;
+};

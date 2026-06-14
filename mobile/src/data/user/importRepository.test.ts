@@ -12,6 +12,7 @@ import {
   countImportMetadataRows,
   countSrsStates,
   persistMappedImportItems,
+  runAnkiImport,
   runBunproImport,
   runWaniKaniImport,
 } from '@/data/user/importRepository';
@@ -390,5 +391,187 @@ describe('importRepository', () => {
     if (credentialResult.ok) {
       expect(credentialResult.value).toBe(bunproToken);
     }
+  });
+
+  it('runs Anki import end-to-end from a parsed deck file', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'anki',
+      '水',
+      1,
+    );
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'anki',
+      '火',
+      2,
+    );
+
+    const deletedPaths: string[] = [];
+    const result = await runAnkiImport(userDb, curriculumDb, 'file:///mock/deck.apkg', {
+      readFileBase64: async () => 'ZmFrZQ==',
+      makeTempDir: () => 'file:///mock/anki-temp/',
+      unzipArchive: async () => ({ ok: true, value: ['collection.anki21'] }),
+      queryCollectionDatabase: async () => ({
+        ok: true,
+        value: {
+          notes: [
+            {
+              id: 1,
+              guid: 'n1',
+              mid: 1,
+              flds: '水',
+              sfld: '水',
+              tags: '',
+            },
+            {
+              id: 2,
+              guid: 'n2',
+              mid: 1,
+              flds: '火',
+              sfld: '火',
+              tags: '',
+            },
+            {
+              id: 3,
+              guid: 'n3',
+              mid: 1,
+              flds: '木',
+              sfld: '木',
+              tags: '',
+            },
+          ],
+          cards: [
+            {
+              id: 10,
+              nid: 1,
+              did: 1,
+              ivl: 7,
+              factor: 2500,
+              reps: 4,
+              lapses: 0,
+              queue: 2,
+              type: 2,
+            },
+            {
+              id: 11,
+              nid: 2,
+              did: 1,
+              ivl: 30,
+              factor: 2500,
+              reps: 6,
+              lapses: 0,
+              queue: 2,
+              type: 2,
+            },
+            {
+              id: 12,
+              nid: 3,
+              did: 1,
+              ivl: 3,
+              factor: 2500,
+              reps: 2,
+              lapses: 0,
+              queue: 2,
+              type: 2,
+            },
+          ],
+          decksJson: JSON.stringify({ '1': { name: 'Core' } }),
+        },
+      }),
+      deletePath: async (uri) => {
+        deletedPaths.push(uri);
+      },
+    });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.source).toBe('anki');
+      expect(result.value.mappedCount).toBe(2);
+      expect(result.value.unmatchedCount).toBe(1);
+    }
+
+    expect(countSrsStates(userDb)).toBe(2);
+    expect(countImportMetadataRows(userDb)).toBe(1);
+    expect(deletedPaths).toContain('file:///mock/deck.apkg');
+  });
+
+  it('does not persist Anki import state when parsing fails', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    const result = await runAnkiImport(userDb, curriculumDb, 'file:///mock/bad.apkg', {
+      readFileBase64: async () => 'bad',
+      makeTempDir: () => 'file:///mock/anki-temp/',
+      unzipArchive: async () => ({
+        ok: false,
+        error: {
+          code: 'anki_invalid_file',
+          message: 'Failed to extract Anki archive',
+          userMessage:
+            "This file doesn't appear to be a valid Anki deck. Make sure you're selecting an .apkg file exported from Anki.",
+        },
+      }),
+      deletePath: async () => undefined,
+    });
+
+    expect(result.ok).toBe(false);
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+  });
+
+  it('rolls back Anki import when persistence fails', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'anki',
+      '水',
+      0,
+    );
+
+    const result = await runAnkiImport(userDb, curriculumDb, 'file:///mock/deck.apkg', {
+      readFileBase64: async () => 'ZmFrZQ==',
+      makeTempDir: () => 'file:///mock/anki-temp/',
+      unzipArchive: async () => ({ ok: true, value: ['collection.anki21'] }),
+      queryCollectionDatabase: async () => ({
+        ok: true,
+        value: {
+          notes: [
+            {
+              id: 1,
+              guid: 'n1',
+              mid: 1,
+              flds: '水',
+              sfld: '水',
+              tags: '',
+            },
+          ],
+          cards: [
+            {
+              id: 10,
+              nid: 1,
+              did: 1,
+              ivl: 7,
+              factor: 2500,
+              reps: 4,
+              lapses: 0,
+              queue: 2,
+              type: 2,
+            },
+          ],
+          decksJson: null,
+        },
+      }),
+      deletePath: async () => undefined,
+    });
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error.code).toBe('import_persist_failed');
+    }
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
   });
 });

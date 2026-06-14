@@ -1,3 +1,4 @@
+import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
@@ -7,9 +8,9 @@ import { Button } from '@/components/common/Button';
 import type { ImportSummary } from '@/core/import/import.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { saveImportCredential } from '@/data/user/credentialStore';
-import { runBunproImport, runWaniKaniImport } from '@/data/user/importRepository';
+import { runAnkiImport, runBunproImport, runWaniKaniImport } from '@/data/user/importRepository';
 
-type ImportSource = 'wanikani' | 'bunpro';
+type ImportSource = 'wanikani' | 'bunpro' | 'anki';
 
 function getImportErrorMessage(error: { userMessage?: string; message: string }): string {
   return error.userMessage ?? error.message;
@@ -23,12 +24,22 @@ function formatBunproImportSuccessMessage(summary: ImportSummary): string {
   return message;
 }
 
+function formatAnkiImportSuccessMessage(summary: ImportSummary): string {
+  let message = `Imported ${summary.mappedCount} mapped cards (${summary.unmatchedCount} unmatched).`;
+  if (summary.warningMessage) {
+    message += ` ${summary.warningMessage}`;
+  }
+  return message;
+}
+
 export default function ImportScreen() {
   const insets = useSafeAreaInsets();
   const { curriculumDb, userDb } = useDatabase();
   const [selectedSource, setSelectedSource] = useState<ImportSource>('wanikani');
   const [wanikaniApiKey, setWanikaniApiKey] = useState('');
   const [bunproToken, setBunproToken] = useState('');
+  const [ankiFileUri, setAnkiFileUri] = useState<string | null>(null);
+  const [ankiFileName, setAnkiFileName] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [isImporting, setIsImporting] = useState(false);
 
@@ -82,6 +93,46 @@ export default function ImportScreen() {
     }
   }
 
+  async function handleSelectAnkiDeckPress() {
+    setStatusMessage(null);
+
+    const pickerResult = await DocumentPicker.getDocumentAsync({
+      copyToCacheDirectory: true,
+      type: ['application/zip', 'application/octet-stream'],
+    });
+
+    if (pickerResult.canceled || !pickerResult.assets?.[0]) {
+      return;
+    }
+
+    const asset = pickerResult.assets[0];
+    setAnkiFileUri(asset.uri);
+    setAnkiFileName(asset.name ?? 'Selected deck.apkg');
+  }
+
+  async function handleAnkiImportPress() {
+    if (!ankiFileUri) {
+      return;
+    }
+
+    setStatusMessage(null);
+    setIsImporting(true);
+
+    try {
+      const importResult = await runAnkiImport(userDb, curriculumDb, ankiFileUri);
+      if (!importResult.ok) {
+        setStatusMessage(getImportErrorMessage(importResult.error));
+        return;
+      }
+
+      setStatusMessage(formatAnkiImportSuccessMessage(importResult.value));
+      setAnkiFileUri(null);
+      setAnkiFileName(null);
+    } finally {
+      setIsImporting(false);
+    }
+  }
+
   function handleSourceChange(source: ImportSource) {
     setSelectedSource(source);
     setStatusMessage(null);
@@ -120,6 +171,16 @@ export default function ImportScreen() {
           onPress={() => handleSourceChange('bunpro')}>
           <Text className="text-center text-body font-semibold text-primary">Bunpro</Text>
         </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityState={{ selected: selectedSource === 'anki' }}
+          className={`flex-1 rounded-radius-md border px-4 py-3 ${
+            selectedSource === 'anki' ? 'border-primary bg-surface' : 'border-border'
+          }`}
+          disabled={isImporting}
+          onPress={() => handleSourceChange('anki')}>
+          <Text className="text-center text-body font-semibold text-primary">Anki</Text>
+        </Pressable>
       </View>
 
       {selectedSource === 'wanikani' ? (
@@ -142,7 +203,9 @@ export default function ImportScreen() {
             value={wanikaniApiKey}
           />
         </View>
-      ) : (
+      ) : null}
+
+      {selectedSource === 'bunpro' ? (
         <View className="mt-8">
           <View className="rounded-radius-md border border-border bg-surface px-4 py-3">
             <Text className="text-body font-semibold text-primary">Best-effort import</Text>
@@ -186,7 +249,30 @@ export default function ImportScreen() {
             />
           </View>
         </View>
-      )}
+      ) : null}
+
+      {selectedSource === 'anki' ? (
+        <View className="mt-8">
+          <View className="rounded-radius-md border border-border bg-surface px-4 py-3">
+            <Text className="text-body font-semibold text-primary">Local deck import</Text>
+            <Text className="mt-2 text-body text-secondary">
+              Your deck file is processed entirely on this device. No data is sent to any server.
+            </Text>
+          </View>
+
+          <Button
+            className="mt-6"
+            disabled={isImporting}
+            label="Select Anki deck file"
+            onPress={handleSelectAnkiDeckPress}
+            variant="secondary"
+          />
+
+          {ankiFileName ? (
+            <Text className="mt-4 text-body text-secondary">Selected: {ankiFileName}</Text>
+          ) : null}
+        </View>
+      ) : null}
 
       {statusMessage ? (
         <Text accessibilityLiveRegion="polite" className="mt-4 text-body text-secondary">
@@ -200,9 +286,14 @@ export default function ImportScreen() {
             accessibilityLabel={
               selectedSource === 'wanikani'
                 ? 'Importing WaniKani progress'
-                : 'Importing Bunpro progress'
+                : selectedSource === 'bunpro'
+                  ? 'Importing Bunpro progress'
+                  : 'Processing Anki deck'
             }
           />
+          {selectedSource === 'anki' ? (
+            <Text className="mt-2 text-body text-secondary">Processing deck...</Text>
+          ) : null}
         </View>
       ) : null}
 
@@ -213,13 +304,21 @@ export default function ImportScreen() {
             label="Import from WaniKani"
             onPress={handleWaniKaniImportPress}
           />
-        ) : (
+        ) : null}
+        {selectedSource === 'bunpro' ? (
           <Button
             disabled={isImporting || bunproToken.trim().length === 0}
             label="Import from Bunpro"
             onPress={handleBunproImportPress}
           />
-        )}
+        ) : null}
+        {selectedSource === 'anki' ? (
+          <Button
+            disabled={isImporting || !ankiFileUri}
+            label="Import from Anki"
+            onPress={handleAnkiImportPress}
+          />
+        ) : null}
         <Button label="Back" onPress={() => router.back()} variant="secondary" />
       </View>
     </View>
