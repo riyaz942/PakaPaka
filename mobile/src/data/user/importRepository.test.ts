@@ -12,12 +12,14 @@ import {
   countImportMetadataRows,
   countSrsStates,
   persistMappedImportItems,
+  runBunproImport,
   runWaniKaniImport,
 } from '@/data/user/importRepository';
 import type { MappedImportItem } from '@/core/import/import.types';
 
 describe('importRepository', () => {
   const apiKey = 'wk-test-api-key-12345';
+  const bunproToken = 'bunpro-frontend-token-test';
 
   beforeEach(() => {
     __mockResetSqlite();
@@ -173,6 +175,220 @@ describe('importRepository', () => {
     expect(credentialResult.ok).toBe(true);
     if (credentialResult.ok) {
       expect(credentialResult.value).toBeNull();
+    }
+  });
+
+  it('runs Bunpro import end-to-end and discards the credential', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'bunpro',
+      '42',
+      1,
+    );
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'bunpro',
+      '43',
+      2,
+    );
+
+    const sleep = jest.fn().mockResolvedValue(undefined);
+    const fetchImpl = jest.fn().mockImplementation((url: string) => {
+      if (url.includes('apprentice_1')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 42, srs_stage: 2, srs_stage_name: 'apprentice' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      if (url.includes('burned')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 43, srs_stage: 9, srs_stage_name: 'burned' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      if (url.includes('apprentice_2')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 999, srs_stage: 4, srs_stage_name: 'apprentice' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => ({ data: [], meta: { next_page: null } }),
+      });
+    });
+
+    const result = await runBunproImport(userDb, curriculumDb, { fetchImpl, sleep });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.source).toBe('bunpro');
+      expect(result.value.mappedCount).toBe(2);
+      expect(result.value.unmatchedCount).toBe(1);
+      expect(result.value.burnedCount).toBe(1);
+      expect(result.value.apprenticeCount).toBe(1);
+    }
+
+    expect(countSrsStates(userDb)).toBe(2);
+    expect(countImportMetadataRows(userDb)).toBe(1);
+
+    const credentialResult = await getImportCredential('bunpro');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBeNull();
+    }
+  });
+
+  it('does not persist or discard credential when Bunpro fetch fails', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+
+    const fetchImpl = jest.fn().mockResolvedValue({
+      ok: false,
+      status: 401,
+      json: async () => ({}),
+    });
+
+    const result = await runBunproImport(userDb, curriculumDb, { fetchImpl });
+
+    expect(result.ok).toBe(false);
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+
+    const credentialResult = await getImportCredential('bunpro');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBe(bunproToken);
+    }
+  });
+
+  it('does not persist or discard credential when Bunpro returns no grammar data', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+
+    const sleep = jest.fn().mockResolvedValue(undefined);
+    const fetchImpl = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ data: [], meta: { next_page: null } }),
+    });
+
+    const result = await runBunproImport(userDb, curriculumDb, { fetchImpl, sleep });
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error.code).toBe('bunpro_no_grammar_data');
+    }
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+
+    const credentialResult = await getImportCredential('bunpro');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBe(bunproToken);
+    }
+  });
+
+  it('includes a warning when Bunpro import is partial', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'bunpro',
+      '42',
+      1,
+    );
+
+    const sleep = jest.fn().mockResolvedValue(undefined);
+    const fetchImpl = jest.fn().mockImplementation((url: string) => {
+      if (url.includes('apprentice_1')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 42, srs_stage: 2, srs_stage_name: 'apprentice' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      return Promise.resolve({
+        ok: false,
+        status: 500,
+        json: async () => ({}),
+      });
+    });
+
+    const result = await runBunproImport(userDb, curriculumDb, { fetchImpl, sleep });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.mappedCount).toBe(1);
+      expect(result.value.warningMessage).toContain('partial Bunpro progress');
+    }
+  });
+
+  it('does not persist or discard credential when Bunpro import persistence fails', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+
+    await saveImportCredential('bunpro', bunproToken);
+    curriculumDb.runSync(
+      'INSERT INTO external_id_mappings (source, external_id, item_id) VALUES (?, ?, ?)',
+      'bunpro',
+      '42',
+      0,
+    );
+
+    const sleep = jest.fn().mockResolvedValue(undefined);
+    const fetchImpl = jest.fn().mockImplementation((url: string) => {
+      if (url.includes('apprentice_1')) {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          json: async () => ({
+            data: [{ id: 42, srs_stage: 2, srs_stage_name: 'apprentice' }],
+            meta: { next_page: null },
+          }),
+        });
+      }
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: async () => ({ data: [], meta: { next_page: null } }),
+      });
+    });
+
+    const result = await runBunproImport(userDb, curriculumDb, { fetchImpl, sleep });
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error.code).toBe('import_persist_failed');
+    }
+    expect(countSrsStates(userDb)).toBe(0);
+    expect(countImportMetadataRows(userDb)).toBe(0);
+
+    const credentialResult = await getImportCredential('bunpro');
+    expect(credentialResult.ok).toBe(true);
+    if (credentialResult.ok) {
+      expect(credentialResult.value).toBe(bunproToken);
     }
   });
 });

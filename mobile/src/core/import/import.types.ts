@@ -41,9 +41,27 @@ export type ImportSummary = {
   unmatchedCount: number;
   burnedCount: number;
   apprenticeCount: number;
+  warningMessage?: string;
 };
 
 export type WaniKaniMapResult = {
+  mapped: MappedImportItem[];
+  unmatched: UnmatchedImportItem[];
+  summary: ImportSummary;
+};
+
+export type BunproGrammarItem = {
+  grammarPointId: string;
+  srsStage: number;
+  srsStageName: string;
+};
+
+export type BunproGrammarProgress = {
+  items: BunproGrammarItem[];
+  unavailableLevelCount: number;
+};
+
+export type BunproMapResult = {
   mapped: MappedImportItem[];
   unmatched: UnmatchedImportItem[];
   summary: ImportSummary;

@@ -1,12 +1,17 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { ImportSummary, MappedImportItem } from '@/core/import/import.types';
+import { mapBunproGrammarItems } from '@/core/import/bunproMapper';
 import { mapWaniKaniAssignments } from '@/core/import/wanikaniMapper';
 import { getExternalIdMappings } from '@/data/curriculum/externalIdMappingRepository';
+import { fetchBunproGrammarProgress, type BunproClientDeps } from '@/data/import/bunproClient';
 import { fetchWaniKaniAssignments, type WaniKaniClientDeps } from '@/data/import/wanikaniClient';
 import { discardImportCredential, getImportCredential } from '@/data/user/credentialStore';
 import { bulkSetStudyStatusKnown, setStudyStatus } from '@/data/user/itemStudyStatusRepository';
 import type { AppError, Result } from '@/types/result.types';
+
+const BUNPRO_PARTIAL_IMPORT_WARNING =
+  'Imported partial Bunpro progress. Some SRS levels were unavailable, so higher-level or burned grammar may be missing. You can retry later or mark grammar manually.';
 
 type PersistMappedImportOptions = {
   onBeforeInsert?: (item: MappedImportItem, index: number) => void;
@@ -132,6 +137,54 @@ export async function runWaniKaniImport(
   }
 
   const discardResult = await discardImportCredential('wanikani');
+  if (!discardResult.ok) {
+    return discardResult;
+  }
+
+  return { ok: true, value: mapResult.summary };
+}
+
+export async function runBunproImport(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+  deps: BunproClientDeps = {},
+): Promise<Result<ImportSummary, AppError>> {
+  const credentialResult = await getImportCredential('bunpro');
+  if (!credentialResult.ok) {
+    return credentialResult;
+  }
+
+  if (!credentialResult.value) {
+    return {
+      ok: false,
+      error: {
+        code: 'import_credential_missing',
+        message: 'Bunpro frontend token is not stored',
+        userMessage: 'Add your Bunpro frontend token before importing.',
+      },
+    };
+  }
+
+  const grammarResult = await fetchBunproGrammarProgress(credentialResult.value, deps);
+  if (!grammarResult.ok) {
+    return grammarResult;
+  }
+
+  const { items, unavailableLevelCount } = grammarResult.value;
+  const externalIds = items.map((item) => item.grammarPointId);
+  const mappingLookup = getExternalIdMappings(curriculumDb, 'bunpro', externalIds);
+  const mapResult = mapBunproGrammarItems(items, mappingLookup);
+
+  if (unavailableLevelCount > 0) {
+    mapResult.summary.warningMessage = BUNPRO_PARTIAL_IMPORT_WARNING;
+  }
+
+  const persistResult = persistMappedImportItems(userDb, mapResult.mapped, mapResult.summary);
+  if (!persistResult.ok) {
+    return persistResult;
+  }
+
+  const discardResult = await discardImportCredential('bunpro');
   if (!discardResult.ok) {
     return discardResult;
   }

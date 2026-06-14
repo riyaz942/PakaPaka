@@ -91,10 +91,7 @@ export function isSupportedWaniKaniSrsStage(stage: number): stage is keyof typeo
   return stage in STAGE_CONVERSIONS;
 }
 
-export function convertWaniKaniStageToFsrs(
-  srsStage: number,
-  now: Date = new Date(),
-): FsrsImportState | null {
+function convertStageToFsrs(srsStage: number, now: Date): FsrsImportState | null {
   const conversion = STAGE_CONVERSIONS[srsStage];
   if (!conversion) {
     return null;
@@ -114,4 +111,22 @@ export function convertWaniKaniStageToFsrs(
     isBurned: conversion.isBurned,
     srsStageLabel: conversion.srsStageLabel,
   };
+}
+
+export function convertWaniKaniStageToFsrs(
+  srsStage: number,
+  now: Date = new Date(),
+): FsrsImportState | null {
+  return convertStageToFsrs(srsStage, now);
+}
+
+export function isSupportedBunproSrsStage(stage: number): stage is keyof typeof STAGE_CONVERSIONS {
+  return stage in STAGE_CONVERSIONS;
+}
+
+export function convertBunproStageToFsrs(
+  srsStage: number,
+  now: Date = new Date(),
+): FsrsImportState | null {
+  return convertStageToFsrs(srsStage, now);
 }
