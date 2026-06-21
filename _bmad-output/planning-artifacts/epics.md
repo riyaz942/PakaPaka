@@ -698,11 +698,13 @@ So that **radicals stick before kanji (FR4, FR4b, FR27)**.
 **Then** meaning, strokes, and mnemonic image (or text fallback) display using shared image cache behavior from Epic 1  
 **And** dependency “required radicals” for a kanji link out correctly when graph data exists (FR4)
 
-### Story 4.3: Kanji detail with readings, meanings, mnemonics
+### Story 4.3: Item detail screens for kanji, vocabulary, and grammar
+
+*Consolidates original stories 4.3, 4.4, and 4.5 — all follow the same detail-screen pattern.*
 
 As a **learner**,
-I want **kanji detail showing onyomi/kunyomi, meanings, synonyms, and mnemonics**,
-So that **I can study outside reviews (FR5, FR27)**.
+I want **rich detail screens for kanji (readings, meanings, synonyms, mnemonics), vocabulary (contextual usage, examples), and grammar (structured rules, accepted forms, example sentences)**,
+So that **I can study all content types in depth outside reviews (FR5, FR6, FR6c, FR7, FR27)**.
 
 **Acceptance Criteria:**
 
@@ -711,33 +713,17 @@ So that **I can study outside reviews (FR5, FR27)**.
 **Then** primary and synonym meanings render from the dedicated answers model  
 **And** readings are labeled distinctly to reduce reading-vs-meaning confusion (UX-DR34 alignment on labels)
 
-### Story 4.4: Vocabulary detail with contextual meanings
-
-As a **learner**,
-I want **vocabulary entries with contextual usage and examples**,
-So that **I learn nuance, not dictionary one-liners (FR7, FR27)**.
-
-**Acceptance Criteria:**
-
 **Given** a vocabulary item with contextual gloss and linked example sentences  
 **When** I open detail  
 **Then** contextual meaning and at least one example render when present in seed data  
 **And** grammar cross-links display when `grammar` associations exist in curriculum
-
-### Story 4.5: Grammar point detail with structured rules and examples
-
-As a **learner**,
-I want **grammar explanations backed by structured accepted forms and multiple example sentences**,
-So that **I get Bunpro-level depth in-app (FR6, FR6c)**.
-
-**Acceptance Criteria:**
 
 **Given** a grammar point with `accepted_forms` and `conjugation_rules` JSON  
 **When** I view the grammar detail screen  
 **Then** structure, accepted forms, and ≥5 example sentences render when data provides them (FR6c)  
 **And** conjugation rules are exposed to the same parser module Epic 5 imports for validation (shared package or folder, no duplication)
 
-### Story 4.6: Reading passages with comprehension prompts
+### Story 4.4: Reading passages with comprehension prompts
 
 As a **learner**,
 I want **JLPT-tagged reading passages with questions**,
@@ -750,7 +736,7 @@ So that **I practice comprehension in context (FR8b, FR8c)**.
 **Then** passage text and comprehension prompts render; answering stores practice results in `user.db` minimally (or read-only practice for first slice—document choice)  
 **And** passage vocabulary/grammar aligns to stated JLPT constraints in seed data (FR8c)
 
-### Story 4.7: Dependency graph visibility for unlock status
+### Story 4.5: Dependency graph visibility for unlock status
 
 As a **learner**,
 I want **to see why a kanji or vocab is locked**,
@@ -763,7 +749,7 @@ So that **the radical→kanji→vocab path feels fair (FR4)**.
 **Then** the UI lists unmet prerequisites with links  
 **And** unlocked items show clear “available” state
 
-### Story 4.8: Personal mnemonics editor
+### Story 4.6: Personal mnemonics editor
 
 As a **learner**,
 I want **to add or edit personal mnemonics per item**,
@@ -782,11 +768,13 @@ So that **I can reinforce memory my way (FR26b)**.
 
 Learners run the **core product**: **one-tap** mixed **reviews**, **FSRS** intervals, **input-based** answers, **WanaKana**, **typo and conjugation-aware** checking, **visible cross-domain ties** and **related-item boosts** — fast loop per NFR1 / NFR5b / UX “serious tool” bar.
 
-### Story 5.1: Due-queue builder with cross-type interleaving
+### Story 5.1: Review queue builder, FSRS scheduling, and prefetch
+
+*Consolidates original stories 5.1, 5.9, and 5.10 — all review-engine internals: queue construction, state updates, and lookahead.*
 
 As a **learner**,
-I want **a single queue mixing kanji, vocabulary, and grammar based on due dates**,
-So that **I experience one unified session (FR11, FR10)**.
+I want **a unified due queue with FSRS-driven scheduling and prefetched items**,
+So that **sessions start instantly, stay honest, and never stutter (FR10, FR11, FR5b, NFR1, NFR2)**.
 
 **Acceptance Criteria:**
 
@@ -795,11 +783,23 @@ So that **I experience one unified session (FR11, FR10)**.
 **Then** the first item appears with no intermediate configuration screen (FR11)  
 **And** interleaving policy is deterministic and documented (e.g. weighted round-robin) without requiring Epic 6 weakness yet (weakness can default to 0)
 
-### Story 5.2: Review session layout, session header, and exit confirmation
+**Given** a graded answer  
+**When** results are shown  
+**Then** `ts-fsrs` transitions update `user.db` within the performance budget and the next item can load without blocking the UI thread with heavy sync I/O (document batching)  
+**And** SRS stage badge uses text + color (UX-DR13)
+
+**Given** a running session  
+**When** I am answering item *n*  
+**Then** items *n+1…n+k* metadata are prefetched into memory  
+**And** measured tap-to-next-item stays within the PRD interaction budget on a mid-range test device (document test method)
+
+### Story 5.2: Review session UI, layout, and card prompting
+
+*Consolidates original stories 5.2 and 5.3 — session chrome and card rendering are one unified UI pass.*
 
 As a **learner**,
-I want **a focused review screen with header context and safe exit**,
-So that **I stay oriented and never lose progress accidentally (UX-DR16, UX-DR20, UX-DR24)**.
+I want **a focused review screen with header context, safe exit, and clear answer-type prompts**,
+So that **I stay oriented, never lose progress, and always know what to type (FR9, UX-DR5, UX-DR16, UX-DR20, UX-DR24, UX-DR34)**.
 
 **Acceptance Criteria:**
 
@@ -808,24 +808,18 @@ So that **I stay oriented and never lose progress accidentally (UX-DR16, UX-DR20
 **Then** the tab bar is hidden (UX-DR18) and `SessionHeader` shows item index and type badge  
 **And** attempting to leave opens a bottom sheet confirming end session; progress saved to `user.db` on confirm (UX-DR24)
 
-### Story 5.3: ReviewCard prompting and answer-type clarity
-
-As a **learner**,
-I want **an obvious prompt for reading vs meaning vs grammar cloze**,
-So that **I never guess what to type (FR9, UX-DR5, UX-DR34)**.
-
-**Acceptance Criteria:**
-
 **Given** an item in `prompting` state  
 **When** it renders  
 **Then** labels/color coding indicate expected answer mode per UX spec  
 **And** no celebratory animations block the prompt (NFR5b)
 
-### Story 5.4: WanaKana-powered answer input
+### Story 5.3: Answer input and validation (WanaKana, Levenshtein, conjugation)
+
+*Consolidates original stories 5.4, 5.5, and 5.6 — all answer validation pipelines sharing a common input field.*
 
 As a **learner**,
-I want **romaji converted to kana live for reading answers**,
-So that **I never fight the OS IME (FR13, UX-DR6, NFR5)**.
+I want **romaji-to-kana input, fair typo tolerance on meanings, and conjugation-aware grammar validation**,
+So that **every answer type is checked accurately and fairly (FR6b, FR13, FR14, UX-DR6, UX-DR23, NFR5)**.
 
 **Acceptance Criteria:**
 
@@ -834,38 +828,23 @@ So that **I never fight the OS IME (FR13, UX-DR6, NFR5)**.
 **Then** hiragana/katakana updates per keystroke with acceptable latency on a mid-range device (NFR5)  
 **And** accessibility labels describe the input mode (UX-DR6)
 
-### Story 5.5: Meaning answers with Levenshtein and “close!” behavior
-
-As a **learner**,
-I want **fair typo tolerance on English meanings**,
-So that **fat-finger errors do not punish real knowledge (FR14, FR9, UX-DR23)**.
-
-**Acceptance Criteria:**
-
 **Given** a meaning prompt with primary and synonym answers  
 **When** I submit within Levenshtein accept threshold  
 **Then** I see a warning state (typo) and can retry or accept per product rule without advancing SRS incorrectly (document chosen rule)  
-**And** near-misses show “close!” hint path (FR14)
-
-### Story 5.6: Grammar cloze validation with conjugation parser and fallback
-
-As a **learner**,
-I want **grammar answers validated with conjugation awareness**,
-So that **て vs た and similar errors are detected correctly (FR6b, FR14)**.
-
-**Acceptance Criteria:**
+**And** near-misses show "close!" hint path (FR14)
 
 **Given** a grammar item with parser-supported rules  
 **When** I submit an answer  
 **Then** parser validation runs first and incorrect conjugations fail with correct answer shown  
-**And** unsupported patterns fall back to Levenshtein with explicit “parser fallback” behavior logged only in dev if needed
+**And** unsupported patterns fall back to Levenshtein with explicit "parser fallback" behavior logged only in dev if needed
 
-### Story 5.7: Progressive hints and reinforcement on results
+### Story 5.4: Progressive hints, reinforcement, and related-item boosts
+
+*Consolidates original stories 5.7 and 5.8 — both leverage the dependency graph for cross-item intelligence during review.*
 
 As a **learner**,
-I want **optional layered hints for grammar and subtle reinforcement after I answer**,
-So that **the loop stays clean but intelligence is visible (FR12, UX-DR7, UX-DR8, UX-DR21)**.
-
+I want **layered hints, visible reinforcement links, and scheduling boosts for related items**,
+So that **the review loop reveals connections and strengthens related knowledge (FR12, FR12b, UX-DR7, UX-DR8, UX-DR21)**.
 **Acceptance Criteria:**
 
 **Given** a grammar item in review  
@@ -873,44 +852,10 @@ So that **the loop stays clean but intelligence is visible (FR12, UX-DR7, UX-DR8
 **Then** hint levels advance with updated button copy until exhausted, and screen reader announces new panels (UX-DR7)  
 **And** after submit, result view may show `ReinforcementHighlight` when graph data supports a link (FR12), without showing full spoiler on initial prompt (UX-DR21)
 
-### Story 5.8: Related-item micro-adjustments after reviews
-
-As a **learner**,
-I want **related vocabulary/grammar to get slight scheduling boosts when I review a kanji**,
-So that **connections translate into scheduling (FR12b)**.
-
-**Acceptance Criteria:**
-
 **Given** graph relationships exist  
 **When** I answer a kanji item correctly  
 **Then** related item records receive a bounded priority adjustment persisted for next queue build  
 **And** the adjustment is idempotent per session rules (document caps to prevent starvation)
-
-### Story 5.9: FSRS state updates and SRS stage display on results
-
-As a **learner**,
-I want **FSRS intervals updated immediately after each answer**,
-So that **my schedule stays honest (FR10, FR5b, NFR1, NFR2)**.
-
-**Acceptance Criteria:**
-
-**Given** a graded answer  
-**When** results are shown  
-**Then** `ts-fsrs` transitions update `user.db` within the performance budget and the next item can load without blocking the UI thread with heavy sync I/O (document batching)  
-**And** SRS stage badge uses text + color (UX-DR13)
-
-### Story 5.10: Prefetch upcoming review items
-
-As a **learner**,
-I want **the next items ready before I advance**,
-So that **the loop never stutters (NFR1)**.
-
-**Acceptance Criteria:**
-
-**Given** a running session  
-**When** I am answering item *n*  
-**Then** items *n+1…n+k* metadata are prefetched into memory  
-**And** measured tap-to-next-item stays within the PRD interaction budget on a mid-range test device (document test method)
 
 ---
 
@@ -918,12 +863,13 @@ So that **the loop never stutters (NFR1)**.
 
 Learners feel **daily capacity** (ring), **habit** (streak + optional nudges), **targeted drilling**, **stats and confusion insights**, and **credible time-compressed** session proof — the differentiation vs single-domain SRS tools.
 
-### Story 6.1: Record per-item errors and types for weakness
+### Story 6.1: Weakness detection pipeline (recording, patterns, queue bias)
+
+*Consolidates original stories 6.1, 6.2, and 6.3 — record errors → detect clusters → bias queue is one end-to-end pipeline.*
 
 As a **learner**,
-I want **my misses recorded with type (reading vs meaning vs conjugation)**,
-So that **the app can target patterns (FR29)**.
-
+I want **my misses recorded by type, grouped into confusion clusters, and used to bias my review queue**,
+So that **reviews target my real weaknesses (FR29, FR30, FR31, FR33)**.
 **Acceptance Criteria:**
 
 **Given** a wrong or typo outcome in review  
@@ -931,33 +877,17 @@ So that **the app can target patterns (FR29)**.
 **Then** counters and last-error metadata append in `user.db` without blocking the next item (NFR1)  
 **And** schema supports pattern tags from FR30 in following story
 
-### Story 6.2: Pattern tags and confusion cluster detection
-
-As a **learner**,
-I want **items tagged with grammar/kanji pattern metadata**,
-So that **clusters like て vs た can be detected (FR30, FR33)**.
-
-**Acceptance Criteria:**
-
 **Given** curriculum tags on items  
 **When** weakness aggregation runs (on schedule end or stats screen entry)  
 **Then** clusters with sustained error rates surface copy such as “You often confuse て-form and た-form” when thresholds met (FR33)  
 **And** false positives are damped by minimum sample sizes (document constants)
-
-### Story 6.3: Weakness-biased queue ordering
-
-As a **learner**,
-I want **struggling items to surface more often while respecting FSRS**,
-So that **reviews feel targeted (FR31)**.
-
-**Acceptance Criteria:**
 
 **Given** weakness scores and FSRS priorities  
 **When** the queue is built at session start  
 **Then** ordering uses `priority = fsrs_score × 0.7 + weakness_score × 0.3` (or documented tuned default)  
 **And** disabling bias in Settings preserves pure FSRS ordering (PRD mitigation)
 
-### Story 6.4: Stats tab with weakness trends and SRS stage breakdown
+### Story 6.2: Stats tab with weakness trends and SRS stage breakdown
 
 As a **learner**,
 I want **Stats showing weakness cards and SRS stage counts**,
@@ -970,12 +900,13 @@ So that **I see proof of progress (FR28, FR32, UX-DR14, UX-DR13)**.
 **Then** `WeaknessStatCard` list shows pattern accuracy trends and SRS buckets are visible here (not on Home per UX-DR19)  
 **And** empty state matches UX empty-state pattern (UX-DR27)
 
-### Story 6.5: Cognitive load ring data model and UI
+### Story 6.3: Cognitive load ring and daily threshold guidance
+
+*Consolidates original stories 6.5 and 6.6 — ring data model and "enough for today" guidance are tightly coupled.*
 
 As a **learner**,
-I want **a ring that fills as I study harder items**,
-So that **I understand mental spend vs empty backlog anxiety (FR15, UX-DR4)**.
-
+I want **a cognitive load ring that fills as I study and gentle guidance when I’ve done enough**,
+So that **I understand mental spend and feel permission to stop (FR15, FR16, FR17, UX-DR4, UX-DR30)**.
 **Acceptance Criteria:**
 
 **Given** item weights by type/difficulty in config  
@@ -983,25 +914,18 @@ So that **I understand mental spend vs empty backlog anxiety (FR15, UX-DR4)**.
 **Then** cumulative load increases and the ring visual + numeric percent update (never color-only)  
 **And** ring updates do not block the <100ms answer path (off-main-thread or lightweight computation)
 
-### Story 6.6: Guidance when daily cognitive threshold is met
-
-As a **learner**,
-I want **clear “you’ve done enough for today” guidance without hard lockout**,
-So that **I feel permission to stop (FR16, FR17, UX-DR30)**.
-
-**Acceptance Criteria:**
-
 **Given** session intensity preference from Epic 2  
 **When** cumulative load crosses the adaptive threshold  
 **Then** informational messaging appears per UX tone (WHOOP-like, not nagging)  
 **And** I can still continue reviewing if I choose (FR16 informative-only)
 
-### Story 6.7: Streak tracking and home display
+### Story 6.4: Streak tracking and opt-in notifications
+
+*Consolidates original stories 6.7 and 6.8 — both serve the daily habit loop.*
 
 As a **learner**,
-I want **a visible streak counter on Home**,
-So that **daily habit is reinforced without toxic gamification (FR18, UX-DR15, UX-DR19)**.
-
+I want **a visible streak counter and configurable daily reminders**,
+So that **daily habit is reinforced without toxic gamification or spam (FR18, FR19, FR20, UX-DR15, UX-DR19)**.
 **Acceptance Criteria:**
 
 **Given** a completed session marks the calendar day  
@@ -1009,39 +933,24 @@ So that **daily habit is reinforced without toxic gamification (FR18, UX-DR15, U
 **Then** `StreakCounter` shows current streak and state (active/at-risk)  
 **And** streak survives timezone change and offline use (NFR13)
 
-### Story 6.8: Opt-in notifications for daily review and streak risk
-
-As a **learner**,
-I want **configurable, opt-in reminders**,
-So that **nudges help without spam (FR19, FR20, PRD notification caps)**.
-
-**Acceptance Criteria:**
-
 **Given** notification permission not granted  
 **When** I enable reminders in Settings  
 **Then** OS permission prompts follow platform rules and scheduling respects “max one/day” PRD principle  
 **And** disabling notifications cancels pending scheduled notifications
 
-### Story 6.9: Post-session summary, time compression, and share card
+### Story 6.5: Post-session summary and home screen composition
+
+*Consolidates original stories 6.9 and 6.10 — both are key composition screens that define the app’s daily face.*
 
 As a **learner**,
-I want **a screenshot-friendly summary with domain counts and credible time savings**,
-So that **I feel the value every session (FR33b, FR33c, UX-DR9, UX-DR10)**.
-
+I want **a screenshot-friendly session summary with time savings and a Home screen with ring, actions, streak, and progress**,
+So that **I feel the value every session and know what to do next at a glance (FR33b, FR33c, UX-DR9, UX-DR10, UX-DR12, UX-DR19, UX-DR26)**.
 **Acceptance Criteria:**
 
 **Given** a completed or user-ended session  
 **When** I reach the summary route  
 **Then** `TimeCompressionSummary` shows domains, minutes studied, and conservative multi-app estimate with methodology tooltip or settings link (FR33c)  
 **And** optional share uses `PostSessionShareCard` with native share sheet (UX-DR10)
-
-### Story 6.10: Home screen composition per chosen UX direction
-
-As a **learner**,
-I want **Home with ring, Review/Learn actions, streak, and JLPT progress bar**,
-So that **I know what to do next at a glance (UX-DR19, UX-DR12, FR1–FR3 progress representation)**.
-
-**Acceptance Criteria:**
 
 **Given** Home tab after onboarding  
 **When** I open the app  
@@ -1054,11 +963,13 @@ So that **I know what to do next at a glance (UX-DR19, UX-DR12, FR1–FR3 progre
 
 Learners using **VoiceOver/TalkBack**, **high contrast**, **larger text**, or **accessibility keyboards** get a **WCAG 2.1 AA**-aligned experience across navigation, review, and results — release-quality inclusive polish.
 
-### Story 7.1: Screen reader semantics for navigation and review
+### Story 7.1: Screen reader, keyboard, and input accessibility
 
-As a **screen reader user**,
-I want **meaningful roles, labels, and values on tabs and review controls**,
-So that **I can complete core flows (FR52, NFR15)**.
+*Consolidates original stories 7.1 and 7.4 — both navigation/input accessibility for assisted users.*
+
+As a **learner using assistive technology**,
+I want **meaningful screen reader semantics, keyboard navigation, and accessible input methods**,
+So that **I can complete core flows with VoiceOver/TalkBack or external keyboards (FR52, FR54, NFR15, NFR17)**.
 
 **Acceptance Criteria:**
 
@@ -1067,11 +978,18 @@ So that **I can complete core flows (FR52, NFR15)**.
 **Then** each interactive control announces purpose and state (tabs, buttons, input, hints, results)  
 **And** live regions announce dynamic results politely (UX-DR32)
 
-### Story 7.2: Color contrast verification against tokens
+**Given** a Bluetooth keyboard connected  
+**When** I focus the answer field and press Enter  
+**Then** the answer submits and focus moves predictably through result → next prompt  
+**And** every gesture-only affordance has an on-screen alternative (NFR17)
 
-As a **learner with low vision**,
-I want **text and feedback colors to meet WCAG AA on surfaces**,
-So that **I can read UI chrome and the cognitive load ring (FR53, NFR14)**.
+### Story 7.2: Visual accessibility (contrast, scaling, reduced motion)
+
+*Consolidates original stories 7.2, 7.3, and 7.6 — all visual accommodation settings.*
+
+As a **learner with visual or motion sensitivities**,
+I want **WCAG AA contrast, scalable text to 200%, and optional reduced motion**,
+So that **the app is comfortable for daily use regardless of visual ability (FR53, FR54, NFR14, NFR16, UX-DR30)**.
 
 **Acceptance Criteria:**
 
@@ -1080,33 +998,17 @@ So that **I can read UI chrome and the cognitive load ring (FR53, NFR14)**.
 **Then** normal text ≥4.5:1 and large text ≥3:1 against declared backgrounds including ring states  
 **And** failures block merge or are tracked as defects with fix path (team policy documented)
 
-### Story 7.3: Dynamic type / font scaling to 200%
-
-As a **learner**,
-I want **layouts to survive large text settings**,
-So that **content never clips irreversibly (FR54, NFR16)**.
-
-**Acceptance Criteria:**
-
 **Given** OS text size increased toward 200%  
 **When** I open review and Home layouts  
 **Then** focal zones grow/scroll without hiding the submit action permanently  
 **And** Japanese prompt text scales per UX typography rules without overlapping illegibly
 
-### Story 7.4: Hardware keyboard and accessibility keyboard support in review
+**Given** system reduced motion or in-app toggle  
+**When** enabled  
+**Then** ring fill uses stepped updates or static state changes without continuous animation  
+**And** review loop remains free of inter-item animations (NFR5b)
 
-As a **learner**,
-I want **to submit answers with Enter and avoid gesture-only actions**,
-So that **external keyboards work (FR54, NFR17)**.
-
-**Acceptance Criteria:**
-
-**Given** a Bluetooth keyboard connected  
-**When** I focus the answer field and press Enter  
-**Then** the answer submits and focus moves predictably through result → next prompt  
-**And** every gesture-only affordance has an on-screen alternative (NFR17)
-
-### Story 7.5: Automated accessibility checks in CI
+### Story 7.3: Automated accessibility checks in CI
 
 As a **maintainer**,
 I want **CI to run basic accessibility linting on components**,
@@ -1119,30 +1021,19 @@ So that **regressions are caught early (UX-DR35)**.
 **Then** configured `react-native-a11y` or Axe step executes on representative screens or component tests  
 **And** failures print actionable rule names
 
-### Story 7.6: Reduced motion and optional ring animation disable
-
-As a **learner sensitive to motion**,
-I want **to reduce nonessential motion including ring fill**,
-So that **I am comfortable using the app daily (UX-DR30)**.
-
-**Acceptance Criteria:**
-
-**Given** system reduced motion or in-app toggle  
-**When** enabled  
-**Then** ring fill uses stepped updates or static state changes without continuous animation  
-**And** review loop remains free of inter-item animations (NFR5b)
-
 ---
 
 ## Epic 8: Post-MVP expansion (shadow mode, AI stories, community curriculum)
 
 Deferred product: **shadow mode**, **AI reading**, **community PR pipeline** — tracked so MVP epics do not silently drop `-PM` FRs.
 
-### Story 8.1: Shadow mode positioning and comparative session stats
+### Story 8.1: Shadow mode (positioning, stats, switch prompts)
+
+*Consolidates original stories 8.1 and 8.2 — both shadow mode features, small scope.*
 
 As a **switcher (post-MVP)**,
-I want **shadow mode framing and comparative stats**,
-So that **I can trial the app alongside paid tools (FR33i-PM, FR33j-PM)**.
+I want **shadow mode framing with comparative stats and gentle switch prompts after sustained use**,
+So that **I can trial the app alongside paid tools and decide when to commit (FR33i-PM, FR33j-PM, FR33k-PM)**.
 
 **Acceptance Criteria:**
 
@@ -1151,20 +1042,12 @@ So that **I can trial the app alongside paid tools (FR33i-PM, FR33j-PM)**.
 **Then** UI copy positions parallel use without breaking FSRS scheduling assumptions (architecture note)  
 **And** post-session stats include comparison metrics specified in PRD when data exists (FR33j-PM)
 
-### Story 8.2: Shadow mode gentle switch prompts
-
-As a **switcher (post-MVP)**,
-I want **periodic prompts after sustained parallel use**,
-So that **I decide when to commit (FR33k-PM)**.
-
-**Acceptance Criteria:**
-
 **Given** shadow mode active for ≥14 days  
 **When** threshold met  
 **Then** a non-blocking prompt offers “ready to switch fully?” with dismiss and snooze  
 **And** no forced migration path
 
-### Story 8.3: AI-generated reading and community contribution backlog
+### Story 8.2: AI-generated reading and community contribution backlog
 
 As a **product owner**,
 I want **scoped discovery stories for AI reading and GitHub-based contributions**,
@@ -1190,7 +1073,9 @@ So that **engineering estimates post-MVP work (FR38-PM–FR45-PM)**.
 | **DB / entity discipline** | Pass — Story 1.3 limits initial `user.db` schema; no “create all tables upfront” story. |
 | **Epic user value** | Pass — epics are outcome-oriented (onboarding, import, content, review, intelligence, a11y, deferral). |
 | **Epic independence** | Pass with notes — Epic 2 does not require Epic 3. Epic 3 requires Epic 1 (DB). Epics 4–6 stack as product slices; Epic 7 cross-cuts. |
-| **Within-epic story order** | Pass after edits — Story 2.3 uses onboarding-only `curriculum.db` queries (no Epic 4 Learn dependency). Story 5.1 uses a QA entry point until Home Review is finalized in Story 6.10. |
+| **Within-epic story order** | Pass after edits — Story 2.3 uses onboarding-only `curriculum.db` queries (no Epic 4 Learn dependency). Story 5.1 uses a QA entry point until Home Review is finalized in Story 6.5. |
 | **NFR / UX-DR** | Pass — NFRs and UX-DRs are reflected in story ACs where applicable; full NFR matrix can be traced via epic scope + architecture doc. |
 
 **Adjustments in this validation pass:** Story **2.3** and **5.1** acceptance criteria were tightened to remove forward cross-epic assumptions.
+
+**Consolidation pass (2026-06-21):** Related backlog stories combined to reduce from 35 remaining stories to 21. Epics 4 (3→1 detail screens), 5 (10→4 review engine), 6 (10→5 intelligence layer), 7 (6→3 accessibility), 8 (3→2 post-MVP). All acceptance criteria preserved; no FR coverage changes.

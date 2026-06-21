@@ -1,5 +1,5 @@
 # generated: 2026-05-03T12:00:00
-# last_updated: 2026-06-14
+# last_updated: 2026-06-21
 # project: japanese-learning
 # project_key: NOKEY
 # tracking_system: file-system
@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-14"
+last_updated: "2026-06-21"
 project: japanese-learning
 project_key: NOKEY
 tracking_system: file-system
@@ -72,51 +72,34 @@ development_status:
   epic-4: in-progress
   4-1-jlpt-learn-hub-and-per-type-item-lists: done
   4-2-radical-detail-with-mnemonic-image: done
-  4-3-kanji-detail-with-readings-meanings-mnemonics: backlog
-  4-4-vocabulary-detail-with-contextual-meanings: backlog
-  4-5-grammar-point-detail-with-structured-rules-and-examples: backlog
-  4-6-reading-passages-with-comprehension-prompts: backlog
-  4-7-dependency-graph-visibility-for-unlock-status: backlog
-  4-8-personal-mnemonics-editor: backlog
+  4-3-item-detail-screens-kanji-vocabulary-grammar: backlog
+  4-4-reading-passages-with-comprehension-prompts: backlog
+  4-5-dependency-graph-visibility-for-unlock-status: backlog
+  4-6-personal-mnemonics-editor: backlog
   epic-4-retrospective: optional
 
   epic-5: backlog
-  5-1-due-queue-builder-with-cross-type-interleaving: backlog
-  5-2-review-session-layout-session-header-and-exit-confirmation: backlog
-  5-3-reviewcard-prompting-and-answer-type-clarity: backlog
-  5-4-wanakana-powered-answer-input: backlog
-  5-5-meaning-answers-with-levenshtein-and-close-behavior: backlog
-  5-6-grammar-cloze-validation-with-conjugation-parser-and-fallback: backlog
-  5-7-progressive-hints-and-reinforcement-on-results: backlog
-  5-8-related-item-micro-adjustments-after-reviews: backlog
-  5-9-fsrs-state-updates-and-srs-stage-display-on-results: backlog
-  5-10-prefetch-upcoming-review-items: backlog
+  5-1-review-queue-builder-fsrs-scheduling-and-prefetch: backlog
+  5-2-review-session-ui-layout-and-card-prompting: backlog
+  5-3-answer-input-and-validation: backlog
+  5-4-progressive-hints-reinforcement-and-related-item-boosts: backlog
   epic-5-retrospective: optional
 
   epic-6: backlog
-  6-1-record-per-item-errors-and-types-for-weakness: backlog
-  6-2-pattern-tags-and-confusion-cluster-detection: backlog
-  6-3-weakness-biased-queue-ordering: backlog
-  6-4-stats-tab-with-weakness-trends-and-srs-stage-breakdown: backlog
-  6-5-cognitive-load-ring-data-model-and-ui: backlog
-  6-6-guidance-when-daily-cognitive-threshold-is-met: backlog
-  6-7-streak-tracking-and-home-display: backlog
-  6-8-opt-in-notifications-for-daily-review-and-streak-risk: backlog
-  6-9-post-session-summary-time-compression-and-share-card: backlog
-  6-10-home-screen-composition-per-chosen-ux-direction: backlog
+  6-1-weakness-detection-pipeline: backlog
+  6-2-stats-tab-with-weakness-trends-and-srs-stage-breakdown: backlog
+  6-3-cognitive-load-ring-and-daily-threshold-guidance: backlog
+  6-4-streak-tracking-and-opt-in-notifications: backlog
+  6-5-post-session-summary-and-home-screen-composition: backlog
   epic-6-retrospective: optional
 
   epic-7: backlog
-  7-1-screen-reader-semantics-for-navigation-and-review: backlog
-  7-2-color-contrast-verification-against-tokens: backlog
-  7-3-dynamic-type-font-scaling-to-200: backlog
-  7-4-hardware-keyboard-and-accessibility-keyboard-support-in-review: backlog
-  7-5-automated-accessibility-checks-in-ci: backlog
-  7-6-reduced-motion-and-optional-ring-animation-disable: backlog
+  7-1-screen-reader-keyboard-and-input-accessibility: backlog
+  7-2-visual-accessibility: backlog
+  7-3-automated-accessibility-checks-in-ci: backlog
   epic-7-retrospective: optional
 
   epic-8: backlog
-  8-1-shadow-mode-positioning-and-comparative-session-stats: backlog
-  8-2-shadow-mode-gentle-switch-prompts: backlog
-  8-3-ai-generated-reading-and-community-contribution-backlog: backlog
+  8-1-shadow-mode: backlog
+  8-2-ai-generated-reading-and-community-contribution-backlog: backlog
   epic-8-retrospective: optional
