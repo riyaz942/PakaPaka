@@ -2,14 +2,24 @@ import { openDatabaseAsync } from 'expo-sqlite';
 
 import {
   __mockResetSqlite,
+  __mockSetAcceptedAnswers,
+  __mockSetExampleSentences,
+  __mockSetGrammarRules,
+  __mockSetGrammarVocabLinks,
   __mockSetItemRelationships,
   __mockSetItems,
+  __mockSetKanjiReadings,
 } from '../../../__mocks__/expo-sqlite';
 
 import {
   countItemsByLevel,
   countItemsByLevelAndType,
+  getAcceptedAnswers,
+  getExampleSentences,
+  getGrammarLinksForVocab,
+  getGrammarRule,
   getItemById,
+  getKanjiReadings,
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
   getRequiredParentsForItems,
@@ -218,6 +228,161 @@ describe('itemRepository', () => {
     expect(parents.get('10')).toEqual([
       { id: '1', primaryForm: '日', itemType: 'radical' },
       { id: '2', primaryForm: '口', itemType: 'radical' },
+    ]);
+  });
+
+  it('returns kanji readings ordered by sort_order', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetKanjiReadings('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 10,
+        reading_type: 'onyomi',
+        reading: 'ニチ',
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_id: 10,
+        reading_type: 'kunyomi',
+        reading: 'ひ',
+        sort_order: 2,
+      },
+    ]);
+
+    expect(getKanjiReadings(db, '10')).toEqual([
+      { id: '1', readingType: 'onyomi', reading: 'ニチ', sortOrder: 1 },
+      { id: '2', readingType: 'kunyomi', reading: 'ひ', sortOrder: 2 },
+    ]);
+  });
+
+  it('returns accepted answers with primary first', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetAcceptedAnswers('curriculum.db.test', [
+      {
+        id: 2,
+        item_id: 10,
+        answer_type: 'meaning',
+        answer_text: 'sun',
+        is_primary: 0,
+      },
+      {
+        id: 1,
+        item_id: 10,
+        answer_type: 'meaning',
+        answer_text: 'day',
+        is_primary: 1,
+      },
+    ]);
+
+    expect(getAcceptedAnswers(db, '10')).toEqual([
+      { id: '1', answerType: 'meaning', answerText: 'day', isPrimary: true },
+      { id: '2', answerType: 'meaning', answerText: 'sun', isPrimary: false },
+    ]);
+  });
+
+  it('returns grammar rule with parsed JSON fields', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetGrammarRules('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 50,
+        structure: 'Noun + です',
+        conjugation_rules: '{"polite": true}',
+        accepted_forms: '["です", "だ"]',
+      },
+    ]);
+
+    expect(getGrammarRule(db, '50')).toEqual({
+      structure: 'Noun + です',
+      conjugationRules: { polite: true },
+      acceptedForms: ['です', 'だ'],
+    });
+    expect(getGrammarRule(db, '999')).toBeNull();
+  });
+
+  it('returns example sentences ordered by sort_order', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetExampleSentences('curriculum.db.test', [
+      {
+        id: 2,
+        item_id: 20,
+        japanese: '私は学生です。',
+        english: 'I am a student.',
+        sort_order: 2,
+      },
+      {
+        id: 1,
+        item_id: 20,
+        japanese: 'これは本です。',
+        english: 'This is a book.',
+        sort_order: 1,
+      },
+    ]);
+
+    expect(getExampleSentences(db, '20')).toEqual([
+      {
+        id: '1',
+        japanese: 'これは本です。',
+        english: 'This is a book.',
+        sortOrder: 1,
+      },
+      {
+        id: '2',
+        japanese: '私は学生です。',
+        english: 'I am a student.',
+        sortOrder: 2,
+      },
+    ]);
+  });
+
+  it('returns grammar links for vocabulary with grammar item details', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 20,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'watashi',
+        primary_form: '私',
+        meaning: 'I, me',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 50,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be (polite)',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetGrammarVocabLinks('curriculum.db.test', [
+      {
+        id: 1,
+        grammar_item_id: 50,
+        vocabulary_item_id: 20,
+      },
+    ]);
+
+    expect(getGrammarLinksForVocab(db, '20')).toEqual([
+      {
+        grammarItemId: '50',
+        vocabularyItemId: '20',
+        vocabularyPrimaryForm: 'です',
+        vocabularyMeaning: 'to be (polite)',
+      },
     ]);
   });
 });

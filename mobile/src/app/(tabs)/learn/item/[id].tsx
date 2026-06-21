@@ -3,15 +3,26 @@ import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { GrammarDetail } from '@/components/learn/GrammarDetail';
+import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
+import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
-import { ITEM_TYPE_LABELS } from '@/data/curriculum/itemRepository';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 
 export default function LearnItemDetailScreen() {
   const params = useLocalSearchParams<{ id: string }>();
   const itemId = params.id ?? null;
-  const { item, loading, notFound } = useItemDetail(itemId);
+  const {
+    item,
+    kanjiReadings,
+    acceptedAnswers,
+    grammarRule,
+    exampleSentences,
+    grammarVocabLinks,
+    loading,
+    notFound,
+  } = useItemDetail(itemId);
 
   return (
     <View className="flex-1 bg-background">
@@ -40,11 +51,27 @@ export default function LearnItemDetailScreen() {
           <Text className="mt-8 text-body text-secondary">Item not found.</Text>
         ) : item.itemType === 'radical' ? (
           <RadicalDetail item={item} />
-        ) : (
-          <Text className="mt-4 text-body text-secondary">
-            Detail for {ITEM_TYPE_LABELS[item.itemType]} coming soon
-          </Text>
-        )}
+        ) : item.itemType === 'kanji' ? (
+          <KanjiDetail
+            item={item}
+            kanjiReadings={kanjiReadings ?? []}
+            acceptedAnswers={acceptedAnswers}
+          />
+        ) : item.itemType === 'vocabulary' ? (
+          <VocabularyDetail
+            item={item}
+            acceptedAnswers={acceptedAnswers}
+            exampleSentences={exampleSentences}
+            grammarVocabLinks={grammarVocabLinks}
+          />
+        ) : item.itemType === 'grammar' ? (
+          <GrammarDetail
+            item={item}
+            acceptedAnswers={acceptedAnswers}
+            grammarRule={grammarRule}
+            exampleSentences={exampleSentences}
+          />
+        ) : null}
       </SafeAreaView>
     </View>
   );

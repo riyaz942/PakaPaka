@@ -1,22 +1,51 @@
 import { useEffect, useState } from 'react';
 
 import {
+  getAcceptedAnswers,
+  getExampleSentences,
+  getGrammarLinksForVocab,
+  getGrammarRule,
   getItemById,
+  getKanjiReadings,
+  type AcceptedAnswer,
   type CurriculumItemDetail,
+  type ExampleSentence,
+  type GrammarRule,
+  type GrammarVocabLink,
+  type KanjiReading,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 
-export function useItemDetail(
-  itemId: string | null,
-): { item: CurriculumItemDetail | null; loading: boolean; notFound: boolean } {
+export type ItemDetailResult = {
+  item: CurriculumItemDetail | null;
+  kanjiReadings: KanjiReading[] | null;
+  acceptedAnswers: AcceptedAnswer[];
+  grammarRule: GrammarRule | null;
+  exampleSentences: ExampleSentence[];
+  grammarVocabLinks: GrammarVocabLink[];
+  loading: boolean;
+  notFound: boolean;
+};
+
+export function useItemDetail(itemId: string | null): ItemDetailResult {
   const { curriculumDb } = useDatabase();
   const [item, setItem] = useState<CurriculumItemDetail | null>(null);
+  const [kanjiReadings, setKanjiReadings] = useState<KanjiReading[] | null>(null);
+  const [acceptedAnswers, setAcceptedAnswers] = useState<AcceptedAnswer[]>([]);
+  const [grammarRule, setGrammarRule] = useState<GrammarRule | null>(null);
+  const [exampleSentences, setExampleSentences] = useState<ExampleSentence[]>([]);
+  const [grammarVocabLinks, setGrammarVocabLinks] = useState<GrammarVocabLink[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (!itemId) {
       setItem(null);
+      setKanjiReadings(null);
+      setAcceptedAnswers([]);
+      setGrammarRule(null);
+      setExampleSentences([]);
+      setGrammarVocabLinks([]);
       setNotFound(true);
       setLoading(false);
       return;
@@ -24,10 +53,55 @@ export function useItemDetail(
 
     setLoading(true);
     const detail = getItemById(curriculumDb, itemId);
+
+    if (!detail) {
+      setItem(null);
+      setKanjiReadings(null);
+      setAcceptedAnswers([]);
+      setGrammarRule(null);
+      setExampleSentences([]);
+      setGrammarVocabLinks([]);
+      setNotFound(true);
+      setLoading(false);
+      return;
+    }
+
     setItem(detail);
-    setNotFound(detail === null);
+    setNotFound(false);
+    setAcceptedAnswers(getAcceptedAnswers(curriculumDb, itemId));
+    setExampleSentences(getExampleSentences(curriculumDb, itemId));
+
+    if (detail.itemType === 'kanji') {
+      setKanjiReadings(getKanjiReadings(curriculumDb, itemId));
+      setGrammarRule(null);
+      setGrammarVocabLinks([]);
+    } else if (detail.itemType === 'grammar') {
+      setKanjiReadings(null);
+      setGrammarRule(getGrammarRule(curriculumDb, itemId));
+      setGrammarVocabLinks([]);
+    } else if (detail.itemType === 'vocabulary') {
+      setKanjiReadings(null);
+      setGrammarRule(null);
+      setGrammarVocabLinks(getGrammarLinksForVocab(curriculumDb, itemId));
+    } else {
+      setKanjiReadings(null);
+      setGrammarRule(null);
+      setGrammarVocabLinks([]);
+    }
+
     setLoading(false);
   }, [curriculumDb, itemId]);
 
-  return { item, loading, notFound };
+  const isDataStale = Boolean(item && itemId && item.id !== itemId);
+
+  return {
+    item,
+    kanjiReadings,
+    acceptedAnswers,
+    grammarRule,
+    exampleSentences,
+    grammarVocabLinks,
+    loading: loading || isDataStale,
+    notFound,
+  };
 }

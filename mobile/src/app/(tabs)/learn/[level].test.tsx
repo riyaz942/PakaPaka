@@ -193,6 +193,63 @@ describe('LearnLevelScreen', () => {
     expect(mockPush).toHaveBeenCalledWith('/learn/item/1');
   });
 
+  it('navigates to detail when kanji row is pressed', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-1')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-item-1'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/item/1');
+  });
+
+  it('navigates to detail when vocabulary row is pressed', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ level: 'N5', type: 'vocabulary' });
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-2')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-item-2'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/item/2');
+  });
+
+  it('navigates to detail when grammar row is pressed', async () => {
+    const curriculumDb = await openDatabaseAsync('curriculum.db.test');
+    const userDb = await openDatabaseAsync('user.db');
+    mockUseLocalSearchParams.mockReturnValue({ level: 'N5', type: 'grammar' });
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 5,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be (polite)',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-5')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('learn-item-5'));
+
+    expect(mockPush).toHaveBeenCalledWith('/learn/item/5');
+  });
+
   it('navigates to radical detail when a kanji dependency link is pressed', async () => {
     const curriculumDb = await openDatabaseAsync('curriculum.db.test');
     const userDb = await openDatabaseAsync('user.db');

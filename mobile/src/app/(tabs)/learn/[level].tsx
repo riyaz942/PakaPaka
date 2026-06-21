@@ -91,11 +91,7 @@ export default function LearnLevelScreen() {
               <LearnItemRow
                 item={item}
                 testID={`learn-item-${item.id}`}
-                onPress={
-                  item.itemType === 'radical'
-                    ? () => router.push(`/learn/item/${item.id}` as Href)
-                    : undefined
-                }
+                onPress={() => router.push(`/learn/item/${item.id}` as Href)}
                 dependencyParents={dependencyParentsByItemId.get(item.id)}
               />
             )}

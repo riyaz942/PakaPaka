@@ -228,3 +228,173 @@ export function getRequiredParentLabelsForItems(
 
   return result;
 }
+
+export type KanjiReading = {
+  id: string;
+  readingType: 'onyomi' | 'kunyomi';
+  reading: string;
+  sortOrder: number;
+};
+
+export type AcceptedAnswer = {
+  id: string;
+  answerType: 'meaning' | 'reading' | 'production';
+  answerText: string;
+  isPrimary: boolean;
+};
+
+export type GrammarRule = {
+  structure: string;
+  conjugationRules: Record<string, unknown>;
+  acceptedForms: string[];
+};
+
+export type ExampleSentence = {
+  id: string;
+  japanese: string;
+  english: string;
+  sortOrder: number;
+};
+
+export type GrammarVocabLink = {
+  grammarItemId: string;
+  vocabularyItemId: string;
+  vocabularyPrimaryForm: string;
+  vocabularyMeaning: string;
+};
+
+type KanjiReadingRow = {
+  id: number | string;
+  reading_type: 'onyomi' | 'kunyomi';
+  reading: string;
+  sort_order: number;
+};
+
+type AcceptedAnswerRow = {
+  id: number | string;
+  answer_type: 'meaning' | 'reading' | 'production';
+  answer_text: string;
+  is_primary: number;
+};
+
+type GrammarRuleRow = {
+  structure: string;
+  conjugation_rules: string;
+  accepted_forms: string;
+};
+
+type ExampleSentenceRow = {
+  id: number | string;
+  japanese: string;
+  english: string;
+  sort_order: number;
+};
+
+type GrammarVocabLinkRow = {
+  grammar_item_id: number | string;
+  vocabulary_item_id: number | string;
+  primary_form: string;
+  meaning: string;
+};
+
+function mapKanjiReadingRow(row: KanjiReadingRow): KanjiReading {
+  return {
+    id: String(row.id),
+    readingType: row.reading_type,
+    reading: row.reading,
+    sortOrder: row.sort_order,
+  };
+}
+
+function mapAcceptedAnswerRow(row: AcceptedAnswerRow): AcceptedAnswer {
+  return {
+    id: String(row.id),
+    answerType: row.answer_type,
+    answerText: row.answer_text,
+    isPrimary: row.is_primary === 1,
+  };
+}
+
+function mapExampleSentenceRow(row: ExampleSentenceRow): ExampleSentence {
+  return {
+    id: String(row.id),
+    japanese: row.japanese,
+    english: row.english,
+    sortOrder: row.sort_order,
+  };
+}
+
+function mapGrammarVocabLinkRow(row: GrammarVocabLinkRow): GrammarVocabLink {
+  return {
+    grammarItemId: String(row.grammar_item_id),
+    vocabularyItemId: String(row.vocabulary_item_id),
+    vocabularyPrimaryForm: row.primary_form,
+    vocabularyMeaning: row.meaning,
+  };
+}
+
+export function getKanjiReadings(
+  db: SQLiteDatabase,
+  itemId: string,
+): KanjiReading[] {
+  const rows = db.getAllSync<KanjiReadingRow>(
+    `SELECT id, reading_type, reading, sort_order FROM kanji_readings WHERE item_id = ? ORDER BY sort_order ASC`,
+    Number(itemId),
+  );
+  return rows.map(mapKanjiReadingRow);
+}
+
+export function getAcceptedAnswers(
+  db: SQLiteDatabase,
+  itemId: string,
+): AcceptedAnswer[] {
+  const rows = db.getAllSync<AcceptedAnswerRow>(
+    `SELECT id, answer_type, answer_text, is_primary FROM accepted_answers WHERE item_id = ? ORDER BY is_primary DESC, id ASC`,
+    Number(itemId),
+  );
+  return rows.map(mapAcceptedAnswerRow);
+}
+
+export function getGrammarRule(
+  db: SQLiteDatabase,
+  itemId: string,
+): GrammarRule | null {
+  const row = db.getFirstSync<GrammarRuleRow>(
+    `SELECT structure, conjugation_rules, accepted_forms FROM grammar_rules WHERE item_id = ?`,
+    Number(itemId),
+  );
+  if (!row) {
+    return null;
+  }
+  return {
+    structure: row.structure,
+    conjugationRules: JSON.parse(row.conjugation_rules) as Record<string, unknown>,
+    acceptedForms: JSON.parse(row.accepted_forms) as string[],
+  };
+}
+
+export function getExampleSentences(
+  db: SQLiteDatabase,
+  itemId: string,
+): ExampleSentence[] {
+  const rows = db.getAllSync<ExampleSentenceRow>(
+    `SELECT id, japanese, english, sort_order FROM example_sentences WHERE item_id = ? ORDER BY sort_order ASC`,
+    Number(itemId),
+  );
+  return rows.map(mapExampleSentenceRow);
+}
+
+export function getGrammarLinksForVocab(
+  db: SQLiteDatabase,
+  vocabItemId: string,
+): GrammarVocabLink[] {
+  const rows = db.getAllSync<GrammarVocabLinkRow>(
+    `SELECT gvl.grammar_item_id, gvl.vocabulary_item_id, i.primary_form, i.meaning
+     FROM grammar_vocabulary_links gvl
+     JOIN items i ON i.id = gvl.grammar_item_id
+     WHERE gvl.vocabulary_item_id = ?
+     ORDER BY i.sort_order ASC`,
+    Number(vocabItemId),
+  );
+  return rows.map(mapGrammarVocabLinkRow);
+}

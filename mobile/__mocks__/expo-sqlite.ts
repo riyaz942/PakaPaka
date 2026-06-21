@@ -371,6 +371,75 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM grammar_vocabulary_links/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
+    const links = [...(state.tables.get('grammar_vocabulary_links') ?? [])];
+    const items = state.tables.get('items') ?? [];
+
+    return links
+      .filter((link) => link.vocabulary_item_id === params[0])
+      .map((link) => {
+        const grammarItem = items.find((item) => item.id === link.grammar_item_id);
+        return {
+          grammar_item_id: link.grammar_item_id,
+          vocabulary_item_id: link.vocabulary_item_id,
+          primary_form: grammarItem?.primary_form ?? '',
+          meaning: grammarItem?.meaning ?? '',
+        };
+      })
+      .sort((left, right) => {
+        const leftItem = items.find((item) => item.id === left.grammar_item_id);
+        const rightItem = items.find((item) => item.id === right.grammar_item_id);
+        return Number(leftItem?.sort_order ?? 0) - Number(rightItem?.sort_order ?? 0);
+      });
+  }
+
+  if (/FROM example_sentences/i.test(trimmed)) {
+    let rows = [...(state.tables.get('example_sentences') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+    return rows;
+  }
+
+  if (/FROM grammar_rules/i.test(trimmed)) {
+    const rows = state.tables.get('grammar_rules') ?? [];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.item_id === params[0]);
+    }
+    return [...rows];
+  }
+
+  if (/FROM accepted_answers/i.test(trimmed)) {
+    let rows = [...(state.tables.get('accepted_answers') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    if (/ORDER BY is_primary DESC/i.test(trimmed)) {
+      rows.sort((left, right) => {
+        const primaryCompare = Number(right.is_primary) - Number(left.is_primary);
+        if (primaryCompare !== 0) {
+          return primaryCompare;
+        }
+        return Number(left.id) - Number(right.id);
+      });
+    }
+    return rows;
+  }
+
+  if (/FROM kanji_readings/i.test(trimmed)) {
+    let rows = [...(state.tables.get('kanji_readings') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+    return rows;
+  }
+
   if (/FROM item_relationships/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
     const relationships = [...(state.tables.get('item_relationships') ?? [])];
     const items = state.tables.get('items') ?? [];
@@ -542,6 +611,31 @@ export function __mockSetItems(databaseName: string, rows: Row[]) {
 export function __mockSetItemRelationships(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('item_relationships', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetKanjiReadings(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('kanji_readings', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetAcceptedAnswers(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('accepted_answers', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetGrammarRules(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('grammar_rules', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetExampleSentences(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('example_sentences', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetGrammarVocabLinks(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('grammar_vocabulary_links', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetExternalIdMappings(databaseName: string, rows: Row[]) {

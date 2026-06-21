@@ -3,7 +3,7 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { __mockResetSqlite, __mockSetItems } from '../../../../../__mocks__/expo-sqlite';
+import { __mockResetSqlite, __mockSetAcceptedAnswers, __mockSetExampleSentences, __mockSetGrammarRules, __mockSetGrammarVocabLinks, __mockSetItems, __mockSetKanjiReadings } from '../../../../../__mocks__/expo-sqlite';
 
 import { DatabaseContext } from '@/providers/DatabaseContext';
 
@@ -73,9 +73,100 @@ describe('LearnItemDetailScreen', () => {
         slug: 'day',
         primary_form: '日',
         meaning: 'day',
-        mnemonic_text: null,
+        mnemonic_text: 'The sun rises each day.',
         visual_mnemonic_url: null,
         sort_order: 1,
+      },
+      {
+        id: 3,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'watashi',
+        primary_form: '私',
+        meaning: 'I, me',
+        mnemonic_text: 'Think of private self.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 4,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be (polite)',
+        mnemonic_text: 'Desu sounds polite.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetKanjiReadings('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 2,
+        reading_type: 'onyomi',
+        reading: 'ニチ',
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_id: 2,
+        reading_type: 'kunyomi',
+        reading: 'ひ',
+        sort_order: 2,
+      },
+    ]);
+
+    __mockSetAcceptedAnswers('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 2,
+        answer_type: 'meaning',
+        answer_text: 'day',
+        is_primary: 1,
+      },
+      {
+        id: 2,
+        item_id: 2,
+        answer_type: 'meaning',
+        answer_text: 'sun',
+        is_primary: 0,
+      },
+    ]);
+
+    __mockSetExampleSentences('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 3,
+        japanese: '私は学生です。',
+        english: 'I am a student.',
+        sort_order: 1,
+      },
+      {
+        id: 1,
+        item_id: 4,
+        japanese: 'これは本です。',
+        english: 'This is a book.',
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetGrammarRules('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 4,
+        structure: 'Noun + です',
+        conjugation_rules: '{"polite": true}',
+        accepted_forms: '["です", "だ"]',
+      },
+    ]);
+
+    __mockSetGrammarVocabLinks('curriculum.db.test', [
+      {
+        id: 1,
+        grammar_item_id: 4,
+        vocabulary_item_id: 3,
       },
     ]);
 
@@ -118,13 +209,47 @@ describe('LearnItemDetailScreen', () => {
     });
   });
 
-  it('shows placeholder for non-radical item types', async () => {
+  it('renders kanji detail with readings and synonyms', async () => {
     const { curriculumDb, userDb } = await createCurriculumDb();
     mockUseLocalSearchParams.mockReturnValue({ id: '2' });
     renderDetailScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByText('Detail for Kanji coming soon')).toBeTruthy();
+      expect(screen.getByTestId('kanji-detail')).toBeTruthy();
+      expect(screen.getByText('日')).toBeTruthy();
+      expect(screen.getByText("On'yomi")).toBeTruthy();
+      expect(screen.getByText('ニチ')).toBeTruthy();
+      expect(screen.getByText("Kun'yomi")).toBeTruthy();
+      expect(screen.getByText('ひ')).toBeTruthy();
+      expect(screen.getByText('sun')).toBeTruthy();
+    });
+  });
+
+  it('renders vocabulary detail with examples and grammar links', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ id: '3' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('vocabulary-detail')).toBeTruthy();
+      expect(screen.getByText('私')).toBeTruthy();
+      expect(screen.getByText('私は学生です。')).toBeTruthy();
+      expect(screen.getByTestId('grammar-link-4')).toBeTruthy();
+    });
+  });
+
+  it('renders grammar detail with structure and forms', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ id: '4' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('grammar-detail')).toBeTruthy();
+      expect(screen.getByText('です')).toBeTruthy();
+      expect(screen.getByText('Noun + です')).toBeTruthy();
+      expect(screen.getByText('• です')).toBeTruthy();
+      expect(screen.getByText('これは本です。')).toBeTruthy();
+      expect(screen.getByText('This is a book.')).toBeTruthy();
     });
   });
 
