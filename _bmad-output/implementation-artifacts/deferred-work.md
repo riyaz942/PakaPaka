@@ -11,6 +11,18 @@
 - **`useLocalSearchParams` id may be `string[]`** — Same pattern as Learn item route; cross-cutting Expo Router param normalization.
 - **`JSON.parse` on `accepted_answers` has no try/catch** — Compile-time validated seed; matches grammar rules repository pattern.
 
+## Deferred from: code review of 4-6-personal-mnemonics-editor (2026-06-27)
+
+- **No error handling in `useEffect` / `handleSave` for DB or `parseItemId` exceptions** — `PersonalMnemonicEditor.tsx`. Pre-existing pattern across all user repos and PassageQuestion; address with a cross-cutting error boundary or Result wrapper when ready.
+- **`clearPersonalMnemonic` has no direct unit test** — All AC6-required test cases are covered; a standalone clear test is a minor completeness gap, not spec-required.
+- **Migration 005 has no `down` path** — Pre-existing pattern across all migrations.
+- **`updated_at` column lacks `CHECK` constraint enforcing ISO format** — Pre-existing; no existing migration enforces format constraints. A future schema-lint migration could add them globally.
+- **`withTransactionSync` mock rollback snapshot omits `personal_mnemonics` table** — Single-statement migration; no current test exercises rollback of migration 005. Include when adding mid-migration failure tests.
+- **`runSync` mock always returns `{ changes: 1 }` regardless of actual rows affected** — Pre-existing mock behavior across all table handlers. Impacts future `.changes` guards.
+- **One-render stale text visible when `itemId` prop changes before `useEffect` fires** — Accepted pattern; same as `PassageQuestion`. Add `initialText` prop or transition guard if user-visible flash is observed.
+- **`parseItemId` admits scientific-notation integers (`1e20` passes `Number.isInteger`)** — Hypothetical; item IDs from curriculum DB are bounded integers. Add upper-bound guard if IDs ever arrive from untrusted sources.
+- **"persists personal mnemonic text after save" test asserts local state, not DB round-trip** — DB persistence is thoroughly covered in `mnemonicRepository.test.ts`; consider adding unmount/remount cycle if a regression is ever suspected.
+
 ## Deferred from: code review of 4-5-dependency-graph-visibility-for-unlock-status (2026-06-27)
 
 - **Synchronous DB calls without try/catch in new hooks** — `useItemDependencyStatus` and `parentStatusMap` useMemo call `getRequiredParentsForItems`/`listStudyStatusesForItems` without error guards; pre-existing pattern across `useItemDetail`, `useLearnItems`, etc. Address with a cross-cutting error boundary or Result wrapper when ready.

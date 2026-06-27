@@ -3,7 +3,7 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { __mockResetSqlite, __mockSetAcceptedAnswers, __mockSetExampleSentences, __mockSetGrammarRules, __mockSetGrammarVocabLinks, __mockSetItems, __mockSetKanjiReadings } from '../../../../../__mocks__/expo-sqlite';
+import { __mockResetSqlite, __mockSetAcceptedAnswers, __mockSetExampleSentences, __mockSetGrammarRules, __mockSetGrammarVocabLinks, __mockSetItems, __mockSetKanjiReadings, __mockSetPersonalMnemonics } from '../../../../../__mocks__/expo-sqlite';
 
 import { DatabaseContext } from '@/providers/DatabaseContext';
 
@@ -292,6 +292,86 @@ describe('LearnItemDetailScreen', () => {
 
     await waitFor(() => {
       expect(screen.getAllByText('Radical one (一)')).toHaveLength(1);
+    });
+  });
+
+  it('renders personal mnemonic editor for kanji, vocabulary, and grammar', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+
+    mockUseLocalSearchParams.mockReturnValue({ id: '2' });
+    const kanjiRender = renderDetailScreen(curriculumDb, userDb);
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
+    });
+    kanjiRender.unmount();
+
+    mockUseLocalSearchParams.mockReturnValue({ id: '3' });
+    const vocabRender = renderDetailScreen(curriculumDb, userDb);
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
+    });
+    vocabRender.unmount();
+
+    mockUseLocalSearchParams.mockReturnValue({ id: '4' });
+    renderDetailScreen(curriculumDb, userDb);
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
+    });
+  });
+
+  it('does not render personal mnemonic editor for radicals', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ id: '1' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('radical-detail')).toBeTruthy();
+    });
+
+    expect(screen.queryByTestId('personal-mnemonic-editor')).toBeNull();
+  });
+
+  it('persists personal mnemonic text after save on kanji detail', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ id: '2' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-input')).toBeTruthy();
+    });
+
+    fireEvent.changeText(screen.getByTestId('personal-mnemonic-input'), 'My day mnemonic');
+    fireEvent.press(screen.getByTestId('personal-mnemonic-save'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('My day mnemonic');
+    });
+  });
+
+  it('clears personal override while curriculum mnemonic remains', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    __mockSetPersonalMnemonics('user.db', [
+      {
+        item_id: 2,
+        mnemonic_text: 'Override mnemonic',
+        updated_at: '2026-06-27T10:00:00.000Z',
+      },
+    ]);
+
+    mockUseLocalSearchParams.mockReturnValue({ id: '2' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('Override mnemonic');
+      expect(screen.getByText('The sun rises each day.')).toBeTruthy();
+    });
+
+    fireEvent.changeText(screen.getByTestId('personal-mnemonic-input'), '');
+    fireEvent.press(screen.getByTestId('personal-mnemonic-save'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('');
+      expect(screen.getByText('The sun rises each day.')).toBeTruthy();
     });
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
+import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -89,6 +90,8 @@ export function KanjiDetail({
           <Text className="mt-1 text-body text-secondary">{item.mnemonicText}</Text>
         </View>
       ) : null}
+
+      <PersonalMnemonicEditor itemId={item.id} />
     </View>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -88,6 +89,8 @@ export function GrammarDetail({
           <Text className="mt-1 text-body text-secondary">{item.mnemonicText}</Text>
         </View>
       ) : null}
+
+      <PersonalMnemonicEditor itemId={item.id} />
 
       {exampleSentences.length > 0 ? (
         <View className="mt-4">

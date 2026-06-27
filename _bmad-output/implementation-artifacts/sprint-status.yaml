@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-28"
+last_updated: "2026-06-27" # updated by code-review workflow
 
 project: japanese-learning
 project_key: NOKEY
@@ -76,7 +76,7 @@ development_status:
   4-3-item-detail-screens-kanji-vocabulary-grammar: done
   4-4-reading-passages-with-comprehension-prompts: done
   4-5-dependency-graph-visibility-for-unlock-status: done
-  4-6-personal-mnemonics-editor: backlog
+  4-6-personal-mnemonics-editor: done
   epic-4-retrospective: optional
 
   epic-5: backlog

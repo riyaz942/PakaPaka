@@ -17,6 +17,16 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+jest.mock('@/data/hooks/useDatabase', () => ({
+  useDatabase: () => ({
+    userDb: {
+      getFirstSync: jest.fn(() => null),
+      runSync: jest.fn(),
+    },
+    curriculumDb: {},
+  }),
+}));
+
 const baseItem: CurriculumItemDetail = {
   id: '20',
   slug: 'watashi',

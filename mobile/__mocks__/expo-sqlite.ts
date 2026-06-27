@@ -290,8 +290,28 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^DELETE FROM personal_mnemonics/i.test(trimmed)) {
+    const rows = state.tables.get('personal_mnemonics') ?? [];
+    state.tables.set(
+      'personal_mnemonics',
+      rows.filter((row) => row.item_id !== params[0]),
+    );
+    return;
+  }
+
   if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertPassagePracticeResult(state, params);
+    return;
+  }
+
+  if (/^INSERT INTO personal_mnemonics/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, mnemonicText, updatedAt] = params;
+    const rows = state.tables.get('personal_mnemonics') ?? [];
+    const idx = rows.findIndex((row) => row.item_id === itemId);
+    const next = { item_id: itemId, mnemonic_text: mnemonicText, updated_at: updatedAt };
+    if (idx >= 0) rows[idx] = next;
+    else rows.push(next);
+    state.tables.set('personal_mnemonics', rows);
     return;
   }
 
@@ -511,6 +531,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM personal_mnemonics/i.test(trimmed)) {
+    let rows = [...(state.tables.get('personal_mnemonics') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    return rows;
+  }
+
   if (/FROM reading_passages/i.test(trimmed)) {
     let rows = [...(state.tables.get('reading_passages') ?? [])];
 
@@ -693,6 +721,14 @@ export function __mockSetItemStudyStatuses(
 ) {
   const state = getDatabaseState(databaseName);
   state.tables.set('item_study_status', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPersonalMnemonics(
+  databaseName: string,
+  rows: Array<{ item_id: number; mnemonic_text: string; updated_at: string }>,
+) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('personal_mnemonics', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetKanjiReadings(databaseName: string, rows: Row[]) {

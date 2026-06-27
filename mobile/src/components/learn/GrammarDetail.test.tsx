@@ -9,6 +9,16 @@ import type {
   GrammarRule,
 } from '@/data/curriculum/itemRepository';
 
+jest.mock('@/data/hooks/useDatabase', () => ({
+  useDatabase: () => ({
+    userDb: {
+      getFirstSync: jest.fn(() => null),
+      runSync: jest.fn(),
+    },
+    curriculumDb: {},
+  }),
+}));
+
 const baseItem: CurriculumItemDetail = {
   id: '50',
   slug: 'desu',

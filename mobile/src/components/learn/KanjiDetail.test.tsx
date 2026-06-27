@@ -4,6 +4,16 @@ import React from 'react';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import type { AcceptedAnswer, CurriculumItemDetail, KanjiReading } from '@/data/curriculum/itemRepository';
 
+jest.mock('@/data/hooks/useDatabase', () => ({
+  useDatabase: () => ({
+    userDb: {
+      getFirstSync: jest.fn(() => null),
+      runSync: jest.fn(),
+    },
+    curriculumDb: {},
+  }),
+}));
+
 const baseItem: CurriculumItemDetail = {
   id: '10',
   slug: 'day',
