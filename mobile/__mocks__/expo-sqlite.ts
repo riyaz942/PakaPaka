@@ -161,6 +161,30 @@ function insertImportMetadata(state: MockDatabaseState, params: unknown[]) {
   state.tables.set('import_metadata', rows);
 }
 
+function upsertPassagePracticeResult(
+  state: MockDatabaseState,
+  params: unknown[],
+) {
+  const [passageId, questionId, isCorrect, userAnswer, answeredAt] = params;
+  const rows = state.tables.get('passage_practice_results') ?? [];
+  const existingIndex = rows.findIndex(
+    (row) => row.passage_id === passageId && row.question_id === questionId,
+  );
+  const nextRow = {
+    passage_id: passageId,
+    question_id: questionId,
+    is_correct: isCorrect,
+    user_answer: userAnswer,
+    answered_at: answeredAt,
+  };
+  if (existingIndex >= 0) {
+    rows[existingIndex] = nextRow;
+  } else {
+    rows.push(nextRow);
+  }
+  state.tables.set('passage_practice_results', rows);
+}
+
 function upsertPreference(state: MockDatabaseState, key: unknown, value: unknown, updatedAt: unknown) {
   const rows = state.tables.get('user_preferences') ?? [];
   const existingIndex = rows.findIndex((row) => row.key === key);
@@ -263,6 +287,11 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
       'item_study_status',
       rows.filter((row) => row.item_id !== params[0]),
     );
+    return;
+  }
+
+  if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    upsertPassagePracticeResult(state, params);
     return;
   }
 
@@ -474,6 +503,51 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       });
   }
 
+  if (/FROM passage_practice_results/i.test(trimmed)) {
+    let rows = [...(state.tables.get('passage_practice_results') ?? [])];
+    if (/WHERE passage_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.passage_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM reading_passages/i.test(trimmed)) {
+    let rows = [...(state.tables.get('reading_passages') ?? [])];
+
+    if (/WHERE id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.id === params[0]);
+    }
+
+    if (/WHERE rp\.jlpt_level = \?/i.test(trimmed) || /WHERE jlpt_level = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.jlpt_level === params[0]);
+    }
+
+    if (/ORDER BY rp\.sort_order ASC/i.test(trimmed) || /ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+
+    if (/SELECT COUNT\(\*\) FROM passage_questions/i.test(trimmed)) {
+      const questions = state.tables.get('passage_questions') ?? [];
+      return rows.map((row) => ({
+        ...row,
+        question_count: questions.filter((question) => question.passage_id === row.id).length,
+      }));
+    }
+
+    return rows;
+  }
+
+  if (/FROM passage_questions/i.test(trimmed)) {
+    let rows = [...(state.tables.get('passage_questions') ?? [])];
+    if (/WHERE passage_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.passage_id === params[0]);
+    }
+    if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+    return rows;
+  }
+
   if (/FROM items/i.test(trimmed)) {
     let rows = [...(state.tables.get('items') ?? [])];
 
@@ -636,6 +710,21 @@ export function __mockSetExampleSentences(databaseName: string, rows: Row[]) {
 export function __mockSetGrammarVocabLinks(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('grammar_vocabulary_links', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetReadingPassages(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('reading_passages', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPassageQuestions(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('passage_questions', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPassagePracticeResults(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('passage_practice_results', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetExternalIdMappings(databaseName: string, rows: Row[]) {
