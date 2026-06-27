@@ -8,6 +8,7 @@ import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 
 export default function LearnItemDetailScreen() {
@@ -23,6 +24,7 @@ export default function LearnItemDetailScreen() {
     loading,
     notFound,
   } = useItemDetail(itemId);
+  const { parents, isLocked, unmetPrerequisites } = useItemDependencyStatus(itemId);
 
   return (
     <View className="flex-1 bg-background">
@@ -56,6 +58,9 @@ export default function LearnItemDetailScreen() {
             item={item}
             kanjiReadings={kanjiReadings ?? []}
             acceptedAnswers={acceptedAnswers}
+            parents={parents}
+            isLocked={isLocked}
+            unmetPrerequisites={unmetPrerequisites}
           />
         ) : item.itemType === 'vocabulary' ? (
           <VocabularyDetail
@@ -63,6 +68,9 @@ export default function LearnItemDetailScreen() {
             acceptedAnswers={acceptedAnswers}
             exampleSentences={exampleSentences}
             grammarVocabLinks={grammarVocabLinks}
+            parents={parents}
+            isLocked={isLocked}
+            unmetPrerequisites={unmetPrerequisites}
           />
         ) : item.itemType === 'grammar' ? (
           <GrammarDetail

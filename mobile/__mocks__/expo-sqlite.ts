@@ -687,6 +687,14 @@ export function __mockSetItemRelationships(databaseName: string, rows: Row[]) {
   state.tables.set('item_relationships', rows.map((row) => ({ ...row })));
 }
 
+export function __mockSetItemStudyStatuses(
+  databaseName: string,
+  rows: Array<{ item_id: number; status: string; updated_at: string }>,
+) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('item_study_status', rows.map((row) => ({ ...row })));
+}
+
 export function __mockSetKanjiReadings(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('kanji_readings', rows.map((row) => ({ ...row })));

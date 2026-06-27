@@ -2,9 +2,11 @@ import { type Href, router } from 'expo-router';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
+  CurriculumParentItem,
   ExampleSentence,
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
@@ -15,6 +17,9 @@ type VocabularyDetailProps = {
   acceptedAnswers: AcceptedAnswer[];
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
+  parents?: CurriculumParentItem[];
+  isLocked?: boolean;
+  unmetPrerequisites?: CurriculumParentItem[];
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -28,6 +33,9 @@ export function VocabularyDetail({
   acceptedAnswers,
   exampleSentences,
   grammarVocabLinks,
+  parents,
+  isLocked,
+  unmetPrerequisites,
 }: VocabularyDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const isLongWord = item.primaryForm.length > 4;
@@ -47,6 +55,19 @@ export function VocabularyDetail({
         <View className="mt-4">
           <Text className="text-body-sm uppercase text-secondary">Synonyms</Text>
           <Text className="mt-1 text-body text-primary">{synonyms.join(', ')}</Text>
+        </View>
+      ) : null}
+
+      {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (
+        <View className="mt-4" testID="item-detail-lock-section">
+          <Text className="text-body-sm uppercase text-secondary">Locked — learn these first</Text>
+          <KanjiDependencyHints parents={unmetPrerequisites} mode="unmet" />
+        </View>
+      ) : null}
+
+      {!isLocked && parents && parents.length > 0 ? (
+        <View className="mt-4" testID="item-detail-available-section">
+          <Text className="text-body-sm text-feedback-correct">Prerequisites met</Text>
         </View>
       ) : null}
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
+  CurriculumParentItem,
   KanjiReading,
 } from '@/data/curriculum/itemRepository';
 
@@ -11,6 +13,9 @@ type KanjiDetailProps = {
   item: CurriculumItemDetail;
   kanjiReadings: KanjiReading[];
   acceptedAnswers: AcceptedAnswer[];
+  parents?: CurriculumParentItem[];
+  isLocked?: boolean;
+  unmetPrerequisites?: CurriculumParentItem[];
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -28,7 +33,14 @@ function readingsByType(
     .map((reading) => reading.reading);
 }
 
-export function KanjiDetail({ item, kanjiReadings, acceptedAnswers }: KanjiDetailProps) {
+export function KanjiDetail({
+  item,
+  kanjiReadings,
+  acceptedAnswers,
+  parents,
+  isLocked,
+  unmetPrerequisites,
+}: KanjiDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const onyomi = readingsByType(kanjiReadings, 'onyomi');
   const kunyomi = readingsByType(kanjiReadings, 'kunyomi');
@@ -56,6 +68,19 @@ export function KanjiDetail({ item, kanjiReadings, acceptedAnswers }: KanjiDetai
         <View className="mt-4">
           <Text className="text-body-sm uppercase text-secondary">{"Kun'yomi"}</Text>
           <Text className="mt-1 text-body text-primary">{kunyomi.join(', ')}</Text>
+        </View>
+      ) : null}
+
+      {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (
+        <View className="mt-4" testID="item-detail-lock-section">
+          <Text className="text-body-sm uppercase text-secondary">Locked — learn these first</Text>
+          <KanjiDependencyHints parents={unmetPrerequisites} mode="unmet" />
+        </View>
+      ) : null}
+
+      {!isLocked && parents && parents.length > 0 ? (
+        <View className="mt-4" testID="item-detail-available-section">
+          <Text className="text-body-sm text-feedback-correct">Prerequisites met</Text>
         </View>
       ) : null}
 

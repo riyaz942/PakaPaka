@@ -3,7 +3,7 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { __mockResetSqlite, __mockSetItemRelationships, __mockSetItems } from '../../../../__mocks__/expo-sqlite';
+import { __mockResetSqlite, __mockSetItemRelationships, __mockSetItemStudyStatuses, __mockSetItems } from '../../../../__mocks__/expo-sqlite';
 
 import { DatabaseContext } from '@/providers/DatabaseContext';
 
@@ -296,5 +296,111 @@ describe('LearnLevelScreen', () => {
     fireEvent.press(screen.getByTestId('learn-item-10-dependencies-1'));
 
     expect(mockPush).toHaveBeenCalledWith('/learn/item/1');
+  });
+
+  it('shows Learn first for locked kanji with unmet prerequisites', async () => {
+    const curriculumDb = await openDatabaseAsync('curriculum.db.test');
+    const userDb = await openDatabaseAsync('user.db');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'requires',
+      },
+    ]);
+
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByText('Learn first:')).toBeTruthy();
+      expect(screen.getByTestId('learn-item-10')).toHaveProp('className', expect.stringContaining('opacity-50'));
+    });
+  });
+
+  it('shows Requires for unlocked kanji when all prerequisites are met', async () => {
+    const curriculumDb = await openDatabaseAsync('curriculum.db.test');
+    const userDb = await openDatabaseAsync('user.db');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'requires',
+      },
+    ]);
+
+    __mockSetItemStudyStatuses('user.db', [
+      { item_id: 1, status: 'known', updated_at: '2026-01-01T00:00:00.000Z' },
+    ]);
+
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByText('Requires:')).toBeTruthy();
+      expect(screen.getByTestId('learn-item-10')).not.toHaveProp('className', expect.stringContaining('opacity-50'));
+    });
+  });
+
+  it('leaves items without prerequisites unchanged', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    renderLearnLevelScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('learn-item-1')).toBeTruthy();
+      expect(screen.queryByText('Learn first:')).toBeNull();
+      expect(screen.queryByText('Requires:')).toBeNull();
+      expect(screen.getByTestId('learn-item-1')).not.toHaveProp('className', expect.stringContaining('opacity-50'));
+    });
   });
 });

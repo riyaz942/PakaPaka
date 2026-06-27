@@ -13,6 +13,8 @@ type LearnItemRowProps = {
   testID?: string;
   onPress?: () => void;
   dependencyParents?: CurriculumParentItem[];
+  isLocked?: boolean;
+  unmetPrerequisites?: CurriculumParentItem[];
 };
 
 export function LearnItemRow({
@@ -20,6 +22,8 @@ export function LearnItemRow({
   testID,
   onPress,
   dependencyParents,
+  isLocked,
+  unmetPrerequisites,
 }: LearnItemRowProps) {
   const isGrammar = item.itemType === 'grammar';
   const isJapaneseForm = item.itemType === 'radical' || item.itemType === 'kanji';
@@ -35,9 +39,16 @@ export function LearnItemRow({
       </Text>
       <Text className="mt-1 text-body text-primary">{item.meaning}</Text>
 
-      {dependencyParents && dependencyParents.length > 0 ? (
+      {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (
+        <KanjiDependencyHints
+          parents={unmetPrerequisites}
+          mode="unmet"
+          testID={testID ? `${testID}-dependencies` : undefined}
+        />
+      ) : dependencyParents && dependencyParents.length > 0 ? (
         <KanjiDependencyHints
           parents={dependencyParents}
+          mode="all"
           testID={testID ? `${testID}-dependencies` : undefined}
         />
       ) : null}
@@ -51,7 +62,7 @@ export function LearnItemRow({
         accessibilityLabel={`${item.primaryForm}, ${item.meaning}`}
         onPress={onPress}
         testID={testID}
-        className="border-b border-border py-4">
+        className={cn('border-b border-border py-4', isLocked && 'opacity-50')}>
         {content}
       </Pressable>
     );

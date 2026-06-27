@@ -6,17 +6,24 @@ import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 
 type KanjiDependencyHintsProps = {
   parents: CurriculumParentItem[];
+  mode?: 'all' | 'unmet';
   testID?: string;
 };
 
-export function KanjiDependencyHints({ parents, testID }: KanjiDependencyHintsProps) {
+export function KanjiDependencyHints({
+  parents,
+  mode = 'all',
+  testID,
+}: KanjiDependencyHintsProps) {
   if (parents.length === 0) {
     return null;
   }
 
   return (
     <View testID={testID} className="mt-2 flex-row flex-wrap items-center gap-1">
-      <Text className="text-caption text-secondary">Requires:</Text>
+      <Text className="text-caption text-secondary">
+        {mode === 'unmet' ? 'Learn first:' : 'Requires:'}
+      </Text>
       {parents.map((parent, index) => (
         <React.Fragment key={parent.id}>
           {index > 0 ? <Text className="text-caption text-secondary">, </Text> : null}
