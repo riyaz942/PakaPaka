@@ -73,7 +73,6 @@ export function KanjiDetail({
 
       {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (
         <View className="mt-4" testID="item-detail-lock-section">
-          <Text className="text-body-sm uppercase text-secondary">Locked — learn these first</Text>
           <KanjiDependencyHints parents={unmetPrerequisites} mode="unmet" />
         </View>
       ) : null}

@@ -4,7 +4,7 @@ baseline_commit: 7c6b1bc
 
 # Story 4.5: Dependency graph visibility for unlock status
 
-Status: review
+Status: done
 
 ## Story
 
@@ -96,6 +96,20 @@ so that **the radical→kanji→vocab path feels fair (FR4)**.
 - [x] **AC7 — Tests**
   - [x] `mobile/src/app/(tabs)/learn/[level].test.tsx` — add cases: locked kanji shows "Learn first:" and dimmed; unlocked kanji shows full opacity; items with no prereqs unaffected
   - [x] Run full CI: `npm run lint && npm run typecheck && npm test`
+
+### Review Findings
+
+- [x] [Review][Patch] Double label in detail screen: KanjiDetail/VocabularyDetail render section header "Locked — learn these first" then KanjiDependencyHints emits its own "Learn first:" — two sequential labels violate AC 3 [mobile/src/components/learn/KanjiDetail.tsx:83, mobile/src/components/learn/VocabularyDetail.tsx:58]
+- [x] [Review][Patch] `LearnItemRow` View branch missing `opacity-50`: locked state dim only applied on Pressable branch; `<View>` fallback (line 72) renders at full opacity when locked [mobile/src/components/learn/LearnItemRow.tsx:72]
+- [x] [Review][Defer] Synchronous DB calls in `useItemDependencyStatus` and `[level].tsx` useMemo have no try/catch — pre-existing pattern across codebase (useItemDetail, useLearnItems all do same)
+- [x] [Review][Defer] `parentStatusMap` useMemo calls `listStudyStatusesForItems` synchronously on render thread — pre-existing pattern (dependencyParentsByItemId does same with getRequiredParentsForItems)
+- [x] [Review][Defer] `renderItem` closure in FlatList is inline (not useCallback) — pre-existing pattern
+- [x] [Review][Defer] `useItemDependencyStatus` queries DB for radical/grammar items unconditionally — correct behavior, perf optimization only
+- [x] [Review][Defer] Two new tests duplicate item fixture setup instead of using createCurriculumDb — code quality, not correctness
+- [x] [Review][Defer] `__mockSetItemStudyStatuses` `item_id: number` vs string comparison in mock filter — tests pass (312 green); worth future investigation
+- [x] [Review][Defer] Weak "leaves items without prerequisites unchanged" test — no lock→unlock transition coverage
+- [x] [Review][Defer] `KanjiDependencyHints` name misleading — now used for vocabulary too; cosmetic rename deferred
+- [x] [Review][Defer] `parentStatuses` exported in `ItemDependencyStatus` return type but unused by all call sites [mobile/src/data/hooks/useItemDependencyStatus.ts:12]
 
 ## Dev Notes
 

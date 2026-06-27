@@ -69,7 +69,7 @@ export function LearnItemRow({
   }
 
   return (
-    <View testID={testID} className="border-b border-border py-4">
+    <View testID={testID} className={cn('border-b border-border py-4', isLocked && 'opacity-50')}>
       {content}
     </View>
   );
