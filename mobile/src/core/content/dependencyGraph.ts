@@ -1,9 +1,8 @@
-import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
-import type { StudyStatus } from '@/data/user/studyStatus.types';
+import type { ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
 
 export function isItemUnlocked(
-  parents: CurriculumParentItem[],
-  parentStatuses: Map<string, StudyStatus>,
+  parents: ContentParentItem[],
+  parentStatuses: Map<string, ContentStudyStatus>,
 ): boolean {
   if (parents.length === 0) {
     return true;
@@ -16,9 +15,9 @@ export function isItemUnlocked(
 }
 
 export function getUnmetPrerequisites(
-  parents: CurriculumParentItem[],
-  parentStatuses: Map<string, StudyStatus>,
-): CurriculumParentItem[] {
+  parents: ContentParentItem[],
+  parentStatuses: Map<string, ContentStudyStatus>,
+): ContentParentItem[] {
   return parents.filter((parent) => {
     const status = parentStatuses.get(parent.id) ?? 'not_started';
     return status === 'not_started';

@@ -1,0 +1,177 @@
+import type { SQLiteDatabase } from 'expo-sqlite';
+
+import { QUEUE_FETCH_LIMIT } from '@/config/constants';
+import { createInitialSrsState } from '@/core/srs/fsrsScheduler';
+import type { FsrsStateString, SRSStageLabel, SRSState } from '@/core/srs/srs.types';
+import { setStudyStatus } from '@/data/user/itemStudyStatusRepository';
+import type { AppError, Result } from '@/types/result.types';
+
+type SrsStateRow = {
+  item_id: number | string;
+  stability: number;
+  difficulty: number;
+  due_date: string;
+  fsrs_state: string;
+  reps: number;
+  lapses: number;
+  is_burned: number;
+  srs_stage_label: string;
+  updated_at: string;
+};
+
+function parseItemId(itemId: string): number {
+  const parsed = Number(itemId);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(`Invalid item id: ${itemId}`);
+  }
+  return parsed;
+}
+
+function mapRowToState(row: SrsStateRow): SRSState {
+  return {
+    itemId: String(row.item_id),
+    stability: row.stability,
+    difficulty: row.difficulty,
+    dueDate: row.due_date,
+    fsrsState: row.fsrs_state as FsrsStateString,
+    reps: row.reps,
+    lapses: row.lapses,
+    isBurned: row.is_burned === 1,
+    srsStageLabel: row.srs_stage_label as SRSStageLabel,
+    updatedAt: row.updated_at,
+  };
+}
+
+/** Returns SRS states with due_date <= now, excluding burned items. */
+export function getDueSrsStates(
+  userDb: SQLiteDatabase,
+  now: Date = new Date(),
+  limit: number = QUEUE_FETCH_LIMIT,
+): SRSState[] {
+  const rows = userDb.getAllSync<SrsStateRow>(
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
+     FROM srs_states
+     WHERE due_date <= ? AND is_burned = 0
+     ORDER BY due_date ASC
+     LIMIT ?`,
+    now.toISOString(),
+    limit,
+  );
+  return rows.map(mapRowToState);
+}
+
+export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | null {
+  const row = userDb.getFirstSync<SrsStateRow>(
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
+     FROM srs_states WHERE item_id = ?`,
+    parseItemId(itemId),
+  );
+  return row ? mapRowToState(row) : null;
+}
+
+export function upsertSrsState(
+  userDb: SQLiteDatabase,
+  state: SRSState,
+): Result<void, AppError> {
+  try {
+    const updatedAt = state.updatedAt || new Date().toISOString();
+    userDb.withTransactionSync(() => {
+      userDb.runSync(
+        `INSERT INTO srs_states (
+           item_id, stability, difficulty, due_date, fsrs_state,
+           reps, lapses, is_burned, srs_stage_label, updated_at
+         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         ON CONFLICT(item_id) DO UPDATE SET
+           stability = excluded.stability,
+           difficulty = excluded.difficulty,
+           due_date = excluded.due_date,
+           fsrs_state = excluded.fsrs_state,
+           reps = excluded.reps,
+           lapses = excluded.lapses,
+           is_burned = excluded.is_burned,
+           srs_stage_label = excluded.srs_stage_label,
+           updated_at = excluded.updated_at`,
+        parseItemId(state.itemId),
+        state.stability,
+        state.difficulty,
+        state.dueDate,
+        state.fsrsState,
+        state.reps,
+        state.lapses,
+        state.isBurned ? 1 : 0,
+        state.srsStageLabel,
+        updatedAt,
+      );
+
+      // Mirror burned items to item_study_status (matches importRepository behavior)
+      if (state.isBurned) {
+        setStudyStatus(userDb, state.itemId, 'known');
+      }
+    });
+
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'srs_state_upsert_failed',
+        message: `Failed to upsert SRS state for item ${state.itemId}`,
+        userMessage: 'Progress could not be saved. Your session will continue.',
+        cause,
+      },
+    };
+  }
+}
+
+/**
+ * Seeds SRS state for in_progress items that have no existing srs_states row.
+ * Import-populated rows are never overwritten (INSERT OR IGNORE semantics).
+ */
+export function seedMissingSrsStatesForInProgress(
+  userDb: SQLiteDatabase,
+  itemIds: string[],
+): Result<void, AppError> {
+  if (itemIds.length === 0) {
+    return { ok: true, value: undefined };
+  }
+
+  try {
+    const now = new Date();
+    userDb.withTransactionSync(() => {
+      for (const itemId of itemIds) {
+        const existing = getSrsState(userDb, itemId);
+        if (existing) continue; // never overwrite import data
+
+        const initial = createInitialSrsState(itemId, now);
+        userDb.runSync(
+          `INSERT OR IGNORE INTO srs_states (
+             item_id, stability, difficulty, due_date, fsrs_state,
+             reps, lapses, is_burned, srs_stage_label, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          parseItemId(itemId),
+          initial.stability,
+          initial.difficulty,
+          initial.dueDate,
+          initial.fsrsState,
+          initial.reps,
+          initial.lapses,
+          initial.isBurned ? 1 : 0,
+          initial.srsStageLabel,
+          initial.updatedAt,
+        );
+      }
+    });
+
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'srs_seed_failed',
+        message: 'Failed to seed SRS states for in_progress items',
+        userMessage: 'Some items may not appear in your review session.',
+        cause,
+      },
+    };
+  }
+}

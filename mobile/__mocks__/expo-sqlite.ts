@@ -265,6 +265,15 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT OR IGNORE INTO srs_states/i.test(trimmed)) {
+    const rows = state.tables.get('srs_states') ?? [];
+    const exists = rows.some((row) => row.item_id === params[0]);
+    if (!exists) {
+      upsertSrsState(state, params);
+    }
+    return;
+  }
+
   if (/^INSERT INTO import_metadata/i.test(trimmed)) {
     insertImportMetadata(state, params);
     return;
@@ -388,15 +397,31 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows.filter((row) => allowedIds.has(row.item_id));
     }
 
+    if (/WHERE status = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.status === params[0]);
+    }
+
     return rows;
   }
 
   if (/FROM srs_states/i.test(trimmed)) {
-    const rows = state.tables.get('srs_states') ?? [];
+    let rows = [...(state.tables.get('srs_states') ?? [])];
     if (/COUNT\(\*\)/i.test(trimmed)) {
       return [{ count: rows.length }];
     }
-    return [...rows];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.item_id === params[0]);
+    }
+    if (/WHERE due_date <= \? AND is_burned = 0/i.test(trimmed)) {
+      const nowIso = String(params[0]);
+      const limit = params[1] !== undefined ? Number(params[1]) : rows.length;
+      rows = rows
+        .filter((row) => String(row.due_date) <= nowIso && row.is_burned === 0)
+        .sort((a, b) => String(a.due_date).localeCompare(String(b.due_date)))
+        .slice(0, limit);
+      return rows;
+    }
+    return rows;
   }
 
   if (/FROM import_metadata/i.test(trimmed)) {
@@ -721,6 +746,25 @@ export function __mockSetItemStudyStatuses(
 ) {
   const state = getDatabaseState(databaseName);
   state.tables.set('item_study_status', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetSrsStates(
+  databaseName: string,
+  rows: Array<{
+    item_id: number;
+    stability: number;
+    difficulty: number;
+    due_date: string;
+    fsrs_state: string;
+    reps: number;
+    lapses: number;
+    is_burned: number;
+    srs_stage_label: string;
+    updated_at: string;
+  }>,
+) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('srs_states', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetPersonalMnemonics(

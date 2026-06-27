@@ -34,3 +34,11 @@
 - **Weak "no prerequisites unchanged" test** — Add a test that verifies the locked→unlocked transition when a study status row is added.
 - **`KanjiDependencyHints` name is kanji-specific but now handles vocabulary** — Rename to `DependencyHints` or `ItemPrerequisiteHints` in a future refactor.
 - **`parentStatuses` exported in `ItemDependencyStatus` but unused by callers** — Remove from public type or consume it when Epic 5 reinforcement display needs it.
+
+## Deferred from: code review of 5-1-review-queue-builder-fsrs-scheduling-and-prefetch (2026-06-27)
+
+- **N+1 per-item `getItemById` in queue build** — `useReviewQueue.ts`. Acceptable at N5 scale per dev notes; optimize with batch fetch if queue build exceeds 100ms budget.
+- **Per-item `getSrsState` in seed transaction** — `srsStateRepository.ts`. Bulk existence check optimization for large in_progress counts.
+- **`QUEUE_FETCH_LIMIT` may truncate due items beyond cap** — `srsStateRepository.ts`. Documented limit; paginate remaining due items in a future session if cap is hit in production.
+- **Duplicate unlock filtering in hook and `queueBuilder`** — Redundant but correct; consolidate when refactoring queue build path.
+- **No cross-module test verifying stage boundaries match `fsrsConverter.ts`** — Import and runtime paths share comment alignment only; add shared constants test if drift is observed.

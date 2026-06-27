@@ -1,5 +1,11 @@
 import { Stack } from 'expo-router';
 
+import { ReviewSessionProvider } from '@/providers/ReviewSessionProvider';
+
 export default function ReviewLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <ReviewSessionProvider>
+      <Stack screenOptions={{ headerShown: false }} />
+    </ReviewSessionProvider>
+  );
 }
