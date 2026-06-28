@@ -16,9 +16,14 @@ jest.mock('@/data/hooks/useReviewQueue', () => ({
 }));
 
 const mockUpsertSrsState = jest.fn();
+const mockApplyBoosts = jest.fn();
 
 jest.mock('@/data/user/srsStateRepository', () => ({
   upsertSrsState: (...args: unknown[]) => mockUpsertSrsState(...args),
+}));
+
+jest.mock('@/data/user/relatedItemBoostRepository', () => ({
+  applyBoosts: (...args: unknown[]) => mockApplyBoosts(...args),
 }));
 
 const NOW = '2026-06-27T10:00:00.000Z';
@@ -34,6 +39,8 @@ function makeReviewItem(id: string): ReviewItem {
       acceptedMeanings: [`meaning-${id}`],
       acceptedReadings: ['いち'],
     },
+    relatedItems: [],
+    reinforcementLink: null,
     srsState: {
       itemId: id,
       stability: 5,
@@ -57,7 +64,9 @@ describe('ReviewSessionProvider', () => {
   beforeEach(async () => {
     __mockResetSqlite();
     mockUpsertSrsState.mockReset();
+    mockApplyBoosts.mockReset();
     mockUpsertSrsState.mockReturnValue({ ok: true, value: undefined });
+    mockApplyBoosts.mockReturnValue({ ok: true, value: undefined });
     mockUseReviewQueue.mockReturnValue({
       queue: makeQueue(10),
       isLoading: false,
@@ -153,5 +162,110 @@ describe('ReviewSessionProvider', () => {
     await waitFor(() => {
       expect(result.current.error?.code).toBe('queue_build_failed');
     });
+  });
+
+  it('applies related-item boosts on correct grade, not on Again', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const itemWithRelated: ReviewItem = {
+      ...makeReviewItem('1'),
+      relatedItems: [
+        {
+          id: '2',
+          itemType: 'vocabulary',
+          primaryForm: '食べる',
+          meaning: 'to eat',
+          relationshipType: 'reinforces',
+        },
+      ],
+    };
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: [itemWithRelated, ...makeQueue(9).slice(1)],
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(mockApplyBoosts).toHaveBeenCalledTimes(1);
+
+    mockApplyBoosts.mockClear();
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(10),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(mockApplyBoosts).not.toHaveBeenCalled();
+  });
+
+  it('does not block advance when boost persist fails', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const itemWithRelated: ReviewItem = {
+      ...makeReviewItem('1'),
+      relatedItems: [
+        {
+          id: '2',
+          itemType: 'vocabulary',
+          primaryForm: '食べる',
+          meaning: 'to eat',
+          relationshipType: 'reinforces',
+        },
+      ],
+    };
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: [itemWithRelated, ...makeQueue(9).slice(1)],
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    mockApplyBoosts.mockReturnValue({
+      ok: false,
+      error: { code: 'boost_apply_failed', message: 'fail' },
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    expect(result.current.currentItem?.itemId).toBe('2');
   });
 });

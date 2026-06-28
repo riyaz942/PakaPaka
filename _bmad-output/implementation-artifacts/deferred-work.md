@@ -48,3 +48,12 @@
 - **Reading prompt with no accepted readings grades meaning answer as Good (3)** — `reviewAnswerEvaluator.ts`. Documented AC7 seed-gap fallback; rewards the wrong skill and advances FSRS scheduling. Revisit when vocabulary `reading` accepted-answers are seeded by the curriculum compiler (consider blocking reading prompts for items with no reading at the queue/promptResolver level instead of falling back to meaning).
 - **`getGrammarRule` unguarded `JSON.parse`** — `itemRepository.ts`. One malformed `conjugation_rules`/`accepted_forms` row throws and fails the entire queue build (caught into an error state, no crash). Pre-existing and seed is compiler-controlled; wrap in try/catch returning `null` if untrusted content is ever introduced.
 - **Per-keystroke `toKana` cursor position** — `WanaKanaInput.tsx`. Whole-field reconversion on each keystroke doesn't preserve caret position for mid-string edits. Inherent wanakana IME behavior; acceptable for v1, revisit if users report editing friction.
+
+## Deferred from: code review of 5-4-progressive-hints-reinforcement-and-related-item-boosts (2026-06-28)
+
+- **`clearBoosts` failure silently swallowed in production** — `useReviewQueue.ts`. Best-effort persistence is explicitly spec-designed; `console.warn` only in `__DEV__`; bounded by cap. A failed clear allows the boost to persist into a second build (cap-bounded). Consider production logging if queue distortion is observed.
+- **O(n²) sort comparator in `resolveReinforcement`** — `reinforcementResolver.ts`. `find` inside the sort comparator; negligible at N5 scale (max ~14 reinforces edges); build a `Map<id, RelatedItem>` before sorting when reinforcement graph grows.
+- **Boost write not retried on `catch` in `ReviewSessionProvider`** — Best-effort by spec; SRS grade path is independent; boost loss on provider throw doesn't affect FSRS schedule.
+- **Mock `item_id` type divergence risk** — `__mocks__/expo-sqlite.ts`. Mock correctly mirrors current integer-ID contract; future risk if `item_id` is ever stored as TEXT.
+- **SQLite `SQLITE_LIMIT_VARIABLE_NUMBER` (999) not chunked** — `itemRepository.ts`, `relatedItemBoostRepository.ts`, `srsStateRepository.ts`. N5 curriculum is ~100 items; chunk `IN (...)` queries into batches of ≤999 when curriculum grows to JLPT N4+.
+- **`levels` prop shrinks while `revealedCount > levels.length`** — `ProgressiveHint.tsx`. Levels is static per item in practice; make `visibleLevels = levels.slice(0, Math.min(revealedCount, levels.length))` if dynamic levels are ever introduced.

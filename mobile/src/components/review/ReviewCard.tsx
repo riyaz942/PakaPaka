@@ -1,8 +1,12 @@
 import { Text, View } from 'react-native';
 
 import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
+import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem } from '@/core/srs/srs.types';
+
+import { ProgressiveHint } from './ProgressiveHint';
+import { ReinforcementHighlight } from './ReinforcementHighlight';
 
 export type ReviewCardState = 'prompting' | 'evaluating' | 'correct' | 'incorrect' | 'typo';
 
@@ -11,6 +15,7 @@ type ReviewCardProps = {
   state: ReviewCardState;
   /** Correct answer shown on incorrect state */
   displayAnswer?: string;
+  onHintReveal?: (count: number) => void;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -44,8 +49,14 @@ export function resolveCorrectReveal(item: ReviewItem): { label: string; value: 
   return { label: 'Meaning', value: formatMeanings(meanings) };
 }
 
-export function ReviewCard({ item, state, displayAnswer }: ReviewCardProps) {
-  const { primaryForm, promptType, srsState, meanings } = item;
+export function ReviewCard({
+  item,
+  state,
+  displayAnswer,
+  onHintReveal,
+}: ReviewCardProps) {
+  const { primaryForm, promptType, srsState, meanings, itemType, reinforcementLink, answerKey } =
+    item;
 
   if (state === 'evaluating') {
     return null;
@@ -54,14 +65,17 @@ export function ReviewCard({ item, state, displayAnswer }: ReviewCardProps) {
   if (state === 'correct') {
     const { label, value } = resolveCorrectReveal(item);
     return (
-      <View
-        accessible
-        accessibilityLabel={`Correct, ${label.toLowerCase()}: ${value}`}
-        className="gap-space-md items-center">
-        <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
-        <Text className="text-body-lg text-primary text-center">
-          {label}: {value}
-        </Text>
+      <View className="gap-space-md w-full items-center">
+        <View
+          accessible
+          accessibilityLabel={`Correct, ${label.toLowerCase()}: ${value}`}
+          className="gap-space-md items-center">
+          <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
+          <Text className="text-body-lg text-primary text-center">
+            {label}: {value}
+          </Text>
+        </View>
+        <ReinforcementHighlight link={reinforcementLink} />
       </View>
     );
   }
@@ -92,8 +106,17 @@ export function ReviewCard({ item, state, displayAnswer }: ReviewCardProps) {
     );
   }
 
+  const hintLevels =
+    itemType === 'grammar'
+      ? buildGrammarHintLevels({
+          structure: answerKey.grammar?.structure,
+          meaning: meanings[0],
+          reinforcementLink,
+        })
+      : [];
+
   return (
-    <View className="gap-space-md items-center">
+    <View className="gap-space-md w-full items-center">
       <Text className={`text-body-lg font-semibold ${MODE_LABEL_CLASS[promptType]}`}>
         {MODE_LABEL[promptType]}
       </Text>
@@ -101,6 +124,10 @@ export function ReviewCard({ item, state, displayAnswer }: ReviewCardProps) {
       <Text className="text-display text-primary text-center">{primaryForm}</Text>
 
       <SRSStageIndicator stage={srsState.srsStageLabel} />
+
+      {itemType === 'grammar' ? (
+        <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />
+      ) : null}
     </View>
   );
 }

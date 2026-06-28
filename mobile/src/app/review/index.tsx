@@ -77,6 +77,7 @@ export default function ReviewScreen() {
   const [cardState, setCardState] = useState<ReviewCardState>('prompting');
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
+  const [hintsUsed, setHintsUsed] = useState(0);
   const inputRef = useRef<WanaKanaInputRef>(null);
   const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isSubmittingRef = useRef(false);
@@ -111,6 +112,7 @@ export default function ReviewScreen() {
     setCardState('prompting');
     setAnswerText('');
     setDisplayAnswer(undefined);
+    setHintsUsed(0);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
       clearTimeout(autoAdvanceTimer.current);
@@ -137,7 +139,7 @@ export default function ReviewScreen() {
       const { label, value } = resolveCorrectReveal(currentItem);
       AccessibilityInfo.announceForAccessibility(`Correct, ${label.toLowerCase()}: ${value}`);
       setCardState('correct');
-      const grade = gradeForResult(evaluation.result) ?? 3;
+      const grade = gradeForResult(evaluation.result, { hintsUsed }) ?? 3;
       autoAdvanceTimer.current = setTimeout(() => {
         gradeCurrentItem(grade);
       }, REVIEW_CORRECT_AUTO_ADVANCE_MS);
@@ -157,7 +159,7 @@ export default function ReviewScreen() {
     setDisplayAnswer(answer);
     setCardState('incorrect');
     AccessibilityInfo.announceForAccessibility(`Incorrect, correct answer is ${answer}`);
-  }, [answerText, currentItem, gradeCurrentItem, inputEditable]);
+  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable]);
 
   function handleContinueIncorrect() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
@@ -253,6 +255,7 @@ export default function ReviewScreen() {
           item={currentItem}
           state={cardState}
           displayAnswer={displayAnswer}
+          onHintReveal={setHintsUsed}
         />
       </View>
 

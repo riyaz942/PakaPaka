@@ -1,3 +1,5 @@
+import type { RelatedItem, ReinforcementLink } from '@/core/content/content.types';
+
 export type SRSStageLabel = 'apprentice' | 'guru' | 'master' | 'enlightened' | 'burned';
 
 export type FsrsStateString = 'new' | 'learning' | 'review' | 'relearning';
@@ -22,6 +24,7 @@ export type ReviewAnswerKey = {
   acceptedMeanings: string[];
   acceptedReadings: string[];
   grammar?: {
+    structure: string;
     conjugationRules: Record<string, unknown>;
     acceptedForms: string[];
   };
@@ -37,6 +40,8 @@ export type ReviewItem = {
   mnemonic?: string | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;
+  relatedItems: RelatedItem[];
+  reinforcementLink: ReinforcementLink | null;
 };
 
 export type QueueBuildOptions = {

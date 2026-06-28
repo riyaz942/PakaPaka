@@ -1,6 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
+import type { RelatedItem } from '@/core/content/content.types';
 
 export type ItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
@@ -397,4 +398,60 @@ export function getGrammarLinksForVocab(
     Number(vocabItemId),
   );
   return rows.map(mapGrammarVocabLinkRow);
+}
+
+type RelatedItemRow = {
+  parent_item_id: number | string;
+  id: number | string;
+  primary_form: string;
+  meaning: string;
+  item_type: ItemType;
+  relationship_type: 'requires' | 'builds_on' | 'reinforces';
+};
+
+function mapRelatedItemRow(row: RelatedItemRow): RelatedItem {
+  return {
+    id: String(row.id),
+    itemType: row.item_type,
+    primaryForm: row.primary_form,
+    meaning: row.meaning,
+    relationshipType: row.relationship_type,
+  };
+}
+
+/**
+ * Returns graph children/targets for reviewed items (parent → child traversal).
+ * Used for reinforcement display and related-item boosts.
+ */
+export function getRelatedItemsForItems(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, RelatedItem[]> {
+  const result = new Map<string, RelatedItem[]>();
+
+  if (itemIds.length === 0) {
+    return result;
+  }
+
+  const numericIds = itemIds.map((itemId) => Number(itemId));
+  const placeholders = numericIds.map(() => '?').join(', ');
+
+  const rows = db.getAllSync<RelatedItemRow>(
+    `SELECT r.parent_item_id, c.id, c.primary_form, c.meaning, c.item_type, r.relationship_type
+     FROM item_relationships r
+     JOIN items c ON c.id = r.child_item_id
+     WHERE r.parent_item_id IN (${placeholders})
+       AND r.relationship_type IN ('builds_on', 'reinforces', 'requires')
+     ORDER BY r.parent_item_id ASC, c.sort_order ASC`,
+    ...numericIds,
+  );
+
+  for (const row of rows) {
+    const parentId = String(row.parent_item_id);
+    const related = result.get(parentId) ?? [];
+    related.push(mapRelatedItemRow(row));
+    result.set(parentId, related);
+  }
+
+  return result;
 }

@@ -69,6 +69,31 @@ export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | 
   return row ? mapRowToState(row) : null;
 }
 
+/** Batch-fetch SRS states for related-item reinforcement resolution. */
+export function getSrsStatesForItems(
+  userDb: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, SRSState> {
+  const result = new Map<string, SRSState>();
+  if (itemIds.length === 0) return result;
+
+  const numericIds = itemIds.map((id) => parseItemId(id));
+  const placeholders = numericIds.map(() => '?').join(', ');
+
+  const rows = userDb.getAllSync<SrsStateRow>(
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
+     FROM srs_states WHERE item_id IN (${placeholders})`,
+    ...numericIds,
+  );
+
+  for (const row of rows) {
+    const state = mapRowToState(row);
+    result.set(state.itemId, state);
+  }
+
+  return result;
+}
+
 export function upsertSrsState(
   userDb: SQLiteDatabase,
   state: SRSState,

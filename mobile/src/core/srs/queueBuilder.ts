@@ -1,6 +1,13 @@
 import { INTERLEAVE_WEIGHTS as CONFIG_INTERLEAVE_WEIGHTS } from '@/config/constants';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
-import type { ContentItemSummary, ContentItemType, ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
+import type {
+  ContentItemSummary,
+  ContentItemType,
+  ContentParentItem,
+  ContentStudyStatus,
+  RelatedItem,
+  ReinforcementLink,
+} from '@/core/content/content.types';
 
 import { resolvePromptType } from './promptResolver';
 import type { ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
@@ -32,6 +39,10 @@ export type QueueInputItem = {
   studyStatus: ContentStudyStatus | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;
+  /** Bounded ordering nudge from related-item boosts; default 0 */
+  boost?: number;
+  relatedItems?: RelatedItem[];
+  reinforcementLink?: ReinforcementLink | null;
 };
 
 const TYPE_ORDER: ContentItemType[] = ['kanji', 'vocabulary', 'grammar', 'radical'];
@@ -68,7 +79,12 @@ export function buildReviewQueue(
     }
   }
   for (const bucket of buckets.values()) {
-    bucket.sort((a, b) => a.srsState.dueDate.localeCompare(b.srsState.dueDate));
+    bucket.sort((a, b) => {
+      const dueCompare = a.srsState.dueDate.localeCompare(b.srsState.dueDate);
+      if (dueCompare !== 0) return dueCompare;
+      // Bounded within-bucket nudge: higher boost sorts ahead among equally-due items.
+      return (b.boost ?? 0) - (a.boost ?? 0);
+    });
   }
 
   // Weighted round-robin
@@ -109,5 +125,7 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
     answerKey: item.answerKey,
+    relatedItems: item.relatedItems ?? [],
+    reinforcementLink: item.reinforcementLink ?? null,
   };
 }

@@ -177,4 +177,33 @@ describe('buildReviewQueue', () => {
     expect(INTERLEAVE_WEIGHTS['grammar']).toBe(1);
     expect(INTERLEAVE_WEIGHTS['radical']).toBe(1);
   });
+
+  it('sorts boosted due items ahead of equal-due unboosted items', () => {
+    const sameDue = new Date('2026-06-26T10:00:00Z');
+    const items = [
+      makeQueueItem('1', 'kanji', sameDue, { boost: 0 }),
+      makeQueueItem('2', 'kanji', sameDue, { boost: 0.5 }),
+    ];
+    const result = buildReviewQueue(items, { now: NOW });
+    expect(result.map((i) => i.itemId)).toEqual(['2', '1']);
+  });
+
+  it('does not pull not-due items into the queue via boost', () => {
+    const items = [
+      makeQueueItem('1', 'kanji', FUTURE, { boost: 10 }),
+      makeQueueItem('2', 'kanji', PAST, { boost: 0 }),
+    ];
+    const result = buildReviewQueue(items, { now: NOW });
+    expect(result).toHaveLength(1);
+    expect(result[0].itemId).toBe('2');
+  });
+
+  it('preserves existing ordering when boost is omitted (default 0)', () => {
+    const items = [
+      makeQueueItem('1', 'vocabulary', new Date('2026-06-26T01:00:00Z')),
+      makeQueueItem('2', 'vocabulary', new Date('2026-06-26T02:00:00Z')),
+    ];
+    const result = buildReviewQueue(items, { now: NOW });
+    expect(result.map((i) => i.itemId)).toEqual(['1', '2']);
+  });
 });

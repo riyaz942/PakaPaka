@@ -12,6 +12,8 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
       acceptedMeanings: ['one'],
       acceptedReadings: ['いち'],
     },
+    relatedItems: [],
+    reinforcementLink: null,
     srsState: {
       itemId: '1',
       stability: 1,
@@ -55,6 +57,7 @@ describe('evaluateReviewAnswer', () => {
         acceptedMeanings: [],
         acceptedReadings: [],
         grammar: {
+          structure: 'Noun + です',
           conjugationRules: { polite: true },
           acceptedForms: ['です', 'だ'],
         },
@@ -75,5 +78,14 @@ describe('gradeForResult', () => {
 
   it('returns null for typo (no advance)', () => {
     expect(gradeForResult('typo')).toBeNull();
+  });
+
+  it('maps hinted correct to Hard (2)', () => {
+    expect(gradeForResult('correct', { hintsUsed: 1 })).toBe(2);
+  });
+
+  it('maps unhinted correct to Good (3)', () => {
+    expect(gradeForResult('correct', { hintsUsed: 0 })).toBe(3);
+    expect(gradeForResult('correct')).toBe(3);
   });
 });

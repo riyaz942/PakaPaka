@@ -324,6 +324,34 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO related_item_boosts/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, boost, updatedAt] = params;
+    const rows = state.tables.get('related_item_boosts') ?? [];
+    const idx = rows.findIndex((row) => row.item_id === itemId);
+    const next = { item_id: itemId, boost, updated_at: updatedAt };
+    if (idx >= 0) rows[idx] = next;
+    else rows.push(next);
+    state.tables.set('related_item_boosts', rows);
+    return;
+  }
+
+  if (/^DELETE FROM related_item_boosts/i.test(trimmed)) {
+    const rows = state.tables.get('related_item_boosts') ?? [];
+    if (/IN \(/i.test(trimmed)) {
+      const ids = new Set(params);
+      state.tables.set(
+        'related_item_boosts',
+        rows.filter((row) => !ids.has(row.item_id)),
+      );
+    } else {
+      state.tables.set(
+        'related_item_boosts',
+        rows.filter((row) => row.item_id !== params[0]),
+      );
+    }
+    return;
+  }
+
   if (/^DELETE FROM user_preferences/i.test(trimmed)) {
     const rows = state.tables.get('user_preferences') ?? [];
     state.tables.set(
@@ -518,6 +546,37 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     const relationships = [...(state.tables.get('item_relationships') ?? [])];
     const items = state.tables.get('items') ?? [];
 
+    if (/parent_item_id IN/i.test(trimmed)) {
+      const parentIds = new Set(params);
+      const allowedTypes = new Set(['builds_on', 'reinforces', 'requires']);
+
+      return relationships
+        .filter(
+          (relationship) =>
+            parentIds.has(relationship.parent_item_id) &&
+            allowedTypes.has(String(relationship.relationship_type)),
+        )
+        .map((relationship) => {
+          const child = items.find((item) => item.id === relationship.child_item_id);
+          return {
+            parent_item_id: relationship.parent_item_id,
+            id: child?.id,
+            primary_form: child?.primary_form ?? '',
+            meaning: child?.meaning ?? '',
+            item_type: child?.item_type,
+            relationship_type: relationship.relationship_type,
+            sort_order: child?.sort_order ?? 0,
+          };
+        })
+        .sort((left, right) => {
+          const parentCompare = Number(left.parent_item_id) - Number(right.parent_item_id);
+          if (parentCompare !== 0) {
+            return parentCompare;
+          }
+          return Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0);
+        });
+    }
+
     const childIds = /child_item_id IN/i.test(trimmed)
       ? new Set(params)
       : new Set([params[0]]);
@@ -560,6 +619,15 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     let rows = [...(state.tables.get('personal_mnemonics') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM related_item_boosts/i.test(trimmed)) {
+    let rows = [...(state.tables.get('related_item_boosts') ?? [])];
+    if (/WHERE item_id IN/i.test(trimmed)) {
+      const ids = new Set(params);
+      rows = rows.filter((row) => ids.has(row.item_id));
     }
     return rows;
   }

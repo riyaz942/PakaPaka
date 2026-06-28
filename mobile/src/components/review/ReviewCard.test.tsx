@@ -15,6 +15,8 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
       acceptedMeanings: ['eat', 'food'],
       acceptedReadings: ['たべる'],
     },
+    relatedItems: [],
+    reinforcementLink: null,
     srsState: {
       itemId: 'test-1',
       stability: 1,
@@ -143,5 +145,64 @@ describe('ReviewCard — result states', () => {
   it('shows typo state with warning icon and text', () => {
     render(<ReviewCard item={makeItem()} state="typo" />);
     expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
+  });
+});
+
+describe('ReviewCard — hints and reinforcement', () => {
+  const grammarLink = {
+    relatedItemId: '20',
+    primaryForm: '食べる',
+    meaning: 'to eat',
+    relationshipType: 'reinforces' as const,
+    srsStageLabel: 'guru' as const,
+    recencyPhrase: 'you learned this yesterday',
+    displayText: '食べる — you learned this yesterday',
+  };
+
+  it('shows Hint button for grammar prompting state', () => {
+    render(
+      <ReviewCard
+        item={makeItem({
+          itemType: 'grammar',
+          promptType: 'production',
+          answerKey: {
+            acceptedMeanings: ['copula'],
+            acceptedReadings: [],
+            grammar: { structure: 'Noun + です', conjugationRules: {}, acceptedForms: ['です'] },
+          },
+        })}
+        state="prompting"
+      />,
+    );
+    expect(screen.getByLabelText('Hint')).toBeTruthy();
+  });
+
+  it('does not show Hint for non-grammar prompting state', () => {
+    render(<ReviewCard item={makeItem()} state="prompting" />);
+    expect(screen.queryByLabelText('Hint')).toBeNull();
+  });
+
+  it('shows reinforcement on correct state when link present', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ reinforcementLink: grammarLink })}
+        state="correct"
+      />,
+    );
+    expect(screen.getByText('食べる — you learned this yesterday')).toBeTruthy();
+  });
+
+  it('shows no reinforcement block when link absent on correct', () => {
+    render(<ReviewCard item={makeItem()} state="correct" />);
+    expect(screen.queryByText(/you learned this/)).toBeNull();
+  });
+
+  it('never shows reinforcement on incorrect or typo', () => {
+    const item = makeItem({ reinforcementLink: grammarLink });
+    render(<ReviewCard item={item} state="incorrect" displayAnswer="eat" />);
+    expect(screen.queryByText('食べる — you learned this yesterday')).toBeNull();
+
+    render(<ReviewCard item={item} state="typo" />);
+    expect(screen.queryByText('食べる — you learned this yesterday')).toBeNull();
   });
 });

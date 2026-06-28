@@ -1,10 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { MAX_PREFETCH } from '@/config/constants';
+import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import type { ReviewGrade, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
+import { applyBoosts } from '@/data/user/relatedItemBoostRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
 import type { AppError } from '@/types/result.types';
 
@@ -39,15 +41,12 @@ export function ReviewSessionProvider({ children }: Props) {
   const { queue, isLoading, error, refetch } = useReviewQueue();
   const [currentIndex, setCurrentIndex] = useState(0);
   const isGrading = useRef(false);
-  // pendingWrites queues failed SRS writes for retry; session continues regardless
   const pendingWrites = useRef<SRSState[]>([]);
 
-  // Reset index when a new queue is loaded
   useEffect(() => {
     setCurrentIndex(0);
   }, [queue]);
 
-  // Flush pending writes on unmount so grades are not lost when exiting the session
   useEffect(() => {
     return () => {
       for (const state of pendingWrites.current) {
@@ -72,7 +71,6 @@ export function ReviewSessionProvider({ children }: Props) {
       isGrading.current = true;
       const nextState = gradeItem(currentItem.srsState, grade, new Date());
 
-      // Async persist — does not block advancing to next item
       Promise.resolve()
         .then(() => {
           const result = upsertSrsState(userDb, nextState);
@@ -86,6 +84,15 @@ export function ReviewSessionProvider({ children }: Props) {
               if (!retryResult.ok) {
                 pendingWrites.current.push(state);
               }
+            }
+          }
+
+          // Related-item boosts on any non-Again grade (correct answers only).
+          if (grade !== 1 && currentItem.relatedItems.length > 0) {
+            const deltas = computeBoosts(currentItem.relatedItems);
+            const boostResult = applyBoosts(userDb, deltas);
+            if (!boostResult.ok && __DEV__) {
+              console.warn('[ReviewSession] boost persist failed', boostResult.error);
             }
           }
         })

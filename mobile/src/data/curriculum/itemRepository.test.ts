@@ -23,6 +23,7 @@ import {
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
   getRequiredParentsForItems,
+  getRelatedItemsForItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
 } from '@/data/curriculum/itemRepository';
@@ -383,6 +384,137 @@ describe('itemRepository', () => {
         vocabularyPrimaryForm: 'です',
         vocabularyMeaning: 'to be (polite)',
       },
+    ]);
+  });
+
+  it('returns related children/targets for a parent item', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 50,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 20,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'taberu',
+        primary_form: '食べる',
+        meaning: 'to eat',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        parent_item_id: 50,
+        child_item_id: 20,
+        relationship_type: 'reinforces',
+      },
+    ]);
+
+    const related = getRelatedItemsForItems(db, ['50']);
+    expect(related.get('50')).toEqual([
+      {
+        id: '20',
+        itemType: 'vocabulary',
+        primaryForm: '食べる',
+        meaning: 'to eat',
+        relationshipType: 'reinforces',
+      },
+    ]);
+  });
+
+  it('returns empty related list for leaf items', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 20,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'taberu',
+        primary_form: '食べる',
+        meaning: 'to eat',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    expect(getRelatedItemsForItems(db, ['20']).get('20')).toBeUndefined();
+  });
+
+  it('groups related items by parent id when multiple parents are queried', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 50,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'desu',
+        primary_form: 'です',
+        meaning: 'to be',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 51,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'masu',
+        primary_form: 'ます',
+        meaning: 'polite verb ending',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+      {
+        id: 20,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'taberu',
+        primary_form: '食べる',
+        meaning: 'to eat',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 21,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'nomu',
+        primary_form: '飲む',
+        meaning: 'to drink',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      { parent_item_id: 50, child_item_id: 20, relationship_type: 'reinforces' },
+      { parent_item_id: 51, child_item_id: 21, relationship_type: 'reinforces' },
+    ]);
+
+    const result = getRelatedItemsForItems(db, ['50', '51']);
+
+    expect(result.get('50')).toEqual([
+      { id: '20', itemType: 'vocabulary', primaryForm: '食べる', meaning: 'to eat', relationshipType: 'reinforces' },
+    ]);
+    expect(result.get('51')).toEqual([
+      { id: '21', itemType: 'vocabulary', primaryForm: '飲む', meaning: 'to drink', relationshipType: 'reinforces' },
     ]);
   });
 });
