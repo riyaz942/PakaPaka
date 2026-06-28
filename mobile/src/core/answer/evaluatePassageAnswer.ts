@@ -1,9 +1,12 @@
 import type { AnswerResult } from '@/core/answer/answer.types';
 
+/** Passage answers never use typo tolerance — only correct/incorrect. */
+export type PassageAnswerResult = Exclude<AnswerResult, 'typo'>;
+
 export function evaluatePassageAnswer(
   userAnswer: string,
   acceptedAnswers: string[],
-): AnswerResult {
+): PassageAnswerResult {
   const normalized = userAnswer.trim();
   if (!normalized) {
     return 'incorrect';

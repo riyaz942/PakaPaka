@@ -11,6 +11,10 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
     primaryForm: '食',
     meanings: ['eat', 'food'],
     promptType: 'reading',
+    answerKey: {
+      acceptedMeanings: ['eat', 'food'],
+      acceptedReadings: ['たべる'],
+    },
     srsState: {
       itemId: 'test-1',
       stability: 1,
@@ -94,5 +98,50 @@ describe('ReviewCard — prompting state', () => {
       />,
     );
     expect(screen.getByText('私は＿します')).toBeTruthy();
+  });
+});
+
+describe('ReviewCard — result states', () => {
+  it('shows correct state with icon and revealed meaning', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
+    expect(screen.getByText('✓ Correct')).toBeTruthy();
+    expect(screen.getByText('Meaning: eat, food')).toBeTruthy();
+  });
+
+  it('reveals the reading (not the meaning mislabeled) on a correct reading prompt', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="correct" />);
+    expect(screen.getByText('Reading: たべる')).toBeTruthy();
+    expect(screen.queryByText('Reading: eat, food')).toBeNull();
+    expect(screen.getByLabelText('Correct, reading: たべる')).toBeTruthy();
+  });
+
+  it('falls back to meaning reveal when a reading prompt has no accepted reading', () => {
+    render(
+      <ReviewCard
+        item={makeItem({
+          promptType: 'reading',
+          answerKey: { acceptedMeanings: ['eat', 'food'], acceptedReadings: [] },
+        })}
+        state="correct"
+      />,
+    );
+    expect(screen.getByText('Meaning: eat, food')).toBeTruthy();
+  });
+
+  it('shows incorrect state with icon and correct answer', () => {
+    render(
+      <ReviewCard
+        item={makeItem()}
+        state="incorrect"
+        displayAnswer="たべる"
+      />,
+    );
+    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('Correct answer: たべる')).toBeTruthy();
+  });
+
+  it('shows typo state with warning icon and text', () => {
+    render(<ReviewCard item={makeItem()} state="typo" />);
+    expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
   });
 });

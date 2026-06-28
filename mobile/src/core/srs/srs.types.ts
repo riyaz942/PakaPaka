@@ -18,6 +18,15 @@ export type SRSState = {
 /** 1=Again 2=Hard 3=Good 4=Easy — matches ts-fsrs Rating enum (Manual excluded) */
 export type ReviewGrade = 1 | 2 | 3 | 4;
 
+export type ReviewAnswerKey = {
+  acceptedMeanings: string[];
+  acceptedReadings: string[];
+  grammar?: {
+    conjugationRules: Record<string, unknown>;
+    acceptedForms: string[];
+  };
+};
+
 export type ReviewItem = {
   itemId: string;
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar';
@@ -27,6 +36,7 @@ export type ReviewItem = {
   promptType: 'reading' | 'meaning' | 'production';
   mnemonic?: string | null;
   personalMnemonic?: string | null;
+  answerKey: ReviewAnswerKey;
 };
 
 export type QueueBuildOptions = {

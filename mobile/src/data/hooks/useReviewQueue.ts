@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
+import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { QUEUE_FETCH_LIMIT } from '@/config/constants';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import { buildReviewQueue } from '@/core/srs/queueBuilder';
 import type { QueueInputItem } from '@/core/srs/queueBuilder';
-import type { ReviewItem } from '@/core/srs/srs.types';
-import { getItemById, getRequiredParentsForItems } from '@/data/curriculum/itemRepository';
+import type { ReviewAnswerKey, ReviewItem } from '@/core/srs/srs.types';
+import { getItemById, getRequiredParentsForItems, getAcceptedAnswers, getKanjiReadings, getGrammarRule } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
@@ -22,6 +23,40 @@ type UseReviewQueueResult = {
   refetch: () => void;
   queueBuildMs: number | null;
 };
+
+function buildAnswerKey(
+  curriculumDb: SQLiteDatabase,
+  itemId: string,
+  itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar',
+): ReviewAnswerKey {
+  const acceptedAnswers = getAcceptedAnswers(curriculumDb, itemId);
+
+  const acceptedMeanings = acceptedAnswers
+    .filter((a) => a.answerType === 'meaning')
+    .map((a) => a.answerText);
+
+  let acceptedReadings = acceptedAnswers
+    .filter((a) => a.answerType === 'reading' || a.answerType === 'production')
+    .map((a) => a.answerText);
+
+  if (itemType === 'kanji') {
+    const kanjiReadings = getKanjiReadings(curriculumDb, itemId).map((r) => r.reading);
+    acceptedReadings = [...new Set([...acceptedReadings, ...kanjiReadings])];
+  }
+
+  let grammar: ReviewAnswerKey['grammar'];
+  if (itemType === 'grammar') {
+    const rule = getGrammarRule(curriculumDb, itemId);
+    if (rule) {
+      grammar = {
+        conjugationRules: rule.conjugationRules,
+        acceptedForms: rule.acceptedForms,
+      };
+    }
+  }
+
+  return { acceptedMeanings, acceptedReadings, grammar };
+}
 
 function getInProgressItemIds(userDb: import('expo-sqlite').SQLiteDatabase): string[] {
   const rows = userDb.getAllSync<{ item_id: number }>(
@@ -101,6 +136,7 @@ export function useReviewQueue(): UseReviewQueueResult {
         if (!isItemUnlocked(parents, parentStatuses)) continue;
 
         const personalMnemonic = getPersonalMnemonic(userDb, srsState.itemId);
+        const answerKey = buildAnswerKey(curriculumDb, srsState.itemId, curriculumItem.itemType);
 
         queueInputs.push({
           srsState,
@@ -109,6 +145,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           parentStatuses,
           studyStatus,
           personalMnemonic,
+          answerKey,
         });
       }
 

@@ -1,18 +1,41 @@
 import { usePreventRemove } from '@react-navigation/core';
 import { router } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, BackHandler, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  AccessibilityInfo,
+  ActivityIndicator,
+  BackHandler,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  Text,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ReviewCard, SessionExitSheet, SessionHeader } from '@/components/review';
+import { Button } from '@/components/common/Button';
+import {
+  ReviewCard,
+  resolveCorrectReveal,
+  SessionExitSheet,
+  SessionHeader,
+  WanaKanaInput,
+  type ReviewCardState,
+  type WanaKanaInputRef,
+} from '@/components/review';
+import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
+import {
+  evaluateReviewAnswer,
+  gradeForResult,
+} from '@/core/answer/reviewAnswerEvaluator';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade } from '@/core/srs/srs.types';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
 
 const PLACEHOLDER: Record<PromptType, string> = {
-  reading: 'Type reading in hiragana...',
+  reading: 'Type reading in romaji...',
   meaning: 'Type the meaning in English...',
-  production: 'Type the conjugated form...',
+  production: 'Type the conjugated form in romaji...',
 };
 
 function DevGradeButtons({ onGrade }: { onGrade: (g: ReviewGrade) => void }) {
@@ -51,23 +74,94 @@ export default function ReviewScreen() {
   } = useReviewSession();
 
   const [exitVisible, setExitVisible] = useState(false);
+  const [cardState, setCardState] = useState<ReviewCardState>('prompting');
+  const [answerText, setAnswerText] = useState('');
+  const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
+  const inputRef = useRef<WanaKanaInputRef>(null);
+  const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isSubmittingRef = useRef(false);
   const isEndingRef = useRef(false);
   const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
+
+  const inputEditable = cardState === 'prompting' || cardState === 'typo';
 
   usePreventRemove(hasActiveSession && !exitVisible && !isEndingRef.current, () => {
     setExitVisible(true);
   });
 
-  // Android hardware back: consume event while session is active or exit sheet is open
   useEffect(() => {
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       if (!hasActiveSession) return false;
-      if (exitVisible) return true; // sheet is open; let Modal's onRequestClose handle it
+      if (exitVisible) return true;
       setExitVisible(true);
       return true;
     });
     return () => sub.remove();
   }, [hasActiveSession, exitVisible]);
+
+  useEffect(() => {
+    return () => {
+      if (autoAdvanceTimer.current) {
+        clearTimeout(autoAdvanceTimer.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    setCardState('prompting');
+    setAnswerText('');
+    setDisplayAnswer(undefined);
+    isSubmittingRef.current = false;
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
+  }, [currentItem?.itemId]);
+
+  const handleSubmit = useCallback(() => {
+    if (!currentItem || !inputEditable) return;
+    if (!answerText.trim()) return;
+    // Guard against a second submit (e.g. rapid double return-key) racing the
+    // state-derived `inputEditable` flag before it re-renders.
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
+
+    setCardState('evaluating');
+    const evaluation = evaluateReviewAnswer(currentItem, answerText);
+
+    if (currentItem.promptType !== 'meaning') {
+      AccessibilityInfo.announceForAccessibility(answerText);
+    }
+
+    if (evaluation.result === 'correct') {
+      const { label, value } = resolveCorrectReveal(currentItem);
+      AccessibilityInfo.announceForAccessibility(`Correct, ${label.toLowerCase()}: ${value}`);
+      setCardState('correct');
+      const grade = gradeForResult(evaluation.result) ?? 3;
+      autoAdvanceTimer.current = setTimeout(() => {
+        gradeCurrentItem(grade);
+      }, REVIEW_CORRECT_AUTO_ADVANCE_MS);
+      return;
+    }
+
+    if (evaluation.result === 'typo') {
+      setCardState('typo');
+      setAnswerText('');
+      // Re-prompt: allow the next attempt to submit again.
+      isSubmittingRef.current = false;
+      requestAnimationFrame(() => inputRef.current?.focus());
+      return;
+    }
+
+    const answer = evaluation.displayAnswer ?? currentItem.meanings[0] ?? '';
+    setDisplayAnswer(answer);
+    setCardState('incorrect');
+    AccessibilityInfo.announceForAccessibility(`Incorrect, correct answer is ${answer}`);
+  }, [answerText, currentItem, gradeCurrentItem, inputEditable]);
+
+  function handleContinueIncorrect() {
+    gradeCurrentItem(gradeForResult('incorrect') ?? 1);
+  }
 
   function handleEndSession() {
     if (isEndingRef.current) return;
@@ -142,6 +236,9 @@ export default function ReviewScreen() {
     );
   }
 
+  const inputMode =
+    currentItem.promptType === 'meaning' ? 'english' : 'kana';
+
   return (
     <SafeAreaView className="flex-1 bg-background">
       <SessionHeader
@@ -152,19 +249,32 @@ export default function ReviewScreen() {
       />
 
       <View className="flex-1 justify-center px-space-md">
-        <ReviewCard item={currentItem} state="prompting" />
+        <ReviewCard
+          item={currentItem}
+          state={cardState}
+          displayAnswer={displayAnswer}
+        />
       </View>
 
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <View className="px-space-md pb-space-md">
-          <TextInput
-            className="w-full rounded-radius-md bg-surface-elevated px-space-md py-space-sm text-body text-primary"
-            placeholder={PLACEHOLDER[currentItem.promptType]}
-            placeholderTextColor="rgba(255,255,255,0.4)"
-            editable={false}
-            accessibilityLabel="Answer input"
-          />
-        </View>
+        {cardState === 'incorrect' ? (
+          <View className="px-space-md pb-space-md">
+            <Button label="Continue" onPress={handleContinueIncorrect} variant="primary" />
+          </View>
+        ) : (
+          <View className="px-space-md pb-space-md">
+            <WanaKanaInput
+              ref={inputRef}
+              mode={inputMode}
+              value={answerText}
+              onChangeText={setAnswerText}
+              onSubmit={handleSubmit}
+              placeholder={PLACEHOLDER[currentItem.promptType]}
+              editable={inputEditable}
+              autoFocus={inputEditable}
+            />
+          </View>
+        )}
         {__DEV__ && <DevGradeButtons onGrade={gradeCurrentItem} />}
       </KeyboardAvoidingView>
 

@@ -30,6 +30,10 @@ function makeReviewItem(id: string): ReviewItem {
     primaryForm: `kanji-${id}`,
     meanings: [`meaning-${id}`],
     promptType: 'reading',
+    answerKey: {
+      acceptedMeanings: [`meaning-${id}`],
+      acceptedReadings: ['いち'],
+    },
     srsState: {
       itemId: id,
       stability: 5,

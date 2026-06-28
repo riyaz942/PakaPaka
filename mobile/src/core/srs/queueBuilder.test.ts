@@ -48,6 +48,10 @@ function makeQueueItem(
     parents: [],
     parentStatuses: new Map(),
     studyStatus: 'in_progress',
+    answerKey: {
+      acceptedMeanings: [`meaning-${id}`],
+      acceptedReadings: ['いち'],
+    },
     ...overrides,
   };
 }
@@ -104,6 +108,7 @@ describe('buildReviewQueue', () => {
     expect(result[0].itemType).toBe('vocabulary');
     expect(result[0].primaryForm).toBe('form-42');
     expect(result[0].meanings).toEqual(['meaning-42']);
+    expect(result[0].answerKey.acceptedMeanings).toEqual(['meaning-42']);
   });
 
   it('interleaves content types with documented INTERLEAVE_WEIGHTS', () => {

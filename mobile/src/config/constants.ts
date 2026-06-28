@@ -21,3 +21,6 @@ export const INTERLEAVE_WEIGHTS: Record<string, number> = {
 
 /** Weight for FSRS score in priority formula (Epic 6 weakness bias). Unused until Epic 6. */
 export const WEAKNESS_WEIGHT = 0.7;
+
+/** Pause before auto-advancing after a correct answer (Epic 6 will make this configurable). */
+export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;

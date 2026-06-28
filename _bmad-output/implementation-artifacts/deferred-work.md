@@ -42,3 +42,9 @@
 - **`QUEUE_FETCH_LIMIT` may truncate due items beyond cap** — `srsStateRepository.ts`. Documented limit; paginate remaining due items in a future session if cap is hit in production.
 - **Duplicate unlock filtering in hook and `queueBuilder`** — Redundant but correct; consolidate when refactoring queue build path.
 - **No cross-module test verifying stage boundaries match `fsrsConverter.ts`** — Import and runtime paths share comment alignment only; add shared constants test if drift is observed.
+
+## Deferred from: code review of 5-3-answer-input-and-validation (2026-06-28)
+
+- **Reading prompt with no accepted readings grades meaning answer as Good (3)** — `reviewAnswerEvaluator.ts`. Documented AC7 seed-gap fallback; rewards the wrong skill and advances FSRS scheduling. Revisit when vocabulary `reading` accepted-answers are seeded by the curriculum compiler (consider blocking reading prompts for items with no reading at the queue/promptResolver level instead of falling back to meaning).
+- **`getGrammarRule` unguarded `JSON.parse`** — `itemRepository.ts`. One malformed `conjugation_rules`/`accepted_forms` row throws and fails the entire queue build (caught into an error state, no crash). Pre-existing and seed is compiler-controlled; wrap in try/catch returning `null` if untrusted content is ever introduced.
+- **Per-keystroke `toKana` cursor position** — `WanaKanaInput.tsx`. Whole-field reconversion on each keystroke doesn't preserve caret position for mid-string edits. Inherent wanakana IME behavior; acceptable for v1, revisit if users report editing friction.

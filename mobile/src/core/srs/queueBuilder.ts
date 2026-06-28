@@ -3,7 +3,7 @@ import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ContentItemSummary, ContentItemType, ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
 
 import { resolvePromptType } from './promptResolver';
-import type { ReviewItem, QueueBuildOptions, SRSState } from './srs.types';
+import type { ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
 
 /**
  * Weighted round-robin interleaving weights (kanji:2, vocabulary:2, grammar:1, radical:1).
@@ -31,6 +31,7 @@ export type QueueInputItem = {
   parentStatuses: Map<string, ContentStudyStatus>;
   studyStatus: ContentStudyStatus | null;
   personalMnemonic?: string | null;
+  answerKey: ReviewAnswerKey;
 };
 
 const TYPE_ORDER: ContentItemType[] = ['kanji', 'vocabulary', 'grammar', 'radical'];
@@ -107,5 +108,6 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
     promptType: resolvePromptType(item.curriculumItem.itemType, item.srsState),
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
+    answerKey: item.answerKey,
   };
 }
