@@ -1,4 +1,4 @@
-import { INTERLEAVE_WEIGHTS as CONFIG_INTERLEAVE_WEIGHTS } from '@/config/constants';
+import { INTERLEAVE_WEIGHTS as CONFIG_INTERLEAVE_WEIGHTS, WEAKNESS_BIAS_WEIGHT, WEAKNESS_WEIGHT } from '@/config/constants';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type {
   ContentItemSummary,
@@ -11,6 +11,7 @@ import type {
 
 import { resolvePromptType } from './promptResolver';
 import type { ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
+import { computePriority, normalizeFsrsUrgency } from './weaknessEngine';
 
 /**
  * Weighted round-robin interleaving weights (kanji:2, vocabulary:2, grammar:1, radical:1).
@@ -78,13 +79,38 @@ export function buildReviewQueue(
       );
     }
   }
+  // Determine whether weakness bias is active.
+  // Bias is enabled when weaknessBiasEnabled is true (or absent) AND weaknessScores is non-empty.
+  const biasEnabled =
+    options.weaknessBiasEnabled !== false &&
+    options.weaknessScores !== undefined &&
+    options.weaknessScores.size > 0;
+
   for (const bucket of buckets.values()) {
-    bucket.sort((a, b) => {
-      const dueCompare = a.srsState.dueDate.localeCompare(b.srsState.dueDate);
-      if (dueCompare !== 0) return dueCompare;
-      // Bounded within-bucket nudge: higher boost sorts ahead among equally-due items.
-      return (b.boost ?? 0) - (a.boost ?? 0);
-    });
+    if (biasEnabled) {
+      // Within-bucket sort: priority DESC (higher priority first).
+      // priority = WEAKNESS_WEIGHT × fsrsUrgency + WEAKNESS_BIAS_WEIGHT × weaknessScore
+      // The boost from 5.4 acts as a lower-order tiebreak so reinforcement nudges survive.
+      bucket.sort((a, b) => {
+        const urgencyA = normalizeFsrsUrgency(a.srsState.dueDate, now);
+        const urgencyB = normalizeFsrsUrgency(b.srsState.dueDate, now);
+        const weaknessA = options.weaknessScores!.get(a.srsState.itemId) ?? 0;
+        const weaknessB = options.weaknessScores!.get(b.srsState.itemId) ?? 0;
+        const priorityA = computePriority(urgencyA, weaknessA, WEAKNESS_BIAS_WEIGHT, WEAKNESS_WEIGHT);
+        const priorityB = computePriority(urgencyB, weaknessB, WEAKNESS_BIAS_WEIGHT, WEAKNESS_WEIGHT);
+        if (priorityB !== priorityA) return priorityB - priorityA; // higher priority first
+        // Tiebreak: boost (5.4 reinforcement nudge)
+        return (b.boost ?? 0) - (a.boost ?? 0);
+      });
+    } else {
+      // Bias disabled (or no weaknessScores): exact 5.1 due_date ASC + boost DESC ordering.
+      bucket.sort((a, b) => {
+        const dueCompare = a.srsState.dueDate.localeCompare(b.srsState.dueDate);
+        if (dueCompare !== 0) return dueCompare;
+        // Bounded within-bucket nudge: higher boost sorts ahead among equally-due items.
+        return (b.boost ?? 0) - (a.boost ?? 0);
+      });
+    }
   }
 
   // Weighted round-robin

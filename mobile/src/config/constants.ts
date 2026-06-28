@@ -19,8 +19,33 @@ export const INTERLEAVE_WEIGHTS: Record<string, number> = {
   radical: 1,
 };
 
-/** Weight for FSRS score in priority formula (Epic 6 weakness bias). Unused until Epic 6. */
+/** Weight for FSRS score in priority formula (Epic 6 weakness bias). */
 export const WEAKNESS_WEIGHT = 0.7;
+
+/**
+ * Weight for weakness score in the priority formula:
+ * priority = WEAKNESS_WEIGHT × fsrsUrgency + WEAKNESS_BIAS_WEIGHT × weaknessScore
+ */
+export const WEAKNESS_BIAS_WEIGHT = 0.3;
+
+/**
+ * Minimum number of total answer attempts (correct + incorrect) required before
+ * a non-zero weakness score is returned for an item.
+ * Below this threshold, score = 0 to avoid false positives on new items.
+ */
+export const WEAKNESS_MIN_SAMPLE = 3;
+
+/**
+ * Minimum total attempt count across all items in a pattern group before
+ * a confusion cluster is emitted.
+ */
+export const CLUSTER_MIN_SAMPLE = 5;
+
+/**
+ * Accuracy rate at or below which a confusion cluster is surfaced.
+ * E.g., 0.6 means 60% accuracy or worse triggers a cluster.
+ */
+export const CLUSTER_ACCURACY_THRESHOLD = 0.6;
 
 /** Pause before auto-advancing after a correct answer (Epic 6 will make this configurable). */
 export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;

@@ -335,6 +335,54 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO weakness_stats/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const rows = state.tables.get('weakness_stats') ?? [];
+    const numericId = Number(params[0]);
+    const updatedAt = params[params.length - 1];
+    const idx = rows.findIndex((row) => row.item_id === numericId);
+
+    if (/correct_count = correct_count \+ 1/i.test(trimmed)) {
+      // correct outcome
+      if (idx >= 0) {
+        rows[idx] = {
+          ...rows[idx],
+          correct_count: Number(rows[idx].correct_count ?? 0) + 1,
+          updated_at: updatedAt,
+        };
+      } else {
+        rows.push({ item_id: numericId, correct_count: 1, incorrect_count: 0, typo_count: 0, last_error_at: null, last_error_type: null, pattern_tags: null, updated_at: updatedAt });
+      }
+    } else if (/incorrect_count = incorrect_count \+ 1/i.test(trimmed)) {
+      // incorrect outcome: params = (numericId, lastErrorAt, promptType, updatedAt)
+      const lastErrorAt = params[1];
+      const lastErrorType = params[2];
+      if (idx >= 0) {
+        rows[idx] = {
+          ...rows[idx],
+          incorrect_count: Number(rows[idx].incorrect_count ?? 0) + 1,
+          last_error_at: lastErrorAt,
+          last_error_type: lastErrorType,
+          updated_at: updatedAt,
+        };
+      } else {
+        rows.push({ item_id: numericId, correct_count: 0, incorrect_count: 1, typo_count: 0, last_error_at: lastErrorAt, last_error_type: lastErrorType, pattern_tags: null, updated_at: updatedAt });
+      }
+    } else if (/typo_count = typo_count \+ 1/i.test(trimmed)) {
+      // typo outcome
+      if (idx >= 0) {
+        rows[idx] = {
+          ...rows[idx],
+          typo_count: Number(rows[idx].typo_count ?? 0) + 1,
+          updated_at: updatedAt,
+        };
+      } else {
+        rows.push({ item_id: numericId, correct_count: 0, incorrect_count: 0, typo_count: 1, last_error_at: null, last_error_type: null, pattern_tags: null, updated_at: updatedAt });
+      }
+    }
+    state.tables.set('weakness_stats', rows);
+    return;
+  }
+
   if (/^DELETE FROM related_item_boosts/i.test(trimmed)) {
     const rows = state.tables.get('related_item_boosts') ?? [];
     if (/IN \(/i.test(trimmed)) {
@@ -628,6 +676,15 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     if (/WHERE item_id IN/i.test(trimmed)) {
       const ids = new Set(params);
       rows = rows.filter((row) => ids.has(row.item_id));
+    }
+    return rows;
+  }
+
+  if (/FROM weakness_stats/i.test(trimmed)) {
+    let rows = [...(state.tables.get('weakness_stats') ?? [])];
+    if (/WHERE item_id IN/i.test(trimmed)) {
+      const ids = new Set(params.map(Number));
+      rows = rows.filter((row) => ids.has(Number(row.item_id)));
     }
     return rows;
   }

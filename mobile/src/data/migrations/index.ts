@@ -4,6 +4,7 @@ import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_sr
 import { migration004PassagePracticeResults } from '@/data/migrations/004_passage_practice_results';
 import { migration005PersonalMnemonics } from '@/data/migrations/005_personal_mnemonics';
 import { migration006RelatedItemBoosts } from '@/data/migrations/006_related_item_boosts';
+import { migration007WeaknessStats } from '@/data/migrations/007_weakness_stats';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -13,4 +14,5 @@ export const migrations: Migration[] = [
   migration004PassagePracticeResults,
   migration005PersonalMnemonics,
   migration006RelatedItemBoosts,
+  migration007WeaknessStats,
 ];

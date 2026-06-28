@@ -5,10 +5,9 @@ import { QUEUE_FETCH_LIMIT } from '@/config/constants';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ReinforcementSrsSnapshot } from '@/core/content/content.types';
 import { resolveReinforcement } from '@/core/content/reinforcementResolver';
-import type { SRSState } from '@/core/srs/srs.types';
+import type { ReviewAnswerKey, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { buildReviewQueue } from '@/core/srs/queueBuilder';
 import type { QueueInputItem } from '@/core/srs/queueBuilder';
-import type { ReviewAnswerKey, ReviewItem } from '@/core/srs/srs.types';
 import {
   getItemById,
   getRelatedItemsForItems,
@@ -21,6 +20,8 @@ import { useDatabase } from '@/data/hooks/useDatabase';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 import { clearBoosts, getBoosts } from '@/data/user/relatedItemBoostRepository';
+import { getWeaknessBiasEnabled } from '@/data/user/preferencesRepository';
+import { getWeaknessScores } from '@/data/user/weaknessRepository';
 import {
   getDueSrsStates,
   getSrsStatesForItems,
@@ -129,6 +130,9 @@ export function useReviewQueue(): UseReviewQueueResult {
       const parentsMap = getRequiredParentsForItems(curriculumDb, itemIds);
       const relatedItemsMap = getRelatedItemsForItems(curriculumDb, itemIds);
       const boostMap = getBoosts(userDb, itemIds);
+      // Read weakness bias preference and scores in one batched query (mirrors getBoosts).
+      const weaknessBiasEnabled = getWeaknessBiasEnabled(userDb);
+      const weaknessScoreMap = weaknessBiasEnabled ? getWeaknessScores(userDb, itemIds) : new Map<string, number>();
 
       const allRelatedIds = [
         ...new Set(
@@ -196,7 +200,11 @@ export function useReviewQueue(): UseReviewQueueResult {
         queuedItemIds.push(srsState.itemId);
       }
 
-      const built = buildReviewQueue(queueInputs, { now });
+      const built = buildReviewQueue(queueInputs, {
+        now,
+        weaknessScores: weaknessScoreMap,
+        weaknessBiasEnabled,
+      });
       const elapsed = Date.now() - t0;
 
       if (__DEV__ && elapsed > 100) {

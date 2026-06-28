@@ -48,4 +48,57 @@ export type QueueBuildOptions = {
   now?: Date;
   limit?: number;
   weaknessScores?: Map<string, number>; // reserved for Epic 6; defaults to 0
+  /** When true, apply weakness bias to within-bucket sort order. Default: true when weaknessScores is provided. */
+  weaknessBiasEnabled?: boolean;
+};
+
+/**
+ * Per-item outcome counters persisted in `weakness_stats`.
+ * Typos are tracked separately and do NOT count as misses in the weakness score.
+ */
+export type WeaknessStats = {
+  itemId: string;
+  correctCount: number;
+  incorrectCount: number;
+  typoCount: number;
+  /** ISO timestamp of the last incorrect answer, or null if none. */
+  lastErrorAt: string | null;
+  /** Prompt type that was last missed: 'meaning' | 'reading' | 'production', or null. */
+  lastErrorType: string | null;
+  /** Pattern tag IDs matched to this item (for confusion cluster grouping). */
+  patternTags: string[];
+};
+
+/**
+ * A confusion cluster: a group of items that share a pattern and have a
+ * sustained low accuracy. Emitted only above CLUSTER_MIN_SAMPLE and below
+ * CLUSTER_ACCURACY_THRESHOLD.
+ */
+export type ConfusionCluster = {
+  /** Pattern definition ID this cluster maps to. */
+  id: string;
+  /** Human-readable label, e.g. "て-form vs た-form". */
+  label: string;
+  /** Learner-facing copy sentence, e.g. "You often confuse て-form and た-form". */
+  copy: string;
+  /** Accuracy rate [0, 1] for items in this cluster. */
+  accuracy: number;
+  /** Total number of attempts across all items in this cluster. */
+  sampleSize: number;
+  /** Item IDs that belong to this cluster. */
+  itemIds: string[];
+};
+
+/**
+ * App-side pattern definition for confusion cluster detection.
+ * Keyed to known item slugs or grammar reinforcement_tags since curriculum
+ * has no item-level confusion tags.
+ */
+export type PatternDefinition = {
+  /** Unique pattern identifier (snake_case). */
+  id: string;
+  /** Human-readable label used in cluster copy. */
+  label: string;
+  /** Known item slugs or grammar reinforcement_tags that match this pattern. */
+  itemSlugsOrTags: string[];
 };

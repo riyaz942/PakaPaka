@@ -7,6 +7,7 @@ import type { ReviewGrade, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
 import { applyBoosts } from '@/data/user/relatedItemBoostRepository';
+import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
 import type { AppError } from '@/types/result.types';
 
@@ -20,6 +21,11 @@ type ReviewSessionState = {
   error: AppError | null;
   refetch: () => void;
   gradeCurrentItem: (grade: ReviewGrade) => void;
+  /**
+   * Record a typo outcome for the current item without advancing (non-terminal).
+   * Called from the typo branch in review/index.tsx which never calls gradeCurrentItem.
+   */
+  recordTypoForCurrentItem: () => void;
 };
 
 const ReviewSessionContext = createContext<ReviewSessionState | null>(null);
@@ -70,6 +76,10 @@ export function ReviewSessionProvider({ children }: Props) {
 
       isGrading.current = true;
       const nextState = gradeItem(currentItem.srsState, grade, new Date());
+      // grade === 1 (Again) → incorrect; anything else → correct.
+      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
+      const promptType = currentItem.promptType;
+      const itemId = currentItem.itemId;
 
       Promise.resolve()
         .then(() => {
@@ -95,6 +105,16 @@ export function ReviewSessionProvider({ children }: Props) {
               console.warn('[ReviewSession] boost persist failed', boostResult.error);
             }
           }
+
+          // Weakness outcome recording — best-effort, never blocks or crashes.
+          const weaknessResult = recordOutcome(userDb, {
+            itemId,
+            result: outcomeResult,
+            promptType,
+          });
+          if (!weaknessResult.ok && __DEV__) {
+            console.warn('[ReviewSession] weakness record failed', weaknessResult.error);
+          }
         })
         .catch((cause) => {
           pendingWrites.current.push(nextState);
@@ -111,6 +131,36 @@ export function ReviewSessionProvider({ children }: Props) {
     [currentItem, userDb],
   );
 
+  /**
+   * Record a typo for the current item without advancing.
+   * The typo branch in review/index.tsx re-prompts and never calls gradeCurrentItem,
+   * so we record the typo here separately.
+   *
+   * Rule: a typo followed by a correct retry records one typo + one correct.
+   */
+  const recordTypoForCurrentItem = useCallback(() => {
+    if (!currentItem) return;
+    const itemId = currentItem.itemId;
+    const promptType = currentItem.promptType;
+
+    Promise.resolve()
+      .then(() => {
+        const weaknessResult = recordOutcome(userDb, {
+          itemId,
+          result: 'typo',
+          promptType,
+        });
+        if (!weaknessResult.ok && __DEV__) {
+          console.warn('[ReviewSession] weakness typo record failed', weaknessResult.error);
+        }
+      })
+      .catch((cause) => {
+        if (__DEV__) {
+          console.warn('[ReviewSession] weakness typo write failed', cause);
+        }
+      });
+  }, [currentItem, userDb]);
+
   const value: ReviewSessionState = {
     currentItem,
     prefetchBuffer,
@@ -121,6 +171,7 @@ export function ReviewSessionProvider({ children }: Props) {
     error,
     refetch,
     gradeCurrentItem,
+    recordTypoForCurrentItem,
   };
 
   return (

@@ -17,6 +17,7 @@ export const PREFERENCE_KEYS = {
   sessionIntensity: 'session_intensity',
   onboardingCompleted: 'onboarding_completed',
   onboardingPath: 'onboarding_path',
+  weaknessBiasEnabled: 'weakness_bias_enabled',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -119,6 +120,20 @@ export function setOnboardingPath(userDb: SQLiteDatabase, path: OnboardingPath):
 
 export function clearOnboardingCompleted(userDb: SQLiteDatabase): void {
   userDb.runSync('DELETE FROM user_preferences WHERE key = ?', PREFERENCE_KEYS.onboardingCompleted);
+}
+
+/**
+ * Returns true when weakness bias is enabled (default when unset).
+ * Stored as 'true'/'false' string to match existing preference storage pattern.
+ */
+export function getWeaknessBiasEnabled(userDb: SQLiteDatabase): boolean {
+  const value = getPreference(userDb, PREFERENCE_KEYS.weaknessBiasEnabled);
+  // Default is enabled (true) when the key is not set.
+  return value === null ? true : value === 'true';
+}
+
+export function setWeaknessBiasEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.weaknessBiasEnabled, enabled ? 'true' : 'false');
 }
 
 export function setCurriculumInstallMetadata(

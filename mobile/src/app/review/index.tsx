@@ -71,6 +71,7 @@ export default function ReviewScreen() {
     error,
     refetch,
     gradeCurrentItem,
+    recordTypoForCurrentItem,
   } = useReviewSession();
 
   const [exitVisible, setExitVisible] = useState(false);
@@ -147,6 +148,9 @@ export default function ReviewScreen() {
     }
 
     if (evaluation.result === 'typo') {
+      // Record typo non-terminally — the typo branch never calls gradeCurrentItem.
+      // Rule: a typo followed by a correct retry records one typo + one correct.
+      recordTypoForCurrentItem();
       setCardState('typo');
       setAnswerText('');
       // Re-prompt: allow the next attempt to submit again.
@@ -159,7 +163,7 @@ export default function ReviewScreen() {
     setDisplayAnswer(answer);
     setCardState('incorrect');
     AccessibilityInfo.announceForAccessibility(`Incorrect, correct answer is ${answer}`);
-  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable]);
+  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, recordTypoForCurrentItem]);
 
   function handleContinueIncorrect() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
