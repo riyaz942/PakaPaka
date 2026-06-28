@@ -3,7 +3,7 @@ import { Pressable, Text } from 'react-native';
 
 import { cn } from '@/utils/cn';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
 
 type ButtonProps = {
   label: string;
@@ -31,6 +31,10 @@ const variantClasses: Record<ButtonVariant, { container: string; text: string }>
   ghost: {
     container: 'bg-transparent',
     text: 'text-secondary font-medium',
+  },
+  destructive: {
+    container: 'bg-feedback-error',
+    text: 'text-primary font-semibold',
   },
 };
 

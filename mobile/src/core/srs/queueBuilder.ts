@@ -2,6 +2,7 @@ import { INTERLEAVE_WEIGHTS as CONFIG_INTERLEAVE_WEIGHTS } from '@/config/consta
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ContentItemSummary, ContentItemType, ContentParentItem, ContentStudyStatus } from '@/core/content/content.types';
 
+import { resolvePromptType } from './promptResolver';
 import type { ReviewItem, QueueBuildOptions, SRSState } from './srs.types';
 
 /**
@@ -103,6 +104,7 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
     primaryForm: item.curriculumItem.primaryForm,
     meanings: [item.curriculumItem.meaning],
     srsState: item.srsState,
+    promptType: resolvePromptType(item.curriculumItem.itemType, item.srsState),
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
   };

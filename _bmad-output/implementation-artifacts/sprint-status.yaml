@@ -1,5 +1,5 @@
 # generated: 2026-05-03T12:00:00
-# last_updated: 2026-06-22
+# last_updated: 2026-06-28
 # project: japanese-learning
 # project_key: NOKEY
 # tracking_system: file-system
@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-27"
+last_updated: "2026-06-28"
 
 project: japanese-learning
 project_key: NOKEY
@@ -81,7 +81,7 @@ development_status:
 
   epic-5: in-progress
   5-1-review-queue-builder-fsrs-scheduling-and-prefetch: done
-  5-2-review-session-ui-layout-and-card-prompting: backlog
+  5-2-review-session-ui-layout-and-card-prompting: done
   5-3-answer-input-and-validation: backlog
   5-4-progressive-hints-reinforcement-and-related-item-boosts: backlog
   epic-5-retrospective: optional

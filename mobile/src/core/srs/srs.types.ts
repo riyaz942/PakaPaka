@@ -24,6 +24,7 @@ export type ReviewItem = {
   primaryForm: string;
   meanings: string[];
   srsState: SRSState;
+  promptType: 'reading' | 'meaning' | 'production';
   mnemonic?: string | null;
   personalMnemonic?: string | null;
 };

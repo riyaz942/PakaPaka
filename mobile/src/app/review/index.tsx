@@ -1,17 +1,42 @@
+import { usePreventRemove } from '@react-navigation/core';
 import { router } from 'expo-router';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, BackHandler, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
+import { ReviewCard, SessionExitSheet, SessionHeader } from '@/components/review';
+import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade } from '@/core/srs/srs.types';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
 
-const GRADE_BUTTONS: { grade: ReviewGrade; label: string; className: string }[] = [
-  { grade: 1, label: 'Again', className: 'bg-feedback-error' },
-  { grade: 2, label: 'Hard', className: 'bg-srs-guru' },
-  { grade: 3, label: 'Good', className: 'bg-srs-master' },
-  { grade: 4, label: 'Easy', className: 'bg-srs-enlightened' },
-];
+const PLACEHOLDER: Record<PromptType, string> = {
+  reading: 'Type reading in hiragana...',
+  meaning: 'Type the meaning in English...',
+  production: 'Type the conjugated form...',
+};
+
+function DevGradeButtons({ onGrade }: { onGrade: (g: ReviewGrade) => void }) {
+  const GRADES: { grade: ReviewGrade; label: string }[] = [
+    { grade: 1, label: 'Again' },
+    { grade: 2, label: 'Hard' },
+    { grade: 3, label: 'Good' },
+    { grade: 4, label: 'Easy' },
+  ];
+  return (
+    <View className="flex-row gap-space-sm px-space-lg pb-space-md">
+      {GRADES.map(({ grade, label }) => (
+        <Pressable
+          key={grade}
+          accessibilityRole="button"
+          accessibilityLabel={label}
+          className="flex-1 items-center rounded-radius-md bg-surface-elevated py-space-sm"
+          onPress={() => onGrade(grade)}>
+          <Text className="text-body-sm text-secondary">{label}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
 
 export default function ReviewScreen() {
   const {
@@ -24,6 +49,36 @@ export default function ReviewScreen() {
     refetch,
     gradeCurrentItem,
   } = useReviewSession();
+
+  const [exitVisible, setExitVisible] = useState(false);
+  const isEndingRef = useRef(false);
+  const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
+
+  usePreventRemove(hasActiveSession && !exitVisible && !isEndingRef.current, () => {
+    setExitVisible(true);
+  });
+
+  // Android hardware back: consume event while session is active or exit sheet is open
+  useEffect(() => {
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (!hasActiveSession) return false;
+      if (exitVisible) return true; // sheet is open; let Modal's onRequestClose handle it
+      setExitVisible(true);
+      return true;
+    });
+    return () => sub.remove();
+  }, [hasActiveSession, exitVisible]);
+
+  function handleEndSession() {
+    if (isEndingRef.current) return;
+    isEndingRef.current = true;
+    setExitVisible(false);
+    router.back();
+  }
+
+  function handleKeepGoing() {
+    setExitVisible(false);
+  }
 
   if (isLoading) {
     return (
@@ -88,38 +143,36 @@ export default function ReviewScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-background px-space-lg">
-      {/* Progress indicator */}
-      <View className="py-space-sm">
-        <Text className="text-caption text-secondary">
-          {currentIndex + 1} / {totalItems}
-        </Text>
+    <SafeAreaView className="flex-1 bg-background">
+      <SessionHeader
+        currentIndex={currentIndex}
+        totalItems={totalItems}
+        itemType={currentItem.itemType}
+        onExitPress={() => setExitVisible(true)}
+      />
+
+      <View className="flex-1 justify-center px-space-md">
+        <ReviewCard item={currentItem} state="prompting" />
       </View>
 
-      {/* Item display */}
-      <View className="flex-1 justify-center gap-space-md">
-        <Text className="text-overline uppercase text-secondary">{currentItem.itemType}</Text>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View className="px-space-md pb-space-md">
+          <TextInput
+            className="w-full rounded-radius-md bg-surface-elevated px-space-md py-space-sm text-body text-primary"
+            placeholder={PLACEHOLDER[currentItem.promptType]}
+            placeholderTextColor="rgba(255,255,255,0.4)"
+            editable={false}
+            accessibilityLabel="Answer input"
+          />
+        </View>
+        {__DEV__ && <DevGradeButtons onGrade={gradeCurrentItem} />}
+      </KeyboardAvoidingView>
 
-        <Text className="text-display text-primary">{currentItem.primaryForm}</Text>
-
-        <Text className="text-body text-secondary">{currentItem.meanings.join(', ')}</Text>
-
-        <SRSStageIndicator stage={currentItem.srsState.srsStageLabel} />
-      </View>
-
-      {/* Grade buttons */}
-      <View className="flex-row gap-space-sm pb-space-xl">
-        {GRADE_BUTTONS.map(({ grade, label, className }) => (
-          <Pressable
-            key={grade}
-            accessibilityRole="button"
-            accessibilityLabel={label}
-            className={`flex-1 items-center rounded-radius-md py-space-sm ${className}`}
-            onPress={() => gradeCurrentItem(grade)}>
-            <Text className="text-body font-semibold text-white">{label}</Text>
-          </Pressable>
-        ))}
-      </View>
+      <SessionExitSheet
+        visible={exitVisible}
+        onKeepGoing={handleKeepGoing}
+        onEndSession={handleEndSession}
+      />
     </SafeAreaView>
   );
 }
