@@ -57,3 +57,10 @@
 - **Mock `item_id` type divergence risk** — `__mocks__/expo-sqlite.ts`. Mock correctly mirrors current integer-ID contract; future risk if `item_id` is ever stored as TEXT.
 - **SQLite `SQLITE_LIMIT_VARIABLE_NUMBER` (999) not chunked** — `itemRepository.ts`, `relatedItemBoostRepository.ts`, `srsStateRepository.ts`. N5 curriculum is ~100 items; chunk `IN (...)` queries into batches of ≤999 when curriculum grows to JLPT N4+.
 - **`levels` prop shrinks while `revealedCount > levels.length`** — `ProgressiveHint.tsx`. Levels is static per item in practice; make `visibleLevels = levels.slice(0, Math.min(revealedCount, levels.length))` if dynamic levels are ever introduced.
+
+## Deferred from: code review of 6-2-stats-tab-with-weakness-trends-and-srs-stage-breakdown (2026-06-28)
+
+- **error.userMessage never set** — `useSRSBreakdown.ts` constructs AppError with `{code, message, cause}` but no `userMessage`; screen's `error.userMessage ?? fallback` always falls through to generic copy. Pre-existing AppError design limitation; provide userMessage in hook error construction when UX requires specific error messages.
+- **Mock GROUP BY ignores WHERE clauses** — `__mocks__/expo-sqlite.ts` new GROUP BY branch groups over unfiltered rows; current query has no WHERE so tests pass. If a WHERE-filtered variant is added, the mock will return wrong counts silently.
+- **SRS_STAGE_LABELS and emptyStageCounts manual sync** — `srsStateRepository.ts` has two separate enumerations of the five stage labels; TypeScript's exhaustive Record catches additions at compile time, low risk.
+- **STAGE_LABEL map duplicated** — `SrsStageBreakdown.tsx` and `SRSStageIndicator.tsx` each define capitalized display names independently; refactor into a shared constant if labels ever change.

@@ -483,6 +483,17 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
   if (/FROM srs_states/i.test(trimmed)) {
     let rows = [...(state.tables.get('srs_states') ?? [])];
     if (/COUNT\(\*\)/i.test(trimmed)) {
+      if (/GROUP BY srs_stage_label/i.test(trimmed)) {
+        const counts = new Map<string, number>();
+        for (const row of rows) {
+          const label = String(row.srs_stage_label);
+          counts.set(label, (counts.get(label) ?? 0) + 1);
+        }
+        return Array.from(counts.entries()).map(([srs_stage_label, count]) => ({
+          srs_stage_label,
+          count,
+        }));
+      }
       return [{ count: rows.length }];
     }
     if (/WHERE item_id = \?/i.test(trimmed)) {

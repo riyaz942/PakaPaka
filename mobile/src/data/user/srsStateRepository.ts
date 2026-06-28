@@ -42,6 +42,42 @@ function mapRowToState(row: SrsStateRow): SRSState {
   };
 }
 
+const SRS_STAGE_LABELS: SRSStageLabel[] = [
+  'apprentice',
+  'guru',
+  'master',
+  'enlightened',
+  'burned',
+];
+
+function emptyStageCounts(): Record<SRSStageLabel, number> {
+  return {
+    apprentice: 0,
+    guru: 0,
+    master: 0,
+    enlightened: 0,
+    burned: 0,
+  };
+}
+
+/** Inventory counts per SRS stage label (burned items included). */
+export function getSrsStageCounts(userDb: SQLiteDatabase): Record<SRSStageLabel, number> {
+  const counts = emptyStageCounts();
+
+  const rows = userDb.getAllSync<{ srs_stage_label: string; count: number }>(
+    `SELECT srs_stage_label, COUNT(*) AS count FROM srs_states GROUP BY srs_stage_label`,
+  );
+
+  for (const row of rows) {
+    const label = row.srs_stage_label as SRSStageLabel;
+    if (SRS_STAGE_LABELS.includes(label)) {
+      counts[label] = row.count;
+    }
+  }
+
+  return counts;
+}
+
 /** Returns SRS states with due_date <= now, excluding burned items. */
 export function getDueSrsStates(
   userDb: SQLiteDatabase,

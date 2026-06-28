@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-28"
+last_updated: "2026-06-28"  # story 6-2 done
 
 project: japanese-learning
 project_key: NOKEY
@@ -88,7 +88,7 @@ development_status:
 
   epic-6: in-progress
   6-1-weakness-detection-pipeline: done
-  6-2-stats-tab-with-weakness-trends-and-srs-stage-breakdown: backlog
+  6-2-stats-tab-with-weakness-trends-and-srs-stage-breakdown: done
   6-3-cognitive-load-ring-and-daily-threshold-guidance: backlog
   6-4-streak-tracking-and-opt-in-notifications: backlog
   6-5-post-session-summary-and-home-screen-composition: backlog

@@ -3,6 +3,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import {
   getDueSrsStates,
+  getSrsStageCounts,
   getSrsState,
   seedMissingSrsStatesForInProgress,
   upsertSrsState,
@@ -34,6 +35,53 @@ let db: SQLiteDatabase;
 beforeEach(async () => {
   __mockResetSqlite();
   db = await openDatabaseAsync('user.db') as unknown as SQLiteDatabase;
+});
+
+describe('getSrsStageCounts', () => {
+  it('returns all five stages at zero on an empty database', () => {
+    const counts = getSrsStageCounts(db);
+    expect(counts).toEqual({
+      apprentice: 0,
+      guru: 0,
+      master: 0,
+      enlightened: 0,
+      burned: 0,
+    });
+  });
+
+  it('returns correct per-stage counts for mixed rows', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 1, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 1, lapses: 0, is_burned: 0, srs_stage_label: 'apprentice', updated_at: PAST_ISO },
+      { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 2, lapses: 0, is_burned: 0, srs_stage_label: 'apprentice', updated_at: PAST_ISO },
+      { item_id: 3, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 4, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 4, lapses: 0, is_burned: 0, srs_stage_label: 'master', updated_at: PAST_ISO },
+      { item_id: 5, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 5, lapses: 0, is_burned: 0, srs_stage_label: 'enlightened', updated_at: PAST_ISO },
+    ]);
+
+    expect(getSrsStageCounts(db)).toEqual({
+      apprentice: 2,
+      guru: 1,
+      master: 1,
+      enlightened: 1,
+      burned: 0,
+    });
+  });
+
+  it('includes burned rows in the burned stage count', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 1, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 1, srs_stage_label: 'burned', updated_at: PAST_ISO },
+      { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 1, srs_stage_label: 'burned', updated_at: PAST_ISO },
+      { item_id: 3, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+    ]);
+
+    expect(getSrsStageCounts(db)).toEqual({
+      apprentice: 0,
+      guru: 1,
+      master: 0,
+      enlightened: 0,
+      burned: 2,
+    });
+  });
 });
 
 describe('getDueSrsStates', () => {
