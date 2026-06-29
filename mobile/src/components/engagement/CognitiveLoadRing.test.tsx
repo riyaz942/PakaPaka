@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native';
 
-import { CognitiveLoadRing } from './CognitiveLoadRing';
+import { CognitiveLoadRing, ringBandClasses } from './CognitiveLoadRing';
 
 describe('CognitiveLoadRing', () => {
   it('has progressbar accessibility role prop', () => {
@@ -34,5 +34,34 @@ describe('CognitiveLoadRing', () => {
     const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="large" percent={0} />);
     const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
     expect(el).toBeTruthy();
+  });
+
+  it('applies green band at 0%', () => {
+    expect(ringBandClasses(0).border).toBe('border-ring-start');
+    const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="small" percent={0} />);
+    const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
+    expect(el.props.className).toContain('border-ring-start');
+  });
+
+  it('applies yellow band at 55%', () => {
+    expect(ringBandClasses(55).border).toBe('border-ring-mid');
+    const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="small" percent={55} />);
+    const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
+    expect(el.props.className).toContain('border-ring-mid');
+  });
+
+  it('applies orange band at 80%', () => {
+    expect(ringBandClasses(80).border).toBe('border-ring-end');
+    const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="small" percent={80} />);
+    const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
+    expect(el.props.className).toContain('border-ring-end');
+  });
+
+  it('applies cyan complete band at 100%', () => {
+    expect(ringBandClasses(100).border).toBe('border-ring-complete');
+    const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="small" percent={100} />);
+    const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
+    expect(el.props.className).toContain('border-ring-complete');
+    expect(screen.getByText('100%')).toBeTruthy();
   });
 });

@@ -1,11 +1,20 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
-import { MAX_PREFETCH } from '@/config/constants';
+import { COGNITIVE_LOAD_HISTORY_WINDOW, MAX_PREFETCH } from '@/config/constants';
+import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/loadTracker';
+import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import type { ReviewGrade, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
+import {
+  addDailyLoad,
+  getDailyLoad,
+  getRecentDailyLoads,
+  todayKey,
+} from '@/data/user/cognitiveLoadRepository';
+import { getSessionIntensity } from '@/data/user/preferencesRepository';
 import { applyBoosts } from '@/data/user/relatedItemBoostRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
@@ -19,6 +28,8 @@ type ReviewSessionState = {
   isLoading: boolean;
   isComplete: boolean;
   error: AppError | null;
+  cognitiveLoadPercent: number;
+  cognitiveLoadComplete: boolean;
   refetch: () => void;
   gradeCurrentItem: (grade: ReviewGrade) => void;
   /**
@@ -46,12 +57,30 @@ export function ReviewSessionProvider({ children }: Props) {
   const { userDb } = useDatabase();
   const { queue, isLoading, error, refetch } = useReviewQueue();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [baseLoad, setBaseLoad] = useState(0);
+  const [sessionLoad, setSessionLoad] = useState(0);
+  const thresholdRef = useRef(30);
+  const loadInitialized = useRef(false);
   const isGrading = useRef(false);
   const pendingWrites = useRef<SRSState[]>([]);
 
   useEffect(() => {
     setCurrentIndex(0);
+    setSessionLoad(0);
+    loadInitialized.current = false;
   }, [queue]);
+
+  useEffect(() => {
+    if (loadInitialized.current || isLoading) return;
+    loadInitialized.current = true;
+
+    const today = todayKey();
+    const daily = getDailyLoad(userDb, today);
+    const recentLoads = getRecentDailyLoads(userDb, today, COGNITIVE_LOAD_HISTORY_WINDOW);
+    const intensity = getSessionIntensity(userDb) ?? 'relaxed';
+    thresholdRef.current = computeThreshold({ intensity, recentLoads });
+    setBaseLoad(daily?.load ?? 0);
+  }, [userDb, isLoading]);
 
   useEffect(() => {
     return () => {
@@ -115,6 +144,21 @@ export function ReviewSessionProvider({ children }: Props) {
           if (!weaknessResult.ok && __DEV__) {
             console.warn('[ReviewSession] weakness record failed', weaknessResult.error);
           }
+
+          const increment = computeLoadIncrement({
+            itemType: currentItem.itemType,
+            stageLabel: currentItem.srsState.srsStageLabel,
+            outcome: outcomeResult,
+          });
+          const loadResult = addDailyLoad(userDb, {
+            date: todayKey(),
+            increment,
+            threshold: thresholdRef.current,
+          });
+          if (!loadResult.ok && __DEV__) {
+            console.warn('[ReviewSession] cognitive load persist failed', loadResult.error);
+          }
+          setSessionLoad((load) => load + increment);
         })
         .catch((cause) => {
           pendingWrites.current.push(nextState);
@@ -161,6 +205,10 @@ export function ReviewSessionProvider({ children }: Props) {
       });
   }, [currentItem, userDb]);
 
+  const totalLoad = baseLoad + sessionLoad;
+  const cognitiveLoadPercent = computeLoadPercent(totalLoad, thresholdRef.current);
+  const cognitiveLoadComplete = cognitiveLoadPercent >= 100;
+
   const value: ReviewSessionState = {
     currentItem,
     prefetchBuffer,
@@ -169,6 +217,8 @@ export function ReviewSessionProvider({ children }: Props) {
     isLoading,
     isComplete,
     error,
+    cognitiveLoadPercent,
+    cognitiveLoadComplete,
     refetch,
     gradeCurrentItem,
     recordTypoForCurrentItem,

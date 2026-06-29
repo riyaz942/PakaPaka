@@ -335,6 +335,17 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO cognitive_load_history/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [date, load, threshold, updatedAt] = params;
+    const rows = state.tables.get('cognitive_load_history') ?? [];
+    const idx = rows.findIndex((row) => row.date === date);
+    const next = { date, load, threshold, updated_at: updatedAt };
+    if (idx >= 0) rows[idx] = next;
+    else rows.push(next);
+    state.tables.set('cognitive_load_history', rows);
+    return;
+  }
+
   if (/^INSERT INTO weakness_stats/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const rows = state.tables.get('weakness_stats') ?? [];
     const numericId = Number(params[0]);
@@ -687,6 +698,27 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     if (/WHERE item_id IN/i.test(trimmed)) {
       const ids = new Set(params);
       rows = rows.filter((row) => ids.has(row.item_id));
+    }
+    return rows;
+  }
+
+  if (/FROM cognitive_load_history/i.test(trimmed)) {
+    let rows = [...(state.tables.get('cognitive_load_history') ?? [])];
+    if (/WHERE date = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.date === params[0]);
+    }
+    if (/WHERE date < \?/i.test(trimmed)) {
+      rows = rows.filter((row) => String(row.date) < String(params[0]));
+    }
+    if (/ORDER BY date DESC/i.test(trimmed)) {
+      rows.sort((left, right) => String(right.date).localeCompare(String(left.date)));
+    }
+    if (/LIMIT \?/i.test(trimmed)) {
+      const limit = Number(params[params.length - 1]);
+      rows = rows.slice(0, limit);
+    }
+    if (/SELECT load FROM/i.test(trimmed)) {
+      return rows.map((row) => ({ load: row.load }));
     }
     return rows;
   }

@@ -58,6 +58,14 @@
 - **SQLite `SQLITE_LIMIT_VARIABLE_NUMBER` (999) not chunked** — `itemRepository.ts`, `relatedItemBoostRepository.ts`, `srsStateRepository.ts`. N5 curriculum is ~100 items; chunk `IN (...)` queries into batches of ≤999 when curriculum grows to JLPT N4+.
 - **`levels` prop shrinks while `revealedCount > levels.length`** — `ProgressiveHint.tsx`. Levels is static per item in practice; make `visibleLevels = levels.slice(0, Math.min(revealedCount, levels.length))` if dynamic levels are ever introduced.
 
+## Deferred from: code review of 6-3-cognitive-load-ring-and-daily-threshold-guidance (2026-06-29)
+
+- **Midnight rollover drift** — `baseLoad` seeded from the old day's key if a review session crosses midnight; `gradeCurrentItem` writes to the new date row while the in-session percent still uses the old baseline. Accepted v1 limitation per spec ("do not over-engineer DST"); revisit if a bug is reported.
+- **`thresholdRef` not re-computed when session intensity changes mid-session** — Preference is set at onboarding and rarely changed; threshold stays at the mount-time value for the session's lifetime.
+- **Same-day multi-session threshold adaptation blind to today's earlier load** — `getRecentDailyLoads` filters `date < today`, so a second same-day session does not factor the first session's load into threshold adaptation. Design-consistent v1 approach; revisit if users report premature 100% on multi-session days.
+- **Threshold notice re-shows after `ReviewScreen` unmount/remount** — `thresholdNoticeShownRef` is a local ref (no persistence). A tab-switch mid-session resets it, allowing the notice to appear a second time. Add a `useRef` keyed to today's date in AsyncStorage if this is user-reported.
+- **Mock `LIMIT ?` parameter extraction fragility** — `expo-sqlite.ts` test mock uses `params[params.length - 1]` to extract the LIMIT value; silently breaks if query gains a trailing param after LIMIT.
+
 ## Deferred from: code review of 6-2-stats-tab-with-weakness-trends-and-srs-stage-breakdown (2026-06-28)
 
 - **error.userMessage never set** — `useSRSBreakdown.ts` constructs AppError with `{code, message, cause}` but no `userMessage`; screen's `error.userMessage ?? fallback` always falls through to generic copy. Pre-existing AppError design limitation; provide userMessage in hook error construction when UX requires specific error messages.

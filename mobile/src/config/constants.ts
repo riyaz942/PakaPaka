@@ -50,6 +50,60 @@ export const CLUSTER_ACCURACY_THRESHOLD = 0.6;
 /** Pause before auto-advancing after a correct answer (Epic 6 will make this configurable). */
 export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;
 
+/**
+ * Base cognitive load per item type (tunable defaults).
+ * Kanji and grammar are heaviest; radicals are lightest.
+ * Calibrated so a typical relaxed session (~15 mixed items) reaches ~100% threshold.
+ */
+export const COGNITIVE_LOAD_WEIGHTS: Record<'radical' | 'kanji' | 'vocabulary' | 'grammar', number> = {
+  radical: 1,
+  kanji: 3,
+  grammar: 3,
+  vocabulary: 2,
+};
+
+/**
+ * Maturity multiplier by SRS stage — apprentice items cost the most mental energy.
+ */
+export const COGNITIVE_LOAD_MATURITY_MULTIPLIER: Record<
+  'apprentice' | 'guru' | 'master' | 'enlightened' | 'burned',
+  number
+> = {
+  apprentice: 1.0,
+  guru: 0.7,
+  master: 0.5,
+  enlightened: 0.4,
+  burned: 0.3,
+};
+
+/** Extra load multiplier applied when the learner answers incorrectly. */
+export const INCORRECT_LOAD_SURCHARGE = 1.5;
+
+/**
+ * Base daily load threshold by session intensity (load units, not minutes).
+ * Relaxed (~15 items): avg ~2 units/item × 15 ≈ 30 → 100% at threshold 30.
+ * Intense (~30 items): higher ceiling so sustained study can fill the ring more gradually.
+ */
+export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
+  relaxed: 30,
+  intense: 55,
+};
+
+/** Floor for adapted threshold — never collapses below this on light days. */
+export const COGNITIVE_LOAD_THRESHOLD_MIN = 20;
+
+/** Ceiling for adapted threshold — prevents runaway growth. */
+export const COGNITIVE_LOAD_THRESHOLD_MAX = 90;
+
+/** Number of prior calendar days used for threshold adaptation. */
+export const COGNITIVE_LOAD_HISTORY_WINDOW = 7;
+
+/**
+ * Blend factor toward recent daily load when adapting threshold (0–1).
+ * 0.35 means 35% weight on rolling average, 65% on intensity base.
+ */
+export const COGNITIVE_LOAD_THRESHOLD_ADAPTATION_GAIN = 0.35;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 

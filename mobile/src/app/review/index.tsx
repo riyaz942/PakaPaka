@@ -14,6 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { DailyThresholdNotice } from '@/components/engagement';
 import {
   ReviewCard,
   resolveCorrectReveal,
@@ -72,9 +73,13 @@ export default function ReviewScreen() {
     refetch,
     gradeCurrentItem,
     recordTypoForCurrentItem,
+    cognitiveLoadPercent,
+    cognitiveLoadComplete,
   } = useReviewSession();
 
   const [exitVisible, setExitVisible] = useState(false);
+  const [thresholdNoticeVisible, setThresholdNoticeVisible] = useState(false);
+  const thresholdNoticeShownRef = useRef(false);
   const [cardState, setCardState] = useState<ReviewCardState>('prompting');
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
@@ -120,6 +125,16 @@ export default function ReviewScreen() {
       autoAdvanceTimer.current = null;
     }
   }, [currentItem?.itemId]);
+
+  useEffect(() => {
+    if (cognitiveLoadComplete && !thresholdNoticeShownRef.current) {
+      thresholdNoticeShownRef.current = true;
+      setThresholdNoticeVisible(true);
+      AccessibilityInfo.announceForAccessibility(
+        "You've done enough for today. Keep going if you like, or wrap up anytime.",
+      );
+    }
+  }, [cognitiveLoadComplete]);
 
   const handleSubmit = useCallback(() => {
     if (!currentItem || !inputEditable) return;
@@ -251,7 +266,13 @@ export default function ReviewScreen() {
         currentIndex={currentIndex}
         totalItems={totalItems}
         itemType={currentItem.itemType}
+        cognitiveLoadPercent={cognitiveLoadPercent}
         onExitPress={() => setExitVisible(true)}
+      />
+
+      <DailyThresholdNotice
+        visible={thresholdNoticeVisible}
+        onDismiss={() => setThresholdNoticeVisible(false)}
       />
 
       <View className="flex-1 justify-center px-space-md">

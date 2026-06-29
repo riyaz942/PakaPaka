@@ -17,6 +17,10 @@ jest.mock('@/data/hooks/useReviewQueue', () => ({
 
 const mockUpsertSrsState = jest.fn();
 const mockApplyBoosts = jest.fn();
+const mockGetDailyLoad = jest.fn();
+const mockGetRecentDailyLoads = jest.fn();
+const mockAddDailyLoad = jest.fn();
+const mockGetSessionIntensity = jest.fn();
 
 jest.mock('@/data/user/srsStateRepository', () => ({
   upsertSrsState: (...args: unknown[]) => mockUpsertSrsState(...args),
@@ -24,6 +28,17 @@ jest.mock('@/data/user/srsStateRepository', () => ({
 
 jest.mock('@/data/user/relatedItemBoostRepository', () => ({
   applyBoosts: (...args: unknown[]) => mockApplyBoosts(...args),
+}));
+
+jest.mock('@/data/user/cognitiveLoadRepository', () => ({
+  getDailyLoad: (...args: unknown[]) => mockGetDailyLoad(...args),
+  getRecentDailyLoads: (...args: unknown[]) => mockGetRecentDailyLoads(...args),
+  addDailyLoad: (...args: unknown[]) => mockAddDailyLoad(...args),
+  todayKey: () => '2026-06-28',
+}));
+
+jest.mock('@/data/user/preferencesRepository', () => ({
+  getSessionIntensity: (...args: unknown[]) => mockGetSessionIntensity(...args),
 }));
 
 const NOW = '2026-06-27T10:00:00.000Z';
@@ -65,8 +80,16 @@ describe('ReviewSessionProvider', () => {
     __mockResetSqlite();
     mockUpsertSrsState.mockReset();
     mockApplyBoosts.mockReset();
+    mockGetDailyLoad.mockReset();
+    mockGetRecentDailyLoads.mockReset();
+    mockAddDailyLoad.mockReset();
+    mockGetSessionIntensity.mockReset();
     mockUpsertSrsState.mockReturnValue({ ok: true, value: undefined });
     mockApplyBoosts.mockReturnValue({ ok: true, value: undefined });
+    mockGetDailyLoad.mockReturnValue(null);
+    mockGetRecentDailyLoads.mockReturnValue([]);
+    mockGetSessionIntensity.mockReturnValue('relaxed');
+    mockAddDailyLoad.mockReturnValue({ ok: true, value: undefined });
     mockUseReviewQueue.mockReturnValue({
       queue: makeQueue(10),
       isLoading: false,
@@ -267,5 +290,98 @@ describe('ReviewSessionProvider', () => {
     });
 
     expect(result.current.currentItem?.itemId).toBe('2');
+  });
+
+  it('increases cognitive load percent after a correct grade', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    expect(result.current.cognitiveLoadPercent).toBe(0);
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.cognitiveLoadPercent).toBeGreaterThan(0);
+    expect(mockAddDailyLoad).toHaveBeenCalled();
+  });
+
+  it('increases cognitive load more after an incorrect grade than correct', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result: correctResult } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(correctResult.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      correctResult.current.gradeCurrentItem(3);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    const correctPercent = correctResult.current.cognitiveLoadPercent;
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(10),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result: incorrectResult } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(incorrectResult.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      incorrectResult.current.gradeCurrentItem(1);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(incorrectResult.current.cognitiveLoadPercent).toBeGreaterThan(correctPercent);
+  });
+
+  it('does not change cognitive load on typo', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    const before = result.current.cognitiveLoadPercent;
+
+    act(() => {
+      result.current.recordTypoForCurrentItem();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.cognitiveLoadPercent).toBe(before);
+    expect(mockAddDailyLoad).not.toHaveBeenCalled();
   });
 });
