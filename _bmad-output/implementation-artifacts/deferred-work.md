@@ -73,6 +73,14 @@
 - **SRS_STAGE_LABELS and emptyStageCounts manual sync** — `srsStateRepository.ts` has two separate enumerations of the five stage labels; TypeScript's exhaustive Record catches additions at compile time, low risk.
 - **STAGE_LABEL map duplicated** — `SrsStageBreakdown.tsx` and `SRSStageIndicator.tsx` each define capitalized display names independently; refactor into a shared constant if labels ever change.
 
+## Deferred from: code review of 6-5-post-session-summary-and-home-screen-composition (2026-06-29)
+
+- **`useLevelProgress` runs 6+ synchronous DB calls per focus event** — pre-existing pattern across `useStreak`, `useCognitiveLoad`; optimize with async if render jank is observed on large curriculum levels. [`mobile/src/data/hooks/useLevelProgress.ts`]
+- **`navigatedToSummaryRef` never reset if review component instance reused** — not current Expo Router behavior; revisit if stack keep-alive is enabled. [`mobile/src/app/review/index.tsx`]
+- **`dueCount` capped at `QUEUE_FETCH_LIMIT` (100) with no visual truncation indicator** — pre-existing `getDueSrsStates` behavior; already noted in story 5-1 deferred work. [`mobile/src/data/user/srsStateRepository.ts`]
+- **`sessionSummary` object allocated every render with no memoization** — correctness unaffected; adds allocations and breaks `useEffect` dep-array stability for any future consumer; add `useMemo` if instability is observed. [`mobile/src/providers/ReviewSessionProvider.tsx`]
+- **`level` state not refreshed in `useFocusEffect`** — Settings level-change UX not yet built; revisit when Settings allows JLPT level editing. [`mobile/src/app/(tabs)/index.tsx`]
+
 ## Deferred from: code review of 6-4-streak-tracking-and-opt-in-notifications (2026-06-29)
 
 - **`useStreak` no midnight refetch trigger** — stale `currentStreak`/`lastReviewDate` DB values persist until `refetch()` or remount; `streakState` derivation uses fresh `todayKey()` per render. Accepted v1 limitation. [`mobile/src/data/hooks/useStreak.ts`]

@@ -110,6 +110,18 @@ export const RELATED_ITEM_BOOST_DELTA = 0.15;
 /** Max cumulative boost per item — prevents queue starvation. */
 export const RELATED_ITEM_BOOST_CAP = 1.0;
 
+// Conservative lower-bound seconds to review one item in a separate single-domain tool.
+export const TIME_COMPRESSION_PER_ITEM_SECONDS: Record<
+  'radical' | 'kanji' | 'vocabulary' | 'grammar',
+  number
+> = { radical: 15, kanji: 40, vocabulary: 30, grammar: 50 };
+
+/** Fixed minutes added for operating ≥2 separate tools in one study block. */
+export const TIME_COMPRESSION_SESSION_OVERHEAD_MINUTES = 5;
+
+/** Overhead only applies when the session actually spanned multiple domains. */
+export const TIME_COMPRESSION_MIN_DOMAINS_FOR_OVERHEAD = 2;
+
 /** Progressive hint button labels (grammar prompts only). */
 export const HINT_BUTTON_LABEL = 'Hint';
 export function hintButtonLabel(revealed: number, total: number): string {

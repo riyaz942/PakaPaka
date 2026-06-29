@@ -6,6 +6,7 @@ import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import type { ReviewGrade, ReviewItem, SRSState } from '@/core/srs/srs.types';
+import type { ItemType } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
 import {
@@ -21,6 +22,13 @@ import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
 import type { AppError } from '@/types/result.types';
 
+type SessionSummary = {
+  domainCounts: Record<ItemType, number>;
+  itemsReviewed: number;
+  durationMs: number;
+  sessionEndAt: number;
+};
+
 type ReviewSessionState = {
   currentItem: ReviewItem | null;
   prefetchBuffer: ReviewItem[];
@@ -31,6 +39,8 @@ type ReviewSessionState = {
   error: AppError | null;
   cognitiveLoadPercent: number;
   cognitiveLoadComplete: boolean;
+  sessionSummary: SessionSummary;
+  snapshotSessionDuration: () => void;
   refetch: () => void;
   gradeCurrentItem: (grade: ReviewGrade) => void;
   /**
@@ -64,16 +74,35 @@ export function ReviewSessionProvider({ children }: Props) {
   const loadInitialized = useRef(false);
   const isGrading = useRef(false);
   const pendingWrites = useRef<SRSState[]>([]);
+  const sessionStartRef = useRef<number | null>(null);
+  const durationSnapshotRef = useRef<number | null>(null);
+  const sessionEndAtRef = useRef<number | null>(null);
+  const domainCountsRef = useRef<Record<ItemType, number>>({
+    radical: 0,
+    kanji: 0,
+    vocabulary: 0,
+    grammar: 0,
+  });
 
   useEffect(() => {
     setCurrentIndex(0);
     setSessionLoad(0);
     loadInitialized.current = false;
+    sessionStartRef.current = null;
+    durationSnapshotRef.current = null;
+    sessionEndAtRef.current = null;
+    domainCountsRef.current = {
+      radical: 0,
+      kanji: 0,
+      vocabulary: 0,
+      grammar: 0,
+    };
   }, [queue]);
 
   useEffect(() => {
     if (loadInitialized.current || isLoading) return;
     loadInitialized.current = true;
+    sessionStartRef.current = Date.now();
 
     const today = todayKey();
     const daily = getDailyLoad(userDb, today);
@@ -97,6 +126,11 @@ export function ReviewSessionProvider({ children }: Props) {
 
   useEffect(() => {
     if (!isComplete) return;
+    if (durationSnapshotRef.current === null && sessionStartRef.current !== null) {
+      const now = Date.now();
+      durationSnapshotRef.current = now - sessionStartRef.current;
+      sessionEndAtRef.current = now;
+    }
     const today = todayKey();
     const result = recordReviewAndUpdateStreak(userDb, today);
     if (!result.ok && __DEV__) {
@@ -115,6 +149,7 @@ export function ReviewSessionProvider({ children }: Props) {
 
       isGrading.current = true;
       const nextState = gradeItem(currentItem.srsState, grade, new Date());
+      const gradedItemType = currentItem.itemType;
       // grade === 1 (Again) → incorrect; anything else → correct.
       const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
       const promptType = currentItem.promptType;
@@ -180,6 +215,8 @@ export function ReviewSessionProvider({ children }: Props) {
           isGrading.current = false;
         });
 
+      domainCountsRef.current[gradedItemType] += 1;
+
       setCurrentIndex((i) => i + 1);
     },
     [currentItem, userDb],
@@ -219,6 +256,30 @@ export function ReviewSessionProvider({ children }: Props) {
   const cognitiveLoadPercent = computeLoadPercent(totalLoad, thresholdRef.current);
   const cognitiveLoadComplete = cognitiveLoadPercent >= 100;
 
+  const domainCounts = domainCountsRef.current;
+  const itemsReviewed =
+    domainCounts.radical +
+    domainCounts.kanji +
+    domainCounts.vocabulary +
+    domainCounts.grammar;
+  const durationMs =
+    durationSnapshotRef.current ??
+    (sessionStartRef.current !== null ? Date.now() - sessionStartRef.current : 0);
+
+  const snapshotSessionDuration = useCallback(() => {
+    if (durationSnapshotRef.current !== null || sessionStartRef.current === null) return;
+    const now = Date.now();
+    durationSnapshotRef.current = now - sessionStartRef.current;
+    sessionEndAtRef.current = now;
+  }, []);
+
+  const sessionSummary: SessionSummary = {
+    domainCounts: { ...domainCounts },
+    itemsReviewed,
+    durationMs,
+    sessionEndAt: sessionEndAtRef.current ?? Date.now(),
+  };
+
   const value: ReviewSessionState = {
     currentItem,
     prefetchBuffer,
@@ -229,6 +290,8 @@ export function ReviewSessionProvider({ children }: Props) {
     error,
     cognitiveLoadPercent,
     cognitiveLoadComplete,
+    sessionSummary,
+    snapshotSessionDuration,
     refetch,
     gradeCurrentItem,
     recordTypoForCurrentItem,

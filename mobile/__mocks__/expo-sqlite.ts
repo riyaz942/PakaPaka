@@ -507,6 +507,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM srs_states/i.test(trimmed)) {
     let rows = [...(state.tables.get('srs_states') ?? [])];
+    if (/WHERE item_id IN/i.test(trimmed)) {
+      const allowedIds = new Set(params);
+      rows = rows.filter((row) => allowedIds.has(row.item_id));
+      if (/COUNT\(\*\)/i.test(trimmed)) {
+        return [{ count: rows.length }];
+      }
+      return rows;
+    }
     if (/COUNT\(\*\)/i.test(trimmed)) {
       if (/GROUP BY srs_stage_label/i.test(trimmed)) {
         const counts = new Map<string, number>();

@@ -130,6 +130,31 @@ export function getSrsStatesForItems(
   return result;
 }
 
+const SQL_VARIABLE_LIMIT = 999;
+
+/** Batch-count SRS states present for the given item IDs. Chunks into ≤999-param batches to respect SQLite SQLITE_MAX_VARIABLE_NUMBER. */
+export function countStartedItemsByIds(
+  userDb: SQLiteDatabase,
+  itemIds: string[],
+): number {
+  if (itemIds.length === 0) return 0;
+
+  const numericIds = itemIds.map((id) => parseItemId(id));
+  let total = 0;
+
+  for (let i = 0; i < numericIds.length; i += SQL_VARIABLE_LIMIT) {
+    const chunk = numericIds.slice(i, i + SQL_VARIABLE_LIMIT);
+    const placeholders = chunk.map(() => '?').join(', ');
+    const row = userDb.getFirstSync<{ count: number }>(
+      `SELECT COUNT(*) AS count FROM srs_states WHERE item_id IN (${placeholders})`,
+      ...chunk,
+    );
+    total += row?.count ?? 0;
+  }
+
+  return total;
+}
+
 export function upsertSrsState(
   userDb: SQLiteDatabase,
   state: SRSState,

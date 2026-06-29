@@ -48,10 +48,10 @@ jest.mock('@/data/user/streakRepository', () => ({
 
 const NOW = '2026-06-27T10:00:00.000Z';
 
-function makeReviewItem(id: string): ReviewItem {
+function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'): ReviewItem {
   return {
     itemId: id,
-    itemType: 'kanji',
+    itemType,
     primaryForm: `kanji-${id}`,
     meanings: [`meaning-${id}`],
     promptType: 'reading',
@@ -438,5 +438,65 @@ describe('ReviewSessionProvider', () => {
 
     expect(result.current.isComplete).toBe(false);
     expect(mockRecordReviewAndUpdateStreak).not.toHaveBeenCalled();
+  });
+
+  it('increments domain counters per gradeCurrentItem by item type', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const vocabularyItem: ReviewItem = { ...makeReviewItem('1', 'vocabulary') };
+    const grammarItem: ReviewItem = { ...makeReviewItem('2', 'grammar') };
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: [vocabularyItem, grammarItem],
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('2');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+
+    expect(result.current.sessionSummary.domainCounts.vocabulary).toBe(1);
+    expect(result.current.sessionSummary.domainCounts.grammar).toBe(1);
+    expect(result.current.sessionSummary.itemsReviewed).toBe(2);
+  });
+
+  it('does not increment domain counters on recordTypoForCurrentItem', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.recordTypoForCurrentItem();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.sessionSummary.itemsReviewed).toBe(0);
+    expect(result.current.sessionSummary.domainCounts.kanji).toBe(0);
   });
 });

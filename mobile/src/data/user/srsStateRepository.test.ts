@@ -2,6 +2,7 @@ import { openDatabaseAsync, __mockResetSqlite, __mockSetSrsStates } from '../../
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import {
+  countStartedItemsByIds,
   getDueSrsStates,
   getSrsStageCounts,
   getSrsState,
@@ -196,5 +197,20 @@ describe('seedMissingSrsStatesForInProgress', () => {
     expect(state!.fsrsState).toBe('new');
     expect(state!.srsStageLabel).toBe('apprentice');
     expect(state!.isBurned).toBe(false);
+  });
+});
+
+describe('countStartedItemsByIds', () => {
+  it('returns 0 for empty input', () => {
+    expect(countStartedItemsByIds(db, [])).toBe(0);
+  });
+
+  it('counts only items with srs_states rows', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 1, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 1, lapses: 0, is_burned: 0, srs_stage_label: 'apprentice', updated_at: PAST_ISO },
+      { item_id: 3, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 1, lapses: 0, is_burned: 0, srs_stage_label: 'apprentice', updated_at: PAST_ISO },
+    ]);
+
+    expect(countStartedItemsByIds(db, ['1', '2', '3'])).toBe(2);
   });
 });

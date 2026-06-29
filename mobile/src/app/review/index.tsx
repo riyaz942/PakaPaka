@@ -1,5 +1,5 @@
 import { usePreventRemove } from '@react-navigation/core';
-import { router } from 'expo-router';
+import { router, type Href } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
@@ -75,11 +75,13 @@ export default function ReviewScreen() {
     recordTypoForCurrentItem,
     cognitiveLoadPercent,
     cognitiveLoadComplete,
+    snapshotSessionDuration,
   } = useReviewSession();
 
   const [exitVisible, setExitVisible] = useState(false);
   const [thresholdNoticeVisible, setThresholdNoticeVisible] = useState(false);
   const thresholdNoticeShownRef = useRef(false);
+  const navigatedToSummaryRef = useRef(false);
   const [cardState, setCardState] = useState<ReviewCardState>('prompting');
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
@@ -136,6 +138,12 @@ export default function ReviewScreen() {
     }
   }, [cognitiveLoadComplete]);
 
+  useEffect(() => {
+    if (!isComplete || navigatedToSummaryRef.current) return;
+    navigatedToSummaryRef.current = true;
+    router.replace('/review/summary' as Href);
+  }, [isComplete]);
+
   const handleSubmit = useCallback(() => {
     if (!currentItem || !inputEditable) return;
     if (!answerText.trim()) return;
@@ -187,8 +195,10 @@ export default function ReviewScreen() {
   function handleEndSession() {
     if (isEndingRef.current) return;
     isEndingRef.current = true;
+    navigatedToSummaryRef.current = true;
     setExitVisible(false);
-    router.back();
+    snapshotSessionDuration();
+    router.replace('/review/summary' as Href);
   }
 
   function handleKeepGoing() {
@@ -228,15 +238,14 @@ export default function ReviewScreen() {
     );
   }
 
-  if (isComplete || (totalItems === 0 && !isLoading)) {
+  // Nothing due — keep inline message rather than routing to an empty summary.
+  if (totalItems === 0 && !isLoading) {
     return (
       <SafeAreaView className="flex-1 bg-background px-space-lg">
         <View className="flex-1 justify-center gap-space-md">
-          <Text className="text-title text-primary">Session Complete</Text>
+          <Text className="text-title text-primary">No Reviews Due</Text>
           <Text className="text-body text-secondary">
-            {totalItems === 0
-              ? 'No items due for review right now.'
-              : `Great work! You reviewed ${totalItems} item${totalItems !== 1 ? 's' : ''}.`}
+            No items due for review right now.
           </Text>
           <Pressable
             accessibilityRole="button"
@@ -245,6 +254,14 @@ export default function ReviewScreen() {
             <Text className="text-body text-feedback-info">Back</Text>
           </Pressable>
         </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (isComplete) {
+    return (
+      <SafeAreaView className="flex-1 items-center justify-center bg-background">
+        <ActivityIndicator accessibilityLabel="Loading session summary" />
       </SafeAreaView>
     );
   }
