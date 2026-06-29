@@ -18,6 +18,8 @@ export const PREFERENCE_KEYS = {
   onboardingCompleted: 'onboarding_completed',
   onboardingPath: 'onboarding_path',
   weaknessBiasEnabled: 'weakness_bias_enabled',
+  notificationsEnabled: 'notifications_enabled',
+  notificationReminderTime: 'notification_reminder_time',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -134,6 +136,49 @@ export function getWeaknessBiasEnabled(userDb: SQLiteDatabase): boolean {
 
 export function setWeaknessBiasEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.weaknessBiasEnabled, enabled ? 'true' : 'false');
+}
+
+export type NotificationTime = 'morning' | 'afternoon' | 'evening' | 'night';
+
+export const NOTIFICATION_TIME_HOURS: Record<NotificationTime, number> = {
+  morning: 8,
+  afternoon: 13,
+  evening: 19,
+  night: 21,
+};
+
+const NOTIFICATION_TIMES: readonly NotificationTime[] = [
+  'morning',
+  'afternoon',
+  'evening',
+  'night',
+];
+
+function isNotificationTime(value: string): value is NotificationTime {
+  return (NOTIFICATION_TIMES as readonly string[]).includes(value);
+}
+
+export function getNotificationsEnabled(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.notificationsEnabled) === 'true';
+}
+
+export function setNotificationsEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.notificationsEnabled, enabled ? 'true' : 'false');
+}
+
+export function getNotificationTime(userDb: SQLiteDatabase): NotificationTime {
+  const value = getPreference(userDb, PREFERENCE_KEYS.notificationReminderTime);
+  if (value && isNotificationTime(value)) {
+    return value;
+  }
+  return 'evening';
+}
+
+export function setNotificationTime(userDb: SQLiteDatabase, time: NotificationTime): void {
+  if (!isNotificationTime(time)) {
+    throw new Error(`Invalid notification time: ${time}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.notificationReminderTime, time);
 }
 
 export function setCurriculumInstallMetadata(

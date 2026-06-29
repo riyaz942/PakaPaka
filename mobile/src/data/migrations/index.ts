@@ -6,6 +6,7 @@ import { migration005PersonalMnemonics } from '@/data/migrations/005_personal_mn
 import { migration006RelatedItemBoosts } from '@/data/migrations/006_related_item_boosts';
 import { migration007WeaknessStats } from '@/data/migrations/007_weakness_stats';
 import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitive_load_history';
+import { migration009Streak } from '@/data/migrations/009_streak';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -17,4 +18,5 @@ export const migrations: Migration[] = [
   migration006RelatedItemBoosts,
   migration007WeaknessStats,
   migration008CognitiveLoadHistory,
+  migration009Streak,
 ];

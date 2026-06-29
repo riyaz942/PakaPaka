@@ -346,6 +346,20 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO streaks/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [currentStreak, longestStreak, lastReviewDate, updatedAt] = params;
+    state.tables.set('streaks', [
+      {
+        id: 1,
+        current_streak: currentStreak,
+        longest_streak: longestStreak,
+        last_review_date: lastReviewDate,
+        updated_at: updatedAt,
+      },
+    ]);
+    return;
+  }
+
   if (/^INSERT INTO weakness_stats/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const rows = state.tables.get('weakness_stats') ?? [];
     const numericId = Number(params[0]);
@@ -719,6 +733,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     }
     if (/SELECT load FROM/i.test(trimmed)) {
       return rows.map((row) => ({ load: row.load }));
+    }
+    return rows;
+  }
+
+  if (/FROM streaks/i.test(trimmed)) {
+    const rows = [...(state.tables.get('streaks') ?? [])];
+    if (/WHERE id = 1/i.test(trimmed)) {
+      return rows.filter((row) => Number(row.id) === 1);
     }
     return rows;
   }

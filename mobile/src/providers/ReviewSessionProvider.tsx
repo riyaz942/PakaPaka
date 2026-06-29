@@ -16,6 +16,7 @@ import {
 } from '@/data/user/cognitiveLoadRepository';
 import { getSessionIntensity } from '@/data/user/preferencesRepository';
 import { applyBoosts } from '@/data/user/relatedItemBoostRepository';
+import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
 import type { AppError } from '@/types/result.types';
@@ -93,6 +94,15 @@ export function ReviewSessionProvider({ children }: Props) {
   const totalItems = queue.length;
   const currentItem = queue[currentIndex] ?? null;
   const isComplete = !isLoading && !error && totalItems > 0 && currentIndex >= totalItems;
+
+  useEffect(() => {
+    if (!isComplete) return;
+    const today = todayKey();
+    const result = recordReviewAndUpdateStreak(userDb, today);
+    if (!result.ok && __DEV__) {
+      console.warn('[ReviewSession] streak update failed', result.error);
+    }
+  }, [isComplete, userDb]);
 
   const prefetchBuffer = queue.slice(
     currentIndex + 1,

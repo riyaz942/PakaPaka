@@ -21,6 +21,7 @@ const mockGetDailyLoad = jest.fn();
 const mockGetRecentDailyLoads = jest.fn();
 const mockAddDailyLoad = jest.fn();
 const mockGetSessionIntensity = jest.fn();
+const mockRecordReviewAndUpdateStreak = jest.fn();
 
 jest.mock('@/data/user/srsStateRepository', () => ({
   upsertSrsState: (...args: unknown[]) => mockUpsertSrsState(...args),
@@ -39,6 +40,10 @@ jest.mock('@/data/user/cognitiveLoadRepository', () => ({
 
 jest.mock('@/data/user/preferencesRepository', () => ({
   getSessionIntensity: (...args: unknown[]) => mockGetSessionIntensity(...args),
+}));
+
+jest.mock('@/data/user/streakRepository', () => ({
+  recordReviewAndUpdateStreak: (...args: unknown[]) => mockRecordReviewAndUpdateStreak(...args),
 }));
 
 const NOW = '2026-06-27T10:00:00.000Z';
@@ -84,12 +89,17 @@ describe('ReviewSessionProvider', () => {
     mockGetRecentDailyLoads.mockReset();
     mockAddDailyLoad.mockReset();
     mockGetSessionIntensity.mockReset();
+    mockRecordReviewAndUpdateStreak.mockReset();
     mockUpsertSrsState.mockReturnValue({ ok: true, value: undefined });
     mockApplyBoosts.mockReturnValue({ ok: true, value: undefined });
     mockGetDailyLoad.mockReturnValue(null);
     mockGetRecentDailyLoads.mockReturnValue([]);
     mockGetSessionIntensity.mockReturnValue('relaxed');
     mockAddDailyLoad.mockReturnValue({ ok: true, value: undefined });
+    mockRecordReviewAndUpdateStreak.mockReturnValue({
+      ok: true,
+      value: { currentStreak: 1, longestStreak: 1, lastReviewDate: '2026-06-28' },
+    });
     mockUseReviewQueue.mockReturnValue({
       queue: makeQueue(10),
       isLoading: false,
@@ -383,5 +393,50 @@ describe('ReviewSessionProvider', () => {
 
     expect(result.current.cognitiveLoadPercent).toBe(before);
     expect(mockAddDailyLoad).not.toHaveBeenCalled();
+  });
+
+  it('records streak when session becomes complete', async () => {
+    const db = await openDatabaseAsync('user.db');
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(1),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    expect(mockRecordReviewAndUpdateStreak).not.toHaveBeenCalled();
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await waitFor(() => {
+      expect(result.current.isComplete).toBe(true);
+    });
+
+    expect(mockRecordReviewAndUpdateStreak).toHaveBeenCalledTimes(1);
+    expect(mockRecordReviewAndUpdateStreak).toHaveBeenCalledWith(db, '2026-06-28');
+  });
+
+  it('does not record streak while session is in progress', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    expect(result.current.isComplete).toBe(false);
+    expect(mockRecordReviewAndUpdateStreak).not.toHaveBeenCalled();
   });
 });

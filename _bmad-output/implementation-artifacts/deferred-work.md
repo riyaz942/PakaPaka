@@ -72,3 +72,11 @@
 - **Mock GROUP BY ignores WHERE clauses** — `__mocks__/expo-sqlite.ts` new GROUP BY branch groups over unfiltered rows; current query has no WHERE so tests pass. If a WHERE-filtered variant is added, the mock will return wrong counts silently.
 - **SRS_STAGE_LABELS and emptyStageCounts manual sync** — `srsStateRepository.ts` has two separate enumerations of the five stage labels; TypeScript's exhaustive Record catches additions at compile time, low risk.
 - **STAGE_LABEL map duplicated** — `SrsStageBreakdown.tsx` and `SRSStageIndicator.tsx` each define capitalized display names independently; refactor into a shared constant if labels ever change.
+
+## Deferred from: code review of 6-4-streak-tracking-and-opt-in-notifications (2026-06-29)
+
+- **`useStreak` no midnight refetch trigger** — stale `currentStreak`/`lastReviewDate` DB values persist until `refetch()` or remount; `streakState` derivation uses fresh `todayKey()` per render. Accepted v1 limitation. [`mobile/src/data/hooks/useStreak.ts`]
+- **`isComplete` streak effect re-fires on `userDb` reference change past midnight** — if context parent re-renders while `isComplete=true` after midnight, `recordReviewAndUpdateStreak` fires again; same-day idempotency guard protects against double-count within one calendar day. [`mobile/src/providers/ReviewSessionProvider.tsx`]
+- **`isGrading.current` drops rapid successive grades** — pre-existing behavior; second grade within the async `.finally()` window is silently discarded with no retry. [`mobile/src/providers/ReviewSessionProvider.tsx`]
+- **`yesterdayKey` DST edge case** — `new Date(year, month-1, day-1)` is local-time and could mis-calculate across a DST boundary; spec explicitly accepts "do not over-engineer DST" for v1. [`mobile/src/data/user/streakRepository.ts`]
+- **Notification content hardcoded English** — no i18n path for "Time to review!" and body copy; out of scope for MVP. [`mobile/src/config/notifications.ts`]
