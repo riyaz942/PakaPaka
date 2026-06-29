@@ -88,3 +88,10 @@
 - **`isGrading.current` drops rapid successive grades** — pre-existing behavior; second grade within the async `.finally()` window is silently discarded with no retry. [`mobile/src/providers/ReviewSessionProvider.tsx`]
 - **`yesterdayKey` DST edge case** — `new Date(year, month-1, day-1)` is local-time and could mis-calculate across a DST boundary; spec explicitly accepts "do not over-engineer DST" for v1. [`mobile/src/data/user/streakRepository.ts`]
 - **Notification content hardcoded English** — no i18n path for "Time to review!" and body copy; out of scope for MVP. [`mobile/src/config/notifications.ts`]
+
+## Deferred from: code review of 7-1-screen-reader-keyboard-and-input-accessibility (2026-06-30)
+
+- **No test coverage for cleanup/rapid-state-transition paths** — Testing async cleanup races in the focus-management effect is a real gap but out of scope for this story's test charter.
+- **Typo state a11y label `"Close, try again"` gives no context about what was wrong** — SR user sees generic retry prompt with no indication of which characters were off. UX decision for a future story.
+- **No `min-h-[44px]` on ProgressiveHint Pressable and other non-Button controls** — Pre-existing sizing across multiple components; audit touch targets globally in story 7.2 or a dedicated pass.
+- **AC5 regression test doesn't prove end-to-end romaji→kana→evaluator path** — Component test covers conversion; integration-level test gap is a test architecture choice.

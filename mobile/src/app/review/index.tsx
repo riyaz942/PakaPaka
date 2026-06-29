@@ -10,6 +10,7 @@ import {
   Pressable,
   Text,
   View,
+  type View as RNView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -17,7 +18,6 @@ import { Button } from '@/components/common/Button';
 import { DailyThresholdNotice } from '@/components/engagement';
 import {
   ReviewCard,
-  resolveCorrectReveal,
   SessionExitSheet,
   SessionHeader,
   WanaKanaInput,
@@ -32,6 +32,7 @@ import {
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade } from '@/core/srs/srs.types';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
+import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
 
 const PLACEHOLDER: Record<PromptType, string> = {
   reading: 'Type reading in romaji...',
@@ -87,6 +88,8 @@ export default function ReviewScreen() {
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
   const [hintsUsed, setHintsUsed] = useState(0);
   const inputRef = useRef<WanaKanaInputRef>(null);
+  const resultRef = useRef<RNView>(null);
+  const continueButtonRef = useRef<RNView>(null);
   const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isSubmittingRef = useRef(false);
   const isEndingRef = useRef(false);
@@ -126,7 +129,46 @@ export default function ReviewScreen() {
       clearTimeout(autoAdvanceTimer.current);
       autoAdvanceTimer.current = null;
     }
+    requestAnimationFrame(() => inputRef.current?.focus());
   }, [currentItem?.itemId]);
+
+  useEffect(() => {
+    if (cardState !== 'correct' && cardState !== 'incorrect' && cardState !== 'typo') {
+      return;
+    }
+
+    let cancelled = false;
+    let typoInputTimer: ReturnType<typeof setTimeout> | null = null;
+
+    void AccessibilityInfo.isScreenReaderEnabled().then((screenReaderEnabled) => {
+      if (cancelled) return;
+      requestAnimationFrame(() => {
+        if (cancelled) return;
+
+        if (cardState === 'incorrect' && !screenReaderEnabled) {
+          continueButtonRef.current?.focus();
+          return;
+        }
+
+        void focusScreenReaderOn(resultRef.current).then(() => {
+          if (cancelled) return;
+          if (cardState === 'typo') {
+            typoInputTimer = setTimeout(
+              () => inputRef.current?.focus(),
+              screenReaderEnabled ? 300 : 0,
+            );
+          }
+        });
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      if (typoInputTimer != null) {
+        clearTimeout(typoInputTimer);
+      }
+    };
+  }, [cardState]);
 
   useEffect(() => {
     if (cognitiveLoadComplete && !thresholdNoticeShownRef.current) {
@@ -160,8 +202,6 @@ export default function ReviewScreen() {
     }
 
     if (evaluation.result === 'correct') {
-      const { label, value } = resolveCorrectReveal(currentItem);
-      AccessibilityInfo.announceForAccessibility(`Correct, ${label.toLowerCase()}: ${value}`);
       setCardState('correct');
       const grade = gradeForResult(evaluation.result, { hintsUsed }) ?? 3;
       autoAdvanceTimer.current = setTimeout(() => {
@@ -178,14 +218,12 @@ export default function ReviewScreen() {
       setAnswerText('');
       // Re-prompt: allow the next attempt to submit again.
       isSubmittingRef.current = false;
-      requestAnimationFrame(() => inputRef.current?.focus());
       return;
     }
 
     const answer = evaluation.displayAnswer ?? currentItem.meanings[0] ?? '';
     setDisplayAnswer(answer);
     setCardState('incorrect');
-    AccessibilityInfo.announceForAccessibility(`Incorrect, correct answer is ${answer}`);
   }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, recordTypoForCurrentItem]);
 
   function handleContinueIncorrect() {
@@ -298,13 +336,19 @@ export default function ReviewScreen() {
           state={cardState}
           displayAnswer={displayAnswer}
           onHintReveal={setHintsUsed}
+          resultRef={resultRef}
         />
       </View>
 
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         {cardState === 'incorrect' ? (
           <View className="px-space-md pb-space-md">
-            <Button label="Continue" onPress={handleContinueIncorrect} variant="primary" />
+            <Button
+              ref={continueButtonRef}
+              label="Continue"
+              onPress={handleContinueIncorrect}
+              variant="primary"
+            />
           </View>
         ) : (
           <View className="px-space-md pb-space-md">

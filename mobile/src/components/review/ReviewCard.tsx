@@ -1,3 +1,4 @@
+import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
 import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
@@ -16,6 +17,8 @@ type ReviewCardProps = {
   /** Correct answer shown on incorrect state */
   displayAnswer?: string;
   onHintReveal?: (count: number) => void;
+  /** Ref attached to the accessible result region in correct/incorrect/typo states */
+  resultRef?: Ref<View>;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -54,6 +57,7 @@ export function ReviewCard({
   state,
   displayAnswer,
   onHintReveal,
+  resultRef,
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, meanings, itemType, reinforcementLink, answerKey } =
     item;
@@ -67,6 +71,7 @@ export function ReviewCard({
     return (
       <View className="gap-space-md w-full items-center">
         <View
+          ref={resultRef}
           accessible
           accessibilityLabel={`Correct, ${label.toLowerCase()}: ${value}`}
           className="gap-space-md items-center">
@@ -84,6 +89,7 @@ export function ReviewCard({
     const answer = displayAnswer ?? formatMeanings(meanings);
     return (
       <View
+        ref={resultRef}
         accessible
         accessibilityLabel={`Incorrect, correct answer is ${answer}`}
         className="gap-space-md items-center">
@@ -98,6 +104,7 @@ export function ReviewCard({
   if (state === 'typo') {
     return (
       <View
+        ref={resultRef}
         accessible
         accessibilityLabel="Close, try again"
         className="gap-space-md items-center">

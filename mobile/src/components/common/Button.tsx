@@ -1,5 +1,5 @@
-import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { forwardRef } from 'react';
+import { Pressable, Text, type View } from 'react-native';
 
 import { cn } from '@/utils/cn';
 
@@ -38,19 +38,24 @@ const variantClasses: Record<ButtonVariant, { container: string; text: string }>
   },
 };
 
-export function Button({
-  label,
-  onPress,
-  variant = 'primary',
-  disabled = false,
-  accessibilityLabel,
-  testID,
-  className,
-}: ButtonProps) {
+export const Button = forwardRef<View, ButtonProps>(function Button(
+  {
+    label,
+    onPress,
+    variant = 'primary',
+    disabled = false,
+    accessibilityLabel,
+    testID,
+    className,
+  },
+  ref,
+) {
   const styles = variantClasses[variant];
 
   return (
     <Pressable
+      ref={ref}
+      focusable
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? label}
       accessibilityState={{ disabled }}
@@ -66,4 +71,4 @@ export function Button({
       <Text className={cn('text-body', styles.text)}>{label}</Text>
     </Pressable>
   );
-}
+});

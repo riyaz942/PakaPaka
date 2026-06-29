@@ -81,6 +81,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
         onChangeText={handleChangeText}
         onSubmitEditing={onSubmit}
         returnKeyType="done"
+        submitBehavior="submit"
         editable={editable}
         accessibilityLabel={accessibilityLabel}
         {...englishProps}

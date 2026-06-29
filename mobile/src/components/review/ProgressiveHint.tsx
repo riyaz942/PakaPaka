@@ -40,6 +40,8 @@ export function ProgressiveHint({ levels, onReveal }: ProgressiveHintProps) {
       {visibleLevels.map((level, index) => (
         <View
           key={`hint-${index}`}
+          testID="revealed-hint-panel"
+          accessibilityLiveRegion="polite"
           className={`rounded-radius-md px-space-md py-space-sm ${
             level.isReinforcement ? 'bg-reinforcement-bg' : 'bg-surface-elevated'
           }`}>

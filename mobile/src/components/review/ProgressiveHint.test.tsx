@@ -59,4 +59,14 @@ describe('ProgressiveHint', () => {
     fireEvent.press(screen.getByLabelText('Hint'));
     expect(onReveal).toHaveBeenCalledWith(1);
   });
+
+  it('revealed hint panels use polite live regions', () => {
+    render(<ProgressiveHint levels={levels} />);
+
+    fireEvent.press(screen.getByLabelText('Hint'));
+    const panels = screen.getAllByTestId('revealed-hint-panel');
+    panels.forEach((panel) => {
+      expect(panel.props.accessibilityLiveRegion).toBe('polite');
+    });
+  });
 });

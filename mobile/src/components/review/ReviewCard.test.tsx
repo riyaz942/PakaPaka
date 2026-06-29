@@ -146,6 +146,22 @@ describe('ReviewCard — result states', () => {
     render(<ReviewCard item={makeItem()} state="typo" />);
     expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
   });
+
+  it('result regions have accessible labels', () => {
+    const { rerender } = render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
+    let result = screen.getByLabelText('Correct, meaning: eat, food');
+    expect(result.props.accessible).toBe(true);
+
+    rerender(
+      <ReviewCard item={makeItem()} state="incorrect" displayAnswer="たべる" />,
+    );
+    result = screen.getByLabelText('Incorrect, correct answer is たべる');
+    expect(result.props.accessible).toBe(true);
+
+    rerender(<ReviewCard item={makeItem()} state="typo" />);
+    result = screen.getByLabelText('Close, try again');
+    expect(result.props.accessible).toBe(true);
+  });
 });
 
 describe('ReviewCard — hints and reinforcement', () => {
