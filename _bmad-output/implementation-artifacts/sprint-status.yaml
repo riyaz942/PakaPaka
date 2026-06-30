@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-06-30"  # story 7-1 done
+last_updated: "2026-06-30"  # story 7-2 done
 
 project: japanese-learning
 project_key: NOKEY
@@ -96,7 +96,7 @@ development_status:
 
   epic-7: in-progress
   7-1-screen-reader-keyboard-and-input-accessibility: done
-  7-2-visual-accessibility: backlog
+  7-2-visual-accessibility: done
   7-3-automated-accessibility-checks-in-ci: backlog
   epic-7-retrospective: optional
 

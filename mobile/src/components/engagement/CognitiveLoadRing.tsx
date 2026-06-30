@@ -39,7 +39,7 @@ export function CognitiveLoadRing({ variant, percent, accessibilityLabel }: Cogn
       accessibilityValue={{ min: 0, max: 100, now: clamped }}
       style={{ width: size, height: size }}
       className={`items-center justify-center rounded-full border-2 ${band.border}`}>
-      <Text style={{ fontSize }} className={`font-semibold ${band.text}`}>
+      <Text style={{ fontSize }} className="font-semibold text-primary">
         {`${clamped}%`}
       </Text>
     </View>

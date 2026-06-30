@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Pressable, Switch, Text, View } from 'react-native';
+import { Pressable, ScrollView, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
@@ -12,6 +12,7 @@ import {
 } from '@/config/notifications';
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import {
   clearOnboardingCompleted,
   getNotificationTime,
@@ -38,6 +39,7 @@ const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
+  const { reducedMotion, setReducedMotion } = useReducedMotion();
   const [selectedIntensity, setSelectedIntensity] = useState<SessionIntensity | null>(null);
   const [weaknessBiasEnabled, setWeaknessBiasEnabledState] = useState(true);
   const [notificationsEnabled, setNotificationsEnabledState] = useState(false);
@@ -103,7 +105,7 @@ export default function SettingsScreen() {
 
   return (
     <View
-      className="flex-1 bg-background px-6"
+      className="flex-1 bg-background"
       style={{
         paddingTop: insets.top + 24,
         paddingBottom: insets.bottom + BottomTabInset,
@@ -111,6 +113,7 @@ export default function SettingsScreen() {
         alignSelf: 'center',
         width: '100%',
       }}>
+      <ScrollView contentContainerClassName="px-6 pb-space-md">
       <Text accessibilityRole="header" className="text-title-lg text-primary">
         Settings
       </Text>
@@ -145,6 +148,26 @@ export default function SettingsScreen() {
             testID="settings-weakness-bias-toggle"
             value={weaknessBiasEnabled}
             onValueChange={handleWeaknessBiasToggle}
+          />
+        </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Accessibility</Text>
+
+        <View className="mt-4 flex-row items-center justify-between">
+          <View className="flex-1 pr-space-md">
+            <Text className="text-body text-primary">Reduce motion</Text>
+            <Text className="mt-1 text-body-sm text-secondary">
+              Uses stepped, static updates instead of motion. Defaults to your device setting until
+              you change it here.
+            </Text>
+          </View>
+          <Switch
+            accessibilityLabel="Reduce motion"
+            testID="settings-reduced-motion-toggle"
+            value={reducedMotion}
+            onValueChange={setReducedMotion}
           />
         </View>
       </View>
@@ -213,6 +236,7 @@ export default function SettingsScreen() {
           />
         </View>
       ) : null}
+      </ScrollView>
     </View>
   );
 }

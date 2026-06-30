@@ -20,6 +20,7 @@ export const PREFERENCE_KEYS = {
   weaknessBiasEnabled: 'weakness_bias_enabled',
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
+  reducedMotion: 'reduced_motion',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -136,6 +137,21 @@ export function getWeaknessBiasEnabled(userDb: SQLiteDatabase): boolean {
 
 export function setWeaknessBiasEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.weaknessBiasEnabled, enabled ? 'true' : 'false');
+}
+
+/**
+ * Returns the in-app reduced-motion override, or null when unset (follow system).
+ */
+export function getReducedMotionEnabled(userDb: SQLiteDatabase): boolean | null {
+  const value = getPreference(userDb, PREFERENCE_KEYS.reducedMotion);
+  if (value === null) {
+    return null;
+  }
+  return value === 'true';
+}
+
+export function setReducedMotionEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.reducedMotion, enabled ? 'true' : 'false');
 }
 
 export type NotificationTime = 'morning' | 'afternoon' | 'evening' | 'night';

@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
+  ScrollView,
   Text,
   View,
   type View as RNView,
@@ -330,7 +331,11 @@ export default function ReviewScreen() {
         onDismiss={() => setThresholdNoticeVisible(false)}
       />
 
-      <View className="flex-1 justify-center px-space-md">
+      <ScrollView
+        testID="review-focal-scroll"
+        className="flex-1 px-space-md"
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        keyboardShouldPersistTaps="handled">
         <ReviewCard
           item={currentItem}
           state={cardState}
@@ -338,7 +343,7 @@ export default function ReviewScreen() {
           onHintReveal={setHintsUsed}
           resultRef={resultRef}
         />
-      </View>
+      </ScrollView>
 
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         {cardState === 'incorrect' ? (

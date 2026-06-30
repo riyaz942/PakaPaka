@@ -211,4 +211,11 @@ describe('ReviewScreen accessibility', () => {
       expect(mockFocusScreenReaderOn).toHaveBeenCalled();
     });
   });
+
+  it('wraps the focal zone in a scroll container and keeps the input zone mounted', () => {
+    render(<ReviewScreen />);
+
+    expect(screen.getByTestId('review-focal-scroll')).toBeTruthy();
+    expect(screen.getByTestId('review-answer-input')).toBeTruthy();
+  });
 });

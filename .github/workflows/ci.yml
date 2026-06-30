@@ -7,6 +7,27 @@ on:
       - main
 
 jobs:
+  curriculum:
+    name: curriculum (validate, contrast)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.13.0"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate curriculum schema
+        run: npm run validate-schema
+
+      - name: Check token contrast
+        run: npm run check-contrast
+
   mobile:
     name: mobile (lint, typecheck, test)
     runs-on: ubuntu-latest

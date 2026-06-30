@@ -10,10 +10,12 @@ import {
   getOnboardingPath,
   getSessionIntensity,
   getStartingJlptLevel,
+  getReducedMotionEnabled,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
   setOnboardingCompleted,
   setOnboardingPath,
+  setReducedMotionEnabled,
   setSessionIntensity,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
@@ -156,5 +158,39 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
     );
 
     expect(getOnboardingPath(db)).toBeNull();
+  });
+});
+
+describe('preferencesRepository reduced motion preference', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('returns null when unset so the app follows the system setting', async () => {
+    const db = await createUserDb();
+    expect(getReducedMotionEnabled(db)).toBeNull();
+  });
+
+  it('round-trips reduced_motion', async () => {
+    const db = await createUserDb();
+
+    setReducedMotionEnabled(db, true);
+    expect(getReducedMotionEnabled(db)).toBe(true);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.reducedMotion,
+      )?.value,
+    ).toBe('true');
+
+    setReducedMotionEnabled(db, false);
+    expect(getReducedMotionEnabled(db)).toBe(false);
   });
 });

@@ -13,6 +13,36 @@
     --color-primary: #eeeef0;
     --color-secondary: #9898a8;
     --color-muted: #5c5c6e;
+
+    /* UX-DR2 — SRS stages */
+    --color-srs-apprentice: #dd4488;
+    --color-srs-guru: #8844cc;
+    --color-srs-master: #3388dd;
+    --color-srs-enlightened: #00aadd;
+    --color-srs-burned: #ccaa00;
+
+    /* UX-DR2 — feedback */
+    --color-feedback-correct: #22cc88;
+    --color-feedback-incorrect: #ee4466;
+    --color-feedback-warning: #eeaa22;
+    --color-feedback-info: #4488ee;
+
+    /* UX-DR2 — cognitive load ring stops */
+    --color-ring-start: #22cc88;
+    --color-ring-mid: #eecc44;
+    --color-ring-end: #ee8833;
+    --color-ring-complete: #44bbee;
+
+    /* UX-DR2 — content-type accents */
+    --color-content-radical: #44aaee;
+    --color-content-kanji: #ee4488;
+    --color-content-vocabulary: #aa44dd;
+    --color-content-grammar: #22bbaa;
+    --color-content-reading: #eeaa22;
+
+    /* UX-DR2 — reinforcement */
+    --color-reinforcement-text: #6f92c2;
+    --color-reinforcement-bg: #1a2233;
   }
 
   @media (prefers-color-scheme: light) {
@@ -25,6 +55,21 @@
       --color-primary: #1a1a2e;
       --color-secondary: #686878;
       --color-muted: #9898a8;
+
+      /* Light surfaces need darker accent hues for WCAG AA */
+      --color-srs-enlightened: #007e9e;
+      --color-srs-burned: #8a7000;
+      --color-feedback-correct: #127a4f;
+      --color-feedback-incorrect: #c73652;
+      --color-feedback-warning: #8a6506;
+      --color-feedback-info: #2d6fc9;
+      --color-ring-start: #158f5a;
+      --color-ring-mid: #9a7208;
+      --color-ring-end: #b35f12;
+      --color-ring-complete: #1a8fb8;
+      --color-content-radical: #2d7fb8;
+      --color-content-grammar: #1a8f7a;
+      --color-content-reading: #9a7208;
     }
   }
 }

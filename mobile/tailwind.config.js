@@ -19,34 +19,34 @@ module.exports = {
         muted: 'var(--color-muted)',
 
         // UX-DR2 — SRS stages
-        'srs-apprentice': '#dd4488',
-        'srs-guru': '#8844cc',
-        'srs-master': '#3388dd',
-        'srs-enlightened': '#00aadd',
-        'srs-burned': '#ccaa00',
+        'srs-apprentice': 'var(--color-srs-apprentice)',
+        'srs-guru': 'var(--color-srs-guru)',
+        'srs-master': 'var(--color-srs-master)',
+        'srs-enlightened': 'var(--color-srs-enlightened)',
+        'srs-burned': 'var(--color-srs-burned)',
 
         // UX-DR2 — feedback
-        'feedback-correct': '#22cc88',
-        'feedback-incorrect': '#ee4466',
-        'feedback-warning': '#eeaa22',
-        'feedback-info': '#4488ee',
+        'feedback-correct': 'var(--color-feedback-correct)',
+        'feedback-incorrect': 'var(--color-feedback-incorrect)',
+        'feedback-warning': 'var(--color-feedback-warning)',
+        'feedback-info': 'var(--color-feedback-info)',
 
         // UX-DR2 — cognitive load ring stops
-        'ring-start': '#22cc88',
-        'ring-mid': '#eecc44',
-        'ring-end': '#ee8833',
-        'ring-complete': '#44bbee',
+        'ring-start': 'var(--color-ring-start)',
+        'ring-mid': 'var(--color-ring-mid)',
+        'ring-end': 'var(--color-ring-end)',
+        'ring-complete': 'var(--color-ring-complete)',
 
         // UX-DR2 — content-type accents
-        'content-radical': '#44aaee',
-        'content-kanji': '#ee4488',
-        'content-vocabulary': '#aa44dd',
-        'content-grammar': '#22bbaa',
-        'content-reading': '#eeaa22',
+        'content-radical': 'var(--color-content-radical)',
+        'content-kanji': 'var(--color-content-kanji)',
+        'content-vocabulary': 'var(--color-content-vocabulary)',
+        'content-grammar': 'var(--color-content-grammar)',
+        'content-reading': 'var(--color-content-reading)',
 
         // UX-DR2 — reinforcement
-        'reinforcement-text': '#6688bb',
-        'reinforcement-bg': '#1a2233',
+        'reinforcement-text': 'var(--color-reinforcement-text)',
+        'reinforcement-bg': 'var(--color-reinforcement-bg)',
 
         // Expo template splash/icon (design-tokens.js — programmatic StyleSheet only)
         'expo-splash': expoBrand.splash,
