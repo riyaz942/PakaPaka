@@ -1,5 +1,16 @@
 # Deferred Work
 
+## Deferred from: code review of 7-3-automated-accessibility-checks-in-ci (2026-07-02)
+
+- **Unrelated quote-style churn bundled into `eslint.config.js`** — double→single quotes changed on pre-existing lines alongside the feature change; diff-hygiene nit, not a defect.
+- **`eslint-plugin-react-native-a11y` pinned with caret range (`^3.5.1`) while gating CI merges** — a minor version bump could silently change the enabled rule set and break a future PR's lint step with no code change on that PR's part.
+- **`index.test.tsx` hardcodes `/review 2 items due/i`** — couples an a11y-label assertion to an incidental mock due-count; pre-existing test-writing convention in this codebase.
+- **`settings.test.tsx` asserts hardcoded `toggle.props.value === false`** — no corresponding "toggled to true" counterpart test.
+- **New review test conflates label-existence and wrong-answer-submission concerns** — weakly-motivated `'wrong'` input value with no assertion on the resulting incorrect-answer state; test-quality nit not required by AC3.
+- **`collapsible.tsx` has no accompanying test coverage for its new a11y props** — the only production code change in the diff; out of AC3's explicit Home/Review/Settings scope.
+- **`sprint-status.yaml` modified but not listed in the story's own File List section** — bookkeeping gap only.
+- **`delete a11yRules['react-native-a11y/has-accessibility-hint']` silently becomes a no-op if the plugin renames/removes that rule ID** — theoretical future-plugin-upgrade risk.
+
 ## Deferred from: code review of 4-3-item-detail-screens-kanji-vocabulary-grammar (2026-06-21)
 
 - **Vocabulary examples absent from bundled N5 curriculum** — `compile-curriculum.ts` only inserts `example_sentences` for grammar items; vocabulary detail UI is implemented but bundled seed has no vocab-keyed sentences. Address in curriculum compiler or data story.

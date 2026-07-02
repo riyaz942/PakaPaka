@@ -46,7 +46,9 @@ describe('SettingsScreen accessibility', () => {
 
   it('renders the Reduce motion switch with accessibilityLabel', () => {
     render(<SettingsScreen />);
-    expect(screen.getByLabelText('Reduce motion')).toBeTruthy();
+    const toggle = screen.getByRole('switch', { name: 'Reduce motion' });
+    expect(toggle).toBeTruthy();
+    expect(toggle.props.value).toBe(false);
     expect(screen.getByTestId('settings-reduced-motion-toggle')).toBeTruthy();
   });
 

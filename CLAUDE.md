@@ -119,4 +119,5 @@ Tests live alongside source files (`.test.ts` / `.test.tsx`) and in `mobile/__te
 
 - `.github/workflows/ci.yml` — lint, typecheck, jest on `mobile/`
 - `.github/workflows/compile-curriculum.yml` — validate-schema + compile-curriculum when curriculum sources change
-- `npm run check-contrast` (repo root) — WCAG 2.1 AA token contrast validation for dark and light palettes (`scripts/check-contrast.ts`). **Policy:** a failing pair blocks merge unless reclassified as `exempt` in the pairing manifest with a one-line rationale (decorative, disabled, or non-text per WCAG). Component-level a11y linting is Story 7.3.
+- `npm run check-contrast` (repo root) — WCAG 2.1 AA token contrast validation for dark and light palettes (`scripts/check-contrast.ts`). **Policy:** a failing pair blocks merge unless reclassified as `exempt` in the pairing manifest with a one-line rationale (decorative, disabled, or non-text per WCAG).
+- `npm run lint` (`mobile/`) — Expo lint enforces `eslint-plugin-react-native-a11y` cross-platform (`basic`) rules on JSX/TSX. **Policy:** a failing rule blocks merge (same gate as `check-contrast`); suppress only with a one-line rationale comment.

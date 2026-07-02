@@ -216,6 +216,24 @@ describe('ReviewScreen accessibility', () => {
     render(<ReviewScreen />);
 
     expect(screen.getByTestId('review-focal-scroll')).toBeTruthy();
-    expect(screen.getByTestId('review-answer-input')).toBeTruthy();
+    expect(screen.getByLabelText('Answer input, type in romaji')).toBeTruthy();
+  });
+
+  it('exposes answer input by accessibilityLabel and Continue as a button role', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    expect(screen.getByLabelText('Answer input')).toBeTruthy();
+
+    fireEvent.changeText(screen.getByLabelText('Answer input'), 'wrong');
+    await act(async () => {
+      fireEvent(screen.getByLabelText('Answer input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Continue' })).toBeTruthy();
+    });
   });
 });
