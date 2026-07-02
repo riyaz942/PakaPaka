@@ -21,6 +21,10 @@ export const PREFERENCE_KEYS = {
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
   reducedMotion: 'reduced_motion',
+  shadowModeEnabled: 'shadow_mode_enabled',
+  shadowModeEnabledAt: 'shadow_mode_enabled_at',
+  shadowModePromptDismissed: 'shadow_mode_prompt_dismissed',
+  shadowModePromptSnoozedUntil: 'shadow_mode_prompt_snoozed_until',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -195,6 +199,52 @@ export function setNotificationTime(userDb: SQLiteDatabase, time: NotificationTi
     throw new Error(`Invalid notification time: ${time}`);
   }
   setPreference(userDb, PREFERENCE_KEYS.notificationReminderTime, time);
+}
+
+/**
+ * Returns true when shadow mode is enabled (default false when unset).
+ * Shadow mode is a UX framing only — it never affects the review queue, FSRS
+ * scheduling, or due counts.
+ */
+export function getShadowModeEnabled(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.shadowModeEnabled) === 'true';
+}
+
+/**
+ * Enables/disables shadow mode. On the first enable (when `enabled_at` is not
+ * already set), stamps `shadow_mode_enabled_at` with the current ISO timestamp.
+ * Re-enabling does not overwrite the original timestamp, and disabling never
+ * clears it, so a later re-enable preserves continuity of "days active".
+ */
+export function setShadowModeEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.shadowModeEnabled, enabled ? 'true' : 'false');
+  if (enabled && getShadowModeEnabledAt(userDb) === null) {
+    setShadowModeEnabledAt(userDb, new Date().toISOString());
+  }
+}
+
+export function getShadowModeEnabledAt(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.shadowModeEnabledAt);
+}
+
+export function setShadowModeEnabledAt(userDb: SQLiteDatabase, iso: string): void {
+  setPreference(userDb, PREFERENCE_KEYS.shadowModeEnabledAt, iso);
+}
+
+export function getShadowModePromptDismissed(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.shadowModePromptDismissed) === 'true';
+}
+
+export function setShadowModePromptDismissed(userDb: SQLiteDatabase, dismissed: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.shadowModePromptDismissed, dismissed ? 'true' : 'false');
+}
+
+export function getShadowModePromptSnoozedUntil(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.shadowModePromptSnoozedUntil);
+}
+
+export function setShadowModePromptSnoozedUntil(userDb: SQLiteDatabase, iso: string): void {
+  setPreference(userDb, PREFERENCE_KEYS.shadowModePromptSnoozedUntil, iso);
 }
 
 export function setCurriculumInstallMetadata(

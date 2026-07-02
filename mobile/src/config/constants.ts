@@ -129,3 +129,15 @@ export function hintButtonLabel(revealed: number, total: number): string {
   if (revealed === 0) return HINT_BUTTON_LABEL;
   return `${HINT_BUTTON_LABEL} (${revealed}/${total})`;
 }
+
+/**
+ * Shadow mode (Epic 8, post-MVP) — build-level gate. Ships `false` so shipping this
+ * story changes no observable behavior; enabling it is a deliberate future build change.
+ */
+export const SHADOW_MODE_FEATURE_ENABLED = false;
+
+/** Days of active shadow mode before the non-blocking "ready to switch?" prompt appears. */
+export const SHADOW_MODE_SWITCH_PROMPT_DAYS = 14;
+
+/** How many days a snoozed switch prompt stays hidden. */
+export const SHADOW_MODE_SNOOZE_DAYS = 7;

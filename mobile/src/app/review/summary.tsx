@@ -5,9 +5,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/common/Button';
 import {
   PostSessionShareCard,
+  ShadowModeComparison,
   TimeCompressionSummary,
   buildShareMessage,
 } from '@/components/engagement';
+import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useStreak } from '@/data/hooks/useStreak';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
 import { computeTimeCompression } from '@/utils/timeFormat';
@@ -15,6 +17,7 @@ import { computeTimeCompression } from '@/utils/timeFormat';
 export default function ReviewSummaryScreen() {
   const { sessionSummary } = useReviewSession();
   const { currentStreak } = useStreak();
+  const { isEnabled: shadowModeEnabled } = useShadowMode();
 
   const sessionDate = new Date(sessionSummary.sessionEndAt);
 
@@ -55,6 +58,14 @@ export default function ReviewSummaryScreen() {
               onShare={handleShare}
               sessionDate={sessionDate}
             />
+            {shadowModeEnabled ? (
+              <ShadowModeComparison
+                domainCounts={sessionSummary.domainCounts}
+                itemsReviewed={sessionSummary.itemsReviewed}
+                correctCount={sessionSummary.correctCount}
+                durationMs={sessionSummary.durationMs}
+              />
+            ) : null}
           </>
         ) : (
           <View

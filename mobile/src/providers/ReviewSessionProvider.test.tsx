@@ -478,6 +478,76 @@ describe('ReviewSessionProvider', () => {
     expect(result.current.sessionSummary.itemsReviewed).toBe(2);
   });
 
+  it('increments correctCount on Good/Easy grades but not on Again', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const items = makeQueue(3);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: items,
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // Good (correct)
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    expect(result.current.sessionSummary.correctCount).toBe(1);
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('2');
+    });
+
+    // Again (incorrect) — must not increment
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    expect(result.current.sessionSummary.correctCount).toBe(1);
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('3');
+    });
+
+    // Easy (correct)
+    act(() => {
+      result.current.gradeCurrentItem(4);
+    });
+
+    expect(result.current.sessionSummary.correctCount).toBe(2);
+    expect(result.current.sessionSummary.itemsReviewed).toBe(3);
+  });
+
+  it('does not increment correctCount on recordTypoForCurrentItem', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.recordTypoForCurrentItem();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.sessionSummary.correctCount).toBe(0);
+  });
+
   it('does not increment domain counters on recordTypoForCurrentItem', async () => {
     const db = await openDatabaseAsync('user.db');
     const wrapper = await createWrapper(db);

@@ -9,6 +9,10 @@ import {
   clearOnboardingCompleted,
   getOnboardingPath,
   getSessionIntensity,
+  getShadowModeEnabled,
+  getShadowModeEnabledAt,
+  getShadowModePromptDismissed,
+  getShadowModePromptSnoozedUntil,
   getStartingJlptLevel,
   getReducedMotionEnabled,
   isOnboardingCompleted,
@@ -17,6 +21,10 @@ import {
   setOnboardingPath,
   setReducedMotionEnabled,
   setSessionIntensity,
+  setShadowModeEnabled,
+  setShadowModeEnabledAt,
+  setShadowModePromptDismissed,
+  setShadowModePromptSnoozedUntil,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 
@@ -192,5 +200,88 @@ describe('preferencesRepository reduced motion preference', () => {
 
     setReducedMotionEnabled(db, false);
     expect(getReducedMotionEnabled(db)).toBe(false);
+  });
+});
+
+describe('preferencesRepository shadow mode preferences', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults shadow_mode_enabled to false when unset', async () => {
+    const db = await createUserDb();
+    expect(getShadowModeEnabled(db)).toBe(false);
+    expect(getShadowModeEnabledAt(db)).toBeNull();
+    expect(getShadowModePromptDismissed(db)).toBe(false);
+    expect(getShadowModePromptSnoozedUntil(db)).toBeNull();
+  });
+
+  it('round-trips shadow_mode_enabled', async () => {
+    const db = await createUserDb();
+
+    setShadowModeEnabled(db, true);
+    expect(getShadowModeEnabled(db)).toBe(true);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.shadowModeEnabled,
+      )?.value,
+    ).toBe('true');
+
+    setShadowModeEnabled(db, false);
+    expect(getShadowModeEnabled(db)).toBe(false);
+  });
+
+  it('stamps shadow_mode_enabled_at only on the first enable', async () => {
+    const db = await createUserDb();
+
+    expect(getShadowModeEnabledAt(db)).toBeNull();
+
+    setShadowModeEnabled(db, true);
+    const firstStamp = getShadowModeEnabledAt(db);
+    expect(firstStamp).not.toBeNull();
+
+    setShadowModeEnabled(db, false);
+    expect(getShadowModeEnabledAt(db)).toBe(firstStamp);
+
+    setShadowModeEnabled(db, true);
+    expect(getShadowModeEnabledAt(db)).toBe(firstStamp);
+  });
+
+  it('round-trips shadow_mode_enabled_at directly', async () => {
+    const db = await createUserDb();
+    const iso = '2026-06-01T00:00:00.000Z';
+
+    setShadowModeEnabledAt(db, iso);
+    expect(getShadowModeEnabledAt(db)).toBe(iso);
+  });
+
+  it('round-trips shadow_mode_prompt_dismissed', async () => {
+    const db = await createUserDb();
+
+    expect(getShadowModePromptDismissed(db)).toBe(false);
+
+    setShadowModePromptDismissed(db, true);
+    expect(getShadowModePromptDismissed(db)).toBe(true);
+
+    setShadowModePromptDismissed(db, false);
+    expect(getShadowModePromptDismissed(db)).toBe(false);
+  });
+
+  it('round-trips shadow_mode_prompt_snoozed_until', async () => {
+    const db = await createUserDb();
+    const iso = '2026-06-15T00:00:00.000Z';
+
+    expect(getShadowModePromptSnoozedUntil(db)).toBeNull();
+
+    setShadowModePromptSnoozedUntil(db, iso);
+    expect(getShadowModePromptSnoozedUntil(db)).toBe(iso);
   });
 });

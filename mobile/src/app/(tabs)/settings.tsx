@@ -13,6 +13,7 @@ import {
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
+import { useShadowMode } from '@/data/hooks/useShadowMode';
 import {
   clearOnboardingCompleted,
   getNotificationTime,
@@ -40,6 +41,12 @@ export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion } = useReducedMotion();
+  const {
+    canEnable: shadowModeCanEnable,
+    isEnabled: shadowModeEnabled,
+    enable: enableShadowMode,
+    disable: disableShadowMode,
+  } = useShadowMode();
   const [selectedIntensity, setSelectedIntensity] = useState<SessionIntensity | null>(null);
   const [weaknessBiasEnabled, setWeaknessBiasEnabledState] = useState(true);
   const [notificationsEnabled, setNotificationsEnabledState] = useState(false);
@@ -95,6 +102,14 @@ export default function SettingsScreen() {
     setNotificationTimeState(time);
     if (notificationsEnabled) {
       await scheduleStreakReminder(NOTIFICATION_TIME_HOURS[time]);
+    }
+  };
+
+  const handleShadowModeToggle = (value: boolean) => {
+    if (value) {
+      enableShadowMode();
+    } else {
+      disableShadowMode();
     }
   };
 
@@ -220,6 +235,28 @@ export default function SettingsScreen() {
           </View>
         ) : null}
       </View>
+
+      {shadowModeCanEnable ? (
+        <View className="mt-8">
+          <Text className="text-body font-semibold text-primary">Shadow mode</Text>
+
+          <View className="mt-4 flex-row items-center justify-between">
+            <View className="flex-1 pr-space-md">
+              <Text className="text-body text-primary">Shadow mode</Text>
+              <Text className="mt-1 text-body-sm text-secondary">
+                Run this app alongside your current tools and compare your results before you
+                fully switch. Nothing is deleted.
+              </Text>
+            </View>
+            <Switch
+              accessibilityLabel="Shadow mode"
+              testID="settings-shadow-mode-toggle"
+              value={shadowModeEnabled}
+              onValueChange={handleShadowModeToggle}
+            />
+          </View>
+        </View>
+      ) : null}
 
       {__DEV__ ? (
         <View className="mt-10">

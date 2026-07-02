@@ -25,6 +25,7 @@ import type { AppError } from '@/types/result.types';
 type SessionSummary = {
   domainCounts: Record<ItemType, number>;
   itemsReviewed: number;
+  correctCount: number;
   durationMs: number;
   sessionEndAt: number;
 };
@@ -83,6 +84,9 @@ export function ReviewSessionProvider({ children }: Props) {
     vocabulary: 0,
     grammar: 0,
   });
+  // Additive counter for shadow-mode retention rate (Epic 8). Never read by the
+  // review queue builder, FSRS scheduler, or gradeCurrentItem's scheduling logic.
+  const correctCountRef = useRef(0);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -97,6 +101,7 @@ export function ReviewSessionProvider({ children }: Props) {
       vocabulary: 0,
       grammar: 0,
     };
+    correctCountRef.current = 0;
   }, [queue]);
 
   useEffect(() => {
@@ -216,6 +221,9 @@ export function ReviewSessionProvider({ children }: Props) {
         });
 
       domainCountsRef.current[gradedItemType] += 1;
+      if (outcomeResult === 'correct') {
+        correctCountRef.current += 1;
+      }
 
       setCurrentIndex((i) => i + 1);
     },
@@ -276,6 +284,7 @@ export function ReviewSessionProvider({ children }: Props) {
   const sessionSummary: SessionSummary = {
     domainCounts: { ...domainCounts },
     itemsReviewed,
+    correctCount: correctCountRef.current,
     durationMs,
     sessionEndAt: sessionEndAtRef.current ?? Date.now(),
   };

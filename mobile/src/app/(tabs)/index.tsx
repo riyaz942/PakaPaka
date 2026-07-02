@@ -7,12 +7,14 @@ import { Button } from '@/components/common/Button';
 import {
   CognitiveLoadRing,
   LevelProgressBar,
+  ShadowModeSwitchPrompt,
   StreakCounter,
 } from '@/components/engagement';
 import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLevelProgress } from '@/data/hooks/useLevelProgress';
+import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useStreak } from '@/data/hooks/useStreak';
 import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
@@ -40,6 +42,14 @@ export default function HomeScreen() {
     isLoading: progressLoading,
     refetch: refetchProgress,
   } = useLevelProgress(level);
+  const {
+    daysActive: shadowModeDaysActive,
+    shouldShowSwitchPrompt,
+    disable: disableShadowMode,
+    dismissPrompt: dismissShadowModePrompt,
+    snoozePrompt: snoozeShadowModePrompt,
+    refetch: refetchShadowMode,
+  } = useShadowMode();
 
   useEffect(() => {
     try {
@@ -62,13 +72,18 @@ export default function HomeScreen() {
       refetchLoad();
       refetchStreak();
       refetchProgress();
+      refetchShadowMode();
       try {
         setDueCount(getDueSrsStates(userDb).length);
       } catch {
         setDueCount(0);
       }
-    }, [refetchLoad, refetchStreak, refetchProgress, userDb]),
+    }, [refetchLoad, refetchStreak, refetchProgress, refetchShadowMode, userDb]),
   );
+
+  const handleShadowModeCommit = useCallback(() => {
+    disableShadowMode();
+  }, [disableShadowMode]);
 
   const isLoading = loadLoading || streakLoading || progressLoading || dueCountLoading;
   const reviewLabel = dueCount > 0 ? `Review (${dueCount})` : 'All caught up';
@@ -123,6 +138,14 @@ export default function HomeScreen() {
                   level={level}
                   perType={perType}
                   overallPercent={overallPercent}
+                />
+              ) : null}
+              {shouldShowSwitchPrompt ? (
+                <ShadowModeSwitchPrompt
+                  daysActive={shadowModeDaysActive}
+                  onCommit={handleShadowModeCommit}
+                  onSnooze={snoozeShadowModePrompt}
+                  onDismiss={dismissShadowModePrompt}
                 />
               ) : null}
             </>

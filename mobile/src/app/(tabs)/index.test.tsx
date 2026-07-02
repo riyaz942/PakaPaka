@@ -51,9 +51,31 @@ jest.mock('@/data/user/srsStateRepository', () => ({
   getDueSrsStates: (...args: unknown[]) => mockGetDueSrsStates(...args),
 }));
 
+const mockShadowModeDisable = jest.fn();
+const mockShadowModeDismissPrompt = jest.fn();
+const mockShadowModeSnoozePrompt = jest.fn();
+const mockShadowModeRefetch = jest.fn();
+
+let mockShouldShowSwitchPrompt = false;
+let mockShadowModeDaysActive = 0;
+
+jest.mock('@/data/hooks/useShadowMode', () => ({
+  useShadowMode: () => ({
+    daysActive: mockShadowModeDaysActive,
+    shouldShowSwitchPrompt: mockShouldShowSwitchPrompt,
+    disable: mockShadowModeDisable,
+    dismissPrompt: mockShadowModeDismissPrompt,
+    snoozePrompt: mockShadowModeSnoozePrompt,
+    refetch: mockShadowModeRefetch,
+  }),
+}));
+
 describe('HomeScreen', () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     mockGetDueSrsStates.mockReturnValue([]);
+    mockShouldShowSwitchPrompt = false;
+    mockShadowModeDaysActive = 0;
   });
 
   it('renders cognitive load ring, Review and Learn buttons, streak, and progress bar', () => {
@@ -80,5 +102,18 @@ describe('HomeScreen', () => {
     const reviewButton = screen.getByRole('button', { name: /all caught up/i });
     expect(reviewButton.props.accessibilityState?.disabled).toBe(true);
     expect(screen.getByText('All caught up')).toBeTruthy();
+  });
+
+  it('does not render the shadow mode switch prompt when shouldShowSwitchPrompt is false (feature off or <14 days)', () => {
+    mockShouldShowSwitchPrompt = false;
+    render(<HomeScreen />);
+    expect(screen.queryByText(/ready to switch fully/i)).toBeNull();
+  });
+
+  it('renders the shadow mode switch prompt when shouldShowSwitchPrompt is true (>=14 days)', () => {
+    mockShouldShowSwitchPrompt = true;
+    mockShadowModeDaysActive = 14;
+    render(<HomeScreen />);
+    expect(screen.getByText("You've been comparing for 14 days")).toBeTruthy();
   });
 });
