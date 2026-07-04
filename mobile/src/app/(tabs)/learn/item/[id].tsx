@@ -7,7 +7,7 @@ import { GrammarDetail } from '@/components/learn/GrammarDetail';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 
@@ -33,7 +33,6 @@ export default function LearnItemDetailScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Pressable

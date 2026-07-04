@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { JlptLevelPicker } from '@/components/common/JlptLevelPicker';
 import { PassageListRow } from '@/components/read/PassageListRow';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { usePassagesByLevel } from '@/data/hooks/usePassagesByLevel';
@@ -26,7 +26,6 @@ export default function ReadScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Text className="text-title text-primary">Read</Text>

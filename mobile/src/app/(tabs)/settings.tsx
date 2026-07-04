@@ -10,7 +10,7 @@ import {
   requestNotificationPermission,
   scheduleStreakReminder,
 } from '@/config/notifications';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
@@ -123,7 +123,7 @@ export default function SettingsScreen() {
       className="flex-1 bg-background"
       style={{
         paddingTop: insets.top + 24,
-        paddingBottom: insets.bottom + BottomTabInset,
+        paddingBottom: insets.bottom,
         maxWidth: MaxContentWidth,
         alignSelf: 'center',
         width: '100%',

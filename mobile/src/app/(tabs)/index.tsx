@@ -11,7 +11,7 @@ import {
   ShadowModeSwitchPrompt,
   StreakCounter,
 } from '@/components/engagement';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLevelProgress } from '@/data/hooks/useLevelProgress';
@@ -146,7 +146,6 @@ export default function HomeScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <ScrollView contentContainerClassName="gap-space-md pb-space-md">

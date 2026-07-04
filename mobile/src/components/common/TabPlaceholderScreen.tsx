@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 
 type TabPlaceholderScreenProps = {
   title: string;
@@ -17,7 +17,6 @@ export function TabPlaceholderScreen({ title, children }: TabPlaceholderScreenPr
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Text className="text-center text-title text-primary">{title}</Text>

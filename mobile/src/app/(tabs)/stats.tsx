@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { SrsStageBreakdown } from '@/components/stats/SrsStageBreakdown';
 import { StatsEmptyState, WeaknessEmptySubState } from '@/components/stats/StatsEmptyState';
 import { WeaknessStatCard } from '@/components/stats/WeaknessStatCard';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { useSRSBreakdown } from '@/data/hooks/useSRSBreakdown';
 import { useWeaknessStats } from '@/data/hooks/useWeaknessStats';
 
@@ -50,7 +50,6 @@ export default function StatsScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Text className="text-title text-primary">Stats</Text>

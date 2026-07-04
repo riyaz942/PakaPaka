@@ -4,7 +4,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { PassageReader } from '@/components/read/PassageReader';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { usePassageDetail } from '@/data/hooks/usePassageDetail';
 import type { PassagePracticeResult } from '@/data/user/passagePracticeRepository';
 
@@ -33,7 +33,6 @@ export default function ReadPassageScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Pressable

@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { LearnItemRow } from '@/components/learn/LearnItemRow';
 import { CalibrationItemTypePicker } from '@/components/onboarding/CalibrationItemTypePicker';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import { getUnmetPrerequisites, isItemUnlocked } from '@/core/content/dependencyGraph';
 import { isJlptLevel } from '@/data/curriculum/curriculum.types';
 import {
@@ -72,7 +72,6 @@ export default function LearnLevelScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Pressable

@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { JlptLevelPicker } from '@/components/common/JlptLevelPicker';
 import { PressableScale } from '@/components/common/PressableScale';
-import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { MaxContentWidth } from '@/constants/theme';
 import type { LessonCandidate } from '@/core/lesson/lessonPlanner';
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { ITEM_TYPE_LABELS, type ItemType } from '@/data/curriculum/itemRepository';
@@ -62,7 +62,6 @@ export default function LearnScreen() {
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
-          paddingBottom: BottomTabInset,
           width: '100%',
         }}>
         <Text className="text-title-lg text-primary">Learn</Text>
