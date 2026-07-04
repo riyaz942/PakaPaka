@@ -2,32 +2,229 @@
   "jlpt_level": "N5",
   "items": [
     {
-      "slug": "desu",
-      "primary_form": "です",
-      "meaning": "copula (is/am)",
-      "structure": "Noun + です",
-      "mnemonic_text": "Grammar: copula (is/am)",
+      "slug": "wa-topic",
+      "primary_form": "は",
+      "meaning": "topic marker",
+      "structure": "Noun + は + comment",
+      "mnemonic_text": "は marks what the sentence is about — the topic on the table.",
       "sort_order": 1,
       "conjugation_rules": {
-        "polite": true
+        "particle": "topic"
       },
       "accepted_forms": [
-        "です",
-        "だ"
+        "は"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：ですの使い方",
-          "english": "Example for copula (is/am).",
+          "japanese": "私は学生です。",
+          "english": "I am a student.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "watashi",
-            "anata"
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "これは本です。",
+          "english": "This is a book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "hon"
+          ]
+        },
+        {
+          "japanese": "今日は暑いです。",
+          "english": "Today is hot.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "atsui-hot"
+          ]
+        },
+        {
+          "japanese": "田中さんは先生です。",
+          "english": "Mr. Tanaka is a teacher.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "sensei"
+          ]
+        },
+        {
+          "japanese": "この水は冷たいです。",
+          "english": "This water is cold.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kono",
+            "mizu",
+            "tsumetai"
+          ]
+        },
+        {
+          "japanese": "犬は好きです。",
+          "english": "I like dogs.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "inu",
+            "suki"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "watashi"
+        "watashi",
+        "gakusei",
+        "kore",
+        "hon"
+      ]
+    },
+    {
+      "slug": "desu",
+      "primary_form": "です",
+      "meaning": "copula (to be)",
+      "structure": "Noun / na-adj + です",
+      "mnemonic_text": "です is the polite 'is/am/are' that ends a statement.",
+      "sort_order": 2,
+      "conjugation_rules": {
+        "polite": true,
+        "past": "でした",
+        "negative": "ではありません"
+      },
+      "accepted_forms": [
+        "です",
+        "だ",
+        "でした",
+        "ではありません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "これは水です。",
+          "english": "This is water.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "mizu"
+          ]
+        },
+        {
+          "japanese": "彼は先生です。",
+          "english": "He is a teacher.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "sensei"
+          ]
+        },
+        {
+          "japanese": "昨日は休みでした。",
+          "english": "Yesterday was a day off.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou"
+          ]
+        },
+        {
+          "japanese": "この店は静かです。",
+          "english": "This shop is quiet.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "shizuka"
+          ]
+        },
+        {
+          "japanese": "学校は近いです。",
+          "english": "The school is nearby.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "chikai"
+          ]
+        },
+        {
+          "japanese": "私は元気です。",
+          "english": "I am fine.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "watashi",
+            "genki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kore",
+        "mizu",
+        "sensei"
+      ]
+    },
+    {
+      "slug": "dewa-arimasen",
+      "primary_form": "ではありません",
+      "meaning": "negative copula (is not)",
+      "structure": "Noun + ではありません / じゃないです",
+      "mnemonic_text": "The polite way to say something is NOT the case.",
+      "sort_order": 3,
+      "conjugation_rules": {
+        "polite": true,
+        "negative": true
+      },
+      "accepted_forms": [
+        "ではありません",
+        "じゃないです",
+        "じゃありません",
+        "ではない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "これは本ではありません。",
+          "english": "This is not a book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "hon"
+          ]
+        },
+        {
+          "japanese": "彼は学生ではありません。",
+          "english": "He is not a student.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "今日は暑くないです。",
+          "english": "Today is not hot.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou"
+          ]
+        },
+        {
+          "japanese": "あの人は先生じゃないです。",
+          "english": "That person is not a teacher.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ano",
+            "hito",
+            "sensei"
+          ]
+        },
+        {
+          "japanese": "私の車ではありません。",
+          "english": "It is not my car.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "watashi",
+            "kuruma"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kore",
+        "hon",
+        "gakusei"
       ]
     },
     {
@@ -35,56 +232,407 @@
       "primary_form": "ます",
       "meaning": "polite verb ending",
       "structure": "Verb stem + ます",
-      "mnemonic_text": "Grammar: polite verb ending",
-      "sort_order": 2,
+      "mnemonic_text": "ます turns any verb into its polite form.",
+      "sort_order": 4,
       "conjugation_rules": {
-        "polite": true
+        "polite": true,
+        "past": "ました",
+        "negative": "ません"
       },
       "accepted_forms": [
-        "ます"
+        "ます",
+        "ました",
+        "ません",
+        "ませんでした"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：ますの使い方",
-          "english": "Example for polite verb ending.",
+          "japanese": "毎日日本語を勉強します。",
+          "english": "I study Japanese every day.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "mainichi",
+            "nihongo",
+            "benkyou"
+          ]
+        },
+        {
+          "japanese": "水を飲みます。",
+          "english": "I drink water.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "学校へ行きます。",
+          "english": "I go to school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "本を読みます。",
+          "english": "I read a book.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "hon",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "音楽を聞きます。",
+          "english": "I listen to music.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "ongaku",
+            "kiku-v"
+          ]
+        },
+        {
+          "japanese": "朝ご飯を食べます。",
+          "english": "I eat breakfast.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "asagohan",
+            "taberu"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "anata"
+        "nihongo",
+        "benkyou",
+        "nomu-v"
+      ]
+    },
+    {
+      "slug": "masen",
+      "primary_form": "ません",
+      "meaning": "polite negative verb ending",
+      "structure": "Verb stem + ません",
+      "mnemonic_text": "Swap ます for ません to say you do NOT do it.",
+      "sort_order": 5,
+      "conjugation_rules": {
+        "polite": true,
+        "negative": true
+      },
+      "accepted_forms": [
+        "ません",
+        "ませんでした"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お酒を飲みません。",
+          "english": "I don't drink alcohol.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "osake",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "肉を食べません。",
+          "english": "I don't eat meat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "niku",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "今日は行きません。",
+          "english": "I won't go today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "テレビを見ません。",
+          "english": "I don't watch TV.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "terebi",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "彼は来ません。",
+          "english": "He is not coming.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "osake",
+        "nomu-v",
+        "taberu"
+      ]
+    },
+    {
+      "slug": "mashita",
+      "primary_form": "ました",
+      "meaning": "polite past tense",
+      "structure": "Verb stem + ました",
+      "mnemonic_text": "ました is the polite past — it already happened.",
+      "sort_order": 6,
+      "conjugation_rules": {
+        "polite": true,
+        "past": true
+      },
+      "accepted_forms": [
+        "ました",
+        "ませんでした"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "昨日映画を見ました。",
+          "english": "I watched a movie yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "eiga",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "ご飯を食べました。",
+          "english": "I ate a meal.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gohan",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "友達に会いました。",
+          "english": "I met a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "au"
+          ]
+        },
+        {
+          "japanese": "手紙を書きました。",
+          "english": "I wrote a letter.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "tegami",
+            "kaku"
+          ]
+        },
+        {
+          "japanese": "駅まで歩きました。",
+          "english": "I walked to the station.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "eki",
+            "aruku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kinou",
+        "eiga",
+        "miru-v"
+      ]
+    },
+    {
+      "slug": "mashou",
+      "primary_form": "ましょう",
+      "meaning": "let's / shall we",
+      "structure": "Verb stem + ましょう",
+      "mnemonic_text": "ましょう invites everyone: let's do it together.",
+      "sort_order": 7,
+      "conjugation_rules": {
+        "polite": true,
+        "volitional": true
+      },
+      "accepted_forms": [
+        "ましょう",
+        "ましょうか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "一緒に行きましょう。",
+          "english": "Let's go together.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "issho-ni",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "お茶を飲みましょう。",
+          "english": "Let's drink tea.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ocha",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "少し休みましょう。",
+          "english": "Let's rest a little.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sukoshi"
+          ]
+        },
+        {
+          "japanese": "写真を撮りましょうか。",
+          "english": "Shall I take a photo?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "shashin"
+          ]
+        },
+        {
+          "japanese": "映画を見ましょう。",
+          "english": "Let's watch a movie.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "eiga",
+            "miru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "issho-ni",
+        "iku-v",
+        "ocha"
+      ]
+    },
+    {
+      "slug": "masen-ka",
+      "primary_form": "ませんか",
+      "meaning": "won't you? (invitation)",
+      "structure": "Verb stem + ませんか",
+      "mnemonic_text": "A soft negative question that means 'won't you join me?'",
+      "sort_order": 8,
+      "conjugation_rules": {
+        "polite": true,
+        "invitation": true
+      },
+      "accepted_forms": [
+        "ませんか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "一緒に食べませんか。",
+          "english": "Won't you eat with me?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "issho-ni",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "お茶を飲みませんか。",
+          "english": "Won't you have some tea?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ocha",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "映画を見ませんか。",
+          "english": "Would you like to see a movie?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "公園へ行きませんか。",
+          "english": "Shall we go to the park?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kouen",
+            "iku-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "issho-ni",
+        "ocha",
+        "eiga"
       ]
     },
     {
       "slug": "wo",
       "primary_form": "を",
-      "meaning": "object marker",
+      "meaning": "direct object marker",
       "structure": "Noun + を + Verb",
-      "mnemonic_text": "Grammar: object marker",
-      "sort_order": 3,
+      "mnemonic_text": "を tags the thing the verb acts on.",
+      "sort_order": 9,
       "conjugation_rules": {
         "particle": "object"
       },
       "accepted_forms": [
-        "を",
-        "ヲ"
+        "を"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：をの使い方",
-          "english": "Example for object marker.",
+          "japanese": "水を飲みます。",
+          "english": "I drink water.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "mizu",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "本を読みます。",
+          "english": "I read a book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "ご飯を食べます。",
+          "english": "I eat a meal.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gohan",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "音楽を聞きます。",
+          "english": "I listen to music.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ongaku",
+            "kiku-v"
+          ]
+        },
+        {
+          "japanese": "手紙を書きます。",
+          "english": "I write a letter.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "tegami",
+            "kaku"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "kare"
+        "mizu",
+        "hon",
+        "gohan"
       ]
     },
     {
@@ -92,8 +640,8 @@
       "primary_form": "が",
       "meaning": "subject marker",
       "structure": "Noun + が + Predicate",
-      "mnemonic_text": "Grammar: subject marker",
-      "sort_order": 4,
+      "mnemonic_text": "が spotlights the subject, often something new.",
+      "sort_order": 10,
       "conjugation_rules": {
         "particle": "subject"
       },
@@ -102,193 +650,64 @@
       ],
       "example_sentences": [
         {
-          "japanese": "例文：がの使い方",
-          "english": "Example for subject marker.",
+          "japanese": "猫がいます。",
+          "english": "There is a cat.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "neko",
+            "iru-exist"
           ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "kanojo"
-      ]
-    },
-    {
-      "slug": "ni",
-      "primary_form": "に",
-      "meaning": "direction/time",
-      "structure": "Noun + に",
-      "mnemonic_text": "Grammar: direction/time",
-      "sort_order": 5,
-      "conjugation_rules": {
-        "particle": "direction"
-      },
-      "accepted_forms": [
-        "に"
-      ],
-      "example_sentences": [
+        },
         {
-          "japanese": "例文：にの使い方",
-          "english": "Example for direction/time.",
-          "sort_order": 0,
+          "japanese": "誰が来ますか。",
+          "english": "Who is coming?",
+          "sort_order": 1,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "dare",
+            "kuru-v"
           ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "kore"
-      ]
-    },
-    {
-      "slug": "de",
-      "primary_form": "で",
-      "meaning": "location/means",
-      "structure": "Noun + で + Verb",
-      "mnemonic_text": "Grammar: location/means",
-      "sort_order": 6,
-      "conjugation_rules": {
-        "particle": "location"
-      },
-      "accepted_forms": [
-        "で"
-      ],
-      "example_sentences": [
+        },
         {
-          "japanese": "例文：での使い方",
-          "english": "Example for location/means.",
-          "sort_order": 0,
+          "japanese": "お金がありません。",
+          "english": "I have no money.",
+          "sort_order": 2,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "okane",
+            "aru"
           ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "sore"
-      ]
-    },
-    {
-      "slug": "kara",
-      "primary_form": "から",
-      "meaning": "from/because",
-      "structure": "Noun + から",
-      "mnemonic_text": "Grammar: from/because",
-      "sort_order": 7,
-      "conjugation_rules": {
-        "particle": "source"
-      },
-      "accepted_forms": [
-        "から"
-      ],
-      "example_sentences": [
+        },
         {
-          "japanese": "例文：からの使い方",
-          "english": "Example for from/because.",
-          "sort_order": 0,
+          "japanese": "私は犬が好きです。",
+          "english": "I like dogs.",
+          "sort_order": 3,
           "vocabulary_slugs": [
             "watashi",
-            "anata"
+            "inu",
+            "suki"
           ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "are"
-      ]
-    },
-    {
-      "slug": "made",
-      "primary_form": "まで",
-      "meaning": "until",
-      "structure": "Noun + まで",
-      "mnemonic_text": "Grammar: until",
-      "sort_order": 8,
-      "conjugation_rules": {
-        "particle": "limit"
-      },
-      "accepted_forms": [
-        "まで"
-      ],
-      "example_sentences": [
+        },
         {
-          "japanese": "例文：までの使い方",
-          "english": "Example for until.",
-          "sort_order": 0,
+          "japanese": "時間がありません。",
+          "english": "There is no time.",
+          "sort_order": 4,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "jikan",
+            "aru"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "kono"
+        "neko",
+        "dare",
+        "okane"
       ]
     },
     {
-      "slug": "to",
-      "primary_form": "と",
-      "meaning": "and/with",
-      "structure": "Noun + と + Noun",
-      "mnemonic_text": "Grammar: and/with",
-      "sort_order": 9,
-      "conjugation_rules": {
-        "particle": "conjunction"
-      },
-      "accepted_forms": [
-        "と"
-      ],
-      "example_sentences": [
-        {
-          "japanese": "例文：との使い方",
-          "english": "Example for and/with.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "watashi",
-            "anata"
-          ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "sono"
-      ]
-    },
-    {
-      "slug": "mo",
-      "primary_form": "も",
-      "meaning": "also",
-      "structure": "Noun + も",
-      "mnemonic_text": "Grammar: also",
-      "sort_order": 10,
-      "conjugation_rules": {
-        "particle": "inclusive"
-      },
-      "accepted_forms": [
-        "も"
-      ],
-      "example_sentences": [
-        {
-          "japanese": "例文：もの使い方",
-          "english": "Example for also.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "watashi",
-            "anata"
-          ]
-        }
-      ],
-      "vocabulary_slugs": [
-        "ano"
-      ]
-    },
-    {
-      "slug": "no-p",
+      "slug": "no-possessive",
       "primary_form": "の",
-      "meaning": "possessive",
+      "meaning": "possessive / linking particle",
       "structure": "Noun + の + Noun",
-      "mnemonic_text": "Grammar: possessive",
+      "mnemonic_text": "の links two nouns: A's B, or B of A.",
       "sort_order": 11,
       "conjugation_rules": {
         "particle": "possessive"
@@ -298,28 +717,911 @@
       ],
       "example_sentences": [
         {
-          "japanese": "例文：のの使い方",
-          "english": "Example for possessive.",
+          "japanese": "私の本です。",
+          "english": "It's my book.",
           "sort_order": 0,
           "vocabulary_slugs": [
             "watashi",
-            "anata"
+            "hon"
+          ]
+        },
+        {
+          "japanese": "日本語の先生です。",
+          "english": "A teacher of Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihongo",
+            "sensei"
+          ]
+        },
+        {
+          "japanese": "友達の車です。",
+          "english": "It's my friend's car.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kuruma"
+          ]
+        },
+        {
+          "japanese": "学校の近くです。",
+          "english": "It's near the school.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "chikaku"
+          ]
+        },
+        {
+          "japanese": "これは母の傘です。",
+          "english": "This is my mother's umbrella.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kore",
+            "haha",
+            "kasa"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "dare"
+        "watashi",
+        "hon",
+        "nihongo"
+      ]
+    },
+    {
+      "slug": "no-nominalizer",
+      "primary_form": "の",
+      "meaning": "nominalizer / explanatory",
+      "structure": "Verb (plain) + の / んです",
+      "mnemonic_text": "の turns a whole action into a noun, or explains why.",
+      "sort_order": 12,
+      "conjugation_rules": {
+        "nominalizer": true
+      },
+      "accepted_forms": [
+        "の",
+        "んです",
+        "のです"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "食べるのが好きです。",
+          "english": "I like eating.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taberu",
+            "suki"
+          ]
+        },
+        {
+          "japanese": "読むのが速いです。",
+          "english": "I read fast.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yomu",
+            "hayai-fast"
+          ]
+        },
+        {
+          "japanese": "どうして行かないんですか。",
+          "english": "Why aren't you going?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "頭が痛いんです。",
+          "english": "It's that my head hurts.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "atama"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taberu",
+        "suki",
+        "yomu"
+      ]
+    },
+    {
+      "slug": "ni-direction",
+      "primary_form": "に",
+      "meaning": "to / at (direction, time, target)",
+      "structure": "Noun + に",
+      "mnemonic_text": "に pins an action to a point in time or a destination.",
+      "sort_order": 13,
+      "conjugation_rules": {
+        "particle": "target"
+      },
+      "accepted_forms": [
+        "に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "学校に行きます。",
+          "english": "I go to school.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "七時に起きます。",
+          "english": "I wake up at seven.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okiru"
+          ]
+        },
+        {
+          "japanese": "友達に会います。",
+          "english": "I meet a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "au"
+          ]
+        },
+        {
+          "japanese": "椅子に座ります。",
+          "english": "I sit on the chair.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "isu",
+            "suwaru"
+          ]
+        },
+        {
+          "japanese": "日本に住んでいます。",
+          "english": "I live in Japan.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "nihon",
+            "sumu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "gakkou-v",
+        "iku-v",
+        "tomodachi"
+      ]
+    },
+    {
+      "slug": "he-direction",
+      "primary_form": "へ",
+      "meaning": "toward (direction)",
+      "structure": "Noun + へ",
+      "mnemonic_text": "へ points the way you are heading.",
+      "sort_order": 14,
+      "conjugation_rules": {
+        "particle": "direction"
+      },
+      "accepted_forms": [
+        "へ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "東京へ行きます。",
+          "english": "I'm going to Tokyo.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "家へ帰ります。",
+          "english": "I return home.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ie",
+            "kaeru-v"
+          ]
+        },
+        {
+          "japanese": "学校へ来ました。",
+          "english": "I came to school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "海へ行きたいです。",
+          "english": "I want to go to the sea.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "umi",
+            "iku-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ie",
+        "kaeru-v",
+        "iku-v"
+      ]
+    },
+    {
+      "slug": "de-location",
+      "primary_form": "で",
+      "meaning": "at / by / with (place of action, means)",
+      "structure": "Noun + で + Verb",
+      "mnemonic_text": "で marks where an action happens or the means used.",
+      "sort_order": 15,
+      "conjugation_rules": {
+        "particle": "location_means"
+      },
+      "accepted_forms": [
+        "で"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "図書館で勉強します。",
+          "english": "I study at the library.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toshokan",
+            "benkyou"
+          ]
+        },
+        {
+          "japanese": "バスで行きます。",
+          "english": "I go by bus.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "basu",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "箸で食べます。",
+          "english": "I eat with chopsticks.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hashi-chopsticks",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "家で本を読みます。",
+          "english": "I read a book at home.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ie",
+            "hon",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "駅で待ちます。",
+          "english": "I'll wait at the station.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "eki",
+            "matsu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "toshokan",
+        "basu",
+        "hashi-chopsticks"
+      ]
+    },
+    {
+      "slug": "to-and",
+      "primary_form": "と",
+      "meaning": "and / with (exhaustive)",
+      "structure": "Noun + と + Noun",
+      "mnemonic_text": "と ties a full list of nouns or a companion together.",
+      "sort_order": 16,
+      "conjugation_rules": {
+        "particle": "and_with"
+      },
+      "accepted_forms": [
+        "と"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "パンと卵を買います。",
+          "english": "I buy bread and eggs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "pan",
+            "tamago",
+            "kau-v"
+          ]
+        },
+        {
+          "japanese": "友達と行きます。",
+          "english": "I go with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "犬と猫がいます。",
+          "english": "There are a dog and a cat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "neko",
+            "iru-exist"
+          ]
+        },
+        {
+          "japanese": "先生と話します。",
+          "english": "I talk with the teacher.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "sensei",
+            "hanasu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "pan",
+        "tamago",
+        "tomodachi"
+      ]
+    },
+    {
+      "slug": "ya-among",
+      "primary_form": "や",
+      "meaning": "and (among others)",
+      "structure": "Noun + や + Noun (など)",
+      "mnemonic_text": "や lists examples — 'things like A and B'.",
+      "sort_order": 17,
+      "conjugation_rules": {
+        "particle": "nonexhaustive_and"
+      },
+      "accepted_forms": [
+        "や",
+        "やなど"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "野菜や果物を食べます。",
+          "english": "I eat vegetables, fruit, and so on.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yasai",
+            "kudamono",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "本や雑誌を読みます。",
+          "english": "I read books, magazines, etc.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "zasshi",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "犬や猫が好きです。",
+          "english": "I like dogs, cats, and such.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "neko",
+            "suki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "yasai",
+        "kudamono",
+        "zasshi"
+      ]
+    },
+    {
+      "slug": "mo-also",
+      "primary_form": "も",
+      "meaning": "also / too",
+      "structure": "Noun + も",
+      "mnemonic_text": "も adds 'as well' — me too, this too.",
+      "sort_order": 18,
+      "conjugation_rules": {
+        "particle": "also"
+      },
+      "accepted_forms": [
+        "も"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "私も学生です。",
+          "english": "I am a student too.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "これもください。",
+          "english": "This one too, please.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore"
+          ]
+        },
+        {
+          "japanese": "彼も来ます。",
+          "english": "He is coming as well.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "water も飲みます。",
+          "english": "I drink water too.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "watashi",
+        "gakusei",
+        "kore"
+      ]
+    },
+    {
+      "slug": "kara-from",
+      "primary_form": "から",
+      "meaning": "from (starting point)",
+      "structure": "Noun + から",
+      "mnemonic_text": "から marks the start: from here, from then.",
+      "sort_order": 19,
+      "conjugation_rules": {
+        "particle": "start"
+      },
+      "accepted_forms": [
+        "から"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "九時から働きます。",
+          "english": "I work from nine o'clock.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hataraku"
+          ]
+        },
+        {
+          "japanese": "駅から歩きます。",
+          "english": "I walk from the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "aruku"
+          ]
+        },
+        {
+          "japanese": "日本から来ました。",
+          "english": "I came from Japan.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nihon",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "朝から雨です。",
+          "english": "It's been raining since morning.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "asa",
+            "ame-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "eki",
+        "aruku",
+        "nihon"
+      ]
+    },
+    {
+      "slug": "made-until",
+      "primary_form": "まで",
+      "meaning": "until / as far as",
+      "structure": "Noun + まで",
+      "mnemonic_text": "まで marks the end point: up to here, until then.",
+      "sort_order": 20,
+      "conjugation_rules": {
+        "particle": "end"
+      },
+      "accepted_forms": [
+        "まで"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "五時まで働きます。",
+          "english": "I work until five.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hataraku"
+          ]
+        },
+        {
+          "japanese": "駅まで歩きます。",
+          "english": "I walk as far as the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "aruku"
+          ]
+        },
+        {
+          "japanese": "ここから学校まで近いです。",
+          "english": "It's near from here to school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "chikai"
+          ]
+        },
+        {
+          "japanese": "夜まで勉強しました。",
+          "english": "I studied until night.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "yoru",
+            "benkyou"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "eki",
+        "aruku",
+        "gakkou-v"
+      ]
+    },
+    {
+      "slug": "kara-because",
+      "primary_form": "から",
+      "meaning": "because (reason)",
+      "structure": "Clause (plain/polite) + から",
+      "mnemonic_text": "から after a clause gives the reason: because...",
+      "sort_order": 21,
+      "conjugation_rules": {
+        "reason": true
+      },
+      "accepted_forms": [
+        "から",
+        "ですから"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "寒いから、コートを着ます。",
+          "english": "Because it's cold, I'll wear a coat.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "samui"
+          ]
+        },
+        {
+          "japanese": "忙しいから、行きません。",
+          "english": "I won't go because I'm busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "isogashii",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "高いから、買いません。",
+          "english": "I won't buy it because it's expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "takai-adj",
+            "kau-v"
+          ]
+        },
+        {
+          "japanese": "雨だから、家にいます。",
+          "english": "Because it's raining, I'll stay home.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ame-v",
+            "ie"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "samui",
+        "isogashii",
+        "takai-adj"
+      ]
+    },
+    {
+      "slug": "node-because",
+      "primary_form": "ので",
+      "meaning": "because (soft/objective)",
+      "structure": "Clause (plain) + ので",
+      "mnemonic_text": "ので is a gentler 'because' than から.",
+      "sort_order": 22,
+      "conjugation_rules": {
+        "reason": true,
+        "soft": true
+      },
+      "accepted_forms": [
+        "ので",
+        "んで"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "時間がないので、急ぎます。",
+          "english": "Since there's no time, I'll hurry.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "jikan",
+            "isogu"
+          ]
+        },
+        {
+          "japanese": "病気なので、休みます。",
+          "english": "I'll rest because I'm sick.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "byouki",
+            "yasumu"
+          ]
+        },
+        {
+          "japanese": "安いので、買います。",
+          "english": "I'll buy it because it's cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "kau-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "jikan",
+        "byouki",
+        "yasui-adj"
+      ]
+    },
+    {
+      "slug": "ni-indirect",
+      "primary_form": "に (相手)",
+      "meaning": "to (recipient / indirect object)",
+      "structure": "Person + に + Verb",
+      "mnemonic_text": "に marks who receives the action.",
+      "sort_order": 23,
+      "conjugation_rules": {
+        "particle": "recipient"
+      },
+      "accepted_forms": [
+        "に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "友達に電話します。",
+          "english": "I call a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "denwa-suru"
+          ]
+        },
+        {
+          "japanese": "先生に聞きます。",
+          "english": "I ask the teacher.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "kiku-v"
+          ]
+        },
+        {
+          "japanese": "母に手紙を書きます。",
+          "english": "I write a letter to my mother.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "tegami",
+            "kaku"
+          ]
+        },
+        {
+          "japanese": "彼にあげます。",
+          "english": "I'll give it to him.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kare",
+            "ageru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "tomodachi",
+        "denwa-suru",
+        "sensei"
+      ]
+    },
+    {
+      "slug": "ka-question",
+      "primary_form": "か",
+      "meaning": "question marker",
+      "structure": "Sentence + か",
+      "mnemonic_text": "か at the end turns a statement into a question.",
+      "sort_order": 24,
+      "conjugation_rules": {
+        "particle": "question"
+      },
+      "accepted_forms": [
+        "か"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "学生ですか。",
+          "english": "Are you a student?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "行きますか。",
+          "english": "Are you going?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "これは何ですか。",
+          "english": "What is this?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "nani"
+          ]
+        },
+        {
+          "japanese": "いくらですか。",
+          "english": "How much is it?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ikura"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "gakusei",
+        "iku-v",
+        "nani"
+      ]
+    },
+    {
+      "slug": "ne-tag",
+      "primary_form": "ね",
+      "meaning": "confirmation / agreement tag",
+      "structure": "Sentence + ね",
+      "mnemonic_text": "ね seeks agreement: '..., right?'",
+      "sort_order": 25,
+      "conjugation_rules": {
+        "particle": "confirmation"
+      },
+      "accepted_forms": [
+        "ね",
+        "ねえ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "いい天気ですね。",
+          "english": "Nice weather, isn't it?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tenki"
+          ]
+        },
+        {
+          "japanese": "暑いですね。",
+          "english": "It's hot, right?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atsui-hot"
+          ]
+        },
+        {
+          "japanese": "おいしいですね。",
+          "english": "It's delicious, isn't it?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "oishii"
+          ]
+        },
+        {
+          "japanese": "そうですね。",
+          "english": "That's right, isn't it.",
+          "sort_order": 3,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "tenki",
+        "atsui-hot",
+        "oishii"
+      ]
+    },
+    {
+      "slug": "yo-emphasis",
+      "primary_form": "よ",
+      "meaning": "assertion / emphasis tag",
+      "structure": "Sentence + よ",
+      "mnemonic_text": "よ tells the listener something they don't know: 'you know!'",
+      "sort_order": 26,
+      "conjugation_rules": {
+        "particle": "emphasis"
+      },
+      "accepted_forms": [
+        "よ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "これはおいしいよ。",
+          "english": "This is delicious, you know.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "oishii"
+          ]
+        },
+        {
+          "japanese": "もう遅いよ。",
+          "english": "It's already late, you know.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mou",
+            "osoi"
+          ]
+        },
+        {
+          "japanese": "危ないよ。",
+          "english": "That's dangerous!",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "abunai"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kore",
+        "oishii",
+        "abunai"
       ]
     },
     {
       "slug": "te-form",
       "primary_form": "て形",
-      "meaning": "te-form",
-      "structure": "Verb て + continuation",
-      "mnemonic_text": "Grammar: te-form",
-      "sort_order": 12,
+      "meaning": "te-form (connective)",
+      "structure": "Verb → て form",
+      "mnemonic_text": "The て-form chains actions and links to many endings.",
+      "sort_order": 27,
       "conjugation_rules": {
-        "conjugation": "te"
+        "connective": true,
+        "godan": "き→いて、ぎ→いで、び/み/に→んで、し→して、い/ち/り→って",
+        "ichidan": "る→て"
       },
       "accepted_forms": [
         "て",
@@ -327,131 +1629,2393 @@
       ],
       "example_sentences": [
         {
-          "japanese": "例文：て形の使い方",
-          "english": "Example for te-form.",
+          "japanese": "朝起きて、ご飯を食べます。",
+          "english": "I wake up and eat breakfast.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "okiru",
+            "gohan",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "家に帰って、休みます。",
+          "english": "I go home and rest.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ie",
+            "kaeru-v",
+            "yasumu"
+          ]
+        },
+        {
+          "japanese": "本を読んで、寝ます。",
+          "english": "I read a book and sleep.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "yomu",
+            "neru"
+          ]
+        },
+        {
+          "japanese": "駅へ行って、電車に乗ります。",
+          "english": "I go to the station and board the train.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "eki",
+            "iku-v",
+            "noru"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "nani"
+        "okiru",
+        "gohan",
+        "taberu"
+      ]
+    },
+    {
+      "slug": "te-kudasai",
+      "primary_form": "てください",
+      "meaning": "please do (request)",
+      "structure": "Verb-て + ください",
+      "mnemonic_text": "Add ください to the て-form to politely ask someone to do it.",
+      "sort_order": 28,
+      "conjugation_rules": {
+        "request": true,
+        "polite": true
+      },
+      "accepted_forms": [
+        "てください",
+        "でください"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ちょっと待ってください。",
+          "english": "Please wait a moment.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chotto",
+            "matsu"
+          ]
+        },
+        {
+          "japanese": "ここに座ってください。",
+          "english": "Please sit here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "suwaru"
+          ]
+        },
+        {
+          "japanese": "名前を書いてください。",
+          "english": "Please write your name.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "namae",
+            "kaku"
+          ]
+        },
+        {
+          "japanese": "もう一度言ってください。",
+          "english": "Please say it once more.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "iu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "chotto",
+        "matsu",
+        "namae"
+      ]
+    },
+    {
+      "slug": "te-iru",
+      "primary_form": "ている",
+      "meaning": "progressive / ongoing state",
+      "structure": "Verb-て + いる",
+      "mnemonic_text": "て + いる = doing right now, or an ongoing state.",
+      "sort_order": 29,
+      "conjugation_rules": {
+        "aspect": "progressive"
+      },
+      "accepted_forms": [
+        "ている",
+        "てる",
+        "ています"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "今、勉強しています。",
+          "english": "I am studying now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "benkyou"
+          ]
+        },
+        {
+          "japanese": "雨が降っています。",
+          "english": "It is raining.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "彼はパンを食べています。",
+          "english": "He is eating bread.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "pan",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "東京に住んでいます。",
+          "english": "I live in Tokyo.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "sumu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ima",
+        "benkyou",
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "te-mo-ii",
+      "primary_form": "てもいい",
+      "meaning": "may / it's okay to",
+      "structure": "Verb-て + もいい(です)",
+      "mnemonic_text": "て + もいい gives permission: 'you may...'",
+      "sort_order": 30,
+      "conjugation_rules": {
+        "permission": true
+      },
+      "accepted_forms": [
+        "てもいい",
+        "てもいいです",
+        "てもかまいません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ここに座ってもいいですか。",
+          "english": "May I sit here?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "suwaru"
+          ]
+        },
+        {
+          "japanese": "写真を撮ってもいいです。",
+          "english": "You may take photos.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shashin"
+          ]
+        },
+        {
+          "japanese": "帰ってもいいですか。",
+          "english": "May I go home?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaeru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "koko",
+        "suwaru",
+        "shashin"
+      ]
+    },
+    {
+      "slug": "te-wa-ikenai",
+      "primary_form": "てはいけない",
+      "meaning": "must not / may not",
+      "structure": "Verb-て + はいけない",
+      "mnemonic_text": "て + はいけない forbids it: 'you must not...'",
+      "sort_order": 31,
+      "conjugation_rules": {
+        "prohibition": true
+      },
+      "accepted_forms": [
+        "てはいけない",
+        "てはいけません",
+        "ちゃいけない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ここで写真を撮ってはいけません。",
+          "english": "You must not take photos here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "shashin"
+          ]
+        },
+        {
+          "japanese": "お酒を飲んではいけません。",
+          "english": "You must not drink alcohol.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "osake",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "入ってはいけません。",
+          "english": "You may not enter.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hairu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "koko",
+        "shashin",
+        "osake"
+      ]
+    },
+    {
+      "slug": "te-kara",
+      "primary_form": "てから",
+      "meaning": "after doing",
+      "structure": "Verb-て + から",
+      "mnemonic_text": "て + から = only after this action does the next happen.",
+      "sort_order": 32,
+      "conjugation_rules": {
+        "sequence": true
+      },
+      "accepted_forms": [
+        "てから"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ご飯を食べてから、出かけます。",
+          "english": "I go out after eating.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gohan",
+            "taberu",
+            "dekiru"
+          ]
+        },
+        {
+          "japanese": "宿題をしてから、遊びます。",
+          "english": "I play after doing homework.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shukudai",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "手を洗ってから、食べます。",
+          "english": "I eat after washing my hands.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "te-v",
+            "arau",
+            "taberu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "gohan",
+        "shukudai",
+        "arau"
+      ]
+    },
+    {
+      "slug": "nai-form",
+      "primary_form": "ない形",
+      "meaning": "plain negative",
+      "structure": "Verb → ない form",
+      "mnemonic_text": "The ない-form is the casual 'do not'.",
+      "sort_order": 33,
+      "conjugation_rules": {
+        "negative": true,
+        "plain": true
+      },
+      "accepted_forms": [
+        "ない",
+        "なかった"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "今日は行かない。",
+          "english": "I'm not going today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "肉を食べない。",
+          "english": "I don't eat meat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "niku",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "お金がない。",
+          "english": "I have no money.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane"
+          ]
+        },
+        {
+          "japanese": "彼は来なかった。",
+          "english": "He didn't come.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kyou",
+        "iku-v",
+        "niku"
+      ]
+    },
+    {
+      "slug": "naide-kudasai",
+      "primary_form": "ないでください",
+      "meaning": "please don't",
+      "structure": "Verb-ない + でください",
+      "mnemonic_text": "Politely ask someone NOT to do something.",
+      "sort_order": 34,
+      "conjugation_rules": {
+        "request": true,
+        "negative": true
+      },
+      "accepted_forms": [
+        "ないでください"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ここでたばこを吸わないでください。",
+          "english": "Please don't smoke here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko"
+          ]
+        },
+        {
+          "japanese": "心配しないでください。",
+          "english": "Please don't worry.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shinpai-suru"
+          ]
+        },
+        {
+          "japanese": "忘れないでください。",
+          "english": "Please don't forget.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "wasureru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "koko",
+        "shinpai-suru",
+        "wasureru"
+      ]
+    },
+    {
+      "slug": "nakereba-naranai",
+      "primary_form": "なければならない",
+      "meaning": "must / have to",
+      "structure": "Verb-ない stem + なければならない",
+      "mnemonic_text": "If you don't, it won't do — so you MUST.",
+      "sort_order": 35,
+      "conjugation_rules": {
+        "obligation": true
+      },
+      "accepted_forms": [
+        "なければならない",
+        "なければなりません",
+        "なきゃ",
+        "なくてはいけない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "勉強しなければなりません。",
+          "english": "I have to study.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "benkyou"
+          ]
+        },
+        {
+          "japanese": "薬を飲まなければなりません。",
+          "english": "I must take medicine.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kusuri",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "早く帰らなければなりません。",
+          "english": "I have to go home early.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "kaeru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "benkyou",
+        "kusuri",
+        "kaeru-v"
+      ]
+    },
+    {
+      "slug": "nakutemo-ii",
+      "primary_form": "なくてもいい",
+      "meaning": "don't have to",
+      "structure": "Verb-ない stem + なくてもいい",
+      "mnemonic_text": "Even if you don't, it's fine — no need to.",
+      "sort_order": 36,
+      "conjugation_rules": {
+        "no_obligation": true
+      },
+      "accepted_forms": [
+        "なくてもいい",
+        "なくてもいいです"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "来なくてもいいです。",
+          "english": "You don't have to come.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "お金を払わなくてもいいです。",
+          "english": "You don't have to pay.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "harau"
+          ]
+        },
+        {
+          "japanese": "急がなくてもいいです。",
+          "english": "You don't have to hurry.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "isogu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kuru-v",
+        "okane",
+        "isogu"
+      ]
+    },
+    {
+      "slug": "ta-form",
+      "primary_form": "た形",
+      "meaning": "plain past",
+      "structure": "Verb → た form",
+      "mnemonic_text": "The た-form is the casual past tense.",
+      "sort_order": 37,
+      "conjugation_rules": {
+        "past": true,
+        "plain": true
+      },
+      "accepted_forms": [
+        "た",
+        "だ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "昨日、映画を見た。",
+          "english": "I watched a movie yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "eiga",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "もう食べた。",
+          "english": "I already ate.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mou",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "駅まで走った。",
+          "english": "I ran to the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "hashiru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kinou",
+        "eiga",
+        "mou"
+      ]
+    },
+    {
+      "slug": "ta-koto-ga-aru",
+      "primary_form": "たことがある",
+      "meaning": "have done before (experience)",
+      "structure": "Verb-た + ことがある",
+      "mnemonic_text": "There's a past 'thing' you've experienced.",
+      "sort_order": 38,
+      "conjugation_rules": {
+        "experience": true
+      },
+      "accepted_forms": [
+        "たことがある",
+        "たことがあります"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "日本へ行ったことがあります。",
+          "english": "I have been to Japan.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "寿司を食べたことがあります。",
+          "english": "I have eaten sushi.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "その映画を見たことがない。",
+          "english": "I have never seen that movie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "eiga",
+            "miru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nihon",
+        "iku-v",
+        "eiga"
+      ]
+    },
+    {
+      "slug": "tari-tari",
+      "primary_form": "たり〜たりする",
+      "meaning": "doing things like (listing actions)",
+      "structure": "Verb-たり + Verb-たり + する",
+      "mnemonic_text": "List a few sample actions among others.",
+      "sort_order": 39,
+      "conjugation_rules": {
+        "listing": true
+      },
+      "accepted_forms": [
+        "たり",
+        "だり"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "週末は本を読んだり、映画を見たりします。",
+          "english": "On weekends I read, watch movies, and so on.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "hon",
+            "yomu",
+            "eiga",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "食べたり飲んだりしました。",
+          "english": "We ate and drank and so on.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "taberu",
+            "nomu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shuumatsu",
+        "yomu",
+        "eiga"
       ]
     },
     {
       "slug": "tai",
       "primary_form": "たい",
-      "meaning": "want to",
+      "meaning": "want to (do)",
       "structure": "Verb stem + たい",
-      "mnemonic_text": "Grammar: want to",
-      "sort_order": 13,
+      "mnemonic_text": "たい expresses your own desire to do something.",
+      "sort_order": 40,
       "conjugation_rules": {
-        "conjugation": "desire"
+        "desire": true,
+        "conjugates_like": "i-adjective"
       },
       "accepted_forms": [
-        "たい"
+        "たい",
+        "たくない",
+        "たかった"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：たいの使い方",
-          "english": "Example for want to.",
+          "japanese": "日本へ行きたいです。",
+          "english": "I want to go to Japan.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "nihon",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "水が飲みたいです。",
+          "english": "I want to drink water.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "今日は何も食べたくない。",
+          "english": "I don't want to eat anything today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "少し休みたいです。",
+          "english": "I want to rest a little.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "sukoshi",
+            "yasumu"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "doko"
+        "nihon",
+        "iku-v",
+        "mizu"
       ]
     },
     {
-      "slug": "nai",
-      "primary_form": "ない",
-      "meaning": "negative plain",
-      "structure": "Verb ない",
-      "mnemonic_text": "Grammar: negative plain",
-      "sort_order": 14,
+      "slug": "hoshii",
+      "primary_form": "がほしい",
+      "meaning": "want (a thing)",
+      "structure": "Noun + がほしい",
+      "mnemonic_text": "ほしい is wanting to HAVE a thing, not to do.",
+      "sort_order": 41,
       "conjugation_rules": {
-        "conjugation": "negative"
+        "desire": true,
+        "object": "noun"
       },
       "accepted_forms": [
-        "ない"
+        "ほしい",
+        "ほしくない",
+        "ほしかった"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：ないの使い方",
-          "english": "Example for negative plain.",
+          "japanese": "新しい車がほしいです。",
+          "english": "I want a new car.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "atarashii-adj",
+            "kuruma"
+          ]
+        },
+        {
+          "japanese": "お金がほしい。",
+          "english": "I want money.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane"
+          ]
+        },
+        {
+          "japanese": "時間がほしいです。",
+          "english": "I want (more) time.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "jikan"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "itsu"
+        "atarashii-adj",
+        "kuruma",
+        "okane"
       ]
     },
     {
-      "slug": "mashita",
-      "primary_form": "ました",
-      "meaning": "past polite",
-      "structure": "Verb stem + ました",
-      "mnemonic_text": "Grammar: past polite",
-      "sort_order": 15,
+      "slug": "ni-iku",
+      "primary_form": "に行く",
+      "meaning": "go in order to (purpose)",
+      "structure": "Verb stem + に + 行く/来る/帰る",
+      "mnemonic_text": "に + a motion verb marks the purpose of going.",
+      "sort_order": 42,
       "conjugation_rules": {
-        "polite": true,
-        "past": true
+        "purpose": true
       },
       "accepted_forms": [
-        "ました"
+        "に行く",
+        "に来る",
+        "に帰る"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：ましたの使い方",
-          "english": "Example for past polite.",
+          "japanese": "映画を見に行きます。",
+          "english": "I go to see a movie.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "eiga",
+            "miru-v",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "本を買いに行きました。",
+          "english": "I went to buy a book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "kau-v",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "友達に会いに来ました。",
+          "english": "I came to meet a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "au",
+            "kuru-v"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "naze"
+        "eiga",
+        "kau-v",
+        "au"
       ]
     },
     {
-      "slug": "mashou",
-      "primary_form": "ましょう",
-      "meaning": "let us",
-      "structure": "Verb stem + ましょう",
-      "mnemonic_text": "Grammar: let us",
-      "sort_order": 16,
+      "slug": "mae-ni",
+      "primary_form": "前に",
+      "meaning": "before (doing)",
+      "structure": "Verb (dict) / Noun の + 前に",
+      "mnemonic_text": "前に places an action before another.",
+      "sort_order": 43,
       "conjugation_rules": {
-        "polite": true,
-        "volitional": true
+        "time_order": "before"
       },
       "accepted_forms": [
-        "ましょう"
+        "前に",
+        "まえに"
       ],
       "example_sentences": [
         {
-          "japanese": "例文：ましょうの使い方",
-          "english": "Example for let us.",
+          "japanese": "寝る前に歯を磨きます。",
+          "english": "I brush my teeth before sleeping.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "anata"
+            "neru",
+            "ha-tooth"
+          ]
+        },
+        {
+          "japanese": "食事の前に手を洗います。",
+          "english": "I wash my hands before a meal.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "te-v",
+            "arau"
+          ]
+        },
+        {
+          "japanese": "授業の前に本を読みます。",
+          "english": "I read before class.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "jugyou",
+            "hon",
+            "yomu"
           ]
         }
       ],
       "vocabulary_slugs": [
-        "dou"
+        "neru",
+        "arau",
+        "jugyou"
+      ]
+    },
+    {
+      "slug": "ato-de",
+      "primary_form": "後で",
+      "meaning": "after (doing)",
+      "structure": "Verb-た / Noun の + 後で",
+      "mnemonic_text": "後で places an action after another.",
+      "sort_order": 44,
+      "conjugation_rules": {
+        "time_order": "after"
+      },
+      "accepted_forms": [
+        "後で",
+        "あとで"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "食べた後で、コーヒーを飲みます。",
+          "english": "After eating, I drink coffee.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taberu",
+            "koohii",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "授業の後で、遊びます。",
+          "english": "After class, I play.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "jugyou",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "仕事の後で、映画を見ます。",
+          "english": "After work, I watch a movie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shigoto",
+            "eiga",
+            "miru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taberu",
+        "jugyou",
+        "shigoto"
+      ]
+    },
+    {
+      "slug": "toki",
+      "primary_form": "とき",
+      "meaning": "when / at the time of",
+      "structure": "Clause (plain) + とき",
+      "mnemonic_text": "とき marks the moment 'when' something happens.",
+      "sort_order": 45,
+      "conjugation_rules": {
+        "time": true
+      },
+      "accepted_forms": [
+        "とき",
+        "時"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "子供のとき、よく遊びました。",
+          "english": "When I was a child, I played a lot.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "yoku",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "暇なとき、本を読みます。",
+          "english": "When I'm free, I read.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hima",
+            "hon",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "日本へ行ったとき、写真を撮りました。",
+          "english": "When I went to Japan, I took photos.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nihon",
+            "iku-v",
+            "shashin"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kodomo-v",
+        "hima",
+        "shashin"
+      ]
+    },
+    {
+      "slug": "dictionary-koto-ga-dekiru",
+      "primary_form": "ことができる",
+      "meaning": "can / be able to",
+      "structure": "Verb (dict) + ことができる",
+      "mnemonic_text": "The 'thing' of doing is possible: you can do it.",
+      "sort_order": 46,
+      "conjugation_rules": {
+        "ability": true
+      },
+      "accepted_forms": [
+        "ことができる",
+        "ことができます"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "日本語を話すことができます。",
+          "english": "I can speak Japanese.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihongo",
+            "hanasu-v"
+          ]
+        },
+        {
+          "japanese": "漢字を読むことができます。",
+          "english": "I can read kanji.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanji-word",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "泳ぐことができません。",
+          "english": "I cannot swim.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "oyogu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nihongo",
+        "hanasu-v",
+        "kanji-word"
+      ]
+    },
+    {
+      "slug": "adj-i-conjugation",
+      "primary_form": "い形容詞",
+      "meaning": "i-adjective conjugation",
+      "structure": "い-adj → past くかった / neg くない",
+      "mnemonic_text": "Drop the い and add くない / かった to conjugate.",
+      "sort_order": 47,
+      "conjugation_rules": {
+        "past": "かった",
+        "negative": "くない",
+        "adverbial": "く"
+      },
+      "accepted_forms": [
+        "い",
+        "くない",
+        "かった",
+        "くなかった"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "昨日は暑かったです。",
+          "english": "Yesterday was hot.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "atsui-hot"
+          ]
+        },
+        {
+          "japanese": "この本は高くないです。",
+          "english": "This book is not expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "takai-adj"
+          ]
+        },
+        {
+          "japanese": "映画は面白かった。",
+          "english": "The movie was interesting.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "omoshiroi"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "atsui-hot",
+        "takai-adj",
+        "omoshiroi"
+      ]
+    },
+    {
+      "slug": "adj-na-conjugation",
+      "primary_form": "な形容詞",
+      "meaning": "na-adjective usage",
+      "structure": "な-adj + な + Noun / + です",
+      "mnemonic_text": "na-adjectives borrow な before a noun and です to end.",
+      "sort_order": 48,
+      "conjugation_rules": {
+        "attributive": "な",
+        "past": "でした",
+        "negative": "ではありません"
+      },
+      "accepted_forms": [
+        "な",
+        "です",
+        "でした",
+        "ではありません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "静かな部屋です。",
+          "english": "It's a quiet room.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shizuka",
+            "heya"
+          ]
+        },
+        {
+          "japanese": "彼は親切です。",
+          "english": "He is kind.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "shinsetsu"
+          ]
+        },
+        {
+          "japanese": "ここは便利な町です。",
+          "english": "This is a convenient town.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koko",
+            "benri",
+            "machi-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shizuka",
+        "shinsetsu",
+        "benri"
+      ]
+    },
+    {
+      "slug": "adj-i-adverb",
+      "primary_form": "く (副詞化)",
+      "meaning": "make an i-adjective into an adverb",
+      "structure": "い-adj (drop い) + く",
+      "mnemonic_text": "はやい → はやく: describe HOW an action is done.",
+      "sort_order": 49,
+      "conjugation_rules": {
+        "adverbial": "く"
+      },
+      "accepted_forms": [
+        "く"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "早く起きます。",
+          "english": "I get up early.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "okiru"
+          ]
+        },
+        {
+          "japanese": "大きく書いてください。",
+          "english": "Please write it big.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ookii",
+            "kaku"
+          ]
+        },
+        {
+          "japanese": "安く買いました。",
+          "english": "I bought it cheaply.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "kau-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "hayai-early",
+        "ookii",
+        "yasui-adj"
+      ]
+    },
+    {
+      "slug": "adj-na-adverb",
+      "primary_form": "に (副詞化)",
+      "meaning": "make a na-adjective into an adverb",
+      "structure": "な-adj + に",
+      "mnemonic_text": "しずか → しずかに: describe HOW with a na-adjective.",
+      "sort_order": 50,
+      "conjugation_rules": {
+        "adverbial": "に"
+      },
+      "accepted_forms": [
+        "に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "静かにしてください。",
+          "english": "Please be quiet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shizuka"
+          ]
+        },
+        {
+          "japanese": "きれいに書きます。",
+          "english": "I write neatly.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kirei",
+            "kaku"
+          ]
+        },
+        {
+          "japanese": "元気に遊びます。",
+          "english": "They play energetically.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "genki",
+            "asobu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shizuka",
+        "kirei",
+        "genki"
+      ]
+    },
+    {
+      "slug": "comparative-yori",
+      "primary_form": "より",
+      "meaning": "more than (comparison)",
+      "structure": "A は B より + adj",
+      "mnemonic_text": "より marks the thing you compare against.",
+      "sort_order": 51,
+      "conjugation_rules": {
+        "comparison": true
+      },
+      "accepted_forms": [
+        "より"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "電車はバスより速いです。",
+          "english": "Trains are faster than buses.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "basu",
+            "hayai-fast"
+          ]
+        },
+        {
+          "japanese": "今日は昨日より暑いです。",
+          "english": "Today is hotter than yesterday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "kinou",
+            "atsui-hot"
+          ]
+        },
+        {
+          "japanese": "犬は猫より大きいです。",
+          "english": "Dogs are bigger than cats.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "neko",
+            "ookii"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "basu",
+        "kyou",
+        "inu"
+      ]
+    },
+    {
+      "slug": "superlative-ichiban",
+      "primary_form": "一番",
+      "meaning": "the most / number one",
+      "structure": "(の中で) 一番 + adj",
+      "mnemonic_text": "一番 crowns the top of the group.",
+      "sort_order": 52,
+      "conjugation_rules": {
+        "superlative": true
+      },
+      "accepted_forms": [
+        "一番",
+        "いちばん"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "この店が一番安いです。",
+          "english": "This shop is the cheapest.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "yasui-adj"
+          ]
+        },
+        {
+          "japanese": "夏が一番好きです。",
+          "english": "I like summer the most.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "natsu",
+            "suki"
+          ]
+        },
+        {
+          "japanese": "富士山が一番高いです。",
+          "english": "Mt. Fuji is the tallest.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "takai-adj"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "yasui-adj",
+        "natsu",
+        "suki"
+      ]
+    },
+    {
+      "slug": "dou-desu-ka",
+      "primary_form": "どうですか",
+      "meaning": "how is it? / how about?",
+      "structure": "Noun + はどうですか",
+      "mnemonic_text": "Ask an opinion or make an offer with どうですか.",
+      "sort_order": 53,
+      "conjugation_rules": {
+        "question": true
+      },
+      "accepted_forms": [
+        "どうですか",
+        "いかがですか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お茶はどうですか。",
+          "english": "How about some tea?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ocha"
+          ]
+        },
+        {
+          "japanese": "日本の生活はどうですか。",
+          "english": "How is life in Japan?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihon"
+          ]
+        },
+        {
+          "japanese": "この映画はどうでしたか。",
+          "english": "How was this movie?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "eiga"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ocha",
+        "nihon",
+        "eiga"
+      ]
+    },
+    {
+      "slug": "darou",
+      "primary_form": "だろう",
+      "meaning": "probably (plain)",
+      "structure": "Plain form + だろう",
+      "mnemonic_text": "だろう guesses: 'probably so'.",
+      "sort_order": 54,
+      "conjugation_rules": {
+        "probability": true
+      },
+      "accepted_forms": [
+        "だろう",
+        "でしょう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は雨でしょう。",
+          "english": "It will probably rain tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "ame-v"
+          ]
+        },
+        {
+          "japanese": "彼は来るでしょう。",
+          "english": "He will probably come.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "難しいでしょう。",
+          "english": "It's probably difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "muzukashii"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "ame-v",
+        "muzukashii"
+      ]
+    },
+    {
+      "slug": "kamoshirenai",
+      "primary_form": "かもしれない",
+      "meaning": "might / maybe",
+      "structure": "Plain form + かもしれない",
+      "mnemonic_text": "It might be so — you can't be sure.",
+      "sort_order": 55,
+      "conjugation_rules": {
+        "possibility": true
+      },
+      "accepted_forms": [
+        "かもしれない",
+        "かもしれません",
+        "かも"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は雪かもしれません。",
+          "english": "It might snow tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "yuki"
+          ]
+        },
+        {
+          "japanese": "彼は忙しいかもしれない。",
+          "english": "He might be busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "isogashii"
+          ]
+        },
+        {
+          "japanese": "遅れるかもしれません。",
+          "english": "I might be late.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okureru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "yuki",
+        "isogashii"
+      ]
+    },
+    {
+      "slug": "to-omou",
+      "primary_form": "と思う",
+      "meaning": "I think that",
+      "structure": "Plain form + と思う",
+      "mnemonic_text": "と quotes your thought before 思う.",
+      "sort_order": 56,
+      "conjugation_rules": {
+        "opinion": true
+      },
+      "accepted_forms": [
+        "と思う",
+        "と思います"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は晴れると思います。",
+          "english": "I think it will be sunny tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita"
+          ]
+        },
+        {
+          "japanese": "この本はいいと思います。",
+          "english": "I think this book is good.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "ii"
+          ]
+        },
+        {
+          "japanese": "彼は来ないと思う。",
+          "english": "I think he won't come.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "hon",
+        "omou"
+      ]
+    },
+    {
+      "slug": "to-iu",
+      "primary_form": "という",
+      "meaning": "called / named (quotation)",
+      "structure": "X という + Noun",
+      "mnemonic_text": "という introduces what something is called.",
+      "sort_order": 57,
+      "conjugation_rules": {
+        "quotation": true
+      },
+      "accepted_forms": [
+        "という",
+        "っていう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "田中という人です。",
+          "english": "It's a person called Tanaka.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hito"
+          ]
+        },
+        {
+          "japanese": "これは何という花ですか。",
+          "english": "What is this flower called?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "nani",
+            "hana-v"
+          ]
+        },
+        {
+          "japanese": "「猫」という映画を見ました。",
+          "english": "I watched a movie called 'Cat'.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "neko",
+            "eiga",
+            "miru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "hito",
+        "hana-v",
+        "eiga"
+      ]
+    },
+    {
+      "slug": "sugiru",
+      "primary_form": "すぎる",
+      "meaning": "too much / excessively",
+      "structure": "Verb stem / adj stem + すぎる",
+      "mnemonic_text": "すぎる pushes past the limit: too ___.",
+      "sort_order": 58,
+      "conjugation_rules": {
+        "excess": true
+      },
+      "accepted_forms": [
+        "すぎる",
+        "すぎます",
+        "すぎた"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "食べすぎました。",
+          "english": "I ate too much.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "この服は高すぎます。",
+          "english": "These clothes are too expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "takai-adj"
+          ]
+        },
+        {
+          "japanese": "昨日は飲みすぎた。",
+          "english": "I drank too much yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "nomu-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taberu",
+        "fuku",
+        "nomu-v"
+      ]
+    },
+    {
+      "slug": "hou-ga-ii",
+      "primary_form": "ほうがいい",
+      "meaning": "had better / should",
+      "structure": "Verb-た / Verb-ない + ほうがいい",
+      "mnemonic_text": "One side (ほう) is better — advice.",
+      "sort_order": 59,
+      "conjugation_rules": {
+        "advice": true
+      },
+      "accepted_forms": [
+        "ほうがいい",
+        "ほうがいいです"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "早く寝たほうがいいです。",
+          "english": "You had better sleep early.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "neru"
+          ]
+        },
+        {
+          "japanese": "薬を飲んだほうがいい。",
+          "english": "You should take medicine.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kusuri",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "行かないほうがいいです。",
+          "english": "You had better not go.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "iku-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "neru",
+        "kusuri",
+        "iku-v"
+      ]
+    },
+    {
+      "slug": "deshou",
+      "primary_form": "でしょう",
+      "meaning": "probably / right? (polite)",
+      "structure": "Plain form + でしょう",
+      "mnemonic_text": "The polite guess or confirmation.",
+      "sort_order": 60,
+      "conjugation_rules": {
+        "probability": true,
+        "polite": true
+      },
+      "accepted_forms": [
+        "でしょう",
+        "でしょうか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は暑いでしょう。",
+          "english": "It will probably be hot tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "atsui-hot"
+          ]
+        },
+        {
+          "japanese": "彼は学生でしょう。",
+          "english": "He's a student, right?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "大丈夫でしょうか。",
+          "english": "Will it be all right?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "daijoubu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "atsui-hot",
+        "daijoubu"
+      ]
+    },
+    {
+      "slug": "mada-teinai",
+      "primary_form": "まだ〜ていない",
+      "meaning": "have not yet done",
+      "structure": "まだ + Verb-て + いない",
+      "mnemonic_text": "Still not done — まだ + ていない.",
+      "sort_order": 61,
+      "conjugation_rules": {
+        "not_yet": true
+      },
+      "accepted_forms": [
+        "まだ〜ていない",
+        "まだ〜ていません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "まだ食べていません。",
+          "english": "I haven't eaten yet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mada",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "宿題はまだ終わっていません。",
+          "english": "The homework isn't finished yet.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shukudai",
+            "owaru"
+          ]
+        },
+        {
+          "japanese": "まだ決めていません。",
+          "english": "I haven't decided yet.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mada"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mada",
+        "taberu",
+        "shukudai"
+      ]
+    },
+    {
+      "slug": "mou-past",
+      "primary_form": "もう〜ました",
+      "meaning": "already did",
+      "structure": "もう + Verb-ました",
+      "mnemonic_text": "もう means it's already done.",
+      "sort_order": 62,
+      "conjugation_rules": {
+        "already": true
+      },
+      "accepted_forms": [
+        "もう〜ました",
+        "もう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "もう食べました。",
+          "english": "I already ate.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mou",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "もう宿題をしました。",
+          "english": "I already did my homework.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mou",
+            "shukudai"
+          ]
+        },
+        {
+          "japanese": "電車はもう出ました。",
+          "english": "The train already left.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "densha",
+            "deru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mou",
+        "taberu",
+        "shukudai"
+      ]
+    },
+    {
+      "slug": "dake",
+      "primary_form": "だけ",
+      "meaning": "only / just",
+      "structure": "Noun / Verb + だけ",
+      "mnemonic_text": "だけ limits it to only that.",
+      "sort_order": 63,
+      "conjugation_rules": {
+        "limit": true
+      },
+      "accepted_forms": [
+        "だけ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "水だけ飲みます。",
+          "english": "I'll drink only water.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "一人だけ来ました。",
+          "english": "Only one person came.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hitori-de",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "見るだけです。",
+          "english": "I'm just looking.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "miru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mizu",
+        "nomu-v",
+        "miru-v"
+      ]
+    },
+    {
+      "slug": "shika-nai",
+      "primary_form": "しか〜ない",
+      "meaning": "only / nothing but",
+      "structure": "Noun + しか + Verb-ない",
+      "mnemonic_text": "しか + negative = nothing but this.",
+      "sort_order": 64,
+      "conjugation_rules": {
+        "limit": true,
+        "negative": true
+      },
+      "accepted_forms": [
+        "しか",
+        "しかない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "百円しかありません。",
+          "english": "I only have a hundred yen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "en-money",
+            "aru"
+          ]
+        },
+        {
+          "japanese": "水しか飲みません。",
+          "english": "I drink nothing but water.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "一人しか来ませんでした。",
+          "english": "Only one person came.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "en-money",
+        "mizu",
+        "nomu-v"
+      ]
+    },
+    {
+      "slug": "gurai",
+      "primary_form": "ぐらい / くらい",
+      "meaning": "about / approximately",
+      "structure": "Quantity + ぐらい",
+      "mnemonic_text": "ぐらい rounds it off: about that much.",
+      "sort_order": 65,
+      "conjugation_rules": {
+        "approximation": true
+      },
+      "accepted_forms": [
+        "ぐらい",
+        "くらい"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "三十分ぐらいかかります。",
+          "english": "It takes about thirty minutes.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "fun-counter"
+          ]
+        },
+        {
+          "japanese": "千円ぐらいです。",
+          "english": "It's about a thousand yen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sen-v",
+            "en-money"
+          ]
+        },
+        {
+          "japanese": "十人ぐらい来ました。",
+          "english": "About ten people came.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "fun-counter",
+        "en-money",
+        "kuru-v"
+      ]
+    },
+    {
+      "slug": "goro",
+      "primary_form": "ごろ",
+      "meaning": "around (a point in time)",
+      "structure": "Time + ごろ",
+      "mnemonic_text": "ごろ rounds a clock time: around then.",
+      "sort_order": 66,
+      "conjugation_rules": {
+        "approximate_time": true
+      },
+      "accepted_forms": [
+        "ごろ",
+        "頃"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "七時ごろ起きます。",
+          "english": "I get up around seven.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "okiru"
+          ]
+        },
+        {
+          "japanese": "三時ごろ来てください。",
+          "english": "Please come around three.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "昼ごろ食べます。",
+          "english": "I eat around noon.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hiru",
+            "taberu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "okiru",
+        "hiru",
+        "taberu"
+      ]
+    },
+    {
+      "slug": "zenzen-nai",
+      "primary_form": "全然〜ない",
+      "meaning": "not at all",
+      "structure": "全然 + negative",
+      "mnemonic_text": "全然 pairs with a negative: not in the least.",
+      "sort_order": 67,
+      "conjugation_rules": {
+        "negative_emphasis": true
+      },
+      "accepted_forms": [
+        "全然",
+        "ぜんぜん"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "全然分かりません。",
+          "english": "I don't understand at all.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "zenzen",
+            "wakaru"
+          ]
+        },
+        {
+          "japanese": "お金が全然ありません。",
+          "english": "I have no money at all.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "zenzen"
+          ]
+        },
+        {
+          "japanese": "全然おいしくないです。",
+          "english": "It's not tasty at all.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "zenzen",
+            "oishii"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "zenzen",
+        "wakaru",
+        "okane"
+      ]
+    },
+    {
+      "slug": "amari-nai",
+      "primary_form": "あまり〜ない",
+      "meaning": "not very / not much",
+      "structure": "あまり + negative",
+      "mnemonic_text": "あまり + negative softens to 'not very'.",
+      "sort_order": 68,
+      "conjugation_rules": {
+        "negative_degree": true
+      },
+      "accepted_forms": [
+        "あまり",
+        "あんまり"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "あまり食べません。",
+          "english": "I don't eat much.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "amari",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "あまり高くないです。",
+          "english": "It's not very expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "amari",
+            "takai-adj"
+          ]
+        },
+        {
+          "japanese": "あまり分かりません。",
+          "english": "I don't understand very well.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "amari",
+            "wakaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "amari",
+        "taberu",
+        "takai-adj"
+      ]
+    },
+    {
+      "slug": "demo-suggestion",
+      "primary_form": "でも (suggestion)",
+      "meaning": "or something (soft suggestion)",
+      "structure": "Noun + でも",
+      "mnemonic_text": "でも offers a loose example: '...or something'.",
+      "sort_order": 69,
+      "conjugation_rules": {
+        "suggestion": true
+      },
+      "accepted_forms": [
+        "でも"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お茶でも飲みませんか。",
+          "english": "Won't you have some tea or something?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ocha",
+            "nomu-v"
+          ]
+        },
+        {
+          "japanese": "映画でも見ましょう。",
+          "english": "Let's watch a movie or something.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eiga",
+            "miru-v"
+          ]
+        },
+        {
+          "japanese": "散歩でもしませんか。",
+          "english": "How about a walk or something?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sanpo-suru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ocha",
+        "eiga",
+        "sanpo-suru"
+      ]
+    },
+    {
+      "slug": "nagara",
+      "primary_form": "ながら",
+      "meaning": "while doing (simultaneous)",
+      "structure": "Verb stem + ながら",
+      "mnemonic_text": "ながら does two things at once.",
+      "sort_order": 70,
+      "conjugation_rules": {
+        "simultaneous": true
+      },
+      "accepted_forms": [
+        "ながら"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "音楽を聞きながら勉強します。",
+          "english": "I study while listening to music.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ongaku",
+            "kiku-v",
+            "benkyou"
+          ]
+        },
+        {
+          "japanese": "歩きながら話します。",
+          "english": "We talk while walking.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "aruku",
+            "hanasu-v"
+          ]
+        },
+        {
+          "japanese": "テレビを見ながら食べます。",
+          "english": "I eat while watching TV.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "terebi",
+            "miru-v",
+            "taberu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ongaku",
+        "aruku",
+        "terebi"
+      ]
+    },
+    {
+      "slug": "janai-desu-ka",
+      "primary_form": "じゃないですか",
+      "meaning": "isn't it? (seeking agreement)",
+      "structure": "Plain form + じゃないですか",
+      "mnemonic_text": "A negative question that expects a yes.",
+      "sort_order": 71,
+      "conjugation_rules": {
+        "confirmation": true
+      },
+      "accepted_forms": [
+        "じゃないですか",
+        "ではないですか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "いいじゃないですか。",
+          "english": "It's good, isn't it?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ii"
+          ]
+        },
+        {
+          "japanese": "便利じゃないですか。",
+          "english": "It's convenient, right?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "benri"
+          ]
+        },
+        {
+          "japanese": "彼は先生じゃないですか。",
+          "english": "He's a teacher, isn't he?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "sensei"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ii",
+        "benri",
+        "sensei"
+      ]
+    },
+    {
+      "slug": "tame-ni",
+      "primary_form": "ため(に)",
+      "meaning": "for the sake of / in order to",
+      "structure": "Verb (dict) / Noun の + ため(に)",
+      "mnemonic_text": "ため marks the goal you act for.",
+      "sort_order": 72,
+      "conjugation_rules": {
+        "purpose": true
+      },
+      "accepted_forms": [
+        "ために",
+        "ため"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "健康のために歩きます。",
+          "english": "I walk for my health.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "aruku"
+          ]
+        },
+        {
+          "japanese": "日本語を勉強するために、日本へ来ました。",
+          "english": "I came to Japan to study Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihongo",
+            "benkyou",
+            "nihon",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "家族のために働きます。",
+          "english": "I work for my family.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kazoku",
+            "hataraku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "aruku",
+        "nihongo",
+        "kazoku"
+      ]
+    },
+    {
+      "slug": "naru-become",
+      "primary_form": "くなる / になる",
+      "meaning": "become",
+      "structure": "adj-く / na-adj/Noun に + なる",
+      "mnemonic_text": "なる marks a change into a new state.",
+      "sort_order": 73,
+      "conjugation_rules": {
+        "change_of_state": true
+      },
+      "accepted_forms": [
+        "くなる",
+        "になる",
+        "くなりました",
+        "になりました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "寒くなりました。",
+          "english": "It has become cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "samui"
+          ]
+        },
+        {
+          "japanese": "日本語が上手になりました。",
+          "english": "I've become good at Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihongo",
+            "jouzu"
+          ]
+        },
+        {
+          "japanese": "元気になりました。",
+          "english": "I got better (healthy).",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "genki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "samui",
+        "nihongo",
+        "genki"
+      ]
+    },
+    {
+      "slug": "moraru-ageru-kureru",
+      "primary_form": "あげる・くれる・もらう",
+      "meaning": "giving and receiving verbs",
+      "structure": "Person に + あげる / が + くれる / から + もらう",
+      "mnemonic_text": "Direction of the gift decides which verb you use.",
+      "sort_order": 74,
+      "conjugation_rules": {
+        "giving_receiving": true
+      },
+      "accepted_forms": [
+        "あげる",
+        "くれる",
+        "もらう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "友達に本をあげました。",
+          "english": "I gave a book to my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "hon",
+            "ageru"
+          ]
+        },
+        {
+          "japanese": "母がプレゼントをくれました。",
+          "english": "My mother gave me a present.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "kureru"
+          ]
+        },
+        {
+          "japanese": "先生に辞書をもらいました。",
+          "english": "I received a dictionary from my teacher.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "jisho",
+            "morau"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "tomodachi",
+        "haha",
+        "sensei"
       ]
     }
   ]

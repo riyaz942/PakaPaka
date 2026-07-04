@@ -4,8 +4,8 @@
     {
       "slug": "ichi",
       "primary_form": "一",
-      "meaning": "one",
-      "mnemonic_text": "Radical one (一)",
+      "meaning": "ground / one",
+      "mnemonic_text": "A single flat line: the ground, or the number one.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ichi.png",
       "sort_order": 1
     },
@@ -13,7 +13,7 @@
       "slug": "ni",
       "primary_form": "二",
       "meaning": "two",
-      "mnemonic_text": "Radical two (二)",
+      "mnemonic_text": "Two flat lines stacked: two.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ni.png",
       "sort_order": 2
     },
@@ -21,185 +21,593 @@
       "slug": "san",
       "primary_form": "三",
       "meaning": "three",
-      "mnemonic_text": "Radical three (三)",
+      "mnemonic_text": "Three flat lines stacked: three.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/san.png",
       "sort_order": 3
     },
     {
-      "slug": "yon",
-      "primary_form": "四",
-      "meaning": "four",
-      "mnemonic_text": "Radical four (四)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/yon.png",
+      "slug": "bou",
+      "primary_form": "丨",
+      "meaning": "stick",
+      "mnemonic_text": "A single vertical stroke: a stick standing up.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/bou.png",
       "sort_order": 4
     },
     {
-      "slug": "go",
-      "primary_form": "五",
-      "meaning": "five",
-      "mnemonic_text": "Radical five (五)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/go.png",
+      "slug": "ten",
+      "primary_form": "丶",
+      "meaning": "drop",
+      "mnemonic_text": "A tiny dot: a single drop.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ten.png",
       "sort_order": 5
     },
     {
-      "slug": "roku",
-      "primary_form": "六",
-      "meaning": "six",
-      "mnemonic_text": "Radical six (六)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/roku.png",
+      "slug": "hitoyane",
+      "primary_form": "亠",
+      "meaning": "lid",
+      "mnemonic_text": "A flat top with a stem: a lid on top.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hitoyane.png",
       "sort_order": 6
     },
     {
-      "slug": "nana",
-      "primary_form": "七",
-      "meaning": "seven",
-      "mnemonic_text": "Radical seven (七)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/nana.png",
+      "slug": "hito",
+      "primary_form": "人",
+      "meaning": "person",
+      "mnemonic_text": "Two legs walking forward: a person.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hito.png",
       "sort_order": 7
     },
     {
-      "slug": "hachi",
-      "primary_form": "八",
-      "meaning": "eight",
-      "mnemonic_text": "Radical eight (八)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hachi.png",
+      "slug": "ninben",
+      "primary_form": "亻",
+      "meaning": "person (left)",
+      "mnemonic_text": "A person squeezed against the left side of a kanji.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ninben.png",
       "sort_order": 8
     },
     {
-      "slug": "kyuu",
-      "primary_form": "九",
-      "meaning": "nine",
-      "mnemonic_text": "Radical nine (九)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kyuu.png",
+      "slug": "hitoashi",
+      "primary_form": "儿",
+      "meaning": "human legs",
+      "mnemonic_text": "Two legs left standing without a body.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hitoashi.png",
       "sort_order": 9
+    },
+    {
+      "slug": "ireru",
+      "primary_form": "入",
+      "meaning": "enter",
+      "mnemonic_text": "A figure ducking through a doorway: to enter.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ireru.png",
+      "sort_order": 10
+    },
+    {
+      "slug": "hachigashira",
+      "primary_form": "八",
+      "meaning": "eight / split",
+      "mnemonic_text": "Two strokes spreading apart: eight, or splitting.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hachigashira.png",
+      "sort_order": 11
+    },
+    {
+      "slug": "keigamae",
+      "primary_form": "冂",
+      "meaning": "wide box",
+      "mnemonic_text": "An open-bottomed frame: a wide enclosure.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/keigamae.png",
+      "sort_order": 12
+    },
+    {
+      "slug": "chikara",
+      "primary_form": "力",
+      "meaning": "power",
+      "mnemonic_text": "A bent arm flexing: power.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/chikara.png",
+      "sort_order": 13
     },
     {
       "slug": "juu",
       "primary_form": "十",
-      "meaning": "ten",
-      "mnemonic_text": "Radical ten (十)",
+      "meaning": "ten / cross",
+      "mnemonic_text": "A plus sign: ten, or a cross.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/juu.png",
-      "sort_order": 10
+      "sort_order": 14
     },
     {
       "slug": "kuchi",
       "primary_form": "口",
       "meaning": "mouth",
-      "mnemonic_text": "Radical mouth (口)",
+      "mnemonic_text": "An open square: a mouth or an opening.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kuchi.png",
-      "sort_order": 11
-    },
-    {
-      "slug": "me",
-      "primary_form": "目",
-      "meaning": "eye",
-      "mnemonic_text": "Radical eye (目)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/me.png",
-      "sort_order": 12
-    },
-    {
-      "slug": "te",
-      "primary_form": "手",
-      "meaning": "hand",
-      "mnemonic_text": "Radical hand (手)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/te.png",
-      "sort_order": 13
-    },
-    {
-      "slug": "ashi",
-      "primary_form": "足",
-      "meaning": "foot",
-      "mnemonic_text": "Radical foot (足)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ashi.png",
-      "sort_order": 14
-    },
-    {
-      "slug": "ki",
-      "primary_form": "木",
-      "meaning": "tree",
-      "mnemonic_text": "Radical tree (木)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ki.png",
       "sort_order": 15
     },
     {
-      "slug": "hi",
-      "primary_form": "火",
-      "meaning": "fire",
-      "mnemonic_text": "Radical fire (火)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hi.png",
+      "slug": "kunigamae",
+      "primary_form": "囗",
+      "meaning": "enclosure",
+      "mnemonic_text": "A closed box: walls around something.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kunigamae.png",
       "sort_order": 16
-    },
-    {
-      "slug": "mizu",
-      "primary_form": "水",
-      "meaning": "water",
-      "mnemonic_text": "Radical water (水)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mizu.png",
-      "sort_order": 17
     },
     {
       "slug": "tsuchi",
       "primary_form": "土",
       "meaning": "earth",
-      "mnemonic_text": "Radical earth (土)",
+      "mnemonic_text": "A cross pushed into the ground: soil.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/tsuchi.png",
-      "sort_order": 18
-    },
-    {
-      "slug": "kane",
-      "primary_form": "金",
-      "meaning": "metal",
-      "mnemonic_text": "Radical metal (金)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kane.png",
-      "sort_order": 19
-    },
-    {
-      "slug": "hitoe",
-      "primary_form": "人",
-      "meaning": "person",
-      "mnemonic_text": "Radical person (人)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hitoe.png",
-      "sort_order": 20
-    },
-    {
-      "slug": "kodomo",
-      "primary_form": "子",
-      "meaning": "child",
-      "mnemonic_text": "Radical child (子)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kodomo.png",
-      "sort_order": 21
+      "sort_order": 17
     },
     {
       "slug": "onna",
       "primary_form": "女",
       "meaning": "woman",
-      "mnemonic_text": "Radical woman (女)",
+      "mnemonic_text": "A figure kneeling gracefully: a woman.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/onna.png",
+      "sort_order": 18
+    },
+    {
+      "slug": "ko",
+      "primary_form": "子",
+      "meaning": "child",
+      "mnemonic_text": "A swaddled baby with arms out: a child.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ko.png",
+      "sort_order": 19
+    },
+    {
+      "slug": "sun",
+      "primary_form": "寸",
+      "meaning": "inch / measure",
+      "mnemonic_text": "A hand with a mark: a small measured distance.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/sun.png",
+      "sort_order": 20
+    },
+    {
+      "slug": "shou",
+      "primary_form": "小",
+      "meaning": "small",
+      "mnemonic_text": "A hook with two flanking dots: small.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/shou.png",
+      "sort_order": 21
+    },
+    {
+      "slug": "yamahen",
+      "primary_form": "山",
+      "meaning": "mountain",
+      "mnemonic_text": "Three peaks: a mountain.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/yamahen.png",
       "sort_order": 22
     },
     {
-      "slug": "otoko",
-      "primary_form": "男",
-      "meaning": "man",
-      "mnemonic_text": "Radical man (男)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/otoko.png",
+      "slug": "kawa",
+      "primary_form": "川",
+      "meaning": "river",
+      "mnemonic_text": "Three flowing lines: a river.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kawa.png",
       "sort_order": 23
     },
     {
-      "slug": "jimen",
-      "primary_form": "地面",
-      "meaning": "ground",
-      "mnemonic_text": "Radical ground (地面)",
-      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/jimen.png",
+      "slug": "kougatsu",
+      "primary_form": "工",
+      "meaning": "construction",
+      "mnemonic_text": "An I-beam tool: construction work.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kougatsu.png",
       "sort_order": 24
+    },
+    {
+      "slug": "hidari",
+      "primary_form": "巳",
+      "meaning": "already / snake",
+      "mnemonic_text": "A coiled shape: a snake, or 'already'.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hidari.png",
+      "sort_order": 25
+    },
+    {
+      "slug": "haba",
+      "primary_form": "巾",
+      "meaning": "cloth",
+      "mnemonic_text": "A hanging piece of cloth on a rod.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/haba.png",
+      "sort_order": 26
+    },
+    {
+      "slug": "mannaka",
+      "primary_form": "干",
+      "meaning": "dry / shield",
+      "mnemonic_text": "A pole planted in the ground: a shield, or drying.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mannaka.png",
+      "sort_order": 27
+    },
+    {
+      "slug": "itoko",
+      "primary_form": "幺",
+      "meaning": "tiny thread",
+      "mnemonic_text": "A tiny twist of thread: something small and delicate.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/itoko.png",
+      "sort_order": 28
+    },
+    {
+      "slug": "yumi",
+      "primary_form": "弓",
+      "meaning": "bow",
+      "mnemonic_text": "A curved archer's bow.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/yumi.png",
+      "sort_order": 29
+    },
+    {
+      "slug": "kokorohen",
+      "primary_form": "忄",
+      "meaning": "heart (left)",
+      "mnemonic_text": "A heart squeezed to the left side of a kanji.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kokorohen.png",
+      "sort_order": 30
+    },
+    {
+      "slug": "te",
+      "primary_form": "手",
+      "meaning": "hand",
+      "mnemonic_text": "Fingers and a wrist: a hand.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/te.png",
+      "sort_order": 31
+    },
+    {
+      "slug": "tehen",
+      "primary_form": "扌",
+      "meaning": "hand (left)",
+      "mnemonic_text": "A hand acting on the left side of a kanji.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/tehen.png",
+      "sort_order": 32
+    },
+    {
+      "slug": "hi-sun",
+      "primary_form": "日",
+      "meaning": "sun / day",
+      "mnemonic_text": "A window with a bar: the sun, a day.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hi-sun.png",
+      "sort_order": 33
+    },
+    {
+      "slug": "iwaku",
+      "primary_form": "曰",
+      "meaning": "say",
+      "mnemonic_text": "A mouth breathing out a word.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/iwaku.png",
+      "sort_order": 34
+    },
+    {
+      "slug": "tsuki",
+      "primary_form": "月",
+      "meaning": "moon / month",
+      "mnemonic_text": "A crescent: the moon, or a month.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/tsuki.png",
+      "sort_order": 35
+    },
+    {
+      "slug": "ki",
+      "primary_form": "木",
+      "meaning": "tree",
+      "mnemonic_text": "A trunk with roots and branches: a tree.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ki.png",
+      "sort_order": 36
+    },
+    {
+      "slug": "kakeru",
+      "primary_form": "欠",
+      "meaning": "lack / yawn",
+      "mnemonic_text": "A person opening their mouth wide: a yawn, a lack.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kakeru.png",
+      "sort_order": 37
+    },
+    {
+      "slug": "tomeru",
+      "primary_form": "止",
+      "meaning": "stop",
+      "mnemonic_text": "A planted foot: stop.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/tomeru.png",
+      "sort_order": 38
+    },
+    {
+      "slug": "mizu",
+      "primary_form": "水",
+      "meaning": "water",
+      "mnemonic_text": "Streams splashing outward: water.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mizu.png",
+      "sort_order": 39
+    },
+    {
+      "slug": "sanzui",
+      "primary_form": "氵",
+      "meaning": "water (left)",
+      "mnemonic_text": "Three water droplets on the left of a kanji.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/sanzui.png",
+      "sort_order": 40
+    },
+    {
+      "slug": "hi-fire",
+      "primary_form": "火",
+      "meaning": "fire",
+      "mnemonic_text": "A person with sparks flying off: fire.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hi-fire.png",
+      "sort_order": 41
+    },
+    {
+      "slug": "rekka",
+      "primary_form": "灬",
+      "meaning": "fire (bottom)",
+      "mnemonic_text": "Four small flames licking the base of a kanji.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/rekka.png",
+      "sort_order": 42
+    },
+    {
+      "slug": "chichi",
+      "primary_form": "父",
+      "meaning": "father",
+      "mnemonic_text": "A hand holding a rod: a father's authority.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/chichi.png",
+      "sort_order": 43
+    },
+    {
+      "slug": "ushi",
+      "primary_form": "牛",
+      "meaning": "cow",
+      "mnemonic_text": "Horns over a body: a cow.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ushi.png",
+      "sort_order": 44
+    },
+    {
+      "slug": "me",
+      "primary_form": "目",
+      "meaning": "eye",
+      "mnemonic_text": "An upright frame with pupils: an eye.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/me.png",
+      "sort_order": 45
+    },
+    {
+      "slug": "ishi",
+      "primary_form": "石",
+      "meaning": "stone",
+      "mnemonic_text": "A rock under a cliff: a stone.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ishi.png",
+      "sort_order": 46
+    },
+    {
+      "slug": "shimesu",
+      "primary_form": "示",
+      "meaning": "altar / show",
+      "mnemonic_text": "An altar on which offerings are shown.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/shimesu.png",
+      "sort_order": 47
     },
     {
       "slug": "ta",
       "primary_form": "田",
       "meaning": "rice field",
-      "mnemonic_text": "Radical rice field (田)",
+      "mnemonic_text": "A plot divided into paddies: a rice field.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ta.png",
-      "sort_order": 25
+      "sort_order": 48
+    },
+    {
+      "slug": "ana",
+      "primary_form": "穴",
+      "meaning": "hole / cave",
+      "mnemonic_text": "A roof over a dug-out cave.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ana.png",
+      "sort_order": 49
+    },
+    {
+      "slug": "tatsu",
+      "primary_form": "立",
+      "meaning": "stand",
+      "mnemonic_text": "A person planted on the ground: to stand.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/tatsu.png",
+      "sort_order": 50
+    },
+    {
+      "slug": "takekanmuri",
+      "primary_form": "竹",
+      "meaning": "bamboo",
+      "mnemonic_text": "Two bamboo leaves drooping down.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/takekanmuri.png",
+      "sort_order": 51
+    },
+    {
+      "slug": "kome",
+      "primary_form": "米",
+      "meaning": "rice",
+      "mnemonic_text": "Grains scattering from a stalk: rice.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kome.png",
+      "sort_order": 52
+    },
+    {
+      "slug": "itohen",
+      "primary_form": "糸",
+      "meaning": "thread",
+      "mnemonic_text": "A skein of twisted thread.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/itohen.png",
+      "sort_order": 53
+    },
+    {
+      "slug": "mimi",
+      "primary_form": "耳",
+      "meaning": "ear",
+      "mnemonic_text": "A dangling shape on the head: an ear.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mimi.png",
+      "sort_order": 54
+    },
+    {
+      "slug": "nikuduki",
+      "primary_form": "肉",
+      "meaning": "meat",
+      "mnemonic_text": "A slab with marbling lines: meat.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/nikuduki.png",
+      "sort_order": 55
+    },
+    {
+      "slug": "shita",
+      "primary_form": "舌",
+      "meaning": "tongue",
+      "mnemonic_text": "A tongue sticking out of a mouth.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/shita.png",
+      "sort_order": 56
+    },
+    {
+      "slug": "kusakanmuri",
+      "primary_form": "艹",
+      "meaning": "grass",
+      "mnemonic_text": "Two sprouts poking up: the grass crown.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kusakanmuri.png",
+      "sort_order": 57
+    },
+    {
+      "slug": "mushi",
+      "primary_form": "虫",
+      "meaning": "insect",
+      "mnemonic_text": "A little bug with a curling tail.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mushi.png",
+      "sort_order": 58
+    },
+    {
+      "slug": "koromo",
+      "primary_form": "衣",
+      "meaning": "clothing",
+      "mnemonic_text": "A robe draped over the shoulders.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/koromo.png",
+      "sort_order": 59
+    },
+    {
+      "slug": "miru",
+      "primary_form": "見",
+      "meaning": "see",
+      "mnemonic_text": "An eye (目) on legs going out to see.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/miru.png",
+      "sort_order": 60
+    },
+    {
+      "slug": "gonben",
+      "primary_form": "言",
+      "meaning": "words / speech (left)",
+      "mnemonic_text": "A mouth releasing stacked lines of speech.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/gonben.png",
+      "sort_order": 61
+    },
+    {
+      "slug": "kai-shell",
+      "primary_form": "貝",
+      "meaning": "shell / money",
+      "mnemonic_text": "A cowrie shell once used as money.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kai-shell.png",
+      "sort_order": 62
+    },
+    {
+      "slug": "aka",
+      "primary_form": "赤",
+      "meaning": "red",
+      "mnemonic_text": "Earth glowing under a fire: red.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/aka.png",
+      "sort_order": 63
+    },
+    {
+      "slug": "ashi-foot",
+      "primary_form": "足",
+      "meaning": "foot",
+      "mnemonic_text": "A mouth over stopping legs: a foot.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ashi-foot.png",
+      "sort_order": 64
+    },
+    {
+      "slug": "kuruma",
+      "primary_form": "車",
+      "meaning": "vehicle",
+      "mnemonic_text": "A cart seen from above with an axle.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kuruma.png",
+      "sort_order": 65
+    },
+    {
+      "slug": "shinnyou",
+      "primary_form": "辶",
+      "meaning": "road / advance",
+      "mnemonic_text": "A winding road you walk along.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/shinnyou.png",
+      "sort_order": 66
+    },
+    {
+      "slug": "oozato",
+      "primary_form": "阝",
+      "meaning": "village (right)",
+      "mnemonic_text": "A stamped seal on the right: a village.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/oozato.png",
+      "sort_order": 67
+    },
+    {
+      "slug": "kanehen",
+      "primary_form": "金",
+      "meaning": "gold / metal",
+      "mnemonic_text": "A roof over buried nuggets: gold and metal.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kanehen.png",
+      "sort_order": 68
+    },
+    {
+      "slug": "nagai",
+      "primary_form": "長",
+      "meaning": "long",
+      "mnemonic_text": "Flowing long hair on an elder: long.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/nagai.png",
+      "sort_order": 69
+    },
+    {
+      "slug": "mongamae",
+      "primary_form": "門",
+      "meaning": "gate",
+      "mnemonic_text": "Two swinging doors: a gate.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/mongamae.png",
+      "sort_order": 70
+    },
+    {
+      "slug": "ame",
+      "primary_form": "雨",
+      "meaning": "rain",
+      "mnemonic_text": "Drops falling inside a window frame: rain.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ame.png",
+      "sort_order": 71
+    },
+    {
+      "slug": "ao",
+      "primary_form": "青",
+      "meaning": "blue-green",
+      "mnemonic_text": "A sprout over the moon: youthful blue-green.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ao.png",
+      "sort_order": 72
+    },
+    {
+      "slug": "shiro",
+      "primary_form": "白",
+      "meaning": "white",
+      "mnemonic_text": "A ray of light so bright it turns white.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/shiro.png",
+      "sort_order": 73
+    },
+    {
+      "slug": "uma",
+      "primary_form": "馬",
+      "meaning": "horse",
+      "mnemonic_text": "A galloping horse with a flowing mane and four legs.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/uma.png",
+      "sort_order": 74
+    },
+    {
+      "slug": "takai",
+      "primary_form": "高",
+      "meaning": "tall",
+      "mnemonic_text": "A tall tower with windows: high.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/takai.png",
+      "sort_order": 75
+    },
+    {
+      "slug": "kuro",
+      "primary_form": "黒",
+      "meaning": "black",
+      "mnemonic_text": "A sooty village over a fire: black.",
+      "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/kuro.png",
+      "sort_order": 76
     }
   ]
 }

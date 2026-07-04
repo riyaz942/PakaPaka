@@ -5,7 +5,7 @@
       "slug": "n5-ichi",
       "primary_form": "一",
       "meaning": "one",
-      "mnemonic_text": "Kanji one",
+      "mnemonic_text": "A single horizontal stroke is the ground floor: one.",
       "sort_order": 1,
       "readings": [
         {
@@ -35,7 +35,7 @@
       "slug": "n5-ni",
       "primary_form": "二",
       "meaning": "two",
-      "mnemonic_text": "Kanji two",
+      "mnemonic_text": "Two stacked strokes count out two.",
       "sort_order": 2,
       "readings": [
         {
@@ -65,7 +65,7 @@
       "slug": "n5-san",
       "primary_form": "三",
       "meaning": "three",
-      "mnemonic_text": "Kanji three",
+      "mnemonic_text": "Three stacked strokes: one, two, three.",
       "sort_order": 3,
       "readings": [
         {
@@ -95,7 +95,7 @@
       "slug": "n5-yon",
       "primary_form": "四",
       "meaning": "four",
-      "mnemonic_text": "Kanji four",
+      "mnemonic_text": "A mouth boxing in legs that kick four ways: four.",
       "sort_order": 4,
       "readings": [
         {
@@ -125,7 +125,7 @@
       "slug": "n5-go",
       "primary_form": "五",
       "meaning": "five",
-      "mnemonic_text": "Kanji five",
+      "mnemonic_text": "A shape crossing itself, the hand held up: five fingers.",
       "sort_order": 5,
       "readings": [
         {
@@ -155,7 +155,7 @@
       "slug": "n5-roku",
       "primary_form": "六",
       "meaning": "six",
-      "mnemonic_text": "Kanji six",
+      "mnemonic_text": "A little hat on two legs stands over six.",
       "sort_order": 6,
       "readings": [
         {
@@ -185,7 +185,7 @@
       "slug": "n5-nana",
       "primary_form": "七",
       "meaning": "seven",
-      "mnemonic_text": "Kanji seven",
+      "mnemonic_text": "A slanted cross like a scythe cutting seven.",
       "sort_order": 7,
       "readings": [
         {
@@ -215,7 +215,7 @@
       "slug": "n5-hachi",
       "primary_form": "八",
       "meaning": "eight",
-      "mnemonic_text": "Kanji eight",
+      "mnemonic_text": "Two strokes spreading apart like the number eight opening up.",
       "sort_order": 8,
       "readings": [
         {
@@ -245,7 +245,7 @@
       "slug": "n5-kyuu",
       "primary_form": "九",
       "meaning": "nine",
-      "mnemonic_text": "Kanji nine",
+      "mnemonic_text": "A hook curling back at the top of the count: nine.",
       "sort_order": 9,
       "readings": [
         {
@@ -275,7 +275,7 @@
       "slug": "n5-juu",
       "primary_form": "十",
       "meaning": "ten",
-      "mnemonic_text": "Kanji ten",
+      "mnemonic_text": "A perfect plus sign, fingers of both hands: ten.",
       "sort_order": 10,
       "readings": [
         {
@@ -302,11 +302,121 @@
       ]
     },
     {
+      "slug": "n5-hyaku",
+      "primary_form": "百",
+      "meaning": "hundred",
+      "mnemonic_text": "One (一) over a white (白) sheet counted a hundred times.",
+      "sort_order": 11,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ひゃく",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "hundred",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ひゃく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-sen",
+      "primary_form": "千",
+      "meaning": "thousand",
+      "mnemonic_text": "A slash over ten (十) multiplies it into a thousand.",
+      "sort_order": 12,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "thousand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-man",
+      "primary_form": "万",
+      "meaning": "ten thousand",
+      "mnemonic_text": "A single hooked mark standing for a whole ten thousand.",
+      "sort_order": 13,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "まん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ten thousand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "まん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-en",
+      "primary_form": "円",
+      "meaning": "yen / circle",
+      "mnemonic_text": "A boxed shape holding the round yen coin.",
+      "sort_order": 14,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "えん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "まる",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "yen / circle",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "えん"
+        }
+      ]
+    },
+    {
       "slug": "n5-nichi",
       "primary_form": "日",
-      "meaning": "day",
-      "mnemonic_text": "Kanji day",
-      "sort_order": 11,
+      "meaning": "day / sun",
+      "mnemonic_text": "A window with a line: the sun rising to mark the day.",
+      "sort_order": 15,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -322,7 +432,7 @@
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "day",
+          "answer_text": "day / sun",
           "is_primary": true
         },
         {
@@ -334,9 +444,9 @@
     {
       "slug": "n5-gatsu",
       "primary_form": "月",
-      "meaning": "month",
-      "mnemonic_text": "Kanji month",
-      "sort_order": 12,
+      "meaning": "month / moon",
+      "mnemonic_text": "A crescent with two lines: the moon marking each month.",
+      "sort_order": 16,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -352,7 +462,7 @@
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "month",
+          "answer_text": "month / moon",
           "is_primary": true
         },
         {
@@ -362,71 +472,781 @@
       ]
     },
     {
-      "slug": "n5-toshi",
-      "primary_form": "年",
-      "meaning": "year",
-      "mnemonic_text": "Kanji year",
-      "sort_order": 13,
+      "slug": "n5-ka-fire",
+      "primary_form": "火",
+      "meaning": "fire",
+      "mnemonic_text": "A person with sparks flying off each side: fire.",
+      "sort_order": 17,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "ねん",
+          "reading": "か",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "とし",
+          "reading": "ひ",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "year",
+          "answer_text": "fire",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "ねん"
+          "answer_text": "か"
         }
       ]
     },
     {
-      "slug": "n5-jikan",
-      "primary_form": "時間",
-      "meaning": "time",
-      "mnemonic_text": "Kanji time",
-      "sort_order": 14,
+      "slug": "n5-sui",
+      "primary_form": "水",
+      "meaning": "water",
+      "mnemonic_text": "Streams splashing out from a central flow: water.",
+      "sort_order": 18,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "じ",
+          "reading": "すい",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "とき",
+          "reading": "みず",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "time",
+          "answer_text": "water",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "じ"
+          "answer_text": "すい"
         }
       ]
     },
     {
-      "slug": "n5-hito",
+      "slug": "n5-moku",
+      "primary_form": "木",
+      "meaning": "tree",
+      "mnemonic_text": "A trunk with roots and branches: a tree.",
+      "sort_order": 19,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "き",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tree",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kin",
+      "primary_form": "金",
+      "meaning": "gold / money",
+      "mnemonic_text": "A roof over a mountain of buried gold and money.",
+      "sort_order": 20,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かね",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "gold / money",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-do-earth",
+      "primary_form": "土",
+      "meaning": "earth / soil",
+      "mnemonic_text": "A cross pushed into the ground: earth and soil.",
+      "sort_order": 21,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ど",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "earth / soil",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ど"
+        }
+      ]
+    },
+    {
+      "slug": "n5-yama",
+      "primary_form": "山",
+      "meaning": "mountain",
+      "mnemonic_text": "Three peaks rising up: a mountain range.",
+      "sort_order": 22,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "さん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "やま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "mountain",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "さん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kawa",
+      "primary_form": "川",
+      "meaning": "river",
+      "mnemonic_text": "Three flowing lines of a running river.",
+      "sort_order": 23,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かわ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "river",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ten",
+      "primary_form": "天",
+      "meaning": "heaven / sky",
+      "mnemonic_text": "A person (大) with a line above their head: the heavens.",
+      "sort_order": 24,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "てん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "heaven / sky",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "てん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ki-spirit",
+      "primary_form": "気",
+      "meaning": "spirit / energy",
+      "mnemonic_text": "Steam rising with an X inside: the invisible energy or mood.",
+      "sort_order": 25,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "き",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "spirit / energy",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "き"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hana",
+      "primary_form": "花",
+      "meaning": "flower",
+      "mnemonic_text": "Grass on top of a person changing (化): a blooming flower.",
+      "sort_order": 26,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "か",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "flower",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "か"
+        }
+      ]
+    },
+    {
+      "slug": "n5-uenagashi",
+      "primary_form": "上",
+      "meaning": "up / above",
+      "mnemonic_text": "A mark sitting on top of a line: up and above.",
+      "sort_order": 27,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うえ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "up / above",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じょう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-shita",
+      "primary_form": "下",
+      "meaning": "down / below",
+      "mnemonic_text": "A mark hanging under a line: down and below.",
+      "sort_order": 28,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "か",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "した",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "down / below",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "か"
+        }
+      ]
+    },
+    {
+      "slug": "n5-naka",
+      "primary_form": "中",
+      "meaning": "middle / inside",
+      "mnemonic_text": "A box speared straight through the middle.",
+      "sort_order": 29,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "middle / inside",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-dai-big",
+      "primary_form": "大",
+      "meaning": "big",
+      "mnemonic_text": "A person stretching arms and legs out wide: big.",
+      "sort_order": 30,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "だい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "おお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "big",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "だい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-shou-small",
+      "primary_form": "小",
+      "meaning": "small",
+      "mnemonic_text": "A tiny hook with two small dots: small.",
+      "sort_order": 31,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ちい",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "small",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しょう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hidari",
+      "primary_form": "左",
+      "meaning": "left",
+      "mnemonic_text": "A hand over a craftsman's tool, held in the left hand.",
+      "sort_order": 32,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "さ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひだり",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "left",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "さ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-migi",
+      "primary_form": "右",
+      "meaning": "right",
+      "mnemonic_text": "A hand over a mouth, the right hand that feeds you.",
+      "sort_order": 33,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "う",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みぎ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "right",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "う"
+        }
+      ]
+    },
+    {
+      "slug": "n5-higashi",
+      "primary_form": "東",
+      "meaning": "east",
+      "mnemonic_text": "The sun (日) tangled in a tree (木): sunrise in the east.",
+      "sort_order": 34,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "とう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひがし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "east",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "とう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nishi",
+      "primary_form": "西",
+      "meaning": "west",
+      "mnemonic_text": "A bird settling into its nest as the sun sets in the west.",
+      "sort_order": 35,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "にし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "west",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-minami",
+      "primary_form": "南",
+      "meaning": "south",
+      "mnemonic_text": "A warm shelter facing the sunny south.",
+      "sort_order": 36,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "なん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みなみ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "south",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "なん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kita",
+      "primary_form": "北",
+      "meaning": "north",
+      "mnemonic_text": "Two people back to back turning away from the cold north.",
+      "sort_order": 37,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ほく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "きた",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "north",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ほく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hoku",
+      "primary_form": "外",
+      "meaning": "outside",
+      "mnemonic_text": "Evening (夕) plus divination: reading fortunes outside.",
+      "sort_order": 38,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "がい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "そと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "outside",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "がい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-mae",
+      "primary_form": "前",
+      "meaning": "front / before",
+      "mnemonic_text": "A blade cutting the way forward, in front of you.",
+      "sort_order": 39,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぜん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "まえ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "front / before",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぜん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ushiro",
+      "primary_form": "後",
+      "meaning": "after / behind",
+      "mnemonic_text": "A small step trailing behind: after and behind.",
+      "sort_order": 40,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ご",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "after / behind",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ご"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hidariuma",
+      "primary_form": "午",
+      "meaning": "noon",
+      "mnemonic_text": "A marker at the top of the day: noon.",
+      "sort_order": 41,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ご",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "noon",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ご"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hon",
+      "primary_form": "本",
+      "meaning": "book / origin",
+      "mnemonic_text": "A tree (木) with a line marking its root: the origin, a book.",
+      "sort_order": 42,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ほん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "book / origin",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ほん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hito-jin",
       "primary_form": "人",
       "meaning": "person",
-      "mnemonic_text": "Kanji person",
-      "sort_order": 15,
+      "mnemonic_text": "Two legs walking: a person.",
+      "sort_order": 43,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -452,41 +1272,11 @@
       ]
     },
     {
-      "slug": "n5-kodomo",
-      "primary_form": "子",
-      "meaning": "child",
-      "mnemonic_text": "Kanji child",
-      "sort_order": 16,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "し",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "こ",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "child",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "し"
-        }
-      ]
-    },
-    {
       "slug": "n5-onna",
       "primary_form": "女",
       "meaning": "woman",
-      "mnemonic_text": "Kanji woman",
-      "sort_order": 17,
+      "mnemonic_text": "A figure kneeling gracefully: a woman.",
+      "sort_order": 44,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -515,8 +1305,8 @@
       "slug": "n5-otoko",
       "primary_form": "男",
       "meaning": "man",
-      "mnemonic_text": "Kanji man",
-      "sort_order": 18,
+      "mnemonic_text": "Power (力) worked in the rice field (田): a working man.",
+      "sort_order": 45,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -542,40 +1332,570 @@
       ]
     },
     {
-      "slug": "n5-sensei",
-      "primary_form": "先生",
-      "meaning": "teacher",
-      "mnemonic_text": "Kanji teacher",
-      "sort_order": 19,
+      "slug": "n5-ko-child",
+      "primary_form": "子",
+      "meaning": "child",
+      "mnemonic_text": "A swaddled baby with arms out: a child.",
+      "sort_order": 46,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "せん",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "こ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "child",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        }
+      ]
+    },
+    {
+      "slug": "n5-me-eye",
+      "primary_form": "目",
+      "meaning": "eye",
+      "mnemonic_text": "An upright frame with pupils inside: an eye.",
+      "sort_order": 47,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "め",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "eye",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-mimi",
+      "primary_form": "耳",
+      "meaning": "ear",
+      "mnemonic_text": "A dangling shape on the side of the head: an ear.",
+      "sort_order": 48,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みみ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ear",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kuchi",
+      "primary_form": "口",
+      "meaning": "mouth",
+      "mnemonic_text": "An open square: a mouth.",
+      "sort_order": 49,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "mouth",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-te-hand",
+      "primary_form": "手",
+      "meaning": "hand",
+      "mnemonic_text": "Fingers and a wrist branching out: a hand.",
+      "sort_order": 50,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "て",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "hand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ashi",
+      "primary_form": "足",
+      "meaning": "foot / leg / suffice",
+      "mnemonic_text": "A mouth over stopping legs: a foot that carries you.",
+      "sort_order": 51,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "そく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "foot / leg / suffice",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "そく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-chikara",
+      "primary_form": "力",
+      "meaning": "power / strength",
+      "mnemonic_text": "A flexed arm pushing: power and strength.",
+      "sort_order": 52,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "りょく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ちから",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "power / strength",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "りょく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-sei-life",
+      "primary_form": "生",
+      "meaning": "life / birth",
+      "mnemonic_text": "A sprout pushing up from the ground: life and birth.",
+      "sort_order": 53,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "い",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "life / birth",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-meiname",
+      "primary_form": "名",
+      "meaning": "name",
+      "mnemonic_text": "In the evening (夕) you call out a mouth's (口) name.",
+      "sort_order": 54,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "めい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "な",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "name",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "めい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nen",
+      "primary_form": "年",
+      "meaning": "year",
+      "mnemonic_text": "A person carrying grain across one full year.",
+      "sort_order": 55,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ねん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "year",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ねん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-jikan-ji",
+      "primary_form": "時",
+      "meaning": "time / hour",
+      "mnemonic_text": "The sun (日) at the temple (寺) marks the hour.",
+      "sort_order": 56,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とき",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "time / hour",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ma-interval",
+      "primary_form": "間",
+      "meaning": "interval / between",
+      "mnemonic_text": "The sun (日) seen through a gate (門): the space in between.",
+      "sort_order": 57,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あいだ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "interval / between",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nichiyou",
+      "primary_form": "曜",
+      "meaning": "weekday",
+      "mnemonic_text": "The sun (日) with wings and birds: naming each day of the week.",
+      "sort_order": 58,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "よう",
           "sort_order": 0
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "teacher",
+          "answer_text": "weekday",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "せん"
+          "answer_text": "よう"
         }
       ]
     },
     {
-      "slug": "n5-gakkou",
-      "primary_form": "学校",
-      "meaning": "school",
-      "mnemonic_text": "Kanji school",
-      "sort_order": 20,
+      "slug": "n5-kon-now",
+      "primary_form": "今",
+      "meaning": "now",
+      "mnemonic_text": "A roof over a moment held in the hand: now.",
+      "sort_order": 59,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "いま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "now",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-shu-week",
+      "primary_form": "週",
+      "meaning": "week",
+      "mnemonic_text": "Making a lap around the calendar road: one week.",
+      "sort_order": 60,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅう",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "week",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-mai-every",
+      "primary_form": "毎",
+      "meaning": "every",
+      "mnemonic_text": "A person over a mother figure repeating every time.",
+      "sort_order": 61,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "まい",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "every",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "まい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hantime",
+      "primary_form": "半",
+      "meaning": "half",
+      "mnemonic_text": "A shape split evenly down the middle: half.",
+      "sort_order": 62,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "はん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "half",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "はん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-bun-minute",
+      "primary_form": "分",
+      "meaning": "minute / part / understand",
+      "mnemonic_text": "A sword (刀) dividing something into parts and minutes.",
+      "sort_order": 63,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ふん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "わ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "minute / part / understand",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ふん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-gaku",
+      "primary_form": "学",
+      "meaning": "study / learning",
+      "mnemonic_text": "A child (子) under a roof of scattered ideas: study.",
+      "sort_order": 64,
       "readings": [
         {
           "reading_type": "onyomi",
           "reading": "がく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "まな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "study / learning",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "がく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kou-school",
+      "primary_form": "校",
+      "meaning": "school",
+      "mnemonic_text": "A tree (木) crossed with mingling students: a school.",
+      "sort_order": 65,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
           "sort_order": 0
         }
       ],
@@ -587,105 +1907,170 @@
         },
         {
           "answer_type": "reading",
-          "answer_text": "がく"
+          "answer_text": "こう"
         }
       ]
     },
     {
-      "slug": "n5-hon",
-      "primary_form": "本",
-      "meaning": "book",
-      "mnemonic_text": "Kanji book",
-      "sort_order": 21,
+      "slug": "n5-sensei-saki",
+      "primary_form": "先",
+      "meaning": "previous / ahead",
+      "mnemonic_text": "A person stepping ahead of the rest: previous and first.",
+      "sort_order": 66,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "ほん",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "book",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ほん"
-        }
-      ]
-    },
-    {
-      "slug": "n5-mizu-k",
-      "primary_form": "水",
-      "meaning": "water",
-      "mnemonic_text": "Kanji water",
-      "sort_order": 22,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "すい",
+          "reading": "せん",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "みず",
+          "reading": "さき",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "water",
+          "answer_text": "previous / ahead",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "すい"
+          "answer_text": "せん"
         }
       ]
     },
     {
-      "slug": "n5-hi-k",
-      "primary_form": "火",
-      "meaning": "fire",
-      "mnemonic_text": "Kanji fire",
-      "sort_order": 23,
+      "slug": "n5-go-language",
+      "primary_form": "語",
+      "meaning": "language / word",
+      "mnemonic_text": "Speech (言) with a mouth counting to five (五): words and language.",
+      "sort_order": 67,
       "readings": [
         {
           "reading_type": "onyomi",
+          "reading": "ご",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かた",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "language / word",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ご"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hanashi-wa",
+      "primary_form": "話",
+      "meaning": "talk / story",
+      "mnemonic_text": "Speech (言) plus a tongue (舌): telling a story.",
+      "sort_order": 68,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "わ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "talk / story",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "わ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-dokusho",
+      "primary_form": "読",
+      "meaning": "read",
+      "mnemonic_text": "Words (言) sold (売) to your eyes: reading.",
+      "sort_order": 69,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "どく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "よ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "read",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "どく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kaku-write",
+      "primary_form": "書",
+      "meaning": "write",
+      "mnemonic_text": "A brush (聿) laid over a sunny page: writing.",
+      "sort_order": 70,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
           "reading": "か",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "ひ",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "fire",
+          "answer_text": "write",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "か"
+          "answer_text": "しょ"
         }
       ]
     },
     {
-      "slug": "n5-ki-k",
-      "primary_form": "木",
-      "meaning": "tree",
-      "mnemonic_text": "Kanji tree",
-      "sort_order": 24,
+      "slug": "n5-kiku-hear",
+      "primary_form": "聞",
+      "meaning": "hear / ask",
+      "mnemonic_text": "An ear (耳) inside the gate (門): listening for who is there.",
+      "sort_order": 71,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "もく",
+          "reading": "ぶん",
           "sort_order": 0
         },
         {
@@ -697,101 +2082,21 @@
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "tree",
+          "answer_text": "hear / ask",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "もく"
+          "answer_text": "ぶん"
         }
       ]
     },
     {
-      "slug": "n5-kane-k",
-      "primary_form": "金",
-      "meaning": "money",
-      "mnemonic_text": "Kanji money",
-      "sort_order": 25,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "きん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "かね",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "money",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "きん"
-        }
-      ]
-    },
-    {
-      "slug": "n5-tabi",
-      "primary_form": "食",
-      "meaning": "eat",
-      "mnemonic_text": "Kanji eat",
-      "sort_order": 26,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "しょく",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "eat",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "しょく"
-        }
-      ]
-    },
-    {
-      "slug": "n5-nomu",
-      "primary_form": "飲",
-      "meaning": "drink",
-      "mnemonic_text": "Kanji drink",
-      "sort_order": 27,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "いん",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "drink",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "いん"
-        }
-      ]
-    },
-    {
-      "slug": "n5-iku",
+      "slug": "n5-iku-go",
       "primary_form": "行",
       "meaning": "go",
-      "mnemonic_text": "Kanji go",
-      "sort_order": 28,
+      "mnemonic_text": "A crossroads where you choose to go.",
+      "sort_order": 72,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -817,11 +2122,11 @@
       ]
     },
     {
-      "slug": "n5-kuru",
+      "slug": "n5-kuru-rai",
       "primary_form": "来",
       "meaning": "come",
-      "mnemonic_text": "Kanji come",
-      "sort_order": 29,
+      "mnemonic_text": "A tree of grain drawing people to come.",
+      "sort_order": 73,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -847,11 +2152,101 @@
       ]
     },
     {
+      "slug": "n5-kaeru",
+      "primary_form": "帰",
+      "meaning": "return",
+      "mnemonic_text": "A broom and a stop: sweeping up and returning home.",
+      "sort_order": 74,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "き",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かえ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "return",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "き"
+        }
+      ]
+    },
+    {
+      "slug": "n5-deru",
+      "primary_form": "出",
+      "meaning": "exit / leave",
+      "mnemonic_text": "Two mountains stacked, something pushing out.",
+      "sort_order": 75,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "で",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "exit / leave",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅつ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hairu",
+      "primary_form": "入",
+      "meaning": "enter",
+      "mnemonic_text": "A person ducking under a doorway to enter.",
+      "sort_order": 76,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "にゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はい",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "enter",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "にゅう"
+        }
+      ]
+    },
+    {
       "slug": "n5-miru",
       "primary_form": "見",
       "meaning": "see",
-      "mnemonic_text": "Kanji see",
-      "sort_order": 30,
+      "mnemonic_text": "An eye (目) on legs going out to see.",
+      "sort_order": 77,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -877,62 +2272,862 @@
       ]
     },
     {
-      "slug": "n5-kiku",
-      "primary_form": "聞",
-      "meaning": "hear",
-      "mnemonic_text": "Kanji hear",
-      "sort_order": 31,
+      "slug": "n5-tomeru",
+      "primary_form": "止",
+      "meaning": "stop",
+      "mnemonic_text": "A foot planted firmly: stop.",
+      "sort_order": 78,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "ぶん",
+          "reading": "し",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "き",
+          "reading": "と",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "hear",
+          "answer_text": "stop",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "ぶん"
+          "answer_text": "し"
         }
       ]
     },
     {
-      "slug": "n5-hanasu",
-      "primary_form": "話",
-      "meaning": "speak",
-      "mnemonic_text": "Kanji speak",
-      "sort_order": 32,
+      "slug": "n5-tatsu",
+      "primary_form": "立",
+      "meaning": "stand",
+      "mnemonic_text": "A person standing on the ground line: to stand.",
+      "sort_order": 79,
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "わ",
+          "reading": "りつ",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "はな",
+          "reading": "た",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "speak",
+          "answer_text": "stand",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "わ"
+          "answer_text": "りつ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-suwaru",
+      "primary_form": "座",
+      "meaning": "sit",
+      "mnemonic_text": "Two people (人) sitting on the earth (土) under a roof.",
+      "sort_order": 80,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ざ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "すわ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sit",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ざ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-yasumu",
+      "primary_form": "休",
+      "meaning": "rest",
+      "mnemonic_text": "A person (人) leaning on a tree (木): resting.",
+      "sort_order": 81,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "やす",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "rest",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-iu-gen",
+      "primary_form": "言",
+      "meaning": "say / word",
+      "mnemonic_text": "A mouth releasing lines of speech: to say.",
+      "sort_order": 82,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "げん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "い",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "say / word",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "げん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kau",
+      "primary_form": "買",
+      "meaning": "buy",
+      "mnemonic_text": "A net (罒) over money (貝): buying with cash.",
+      "sort_order": 83,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ばい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "か",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "buy",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ばい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-uru-baku",
+      "primary_form": "売",
+      "meaning": "sell",
+      "mnemonic_text": "Goods laid out on a stand: selling.",
+      "sort_order": 84,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ばい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "う",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sell",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ばい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-taberu",
+      "primary_form": "食",
+      "meaning": "eat / food",
+      "mnemonic_text": "A roof over a heap of good rice: food to eat.",
+      "sort_order": 85,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "た",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "eat / food",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しょく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nomu",
+      "primary_form": "飲",
+      "meaning": "drink",
+      "mnemonic_text": "Food (食) beside a person yawning (欠) for a drink.",
+      "sort_order": 86,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "の",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "drink",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-shiro-white",
+      "primary_form": "白",
+      "meaning": "white",
+      "mnemonic_text": "A ray of sunlight so bright it turns white.",
+      "sort_order": 87,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "はく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "しろ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "white",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "はく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-aka",
+      "primary_form": "赤",
+      "meaning": "red",
+      "mnemonic_text": "The earth glowing under a big fire: red.",
+      "sort_order": 88,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せき",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "red",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せき"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ao",
+      "primary_form": "青",
+      "meaning": "blue / green",
+      "mnemonic_text": "A fresh sprout over the moon: the blue-green of youth.",
+      "sort_order": 89,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "blue / green",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kane-gold-dup",
+      "primary_form": "黒",
+      "meaning": "black",
+      "mnemonic_text": "A sooty village over a fire: black with smoke.",
+      "sort_order": 90,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くろ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "black",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-takai",
+      "primary_form": "高",
+      "meaning": "tall / expensive",
+      "mnemonic_text": "A tall tower with windows: high and expensive.",
+      "sort_order": 91,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tall / expensive",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-yasui",
+      "primary_form": "安",
+      "meaning": "cheap / peaceful",
+      "mnemonic_text": "A woman (女) safe under a roof: peaceful and cheap.",
+      "sort_order": 92,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "あん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "やす",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "cheap / peaceful",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "あん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-atarashii",
+      "primary_form": "新",
+      "meaning": "new",
+      "mnemonic_text": "A standing tree cut by an axe (斤): freshly new.",
+      "sort_order": 93,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あたら",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "new",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-furui",
+      "primary_form": "古",
+      "meaning": "old",
+      "mnemonic_text": "Ten (十) mouths (口) of stories passed down: old.",
+      "sort_order": 94,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ふる",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "old",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ooi-ta",
+      "primary_form": "多",
+      "meaning": "many",
+      "mnemonic_text": "Two evenings (夕) stacked: many days piling up.",
+      "sort_order": 95,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "た",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "おお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "many",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "た"
+        }
+      ]
+    },
+    {
+      "slug": "n5-sukunai",
+      "primary_form": "少",
+      "meaning": "few / little",
+      "mnemonic_text": "Small (小) with a slash taken off: even fewer.",
+      "sort_order": 96,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "すく",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "few / little",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しょう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-nagai",
+      "primary_form": "長",
+      "meaning": "long / leader",
+      "mnemonic_text": "Flowing long hair on an elder: long and the eldest.",
+      "sort_order": 97,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なが",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "long / leader",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちょう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-hayai",
+      "primary_form": "早",
+      "meaning": "early / fast",
+      "mnemonic_text": "The sun (日) already up over the ground (十): early.",
+      "sort_order": 98,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "そう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はや",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "early / fast",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "そう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-kuni",
+      "primary_form": "国",
+      "meaning": "country",
+      "mnemonic_text": "A jewel (玉) enclosed by borders: a country.",
+      "sort_order": 99,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くに",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "country",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こく"
+        }
+      ]
+    },
+    {
+      "slug": "n5-ame-rain",
+      "primary_form": "雨",
+      "meaning": "rain",
+      "mnemonic_text": "Drops falling inside a window frame from the sky: rain.",
+      "sort_order": 100,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "う",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あめ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "rain",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "う"
+        }
+      ]
+    },
+    {
+      "slug": "n5-denki-den",
+      "primary_form": "電",
+      "meaning": "electricity",
+      "mnemonic_text": "Rain (雨) with lightning stretching down: electricity.",
+      "sort_order": 101,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "でん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "electricity",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "でん"
+        }
+      ]
+    },
+    {
+      "slug": "n5-sha-car",
+      "primary_form": "車",
+      "meaning": "car / vehicle",
+      "mnemonic_text": "A cart seen from above with an axle: a vehicle.",
+      "sort_order": 102,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゃ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くるま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "car / vehicle",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゃ"
+        }
+      ]
+    },
+    {
+      "slug": "n5-eki-station",
+      "primary_form": "駅",
+      "meaning": "station",
+      "mnemonic_text": "A horse (馬) waiting where trains stop: a station.",
+      "sort_order": 103,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "えき",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "station",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "えき"
+        }
+      ]
+    },
+    {
+      "slug": "n5-michi",
+      "primary_form": "道",
+      "meaning": "road / way",
+      "mnemonic_text": "A neck (首) moving down a path: the road and the way.",
+      "sort_order": 104,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "どう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "road / way",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "どう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-machi",
+      "primary_form": "町",
+      "meaning": "town",
+      "mnemonic_text": "A rice field (田) marked out into a town.",
+      "sort_order": 105,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "まち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "town",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちょう"
+        }
+      ]
+    },
+    {
+      "slug": "n5-shi-city",
+      "primary_form": "市",
+      "meaning": "city / market",
+      "mnemonic_text": "A cloth over a stand where the city market gathers.",
+      "sort_order": 106,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "いち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "city / market",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
         }
       ]
     }

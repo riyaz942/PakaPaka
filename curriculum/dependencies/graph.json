@@ -8,6 +8,34 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n5-hon",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n5-sen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n5-hyaku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n5-hidariuma",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "ni",
       "from_type": "radical",
       "to_slug": "n5-ni",
@@ -22,48 +50,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "yon",
-      "from_type": "radical",
-      "to_slug": "n5-yon",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "go",
-      "from_type": "radical",
-      "to_slug": "n5-go",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "roku",
-      "from_type": "radical",
-      "to_slug": "n5-roku",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "nana",
-      "from_type": "radical",
-      "to_slug": "n5-nana",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachi",
-      "from_type": "radical",
-      "to_slug": "n5-hachi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kyuu",
-      "from_type": "radical",
-      "to_slug": "n5-kyuu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "juu",
       "from_type": "radical",
       "to_slug": "n5-juu",
@@ -71,44 +57,177 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hi",
+      "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n5-nichi",
+      "to_slug": "n5-hyaku",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "me",
+      "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n5-gatsu",
+      "to_slug": "n5-sen",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n5-toshi",
+      "to_slug": "n5-kyuu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n5-jikan",
+      "to_slug": "n5-hachi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitoe",
+      "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n5-hito",
+      "to_slug": "n5-roku",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kodomo",
+      "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n5-kodomo",
+      "to_slug": "n5-bun-minute",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hito",
+      "from_type": "radical",
+      "to_slug": "n5-hito-jin",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hito",
+      "from_type": "radical",
+      "to_slug": "n5-yasumu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hito",
+      "from_type": "radical",
+      "to_slug": "n5-kon-now",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ninben",
+      "from_type": "radical",
+      "to_slug": "n5-yasumu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n5-sensei-saki",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n5-miru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ireru",
+      "from_type": "radical",
+      "to_slug": "n5-hairu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-kuchi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-yon",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-meiname",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-furui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-iu-gen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-go-language",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-hanashi-wa",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-naka",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-kaku-write",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n5-takai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kunigamae",
+      "from_type": "radical",
+      "to_slug": "n5-yon",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kunigamae",
+      "from_type": "radical",
+      "to_slug": "n5-kuni",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -120,704 +239,3077 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "otoko",
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n5-yasui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n5-hana",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ko",
+      "from_type": "radical",
+      "to_slug": "n5-ko-child",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ko",
+      "from_type": "radical",
+      "to_slug": "n5-gaku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "chikara",
+      "from_type": "radical",
+      "to_slug": "n5-chikara",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "chikara",
       "from_type": "radical",
       "to_slug": "n5-otoko",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "chikara",
       "from_type": "radical",
-      "to_slug": "n5-sensei",
+      "to_slug": "n5-dai-big",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "ta",
       "from_type": "radical",
-      "to_slug": "n5-gakkou",
+      "to_slug": "n5-otoko",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "ta",
       "from_type": "radical",
-      "to_slug": "n5-hon",
+      "to_slug": "n5-kaeru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "mizu",
+      "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n5-mizu-k",
+      "to_slug": "n5-do-earth",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hi",
+      "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n5-hi-k",
+      "to_slug": "n5-suwaru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ki",
+      "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n5-ki-k",
+      "to_slug": "n5-sei-life",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kane",
+      "from_slug": "yamahen",
       "from_type": "radical",
-      "to_slug": "n5-kane-k",
+      "to_slug": "n5-yama",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "yamahen",
       "from_type": "radical",
-      "to_slug": "n5-tabi",
+      "to_slug": "n5-deru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "kawa",
       "from_type": "radical",
-      "to_slug": "n5-nomu",
+      "to_slug": "n5-kawa",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "shou",
       "from_type": "radical",
-      "to_slug": "n5-iku",
+      "to_slug": "n5-shou-small",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "shou",
       "from_type": "radical",
-      "to_slug": "n5-kuru",
+      "to_slug": "n5-sukunai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "me",
+      "from_type": "radical",
+      "to_slug": "n5-me-eye",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "me",
       "from_type": "radical",
       "to_slug": "n5-miru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "mimi",
       "from_type": "radical",
-      "to_slug": "n5-kiku",
+      "to_slug": "n5-mimi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ichi",
+      "from_slug": "mimi",
       "from_type": "radical",
-      "to_slug": "n5-hanasu",
+      "to_slug": "n5-kiku-hear",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "te",
+      "from_type": "radical",
+      "to_slug": "n5-te-hand",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ashi-foot",
+      "from_type": "radical",
+      "to_slug": "n5-ashi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-nichi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-higashi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-hantime",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-hayai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-ma-interval",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-jikan-ji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-kaku-write",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-shu-week",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n5-nichiyou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuki",
+      "from_type": "radical",
+      "to_slug": "n5-gatsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n5-moku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n5-higashi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n5-hon",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n5-kou-school",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n5-yasumu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mizu",
+      "from_type": "radical",
+      "to_slug": "n5-sui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-fire",
+      "from_type": "radical",
+      "to_slug": "n5-ka-fire",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanehen",
+      "from_type": "radical",
+      "to_slug": "n5-kin",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n5-kau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mongamae",
+      "from_type": "radical",
+      "to_slug": "n5-ma-interval",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mongamae",
+      "from_type": "radical",
+      "to_slug": "n5-kiku-hear",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ame",
+      "from_type": "radical",
+      "to_slug": "n5-ame-rain",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ame",
+      "from_type": "radical",
+      "to_slug": "n5-denki-den",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuruma",
+      "from_type": "radical",
+      "to_slug": "n5-sha-car",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n5-michi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n5-kaeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gonben",
+      "from_type": "radical",
+      "to_slug": "n5-iu-gen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gonben",
+      "from_type": "radical",
+      "to_slug": "n5-go-language",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gonben",
+      "from_type": "radical",
+      "to_slug": "n5-hanashi-wa",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gonben",
+      "from_type": "radical",
+      "to_slug": "n5-dokusho",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "takai",
+      "from_type": "radical",
+      "to_slug": "n5-takai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "uma",
+      "from_type": "radical",
+      "to_slug": "n5-eki-station",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ao",
+      "from_type": "radical",
+      "to_slug": "n5-ao",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shiro",
+      "from_type": "radical",
+      "to_slug": "n5-shiro-white",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shiro",
+      "from_type": "radical",
+      "to_slug": "n5-hyaku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "aka",
+      "from_type": "radical",
+      "to_slug": "n5-aka",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuro",
+      "from_type": "radical",
+      "to_slug": "n5-kane-gold-dup",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tomeru",
+      "from_type": "radical",
+      "to_slug": "n5-tomeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tomeru",
+      "from_type": "radical",
+      "to_slug": "n5-sei-life",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tatsu",
+      "from_type": "radical",
+      "to_slug": "n5-tatsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tatsu",
+      "from_type": "radical",
+      "to_slug": "n5-atarashii",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "miru",
+      "from_type": "radical",
+      "to_slug": "n5-miru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shita",
+      "from_type": "radical",
+      "to_slug": "n5-hanashi-wa",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "haba",
+      "from_type": "radical",
+      "to_slug": "n5-shi-city",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kakeru",
+      "from_type": "radical",
+      "to_slug": "n5-nomu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
       "from_slug": "n5-ichi",
-      "from_type": "kanji",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "desu",
-      "from_type": "grammar",
-      "to_slug": "watashi",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-ni",
-      "from_type": "kanji",
-      "to_slug": "anata",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-san",
-      "from_type": "kanji",
-      "to_slug": "kare",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-yon",
-      "from_type": "kanji",
-      "to_slug": "kanojo",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "ga",
-      "from_type": "grammar",
-      "to_slug": "kanojo",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-go",
-      "from_type": "kanji",
-      "to_slug": "kore",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-roku",
-      "from_type": "kanji",
-      "to_slug": "sore",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-nana",
-      "from_type": "kanji",
-      "to_slug": "are",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "kara",
-      "from_type": "grammar",
-      "to_slug": "are",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-hachi",
-      "from_type": "kanji",
-      "to_slug": "kono",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-kyuu",
-      "from_type": "kanji",
-      "to_slug": "sono",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-juu",
-      "from_type": "kanji",
-      "to_slug": "ano",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "mo",
-      "from_type": "grammar",
-      "to_slug": "ano",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-nichi",
-      "from_type": "kanji",
-      "to_slug": "dare",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-gatsu",
-      "from_type": "kanji",
-      "to_slug": "nani",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-toshi",
-      "from_type": "kanji",
-      "to_slug": "doko",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "tai",
-      "from_type": "grammar",
-      "to_slug": "doko",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-jikan",
-      "from_type": "kanji",
-      "to_slug": "itsu",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-hito",
-      "from_type": "kanji",
-      "to_slug": "naze",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-kodomo",
-      "from_type": "kanji",
-      "to_slug": "dou",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "mashou",
-      "from_type": "grammar",
-      "to_slug": "dou",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-onna",
       "from_type": "kanji",
       "to_slug": "ichi-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n5-otoko",
+      "from_slug": "n5-ichi",
       "from_type": "kanji",
-      "to_slug": "ni-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-sensei",
-      "from_type": "kanji",
-      "to_slug": "san-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "wo",
-      "from_type": "grammar",
-      "to_slug": "san-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-gakkou",
-      "from_type": "kanji",
-      "to_slug": "yon-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-hon",
-      "from_type": "kanji",
-      "to_slug": "go-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-mizu-k",
-      "from_type": "kanji",
-      "to_slug": "gakkou-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "de",
-      "from_type": "grammar",
-      "to_slug": "gakkou-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-hi-k",
-      "from_type": "kanji",
-      "to_slug": "sensei-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-ki-k",
-      "from_type": "kanji",
-      "to_slug": "seito",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-kane-k",
-      "from_type": "kanji",
-      "to_slug": "hon-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "to",
-      "from_type": "grammar",
-      "to_slug": "hon-v",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-tabi",
-      "from_type": "kanji",
-      "to_slug": "mizu-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-nomu",
-      "from_type": "kanji",
-      "to_slug": "tabemono",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-iku",
-      "from_type": "kanji",
-      "to_slug": "nomimono",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "te-form",
-      "from_type": "grammar",
-      "to_slug": "nomimono",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-kuru",
-      "from_type": "kanji",
-      "to_slug": "asa",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-miru",
-      "from_type": "kanji",
-      "to_slug": "hiru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n5-kiku",
-      "from_type": "kanji",
-      "to_slug": "yoru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "mashita",
-      "from_type": "grammar",
-      "to_slug": "yoru",
-      "to_type": "vocabulary",
-      "relationship_type": "reinforces"
-    },
-    {
-      "from_slug": "n5-hanasu",
-      "from_type": "kanji",
-      "to_slug": "kyou",
+      "to_slug": "hitotsu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-ichi",
       "from_type": "kanji",
-      "to_slug": "kinou",
+      "to_slug": "ototoi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ichi",
+      "from_type": "kanji",
+      "to_slug": "tsuitachi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ichi",
+      "from_type": "kanji",
+      "to_slug": "ichiban",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ichi",
+      "from_type": "kanji",
+      "to_slug": "issho-ni",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ichi",
+      "from_type": "kanji",
+      "to_slug": "hitori-de",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-ni",
       "from_type": "kanji",
-      "to_slug": "ashita",
+      "to_slug": "ni-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "masu",
-      "from_type": "grammar",
-      "to_slug": "ashita",
+      "from_slug": "n5-ni",
+      "from_type": "kanji",
+      "to_slug": "futatsu",
       "to_type": "vocabulary",
-      "relationship_type": "reinforces"
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ni",
+      "from_type": "kanji",
+      "to_slug": "futsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ni",
+      "from_type": "kanji",
+      "to_slug": "hatsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
       "from_slug": "n5-san",
       "from_type": "kanji",
-      "to_slug": "iku-v",
+      "to_slug": "san-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-san",
+      "from_type": "kanji",
+      "to_slug": "mittsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-san",
+      "from_type": "kanji",
+      "to_slug": "mikka",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-yon",
       "from_type": "kanji",
-      "to_slug": "kuru-v",
+      "to_slug": "yon-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yon",
+      "from_type": "kanji",
+      "to_slug": "shi-num",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yon",
+      "from_type": "kanji",
+      "to_slug": "yottsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yon",
+      "from_type": "kanji",
+      "to_slug": "yokka",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-go",
       "from_type": "kanji",
-      "to_slug": "taberu",
+      "to_slug": "go-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "ni",
-      "from_type": "grammar",
-      "to_slug": "taberu",
+      "from_slug": "n5-go",
+      "from_type": "kanji",
+      "to_slug": "itsutsu",
       "to_type": "vocabulary",
-      "relationship_type": "reinforces"
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-go",
+      "from_type": "kanji",
+      "to_slug": "itsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
       "from_slug": "n5-roku",
       "from_type": "kanji",
-      "to_slug": "nomu-v",
+      "to_slug": "roku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-roku",
+      "from_type": "kanji",
+      "to_slug": "muttsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-roku",
+      "from_type": "kanji",
+      "to_slug": "muika",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-nana",
       "from_type": "kanji",
-      "to_slug": "miru-v",
+      "to_slug": "nana-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nana",
+      "from_type": "kanji",
+      "to_slug": "shichi-num",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nana",
+      "from_type": "kanji",
+      "to_slug": "nanatsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nana",
+      "from_type": "kanji",
+      "to_slug": "nanoka",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
       "from_slug": "n5-hachi",
       "from_type": "kanji",
-      "to_slug": "kiku-v",
+      "to_slug": "hachi-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "made",
-      "from_type": "grammar",
-      "to_slug": "kiku-v",
+      "from_slug": "n5-hachi",
+      "from_type": "kanji",
+      "to_slug": "yattsu",
       "to_type": "vocabulary",
-      "relationship_type": "reinforces"
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hachi",
+      "from_type": "kanji",
+      "to_slug": "youka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
       "from_slug": "n5-kyuu",
+      "from_type": "kanji",
+      "to_slug": "kyuu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kyuu",
+      "from_type": "kanji",
+      "to_slug": "ku-num",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kyuu",
+      "from_type": "kanji",
+      "to_slug": "kokonotsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kyuu",
+      "from_type": "kanji",
+      "to_slug": "kokonoka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-juu",
+      "from_type": "kanji",
+      "to_slug": "juu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-juu",
+      "from_type": "kanji",
+      "to_slug": "too",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-juu",
+      "from_type": "kanji",
+      "to_slug": "tooka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-juu",
+      "from_type": "kanji",
+      "to_slug": "hatsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hyaku",
+      "from_type": "kanji",
+      "to_slug": "hyaku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sen",
+      "from_type": "kanji",
+      "to_slug": "sen-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-man",
+      "from_type": "kanji",
+      "to_slug": "man-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-en",
+      "from_type": "kanji",
+      "to_slug": "en-money",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "kyou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "kinou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "asatte",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "ototoi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "mainichi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "nichiyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "getsuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "kayoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "suiyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "mokuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "kinyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "doyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "tsuitachi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "futsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "mikka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "yokka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "itsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "muika",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "nanoka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "youka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "kokonoka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "tooka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "hatsuka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "hi-sun-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichi",
+      "from_type": "kanji",
+      "to_slug": "nichi-day",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "maitsuki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "kongetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "raigetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "sengetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "getsuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "tsuki-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "gatsu-month",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gatsu",
+      "from_type": "kanji",
+      "to_slug": "kagetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ka-fire",
+      "from_type": "kanji",
+      "to_slug": "kayoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sui",
+      "from_type": "kanji",
+      "to_slug": "suiyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sui",
+      "from_type": "kanji",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-moku",
+      "from_type": "kanji",
+      "to_slug": "mokuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-moku",
+      "from_type": "kanji",
+      "to_slug": "ki-tree-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kin",
+      "from_type": "kanji",
+      "to_slug": "kinyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kin",
+      "from_type": "kanji",
+      "to_slug": "okane",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kin",
+      "from_type": "kanji",
+      "to_slug": "genkin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-do-earth",
+      "from_type": "kanji",
+      "to_slug": "doyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yama",
+      "from_type": "kanji",
+      "to_slug": "yama-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kawa",
+      "from_type": "kanji",
+      "to_slug": "kawa-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ten",
+      "from_type": "kanji",
+      "to_slug": "tenki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ten",
+      "from_type": "kanji",
+      "to_slug": "n4-tenki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "denki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "tenki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "genki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "byouki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "kimochi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "kibun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ki-spirit",
+      "from_type": "kanji",
+      "to_slug": "n4-tenki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hana",
+      "from_type": "kanji",
+      "to_slug": "hana-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-uenagashi",
+      "from_type": "kanji",
+      "to_slug": "jouzu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-uenagashi",
+      "from_type": "kanji",
+      "to_slug": "ue",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-uenagashi",
+      "from_type": "kanji",
+      "to_slug": "agaru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-uenagashi",
+      "from_type": "kanji",
+      "to_slug": "ageru-raise",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "heta",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "shita-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "chikatetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "sagaru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "orosu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shita",
+      "from_type": "kanji",
+      "to_slug": "chika",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-naka",
+      "from_type": "kanji",
+      "to_slug": "naka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-naka",
+      "from_type": "kanji",
+      "to_slug": "mannaka",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "otona",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "daigaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "ookii",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "daijoubu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "taihen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "n4-daijobu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-dai-big",
+      "from_type": "kanji",
+      "to_slug": "n4-taihen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shou-small",
+      "from_type": "kanji",
+      "to_slug": "chiisai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hidari",
+      "from_type": "kanji",
+      "to_slug": "hidari-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-migi",
+      "from_type": "kanji",
+      "to_slug": "migi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-higashi",
+      "from_type": "kanji",
+      "to_slug": "higashi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nishi",
+      "from_type": "kanji",
+      "to_slug": "nishi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-minami",
+      "from_type": "kanji",
+      "to_slug": "minami-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kita",
+      "from_type": "kanji",
+      "to_slug": "kita-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hoku",
+      "from_type": "kanji",
+      "to_slug": "gaikokujin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hoku",
+      "from_type": "kanji",
+      "to_slug": "gaikoku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hoku",
+      "from_type": "kanji",
+      "to_slug": "soto",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mae",
+      "from_type": "kanji",
+      "to_slug": "gozen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mae",
+      "from_type": "kanji",
+      "to_slug": "namae",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mae",
+      "from_type": "kanji",
+      "to_slug": "mae",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ushiro",
+      "from_type": "kanji",
+      "to_slug": "asatte",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ushiro",
+      "from_type": "kanji",
+      "to_slug": "gogo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ushiro",
+      "from_type": "kanji",
+      "to_slug": "ushiro",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ushiro",
+      "from_type": "kanji",
+      "to_slug": "saigo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hidariuma",
+      "from_type": "kanji",
+      "to_slug": "gozen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hidariuma",
+      "from_type": "kanji",
+      "to_slug": "gogo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hon",
+      "from_type": "kanji",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hon",
+      "from_type": "kanji",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hon",
+      "from_type": "kanji",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hon",
+      "from_type": "kanji",
+      "to_slug": "hon-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hon",
+      "from_type": "kanji",
+      "to_slug": "hontou-ni",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "otona",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "go-shujin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "hito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "gaikokujin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "onnanohito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "otokonohito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "nin-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hito-jin",
+      "from_type": "kanji",
+      "to_slug": "hitori-de",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-onna",
+      "from_type": "kanji",
+      "to_slug": "kanojo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-onna",
+      "from_type": "kanji",
+      "to_slug": "onnanohito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-onna",
+      "from_type": "kanji",
+      "to_slug": "onnanoko",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-otoko",
+      "from_type": "kanji",
+      "to_slug": "otokonohito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-otoko",
+      "from_type": "kanji",
+      "to_slug": "otokonoko",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "kodomo-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "musuko",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "onnanoko",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "otokonoko",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "okashi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "isu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ko-child",
+      "from_type": "kanji",
+      "to_slug": "boushi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-me-eye",
+      "from_type": "kanji",
+      "to_slug": "me-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mimi",
+      "from_type": "kanji",
+      "to_slug": "mimi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuchi",
+      "from_type": "kanji",
+      "to_slug": "kuchi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuchi",
+      "from_type": "kanji",
+      "to_slug": "iriguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuchi",
+      "from_type": "kanji",
+      "to_slug": "deguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuchi",
+      "from_type": "kanji",
+      "to_slug": "madoguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "te-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "otearai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "tegami",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "kitte",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "jouzu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "heta",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "tetsudau",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-te-hand",
+      "from_type": "kanji",
+      "to_slug": "n4-tegami",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ashi",
+      "from_type": "kanji",
+      "to_slug": "ashi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-chikara",
+      "from_type": "kanji",
+      "to_slug": "chikara-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sei-life",
+      "from_type": "kanji",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sei-life",
+      "from_type": "kanji",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sei-life",
+      "from_type": "kanji",
+      "to_slug": "seito",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sei-life",
+      "from_type": "kanji",
+      "to_slug": "umareru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-meiname",
+      "from_type": "kanji",
+      "to_slug": "yuumei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-meiname",
+      "from_type": "kanji",
+      "to_slug": "namae",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nen",
+      "from_type": "kanji",
+      "to_slug": "mainen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nen",
+      "from_type": "kanji",
+      "to_slug": "kotoshi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nen",
+      "from_type": "kanji",
+      "to_slug": "rainen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nen",
+      "from_type": "kanji",
+      "to_slug": "kyonen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nen",
+      "from_type": "kanji",
+      "to_slug": "nen-year",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "nannji",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "jibun-time",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "tokei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "jikan-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "ji-oclock",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "tokidoki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-jikan-ji",
+      "from_type": "kanji",
+      "to_slug": "n4-jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ma-interval",
+      "from_type": "kanji",
+      "to_slug": "jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ma-interval",
+      "from_type": "kanji",
+      "to_slug": "aida",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ma-interval",
+      "from_type": "kanji",
+      "to_slug": "shuukan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ma-interval",
+      "from_type": "kanji",
+      "to_slug": "jikan-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ma-interval",
+      "from_type": "kanji",
+      "to_slug": "n4-jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "nichiyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "getsuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "kayoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "suiyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "mokuyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "kinyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nichiyou",
+      "from_type": "kanji",
+      "to_slug": "doyoubi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "ima",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "kyou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "konshuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "kongetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "kotoshi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kon-now",
+      "from_type": "kanji",
+      "to_slug": "n4-ima",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "maishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "konshuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "raishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "senshuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "shuumatsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shu-week",
+      "from_type": "kanji",
+      "to_slug": "shuukan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "mainichi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "maiasa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "maiban",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "maishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "maitsuki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-mai-every",
+      "from_type": "kanji",
+      "to_slug": "mainen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hantime",
+      "from_type": "kanji",
+      "to_slug": "han-time",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hantime",
+      "from_type": "kanji",
+      "to_slug": "hanbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "jibun-time",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "fun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "jibun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "wakaru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "hanbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "fun-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
+      "to_slug": "kibun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "gakkou-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "daigaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "suugaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "kagaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "bungaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-gaku",
+      "from_type": "kanji",
+      "to_slug": "n4-bungaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kou-school",
+      "from_type": "kanji",
+      "to_slug": "gakkou-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kou-school",
+      "from_type": "kanji",
+      "to_slug": "koutei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sensei-saki",
+      "from_type": "kanji",
+      "to_slug": "senshuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sensei-saki",
+      "from_type": "kanji",
+      "to_slug": "sengetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sensei-saki",
+      "from_type": "kanji",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-go-language",
+      "from_type": "kanji",
+      "to_slug": "eigo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-go-language",
+      "from_type": "kanji",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "denwa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hanashi-wa",
       "from_type": "kanji",
       "to_slug": "hanasu-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-hito",
-      "from_type": "radical",
-      "to_slug": "n4-kai",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "denwa-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-ko",
-      "from_type": "radical",
-      "to_slug": "n4-dou",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "hanashi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-chikara",
-      "from_type": "radical",
-      "to_slug": "n4-koto",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "denwabangou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-me",
-      "from_type": "radical",
-      "to_slug": "n4-ji",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "n4-hanashi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-hito",
-      "from_type": "radical",
-      "to_slug": "n4-sha",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-hanashi-wa",
+      "from_type": "kanji",
+      "to_slug": "n4-denwa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-hi-fire",
-      "from_type": "radical",
-      "to_slug": "n4-hatsu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-dokusho",
+      "from_type": "kanji",
+      "to_slug": "yomu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-hito",
-      "from_type": "radical",
-      "to_slug": "n4-mono",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "toshokan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kozato",
-      "from_type": "radical",
-      "to_slug": "n4-chi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "jisho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-ki",
-      "from_type": "radical",
-      "to_slug": "n4-gyou",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "kaku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-hito",
-      "from_type": "radical",
-      "to_slug": "n4-hou",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "ryoushuusho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-tsuchi",
-      "from_type": "radical",
-      "to_slug": "n4-ba",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "shorui",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-mon",
-      "from_type": "radical",
-      "to_slug": "n4-tokoro",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaku-write",
+      "from_type": "kanji",
+      "to_slug": "kyoukasho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kokoro",
-      "from_type": "radical",
-      "to_slug": "n4-shin",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kiku-hear",
+      "from_type": "kanji",
+      "to_slug": "shinbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-te",
-      "from_type": "radical",
-      "to_slug": "n4-te-kanji",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kiku-hear",
+      "from_type": "kanji",
+      "to_slug": "kiku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-me",
-      "from_type": "radical",
-      "to_slug": "n4-me-kanji",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kiku-hear",
+      "from_type": "kanji",
+      "to_slug": "kikoeru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kuchi",
-      "from_type": "radical",
-      "to_slug": "n4-kuchi-kanji",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kiku-hear",
+      "from_type": "kanji",
+      "to_slug": "n4-shinbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-chikara",
-      "from_type": "radical",
-      "to_slug": "n4-ryoku",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "ginkou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kuruma-rad",
-      "from_type": "radical",
-      "to_slug": "n4-kuruma",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-ame",
-      "from_type": "radical",
-      "to_slug": "n4-den",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "ryokou-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kozato",
-      "from_type": "radical",
-      "to_slug": "n4-eki",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "ryokou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-shinnyou",
-      "from_type": "radical",
-      "to_slug": "n4-michi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "hikouki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-mon",
-      "from_type": "radical",
-      "to_slug": "n4-mise",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "ittekimasu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-onna",
-      "from_type": "radical",
-      "to_slug": "n4-ie",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-iku-go",
+      "from_type": "kanji",
+      "to_slug": "n4-ryokou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-mon",
-      "from_type": "radical",
-      "to_slug": "n4-shitsu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kuru-rai",
+      "from_type": "kanji",
+      "to_slug": "raishuu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kuchi",
-      "from_type": "radical",
-      "to_slug": "n4-zu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kuru-rai",
+      "from_type": "kanji",
+      "to_slug": "raigetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-gon",
-      "from_type": "radical",
-      "to_slug": "n4-iu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kuru-rai",
+      "from_type": "kanji",
+      "to_slug": "rainen",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-gon",
-      "from_type": "radical",
-      "to_slug": "n4-shi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kuru-rai",
+      "from_type": "kanji",
+      "to_slug": "kuru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kuruma-rad",
-      "from_type": "radical",
-      "to_slug": "n4-ken",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kuru-rai",
+      "from_type": "kanji",
+      "to_slug": "n4-mirai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-chikara",
-      "from_type": "radical",
-      "to_slug": "n4-oshieru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaeru",
+      "from_type": "kanji",
+      "to_slug": "kaeru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kokoro",
-      "from_type": "radical",
-      "to_slug": "n4-omou",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
+      "from_slug": "n5-kaeru",
+      "from_type": "kanji",
+      "to_slug": "okaerinasai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-deru",
+      "from_type": "kanji",
+      "to_slug": "dasu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-deru",
+      "from_type": "kanji",
+      "to_slug": "deru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-deru",
+      "from_type": "kanji",
+      "to_slug": "deguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-deru",
+      "from_type": "kanji",
+      "to_slug": "hikidashi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hairu",
+      "from_type": "kanji",
+      "to_slug": "ireru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hairu",
+      "from_type": "kanji",
+      "to_slug": "hairu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hairu",
+      "from_type": "kanji",
+      "to_slug": "iriguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-miru",
+      "from_type": "kanji",
+      "to_slug": "miru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-miru",
+      "from_type": "kanji",
+      "to_slug": "mieru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-miru",
+      "from_type": "kanji",
+      "to_slug": "mitsukeru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-miru",
+      "from_type": "kanji",
+      "to_slug": "miseru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-miru",
+      "from_type": "kanji",
+      "to_slug": "n4-iken",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-tomeru",
+      "from_type": "kanji",
+      "to_slug": "tomaru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-tomeru",
+      "from_type": "kanji",
+      "to_slug": "tomeru-stop",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-tatsu",
+      "from_type": "kanji",
+      "to_slug": "tatsu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-suwaru",
+      "from_type": "kanji",
+      "to_slug": "suwaru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yasumu",
+      "from_type": "kanji",
+      "to_slug": "yasumu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-iu-gen",
+      "from_type": "kanji",
+      "to_slug": "iu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-iu-gen",
+      "from_type": "kanji",
+      "to_slug": "kotoba",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kau",
+      "from_type": "kanji",
+      "to_slug": "kau-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kau",
+      "from_type": "kanji",
+      "to_slug": "kaimono-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kau",
+      "from_type": "kanji",
+      "to_slug": "kaimono",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-uru-baku",
+      "from_type": "kanji",
+      "to_slug": "uru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-taberu",
+      "from_type": "kanji",
+      "to_slug": "tabemono",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-taberu",
+      "from_type": "kanji",
+      "to_slug": "shokuji",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-taberu",
+      "from_type": "kanji",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-taberu",
+      "from_type": "kanji",
+      "to_slug": "shokuji-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nomu",
+      "from_type": "kanji",
+      "to_slug": "nomimono",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nomu",
+      "from_type": "kanji",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shiro-white",
+      "from_type": "kanji",
+      "to_slug": "shiro-color",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shiro-white",
+      "from_type": "kanji",
+      "to_slug": "omoshiroi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shiro-white",
+      "from_type": "kanji",
+      "to_slug": "shiroi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-aka",
+      "from_type": "kanji",
+      "to_slug": "akachan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-aka",
+      "from_type": "kanji",
+      "to_slug": "aka-color",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-aka",
+      "from_type": "kanji",
+      "to_slug": "akai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ao",
+      "from_type": "kanji",
+      "to_slug": "ao-color",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ao",
+      "from_type": "kanji",
+      "to_slug": "aoi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kane-gold-dup",
+      "from_type": "kanji",
+      "to_slug": "kuro-color",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kane-gold-dup",
+      "from_type": "kanji",
+      "to_slug": "kuroi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kane-gold-dup",
+      "from_type": "kanji",
+      "to_slug": "kokuban",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-takai",
+      "from_type": "kanji",
+      "to_slug": "takai-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-yasui",
+      "from_type": "kanji",
+      "to_slug": "yasui-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-atarashii",
+      "from_type": "kanji",
+      "to_slug": "shinbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-atarashii",
+      "from_type": "kanji",
+      "to_slug": "atarashii-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-atarashii",
+      "from_type": "kanji",
+      "to_slug": "n4-shinbun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-furui",
+      "from_type": "kanji",
+      "to_slug": "furui-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sukunai",
+      "from_type": "kanji",
+      "to_slug": "sukoshi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-nagai",
+      "from_type": "kanji",
+      "to_slug": "nagai-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-hayai",
+      "from_type": "kanji",
+      "to_slug": "hayai-early",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuni",
+      "from_type": "kanji",
+      "to_slug": "gaikokujin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-kuni",
+      "from_type": "kanji",
+      "to_slug": "gaikoku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ame-rain",
+      "from_type": "kanji",
+      "to_slug": "ame-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ame-rain",
+      "from_type": "kanji",
+      "to_slug": "n4-ame-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "denwa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "denki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "denwa-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "denwabangou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "n4-densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-denki-den",
+      "from_type": "kanji",
+      "to_slug": "n4-denwa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sha-car",
+      "from_type": "kanji",
+      "to_slug": "densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sha-car",
+      "from_type": "kanji",
+      "to_slug": "kuruma",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sha-car",
+      "from_type": "kanji",
+      "to_slug": "jitensha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sha-car",
+      "from_type": "kanji",
+      "to_slug": "n4-densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-sha-car",
+      "from_type": "kanji",
+      "to_slug": "n4-kuruma-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-eki-station",
+      "from_type": "kanji",
+      "to_slug": "ekiin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-eki-station",
+      "from_type": "kanji",
+      "to_slug": "eki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-eki-station",
+      "from_type": "kanji",
+      "to_slug": "n4-eki-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-michi",
+      "from_type": "kanji",
+      "to_slug": "michi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-michi",
+      "from_type": "kanji",
+      "to_slug": "n4-michi-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-machi",
+      "from_type": "kanji",
+      "to_slug": "machi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kai",
+      "from_type": "kanji",
+      "to_slug": "kaishain",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kai",
+      "from_type": "kanji",
+      "to_slug": "kaisha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kai",
+      "from_type": "kanji",
+      "to_slug": "au",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kai",
+      "from_type": "kanji",
+      "to_slug": "kaigi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kai",
+      "from_type": "kanji",
+      "to_slug": "n4-kaisha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-dou",
+      "from_type": "kanji",
+      "to_slug": "onaji",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "shokuji",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "shigoto",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "koto",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "shokuji-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "shigotoba",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "youji",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-koto",
+      "from_type": "kanji",
+      "to_slug": "n4-shigoto",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ji",
+      "from_type": "kanji",
+      "to_slug": "jibun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ji",
+      "from_type": "kanji",
+      "to_slug": "jitensha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-sha",
+      "from_type": "kanji",
+      "to_slug": "kaishain",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-sha",
+      "from_type": "kanji",
+      "to_slug": "kaisha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
     },
     {
       "from_slug": "n4-sha",
@@ -827,9 +3319,289 @@
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-eki",
+      "from_slug": "n4-mono",
       "from_type": "kanji",
-      "to_slug": "n4-eki-vocab",
+      "to_slug": "isha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-chi",
+      "from_type": "kanji",
+      "to_slug": "chizu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-chi",
+      "from_type": "kanji",
+      "to_slug": "chikatetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-chi",
+      "from_type": "kanji",
+      "to_slug": "chika",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-chi",
+      "from_type": "kanji",
+      "to_slug": "chizuchou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-chi",
+      "from_type": "kanji",
+      "to_slug": "chiri",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-gyou",
+      "from_type": "kanji",
+      "to_slug": "jugyou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-hou",
+      "from_type": "kanji",
+      "to_slug": "yuugata",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-hou",
+      "from_type": "kanji",
+      "to_slug": "hou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-hou",
+      "from_type": "kanji",
+      "to_slug": "kata-person",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ba",
+      "from_type": "kanji",
+      "to_slug": "shigotoba",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ba",
+      "from_type": "kanji",
+      "to_slug": "basho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-tokoro",
+      "from_type": "kanji",
+      "to_slug": "daidokoro",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-tokoro",
+      "from_type": "kanji",
+      "to_slug": "tokoro",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-tokoro",
+      "from_type": "kanji",
+      "to_slug": "juusho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-tokoro",
+      "from_type": "kanji",
+      "to_slug": "basho",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-shin",
+      "from_type": "kanji",
+      "to_slug": "shinpai-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "te-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "otearai",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "tegami",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "kitte",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "jouzu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "heta",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "tetsudau",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-te-kanji",
+      "from_type": "kanji",
+      "to_slug": "n4-tegami",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-me-kanji",
+      "from_type": "kanji",
+      "to_slug": "me-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuchi-kanji",
+      "from_type": "kanji",
+      "to_slug": "kuchi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuchi-kanji",
+      "from_type": "kanji",
+      "to_slug": "iriguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuchi-kanji",
+      "from_type": "kanji",
+      "to_slug": "deguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuchi-kanji",
+      "from_type": "kanji",
+      "to_slug": "madoguchi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ryoku",
+      "from_type": "kanji",
+      "to_slug": "chikara-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuruma",
+      "from_type": "kanji",
+      "to_slug": "densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuruma",
+      "from_type": "kanji",
+      "to_slug": "kuruma",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuruma",
+      "from_type": "kanji",
+      "to_slug": "jitensha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuruma",
+      "from_type": "kanji",
+      "to_slug": "n4-densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-kuruma",
+      "from_type": "kanji",
+      "to_slug": "n4-kuruma-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-den",
+      "from_type": "kanji",
+      "to_slug": "denwa",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-den",
+      "from_type": "kanji",
+      "to_slug": "denki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-den",
+      "from_type": "kanji",
+      "to_slug": "denwa-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-den",
+      "from_type": "kanji",
+      "to_slug": "densha",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-den",
+      "from_type": "kanji",
+      "to_slug": "denwabangou",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -848,9 +3620,30 @@
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-kuruma",
+      "from_slug": "n4-eki",
       "from_type": "kanji",
-      "to_slug": "n4-kuruma-vocab",
+      "to_slug": "ekiin",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-eki",
+      "from_type": "kanji",
+      "to_slug": "eki",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-eki",
+      "from_type": "kanji",
+      "to_slug": "n4-eki-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-michi",
+      "from_type": "kanji",
+      "to_slug": "michi-v",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -858,6 +3651,97 @@
       "from_slug": "n4-michi",
       "from_type": "kanji",
       "to_slug": "n4-michi-vocab",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-mise",
+      "from_type": "kanji",
+      "to_slug": "kissaten",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-mise",
+      "from_type": "kanji",
+      "to_slug": "mise",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ie",
+      "from_type": "kanji",
+      "to_slug": "kazoku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ie",
+      "from_type": "kanji",
+      "to_slug": "ie",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ie",
+      "from_type": "kanji",
+      "to_slug": "n4-kazoku",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-shitsu",
+      "from_type": "kanji",
+      "to_slug": "ongakushitsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-shitsu",
+      "from_type": "kanji",
+      "to_slug": "kyoushitsu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-zu",
+      "from_type": "kanji",
+      "to_slug": "toshokan",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-zu",
+      "from_type": "kanji",
+      "to_slug": "chizu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-zu",
+      "from_type": "kanji",
+      "to_slug": "chizuchou",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-iu",
+      "from_type": "kanji",
+      "to_slug": "iu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-iu",
+      "from_type": "kanji",
+      "to_slug": "kotoba",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-shi",
+      "from_type": "kanji",
+      "to_slug": "shiken",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
@@ -871,44 +3755,1605 @@
     {
       "from_slug": "n4-ken",
       "from_type": "kanji",
+      "to_slug": "shiken",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-ken",
+      "from_type": "kanji",
       "to_slug": "n4-shiken",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-te-kanji",
+      "from_slug": "n4-oshieru",
       "from_type": "kanji",
-      "to_slug": "n4-tegami",
+      "to_slug": "oshieru",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-iu",
+      "from_slug": "n4-oshieru",
       "from_type": "kanji",
-      "to_slug": "n4-hanashi",
+      "to_slug": "kyoushitsu",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-iu",
+      "from_slug": "n4-oshieru",
       "from_type": "kanji",
-      "to_slug": "n4-setsumei",
+      "to_slug": "kyoukasho",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-ten",
-      "from_type": "radical",
-      "to_slug": "n4-tenki",
+      "from_slug": "n4-omou",
+      "from_type": "kanji",
+      "to_slug": "omou",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-ame",
-      "from_type": "radical",
-      "to_slug": "n4-ame-vocab",
+      "from_slug": "wa-topic",
+      "from_type": "grammar",
+      "to_slug": "watashi",
       "to_type": "vocabulary",
-      "relationship_type": "requires"
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wa-topic",
+      "from_type": "grammar",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wa-topic",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wa-topic",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "desu",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "desu",
+      "from_type": "grammar",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "desu",
+      "from_type": "grammar",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dewa-arimasen",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dewa-arimasen",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dewa-arimasen",
+      "from_type": "grammar",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masu",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masu",
+      "from_type": "grammar",
+      "to_slug": "benkyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masu",
+      "from_type": "grammar",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen",
+      "from_type": "grammar",
+      "to_slug": "osake",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen",
+      "from_type": "grammar",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashita",
+      "from_type": "grammar",
+      "to_slug": "kinou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashita",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashita",
+      "from_type": "grammar",
+      "to_slug": "miru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashou",
+      "from_type": "grammar",
+      "to_slug": "issho-ni",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashou",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mashou",
+      "from_type": "grammar",
+      "to_slug": "ocha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen-ka",
+      "from_type": "grammar",
+      "to_slug": "issho-ni",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen-ka",
+      "from_type": "grammar",
+      "to_slug": "ocha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "masen-ka",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wo",
+      "from_type": "grammar",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wo",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "wo",
+      "from_type": "grammar",
+      "to_slug": "gohan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ga",
+      "from_type": "grammar",
+      "to_slug": "neko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ga",
+      "from_type": "grammar",
+      "to_slug": "dare",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ga",
+      "from_type": "grammar",
+      "to_slug": "okane",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "watashi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-possessive",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-nominalizer",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-nominalizer",
+      "from_type": "grammar",
+      "to_slug": "suki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "no-nominalizer",
+      "from_type": "grammar",
+      "to_slug": "yomu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-direction",
+      "from_type": "grammar",
+      "to_slug": "gakkou-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-direction",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-direction",
+      "from_type": "grammar",
+      "to_slug": "tomodachi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "he-direction",
+      "from_type": "grammar",
+      "to_slug": "ie",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "he-direction",
+      "from_type": "grammar",
+      "to_slug": "kaeru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "he-direction",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "de-location",
+      "from_type": "grammar",
+      "to_slug": "toshokan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "de-location",
+      "from_type": "grammar",
+      "to_slug": "basu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "de-location",
+      "from_type": "grammar",
+      "to_slug": "hashi-chopsticks",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-and",
+      "from_type": "grammar",
+      "to_slug": "pan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-and",
+      "from_type": "grammar",
+      "to_slug": "tamago",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-and",
+      "from_type": "grammar",
+      "to_slug": "tomodachi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ya-among",
+      "from_type": "grammar",
+      "to_slug": "yasai",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ya-among",
+      "from_type": "grammar",
+      "to_slug": "kudamono",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ya-among",
+      "from_type": "grammar",
+      "to_slug": "zasshi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mo-also",
+      "from_type": "grammar",
+      "to_slug": "watashi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mo-also",
+      "from_type": "grammar",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mo-also",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-from",
+      "from_type": "grammar",
+      "to_slug": "eki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-from",
+      "from_type": "grammar",
+      "to_slug": "aruku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-from",
+      "from_type": "grammar",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "made-until",
+      "from_type": "grammar",
+      "to_slug": "eki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "made-until",
+      "from_type": "grammar",
+      "to_slug": "aruku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "made-until",
+      "from_type": "grammar",
+      "to_slug": "gakkou-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-because",
+      "from_type": "grammar",
+      "to_slug": "samui",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-because",
+      "from_type": "grammar",
+      "to_slug": "isogashii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kara-because",
+      "from_type": "grammar",
+      "to_slug": "takai-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "node-because",
+      "from_type": "grammar",
+      "to_slug": "jikan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "node-because",
+      "from_type": "grammar",
+      "to_slug": "byouki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "node-because",
+      "from_type": "grammar",
+      "to_slug": "yasui-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-indirect",
+      "from_type": "grammar",
+      "to_slug": "tomodachi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-indirect",
+      "from_type": "grammar",
+      "to_slug": "denwa-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-indirect",
+      "from_type": "grammar",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ka-question",
+      "from_type": "grammar",
+      "to_slug": "gakusei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ka-question",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ka-question",
+      "from_type": "grammar",
+      "to_slug": "nani",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ne-tag",
+      "from_type": "grammar",
+      "to_slug": "tenki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ne-tag",
+      "from_type": "grammar",
+      "to_slug": "atsui-hot",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ne-tag",
+      "from_type": "grammar",
+      "to_slug": "oishii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "yo-emphasis",
+      "from_type": "grammar",
+      "to_slug": "kore",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "yo-emphasis",
+      "from_type": "grammar",
+      "to_slug": "oishii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "yo-emphasis",
+      "from_type": "grammar",
+      "to_slug": "abunai",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-form",
+      "from_type": "grammar",
+      "to_slug": "okiru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-form",
+      "from_type": "grammar",
+      "to_slug": "gohan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-form",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kudasai",
+      "from_type": "grammar",
+      "to_slug": "chotto",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kudasai",
+      "from_type": "grammar",
+      "to_slug": "matsu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kudasai",
+      "from_type": "grammar",
+      "to_slug": "namae",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-iru",
+      "from_type": "grammar",
+      "to_slug": "ima",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-iru",
+      "from_type": "grammar",
+      "to_slug": "benkyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-iru",
+      "from_type": "grammar",
+      "to_slug": "furu-rain",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-mo-ii",
+      "from_type": "grammar",
+      "to_slug": "koko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-mo-ii",
+      "from_type": "grammar",
+      "to_slug": "suwaru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-mo-ii",
+      "from_type": "grammar",
+      "to_slug": "shashin",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-wa-ikenai",
+      "from_type": "grammar",
+      "to_slug": "koko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-wa-ikenai",
+      "from_type": "grammar",
+      "to_slug": "shashin",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-wa-ikenai",
+      "from_type": "grammar",
+      "to_slug": "osake",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kara",
+      "from_type": "grammar",
+      "to_slug": "gohan",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kara",
+      "from_type": "grammar",
+      "to_slug": "shukudai",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "te-kara",
+      "from_type": "grammar",
+      "to_slug": "arau",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nai-form",
+      "from_type": "grammar",
+      "to_slug": "kyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nai-form",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nai-form",
+      "from_type": "grammar",
+      "to_slug": "niku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naide-kudasai",
+      "from_type": "grammar",
+      "to_slug": "koko",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naide-kudasai",
+      "from_type": "grammar",
+      "to_slug": "shinpai-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naide-kudasai",
+      "from_type": "grammar",
+      "to_slug": "wasureru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakereba-naranai",
+      "from_type": "grammar",
+      "to_slug": "benkyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakereba-naranai",
+      "from_type": "grammar",
+      "to_slug": "kusuri",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakereba-naranai",
+      "from_type": "grammar",
+      "to_slug": "kaeru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakutemo-ii",
+      "from_type": "grammar",
+      "to_slug": "kuru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakutemo-ii",
+      "from_type": "grammar",
+      "to_slug": "okane",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nakutemo-ii",
+      "from_type": "grammar",
+      "to_slug": "isogu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-form",
+      "from_type": "grammar",
+      "to_slug": "kinou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-form",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-form",
+      "from_type": "grammar",
+      "to_slug": "mou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-koto-ga-aru",
+      "from_type": "grammar",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-koto-ga-aru",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ta-koto-ga-aru",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tari-tari",
+      "from_type": "grammar",
+      "to_slug": "shuumatsu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tari-tari",
+      "from_type": "grammar",
+      "to_slug": "yomu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tari-tari",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tai",
+      "from_type": "grammar",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tai",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tai",
+      "from_type": "grammar",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hoshii",
+      "from_type": "grammar",
+      "to_slug": "atarashii-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hoshii",
+      "from_type": "grammar",
+      "to_slug": "kuruma",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hoshii",
+      "from_type": "grammar",
+      "to_slug": "okane",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-iku",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-iku",
+      "from_type": "grammar",
+      "to_slug": "kau-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ni-iku",
+      "from_type": "grammar",
+      "to_slug": "au",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mae-ni",
+      "from_type": "grammar",
+      "to_slug": "neru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mae-ni",
+      "from_type": "grammar",
+      "to_slug": "arau",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mae-ni",
+      "from_type": "grammar",
+      "to_slug": "jugyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ato-de",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ato-de",
+      "from_type": "grammar",
+      "to_slug": "jugyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "ato-de",
+      "from_type": "grammar",
+      "to_slug": "shigoto",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "toki",
+      "from_type": "grammar",
+      "to_slug": "kodomo-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "toki",
+      "from_type": "grammar",
+      "to_slug": "hima",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "toki",
+      "from_type": "grammar",
+      "to_slug": "shashin",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dictionary-koto-ga-dekiru",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dictionary-koto-ga-dekiru",
+      "from_type": "grammar",
+      "to_slug": "hanasu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dictionary-koto-ga-dekiru",
+      "from_type": "grammar",
+      "to_slug": "kanji-word",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-conjugation",
+      "from_type": "grammar",
+      "to_slug": "atsui-hot",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-conjugation",
+      "from_type": "grammar",
+      "to_slug": "takai-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-conjugation",
+      "from_type": "grammar",
+      "to_slug": "omoshiroi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-conjugation",
+      "from_type": "grammar",
+      "to_slug": "shizuka",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-conjugation",
+      "from_type": "grammar",
+      "to_slug": "shinsetsu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-conjugation",
+      "from_type": "grammar",
+      "to_slug": "benri",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-adverb",
+      "from_type": "grammar",
+      "to_slug": "hayai-early",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-adverb",
+      "from_type": "grammar",
+      "to_slug": "ookii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-i-adverb",
+      "from_type": "grammar",
+      "to_slug": "yasui-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-adverb",
+      "from_type": "grammar",
+      "to_slug": "shizuka",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-adverb",
+      "from_type": "grammar",
+      "to_slug": "kirei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "adj-na-adverb",
+      "from_type": "grammar",
+      "to_slug": "genki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "comparative-yori",
+      "from_type": "grammar",
+      "to_slug": "basu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "comparative-yori",
+      "from_type": "grammar",
+      "to_slug": "kyou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "comparative-yori",
+      "from_type": "grammar",
+      "to_slug": "inu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "superlative-ichiban",
+      "from_type": "grammar",
+      "to_slug": "yasui-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "superlative-ichiban",
+      "from_type": "grammar",
+      "to_slug": "natsu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "superlative-ichiban",
+      "from_type": "grammar",
+      "to_slug": "suki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dou-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "ocha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dou-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "nihon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dou-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "darou",
+      "from_type": "grammar",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "darou",
+      "from_type": "grammar",
+      "to_slug": "ame-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "darou",
+      "from_type": "grammar",
+      "to_slug": "muzukashii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kamoshirenai",
+      "from_type": "grammar",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kamoshirenai",
+      "from_type": "grammar",
+      "to_slug": "yuki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "kamoshirenai",
+      "from_type": "grammar",
+      "to_slug": "isogashii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-omou",
+      "from_type": "grammar",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-omou",
+      "from_type": "grammar",
+      "to_slug": "hon",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-omou",
+      "from_type": "grammar",
+      "to_slug": "omou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-iu",
+      "from_type": "grammar",
+      "to_slug": "hito",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-iu",
+      "from_type": "grammar",
+      "to_slug": "hana-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "to-iu",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "sugiru",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "sugiru",
+      "from_type": "grammar",
+      "to_slug": "fuku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "sugiru",
+      "from_type": "grammar",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hou-ga-ii",
+      "from_type": "grammar",
+      "to_slug": "neru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hou-ga-ii",
+      "from_type": "grammar",
+      "to_slug": "kusuri",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "hou-ga-ii",
+      "from_type": "grammar",
+      "to_slug": "iku-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "deshou",
+      "from_type": "grammar",
+      "to_slug": "ashita",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "deshou",
+      "from_type": "grammar",
+      "to_slug": "atsui-hot",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "deshou",
+      "from_type": "grammar",
+      "to_slug": "daijoubu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mada-teinai",
+      "from_type": "grammar",
+      "to_slug": "mada",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mada-teinai",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mada-teinai",
+      "from_type": "grammar",
+      "to_slug": "shukudai",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mou-past",
+      "from_type": "grammar",
+      "to_slug": "mou",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mou-past",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "mou-past",
+      "from_type": "grammar",
+      "to_slug": "shukudai",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dake",
+      "from_type": "grammar",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dake",
+      "from_type": "grammar",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "dake",
+      "from_type": "grammar",
+      "to_slug": "miru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "shika-nai",
+      "from_type": "grammar",
+      "to_slug": "en-money",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "shika-nai",
+      "from_type": "grammar",
+      "to_slug": "mizu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "shika-nai",
+      "from_type": "grammar",
+      "to_slug": "nomu-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "gurai",
+      "from_type": "grammar",
+      "to_slug": "fun-counter",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "gurai",
+      "from_type": "grammar",
+      "to_slug": "en-money",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "gurai",
+      "from_type": "grammar",
+      "to_slug": "kuru-v",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "goro",
+      "from_type": "grammar",
+      "to_slug": "okiru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "goro",
+      "from_type": "grammar",
+      "to_slug": "hiru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "goro",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "zenzen-nai",
+      "from_type": "grammar",
+      "to_slug": "zenzen",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "zenzen-nai",
+      "from_type": "grammar",
+      "to_slug": "wakaru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "zenzen-nai",
+      "from_type": "grammar",
+      "to_slug": "okane",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "amari-nai",
+      "from_type": "grammar",
+      "to_slug": "amari",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "amari-nai",
+      "from_type": "grammar",
+      "to_slug": "taberu",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "amari-nai",
+      "from_type": "grammar",
+      "to_slug": "takai-adj",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "demo-suggestion",
+      "from_type": "grammar",
+      "to_slug": "ocha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "demo-suggestion",
+      "from_type": "grammar",
+      "to_slug": "eiga",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "demo-suggestion",
+      "from_type": "grammar",
+      "to_slug": "sanpo-suru",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nagara",
+      "from_type": "grammar",
+      "to_slug": "ongaku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nagara",
+      "from_type": "grammar",
+      "to_slug": "aruku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "nagara",
+      "from_type": "grammar",
+      "to_slug": "terebi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "janai-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "ii",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "janai-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "benri",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "janai-desu-ka",
+      "from_type": "grammar",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tame-ni",
+      "from_type": "grammar",
+      "to_slug": "aruku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tame-ni",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "tame-ni",
+      "from_type": "grammar",
+      "to_slug": "kazoku",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naru-become",
+      "from_type": "grammar",
+      "to_slug": "samui",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naru-become",
+      "from_type": "grammar",
+      "to_slug": "nihongo",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "naru-become",
+      "from_type": "grammar",
+      "to_slug": "genki",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "moraru-ageru-kureru",
+      "from_type": "grammar",
+      "to_slug": "tomodachi",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "moraru-ageru-kureru",
+      "from_type": "grammar",
+      "to_slug": "haha",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
+    },
+    {
+      "from_slug": "moraru-ageru-kureru",
+      "from_type": "grammar",
+      "to_slug": "sensei",
+      "to_type": "vocabulary",
+      "relationship_type": "reinforces"
     },
     {
       "from_slug": "n4-node",
