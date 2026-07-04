@@ -4,6 +4,8 @@ import path from 'node:path';
 
 import {
   resetMockFileSystem,
+  setMockCurriculumFixtureBase64,
+  setMockCurriculumSwapCallback,
   setMockFileContents,
 } from '../../../test-support/file-system-test-state';
 import {
@@ -11,6 +13,7 @@ import {
   setMockNetworkState,
 } from '../../../test-support/network-test-state';
 import {
+  __mockApplyDownloadedCurriculumToActive,
   __mockClearImportedAssets,
   __mockGetImportedAssetCount,
   __mockResetSqlite,
@@ -59,6 +62,8 @@ describe('curriculumUpdate', () => {
     resetMockFileSystem();
     resetMockNetwork();
     setMockNetworkState({ isConnected: true, isWifi: true });
+    setMockCurriculumFixtureBase64(fixtureSha256Base64());
+    setMockCurriculumSwapCallback(__mockApplyDownloadedCurriculumToActive);
   });
 
   describe('isCurriculumVersionNewer', () => {

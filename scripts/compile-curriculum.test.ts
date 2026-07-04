@@ -9,15 +9,29 @@ import { assignItemIds, compileCurriculum } from './compile-curriculum';
 const FIXTURE_DIR = path.join(__dirname, '__fixtures__', 'valid');
 
 describe('compile-curriculum', () => {
-  it('assigns deterministic item ids by type then slug', () => {
+  it('assigns deterministic item ids by type then level then slug', () => {
     const ids = assignItemIds(
-      [{ slug: 'b', primary_form: 'B', meaning: 'b', visual_mnemonic_url: 'https://a.example/b.png' }],
-      [{ slug: 'a', primary_form: 'A', meaning: 'a' }],
+      [{ slug: 'b', primary_form: 'B', meaning: 'b', visual_mnemonic_url: 'https://a.example/b.png', jlpt_level: 'N5' }],
+      [{ slug: 'a', primary_form: 'A', meaning: 'a', jlpt_level: 'N4' }],
       [],
       [],
     );
     expect(ids.get('radical:b')).toBe(1);
     expect(ids.get('kanji:a')).toBe(2);
+  });
+
+  it('preserves N5 ids before N4 within the same type', () => {
+    const ids = assignItemIds(
+      [
+        { slug: 'n4-z', primary_form: 'Z', meaning: 'z', visual_mnemonic_url: 'https://a.example/z.png', jlpt_level: 'N4' },
+        { slug: 'n5-a', primary_form: 'A', meaning: 'a', visual_mnemonic_url: 'https://a.example/a.png', jlpt_level: 'N5' },
+      ],
+      [],
+      [],
+      [],
+    );
+    expect(ids.get('radical:n5-a')).toBe(1);
+    expect(ids.get('radical:n4-z')).toBe(2);
   });
 
   it('compiles fixture JSON to sqlite with metadata and relationships', () => {

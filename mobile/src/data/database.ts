@@ -110,6 +110,12 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
   try {
     userDb = await openDatabaseAsync(USER_DB_NAME);
 
+    const migrationResult = runMigrations(userDb, migrations);
+    if (!migrationResult.ok) {
+      await userDb.closeAsync();
+      return migrationResult;
+    }
+
     const curriculumResult = await openCurriculumDatabase(userDb);
     if (!curriculumResult.ok) {
       await userDb.closeAsync();
@@ -117,13 +123,6 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
     }
 
     curriculumDb = curriculumResult.value;
-
-    const migrationResult = runMigrations(userDb, migrations);
-    if (!migrationResult.ok) {
-      await curriculumDb.closeAsync();
-      await userDb.closeAsync();
-      return migrationResult;
-    }
 
     return {
       ok: true,

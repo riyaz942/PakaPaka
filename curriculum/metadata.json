@@ -1,15 +1,15 @@
 {
-  "version": "1.0.0-n5-seed",
-  "jlpt_levels": ["N5"],
-  "description": "JLPT N5 MVP seed curriculum — radicals, kanji, vocabulary, grammar, readings, and precomputed dependency graph for bundled app import.",
+  "version": "1.1.0-n4-seed",
+  "jlpt_levels": ["N5", "N4"],
+  "description": "JLPT N5 and N4 seed curriculum — radicals, kanji, vocabulary, grammar, readings, and precomputed dependency graph for bundled app import.",
   "maintainer_notes": "Bump version in this file before every content publish. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {
-    "radicals": 25,
-    "kanji": 32,
-    "vocabulary": 41,
-    "grammar": 16,
-    "total_items": 114,
-    "reading_passages": 4,
-    "dependency_edges": 87
+    "radicals": 50,
+    "kanji": 62,
+    "vocabulary": 81,
+    "grammar": 31,
+    "total_items": 224,
+    "reading_passages": 8,
+    "dependency_edges": 143
   }
 }

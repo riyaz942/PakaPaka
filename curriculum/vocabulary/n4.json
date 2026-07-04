@@ -1,0 +1,325 @@
+{
+  "jlpt_level": "N4",
+  "items": [
+    {
+      "slug": "n4-sekai",
+      "primary_form": "世界",
+      "meaning": "world",
+      "mnemonic_text": "Vocabulary: world",
+      "sort_order": 1,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "world", "is_primary": true }]
+    },
+    {
+      "slug": "n4-keizai",
+      "primary_form": "経済",
+      "meaning": "economy",
+      "mnemonic_text": "Vocabulary: economy",
+      "sort_order": 2,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "economy", "is_primary": true }]
+    },
+    {
+      "slug": "n4-seiji",
+      "primary_form": "政治",
+      "meaning": "politics",
+      "mnemonic_text": "Vocabulary: politics",
+      "sort_order": 3,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "politics", "is_primary": true }]
+    },
+    {
+      "slug": "n4-iken",
+      "primary_form": "意見",
+      "meaning": "opinion",
+      "mnemonic_text": "Vocabulary: opinion",
+      "sort_order": 4,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "opinion", "is_primary": true }]
+    },
+    {
+      "slug": "n4-setsumei",
+      "primary_form": "説明",
+      "meaning": "explanation",
+      "mnemonic_text": "Vocabulary: explanation",
+      "sort_order": 5,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "explanation", "is_primary": true }]
+    },
+    {
+      "slug": "n4-kaisha",
+      "primary_form": "会社",
+      "meaning": "company",
+      "mnemonic_text": "Vocabulary: company",
+      "sort_order": 6,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "company", "is_primary": true }]
+    },
+    {
+      "slug": "n4-shigoto",
+      "primary_form": "仕事",
+      "meaning": "work",
+      "mnemonic_text": "Vocabulary: work",
+      "sort_order": 7,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "work", "is_primary": true }]
+    },
+    {
+      "slug": "n4-eki-vocab",
+      "primary_form": "駅",
+      "meaning": "station",
+      "mnemonic_text": "Vocabulary: station",
+      "sort_order": 8,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "station", "is_primary": true }]
+    },
+    {
+      "slug": "n4-densha",
+      "primary_form": "電車",
+      "meaning": "train",
+      "mnemonic_text": "Vocabulary: train",
+      "sort_order": 9,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "train", "is_primary": true }]
+    },
+    {
+      "slug": "n4-kuruma-vocab",
+      "primary_form": "車",
+      "meaning": "car",
+      "mnemonic_text": "Vocabulary: car",
+      "sort_order": 10,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "car", "is_primary": true }]
+    },
+    {
+      "slug": "n4-michi-vocab",
+      "primary_form": "道",
+      "meaning": "road",
+      "mnemonic_text": "Vocabulary: road",
+      "sort_order": 11,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "road", "is_primary": true }]
+    },
+    {
+      "slug": "n4-hanashi",
+      "primary_form": "話",
+      "meaning": "story",
+      "mnemonic_text": "Vocabulary: story",
+      "sort_order": 12,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "story", "is_primary": true }]
+    },
+    {
+      "slug": "n4-tomodachi",
+      "primary_form": "友達",
+      "meaning": "friend",
+      "mnemonic_text": "Vocabulary: friend",
+      "sort_order": 13,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "friend", "is_primary": true }]
+    },
+    {
+      "slug": "n4-kazoku",
+      "primary_form": "家族",
+      "meaning": "family",
+      "mnemonic_text": "Vocabulary: family",
+      "sort_order": 14,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "family", "is_primary": true }]
+    },
+    {
+      "slug": "n4-ryokou",
+      "primary_form": "旅行",
+      "meaning": "travel",
+      "mnemonic_text": "Vocabulary: travel",
+      "sort_order": 15,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "travel", "is_primary": true }]
+    },
+    {
+      "slug": "n4-tenki",
+      "primary_form": "天気",
+      "meaning": "weather",
+      "mnemonic_text": "Vocabulary: weather",
+      "sort_order": 16,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "weather", "is_primary": true }]
+    },
+    {
+      "slug": "n4-ame-vocab",
+      "primary_form": "雨",
+      "meaning": "rain",
+      "mnemonic_text": "Vocabulary: rain",
+      "sort_order": 17,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "rain", "is_primary": true }]
+    },
+    {
+      "slug": "n4-haru",
+      "primary_form": "春",
+      "meaning": "spring",
+      "mnemonic_text": "Vocabulary: spring",
+      "sort_order": 18,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "spring", "is_primary": true }]
+    },
+    {
+      "slug": "n4-natsu",
+      "primary_form": "夏",
+      "meaning": "summer",
+      "mnemonic_text": "Vocabulary: summer",
+      "sort_order": 19,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "summer", "is_primary": true }]
+    },
+    {
+      "slug": "n4-aki",
+      "primary_form": "秋",
+      "meaning": "autumn",
+      "mnemonic_text": "Vocabulary: autumn",
+      "sort_order": 20,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "autumn", "is_primary": true }]
+    },
+    {
+      "slug": "n4-fuyu",
+      "primary_form": "冬",
+      "meaning": "winter",
+      "mnemonic_text": "Vocabulary: winter",
+      "sort_order": 21,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "winter", "is_primary": true }]
+    },
+    {
+      "slug": "n4-shiken",
+      "primary_form": "試験",
+      "meaning": "exam",
+      "mnemonic_text": "Vocabulary: exam",
+      "sort_order": 22,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "exam", "is_primary": true }]
+    },
+    {
+      "slug": "n4-bungaku",
+      "primary_form": "文学",
+      "meaning": "literature",
+      "mnemonic_text": "Vocabulary: literature",
+      "sort_order": 23,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "literature", "is_primary": true }]
+    },
+    {
+      "slug": "n4-ongaku",
+      "primary_form": "音楽",
+      "meaning": "music",
+      "mnemonic_text": "Vocabulary: music",
+      "sort_order": 24,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "music", "is_primary": true }]
+    },
+    {
+      "slug": "n4-eiga",
+      "primary_form": "映画",
+      "meaning": "movie",
+      "mnemonic_text": "Vocabulary: movie",
+      "sort_order": 25,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "movie", "is_primary": true }]
+    },
+    {
+      "slug": "n4-shashin",
+      "primary_form": "写真",
+      "meaning": "photograph",
+      "mnemonic_text": "Vocabulary: photograph",
+      "sort_order": 26,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "photograph", "is_primary": true }]
+    },
+    {
+      "slug": "n4-shinbun",
+      "primary_form": "新聞",
+      "meaning": "newspaper",
+      "mnemonic_text": "Vocabulary: newspaper",
+      "sort_order": 27,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "newspaper", "is_primary": true }]
+    },
+    {
+      "slug": "n4-tegami",
+      "primary_form": "手紙",
+      "meaning": "letter",
+      "mnemonic_text": "Vocabulary: letter",
+      "sort_order": 28,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "letter", "is_primary": true }]
+    },
+    {
+      "slug": "n4-denwa",
+      "primary_form": "電話",
+      "meaning": "telephone",
+      "mnemonic_text": "Vocabulary: telephone",
+      "sort_order": 29,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "telephone", "is_primary": true }]
+    },
+    {
+      "slug": "n4-jikan",
+      "primary_form": "時間",
+      "meaning": "time",
+      "mnemonic_text": "Vocabulary: time",
+      "sort_order": 30,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "time", "is_primary": true }]
+    },
+    {
+      "slug": "n4-mirai",
+      "primary_form": "未来",
+      "meaning": "future",
+      "mnemonic_text": "Vocabulary: future",
+      "sort_order": 31,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "future", "is_primary": true }]
+    },
+    {
+      "slug": "n4-kako",
+      "primary_form": "過去",
+      "meaning": "past",
+      "mnemonic_text": "Vocabulary: past",
+      "sort_order": 32,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "past", "is_primary": true }]
+    },
+    {
+      "slug": "n4-ima",
+      "primary_form": "今",
+      "meaning": "now",
+      "mnemonic_text": "Vocabulary: now",
+      "sort_order": 33,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "now", "is_primary": true }]
+    },
+    {
+      "slug": "n4-itsumo",
+      "primary_form": "いつも",
+      "meaning": "always",
+      "mnemonic_text": "Vocabulary: always",
+      "sort_order": 34,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "always", "is_primary": true }]
+    },
+    {
+      "slug": "n4-tokidoki",
+      "primary_form": "ときどき",
+      "meaning": "sometimes",
+      "mnemonic_text": "Vocabulary: sometimes",
+      "sort_order": 35,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "sometimes", "is_primary": true }]
+    },
+    {
+      "slug": "n4-mou",
+      "primary_form": "もう",
+      "meaning": "already",
+      "mnemonic_text": "Vocabulary: already",
+      "sort_order": 36,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "already", "is_primary": true }]
+    },
+    {
+      "slug": "n4-mada",
+      "primary_form": "まだ",
+      "meaning": "still",
+      "mnemonic_text": "Vocabulary: still",
+      "sort_order": 37,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "still", "is_primary": true }]
+    },
+    {
+      "slug": "n4-zenzen",
+      "primary_form": "全然",
+      "meaning": "not at all",
+      "mnemonic_text": "Vocabulary: not at all",
+      "sort_order": 38,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "not at all", "is_primary": true }]
+    },
+    {
+      "slug": "n4-daijobu",
+      "primary_form": "大丈夫",
+      "meaning": "alright",
+      "mnemonic_text": "Vocabulary: alright",
+      "sort_order": 39,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "alright", "is_primary": true }]
+    },
+    {
+      "slug": "n4-taihen",
+      "primary_form": "大変",
+      "meaning": "tough",
+      "mnemonic_text": "Vocabulary: tough",
+      "sort_order": 40,
+      "accepted_answers": [{ "answer_type": "meaning", "answer_text": "tough", "is_primary": true }]
+    }
+  ]
+}

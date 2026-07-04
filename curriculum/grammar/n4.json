@@ -1,0 +1,290 @@
+{
+  "jlpt_level": "N4",
+  "items": [
+    {
+      "slug": "n4-node",
+      "primary_form": "ので",
+      "meaning": "because (neutral)",
+      "structure": "Clause + ので + Clause",
+      "mnemonic_text": "Grammar: because (neutral)",
+      "sort_order": 1,
+      "conjugation_rules": { "reason": true },
+      "accepted_forms": ["ので"],
+      "example_sentences": [
+        {
+          "japanese": "例文：のでの使い方",
+          "english": "Example for because (neutral).",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-tenki", "n4-ame-vocab"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-tenki"]
+    },
+    {
+      "slug": "n4-noni",
+      "primary_form": "のに",
+      "meaning": "although",
+      "structure": "Clause + のに + Clause",
+      "mnemonic_text": "Grammar: although",
+      "sort_order": 2,
+      "conjugation_rules": { "contrast": true },
+      "accepted_forms": ["のに"],
+      "example_sentences": [
+        {
+          "japanese": "例文：のにの使い方",
+          "english": "Example for although.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-shiken", "n4-mada"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-shiken"]
+    },
+    {
+      "slug": "n4-souda",
+      "primary_form": "そうだ",
+      "meaning": "hearsay",
+      "structure": "Plain form + そうだ",
+      "mnemonic_text": "Grammar: hearsay",
+      "sort_order": 3,
+      "conjugation_rules": { "hearsay": true },
+      "accepted_forms": ["そうだ", "そうです"],
+      "example_sentences": [
+        {
+          "japanese": "例文：そうだの使い方",
+          "english": "Example for hearsay.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-tenki", "n4-haru"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-tenki"]
+    },
+    {
+      "slug": "n4-tara",
+      "primary_form": "たら",
+      "meaning": "when/if",
+      "structure": "Ta-form + ら",
+      "mnemonic_text": "Grammar: when/if",
+      "sort_order": 4,
+      "conjugation_rules": { "conditional": true },
+      "accepted_forms": ["たら"],
+      "example_sentences": [
+        {
+          "japanese": "例文：たらの使い方",
+          "english": "Example for when/if.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-ryokou", "n4-tomodachi"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-ryokou"]
+    },
+    {
+      "slug": "n4-potential",
+      "primary_form": "れる",
+      "meaning": "potential form",
+      "structure": "Verb stem + れる/られる",
+      "mnemonic_text": "Grammar: potential form",
+      "sort_order": 5,
+      "conjugation_rules": { "potential": true },
+      "accepted_forms": ["れる", "られる"],
+      "example_sentences": [
+        {
+          "japanese": "例文：れるの使い方",
+          "english": "Example for potential form.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-nihongo", "n4-hanashi"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-hanashi"]
+    },
+    {
+      "slug": "n4-youni",
+      "primary_form": "ように",
+      "meaning": "in order to",
+      "structure": "Dictionary form + ように",
+      "mnemonic_text": "Grammar: in order to",
+      "sort_order": 6,
+      "conjugation_rules": { "purpose": true },
+      "accepted_forms": ["ように"],
+      "example_sentences": [
+        {
+          "japanese": "例文：ようにの使い方",
+          "english": "Example for in order to.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-shiken", "n4-jikan"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-shiken"]
+    },
+    {
+      "slug": "n4-youninaru",
+      "primary_form": "ようになる",
+      "meaning": "come to be able",
+      "structure": "Dictionary form + ようになる",
+      "mnemonic_text": "Grammar: come to be able",
+      "sort_order": 7,
+      "conjugation_rules": { "change": true },
+      "accepted_forms": ["ようになる"],
+      "example_sentences": [
+        {
+          "japanese": "例文：ようになるの使い方",
+          "english": "Example for come to be able.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-hanashi", "n4-jikan"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-hanashi"]
+    },
+    {
+      "slug": "n4-hazu",
+      "primary_form": "はず",
+      "meaning": "should be",
+      "structure": "Plain form + はず",
+      "mnemonic_text": "Grammar: should be",
+      "sort_order": 8,
+      "conjugation_rules": { "expectation": true },
+      "accepted_forms": ["はず", "はずだ"],
+      "example_sentences": [
+        {
+          "japanese": "例文：はずの使い方",
+          "english": "Example for should be.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-densha", "n4-jikan"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-densha"]
+    },
+    {
+      "slug": "n4-rashii",
+      "primary_form": "らしい",
+      "meaning": "seems like",
+      "structure": "Plain form + らしい",
+      "mnemonic_text": "Grammar: seems like",
+      "sort_order": 9,
+      "conjugation_rules": { "conjecture": true },
+      "accepted_forms": ["らしい"],
+      "example_sentences": [
+        {
+          "japanese": "例文：らしいの使い方",
+          "english": "Example for seems like.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-tenki", "n4-ame-vocab"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-tenki"]
+    },
+    {
+      "slug": "n4-youda",
+      "primary_form": "ようだ",
+      "meaning": "seems/apparently",
+      "structure": "Plain form + ようだ",
+      "mnemonic_text": "Grammar: seems/apparently",
+      "sort_order": 10,
+      "conjugation_rules": { "appearance": true },
+      "accepted_forms": ["ようだ", "ようです"],
+      "example_sentences": [
+        {
+          "japanese": "例文：ようだの使い方",
+          "english": "Example for seems/apparently.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-taihen", "n4-shigoto"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-taihen"]
+    },
+    {
+      "slug": "n4-teiru",
+      "primary_form": "ている",
+      "meaning": "progressive",
+      "structure": "Te-form + いる",
+      "mnemonic_text": "Grammar: progressive",
+      "sort_order": 11,
+      "conjugation_rules": { "progressive": true },
+      "accepted_forms": ["ている", "てる"],
+      "example_sentences": [
+        {
+          "japanese": "例文：ているの使い方",
+          "english": "Example for progressive.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-eiga", "n4-miru"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-eiga"]
+    },
+    {
+      "slug": "n4-tearu",
+      "primary_form": "てある",
+      "meaning": "resultant state",
+      "structure": "Te-form + ある",
+      "mnemonic_text": "Grammar: resultant state",
+      "sort_order": 12,
+      "conjugation_rules": { "resultant": true },
+      "accepted_forms": ["てある"],
+      "example_sentences": [
+        {
+          "japanese": "例文：てあるの使い方",
+          "english": "Example for resultant state.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-tegami", "n4-kaku"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-tegami"]
+    },
+    {
+      "slug": "n4-nagara",
+      "primary_form": "ながら",
+      "meaning": "while",
+      "structure": "Stem + ながら",
+      "mnemonic_text": "Grammar: while",
+      "sort_order": 13,
+      "conjugation_rules": { "simultaneous": true },
+      "accepted_forms": ["ながら"],
+      "example_sentences": [
+        {
+          "japanese": "例文：ながらの使い方",
+          "english": "Example for while.",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-ongaku", "n4-kiku"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-ongaku"]
+    },
+    {
+      "slug": "n4-shi",
+      "primary_form": "し",
+      "meaning": "and (listing reasons)",
+      "structure": "Plain form + し",
+      "mnemonic_text": "Grammar: and (listing reasons)",
+      "sort_order": 14,
+      "conjugation_rules": { "listing": true },
+      "accepted_forms": ["し"],
+      "example_sentences": [
+        {
+          "japanese": "例文：しの使い方",
+          "english": "Example for and (listing reasons).",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-tenki", "n4-tomodachi"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-tomodachi"]
+    },
+    {
+      "slug": "n4-madeni",
+      "primary_form": "までに",
+      "meaning": "by (deadline)",
+      "structure": "Time + までに",
+      "mnemonic_text": "Grammar: by (deadline)",
+      "sort_order": 15,
+      "conjugation_rules": { "deadline": true },
+      "accepted_forms": ["までに"],
+      "example_sentences": [
+        {
+          "japanese": "例文：までにの使い方",
+          "english": "Example for by (deadline).",
+          "sort_order": 0,
+          "vocabulary_slugs": ["n4-shiken", "n4-jikan"]
+        }
+      ],
+      "vocabulary_slugs": ["n4-shiken"]
+    }
+  ]
+}

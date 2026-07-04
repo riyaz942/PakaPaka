@@ -48,7 +48,7 @@
       "additionalProperties": false,
       "required": ["jlpt_level", "items"],
       "properties": {
-        "jlpt_level": { "type": "string", "const": "N5" },
+        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/radicalItem" },
@@ -101,7 +101,7 @@
       "additionalProperties": false,
       "required": ["jlpt_level", "items"],
       "properties": {
-        "jlpt_level": { "type": "string", "const": "N5" },
+        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/kanjiItem" },
@@ -130,7 +130,7 @@
       "additionalProperties": false,
       "required": ["jlpt_level", "items"],
       "properties": {
-        "jlpt_level": { "type": "string", "const": "N5" },
+        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/vocabItem" },
@@ -188,7 +188,7 @@
       "additionalProperties": false,
       "required": ["jlpt_level", "items"],
       "properties": {
-        "jlpt_level": { "type": "string", "const": "N5" },
+        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "items": {
           "type": "array",
           "items": { "$ref": "#/$defs/grammarItem" },
@@ -230,7 +230,7 @@
       "additionalProperties": false,
       "required": ["jlpt_level", "passages"],
       "properties": {
-        "jlpt_level": { "type": "string", "const": "N5" },
+        "jlpt_level": { "type": "string", "enum": ["N5", "N4", "N3", "N2", "N1"] },
         "passages": {
           "type": "array",
           "items": { "$ref": "#/$defs/readingPassage" },

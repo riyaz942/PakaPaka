@@ -72,6 +72,84 @@ npx expo run:android
 
 These produce dev builds with native projects under `mobile/ios` and `mobile/android` (gitignored). Ensure simulator/emulator prerequisites above are installed.
 
+## Running the app
+
+This project uses **`expo-notifications`**, which requires a **development build** — as of Expo SDK 53, [Expo Go no longer supports it on Android](https://docs.expo.dev/develop/development-builds/introduction/) (importing the module alone throws). Use one of the options below instead of plain Expo Go on Android. Expo Go remains usable on iOS and for quick web/Android testing of screens that don't touch notifications.
+
+### Option A — Simulator/emulator (fastest, local machine only)
+
+Requires Xcode (iOS) or Android Studio + SDK (Android) — see [Prerequisites](#prerequisites).
+
+```bash
+cd mobile
+npx expo run:ios       # builds and launches on the iOS Simulator
+npx expo run:android   # builds and launches on the Android Emulator
+```
+
+This builds a local development client and installs it directly on the running simulator/emulator — no separate install step needed.
+
+### Option B — Physical device via USB (local build, no EAS account needed)
+
+1. Enable developer mode + USB debugging on the device (Android) or trust the computer (iOS), and connect via USB.
+2. Confirm the device is detected:
+
+   ```bash
+   adb devices          # Android
+   xcrun xctrace list devices   # iOS
+   ```
+
+3. From `mobile/`, run the same commands as Option A — Expo CLI will detect the connected device and offer to install there instead of the simulator/emulator:
+
+   ```bash
+   npx expo run:android
+   npx expo run:ios
+   ```
+
+### Option C — Physical device over Wi-Fi via EAS Build (no Mac/Android Studio required on the test device)
+
+Use this when you want to test on a real device without a USB cable, or don't have Xcode/Android Studio installed.
+
+1. Install the EAS CLI and log in (one-time):
+
+   ```bash
+   cd mobile
+   npx eas-cli login
+   npx eas-cli init    # links this project to your Expo account, if not already linked
+   ```
+
+2. Build a development client in the cloud:
+
+   ```bash
+   npx eas-cli build --profile development --platform android   # or --platform ios
+   ```
+
+   This uses the `development` profile in `mobile/eas.json` (`developmentClient: true`, `distribution: internal`). When it finishes, EAS prints an install link and QR code.
+
+3. On the device, open the link (or scan the QR code) to download and install the build. For iOS, the device UDID must be registered with your Apple Developer account for internal distribution — EAS will prompt for this during the build if needed.
+
+4. Start Metro in **dev-client mode** (not plain `expo start`, which defaults to Expo Go):
+
+   ```bash
+   npx expo start --dev-client
+   ```
+
+5. Open the installed dev-client app (not Expo Go) on the device and scan the QR code Metro prints, or enter the `exp://<ip>:8081` URL manually.
+
+   - The device and your computer must be on the **same Wi-Fi network** for this to work. If they can't reach each other (guest network, VPN, corporate firewall), use a tunnel instead:
+
+     ```bash
+     npx expo start --dev-client --tunnel
+     ```
+
+### Option D — Expo Go (quick iteration, no native module access)
+
+```bash
+cd mobile
+npx expo start
+```
+
+Scan the QR code with the Expo Go app (iOS) or the Camera app (Android). Fine for iterating on UI/logic that doesn't touch `expo-notifications` or other custom native modules; on Android, screens that import `src/config/notifications.ts` (e.g. Settings) will crash in Expo Go — use Options A–C instead.
+
 ## Over-the-air (OTA) updates
 
 This project uses **`expo-updates`** (Expo Updates) for **JavaScript-only** fixes between store releases, aligned with **PRD FR51** and the architecture doc. **Native code or native dependency changes require a new store build** and usually a bump to **`runtimeVersion`** (see [Runtime versions](https://docs.expo.dev/eas-update/runtime-versions/)).

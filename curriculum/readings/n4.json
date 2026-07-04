@@ -1,0 +1,53 @@
+{
+  "jlpt_level": "N4",
+  "passages": [
+    {
+      "title": "通勤",
+      "body": "毎朝、電車で会社に行きます。駅まで歩いて十分です。",
+      "sort_order": 1,
+      "questions": [
+        {
+          "prompt": "会社に何で行きますか？",
+          "accepted_answers": ["電車", "でんしゃ"],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "天気予報",
+      "body": "明日は雨らしいです。傘を持って行きましょう。",
+      "sort_order": 2,
+      "questions": [
+        {
+          "prompt": "明日の天気はどうですか？",
+          "accepted_answers": ["雨", "あめ"],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "試験",
+      "body": "来週、日本語の試験があります。毎日勉強しています。",
+      "sort_order": 3,
+      "questions": [
+        {
+          "prompt": "何の試験がありますか？",
+          "accepted_answers": ["日本語", "にほんご"],
+          "sort_order": 0
+        }
+      ]
+    },
+    {
+      "title": "週末",
+      "body": "週末、友達と映画を見に行きます。とても楽しみです。",
+      "sort_order": 4,
+      "questions": [
+        {
+          "prompt": "週末何をしますか？",
+          "accepted_answers": ["映画", "えいが"],
+          "sort_order": 0
+        }
+      ]
+    }
+  ]
+}

@@ -220,7 +220,7 @@ async function atomicReplaceCurriculumFile(
   if (process.env.NODE_ENV === 'test') {
     const { applyMockCurriculumSwap } =
       // eslint-disable-next-line @typescript-eslint/no-require-imports -- test-only atomic swap
-      require('../../../test-support/curriculumUpdateTestHooks') as {
+      require('../../../test-support/file-system-test-state') as {
         applyMockCurriculumSwap: (downloadUri: string, finalUri: string) => void;
       };
     applyMockCurriculumSwap(tempUri, finalUri);
@@ -276,12 +276,23 @@ async function downloadManifestDatabase(manifest: CurriculumManifest): Promise<R
       const fixtureKey = manifest.url.slice(BUNDLED_FIXTURE_SCHEME.length);
       if (fixtureKey === 'curriculum-mock-update') {
         if (process.env.NODE_ENV === 'test') {
-          const { seedMockDownloadedCurriculum } =
+          const { getMockCurriculumFixtureBase64, setMockFileContents } =
             // eslint-disable-next-line @typescript-eslint/no-require-imports -- test-only fixture seed
-            require('../../../test-support/curriculumUpdateTestHooks') as {
-              seedMockDownloadedCurriculum: (tempUri: string) => void;
+            require('../../../test-support/file-system-test-state') as {
+              getMockCurriculumFixtureBase64: () => string | undefined;
+              setMockFileContents: (uri: string, base64Contents: string) => void;
             };
-          seedMockDownloadedCurriculum(tempUri);
+          const fixtureBase64 = getMockCurriculumFixtureBase64();
+          if (!fixtureBase64) {
+            return {
+              ok: false,
+              error: {
+                code: 'CURRICULUM_DOWNLOAD_FAILED',
+                message: 'Mock curriculum fixture was not seeded for tests',
+              },
+            };
+          }
+          setMockFileContents(tempUri, fixtureBase64);
           return { ok: true, value: tempUri };
         }
 
