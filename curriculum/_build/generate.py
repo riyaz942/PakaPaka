@@ -304,8 +304,11 @@ def generate_level(level):
         write_json(os.path.join(CURRICULUM_DIR, "grammar", "n5.json"), build_n5_grammar(vocab_slugs))
         write_json(os.path.join(CURRICULUM_DIR, "readings", "n5.json"), build_n5_readings())
     elif level == "n4":
+        n5_vocab = build_n5_vocab()
         vocab = build_n4_vocab()
-        vocab_slugs = {v["slug"] for v in vocab["items"]}
+        # N4 is additive on N5: grammar examples may reinforce previously
+        # learned N5 vocabulary, so validate against the combined slug set.
+        vocab_slugs = {v["slug"] for v in vocab["items"]} | {v["slug"] for v in n5_vocab["items"]}
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n4.json"), build_n4_radicals())
         write_json(os.path.join(CURRICULUM_DIR, "kanji", "n4.json"), build_n4_kanji())
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)

@@ -85,6 +85,49 @@ N5_DECOMPOSITION = {
 }
 
 
+# Curated radical (slug) -> kanji (suffix) decomposition for N4.
+# Keyed by radical slug from n4_radicals.py (new radicals) or n5_radicals.py
+# (reused components); values are kanji suffixes from n4_kanji.py.
+N4_DECOMPOSITION = {
+    "kokoro": ["shin-heart", "omou", "isogu", "warui", "wasureru", "hitsu"],
+    "bokuzukuri": ["kyou-teach"],
+    "madare": ["mise", "hiroi"],
+    "hitsuji": ["kiru-wear"],
+    "furutori": ["atsumeru"],
+    "inu": ["modoru"],
+    "gatsuhen": ["shinu", "nokoru"],
+    "ou-king": ["ri"],
+    "ono": ["tokoro", "shitsu-quality"],
+    "itaru": ["shitsu"],
+    "shikabane": ["todoku"],
+    "yumihen": ["hiku", "yowai", "tsuyoi"],
+    "shikabane-kan": ["tokoro", "modoru"],
+    "takehen": ["narau", "kotae"],
+    "shime": ["sha"],
+    "nikuzuki": ["akarui"],
+    "shinnyou-n4": ["asobu", "chigau", "hakobu", "okuru", "erabu"],
+    "tatsuhen": ["oya"],
+    "kai-shellhen": ["kasu", "shitsu-quality"],
+    "kuchihen": ["shiru", "aji", "ani"],
+    "mizuhen": ["arau", "kimeru", "heru-decrease"],
+    # Reused N5 radicals as components of new N4 kanji.
+    "onna": ["suki", "ane", "imouto"],
+    "ki": ["oya"],
+    "kuruma": ["sha-car", "karui", "omoi"],
+    "ame": ["den"],
+    "chikara": ["ryoku"],
+    "sanzui": ["arau", "kimeru", "heru-decrease"],
+    "te": ["te-kanji"],
+    "tsuchi": ["chi", "ba"],
+    "hi-sun": ["kurai", "akarui"],
+    "tsuki": ["akarui"],
+    "miru": ["oboeru"],
+    "gonben": ["shi-try"],
+    "kai-shell": ["kasu"],
+    "mimi": [],
+}
+
+
 def build_edges(levels):
     radicals = []
     kanji = []
@@ -120,14 +163,17 @@ def build_edges(levels):
     radical_slugs = {r["slug"] for r in radicals}
     kanji_slugs = {k["slug"] for k in kanji}
 
-    # radical -> kanji (builds_on), from curated decomposition (N5 only for now).
-    for rad_slug, kanji_suffixes in N5_DECOMPOSITION.items():
-        if rad_slug not in radical_slugs:
-            continue
-        for suf in kanji_suffixes:
-            kslug = f"n5-{suf}"
-            if kslug in kanji_slugs:
-                add(rad_slug, "radical", kslug, "kanji", "builds_on")
+    # radical -> kanji (builds_on), from curated decomposition maps per level.
+    decomposition_by_level = {"n5": N5_DECOMPOSITION, "n4": N4_DECOMPOSITION}
+    for lvl in levels:
+        decomposition = decomposition_by_level.get(lvl, {})
+        for rad_slug, kanji_suffixes in decomposition.items():
+            if rad_slug not in radical_slugs:
+                continue
+            for suf in kanji_suffixes:
+                kslug = f"{lvl}-{suf}"
+                if kslug in kanji_slugs:
+                    add(rad_slug, "radical", kslug, "kanji", "builds_on")
 
     # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
     for k in kanji:

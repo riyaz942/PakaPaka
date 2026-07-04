@@ -4,287 +4,4109 @@
     {
       "slug": "n4-node",
       "primary_form": "ので",
-      "meaning": "because (neutral)",
-      "structure": "Clause + ので + Clause",
-      "mnemonic_text": "Grammar: because (neutral)",
+      "meaning": "because (neutral reason)",
+      "structure": "Plain form + ので",
+      "mnemonic_text": "ので gives an objective, softer reason than から.",
       "sort_order": 1,
-      "conjugation_rules": { "reason": true },
-      "accepted_forms": ["ので"],
+      "conjugation_rules": {
+        "reason": true,
+        "polite_before": true
+      },
+      "accepted_forms": [
+        "ので",
+        "なので"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：のでの使い方",
-          "english": "Example for because (neutral).",
+          "japanese": "雨が降っているので、傘を持って行きます。",
+          "english": "Since it's raining, I'll take an umbrella.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-tenki", "n4-ame-vocab"]
+          "vocabulary_slugs": [
+            "furu-rain",
+            "kasa"
+          ]
+        },
+        {
+          "japanese": "時間がないので、急ぎましょう。",
+          "english": "Since there's no time, let's hurry.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "jikan",
+            "isogu"
+          ]
+        },
+        {
+          "japanese": "疲れたので、早く寝ます。",
+          "english": "Since I'm tired, I'll sleep early.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "neru"
+          ]
+        },
+        {
+          "japanese": "道が混んでいるので、遅れます。",
+          "english": "Since the road is crowded, I'll be late.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "michi-v",
+            "okureru"
+          ]
+        },
+        {
+          "japanese": "休みなので、家にいます。",
+          "english": "Since it's a day off, I'm staying home.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "yasumu",
+            "ie"
+          ]
+        },
+        {
+          "japanese": "安いので、これを買います。",
+          "english": "Since it's cheap, I'll buy this.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "kau-v"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-tenki"]
+      "vocabulary_slugs": [
+        "furu-rain",
+        "jikan",
+        "yasumu"
+      ]
     },
     {
       "slug": "n4-noni",
       "primary_form": "のに",
-      "meaning": "although",
-      "structure": "Clause + のに + Clause",
-      "mnemonic_text": "Grammar: although",
+      "meaning": "although / even though",
+      "structure": "Plain form + のに",
+      "mnemonic_text": "のに sets up a surprising contrast with what follows.",
       "sort_order": 2,
-      "conjugation_rules": { "contrast": true },
-      "accepted_forms": ["のに"],
+      "conjugation_rules": {
+        "contrast": true
+      },
+      "accepted_forms": [
+        "のに"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：のにの使い方",
-          "english": "Example for although.",
+          "japanese": "勉強したのに、試験に落ちました。",
+          "english": "Even though I studied, I failed the exam.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-shiken", "n4-mada"]
+          "vocabulary_slugs": [
+            "benkyou-suru",
+            "shiken"
+          ]
+        },
+        {
+          "japanese": "お金があるのに、使いません。",
+          "english": "Even though he has money, he doesn't spend it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "tsukau"
+          ]
+        },
+        {
+          "japanese": "約束したのに、来ませんでした。",
+          "english": "Even though we promised, he didn't come.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yakusoku",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "忙しいのに、手伝ってくれました。",
+          "english": "Even though busy, they helped me.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "isogashii",
+            "tetsudatte-kureru"
+          ]
+        },
+        {
+          "japanese": "若いのに、とても物知りです。",
+          "english": "Even though young, he's very knowledgeable.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "wakai"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-shiken"]
+      "vocabulary_slugs": [
+        "benkyou-suru",
+        "shiken",
+        "okane"
+      ]
     },
     {
-      "slug": "n4-souda",
-      "primary_form": "そうだ",
-      "meaning": "hearsay",
+      "slug": "n4-souda-hearsay",
+      "primary_form": "そうだ (hearsay)",
+      "meaning": "I heard that / apparently",
       "structure": "Plain form + そうだ",
-      "mnemonic_text": "Grammar: hearsay",
+      "mnemonic_text": "そうだ after a plain sentence reports something you heard.",
       "sort_order": 3,
-      "conjugation_rules": { "hearsay": true },
-      "accepted_forms": ["そうだ", "そうです"],
+      "conjugation_rules": {
+        "hearsay": true
+      },
+      "accepted_forms": [
+        "そうだ",
+        "そうです"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：そうだの使い方",
-          "english": "Example for hearsay.",
+          "japanese": "天気予報によると、明日は雨だそうです。",
+          "english": "According to the forecast, it'll rain tomorrow.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-tenki", "n4-haru"]
+          "vocabulary_slugs": [
+            "tenki",
+            "ashita"
+          ]
+        },
+        {
+          "japanese": "あの店は美味しいそうです。",
+          "english": "I hear that shop is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise",
+            "oishii"
+          ]
+        },
+        {
+          "japanese": "彼はもう帰ったそうです。",
+          "english": "I heard he already went home.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kaeru-v"
+          ]
+        },
+        {
+          "japanese": "来週試験があるそうです。",
+          "english": "I heard there's an exam next week.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "raishuu",
+            "shiken"
+          ]
+        },
+        {
+          "japanese": "彼女は結婚するそうです。",
+          "english": "I heard she's getting married.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kekkon-suru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-tenki"]
+      "vocabulary_slugs": [
+        "tenki",
+        "mise",
+        "shiken"
+      ]
+    },
+    {
+      "slug": "n4-souda-looks",
+      "primary_form": "そうだ (looks like)",
+      "meaning": "looks like / seems (appearance)",
+      "structure": "い-adj stem / な-adj / Verb stem + そうだ",
+      "mnemonic_text": "そうだ on a stem describes how something visually appears.",
+      "sort_order": 4,
+      "conjugation_rules": {
+        "appearance": true
+      },
+      "accepted_forms": [
+        "そうだ",
+        "そうです",
+        "そうな"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "この料理は美味しそうです。",
+          "english": "This dish looks delicious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ryouri"
+          ]
+        },
+        {
+          "japanese": "雨が降りそうです。",
+          "english": "It looks like it's going to rain.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "楽しそうな顔をしていますね。",
+          "english": "You have a happy-looking face.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kao"
+          ]
+        },
+        {
+          "japanese": "大変そうですね、手伝いましょうか。",
+          "english": "That looks tough, shall I help?",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "taihen"
+          ]
+        },
+        {
+          "japanese": "彼は元気そうです。",
+          "english": "He looks well.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kare",
+            "genki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ryouri",
+        "furu-rain",
+        "genki"
+      ]
     },
     {
       "slug": "n4-tara",
       "primary_form": "たら",
-      "meaning": "when/if",
+      "meaning": "if / when (conditional)",
       "structure": "Ta-form + ら",
-      "mnemonic_text": "Grammar: when/if",
-      "sort_order": 4,
-      "conjugation_rules": { "conditional": true },
-      "accepted_forms": ["たら"],
+      "mnemonic_text": "たら sets a condition: once this happens, then...",
+      "sort_order": 5,
+      "conjugation_rules": {
+        "conditional": true
+      },
+      "accepted_forms": [
+        "たら",
+        "だら"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：たらの使い方",
-          "english": "Example for when/if.",
+          "japanese": "時間があったら、映画を見ましょう。",
+          "english": "If we have time, let's watch a movie.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-ryokou", "n4-tomodachi"]
+          "vocabulary_slugs": [
+            "jikan",
+            "eiga"
+          ]
+        },
+        {
+          "japanese": "雨が降ったら、行きません。",
+          "english": "If it rains, I won't go.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "駅に着いたら、電話してください。",
+          "english": "When you arrive at the station, please call.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "denwa-suru"
+          ]
+        },
+        {
+          "japanese": "安かったら、買います。",
+          "english": "If it's cheap, I'll buy it.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "yasui-adj"
+          ]
+        },
+        {
+          "japanese": "宿題が終わったら、遊びに行きます。",
+          "english": "Once homework is done, I'll go play.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "shukudai",
+            "owaru",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "先生に聞いたら、分かりました。",
+          "english": "When I asked the teacher, I understood.",
+          "sort_order": 5,
+          "vocabulary_slugs": [
+            "sensei",
+            "kiku-v",
+            "wakaru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-ryokou"]
+      "vocabulary_slugs": [
+        "jikan",
+        "eki",
+        "shukudai"
+      ]
+    },
+    {
+      "slug": "n4-ba",
+      "primary_form": "ば",
+      "meaning": "if (conditional, general truth)",
+      "structure": "Verb/adj ba-form + ば",
+      "mnemonic_text": "ば describes a general or hypothetical if-then relationship.",
+      "sort_order": 6,
+      "conjugation_rules": {
+        "conditional": true,
+        "form": "ba"
+      },
+      "accepted_forms": [
+        "ば",
+        "ければ",
+        "であれば",
+        "なら"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お金があれば、旅行に行きたいです。",
+          "english": "If I had money, I'd want to travel.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "okane",
+            "ryokou"
+          ]
+        },
+        {
+          "japanese": "安ければ、買います。",
+          "english": "If it's cheap, I'll buy it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yasui-adj"
+          ]
+        },
+        {
+          "japanese": "練習すれば、上手になります。",
+          "english": "If you practice, you'll get good at it.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "renshuu-suru",
+            "jouzu"
+          ]
+        },
+        {
+          "japanese": "薬を飲めば、治ります。",
+          "english": "If you take medicine, you'll recover.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kusuri",
+            "naoru"
+          ]
+        },
+        {
+          "japanese": "急げば、間に合います。",
+          "english": "If you hurry, you'll make it in time.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "isogu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "okane",
+        "ryokou",
+        "renshuu-suru"
+      ]
+    },
+    {
+      "slug": "n4-nara",
+      "primary_form": "なら",
+      "meaning": "if (topic-based conditional)",
+      "structure": "Noun / Plain form + なら",
+      "mnemonic_text": "なら reacts to a topic someone just raised: 'if that's the case...'",
+      "sort_order": 7,
+      "conjugation_rules": {
+        "conditional": true,
+        "topic_based": true
+      },
+      "accepted_forms": [
+        "なら",
+        "んなら"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "東京へ行くなら、新幹線が便利です。",
+          "english": "If you're going to Tokyo, the shinkansen is convenient.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "暇なら、遊びに来てください。",
+          "english": "If you're free, come play.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hima",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "本当なら、大変です。",
+          "english": "If it's true, that's serious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hontou-ni",
+            "taihen"
+          ]
+        },
+        {
+          "japanese": "行くなら、一緒に行きましょう。",
+          "english": "If you're going, let's go together.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "issho-ni"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "hima",
+        "taihen",
+        "issho-ni"
+      ]
     },
     {
       "slug": "n4-potential",
-      "primary_form": "れる",
-      "meaning": "potential form",
-      "structure": "Verb stem + れる/られる",
-      "mnemonic_text": "Grammar: potential form",
-      "sort_order": 5,
-      "conjugation_rules": { "potential": true },
-      "accepted_forms": ["れる", "られる"],
+      "primary_form": "れる・られる",
+      "meaning": "potential form (can do)",
+      "structure": "Verb stem + れる / られる",
+      "mnemonic_text": "The potential form expresses ability: what you can do.",
+      "sort_order": 8,
+      "conjugation_rules": {
+        "potential": true
+      },
+      "accepted_forms": [
+        "れる",
+        "られる",
+        "える"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：れるの使い方",
-          "english": "Example for potential form.",
+          "japanese": "日本語が話せます。",
+          "english": "I can speak Japanese.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-nihongo", "n4-hanashi"]
+          "vocabulary_slugs": [
+            "nihongo",
+            "hanaseru"
+          ]
+        },
+        {
+          "japanese": "漢字が読めます。",
+          "english": "I can read kanji.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanji-word",
+            "yomeru"
+          ]
+        },
+        {
+          "japanese": "辛い物が食べられます。",
+          "english": "I can eat spicy food.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "karai",
+            "taberareru"
+          ]
+        },
+        {
+          "japanese": "早く起きられません。",
+          "english": "I can't wake up early.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "okiru"
+          ]
+        },
+        {
+          "japanese": "この川で泳げます。",
+          "english": "You can swim in this river.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "kawa-v",
+            "oyogeru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-hanashi"]
+      "vocabulary_slugs": [
+        "nihongo",
+        "kanji-word",
+        "hanaseru"
+      ]
+    },
+    {
+      "slug": "n4-passive",
+      "primary_form": "れる・られる (passive)",
+      "meaning": "passive voice",
+      "structure": "Verb stem + れる / られる",
+      "mnemonic_text": "The passive form flips who receives the action.",
+      "sort_order": 9,
+      "conjugation_rules": {
+        "passive": true
+      },
+      "accepted_forms": [
+        "れる",
+        "られる"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "先生に褒められました。",
+          "english": "I was praised by the teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "homerareru"
+          ]
+        },
+        {
+          "japanese": "犬に噛まれました。",
+          "english": "I was bitten by a dog.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "inu"
+          ]
+        },
+        {
+          "japanese": "雨に降られて、困りました。",
+          "english": "I got caught in the rain and was troubled.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "親に叱られました。",
+          "english": "I was scolded by my parent.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "oya",
+            "shikarareru"
+          ]
+        },
+        {
+          "japanese": "この本は多くの人に読まれています。",
+          "english": "This book is read by many people.",
+          "sort_order": 4,
+          "vocabulary_slugs": [
+            "hon"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sensei",
+        "oya",
+        "homerareru"
+      ]
+    },
+    {
+      "slug": "n4-causative",
+      "primary_form": "せる・させる",
+      "meaning": "causative (make/let someone do)",
+      "structure": "Verb stem + せる / させる",
+      "mnemonic_text": "The causative makes or lets someone else do the action.",
+      "sort_order": 10,
+      "conjugation_rules": {
+        "causative": true
+      },
+      "accepted_forms": [
+        "せる",
+        "させる"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "子供に野菜を食べさせます。",
+          "english": "I make the child eat vegetables.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "yasai",
+            "taberasaseru"
+          ]
+        },
+        {
+          "japanese": "先生は学生に本を読ませました。",
+          "english": "The teacher made the students read the book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "gakusei",
+            "hon"
+          ]
+        },
+        {
+          "japanese": "母は私を買い物に行かせました。",
+          "english": "My mother made me go shopping.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "kaimono",
+            "ikaseru"
+          ]
+        },
+        {
+          "japanese": "好きなようにやらせてください。",
+          "english": "Please let me do it the way I like.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "suki",
+            "yaraseru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kodomo-v",
+        "yasai",
+        "sensei"
+      ]
+    },
+    {
+      "slug": "n4-causative-passive",
+      "primary_form": "せられる・させられる",
+      "meaning": "causative-passive (made to do, against one's will)",
+      "structure": "Verb stem + せられる / させられる",
+      "mnemonic_text": "Causative + passive: being forced into doing something unwanted.",
+      "sort_order": 11,
+      "conjugation_rules": {
+        "causative_passive": true
+      },
+      "accepted_forms": [
+        "せられる",
+        "させられる",
+        "される"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "駅で一時間待たされました。",
+          "english": "I was made to wait an hour at the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "matasareru"
+          ]
+        },
+        {
+          "japanese": "子供の頃、野菜を食べさせられました。",
+          "english": "As a child, I was made to eat vegetables.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "yasai"
+          ]
+        },
+        {
+          "japanese": "上司に残業させられました。",
+          "english": "I was made to work overtime by my boss.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "zangyou"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "eki",
+        "matasareru",
+        "zangyou"
+      ]
     },
     {
       "slug": "n4-youni",
       "primary_form": "ように",
-      "meaning": "in order to",
-      "structure": "Dictionary form + ように",
-      "mnemonic_text": "Grammar: in order to",
-      "sort_order": 6,
-      "conjugation_rules": { "purpose": true },
-      "accepted_forms": ["ように"],
+      "meaning": "in order to / so that",
+      "structure": "Dictionary form / ない form + ように",
+      "mnemonic_text": "ように sets a goal for a change or effort to reach.",
+      "sort_order": 12,
+      "conjugation_rules": {
+        "purpose": true
+      },
+      "accepted_forms": [
+        "ように"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：ようにの使い方",
-          "english": "Example for in order to.",
+          "japanese": "忘れないように、メモします。",
+          "english": "I'll take notes so I don't forget.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-shiken", "n4-jikan"]
+          "vocabulary_slugs": [
+            "wasureru"
+          ]
+        },
+        {
+          "japanese": "よく聞こえるように、大きい声で話します。",
+          "english": "I'll speak loudly so it's easy to hear.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kikoeru"
+          ]
+        },
+        {
+          "japanese": "遅れないように、早く出ます。",
+          "english": "I'll leave early so I'm not late.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okureru"
+          ]
+        },
+        {
+          "japanese": "風邪をひかないように、気をつけてください。",
+          "english": "Please be careful not to catch a cold.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kaze-cold"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-shiken"]
+      "vocabulary_slugs": [
+        "wasureru",
+        "kikoeru",
+        "okureru"
+      ]
     },
     {
       "slug": "n4-youninaru",
       "primary_form": "ようになる",
-      "meaning": "come to be able",
-      "structure": "Dictionary form + ようになる",
-      "mnemonic_text": "Grammar: come to be able",
-      "sort_order": 7,
-      "conjugation_rules": { "change": true },
-      "accepted_forms": ["ようになる"],
+      "meaning": "come to be able to / reach the point of",
+      "structure": "Dictionary form / potential form + ようになる",
+      "mnemonic_text": "ようになる marks a gradual change reaching a new ability or state.",
+      "sort_order": 13,
+      "conjugation_rules": {
+        "change": true
+      },
+      "accepted_forms": [
+        "ようになる",
+        "ようになりました"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：ようになるの使い方",
-          "english": "Example for come to be able.",
+          "japanese": "日本語が話せるようになりました。",
+          "english": "I've become able to speak Japanese.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-hanashi", "n4-jikan"]
+          "vocabulary_slugs": [
+            "nihongo",
+            "hanaseru"
+          ]
+        },
+        {
+          "japanese": "漢字が読めるようになりました。",
+          "english": "I've become able to read kanji.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanji-word",
+            "yomeru"
+          ]
+        },
+        {
+          "japanese": "毎日運動するようになりました。",
+          "english": "I've started exercising every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "undou-suru"
+          ]
+        },
+        {
+          "japanese": "一人で行けるようになりました。",
+          "english": "I've become able to go alone.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "hitori-de",
+            "ikeru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-hanashi"]
+      "vocabulary_slugs": [
+        "nihongo",
+        "kanji-word",
+        "mainichi"
+      ]
+    },
+    {
+      "slug": "n4-younaru",
+      "primary_form": "なくなる",
+      "meaning": "come to no longer / stop doing",
+      "structure": "Verb ない-stem + なくなる",
+      "mnemonic_text": "なくなる marks the loss of a previous ability or habit.",
+      "sort_order": 14,
+      "conjugation_rules": {
+        "change": true,
+        "negative": true
+      },
+      "accepted_forms": [
+        "なくなる",
+        "なくなりました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "忙しくて、本が読めなくなりました。",
+          "english": "I got busy and stopped being able to read books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "isogashii",
+            "hon"
+          ]
+        },
+        {
+          "japanese": "最近、お酒を飲まなくなりました。",
+          "english": "Recently, I stopped drinking alcohol.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "saikin",
+            "osake"
+          ]
+        },
+        {
+          "japanese": "痛くて、歩けなくなりました。",
+          "english": "It hurt so I couldn't walk anymore.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "itamu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "isogashii",
+        "saikin",
+        "osake"
+      ]
     },
     {
       "slug": "n4-hazu",
       "primary_form": "はず",
-      "meaning": "should be",
+      "meaning": "should be / expected to be",
       "structure": "Plain form + はず",
-      "mnemonic_text": "Grammar: should be",
-      "sort_order": 8,
-      "conjugation_rules": { "expectation": true },
-      "accepted_forms": ["はず", "はずだ"],
+      "mnemonic_text": "はず is a confident expectation based on evidence or reason.",
+      "sort_order": 15,
+      "conjugation_rules": {
+        "expectation": true
+      },
+      "accepted_forms": [
+        "はず",
+        "はずだ",
+        "はずです"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：はずの使い方",
-          "english": "Example for should be.",
+          "japanese": "彼はもう着いているはずです。",
+          "english": "He should have already arrived.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-densha", "n4-jikan"]
+          "vocabulary_slugs": [
+            "kare"
+          ]
+        },
+        {
+          "japanese": "今日は休みのはずです。",
+          "english": "Today should be a day off.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "yasumu"
+          ]
+        },
+        {
+          "japanese": "値段が安いはずです。",
+          "english": "The price should be cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yasui-adj"
+          ]
+        },
+        {
+          "japanese": "彼女は知っているはずです。",
+          "english": "She should know.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kanojo",
+            "shiru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-densha"]
+      "vocabulary_slugs": [
+        "kyou",
+        "yasumu",
+        "kanojo"
+      ]
+    },
+    {
+      "slug": "n4-hazuganai",
+      "primary_form": "はずがない",
+      "meaning": "there's no way / can't be",
+      "structure": "Plain form + はずがない",
+      "mnemonic_text": "はずがない strongly denies an expectation: impossible.",
+      "sort_order": 16,
+      "conjugation_rules": {
+        "strong_negative_expectation": true
+      },
+      "accepted_forms": [
+        "はずがない",
+        "はずがありません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼が知らないはずがありません。",
+          "english": "There's no way he doesn't know.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "shiru"
+          ]
+        },
+        {
+          "japanese": "こんなに安いはずがない。",
+          "english": "There's no way it's this cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yasui-adj"
+          ]
+        },
+        {
+          "japanese": "彼女が嘘をつくはずがない。",
+          "english": "There's no way she'd lie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "yasui-adj",
+        "kanojo"
+      ]
     },
     {
       "slug": "n4-rashii",
       "primary_form": "らしい",
-      "meaning": "seems like",
+      "meaning": "seems like / I heard (based on evidence)",
       "structure": "Plain form + らしい",
-      "mnemonic_text": "Grammar: seems like",
-      "sort_order": 9,
-      "conjugation_rules": { "conjecture": true },
-      "accepted_forms": ["らしい"],
+      "mnemonic_text": "らしい is a conjecture based on outside information or evidence.",
+      "sort_order": 17,
+      "conjugation_rules": {
+        "conjecture": true
+      },
+      "accepted_forms": [
+        "らしい"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：らしいの使い方",
-          "english": "Example for seems like.",
+          "japanese": "明日は雪が降るらしいです。",
+          "english": "It seems it'll snow tomorrow.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-tenki", "n4-ame-vocab"]
+          "vocabulary_slugs": [
+            "ashita",
+            "yuki"
+          ]
+        },
+        {
+          "japanese": "あの店は人気らしいです。",
+          "english": "That shop seems popular.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise"
+          ]
+        },
+        {
+          "japanese": "彼はもう結婚したらしいです。",
+          "english": "It seems he already got married.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kekkon-suru"
+          ]
+        },
+        {
+          "japanese": "試験は難しいらしいです。",
+          "english": "The exam seems difficult.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "shiken",
+            "muzukashii"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-tenki"]
+      "vocabulary_slugs": [
+        "ashita",
+        "mise",
+        "shiken"
+      ]
     },
     {
       "slug": "n4-youda",
       "primary_form": "ようだ",
-      "meaning": "seems/apparently",
-      "structure": "Plain form + ようだ",
-      "mnemonic_text": "Grammar: seems/apparently",
-      "sort_order": 10,
-      "conjugation_rules": { "appearance": true },
-      "accepted_forms": ["ようだ", "ようです"],
+      "meaning": "seems / appears (based on inference)",
+      "structure": "Plain form / Noun + の + ようだ",
+      "mnemonic_text": "ようだ paints a picture of what seems true from what you sense.",
+      "sort_order": 18,
+      "conjugation_rules": {
+        "appearance": true
+      },
+      "accepted_forms": [
+        "ようだ",
+        "ようです",
+        "みたいだ"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：ようだの使い方",
-          "english": "Example for seems/apparently.",
+          "japanese": "彼は疲れているようです。",
+          "english": "He seems tired.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-taihen", "n4-shigoto"]
+          "vocabulary_slugs": [
+            "kare"
+          ]
+        },
+        {
+          "japanese": "外は寒いようです。",
+          "english": "It seems cold outside.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "soto",
+            "samui"
+          ]
+        },
+        {
+          "japanese": "誰もいないようです。",
+          "english": "It seems no one is here.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dare-mo"
+          ]
+        },
+        {
+          "japanese": "風邪をひいたようです。",
+          "english": "It seems I caught a cold.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "kaze-cold"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-taihen"]
+      "vocabulary_slugs": [
+        "soto",
+        "samui",
+        "kaze-cold"
+      ]
     },
     {
-      "slug": "n4-teiru",
-      "primary_form": "ている",
-      "meaning": "progressive",
-      "structure": "Te-form + いる",
-      "mnemonic_text": "Grammar: progressive",
-      "sort_order": 11,
-      "conjugation_rules": { "progressive": true },
-      "accepted_forms": ["ている", "てる"],
+      "slug": "n4-mitai",
+      "primary_form": "みたいだ",
+      "meaning": "seems like (casual)",
+      "structure": "Plain form + みたいだ",
+      "mnemonic_text": "みたいだ is the casual cousin of ようだ.",
+      "sort_order": 19,
+      "conjugation_rules": {
+        "appearance": true,
+        "casual": true
+      },
+      "accepted_forms": [
+        "みたいだ",
+        "みたいです"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：ているの使い方",
-          "english": "Example for progressive.",
+          "japanese": "雨が降るみたいです。",
+          "english": "It looks like it'll rain.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-eiga", "n4-miru"]
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "彼は忙しいみたいです。",
+          "english": "He seems busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "isogashii"
+          ]
+        },
+        {
+          "japanese": "この店、有名みたいです。",
+          "english": "This shop seems famous.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mise",
+            "yuumei"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-eiga"]
+      "vocabulary_slugs": [
+        "furu-rain",
+        "kare",
+        "mise"
+      ]
+    },
+    {
+      "slug": "n4-teiru-progressive",
+      "primary_form": "ている",
+      "meaning": "progressive / ongoing action",
+      "structure": "Te-form + いる",
+      "mnemonic_text": "ている shows an action currently in progress.",
+      "sort_order": 20,
+      "conjugation_rules": {
+        "progressive": true
+      },
+      "accepted_forms": [
+        "ている",
+        "てる"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "今、映画を見ています。",
+          "english": "I'm watching a movie right now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "eiga"
+          ]
+        },
+        {
+          "japanese": "雨が降っています。",
+          "english": "It's raining.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "彼は宿題をしています。",
+          "english": "He's doing homework.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "shukudai"
+          ]
+        },
+        {
+          "japanese": "音楽を聞いています。",
+          "english": "I'm listening to music.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "ongaku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ima",
+        "eiga",
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-teiru-result",
+      "primary_form": "ている (resultant state)",
+      "meaning": "resulting state (has become / is)",
+      "structure": "Te-form + いる",
+      "mnemonic_text": "ている on a change verb shows the lasting result of that change.",
+      "sort_order": 21,
+      "conjugation_rules": {
+        "resultant_state": true
+      },
+      "accepted_forms": [
+        "ている"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "窓が開いています。",
+          "english": "The window is open.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mado"
+          ]
+        },
+        {
+          "japanese": "結婚しています。",
+          "english": "I am married.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kekkon-suru"
+          ]
+        },
+        {
+          "japanese": "この店は閉まっています。",
+          "english": "This shop is closed.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mise",
+            "shimeru"
+          ]
+        },
+        {
+          "japanese": "道が混んでいます。",
+          "english": "The road is crowded.",
+          "sort_order": 3,
+          "vocabulary_slugs": [
+            "michi-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mado",
+        "kekkon-suru",
+        "mise"
+      ]
     },
     {
       "slug": "n4-tearu",
       "primary_form": "てある",
-      "meaning": "resultant state",
-      "structure": "Te-form + ある",
-      "mnemonic_text": "Grammar: resultant state",
-      "sort_order": 12,
-      "conjugation_rules": { "resultant": true },
-      "accepted_forms": ["てある"],
+      "meaning": "has been done (resultant state, tr. verb)",
+      "structure": "Te-form (transitive) + ある",
+      "mnemonic_text": "てある shows a deliberate result left in place for a purpose.",
+      "sort_order": 22,
+      "conjugation_rules": {
+        "resultant": true
+      },
+      "accepted_forms": [
+        "てある"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：てあるの使い方",
-          "english": "Example for resultant state.",
+          "japanese": "壁に絵が飾ってあります。",
+          "english": "A picture is displayed on the wall.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-tegami", "n4-kaku"]
+          "vocabulary_slugs": [
+            "e-picture"
+          ]
+        },
+        {
+          "japanese": "窓が開けてあります。",
+          "english": "The window has been left open.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "akeru"
+          ]
+        },
+        {
+          "japanese": "もう準備してあります。",
+          "english": "Preparations have already been made.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "junbi-suru"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-tegami"]
+      "vocabulary_slugs": [
+        "e-picture",
+        "mado",
+        "junbi-suru"
+      ]
     },
     {
-      "slug": "n4-nagara",
-      "primary_form": "ながら",
-      "meaning": "while",
-      "structure": "Stem + ながら",
-      "mnemonic_text": "Grammar: while",
-      "sort_order": 13,
-      "conjugation_rules": { "simultaneous": true },
-      "accepted_forms": ["ながら"],
+      "slug": "n4-teoku",
+      "primary_form": "ておく",
+      "meaning": "to do in advance / leave as is",
+      "structure": "Te-form + おく",
+      "mnemonic_text": "ておく sets something up ahead of time for later use.",
+      "sort_order": 23,
+      "conjugation_rules": {
+        "preparation": true
+      },
+      "accepted_forms": [
+        "ておく",
+        "とく"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：ながらの使い方",
-          "english": "Example for while.",
+          "japanese": "明日のために、準備しておきます。",
+          "english": "I'll prepare in advance for tomorrow.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-ongaku", "n4-kiku"]
+          "vocabulary_slugs": [
+            "ashita",
+            "junbi-suru"
+          ]
+        },
+        {
+          "japanese": "窓を開けておいてください。",
+          "english": "Please leave the window open.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "akeru"
+          ]
+        },
+        {
+          "japanese": "チケットを買っておきました。",
+          "english": "I bought the tickets in advance.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kippu",
+            "kau-v"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-ongaku"]
+      "vocabulary_slugs": [
+        "ashita",
+        "mado",
+        "kippu"
+      ]
     },
     {
-      "slug": "n4-shi",
-      "primary_form": "し",
-      "meaning": "and (listing reasons)",
-      "structure": "Plain form + し",
-      "mnemonic_text": "Grammar: and (listing reasons)",
-      "sort_order": 14,
-      "conjugation_rules": { "listing": true },
-      "accepted_forms": ["し"],
+      "slug": "n4-teshimau",
+      "primary_form": "てしまう",
+      "meaning": "to finish completely / end up doing (regret)",
+      "structure": "Te-form + しまう",
+      "mnemonic_text": "てしまう completes an action, often with a note of regret.",
+      "sort_order": 24,
+      "conjugation_rules": {
+        "completion": true
+      },
+      "accepted_forms": [
+        "てしまう",
+        "ちゃう",
+        "じゃう"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：しの使い方",
-          "english": "Example for and (listing reasons).",
+          "japanese": "宿題を全部忘れてしまいました。",
+          "english": "I ended up forgetting all my homework.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-tenki", "n4-tomodachi"]
+          "vocabulary_slugs": [
+            "shukudai",
+            "zenbu",
+            "wasureru"
+          ]
+        },
+        {
+          "japanese": "財布を無くしてしまいました。",
+          "english": "I ended up losing my wallet.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "saifu",
+            "nakusu"
+          ]
+        },
+        {
+          "japanese": "もう食べてしまいました。",
+          "english": "I've already finished eating.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "taberu"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-tomodachi"]
+      "vocabulary_slugs": [
+        "shukudai",
+        "saifu",
+        "taberu"
+      ]
     },
     {
-      "slug": "n4-madeni",
-      "primary_form": "までに",
-      "meaning": "by (deadline)",
-      "structure": "Time + までに",
-      "mnemonic_text": "Grammar: by (deadline)",
-      "sort_order": 15,
-      "conjugation_rules": { "deadline": true },
-      "accepted_forms": ["までに"],
+      "slug": "n4-teiku-tekuru",
+      "primary_form": "ていく・てくる",
+      "meaning": "to go on doing / to come to do (direction of change)",
+      "structure": "Te-form + いく / くる",
+      "mnemonic_text": "ていく moves away in time; てくる moves toward now.",
+      "sort_order": 25,
+      "conjugation_rules": {
+        "directional_change": true
+      },
+      "accepted_forms": [
+        "ていく",
+        "てくる"
+      ],
       "example_sentences": [
         {
-          "japanese": "例文：までにの使い方",
-          "english": "Example for by (deadline).",
+          "japanese": "これから寒くなっていくでしょう。",
+          "english": "It will probably keep getting colder.",
           "sort_order": 0,
-          "vocabulary_slugs": ["n4-shiken", "n4-jikan"]
+          "vocabulary_slugs": [
+            "samui"
+          ]
+        },
+        {
+          "japanese": "日本語が上手になってきました。",
+          "english": "My Japanese has been getting better.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nihongo",
+            "jouzu"
+          ]
+        },
+        {
+          "japanese": "雨が降ってきました。",
+          "english": "It has started raining.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
         }
       ],
-      "vocabulary_slugs": ["n4-shiken"]
+      "vocabulary_slugs": [
+        "samui",
+        "nihongo",
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-temo",
+      "primary_form": "ても",
+      "meaning": "even if / even though",
+      "structure": "Te-form + も",
+      "mnemonic_text": "ても keeps the result the same, no matter the condition.",
+      "sort_order": 26,
+      "conjugation_rules": {
+        "concession": true
+      },
+      "accepted_forms": [
+        "ても",
+        "でも"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "雨が降っても、行きます。",
+          "english": "Even if it rains, I'll go.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "高くても、買います。",
+          "english": "Even if it's expensive, I'll buy it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "takai-adj"
+          ]
+        },
+        {
+          "japanese": "何回聞いても、分かりません。",
+          "english": "No matter how many times I ask, I don't understand.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kai-times",
+            "wakaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "furu-rain",
+        "takai-adj",
+        "wakaru"
+      ]
+    },
+    {
+      "slug": "n4-temoii",
+      "primary_form": "てもいい",
+      "meaning": "may / it's okay to",
+      "structure": "Te-form + もいい",
+      "mnemonic_text": "てもいい grants permission: it's fine if you do this.",
+      "sort_order": 27,
+      "conjugation_rules": {
+        "permission": true
+      },
+      "accepted_forms": [
+        "てもいい",
+        "てもいいです",
+        "てもかまわない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ここに座ってもいいですか。",
+          "english": "May I sit here?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "suwaru"
+          ]
+        },
+        {
+          "japanese": "写真を撮ってもいいですか。",
+          "english": "May I take a photo?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shashin"
+          ]
+        },
+        {
+          "japanese": "先に帰ってもいいです。",
+          "english": "It's fine if you go home first.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaeru-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "suwaru",
+        "shashin",
+        "kaeru-v"
+      ]
+    },
+    {
+      "slug": "n4-tewaikenai",
+      "primary_form": "てはいけない",
+      "meaning": "must not / not allowed to",
+      "structure": "Te-form + はいけない",
+      "mnemonic_text": "てはいけない forbids an action outright.",
+      "sort_order": 28,
+      "conjugation_rules": {
+        "prohibition": true
+      },
+      "accepted_forms": [
+        "てはいけない",
+        "てはだめだ",
+        "ちゃだめ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ここでタバコを吸ってはいけません。",
+          "english": "You must not smoke here.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "授業中に話してはいけません。",
+          "english": "You must not talk during class.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "jugyou",
+            "hanasu-v"
+          ]
+        },
+        {
+          "japanese": "うそをついてはいけません。",
+          "english": "You must not lie.",
+          "sort_order": 2,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "jugyou",
+        "hanasu-v"
+      ]
+    },
+    {
+      "slug": "n4-nakutemoii",
+      "primary_form": "なくてもいい",
+      "meaning": "don't have to / not necessary",
+      "structure": "Verb ない-stem + くてもいい",
+      "mnemonic_text": "なくてもいい lifts an obligation: it's fine not to.",
+      "sort_order": 29,
+      "conjugation_rules": {
+        "non_obligation": true
+      },
+      "accepted_forms": [
+        "なくてもいい",
+        "なくてもいいです",
+        "なくてもかまわない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は来なくてもいいです。",
+          "english": "You don't have to come tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "心配しなくてもいいです。",
+          "english": "You don't have to worry.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shinpai-suru"
+          ]
+        },
+        {
+          "japanese": "お金を払わなくてもいいです。",
+          "english": "You don't have to pay.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane",
+            "harau"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "shinpai-suru",
+        "okane"
+      ]
+    },
+    {
+      "slug": "n4-nakerebanaranai",
+      "primary_form": "なければならない",
+      "meaning": "must / have to",
+      "structure": "Verb ない-stem + ければならない",
+      "mnemonic_text": "なければならない says: if you don't, it won't do — you must.",
+      "sort_order": 30,
+      "conjugation_rules": {
+        "obligation": true
+      },
+      "accepted_forms": [
+        "なければならない",
+        "なければいけない",
+        "なきゃいけない"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "宿題をしなければなりません。",
+          "english": "I must do my homework.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shukudai"
+          ]
+        },
+        {
+          "japanese": "薬を飲まなければなりません。",
+          "english": "I have to take medicine.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kusuri"
+          ]
+        },
+        {
+          "japanese": "九時までに行かなければなりません。",
+          "english": "I have to go by nine o'clock.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "iku-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shukudai",
+        "kusuri",
+        "iku-v"
+      ]
+    },
+    {
+      "slug": "n4-souni-naru",
+      "primary_form": "そうになる",
+      "meaning": "almost / on the verge of",
+      "structure": "Verb stem + そうになる",
+      "mnemonic_text": "そうになる is teetering right at the edge of happening.",
+      "sort_order": 31,
+      "conjugation_rules": {
+        "near_miss": true
+      },
+      "accepted_forms": [
+        "そうになる",
+        "そうになりました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "転びそうになりました。",
+          "english": "I almost fell over.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "電車に遅れそうになりました。",
+          "english": "I almost missed the train.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "densha",
+            "okureru"
+          ]
+        },
+        {
+          "japanese": "泣きそうになりました。",
+          "english": "I almost cried.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "naku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "densha",
+        "okureru",
+        "naku"
+      ]
+    },
+    {
+      "slug": "n4-tsumori",
+      "primary_form": "つもり",
+      "meaning": "intend to / plan to",
+      "structure": "Dictionary form + つもり",
+      "mnemonic_text": "つもり holds your intention in mind before acting.",
+      "sort_order": 32,
+      "conjugation_rules": {
+        "intention": true
+      },
+      "accepted_forms": [
+        "つもり",
+        "つもりだ",
+        "つもりです"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "来年、日本へ行くつもりです。",
+          "english": "I intend to go to Japan next year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "rainen",
+            "nihon",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "今日は勉強するつもりです。",
+          "english": "I intend to study today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "benkyou-suru"
+          ]
+        },
+        {
+          "japanese": "彼と結婚するつもりです。",
+          "english": "I intend to marry him.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kekkon-suru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "rainen",
+        "nihon",
+        "kyou"
+      ]
+    },
+    {
+      "slug": "n4-youni-suru",
+      "primary_form": "ようにする",
+      "meaning": "to try to make it so / make a habit of",
+      "structure": "Dictionary form / ない form + ようにする",
+      "mnemonic_text": "ようにする is a conscious effort to bring about a habit.",
+      "sort_order": 33,
+      "conjugation_rules": {
+        "effort": true
+      },
+      "accepted_forms": [
+        "ようにする",
+        "ようにしている"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "毎日運動するようにしています。",
+          "english": "I try to exercise every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "undou-suru"
+          ]
+        },
+        {
+          "japanese": "野菜を食べるようにしています。",
+          "english": "I make it a habit to eat vegetables.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yasai",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "早く寝るようにしましょう。",
+          "english": "Let's make an effort to sleep early.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hayai-early",
+            "neru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mainichi",
+        "yasai",
+        "hayai-early"
+      ]
+    },
+    {
+      "slug": "n4-koto-ga-aru",
+      "primary_form": "ことがある",
+      "meaning": "have (done) before / sometimes happens",
+      "structure": "Ta-form + ことがある",
+      "mnemonic_text": "ことがある points to a past experience or occasional event.",
+      "sort_order": 34,
+      "conjugation_rules": {
+        "experience": true
+      },
+      "accepted_forms": [
+        "ことがある",
+        "ことがあります"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "日本へ行ったことがあります。",
+          "english": "I have been to Japan before.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "iku-v"
+          ]
+        },
+        {
+          "japanese": "寿司を食べたことがあります。",
+          "english": "I have eaten sushi before.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sushi",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "たまに遅刻することがあります。",
+          "english": "I sometimes am late.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tama-ni",
+            "chikoku-suru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nihon",
+        "sushi",
+        "tama-ni"
+      ]
+    },
+    {
+      "slug": "n4-koto-ni-suru",
+      "primary_form": "ことにする",
+      "meaning": "to decide to (one's own choice)",
+      "structure": "Dictionary form / ない form + ことにする",
+      "mnemonic_text": "ことにする is a personal decision you settle on.",
+      "sort_order": 35,
+      "conjugation_rules": {
+        "decision": true
+      },
+      "accepted_forms": [
+        "ことにする",
+        "ことにしました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "来年、留学することにしました。",
+          "english": "I decided to study abroad next year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "rainen"
+          ]
+        },
+        {
+          "japanese": "タバコをやめることにしました。",
+          "english": "I decided to quit smoking.",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "毎朝散歩することにしています。",
+          "english": "I've made it a rule to walk every morning.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maiasa",
+            "sanpo-suru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "rainen",
+        "maiasa",
+        "sanpo-suru"
+      ]
+    },
+    {
+      "slug": "n4-koto-ni-naru",
+      "primary_form": "ことになる",
+      "meaning": "it has been decided that / turns out that",
+      "structure": "Dictionary form / ない form + ことになる",
+      "mnemonic_text": "ことになる marks a decision made by circumstance, not you.",
+      "sort_order": 36,
+      "conjugation_rules": {
+        "external_decision": true
+      },
+      "accepted_forms": [
+        "ことになる",
+        "ことになりました",
+        "ことになっている"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "来月、大阪に引っ越すことになりました。",
+          "english": "It has been decided I'll move to Osaka next month.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "hikkoshi"
+          ]
+        },
+        {
+          "japanese": "会議は中止することになりました。",
+          "english": "It was decided the meeting would be cancelled.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kaigi"
+          ]
+        },
+        {
+          "japanese": "毎週レポートを出すことになっています。",
+          "english": "It's arranged that we submit a report every week.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maishuu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "raigetsu",
+        "kaigi",
+        "maishuu"
+      ]
+    },
+    {
+      "slug": "n4-mono",
+      "primary_form": "もの",
+      "meaning": "used to (nostalgic habit) / because (emotional)",
+      "structure": "Plain form + もの / だもの",
+      "mnemonic_text": "もの adds an emotional weight to a habitual memory or excuse.",
+      "sort_order": 37,
+      "conjugation_rules": {
+        "nostalgia": true
+      },
+      "accepted_forms": [
+        "もの",
+        "もん"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "子供の頃、よく遊んだものです。",
+          "english": "As a child, I used to play a lot.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "asobu"
+          ]
+        },
+        {
+          "japanese": "疲れたもの、休みたいです。",
+          "english": "I'm tired, so I want to rest.",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "kodomo-v",
+        "asobu"
+      ]
+    },
+    {
+      "slug": "n4-bakari",
+      "primary_form": "ばかり",
+      "meaning": "only / just did",
+      "structure": "Noun + ばかり / Ta-form + ばかり",
+      "mnemonic_text": "ばかり piles onto just one thing, or marks something just finished.",
+      "sort_order": 38,
+      "conjugation_rules": {
+        "exclusive_or_recent": true
+      },
+      "accepted_forms": [
+        "ばかり",
+        "たばかり"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼はゲームばかりしています。",
+          "english": "He does nothing but play games.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare"
+          ]
+        },
+        {
+          "japanese": "さっき着いたばかりです。",
+          "english": "I just arrived a moment ago.",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "甘い物ばかり食べています。",
+          "english": "I only eat sweet things.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "amai"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "amai"
+      ]
+    },
+    {
+      "slug": "n4-tokoro",
+      "primary_form": "ところ",
+      "meaning": "just about to / in the middle of / just finished",
+      "structure": "Dictionary/て-form/Ta-form + ところ",
+      "mnemonic_text": "ところ freezes a moment: right before, during, or right after.",
+      "sort_order": 39,
+      "conjugation_rules": {
+        "moment": true
+      },
+      "accepted_forms": [
+        "ところ",
+        "ているところ",
+        "たところ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "今から出かけるところです。",
+          "english": "I'm just about to leave now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima"
+          ]
+        },
+        {
+          "japanese": "今、食べているところです。",
+          "english": "I'm in the middle of eating right now.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ima",
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "ちょうど終わったところです。",
+          "english": "I just finished.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "owaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ima",
+        "owaru"
+      ]
+    },
+    {
+      "slug": "n4-aida",
+      "primary_form": "間・間に",
+      "meaning": "while / during the interval",
+      "structure": "Verb-ている / Noun の + 間(に)",
+      "mnemonic_text": "間 marks a stretch of time; 間に marks a moment within it.",
+      "sort_order": 40,
+      "conjugation_rules": {
+        "duration": true
+      },
+      "accepted_forms": [
+        "間",
+        "間に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "子供が寝ている間に、掃除をします。",
+          "english": "While the child sleeps, I clean.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "neru"
+          ]
+        },
+        {
+          "japanese": "夏休みの間、旅行しました。",
+          "english": "During summer vacation, I traveled.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "natsu",
+            "ryokou"
+          ]
+        },
+        {
+          "japanese": "彼が話している間、静かにしていました。",
+          "english": "While he was talking, I stayed quiet.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "shizuka"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kodomo-v",
+        "natsu",
+        "kare"
+      ]
+    },
+    {
+      "slug": "n4-uchi-ni",
+      "primary_form": "うちに",
+      "meaning": "while (before it's too late) / during",
+      "structure": "Plain form + うちに",
+      "mnemonic_text": "うちに urges you to act before a window of opportunity closes.",
+      "sort_order": 41,
+      "conjugation_rules": {
+        "opportunity_window": true
+      },
+      "accepted_forms": [
+        "うちに"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "暖かいうちに食べてください。",
+          "english": "Please eat it while it's warm.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "atatakai"
+          ]
+        },
+        {
+          "japanese": "若いうちに、色々経験した方がいいです。",
+          "english": "You should experience a lot while you're young.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "wakai"
+          ]
+        },
+        {
+          "japanese": "忘れないうちに、メモしておきます。",
+          "english": "I'll write it down before I forget.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "wasureru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "atatakai",
+        "wakai",
+        "wasureru"
+      ]
+    },
+    {
+      "slug": "n4-tabi-ni",
+      "primary_form": "たびに",
+      "meaning": "every time / whenever",
+      "structure": "Dictionary form / Noun の + たびに",
+      "mnemonic_text": "たびに repeats: each and every time this happens.",
+      "sort_order": 42,
+      "conjugation_rules": {
+        "repetition": true
+      },
+      "accepted_forms": [
+        "たびに"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼に会うたびに、元気をもらいます。",
+          "english": "Every time I meet him, I get energized.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "genki"
+          ]
+        },
+        {
+          "japanese": "旅行のたびに、写真を撮ります。",
+          "english": "Every time I travel, I take photos.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ryokou",
+            "shashin"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "ryokou",
+        "shashin"
+      ]
+    },
+    {
+      "slug": "n4-baai",
+      "primary_form": "場合",
+      "meaning": "in the case of / if the situation is",
+      "structure": "Plain form / Noun の + 場合",
+      "mnemonic_text": "場合 frames a specific hypothetical scenario.",
+      "sort_order": 43,
+      "conjugation_rules": {
+        "scenario": true
+      },
+      "accepted_forms": [
+        "場合",
+        "場合は"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "雨の場合は、中止します。",
+          "english": "In the case of rain, it will be cancelled.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "遅れる場合は、連絡してください。",
+          "english": "If you're going to be late, please contact us.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okureru",
+            "renraku-suru"
+          ]
+        },
+        {
+          "japanese": "分からない場合は、聞いてください。",
+          "english": "If you don't understand, please ask.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "wakaru",
+            "kiku-v"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "okureru",
+        "renraku-suru",
+        "wakaru"
+      ]
+    },
+    {
+      "slug": "n4-to-conditional",
+      "primary_form": "と",
+      "meaning": "if / when (natural/automatic result)",
+      "structure": "Plain form (present) + と",
+      "mnemonic_text": "と links a condition to an automatic, predictable outcome.",
+      "sort_order": 44,
+      "conjugation_rules": {
+        "conditional": true,
+        "automatic": true
+      },
+      "accepted_forms": [
+        "と"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "春になると、花が咲きます。",
+          "english": "When spring comes, flowers bloom.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haru"
+          ]
+        },
+        {
+          "japanese": "このボタンを押すと、電気がつきます。",
+          "english": "If you press this button, the light turns on.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "denki"
+          ]
+        },
+        {
+          "japanese": "右に曲がると、駅があります。",
+          "english": "If you turn right, there's the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "magaru",
+            "eki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "haru",
+        "denki",
+        "eki"
+      ]
+    },
+    {
+      "slug": "n4-node-vs-kara",
+      "primary_form": "から (formal reason, reused)",
+      "meaning": "because (subjective reason)",
+      "structure": "Plain form + から",
+      "mnemonic_text": "から gives your own subjective reason, more direct than ので.",
+      "sort_order": 45,
+      "conjugation_rules": {
+        "reason": true,
+        "subjective": true
+      },
+      "accepted_forms": [
+        "から"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "疲れたから、休みます。",
+          "english": "Because I'm tired, I'll rest.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "危ないから、気をつけてください。",
+          "english": "Because it's dangerous, please be careful.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "abunai"
+          ]
+        },
+        {
+          "japanese": "約束したから、行かなければなりません。",
+          "english": "Because I promised, I have to go.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yakusoku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "abunai",
+        "yakusoku"
+      ]
+    },
+    {
+      "slug": "n4-kawarini",
+      "primary_form": "代わりに",
+      "meaning": "instead of / in exchange for",
+      "structure": "Noun の / Dictionary form + 代わりに",
+      "mnemonic_text": "代わりに swaps one thing in for another.",
+      "sort_order": 46,
+      "conjugation_rules": {
+        "substitution": true
+      },
+      "accepted_forms": [
+        "代わりに"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "兄の代わりに、私が行きます。",
+          "english": "I'll go instead of my older brother.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "お金を払う代わりに、手伝いました。",
+          "english": "Instead of paying money, I helped out.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "harau",
+            "tetsudau"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "okane",
+        "harau",
+        "tetsudau"
+      ]
+    },
+    {
+      "slug": "n4-kawari-ni-formal",
+      "primary_form": "というより",
+      "meaning": "rather than say / more accurately",
+      "structure": "Plain form + というより",
+      "mnemonic_text": "というより revises a statement to something more accurate.",
+      "sort_order": 47,
+      "conjugation_rules": {
+        "correction": true
+      },
+      "accepted_forms": [
+        "というより"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "忙しいというより、疲れています。",
+          "english": "Rather than busy, I'm tired.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "isogashii"
+          ]
+        },
+        {
+          "japanese": "好きというより、必要です。",
+          "english": "Rather than liking it, I need it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "suki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "isogashii",
+        "suki"
+      ]
+    },
+    {
+      "slug": "n4-toshite",
+      "primary_form": "として",
+      "meaning": "as (in the role/capacity of)",
+      "structure": "Noun + として",
+      "mnemonic_text": "として labels the role or capacity someone acts in.",
+      "sort_order": 48,
+      "conjugation_rules": {
+        "role": true
+      },
+      "accepted_forms": [
+        "として"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "先生として、学生を指導します。",
+          "english": "As a teacher, I guide the students.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "gakusei"
+          ]
+        },
+        {
+          "japanese": "友達として、彼を助けたいです。",
+          "english": "As a friend, I want to help him.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "tasukeru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sensei",
+        "tomodachi",
+        "tasukeru"
+      ]
+    },
+    {
+      "slug": "n4-nitsuite",
+      "primary_form": "について",
+      "meaning": "about / regarding",
+      "structure": "Noun + について",
+      "mnemonic_text": "について zooms in on the topic you're discussing.",
+      "sort_order": 49,
+      "conjugation_rules": {
+        "topic": true
+      },
+      "accepted_forms": [
+        "について",
+        "につき"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "日本の文化について話しました。",
+          "english": "We talked about Japanese culture.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "bunka"
+          ]
+        },
+        {
+          "japanese": "この問題について考えてください。",
+          "english": "Please think about this problem.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mondai"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nihon",
+        "bunka",
+        "mondai"
+      ]
+    },
+    {
+      "slug": "n4-niyoruto",
+      "primary_form": "によると",
+      "meaning": "according to",
+      "structure": "Noun + によると",
+      "mnemonic_text": "によると cites a source before reporting hearsay.",
+      "sort_order": 50,
+      "conjugation_rules": {
+        "source": true
+      },
+      "accepted_forms": [
+        "によると",
+        "によれば"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "天気予報によると、明日は晴れです。",
+          "english": "According to the forecast, it'll be sunny tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tenki",
+            "ashita"
+          ]
+        },
+        {
+          "japanese": "新聞によると、事故があったそうです。",
+          "english": "According to the newspaper, there was an accident.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shinbun"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "tenki",
+        "ashita",
+        "shinbun"
+      ]
+    },
+    {
+      "slug": "n4-tame",
+      "primary_form": "ため (cause)",
+      "meaning": "due to / because of (formal cause)",
+      "structure": "Plain form / Noun の + ため",
+      "mnemonic_text": "ため as a cause explains a formal, often negative, result.",
+      "sort_order": 51,
+      "conjugation_rules": {
+        "cause_formal": true
+      },
+      "accepted_forms": [
+        "ため",
+        "ために"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "台風のため、電車が止まりました。",
+          "english": "Due to the typhoon, trains stopped.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taifuu",
+            "densha"
+          ]
+        },
+        {
+          "japanese": "雨が降ったため、試合は中止になりました。",
+          "english": "Because it rained, the match was cancelled.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taifuu",
+        "densha",
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-kagiri",
+      "primary_form": "限り",
+      "meaning": "as far as / as long as",
+      "structure": "Plain form + 限り",
+      "mnemonic_text": "限り marks the outer limit of what you know or can do.",
+      "sort_order": 52,
+      "conjugation_rules": {
+        "limit": true
+      },
+      "accepted_forms": [
+        "限り"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "私が知っている限り、彼は正直です。",
+          "english": "As far as I know, he's honest.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shiru",
+            "kare"
+          ]
+        },
+        {
+          "japanese": "できる限り、頑張ります。",
+          "english": "I'll try as hard as I can.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ganbaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shiru",
+        "kare",
+        "ganbaru"
+      ]
+    },
+    {
+      "slug": "n4-tatoe-temo",
+      "primary_form": "たとえ〜ても",
+      "meaning": "even if (hypothetical emphasis)",
+      "structure": "たとえ + Te-form + も",
+      "mnemonic_text": "たとえ〜ても stresses the concession, however extreme.",
+      "sort_order": 53,
+      "conjugation_rules": {
+        "strong_concession": true
+      },
+      "accepted_forms": [
+        "たとえ〜ても"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "たとえ雨が降っても、行きます。",
+          "english": "Even if it rains, I'll go.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        },
+        {
+          "japanese": "たとえ難しくても、挑戦します。",
+          "english": "Even if it's difficult, I'll try.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "muzukashii"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "furu-rain",
+        "muzukashii"
+      ]
+    },
+    {
+      "slug": "n4-kke",
+      "primary_form": "っけ",
+      "meaning": "wasn't it? / trying to recall",
+      "structure": "Plain form + っけ",
+      "mnemonic_text": "っけ is a casual mutter trying to recall something forgotten.",
+      "sort_order": 54,
+      "conjugation_rules": {
+        "recollection": true,
+        "casual": true
+      },
+      "accepted_forms": [
+        "っけ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "これ、いくらだったっけ。",
+          "english": "How much was this again?",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "明日、何をするんだっけ。",
+          "english": "What are we doing tomorrow again?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita"
+      ]
+    },
+    {
+      "slug": "n4-noda",
+      "primary_form": "のだ・んだ",
+      "meaning": "explanatory emphasis (the thing is...)",
+      "structure": "Plain form + のだ / んです",
+      "mnemonic_text": "んです adds emphasis, explaining the reason behind a statement.",
+      "sort_order": 55,
+      "conjugation_rules": {
+        "explanation": true
+      },
+      "accepted_forms": [
+        "んです",
+        "のです",
+        "んだ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "どうしたんですか。",
+          "english": "What's the matter? (explanation sought)",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        },
+        {
+          "japanese": "実は、忙しいんです。",
+          "english": "Actually, the thing is, I'm busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "isogashii"
+          ]
+        },
+        {
+          "japanese": "財布を忘れたんです。",
+          "english": "The thing is, I forgot my wallet.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "saifu",
+            "wasureru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "isogashii",
+        "saifu",
+        "wasureru"
+      ]
+    },
+    {
+      "slug": "n4-deshou",
+      "primary_form": "でしょう",
+      "meaning": "probably / I guess (softened assertion)",
+      "structure": "Plain form + でしょう",
+      "mnemonic_text": "でしょう softens a guess into a polite probability.",
+      "sort_order": 56,
+      "conjugation_rules": {
+        "probability": true
+      },
+      "accepted_forms": [
+        "でしょう",
+        "だろう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は雨でしょう。",
+          "english": "It will probably rain tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita"
+          ]
+        },
+        {
+          "japanese": "彼はもう知っているでしょう。",
+          "english": "He probably already knows.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "shiru"
+          ]
+        },
+        {
+          "japanese": "これでいいでしょう。",
+          "english": "This should be fine, right?",
+          "sort_order": 2,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "kare",
+        "shiru"
+      ]
+    },
+    {
+      "slug": "n4-kamoshirenai",
+      "primary_form": "かもしれない",
+      "meaning": "might / maybe",
+      "structure": "Plain form + かもしれない",
+      "mnemonic_text": "かもしれない leaves the door open — it might be true.",
+      "sort_order": 57,
+      "conjugation_rules": {
+        "possibility": true
+      },
+      "accepted_forms": [
+        "かもしれない",
+        "かもしれません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "明日は雪が降るかもしれません。",
+          "english": "It might snow tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "yuki"
+          ]
+        },
+        {
+          "japanese": "彼は来ないかもしれません。",
+          "english": "He might not come.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "これは高いかもしれません。",
+          "english": "This might be expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "takai-adj"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "kare",
+        "takai-adj"
+      ]
+    },
+    {
+      "slug": "n4-nikui-yasui",
+      "primary_form": "にくい・やすい",
+      "meaning": "hard to / easy to (do)",
+      "structure": "Verb stem + にくい / やすい",
+      "mnemonic_text": "やすい makes it easy; にくい makes it a hassle.",
+      "sort_order": 58,
+      "conjugation_rules": {
+        "ease_difficulty": true
+      },
+      "accepted_forms": [
+        "にくい",
+        "やすい"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "この靴は歩きやすいです。",
+          "english": "These shoes are easy to walk in.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kutsu",
+            "aruku"
+          ]
+        },
+        {
+          "japanese": "この漢字は読みにくいです。",
+          "english": "This kanji is hard to read.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanji-word",
+            "yomu"
+          ]
+        },
+        {
+          "japanese": "この本は分かりやすいです。",
+          "english": "This book is easy to understand.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "wakaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kutsu",
+        "kanji-word",
+        "hon"
+      ]
+    },
+    {
+      "slug": "n4-sugiru",
+      "primary_form": "すぎる",
+      "meaning": "too much / excessively",
+      "structure": "Verb stem / adj stem + すぎる",
+      "mnemonic_text": "すぎる spills past the reasonable limit — too much of it.",
+      "sort_order": 59,
+      "conjugation_rules": {
+        "excess": true
+      },
+      "accepted_forms": [
+        "すぎる",
+        "すぎました"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "食べすぎました。",
+          "english": "I ate too much.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taberu"
+          ]
+        },
+        {
+          "japanese": "このコーヒーは熱すぎます。",
+          "english": "This coffee is too hot.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koohii",
+            "atsui-obj"
+          ]
+        },
+        {
+          "japanese": "働きすぎるのは体に悪いです。",
+          "english": "Working too much is bad for your health.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hataraku",
+            "karada"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taberu",
+        "koohii",
+        "hataraku"
+      ]
+    },
+    {
+      "slug": "n4-tsutsu-aru",
+      "primary_form": "つつある",
+      "meaning": "in the process of (formal, ongoing change)",
+      "structure": "Verb stem + つつある",
+      "mnemonic_text": "つつある marks a change quietly unfolding right now.",
+      "sort_order": 60,
+      "conjugation_rules": {
+        "ongoing_change": true,
+        "formal": true
+      },
+      "accepted_forms": [
+        "つつある"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "経済は回復しつつあります。",
+          "english": "The economy is in the process of recovering.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "keizai"
+          ]
+        },
+        {
+          "japanese": "環境は変わりつつあります。",
+          "english": "The environment is gradually changing.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kankyou"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "keizai",
+        "kankyou"
+      ]
+    },
+    {
+      "slug": "n4-ageku",
+      "primary_form": "あげく",
+      "meaning": "in the end (after much effort, often bad result)",
+      "structure": "Ta-form + あげく",
+      "mnemonic_text": "あげく arrives at the end of a long struggle, often disappointing.",
+      "sort_order": 61,
+      "conjugation_rules": {
+        "final_outcome": true
+      },
+      "accepted_forms": [
+        "あげく",
+        "あげくに"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "さんざん悩んだあげく、諦めました。",
+          "english": "After much agonizing, I gave up in the end.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nayamu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nayamu"
+      ]
+    },
+    {
+      "slug": "n4-wake",
+      "primary_form": "わけ",
+      "meaning": "reason / makes sense that",
+      "structure": "Plain form + わけ",
+      "mnemonic_text": "わけ explains the logical reason things turned out this way.",
+      "sort_order": 62,
+      "conjugation_rules": {
+        "logical_reason": true
+      },
+      "accepted_forms": [
+        "わけだ",
+        "わけです"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "道理で、寒いわけです。今日は雪ですから。",
+          "english": "No wonder it's cold — it's snowing today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "samui",
+            "yuki"
+          ]
+        },
+        {
+          "japanese": "彼はアメリカ育ちだから、英語が上手なわけです。",
+          "english": "He grew up in America, so it makes sense his English is good.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eigo",
+            "jouzu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "samui",
+        "eigo",
+        "jouzu"
+      ]
+    },
+    {
+      "slug": "n4-wakeganai",
+      "primary_form": "わけがない",
+      "meaning": "there's no way that",
+      "structure": "Plain form + わけがない",
+      "mnemonic_text": "わけがない firmly rejects a possibility as illogical.",
+      "sort_order": 63,
+      "conjugation_rules": {
+        "strong_denial": true
+      },
+      "accepted_forms": [
+        "わけがない",
+        "わけがありません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼がそんなことを言うわけがありません。",
+          "english": "There's no way he'd say something like that.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare"
+          ]
+        },
+        {
+          "japanese": "こんなに簡単な問題が分からないわけがない。",
+          "english": "There's no way you wouldn't understand such an easy problem.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kantan-n4",
+            "mondai",
+            "wakaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "kantan-n4",
+        "mondai"
+      ]
+    },
+    {
+      "slug": "n4-kanaru",
+      "primary_form": "かなり",
+      "meaning": "quite / fairly (degree)",
+      "structure": "かなり + adjective/verb",
+      "mnemonic_text": "かなり pushes the degree up to 'quite a lot'.",
+      "sort_order": 64,
+      "conjugation_rules": {
+        "degree": true
+      },
+      "accepted_forms": [
+        "かなり"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "このテストはかなり難しいです。",
+          "english": "This test is quite difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tesuto",
+            "muzukashii"
+          ]
+        },
+        {
+          "japanese": "かなり疲れました。",
+          "english": "I got quite tired.",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "tesuto",
+        "muzukashii"
+      ]
+    },
+    {
+      "slug": "n4-hodo",
+      "primary_form": "ほど",
+      "meaning": "to the extent of / the more...the more",
+      "structure": "Noun / Plain form + ほど",
+      "mnemonic_text": "ほど measures just how far something reaches.",
+      "sort_order": 65,
+      "conjugation_rules": {
+        "degree_comparison": true
+      },
+      "accepted_forms": [
+        "ほど",
+        "ば〜ほど"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼ほど頑張っている人はいません。",
+          "english": "There's no one who works as hard as him.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "ganbaru"
+          ]
+        },
+        {
+          "japanese": "練習すればするほど、上手になります。",
+          "english": "The more you practice, the better you get.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "renshuu-suru",
+            "jouzu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "ganbaru",
+        "renshuu-suru"
+      ]
+    },
+    {
+      "slug": "n4-kurai-degree",
+      "primary_form": "くらい (degree)",
+      "meaning": "to the extent that / about as much as",
+      "structure": "Plain form + くらい",
+      "mnemonic_text": "くらい marks the rough extent something reaches to.",
+      "sort_order": 66,
+      "conjugation_rules": {
+        "extent": true
+      },
+      "accepted_forms": [
+        "くらい",
+        "ぐらい"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "泣きたいくらい嬉しいです。",
+          "english": "I'm happy to the point of wanting to cry.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ureshii"
+          ]
+        },
+        {
+          "japanese": "死ぬくらい疲れました。",
+          "english": "I'm tired to death (extremely tired).",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "ureshii"
+      ]
+    },
+    {
+      "slug": "n4-dake-de-naku",
+      "primary_form": "だけでなく",
+      "meaning": "not only... but also",
+      "structure": "Noun / Plain form + だけでなく",
+      "mnemonic_text": "だけでなく breaks past 'only' to add even more.",
+      "sort_order": 67,
+      "conjugation_rules": {
+        "addition": true
+      },
+      "accepted_forms": [
+        "だけでなく",
+        "だけじゃなく"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "英語だけでなく、中国語も話せます。",
+          "english": "Not only English, I can also speak Chinese.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eigo"
+          ]
+        },
+        {
+          "japanese": "彼は頭がいいだけでなく、優しいです。",
+          "english": "He's not only smart, but also kind.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "yasashii-n4"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "eigo",
+        "kare",
+        "yasashii-n4"
+      ]
+    },
+    {
+      "slug": "n4-kagirazu",
+      "primary_form": "に限らず",
+      "meaning": "not limited to",
+      "structure": "Noun + に限らず",
+      "mnemonic_text": "に限らず widens the scope beyond just one example.",
+      "sort_order": 68,
+      "conjugation_rules": {
+        "scope_extension": true
+      },
+      "accepted_forms": [
+        "に限らず"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "日本に限らず、世界中で人気があります。",
+          "english": "It's popular not just in Japan, but worldwide.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nihon",
+            "sekai"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "nihon",
+        "sekai"
+      ]
+    },
+    {
+      "slug": "n4-ippou-de",
+      "primary_form": "一方で",
+      "meaning": "on the other hand",
+      "structure": "Plain form + 一方で",
+      "mnemonic_text": "一方で shows the flip side of the same coin.",
+      "sort_order": 69,
+      "conjugation_rules": {
+        "contrast": true
+      },
+      "accepted_forms": [
+        "一方で"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "便利な一方で、値段が高いです。",
+          "english": "It's convenient, but on the other hand, it's expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "benri"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "benri"
+      ]
+    },
+    {
+      "slug": "n4-nitotte",
+      "primary_form": "にとって",
+      "meaning": "for / from the perspective of",
+      "structure": "Noun + にとって",
+      "mnemonic_text": "にとって views things through someone's standpoint.",
+      "sort_order": 70,
+      "conjugation_rules": {
+        "perspective": true
+      },
+      "accepted_forms": [
+        "にとって"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "私にとって、家族が一番大切です。",
+          "english": "For me, family is the most important.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kazoku",
+            "ichiban"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kazoku",
+        "ichiban"
+      ]
+    },
+    {
+      "slug": "n4-nikanshite",
+      "primary_form": "に関して",
+      "meaning": "regarding / concerning (formal)",
+      "structure": "Noun + に関して",
+      "mnemonic_text": "に関して formally connects the discussion to its topic.",
+      "sort_order": 71,
+      "conjugation_rules": {
+        "topic_formal": true
+      },
+      "accepted_forms": [
+        "に関して",
+        "に関する"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "この件に関して、質問があります。",
+          "english": "Regarding this matter, I have a question.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shitsumon"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shitsumon"
+      ]
+    },
+    {
+      "slug": "n4-souiu",
+      "primary_form": "そういう・こういう",
+      "meaning": "that kind of / this kind of",
+      "structure": "そういう / こういう + Noun",
+      "mnemonic_text": "こういう points at 'this sort'; そういう points at 'that sort'.",
+      "sort_order": 72,
+      "conjugation_rules": {
+        "demonstrative_kind": true
+      },
+      "accepted_forms": [
+        "そういう",
+        "こういう",
+        "ああいう"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "こういう問題は難しいです。",
+          "english": "This kind of problem is difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mondai",
+            "muzukashii"
+          ]
+        },
+        {
+          "japanese": "そういう人は好きじゃないです。",
+          "english": "I don't like that kind of person.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "suki"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "mondai",
+        "muzukashii",
+        "suki"
+      ]
+    },
+    {
+      "slug": "n4-tte",
+      "primary_form": "って",
+      "meaning": "casual quotation / topic marker",
+      "structure": "Plain form + って",
+      "mnemonic_text": "って is the casual shortcut for と or は in speech.",
+      "sort_order": 73,
+      "conjugation_rules": {
+        "casual_quote": true
+      },
+      "accepted_forms": [
+        "って"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "田中さんって、優しいですね。",
+          "english": "Tanaka is kind, isn't he.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yasashii-n4"
+          ]
+        },
+        {
+          "japanese": "明日雨が降るって聞きました。",
+          "english": "I heard it's going to rain tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "furu-rain"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "yasashii-n4",
+        "ashita",
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-tteba",
+      "primary_form": "ったら・ってば",
+      "meaning": "emphatic address / exasperation",
+      "structure": "Noun/Plain form + ったら・ってば",
+      "mnemonic_text": "ってば expresses mild exasperation calling someone out.",
+      "sort_order": 74,
+      "conjugation_rules": {
+        "emphasis": true,
+        "casual": true
+      },
+      "accepted_forms": [
+        "ったら",
+        "ってば"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "もう、太郎ったら、また忘れたの。",
+          "english": "Ugh, Taro, you forgot again?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "wasureru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "wasureru"
+      ]
+    },
+    {
+      "slug": "n4-ka-douka",
+      "primary_form": "かどうか",
+      "meaning": "whether or not",
+      "structure": "Plain form + かどうか",
+      "mnemonic_text": "かどうか leaves the yes/no question hanging, unresolved.",
+      "sort_order": 75,
+      "conjugation_rules": {
+        "uncertainty": true
+      },
+      "accepted_forms": [
+        "かどうか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "彼が来るかどうか分かりません。",
+          "english": "I don't know whether he'll come or not.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kuru-v"
+          ]
+        },
+        {
+          "japanese": "これでいいかどうか、確認してください。",
+          "english": "Please check whether this is okay or not.",
+          "sort_order": 1,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": [
+        "kare",
+        "kuru-v"
+      ]
+    },
+    {
+      "slug": "n4-ka-nanka",
+      "primary_form": "か何か",
+      "meaning": "or something",
+      "structure": "Noun + か何か",
+      "mnemonic_text": "か何か leaves room for something similar, unspecified.",
+      "sort_order": 76,
+      "conjugation_rules": {
+        "vague_example": true
+      },
+      "accepted_forms": [
+        "か何か"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お茶か何か飲みませんか。",
+          "english": "Won't you drink some tea or something?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ocha"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ocha"
+      ]
+    },
+    {
+      "slug": "n4-toka",
+      "primary_form": "とか",
+      "meaning": "things like / and so on (casual listing)",
+      "structure": "Noun + とか + Noun + とか",
+      "mnemonic_text": "とか casually tosses out a few loose examples.",
+      "sort_order": 77,
+      "conjugation_rules": {
+        "casual_listing": true
+      },
+      "accepted_forms": [
+        "とか"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "りんごとかバナナとかが好きです。",
+          "english": "I like things like apples and bananas.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": []
+    },
+    {
+      "slug": "n4-kke2",
+      "primary_form": "反面",
+      "meaning": "while at the same time / conversely",
+      "structure": "Plain form + 反面",
+      "mnemonic_text": "反面 flips to show the opposite face of the same situation.",
+      "sort_order": 78,
+      "conjugation_rules": {
+        "contrast": true
+      },
+      "accepted_forms": [
+        "反面"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "便利な反面、危険もあります。",
+          "english": "While it's convenient, there's also danger.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "benri",
+            "kiken"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "benri",
+        "kiken"
+      ]
+    },
+    {
+      "slug": "n4-tokoroga",
+      "primary_form": "ところが",
+      "meaning": "however / unexpectedly",
+      "structure": "Sentence. + ところが + Sentence.",
+      "mnemonic_text": "ところが flips the story with an unexpected twist.",
+      "sort_order": 79,
+      "conjugation_rules": {
+        "unexpected_contrast": true
+      },
+      "accepted_forms": [
+        "ところが"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "晴れると思いました。ところが、雨が降りました。",
+          "english": "I thought it would be sunny. However, it rained.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-soredemo",
+      "primary_form": "それでも",
+      "meaning": "even so / nevertheless",
+      "structure": "Sentence. + それでも + Sentence.",
+      "mnemonic_text": "それでも holds firm despite what was just said.",
+      "sort_order": 80,
+      "conjugation_rules": {
+        "concession_connector": true
+      },
+      "accepted_forms": [
+        "それでも"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "雨が降っていました。それでも、出かけました。",
+          "english": "It was raining. Even so, I went out.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furu-rain"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "furu-rain"
+      ]
+    },
+    {
+      "slug": "n4-sokode",
+      "primary_form": "そこで",
+      "meaning": "so / therefore (leading to action)",
+      "structure": "Sentence. + そこで + Sentence.",
+      "mnemonic_text": "そこで pivots from a situation straight into action.",
+      "sort_order": 81,
+      "conjugation_rules": {
+        "resulting_action": true
+      },
+      "accepted_forms": [
+        "そこで"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "道が分かりませんでした。そこで、地図を見ました。",
+          "english": "I didn't know the way. So I looked at a map.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "michi-v",
+            "chizu"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "michi-v",
+        "chizu"
+      ]
+    },
+    {
+      "slug": "n4-sonoseika-de",
+      "primary_form": "そのため",
+      "meaning": "for that reason / because of that",
+      "structure": "Sentence. + そのため + Sentence.",
+      "mnemonic_text": "そのため links a stated cause directly to its consequence.",
+      "sort_order": 82,
+      "conjugation_rules": {
+        "consequence_connector": true
+      },
+      "accepted_forms": [
+        "そのため"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "台風が来ました。そのため、電車が止まりました。",
+          "english": "A typhoon came. Because of that, trains stopped.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taifuu",
+            "densha"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taifuu",
+        "densha"
+      ]
+    },
+    {
+      "slug": "n4-suruto",
+      "primary_form": "すると",
+      "meaning": "then / and then (sequential)",
+      "structure": "Sentence. + すると + Sentence.",
+      "mnemonic_text": "すると narrates what happened right after, in sequence.",
+      "sort_order": 83,
+      "conjugation_rules": {
+        "sequence": true
+      },
+      "accepted_forms": [
+        "すると"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "ドアを開けました。すると、猫が入ってきました。",
+          "english": "I opened the door. Then a cat came in.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "neko"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "neko"
+      ]
+    },
+    {
+      "slug": "n4-igai",
+      "primary_form": "以外",
+      "meaning": "except / other than",
+      "structure": "Noun + 以外",
+      "mnemonic_text": "以外 steps outside the boundary of what was named.",
+      "sort_order": 84,
+      "conjugation_rules": {
+        "exception": true
+      },
+      "accepted_forms": [
+        "以外",
+        "以外に",
+        "以外は"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "土曜日以外は毎日働いています。",
+          "english": "I work every day except Saturday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "doyoubi",
+            "hataraku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "doyoubi",
+        "hataraku"
+      ]
+    },
+    {
+      "slug": "n4-igo-formal",
+      "primary_form": "以来",
+      "meaning": "ever since",
+      "structure": "Noun / Te-form + 以来",
+      "mnemonic_text": "以来 marks a starting point stretching all the way to now.",
+      "sort_order": 85,
+      "conjugation_rules": {
+        "since": true
+      },
+      "accepted_forms": [
+        "以来"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "卒業して以来、会っていません。",
+          "english": "I haven't met them since graduating.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sotsugyou-suru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sotsugyou-suru"
+      ]
+    },
+    {
+      "slug": "n4-hantai-ni",
+      "primary_form": "反対に",
+      "meaning": "on the contrary / conversely",
+      "structure": "反対に + Sentence.",
+      "mnemonic_text": "反対に turns the situation completely around.",
+      "sort_order": 86,
+      "conjugation_rules": {
+        "opposite": true
+      },
+      "accepted_forms": [
+        "反対に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "兄は静かです。反対に、弟はにぎやかです。",
+          "english": "My older brother is quiet. Conversely, my younger brother is lively.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shizuka",
+            "nigiyaka"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shizuka",
+        "nigiyaka"
+      ]
+    },
+    {
+      "slug": "n4-koso",
+      "primary_form": "こそ",
+      "meaning": "precisely / for sure (emphasis)",
+      "structure": "Noun + こそ",
+      "mnemonic_text": "こそ underlines exactly this one, and no other.",
+      "sort_order": 87,
+      "conjugation_rules": {
+        "emphasis": true
+      },
+      "accepted_forms": [
+        "こそ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "今年こそ、日本語を頑張ります。",
+          "english": "This year for sure, I'll work hard at Japanese.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kotoshi",
+            "nihongo",
+            "ganbaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kotoshi",
+        "nihongo",
+        "ganbaru"
+      ]
+    },
+    {
+      "slug": "n4-sae",
+      "primary_form": "さえ",
+      "meaning": "even (extreme example)",
+      "structure": "Noun + さえ",
+      "mnemonic_text": "さえ picks the most extreme example to prove a point.",
+      "sort_order": 88,
+      "conjugation_rules": {
+        "extreme_example": true
+      },
+      "accepted_forms": [
+        "さえ",
+        "さえも"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "子供さえ分かります。",
+          "english": "Even a child can understand.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "wakaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kodomo-v",
+        "wakaru"
+      ]
+    },
+    {
+      "slug": "n4-saeba",
+      "primary_form": "さえ〜ば",
+      "meaning": "if only / as long as",
+      "structure": "Noun + さえ + Verb-ば",
+      "mnemonic_text": "さえ〜ば narrows a condition down to just one crucial thing.",
+      "sort_order": 89,
+      "conjugation_rules": {
+        "minimal_condition": true
+      },
+      "accepted_forms": [
+        "さえ〜ば"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "お金さえあれば、幸せです。",
+          "english": "As long as I have money, I'm happy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "okane",
+            "shiawase"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "okane",
+        "shiawase"
+      ]
+    },
+    {
+      "slug": "n4-nomi",
+      "primary_form": "のみ",
+      "meaning": "only (formal)",
+      "structure": "Noun + のみ",
+      "mnemonic_text": "のみ is the formal, written cousin of だけ.",
+      "sort_order": 90,
+      "conjugation_rules": {
+        "exclusive_formal": true
+      },
+      "accepted_forms": [
+        "のみ"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "会員のみ入場できます。",
+          "english": "Only members may enter.",
+          "sort_order": 0,
+          "vocabulary_slugs": []
+        }
+      ],
+      "vocabulary_slugs": []
+    },
+    {
+      "slug": "n4-hoka-nai",
+      "primary_form": "ほかない",
+      "meaning": "have no choice but to",
+      "structure": "Dictionary form + ほかない",
+      "mnemonic_text": "ほかない leaves no other road but the one ahead.",
+      "sort_order": 91,
+      "conjugation_rules": {
+        "no_alternative": true
+      },
+      "accepted_forms": [
+        "ほかない",
+        "ほかありません"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "もう謝るほかありません。",
+          "english": "There's nothing to do but apologize.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ayamaru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "ayamaru"
+      ]
+    },
+    {
+      "slug": "n4-yoruni",
+      "primary_form": "によって",
+      "meaning": "by / due to / depending on",
+      "structure": "Noun + によって",
+      "mnemonic_text": "によって traces the cause or agent behind the result.",
+      "sort_order": 92,
+      "conjugation_rules": {
+        "agent_or_dependency": true
+      },
+      "accepted_forms": [
+        "によって",
+        "により"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "台風によって、電車が止まりました。",
+          "english": "Due to the typhoon, trains stopped.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "taifuu",
+            "densha"
+          ]
+        },
+        {
+          "japanese": "人によって、考え方が違います。",
+          "english": "Depending on the person, ways of thinking differ.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hito"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "taifuu",
+        "densha",
+        "hito"
+      ]
+    },
+    {
+      "slug": "n4-tsuide-ni",
+      "primary_form": "ついでに",
+      "meaning": "while I'm at it / incidentally",
+      "structure": "Dictionary form / Noun の + ついでに",
+      "mnemonic_text": "ついでに tacks on an extra errand while already out.",
+      "sort_order": 93,
+      "conjugation_rules": {
+        "incidental": true
+      },
+      "accepted_forms": [
+        "ついでに"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "買い物のついでに、郵便局へ行きました。",
+          "english": "While shopping, I went to the post office.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaimono",
+            "yuubinkyoku"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kaimono",
+        "yuubinkyoku"
+      ]
+    },
+    {
+      "slug": "n4-ue-de",
+      "primary_form": "上で",
+      "meaning": "after / on the basis of (formal)",
+      "structure": "Ta-form + 上で",
+      "mnemonic_text": "上で builds the next step on top of a completed one.",
+      "sort_order": 94,
+      "conjugation_rules": {
+        "formal_sequence": true
+      },
+      "accepted_forms": [
+        "上で"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "よく考えた上で、返事します。",
+          "english": "I'll reply after thinking it over carefully.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kangaeru"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "kangaeru"
+      ]
+    },
+    {
+      "slug": "n4-saichuu-ni",
+      "primary_form": "最中に",
+      "meaning": "right in the middle of",
+      "structure": "Verb-ている / Noun の + 最中に",
+      "mnemonic_text": "最中に interrupts right at the peak of an action.",
+      "sort_order": 95,
+      "conjugation_rules": {
+        "interruption": true
+      },
+      "accepted_forms": [
+        "最中に"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "食事の最中に、電話が鳴りました。",
+          "english": "Right in the middle of the meal, the phone rang.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shokuji"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "shokuji"
+      ]
+    },
+    {
+      "slug": "n4-oyobi",
+      "primary_form": "および",
+      "meaning": "and / as well as (formal)",
+      "structure": "Noun + および + Noun",
+      "mnemonic_text": "および formally joins two items in written Japanese.",
+      "sort_order": 96,
+      "conjugation_rules": {
+        "formal_conjunction": true
+      },
+      "accepted_forms": [
+        "および"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "名前および住所を書いてください。",
+          "english": "Please write your name and address.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "namae",
+            "juusho"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "namae",
+        "juusho"
+      ]
+    },
+    {
+      "slug": "n4-ni-taishite",
+      "primary_form": "に対して",
+      "meaning": "towards / in contrast to",
+      "structure": "Noun + に対して",
+      "mnemonic_text": "に対して directs an attitude or action right at its target.",
+      "sort_order": 97,
+      "conjugation_rules": {
+        "directed_toward": true
+      },
+      "accepted_forms": [
+        "に対して",
+        "に対する"
+      ],
+      "example_sentences": [
+        {
+          "japanese": "先生に対して失礼な態度を取りました。",
+          "english": "He took a rude attitude towards the teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "taido"
+          ]
+        }
+      ],
+      "vocabulary_slugs": [
+        "sensei",
+        "taido"
+      ]
     }
   ]
 }
