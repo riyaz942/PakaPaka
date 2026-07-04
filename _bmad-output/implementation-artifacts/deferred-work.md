@@ -106,3 +106,8 @@
 - **Typo state a11y label `"Close, try again"` gives no context about what was wrong** — SR user sees generic retry prompt with no indication of which characters were off. UX decision for a future story.
 - **No `min-h-[44px]` on ProgressiveHint Pressable and other non-Button controls** — Pre-existing sizing across multiple components; audit touch targets globally in story 7.2 or a dedicated pass.
 - **AC5 regression test doesn't prove end-to-end romaji→kana→evaluator path** — Component test covers conversion; integration-level test gap is a test architecture choice.
+
+## Deferred from: code review of spec-beautify-home-tab (2026-07-04)
+
+- **`useReducedMotion` reads the in-app preference once per mount** — a Settings toggle while Home stays mounted doesn't propagate to already-mounted `FadeSlideIn`/`PressableScale` instances until remount; pre-existing hook design (local `useState` seed, no shared subscription). [`mobile/src/data/hooks/useReducedMotion.ts`]
+- **Review a11y label says "Review 1 items due" for a single item** — pre-existing label wording, pinned verbatim by tests and this story's AC ("identical to today"); the new visible subtitle pluralizes correctly, so label and subtitle diverge at dueCount=1. Fix label + test together in a copy pass. [`mobile/src/app/(tabs)/index.tsx`]

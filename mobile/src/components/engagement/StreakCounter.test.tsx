@@ -6,7 +6,8 @@ describe('StreakCounter', () => {
   it('renders active streak with flame and label', () => {
     render(<StreakCounter currentStreak={5} streakState="active" testID="streak-counter" />);
 
-    expect(screen.getByText('🔥 5')).toBeTruthy();
+    expect(screen.getByText('🔥')).toBeTruthy();
+    expect(screen.getByText('5')).toBeTruthy();
     expect(screen.getByText('Current streak')).toBeTruthy();
     expect(screen.getByLabelText('Current streak: 5 days')).toBeTruthy();
   });

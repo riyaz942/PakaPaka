@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 
 type CognitiveLoadRingProps = {
-  variant: 'small' | 'large';
+  variant: 'small' | 'large' | 'hero';
   percent: number;
   accessibilityLabel?: string;
 };
@@ -9,6 +9,13 @@ type CognitiveLoadRingProps = {
 const SIZE: Record<CognitiveLoadRingProps['variant'], number> = {
   small: 32,
   large: 56,
+  hero: 144,
+};
+
+const FONT_SIZE: Record<CognitiveLoadRingProps['variant'], number> = {
+  small: 8,
+  large: 12,
+  hero: 28,
 };
 
 function ringBandClasses(percent: number): { border: string; text: string } {
@@ -29,7 +36,8 @@ export function CognitiveLoadRing({ variant, percent, accessibilityLabel }: Cogn
   const size = SIZE[variant];
   const clamped = Math.min(100, Math.max(0, percent));
   const label = accessibilityLabel ?? `Cognitive load ${clamped} percent`;
-  const fontSize = variant === 'small' ? 8 : 12;
+  const fontSize = FONT_SIZE[variant];
+  const borderWidth = variant === 'hero' ? 'border-4' : 'border-2';
   const band = ringBandClasses(clamped);
 
   return (
@@ -38,7 +46,7 @@ export function CognitiveLoadRing({ variant, percent, accessibilityLabel }: Cogn
       accessibilityLabel={label}
       accessibilityValue={{ min: 0, max: 100, now: clamped }}
       style={{ width: size, height: size }}
-      className={`items-center justify-center rounded-full border-2 ${band.border}`}>
+      className={`items-center justify-center rounded-full ${borderWidth} ${band.border}`}>
       <Text style={{ fontSize }} className="font-semibold text-primary">
         {`${clamped}%`}
       </Text>

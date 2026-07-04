@@ -36,6 +36,14 @@ describe('CognitiveLoadRing', () => {
     expect(el).toBeTruthy();
   });
 
+  it('renders hero variant at 144px with a thicker border', () => {
+    const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="hero" percent={42} />);
+    const el = UNSAFE_getByProps({ accessibilityRole: 'progressbar' });
+    expect(el.props.style).toEqual({ width: 144, height: 144 });
+    expect(el.props.className).toContain('border-4');
+    expect(screen.getByText('42%')).toBeTruthy();
+  });
+
   it('applies green band at 0%', () => {
     expect(ringBandClasses(0).border).toBe('border-ring-start');
     const { UNSAFE_getByProps } = render(<CognitiveLoadRing variant="small" percent={0} />);

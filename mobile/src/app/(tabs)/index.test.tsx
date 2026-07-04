@@ -43,6 +43,8 @@ jest.mock('@/data/hooks/useLevelProgress', () => ({
 
 jest.mock('@/data/user/preferencesRepository', () => ({
   getStartingJlptLevel: () => 'N5',
+  getReducedMotionEnabled: () => null,
+  setReducedMotionEnabled: jest.fn(),
 }));
 
 const mockGetDueSrsStates = jest.fn();
@@ -82,7 +84,8 @@ describe('HomeScreen', () => {
     mockGetDueSrsStates.mockReturnValue([{ itemId: '1' }, { itemId: '2' }]);
     render(<HomeScreen />);
 
-    expect(screen.getByLabelText('Cognitive load 42 percent')).toBeTruthy();
+    const ring = screen.getByLabelText('Cognitive load 42 percent');
+    expect(ring.props.style).toEqual({ width: 144, height: 144 });
     expect(screen.getByRole('button', { name: /start today's lesson/i })).toBeTruthy();
     expect(screen.getByRole('button', { name: /review 2 items due/i })).toBeTruthy();
     expect(screen.getByTestId('home-streak-counter')).toBeTruthy();
