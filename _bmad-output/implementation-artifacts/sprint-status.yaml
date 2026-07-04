@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-07-04"  # story 8-2 done
+last_updated: "2026-07-04"  # story 9-1 done (UX redesign: placement onboarding + auto-lesson loop)
 
 project: japanese-learning
 project_key: NOKEY
@@ -104,3 +104,7 @@ development_status:
   8-1-shadow-mode: done
   8-2-ai-generated-reading-and-community-contribution-backlog: done
   epic-8-retrospective: optional
+
+  epic-9: done
+  9-1-guided-onboarding-placement-and-auto-lesson-loop: done
+  epic-9-retrospective: optional

@@ -1,50 +1,75 @@
 import { router } from 'expo-router';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Text, View } from 'react-native';
 
+import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setOnboardingCompleted } from '@/data/user/preferencesRepository';
 
+const HIGHLIGHTS = [
+  {
+    icon: '📖',
+    title: 'One lesson a day',
+    body: 'Built for you automatically — radicals, kanji, vocab, and grammar in the right order.',
+  },
+  {
+    icon: '🔁',
+    title: 'Reviews that adapt',
+    body: 'Spaced repetition tuned to your weak spots, not a fixed schedule.',
+  },
+  {
+    icon: '📴',
+    title: 'Yours, offline',
+    body: 'Everything lives on this device. No account, no subscription, no waiting.',
+  },
+] as const;
+
 export default function CompleteScreen() {
   const { userDb } = useDatabase();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittedRef = useRef(false);
 
-  const handleGoToHome = useCallback(() => {
-    if (isSubmitting) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setOnboardingCompleted(userDb);
-    router.replace('/(tabs)');
-  }, [isSubmitting, userDb]);
+  const finish = useCallback(
+    (destination: '/lesson' | '/(tabs)') => {
+      if (submittedRef.current) {
+        return;
+      }
+      submittedRef.current = true;
+      setOnboardingCompleted(userDb);
+      router.replace(destination);
+    },
+    [userDb],
+  );
 
   return (
     <OnboardingStep
-      title="You're all set"
-      description="Your level and study preferences are saved locally. No account needed."
+      title="You're ready 🎉"
+      description="Your path is set. The fastest way to make it stick? Learn something right now."
       stepIndex={4}
       stepCount={4}
       primaryAction={{
-        label: 'Go to Home',
-        onPress: handleGoToHome,
+        label: 'Start your first lesson',
+        onPress: () => finish('/lesson'),
+      }}
+      secondaryAction={{
+        label: 'Explore on my own',
+        onPress: () => finish('/(tabs)'),
       }}
       testID="complete-screen">
-      <View className="gap-4">
-        <View
-          accessibilityRole="text"
-          testID="complete-success-banner"
-          className="flex-row items-center gap-2 rounded-radius-md border border-feedback-correct bg-feedback-correct/10 px-4 py-3">
-          <Text className="text-body font-semibold text-feedback-correct">✓</Text>
-          <Text className="flex-1 text-body font-semibold text-feedback-correct">
-            Setup complete
-          </Text>
-        </View>
-
-        <Text className="text-body-sm text-secondary">
-          Head to Home to explore the app. Your first review session ships in a later update.
-        </Text>
+      <View className="gap-3">
+        {HIGHLIGHTS.map((highlight, index) => (
+          <FadeSlideIn key={highlight.title} index={index}>
+            <View className="flex-row items-start gap-3 rounded-radius-md border border-border bg-surface p-4">
+              <Text className="text-title">{highlight.icon}</Text>
+              <View className="flex-1">
+                <Text className="text-body font-semibold text-primary">
+                  {highlight.title}
+                </Text>
+                <Text className="mt-1 text-body-sm text-secondary">{highlight.body}</Text>
+              </View>
+            </View>
+          </FadeSlideIn>
+        ))}
       </View>
     </OnboardingStep>
   );

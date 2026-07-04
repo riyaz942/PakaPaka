@@ -7,6 +7,7 @@ import {
   isPendingImportBranch,
 } from '@/data/user/onboardingPathUtils';
 import {
+  getOnboardingPath,
   getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
@@ -39,8 +40,7 @@ export function useOnboardingRedirect(): void {
     const currentStep = segmentList[1];
     const onWelcome = inOnboarding && currentStep === 'welcome';
     const onIntensity = inOnboarding && currentStep === 'intensity';
-    const onCalibrate = inOnboarding && currentStep === 'calibrate';
-    const onBulk = inOnboarding && currentStep === 'bulk';
+    const onPlacement = inOnboarding && currentStep === 'placement';
     const onComplete = inOnboarding && currentStep === 'complete';
     const onImport = inOnboarding && currentStep === 'import';
     const onImportSummary = inOnboarding && currentStep === 'import-summary';
@@ -68,8 +68,6 @@ export function useOnboardingRedirect(): void {
         'complete',
         'import',
         'import-summary',
-        'calibrate',
-        'bulk',
       ]);
       if (!inOnboarding || (currentStep && !allowedSteps.has(currentStep))) {
         router.replace('/onboarding/complete');
@@ -77,8 +75,17 @@ export function useOnboardingRedirect(): void {
       return;
     }
 
-    if (!onCalibrate && !onWelcome && !onIntensity && !onBulk && !onComplete && !onImportBranch) {
-      router.replace('/onboarding/calibrate');
+    // Beginner path skips placement — there is nothing below N5 to calibrate.
+    const manualPath = getOnboardingPath(userDb) === 'manual';
+    if (!manualPath) {
+      if (!onWelcome && !onIntensity && !onComplete && !onImportBranch) {
+        router.replace('/onboarding/complete');
+      }
+      return;
+    }
+
+    if (!onPlacement && !onWelcome && !onIntensity && !onComplete && !onImportBranch) {
+      router.replace('/onboarding/placement');
     }
   }, [userDb, segments, navigationState?.key]);
 }

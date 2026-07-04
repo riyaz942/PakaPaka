@@ -76,17 +76,33 @@ describe('useOnboardingRedirect', () => {
     });
   });
 
-  it('redirects to calibrate when level and intensity are set', async () => {
+  it('redirects the manual path to placement when level and intensity are set', async () => {
     const db = await openDatabaseAsync('user.db');
     runMigrations(db, [migration001Initial]);
     setStartingJlptLevel(db, 'N4');
     setSessionIntensity(db, 'relaxed');
+    setOnboardingPath(db, 'manual');
 
     const wrapper = await createWrapper(db);
     renderHook(() => useOnboardingRedirect(), { wrapper });
 
     await waitFor(() => {
-      expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+      expect(mockReplace).toHaveBeenCalledWith('/onboarding/placement');
+    });
+  });
+
+  it('redirects the beginner path to complete when level and intensity are set', async () => {
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db, [migration001Initial]);
+    setStartingJlptLevel(db, 'N5');
+    setSessionIntensity(db, 'relaxed');
+    setOnboardingPath(db, 'beginner');
+
+    const wrapper = await createWrapper(db);
+    renderHook(() => useOnboardingRedirect(), { wrapper });
+
+    await waitFor(() => {
+      expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
     });
   });
 
@@ -104,27 +120,13 @@ describe('useOnboardingRedirect', () => {
     });
   });
 
-  it('does not redirect away from calibrate when level and intensity are set', async () => {
+  it('does not redirect away from placement on the manual path', async () => {
     const db = await openDatabaseAsync('user.db');
     runMigrations(db, [migration001Initial]);
     setStartingJlptLevel(db, 'N4');
     setSessionIntensity(db, 'intense');
-    mockSegments = ['onboarding', 'calibrate'];
-
-    const wrapper = await createWrapper(db);
-    renderHook(() => useOnboardingRedirect(), { wrapper });
-
-    await waitFor(() => {
-      expect(mockReplace).not.toHaveBeenCalled();
-    });
-  });
-
-  it('does not redirect away from bulk when level and intensity are set', async () => {
-    const db = await openDatabaseAsync('user.db');
-    runMigrations(db, [migration001Initial]);
-    setStartingJlptLevel(db, 'N4');
-    setSessionIntensity(db, 'relaxed');
-    mockSegments = ['onboarding', 'bulk'];
+    setOnboardingPath(db, 'manual');
+    mockSegments = ['onboarding', 'placement'];
 
     const wrapper = await createWrapper(db);
     renderHook(() => useOnboardingRedirect(), { wrapper });

@@ -105,10 +105,10 @@ export default function HomeScreen() {
           </View>
 
           <Button
-            label="Learn"
-            onPress={() => router.push('/(tabs)/learn')}
+            label="Today's lesson"
+            onPress={() => router.push('/lesson')}
             variant="secondary"
-            accessibilityLabel="Go to Learn tab"
+            accessibilityLabel="Start today's lesson"
             testID="home-learn-button"
           />
 

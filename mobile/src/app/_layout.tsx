@@ -48,6 +48,10 @@ function RootLayoutContent() {
               name="review"
               options={{ headerShown: false, presentation: 'fullScreenModal' }}
             />
+            <Stack.Screen
+              name="lesson"
+              options={{ headerShown: false, presentation: 'fullScreenModal' }}
+            />
           </Stack>
         </DatabaseProvider>
       </ThemeProvider>

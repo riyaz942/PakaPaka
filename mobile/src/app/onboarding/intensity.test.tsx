@@ -79,25 +79,27 @@ describe('IntensityScreen', () => {
     });
   });
 
-  it('persists relaxed and navigates to calibrate on Continue', async () => {
+  it('persists relaxed and routes the beginner path straight to complete', async () => {
     const db = await createUserDb();
+    setOnboardingPath(db, 'beginner');
     renderIntensityScreen(db);
 
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('relaxed');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
   });
 
-  it('persists intense when selected before Continue', async () => {
+  it('persists intense and routes the manual path to the placement check', async () => {
     const db = await createUserDb();
+    setOnboardingPath(db, 'manual');
     renderIntensityScreen(db);
 
     fireEvent.press(screen.getByTestId('session-intensity-picker-intense'));
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('intense');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+    expect(mockReplace).toHaveBeenCalledWith('/onboarding/placement');
   });
 
   it('routes import path to complete on Continue', async () => {
@@ -112,14 +114,10 @@ describe('IntensityScreen', () => {
     expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
   });
 
-  it('offers manual marking on import path', async () => {
+  it('previews the daily lesson size for the selected pace', async () => {
     const db = await createUserDb();
-    setOnboardingPath(db, 'import');
     renderIntensityScreen(db);
 
-    fireEvent.press(screen.getByTestId('mark-items-manually'));
-
-    expect(getSessionIntensity(db)).toBe('relaxed');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/calibrate');
+    expect(screen.getByTestId('intensity-lesson-preview')).toBeTruthy();
   });
 });

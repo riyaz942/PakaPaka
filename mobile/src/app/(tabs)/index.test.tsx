@@ -83,7 +83,7 @@ describe('HomeScreen', () => {
     render(<HomeScreen />);
 
     expect(screen.getByLabelText('Cognitive load 42 percent')).toBeTruthy();
-    expect(screen.getByRole('button', { name: /go to learn tab/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /start today's lesson/i })).toBeTruthy();
     expect(screen.getByRole('button', { name: /review 2 items due/i })).toBeTruthy();
     expect(screen.getByTestId('home-streak-counter')).toBeTruthy();
     expect(screen.getByText('N5 Progress')).toBeTruthy();

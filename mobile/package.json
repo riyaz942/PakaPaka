@@ -82,6 +82,8 @@
       "^@/assets/(.*)$": "<rootDir>/assets/$1",
       "^@/test-support/(.*)$": "<rootDir>/test-support/$1",
       "^@/(.*)$": "<rootDir>/src/$1",
+      "^react-native-reanimated$": "<rootDir>/node_modules/react-native-reanimated/mock.js",
+      "^react-native-worklets$": "<rootDir>/node_modules/react-native-worklets/src/mock.ts",
       "^expo-sqlite$": "<rootDir>/__mocks__/expo-sqlite.ts",
       "^expo-file-system/legacy$": "<rootDir>/__mocks__/expo-file-system.ts",
       "^expo-network$": "<rootDir>/__mocks__/expo-network.ts",

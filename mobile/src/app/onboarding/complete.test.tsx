@@ -60,33 +60,33 @@ describe('CompleteScreen', () => {
     return userDb;
   }
 
-  it('renders final copy at step 4 of 4', async () => {
+  it('renders the ready screen at step 4 of 4 with a first-lesson CTA', async () => {
     const userDb = await createUserDb();
     renderCompleteScreen(userDb);
 
-    expect(screen.getByText("You're all set")).toBeTruthy();
-    expect(
-      screen.getByText(
-        'Your level and study preferences are saved locally. No account needed.',
-      ),
-    ).toBeTruthy();
-    expect(
-      screen.getByText(
-        'Head to Home to explore the app. Your first review session ships in a later update.',
-      ),
-    ).toBeTruthy();
+    expect(screen.getByText("You're ready 🎉")).toBeTruthy();
     expect(screen.getByLabelText('Step 4 of 4')).toBeTruthy();
-    expect(screen.getByTestId('complete-success-banner')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Go to Home' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Start your first lesson' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Explore on my own' })).toBeTruthy();
   });
 
-  it('persists onboarding completion and navigates to main tabs on Go to Home', async () => {
+  it('completes onboarding and launches the first lesson', async () => {
     const userDb = await createUserDb();
     renderCompleteScreen(userDb);
 
     expect(isOnboardingCompleted(userDb)).toBe(false);
 
-    fireEvent.press(screen.getByRole('button', { name: 'Go to Home' }));
+    fireEvent.press(screen.getByRole('button', { name: 'Start your first lesson' }));
+
+    expect(isOnboardingCompleted(userDb)).toBe(true);
+    expect(mockReplace).toHaveBeenCalledWith('/lesson');
+  });
+
+  it('completes onboarding and goes to tabs when exploring instead', async () => {
+    const userDb = await createUserDb();
+    renderCompleteScreen(userDb);
+
+    fireEvent.press(screen.getByRole('button', { name: 'Explore on my own' }));
 
     expect(isOnboardingCompleted(userDb)).toBe(true);
     expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
