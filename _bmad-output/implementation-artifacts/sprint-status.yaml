@@ -35,7 +35,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: "2026-05-03T12:00:00"
-last_updated: "2026-07-02"  # story 8-1 done
+last_updated: "2026-07-04"  # story 8-2 review
 
 project: japanese-learning
 project_key: NOKEY
@@ -102,5 +102,5 @@ development_status:
 
   epic-8: in-progress
   8-1-shadow-mode: done
-  8-2-ai-generated-reading-and-community-contribution-backlog: backlog
+  8-2-ai-generated-reading-and-community-contribution-backlog: review
   epic-8-retrospective: optional
