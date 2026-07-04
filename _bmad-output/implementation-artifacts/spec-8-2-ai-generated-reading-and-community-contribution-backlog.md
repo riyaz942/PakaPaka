@@ -21,7 +21,7 @@ route: 'one-shot'
 - Entry point: the risk table this story exists to produce, checked against the real `credentialStore.ts` precedent rather than an assumed path.
   [`ai-reading-and-community-contribution-design-note.md:9`](../../docs/ai-reading-and-community-contribution-design-note.md#L9)
 
-- Flags that this feature is the first one requiring ongoing network access, a real tension with the app's "fully offline" pillar (FR47) worth surfacing now rather than discovering during implementation.
+- Flags that AI reading is the first learner-initiated, per-use third-party API (curriculum OTA and import already use network), and the FR47 tension for reading features — including local persistence after generation so stories remain readable offline.
   [`ai-reading-and-community-contribution-design-note.md:14`](../../docs/ai-reading-and-community-contribution-design-note.md#L14)
 
 **Community contribution — OAuth & PR automation**

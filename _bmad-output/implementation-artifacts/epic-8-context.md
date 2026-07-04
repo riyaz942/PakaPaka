@@ -36,7 +36,7 @@ Track three deferred, post-MVP product directions — shadow mode (trial-alongsi
 ## Technical Decisions
 
 - Community contribution pipeline architecture (GitHub OAuth flow, PR generation mechanics) and AI provider integration patterns (BYO-key vs. OpenRouter credit purchase) are explicitly deferred architectural decisions — not yet designed in detail, intentionally scoped out of MVP architecture.
-- API keys (for AI providers, same pattern as WaniKani/Bunpro import) should follow the existing secure-storage convention: `expo-secure-store` (iOS Keychain / Android Keystore), discardable after use. No accounts or server-side key storage.
+- AI provider API keys should use the same secure-storage **mechanism** as WaniKani/Bunpro import (`expo-secure-store`, iOS Keychain / Android Keystore) but with a different **lifecycle**: import keys are ephemeral (discarded after successful import confirm); AI BYO keys persist across sessions until the learner removes them. GitHub OAuth tokens are session-scoped (discarded after submit or abandon). No accounts or server-side key storage.
 - GitHub OAuth, when built, is scoped narrowly to the contribution flow and must not introduce any auth requirement for core app usage — the app's no-accounts, no-login model is a hard constraint everywhere else.
 - Post-MVP features must not shape MVP architecture, but the `curriculum.db` / `user.db` data model must remain compatible with them — e.g., schema should be able to later accommodate contribution provenance tagging and AI-story-specific content without a breaking redesign.
 - No new cross-database join patterns or schema changes are introduced by this epic now; this is a scope-preservation and discovery epic.
