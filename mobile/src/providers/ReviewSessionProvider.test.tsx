@@ -17,6 +17,7 @@ jest.mock('@/data/hooks/useReviewQueue', () => ({
 
 const mockUpsertSrsState = jest.fn();
 const mockApplyBoosts = jest.fn();
+const mockClearBoosts = jest.fn();
 const mockGetDailyLoad = jest.fn();
 const mockGetRecentDailyLoads = jest.fn();
 const mockAddDailyLoad = jest.fn();
@@ -29,6 +30,7 @@ jest.mock('@/data/user/srsStateRepository', () => ({
 
 jest.mock('@/data/user/relatedItemBoostRepository', () => ({
   applyBoosts: (...args: unknown[]) => mockApplyBoosts(...args),
+  clearBoosts: (...args: unknown[]) => mockClearBoosts(...args),
 }));
 
 jest.mock('@/data/user/cognitiveLoadRepository', () => ({
@@ -71,6 +73,7 @@ function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'):
       lapses: 0,
       isBurned: false,
       srsStageLabel: 'guru',
+      lastReviewedAt: null,
       updatedAt: NOW,
     },
   };
@@ -85,6 +88,7 @@ describe('ReviewSessionProvider', () => {
     __mockResetSqlite();
     mockUpsertSrsState.mockReset();
     mockApplyBoosts.mockReset();
+    mockClearBoosts.mockReset();
     mockGetDailyLoad.mockReset();
     mockGetRecentDailyLoads.mockReset();
     mockAddDailyLoad.mockReset();
@@ -92,6 +96,7 @@ describe('ReviewSessionProvider', () => {
     mockRecordReviewAndUpdateStreak.mockReset();
     mockUpsertSrsState.mockReturnValue({ ok: true, value: undefined });
     mockApplyBoosts.mockReturnValue({ ok: true, value: undefined });
+    mockClearBoosts.mockReturnValue({ ok: true, value: undefined });
     mockGetDailyLoad.mockReturnValue(null);
     mockGetRecentDailyLoads.mockReturnValue([]);
     mockGetSessionIntensity.mockReturnValue('relaxed');
@@ -395,15 +400,8 @@ describe('ReviewSessionProvider', () => {
     expect(mockAddDailyLoad).not.toHaveBeenCalled();
   });
 
-  it('records streak when session becomes complete', async () => {
+  it('records streak on the first graded item, once per session', async () => {
     const db = await openDatabaseAsync('user.db');
-    mockUseReviewQueue.mockReturnValue({
-      queue: makeQueue(1),
-      isLoading: false,
-      error: null,
-      refetch: jest.fn(),
-      queueBuildMs: 12,
-    });
     const wrapper = await createWrapper(db);
 
     const { result } = renderHook(() => useReviewSession(), { wrapper });
@@ -418,15 +416,30 @@ describe('ReviewSessionProvider', () => {
       result.current.gradeCurrentItem(3);
     });
 
-    await waitFor(() => {
-      expect(result.current.isComplete).toBe(true);
+    await act(async () => {
+      await Promise.resolve();
     });
 
     expect(mockRecordReviewAndUpdateStreak).toHaveBeenCalledTimes(1);
     expect(mockRecordReviewAndUpdateStreak).toHaveBeenCalledWith(db, '2026-06-28');
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('2');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Still only once — subsequent grades in the same session don't re-record.
+    expect(mockRecordReviewAndUpdateStreak).toHaveBeenCalledTimes(1);
   });
 
-  it('does not record streak while session is in progress', async () => {
+  it('does not record streak before any item is graded', async () => {
     const db = await openDatabaseAsync('user.db');
     const wrapper = await createWrapper(db);
 
@@ -438,6 +451,29 @@ describe('ReviewSessionProvider', () => {
 
     expect(result.current.isComplete).toBe(false);
     expect(mockRecordReviewAndUpdateStreak).not.toHaveBeenCalled();
+  });
+
+  it('consumes the graded item boost at grade time', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    expect(mockClearBoosts).not.toHaveBeenCalled();
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(mockClearBoosts).toHaveBeenCalledWith(db, ['1']);
   });
 
   it('increments domain counters per gradeCurrentItem by item type', async () => {

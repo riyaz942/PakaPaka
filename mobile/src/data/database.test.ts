@@ -5,6 +5,7 @@ import {
 } from '../../__mocks__/expo-sqlite';
 
 import { initializeDatabases } from '@/data/database';
+import { migrations } from '@/data/migrations';
 import {
   PREFERENCE_KEYS,
   setCurriculumInstallMetadata,
@@ -39,7 +40,7 @@ describe('initializeDatabases', () => {
     );
 
     expect(curriculumVersion?.version).toBe('1.0.0-n5-seed');
-    expect(migrationCount?.count).toBe(9);
+    expect(migrationCount?.count).toBe(migrations.length);
     expect(updateSource?.value).toBe('bundled');
   });
 
@@ -57,7 +58,7 @@ describe('initializeDatabases', () => {
       'SELECT COUNT(*) AS count FROM schema_migrations',
     );
 
-    expect(migrationCount?.count).toBe(9);
+    expect(migrationCount?.count).toBe(migrations.length);
   });
 
   it('does not re-import bundled asset on second initializeDatabases', async () => {

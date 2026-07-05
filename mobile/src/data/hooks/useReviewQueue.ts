@@ -20,7 +20,7 @@ import {
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
-import { clearBoosts, getBoosts } from '@/data/user/relatedItemBoostRepository';
+import { getBoosts } from '@/data/user/relatedItemBoostRepository';
 import { getWeaknessBiasEnabled } from '@/data/user/preferencesRepository';
 import { getWeaknessScores } from '@/data/user/weaknessRepository';
 import {
@@ -161,7 +161,6 @@ export function useReviewQueue(): UseReviewQueueResult {
       const studyStatusMap = listStudyStatusesForItems(userDb, itemIds);
 
       const queueInputs: QueueInputItem[] = [];
-      const queuedItemIds: string[] = [];
       for (const srsState of dueSrsStates) {
         const curriculumItem = getItemById(curriculumDb, srsState.itemId);
         if (!curriculumItem) {
@@ -212,7 +211,6 @@ export function useReviewQueue(): UseReviewQueueResult {
           relatedItems,
           reinforcementLink: reinforcementLinks[0] ?? null,
         });
-        queuedItemIds.push(srsState.itemId);
       }
 
       const built = buildReviewQueue(queueInputs, {
@@ -226,14 +224,8 @@ export function useReviewQueue(): UseReviewQueueResult {
         console.warn(`[ReviewQueue] queueBuildMs=${elapsed}ms exceeds 100ms budget`);
       }
 
-      // Consume boosts only for items that actually entered the queue (unlocked).
-      const consumedBoostIds = queuedItemIds.filter((id) => (boostMap.get(id) ?? 0) > 0);
-      if (consumedBoostIds.length > 0) {
-        const clearResult = clearBoosts(userDb, consumedBoostIds);
-        if (!clearResult.ok && __DEV__) {
-          console.warn('[ReviewQueue] Failed to clear consumed boosts', clearResult.error);
-        }
-      }
+      // Boosts are consumed when an item is actually graded (ReviewSessionProvider),
+      // not at build time — backing out of a session must not discard them.
 
       setQueueBuildMs(elapsed);
       setQueue(built);

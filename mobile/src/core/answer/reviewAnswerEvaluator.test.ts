@@ -24,6 +24,7 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
       lapses: 0,
       isBurned: false,
       srsStageLabel: 'apprentice',
+      lastReviewedAt: null,
       updatedAt: new Date().toISOString(),
     },
     ...overrides,

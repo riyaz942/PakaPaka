@@ -26,6 +26,7 @@ function makeSrsState(itemId: string, overrides: Partial<SRSState> = {}): SRSSta
     lapses: 0,
     isBurned: false,
     srsStageLabel: 'guru',
+    lastReviewedAt: null,
     updatedAt: PAST_ISO,
     ...overrides,
   };

@@ -22,6 +22,7 @@ function makeState(overrides: Partial<SRSState> = {}): SRSState {
     lapses: 0,
     isBurned: false,
     srsStageLabel: 'guru',
+    lastReviewedAt: null,
     updatedAt: NOW.toISOString(),
     ...overrides,
   };
@@ -38,6 +39,7 @@ function makeNewState(overrides: Partial<SRSState> = {}): SRSState {
     lapses: 0,
     isBurned: false,
     srsStageLabel: 'apprentice',
+    lastReviewedAt: null,
     updatedAt: NOW.toISOString(),
     ...overrides,
   };
@@ -66,12 +68,31 @@ describe('toFsrsCard / fromFsrsCard round-trip', () => {
     expect(restored.lapses).toBe(original.lapses);
   });
 
-  it('derives elapsed_days and last_review from updatedAt when reps > 0', () => {
+  it('falls back to updatedAt for last_review when lastReviewedAt is null and reps > 0', () => {
     const lastWeek = new Date('2026-06-20T10:00:00.000Z');
-    const state = makeState({ reps: 5, updatedAt: lastWeek.toISOString() });
+    const state = makeState({ reps: 5, lastReviewedAt: null, updatedAt: lastWeek.toISOString() });
     const card = toFsrsCard(state, NOW);
     expect(card.elapsed_days).toBeGreaterThan(0);
     expect(card.last_review).toEqual(lastWeek);
+  });
+
+  it('prefers lastReviewedAt over updatedAt for last_review', () => {
+    const reviewedAt = new Date('2026-06-07T10:00:00.000Z');
+    const importedAt = new Date('2026-06-26T10:00:00.000Z');
+    const state = makeState({
+      reps: 5,
+      lastReviewedAt: reviewedAt.toISOString(),
+      updatedAt: importedAt.toISOString(),
+    });
+    const card = toFsrsCard(state, NOW);
+    expect(card.last_review).toEqual(reviewedAt);
+    expect(card.elapsed_days).toBeCloseTo(20, 5);
+  });
+
+  it('gradeItem stamps lastReviewedAt', () => {
+    const state = makeState({ lastReviewedAt: null });
+    const result = gradeItem(state, 3, NOW);
+    expect(result.lastReviewedAt).not.toBeNull();
   });
 
   it('maps fsrs_state string to State enum and back', () => {
@@ -142,7 +163,20 @@ describe('mapFsrsStateToStageLabel', () => {
     expect(mapFsrsStateToStageLabel(card, false)).toBe('apprentice');
   });
 
-  it('returns guru for review state with stability < 21', () => {
+  it('returns apprentice for relearning state regardless of stability', () => {
+    const card = {
+      ...toFsrsCard(makeState({ fsrsState: 'relearning', stability: 30, difficulty: 5 })),
+      state: State.Relearning,
+    };
+    expect(mapFsrsStateToStageLabel(card, false)).toBe('apprentice');
+  });
+
+  it('returns apprentice for review state with stability < 7 (import stages 3-4)', () => {
+    const card = { ...toFsrsCard(makeState({ stability: 3, difficulty: 5 })), state: State.Review };
+    expect(mapFsrsStateToStageLabel(card, false)).toBe('apprentice');
+  });
+
+  it('returns guru for review state with stability 7–20', () => {
     const card = { ...toFsrsCard(makeState({ stability: 10, difficulty: 5 })), state: State.Review };
     expect(mapFsrsStateToStageLabel(card, false)).toBe('guru');
   });

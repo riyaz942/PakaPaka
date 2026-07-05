@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { chunkForSqlVariables } from '@/data/sqlChunk';
 import { isStudyStatus, type StudyStatus } from '@/data/user/studyStatus.types';
 
 // Strict dependency gating (radical → kanji unlock order) is deferred to Epic 4
@@ -106,17 +107,19 @@ export function listStudyStatusesForItems(
     return result;
   }
 
-  const placeholders = itemIds.map(() => '?').join(', ');
   const numericIds = itemIds.map(parseItemId);
 
-  const rows = userDb.getAllSync<StudyStatusRow>(
-    `SELECT item_id, status FROM item_study_status WHERE item_id IN (${placeholders})`,
-    ...numericIds,
-  );
+  for (const chunk of chunkForSqlVariables(numericIds)) {
+    const placeholders = chunk.map(() => '?').join(', ');
+    const rows = userDb.getAllSync<StudyStatusRow>(
+      `SELECT item_id, status FROM item_study_status WHERE item_id IN (${placeholders})`,
+      ...chunk,
+    );
 
-  for (const row of rows) {
-    if (isStudyStatus(row.status)) {
-      result.set(String(row.item_id), row.status);
+    for (const row of rows) {
+      if (isStudyStatus(row.status)) {
+        result.set(String(row.item_id), row.status);
+      }
     }
   }
 

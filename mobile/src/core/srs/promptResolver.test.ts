@@ -12,6 +12,7 @@ function makeSrsState(reps: number): SRSState {
     lapses: 0,
     isBurned: false,
     srsStageLabel: 'apprentice',
+    lastReviewedAt: null,
     updatedAt: new Date().toISOString(),
   };
 }

@@ -39,7 +39,11 @@ function stringToFsrsState(state: FsrsStateString): State {
 }
 
 export function toFsrsCard(dbRow: SRSState, now: Date = new Date()): Card {
-  const lastReview = dbRow.reps > 0 ? new Date(dbRow.updatedAt) : undefined;
+  // Prefer the explicit review timestamp; fall back to updatedAt only for
+  // legacy/imported rows that predate last_reviewed_at.
+  const lastReviewIso =
+    dbRow.lastReviewedAt ?? (dbRow.reps > 0 ? dbRow.updatedAt : null);
+  const lastReview = lastReviewIso !== null ? new Date(lastReviewIso) : undefined;
   const elapsedDays =
     lastReview !== undefined
       ? Math.max(0, (now.getTime() - lastReview.getTime()) / DAY_MS)
@@ -71,7 +75,17 @@ export function toFsrsCard(dbRow: SRSState, now: Date = new Date()): Card {
 export function mapFsrsStateToStageLabel(card: Card, isBurned: boolean): SRSStageLabel {
   if (isBurned) return 'burned';
   if (card.stability >= BURN_STABILITY_THRESHOLD) return 'burned';
-  if (card.state === State.New || card.state === State.Learning) return 'apprentice';
+  // Relearning = lapsed; reads as apprentice-like, never guru+.
+  if (
+    card.state === State.New ||
+    card.state === State.Learning ||
+    card.state === State.Relearning
+  ) {
+    return 'apprentice';
+  }
+  // Low-stability Review cards are still apprentice territory (importer maps
+  // WaniKani stages 3-4 to Review state with stability < 7).
+  if (card.stability < 7) return 'apprentice';
   if (card.stability < 21) return 'guru';
   if (card.stability < 120) return 'master';
   return 'enlightened';
@@ -81,6 +95,7 @@ export function fromFsrsCard(card: Card, previous: SRSState): SRSState {
   const isBurned = previous.isBurned || card.stability >= BURN_STABILITY_THRESHOLD;
   const srsStageLabel = mapFsrsStateToStageLabel(card, isBurned);
   const dueDate = card.due instanceof Date ? card.due.toISOString() : String(card.due);
+  const nowIso = new Date().toISOString();
   return {
     ...previous,
     stability: card.stability,
@@ -91,7 +106,8 @@ export function fromFsrsCard(card: Card, previous: SRSState): SRSState {
     lapses: card.lapses,
     isBurned,
     srsStageLabel,
-    updatedAt: new Date().toISOString(),
+    lastReviewedAt: nowIso,
+    updatedAt: nowIso,
   };
 }
 
@@ -124,6 +140,7 @@ export function createInitialSrsState(itemId: string, now: Date = new Date()): S
     lapses: card.lapses,
     isBurned,
     srsStageLabel,
+    lastReviewedAt: null,
     updatedAt: now.toISOString(),
   };
 }

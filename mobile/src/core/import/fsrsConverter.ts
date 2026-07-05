@@ -145,15 +145,20 @@ function convertAnkiEaseToDifficulty(factor: number): number {
   return clamp(difficulty, 1, 10);
 }
 
-function getAnkiSrsStageLabel(card: AnkiCard): string {
+/**
+ * Single source of truth for Anki stage labels — used both for the import
+ * summary (ankiMapper) and the persisted FSRS state so they can't drift.
+ * Branch order mirrors convertAnkiCardToFsrs (relearning before learning-queue).
+ */
+export function getAnkiSrsStageLabel(card: AnkiCard): string {
   if (card.type === 0) {
     return 'new';
   }
-  if (card.type === 1 || card.queue === 1 || card.queue === 3) {
-    return 'learning';
-  }
   if (card.type === 3) {
     return 'relearning';
+  }
+  if (card.type === 1 || card.queue === 1 || card.queue === 3) {
+    return 'learning';
   }
   if (card.ivl >= 365 && card.queue !== -1) {
     return 'burned';

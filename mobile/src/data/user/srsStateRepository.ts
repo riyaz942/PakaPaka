@@ -3,6 +3,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 import { QUEUE_FETCH_LIMIT } from '@/config/constants';
 import { createInitialSrsState } from '@/core/srs/fsrsScheduler';
 import type { FsrsStateString, SRSStageLabel, SRSState } from '@/core/srs/srs.types';
+import { chunkForSqlVariables } from '@/data/sqlChunk';
 import { setStudyStatus } from '@/data/user/itemStudyStatusRepository';
 import type { AppError, Result } from '@/types/result.types';
 
@@ -16,6 +17,7 @@ type SrsStateRow = {
   lapses: number;
   is_burned: number;
   srs_stage_label: string;
+  last_reviewed_at: string | null;
   updated_at: string;
 };
 
@@ -38,6 +40,7 @@ function mapRowToState(row: SrsStateRow): SRSState {
     lapses: row.lapses,
     isBurned: row.is_burned === 1,
     srsStageLabel: row.srs_stage_label as SRSStageLabel,
+    lastReviewedAt: row.last_reviewed_at ?? null,
     updatedAt: row.updated_at,
   };
 }
@@ -85,7 +88,7 @@ export function getDueSrsStates(
   limit: number = QUEUE_FETCH_LIMIT,
 ): SRSState[] {
   const rows = userDb.getAllSync<SrsStateRow>(
-    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
      FROM srs_states
      WHERE due_date <= ? AND is_burned = 0
      ORDER BY due_date ASC
@@ -98,7 +101,7 @@ export function getDueSrsStates(
 
 export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | null {
   const row = userDb.getFirstSync<SrsStateRow>(
-    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
      FROM srs_states WHERE item_id = ?`,
     parseItemId(itemId),
   );
@@ -114,25 +117,25 @@ export function getSrsStatesForItems(
   if (itemIds.length === 0) return result;
 
   const numericIds = itemIds.map((id) => parseItemId(id));
-  const placeholders = numericIds.map(() => '?').join(', ');
 
-  const rows = userDb.getAllSync<SrsStateRow>(
-    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, updated_at
-     FROM srs_states WHERE item_id IN (${placeholders})`,
-    ...numericIds,
-  );
+  for (const chunk of chunkForSqlVariables(numericIds)) {
+    const placeholders = chunk.map(() => '?').join(', ');
+    const rows = userDb.getAllSync<SrsStateRow>(
+      `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+       FROM srs_states WHERE item_id IN (${placeholders})`,
+      ...chunk,
+    );
 
-  for (const row of rows) {
-    const state = mapRowToState(row);
-    result.set(state.itemId, state);
+    for (const row of rows) {
+      const state = mapRowToState(row);
+      result.set(state.itemId, state);
+    }
   }
 
   return result;
 }
 
-const SQL_VARIABLE_LIMIT = 999;
-
-/** Batch-count SRS states present for the given item IDs. Chunks into ≤999-param batches to respect SQLite SQLITE_MAX_VARIABLE_NUMBER. */
+/** Batch-count SRS states present for the given item IDs. Chunks to respect SQLite SQLITE_MAX_VARIABLE_NUMBER. */
 export function countStartedItemsByIds(
   userDb: SQLiteDatabase,
   itemIds: string[],
@@ -142,8 +145,7 @@ export function countStartedItemsByIds(
   const numericIds = itemIds.map((id) => parseItemId(id));
   let total = 0;
 
-  for (let i = 0; i < numericIds.length; i += SQL_VARIABLE_LIMIT) {
-    const chunk = numericIds.slice(i, i + SQL_VARIABLE_LIMIT);
+  for (const chunk of chunkForSqlVariables(numericIds)) {
     const placeholders = chunk.map(() => '?').join(', ');
     const row = userDb.getFirstSync<{ count: number }>(
       `SELECT COUNT(*) AS count FROM srs_states WHERE item_id IN (${placeholders})`,
@@ -165,8 +167,8 @@ export function upsertSrsState(
       userDb.runSync(
         `INSERT INTO srs_states (
            item_id, stability, difficulty, due_date, fsrs_state,
-           reps, lapses, is_burned, srs_stage_label, updated_at
-         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(item_id) DO UPDATE SET
            stability = excluded.stability,
            difficulty = excluded.difficulty,
@@ -176,6 +178,7 @@ export function upsertSrsState(
            lapses = excluded.lapses,
            is_burned = excluded.is_burned,
            srs_stage_label = excluded.srs_stage_label,
+           last_reviewed_at = excluded.last_reviewed_at,
            updated_at = excluded.updated_at`,
         parseItemId(state.itemId),
         state.stability,
@@ -186,6 +189,7 @@ export function upsertSrsState(
         state.lapses,
         state.isBurned ? 1 : 0,
         state.srsStageLabel,
+        state.lastReviewedAt,
         updatedAt,
       );
 
@@ -232,8 +236,8 @@ export function seedMissingSrsStatesForInProgress(
         userDb.runSync(
           `INSERT OR IGNORE INTO srs_states (
              item_id, stability, difficulty, due_date, fsrs_state,
-             reps, lapses, is_burned, srs_stage_label, updated_at
-           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+             reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           parseItemId(itemId),
           initial.stability,
           initial.difficulty,
@@ -243,6 +247,7 @@ export function seedMissingSrsStatesForInProgress(
           initial.lapses,
           initial.isBurned ? 1 : 0,
           initial.srsStageLabel,
+          initial.lastReviewedAt,
           initial.updatedAt,
         );
       }

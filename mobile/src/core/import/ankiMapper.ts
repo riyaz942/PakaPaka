@@ -1,4 +1,4 @@
-import { convertAnkiCardToFsrs } from '@/core/import/fsrsConverter';
+import { convertAnkiCardToFsrs, getAnkiSrsStageLabel } from '@/core/import/fsrsConverter';
 import type {
   AnkiCard,
   AnkiMapResult,
@@ -14,28 +14,6 @@ const CARD_TYPE_PRIORITY: Record<number, number> = {
   1: 2,
   0: 1,
 };
-
-function getAnkiStageLabel(card: AnkiCard): string {
-  if (card.type === 0) {
-    return 'new';
-  }
-  if (card.type === 3) {
-    return 'relearning';
-  }
-  if (card.type === 1 || card.queue === 1 || card.queue === 3) {
-    return 'learning';
-  }
-  if (card.ivl >= 365) {
-    return 'burned';
-  }
-  if (card.ivl >= 30) {
-    return 'master';
-  }
-  if (card.ivl >= 7) {
-    return 'guru';
-  }
-  return 'apprentice';
-}
 
 function getAnkiSrsStage(card: AnkiCard): number {
   if (card.type === 0) {
@@ -106,7 +84,7 @@ export function mapAnkiCards(
     const externalId = note.sfld;
     const itemId = externalIdToItemId.get(externalId);
     const srsStage = getAnkiSrsStage(primaryCard);
-    const srsStageName = getAnkiStageLabel(primaryCard);
+    const srsStageName = getAnkiSrsStageLabel(primaryCard);
 
     if (itemId) {
       mapped.push({

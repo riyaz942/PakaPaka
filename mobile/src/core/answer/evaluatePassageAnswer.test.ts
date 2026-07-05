@@ -30,4 +30,20 @@ describe('evaluatePassageAnswer', () => {
   it('matches any accepted form in the list', () => {
     expect(evaluatePassageAnswer('本', ['水', '本', 'ほん'])).toBe('correct');
   });
+
+  it('accepts katakana input for a hiragana accepted answer', () => {
+    expect(evaluatePassageAnswer('ガクセイ', ['学生', 'がくせい'])).toBe('correct');
+  });
+
+  it('accepts romaji input for a kana accepted answer', () => {
+    expect(evaluatePassageAnswer('gakusei', ['学生', 'がくせい'])).toBe('correct');
+  });
+
+  it('folds full-width latin input (IME) to ASCII', () => {
+    expect(evaluatePassageAnswer('ｓｔｕｄｅｎｔ', ['student'])).toBe('correct');
+  });
+
+  it('still rejects a different kana word', () => {
+    expect(evaluatePassageAnswer('センセイ', ['学生', 'がくせい'])).toBe('incorrect');
+  });
 });

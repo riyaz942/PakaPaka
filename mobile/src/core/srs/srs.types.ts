@@ -14,6 +14,8 @@ export type SRSState = {
   lapses: number;
   isBurned: boolean;
   srsStageLabel: SRSStageLabel;
+  /** ISO timestamp of the last graded review, or null if never reviewed in-app. */
+  lastReviewedAt: string | null;
   updatedAt: string;
 };
 

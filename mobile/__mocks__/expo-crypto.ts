@@ -9,6 +9,10 @@ export const CryptoEncoding = {
   BASE64: 'base64',
 } as const;
 
+/**
+ * Mirrors the real expo-crypto API: the input string is hashed as UTF-8 text,
+ * and `options.encoding` selects the OUTPUT encoding of the digest (hex default).
+ */
 export async function digestStringAsync(
   algorithm: string,
   data: string,
@@ -18,8 +22,22 @@ export async function digestStringAsync(
     throw new Error(`Unsupported algorithm: ${algorithm}`);
   }
 
-  const input =
-    options?.encoding === CryptoEncoding.BASE64 ? Buffer.from(data, 'base64') : Buffer.from(data);
+  const hash = createHash('sha256').update(data, 'utf8');
+  return options?.encoding === CryptoEncoding.BASE64 ? hash.digest('base64') : hash.digest('hex');
+}
 
-  return createHash('sha256').update(input).digest('hex');
+/** Mirrors the real expo-crypto `digest`: hashes raw bytes, returns an ArrayBuffer. */
+export async function digest(
+  algorithm: string,
+  data: ArrayBuffer | ArrayBufferView,
+): Promise<ArrayBuffer> {
+  if (algorithm !== 'SHA-256') {
+    throw new Error(`Unsupported algorithm: ${algorithm}`);
+  }
+
+  const bytes = ArrayBuffer.isView(data)
+    ? new Uint8Array(data.buffer, data.byteOffset, data.byteLength)
+    : new Uint8Array(data);
+  const hashed = createHash('sha256').update(bytes).digest();
+  return hashed.buffer.slice(hashed.byteOffset, hashed.byteOffset + hashed.byteLength);
 }

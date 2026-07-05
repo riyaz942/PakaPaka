@@ -7,6 +7,7 @@ import { migration006RelatedItemBoosts } from '@/data/migrations/006_related_ite
 import { migration007WeaknessStats } from '@/data/migrations/007_weakness_stats';
 import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitive_load_history';
 import { migration009Streak } from '@/data/migrations/009_streak';
+import { migration010SrsLastReviewedAt } from '@/data/migrations/010_srs_last_reviewed_at';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -19,4 +20,5 @@ export const migrations: Migration[] = [
   migration007WeaknessStats,
   migration008CognitiveLoadHistory,
   migration009Streak,
+  migration010SrsLastReviewedAt,
 ];

@@ -18,6 +18,7 @@ function makeSrsState(itemId: string, dueDate: Date, overrides: Partial<SRSState
     lapses: 0,
     isBurned: false,
     srsStageLabel: 'guru',
+    lastReviewedAt: null,
     updatedAt: PAST.toISOString(),
     ...overrides,
   };

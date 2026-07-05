@@ -92,6 +92,11 @@ export default function ReviewScreen() {
   const resultRef = useRef<RNView>(null);
   const continueButtonRef = useRef<RNView>(null);
   const autoAdvanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // A correct answer's grade is deferred behind the auto-advance timer for UI
+  // pacing only — it must still be applied if the session ends inside that window.
+  const pendingGradeRef = useRef<ReviewGrade | null>(null);
+  const gradeCurrentItemRef = useRef(gradeCurrentItem);
+  gradeCurrentItemRef.current = gradeCurrentItem;
   const isSubmittingRef = useRef(false);
   const isEndingRef = useRef(false);
   const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
@@ -112,13 +117,25 @@ export default function ReviewScreen() {
     return () => sub.remove();
   }, [hasActiveSession, exitVisible]);
 
+  const flushPendingGrade = useCallback(() => {
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
+    if (pendingGradeRef.current !== null) {
+      const grade = pendingGradeRef.current;
+      pendingGradeRef.current = null;
+      gradeCurrentItemRef.current(grade);
+    }
+  }, []);
+
   useEffect(() => {
     return () => {
-      if (autoAdvanceTimer.current) {
-        clearTimeout(autoAdvanceTimer.current);
-      }
+      // Apply any grade still waiting on the auto-advance timer so a correct
+      // answer isn't lost when the screen unmounts mid-window.
+      flushPendingGrade();
     };
-  }, []);
+  }, [flushPendingGrade]);
 
   useEffect(() => {
     setCardState('prompting');
@@ -130,6 +147,7 @@ export default function ReviewScreen() {
       clearTimeout(autoAdvanceTimer.current);
       autoAdvanceTimer.current = null;
     }
+    pendingGradeRef.current = null;
     requestAnimationFrame(() => inputRef.current?.focus());
   }, [currentItem?.itemId]);
 
@@ -205,7 +223,10 @@ export default function ReviewScreen() {
     if (evaluation.result === 'correct') {
       setCardState('correct');
       const grade = gradeForResult(evaluation.result, { hintsUsed }) ?? 3;
+      pendingGradeRef.current = grade;
       autoAdvanceTimer.current = setTimeout(() => {
+        autoAdvanceTimer.current = null;
+        pendingGradeRef.current = null;
         gradeCurrentItem(grade);
       }, REVIEW_CORRECT_AUTO_ADVANCE_MS);
       return;
@@ -236,6 +257,7 @@ export default function ReviewScreen() {
     isEndingRef.current = true;
     navigatedToSummaryRef.current = true;
     setExitVisible(false);
+    flushPendingGrade();
     snapshotSessionDuration();
     router.replace('/review/summary' as Href);
   }

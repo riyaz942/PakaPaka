@@ -1,8 +1,4 @@
-import {
-  CryptoDigestAlgorithm,
-  CryptoEncoding,
-  digestStringAsync,
-} from 'expo-crypto';
+import { CryptoDigestAlgorithm, digest } from 'expo-crypto';
 import {
   copyAsync,
   deleteAsync,
@@ -160,13 +156,30 @@ async function readFileAsBase64(fileUri: string): Promise<string> {
   return readAsStringAsync(fileUri, { encoding: 'base64' });
 }
 
+function base64ToBytes(base64: string): Uint8Array<ArrayBuffer> {
+  const binary = globalThis.atob(base64);
+  const bytes = new Uint8Array(new ArrayBuffer(binary.length));
+  for (let i = 0; i < binary.length; i += 1) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes;
+}
+
+function bytesToHex(buffer: ArrayBuffer): string {
+  return Array.from(new Uint8Array(buffer))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+/**
+ * Hashes the file's raw bytes (matching the manifest sha256 computed by
+ * scripts/compile-curriculum.ts over file contents) and returns a hex digest.
+ */
 export async function computeFileSha256Hex(fileUri: string): Promise<Result<string, AppError>> {
   try {
     const base64 = await readFileAsBase64(fileUri);
-    const digest = await digestStringAsync(CryptoDigestAlgorithm.SHA256, base64, {
-      encoding: CryptoEncoding.BASE64,
-    });
-    return { ok: true, value: digest.toLowerCase() };
+    const digestBuffer = await digest(CryptoDigestAlgorithm.SHA256, base64ToBytes(base64));
+    return { ok: true, value: bytesToHex(digestBuffer) };
   } catch (cause) {
     return {
       ok: false,

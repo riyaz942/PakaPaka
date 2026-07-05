@@ -16,7 +16,7 @@ import {
   todayKey,
 } from '@/data/user/cognitiveLoadRepository';
 import { getSessionIntensity } from '@/data/user/preferencesRepository';
-import { applyBoosts } from '@/data/user/relatedItemBoostRepository';
+import { applyBoosts, clearBoosts } from '@/data/user/relatedItemBoostRepository';
 import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
@@ -87,6 +87,9 @@ export function ReviewSessionProvider({ children }: Props) {
   // Additive counter for shadow-mode retention rate (Epic 8). Never read by the
   // review queue builder, FSRS scheduler, or gradeCurrentItem's scheduling logic.
   const correctCountRef = useRef(0);
+  // Streak credit is earned by the first graded item of a session (any review
+  // activity that day counts), not by finishing the whole queue.
+  const streakRecordedRef = useRef(false);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -102,6 +105,7 @@ export function ReviewSessionProvider({ children }: Props) {
       grammar: 0,
     };
     correctCountRef.current = 0;
+    streakRecordedRef.current = false;
   }, [queue]);
 
   useEffect(() => {
@@ -136,12 +140,7 @@ export function ReviewSessionProvider({ children }: Props) {
       durationSnapshotRef.current = now - sessionStartRef.current;
       sessionEndAtRef.current = now;
     }
-    const today = todayKey();
-    const result = recordReviewAndUpdateStreak(userDb, today);
-    if (!result.ok && __DEV__) {
-      console.warn('[ReviewSession] streak update failed', result.error);
-    }
-  }, [isComplete, userDb]);
+  }, [isComplete]);
 
   const prefetchBuffer = queue.slice(
     currentIndex + 1,
@@ -173,6 +172,24 @@ export function ReviewSessionProvider({ children }: Props) {
               if (!retryResult.ok) {
                 pendingWrites.current.push(state);
               }
+            }
+          }
+
+          // The item has now actually been reviewed — consume any reinforcement
+          // boost it carried into this queue (boosts are cleared on grade, not
+          // at queue-build time, so backing out of a session preserves them).
+          const clearBoostResult = clearBoosts(userDb, [itemId]);
+          if (!clearBoostResult.ok && __DEV__) {
+            console.warn('[ReviewSession] boost clear failed', clearBoostResult.error);
+          }
+
+          // Streak credit: first graded item of the session counts as review
+          // activity for today, even if the queue is never finished.
+          if (!streakRecordedRef.current) {
+            streakRecordedRef.current = true;
+            const streakResult = recordReviewAndUpdateStreak(userDb, todayKey());
+            if (!streakResult.ok && __DEV__) {
+              console.warn('[ReviewSession] streak update failed', streakResult.error);
             }
           }
 
