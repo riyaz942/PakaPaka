@@ -58,6 +58,7 @@ export default function LearnScreen() {
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView
+        edges={['top', 'left', 'right']}
         className="flex-1 px-space-lg pt-space-md"
         style={{
           alignSelf: 'center',
@@ -93,7 +94,7 @@ export default function LearnScreen() {
                     {summarizeMix(items)}
                   </Text>
                   <View className="mt-space-md self-start rounded-radius-full bg-feedback-info px-space-md py-space-sm">
-                    <Text className="text-body font-semibold text-primary">Start now</Text>
+                    <Text className="text-body font-semibold text-white">Start now</Text>
                   </View>
                 </PressableScale>
               ) : (

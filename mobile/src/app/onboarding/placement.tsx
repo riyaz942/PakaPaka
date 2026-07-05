@@ -92,7 +92,7 @@ export default function PlacementScreen() {
       return;
     }
     applyPlacement(userDb, curriculumDb, level, knownIds);
-    router.replace('/onboarding/complete');
+    router.push('/onboarding/complete');
   };
 
   const handleStartFresh = () => {
@@ -100,7 +100,7 @@ export default function PlacementScreen() {
       return;
     }
     applyPlacement(userDb, curriculumDb, level, []);
-    router.replace('/onboarding/complete');
+    router.push('/onboarding/complete');
   };
 
   if (!level || sample.length === 0) {

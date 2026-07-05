@@ -17,6 +17,34 @@ export function normalizeMeaning(text: string): string {
     .replace(/\s+/g, ' ');
 }
 
+/**
+ * Expands a display meaning string into individual accepted answers.
+ * Curriculum `meaning` fields pack alternatives ("hole / cave",
+ * "at / by / with (place of action, means)") — each alternative is accepted,
+ * with and without its trailing parenthetical qualifier.
+ */
+export function deriveMeaningCandidates(meaning: string): string[] {
+  const candidates = new Set<string>();
+  const trimmed = meaning.trim();
+  if (!trimmed) return [];
+
+  candidates.add(trimmed);
+  // Qualifiers may contain '/' or ',' themselves, so drop them before splitting.
+  const withoutQualifiers = trimmed.replace(/\s*\([^)]*\)/g, ' ').trim();
+  if (withoutQualifiers) {
+    candidates.add(withoutQualifiers);
+  }
+  for (const source of [trimmed, withoutQualifiers]) {
+    for (const part of source.split(/[/;]/)) {
+      const alternative = part.replace(/\s+/g, ' ').trim();
+      if (alternative) {
+        candidates.add(alternative);
+      }
+    }
+  }
+  return [...candidates];
+}
+
 export function evaluateMeaning(
   userAnswer: string,
   acceptedMeanings: string[],

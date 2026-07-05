@@ -25,7 +25,7 @@ export default function IntensityScreen() {
     }
 
     setSessionIntensity(userDb, selectedIntensity);
-    router.replace(manualPath ? '/onboarding/placement' : '/onboarding/complete');
+    router.push(manualPath ? '/onboarding/placement' : '/onboarding/complete');
   };
 
   return (

@@ -46,6 +46,7 @@ export default function StatsScreen() {
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView
+        edges={['top', 'left', 'right']}
         className="flex-1 px-space-lg pt-space-md"
         style={{
           alignSelf: 'center',

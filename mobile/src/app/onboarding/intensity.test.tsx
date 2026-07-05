@@ -14,10 +14,12 @@ import { DatabaseContext, type DatabaseContextValue } from '@/providers/Database
 import IntensityScreen from './intensity';
 
 const mockReplace = jest.fn();
+const mockPush = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
     replace: (...args: unknown[]) => mockReplace(...args),
+    push: (...args: unknown[]) => mockPush(...args),
   },
 }));
 
@@ -46,6 +48,7 @@ describe('IntensityScreen', () => {
   beforeEach(async () => {
     __mockResetSqlite();
     mockReplace.mockClear();
+    mockPush.mockClear();
   });
 
   async function createUserDb() {
@@ -87,7 +90,7 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('relaxed');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
   });
 
   it('persists intense and routes the manual path to the placement check', async () => {
@@ -99,7 +102,7 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('intense');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/placement');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/placement');
   });
 
   it('routes import path to complete on Continue', async () => {
@@ -111,7 +114,7 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('relaxed');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
   });
 
   it('previews the daily lesson size for the selected pace', async () => {

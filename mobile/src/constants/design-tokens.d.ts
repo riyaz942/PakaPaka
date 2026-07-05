@@ -4,15 +4,17 @@ export const expoBrand: {
   readonly splashGradientEnd: string;
 };
 
+type SemanticPalette = {
+  readonly background: string;
+  readonly surface: string;
+  readonly border: string;
+  readonly primary: string;
+  readonly secondary: string;
+  readonly muted: string;
+  readonly feedbackInfo: string;
+};
+
 export const semanticColors: {
-  readonly light: {
-    readonly background: string;
-    readonly primary: string;
-    readonly secondary: string;
-  };
-  readonly dark: {
-    readonly background: string;
-    readonly primary: string;
-    readonly secondary: string;
-  };
+  readonly light: SemanticPalette;
+  readonly dark: SemanticPalette;
 };

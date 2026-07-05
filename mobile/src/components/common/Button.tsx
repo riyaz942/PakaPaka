@@ -18,7 +18,9 @@ type ButtonProps = {
 const variantClasses: Record<ButtonVariant, { container: string; text: string }> = {
   primary: {
     container: 'bg-feedback-info',
-    text: 'text-primary font-semibold',
+    // Fixed white on the filled accent — theme text tokens flip to near-black
+    // in light mode and vanish against the blue fill.
+    text: 'text-white font-semibold',
   },
   secondary: {
     container: 'bg-surface-elevated border border-border',
@@ -34,7 +36,7 @@ const variantClasses: Record<ButtonVariant, { container: string; text: string }>
   },
   destructive: {
     container: 'bg-feedback-error',
-    text: 'text-primary font-semibold',
+    text: 'text-white font-semibold',
   },
 };
 

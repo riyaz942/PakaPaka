@@ -61,7 +61,9 @@ function ActionCard({
           'h-12 w-12 items-center justify-center rounded-radius-md',
           accent ? 'bg-feedback-info' : 'bg-surface-elevated',
         )}>
-        <Text className="text-title text-primary">{glyph}</Text>
+        <Text className={cn('text-title', accent ? 'text-white' : 'text-primary')}>
+          {glyph}
+        </Text>
       </View>
       <View className="flex-1">
         <Text className="text-body-lg font-semibold text-primary">{title}</Text>
@@ -142,13 +144,16 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView
+        edges={['top', 'left', 'right']}
         className="flex-1 px-space-lg pt-space-md"
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <ScrollView contentContainerClassName="gap-space-md pb-space-md">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerClassName="gap-space-md pb-space-lg">
           <FadeSlideIn index={0} className="py-space-sm">
             <Text className="text-title-lg text-primary">おかえり！</Text>
             <Text className="mt-space-xs text-body-sm text-secondary">

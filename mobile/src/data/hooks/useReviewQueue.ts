@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { QUEUE_FETCH_LIMIT } from '@/config/constants';
+import { deriveMeaningCandidates } from '@/core/answer/meaningEvaluator';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ReinforcementSrsSnapshot } from '@/core/content/content.types';
 import { resolveReinforcement } from '@/core/content/reinforcementResolver';
@@ -41,12 +42,21 @@ function buildAnswerKey(
   curriculumDb: SQLiteDatabase,
   itemId: string,
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar',
+  displayMeaning: string,
 ): ReviewAnswerKey {
   const acceptedAnswers = getAcceptedAnswers(curriculumDb, itemId);
 
-  const acceptedMeanings = acceptedAnswers
-    .filter((a) => a.answerType === 'meaning')
-    .map((a) => a.answerText);
+  // Many items (radicals, most grammar) have no accepted_answers rows, and the
+  // display meaning packs alternatives ("hole / cave") — derive candidates from
+  // it so a correct answer is never rejected on a seed-data gap.
+  const acceptedMeanings = [
+    ...new Set([
+      ...acceptedAnswers
+        .filter((a) => a.answerType === 'meaning')
+        .map((a) => a.answerText),
+      ...deriveMeaningCandidates(displayMeaning),
+    ]),
+  ];
 
   let acceptedReadings = acceptedAnswers
     .filter((a) => a.answerType === 'reading' || a.answerType === 'production')
@@ -183,7 +193,12 @@ export function useReviewQueue(): UseReviewQueueResult {
         );
 
         const personalMnemonic = getPersonalMnemonic(userDb, srsState.itemId);
-        const answerKey = buildAnswerKey(curriculumDb, srsState.itemId, curriculumItem.itemType);
+        const answerKey = buildAnswerKey(
+          curriculumDb,
+          srsState.itemId,
+          curriculumItem.itemType,
+          curriculumItem.meaning,
+        );
 
         queueInputs.push({
           srsState,

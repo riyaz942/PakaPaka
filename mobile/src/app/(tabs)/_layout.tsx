@@ -1,43 +1,55 @@
-import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Tabs } from 'expo-router';
 import React from 'react';
 import { useColorScheme } from 'react-native';
 
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
+type IconName = React.ComponentProps<typeof MaterialIcons>['name'];
+
+function tabIcon(name: IconName) {
+  return function TabIcon({ color, size }: { color: string; size: number }) {
+    return <MaterialIcons name={name} color={color} size={size} />;
+  };
+}
+
 export default function TabsLayout() {
   const colorScheme = useColorScheme();
   const colors = getSemanticColors(resolveColorScheme(colorScheme));
 
   return (
-    <NativeTabs
-      backgroundColor={colors.background}
-      labelStyle={{ color: colors.secondary, selected: { color: colors.primary } }}
-      tintColor={colors.primary}>
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="learn">
-        <NativeTabs.Trigger.Label>Learn</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="book.fill" md="menu_book" />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="read">
-        <NativeTabs.Trigger.Label>Read</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="text.book.closed" md="auto_stories" />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="stats">
-        <NativeTabs.Trigger.Label>Stats</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="chart.bar.fill" md="bar_chart" />
-      </NativeTabs.Trigger>
-
-      <NativeTabs.Trigger name="settings">
-        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="gear" md="settings" />
-      </NativeTabs.Trigger>
-    </NativeTabs>
+    <Tabs
+      backBehavior="initialRoute"
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.feedbackInfo,
+        tabBarInactiveTintColor: colors.secondary,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+        },
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{ title: 'Home', tabBarIcon: tabIcon('home') }}
+      />
+      <Tabs.Screen
+        name="learn"
+        options={{ title: 'Learn', tabBarIcon: tabIcon('menu-book') }}
+      />
+      <Tabs.Screen
+        name="read"
+        options={{ title: 'Read', tabBarIcon: tabIcon('auto-stories') }}
+      />
+      <Tabs.Screen
+        name="stats"
+        options={{ title: 'Stats', tabBarIcon: tabIcon('bar-chart') }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{ title: 'Settings', tabBarIcon: tabIcon('settings') }}
+      />
+    </Tabs>
   );
 }

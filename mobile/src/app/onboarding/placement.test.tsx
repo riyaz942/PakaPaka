@@ -15,10 +15,12 @@ import { DatabaseContext, type DatabaseContextValue } from '@/providers/Database
 import PlacementScreen from './placement';
 
 const mockReplace = jest.fn();
+const mockPush = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
     replace: (...args: unknown[]) => mockReplace(...args),
+    push: (...args: unknown[]) => mockPush(...args),
   },
 }));
 
@@ -78,6 +80,7 @@ describe('PlacementScreen', () => {
   beforeEach(() => {
     __mockResetSqlite();
     mockReplace.mockClear();
+    mockPush.mockClear();
   });
 
   async function createDatabases() {
@@ -132,7 +135,7 @@ describe('PlacementScreen', () => {
     expect(statuses.get('1')).toBe('known');
     expect(statuses.get('2')).toBe('known');
 
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
   });
 
   it('skip check still unlocks lower levels without marking level items', async () => {
@@ -150,6 +153,6 @@ describe('PlacementScreen', () => {
     expect(statuses.get('1')).toBe('known');
     expect(statuses.get('2')).toBe('known');
 
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
   });
 });

@@ -17,10 +17,12 @@ import { DatabaseContext, type DatabaseContextValue } from '@/providers/Database
 import CompleteScreen from './complete';
 
 const mockReplace = jest.fn();
+const mockPush = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
     replace: (...args: unknown[]) => mockReplace(...args),
+    push: (...args: unknown[]) => mockPush(...args),
   },
 }));
 
@@ -49,6 +51,7 @@ describe('CompleteScreen', () => {
   beforeEach(async () => {
     __mockResetSqlite();
     mockReplace.mockClear();
+    mockPush.mockClear();
   });
 
   async function createUserDb() {
@@ -79,7 +82,8 @@ describe('CompleteScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Start your first lesson' }));
 
     expect(isOnboardingCompleted(userDb)).toBe(true);
-    expect(mockReplace).toHaveBeenCalledWith('/lesson');
+    expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+    expect(mockPush).toHaveBeenCalledWith('/lesson');
   });
 
   it('completes onboarding and goes to tabs when exploring instead', async () => {

@@ -36,7 +36,12 @@ export default function CompleteScreen() {
       }
       submittedRef.current = true;
       setOnboardingCompleted(userDb);
-      router.replace(destination);
+      // Land on the tab shell first so closing a lesson never pops to an
+      // empty stack (which exits the app on Android).
+      router.replace('/(tabs)');
+      if (destination === '/lesson') {
+        router.push('/lesson');
+      }
     },
     [userDb],
   );

@@ -6,7 +6,6 @@ import {
   ActivityIndicator,
   BackHandler,
   KeyboardAvoidingView,
-  Platform,
   Pressable,
   ScrollView,
   Text,
@@ -34,6 +33,7 @@ import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade } from '@/core/srs/srs.types';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
+import { safeBack } from '@/utils/safeBack';
 
 const PLACEHOLDER: Record<PromptType, string> = {
   reading: 'Type reading in romaji...',
@@ -269,7 +269,7 @@ export default function ReviewScreen() {
           <Pressable
             accessibilityRole="button"
             className="self-start rounded-radius-md bg-surface px-space-md py-space-sm"
-            onPress={() => router.back()}>
+            onPress={safeBack}>
             <Text className="text-body text-secondary">Back</Text>
           </Pressable>
         </View>
@@ -289,7 +289,7 @@ export default function ReviewScreen() {
           <Pressable
             accessibilityRole="button"
             className="self-start rounded-radius-md bg-surface px-space-md py-space-sm"
-            onPress={() => router.back()}>
+            onPress={safeBack}>
             <Text className="text-body text-feedback-info">Back</Text>
           </Pressable>
         </View>
@@ -331,21 +331,21 @@ export default function ReviewScreen() {
         onDismiss={() => setThresholdNoticeVisible(false)}
       />
 
-      <ScrollView
-        testID="review-focal-scroll"
-        className="flex-1 px-space-md"
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-        keyboardShouldPersistTaps="handled">
-        <ReviewCard
-          item={currentItem}
-          state={cardState}
-          displayAnswer={displayAnswer}
-          onHintReveal={setHintsUsed}
-          resultRef={resultRef}
-        />
-      </ScrollView>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+        <ScrollView
+          testID="review-focal-scroll"
+          className="flex-1 px-space-md"
+          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+          keyboardShouldPersistTaps="handled">
+          <ReviewCard
+            item={currentItem}
+            state={cardState}
+            displayAnswer={displayAnswer}
+            onHintReveal={setHintsUsed}
+            resultRef={resultRef}
+          />
+        </ScrollView>
 
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         {cardState === 'incorrect' ? (
           <View className="px-space-md pb-space-md">
             <Button

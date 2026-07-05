@@ -1,6 +1,9 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
-import { TextInput, type TextInputProps } from 'react-native';
+import { TextInput, useColorScheme, type TextInputProps } from 'react-native';
 import * as wanakana from 'wanakana';
+
+import { getSemanticColors } from '@/constants/semantic-colors';
+import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 export type WanaKanaInputMode = 'kana' | 'english';
 
@@ -38,6 +41,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
     ref,
   ) {
     const inputRef = useRef<TextInput>(null);
+    const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
 
     useImperativeHandle(ref, () => ({
       focus: () => inputRef.current?.focus(),
@@ -75,8 +79,10 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
         ref={inputRef}
         testID={testID}
         className="w-full rounded-radius-sm border border-border bg-surface-elevated px-space-md py-space-sm text-body text-primary focus:border-feedback-info"
+        style={{ color: colors.primary }}
         placeholder={placeholder}
-        placeholderTextColor="rgba(255,255,255,0.4)"
+        placeholderTextColor={colors.muted}
+        selectionColor={colors.feedbackInfo}
         value={value}
         onChangeText={handleChangeText}
         onSubmitEditing={onSubmit}

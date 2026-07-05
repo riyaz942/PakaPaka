@@ -18,7 +18,7 @@ export default function WelcomeScreen() {
   const handleBeginner = () => {
     setStartingJlptLevel(userDb, 'N5');
     setOnboardingPath(userDb, 'beginner');
-    router.replace('/onboarding/intensity');
+    router.push('/onboarding/intensity');
   };
 
   const handleContinue = () => {
@@ -28,7 +28,7 @@ export default function WelcomeScreen() {
 
     setStartingJlptLevel(userDb, selectedLevel);
     setOnboardingPath(userDb, 'manual');
-    router.replace('/onboarding/intensity');
+    router.push('/onboarding/intensity');
   };
 
   return (

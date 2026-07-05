@@ -1,4 +1,36 @@
-import { evaluateMeaning, meaningTypoThreshold, normalizeMeaning } from './meaningEvaluator';
+import {
+  deriveMeaningCandidates,
+  evaluateMeaning,
+  meaningTypoThreshold,
+  normalizeMeaning,
+} from './meaningEvaluator';
+
+describe('deriveMeaningCandidates', () => {
+  it('returns the meaning itself for a simple string', () => {
+    expect(deriveMeaningCandidates('red')).toEqual(['red']);
+  });
+
+  it('splits slash-separated alternatives', () => {
+    expect(deriveMeaningCandidates('hole / cave')).toEqual(
+      expect.arrayContaining(['hole / cave', 'hole', 'cave']),
+    );
+  });
+
+  it('accepts alternatives without trailing parenthetical qualifiers', () => {
+    const candidates = deriveMeaningCandidates('at / by / with (place of action, means)');
+    expect(candidates).toEqual(expect.arrayContaining(['at', 'by', 'with']));
+  });
+
+  it('keeps commas inside qualifiers intact', () => {
+    const candidates = deriveMeaningCandidates('to / at (direction, time, target)');
+    expect(candidates).toEqual(expect.arrayContaining(['to', 'at']));
+    expect(candidates).not.toEqual(expect.arrayContaining(['time', 'target)']));
+  });
+
+  it('returns empty for blank input', () => {
+    expect(deriveMeaningCandidates('  ')).toEqual([]);
+  });
+});
 
 describe('normalizeMeaning', () => {
   it('lowercases and trims', () => {

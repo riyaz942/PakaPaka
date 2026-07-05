@@ -10,6 +10,7 @@ import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
 import { startLessonItems } from '@/data/user/lessonProgressRepository';
+import { safeBack } from '@/utils/safeBack';
 
 /**
  * Auto-generated lesson session: walks the planned items one at a time.
@@ -58,7 +59,7 @@ export default function LessonScreen() {
             You&apos;ve started everything available{level ? ` at ${level}` : ''}. Clear
             some reviews and new items will unlock.
           </Text>
-          <Button label="Back" variant="secondary" onPress={() => router.back()} />
+          <Button label="Back" variant="secondary" onPress={safeBack} />
         </View>
       </SafeAreaView>
     );
@@ -73,7 +74,7 @@ export default function LessonScreen() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Close lesson"
-            onPress={() => router.back()}
+            onPress={safeBack}
             testID="lesson-close"
             className="min-h-[44px] min-w-[44px] items-start justify-center">
             <Text className="text-title text-secondary">✕</Text>

@@ -86,7 +86,7 @@ describe('WelcomeScreen', () => {
 
     expect(getStartingJlptLevel(db)).toBe('N5');
     expect(getOnboardingPath(db)).toBe('beginner');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/intensity');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/intensity');
   });
 
   it('persists selected JLPT level and routes intermediate path to intensity', async () => {
@@ -99,6 +99,6 @@ describe('WelcomeScreen', () => {
 
     expect(getStartingJlptLevel(db)).toBe('N3');
     expect(getOnboardingPath(db)).toBe('manual');
-    expect(mockReplace).toHaveBeenCalledWith('/onboarding/intensity');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/intensity');
   });
 });

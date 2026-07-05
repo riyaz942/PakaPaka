@@ -34,58 +34,39 @@ export function useOnboardingRedirect(): void {
       return;
     }
 
+    // While onboarding is incomplete, the user may stand on ANY onboarding
+    // step — earlier steps stay reachable so back navigation works. Only
+    // redirect when the user is outside onboarding entirely.
+    const inOnboarding = segmentList[0] === 'onboarding';
+    if (inOnboarding) {
+      return;
+    }
+
     const level = getStartingJlptLevel(userDb);
     const intensity = getSessionIntensity(userDb);
-    const inOnboarding = segmentList[0] === 'onboarding';
-    const currentStep = segmentList[1];
-    const onWelcome = inOnboarding && currentStep === 'welcome';
-    const onIntensity = inOnboarding && currentStep === 'intensity';
-    const onPlacement = inOnboarding && currentStep === 'placement';
-    const onComplete = inOnboarding && currentStep === 'complete';
-    const onImport = inOnboarding && currentStep === 'import';
-    const onImportSummary = inOnboarding && currentStep === 'import-summary';
-    const onImportBranch = onImport || onImportSummary;
     const importPath = isImportOnboardingPath(userDb);
 
     if (!level) {
-      if (!inOnboarding) {
-        router.replace('/onboarding/welcome');
-      }
+      router.replace('/onboarding/welcome');
       return;
     }
 
     if (!intensity) {
-      const mayStayOnWelcome = onWelcome && isPendingImportBranch(userDb);
-      if (!onIntensity && !onImportBranch && !mayStayOnWelcome) {
+      if (isPendingImportBranch(userDb)) {
+        router.replace('/onboarding/welcome');
+      } else {
         router.replace('/onboarding/intensity');
       }
       return;
     }
 
     if (importPath) {
-      const allowedSteps = new Set([
-        'intensity',
-        'complete',
-        'import',
-        'import-summary',
-      ]);
-      if (!inOnboarding || (currentStep && !allowedSteps.has(currentStep))) {
-        router.replace('/onboarding/complete');
-      }
+      router.replace('/onboarding/complete');
       return;
     }
 
     // Beginner path skips placement — there is nothing below N5 to calibrate.
     const manualPath = getOnboardingPath(userDb) === 'manual';
-    if (!manualPath) {
-      if (!onWelcome && !onIntensity && !onComplete && !onImportBranch) {
-        router.replace('/onboarding/complete');
-      }
-      return;
-    }
-
-    if (!onPlacement && !onWelcome && !onIntensity && !onComplete && !onImportBranch) {
-      router.replace('/onboarding/placement');
-    }
+    router.replace(manualPath ? '/onboarding/placement' : '/onboarding/complete');
   }, [userDb, segments, navigationState?.key]);
 }
