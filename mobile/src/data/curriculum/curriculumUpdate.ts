@@ -23,7 +23,7 @@ import {
   getSqliteDirectoryUri,
 } from '@/data/curriculum/curriculumConfig';
 import type { CurriculumManifest } from '@/data/curriculum/curriculumManifest.types';
-import { reopenCurriculumDatabase } from '@/data/database';
+import { attachCurriculumForQuery, reopenCurriculumDatabase } from '@/data/database';
 import {
   PREFERENCE_KEYS,
   setCurriculumInstallMetadata,
@@ -471,6 +471,7 @@ export async function downloadAndSwapCurriculum(
     if (!reopenResult.ok) {
       return reopenResult;
     }
+    attachCurriculumForQuery(handles.userDb, reopenResult.value);
 
     setCurriculumInstallMetadata(handles.userDb, {
       version: validateResult.value.version,

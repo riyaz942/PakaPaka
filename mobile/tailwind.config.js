@@ -63,6 +63,7 @@ module.exports = {
         'body-sm': ['14px', { lineHeight: '1.4', fontWeight: '400' }],
         caption: ['12px', { lineHeight: '1.3', fontWeight: '500' }],
         overline: ['11px', { lineHeight: '1.2', fontWeight: '600' }],
+        furigana: ['9px', { lineHeight: '1.1', fontWeight: '400' }],
       },
       // UX-DR3 — spacing (4px base)
       spacing: {

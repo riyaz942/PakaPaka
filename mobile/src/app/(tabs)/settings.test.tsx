@@ -5,6 +5,7 @@ import SettingsScreen from './settings';
 const mockSetReducedMotion = jest.fn();
 const mockEnableShadowMode = jest.fn();
 const mockDisableShadowMode = jest.fn();
+const mockSetFuriganaMode = jest.fn();
 
 let mockShadowModeCanEnable = false;
 let mockShadowModeEnabled = false;
@@ -31,6 +32,15 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
     isEnabled: mockShadowModeEnabled,
     enable: mockEnableShadowMode,
     disable: mockDisableShadowMode,
+  }),
+}));
+
+jest.mock('@/data/hooks/useFuriganaPreference', () => ({
+  useFuriganaPreference: () => ({
+    mode: 'auto',
+    setMode: mockSetFuriganaMode,
+    knownKanji: new Set(),
+    refreshKnownKanji: jest.fn(),
   }),
 }));
 

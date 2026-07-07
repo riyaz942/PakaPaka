@@ -24,7 +24,8 @@
           "vocabulary_slugs": [
             "furu-rain",
             "kasa"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]っているので、傘[かさ]を持[も]って行[い]きます。"
         },
         {
           "japanese": "時間がないので、急ぎましょう。",
@@ -33,7 +34,8 @@
           "vocabulary_slugs": [
             "jikan",
             "isogu"
-          ]
+          ],
+          "furigana": "時[じ]間[かん]がないので、急[いそ]ぎましょう。"
         },
         {
           "japanese": "疲れたので、早く寝ます。",
@@ -41,7 +43,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "neru"
-          ]
+          ],
+          "furigana": "疲[つか]れたので、早[はや]く寝[ね]ます。"
         },
         {
           "japanese": "道が混んでいるので、遅れます。",
@@ -50,7 +53,8 @@
           "vocabulary_slugs": [
             "michi-v",
             "okureru"
-          ]
+          ],
+          "furigana": "道[みち]が混[こ]んでいるので、遅[おく]れます。"
         },
         {
           "japanese": "休みなので、家にいます。",
@@ -59,7 +63,8 @@
           "vocabulary_slugs": [
             "yasumu",
             "ie"
-          ]
+          ],
+          "furigana": "休[やす]みなので、家[いえ]にいます。"
         },
         {
           "japanese": "安いので、これを買います。",
@@ -68,7 +73,8 @@
           "vocabulary_slugs": [
             "yasui-adj",
             "kau-v"
-          ]
+          ],
+          "furigana": "安[やす]いので、これを買[か]います。"
         }
       ],
       "vocabulary_slugs": [
@@ -98,7 +104,8 @@
           "vocabulary_slugs": [
             "benkyou-suru",
             "shiken"
-          ]
+          ],
+          "furigana": "勉[べん]強[きょう]したのに、試[し]験[けん]に落[お]ちました。"
         },
         {
           "japanese": "お金があるのに、使いません。",
@@ -107,7 +114,8 @@
           "vocabulary_slugs": [
             "okane",
             "tsukau"
-          ]
+          ],
+          "furigana": "お金[かね]があるのに、使[つか]いません。"
         },
         {
           "japanese": "約束したのに、来ませんでした。",
@@ -116,7 +124,8 @@
           "vocabulary_slugs": [
             "yakusoku",
             "kuru-v"
-          ]
+          ],
+          "furigana": "約[やく]束[そく]したのに、来[らい]ませんでした。"
         },
         {
           "japanese": "忙しいのに、手伝ってくれました。",
@@ -125,7 +134,8 @@
           "vocabulary_slugs": [
             "isogashii",
             "tetsudatte-kureru"
-          ]
+          ],
+          "furigana": "忙[いそが]しいのに、手伝[てつだ]ってくれました。"
         },
         {
           "japanese": "若いのに、とても物知りです。",
@@ -133,7 +143,8 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "wakai"
-          ]
+          ],
+          "furigana": "若[わか]いのに、とても物[もの]知[し]りです。"
         }
       ],
       "vocabulary_slugs": [
@@ -164,7 +175,8 @@
           "vocabulary_slugs": [
             "tenki",
             "ashita"
-          ]
+          ],
+          "furigana": "天[てん]気[き]予[よ]報[ほう]によると、明日[あした]は雨[あめ]だそうです。"
         },
         {
           "japanese": "あの店は美味しいそうです。",
@@ -173,7 +185,8 @@
           "vocabulary_slugs": [
             "mise",
             "oishii"
-          ]
+          ],
+          "furigana": "あの店[みせ]は美味[おい]しいそうです。"
         },
         {
           "japanese": "彼はもう帰ったそうです。",
@@ -182,7 +195,8 @@
           "vocabulary_slugs": [
             "kare",
             "kaeru-v"
-          ]
+          ],
+          "furigana": "彼[かれ]はもう帰[かえ]ったそうです。"
         },
         {
           "japanese": "来週試験があるそうです。",
@@ -191,7 +205,8 @@
           "vocabulary_slugs": [
             "raishuu",
             "shiken"
-          ]
+          ],
+          "furigana": "来[らい]週[しゅう]試[し]験[けん]があるそうです。"
         },
         {
           "japanese": "彼女は結婚するそうです。",
@@ -200,7 +215,8 @@
           "vocabulary_slugs": [
             "kanojo",
             "kekkon-suru"
-          ]
+          ],
+          "furigana": "彼[かの]女[じょ]は結[けっ]婚[こん]するそうです。"
         }
       ],
       "vocabulary_slugs": [
@@ -231,7 +247,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ryouri"
-          ]
+          ],
+          "furigana": "この料[りょう]理[り]は美味[おい]しそうです。"
         },
         {
           "japanese": "雨が降りそうです。",
@@ -239,7 +256,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]りそうです。"
         },
         {
           "japanese": "楽しそうな顔をしていますね。",
@@ -247,7 +265,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "kao"
-          ]
+          ],
+          "furigana": "楽[たの]しそうな顔[かお]をしていますね。"
         },
         {
           "japanese": "大変そうですね、手伝いましょうか。",
@@ -255,7 +274,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "taihen"
-          ]
+          ],
+          "furigana": "大[たい]変[へん]そうですね、手伝[てつだ]いましょうか。"
         },
         {
           "japanese": "彼は元気そうです。",
@@ -264,7 +284,8 @@
           "vocabulary_slugs": [
             "kare",
             "genki"
-          ]
+          ],
+          "furigana": "彼[かれ]は元[げん]気[き]そうです。"
         }
       ],
       "vocabulary_slugs": [
@@ -295,7 +316,8 @@
           "vocabulary_slugs": [
             "jikan",
             "eiga"
-          ]
+          ],
+          "furigana": "時[じ]間[かん]があったら、映[えい]画[が]を見[み]ましょう。"
         },
         {
           "japanese": "雨が降ったら、行きません。",
@@ -303,7 +325,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]ったら、行[い]きません。"
         },
         {
           "japanese": "駅に着いたら、電話してください。",
@@ -312,7 +335,8 @@
           "vocabulary_slugs": [
             "eki",
             "denwa-suru"
-          ]
+          ],
+          "furigana": "駅[えき]に着[つ]いたら、電[でん]話[わ]してください。"
         },
         {
           "japanese": "安かったら、買います。",
@@ -320,7 +344,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "yasui-adj"
-          ]
+          ],
+          "furigana": "安[やす]かったら、買[か]います。"
         },
         {
           "japanese": "宿題が終わったら、遊びに行きます。",
@@ -330,7 +355,8 @@
             "shukudai",
             "owaru",
             "asobu"
-          ]
+          ],
+          "furigana": "宿[しゅく]題[だい]が終[お]わったら、遊[あそ]びに行[い]きます。"
         },
         {
           "japanese": "先生に聞いたら、分かりました。",
@@ -340,7 +366,8 @@
             "sensei",
             "kiku-v",
             "wakaru"
-          ]
+          ],
+          "furigana": "先[せん]生[せい]に聞[き]いたら、分[わ]かりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -374,7 +401,8 @@
           "vocabulary_slugs": [
             "okane",
             "ryokou"
-          ]
+          ],
+          "furigana": "お金[かね]があれば、旅[りょ]行[こう]に行[い]きたいです。"
         },
         {
           "japanese": "安ければ、買います。",
@@ -382,7 +410,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "yasui-adj"
-          ]
+          ],
+          "furigana": "安[やす]ければ、買[か]います。"
         },
         {
           "japanese": "練習すれば、上手になります。",
@@ -391,7 +420,8 @@
           "vocabulary_slugs": [
             "renshuu-suru",
             "jouzu"
-          ]
+          ],
+          "furigana": "練[れん]習[しゅう]すれば、上手[じょうず]になります。"
         },
         {
           "japanese": "薬を飲めば、治ります。",
@@ -400,7 +430,8 @@
           "vocabulary_slugs": [
             "kusuri",
             "naoru"
-          ]
+          ],
+          "furigana": "薬[くすり]を飲[の]めば、治[なお]ります。"
         },
         {
           "japanese": "急げば、間に合います。",
@@ -408,7 +439,8 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "isogu"
-          ]
+          ],
+          "furigana": "急[いそ]げば、間[ま]に合[あ]います。"
         }
       ],
       "vocabulary_slugs": [
@@ -439,7 +471,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kuru-v"
-          ]
+          ],
+          "furigana": "東[とう]京[きょう]へ行[い]くなら、新[しん]幹[かん]線[せん]が便[べん]利[り]です。"
         },
         {
           "japanese": "暇なら、遊びに来てください。",
@@ -448,7 +481,8 @@
           "vocabulary_slugs": [
             "hima",
             "asobu"
-          ]
+          ],
+          "furigana": "暇[ひま]なら、遊[あそ]びに来[らい]てください。"
         },
         {
           "japanese": "本当なら、大変です。",
@@ -457,7 +491,8 @@
           "vocabulary_slugs": [
             "hontou-ni",
             "taihen"
-          ]
+          ],
+          "furigana": "本[ほん]当[とう]なら、大[たい]変[へん]です。"
         },
         {
           "japanese": "行くなら、一緒に行きましょう。",
@@ -465,7 +500,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "issho-ni"
-          ]
+          ],
+          "furigana": "行[い]くなら、一[いっ]緒[しょ]に行[い]きましょう。"
         }
       ],
       "vocabulary_slugs": [
@@ -497,7 +533,8 @@
           "vocabulary_slugs": [
             "nihongo",
             "hanaseru"
-          ]
+          ],
+          "furigana": "日本[にほん]語[ご]が話[はな]せます。"
         },
         {
           "japanese": "漢字が読めます。",
@@ -506,7 +543,8 @@
           "vocabulary_slugs": [
             "kanji-word",
             "yomeru"
-          ]
+          ],
+          "furigana": "漢[かん]字[じ]が読[よ]めます。"
         },
         {
           "japanese": "辛い物が食べられます。",
@@ -515,7 +553,8 @@
           "vocabulary_slugs": [
             "karai",
             "taberareru"
-          ]
+          ],
+          "furigana": "辛[から]い物[もの]が食[た]べられます。"
         },
         {
           "japanese": "早く起きられません。",
@@ -524,7 +563,8 @@
           "vocabulary_slugs": [
             "hayai-early",
             "okiru"
-          ]
+          ],
+          "furigana": "早[はや]く起[お]きられません。"
         },
         {
           "japanese": "この川で泳げます。",
@@ -533,7 +573,8 @@
           "vocabulary_slugs": [
             "kawa-v",
             "oyogeru"
-          ]
+          ],
+          "furigana": "この川[かわ]で泳[およ]げます。"
         }
       ],
       "vocabulary_slugs": [
@@ -564,7 +605,8 @@
           "vocabulary_slugs": [
             "sensei",
             "homerareru"
-          ]
+          ],
+          "furigana": "先[せん]生[せい]に褒[ほ]められました。"
         },
         {
           "japanese": "犬に噛まれました。",
@@ -572,7 +614,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "inu"
-          ]
+          ],
+          "furigana": "犬[いぬ]に噛[か]まれました。"
         },
         {
           "japanese": "雨に降られて、困りました。",
@@ -580,7 +623,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]に降[ふ]られて、困[こま]りました。"
         },
         {
           "japanese": "親に叱られました。",
@@ -589,7 +633,8 @@
           "vocabulary_slugs": [
             "oya",
             "shikarareru"
-          ]
+          ],
+          "furigana": "親[おや]に叱[しか]られました。"
         },
         {
           "japanese": "この本は多くの人に読まれています。",
@@ -597,7 +642,8 @@
           "sort_order": 4,
           "vocabulary_slugs": [
             "hon"
-          ]
+          ],
+          "furigana": "この本[ほん]は多[おお]くの人[ひと]に読[よ]まれています。"
         }
       ],
       "vocabulary_slugs": [
@@ -629,7 +675,8 @@
             "kodomo-v",
             "yasai",
             "taberasaseru"
-          ]
+          ],
+          "furigana": "子[こ]供[ども]に野[や]菜[さい]を食[た]べさせます。"
         },
         {
           "japanese": "先生は学生に本を読ませました。",
@@ -639,7 +686,8 @@
             "sensei",
             "gakusei",
             "hon"
-          ]
+          ],
+          "furigana": "先[せん]生[せい]は学[がく]生[せい]に本[ほん]を読[よ]ませました。"
         },
         {
           "japanese": "母は私を買い物に行かせました。",
@@ -649,7 +697,8 @@
             "haha",
             "kaimono",
             "ikaseru"
-          ]
+          ],
+          "furigana": "母[はは]は私[わたし]を買[か]い物[もの]に行[い]かせました。"
         },
         {
           "japanese": "好きなようにやらせてください。",
@@ -658,7 +707,8 @@
           "vocabulary_slugs": [
             "suki",
             "yaraseru"
-          ]
+          ],
+          "furigana": "好[す]きなようにやらせてください。"
         }
       ],
       "vocabulary_slugs": [
@@ -690,7 +740,8 @@
           "vocabulary_slugs": [
             "eki",
             "matasareru"
-          ]
+          ],
+          "furigana": "駅[えき]で一[いち]時[じ]間[かん]待[ま]たされました。"
         },
         {
           "japanese": "子供の頃、野菜を食べさせられました。",
@@ -699,7 +750,8 @@
           "vocabulary_slugs": [
             "kodomo-v",
             "yasai"
-          ]
+          ],
+          "furigana": "子[こ]供[ども]の頃[ころ]、野[や]菜[さい]を食[た]べさせられました。"
         },
         {
           "japanese": "上司に残業させられました。",
@@ -707,7 +759,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "zangyou"
-          ]
+          ],
+          "furigana": "上[じょう]司[し]に残[ざん]業[ぎょう]させられました。"
         }
       ],
       "vocabulary_slugs": [
@@ -736,7 +789,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "wasureru"
-          ]
+          ],
+          "furigana": "忘[わす]れないように、メモします。"
         },
         {
           "japanese": "よく聞こえるように、大きい声で話します。",
@@ -744,7 +798,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kikoeru"
-          ]
+          ],
+          "furigana": "よく聞[き]こえるように、大[おお]きい声[こえ]で話[はな]します。"
         },
         {
           "japanese": "遅れないように、早く出ます。",
@@ -752,7 +807,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "okureru"
-          ]
+          ],
+          "furigana": "遅[おく]れないように、早[はや]く出[で]ます。"
         },
         {
           "japanese": "風邪をひかないように、気をつけてください。",
@@ -760,7 +816,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "kaze-cold"
-          ]
+          ],
+          "furigana": "風邪[かぜ]をひかないように、気[き]をつけてください。"
         }
       ],
       "vocabulary_slugs": [
@@ -791,7 +848,8 @@
           "vocabulary_slugs": [
             "nihongo",
             "hanaseru"
-          ]
+          ],
+          "furigana": "日本[にほん]語[ご]が話[はな]せるようになりました。"
         },
         {
           "japanese": "漢字が読めるようになりました。",
@@ -800,7 +858,8 @@
           "vocabulary_slugs": [
             "kanji-word",
             "yomeru"
-          ]
+          ],
+          "furigana": "漢[かん]字[じ]が読[よ]めるようになりました。"
         },
         {
           "japanese": "毎日運動するようになりました。",
@@ -809,7 +868,8 @@
           "vocabulary_slugs": [
             "mainichi",
             "undou-suru"
-          ]
+          ],
+          "furigana": "毎[まい]日[にち]運[うん]動[どう]するようになりました。"
         },
         {
           "japanese": "一人で行けるようになりました。",
@@ -818,7 +878,8 @@
           "vocabulary_slugs": [
             "hitori-de",
             "ikeru"
-          ]
+          ],
+          "furigana": "一人[ひとり]で行[い]けるようになりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -850,7 +911,8 @@
           "vocabulary_slugs": [
             "isogashii",
             "hon"
-          ]
+          ],
+          "furigana": "忙[いそが]しくて、本[ほん]が読[よ]めなくなりました。"
         },
         {
           "japanese": "最近、お酒を飲まなくなりました。",
@@ -859,7 +921,8 @@
           "vocabulary_slugs": [
             "saikin",
             "osake"
-          ]
+          ],
+          "furigana": "最[さい]近[きん]、お酒[さけ]を飲[の]まなくなりました。"
         },
         {
           "japanese": "痛くて、歩けなくなりました。",
@@ -867,7 +930,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "itamu"
-          ]
+          ],
+          "furigana": "痛[いた]くて、歩[ある]けなくなりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -898,7 +962,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare"
-          ]
+          ],
+          "furigana": "彼[かれ]はもう着[つ]いているはずです。"
         },
         {
           "japanese": "今日は休みのはずです。",
@@ -907,7 +972,8 @@
           "vocabulary_slugs": [
             "kyou",
             "yasumu"
-          ]
+          ],
+          "furigana": "今日[きょう]は休[やす]みのはずです。"
         },
         {
           "japanese": "値段が安いはずです。",
@@ -915,7 +981,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "yasui-adj"
-          ]
+          ],
+          "furigana": "値[ね]段[だん]が安[やす]いはずです。"
         },
         {
           "japanese": "彼女は知っているはずです。",
@@ -924,7 +991,8 @@
           "vocabulary_slugs": [
             "kanojo",
             "shiru"
-          ]
+          ],
+          "furigana": "彼[かの]女[じょ]は知[し]っているはずです。"
         }
       ],
       "vocabulary_slugs": [
@@ -955,7 +1023,8 @@
           "vocabulary_slugs": [
             "kare",
             "shiru"
-          ]
+          ],
+          "furigana": "彼[かれ]が知[し]らないはずがありません。"
         },
         {
           "japanese": "こんなに安いはずがない。",
@@ -963,7 +1032,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "yasui-adj"
-          ]
+          ],
+          "furigana": "こんなに安[やす]いはずがない。"
         },
         {
           "japanese": "彼女が嘘をつくはずがない。",
@@ -971,7 +1041,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "kanojo"
-          ]
+          ],
+          "furigana": "彼[かの]女[じょ]が嘘[うそ]をつくはずがない。"
         }
       ],
       "vocabulary_slugs": [
@@ -1001,7 +1072,8 @@
           "vocabulary_slugs": [
             "ashita",
             "yuki"
-          ]
+          ],
+          "furigana": "明日[あした]は雪[ゆき]が降[ふ]るらしいです。"
         },
         {
           "japanese": "あの店は人気らしいです。",
@@ -1009,7 +1081,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "mise"
-          ]
+          ],
+          "furigana": "あの店[みせ]は人[にん]気[き]らしいです。"
         },
         {
           "japanese": "彼はもう結婚したらしいです。",
@@ -1018,7 +1091,8 @@
           "vocabulary_slugs": [
             "kare",
             "kekkon-suru"
-          ]
+          ],
+          "furigana": "彼[かれ]はもう結[けっ]婚[こん]したらしいです。"
         },
         {
           "japanese": "試験は難しいらしいです。",
@@ -1027,7 +1101,8 @@
           "vocabulary_slugs": [
             "shiken",
             "muzukashii"
-          ]
+          ],
+          "furigana": "試[し]験[けん]は難[むずか]しいらしいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1058,7 +1133,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare"
-          ]
+          ],
+          "furigana": "彼[かれ]は疲[つか]れているようです。"
         },
         {
           "japanese": "外は寒いようです。",
@@ -1067,7 +1143,8 @@
           "vocabulary_slugs": [
             "soto",
             "samui"
-          ]
+          ],
+          "furigana": "外[そと]は寒[さむ]いようです。"
         },
         {
           "japanese": "誰もいないようです。",
@@ -1075,7 +1152,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "dare-mo"
-          ]
+          ],
+          "furigana": "誰[だれ]もいないようです。"
         },
         {
           "japanese": "風邪をひいたようです。",
@@ -1083,7 +1161,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "kaze-cold"
-          ]
+          ],
+          "furigana": "風邪[かぜ]をひいたようです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1114,7 +1193,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]るみたいです。"
         },
         {
           "japanese": "彼は忙しいみたいです。",
@@ -1123,7 +1203,8 @@
           "vocabulary_slugs": [
             "kare",
             "isogashii"
-          ]
+          ],
+          "furigana": "彼[かれ]は忙[いそが]しいみたいです。"
         },
         {
           "japanese": "この店、有名みたいです。",
@@ -1132,7 +1213,8 @@
           "vocabulary_slugs": [
             "mise",
             "yuumei"
-          ]
+          ],
+          "furigana": "この店[みせ]、有[ゆう]名[めい]みたいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1163,7 +1245,8 @@
           "vocabulary_slugs": [
             "ima",
             "eiga"
-          ]
+          ],
+          "furigana": "今[いま]、映[えい]画[が]を見[み]ています。"
         },
         {
           "japanese": "雨が降っています。",
@@ -1171,7 +1254,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]っています。"
         },
         {
           "japanese": "彼は宿題をしています。",
@@ -1180,7 +1264,8 @@
           "vocabulary_slugs": [
             "kare",
             "shukudai"
-          ]
+          ],
+          "furigana": "彼[かれ]は宿[しゅく]題[だい]をしています。"
         },
         {
           "japanese": "音楽を聞いています。",
@@ -1188,7 +1273,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "ongaku"
-          ]
+          ],
+          "furigana": "音[おん]楽[がく]を聞[き]いています。"
         }
       ],
       "vocabulary_slugs": [
@@ -1217,7 +1303,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "mado"
-          ]
+          ],
+          "furigana": "窓[まど]が開[ひら]いています。"
         },
         {
           "japanese": "結婚しています。",
@@ -1225,7 +1312,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kekkon-suru"
-          ]
+          ],
+          "furigana": "結[けっ]婚[こん]しています。"
         },
         {
           "japanese": "この店は閉まっています。",
@@ -1234,7 +1322,8 @@
           "vocabulary_slugs": [
             "mise",
             "shimeru"
-          ]
+          ],
+          "furigana": "この店[みせ]は閉[し]まっています。"
         },
         {
           "japanese": "道が混んでいます。",
@@ -1242,7 +1331,8 @@
           "sort_order": 3,
           "vocabulary_slugs": [
             "michi-v"
-          ]
+          ],
+          "furigana": "道[みち]が混[こ]んでいます。"
         }
       ],
       "vocabulary_slugs": [
@@ -1271,7 +1361,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "e-picture"
-          ]
+          ],
+          "furigana": "壁[かべ]に絵[え]が飾[かざ]ってあります。"
         },
         {
           "japanese": "窓が開けてあります。",
@@ -1280,7 +1371,8 @@
           "vocabulary_slugs": [
             "mado",
             "akeru"
-          ]
+          ],
+          "furigana": "窓[まど]が開[あ]けてあります。"
         },
         {
           "japanese": "もう準備してあります。",
@@ -1288,7 +1380,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "junbi-suru"
-          ]
+          ],
+          "furigana": "もう準[じゅん]備[び]してあります。"
         }
       ],
       "vocabulary_slugs": [
@@ -1319,7 +1412,8 @@
           "vocabulary_slugs": [
             "ashita",
             "junbi-suru"
-          ]
+          ],
+          "furigana": "明日[あした]のために、準[じゅん]備[び]しておきます。"
         },
         {
           "japanese": "窓を開けておいてください。",
@@ -1328,7 +1422,8 @@
           "vocabulary_slugs": [
             "mado",
             "akeru"
-          ]
+          ],
+          "furigana": "窓[まど]を開[あ]けておいてください。"
         },
         {
           "japanese": "チケットを買っておきました。",
@@ -1337,7 +1432,8 @@
           "vocabulary_slugs": [
             "kippu",
             "kau-v"
-          ]
+          ],
+          "furigana": "チケットを買[か]っておきました。"
         }
       ],
       "vocabulary_slugs": [
@@ -1370,7 +1466,8 @@
             "shukudai",
             "zenbu",
             "wasureru"
-          ]
+          ],
+          "furigana": "宿[しゅく]題[だい]を全[ぜん]部[ぶ]忘[わす]れてしまいました。"
         },
         {
           "japanese": "財布を無くしてしまいました。",
@@ -1379,7 +1476,8 @@
           "vocabulary_slugs": [
             "saifu",
             "nakusu"
-          ]
+          ],
+          "furigana": "財[さい]布[ふ]を無[な]くしてしまいました。"
         },
         {
           "japanese": "もう食べてしまいました。",
@@ -1387,7 +1485,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "taberu"
-          ]
+          ],
+          "furigana": "もう食[た]べてしまいました。"
         }
       ],
       "vocabulary_slugs": [
@@ -1417,7 +1516,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "samui"
-          ]
+          ],
+          "furigana": "これから寒[さむ]くなっていくでしょう。"
         },
         {
           "japanese": "日本語が上手になってきました。",
@@ -1426,7 +1526,8 @@
           "vocabulary_slugs": [
             "nihongo",
             "jouzu"
-          ]
+          ],
+          "furigana": "日本[にほん]語[ご]が上手[じょうず]になってきました。"
         },
         {
           "japanese": "雨が降ってきました。",
@@ -1434,7 +1535,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]ってきました。"
         }
       ],
       "vocabulary_slugs": [
@@ -1464,7 +1566,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]っても、行[い]きます。"
         },
         {
           "japanese": "高くても、買います。",
@@ -1472,7 +1575,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "takai-adj"
-          ]
+          ],
+          "furigana": "高[たか]くても、買[か]います。"
         },
         {
           "japanese": "何回聞いても、分かりません。",
@@ -1481,7 +1585,8 @@
           "vocabulary_slugs": [
             "kai-times",
             "wakaru"
-          ]
+          ],
+          "furigana": "何[なに]回[かい]聞[き]いても、分[わ]かりません。"
         }
       ],
       "vocabulary_slugs": [
@@ -1512,7 +1617,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "suwaru"
-          ]
+          ],
+          "furigana": "ここに座[すわ]ってもいいですか。"
         },
         {
           "japanese": "写真を撮ってもいいですか。",
@@ -1520,7 +1626,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "shashin"
-          ]
+          ],
+          "furigana": "写[しゃ]真[しん]を撮[と]ってもいいですか。"
         },
         {
           "japanese": "先に帰ってもいいです。",
@@ -1528,7 +1635,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "kaeru-v"
-          ]
+          ],
+          "furigana": "先[さき]に帰[かえ]ってもいいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1557,7 +1665,8 @@
           "japanese": "ここでタバコを吸ってはいけません。",
           "english": "You must not smoke here.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "ここでタバコを吸[す]ってはいけません。"
         },
         {
           "japanese": "授業中に話してはいけません。",
@@ -1566,13 +1675,15 @@
           "vocabulary_slugs": [
             "jugyou",
             "hanasu-v"
-          ]
+          ],
+          "furigana": "授[じゅ]業[ぎょう]中[なか]に話[はな]してはいけません。"
         },
         {
           "japanese": "うそをついてはいけません。",
           "english": "You must not lie.",
           "sort_order": 2,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "うそをついてはいけません。"
         }
       ],
       "vocabulary_slugs": [
@@ -1603,7 +1714,8 @@
           "vocabulary_slugs": [
             "ashita",
             "kuru-v"
-          ]
+          ],
+          "furigana": "明日[あした]は来[らい]なくてもいいです。"
         },
         {
           "japanese": "心配しなくてもいいです。",
@@ -1611,7 +1723,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "shinpai-suru"
-          ]
+          ],
+          "furigana": "心[しん]配[ぱい]しなくてもいいです。"
         },
         {
           "japanese": "お金を払わなくてもいいです。",
@@ -1620,7 +1733,8 @@
           "vocabulary_slugs": [
             "okane",
             "harau"
-          ]
+          ],
+          "furigana": "お金[かね]を払[はら]わなくてもいいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1651,7 +1765,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "shukudai"
-          ]
+          ],
+          "furigana": "宿[しゅく]題[だい]をしなければなりません。"
         },
         {
           "japanese": "薬を飲まなければなりません。",
@@ -1659,7 +1774,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kusuri"
-          ]
+          ],
+          "furigana": "薬[くすり]を飲[の]まなければなりません。"
         },
         {
           "japanese": "九時までに行かなければなりません。",
@@ -1667,7 +1783,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "iku-v"
-          ]
+          ],
+          "furigana": "九[きゅう]時[じ]までに行[い]かなければなりません。"
         }
       ],
       "vocabulary_slugs": [
@@ -1695,7 +1812,8 @@
           "japanese": "転びそうになりました。",
           "english": "I almost fell over.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "転[ころ]びそうになりました。"
         },
         {
           "japanese": "電車に遅れそうになりました。",
@@ -1704,7 +1822,8 @@
           "vocabulary_slugs": [
             "densha",
             "okureru"
-          ]
+          ],
+          "furigana": "電[でん]車[しゃ]に遅[おく]れそうになりました。"
         },
         {
           "japanese": "泣きそうになりました。",
@@ -1712,7 +1831,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "naku"
-          ]
+          ],
+          "furigana": "泣[な]きそうになりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -1745,7 +1865,8 @@
             "rainen",
             "nihon",
             "iku-v"
-          ]
+          ],
+          "furigana": "来[らい]年[ねん]、日本[にほん]へ行[い]くつもりです。"
         },
         {
           "japanese": "今日は勉強するつもりです。",
@@ -1754,7 +1875,8 @@
           "vocabulary_slugs": [
             "kyou",
             "benkyou-suru"
-          ]
+          ],
+          "furigana": "今日[きょう]は勉[べん]強[きょう]するつもりです。"
         },
         {
           "japanese": "彼と結婚するつもりです。",
@@ -1763,7 +1885,8 @@
           "vocabulary_slugs": [
             "kare",
             "kekkon-suru"
-          ]
+          ],
+          "furigana": "彼[かれ]と結[けっ]婚[こん]するつもりです。"
         }
       ],
       "vocabulary_slugs": [
@@ -1794,7 +1917,8 @@
           "vocabulary_slugs": [
             "mainichi",
             "undou-suru"
-          ]
+          ],
+          "furigana": "毎[まい]日[にち]運[うん]動[どう]するようにしています。"
         },
         {
           "japanese": "野菜を食べるようにしています。",
@@ -1803,7 +1927,8 @@
           "vocabulary_slugs": [
             "yasai",
             "taberu"
-          ]
+          ],
+          "furigana": "野[や]菜[さい]を食[た]べるようにしています。"
         },
         {
           "japanese": "早く寝るようにしましょう。",
@@ -1812,7 +1937,8 @@
           "vocabulary_slugs": [
             "hayai-early",
             "neru"
-          ]
+          ],
+          "furigana": "早[はや]く寝[ね]るようにしましょう。"
         }
       ],
       "vocabulary_slugs": [
@@ -1843,7 +1969,8 @@
           "vocabulary_slugs": [
             "nihon",
             "iku-v"
-          ]
+          ],
+          "furigana": "日本[にほん]へ行[い]ったことがあります。"
         },
         {
           "japanese": "寿司を食べたことがあります。",
@@ -1852,7 +1979,8 @@
           "vocabulary_slugs": [
             "sushi",
             "taberu"
-          ]
+          ],
+          "furigana": "寿[す]司[し]を食[た]べたことがあります。"
         },
         {
           "japanese": "たまに遅刻することがあります。",
@@ -1861,7 +1989,8 @@
           "vocabulary_slugs": [
             "tama-ni",
             "chikoku-suru"
-          ]
+          ],
+          "furigana": "たまに遅[ち]刻[こく]することがあります。"
         }
       ],
       "vocabulary_slugs": [
@@ -1891,13 +2020,15 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "rainen"
-          ]
+          ],
+          "furigana": "来[らい]年[ねん]、留[りゅう]学[がく]することにしました。"
         },
         {
           "japanese": "タバコをやめることにしました。",
           "english": "I decided to quit smoking.",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "タバコをやめることにしました。"
         },
         {
           "japanese": "毎朝散歩することにしています。",
@@ -1906,7 +2037,8 @@
           "vocabulary_slugs": [
             "maiasa",
             "sanpo-suru"
-          ]
+          ],
+          "furigana": "毎[まい]朝[あさ]散[さん]歩[ぽ]することにしています。"
         }
       ],
       "vocabulary_slugs": [
@@ -1938,7 +2070,8 @@
           "vocabulary_slugs": [
             "raigetsu",
             "hikkoshi"
-          ]
+          ],
+          "furigana": "来[らい]月[げつ]、大[おお]阪[さか]に引[ひ]っ越[こ]すことになりました。"
         },
         {
           "japanese": "会議は中止することになりました。",
@@ -1946,7 +2079,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kaigi"
-          ]
+          ],
+          "furigana": "会[かい]議[ぎ]は中[ちゅう]止[し]することになりました。"
         },
         {
           "japanese": "毎週レポートを出すことになっています。",
@@ -1954,7 +2088,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "maishuu"
-          ]
+          ],
+          "furigana": "毎[まい]週[しゅう]レポートを出[だ]すことになっています。"
         }
       ],
       "vocabulary_slugs": [
@@ -1985,13 +2120,15 @@
           "vocabulary_slugs": [
             "kodomo-v",
             "asobu"
-          ]
+          ],
+          "furigana": "子[こ]供[ども]の頃[ころ]、よく遊[あそ]んだものです。"
         },
         {
           "japanese": "疲れたもの、休みたいです。",
           "english": "I'm tired, so I want to rest.",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "疲[つか]れたもの、休[やす]みたいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2020,13 +2157,15 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare"
-          ]
+          ],
+          "furigana": "彼[かれ]はゲームばかりしています。"
         },
         {
           "japanese": "さっき着いたばかりです。",
           "english": "I just arrived a moment ago.",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "さっき着[つ]いたばかりです。"
         },
         {
           "japanese": "甘い物ばかり食べています。",
@@ -2034,7 +2173,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "amai"
-          ]
+          ],
+          "furigana": "甘[あま]い物[もの]ばかり食[た]べています。"
         }
       ],
       "vocabulary_slugs": [
@@ -2064,7 +2204,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ima"
-          ]
+          ],
+          "furigana": "今[いま]から出[で]かけるところです。"
         },
         {
           "japanese": "今、食べているところです。",
@@ -2073,7 +2214,8 @@
           "vocabulary_slugs": [
             "ima",
             "taberu"
-          ]
+          ],
+          "furigana": "今[いま]、食[た]べているところです。"
         },
         {
           "japanese": "ちょうど終わったところです。",
@@ -2081,7 +2223,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "owaru"
-          ]
+          ],
+          "furigana": "ちょうど終[お]わったところです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2111,7 +2254,8 @@
           "vocabulary_slugs": [
             "kodomo-v",
             "neru"
-          ]
+          ],
+          "furigana": "子[こ]供[ども]が寝[ね]ている間[あいだ]に、掃[そう]除[じ]をします。"
         },
         {
           "japanese": "夏休みの間、旅行しました。",
@@ -2120,7 +2264,8 @@
           "vocabulary_slugs": [
             "natsu",
             "ryokou"
-          ]
+          ],
+          "furigana": "夏[なつ]休[やす]みの間[あいだ]、旅[りょ]行[こう]しました。"
         },
         {
           "japanese": "彼が話している間、静かにしていました。",
@@ -2129,7 +2274,8 @@
           "vocabulary_slugs": [
             "kare",
             "shizuka"
-          ]
+          ],
+          "furigana": "彼[かれ]が話[はな]している間[あいだ]、静[しず]かにしていました。"
         }
       ],
       "vocabulary_slugs": [
@@ -2158,7 +2304,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "atatakai"
-          ]
+          ],
+          "furigana": "暖[あたた]かいうちに食[た]べてください。"
         },
         {
           "japanese": "若いうちに、色々経験した方がいいです。",
@@ -2166,7 +2313,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "wakai"
-          ]
+          ],
+          "furigana": "若[わか]いうちに、色[いろ]々[いろ]経[けい]験[けん]した方[ほう]がいいです。"
         },
         {
           "japanese": "忘れないうちに、メモしておきます。",
@@ -2174,7 +2322,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "wasureru"
-          ]
+          ],
+          "furigana": "忘[わす]れないうちに、メモしておきます。"
         }
       ],
       "vocabulary_slugs": [
@@ -2204,7 +2353,8 @@
           "vocabulary_slugs": [
             "kare",
             "genki"
-          ]
+          ],
+          "furigana": "彼[かれ]に会[あ]うたびに、元[げん]気[き]をもらいます。"
         },
         {
           "japanese": "旅行のたびに、写真を撮ります。",
@@ -2213,7 +2363,8 @@
           "vocabulary_slugs": [
             "ryokou",
             "shashin"
-          ]
+          ],
+          "furigana": "旅[りょ]行[こう]のたびに、写[しゃ]真[しん]を撮[ど]ります。"
         }
       ],
       "vocabulary_slugs": [
@@ -2243,7 +2394,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]の場[ば]合[あい]は、中[ちゅう]止[し]します。"
         },
         {
           "japanese": "遅れる場合は、連絡してください。",
@@ -2252,7 +2404,8 @@
           "vocabulary_slugs": [
             "okureru",
             "renraku-suru"
-          ]
+          ],
+          "furigana": "遅[おく]れる場[ば]合[あい]は、連[れん]絡[らく]してください。"
         },
         {
           "japanese": "分からない場合は、聞いてください。",
@@ -2261,7 +2414,8 @@
           "vocabulary_slugs": [
             "wakaru",
             "kiku-v"
-          ]
+          ],
+          "furigana": "分[わ]からない場[ば]合[あい]は、聞[き]いてください。"
         }
       ],
       "vocabulary_slugs": [
@@ -2291,7 +2445,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "haru"
-          ]
+          ],
+          "furigana": "春[はる]になると、花[はな]が咲[さ]きます。"
         },
         {
           "japanese": "このボタンを押すと、電気がつきます。",
@@ -2299,7 +2454,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "denki"
-          ]
+          ],
+          "furigana": "このボタンを押[お]すと、電[でん]気[き]がつきます。"
         },
         {
           "japanese": "右に曲がると、駅があります。",
@@ -2308,7 +2464,8 @@
           "vocabulary_slugs": [
             "magaru",
             "eki"
-          ]
+          ],
+          "furigana": "右[みぎ]に曲[ま]がると、駅[えき]があります。"
         }
       ],
       "vocabulary_slugs": [
@@ -2336,7 +2493,8 @@
           "japanese": "疲れたから、休みます。",
           "english": "Because I'm tired, I'll rest.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "疲[つか]れたから、休[やす]みます。"
         },
         {
           "japanese": "危ないから、気をつけてください。",
@@ -2344,7 +2502,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "abunai"
-          ]
+          ],
+          "furigana": "危[あぶ]ないから、気[き]をつけてください。"
         },
         {
           "japanese": "約束したから、行かなければなりません。",
@@ -2352,7 +2511,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "yakusoku"
-          ]
+          ],
+          "furigana": "約[やく]束[そく]したから、行[い]かなければなりません。"
         }
       ],
       "vocabulary_slugs": [
@@ -2378,7 +2538,8 @@
           "japanese": "兄の代わりに、私が行きます。",
           "english": "I'll go instead of my older brother.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "兄[あに]の代[か]わりに、私[わたし]が行[い]きます。"
         },
         {
           "japanese": "お金を払う代わりに、手伝いました。",
@@ -2388,7 +2549,8 @@
             "okane",
             "harau",
             "tetsudau"
-          ]
+          ],
+          "furigana": "お金[かね]を払[はら]う代[か]わりに、手伝[てつだ]いました。"
         }
       ],
       "vocabulary_slugs": [
@@ -2417,7 +2579,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "isogashii"
-          ]
+          ],
+          "furigana": "忙[いそが]しいというより、疲[つか]れています。"
         },
         {
           "japanese": "好きというより、必要です。",
@@ -2425,7 +2588,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "suki"
-          ]
+          ],
+          "furigana": "好[す]きというより、必[ひつ]要[よう]です。"
         }
       ],
       "vocabulary_slugs": [
@@ -2454,7 +2618,8 @@
           "vocabulary_slugs": [
             "sensei",
             "gakusei"
-          ]
+          ],
+          "furigana": "先[せん]生[せい]として、学[がく]生[せい]を指[し]導[どう]します。"
         },
         {
           "japanese": "友達として、彼を助けたいです。",
@@ -2463,7 +2628,8 @@
           "vocabulary_slugs": [
             "tomodachi",
             "tasukeru"
-          ]
+          ],
+          "furigana": "友[とも]達[だち]として、彼[かれ]を助[たす]けたいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2494,7 +2660,8 @@
           "vocabulary_slugs": [
             "nihon",
             "bunka"
-          ]
+          ],
+          "furigana": "日本[にほん]の文[ぶん]化[か]について話[はな]しました。"
         },
         {
           "japanese": "この問題について考えてください。",
@@ -2502,7 +2669,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "mondai"
-          ]
+          ],
+          "furigana": "この問[もん]題[だい]について考[かんが]えてください。"
         }
       ],
       "vocabulary_slugs": [
@@ -2533,7 +2701,8 @@
           "vocabulary_slugs": [
             "tenki",
             "ashita"
-          ]
+          ],
+          "furigana": "天[てん]気[き]予[よ]報[ほう]によると、明日[あした]は晴[は]れです。"
         },
         {
           "japanese": "新聞によると、事故があったそうです。",
@@ -2541,7 +2710,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "shinbun"
-          ]
+          ],
+          "furigana": "新[しん]聞[ぶん]によると、事[じ]故[こ]があったそうです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2572,7 +2742,8 @@
           "vocabulary_slugs": [
             "taifuu",
             "densha"
-          ]
+          ],
+          "furigana": "台[たい]風[ふう]のため、電[でん]車[しゃ]が止[と]まりました。"
         },
         {
           "japanese": "雨が降ったため、試合は中止になりました。",
@@ -2580,7 +2751,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]ったため、試[し]合[あい]は中[ちゅう]止[し]になりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -2610,7 +2782,8 @@
           "vocabulary_slugs": [
             "shiru",
             "kare"
-          ]
+          ],
+          "furigana": "私[わたし]が知[し]っている限[かぎ]り、彼[かれ]は正[しょう]直[じき]です。"
         },
         {
           "japanese": "できる限り、頑張ります。",
@@ -2618,7 +2791,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "ganbaru"
-          ]
+          ],
+          "furigana": "できる限[かぎ]り、頑[がん]張[ば]ります。"
         }
       ],
       "vocabulary_slugs": [
@@ -2647,7 +2821,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "たとえ雨[あめ]が降[ふ]っても、行[い]きます。"
         },
         {
           "japanese": "たとえ難しくても、挑戦します。",
@@ -2655,7 +2830,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "muzukashii"
-          ]
+          ],
+          "furigana": "たとえ難[むずか]しくても、挑[ちょう]戦[せん]します。"
         }
       ],
       "vocabulary_slugs": [
@@ -2682,7 +2858,8 @@
           "japanese": "これ、いくらだったっけ。",
           "english": "How much was this again?",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "これ、いくらだったっけ。"
         },
         {
           "japanese": "明日、何をするんだっけ。",
@@ -2690,7 +2867,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "ashita"
-          ]
+          ],
+          "furigana": "明日[あした]、何[なに]をするんだっけ。"
         }
       ],
       "vocabulary_slugs": [
@@ -2717,7 +2895,8 @@
           "japanese": "どうしたんですか。",
           "english": "What's the matter? (explanation sought)",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "どうしたんですか。"
         },
         {
           "japanese": "実は、忙しいんです。",
@@ -2725,7 +2904,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "isogashii"
-          ]
+          ],
+          "furigana": "実[じつ]は、忙[いそが]しいんです。"
         },
         {
           "japanese": "財布を忘れたんです。",
@@ -2734,7 +2914,8 @@
           "vocabulary_slugs": [
             "saifu",
             "wasureru"
-          ]
+          ],
+          "furigana": "財[さい]布[ふ]を忘[わす]れたんです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2764,7 +2945,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ashita"
-          ]
+          ],
+          "furigana": "明日[あした]は雨[あめ]でしょう。"
         },
         {
           "japanese": "彼はもう知っているでしょう。",
@@ -2773,13 +2955,15 @@
           "vocabulary_slugs": [
             "kare",
             "shiru"
-          ]
+          ],
+          "furigana": "彼[かれ]はもう知[し]っているでしょう。"
         },
         {
           "japanese": "これでいいでしょう。",
           "english": "This should be fine, right?",
           "sort_order": 2,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "これでいいでしょう。"
         }
       ],
       "vocabulary_slugs": [
@@ -2810,7 +2994,8 @@
           "vocabulary_slugs": [
             "ashita",
             "yuki"
-          ]
+          ],
+          "furigana": "明日[あした]は雪[ゆき]が降[ふ]るかもしれません。"
         },
         {
           "japanese": "彼は来ないかもしれません。",
@@ -2819,7 +3004,8 @@
           "vocabulary_slugs": [
             "kare",
             "kuru-v"
-          ]
+          ],
+          "furigana": "彼[かれ]は来[らい]ないかもしれません。"
         },
         {
           "japanese": "これは高いかもしれません。",
@@ -2827,7 +3013,8 @@
           "sort_order": 2,
           "vocabulary_slugs": [
             "takai-adj"
-          ]
+          ],
+          "furigana": "これは高[たか]いかもしれません。"
         }
       ],
       "vocabulary_slugs": [
@@ -2858,7 +3045,8 @@
           "vocabulary_slugs": [
             "kutsu",
             "aruku"
-          ]
+          ],
+          "furigana": "この靴[くつ]は歩[ある]きやすいです。"
         },
         {
           "japanese": "この漢字は読みにくいです。",
@@ -2867,7 +3055,8 @@
           "vocabulary_slugs": [
             "kanji-word",
             "yomu"
-          ]
+          ],
+          "furigana": "この漢[かん]字[じ]は読[よ]みにくいです。"
         },
         {
           "japanese": "この本は分かりやすいです。",
@@ -2876,7 +3065,8 @@
           "vocabulary_slugs": [
             "hon",
             "wakaru"
-          ]
+          ],
+          "furigana": "この本[ほん]は分[わ]かりやすいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2906,7 +3096,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "taberu"
-          ]
+          ],
+          "furigana": "食[た]べすぎました。"
         },
         {
           "japanese": "このコーヒーは熱すぎます。",
@@ -2915,7 +3106,8 @@
           "vocabulary_slugs": [
             "koohii",
             "atsui-obj"
-          ]
+          ],
+          "furigana": "このコーヒーは熱[ねつ]すぎます。"
         },
         {
           "japanese": "働きすぎるのは体に悪いです。",
@@ -2924,7 +3116,8 @@
           "vocabulary_slugs": [
             "hataraku",
             "karada"
-          ]
+          ],
+          "furigana": "働[はたら]きすぎるのは体[からだ]に悪[わる]いです。"
         }
       ],
       "vocabulary_slugs": [
@@ -2954,7 +3147,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "keizai"
-          ]
+          ],
+          "furigana": "経[けい]済[ざい]は回[かい]復[ふく]しつつあります。"
         },
         {
           "japanese": "環境は変わりつつあります。",
@@ -2962,7 +3156,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "kankyou"
-          ]
+          ],
+          "furigana": "環[かん]境[きょう]は変[か]わりつつあります。"
         }
       ],
       "vocabulary_slugs": [
@@ -2991,7 +3186,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "nayamu"
-          ]
+          ],
+          "furigana": "さんざん悩[なや]んだあげく、諦[あきら]めました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3020,7 +3216,8 @@
           "vocabulary_slugs": [
             "samui",
             "yuki"
-          ]
+          ],
+          "furigana": "道[どう]理[り]で、寒[さむ]いわけです。今日[きょう]は雪[ゆき]ですから。"
         },
         {
           "japanese": "彼はアメリカ育ちだから、英語が上手なわけです。",
@@ -3029,7 +3226,8 @@
           "vocabulary_slugs": [
             "eigo",
             "jouzu"
-          ]
+          ],
+          "furigana": "彼[かれ]はアメリカ育[そだ]ちだから、英[えい]語[ご]が上手[じょうず]なわけです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3059,7 +3257,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kare"
-          ]
+          ],
+          "furigana": "彼[かれ]がそんなことを言[い]うわけがありません。"
         },
         {
           "japanese": "こんなに簡単な問題が分からないわけがない。",
@@ -3069,7 +3268,8 @@
             "kantan-n4",
             "mondai",
             "wakaru"
-          ]
+          ],
+          "furigana": "こんなに簡[かん]単[たん]な問[もん]題[だい]が分[わ]からないわけがない。"
         }
       ],
       "vocabulary_slugs": [
@@ -3099,13 +3299,15 @@
           "vocabulary_slugs": [
             "tesuto",
             "muzukashii"
-          ]
+          ],
+          "furigana": "このテストはかなり難[むずか]しいです。"
         },
         {
           "japanese": "かなり疲れました。",
           "english": "I got quite tired.",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "かなり疲[つか]れました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3135,7 +3337,8 @@
           "vocabulary_slugs": [
             "kare",
             "ganbaru"
-          ]
+          ],
+          "furigana": "彼[かれ]ほど頑張[がんば]っている人[ひと]はいません。"
         },
         {
           "japanese": "練習すればするほど、上手になります。",
@@ -3144,7 +3347,8 @@
           "vocabulary_slugs": [
             "renshuu-suru",
             "jouzu"
-          ]
+          ],
+          "furigana": "練[れん]習[しゅう]すればするほど、上手[じょうず]になります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3174,13 +3378,15 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ureshii"
-          ]
+          ],
+          "furigana": "泣[な]きたいくらい嬉[うれ]しいです。"
         },
         {
           "japanese": "死ぬくらい疲れました。",
           "english": "I'm tired to death (extremely tired).",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "死[し]ぬくらい疲[つか]れました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3208,7 +3414,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "eigo"
-          ]
+          ],
+          "furigana": "英[えい]語[ご]だけでなく、中[ちゅう]国[ごく]語[ご]も話[はな]せます。"
         },
         {
           "japanese": "彼は頭がいいだけでなく、優しいです。",
@@ -3217,7 +3424,8 @@
           "vocabulary_slugs": [
             "kare",
             "yasashii-n4"
-          ]
+          ],
+          "furigana": "彼[かれ]は頭[あたま]がいいだけでなく、優[やさ]しいです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3247,7 +3455,8 @@
           "vocabulary_slugs": [
             "nihon",
             "sekai"
-          ]
+          ],
+          "furigana": "日本[にほん]に限[かぎ]らず、世[せ]界[かい]中[なか]で人[にん]気[き]があります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3275,7 +3484,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "benri"
-          ]
+          ],
+          "furigana": "便[べん]利[り]な一[いっ]方[ぽう]で、値[ね]段[だん]が高[たか]いです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3303,7 +3513,8 @@
           "vocabulary_slugs": [
             "kazoku",
             "ichiban"
-          ]
+          ],
+          "furigana": "私[わたし]にとって、家[か]族[ぞく]が一[いち]番[ばん]大[たい]切[せつ]です。"
         }
       ],
       "vocabulary_slugs": [
@@ -3332,7 +3543,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "shitsumon"
-          ]
+          ],
+          "furigana": "この件[けん]に関[かん]して、質[しつ]問[もん]があります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3362,7 +3574,8 @@
           "vocabulary_slugs": [
             "mondai",
             "muzukashii"
-          ]
+          ],
+          "furigana": "こういう問[もん]題[だい]は難[むずか]しいです。"
         },
         {
           "japanese": "そういう人は好きじゃないです。",
@@ -3370,7 +3583,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "suki"
-          ]
+          ],
+          "furigana": "そういう人[ひと]は好[す]きじゃないです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3399,7 +3613,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "yasashii-n4"
-          ]
+          ],
+          "furigana": "田中[たなか]さんって、優[やさ]しいですね。"
         },
         {
           "japanese": "明日雨が降るって聞きました。",
@@ -3408,7 +3623,8 @@
           "vocabulary_slugs": [
             "ashita",
             "furu-rain"
-          ]
+          ],
+          "furigana": "明日[あした]雨[あめ]が降[ふ]るって聞[き]きました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3439,7 +3655,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "wasureru"
-          ]
+          ],
+          "furigana": "もう、太[た]郎[ろう]ったら、また忘[わす]れたの。"
         }
       ],
       "vocabulary_slugs": [
@@ -3467,13 +3684,15 @@
           "vocabulary_slugs": [
             "kare",
             "kuru-v"
-          ]
+          ],
+          "furigana": "彼[かれ]が来[く]るかどうか分[わ]かりません。"
         },
         {
           "japanese": "これでいいかどうか、確認してください。",
           "english": "Please check whether this is okay or not.",
           "sort_order": 1,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "これでいいかどうか、確[かく]認[にん]してください。"
         }
       ],
       "vocabulary_slugs": [
@@ -3501,7 +3720,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ocha"
-          ]
+          ],
+          "furigana": "お茶[ちゃ]か何[なに]か飲[の]みませんか。"
         }
       ],
       "vocabulary_slugs": [
@@ -3526,7 +3746,8 @@
           "japanese": "りんごとかバナナとかが好きです。",
           "english": "I like things like apples and bananas.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "りんごとかバナナとかが好[す]きです。"
         }
       ],
       "vocabulary_slugs": []
@@ -3552,7 +3773,8 @@
           "vocabulary_slugs": [
             "benri",
             "kiken"
-          ]
+          ],
+          "furigana": "便[べん]利[り]な反[はん]面[めん]、危[き]険[けん]もあります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3580,7 +3802,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "晴[は]れると思[おも]いました。ところが、雨[あめ]が降[ふ]りました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3607,7 +3830,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "furu-rain"
-          ]
+          ],
+          "furigana": "雨[あめ]が降[ふ]っていました。それでも、出[で]かけました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3635,7 +3859,8 @@
           "vocabulary_slugs": [
             "michi-v",
             "chizu"
-          ]
+          ],
+          "furigana": "道[みち]が分[わ]かりませんでした。そこで、地[ち]図[ず]を見[み]ました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3664,7 +3889,8 @@
           "vocabulary_slugs": [
             "taifuu",
             "densha"
-          ]
+          ],
+          "furigana": "台[たい]風[ふう]が来[らい]ました。そのため、電[でん]車[しゃ]が止[と]まりました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3692,7 +3918,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "neko"
-          ]
+          ],
+          "furigana": "ドアを開[あ]けました。すると、猫[ねこ]が入[はい]ってきました。"
         }
       ],
       "vocabulary_slugs": [
@@ -3722,7 +3949,8 @@
           "vocabulary_slugs": [
             "doyoubi",
             "hataraku"
-          ]
+          ],
+          "furigana": "土[ど]曜[よう]日[ひ]以[い]外[がい]は毎[まい]日[にち]働[はたら]いています。"
         }
       ],
       "vocabulary_slugs": [
@@ -3750,7 +3978,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "sotsugyou-suru"
-          ]
+          ],
+          "furigana": "卒[そつ]業[ぎょう]して以[い]来[らい]、会[あ]っていません。"
         }
       ],
       "vocabulary_slugs": [
@@ -3778,7 +4007,8 @@
           "vocabulary_slugs": [
             "shizuka",
             "nigiyaka"
-          ]
+          ],
+          "furigana": "兄[あに]は静[しず]かです。反[はん]対[たい]に、弟[おとうと]はにぎやかです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3808,7 +4038,8 @@
             "kotoshi",
             "nihongo",
             "ganbaru"
-          ]
+          ],
+          "furigana": "今年[ことし]こそ、日本[にほん]語[ご]を頑[がん]張[ば]ります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3839,7 +4070,8 @@
           "vocabulary_slugs": [
             "kodomo-v",
             "wakaru"
-          ]
+          ],
+          "furigana": "子[こ]供[ども]さえ分[わ]かります。"
         }
       ],
       "vocabulary_slugs": [
@@ -3868,7 +4100,8 @@
           "vocabulary_slugs": [
             "okane",
             "shiawase"
-          ]
+          ],
+          "furigana": "お金[かね]さえあれば、幸[しあわ]せです。"
         }
       ],
       "vocabulary_slugs": [
@@ -3894,7 +4127,8 @@
           "japanese": "会員のみ入場できます。",
           "english": "Only members may enter.",
           "sort_order": 0,
-          "vocabulary_slugs": []
+          "vocabulary_slugs": [],
+          "furigana": "会[かい]員[いん]のみ入[にゅう]場[じょう]できます。"
         }
       ],
       "vocabulary_slugs": []
@@ -3920,7 +4154,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "ayamaru"
-          ]
+          ],
+          "furigana": "もう謝[あやま]るほかありません。"
         }
       ],
       "vocabulary_slugs": [
@@ -3949,7 +4184,8 @@
           "vocabulary_slugs": [
             "taifuu",
             "densha"
-          ]
+          ],
+          "furigana": "台[たい]風[ふう]によって、電[でん]車[しゃ]が止[と]まりました。"
         },
         {
           "japanese": "人によって、考え方が違います。",
@@ -3957,7 +4193,8 @@
           "sort_order": 1,
           "vocabulary_slugs": [
             "hito"
-          ]
+          ],
+          "furigana": "人[ひと]によって、考[かんが]え方[ほう]が違[ちが]います。"
         }
       ],
       "vocabulary_slugs": [
@@ -3987,7 +4224,8 @@
           "vocabulary_slugs": [
             "kaimono",
             "yuubinkyoku"
-          ]
+          ],
+          "furigana": "買[か]い物[もの]のついでに、郵[ゆう]便[びん]局[きょく]へ行[い]きました。"
         }
       ],
       "vocabulary_slugs": [
@@ -4015,7 +4253,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "kangaeru"
-          ]
+          ],
+          "furigana": "よく考[かんが]えた上[うえ]で、返[へん]事[じ]します。"
         }
       ],
       "vocabulary_slugs": [
@@ -4042,7 +4281,8 @@
           "sort_order": 0,
           "vocabulary_slugs": [
             "shokuji"
-          ]
+          ],
+          "furigana": "食[しょく]事[じ]の最[さい]中[ちゅう]に、電[でん]話[わ]が鳴[な]りました。"
         }
       ],
       "vocabulary_slugs": [
@@ -4070,7 +4310,8 @@
           "vocabulary_slugs": [
             "namae",
             "juusho"
-          ]
+          ],
+          "furigana": "名[な]前[まえ]および住[じゅう]所[しょ]を書[か]いてください。"
         }
       ],
       "vocabulary_slugs": [
@@ -4100,7 +4341,8 @@
           "vocabulary_slugs": [
             "sensei",
             "taido"
-          ]
+          ],
+          "furigana": "先[せん]生[せい]に対[たい]して失[しつ]礼[れい]な態[たい]度[ど]を取[と]りました。"
         }
       ],
       "vocabulary_slugs": [

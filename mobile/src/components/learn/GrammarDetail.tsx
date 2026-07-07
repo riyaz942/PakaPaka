@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import type {
   AcceptedAnswer,
@@ -8,6 +9,7 @@ import type {
   ExampleSentence,
   GrammarRule,
 } from '@/data/curriculum/itemRepository';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
 type GrammarDetailProps = {
   item: CurriculumItemDetail;
@@ -39,6 +41,7 @@ export function GrammarDetail({
   exampleSentences,
 }: GrammarDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   return (
     <View testID="grammar-detail">
@@ -97,7 +100,12 @@ export function GrammarDetail({
           <Text className="text-body-sm uppercase text-secondary">Examples</Text>
           {exampleSentences.map((sentence) => (
             <View key={sentence.id} className="mt-2" testID={`grammar-example-${sentence.id}`}>
-              <Text className="text-body text-primary">{sentence.japanese}</Text>
+              <FuriganaText
+                text={sentence.furigana ?? sentence.japanese}
+                mode={furiganaMode}
+                knownKanji={knownKanji}
+                className="text-body text-primary"
+              />
               <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
             </View>
           ))}

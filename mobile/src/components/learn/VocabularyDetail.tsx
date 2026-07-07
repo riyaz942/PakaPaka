@@ -2,6 +2,7 @@ import { type Href, router } from 'expo-router';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import type {
@@ -11,6 +12,7 @@ import type {
   ExampleSentence,
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { cn } from '@/utils/cn';
 
 type VocabularyDetailProps = {
@@ -40,16 +42,16 @@ export function VocabularyDetail({
 }: VocabularyDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const isLongWord = item.primaryForm.length > 4;
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   return (
     <View testID="vocabulary-detail">
-      <Text
-        className={cn(
-          'text-primary',
-          isLongWord ? 'text-title-lg' : 'text-display',
-        )}>
-        {item.primaryForm}
-      </Text>
+      <FuriganaText
+        text={item.furigana ?? item.primaryForm}
+        mode={furiganaMode}
+        knownKanji={knownKanji}
+        className={cn('text-primary', isLongWord ? 'text-title-lg' : 'text-display')}
+      />
       <Text className="mt-2 text-body text-primary">{item.meaning}</Text>
 
       {synonyms.length > 0 ? (
@@ -85,7 +87,12 @@ export function VocabularyDetail({
           <Text className="text-body-sm uppercase text-secondary">Examples</Text>
           {exampleSentences.map((sentence) => (
             <View key={sentence.id} className="mt-2" testID={`vocab-example-${sentence.id}`}>
-              <Text className="text-body text-primary">{sentence.japanese}</Text>
+              <FuriganaText
+                text={sentence.furigana ?? sentence.japanese}
+                mode={furiganaMode}
+                knownKanji={knownKanji}
+                className="text-body text-primary"
+              />
               <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
             </View>
           ))}

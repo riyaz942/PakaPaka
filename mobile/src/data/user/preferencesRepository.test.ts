@@ -7,6 +7,7 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   clearOnboardingCompleted,
+  getFuriganaDisplay,
   getOnboardingPath,
   getSessionIntensity,
   getShadowModeEnabled,
@@ -17,6 +18,7 @@ import {
   getReducedMotionEnabled,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setFuriganaDisplay,
   setOnboardingCompleted,
   setOnboardingPath,
   setReducedMotionEnabled,
@@ -200,6 +202,43 @@ describe('preferencesRepository reduced motion preference', () => {
 
     setReducedMotionEnabled(db, false);
     expect(getReducedMotionEnabled(db)).toBe(false);
+  });
+});
+
+describe('preferencesRepository furigana display preference', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults to "auto" when unset', async () => {
+    const db = await createUserDb();
+    expect(getFuriganaDisplay(db)).toBe('auto');
+  });
+
+  it('round-trips each mode', async () => {
+    const db = await createUserDb();
+
+    setFuriganaDisplay(db, 'shown');
+    expect(getFuriganaDisplay(db)).toBe('shown');
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.furiganaDisplay,
+      )?.value,
+    ).toBe('shown');
+
+    setFuriganaDisplay(db, 'hidden');
+    expect(getFuriganaDisplay(db)).toBe('hidden');
+
+    setFuriganaDisplay(db, 'auto');
+    expect(getFuriganaDisplay(db)).toBe('auto');
   });
 });
 

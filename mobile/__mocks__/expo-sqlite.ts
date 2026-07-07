@@ -846,6 +846,10 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 class MockSQLiteDatabase {
   constructor(private readonly databaseName: string) {}
 
+  get databasePath(): string {
+    return `/mock-sqlite/${this.databaseName}`;
+  }
+
   execSync(source: string): void {
     const state = getDatabaseState(this.databaseName);
     source

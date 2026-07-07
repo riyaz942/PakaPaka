@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { evaluatePassageAnswer } from '@/core/answer/evaluatePassageAnswer';
 import type { PassageQuestion as PassageQuestionType } from '@/data/curriculum/passageRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import {
   upsertPassagePracticeResult,
   type PassagePracticeResult,
@@ -28,6 +30,7 @@ export function PassageQuestion({
   onAnswerSubmitted,
 }: PassageQuestionProps) {
   const { userDb } = useDatabase();
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const [userAnswer, setUserAnswer] = useState(savedResult?.userAnswer ?? '');
   const [result, setResult] = useState<'correct' | 'incorrect' | null>(
     savedResult ? (savedResult.isCorrect ? 'correct' : 'incorrect') : null,
@@ -71,11 +74,13 @@ export function PassageQuestion({
 
   return (
     <View testID={`passage-question-${question.id}`}>
-      <Text
+      <FuriganaText
+        text={question.promptFurigana ?? question.prompt}
+        mode={furiganaMode}
+        knownKanji={knownKanji}
         accessibilityRole="header"
-        className="text-body-lg text-primary">
-        {question.prompt}
-      </Text>
+        className="text-body-lg text-primary"
+      />
 
       <TextInput
         accessibilityLabel={`${question.prompt} Your answer.`}

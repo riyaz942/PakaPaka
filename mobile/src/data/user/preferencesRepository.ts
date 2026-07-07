@@ -21,6 +21,7 @@ export const PREFERENCE_KEYS = {
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
   reducedMotion: 'reduced_motion',
+  furiganaDisplay: 'furigana_display',
   shadowModeEnabled: 'shadow_mode_enabled',
   shadowModeEnabledAt: 'shadow_mode_enabled_at',
   shadowModePromptDismissed: 'shadow_mode_prompt_dismissed',
@@ -156,6 +157,34 @@ export function getReducedMotionEnabled(userDb: SQLiteDatabase): boolean | null 
 
 export function setReducedMotionEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.reducedMotion, enabled ? 'true' : 'false');
+}
+
+/**
+ * 'auto' hides furigana only on kanji the user already knows (item_study_status
+ * = 'known' or an SRS stage of guru+), per the furigana support plan. Default
+ * is 'auto', not 'shown' — furigana should help on unfamiliar kanji by default.
+ */
+export type FuriganaDisplayMode = 'shown' | 'hidden' | 'auto';
+
+const FURIGANA_DISPLAY_MODES: readonly FuriganaDisplayMode[] = ['shown', 'hidden', 'auto'];
+
+export function isFuriganaDisplayMode(value: string): value is FuriganaDisplayMode {
+  return (FURIGANA_DISPLAY_MODES as readonly string[]).includes(value);
+}
+
+export function getFuriganaDisplay(userDb: SQLiteDatabase): FuriganaDisplayMode {
+  const value = getPreference(userDb, PREFERENCE_KEYS.furiganaDisplay);
+  if (value && isFuriganaDisplayMode(value)) {
+    return value;
+  }
+  return 'auto';
+}
+
+export function setFuriganaDisplay(userDb: SQLiteDatabase, mode: FuriganaDisplayMode): void {
+  if (!isFuriganaDisplayMode(mode)) {
+    throw new Error(`Invalid furigana display mode: ${mode}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.furiganaDisplay, mode);
 }
 
 export type NotificationTime = 'morning' | 'afternoon' | 'evening' | 'night';

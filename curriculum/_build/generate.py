@@ -26,11 +26,24 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 sys.path.insert(0, BUILD_DIR)
 
+import furigana as furigana_lib  # noqa: E402
+
 
 def write_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+
+
+def _vocab_reading_map(*vocab_tuple_lists):
+    """Builds a {primary_form: reading} map from raw vocab tuples, for
+    annotate_sentence's known_readings override (see furigana.py)."""
+    mapping = {}
+    for vocab_tuples in vocab_tuple_lists:
+        for _slug, form, reading, _meaning, _mnemonic in vocab_tuples:
+            if reading and form not in mapping:
+                mapping[form] = reading
+    return mapping
 
 
 # ---------------------------------------------------------------------------
@@ -92,18 +105,22 @@ def build_n5_vocab():
         accepted = [{"answer_type": "meaning", "answer_text": meaning, "is_primary": True}]
         if reading:
             accepted.append({"answer_type": "reading", "answer_text": reading})
-        items.append({
+        item = {
             "slug": slug,
             "primary_form": form,
             "meaning": meaning,
             "mnemonic_text": mnemonic,
             "sort_order": i,
             "accepted_answers": accepted,
-        })
+        }
+        furigana = furigana_lib.annotate_word(form, reading)
+        if furigana:
+            item["furigana"] = furigana
+        items.append(item)
     return {"jlpt_level": "N5", "items": items}
 
 
-def build_n5_grammar(vocab_slugs):
+def build_n5_grammar(vocab_slugs, known_readings=None):
     from n5_grammar import N5_GRAMMAR
 
     errors = []
@@ -114,12 +131,16 @@ def build_n5_grammar(vocab_slugs):
             for vs in vslugs:
                 if vs not in vocab_slugs:
                     errors.append(f"grammar {g['slug']} example {j} references unknown vocab '{vs}'")
-            example_sentences.append({
+            sentence = {
                 "japanese": jp,
                 "english": en,
                 "sort_order": j,
                 "vocabulary_slugs": vslugs,
-            })
+            }
+            sentence_furigana = furigana_lib.annotate_sentence(jp, known_readings)
+            if sentence_furigana:
+                sentence["furigana"] = sentence_furigana
+            example_sentences.append(sentence)
         for vs in g["vocabulary_slugs"]:
             if vs not in vocab_slugs:
                 errors.append(f"grammar {g['slug']} vocabulary_slugs references unknown vocab '{vs}'")
@@ -140,24 +161,32 @@ def build_n5_grammar(vocab_slugs):
     return {"jlpt_level": "N5", "items": items}
 
 
-def build_n5_readings():
+def build_n5_readings(known_readings=None):
     from n5_readings import N5_READINGS
 
     passages = []
     for i, p in enumerate(N5_READINGS, start=1):
         questions = []
         for j, q in enumerate(p.get("questions", [])):
-            questions.append({
+            question = {
                 "prompt": q["prompt"],
                 "accepted_answers": q["accepted_answers"],
                 "sort_order": j,
-            })
-        passages.append({
+            }
+            prompt_furigana = furigana_lib.annotate_sentence(q["prompt"], known_readings)
+            if prompt_furigana:
+                question["prompt_furigana"] = prompt_furigana
+            questions.append(question)
+        passage = {
             "title": p["title"],
             "body": p["body"],
             "sort_order": i,
             "questions": questions,
-        })
+        }
+        body_furigana = furigana_lib.annotate_sentence(p["body"], known_readings)
+        if body_furigana:
+            passage["body_furigana"] = body_furigana
+        passages.append(passage)
     return {"jlpt_level": "N5", "passages": passages}
 
 
@@ -220,18 +249,22 @@ def build_n4_vocab():
         accepted = [{"answer_type": "meaning", "answer_text": meaning, "is_primary": True}]
         if reading:
             accepted.append({"answer_type": "reading", "answer_text": reading})
-        items.append({
+        item = {
             "slug": slug,
             "primary_form": form,
             "meaning": meaning,
             "mnemonic_text": mnemonic,
             "sort_order": i,
             "accepted_answers": accepted,
-        })
+        }
+        furigana = furigana_lib.annotate_word(form, reading)
+        if furigana:
+            item["furigana"] = furigana
+        items.append(item)
     return {"jlpt_level": "N4", "items": items}
 
 
-def build_n4_grammar(vocab_slugs):
+def build_n4_grammar(vocab_slugs, known_readings=None):
     from n4_grammar import N4_GRAMMAR
 
     errors = []
@@ -242,12 +275,16 @@ def build_n4_grammar(vocab_slugs):
             for vs in vslugs:
                 if vs not in vocab_slugs:
                     errors.append(f"grammar {g['slug']} example {j} references unknown vocab '{vs}'")
-            example_sentences.append({
+            sentence = {
                 "japanese": jp,
                 "english": en,
                 "sort_order": j,
                 "vocabulary_slugs": vslugs,
-            })
+            }
+            sentence_furigana = furigana_lib.annotate_sentence(jp, known_readings)
+            if sentence_furigana:
+                sentence["furigana"] = sentence_furigana
+            example_sentences.append(sentence)
         for vs in g["vocabulary_slugs"]:
             if vs not in vocab_slugs:
                 errors.append(f"grammar {g['slug']} vocabulary_slugs references unknown vocab '{vs}'")
@@ -268,24 +305,32 @@ def build_n4_grammar(vocab_slugs):
     return {"jlpt_level": "N4", "items": items}
 
 
-def build_n4_readings():
+def build_n4_readings(known_readings=None):
     from n4_readings import N4_READINGS
 
     passages = []
     for i, p in enumerate(N4_READINGS, start=1):
         questions = []
         for j, q in enumerate(p.get("questions", [])):
-            questions.append({
+            question = {
                 "prompt": q["prompt"],
                 "accepted_answers": q["accepted_answers"],
                 "sort_order": j,
-            })
-        passages.append({
+            }
+            prompt_furigana = furigana_lib.annotate_sentence(q["prompt"], known_readings)
+            if prompt_furigana:
+                question["prompt_furigana"] = prompt_furigana
+            questions.append(question)
+        passage = {
             "title": p["title"],
             "body": p["body"],
             "sort_order": i,
             "questions": questions,
-        })
+        }
+        body_furigana = furigana_lib.annotate_sentence(p["body"], known_readings)
+        if body_furigana:
+            passage["body_furigana"] = body_furigana
+        passages.append(passage)
     return {"jlpt_level": "N4", "passages": passages}
 
 
@@ -296,14 +341,27 @@ def build_n4_readings():
 def generate_level(level):
     level = level.lower()
     if level == "n5":
+        from n5_vocab import N5_VOCAB
+
+        known_readings = _vocab_reading_map(N5_VOCAB)
         vocab = build_n5_vocab()
         vocab_slugs = {v["slug"] for v in vocab["items"]}
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n5.json"), build_n5_radicals())
         write_json(os.path.join(CURRICULUM_DIR, "kanji", "n5.json"), build_n5_kanji())
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n5.json"), vocab)
-        write_json(os.path.join(CURRICULUM_DIR, "grammar", "n5.json"), build_n5_grammar(vocab_slugs))
-        write_json(os.path.join(CURRICULUM_DIR, "readings", "n5.json"), build_n5_readings())
+        write_json(
+            os.path.join(CURRICULUM_DIR, "grammar", "n5.json"),
+            build_n5_grammar(vocab_slugs, known_readings),
+        )
+        write_json(
+            os.path.join(CURRICULUM_DIR, "readings", "n5.json"),
+            build_n5_readings(known_readings),
+        )
     elif level == "n4":
+        from n4_vocab import N4_VOCAB
+        from n5_vocab import N5_VOCAB
+
+        known_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
         n5_vocab = build_n5_vocab()
         vocab = build_n4_vocab()
         # N4 is additive on N5: grammar examples may reinforce previously
@@ -312,8 +370,14 @@ def generate_level(level):
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n4.json"), build_n4_radicals())
         write_json(os.path.join(CURRICULUM_DIR, "kanji", "n4.json"), build_n4_kanji())
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)
-        write_json(os.path.join(CURRICULUM_DIR, "grammar", "n4.json"), build_n4_grammar(vocab_slugs))
-        write_json(os.path.join(CURRICULUM_DIR, "readings", "n4.json"), build_n4_readings())
+        write_json(
+            os.path.join(CURRICULUM_DIR, "grammar", "n4.json"),
+            build_n4_grammar(vocab_slugs, known_readings),
+        )
+        write_json(
+            os.path.join(CURRICULUM_DIR, "readings", "n4.json"),
+            build_n4_readings(known_readings),
+        )
     else:
         raise ValueError(f"unknown level {level}")
     print(f"Generated {level.upper()} JSON files.")

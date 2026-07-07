@@ -10,3 +10,8 @@ __pycache__/
 # Curriculum compile temp files (atomic write uses *.db.tmp)
 mobile/assets/curriculum-seed/*.db.tmp
 dist/
+
+# Furigana generation: fetched dataset + venv, not committed (see
+# curriculum/_build/fetch_furigana_dataset.sh)
+curriculum/_build/data/
+curriculum/_build/.venv/

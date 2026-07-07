@@ -19,6 +19,7 @@ CREATE TABLE items (
   jlpt_level TEXT NOT NULL,
   slug TEXT NOT NULL,
   primary_form TEXT NOT NULL,
+  furigana TEXT,
   meaning TEXT NOT NULL,
   mnemonic_text TEXT,
   visual_mnemonic_url TEXT,
@@ -54,6 +55,7 @@ CREATE TABLE example_sentences (
   id INTEGER PRIMARY KEY NOT NULL,
   item_id INTEGER NOT NULL REFERENCES items(id),
   japanese TEXT NOT NULL,
+  furigana TEXT,
   english TEXT NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0,
   reinforcement_tags TEXT
@@ -77,6 +79,7 @@ CREATE TABLE reading_passages (
   jlpt_level TEXT NOT NULL,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
+  body_furigana TEXT,
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
@@ -84,6 +87,7 @@ CREATE TABLE passage_questions (
   id INTEGER PRIMARY KEY NOT NULL,
   passage_id INTEGER NOT NULL REFERENCES reading_passages(id),
   prompt TEXT NOT NULL,
+  prompt_furigana TEXT,
   accepted_answers TEXT NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0
 );

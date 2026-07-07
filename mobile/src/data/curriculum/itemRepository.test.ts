@@ -166,6 +166,7 @@ describe('itemRepository', () => {
       itemType: 'radical',
       jlptLevel: 'N5',
       primaryForm: '一',
+      furigana: null,
       meaning: 'one',
       mnemonicText: 'Radical one (一)',
       visualMnemonicUrl: 'https://example.com/one.png',
@@ -329,12 +330,14 @@ describe('itemRepository', () => {
       {
         id: '1',
         japanese: 'これは本です。',
+        furigana: null,
         english: 'This is a book.',
         sortOrder: 1,
       },
       {
         id: '2',
         japanese: '私は学生です。',
+        furigana: null,
         english: 'I am a student.',
         sortOrder: 2,
       },

@@ -116,6 +116,7 @@
       "properties": {
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
+        "furigana": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
         "sort_order": { "type": "integer", "minimum": 0 },
@@ -144,6 +145,7 @@
       "required": ["japanese", "english"],
       "properties": {
         "japanese": { "type": "string", "minLength": 1 },
+        "furigana": { "type": "string", "minLength": 1 },
         "english": { "type": "string", "minLength": 1 },
         "sort_order": { "type": "integer", "minimum": 0 },
         "reinforcement_tags": {
@@ -202,6 +204,7 @@
       "required": ["prompt", "accepted_answers"],
       "properties": {
         "prompt": { "type": "string", "minLength": 1 },
+        "prompt_furigana": { "type": "string", "minLength": 1 },
         "accepted_answers": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
@@ -218,6 +221,7 @@
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "title": { "type": "string", "minLength": 1 },
         "body": { "type": "string", "minLength": 1 },
+        "body_furigana": { "type": "string", "minLength": 1 },
         "sort_order": { "type": "integer", "minimum": 0 },
         "questions": {
           "type": "array",

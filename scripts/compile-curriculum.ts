@@ -71,6 +71,7 @@ type KanjiItem = {
 type VocabItem = {
   slug: string;
   primary_form: string;
+  furigana?: string;
   meaning: string;
   mnemonic_text?: string;
   sort_order?: number;
@@ -79,6 +80,7 @@ type VocabItem = {
 
 type ExampleSentence = {
   japanese: string;
+  furigana?: string;
   english: string;
   sort_order?: number;
   reinforcement_tags?: string[];
@@ -100,6 +102,7 @@ type GrammarItem = {
 
 type PassageQuestion = {
   prompt: string;
+  prompt_furigana?: string;
   accepted_answers: string[];
   sort_order?: number;
 };
@@ -108,6 +111,7 @@ type ReadingPassage = {
   slug?: string;
   title: string;
   body: string;
+  body_furigana?: string;
   sort_order?: number;
   questions?: PassageQuestion[];
 };
@@ -248,6 +252,9 @@ export function compileCurriculum(
   curriculumDir: string = CURRICULUM_DIR,
 ): void {
   const validation = validateCurriculum(curriculumDir);
+  for (const warning of validation.warnings) {
+    console.warn(`warning: ${warning}`);
+  }
   if (!validation.ok) {
     throw new Error(
       `Curriculum validation failed (${validation.errors.length} error(s)):\n${validation.errors.join('\n')}`,
@@ -279,8 +286,8 @@ export function compileCurriculum(
     db.exec(CURRICULUM_DDL);
 
     const insertItem = db.prepare(`
-      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, meaning, mnemonic_text, visual_mnemonic_url, sort_order)
-      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @meaning, @mnemonic_text, @visual_mnemonic_url, @sort_order)
+      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, mnemonic_text, visual_mnemonic_url, sort_order)
+      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @mnemonic_text, @visual_mnemonic_url, @sort_order)
     `);
 
     for (const radical of radicals) {
@@ -291,6 +298,7 @@ export function compileCurriculum(
         jlpt_level: radical.jlpt_level,
         slug: radical.slug,
         primary_form: radical.primary_form,
+        furigana: null,
         meaning: radical.meaning,
         mnemonic_text: radical.mnemonic_text ?? null,
         visual_mnemonic_url: radical.visual_mnemonic_url,
@@ -315,6 +323,7 @@ export function compileCurriculum(
         jlpt_level: kanjiItem.jlpt_level,
         slug: kanjiItem.slug,
         primary_form: kanjiItem.primary_form,
+        furigana: null,
         meaning: kanjiItem.meaning,
         mnemonic_text: kanjiItem.mnemonic_text ?? null,
         visual_mnemonic_url: null,
@@ -348,6 +357,7 @@ export function compileCurriculum(
         jlpt_level: vocab.jlpt_level,
         slug: vocab.slug,
         primary_form: vocab.primary_form,
+        furigana: vocab.furigana ?? null,
         meaning: vocab.meaning,
         mnemonic_text: vocab.mnemonic_text ?? null,
         visual_mnemonic_url: null,
@@ -369,8 +379,8 @@ export function compileCurriculum(
       VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms)
     `);
     const insertExample = db.prepare(`
-      INSERT INTO example_sentences (item_id, japanese, english, sort_order, reinforcement_tags)
-      VALUES (@item_id, @japanese, @english, @sort_order, @reinforcement_tags)
+      INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
+      VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
     `);
     const insertGrammarVocabLink = db.prepare(`
       INSERT INTO grammar_vocabulary_links (grammar_item_id, vocabulary_item_id)
@@ -385,6 +395,7 @@ export function compileCurriculum(
         jlpt_level: grammarItem.jlpt_level,
         slug: grammarItem.slug,
         primary_form: grammarItem.primary_form,
+        furigana: null,
         meaning: grammarItem.meaning,
         mnemonic_text: grammarItem.mnemonic_text ?? null,
         visual_mnemonic_url: null,
@@ -402,6 +413,7 @@ export function compileCurriculum(
         insertExample.run({
           item_id: id,
           japanese: sentence.japanese,
+          furigana: sentence.furigana ?? null,
           english: sentence.english,
           sort_order: sentence.sort_order ?? index,
           reinforcement_tags: sentence.reinforcement_tags
@@ -445,12 +457,12 @@ export function compileCurriculum(
     }
 
     const insertPassage = db.prepare(`
-      INSERT INTO reading_passages (jlpt_level, title, body, sort_order)
-      VALUES (@jlpt_level, @title, @body, @sort_order)
+      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, sort_order)
+      VALUES (@jlpt_level, @title, @body, @body_furigana, @sort_order)
     `);
     const insertQuestion = db.prepare(`
-      INSERT INTO passage_questions (passage_id, prompt, accepted_answers, sort_order)
-      VALUES (@passage_id, @prompt, @accepted_answers, @sort_order)
+      INSERT INTO passage_questions (passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
+      VALUES (@passage_id, @prompt, @prompt_furigana, @accepted_answers, @sort_order)
     `);
 
     for (const readingsFile of readingsFiles) {
@@ -459,6 +471,7 @@ export function compileCurriculum(
           jlpt_level: readingsFile.jlpt_level,
           title: passage.title,
           body: passage.body,
+          body_furigana: passage.body_furigana ?? null,
           sort_order: passage.sort_order ?? index,
         });
         const passageId = Number(passageResult.lastInsertRowid);
@@ -467,6 +480,7 @@ export function compileCurriculum(
           insertQuestion.run({
             passage_id: passageId,
             prompt: question.prompt,
+            prompt_furigana: question.prompt_furigana ?? null,
             accepted_answers: JSON.stringify(question.accepted_answers),
             sort_order: question.sort_order ?? qIndex,
           });

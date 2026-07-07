@@ -12,6 +12,7 @@ import {
 } from '@/config/notifications';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import {
@@ -25,6 +26,7 @@ import {
   setNotificationsEnabled,
   setSessionIntensity,
   setWeaknessBiasEnabled,
+  type FuriganaDisplayMode,
   type NotificationTime,
 } from '@/data/user/preferencesRepository';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
@@ -37,10 +39,17 @@ const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = 
   { value: 'night', label: 'Night (21:00)' },
 ];
 
+const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] = [
+  { value: 'auto', label: 'Auto (until known)' },
+  { value: 'shown', label: 'Always shown' },
+  { value: 'hidden', label: 'Always hidden' },
+];
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion } = useReducedMotion();
+  const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
   const {
     canEnable: shadowModeCanEnable,
     isEnabled: shadowModeEnabled,
@@ -184,6 +193,36 @@ export default function SettingsScreen() {
             value={reducedMotion}
             onValueChange={setReducedMotion}
           />
+        </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Furigana</Text>
+        <Text className="mt-1 text-body-sm text-secondary">
+          Controls the reading shown above kanji. Tap any kanji in a lesson or passage to toggle
+          it individually.
+        </Text>
+
+        <View className="mt-4 flex-row flex-wrap gap-3">
+          {FURIGANA_DISPLAY_OPTIONS.map((option) => {
+            const selected = furiganaMode === option.value;
+
+            return (
+              <Pressable
+                key={option.value}
+                accessibilityRole="radio"
+                accessibilityState={{ selected }}
+                accessibilityLabel={option.label}
+                onPress={() => setFuriganaMode(option.value)}
+                testID={`settings-furigana-display-${option.value}`}
+                className={cn(
+                  'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
+                  selected ? 'border-2 border-feedback-info' : 'border border-border',
+                )}>
+                <Text className="text-body-sm font-semibold text-primary">{option.label}</Text>
+              </Pressable>
+            );
+          })}
         </View>
       </View>
 

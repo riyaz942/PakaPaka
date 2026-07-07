@@ -21,6 +21,7 @@ jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => ({
     userDb: {
       getFirstSync: jest.fn(() => null),
+      getAllSync: jest.fn(() => []),
       runSync: jest.fn(),
     },
     curriculumDb: {},
@@ -33,6 +34,7 @@ const baseItem: CurriculumItemDetail = {
   itemType: 'vocabulary',
   jlptLevel: 'N5',
   primaryForm: '私',
+  furigana: null,
   meaning: 'I, me',
   mnemonicText: 'Think of private self.',
   visualMnemonicUrl: null,
@@ -46,6 +48,7 @@ const exampleSentences: ExampleSentence[] = [
   {
     id: '1',
     japanese: '私は学生です。',
+    furigana: null,
     english: 'I am a student.',
     sortOrder: 1,
   },

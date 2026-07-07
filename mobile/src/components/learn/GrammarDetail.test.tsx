@@ -13,6 +13,7 @@ jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => ({
     userDb: {
       getFirstSync: jest.fn(() => null),
+      getAllSync: jest.fn(() => []),
       runSync: jest.fn(),
     },
     curriculumDb: {},
@@ -25,6 +26,7 @@ const baseItem: CurriculumItemDetail = {
   itemType: 'grammar',
   jlptLevel: 'N5',
   primaryForm: 'です',
+  furigana: null,
   meaning: 'to be (polite)',
   mnemonicText: 'Desu sounds like "deserve" politeness.',
   visualMnemonicUrl: null,
@@ -37,11 +39,11 @@ const grammarRule: GrammarRule = {
 };
 
 const exampleSentences: ExampleSentence[] = [
-  { id: '1', japanese: 'これは本です。', english: 'This is a book.', sortOrder: 1 },
-  { id: '2', japanese: '私は学生です。', english: 'I am a student.', sortOrder: 2 },
-  { id: '3', japanese: '彼は先生です。', english: 'He is a teacher.', sortOrder: 3 },
-  { id: '4', japanese: 'それは犬です。', english: 'That is a dog.', sortOrder: 4 },
-  { id: '5', japanese: '今日は月曜日です。', english: 'Today is Monday.', sortOrder: 5 },
+  { id: '1', japanese: 'これは本です。', furigana: null, english: 'This is a book.', sortOrder: 1 },
+  { id: '2', japanese: '私は学生です。', furigana: null, english: 'I am a student.', sortOrder: 2 },
+  { id: '3', japanese: '彼は先生です。', furigana: null, english: 'He is a teacher.', sortOrder: 3 },
+  { id: '4', japanese: 'それは犬です。', furigana: null, english: 'That is a dog.', sortOrder: 4 },
+  { id: '5', japanese: '今日は月曜日です。', furigana: null, english: 'Today is Monday.', sortOrder: 5 },
 ];
 
 const acceptedAnswers: AcceptedAnswer[] = [

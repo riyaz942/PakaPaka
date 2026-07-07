@@ -34,8 +34,168 @@ function resolveValidatorKey(relativePath: string): string {
 }
 
 export type ValidateCurriculumResult =
-  | { ok: true; fileCount: number }
-  | { ok: false; errors: string[] };
+  | { ok: true; fileCount: number; warnings: string[] }
+  | { ok: false; errors: string[]; warnings: string[] };
+
+const KANJI_RE = /[一-鿿]/;
+const KANA_ONLY_RE = /^[぀-ヿ]*$/;
+const BRACKET_RE = /\[[^[\]]*]/g;
+
+/** Strips `[reading]` annotations, reproducing the plain (unannotated) string. */
+export function stripFurigana(annotated: string): string {
+  return annotated.replace(BRACKET_RE, '');
+}
+
+function extractReadings(annotated: string): string[] {
+  const readings: string[] = [];
+  const re = /\[([^[\]]*)]/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(annotated))) {
+    readings.push(match[1]);
+  }
+  return readings;
+}
+
+/**
+ * True when every kanji character in `annotated` is covered by a `[reading]`
+ * annotation — i.e. is part of the kanji run immediately preceding a bracket.
+ * Warn-level per the furigana support plan: the corpus isn't fully annotated yet.
+ */
+function isKanjiFullyCovered(annotated: string): boolean {
+  const covered = new Array<boolean>(annotated.length).fill(false);
+  const bracketRe = /\[[^[\]]*]/g;
+  let match: RegExpExecArray | null;
+  while ((match = bracketRe.exec(annotated))) {
+    let start = match.index;
+    while (start > 0 && KANJI_RE.test(annotated[start - 1])) {
+      start--;
+    }
+    for (let i = start; i < match.index; i++) {
+      covered[i] = true;
+    }
+  }
+
+  let inBracket = false;
+  for (let i = 0; i < annotated.length; i++) {
+    const ch = annotated[i];
+    if (ch === '[') {
+      inBracket = true;
+      continue;
+    }
+    if (ch === ']') {
+      inBracket = false;
+      continue;
+    }
+    if (inBracket) {
+      continue;
+    }
+    if (KANJI_RE.test(ch) && !covered[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkFuriganaField(
+  label: string,
+  plain: string,
+  furigana: string | undefined,
+  errors: string[],
+  warnings: string[],
+): void {
+  if (furigana === undefined) {
+    return;
+  }
+
+  const stripped = stripFurigana(furigana);
+  if (stripped !== plain) {
+    errors.push(
+      `${label}: furigana strips to "${stripped}" but plain text is "${plain}"`,
+    );
+    return;
+  }
+
+  for (const reading of extractReadings(furigana)) {
+    if (!KANA_ONLY_RE.test(reading)) {
+      errors.push(`${label}: furigana reading "${reading}" is not kana-only`);
+    }
+  }
+
+  if (!isKanjiFullyCovered(furigana)) {
+    warnings.push(`${label}: not every kanji character is covered by a furigana annotation`);
+  }
+}
+
+function runFuriganaChecks(
+  validatorKey: string,
+  relative: string,
+  data: unknown,
+  errors: string[],
+  warnings: string[],
+): void {
+  if (validatorKey === 'vocabularyFile') {
+    const file = data as { items: { slug: string; primary_form: string; furigana?: string }[] };
+    for (const item of file.items) {
+      checkFuriganaField(
+        `${relative} vocabulary:${item.slug}`,
+        item.primary_form,
+        item.furigana,
+        errors,
+        warnings,
+      );
+    }
+    return;
+  }
+
+  if (validatorKey === 'grammarFile') {
+    const file = data as {
+      items: { slug: string; example_sentences?: { japanese: string; furigana?: string }[] }[];
+    };
+    for (const item of file.items) {
+      for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
+        checkFuriganaField(
+          `${relative} grammar:${item.slug} example[${index}]`,
+          sentence.japanese,
+          sentence.furigana,
+          errors,
+          warnings,
+        );
+      }
+    }
+    return;
+  }
+
+  if (validatorKey === 'readingsFile') {
+    const file = data as {
+      passages: {
+        slug?: string;
+        title: string;
+        body: string;
+        body_furigana?: string;
+        questions?: { prompt: string; prompt_furigana?: string }[];
+      }[];
+    };
+    for (const [index, passage] of file.passages.entries()) {
+      const label = passage.slug ?? passage.title ?? `passage[${index}]`;
+      checkFuriganaField(
+        `${relative} passage:${label}`,
+        passage.body,
+        passage.body_furigana,
+        errors,
+        warnings,
+      );
+      for (const [qIndex, question] of (passage.questions ?? []).entries()) {
+        checkFuriganaField(
+          `${relative} passage:${label} question[${qIndex}]`,
+          question.prompt,
+          question.prompt_furigana,
+          errors,
+          warnings,
+        );
+      }
+    }
+  }
+}
 
 function resolveSchemaPath(curriculumDir: string): string {
   const localSchema = path.join(curriculumDir, 'schema', 'curriculum.schema.json');
@@ -58,7 +218,7 @@ export function validateCurriculum(
 
   const defs = schemaRaw.$defs as Record<string, unknown> | undefined;
   if (!defs) {
-    return { ok: false, errors: [`${schemaPath}: missing $defs`] };
+    return { ok: false, errors: [`${schemaPath}: missing $defs`], warnings: [] };
   }
 
   const validators = new Map<string, ValidateFunction>();
@@ -69,6 +229,7 @@ export function validateCurriculum(
 
   const files = discoverJsonFilesIn(curriculumDir);
   const errors: string[] = [];
+  const warnings: string[] = [];
 
   for (const filePath of files) {
     const relative = path.relative(curriculumDir, filePath);
@@ -101,14 +262,17 @@ export function validateCurriculum(
         .map((err) => `${err.instancePath || '/'}: ${err.message}`)
         .join('; ');
       errors.push(`${relative}: ${messages}`);
+      continue;
     }
+
+    runFuriganaChecks(validatorKey, relative, data, errors, warnings);
   }
 
   if (errors.length > 0) {
-    return { ok: false, errors };
+    return { ok: false, errors, warnings };
   }
 
-  return { ok: true, fileCount: files.length };
+  return { ok: true, fileCount: files.length, warnings };
 }
 
 function discoverJsonFilesIn(curriculumDir: string): string[] {
@@ -133,6 +297,11 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
 
 function main(): void {
   const result = validateCurriculum();
+
+  for (const warning of result.warnings) {
+    console.warn(`warning: ${warning}`);
+  }
+
   if (!result.ok) {
     for (const message of result.errors) {
       console.error(message);

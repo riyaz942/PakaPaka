@@ -20,6 +20,7 @@ const baseItem: CurriculumItemDetail = {
   itemType: 'kanji',
   jlptLevel: 'N5',
   primaryForm: '日',
+  furigana: null,
   meaning: 'day',
   mnemonicText: 'The sun rises each day.',
   visualMnemonicUrl: null,

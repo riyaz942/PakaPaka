@@ -98,6 +98,7 @@ describe('passageRepository', () => {
       id: '1',
       title: '自己紹介',
       body: '私は学生です。',
+      bodyFurigana: null,
       jlptLevel: 'N5',
       sortOrder: 1,
     });
@@ -117,6 +118,7 @@ describe('passageRepository', () => {
       id: '1',
       passageId: '1',
       prompt: 'この人は何ですか？',
+      promptFurigana: null,
       acceptedAnswers: ['学生', 'がくせい'],
       sortOrder: 1,
     });

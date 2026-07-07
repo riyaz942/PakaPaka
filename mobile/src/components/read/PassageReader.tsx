@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { PassageQuestion } from '@/components/read/PassageQuestion';
 import type { PassageDetail, PassageQuestion as PassageQuestionType } from '@/data/curriculum/passageRepository';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { PassagePracticeResult } from '@/data/user/passagePracticeRepository';
 
 type PassageReaderProps = {
@@ -21,11 +23,19 @@ export function PassageReader({
   const practiceByQuestionId = new Map(
     practiceResults.map((result) => [result.questionId, result]),
   );
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   return (
     <View testID="passage-reader">
       <Text className="text-title text-primary">{passage.title}</Text>
-      <Text className="mt-4 text-body-lg text-primary">{passage.body}</Text>
+      <View className="mt-4">
+        <FuriganaText
+          text={passage.bodyFurigana ?? passage.body}
+          mode={furiganaMode}
+          knownKanji={knownKanji}
+          className="text-body-lg text-primary"
+        />
+      </View>
 
       {questions.length > 0 ? (
         <View className="mt-8 gap-space-lg">

@@ -14,6 +14,7 @@ export type PassageDetail = {
   id: string;
   title: string;
   body: string;
+  bodyFurigana: string | null;
   jlptLevel: JLPTLevel;
   sortOrder: number;
 };
@@ -22,6 +23,7 @@ export type PassageQuestion = {
   id: string;
   passageId: string;
   prompt: string;
+  promptFurigana: string | null;
   acceptedAnswers: string[];
   sortOrder: number;
 };
@@ -38,6 +40,7 @@ type PassageDetailRow = {
   id: number | string;
   title: string;
   body: string;
+  body_furigana: string | null;
   jlpt_level: JLPTLevel;
   sort_order: number;
 };
@@ -46,6 +49,7 @@ type PassageQuestionRow = {
   id: number | string;
   passage_id: number | string;
   prompt: string;
+  prompt_furigana: string | null;
   accepted_answers: string;
   sort_order: number;
 };
@@ -65,6 +69,7 @@ function mapPassageDetailRow(row: PassageDetailRow): PassageDetail {
     id: String(row.id),
     title: row.title,
     body: row.body,
+    bodyFurigana: row.body_furigana ?? null,
     jlptLevel: row.jlpt_level,
     sortOrder: row.sort_order,
   };
@@ -87,7 +92,7 @@ export function listPassagesByLevel(
 
 export function getPassageById(db: SQLiteDatabase, id: string): PassageDetail | null {
   const row = db.getFirstSync<PassageDetailRow>(
-    `SELECT id, title, body, jlpt_level, sort_order FROM reading_passages WHERE id = ?`,
+    `SELECT id, title, body, body_furigana, jlpt_level, sort_order FROM reading_passages WHERE id = ?`,
     Number(id),
   );
   return row ? mapPassageDetailRow(row) : null;
@@ -95,7 +100,7 @@ export function getPassageById(db: SQLiteDatabase, id: string): PassageDetail | 
 
 export function getPassageQuestions(db: SQLiteDatabase, passageId: string): PassageQuestion[] {
   const rows = db.getAllSync<PassageQuestionRow>(
-    `SELECT id, passage_id, prompt, accepted_answers, sort_order
+    `SELECT id, passage_id, prompt, prompt_furigana, accepted_answers, sort_order
      FROM passage_questions WHERE passage_id = ? ORDER BY sort_order ASC`,
     Number(passageId),
   );
@@ -103,6 +108,7 @@ export function getPassageQuestions(db: SQLiteDatabase, passageId: string): Pass
     id: String(row.id),
     passageId: String(row.passage_id),
     prompt: row.prompt,
+    promptFurigana: row.prompt_furigana ?? null,
     acceptedAnswers: JSON.parse(row.accepted_answers) as string[],
     sortOrder: row.sort_order,
   }));

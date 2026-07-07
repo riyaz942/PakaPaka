@@ -34,6 +34,8 @@ export type CurriculumItemDetail = {
   itemType: ItemType;
   jlptLevel: JLPTLevel;
   primaryForm: string;
+  /** Annotated (JmdictFurigana bracket notation) form. Vocabulary only, else null. */
+  furigana: string | null;
   meaning: string;
   mnemonicText: string | null;
   visualMnemonicUrl: string | null;
@@ -127,6 +129,7 @@ type ItemDetailRow = {
   item_type: ItemType;
   jlpt_level: JLPTLevel;
   primary_form: string;
+  furigana: string | null;
   meaning: string;
   mnemonic_text: string | null;
   visual_mnemonic_url: string | null;
@@ -139,6 +142,7 @@ function mapRowToDetail(row: ItemDetailRow): CurriculumItemDetail {
     itemType: row.item_type,
     jlptLevel: row.jlpt_level,
     primaryForm: row.primary_form,
+    furigana: row.furigana ?? null,
     meaning: row.meaning,
     mnemonicText: row.mnemonic_text,
     visualMnemonicUrl: row.visual_mnemonic_url,
@@ -150,7 +154,7 @@ export function getItemById(
   id: string,
 ): CurriculumItemDetail | null {
   const row = db.getFirstSync<ItemDetailRow>(
-    `SELECT id, slug, item_type, jlpt_level, primary_form, meaning, mnemonic_text, visual_mnemonic_url
+    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text, visual_mnemonic_url
      FROM items WHERE id = ?`,
     Number(id),
   );
@@ -253,6 +257,7 @@ export type GrammarRule = {
 export type ExampleSentence = {
   id: string;
   japanese: string;
+  furigana: string | null;
   english: string;
   sortOrder: number;
 };
@@ -287,6 +292,7 @@ type GrammarRuleRow = {
 type ExampleSentenceRow = {
   id: number | string;
   japanese: string;
+  furigana: string | null;
   english: string;
   sort_order: number;
 };
@@ -320,6 +326,7 @@ function mapExampleSentenceRow(row: ExampleSentenceRow): ExampleSentence {
   return {
     id: String(row.id),
     japanese: row.japanese,
+    furigana: row.furigana ?? null,
     english: row.english,
     sortOrder: row.sort_order,
   };
@@ -379,7 +386,7 @@ export function getExampleSentences(
   itemId: string,
 ): ExampleSentence[] {
   const rows = db.getAllSync<ExampleSentenceRow>(
-    `SELECT id, japanese, english, sort_order FROM example_sentences WHERE item_id = ? ORDER BY sort_order ASC`,
+    `SELECT id, japanese, furigana, english, sort_order FROM example_sentences WHERE item_id = ? ORDER BY sort_order ASC`,
     Number(itemId),
   );
   return rows.map(mapExampleSentenceRow);

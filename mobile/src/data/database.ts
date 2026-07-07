@@ -95,13 +95,34 @@ export async function reopenCurriculumDatabase(): Promise<Result<SQLiteDatabase,
   }
 }
 
+const CURRICULUM_ATTACH_ALIAS = 'curriculum';
+
+/**
+ * Attaches curriculum.db onto the user.db connection so repositories can join
+ * across both (e.g. mastery lookups joining curriculum.items against
+ * item_study_status/srs_states) without a second query round-trip. Safe to
+ * call more than once — detaches first if already attached, which is
+ * required after `reopenCurriculumDatabase()`'s atomic OTA file swap.
+ */
+export function attachCurriculumForQuery(
+  userDb: SQLiteDatabase,
+  curriculumDb: SQLiteDatabase,
+): void {
+  try {
+    userDb.execSync(`DETACH DATABASE ${CURRICULUM_ATTACH_ALIAS}`);
+  } catch {
+    // Not yet attached — expected on first call.
+  }
+  userDb.execSync(
+    `ATTACH DATABASE '${curriculumDb.databasePath.replace(/'/g, "''")}' AS ${CURRICULUM_ATTACH_ALIAS}`,
+  );
+}
+
 /**
  * Opens curriculum.db (bundled on first launch) and user.db (sandbox read-write).
  *
  * Curriculum and user databases are fully isolated — no shared migration path.
  * Curriculum import/swap (Story 1.6) must never run DROP/DELETE against user.db.
- *
- * TODO Epic 4/5: add attachCurriculumForQuery(userDb) when repositories need cross-DB joins.
  */
 export async function initializeDatabases(): Promise<Result<DatabaseHandles, AppError>> {
   let curriculumDb: SQLiteDatabase | null = null;
@@ -123,6 +144,7 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
     }
 
     curriculumDb = curriculumResult.value;
+    attachCurriculumForQuery(userDb, curriculumDb);
 
     return {
       ok: true,
