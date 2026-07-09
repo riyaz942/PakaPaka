@@ -18,6 +18,7 @@ import { Button } from '@/components/common/Button';
 import { DailyThresholdNotice } from '@/components/engagement';
 import {
   ReviewCard,
+  resolveCorrectReveal,
   SessionExitSheet,
   SessionHeader,
   WanaKanaInput,
@@ -40,29 +41,6 @@ const PLACEHOLDER: Record<PromptType, string> = {
   meaning: 'Type the meaning in English...',
   production: 'Type the conjugated form in romaji...',
 };
-
-function DevGradeButtons({ onGrade }: { onGrade: (g: ReviewGrade) => void }) {
-  const GRADES: { grade: ReviewGrade; label: string }[] = [
-    { grade: 1, label: 'Again' },
-    { grade: 2, label: 'Hard' },
-    { grade: 3, label: 'Good' },
-    { grade: 4, label: 'Easy' },
-  ];
-  return (
-    <View className="flex-row gap-space-sm px-space-lg pb-space-md">
-      {GRADES.map(({ grade, label }) => (
-        <Pressable
-          key={grade}
-          accessibilityRole="button"
-          accessibilityLabel={label}
-          className="flex-1 items-center rounded-radius-md bg-surface-elevated py-space-sm"
-          onPress={() => onGrade(grade)}>
-          <Text className="text-body-sm text-secondary">{label}</Text>
-        </Pressable>
-      ))}
-    </View>
-  );
-}
 
 export default function ReviewScreen() {
   const {
@@ -252,6 +230,17 @@ export default function ReviewScreen() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
   }
 
+  // "Don't know" — reveal the correct answer and mark the item incorrect,
+  // reusing the same incorrect flow as a wrong submission (Continue grades it).
+  function handleDontKnow() {
+    if (!currentItem || !inputEditable) return;
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
+    const { value } = resolveCorrectReveal(currentItem);
+    setDisplayAnswer(value);
+    setCardState('incorrect');
+  }
+
   function handleEndSession() {
     if (isEndingRef.current) return;
     isEndingRef.current = true;
@@ -378,7 +367,7 @@ export default function ReviewScreen() {
             />
           </View>
         ) : (
-          <View className="px-space-md pb-space-md">
+          <View className="gap-space-sm px-space-md pb-space-md">
             <WanaKanaInput
               ref={inputRef}
               mode={inputMode}
@@ -389,9 +378,16 @@ export default function ReviewScreen() {
               editable={inputEditable}
               autoFocus={inputEditable}
             />
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Don't know"
+              className="items-center py-space-sm"
+              disabled={!inputEditable}
+              onPress={handleDontKnow}>
+              <Text className="text-body-sm text-secondary">Don&apos;t know</Text>
+            </Pressable>
           </View>
         )}
-        {__DEV__ && <DevGradeButtons onGrade={gradeCurrentItem} />}
       </KeyboardAvoidingView>
 
       <SessionExitSheet

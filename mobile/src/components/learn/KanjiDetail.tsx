@@ -1,14 +1,17 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
   CurriculumParentItem,
   KanjiReading,
 } from '@/data/curriculum/itemRepository';
+import { cn } from '@/utils/cn';
 
 type KanjiDetailProps = {
   item: CurriculumItemDetail;
@@ -17,6 +20,7 @@ type KanjiDetailProps = {
   parents?: CurriculumParentItem[];
   isLocked?: boolean;
   unmetPrerequisites?: CurriculumParentItem[];
+  size?: HeroSize;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -41,6 +45,7 @@ export function KanjiDetail({
   parents,
   isLocked,
   unmetPrerequisites,
+  size = 'md',
 }: KanjiDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const onyomi = readingsByType(kanjiReadings, 'onyomi');
@@ -48,8 +53,13 @@ export function KanjiDetail({
 
   return (
     <View testID="kanji-detail">
-      <Text className="text-display text-primary">{item.primaryForm}</Text>
-      <Text className="mt-2 text-body text-primary">{item.meaning}</Text>
+      <ItemDetailHeader itemType="kanji" meaning={item.meaning} size={size}>
+        <Text
+          className={cn('text-center font-bold', CONTENT_TYPE_ACCENT.kanji.text)}
+          style={size === 'lg' ? HERO_FONT_SIZE.glyph : { fontSize: 48, lineHeight: 53 }}>
+          {item.primaryForm}
+        </Text>
+      </ItemDetailHeader>
 
       {synonyms.length > 0 ? (
         <View className="mt-4">

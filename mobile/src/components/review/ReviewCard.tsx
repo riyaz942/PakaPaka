@@ -2,6 +2,7 @@ import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
 import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem } from '@/core/srs/srs.types';
@@ -128,7 +129,9 @@ export function ReviewCard({
         {MODE_LABEL[promptType]}
       </Text>
 
-      <Text className="text-display text-primary text-center">{primaryForm}</Text>
+      <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+        {primaryForm}
+      </Text>
 
       <SRSStageIndicator stage={srsState.srsStageLabel} />
 

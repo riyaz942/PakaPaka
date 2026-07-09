@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   CurriculumListItem,
   CurriculumParentItem,
@@ -27,12 +28,14 @@ export function LearnItemRow({
 }: LearnItemRowProps) {
   const isGrammar = item.itemType === 'grammar';
   const isJapaneseForm = item.itemType === 'radical' || item.itemType === 'kanji';
+  const accent = CONTENT_TYPE_ACCENT[item.itemType];
 
   const content = (
     <>
       <Text
         className={cn(
-          isJapaneseForm ? 'text-display text-primary' : 'text-body text-primary',
+          isJapaneseForm ? 'text-display' : 'text-body',
+          accent.text,
           isGrammar && 'font-mono',
         )}>
         {item.primaryForm}
@@ -62,14 +65,24 @@ export function LearnItemRow({
         accessibilityLabel={`${item.primaryForm}, ${item.meaning}`}
         onPress={onPress}
         testID={testID}
-        className={cn('border-b border-border py-4', isLocked && 'opacity-50')}>
+        className={cn(
+          'border-b border-l-4 border-border py-4 pl-space-md',
+          accent.barLeft,
+          isLocked && 'opacity-50',
+        )}>
         {content}
       </Pressable>
     );
   }
 
   return (
-    <View testID={testID} className={cn('border-b border-border py-4', isLocked && 'opacity-50')}>
+    <View
+      testID={testID}
+      className={cn(
+        'border-b border-l-4 border-border py-4 pl-space-md',
+        accent.barLeft,
+        isLocked && 'opacity-50',
+      )}>
       {content}
     </View>
   );

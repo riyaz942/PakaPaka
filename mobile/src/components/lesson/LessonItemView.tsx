@@ -40,7 +40,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
 
   switch (item.itemType) {
     case 'radical':
-      return <RadicalDetail item={item} />;
+      return <RadicalDetail item={item} size="lg" />;
     case 'kanji':
       return (
         <KanjiDetail
@@ -50,6 +50,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           parents={parents}
           isLocked={isLocked}
           unmetPrerequisites={unmetPrerequisites}
+          size="lg"
         />
       );
     case 'vocabulary':
@@ -62,6 +63,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           parents={parents}
           isLocked={isLocked}
           unmetPrerequisites={unmetPrerequisites}
+          size="lg"
         />
       );
     case 'grammar':
@@ -71,6 +73,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           acceptedAnswers={acceptedAnswers}
           grammarRule={grammarRule}
           exampleSentences={exampleSentences}
+          size="lg"
         />
       );
     default:

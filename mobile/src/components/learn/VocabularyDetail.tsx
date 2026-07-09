@@ -3,8 +3,10 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -13,7 +15,6 @@ import type {
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
-import { cn } from '@/utils/cn';
 
 type VocabularyDetailProps = {
   item: CurriculumItemDetail;
@@ -23,6 +24,7 @@ type VocabularyDetailProps = {
   parents?: CurriculumParentItem[];
   isLocked?: boolean;
   unmetPrerequisites?: CurriculumParentItem[];
+  size?: HeroSize;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -39,20 +41,31 @@ export function VocabularyDetail({
   parents,
   isLocked,
   unmetPrerequisites,
+  size = 'md',
 }: VocabularyDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const isLongWord = item.primaryForm.length > 4;
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const formSizeStyle =
+    size === 'lg'
+      ? isLongWord
+        ? HERO_FONT_SIZE.word
+        : HERO_FONT_SIZE.glyph
+      : isLongWord
+        ? { fontSize: 28, lineHeight: 34 }
+        : { fontSize: 48, lineHeight: 53 };
 
   return (
     <View testID="vocabulary-detail">
-      <FuriganaText
-        text={item.furigana ?? item.primaryForm}
-        mode={furiganaMode}
-        knownKanji={knownKanji}
-        className={cn('text-primary', isLongWord ? 'text-title-lg' : 'text-display')}
-      />
-      <Text className="mt-2 text-body text-primary">{item.meaning}</Text>
+      <ItemDetailHeader itemType="vocabulary" meaning={item.meaning} size={size}>
+        <FuriganaText
+          text={item.furigana ?? item.primaryForm}
+          mode={furiganaMode}
+          knownKanji={knownKanji}
+          className={CONTENT_TYPE_ACCENT.vocabulary.text}
+          style={formSizeStyle}
+        />
+      </ItemDetailHeader>
 
       {synonyms.length > 0 ? (
         <View className="mt-4">

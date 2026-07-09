@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { type AccessibilityRole, Pressable, Text, View } from 'react-native';
+import {
+  type AccessibilityRole,
+  Pressable,
+  type StyleProp,
+  Text,
+  type TextStyle,
+  View,
+} from 'react-native';
 
 import { parseFurigana, type FuriganaSegment } from '@/core/furigana/parseFurigana';
 import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
@@ -16,6 +23,12 @@ type FuriganaTextProps = {
    * reading and its kanji, so apply those on a wrapping parent instead.
    */
   className?: string;
+  /**
+   * Inline text style for the base-text segments. Use for sizing that can't rely
+   * on a Tailwind token (e.g. a hero fontSize applied on reload without a Metro
+   * config rebuild). Same constraint as `className`: text styling only.
+   */
+  style?: StyleProp<TextStyle>;
   /** Passed through to the container (or plain-text fallback) for a11y parity with a bare <Text>. */
   accessibilityRole?: AccessibilityRole;
 };
@@ -57,6 +70,7 @@ export function FuriganaText({
   mode,
   knownKanji,
   className,
+  style,
   accessibilityRole,
 }: FuriganaTextProps) {
   const segments = parseFurigana(text);
@@ -69,7 +83,7 @@ export function FuriganaText({
   const hasReadings = segments.some((segment) => segment.reading);
   if (!hasReadings) {
     return (
-      <Text className={className} accessibilityRole={accessibilityRole}>
+      <Text className={className} style={style} accessibilityRole={accessibilityRole}>
         {text}
       </Text>
     );
@@ -101,7 +115,7 @@ export function FuriganaText({
       {segments.map((segment, index) => {
         if (!segment.reading) {
           return (
-            <Text key={index} className={className} accessible={false}>
+            <Text key={index} className={className} style={style} accessible={false}>
               {segment.text}
             </Text>
           );
@@ -119,7 +133,7 @@ export function FuriganaText({
                   {segment.reading}
                 </Text>
               ) : null}
-              <Text className={className} accessible={false}>
+              <Text className={className} style={style} accessible={false}>
                 {segment.text}
               </Text>
             </View>

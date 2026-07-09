@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { MnemonicImage } from '@/components/common/MnemonicImage';
+import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
+import { cn } from '@/utils/cn';
 import { isValidMnemonicImageUrl } from '@/utils/mnemonicAccessibilityLabel';
 
 type RadicalDetailProps = {
   item: CurriculumItemDetail;
+  size?: HeroSize;
 };
 
-export function RadicalDetail({ item }: RadicalDetailProps) {
+export function RadicalDetail({ item, size = 'md' }: RadicalDetailProps) {
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
   const hasValidImageUrl = isValidMnemonicImageUrl(item.visualMnemonicUrl);
 
@@ -22,8 +26,13 @@ export function RadicalDetail({ item }: RadicalDetailProps) {
 
   return (
     <View testID="radical-detail">
-      <Text className="text-display text-primary">{item.primaryForm}</Text>
-      <Text className="mt-2 text-body text-primary">{item.meaning}</Text>
+      <ItemDetailHeader itemType="radical" meaning={item.meaning} size={size}>
+        <Text
+          className={cn('text-center font-bold', CONTENT_TYPE_ACCENT.radical.text)}
+          style={size === 'lg' ? HERO_FONT_SIZE.glyph : { fontSize: 48, lineHeight: 53 }}>
+          {item.primaryForm}
+        </Text>
+      </ItemDetailHeader>
 
       {showMnemonicTextAbove ? (
         <Text className="mt-4 text-body text-secondary">{item.mnemonicText}</Text>

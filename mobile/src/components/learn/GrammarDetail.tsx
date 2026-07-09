@@ -2,7 +2,9 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -10,12 +12,14 @@ import type {
   GrammarRule,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { cn } from '@/utils/cn';
 
 type GrammarDetailProps = {
   item: CurriculumItemDetail;
   acceptedAnswers: AcceptedAnswer[];
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
+  size?: HeroSize;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -39,14 +43,20 @@ export function GrammarDetail({
   acceptedAnswers,
   grammarRule,
   exampleSentences,
+  size = 'md',
 }: GrammarDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   return (
     <View testID="grammar-detail">
-      <Text className="font-mono text-title-lg text-primary">{item.primaryForm}</Text>
-      <Text className="mt-2 text-body text-primary">{item.meaning}</Text>
+      <ItemDetailHeader itemType="grammar" meaning={item.meaning} size={size}>
+        <Text
+          className={cn('font-mono text-center font-bold', CONTENT_TYPE_ACCENT.grammar.text)}
+          style={size === 'lg' ? HERO_FONT_SIZE.pattern : { fontSize: 28, lineHeight: 34 }}>
+          {item.primaryForm}
+        </Text>
+      </ItemDetailHeader>
 
       {synonyms.length > 0 ? (
         <View className="mt-4">

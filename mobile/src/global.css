@@ -33,11 +33,11 @@
     --color-ring-end: #ee8833;
     --color-ring-complete: #44bbee;
 
-    /* UX-DR2 — content-type accents */
+    /* UX-DR2 — content-type accents: radical=blue, kanji=pink, vocabulary=green, grammar=purple */
     --color-content-radical: #44aaee;
     --color-content-kanji: #ee4488;
-    --color-content-vocabulary: #aa44dd;
-    --color-content-grammar: #22bbaa;
+    --color-content-vocabulary: #22bb66;
+    --color-content-grammar: #aa44dd;
     --color-content-reading: #eeaa22;
 
     /* UX-DR2 — reinforcement */
@@ -68,7 +68,7 @@
       --color-ring-end: #b35f12;
       --color-ring-complete: #1a8fb8;
       --color-content-radical: #2d7fb8;
-      --color-content-grammar: #1a8f7a;
+      --color-content-vocabulary: #188a50;
       --color-content-reading: #9a7208;
     }
   }
