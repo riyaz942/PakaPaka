@@ -49,6 +49,12 @@ export default function ReviewSummaryScreen() {
         {sessionSummary.itemsReviewed > 0 ? (
           <>
             <PostSessionShareCard {...shareCardProps} />
+            <Text
+              className="text-body text-secondary text-center"
+              accessibilityLabel={`${sessionSummary.correctCount} of ${sessionSummary.itemsReviewed} items correct on the first try`}>
+              {sessionSummary.correctCount} of {sessionSummary.itemsReviewed} correct first
+              try
+            </Text>
             <TimeCompressionSummary
               domainCounts={sessionSummary.domainCounts}
               actualMinutes={compression.actualMinutes}

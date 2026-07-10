@@ -35,6 +35,11 @@ describe('SessionHeader', () => {
     expect(screen.getByText('GRAMMAR')).toBeTruthy();
   });
 
+  it('clamps progress to totalItems while retry cards are still showing', () => {
+    render(<SessionHeader {...defaultProps} currentIndex={42} totalItems={42} />);
+    expect(screen.getByText('42 of 42')).toBeTruthy();
+  });
+
   it('calls onExitPress when close button is tapped', () => {
     const onExitPress = jest.fn();
     render(<SessionHeader {...defaultProps} onExitPress={onExitPress} />);

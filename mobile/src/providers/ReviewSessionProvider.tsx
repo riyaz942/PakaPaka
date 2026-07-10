@@ -1,11 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import { COGNITIVE_LOAD_HISTORY_WINDOW, MAX_PREFETCH } from '@/config/constants';
 import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/loadTracker';
 import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
-import type { ReviewGrade, ReviewItem, SRSState } from '@/core/srs/srs.types';
+import type { ReviewGrade, ReviewItem, SRSState, StageTransition } from '@/core/srs/srs.types';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
@@ -33,8 +33,11 @@ type SessionSummary = {
 type ReviewSessionState = {
   currentItem: ReviewItem | null;
   prefetchBuffer: ReviewItem[];
+  /** Count of distinct items retired (answered correctly at least once). Never decreases. */
   currentIndex: number;
   totalItems: number;
+  /** Position in the working queue (including retries). Increments on every grade — key card resets on this. */
+  cursor: number;
   isLoading: boolean;
   isComplete: boolean;
   error: AppError | null;
@@ -45,11 +48,19 @@ type ReviewSessionState = {
   refetch: () => void;
   gradeCurrentItem: (grade: ReviewGrade) => void;
   /**
+   * Stage movement the given grade would produce for the current card, or null
+   * when the stage wouldn't change or the card is a retry (retries write nothing).
+   */
+  peekStageTransition: (grade: ReviewGrade) => StageTransition | null;
+  /**
    * Record a typo outcome for the current item without advancing (non-terminal).
    * Called from the typo branch in review/index.tsx which never calls gradeCurrentItem.
    */
   recordTypoForCurrentItem: () => void;
 };
+
+/** A card in the session working queue. Retries are pedagogical re-asks: they write nothing. */
+type QueueEntry = { item: ReviewItem; isRetry: boolean };
 
 const ReviewSessionContext = createContext<ReviewSessionState | null>(null);
 
@@ -68,7 +79,13 @@ type Props = {
 export function ReviewSessionProvider({ children }: Props) {
   const { userDb } = useDatabase();
   const { queue, isLoading, error, refetch } = useReviewQueue();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cursor, setCursor] = useState(0);
+  // Incorrect items re-asked later in the session. Always appended at the tail
+  // of the working queue so the maximum number of other items intervene before
+  // the re-ask (WaniKani-style: don't let the user pattern-match off the reveal).
+  const [retryItems, setRetryItems] = useState<ReviewItem[]>([]);
+  // Distinct items answered correctly at least once — drives header progress.
+  const [retiredCount, setRetiredCount] = useState(0);
   const [baseLoad, setBaseLoad] = useState(0);
   const [sessionLoad, setSessionLoad] = useState(0);
   const thresholdRef = useRef(30);
@@ -92,7 +109,9 @@ export function ReviewSessionProvider({ children }: Props) {
   const streakRecordedRef = useRef(false);
 
   useEffect(() => {
-    setCurrentIndex(0);
+    setCursor(0);
+    setRetryItems([]);
+    setRetiredCount(0);
     setSessionLoad(0);
     loadInitialized.current = false;
     sessionStartRef.current = null;
@@ -130,8 +149,21 @@ export function ReviewSessionProvider({ children }: Props) {
   }, [userDb]);
 
   const totalItems = queue.length;
-  const currentItem = queue[currentIndex] ?? null;
-  const isComplete = !isLoading && !error && totalItems > 0 && currentIndex >= totalItems;
+  // Working queue = first-attempt cards followed by retry cards. Retries are
+  // derived state so the queue stays consistent with `queue` within a render.
+  const workingQueue = useMemo<QueueEntry[]>(
+    () => [
+      ...queue.map((item) => ({ item, isRetry: false })),
+      ...retryItems.map((item) => ({ item, isRetry: true })),
+    ],
+    [queue, retryItems],
+  );
+  const currentEntry = workingQueue[cursor] ?? null;
+  const currentItem = currentEntry?.item ?? null;
+  // The session completes only when the working queue — retries included — is
+  // exhausted, i.e. every item has been answered correctly at least once.
+  const isComplete =
+    !isLoading && !error && totalItems > 0 && cursor >= workingQueue.length;
 
   useEffect(() => {
     if (!isComplete) return;
@@ -142,20 +174,33 @@ export function ReviewSessionProvider({ children }: Props) {
     }
   }, [isComplete]);
 
-  const prefetchBuffer = queue.slice(
-    currentIndex + 1,
-    currentIndex + 1 + MAX_PREFETCH,
-  );
+  const prefetchBuffer = workingQueue
+    .slice(cursor + 1, cursor + 1 + MAX_PREFETCH)
+    .map((entry) => entry.item);
 
   const gradeCurrentItem = useCallback(
     (grade: ReviewGrade) => {
-      if (!currentItem || isGrading.current) return;
+      if (!currentEntry || isGrading.current) return;
+      const currentItem = currentEntry.item;
+      // grade === 1 (Again) → incorrect; anything else → correct.
+      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
+
+      // Retry cards are pedagogical only: the FSRS grade, weakness outcome,
+      // cognitive load, boosts, and summary counters were all written on the
+      // first attempt. Correct retires the item; incorrect re-queues it again.
+      if (currentEntry.isRetry) {
+        if (outcomeResult === 'correct') {
+          setRetiredCount((count) => count + 1);
+        } else {
+          setRetryItems((items) => [...items, currentItem]);
+        }
+        setCursor((i) => i + 1);
+        return;
+      }
 
       isGrading.current = true;
       const nextState = gradeItem(currentItem.srsState, grade, new Date());
       const gradedItemType = currentItem.itemType;
-      // grade === 1 (Again) → incorrect; anything else → correct.
-      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
       const promptType = currentItem.promptType;
       const itemId = currentItem.itemId;
 
@@ -240,11 +285,24 @@ export function ReviewSessionProvider({ children }: Props) {
       domainCountsRef.current[gradedItemType] += 1;
       if (outcomeResult === 'correct') {
         correctCountRef.current += 1;
+        setRetiredCount((count) => count + 1);
+      } else {
+        setRetryItems((items) => [...items, currentItem]);
       }
 
-      setCurrentIndex((i) => i + 1);
+      setCursor((i) => i + 1);
     },
-    [currentItem, userDb],
+    [currentEntry, userDb],
+  );
+
+  const peekStageTransition = useCallback(
+    (grade: ReviewGrade): StageTransition | null => {
+      if (!currentEntry || currentEntry.isRetry) return null;
+      const from = currentEntry.item.srsState.srsStageLabel;
+      const to = gradeItem(currentEntry.item.srsState, grade, new Date()).srsStageLabel;
+      return from === to ? null : { from, to };
+    },
+    [currentEntry],
   );
 
   /**
@@ -255,9 +313,10 @@ export function ReviewSessionProvider({ children }: Props) {
    * Rule: a typo followed by a correct retry records one typo + one correct.
    */
   const recordTypoForCurrentItem = useCallback(() => {
-    if (!currentItem) return;
-    const itemId = currentItem.itemId;
-    const promptType = currentItem.promptType;
+    // Retry cards record nothing — the item's outcomes were counted on first attempt.
+    if (!currentEntry || currentEntry.isRetry) return;
+    const itemId = currentEntry.item.itemId;
+    const promptType = currentEntry.item.promptType;
 
     Promise.resolve()
       .then(() => {
@@ -275,7 +334,7 @@ export function ReviewSessionProvider({ children }: Props) {
           console.warn('[ReviewSession] weakness typo write failed', cause);
         }
       });
-  }, [currentItem, userDb]);
+  }, [currentEntry, userDb]);
 
   const totalLoad = baseLoad + sessionLoad;
   const cognitiveLoadPercent = computeLoadPercent(totalLoad, thresholdRef.current);
@@ -309,8 +368,9 @@ export function ReviewSessionProvider({ children }: Props) {
   const value: ReviewSessionState = {
     currentItem,
     prefetchBuffer,
-    currentIndex,
+    currentIndex: retiredCount,
     totalItems,
+    cursor,
     isLoading,
     isComplete,
     error,
@@ -320,6 +380,7 @@ export function ReviewSessionProvider({ children }: Props) {
     snapshotSessionDuration,
     refetch,
     gradeCurrentItem,
+    peekStageTransition,
     recordTypoForCurrentItem,
   };
 

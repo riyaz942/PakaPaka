@@ -1,11 +1,11 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
-import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
+import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import type { PromptType } from '@/core/srs/promptResolver';
-import type { ReviewItem } from '@/core/srs/srs.types';
+import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 
 import { ProgressiveHint } from './ProgressiveHint';
 import { ReinforcementHighlight } from './ReinforcementHighlight';
@@ -17,6 +17,8 @@ type ReviewCardProps = {
   state: ReviewCardState;
   /** Correct answer shown on incorrect state */
   displayAnswer?: string;
+  /** Stage movement caused by this answer; null/undefined when unchanged (no transition chrome) */
+  stageTransition?: StageTransition | null;
   onHintReveal?: (count: number) => void;
   /** Ref attached to the accessible result region in correct/incorrect/typo states */
   resultRef?: Ref<View>;
@@ -57,6 +59,7 @@ export function ReviewCard({
   item,
   state,
   displayAnswer,
+  stageTransition,
   onHintReveal,
   resultRef,
 }: ReviewCardProps) {
@@ -81,6 +84,7 @@ export function ReviewCard({
             {label}: {value}
           </Text>
         </View>
+        {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
         <ReinforcementHighlight link={reinforcementLink} />
       </View>
     );
@@ -89,15 +93,18 @@ export function ReviewCard({
   if (state === 'incorrect') {
     const answer = displayAnswer ?? formatMeanings(meanings);
     return (
-      <View
-        ref={resultRef}
-        accessible
-        accessibilityLabel={`Incorrect, correct answer is ${answer}`}
-        className="gap-space-md items-center">
-        <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
-        <Text className="text-body-lg text-primary text-center">
-          Correct answer: {answer}
-        </Text>
+      <View className="gap-space-md w-full items-center">
+        <View
+          ref={resultRef}
+          accessible
+          accessibilityLabel={`Incorrect, correct answer is ${answer}`}
+          className="gap-space-md items-center">
+          <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
+          <Text className="text-body-lg text-primary text-center">
+            Correct answer: {answer}
+          </Text>
+        </View>
+        {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
       </View>
     );
   }

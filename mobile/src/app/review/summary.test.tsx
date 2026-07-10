@@ -33,6 +33,12 @@ describe('ReviewSummaryScreen', () => {
     mockShadowModeEnabled = false;
   });
 
+  it('shows first-try accuracy so retried items are not counted as correct', () => {
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByText('13 of 15 correct first try')).toBeTruthy();
+  });
+
   it('renders exactly today behavior (no comparison block) when shadow mode is off', () => {
     render(<ReviewSummaryScreen />);
 

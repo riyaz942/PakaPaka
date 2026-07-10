@@ -7,6 +7,7 @@ import type { ReviewItem } from '@/core/srs/srs.types';
 type ItemType = ReviewItem['itemType'];
 
 type SessionHeaderProps = {
+  /** Distinct items retired (answered correctly at least once) — monotonic, never backwards. */
   currentIndex: number;
   totalItems: number;
   itemType: ItemType;
@@ -21,7 +22,9 @@ export function SessionHeader({
   cognitiveLoadPercent = 0,
   onExitPress,
 }: SessionHeaderProps) {
-  const displayNumber = currentIndex + 1;
+  // Clamp: once every item is retired except in-flight retries, retiredCount can
+  // equal totalItems while retry cards are still being shown.
+  const displayNumber = Math.min(currentIndex + 1, totalItems);
   const accent = CONTENT_TYPE_ACCENT[itemType];
   const a11yLabel = `Item ${displayNumber} of ${totalItems}, cognitive load ${cognitiveLoadPercent} percent, ${itemType} item`;
 

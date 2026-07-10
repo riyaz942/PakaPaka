@@ -585,6 +585,221 @@ describe('ReviewSessionProvider', () => {
     expect(result.current.sessionSummary.correctCount).toBe(0);
   });
 
+  it('re-queues an incorrect item at the end and completes only after it is answered correctly', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(3),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // Item 1 incorrect → should reappear after items 2 and 3.
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(result.current.currentItem?.itemId).toBe('2');
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Retry of item 1, not completion.
+    expect(result.current.isComplete).toBe(false);
+    expect(result.current.currentItem?.itemId).toBe('1');
+
+    // Incorrect again → re-queued again.
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    expect(result.current.isComplete).toBe(false);
+    expect(result.current.currentItem?.itemId).toBe('1');
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    expect(result.current.isComplete).toBe(true);
+  });
+
+  it('writes the FSRS grade and side effects once, on the first attempt only', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(1),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // First attempt incorrect → grade written once.
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+    expect(mockAddDailyLoad).toHaveBeenCalledTimes(1);
+    expect(result.current.sessionSummary.itemsReviewed).toBe(1);
+    expect(result.current.sessionSummary.correctCount).toBe(0);
+
+    // Retry answered correctly → nothing new is written or counted.
+    expect(result.current.currentItem?.itemId).toBe('1');
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+    expect(mockAddDailyLoad).toHaveBeenCalledTimes(1);
+    expect(mockApplyBoosts).not.toHaveBeenCalled();
+    expect(result.current.sessionSummary.itemsReviewed).toBe(1);
+    expect(result.current.sessionSummary.correctCount).toBe(0);
+    expect(result.current.isComplete).toBe(true);
+  });
+
+  it('does not record a typo outcome for a retry card', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(1),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Now on the retry card — a typo must not be recorded again.
+    const callsBefore = mockAddDailyLoad.mock.calls.length;
+    act(() => {
+      result.current.recordTypoForCurrentItem();
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(mockAddDailyLoad.mock.calls.length).toBe(callsBefore);
+  });
+
+  it('advances progress only on correct answers so it never moves backwards', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(3),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    expect(result.current.currentIndex).toBe(0);
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    // Incorrect does not retire the item — progress holds.
+    expect(result.current.currentIndex).toBe(0);
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(result.current.currentIndex).toBe(1);
+  });
+
+  it('peekStageTransition reflects the grade and is null for retries', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(1),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // Fixture is a guru card (stability 5 puts a graded card in apprentice
+    // territory on Again via Relearning).
+    const dropped = result.current.peekStageTransition(1);
+    expect(dropped).toEqual({ from: 'guru', to: 'apprentice' });
+
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Retry card — nothing is written, so no transition to show.
+    expect(result.current.currentItem?.itemId).toBe('1');
+    expect(result.current.peekStageTransition(3)).toBeNull();
+  });
+
   it('does not increment domain counters on recordTypoForCurrentItem', async () => {
     const db = await openDatabaseAsync('user.db');
     const wrapper = await createWrapper(db);

@@ -24,6 +24,12 @@ export type SRSState = {
 /** 1=Again 2=Hard 3=Good 4=Easy — matches ts-fsrs Rating enum (Manual excluded) */
 export type ReviewGrade = 1 | 2 | 3 | 4;
 
+/** Stage movement produced by a grade, surfaced on the answer reveal. */
+export type StageTransition = {
+  from: SRSStageLabel;
+  to: SRSStageLabel;
+};
+
 export type ReviewAnswerKey = {
   acceptedMeanings: string[];
   acceptedReadings: string[];

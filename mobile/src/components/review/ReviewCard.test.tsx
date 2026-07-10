@@ -149,6 +149,42 @@ describe('ReviewCard — result states', () => {
     expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
   });
 
+  it('shows an advancing stage transition with upward affordance on correct', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ promptType: 'meaning' })}
+        state="correct"
+        stageTransition={{ from: 'apprentice', to: 'guru' }}
+      />,
+    );
+    expect(screen.getByText('Apprentice → Guru ↑')).toBeTruthy();
+    expect(
+      screen.getByLabelText('SRS stage advanced from Apprentice to Guru'),
+    ).toBeTruthy();
+  });
+
+  it('shows a dropped stage transition without upward affordance on incorrect', () => {
+    render(
+      <ReviewCard
+        item={makeItem()}
+        state="incorrect"
+        displayAnswer="たべる"
+        stageTransition={{ from: 'guru', to: 'apprentice' }}
+      />,
+    );
+    expect(screen.getByText('Guru → Apprentice')).toBeTruthy();
+    expect(
+      screen.getByLabelText('SRS stage moved from Guru to Apprentice'),
+    ).toBeTruthy();
+  });
+
+  it('shows no transition chrome when the stage did not change', () => {
+    render(
+      <ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" stageTransition={null} />,
+    );
+    expect(screen.queryByText(/→/)).toBeNull();
+  });
+
   it('result regions have accessible labels', () => {
     const { rerender } = render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
     let result = screen.getByLabelText('Correct, meaning: eat, food');

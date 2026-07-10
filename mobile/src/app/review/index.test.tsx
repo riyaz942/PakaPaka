@@ -13,6 +13,7 @@ const mockFocusScreenReaderOn = jest.fn().mockResolvedValue(undefined);
 
 let mockCurrentItem: ReviewItem | null = makeReviewItem();
 let mockCurrentIndex = 0;
+let mockCursor = 0;
 
 function makeReviewItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
   return {
@@ -64,9 +65,11 @@ jest.mock('@/providers/ReviewSessionProvider', () => ({
     isComplete: false,
     totalItems: 3,
     currentIndex: mockCurrentIndex,
+    cursor: mockCursor,
     error: null,
     refetch: jest.fn(),
     gradeCurrentItem: mockGradeCurrentItem,
+    peekStageTransition: jest.fn().mockReturnValue(null),
     recordTypoForCurrentItem: mockRecordTypoForCurrentItem,
     cognitiveLoadPercent: 10,
     cognitiveLoadComplete: false,
@@ -120,6 +123,7 @@ describe('ReviewScreen accessibility', () => {
     jest.clearAllMocks();
     mockCurrentItem = makeReviewItem();
     mockCurrentIndex = 0;
+    mockCursor = 0;
     mockFocusScreenReaderOn.mockResolvedValue(undefined);
 
     jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
@@ -169,6 +173,7 @@ describe('ReviewScreen accessibility', () => {
 
     mockCurrentItem = makeReviewItem({ itemId: 'test-2' });
     mockCurrentIndex = 1;
+    mockCursor = 1;
 
     await act(async () => {
       rerender(<ReviewScreen />);

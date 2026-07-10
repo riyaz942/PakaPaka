@@ -31,7 +31,7 @@ import {
   gradeForResult,
 } from '@/core/answer/reviewAnswerEvaluator';
 import type { PromptType } from '@/core/srs/promptResolver';
-import type { ReviewGrade } from '@/core/srs/srs.types';
+import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
 import { safeBack } from '@/utils/safeBack';
@@ -49,9 +49,11 @@ export default function ReviewScreen() {
     isComplete,
     totalItems,
     currentIndex,
+    cursor,
     error,
     refetch,
     gradeCurrentItem,
+    peekStageTransition,
     recordTypoForCurrentItem,
     cognitiveLoadPercent,
     cognitiveLoadComplete,
@@ -65,6 +67,7 @@ export default function ReviewScreen() {
   const [cardState, setCardState] = useState<ReviewCardState>('prompting');
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
+  const [stageTransition, setStageTransition] = useState<StageTransition | null>(null);
   const [hintsUsed, setHintsUsed] = useState(0);
   const inputRef = useRef<WanaKanaInputRef>(null);
   const resultRef = useRef<RNView>(null);
@@ -119,6 +122,7 @@ export default function ReviewScreen() {
     setCardState('prompting');
     setAnswerText('');
     setDisplayAnswer(undefined);
+    setStageTransition(null);
     setHintsUsed(0);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
@@ -127,7 +131,9 @@ export default function ReviewScreen() {
     }
     pendingGradeRef.current = null;
     requestAnimationFrame(() => inputRef.current?.focus());
-  }, [currentItem?.itemId]);
+    // Keyed on cursor, not itemId — a retry of the same item can land back-to-back
+    // on a short queue and must still reset the card.
+  }, [cursor]);
 
   useEffect(() => {
     if (cardState !== 'correct' && cardState !== 'incorrect' && cardState !== 'typo') {
@@ -201,6 +207,7 @@ export default function ReviewScreen() {
     if (evaluation.result === 'correct') {
       setCardState('correct');
       const grade = gradeForResult(evaluation.result, { hintsUsed }) ?? 3;
+      setStageTransition(peekStageTransition(grade));
       pendingGradeRef.current = grade;
       autoAdvanceTimer.current = setTimeout(() => {
         autoAdvanceTimer.current = null;
@@ -223,8 +230,9 @@ export default function ReviewScreen() {
 
     const answer = evaluation.displayAnswer ?? currentItem.meanings[0] ?? '';
     setDisplayAnswer(answer);
+    setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
-  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, recordTypoForCurrentItem]);
+  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, peekStageTransition, recordTypoForCurrentItem]);
 
   function handleContinueIncorrect() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
@@ -238,6 +246,7 @@ export default function ReviewScreen() {
     isSubmittingRef.current = true;
     const { value } = resolveCorrectReveal(currentItem);
     setDisplayAnswer(value);
+    setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
   }
 
@@ -352,6 +361,7 @@ export default function ReviewScreen() {
             item={currentItem}
             state={cardState}
             displayAnswer={displayAnswer}
+            stageTransition={stageTransition}
             onHintReveal={setHintsUsed}
             resultRef={resultRef}
           />
