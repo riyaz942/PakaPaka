@@ -15,6 +15,7 @@ type SrsStateRow = {
   fsrs_state: string;
   reps: number;
   lapses: number;
+  learning_steps: number;
   is_burned: number;
   srs_stage_label: string;
   last_reviewed_at: string | null;
@@ -38,6 +39,7 @@ function mapRowToState(row: SrsStateRow): SRSState {
     fsrsState: row.fsrs_state as FsrsStateString,
     reps: row.reps,
     lapses: row.lapses,
+    learningSteps: row.learning_steps ?? 0,
     isBurned: row.is_burned === 1,
     srsStageLabel: row.srs_stage_label as SRSStageLabel,
     lastReviewedAt: row.last_reviewed_at ?? null,
@@ -88,7 +90,7 @@ export function getDueSrsStates(
   limit: number = QUEUE_FETCH_LIMIT,
 ): SRSState[] {
   const rows = userDb.getAllSync<SrsStateRow>(
-    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
      FROM srs_states
      WHERE due_date <= ? AND is_burned = 0
      ORDER BY due_date ASC
@@ -101,7 +103,7 @@ export function getDueSrsStates(
 
 export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | null {
   const row = userDb.getFirstSync<SrsStateRow>(
-    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+    `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
      FROM srs_states WHERE item_id = ?`,
     parseItemId(itemId),
   );
@@ -121,7 +123,7 @@ export function getSrsStatesForItems(
   for (const chunk of chunkForSqlVariables(numericIds)) {
     const placeholders = chunk.map(() => '?').join(', ');
     const rows = userDb.getAllSync<SrsStateRow>(
-      `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
+      `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
        FROM srs_states WHERE item_id IN (${placeholders})`,
       ...chunk,
     );
@@ -167,8 +169,8 @@ export function upsertSrsState(
       userDb.runSync(
         `INSERT INTO srs_states (
            item_id, stability, difficulty, due_date, fsrs_state,
-           reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
-         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+           reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
+         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(item_id) DO UPDATE SET
            stability = excluded.stability,
            difficulty = excluded.difficulty,
@@ -176,6 +178,7 @@ export function upsertSrsState(
            fsrs_state = excluded.fsrs_state,
            reps = excluded.reps,
            lapses = excluded.lapses,
+           learning_steps = excluded.learning_steps,
            is_burned = excluded.is_burned,
            srs_stage_label = excluded.srs_stage_label,
            last_reviewed_at = excluded.last_reviewed_at,
@@ -187,6 +190,7 @@ export function upsertSrsState(
         state.fsrsState,
         state.reps,
         state.lapses,
+        state.learningSteps,
         state.isBurned ? 1 : 0,
         state.srsStageLabel,
         state.lastReviewedAt,
@@ -236,8 +240,8 @@ export function seedMissingSrsStatesForInProgress(
         userDb.runSync(
           `INSERT OR IGNORE INTO srs_states (
              item_id, stability, difficulty, due_date, fsrs_state,
-             reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
-           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+             reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
           parseItemId(itemId),
           initial.stability,
           initial.difficulty,
@@ -245,6 +249,7 @@ export function seedMissingSrsStatesForInProgress(
           initial.fsrsState,
           initial.reps,
           initial.lapses,
+          initial.learningSteps,
           initial.isBurned ? 1 : 0,
           initial.srsStageLabel,
           initial.lastReviewedAt,

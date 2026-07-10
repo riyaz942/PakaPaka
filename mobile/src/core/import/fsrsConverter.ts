@@ -108,6 +108,7 @@ function convertStageToFsrs(srsStage: number, now: Date): FsrsImportState | null
     state: conversion.state,
     reps,
     lapses,
+    learningSteps: 0,
     isBurned: conversion.isBurned,
     srsStageLabel: conversion.srsStageLabel,
   };
@@ -195,6 +196,7 @@ export function convertAnkiCardToFsrs(
       state: 'relearning',
       reps,
       lapses,
+      learningSteps: 0,
       isBurned: false,
       srsStageLabel,
     };
@@ -210,6 +212,7 @@ export function convertAnkiCardToFsrs(
       state: 'learning',
       reps,
       lapses,
+      learningSteps: 0,
       isBurned: false,
       srsStageLabel,
     };
@@ -228,6 +231,7 @@ export function convertAnkiCardToFsrs(
       state: 'review',
       reps,
       lapses,
+      learningSteps: 0,
       isBurned,
       srsStageLabel: isBurned ? 'burned' : srsStageLabel,
     };

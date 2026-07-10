@@ -22,6 +22,7 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
       fsrsState: 'new',
       reps: 0,
       lapses: 0,
+      learningSteps: 0,
       isBurned: false,
       srsStageLabel: 'apprentice',
       lastReviewedAt: null,

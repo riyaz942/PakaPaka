@@ -12,6 +12,8 @@ export type SRSState = {
   fsrsState: FsrsStateString;
   reps: number;
   lapses: number;
+  /** ts-fsrs learning-step index (Card.learning_steps) — which step a Learning/Relearning card is on. */
+  learningSteps: number;
   isBurned: boolean;
   srsStageLabel: SRSStageLabel;
   /** ISO timestamp of the last graded review, or null if never reviewed in-app. */

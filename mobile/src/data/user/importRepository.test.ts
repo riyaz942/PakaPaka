@@ -57,6 +57,7 @@ describe('importRepository', () => {
         state: burned ? 'review' : 'learning',
         reps: burned ? 5 : 2,
         lapses: 0,
+        learningSteps: 0,
         isBurned: burned,
         srsStageLabel: burned ? 'burned' : 'apprentice',
       },

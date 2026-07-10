@@ -9,6 +9,8 @@ export type FsrsImportState = {
   state: FsrsStateName;
   reps: number;
   lapses: number;
+  /** ts-fsrs learning-step index. Imported cards carry real stability, so they always start at step 0. */
+  learningSteps: number;
   isBurned: boolean;
   srsStageLabel: string;
 };

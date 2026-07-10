@@ -71,6 +71,7 @@ function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'):
       fsrsState: 'review',
       reps: 3,
       lapses: 0,
+      learningSteps: 0,
       isBurned: false,
       srsStageLabel: 'guru',
       lastReviewedAt: null,

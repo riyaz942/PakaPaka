@@ -24,6 +24,7 @@ function makeSrsState(itemId: string, overrides: Partial<SRSState> = {}): SRSSta
     fsrsState: 'review',
     reps: 3,
     lapses: 0,
+    learningSteps: 0,
     isBurned: false,
     srsStageLabel: 'guru',
     lastReviewedAt: null,
@@ -154,6 +155,22 @@ describe('upsertSrsState', () => {
     const fetched = getSrsState(db, '10');
     expect(fetched!.stability).toBe(15);
     expect(fetched!.srsStageLabel).toBe('master');
+  });
+
+  it('round-trips learningSteps through write and read', () => {
+    const state = makeSrsState('11', { fsrsState: 'learning', learningSteps: 1 });
+    const result = upsertSrsState(db, state);
+    expect(result.ok).toBe(true);
+    const fetched = getSrsState(db, '11');
+    expect(fetched!.learningSteps).toBe(1);
+  });
+
+  it('defaults learningSteps to 0 for pre-migration rows without the column', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 12, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+    ]);
+    const fetched = getSrsState(db, '12');
+    expect(fetched!.learningSteps).toBe(0);
   });
 
   it('syncs item_study_status to known when isBurned=true', () => {

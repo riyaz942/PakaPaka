@@ -20,6 +20,7 @@ function makeState(overrides: Partial<SRSState> = {}): SRSState {
     fsrsState: 'review',
     reps: 3,
     lapses: 0,
+    learningSteps: 0,
     isBurned: false,
     srsStageLabel: 'guru',
     lastReviewedAt: null,
@@ -37,6 +38,7 @@ function makeNewState(overrides: Partial<SRSState> = {}): SRSState {
     fsrsState: 'new',
     reps: 0,
     lapses: 0,
+    learningSteps: 0,
     isBurned: false,
     srsStageLabel: 'apprentice',
     lastReviewedAt: null,
@@ -131,14 +133,75 @@ describe('gradeItem', () => {
     expect(easy.dueDate > good.dueDate).toBe(true);
   });
 
-  it('updates updatedAt to a recent timestamp', () => {
+  it('stamps updatedAt and lastReviewedAt with the review time', () => {
     const state = makeNewState();
-    const before = new Date();
     const result = gradeItem(state, 3, NOW);
-    const after = new Date();
-    const updatedAt = new Date(result.updatedAt);
-    expect(updatedAt >= before).toBe(true);
-    expect(updatedAt <= after).toBe(true);
+    expect(result.updatedAt).toBe(NOW.toISOString());
+    expect(result.lastReviewedAt).toBe(NOW.toISOString());
+  });
+});
+
+describe('learning-step graduation (Plan 01 regression)', () => {
+  it('grows the interval across consecutive Good answers', () => {
+    let state = createInitialSrsState('1', new Date('2026-01-01T00:00:00Z'));
+    const gaps: number[] = [];
+    for (let i = 0; i < 4; i++) {
+      const now = new Date(state.dueDate);
+      state = gradeItem(state, 3, now);
+      gaps.push(new Date(state.dueDate).getTime() - now.getTime());
+    }
+    for (let i = 1; i < gaps.length; i++) {
+      expect(gaps[i]).toBeGreaterThan(gaps[i - 1]);
+    }
+    // The fourth interval must be measured in days, not minutes.
+    expect(gaps[3]).toBeGreaterThanOrEqual(24 * 60 * 60 * 1000);
+  });
+
+  it('graduates to review on the first Good, while Again stays on the 10m learning step', () => {
+    const start = new Date('2026-01-01T00:00:00Z');
+    const seed = createInitialSrsState('1', start);
+
+    // With a single learning step, one Good answer graduates straight to the
+    // stability curve.
+    const good = gradeItem(seed, 3, start);
+    expect(good.fsrsState).toBe('review');
+    expect(new Date(good.dueDate).getTime() - start.getTime()).toBeGreaterThanOrEqual(
+      24 * 60 * 60 * 1000,
+    );
+
+    // Again keeps the card in learning with the short confirmation step.
+    const again = gradeItem(seed, 1, start);
+    expect(again.fsrsState).toBe('learning');
+    expect(new Date(again.dueDate).getTime() - start.getTime()).toBeLessThanOrEqual(
+      15 * 60 * 1000,
+    );
+  });
+
+  it('preserves the learning-step index through the card round-trip', () => {
+    const state = makeNewState({ fsrsState: 'learning', learningSteps: 1, stability: 1, difficulty: 5 });
+    const card = toFsrsCard(state, NOW);
+    expect(card.learning_steps).toBe(1);
+    const restored = fromFsrsCard(card, state);
+    expect(restored.learningSteps).toBe(1);
+  });
+
+  it('walks apprentice → guru → master → enlightened on repeated Good answers', () => {
+    let state = createInitialSrsState('1', new Date('2026-01-01T00:00:00Z'));
+    const seen: string[] = [state.srsStageLabel];
+    for (let i = 0; i < 30 && !state.isBurned; i++) {
+      state = gradeItem(state, 3, new Date(state.dueDate));
+      if (seen[seen.length - 1] !== state.srsStageLabel) {
+        seen.push(state.srsStageLabel);
+      }
+    }
+    expect(seen.slice(0, 4)).toEqual(['apprentice', 'guru', 'master', 'enlightened']);
+  });
+
+  it('Again from review state moves to relearning and reports apprentice', () => {
+    const state = makeState({ stability: 10, difficulty: 5, srsStageLabel: 'guru' });
+    const result = gradeItem(state, 1, NOW);
+    expect(result.fsrsState).toBe('relearning');
+    expect(result.srsStageLabel).toBe('apprentice');
   });
 });
 

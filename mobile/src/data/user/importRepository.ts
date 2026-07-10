@@ -48,8 +48,8 @@ export function persistMappedImportItems(
         userDb.runSync(
           `INSERT INTO srs_states (
              item_id, stability, difficulty, due_date, fsrs_state,
-             reps, lapses, is_burned, srs_stage_label, last_reviewed_at, updated_at
-           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)
+             reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)
            ON CONFLICT(item_id) DO UPDATE SET
              stability = excluded.stability,
              difficulty = excluded.difficulty,
@@ -57,6 +57,7 @@ export function persistMappedImportItems(
              fsrs_state = excluded.fsrs_state,
              reps = excluded.reps,
              lapses = excluded.lapses,
+             learning_steps = excluded.learning_steps,
              is_burned = excluded.is_burned,
              srs_stage_label = excluded.srs_stage_label,
              last_reviewed_at = excluded.last_reviewed_at,
@@ -68,6 +69,7 @@ export function persistMappedImportItems(
           item.fsrsState.state,
           item.fsrsState.reps,
           item.fsrsState.lapses,
+          item.fsrsState.learningSteps,
           item.fsrsState.isBurned ? 1 : 0,
           item.fsrsState.srsStageLabel,
           updatedAt,

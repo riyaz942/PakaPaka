@@ -8,6 +8,7 @@ import { migration007WeaknessStats } from '@/data/migrations/007_weakness_stats'
 import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitive_load_history';
 import { migration009Streak } from '@/data/migrations/009_streak';
 import { migration010SrsLastReviewedAt } from '@/data/migrations/010_srs_last_reviewed_at';
+import { migration011SrsLearningSteps } from '@/data/migrations/011_srs_learning_steps';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -21,4 +22,5 @@ export const migrations: Migration[] = [
   migration008CognitiveLoadHistory,
   migration009Streak,
   migration010SrsLastReviewedAt,
+  migration011SrsLearningSteps,
 ];

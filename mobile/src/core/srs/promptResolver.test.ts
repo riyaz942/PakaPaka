@@ -10,6 +10,7 @@ function makeSrsState(reps: number): SRSState {
     fsrsState: 'new',
     reps,
     lapses: 0,
+    learningSteps: 0,
     isBurned: false,
     srsStageLabel: 'apprentice',
     lastReviewedAt: null,

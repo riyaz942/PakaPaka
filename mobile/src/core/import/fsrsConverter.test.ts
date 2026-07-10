@@ -28,6 +28,7 @@ describe('fsrsConverter', () => {
       state: 'review',
       reps: 5,
       lapses: 0,
+      learningSteps: 0,
       isBurned: true,
       srsStageLabel: 'burned',
     });
@@ -71,6 +72,7 @@ describe('fsrsConverter', () => {
       state: 'review',
       reps: 5,
       lapses: 0,
+      learningSteps: 0,
       isBurned: true,
       srsStageLabel: 'burned',
     });

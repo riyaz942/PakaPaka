@@ -2,7 +2,15 @@ import { createEmptyCard, fsrs, Rating, State, type Card, type Grade } from 'ts-
 
 import type { FsrsStateString, ReviewGrade, SRSStageLabel, SRSState } from './srs.types';
 
-const SCHEDULER = fsrs({ request_retention: 0.9, maximum_interval: 3650 });
+const SCHEDULER = fsrs({
+  request_retention: 0.9,
+  maximum_interval: 3650,
+  // One short confirmation step after a lesson, then graduate to the FSRS
+  // stability curve. The ts-fsrs default (['1m', '10m']) would bring the first
+  // correct answer back in one minute — too aggressive for a WaniKani-style app.
+  learning_steps: ['10m'],
+  relearning_steps: ['10m'],
+});
 
 // Stability (days) at which an item transitions to "burned" stage
 const BURN_STABILITY_THRESHOLD = 365;
@@ -62,7 +70,7 @@ export function toFsrsCard(dbRow: SRSState, now: Date = new Date()): Card {
     scheduled_days: scheduledDays,
     reps: dbRow.reps,
     lapses: dbRow.lapses,
-    learning_steps: 0,
+    learning_steps: dbRow.learningSteps,
     state: stringToFsrsState(dbRow.fsrsState),
     last_review: lastReview,
   };
@@ -91,11 +99,11 @@ export function mapFsrsStateToStageLabel(card: Card, isBurned: boolean): SRSStag
   return 'enlightened';
 }
 
-export function fromFsrsCard(card: Card, previous: SRSState): SRSState {
+export function fromFsrsCard(card: Card, previous: SRSState, now: Date = new Date()): SRSState {
   const isBurned = previous.isBurned || card.stability >= BURN_STABILITY_THRESHOLD;
   const srsStageLabel = mapFsrsStateToStageLabel(card, isBurned);
   const dueDate = card.due instanceof Date ? card.due.toISOString() : String(card.due);
-  const nowIso = new Date().toISOString();
+  const nowIso = now.toISOString();
   return {
     ...previous,
     stability: card.stability,
@@ -104,6 +112,7 @@ export function fromFsrsCard(card: Card, previous: SRSState): SRSState {
     fsrsState: fsrsStateToString(card.state),
     reps: card.reps,
     lapses: card.lapses,
+    learningSteps: card.learning_steps,
     isBurned,
     srsStageLabel,
     lastReviewedAt: nowIso,
@@ -122,7 +131,7 @@ export function gradeItem(state: SRSState, grade: ReviewGrade, now: Date = new D
   const card = toFsrsCard(state, now);
   const rating = REVIEW_GRADE_TO_RATING[grade];
   const result = SCHEDULER.next(card, now, rating);
-  return fromFsrsCard(result.card, state);
+  return fromFsrsCard(result.card, state, now);
 }
 
 /** Seed a fresh FSRS card for an in_progress item without existing SRS state. */
@@ -138,6 +147,7 @@ export function createInitialSrsState(itemId: string, now: Date = new Date()): S
     fsrsState: fsrsStateToString(card.state),
     reps: card.reps,
     lapses: card.lapses,
+    learningSteps: card.learning_steps,
     isBurned,
     srsStageLabel,
     lastReviewedAt: null,

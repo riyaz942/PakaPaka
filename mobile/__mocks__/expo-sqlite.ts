@@ -112,34 +112,37 @@ function restoreTables(state: MockDatabaseState, snapshot: Map<string, Row[]>): 
 
 function upsertSrsState(
   state: MockDatabaseState,
+  sql: string,
   params: unknown[],
 ) {
-  const [
-    itemId,
-    stability,
-    difficulty,
-    dueDate,
-    fsrsState,
-    reps,
-    lapses,
-    isBurned,
-    srsStageLabel,
-    updatedAt,
-  ] = params;
+  // Column-aware: the srs_states INSERTs differ in shape (importRepository uses
+  // a literal NULL for last_reviewed_at), so zip the declared column list
+  // against the VALUES clause, consuming a param per `?` placeholder.
+  const match = sql.match(
+    /INSERT(?:\s+OR\s+IGNORE)?\s+INTO\s+srs_states\s*\(([^)]+)\)\s*VALUES\s*\(([^)]+)\)/i,
+  );
+  if (!match) {
+    throw new Error(`Unrecognized srs_states insert: ${sql}`);
+  }
+  const columns = match[1].split(',').map((column) => column.trim());
+  const valueTokens = match[2].split(',').map((token) => token.trim());
 
+  const nextRow: Row = {};
+  let paramIndex = 0;
+  columns.forEach((column, index) => {
+    const token = valueTokens[index];
+    if (token === '?') {
+      nextRow[column] = params[paramIndex];
+      paramIndex += 1;
+    } else if (/^NULL$/i.test(token)) {
+      nextRow[column] = null;
+    } else {
+      nextRow[column] = token;
+    }
+  });
+
+  const itemId = nextRow.item_id;
   const rows = state.tables.get('srs_states') ?? [];
-  const nextRow = {
-    item_id: itemId,
-    stability,
-    difficulty,
-    due_date: dueDate,
-    fsrs_state: fsrsState,
-    reps,
-    lapses,
-    is_burned: isBurned,
-    srs_stage_label: srsStageLabel,
-    updated_at: updatedAt,
-  };
   const existingIndex = rows.findIndex((row) => row.item_id === itemId);
   if (existingIndex >= 0) {
     rows[existingIndex] = nextRow;
@@ -261,7 +264,7 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
   }
 
   if (/^INSERT INTO srs_states/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
-    upsertSrsState(state, params);
+    upsertSrsState(state, trimmed, params);
     return;
   }
 
@@ -269,7 +272,7 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     const rows = state.tables.get('srs_states') ?? [];
     const exists = rows.some((row) => row.item_id === params[0]);
     if (!exists) {
-      upsertSrsState(state, params);
+      upsertSrsState(state, trimmed, params);
     }
     return;
   }
