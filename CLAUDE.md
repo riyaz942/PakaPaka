@@ -6,20 +6,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A free, open-source, cross-platform mobile app (Android & iOS) that replaces the fragmented multi-tool Japanese learning stack. It targets WaniKani-depth kanji (strict radical→kanji→vocab dependency graph, multiple meanings, onyomi/kunyomi, mnemonics, burn stages), Bunpro-depth grammar (structured grammar points, conjugation-aware validation, 5–10 example sentences), and adds a weakness detection engine (`priority = fsrs_score × 0.7 + weakness_score × 0.3`), visible cross-domain reinforcement, time compression display, and seamless WaniKani/Bunpro/Anki import. Fully offline, all data on-device, no accounts, no subscriptions.
 
-Planning artifacts live in `_bmad-output/`. The BMAD workflow drives all planning (PRD → architecture → epics → stories → implementation). Story files live in `_bmad-output/implementation-artifacts/`.
+Historical planning artifacts (PRD, architecture, epics) live in `_bmad-output/`. They document how the app was designed and are reference material, not an active tracker.
 
-## Sprint status (as of 2026-06-25)
+## Feature status
 
-| Epic | Status |
-|------|--------|
-| Epic 1 — Foundation (Expo bootstrap, NativeWind, dual SQLite, app shell, curriculum pipeline, OTA update, radical mnemonic images) | **done** |
-| Epic 2 — Onboarding (JLPT level select, session intensity, per-item study status, bulk mark, onboarding gate) | **done** |
-| Epic 3 — Import (WaniKani, Bunpro, Anki, import summary, onboarding branch) | **done** |
-| Epic 4 — Learn tab (JLPT hub, radical detail, kanji/vocab/grammar item detail, reading passages) | 4 of 6 done; **4-5 (dependency graph unlock)** and **4-6 (personal mnemonics)** are backlog |
-| Epic 5 — SRS review engine | **backlog** |
-| Epic 6 — Stats / cognitive load / streaks | **backlog** |
-| Epic 7 — Accessibility | **backlog** |
-| Epic 8 — AI content / community | **backlog** |
+The planned scope is fully implemented. All major surfaces are shipped and covered by tests:
+
+- **Foundation** — Expo app, NativeWind design tokens, dual SQLite databases, five-tab shell, curriculum validation/compile pipeline, curriculum OTA update, cached radical mnemonic images.
+- **Onboarding** — JLPT starting-level select, session intensity, per-item study status, bulk mark-known, completion gate to the main tabs.
+- **Import** — WaniKani v2, Bunpro, and local Anki `.apkg`, each mapped to FSRS state, with an import summary and unmatched-item transparency.
+- **Learn tab** — JLPT hub, radical/kanji/vocabulary/grammar item detail, reading passages with comprehension prompts, dependency-graph unlock status, personal mnemonics editor.
+- **Lessons** — auto-planned, dependency-gated lesson sessions (`lesson/`) that interleave content types and seed SRS state on completion.
+- **SRS review engine** — weakness-biased, content-interleaved review queue (`review/`), FSRS scheduling, progressive hints, cross-domain reinforcement display, and cognitive-load-aware session pacing.
+- **Stats / engagement** — weakness trends, SRS stage breakdown, cognitive-load ring and daily threshold, streak tracking with opt-in notifications, post-session summary.
+- **Accessibility** — screen-reader/keyboard/input support and visual accessibility, enforced by automated CI checks.
+
+Known follow-up work and open bugs surfaced from playtesting are tracked in `docs/feedback/`.
 
 ## Repository layout
 
@@ -29,7 +31,7 @@ scripts/             # Node/TypeScript curriculum tooling (validate-schema, comp
 mobile/              # Expo (React Native) app — all app code lives here
   src/
     app/             # Expo Router file-based routes
-    components/      # UI components grouped by feature (common/, learn/, onboarding/, read/)
+    components/      # UI components grouped by feature (common/, learn/, lesson/, review/, read/, onboarding/, engagement/, import/, stats/)
     core/            # Pure business logic (answer evaluation, import mappers, FSRS)
     data/            # Database access: repositories, hooks, migrations, import clients
     providers/       # React context providers (DatabaseProvider, CurriculumUpdateContext)
@@ -37,7 +39,8 @@ mobile/              # Expo (React Native) app — all app code lives here
     hooks/           # App-level hooks (onboarding redirect, orientation lock)
     utils/           # Pure utilities (cn, color scheme resolution)
     lib/             # Thin wrappers around Expo APIs (safe-updates-metadata)
-_bmad-output/        # Planning artifacts (PRD, architecture, epics, sprint status)
+docs/              # Working docs, design notes, and playtest feedback plans
+_bmad-output/      # Historical planning artifacts (PRD, architecture, epics)
 ```
 
 ## Commands
@@ -76,7 +79,7 @@ The app maintains two fully isolated SQLite databases via `expo-sqlite`:
 - **`curriculum.db`** — read-only curriculum content (radicals, kanji, vocabulary, grammar, readings, dependency graph). Bundled as an asset and imported on first launch. Can be swapped atomically via OTA manifest update without touching user data.
 - **`user.db`** — mutable user state (preferences, study status, SRS states, import metadata, passage practice results). Versioned with numbered migrations in `src/data/migrations/`.
 
-Both handles are initialized in `src/data/database.ts::initializeDatabases()` and distributed via `DatabaseProvider` → `DatabaseContext`. Consumers call `useDatabase()` which throws if called before ready. Cross-database joins use SQLite `ATTACH DATABASE` (planned for Epic 5 review queue builder).
+Both handles are initialized in `src/data/database.ts::initializeDatabases()` and distributed via `DatabaseProvider` → `DatabaseContext`. Consumers call `useDatabase()` which throws if called before ready. `curriculum.db` is attached to the `user.db` handle via SQLite `ATTACH DATABASE` (see `database.ts`, `CURRICULUM_ATTACH_ALIAS`) so the review queue builder can join user SRS state against curriculum content in a single query.
 
 ### Curriculum OTA updates
 `src/data/curriculum/curriculumUpdate.ts` fetches a remote manifest (URL from `EXPO_PUBLIC_CURRICULUM_MANIFEST_URL` or `app.json` extra), compares semver, downloads the new DB to a `.download` staging file, verifies SHA-256, then atomically moves it to replace `curriculum.db`. In `__DEV__`, the bundled mock manifest/fixture under `mobile/assets/curriculum-manifest/` is used.
@@ -84,7 +87,8 @@ Both handles are initialized in `src/data/database.ts::initializeDatabases()` an
 ### Routing (Expo Router)
 - `(tabs)/` — bottom-tab shell: Home, Learn, Read, Stats, Settings
 - `onboarding/` — linear flow gated by `useOnboardingRedirect` (welcome → intensity → calibrate/bulk → complete, with optional import branch)
-- `review/` — full-screen modal SRS review session (Epic 5)
+- `lesson/` — full-screen auto-planned lesson session, ending in a completion screen that seeds SRS state
+- `review/` — full-screen SRS review session
 - `OnboardingRedirect` provider reads `user.db` preferences and redirects to the correct onboarding step on every navigation state change.
 
 ### Styling (NativeWind v4)
@@ -104,8 +108,8 @@ All fallible operations return `Result<T, AppError>` from `src/types/result.type
 - React hooks under `src/data/hooks/` wrap repositories and manage loading state for UI consumers.
 - `src/core/import/` contains pure mappers (WaniKani, Bunpro, Anki) that convert external SRS history to FSRS format. `src/data/import/` contains the network/file-system clients that feed them.
 
-### Key upcoming work (Epic 5 — SRS review engine)
-The review queue builder will combine FSRS scoring, weakness biasing (`0.7 × fsrs + 0.3 × weakness`), content-type interleaving, and cognitive load weighting. Cross-database joins via `ATTACH DATABASE` will power reinforcement display ("食べる ← you learned this yesterday"). The review loop has a <100ms feedback target — no animations between items.
+### SRS review engine
+The review queue builder (`src/core/srs/queueBuilder.ts`, `src/data/hooks/useReviewQueue.ts`) combines FSRS scheduling, weakness biasing (`0.7 × fsrs + 0.3 × weakness`), content-type interleaving, and cognitive-load weighting. Reinforcement display ("食べる ← you learned this yesterday") is resolved in `src/core/content/reinforcementResolver.ts` from related-item SRS snapshots. The review loop targets <100ms feedback between items. Session orchestration lives in `src/providers/ReviewSessionProvider.tsx`; answer evaluation is in `src/core/answer/` (meaning/reading/grammar evaluators) and FSRS grading in `src/core/srs/fsrsScheduler.ts`.
 
 ## Testing
 
