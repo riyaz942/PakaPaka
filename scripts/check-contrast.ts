@@ -177,6 +177,14 @@ export function contrastPairManifest(): ContrastPair[] {
     }
 
     pairs.push({
+      name: 'on-primary on feedback-info',
+      foreground: 'on-primary',
+      background: 'feedback-info',
+      textClass: 'normal-text',
+      theme,
+    });
+
+    pairs.push({
       name: 'reinforcement-text on reinforcement-bg',
       foreground: 'reinforcement-text',
       background: 'reinforcement-bg',

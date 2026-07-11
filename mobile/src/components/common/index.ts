@@ -3,4 +3,5 @@ export { Button, type ButtonVariant } from '@/components/common/Button';
 export { FuriganaText } from '@/components/common/FuriganaText';
 export { MnemonicImage, type MnemonicImageProps } from '@/components/common/MnemonicImage';
 export { OnboardingStep } from '@/components/common/OnboardingStep';
+export { ScreenHeader } from '@/components/common/ScreenHeader';
 export { TabPlaceholderScreen } from '@/components/common/TabPlaceholderScreen';

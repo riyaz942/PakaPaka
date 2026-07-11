@@ -11,6 +11,7 @@ type SemanticPalette = {
   readonly primary: string;
   readonly secondary: string;
   readonly muted: string;
+  readonly onPrimary: string;
   readonly feedbackInfo: string;
 };
 

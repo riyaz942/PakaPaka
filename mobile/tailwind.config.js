@@ -17,6 +17,7 @@ module.exports = {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
         muted: 'var(--color-muted)',
+        'on-primary': 'var(--color-on-primary)',
 
         // UX-DR2 — SRS stages
         'srs-apprentice': 'var(--color-srs-apprentice)',

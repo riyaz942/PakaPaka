@@ -1,8 +1,9 @@
 import { type Href, router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { LearnItemRow } from '@/components/learn/LearnItemRow';
 import { CalibrationItemTypePicker } from '@/components/onboarding/CalibrationItemTypePicker';
 import { MaxContentWidth } from '@/constants/theme';
@@ -67,24 +68,19 @@ export default function LearnLevelScreen() {
 
   return (
     <View className="flex-1 bg-background">
+      <ScreenHeader
+        title={jlptLevel}
+        backAccessibilityLabel="Back to Learn hub"
+        backTestID="learn-level-back"
+      />
       <SafeAreaView
-        edges={['top', 'left', 'right']}
+        edges={['left', 'right']}
         className="flex-1 px-space-lg pt-space-md"
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Back to Learn hub"
-          onPress={() => router.back()}
-          testID="learn-level-back"
-          className="mb-2 min-h-[44px] self-start justify-center py-1">
-          <Text className="text-body text-feedback-info">Back</Text>
-        </Pressable>
-
-        <Text className="text-title text-primary">{jlptLevel}</Text>
 
         <CalibrationItemTypePicker
           selectedType={itemType}

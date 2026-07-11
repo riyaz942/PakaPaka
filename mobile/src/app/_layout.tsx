@@ -2,6 +2,7 @@ import '@/global.css';
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { useColorScheme, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -36,6 +37,7 @@ function RootLayoutContent() {
 
   return (
     <View className="flex-1 bg-background">
+      <StatusBar style={isDark ? 'light' : 'dark'} />
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
           <OnboardingRedirect />

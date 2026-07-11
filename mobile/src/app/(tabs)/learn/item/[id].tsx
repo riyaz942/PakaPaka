@@ -1,8 +1,16 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { GrammarDetail } from '@/components/learn/GrammarDetail';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
@@ -28,58 +36,61 @@ export default function LearnItemDetailScreen() {
 
   return (
     <View className="flex-1 bg-background">
+      <ScreenHeader backTestID="learn-item-back" />
       <SafeAreaView
-        edges={['top', 'left', 'right']}
-        className="flex-1 px-space-lg pt-space-md"
+        edges={['left', 'right']}
+        className="flex-1"
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Back"
-          onPress={() => router.back()}
-          testID="learn-item-back"
-          className="mb-2 min-h-[44px] self-start justify-center py-1">
-          <Text className="text-body text-feedback-info">Back</Text>
-        </Pressable>
-
-        {loading ? (
-          <View className="mt-8 items-center">
-            <ActivityIndicator accessibilityLabel="Loading item" />
-          </View>
-        ) : notFound || !item ? (
-          <Text className="mt-8 text-body text-secondary">Item not found.</Text>
-        ) : item.itemType === 'radical' ? (
-          <RadicalDetail item={item} />
-        ) : item.itemType === 'kanji' ? (
-          <KanjiDetail
-            item={item}
-            kanjiReadings={kanjiReadings ?? []}
-            acceptedAnswers={acceptedAnswers}
-            parents={parents}
-            isLocked={isLocked}
-            unmetPrerequisites={unmetPrerequisites}
-          />
-        ) : item.itemType === 'vocabulary' ? (
-          <VocabularyDetail
-            item={item}
-            acceptedAnswers={acceptedAnswers}
-            exampleSentences={exampleSentences}
-            grammarVocabLinks={grammarVocabLinks}
-            parents={parents}
-            isLocked={isLocked}
-            unmetPrerequisites={unmetPrerequisites}
-          />
-        ) : item.itemType === 'grammar' ? (
-          <GrammarDetail
-            item={item}
-            acceptedAnswers={acceptedAnswers}
-            grammarRule={grammarRule}
-            exampleSentences={exampleSentences}
-          />
-        ) : null}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          className="flex-1">
+          <ScrollView
+            className="flex-1"
+            contentContainerClassName="px-space-lg pt-space-md pb-space-2xl"
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator
+            testID="learn-item-scroll">
+            {loading ? (
+              <View className="mt-8 items-center">
+                <ActivityIndicator accessibilityLabel="Loading item" />
+              </View>
+            ) : notFound || !item ? (
+              <Text className="mt-8 text-body text-secondary">Item not found.</Text>
+            ) : item.itemType === 'radical' ? (
+              <RadicalDetail item={item} />
+            ) : item.itemType === 'kanji' ? (
+              <KanjiDetail
+                item={item}
+                kanjiReadings={kanjiReadings ?? []}
+                acceptedAnswers={acceptedAnswers}
+                parents={parents}
+                isLocked={isLocked}
+                unmetPrerequisites={unmetPrerequisites}
+              />
+            ) : item.itemType === 'vocabulary' ? (
+              <VocabularyDetail
+                item={item}
+                acceptedAnswers={acceptedAnswers}
+                exampleSentences={exampleSentences}
+                grammarVocabLinks={grammarVocabLinks}
+                parents={parents}
+                isLocked={isLocked}
+                unmetPrerequisites={unmetPrerequisites}
+              />
+            ) : item.itemType === 'grammar' ? (
+              <GrammarDetail
+                item={item}
+                acceptedAnswers={acceptedAnswers}
+                grammarRule={grammarRule}
+                exampleSentences={exampleSentences}
+              />
+            ) : null}
+          </ScrollView>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </View>
   );

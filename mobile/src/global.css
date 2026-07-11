@@ -13,6 +13,8 @@
     --color-primary: #eeeef0;
     --color-secondary: #9898a8;
     --color-muted: #5c5c6e;
+    /* Label color on filled accent buttons (bg-feedback-info); dark text on the bright dark-theme blue */
+    --color-on-primary: #0a0a0f;
 
     /* UX-DR2 — SRS stages */
     --color-srs-apprentice: #dd4488;
@@ -55,6 +57,7 @@
       --color-primary: #1a1a2e;
       --color-secondary: #686878;
       --color-muted: #9898a8;
+      --color-on-primary: #ffffff;
 
       /* Light surfaces need darker accent hues for WCAG AA */
       --color-srs-enlightened: #007e9e;

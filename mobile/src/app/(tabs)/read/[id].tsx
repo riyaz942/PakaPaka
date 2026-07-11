@@ -1,8 +1,9 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { PassageReader } from '@/components/read/PassageReader';
 import { MaxContentWidth } from '@/constants/theme';
 import { usePassageDetail } from '@/data/hooks/usePassageDetail';
@@ -28,23 +29,15 @@ export default function ReadPassageScreen() {
 
   return (
     <View className="flex-1 bg-background">
+      <ScreenHeader backTestID="read-passage-back" />
       <SafeAreaView
-        edges={['top', 'left', 'right']}
+        edges={['left', 'right']}
         className="flex-1 px-space-lg pt-space-md"
         style={{
           alignSelf: 'center',
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Back"
-          onPress={() => router.back()}
-          testID="read-passage-back"
-          className="mb-2 min-h-[44px] self-start justify-center py-1">
-          <Text className="text-body text-feedback-info">Back</Text>
-        </Pressable>
-
         {loading ? (
           <View className="mt-8 items-center">
             <ActivityIndicator accessibilityLabel="Loading passage" />

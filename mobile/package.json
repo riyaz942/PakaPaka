@@ -91,7 +91,8 @@
       "^expo-secure-store$": "<rootDir>/__mocks__/expo-secure-store.ts",
       "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
       "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx",
-      "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts"
+      "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts",
+      "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx"
     }
   }
 }

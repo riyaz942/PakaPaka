@@ -9,6 +9,7 @@ const globalCssSemantic = {
     primary: '#eeeef0',
     secondary: '#9898a8',
     muted: '#5c5c6e',
+    onPrimary: '#0a0a0f',
     feedbackInfo: '#4488ee',
   },
   light: {
@@ -18,6 +19,7 @@ const globalCssSemantic = {
     primary: '#1a1a2e',
     secondary: '#686878',
     muted: '#9898a8',
+    onPrimary: '#ffffff',
     feedbackInfo: '#2d6fc9',
   },
 } as const;
