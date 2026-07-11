@@ -13,6 +13,7 @@ The headline finding: the SRS engine has a real correctness bug (learning-step i
 | [03](03-answer-validation-and-feedback.md) | Answer validation & feedback | P1 | Full detail on wrong answer; no reading for kana vocab; wrong-script hint; multiple meanings; user-added answers |
 | [04](04-lesson-pacing-and-grammar-coverage.md) | Lesson pacing & grammar coverage | P1 | Daily lesson cap; no grammar lessons/SRS |
 | [05](05-session-ux-polish.md) | Session UX polish | P2 | Streak animation; remove "8 min across apps"; lesson back/forward; hide mnemonic |
+| [06](06-ui-navigation-and-polish.md) | UI navigation & polish | P0–P3 | Coloured nav header + status bar; back icon; keyboard covers mnemonic input; Save button contrast; Learn detail can't scroll; auto-hide chrome on scroll |
 
 ## Suggested sequencing
 
