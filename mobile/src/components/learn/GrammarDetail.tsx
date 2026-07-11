@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
+import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
@@ -20,6 +21,8 @@ type GrammarDetailProps = {
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
   size?: HeroSize;
+  /** Collapse the mnemonic behind a disclosure (lesson sessions). */
+  mnemonicCollapsible?: boolean;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -44,6 +47,7 @@ export function GrammarDetail({
   grammarRule,
   exampleSentences,
   size = 'md',
+  mnemonicCollapsible = false,
 }: GrammarDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
@@ -97,10 +101,7 @@ export function GrammarDetail({
       ) : null}
 
       {item.mnemonicText ? (
-        <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Mnemonic</Text>
-          <Text className="mt-1 text-body text-secondary">{item.mnemonicText}</Text>
-        </View>
+        <MnemonicSection mnemonicText={item.mnemonicText} collapsible={mnemonicCollapsible} />
       ) : null}
 
       <PersonalMnemonicEditor itemId={item.id} />

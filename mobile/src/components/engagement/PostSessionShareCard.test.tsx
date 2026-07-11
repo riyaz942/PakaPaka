@@ -8,8 +8,6 @@ jest.spyOn(Share, 'share').mockImplementation(jest.fn());
 const BASE_PROPS = {
   domainCounts: { radical: 0, kanji: 8, vocabulary: 5, grammar: 2 },
   actualMinutes: 18,
-  estimatedMinutes: 35,
-  hasSavings: true,
   currentStreak: 7,
   sessionDate: new Date('2026-06-29T12:00:00.000Z'),
 };
@@ -20,8 +18,13 @@ describe('PostSessionShareCard', () => {
 
     expect(screen.getByText('Japanese Learning')).toBeTruthy();
     expect(screen.getByText('Kanji 8 · Grammar 2 · Vocab 5')).toBeTruthy();
-    expect(screen.getByText('18 min ≈ ~35 min across separate apps')).toBeTruthy();
+    expect(screen.getByText('18 min studied')).toBeTruthy();
     expect(screen.getByText('7 day streak')).toBeTruthy();
+  });
+
+  it('never renders a multi-app comparison', () => {
+    render(<PostSessionShareCard {...BASE_PROPS} />);
+    expect(screen.queryByText(/separate apps/)).toBeNull();
   });
 });
 
@@ -36,6 +39,7 @@ describe('buildShareMessage', () => {
     expect(message).toContain('Kanji: 8');
     expect(message).toContain('18 min studied');
     expect(message).toContain('7 day streak');
+    expect(message).not.toContain('separate apps');
   });
 
   it('swallows rejected share without throwing', async () => {

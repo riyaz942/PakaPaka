@@ -35,6 +35,7 @@ import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
 import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
 import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
+import { cn } from '@/utils/cn';
 import { safeBack } from '@/utils/safeBack';
 
 const PLACEHOLDER: Record<PromptType, string> = {
@@ -413,7 +414,14 @@ export default function ReviewScreen() {
             />
           </View>
         ) : (
-          <View className="gap-space-sm px-space-md pb-space-md">
+          // Dim (never hide) the input while feedback is showing — the input
+          // must stay mounted and autofocus-ready so the review loop stays
+          // keyboard-driven with zero added taps per item.
+          <View
+            className={cn(
+              'gap-space-sm px-space-md pb-space-md',
+              !inputEditable && 'opacity-50',
+            )}>
             <WanaKanaInput
               ref={inputRef}
               mode={inputMode}
@@ -427,10 +435,11 @@ export default function ReviewScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Don't know"
-              className="items-center py-space-sm"
+              accessibilityState={{ disabled: !inputEditable }}
+              className="min-h-[44px] items-center justify-center"
               disabled={!inputEditable}
               onPress={handleDontKnow}>
-              <Text className="text-body-sm text-secondary">Don&apos;t know</Text>
+              <Text className="text-caption text-secondary">Don&apos;t know</Text>
             </Pressable>
           </View>
         )}

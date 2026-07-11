@@ -5,32 +5,29 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/common/Button';
 import {
   PostSessionShareCard,
+  SessionSummaryCard,
   ShadowModeComparison,
-  TimeCompressionSummary,
+  StreakCelebration,
   buildShareMessage,
 } from '@/components/engagement';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useStreak } from '@/data/hooks/useStreak';
+import { useStreakCelebration } from '@/data/hooks/useStreakCelebration';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
-import { computeTimeCompression } from '@/utils/timeFormat';
+import { formatMinutes } from '@/utils/timeFormat';
 
 export default function ReviewSummaryScreen() {
   const { sessionSummary } = useReviewSession();
   const { currentStreak } = useStreak();
   const { isEnabled: shadowModeEnabled } = useShadowMode();
+  const celebration = useStreakCelebration(sessionSummary.itemsReviewed > 0);
 
   const sessionDate = new Date(sessionSummary.sessionEndAt);
-
-  const compression = computeTimeCompression({
-    durationMs: sessionSummary.durationMs,
-    domainCounts: sessionSummary.domainCounts,
-  });
+  const actualMinutes = formatMinutes(sessionSummary.durationMs);
 
   const shareCardProps = {
     domainCounts: sessionSummary.domainCounts,
-    actualMinutes: compression.actualMinutes,
-    estimatedMinutes: compression.estimatedMinutes,
-    hasSavings: compression.hasSavings,
+    actualMinutes,
     currentStreak,
     sessionDate,
   };
@@ -48,6 +45,9 @@ export default function ReviewSummaryScreen() {
       <View className="flex-1 justify-center gap-space-lg">
         {sessionSummary.itemsReviewed > 0 ? (
           <>
+            {celebration.shouldCelebrate ? (
+              <StreakCelebration streakCount={celebration.currentStreak} />
+            ) : null}
             <PostSessionShareCard {...shareCardProps} />
             <Text
               className="text-body text-secondary text-center"
@@ -55,12 +55,9 @@ export default function ReviewSummaryScreen() {
               {sessionSummary.correctCount} of {sessionSummary.itemsReviewed} correct first
               try
             </Text>
-            <TimeCompressionSummary
+            <SessionSummaryCard
               domainCounts={sessionSummary.domainCounts}
-              actualMinutes={compression.actualMinutes}
-              estimatedMinutes={compression.estimatedMinutes}
-              savedMinutes={compression.savedMinutes}
-              hasSavings={compression.hasSavings}
+              actualMinutes={actualMinutes}
               onShare={handleShare}
               sessionDate={sessionDate}
             />

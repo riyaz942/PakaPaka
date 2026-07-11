@@ -3,8 +3,10 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 
 import { migration009Streak } from '@/data/migrations/009_streak';
+import { migration014StreakCelebration } from '@/data/migrations/014_streak_celebration';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
+  claimStreakCelebration,
   getStreak,
   recordReviewAndUpdateStreak,
   yesterdayKey,
@@ -17,7 +19,10 @@ describe('streakRepository', () => {
 
   async function createUserDb() {
     const userDb = await openDatabaseAsync('user.db');
-    const migrationResult = runMigrations(userDb, [migration009Streak]);
+    const migrationResult = runMigrations(userDb, [
+      migration009Streak,
+      migration014StreakCelebration,
+    ]);
     expect(migrationResult.ok).toBe(true);
     return userDb;
   }
@@ -41,6 +46,7 @@ describe('streakRepository', () => {
         currentStreak: 1,
         longestStreak: 1,
         lastReviewDate: '2026-06-28',
+        didIncrementToday: true,
       });
     }
     expect(getStreak(userDb)).toEqual({
@@ -59,6 +65,7 @@ describe('streakRepository', () => {
     expect(second.ok).toBe(true);
     if (second.ok) {
       expect(second.value.currentStreak).toBe(1);
+      expect(second.value.didIncrementToday).toBe(false);
     }
     expect(getStreak(userDb).currentStreak).toBe(1);
   });
@@ -75,6 +82,7 @@ describe('streakRepository', () => {
         currentStreak: 2,
         longestStreak: 2,
         lastReviewDate: '2026-06-29',
+        didIncrementToday: true,
       });
     }
   });
@@ -92,6 +100,7 @@ describe('streakRepository', () => {
         currentStreak: 1,
         longestStreak: 2,
         lastReviewDate: '2026-07-01',
+        didIncrementToday: true,
       });
     }
   });
@@ -106,6 +115,62 @@ describe('streakRepository', () => {
 
     expect(getStreak(userDb).longestStreak).toBe(3);
     expect(getStreak(userDb).currentStreak).toBe(1);
+  });
+});
+
+describe('claimStreakCelebration', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const userDb = await openDatabaseAsync('user.db');
+    const migrationResult = runMigrations(userDb, [
+      migration009Streak,
+      migration014StreakCelebration,
+    ]);
+    expect(migrationResult.ok).toBe(true);
+    return userDb;
+  }
+
+  it('does not celebrate when no review happened today', async () => {
+    const userDb = await createUserDb();
+
+    expect(claimStreakCelebration(userDb, '2026-06-28')).toEqual({
+      shouldCelebrate: false,
+      currentStreak: 0,
+    });
+  });
+
+  it('celebrates once after streak credit, then never again the same day', async () => {
+    const userDb = await createUserDb();
+    recordReviewAndUpdateStreak(userDb, '2026-06-28');
+
+    expect(claimStreakCelebration(userDb, '2026-06-28')).toEqual({
+      shouldCelebrate: true,
+      currentStreak: 1,
+    });
+    expect(claimStreakCelebration(userDb, '2026-06-28').shouldCelebrate).toBe(false);
+  });
+
+  it('does not celebrate when credit was earned on a previous day', async () => {
+    const userDb = await createUserDb();
+    recordReviewAndUpdateStreak(userDb, '2026-06-28');
+
+    expect(claimStreakCelebration(userDb, '2026-06-29').shouldCelebrate).toBe(false);
+  });
+
+  it('celebrates again on the next credited day', async () => {
+    const userDb = await createUserDb();
+
+    recordReviewAndUpdateStreak(userDb, '2026-06-28');
+    claimStreakCelebration(userDb, '2026-06-28');
+
+    recordReviewAndUpdateStreak(userDb, '2026-06-29');
+    expect(claimStreakCelebration(userDb, '2026-06-29')).toEqual({
+      shouldCelebrate: true,
+      currentStreak: 2,
+    });
   });
 });
 

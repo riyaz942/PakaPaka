@@ -8,10 +8,13 @@ import { __mockResetSqlite, __mockSetItems } from '../../../__mocks__/expo-sqlit
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_srs_states_and_import_metadata';
+import { migration009Streak } from '@/data/migrations/009_streak';
+import { migration014StreakCelebration } from '@/data/migrations/014_streak_celebration';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 import { setStartingJlptLevel } from '@/data/user/preferencesRepository';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
+import { getStreak } from '@/data/user/streakRepository';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
 import LessonScreen from './index';
@@ -86,6 +89,8 @@ describe('LessonScreen', () => {
       migration001Initial,
       migration002ItemStudyStatus,
       migration003SrsStatesAndImportMetadata,
+      migration009Streak,
+      migration014StreakCelebration,
     ]);
     expect(migrationResult.ok).toBe(true);
 
@@ -126,7 +131,47 @@ describe('LessonScreen', () => {
     // Seeded SRS states are due immediately, powering the quiz handoff.
     expect(getDueSrsStates(userDb)).toHaveLength(3);
 
+    // Finishing a lesson earns the daily streak credit.
+    expect(getStreak(userDb).currentStreak).toBe(1);
+
     expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
+  });
+
+  it('navigates backwards and forwards without committing anything', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderLessonScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+    });
+
+    // Back is disabled on the first item.
+    expect(
+      screen.getByTestId('lesson-back').props.accessibilityState.disabled,
+    ).toBe(true);
+    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByText('1/3')).toBeTruthy();
+
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    expect(screen.getByText('3/3')).toBeTruthy();
+
+    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByText('2/3')).toBeTruthy();
+    expect(
+      screen.getByTestId('lesson-back').props.accessibilityState.disabled,
+    ).toBe(false);
+    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByText('1/3')).toBeTruthy();
+
+    // Walking backwards commits nothing.
+    expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
+
+    // Forwards again to the end still commits the full batch.
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
   });
 
   it('closes without committing anything', async () => {

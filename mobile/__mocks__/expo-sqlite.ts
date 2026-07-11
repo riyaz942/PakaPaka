@@ -367,8 +367,12 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
 
   if (/^INSERT INTO streaks/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const [currentStreak, longestStreak, lastReviewDate, updatedAt] = params;
+    // ON CONFLICT DO UPDATE only touches the listed columns — preserve the rest
+    // of an existing row (last_celebrated_date).
+    const existing = (state.tables.get('streaks') ?? [])[0];
     state.tables.set('streaks', [
       {
+        ...existing,
         id: 1,
         current_streak: currentStreak,
         longest_streak: longestStreak,
@@ -376,6 +380,15 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
         updated_at: updatedAt,
       },
     ]);
+    return;
+  }
+
+  if (/^UPDATE streaks SET last_celebrated_date/i.test(trimmed)) {
+    const rows = state.tables.get('streaks') ?? [];
+    if (rows.length > 0) {
+      rows[0] = { ...rows[0], last_celebrated_date: params[0], updated_at: params[1] };
+      state.tables.set('streaks', rows);
+    }
     return;
   }
 

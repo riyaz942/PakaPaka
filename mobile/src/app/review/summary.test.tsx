@@ -11,9 +11,18 @@ const mockSessionSummary = {
 };
 
 let mockShadowModeEnabled = false;
+let mockCelebration = { shouldCelebrate: false, currentStreak: 0 };
 
 jest.mock('expo-router', () => ({
   router: { dismissAll: jest.fn() },
+}));
+
+jest.mock('@/data/hooks/useStreakCelebration', () => ({
+  useStreakCelebration: () => mockCelebration,
+}));
+
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: true }),
 }));
 
 jest.mock('@/providers/ReviewSessionProvider', () => ({
@@ -31,6 +40,21 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
 describe('ReviewSummaryScreen', () => {
   beforeEach(() => {
     mockShadowModeEnabled = false;
+    mockCelebration = { shouldCelebrate: false, currentStreak: 0 };
+  });
+
+  it('renders the streak celebration when today earned it', () => {
+    mockCelebration = { shouldCelebrate: true, currentStreak: 4 };
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByTestId('streak-celebration')).toBeTruthy();
+    expect(screen.getByText('4 day streak')).toBeTruthy();
+  });
+
+  it('does not render the streak celebration when already celebrated today', () => {
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.queryByTestId('streak-celebration')).toBeNull();
   });
 
   it('shows first-try accuracy so retried items are not counted as correct', () => {

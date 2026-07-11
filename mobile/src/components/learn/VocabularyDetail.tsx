@@ -5,6 +5,7 @@ import { Pressable, Text, View } from 'react-native';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
+import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -26,6 +27,8 @@ type VocabularyDetailProps = {
   isLocked?: boolean;
   unmetPrerequisites?: CurriculumParentItem[];
   size?: HeroSize;
+  /** Collapse the mnemonic behind a disclosure (lesson sessions). */
+  mnemonicCollapsible?: boolean;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -43,6 +46,7 @@ export function VocabularyDetail({
   isLocked,
   unmetPrerequisites,
   size = 'md',
+  mnemonicCollapsible = false,
 }: VocabularyDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const isLongWord = item.primaryForm.length > 4;
@@ -88,10 +92,7 @@ export function VocabularyDetail({
       ) : null}
 
       {item.mnemonicText ? (
-        <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Mnemonic</Text>
-          <Text className="mt-1 text-body text-secondary">{item.mnemonicText}</Text>
-        </View>
+        <MnemonicSection mnemonicText={item.mnemonicText} collapsible={mnemonicCollapsible} />
       ) : null}
 
       <PersonalMnemonicEditor itemId={item.id} />

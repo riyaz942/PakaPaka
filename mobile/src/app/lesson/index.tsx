@@ -9,7 +9,9 @@ import { LessonItemView } from '@/components/lesson/LessonItemView';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
+import { todayKey } from '@/data/user/cognitiveLoadRepository';
 import { startLessonItems } from '@/data/user/lessonProgressRepository';
+import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { safeBack } from '@/utils/safeBack';
 
 /**
@@ -27,6 +29,15 @@ export default function LessonScreen() {
 
   const current = items[index] ?? null;
   const isLast = index === items.length - 1;
+  const isFirst = index === 0;
+
+  // Nothing is committed until the final card, so stepping backwards to
+  // re-read an earlier item is free — no state beyond the index changes.
+  const handleBack = () => {
+    if (!isFirst) {
+      setIndex((value) => value - 1);
+    }
+  };
 
   const handleNext = () => {
     if (!isLast) {
@@ -42,6 +53,14 @@ export default function LessonScreen() {
       setSaveError(result.error.userMessage ?? result.error.message);
       return;
     }
+
+    // Finishing a lesson is study — it earns the same daily streak credit as a
+    // review. Best-effort: a streak write failure must not block completion.
+    const streakResult = recordReviewAndUpdateStreak(userDb, todayKey());
+    if (!streakResult.ok && __DEV__) {
+      console.warn('[Lesson] streak update failed', streakResult.error);
+    }
+
     router.replace(`/lesson/complete?count=${items.length}` as Href);
   };
 
@@ -137,11 +156,21 @@ export default function LessonScreen() {
           </Text>
         ) : null}
 
-        <View className="pb-space-md">
+        <View className="flex-row gap-space-sm pb-space-md">
+          <Button
+            label="Back"
+            variant="secondary"
+            onPress={handleBack}
+            disabled={isFirst}
+            accessibilityLabel="Back to previous item"
+            testID="lesson-back"
+            className="flex-1"
+          />
           <Button
             label={isLast ? 'Finish lesson' : 'Got it — next'}
             onPress={handleNext}
             testID="lesson-next"
+            className="flex-[2]"
           />
         </View>
       </View>

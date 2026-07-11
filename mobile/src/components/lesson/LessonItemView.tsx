@@ -51,6 +51,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           isLocked={isLocked}
           unmetPrerequisites={unmetPrerequisites}
           size="lg"
+          mnemonicCollapsible
         />
       );
     case 'vocabulary':
@@ -64,6 +65,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           isLocked={isLocked}
           unmetPrerequisites={unmetPrerequisites}
           size="lg"
+          mnemonicCollapsible
         />
       );
     case 'grammar':
@@ -74,6 +76,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           grammarRule={grammarRule}
           exampleSentences={exampleSentences}
           size="lg"
+          mnemonicCollapsible
         />
       );
     default:

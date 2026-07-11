@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
+import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -22,6 +23,8 @@ type KanjiDetailProps = {
   isLocked?: boolean;
   unmetPrerequisites?: CurriculumParentItem[];
   size?: HeroSize;
+  /** Collapse the mnemonic behind a disclosure (lesson sessions). */
+  mnemonicCollapsible?: boolean;
 };
 
 function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
@@ -47,6 +50,7 @@ export function KanjiDetail({
   isLocked,
   unmetPrerequisites,
   size = 'md',
+  mnemonicCollapsible = false,
 }: KanjiDetailProps) {
   const synonyms = synonymMeanings(acceptedAnswers);
   const onyomi = readingsByType(kanjiReadings, 'onyomi');
@@ -96,10 +100,7 @@ export function KanjiDetail({
       ) : null}
 
       {item.mnemonicText ? (
-        <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Mnemonic</Text>
-          <Text className="mt-1 text-body text-secondary">{item.mnemonicText}</Text>
-        </View>
+        <MnemonicSection mnemonicText={item.mnemonicText} collapsible={mnemonicCollapsible} />
       ) : null}
 
       <PersonalMnemonicEditor itemId={item.id} />

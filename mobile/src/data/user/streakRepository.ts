@@ -16,6 +16,11 @@ export type StreakData = {
   lastReviewDate: string | null;
 };
 
+/** Result of recording a review day: streak data plus whether this call credited today. */
+export type StreakUpdate = StreakData & {
+  didIncrementToday: boolean;
+};
+
 export type StreakState = 'active' | 'at-risk' | 'broken';
 
 export function yesterdayKey(today: string): string {
@@ -45,7 +50,7 @@ export function getStreak(userDb: SQLiteDatabase): StreakData {
 export function recordReviewAndUpdateStreak(
   userDb: SQLiteDatabase,
   today: string,
-): Result<StreakData, AppError> {
+): Result<StreakUpdate, AppError> {
   try {
     const row = userDb.getFirstSync<StreakRow>(
       'SELECT id, current_streak, longest_streak, last_review_date, updated_at FROM streaks WHERE id = 1',
@@ -53,7 +58,7 @@ export function recordReviewAndUpdateStreak(
     const current = rowToStreakData(row);
 
     if (current.lastReviewDate === today) {
-      return { ok: true, value: current };
+      return { ok: true, value: { ...current, didIncrementToday: false } };
     }
 
     const isConsecutive = current.lastReviewDate === yesterdayKey(today);
@@ -81,6 +86,7 @@ export function recordReviewAndUpdateStreak(
         currentStreak: newStreak,
         longestStreak: newLongest,
         lastReviewDate: today,
+        didIncrementToday: true,
       },
     };
   } catch (cause) {
@@ -92,5 +98,43 @@ export function recordReviewAndUpdateStreak(
         cause,
       },
     };
+  }
+}
+
+export type StreakCelebration = {
+  shouldCelebrate: boolean;
+  currentStreak: number;
+};
+
+/**
+ * One-shot claim on the daily streak celebration: returns shouldCelebrate true
+ * only when today already has streak credit and no celebration has been shown
+ * today, and marks today celebrated in the same call. Every later call that
+ * day — from a second session or the other session type — returns false, so
+ * the animation plays at most once per day. Best-effort: any failure reads as
+ * "don't celebrate" rather than an error.
+ */
+export function claimStreakCelebration(
+  userDb: SQLiteDatabase,
+  today: string,
+): StreakCelebration {
+  try {
+    const row = userDb.getFirstSync<StreakRow & { last_celebrated_date: string | null }>(
+      'SELECT id, current_streak, longest_streak, last_review_date, updated_at, last_celebrated_date FROM streaks WHERE id = 1',
+    );
+
+    if (!row || row.last_review_date !== today || row.last_celebrated_date === today) {
+      return { shouldCelebrate: false, currentStreak: row?.current_streak ?? 0 };
+    }
+
+    userDb.runSync(
+      'UPDATE streaks SET last_celebrated_date = ?, updated_at = ? WHERE id = 1',
+      today,
+      new Date().toISOString(),
+    );
+
+    return { shouldCelebrate: true, currentStreak: row.current_streak };
+  } catch {
+    return { shouldCelebrate: false, currentStreak: 0 };
   }
 }

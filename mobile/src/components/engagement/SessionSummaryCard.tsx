@@ -1,21 +1,14 @@
-import { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
 import type { DomainCounts } from '@/utils/timeFormat';
 
-type TimeCompressionSummaryProps = {
+type SessionSummaryCardProps = {
   domainCounts: DomainCounts;
   actualMinutes: number;
-  estimatedMinutes: number;
-  savedMinutes: number;
-  hasSavings: boolean;
   onShare?: () => void;
   sessionDate?: Date;
 };
-
-const METHODOLOGY_TEXT =
-  'Estimated from typical per-item review times in separate single-purpose apps, plus time lost switching between them. Deliberately conservative.';
 
 function formatSessionDate(date: Date): string {
   return date.toLocaleDateString(undefined, {
@@ -25,17 +18,12 @@ function formatSessionDate(date: Date): string {
   });
 }
 
-export function TimeCompressionSummary({
+export function SessionSummaryCard({
   domainCounts,
   actualMinutes,
-  estimatedMinutes,
-  savedMinutes,
-  hasSavings,
   onShare,
   sessionDate = new Date(),
-}: TimeCompressionSummaryProps) {
-  const [methodologyVisible, setMethodologyVisible] = useState(false);
-
+}: SessionSummaryCardProps) {
   return (
     <View className="gap-space-md">
       <Text className="text-title text-primary">Session Summary</Text>
@@ -83,39 +71,9 @@ export function TimeCompressionSummary({
         {`${actualMinutes} min studied`}
       </Text>
 
-      {hasSavings ? (
-        <Text
-          accessibilityRole="text"
-          accessibilityLabel={`${actualMinutes} minutes studied, approximately ${estimatedMinutes} minutes across separate apps, saving about ${savedMinutes} minutes`}
-          className="text-body text-primary">
-          {`${actualMinutes} min ≈ ~${estimatedMinutes} min across separate apps`}
-        </Text>
-      ) : (
-        <Text
-          accessibilityRole="text"
-          accessibilityLabel={`Nice focused session, ${actualMinutes} minutes`}
-          className="text-body text-secondary">
-          {`Nice focused session — ${actualMinutes} min`}
-        </Text>
-      )}
-
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel="How is this calculated?"
-        onPress={() => setMethodologyVisible((visible) => !visible)}
-        className="self-start">
-        <Text className="text-body-sm text-feedback-info">How is this calculated?</Text>
-      </Pressable>
-
-      {methodologyVisible ? (
-        <Text className="text-body-sm text-secondary">{METHODOLOGY_TEXT}</Text>
-      ) : null}
-
       {onShare ? (
         <Button label="Share" onPress={onShare} variant="secondary" accessibilityLabel="Share session summary" />
       ) : null}
     </View>
   );
 }
-
-export { METHODOLOGY_TEXT };

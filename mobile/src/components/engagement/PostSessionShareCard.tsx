@@ -5,8 +5,6 @@ import type { DomainCounts } from '@/utils/timeFormat';
 type PostSessionShareCardProps = {
   domainCounts: DomainCounts;
   actualMinutes: number;
-  estimatedMinutes: number;
-  hasSavings: boolean;
   currentStreak: number;
   sessionDate?: Date;
 };
@@ -22,8 +20,6 @@ function formatSessionDate(date: Date): string {
 export function PostSessionShareCard({
   domainCounts,
   actualMinutes,
-  estimatedMinutes,
-  hasSavings,
   currentStreak,
   sessionDate = new Date(),
 }: PostSessionShareCardProps) {
@@ -33,10 +29,6 @@ export function PostSessionShareCard({
   if (domainCounts.vocabulary > 0) domainParts.push(`Vocab ${domainCounts.vocabulary}`);
   if (domainCounts.radical > 0) domainParts.push(`Radical ${domainCounts.radical}`);
 
-  const compressionLine = hasSavings
-    ? `${actualMinutes} min ≈ ~${estimatedMinutes} min across separate apps`
-    : `${actualMinutes} min studied`;
-
   return (
     <View
       testID="post-session-share-card"
@@ -45,14 +37,14 @@ export function PostSessionShareCard({
       <Text className="mt-space-xs text-caption text-secondary">{formatSessionDate(sessionDate)}</Text>
 
       <Text className="mt-space-md text-body text-primary">{domainParts.join(' · ') || 'No items reviewed'}</Text>
-      <Text className="mt-space-sm text-body-lg font-semibold text-primary">{compressionLine}</Text>
+      <Text className="mt-space-sm text-body-lg font-semibold text-primary">{`${actualMinutes} min studied`}</Text>
       <Text className="mt-space-sm text-body text-secondary">{`${currentStreak} day streak`}</Text>
     </View>
   );
 }
 
 export function buildShareMessage(props: PostSessionShareCardProps): string {
-  const { domainCounts, actualMinutes, estimatedMinutes, hasSavings, currentStreak } = props;
+  const { domainCounts, actualMinutes, currentStreak } = props;
   const parts: string[] = [];
 
   if (domainCounts.kanji > 0) parts.push(`Kanji: ${domainCounts.kanji}`);
@@ -61,9 +53,7 @@ export function buildShareMessage(props: PostSessionShareCardProps): string {
   if (domainCounts.radical > 0) parts.push(`Radical: ${domainCounts.radical}`);
 
   const domainLine = parts.length > 0 ? parts.join(', ') : 'No items reviewed';
-  const timeLine = hasSavings
-    ? `${actualMinutes} min studied (≈ ~${estimatedMinutes} min across separate apps)`
-    : `${actualMinutes} min studied`;
+  const timeLine = `${actualMinutes} min studied`;
 
   return `Japanese Learning session complete!\n${domainLine}\n${timeLine}\n${currentStreak} day streak`;
 }
