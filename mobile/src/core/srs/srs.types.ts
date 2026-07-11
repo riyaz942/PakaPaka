@@ -44,6 +44,9 @@ export type ReviewItem = {
   itemId: string;
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar';
   primaryForm: string;
+  /** Curriculum display meaning, shown prominently (may pack alternatives: "ground / one"). */
+  displayMeaning: string;
+  /** Every accepted meaning — curriculum answers, derived candidates, and user synonyms. */
   meanings: string[];
   srsState: SRSState;
   promptType: 'reading' | 'meaning' | 'production';

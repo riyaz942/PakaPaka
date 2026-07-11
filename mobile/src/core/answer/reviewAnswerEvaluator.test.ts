@@ -6,6 +6,7 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
     itemId: '1',
     itemType: 'kanji',
     primaryForm: '一',
+    displayMeaning: 'one',
     meanings: ['one'],
     promptType: 'reading',
     answerKey: {
@@ -49,6 +50,36 @@ describe('evaluateReviewAnswer', () => {
       answerKey: { acceptedMeanings: ['I'], acceptedReadings: [] },
     });
     expect(evaluateReviewAnswer(item, 'I').result).toBe('correct');
+  });
+
+  it('falls back to meaning when the only reading equals the surface form (kana-only vocab)', () => {
+    const item = makeItem({
+      itemType: 'vocabulary',
+      primaryForm: 'これ',
+      displayMeaning: 'this one',
+      promptType: 'reading',
+      answerKey: { acceptedMeanings: ['this one'], acceptedReadings: ['これ'] },
+    });
+    expect(evaluateReviewAnswer(item, 'this one').result).toBe('correct');
+  });
+
+  it('returns wrong_script for kana at a meaning prompt', () => {
+    const item = makeItem({ promptType: 'meaning' });
+    expect(evaluateReviewAnswer(item, 'いち').result).toBe('wrong_script');
+  });
+
+  it('returns wrong_script for kanji at a meaning prompt', () => {
+    const item = makeItem({ promptType: 'meaning' });
+    expect(evaluateReviewAnswer(item, '一').result).toBe('wrong_script');
+  });
+
+  it('returns wrong_script when a reading prompt gets an accepted meaning in Latin', () => {
+    expect(evaluateReviewAnswer(makeItem(), 'one').result).toBe('wrong_script');
+  });
+
+  it('grades a wrong romaji reading as incorrect, not wrong_script', () => {
+    // "ni" is a genuine reading miss for 一 — legitimate romaji input.
+    expect(evaluateReviewAnswer(makeItem(), 'ni').result).toBe('incorrect');
   });
 
   it('uses grammar evaluator for production prompts', () => {

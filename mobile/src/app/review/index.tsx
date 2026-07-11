@@ -32,7 +32,8 @@ import {
 } from '@/core/answer/reviewAnswerEvaluator';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
-import { useReviewSession } from '@/providers/ReviewSessionProvider';
+import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
+import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
 import { safeBack } from '@/utils/safeBack';
 
@@ -45,6 +46,7 @@ const PLACEHOLDER: Record<PromptType, string> = {
 export default function ReviewScreen() {
   const {
     currentItem,
+    prefetchBuffer,
     isLoading,
     isComplete,
     totalItems,
@@ -55,10 +57,12 @@ export default function ReviewScreen() {
     gradeCurrentItem,
     peekStageTransition,
     recordTypoForCurrentItem,
+    addSynonymForCurrentItem,
     cognitiveLoadPercent,
     cognitiveLoadComplete,
     snapshotSessionDuration,
   } = useReviewSession();
+  const getRevealDetail = useReviewRevealDetails(currentItem, prefetchBuffer);
 
   const [exitVisible, setExitVisible] = useState(false);
   const [thresholdNoticeVisible, setThresholdNoticeVisible] = useState(false);
@@ -68,6 +72,11 @@ export default function ReviewScreen() {
   const [answerText, setAnswerText] = useState('');
   const [displayAnswer, setDisplayAnswer] = useState<string | undefined>();
   const [stageTransition, setStageTransition] = useState<StageTransition | null>(null);
+  // The answer that was rejected on the incorrect reveal, offered as a one-tap synonym.
+  const [rejectedAnswer, setRejectedAnswer] = useState('');
+  const [synonymState, setSynonymState] = useState<AddSynonymOutcome | { status: 'idle' }>({
+    status: 'idle',
+  });
   const [hintsUsed, setHintsUsed] = useState(0);
   const inputRef = useRef<WanaKanaInputRef>(null);
   const resultRef = useRef<RNView>(null);
@@ -82,7 +91,8 @@ export default function ReviewScreen() {
   const isEndingRef = useRef(false);
   const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
 
-  const inputEditable = cardState === 'prompting' || cardState === 'typo';
+  const inputEditable =
+    cardState === 'prompting' || cardState === 'typo' || cardState === 'wrong_script';
 
   usePreventRemove(hasActiveSession && !exitVisible && !isEndingRef.current, () => {
     setExitVisible(true);
@@ -123,6 +133,8 @@ export default function ReviewScreen() {
     setAnswerText('');
     setDisplayAnswer(undefined);
     setStageTransition(null);
+    setRejectedAnswer('');
+    setSynonymState({ status: 'idle' });
     setHintsUsed(0);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
@@ -136,7 +148,12 @@ export default function ReviewScreen() {
   }, [cursor]);
 
   useEffect(() => {
-    if (cardState !== 'correct' && cardState !== 'incorrect' && cardState !== 'typo') {
+    if (
+      cardState !== 'correct' &&
+      cardState !== 'incorrect' &&
+      cardState !== 'typo' &&
+      cardState !== 'wrong_script'
+    ) {
       return;
     }
 
@@ -155,7 +172,7 @@ export default function ReviewScreen() {
 
         void focusScreenReaderOn(resultRef.current).then(() => {
           if (cancelled) return;
-          if (cardState === 'typo') {
+          if (cardState === 'typo' || cardState === 'wrong_script') {
             typoInputTimer = setTimeout(
               () => inputRef.current?.focus(),
               screenReaderEnabled ? 300 : 0,
@@ -228,14 +245,29 @@ export default function ReviewScreen() {
       return;
     }
 
-    const answer = evaluation.displayAnswer ?? currentItem.meanings[0] ?? '';
+    if (evaluation.result === 'wrong_script') {
+      // Category error, not a knowledge error: nudge and re-prompt without
+      // grading or recording anything — a script mixup is not a weakness signal.
+      setCardState('wrong_script');
+      setAnswerText('');
+      isSubmittingRef.current = false;
+      return;
+    }
+
+    const answer = evaluation.displayAnswer ?? currentItem.displayMeaning;
     setDisplayAnswer(answer);
+    setRejectedAnswer(answerText.trim());
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
   }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, peekStageTransition, recordTypoForCurrentItem]);
 
   function handleContinueIncorrect() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
+  }
+
+  function handleAddSynonym(options?: { force?: boolean }) {
+    if (!rejectedAnswer) return;
+    setSynonymState(addSynonymForCurrentItem(rejectedAnswer, options));
   }
 
   // "Don't know" — reveal the correct answer and mark the item incorrect,
@@ -364,6 +396,10 @@ export default function ReviewScreen() {
             stageTransition={stageTransition}
             onHintReveal={setHintsUsed}
             resultRef={resultRef}
+            revealDetail={getRevealDetail(currentItem.itemId)}
+            rejectedAnswer={rejectedAnswer}
+            synonymState={synonymState}
+            onAddSynonym={handleAddSynonym}
           />
         </ScrollView>
 

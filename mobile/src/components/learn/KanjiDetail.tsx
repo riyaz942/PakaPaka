@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
@@ -102,6 +103,7 @@ export function KanjiDetail({
       ) : null}
 
       <PersonalMnemonicEditor itemId={item.id} />
+      <UserSynonymEditor itemId={item.id} />
     </View>
   );
 }

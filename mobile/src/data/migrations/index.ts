@@ -9,6 +9,7 @@ import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitiv
 import { migration009Streak } from '@/data/migrations/009_streak';
 import { migration010SrsLastReviewedAt } from '@/data/migrations/010_srs_last_reviewed_at';
 import { migration011SrsLearningSteps } from '@/data/migrations/011_srs_learning_steps';
+import { migration012UserSynonyms } from '@/data/migrations/012_user_synonyms';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -23,4 +24,5 @@ export const migrations: Migration[] = [
   migration009Streak,
   migration010SrsLastReviewedAt,
   migration011SrsLearningSteps,
+  migration012UserSynonyms,
 ];

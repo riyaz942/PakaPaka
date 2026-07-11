@@ -7,7 +7,26 @@
       "meaning": "ground / one",
       "mnemonic_text": "A single flat line: the ground, or the number one.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ichi.png",
-      "sort_order": 1
+      "sort_order": 1,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ground",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "one"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number one"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "1"
+        }
+      ]
     },
     {
       "slug": "ni",
@@ -15,7 +34,22 @@
       "meaning": "two",
       "mnemonic_text": "Two flat lines stacked: two.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ni.png",
-      "sort_order": 2
+      "sort_order": 2,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "two",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number two"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "2"
+        }
+      ]
     },
     {
       "slug": "san",
@@ -23,7 +57,22 @@
       "meaning": "three",
       "mnemonic_text": "Three flat lines stacked: three.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/san.png",
-      "sort_order": 3
+      "sort_order": 3,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "three",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number three"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "3"
+        }
+      ]
     },
     {
       "slug": "bou",
@@ -87,7 +136,26 @@
       "meaning": "eight / split",
       "mnemonic_text": "Two strokes spreading apart: eight, or splitting.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/hachigashira.png",
-      "sort_order": 11
+      "sort_order": 11,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "eight",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "split"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number eight"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "8"
+        }
+      ]
     },
     {
       "slug": "keigamae",
@@ -111,7 +179,26 @@
       "meaning": "ten / cross",
       "mnemonic_text": "A plus sign: ten, or a cross.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/juu.png",
-      "sort_order": 14
+      "sort_order": 14,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ten",
+          "is_primary": true
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "cross"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number ten"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "10"
+        }
+      ]
     },
     {
       "slug": "kuchi",

@@ -40,7 +40,11 @@
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
         "visual_mnemonic_url": { "type": "string", "format": "uri", "pattern": "^https://" },
-        "sort_order": { "type": "integer", "minimum": 0 }
+        "sort_order": { "type": "integer", "minimum": 0 },
+        "accepted_answers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/acceptedAnswer" }
+        }
       }
     },
     "radicalsFile": {

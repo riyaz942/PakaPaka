@@ -19,6 +19,7 @@ import {
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
+import { listSynonymsForItems, type UserSynonym } from '@/data/user/userSynonymRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 import { getBoosts } from '@/data/user/relatedItemBoostRepository';
 import { getWeaknessBiasEnabled } from '@/data/user/preferencesRepository';
@@ -43,18 +44,23 @@ function buildAnswerKey(
   itemId: string,
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar',
   displayMeaning: string,
+  userSynonyms: UserSynonym[],
 ): ReviewAnswerKey {
   const acceptedAnswers = getAcceptedAnswers(curriculumDb, itemId);
 
   // Many items (radicals, most grammar) have no accepted_answers rows, and the
   // display meaning packs alternatives ("hole / cave") — derive candidates from
-  // it so a correct answer is never rejected on a seed-data gap.
+  // it so a correct answer is never rejected on a seed-data gap. User-added
+  // synonyms are a third source on top of both.
   const acceptedMeanings = [
     ...new Set([
       ...acceptedAnswers
         .filter((a) => a.answerType === 'meaning')
         .map((a) => a.answerText),
       ...deriveMeaningCandidates(displayMeaning),
+      ...userSynonyms
+        .filter((s) => s.answerType === 'meaning')
+        .map((s) => s.answerText),
     ]),
   ];
 
@@ -65,6 +71,13 @@ function buildAnswerKey(
   if (itemType === 'kanji') {
     const kanjiReadings = getKanjiReadings(curriculumDb, itemId).map((r) => r.reading);
     acceptedReadings = [...new Set([...acceptedReadings, ...kanjiReadings])];
+  }
+
+  const userReadings = userSynonyms
+    .filter((s) => s.answerType === 'reading')
+    .map((s) => s.answerText);
+  if (userReadings.length > 0) {
+    acceptedReadings = [...new Set([...acceptedReadings, ...userReadings])];
   }
 
   let grammar: ReviewAnswerKey['grammar'];
@@ -140,6 +153,7 @@ export function useReviewQueue(): UseReviewQueueResult {
       const parentsMap = getRequiredParentsForItems(curriculumDb, itemIds);
       const relatedItemsMap = getRelatedItemsForItems(curriculumDb, itemIds);
       const boostMap = getBoosts(userDb, itemIds);
+      const synonymMap = listSynonymsForItems(userDb, itemIds);
       // Read weakness bias preference and scores in one batched query (mirrors getBoosts).
       const weaknessBiasEnabled = getWeaknessBiasEnabled(userDb);
       const weaknessScoreMap = weaknessBiasEnabled ? getWeaknessScores(userDb, itemIds) : new Map<string, number>();
@@ -197,6 +211,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           srsState.itemId,
           curriculumItem.itemType,
           curriculumItem.meaning,
+          synonymMap.get(srsState.itemId) ?? [],
         );
 
         queueInputs.push({

@@ -4,15 +4,18 @@ import React from 'react';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import type { AcceptedAnswer, CurriculumItemDetail, KanjiReading } from '@/data/curriculum/itemRepository';
 
-jest.mock('@/data/hooks/useDatabase', () => ({
-  useDatabase: () => ({
+jest.mock('@/data/hooks/useDatabase', () => {
+  // Stable object: an unstable identity would re-fire db-keyed effects every render.
+  const databases = {
     userDb: {
       getFirstSync: jest.fn(() => null),
+      getAllSync: jest.fn(() => []),
       runSync: jest.fn(),
     },
     curriculumDb: {},
-  }),
-}));
+  };
+  return { useDatabase: () => databases };
+});
 
 const baseItem: CurriculumItemDetail = {
   id: '10',

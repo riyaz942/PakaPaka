@@ -9,6 +9,7 @@ function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
     itemId: 'test-1',
     itemType: 'kanji',
     primaryForm: '食',
+    displayMeaning: 'eat, food',
     meanings: ['eat', 'food'],
     promptType: 'reading',
     answerKey: {
@@ -147,6 +148,78 @@ describe('ReviewCard — result states', () => {
   it('shows typo state with warning icon and text', () => {
     render(<ReviewCard item={makeItem()} state="typo" />);
     expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
+  });
+
+  it('shows a reading nudge for wrong_script on a reading prompt without revealing the answer', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="wrong_script" />);
+    expect(
+      screen.getByText("We're looking for the reading in kana or romaji."),
+    ).toBeTruthy();
+    expect(screen.queryByText(/たべる/)).toBeNull();
+    expect(screen.queryByText(/eat/)).toBeNull();
+  });
+
+  it('shows a meaning nudge for wrong_script on a meaning prompt', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="wrong_script" />);
+    expect(screen.getByText("We're looking for the meaning in English.")).toBeTruthy();
+  });
+
+  it('shows full item detail on incorrect: meanings, readings, and mnemonic', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ mnemonic: 'A roof over a fire cooking food.' })}
+        state="incorrect"
+        displayAnswer="たべる"
+        revealDetail={{
+          item: {
+            id: 'test-1',
+            slug: 'taberu',
+            itemType: 'kanji',
+            jlptLevel: 'N5',
+            primaryForm: '食',
+            furigana: null,
+            meaning: 'eat, food',
+            mnemonicText: 'A roof over a fire cooking food.',
+            visualMnemonicUrl: null,
+          },
+          kanjiReadings: [
+            { id: 'r1', readingType: 'onyomi', reading: 'しょく', sortOrder: 0 },
+            { id: 'r2', readingType: 'kunyomi', reading: 'た', sortOrder: 1 },
+          ],
+          exampleSentences: [],
+        }}
+      />,
+    );
+    expect(screen.getByText('eat, food')).toBeTruthy();
+    expect(screen.getByText("On'yomi: しょく")).toBeTruthy();
+    expect(screen.getByText("Kun'yomi: た")).toBeTruthy();
+    expect(screen.getByText('A roof over a fire cooking food.')).toBeTruthy();
+  });
+
+  it('offers to accept the rejected answer as a user synonym on incorrect', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ promptType: 'meaning' })}
+        state="incorrect"
+        displayAnswer="eat"
+        rejectedAnswer="meal"
+        onAddSynonym={jest.fn()}
+      />,
+    );
+    expect(screen.getByText('Accept "meal" as my answer')).toBeTruthy();
+  });
+
+  it('does not offer the synonym affordance without a rejected answer (Don\'t know)', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ promptType: 'meaning' })}
+        state="incorrect"
+        displayAnswer="eat"
+        rejectedAnswer=""
+        onAddSynonym={jest.fn()}
+      />,
+    );
+    expect(screen.queryByText(/as my answer/)).toBeNull();
   });
 
   it('shows an advancing stage transition with upward affordance on correct', () => {

@@ -7,10 +7,19 @@ import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 
+import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
+
+import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
 import { ProgressiveHint } from './ProgressiveHint';
 import { ReinforcementHighlight } from './ReinforcementHighlight';
 
-export type ReviewCardState = 'prompting' | 'evaluating' | 'correct' | 'incorrect' | 'typo';
+export type ReviewCardState =
+  | 'prompting'
+  | 'evaluating'
+  | 'correct'
+  | 'incorrect'
+  | 'typo'
+  | 'wrong_script';
 
 type ReviewCardProps = {
   item: ReviewItem;
@@ -22,6 +31,12 @@ type ReviewCardProps = {
   onHintReveal?: (count: number) => void;
   /** Ref attached to the accessible result region in correct/incorrect/typo states */
   resultRef?: Ref<View>;
+  /** Prefetched full detail rendered on the incorrect reveal */
+  revealDetail?: ReviewRevealDetail | null;
+  /** The rejected answer, offered as a one-tap user synonym on the incorrect reveal */
+  rejectedAnswer?: string;
+  synonymState?: AddSynonymUiState;
+  onAddSynonym?: (options?: { force?: boolean }) => void;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -36,10 +51,6 @@ const MODE_LABEL_CLASS: Record<PromptType, string> = {
   production: 'text-content-grammar',
 };
 
-function formatMeanings(meanings: string[]): string {
-  return meanings.join(', ');
-}
-
 /**
  * Resolves the label + value revealed on a correct answer so the displayed text
  * and the screen-reader announcement always agree. Reading/production prompts
@@ -47,13 +58,19 @@ function formatMeanings(meanings: string[]): string {
  * fall back to the meanings.
  */
 export function resolveCorrectReveal(item: ReviewItem): { label: string; value: string } {
-  const { promptType, meanings, answerKey } = item;
+  const { promptType, displayMeaning, answerKey } = item;
   if (promptType === 'reading' || promptType === 'production') {
     const reading = answerKey?.acceptedReadings?.[0];
     if (reading) return { label: 'Reading', value: reading };
   }
-  return { label: 'Meaning', value: formatMeanings(meanings) };
+  return { label: 'Meaning', value: displayMeaning };
 }
+
+const WRONG_SCRIPT_NUDGE: Record<PromptType, string> = {
+  meaning: "We're looking for the meaning in English.",
+  reading: "We're looking for the reading in kana or romaji.",
+  production: "We're looking for the conjugated form in kana or romaji.",
+};
 
 export function ReviewCard({
   item,
@@ -62,8 +79,12 @@ export function ReviewCard({
   stageTransition,
   onHintReveal,
   resultRef,
+  revealDetail,
+  rejectedAnswer,
+  synonymState,
+  onAddSynonym,
 }: ReviewCardProps) {
-  const { primaryForm, promptType, srsState, meanings, itemType, reinforcementLink, answerKey } =
+  const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
 
   if (state === 'evaluating') {
@@ -91,20 +112,34 @@ export function ReviewCard({
   }
 
   if (state === 'incorrect') {
-    const answer = displayAnswer ?? formatMeanings(meanings);
     return (
-      <View className="gap-space-md w-full items-center">
-        <View
-          ref={resultRef}
-          accessible
-          accessibilityLabel={`Incorrect, correct answer is ${answer}`}
-          className="gap-space-md items-center">
-          <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
-          <Text className="text-body-lg text-primary text-center">
-            Correct answer: {answer}
-          </Text>
-        </View>
-        {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
+      <IncorrectReveal
+        item={item}
+        displayAnswer={displayAnswer ?? displayMeaning}
+        detail={revealDetail ?? null}
+        stageTransition={stageTransition}
+        resultRef={resultRef}
+        rejectedAnswer={rejectedAnswer}
+        synonymState={synonymState}
+        onAddSynonym={onAddSynonym}
+      />
+    );
+  }
+
+  if (state === 'wrong_script') {
+    // One-line nudge only: the user hasn't been told the answer, so don't reveal detail.
+    return (
+      <View
+        ref={resultRef}
+        accessible
+        accessibilityLabel={WRONG_SCRIPT_NUDGE[promptType]}
+        className="gap-space-md items-center">
+        <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+          {primaryForm}
+        </Text>
+        <Text className="text-body-lg text-feedback-warning text-center">
+          {WRONG_SCRIPT_NUDGE[promptType]}
+        </Text>
       </View>
     );
   }
@@ -125,7 +160,7 @@ export function ReviewCard({
     itemType === 'grammar'
       ? buildGrammarHintLevels({
           structure: answerKey.grammar?.structure,
-          meaning: meanings[0],
+          meaning: displayMeaning,
           reinforcementLink,
         })
       : [];

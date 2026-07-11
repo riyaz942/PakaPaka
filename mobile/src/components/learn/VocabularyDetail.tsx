@@ -6,6 +6,7 @@ import { FuriganaText } from '@/components/common/FuriganaText';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
@@ -94,6 +95,7 @@ export function VocabularyDetail({
       ) : null}
 
       <PersonalMnemonicEditor itemId={item.id} />
+      <UserSynonymEditor itemId={item.id} />
 
       {exampleSentences.length > 0 ? (
         <View className="mt-4">

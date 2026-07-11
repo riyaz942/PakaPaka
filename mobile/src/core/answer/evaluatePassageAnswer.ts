@@ -1,8 +1,8 @@
 import type { AnswerResult } from '@/core/answer/answer.types';
 import { normalizeKana } from '@/core/answer/readingEvaluator';
 
-/** Passage answers never use typo tolerance — only correct/incorrect. */
-export type PassageAnswerResult = Exclude<AnswerResult, 'typo'>;
+/** Passage answers never use typo tolerance or script nudges — only correct/incorrect. */
+export type PassageAnswerResult = Exclude<AnswerResult, 'typo' | 'wrong_script'>;
 
 /**
  * Same normalization pipeline as the review path: NFKC folds full-width latin

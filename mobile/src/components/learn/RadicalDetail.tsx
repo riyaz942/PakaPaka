@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
+import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
@@ -49,6 +50,8 @@ export function RadicalDetail({ item, size = 'md' }: RadicalDetailProps) {
           onLoadError={() => setImageLoadFailed(true)}
         />
       </View>
+
+      <UserSynonymEditor itemId={item.id} />
     </View>
   );
 }

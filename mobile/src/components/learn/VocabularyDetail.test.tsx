@@ -17,16 +17,18 @@ jest.mock('expo-router', () => ({
   },
 }));
 
-jest.mock('@/data/hooks/useDatabase', () => ({
-  useDatabase: () => ({
+jest.mock('@/data/hooks/useDatabase', () => {
+  // Stable object: an unstable identity would re-fire db-keyed effects every render.
+  const databases = {
     userDb: {
       getFirstSync: jest.fn(() => null),
       getAllSync: jest.fn(() => []),
       runSync: jest.fn(),
     },
     curriculumDb: {},
-  }),
-}));
+  };
+  return { useDatabase: () => databases };
+});
 
 const baseItem: CurriculumItemDetail = {
   id: '20',

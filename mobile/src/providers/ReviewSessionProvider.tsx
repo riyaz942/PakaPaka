@@ -1,6 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import { COGNITIVE_LOAD_HISTORY_WINDOW, MAX_PREFETCH } from '@/config/constants';
+import { normalizeMeaning } from '@/core/answer/meaningEvaluator';
+import { normalizeKana } from '@/core/answer/readingEvaluator';
 import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/loadTracker';
 import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
@@ -20,6 +22,7 @@ import { applyBoosts, clearBoosts } from '@/data/user/relatedItemBoostRepository
 import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
 import { upsertSrsState } from '@/data/user/srsStateRepository';
+import { addSynonym } from '@/data/user/userSynonymRepository';
 import type { AppError } from '@/types/result.types';
 
 type SessionSummary = {
@@ -57,7 +60,22 @@ type ReviewSessionState = {
    * Called from the typo branch in review/index.tsx which never calls gradeCurrentItem.
    */
   recordTypoForCurrentItem: () => void;
+  /**
+   * Persist a user-added accepted answer for the current item (picked up on the
+   * item's next queue build — never retroactively changes a recorded outcome).
+   * Returns 'collision' (without saving) when the answer is already accepted by
+   * a different item in this queue, unless `force` is set.
+   */
+  addSynonymForCurrentItem: (
+    answerText: string,
+    options?: { force?: boolean },
+  ) => AddSynonymOutcome;
 };
+
+export type AddSynonymOutcome =
+  | { status: 'added' }
+  | { status: 'collision'; collidesWith: string }
+  | { status: 'error' };
 
 /** A card in the session working queue. Retries are pedagogical re-asks: they write nothing. */
 type QueueEntry = { item: ReviewItem; isRetry: boolean };
@@ -336,6 +354,39 @@ export function ReviewSessionProvider({ children }: Props) {
       });
   }, [currentEntry, userDb]);
 
+  const addSynonymForCurrentItem = useCallback(
+    (answerText: string, options?: { force?: boolean }): AddSynonymOutcome => {
+      if (!currentEntry) return { status: 'error' };
+      const item = currentEntry.item;
+      const trimmed = answerText.trim();
+      if (!trimmed) return { status: 'error' };
+
+      const answerType = item.promptType === 'meaning' ? 'meaning' : 'reading';
+
+      if (!options?.force) {
+        // Guardrail: warn when the answer is already accepted by a *different*
+        // item in this queue (会 and 合 must not both become "meet") — but
+        // don't hard-block; the caller can retry with force.
+        const normalize = answerType === 'meaning' ? normalizeMeaning : normalizeKana;
+        const normalized = normalize(trimmed);
+        for (const other of queue) {
+          if (other.itemId === item.itemId) continue;
+          const accepted =
+            answerType === 'meaning'
+              ? other.answerKey.acceptedMeanings
+              : other.answerKey.acceptedReadings;
+          if (accepted.some((candidate) => normalize(candidate) === normalized)) {
+            return { status: 'collision', collidesWith: other.primaryForm };
+          }
+        }
+      }
+
+      const result = addSynonym(userDb, item.itemId, answerType, trimmed);
+      return result.ok ? { status: 'added' } : { status: 'error' };
+    },
+    [currentEntry, queue, userDb],
+  );
+
   const totalLoad = baseLoad + sessionLoad;
   const cognitiveLoadPercent = computeLoadPercent(totalLoad, thresholdRef.current);
   const cognitiveLoadComplete = cognitiveLoadPercent >= 100;
@@ -382,6 +433,7 @@ export function ReviewSessionProvider({ children }: Props) {
     gradeCurrentItem,
     peekStageTransition,
     recordTypoForCurrentItem,
+    addSynonymForCurrentItem,
   };
 
   return (

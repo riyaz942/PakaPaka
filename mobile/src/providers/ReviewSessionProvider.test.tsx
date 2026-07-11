@@ -55,6 +55,7 @@ function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'):
     itemId: id,
     itemType,
     primaryForm: `kanji-${id}`,
+    displayMeaning: `meaning-${id}`,
     meanings: [`meaning-${id}`],
     promptType: 'reading',
     answerKey: {

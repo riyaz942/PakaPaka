@@ -8,6 +8,7 @@ import ReviewScreen from './index';
 
 const mockGradeCurrentItem = jest.fn();
 const mockRecordTypoForCurrentItem = jest.fn();
+const mockAddSynonymForCurrentItem = jest.fn().mockReturnValue({ status: 'added' });
 const mockInputFocus = jest.fn();
 const mockFocusScreenReaderOn = jest.fn().mockResolvedValue(undefined);
 
@@ -20,6 +21,7 @@ function makeReviewItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
     itemId: 'test-1',
     itemType: 'kanji',
     primaryForm: '食',
+    displayMeaning: 'eat, food',
     meanings: ['eat', 'food'],
     promptType: 'reading',
     answerKey: {
@@ -61,6 +63,7 @@ jest.mock('expo-router', () => ({
 jest.mock('@/providers/ReviewSessionProvider', () => ({
   useReviewSession: () => ({
     currentItem: mockCurrentItem,
+    prefetchBuffer: [],
     isLoading: false,
     isComplete: false,
     totalItems: 3,
@@ -71,10 +74,15 @@ jest.mock('@/providers/ReviewSessionProvider', () => ({
     gradeCurrentItem: mockGradeCurrentItem,
     peekStageTransition: jest.fn().mockReturnValue(null),
     recordTypoForCurrentItem: mockRecordTypoForCurrentItem,
+    addSynonymForCurrentItem: mockAddSynonymForCurrentItem,
     cognitiveLoadPercent: 10,
     cognitiveLoadComplete: false,
     snapshotSessionDuration: jest.fn(),
   }),
+}));
+
+jest.mock('@/data/hooks/useReviewRevealDetails', () => ({
+  useReviewRevealDetails: () => () => null,
 }));
 
 jest.mock('@/components/review/WanaKanaInput', () => {
@@ -216,6 +224,52 @@ describe('ReviewScreen accessibility', () => {
 
     await waitFor(() => {
       expect(mockFocusScreenReaderOn).toHaveBeenCalled();
+    });
+  });
+
+  it('nudges without grading or recording when a meaning prompt gets Japanese input', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), '食べる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText("We're looking for the meaning in English.")).toBeTruthy();
+    });
+
+    // Non-terminal: no grade, no typo/weakness record, input still editable for a retry.
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+    expect(screen.queryByLabelText('Continue')).toBeNull();
+    expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
+  });
+
+  it('offers the rejected answer as a synonym on the incorrect reveal', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'meal');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Accept "meal" as my answer')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByText('Accept "meal" as my answer'));
+    expect(mockAddSynonymForCurrentItem).toHaveBeenCalledWith('meal', { force: false });
+    await waitFor(() => {
+      expect(
+        screen.getByText("Added — it will be accepted on this item's next review."),
+      ).toBeTruthy();
     });
   });
 

@@ -44,6 +44,7 @@ type RadicalItem = {
   mnemonic_text?: string;
   visual_mnemonic_url: string;
   sort_order?: number;
+  accepted_answers?: AcceptedAnswer[];
 };
 
 type KanjiReading = {
@@ -290,6 +291,15 @@ export function compileCurriculum(
       VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @mnemonic_text, @visual_mnemonic_url, @sort_order)
     `);
 
+    const insertReading = db.prepare(`
+      INSERT INTO kanji_readings (item_id, reading_type, reading, sort_order)
+      VALUES (@item_id, @reading_type, @reading, @sort_order)
+    `);
+    const insertAnswer = db.prepare(`
+      INSERT INTO accepted_answers (item_id, answer_type, answer_text, is_primary)
+      VALUES (@item_id, @answer_type, @answer_text, @is_primary)
+    `);
+
     for (const radical of radicals) {
       const id = idByKey.get(itemKey('radical', radical.slug))!;
       insertItem.run({
@@ -304,16 +314,16 @@ export function compileCurriculum(
         visual_mnemonic_url: radical.visual_mnemonic_url,
         sort_order: radical.sort_order ?? 0,
       });
-    }
 
-    const insertReading = db.prepare(`
-      INSERT INTO kanji_readings (item_id, reading_type, reading, sort_order)
-      VALUES (@item_id, @reading_type, @reading, @sort_order)
-    `);
-    const insertAnswer = db.prepare(`
-      INSERT INTO accepted_answers (item_id, answer_type, answer_text, is_primary)
-      VALUES (@item_id, @answer_type, @answer_text, @is_primary)
-    `);
+      for (const answer of radical.accepted_answers ?? []) {
+        insertAnswer.run({
+          item_id: id,
+          answer_type: answer.answer_type,
+          answer_text: answer.answer_text,
+          is_primary: answer.is_primary ? 1 : 0,
+        });
+      }
+    }
 
     for (const kanjiItem of kanji) {
       const id = idByKey.get(itemKey('kanji', kanjiItem.slug))!;
