@@ -12,12 +12,21 @@ import {
   StreakCounter,
 } from '@/components/engagement';
 import { MaxContentWidth } from '@/constants/theme';
+import {
+  computeDailyAllowance,
+  type DailyAllowance,
+} from '@/core/lesson/lessonAllowance';
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLevelProgress } from '@/data/hooks/useLevelProgress';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useStreak } from '@/data/hooks/useStreak';
-import { getStartingJlptLevel } from '@/data/user/preferencesRepository';
+import { todayKey } from '@/data/user/cognitiveLoadRepository';
+import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
+import {
+  getSessionIntensity,
+  getStartingJlptLevel,
+} from '@/data/user/preferencesRepository';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
 import { cn } from '@/utils/cn';
 
@@ -28,6 +37,8 @@ type ActionCardProps = {
   onPress: () => void;
   accent?: boolean;
   disabled?: boolean;
+  /** Dimmed but still tappable — for advisory states like the lesson cap. */
+  muted?: boolean;
   accessibilityLabel: string;
   testID?: string;
 };
@@ -39,6 +50,7 @@ function ActionCard({
   onPress,
   accent = false,
   disabled = false,
+  muted = false,
   accessibilityLabel,
   testID,
 }: ActionCardProps) {
@@ -55,6 +67,7 @@ function ActionCard({
         'min-h-[44px] flex-row items-center gap-space-md rounded-radius-lg border p-space-md',
         accent ? 'border-feedback-info bg-surface-elevated' : 'border-border bg-surface',
         disabled && 'opacity-40',
+        muted && 'opacity-60',
       )}>
       <View
         className={cn(
@@ -78,6 +91,24 @@ export default function HomeScreen() {
   const [level, setLevel] = useState<ReturnType<typeof getStartingJlptLevel>>(null);
   const [dueCount, setDueCount] = useState(0);
   const [dueCountLoading, setDueCountLoading] = useState(true);
+  const [lessonAllowance, setLessonAllowance] = useState<DailyAllowance | null>(null);
+
+  const readLessonAllowance = useCallback(
+    (reviewsDueCount: number) => {
+      try {
+        setLessonAllowance(
+          computeDailyAllowance({
+            intensity: getSessionIntensity(userDb),
+            itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
+            reviewsDueCount,
+          }),
+        );
+      } catch {
+        setLessonAllowance(null);
+      }
+    },
+    [userDb],
+  );
 
   const {
     percent: cognitiveLoadPercent,
@@ -106,15 +137,18 @@ export default function HomeScreen() {
   } = useShadowMode();
 
   useEffect(() => {
+    let due = 0;
     try {
       setLevel(getStartingJlptLevel(userDb));
-      setDueCount(getDueSrsStates(userDb).length);
+      due = getDueSrsStates(userDb).length;
+      setDueCount(due);
     } catch {
       setDueCount(0);
     } finally {
       setDueCountLoading(false);
     }
-  }, [userDb]);
+    readLessonAllowance(due);
+  }, [userDb, readLessonAllowance]);
 
   const isInitialFocusRef = useRef(true);
   useFocusEffect(
@@ -127,12 +161,22 @@ export default function HomeScreen() {
       refetchStreak();
       refetchProgress();
       refetchShadowMode();
+      let due = 0;
       try {
-        setDueCount(getDueSrsStates(userDb).length);
+        due = getDueSrsStates(userDb).length;
+        setDueCount(due);
       } catch {
         setDueCount(0);
       }
-    }, [refetchLoad, refetchStreak, refetchProgress, refetchShadowMode, userDb]),
+      readLessonAllowance(due);
+    }, [
+      refetchLoad,
+      refetchStreak,
+      refetchProgress,
+      refetchShadowMode,
+      userDb,
+      readLessonAllowance,
+    ]),
   );
 
   const handleShadowModeCommit = useCallback(() => {
@@ -176,10 +220,21 @@ export default function HomeScreen() {
           <FadeSlideIn index={2}>
             <ActionCard
               title="Today's lesson"
-              subtitle="A guided lesson picked for you"
+              subtitle={
+                lessonAllowance === null
+                  ? 'A guided lesson picked for you'
+                  : lessonAllowance.remaining > 0
+                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                    : "You've learned enough today. Come back tomorrow, or clear some reviews."
+              }
               glyph="学"
+              muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
               onPress={() => router.push('/lesson')}
-              accessibilityLabel="Start today's lesson"
+              accessibilityLabel={
+                lessonAllowance !== null && lessonAllowance.remaining === 0
+                  ? 'Daily lesson limit reached'
+                  : "Start today's lesson"
+              }
               testID="home-learn-button"
             />
           </FadeSlideIn>

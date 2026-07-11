@@ -83,7 +83,7 @@ describe('planLesson', () => {
     expect(planLesson(input).map((item) => item.id)).toEqual(['10']);
   });
 
-  it('interleaves radicals ahead of kanji and mixes types', () => {
+  it('interleaves radicals first and gives every available type a floor slot', () => {
     const candidates = [
       candidate('g1', 'grammar', 1),
       candidate('v1', 'vocabulary', 1),
@@ -97,13 +97,52 @@ describe('planLesson', () => {
     const result = planLesson(emptyInput(candidates, 7));
     expect(result.map((item) => item.id)).toEqual([
       'r1',
-      'r2',
       'k1',
-      'k2',
       'v1',
-      'v2',
       'g1',
+      'r2',
+      'k2',
+      'v2',
     ]);
+  });
+
+  it('includes at least one grammar item in a size-5 lesson when grammar candidates exist', () => {
+    const candidates = [
+      ...Array.from({ length: 10 }, (_, i) => candidate(`r${i}`, 'radical', i)),
+      ...Array.from({ length: 10 }, (_, i) => candidate(`k${i}`, 'kanji', i)),
+      ...Array.from({ length: 10 }, (_, i) => candidate(`v${i}`, 'vocabulary', i)),
+      ...Array.from({ length: 10 }, (_, i) => candidate(`g${i}`, 'grammar', i)),
+    ];
+
+    const result = planLesson(emptyInput(candidates, 5));
+    expect(result).toHaveLength(5);
+    expect(result.some((item) => item.itemType === 'grammar')).toBe(true);
+  });
+
+  it('gives grammar a slot on day one when only radicals and grammar are unlocked', () => {
+    const candidates = [
+      ...Array.from({ length: 10 }, (_, i) => candidate(`r${i}`, 'radical', i)),
+      ...Array.from({ length: 10 }, (_, i) => candidate(`g${i}`, 'grammar', i)),
+    ];
+
+    const result = planLesson(emptyInput(candidates, 5));
+    expect(result.map((item) => item.itemType)).toEqual([
+      'radical',
+      'grammar',
+      'radical',
+      'radical',
+      'radical',
+    ]);
+  });
+
+  it('fills the whole lesson from a single type when only that type has candidates', () => {
+    const candidates = Array.from({ length: 10 }, (_, i) =>
+      candidate(`g${i}`, 'grammar', i),
+    );
+
+    const result = planLesson(emptyInput(candidates, 5));
+    expect(result).toHaveLength(5);
+    expect(result.every((item) => item.itemType === 'grammar')).toBe(true);
   });
 
   it('orders within a type by sortOrder', () => {

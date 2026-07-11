@@ -349,6 +349,22 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO daily_lesson_log/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [date, itemsStarted] = params;
+    const rows = state.tables.get('daily_lesson_log') ?? [];
+    const idx = rows.findIndex((row) => row.date === date);
+    if (idx >= 0) {
+      rows[idx] = {
+        ...rows[idx],
+        items_started: Number(rows[idx].items_started ?? 0) + Number(itemsStarted),
+      };
+    } else {
+      rows.push({ date, items_started: Number(itemsStarted) });
+    }
+    state.tables.set('daily_lesson_log', rows);
+    return;
+  }
+
   if (/^INSERT INTO streaks/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const [currentStreak, longestStreak, lastReviewDate, updatedAt] = params;
     state.tables.set('streaks', [
@@ -744,6 +760,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     }
     if (/SELECT load FROM/i.test(trimmed)) {
       return rows.map((row) => ({ load: row.load }));
+    }
+    return rows;
+  }
+
+  if (/FROM daily_lesson_log/i.test(trimmed)) {
+    let rows = [...(state.tables.get('daily_lesson_log') ?? [])];
+    if (/WHERE date = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.date === params[0]);
     }
     return rows;
   }

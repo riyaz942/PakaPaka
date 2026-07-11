@@ -48,6 +48,10 @@ const ROUND_QUOTAS: readonly { type: LessonItemType; quota: number }[] = [
 /**
  * Picks today's lesson: unlocked, not-yet-started items in curriculum order,
  * interleaved across types so a lesson is never a wall of one item type.
+ *
+ * Every type with available candidates is guaranteed at least one slot when
+ * size allows, so grammar (which has no unlock prerequisites) is never starved
+ * by a deep radical bucket and radicals never monopolise a first-day lesson.
  */
 export function planLesson(input: LessonPlanInput): LessonCandidate[] {
   const { candidates, studyStatuses, startedItemIds, parentsByItemId, parentStatuses, size } =
@@ -82,13 +86,27 @@ export function planLesson(input: LessonPlanInput): LessonCandidate[] {
     ROUND_QUOTAS.map(({ type }) => [type, 0] as const),
   );
 
+  // Floor pass: one slot per type that has candidates, so no type is starved.
+  for (const { type } of ROUND_QUOTAS) {
+    if (result.length >= size) break;
+    const bucket = buckets.get(type)!;
+    if (bucket.length > 0) {
+      result.push(bucket[0]);
+      indices.set(type, 1);
+    }
+  }
+
+  // Weighted round-robin for the remainder. The first round's quotas count
+  // the floor slot, so per-round proportions stay at ROUND_QUOTAS.
+  let firstRound = true;
   let progressed = true;
   while (progressed && result.length < size) {
     progressed = false;
     for (const { type, quota } of ROUND_QUOTAS) {
       const bucket = buckets.get(type)!;
       const start = indices.get(type)!;
-      const end = Math.min(start + quota, bucket.length);
+      const roundBase = firstRound ? 0 : start;
+      const end = Math.min(roundBase + quota, bucket.length);
       for (let i = start; i < end && result.length < size; i++) {
         result.push(bucket[i]);
         indices.set(type, i + 1);
@@ -96,6 +114,10 @@ export function planLesson(input: LessonPlanInput): LessonCandidate[] {
       }
       if (result.length >= size) break;
     }
+    // Floor slots can absorb all of round one's quotas; only a full round
+    // with untouched quotas means the buckets are exhausted.
+    if (firstRound) progressed = true;
+    firstRound = false;
   }
 
   return result;

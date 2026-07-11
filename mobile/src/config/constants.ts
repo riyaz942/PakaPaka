@@ -104,6 +104,18 @@ export const COGNITIVE_LOAD_HISTORY_WINDOW = 7;
  */
 export const COGNITIVE_LOAD_THRESHOLD_ADAPTATION_GAIN = 0.35;
 
+/**
+ * Daily lesson allowance = lesson batch size × this multiplier
+ * (15/day relaxed, 30/day intense). Advisory — "Learn anyway" bypasses it.
+ */
+export const DAILY_LESSON_BATCHES = 3;
+
+/** Review backlog size at which the daily lesson allowance starts shrinking. */
+export const LESSON_BACKLOG_THROTTLE_START = 50;
+
+/** Review backlog size at which the daily lesson allowance reaches zero. */
+export const LESSON_BACKLOG_THROTTLE_FULL = 150;
+
 /** Priority nudge applied to graph-related items after a correct answer. */
 export const RELATED_ITEM_BOOST_DELTA = 0.15;
 

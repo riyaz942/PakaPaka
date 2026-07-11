@@ -18,7 +18,10 @@ import { safeBack } from '@/utils/safeBack';
  */
 export default function LessonScreen() {
   const { userDb } = useDatabase();
-  const { items, level, isLoading } = useLessonPlan();
+  const [learnAnyway, setLearnAnyway] = useState(false);
+  const { items, level, isLoading, capReached } = useLessonPlan({
+    ignoreAllowance: learnAnyway,
+  });
   const [index, setIndex] = useState(0);
   const [saveError, setSaveError] = useState<string | null>(null);
 
@@ -46,6 +49,29 @@ export default function LessonScreen() {
     return (
       <SafeAreaView className="flex-1 items-center justify-center bg-background">
         <ActivityIndicator accessibilityLabel="Building your lesson" />
+      </SafeAreaView>
+    );
+  }
+
+  if (items.length === 0 && capReached) {
+    return (
+      <SafeAreaView className="flex-1 bg-background px-space-lg">
+        <View className="flex-1 justify-center gap-space-md">
+          <Text className="text-title text-primary">
+            You&apos;ve learned enough today
+          </Text>
+          <Text className="text-body text-secondary">
+            You&apos;ve hit today&apos;s lesson limit. Come back tomorrow, or clear some
+            reviews first — new items land gentler on a clear queue.
+          </Text>
+          <Button
+            label="Learn anyway"
+            variant="secondary"
+            onPress={() => setLearnAnyway(true)}
+            testID="lesson-learn-anyway"
+          />
+          <Button label="Back" variant="secondary" onPress={safeBack} />
+        </View>
       </SafeAreaView>
     );
   }

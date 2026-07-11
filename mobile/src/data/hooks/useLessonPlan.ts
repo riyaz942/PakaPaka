@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { computeDailyAllowance, type DailyAllowance } from '@/core/lesson/lessonAllowance';
 import {
   lessonSizeForIntensity,
   planLesson,
@@ -13,19 +14,30 @@ import {
   listItemsByLevelAndType,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { todayKey } from '@/data/user/cognitiveLoadRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
+import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
   getSessionIntensity,
   getStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
-import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
+import { getDueSrsStates, getSrsStatesForItems } from '@/data/user/srsStateRepository';
 
 export type LessonPlan = {
   items: LessonCandidate[];
   /** Level the lesson draws from — advances past the starting level once it is exhausted. */
   level: JLPTLevel | null;
   size: number;
+  /** Today's lesson allowance (advisory daily cap on new items). */
+  allowance: DailyAllowance;
+  /**
+   * True when new items exist but the daily allowance blocks them — distinct
+   * from items being empty because nothing new is available.
+   */
+  capReached: boolean;
 };
+
+const EMPTY_ALLOWANCE: DailyAllowance = { total: 0, remaining: 0 };
 
 function buildPlanForLevel(
   curriculumDb: SQLiteDatabase,
@@ -70,14 +82,31 @@ function buildPlanForLevel(
   });
 }
 
+export type UseLessonPlanOptions = {
+  /** Bypass the daily allowance ("Learn anyway"). The cap is advisory, not a hard block. */
+  ignoreAllowance?: boolean;
+};
+
 /**
  * Auto-generates today's lesson from the user's level, session intensity, and
  * dependency graph. When the starting level runs out of new items, the plan
  * advances to the next harder level automatically.
+ *
+ * The batch is clamped to the remaining daily allowance so repeated visits
+ * can't binge the whole curriculum in one evening.
  */
-export function useLessonPlan(): LessonPlan & { isLoading: boolean; refetch: () => void } {
+export function useLessonPlan(
+  options: UseLessonPlanOptions = {},
+): LessonPlan & { isLoading: boolean; refetch: () => void } {
+  const { ignoreAllowance = false } = options;
   const { curriculumDb, userDb } = useDatabase();
-  const [plan, setPlan] = useState<LessonPlan>({ items: [], level: null, size: 0 });
+  const [plan, setPlan] = useState<LessonPlan>({
+    items: [],
+    level: null,
+    size: 0,
+    allowance: EMPTY_ALLOWANCE,
+    capReached: false,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [fetchCount, setFetchCount] = useState(0);
 
@@ -85,12 +114,24 @@ export function useLessonPlan(): LessonPlan & { isLoading: boolean; refetch: () 
     setIsLoading(true);
     try {
       const startingLevel = getStartingJlptLevel(userDb) ?? 'N5';
-      const size = lessonSizeForIntensity(getSessionIntensity(userDb));
+      const intensity = getSessionIntensity(userDb);
+      const size = lessonSizeForIntensity(intensity);
+
+      const allowance = computeDailyAllowance({
+        intensity,
+        itemsStartedToday: getLessonItemsStartedOn(userDb, todayKey()),
+        reviewsDueCount: getDueSrsStates(userDb).length,
+      });
+      const effectiveSize = ignoreAllowance
+        ? size
+        : Math.min(size, allowance.remaining);
 
       const startIndex = Math.max(0, JLPT_LEVELS.indexOf(startingLevel));
       let resolvedLevel: JLPTLevel = startingLevel;
       let items: LessonCandidate[] = [];
 
+      // Plan with the full batch size to learn whether new items exist at all,
+      // then re-plan at the clamped size so type interleaving stays correct.
       for (let i = startIndex; i < JLPT_LEVELS.length; i++) {
         const level = JLPT_LEVELS[i];
         items = buildPlanForLevel(curriculumDb, userDb, level, size);
@@ -100,13 +141,27 @@ export function useLessonPlan(): LessonPlan & { isLoading: boolean; refetch: () 
         }
       }
 
-      setPlan({ items, level: resolvedLevel, size });
+      const capReached = items.length > 0 && effectiveSize < Math.min(size, items.length);
+      if (effectiveSize < size) {
+        items =
+          effectiveSize > 0
+            ? buildPlanForLevel(curriculumDb, userDb, resolvedLevel, effectiveSize)
+            : [];
+      }
+
+      setPlan({ items, level: resolvedLevel, size, allowance, capReached });
     } catch {
-      setPlan({ items: [], level: null, size: 0 });
+      setPlan({
+        items: [],
+        level: null,
+        size: 0,
+        allowance: EMPTY_ALLOWANCE,
+        capReached: false,
+      });
     } finally {
       setIsLoading(false);
     }
-  }, [curriculumDb, userDb, fetchCount]);
+  }, [curriculumDb, userDb, fetchCount, ignoreAllowance]);
 
   const refetch = useCallback(() => {
     setFetchCount((count) => count + 1);
