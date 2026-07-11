@@ -4,24 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-A free, open-source, cross-platform mobile app (Android & iOS) that replaces the fragmented multi-tool Japanese learning stack. It targets WaniKani-depth kanji (strict radical→kanji→vocab dependency graph, multiple meanings, onyomi/kunyomi, mnemonics, burn stages), Bunpro-depth grammar (structured grammar points, conjugation-aware validation, 5–10 example sentences), and adds a weakness detection engine (`priority = fsrs_score × 0.7 + weakness_score × 0.3`), visible cross-domain reinforcement, time compression display, and seamless WaniKani/Bunpro/Anki import. Fully offline, all data on-device, no accounts, no subscriptions.
+Offline-first Expo (React Native) Japanese learning app for Android & iOS. Dual SQLite databases, no accounts, no subscriptions. Content model: radical → kanji → vocabulary dependency graph plus structured grammar; SRS via FSRS with weakness biasing.
 
-Historical planning artifacts (PRD, architecture, epics) live in `_bmad-output/`. They document how the app was designed and are reference material, not an active tracker.
+- Active follow-ups / playtest work: `docs/feedback/` (see also `docs/working-history.md`)
+- Historical planning artifacts (PRD, architecture, epics): `_bmad-output/` — reference only, not an active tracker
 
-## Feature status
+## Hard conventions
 
-The planned scope is fully implemented. All major surfaces are shipped and covered by tests:
-
-- **Foundation** — Expo app, NativeWind design tokens, dual SQLite databases, five-tab shell, curriculum validation/compile pipeline, curriculum OTA update, cached radical mnemonic images.
-- **Onboarding** — JLPT starting-level select, session intensity, per-item study status, bulk mark-known, completion gate to the main tabs.
-- **Import** — WaniKani v2, Bunpro, and local Anki `.apkg`, each mapped to FSRS state, with an import summary and unmatched-item transparency.
-- **Learn tab** — JLPT hub, radical/kanji/vocabulary/grammar item detail, reading passages with comprehension prompts, dependency-graph unlock status, personal mnemonics editor.
-- **Lessons** — auto-planned, dependency-gated lesson sessions (`lesson/`) that interleave content types and seed SRS state on completion.
-- **SRS review engine** — weakness-biased, content-interleaved review queue (`review/`), FSRS scheduling, progressive hints, cross-domain reinforcement display, and cognitive-load-aware session pacing.
-- **Stats / engagement** — weakness trends, SRS stage breakdown, cognitive-load ring and daily threshold, streak tracking with opt-in notifications, post-session summary.
-- **Accessibility** — screen-reader/keyboard/input support and visual accessibility, enforced by automated CI checks.
-
-Known follow-up work and open bugs surfaced from playtesting are tracked in `docs/feedback/`.
+- **Result type** — Fallible operations return `Result<T, AppError>` from `src/types/result.types.ts`. Never throw across async boundaries; propagate the result.
+- **Dual DB** — `curriculum.db` is read-only content; `user.db` is mutable user state. Never write to `curriculum.db`.
+- **Styling** — Use semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). Do not use the deprecated `Colors` object in `src/constants/theme.ts` or raw hex in new code.
+- **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.
+- **Do not** treat `_bmad-output/` as backlog; check `docs/feedback/` before assuming a gap is intentional.
 
 ## Repository layout
 
@@ -39,8 +33,8 @@ mobile/              # Expo (React Native) app — all app code lives here
     hooks/           # App-level hooks (onboarding redirect, orientation lock)
     utils/           # Pure utilities (cn, color scheme resolution)
     lib/             # Thin wrappers around Expo APIs (safe-updates-metadata)
-docs/              # Working docs, design notes, and playtest feedback plans
-_bmad-output/      # Historical planning artifacts (PRD, architecture, epics)
+docs/                # Working docs, design notes, and playtest feedback plans
+_bmad-output/        # Historical planning artifacts (PRD, architecture, epics)
 ```
 
 ## Commands
@@ -92,16 +86,10 @@ Both handles are initialized in `src/data/database.ts::initializeDatabases()` an
 - `OnboardingRedirect` provider reads `user.db` preferences and redirects to the correct onboarding step on every navigation state change.
 
 ### Styling (NativeWind v4)
-Use semantic Tailwind tokens defined in `tailwind.config.js` (`bg-background`, `text-primary`, `text-secondary`, `border-border`, `text-feedback-info`, SRS stage colors `srs-apprentice` / `srs-guru` / `srs-master` / `srs-enlightened` / `srs-burned`, content-type accents `content-radical` / `content-kanji` / `content-vocabulary` / `content-grammar`). The deprecated `Colors` object in `src/constants/theme.ts` and raw hex values are for legacy components only — do not use in new code.
+Semantic Tailwind tokens live in `tailwind.config.js`: `bg-background`, `text-primary`, `text-secondary`, `border-border`, `text-feedback-info`, SRS stage colors `srs-apprentice` / `srs-guru` / `srs-master` / `srs-enlightened` / `srs-burned`, content-type accents `content-radical` / `content-kanji` / `content-vocabulary` / `content-grammar`.
 
-Typography scale: `text-display`, `text-title-lg`, `text-title`, `text-body-lg`, `text-body`, `text-body-sm`, `text-caption`, `text-overline`.
+Typography: `text-display`, `text-title-lg`, `text-title`, `text-body-lg`, `text-body`, `text-body-sm`, `text-caption`, `text-overline`.
 Spacing: `space-xs` (4px) through `space-2xl` (48px). Radii: `radius-sm` / `radius-md` / `radius-lg`.
-
-### Path alias
-`@/*` resolves to `mobile/src/*`. `@/assets/*` resolves to `mobile/assets/*`.
-
-### Result type
-All fallible operations return `Result<T, AppError>` from `src/types/result.types.ts` — `{ ok: true; value: T }` or `{ ok: false; error: AppError }`. Never throw across async boundaries; propagate the result type.
 
 ### Data layer patterns
 - Repositories live under `src/data/curriculum/` (curriculum reads) and `src/data/user/` (user writes).
@@ -109,7 +97,7 @@ All fallible operations return `Result<T, AppError>` from `src/types/result.type
 - `src/core/import/` contains pure mappers (WaniKani, Bunpro, Anki) that convert external SRS history to FSRS format. `src/data/import/` contains the network/file-system clients that feed them.
 
 ### SRS review engine
-The review queue builder (`src/core/srs/queueBuilder.ts`, `src/data/hooks/useReviewQueue.ts`) combines FSRS scheduling, weakness biasing (`0.7 × fsrs + 0.3 × weakness`), content-type interleaving, and cognitive-load weighting. Reinforcement display ("食べる ← you learned this yesterday") is resolved in `src/core/content/reinforcementResolver.ts` from related-item SRS snapshots. The review loop targets <100ms feedback between items. Session orchestration lives in `src/providers/ReviewSessionProvider.tsx`; answer evaluation is in `src/core/answer/` (meaning/reading/grammar evaluators) and FSRS grading in `src/core/srs/fsrsScheduler.ts`.
+Queue builder: `src/core/srs/queueBuilder.ts`, `src/data/hooks/useReviewQueue.ts` — FSRS scheduling, weakness biasing (`0.7 × fsrs + 0.3 × weakness`), content-type interleaving, cognitive-load weighting. Reinforcement: `src/core/content/reinforcementResolver.ts`. Session orchestration: `src/providers/ReviewSessionProvider.tsx`. Answer evaluation: `src/core/answer/`. FSRS grading: `src/core/srs/fsrsScheduler.ts`.
 
 ## Testing
 
@@ -119,9 +107,7 @@ Tests live alongside source files (`.test.ts` / `.test.tsx`) and in `mobile/__te
 
 `mobile/assets/curriculum-seed/curriculum.db` is tracked with Git LFS. Run `git lfs install && git lfs pull` after a fresh clone.
 
-## CI
+## CI policy
 
-- `.github/workflows/ci.yml` — lint, typecheck, jest on `mobile/`
-- `.github/workflows/compile-curriculum.yml` — validate-schema + compile-curriculum when curriculum sources change
-- `npm run check-contrast` (repo root) — WCAG 2.1 AA token contrast validation for dark and light palettes (`scripts/check-contrast.ts`). **Policy:** a failing pair blocks merge unless reclassified as `exempt` in the pairing manifest with a one-line rationale (decorative, disabled, or non-text per WCAG).
-- `npm run lint` (`mobile/`) — Expo lint enforces `eslint-plugin-react-native-a11y` cross-platform (`basic`) rules on JSX/TSX. **Policy:** a failing rule blocks merge (same gate as `check-contrast`); suppress only with a one-line rationale comment.
+- `npm run check-contrast` (repo root) — WCAG 2.1 AA token contrast. Failing pairs block merge unless reclassified as `exempt` in the pairing manifest with a one-line rationale (decorative, disabled, or non-text per WCAG).
+- `npm run lint` (`mobile/`) — enforces `eslint-plugin-react-native-a11y` cross-platform (`basic`) rules. Failing rules block merge; suppress only with a one-line rationale comment.
