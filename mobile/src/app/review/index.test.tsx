@@ -377,3 +377,91 @@ describe('ReviewScreen accessibility', () => {
     });
   });
 });
+
+describe('ReviewScreen — hints never affect grading (Plan 10.2)', () => {
+  function makeHintedGrammarItem(): ReviewItem {
+    return makeReviewItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      clozeAnswer: 'は',
+      clozeNudge: "Marks the topic — what's being talked about.",
+      clozeEnglish: 'I am a student.',
+      inputMode: 'type_in',
+      mcOptions: null,
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+      srsState: { ...makeReviewItem().srsState, srsStageLabel: 'guru' },
+    });
+  }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockCurrentIndex = 0;
+    mockCursor = 0;
+    mockCurrentItem = makeHintedGrammarItem();
+
+    jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+      cb(0);
+      return 0;
+    });
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    jest.spyOn(AccessibilityInfo, 'announceForAccessibility').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('revealing both hint rungs then answering correctly still grades Good (3)', async () => {
+    const { unmount } = render(<ReviewScreen />);
+
+    fireEvent.press(screen.getByLabelText('Hint'));
+    expect(screen.getByText("Marks the topic — what's being talked about.")).toBeTruthy();
+    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
+    expect(screen.getByText('I am a student.')).toBeTruthy();
+
+    // Opening hints alone must never grade or record weakness.
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'は');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(screen.getByLabelText('Correct, answer: は')).toBeTruthy();
+
+    // Unmount flushes the pending auto-advance grade, same as the timer would.
+    unmount();
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+  });
+
+  it('revealing hints before a wrong answer still grades Again (1), not softer', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.press(screen.getByLabelText('Hint'));
+    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'を');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Continue' })).toBeTruthy();
+    });
+    // The grade lands on Continue, exactly as without hints — nothing earlier.
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(1);
+  });
+});
