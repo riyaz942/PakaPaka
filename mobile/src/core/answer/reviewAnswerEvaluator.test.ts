@@ -98,6 +98,28 @@ describe('evaluateReviewAnswer', () => {
     });
     expect(evaluateReviewAnswer(item, 'です').result).toBe('correct');
   });
+
+  it('grades grammar cloze input against the chunk, never the full sentence (Plan 07 invariant)', () => {
+    const item = makeItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      clozePrompt: '私＿＿＿学生です。',
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: {
+          structure: 'Noun + は + comment',
+          conjugationRules: {},
+          acceptedForms: ['は'],
+        },
+      },
+    });
+    // The chunk alone is correct…
+    expect(evaluateReviewAnswer(item, 'は').result).toBe('correct');
+    // …the full sentence (with or without the blank filled) is not.
+    expect(evaluateReviewAnswer(item, '私は学生です。').result).toBe('incorrect');
+  });
 });
 
 describe('gradeForResult', () => {

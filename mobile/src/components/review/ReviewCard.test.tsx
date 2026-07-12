@@ -52,11 +52,13 @@ describe('ReviewCard — prompting state', () => {
     expect(screen.getByText('Meaning')).toBeTruthy();
   });
 
-  it('shows "Production" mode label for grammar production', () => {
+  it('shows "Grammar" mode label for grammar production (never "Production" or "Reading")', () => {
     render(
       <ReviewCard item={makeItem({ itemType: 'grammar', promptType: 'production' })} state="prompting" />,
     );
-    expect(screen.getByText('Production')).toBeTruthy();
+    expect(screen.getByText('Grammar')).toBeTruthy();
+    expect(screen.queryByText('Production')).toBeNull();
+    expect(screen.queryByText('Reading')).toBeNull();
   });
 
   it('hides meanings during reading prompt', () => {
@@ -103,6 +105,53 @@ describe('ReviewCard — prompting state', () => {
       />,
     );
     expect(screen.getByText('私は＿します')).toBeTruthy();
+  });
+});
+
+describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
+  const waTopic = (overrides: Partial<ReviewItem> = {}) =>
+    makeItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+      ...overrides,
+    });
+
+  it('prompts with the cloze sentence, never the bare particle', () => {
+    render(<ReviewCard item={waTopic()} state="prompting" />);
+    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
+    expect(screen.queryByText('は')).toBeNull();
+  });
+
+  it('does not show English on the cloze prompt', () => {
+    render(<ReviewCard item={waTopic()} state="prompting" />);
+    expect(screen.queryByText(/topic marker/)).toBeNull();
+    expect(screen.queryByText(/I am a student/)).toBeNull();
+  });
+
+  it('falls back to primaryForm when no cloze is available', () => {
+    render(<ReviewCard item={waTopic({ clozePrompt: null })} state="prompting" />);
+    expect(screen.getByText('は')).toBeTruthy();
+  });
+
+  it('shows the cloze sentence (not the bare form) on wrong_script', () => {
+    render(<ReviewCard item={waTopic()} state="wrong_script" />);
+    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
+    expect(screen.queryByText('は')).toBeNull();
+  });
+
+  it('reveals the grammar chunk as "Answer" (not "Reading") on correct', () => {
+    render(<ReviewCard item={waTopic()} state="correct" />);
+    expect(screen.getByText('Answer: は')).toBeTruthy();
+    expect(screen.queryByText(/Reading:/)).toBeNull();
+    expect(screen.getByLabelText('Correct, answer: は')).toBeTruthy();
   });
 });
 

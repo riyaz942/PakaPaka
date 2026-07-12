@@ -53,12 +53,17 @@ const MODE_LABEL_CLASS: Record<PromptType, string> = {
 
 /**
  * Resolves the label + value revealed on a correct answer so the displayed text
- * and the screen-reader announcement always agree. Reading/production prompts
+ * and the screen-reader announcement always agree. Grammar reveals the graded
+ * chunk as "Answer" (never "Reading" — Plan 07); reading/production prompts
  * reveal the actual accepted reading; otherwise (or when no reading is seeded)
  * fall back to the meanings.
  */
 export function resolveCorrectReveal(item: ReviewItem): { label: string; value: string } {
-  const { promptType, displayMeaning, answerKey } = item;
+  const { itemType, promptType, displayMeaning, answerKey } = item;
+  if (itemType === 'grammar') {
+    const form = answerKey?.grammar?.acceptedForms?.[0];
+    if (form) return { label: 'Answer', value: form };
+  }
   if (promptType === 'reading' || promptType === 'production') {
     const reading = answerKey?.acceptedReadings?.[0];
     if (reading) return { label: 'Reading', value: reading };
@@ -86,6 +91,13 @@ export function ReviewCard({
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
+
+  // Grammar cloze contract (Plan 07): prompt with the blanked sentence/frame,
+  // never the bare form (for particles the form IS the answer). Label the mode
+  // "Grammar", not "Production", to stop implying kanji-style drills.
+  const isGrammarCloze = itemType === 'grammar' && !!item.clozePrompt;
+  const promptText = isGrammarCloze ? item.clozePrompt! : primaryForm;
+  const modeLabel = itemType === 'grammar' ? 'Grammar' : MODE_LABEL[promptType];
 
   if (state === 'evaluating') {
     return null;
@@ -134,8 +146,9 @@ export function ReviewCard({
         accessible
         accessibilityLabel={WRONG_SCRIPT_NUDGE[promptType]}
         className="gap-space-md items-center">
-        <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
-          {primaryForm}
+        <Text
+          className={`${isGrammarCloze ? 'text-title-lg' : 'text-display'} text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+          {promptText}
         </Text>
         <Text className="text-body-lg text-feedback-warning text-center">
           {WRONG_SCRIPT_NUDGE[promptType]}
@@ -168,11 +181,12 @@ export function ReviewCard({
   return (
     <View className="gap-space-md w-full items-center">
       <Text className={`text-body-lg font-semibold ${MODE_LABEL_CLASS[promptType]}`}>
-        {MODE_LABEL[promptType]}
+        {modeLabel}
       </Text>
 
-      <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
-        {primaryForm}
+      <Text
+        className={`${isGrammarCloze ? 'text-title-lg' : 'text-display'} text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+        {promptText}
       </Text>
 
       <SRSStageIndicator stage={srsState.srsStageLabel} />

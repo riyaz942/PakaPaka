@@ -6,6 +6,7 @@ import { deriveMeaningCandidates } from '@/core/answer/meaningEvaluator';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ReinforcementSrsSnapshot } from '@/core/content/content.types';
 import { resolveReinforcement } from '@/core/content/reinforcementResolver';
+import { buildGrammarCloze } from '@/core/grammar/clozeBuilder';
 import type { ReviewAnswerKey, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { buildReviewQueue } from '@/core/srs/queueBuilder';
 import type { QueueInputItem } from '@/core/srs/queueBuilder';
@@ -14,6 +15,7 @@ import {
   getRelatedItemsForItems,
   getRequiredParentsForItems,
   getAcceptedAnswers,
+  getExampleSentences,
   getKanjiReadings,
   getGrammarRule,
 } from '@/data/curriculum/itemRepository';
@@ -214,6 +216,18 @@ export function useReviewQueue(): UseReviewQueueResult {
           synonymMap.get(srsState.itemId) ?? [],
         );
 
+        // Grammar cloze contract (Plan 07): the review prompt is a sentence
+        // with the grammar chunk blanked, never the bare form itself.
+        let clozePrompt: string | null = null;
+        if (curriculumItem.itemType === 'grammar' && answerKey.grammar) {
+          const cloze = buildGrammarCloze({
+            exampleSentences: getExampleSentences(curriculumDb, srsState.itemId),
+            acceptedForms: answerKey.grammar.acceptedForms,
+            structure: answerKey.grammar.structure,
+          });
+          clozePrompt = cloze?.prompt ?? null;
+        }
+
         queueInputs.push({
           srsState,
           curriculumItem,
@@ -222,6 +236,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           studyStatus,
           personalMnemonic,
           answerKey,
+          clozePrompt,
           boost: boostMap.get(srsState.itemId) ?? 0,
           relatedItems,
           reinforcementLink: reinforcementLinks[0] ?? null,

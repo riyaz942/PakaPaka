@@ -89,12 +89,12 @@ Lesson item view can keep showing `primaryForm` + meaning + examples (teaching �
 
 ## Acceptance criteria
 
-- [ ] Reviewing `は` never shows a prompt whose only content is `は` with expected answer `は`.
-- [ ] Grammar review prompt is a JP sentence (or structure frame) with a blank; answer is the grammar chunk.
-- [ ] Mode label is not "Reading"; prefer "Grammar" over "Production".
-- [ ] `evaluateGrammarAnswer` still accepts `は` / `が` / conjugated forms as today.
-- [ ] Items without example sentences degrade to structure-frame cloze, never to bare particle.
-- [ ] Unit tests cover: particle cloze derivation, longest-match blanking, no-example fallback.
+- [x] Reviewing `は` never shows a prompt whose only content is `は` with expected answer `は`.
+- [x] Grammar review prompt is a JP sentence (or structure frame) with a blank; answer is the grammar chunk.
+- [x] Mode label is not "Reading"; prefer "Grammar" over "Production".
+- [x] `evaluateGrammarAnswer` still accepts `は` / `が` / conjugated forms as today.
+- [x] Items without example sentences degrade to structure-frame cloze, never to bare particle.
+- [x] Unit tests cover: particle cloze derivation, longest-match blanking, no-example fallback.
 
 ## Files touched (expected)
 

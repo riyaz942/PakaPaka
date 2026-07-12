@@ -50,6 +50,13 @@ export type ReviewItem = {
   meanings: string[];
   srsState: SRSState;
   promptType: 'reading' | 'meaning' | 'production';
+  /**
+   * Grammar cloze prompt (Plan 07): a JP sentence or structure frame with the
+   * grammar chunk blanked. When present, the review card shows this instead of
+   * primaryForm so a particle is never prompted with itself. Grading still
+   * targets the chunk (answerKey.grammar), never the full sentence.
+   */
+  clozePrompt?: string | null;
   mnemonic?: string | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;

@@ -40,6 +40,8 @@ export type QueueInputItem = {
   studyStatus: ContentStudyStatus | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;
+  /** Grammar cloze prompt derived at load time; null/absent for non-grammar items. */
+  clozePrompt?: string | null;
   /** Bounded ordering nudge from related-item boosts; default 0 */
   boost?: number;
   relatedItems?: RelatedItem[];
@@ -153,6 +155,7 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
       item.srsState,
       item.curriculumItem.primaryForm,
     ),
+    clozePrompt: item.clozePrompt ?? null,
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
     answerKey: item.answerKey,

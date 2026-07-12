@@ -200,6 +200,18 @@ describe('buildReviewQueue', () => {
     expect(result[0].itemId).toBe('2');
   });
 
+  it('passes clozePrompt through to the review item (grammar cloze contract)', () => {
+    const items = [
+      makeQueueItem('1', 'grammar', PAST, { clozePrompt: '私＿＿＿学生です。' }),
+      makeQueueItem('2', 'kanji', PAST),
+    ];
+    const result = buildReviewQueue(items, { now: NOW });
+    const grammar = result.find((i) => i.itemId === '1')!;
+    const kanji = result.find((i) => i.itemId === '2')!;
+    expect(grammar.clozePrompt).toBe('私＿＿＿学生です。');
+    expect(kanji.clozePrompt).toBeNull();
+  });
+
   it('preserves existing ordering when boost is omitted (default 0)', () => {
     const items = [
       makeQueueItem('1', 'vocabulary', new Date('2026-06-26T01:00:00Z')),
