@@ -9,7 +9,7 @@ Last checked against the codebase: **2026-07-11**
 | Status | Count |
 | --- | ---: |
 | Done | 8 |
-| Not done | 3 |
+| Not done | 4 |
 | Index only | 1 |
 
 ---
@@ -59,11 +59,21 @@ Post-MVP design note only (Epic 8 / FR38–45-PM). No app work by design.
 ### [06 — UI navigation & polish](./feedback/06-ui-navigation-and-polish.md)
 New playtest plan: nav header / status bar, back icon, keyboard vs mnemonic input, Save contrast, Learn detail scroll, auto-hide chrome.
 
+### [07–10 — Grammar review redesign](./feedback/07-grammar-review-overview.md)
+From brainstorm 2026-07-11: universal JP cloze, stage ladder (MC → type-in → no EN), cloze curriculum variants, hints + near-miss. Not implemented yet.
+
+| Plan | Focus |
+| --- | --- |
+| [07 cloze contract](./feedback/07-grammar-cloze-contract.md) | Kill は→は; blank = variable chunk |
+| [08 stage ladder](./feedback/08-grammar-stage-ladder.md) | Apprentice MC; Guru+ type-in; Enlightened no EN |
+| [09 curriculum](./feedback/09-grammar-cloze-curriculum.md) | Variants + families (content long pole) |
+| [10 hints / near-miss](./feedback/10-grammar-hints-and-nearmiss.md) | Nudge→EN; incomplete = incorrect |
+
 ---
 
 ## Index
 
-- [Feedback plans README](./feedback/README.md) — index for plans 01–06
+- [Feedback plans README](./feedback/README.md) — index for plans 01–10
 
 ---
 
