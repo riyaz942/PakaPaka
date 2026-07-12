@@ -17,6 +17,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/common/Button';
 import { DailyThresholdNotice } from '@/components/engagement';
 import {
+  GrammarMcOptions,
   ReviewCard,
   resolveCorrectReveal,
   SessionExitSheet,
@@ -43,6 +44,9 @@ const PLACEHOLDER: Record<PromptType, string> = {
   meaning: 'Type the meaning in English...',
   production: 'Type the conjugated form in romaji...',
 };
+
+// Grammar prompts are cloze (Plan 07) — the field wants the missing chunk.
+const GRAMMAR_PLACEHOLDER = 'Type the missing piece...';
 
 export default function ReviewScreen() {
   const {
@@ -78,7 +82,8 @@ export default function ReviewScreen() {
   const [synonymState, setSynonymState] = useState<AddSynonymOutcome | { status: 'idle' }>({
     status: 'idle',
   });
-  const [hintsUsed, setHintsUsed] = useState(0);
+  // Near-miss teaching flag for the incorrect reveal (Plan 10).
+  const [incompleteAnswer, setIncompleteAnswer] = useState(false);
   const inputRef = useRef<WanaKanaInputRef>(null);
   const resultRef = useRef<RNView>(null);
   const continueButtonRef = useRef<RNView>(null);
@@ -136,7 +141,7 @@ export default function ReviewScreen() {
     setStageTransition(null);
     setRejectedAnswer('');
     setSynonymState({ status: 'idle' });
-    setHintsUsed(0);
+    setIncompleteAnswer(false);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
       clearTimeout(autoAdvanceTimer.current);
@@ -207,24 +212,33 @@ export default function ReviewScreen() {
     router.replace('/review/summary' as Href);
   }, [isComplete]);
 
-  const handleSubmit = useCallback(() => {
+  const submitAnswer = useCallback((submittedAnswer: string, options?: { fromMc?: boolean }) => {
     if (!currentItem || !inputEditable) return;
-    if (!answerText.trim()) return;
+    if (!submittedAnswer.trim()) return;
     // Guard against a second submit (e.g. rapid double return-key) racing the
     // state-derived `inputEditable` flag before it re-renders.
     if (isSubmittingRef.current) return;
     isSubmittingRef.current = true;
 
     setCardState('evaluating');
-    const evaluation = evaluateReviewAnswer(currentItem, answerText);
+    let evaluation = evaluateReviewAnswer(currentItem, submittedAnswer);
+
+    // MC has no "try again" affordance: a picked option is a committed answer,
+    // so the non-terminal typo/wrong_script states collapse to incorrect.
+    if (
+      options?.fromMc &&
+      (evaluation.result === 'typo' || evaluation.result === 'wrong_script')
+    ) {
+      evaluation = { result: 'incorrect' };
+    }
 
     if (currentItem.promptType !== 'meaning') {
-      AccessibilityInfo.announceForAccessibility(answerText);
+      AccessibilityInfo.announceForAccessibility(submittedAnswer);
     }
 
     if (evaluation.result === 'correct') {
       setCardState('correct');
-      const grade = gradeForResult(evaluation.result, { hintsUsed }) ?? 3;
+      const grade = gradeForResult(evaluation.result) ?? 3;
       setStageTransition(peekStageTransition(grade));
       pendingGradeRef.current = grade;
       autoAdvanceTimer.current = setTimeout(() => {
@@ -257,10 +271,15 @@ export default function ReviewScreen() {
 
     const answer = evaluation.displayAnswer ?? currentItem.displayMeaning;
     setDisplayAnswer(answer);
-    setRejectedAnswer(answerText.trim());
+    setRejectedAnswer(submittedAnswer.trim());
+    setIncompleteAnswer(evaluation.feedbackKind === 'incomplete');
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
-  }, [answerText, currentItem, gradeCurrentItem, hintsUsed, inputEditable, peekStageTransition, recordTypoForCurrentItem]);
+  }, [currentItem, gradeCurrentItem, inputEditable, peekStageTransition, recordTypoForCurrentItem]);
+
+  const handleSubmit = useCallback(() => {
+    submitAnswer(answerText);
+  }, [answerText, submitAnswer]);
 
   function handleContinueIncorrect() {
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
@@ -369,6 +388,14 @@ export default function ReviewScreen() {
   const inputMode =
     currentItem.promptType === 'meaning' ? 'english' : 'kana';
 
+  // Apprentice grammar answers by multiple choice (Plan 08). Options are
+  // built at queue time; absence means fall back to type-in.
+  const isMcCard =
+    currentItem.itemType === 'grammar' &&
+    currentItem.inputMode === 'mc' &&
+    !!currentItem.mcOptions &&
+    currentItem.mcOptions.length > 1;
+
   return (
     <SafeAreaView className="flex-1 bg-background">
       <SessionHeader
@@ -395,9 +422,9 @@ export default function ReviewScreen() {
             state={cardState}
             displayAnswer={displayAnswer}
             stageTransition={stageTransition}
-            onHintReveal={setHintsUsed}
             resultRef={resultRef}
             revealDetail={getRevealDetail(currentItem.itemId)}
+            incompleteAnswer={incompleteAnswer}
             rejectedAnswer={rejectedAnswer}
             synonymState={synonymState}
             onAddSynonym={handleAddSynonym}
@@ -412,6 +439,28 @@ export default function ReviewScreen() {
               onPress={handleContinueIncorrect}
               variant="primary"
             />
+          </View>
+        ) : isMcCard ? (
+          <View
+            className={cn(
+              'gap-space-sm px-space-md pb-space-md',
+              !inputEditable && 'opacity-50',
+            )}>
+            <GrammarMcOptions
+              key={cursor}
+              options={currentItem.mcOptions!}
+              onSelect={(option) => submitAnswer(option, { fromMc: true })}
+              disabled={!inputEditable}
+            />
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Don't know"
+              accessibilityState={{ disabled: !inputEditable }}
+              className="min-h-[44px] items-center justify-center"
+              disabled={!inputEditable}
+              onPress={handleDontKnow}>
+              <Text className="text-caption text-secondary">Don&apos;t know</Text>
+            </Pressable>
           </View>
         ) : (
           // Dim (never hide) the input while feedback is showing — the input
@@ -428,7 +477,11 @@ export default function ReviewScreen() {
               value={answerText}
               onChangeText={setAnswerText}
               onSubmit={handleSubmit}
-              placeholder={PLACEHOLDER[currentItem.promptType]}
+              placeholder={
+                currentItem.itemType === 'grammar'
+                  ? GRAMMAR_PLACEHOLDER
+                  : PLACEHOLDER[currentItem.promptType]
+              }
               editable={inputEditable}
               autoFocus={inputEditable}
             />

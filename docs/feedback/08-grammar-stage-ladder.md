@@ -89,14 +89,14 @@ Acceptance story: seed/fixture an item at apprentice → MC; advance stage in te
 
 ## Acceptance criteria
 
-- [ ] Apprentice grammar review shows 4 MC options; no text field.
-- [ ] Guru and Master grammar review shows type-in only (no MC).
-- [ ] Enlightened grammar review is type-in; English meaning cannot be revealed.
-- [ ] MC distractors never include the correct answer; preferably same family.
-- [ ] Selecting an MC option grades through `evaluateGrammarAnswer` / session provider unchanged for FSRS.
-- [ ] Non-grammar items unaffected (still meaning/reading type-in).
-- [ ] Unit tests for `resolveGrammarInputMode` and `pickGrammarDistractors`.
-- [ ] Component tests for MC vs type-in branching on `ReviewCard` / session answer area.
+- [x] Apprentice grammar review shows 4 MC options; no text field.
+- [x] Guru and Master grammar review shows type-in only (no MC).
+- [x] Enlightened grammar review is type-in; English meaning cannot be revealed.
+- [x] MC distractors never include the correct answer; preferably same family.
+- [x] Selecting an MC option grades through `evaluateGrammarAnswer` / session provider unchanged for FSRS.
+- [x] Non-grammar items unaffected (still meaning/reading type-in).
+- [x] Unit tests for `resolveGrammarInputMode` and `pickGrammarDistractors`.
+- [x] Component tests for MC vs type-in branching on `ReviewCard` / session answer area.
 
 ## Files touched (expected)
 

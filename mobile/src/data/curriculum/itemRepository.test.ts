@@ -302,6 +302,7 @@ describe('itemRepository', () => {
       structure: 'Noun + です',
       conjugationRules: { polite: true },
       acceptedForms: ['です', 'だ'],
+      family: null,
     });
     expect(getGrammarRule(db, '999')).toBeNull();
   });

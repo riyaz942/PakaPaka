@@ -8,6 +8,16 @@
       "structure": "Noun + です",
       "conjugation_rules": { "polite": true },
       "accepted_forms": ["です"],
+      "family": "copula",
+      "cloze_variants": [
+        {
+          "jp_cloze": "これは水＿＿＿。",
+          "english": "This is water.",
+          "answer": "です",
+          "nudge": "Polite copula — 'is / am / are' closing the sentence.",
+          "sort_order": 0
+        }
+      ],
       "vocabulary_slugs": ["ichi-v"]
     }
   ]

@@ -57,6 +57,25 @@ export type ReviewItem = {
    * targets the chunk (answerKey.grammar), never the full sentence.
    */
   clozePrompt?: string | null;
+  /**
+   * The specific chunk this cloze blanks (authored variant answer, Plan 09).
+   * Falls back to answerKey.grammar.acceptedForms[0] when absent.
+   */
+  clozeAnswer?: string | null;
+  /** Hint rung 1 (Plan 10): short pedagogical poke, allowed at every stage. */
+  clozeNudge?: string | null;
+  /** Hint rung 2 (Plan 10): English sentence/meaning — gated off at Enlightened+. */
+  clozeEnglish?: string | null;
+  /**
+   * Grammar input mode by SRS stage (Plan 08): apprentice → 'mc',
+   * everything else → 'type_in'. Absent for non-grammar items.
+   */
+  inputMode?: 'mc' | 'type_in';
+  /**
+   * Shuffled MC options (correct answer included) when inputMode === 'mc'.
+   * Null/absent when no distractors could be built — render type-in instead.
+   */
+  mcOptions?: string[] | null;
   mnemonic?: string | null;
   personalMnemonic?: string | null;
   answerKey: ReviewAnswerKey;

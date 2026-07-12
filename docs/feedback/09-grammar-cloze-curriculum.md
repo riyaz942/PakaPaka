@@ -123,13 +123,13 @@ Once Wave A is compiled:
 
 ## Acceptance criteria
 
-- [ ] Schema validates `family` + `cloze_variants` shape.
-- [ ] Compile writes variants into SQLite; app reads them for reviews.
-- [ ] Same grammar point shows different sentences across reviews (with ≥2 variants seeded).
-- [ ] Wave A particles never fall back to bare `primaryForm` prompts.
-- [ ] Distractor picker can query "other items with same family".
-- [ ] `npm run validate-schema` and `npm run compile-curriculum` pass.
-- [ ] Fixture grammar under `scripts/__fixtures__/` updated.
+- [x] Schema validates `family` + `cloze_variants` shape.
+- [x] Compile writes variants into SQLite; app reads them for reviews.
+- [x] Same grammar point shows different sentences across reviews (with ≥2 variants seeded).
+- [x] Wave A particles never fall back to bare `primaryForm` prompts.
+- [x] Distractor picker can query "other items with same family".
+- [x] `npm run validate-schema` and `npm run compile-curriculum` pass.
+- [x] Fixture grammar under `scripts/__fixtures__/` updated.
 
 ## Files touched (expected)
 

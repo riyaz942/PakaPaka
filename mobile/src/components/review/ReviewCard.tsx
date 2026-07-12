@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
+import { englishHintsAllowed } from '@/core/grammar/inputMode';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 
@@ -33,6 +34,8 @@ type ReviewCardProps = {
   resultRef?: Ref<View>;
   /** Prefetched full detail rendered on the incorrect reveal */
   revealDetail?: ReviewRevealDetail | null;
+  /** Near-miss flag (Plan 10): answer contained the right chunk but more than the blank wants */
+  incompleteAnswer?: boolean;
   /** The rejected answer, offered as a one-tap user synonym on the incorrect reveal */
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
@@ -61,7 +64,8 @@ const MODE_LABEL_CLASS: Record<PromptType, string> = {
 export function resolveCorrectReveal(item: ReviewItem): { label: string; value: string } {
   const { itemType, promptType, displayMeaning, answerKey } = item;
   if (itemType === 'grammar') {
-    const form = answerKey?.grammar?.acceptedForms?.[0];
+    // Prefer the chunk this cloze actually blanked (authored variant answer).
+    const form = item.clozeAnswer ?? answerKey?.grammar?.acceptedForms?.[0];
     if (form) return { label: 'Answer', value: form };
   }
   if (promptType === 'reading' || promptType === 'production') {
@@ -85,6 +89,7 @@ export function ReviewCard({
   onHintReveal,
   resultRef,
   revealDetail,
+  incompleteAnswer,
   rejectedAnswer,
   synonymState,
   onAddSynonym,
@@ -129,6 +134,7 @@ export function ReviewCard({
         item={item}
         displayAnswer={displayAnswer ?? displayMeaning}
         detail={revealDetail ?? null}
+        incompleteAnswer={incompleteAnswer}
         stageTransition={stageTransition}
         resultRef={resultRef}
         rejectedAnswer={rejectedAnswer}
@@ -169,11 +175,18 @@ export function ReviewCard({
     );
   }
 
+  // Two-rung hint ladder (Plan 10): nudge → English, with the English rung
+  // gated off at Enlightened+ (Plan 08 scaffolding gate). Interim fallbacks
+  // until authored variants cover every item: structure as the nudge, the
+  // labeled meaning as the English rung.
   const hintLevels =
     itemType === 'grammar'
       ? buildGrammarHintLevels({
-          structure: answerKey.grammar?.structure,
-          meaning: displayMeaning,
+          nudge: item.clozeNudge ?? answerKey.grammar?.structure,
+          english:
+            item.clozeEnglish ??
+            (displayMeaning ? `Meaning (hint): ${displayMeaning}` : null),
+          englishAllowed: englishHintsAllowed(srsState.srsStageLabel),
           reinforcementLink,
         })
       : [];

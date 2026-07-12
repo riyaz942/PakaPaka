@@ -3,6 +3,7 @@ import { evaluateMeaning, normalizeMeaning } from '@/core/answer/meaningEvaluato
 import { evaluateReading } from '@/core/answer/readingEvaluator';
 import { hasJapaneseScript } from '@/core/answer/scriptDetection';
 import { evaluateGrammarAnswer } from '@/core/grammar/answerEvaluator';
+import { assessGrammarNearMiss } from '@/core/grammar/nearMiss';
 import type { ReviewItem } from '@/core/srs/srs.types';
 
 /**
@@ -62,7 +63,23 @@ export function evaluateReviewAnswer(
   }
 
   if (answerKey.grammar) {
-    return evaluateGrammarAnswer(userAnswer, answerKey.grammar);
+    const evaluation = evaluateGrammarAnswer(userAnswer, answerKey.grammar);
+    // Near-miss honesty (Plan 10): an answer that contains the right chunk
+    // but more than the blank wants stays incorrect for SRS, but is flagged
+    // so the reveal can teach instead of flatly rejecting.
+    if (evaluation.result === 'incorrect') {
+      const targetForms = item.clozeAnswer
+        ? [item.clozeAnswer, ...answerKey.grammar.acceptedForms]
+        : answerKey.grammar.acceptedForms;
+      if (assessGrammarNearMiss(userAnswer, { acceptedForms: targetForms }) === 'incomplete') {
+        return {
+          ...evaluation,
+          displayAnswer: evaluation.displayAnswer ?? targetForms[0],
+          feedbackKind: 'incomplete',
+        };
+      }
+    }
+    return evaluation;
   }
 
   const evaluation = evaluateReading(userAnswer, answerKey.acceptedReadings);
@@ -77,17 +94,14 @@ export function evaluateReviewAnswer(
 }
 
 /**
- * FSRS grade mapping: correct → Good (3) or Hard (2) when hints were used;
- * incorrect → Again (1); typo and wrong_script → no grade (non-terminal).
+ * FSRS grade mapping: correct → Good (3); incorrect → Again (1); typo and
+ * wrong_script → no grade (non-terminal). Revealing hints never changes the
+ * grade — the hint ladder is scaffolding, not a penalty (Plan 10).
  */
 export function gradeForResult(
   result: EvaluationResult['result'],
-  options?: { hintsUsed?: number },
 ): 1 | 2 | 3 | null {
-  if (result === 'correct') {
-    if (options?.hintsUsed && options.hintsUsed > 0) return 2;
-    return 3;
-  }
+  if (result === 'correct') return 3;
   if (result === 'incorrect') return 1;
   return null;
 }

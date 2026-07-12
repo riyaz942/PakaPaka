@@ -1,6 +1,9 @@
 {
-  "version": "1.3.0-furigana",
-  "jlpt_levels": ["N5", "N4"],
+  "version": "1.4.0-grammar-cloze",
+  "jlpt_levels": [
+    "N5",
+    "N4"
+  ],
   "description": "JLPT N5 and N4 full-depth curriculum — radicals, kanji, vocabulary, grammar, readings, and precomputed dependency graph for bundled app import.",
   "maintainer_notes": "Bump version in this file before every content publish. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {

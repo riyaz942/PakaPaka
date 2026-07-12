@@ -57,6 +57,19 @@ describe('compile-curriculum', () => {
 
       expect(itemCount.count).toBe(4);
       expect(relationshipCount.count).toBe(2);
+
+      // Plan 09: family lands on grammar_rules, variants in their own table.
+      const rule = db
+        .prepare('SELECT family FROM grammar_rules WHERE structure = ?')
+        .get('Noun + です') as { family: string | null };
+      expect(rule.family).toBe('copula');
+
+      const variant = db
+        .prepare('SELECT jp_cloze, english, answer, nudge FROM grammar_cloze_variants')
+        .get() as { jp_cloze: string; english: string; answer: string; nudge: string };
+      expect(variant.jp_cloze).toBe('これは水＿＿＿。');
+      expect(variant.answer).toBe('です');
+      expect(variant.nudge).toContain('copula');
     } finally {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });

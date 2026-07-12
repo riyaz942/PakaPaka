@@ -162,6 +162,18 @@
         }
       }
     },
+    "grammarClozeVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jp_cloze", "english", "answer", "nudge"],
+      "properties": {
+        "jp_cloze": { "type": "string", "minLength": 1, "pattern": "＿" },
+        "english": { "type": "string", "minLength": 1 },
+        "answer": { "type": "string", "minLength": 1 },
+        "nudge": { "type": "string" },
+        "sort_order": { "type": "integer", "minimum": 0 }
+      }
+    },
     "grammarItem": {
       "type": "object",
       "additionalProperties": false,
@@ -177,6 +189,15 @@
         "accepted_forms": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "family": {
+          "type": "string",
+          "enum": ["particles", "copula", "conjugations", "connectors", "patterns"]
+        },
+        "cloze_variants": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/grammarClozeVariant" },
           "minItems": 1
         },
         "example_sentences": {

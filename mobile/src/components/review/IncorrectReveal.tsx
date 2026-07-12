@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { deriveMeaningCandidates, normalizeMeaning } from '@/core/answer/meaningEvaluator';
+import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 
@@ -21,6 +22,8 @@ type IncorrectRevealProps = {
   detail: ReviewRevealDetail | null;
   stageTransition?: StageTransition | null;
   resultRef?: Ref<View>;
+  /** Near-miss (Plan 10): the answer contained the right chunk but more than the blank wants */
+  incompleteAnswer?: boolean;
   /** The rejected answer, offered as a one-tap user synonym; empty for "Don't know" */
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
@@ -52,6 +55,7 @@ export function IncorrectReveal({
   detail,
   stageTransition,
   resultRef,
+  incompleteAnswer,
   rejectedAnswer,
   synonymState = { status: 'idle' },
   onAddSynonym,
@@ -67,6 +71,13 @@ export function IncorrectReveal({
       : [];
   const exampleSentences = detail?.exampleSentences ?? [];
 
+  // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
+  // and show the completed sentence so the blank's scope is unmistakable.
+  const isIncomplete = !!incompleteAnswer && item.itemType === 'grammar';
+  const completedSentence = isIncomplete
+    ? resolveCompletedSentence(item.clozePrompt, displayAnswer)
+    : null;
+
   const canOfferSynonym =
     Boolean(onAddSynonym) &&
     Boolean(rejectedAnswer?.trim()) &&
@@ -78,15 +89,34 @@ export function IncorrectReveal({
       <View
         ref={resultRef}
         accessible
-        accessibilityLabel={`Incorrect, correct answer is ${displayAnswer}`}
+        accessibilityLabel={
+          isIncomplete
+            ? `Close, but you need just the grammar piece: ${displayAnswer}`
+            : `Incorrect, correct answer is ${displayAnswer}`
+        }
         className="gap-space-sm items-center">
-        <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
+        {isIncomplete ? (
+          <>
+            <Text className="text-title-lg text-feedback-incorrect">✗ Not quite</Text>
+            <Text className="text-body text-feedback-warning text-center">
+              You had the right idea — we need just the grammar piece:
+            </Text>
+          </>
+        ) : (
+          <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
+        )}
         <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[item.itemType].text}`}>
-          {item.primaryForm}
+          {isIncomplete ? displayAnswer : item.primaryForm}
         </Text>
-        <Text className="text-body-lg text-primary text-center">
-          Correct answer: {displayAnswer}
-        </Text>
+        {isIncomplete ? (
+          completedSentence ? (
+            <Text className="text-body-lg text-primary text-center">{completedSentence}</Text>
+          ) : null
+        ) : (
+          <Text className="text-body-lg text-primary text-center">
+            Correct answer: {displayAnswer}
+          </Text>
+        )}
       </View>
 
       {stageTransition ? (

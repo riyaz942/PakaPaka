@@ -135,12 +135,10 @@ describe('gradeForResult', () => {
     expect(gradeForResult('typo')).toBeNull();
   });
 
-  it('maps hinted correct to Hard (2)', () => {
-    expect(gradeForResult('correct', { hintsUsed: 1 })).toBe(2);
-  });
-
-  it('maps unhinted correct to Good (3)', () => {
-    expect(gradeForResult('correct', { hintsUsed: 0 })).toBe(3);
+  it('never penalizes hint usage — correct is Good regardless of hints (Plan 10)', () => {
+    // The signature no longer accepts hint counts at all: revealing hints
+    // must not be able to change the FSRS grade.
     expect(gradeForResult('correct')).toBe(3);
+    expect(gradeForResult.length).toBe(1);
   });
 });

@@ -248,10 +248,33 @@ export type AcceptedAnswer = {
   isPrimary: boolean;
 };
 
+export type GrammarFamily =
+  | 'particles'
+  | 'copula'
+  | 'conjugations'
+  | 'connectors'
+  | 'patterns';
+
 export type GrammarRule = {
   structure: string;
   conjugationRules: Record<string, unknown>;
   acceptedForms: string[];
+  /** Distractor namespace (Plan 09); null on curriculum DBs compiled before it existed. */
+  family: GrammarFamily | null;
+};
+
+/** Authored review-specific cloze variant (Plan 09). */
+export type GrammarClozeVariant = {
+  id: string;
+  /** JP sentence with the grammar chunk replaced by ＿＿＿. */
+  jpCloze: string;
+  /** Full-sentence English — hint rung 2, never on-card by default. */
+  english: string;
+  /** The chunk the blank expects; aligns with accepted_forms. */
+  answer: string;
+  /** Short pedagogical poke — hint rung 1. */
+  nudge: string;
+  sortOrder: number;
 };
 
 export type ExampleSentence = {
@@ -367,10 +390,20 @@ export function getGrammarRule(
   db: SQLiteDatabase,
   itemId: string,
 ): GrammarRule | null {
-  const row = db.getFirstSync<GrammarRuleRow>(
-    `SELECT structure, conjugation_rules, accepted_forms FROM grammar_rules WHERE item_id = ?`,
-    Number(itemId),
-  );
+  // `family` was added in Plan 09; installed devices may still carry a
+  // curriculum.db compiled before the column existed.
+  let row: (GrammarRuleRow & { family?: string | null }) | null;
+  try {
+    row = db.getFirstSync<GrammarRuleRow & { family: string | null }>(
+      `SELECT structure, conjugation_rules, accepted_forms, family FROM grammar_rules WHERE item_id = ?`,
+      Number(itemId),
+    );
+  } catch {
+    row = db.getFirstSync<GrammarRuleRow>(
+      `SELECT structure, conjugation_rules, accepted_forms FROM grammar_rules WHERE item_id = ?`,
+      Number(itemId),
+    );
+  }
   if (!row) {
     return null;
   }
@@ -378,7 +411,91 @@ export function getGrammarRule(
     structure: row.structure,
     conjugationRules: JSON.parse(row.conjugation_rules) as Record<string, unknown>,
     acceptedForms: JSON.parse(row.accepted_forms) as string[],
+    family: (row.family as GrammarFamily | undefined) ?? null,
   };
+}
+
+/**
+ * Authored cloze variants for a grammar item (Plan 09), in sort order.
+ * Returns [] on curriculum DBs compiled before the table existed — callers
+ * fall back to the Plan 07 sentence-derived cloze.
+ */
+export function getGrammarClozeVariants(
+  db: SQLiteDatabase,
+  itemId: string,
+): GrammarClozeVariant[] {
+  try {
+    const rows = db.getAllSync<{
+      id: number | string;
+      jp_cloze: string;
+      english: string;
+      answer: string;
+      nudge: string;
+      sort_order: number;
+    }>(
+      `SELECT id, jp_cloze, english, answer, nudge, sort_order
+       FROM grammar_cloze_variants WHERE item_id = ? ORDER BY sort_order ASC`,
+      Number(itemId),
+    );
+    return rows.map((row) => ({
+      id: String(row.id),
+      jpCloze: row.jp_cloze,
+      english: row.english,
+      answer: row.answer,
+      nudge: row.nudge,
+      sortOrder: row.sort_order,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Accepted forms of *other* grammar points, for MC distractors (Plan 08):
+ * same-family forms first (when this item has a family), then same-JLPT-level
+ * forms as the fallback pool. Forms are the parsed accepted_forms entries.
+ */
+export function getGrammarDistractorPools(
+  db: SQLiteDatabase,
+  itemId: string,
+): { familyForms: string[]; levelForms: string[] } {
+  const parseForms = (rows: { accepted_forms: string }[]): string[] => {
+    const forms: string[] = [];
+    for (const row of rows) {
+      try {
+        forms.push(...(JSON.parse(row.accepted_forms) as string[]));
+      } catch {
+        // Skip malformed rows — distractors are best-effort.
+      }
+    }
+    return [...new Set(forms)];
+  };
+
+  let familyForms: string[] = [];
+  try {
+    const familyRows = db.getAllSync<{ accepted_forms: string }>(
+      `SELECT gr.accepted_forms FROM grammar_rules gr
+       WHERE gr.item_id != ?
+         AND gr.family IS NOT NULL
+         AND gr.family = (SELECT family FROM grammar_rules WHERE item_id = ?)`,
+      Number(itemId),
+      Number(itemId),
+    );
+    familyForms = parseForms(familyRows);
+  } catch {
+    // Pre-Plan-09 DB without the family column.
+  }
+
+  const levelRows = db.getAllSync<{ accepted_forms: string }>(
+    `SELECT gr.accepted_forms FROM grammar_rules gr
+     JOIN items i ON i.id = gr.item_id
+     WHERE gr.item_id != ?
+       AND i.jlpt_level = (SELECT jlpt_level FROM items WHERE id = ?)`,
+    Number(itemId),
+    Number(itemId),
+  );
+
+  return { familyForms, levelForms: parseForms(levelRows) };
 }
 
 export function getExampleSentences(

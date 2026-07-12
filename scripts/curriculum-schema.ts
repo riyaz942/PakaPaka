@@ -48,7 +48,18 @@ CREATE TABLE grammar_rules (
   item_id INTEGER NOT NULL UNIQUE REFERENCES items(id),
   structure TEXT NOT NULL,
   conjugation_rules TEXT NOT NULL,
-  accepted_forms TEXT NOT NULL
+  accepted_forms TEXT NOT NULL,
+  family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns'))
+);
+
+CREATE TABLE grammar_cloze_variants (
+  id INTEGER PRIMARY KEY NOT NULL,
+  item_id INTEGER NOT NULL REFERENCES items(id),
+  jp_cloze TEXT NOT NULL,
+  english TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  nudge TEXT NOT NULL,
+  sort_order INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE example_sentences (
@@ -99,6 +110,7 @@ CREATE TABLE external_id_mappings (
   item_id INTEGER NOT NULL REFERENCES items(id)
 );
 
+CREATE INDEX idx_grammar_cloze_variants_item ON grammar_cloze_variants(item_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

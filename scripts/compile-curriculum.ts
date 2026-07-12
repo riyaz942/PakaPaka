@@ -88,6 +88,14 @@ type ExampleSentence = {
   vocabulary_slugs?: string[];
 };
 
+type GrammarClozeVariant = {
+  jp_cloze: string;
+  english: string;
+  answer: string;
+  nudge: string;
+  sort_order?: number;
+};
+
 type GrammarItem = {
   slug: string;
   primary_form: string;
@@ -97,6 +105,8 @@ type GrammarItem = {
   structure: string;
   conjugation_rules: Record<string, unknown>;
   accepted_forms: string[];
+  family?: 'particles' | 'copula' | 'conjugations' | 'connectors' | 'patterns';
+  cloze_variants?: GrammarClozeVariant[];
   example_sentences?: ExampleSentence[];
   vocabulary_slugs?: string[];
 };
@@ -385,8 +395,12 @@ export function compileCurriculum(
     }
 
     const insertGrammarRule = db.prepare(`
-      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms)
-      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms)
+      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family)
+      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family)
+    `);
+    const insertClozeVariant = db.prepare(`
+      INSERT INTO grammar_cloze_variants (item_id, jp_cloze, english, answer, nudge, sort_order)
+      VALUES (@item_id, @jp_cloze, @english, @answer, @nudge, @sort_order)
     `);
     const insertExample = db.prepare(`
       INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
@@ -417,7 +431,19 @@ export function compileCurriculum(
         structure: grammarItem.structure,
         conjugation_rules: JSON.stringify(grammarItem.conjugation_rules),
         accepted_forms: JSON.stringify(grammarItem.accepted_forms),
+        family: grammarItem.family ?? null,
       });
+
+      for (const [index, variant] of (grammarItem.cloze_variants ?? []).entries()) {
+        insertClozeVariant.run({
+          item_id: id,
+          jp_cloze: variant.jp_cloze,
+          english: variant.english,
+          answer: variant.answer,
+          nudge: variant.nudge,
+          sort_order: variant.sort_order ?? index,
+        });
+      }
 
       for (const [index, sentence] of (grammarItem.example_sentences ?? []).entries()) {
         insertExample.run({

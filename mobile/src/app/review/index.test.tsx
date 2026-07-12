@@ -280,6 +280,85 @@ describe('ReviewScreen accessibility', () => {
     expect(screen.getByLabelText('Answer input, type in romaji')).toBeTruthy();
   });
 
+  it('renders MC options instead of the text input for apprentice grammar (Plan 08)', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      inputMode: 'mc',
+      mcOptions: ['が', 'は', 'を', 'に'],
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+    });
+    render(<ReviewScreen />);
+
+    expect(screen.queryByTestId('review-answer-input')).toBeNull();
+    expect(screen.getByLabelText('が')).toBeTruthy();
+
+    // Picking the correct option grades through the normal session path.
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText('は'));
+    });
+    expect(screen.getByLabelText('Correct, answer: は')).toBeTruthy();
+  });
+
+  it('grades a wrong MC pick incorrect — never typo or wrong_script', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      inputMode: 'mc',
+      mcOptions: ['が', 'は', 'を', 'に'],
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+    });
+    render(<ReviewScreen />);
+
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText('が'));
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Continue' })).toBeTruthy();
+    });
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+  });
+
+  it('keeps type-in for guru grammar (no MC options built)', () => {
+    mockCurrentItem = makeReviewItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      clozePrompt: '私＿＿＿学生です。',
+      inputMode: 'type_in',
+      mcOptions: null,
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+      srsState: { ...makeReviewItem().srsState, srsStageLabel: 'guru' },
+    });
+    render(<ReviewScreen />);
+
+    expect(screen.getByTestId('review-answer-input')).toBeTruthy();
+    expect(screen.queryByLabelText('が')).toBeNull();
+  });
+
   it('exposes answer input by accessibilityLabel and Continue as a button role', async () => {
     jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
 

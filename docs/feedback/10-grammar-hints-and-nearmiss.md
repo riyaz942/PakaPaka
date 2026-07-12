@@ -110,12 +110,12 @@ Single source of truth: `englishHintsAllowed(stage)`. Plan 08 flips input mode; 
 
 ## Acceptance criteria
 
-- [ ] Pre-Enlightened: user can reveal nudge then English; grading unchanged.
-- [ ] Enlightened+: English hint rung absent; nudge may remain.
-- [ ] Opening hints never writes Again/Hard or bumps weakness by itself.
-- [ ] Incomplete answers that contain the right chunk grade incorrect and show teaching copy.
-- [ ] Exact wrong particle (は vs が) is plain incorrect (not "incomplete").
-- [ ] Tests for hint builder gating, near-miss classification, and session grade isolation.
+- [x] Pre-Enlightened: user can reveal nudge then English; grading unchanged.
+- [x] Enlightened+: English hint rung absent; nudge may remain.
+- [x] Opening hints never writes Again/Hard or bumps weakness by itself.
+- [x] Incomplete answers that contain the right chunk grade incorrect and show teaching copy.
+- [x] Exact wrong particle (は vs が) is plain incorrect (not "incomplete").
+- [x] Tests for hint builder gating, near-miss classification, and session grade isolation.
 
 ## Files touched (expected)
 

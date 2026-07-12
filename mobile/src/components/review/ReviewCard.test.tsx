@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import type { ReviewItem } from '@/core/srs/srs.types';
 
@@ -380,5 +380,88 @@ describe('ReviewCard — hints and reinforcement', () => {
 
     render(<ReviewCard item={item} state="typo" />);
     expect(screen.queryByText('食べる — you learned this yesterday')).toBeNull();
+  });
+});
+
+describe('ReviewCard — stage-gated grammar hints (Plans 08/10)', () => {
+  const grammarAtStage = (stage: 'guru' | 'enlightened') =>
+    makeItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      clozeNudge: 'Marks the topic — what is being talked about.',
+      clozeEnglish: 'I am a student.',
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+      srsState: {
+        itemId: 'test-1',
+        stability: 1,
+        difficulty: 5,
+        dueDate: new Date().toISOString(),
+        fsrsState: 'review',
+        reps: 8,
+        lapses: 0,
+        learningSteps: 0,
+        isBurned: false,
+        srsStageLabel: stage,
+        lastReviewedAt: null,
+        updatedAt: new Date().toISOString(),
+      },
+    });
+
+  it('pre-Enlightened: nudge then English are revealable', () => {
+    render(<ReviewCard item={grammarAtStage('guru')} state="prompting" />);
+    fireEvent.press(screen.getByLabelText('Hint'));
+    expect(screen.getByText('Marks the topic — what is being talked about.')).toBeTruthy();
+    fireEvent.press(screen.getByLabelText('Hint (1/2)'));
+    expect(screen.getByText('I am a student.')).toBeTruthy();
+  });
+
+  it('Enlightened: English rung is absent; nudge remains', () => {
+    render(<ReviewCard item={grammarAtStage('enlightened')} state="prompting" />);
+    fireEvent.press(screen.getByLabelText('Hint'));
+    expect(screen.getByText('Marks the topic — what is being talked about.')).toBeTruthy();
+    // Hint ladder exhausted after the nudge — no second rung, no English anywhere.
+    expect(screen.queryByLabelText(/Hint \(/)).toBeNull();
+    expect(screen.queryByText('I am a student.')).toBeNull();
+    expect(screen.queryByText(/topic marker/)).toBeNull();
+  });
+});
+
+describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
+  const waTopic = makeItem({
+    itemType: 'grammar',
+    promptType: 'production',
+    primaryForm: 'は',
+    displayMeaning: 'topic marker',
+    clozePrompt: '私＿＿＿学生です。',
+    answerKey: {
+      acceptedMeanings: ['topic marker'],
+      acceptedReadings: [],
+      grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+    },
+  });
+
+  it('shows teaching copy, the chunk, and the completed sentence', () => {
+    render(
+      <ReviewCard item={waTopic} state="incorrect" displayAnswer="は" incompleteAnswer />,
+    );
+    expect(screen.getByText('✗ Not quite')).toBeTruthy();
+    expect(
+      screen.getByText('You had the right idea — we need just the grammar piece:'),
+    ).toBeTruthy();
+    expect(screen.getByText('私は学生です。')).toBeTruthy();
+  });
+
+  it('plain incorrect keeps the standard reveal', () => {
+    render(<ReviewCard item={waTopic} state="incorrect" displayAnswer="は" />);
+    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('Correct answer: は')).toBeTruthy();
+    expect(screen.queryByText(/right idea/)).toBeNull();
   });
 });

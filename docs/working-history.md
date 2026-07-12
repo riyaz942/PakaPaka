@@ -1,6 +1,6 @@
 # Docs working history
 
-Last checked against the codebase: **2026-07-11**
+Last checked against the codebase: **2026-07-12**
 
 ---
 
@@ -8,8 +8,8 @@ Last checked against the codebase: **2026-07-11**
 
 | Status | Count |
 | --- | ---: |
-| Done | 8 |
-| Not done | 4 |
+| Done | 9 |
+| Not done | 3 |
 | Index only | 1 |
 
 ---
@@ -42,6 +42,11 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013).
 ### [05 — Session UX polish](./feedback/05-session-ux-polish.md)
 Time-compression copy removed, streak celebration, lesson back/forward, collapsible mnemonics.
 
+### [07–10 — Grammar review redesign](./feedback/07-grammar-review-overview.md)
+Universal JP cloze contract (07), stage ladder — apprentice MC / Guru+ type-in / Enlightened no-English gate (08), curriculum `family` + `cloze_variants` schema, compile pipeline, and Wave A authoring — wa-topic/ga/wo/mo-also/desu × 5 variants (09), two-rung hints with no SRS penalty + near-miss "incomplete" teaching reveal (10). Curriculum version `1.4.0-grammar-cloze`; seed DB recompiled.
+
+> Remaining content work: Wave B/C variant authoring (rest of N5, then N4) and families for N4 grammar — tracked in plan 09 §9.4.
+
 ---
 
 ## Not done
@@ -58,16 +63,6 @@ Post-MVP design note only (Epic 8 / FR38–45-PM). No app work by design.
 
 ### [06 — UI navigation & polish](./feedback/06-ui-navigation-and-polish.md)
 New playtest plan: nav header / status bar, back icon, keyboard vs mnemonic input, Save contrast, Learn detail scroll, auto-hide chrome.
-
-### [07–10 — Grammar review redesign](./feedback/07-grammar-review-overview.md)
-From brainstorm 2026-07-11: universal JP cloze, stage ladder (MC → type-in → no EN), cloze curriculum variants, hints + near-miss. Not implemented yet.
-
-| Plan | Focus |
-| --- | --- |
-| [07 cloze contract](./feedback/07-grammar-cloze-contract.md) | Kill は→は; blank = variable chunk |
-| [08 stage ladder](./feedback/08-grammar-stage-ladder.md) | Apprentice MC; Guru+ type-in; Enlightened no EN |
-| [09 curriculum](./feedback/09-grammar-cloze-curriculum.md) | Variants + families (content long pole) |
-| [10 hints / near-miss](./feedback/10-grammar-hints-and-nearmiss.md) | Nudge→EN; incomplete = incorrect |
 
 ---
 

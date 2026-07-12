@@ -118,6 +118,91 @@ describe('validateCurriculum furigana checks', () => {
   });
 });
 
+function writeTempGrammarDir(grammarItem: Record<string, unknown>): string {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-cloze-'));
+  fs.writeFileSync(
+    path.join(tempDir, 'metadata.json'),
+    JSON.stringify({
+      version: '0.0.1-test',
+      jlpt_levels: ['N5'],
+      description: 'Fixture metadata for cloze validation tests',
+    }),
+  );
+  fs.mkdirSync(path.join(tempDir, 'grammar'));
+  fs.writeFileSync(
+    path.join(tempDir, 'grammar', 'n5.json'),
+    JSON.stringify({ jlpt_level: 'N5', items: [grammarItem] }),
+  );
+  return tempDir;
+}
+
+describe('validateCurriculum cloze variant checks (Plan 09)', () => {
+  const baseItem = {
+    slug: 'wa-topic',
+    primary_form: 'は',
+    meaning: 'topic marker',
+    structure: 'Noun + は + comment',
+    conjugation_rules: {},
+    accepted_forms: ['は'],
+    family: 'particles',
+  };
+
+  it('accepts a consistent variant', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      cloze_variants: [
+        { jp_cloze: '私＿＿＿学生です。', english: 'I am a student.', answer: 'は', nudge: 'Topic.' },
+      ],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('errors when the variant answer is not an accepted form', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      cloze_variants: [
+        { jp_cloze: '私＿＿＿学生です。', english: 'I am a student.', answer: 'が', nudge: 'Topic.' },
+      ],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.errors.some((e) => e.includes('not in accepted_forms'))).toBe(true);
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a jp_cloze without a blank via the schema', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      cloze_variants: [
+        { jp_cloze: '私は学生です。', english: 'I am a student.', answer: 'は', nudge: 'Topic.' },
+      ],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects an unknown family via the schema enum', () => {
+    const tempDir = writeTempGrammarDir({ ...baseItem, family: 'other' });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+});
+
 describe('curriculum schema validation', () => {
   it('accepts valid radicals fixture', () => {
     const validate = compileRadicalsValidator();

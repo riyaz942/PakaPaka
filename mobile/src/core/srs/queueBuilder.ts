@@ -42,6 +42,16 @@ export type QueueInputItem = {
   answerKey: ReviewAnswerKey;
   /** Grammar cloze prompt derived at load time; null/absent for non-grammar items. */
   clozePrompt?: string | null;
+  /** Chunk the cloze blanks (authored variant answer); grammar only. */
+  clozeAnswer?: string | null;
+  /** Hint rung 1 content (Plan 10); grammar only. */
+  clozeNudge?: string | null;
+  /** Hint rung 2 content (Plan 10); grammar only, gated at Enlightened+. */
+  clozeEnglish?: string | null;
+  /** Stage-resolved grammar input mode (Plan 08); grammar only. */
+  inputMode?: 'mc' | 'type_in';
+  /** Shuffled MC options when inputMode === 'mc'; null when no distractors. */
+  mcOptions?: string[] | null;
   /** Bounded ordering nudge from related-item boosts; default 0 */
   boost?: number;
   relatedItems?: RelatedItem[];
@@ -156,6 +166,11 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
       item.curriculumItem.primaryForm,
     ),
     clozePrompt: item.clozePrompt ?? null,
+    clozeAnswer: item.clozeAnswer ?? null,
+    clozeNudge: item.clozeNudge ?? null,
+    clozeEnglish: item.clozeEnglish ?? null,
+    inputMode: item.inputMode,
+    mcOptions: item.mcOptions ?? null,
     mnemonic: item.curriculumItem.mnemonicText,
     personalMnemonic: item.personalMnemonic ?? null,
     answerKey: item.answerKey,

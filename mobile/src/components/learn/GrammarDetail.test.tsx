@@ -36,6 +36,7 @@ const grammarRule: GrammarRule = {
   structure: 'Noun + です',
   conjugationRules: { polite: true },
   acceptedForms: ['です', 'だ'],
+  family: 'copula',
 };
 
 const exampleSentences: ExampleSentence[] = [

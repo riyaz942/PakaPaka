@@ -7,6 +7,12 @@ import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ReinforcementSrsSnapshot } from '@/core/content/content.types';
 import { resolveReinforcement } from '@/core/content/reinforcementResolver';
 import { buildGrammarCloze } from '@/core/grammar/clozeBuilder';
+import {
+  buildMcOptions,
+  INTERIM_PARTICLE_POOL,
+  pickGrammarDistractors,
+} from '@/core/grammar/distractors';
+import { resolveGrammarInputMode, type GrammarInputMode } from '@/core/grammar/inputMode';
 import type { ReviewAnswerKey, ReviewItem, SRSState } from '@/core/srs/srs.types';
 import { buildReviewQueue } from '@/core/srs/queueBuilder';
 import type { QueueInputItem } from '@/core/srs/queueBuilder';
@@ -18,6 +24,8 @@ import {
   getExampleSentences,
   getKanjiReadings,
   getGrammarRule,
+  getGrammarClozeVariants,
+  getGrammarDistractorPools,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
@@ -218,14 +226,61 @@ export function useReviewQueue(): UseReviewQueueResult {
 
         // Grammar cloze contract (Plan 07): the review prompt is a sentence
         // with the grammar chunk blanked, never the bare form itself.
+        // Authored variants (Plan 09) win; sentence derivation is the fallback.
         let clozePrompt: string | null = null;
+        let clozeAnswer: string | null = null;
+        let clozeNudge: string | null = null;
+        let clozeEnglish: string | null = null;
+        let inputMode: GrammarInputMode | undefined;
+        let mcOptions: string[] | null = null;
         if (curriculumItem.itemType === 'grammar' && answerKey.grammar) {
-          const cloze = buildGrammarCloze({
-            exampleSentences: getExampleSentences(curriculumDb, srsState.itemId),
-            acceptedForms: answerKey.grammar.acceptedForms,
-            structure: answerKey.grammar.structure,
-          });
-          clozePrompt = cloze?.prompt ?? null;
+          const variants = getGrammarClozeVariants(curriculumDb, srsState.itemId);
+          if (variants.length > 0) {
+            const variant = variants[Math.floor(Math.random() * variants.length)];
+            clozePrompt = variant.jpCloze;
+            clozeAnswer = variant.answer;
+            clozeNudge = variant.nudge || null;
+            clozeEnglish = variant.english || null;
+          } else {
+            const examples = getExampleSentences(curriculumDb, srsState.itemId);
+            const cloze = buildGrammarCloze({
+              exampleSentences: examples,
+              acceptedForms: answerKey.grammar.acceptedForms,
+              structure: answerKey.grammar.structure,
+            });
+            clozePrompt = cloze?.prompt ?? null;
+            // Interim hint rung 2 (Plan 10): first example sentence's English.
+            clozeEnglish = examples[0]?.english ?? null;
+          }
+
+          // Stage ladder (Plan 08): apprentice answers by multiple choice.
+          inputMode = resolveGrammarInputMode(srsState.srsStageLabel);
+          if (inputMode === 'mc') {
+            const answer = clozeAnswer ?? answerKey.grammar.acceptedForms[0];
+            const pools = getGrammarDistractorPools(curriculumDb, srsState.itemId);
+            // Any accepted form of THIS item would grade correct if picked, so
+            // none of them may appear as a distractor.
+            const accepted = new Set(answerKey.grammar.acceptedForms);
+            const withoutAccepted = (forms: string[]) =>
+              forms.filter((form) => !accepted.has(form));
+            const familyCandidates =
+              pools.familyForms.length > 0
+                ? pools.familyForms
+                : INTERIM_PARTICLE_POOL.includes(
+                      answer as (typeof INTERIM_PARTICLE_POOL)[number],
+                    )
+                  ? [...INTERIM_PARTICLE_POOL]
+                  : [];
+            const distractors = pickGrammarDistractors({
+              answer,
+              familyCandidates: withoutAccepted(familyCandidates),
+              fallbackPool: withoutAccepted(pools.levelForms),
+            });
+            mcOptions = buildMcOptions(answer, distractors);
+            // No usable distractors: an MC card with one option teaches
+            // nothing, so fall back to type-in.
+            if (!mcOptions) inputMode = 'type_in';
+          }
         }
 
         queueInputs.push({
@@ -237,6 +292,11 @@ export function useReviewQueue(): UseReviewQueueResult {
           personalMnemonic,
           answerKey,
           clozePrompt,
+          clozeAnswer,
+          clozeNudge,
+          clozeEnglish,
+          inputMode,
+          mcOptions,
           boost: boostMap.get(srsState.itemId) ?? 0,
           relatedItems,
           reinforcementLink: reinforcementLinks[0] ?? null,
