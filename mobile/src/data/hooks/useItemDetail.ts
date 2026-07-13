@@ -7,12 +7,14 @@ import {
   getGrammarRule,
   getItemById,
   getKanjiReadings,
+  getRelatedGrammarItems,
   type AcceptedAnswer,
   type CurriculumItemDetail,
   type ExampleSentence,
   type GrammarRule,
   type GrammarVocabLink,
   type KanjiReading,
+  type RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 
@@ -23,6 +25,7 @@ export type ItemDetailResult = {
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
+  relatedGrammar: RelatedGrammarItem[];
   loading: boolean;
   notFound: boolean;
 };
@@ -35,6 +38,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
   const [grammarRule, setGrammarRule] = useState<GrammarRule | null>(null);
   const [exampleSentences, setExampleSentences] = useState<ExampleSentence[]>([]);
   const [grammarVocabLinks, setGrammarVocabLinks] = useState<GrammarVocabLink[]>([]);
+  const [relatedGrammar, setRelatedGrammar] = useState<RelatedGrammarItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -46,6 +50,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setGrammarRule(null);
       setExampleSentences([]);
       setGrammarVocabLinks([]);
+      setRelatedGrammar([]);
       setNotFound(true);
       setLoading(false);
       return;
@@ -61,6 +66,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setGrammarRule(null);
       setExampleSentences([]);
       setGrammarVocabLinks([]);
+      setRelatedGrammar([]);
       setNotFound(true);
       setLoading(false);
       return;
@@ -75,18 +81,22 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setKanjiReadings(getKanjiReadings(curriculumDb, itemId));
       setGrammarRule(null);
       setGrammarVocabLinks([]);
+      setRelatedGrammar([]);
     } else if (detail.itemType === 'grammar') {
       setKanjiReadings(null);
       setGrammarRule(getGrammarRule(curriculumDb, itemId));
       setGrammarVocabLinks([]);
+      setRelatedGrammar(getRelatedGrammarItems(curriculumDb, itemId));
     } else if (detail.itemType === 'vocabulary') {
       setKanjiReadings(null);
       setGrammarRule(null);
       setGrammarVocabLinks(getGrammarLinksForVocab(curriculumDb, itemId));
+      setRelatedGrammar([]);
     } else {
       setKanjiReadings(null);
       setGrammarRule(null);
       setGrammarVocabLinks([]);
+      setRelatedGrammar([]);
     }
 
     setLoading(false);
@@ -101,6 +111,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
+    relatedGrammar,
     loading: loading || isDataStale,
     notFound,
   };

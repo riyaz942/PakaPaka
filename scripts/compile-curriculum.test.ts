@@ -165,6 +165,79 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('warns on draft content but still compiles by default', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+    grammarFile.items[0]._meta = {
+      generator_model: 'claude-fable-5',
+      prompt_version: 'grammar-lesson-v1',
+      review_status: 'draft',
+    };
+    fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    try {
+      compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir);
+
+      expect(fs.existsSync(path.join(tempDir, 'curriculum.db'))).toBe(true);
+      expect(warnSpy).toHaveBeenCalledWith(
+        expect.stringContaining('unreviewed content: grammar:desu (draft)'),
+      );
+    } finally {
+      warnSpy.mockRestore();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('fails on draft content when failOnDraft is set', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+    grammarFile.items[0]._meta = { review_status: 'draft' };
+    fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+
+    try {
+      expect(() =>
+        compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir, {
+          failOnDraft: true,
+        }),
+      ).toThrow('Unreviewed content cannot ship (1 item(s)):\ngrammar:desu (draft)');
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('accepts reviewed content without warning', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+    grammarFile.items[0]._meta = { review_status: 'reviewed', reviewed_by: 'riyaz' };
+    fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    try {
+      compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir, {
+        failOnDraft: true,
+      });
+
+      expect(fs.existsSync(path.join(tempDir, 'curriculum.db'))).toBe(true);
+      expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('unreviewed content'));
+    } finally {
+      warnSpy.mockRestore();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('throws on an unresolved passage grammar slug', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
     const curriculumDir = path.join(tempDir, 'curriculum');

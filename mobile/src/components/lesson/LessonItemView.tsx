@@ -21,6 +21,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
+    relatedGrammar,
     loading,
     notFound,
   } = useItemDetail(itemId);
@@ -75,6 +76,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           acceptedAnswers={acceptedAnswers}
           grammarRule={grammarRule}
           exampleSentences={exampleSentences}
+          relatedGrammar={relatedGrammar}
           size="lg"
           mnemonicCollapsible
         />

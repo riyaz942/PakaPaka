@@ -254,6 +254,34 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
+  it('accepts a _meta sidecar with review metadata', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      _meta: {
+        generator_model: 'claude-fable-5',
+        prompt_version: 'grammar-lesson-v1',
+        review_status: 'draft',
+      },
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a _meta sidecar with an unknown review_status', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      _meta: { review_status: 'approved' },
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   function writeTempReadingsDir(passage: Record<string, unknown>): string {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-readings-'));
     fs.writeFileSync(

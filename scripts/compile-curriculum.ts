@@ -37,7 +37,20 @@ type MetadataJson = {
   content_counts?: Record<string, number>;
 };
 
+/**
+ * Sidecar review metadata on generated content (content pipeline Phase 0.5).
+ * Never written to curriculum.db; only `review_status` is inspected so
+ * unreviewed prose can't silently ship.
+ */
+type SidecarMeta = {
+  generator_model?: string;
+  prompt_version?: string;
+  review_status?: 'draft' | 'reviewed' | 'flagged_for_rewrite';
+  reviewed_by?: string;
+};
+
 type RadicalItem = {
+  _meta?: SidecarMeta;
   slug: string;
   primary_form: string;
   meaning: string;
@@ -60,6 +73,7 @@ type AcceptedAnswer = {
 };
 
 type KanjiItem = {
+  _meta?: SidecarMeta;
   slug: string;
   primary_form: string;
   meaning: string;
@@ -74,6 +88,7 @@ type KanjiItem = {
 };
 
 type VocabItem = {
+  _meta?: SidecarMeta;
   slug: string;
   primary_form: string;
   furigana?: string;
@@ -101,6 +116,7 @@ type GrammarClozeVariant = {
 };
 
 type GrammarItem = {
+  _meta?: SidecarMeta;
   slug: string;
   primary_form: string;
   meaning: string;
@@ -126,6 +142,7 @@ type PassageQuestion = {
 };
 
 type ReadingPassage = {
+  _meta?: SidecarMeta;
   slug?: string;
   title: string;
   body: string;
@@ -269,9 +286,42 @@ export function assignItemIds(
   return idByKey;
 }
 
+/** `<type>:<slug|title> (<status>)` labels for content whose sidecar marks it unreviewed. */
+export function collectUnreviewedContent(
+  radicals: RadicalItem[],
+  kanji: KanjiItem[],
+  vocabulary: VocabItem[],
+  grammar: GrammarItem[],
+  readingsFiles: { passages: ReadingPassage[] }[],
+): string[] {
+  const unreviewed: string[] = [];
+  const check = (label: string, meta: SidecarMeta | undefined) => {
+    if (meta?.review_status && meta.review_status !== 'reviewed') {
+      unreviewed.push(`${label} (${meta.review_status})`);
+    }
+  };
+
+  for (const item of radicals) check(`radical:${item.slug}`, item._meta);
+  for (const item of kanji) check(`kanji:${item.slug}`, item._meta);
+  for (const item of vocabulary) check(`vocabulary:${item.slug}`, item._meta);
+  for (const item of grammar) check(`grammar:${item.slug}`, item._meta);
+  for (const file of readingsFiles) {
+    for (const passage of file.passages) {
+      check(`reading:${passage.slug ?? passage.title}`, passage._meta);
+    }
+  }
+  return unreviewed;
+}
+
+export type CompileOptions = {
+  /** Fail (instead of warn) when content carries a non-reviewed review_status (CI release gate). */
+  failOnDraft?: boolean;
+};
+
 export function compileCurriculum(
   outputPath: string,
   curriculumDir: string = CURRICULUM_DIR,
+  options: CompileOptions = {},
 ): void {
   const validation = validateCurriculum(curriculumDir);
   for (const warning of validation.warnings) {
@@ -292,6 +342,18 @@ export function compileCurriculum(
   const dependenciesFile = readJson<{ edges: DependencyEdge[] }>(
     path.join(curriculumDir, 'dependencies', 'graph.json'),
   );
+
+  const unreviewed = collectUnreviewedContent(radicals, kanji, vocabulary, grammar, readingsFiles);
+  if (unreviewed.length > 0) {
+    if (options.failOnDraft) {
+      throw new Error(
+        `Unreviewed content cannot ship (${unreviewed.length} item(s)):\n${unreviewed.join('\n')}`,
+      );
+    }
+    for (const label of unreviewed) {
+      console.warn(`warning: unreviewed content: ${label}`);
+    }
+  }
 
   const idByKey = assignItemIds(radicals, kanji, vocabulary, grammar);
 
@@ -656,9 +718,11 @@ function main(): void {
   const outputPath = process.env.COMPILE_OUTPUT_PATH
     ? path.resolve(process.env.COMPILE_OUTPUT_PATH)
     : DEFAULT_OUTPUT;
+  const failOnDraft =
+    process.argv.includes('--fail-on-draft') || process.env.COMPILE_FAIL_ON_DRAFT === '1';
 
   try {
-    compileCurriculum(outputPath);
+    compileCurriculum(outputPath, undefined, { failOnDraft });
     console.log(`Compiled curriculum database: ${outputPath}`);
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));

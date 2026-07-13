@@ -1,7 +1,9 @@
+import { router, type Href } from 'expo-router';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
@@ -11,6 +13,7 @@ import type {
   CurriculumItemDetail,
   ExampleSentence,
   GrammarRule,
+  RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { cn } from '@/utils/cn';
@@ -20,6 +23,7 @@ type GrammarDetailProps = {
   acceptedAnswers: AcceptedAnswer[];
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
+  relatedGrammar?: RelatedGrammarItem[];
   size?: HeroSize;
   /** Collapse the mnemonic behind a disclosure (lesson sessions). */
   mnemonicCollapsible?: boolean;
@@ -46,6 +50,7 @@ export function GrammarDetail({
   acceptedAnswers,
   grammarRule,
   exampleSentences,
+  relatedGrammar = [],
   size = 'md',
   mnemonicCollapsible = false,
 }: GrammarDetailProps) {
@@ -66,6 +71,16 @@ export function GrammarDetail({
         <View className="mt-4">
           <Text className="text-body-sm uppercase text-secondary">Synonyms</Text>
           <Text className="mt-1 text-body text-primary">{synonyms.join(', ')}</Text>
+        </View>
+      ) : null}
+
+      {grammarRule?.explanationMarkdown ? (
+        <View className="mt-4" testID="grammar-lesson-body">
+          <LessonMarkdown
+            markdown={grammarRule.explanationMarkdown}
+            mode={furiganaMode}
+            knownKanji={knownKanji}
+          />
         </View>
       ) : null}
 
@@ -100,6 +115,19 @@ export function GrammarDetail({
         </>
       ) : null}
 
+      {grammarRule && grammarRule.cautionNotes.length > 0 ? (
+        <View className="mt-4" testID="grammar-caution-notes">
+          <Text className="text-body-sm uppercase text-feedback-warning">Watch out</Text>
+          {grammarRule.cautionNotes.map((note, index) => (
+            <View
+              key={index}
+              className="mt-2 border-l-2 border-feedback-warning pl-space-md py-space-xs">
+              <Text className="text-body text-primary">{note}</Text>
+            </View>
+          ))}
+        </View>
+      ) : null}
+
       {item.mnemonicText ? (
         <MnemonicSection mnemonicText={item.mnemonicText} collapsible={mnemonicCollapsible} />
       ) : null}
@@ -120,6 +148,26 @@ export function GrammarDetail({
               <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
             </View>
           ))}
+        </View>
+      ) : null}
+
+      {relatedGrammar.length > 0 ? (
+        <View className="mt-4">
+          <Text className="text-body-sm uppercase text-secondary">Related grammar</Text>
+          <View className="mt-2 flex-row flex-wrap gap-2">
+            {relatedGrammar.map((related) => (
+              <Pressable
+                key={related.id}
+                accessibilityRole="button"
+                accessibilityLabel={`Related grammar ${related.primaryForm}, ${related.meaning}`}
+                onPress={() => router.push(`/learn/item/${related.id}` as Href)}
+                testID={`related-grammar-${related.id}`}
+                className="min-h-[44px] min-w-[44px] justify-center rounded-md bg-surface px-3 py-2">
+                <Text className="text-body text-feedback-info">{related.primaryForm}</Text>
+                <Text className="text-caption text-secondary">{related.meaning}</Text>
+              </Pressable>
+            ))}
+          </View>
         </View>
       ) : null}
     </View>

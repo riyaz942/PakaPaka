@@ -37,6 +37,8 @@ const grammarRule: GrammarRule = {
   conjugationRules: { polite: true },
   acceptedForms: ['です', 'だ'],
   family: 'copula',
+  explanationMarkdown: null,
+  cautionNotes: [],
 };
 
 const exampleSentences: ExampleSentence[] = [
@@ -72,5 +74,45 @@ describe('GrammarDetail', () => {
     expect(screen.getByText('これは本です。')).toBeTruthy();
     expect(screen.getByText('今日は月曜日です。')).toBeTruthy();
     expect(screen.getByText('Desu sounds like "deserve" politeness.')).toBeTruthy();
+  });
+
+  it('omits lesson body, caution, and related sections when unauthored', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={grammarRule}
+        exampleSentences={exampleSentences}
+      />,
+    );
+
+    expect(screen.queryByTestId('grammar-lesson-body')).toBeNull();
+    expect(screen.queryByTestId('grammar-caution-notes')).toBeNull();
+    expect(screen.queryByText('Related grammar')).toBeNull();
+  });
+
+  it('renders lesson markdown, caution notes, and related grammar links', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={{
+          ...grammarRule,
+          explanationMarkdown: '# です\n\nThe **polite** copula closes a sentence.',
+          cautionNotes: ['です never attaches directly to verbs.'],
+        }}
+        exampleSentences={exampleSentences}
+        relatedGrammar={[{ id: '51', primaryForm: 'じゃない', meaning: 'negative copula' }]}
+      />,
+    );
+
+    expect(screen.getByTestId('grammar-lesson-body')).toBeTruthy();
+    expect(screen.getByText('polite')).toBeTruthy();
+    expect(screen.getByText(/copula closes a sentence/)).toBeTruthy();
+    expect(screen.getByTestId('grammar-caution-notes')).toBeTruthy();
+    expect(screen.getByText('です never attaches directly to verbs.')).toBeTruthy();
+    expect(screen.getByTestId('related-grammar-51')).toBeTruthy();
+    expect(screen.getByText('じゃない')).toBeTruthy();
+    expect(screen.getByText('negative copula')).toBeTruthy();
   });
 });

@@ -4,6 +4,7 @@ import {
   __mockResetSqlite,
   __mockSetAcceptedAnswers,
   __mockSetExampleSentences,
+  __mockSetGrammarRelatedLinks,
   __mockSetGrammarRules,
   __mockSetGrammarVocabLinks,
   __mockSetItemRelationships,
@@ -23,6 +24,7 @@ import {
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
   getRequiredParentsForItems,
+  getRelatedGrammarItems,
   getRelatedItemsForItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
@@ -303,8 +305,76 @@ describe('itemRepository', () => {
       conjugationRules: { polite: true },
       acceptedForms: ['です', 'だ'],
       family: null,
+      explanationMarkdown: null,
+      cautionNotes: [],
     });
     expect(getGrammarRule(db, '999')).toBeNull();
+  });
+
+  it('returns grammar rule lesson fields when present', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetGrammarRules('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 50,
+        structure: 'Noun + です',
+        conjugation_rules: '{"polite": true}',
+        accepted_forms: '["です"]',
+        family: 'copula',
+        explanation_markdown: '# です\n\nThe polite copula.',
+        caution_notes: '["Never attaches directly to verbs."]',
+      },
+    ]);
+
+    expect(getGrammarRule(db, '50')).toEqual({
+      structure: 'Noun + です',
+      conjugationRules: { polite: true },
+      acceptedForms: ['です'],
+      family: 'copula',
+      explanationMarkdown: '# です\n\nThe polite copula.',
+      cautionNotes: ['Never attaches directly to verbs.'],
+    });
+  });
+
+  it('returns related grammar items in authored order', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 51,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'ja-nai',
+        primary_form: 'じゃない',
+        meaning: 'negative copula',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+      {
+        id: 52,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'deshita',
+        primary_form: 'でした',
+        meaning: 'past copula',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 3,
+      },
+    ]);
+    __mockSetGrammarRelatedLinks('curriculum.db.test', [
+      { id: 1, grammar_item_id: 50, related_item_id: 52, sort_order: 1 },
+      { id: 2, grammar_item_id: 50, related_item_id: 51, sort_order: 0 },
+      { id: 3, grammar_item_id: 99, related_item_id: 51, sort_order: 0 },
+    ]);
+
+    expect(getRelatedGrammarItems(db, '50')).toEqual([
+      { id: '51', primaryForm: 'じゃない', meaning: 'negative copula' },
+      { id: '52', primaryForm: 'でした', meaning: 'past copula' },
+    ]);
+    expect(getRelatedGrammarItems(db, '51')).toEqual([]);
   });
 
   it('returns example sentences ordered by sort_order', async () => {

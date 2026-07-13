@@ -29,6 +29,7 @@ export default function LearnItemDetailScreen() {
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
+    relatedGrammar,
     loading,
     notFound,
   } = useItemDetail(itemId);
@@ -87,6 +88,7 @@ export default function LearnItemDetailScreen() {
                 acceptedAnswers={acceptedAnswers}
                 grammarRule={grammarRule}
                 exampleSentences={exampleSentences}
+                relatedGrammar={relatedGrammar}
               />
             ) : null}
           </ScrollView>

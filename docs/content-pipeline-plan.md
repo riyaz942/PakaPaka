@@ -80,6 +80,13 @@ JP-with-furigana spans, caution/related sections) in the lesson session flow. It
 need polish — the pilot's go/no-go read should happen in something close to the real
 rendering, and reviewers (Phase 5) reuse the same renderer.
 
+*Status: built (`LessonMarkdown` + `parseLessonMarkdown` in the app). The JP-span
+convention the renderer (and therefore the `generate.py` furigana pass) uses:
+standalone example sentences go in ` ```jp ` fenced blocks; Japanese embedded in prose
+just carries the usual bracket notation (`私[わたし]`) inline — no extra delimiter.
+Supported markdown: `#`–`###` headings, paragraphs, `-`/`1.` lists, `>` callouts,
+fenced blocks; inline `**bold**`, `*italic*`, `` `code` ``.*
+
 Each generated artifact carries sidecar metadata (frontmatter in the .md, or a `_meta`
 key in datasets): `generator_model`, `prompt_version`, `review_status: draft|reviewed`,
 `reviewed_by`. `compile-curriculum` warns (CI: fails a flag-gated check) on `draft`

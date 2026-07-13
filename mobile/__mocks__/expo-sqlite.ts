@@ -619,6 +619,23 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       });
   }
 
+  if (/FROM grammar_related_links/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
+    const links = [...(state.tables.get('grammar_related_links') ?? [])];
+    const items = state.tables.get('items') ?? [];
+
+    return links
+      .filter((link) => link.grammar_item_id === params[0])
+      .sort((left, right) => Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0))
+      .map((link) => {
+        const related = items.find((item) => item.id === link.related_item_id);
+        return {
+          id: related?.id,
+          primary_form: related?.primary_form ?? '',
+          meaning: related?.meaning ?? '',
+        };
+      });
+  }
+
   if (/FROM example_sentences/i.test(trimmed)) {
     let rows = [...(state.tables.get('example_sentences') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {
@@ -1040,6 +1057,11 @@ export function __mockSetExampleSentences(databaseName: string, rows: Row[]) {
 export function __mockSetGrammarVocabLinks(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('grammar_vocabulary_links', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetGrammarRelatedLinks(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('grammar_related_links', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetReadingPassages(databaseName: string, rows: Row[]) {

@@ -261,6 +261,17 @@ export type GrammarRule = {
   acceptedForms: string[];
   /** Distractor namespace (Plan 09); null on curriculum DBs compiled before it existed. */
   family: GrammarFamily | null;
+  /** Long-form lesson body (content pipeline Phase 0); null when unauthored or on older DBs. */
+  explanationMarkdown: string | null;
+  /** "Watch out" notes; [] when unauthored or on older DBs. */
+  cautionNotes: string[];
+};
+
+/** Sibling/contrast grammar point linked from a lesson (content pipeline Phase 0). */
+export type RelatedGrammarItem = {
+  id: string;
+  primaryForm: string;
+  meaning: string;
 };
 
 /** Authored review-specific cloze variant (Plan 09). */
@@ -386,23 +397,49 @@ export function getAcceptedAnswers(
   return rows.map(mapAcceptedAnswerRow);
 }
 
+function parseCautionNotes(raw: string | null | undefined): string[] {
+  if (!raw) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed) ? parsed.filter((note): note is string => typeof note === 'string') : [];
+  } catch {
+    return [];
+  }
+}
+
+type OptionalGrammarColumns = {
+  family?: string | null;
+  explanation_markdown?: string | null;
+  caution_notes?: string | null;
+};
+
 export function getGrammarRule(
   db: SQLiteDatabase,
   itemId: string,
 ): GrammarRule | null {
-  // `family` was added in Plan 09; installed devices may still carry a
-  // curriculum.db compiled before the column existed.
-  let row: (GrammarRuleRow & { family?: string | null }) | null;
-  try {
-    row = db.getFirstSync<GrammarRuleRow & { family: string | null }>(
-      `SELECT structure, conjugation_rules, accepted_forms, family FROM grammar_rules WHERE item_id = ?`,
-      Number(itemId),
-    );
-  } catch {
-    row = db.getFirstSync<GrammarRuleRow>(
-      `SELECT structure, conjugation_rules, accepted_forms FROM grammar_rules WHERE item_id = ?`,
-      Number(itemId),
-    );
+  // Newer columns arrived over time (`family` in Plan 09,
+  // `explanation_markdown`/`caution_notes` in the content pipeline Phase 0);
+  // installed devices may still carry a curriculum.db compiled before any of
+  // them existed, so fall back column set by column set.
+  const columnVariants = [
+    `structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes`,
+    `structure, conjugation_rules, accepted_forms, family`,
+    `structure, conjugation_rules, accepted_forms`,
+  ];
+
+  let row: (GrammarRuleRow & OptionalGrammarColumns) | null = null;
+  for (const columns of columnVariants) {
+    try {
+      row = db.getFirstSync<GrammarRuleRow & OptionalGrammarColumns>(
+        `SELECT ${columns} FROM grammar_rules WHERE item_id = ?`,
+        Number(itemId),
+      );
+      break;
+    } catch {
+      // Missing column on an older DB — retry with the previous column set.
+    }
   }
   if (!row) {
     return null;
@@ -412,7 +449,37 @@ export function getGrammarRule(
     conjugationRules: JSON.parse(row.conjugation_rules) as Record<string, unknown>,
     acceptedForms: JSON.parse(row.accepted_forms) as string[],
     family: (row.family as GrammarFamily | undefined) ?? null,
+    explanationMarkdown: row.explanation_markdown ?? null,
+    cautionNotes: parseCautionNotes(row.caution_notes),
   };
+}
+
+/**
+ * Related grammar points for a lesson's contrast/see-also section, in
+ * authored order. Returns [] on curriculum DBs compiled before the
+ * grammar_related_links table existed.
+ */
+export function getRelatedGrammarItems(
+  db: SQLiteDatabase,
+  itemId: string,
+): RelatedGrammarItem[] {
+  try {
+    const rows = db.getAllSync<{ id: number | string; primary_form: string; meaning: string }>(
+      `SELECT i.id, i.primary_form, i.meaning
+       FROM grammar_related_links grl
+       JOIN items i ON i.id = grl.related_item_id
+       WHERE grl.grammar_item_id = ?
+       ORDER BY grl.sort_order ASC`,
+      Number(itemId),
+    );
+    return rows.map((row) => ({
+      id: String(row.id),
+      primaryForm: row.primary_form,
+      meaning: row.meaning,
+    }));
+  } catch {
+    return [];
+  }
 }
 
 /**

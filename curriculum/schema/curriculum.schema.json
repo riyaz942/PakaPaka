@@ -30,11 +30,22 @@
         }
       }
     },
+    "sidecarMeta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generator_model": { "type": "string", "minLength": 1 },
+        "prompt_version": { "type": "string", "minLength": 1 },
+        "review_status": { "type": "string", "enum": ["draft", "reviewed", "flagged_for_rewrite"] },
+        "reviewed_by": { "type": "string", "minLength": 1 }
+      }
+    },
     "radicalItem": {
       "type": "object",
       "additionalProperties": false,
       "required": ["slug", "primary_form", "meaning", "visual_mnemonic_url"],
       "properties": {
+        "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
@@ -85,6 +96,7 @@
       "additionalProperties": false,
       "required": ["slug", "primary_form", "meaning"],
       "properties": {
+        "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
@@ -122,6 +134,7 @@
       "additionalProperties": false,
       "required": ["slug", "primary_form", "meaning"],
       "properties": {
+        "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "furigana": { "type": "string", "minLength": 1 },
@@ -183,6 +196,7 @@
       "additionalProperties": false,
       "required": ["slug", "primary_form", "meaning", "structure", "conjugation_rules", "accepted_forms"],
       "properties": {
+        "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
@@ -258,6 +272,7 @@
       "additionalProperties": false,
       "required": ["title", "body"],
       "properties": {
+        "_meta": { "$ref": "#/$defs/sidecarMeta" },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "title": { "type": "string", "minLength": 1 },
         "body": { "type": "string", "minLength": 1 },

@@ -37,7 +37,8 @@ function isSegmentKnown(segment: FuriganaSegment, knownKanji: ReadonlySet<string
   return Array.from(segment.text).every((ch) => knownKanji.has(ch));
 }
 
-function defaultVisible(
+/** Default reading visibility for one annotated run under the given display mode. */
+export function defaultFuriganaVisible(
   segment: FuriganaSegment,
   mode: FuriganaDisplayMode,
   knownKanji: ReadonlySet<string> | undefined,
@@ -122,8 +123,8 @@ export function FuriganaText({
         }
 
         const isVisible = toggled.has(index)
-          ? !defaultVisible(segment, mode, knownKanji)
-          : defaultVisible(segment, mode, knownKanji);
+          ? !defaultFuriganaVisible(segment, mode, knownKanji)
+          : defaultFuriganaVisible(segment, mode, knownKanji);
 
         return (
           <Pressable key={index} accessible={false} onPress={() => toggleSegment(index)}>
