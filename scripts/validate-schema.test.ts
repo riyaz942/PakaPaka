@@ -203,6 +203,154 @@ describe('validateCurriculum cloze variant checks (Plan 09)', () => {
   });
 });
 
+describe('validateCurriculum Phase 0 content-pipeline fields', () => {
+  const baseItem = {
+    slug: 'wa-topic',
+    primary_form: 'は',
+    meaning: 'topic marker',
+    structure: 'Noun + は + comment',
+    conjugation_rules: {},
+    accepted_forms: ['は'],
+  };
+
+  it('accepts explanation_markdown, caution_notes, and related_grammar_slugs', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      explanation_markdown: '# は\n\nThe topic marker sets the stage for the sentence.',
+      caution_notes: ['は is pronounced わ when used as a particle.'],
+      related_grammar_slugs: ['ga-subject'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('errors when related_grammar_slugs references the item itself', () => {
+    const tempDir = writeTempGrammarDir({
+      ...baseItem,
+      related_grammar_slugs: ['wa-topic'],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.errors.some((e) => e.includes('must not reference the item itself'))).toBe(
+          true,
+        );
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects an empty caution_notes array via the schema', () => {
+    const tempDir = writeTempGrammarDir({ ...baseItem, caution_notes: [] });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  function writeTempReadingsDir(passage: Record<string, unknown>): string {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-readings-'));
+    fs.writeFileSync(
+      path.join(tempDir, 'metadata.json'),
+      JSON.stringify({
+        version: '0.0.1-test',
+        jlpt_levels: ['N5'],
+        description: 'Fixture metadata for readings validation tests',
+      }),
+    );
+    fs.mkdirSync(path.join(tempDir, 'readings'));
+    fs.writeFileSync(
+      path.join(tempDir, 'readings', 'n5.json'),
+      JSON.stringify({ jlpt_level: 'N5', passages: [passage] }),
+    );
+    return tempDir;
+  }
+
+  it('accepts passage english_translation, slug lists, and word_count', () => {
+    const tempDir = writeTempReadingsDir({
+      title: 'Test',
+      body: 'テストです。',
+      english_translation: 'It is a test.',
+      grammar_slugs: ['desu'],
+      vocabulary_slugs: ['ichi-v'],
+      word_count: 2,
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a zero word_count via the schema', () => {
+    const tempDir = writeTempReadingsDir({
+      title: 'Test',
+      body: 'テストです。',
+      word_count: 0,
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  function writeTempKanjiDir(kanjiItem: Record<string, unknown>): string {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-kanji-'));
+    fs.writeFileSync(
+      path.join(tempDir, 'metadata.json'),
+      JSON.stringify({
+        version: '0.0.1-test',
+        jlpt_levels: ['N5'],
+        description: 'Fixture metadata for kanji validation tests',
+      }),
+    );
+    fs.mkdirSync(path.join(tempDir, 'kanji'));
+    fs.writeFileSync(
+      path.join(tempDir, 'kanji', 'n5.json'),
+      JSON.stringify({ jlpt_level: 'N5', items: [kanjiItem] }),
+    );
+    return tempDir;
+  }
+
+  it('accepts split kanji mnemonics, description, and visual_mnemonic_url', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'n5-ichi',
+      primary_form: '一',
+      meaning: 'one',
+      meaning_mnemonic: 'A single stroke: one.',
+      reading_mnemonic: 'You itch (いち) after one mosquito bite.',
+      description: 'The simplest kanji.',
+      visual_mnemonic_url: 'https://assets.example/kanji/n5/n5-ichi.png',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a non-https kanji visual_mnemonic_url via the schema', () => {
+    const tempDir = writeTempKanjiDir({
+      slug: 'n5-ichi',
+      primary_form: '一',
+      meaning: 'one',
+      visual_mnemonic_url: 'http://assets.example/kanji/n5/n5-ichi.png',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+});
+
 describe('curriculum schema validation', () => {
   it('accepts valid radicals fixture', () => {
     const validate = compileRadicalsValidator();

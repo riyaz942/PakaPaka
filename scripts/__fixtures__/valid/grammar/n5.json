@@ -9,6 +9,9 @@
       "conjugation_rules": { "polite": true },
       "accepted_forms": ["です"],
       "family": "copula",
+      "explanation_markdown": "# です\n\nです is the polite copula — it closes a sentence with 'is / am / are'.",
+      "caution_notes": ["です attaches to nouns and な-adjectives, never directly to verbs."],
+      "related_grammar_slugs": ["ja-nai"],
       "cloze_variants": [
         {
           "jp_cloze": "これは水＿＿＿。",
@@ -19,6 +22,14 @@
         }
       ],
       "vocabulary_slugs": ["ichi-v"]
+    },
+    {
+      "slug": "ja-nai",
+      "primary_form": "じゃない",
+      "meaning": "negative copula",
+      "structure": "Noun + じゃない",
+      "conjugation_rules": { "polite": false },
+      "accepted_forms": ["じゃない"]
     }
   ]
 }

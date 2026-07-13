@@ -64,6 +64,10 @@ type KanjiItem = {
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
+  meaning_mnemonic?: string;
+  reading_mnemonic?: string;
+  description?: string;
+  visual_mnemonic_url?: string;
   sort_order?: number;
   readings?: KanjiReading[];
   accepted_answers?: AcceptedAnswer[];
@@ -101,6 +105,9 @@ type GrammarItem = {
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
+  explanation_markdown?: string;
+  caution_notes?: string[];
+  related_grammar_slugs?: string[];
   sort_order?: number;
   structure: string;
   conjugation_rules: Record<string, unknown>;
@@ -123,6 +130,10 @@ type ReadingPassage = {
   title: string;
   body: string;
   body_furigana?: string;
+  english_translation?: string;
+  grammar_slugs?: string[];
+  vocabulary_slugs?: string[];
+  word_count?: number;
   sort_order?: number;
   questions?: PassageQuestion[];
 };
@@ -297,8 +308,8 @@ export function compileCurriculum(
     db.exec(CURRICULUM_DDL);
 
     const insertItem = db.prepare(`
-      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, mnemonic_text, visual_mnemonic_url, sort_order)
-      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @mnemonic_text, @visual_mnemonic_url, @sort_order)
+      INSERT INTO items (id, item_type, jlpt_level, slug, primary_form, furigana, meaning, mnemonic_text, meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url, sort_order)
+      VALUES (@id, @item_type, @jlpt_level, @slug, @primary_form, @furigana, @meaning, @mnemonic_text, @meaning_mnemonic, @reading_mnemonic, @description, @visual_mnemonic_url, @sort_order)
     `);
 
     const insertReading = db.prepare(`
@@ -321,6 +332,9 @@ export function compileCurriculum(
         furigana: null,
         meaning: radical.meaning,
         mnemonic_text: radical.mnemonic_text ?? null,
+        meaning_mnemonic: null,
+        reading_mnemonic: null,
+        description: null,
         visual_mnemonic_url: radical.visual_mnemonic_url,
         sort_order: radical.sort_order ?? 0,
       });
@@ -346,7 +360,10 @@ export function compileCurriculum(
         furigana: null,
         meaning: kanjiItem.meaning,
         mnemonic_text: kanjiItem.mnemonic_text ?? null,
-        visual_mnemonic_url: null,
+        meaning_mnemonic: kanjiItem.meaning_mnemonic ?? null,
+        reading_mnemonic: kanjiItem.reading_mnemonic ?? null,
+        description: kanjiItem.description ?? null,
+        visual_mnemonic_url: kanjiItem.visual_mnemonic_url ?? null,
         sort_order: kanjiItem.sort_order ?? 0,
       });
 
@@ -380,6 +397,9 @@ export function compileCurriculum(
         furigana: vocab.furigana ?? null,
         meaning: vocab.meaning,
         mnemonic_text: vocab.mnemonic_text ?? null,
+        meaning_mnemonic: null,
+        reading_mnemonic: null,
+        description: null,
         visual_mnemonic_url: null,
         sort_order: vocab.sort_order ?? 0,
       });
@@ -395,8 +415,12 @@ export function compileCurriculum(
     }
 
     const insertGrammarRule = db.prepare(`
-      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family)
-      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family)
+      INSERT INTO grammar_rules (item_id, structure, conjugation_rules, accepted_forms, family, explanation_markdown, caution_notes)
+      VALUES (@item_id, @structure, @conjugation_rules, @accepted_forms, @family, @explanation_markdown, @caution_notes)
+    `);
+    const insertGrammarRelatedLink = db.prepare(`
+      INSERT INTO grammar_related_links (grammar_item_id, related_item_id, sort_order)
+      VALUES (@grammar_item_id, @related_item_id, @sort_order)
     `);
     const insertClozeVariant = db.prepare(`
       INSERT INTO grammar_cloze_variants (item_id, jp_cloze, english, answer, nudge, sort_order)
@@ -411,6 +435,14 @@ export function compileCurriculum(
       VALUES (@grammar_item_id, @vocabulary_item_id)
     `);
 
+    // Related grammar can point at items later in the compile order, so the
+    // links are inserted after every grammar item row exists.
+    const pendingRelatedLinks: {
+      grammar_item_id: number;
+      related_item_id: number;
+      sort_order: number;
+    }[] = [];
+
     for (const grammarItem of grammar) {
       const id = idByKey.get(itemKey('grammar', grammarItem.slug))!;
       insertItem.run({
@@ -422,6 +454,9 @@ export function compileCurriculum(
         furigana: null,
         meaning: grammarItem.meaning,
         mnemonic_text: grammarItem.mnemonic_text ?? null,
+        meaning_mnemonic: null,
+        reading_mnemonic: null,
+        description: null,
         visual_mnemonic_url: null,
         sort_order: grammarItem.sort_order ?? 0,
       });
@@ -432,7 +467,25 @@ export function compileCurriculum(
         conjugation_rules: JSON.stringify(grammarItem.conjugation_rules),
         accepted_forms: JSON.stringify(grammarItem.accepted_forms),
         family: grammarItem.family ?? null,
+        explanation_markdown: grammarItem.explanation_markdown ?? null,
+        caution_notes: grammarItem.caution_notes
+          ? JSON.stringify(grammarItem.caution_notes)
+          : null,
       });
+
+      for (const [index, relatedSlug] of (grammarItem.related_grammar_slugs ?? []).entries()) {
+        const relatedId = idByKey.get(itemKey('grammar', relatedSlug));
+        if (!relatedId) {
+          throw new Error(
+            `Unresolved related grammar link: ${grammarItem.slug} -> grammar:${relatedSlug}`,
+          );
+        }
+        pendingRelatedLinks.push({
+          grammar_item_id: id,
+          related_item_id: relatedId,
+          sort_order: index,
+        });
+      }
 
       for (const [index, variant] of (grammarItem.cloze_variants ?? []).entries()) {
         insertClozeVariant.run({
@@ -472,6 +525,10 @@ export function compileCurriculum(
       }
     }
 
+    for (const link of pendingRelatedLinks) {
+      insertGrammarRelatedLink.run(link);
+    }
+
     const insertRelationship = db.prepare(`
       INSERT INTO item_relationships (parent_item_id, child_item_id, relationship_type)
       VALUES (@parent_item_id, @child_item_id, @relationship_type)
@@ -493,12 +550,20 @@ export function compileCurriculum(
     }
 
     const insertPassage = db.prepare(`
-      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, sort_order)
-      VALUES (@jlpt_level, @title, @body, @body_furigana, @sort_order)
+      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, english_translation, word_count, sort_order)
+      VALUES (@jlpt_level, @title, @body, @body_furigana, @english_translation, @word_count, @sort_order)
     `);
     const insertQuestion = db.prepare(`
       INSERT INTO passage_questions (passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
       VALUES (@passage_id, @prompt, @prompt_furigana, @accepted_answers, @sort_order)
+    `);
+    const insertPassageGrammarLink = db.prepare(`
+      INSERT INTO passage_grammar_links (passage_id, grammar_item_id)
+      VALUES (@passage_id, @grammar_item_id)
+    `);
+    const insertPassageVocabLink = db.prepare(`
+      INSERT INTO passage_vocabulary_links (passage_id, vocabulary_item_id)
+      VALUES (@passage_id, @vocabulary_item_id)
     `);
 
     for (const readingsFile of readingsFiles) {
@@ -508,9 +573,32 @@ export function compileCurriculum(
           title: passage.title,
           body: passage.body,
           body_furigana: passage.body_furigana ?? null,
+          english_translation: passage.english_translation ?? null,
+          word_count: passage.word_count ?? null,
           sort_order: passage.sort_order ?? index,
         });
         const passageId = Number(passageResult.lastInsertRowid);
+        const passageLabel = passage.slug ?? passage.title;
+
+        for (const grammarSlug of passage.grammar_slugs ?? []) {
+          const grammarId = idByKey.get(itemKey('grammar', grammarSlug));
+          if (!grammarId) {
+            throw new Error(
+              `Unresolved passage grammar link: ${passageLabel} -> grammar:${grammarSlug}`,
+            );
+          }
+          insertPassageGrammarLink.run({ passage_id: passageId, grammar_item_id: grammarId });
+        }
+
+        for (const vocabSlug of passage.vocabulary_slugs ?? []) {
+          const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
+          if (!vocabId) {
+            throw new Error(
+              `Unresolved passage vocabulary link: ${passageLabel} -> vocabulary:${vocabSlug}`,
+            );
+          }
+          insertPassageVocabLink.run({ passage_id: passageId, vocabulary_item_id: vocabId });
+        }
 
         for (const [qIndex, question] of (passage.questions ?? []).entries()) {
           insertQuestion.run({

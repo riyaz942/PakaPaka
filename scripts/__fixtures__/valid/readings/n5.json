@@ -4,6 +4,10 @@
     {
       "title": "Test",
       "body": "テストです。",
+      "english_translation": "It is a test.",
+      "grammar_slugs": ["desu"],
+      "vocabulary_slugs": ["ichi-v"],
+      "word_count": 2,
       "questions": [{ "prompt": "What?", "accepted_answers": ["test"] }]
     }
   ]

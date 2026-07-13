@@ -48,14 +48,14 @@ describe('compile-curriculum', () => {
 
       expect(metadata.version).toBe('0.0.1-test');
       expect(metadata.content_hash).toMatch(/^[a-f0-9]{64}$/);
-      expect(metadata.item_count).toBe(4);
+      expect(metadata.item_count).toBe(5);
 
       const itemCount = db.prepare('SELECT COUNT(*) AS count FROM items').get() as { count: number };
       const relationshipCount = db
         .prepare('SELECT COUNT(*) AS count FROM item_relationships')
         .get() as { count: number };
 
-      expect(itemCount.count).toBe(4);
+      expect(itemCount.count).toBe(5);
       expect(relationshipCount.count).toBe(2);
 
       // Plan 09: family lands on grammar_rules, variants in their own table.
@@ -72,6 +72,114 @@ describe('compile-curriculum', () => {
       expect(variant.nudge).toContain('copula');
     } finally {
       db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('compiles Phase 0 content-pipeline fields (split mnemonics, lesson body, passage metadata)', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const dbPath = path.join(tempDir, 'curriculum.db');
+
+    compileCurriculum(dbPath, FIXTURE_DIR);
+
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const kanji = db
+        .prepare(
+          'SELECT meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url FROM items WHERE item_type = ? AND slug = ?',
+        )
+        .get('kanji', 'n5-ichi') as {
+        meaning_mnemonic: string | null;
+        reading_mnemonic: string | null;
+        description: string | null;
+        visual_mnemonic_url: string | null;
+      };
+      expect(kanji.meaning_mnemonic).toContain('single horizontal stroke');
+      expect(kanji.reading_mnemonic).toContain('いち');
+      expect(kanji.description).toContain('simplest kanji');
+      expect(kanji.visual_mnemonic_url).toBe('https://assets.example/kanji/n5/n5-ichi.png');
+
+      const rule = db
+        .prepare('SELECT explanation_markdown, caution_notes FROM grammar_rules WHERE structure = ?')
+        .get('Noun + です') as { explanation_markdown: string | null; caution_notes: string | null };
+      expect(rule.explanation_markdown).toContain('polite copula');
+      expect(JSON.parse(rule.caution_notes!)).toEqual([
+        'です attaches to nouns and な-adjectives, never directly to verbs.',
+      ]);
+
+      const relatedLink = db
+        .prepare(
+          `SELECT parent.slug AS from_slug, related.slug AS to_slug
+           FROM grammar_related_links link
+           JOIN items parent ON parent.id = link.grammar_item_id
+           JOIN items related ON related.id = link.related_item_id`,
+        )
+        .get() as { from_slug: string; to_slug: string };
+      expect(relatedLink).toEqual({ from_slug: 'desu', to_slug: 'ja-nai' });
+
+      const passage = db
+        .prepare('SELECT id, english_translation, word_count FROM reading_passages')
+        .get() as { id: number; english_translation: string | null; word_count: number | null };
+      expect(passage.english_translation).toBe('It is a test.');
+      expect(passage.word_count).toBe(2);
+
+      const passageGrammar = db
+        .prepare(
+          `SELECT items.slug AS slug FROM passage_grammar_links link
+           JOIN items ON items.id = link.grammar_item_id
+           WHERE link.passage_id = ?`,
+        )
+        .all(passage.id) as { slug: string }[];
+      expect(passageGrammar).toEqual([{ slug: 'desu' }]);
+
+      const passageVocab = db
+        .prepare(
+          `SELECT items.slug AS slug FROM passage_vocabulary_links link
+           JOIN items ON items.id = link.vocabulary_item_id
+           WHERE link.passage_id = ?`,
+        )
+        .all(passage.id) as { slug: string }[];
+      expect(passageVocab).toEqual([{ slug: 'ichi-v' }]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on an unresolved related grammar slug', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const grammarPath = path.join(curriculumDir, 'grammar', 'n5.json');
+    const grammarFile = JSON.parse(fs.readFileSync(grammarPath, 'utf8'));
+    grammarFile.items[0].related_grammar_slugs = ['no-such-grammar'];
+    fs.writeFileSync(grammarPath, JSON.stringify(grammarFile));
+
+    try {
+      expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
+        'Unresolved related grammar link: desu -> grammar:no-such-grammar',
+      );
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on an unresolved passage grammar slug', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
+    readingsFile.passages[0].grammar_slugs = ['no-such-grammar'];
+    fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
+
+    try {
+      expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
+        'Unresolved passage grammar link: Test -> grammar:no-such-grammar',
+      );
+    } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
   });

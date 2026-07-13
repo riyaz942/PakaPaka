@@ -22,6 +22,9 @@ CREATE TABLE items (
   furigana TEXT,
   meaning TEXT NOT NULL,
   mnemonic_text TEXT,
+  meaning_mnemonic TEXT,
+  reading_mnemonic TEXT,
+  description TEXT,
   visual_mnemonic_url TEXT,
   sort_order INTEGER NOT NULL DEFAULT 0,
   UNIQUE (item_type, slug)
@@ -49,7 +52,16 @@ CREATE TABLE grammar_rules (
   structure TEXT NOT NULL,
   conjugation_rules TEXT NOT NULL,
   accepted_forms TEXT NOT NULL,
-  family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns'))
+  family TEXT CHECK(family IN ('particles', 'copula', 'conjugations', 'connectors', 'patterns')),
+  explanation_markdown TEXT,
+  caution_notes TEXT
+);
+
+CREATE TABLE grammar_related_links (
+  id INTEGER PRIMARY KEY NOT NULL,
+  grammar_item_id INTEGER NOT NULL REFERENCES items(id),
+  related_item_id INTEGER NOT NULL REFERENCES items(id),
+  sort_order INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE grammar_cloze_variants (
@@ -91,7 +103,21 @@ CREATE TABLE reading_passages (
   title TEXT NOT NULL,
   body TEXT NOT NULL,
   body_furigana TEXT,
+  english_translation TEXT,
+  word_count INTEGER,
   sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE passage_grammar_links (
+  id INTEGER PRIMARY KEY NOT NULL,
+  passage_id INTEGER NOT NULL REFERENCES reading_passages(id),
+  grammar_item_id INTEGER NOT NULL REFERENCES items(id)
+);
+
+CREATE TABLE passage_vocabulary_links (
+  id INTEGER PRIMARY KEY NOT NULL,
+  passage_id INTEGER NOT NULL REFERENCES reading_passages(id),
+  vocabulary_item_id INTEGER NOT NULL REFERENCES items(id)
 );
 
 CREATE TABLE passage_questions (
@@ -111,6 +137,9 @@ CREATE TABLE external_id_mappings (
 );
 
 CREATE INDEX idx_grammar_cloze_variants_item ON grammar_cloze_variants(item_id);
+CREATE INDEX idx_grammar_related_links_item ON grammar_related_links(grammar_item_id);
+CREATE INDEX idx_passage_grammar_links_passage ON passage_grammar_links(passage_id);
+CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(passage_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

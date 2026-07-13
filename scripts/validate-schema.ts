@@ -152,6 +152,7 @@ function runFuriganaChecks(
       items: {
         slug: string;
         accepted_forms: string[];
+        related_grammar_slugs?: string[];
         cloze_variants?: { jp_cloze: string; answer: string }[];
         example_sentences?: { japanese: string; furigana?: string }[];
       }[];
@@ -167,6 +168,11 @@ function runFuriganaChecks(
         );
       }
       runClozeVariantChecks(relative, item, errors);
+      if ((item.related_grammar_slugs ?? []).includes(item.slug)) {
+        errors.push(
+          `${relative} grammar:${item.slug}: related_grammar_slugs must not reference the item itself`,
+        );
+      }
     }
     return;
   }

@@ -89,6 +89,10 @@
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
+        "meaning_mnemonic": { "type": "string", "minLength": 1 },
+        "reading_mnemonic": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "visual_mnemonic_url": { "type": "string", "format": "uri", "pattern": "^https://" },
         "sort_order": { "type": "integer", "minimum": 0 },
         "readings": {
           "type": "array",
@@ -183,6 +187,17 @@
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
+        "explanation_markdown": { "type": "string", "minLength": 1 },
+        "caution_notes": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "related_grammar_slugs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true
+        },
         "sort_order": { "type": "integer", "minimum": 0 },
         "structure": { "type": "string", "minLength": 1 },
         "conjugation_rules": { "type": "object" },
@@ -247,6 +262,18 @@
         "title": { "type": "string", "minLength": 1 },
         "body": { "type": "string", "minLength": 1 },
         "body_furigana": { "type": "string", "minLength": 1 },
+        "english_translation": { "type": "string", "minLength": 1 },
+        "grammar_slugs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true
+        },
+        "vocabulary_slugs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true
+        },
+        "word_count": { "type": "integer", "minimum": 1 },
         "sort_order": { "type": "integer", "minimum": 0 },
         "questions": {
           "type": "array",
