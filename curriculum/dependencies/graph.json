@@ -17,13 +17,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n5-sen",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n5-hyaku",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -59,21 +52,7 @@
     {
       "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n5-hyaku",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
       "to_slug": "n5-sen",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n5-kyuu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -206,13 +185,6 @@
     {
       "from_slug": "kuchi",
       "from_type": "radical",
-      "to_slug": "n5-kaku-write",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kuchi",
-      "from_type": "radical",
       "to_slug": "n5-takai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -246,13 +218,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "onna",
-      "from_type": "radical",
-      "to_slug": "n5-hana",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ko",
       "from_type": "radical",
       "to_slug": "n5-ko-child",
@@ -281,23 +246,9 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "chikara",
-      "from_type": "radical",
-      "to_slug": "n5-dai-big",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ta",
       "from_type": "radical",
       "to_slug": "n5-otoko",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ta",
-      "from_type": "radical",
-      "to_slug": "n5-kaeru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -416,13 +367,6 @@
     {
       "from_slug": "hi-sun",
       "from_type": "radical",
-      "to_slug": "n5-hantime",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hi-sun",
-      "from_type": "radical",
       "to_slug": "n5-hayai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -445,13 +389,6 @@
       "from_slug": "hi-sun",
       "from_type": "radical",
       "to_slug": "n5-kaku-write",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hi-sun",
-      "from_type": "radical",
-      "to_slug": "n5-shu-week",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -575,13 +512,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "shinnyou",
-      "from_type": "radical",
-      "to_slug": "n5-kaeru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "gonben",
       "from_type": "radical",
       "to_slug": "n5-iu-gen",
@@ -662,13 +592,6 @@
       "from_slug": "tomeru",
       "from_type": "radical",
       "to_slug": "n5-tomeru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tomeru",
-      "from_type": "radical",
-      "to_slug": "n5-sei-life",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -879,13 +802,6 @@
       "from_slug": "shikabane-kan",
       "from_type": "radical",
       "to_slug": "n4-modoru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "takehen",
-      "from_type": "radical",
-      "to_slug": "n4-narau",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },

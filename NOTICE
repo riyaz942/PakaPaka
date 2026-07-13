@@ -1,0 +1,58 @@
+Third-party data attributions
+=============================
+
+This application and its curriculum build pipeline use the following
+open-licensed data sources. The compiled curriculum database
+(mobile/assets/curriculum-seed/curriculum.db and OTA updates of it) contains
+data derived from them. This file is the repository-level attribution required
+by their licenses; the app additionally surfaces these attributions in
+Settings → About.
+
+EDRDG dictionary files: JMdict, KANJIDIC2, KRADFILE
+---------------------------------------------------
+This project uses the JMdict, KANJIDIC2, and KRADFILE/RADKFILE dictionary
+files. These files are the property of the Electronic Dictionary Research and
+Development Group (EDRDG), and are used in conformance with the Group's
+licence: Creative Commons Attribution-ShareAlike 4.0 International
+(CC BY-SA 4.0).
+
+  https://www.edrdg.org/edrdg/licence.html
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+Used for: verifying and correcting kanji readings/meanings, vocabulary
+glosses/readings, and kanji component decompositions in curriculum/ (see
+curriculum/_build/import/). Corrected facts derived from these files ship in
+the curriculum database.
+
+JmdictFurigana
+--------------
+Furigana annotations in the curriculum (bracket-notation readings on
+vocabulary, example sentences, and reading passages) are derived from the
+JmdictFurigana project by Doublevil, licensed CC BY-SA 4.0. JmdictFurigana is
+itself derived from the EDRDG's JMdict.
+
+  https://github.com/Doublevil/JmdictFurigana
+  https://creativecommons.org/licenses/by-sa/4.0/
+
+KanjiVG
+-------
+Kanji/radical stroke-order data and rendered stroke/component images are
+derived from KanjiVG, copyright © Ulrich Apel, licensed Creative Commons
+Attribution-ShareAlike 3.0 (CC BY-SA 3.0).
+
+  https://kanjivg.tagaini.net/
+  https://creativecommons.org/licenses/by-sa/3.0/
+
+Note on derived assets: PNG/WebP card images rendered from KanjiVG SVGs
+(including those hosted for download by the app) are derivative works and are
+themselves distributed under CC BY-SA 3.0.
+
+Tatoeba
+-------
+Tatoeba sentence exports (https://tatoeba.org/, CC BY 2.0 FR) are consulted at
+build time as style references only. No Tatoeba sentence text — verbatim or
+adapted — ships in the app or the curriculum database, so no per-sentence
+attribution applies. Should that ever change, per-sentence attribution as
+required by CC BY 2.0 FR must be added here and in the app.
+
+  https://creativecommons.org/licenses/by/2.0/fr/
