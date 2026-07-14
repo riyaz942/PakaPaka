@@ -19,6 +19,7 @@ references abort generation with a clear error.
 import argparse
 import json
 import os
+import re
 import sys
 
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,6 +28,15 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
+from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+
+LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
+
+# Kanji/kana runs (incl. 々〆 and the long-vowel mark) for the lesson-markdown
+# furigana pass below.
+_JP_RUN_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿々〆ー]+")
+_FENCE_RE = re.compile(r"^```([A-Za-z]*)\s*$")
+_CODE_SPAN_RE = re.compile(r"`[^`]*`")
 
 
 def write_json(path, data):
@@ -141,6 +151,87 @@ def build_n5_vocab():
     return _build_vocab_level("N5", N5_VOCAB)
 
 
+def _annotate_prose_line(line, known_readings):
+    """Annotates kanji-bearing Japanese runs embedded in prose. Runs already
+    followed by a bracket annotation are left alone, so reviewer hand-edits
+    that carry notation survive a rebuild. Inline `code` spans are skipped —
+    lessons use them for deliberately-incorrect forms, which the renderer
+    shows without furigana."""
+    code_spans = [m.span() for m in _CODE_SPAN_RE.finditer(line)]
+    out = []
+    pos = 0
+    for match in _JP_RUN_RE.finditer(line):
+        if any(start <= match.start() < end for start, end in code_spans):
+            continue
+        run = match.group(0)
+        if not any(furigana_lib.is_kanji(ch) for ch in run):
+            continue
+        if match.end() < len(line) and line[match.end()] == "[":
+            continue
+        annotated = furigana_lib.annotate_sentence(run, known_readings)
+        if annotated is None or annotated == run:
+            continue
+        out.append(line[pos:match.start()])
+        out.append(annotated)
+        pos = match.end()
+    out.append(line[pos:])
+    return "".join(out)
+
+
+def _annotate_lesson_markdown(body, known_readings, label):
+    """Build-time furigana pass over a lesson body: ```jp fence lines are
+    annotated as whole sentences, prose lines per Japanese run. Authors and
+    generators write plain Japanese; the tokenizer — never the LLM — supplies
+    readings (docs/content-pipeline-plan.md Phase 0). Annotation failures
+    leave the text plain and warn: for *generated* drafts the Phase 2 gate has
+    already rejected them, so a warning here means a human edit needs fixing."""
+    lines = body.replace("\r\n", "\n").split("\n")
+    out = []
+    in_fence = False
+    fence_is_jp = False
+    for line in lines:
+        fence = _FENCE_RE.match(line.strip())
+        if fence:
+            if in_fence:
+                in_fence = False
+            else:
+                in_fence = True
+                fence_is_jp = fence.group(1).lower() in ("jp", "japanese")
+            out.append(line)
+            continue
+        if in_fence:
+            if fence_is_jp and line.strip():
+                stripped = line.strip()
+                annotated = furigana_lib.annotate_sentence(stripped, known_readings)
+                if annotated is None:
+                    # Pedagogical non-sentences (conjugation arrows 食べる → 食べて)
+                    # fail the whole-line round-trip; annotate per Japanese run.
+                    annotated = _annotate_prose_line(stripped, known_readings)
+                    if annotated == stripped and any(
+                        furigana_lib.is_kanji(ch) for ch in stripped
+                    ):
+                        print(f"warning: {label}: furigana failed for jp line: {stripped}",
+                              file=sys.stderr)
+                out.append(annotated)
+            else:
+                out.append(line)
+        else:
+            out.append(_annotate_prose_line(line, known_readings))
+    return "\n".join(out)
+
+
+def _load_lesson(level_slug, slug, known_readings):
+    """(sidecar_meta, annotated_body) for grammar/lessons/<level>/<slug>.md,
+    or None when the grammar point has no long-form lesson yet."""
+    path = os.path.join(LESSONS_DIR, level_slug, f"{slug}.md")
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as f:
+        meta, body = frontmatter_lib.parse(f.read())
+    label = f"grammar lesson {level_slug}/{slug}"
+    return meta, _annotate_lesson_markdown(body, known_readings, label)
+
+
 def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_readings=None):
     errors = []
     items = []
@@ -181,6 +272,29 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_reading
             item["cloze_variants"] = [
                 {**cv, "sort_order": j} for j, cv in enumerate(g["cloze_variants"])
             ]
+        lesson = _load_lesson(jlpt_level.lower(), g["slug"], known_readings)
+        if lesson:
+            meta, body = lesson
+            item["explanation_markdown"] = body
+            if meta.get("caution_notes"):
+                item["caution_notes"] = meta["caution_notes"]
+            related = meta.get("related_grammar_slugs") or []
+            if related:
+                grammar_slugs = {entry["slug"] for entry in grammar_entries}
+                for rs in related:
+                    if rs == g["slug"] or rs not in grammar_slugs:
+                        errors.append(
+                            f"grammar {g['slug']} lesson frontmatter references "
+                            f"unknown/self related grammar '{rs}'"
+                        )
+                item["related_grammar_slugs"] = related
+            sidecar = {
+                key: meta[key]
+                for key in ("generator_model", "prompt_version", "review_status", "reviewed_by")
+                if meta.get(key)
+            }
+            if sidecar:
+                item["_meta"] = sidecar
         items.append(item)
     if errors:
         raise ValueError(f"{jlpt_level} grammar reference errors:\n" + "\n".join(errors))

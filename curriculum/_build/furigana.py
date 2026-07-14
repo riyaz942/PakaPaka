@@ -127,6 +127,14 @@ def annotate_word(form, reading):
 _TAGGER = None
 
 
+def get_tagger():
+    """Public accessor for the shared fugashi/unidic tagger. Phase 2 tooling
+    (generate_content/level_check.py) must level-check with the *same*
+    tokenizer that produces shipped furigana — see the "one tokenizer, not
+    two" rule in docs/content-pipeline-plan.md."""
+    return _get_tagger()
+
+
 def _get_tagger():
     global _TAGGER
     if _TAGGER is None:

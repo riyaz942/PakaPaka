@@ -149,8 +149,23 @@ on the top model via batches. Use the best available model; content is the produ
 Rubric prompt encoding the MaruMori qualities listed at the top, with strict inputs:
 
 - the grammar point: `structure`, `conjugation_rules`, `accepted_forms`, JLPT level
-- **allowed vocabulary**: the slugs unlocked at this point in the curriculum order
-  (derivable from `sort_order` + the dependency graph) — examples must stay in-level
+- **allowed vocabulary** — examples must stay in-level. *Derivation override
+  (decided after the Phase 1 spot-check):* the original derivation here was the
+  item's simulated planner unlock position (`sort_order` + dependency graph, as
+  the app sequences content). The spot-check
+  (`curriculum/_build/reports/allowed-vocab-spotcheck.md`) showed that is
+  unusable — the planner's quotas leave the first grammar point with **1**
+  unlocked word, ~100/171 points are taught before their own linked vocab, and
+  ~138 N5 words defer into N4 behind cross-level kanji edges. Adopted instead:
+  **option (a) — same-level vocab by proportional `sort_order` cutoff** (grammar
+  point g of G gets the first ⌈g/G·V⌉ of the level's V vocab items), plus all
+  lower-level vocab, plus the point's own `vocabulary_slugs`, plus the
+  function-word/colloquialism allowlists from the exception policy below.
+  Implementation + full rationale: `curriculum/_build/generate_content/context.py`.
+  Known trade-off: the vocab list is ordered thematically, not by frequency, so
+  very common words can sit late in the cutoff (食べる enters around grammar
+  point ~38) — the generator sees the exact allowed list, so lessons stay
+  self-consistent, but early-lesson scenarios are correspondingly constrained.
 - **sibling grammar** already taught (for contrast sections) and upcoming related points
   (for forward teasers) via `related_grammar_slugs`
 - 3–5 Tatoeba sentences containing the pattern, as *style anchors* (real usage), with
@@ -166,6 +181,24 @@ Rubric prompt encoding the MaruMori qualities listed at the top, with strict inp
 the かどうか lesson. Only then batch the rest. Prompt lives in the repo
 (`curriculum/_build/generate_content/prompts/grammar-lesson.md`) and is versioned
 (`prompt_version` in sidecar metadata) so regeneration is reproducible.
+
+*Status: tooling built.* `curriculum/_build/generate_content/` holds the prompts
+(persona, cast bible, lesson rubric), the option-(a) allowed-vocab derivation
+(`context.py`), the tokenizer level-check + exception policy (`level_check.py`),
+Tatoeba style anchors (`tatoeba.py`, needs `import/fetch_sources.sh --tatoeba`),
+the mechanical gate (`validate_drafts.py`), and the batch driver
+(`generate_grammar_lessons.py`, `claude-opus-4-8` via Message Batches, one forced
+`submit_grammar_lesson` tool call per point, 3-attempt requeue then
+`flagged_for_rewrite`). Pilot slugs: は・が・ませんか・て形・てもいい・
+てはいけない・から・ので・たことがある・ほうがいい (contrast pairs built in).
+Run from `curriculum/_build` with API credentials:
+`.venv/bin/python -m generate_content.generate_grammar_lessons run` — gate-passing
+drafts land as `curriculum/grammar/lessons/n5/<slug>.md` (`review_status: draft`
+frontmatter carrying sidecar metadata + `caution_notes`/`related_grammar_slugs`);
+`generate.py` inlines them into the grammar JSON and runs the build-time furigana
+pass over ```jp fences and prose Japanese. Candidate `cloze_variants` are emitted
+in the same call (per the docs 07–09 coordination note) but stay in
+`generate_content/drafts/` as authoring input — they do not ship.
 
 **Prerequisites for the pilot, not open questions:** the voice doc and mnemonic cast
 bible (see 2b) must be locked *before* the 10-point pilot — regenerating items later

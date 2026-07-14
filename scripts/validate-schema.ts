@@ -324,7 +324,11 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
-        walk(fullPath);
+        // _build is the tooling workspace (datasets, importers, generation
+        // drafts) — its JSON never ships and has no schema mapping.
+        if (entry.name !== '_build') {
+          walk(fullPath);
+        }
         continue;
       }
       if (entry.name.endsWith('.json') && !fullPath.includes(`${path.sep}schema${path.sep}`)) {

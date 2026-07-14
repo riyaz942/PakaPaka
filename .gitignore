@@ -15,3 +15,7 @@ dist/
 # curriculum/_build/fetch_furigana_dataset.sh)
 curriculum/_build/data/
 curriculum/_build/.venv/
+
+# Phase 2 generation working files: raw batch drafts + request previews.
+# Gate-passing lessons are assembled into curriculum/grammar/lessons/ (committed).
+curriculum/_build/generate_content/drafts/
