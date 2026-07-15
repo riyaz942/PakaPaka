@@ -200,6 +200,14 @@ pass over ```jp fences and prose Japanese. Candidate `cloze_variants` are emitte
 in the same call (per the docs 07–09 coordination note) but stay in
 `generate_content/drafts/` as authoring input — they do not ship.
 
+*No-API alternative for step 4 (batching the remaining ~161 points):*
+`docs/grammar-web-chat-workflow.md` documents a paste-into-Claude/Gemini-web
+flow using the same `context.py`, prompts, and `validate_drafts.py` gate — the
+`webprompts` and `ingest` subcommands of `generate_grammar_lessons.py`. Only the
+model call moves to the browser; the vocab constraints and mechanical gate are
+identical, so it's a cost swap (flat subscription vs. per-token), not a quality
+compromise. Use it to avoid the API cost of the long tail.
+
 **Prerequisites for the pilot, not open questions:** the voice doc and mnemonic cast
 bible (see 2b) must be locked *before* the 10-point pilot — regenerating items later
 without the same voice/cast sheet is how mnemonic systems fall apart — and the pilot
