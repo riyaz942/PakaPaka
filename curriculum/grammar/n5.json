@@ -717,7 +717,20 @@
         "iku-v",
         "ocha"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You're walking around the park with an acquaintance. You're both tired and hungry, and you want to suggest getting some food. How do you step up and propose a plan?\n\n```jp\n一[いっ]緒[しょ]にご飯[はん]を食[た]べましょう。\n```\n*Let's eat a meal together.*\n\n## How it works\n\nTo make this \"let's\" form, you add ましょう to the **stem** of a verb. \n\nThe stem is simply the core of the verb—the part you'd put before polite endings like ます. If you are building it directly from the dictionary form:\n\n- For ru-verbs (like 食[た]べる or 見[み]る), drop the final る and add ましょう.\n- For u-verbs (like 飲[の]む or 行[い]く), change that final 'u' sound to an 'i' sound (飲[の]む becomes 飲[の]み), then add ましょう.\n\n```jp\n学[がっ]校[こう]に行[い]きましょう。\nコーヒーを飲[の]みましょう。\n```\n*Let's go to school.*\n*Let's drink coffee.*\n\n## Softening the suggestion (ましょうか)\n\nIf you add the question particle か to the end, you get ましょうか. This simple tweak does two very useful things.\n\nFirst, it turns a confident \"Let's\" into a softer \"Shall we?\":\n\n```jp\n帰[かえ]りましょうか。\n```\n*Shall we go home?*\n\nSecond, it lets you offer your own help to someone else. If you see someone looking warm in a stuffy room, you can offer to fix it:\n\n```jp\n窓[まど]を開[あ]けましょうか。\n```\n*Shall I open the window?*\n\n## Rules and exceptions\n\nBecause this pattern is all about proposing actions, you can only use it with things you actually have the power to do. \n\n> You can suggest \"Let's wait here\" (ここで待[ま]ちましょう), but you cannot say something like `分かりましょう` (Let's understand). If an action is out of your direct control, ましょう doesn't work.\n\n```jp\nここで待[ま]ちましょう。\n```\n*Let's wait here.*\n\n## Casual speech\n\nましょう is built for polite company—acquaintances, coworkers, or people you don't know perfectly well. When you are hanging out with close friends, Japanese drops this ending completely.\n\nInstead, verbs morph into a shorter casual form (a volitional form) that usually ends in an \"ou\" sound. For example, 食[た]べましょう shrinks to `食べよう`, and 行[い]きましょう becomes `行こう`. You don't need to master those casual shapes today, but keep your ears open for them when friends talk to each other.\n\n## Looking ahead\n\nThere is one slight catch to using ましょう. When you say \"Let's watch a movie tomorrow,\" you are taking the lead. You are assuming the other person is basically on board.\n\n```jp\n明日[あした]、映[えい]画[が]を見[み]ましょう。\n```\n*Let's watch a movie tomorrow.*\n\nIf you aren't sure if they want to, and you want to politely ask \"Would you like to watch a movie?\", you need a slightly different approach. That's where ませんか comes in. It lives in the exact same space, but offers the listener an easy way to say no. You'll meet it very soon, but for now, enjoy the confidence of ましょう. You're steering the ship.\n",
+      "caution_notes": [
+        "You can only use ましょう with verbs that describe actions you can control; you cannot use it with verbs like 分かる (to understand).",
+        "ましょう is inherently polite, so it is used with colleagues or acquaintances rather than your closest friends."
+      ],
+      "related_grammar_slugs": [
+        "masen-ka"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "masen-ka",
@@ -904,7 +917,21 @@
           "nudge": "Marks the direct object — the thing the verb acts on.",
           "sort_order": 4
         }
-      ]
+      ],
+      "explanation_markdown": "Imagine it is early morning. You have just woken up, you stumble into the kitchen, and you pour yourself some coffee. If you want to describe this routine, you already know the word for coffee (コーヒー) and the verb for drinking (飲[の]む). \n\nBut in Japanese, you cannot just shove a noun and a verb together and hope your listener figures it out. You need a way to tell them, \"Hey, this coffee? It is the thing taking the hit. It is the target of my action.\"\n\nIn English, we rely entirely on the order of the words to know who is doing what. \"I drink coffee\" makes perfect sense, but \"Coffee drink I\" sounds like nonsense. Japanese, however, handles this completely differently. Instead of relying on a strict order, Japanese uses tiny grammatical tags attached to the ends of words to announce their job in the sentence.\n\nEnter the particle を.\n\n## How the object marker works\n\nThink of を as a target reticle. It is a particle—a little word that attaches directly to the end of a noun—and its entire job is to point at an action and say, \"The action happens to THIS.\"\n\nWhenever you eat something, drink something, watch something, or buy something, the thing receiving that action gets the を particle.\n\n```jp\nコーヒーを飲[の]む。\nパンを食[た]べる。\n本[ほん]を読[よ]む。\n```\n*I drink coffee.*\n*I eat bread.*\n*I read a book.*\n\nTyping and pronunciation note: When you are typing on a keyboard, you will type this character as \"wo\". However, in modern spoken Japanese, the \"w\" sound is almost entirely dropped. You will hear native speakers pronounce it exactly like the vowel \"o\" (お). It is a special character that exists almost exclusively to serve as this grammar particle.\n\n## Building bigger sentences\n\nBecause particles like を act as permanent nametags for your words, it gives Japanese incredible flexibility. Let's bring back the topic marker は (the particle that means \"as for X...\") and see how they play together.\n\n```jp\n私[わたし]はお茶[ちゃ]を飲[の]む。\n彼[かの]女[じょ]は映[えい]画[が]を見[み]る。\n```\n*I drink tea.*\n*She watches a movie.*\n\nNotice the natural rhythm of a standard Japanese sentence: Topic は Object を Verb. The topic sets the stage at the beginning, the object receives the action in the middle, and the verb rigidly anchors the very end of the sentence.\n\nBut here is where the particle system shines. Because the particles are attached to the nouns, you can actually shuffle the order of the information before the verb, and the sentence still means the exact same thing.\n\n```jp\n私[わたし]は肉[にく]を食[た]べる。\n肉[にく]を私[わたし]は食[た]べる。\n```\n*I eat meat.*\n*As for the meat, I eat it.*\n\nBoth sentences mean you are eating meat. The second one just places a bit more emphasis on the meat by putting it first. Because を is glued to 肉[にく], and は is glued to 私[わたし], your listener never gets confused about who is eating and what is being eaten.\n\n## Asking what someone is doing\n\nYou will use を constantly when asking people about their plans or their habits. If you want to ask \"what\" someone is doing, you combine the question word 何[なに] (what) with the を particle.\n\n```jp\n何[なに]を買[か]う？\n明日[あした]、パンを買[か]う。\n```\n*What will you buy?*\n*Tomorrow, I will buy bread.*\n\n```jp\n毎[まい]日[にち]、何[なに]を見[み]る？\n映[えい]画[が]を見[み]る。\n```\n*What do you watch every day?*\n*I watch movies.*\n\n> Notice how we didn't use the topic marker は for \"you\" or \"I\" in these examples? If you are looking right at your friend and asking a question, they already know you are talking to them. Japanese loves efficiency—if the topic is obvious from the context, you just drop it entirely and jump straight to the object and the verb.\n\n## Rules and exceptions\n\nThere is one massive, unbreakable rule for を: it only ever works with action verbs.\n\nYou use it for eating, reading, buying, seeing, and listening. You absolutely **never** use it with the copula です (the word that works like *is/am/are*). \n\nIf you want to say \"It is water,\" you say `水です`. If you try to say `水をです`, you are basically saying \"I am doing an action to the water... is.\" It is grammatical gibberish. Save を strictly for when a noun is actively having something done to it.\n\n## Casual speech\n\nHere is a messy truth about conversational Japanese that textbooks often hide until much later: when you are chatting casually with your friends, the を particle frequently vanishes into thin air.\n\nWhen the context is totally clear, native speakers speak quickly and drop the object marker to save a syllable.\n\n```jp\nお酒[さけ]飲[の]む？\nこれ食[た]べる。\n```\n*Want to drink alcohol?*\n*I'll eat this.*\n\nTechnically, these are `お酒を飲む？` and `これを食べる。`. While you are still building your muscle memory and getting used to how Japanese sentences are structured, you should practice using を every time. But do not be surprised when you hear your Japanese friends skipping it in casual situations.\n\n## Contrast: は vs を\n\nBecause Japanese lets you omit so much information, it is completely normal for beginners to get confused about when to use the topic marker は and when to use the object marker を. \n\nLet's look at a sentence with both, and then see what happens if we mix them up.\n\n```jp\n猫[ねこ]は魚[さかな]を食[た]べる。\n```\n*The cat eats fish.*\n\nHere, the cat (猫[ねこ]) is the topic. We are talking about the cat. The fish (魚[さかな]) is the target of the eating. The universe is in harmony.\n\nBut what if you panic and swap the particles?\n\n```jp\n魚[さかな]は猫[ねこ]を食[た]べる。\n```\n*The fish eats the cat.*\n\nNow the fish is the topic (the one doing the action), and the cat is the one taking the hit! \n\nThis is why particles are so vital. は sets the stage and introduces the main actor. を paints the target on the thing receiving the action. \n\nを is your absolute best friend for describing what you do to the world around you. You drink water, you read books, you meet friends. But what happens when something does an action *to* you? Or what if you want to emphasize exactly *who* is doing the action, rather than just treating them as a general topic? Hold onto that thought—it becomes incredibly important when we introduce the subject marker が a little later on.\n",
+      "caution_notes": [
+        "を is only ever used with action verbs, never with the copula です.",
+        "In casual conversation, native speakers frequently drop the を particle entirely if the context is obvious."
+      ],
+      "related_grammar_slugs": [
+        "wa-topic",
+        "ga"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ga",
@@ -1103,7 +1130,22 @@
         "hon",
         "nihongo"
       ],
-      "family": "particles"
+      "family": "particles",
+      "explanation_markdown": "You are sitting at a table with a classmate, and you notice a book left behind. You want to ask who it belongs to, or perhaps declare that it belongs to you. In English, you would use an apostrophe-s ('s) or the word \"of\". \n\nIn Japanese, you handle this with a single, incredibly useful particle: の.\n\n## How it works\n\nThe particle の is a linker. Its primary job is to connect two nouns together, turning them into one single noun block. The most common way you will use this is to show possession.\n\nThe rule is strict: the owner or describing noun always comes first, followed by の, and then the thing being owned or described.\n\n```jp\nこれは誰[だれ]の本[ほん]ですか。\n```\n*Whose book is this?*\n\n```jp\nそれは私[わたし]の本[ほん]です。\n```\n*That is my book.*\n\nJust like in English, you can chain these connections together as much as you need to. You just keep inserting の between the nouns.\n\n```jp\n私[わたし]の友[とも]達[だち]の猫[ねこ]は魚[さかな]を食[た]べます。\n```\n*My friend's cat eats fish.*\n\n## Dropping the obvious noun\n\nSometimes, repeating the noun feels clunky. If someone points to a coffee and asks whose it is, you do not need to reply \"It is his coffee.\" You can just say \"It is his.\"\n\nJapanese does the exact same thing. You can drop the final noun completely, leaving の hanging at the end of the phrase, as long as the context makes it obvious what you are talking about.\n\n```jp\nこのコーヒーは誰[だれ]のですか。\n```\n*Whose coffee is this?*\n\n```jp\n彼[かれ]のです。\n```\n*It is his.*\n\n> When you drop the noun like this, の acts like \"mine\", \"yours\", \"his\", or \"hers\". Just remember that the item you are dropping must be clearly understood from the conversation.\n\n## More than just ownership\n\nBecause Japanese rarely lets you smash two nouns directly together, you will use の for much more than just possession. It is the universal glue for any situation where one noun describes another.\n\nIf you want to say \"Japanese teacher\" or \"school photographs\", you cannot just say `日本語先生` or `学校写真`. You have to bridge them with の.\n\n```jp\n日本[にほん]語[ご]の先[せん]生[せい]は明日[あした]来[らい]ます。\n```\n*The Japanese teacher is coming tomorrow.*\n\n```jp\n学[がっ]校[こう]の写[しゃ]真[しん]を見[み]ます。\n```\n*I will look at photos of the school.*\n\n## Don't mix up the order\n\nThe biggest trap for English speakers is reversing the order when translating phrases that use the word \"of\". In English, you say \"the window of the room\". The main thing (the window) comes first.\n\nIn Japanese, the main thing you are talking about always comes last. \n\nIf you say `部屋の窓`, you are talking about the room's window. If you accidentally say `窓の部屋`, you are talking about a room made of windows. Always put the modifier first.\n\n## The difference a particle makes\n\nSince you already know は (the topic marker), let's look at how replacing it with の completely changes your sentence. \n\n```jp\n私[わたし]は友[とも]達[だち]です。\n```\n*I am a friend.*\n\n```jp\n私[わたし]の友[とも]達[だち]です。\n```\n*(They are) my friend.*\n\nThe first sentence uses は to make \"I\" the topic of the whole sentence. The second sentence uses の to link \"I\" and \"friend\" into a single concept before the sentence even finishes.\n\nNow you can talk about all the things that belong to you or your friends. Hold onto this ability to link words together—it will be crucial when we learn how to talk about going *to* a specific location, like a friend's house, using に next.\n",
+      "caution_notes": [
+        "Always put the modifier first—Japanese doesn't let you reverse the order like the English 'of'.",
+        "You cannot drop the linking particle の when combining nouns, even for compound ideas like 'Japanese teacher'.",
+        "It is safe to drop the second noun (leaving just の) only when the context makes it obvious what item you are talking about."
+      ],
+      "related_grammar_slugs": [
+        "wa-topic",
+        "ni-direction"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "no-nominalizer",
@@ -1165,7 +1207,21 @@
         "suki",
         "yomu"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You're at a friend's house and notice them putting on their coat. If you just ask 帰[かえ]りますか, it translates to \"Will you go home?\"—but it sounds a bit cold, like you're reading a survey question. You aren't just asking a random fact; you are seeing their coat and asking for an explanation based on that context. How do you ask \"Oh, are you heading home?\" with natural curiosity?\n\nYou use the explanatory んです.\n\n```jp\n帰[かえ]るんですか。\n```\n*Are you going home?*\n\n### How it works\n\nTo build this, you take a verb in its plain, dictionary form (like 帰[かえ]る instead of 帰[かえ]ります) and add んです.\n\n```jp\n明日[あした]行[い]くんです。\n```\n*The thing is, I'm going tomorrow.*\n\nTo ask a question, you just add the question particle か to the end.\n\n```jp\n何[なに]を買[か]うんですか。\n```\n*What is it that you are buying?*\n\nWhy does this exist? Japanese has a tool called a *nominalizer*—a little word that turns an entire verb phrase into a noun-like thing you can talk about. Here, that word is の. When you add の to a verb, you turn \"I go\" into \"The situation is that I go.\" \n\nIn spoken Japanese, の often gets squished into ん, and we cap it off with です to make it polite. (In formal writing, you'll still see the unsquished version: のです).\n\n### Casual speech\n\nIf you are talking to a friend and dropping です, this pattern changes slightly. The ん untangles back into a clear の, and you just raise your pitch at the end to make it a question.\n\n```jp\n今[いま]食[た]べるの？\n```\n*Are you eating now?*\n\n```jp\nどうして飲[の]まないの？\n```\n*Why aren't you drinking?*\n\n> When answering casually, using a flat の at the end of a statement (行[い]くの。) can sound very soft or traditionally feminine. Men often use んだ instead, but when you're just starting out, simply replying with the plain verb (行[い]く。) is your safest bet.\n\n### Reading the room\n\nBecause this pattern is all about explanations and shared context, it comes with a catch: you shouldn't use it for everything.\n\nIf you walk into a room and announce out of nowhere, 明日[あした]行[い]くんです (The thing is, I'm going tomorrow), people will wait for the rest of your story. It sounds like you are making an excuse or explaining a problem. Save it for when someone asks you why, or when you are reacting to something you both can see.\n\n### Contrast: Invitations vs. Explanations\n\nLet's look at how this fits with what you already know. You learned that adding ませんか to a verb stem makes a polite invitation. It looks similar to asking a negative んです question, but the meaning is totally different.\n\n```jp\nコーヒー、飲[の]みませんか。\n```\n*Won't you drink some coffee?*\n\n```jp\nコーヒー、飲[の]まないんですか。\n```\n*Are you not drinking coffee?*\n\nThe first invites them to drink. The second notes that they don't have a cup, and asks for the reason why.\n\nMastering んです is the key to sounding like you're actually participating in a conversation rather than just reading textbook sentences at people. Hold onto this feeling of modifying the ends of verbs—it becomes incredibly important when we look at ongoing actions with ている later on!\n",
+      "caution_notes": [
+        "Using んです on every single sentence sounds like you are constantly making excuses; save it for when you need to explain something or react to shared context.",
+        "In casual speech, declarative statements ending in a flat の can sound traditionally feminine, so answering simply with the plain verb is often safer."
+      ],
+      "related_grammar_slugs": [
+        "masen-ka",
+        "te-iru"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ni-direction",
@@ -1236,7 +1292,21 @@
         "iku-v",
         "tomodachi"
       ],
-      "family": "particles"
+      "family": "particles",
+      "explanation_markdown": "You are making weekend plans. You want to tell your friend you are heading to the park, and you want to ask what time they usually wake up. To say *where* you are going or *when* an event happens, you need a way to pinpoint that information. In Japanese, we use the particle に.\n\n## How it works\n\nThink of に as a dart. You throw it, and it lands on a specific, fixed target. That target can be a place on a map, a specific time on a clock, or even a person.\n\nFirst, let's throw the dart at a map. When you use motion verbs like 行[い]く (to go) or 帰[かえ]る (to return home), に attaches to the place to mark your exact destination.\n\n```jp\n私[わたし]は学[がっ]校[こう]に行[い]きます。\n```\n*I go to school.*\n\n```jp\n彼[かれ]は家[いえ]に帰[かえ]ります。\n```\n*He returns home.*\n\nNext, throw the dart at a calendar or a clock. に attaches to specific times to say exactly *when* an action happens.\n\n```jp\n何[なに]時[じ]に起[お]きますか。\n```\n*What time do you wake up?*\n\n```jp\n日[にち]曜[よう]日[ひ]に公[こう]園[えん]に行[い]きます。\n```\n*I will go to the park on Sunday.*\n\nFinally, you can throw the dart at a person. When an action is directed at someone—like meeting them or asking them a question—に marks that person as your target.\n\n```jp\n友[とも]達[だち]に会[あ]います。\n```\n*I meet a friend.*\n\n```jp\n先[せん]生[せい]に聞[き]きます。\n```\n*I ask the teacher.*\n\n## Rules and exceptions\n\nHere is where に gets tricky, and it trips everyone up the first week—that's normal! You cannot just put に after *every* time word.\n\nRemember how に is a dart hitting a fixed target? Some time words are relative. \"Tomorrow\" (明日[あした]) changes depending on when you say it. \"Today\" (今日[きょう]) is a floating concept, not a fixed number on a clock or calendar. Because they aren't fixed points, they reject the に dart.\n\n> Relative time words like 今日[きょう] (today), 明日[あした] (tomorrow), and いつ (when) never take に.\n\nSo, you just leave them bare in the sentence:\n\n```jp\n明日[あした]、学[がっ]校[こう]に行[い]きます。\n```\n*I will go to school tomorrow.*\n\n## Casual speech\n\nIn casual, everyday conversation, Japanese speakers often drop particles completely if the meaning is obvious. The destination に is one of the first to disappear when you are talking to friends.\n\n```jp\n明日[あした]、公[こう]園[えん]行[い]く？\n```\n*Are you going to the park tomorrow?*\n\n## に vs を\n\nYou learned を (the direct object particle) for the thing you physically act upon. Compare these two sentences:\n\n```jp\n水[みず]を飲[の]みます。\n```\n*I drink water.*\n\n```jp\n友[とも]達[だち]に会[あ]います。\n```\n*I meet a friend.*\n\nIn the first sentence, water is the object you are directly consuming. In the second, your friend is the *target* you are directing your \"meeting\" action toward. You aren't \"consuming\" your friend! That is why interaction verbs like 会[あ]う (to meet) and 聞[き]く (to ask/listen) take the target particle に, not the direct object を.\n\nWhether it's a place, a time, or a person, に is your trusty dart for hitting the target. Hold onto this concept of a destination—soon you will meet へ, a particle that lives in the same space but cares more about the journey than the exact landing spot.\n",
+      "caution_notes": [
+        "Relative time words like 'today' or 'tomorrow' do not take the に particle because they are not fixed points in time.",
+        "Interaction verbs like 会う (to meet) and 聞く (to ask) take the target particle に, not the direct object particle を."
+      ],
+      "related_grammar_slugs": [
+        "wo",
+        "he-direction"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "he-direction",
