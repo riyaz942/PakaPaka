@@ -2886,7 +2886,22 @@
         "shinpai-suru",
         "wasureru"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You're at home with a terrible cold, wrapped in a blanket. Your well-meaning friend walks in and goes straight for the window to let in some freezing winter air. You need to stop them politely but quickly.\n\nYou already know how to ask someone to do something using てください. Here is how you ask them *not* to.\n\n```jp\n窓[まど]を開[あ]けないでください。\n```\n*Please don't open the window.*\n\n## How it works\n\nTo make a negative request, you take the negative form of the verb (the *nai* form) and attach でください.\n\nFor a regular *ru*-verb, just drop the final る and add ない:\n\n```jp\n傘[かさ]を忘[わす]れないでください。\n```\n*Please don't forget your umbrella.*\n\nFor a *u*-verb, change the final *u* vowel sound to an *a* sound, then add ない. So 飲[の]む (to drink) becomes 飲[の]まない:\n\n```jp\nその水[みず]を飲[の]まないでください。\n```\n*Please don't drink that water.*\n\nAnd for irregular verbs, you just have to remember their shapes. 心[しん]配[ぱい]する (to worry) becomes 心[しん]配[ぱい]しない:\n\n```jp\n心[しん]配[ぱい]しないでください。\n```\n*Please don't worry.*\n\n## The missing joint\n\n> A very common trap is forgetting the little で in the middle. It is never `飲まないください`. The で acts like a structural joint, basically meaning \"in a state of not doing [verb], please exist.\"\n\nGrammatically, this is still a polite request because of ください. But because you are directly telling someone what to do (or not do), it can feel a little heavy-handed if used with a boss or teacher. With friends, coworkers, or strangers on the street, it is perfectly fine.\n\n## Casual speech\n\nWhen you are talking to family or close friends, the full polite phrase often feels too stiff. In casual Japanese, you simply chop off the ください and end the sentence on で.\n\n```jp\n今日[きょう]は学[がっ]校[こう]に行[い]かないで。\n```\n*Don't go to school today.*\n\n## Personal requests vs. Hard rules\n\nYou recently learned てはいけない (must not). They might seem like they do the same job, but they live in entirely different spaces.\n\nてはいけない expresses a strict rule or prohibition. You use it to state a fact about what is forbidden.\n\n```jp\nここに入[はい]ってはいけない。\n```\n*You must not enter here. (It is against the rules)*\n\nないでください is a personal favor. You are making a request of the person in front of you.\n\n```jp\n私[わたし]の部屋[へや]に入[はい]らないでください。\n```\n*Please don't enter my room. (I am asking you not to)*\n\nHold onto this negative *nai* form shape. Soon, we'll see how swapping out the でください for something else gives you the power to say what you *must* do.\n",
+      "caution_notes": [
+        "Always include the particle で between the negative verb and ください; never attach ください directly to the nai-form.",
+        "While grammatically polite, this pattern is a direct command and can sound blunt if used with superiors."
+      ],
+      "related_grammar_slugs": [
+        "te-kudasai",
+        "te-wa-ikenai",
+        "nakereba-naranai"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nakereba-naranai",
@@ -2940,7 +2955,23 @@
         "kusuri",
         "kaeru-v"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You're at a friend's house. The food is delicious, and everyone is having a good time, but you look at the clock. It's late. How do you tell everyone that you really have to leave?\n\n```jp\n私[わたし]は帰[かえ]らなければなりません。\n```\n*I have to go home.*\n\n## How it works\n\nHow does this tongue-twister actually work? It attaches to the negative stem of a verb—the same form you use for `ないでください`. Take `飲む` (to drink), change it to `飲まない` (don't drink), drop the `ない`, and stick `なければならない` right on the end.\n\nWhy is it so long? It's actually a logical combination of two ideas. `なければ` means \"if you don't,\" and `ならない` means \"it won't do\" or \"it is no good.\" Literally, \"if you don't do it, it's no good.\" That is how Japanese expresses \"must.\"\n\n```jp\n薬[くすり]を飲[の]まなければなりません。\n```\n*I have to take medicine.*\n\n```jp\n明日[あした]、学[がっ]校[こう]に行[い]かなければなりません。\n```\n*I have to go to school tomorrow.*\n\n## Rules and exceptions\n\n> Because `ならない` is just a verb sitting at the end of the phrase, its politeness needs to match your situation. Change it to `なりません` when speaking politely, but leave it as `ならない` with friends.\n\nJapanese also has a nearly identical twin to this pattern: `なくてはいけない`. It follows the exact same rules and means the exact same thing (literally, \"as for not doing it, it's bad\"). You will hear both used interchangeably, so just pick the one that feels easier to say for now.\n\n```jp\n今日[きょう]、会[かい]社[しゃ]に行[い]かなくてはいけません。\n```\n*I have to go to the office today.*\n\n## Casual speech\n\nSaying `なければならない` every single time you need to do something takes entirely too much breath. In casual conversation, native speakers almost never say the whole thing out loud. Instead, they squish it down into a single, snappy word: `なきゃ`.\n\nJust take the negative stem and add `なきゃ`. It immediately makes you sound natural and relaxed.\n\n```jp\n今[いま]、寝[ね]なきゃ。\n```\n*I have to sleep now.*\n\n```jp\n明日[あした]、本[ほん]を買[か]わなきゃ。\n```\n*I have to buy a book tomorrow.*\n\n## Two sides of the rules\n\nYou already know how to lay down the law with `てはいけない` (must not). These two patterns are two sides of the strict-rule coin. One forces you to do something, and the other forces you *not* to. Notice how they look side by side.\n\n```jp\nお酒[さけ]を飲[の]んではいけません。\n```\n*You must not drink alcohol.*\n\n```jp\n薬[くすり]を飲[の]まなければなりません。\n```\n*I have to take medicine.*\n\nNow you can clearly talk about your obligations. But what if you *don't* have to do something? Hold onto this negative stem—it will come in handy again when we look at `なくてもいい` to finally let yourself off the hook!\n",
+      "caution_notes": [
+        "This pattern literally means \"if you don't do it, it's no good,\" which is how Japanese expresses \"must.\"",
+        "Because the pattern ends in a verb, you must conjugate the end to なります or ならない to match the politeness of your conversation.",
+        "In everyday casual speech, this long phrase is almost always contracted down to just なきゃ."
+      ],
+      "related_grammar_slugs": [
+        "naide-kudasai",
+        "te-wa-ikenai",
+        "nakutemo-ii"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nakutemo-ii",
@@ -2991,7 +3022,24 @@
         "okane",
         "isogu"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "Your friend starts walking really fast toward the cinema because they think the movie starts soon. You just checked the clock, and you know you have plenty of time. How do you tell them, \"You don't have to hurry\"?\n\n```jp\n急[いそ]がなくてもいいです。\n```\n*You don't have to hurry.*\n\n## How it works\n\nYou already know how to say that something is permitted using `てもいい` (it's okay to do). To say that someone *doesn't have to* do something, we just apply that same idea to a negative action: \"it is okay even if you don't do it.\"\n\nTo build it, take the negative `ない` form of a verb, drop the final `い`, and add `くてもいい`. For example, `食べる` (to eat) becomes `食べない`, which then becomes `食べなくてもいい` (don't have to eat). It behaves exactly like an *i-adjective* (a describing word ending in \"i\").\n\nLet's look at it in a few complete sentences. Notice how we add `です` at the end to keep things polite.\n\n```jp\n野[や]菜[さい]を食[た]べなくてもいいです。\n```\n*You don't have to eat the vegetables.*\n\n```jp\n新[あたら]しい本[ほん]を買[か]わなくてもいいです。\n```\n*You don't have to buy a new book.*\n\n```jp\n明日[あした]は学[がっ]校[こう]に行[い]かなくてもいいです。\n```\n*I don't have to go to school tomorrow.*\n\n## Asking for permission to skip\n\nBecause `なくてもいい` literally means \"is it okay if I don't?\", you can easily turn it into a question to ask if something is optional. Just add the question particle `か` at the end.\n\n```jp\nこの新[しん]聞[ぶん]を読[よ]まなくてもいいですか。\n```\n*Do I not have to read this newspaper? (Is it okay if I don't read this newspaper?)*\n\n## Casual speech\n\nLike most patterns ending in `いいです`, dropping the `です` makes the sentence casual. You will hear this constantly among friends and family.\n\n```jp\n今日[きょう]は急[いそ]がなくてもいい。\n```\n*You don't have to hurry today.*\n\n> If you want to sound even softer when talking to a friend, you can add the particle `よ` to the end (`なくてもいいよ`). It makes it sound like a helpful tip rather than a cold fact.\n\n## Must, must not, or don't have to?\n\nWhen speaking English, we often mix up \"must not\" and \"don't have to.\" In Japanese, it is crucial to keep these concepts completely separate.\n\nIf you want to say someone absolutely *must* do something, use `なければならない`. If they are free to skip it, use `なくてもいい`.\n\n```jp\n今日[きょう]、学[がっ]校[こう]に行[い]かなければならない。\n```\n*I must go to school today.*\n\n```jp\n明日[あした]、学[がっ]校[こう]に行[い]かなくてもいい。\n```\n*I don't have to go to school tomorrow.*\n\nLikewise, if you are actively asking someone *not* to do something, use `ないでください` (please don't). Use `なくてもいい` only when you are giving them the freedom to choose.\n\n```jp\nその水[みず]を飲[の]まないでください。\n```\n*Please don't drink that water.*\n\n```jp\nその水[みず]を飲[の]まなくてもいいです。\n```\n*You don't have to drink that water.*\n\nOnce you are comfortable talking about what you have to do (and what you can skip), we will introduce `たい` — how to talk about what you actually *want* to do!\n",
+      "caution_notes": [
+        "Do not confuse なくてもいい (don't have to) with なければならない (must).",
+        "Do not confuse なくてもいい (it's okay if you don't) with ないでください (please don't).",
+        "なくてもいい literally translates to 'is it okay even if I don't?', so it gives the listener permission to skip an action."
+      ],
+      "related_grammar_slugs": [
+        "te-mo-ii",
+        "nakereba-naranai",
+        "naide-kudasai",
+        "tai"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ta-form",
@@ -3046,7 +3094,21 @@
         "eiga",
         "mou"
       ],
-      "family": "conjugations"
+      "family": "conjugations",
+      "explanation_markdown": "You are at a friend's house. They point to an empty box and ask if you finished the sweets. You want to say \"I ate it.\" If you say 食[た]べました, you will sound like you are giving a formal report to your boss. You need the casual past tense.\n\nThis is where the た形[かたち] (ta-form) comes in. It is the plain, casual equivalent of ました. But here is the best news you will hear all day: if you survived learning the て-form (the connective form), you already know exactly how to make the た-form.\n\n## How it works\n\nThe rule is completely identical to the て-form. You just take the て-form of any verb and swap the final て for **た**. If the te-form ends in で, you swap it for **だ**. That is the entire rule.\n\n```jp\n食[た]べる → 食[た]べて → 食[た]べた\n飲[の]む → 飲[の]んで → 飲[の]んだ\n買[か]う → 買[か]って → 買[か]った\n行[い]く → 行[い]って → 行[い]った\n```\n*Eat becomes ate.*\n*Drink becomes drank.*\n*Buy becomes bought.*\n*Go becomes went.*\n\nLet's look at how this sounds in a normal conversation when you are talking to a friend about what you did recently.\n\n```jp\n昨日[きのう]友[とも]達[だち]と昼[ひる]ご飯[はん]を食[た]べた。\n先[せん]週[しゅう]海[うみ]に行[い]った。\n```\n*Yesterday, I ate lunch with a friend.*\n*Last week, I went to the sea.*\n\n## Rules and exceptions\n\nBecause this is the plain form, it is strictly for casual speech. You use this with your friends, your family, or people younger than you.\n\n> Do not use the plain た-form alone at the end of a sentence with a teacher, a boss, or a stranger. It strips away all the politeness and will sound overly familiar. Stick to ました for those situations.\n\nAlso, keep in mind that this is only for affirmative past actions (\"I did\"). The casual negative past (\"I didn't do\") is a completely different pattern that builds on the ない-form instead.\n\n## Contrast: ました vs た\n\nBoth of these patterns tell the listener that an action is finished and in the past. The only difference is your relationship with the listener.\n\nNotice how the exact same meaning changes its outfit depending on who you are talking to. If you are reporting to your teacher, you use ました. If you are chatting with a friend, you drop down to た.\n\n```jp\n今日[きょう]学[がっ]校[こう]で先[せん]生[せい]に会[あ]いました。\n今日[きょう]学[がっ]校[こう]で友[とも]達[だち]に会[あ]った。\n```\n*Today I met my teacher at school.*\n*Today I met my friend at school.*\n\nYou also already know the て-form, which looks incredibly similar and shares the exact same conjugation rules. Remember that て connects ideas, while た finishes a thought in the past. You will often see them working together in the same sentence.\n\n```jp\n手[て]紙[がみ]を書[か]いて、寝[ね]た。\n```\n*I wrote a letter, and went to sleep.*\n\nMastering the た-form unlocks a massive chunk of everyday, natural Japanese conversation. You will soon see that it isn't just for verbs, either — hold onto this concept, because we will soon see how adjectives have their own past tense rules to say things like \"it *was* big\". For now, get comfortable swapping your て for a た.\n",
+      "caution_notes": [
+        "Do not use the plain た-form alone at the end of a sentence with a teacher, a boss, or a stranger, as it will sound too blunt and familiar."
+      ],
+      "related_grammar_slugs": [
+        "mashita",
+        "te-form",
+        "adj-i-conjugation"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ta-koto-ga-aru",
@@ -3160,7 +3222,24 @@
         "yomu",
         "eiga"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "Imagine you are catching up with a coworker on a Monday morning, and they ask what you did over the weekend. If you try to list out your actions strictly—saying, \"I read a book, I watched TV, and I slept\"—it can sound a bit like a police interrogation report. You are giving a rigid, step-by-step timeline of your weekend that feels almost too precise.\n\nIn real life, we usually want to give a more relaxed summary. You want to say, \"Oh, you know, I did things like reading and watching TV.\" You aren't claiming that those two activities are the *only* things you did, nor are you saying you did them in a specific order. You are just pulling a couple of representative examples out of a hat to give a general vibe of how you spent your day.\n\nTo do this in Japanese, you use the `〜たり〜たりする` pattern. It is the absolute best tool for creating a relaxed, non-exhaustive list of actions, and mastering it will instantly make your Japanese sound more natural and less robotic.\n\n## How it works\n\nTo build this pattern, you need the plain past tense form of your verb. You already know this form from when we learned how to talk about past experiences with `たことがある` (have done before). Because it always ends in a \"ta\" sound, teachers often just call it the \"た-form\".\n\nTake your verb's た-form, and simply attach `り` to the very end.\n\n- `読む` (to read) becomes `読んだ` (read), which becomes `読んだり`.\n- `見る` (to watch) becomes `見た` (watched), which becomes `見たり`.\n- `買う` (to buy) becomes `買った` (bought), which becomes `買ったり`.\n\nOnce you have your verbs ready, you string them together and finish the entire package with the verb `する` (to do).\n\n```jp\n週[しゅう]末[まつ]、本[ほん]を読[よ]んだり、テレビを見[み]たりしました。\n```\n*Over the weekend, I did things like read books and watch TV.*\n\nThink of these `たり` verbs as floating ideas. By themselves, they do not carry any actual tense, and they aren't polite or casual. They are just raw, timeless concepts: \"things like reading\", \"things like watching\". \n\nIt is that final `する` at the end of the sentence that acts as the engine. It grounds those floating ideas in time and determines exactly how polite you are being. In the example above, `する` becomes `しました` because the weekend is in the past, and you are speaking politely to your coworker.\n\nIf you are talking about a daily habit or something you do regularly, the final verb is just the present tense `します`.\n\n```jp\n毎[まい]日[にち]、友[とも]達[だち]と話[はな]したり、お茶[ちゃ]を飲[の]んだりします。\n```\n*Every day, I do things like talk with friends and drink tea.*\n\n## Rules and exceptions\n\nBecause English speakers are used to assigning time to every single verb in a sentence (\"Tomorrow I *will* go and I *will* buy\"), this pattern holds a very common trap: trying to make the `たり` verbs match the time of the event.\n\nIf you are talking about your plans for tomorrow, you might feel a strong urge to use a future or present form for the list. Do not do this! The verbs inside the list are *always* frozen in the past `た` form, even if the action hasn't happened yet. Only the final `する` gets to change to show the future tense.\n\n```jp\n明日[あした]、町[まち]へ行[い]ったり、服[ふく]を買[か]ったりします。\n```\n*Tomorrow, I will do things like go to town and buy clothes.*\n\nNotice how it is still `行ったり` and `買ったり`, even though the sentence is clearly about tomorrow (`明日`). The final `します` does all the heavy lifting to tell the listener this is a future plan. Never try to say something like `行くなり` or `買うたり`—the form is strictly locked to the past tense shape.\n\n> **The phonetic shift:** Just like with the `て` and `た` forms, verbs that end in a voiced, heavy sound in their dictionary form (like `読む` or `遊ぶ`) carry that heaviness over. Because their た-form ends in `だ` instead of `た`, they take `だり` instead of `たり`.\n\nFor example, `遊ぶ` (to play) becomes `遊んだ`, which becomes `遊んだり`. `飲む` (to drink) becomes `飲んだ`, which becomes `飲んだり`.\n\n```jp\n公[こう]園[えん]で遊[あそ]んだり、水[みず]を飲[の]んだりしました。\n```\n*I did things like play in the park and drink water.*\n\nAnother massive feature of this grammar point: you do not actually have to list two things. You can absolutely use just a single `たり` to soften a statement. When you use it with just one verb, it implies, \"I did this... among other things.\" It acts like a verbal shrug that keeps you from sounding overly declarative.\n\n```jp\n昨日[きのう]は、家[いえ]で寝[ね]たりしました。\n```\n*Yesterday, I did things like sleep at home.*\n\n## Casual speech\n\nWhen you are speaking casually with close friends or family members, you simply drop the polite `します` or `しました` and use the casual forms of `する`, which are `する` (for present/future) and `した` (for past).\n\nIn extremely casual, fast-paced Japanese, people sometimes drop the `する` completely if the context is totally obvious, leaving the sentence hanging on `〜たり`. However, as a learner, you should strongly stick to always including the final `する` or `した`. Leaving it off by accident in a polite conversation sounds abruptly unfinished and a bit rude, so build the muscle memory of attaching `する` every time first.\n\n## Mixing menus and rules\n\nYou already know a few powerful rules for giving permission and setting boundaries. Let's look at how beautifully the `たり〜たり` list integrates with the grammar you already know. \n\nThink about the pattern `てもいい` (it's okay to / you may). If you say `テレビを見てもいいです` (you may watch TV), it is a specific green light for one single action.\n\nBut what if you are hosting a guest, and you want to offer them a menu of options? You just take your `たり` list and swap the final `する` engine for `してもいい`.\n\n```jp\n私[わたし]の部屋[へや]で、テレビを見[み]たり、本[ほん]を読[よ]んだりしてもいいです。\n```\n*In my room, you may do things like watch TV or read a book.*\n\nSuddenly, you aren't just granting rigid permission; you are being an accommodating host offering a variety of choices. The list provides the options, and the final `してもいい` grants the permission for all of them at once.\n\nThe exact same magic works in reverse with `てはいけない` (must not). A library doesn't just have one single rule; they have a blanket policy of disruptive behaviors to avoid. By changing the final `する` to `してはいけません` (the polite form of must not do), you create a comprehensive ban.\n\n```jp\n図[と]書[しょ]館[かん]で話[はな]したり、電[でん]話[わ]を使[つか]ったりしてはいけません。\n```\n*You must not do things like talk or use the phone in the library.*\n\nAnd if you want to reassure someone that they have the day off and absolutely no obligations to worry about, you can plug in `なくてもいい` (don't have to).\n\n```jp\n明日[あした]、学[がっ]校[こう]へ行[い]ったり、本[ほん]を読[よ]んだりしなくてもいいです。\n```\n*Tomorrow, you don't have to do things like go to school or read a book.*\n\nThe `たり〜たり` pattern turns rigid, singular actions into flexible, representative lists. Because it relies completely on that final `する` to decide the sentence's ultimate meaning, it is incredibly modular. Hold onto this concept of swapping the final engine. When we learn how to express personal desire with `たい` (want to do) later on, you will already know exactly how to say that you want to do things like watch a movie and sleep—you will just swap that hardworking `する` for a `したい`.\n",
+      "caution_notes": [
+        "The verbs inside the list are always frozen in the past tense (た-form), even if you are talking about future plans.",
+        "Never forget to add the final する (or しました, します) at the very end of the sentence to establish the tense and politeness.",
+        "Verbs that end in a voiced sound (like 読む or 遊ぶ) take だり instead of たり."
+      ],
+      "related_grammar_slugs": [
+        "te-mo-ii",
+        "te-wa-ikenai",
+        "nakutemo-ii",
+        "tai"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tai",
@@ -3225,7 +3304,21 @@
         "iku-v",
         "mizu"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You've had a long week, and your friend asks what you're doing this weekend. You don't just plan to sleep—you actively crave it. To express what you want to do, you need a specific pattern.\n\n## How it works\n\nTo build this pattern, take the stem of a verb (the part right before `ます`) and attach `たい`. The verb `寝ます` (sleep) becomes `寝` plus `たい`. Add `です` at the end to keep things polite.\n\n```jp\n週[しゅう]末[まつ]は寝[ね]たいです。\n私[わたし]は日本[にほん]へ行[い]きたいです。\nあの映[えい]画[が]を見[み]たいです。\n```\n*I want to sleep on the weekend.*\n*I want to go to Japan.*\n*I want to watch that movie.*\n\n### Shapeshifting like an adjective\n\nThe real magic of `たい` is that once you attach it, your verb transforms into an *i-adjective*. It ends in `い`, so it conjugates exactly like descriptive words you already know, such as `高い` (expensive) or `新しい` (new). \n\nTo make it negative, drop the `い` and add `くない`. For the past tense, drop the `い` and add `かった`.\n\n```jp\n今日[きょう]は会[かい]社[しゃ]へ行[い]きたくないです。\n昨日[きのう]、あの本[ほん]を買[か]いたかったです。\n```\n*I don't want to go to the office today.*\n*Yesterday, I wanted to buy that book.*\n\n## The unwritten rules of desire\n\n> You can only use `たい` to talk about your *own* desires, or to ask someone directly about theirs (like \"Do you want to go?\"). You cannot use this pattern to state \"He wants to go\" or \"She wants to eat.\"\n\nThere is also a quirk with particles. When you use a verb that normally takes `を` (like drinking water), you will often hear Japanese speakers swap it for `が` when using `たい`.\n\nBecause `たい` acts like an adjective, \"wanting to drink\" becomes a descriptive state rather than a direct action. Both `を` and `が` are perfectly natural here.\n\n```jp\n水[みず]が飲[の]みたいです。\n```\n*I want to drink water.*\n\n## Keeping it casual\n\nBecause `たい` behaves exactly like an i-adjective, making it casual is as simple as dropping `です`. In questions, just use a rising intonation instead of adding `か`.\n\n```jp\n今[いま]、帰[かえ]りたい。\n明日[あした]、会[あ]いたい？\n```\n*I want to go home now.*\n*Do you want to meet tomorrow?*\n\n## When desire meets obligation\n\nSometimes what you want to do and what you *must* do are entirely different things. You already know `なければならない` for obligations. Notice how these two patterns stack up against each other in real life.\n\n```jp\n病[びょう]院[いん]へ行[い]きたくないです。\n病[びょう]院[いん]へ行[い]かなければなりません。\n```\n*I don't want to go to the hospital.*\n*I have to go to the hospital.*\n\nWe've spent this whole time talking about actions you want to *do*. If you just want a physical *thing*—like money or a new camera—you won't use `たい`. There is a different word for that coming right up.\n",
+      "caution_notes": [
+        "You can only use たい to express your own desires, or to ask directly about the listener's desires.",
+        "Once you attach たい, the verb transforms into an i-adjective and conjugates exactly like one (たくない, たかった)."
+      ],
+      "related_grammar_slugs": [
+        "nakereba-naranai",
+        "hoshii"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoshii",
@@ -3278,7 +3371,21 @@
         "kuruma",
         "okane"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You have been walking around town all afternoon in the summer heat. You walk into a convenience store, head straight for the cold drinks, and think: \"I want water.\"\n\n```jp\n水[みず]がほしいです。\n```\n*I want water.*\n\nWhen you want a physical object—something you can hold, buy, or point to—you use the word ほしい.\n\n## The mechanics of wanting\n\nThe structure for expressing what you want is simple: **Noun + が + ほしい**.\n\nNotice the particle が. In English, we say \"I want a car\", treating the car as the direct object of an action. But in Japanese, ほしい is actually an *i-adjective* (a descriptive word like 大[おお]きい or 新[あたら]しい). You are literally saying \"to me, a car is desirable\". That is why we usually use が to mark the thing you want, instead of the object particle を.\n\n```jp\n新[あたら]しい車[くるま]がほしいです。\n```\n*I want a new car.*\n\nBecause ほしい functions exactly like an adjective, it follows all the normal conjugation rules you already know. To make it negative, drop the い and add くない. To make it past tense, drop the い and add かった.\n\n```jp\n古[ふる]い服[ふく]はほしくないです。\n```\n*I don't want old clothes.*\n\n```jp\n去[きょ]年[ねん]、カメラがほしかったです。\n```\n*Last year, I wanted a camera.*\n\n## Reading minds\n\nThere is one major catch with ほしい. Because Japanese is culturally extremely careful about not claiming to know what other people are feeling inside, you can only use ほしい for **your own desires**, or when asking someone directly about theirs.\n\nYou can declare \"I want a book\" or ask your friend \"Do you want a book?\". But you cannot state as a plain fact that your friend wants a book.\n\n> Saying `彼女は本がほしいです` sounds presumptuous, as if you are reading her mind. Later on, you will learn specific grammar to talk about what other people seem to want, but for now, keep ほしい limited to the first and second person.\n\n## Casual speech\n\nWhen you are talking with friends or family, you drop the です completely. In real casual speech, people also frequently drop the particle が, leaving just the noun and the adjective.\n\n```jp\nお茶[ちゃ]がほしいですか。\n```\n*Do you want some tea? (Polite)*\n\n```jp\nお茶[ちゃ]、ほしい？\n```\n*Want some tea? (Casual)*\n\n## Things vs. Actions\n\nThis one trips everyone up the first week, so don't worry if it takes a moment to click. You already learned how to say you want to *do* something using たい. So when do you use ほしい, and when do you use たい?\n\nIt strictly comes down to nouns versus verbs.\n\nIf you want a **thing** (a noun), use ほしい. If you want to **do an action** (a verb), use たい. Look at how these two sentences feel different:\n\n```jp\nパソコンがほしいです。\n```\n*I want a computer.*\n\n```jp\nパソコンを買[か]いたいです。\n```\n*I want to buy a computer.*\n\nYou can never attach ほしい directly to a verb, and you can never attach たい directly to a noun. They each have their own strict territory.\n\nOnce you master asking for what you want, you will eventually want to rank those desires—hold onto this thought for when we meet 一[いち]番[ばん] (the most) to say what you want more than anything else in the world.\n",
+      "caution_notes": [
+        "You can only use ほしい to state your own desires, not those of a third person like 'he' or 'she'.",
+        "Use ほしい for wanting nouns (things) and たい for wanting verbs (actions)—they cannot be swapped."
+      ],
+      "related_grammar_slugs": [
+        "tai",
+        "superlative-ichiban"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ni-iku",
@@ -3335,7 +3442,22 @@
         "kau-v",
         "au"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You're making weekend plans and you want to tell a friend what you're up to. You know how to say \"I'm going to the cinema\" (映[えい]画[が]館[かん]に行[い]く) and you know how to say \"I will watch a movie\" (映[えい]画[が]を見[み]る). But how do you combine them into a single, natural thought?\n\nYou need a way to say you are going *in order to* do something.\n\n## How it works\n\nYou already know the particle に can mark a destination or a time. Here, it steps up to mark the **purpose** of your movement.\n\nTo build this pattern, take the verb for the action you want to do and chop off the ます. We call this the \"verb stem.\" Then, attach に, and finish with a movement verb like 行[い]く (to go), 来[く]る (to come), or 帰[かえ]る (to return).\n\n- 見[み]る (to watch) becomes 見[み]. Add に行[い]く and you get 見[み]に行[い]く (go to watch).\n- 遊[あそ]ぶ (to play/hang out) becomes `遊び`. Add に来[く]る and you get 遊[あそ]びに来[く]る (come to hang out).\n- 食[た]べる (to eat) becomes 食[た]べ. Add に帰[かえ]る and you get 食[た]べに帰[かえ]る (return to eat).\n\nUsually, you also want to say *where* you are going. You put the place at the beginning of the sentence.\n\n```jp\n映[えい]画[が]館[かん]へ映[えい]画[が]を見[み]に行[い]く。\n```\n*I'm going to the cinema to watch a movie.*\n\n```jp\n友[とも]達[だち]がうちへ遊[あそ]びに来[く]る。\n```\n*A friend is coming to my house to hang out.*\n\n```jp\n毎[まい]日[にち]、学[がっ]校[こう]へ勉[べん]強[きょう]しに行[い]く。\n```\n*Every day, I go to school to study.*\n\n> You might notice we used the direction particle へ for the destination (映[えい]画[が]館[かん]へ) instead of に. While you *can* say 映[えい]画[が]館[かん]に映[えい]画[が]を見[み]に行[い]く, using に twice in the same sentence feels repetitive. Many Japanese speakers prefer へ for the destination just to keep things sounding clean.\n\n## Rules and exceptions\n\nThis pattern is incredibly strict about how it ends. The final verb **must** be a verb of physical movement. You can't use this grammar to say \"I stood up to see\" or \"I sat down to eat.\" It exists exclusively for going, coming, or returning somewhere.\n\n```jp\n妹[いもうと]は毎[まい]晩[ばん]、晩[ばん]ご飯[はん]を食[た]べに帰[かえ]る。\n```\n*Every night, my younger sister returns home to eat dinner.*\n\n## Dropping it in casual speech\n\nIn fast, casual conversation, Japanese speakers often drop the purpose に entirely to save breath, smashing the two verbs straight together. You should stick to the full に行[い]く form for polite speech or any written tests, and only recognize the dropped version when you hear it.\n\n## Stacking with what you know\n\nBecause 行[い]く is just a normal verb, you can plug it right into other grammar rules you've already learned, like combining it with a list of activities using たり〜たりする.\n\n```jp\n週[しゅう]末[まつ]、友[とも]達[だち]と遊[あそ]びに行[い]く。\n```\n*This weekend, I'll go hang out with a friend.*\n\n```jp\nレストランへおいしいご飯[はん]を食[た]べに行[い]く。\n```\n*I go to a restaurant to eat delicious food.*\n\n```jp\n週[しゅう]末[まつ]は、本[ほん]を買[か]ったり、映[えい]画[が]を見[み]に行[い]ったりする。\n```\n*On the weekend, I do things like buy books and go watch movies.*\n\nNow you can declare your own plans. But what if you want to invite someone else? \"How about going to eat?\" You'll need どうですか for that, which is coming up next.\n",
+      "caution_notes": [
+        "This grammar pattern only works with verbs of physical movement like 行く, 来る, and 帰る at the end.",
+        "Using に twice in a sentence for both the destination and the purpose is grammatically fine, but many speakers prefer へ for the destination to avoid repeating it."
+      ],
+      "related_grammar_slugs": [
+        "tai",
+        "tari-tari",
+        "dou-desu-ka"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mae-ni",
