@@ -3862,7 +3862,21 @@
         "shinsetsu",
         "benri"
       ],
-      "family": "conjugations"
+      "family": "conjugations",
+      "explanation_markdown": "You're showing a friend pictures of a hotel you stayed at. You want to tell them it was a quiet place, but you also need to warn them that the location wasn't very convenient.\n\nTo do this, you need the other half of the Japanese adjective system: **na-adjectives** (な形[けい]容[よう]詞[し]).\n\nYou already know *i-adjectives* like 高[たか]い (expensive) or 新[あたら]しい (new). Those words are highly independent—they change their own endings to show past or negative tense (like 高[たか]くなかった).\n\nNa-adjectives are completely different. Think of them as noun-like words that are a bit lazy. They don't change their own shapes at all. Instead, they rely on helper words (like the copula です, which functions like *is/am/are*) to do the grammatical heavy lifting.\n\n## Ending a sentence\n\nWhen a na-adjective is the last piece of information in a sentence, you treat it exactly like a noun. You just attach です (or its past tense でした) right after the dictionary form of the word.\n\n```jp\nこの町[まち]は静[しず]かです。\n```\n*This town is quiet.*\n\n```jp\n部屋[へや]はきれいでした。\n```\n*The room was clean.*\n\n> **Wait, isn't きれい an i-adjective?** It ends in an \"i\" sound, so it's a very common trap! But きれい is actually a na-adjective. There are a handful of these tricksters (like 有[ゆう]名[めい], famous, and 嫌[きら]い, disliked). You just have to memorize them as you meet them.\n\n## Connecting to a noun\n\nHere is where na-adjectives get their name. When you want to put the adjective directly in front of a noun to describe it (like saying \"a quiet town\" instead of \"the town is quiet\"), you must use **な** as the glue between them.\n\n```jp\nここは静[しず]かな町[まち]です。\n```\n*This is a quiet town.*\n\n```jp\n有[ゆう]名[めい]な人[ひと]に会[あ]いました。\n```\n*I met a famous person.*\n\nWithout that な, the two words would just crash into each other awkwardly. The な tells the listener, \"Hey, the word I just said is describing the noun coming up right now.\"\n\n## Making it negative\n\nBecause na-adjectives act like nouns, you make them negative the exact same way you make a noun negative: by adding ではありません (is not).\n\n```jp\n私[わたし]は暇[ひま]ではありません。\n```\n*I am not free.*\n\n```jp\n犬[いぬ]が好[す]きではありません。\n```\n*I do not like dogs.*\n\n## Casual speech\n\nIn real conversation with friends, the stiff ではありません almost always contracts. You'll hear people say じゃない instead. So, 暇[ひま]ではありません shrinks down to 暇[ひま]じゃない (I'm not free).\n\n## The biggest trap: mixing up the two groups\n\nWhen you're speaking quickly, your brain will try to apply i-adjective rules to na-adjectives. \n\nIf a book isn't new, you know to change the i-adjective 新[あたら]しい to 新[あたら]しくない:\n\n```jp\n本[ほん]は新[あたら]しくないです。\n```\n*The book is not new.*\n\nBut if you want to say you don't like something, you absolutely cannot chop off the end and turn 好[す]き into `好きくない`. Because 好[す]き is a na-adjective, it can't conjugate itself. You have to use the noun-style negative.\n\n```jp\n魚[さかな]が好[す]きではありません。\n```\n*I do not like fish.*\n\nLearning which adjective belongs to which group takes a bit of practice, but whenever you learn a new word, pay attention to whether it needs that な glue. Speaking of glue, hold onto the idea of な connecting these words to nouns. Later on, when you want to connect them to verbs (to say you did something \"quietly\"), you'll swap that な out for a に.\n",
+      "caution_notes": [
+        "Words ending in an 'i' sound like きれい and 有名 are actually na-adjectives, so they take な before a noun instead of connecting directly.",
+        "Never try to conjugate a na-adjective like an i-adjective; forms like 好きくない are incorrect."
+      ],
+      "related_grammar_slugs": [
+        "adj-i-conjugation",
+        "adj-na-adverb"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "adj-i-adverb",
@@ -3914,7 +3928,21 @@
         "ookii",
         "yasui-adj"
       ],
-      "family": "conjugations"
+      "family": "conjugations",
+      "explanation_markdown": "You've got a big trip tomorrow and need to tell your friend you are waking up early. You know the word for \"early\" (早[はや]い) and the verb for \"wake up\" (起[お]きる). But you can't just mash them together as `早い起きます`. That sounds like \"early wakes up.\"\n\nWhen you want an adjective to describe *how* you do an action—waking up *early*, writing *big*, running *fast*—you need to turn it into an adverb.\n\n## How it works\n\nFor い-adjectives, making an adverb is incredibly simple: drop the final `い` and replace it with `く`.\n\n```jp\n早[はや]い → 早[はや]く\n```\n*early → early (as an adverb)*\n\nNow you can attach it directly to your verb to describe how the action happens:\n\n```jp\n明日[あした]は早[はや]く起[お]きます。\n```\n*I will wake up early tomorrow.*\n\nYou can use this with almost any い-adjective and verb combination. \n\n```jp\nこれを安[やす]く買[か]いました。\n彼[かれ]は速[はや]く走[はし]ります。\nノートに大[おお]きく書[か]きました。\n```\n*I bought this cheaply.*\n*He runs fast.*\n*I wrote big in the notebook.*\n\n## The one big exception\n\nJust like with every other rule you've learned so far, the adjective いい (good) is the rebel. Before you can change it, it reverts to its older, formal shape 良[よ]い (よい). Drop the `い` and add `く`, and you get よく.\n\n```jp\nよく勉[べん]強[きょう]します。\n```\n*I study often.*\n\n> `よく` is incredibly common, but notice how the translation usually becomes \"often\" rather than \"well\" in many situations. If you say よく遊[あそ]びます, it usually means you play a lot, not necessarily that you are highly skilled at playing.\n\n## A mind-blowing connection\n\nDoes dropping `い` and adding `く` feel weirdly familiar? It should.\n\nThink about how you make an adjective negative. To say a bag isn't heavy, you change 重[おも]い to `重くない`. What you are actually doing is turning \"heavy\" into the adverb \"heavily\" (重[おも]く) and attaching it to the negative word ない (not exist).\n\nYou've been using this exact grammar rule since your very first week of adjectives without even knowing it!\n\n## Describing things vs. describing actions\n\nWhen you learn a new pattern, it's easy to accidentally overuse it. If you catch yourself making mistakes, look at what word you are actually trying to describe.\n\nIf you are modifying a noun (a person, place, or thing), keep the regular `い`.\nIf you are modifying a verb (an action), use `く`.\n\n```jp\nこれは速[はや]いバスです。\nバスは速[はや]く走[はし]ります。\n```\n*This is a fast bus.*\n*The bus runs fast.*\n\nIn the first sentence, \"fast\" describes the bus itself. In the second, \"fast\" describes the action of running.\n\nKeep this logic in your back pocket. We just learned how to do this with い-adjectives, but soon you'll need to know how to make na-adjectives (like 静[しず]か) do the exact same thing using に.\n",
+      "caution_notes": [
+        "Adverbs ending in く are used to modify verbs and actions, not nouns.",
+        "The adjective いい (good) changes to よく, not いく."
+      ],
+      "related_grammar_slugs": [
+        "adj-i-conjugation",
+        "adj-na-adverb"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "adj-na-adverb",
@@ -3965,7 +3993,21 @@
         "kirei",
         "genki"
       ],
-      "family": "conjugations"
+      "family": "conjugations",
+      "explanation_markdown": "Imagine you are sitting in the library trying to study. A few tables over, some people are talking loudly, and you want to describe your own situation in contrast. You want to say, \"I am studying quietly.\"\n\nYou already know the word for \"quiet\" (静[しず]か), and you know the verb for \"to study\" (勉[べん]強[きょう]する). But how do you glue them together? If you just smash them next to each other and say `静か勉強します`, it sounds broken to a Japanese speaker, roughly like saying \"I quiet study\" in English. \n\nWe need a way to turn the adjective \"quiet\" into an adverb—a word that modifies an action instead of a thing. We need the Japanese equivalent of \"-ly\".\n\n## How it works: The \"-ly\" of Japanese\n\nTo turn a na-adjective into an adverb, you just take its base form and attach に. \n\nThat's the entire rule. You do not use the な that normally accompanies these adjectives. The に particle steps in to connect the descriptive word directly to the verb that follows it.\n\n*   静[しず]か (quiet) → 静[しず]かに (quietly)\n*   上手[じょうず] (skillful) → 上手[じょうず]に (skillfully)\n*   丁[てい]寧[ねい] (polite / careful) → 丁[てい]寧[ねい]に (politely / carefully)\n\nLet's see this in action to solve our library problem.\n\n```jp\n私[わたし]は静[しず]かに勉[べん]強[きょう]します。\n```\n*I study quietly.*\n\nNotice how perfectly に links the state of being quiet directly to the action of studying. This works for almost any na-adjective you want to use to describe how an action is performed.\n\n```jp\n彼[かの]女[じょ]は上手[じょうず]に歌[うた]います。\n```\n*She sings skillfully.*\n\nWhen we translate 上手[じょうず]に into English, \"skillfully\" can sometimes sound a bit stiff. In natural English, you would probably just say \"She sings well.\" But the Japanese literally means she performs the action of singing with skill.\n\n```jp\n手[て]紙[がみ]を丁[てい]寧[ねい]に書[か]きます。\n```\n*I write the letter carefully.*\n\nThe word 丁[てい]寧[ねい] is often taught as \"polite,\" like bowing at the right angle or using formal speech. But when applied to physical actions like writing or making something, 丁[てい]寧[ねい]に usually translates closer to \"carefully,\" \"neatly,\" or \"meticulously.\"\n\n## Modifying nouns vs. modifying actions\n\nYou already know how to use na-adjectives to describe nouns (things or people). To do that, you use な. For example, `静かな町` means \"a quiet town.\" \n\nBut when you want to describe a verb (an action happening in space and time), that な must flip to a に. Let's put both rules into a single sentence so you can see the gears turning.\n\n```jp\n静[しず]かな町[まち]を静[しず]かに歩[ある]きます。\n```\n*I walk quietly through the quiet town.*\n\nThis distinction is an important mental anchor. If you accidentally use な before a verb, or に before a noun, the sentence breaks down. You cannot say `静かな歩きます` (quiet walk-ly) or `静かに町` (quietly town).\n\n## The false friend: きれい\n\n> **Warning:** Remember our old friend きれい (pretty / clean)? It ends in an \"i\" vowel sound, but it is secretly a na-adjective. \n\nBecause きれい is a na-adjective, it absolutely must follow the に rule to become an adverb. You will hear many beginners try to treat it like an i-adjective and say `きれいく`. This is completely incorrect. To describe doing something cleanly or beautifully, you must say きれいに.\n\n```jp\n部屋[へや]をきれいに掃[そう]除[じ]します。\n```\n*I clean the room beautifully.*\n\nUsing きれいに correctly is one of the fastest ways to show a native speaker that you genuinely understand your grammar basics and aren't just guessing based on how a word sounds.\n\n## Contrasting with i-adjectives\n\nYou have already learned how to turn i-adjectives into adverbs. To do that, you drop the final い and attach く.\n\nFor example, 速[はや]い (fast) becomes 速[はや]く (fast / quickly).\n\n```jp\n彼[かれ]は速[はや]く走[はし]ります。\n```\n*He runs fast.*\n\nBoth に and く do the exact same job: they turn adjectives into adverbs so you can paint a clearer picture of an action. Your only job is remembering which type of adjective you are dealing with before you choose your connector.\n\n```jp\n子[こ]供[ども]は元[げん]気[き]に遊[あそ]びます。\n```\n*The child plays energetically.*\n\nHere, 元[げん]気[き] is a na-adjective, so it takes に. When a child plays 元[げん]気[き]に, they aren't just playing \"healthily\"—they are playing with a ton of energy, running around, and probably making a lot of noise. \n\nMaster the difference between な for describing things and に for describing actions, and your Japanese will instantly sound much more natural. Keep this に pattern in your back pocket, too—you will need it again very soon when we learn how to talk about things \"becoming\" a certain way!\n",
+      "caution_notes": [
+        "Use に to connect a na-adjective to a verb, but remember to still use な when connecting it to a noun.",
+        "Do not fall for the きれい trap; it is a na-adjective, so it must become きれいに to modify an action, never きれいく."
+      ],
+      "related_grammar_slugs": [
+        "adj-na-conjugation",
+        "adj-i-adverb"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "comparative-yori",
@@ -4019,7 +4061,21 @@
         "kyou",
         "inu"
       ],
-      "family": "particles"
+      "family": "particles",
+      "explanation_markdown": "You're looking at a menu with a friend. You want to eat steak, but they suggest sushi. How do you say \"I like meat more than fish\"?\n\nWhen you want to compare two things in Japanese, you don't change the adjective like we do in English (big becomes bigger, cheap becomes cheaper). Instead, you use the pattern より.\n\n```jp\n肉[にく]は魚[さかな]より好[す]きです。\n```\n*I like meat more than fish.*\n\n## How it works\n\nThe structure for a basic comparison looks like this: **[Item A] は [Item B] より [Adjective]**.\n\nThink of より as meaning \"compared to\". So the sentence literally reads as: \"As for Item A, compared to Item B, it is [Adjective].\"\n\n```jp\nタクシーはバスより速[はや]いです。\n```\n*Taxis are faster than buses.*\n\n```jp\n今日[きょう]は昨日[きのう]より暑[あつ]いです。\n```\n*Today is hotter than yesterday.*\n\nNotice how 暑[あつ]い (hot) and 速[はや]い (fast) didn't change at all? Japanese adjectives don't have a special comparative form. The word より does all the heavy lifting to tell the listener you are making a comparison.\n\n## Flipping the order\n\nIn English, \"Taxis are faster than buses\" and \"Compared to buses, taxis are faster\" mean the same thing, just with a slightly different emphasis. Japanese does this too. You can easily swap the order of the two items as long as the particles stick to their words.\n\n**[Item B] より [Item A] は [Adjective]** is perfectly natural.\n\n```jp\nひらがなより漢[かん]字[じ]は難[むずか]しいです。\n```\n*Compared to hiragana, kanji is difficult.*\n\n```jp\nあの店[みせ]よりこの店[みせ]は安[やす]いです。\n```\n*Compared to that shop over there, this shop is cheaper.*\n\n> When you flip the sentence like this, you are throwing a little extra spotlight on the thing you are comparing against. It sounds a bit like, \"If we're talking about hiragana... well, kanji is definitely harder.\"\n\n## Leaving parts out\n\nIf you and your friend are already talking about dogs, you don't need to explicitly name them again just to say cats are smaller. If the context is obvious, you can drop the Item A part entirely.\n\n```jp\n猫[ねこ]より大[おお]きいです。\n```\n*It is bigger than a cat.*\n\n```jp\n昨日[きのう]より寒[さむ]いです。\n```\n*It is colder than yesterday.*\n\n## より vs. から\n\nYou already know that から means \"from\" (like starting from a location or a time). Historically, より also meant \"from\", and in very formal or older written Japanese you might still see it used that way.\n\nBecause of this, you might occasionally see letters or messages end with something like 私[わたし]より (From me). But in modern, everyday spoken Japanese, から is what you use for starting points (家[いえ]から学[がっ]校[こう]まで — from home to school). Keep より strictly for comparing things.\n\nHold onto this concept of making comparisons — soon you'll meet ぐらい, a handy little word that lets you say two things are *about the same*.\n",
+      "caution_notes": [
+        "Japanese adjectives do not change form when making comparisons (there is no equivalent to adding '-er' in English); the word より does all the work.",
+        "Do not use より to mean 'from' a starting point in place or time in everyday speech—stick to から for that."
+      ],
+      "related_grammar_slugs": [
+        "kara-from",
+        "gurai"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "superlative-ichiban",
@@ -4072,7 +4128,22 @@
         "natsu",
         "suki"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You are debating with a friend about the best season to visit Japan, or you are trying to figure out who in your family is the busiest. You do not just want to say someone is busy or a mountain is tall—you want to point out the absolute top of the category. You want to express the *most*, the *best*, or the *number one*.\n\nIn Japanese, creating this superlative state is incredibly straightforward. It does not require you to learn a complex new conjugation rule.\n\n## How it works\n\nUnlike English, which alters the adjective itself to change \"tall\" to \"tallest\" or adds extra grammatical words like \"the most\", Japanese leaves the adjective completely untouched. This is a huge relief when you are learning.\n\nInstead, you just use the word 一[いち]番[ばん]. It literally translates to \"number one\". To use it, you simply drop 一[いち]番[ばん] directly in front of the adjective or the word you want to emphasize.\n\n```jp\nここはおいしいです。\n```\n*This place is delicious.*\n\n```jp\nここが一[いち]番[ばん]おいしいです。\n```\n*This place is the most delicious.*\n\nWhen you declare that something is the best or the tallest, it usually has to be the best *somewhere* or *among* a specific group. To define this category, you use the particle で right after the group noun. \n\nThink of this で as drawing a boundary line or a circle around the group you are talking about. It tells the listener, \"Inside the boundary of Japan\" or \"Inside the circle of my family.\"\n\n```jp\n富[ふ]士[じ]山[やま]は日本[にほん]で一[いち]番[ばん]高[たか]い山[やま]です。\n```\n*Mt. Fuji is the highest mountain in Japan.*\n\n```jp\n家[か]族[ぞく]で誰[だれ]が一[いち]番[ばん]忙[いそが]しいですか。\n```\n*Who is the busiest in your family?*\n\n## Pairing with your desires\n\nBecause 一[いち]番[ばん] simply means \"number one,\" it is not restricted to just describing facts like the weather or geography. It is highly useful when talking about the things you want the absolute most.\n\nYou can easily pair it with grammar patterns you already know, like the たい (want to do) verb ending or 欲[ほ]しい (want a thing).\n\n```jp\n明日[あした]何[なに]を一[いち]番[ばん]したいですか。\n```\n*What do you want to do most tomorrow?*\n\n```jp\n今[いま]、カメラが一[いち]番[ばん]欲[ほ]しいです。\n```\n*I want a camera the most right now.*\n\n## Rules and exceptions\n\n> You can only use 一[いち]番[ばん] when you are choosing from **three or more** options, or a general category.\n\nIf you are holding up exactly two shirts in a store and asking \"Which one is cheaper?\", you cannot use 一[いち]番[ばん]. Japanese treats comparing two things as a balancing act, and uses entirely different grammar for it. Once you have a crowd of three or more items, the balancing act becomes a competition, and 一[いち]番[ばん] is your tool to crown the single winner.\n\nAlso, pay attention to where you place the word in your sentence. 一[いち]番[ばん] loves to stick as close as possible to the word it modifies (usually the adjective or the verb). Putting it way too early in the sentence, such as starting with `一番私は…`, sounds highly unnatural and disconnected.\n\n## Casual speech\n\nIn casual speech with friends, nothing about the core pattern changes. You drop the polite です or ます as usual. \n\nHowever, you will frequently see it written entirely in hiragana (いちばん) in text messages or informal writing. Because kanji can sometimes feel a bit stiff or academic, writing it in hiragana softens the visual impact of the sentence, making it feel friendlier and more conversational.\n\n```jp\nここのご飯[はん]がいちばんおいしい！\n```\n*The food here is the most delicious!*\n\n## Contrast: Liking vs. Liking the most\n\nLet's look at how adding 一[いち]番[ばん] shifts the focus of a sentence, especially with preference words like 好[す]き (liked/fond of). They might look similar, but the intention is entirely different.\n\n```jp\n私[わたし]は肉[にく]が好[す]きです。\n```\n*I like meat.*\n\nThis is a simple fact. You like meat, but you probably like fish and vegetables too. It is an unranked statement.\n\n```jp\n私[わたし]は肉[にく]が一[いち]番[ばん]好[す]きです。\n```\n*I like meat the best.*\n\nNow you have officially ranked it. Out of all the foods in the world, meat takes the absolute top spot for you. Hold onto this concept of ranking your preferences—soon you will learn how to state your own opinions with と思[おも]う (I think that), and pairing it with 一[いち]番[ばん] will let you smoothly declare things like \"I think this is the best!\"\n",
+      "caution_notes": [
+        "Do not use 一番 when comparing exactly two things; it is exclusively for choosing the top item from three or more options.",
+        "Keep 一番 close to the adjective or verb it modifies; placing it too early in the sentence sounds unnatural."
+      ],
+      "related_grammar_slugs": [
+        "tai",
+        "hoshii",
+        "to-omou"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dou-desu-ka",
