@@ -4531,7 +4531,20 @@
         "fuku",
         "nomu-v"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You are at a shop looking at a nice bag. You check the price tag, and it has way too many zeros. You need a way to express that it crosses the line from just \"expensive\" to \"too expensive.\"\n\nWhen an action or a state goes beyond a reasonable limit, Japanese uses the helper verb すぎる. It attaches right to the end of your existing verbs and adjectives to mean \"too much\" or \"excessively.\"\n\n## How it works\n\nTo use すぎる, you need the stem of your word. For verbs, this is the stem (the base part you normally attach ます to).\n\n```jp\n彼[かれ]は働[はたら]きすぎる。\n```\n*He works too much.*\n\n```jp\n昨日[きのう]、パンを食[た]べすぎた。\n```\n*Yesterday, I ate too much bread.*\n\nFor adjectives ending in い, simply drop the final い and attach your new ending. The whole package now behaves just like a regular verb.\n\n```jp\nこのかばんは高[たか]すぎる。\n```\n*This bag is too expensive.*\n\n```jp\n部屋[へや]が寒[さむ]すぎます。\n```\n*The room is too cold.*\n\n## Rules and exceptions\n\nBecause すぎる translates to \"too much,\" it inherently carries a negative feeling. You are saying a boundary was crossed. In English, you might say \"this cake is too good!\" as a compliment. In Japanese, traditionally, attaching this to a positive word implies a problem.\n\n> If you say someone is 親[しん]切[せつ]すぎる (too kind), it might sound like they are overbearing or naive, rather than it being a pure compliment.\n\nBecause すぎる acts just like a regular verb that ends in る, you can conjugate it into polite speech or the past tense. Notice how we used すぎます for politeness and すぎた for the past tense in the examples above.\n\n## Contrast: The most vs. too much\n\nIt is easy to mix up saying something has the highest degree of a trait versus saying it has too much of it. If you want to say something is the absolute peak of a category, you already know to use 一[いち]番[ばん].\n\n```jp\nあの店[みせ]が一[いち]番[ばん]高[たか]いです。\n```\n*That shop is the most expensive.*\n\nBut being the most expensive doesn't necessarily mean it is unreasonable. If you want to express that the price is out of bounds, you swap in our new pattern.\n\n```jp\nあの店[みせ]は高[たか]すぎます。\n```\n*That shop is too expensive.*\n\nHold onto this concept of attaching patterns to verb stems. You will see a similar structural shift when we meet ほうがいい (had better) to give strong advice later on.\n",
+      "caution_notes": [
+        "Because すぎる implies an excess that crosses a reasonable boundary, using it with positive traits can sound like a complaint rather than a compliment."
+      ],
+      "related_grammar_slugs": [
+        "superlative-ichiban",
+        "hou-ga-ii"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hou-ga-ii",
@@ -4653,7 +4666,21 @@
         "atsui-hot",
         "daijoubu"
       ],
-      "family": "copula"
+      "family": "copula",
+      "explanation_markdown": "You're looking at your textbook, and there's a big test tomorrow. You want to tell your classmate, \"The test will probably be difficult.\" You can't just say \"The test is difficult\" because you haven't taken it yet and don't know for sure. You need a way to express a guess or probability without sounding like you know everything as a hard fact.\n\nEnter `でしょう`. It's the polite way to say \"probably\" or \"I think.\"\n\n## How it attaches\n\n`でしょう` acts a lot like `です`, sitting at the very end of your sentence. But instead of stating a fact, it softens the statement into a polite guess. To use it, you attach it directly to the **plain form** of whatever word comes right before it.\n\n```jp\n明日[あした]、彼[かれ]は来[く]るでしょう。\nそのカメラは高[たか]いでしょう。\n```\n*Tomorrow, he will probably come.*\n*That camera is probably expensive.*\n\nHere is the one rule that trips everyone up the first week: when you use a noun or a na-adjective, do not use `だ`. Just stick `でしょう` straight onto the word itself.\n\n```jp\nこの人[ひと]は先[せん]生[せい]でしょう。\n```\n*This person is probably a teacher.*\n\n> Never say `先生だでしょう`. The `だ` is dropped completely. `でしょう` replaces it!\n\n## Two flavors: \"Probably\" and \"Right?\"\n\n`でしょう` does double duty depending entirely on your tone of voice.\n\nIf you say it with a flat or slightly falling pitch, it means \"probably\" or \"I guess.\" You are making a polite prediction.\n\nBut if you angle your voice up at the end—like you're asking a question—it transforms into a way of seeking agreement. It becomes \"..., right?\" or \"..., isn't it?\".\n\n```jp\n昨日[きのう]の映[えい]画[が]は面白[おもしろ]かったでしょう？\nこれはあなたの傘[かさ]でしょう？\n```\n*Yesterday's movie was interesting, right?*\n*This is your umbrella, isn't it?*\n\n## Softening a question with でしょうか\n\nSometimes, asking a direct question with `ですか` feels a little too blunt. If you add `か` to `でしょう`, you get `でしょうか`—a beautifully soft, tentative way to ask a question. It turns \"Will it rain?\" into \"I wonder if it will rain?\"\n\n```jp\n明日[あした]は雨[あめ]でしょうか。\n誰[だれ]が来[く]るでしょうか。\n```\n*I wonder if it will rain tomorrow?*\n*Who do you think will come?*\n\n## でしょう vs だろう\n\nYou already know `だろう`. These two are exact twins, just dressed for different occasions. `だろう` is the casual, plain-speech version. `でしょう` is the polite, `です/ます` level version.\n\n```jp\nあのレストランはおいしいだろう。\nあのレストランはおいしいでしょう。\n```\n*That restaurant is probably delicious. (Casual, talking to a close friend)*\n*That restaurant is probably delicious. (Polite, talking to a coworker)*\n\nEven though `でしょう` attaches to plain forms (like `来る` or `おいしい`), adding it makes the entire sentence polite.\n\nKeep this \"seeking agreement\" idea in your back pocket. Soon, you'll learn `じゃないですか`, which does a very similar job of asking \"isn't it?\", but with a bit more of a playful push!\n",
+      "caution_notes": [
+        "Never use だ before でしょう; attach it directly to nouns and na-adjectives.",
+        "A flat intonation means 'probably', while a rising intonation means 'right?'."
+      ],
+      "related_grammar_slugs": [
+        "darou",
+        "janai-desu-ka"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mada-teinai",
@@ -4705,7 +4732,19 @@
         "taberu",
         "shukudai"
       ],
-      "family": "patterns"
+      "family": "patterns",
+      "explanation_markdown": "You are waiting at a coffee shop to meet a friend, and they are ten minutes late. You text another friend to ask if they know where he is. You need to tell them he hasn't shown up.\n\n```jp\n彼[かれ]はまだ来[らい]ていません。\n```\n*He hasn't come yet.*\n\n## How it works\n\nTo say you haven't done something *yet*, or that something hasn't happened *yet*, you use まだ (which means \"still\" or \"not yet\") followed by the て form of the verb, plus いない (or the polite いません).\n\n```jp\n私[わたし]はまだ昼[ひる]ご飯[はん]を食[た]べていません。\n```\n*I haven't eaten lunch yet.*\n\nThink of it as literally saying \"the state of having eaten hasn't happened.\" Because the result of the action hasn't been achieved yet, we use the continuous state form (the て form) and make it negative.\n\n```jp\nあの映[えい]画[が]はまだ見[み]ていない。\n```\n*I haven't seen that movie yet.*\n\n```jp\nその本[ほん]はまだ買[か]っていません。\n```\n*I haven't bought that book yet.*\n\n## Didn't do vs. Haven't done yet\n\nThis one trips people up a lot. Why not just use the regular past tense negative to say you haven't done something?\n\nIn Japanese, the past negative means the window of opportunity is firmly closed. The event is over. If you say `宿題をしませんでした` (I didn't do the homework) to a teacher, it sounds like \"I didn't do it, and I'm not going to.\"\n\nIf you want to imply that you still plan to do it—that the window is still open—you must use the まだ〜ていない pattern.\n\n```jp\nまだ宿[しゅく]題[だい]をしていません。\n```\n*I haven't done the homework yet.*\n\n> Always use まだ〜ていない if there is still a chance the action will happen. Using the simple past negative can accidentally sound defiant!\n\n## Casual speech\n\nIn casual Japanese, speakers constantly drop the い in ていない. The pattern shrinks down to てない.\n\n```jp\n友[とも]達[だち]はまだ起[お]きていない。\n```\n*My friend hasn't woken up yet.*\n\nWhile the written sentence above keeps the い, in actual conversation with friends you will almost exclusively hear the contracted version: まだ起[お]きてない.\n\n## Connecting it up\n\nRight now, you're learning how to talk about things that haven't happened yet. Soon, you'll learn the exact opposite pattern: もう〜ました (already did). Together, these two patterns will let you coordinate schedules, check on tasks, and make plans naturally. Keep まだ in your back pocket until then!\n",
+      "caution_notes": [
+        "Use まだ〜ていない instead of the simple past negative if there is still a chance the action will happen."
+      ],
+      "related_grammar_slugs": [
+        "mou-past"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mou-past",
@@ -4809,7 +4848,21 @@
         "nomu-v",
         "miru-v"
       ],
-      "family": "particles"
+      "family": "particles",
+      "explanation_markdown": "You're in a shop, admiring a very expensive camera. A clerk approaches and asks if you want to buy it. You want to politely let them know you're not here to spend money — you're just looking.\n\n```jp\n見[み]るだけです。\n```\n*I am just looking.*\n\nTo express \"only\" or \"just\" in Japanese, you use the particle だけ. It acts as a hard boundary, fencing off whatever it attaches to and excluding everything else.\n\n## How it works\n\nIf you want to limit a noun, you attach だけ directly to the end of it. It works like a filter, telling the listener \"this thing and absolutely nothing else.\"\n\n```jp\n水[みず]だけ飲[の]みます。\n```\n*I only drink water.*\n\n```jp\n千[せん]円[えん]だけあります。\n```\n*I only have a thousand yen.*\n\nIt attaches to verbs exactly the same way. You just drop it right after the dictionary form (the plain, base form of the verb) before finishing your sentence.\n\n```jp\n少[すこ]し休[やす]むだけです。\n```\n*I am just resting a little.*\n\n## Rules and exceptions\n\nBecause だけ is a particle, it has to share space with the other particles you already know. This is where people usually trip up.\n\nIf you would normally mark a word with the subject marker `が` or the direct object marker `を`, だけ usually just eats them. You don't need to say `水をだけ飲みます` — just `水だけ飲みます` is perfectly natural and much more common.\n\nBut for other particles, like the target particle に, they team up. だけ usually goes right before に to say \"only to\" this specific person.\n\n```jp\n彼[かれ]だけに話[はな]します。\n```\n*I will speak only to him.*\n\n## Contrast: The hard limit vs the outer limit\n\nYou already know まで, which sets an outer boundary (\"up to\" or \"until\"). Let's look at how まで and だけ feel side by side when you're talking about a box of snacks on the table.\n\n```jp\n一[いち]つまでです。\n```\n*Up to one.*\n\n```jp\n一[いち]つだけです。\n```\n*Only one.*\n\nWith まで, you're setting a rule about the maximum allowed — zero is fine, one is fine, but stop there. With だけ, you're making a factual statement about an exact quantity. There isn't *up to* one; there is *exactly and only* one.\n\nHold onto this rigid, exact feeling. Right now, だけ sets a perfectly hard line. But real life is messy, and soon we'll look at ぐらい, a word that steps into the same space to soften the edges and say \"about\" or \"roughly.\"\n",
+      "caution_notes": [
+        "When combining だけ with subject (が) or object (を) particles, it usually replaces them entirely, but it stacks securely with directional particles like に."
+      ],
+      "related_grammar_slugs": [
+        "made-until",
+        "ni-indirect",
+        "gurai"
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shika-nai",
