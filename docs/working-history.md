@@ -1,6 +1,6 @@
 # Docs working history
 
-Last checked against the codebase: **2026-07-12**
+Last checked against the codebase: **2026-07-16**
 
 ---
 
@@ -8,8 +8,8 @@ Last checked against the codebase: **2026-07-12**
 
 | Status | Count |
 | --- | ---: |
-| Done | 9 |
-| Not done | 3 |
+| Done | 10 |
+| Not done | 2 |
 | Index only | 1 |
 
 ---
@@ -42,6 +42,11 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013).
 ### [05 — Session UX polish](./feedback/05-session-ux-polish.md)
 Time-compression copy removed, streak celebration, lesson back/forward, collapsible mnemonics.
 
+### [06 — UI navigation & polish](./feedback/06-ui-navigation-and-polish.md)
+`ScreenHeader` + status bar, back icon, Learn detail scroll + keyboard avoidance, `on-primary` Save contrast.
+
+> Deferred: auto-hide header/tab bar on scroll (§6.6, P3).
+
 ### [07–10 — Grammar review redesign](./feedback/07-grammar-review-overview.md)
 Universal JP cloze contract (07), stage ladder — apprentice MC / Guru+ type-in / Enlightened no-English gate (08), curriculum `family` + `cloze_variants` schema, compile pipeline, and Wave A authoring — wa-topic/ga/wo/mo-also/desu × 5 variants (09), two-rung hints with no SRS penalty + near-miss "incomplete" teaching reveal (10). Curriculum version `1.4.0-grammar-cloze`; seed DB recompiled.
 
@@ -60,9 +65,6 @@ Furigana schema/data landed via the furigana plan. Still open:
 
 ### [AI reading & community contribution](./ai-reading-and-community-contribution-design-note.md)
 Post-MVP design note only (Epic 8 / FR38–45-PM). No app work by design.
-
-### [06 — UI navigation & polish](./feedback/06-ui-navigation-and-polish.md)
-New playtest plan: nav header / status bar, back icon, keyboard vs mnemonic input, Save contrast, Learn detail scroll, auto-hide chrome.
 
 ---
 
