@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Tatoeba style anchors for grammar lesson prompts (Phase 2a).
 
-Per the Tatoeba lane decision (docs/content-pipeline-plan.md ground rule 2):
+Per the Tatoeba lane decision (docs/content/content-pipeline-plan.md ground rule 2):
 these sentences are *style anchors only* — they go into the generation prompt
 as examples of real native usage and are never shipped, copied, or paraphrased
 into curriculum content. Data files come from

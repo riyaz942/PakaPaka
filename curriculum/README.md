@@ -27,7 +27,7 @@ Radical rows store full HTTPS URLs in `visual_mnemonic_url`, compiled to `items.
 
 N4 uses the same pattern with `n4/` in the path (e.g. `…/radicals/n4/n4-hito.png`).
 
-See **[docs/radical-mnemonic-images.md](../docs/radical-mnemonic-images.md)** for the full maintainer workflow: asset spec, R2 upload, curriculum re-compile, and verification.
+See **[docs/content/radical-mnemonic-images.md](../docs/content/radical-mnemonic-images.md)** for the full maintainer workflow: asset spec, R2 upload, curriculum re-compile, and verification.
 
 Placeholder URLs are valid HTTPS until assets ship. The app shows **text fallback** (`mnemonic_text` or meaning label) when an image 404s or is offline-uncached — do not block releases on CDN going live.
 

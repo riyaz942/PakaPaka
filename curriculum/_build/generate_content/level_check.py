@@ -2,7 +2,7 @@
 """Tokenizer level-check for generated Japanese (Phase 2 validation gate #2).
 
 Uses the same fugashi/unidic tagger as furigana.py (one tokenizer, not two —
-docs/content-pipeline-plan.md Phase 1). A sentence passes when every *content*
+docs/content/content-pipeline-plan.md Phase 1). A sentence passes when every *content*
 token resolves to an allowed vocabulary item or to the exception policy below.
 
 ## Exception policy (decided up front, not per-failure)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Phase 2b kanji + radical mnemonic generator (docs/content-pipeline-plan.md).
+"""Phase 2b kanji + radical mnemonic generator (docs/content/content-pipeline-plan.md).
 
 Build-time generation on the maintainer machine, mirroring the 2a grammar
 pipeline (generate_grammar_lessons.py): one Message Batches request per item

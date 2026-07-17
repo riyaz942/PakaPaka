@@ -3,7 +3,7 @@
 
 Converts plain Japanese strings into the JmdictFurigana bracket format
 (`私[わたし]は学生[がくせい]です。`) used throughout the app — see
-docs/furigana-support-plan.md ground rule 1.
+docs/content/furigana-support-plan.md ground rule 1.
 
 Two entry points:
   annotate_word(form, reading)   -- exact dictionary lookup, for vocabulary
@@ -131,7 +131,7 @@ def get_tagger():
     """Public accessor for the shared fugashi/unidic tagger. Phase 2 tooling
     (generate_content/level_check.py) must level-check with the *same*
     tokenizer that produces shipped furigana — see the "one tokenizer, not
-    two" rule in docs/content-pipeline-plan.md."""
+    two" rule in docs/content/content-pipeline-plan.md."""
     return _get_tagger()
 
 

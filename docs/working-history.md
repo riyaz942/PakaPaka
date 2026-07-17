@@ -16,13 +16,13 @@ Last checked against the codebase: **2026-07-16**
 
 ## Done
 
-### [Radical mnemonic images](./radical-mnemonic-images.md)
+### [Radical mnemonic images](./content/radical-mnemonic-images.md)
 Maintainer workflow + app support shipped (`MnemonicImage`, disk cache, curriculum URLs). CDN uploads may still 404 → text fallback is expected.
 
-### [Bunpro import investigation](./bunpro-import-investigation.md)
+### [Bunpro import investigation](./archive/bunpro-import-investigation.md)
 Investigation closed. Best-effort Bunpro import is in onboarding.
 
-### [Furigana support plan](./furigana-support-plan.md)
+### [Furigana support plan](./content/furigana-support-plan.md)
 Schema, `FuriganaText`, settings preference, build pipeline, and UI wiring (vocab / grammar / passages).
 
 ### [01 — SRS scheduling correctness](./feedback/01-srs-scheduling-correctness.md)
@@ -56,20 +56,21 @@ Universal JP cloze contract (07), stage ladder — apprentice MC / Guru+ type-in
 
 ## Not done
 
-### [Content quality pipeline](./content-pipeline-plan.md)
+### [Content quality pipeline](./content/content-pipeline-plan.md)
 Furigana schema/data landed via the furigana plan. Still open:
 - MaruMori-depth grammar (`explanation_markdown`, etc.)
 - Split kanji mnemonics
 - Review tooling
 - NOTICE / attribution
 
-### [AI reading & community contribution](./ai-reading-and-community-contribution-design-note.md)
+### [AI reading & community contribution](./design/ai-reading-and-community-contribution-design-note.md)
 Post-MVP design note only (Epic 8 / FR38–45-PM). No app work by design.
 
 ---
 
 ## Index
 
+- [Docs README](./README.md) — navigation hub
 - [Feedback plans README](./feedback/README.md) — index for plans 01–10
 
 ---

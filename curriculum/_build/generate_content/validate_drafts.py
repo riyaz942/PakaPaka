@@ -2,7 +2,7 @@
 """Mechanical validation gate for generated grammar lesson drafts (Phase 2a).
 
 Run on every batch output before any human sees it
-(docs/content-pipeline-plan.md, "Mechanical validation gate"):
+(docs/content/content-pipeline-plan.md, "Mechanical validation gate"):
 
   1. every referenced vocabulary_slugs / related_grammar_slugs exists (vocab
      must be in the item's *allowed* set; related grammar in the candidate

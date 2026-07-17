@@ -2,7 +2,7 @@
 
 Recurring characters and settings for kanji/radical mnemonics (Phase 2b) and any
 mnemonic-flavored asides in grammar lessons. Locked before the grammar pilot per
-docs/content-pipeline-plan.md step 3: batch generation calls are independent, so
+docs/content/content-pipeline-plan.md step 3: batch generation calls are independent, so
 the generator script injects the relevant entries from this file into each item's
 prompt — a character invented ad hoc in one batch will not exist in the next.
 

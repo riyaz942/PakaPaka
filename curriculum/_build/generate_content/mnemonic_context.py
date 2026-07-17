@@ -11,7 +11,7 @@ generator prompt and the mechanical gate both need:
     dependencies/graph.json, in *our* taught radical names. That graph (not
     KRADFILE) is the app's truth for kanji -> radical; a mnemonic must reference
     exactly those components and never a component the learner was not taught
-    (docs/content-pipeline-plan.md 2b).
+    (docs/content/content-pipeline-plan.md 2b).
   * radical: form + meaning (its own accepted meanings) — the mnemonic is one
     vivid concrete image, no decomposition.
 

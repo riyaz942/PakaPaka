@@ -27,7 +27,7 @@ This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_mnemonics.py`. Only the "call the
 model" step moves to the browser; the context builder, the cast injection, and the
 mechanical gate are identical to the API path. See
-`docs/kanji-radical-mnemonic-web-chat-workflow.md`.
+`docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md`.
 
 
 

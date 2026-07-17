@@ -1,13 +1,16 @@
 # Generating grammar lessons via web chat (no API cost)
 
 This is the **no-API alternative** to the Message Batches driver for producing
-the rest of the N5 + N4 grammar lessons (`docs/content-pipeline-plan.md`, step 4).
+the rest of the N5 + N4 grammar lessons (`docs/content/content-pipeline-plan.md`, step 4).
 The pilot's 10 N5 lessons were generated through the API for ~$2; the remaining
 ~161 points would cost proportionally more. Instead, you paste each point's prompt
 into a Claude or Gemini web chat (covered by a flat subscription) and feed the
 reply back through the **same context builder and the same mechanical gate** the
 API path uses. Only the "call the model" step moves to the browser — nothing about
 the quality bar, vocabulary constraints, or validation changes.
+
+For a copy-paste browser-automation task (Gemini web), see
+[`grammar-web-chat-workflow-automation-prompt.md`](./grammar-web-chat-workflow-automation-prompt.md).
 
 Everything runs from `curriculum/_build` with the existing venv:
 
@@ -183,4 +186,4 @@ The prompts, the allowed-vocab derivation (`context.py`), the gate
 (`validate_drafts.py`), and the assembler (`assemble.py`) are shared with the API
 batch path — this workflow only swaps *how the model is called*. If you later want
 to batch a large tranche through the API instead, `run` / `collect` still work
-unchanged (`docs/content-pipeline-plan.md`, Phase 2a).
+unchanged (`docs/content/content-pipeline-plan.md`, Phase 2a).

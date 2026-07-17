@@ -14,7 +14,7 @@ show/hide it, and eventually knowledge-aware hiding (no furigana on kanji you've
   every surface renders Japanese as a single `<Text>` node
   (`VocabularyDetail.tsx:88`, `GrammarDetail.tsx:100`, `PassageReader.tsx:28`,
   `LessonItemView`, `ReviewCard`).
-- `docs/content-pipeline-plan.md` (Phase 0) already reserves a `furigana` field on
+- `docs/content/content-pipeline-plan.md` (Phase 0) already reserves a `furigana` field on
   example sentences using JmdictFurigana bracket notation. This plan is the app-side
   and pipeline-side realization of that decision, extended to passages and vocab.
 

@@ -46,7 +46,7 @@ So that **I see visuals without broken states when offline (FR49, FR4b delivery 
 
 5. **Maintainer R2 workflow documentation (FR34, FR37b operational path)**
 
-   **Given** a maintainer follows the new doc at `docs/radical-mnemonic-images.md` (linked from `curriculum/README.md`)  
+   **Given** a maintainer follows the new doc at `docs/content/radical-mnemonic-images.md` (linked from `curriculum/README.md`)  
    **When** they generate PNG assets, upload to Cloudflare R2, and set `visual_mnemonic_url` in `curriculum/radicals/*.json`  
    **Then** the documented URL pattern matches compiled data: `https://assets.japanese-learning.app/radicals/{jlpt_lower}/{slug}.png` (e.g. `n5/ichi.png`)  
    **And** `npm run validate-schema && npm run compile-curriculum` still passes with updated URLs  
@@ -82,7 +82,7 @@ So that **I see visuals without broken states when offline (FR49, FR4b delivery 
   - [x] Add `__DEV__` subtitle noting "Epic 4 will replace with full Learn hub" (optional one-line).
 
 - [x] **AC5 — Maintainer documentation**
-  - [x] Create `docs/radical-mnemonic-images.md` — end-to-end maintainer workflow.
+  - [x] Create `docs/content/radical-mnemonic-images.md` — end-to-end maintainer workflow.
   - [x] Update `curriculum/README.md` — link to maintainer doc, reaffirm URL pattern and FR37b field.
   - [x] Document that placeholder URLs may 404 until assets upload — app must still show text fallback (NFR20).
 
@@ -148,7 +148,7 @@ type MnemonicImageProps = {
 | --- | --- |
 | FR49 Cached images offline | `expo-image` `cachePolicy="disk"` |
 | FR4b R2 radical images | Load from `visual_mnemonic_url` |
-| FR34 Maintainer image management | `docs/radical-mnemonic-images.md` |
+| FR34 Maintainer image management | `docs/content/radical-mnemonic-images.md` |
 | FR37b URLs in curriculum data | Already in seed; docs describe update path |
 | NFR20 Graceful image fallback | `onError` + missing URL → text |
 | UX-DR33 expo-image + a11y label | `MnemonicImage` component |
@@ -179,7 +179,7 @@ type MnemonicImageProps = {
 | `mobile/src/data/hooks/useRadicals.ts` | **Create** (optional thin hook) |
 | `mobile/src/app/(tabs)/learn.tsx` | **Modify** — radical verification list |
 | `mobile/__mocks__/expo-image.tsx` | **Create** |
-| `docs/radical-mnemonic-images.md` | **Create** |
+| `docs/content/radical-mnemonic-images.md` | **Create** |
 | `curriculum/README.md` | **Modify** — link maintainer doc |
 
 **Do not create:** `src/app/learn/item/[id].tsx`, `itemRepository.ts` (full), review components, R2 upload scripts in CI, FSRS tables.
@@ -235,7 +235,7 @@ Latest commit `dd65064` added curriculum version check and atomic swap (`curricu
 | Color | Use semantic tokens; no color-only state | UX-DR23 (general) |
 | Safe areas | Learn list respects safe area / tab inset | Story 1.4 pattern via layout |
 
-### Maintainer doc outline (`docs/radical-mnemonic-images.md`)
+### Maintainer doc outline (`docs/content/radical-mnemonic-images.md`)
 
 1. **Purpose** — FR34 / FR4b / FR37b overview.
 2. **Asset spec** — PNG recommended; square or 4:3; max ~512KB; transparent OK; naming `{slug}.png`.
@@ -296,7 +296,7 @@ Composer
 | AC2 Radical query + Learn UI | Implemented | `radicalRepository`, `useRadicals`, scrollable N5 list |
 | AC3 Offline disk cache | Implemented (manual) | `expo-image` disk policy; offline verification documented |
 | AC4 Cache miss / offline fallback | Implemented | Invalid/missing URL and `onError` → text fallback |
-| AC5 Maintainer R2 docs | Implemented | `docs/radical-mnemonic-images.md` + `curriculum/README.md` link |
+| AC5 Maintainer R2 docs | Implemented | `docs/content/radical-mnemonic-images.md` + `curriculum/README.md` link |
 | AC6 Tests & CI | Implemented | lint/typecheck/test pass; component + repository + a11y tests |
 
 #### Findings and resolution
@@ -315,7 +315,7 @@ Composer
 
 - Added shared `MnemonicImage` with `expo-image` disk cache, accessibility labels, and text fallback on missing URL or `onError`.
 - Added `radicalRepository` + `useRadicals` hook; Learn tab shows scrollable N5 radical verification list.
-- Added maintainer doc `docs/radical-mnemonic-images.md` and linked from `curriculum/README.md`.
+- Added maintainer doc `docs/content/radical-mnemonic-images.md` and linked from `curriculum/README.md`.
 - Extended `expo-sqlite` mock with `items` query support and `__mockSetItems` for repository tests.
 - Added `@testing-library/react-native` and `@types/react-test-renderer` as devDependencies for component tests.
 - Code review (2026-06-06): reset `hasError` on `imageUrl` change; HTTPS-only URL validation; expanded unit tests.
@@ -336,7 +336,7 @@ Composer
 - `mobile/__mocks__/expo-sqlite.ts` (modified)
 - `mobile/package.json` (modified)
 - `mobile/package-lock.json` (modified)
-- `docs/radical-mnemonic-images.md` (new)
+- `docs/content/radical-mnemonic-images.md` (new)
 - `curriculum/README.md` (modified)
 - `_bmad-output/implementation-artifacts/sprint-status.yaml` (modified)
 

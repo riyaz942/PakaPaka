@@ -1,6 +1,6 @@
 #!/bin/bash
 # Downloads the open-licensed source datasets used by the Phase 1 fact audit
-# (docs/content-pipeline-plan.md) into curriculum/_build/data/. Nothing here
+# (docs/content/content-pipeline-plan.md) into curriculum/_build/data/. Nothing here
 # is committed; regenerate with this script. Licenses are recorded in the
 # repo-root NOTICE file.
 #

@@ -4,7 +4,7 @@
 Parses prompts/cast-bible.md — the human-authored, versioned source of truth
 for recurring mnemonic characters and settings — into a reading -> character
 lookup, so the kanji generator can inject the relevant cast lore into each
-item's prompt. Batch calls are independent (docs/content-pipeline-plan.md 2b:
+item's prompt. Batch calls are independent (docs/content/content-pipeline-plan.md 2b:
 "a static style sheet alone won't keep the cast coherent"), so the character
 that personifies a reading must travel *inside* the prompt for that item.
 

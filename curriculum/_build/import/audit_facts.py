@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Phase 1 fact audit (docs/content-pipeline-plan.md).
+"""Phase 1 fact audit (docs/content/content-pipeline-plan.md).
 
 Diffs the hand-authored _build datasets against the authoritative
 open-licensed sources:

@@ -2,7 +2,7 @@
 """Mechanical validation gate for generated kanji/radical mnemonics (Phase 2b).
 
 Run on every batch output before any human sees it
-(docs/content-pipeline-plan.md, "Mechanical validation gate", adapted for 2b):
+(docs/content/content-pipeline-plan.md, "Mechanical validation gate", adapted for 2b):
 
   kanji:
     1. all three fields present and non-empty (meaning/reading mnemonic +

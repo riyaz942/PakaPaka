@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Spot-check the allowed-vocab derivation for grammar points (Phase 1,
-docs/content-pipeline-plan.md).
+docs/content/content-pipeline-plan.md).
 
 Phase 2 grammar lesson generation constrains example sentences to "allowed
 vocabulary: the slugs unlocked at this point in the curriculum order

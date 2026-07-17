@@ -1,7 +1,7 @@
 # Generating kanji + radical mnemonics via web chat (no API cost)
 
 This is the **no-API alternative** to the Message Batches driver for producing
-the Phase 2b kanji + radical mnemonics (`docs/content-pipeline-plan.md`, 2b). The
+the Phase 2b kanji + radical mnemonics (`docs/content/content-pipeline-plan.md`, 2b). The
 N5 set (76 radicals + 106 kanji) was generated through the API for a few dollars;
 regenerating a level, or extending to N4, can instead be done by pasting each
 item's prompt into a Claude or Gemini web chat (covered by a flat subscription)
@@ -9,6 +9,9 @@ and feeding the reply back through the **same context builder and the same
 mechanical gate** the API path uses. Only the "call the model" step moves to the
 browser — nothing about the decomposition constraint, the reading constraint, the
 cast injection, or the validation changes.
+
+For a copy-paste browser-automation task (Gemini web), see
+[`kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`](./kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md).
 
 Everything runs from `curriculum/_build` with the existing venv:
 
@@ -215,4 +218,4 @@ The prompts, the context builder (`mnemonic_context.py`), the cast loader
 (`cast.py`), and the gate (`validate_mnemonics.py`) are shared with the API batch
 path — this workflow only swaps *how the model is called*. If you later want to
 batch a large tranche through the API instead, `run` / `collect` still work
-unchanged (`docs/content-pipeline-plan.md`, Phase 2b).
+unchanged (`docs/content/content-pipeline-plan.md`, Phase 2b).

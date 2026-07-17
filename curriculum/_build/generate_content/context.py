@@ -8,7 +8,7 @@ siblings, and upcoming related points.
 
 ## Allowed-vocabulary derivation — option (a) override
 
-docs/content-pipeline-plan.md Phase 2a originally derived "allowed vocabulary"
+docs/content/content-pipeline-plan.md Phase 2a originally derived "allowed vocabulary"
 from the item's *simulated planner unlock position* (sort_order + dependency
 graph, as the app actually sequences content). The Phase 1 spot-check
 (curriculum/_build/reports/allowed-vocab-spotcheck.md) showed that derivation is

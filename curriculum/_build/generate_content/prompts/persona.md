@@ -1,7 +1,7 @@
 # Teaching voice (persona) — v1
 
 This is the voice every generated lesson, mnemonic, and example set is written in.
-It is a prerequisite for Phase 2 generation (docs/content-pipeline-plan.md, step 3):
+It is a prerequisite for Phase 2 generation (docs/content/content-pipeline-plan.md, step 3):
 regenerating content later without this exact sheet is how a corpus drifts apart,
 so treat edits to this file as a new `prompt_version`.
 

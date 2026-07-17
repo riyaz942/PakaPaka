@@ -6,6 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Offline-first Expo (React Native) Japanese learning app for Android & iOS. Dual SQLite databases, no accounts, no subscriptions. Content model: radical → kanji → vocabulary dependency graph plus structured grammar; SRS via FSRS with weakness biasing.
 
+- Docs index: `docs/README.md`
 - Active follow-ups / playtest work: `docs/feedback/` (see also `docs/working-history.md`)
 - Historical planning artifacts (PRD, architecture, epics): `_bmad-output/` — reference only, not an active tracker
 
@@ -33,7 +34,7 @@ mobile/              # Expo (React Native) app — all app code lives here
     hooks/           # App-level hooks (onboarding redirect, orientation lock)
     utils/           # Pure utilities (cn, color scheme resolution)
     lib/             # Thin wrappers around Expo APIs (safe-updates-metadata)
-docs/                # Working docs, design notes, and playtest feedback plans
+docs/                # Working docs (see docs/README.md) — content, workflows, feedback, design, archive
 _bmad-output/        # Historical planning artifacts (PRD, architecture, epics)
 ```
 

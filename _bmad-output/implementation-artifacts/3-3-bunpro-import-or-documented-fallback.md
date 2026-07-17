@@ -16,7 +16,7 @@ so that **I am not blocked silently (FR33e, NFR18)**.
 
    **Given** Bunpro has no official public API (deprecated) and only an unstable, reverse-engineered frontend API exists  
    **When** a developer or user needs to understand the import limitation  
-   **Then** a concise investigation document at `docs/bunpro-import-investigation.md` explains: the API is unofficial/community-reverse-engineered, tokens must be extracted from browser cookies (not accessible from the mobile app natively), endpoints are unstable and may break without warning, and the grammar-point-title endpoint returns 500 errors  
+   **Then** a concise investigation document at `docs/archive/bunpro-import-investigation.md` explains: the API is unofficial/community-reverse-engineered, tokens must be extracted from browser cookies (not accessible from the mobile app natively), endpoints are unstable and may break without warning, and the grammar-point-title endpoint returns 500 errors  
    **And** the document references the community API source ([cbullard-dev/bunpro-community-api](https://github.com/cbullard-dev/bunpro-community-api)) and the Bunpro community forum discussion.
 
 2. **Best-effort Bunpro import pipeline when a user provides a frontend API token**
@@ -44,7 +44,7 @@ so that **I am not blocked silently (FR33e, NFR18)**.
 ## Tasks / Subtasks
 
 - [x] **AC1 - Document Bunpro API investigation in-repo**
-  - [x] Create `docs/bunpro-import-investigation.md` with findings: no official API, deprecated by Bunpro team, community reverse-engineered endpoints exist, token acquisition requires browser cookie extraction, endpoints are unstable (grammar point titles return 500), available data includes SRS distribution and review counts but not grammar point names.
+  - [x] Create `docs/archive/bunpro-import-investigation.md` with findings: no official API, deprecated by Bunpro team, community reverse-engineered endpoints exist, token acquisition requires browser cookie extraction, endpoints are unstable (grammar point titles return 500), available data includes SRS distribution and review counts but not grammar point names.
   - [x] Reference sources: community API repo, Bunpro forum posts, OpenClaw skill findings.
   - [x] State the project's decision: best-effort import with prominent limitations disclosure.
 
@@ -147,7 +147,7 @@ New files:
 - `mobile/src/data/import/bunproClient.test.ts` — client tests with mocked fetch
 - `mobile/src/core/import/bunproMapper.ts` — pure mapper from Bunpro data to internal format
 - `mobile/src/core/import/bunproMapper.test.ts` — mapper unit tests
-- `docs/bunpro-import-investigation.md` — API investigation documentation
+- `docs/archive/bunpro-import-investigation.md` — API investigation documentation
 
 Modified files:
 - `mobile/src/core/import/fsrsConverter.ts` — add `convertBunproStageToFsrs`
@@ -250,7 +250,7 @@ Composer
 
 ### Completion Notes List
 
-- Documented Bunpro API limitations in `docs/bunpro-import-investigation.md` with community sources and project decision for best-effort import.
+- Documented Bunpro API limitations in `docs/archive/bunpro-import-investigation.md` with community sources and project decision for best-effort import.
 - Implemented `BunproClient` fetching grammar items via paginated `srs_level_details` per SRS stage; 500 responses surface as endpoint-unavailable (no retry), 401/403 as invalid token.
 - Added `bunproMapper`, `convertBunproStageToFsrs`, and `runBunproImport` mirroring Story 3.2 WaniKani patterns; reuses `persistMappedImportItems` with `source: 'bunpro'`.
 - Extended onboarding import screen with WaniKani/Bunpro source switcher, limitation notice, token input, skip/manual-marking alternatives, and specific error messaging.
@@ -258,7 +258,7 @@ Composer
 
 ### File List
 
-- docs/bunpro-import-investigation.md (new)
+- docs/archive/bunpro-import-investigation.md (new)
 - mobile/src/data/import/bunproClient.ts (new)
 - mobile/src/data/import/bunproClient.test.ts (new)
 - mobile/src/core/import/bunproMapper.ts (new)

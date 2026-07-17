@@ -36,7 +36,7 @@ This is a schema + content + tooling gap, not just missing data.
    adapting is both an attribution obligation and a rule-1 violation, so we don't).
 3. **This is build-time generation** (maintainer laptop / CI → `curriculum/` → compile →
    OTA). It is unrelated to Epic 8's on-device BYO-key story generation
-   (`docs/ai-reading-and-community-contribution-design-note.md`) — no app code, no keys
+   (`docs/design/ai-reading-and-community-contribution-design-note.md`) — no app code, no keys
    on device, no new network access for learners.
 4. **Everything flows through the existing pipeline:** `curriculum/_build/` datasets →
    `generate.py` → `curriculum/**/*.json` → `validate-schema` → `compile-curriculum` →
@@ -201,7 +201,7 @@ in the same call (per the docs 07–09 coordination note) but stay in
 `generate_content/drafts/` as authoring input — they do not ship.
 
 *No-API alternative for step 4 (batching the remaining ~161 points):*
-`docs/grammar-web-chat-workflow.md` documents a paste-into-Claude/Gemini-web
+`docs/workflows/grammar-web-chat-workflow.md` documents a paste-into-Claude/Gemini-web
 flow using the same `context.py`, prompts, and `validate_drafts.py` gate — the
 `webprompts` and `ingest` subcommands of `generate_grammar_lessons.py`. Only the
 model call moves to the browser; the vocab constraints and mechanical gate are
@@ -249,8 +249,8 @@ requeue then `flagged_for_rewrite`). Run from `curriculum/_build` with API crede
 inlines them into the kanji/radical JSON (`meaning_mnemonic`/`reading_mnemonic`/
 `description` on kanji, the vivid image into radical `mnemonic_text`). The no-API
 web-chat lane (`webprompts`/`ingest`) mirrors 2a for the cost swap and is documented
-in `docs/kanji-radical-mnemonic-web-chat-workflow.md` (with an automation prompt for
-driving Gemini web in `docs/kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`).
+in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md` (with an automation prompt for
+driving Gemini web in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`).
 Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pass
 (drafts do not ship past `compile-curriculum`'s draft gate until
 `review_status: reviewed`).
@@ -287,7 +287,7 @@ handling so batches never hang on an unsatisfiable constraint.
 
 ## Phase 3 — Images
 
-Extends `docs/radical-mnemonic-images.md` (spec: PNG, square/4:3, ≤512 KB, R2 at
+Extends `docs/content/radical-mnemonic-images.md` (spec: PNG, square/4:3, ≤512 KB, R2 at
 `https://assets.japanese-learning.app/radicals/{level}/{slug}.png`; app already has
 disk caching + text fallback).
 

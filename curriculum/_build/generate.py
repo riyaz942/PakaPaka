@@ -145,7 +145,7 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries):
         }
         mnemonic = mnemonics.get(slug)
         if mnemonic:
-            # Phase 2b split mnemonics (docs/content-pipeline-plan.md 2b): the
+            # Phase 2b split mnemonics (docs/content/content-pipeline-plan.md 2b): the
             # meaning mnemonic references the taught decomposition, the reading
             # mnemonic carries the target reading. The legacy one-line
             # mnemonic_text is kept as a fallback for pre-2b consumers.
@@ -233,7 +233,7 @@ def _annotate_lesson_markdown(body, known_readings, label):
     """Build-time furigana pass over a lesson body: ```jp fence lines are
     annotated as whole sentences, prose lines per Japanese run. Authors and
     generators write plain Japanese; the tokenizer — never the LLM — supplies
-    readings (docs/content-pipeline-plan.md Phase 0). Annotation failures
+    readings (docs/content/content-pipeline-plan.md Phase 0). Annotation failures
     leave the text plain and warn: for *generated* drafts the Phase 2 gate has
     already rejected them, so a warning here means a human edit needs fixing."""
     lines = body.replace("\r\n", "\n").split("\n")

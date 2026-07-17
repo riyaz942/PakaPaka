@@ -10,7 +10,7 @@ const KNOWN_SRS_STAGES = ['guru', 'master', 'enlightened', 'burned'];
  * builder that was originally slated to introduce it.
  *
  * "Known" mirrors the WaniKani convention referenced in
- * docs/furigana-support-plan.md Phase 4: item_study_status = 'known', or an
+ * docs/content/furigana-support-plan.md Phase 4: item_study_status = 'known', or an
  * SRS stage of guru and above.
  */
 export function getKnownKanjiCharacters(userDb: SQLiteDatabase): Set<string> {

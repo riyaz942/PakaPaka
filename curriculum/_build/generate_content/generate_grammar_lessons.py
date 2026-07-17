@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Phase 2a grammar lesson generator (docs/content-pipeline-plan.md).
+"""Phase 2a grammar lesson generator (docs/content/content-pipeline-plan.md).
 
 Build-time generation on the maintainer machine: one Message Batches request
 per grammar point (50% cost, latency irrelevant), structured output via a
@@ -38,7 +38,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROMPTS_DIR = os.path.join(HERE, "prompts")
 DRAFTS_DIR = os.path.join(HERE, "drafts")
 #: Paste-ready prompts + pasted replies for the web-chat (no-API) workflow —
-#: docs/content-pipeline-plan.md step 4 alternative. See docs/grammar-web-chat-workflow.md.
+#: docs/content/content-pipeline-plan.md step 4 alternative. See docs/workflows/grammar-web-chat-workflow.md.
 WEB_DIR = os.path.join(HERE, "web")
 
 MODEL = "claude-opus-4-8"
@@ -286,7 +286,7 @@ def _web_prompt_text(level, slug, ctx, validator_errors=None):
         f"     Save the model's reply to web/{level}/{slug}.reply.md, then run:\n"
         f"       .venv/bin/python -m generate_content.generate_grammar_lessons \\\n"
         f"         ingest --level {level} --slug {slug} --model <claude-web|gemini-web>\n"
-        f"     See docs/grammar-web-chat-workflow.md. -->\n\n"
+        f"     See docs/workflows/grammar-web-chat-workflow.md. -->\n\n"
     )
     return (
         header

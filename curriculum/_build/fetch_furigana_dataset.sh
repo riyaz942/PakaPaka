@@ -1,7 +1,7 @@
 #!/bin/bash
 # Downloads the JmdictFurigana dataset (CC BY-SA, EDRDG-adjacent) used by
 # curriculum/_build/furigana.py. Not committed to the repo — regenerate with
-# this script, matching docs/furigana-support-plan.md ground rule 3.
+# this script, matching docs/content/furigana-support-plan.md ground rule 3.
 set -euo pipefail
 
 BUILD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
