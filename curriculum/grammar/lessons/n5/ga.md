@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "When a question word like 誰 or 何 is the subject, use が — never は."
   - "が marks new or specific subjects; once something becomes the known topic, it usually switches to は."

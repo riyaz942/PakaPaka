@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Even though it translates to 'please', てください is fundamentally a direction or command."
   - "Avoid using てください to ask a boss or superior to do something, as it can sound bossy."

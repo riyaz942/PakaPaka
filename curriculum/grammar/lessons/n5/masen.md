@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The ません ending is strictly for verbs; never attach it to nouns or adjectives."
   - "Using ませんか at the end of a sentence is the standard polite way to invite someone to do something, meaning 'Won't you...?' rather than just acting as a negative statement."

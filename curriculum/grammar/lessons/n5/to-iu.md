@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The right side of という must always be a noun, because you are permanently linking a specific name or quotation to a broader category."
   - "Stick to the full という in formal or polite situations, as the compressed っていう form is strictly for casual speech among friends."

@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use たことがある for life experience, not for something you just did — 'I ate breakfast this morning' is 食べました, not 食べたことがあります."
   - "Negate the ある (ありません / ない), never the front verb; the verb stays in casual past."

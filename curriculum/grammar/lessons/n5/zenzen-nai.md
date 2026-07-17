@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "While you will hear native speakers use 全然 with positive words in modern slang (like 全然いい), strict grammar requires it to pair with a negative word."
   - "Do not use 全然 entirely on its own to answer a question in formal speech; always finish the sentence with the negative verb or adjective."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not use the copula だ before かもしれない; attach it directly to the bare noun or Na-adjective."
 related_grammar_slugs:

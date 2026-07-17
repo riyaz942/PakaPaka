@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "For positive advice use the plain past (た) form: 行ったほうがいい, not 行くほうがいい."
   - "For negative advice always use the plain negative (ない) form — never a past form."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The particle へ is always pronounced 'e' (like in elephant), not 'he'."
   - "Use へ exclusively with movement verbs (like 行く, 来る, 帰る); it cannot be used for stationary actions."

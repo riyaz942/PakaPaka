@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "しか overwrites the particles を and が, so you will never say をしか or がしか."
   - "The verb ending a しか sentence must always be negative, even though the English translation is usually positive."

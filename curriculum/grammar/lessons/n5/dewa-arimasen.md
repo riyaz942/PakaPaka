@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "You can only attach ではありません or じゃないです to nouns (and na-adjectives, which you will learn later)."
   - "Never attach this pattern directly to a verb like 食べる."

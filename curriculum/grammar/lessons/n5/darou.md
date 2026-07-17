@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never attach the casual copula だ directly before だろう; attach it directly to the bare noun or na-adjective instead."
 related_grammar_slugs:

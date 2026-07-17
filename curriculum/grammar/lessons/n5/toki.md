@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Because とき is grammatically a noun, you must use の after another noun and な after a Na-adjective to connect them."
   - "The tense of the verb right before とき depends on whether that specific action was completely finished, not on when the overall story happened."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never use だ before でしょう; attach it directly to nouns and na-adjectives."
   - "A flat intonation means 'probably', while a rising intonation means 'right?'."

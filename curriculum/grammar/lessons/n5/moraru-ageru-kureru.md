@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never use あげる when someone is giving an object to you."
   - "When using くれる, '私に' (to me) is almost always implied and frequently dropped in natural speech."

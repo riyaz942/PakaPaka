@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "いい (good) conjugates from its original form 良い (よい), so its negative is よくない and its past is よかった."
   - "i-adjectives conjugate themselves; the です added at the end is only there to make the sentence polite, not to show time."

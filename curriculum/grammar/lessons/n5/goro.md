@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use ごろ strictly for a point in time (like three o'clock), while ぐらい must be used for an amount or duration of time (like three hours)."
   - "When attaching to a noun to mean 'around the time I was a...', use the particle の and expect the pronunciation to shift to 頃 (ころ)."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The verb 分かる (to understand) already describes a state, so it usually remains as 分かります rather than taking ている."
   - "When speaking casually, it is extremely common to drop the い and say てる instead of ている."

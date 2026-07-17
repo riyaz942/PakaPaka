@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "ませんか is a polite, set invitation form — don't tack か onto the plain negative (見ない) and expect the same polite flavor."
   - "ません alone is just a flat negative ('doesn't/won't'); it only becomes an invitation with か plus an activity you'd do together."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "It completely replaces the object particle を, so never say をでも."
   - "Using this for your own actions instead of an invitation makes you sound dismissive, like \"I guess I'll just do this.\""

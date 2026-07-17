@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "This pattern literally means \"if you don't do it, it's no good,\" which is how Japanese expresses \"must.\""
   - "Because the pattern ends in a verb, you must conjugate the end to なります or ならない to match the politeness of your conversation."

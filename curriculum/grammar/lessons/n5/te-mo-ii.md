@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "In polite Japanese keep the も — dropping it (食べていい) is casual only and sounds unfinished in formal speech."
   - "Add か to ask for permission; without か you are granting permission, not requesting it."

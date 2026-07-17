@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always use the casual plain form inside the quote before と思う, never polite forms like ます or です."
   - "When expressing an opinion about a noun or na-adjective, you must include the casual 'is' word だ right before と思う."

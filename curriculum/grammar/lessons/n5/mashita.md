@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never attach ました to Japanese adjectives or nouns, as they have their own completely separate rules for forming the past tense."
   - "Since ました and ませんでした are inherently polite forms, using them with your closest friends or family can sound stiff and overly formal."

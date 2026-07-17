@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "と can only connect nouns, never verbs or sentences."
   - "Lists made with と are exhaustive; they imply nothing else is included."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "In formal writing, a sentence ending in か typically finishes with a standard full stop (。) rather than a question mark."
   - "Never attach か directly to a casual verb; instead, drop the particle entirely and just use a rising intonation."

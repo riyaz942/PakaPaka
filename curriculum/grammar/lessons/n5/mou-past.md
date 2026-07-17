@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Be careful: pairing もう with a negative present-tense verb changes its meaning entirely from 'already' to 'not anymore'."
 related_grammar_slugs:

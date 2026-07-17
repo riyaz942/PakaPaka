@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always use the dictionary form of the verb before ことができる; using the past tense (た-form) changes the meaning to 'have done before'."
   - "Keep the object's original を particle intact before the verb, even though the phrase ends with ができる."

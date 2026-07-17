@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "You can only use ましょう with verbs that describe actions you can control; you cannot use it with verbs like 分かる (to understand)."
   - "ましょう is inherently polite, so it is used with colleagues or acquaintances rather than your closest friends."

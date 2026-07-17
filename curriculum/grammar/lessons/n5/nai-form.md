@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never try to mix politeness levels in a single verb—choose either the polite ません or the casual ない, but never combine them."
 related_grammar_slugs:

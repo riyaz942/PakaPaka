@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Japanese particles always attach to the end of the noun, so Noun + から translates to 'from Noun', never the other way around."
   - "While に pinpoints an exact destination or time, から only marks the starting point where the action originates."

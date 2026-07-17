@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use で for the location where an action takes place, not に."
   - "Don't use で to say you are doing something with a person; it is strictly for tools and means."

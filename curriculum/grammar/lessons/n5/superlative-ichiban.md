@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not use 一番 when comparing exactly two things; it is exclusively for choosing the top item from three or more options."
   - "Keep 一番 close to the adjective or verb it modifies; placing it too early in the sentence sounds unnatural."

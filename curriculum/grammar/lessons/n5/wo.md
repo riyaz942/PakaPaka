@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "を is only ever used with action verbs, never with the copula です."
   - "In casual conversation, native speakers frequently drop the を particle entirely if the context is obvious."

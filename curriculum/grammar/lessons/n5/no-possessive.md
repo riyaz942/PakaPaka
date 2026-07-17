@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always put the modifier first—Japanese doesn't let you reverse the order like the English 'of'."
   - "You cannot drop the linking particle の when combining nouns, even for compound ideas like 'Japanese teacher'."

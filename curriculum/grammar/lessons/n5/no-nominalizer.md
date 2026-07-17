@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Using んです on every single sentence sounds like you are constantly making excuses; save it for when you need to explain something or react to shared context."
   - "In casual speech, declarative statements ending in a flat の can sound traditionally feminine, so answering simply with the plain verb is often safer."

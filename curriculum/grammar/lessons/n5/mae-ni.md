@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never use the past tense before 前に; the verb must always stay in the dictionary form, even if the sentence describes a past event."
   - "When attaching a noun to 前に, you must always use the particle の (e.g., 授業の前に)."

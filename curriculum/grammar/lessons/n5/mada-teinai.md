@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use まだ〜ていない instead of the simple past negative if there is still a chance the action will happen."
 related_grammar_slugs:

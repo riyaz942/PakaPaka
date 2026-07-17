@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "どうですか attaches directly to nouns, so you cannot use it right after a verb to suggest an action."
   - "When asking for an impression of a past event, remember to change ですか to でしたか."

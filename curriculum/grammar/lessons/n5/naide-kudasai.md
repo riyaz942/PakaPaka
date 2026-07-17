@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always include the particle で between the negative verb and ください; never attach ください directly to the nai-form."
   - "While grammatically polite, this pattern is a direct command and can sound blunt if used with superiors."

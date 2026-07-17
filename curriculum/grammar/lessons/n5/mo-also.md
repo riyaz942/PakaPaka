@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Remember that も completely replaces the basic marker particles は, が, and を, rather than stacking with them."
   - "Unlike English where 'also' can float around the sentence, the particle も must physically attach directly to the noun it modifies."

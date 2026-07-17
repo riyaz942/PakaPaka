@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "あまり must always be paired with a negative verb or negative adjective."
   - "Do not use あまり in affirmative sentences to mean 'very much'."

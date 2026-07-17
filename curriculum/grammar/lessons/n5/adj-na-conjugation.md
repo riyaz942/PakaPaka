@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Words ending in an 'i' sound like きれい and 有名 are actually na-adjectives, so they take な before a noun instead of connecting directly."
   - "Never try to conjugate a na-adjective like an i-adjective; forms like 好きくない are incorrect."

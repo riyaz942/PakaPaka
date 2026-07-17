@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Relative time words like 'today' or 'tomorrow' do not take the に particle because they are not fixed points in time."
   - "Interaction verbs like 会う (to meet) and 聞く (to ask) take the target particle に, not the direct object particle を."

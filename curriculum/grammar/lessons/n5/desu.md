@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not attach です directly to verbs like 食べる; verbs have their own separate polite forms."
   - "だ is the casual form of です, but it can sound very punchy, so friends often just drop it completely."

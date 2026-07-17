@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "With nouns and な-adjectives, use な before ので (医者なので), never だ — 学生ので is wrong."
   - "The reason clause with ので comes first, and ので attaches to the plain form even when the sentence ends politely."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "When combining だけ with subject (が) or object (を) particles, it usually replaces them entirely, but it stacks securely with directional particles like に."
 related_grammar_slugs:

@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "は as a topic marker is pronounced wa, not ha, even though it's written with the ha character."
   - "は marks the topic (what you're talking about), which is not always the same as the grammatical subject."

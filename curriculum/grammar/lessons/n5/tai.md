@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "You can only use たい to express your own desires, or to ask directly about the listener's desires."
   - "Once you attach たい, the verb transforms into an i-adjective and conjugates exactly like one (たくない, たかった)."

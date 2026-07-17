@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The verb 会う (to meet) requires に to mark the person you are meeting, unlike the English verb which takes a direct object."
   - "The particle に only marks the destination or recipient of an action, not what is being transferred."

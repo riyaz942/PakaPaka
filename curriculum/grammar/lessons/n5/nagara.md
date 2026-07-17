@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The action placed at the very end of the sentence is always the main focus or primary activity."
   - "Both actions connected by this pattern must be performed by the exact same person."

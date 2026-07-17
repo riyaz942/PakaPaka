@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Build it from the て-form: 行く → 行って → 行ってはいけない, never 行きて."
   - "The は in てはいけない is pronounced wa, not ha, because it's the topic particle."

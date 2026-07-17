@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Never attach ます directly to the dictionary form of a verb; forms like 食べるます are incorrect."
   - "ます is strictly for action words and cannot be attached to nouns or adjectives."

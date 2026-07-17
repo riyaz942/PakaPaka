@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The てから phrase has no tense of its own; you only change the final verb to make the sentence past tense."
   - "Attaching から to a dictionary-form or polite verb means 'because', but attaching it to a て-form means 'after'."

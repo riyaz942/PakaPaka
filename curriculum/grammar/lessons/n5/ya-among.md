@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The particle や can only connect nouns; never use it to connect adjectives or verbs."
   - "Chaining more than two or three nouns with や sounds unnatural—stick to a few strong examples and let the particle imply the rest."

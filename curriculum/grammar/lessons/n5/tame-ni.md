@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always use the dictionary (present) form of verbs before ために, never the past tense, because a goal is always in the future relative to the action."
   - "You can only use ために with volitional actions that you have conscious control over, not for natural states or things outside your control."

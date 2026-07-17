@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Japanese adjectives do not change form when making comparisons (there is no equivalent to adding '-er' in English); the word より does all the work."
   - "Do not use より to mean 'from' a starting point in place or time in everyday speech—stick to から for that."

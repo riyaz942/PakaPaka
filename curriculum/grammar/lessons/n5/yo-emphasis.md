@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Avoid overusing よ with superiors or in every sentence, as the \"I know something you don't\" nuance can make you sound like a condescending know-it-all."
 related_grammar_slugs:

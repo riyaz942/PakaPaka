@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The adjective いい (good) is a special exception and always becomes よくなる, never いくなる."
   - "Use the past tense くなりました or になりました to describe a change that has already happened and is currently visible."

@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "This grammar pattern only works with verbs of physical movement like 行く, 来る, and 帰る at the end."
   - "Using に twice in a sentence for both the destination and the purpose is grammatically fine, but many speakers prefer へ for the destination to avoid repeating it."

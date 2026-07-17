@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Always use a rising intonation at the end of the sentence to show you are seeking agreement."
   - "Do not use this pattern to ask a genuine negative question; it is a positive statement looking for validation."

@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The te-form carries no tense or politeness itself — the final verb in the sentence decides both."
   - "行く is irregular: it becomes 行って, not the expected 行いて."

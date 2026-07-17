@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not use the plain た-form alone at the end of a sentence with a teacher, a boss, or a stranger, as it will sound too blunt and familiar."
 related_grammar_slugs:

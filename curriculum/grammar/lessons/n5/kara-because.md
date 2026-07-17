@@ -1,7 +1,7 @@
 ---
 generator_model: claude-opus-4-8
 prompt_version: 1
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "から attaches to a whole clause with a real predicate, never to a bare noun the way English 'because of' can."
   - "Match the politeness of the clause before から to the sentence around it: ...ですから in polite speech, plain ...から among friends."

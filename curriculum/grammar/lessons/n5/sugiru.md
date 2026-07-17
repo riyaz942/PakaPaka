@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Because すぎる implies an excess that crosses a reasonable boundary, using it with positive traits can sound like a complaint rather than a compliment."
 related_grammar_slugs:

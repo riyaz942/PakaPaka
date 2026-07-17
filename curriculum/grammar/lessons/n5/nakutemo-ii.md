@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not confuse なくてもいい (don't have to) with なければならない (must)."
   - "Do not confuse なくてもいい (it's okay if you don't) with ないでください (please don't)."

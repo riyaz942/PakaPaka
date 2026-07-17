@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The verb before 後で is always in the past tense (た-form), even if the main event happens in the future."
   - "The tense of the entire sentence is controlled by the final verb, not the verb attached to 後で."

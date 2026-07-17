@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "When using まで with time, the action must be continuous, filling the space up to that limit."
 related_grammar_slugs:

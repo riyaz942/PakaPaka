@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Adverbs ending in く are used to modify verbs and actions, not nouns."
   - "The adjective いい (good) changes to よく, not いく."

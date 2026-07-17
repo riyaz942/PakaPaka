@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Do not use this pattern to ask for agreement on private information that only you could possibly know, like your own name or your own internal feelings."
 related_grammar_slugs:

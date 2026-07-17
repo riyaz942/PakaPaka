@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "The verbs inside the list are always frozen in the past tense (た-form), even if you are talking about future plans."
   - "Never forget to add the final する (or しました, します) at the very end of the sentence to establish the tense and politeness."

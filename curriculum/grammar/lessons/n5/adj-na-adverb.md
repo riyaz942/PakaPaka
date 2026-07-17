@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Use に to connect a na-adjective to a verb, but remember to still use な when connecting it to a noun."
   - "Do not fall for the きれい trap; it is a na-adjective, so it must become きれいに to modify an action, never きれいく."

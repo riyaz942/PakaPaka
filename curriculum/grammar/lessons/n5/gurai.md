@@ -1,7 +1,7 @@
 ---
 generator_model: gemini-web
 prompt_version: 2
-review_status: draft
+review_status: reviewed
 caution_notes:
   - "Textbook rules say ぐらい is strictly for amounts and durations, but in casual real-life Japanese, people often use it for specific times on the clock too."
 related_grammar_slugs:
