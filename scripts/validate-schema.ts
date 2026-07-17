@@ -325,8 +325,12 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         // _build is the tooling workspace (datasets, importers, generation
-        // drafts) — its JSON never ships and has no schema mapping.
-        if (entry.name !== '_build') {
+        // drafts) — its JSON never ships and has no schema mapping. `mnemonics`
+        // holds the Phase 2b generated sidecars (kanji/radicals/mnemonics/*.json)
+        // that generate.py inlines into the item files; they are keyed-by-slug
+        // build inputs, not standalone curriculum files, so they have no schema
+        // mapping of their own (their contents are validated once inlined).
+        if (entry.name !== '_build' && entry.name !== 'mnemonics') {
           walk(fullPath);
         }
         continue;

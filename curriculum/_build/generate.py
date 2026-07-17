@@ -32,6 +32,14 @@ from generate_content import frontmatter as frontmatter_lib  # noqa: E402
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
+#: Phase 2b mnemonic sidecars (generate_content/generate_mnemonics.py), inlined
+#: into the kanji/radical items below keyed by slug. Absent when 2b has not run.
+KANJI_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics")
+RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
+
+#: Sidecar _meta keys carried through to the shipped item (matches grammar).
+_SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "reviewed_by")
+
 # Kanji/kana runs (incl. 々〆 and the long-vowel mark) for the lesson-markdown
 # furigana pass below.
 _JP_RUN_RE = re.compile(r"[぀-ヿ㐀-䶿一-鿿々〆ー]+")
@@ -43,6 +51,25 @@ def write_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+
+
+def _load_mnemonic_sidecar(sidecar_dir, level):
+    """{slug: entry} from <sidecar_dir>/<level>.json, or {} when 2b hasn't run.
+
+    Each entry carries the generated mnemonic field(s) plus a `_meta` block
+    (generator_model, prompt_version, review_status). Reviewer-authored entries
+    may add `reviewed_by` / flip `review_status`."""
+    path = os.path.join(sidecar_dir, f"{level}.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _sidecar_meta(entry):
+    """The `_meta` dict to attach to a shipped item, filtered to known keys."""
+    meta = entry.get("_meta", {})
+    return {k: meta[k] for k in _SIDECAR_META_KEYS if meta.get(k) not in (None, "")}
 
 
 def _vocab_reading_map(*vocab_entry_lists):
@@ -57,6 +84,7 @@ def _vocab_reading_map(*vocab_entry_lists):
 
 
 def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
+    mnemonics = _load_mnemonic_sidecar(RADICAL_MNEMONICS_DIR, slug_prefix)
     items = []
     for i, r in enumerate(radical_entries, start=1):
         item = {
@@ -67,6 +95,14 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             "visual_mnemonic_url": f"https://assets.japanese-learning.app/radicals/{slug_prefix}/{r['slug']}.png",
             "sort_order": i,
         }
+        mnemonic = mnemonics.get(r["slug"])
+        if mnemonic:
+            # Phase 2b generated image replaces the seed dataset mnemonic.
+            if mnemonic.get("mnemonic_text"):
+                item["mnemonic_text"] = mnemonic["mnemonic_text"]
+            meta = _sidecar_meta(mnemonic)
+            if meta:
+                item["_meta"] = meta
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
                 {"answer_type": "meaning", "answer_text": m} if j else
@@ -78,6 +114,7 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
 
 
 def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries):
+    mnemonics = _load_mnemonic_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
     items = []
     for i, k in enumerate(kanji_entries, start=1):
         readings = []
@@ -96,15 +133,29 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries):
             accepted.append({"answer_type": "reading", "answer_text": primary_reading})
         for extra in k.get("extra_meanings", []):
             accepted.append({"answer_type": "meaning", "answer_text": extra})
-        items.append({
-            "slug": f"{slug_prefix}-{k['suffix']}",
+        slug = f"{slug_prefix}-{k['suffix']}"
+        item = {
+            "slug": slug,
             "primary_form": k["char"],
             "meaning": k["meaning"],
             "mnemonic_text": k["mnemonic"],
             "sort_order": i,
             "readings": readings,
             "accepted_answers": accepted,
-        })
+        }
+        mnemonic = mnemonics.get(slug)
+        if mnemonic:
+            # Phase 2b split mnemonics (docs/content-pipeline-plan.md 2b): the
+            # meaning mnemonic references the taught decomposition, the reading
+            # mnemonic carries the target reading. The legacy one-line
+            # mnemonic_text is kept as a fallback for pre-2b consumers.
+            for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+                if mnemonic.get(field):
+                    item[field] = mnemonic[field]
+            meta = _sidecar_meta(mnemonic)
+            if meta:
+                item["_meta"] = meta
+        items.append(item)
     return {"jlpt_level": jlpt_level, "items": items}
 
 

@@ -231,6 +231,30 @@ must be read in the Phase 0.5 lesson renderer, not as raw markdown.
   coherent. Budget a cross-batch coherence pass at review time; drift across batches is
   expected even with injection.
 
+*Status: tooling built + N5 generated (draft).* `curriculum/_build/generate_content/`
+holds the mnemonic prompts (`prompts/kanji-mnemonic.md`, `prompts/radical-mnemonic.md`),
+the cast-bible loader (`cast.py`, parses `prompts/cast-bible.md` and injects the
+reading's fixed character per item), the context builder (`mnemonic_context.py` — kanji
+readings + the **taught decomposition read straight from `dependencies/graph.json`** in
+our radical names, never an untaught component), the mechanical gate
+(`validate_mnemonics.py`: reading mnemonic contains the target reading, meaning mnemonic
+references every taught component, plain-prose/length checks) and the batch driver
+(`generate_mnemonics.py`, `claude-opus-4-8` via Message Batches, one forced
+`submit_kanji_mnemonic` / `submit_radical_mnemonic` tool call per item, 3-attempt
+requeue then `flagged_for_rewrite`). Run from `curriculum/_build` with API credentials:
+`.venv/bin/python -m generate_content.generate_mnemonics run --type radical` and
+`… run --type kanji`. Gate-passing drafts are assembled into per-level sidecars
+(`curriculum/kanji/mnemonics/n5.json`, `curriculum/radicals/mnemonics/n5.json`) carrying
+`_meta` (`generator_model`, `prompt_version`, `review_status: draft`); `generate.py`
+inlines them into the kanji/radical JSON (`meaning_mnemonic`/`reading_mnemonic`/
+`description` on kanji, the vivid image into radical `mnemonic_text`). The no-API
+web-chat lane (`webprompts`/`ingest`) mirrors 2a for the cost swap and is documented
+in `docs/kanji-radical-mnemonic-web-chat-workflow.md` (with an automation prompt for
+driving Gemini web in `docs/kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`).
+Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pass
+(drafts do not ship past `compile-curriculum`'s draft gate until
+`review_status: reviewed`).
+
 ### 2c. Example sentences (kanji + vocab)
 
 Generate original sentences, using in-level Tatoeba candidates (filtered by the

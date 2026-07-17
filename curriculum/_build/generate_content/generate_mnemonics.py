@@ -1,0 +1,543 @@
+# -*- coding: utf-8 -*-
+"""Phase 2b kanji + radical mnemonic generator (docs/content-pipeline-plan.md).
+
+Build-time generation on the maintainer machine, mirroring the 2a grammar
+pipeline (generate_grammar_lessons.py): one Message Batches request per item
+(50% cost, latency irrelevant), structured output via a single forced tool
+call, drafts written under generate_content/drafts/mnemonics/, and — only after
+passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
+sidecars that generate.py inlines into the shipped kanji/radical JSON:
+
+    curriculum/kanji/mnemonics/<level>.json     (meaning/reading mnemonic + description)
+    curriculum/radicals/mnemonics/<level>.json  (one vivid image per radical)
+
+Both carry `_meta` (generator_model, prompt_version, review_status: draft) per
+item, so compile-curriculum warns on unreviewed prose and nothing ships
+silently. Nothing here writes shipped JSON directly.
+
+The kanji generator injects (per docs 2b): the taught decomposition from
+dependencies/graph.json in our radical names — never an untaught component —
+and the reading's fixed cast character from the cast bible, since batch calls
+are independent and a static style sheet alone won't keep the cast coherent.
+
+Failed drafts are auto-requeued with the gate errors appended to the prompt,
+capped at MAX_ATTEMPTS, then recorded `review_status: flagged_for_rewrite`.
+
+Usage (from curriculum/_build, venv with `anthropic` installed):
+    .venv/bin/python -m generate_content.generate_mnemonics requests --type radical
+    .venv/bin/python -m generate_content.generate_mnemonics run --type kanji     # needs API credentials
+    .venv/bin/python -m generate_content.generate_mnemonics assemble --type kanji
+    .venv/bin/python -m generate_content.generate_mnemonics collect --type kanji --batch-id msgbatch_...
+
+The no-API web-chat lane (webprompts/ingest) mirrors 2a for the cost swap.
+"""
+
+import argparse
+import json
+import os
+import sys
+import time
+
+BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, BUILD_DIR)
+
+from generate_content import cast as cast_lib  # noqa: E402
+from generate_content import mnemonic_context as mc  # noqa: E402
+from generate_content.validate_mnemonics import validate_draft  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PROMPTS_DIR = os.path.join(HERE, "prompts")
+DRAFTS_DIR = os.path.join(HERE, "drafts", "mnemonics")
+WEB_DIR = os.path.join(HERE, "web", "mnemonics")
+
+MODEL = "claude-opus-4-8"
+#: Bump together with the mnemonic prompts, persona.md, and cast-bible.md.
+PROMPT_VERSION = 1
+MAX_ATTEMPTS = 3
+MAX_TOKENS = 2000
+POLL_SECONDS = 30
+POLL_TIMEOUT_SECONDS = 90 * 60
+
+SUBMIT_TOOLS = {
+    "kanji": {
+        "name": "submit_kanji_mnemonic",
+        "description": (
+            "Submit the completed mnemonics for one kanji. Call exactly once."
+        ),
+        "strict": True,
+        "input_schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["meaning_mnemonic", "reading_mnemonic", "description"],
+            "properties": {
+                "meaning_mnemonic": {"type": "string"},
+                "reading_mnemonic": {"type": "string"},
+                "description": {"type": "string"},
+            },
+        },
+    },
+    "radical": {
+        "name": "submit_radical_mnemonic",
+        "description": (
+            "Submit the completed mnemonic for one radical. Call exactly once."
+        ),
+        "strict": True,
+        "input_schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["mnemonic_text"],
+            "properties": {"mnemonic_text": {"type": "string"}},
+        },
+    },
+}
+
+PROMPT_FILES = {"kanji": "kanji-mnemonic.md", "radical": "radical-mnemonic.md"}
+
+
+def _read_prompt(name):
+    with open(os.path.join(PROMPTS_DIR, name), encoding="utf-8") as f:
+        return f.read()
+
+
+def _feedback_block(validator_errors):
+    if not validator_errors:
+        return ""
+    return (
+        "\n## An earlier draft failed mechanical validation\n\n"
+        "An earlier draft was rejected by the automated gate for the failures "
+        "below. Write your mnemonic(s) so none of them recur:\n"
+        + "\n".join(f"- {e}" for e in validator_errors)
+    )
+
+
+def build_user_prompt(kind, ctx, validator_errors=None):
+    template = _read_prompt(PROMPT_FILES[kind])
+    if kind == "kanji":
+        subs = {
+            "{{LEVEL}}": ctx["slug"].split("-")[0].upper(),
+            "{{CHAR}}": ctx["char"],
+            "{{MEANING}}": ctx["meaning"],
+            "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{ONYOMI}}": "、".join(ctx["onyomi"]) or "(none)",
+            "{{KUNYOMI}}": "、".join(ctx["kunyomi"]) or "(none)",
+            "{{PRIMARY_READING}}": ctx["primary_reading"] or "(none)",
+            "{{COMPONENTS}}": mc.format_components(ctx["components"]),
+            "{{CAST_BLOCK}}": cast_lib.format_cast_block(ctx["reading_lore"], ctx["cast"]),
+            "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
+        }
+    else:
+        subs = {
+            "{{LEVEL}}": ctx["slug"].split("-")[0].upper() if "-" in ctx["slug"] else "N5",
+            "{{FORM}}": ctx["form"],
+            "{{MEANING}}": ctx["meaning"],
+            "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
+        }
+    for token, value in subs.items():
+        template = template.replace(token, value)
+    return template
+
+
+def _context_for(level, kind, slug):
+    return mc.kanji_context(level, slug) if kind == "kanji" else mc.radical_context(level, slug)
+
+
+def build_request(level, kind, slug, attempt, ctx, validator_errors=None):
+    tool = SUBMIT_TOOLS[kind]
+    return {
+        "custom_id": f"{level}--{kind}--{slug}--attempt{attempt}",
+        "params": {
+            "model": MODEL,
+            "max_tokens": MAX_TOKENS,
+            "system": _read_prompt("persona.md"),
+            "tools": [tool],
+            "tool_choice": {"type": "tool", "name": tool["name"]},
+            "messages": [
+                {"role": "user", "content": build_user_prompt(kind, ctx, validator_errors)},
+            ],
+        },
+    }
+
+
+# --- draft persistence -----------------------------------------------------
+
+def _draft_path(level, kind, slug):
+    return os.path.join(DRAFTS_DIR, level, kind, f"{slug}.json")
+
+
+def _load_draft(level, kind, slug):
+    path = _draft_path(level, kind, slug)
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    return {"slug": slug, "level": level, "kind": kind, "attempts": [],
+            "status": "pending", "tool_input": None}
+
+
+def _save_draft(record):
+    path = _draft_path(record["level"], record["kind"], record["slug"])
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(record, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+# --- batch plumbing --------------------------------------------------------
+
+def _extract_tool_input(message, tool_name):
+    for block in message.content:
+        if block.type == "tool_use" and block.name == tool_name:
+            return block.input
+    return None
+
+
+def _batch_outcomes(client, batch_id, tool_name):
+    outcomes = {}
+    for result in client.messages.batches.results(batch_id):
+        entry = result.result
+        if entry.type == "succeeded":
+            message = entry.message
+            if message.stop_reason == "refusal":
+                outcomes[result.custom_id] = {"error": "model refusal"}
+                continue
+            tool_input = _extract_tool_input(message, tool_name)
+            if tool_input is None:
+                outcomes[result.custom_id] = {
+                    "error": f"no tool call in response (stop_reason={message.stop_reason})"
+                }
+            else:
+                outcomes[result.custom_id] = {"tool_input": tool_input}
+        else:
+            outcomes[result.custom_id] = {"error": f"batch result type {entry.type}"}
+    return outcomes
+
+
+def _submit_and_collect(client, requests, tool_name):
+    batch = client.messages.batches.create(requests=requests)
+    print(f"submitted batch {batch.id} ({len(requests)} requests)")
+    deadline = time.time() + POLL_TIMEOUT_SECONDS
+    while True:
+        batch = client.messages.batches.retrieve(batch.id)
+        if batch.processing_status == "ended":
+            break
+        if time.time() > deadline:
+            raise SystemExit(
+                f"batch {batch.id} did not finish within the poll timeout; collect "
+                f"it later with: generate_mnemonics collect --batch-id {batch.id} "
+                f"--type <kind>"
+            )
+        counts = batch.request_counts
+        print(f"  …{batch.processing_status} (processing={counts.processing} "
+              f"succeeded={counts.succeeded} errored={counts.errored})")
+        time.sleep(POLL_SECONDS)
+    return _batch_outcomes(client, batch.id, tool_name)
+
+
+def _split_custom_id(custom_id):
+    level, kind, slug, attempt_part = custom_id.split("--")
+    return level, kind, slug, int(attempt_part.removeprefix("attempt"))
+
+
+def _process_outcomes(level, kind, contexts, records, outcomes):
+    """Validate + persist batch outcomes; returns {slug: errors} still failing."""
+    next_pending = {}
+    for custom_id, outcome in outcomes.items():
+        _, _, slug, attempt = _split_custom_id(custom_id)
+        record = records.setdefault(slug, _load_draft(level, kind, slug))
+        ctx = contexts.setdefault(slug, _context_for(level, kind, slug))
+        if "error" in outcome:
+            record["attempts"].append({"attempt": attempt, "errors": [outcome["error"]]})
+            next_pending[slug] = [outcome["error"]]
+            print(f"[attempt {attempt}] {slug}: API-level failure: {outcome['error']}")
+            _save_draft(record)
+            continue
+        tool_input = outcome["tool_input"]
+        errors = validate_draft(level, kind, slug, tool_input, ctx)
+        record["attempts"].append({"attempt": attempt, "errors": errors})
+        record["tool_input"] = tool_input
+        record["generator_model"] = MODEL
+        record["prompt_version"] = PROMPT_VERSION
+        if errors:
+            next_pending[slug] = errors
+            record["status"] = "failed_validation"
+            print(f"[attempt {attempt}] {slug}: {len(errors)} gate failure(s)")
+            for e in errors:
+                print(f"    - {e}")
+        else:
+            record["status"] = "draft"
+            print(f"[attempt {attempt}] {slug}: PASS")
+        _save_draft(record)
+    return next_pending
+
+
+# --- commands --------------------------------------------------------------
+
+def _default_slugs(level, kind):
+    return mc.all_slugs(level, "kanji" if kind == "kanji" else "radicals")
+
+
+def cmd_requests(args):
+    contexts = {slug: _context_for(args.level, args.kind, slug) for slug in args.slugs}
+    requests = [build_request(args.level, args.kind, slug, 1, contexts[slug]) for slug in args.slugs]
+    out = os.path.join(DRAFTS_DIR, args.level, args.kind, "requests-preview.json")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(requests, f, ensure_ascii=False, indent=2)
+    total_chars = sum(len(r["params"]["messages"][0]["content"]) for r in requests)
+    print(f"wrote {len(requests)} request payloads to {out} (~{total_chars} prompt chars)")
+
+
+def cmd_run(args):
+    import anthropic
+
+    client = anthropic.Anthropic()
+    tool_name = SUBMIT_TOOLS[args.kind]["name"]
+    contexts = {slug: _context_for(args.level, args.kind, slug) for slug in args.slugs}
+    records = {slug: _load_draft(args.level, args.kind, slug) for slug in args.slugs}
+
+    # Resumable: re-validate stored output against the *current* gate first.
+    pending = {}
+    for slug in args.slugs:
+        record = records[slug]
+        if record["tool_input"] is not None:
+            errors = validate_draft(args.level, args.kind, slug, record["tool_input"], contexts[slug])
+            if not errors:
+                if record["status"] != "draft":
+                    record["status"] = "draft"
+                    _save_draft(record)
+                print(f"{slug}: stored draft passes the current gate — skipping generation")
+                continue
+            pending[slug] = errors
+        else:
+            pending[slug] = None
+
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        if not pending:
+            break
+        requests = [
+            build_request(args.level, args.kind, slug, attempt, contexts[slug], errors)
+            for slug, errors in pending.items()
+        ]
+        outcomes = _submit_and_collect(client, requests, tool_name)
+        pending = _process_outcomes(args.level, args.kind, contexts, records, outcomes)
+
+    for slug in pending:
+        records[slug]["status"] = "flagged_for_rewrite"
+        _save_draft(records[slug])
+        print(f"{slug}: still failing after {MAX_ATTEMPTS} attempts — flagged_for_rewrite")
+
+    write_sidecar(args.level, args.kind)
+
+
+def cmd_collect(args):
+    import anthropic
+
+    if not args.batch_id:
+        raise SystemExit("collect requires --batch-id msgbatch_...")
+    client = anthropic.Anthropic()
+    batch = client.messages.batches.retrieve(args.batch_id)
+    if batch.processing_status != "ended":
+        counts = batch.request_counts
+        raise SystemExit(
+            f"batch {args.batch_id} is still {batch.processing_status} "
+            f"(processing={counts.processing}); try again later"
+        )
+    tool_name = SUBMIT_TOOLS[args.kind]["name"]
+    pending = _process_outcomes(
+        args.level, args.kind, {}, {}, _batch_outcomes(client, args.batch_id, tool_name)
+    )
+    write_sidecar(args.level, args.kind)
+    if pending:
+        print("still failing the gate — rerun `run` to requeue with feedback: "
+              + ", ".join(sorted(pending)))
+
+
+def cmd_assemble(args):
+    write_sidecar(args.level, args.kind)
+
+
+# --- assembly into sidecars generate.py inlines ----------------------------
+
+SIDECAR_KIND_DIR = {"kanji": "kanji", "radical": "radicals"}
+
+
+def sidecar_path(level, kind):
+    return os.path.join(mc.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "mnemonics", f"{level}.json")
+
+
+def write_sidecar(level, kind):
+    """Rebuild the per-level sidecar from every gate-passing draft on disk. The
+    sidecar is keyed by slug; generate.py inlines it into the kanji/radical
+    JSON. Idempotent — re-running reconstructs from the drafts."""
+    level_dir = os.path.join(DRAFTS_DIR, level, kind)
+    entries = {}
+    if os.path.isdir(level_dir):
+        for name in sorted(os.listdir(level_dir)):
+            if not name.endswith(".json") or name == "requests-preview.json":
+                continue
+            with open(os.path.join(level_dir, name), encoding="utf-8") as f:
+                record = json.load(f)
+            if not isinstance(record, dict) or record.get("status") != "draft":
+                continue
+            if not record.get("tool_input"):
+                continue
+            meta = {
+                "generator_model": record.get("generator_model", MODEL),
+                # sidecarMeta.prompt_version is a string in the schema (matches
+                # the grammar lesson frontmatter, which stores scalars as text).
+                "prompt_version": str(record.get("prompt_version", PROMPT_VERSION)),
+                "review_status": "draft",
+            }
+            entries[record["slug"]] = {**record["tool_input"], "_meta": meta}
+
+    path = sidecar_path(level, kind)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print(f"wrote {len(entries)} {kind} mnemonic(s) to {path}")
+    print("run generate.py --level "
+          f"{level}, then validate-schema + compile-curriculum from the repo root.")
+    return path
+
+
+# --- web-chat (no-API) lane, mirroring 2a ----------------------------------
+
+WEB_TOOL_LINE = {
+    "kanji": "Call the `submit_kanji_mnemonic` tool exactly once with:",
+    "radical": "Call the `submit_radical_mnemonic` tool exactly once with:",
+}
+WEB_OUTPUT_INSTRUCTION = (
+    "Reply with **exactly one** fenced ```json code block and nothing after it. "
+    "Do not call any tools, and do not add any commentary outside the block. "
+    "The JSON object must use these exact key names:"
+)
+WEB_SKELETON = {
+    "kanji": '```json\n{\n  "meaning_mnemonic": "...",\n  "reading_mnemonic": "...",\n  "description": "..."\n}\n```',
+    "radical": '```json\n{\n  "mnemonic_text": "..."\n}\n```',
+}
+
+
+def _first_json_object(text):
+    start = text.find("{")
+    while start != -1:
+        depth, in_str, esc = 0, False, False
+        for i in range(start, len(text)):
+            c = text[i]
+            if in_str:
+                if esc:
+                    esc = False
+                elif c == "\\":
+                    esc = True
+                elif c == '"':
+                    in_str = False
+            elif c == '"':
+                in_str = True
+            elif c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    try:
+                        return json.loads(text[start:i + 1])
+                    except json.JSONDecodeError:
+                        break
+        start = text.find("{", start + 1)
+    raise SystemExit("no parseable JSON object found in the reply")
+
+
+def _web_prompt_text(level, kind, ctx, validator_errors=None):
+    persona = _read_prompt("persona.md")
+    body = build_user_prompt(kind, ctx, validator_errors)
+    body = body.replace(WEB_TOOL_LINE[kind], WEB_OUTPUT_INSTRUCTION)
+    header = (
+        f"<!-- Paste EVERYTHING below this line into a fresh Claude or Gemini chat.\n"
+        f"     Save the reply to web/mnemonics/{level}/{kind}/{ctx['slug']}.reply.md, then run:\n"
+        f"       .venv/bin/python -m generate_content.generate_mnemonics ingest \\\n"
+        f"         --type {kind} --level {level} --slug {ctx['slug']} --model <claude-web|gemini-web>\n"
+        f"-->\n\n"
+    )
+    return (
+        header
+        + "# Teaching voice — follow this in everything you write below\n\n"
+        + persona.strip() + "\n\n---\n\n" + body.strip() + "\n\n"
+        + "For reference the JSON has this shape (keep the key names exactly):\n\n"
+        + WEB_SKELETON[kind]
+        + "\n\nWrite all Japanese plain. Output only the single JSON block.\n"
+    )
+
+
+def cmd_webprompts(args):
+    out_dir = os.path.join(WEB_DIR, args.level, args.kind)
+    os.makedirs(out_dir, exist_ok=True)
+    for slug in args.slugs:
+        ctx = _context_for(args.level, args.kind, slug)
+        path = os.path.join(out_dir, f"{slug}.prompt.md")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(_web_prompt_text(args.level, args.kind, ctx))
+        print(f"wrote {path}")
+
+
+def cmd_ingest(args):
+    if not args.slug:
+        raise SystemExit("ingest requires --slug")
+    reply_path = args.from_path or os.path.join(
+        WEB_DIR, args.level, args.kind, f"{args.slug}.reply.md")
+    if not os.path.exists(reply_path):
+        raise SystemExit(f"no reply at {reply_path} — paste the model's answer there first")
+    with open(reply_path, encoding="utf-8") as f:
+        tool_input = _first_json_object(f.read())
+
+    ctx = _context_for(args.level, args.kind, args.slug)
+    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx)
+    record = _load_draft(args.level, args.kind, args.slug)
+    record["tool_input"] = tool_input
+    record["generator_model"] = args.model
+    record["prompt_version"] = PROMPT_VERSION
+    record["attempts"].append({"attempt": len(record["attempts"]) + 1, "errors": errors})
+    record["status"] = "draft" if not errors else "failed_validation"
+    _save_draft(record)
+
+    if errors:
+        prompt_path = os.path.join(WEB_DIR, args.level, args.kind, f"{args.slug}.prompt.md")
+        os.makedirs(os.path.dirname(prompt_path), exist_ok=True)
+        with open(prompt_path, "w", encoding="utf-8") as f:
+            f.write(_web_prompt_text(args.level, args.kind, ctx, errors))
+        print(f"{args.slug}: {len(errors)} gate failure(s) — NOT assembled:")
+        for e in errors:
+            print(f"  - {e}")
+        raise SystemExit(1)
+
+    write_sidecar(args.level, args.kind)
+    print(f"{args.slug}: PASS — merged into the {args.kind} sidecar")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("command",
+                        choices=["requests", "run", "assemble", "collect",
+                                 "webprompts", "ingest"])
+    parser.add_argument("--type", dest="kind", choices=["kanji", "radical"], required=True)
+    parser.add_argument("--level", default="n5")
+    parser.add_argument("--slugs", default=None,
+                        help="comma-separated slugs (default: every item of the type)")
+    parser.add_argument("--slug", default=None, help="ingest only: single slug")
+    parser.add_argument("--from", dest="from_path", default=None,
+                        help="ingest only: path to the pasted reply")
+    parser.add_argument("--model", default="web-chat",
+                        help="ingest only: provenance recorded in the sidecar _meta")
+    parser.add_argument("--batch-id", default=None,
+                        help="collect only: the msgbatch_... id to fetch results from")
+    args = parser.parse_args()
+    if args.slugs:
+        args.slugs = [s for s in args.slugs.split(",") if s]
+    else:
+        args.slugs = _default_slugs(args.level, args.kind)
+
+    {"requests": cmd_requests, "run": cmd_run, "assemble": cmd_assemble,
+     "collect": cmd_collect, "webprompts": cmd_webprompts,
+     "ingest": cmd_ingest}[args.command](args)
+
+
+if __name__ == "__main__":
+    main()
