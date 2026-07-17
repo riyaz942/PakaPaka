@@ -134,7 +134,14 @@ function runFuriganaChecks(
   warnings: string[],
 ): void {
   if (validatorKey === 'vocabularyFile') {
-    const file = data as { items: { slug: string; primary_form: string; furigana?: string }[] };
+    const file = data as {
+      items: {
+        slug: string;
+        primary_form: string;
+        furigana?: string;
+        example_sentences?: { japanese: string; furigana?: string }[];
+      }[];
+    };
     for (const item of file.items) {
       checkFuriganaField(
         `${relative} vocabulary:${item.slug}`,
@@ -143,6 +150,36 @@ function runFuriganaChecks(
         errors,
         warnings,
       );
+      for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
+        checkFuriganaField(
+          `${relative} vocabulary:${item.slug} example[${index}]`,
+          sentence.japanese,
+          sentence.furigana,
+          errors,
+          warnings,
+        );
+      }
+    }
+    return;
+  }
+
+  if (validatorKey === 'kanjiFile') {
+    const file = data as {
+      items: {
+        slug: string;
+        example_sentences?: { japanese: string; furigana?: string }[];
+      }[];
+    };
+    for (const item of file.items) {
+      for (const [index, sentence] of (item.example_sentences ?? []).entries()) {
+        checkFuriganaField(
+          `${relative} kanji:${item.slug} example[${index}]`,
+          sentence.japanese,
+          sentence.furigana,
+          errors,
+          warnings,
+        );
+      }
     }
     return;
   }
@@ -327,10 +364,11 @@ function discoverJsonFilesIn(curriculumDir: string): string[] {
         // _build is the tooling workspace (datasets, importers, generation
         // drafts) — its JSON never ships and has no schema mapping. `mnemonics`
         // holds the Phase 2b generated sidecars (kanji/radicals/mnemonics/*.json)
+        // and `examples` the Phase 2c ones (kanji/vocabulary/examples/*.json)
         // that generate.py inlines into the item files; they are keyed-by-slug
         // build inputs, not standalone curriculum files, so they have no schema
         // mapping of their own (their contents are validated once inlined).
-        if (entry.name !== '_build' && entry.name !== 'mnemonics') {
+        if (entry.name !== '_build' && entry.name !== 'mnemonics' && entry.name !== 'examples') {
           walk(fullPath);
         }
         continue;

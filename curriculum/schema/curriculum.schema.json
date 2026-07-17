@@ -113,6 +113,10 @@
         "accepted_answers": {
           "type": "array",
           "items": { "$ref": "#/$defs/acceptedAnswer" }
+        },
+        "example_sentences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exampleSentence" }
         }
       }
     },
@@ -144,6 +148,10 @@
         "accepted_answers": {
           "type": "array",
           "items": { "$ref": "#/$defs/acceptedAnswer" }
+        },
+        "example_sentences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exampleSentence" }
         }
       }
     },

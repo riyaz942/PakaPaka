@@ -85,6 +85,7 @@ type KanjiItem = {
   sort_order?: number;
   readings?: KanjiReading[];
   accepted_answers?: AcceptedAnswer[];
+  example_sentences?: ExampleSentence[];
 };
 
 type VocabItem = {
@@ -96,6 +97,7 @@ type VocabItem = {
   mnemonic_text?: string;
   sort_order?: number;
   accepted_answers?: AcceptedAnswer[];
+  example_sentences?: ExampleSentence[];
 };
 
 type ExampleSentence = {
@@ -382,6 +384,24 @@ export function compileCurriculum(
       INSERT INTO accepted_answers (item_id, answer_type, answer_text, is_primary)
       VALUES (@item_id, @answer_type, @answer_text, @is_primary)
     `);
+    const insertExample = db.prepare(`
+      INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
+      VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
+    `);
+    const insertExamples = (itemId: number, sentences: ExampleSentence[]) => {
+      for (const [index, sentence] of sentences.entries()) {
+        insertExample.run({
+          item_id: itemId,
+          japanese: sentence.japanese,
+          furigana: sentence.furigana ?? null,
+          english: sentence.english,
+          sort_order: sentence.sort_order ?? index,
+          reinforcement_tags: sentence.reinforcement_tags
+            ? JSON.stringify(sentence.reinforcement_tags)
+            : null,
+        });
+      }
+    };
 
     for (const radical of radicals) {
       const id = idByKey.get(itemKey('radical', radical.slug))!;
@@ -446,6 +466,8 @@ export function compileCurriculum(
           is_primary: answer.is_primary ? 1 : 0,
         });
       }
+
+      insertExamples(id, kanjiItem.example_sentences ?? []);
     }
 
     for (const vocab of vocabulary) {
@@ -474,6 +496,8 @@ export function compileCurriculum(
           is_primary: answer.is_primary ? 1 : 0,
         });
       }
+
+      insertExamples(id, vocab.example_sentences ?? []);
     }
 
     const insertGrammarRule = db.prepare(`
@@ -487,10 +511,6 @@ export function compileCurriculum(
     const insertClozeVariant = db.prepare(`
       INSERT INTO grammar_cloze_variants (item_id, jp_cloze, english, answer, nudge, sort_order)
       VALUES (@item_id, @jp_cloze, @english, @answer, @nudge, @sort_order)
-    `);
-    const insertExample = db.prepare(`
-      INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
-      VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
     `);
     const insertGrammarVocabLink = db.prepare(`
       INSERT INTO grammar_vocabulary_links (grammar_item_id, vocabulary_item_id)
@@ -560,18 +580,7 @@ export function compileCurriculum(
         });
       }
 
-      for (const [index, sentence] of (grammarItem.example_sentences ?? []).entries()) {
-        insertExample.run({
-          item_id: id,
-          japanese: sentence.japanese,
-          furigana: sentence.furigana ?? null,
-          english: sentence.english,
-          sort_order: sentence.sort_order ?? index,
-          reinforcement_tags: sentence.reinforcement_tags
-            ? JSON.stringify(sentence.reinforcement_tags)
-            : null,
-        });
-      }
+      insertExamples(id, grammarItem.example_sentences ?? []);
 
       for (const vocabSlug of grammarItem.vocabulary_slugs ?? []) {
         const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));

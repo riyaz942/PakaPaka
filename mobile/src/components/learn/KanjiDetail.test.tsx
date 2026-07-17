@@ -2,7 +2,12 @@ import { render, screen } from '@testing-library/react-native';
 import React from 'react';
 
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
-import type { AcceptedAnswer, CurriculumItemDetail, KanjiReading } from '@/data/curriculum/itemRepository';
+import type {
+  AcceptedAnswer,
+  CurriculumItemDetail,
+  ExampleSentence,
+  KanjiReading,
+} from '@/data/curriculum/itemRepository';
 
 jest.mock('@/data/hooks/useDatabase', () => {
   // Stable object: an unstable identity would re-fire db-keyed effects every render.
@@ -58,5 +63,30 @@ describe('KanjiDetail', () => {
     expect(screen.getByText('ひ')).toBeTruthy();
     expect(screen.getByText('sun')).toBeTruthy();
     expect(screen.getByText('The sun rises each day.')).toBeTruthy();
+  });
+
+  it('renders example sentences when provided', () => {
+    const exampleSentences: ExampleSentence[] = [
+      {
+        id: '1',
+        japanese: '毎日、本を読みます。',
+        furigana: null,
+        english: 'I read a book every day.',
+        sortOrder: 1,
+      },
+    ];
+
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+      />,
+    );
+
+    expect(screen.getByText('Examples')).toBeTruthy();
+    expect(screen.getByText('毎日、本を読みます。')).toBeTruthy();
+    expect(screen.getByText('I read a book every day.')).toBeTruthy();
   });
 });

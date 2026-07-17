@@ -37,6 +37,12 @@ LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 KANJI_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics")
 RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
 
+#: Phase 2c example-sentence sidecars (generate_content/generate_examples.py),
+#: inlined into the kanji/vocab items below keyed by slug. Absent when 2c has
+#: not run.
+KANJI_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "kanji", "examples")
+VOCAB_EXAMPLES_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "examples")
+
 #: Sidecar _meta keys carried through to the shipped item (matches grammar).
 _SIDECAR_META_KEYS = ("generator_model", "prompt_version", "review_status", "reviewed_by")
 
@@ -53,8 +59,9 @@ def write_json(path, data):
         f.write("\n")
 
 
-def _load_mnemonic_sidecar(sidecar_dir, level):
-    """{slug: entry} from <sidecar_dir>/<level>.json, or {} when 2b hasn't run.
+def _load_sidecar(sidecar_dir, level):
+    """{slug: entry} from <sidecar_dir>/<level>.json, or {} when the relevant
+    Phase 2 generator hasn't run.
 
     Each entry carries the generated mnemonic field(s) plus a `_meta` block
     (generator_model, prompt_version, review_status). Reviewer-authored entries
@@ -72,6 +79,52 @@ def _sidecar_meta(entry):
     return {k: meta[k] for k in _SIDECAR_META_KEYS if meta.get(k) not in (None, "")}
 
 
+def _merge_sidecar_meta(item, meta):
+    """Attach sidecar `_meta` to an item that may already carry one (a kanji
+    can have both a 2b mnemonic sidecar and a 2c examples sidecar). The least
+    reviewed status wins, so a draft sidecar always keeps the item behind
+    compile-curriculum's draft gate."""
+    if not meta:
+        return
+    existing = item.get("_meta")
+    if not existing:
+        item["_meta"] = meta
+        return
+    order = {"flagged_for_rewrite": 0, "draft": 1, "reviewed": 2}
+    statuses = [m.get("review_status") for m in (existing, meta) if m.get("review_status")]
+    if statuses:
+        existing["review_status"] = min(statuses, key=lambda s: order.get(s, 0))
+
+
+def _inline_examples(item, entry, known_readings, vocab_slugs, label, errors):
+    """Inlines a 2c example-sentence sidecar entry into a kanji/vocab item.
+    Furigana comes from the tokenizer at build time (never the LLM); the 2c
+    gate already rejected drafts the tokenizer can't annotate, so a failure
+    here means a hand edit needs fixing and is only warned about."""
+    sentences = []
+    for j, s in enumerate(entry.get("example_sentences", [])):
+        for vs in s.get("vocabulary_slugs", []):
+            if vs not in vocab_slugs:
+                errors.append(f"{label} example {j} references unknown vocab '{vs}'")
+        sentence = {
+            "japanese": s["japanese"],
+            "english": s["english"],
+            "sort_order": j,
+        }
+        if s.get("vocabulary_slugs"):
+            sentence["vocabulary_slugs"] = s["vocabulary_slugs"]
+        furigana = furigana_lib.annotate_sentence(s["japanese"], known_readings)
+        if furigana:
+            sentence["furigana"] = furigana
+        elif any(furigana_lib.is_kanji(ch) for ch in s["japanese"]):
+            print(f"warning: {label}: furigana failed for example: {s['japanese']}",
+                  file=sys.stderr)
+        sentences.append(sentence)
+    if sentences:
+        item["example_sentences"] = sentences
+        _merge_sidecar_meta(item, _sidecar_meta(entry))
+
+
 def _vocab_reading_map(*vocab_entry_lists):
     """Builds a {primary_form: reading} map from raw vocab entries, for
     annotate_sentence's known_readings override (see furigana.py)."""
@@ -84,7 +137,7 @@ def _vocab_reading_map(*vocab_entry_lists):
 
 
 def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
-    mnemonics = _load_mnemonic_sidecar(RADICAL_MNEMONICS_DIR, slug_prefix)
+    mnemonics = _load_sidecar(RADICAL_MNEMONICS_DIR, slug_prefix)
     items = []
     for i, r in enumerate(radical_entries, start=1):
         item = {
@@ -113,8 +166,11 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
     return {"jlpt_level": jlpt_level, "items": items}
 
 
-def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries):
-    mnemonics = _load_mnemonic_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
+def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=None,
+                       vocab_slugs=None):
+    mnemonics = _load_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
+    examples = _load_sidecar(KANJI_EXAMPLES_DIR, slug_prefix)
+    errors = []
     items = []
     for i, k in enumerate(kanji_entries, start=1):
         readings = []
@@ -155,11 +211,21 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries):
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta
+        example_entry = examples.get(slug)
+        if example_entry:
+            _inline_examples(item, example_entry, known_readings, vocab_slugs or set(),
+                             f"kanji {slug}", errors)
         items.append(item)
+    if errors:
+        raise ValueError(f"{jlpt_level} kanji reference errors:\n" + "\n".join(errors))
     return {"jlpt_level": jlpt_level, "items": items}
 
 
-def _build_vocab_level(jlpt_level, vocab_entries):
+def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
+                       extra_vocab_slugs=None):
+    examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
+    vocab_slugs = {v["slug"] for v in vocab_entries} | set(extra_vocab_slugs or ())
+    errors = []
     items = []
     for i, v in enumerate(vocab_entries, start=1):
         accepted = [{"answer_type": "meaning", "answer_text": v["meaning"], "is_primary": True}]
@@ -176,7 +242,13 @@ def _build_vocab_level(jlpt_level, vocab_entries):
         furigana = furigana_lib.annotate_word(v["form"], v["reading"])
         if furigana:
             item["furigana"] = furigana
+        example_entry = examples.get(v["slug"])
+        if example_entry:
+            _inline_examples(item, example_entry, known_readings, vocab_slugs,
+                             f"vocabulary {v['slug']}", errors)
         items.append(item)
+    if errors:
+        raise ValueError(f"{jlpt_level} vocabulary reference errors:\n" + "\n".join(errors))
     return {"jlpt_level": jlpt_level, "items": items}
 
 
@@ -190,16 +262,16 @@ def build_n5_radicals():
     return _build_radicals_level("N5", "n5", N5_RADICALS)
 
 
-def build_n5_kanji():
+def build_n5_kanji(known_readings=None, vocab_slugs=None):
     from n5_kanji import N5_KANJI
 
-    return _build_kanji_level("N5", "n5", N5_KANJI)
+    return _build_kanji_level("N5", "n5", N5_KANJI, known_readings, vocab_slugs)
 
 
-def build_n5_vocab():
+def build_n5_vocab(known_readings=None):
     from n5_vocab import N5_VOCAB
 
-    return _build_vocab_level("N5", N5_VOCAB)
+    return _build_vocab_level("N5", N5_VOCAB, known_readings)
 
 
 def _annotate_prose_line(line, known_readings):
@@ -401,16 +473,16 @@ def build_n4_radicals():
     return _build_radicals_level("N4", "n4", N4_RADICALS)
 
 
-def build_n4_kanji():
+def build_n4_kanji(known_readings=None, vocab_slugs=None):
     from n4_kanji import N4_KANJI
 
-    return _build_kanji_level("N4", "n4", N4_KANJI)
+    return _build_kanji_level("N4", "n4", N4_KANJI, known_readings, vocab_slugs)
 
 
-def build_n4_vocab():
+def build_n4_vocab(known_readings=None, extra_vocab_slugs=None):
     from n4_vocab import N4_VOCAB
 
-    return _build_vocab_level("N4", N4_VOCAB)
+    return _build_vocab_level("N4", N4_VOCAB, known_readings, extra_vocab_slugs)
 
 
 def build_n4_grammar(vocab_slugs, known_readings=None):
@@ -435,10 +507,11 @@ def generate_level(level):
         from n5_vocab import N5_VOCAB
 
         known_readings = _vocab_reading_map(N5_VOCAB)
-        vocab = build_n5_vocab()
+        vocab = build_n5_vocab(known_readings)
         vocab_slugs = {v["slug"] for v in vocab["items"]}
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n5.json"), build_n5_radicals())
-        write_json(os.path.join(CURRICULUM_DIR, "kanji", "n5.json"), build_n5_kanji())
+        write_json(os.path.join(CURRICULUM_DIR, "kanji", "n5.json"),
+                   build_n5_kanji(known_readings, vocab_slugs))
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n5.json"), vocab)
         write_json(
             os.path.join(CURRICULUM_DIR, "grammar", "n5.json"),
@@ -453,13 +526,14 @@ def generate_level(level):
         from n5_vocab import N5_VOCAB
 
         known_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
-        n5_vocab = build_n5_vocab()
-        vocab = build_n4_vocab()
-        # N4 is additive on N5: grammar examples may reinforce previously
-        # learned N5 vocabulary, so validate against the combined slug set.
-        vocab_slugs = {v["slug"] for v in vocab["items"]} | {v["slug"] for v in n5_vocab["items"]}
+        n5_vocab_slugs = {v["slug"] for v in N5_VOCAB}
+        # N4 is additive on N5: examples may reinforce previously learned N5
+        # vocabulary, so validate against the combined slug set.
+        vocab = build_n4_vocab(known_readings, n5_vocab_slugs)
+        vocab_slugs = {v["slug"] for v in vocab["items"]} | n5_vocab_slugs
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n4.json"), build_n4_radicals())
-        write_json(os.path.join(CURRICULUM_DIR, "kanji", "n4.json"), build_n4_kanji())
+        write_json(os.path.join(CURRICULUM_DIR, "kanji", "n4.json"),
+                   build_n4_kanji(known_readings, vocab_slugs))
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)
         write_json(
             os.path.join(CURRICULUM_DIR, "grammar", "n4.json"),

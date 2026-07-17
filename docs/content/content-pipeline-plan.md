@@ -262,6 +262,31 @@ tokenizer) as style anchors in the prompt only — per the lane decision in grou
 rule 2, no Tatoeba text is shipped verbatim or adapted. Every sentence gets furigana
 via the tokenizer, not the LLM (LLM furigana is unreliable for rare readings).
 
+*Status: tooling built.* Schema/compiler/app now carry `example_sentences` on
+kanji and vocab items (the DB table was already item-generic; `KanjiDetail`
+gained the Examples section `VocabularyDetail` already had).
+`curriculum/_build/generate_content/` holds the prompts
+(`prompts/vocab-examples.md`, `prompts/kanji-examples.md`), the context builder
+(`example_context.py` — allowed vocab mirrors 2a's option (a): a vocab item gets
+its own sort-order prefix, a kanji a proportional cutoff, plus lower levels,
+`CORE_SEED_SLUGS`, and — for kanji — every in-scope word containing the
+character, which are the prompt's *target words*), the mechanical gate
+(`validate_examples.py`: target actually used — lemma-aware, so 食べました
+exemplifies 食べる; slug references in the allowed set; tokenizer level-check;
+furigana round-trip as a rejection; plain-prose/length checks) and the batch
+driver (`generate_examples.py`, `claude-opus-4-8` via Message Batches, one
+forced `submit_example_sentences` tool call per item, 3-attempt requeue then
+`flagged_for_rewrite`). Run from `curriculum/_build` with API credentials:
+`.venv/bin/python -m generate_content.generate_examples run --type vocab` and
+`… run --type kanji`. Gate-passing drafts are assembled into per-level sidecars
+(`curriculum/vocabulary/examples/<level>.json`,
+`curriculum/kanji/examples/<level>.json`) carrying `_meta`
+(`review_status: draft`); `generate.py` inlines them into the item JSON, adds
+tokenizer furigana, and — when an item already carries 2b `_meta` — keeps the
+least-reviewed status so drafts stay behind the compile gate. The no-API
+web-chat lane (`webprompts`/`ingest`) mirrors 2a/2b for the cost swap.
+Generation itself (N5/N4 batches) has not run yet.
+
 ### Mechanical validation gate (before any human review)
 
 `curriculum/_build/generate_content/validate_drafts.py`, run on every batch output:

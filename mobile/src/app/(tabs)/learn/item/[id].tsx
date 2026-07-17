@@ -68,6 +68,7 @@ export default function LearnItemDetailScreen() {
                 item={item}
                 kanjiReadings={kanjiReadings ?? []}
                 acceptedAnswers={acceptedAnswers}
+                exampleSentences={exampleSentences}
                 parents={parents}
                 isLocked={isLocked}
                 unmetPrerequisites={unmetPrerequisites}

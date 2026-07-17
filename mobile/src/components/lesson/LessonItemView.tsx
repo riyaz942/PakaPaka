@@ -48,6 +48,7 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
           item={item}
           kanjiReadings={kanjiReadings ?? []}
           acceptedAnswers={acceptedAnswers}
+          exampleSentences={exampleSentences}
           parents={parents}
           isLocked={isLocked}
           unmetPrerequisites={unmetPrerequisites}

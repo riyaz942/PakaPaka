@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
 import { KanjiDependencyHints } from '@/components/learn/KanjiDependencyHints';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
@@ -11,14 +12,17 @@ import type {
   AcceptedAnswer,
   CurriculumItemDetail,
   CurriculumParentItem,
+  ExampleSentence,
   KanjiReading,
 } from '@/data/curriculum/itemRepository';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { cn } from '@/utils/cn';
 
 type KanjiDetailProps = {
   item: CurriculumItemDetail;
   kanjiReadings: KanjiReading[];
   acceptedAnswers: AcceptedAnswer[];
+  exampleSentences?: ExampleSentence[];
   parents?: CurriculumParentItem[];
   isLocked?: boolean;
   unmetPrerequisites?: CurriculumParentItem[];
@@ -46,6 +50,7 @@ export function KanjiDetail({
   item,
   kanjiReadings,
   acceptedAnswers,
+  exampleSentences = [],
   parents,
   isLocked,
   unmetPrerequisites,
@@ -55,6 +60,7 @@ export function KanjiDetail({
   const synonyms = synonymMeanings(acceptedAnswers);
   const onyomi = readingsByType(kanjiReadings, 'onyomi');
   const kunyomi = readingsByType(kanjiReadings, 'kunyomi');
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   return (
     <View testID="kanji-detail">
@@ -105,6 +111,23 @@ export function KanjiDetail({
 
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />
+
+      {exampleSentences.length > 0 ? (
+        <View className="mt-4">
+          <Text className="text-body-sm uppercase text-secondary">Examples</Text>
+          {exampleSentences.map((sentence) => (
+            <View key={sentence.id} className="mt-2" testID={`kanji-example-${sentence.id}`}>
+              <FuriganaText
+                text={sentence.furigana ?? sentence.japanese}
+                mode={furiganaMode}
+                knownKanji={knownKanji}
+                className="text-body text-primary"
+              />
+              <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
+            </View>
+          ))}
+        </View>
+      ) : null}
     </View>
   );
 }
