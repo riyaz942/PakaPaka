@@ -563,6 +563,227 @@
       "review_status": "draft"
     }
   },
+  "futatsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を二つ買いました。",
+        "english": "I bought two books.",
+        "vocabulary_slugs": [
+          "hon",
+          "futatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "部屋に窓が二つあります。",
+        "english": "There are two windows in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "mado",
+          "futatsu"
+        ]
+      },
+      {
+        "japanese": "今日、映画を二つ見ました。",
+        "english": "Today I watched two movies.",
+        "vocabulary_slugs": [
+          "kyou",
+          "eiga",
+          "futatsu",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "go-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は五時に起きます。",
+        "english": "I get up at five.",
+        "vocabulary_slugs": [
+          "watashi",
+          "go-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "本を五つ買います。",
+        "english": "I'll buy five books.",
+        "vocabulary_slugs": [
+          "hon",
+          "go-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "五時に学校に行きます。",
+        "english": "I'm going to school at five.",
+        "vocabulary_slugs": [
+          "go-v",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hachi-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は八時に起きます。",
+        "english": "I get up at eight.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hachi-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "本を八つ買います。",
+        "english": "I'll buy eight books.",
+        "vocabulary_slugs": [
+          "hon",
+          "hachi-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "友達が八人来ます。",
+        "english": "Eight friends are coming.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "hachi-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hitotsu": {
+    "example_sentences": [
+      {
+        "japanese": "私はパンを一つ食べます。",
+        "english": "I'll eat one piece of bread.",
+        "vocabulary_slugs": [
+          "watashi",
+          "pan",
+          "hitotsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "コーヒーを一つください。",
+        "english": "One coffee, please.",
+        "vocabulary_slugs": [
+          "koohii",
+          "hitotsu"
+        ]
+      },
+      {
+        "japanese": "彼は本を一つ買いました。",
+        "english": "He bought one book.",
+        "vocabulary_slugs": [
+          "kare",
+          "hon",
+          "hitotsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hyaku-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は本を百買います。",
+        "english": "I buy a hundred books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hon",
+          "hyaku-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "昨日、写真を百見ました。",
+        "english": "Yesterday I looked at a hundred photos.",
+        "vocabulary_slugs": [
+          "kinou",
+          "shashin",
+          "hyaku-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "百の友達が公園で遊びます。",
+        "english": "A hundred friends play at the park.",
+        "vocabulary_slugs": [
+          "hyaku-v",
+          "tomodachi",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ichi-v": {
+    "example_sentences": [
+      {
+        "japanese": "本を一つ買います。",
+        "english": "I'll buy one book.",
+        "vocabulary_slugs": [
+          "hon",
+          "ichi-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "お茶を一つ飲みます。",
+        "english": "I'll drink one tea.",
+        "vocabulary_slugs": [
+          "ocha",
+          "ichi-v",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "映画を一つ見ます。",
+        "english": "I'll watch one movie.",
+        "vocabulary_slugs": [
+          "eiga",
+          "ichi-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ikaga": {
     "example_sentences": [
       {
@@ -588,6 +809,75 @@
           "kono",
           "hon",
           "ikaga"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ikura": {
+    "example_sentences": [
+      {
+        "japanese": "これはいくらですか？",
+        "english": "How much is this?",
+        "vocabulary_slugs": [
+          "kore",
+          "ikura"
+        ]
+      },
+      {
+        "japanese": "その本はいくらですか？",
+        "english": "How much is that book?",
+        "vocabulary_slugs": [
+          "sono",
+          "hon",
+          "ikura"
+        ]
+      },
+      {
+        "japanese": "コーヒーはいくらですか？",
+        "english": "How much is the coffee?",
+        "vocabulary_slugs": [
+          "koohii",
+          "ikura"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ikutsu": {
+    "example_sentences": [
+      {
+        "japanese": "あなたはいくつですか？",
+        "english": "How old are you?",
+        "vocabulary_slugs": [
+          "anata",
+          "ikutsu"
+        ]
+      },
+      {
+        "japanese": "パンをいくつ食べますか？",
+        "english": "How many pieces of bread will you eat?",
+        "vocabulary_slugs": [
+          "pan",
+          "ikutsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "友達はいくつ来ますか？",
+        "english": "How many friends are coming?",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ikutsu",
+          "kuru-v"
         ]
       }
     ],
@@ -624,6 +914,40 @@
           "itsu",
           "bangohan",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "juu-v": {
+    "example_sentences": [
+      {
+        "japanese": "今、十時です。",
+        "english": "It's ten o'clock now.",
+        "vocabulary_slugs": [
+          "ima",
+          "juu-v"
+        ]
+      },
+      {
+        "japanese": "明日十時に会います。",
+        "english": "I'll meet you at ten tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "juu-v",
+          "au"
+        ]
+      },
+      {
+        "japanese": "犬が十います。",
+        "english": "There are ten dogs.",
+        "vocabulary_slugs": [
+          "inu",
+          "juu-v"
         ]
       }
     ],
@@ -922,6 +1246,152 @@
       "review_status": "draft"
     }
   },
+  "ku-num": {
+    "example_sentences": [
+      {
+        "japanese": "七、八、九と書きます。",
+        "english": "I write seven, eight, nine.",
+        "vocabulary_slugs": [
+          "shichi-num",
+          "hachi-v",
+          "ku-num",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "これは九ですか。",
+        "english": "Is this one nine?",
+        "vocabulary_slugs": [
+          "kore",
+          "ku-num"
+        ]
+      },
+      {
+        "japanese": "先生は九を読みます。",
+        "english": "The teacher reads nine.",
+        "vocabulary_slugs": [
+          "sensei",
+          "ku-num",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kyuu-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は九時に起きます。",
+        "english": "I wake up at nine.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyuu-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "これは九ですか。",
+        "english": "Is this nine?",
+        "vocabulary_slugs": [
+          "kore",
+          "kyuu-v"
+        ]
+      },
+      {
+        "japanese": "彼は九を書きます。",
+        "english": "He writes a nine.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyuu-v",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "man-v": {
+    "example_sentences": [
+      {
+        "japanese": "部屋に本が一万あります。",
+        "english": "There are ten thousand books in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "hon",
+          "ichi-v",
+          "man-v"
+        ]
+      },
+      {
+        "japanese": "お金は二万です。",
+        "english": "The money is twenty thousand.",
+        "vocabulary_slugs": [
+          "okane",
+          "ni-v",
+          "man-v"
+        ]
+      },
+      {
+        "japanese": "昨日、写真を一万見ました。",
+        "english": "Yesterday I looked at ten thousand photos.",
+        "vocabulary_slugs": [
+          "kinou",
+          "shashin",
+          "ichi-v",
+          "man-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mittsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を三つ買いました。",
+        "english": "I bought three books.",
+        "vocabulary_slugs": [
+          "hon",
+          "mittsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "パンを三つ食べました。",
+        "english": "I ate three pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "mittsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "写真を三つ見ました。",
+        "english": "I looked at three photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "mittsu",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "nan": {
     "example_sentences": [
       {
@@ -949,6 +1419,42 @@
           "hon",
           "nan",
           "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nana-v": {
+    "example_sentences": [
+      {
+        "japanese": "七時に朝ご飯を食べます。",
+        "english": "I eat breakfast at seven.",
+        "vocabulary_slugs": [
+          "nana-v",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "本を七つ読みます。",
+        "english": "I read seven books.",
+        "vocabulary_slugs": [
+          "hon",
+          "nana-v",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "七時に友達と会います。",
+        "english": "I meet my friend at seven.",
+        "vocabulary_slugs": [
+          "nana-v",
+          "tomodachi",
+          "au"
         ]
       }
     ],
@@ -992,6 +1498,39 @@
       "review_status": "draft"
     }
   },
+  "nannji": {
+    "example_sentences": [
+      {
+        "japanese": "今何時ですか。",
+        "english": "What time is it now?",
+        "vocabulary_slugs": [
+          "ima",
+          "nannji"
+        ]
+      },
+      {
+        "japanese": "何時に起きますか。",
+        "english": "What time do you get up?",
+        "vocabulary_slugs": [
+          "nannji",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "映画は何時ですか。",
+        "english": "What time is the movie?",
+        "vocabulary_slugs": [
+          "eiga",
+          "nannji"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "naze": {
     "example_sentences": [
       {
@@ -1020,6 +1559,256 @@
           "sono",
           "hon",
           "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ni-v": {
+    "example_sentences": [
+      {
+        "japanese": "二時に起きる。",
+        "english": "I get up at two.",
+        "vocabulary_slugs": [
+          "ni-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "パンを二つ買う。",
+        "english": "I buy two loaves of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "ni-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "友達と二時に遊ぶ。",
+        "english": "I hang out with a friend at two.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ni-v",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "rei": {
+    "example_sentences": [
+      {
+        "japanese": "これは零です。",
+        "english": "This is zero.",
+        "vocabulary_slugs": [
+          "kore",
+          "rei"
+        ]
+      },
+      {
+        "japanese": "零時に帰ります。",
+        "english": "I'll go home at midnight.",
+        "vocabulary_slugs": [
+          "rei",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "お金は零です。",
+        "english": "The money is zero.",
+        "vocabulary_slugs": [
+          "okane",
+          "rei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "roku-v": {
+    "example_sentences": [
+      {
+        "japanese": "六時に公園へ行きます。",
+        "english": "I go to the park at six.",
+        "vocabulary_slugs": [
+          "roku-v",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は六時に帰ります。",
+        "english": "She goes home at six.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "roku-v",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "六時に映画を見ます。",
+        "english": "I watch a movie at six.",
+        "vocabulary_slugs": [
+          "roku-v",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "san-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は三時に起きます。",
+        "english": "I wake up at three.",
+        "vocabulary_slugs": [
+          "watashi",
+          "san-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "友達が三人来ます。",
+        "english": "Three friends are coming.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "san-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "今日は映画を三つ見ます。",
+        "english": "I'm watching three movies today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "eiga",
+          "san-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sen-v": {
+    "example_sentences": [
+      {
+        "japanese": "部屋に本が千あります。",
+        "english": "There are a thousand books in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "hon",
+          "sen-v"
+        ]
+      },
+      {
+        "japanese": "学生が千人います。",
+        "english": "There are a thousand students.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "sen-v"
+        ]
+      },
+      {
+        "japanese": "私は本を二千買います。",
+        "english": "I'm buying two thousand books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hon",
+          "ni-v",
+          "sen-v",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shi-num": {
+    "example_sentences": [
+      {
+        "japanese": "一、二、三、四と書きます。",
+        "english": "I write one, two, three, four.",
+        "vocabulary_slugs": [
+          "ichi-v",
+          "ni-v",
+          "san-v",
+          "shi-num",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "これは四ですか。",
+        "english": "Is this one four?",
+        "vocabulary_slugs": [
+          "kore",
+          "shi-num"
+        ]
+      },
+      {
+        "japanese": "先生は四を読みます。",
+        "english": "The teacher reads four.",
+        "vocabulary_slugs": [
+          "sensei",
+          "shi-num",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shichi-num": {
+    "example_sentences": [
+      {
+        "japanese": "今、七時です。",
+        "english": "It's seven o'clock now.",
+        "vocabulary_slugs": [
+          "ima",
+          "shichi-num"
+        ]
+      },
+      {
+        "japanese": "明日、七時に起きます。",
+        "english": "I will wake up at seven tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shichi-num",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "七時に映画を見ます。",
+        "english": "I will watch a movie at seven.",
+        "vocabulary_slugs": [
+          "shichi-num",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -1272,6 +2061,115 @@
           "watashitachi",
           "issho-ni",
           "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yon-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は本を四つ読みます。",
+        "english": "I'm going to read four books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hon",
+          "yon-v",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼は四時に帰ります。",
+        "english": "He's going home at four.",
+        "vocabulary_slugs": [
+          "kare",
+          "yon-v",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "明日、友達が四人来ます。",
+        "english": "Tomorrow four friends are coming.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "yon-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yottsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を四つ買いました。",
+        "english": "I bought four books.",
+        "vocabulary_slugs": [
+          "hon",
+          "yottsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "部屋に窓が四つあります。",
+        "english": "There are four windows in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "mado",
+          "yottsu"
+        ]
+      },
+      {
+        "japanese": "パンを四つ食べます。",
+        "english": "I'm going to eat four pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "yottsu",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zero": {
+    "example_sentences": [
+      {
+        "japanese": "お金はゼロです。",
+        "english": "The money is at zero.",
+        "vocabulary_slugs": [
+          "okane",
+          "zero"
+        ]
+      },
+      {
+        "japanese": "私はゼロを書きます。",
+        "english": "I'm writing a zero.",
+        "vocabulary_slugs": [
+          "watashi",
+          "zero",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "今日の友達はゼロです。",
+        "english": "I have zero friends today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tomodachi",
+          "zero"
         ]
       }
     ],

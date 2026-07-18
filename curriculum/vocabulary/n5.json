@@ -2128,7 +2128,46 @@
           "answer_text": "いくつ"
         }
       ],
-      "furigana": "いくつ"
+      "furigana": "いくつ",
+      "example_sentences": [
+        {
+          "japanese": "あなたはいくつですか？",
+          "english": "How old are you?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "anata",
+            "ikutsu"
+          ],
+          "furigana": "あなたはいくつですか？"
+        },
+        {
+          "japanese": "パンをいくつ食べますか？",
+          "english": "How many pieces of bread will you eat?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "ikutsu",
+            "taberu"
+          ],
+          "furigana": "パンをいくつ食[た]べますか？"
+        },
+        {
+          "japanese": "友達はいくつ来ますか？",
+          "english": "How many friends are coming?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "ikutsu",
+            "kuru-v"
+          ],
+          "furigana": "友[とも]達[だち]はいくつ来[らい]ますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ikura",
@@ -2147,7 +2186,45 @@
           "answer_text": "いくら"
         }
       ],
-      "furigana": "いくら"
+      "furigana": "いくら",
+      "example_sentences": [
+        {
+          "japanese": "これはいくらですか？",
+          "english": "How much is this?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "ikura"
+          ],
+          "furigana": "これはいくらですか？"
+        },
+        {
+          "japanese": "その本はいくらですか？",
+          "english": "How much is that book?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "hon",
+            "ikura"
+          ],
+          "furigana": "その本[ほん]はいくらですか？"
+        },
+        {
+          "japanese": "コーヒーはいくらですか？",
+          "english": "How much is the coffee?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koohii",
+            "ikura"
+          ],
+          "furigana": "コーヒーはいくらですか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nannji",
@@ -2166,7 +2243,44 @@
           "answer_text": "なんじ"
         }
       ],
-      "furigana": "何[なん]時[じ]"
+      "furigana": "何[なん]時[じ]",
+      "example_sentences": [
+        {
+          "japanese": "今何時ですか。",
+          "english": "What time is it now?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "nannji"
+          ],
+          "furigana": "今[いま]何[なん]時[じ]ですか。"
+        },
+        {
+          "japanese": "何時に起きますか。",
+          "english": "What time do you get up?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nannji",
+            "okiru"
+          ],
+          "furigana": "何[なに]時[じ]に起[お]きますか。"
+        },
+        {
+          "japanese": "映画は何時ですか。",
+          "english": "What time is the movie?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "nannji"
+          ],
+          "furigana": "映[えい]画[が]は何[なん]時[じ]ですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zero",
@@ -2185,7 +2299,46 @@
           "answer_text": "ゼロ"
         }
       ],
-      "furigana": "ゼロ"
+      "furigana": "ゼロ",
+      "example_sentences": [
+        {
+          "japanese": "お金はゼロです。",
+          "english": "The money is at zero.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "okane",
+            "zero"
+          ],
+          "furigana": "お金[かね]はゼロです。"
+        },
+        {
+          "japanese": "私はゼロを書きます。",
+          "english": "I'm writing a zero.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "zero",
+            "kaku"
+          ],
+          "furigana": "私[わたし]はゼロを書[か]きます。"
+        },
+        {
+          "japanese": "今日の友達はゼロです。",
+          "english": "I have zero friends today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "tomodachi",
+            "zero"
+          ],
+          "furigana": "今日[きょう]の友[とも]達[だち]はゼロです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "rei",
@@ -2204,7 +2357,44 @@
           "answer_text": "れい"
         }
       ],
-      "furigana": "零[れい]"
+      "furigana": "零[れい]",
+      "example_sentences": [
+        {
+          "japanese": "これは零です。",
+          "english": "This is zero.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "rei"
+          ],
+          "furigana": "これは零[れい]です。"
+        },
+        {
+          "japanese": "零時に帰ります。",
+          "english": "I'll go home at midnight.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "rei",
+            "kaeru-v"
+          ],
+          "furigana": "零[れい]時[じ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "お金は零です。",
+          "english": "The money is zero.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane",
+            "rei"
+          ],
+          "furigana": "お金[かね]は零[れい]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ichi-v",
@@ -2223,7 +2413,47 @@
           "answer_text": "いち"
         }
       ],
-      "furigana": "一[いち]"
+      "furigana": "一[いち]",
+      "example_sentences": [
+        {
+          "japanese": "本を一つ買います。",
+          "english": "I'll buy one book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "ichi-v",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を一[いち]つ買[か]います。"
+        },
+        {
+          "japanese": "お茶を一つ飲みます。",
+          "english": "I'll drink one tea.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ocha",
+            "ichi-v",
+            "nomu-v"
+          ],
+          "furigana": "お茶[ちゃ]を一[いち]つ飲[の]みます。"
+        },
+        {
+          "japanese": "映画を一つ見ます。",
+          "english": "I'll watch one movie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "ichi-v",
+            "miru-v"
+          ],
+          "furigana": "映[えい]画[が]を一[いち]つ見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ni-v",
@@ -2242,7 +2472,46 @@
           "answer_text": "に"
         }
       ],
-      "furigana": "二[に]"
+      "furigana": "二[に]",
+      "example_sentences": [
+        {
+          "japanese": "二時に起きる。",
+          "english": "I get up at two.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ni-v",
+            "okiru"
+          ],
+          "furigana": "二[に]時[じ]に起[お]きる。"
+        },
+        {
+          "japanese": "パンを二つ買う。",
+          "english": "I buy two loaves of bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "ni-v",
+            "kau-v"
+          ],
+          "furigana": "パンを二[に]つ買[か]う。"
+        },
+        {
+          "japanese": "友達と二時に遊ぶ。",
+          "english": "I hang out with a friend at two.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "ni-v",
+            "asobu"
+          ],
+          "furigana": "友[とも]達[だち]と二[に]時[じ]に遊[あそ]ぶ。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "san-v",
@@ -2261,7 +2530,48 @@
           "answer_text": "さん"
         }
       ],
-      "furigana": "三[さん]"
+      "furigana": "三[さん]",
+      "example_sentences": [
+        {
+          "japanese": "私は三時に起きます。",
+          "english": "I wake up at three.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "san-v",
+            "okiru"
+          ],
+          "furigana": "私[わたし]は三[さん]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "友達が三人来ます。",
+          "english": "Three friends are coming.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "san-v",
+            "kuru-v"
+          ],
+          "furigana": "友[とも]達[だち]が三[さん]人[ひと]来[らい]ます。"
+        },
+        {
+          "japanese": "今日は映画を三つ見ます。",
+          "english": "I'm watching three movies today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "eiga",
+            "san-v",
+            "miru-v"
+          ],
+          "furigana": "今日[きょう]は映[えい]画[が]を三[さん]つ見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yon-v",
@@ -2280,7 +2590,49 @@
           "answer_text": "よん"
         }
       ],
-      "furigana": "四[よん]"
+      "furigana": "四[よん]",
+      "example_sentences": [
+        {
+          "japanese": "私は本を四つ読みます。",
+          "english": "I'm going to read four books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hon",
+            "yon-v",
+            "yomu"
+          ],
+          "furigana": "私[わたし]は本[ほん]を四[よん]つ読[よ]みます。"
+        },
+        {
+          "japanese": "彼は四時に帰ります。",
+          "english": "He's going home at four.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "yon-v",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かれ]は四[よん]時[じ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "明日、友達が四人来ます。",
+          "english": "Tomorrow four friends are coming.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "yon-v",
+            "kuru-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]が四[よん]人[ひと]来[らい]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shi-num",
@@ -2299,7 +2651,48 @@
           "answer_text": "し"
         }
       ],
-      "furigana": "四[し]"
+      "furigana": "四[し]",
+      "example_sentences": [
+        {
+          "japanese": "一、二、三、四と書きます。",
+          "english": "I write one, two, three, four.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ichi-v",
+            "ni-v",
+            "san-v",
+            "shi-num",
+            "kaku"
+          ],
+          "furigana": "一[いち]、二、三[にさん]、四[よん]と書[か]きます。"
+        },
+        {
+          "japanese": "これは四ですか。",
+          "english": "Is this one four?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "shi-num"
+          ],
+          "furigana": "これは四[よん]ですか。"
+        },
+        {
+          "japanese": "先生は四を読みます。",
+          "english": "The teacher reads four.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "shi-num",
+            "yomu"
+          ],
+          "furigana": "先[せん]生[せい]は四[よん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "go-v",
@@ -2318,7 +2711,47 @@
           "answer_text": "ご"
         }
       ],
-      "furigana": "五[ご]"
+      "furigana": "五[ご]",
+      "example_sentences": [
+        {
+          "japanese": "私は五時に起きます。",
+          "english": "I get up at five.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "go-v",
+            "okiru"
+          ],
+          "furigana": "私[わたし]は五[ご]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "本を五つ買います。",
+          "english": "I'll buy five books.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "go-v",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を五[ご]つ買[か]います。"
+        },
+        {
+          "japanese": "五時に学校に行きます。",
+          "english": "I'm going to school at five.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "go-v",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "五[ご]時[じ]に学[がっ]校[こう]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "roku-v",
@@ -2337,7 +2770,47 @@
           "answer_text": "ろく"
         }
       ],
-      "furigana": "六[ろく]"
+      "furigana": "六[ろく]",
+      "example_sentences": [
+        {
+          "japanese": "六時に公園へ行きます。",
+          "english": "I go to the park at six.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "roku-v",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "六[ろく]時[じ]に公[こう]園[えん]へ行[い]きます。"
+        },
+        {
+          "japanese": "彼女は六時に帰ります。",
+          "english": "She goes home at six.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "roku-v",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は六[ろく]時[じ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "六時に映画を見ます。",
+          "english": "I watch a movie at six.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "roku-v",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "六[ろく]時[じ]に映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nana-v",
@@ -2356,7 +2829,47 @@
           "answer_text": "なな"
         }
       ],
-      "furigana": "七[なな]"
+      "furigana": "七[なな]",
+      "example_sentences": [
+        {
+          "japanese": "七時に朝ご飯を食べます。",
+          "english": "I eat breakfast at seven.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nana-v",
+            "asagohan",
+            "taberu"
+          ],
+          "furigana": "七[なな]時[じ]に朝[あさ]ご飯[はん]を食[た]べます。"
+        },
+        {
+          "japanese": "本を七つ読みます。",
+          "english": "I read seven books.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "nana-v",
+            "yomu"
+          ],
+          "furigana": "本[ほん]を七[なな]つ読[よ]みます。"
+        },
+        {
+          "japanese": "七時に友達と会います。",
+          "english": "I meet my friend at seven.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nana-v",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "七[なな]時[じ]に友[とも]達[だち]と会[あ]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shichi-num",
@@ -2375,7 +2888,46 @@
           "answer_text": "しち"
         }
       ],
-      "furigana": "七[しち]"
+      "furigana": "七[しち]",
+      "example_sentences": [
+        {
+          "japanese": "今、七時です。",
+          "english": "It's seven o'clock now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "shichi-num"
+          ],
+          "furigana": "今[いま]、七[なな]時[じ]です。"
+        },
+        {
+          "japanese": "明日、七時に起きます。",
+          "english": "I will wake up at seven tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "shichi-num",
+            "okiru"
+          ],
+          "furigana": "明日[あした]、七[なな]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "七時に映画を見ます。",
+          "english": "I will watch a movie at seven.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shichi-num",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "七[なな]時[じ]に映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hachi-v",
@@ -2394,7 +2946,47 @@
           "answer_text": "はち"
         }
       ],
-      "furigana": "八[はち]"
+      "furigana": "八[はち]",
+      "example_sentences": [
+        {
+          "japanese": "私は八時に起きます。",
+          "english": "I get up at eight.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hachi-v",
+            "okiru"
+          ],
+          "furigana": "私[わたし]は八[はち]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "本を八つ買います。",
+          "english": "I'll buy eight books.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "hachi-v",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を八[はち]つ買[か]います。"
+        },
+        {
+          "japanese": "友達が八人来ます。",
+          "english": "Eight friends are coming.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "hachi-v",
+            "kuru-v"
+          ],
+          "furigana": "友[とも]達[だち]が八[はち]人[ひと]来[らい]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyuu-v",
@@ -2413,7 +3005,46 @@
           "answer_text": "きゅう"
         }
       ],
-      "furigana": "九[きゅう]"
+      "furigana": "九[きゅう]",
+      "example_sentences": [
+        {
+          "japanese": "私は九時に起きます。",
+          "english": "I wake up at nine.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kyuu-v",
+            "okiru"
+          ],
+          "furigana": "私[わたし]は九[きゅう]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "これは九ですか。",
+          "english": "Is this nine?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "kyuu-v"
+          ],
+          "furigana": "これは九[きゅう]ですか。"
+        },
+        {
+          "japanese": "彼は九を書きます。",
+          "english": "He writes a nine.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kyuu-v",
+            "kaku"
+          ],
+          "furigana": "彼[かれ]は九[きゅう]を書[か]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ku-num",
@@ -2432,7 +3063,47 @@
           "answer_text": "く"
         }
       ],
-      "furigana": "九[く]"
+      "furigana": "九[く]",
+      "example_sentences": [
+        {
+          "japanese": "七、八、九と書きます。",
+          "english": "I write seven, eight, nine.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shichi-num",
+            "hachi-v",
+            "ku-num",
+            "kaku"
+          ],
+          "furigana": "七[なな]、八、九[はちきゅう]と書[か]きます。"
+        },
+        {
+          "japanese": "これは九ですか。",
+          "english": "Is this one nine?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "ku-num"
+          ],
+          "furigana": "これは九[きゅう]ですか。"
+        },
+        {
+          "japanese": "先生は九を読みます。",
+          "english": "The teacher reads nine.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "ku-num",
+            "yomu"
+          ],
+          "furigana": "先[せん]生[せい]は九[きゅう]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "juu-v",
@@ -2451,7 +3122,45 @@
           "answer_text": "じゅう"
         }
       ],
-      "furigana": "十[じゅう]"
+      "furigana": "十[じゅう]",
+      "example_sentences": [
+        {
+          "japanese": "今、十時です。",
+          "english": "It's ten o'clock now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "juu-v"
+          ],
+          "furigana": "今[いま]、十[じゅう]時[じ]です。"
+        },
+        {
+          "japanese": "明日十時に会います。",
+          "english": "I'll meet you at ten tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "juu-v",
+            "au"
+          ],
+          "furigana": "明日[あした]十[じゅう]時[じ]に会[あ]います。"
+        },
+        {
+          "japanese": "犬が十います。",
+          "english": "There are ten dogs.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "juu-v"
+          ],
+          "furigana": "犬[いぬ]が十[じゅう]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hyaku-v",
@@ -2470,7 +3179,50 @@
           "answer_text": "ひゃく"
         }
       ],
-      "furigana": "百[ひゃく]"
+      "furigana": "百[ひゃく]",
+      "example_sentences": [
+        {
+          "japanese": "私は本を百買います。",
+          "english": "I buy a hundred books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hon",
+            "hyaku-v",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は本[ほん]を百[ひゃく]買[か]います。"
+        },
+        {
+          "japanese": "昨日、写真を百見ました。",
+          "english": "Yesterday I looked at a hundred photos.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "shashin",
+            "hyaku-v",
+            "miru-v"
+          ],
+          "furigana": "昨日[きのう]、写[しゃ]真[しん]を百[ひゃく]見[み]ました。"
+        },
+        {
+          "japanese": "百の友達が公園で遊びます。",
+          "english": "A hundred friends play at the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hyaku-v",
+            "tomodachi",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "百[ひゃく]の友[とも]達[だち]が公[こう]園[えん]で遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sen-v",
@@ -2489,7 +3241,48 @@
           "answer_text": "せん"
         }
       ],
-      "furigana": "千[せん]"
+      "furigana": "千[せん]",
+      "example_sentences": [
+        {
+          "japanese": "部屋に本が千あります。",
+          "english": "There are a thousand books in the room.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "heya",
+            "hon",
+            "sen-v"
+          ],
+          "furigana": "部屋[へや]に本[ほん]が千[せん]あります。"
+        },
+        {
+          "japanese": "学生が千人います。",
+          "english": "There are a thousand students.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gakusei",
+            "sen-v"
+          ],
+          "furigana": "学[がく]生[せい]が千[せん]人[ひと]います。"
+        },
+        {
+          "japanese": "私は本を二千買います。",
+          "english": "I'm buying two thousand books.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "hon",
+            "ni-v",
+            "sen-v",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は本[ほん]を二千[にせん]買[か]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "man-v",
@@ -2508,7 +3301,50 @@
           "answer_text": "まん"
         }
       ],
-      "furigana": "万[まん]"
+      "furigana": "万[まん]",
+      "example_sentences": [
+        {
+          "japanese": "部屋に本が一万あります。",
+          "english": "There are ten thousand books in the room.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "heya",
+            "hon",
+            "ichi-v",
+            "man-v"
+          ],
+          "furigana": "部屋[へや]に本[ほん]が一[いち]万[まん]あります。"
+        },
+        {
+          "japanese": "お金は二万です。",
+          "english": "The money is twenty thousand.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "ni-v",
+            "man-v"
+          ],
+          "furigana": "お金[かね]は二[に]万[まん]です。"
+        },
+        {
+          "japanese": "昨日、写真を一万見ました。",
+          "english": "Yesterday I looked at ten thousand photos.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "shashin",
+            "ichi-v",
+            "man-v",
+            "miru-v"
+          ],
+          "furigana": "昨日[きのう]、写[しゃ]真[しん]を一[いち]万[まん]見[み]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hitotsu",
@@ -2527,7 +3363,48 @@
           "answer_text": "ひとつ"
         }
       ],
-      "furigana": "一[ひと]つ"
+      "furigana": "一[ひと]つ",
+      "example_sentences": [
+        {
+          "japanese": "私はパンを一つ食べます。",
+          "english": "I'll eat one piece of bread.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "pan",
+            "hitotsu",
+            "taberu"
+          ],
+          "furigana": "私[わたし]はパンを一[いち]つ食[た]べます。"
+        },
+        {
+          "japanese": "コーヒーを一つください。",
+          "english": "One coffee, please.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koohii",
+            "hitotsu"
+          ],
+          "furigana": "コーヒーを一[いち]つください。"
+        },
+        {
+          "japanese": "彼は本を一つ買いました。",
+          "english": "He bought one book.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "hon",
+            "hitotsu",
+            "kau-v"
+          ],
+          "furigana": "彼[かれ]は本[ほん]を一[いち]つ買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "futatsu",
@@ -2546,7 +3423,48 @@
           "answer_text": "ふたつ"
         }
       ],
-      "furigana": "二[ふた]つ"
+      "furigana": "二[ふた]つ",
+      "example_sentences": [
+        {
+          "japanese": "本を二つ買いました。",
+          "english": "I bought two books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "futatsu",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を二[に]つ買[か]いました。"
+        },
+        {
+          "japanese": "部屋に窓が二つあります。",
+          "english": "There are two windows in the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya",
+            "mado",
+            "futatsu"
+          ],
+          "furigana": "部屋[へや]に窓[まど]が二[に]つあります。"
+        },
+        {
+          "japanese": "今日、映画を二つ見ました。",
+          "english": "Today I watched two movies.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "eiga",
+            "futatsu",
+            "miru-v"
+          ],
+          "furigana": "今日[きょう]、映[えい]画[が]を二[に]つ見[み]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mittsu",
@@ -2565,7 +3483,47 @@
           "answer_text": "みっつ"
         }
       ],
-      "furigana": "三[みっ]つ"
+      "furigana": "三[みっ]つ",
+      "example_sentences": [
+        {
+          "japanese": "本を三つ買いました。",
+          "english": "I bought three books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "mittsu",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を三[さん]つ買[か]いました。"
+        },
+        {
+          "japanese": "パンを三つ食べました。",
+          "english": "I ate three pieces of bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "mittsu",
+            "taberu"
+          ],
+          "furigana": "パンを三[さん]つ食[た]べました。"
+        },
+        {
+          "japanese": "写真を三つ見ました。",
+          "english": "I looked at three photos.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shashin",
+            "mittsu",
+            "miru-v"
+          ],
+          "furigana": "写[しゃ]真[しん]を三[さん]つ見[み]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yottsu",
@@ -2584,7 +3542,47 @@
           "answer_text": "よっつ"
         }
       ],
-      "furigana": "四[よっ]つ"
+      "furigana": "四[よっ]つ",
+      "example_sentences": [
+        {
+          "japanese": "本を四つ買いました。",
+          "english": "I bought four books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "yottsu",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を四[よん]つ買[か]いました。"
+        },
+        {
+          "japanese": "部屋に窓が四つあります。",
+          "english": "There are four windows in the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya",
+            "mado",
+            "yottsu"
+          ],
+          "furigana": "部屋[へや]に窓[まど]が四[よん]つあります。"
+        },
+        {
+          "japanese": "パンを四つ食べます。",
+          "english": "I'm going to eat four pieces of bread.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "pan",
+            "yottsu",
+            "taberu"
+          ],
+          "furigana": "パンを四[よん]つ食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itsutsu",
