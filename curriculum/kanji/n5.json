@@ -6024,7 +6024,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、仕事を休みます。",
+          "english": "I will take a day off from work tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "shigoto",
+            "yasumu"
+          ],
+          "furigana": "明日[あした]、仕[し]事[ごと]を休[やす]みます。"
+        },
+        {
+          "japanese": "ここでちょっと休みましょう。",
+          "english": "Let's rest here for a bit.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "chotto",
+            "yasumu"
+          ],
+          "furigana": "ここでちょっと休[やす]みましょう。"
+        },
+        {
+          "japanese": "風邪で学校を休みました。",
+          "english": "I took a day off from school because of a cold.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaze-cold",
+            "gakkou-v",
+            "yasumu"
+          ],
+          "furigana": "風邪[かぜ]で学[がっ]校[こう]を休[やす]みました。"
+        }
+      ]
     },
     {
       "slug": "n5-iu-gen",
@@ -6062,7 +6097,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生は何と言いましたか。",
+          "english": "What did the teacher say?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "nani",
+            "iu-v"
+          ],
+          "furigana": "先[せん]生[せい]は何[なに]と言[い]いましたか。"
+        },
+        {
+          "japanese": "この言葉の意味が分かりません。",
+          "english": "I don't understand the meaning of this word.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "kotoba",
+            "imi",
+            "wakaru"
+          ],
+          "furigana": "この言[こと]葉[ば]の意[い]味[み]が分[わ]かりません。"
+        },
+        {
+          "japanese": "彼は面白いことを言います。",
+          "english": "He says interesting things.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "omoshiroi",
+            "koto",
+            "iu-v"
+          ],
+          "furigana": "彼[かれ]は面[おも]白[しろ]いことを言[い]います。"
+        }
+      ]
     },
     {
       "slug": "n5-kau",
@@ -6100,7 +6172,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、新しい本を買いました。",
+          "english": "I bought a new book yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "atarashii-adj",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、新[あたら]しい本[ほん]を買[か]いました。"
+        },
+        {
+          "japanese": "日曜日に友達と買い物に行きました。",
+          "english": "I went shopping with a friend on Sunday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nichiyoubi",
+            "tomodachi",
+            "kaimono",
+            "iku-v"
+          ],
+          "furigana": "日[にち]曜[よう]日[ひ]に友[とも]達[だち]と買[か]い物[もの]に行[い]きました。"
+        },
+        {
+          "japanese": "明日、母とデパートで買い物します。",
+          "english": "Tomorrow, I will shop at the department store with my mom.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "haha",
+            "depaato",
+            "kaimono-suru"
+          ],
+          "furigana": "明日[あした]、母[はは]とデパートで買[か]い物[もの]します。"
+        }
+      ]
     },
     {
       "slug": "n5-uru-baku",
@@ -6138,7 +6248,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達に自転車を売りました。",
+          "english": "I sold my bicycle to a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "jitensha",
+            "uru"
+          ],
+          "furigana": "友[とも]達[だち]に自[じ]転[てん]車[くるま]を売[う]りました。"
+        },
+        {
+          "japanese": "デパートで服を売っています。",
+          "english": "They sell clothes at the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "depaato",
+            "fuku",
+            "uru",
+            "iru-exist"
+          ],
+          "furigana": "デパートで服[ふく]を売[う]っています。"
+        },
+        {
+          "japanese": "その車は売りません。",
+          "english": "I will not sell that car.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "kuruma",
+            "uru"
+          ],
+          "furigana": "その車[くるま]は売[う]りません。"
+        }
+      ]
     },
     {
       "slug": "n5-taberu",
@@ -6176,7 +6322,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "どんな食べ物が好きですか。",
+          "english": "What kind of food do you like?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "donna",
+            "tabemono",
+            "suki"
+          ],
+          "furigana": "どんな食[た]べ物[もの]が好[す]きですか。"
+        },
+        {
+          "japanese": "家族と一緒にレストランで食事します。",
+          "english": "I will dine at a restaurant with my family.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kazoku",
+            "issho-ni",
+            "resutoran",
+            "shokuji-suru"
+          ],
+          "furigana": "家[か]族[ぞく]と一[いっ]緒[しょ]にレストランで食[しょく]事[じ]します。"
+        },
+        {
+          "japanese": "毎朝、パンを食べます。",
+          "english": "I eat bread every morning.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maiasa",
+            "pan",
+            "taberu"
+          ],
+          "furigana": "毎[まい]朝[あさ]、パンを食[た]べます。"
+        }
+      ]
     },
     {
       "slug": "n5-nomu",
@@ -6214,7 +6396,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝コーヒーを飲みます。",
+          "english": "I drink coffee every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]コーヒーを飲[の]みます。"
+        },
+        {
+          "japanese": "冷たい飲み物が欲しいです。",
+          "english": "I want a cold drink.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tsumetai",
+            "nomimono",
+            "hoshii"
+          ],
+          "furigana": "冷[つめ]たい飲[の]み物[もの]が欲[ほ]しいです。"
+        },
+        {
+          "japanese": "昨日、友達とお酒を飲みました。",
+          "english": "I drank alcohol with my friend yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "tomodachi",
+            "osake",
+            "nomu-v"
+          ],
+          "furigana": "昨日[きのう]、友[とも]達[だち]とお酒[さけ]を飲[の]みました。"
+        }
+      ]
     },
     {
       "slug": "n5-shiro-white",
@@ -6252,7 +6470,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "その白い靴は新しいですか。",
+          "english": "Are those white shoes new?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sono",
+            "shiroi",
+            "kutsu",
+            "atarashii-adj"
+          ],
+          "furigana": "その白[しろ]い靴[くつ]は新[あたら]しいですか。"
+        },
+        {
+          "japanese": "昨日の映画は面白かったです。",
+          "english": "The movie yesterday was interesting.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "eiga",
+            "omoshiroi"
+          ],
+          "furigana": "昨日[きのう]の映[えい]画[が]は面白[おもしろ]かったです。"
+        },
+        {
+          "japanese": "私の車は白です。",
+          "english": "My car is white.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "kuruma",
+            "shiro-color"
+          ],
+          "furigana": "私[わたし]の車[くるま]は白[しろ]です。"
+        }
+      ]
     },
     {
       "slug": "n5-aka",
@@ -6290,7 +6544,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの赤ちゃんはかわいいです。",
+          "english": "That baby is cute.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "akachan",
+            "kawaii"
+          ],
+          "furigana": "あの赤[あか]ちゃんはかわいいです。"
+        },
+        {
+          "japanese": "私は赤い車が欲しいです。",
+          "english": "I want a red car.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "akai",
+            "kuruma",
+            "hoshii"
+          ],
+          "furigana": "私[わたし]は赤[あか]い車[くるま]が欲[ほ]しいです。"
+        },
+        {
+          "japanese": "そのかばんは赤です。",
+          "english": "That bag is red.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "kaban",
+            "aka-color"
+          ],
+          "furigana": "そのかばんは赤[あか]です。"
+        }
+      ]
     },
     {
       "slug": "n5-ao",
@@ -6328,7 +6618,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの青いペンを借りました。",
+          "english": "I borrowed that blue pen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "aoi",
+            "pen",
+            "kariru"
+          ],
+          "furigana": "あの青[あお]いペンを借[か]りました。"
+        },
+        {
+          "japanese": "新しい青い車を買いました。",
+          "english": "I bought a new blue car.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "aoi",
+            "kuruma",
+            "kau-v"
+          ],
+          "furigana": "新[あたら]しい青[あお]い車[くるま]を買[か]いました。"
+        },
+        {
+          "japanese": "青と白の服を着ます。",
+          "english": "I will wear blue and white clothes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ao-color",
+            "shiro-color",
+            "fuku",
+            "kiru-wear"
+          ],
+          "furigana": "青[あお]と白[しろ]の服[ふく]を着[ちゃく]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-kane-gold-dup",
@@ -6366,7 +6694,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の車は黒です。",
+          "english": "My car is black.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kuruma",
+            "kuro-color"
+          ],
+          "furigana": "私[わたし]の車[くるま]は黒[くろ]です。"
+        },
+        {
+          "japanese": "あの黒い犬はかわいいです。",
+          "english": "That black dog is cute.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "kuroi",
+            "inu",
+            "kawaii"
+          ],
+          "furigana": "あの黒[くろ]い犬[いぬ]はかわいいです。"
+        },
+        {
+          "japanese": "先生は黒板に書きました。",
+          "english": "The teacher wrote on the blackboard.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "kokuban",
+            "kaku"
+          ],
+          "furigana": "先[せん]生[せい]は黒[こく]板[ばん]に書[か]きました。"
+        }
+      ]
     },
     {
       "slug": "n5-takai",

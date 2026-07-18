@@ -1,4 +1,80 @@
 {
+  "n5-aka": {
+    "example_sentences": [
+      {
+        "japanese": "あの赤ちゃんはかわいいです。",
+        "english": "That baby is cute.",
+        "vocabulary_slugs": [
+          "ano",
+          "akachan",
+          "kawaii"
+        ]
+      },
+      {
+        "japanese": "私は赤い車が欲しいです。",
+        "english": "I want a red car.",
+        "vocabulary_slugs": [
+          "watashi",
+          "akai",
+          "kuruma",
+          "hoshii"
+        ]
+      },
+      {
+        "japanese": "そのかばんは赤です。",
+        "english": "That bag is red.",
+        "vocabulary_slugs": [
+          "sono",
+          "kaban",
+          "aka-color"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ao": {
+    "example_sentences": [
+      {
+        "japanese": "あの青いペンを借りました。",
+        "english": "I borrowed that blue pen.",
+        "vocabulary_slugs": [
+          "ano",
+          "aoi",
+          "pen",
+          "kariru"
+        ]
+      },
+      {
+        "japanese": "新しい青い車を買いました。",
+        "english": "I bought a new blue car.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "aoi",
+          "kuruma",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "青と白の服を着ます。",
+        "english": "I will wear blue and white clothes.",
+        "vocabulary_slugs": [
+          "ao-color",
+          "shiro-color",
+          "fuku",
+          "kiru-wear"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-ashi": {
     "example_sentences": [
       {
@@ -960,6 +1036,44 @@
       "review_status": "draft"
     }
   },
+  "n5-iu-gen": {
+    "example_sentences": [
+      {
+        "japanese": "先生は何と言いましたか。",
+        "english": "What did the teacher say?",
+        "vocabulary_slugs": [
+          "sensei",
+          "nani",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "この言葉の意味が分かりません。",
+        "english": "I don't understand the meaning of this word.",
+        "vocabulary_slugs": [
+          "kono",
+          "kotoba",
+          "imi",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "彼は面白いことを言います。",
+        "english": "He says interesting things.",
+        "vocabulary_slugs": [
+          "kare",
+          "omoshiroi",
+          "koto",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-jikan-ji": {
     "example_sentences": [
       {
@@ -1133,6 +1247,82 @@
           "kaban",
           "jisho",
           "ireru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kane-gold-dup": {
+    "example_sentences": [
+      {
+        "japanese": "私の車は黒です。",
+        "english": "My car is black.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kuruma",
+          "kuro-color"
+        ]
+      },
+      {
+        "japanese": "あの黒い犬はかわいいです。",
+        "english": "That black dog is cute.",
+        "vocabulary_slugs": [
+          "ano",
+          "kuroi",
+          "inu",
+          "kawaii"
+        ]
+      },
+      {
+        "japanese": "先生は黒板に書きました。",
+        "english": "The teacher wrote on the blackboard.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kokuban",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kau": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、新しい本を買いました。",
+        "english": "I bought a new book yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "atarashii-adj",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "日曜日に友達と買い物に行きました。",
+        "english": "I went shopping with a friend on Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "tomodachi",
+          "kaimono",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "明日、母とデパートで買い物します。",
+        "english": "Tomorrow, I will shop at the department store with my mom.",
+        "vocabulary_slugs": [
+          "ashita",
+          "haha",
+          "depaato",
+          "kaimono-suru"
         ]
       }
     ],
@@ -2216,6 +2406,43 @@
       "review_status": "draft"
     }
   },
+  "n5-nomu": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝コーヒーを飲みます。",
+        "english": "I drink coffee every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "冷たい飲み物が欲しいです。",
+        "english": "I want a cold drink.",
+        "vocabulary_slugs": [
+          "tsumetai",
+          "nomimono",
+          "hoshii"
+        ]
+      },
+      {
+        "japanese": "昨日、友達とお酒を飲みました。",
+        "english": "I drank alcohol with my friend yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "osake",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-onna": {
     "example_sentences": [
       {
@@ -2478,6 +2705,43 @@
       "review_status": "draft"
     }
   },
+  "n5-shiro-white": {
+    "example_sentences": [
+      {
+        "japanese": "その白い靴は新しいですか。",
+        "english": "Are those white shoes new?",
+        "vocabulary_slugs": [
+          "sono",
+          "shiroi",
+          "kutsu",
+          "atarashii-adj"
+        ]
+      },
+      {
+        "japanese": "昨日の映画は面白かったです。",
+        "english": "The movie yesterday was interesting.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "私の車は白です。",
+        "english": "My car is white.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kuruma",
+          "shiro-color"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-shita": {
     "example_sentences": [
       {
@@ -2655,6 +2919,43 @@
           "tomodachi",
           "tonari",
           "suwaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-taberu": {
+    "example_sentences": [
+      {
+        "japanese": "どんな食べ物が好きですか。",
+        "english": "What kind of food do you like?",
+        "vocabulary_slugs": [
+          "donna",
+          "tabemono",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "家族と一緒にレストランで食事します。",
+        "english": "I will dine at a restaurant with my family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "issho-ni",
+          "resutoran",
+          "shokuji-suru"
+        ]
+      },
+      {
+        "japanese": "毎朝、パンを食べます。",
+        "english": "I eat bread every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "pan",
+          "taberu"
         ]
       }
     ],
@@ -2849,6 +3150,43 @@
       "review_status": "draft"
     }
   },
+  "n5-uru-baku": {
+    "example_sentences": [
+      {
+        "japanese": "友達に自転車を売りました。",
+        "english": "I sold my bicycle to a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "jitensha",
+          "uru"
+        ]
+      },
+      {
+        "japanese": "デパートで服を売っています。",
+        "english": "They sell clothes at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "fuku",
+          "uru",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "その車は売りません。",
+        "english": "I will not sell that car.",
+        "vocabulary_slugs": [
+          "sono",
+          "kuruma",
+          "uru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-ushiro": {
     "example_sentences": [
       {
@@ -2914,6 +3252,42 @@
           "yama-v",
           "shashin",
           "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-yasumu": {
+    "example_sentences": [
+      {
+        "japanese": "明日、仕事を休みます。",
+        "english": "I will take a day off from work tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shigoto",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "ここでちょっと休みましょう。",
+        "english": "Let's rest here for a bit.",
+        "vocabulary_slugs": [
+          "koko",
+          "chotto",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "風邪で学校を休みました。",
+        "english": "I took a day off from school because of a cold.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "gakkou-v",
+          "yasumu"
         ]
       }
     ],
