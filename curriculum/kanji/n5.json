@@ -5284,7 +5284,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝ラジオを聞きます。",
+          "english": "I listen to the radio every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "rajio",
+            "kiku-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]ラジオを聞[き]きます。"
+        },
+        {
+          "japanese": "父は朝、新聞を読みます。",
+          "english": "My father reads the newspaper in the morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "asa",
+            "shinbun",
+            "yomu"
+          ],
+          "furigana": "父[ちち]は朝[あさ]、新[しん]聞[ぶん]を読[よ]みます。"
+        },
+        {
+          "japanese": "鳥の声が聞こえます。",
+          "english": "I can hear birds singing.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tori",
+            "koe",
+            "kikoeru"
+          ],
+          "furigana": "鳥[とり]の声[こえ]が聞[き]こえます。"
+        }
+      ]
     },
     {
       "slug": "n5-iku-go",
@@ -5322,7 +5358,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、銀行に行きました。",
+          "english": "Yesterday, I went to the bank.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "ginkou",
+            "iku-v"
+          ],
+          "furigana": "昨日[きのう]、銀[ぎん]行[こう]に行[い]きました。"
+        },
+        {
+          "japanese": "家族と飛行機で旅行します。",
+          "english": "I will travel by airplane with my family.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kazoku",
+            "hikouki",
+            "ryokou-suru"
+          ],
+          "furigana": "家[か]族[ぞく]と飛[ひ]行[こう]機[き]で旅[りょ]行[こう]します。"
+        },
+        {
+          "japanese": "お母さん、行ってきます。",
+          "english": "I'm off, Mom.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okaasan",
+            "ittekimasu"
+          ],
+          "furigana": "お母[はは]さん、行[い]ってきます。"
+        }
+      ]
     },
     {
       "slug": "n5-kuru-rai",
@@ -5360,7 +5430,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、誰が来ますか。",
+          "english": "Who is coming tomorrow?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "dare",
+            "kuru-v"
+          ],
+          "furigana": "明日[あした]、誰[だれ]が来[らい]ますか。"
+        },
+        {
+          "japanese": "来月、日本へ行きます。",
+          "english": "I will go to Japan next month.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "nihon",
+            "iku-v"
+          ],
+          "furigana": "来[らい]月[げつ]、日本[にほん]へ行[い]きます。"
+        },
+        {
+          "japanese": "来年、新しい先生が来ます。",
+          "english": "A new teacher will come next year.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "rainen",
+            "atarashii-adj",
+            "sensei",
+            "kuru-v"
+          ],
+          "furigana": "来[らい]年[ねん]、新[あたら]しい先[せん]生[せい]が来[らい]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-kaeru",
@@ -5398,7 +5504,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日は早く家に帰ります。",
+          "english": "I will return home early tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "hayai-early",
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "明日[あした]は早[はや]く家[いえ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "遅いですから、一緒に帰りましょう。",
+          "english": "It's late, so let's go home together.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "osoi",
+            "issho-ni",
+            "kaeru-v"
+          ],
+          "furigana": "遅[おそ]いですから、一[いっ]緒[しょ]に帰[かえ]りましょう。"
+        },
+        {
+          "japanese": "お父さん、お帰りなさい。",
+          "english": "Welcome back, dad!",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otousan",
+            "okaerinasai"
+          ],
+          "furigana": "お父[ちち]さん、お帰[かえ]りなさい。"
+        }
+      ]
     },
     {
       "slug": "n5-deru",
@@ -5436,7 +5577,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、手紙を出します。",
+          "english": "I will send a letter tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tegami",
+            "dasu"
+          ],
+          "furigana": "明日[あした]、手[て]紙[がみ]を出[だ]します。"
+        },
+        {
+          "japanese": "毎日、何時に家を出ますか。",
+          "english": "What time do you leave the house every day?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "nannji",
+            "ie",
+            "deru-v"
+          ],
+          "furigana": "毎[まい]日[にち]、何[なに]時[じ]に家[いえ]を出[で]ますか。"
+        },
+        {
+          "japanese": "駅の出口はどこですか。",
+          "english": "Where is the station exit?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "deguchi",
+            "doko"
+          ],
+          "furigana": "駅[えき]の出[で]口[ぐち]はどこですか。"
+        }
+      ]
     },
     {
       "slug": "n5-hairu",
@@ -5474,7 +5651,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達と一緒に店に入りました。",
+          "english": "I entered the shop with my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "issho-ni",
+            "mise",
+            "hairu-v"
+          ],
+          "furigana": "友[とも]達[だち]と一[いっ]緒[しょ]に店[みせ]に入[い]りました。"
+        },
+        {
+          "japanese": "コーヒーに砂糖を入れました。",
+          "english": "I put sugar in the coffee.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koohii",
+            "satou",
+            "ireru-v"
+          ],
+          "furigana": "コーヒーに砂[さ]糖[とう]を入[い]れました。"
+        },
+        {
+          "japanese": "駅の入口はどこですか。",
+          "english": "Where is the station's entrance?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "iriguchi",
+            "doko"
+          ],
+          "furigana": "駅[えき]の入[いり]口[ぐち]はどこですか。"
+        }
+      ]
     },
     {
       "slug": "n5-miru",
@@ -5512,7 +5725,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎日テレビを見ます。",
+          "english": "I watch TV every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "terebi",
+            "miru-v"
+          ],
+          "furigana": "毎[まい]日[にち]テレビを見[み]ます。"
+        },
+        {
+          "japanese": "ここから山が見えます。",
+          "english": "You can see the mountain from here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "yama-v",
+            "mieru"
+          ],
+          "furigana": "ここから山[やま]が見[み]えます。"
+        },
+        {
+          "japanese": "友達に新しい写真を見せました。",
+          "english": "I showed the new picture to my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "atarashii-adj",
+            "shashin",
+            "miseru"
+          ],
+          "furigana": "友[とも]達[だち]に新[あたら]しい写[しゃ]真[しん]を見[み]せました。"
+        }
+      ]
     },
     {
       "slug": "n5-tomeru",
@@ -5550,7 +5799,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅の前にバスが止まりました。",
+          "english": "The bus stopped in front of the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "mae",
+            "basu",
+            "tomaru"
+          ],
+          "furigana": "駅[えき]の前[まえ]にバスが止[と]まりました。"
+        },
+        {
+          "japanese": "ここでタクシーを止めてください。",
+          "english": "Please stop the taxi here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "takushii",
+            "tomeru-stop"
+          ],
+          "furigana": "ここでタクシーを止[と]めてください。"
+        },
+        {
+          "japanese": "古い時計が止まりました。",
+          "english": "The old clock stopped.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "furui-adj",
+            "tokei",
+            "tomaru"
+          ],
+          "furigana": "古[ふる]い時計[とけい]が止[と]まりました。"
+        }
+      ]
     },
     {
       "slug": "n5-tatsu",
@@ -5588,7 +5873,46 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生はドアの前に立っています。",
+          "english": "The teacher is standing in front of the door.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "doa",
+            "mae",
+            "tatsu-v",
+            "iru-exist"
+          ],
+          "furigana": "先[せん]生[せい]はドアの前[まえ]に立[た]っています。"
+        },
+        {
+          "japanese": "私は立って、窓を開けました。",
+          "english": "I stood up and opened the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "tatsu-v",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "私[わたし]は立[た]って、窓[まど]を開[あ]けました。"
+        },
+        {
+          "japanese": "あそこに男の人が立っています。",
+          "english": "A man is standing over there.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "asoko",
+            "otokonohito",
+            "tatsu-v",
+            "iru-exist"
+          ],
+          "furigana": "あそこに男[おとこ]の人[ひと]が立[た]っています。"
+        }
+      ]
     },
     {
       "slug": "n5-suwaru",
@@ -5626,7 +5950,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "誰がここに座りましたか。",
+          "english": "Who sat here?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "dare",
+            "koko",
+            "suwaru"
+          ],
+          "furigana": "誰[だれ]がここに座[すわ]りましたか。"
+        },
+        {
+          "japanese": "猫が机の下に座っています。",
+          "english": "The cat is sitting under the desk.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "neko",
+            "tsukue",
+            "shita-v",
+            "suwaru"
+          ],
+          "furigana": "猫[ねこ]が机[つくえ]の下[した]に座[すわ]っています。"
+        },
+        {
+          "japanese": "友達の隣に座りました。",
+          "english": "I sat next to my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "tonari",
+            "suwaru"
+          ],
+          "furigana": "友[とも]達[だち]の隣[となり]に座[すわ]りました。"
+        }
+      ]
     },
     {
       "slug": "n5-yasumu",
