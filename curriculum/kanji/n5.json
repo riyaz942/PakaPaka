@@ -2353,7 +2353,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの小さい猫を見ましたか。",
+          "english": "Did you see that small cat?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "chiisai",
+            "neko",
+            "miru-v"
+          ],
+          "furigana": "あの小[ちい]さい猫[ねこ]を見[み]ましたか。"
+        },
+        {
+          "japanese": "私の部屋は小さいです。",
+          "english": "My room is small.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "heya",
+            "chiisai"
+          ],
+          "furigana": "私[わたし]の部屋[へや]は小[ちい]さいです。"
+        },
+        {
+          "japanese": "昨日、小さい本を買いました。",
+          "english": "I bought a small book yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "chiisai",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、小[ちい]さい本[ほん]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-hidari",
@@ -2391,7 +2428,40 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅は左です。",
+          "english": "The station is on the left.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "hidari-v"
+          ],
+          "furigana": "駅[えき]は左[ひだり]です。"
+        },
+        {
+          "japanese": "左に行きます。",
+          "english": "I will go left.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hidari-v",
+            "iku-v"
+          ],
+          "furigana": "左[ひだり]に行[い]きます。"
+        },
+        {
+          "japanese": "左の窓を開けます。",
+          "english": "I will open the left window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hidari-v",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "左[ひだり]の窓[まど]を開[あ]けます。"
+        }
+      ]
     },
     {
       "slug": "n5-migi",
@@ -2429,7 +2499,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "トイレは右です。",
+          "english": "The toilet is on the right.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toire",
+            "migi-v"
+          ],
+          "furigana": "トイレは右[みぎ]です。"
+        },
+        {
+          "japanese": "ここから右に行きます。",
+          "english": "We will go right from here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "migi-v",
+            "iku-v"
+          ],
+          "furigana": "ここから右[みぎ]に行[い]きます。"
+        },
+        {
+          "japanese": "右の部屋で寝ます。",
+          "english": "I sleep in the room on the right.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "migi-v",
+            "heya",
+            "neru"
+          ],
+          "furigana": "右[みぎ]の部屋[へや]で寝[ね]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-higashi",
@@ -2467,7 +2571,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "東の窓を開けます。",
+          "english": "I open the east window.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "higashi-v",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "東[ひがし]の窓[まど]を開[あ]けます。"
+        },
+        {
+          "japanese": "駅の東で友達に会いました。",
+          "english": "I met a friend east of the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "higashi-v",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "駅[えき]の東[ひがし]で友[とも]達[だち]に会[あ]いました。"
+        },
+        {
+          "japanese": "あの町は東です。",
+          "english": "That town is to the east.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "machi-v",
+            "higashi-v"
+          ],
+          "furigana": "あの町[まち]は東[ひがし]です。"
+        }
+      ]
     },
     {
       "slug": "n5-nishi",
@@ -2505,7 +2645,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "学校は町の西です。",
+          "english": "The school is in the west of the town.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gakkou-v",
+            "machi-v",
+            "nishi-v"
+          ],
+          "furigana": "学[がっ]校[こう]は町[まち]の西[にし]です。"
+        },
+        {
+          "japanese": "彼は西から来ました。",
+          "english": "He came from the west.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "nishi-v",
+            "kuru-v"
+          ],
+          "furigana": "彼[かれ]は西[にし]から来[らい]ました。"
+        },
+        {
+          "japanese": "私たちは一緒に西へ行きました。",
+          "english": "We went west together.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "issho-ni",
+            "nishi-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]たちは一[いっ]緒[しょ]に西[にし]へ行[い]きました。"
+        }
+      ]
     },
     {
       "slug": "n5-minami",
@@ -2543,7 +2719,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅の南は海です。",
+          "english": "South of the station is the sea.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "minami-v",
+            "umi"
+          ],
+          "furigana": "駅[えき]の南[みなみ]は海[うみ]です。"
+        },
+        {
+          "japanese": "私は南の窓を開けます。",
+          "english": "I will open the south window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "minami-v",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "私[わたし]は南[みなみ]の窓[まど]を開[あ]けます。"
+        },
+        {
+          "japanese": "彼は南から来ました。",
+          "english": "He came from the south.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "minami-v",
+            "kuru-v"
+          ],
+          "furigana": "彼[かれ]は南[みなみ]から来[らい]ました。"
+        }
+      ]
     },
     {
       "slug": "n5-kita",
@@ -2581,7 +2793,40 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "北は寒いです。",
+          "english": "It is cold in the north.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kita-v",
+            "samui"
+          ],
+          "furigana": "北[きた]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "北から来ました。",
+          "english": "I came from the north.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kita-v",
+            "kuru-v"
+          ],
+          "furigana": "北[きた]から来[らい]ました。"
+        },
+        {
+          "japanese": "北の窓を開けます。",
+          "english": "I will open the north window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kita-v",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "北[きた]の窓[まど]を開[あ]けます。"
+        }
+      ]
     },
     {
       "slug": "n5-hoku",
@@ -2619,7 +2864,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "来年、外国に行きます。",
+          "english": "Next year, I will go to a foreign country.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "rainen",
+            "gaikoku",
+            "iku-v"
+          ],
+          "furigana": "来[らい]年[ねん]、外[がい]国[こく]に行[い]きます。"
+        },
+        {
+          "japanese": "あの人は外国人ですか。",
+          "english": "Is that person a foreigner?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "hito",
+            "gaikokujin"
+          ],
+          "furigana": "あの人[ひと]は外[がい]国[こく]人[ひと]ですか。"
+        },
+        {
+          "japanese": "今日、外は寒いです。",
+          "english": "It is cold outside today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "soto",
+            "samui"
+          ],
+          "furigana": "今日[きょう]、外[そと]は寒[さむ]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-mae",
@@ -2657,7 +2937,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "ここに名前を書きます。",
+          "english": "I will write my name here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "namae",
+            "kaku"
+          ],
+          "furigana": "ここに名[な]前[まえ]を書[か]きます。"
+        },
+        {
+          "japanese": "明日の午前、病院へ行きます。",
+          "english": "I will go to the hospital tomorrow morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "gozen",
+            "byouin",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]の午[ご]前[ぜん]、病[びょう]院[いん]へ行[い]きます。"
+        },
+        {
+          "japanese": "駅の前で友達を待ちます。",
+          "english": "I will wait for my friend in front of the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "mae",
+            "tomodachi",
+            "matsu"
+          ],
+          "furigana": "駅[えき]の前[まえ]で友[とも]達[だち]を待[ま]ちます。"
+        }
+      ]
     },
     {
       "slug": "n5-ushiro",
@@ -2695,7 +3012,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅の後ろで待ちます。",
+          "english": "I will wait behind the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "ushiro",
+            "matsu"
+          ],
+          "furigana": "駅[えき]の後[うし]ろで待[ま]ちます。"
+        },
+        {
+          "japanese": "今日の午後、図書館に行きます。",
+          "english": "I will go to the library this afternoon.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "gogo",
+            "toshokan",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]の午[ご]後[ご]、図[と]書[しょ]館[かん]に行[い]きます。"
+        },
+        {
+          "japanese": "これが最後のお菓子です。",
+          "english": "This is the last snack.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "saigo",
+            "okashi"
+          ],
+          "furigana": "これが最[さい]後[ご]のお菓[か]子[し]です。"
+        }
+      ]
     },
     {
       "slug": "n5-hidariuma",
@@ -2728,7 +3081,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "午前は学校に行きます。",
+          "english": "I go to school in the morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "gozen",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "午[ご]前[ぜん]は学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "午後は映画を見ます。",
+          "english": "I will watch a movie in the afternoon.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gogo",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "午[ご]後[ご]は映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "昨日の午前、友達に会いました。",
+          "english": "I met a friend yesterday morning.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "gozen",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "昨日[きのう]の午[ご]前[ぜん]、友[とも]達[だち]に会[あ]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-hon",
@@ -2766,7 +3155,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日本を読みます。",
+          "english": "I read a book every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "私[わたし]は毎[まい]日本[にほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "来年、日本に行きます。",
+          "english": "I will go to Japan next year.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "rainen",
+            "nihon",
+            "iku-v"
+          ],
+          "furigana": "来[らい]年[ねん]、日本[にほん]に行[い]きます。"
+        },
+        {
+          "japanese": "昨日はペンを三本買いました。",
+          "english": "I bought three pens yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "pen",
+            "san-v",
+            "hon-counter",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]はペンを三[さん]本[ほん]買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-hito-jin",
@@ -2804,7 +3231,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの人は誰ですか。",
+          "english": "Who is that person over there?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "hito",
+            "dare"
+          ],
+          "furigana": "あの人[ひと]は誰[だれ]ですか。"
+        },
+        {
+          "japanese": "私の友達は外国人です。",
+          "english": "My friend is a foreigner.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "tomodachi",
+            "gaikokujin"
+          ],
+          "furigana": "私[わたし]の友[とも]達[だち]は外[がい]国[こく]人[ひと]です。"
+        },
+        {
+          "japanese": "今日は一人で帰ります。",
+          "english": "I will go home alone today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "hitori-de",
+            "kaeru-v"
+          ],
+          "furigana": "今日[きょう]は一人[ひとり]で帰[かえ]ります。"
+        }
+      ]
     },
     {
       "slug": "n5-onna",
@@ -2842,7 +3304,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女と一緒に映画館へ行きました。",
+          "english": "I went to the cinema with my girlfriend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "issho-ni",
+            "eigakan",
+            "iku-v"
+          ],
+          "furigana": "彼[かの]女[じょ]と一[いっ]緒[しょ]に映[えい]画[が]館[かん]へ行[い]きました。"
+        },
+        {
+          "japanese": "あの女の人は誰ですか。",
+          "english": "Who is that woman?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "onnanohito",
+            "dare"
+          ],
+          "furigana": "あの女[おんな]の人[ひと]は誰[だれ]ですか。"
+        },
+        {
+          "japanese": "女の子が公園で遊んでいます。",
+          "english": "A girl is playing in the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "onnanoko",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "女[おんな]の子[こ]が公[こう]園[えん]で遊[あそ]んでいます。"
+        }
+      ]
     },
     {
       "slug": "n5-otoko",
@@ -2880,7 +3378,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの男の人は誰ですか。",
+          "english": "Who is that man over there?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "otokonohito",
+            "dare"
+          ],
+          "furigana": "あの男[おとこ]の人[ひと]は誰[だれ]ですか。"
+        },
+        {
+          "japanese": "小さい男の子が犬を見ました。",
+          "english": "A small boy saw a dog.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chiisai",
+            "otokonoko",
+            "inu",
+            "miru-v"
+          ],
+          "furigana": "小[ちい]さい男[おとこ]の子[こ]が犬[いぬ]を見[み]ました。"
+        },
+        {
+          "japanese": "男の人が部屋に入りました。",
+          "english": "A man entered the room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otokonohito",
+            "heya",
+            "hairu-v"
+          ],
+          "furigana": "男[おとこ]の人[ひと]が部屋[へや]に入[い]りました。"
+        }
+      ]
     },
     {
       "slug": "n5-ko-child",
@@ -2918,7 +3452,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの男の子は私の弟です。",
+          "english": "That boy is my younger brother.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "otokonoko",
+            "watashi",
+            "otouto"
+          ],
+          "furigana": "あの男[おとこ]の子[こ]は私[わたし]の弟[おとうと]です。"
+        },
+        {
+          "japanese": "彼女は新しい帽子を買いました。",
+          "english": "She bought a new hat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "atarashii-adj",
+            "boushi",
+            "kau-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は新[あたら]しい帽[ぼう]子[し]を買[か]いました。"
+        },
+        {
+          "japanese": "毎日、子供とお菓子を食べます。",
+          "english": "I eat sweets with my child every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "kodomo-v",
+            "okashi",
+            "taberu"
+          ],
+          "furigana": "毎[まい]日[にち]、子[こ]供[ども]とお菓[か]子[し]を食[た]べます。"
+        }
+      ]
     },
     {
       "slug": "n5-me-eye",
@@ -2956,7 +3528,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女の目は大きいです。",
+          "english": "Her eyes are big.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "me-v",
+            "ookii"
+          ],
+          "furigana": "彼[かの]女[じょ]の目[め]は大[おお]きいです。"
+        },
+        {
+          "japanese": "祖父は目が悪いです。",
+          "english": "My grandfather has bad eyesight.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sofu",
+            "me-v",
+            "warui"
+          ],
+          "furigana": "祖[そ]父[ふ]は目[め]が悪[わる]いです。"
+        },
+        {
+          "japanese": "自分の目で見ました。",
+          "english": "I saw it with my own eyes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "jibun",
+            "me-v",
+            "miru-v"
+          ],
+          "furigana": "自[じ]分[ぶん]の目[め]で見[み]ました。"
+        }
+      ]
     },
     {
       "slug": "n5-mimi",
@@ -2994,7 +3601,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの犬は耳が大きいです。",
+          "english": "That dog has big ears.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "inu",
+            "mimi-v",
+            "ookii"
+          ],
+          "furigana": "あの犬[いぬ]は耳[みみ]が大[おお]きいです。"
+        },
+        {
+          "japanese": "赤ちゃんの耳は小さいです。",
+          "english": "The baby's ears are small.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akachan",
+            "mimi-v",
+            "chiisai"
+          ],
+          "furigana": "赤[あか]ちゃんの耳[みみ]は小[ちい]さいです。"
+        },
+        {
+          "japanese": "耳が冷たいです。",
+          "english": "My ears are cold.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mimi-v",
+            "tsumetai"
+          ],
+          "furigana": "耳[みみ]が冷[つめ]たいです。"
+        }
+      ]
     },
     {
       "slug": "n5-kuchi",
@@ -3032,7 +3674,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "赤ちゃんの口は小さいです。",
+          "english": "The baby's mouth is small.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "akachan",
+            "kuchi-v",
+            "chiisai"
+          ],
+          "furigana": "赤[あか]ちゃんの口[くち]は小[ちい]さいです。"
+        },
+        {
+          "japanese": "出口はどこですか。",
+          "english": "Where is the exit?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "deguchi",
+            "doko"
+          ],
+          "furigana": "出[で]口[ぐち]はどこですか。"
+        },
+        {
+          "japanese": "銀行の窓口に行きます。",
+          "english": "I will go to the bank's service window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ginkou",
+            "madoguchi",
+            "iku-v"
+          ],
+          "furigana": "銀[ぎん]行[こう]の窓[まど]口[ぐち]に行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-te-hand",
@@ -3070,7 +3746,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼の手は大きいです。",
+          "english": "His hands are big.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "te-v",
+            "ookii"
+          ],
+          "furigana": "彼[かれ]の手[て]は大[おお]きいです。"
+        },
+        {
+          "japanese": "母は料理が上手です。",
+          "english": "My mother is good at cooking.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "ryouri",
+            "jouzu"
+          ],
+          "furigana": "母[はは]は料[りょう]理[り]が上手[じょうず]です。"
+        },
+        {
+          "japanese": "郵便局で切手を買いました。",
+          "english": "I bought a stamp at the post office.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yuubinkyoku",
+            "kitte",
+            "kau-v"
+          ],
+          "furigana": "郵[ゆう]便[びん]局[きょく]で切[きっ]手[て]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-ashi",

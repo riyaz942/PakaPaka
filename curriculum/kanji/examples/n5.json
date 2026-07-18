@@ -260,6 +260,225 @@
       "review_status": "draft"
     }
   },
+  "n5-hidari": {
+    "example_sentences": [
+      {
+        "japanese": "駅は左です。",
+        "english": "The station is on the left.",
+        "vocabulary_slugs": [
+          "eki",
+          "hidari-v"
+        ]
+      },
+      {
+        "japanese": "左に行きます。",
+        "english": "I will go left.",
+        "vocabulary_slugs": [
+          "hidari-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "左の窓を開けます。",
+        "english": "I will open the left window.",
+        "vocabulary_slugs": [
+          "hidari-v",
+          "mado",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hidariuma": {
+    "example_sentences": [
+      {
+        "japanese": "午前は学校に行きます。",
+        "english": "I go to school in the morning.",
+        "vocabulary_slugs": [
+          "gozen",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "午後は映画を見ます。",
+        "english": "I will watch a movie in the afternoon.",
+        "vocabulary_slugs": [
+          "gogo",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "昨日の午前、友達に会いました。",
+        "english": "I met a friend yesterday morning.",
+        "vocabulary_slugs": [
+          "kinou",
+          "gozen",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-higashi": {
+    "example_sentences": [
+      {
+        "japanese": "東の窓を開けます。",
+        "english": "I open the east window.",
+        "vocabulary_slugs": [
+          "higashi-v",
+          "mado",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "駅の東で友達に会いました。",
+        "english": "I met a friend east of the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "higashi-v",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "あの町は東です。",
+        "english": "That town is to the east.",
+        "vocabulary_slugs": [
+          "ano",
+          "machi-v",
+          "higashi-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hito-jin": {
+    "example_sentences": [
+      {
+        "japanese": "あの人は誰ですか。",
+        "english": "Who is that person over there?",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "私の友達は外国人です。",
+        "english": "My friend is a foreigner.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "gaikokujin"
+        ]
+      },
+      {
+        "japanese": "今日は一人で帰ります。",
+        "english": "I will go home alone today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hitori-de",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hoku": {
+    "example_sentences": [
+      {
+        "japanese": "来年、外国に行きます。",
+        "english": "Next year, I will go to a foreign country.",
+        "vocabulary_slugs": [
+          "rainen",
+          "gaikoku",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの人は外国人ですか。",
+        "english": "Is that person a foreigner?",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "gaikokujin"
+        ]
+      },
+      {
+        "japanese": "今日、外は寒いです。",
+        "english": "It is cold outside today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "soto",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hon": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日本を読みます。",
+        "english": "I read a book every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "来年、日本に行きます。",
+        "english": "I will go to Japan next year.",
+        "vocabulary_slugs": [
+          "rainen",
+          "nihon",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "昨日はペンを三本買いました。",
+        "english": "I bought three pens yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "pen",
+          "san-v",
+          "hon-counter",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-hyaku": {
     "example_sentences": [
       {
@@ -521,6 +740,114 @@
       "review_status": "draft"
     }
   },
+  "n5-kita": {
+    "example_sentences": [
+      {
+        "japanese": "北は寒いです。",
+        "english": "It is cold in the north.",
+        "vocabulary_slugs": [
+          "kita-v",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "北から来ました。",
+        "english": "I came from the north.",
+        "vocabulary_slugs": [
+          "kita-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "北の窓を開けます。",
+        "english": "I will open the north window.",
+        "vocabulary_slugs": [
+          "kita-v",
+          "mado",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ko-child": {
+    "example_sentences": [
+      {
+        "japanese": "あの男の子は私の弟です。",
+        "english": "That boy is my younger brother.",
+        "vocabulary_slugs": [
+          "ano",
+          "otokonoko",
+          "watashi",
+          "otouto"
+        ]
+      },
+      {
+        "japanese": "彼女は新しい帽子を買いました。",
+        "english": "She bought a new hat.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "atarashii-adj",
+          "boushi",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "毎日、子供とお菓子を食べます。",
+        "english": "I eat sweets with my child every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "kodomo-v",
+          "okashi",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kuchi": {
+    "example_sentences": [
+      {
+        "japanese": "赤ちゃんの口は小さいです。",
+        "english": "The baby's mouth is small.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kuchi-v",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "出口はどこですか。",
+        "english": "Where is the exit?",
+        "vocabulary_slugs": [
+          "deguchi",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "銀行の窓口に行きます。",
+        "english": "I will go to the bank's service window.",
+        "vocabulary_slugs": [
+          "ginkou",
+          "madoguchi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-kyuu": {
     "example_sentences": [
       {
@@ -560,6 +887,44 @@
       "review_status": "draft"
     }
   },
+  "n5-mae": {
+    "example_sentences": [
+      {
+        "japanese": "ここに名前を書きます。",
+        "english": "I will write my name here.",
+        "vocabulary_slugs": [
+          "koko",
+          "namae",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "明日の午前、病院へ行きます。",
+        "english": "I will go to the hospital tomorrow morning.",
+        "vocabulary_slugs": [
+          "ashita",
+          "gozen",
+          "byouin",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "駅の前で友達を待ちます。",
+        "english": "I will wait for my friend in front of the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "mae",
+          "tomodachi",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-man": {
     "example_sentences": [
       {
@@ -593,6 +958,150 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-me-eye": {
+    "example_sentences": [
+      {
+        "japanese": "彼女の目は大きいです。",
+        "english": "Her eyes are big.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "me-v",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "祖父は目が悪いです。",
+        "english": "My grandfather has bad eyesight.",
+        "vocabulary_slugs": [
+          "sofu",
+          "me-v",
+          "warui"
+        ]
+      },
+      {
+        "japanese": "自分の目で見ました。",
+        "english": "I saw it with my own eyes.",
+        "vocabulary_slugs": [
+          "jibun",
+          "me-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-migi": {
+    "example_sentences": [
+      {
+        "japanese": "トイレは右です。",
+        "english": "The toilet is on the right.",
+        "vocabulary_slugs": [
+          "toire",
+          "migi-v"
+        ]
+      },
+      {
+        "japanese": "ここから右に行きます。",
+        "english": "We will go right from here.",
+        "vocabulary_slugs": [
+          "koko",
+          "migi-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "右の部屋で寝ます。",
+        "english": "I sleep in the room on the right.",
+        "vocabulary_slugs": [
+          "migi-v",
+          "heya",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-mimi": {
+    "example_sentences": [
+      {
+        "japanese": "あの犬は耳が大きいです。",
+        "english": "That dog has big ears.",
+        "vocabulary_slugs": [
+          "ano",
+          "inu",
+          "mimi-v",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの耳は小さいです。",
+        "english": "The baby's ears are small.",
+        "vocabulary_slugs": [
+          "akachan",
+          "mimi-v",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "耳が冷たいです。",
+        "english": "My ears are cold.",
+        "vocabulary_slugs": [
+          "mimi-v",
+          "tsumetai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-minami": {
+    "example_sentences": [
+      {
+        "japanese": "駅の南は海です。",
+        "english": "South of the station is the sea.",
+        "vocabulary_slugs": [
+          "eki",
+          "minami-v",
+          "umi"
+        ]
+      },
+      {
+        "japanese": "私は南の窓を開けます。",
+        "english": "I will open the south window.",
+        "vocabulary_slugs": [
+          "watashi",
+          "minami-v",
+          "mado",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "彼は南から来ました。",
+        "english": "He came from the south.",
+        "vocabulary_slugs": [
+          "kare",
+          "minami-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -783,6 +1292,117 @@
       "review_status": "draft"
     }
   },
+  "n5-nishi": {
+    "example_sentences": [
+      {
+        "japanese": "学校は町の西です。",
+        "english": "The school is in the west of the town.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "machi-v",
+          "nishi-v"
+        ]
+      },
+      {
+        "japanese": "彼は西から来ました。",
+        "english": "He came from the west.",
+        "vocabulary_slugs": [
+          "kare",
+          "nishi-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "私たちは一緒に西へ行きました。",
+        "english": "We went west together.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "issho-ni",
+          "nishi-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-onna": {
+    "example_sentences": [
+      {
+        "japanese": "彼女と一緒に映画館へ行きました。",
+        "english": "I went to the cinema with my girlfriend.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "issho-ni",
+          "eigakan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの女の人は誰ですか。",
+        "english": "Who is that woman?",
+        "vocabulary_slugs": [
+          "ano",
+          "onnanohito",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "女の子が公園で遊んでいます。",
+        "english": "A girl is playing in the park.",
+        "vocabulary_slugs": [
+          "onnanoko",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-otoko": {
+    "example_sentences": [
+      {
+        "japanese": "あの男の人は誰ですか。",
+        "english": "Who is that man over there?",
+        "vocabulary_slugs": [
+          "ano",
+          "otokonohito",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "小さい男の子が犬を見ました。",
+        "english": "A small boy saw a dog.",
+        "vocabulary_slugs": [
+          "chiisai",
+          "otokonoko",
+          "inu",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "男の人が部屋に入りました。",
+        "english": "A man entered the room.",
+        "vocabulary_slugs": [
+          "otokonohito",
+          "heya",
+          "hairu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-roku": {
     "example_sentences": [
       {
@@ -931,6 +1551,44 @@
       "review_status": "draft"
     }
   },
+  "n5-shou-small": {
+    "example_sentences": [
+      {
+        "japanese": "あの小さい猫を見ましたか。",
+        "english": "Did you see that small cat?",
+        "vocabulary_slugs": [
+          "ano",
+          "chiisai",
+          "neko",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私の部屋は小さいです。",
+        "english": "My room is small.",
+        "vocabulary_slugs": [
+          "watashi",
+          "heya",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "昨日、小さい本を買いました。",
+        "english": "I bought a small book yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "chiisai",
+          "hon",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-sui": {
     "example_sentences": [
       {
@@ -964,6 +1622,42 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-te-hand": {
+    "example_sentences": [
+      {
+        "japanese": "彼の手は大きいです。",
+        "english": "His hands are big.",
+        "vocabulary_slugs": [
+          "kare",
+          "te-v",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "母は料理が上手です。",
+        "english": "My mother is good at cooking.",
+        "vocabulary_slugs": [
+          "haha",
+          "ryouri",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "郵便局で切手を買いました。",
+        "english": "I bought a stamp at the post office.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "kitte",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1031,6 +1725,43 @@
         "vocabulary_slugs": [
           "te-v",
           "ageru-raise"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ushiro": {
+    "example_sentences": [
+      {
+        "japanese": "駅の後ろで待ちます。",
+        "english": "I will wait behind the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "ushiro",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "今日の午後、図書館に行きます。",
+        "english": "I will go to the library this afternoon.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gogo",
+          "toshokan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "これが最後のお菓子です。",
+        "english": "This is the last snack.",
+        "vocabulary_slugs": [
+          "kore",
+          "saigo",
+          "okashi"
         ]
       }
     ],
