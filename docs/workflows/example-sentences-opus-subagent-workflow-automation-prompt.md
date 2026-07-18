@@ -1,9 +1,10 @@
 Task: Generate N5 Kanji/Vocab Example Sentences via Claude Opus Subagents
 
-Generate Phase 2c example sentences using in-session Claude Opus subagents — no
-API credentials and no browser. This is the no-API, no-browser sibling of the
-Gemini automation prompt: only the "call the model" step differs. Here each item's
-reply is produced by a fresh Opus subagent instead of a web chat or the Message
+Generate Phase 2c example sentences using in-session Claude subagents (model
+configurable below; an Opus-class model is recommended) — no API credentials and no
+browser. This is the no-API, no-browser sibling of the Gemini automation prompt:
+only the "call the model" step differs. Here each item's reply is produced by a
+fresh subagent instead of a web chat or the Message
 Batches API; the context builder, the allowed-vocab constraints, the target-word
 requirement, and the mechanical gate are identical to every other lane. See
 `docs/workflows/example-sentences-web-chat-workflow.md` for the shared pipeline
@@ -14,19 +15,27 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Content type (one of `kanji` or `vocab`):
 
-<type>
+<type = kanji>
 
 Note: there is NO `radical` type in this flow — radicals do not get example
 sentences. The only content types are `kanji` and `vocab`.
 
-Model
+Subagent model (which model every subagent in this run uses):
 
-- Use the latest available Opus model with high reasoning for BOTH the generation
-  subagent (Step 2) and any repair subagent (Step 3).
-- If an Opus model is unavailable, use the strongest suitable reasoning model
-  available, and record what you actually used in the final report.
+<subagent-model = claude-opus-4-8>
 
-Run size (BATCH_LIMIT)
+Model notes
+
+- The value above is used for BOTH the generation subagent (Step 2) and every
+  repair subagent (Step 3). An Opus-class model with high reasoning is recommended;
+  a strong reasoning model is the minimum.
+- Give it as your tool/plan names the model (e.g. an Opus slug in Cursor, or `opus`
+  in Claude Code). If the requested model is unavailable, stop and say so rather
+  than silently substituting — then re-run with a model you actually have.
+- Record the model actually used in the final report, and pass it as the ingest
+  `--model` provenance value (Step 3) so `_meta.generator_model` is honest.
+
+Run size (BATCH_LIMIT = 10)
 
 This run processes up to 10 slugs (BATCH_LIMIT, set in Step 1). A text-only Opus
 subagent is far lighter than the browser lane (no screenshots), but Opus is heavy
@@ -93,10 +102,10 @@ gate errors (those have a draft record and are handled by repair, not regenerate
 
 ---
 
-Step 2: Generate the Reply with an Opus Subagent
+Step 2: Generate the Reply with a Subagent
 
-For the current slug, launch ONE general-purpose subagent (latest Opus, high
-reasoning) in the foreground — ingestion must wait for it to finish. Give the
+For the current slug, launch ONE general-purpose subagent (using <subagent-model>,
+high reasoning) in the foreground — ingestion must wait for it to finish. Give the
 subagent the prompt file path:
 
 curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
@@ -149,10 +158,10 @@ Step 3: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model claude-opus-subagent
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
 
-(Provenance is recorded in the sidecar entry's `_meta.generator_model`; use a value
-that reflects the model you actually drove, e.g. the specific Opus id.)
+(The `--model` value is recorded in the sidecar entry's `_meta.generator_model`;
+pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
@@ -172,7 +181,7 @@ curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
 with the validation errors appended.
 
 Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
-(latest Opus, high reasoning, foreground) to repair the existing reply.
+(<subagent-model>, high reasoning, foreground) to repair the existing reply.
 
 Give the repair subagent these files:
 
@@ -207,7 +216,7 @@ Give the repair subagent these instructions:
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model claude-opus-subagent
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
 
 Retry Limit
 
@@ -288,8 +297,8 @@ That is a manual human-review step (Phase 5) that automation must not perform.
 
 Important Constraints
 
-- Each slug's reply is produced by a fresh Opus subagent; never share subagent
-  context across slugs.
+- Each slug's reply is produced by a fresh <subagent-model> subagent; never share
+  subagent context across slugs.
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the allowed-vocab derivation, or
   curriculum source data to make invalid content pass.
@@ -303,7 +312,7 @@ Important Constraints
 
 Notes on differences from the Gemini web-chat automation prompt
 
-- The model is called via an in-session Opus subagent (Step 2), not a browser chat,
+- The model is called via an in-session subagent (Step 2), not a browser chat,
   so there are no browser-setup, paste-integrity, completion-polling, or
   download/rename steps. The generation subagent writes the reply file directly.
 - Everything else is identical: the same auto-select (Step 1), the same
