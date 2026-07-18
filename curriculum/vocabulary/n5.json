@@ -16079,7 +16079,46 @@
           "answer_text": "ゆき"
         }
       ],
-      "furigana": "雪[ゆき]"
+      "furigana": "雪[ゆき]",
+      "example_sentences": [
+        {
+          "japanese": "今日は雪です。",
+          "english": "It's snowing today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "yuki"
+          ],
+          "furigana": "今日[きょう]は雪[ゆき]です。"
+        },
+        {
+          "japanese": "窓から雪を見る。",
+          "english": "I watch the snow from the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "yuki",
+            "miru-v"
+          ],
+          "furigana": "窓[まど]から雪[ゆき]を見[み]る。"
+        },
+        {
+          "japanese": "子供が雪で遊ぶ。",
+          "english": "The kids are playing in the snow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "yuki",
+            "asobu"
+          ],
+          "furigana": "子[こ]供[ども]が雪[ゆき]で遊[あそ]ぶ。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaze-wind",
@@ -16098,7 +16137,47 @@
           "answer_text": "かぜ"
         }
       ],
-      "furigana": "風[かぜ]"
+      "furigana": "風[かぜ]",
+      "example_sentences": [
+        {
+          "japanese": "今日は風が寒いです。",
+          "english": "Today the wind is cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "kaze-wind",
+            "samui"
+          ],
+          "furigana": "今日[きょう]は風[かぜ]が寒[さむ]いです。"
+        },
+        {
+          "japanese": "窓から風が入る。",
+          "english": "Wind comes in through the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "kaze-wind",
+            "hairu-v"
+          ],
+          "furigana": "窓[まど]から風[かぜ]が入[はい]る。"
+        },
+        {
+          "japanese": "海の風がいいです。",
+          "english": "The ocean breeze feels nice.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "umi",
+            "kaze-wind",
+            "ii"
+          ],
+          "furigana": "海[うみ]の風[かぜ]がいいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kumo",
@@ -16117,7 +16196,46 @@
           "answer_text": "くも"
         }
       ],
-      "furigana": "雲[くも]"
+      "furigana": "雲[くも]",
+      "example_sentences": [
+        {
+          "japanese": "窓から雲を見ます。",
+          "english": "I look at the clouds from the window.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mado",
+            "kumo",
+            "miru-v"
+          ],
+          "furigana": "窓[まど]から雲[くも]を見[み]ます。"
+        },
+        {
+          "japanese": "今日は雲がありません。",
+          "english": "There are no clouds today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "kumo"
+          ],
+          "furigana": "今日[きょう]は雲[くも]がありません。"
+        },
+        {
+          "japanese": "雲が一つ出ました。",
+          "english": "One cloud appeared.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kumo",
+            "hitotsu",
+            "deru-v"
+          ],
+          "furigana": "雲[くも]が一[いち]つ出[で]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sora",
@@ -16136,7 +16254,47 @@
           "answer_text": "そら"
         }
       ],
-      "furigana": "空[そら]"
+      "furigana": "空[そら]",
+      "example_sentences": [
+        {
+          "japanese": "今日の空はいい。",
+          "english": "Today's sky looks nice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "sora",
+            "ii"
+          ],
+          "furigana": "今日[きょう]の空[そら]はいい。"
+        },
+        {
+          "japanese": "窓から空を見る。",
+          "english": "I look at the sky from the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "sora",
+            "miru-v"
+          ],
+          "furigana": "窓[まど]から空[そら]を見[み]る。"
+        },
+        {
+          "japanese": "空から雨が来る。",
+          "english": "Rain comes from the sky.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sora",
+            "ame-v",
+            "kuru-v"
+          ],
+          "furigana": "空[そら]から雨[あめ]が来[く]る。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hi-sun-v",
@@ -16155,7 +16313,47 @@
           "answer_text": "ひ"
         }
       ],
-      "furigana": "日[ひ]"
+      "furigana": "日[ひ]",
+      "example_sentences": [
+        {
+          "japanese": "朝、日が出る。",
+          "english": "In the morning, the sun comes out.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "asa",
+            "hi-sun-v",
+            "deru-v"
+          ],
+          "furigana": "朝[あさ]、日[ひ]が出[で]る。"
+        },
+        {
+          "japanese": "窓から日が入る。",
+          "english": "The sun comes in through the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mado",
+            "hi-sun-v",
+            "hairu-v"
+          ],
+          "furigana": "窓[まど]から日[ひ]が入[はい]る。"
+        },
+        {
+          "japanese": "今日はいい日です。",
+          "english": "Today is a nice day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "ii",
+            "hi-sun-v"
+          ],
+          "furigana": "今日[きょう]はいい日[ひ]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsuki-v",
@@ -16174,7 +16372,46 @@
           "answer_text": "つき"
         }
       ],
-      "furigana": "月[つき]"
+      "furigana": "月[つき]",
+      "example_sentences": [
+        {
+          "japanese": "夜、月を見ます。",
+          "english": "At night, I look at the moon.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yoru",
+            "tsuki-v",
+            "miru-v"
+          ],
+          "furigana": "夜[よる]、月[つき]を見[み]ます。"
+        },
+        {
+          "japanese": "空に月があります。",
+          "english": "There's a moon in the sky.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sora",
+            "tsuki-v"
+          ],
+          "furigana": "空[そら]に月[つき]があります。"
+        },
+        {
+          "japanese": "公園で月を見ます。",
+          "english": "I look at the moon in the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kouen",
+            "tsuki-v",
+            "miru-v"
+          ],
+          "furigana": "公[こう]園[えん]で月[つき]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoshi",
@@ -16193,7 +16430,50 @@
           "answer_text": "ほし"
         }
       ],
-      "furigana": "星[ほし]"
+      "furigana": "星[ほし]",
+      "example_sentences": [
+        {
+          "japanese": "窓から星を見ます。",
+          "english": "I look at the stars from the window.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mado",
+            "hoshi",
+            "miru-v"
+          ],
+          "furigana": "窓[まど]から星[ほし]を見[み]ます。"
+        },
+        {
+          "japanese": "彼女は星の本を読みます。",
+          "english": "She reads a book about stars.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "hoshi",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かの]女[じょ]は星[ほし]の本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "明日の夜、星を見に行きます。",
+          "english": "Tomorrow night I'll go see the stars.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "yoru",
+            "hoshi",
+            "miru-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]の夜[よる]、星[ほし]を見[み]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "umi",
@@ -16212,7 +16492,47 @@
           "answer_text": "うみ"
         }
       ],
-      "furigana": "海[うみ]"
+      "furigana": "海[うみ]",
+      "example_sentences": [
+        {
+          "japanese": "明日、海に行きます。",
+          "english": "Tomorrow I'm going to the sea.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、海[うみ]に行[い]きます。"
+        },
+        {
+          "japanese": "海で魚を見ました。",
+          "english": "I saw a fish at the sea.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "umi",
+            "sakana",
+            "miru-v"
+          ],
+          "furigana": "海[うみ]で魚[さかな]を見[み]ました。"
+        },
+        {
+          "japanese": "私たちは海で遊びます。",
+          "english": "We play at the sea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "umi",
+            "asobu"
+          ],
+          "furigana": "私[わたし]たちは海[うみ]で遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yama-v",
@@ -16231,7 +16551,47 @@
           "answer_text": "やま"
         }
       ],
-      "furigana": "山[やま]"
+      "furigana": "山[やま]",
+      "example_sentences": [
+        {
+          "japanese": "私は山に行きます。",
+          "english": "I'm going to the mountain.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "yama-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は山[やま]に行[い]きます。"
+        },
+        {
+          "japanese": "あの山は高いです。",
+          "english": "That mountain over there is tall.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "takai-adj"
+          ],
+          "furigana": "あの山[やま]は高[たか]いです。"
+        },
+        {
+          "japanese": "山の写真を見ます。",
+          "english": "I'm looking at a photo of a mountain.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yama-v",
+            "shashin",
+            "miru-v"
+          ],
+          "furigana": "山[やま]の写[しゃ]真[しん]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kawa-v",
@@ -16250,7 +16610,47 @@
           "answer_text": "かわ"
         }
       ],
-      "furigana": "川[かわ]"
+      "furigana": "川[かわ]",
+      "example_sentences": [
+        {
+          "japanese": "私は川に行きます。",
+          "english": "I'm going to the river.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kawa-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は川[かわ]に行[い]きます。"
+        },
+        {
+          "japanese": "子供が川で遊びます。",
+          "english": "Children play in the river.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "kawa-v",
+            "asobu"
+          ],
+          "furigana": "子[こ]供[ども]が川[かわ]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "川で魚を見ます。",
+          "english": "I see fish in the river.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kawa-v",
+            "sakana",
+            "miru-v"
+          ],
+          "furigana": "川[かわ]で魚[さかな]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ki-tree-v",
@@ -16269,7 +16669,47 @@
           "answer_text": "き"
         }
       ],
-      "furigana": "木[き]"
+      "furigana": "木[き]",
+      "example_sentences": [
+        {
+          "japanese": "公園に高い木があります。",
+          "english": "There's a tall tree in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouen",
+            "takai-adj",
+            "ki-tree-v"
+          ],
+          "furigana": "公[こう]園[えん]に高[たか]い木[き]があります。"
+        },
+        {
+          "japanese": "子供が木で遊びます。",
+          "english": "The child is playing by the tree.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "ki-tree-v",
+            "asobu"
+          ],
+          "furigana": "子[こ]供[ども]が木[き]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "庭の木を見ます。",
+          "english": "I look at the tree in the garden.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "niwa",
+            "ki-tree-v",
+            "miru-v"
+          ],
+          "furigana": "庭[にわ]の木[き]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hana-v",
@@ -16288,7 +16728,47 @@
           "answer_text": "はな"
         }
       ],
-      "furigana": "花[はな]"
+      "furigana": "花[はな]",
+      "example_sentences": [
+        {
+          "japanese": "公園で花を見ます。",
+          "english": "I look at the flowers in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouen",
+            "hana-v",
+            "miru-v"
+          ],
+          "furigana": "公[こう]園[えん]で花[はな]を見[み]ます。"
+        },
+        {
+          "japanese": "母に花を買いました。",
+          "english": "I bought flowers for my mother.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "hana-v",
+            "kau-v"
+          ],
+          "furigana": "母[はは]に花[はな]を買[か]いました。"
+        },
+        {
+          "japanese": "この花は高いです。",
+          "english": "This flower is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "takai-adj"
+          ],
+          "furigana": "この花[はな]は高[たか]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "inu",
@@ -16307,7 +16787,50 @@
           "answer_text": "いぬ"
         }
       ],
-      "furigana": "犬[いぬ]"
+      "furigana": "犬[いぬ]",
+      "example_sentences": [
+        {
+          "japanese": "私の犬は公園で遊びます。",
+          "english": "My dog plays in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "inu",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "私[わたし]の犬[いぬ]は公[こう]園[えん]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "彼女は犬の写真を見ます。",
+          "english": "She looks at a photo of a dog.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "inu",
+            "shashin",
+            "miru-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は犬[いぬ]の写[しゃ]真[しん]を見[み]ます。"
+        },
+        {
+          "japanese": "兄の犬は肉を食べます。",
+          "english": "My older brother's dog eats meat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ani",
+            "inu",
+            "niku",
+            "taberu"
+          ],
+          "furigana": "兄[あに]の犬[いぬ]は肉[にく]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "neko",
@@ -16326,7 +16849,48 @@
           "answer_text": "ねこ"
         }
       ],
-      "furigana": "猫[ねこ]"
+      "furigana": "猫[ねこ]",
+      "example_sentences": [
+        {
+          "japanese": "猫が魚を食べます。",
+          "english": "The cat eats fish.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "neko",
+            "sakana",
+            "taberu"
+          ],
+          "furigana": "猫[ねこ]が魚[さかな]を食[た]べます。"
+        },
+        {
+          "japanese": "彼女の猫はベッドで寝ます。",
+          "english": "Her cat sleeps on the bed.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "neko",
+            "beddo",
+            "neru"
+          ],
+          "furigana": "彼[かの]女[じょ]の猫[ねこ]はベッドで寝[ね]ます。"
+        },
+        {
+          "japanese": "公園で猫と遊びます。",
+          "english": "I play with a cat at the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kouen",
+            "neko",
+            "asobu"
+          ],
+          "furigana": "公[こう]園[えん]で猫[ねこ]と遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tori",
@@ -16345,7 +16909,48 @@
           "answer_text": "とり"
         }
       ],
-      "furigana": "鳥[とり]"
+      "furigana": "鳥[とり]",
+      "example_sentences": [
+        {
+          "japanese": "公園で鳥を見ました。",
+          "english": "I saw a bird in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouen",
+            "tori",
+            "miru-v"
+          ],
+          "furigana": "公[こう]園[えん]で鳥[とり]を見[み]ました。"
+        },
+        {
+          "japanese": "木に鳥が来ました。",
+          "english": "A bird came to the tree.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ki-tree-v",
+            "tori",
+            "kuru-v"
+          ],
+          "furigana": "木[き]に鳥[とり]が来[らい]ました。"
+        },
+        {
+          "japanese": "妹は鳥の声を聞きました。",
+          "english": "My little sister heard a bird's voice.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "tori",
+            "koe",
+            "kiku-v"
+          ],
+          "furigana": "妹[いもうと]は鳥[とり]の声[こえ]を聞[き]きました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doubutsu",
@@ -16364,7 +16969,48 @@
           "answer_text": "どうぶつ"
         }
       ],
-      "furigana": "動[どう]物[ぶつ]"
+      "furigana": "動[どう]物[ぶつ]",
+      "example_sentences": [
+        {
+          "japanese": "公園で動物を見ます。",
+          "english": "I look at the animals in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouen",
+            "doubutsu",
+            "miru-v"
+          ],
+          "furigana": "公[こう]園[えん]で動[どう]物[ぶつ]を見[み]ます。"
+        },
+        {
+          "japanese": "この動物は猫ですか。",
+          "english": "Is this animal a cat?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "doubutsu",
+            "neko"
+          ],
+          "furigana": "この動[どう]物[ぶつ]は猫[ねこ]ですか。"
+        },
+        {
+          "japanese": "妹は動物の本を買います。",
+          "english": "My little sister buys a book about animals.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "doubutsu",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "妹[いもうと]は動[どう]物[ぶつ]の本[ほん]を買[か]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "haru",
@@ -16383,7 +17029,48 @@
           "answer_text": "はる"
         }
       ],
-      "furigana": "春[はる]"
+      "furigana": "春[はる]",
+      "example_sentences": [
+        {
+          "japanese": "春はいい天気です。",
+          "english": "Spring has nice weather.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haru",
+            "ii",
+            "tenki"
+          ],
+          "furigana": "春[はる]はいい天[てん]気[き]です。"
+        },
+        {
+          "japanese": "私は春に公園へ行きます。",
+          "english": "I go to the park in spring.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "haru",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は春[はる]に公[こう]園[えん]へ行[い]きます。"
+        },
+        {
+          "japanese": "今年の春は楽しいです。",
+          "english": "This year's spring is enjoyable.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kotoshi",
+            "haru",
+            "tanoshii"
+          ],
+          "furigana": "今年[ことし]の春[はる]は楽[たの]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "natsu",
@@ -16402,7 +17089,48 @@
           "answer_text": "なつ"
         }
       ],
-      "furigana": "夏[なつ]"
+      "furigana": "夏[なつ]",
+      "example_sentences": [
+        {
+          "japanese": "今年の夏は暑いです。",
+          "english": "This summer is hot.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kotoshi",
+            "natsu",
+            "atsui-hot"
+          ],
+          "furigana": "今年[ことし]の夏[なつ]は暑[あつ]いです。"
+        },
+        {
+          "japanese": "夏に海へ行きます。",
+          "english": "I go to the sea in summer.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "natsu",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "夏[なつ]に海[うみ]へ行[い]きます。"
+        },
+        {
+          "japanese": "私たちは夏に公園で遊びます。",
+          "english": "We play at the park in summer.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "natsu",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "私[わたし]たちは夏[なつ]に公[こう]園[えん]で遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "aki",
@@ -16421,7 +17149,48 @@
           "answer_text": "あき"
         }
       ],
-      "furigana": "秋[あき]"
+      "furigana": "秋[あき]",
+      "example_sentences": [
+        {
+          "japanese": "今年の秋は寒いです。",
+          "english": "This year's autumn is cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kotoshi",
+            "aki",
+            "samui"
+          ],
+          "furigana": "今年[ことし]の秋[あき]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "秋に友達と公園で遊びます。",
+          "english": "I play at the park with a friend in autumn.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "aki",
+            "tomodachi",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "秋[あき]に友[とも]達[だち]と公[こう]園[えん]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "秋の果物はおいしいです。",
+          "english": "Autumn fruit is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "aki",
+            "kudamono",
+            "oishii"
+          ],
+          "furigana": "秋[あき]の果物[くだもの]はおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fuyu",
@@ -16440,7 +17209,49 @@
           "answer_text": "ふゆ"
         }
       ],
-      "furigana": "冬[ふゆ]"
+      "furigana": "冬[ふゆ]",
+      "example_sentences": [
+        {
+          "japanese": "冬の朝は寒いです。",
+          "english": "Winter mornings are cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "fuyu",
+            "asa",
+            "samui"
+          ],
+          "furigana": "冬[ふゆ]の朝[あさ]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "冬に友達と山へ行く。",
+          "english": "In winter I go to the mountains with friends.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "fuyu",
+            "tomodachi",
+            "yama-v",
+            "iku-v"
+          ],
+          "furigana": "冬[ふゆ]に友[とも]達[だち]と山[やま]へ行[い]く。"
+        },
+        {
+          "japanese": "冬は家で映画を見ます。",
+          "english": "In winter I watch movies at home.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "fuyu",
+            "ie",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "冬[ふゆ]は家[いえ]で映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mizuumi",
@@ -16459,7 +17270,48 @@
           "answer_text": "みずうみ"
         }
       ],
-      "furigana": "湖[みずうみ]"
+      "furigana": "湖[みずうみ]",
+      "example_sentences": [
+        {
+          "japanese": "私たちは湖に行きました。",
+          "english": "We went to the lake.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "mizuumi",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]たちは湖[みずうみ]に行[い]きました。"
+        },
+        {
+          "japanese": "あの湖を見ました。",
+          "english": "I saw that lake over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "mizuumi",
+            "miru-v"
+          ],
+          "furigana": "あの湖[みずうみ]を見[み]ました。"
+        },
+        {
+          "japanese": "夏に友達と湖で遊びます。",
+          "english": "In summer I play at the lake with friends.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "natsu",
+            "tomodachi",
+            "mizuumi",
+            "asobu"
+          ],
+          "furigana": "夏[なつ]に友[とも]達[だち]と湖[みずうみ]で遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iro",
@@ -16478,7 +17330,48 @@
           "answer_text": "いろ"
         }
       ],
-      "furigana": "色[いろ]"
+      "furigana": "色[いろ]",
+      "example_sentences": [
+        {
+          "japanese": "この服の色はいいです。",
+          "english": "This color of clothes is nice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "iro",
+            "ii"
+          ],
+          "furigana": "この服[ふく]の色[いろ]はいいです。"
+        },
+        {
+          "japanese": "どの色を買いますか。",
+          "english": "Which color will you buy?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dono",
+            "iro",
+            "kau-v"
+          ],
+          "furigana": "どの色[いろ]を買[か]いますか。"
+        },
+        {
+          "japanese": "空の色を見ます。",
+          "english": "I'm looking at the color of the sky.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sora",
+            "iro",
+            "miru-v"
+          ],
+          "furigana": "空[そら]の色[いろ]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiro-color",
@@ -16497,7 +17390,46 @@
           "answer_text": "しろ"
         }
       ],
-      "furigana": "白[しろ]"
+      "furigana": "白[しろ]",
+      "example_sentences": [
+        {
+          "japanese": "この紙は白いです。",
+          "english": "This paper is white.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kami-paper",
+            "shiro-color"
+          ],
+          "furigana": "この紙[かみ]は白[しろ]いです。"
+        },
+        {
+          "japanese": "白い花を買いました。",
+          "english": "I bought white flowers.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shiro-color",
+            "hana-v",
+            "kau-v"
+          ],
+          "furigana": "白[しろ]い花[はな]を買[か]いました。"
+        },
+        {
+          "japanese": "どれが白いですか。",
+          "english": "Which one is white?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dore",
+            "shiro-color"
+          ],
+          "furigana": "どれが白[しろ]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kuro-color",
@@ -16516,7 +17448,46 @@
           "answer_text": "くろ"
         }
       ],
-      "furigana": "黒[くろ]"
+      "furigana": "黒[くろ]",
+      "example_sentences": [
+        {
+          "japanese": "この色は黒です。",
+          "english": "This color is black.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "iro",
+            "kuro-color"
+          ],
+          "furigana": "この色[いろ]は黒[くろ]です。"
+        },
+        {
+          "japanese": "黒い犬がいます。",
+          "english": "There's a black dog.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kuro-color",
+            "inu"
+          ],
+          "furigana": "黒[くろ]い犬[いぬ]がいます。"
+        },
+        {
+          "japanese": "黒い靴を買いました。",
+          "english": "I bought black shoes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuro-color",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "黒[くろ]い靴[くつ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "aka-color",
@@ -16535,7 +17506,47 @@
           "answer_text": "あか"
         }
       ],
-      "furigana": "赤[あか]"
+      "furigana": "赤[あか]",
+      "example_sentences": [
+        {
+          "japanese": "この花は赤いです。",
+          "english": "This flower is red.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "aka-color"
+          ],
+          "furigana": "この花[はな]は赤[あか]いです。"
+        },
+        {
+          "japanese": "赤いシャツを買いました。",
+          "english": "I bought a red shirt.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "aka-color",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "赤[あか]いシャツを買[か]いました。"
+        },
+        {
+          "japanese": "あれは赤い帽子です。",
+          "english": "That one over there is a red hat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "are",
+            "aka-color",
+            "boushi"
+          ],
+          "furigana": "あれは赤[あか]い帽[ぼう]子[し]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ao-color",
@@ -16554,7 +17565,47 @@
           "answer_text": "あお"
         }
       ],
-      "furigana": "青[あお]"
+      "furigana": "青[あお]",
+      "example_sentences": [
+        {
+          "japanese": "今日の空は青いです。",
+          "english": "Today's sky is blue.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "sora",
+            "ao-color"
+          ],
+          "furigana": "今日[きょう]の空[そら]は青[あお]いです。"
+        },
+        {
+          "japanese": "青い帽子を買います。",
+          "english": "I'll buy a blue hat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ao-color",
+            "boushi",
+            "kau-v"
+          ],
+          "furigana": "青[あお]い帽[ぼう]子[し]を買[か]います。"
+        },
+        {
+          "japanese": "このペンは青いです。",
+          "english": "This pen is blue.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "pen",
+            "ao-color"
+          ],
+          "furigana": "このペンは青[あお]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kiiro",
@@ -16573,7 +17624,46 @@
           "answer_text": "きいろ"
         }
       ],
-      "furigana": "黄[き]色[いろ]"
+      "furigana": "黄[き]色[いろ]",
+      "example_sentences": [
+        {
+          "japanese": "この花は黄色です。",
+          "english": "This flower is yellow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "kiiro"
+          ],
+          "furigana": "この花[はな]は黄[き]色[いろ]です。"
+        },
+        {
+          "japanese": "黄色いシャツを買いました。",
+          "english": "I bought a yellow shirt.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kiiro",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "黄[き]色[いろ]いシャツを買[か]いました。"
+        },
+        {
+          "japanese": "どれが黄色ですか。",
+          "english": "Which one is yellow?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dore",
+            "kiiro"
+          ],
+          "furigana": "どれが黄[き]色[いろ]ですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "midori",
@@ -16592,7 +17682,48 @@
           "answer_text": "みどり"
         }
       ],
-      "furigana": "緑[みどり]"
+      "furigana": "緑[みどり]",
+      "example_sentences": [
+        {
+          "japanese": "このシャツは緑です。",
+          "english": "This shirt is green.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "shatsu",
+            "midori"
+          ],
+          "furigana": "このシャツは緑[みどり]です。"
+        },
+        {
+          "japanese": "緑の野菜を食べます。",
+          "english": "I eat green vegetables.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "midori",
+            "yasai",
+            "taberu"
+          ],
+          "furigana": "緑[みどり]の野[や]菜[さい]を食[た]べます。"
+        },
+        {
+          "japanese": "彼女は緑の帽子を買いました。",
+          "english": "She bought a green hat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "midori",
+            "boushi",
+            "kau-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は緑[みどり]の帽[ぼう]子[し]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chairo",
@@ -16611,7 +17742,47 @@
           "answer_text": "ちゃいろ"
         }
       ],
-      "furigana": "茶[ちゃ]色[いろ]"
+      "furigana": "茶[ちゃ]色[いろ]",
+      "example_sentences": [
+        {
+          "japanese": "このコートは茶色です。",
+          "english": "This coat is brown.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kooto",
+            "chairo"
+          ],
+          "furigana": "このコートは茶[ちゃ]色[いろ]です。"
+        },
+        {
+          "japanese": "私の髪は茶色です。",
+          "english": "My hair is brown.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "kami-hair",
+            "chairo"
+          ],
+          "furigana": "私[わたし]の髪[かみ]は茶[ちゃ]色[いろ]です。"
+        },
+        {
+          "japanese": "茶色のシャツを買いました。",
+          "english": "I bought a brown shirt.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chairo",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "茶[ちゃ]色[いろ]のシャツを買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ookii",
@@ -16630,7 +17801,47 @@
           "answer_text": "おおきい"
         }
       ],
-      "furigana": "大[おお]きい"
+      "furigana": "大[おお]きい",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は大きいです。",
+          "english": "This room is big.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "ookii"
+          ],
+          "furigana": "この部屋[へや]は大[おお]きいです。"
+        },
+        {
+          "japanese": "大きい箱を買いました。",
+          "english": "I bought a big box.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ookii",
+            "hako",
+            "kau-v"
+          ],
+          "furigana": "大[おお]きい箱[はこ]を買[か]いました。"
+        },
+        {
+          "japanese": "あの山は大きいです。",
+          "english": "That mountain over there is big.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "ookii"
+          ],
+          "furigana": "あの山[やま]は大[おお]きいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chiisai",
@@ -16649,7 +17860,47 @@
           "answer_text": "ちいさい"
         }
       ],
-      "furigana": "小[ちい]さい"
+      "furigana": "小[ちい]さい",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は小さいです。",
+          "english": "This room is small.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "chiisai"
+          ],
+          "furigana": "この部屋[へや]は小[ちい]さいです。"
+        },
+        {
+          "japanese": "小さい本を読みます。",
+          "english": "I read a small book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chiisai",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "小[ちい]さい本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "小さい箱を開けます。",
+          "english": "I open a small box.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chiisai",
+            "hako",
+            "akeru"
+          ],
+          "furigana": "小[ちい]さい箱[はこ]を開[あ]けます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "takai-adj",
@@ -16668,7 +17919,47 @@
           "answer_text": "たかい"
         }
       ],
-      "furigana": "高[たか]い"
+      "furigana": "高[たか]い",
+      "example_sentences": [
+        {
+          "japanese": "あの山は高いです。",
+          "english": "That mountain is tall.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "takai-adj"
+          ],
+          "furigana": "あの山[やま]は高[たか]いです。"
+        },
+        {
+          "japanese": "この時計は高いです。",
+          "english": "This watch is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "tokei",
+            "takai-adj"
+          ],
+          "furigana": "この時計[とけい]は高[たか]いです。"
+        },
+        {
+          "japanese": "高い靴を買いました。",
+          "english": "I bought expensive shoes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "takai-adj",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "高[たか]い靴[くつ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hikui",
@@ -16687,7 +17978,47 @@
           "answer_text": "ひくい"
         }
       ],
-      "furigana": "低[ひく]い"
+      "furigana": "低[ひく]い",
+      "example_sentences": [
+        {
+          "japanese": "この椅子は低いです。",
+          "english": "This chair is low.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "isu",
+            "hikui"
+          ],
+          "furigana": "この椅[い]子[す]は低[ひく]いです。"
+        },
+        {
+          "japanese": "低いテーブルを買います。",
+          "english": "I'm going to buy a low table.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hikui",
+            "teeburu",
+            "kau-v"
+          ],
+          "furigana": "低[ひく]いテーブルを買[か]います。"
+        },
+        {
+          "japanese": "あの山は低いです。",
+          "english": "That mountain over there is low.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "hikui"
+          ],
+          "furigana": "あの山[やま]は低[ひく]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yasui-adj",
@@ -16706,7 +18037,47 @@
           "answer_text": "やすい"
         }
       ],
-      "furigana": "安[やす]い"
+      "furigana": "安[やす]い",
+      "example_sentences": [
+        {
+          "japanese": "この本は安いです。",
+          "english": "This book is cheap.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "yasui-adj"
+          ],
+          "furigana": "この本[ほん]は安[やす]いです。"
+        },
+        {
+          "japanese": "安いお茶を買いました。",
+          "english": "I bought some cheap tea.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yasui-adj",
+            "ocha",
+            "kau-v"
+          ],
+          "furigana": "安[やす]いお茶[ちゃ]を買[か]いました。"
+        },
+        {
+          "japanese": "あの店は安いですか。",
+          "english": "Is that shop cheap?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "mise",
+            "yasui-adj"
+          ],
+          "furigana": "あの店[みせ]は安[やす]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "atarashii-adj",
@@ -16725,7 +18096,47 @@
           "answer_text": "あたらしい"
         }
       ],
-      "furigana": "新[あたら]しい"
+      "furigana": "新[あたら]しい",
+      "example_sentences": [
+        {
+          "japanese": "新しい本を買いました。",
+          "english": "I bought a new book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "新[あたら]しい本[ほん]を買[か]いました。"
+        },
+        {
+          "japanese": "この家は新しいです。",
+          "english": "This house is new.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "ie",
+            "atarashii-adj"
+          ],
+          "furigana": "この家[いえ]は新[あたら]しいです。"
+        },
+        {
+          "japanese": "新しい映画を見ました。",
+          "english": "I watched a new movie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "新[あたら]しい映[えい]画[が]を見[み]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "furui-adj",
@@ -16744,7 +18155,47 @@
           "answer_text": "ふるい"
         }
       ],
-      "furigana": "古[ふる]い"
+      "furigana": "古[ふる]い",
+      "example_sentences": [
+        {
+          "japanese": "これは古い本です。",
+          "english": "This is an old book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "furui-adj",
+            "hon"
+          ],
+          "furigana": "これは古[ふる]い本[ほん]です。"
+        },
+        {
+          "japanese": "古い靴を買いました。",
+          "english": "I bought old shoes.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "furui-adj",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "古[ふる]い靴[くつ]を買[か]いました。"
+        },
+        {
+          "japanese": "あの橋は古いです。",
+          "english": "That bridge over there is old.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "hashi-bridge",
+            "furui-adj"
+          ],
+          "furigana": "あの橋[はし]は古[ふる]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ii",
@@ -16763,7 +18214,47 @@
           "answer_text": "いい"
         }
       ],
-      "furigana": "いい"
+      "furigana": "いい",
+      "example_sentences": [
+        {
+          "japanese": "この料理はいいです。",
+          "english": "This dish is good.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "ii"
+          ],
+          "furigana": "この料[りょう]理[り]はいいです。"
+        },
+        {
+          "japanese": "明日は来なくていいよ。",
+          "english": "You don't have to come tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "kuru-v",
+            "ii"
+          ],
+          "furigana": "明日[あした]は来[らい]なくていいよ。"
+        },
+        {
+          "japanese": "今日はいい天気です。",
+          "english": "The weather is nice today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "ii",
+            "tenki"
+          ],
+          "furigana": "今日[きょう]はいい天[てん]気[き]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yoi",
@@ -16782,7 +18273,47 @@
           "answer_text": "よい"
         }
       ],
-      "furigana": "良[よ]い"
+      "furigana": "良[よ]い",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は良いです。",
+          "english": "This room is nice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "yoi"
+          ],
+          "furigana": "この部屋[へや]は良[よ]いです。"
+        },
+        {
+          "japanese": "彼女は良い人です。",
+          "english": "She is a good person.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "yoi",
+            "hito"
+          ],
+          "furigana": "彼[かの]女[じょ]は良[よ]い人[ひと]です。"
+        },
+        {
+          "japanese": "お茶を飲んでも良いですか。",
+          "english": "May I have some tea?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ocha",
+            "nomu-v",
+            "yoi"
+          ],
+          "furigana": "お茶[ちゃ]を飲[の]んでも良[よ]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "warui",
@@ -16801,7 +18332,46 @@
           "answer_text": "わるい"
         }
       ],
-      "furigana": "悪[わる]い"
+      "furigana": "悪[わる]い",
+      "example_sentences": [
+        {
+          "japanese": "私が悪いです。",
+          "english": "I'm the one at fault.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "warui"
+          ],
+          "furigana": "私[わたし]が悪[わる]いです。"
+        },
+        {
+          "japanese": "今日は天気が悪いです。",
+          "english": "The weather is bad today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "tenki",
+            "warui"
+          ],
+          "furigana": "今日[きょう]は天[てん]気[き]が悪[わる]いです。"
+        },
+        {
+          "japanese": "この映画は悪かったです。",
+          "english": "This movie was bad.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "eiga",
+            "warui"
+          ],
+          "furigana": "この映[えい]画[が]は悪[わる]かったです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "atsui-hot",
@@ -16820,7 +18390,45 @@
           "answer_text": "あつい"
         }
       ],
-      "furigana": "暑[あつ]い"
+      "furigana": "暑[あつ]い",
+      "example_sentences": [
+        {
+          "japanese": "今日は暑いです。",
+          "english": "It's hot today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "atsui-hot"
+          ],
+          "furigana": "今日[きょう]は暑[あつ]いです。"
+        },
+        {
+          "japanese": "この部屋は暑いです。",
+          "english": "This room is hot.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "atsui-hot"
+          ],
+          "furigana": "この部屋[へや]は暑[あつ]いです。"
+        },
+        {
+          "japanese": "明日は暑いですか。",
+          "english": "Will it be hot tomorrow?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "atsui-hot"
+          ],
+          "furigana": "明日[あした]は暑[あつ]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "atsui-obj",
@@ -16839,7 +18447,47 @@
           "answer_text": "あつい"
         }
       ],
-      "furigana": "熱[あつ]い"
+      "furigana": "熱[あつ]い",
+      "example_sentences": [
+        {
+          "japanese": "このお茶は熱いです。",
+          "english": "This tea is hot.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "ocha",
+            "atsui-obj"
+          ],
+          "furigana": "このお茶[ちゃ]は熱[あつ]いです。"
+        },
+        {
+          "japanese": "熱いコーヒーを飲みます。",
+          "english": "I drink hot coffee.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atsui-obj",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "熱[あつ]いコーヒーを飲[の]みます。"
+        },
+        {
+          "japanese": "熱いご飯を食べます。",
+          "english": "I eat hot rice.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "atsui-obj",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "熱[あつ]いご飯[はん]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "samui",
@@ -16858,7 +18506,45 @@
           "answer_text": "さむい"
         }
       ],
-      "furigana": "寒[さむ]い"
+      "furigana": "寒[さむ]い",
+      "example_sentences": [
+        {
+          "japanese": "今日は寒いです。",
+          "english": "It's cold today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "samui"
+          ],
+          "furigana": "今日[きょう]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "この部屋は寒い。",
+          "english": "This room is cold.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "samui"
+          ],
+          "furigana": "この部屋[へや]は寒[さむ]い。"
+        },
+        {
+          "japanese": "冬は寒いですね。",
+          "english": "Winter is cold, isn't it?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "fuyu",
+            "samui"
+          ],
+          "furigana": "冬[ふゆ]は寒[さむ]いですね。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsumetai",
@@ -16877,7 +18563,47 @@
           "answer_text": "つめたい"
         }
       ],
-      "furigana": "冷[つめ]たい"
+      "furigana": "冷[つめ]たい",
+      "example_sentences": [
+        {
+          "japanese": "この水は冷たいです。",
+          "english": "This water is cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "mizu",
+            "tsumetai"
+          ],
+          "furigana": "この水[みず]は冷[つめ]たいです。"
+        },
+        {
+          "japanese": "冷たいお茶を飲みます。",
+          "english": "I'll drink some cold tea.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tsumetai",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "冷[つめ]たいお茶[ちゃ]を飲[の]みます。"
+        },
+        {
+          "japanese": "彼の手は冷たいです。",
+          "english": "His hands are cold.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "te-v",
+            "tsumetai"
+          ],
+          "furigana": "彼[かれ]の手[て]は冷[つめ]たいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "atatakai",
@@ -16896,7 +18622,47 @@
           "answer_text": "あたたかい"
         }
       ],
-      "furigana": "暖[あたた]かい"
+      "furigana": "暖[あたた]かい",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は暖かいです。",
+          "english": "This room is warm.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "atatakai"
+          ],
+          "furigana": "この部屋[へや]は暖[あたた]かいです。"
+        },
+        {
+          "japanese": "春の天気は暖かいです。",
+          "english": "Spring weather is warm.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haru",
+            "tenki",
+            "atatakai"
+          ],
+          "furigana": "春[はる]の天[てん]気[き]は暖[あたた]かいです。"
+        },
+        {
+          "japanese": "暖かいお茶を飲みます。",
+          "english": "I drink warm tea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "atatakai",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "暖[あたた]かいお茶[ちゃ]を飲[の]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suzushii",
@@ -16915,7 +18681,46 @@
           "answer_text": "すずしい"
         }
       ],
-      "furigana": "涼[すず]しい"
+      "furigana": "涼[すず]しい",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は涼しいです。",
+          "english": "This room is cool.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "suzushii"
+          ],
+          "furigana": "この部屋[へや]は涼[すず]しいです。"
+        },
+        {
+          "japanese": "公園は朝涼しいです。",
+          "english": "The park is cool in the morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "asa",
+            "suzushii"
+          ],
+          "furigana": "公[こう]園[えん]は朝[あさ]涼[すず]しいです。"
+        },
+        {
+          "japanese": "風が涼しいですね。",
+          "english": "The wind feels cool, doesn't it?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaze-wind",
+            "suzushii"
+          ],
+          "furigana": "風[かぜ]が涼[すず]しいですね。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "omoshiroi",
@@ -16934,7 +18739,47 @@
           "answer_text": "おもしろい"
         }
       ],
-      "furigana": "面[おも]白[しろ]い"
+      "furigana": "面[おも]白[しろ]い",
+      "example_sentences": [
+        {
+          "japanese": "この本は面白いです。",
+          "english": "This book is interesting.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "omoshiroi"
+          ],
+          "furigana": "この本[ほん]は面[おも]白[しろ]いです。"
+        },
+        {
+          "japanese": "昨日の映画は面白かった。",
+          "english": "Yesterday's movie was funny.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "eiga",
+            "omoshiroi"
+          ],
+          "furigana": "昨日[きのう]の映[えい]画[が]は面白[おもしろ]かった。"
+        },
+        {
+          "japanese": "彼女は面白い人です。",
+          "english": "She's an interesting person.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "omoshiroi",
+            "hito"
+          ],
+          "furigana": "彼[かの]女[じょ]は面[おも]白[しろ]い人[ひと]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsumaranai",
@@ -16953,7 +18798,47 @@
           "answer_text": "つまらない"
         }
       ],
-      "furigana": "つまらない"
+      "furigana": "つまらない",
+      "example_sentences": [
+        {
+          "japanese": "この本はつまらない。",
+          "english": "This book is boring.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "tsumaranai"
+          ],
+          "furigana": "この本[ほん]はつまらない。"
+        },
+        {
+          "japanese": "つまらない映画を見ました。",
+          "english": "I watched a boring movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tsumaranai",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "つまらない映[えい]画[が]を見[み]ました。"
+        },
+        {
+          "japanese": "毎日学校はつまらない。",
+          "english": "School is boring every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "gakkou-v",
+            "tsumaranai"
+          ],
+          "furigana": "毎[まい]日[にち]学[がっ]校[こう]はつまらない。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tanoshii",
@@ -16972,7 +18857,49 @@
           "answer_text": "たのしい"
         }
       ],
-      "furigana": "楽[たの]しい"
+      "furigana": "楽[たの]しい",
+      "example_sentences": [
+        {
+          "japanese": "今日の学校は楽しいです。",
+          "english": "School is fun today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "gakkou-v",
+            "tanoshii"
+          ],
+          "furigana": "今日[きょう]の学[がっ]校[こう]は楽[たの]しいです。"
+        },
+        {
+          "japanese": "友達と映画を見るのは楽しい。",
+          "english": "Watching a movie with friends is fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "eiga",
+            "miru-v",
+            "tanoshii"
+          ],
+          "furigana": "友[とも]達[だち]と映[えい]画[が]を見[み]るのは楽[たの]しい。"
+        },
+        {
+          "japanese": "週末は公園で遊ぶと楽しいです。",
+          "english": "Playing in the park on the weekend is fun.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "kouen",
+            "asobu",
+            "tanoshii"
+          ],
+          "furigana": "週[しゅう]末[まつ]は公[こう]園[えん]で遊[あそ]ぶと楽[たの]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ureshii",
@@ -16991,7 +18918,49 @@
           "answer_text": "うれしい"
         }
       ],
-      "furigana": "嬉[うれ]しい"
+      "furigana": "嬉[うれ]しい",
+      "example_sentences": [
+        {
+          "japanese": "友達に会えて嬉しいです。",
+          "english": "I'm glad I got to see my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "au",
+            "ureshii"
+          ],
+          "furigana": "友[とも]達[だち]に会[あ]えて嬉[うれ]しいです。"
+        },
+        {
+          "japanese": "新しい靴が買えて嬉しい。",
+          "english": "I'm glad I could buy new shoes.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "kutsu",
+            "kau-v",
+            "ureshii"
+          ],
+          "furigana": "新[あたら]しい靴[くつ]が買[か]えて嬉[うれ]しい。"
+        },
+        {
+          "japanese": "母の手紙が来て嬉しいです。",
+          "english": "I'm glad a letter from my mother arrived.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "tegami",
+            "kuru-v",
+            "ureshii"
+          ],
+          "furigana": "母[はは]の手[て]紙[がみ]が来[らい]て嬉[うれ]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanashii",
@@ -17010,7 +18979,46 @@
           "answer_text": "かなしい"
         }
       ],
-      "furigana": "悲[かな]しい"
+      "furigana": "悲[かな]しい",
+      "example_sentences": [
+        {
+          "japanese": "今日は悲しいです。",
+          "english": "I'm sad today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "kanashii"
+          ],
+          "furigana": "今日[きょう]は悲[かな]しいです。"
+        },
+        {
+          "japanese": "この映画は悲しいです。",
+          "english": "This movie is sad.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "eiga",
+            "kanashii"
+          ],
+          "furigana": "この映[えい]画[が]は悲[かな]しいです。"
+        },
+        {
+          "japanese": "悲しい手紙を読みました。",
+          "english": "I read a sad letter.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanashii",
+            "tegami",
+            "yomu"
+          ],
+          "furigana": "悲[かな]しい手[て]紙[がみ]を読[よ]みました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "isogashii",
@@ -17029,7 +19037,45 @@
           "answer_text": "いそがしい"
         }
       ],
-      "furigana": "忙[いそが]しい"
+      "furigana": "忙[いそが]しい",
+      "example_sentences": [
+        {
+          "japanese": "今日は忙しいです。",
+          "english": "I'm busy today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "isogashii"
+          ],
+          "furigana": "今日[きょう]は忙[いそが]しいです。"
+        },
+        {
+          "japanese": "父は会社で忙しい。",
+          "english": "My dad is busy at the office.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "kaisha",
+            "isogashii"
+          ],
+          "furigana": "父[ちち]は会[かい]社[しゃ]で忙[いそが]しい。"
+        },
+        {
+          "japanese": "忙しいから行きません。",
+          "english": "I won't go because I'm busy.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "isogashii",
+            "iku-v"
+          ],
+          "furigana": "忙[いそが]しいから行[い]きません。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "muzukashii",
@@ -17048,7 +19094,47 @@
           "answer_text": "むずかしい"
         }
       ],
-      "furigana": "難[むずか]しい"
+      "furigana": "難[むずか]しい",
+      "example_sentences": [
+        {
+          "japanese": "この本は難しいです。",
+          "english": "This book is difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "muzukashii"
+          ],
+          "furigana": "この本[ほん]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "難しい映画を見ます。",
+          "english": "I'm watching a difficult movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "muzukashii",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "難[むずか]しい映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "新聞を読むのは難しい。",
+          "english": "Reading the newspaper is difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shinbun",
+            "yomu",
+            "muzukashii"
+          ],
+          "furigana": "新[しん]聞[ぶん]を読[よ]むのは難[むずか]しい。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yasashii",
@@ -17067,7 +19153,47 @@
           "answer_text": "やさしい"
         }
       ],
-      "furigana": "易[やさ]しい"
+      "furigana": "易[やさ]しい",
+      "example_sentences": [
+        {
+          "japanese": "この本は易しいです。",
+          "english": "This book is easy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "yasashii"
+          ],
+          "furigana": "この本[ほん]は易[やさ]しいです。"
+        },
+        {
+          "japanese": "この料理は易しいですか。",
+          "english": "Is this dish easy to make?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "yasashii"
+          ],
+          "furigana": "この料[りょう]理[り]は易[やさ]しいですか。"
+        },
+        {
+          "japanese": "易しい映画を見ます。",
+          "english": "I'm watching an easy movie.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yasashii",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "易[やさ]しい映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chikai",
@@ -17086,7 +19212,50 @@
           "answer_text": "ちかい"
         }
       ],
-      "furigana": "近[ちか]い"
+      "furigana": "近[ちか]い",
+      "example_sentences": [
+        {
+          "japanese": "うちはスーパーに近い。",
+          "english": "My place is near the supermarket.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "uchi",
+            "suupaa",
+            "chikai"
+          ],
+          "furigana": "うちはスーパーに近[ちか]い。"
+        },
+        {
+          "japanese": "あの銀行は駅に近い。",
+          "english": "That bank over there is near the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "ginkou",
+            "eki",
+            "chikai"
+          ],
+          "furigana": "あの銀[ぎん]行[こう]は駅[えき]に近[ちか]い。"
+        },
+        {
+          "japanese": "今日は近い店で昼ご飯を食べる。",
+          "english": "Today I'll eat lunch at a nearby shop.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "chikai",
+            "mise",
+            "hirugohan",
+            "taberu"
+          ],
+          "furigana": "今日[きょう]は近[ちか]い店[みせ]で昼[ひる]ご飯[はん]を食[た]べる。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tooi",
@@ -17105,7 +19274,48 @@
           "answer_text": "とおい"
         }
       ],
-      "furigana": "遠[とお]い"
+      "furigana": "遠[とお]い",
+      "example_sentences": [
+        {
+          "japanese": "病院はここから遠い。",
+          "english": "The hospital is far from here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "byouin",
+            "koko",
+            "tooi"
+          ],
+          "furigana": "病[びょう]院[いん]はここから遠[とお]い。"
+        },
+        {
+          "japanese": "あのスーパーは遠いですか。",
+          "english": "Is that supermarket far?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "suupaa",
+            "tooi"
+          ],
+          "furigana": "あのスーパーは遠[とお]いですか。"
+        },
+        {
+          "japanese": "遠い町へ明日行きます。",
+          "english": "I'll go to a far town tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tooi",
+            "machi-v",
+            "ashita",
+            "iku-v"
+          ],
+          "furigana": "遠[とお]い町[まち]へ明日[あした]行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hayai-fast",
@@ -17124,7 +19334,47 @@
           "answer_text": "はやい"
         }
       ],
-      "furigana": "速[はや]い"
+      "furigana": "速[はや]い",
+      "example_sentences": [
+        {
+          "japanese": "このバスは速いです。",
+          "english": "This bus is fast.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "basu",
+            "hayai-fast"
+          ],
+          "furigana": "このバスは速[はや]いです。"
+        },
+        {
+          "japanese": "彼女は話すのが速い。",
+          "english": "She speaks quickly.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "hanasu-v",
+            "hayai-fast"
+          ],
+          "furigana": "彼[かの]女[じょ]は話[はな]すのが速[はや]い。"
+        },
+        {
+          "japanese": "弟は食べるのが速い。",
+          "english": "My little brother eats fast.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otouto",
+            "taberu",
+            "hayai-fast"
+          ],
+          "furigana": "弟[おとうと]は食[た]べるのが速[はや]い。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hayai-early",
@@ -17143,7 +19393,47 @@
           "answer_text": "はやい"
         }
       ],
-      "furigana": "早[はや]い"
+      "furigana": "早[はや]い",
+      "example_sentences": [
+        {
+          "japanese": "毎朝早く起きます。",
+          "english": "I wake up early every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "hayai-early",
+            "okiru"
+          ],
+          "furigana": "毎[まい]朝[あさ]早[はや]く起[お]きます。"
+        },
+        {
+          "japanese": "晩ご飯は早いです。",
+          "english": "Dinner is early.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "bangohan",
+            "hayai-early"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]は早[はや]いです。"
+        },
+        {
+          "japanese": "明日早く学校に行きます。",
+          "english": "I'm going to school early tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "hayai-early",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]早[はや]く学[がっ]校[こう]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "osoi",
@@ -17162,7 +19452,46 @@
           "answer_text": "おそい"
         }
       ],
-      "furigana": "遅[おそ]い"
+      "furigana": "遅[おそ]い",
+      "example_sentences": [
+        {
+          "japanese": "彼は今日遅いです。",
+          "english": "He's late today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kyou",
+            "osoi"
+          ],
+          "furigana": "彼[かれ]は今日[きょう]遅[おそ]いです。"
+        },
+        {
+          "japanese": "このバスは遅いです。",
+          "english": "This bus is slow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "basu",
+            "osoi"
+          ],
+          "furigana": "このバスは遅[おそ]いです。"
+        },
+        {
+          "japanese": "晩ご飯が遅いです。",
+          "english": "Dinner is late.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "bangohan",
+            "osoi"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]が遅[おそ]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nagai-adj",
@@ -17181,7 +19510,47 @@
           "answer_text": "ながい"
         }
       ],
-      "furigana": "長[なが]い"
+      "furigana": "長[なが]い",
+      "example_sentences": [
+        {
+          "japanese": "この道は長いです。",
+          "english": "This road is long.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "nagai-adj"
+          ],
+          "furigana": "この道[みち]は長[なが]いです。"
+        },
+        {
+          "japanese": "長い映画を見ました。",
+          "english": "I watched a long movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nagai-adj",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "長[なが]い映[えい]画[が]を見[み]ました。"
+        },
+        {
+          "japanese": "冬の夜は長いです。",
+          "english": "Winter nights are long.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "fuyu",
+            "yoru",
+            "nagai-adj"
+          ],
+          "furigana": "冬[ふゆ]の夜[よる]は長[なが]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mijikai",
@@ -17200,7 +19569,47 @@
           "answer_text": "みじかい"
         }
       ],
-      "furigana": "短[みじか]い"
+      "furigana": "短[みじか]い",
+      "example_sentences": [
+        {
+          "japanese": "この道は短いです。",
+          "english": "This road is short.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "mijikai"
+          ],
+          "furigana": "この道[みち]は短[みじか]いです。"
+        },
+        {
+          "japanese": "冬の日は短い。",
+          "english": "Winter days are short.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "fuyu",
+            "hi-sun-v",
+            "mijikai"
+          ],
+          "furigana": "冬[ふゆ]の日[ひ]は短[みじか]い。"
+        },
+        {
+          "japanese": "その映画は短かった。",
+          "english": "That movie was short.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "eiga",
+            "mijikai"
+          ],
+          "furigana": "その映[えい]画[が]は短[みじか]かった。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hiroi",
@@ -17219,7 +19628,47 @@
           "answer_text": "ひろい"
         }
       ],
-      "furigana": "広[ひろ]い"
+      "furigana": "広[ひろ]い",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は広いです。",
+          "english": "This room is spacious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "hiroi"
+          ],
+          "furigana": "この部屋[へや]は広[ひろ]いです。"
+        },
+        {
+          "japanese": "広い公園で遊びます。",
+          "english": "I play in a spacious park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hiroi",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "広[ひろ]い公[こう]園[えん]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "あの道は広いですか。",
+          "english": "Is that road wide?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "michi-v",
+            "hiroi"
+          ],
+          "furigana": "あの道[みち]は広[ひろ]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "semai",
@@ -17238,7 +19687,47 @@
           "answer_text": "せまい"
         }
       ],
-      "furigana": "狭[せま]い"
+      "furigana": "狭[せま]い",
+      "example_sentences": [
+        {
+          "japanese": "この店は狭いです。",
+          "english": "This shop is cramped.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "semai"
+          ],
+          "furigana": "この店[みせ]は狭[せま]いです。"
+        },
+        {
+          "japanese": "うちの台所は狭いです。",
+          "english": "Our kitchen is cramped.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "uchi",
+            "daidokoro",
+            "semai"
+          ],
+          "furigana": "うちの台[だい]所[どころ]は狭[せま]いです。"
+        },
+        {
+          "japanese": "狭い部屋に入ります。",
+          "english": "I go into a cramped room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "semai",
+            "heya",
+            "hairu-v"
+          ],
+          "furigana": "狭[せま]い部屋[へや]に入[い]ります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "omoi",
@@ -17257,7 +19746,47 @@
           "answer_text": "おもい"
         }
       ],
-      "furigana": "重[おも]い"
+      "furigana": "重[おも]い",
+      "example_sentences": [
+        {
+          "japanese": "このかばんは重いです。",
+          "english": "This bag is heavy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kaban",
+            "omoi"
+          ],
+          "furigana": "このかばんは重[おも]いです。"
+        },
+        {
+          "japanese": "その箱は重いですか。",
+          "english": "Is that box heavy?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "hako",
+            "omoi"
+          ],
+          "furigana": "その箱[はこ]は重[おも]いですか。"
+        },
+        {
+          "japanese": "重い本を買いました。",
+          "english": "I bought a heavy book.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "omoi",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "重[おも]い本[ほん]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "karui",
@@ -17276,7 +19805,47 @@
           "answer_text": "かるい"
         }
       ],
-      "furigana": "軽[かる]い"
+      "furigana": "軽[かる]い",
+      "example_sentences": [
+        {
+          "japanese": "このかばんは軽いです。",
+          "english": "This bag is light.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kaban",
+            "karui"
+          ],
+          "furigana": "このかばんは軽[かる]いです。"
+        },
+        {
+          "japanese": "その箱は軽い。",
+          "english": "That box is light.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "hako",
+            "karui"
+          ],
+          "furigana": "その箱[はこ]は軽[かる]い。"
+        },
+        {
+          "japanese": "軽い靴を買いました。",
+          "english": "I bought light shoes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "karui",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "軽[かる]い靴[くつ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "akarui",
@@ -17295,7 +19864,48 @@
           "answer_text": "あかるい"
         }
       ],
-      "furigana": "明[あか]るい"
+      "furigana": "明[あか]るい",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は明るいです。",
+          "english": "This room is bright.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "akarui"
+          ],
+          "furigana": "この部屋[へや]は明[あか]るいです。"
+        },
+        {
+          "japanese": "朝の空は明るいです。",
+          "english": "The morning sky is bright.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "asa",
+            "sora",
+            "akarui"
+          ],
+          "furigana": "朝[あさ]の空[そら]は明[あか]るいです。"
+        },
+        {
+          "japanese": "明るい部屋で本を読む。",
+          "english": "I read a book in a bright room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "akarui",
+            "heya",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "明[あか]るい部屋[へや]で本[ほん]を読[よ]む。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kurai",
@@ -17314,7 +19924,48 @@
           "answer_text": "くらい"
         }
       ],
-      "furigana": "暗[くら]い"
+      "furigana": "暗[くら]い",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は暗いです。",
+          "english": "This room is dark.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "kurai"
+          ],
+          "furigana": "この部屋[へや]は暗[くら]いです。"
+        },
+        {
+          "japanese": "夜の道は暗いです。",
+          "english": "The road is dark at night.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yoru",
+            "michi-v",
+            "kurai"
+          ],
+          "furigana": "夜[よる]の道[みち]は暗[くら]いです。"
+        },
+        {
+          "japanese": "暗い部屋で本を読みます。",
+          "english": "I read a book in a dark room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kurai",
+            "heya",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "暗[くら]い部屋[へや]で本[ほん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "oishii",
@@ -17333,7 +19984,47 @@
           "answer_text": "おいしい"
         }
       ],
-      "furigana": "おいしい"
+      "furigana": "おいしい",
+      "example_sentences": [
+        {
+          "japanese": "このご飯はおいしいです。",
+          "english": "This rice is delicious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "gohan",
+            "oishii"
+          ],
+          "furigana": "このご飯[はん]はおいしいです。"
+        },
+        {
+          "japanese": "お母さんの料理はおいしいです。",
+          "english": "My mom's cooking is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okaasan",
+            "ryouri",
+            "oishii"
+          ],
+          "furigana": "お母[はは]さんの料[りょう]理[り]はおいしいです。"
+        },
+        {
+          "japanese": "おいしい魚を食べます。",
+          "english": "I'm going to eat some delicious fish.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "oishii",
+            "sakana",
+            "taberu"
+          ],
+          "furigana": "おいしい魚[さかな]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mazui",
@@ -17352,7 +20043,47 @@
           "answer_text": "まずい"
         }
       ],
-      "furigana": "まずい"
+      "furigana": "まずい",
+      "example_sentences": [
+        {
+          "japanese": "このご飯はまずいです。",
+          "english": "This rice tastes bad.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "gohan",
+            "mazui"
+          ],
+          "furigana": "このご飯[はん]はまずいです。"
+        },
+        {
+          "japanese": "昨日の魚はまずかった。",
+          "english": "Yesterday's fish tasted awful.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "sakana",
+            "mazui"
+          ],
+          "furigana": "昨日[きのう]の魚[さかな]はまずかった。"
+        },
+        {
+          "japanese": "まずい飲み物を飲みました。",
+          "english": "I drank a bad-tasting drink.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mazui",
+            "nomimono",
+            "nomu-v"
+          ],
+          "furigana": "まずい飲[の]み物[もの]を飲[の]みました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "amai",
@@ -17371,7 +20102,47 @@
           "answer_text": "あまい"
         }
       ],
-      "furigana": "甘[あま]い"
+      "furigana": "甘[あま]い",
+      "example_sentences": [
+        {
+          "japanese": "このお菓子は甘いです。",
+          "english": "This snack is sweet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "okashi",
+            "amai"
+          ],
+          "furigana": "このお菓[か]子[し]は甘[あま]いです。"
+        },
+        {
+          "japanese": "甘い果物を食べます。",
+          "english": "I eat sweet fruit.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "amai",
+            "kudamono",
+            "taberu"
+          ],
+          "furigana": "甘[あま]い果物[くだもの]を食[た]べます。"
+        },
+        {
+          "japanese": "そのコーヒーは甘いですね。",
+          "english": "That coffee is sweet, isn't it?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "koohii",
+            "amai"
+          ],
+          "furigana": "そのコーヒーは甘[あま]いですね。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "karai",
@@ -17390,7 +20161,47 @@
           "answer_text": "からい"
         }
       ],
-      "furigana": "辛[から]い"
+      "furigana": "辛[から]い",
+      "example_sentences": [
+        {
+          "japanese": "この料理は辛いです。",
+          "english": "This dish is spicy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "karai"
+          ],
+          "furigana": "この料[りょう]理[り]は辛[から]いです。"
+        },
+        {
+          "japanese": "辛い肉を食べました。",
+          "english": "I ate some spicy meat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "karai",
+            "niku",
+            "taberu"
+          ],
+          "furigana": "辛[から]い肉[にく]を食[た]べました。"
+        },
+        {
+          "japanese": "その魚は辛いですか。",
+          "english": "Is that fish spicy?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "sakana",
+            "karai"
+          ],
+          "furigana": "その魚[さかな]は辛[から]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kitanai",
@@ -17409,7 +20220,46 @@
           "answer_text": "きたない"
         }
       ],
-      "furigana": "汚[きたな]い"
+      "furigana": "汚[きたな]い",
+      "example_sentences": [
+        {
+          "japanese": "この服は汚いです。",
+          "english": "These clothes are dirty.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "kitanai"
+          ],
+          "furigana": "この服[ふく]は汚[きたな]いです。"
+        },
+        {
+          "japanese": "手が汚い。",
+          "english": "My hands are dirty.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "te-v",
+            "kitanai"
+          ],
+          "furigana": "手[て]が汚[きたな]い。"
+        },
+        {
+          "japanese": "汚い水は飲みません。",
+          "english": "I don't drink dirty water.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kitanai",
+            "mizu",
+            "nomu-v"
+          ],
+          "furigana": "汚[きたな]い水[みず]は飲[の]みません。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wakai",
@@ -17428,7 +20278,48 @@
           "answer_text": "わかい"
         }
       ],
-      "furigana": "若[わか]い"
+      "furigana": "若[わか]い",
+      "example_sentences": [
+        {
+          "japanese": "あの先生は若いです。",
+          "english": "That teacher is young.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "sensei",
+            "wakai"
+          ],
+          "furigana": "あの先[せん]生[せい]は若[わか]いです。"
+        },
+        {
+          "japanese": "若い友達と公園に行く。",
+          "english": "I go to the park with a young friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "wakai",
+            "tomodachi",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "若[わか]い友[とも]達[だち]と公[こう]園[えん]に行[い]く。"
+        },
+        {
+          "japanese": "この犬は若いです。",
+          "english": "This dog is young.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "inu",
+            "wakai"
+          ],
+          "furigana": "この犬[いぬ]は若[わか]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "marui",
@@ -17447,7 +20338,47 @@
           "answer_text": "まるい"
         }
       ],
-      "furigana": "丸[まる]い"
+      "furigana": "丸[まる]い",
+      "example_sentences": [
+        {
+          "japanese": "このテーブルは丸いです。",
+          "english": "This table is round.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "teeburu",
+            "marui"
+          ],
+          "furigana": "このテーブルは丸[まる]いです。"
+        },
+        {
+          "japanese": "彼女の顔は丸いです。",
+          "english": "Her face is round.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kao",
+            "marui"
+          ],
+          "furigana": "彼[かの]女[じょ]の顔[かお]は丸[まる]いです。"
+        },
+        {
+          "japanese": "丸い箱を買いました。",
+          "english": "I bought a round box.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "marui",
+            "hako",
+            "kau-v"
+          ],
+          "furigana": "丸[まる]い箱[はこ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "aoi",
@@ -17466,7 +20397,46 @@
           "answer_text": "あおい"
         }
       ],
-      "furigana": "青[あお]い"
+      "furigana": "青[あお]い",
+      "example_sentences": [
+        {
+          "japanese": "空は青いです。",
+          "english": "The sky is blue.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sora",
+            "aoi"
+          ],
+          "furigana": "空[そら]は青[あお]いです。"
+        },
+        {
+          "japanese": "青いシャツを買いました。",
+          "english": "I bought a blue shirt.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "aoi",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "青[あお]いシャツを買[か]いました。"
+        },
+        {
+          "japanese": "彼女の傘は青いです。",
+          "english": "Her umbrella is blue.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kasa",
+            "aoi"
+          ],
+          "furigana": "彼[かの]女[じょ]の傘[かさ]は青[あお]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "akai",
@@ -17485,7 +20455,46 @@
           "answer_text": "あかい"
         }
       ],
-      "furigana": "赤[あか]い"
+      "furigana": "赤[あか]い",
+      "example_sentences": [
+        {
+          "japanese": "この花は赤いです。",
+          "english": "This flower is red.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "akai"
+          ],
+          "furigana": "この花[はな]は赤[あか]いです。"
+        },
+        {
+          "japanese": "赤いシャツを買いました。",
+          "english": "I bought a red shirt.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akai",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "赤[あか]いシャツを買[か]いました。"
+        },
+        {
+          "japanese": "空が赤いですね。",
+          "english": "The sky is red, isn't it?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sora",
+            "akai"
+          ],
+          "furigana": "空[そら]が赤[あか]いですね。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shiroi",
@@ -17504,7 +20513,48 @@
           "answer_text": "しろい"
         }
       ],
-      "furigana": "白[しろ]い"
+      "furigana": "白[しろ]い",
+      "example_sentences": [
+        {
+          "japanese": "このシャツは白いです。",
+          "english": "This shirt is white.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "shatsu",
+            "shiroi"
+          ],
+          "furigana": "このシャツは白[しろ]いです。"
+        },
+        {
+          "japanese": "白い花を見ます。",
+          "english": "I look at white flowers.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shiroi",
+            "hana-v",
+            "miru-v"
+          ],
+          "furigana": "白[しろ]い花[はな]を見[み]ます。"
+        },
+        {
+          "japanese": "私は白いパンを買います。",
+          "english": "I buy white bread.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "shiroi",
+            "pan",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は白[しろ]いパンを買[か]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kuroi",
@@ -17523,7 +20573,48 @@
           "answer_text": "くろい"
         }
       ],
-      "furigana": "黒[くろ]い"
+      "furigana": "黒[くろ]い",
+      "example_sentences": [
+        {
+          "japanese": "私の髪は黒いです。",
+          "english": "My hair is black.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kami-hair",
+            "kuroi"
+          ],
+          "furigana": "私[わたし]の髪[かみ]は黒[くろ]いです。"
+        },
+        {
+          "japanese": "彼女は黒い靴を買いました。",
+          "english": "She bought black shoes.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kuroi",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は黒[くろ]い靴[くつ]を買[か]いました。"
+        },
+        {
+          "japanese": "黒い猫を見ました。",
+          "english": "I saw a black cat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuroi",
+            "neko",
+            "miru-v"
+          ],
+          "furigana": "黒[くろ]い猫[ねこ]を見[み]ました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsuyoi",
@@ -17542,7 +20633,47 @@
           "answer_text": "つよい"
         }
       ],
-      "furigana": "強[つよ]い"
+      "furigana": "強[つよ]い",
+      "example_sentences": [
+        {
+          "japanese": "今日は風が強いです。",
+          "english": "The wind is strong today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "kaze-wind",
+            "tsuyoi"
+          ],
+          "furigana": "今日[きょう]は風[かぜ]が強[つよ]いです。"
+        },
+        {
+          "japanese": "彼は私より強いです。",
+          "english": "He's stronger than me.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "watashi",
+            "tsuyoi"
+          ],
+          "furigana": "彼[かれ]は私[わたし]より強[つよ]いです。"
+        },
+        {
+          "japanese": "このコーヒーは強いです。",
+          "english": "This coffee is strong.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "koohii",
+            "tsuyoi"
+          ],
+          "furigana": "このコーヒーは強[つよ]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yowai",
@@ -17561,7 +20692,47 @@
           "answer_text": "よわい"
         }
       ],
-      "furigana": "弱[よわ]い"
+      "furigana": "弱[よわ]い",
+      "example_sentences": [
+        {
+          "japanese": "僕は体が弱いです。",
+          "english": "I have a weak body.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "boku",
+            "karada",
+            "yowai"
+          ],
+          "furigana": "僕[ぼく]は体[からだ]が弱[よわ]いです。"
+        },
+        {
+          "japanese": "このお茶は弱いです。",
+          "english": "This tea is weak.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "ocha",
+            "yowai"
+          ],
+          "furigana": "このお茶[ちゃ]は弱[よわ]いです。"
+        },
+        {
+          "japanese": "彼女は朝に弱いです。",
+          "english": "She's not a morning person.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "asa",
+            "yowai"
+          ],
+          "furigana": "彼[かの]女[じょ]は朝[あさ]に弱[よわ]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "abunai",
@@ -17580,7 +20751,46 @@
           "answer_text": "あぶない"
         }
       ],
-      "furigana": "危[あぶ]ない"
+      "furigana": "危[あぶ]ない",
+      "example_sentences": [
+        {
+          "japanese": "この道は危ないです。",
+          "english": "This road is dangerous.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "abunai"
+          ],
+          "furigana": "この道[みち]は危[あぶ]ないです。"
+        },
+        {
+          "japanese": "危ないから行かないで。",
+          "english": "Don't go — it's dangerous.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "abunai",
+            "iku-v"
+          ],
+          "furigana": "危[あぶ]ないから行[い]かないで。"
+        },
+        {
+          "japanese": "あの橋は危ないよ。",
+          "english": "That bridge over there is dangerous.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "hashi-bridge",
+            "abunai"
+          ],
+          "furigana": "あの橋[はし]は危[あぶ]ないよ。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kawaii",
@@ -17599,7 +20809,46 @@
           "answer_text": "かわいい"
         }
       ],
-      "furigana": "かわいい"
+      "furigana": "かわいい",
+      "example_sentences": [
+        {
+          "japanese": "この猫はかわいいです。",
+          "english": "This cat is cute.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "neko",
+            "kawaii"
+          ],
+          "furigana": "この猫[ねこ]はかわいいです。"
+        },
+        {
+          "japanese": "赤ちゃんがかわいいですね。",
+          "english": "The baby is cute, isn't it?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akachan",
+            "kawaii"
+          ],
+          "furigana": "赤[あか]ちゃんがかわいいですね。"
+        },
+        {
+          "japanese": "かわいい花を買いました。",
+          "english": "I bought a cute flower.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kawaii",
+            "hana-v",
+            "kau-v"
+          ],
+          "furigana": "かわいい花[はな]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itai",
@@ -17618,7 +20867,45 @@
           "answer_text": "いたい"
         }
       ],
-      "furigana": "痛[いた]い"
+      "furigana": "痛[いた]い",
+      "example_sentences": [
+        {
+          "japanese": "足が痛いです。",
+          "english": "My foot hurts.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashi-v",
+            "itai"
+          ],
+          "furigana": "足[あし]が痛[いた]いです。"
+        },
+        {
+          "japanese": "歯が痛い。",
+          "english": "My tooth hurts.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ha-tooth",
+            "itai"
+          ],
+          "furigana": "歯[は]が痛[いた]い。"
+        },
+        {
+          "japanese": "昨日からお腹が痛いです。",
+          "english": "My stomach has been hurting since yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "onaka",
+            "itai"
+          ],
+          "furigana": "昨日[きのう]からお腹[なか]が痛[いた]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoshii",
@@ -17637,7 +20924,48 @@
           "answer_text": "ほしい"
         }
       ],
-      "furigana": "欲[ほ]しい"
+      "furigana": "欲[ほ]しい",
+      "example_sentences": [
+        {
+          "japanese": "私は新しい本が欲しいです。",
+          "english": "I want a new book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "atarashii-adj",
+            "hon",
+            "hoshii"
+          ],
+          "furigana": "私[わたし]は新[あたら]しい本[ほん]が欲[ほ]しいです。"
+        },
+        {
+          "japanese": "今、冷たい水が欲しい。",
+          "english": "I want some cold water now.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ima",
+            "tsumetai",
+            "mizu",
+            "hoshii"
+          ],
+          "furigana": "今[いま]、冷[つめ]たい水[みず]が欲[ほ]しい。"
+        },
+        {
+          "japanese": "何が欲しいですか。",
+          "english": "What do you want?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nani",
+            "hoshii"
+          ],
+          "furigana": "何[なに]が欲[ほ]しいですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suki",
@@ -17656,7 +20984,45 @@
           "answer_text": "すき"
         }
       ],
-      "furigana": "好[す]き"
+      "furigana": "好[す]き",
+      "example_sentences": [
+        {
+          "japanese": "私は猫が好きです。",
+          "english": "I like cats.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "neko",
+            "suki"
+          ],
+          "furigana": "私[わたし]は猫[ねこ]が好[す]きです。"
+        },
+        {
+          "japanese": "何が好きですか。",
+          "english": "What do you like?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nani",
+            "suki"
+          ],
+          "furigana": "何[なに]が好[す]きですか。"
+        },
+        {
+          "japanese": "お酒は好きじゃない。",
+          "english": "I don't like alcohol.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "osake",
+            "suki"
+          ],
+          "furigana": "お酒[さけ]は好[す]きじゃない。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kirai",
@@ -17675,7 +21041,48 @@
           "answer_text": "きらい"
         }
       ],
-      "furigana": "嫌[きら]い"
+      "furigana": "嫌[きら]い",
+      "example_sentences": [
+        {
+          "japanese": "僕は魚が嫌いです。",
+          "english": "I don't like fish.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "boku",
+            "sakana",
+            "kirai"
+          ],
+          "furigana": "僕[ぼく]は魚[さかな]が嫌[きら]いです。"
+        },
+        {
+          "japanese": "嫌いな食べ物は肉です。",
+          "english": "The food I dislike is meat.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kirai",
+            "tabemono",
+            "niku"
+          ],
+          "furigana": "嫌[きら]いな食[た]べ物[もの]は肉[にく]です。"
+        },
+        {
+          "japanese": "彼女は雨の日が嫌いです。",
+          "english": "She doesn't like rainy days.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ame-v",
+            "hi-sun-v",
+            "kirai"
+          ],
+          "furigana": "彼[かの]女[じょ]は雨[あめ]の日[ひ]が嫌[きら]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jouzu",
@@ -17694,7 +21101,47 @@
           "answer_text": "じょうず"
         }
       ],
-      "furigana": "上手[じょうず]"
+      "furigana": "上手[じょうず]",
+      "example_sentences": [
+        {
+          "japanese": "友達は写真が上手です。",
+          "english": "My friend is good at photography.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "shashin",
+            "jouzu"
+          ],
+          "furigana": "友[とも]達[だち]は写[しゃ]真[しん]が上手[じょうず]です。"
+        },
+        {
+          "japanese": "彼は上手に書きます。",
+          "english": "He writes skillfully.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "jouzu",
+            "kaku"
+          ],
+          "furigana": "彼[かれ]は上手[じょうず]に書[か]きます。"
+        },
+        {
+          "japanese": "妹は話すのが上手ですね。",
+          "english": "My younger sister is good at speaking, isn't she?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "hanasu-v",
+            "jouzu"
+          ],
+          "furigana": "妹[いもうと]は話[はな]すのが上手[じょうず]ですね。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "heta",
@@ -17713,7 +21160,47 @@
           "answer_text": "へた"
         }
       ],
-      "furigana": "下手[へた]"
+      "furigana": "下手[へた]",
+      "example_sentences": [
+        {
+          "japanese": "私は料理が下手です。",
+          "english": "I'm bad at cooking.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ryouri",
+            "heta"
+          ],
+          "furigana": "私[わたし]は料[りょう]理[り]が下手[へた]です。"
+        },
+        {
+          "japanese": "彼は話すのが下手だ。",
+          "english": "He's bad at speaking.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "hanasu-v",
+            "heta"
+          ],
+          "furigana": "彼[かれ]は話[はな]すのが下手[へた]だ。"
+        },
+        {
+          "japanese": "僕はパソコンが下手です。",
+          "english": "I'm bad with computers.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "pasokon",
+            "heta"
+          ],
+          "furigana": "僕[ぼく]はパソコンが下手[へた]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "genki",
@@ -17732,7 +21219,47 @@
           "answer_text": "げんき"
         }
       ],
-      "furigana": "元[げん]気[き]"
+      "furigana": "元[げん]気[き]",
+      "example_sentences": [
+        {
+          "japanese": "お母さんは元気ですか。",
+          "english": "How is your mother doing?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "okaasan",
+            "genki"
+          ],
+          "furigana": "お母[はは]さんは元[げん]気[き]ですか。"
+        },
+        {
+          "japanese": "私は朝から元気です。",
+          "english": "I've been full of energy since this morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "asa",
+            "genki"
+          ],
+          "furigana": "私[わたし]は朝[あさ]から元[げん]気[き]です。"
+        },
+        {
+          "japanese": "犬が公園で元気に遊ぶ。",
+          "english": "The dog plays energetically in the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "kouen",
+            "genki",
+            "asobu"
+          ],
+          "furigana": "犬[いぬ]が公[こう]園[えん]で元[げん]気[き]に遊[あそ]ぶ。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shizuka",
@@ -17751,7 +21278,47 @@
           "answer_text": "しずか"
         }
       ],
-      "furigana": "静[しず]か"
+      "furigana": "静[しず]か",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は静かです。",
+          "english": "This room is quiet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "shizuka"
+          ],
+          "furigana": "この部屋[へや]は静[しず]かです。"
+        },
+        {
+          "japanese": "赤ちゃんが静かに寝ます。",
+          "english": "The baby sleeps quietly.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "akachan",
+            "shizuka",
+            "neru"
+          ],
+          "furigana": "赤[あか]ちゃんが静[しず]かに寝[ね]ます。"
+        },
+        {
+          "japanese": "静かな喫茶店が好きです。",
+          "english": "I like quiet coffee shops.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shizuka",
+            "kissaten",
+            "suki"
+          ],
+          "furigana": "静[しず]かな喫[きっ]茶[さ]店[みせ]が好[す]きです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nigiyaka",
@@ -17770,7 +21337,47 @@
           "answer_text": "にぎやか"
         }
       ],
-      "furigana": "賑[にぎ]やか"
+      "furigana": "賑[にぎ]やか",
+      "example_sentences": [
+        {
+          "japanese": "この町は賑やかです。",
+          "english": "This town is lively.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "nigiyaka"
+          ],
+          "furigana": "この町[まち]は賑[にぎ]やかです。"
+        },
+        {
+          "japanese": "週末の公園は賑やかです。",
+          "english": "The park is bustling on the weekend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "kouen",
+            "nigiyaka"
+          ],
+          "furigana": "週[しゅう]末[まつ]の公[こう]園[えん]は賑[にぎ]やかです。"
+        },
+        {
+          "japanese": "賑やかな店が好きです。",
+          "english": "I like lively shops.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nigiyaka",
+            "mise",
+            "suki"
+          ],
+          "furigana": "賑[にぎ]やかな店[みせ]が好[す]きです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kirei",
@@ -17789,7 +21396,46 @@
           "answer_text": "きれい"
         }
       ],
-      "furigana": "きれい"
+      "furigana": "きれい",
+      "example_sentences": [
+        {
+          "japanese": "この花はきれいです。",
+          "english": "This flower is pretty.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "kirei"
+          ],
+          "furigana": "この花[はな]はきれいです。"
+        },
+        {
+          "japanese": "部屋をきれいにします。",
+          "english": "I'll clean the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya",
+            "kirei"
+          ],
+          "furigana": "部屋[へや]をきれいにします。"
+        },
+        {
+          "japanese": "彼女はきれいな人です。",
+          "english": "She is a pretty person.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kirei",
+            "hito"
+          ],
+          "furigana": "彼[かの]女[じょ]はきれいな人[ひと]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yuumei",
@@ -17808,7 +21454,48 @@
           "answer_text": "ゆうめい"
         }
       ],
-      "furigana": "有[ゆう]名[めい]"
+      "furigana": "有[ゆう]名[めい]",
+      "example_sentences": [
+        {
+          "japanese": "彼女は有名な医者です。",
+          "english": "She is a famous doctor.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "yuumei",
+            "isha"
+          ],
+          "furigana": "彼[かの]女[じょ]は有[ゆう]名[めい]な医[い]者[しゃ]です。"
+        },
+        {
+          "japanese": "このレストランは有名です。",
+          "english": "This restaurant is famous.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "resutoran",
+            "yuumei"
+          ],
+          "furigana": "このレストランは有[ゆう]名[めい]です。"
+        },
+        {
+          "japanese": "私は有名な人に会いました。",
+          "english": "I met a famous person.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "yuumei",
+            "hito",
+            "au"
+          ],
+          "furigana": "私[わたし]は有[ゆう]名[めい]な人[ひと]に会[あ]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shinsetsu",
@@ -17827,7 +21514,47 @@
           "answer_text": "しんせつ"
         }
       ],
-      "furigana": "親[しん]切[せつ]"
+      "furigana": "親[しん]切[せつ]",
+      "example_sentences": [
+        {
+          "japanese": "彼女は親切な人です。",
+          "english": "She is a kind person.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "shinsetsu",
+            "hito"
+          ],
+          "furigana": "彼[かの]女[じょ]は親[しん]切[せつ]な人[ひと]です。"
+        },
+        {
+          "japanese": "先生は学生に親切です。",
+          "english": "The teacher is kind to students.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "gakusei",
+            "shinsetsu"
+          ],
+          "furigana": "先[せん]生[せい]は学[がく]生[せい]に親[しん]切[せつ]です。"
+        },
+        {
+          "japanese": "友達は私に親切でした。",
+          "english": "My friend was kind to me.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "watashi",
+            "shinsetsu"
+          ],
+          "furigana": "友[とも]達[だち]は私[わたし]に親[しん]切[せつ]でした。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "benri",
@@ -17846,7 +21573,48 @@
           "answer_text": "べんり"
         }
       ],
-      "furigana": "便[べん]利[り]"
+      "furigana": "便[べん]利[り]",
+      "example_sentences": [
+        {
+          "japanese": "このコンビニは便利です。",
+          "english": "This convenience store is convenient.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "konbini",
+            "benri"
+          ],
+          "furigana": "このコンビニは便[べん]利[り]です。"
+        },
+        {
+          "japanese": "駅に近い家は便利です。",
+          "english": "A house near the station is convenient.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "chikai",
+            "ie",
+            "benri"
+          ],
+          "furigana": "駅[えき]に近[ちか]い家[いえ]は便[べん]利[り]です。"
+        },
+        {
+          "japanese": "便利な辞書を使います。",
+          "english": "I use a convenient dictionary.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "benri",
+            "jisho",
+            "tsukau"
+          ],
+          "furigana": "便[べん]利[り]な辞[じ]書[しょ]を使[つか]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fuben",
@@ -17865,7 +21633,47 @@
           "answer_text": "ふべん"
         }
       ],
-      "furigana": "不[ふ]便[べん]"
+      "furigana": "不[ふ]便[べん]",
+      "example_sentences": [
+        {
+          "japanese": "この町は不便です。",
+          "english": "This town is inconvenient.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "fuben"
+          ],
+          "furigana": "この町[まち]は不[ふ]便[べん]です。"
+        },
+        {
+          "japanese": "バスがなくて不便です。",
+          "english": "It's inconvenient without a bus.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "basu",
+            "fuben"
+          ],
+          "furigana": "バスがなくて不[ふ]便[べん]です。"
+        },
+        {
+          "japanese": "駅から遠い家は不便です。",
+          "english": "A house far from the station is inconvenient.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "tooi",
+            "ie",
+            "fuben"
+          ],
+          "furigana": "駅[えき]から遠[とお]い家[いえ]は不[ふ]便[べん]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hima",
@@ -17884,7 +21692,45 @@
           "answer_text": "ひま"
         }
       ],
-      "furigana": "暇[ひま]"
+      "furigana": "暇[ひま]",
+      "example_sentences": [
+        {
+          "japanese": "今日は暇です。",
+          "english": "I'm free today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "hima"
+          ],
+          "furigana": "今日[きょう]は暇[ひま]です。"
+        },
+        {
+          "japanese": "午後は暇ですか。",
+          "english": "Are you free this afternoon?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gogo",
+            "hima"
+          ],
+          "furigana": "午[ご]後[ご]は暇[ひま]ですか。"
+        },
+        {
+          "japanese": "暇なら一緒に遊びましょう。",
+          "english": "If you're free, let's hang out together.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hima",
+            "issho-ni",
+            "asobu"
+          ],
+          "furigana": "暇[ひま]なら一[いっ]緒[しょ]に遊[あそ]びましょう。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "daijoubu",
@@ -17903,7 +21749,44 @@
           "answer_text": "だいじょうぶ"
         }
       ],
-      "furigana": "大[だい]丈[じょう]夫[ぶ]"
+      "furigana": "大[だい]丈[じょう]夫[ぶ]",
+      "example_sentences": [
+        {
+          "japanese": "足は大丈夫ですか？",
+          "english": "Is your foot okay?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashi-v",
+            "daijoubu"
+          ],
+          "furigana": "足[あし]は大[だい]丈[じょう]夫[ぶ]ですか？"
+        },
+        {
+          "japanese": "私は大丈夫です。",
+          "english": "I'm all right.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "daijoubu"
+          ],
+          "furigana": "私[わたし]は大[だい]丈[じょう]夫[ぶ]です。"
+        },
+        {
+          "japanese": "明日は大丈夫ですよ。",
+          "english": "Tomorrow is fine.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "daijoubu"
+          ],
+          "furigana": "明日[あした]は大[だい]丈[じょう]夫[ぶ]ですよ。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taihen",
@@ -17922,7 +21805,45 @@
           "answer_text": "たいへん"
         }
       ],
-      "furigana": "大[たい]変[へん]"
+      "furigana": "大[たい]変[へん]",
+      "example_sentences": [
+        {
+          "japanese": "今日は大変でした。",
+          "english": "Today was tough.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "taihen"
+          ],
+          "furigana": "今日[きょう]は大[たい]変[へん]でした。"
+        },
+        {
+          "japanese": "それは大変ですね。",
+          "english": "That's awful.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sore",
+            "taihen"
+          ],
+          "furigana": "それは大[たい]変[へん]ですね。"
+        },
+        {
+          "japanese": "父の会社は大変です。",
+          "english": "My father's company is tough.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chichi",
+            "kaisha",
+            "taihen"
+          ],
+          "furigana": "父[ちち]の会[かい]社[しゃ]は大[たい]変[へん]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iroiro",
@@ -17941,7 +21862,48 @@
           "answer_text": "いろいろ"
         }
       ],
-      "furigana": "色[いろ]々[いろ]"
+      "furigana": "色[いろ]々[いろ]",
+      "example_sentences": [
+        {
+          "japanese": "色々な食べ物があります。",
+          "english": "There are various kinds of food.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "iroiro",
+            "tabemono"
+          ],
+          "furigana": "色[いろ]々[いろ]な食[た]べ物[もの]があります。"
+        },
+        {
+          "japanese": "今日は色々な店に行きました。",
+          "english": "Today I went to various shops.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "iroiro",
+            "mise",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]は色[いろ]々[いろ]な店[みせ]に行[い]きました。"
+        },
+        {
+          "japanese": "彼女は色々な本を読みます。",
+          "english": "She reads various books.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "iroiro",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かの]女[じょ]は色[いろ]々[いろ]な本[ほん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "onaji",
@@ -17960,7 +21922,50 @@
           "answer_text": "おなじ"
         }
       ],
-      "furigana": "同[おな]じ"
+      "furigana": "同[おな]じ",
+      "example_sentences": [
+        {
+          "japanese": "これとそれは同じですか。",
+          "english": "Are this and that the same?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "sore",
+            "onaji"
+          ],
+          "furigana": "これとそれは同[おな]じですか。"
+        },
+        {
+          "japanese": "私は友達と同じ映画を見ます。",
+          "english": "I'll watch the same movie as my friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "tomodachi",
+            "onaji",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]は友[とも]達[だち]と同[おな]じ映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "今日は昨日と同じ天気です。",
+          "english": "Today's weather is the same as yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "kinou",
+            "onaji",
+            "tenki"
+          ],
+          "furigana": "今日[きょう]は昨日[きのう]と同[おな]じ天[てん]気[き]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "teinei",

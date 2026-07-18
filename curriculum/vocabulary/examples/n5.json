@@ -1,4 +1,39 @@
 {
+  "abunai": {
+    "example_sentences": [
+      {
+        "japanese": "この道は危ないです。",
+        "english": "This road is dangerous.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "abunai"
+        ]
+      },
+      {
+        "japanese": "危ないから行かないで。",
+        "english": "Don't go — it's dangerous.",
+        "vocabulary_slugs": [
+          "abunai",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの橋は危ないよ。",
+        "english": "That bridge over there is dangerous.",
+        "vocabulary_slugs": [
+          "ano",
+          "hashi-bridge",
+          "abunai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "achira": {
     "example_sentences": [
       {
@@ -23,6 +58,42 @@
         "vocabulary_slugs": [
           "achira",
           "umi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aka-color": {
+    "example_sentences": [
+      {
+        "japanese": "この花は赤いです。",
+        "english": "This flower is red.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "aka-color"
+        ]
+      },
+      {
+        "japanese": "赤いシャツを買いました。",
+        "english": "I bought a red shirt.",
+        "vocabulary_slugs": [
+          "aka-color",
+          "shatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あれは赤い帽子です。",
+        "english": "That one over there is a red hat.",
+        "vocabulary_slugs": [
+          "are",
+          "aka-color",
+          "boushi"
         ]
       }
     ],
@@ -58,6 +129,151 @@
           "kouen",
           "akachan",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "akai": {
+    "example_sentences": [
+      {
+        "japanese": "この花は赤いです。",
+        "english": "This flower is red.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "akai"
+        ]
+      },
+      {
+        "japanese": "赤いシャツを買いました。",
+        "english": "I bought a red shirt.",
+        "vocabulary_slugs": [
+          "akai",
+          "shatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "空が赤いですね。",
+        "english": "The sky is red, isn't it?",
+        "vocabulary_slugs": [
+          "sora",
+          "akai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "akarui": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は明るいです。",
+        "english": "This room is bright.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "akarui"
+        ]
+      },
+      {
+        "japanese": "朝の空は明るいです。",
+        "english": "The morning sky is bright.",
+        "vocabulary_slugs": [
+          "asa",
+          "sora",
+          "akarui"
+        ]
+      },
+      {
+        "japanese": "明るい部屋で本を読む。",
+        "english": "I read a book in a bright room.",
+        "vocabulary_slugs": [
+          "akarui",
+          "heya",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aki": {
+    "example_sentences": [
+      {
+        "japanese": "今年の秋は寒いです。",
+        "english": "This year's autumn is cold.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "aki",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "秋に友達と公園で遊びます。",
+        "english": "I play at the park with a friend in autumn.",
+        "vocabulary_slugs": [
+          "aki",
+          "tomodachi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "秋の果物はおいしいです。",
+        "english": "Autumn fruit is delicious.",
+        "vocabulary_slugs": [
+          "aki",
+          "kudamono",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "amai": {
+    "example_sentences": [
+      {
+        "japanese": "このお菓子は甘いです。",
+        "english": "This snack is sweet.",
+        "vocabulary_slugs": [
+          "kono",
+          "okashi",
+          "amai"
+        ]
+      },
+      {
+        "japanese": "甘い果物を食べます。",
+        "english": "I eat sweet fruit.",
+        "vocabulary_slugs": [
+          "amai",
+          "kudamono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "そのコーヒーは甘いですね。",
+        "english": "That coffee is sweet, isn't it?",
+        "vocabulary_slugs": [
+          "sono",
+          "koohii",
+          "amai"
         ]
       }
     ],
@@ -278,6 +494,77 @@
           "ano",
           "kouen",
           "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ao-color": {
+    "example_sentences": [
+      {
+        "japanese": "今日の空は青いです。",
+        "english": "Today's sky is blue.",
+        "vocabulary_slugs": [
+          "kyou",
+          "sora",
+          "ao-color"
+        ]
+      },
+      {
+        "japanese": "青い帽子を買います。",
+        "english": "I'll buy a blue hat.",
+        "vocabulary_slugs": [
+          "ao-color",
+          "boushi",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "このペンは青いです。",
+        "english": "This pen is blue.",
+        "vocabulary_slugs": [
+          "kono",
+          "pen",
+          "ao-color"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "aoi": {
+    "example_sentences": [
+      {
+        "japanese": "空は青いです。",
+        "english": "The sky is blue.",
+        "vocabulary_slugs": [
+          "sora",
+          "aoi"
+        ]
+      },
+      {
+        "japanese": "青いシャツを買いました。",
+        "english": "I bought a blue shirt.",
+        "vocabulary_slugs": [
+          "aoi",
+          "shatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女の傘は青いです。",
+        "english": "Her umbrella is blue.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kasa",
+          "aoi"
         ]
       }
     ],
@@ -568,6 +855,148 @@
       "review_status": "draft"
     }
   },
+  "atarashii-adj": {
+    "example_sentences": [
+      {
+        "japanese": "新しい本を買いました。",
+        "english": "I bought a new book.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この家は新しいです。",
+        "english": "This house is new.",
+        "vocabulary_slugs": [
+          "kono",
+          "ie",
+          "atarashii-adj"
+        ]
+      },
+      {
+        "japanese": "新しい映画を見ました。",
+        "english": "I watched a new movie.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "atatakai": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は暖かいです。",
+        "english": "This room is warm.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "atatakai"
+        ]
+      },
+      {
+        "japanese": "春の天気は暖かいです。",
+        "english": "Spring weather is warm.",
+        "vocabulary_slugs": [
+          "haru",
+          "tenki",
+          "atatakai"
+        ]
+      },
+      {
+        "japanese": "暖かいお茶を飲みます。",
+        "english": "I drink warm tea.",
+        "vocabulary_slugs": [
+          "atatakai",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "atsui-hot": {
+    "example_sentences": [
+      {
+        "japanese": "今日は暑いです。",
+        "english": "It's hot today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "この部屋は暑いです。",
+        "english": "This room is hot.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "明日は暑いですか。",
+        "english": "Will it be hot tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "atsui-hot"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "atsui-obj": {
+    "example_sentences": [
+      {
+        "japanese": "このお茶は熱いです。",
+        "english": "This tea is hot.",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "atsui-obj"
+        ]
+      },
+      {
+        "japanese": "熱いコーヒーを飲みます。",
+        "english": "I drink hot coffee.",
+        "vocabulary_slugs": [
+          "atsui-obj",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "熱いご飯を食べます。",
+        "english": "I eat hot rice.",
+        "vocabulary_slugs": [
+          "atsui-obj",
+          "gohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ban": {
     "example_sentences": [
       {
@@ -707,6 +1136,43 @@
           "beddo",
           "hon",
           "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "benri": {
+    "example_sentences": [
+      {
+        "japanese": "このコンビニは便利です。",
+        "english": "This convenience store is convenient.",
+        "vocabulary_slugs": [
+          "kono",
+          "konbini",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "駅に近い家は便利です。",
+        "english": "A house near the station is convenient.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikai",
+          "ie",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "便利な辞書を使います。",
+        "english": "I use a convenient dictionary.",
+        "vocabulary_slugs": [
+          "benri",
+          "jisho",
+          "tsukau"
         ]
       }
     ],
@@ -971,6 +1437,42 @@
       "review_status": "draft"
     }
   },
+  "chairo": {
+    "example_sentences": [
+      {
+        "japanese": "このコートは茶色です。",
+        "english": "This coat is brown.",
+        "vocabulary_slugs": [
+          "kono",
+          "kooto",
+          "chairo"
+        ]
+      },
+      {
+        "japanese": "私の髪は茶色です。",
+        "english": "My hair is brown.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kami-hair",
+          "chairo"
+        ]
+      },
+      {
+        "japanese": "茶色のシャツを買いました。",
+        "english": "I bought a brown shirt.",
+        "vocabulary_slugs": [
+          "chairo",
+          "shatsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "chichi": {
     "example_sentences": [
       {
@@ -999,6 +1501,81 @@
           "chichi",
           "hon",
           "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chiisai": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は小さいです。",
+        "english": "This room is small.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "小さい本を読みます。",
+        "english": "I read a small book.",
+        "vocabulary_slugs": [
+          "chiisai",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "小さい箱を開けます。",
+        "english": "I open a small box.",
+        "vocabulary_slugs": [
+          "chiisai",
+          "hako",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chikai": {
+    "example_sentences": [
+      {
+        "japanese": "うちはスーパーに近い。",
+        "english": "My place is near the supermarket.",
+        "vocabulary_slugs": [
+          "uchi",
+          "suupaa",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "あの銀行は駅に近い。",
+        "english": "That bank over there is near the station.",
+        "vocabulary_slugs": [
+          "ano",
+          "ginkou",
+          "eki",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "今日は近い店で昼ご飯を食べる。",
+        "english": "Today I'll eat lunch at a nearby shop.",
+        "vocabulary_slugs": [
+          "kyou",
+          "chikai",
+          "mise",
+          "hirugohan",
+          "taberu"
         ]
       }
     ],
@@ -1071,6 +1648,39 @@
           "tomodachi",
           "daigaku",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "daijoubu": {
+    "example_sentences": [
+      {
+        "japanese": "足は大丈夫ですか？",
+        "english": "Is your foot okay?",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "私は大丈夫です。",
+        "english": "I'm all right.",
+        "vocabulary_slugs": [
+          "watashi",
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "明日は大丈夫ですよ。",
+        "english": "Tomorrow is fine.",
+        "vocabulary_slugs": [
+          "ashita",
+          "daijoubu"
         ]
       }
     ],
@@ -1502,6 +2112,43 @@
       "review_status": "draft"
     }
   },
+  "doubutsu": {
+    "example_sentences": [
+      {
+        "japanese": "公園で動物を見ます。",
+        "english": "I look at the animals in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "doubutsu",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この動物は猫ですか。",
+        "english": "Is this animal a cat?",
+        "vocabulary_slugs": [
+          "kono",
+          "doubutsu",
+          "neko"
+        ]
+      },
+      {
+        "japanese": "妹は動物の本を買います。",
+        "english": "My little sister buys a book about animals.",
+        "vocabulary_slugs": [
+          "imouto",
+          "doubutsu",
+          "hon",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "doushite": {
     "example_sentences": [
       {
@@ -1719,6 +2366,42 @@
       "review_status": "draft"
     }
   },
+  "fuben": {
+    "example_sentences": [
+      {
+        "japanese": "この町は不便です。",
+        "english": "This town is inconvenient.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "fuben"
+        ]
+      },
+      {
+        "japanese": "バスがなくて不便です。",
+        "english": "It's inconvenient without a bus.",
+        "vocabulary_slugs": [
+          "basu",
+          "fuben"
+        ]
+      },
+      {
+        "japanese": "駅から遠い家は不便です。",
+        "english": "A house far from the station is inconvenient.",
+        "vocabulary_slugs": [
+          "eki",
+          "tooi",
+          "ie",
+          "fuben"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "fuku": {
     "example_sentences": [
       {
@@ -1793,6 +2476,42 @@
       "review_status": "draft"
     }
   },
+  "furui-adj": {
+    "example_sentences": [
+      {
+        "japanese": "これは古い本です。",
+        "english": "This is an old book.",
+        "vocabulary_slugs": [
+          "kore",
+          "furui-adj",
+          "hon"
+        ]
+      },
+      {
+        "japanese": "古い靴を買いました。",
+        "english": "I bought old shoes.",
+        "vocabulary_slugs": [
+          "furui-adj",
+          "kutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あの橋は古いです。",
+        "english": "That bridge over there is old.",
+        "vocabulary_slugs": [
+          "ano",
+          "hashi-bridge",
+          "furui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "futatsu": {
     "example_sentences": [
       {
@@ -1856,6 +2575,44 @@
         "vocabulary_slugs": [
           "ashita",
           "futsuka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fuyu": {
+    "example_sentences": [
+      {
+        "japanese": "冬の朝は寒いです。",
+        "english": "Winter mornings are cold.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "asa",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "冬に友達と山へ行く。",
+        "english": "In winter I go to the mountains with friends.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "tomodachi",
+          "yama-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "冬は家で映画を見ます。",
+        "english": "In winter I watch movies at home.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "ie",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -1964,6 +2721,42 @@
           "gakusei",
           "hon",
           "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "genki": {
+    "example_sentences": [
+      {
+        "japanese": "お母さんは元気ですか。",
+        "english": "How is your mother doing?",
+        "vocabulary_slugs": [
+          "okaasan",
+          "genki"
+        ]
+      },
+      {
+        "japanese": "私は朝から元気です。",
+        "english": "I've been full of energy since this morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "asa",
+          "genki"
+        ]
+      },
+      {
+        "japanese": "犬が公園で元気に遊ぶ。",
+        "english": "The dog plays energetically in the park.",
+        "vocabulary_slugs": [
+          "inu",
+          "kouen",
+          "genki",
+          "asobu"
         ]
       }
     ],
@@ -2487,6 +3280,79 @@
       "review_status": "draft"
     }
   },
+  "hana-v": {
+    "example_sentences": [
+      {
+        "japanese": "公園で花を見ます。",
+        "english": "I look at the flowers in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "hana-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "母に花を買いました。",
+        "english": "I bought flowers for my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "hana-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この花は高いです。",
+        "english": "This flower is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "haru": {
+    "example_sentences": [
+      {
+        "japanese": "春はいい天気です。",
+        "english": "Spring has nice weather.",
+        "vocabulary_slugs": [
+          "haru",
+          "ii",
+          "tenki"
+        ]
+      },
+      {
+        "japanese": "私は春に公園へ行きます。",
+        "english": "I go to the park in spring.",
+        "vocabulary_slugs": [
+          "watashi",
+          "haru",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今年の春は楽しいです。",
+        "english": "This year's spring is enjoyable.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "haru",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hashi-bridge": {
     "example_sentences": [
       {
@@ -2559,6 +3425,114 @@
       "review_status": "draft"
     }
   },
+  "hayai-early": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝早く起きます。",
+        "english": "I wake up early every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "hayai-early",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "晩ご飯は早いです。",
+        "english": "Dinner is early.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "hayai-early"
+        ]
+      },
+      {
+        "japanese": "明日早く学校に行きます。",
+        "english": "I'm going to school early tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "hayai-early",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hayai-fast": {
+    "example_sentences": [
+      {
+        "japanese": "このバスは速いです。",
+        "english": "This bus is fast.",
+        "vocabulary_slugs": [
+          "kono",
+          "basu",
+          "hayai-fast"
+        ]
+      },
+      {
+        "japanese": "彼女は話すのが速い。",
+        "english": "She speaks quickly.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "hanasu-v",
+          "hayai-fast"
+        ]
+      },
+      {
+        "japanese": "弟は食べるのが速い。",
+        "english": "My little brother eats fast.",
+        "vocabulary_slugs": [
+          "otouto",
+          "taberu",
+          "hayai-fast"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "heta": {
+    "example_sentences": [
+      {
+        "japanese": "私は料理が下手です。",
+        "english": "I'm bad at cooking.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ryouri",
+          "heta"
+        ]
+      },
+      {
+        "japanese": "彼は話すのが下手だ。",
+        "english": "He's bad at speaking.",
+        "vocabulary_slugs": [
+          "kare",
+          "hanasu-v",
+          "heta"
+        ]
+      },
+      {
+        "japanese": "僕はパソコンが下手です。",
+        "english": "I'm bad with computers.",
+        "vocabulary_slugs": [
+          "boku",
+          "pasokon",
+          "heta"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "heya": {
     "example_sentences": [
       {
@@ -2586,6 +3560,148 @@
           "tomodachi",
           "heya",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hi-sun-v": {
+    "example_sentences": [
+      {
+        "japanese": "朝、日が出る。",
+        "english": "In the morning, the sun comes out.",
+        "vocabulary_slugs": [
+          "asa",
+          "hi-sun-v",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "窓から日が入る。",
+        "english": "The sun comes in through the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "hi-sun-v",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "今日はいい日です。",
+        "english": "Today is a nice day.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ii",
+          "hi-sun-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hikui": {
+    "example_sentences": [
+      {
+        "japanese": "この椅子は低いです。",
+        "english": "This chair is low.",
+        "vocabulary_slugs": [
+          "kono",
+          "isu",
+          "hikui"
+        ]
+      },
+      {
+        "japanese": "低いテーブルを買います。",
+        "english": "I'm going to buy a low table.",
+        "vocabulary_slugs": [
+          "hikui",
+          "teeburu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あの山は低いです。",
+        "english": "That mountain over there is low.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "hikui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hima": {
+    "example_sentences": [
+      {
+        "japanese": "今日は暇です。",
+        "english": "I'm free today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hima"
+        ]
+      },
+      {
+        "japanese": "午後は暇ですか。",
+        "english": "Are you free this afternoon?",
+        "vocabulary_slugs": [
+          "gogo",
+          "hima"
+        ]
+      },
+      {
+        "japanese": "暇なら一緒に遊びましょう。",
+        "english": "If you're free, let's hang out together.",
+        "vocabulary_slugs": [
+          "hima",
+          "issho-ni",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hiroi": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は広いです。",
+        "english": "This room is spacious.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "hiroi"
+        ]
+      },
+      {
+        "japanese": "広い公園で遊びます。",
+        "english": "I play in a spacious park.",
+        "vocabulary_slugs": [
+          "hiroi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "あの道は広いですか。",
+        "english": "Is that road wide?",
+        "vocabulary_slugs": [
+          "ano",
+          "michi-v",
+          "hiroi"
         ]
       }
     ],
@@ -2781,6 +3897,82 @@
       "review_status": "draft"
     }
   },
+  "hoshi": {
+    "example_sentences": [
+      {
+        "japanese": "窓から星を見ます。",
+        "english": "I look at the stars from the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "hoshi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼女は星の本を読みます。",
+        "english": "She reads a book about stars.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "hoshi",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "明日の夜、星を見に行きます。",
+        "english": "Tomorrow night I'll go see the stars.",
+        "vocabulary_slugs": [
+          "ashita",
+          "yoru",
+          "hoshi",
+          "miru-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hoshii": {
+    "example_sentences": [
+      {
+        "japanese": "私は新しい本が欲しいです。",
+        "english": "I want a new book.",
+        "vocabulary_slugs": [
+          "watashi",
+          "atarashii-adj",
+          "hon",
+          "hoshii"
+        ]
+      },
+      {
+        "japanese": "今、冷たい水が欲しい。",
+        "english": "I want some cold water now.",
+        "vocabulary_slugs": [
+          "ima",
+          "tsumetai",
+          "mizu",
+          "hoshii"
+        ]
+      },
+      {
+        "japanese": "何が欲しいですか。",
+        "english": "What do you want?",
+        "vocabulary_slugs": [
+          "nani",
+          "hoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hyaku-v": {
     "example_sentences": [
       {
@@ -2883,6 +4075,42 @@
           "ie",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ii": {
+    "example_sentences": [
+      {
+        "japanese": "この料理はいいです。",
+        "english": "This dish is good.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "明日は来なくていいよ。",
+        "english": "You don't have to come tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kuru-v",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "今日はいい天気です。",
+        "english": "The weather is nice today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ii",
+          "tenki"
         ]
       }
     ],
@@ -3067,6 +4295,119 @@
       "review_status": "draft"
     }
   },
+  "inu": {
+    "example_sentences": [
+      {
+        "japanese": "私の犬は公園で遊びます。",
+        "english": "My dog plays in the park.",
+        "vocabulary_slugs": [
+          "watashi",
+          "inu",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "彼女は犬の写真を見ます。",
+        "english": "She looks at a photo of a dog.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "inu",
+          "shashin",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "兄の犬は肉を食べます。",
+        "english": "My older brother's dog eats meat.",
+        "vocabulary_slugs": [
+          "ani",
+          "inu",
+          "niku",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "iro": {
+    "example_sentences": [
+      {
+        "japanese": "この服の色はいいです。",
+        "english": "This color of clothes is nice.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "iro",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "どの色を買いますか。",
+        "english": "Which color will you buy?",
+        "vocabulary_slugs": [
+          "dono",
+          "iro",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "空の色を見ます。",
+        "english": "I'm looking at the color of the sky.",
+        "vocabulary_slugs": [
+          "sora",
+          "iro",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "iroiro": {
+    "example_sentences": [
+      {
+        "japanese": "色々な食べ物があります。",
+        "english": "There are various kinds of food.",
+        "vocabulary_slugs": [
+          "iroiro",
+          "tabemono"
+        ]
+      },
+      {
+        "japanese": "今日は色々な店に行きました。",
+        "english": "Today I went to various shops.",
+        "vocabulary_slugs": [
+          "kyou",
+          "iroiro",
+          "mise",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は色々な本を読みます。",
+        "english": "She reads various books.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "iroiro",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "isha": {
     "example_sentences": [
       {
@@ -3095,6 +4436,40 @@
           "issho-ni",
           "isha",
           "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "isogashii": {
+    "example_sentences": [
+      {
+        "japanese": "今日は忙しいです。",
+        "english": "I'm busy today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "父は会社で忙しい。",
+        "english": "My dad is busy at the office.",
+        "vocabulary_slugs": [
+          "chichi",
+          "kaisha",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "忙しいから行きません。",
+        "english": "I won't go because I'm busy.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "iku-v"
         ]
       }
     ],
@@ -3133,6 +4508,40 @@
           "ano",
           "isu",
           "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itai": {
+    "example_sentences": [
+      {
+        "japanese": "足が痛いです。",
+        "english": "My foot hurts.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "歯が痛い。",
+        "english": "My tooth hurts.",
+        "vocabulary_slugs": [
+          "ha-tooth",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "昨日からお腹が痛いです。",
+        "english": "My stomach has been hurting since yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "onaka",
+          "itai"
         ]
       }
     ],
@@ -3382,6 +4791,42 @@
           "tomodachi",
           "jisho",
           "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jouzu": {
+    "example_sentences": [
+      {
+        "japanese": "友達は写真が上手です。",
+        "english": "My friend is good at photography.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "shashin",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "彼は上手に書きます。",
+        "english": "He writes skillfully.",
+        "vocabulary_slugs": [
+          "kare",
+          "jouzu",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "妹は話すのが上手ですね。",
+        "english": "My younger sister is good at speaking, isn't she?",
+        "vocabulary_slugs": [
+          "imouto",
+          "hanasu-v",
+          "jouzu"
         ]
       }
     ],
@@ -3718,6 +5163,41 @@
       "review_status": "draft"
     }
   },
+  "kanashii": {
+    "example_sentences": [
+      {
+        "japanese": "今日は悲しいです。",
+        "english": "I'm sad today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kanashii"
+        ]
+      },
+      {
+        "japanese": "この映画は悲しいです。",
+        "english": "This movie is sad.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "kanashii"
+        ]
+      },
+      {
+        "japanese": "悲しい手紙を読みました。",
+        "english": "I read a sad letter.",
+        "vocabulary_slugs": [
+          "kanashii",
+          "tegami",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kanojo": {
     "example_sentences": [
       {
@@ -3829,6 +5309,42 @@
       "review_status": "draft"
     }
   },
+  "karai": {
+    "example_sentences": [
+      {
+        "japanese": "この料理は辛いです。",
+        "english": "This dish is spicy.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "karai"
+        ]
+      },
+      {
+        "japanese": "辛い肉を食べました。",
+        "english": "I ate some spicy meat.",
+        "vocabulary_slugs": [
+          "karai",
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "その魚は辛いですか。",
+        "english": "Is that fish spicy?",
+        "vocabulary_slugs": [
+          "sono",
+          "sakana",
+          "karai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kare": {
     "example_sentences": [
       {
@@ -3857,6 +5373,42 @@
           "kyou",
           "ie",
           "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "karui": {
+    "example_sentences": [
+      {
+        "japanese": "このかばんは軽いです。",
+        "english": "This bag is light.",
+        "vocabulary_slugs": [
+          "kono",
+          "kaban",
+          "karui"
+        ]
+      },
+      {
+        "japanese": "その箱は軽い。",
+        "english": "That box is light.",
+        "vocabulary_slugs": [
+          "sono",
+          "hako",
+          "karui"
+        ]
+      },
+      {
+        "japanese": "軽い靴を買いました。",
+        "english": "I bought light shoes.",
+        "vocabulary_slugs": [
+          "karui",
+          "kutsu",
+          "kau-v"
         ]
       }
     ],
@@ -3902,6 +5454,77 @@
       "review_status": "draft"
     }
   },
+  "kawa-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は川に行きます。",
+        "english": "I'm going to the river.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kawa-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "子供が川で遊びます。",
+        "english": "Children play in the river.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kawa-v",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "川で魚を見ます。",
+        "english": "I see fish in the river.",
+        "vocabulary_slugs": [
+          "kawa-v",
+          "sakana",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kawaii": {
+    "example_sentences": [
+      {
+        "japanese": "この猫はかわいいです。",
+        "english": "This cat is cute.",
+        "vocabulary_slugs": [
+          "kono",
+          "neko",
+          "kawaii"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんがかわいいですね。",
+        "english": "The baby is cute, isn't it?",
+        "vocabulary_slugs": [
+          "akachan",
+          "kawaii"
+        ]
+      },
+      {
+        "japanese": "かわいい花を買いました。",
+        "english": "I bought a cute flower.",
+        "vocabulary_slugs": [
+          "kawaii",
+          "hana-v",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kayoubi": {
     "example_sentences": [
       {
@@ -3929,6 +5552,42 @@
           "kayoubi",
           "tomodachi",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaze-wind": {
+    "example_sentences": [
+      {
+        "japanese": "今日は風が寒いです。",
+        "english": "Today the wind is cold.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaze-wind",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "窓から風が入る。",
+        "english": "Wind comes in through the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "kaze-wind",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "海の風がいいです。",
+        "english": "The ocean breeze feels nice.",
+        "vocabulary_slugs": [
+          "umi",
+          "kaze-wind",
+          "ii"
         ]
       }
     ],
@@ -4048,6 +5707,77 @@
       "review_status": "draft"
     }
   },
+  "ki-tree-v": {
+    "example_sentences": [
+      {
+        "japanese": "公園に高い木があります。",
+        "english": "There's a tall tree in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "takai-adj",
+          "ki-tree-v"
+        ]
+      },
+      {
+        "japanese": "子供が木で遊びます。",
+        "english": "The child is playing by the tree.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "ki-tree-v",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "庭の木を見ます。",
+        "english": "I look at the tree in the garden.",
+        "vocabulary_slugs": [
+          "niwa",
+          "ki-tree-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kiiro": {
+    "example_sentences": [
+      {
+        "japanese": "この花は黄色です。",
+        "english": "This flower is yellow.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "kiiro"
+        ]
+      },
+      {
+        "japanese": "黄色いシャツを買いました。",
+        "english": "I bought a yellow shirt.",
+        "vocabulary_slugs": [
+          "kiiro",
+          "shatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "どれが黄色ですか。",
+        "english": "Which one is yellow?",
+        "vocabulary_slugs": [
+          "dore",
+          "kiiro"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kimi": {
     "example_sentences": [
       {
@@ -4157,6 +5887,78 @@
       "review_status": "draft"
     }
   },
+  "kirai": {
+    "example_sentences": [
+      {
+        "japanese": "僕は魚が嫌いです。",
+        "english": "I don't like fish.",
+        "vocabulary_slugs": [
+          "boku",
+          "sakana",
+          "kirai"
+        ]
+      },
+      {
+        "japanese": "嫌いな食べ物は肉です。",
+        "english": "The food I dislike is meat.",
+        "vocabulary_slugs": [
+          "kirai",
+          "tabemono",
+          "niku"
+        ]
+      },
+      {
+        "japanese": "彼女は雨の日が嫌いです。",
+        "english": "She doesn't like rainy days.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ame-v",
+          "hi-sun-v",
+          "kirai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kirei": {
+    "example_sentences": [
+      {
+        "japanese": "この花はきれいです。",
+        "english": "This flower is pretty.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "部屋をきれいにします。",
+        "english": "I'll clean the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "彼女はきれいな人です。",
+        "english": "She is a pretty person.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kirei",
+          "hito"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kissaten": {
     "example_sentences": [
       {
@@ -4186,6 +5988,41 @@
           "kissaten",
           "ocha",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kitanai": {
+    "example_sentences": [
+      {
+        "japanese": "この服は汚いです。",
+        "english": "These clothes are dirty.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "kitanai"
+        ]
+      },
+      {
+        "japanese": "手が汚い。",
+        "english": "My hands are dirty.",
+        "vocabulary_slugs": [
+          "te-v",
+          "kitanai"
+        ]
+      },
+      {
+        "japanese": "汚い水は飲みません。",
+        "english": "I don't drink dirty water.",
+        "vocabulary_slugs": [
+          "kitanai",
+          "mizu",
+          "nomu-v"
         ]
       }
     ],
@@ -5018,6 +6855,150 @@
       "review_status": "draft"
     }
   },
+  "kumo": {
+    "example_sentences": [
+      {
+        "japanese": "窓から雲を見ます。",
+        "english": "I look at the clouds from the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "kumo",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "今日は雲がありません。",
+        "english": "There are no clouds today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kumo"
+        ]
+      },
+      {
+        "japanese": "雲が一つ出ました。",
+        "english": "One cloud appeared.",
+        "vocabulary_slugs": [
+          "kumo",
+          "hitotsu",
+          "deru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kurai": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は暗いです。",
+        "english": "This room is dark.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "kurai"
+        ]
+      },
+      {
+        "japanese": "夜の道は暗いです。",
+        "english": "The road is dark at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "michi-v",
+          "kurai"
+        ]
+      },
+      {
+        "japanese": "暗い部屋で本を読みます。",
+        "english": "I read a book in a dark room.",
+        "vocabulary_slugs": [
+          "kurai",
+          "heya",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kuro-color": {
+    "example_sentences": [
+      {
+        "japanese": "この色は黒です。",
+        "english": "This color is black.",
+        "vocabulary_slugs": [
+          "kono",
+          "iro",
+          "kuro-color"
+        ]
+      },
+      {
+        "japanese": "黒い犬がいます。",
+        "english": "There's a black dog.",
+        "vocabulary_slugs": [
+          "kuro-color",
+          "inu"
+        ]
+      },
+      {
+        "japanese": "黒い靴を買いました。",
+        "english": "I bought black shoes.",
+        "vocabulary_slugs": [
+          "kuro-color",
+          "kutsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kuroi": {
+    "example_sentences": [
+      {
+        "japanese": "私の髪は黒いです。",
+        "english": "My hair is black.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kami-hair",
+          "kuroi"
+        ]
+      },
+      {
+        "japanese": "彼女は黒い靴を買いました。",
+        "english": "She bought black shoes.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kuroi",
+          "kutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "黒い猫を見ました。",
+        "english": "I saw a black cat.",
+        "vocabulary_slugs": [
+          "kuroi",
+          "neko",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kutsu": {
     "example_sentences": [
       {
@@ -5577,6 +7558,78 @@
       "review_status": "draft"
     }
   },
+  "marui": {
+    "example_sentences": [
+      {
+        "japanese": "このテーブルは丸いです。",
+        "english": "This table is round.",
+        "vocabulary_slugs": [
+          "kono",
+          "teeburu",
+          "marui"
+        ]
+      },
+      {
+        "japanese": "彼女の顔は丸いです。",
+        "english": "Her face is round.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kao",
+          "marui"
+        ]
+      },
+      {
+        "japanese": "丸い箱を買いました。",
+        "english": "I bought a round box.",
+        "vocabulary_slugs": [
+          "marui",
+          "hako",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mazui": {
+    "example_sentences": [
+      {
+        "japanese": "このご飯はまずいです。",
+        "english": "This rice tastes bad.",
+        "vocabulary_slugs": [
+          "kono",
+          "gohan",
+          "mazui"
+        ]
+      },
+      {
+        "japanese": "昨日の魚はまずかった。",
+        "english": "Yesterday's fish tasted awful.",
+        "vocabulary_slugs": [
+          "kinou",
+          "sakana",
+          "mazui"
+        ]
+      },
+      {
+        "japanese": "まずい飲み物を飲みました。",
+        "english": "I drank a bad-tasting drink.",
+        "vocabulary_slugs": [
+          "mazui",
+          "nomimono",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "me-v": {
     "example_sentences": [
       {
@@ -5677,6 +7730,79 @@
           "tomodachi",
           "michi-v",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "midori": {
+    "example_sentences": [
+      {
+        "japanese": "このシャツは緑です。",
+        "english": "This shirt is green.",
+        "vocabulary_slugs": [
+          "kono",
+          "shatsu",
+          "midori"
+        ]
+      },
+      {
+        "japanese": "緑の野菜を食べます。",
+        "english": "I eat green vegetables.",
+        "vocabulary_slugs": [
+          "midori",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼女は緑の帽子を買いました。",
+        "english": "She bought a green hat.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "midori",
+          "boushi",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mijikai": {
+    "example_sentences": [
+      {
+        "japanese": "この道は短いです。",
+        "english": "This road is short.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "mijikai"
+        ]
+      },
+      {
+        "japanese": "冬の日は短い。",
+        "english": "Winter days are short.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "hi-sun-v",
+          "mijikai"
+        ]
+      },
+      {
+        "japanese": "その映画は短かった。",
+        "english": "That movie was short.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "mijikai"
         ]
       }
     ],
@@ -5905,6 +8031,43 @@
       "review_status": "draft"
     }
   },
+  "mizuumi": {
+    "example_sentences": [
+      {
+        "japanese": "私たちは湖に行きました。",
+        "english": "We went to the lake.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "mizuumi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの湖を見ました。",
+        "english": "I saw that lake over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "mizuumi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "夏に友達と湖で遊びます。",
+        "english": "In summer I play at the lake with friends.",
+        "vocabulary_slugs": [
+          "natsu",
+          "tomodachi",
+          "mizuumi",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mokuyoubi": {
     "example_sentences": [
       {
@@ -6077,6 +8240,78 @@
           "shashin",
           "muttsu",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "muzukashii": {
+    "example_sentences": [
+      {
+        "japanese": "この本は難しいです。",
+        "english": "This book is difficult.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "難しい映画を見ます。",
+        "english": "I'm watching a difficult movie.",
+        "vocabulary_slugs": [
+          "muzukashii",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "新聞を読むのは難しい。",
+        "english": "Reading the newspaper is difficult.",
+        "vocabulary_slugs": [
+          "shinbun",
+          "yomu",
+          "muzukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nagai-adj": {
+    "example_sentences": [
+      {
+        "japanese": "この道は長いです。",
+        "english": "This road is long.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "nagai-adj"
+        ]
+      },
+      {
+        "japanese": "長い映画を見ました。",
+        "english": "I watched a long movie.",
+        "vocabulary_slugs": [
+          "nagai-adj",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "冬の夜は長いです。",
+        "english": "Winter nights are long.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "yoru",
+          "nagai-adj"
         ]
       }
     ],
@@ -6295,6 +8530,43 @@
       "review_status": "draft"
     }
   },
+  "natsu": {
+    "example_sentences": [
+      {
+        "japanese": "今年の夏は暑いです。",
+        "english": "This summer is hot.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "natsu",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "夏に海へ行きます。",
+        "english": "I go to the sea in summer.",
+        "vocabulary_slugs": [
+          "natsu",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私たちは夏に公園で遊びます。",
+        "english": "We play at the park in summer.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "natsu",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "naze": {
     "example_sentences": [
       {
@@ -6323,6 +8595,43 @@
           "sono",
           "hon",
           "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "neko": {
+    "example_sentences": [
+      {
+        "japanese": "猫が魚を食べます。",
+        "english": "The cat eats fish.",
+        "vocabulary_slugs": [
+          "neko",
+          "sakana",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼女の猫はベッドで寝ます。",
+        "english": "Her cat sleeps on the bed.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "neko",
+          "beddo",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "公園で猫と遊びます。",
+        "english": "I play with a cat at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "neko",
+          "asobu"
         ]
       }
     ],
@@ -6395,6 +8704,42 @@
           "nichiyoubi",
           "tomodachi",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nigiyaka": {
+    "example_sentences": [
+      {
+        "japanese": "この町は賑やかです。",
+        "english": "This town is lively.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "週末の公園は賑やかです。",
+        "english": "The park is bustling on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kouen",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "賑やかな店が好きです。",
+        "english": "I like lively shops.",
+        "vocabulary_slugs": [
+          "nigiyaka",
+          "mise",
+          "suki"
         ]
       }
     ],
@@ -6666,6 +9011,42 @@
       "review_status": "draft"
     }
   },
+  "oishii": {
+    "example_sentences": [
+      {
+        "japanese": "このご飯はおいしいです。",
+        "english": "This rice is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "gohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "お母さんの料理はおいしいです。",
+        "english": "My mom's cooking is delicious.",
+        "vocabulary_slugs": [
+          "okaasan",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "おいしい魚を食べます。",
+        "english": "I'm going to eat some delicious fish.",
+        "vocabulary_slugs": [
+          "oishii",
+          "sakana",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "oji": {
     "example_sentences": [
       {
@@ -6842,6 +9223,117 @@
           "tomodachi",
           "okusan",
           "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "omoi": {
+    "example_sentences": [
+      {
+        "japanese": "このかばんは重いです。",
+        "english": "This bag is heavy.",
+        "vocabulary_slugs": [
+          "kono",
+          "kaban",
+          "omoi"
+        ]
+      },
+      {
+        "japanese": "その箱は重いですか。",
+        "english": "Is that box heavy?",
+        "vocabulary_slugs": [
+          "sono",
+          "hako",
+          "omoi"
+        ]
+      },
+      {
+        "japanese": "重い本を買いました。",
+        "english": "I bought a heavy book.",
+        "vocabulary_slugs": [
+          "omoi",
+          "hon",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "omoshiroi": {
+    "example_sentences": [
+      {
+        "japanese": "この本は面白いです。",
+        "english": "This book is interesting.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "昨日の映画は面白かった。",
+        "english": "Yesterday's movie was funny.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "彼女は面白い人です。",
+        "english": "She's an interesting person.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "omoshiroi",
+          "hito"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "onaji": {
+    "example_sentences": [
+      {
+        "japanese": "これとそれは同じですか。",
+        "english": "Are this and that the same?",
+        "vocabulary_slugs": [
+          "kore",
+          "sore",
+          "onaji"
+        ]
+      },
+      {
+        "japanese": "私は友達と同じ映画を見ます。",
+        "english": "I'll watch the same movie as my friend.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "onaji",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "今日は昨日と同じ天気です。",
+        "english": "Today's weather is the same as yesterday.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kinou",
+          "onaji",
+          "tenki"
         ]
       }
     ],
@@ -7034,6 +9526,42 @@
       "review_status": "draft"
     }
   },
+  "ookii": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は大きいです。",
+        "english": "This room is big.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "大きい箱を買いました。",
+        "english": "I bought a big box.",
+        "vocabulary_slugs": [
+          "ookii",
+          "hako",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あの山は大きいです。",
+        "english": "That mountain over there is big.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "ookii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "osake": {
     "example_sentences": [
       {
@@ -7060,6 +9588,41 @@
           "kono",
           "osake",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "osoi": {
+    "example_sentences": [
+      {
+        "japanese": "彼は今日遅いです。",
+        "english": "He's late today.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyou",
+          "osoi"
+        ]
+      },
+      {
+        "japanese": "このバスは遅いです。",
+        "english": "This bus is slow.",
+        "vocabulary_slugs": [
+          "kono",
+          "basu",
+          "osoi"
+        ]
+      },
+      {
+        "japanese": "晩ご飯が遅いです。",
+        "english": "Dinner is late.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "osoi"
         ]
       }
     ],
@@ -7822,6 +10385,40 @@
       "review_status": "draft"
     }
   },
+  "samui": {
+    "example_sentences": [
+      {
+        "japanese": "今日は寒いです。",
+        "english": "It's cold today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "この部屋は寒い。",
+        "english": "This room is cold.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "冬は寒いですね。",
+        "english": "Winter is cold, isn't it?",
+        "vocabulary_slugs": [
+          "fuyu",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "san-v": {
     "example_sentences": [
       {
@@ -7923,6 +10520,42 @@
           "maiasa",
           "gakkou-v",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "semai": {
+    "example_sentences": [
+      {
+        "japanese": "この店は狭いです。",
+        "english": "This shop is cramped.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "semai"
+        ]
+      },
+      {
+        "japanese": "うちの台所は狭いです。",
+        "english": "Our kitchen is cramped.",
+        "vocabulary_slugs": [
+          "uchi",
+          "daidokoro",
+          "semai"
+        ]
+      },
+      {
+        "japanese": "狭い部屋に入ります。",
+        "english": "I go into a cramped room.",
+        "vocabulary_slugs": [
+          "semai",
+          "heya",
+          "hairu-v"
         ]
       }
     ],
@@ -8261,6 +10894,42 @@
       "review_status": "draft"
     }
   },
+  "shinsetsu": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は親切な人です。",
+        "english": "She is a kind person.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shinsetsu",
+          "hito"
+        ]
+      },
+      {
+        "japanese": "先生は学生に親切です。",
+        "english": "The teacher is kind to students.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakusei",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "友達は私に親切でした。",
+        "english": "My friend was kind to me.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "watashi",
+          "shinsetsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shio": {
     "example_sentences": [
       {
@@ -8288,6 +10957,114 @@
           "mainichi",
           "shio",
           "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shiro-color": {
+    "example_sentences": [
+      {
+        "japanese": "この紙は白いです。",
+        "english": "This paper is white.",
+        "vocabulary_slugs": [
+          "kono",
+          "kami-paper",
+          "shiro-color"
+        ]
+      },
+      {
+        "japanese": "白い花を買いました。",
+        "english": "I bought white flowers.",
+        "vocabulary_slugs": [
+          "shiro-color",
+          "hana-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "どれが白いですか。",
+        "english": "Which one is white?",
+        "vocabulary_slugs": [
+          "dore",
+          "shiro-color"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shiroi": {
+    "example_sentences": [
+      {
+        "japanese": "このシャツは白いです。",
+        "english": "This shirt is white.",
+        "vocabulary_slugs": [
+          "kono",
+          "shatsu",
+          "shiroi"
+        ]
+      },
+      {
+        "japanese": "白い花を見ます。",
+        "english": "I look at white flowers.",
+        "vocabulary_slugs": [
+          "shiroi",
+          "hana-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私は白いパンを買います。",
+        "english": "I buy white bread.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shiroi",
+          "pan",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shizuka": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は静かです。",
+        "english": "This room is quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんが静かに寝ます。",
+        "english": "The baby sleeps quietly.",
+        "vocabulary_slugs": [
+          "akachan",
+          "shizuka",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "静かな喫茶店が好きです。",
+        "english": "I like quiet coffee shops.",
+        "vocabulary_slugs": [
+          "shizuka",
+          "kissaten",
+          "suki"
         ]
       }
     ],
@@ -8592,6 +11369,42 @@
       "review_status": "draft"
     }
   },
+  "sora": {
+    "example_sentences": [
+      {
+        "japanese": "今日の空はいい。",
+        "english": "Today's sky looks nice.",
+        "vocabulary_slugs": [
+          "kyou",
+          "sora",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "窓から空を見る。",
+        "english": "I look at the sky from the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "sora",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "空から雨が来る。",
+        "english": "Rain comes from the sky.",
+        "vocabulary_slugs": [
+          "sora",
+          "ame-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "sore": {
     "example_sentences": [
       {
@@ -8662,6 +11475,40 @@
       "review_status": "draft"
     }
   },
+  "suki": {
+    "example_sentences": [
+      {
+        "japanese": "私は猫が好きです。",
+        "english": "I like cats.",
+        "vocabulary_slugs": [
+          "watashi",
+          "neko",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "何が好きですか。",
+        "english": "What do you like?",
+        "vocabulary_slugs": [
+          "nani",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "お酒は好きじゃない。",
+        "english": "I don't like alcohol.",
+        "vocabulary_slugs": [
+          "osake",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "suupaa": {
     "example_sentences": [
       {
@@ -8700,6 +11547,41 @@
       "review_status": "draft"
     }
   },
+  "suzushii": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は涼しいです。",
+        "english": "This room is cool.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "suzushii"
+        ]
+      },
+      {
+        "japanese": "公園は朝涼しいです。",
+        "english": "The park is cool in the morning.",
+        "vocabulary_slugs": [
+          "kouen",
+          "asa",
+          "suzushii"
+        ]
+      },
+      {
+        "japanese": "風が涼しいですね。",
+        "english": "The wind feels cool, doesn't it?",
+        "vocabulary_slugs": [
+          "kaze-wind",
+          "suzushii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tabemono": {
     "example_sentences": [
       {
@@ -8728,6 +11610,76 @@
           "donna",
           "tabemono",
           "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "taihen": {
+    "example_sentences": [
+      {
+        "japanese": "今日は大変でした。",
+        "english": "Today was tough.",
+        "vocabulary_slugs": [
+          "kyou",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "それは大変ですね。",
+        "english": "That's awful.",
+        "vocabulary_slugs": [
+          "sore",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "父の会社は大変です。",
+        "english": "My father's company is tough.",
+        "vocabulary_slugs": [
+          "chichi",
+          "kaisha",
+          "taihen"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "takai-adj": {
+    "example_sentences": [
+      {
+        "japanese": "あの山は高いです。",
+        "english": "That mountain is tall.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "この時計は高いです。",
+        "english": "This watch is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "tokei",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "高い靴を買いました。",
+        "english": "I bought expensive shoes.",
+        "vocabulary_slugs": [
+          "takai-adj",
+          "kutsu",
+          "kau-v"
         ]
       }
     ],
@@ -8803,6 +11755,44 @@
           "tamago",
           "mittsu",
           "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tanoshii": {
+    "example_sentences": [
+      {
+        "japanese": "今日の学校は楽しいです。",
+        "english": "School is fun today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "友達と映画を見るのは楽しい。",
+        "english": "Watching a movie with friends is fun.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "eiga",
+          "miru-v",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "週末は公園で遊ぶと楽しいです。",
+        "english": "Playing in the park on the weekend is fun.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kouen",
+          "asobu",
+          "tanoshii"
         ]
       }
     ],
@@ -9139,6 +12129,43 @@
       "review_status": "draft"
     }
   },
+  "tooi": {
+    "example_sentences": [
+      {
+        "japanese": "病院はここから遠い。",
+        "english": "The hospital is far from here.",
+        "vocabulary_slugs": [
+          "byouin",
+          "koko",
+          "tooi"
+        ]
+      },
+      {
+        "japanese": "あのスーパーは遠いですか。",
+        "english": "Is that supermarket far?",
+        "vocabulary_slugs": [
+          "ano",
+          "suupaa",
+          "tooi"
+        ]
+      },
+      {
+        "japanese": "遠い町へ明日行きます。",
+        "english": "I'll go to a far town tomorrow.",
+        "vocabulary_slugs": [
+          "tooi",
+          "machi-v",
+          "ashita",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tooka": {
     "example_sentences": [
       {
@@ -9165,6 +12192,43 @@
           "raigetsu",
           "tooka",
           "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tori": {
+    "example_sentences": [
+      {
+        "japanese": "公園で鳥を見ました。",
+        "english": "I saw a bird in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "tori",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "木に鳥が来ました。",
+        "english": "A bird came to the tree.",
+        "vocabulary_slugs": [
+          "ki-tree-v",
+          "tori",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "妹は鳥の声を聞きました。",
+        "english": "My little sister heard a bird's voice.",
+        "vocabulary_slugs": [
+          "imouto",
+          "tori",
+          "koe",
+          "kiku-v"
         ]
       }
     ],
@@ -9237,6 +12301,41 @@
           "kongetsu",
           "tsuitachi",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuki-v": {
+    "example_sentences": [
+      {
+        "japanese": "夜、月を見ます。",
+        "english": "At night, I look at the moon.",
+        "vocabulary_slugs": [
+          "yoru",
+          "tsuki-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "空に月があります。",
+        "english": "There's a moon in the sky.",
+        "vocabulary_slugs": [
+          "sora",
+          "tsuki-v"
+        ]
+      },
+      {
+        "japanese": "公園で月を見ます。",
+        "english": "I look at the moon in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "tsuki-v",
+          "miru-v"
         ]
       }
     ],
@@ -9321,6 +12420,114 @@
       "review_status": "draft"
     }
   },
+  "tsumaranai": {
+    "example_sentences": [
+      {
+        "japanese": "この本はつまらない。",
+        "english": "This book is boring.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "tsumaranai"
+        ]
+      },
+      {
+        "japanese": "つまらない映画を見ました。",
+        "english": "I watched a boring movie.",
+        "vocabulary_slugs": [
+          "tsumaranai",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "毎日学校はつまらない。",
+        "english": "School is boring every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "gakkou-v",
+          "tsumaranai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsumetai": {
+    "example_sentences": [
+      {
+        "japanese": "この水は冷たいです。",
+        "english": "This water is cold.",
+        "vocabulary_slugs": [
+          "kono",
+          "mizu",
+          "tsumetai"
+        ]
+      },
+      {
+        "japanese": "冷たいお茶を飲みます。",
+        "english": "I'll drink some cold tea.",
+        "vocabulary_slugs": [
+          "tsumetai",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "彼の手は冷たいです。",
+        "english": "His hands are cold.",
+        "vocabulary_slugs": [
+          "kare",
+          "te-v",
+          "tsumetai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuyoi": {
+    "example_sentences": [
+      {
+        "japanese": "今日は風が強いです。",
+        "english": "The wind is strong today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaze-wind",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "彼は私より強いです。",
+        "english": "He's stronger than me.",
+        "vocabulary_slugs": [
+          "kare",
+          "watashi",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "このコーヒーは強いです。",
+        "english": "This coffee is strong.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "tsuyoi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "uchi": {
     "example_sentences": [
       {
@@ -9348,6 +12555,152 @@
           "uchi",
           "gohan",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "umi": {
+    "example_sentences": [
+      {
+        "japanese": "明日、海に行きます。",
+        "english": "Tomorrow I'm going to the sea.",
+        "vocabulary_slugs": [
+          "ashita",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "海で魚を見ました。",
+        "english": "I saw a fish at the sea.",
+        "vocabulary_slugs": [
+          "umi",
+          "sakana",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私たちは海で遊びます。",
+        "english": "We play at the sea.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "umi",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ureshii": {
+    "example_sentences": [
+      {
+        "japanese": "友達に会えて嬉しいです。",
+        "english": "I'm glad I got to see my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "au",
+          "ureshii"
+        ]
+      },
+      {
+        "japanese": "新しい靴が買えて嬉しい。",
+        "english": "I'm glad I could buy new shoes.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "kutsu",
+          "kau-v",
+          "ureshii"
+        ]
+      },
+      {
+        "japanese": "母の手紙が来て嬉しいです。",
+        "english": "I'm glad a letter from my mother arrived.",
+        "vocabulary_slugs": [
+          "haha",
+          "tegami",
+          "kuru-v",
+          "ureshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "wakai": {
+    "example_sentences": [
+      {
+        "japanese": "あの先生は若いです。",
+        "english": "That teacher is young.",
+        "vocabulary_slugs": [
+          "ano",
+          "sensei",
+          "wakai"
+        ]
+      },
+      {
+        "japanese": "若い友達と公園に行く。",
+        "english": "I go to the park with a young friend.",
+        "vocabulary_slugs": [
+          "wakai",
+          "tomodachi",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この犬は若いです。",
+        "english": "This dog is young.",
+        "vocabulary_slugs": [
+          "kono",
+          "inu",
+          "wakai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "warui": {
+    "example_sentences": [
+      {
+        "japanese": "私が悪いです。",
+        "english": "I'm the one at fault.",
+        "vocabulary_slugs": [
+          "watashi",
+          "warui"
+        ]
+      },
+      {
+        "japanese": "今日は天気が悪いです。",
+        "english": "The weather is bad today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tenki",
+          "warui"
+        ]
+      },
+      {
+        "japanese": "この映画は悪かったです。",
+        "english": "This movie was bad.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "warui"
         ]
       }
     ],
@@ -9432,6 +12785,42 @@
       "review_status": "draft"
     }
   },
+  "yama-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は山に行きます。",
+        "english": "I'm going to the mountain.",
+        "vocabulary_slugs": [
+          "watashi",
+          "yama-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの山は高いです。",
+        "english": "That mountain over there is tall.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "山の写真を見ます。",
+        "english": "I'm looking at a photo of a mountain.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "shashin",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yasai": {
     "example_sentences": [
       {
@@ -9469,6 +12858,78 @@
       "review_status": "draft"
     }
   },
+  "yasashii": {
+    "example_sentences": [
+      {
+        "japanese": "この本は易しいです。",
+        "english": "This book is easy.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yasashii"
+        ]
+      },
+      {
+        "japanese": "この料理は易しいですか。",
+        "english": "Is this dish easy to make?",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "yasashii"
+        ]
+      },
+      {
+        "japanese": "易しい映画を見ます。",
+        "english": "I'm watching an easy movie.",
+        "vocabulary_slugs": [
+          "yasashii",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yasui-adj": {
+    "example_sentences": [
+      {
+        "japanese": "この本は安いです。",
+        "english": "This book is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "安いお茶を買いました。",
+        "english": "I bought some cheap tea.",
+        "vocabulary_slugs": [
+          "yasui-adj",
+          "ocha",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あの店は安いですか。",
+        "english": "Is that shop cheap?",
+        "vocabulary_slugs": [
+          "ano",
+          "mise",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yattsu": {
     "example_sentences": [
       {
@@ -9496,6 +12957,42 @@
           "shashin",
           "yattsu",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yoi": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は良いです。",
+        "english": "This room is nice.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "yoi"
+        ]
+      },
+      {
+        "japanese": "彼女は良い人です。",
+        "english": "She is a good person.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "yoi",
+          "hito"
+        ]
+      },
+      {
+        "japanese": "お茶を飲んでも良いですか。",
+        "english": "May I have some tea?",
+        "vocabulary_slugs": [
+          "ocha",
+          "nomu-v",
+          "yoi"
         ]
       }
     ],
@@ -9684,6 +13181,77 @@
       "review_status": "draft"
     }
   },
+  "yowai": {
+    "example_sentences": [
+      {
+        "japanese": "僕は体が弱いです。",
+        "english": "I have a weak body.",
+        "vocabulary_slugs": [
+          "boku",
+          "karada",
+          "yowai"
+        ]
+      },
+      {
+        "japanese": "このお茶は弱いです。",
+        "english": "This tea is weak.",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "yowai"
+        ]
+      },
+      {
+        "japanese": "彼女は朝に弱いです。",
+        "english": "She's not a morning person.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "asa",
+          "yowai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yuki": {
+    "example_sentences": [
+      {
+        "japanese": "今日は雪です。",
+        "english": "It's snowing today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "yuki"
+        ]
+      },
+      {
+        "japanese": "窓から雪を見る。",
+        "english": "I watch the snow from the window.",
+        "vocabulary_slugs": [
+          "mado",
+          "yuki",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "子供が雪で遊ぶ。",
+        "english": "The kids are playing in the snow.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "yuki",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yuubinkyoku": {
     "example_sentences": [
       {
@@ -9746,6 +13314,43 @@
           "kyou",
           "yuugata",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yuumei": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は有名な医者です。",
+        "english": "She is a famous doctor.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "yuumei",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "このレストランは有名です。",
+        "english": "This restaurant is famous.",
+        "vocabulary_slugs": [
+          "kono",
+          "resutoran",
+          "yuumei"
+        ]
+      },
+      {
+        "japanese": "私は有名な人に会いました。",
+        "english": "I met a famous person.",
+        "vocabulary_slugs": [
+          "watashi",
+          "yuumei",
+          "hito",
+          "au"
         ]
       }
     ],
