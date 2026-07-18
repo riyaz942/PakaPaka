@@ -37,13 +37,12 @@
   "n5-do-earth": {
     "example_sentences": [
       {
-        "japanese": "土曜日に友達と映画を見ます。",
-        "english": "I will watch a movie with a friend on Saturday.",
+        "japanese": "土曜日に公園へ行きます。",
+        "english": "I'm going to the park on Saturday.",
         "vocabulary_slugs": [
           "doyoubi",
-          "tomodachi",
-          "eiga",
-          "miru-v"
+          "kouen",
+          "iku-v"
         ]
       },
       {
@@ -86,7 +85,7 @@
       },
       {
         "japanese": "コーヒーは三百円で、安いです。",
-        "english": "The coffee is three hundred yen, so it's cheap.",
+        "english": "The coffee is three hundred yen, and cheap.",
         "vocabulary_slugs": [
           "koohii",
           "san-v",
@@ -118,8 +117,8 @@
   "n5-gatsu": {
     "example_sentences": [
       {
-        "japanese": "来月、友達に会う。",
-        "english": "I'm meeting a friend next month.",
+        "japanese": "来月、友達に会います。",
+        "english": "I'll meet a friend next month.",
         "vocabulary_slugs": [
           "raigetsu",
           "tomodachi",
@@ -127,7 +126,7 @@
         ]
       },
       {
-        "japanese": "今、月を見る。",
+        "japanese": "今、月を見ています。",
         "english": "I'm looking at the moon right now.",
         "vocabulary_slugs": [
           "ima",
@@ -136,7 +135,7 @@
         ]
       },
       {
-        "japanese": "月曜日に学校へ行く。",
+        "japanese": "月曜日に学校へ行きます。",
         "english": "I go to school on Monday.",
         "vocabulary_slugs": [
           "getsuyoubi",
@@ -265,7 +264,7 @@
     "example_sentences": [
       {
         "japanese": "一から百まで書きました。",
-        "english": "I wrote the numbers from one to one hundred.",
+        "english": "I wrote from one to one hundred.",
         "vocabulary_slugs": [
           "ichi-v",
           "hyaku-v",
@@ -273,21 +272,21 @@
         ]
       },
       {
-        "japanese": "私は百まで読みます。",
-        "english": "I'll read the numbers up to one hundred.",
+        "japanese": "学生が百人来ました。",
+        "english": "A hundred students came.",
         "vocabulary_slugs": [
-          "watashi",
+          "gakusei",
           "hyaku-v",
-          "yomu"
+          "kuru-v"
         ]
       },
       {
-        "japanese": "お金を百使いました。",
-        "english": "I spent one hundred in money.",
+        "japanese": "本を百買いました。",
+        "english": "I bought a hundred books.",
         "vocabulary_slugs": [
-          "okane",
+          "hon",
           "hyaku-v",
-          "tsukau"
+          "kau-v"
         ]
       }
     ],
@@ -423,7 +422,7 @@
       },
       {
         "japanese": "昨日、友達と一緒に川で遊びました。",
-        "english": "I played at the river with my friend yesterday.",
+        "english": "I played by the river with my friend yesterday.",
         "vocabulary_slugs": [
           "kinou",
           "tomodachi",
@@ -451,12 +450,11 @@
   "n5-ki-spirit": {
     "example_sentences": [
       {
-        "japanese": "明日の天気はどうですか。",
-        "english": "How is the weather tomorrow?",
+        "japanese": "今日は元気ですか。",
+        "english": "Are you feeling well today?",
         "vocabulary_slugs": [
-          "ashita",
-          "tenki",
-          "dou"
+          "kyou",
+          "genki"
         ]
       },
       {
@@ -565,34 +563,31 @@
   "n5-man": {
     "example_sentences": [
       {
-        "japanese": "あの家は五千万です。",
-        "english": "That house over there is fifty million.",
+        "japanese": "一から万まで書きます。",
+        "english": "I'll write from one to ten thousand.",
         "vocabulary_slugs": [
-          "ano",
-          "ie",
-          "go-v",
-          "sen-v",
-          "man-v"
-        ]
-      },
-      {
-        "japanese": "このお酒は一万です。",
-        "english": "This sake is ten thousand.",
-        "vocabulary_slugs": [
-          "kono",
-          "osake",
           "ichi-v",
-          "man-v"
+          "man-v",
+          "kaku"
         ]
       },
       {
-        "japanese": "その本は二万でした。",
-        "english": "That book was twenty thousand.",
+        "japanese": "学生が一万人来ました。",
+        "english": "Ten thousand students came.",
         "vocabulary_slugs": [
-          "sono",
-          "hon",
-          "ni-v",
-          "man-v"
+          "gakusei",
+          "ichi-v",
+          "man-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "一万の本があります。",
+        "english": "There are ten thousand books.",
+        "vocabulary_slugs": [
+          "ichi-v",
+          "man-v",
+          "hon"
         ]
       }
     ],
@@ -728,7 +723,7 @@
       },
       {
         "japanese": "二日、犬と遊びました。",
-        "english": "I played with my dog for two days.",
+        "english": "I played with a dog for two days.",
         "vocabulary_slugs": [
           "futsuka",
           "inu",
@@ -737,7 +732,7 @@
       },
       {
         "japanese": "二十日に彼女が来ます。",
-        "english": "My girlfriend is coming over on the twentieth.",
+        "english": "She is coming on the twentieth.",
         "vocabulary_slugs": [
           "hatsuka",
           "kanojo",
@@ -830,17 +825,16 @@
   "n5-san": {
     "example_sentences": [
       {
-        "japanese": "私の部屋は三です。",
-        "english": "My room is number three.",
+        "japanese": "三時に起きます。",
+        "english": "I wake up at three o'clock.",
         "vocabulary_slugs": [
-          "watashi",
-          "heya",
-          "san-v"
+          "san-v",
+          "okiru"
         ]
       },
       {
         "japanese": "パンを三つ買いました。",
-        "english": "I bought three pieces of bread.",
+        "english": "I bought three loaves of bread.",
         "vocabulary_slugs": [
           "pan",
           "mittsu",
@@ -866,33 +860,30 @@
   "n5-sen": {
     "example_sentences": [
       {
-        "japanese": "この魚は千です。安いですね。",
-        "english": "This fish is a thousand. That's cheap, isn't it?",
+        "japanese": "一から千まで書きました。",
+        "english": "I wrote from one to one thousand.",
         "vocabulary_slugs": [
-          "kono",
+          "ichi-v",
+          "sen-v",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "学生が千人来ました。",
+        "english": "A thousand students came.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "sen-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "千の魚を見ました。",
+        "english": "I saw a thousand fish.",
+        "vocabulary_slugs": [
+          "sen-v",
           "sakana",
-          "sen-v",
-          "yasui-adj"
-        ]
-      },
-      {
-        "japanese": "私は千のお金を使いました。",
-        "english": "I spent a thousand of my money.",
-        "vocabulary_slugs": [
-          "watashi",
-          "sen-v",
-          "okane",
-          "tsukau"
-        ]
-      },
-      {
-        "japanese": "本を三つ買って、千でした。",
-        "english": "I bought three books, and it came to a thousand.",
-        "vocabulary_slugs": [
-          "hon",
-          "mittsu",
-          "kau-v",
-          "sen-v"
+          "miru-v"
         ]
       }
     ],
@@ -926,7 +917,7 @@
       },
       {
         "japanese": "僕は話すのが下手です。",
-        "english": "I am bad at speaking.",
+        "english": "I'm not good at speaking.",
         "vocabulary_slugs": [
           "boku",
           "hanasu-v",
@@ -989,12 +980,12 @@
         ]
       },
       {
-        "japanese": "明日の天気はどうですか。",
-        "english": "How will the weather be tomorrow?",
+        "japanese": "明日は天気がいいですか。",
+        "english": "Will the weather be nice tomorrow?",
         "vocabulary_slugs": [
           "ashita",
           "tenki",
-          "dou"
+          "ii"
         ]
       },
       {
@@ -1053,7 +1044,7 @@
     "example_sentences": [
       {
         "japanese": "あの山は高いです。",
-        "english": "That mountain is tall.",
+        "english": "That mountain is high.",
         "vocabulary_slugs": [
           "ano",
           "yama-v",

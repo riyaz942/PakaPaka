@@ -7,7 +7,7 @@ list.
 
 Content type (one of `kanji` or `vocab`):
 
-<type>
+<type = kaji>
 
 This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_examples.py`. Only the "call the
@@ -18,7 +18,7 @@ the API path. See `docs/workflows/example-sentences-web-chat-workflow.md`.
 Note: there is NO `radical` type in this flow — radicals do not get example
 sentences. The only content types are `kanji` and `vocab`.
 
-Run size (BATCH_LIMIT)
+Run size (BATCH_LIMIT = 10)
 
 This run processes up to 10 slugs (BATCH_LIMIT, set in Step 1). Each slug is an
 independent browser cycle — fresh chat, model/thinking verification, paste,
