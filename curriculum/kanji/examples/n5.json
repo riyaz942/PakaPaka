@@ -1,4 +1,83 @@
 {
+  "n5-en": {
+    "example_sentences": [
+      {
+        "japanese": "この本は千円でした。",
+        "english": "This book was a thousand yen.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "sen-v",
+          "en-money"
+        ]
+      },
+      {
+        "japanese": "コーヒーは三百円で、安いです。",
+        "english": "The coffee is three hundred yen, so it's cheap.",
+        "vocabulary_slugs": [
+          "koohii",
+          "san-v",
+          "hyaku-v",
+          "en-money",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "あの映画は千五百円で、高いです。",
+        "english": "That movie is fifteen hundred yen, which is expensive.",
+        "vocabulary_slugs": [
+          "ano",
+          "eiga",
+          "sen-v",
+          "go-v",
+          "hyaku-v",
+          "en-money",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-gatsu": {
+    "example_sentences": [
+      {
+        "japanese": "来月、友達に会う。",
+        "english": "I'm meeting a friend next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今、月を見る。",
+        "english": "I'm looking at the moon right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "tsuki-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "月曜日に学校へ行く。",
+        "english": "I go to school on Monday.",
+        "vocabulary_slugs": [
+          "getsuyoubi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-go": {
     "example_sentences": [
       {
@@ -69,6 +148,42 @@
     ],
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hyaku": {
+    "example_sentences": [
+      {
+        "japanese": "一から百まで書きました。",
+        "english": "I wrote the numbers from one to one hundred.",
+        "vocabulary_slugs": [
+          "ichi-v",
+          "hyaku-v",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "私は百まで読みます。",
+        "english": "I'll read the numbers up to one hundred.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hyaku-v",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "お金を百使いました。",
+        "english": "I spent one hundred in money.",
+        "vocabulary_slugs": [
+          "okane",
+          "hyaku-v",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -148,6 +263,82 @@
       "review_status": "draft"
     }
   },
+  "n5-ka-fire": {
+    "example_sentences": [
+      {
+        "japanese": "火曜日に友達と映画を見ます。",
+        "english": "On Tuesday I'm watching a movie with a friend.",
+        "vocabulary_slugs": [
+          "kayoubi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "来週の火曜日はとても忙しいです。",
+        "english": "Next Tuesday I'm really busy.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "kayoubi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "火曜日の朝、公園に行きます。",
+        "english": "Tuesday morning, I'm going to the park.",
+        "vocabulary_slugs": [
+          "kayoubi",
+          "asa",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kin": {
+    "example_sentences": [
+      {
+        "japanese": "金曜日に友達と映画を見ます。",
+        "english": "On Friday I'll watch a movie with a friend.",
+        "vocabulary_slugs": [
+          "kinyoubi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "お金がないから、今日は家に帰ります。",
+        "english": "I don't have any money, so I'm going home today.",
+        "vocabulary_slugs": [
+          "okane",
+          "kyou",
+          "ie",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "現金でご飯を買います。",
+        "english": "I'll pay for the meal in cash.",
+        "vocabulary_slugs": [
+          "genkin",
+          "gohan",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-kyuu": {
     "example_sentences": [
       {
@@ -183,6 +374,84 @@
     ],
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-man": {
+    "example_sentences": [
+      {
+        "japanese": "あの家は五千万です。",
+        "english": "That house over there is fifty million.",
+        "vocabulary_slugs": [
+          "ano",
+          "ie",
+          "go-v",
+          "sen-v",
+          "man-v"
+        ]
+      },
+      {
+        "japanese": "このお酒は一万です。",
+        "english": "This sake is ten thousand.",
+        "vocabulary_slugs": [
+          "kono",
+          "osake",
+          "ichi-v",
+          "man-v"
+        ]
+      },
+      {
+        "japanese": "その本は二万でした。",
+        "english": "That book was twenty thousand.",
+        "vocabulary_slugs": [
+          "sono",
+          "hon",
+          "ni-v",
+          "man-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-moku": {
+    "example_sentences": [
+      {
+        "japanese": "木曜日に友達と映画を見ます。",
+        "english": "On Thursday I'm watching a movie with a friend.",
+        "vocabulary_slugs": [
+          "mokuyoubi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "あの木はとても高いです。",
+        "english": "That tree over there is really tall.",
+        "vocabulary_slugs": [
+          "ano",
+          "ki-tree-v",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "毎週木曜日に学校へ行きます。",
+        "english": "I go to school every Thursday.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "mokuyoubi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -261,6 +530,43 @@
       "review_status": "draft"
     }
   },
+  "n5-nichi": {
+    "example_sentences": [
+      {
+        "japanese": "今日は友達と映画を見ます。",
+        "english": "Today I'm watching a movie with a friend.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "毎日日本語を話します。",
+        "english": "I speak Japanese every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "nihongo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "日曜日に海へ行きます。",
+        "english": "On Sunday I'm going to the sea.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "umi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-roku": {
     "example_sentences": [
       {
@@ -332,6 +638,82 @@
     ],
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-sen": {
+    "example_sentences": [
+      {
+        "japanese": "この魚は千です。安いですね。",
+        "english": "This fish is a thousand. That's cheap, isn't it?",
+        "vocabulary_slugs": [
+          "kono",
+          "sakana",
+          "sen-v",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "私は千のお金を使いました。",
+        "english": "I spent a thousand of my money.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sen-v",
+          "okane",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "本を三つ買って、千でした。",
+        "english": "I bought three books, and it came to a thousand.",
+        "vocabulary_slugs": [
+          "hon",
+          "mittsu",
+          "kau-v",
+          "sen-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-sui": {
+    "example_sentences": [
+      {
+        "japanese": "暑いから、水を飲みます。",
+        "english": "It's hot, so I'll drink some water.",
+        "vocabulary_slugs": [
+          "atsui-hot",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "水曜日に友達と映画を見ます。",
+        "english": "On Wednesday I'll watch a movie with a friend.",
+        "vocabulary_slugs": [
+          "suiyoubi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "毎朝、水を飲みます。",
+        "english": "Every morning I drink water.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "mizu",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-opus-subagent",
       "prompt_version": "1",
       "review_status": "draft"
     }

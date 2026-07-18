@@ -866,7 +866,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "一から百まで書きました。",
+          "english": "I wrote the numbers from one to one hundred.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ichi-v",
+            "hyaku-v",
+            "kaku"
+          ],
+          "furigana": "一[いち]から百[ひゃく]まで書[か]きました。"
+        },
+        {
+          "japanese": "私は百まで読みます。",
+          "english": "I'll read the numbers up to one hundred.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "hyaku-v",
+            "yomu"
+          ],
+          "furigana": "私[わたし]は百[ひゃく]まで読[よ]みます。"
+        },
+        {
+          "japanese": "お金を百使いました。",
+          "english": "I spent one hundred in money.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane",
+            "hyaku-v",
+            "tsukau"
+          ],
+          "furigana": "お金[かね]を百[ひゃく]使[つか]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-sen",
@@ -916,7 +951,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この魚は千です。安いですね。",
+          "english": "This fish is a thousand. That's cheap, isn't it?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "sakana",
+            "sen-v",
+            "yasui-adj"
+          ],
+          "furigana": "この魚[さかな]は千[せん]です。安[やす]いですね。"
+        },
+        {
+          "japanese": "私は千のお金を使いました。",
+          "english": "I spent a thousand of my money.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "sen-v",
+            "okane",
+            "tsukau"
+          ],
+          "furigana": "私[わたし]は千[せん]のお金[かね]を使[つか]いました。"
+        },
+        {
+          "japanese": "本を三つ買って、千でした。",
+          "english": "I bought three books, and it came to a thousand.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "mittsu",
+            "kau-v",
+            "sen-v"
+          ],
+          "furigana": "本[ほん]を三[さん]つ買[か]って、千[せん]でした。"
+        }
+      ]
     },
     {
       "slug": "n5-man",
@@ -953,7 +1026,46 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの家は五千万です。",
+          "english": "That house over there is fifty million.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "ie",
+            "go-v",
+            "sen-v",
+            "man-v"
+          ],
+          "furigana": "あの家[いえ]は五千[ごせん]万[まん]です。"
+        },
+        {
+          "japanese": "このお酒は一万です。",
+          "english": "This sake is ten thousand.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "osake",
+            "ichi-v",
+            "man-v"
+          ],
+          "furigana": "このお酒[さけ]は一[いち]万[まん]です。"
+        },
+        {
+          "japanese": "その本は二万でした。",
+          "english": "That book was twenty thousand.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "hon",
+            "ni-v",
+            "man-v"
+          ],
+          "furigana": "その本[ほん]は二[に]万[まん]でした。"
+        }
+      ]
     },
     {
       "slug": "n5-en",
@@ -991,7 +1103,49 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この本は千円でした。",
+          "english": "This book was a thousand yen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "sen-v",
+            "en-money"
+          ],
+          "furigana": "この本[ほん]は千[せん]円[えん]でした。"
+        },
+        {
+          "japanese": "コーヒーは三百円で、安いです。",
+          "english": "The coffee is three hundred yen, so it's cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koohii",
+            "san-v",
+            "hyaku-v",
+            "en-money",
+            "yasui-adj"
+          ],
+          "furigana": "コーヒーは三[さん]百[びゃく]円[えん]で、安[やす]いです。"
+        },
+        {
+          "japanese": "あの映画は千五百円で、高いです。",
+          "english": "That movie is fifteen hundred yen, which is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "eiga",
+            "sen-v",
+            "go-v",
+            "hyaku-v",
+            "en-money",
+            "takai-adj"
+          ],
+          "furigana": "あの映[えい]画[が]は千[せん]五[ご]百[ひゃく]円[えん]で、高[たか]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-nichi",
@@ -1029,7 +1183,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は友達と映画を見ます。",
+          "english": "Today I'm watching a movie with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "今日[きょう]は友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "毎日日本語を話します。",
+          "english": "I speak Japanese every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "nihongo",
+            "hanasu-v"
+          ],
+          "furigana": "毎[まい]日[にち]日本[にほん]語[ご]を話[はな]します。"
+        },
+        {
+          "japanese": "日曜日に海へ行きます。",
+          "english": "On Sunday I'm going to the sea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nichiyoubi",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "日[にち]曜[よう]日[ひ]に海[うみ]へ行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-gatsu",
@@ -1067,7 +1257,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "来月、友達に会う。",
+          "english": "I'm meeting a friend next month.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "来[らい]月[げつ]、友[とも]達[だち]に会[あ]う。"
+        },
+        {
+          "japanese": "今、月を見る。",
+          "english": "I'm looking at the moon right now.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ima",
+            "tsuki-v",
+            "miru-v"
+          ],
+          "furigana": "今[いま]、月[つき]を見[み]る。"
+        },
+        {
+          "japanese": "月曜日に学校へ行く。",
+          "english": "I go to school on Monday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "getsuyoubi",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "月[げつ]曜[よう]日[ひ]に学[がっ]校[こう]へ行[い]く。"
+        }
+      ]
     },
     {
       "slug": "n5-ka-fire",
@@ -1105,7 +1330,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "火曜日に友達と映画を見ます。",
+          "english": "On Tuesday I'm watching a movie with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kayoubi",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "火[か]曜[よう]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "来週の火曜日はとても忙しいです。",
+          "english": "Next Tuesday I'm really busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "raishuu",
+            "kayoubi",
+            "isogashii"
+          ],
+          "furigana": "来[らい]週[しゅう]の火[か]曜[よう]日[ひ]はとても忙[いそが]しいです。"
+        },
+        {
+          "japanese": "火曜日の朝、公園に行きます。",
+          "english": "Tuesday morning, I'm going to the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kayoubi",
+            "asa",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "火[か]曜[よう]日[ひ]の朝[あさ]、公[こう]園[えん]に行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-sui",
@@ -1143,7 +1405,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "暑いから、水を飲みます。",
+          "english": "It's hot, so I'll drink some water.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "atsui-hot",
+            "mizu",
+            "nomu-v"
+          ],
+          "furigana": "暑[あつ]いから、水[みず]を飲[の]みます。"
+        },
+        {
+          "japanese": "水曜日に友達と映画を見ます。",
+          "english": "On Wednesday I'll watch a movie with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "suiyoubi",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "水[すい]曜[よう]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "毎朝、水を飲みます。",
+          "english": "Every morning I drink water.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maiasa",
+            "mizu",
+            "nomu-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]、水[みず]を飲[の]みます。"
+        }
+      ]
     },
     {
       "slug": "n5-moku",
@@ -1181,7 +1479,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "木曜日に友達と映画を見ます。",
+          "english": "On Thursday I'm watching a movie with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mokuyoubi",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "木[もく]曜[よう]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "あの木はとても高いです。",
+          "english": "That tree over there is really tall.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "ki-tree-v",
+            "takai-adj"
+          ],
+          "furigana": "あの木[き]はとても高[たか]いです。"
+        },
+        {
+          "japanese": "毎週木曜日に学校へ行きます。",
+          "english": "I go to school every Thursday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maishuu",
+            "mokuyoubi",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]週[しゅう]木[もく]曜[よう]日[ひ]に学[がっ]校[こう]へ行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-kin",
@@ -1219,7 +1554,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "金曜日に友達と映画を見ます。",
+          "english": "On Friday I'll watch a movie with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinyoubi",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "金[きん]曜[よう]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "お金がないから、今日は家に帰ります。",
+          "english": "I don't have any money, so I'm going home today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "kyou",
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "お金[かね]がないから、今日[きょう]は家[いえ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "現金でご飯を買います。",
+          "english": "I'll pay for the meal in cash.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "genkin",
+            "gohan",
+            "kau-v"
+          ],
+          "furigana": "現[げん]金[きん]でご飯[はん]を買[か]います。"
+        }
+      ]
     },
     {
       "slug": "n5-do-earth",
