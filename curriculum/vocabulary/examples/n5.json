@@ -32,6 +32,41 @@
       "review_status": "draft"
     }
   },
+  "akachan": {
+    "example_sentences": [
+      {
+        "japanese": "家族に赤ちゃんがいます。",
+        "english": "There's a baby in the family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "akachan"
+        ]
+      },
+      {
+        "japanese": "お母さんが赤ちゃんと遊びます。",
+        "english": "Mom plays with the baby.",
+        "vocabulary_slugs": [
+          "okaasan",
+          "akachan",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "公園で赤ちゃんを見ます。",
+        "english": "I see a baby at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "akachan",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "anata": {
     "example_sentences": [
       {
@@ -59,6 +94,81 @@
           "anata",
           "kyou",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ane": {
+    "example_sentences": [
+      {
+        "japanese": "姉は今忙しいです。",
+        "english": "My older sister is busy right now.",
+        "vocabulary_slugs": [
+          "ane",
+          "ima",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "姉と映画を見ます。",
+        "english": "I watch a movie with my older sister.",
+        "vocabulary_slugs": [
+          "ane",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "姉は学校に行きます。",
+        "english": "My older sister goes to school.",
+        "vocabulary_slugs": [
+          "ane",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ani": {
+    "example_sentences": [
+      {
+        "japanese": "兄は毎日学校に行きます。",
+        "english": "My older brother goes to school every day.",
+        "vocabulary_slugs": [
+          "ani",
+          "mainichi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私の兄は本を読みます。",
+        "english": "My older brother reads books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ani",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "兄と一緒に映画を見ます。",
+        "english": "I watch movies with my older brother.",
+        "vocabulary_slugs": [
+          "ani",
+          "issho-ni",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -210,6 +320,42 @@
       "review_status": "draft"
     }
   },
+  "asagohan": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝朝ご飯を食べます。",
+        "english": "I eat breakfast every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "今日の朝ご飯はおいしいです。",
+        "english": "Today's breakfast is delicious.",
+        "vocabulary_slugs": [
+          "kyou",
+          "asagohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "友達と朝ご飯を食べます。",
+        "english": "I eat breakfast with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "asagohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "asatte": {
     "example_sentences": [
       {
@@ -236,6 +382,41 @@
         "vocabulary_slugs": [
           "asatte",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ashi-v": {
+    "example_sentences": [
+      {
+        "japanese": "足で学校に行きます。",
+        "english": "I go to school on foot.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "猫の足を見ます。",
+        "english": "I look at the cat's paws.",
+        "vocabulary_slugs": [
+          "neko",
+          "ashi-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "足が寒いです。",
+        "english": "My feet are cold.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "samui"
         ]
       }
     ],
@@ -315,6 +496,43 @@
       "review_status": "draft"
     }
   },
+  "atama": {
+    "example_sentences": [
+      {
+        "japanese": "猫の頭を見た。",
+        "english": "I looked at the cat's head.",
+        "vocabulary_slugs": [
+          "neko",
+          "atama",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私の頭は寒い。",
+        "english": "My head is cold.",
+        "vocabulary_slugs": [
+          "watashi",
+          "atama",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "彼は毎日頭を使う。",
+        "english": "He uses his head every day.",
+        "vocabulary_slugs": [
+          "kare",
+          "mainichi",
+          "atama",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ban": {
     "example_sentences": [
       {
@@ -343,6 +561,42 @@
           "ban",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bangohan": {
+    "example_sentences": [
+      {
+        "japanese": "今日の晩ご飯はおいしいです。",
+        "english": "Today's dinner is delicious.",
+        "vocabulary_slugs": [
+          "kyou",
+          "bangohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "私は家族と晩ご飯を食べます。",
+        "english": "I eat dinner with my family.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kazoku",
+          "bangohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "晩ご飯は何時ですか。",
+        "english": "What time is dinner?",
+        "vocabulary_slugs": [
+          "bangohan",
+          "nannji"
         ]
       }
     ],
@@ -417,6 +671,43 @@
           "san-v",
           "juu-v",
           "byou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chichi": {
+    "example_sentences": [
+      {
+        "japanese": "父は朝ご飯を食べます。",
+        "english": "My father eats breakfast.",
+        "vocabulary_slugs": [
+          "chichi",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "父と一緒に公園に行きます。",
+        "english": "I go to the park with my father.",
+        "vocabulary_slugs": [
+          "chichi",
+          "issho-ni",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "父は本を読みます。",
+        "english": "My father reads books.",
+        "vocabulary_slugs": [
+          "chichi",
+          "hon",
+          "yomu"
         ]
       }
     ],
@@ -779,6 +1070,40 @@
       "review_status": "draft"
     }
   },
+  "ekiin": {
+    "example_sentences": [
+      {
+        "japanese": "駅員に聞きます。",
+        "english": "I'll ask the station staff.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は駅員です。",
+        "english": "She's station staff.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ekiin"
+        ]
+      },
+      {
+        "japanese": "今日駅員に会いました。",
+        "english": "I met the station staff today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ekiin",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "fun": {
     "example_sentences": [
       {
@@ -888,6 +1213,76 @@
       "review_status": "draft"
     }
   },
+  "gaikokujin": {
+    "example_sentences": [
+      {
+        "japanese": "彼は外国人です。",
+        "english": "He is a foreigner.",
+        "vocabulary_slugs": [
+          "kare",
+          "gaikokujin"
+        ]
+      },
+      {
+        "japanese": "外国人とお茶を飲みました。",
+        "english": "I drank tea with a foreigner.",
+        "vocabulary_slugs": [
+          "gaikokujin",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "今日、公園で外国人に会いました。",
+        "english": "Today I met a foreigner at the park.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kouen",
+          "gaikokujin",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "gakusei": {
+    "example_sentences": [
+      {
+        "japanese": "私は学生です。",
+        "english": "I am a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "彼は学生ですか。",
+        "english": "Is he a student?",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "学生は本を読みます。",
+        "english": "The student reads a book.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "getsuyoubi": {
     "example_sentences": [
       {
@@ -916,6 +1311,43 @@
           "asa",
           "koohii",
           "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "go-shujin": {
+    "example_sentences": [
+      {
+        "japanese": "ご主人は今日、忙しいですか。",
+        "english": "Is your husband busy today?",
+        "vocabulary_slugs": [
+          "go-shujin",
+          "kyou",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "彼女のご主人に会いました。",
+        "english": "I met her husband.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "go-shujin",
+          "au"
+        ]
+      },
+      {
+        "japanese": "ご主人と一緒にご飯を食べます。",
+        "english": "We're having a meal with your husband.",
+        "vocabulary_slugs": [
+          "go-shujin",
+          "issho-ni",
+          "gohan",
+          "taberu"
         ]
       }
     ],
@@ -997,6 +1429,43 @@
       "review_status": "draft"
     }
   },
+  "gohan": {
+    "example_sentences": [
+      {
+        "japanese": "このご飯はおいしいです。",
+        "english": "This rice is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "gohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "私は毎日ご飯を食べます。",
+        "english": "I eat a meal every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "gohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "一緒にご飯を食べますか。",
+        "english": "Shall we eat together?",
+        "vocabulary_slugs": [
+          "issho-ni",
+          "gohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "gozen": {
     "example_sentences": [
       {
@@ -1035,6 +1504,79 @@
       "review_status": "draft"
     }
   },
+  "gyuunyuu": {
+    "example_sentences": [
+      {
+        "japanese": "朝ご飯に牛乳を飲みます。",
+        "english": "I drink milk with breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "gyuunyuu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "この牛乳はおいしいです。",
+        "english": "This milk is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "gyuunyuu",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は牛乳を買いました。",
+        "english": "My mom bought milk.",
+        "vocabulary_slugs": [
+          "haha",
+          "gyuunyuu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ha-tooth": {
+    "example_sentences": [
+      {
+        "japanese": "私の歯はいいです。",
+        "english": "My teeth are fine.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ha-tooth",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "歯でパンを食べます。",
+        "english": "I eat bread with my teeth.",
+        "vocabulary_slugs": [
+          "ha-tooth",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "医者は私の歯を見ます。",
+        "english": "The doctor looks at my teeth.",
+        "vocabulary_slugs": [
+          "isha",
+          "watashi",
+          "ha-tooth",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hachi-v": {
     "example_sentences": [
       {
@@ -1062,6 +1604,45 @@
           "tomodachi",
           "hachi-v",
           "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "haha": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎朝お茶を飲みます。",
+        "english": "My mother drinks tea every morning.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiasa",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "私の母は学校の先生です。",
+        "english": "My mother is a school teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "haha",
+          "gakkou-v",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "母と一緒に家に帰ります。",
+        "english": "I go home with my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "issho-ni",
+          "ie",
+          "kaeru-v"
         ]
       }
     ],
@@ -1108,6 +1689,77 @@
       "review_status": "draft"
     }
   },
+  "hana-nose": {
+    "example_sentences": [
+      {
+        "japanese": "犬の鼻はいい。",
+        "english": "Dogs have a good nose.",
+        "vocabulary_slugs": [
+          "inu",
+          "hana-nose",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "私の鼻が寒い。",
+        "english": "My nose is cold.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hana-nose",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの鼻を見る。",
+        "english": "I look at the baby's nose.",
+        "vocabulary_slugs": [
+          "akachan",
+          "hana-nose",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hatsuka": {
+    "example_sentences": [
+      {
+        "japanese": "今日は二十日です。",
+        "english": "Today is the 20th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hatsuka"
+        ]
+      },
+      {
+        "japanese": "二十日に海へ行きます。",
+        "english": "I'm going to the sea on the 20th.",
+        "vocabulary_slugs": [
+          "hatsuka",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "来月の二十日に帰ります。",
+        "english": "I'll go home on the 20th of next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "hatsuka",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hiru": {
     "example_sentences": [
       {
@@ -1136,6 +1788,82 @@
           "hiru",
           "ie",
           "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hirugohan": {
+    "example_sentences": [
+      {
+        "japanese": "今日の昼ご飯はおいしいです。",
+        "english": "Today's lunch is delicious.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hirugohan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "僕は公園で昼ご飯を食べます。",
+        "english": "I eat lunch at the park.",
+        "vocabulary_slugs": [
+          "boku",
+          "kouen",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "昼ご飯を一緒に食べませんか。",
+        "english": "Would you like to eat lunch together?",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "issho-ni",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hito": {
+    "example_sentences": [
+      {
+        "japanese": "あの人は先生です。",
+        "english": "That person is a teacher.",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "私は毎日あの人と話します。",
+        "english": "I talk with that person every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "ano",
+          "hito",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "公園でいい人に会います。",
+        "english": "I meet a nice person at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "ii",
+          "hito",
+          "au"
         ]
       }
     ],
@@ -1395,6 +2123,80 @@
       "review_status": "draft"
     }
   },
+  "imouto": {
+    "example_sentences": [
+      {
+        "japanese": "私の妹は学生です。",
+        "english": "My younger sister is a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "imouto",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "妹と公園で遊びます。",
+        "english": "I play at the park with my younger sister.",
+        "vocabulary_slugs": [
+          "imouto",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "妹は毎朝お茶を飲みます。",
+        "english": "My younger sister drinks tea every morning.",
+        "vocabulary_slugs": [
+          "imouto",
+          "maiasa",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "isha": {
+    "example_sentences": [
+      {
+        "japanese": "明日、医者に行きます。",
+        "english": "I'm going to the doctor tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "isha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "医者は今、忙しいです。",
+        "english": "The doctor is busy right now.",
+        "vocabulary_slugs": [
+          "isha",
+          "ima",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "友達と一緒に医者を待ちます。",
+        "english": "I'll wait for the doctor with my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "issho-ni",
+          "isha",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "example_sentences": [
       {
@@ -1422,6 +2224,40 @@
           "itsu",
           "bangohan",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itsuka": {
+    "example_sentences": [
+      {
+        "japanese": "今日は五日です。",
+        "english": "Today is the 5th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "itsuka"
+        ]
+      },
+      {
+        "japanese": "五日待ちます。",
+        "english": "I'll wait five days.",
+        "vocabulary_slugs": [
+          "itsuka",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "五日に友達と会います。",
+        "english": "I'll meet a friend on the 5th.",
+        "vocabulary_slugs": [
+          "itsuka",
+          "tomodachi",
+          "au"
         ]
       }
     ],
@@ -1504,6 +2340,41 @@
       "review_status": "draft"
     }
   },
+  "jibun": {
+    "example_sentences": [
+      {
+        "japanese": "自分で行きます。",
+        "english": "I'll go myself.",
+        "vocabulary_slugs": [
+          "jibun",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "自分の部屋で寝ます。",
+        "english": "I sleep in my own room.",
+        "vocabulary_slugs": [
+          "jibun",
+          "heya",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "自分で本を買いました。",
+        "english": "I bought the book myself.",
+        "vocabulary_slugs": [
+          "jibun",
+          "hon",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "jikan": {
     "example_sentences": [
       {
@@ -1573,6 +2444,80 @@
       "review_status": "draft"
     }
   },
+  "kaishain": {
+    "example_sentences": [
+      {
+        "japanese": "会社員の友達とお茶を飲みます。",
+        "english": "I drink tea with my friend who's a company employee.",
+        "vocabulary_slugs": [
+          "kaishain",
+          "tomodachi",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日、会社員の兄に会います。",
+        "english": "Tomorrow I'm meeting my older brother, who's a company employee.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaishain",
+          "ani",
+          "au"
+        ]
+      },
+      {
+        "japanese": "母は会社員ではありません。",
+        "english": "My mother is not a company employee.",
+        "vocabulary_slugs": [
+          "haha",
+          "kaishain"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kami-hair": {
+    "example_sentences": [
+      {
+        "japanese": "母の髪はいいです。",
+        "english": "My mother's hair looks nice.",
+        "vocabulary_slugs": [
+          "haha",
+          "kami-hair",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "私は妹の髪を見ます。",
+        "english": "I look at my little sister's hair.",
+        "vocabulary_slugs": [
+          "watashi",
+          "imouto",
+          "kami-hair",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "今日は髪はどうですか。",
+        "english": "How does your hair look today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "kami-hair",
+          "dou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kanojo": {
     "example_sentences": [
       {
@@ -1601,6 +2546,80 @@
           "kanojo",
           "ima",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kao": {
+    "example_sentences": [
+      {
+        "japanese": "友達の顔を見ました。",
+        "english": "I saw my friend's face.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kao",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この写真は誰の顔ですか。",
+        "english": "Whose face is in this photo?",
+        "vocabulary_slugs": [
+          "kono",
+          "shashin",
+          "dare",
+          "kao"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの顔はいいです。",
+        "english": "The baby's face is lovely.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kao",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "karada": {
+    "example_sentences": [
+      {
+        "japanese": "これは体にいいです。",
+        "english": "This is good for your body.",
+        "vocabulary_slugs": [
+          "kore",
+          "karada",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "医者は私の体を見ます。",
+        "english": "The doctor examines my body.",
+        "vocabulary_slugs": [
+          "isha",
+          "watashi",
+          "karada",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "毎日体を使います。",
+        "english": "I use my body every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "karada",
+          "tsukau"
         ]
       }
     ],
@@ -1673,6 +2692,80 @@
           "raishuu",
           "kayoubi",
           "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kazoku": {
+    "example_sentences": [
+      {
+        "japanese": "私の家族は五人です。",
+        "english": "My family has five people.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kazoku",
+          "go-v"
+        ]
+      },
+      {
+        "japanese": "週末は家族と公園に行きます。",
+        "english": "On weekends I go to the park with my family.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kazoku",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "家族と一緒に朝ご飯を食べます。",
+        "english": "I eat breakfast together with my family.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "issho-ni",
+          "asagohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "keikan": {
+    "example_sentences": [
+      {
+        "japanese": "公園で警官を見ました。",
+        "english": "I saw a police officer at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "keikan",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "警官が家に来ました。",
+        "english": "A police officer came to the house.",
+        "vocabulary_slugs": [
+          "keikan",
+          "ie",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "昨日、警官に会いました。",
+        "english": "Yesterday I met a police officer.",
+        "vocabulary_slugs": [
+          "kinou",
+          "keikan",
           "au"
         ]
       }
@@ -1827,6 +2920,81 @@
       "review_status": "draft"
     }
   },
+  "kodomo-v": {
+    "example_sentences": [
+      {
+        "japanese": "子供が公園で遊ぶ。",
+        "english": "A child plays in the park.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "私の子供は本を読む。",
+        "english": "My child reads books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kodomo-v",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "子供と一緒に映画を見る。",
+        "english": "I watch a movie with my child.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koe": {
+    "example_sentences": [
+      {
+        "japanese": "彼の声を聞きました。",
+        "english": "I heard his voice.",
+        "vocabulary_slugs": [
+          "kare",
+          "koe",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "先生の声がいいです。",
+        "english": "The teacher's voice is nice.",
+        "vocabulary_slugs": [
+          "sensei",
+          "koe",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "夜、猫の声を聞きます。",
+        "english": "At night, I hear a cat's voice.",
+        "vocabulary_slugs": [
+          "yoru",
+          "neko",
+          "koe",
+          "kiku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "koko": {
     "example_sentences": [
       {
@@ -1853,6 +3021,40 @@
           "ashita",
           "koko",
           "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kokonoka": {
+    "example_sentences": [
+      {
+        "japanese": "九日に友達と会います。",
+        "english": "I'm meeting a friend on the 9th.",
+        "vocabulary_slugs": [
+          "kokonoka",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "九日待ちます。",
+        "english": "I'll wait nine days.",
+        "vocabulary_slugs": [
+          "kokonoka",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "今日は九日です。",
+        "english": "Today is the 9th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kokonoka"
         ]
       }
     ],
@@ -2146,6 +3348,114 @@
       "review_status": "draft"
     }
   },
+  "kubi": {
+    "example_sentences": [
+      {
+        "japanese": "首が寒いです。",
+        "english": "My neck is cold.",
+        "vocabulary_slugs": [
+          "kubi",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "猫の首を見ます。",
+        "english": "I look at the cat's neck.",
+        "vocabulary_slugs": [
+          "neko",
+          "kubi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんの首はここです。",
+        "english": "The baby's neck is here.",
+        "vocabulary_slugs": [
+          "akachan",
+          "kubi",
+          "koko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kuchi-v": {
+    "example_sentences": [
+      {
+        "japanese": "医者が私の口を見ます。",
+        "english": "The doctor looks at my mouth.",
+        "vocabulary_slugs": [
+          "isha",
+          "watashi",
+          "kuchi-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "口を閉めます。",
+        "english": "I close my mouth.",
+        "vocabulary_slugs": [
+          "kuchi-v",
+          "shimeru"
+        ]
+      },
+      {
+        "japanese": "魚を口で食べます。",
+        "english": "I eat the fish with my mouth.",
+        "vocabulary_slugs": [
+          "sakana",
+          "kuchi-v",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kudamono": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝果物を食べます。",
+        "english": "I eat fruit every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kudamono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この果物はおいしいです。",
+        "english": "This fruit is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "kudamono",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は果物を買いました。",
+        "english": "My mother bought some fruit.",
+        "vocabulary_slugs": [
+          "haha",
+          "kudamono",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kyonen": {
     "example_sentences": [
       {
@@ -2212,6 +3522,43 @@
           "kyou",
           "tomodachi",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kyoudai": {
+    "example_sentences": [
+      {
+        "japanese": "私の兄弟は学生です。",
+        "english": "My siblings are students.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyoudai",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "兄弟と一緒に映画を見る。",
+        "english": "I watch a movie with my siblings.",
+        "vocabulary_slugs": [
+          "kyoudai",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "週末に兄弟と遊ぶ。",
+        "english": "I hang out with my siblings on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kyoudai",
+          "asobu"
         ]
       }
     ],
@@ -2524,6 +3871,43 @@
       "review_status": "draft"
     }
   },
+  "me-v": {
+    "example_sentences": [
+      {
+        "japanese": "私の目はいいです。",
+        "english": "My eyes are good.",
+        "vocabulary_slugs": [
+          "watashi",
+          "me-v",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "医者は私の目を見ます。",
+        "english": "The doctor looks at my eyes.",
+        "vocabulary_slugs": [
+          "isha",
+          "watashi",
+          "me-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "朝、目を開けます。",
+        "english": "In the morning, I open my eyes.",
+        "vocabulary_slugs": [
+          "asa",
+          "me-v",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mikka": {
     "example_sentences": [
       {
@@ -2549,6 +3933,79 @@
           "mikka",
           "tomodachi",
           "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mimi-v": {
+    "example_sentences": [
+      {
+        "japanese": "猫の耳を見る。",
+        "english": "I look at the cat's ears.",
+        "vocabulary_slugs": [
+          "neko",
+          "mimi-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私は耳で聞く。",
+        "english": "I listen with my ears.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mimi-v",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "犬の耳はいい。",
+        "english": "Dogs have good ears.",
+        "vocabulary_slugs": [
+          "inu",
+          "mimi-v",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "minna": {
+    "example_sentences": [
+      {
+        "japanese": "みんなが公園で遊ぶ。",
+        "english": "Everyone plays at the park.",
+        "vocabulary_slugs": [
+          "minna",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "友達がみんなに話す。",
+        "english": "My friend talks to everyone.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "minna",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "明日みんなで海に行く。",
+        "english": "Tomorrow everyone is going to the sea together.",
+        "vocabulary_slugs": [
+          "ashita",
+          "minna",
+          "umi",
+          "iku-v"
         ]
       }
     ],
@@ -2594,6 +4051,43 @@
       "review_status": "draft"
     }
   },
+  "mizu": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日水を飲みます。",
+        "english": "I drink water every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "この水はおいしいです。",
+        "english": "This water tastes good.",
+        "vocabulary_slugs": [
+          "kono",
+          "mizu",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "彼女は水を買いました。",
+        "english": "She bought water.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "mizu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mokuyoubi": {
     "example_sentences": [
       {
@@ -2620,6 +4114,116 @@
           "raishuu",
           "mokuyoubi",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "muika": {
+    "example_sentences": [
+      {
+        "japanese": "今日は六日です。",
+        "english": "Today is the 6th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "muika"
+        ]
+      },
+      {
+        "japanese": "六日に海に行きます。",
+        "english": "I'm going to the sea on the 6th.",
+        "vocabulary_slugs": [
+          "muika",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "六日待ちました。",
+        "english": "I waited for six days.",
+        "vocabulary_slugs": [
+          "muika",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "musuko": {
+    "example_sentences": [
+      {
+        "japanese": "私の息子は学生です。",
+        "english": "My son is a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "musuko",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "息子は毎日学校に行きます。",
+        "english": "My son goes to school every day.",
+        "vocabulary_slugs": [
+          "musuko",
+          "mainichi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "父と息子は映画を見ます。",
+        "english": "Father and son watch a movie.",
+        "vocabulary_slugs": [
+          "chichi",
+          "musuko",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "musume": {
+    "example_sentences": [
+      {
+        "japanese": "私の娘は学校に行きます。",
+        "english": "My daughter goes to school.",
+        "vocabulary_slugs": [
+          "watashi",
+          "musume",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "娘と一緒に映画を見ました。",
+        "english": "I watched a movie with my daughter.",
+        "vocabulary_slugs": [
+          "musume",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "娘は朝ご飯を食べます。",
+        "english": "My daughter eats breakfast.",
+        "vocabulary_slugs": [
+          "musume",
+          "asagohan",
+          "taberu"
         ]
       }
     ],
@@ -2839,6 +4443,41 @@
       "review_status": "draft"
     }
   },
+  "nanoka": {
+    "example_sentences": [
+      {
+        "japanese": "今日は七日です。",
+        "english": "Today is the 7th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "nanoka"
+        ]
+      },
+      {
+        "japanese": "七日に友達と会います。",
+        "english": "I'm meeting a friend on the 7th.",
+        "vocabulary_slugs": [
+          "nanoka",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "七日海へ行きました。",
+        "english": "I went to the sea for seven days.",
+        "vocabulary_slugs": [
+          "nanoka",
+          "umi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "naze": {
     "example_sentences": [
       {
@@ -2948,6 +4587,634 @@
       "review_status": "draft"
     }
   },
+  "niku": {
+    "example_sentences": [
+      {
+        "japanese": "私は肉を食べます。",
+        "english": "I eat meat.",
+        "vocabulary_slugs": [
+          "watashi",
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この肉はおいしいです。",
+        "english": "This meat is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "niku",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は肉を買いました。",
+        "english": "My mother bought meat.",
+        "vocabulary_slugs": [
+          "haha",
+          "niku",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nomimono": {
+    "example_sentences": [
+      {
+        "japanese": "この飲み物はおいしいです。",
+        "english": "This drink is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "nomimono",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "飲み物を買います。",
+        "english": "I'll buy a drink.",
+        "vocabulary_slugs": [
+          "nomimono",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "水は安い飲み物です。",
+        "english": "Water is a cheap drink.",
+        "vocabulary_slugs": [
+          "mizu",
+          "yasui-adj",
+          "nomimono"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oba": {
+    "example_sentences": [
+      {
+        "japanese": "私の叔母は毎朝コーヒーを飲みます。",
+        "english": "My aunt drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "oba",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日叔母と一緒に海に行きます。",
+        "english": "Tomorrow I'm going to the sea with my aunt.",
+        "vocabulary_slugs": [
+          "ashita",
+          "oba",
+          "issho-ni",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "先週叔母の家でご飯を食べました。",
+        "english": "Last week I ate a meal at my aunt's house.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "oba",
+          "ie",
+          "gohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "obaasan": {
+    "example_sentences": [
+      {
+        "japanese": "私のおばあさんはお茶を飲みます。",
+        "english": "My grandmother drinks tea.",
+        "vocabulary_slugs": [
+          "watashi",
+          "obaasan",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "週末、おばあさんと映画を見ます。",
+        "english": "On the weekend, I watch a movie with my grandmother.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "obaasan",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "おばあさんは明日家に来ます。",
+        "english": "Grandmother is coming to our house tomorrow.",
+        "vocabulary_slugs": [
+          "obaasan",
+          "ashita",
+          "ie",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ocha": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝お茶を飲みます。",
+        "english": "I drink tea every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "このお茶はおいしいです。",
+        "english": "This tea is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "友達とお茶を買いました。",
+        "english": "I bought tea with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ocha",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oji": {
+    "example_sentences": [
+      {
+        "japanese": "叔父と公園で遊んだ。",
+        "english": "I played with my uncle at the park.",
+        "vocabulary_slugs": [
+          "oji",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "週末、叔父の家に行く。",
+        "english": "On the weekend, I go to my uncle's house.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "oji",
+          "ie",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "叔父は毎日お茶を飲む。",
+        "english": "My uncle drinks tea every day.",
+        "vocabulary_slugs": [
+          "oji",
+          "mainichi",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ojiisan": {
+    "example_sentences": [
+      {
+        "japanese": "おじいさんは本を読む。",
+        "english": "Grandfather reads books.",
+        "vocabulary_slugs": [
+          "ojiisan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "私のおじいさんはお茶を飲む。",
+        "english": "My grandfather drinks tea.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ojiisan",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日、おじいさんの家に行く。",
+        "english": "Tomorrow I'm going to grandfather's house.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ojiisan",
+          "ie",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "okaasan": {
+    "example_sentences": [
+      {
+        "japanese": "お母さんはお茶を飲む。",
+        "english": "Mom drinks tea.",
+        "vocabulary_slugs": [
+          "okaasan",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日お母さんに会う。",
+        "english": "I'm meeting Mom tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "okaasan",
+          "au"
+        ]
+      },
+      {
+        "japanese": "お母さんと一緒に公園に行く。",
+        "english": "I'm going to the park with Mom.",
+        "vocabulary_slugs": [
+          "okaasan",
+          "issho-ni",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "okusan": {
+    "example_sentences": [
+      {
+        "japanese": "彼の奥さんに会いました。",
+        "english": "I met his wife.",
+        "vocabulary_slugs": [
+          "kare",
+          "okusan",
+          "au"
+        ]
+      },
+      {
+        "japanese": "奥さんは晩ご飯を食べます。",
+        "english": "His wife eats dinner.",
+        "vocabulary_slugs": [
+          "okusan",
+          "bangohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "友達の奥さんが来ました。",
+        "english": "My friend's wife came.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "okusan",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "onaka": {
+    "example_sentences": [
+      {
+        "japanese": "ここが私のお腹です。",
+        "english": "This is my stomach.",
+        "vocabulary_slugs": [
+          "koko",
+          "watashi",
+          "onaka"
+        ]
+      },
+      {
+        "japanese": "赤ちゃんのお腹を見ます。",
+        "english": "I look at the baby's belly.",
+        "vocabulary_slugs": [
+          "akachan",
+          "onaka",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "猫のお腹はいいです。",
+        "english": "The cat's belly feels nice.",
+        "vocabulary_slugs": [
+          "neko",
+          "onaka",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oneesan": {
+    "example_sentences": [
+      {
+        "japanese": "あなたのお姉さんは先生です。",
+        "english": "Your older sister is a teacher.",
+        "vocabulary_slugs": [
+          "anata",
+          "oneesan",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "お姉さんと一緒にご飯を食べます。",
+        "english": "I eat a meal together with older sister.",
+        "vocabulary_slugs": [
+          "oneesan",
+          "issho-ni",
+          "gohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "お姉さんは明日学校へ行きます。",
+        "english": "Older sister is going to school tomorrow.",
+        "vocabulary_slugs": [
+          "oneesan",
+          "ashita",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oniisan": {
+    "example_sentences": [
+      {
+        "japanese": "お兄さんは公園で遊びます。",
+        "english": "Your older brother plays at the park.",
+        "vocabulary_slugs": [
+          "oniisan",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "お兄さんはいつ来ますか？",
+        "english": "When is your older brother coming?",
+        "vocabulary_slugs": [
+          "oniisan",
+          "itsu",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "彼のお兄さんは学生です。",
+        "english": "His older brother is a student.",
+        "vocabulary_slugs": [
+          "kare",
+          "oniisan",
+          "gakusei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "onnanohito": {
+    "example_sentences": [
+      {
+        "japanese": "あの女の人は医者です。",
+        "english": "That woman is a doctor.",
+        "vocabulary_slugs": [
+          "ano",
+          "onnanohito",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "私は女の人と話します。",
+        "english": "I talk with a woman.",
+        "vocabulary_slugs": [
+          "watashi",
+          "onnanohito",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "女の人が公園に行きます。",
+        "english": "A woman is going to the park.",
+        "vocabulary_slugs": [
+          "onnanohito",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "onnanoko": {
+    "example_sentences": [
+      {
+        "japanese": "あの女の子は学生です。",
+        "english": "That girl over there is a student.",
+        "vocabulary_slugs": [
+          "ano",
+          "onnanoko",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "女の子が公園で遊びます。",
+        "english": "A girl plays in the park.",
+        "vocabulary_slugs": [
+          "onnanoko",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "女の子と一緒に映画を見ます。",
+        "english": "I watch a movie with a girl.",
+        "vocabulary_slugs": [
+          "onnanoko",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otokonohito": {
+    "example_sentences": [
+      {
+        "japanese": "この男の人は医者です。",
+        "english": "This man is a doctor.",
+        "vocabulary_slugs": [
+          "kono",
+          "otokonohito",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "彼女は男の人と話します。",
+        "english": "She talks with a man.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "otokonohito",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "公園で男の人が待ちます。",
+        "english": "A man is waiting at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "otokonohito",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otokonoko": {
+    "example_sentences": [
+      {
+        "japanese": "あの男の子は学生です。",
+        "english": "That boy over there is a student.",
+        "vocabulary_slugs": [
+          "ano",
+          "otokonoko",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "男の子が公園で遊びます。",
+        "english": "The boy plays in the park.",
+        "vocabulary_slugs": [
+          "otokonoko",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "私は男の子と話します。",
+        "english": "I talk with the boy.",
+        "vocabulary_slugs": [
+          "watashi",
+          "otokonoko",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otona": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は大人です。",
+        "english": "She is an adult.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "otona"
+        ]
+      },
+      {
+        "japanese": "大人はお酒を飲みます。",
+        "english": "Adults drink alcohol.",
+        "vocabulary_slugs": [
+          "otona",
+          "osake",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "大人と子供が公園に行きます。",
+        "english": "Adults and children go to the park.",
+        "vocabulary_slugs": [
+          "otona",
+          "kodomo-v",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ototoi": {
     "example_sentences": [
       {
@@ -2974,6 +5241,154 @@
         "vocabulary_slugs": [
           "ototoi",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otousan": {
+    "example_sentences": [
+      {
+        "japanese": "お父さんは今忙しいです。",
+        "english": "Father is busy right now.",
+        "vocabulary_slugs": [
+          "otousan",
+          "ima",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "週末にお父さんと公園に行きます。",
+        "english": "On the weekend I go to the park with my father.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "otousan",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "お父さんは毎朝コーヒーを飲みます。",
+        "english": "Father drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "otousan",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otouto": {
+    "example_sentences": [
+      {
+        "japanese": "私の弟は学生です。",
+        "english": "My younger brother is a student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "otouto",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "弟と公園に行きます。",
+        "english": "I go to the park with my younger brother.",
+        "vocabulary_slugs": [
+          "otouto",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "弟は毎晩本を読みます。",
+        "english": "My younger brother reads a book every night.",
+        "vocabulary_slugs": [
+          "otouto",
+          "maiban",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otto": {
+    "example_sentences": [
+      {
+        "japanese": "私の夫は毎日忙しいです。",
+        "english": "My husband is busy every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "otto",
+          "mainichi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "夫と一緒に映画を見ます。",
+        "english": "I watch movies with my husband.",
+        "vocabulary_slugs": [
+          "otto",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "夫はコーヒーを飲みます。",
+        "english": "My husband drinks coffee.",
+        "vocabulary_slugs": [
+          "otto",
+          "koohii",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "pan": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝パンを食べます。",
+        "english": "I eat bread every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "このパンはおいしいです。",
+        "english": "This bread is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "pan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "パンはいくらですか。",
+        "english": "How much is the bread?",
+        "vocabulary_slugs": [
+          "pan",
+          "ikura"
         ]
       }
     ],
@@ -3159,6 +5574,42 @@
       "review_status": "draft"
     }
   },
+  "sakana": {
+    "example_sentences": [
+      {
+        "japanese": "今日は魚を食べます。",
+        "english": "I'm eating fish today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "sakana",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この魚はおいしいです。",
+        "english": "This fish is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "sakana",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は魚を買いました。",
+        "english": "My mother bought fish.",
+        "vocabulary_slugs": [
+          "haha",
+          "sakana",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "san-v": {
     "example_sentences": [
       {
@@ -3187,6 +5638,43 @@
           "eiga",
           "san-v",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seito": {
+    "example_sentences": [
+      {
+        "japanese": "私の弟は生徒です。",
+        "english": "My younger brother is a pupil.",
+        "vocabulary_slugs": [
+          "watashi",
+          "otouto",
+          "seito"
+        ]
+      },
+      {
+        "japanese": "先生は生徒と話します。",
+        "english": "The teacher talks with the pupils.",
+        "vocabulary_slugs": [
+          "sensei",
+          "seito",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "生徒は毎朝学校に行きます。",
+        "english": "The pupils go to school every morning.",
+        "vocabulary_slugs": [
+          "seito",
+          "maiasa",
+          "gakkou-v",
+          "iku-v"
         ]
       }
     ],
@@ -3260,6 +5748,43 @@
           "tomodachi",
           "kouen",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sensei": {
+    "example_sentences": [
+      {
+        "japanese": "先生は学校に行きます。",
+        "english": "The teacher goes to school.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私は先生に聞きました。",
+        "english": "I asked the teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "あの先生はいい人です。",
+        "english": "That teacher is a good person.",
+        "vocabulary_slugs": [
+          "ano",
+          "sensei",
+          "ii",
+          "hito"
         ]
       }
     ],
@@ -3415,6 +5940,44 @@
       "review_status": "draft"
     }
   },
+  "sobo": {
+    "example_sentences": [
+      {
+        "japanese": "私の祖母は本を読みます。",
+        "english": "My grandmother reads books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sobo",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "週末に祖母と公園へ行きます。",
+        "english": "On the weekend I go to the park with my grandmother.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "sobo",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "昨日、祖母に会いました。",
+        "english": "Yesterday I met my grandmother.",
+        "vocabulary_slugs": [
+          "kinou",
+          "sobo",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "sochira": {
     "example_sentences": [
       {
@@ -3440,6 +6003,45 @@
         "vocabulary_slugs": [
           "sochira",
           "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sofu": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は毎朝お茶を飲みます。",
+        "english": "My grandfather drinks tea every morning.",
+        "vocabulary_slugs": [
+          "sofu",
+          "maiasa",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "僕は祖父と公園で遊びます。",
+        "english": "I play with my grandfather at the park.",
+        "vocabulary_slugs": [
+          "boku",
+          "sofu",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "明日、祖父と映画を見ます。",
+        "english": "Tomorrow I'll watch a movie with my grandfather.",
+        "vocabulary_slugs": [
+          "ashita",
+          "sofu",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -3628,6 +6230,153 @@
       "review_status": "draft"
     }
   },
+  "tabemono": {
+    "example_sentences": [
+      {
+        "japanese": "この食べ物はおいしいです。",
+        "english": "This food is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "tabemono",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "明日、家で食べ物を食べます。",
+        "english": "Tomorrow I'll eat food at home.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ie",
+          "tabemono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "どんな食べ物がいいですか。",
+        "english": "What kind of food is good?",
+        "vocabulary_slugs": [
+          "donna",
+          "tabemono",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tamago": {
+    "example_sentences": [
+      {
+        "japanese": "朝ごはんに卵を食べます。",
+        "english": "I eat eggs for breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "tamago",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この卵はおいしいです。",
+        "english": "These eggs are delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "tamago",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は卵を三つ買いました。",
+        "english": "My mom bought three eggs.",
+        "vocabulary_slugs": [
+          "haha",
+          "tamago",
+          "mittsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "te-v": {
+    "example_sentences": [
+      {
+        "japanese": "手でパンを食べます。",
+        "english": "I eat bread with my hands.",
+        "vocabulary_slugs": [
+          "te-v",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼女の手を見ます。",
+        "english": "I look at her hands.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "te-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "今、手が寒いです。",
+        "english": "My hands are cold right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "te-v",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tomodachi": {
+    "example_sentences": [
+      {
+        "japanese": "私は友達と映画を見ます。",
+        "english": "I watch a movie with my friend.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼女はいい友達です。",
+        "english": "She is a good friend.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ii",
+          "tomodachi"
+        ]
+      },
+      {
+        "japanese": "週末に友達と遊びます。",
+        "english": "I hang out with friends on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tomodachi",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "too": {
     "example_sentences": [
       {
@@ -3665,6 +6414,41 @@
       "review_status": "draft"
     }
   },
+  "tooka": {
+    "example_sentences": [
+      {
+        "japanese": "十日に友達と会います。",
+        "english": "I'm meeting a friend on the 10th.",
+        "vocabulary_slugs": [
+          "tooka",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "十日待ちます。",
+        "english": "I'll wait ten days.",
+        "vocabulary_slugs": [
+          "tooka",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "来月の十日に帰ります。",
+        "english": "I'll go home on the 10th of next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "tooka",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tsuitachi": {
     "example_sentences": [
       {
@@ -3691,6 +6475,45 @@
           "kongetsu",
           "tsuitachi",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuma": {
+    "example_sentences": [
+      {
+        "japanese": "私の妻は今忙しいです。",
+        "english": "My wife is busy right now.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tsuma",
+          "ima",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "妻と一緒に映画を見ます。",
+        "english": "I watch a movie with my wife.",
+        "vocabulary_slugs": [
+          "tsuma",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "週末は妻と公園に行きます。",
+        "english": "On the weekend I go to the park with my wife.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tsuma",
+          "kouen",
+          "iku-v"
         ]
       }
     ],
@@ -3775,6 +6598,43 @@
       "review_status": "draft"
     }
   },
+  "yasai": {
+    "example_sentences": [
+      {
+        "japanese": "朝ごはんに野菜を食べます。",
+        "english": "I eat vegetables for breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "この野菜は安いです。",
+        "english": "These vegetables are cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "yasai",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "母と一緒に野菜を買います。",
+        "english": "I buy vegetables with my mom.",
+        "vocabulary_slugs": [
+          "haha",
+          "issho-ni",
+          "yasai",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yattsu": {
     "example_sentences": [
       {
@@ -3802,6 +6662,41 @@
           "shashin",
           "yattsu",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yokka": {
+    "example_sentences": [
+      {
+        "japanese": "四日に友達に会います。",
+        "english": "I'm meeting a friend on the 4th.",
+        "vocabulary_slugs": [
+          "yokka",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今日は四日です。",
+        "english": "Today is the 4th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "yokka"
+        ]
+      },
+      {
+        "japanese": "四日、海で遊びます。",
+        "english": "I'll hang out at the sea for four days.",
+        "vocabulary_slugs": [
+          "yokka",
+          "umi",
+          "asobu"
         ]
       }
     ],
@@ -3912,6 +6807,40 @@
           "pan",
           "yottsu",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "youka": {
+    "example_sentences": [
+      {
+        "japanese": "今日は八日です。",
+        "english": "Today is the 8th.",
+        "vocabulary_slugs": [
+          "kyou",
+          "youka"
+        ]
+      },
+      {
+        "japanese": "八日待ちます。",
+        "english": "I'll wait eight days.",
+        "vocabulary_slugs": [
+          "youka",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "八日に映画を見ます。",
+        "english": "I'll watch a movie on the 8th.",
+        "vocabulary_slugs": [
+          "youka",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
