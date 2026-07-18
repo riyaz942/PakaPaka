@@ -22,7 +22,7 @@ sentences. The only content types are `kanji` and `vocab`.
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = claude-opus-4-8>
+<subagent-model = gemini-3.1-pro>
 
 Model notes
 

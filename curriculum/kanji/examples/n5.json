@@ -1,4 +1,77 @@
 {
+  "n5-dai-big": {
+    "example_sentences": [
+      {
+        "japanese": "その犬は大きいです。",
+        "english": "That dog is big.",
+        "vocabulary_slugs": [
+          "sono",
+          "inu",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "明日、大学に行きます。",
+        "english": "I am going to the university tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "daigaku",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "お母さんは大丈夫ですか。",
+        "english": "Is your mother okay?",
+        "vocabulary_slugs": [
+          "okaasan",
+          "daijoubu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-do-earth": {
+    "example_sentences": [
+      {
+        "japanese": "土曜日に友達と映画を見ます。",
+        "english": "I will watch a movie with a friend on Saturday.",
+        "vocabulary_slugs": [
+          "doyoubi",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "毎週土曜日に海へ行きます。",
+        "english": "I go to the sea every Saturday.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "doyoubi",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今週の土曜日は忙しいです。",
+        "english": "I am busy this Saturday.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "doyoubi",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-en": {
     "example_sentences": [
       {
@@ -152,6 +225,42 @@
       "review_status": "draft"
     }
   },
+  "n5-hana": {
+    "example_sentences": [
+      {
+        "japanese": "母に花を買いました。",
+        "english": "I bought flowers for my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "hana-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "公園で花を見ました。",
+        "english": "I saw flowers at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "hana-v",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この花は高いです。",
+        "english": "This flower is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "hana-v",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-hyaku": {
     "example_sentences": [
       {
@@ -297,6 +406,81 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kawa": {
+    "example_sentences": [
+      {
+        "japanese": "今日、川に行きます。",
+        "english": "I am going to the river today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kawa-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "昨日、友達と一緒に川で遊びました。",
+        "english": "I played at the river with my friend yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "issho-ni",
+          "kawa-v",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "川で魚を見ました。",
+        "english": "I saw a fish in the river.",
+        "vocabulary_slugs": [
+          "kawa-v",
+          "sakana",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ki-spirit": {
+    "example_sentences": [
+      {
+        "japanese": "明日の天気はどうですか。",
+        "english": "How is the weather tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "tenki",
+          "dou"
+        ]
+      },
+      {
+        "japanese": "私の犬は病気です。",
+        "english": "My dog is sick.",
+        "vocabulary_slugs": [
+          "watashi",
+          "inu",
+          "byouki"
+        ]
+      },
+      {
+        "japanese": "この部屋は気持ちがいいです。",
+        "english": "This room feels nice.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "kimochi",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -452,6 +636,43 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-naka": {
+    "example_sentences": [
+      {
+        "japanese": "みんな、中に入りました。",
+        "english": "Everyone went inside.",
+        "vocabulary_slugs": [
+          "minna",
+          "naka",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "部屋の真ん中に座りました。",
+        "english": "I sat in the middle of the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "mannaka",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "家の中で本を読みました。",
+        "english": "I read a book inside the house.",
+        "vocabulary_slugs": [
+          "ie",
+          "naka",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -681,6 +902,44 @@
       "review_status": "draft"
     }
   },
+  "n5-shita": {
+    "example_sentences": [
+      {
+        "japanese": "本はあの窓の下です。",
+        "english": "The book is under that window.",
+        "vocabulary_slugs": [
+          "hon",
+          "ano",
+          "mado",
+          "shita-v"
+        ]
+      },
+      {
+        "japanese": "毎日地下鉄で学校に行きます。",
+        "english": "I go to school by subway every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "chikatetsu",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "僕は話すのが下手です。",
+        "english": "I am bad at speaking.",
+        "vocabulary_slugs": [
+          "boku",
+          "hanasu-v",
+          "heta"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-sui": {
     "example_sentences": [
       {
@@ -714,6 +973,115 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ten": {
+    "example_sentences": [
+      {
+        "japanese": "今日はいい天気ですね。",
+        "english": "The weather is nice today, isn't it?",
+        "vocabulary_slugs": [
+          "kyou",
+          "ii",
+          "tenki"
+        ]
+      },
+      {
+        "japanese": "明日の天気はどうですか。",
+        "english": "How will the weather be tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "tenki",
+          "dou"
+        ]
+      },
+      {
+        "japanese": "昨日は天気が良かったです。",
+        "english": "The weather was good yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tenki",
+          "yoi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-uenagashi": {
+    "example_sentences": [
+      {
+        "japanese": "先生は話すのが上手です。",
+        "english": "The teacher is good at speaking.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanasu-v",
+          "jouzu"
+        ]
+      },
+      {
+        "japanese": "本の上に猫が寝ています。",
+        "english": "A cat is sleeping on the book.",
+        "vocabulary_slugs": [
+          "hon",
+          "ue",
+          "neko",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "手を上げてください。",
+        "english": "Please raise your hand.",
+        "vocabulary_slugs": [
+          "te-v",
+          "ageru-raise"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-yama": {
+    "example_sentences": [
+      {
+        "japanese": "あの山は高いです。",
+        "english": "That mountain is tall.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "週末、友達と山に行きました。",
+        "english": "I went to the mountains with a friend on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tomodachi",
+          "yama-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "山の写真はどこですか。",
+        "english": "Where is the photo of the mountain?",
+        "vocabulary_slugs": [
+          "yama-v",
+          "shashin",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }

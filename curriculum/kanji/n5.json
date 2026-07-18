@@ -1629,7 +1629,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "土曜日に友達と映画を見ます。",
+          "english": "I will watch a movie with a friend on Saturday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "doyoubi",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "土[ど]曜[よう]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "毎週土曜日に海へ行きます。",
+          "english": "I go to the sea every Saturday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "maishuu",
+            "doyoubi",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]週[しゅう]土[ど]曜[よう]日[ひ]に海[うみ]へ行[い]きます。"
+        },
+        {
+          "japanese": "今週の土曜日は忙しいです。",
+          "english": "I am busy this Saturday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "konshuu",
+            "doyoubi",
+            "isogashii"
+          ],
+          "furigana": "今[こん]週[しゅう]の土[ど]曜[よう]日[ひ]は忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "n5-yama",
@@ -1667,7 +1704,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの山は高いです。",
+          "english": "That mountain is tall.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "takai-adj"
+          ],
+          "furigana": "あの山[やま]は高[たか]いです。"
+        },
+        {
+          "japanese": "週末、友達と山に行きました。",
+          "english": "I went to the mountains with a friend on the weekend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "tomodachi",
+            "yama-v",
+            "iku-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]、友[とも]達[だち]と山[やま]に行[い]きました。"
+        },
+        {
+          "japanese": "山の写真はどこですか。",
+          "english": "Where is the photo of the mountain?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yama-v",
+            "shashin",
+            "doko"
+          ],
+          "furigana": "山[やま]の写[しゃ]真[しん]はどこですか。"
+        }
+      ]
     },
     {
       "slug": "n5-kawa",
@@ -1705,7 +1778,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日、川に行きます。",
+          "english": "I am going to the river today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "kawa-v",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]、川[かわ]に行[い]きます。"
+        },
+        {
+          "japanese": "昨日、友達と一緒に川で遊びました。",
+          "english": "I played at the river with my friend yesterday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "tomodachi",
+            "issho-ni",
+            "kawa-v",
+            "asobu"
+          ],
+          "furigana": "昨日[きのう]、友[とも]達[だち]と一[いっ]緒[しょ]に川[かわ]で遊[あそ]びました。"
+        },
+        {
+          "japanese": "川で魚を見ました。",
+          "english": "I saw a fish in the river.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kawa-v",
+            "sakana",
+            "miru-v"
+          ],
+          "furigana": "川[かわ]で魚[さかな]を見[み]ました。"
+        }
+      ]
     },
     {
       "slug": "n5-ten",
@@ -1743,7 +1853,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日はいい天気ですね。",
+          "english": "The weather is nice today, isn't it?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "ii",
+            "tenki"
+          ],
+          "furigana": "今日[きょう]はいい天[てん]気[き]ですね。"
+        },
+        {
+          "japanese": "明日の天気はどうですか。",
+          "english": "How will the weather be tomorrow?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tenki",
+            "dou"
+          ],
+          "furigana": "明日[あした]の天[てん]気[き]はどうですか。"
+        },
+        {
+          "japanese": "昨日は天気が良かったです。",
+          "english": "The weather was good yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "tenki",
+            "yoi"
+          ],
+          "furigana": "昨日[きのう]は天[てん]気[き]が良[よ]かったです。"
+        }
+      ]
     },
     {
       "slug": "n5-ki-spirit",
@@ -1776,7 +1921,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日の天気はどうですか。",
+          "english": "How is the weather tomorrow?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tenki",
+            "dou"
+          ],
+          "furigana": "明日[あした]の天[てん]気[き]はどうですか。"
+        },
+        {
+          "japanese": "私の犬は病気です。",
+          "english": "My dog is sick.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "inu",
+            "byouki"
+          ],
+          "furigana": "私[わたし]の犬[いぬ]は病[びょう]気[き]です。"
+        },
+        {
+          "japanese": "この部屋は気持ちがいいです。",
+          "english": "This room feels nice.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "kimochi",
+            "ii"
+          ],
+          "furigana": "この部屋[へや]は気[き]持[も]ちがいいです。"
+        }
+      ]
     },
     {
       "slug": "n5-hana",
@@ -1814,7 +1995,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "母に花を買いました。",
+          "english": "I bought flowers for my mother.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "hana-v",
+            "kau-v"
+          ],
+          "furigana": "母[はは]に花[はな]を買[か]いました。"
+        },
+        {
+          "japanese": "公園で花を見ました。",
+          "english": "I saw flowers at the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "hana-v",
+            "miru-v"
+          ],
+          "furigana": "公[こう]園[えん]で花[はな]を見[み]ました。"
+        },
+        {
+          "japanese": "この花は高いです。",
+          "english": "This flower is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "hana-v",
+            "takai-adj"
+          ],
+          "furigana": "この花[はな]は高[たか]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-uenagashi",
@@ -1852,7 +2068,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生は話すのが上手です。",
+          "english": "The teacher is good at speaking.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "hanasu-v",
+            "jouzu"
+          ],
+          "furigana": "先[せん]生[せい]は話[はな]すのが上手[じょうず]です。"
+        },
+        {
+          "japanese": "本の上に猫が寝ています。",
+          "english": "A cat is sleeping on the book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hon",
+            "ue",
+            "neko",
+            "neru"
+          ],
+          "furigana": "本[ほん]の上[うえ]に猫[ねこ]が寝[ね]ています。"
+        },
+        {
+          "japanese": "手を上げてください。",
+          "english": "Please raise your hand.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "te-v",
+            "ageru-raise"
+          ],
+          "furigana": "手[て]を上[あ]げてください。"
+        }
+      ]
     },
     {
       "slug": "n5-shita",
@@ -1890,7 +2141,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "本はあの窓の下です。",
+          "english": "The book is under that window.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "ano",
+            "mado",
+            "shita-v"
+          ],
+          "furigana": "本[ほん]はあの窓[まど]の下[した]です。"
+        },
+        {
+          "japanese": "毎日地下鉄で学校に行きます。",
+          "english": "I go to school by subway every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "chikatetsu",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]日[にち]地[ち]下[か]鉄[てつ]で学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "僕は話すのが下手です。",
+          "english": "I am bad at speaking.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "hanasu-v",
+            "heta"
+          ],
+          "furigana": "僕[ぼく]は話[はな]すのが下手[へた]です。"
+        }
+      ]
     },
     {
       "slug": "n5-naka",
@@ -1928,7 +2216,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "みんな、中に入りました。",
+          "english": "Everyone went inside.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "minna",
+            "naka",
+            "hairu-v"
+          ],
+          "furigana": "みんな、中[なか]に入[い]りました。"
+        },
+        {
+          "japanese": "部屋の真ん中に座りました。",
+          "english": "I sat in the middle of the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya",
+            "mannaka",
+            "suwaru"
+          ],
+          "furigana": "部屋[へや]の真[ま]ん中[なか]に座[すわ]りました。"
+        },
+        {
+          "japanese": "家の中で本を読みました。",
+          "english": "I read a book inside the house.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ie",
+            "naka",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "家[いえ]の中[なか]で本[ほん]を読[よ]みました。"
+        }
+      ]
     },
     {
       "slug": "n5-dai-big",
@@ -1966,7 +2290,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "その犬は大きいです。",
+          "english": "That dog is big.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sono",
+            "inu",
+            "ookii"
+          ],
+          "furigana": "その犬[いぬ]は大[おお]きいです。"
+        },
+        {
+          "japanese": "明日、大学に行きます。",
+          "english": "I am going to the university tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "daigaku",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、大[だい]学[がく]に行[い]きます。"
+        },
+        {
+          "japanese": "お母さんは大丈夫ですか。",
+          "english": "Is your mother okay?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okaasan",
+            "daijoubu"
+          ],
+          "furigana": "お母[はは]さんは大[だい]丈[じょう]夫[ぶ]ですか。"
+        }
+      ]
     },
     {
       "slug": "n5-shou-small",
