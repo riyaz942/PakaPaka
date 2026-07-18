@@ -4548,7 +4548,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日コーヒーを飲みます。",
+          "english": "I drink coffee every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]コーヒーを飲[の]みます。"
+        },
+        {
+          "japanese": "父は毎晩本を読みます。",
+          "english": "My father reads a book every night.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "maiban",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "父[ちち]は毎[まい]晩[ばん]本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "毎月図書館に行きます。",
+          "english": "I go to the library every month.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "maitsuki",
+            "toshokan",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]月[つき]図[と]書[しょ]館[かん]に行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-hantime",
@@ -4586,7 +4623,46 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎日二時間半勉強します。",
+          "english": "I study for two and a half hours every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "ni-v",
+            "jikan",
+            "han-time",
+            "benkyou-suru"
+          ],
+          "furigana": "毎[まい]日[にち]二[に]時[じ]間[かん]半[はん]勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "私はこのパンを半分食べます。",
+          "english": "I will eat half of this bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "kono",
+            "pan",
+            "hanbun",
+            "taberu"
+          ],
+          "furigana": "私[わたし]はこのパンを半[はん]分[ぶん]食[た]べます。"
+        },
+        {
+          "japanese": "本の半分を読みました。",
+          "english": "I read half of the book.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "hanbun",
+            "yomu"
+          ],
+          "furigana": "本[ほん]の半[はん]分[ぶん]を読[よ]みました。"
+        }
+      ]
     },
     {
       "slug": "n5-bun-minute",
@@ -4624,7 +4700,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この本は分かりません。",
+          "english": "I don't understand this book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "wakaru"
+          ],
+          "furigana": "この本[ほん]は分[わ]かりません。"
+        },
+        {
+          "japanese": "パンを半分食べました。",
+          "english": "I ate half of the bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "hanbun",
+            "taberu"
+          ],
+          "furigana": "パンを半[はん]分[ぶん]食[た]べました。"
+        },
+        {
+          "japanese": "駅で五分待ちました。",
+          "english": "I waited for five minutes at the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "go-v",
+            "fun-counter",
+            "matsu"
+          ],
+          "furigana": "駅[えき]で五[ご]分[ふん]待[ま]ちました。"
+        }
+      ]
     },
     {
       "slug": "n5-gaku",
@@ -4662,7 +4774,40 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "妹は学生です。",
+          "english": "My younger sister is a student.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "imouto",
+            "gakusei"
+          ],
+          "furigana": "妹[いもうと]は学[がく]生[せい]です。"
+        },
+        {
+          "japanese": "明日、学校に行きます。",
+          "english": "I will go to school tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "数学は難しいです。",
+          "english": "Math is difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "suugaku",
+            "muzukashii"
+          ],
+          "furigana": "数[すう]学[がく]は難[むずか]しいです。"
+        }
+      ]
     },
     {
       "slug": "n5-kou-school",
@@ -4695,7 +4840,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎日学校へ行きます。",
+          "english": "I go to school every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]日[にち]学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "校庭に犬がいます。",
+          "english": "There is a dog in the schoolyard.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koutei",
+            "inu",
+            "iru-exist"
+          ],
+          "furigana": "校[こう]庭[てい]に犬[いぬ]がいます。"
+        },
+        {
+          "japanese": "今日、学校を休みます。",
+          "english": "I will take a day off from school today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "gakkou-v",
+            "yasumu"
+          ],
+          "furigana": "今日[きょう]、学[がっ]校[こう]を休[やす]みます。"
+        }
+      ]
     },
     {
       "slug": "n5-sensei-saki",
@@ -4733,7 +4913,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、先生に会いました。",
+          "english": "I met the teacher yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "sensei",
+            "au"
+          ],
+          "furigana": "昨日[きのう]、先[せん]生[せい]に会[あ]いました。"
+        },
+        {
+          "japanese": "先週、友達と一緒に映画を見ました。",
+          "english": "I watched a movie with a friend last week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "senshuu",
+            "tomodachi",
+            "issho-ni",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "先[せん]週[しゅう]、友[とも]達[だち]と一[いっ]緒[しょ]に映[えい]画[が]を見[み]ました。"
+        },
+        {
+          "japanese": "先月、新しい靴を買いました。",
+          "english": "I bought new shoes last month.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sengetsu",
+            "atarashii-adj",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "先[せん]月[げつ]、新[あたら]しい靴[くつ]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-go-language",
@@ -4771,7 +4989,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達と日本語で話します。",
+          "english": "I speak with my friend in Japanese.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "nihongo",
+            "hanasu-v"
+          ],
+          "furigana": "友[とも]達[だち]と日本[にほん]語[ご]で話[はな]します。"
+        },
+        {
+          "japanese": "この本は英語です。",
+          "english": "This book is in English.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "eigo"
+          ],
+          "furigana": "この本[ほん]は英[えい]語[ご]です。"
+        },
+        {
+          "japanese": "毎日日本語を勉強します。",
+          "english": "I study Japanese every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "nihongo",
+            "benkyou-suru"
+          ],
+          "furigana": "毎[まい]日[にち]日本[にほん]語[ご]を勉[べん]強[きょう]します。"
+        }
+      ]
     },
     {
       "slug": "n5-hanashi-wa",
@@ -4809,7 +5062,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、友達と話します。",
+          "english": "I will talk with my friend tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "hanasu-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と話[はな]します。"
+        },
+        {
+          "japanese": "新しい電話を買いました。",
+          "english": "I bought a new phone.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "denwa",
+            "kau-v"
+          ],
+          "furigana": "新[あたら]しい電[でん]話[わ]を買[か]いました。"
+        },
+        {
+          "japanese": "先生の話は面白いです。",
+          "english": "The teacher's story is interesting.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "hanashi",
+            "omoshiroi"
+          ],
+          "furigana": "先[せん]生[せい]の話[はなし]は面[おも]白[しろ]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-dokusho",
@@ -4847,7 +5135,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日本を読みます。",
+          "english": "I read books every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "私[わたし]は毎[まい]日本[にほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "図書館で面白い雑誌を読みました。",
+          "english": "I read an interesting magazine at the library.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "toshokan",
+            "omoshiroi",
+            "zasshi",
+            "yomu"
+          ],
+          "furigana": "図[と]書[しょ]館[かん]で面[おも]白[しろ]い雑[ざっ]誌[し]を読[よ]みました。"
+        },
+        {
+          "japanese": "誰がその手紙を読みましたか。",
+          "english": "Who read that letter?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dare",
+            "sono",
+            "tegami",
+            "yomu"
+          ],
+          "furigana": "誰[だれ]がその手[て]紙[がみ]を読[よ]みましたか。"
+        }
+      ]
     },
     {
       "slug": "n5-kaku-write",
@@ -4885,7 +5211,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "図書館で本を読みます。",
+          "english": "I will read a book at the library.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toshokan",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "友達に手紙を書きました。",
+          "english": "I wrote a letter to a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "tegami",
+            "kaku"
+          ],
+          "furigana": "友[とも]達[だち]に手[て]紙[がみ]を書[か]きました。"
+        },
+        {
+          "japanese": "かばんに辞書を入れました。",
+          "english": "I put the dictionary in my bag.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaban",
+            "jisho",
+            "ireru-v"
+          ],
+          "furigana": "かばんに辞[じ]書[しょ]を入[い]れました。"
+        }
+      ]
     },
     {
       "slug": "n5-kiku-hear",

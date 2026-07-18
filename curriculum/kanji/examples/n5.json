@@ -34,6 +34,43 @@
       "review_status": "draft"
     }
   },
+  "n5-bun-minute": {
+    "example_sentences": [
+      {
+        "japanese": "この本は分かりません。",
+        "english": "I don't understand this book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "パンを半分食べました。",
+        "english": "I ate half of the bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "hanbun",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "駅で五分待ちました。",
+        "english": "I waited for five minutes at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "go-v",
+          "fun-counter",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-chikara": {
     "example_sentences": [
       {
@@ -146,6 +183,45 @@
       "review_status": "draft"
     }
   },
+  "n5-dokusho": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日本を読みます。",
+        "english": "I read books every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "図書館で面白い雑誌を読みました。",
+        "english": "I read an interesting magazine at the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "omoshiroi",
+          "zasshi",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "誰がその手紙を読みましたか。",
+        "english": "Who read that letter?",
+        "vocabulary_slugs": [
+          "dare",
+          "sono",
+          "tegami",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-en": {
     "example_sentences": [
       {
@@ -189,6 +265,40 @@
       "review_status": "draft"
     }
   },
+  "n5-gaku": {
+    "example_sentences": [
+      {
+        "japanese": "妹は学生です。",
+        "english": "My younger sister is a student.",
+        "vocabulary_slugs": [
+          "imouto",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "明日、学校に行きます。",
+        "english": "I will go to school tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "数学は難しいです。",
+        "english": "Math is difficult.",
+        "vocabulary_slugs": [
+          "suugaku",
+          "muzukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-gatsu": {
     "example_sentences": [
       {
@@ -221,6 +331,42 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-go-language": {
+    "example_sentences": [
+      {
+        "japanese": "友達と日本語で話します。",
+        "english": "I speak with my friend in Japanese.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "nihongo",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "この本は英語です。",
+        "english": "This book is in English.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "eigo"
+        ]
+      },
+      {
+        "japanese": "毎日日本語を勉強します。",
+        "english": "I study Japanese every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "nihongo",
+          "benkyou-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -326,6 +472,82 @@
           "kono",
           "hana-v",
           "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hanashi-wa": {
+    "example_sentences": [
+      {
+        "japanese": "明日、友達と話します。",
+        "english": "I will talk with my friend tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "新しい電話を買いました。",
+        "english": "I bought a new phone.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "denwa",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "先生の話は面白いです。",
+        "english": "The teacher's story is interesting.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hanashi",
+          "omoshiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hantime": {
+    "example_sentences": [
+      {
+        "japanese": "毎日二時間半勉強します。",
+        "english": "I study for two and a half hours every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "ni-v",
+          "jikan",
+          "han-time",
+          "benkyou-suru"
+        ]
+      },
+      {
+        "japanese": "私はこのパンを半分食べます。",
+        "english": "I will eat half of this bread.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kono",
+          "pan",
+          "hanbun",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "本の半分を読みました。",
+        "english": "I read half of the book.",
+        "vocabulary_slugs": [
+          "hon",
+          "hanbun",
+          "yomu"
         ]
       }
     ],
@@ -739,6 +961,42 @@
       "review_status": "draft"
     }
   },
+  "n5-kaku-write": {
+    "example_sentences": [
+      {
+        "japanese": "図書館で本を読みます。",
+        "english": "I will read a book at the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "友達に手紙を書きました。",
+        "english": "I wrote a letter to a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "かばんに辞書を入れました。",
+        "english": "I put the dictionary in my bag.",
+        "vocabulary_slugs": [
+          "kaban",
+          "jisho",
+          "ireru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-kawa": {
     "example_sentences": [
       {
@@ -961,6 +1219,42 @@
       "review_status": "draft"
     }
   },
+  "n5-kou-school": {
+    "example_sentences": [
+      {
+        "japanese": "毎日学校へ行きます。",
+        "english": "I go to school every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "校庭に犬がいます。",
+        "english": "There is a dog in the schoolyard.",
+        "vocabulary_slugs": [
+          "koutei",
+          "inu",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "今日、学校を休みます。",
+        "english": "I will take a day off from school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-kuchi": {
     "example_sentences": [
       {
@@ -1102,6 +1396,44 @@
           "mae",
           "tomodachi",
           "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-mai-every": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日コーヒーを飲みます。",
+        "english": "I drink coffee every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "父は毎晩本を読みます。",
+        "english": "My father reads a book every night.",
+        "vocabulary_slugs": [
+          "chichi",
+          "maiban",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "毎月図書館に行きます。",
+        "english": "I go to the library every month.",
+        "vocabulary_slugs": [
+          "maitsuki",
+          "toshokan",
+          "iku-v"
         ]
       }
     ],
@@ -1847,6 +2179,45 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-sensei-saki": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、先生に会いました。",
+        "english": "I met the teacher yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "sensei",
+          "au"
+        ]
+      },
+      {
+        "japanese": "先週、友達と一緒に映画を見ました。",
+        "english": "I watched a movie with a friend last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "tomodachi",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "先月、新しい靴を買いました。",
+        "english": "I bought new shoes last month.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "atarashii-adj",
+          "kutsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
