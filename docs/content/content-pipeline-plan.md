@@ -287,7 +287,10 @@ least-reviewed status so drafts stay behind the compile gate. The no-API
 web-chat lane (`webprompts`/`ingest`) mirrors 2a/2b for the cost swap and is
 documented in `docs/workflows/example-sentences-web-chat-workflow.md` (with an
 automation prompt for driving Gemini web in
-`docs/workflows/example-sentences-web-chat-workflow-automation-prompt.md`).
+`docs/workflows/example-sentences-web-chat-workflow-automation-prompt.md`). A
+no-API, no-browser variant that produces each reply with in-session Claude Opus
+subagents (same `webprompts`/`ingest` commands and gate) is in
+`docs/workflows/example-sentences-opus-subagent-workflow-automation-prompt.md`.
 Generation itself (N5/N4 batches) has not run yet.
 
 ### Mechanical validation gate (before any human review)
