@@ -7511,7 +7511,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝電車で会社に行きます。",
+          "english": "I take the train to work every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "densha",
+            "kaisha",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]電[でん]車[しゃ]で会[かい]社[しゃ]に行[い]きます。"
+        },
+        {
+          "japanese": "夜に母に電話します。",
+          "english": "I'll call my mom at night.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yoru",
+            "haha",
+            "denwa-suru"
+          ],
+          "furigana": "夜[よる]に母[はは]に電[でん]話[わ]します。"
+        },
+        {
+          "japanese": "暗いから電気をつけます。",
+          "english": "It's dark, so I'll turn on the light.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kurai",
+            "denki",
+            "tsukeru"
+          ],
+          "furigana": "暗[くら]いから電[でん]気[き]をつけます。"
+        }
+      ]
     },
     {
       "slug": "n5-sha-car",
@@ -7549,7 +7585,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝電車で会社に行きます。",
+          "english": "Every morning I take the train to the office.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "densha",
+            "kaisha",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]電[でん]車[しゃ]で会[かい]社[しゃ]に行[い]きます。"
+        },
+        {
+          "japanese": "あの車はとても大きいです。",
+          "english": "That car over there is really big.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "kuruma",
+            "totemo",
+            "ookii"
+          ],
+          "furigana": "あの車[くるま]はとても大[おお]きいです。"
+        },
+        {
+          "japanese": "弟は自転車が好きです。",
+          "english": "My younger brother likes bikes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otouto",
+            "jitensha",
+            "suki"
+          ],
+          "furigana": "弟[おとうと]は自[じ]転[てん]車[くるま]が好[す]きです。"
+        }
+      ]
     },
     {
       "slug": "n5-eki-station",
@@ -7582,7 +7655,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅は家から近いです。",
+          "english": "The station is close to my house.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "ie",
+            "chikai"
+          ],
+          "furigana": "駅[えき]は家[いえ]から近[ちか]いです。"
+        },
+        {
+          "japanese": "駅員に切符を見せます。",
+          "english": "I show my ticket to the station staff.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ekiin",
+            "kippu",
+            "miseru"
+          ],
+          "furigana": "駅[えき]員[いん]に切[きっ]符[ぷ]を見[み]せます。"
+        },
+        {
+          "japanese": "私は毎朝この駅で電車に乗ります。",
+          "english": "I board the train at this station every morning.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "kono",
+            "eki",
+            "densha",
+            "noru"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]この駅[えき]で電[でん]車[しゃ]に乗[の]ります。"
+        }
+      ]
     },
     {
       "slug": "n5-michi",
@@ -7620,7 +7731,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この道は長いです。",
+          "english": "This road is long.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "nagai-adj"
+          ],
+          "furigana": "この道[みち]は長[なが]いです。"
+        },
+        {
+          "japanese": "毎日道を歩きます。",
+          "english": "I walk along the road every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "michi-v",
+            "aruku"
+          ],
+          "furigana": "毎[まい]日[にち]道[みち]を歩[ある]きます。"
+        },
+        {
+          "japanese": "道の近くに公園があります。",
+          "english": "There's a park near the road.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "michi-v",
+            "chikaku",
+            "kouen",
+            "aru"
+          ],
+          "furigana": "道[みち]の近[ちか]くに公[こう]園[えん]があります。"
+        }
+      ]
     },
     {
       "slug": "n5-machi",
@@ -7658,7 +7805,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この町は賑やかです。",
+          "english": "This town is lively.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "nigiyaka"
+          ],
+          "furigana": "この町[まち]は賑[にぎ]やかです。"
+        },
+        {
+          "japanese": "明日、町へ行きます。",
+          "english": "Tomorrow I'm going to town.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "machi-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、町[まち]へ行[い]きます。"
+        },
+        {
+          "japanese": "彼はこの町に住んでいます。",
+          "english": "He lives in this town.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kono",
+            "machi-v",
+            "sumu"
+          ],
+          "furigana": "彼[かれ]はこの町[まち]に住[す]んでいます。"
+        }
+      ]
     },
     {
       "slug": "n5-shi-city",
@@ -7696,7 +7879,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はこの市に住んでいます。",
+          "english": "I live in this city.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kono",
+            "sumu"
+          ],
+          "furigana": "私[わたし]はこの市[し]に住[す]んでいます。"
+        },
+        {
+          "japanese": "この市はとても大きいです。",
+          "english": "This city is very big.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "totemo",
+            "ookii"
+          ],
+          "furigana": "この市[し]はとても大[おお]きいです。"
+        },
+        {
+          "japanese": "母は市で野菜を買います。",
+          "english": "My mother buys vegetables at the market.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "yasai",
+            "kau-v"
+          ],
+          "furigana": "母[はは]は市[し]で野[や]菜[さい]を買[か]います。"
+        }
+      ]
     }
   ]
 }

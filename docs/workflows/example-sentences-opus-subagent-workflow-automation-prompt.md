@@ -22,7 +22,7 @@ sentences. The only content types are `kanji` and `vocab`.
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = gemini-3.1-pro>
+<subagent-model = cursor-grok-4.5-high>
 
 Model notes
 

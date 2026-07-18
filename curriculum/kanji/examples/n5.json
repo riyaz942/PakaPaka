@@ -296,6 +296,43 @@
       "review_status": "draft"
     }
   },
+  "n5-denki-den": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝電車で会社に行きます。",
+        "english": "I take the train to work every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "densha",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "夜に母に電話します。",
+        "english": "I'll call my mom at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "haha",
+          "denwa-suru"
+        ]
+      },
+      {
+        "japanese": "暗いから電気をつけます。",
+        "english": "It's dark, so I'll turn on the light.",
+        "vocabulary_slugs": [
+          "kurai",
+          "denki",
+          "tsukeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-deru": {
     "example_sentences": [
       {
@@ -405,6 +442,45 @@
     ],
     "_meta": {
       "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-eki-station": {
+    "example_sentences": [
+      {
+        "japanese": "駅は家から近いです。",
+        "english": "The station is close to my house.",
+        "vocabulary_slugs": [
+          "eki",
+          "ie",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "駅員に切符を見せます。",
+        "english": "I show my ticket to the station staff.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "kippu",
+          "miseru"
+        ]
+      },
+      {
+        "japanese": "私は毎朝この駅で電車に乗ります。",
+        "english": "I board the train at this station every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kono",
+          "eki",
+          "densha",
+          "noru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1965,6 +2041,43 @@
       "review_status": "draft"
     }
   },
+  "n5-machi": {
+    "example_sentences": [
+      {
+        "japanese": "この町は賑やかです。",
+        "english": "This town is lively.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "nigiyaka"
+        ]
+      },
+      {
+        "japanese": "明日、町へ行きます。",
+        "english": "Tomorrow I'm going to town.",
+        "vocabulary_slugs": [
+          "ashita",
+          "machi-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼はこの町に住んでいます。",
+        "english": "He lives in this town.",
+        "vocabulary_slugs": [
+          "kare",
+          "kono",
+          "machi-v",
+          "sumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-mae": {
     "example_sentences": [
       {
@@ -2146,6 +2259,43 @@
     ],
     "_meta": {
       "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-michi": {
+    "example_sentences": [
+      {
+        "japanese": "この道は長いです。",
+        "english": "This road is long.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "nagai-adj"
+        ]
+      },
+      {
+        "japanese": "毎日道を歩きます。",
+        "english": "I walk along the road every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "michi-v",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "道の近くに公園があります。",
+        "english": "There's a park near the road.",
+        "vocabulary_slugs": [
+          "michi-v",
+          "chikaku",
+          "kouen",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -2966,6 +3116,80 @@
     ],
     "_meta": {
       "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-sha-car": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝電車で会社に行きます。",
+        "english": "Every morning I take the train to the office.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "densha",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あの車はとても大きいです。",
+        "english": "That car over there is really big.",
+        "vocabulary_slugs": [
+          "ano",
+          "kuruma",
+          "totemo",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "弟は自転車が好きです。",
+        "english": "My younger brother likes bikes.",
+        "vocabulary_slugs": [
+          "otouto",
+          "jitensha",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-shi-city": {
+    "example_sentences": [
+      {
+        "japanese": "私はこの市に住んでいます。",
+        "english": "I live in this city.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kono",
+          "sumu"
+        ]
+      },
+      {
+        "japanese": "この市はとても大きいです。",
+        "english": "This city is very big.",
+        "vocabulary_slugs": [
+          "kono",
+          "totemo",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "母は市で野菜を買います。",
+        "english": "My mother buys vegetables at the market.",
+        "vocabulary_slugs": [
+          "haha",
+          "yasai",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
