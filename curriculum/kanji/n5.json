@@ -6768,7 +6768,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、高い時計を買いました。",
+          "english": "I bought an expensive watch yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "takai-adj",
+            "tokei",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、高[たか]い時計[とけい]を買[か]いました。"
+        },
+        {
+          "japanese": "あの山は高いです。",
+          "english": "That mountain over there is tall.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "takai-adj"
+          ],
+          "furigana": "あの山[やま]は高[たか]いです。"
+        },
+        {
+          "japanese": "あのレストランの肉は高いです。",
+          "english": "The meat at that restaurant is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "resutoran",
+            "niku",
+            "takai-adj"
+          ],
+          "furigana": "あのレストランの肉[にく]は高[たか]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-yasui",
@@ -6806,7 +6843,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "この本は安いです。",
+          "english": "This book is cheap.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "yasui-adj"
+          ],
+          "furigana": "この本[ほん]は安[やす]いです。"
+        },
+        {
+          "japanese": "あのレストランは安くておいしいです。",
+          "english": "That restaurant is cheap and delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "resutoran",
+            "yasui-adj",
+            "oishii"
+          ],
+          "furigana": "あのレストランは安[やす]くておいしいです。"
+        },
+        {
+          "japanese": "昨日、安い靴を買いました。",
+          "english": "I bought cheap shoes yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "yasui-adj",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、安[やす]い靴[くつ]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-atarashii",
@@ -6844,7 +6918,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "新しい車を買いました。",
+          "english": "I bought a new car.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "kuruma",
+            "kau-v"
+          ],
+          "furigana": "新[あたら]しい車[くるま]を買[か]いました。"
+        },
+        {
+          "japanese": "父は毎朝新聞を読みます。",
+          "english": "My father reads the newspaper every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "maiasa",
+            "shinbun",
+            "yomu"
+          ],
+          "furigana": "父[ちち]は毎[まい]朝[あさ]新[しん]聞[ぶん]を読[よ]みます。"
+        },
+        {
+          "japanese": "あの新しいレストランはおいしいです。",
+          "english": "That new restaurant is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "atarashii-adj",
+            "resutoran",
+            "oishii"
+          ],
+          "furigana": "あの新[あたら]しいレストランはおいしいです。"
+        }
+      ]
     },
     {
       "slug": "n5-furui",
@@ -6882,7 +6993,46 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "古い車を買いました。",
+          "english": "I bought an old car.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "furui-adj",
+            "kuruma",
+            "kau-v"
+          ],
+          "furigana": "古[ふる]い車[くるま]を買[か]いました。"
+        },
+        {
+          "japanese": "この町には古い家がたくさんあります。",
+          "english": "There are a lot of old houses in this town.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "furui-adj",
+            "ie",
+            "takusan",
+            "aru"
+          ],
+          "furigana": "この町[まち]には古[ふる]い家[いえ]がたくさんあります。"
+        },
+        {
+          "japanese": "その時計は少し古いです。",
+          "english": "That watch is a little old.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "tokei",
+            "sukoshi",
+            "furui-adj"
+          ],
+          "furigana": "その時計[とけい]は少[すこ]し古[ふる]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-ooi-ta",
@@ -6920,7 +7070,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "多田さん、ここは人がたくさんいます。",
+          "english": "Ms. Tada, there are a lot of people here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "hito",
+            "takusan",
+            "iru-exist"
+          ],
+          "furigana": "多田[ただ]さん、ここは人[ひと]がたくさんいます。"
+        },
+        {
+          "japanese": "本多さんの町は雨がたくさん降ります。",
+          "english": "It rains a lot in Mr. Honda's town.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "machi-v",
+            "ame-v",
+            "takusan",
+            "furu-rain"
+          ],
+          "furigana": "本多[ほんだ]さんの町[まち]は雨[あめ]がたくさん降[お]ります。"
+        },
+        {
+          "japanese": "宇多田さんは今日仕事がたくさんあります。",
+          "english": "Ms. Utada has a lot of work today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "shigoto",
+            "takusan",
+            "aru"
+          ],
+          "furigana": "宇多田[うただ]さんは今日[きょう]仕[し]事[ごと]がたくさんあります。"
+        }
+      ]
     },
     {
       "slug": "n5-sukunai",
@@ -6958,7 +7146,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は少し寒いです。",
+          "english": "It's a little cold today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "sukoshi",
+            "samui"
+          ],
+          "furigana": "今日[きょう]は少[すこ]し寒[さむ]いです。"
+        },
+        {
+          "japanese": "この本は少し高いです。",
+          "english": "This book is a little expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "sukoshi",
+            "takai-adj"
+          ],
+          "furigana": "この本[ほん]は少[すこ]し高[たか]いです。"
+        },
+        {
+          "japanese": "日本語を少し話します。",
+          "english": "I speak a little Japanese.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nihongo",
+            "sukoshi",
+            "hanasu-v"
+          ],
+          "furigana": "日本[にほん]語[ご]を少[すこ]し話[はな]します。"
+        }
+      ]
     },
     {
       "slug": "n5-nagai",
@@ -6996,7 +7220,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女の髪は長いです。",
+          "english": "Her hair is long.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kami-hair",
+            "nagai-adj"
+          ],
+          "furigana": "彼[かの]女[じょ]の髪[かみ]は長[なが]いです。"
+        },
+        {
+          "japanese": "私は長い手紙を書きました。",
+          "english": "I wrote a long letter.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "nagai-adj",
+            "tegami",
+            "kaku"
+          ],
+          "furigana": "私[わたし]は長[なが]い手[て]紙[がみ]を書[か]きました。"
+        },
+        {
+          "japanese": "先生の話は長いです。",
+          "english": "The teacher's stories are long.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "hanashi",
+            "nagai-adj"
+          ],
+          "furigana": "先[せん]生[せい]の話[はなし]は長[なが]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-hayai",
@@ -7034,7 +7294,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は早く起きました。",
+          "english": "I woke up early today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "hayai-early",
+            "okiru"
+          ],
+          "furigana": "今日[きょう]は早[はや]く起[お]きました。"
+        },
+        {
+          "japanese": "明日は早いから、寝ます。",
+          "english": "I have an early start tomorrow, so I'm going to sleep.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "hayai-early",
+            "neru"
+          ],
+          "furigana": "明日[あした]は早[はや]いから、寝[ね]ます。"
+        },
+        {
+          "japanese": "毎日早く学校へ行きます。",
+          "english": "I go to school early every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "hayai-early",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "毎[まい]日[にち]早[はや]く学[がっ]校[こう]へ行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-kuni",
@@ -7072,7 +7368,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "来年、外国に行きます。",
+          "english": "I will go to a foreign country next year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "rainen",
+            "gaikoku",
+            "iku-v"
+          ],
+          "furigana": "来[らい]年[ねん]、外[がい]国[こく]に行[い]きます。"
+        },
+        {
+          "japanese": "この町には外国人がたくさんいます。",
+          "english": "There are a lot of foreigners in this town.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "gaikokujin",
+            "takusan",
+            "iru-exist"
+          ],
+          "furigana": "この町[まち]には外[がい]国[こく]人[ひと]がたくさんいます。"
+        },
+        {
+          "japanese": "外国の車は高いです。",
+          "english": "Foreign cars are expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gaikoku",
+            "kuruma",
+            "takai-adj"
+          ],
+          "furigana": "外[がい]国[こく]の車[くるま]は高[たか]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-ame-rain",
@@ -7110,7 +7443,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日はたくさん雨が降りました。",
+          "english": "It rained a lot yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "takusan",
+            "ame-v",
+            "furu-rain"
+          ],
+          "furigana": "昨日[きのう]はたくさん雨[あめ]が降[ふ]りました。"
+        },
+        {
+          "japanese": "私は雨が嫌いです。",
+          "english": "I dislike rain.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "ame-v",
+            "kirai"
+          ],
+          "furigana": "私[わたし]は雨[あめ]が嫌[きら]いです。"
+        },
+        {
+          "japanese": "明日は雨ですか。",
+          "english": "Will it rain tomorrow?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "ame-v"
+          ],
+          "furigana": "明日[あした]は雨[あめ]ですか。"
+        }
+      ]
     },
     {
       "slug": "n5-denki-den",
