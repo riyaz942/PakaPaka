@@ -1,7 +1,7 @@
-Task: Generate N5 Kanji/Vocab Example Sentences via Claude Opus Subagents
+Task: Generate N5 Kanji/Vocab Example Sentences via Subagents
 
-Generate Phase 2c example sentences using in-session Claude subagents (model
-configurable below; an Opus-class model is recommended) — no API credentials and no
+Generate Phase 2c example sentences using in-session subagents (model configurable
+below; a strong reasoning model is recommended) — no API credentials and no
 browser. This is the no-API, no-browser sibling of the Gemini automation prompt:
 only the "call the model" step differs. Here each item's reply is produced by a
 fresh subagent instead of a web chat or the Message
@@ -27,23 +27,23 @@ Subagent model (which model every subagent in this run uses):
 Model notes
 
 - The value above is used for BOTH the generation subagent (Step 2) and every
-  repair subagent (Step 3). An Opus-class model with high reasoning is recommended;
-  a strong reasoning model is the minimum.
-- Give it as your tool/plan names the model (e.g. an Opus slug in Cursor, or `opus`
-  in Claude Code). If the requested model is unavailable, stop and say so rather
-  than silently substituting — then re-run with a model you actually have.
+  repair subagent (Step 3). A strong reasoning model is recommended.
+- Give it as your environment names the model. If the requested model is
+  unavailable, stop and say so rather than silently substituting — then re-run
+  with a model you actually have.
 - Record the model actually used in the final report, and pass it as the ingest
   `--model` provenance value (Step 3) so `_meta.generator_model` is honest.
 
-Run size (BATCH_LIMIT = 15)
+Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-This run processes up to 10 slugs (BATCH_LIMIT, set in Step 1). A text-only Opus
-subagent is far lighter than the browser lane (no screenshots), but Opus is heavy
-against a subscription's usage window. On a Pro plan especially, consider lowering
-BATCH_LIMIT to ~5–8 and calibrating: run one small batch, see how much of your
-5-hour window it consumed, and size later runs from that. The BATCH_LIMIT
-auto-select makes stopping and resuming across windows seamless — the next run
-picks up exactly where you left off.
+<batch-size = 15>
+
+This run processes up to <batch-size> slugs. A text-only subagent is far lighter
+than the browser lane (no screenshots), but strong reasoning models still cost
+usage. Consider starting smaller (~5–8) and calibrating: run one small batch, see
+how much usage it consumed, and size later runs from that. The auto-select makes
+stopping and resuming across sessions seamless — the next run picks up exactly
+where you left off.
 
 ---
 
@@ -62,14 +62,15 @@ Work from:
 curriculum/_build
 
 1a. Select this run's slugs automatically. Do NOT hand-pick or paste a slug list.
-Pick the next BATCH_LIMIT slugs of <type> (in curriculum sort order) that are
+Pick the next <batch-size> slugs of <type> (in curriculum sort order) that are
 neither generated (absent from the committed sidecar) nor drafted (no record under
-`drafts/examples`). Substitute this run's <type> for KIND, then run:
+`drafts/examples`). Substitute this run's <type> for KIND and <batch-size> for
+BATCH_LIMIT, then run:
 
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', 10   # KIND: 'vocab' or 'kanji'
+LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', <batch-size>   # KIND: 'vocab' or 'kanji'
 subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
 sidecar = f'../{subdir}/examples/{LEVEL}.json'
 generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
@@ -237,7 +238,7 @@ Use a fresh subagent for each attempt. If the third ingestion attempt fails:
 
 Ordering Note
 
-Each run is a single content type and covers only its auto-selected BATCH_LIMIT
+Each run is a single content type and covers only its auto-selected <batch-size>
 slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
 runs, and do N5 fully before N4. On the first run of a fresh type, read the assembled
 output before launching more runs — the batch size is already pilot-sized, so one run
@@ -277,7 +278,7 @@ Final Report
 
 Provide a summary containing:
 
-- The content type and the exact auto-selected slug set for this run (with the count vs. BATCH_LIMIT)
+- The content type, <batch-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
 - The model actually used for generation and repair
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs

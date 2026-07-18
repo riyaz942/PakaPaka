@@ -35,6 +35,42 @@
       "review_status": "draft"
     }
   },
+  "ano": {
+    "example_sentences": [
+      {
+        "japanese": "あの映画を見ます。",
+        "english": "I'm going to watch that movie over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "あの本は高いです。",
+        "english": "That book over there is expensive.",
+        "vocabulary_slugs": [
+          "ano",
+          "hon",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "あの公園で遊びます。",
+        "english": "I'll play at that park over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "are": {
     "example_sentences": [
       {
@@ -59,6 +95,41 @@
         "vocabulary_slugs": [
           "are",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "asoko": {
+    "example_sentences": [
+      {
+        "japanese": "あそこに猫がいます。",
+        "english": "There's a cat over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "neko"
+        ]
+      },
+      {
+        "japanese": "彼はあそこで待っています。",
+        "english": "He's waiting over there.",
+        "vocabulary_slugs": [
+          "kare",
+          "asoko",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "あそこで映画を見ます。",
+        "english": "I watch movies over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -96,6 +167,77 @@
           "issho-ni",
           "kouen",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "doko": {
+    "example_sentences": [
+      {
+        "japanese": "公園はどこですか？",
+        "english": "Where is the park?",
+        "vocabulary_slugs": [
+          "kouen",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "どこでご飯を食べますか？",
+        "english": "Where do you eat?",
+        "vocabulary_slugs": [
+          "doko",
+          "gohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "明日どこで会いますか？",
+        "english": "Where should we meet tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "doko",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dono": {
+    "example_sentences": [
+      {
+        "japanese": "どの本を読みますか。",
+        "english": "Which book will you read?",
+        "vocabulary_slugs": [
+          "dono",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "どの映画がいいですか。",
+        "english": "Which movie is good?",
+        "vocabulary_slugs": [
+          "dono",
+          "eiga",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "どのお茶を飲みますか。",
+        "english": "Which tea will you drink?",
+        "vocabulary_slugs": [
+          "dono",
+          "ocha",
+          "nomu-v"
         ]
       }
     ],
@@ -250,6 +392,112 @@
       "review_status": "draft"
     }
   },
+  "kochira": {
+    "example_sentences": [
+      {
+        "japanese": "こちらは私の友達です。",
+        "english": "This is my friend.",
+        "vocabulary_slugs": [
+          "kochira",
+          "watashi",
+          "tomodachi"
+        ]
+      },
+      {
+        "japanese": "こちらに行きます。",
+        "english": "I'm going this way.",
+        "vocabulary_slugs": [
+          "kochira",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼がこちらに来ます。",
+        "english": "He's coming this way.",
+        "vocabulary_slugs": [
+          "kare",
+          "kochira",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koko": {
+    "example_sentences": [
+      {
+        "japanese": "ここは公園です。",
+        "english": "This is a park.",
+        "vocabulary_slugs": [
+          "koko",
+          "kouen"
+        ]
+      },
+      {
+        "japanese": "ここで朝ご飯を食べます。",
+        "english": "I eat breakfast here.",
+        "vocabulary_slugs": [
+          "koko",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "明日ここに来ます。",
+        "english": "I'll come here tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "koko",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kono": {
+    "example_sentences": [
+      {
+        "japanese": "この本は難しいです。",
+        "english": "This book is difficult.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "この映画を見ます。",
+        "english": "I'll watch this movie.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "このお茶はおいしいです。",
+        "english": "This tea is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "ocha",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kore": {
     "example_sentences": [
       {
@@ -275,6 +523,113 @@
         "vocabulary_slugs": [
           "kore",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sochira": {
+    "example_sentences": [
+      {
+        "japanese": "明日そちらに行きます。",
+        "english": "I'll go that way tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "sochira",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "そちらを見てください。",
+        "english": "Please look that way.",
+        "vocabulary_slugs": [
+          "sochira",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "そちらは寒いですか。",
+        "english": "Is it cold over there?",
+        "vocabulary_slugs": [
+          "sochira",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "soko": {
+    "example_sentences": [
+      {
+        "japanese": "そこでお茶を飲みます。",
+        "english": "I'll drink tea there.",
+        "vocabulary_slugs": [
+          "soko",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日、友達とそこへ行きます。",
+        "english": "Tomorrow I'll go there with a friend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "soko",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私たちはそこで会います。",
+        "english": "We'll meet there.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "soko",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sono": {
+    "example_sentences": [
+      {
+        "japanese": "その本を買います。",
+        "english": "I'll buy that book.",
+        "vocabulary_slugs": [
+          "sono",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "その映画は楽しいです。",
+        "english": "That movie is fun.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "そのお茶を飲みます。",
+        "english": "I'll drink that tea.",
+        "vocabulary_slugs": [
+          "sono",
+          "ocha",
+          "nomu-v"
         ]
       }
     ],

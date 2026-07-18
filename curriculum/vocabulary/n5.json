@@ -665,7 +665,47 @@
           "answer_text": "この"
         }
       ],
-      "furigana": "この"
+      "furigana": "この",
+      "example_sentences": [
+        {
+          "japanese": "この本は難しいです。",
+          "english": "This book is difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "muzukashii"
+          ],
+          "furigana": "この本[ほん]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "この映画を見ます。",
+          "english": "I'll watch this movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "この映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "このお茶はおいしいです。",
+          "english": "This tea is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "ocha",
+            "oishii"
+          ],
+          "furigana": "このお茶[ちゃ]はおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sono",
@@ -684,7 +724,47 @@
           "answer_text": "その"
         }
       ],
-      "furigana": "その"
+      "furigana": "その",
+      "example_sentences": [
+        {
+          "japanese": "その本を買います。",
+          "english": "I'll buy that book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sono",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "その本[ほん]を買[か]います。"
+        },
+        {
+          "japanese": "その映画は楽しいです。",
+          "english": "That movie is fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "eiga",
+            "tanoshii"
+          ],
+          "furigana": "その映[えい]画[が]は楽[たの]しいです。"
+        },
+        {
+          "japanese": "そのお茶を飲みます。",
+          "english": "I'll drink that tea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "そのお茶[ちゃ]を飲[の]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ano",
@@ -703,7 +783,47 @@
           "answer_text": "あの"
         }
       ],
-      "furigana": "あの"
+      "furigana": "あの",
+      "example_sentences": [
+        {
+          "japanese": "あの映画を見ます。",
+          "english": "I'm going to watch that movie over there.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "あの映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "あの本は高いです。",
+          "english": "That book over there is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "hon",
+            "takai-adj"
+          ],
+          "furigana": "あの本[ほん]は高[たか]いです。"
+        },
+        {
+          "japanese": "あの公園で遊びます。",
+          "english": "I'll play at that park over there.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "kouen",
+            "asobu"
+          ],
+          "furigana": "あの公[こう]園[えん]で遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dono",
@@ -722,7 +842,47 @@
           "answer_text": "どの"
         }
       ],
-      "furigana": "どの"
+      "furigana": "どの",
+      "example_sentences": [
+        {
+          "japanese": "どの本を読みますか。",
+          "english": "Which book will you read?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "dono",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "どの本[ほん]を読[よ]みますか。"
+        },
+        {
+          "japanese": "どの映画がいいですか。",
+          "english": "Which movie is good?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dono",
+            "eiga",
+            "ii"
+          ],
+          "furigana": "どの映[えい]画[が]がいいですか。"
+        },
+        {
+          "japanese": "どのお茶を飲みますか。",
+          "english": "Which tea will you drink?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dono",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "どのお茶[ちゃ]を飲[の]みますか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koko",
@@ -741,7 +901,46 @@
           "answer_text": "ここ"
         }
       ],
-      "furigana": "ここ"
+      "furigana": "ここ",
+      "example_sentences": [
+        {
+          "japanese": "ここは公園です。",
+          "english": "This is a park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "kouen"
+          ],
+          "furigana": "ここは公[こう]園[えん]です。"
+        },
+        {
+          "japanese": "ここで朝ご飯を食べます。",
+          "english": "I eat breakfast here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "koko",
+            "asagohan",
+            "taberu"
+          ],
+          "furigana": "ここで朝[あさ]ご飯[はん]を食[た]べます。"
+        },
+        {
+          "japanese": "明日ここに来ます。",
+          "english": "I'll come here tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "koko",
+            "kuru-v"
+          ],
+          "furigana": "明日[あした]ここに来[らい]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "soko",
@@ -760,7 +959,48 @@
           "answer_text": "そこ"
         }
       ],
-      "furigana": "そこ"
+      "furigana": "そこ",
+      "example_sentences": [
+        {
+          "japanese": "そこでお茶を飲みます。",
+          "english": "I'll drink tea there.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "soko",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "そこでお茶[ちゃ]を飲[の]みます。"
+        },
+        {
+          "japanese": "明日、友達とそこへ行きます。",
+          "english": "Tomorrow I'll go there with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "soko",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]とそこへ行[い]きます。"
+        },
+        {
+          "japanese": "私たちはそこで会います。",
+          "english": "We'll meet there.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "soko",
+            "au"
+          ],
+          "furigana": "私[わたし]たちはそこで会[あ]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "asoko",
@@ -779,7 +1019,46 @@
           "answer_text": "あそこ"
         }
       ],
-      "furigana": "あそこ"
+      "furigana": "あそこ",
+      "example_sentences": [
+        {
+          "japanese": "あそこに猫がいます。",
+          "english": "There's a cat over there.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "asoko",
+            "neko"
+          ],
+          "furigana": "あそこに猫[ねこ]がいます。"
+        },
+        {
+          "japanese": "彼はあそこで待っています。",
+          "english": "He's waiting over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "asoko",
+            "matsu"
+          ],
+          "furigana": "彼[かれ]はあそこで待[ま]っています。"
+        },
+        {
+          "japanese": "あそこで映画を見ます。",
+          "english": "I watch movies over there.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "asoko",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "あそこで映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doko",
@@ -798,7 +1077,46 @@
           "answer_text": "どこ"
         }
       ],
-      "furigana": "どこ"
+      "furigana": "どこ",
+      "example_sentences": [
+        {
+          "japanese": "公園はどこですか？",
+          "english": "Where is the park?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouen",
+            "doko"
+          ],
+          "furigana": "公[こう]園[えん]はどこですか？"
+        },
+        {
+          "japanese": "どこでご飯を食べますか？",
+          "english": "Where do you eat?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "doko",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "どこでご飯[はん]を食[た]べますか？"
+        },
+        {
+          "japanese": "明日どこで会いますか？",
+          "english": "Where should we meet tomorrow?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "doko",
+            "au"
+          ],
+          "furigana": "明日[あした]どこで会[あ]いますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kochira",
@@ -817,7 +1135,46 @@
           "answer_text": "こちら"
         }
       ],
-      "furigana": "こちら"
+      "furigana": "こちら",
+      "example_sentences": [
+        {
+          "japanese": "こちらは私の友達です。",
+          "english": "This is my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kochira",
+            "watashi",
+            "tomodachi"
+          ],
+          "furigana": "こちらは私[わたし]の友[とも]達[だち]です。"
+        },
+        {
+          "japanese": "こちらに行きます。",
+          "english": "I'm going this way.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kochira",
+            "iku-v"
+          ],
+          "furigana": "こちらに行[い]きます。"
+        },
+        {
+          "japanese": "彼がこちらに来ます。",
+          "english": "He's coming this way.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kochira",
+            "kuru-v"
+          ],
+          "furigana": "彼[かれ]がこちらに来[らい]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sochira",
@@ -836,7 +1193,45 @@
           "answer_text": "そちら"
         }
       ],
-      "furigana": "そちら"
+      "furigana": "そちら",
+      "example_sentences": [
+        {
+          "japanese": "明日そちらに行きます。",
+          "english": "I'll go that way tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "sochira",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]そちらに行[い]きます。"
+        },
+        {
+          "japanese": "そちらを見てください。",
+          "english": "Please look that way.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sochira",
+            "miru-v"
+          ],
+          "furigana": "そちらを見[み]てください。"
+        },
+        {
+          "japanese": "そちらは寒いですか。",
+          "english": "Is it cold over there?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sochira",
+            "samui"
+          ],
+          "furigana": "そちらは寒[さむ]いですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "achira",
