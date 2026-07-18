@@ -11333,7 +11333,46 @@
           "answer_text": "コーヒー"
         }
       ],
-      "furigana": "コーヒー"
+      "furigana": "コーヒー",
+      "example_sentences": [
+        {
+          "japanese": "毎朝コーヒーを飲みます。",
+          "english": "I drink coffee every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]コーヒーを飲[の]みます。"
+        },
+        {
+          "japanese": "このコーヒーはおいしいです。",
+          "english": "This coffee is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "koohii",
+            "oishii"
+          ],
+          "furigana": "このコーヒーはおいしいです。"
+        },
+        {
+          "japanese": "コーヒーはいくらですか。",
+          "english": "How much is the coffee?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koohii",
+            "ikura"
+          ],
+          "furigana": "コーヒーはいくらですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "osake",
@@ -11352,7 +11391,46 @@
           "answer_text": "おさけ"
         }
       ],
-      "furigana": "お酒[さけ]"
+      "furigana": "お酒[さけ]",
+      "example_sentences": [
+        {
+          "japanese": "友達とお酒を飲みます。",
+          "english": "I drink alcohol with my friends.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "osake",
+            "nomu-v"
+          ],
+          "furigana": "友[とも]達[だち]とお酒[さけ]を飲[の]みます。"
+        },
+        {
+          "japanese": "お酒を買いました。",
+          "english": "I bought some alcohol.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "osake",
+            "kau-v"
+          ],
+          "furigana": "お酒[さけ]を買[か]いました。"
+        },
+        {
+          "japanese": "このお酒はおいしいです。",
+          "english": "This sake is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "osake",
+            "oishii"
+          ],
+          "furigana": "このお酒[さけ]はおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "biiru",
@@ -11371,7 +11449,47 @@
           "answer_text": "ビール"
         }
       ],
-      "furigana": "ビール"
+      "furigana": "ビール",
+      "example_sentences": [
+        {
+          "japanese": "私はビールを飲みます。",
+          "english": "I drink beer.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "biiru",
+            "nomu-v"
+          ],
+          "furigana": "私[わたし]はビールを飲[の]みます。"
+        },
+        {
+          "japanese": "このビールはおいしいです。",
+          "english": "This beer is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "biiru",
+            "oishii"
+          ],
+          "furigana": "このビールはおいしいです。"
+        },
+        {
+          "japanese": "友達とビールを買いました。",
+          "english": "I bought beer with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "biiru",
+            "kau-v"
+          ],
+          "furigana": "友[とも]達[だち]とビールを買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "satou",
@@ -11390,7 +11508,47 @@
           "answer_text": "さとう"
         }
       ],
-      "furigana": "砂[さ]糖[とう]"
+      "furigana": "砂[さ]糖[とう]",
+      "example_sentences": [
+        {
+          "japanese": "コーヒーと砂糖を買います。",
+          "english": "I'll buy coffee and sugar.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koohii",
+            "satou",
+            "kau-v"
+          ],
+          "furigana": "コーヒーと砂[さ]糖[とう]を買[か]います。"
+        },
+        {
+          "japanese": "この砂糖は安いです。",
+          "english": "This sugar is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "satou",
+            "yasui-adj"
+          ],
+          "furigana": "この砂[さ]糖[とう]は安[やす]いです。"
+        },
+        {
+          "japanese": "彼女は砂糖を使います。",
+          "english": "She uses sugar.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "satou",
+            "tsukau"
+          ],
+          "furigana": "彼[かの]女[じょ]は砂[さ]糖[とう]を使[つか]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shio",
@@ -11409,7 +11567,47 @@
           "answer_text": "しお"
         }
       ],
-      "furigana": "塩[しお]"
+      "furigana": "塩[しお]",
+      "example_sentences": [
+        {
+          "japanese": "塩を買いました。",
+          "english": "I bought some salt.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shio",
+            "kau-v"
+          ],
+          "furigana": "塩[しお]を買[か]いました。"
+        },
+        {
+          "japanese": "この塩は安いです。",
+          "english": "This salt is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "shio",
+            "yasui-adj"
+          ],
+          "furigana": "この塩[しお]は安[やす]いです。"
+        },
+        {
+          "japanese": "母は毎日塩を使います。",
+          "english": "My mom uses salt every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "mainichi",
+            "shio",
+            "tsukau"
+          ],
+          "furigana": "母[はは]は毎[まい]日[にち]塩[しお]を使[つか]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ryouri",
@@ -11428,7 +11626,47 @@
           "answer_text": "りょうり"
         }
       ],
-      "furigana": "料[りょう]理[り]"
+      "furigana": "料[りょう]理[り]",
+      "example_sentences": [
+        {
+          "japanese": "この料理はおいしいです。",
+          "english": "This dish is delicious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "ryouri",
+            "oishii"
+          ],
+          "furigana": "この料[りょう]理[り]はおいしいです。"
+        },
+        {
+          "japanese": "母は毎日料理をします。",
+          "english": "My mom cooks every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "mainichi",
+            "ryouri"
+          ],
+          "furigana": "母[はは]は毎[まい]日[にち]料[りょう]理[り]をします。"
+        },
+        {
+          "japanese": "友達の料理を食べました。",
+          "english": "I ate my friend's cooking.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "ryouri",
+            "taberu"
+          ],
+          "furigana": "友[とも]達[だち]の料[りょう]理[り]を食[た]べました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shokuji",
@@ -11447,7 +11685,48 @@
           "answer_text": "しょくじ"
         }
       ],
-      "furigana": "食[しょく]事[じ]"
+      "furigana": "食[しょく]事[じ]",
+      "example_sentences": [
+        {
+          "japanese": "友達と一緒に食事をします。",
+          "english": "I'll have a meal together with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "issho-ni",
+            "shokuji"
+          ],
+          "furigana": "友[とも]達[だち]と一[いっ]緒[しょ]に食[しょく]事[じ]をします。"
+        },
+        {
+          "japanese": "この食事はおいしいです。",
+          "english": "This meal is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "shokuji",
+            "oishii"
+          ],
+          "furigana": "この食[しょく]事[じ]はおいしいです。"
+        },
+        {
+          "japanese": "明日、彼と食事に行きます。",
+          "english": "Tomorrow I'll go out for a meal with him.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "kare",
+            "shokuji",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、彼[かれ]と食[しょく]事[じ]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kome-v",
@@ -11466,7 +11745,47 @@
           "answer_text": "こめ"
         }
       ],
-      "furigana": "米[こめ]"
+      "furigana": "米[こめ]",
+      "example_sentences": [
+        {
+          "japanese": "母は米を買います。",
+          "english": "My mother buys rice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "kome-v",
+            "kau-v"
+          ],
+          "furigana": "母[はは]は米[こめ]を買[か]います。"
+        },
+        {
+          "japanese": "この米は安いです。",
+          "english": "This rice is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "kome-v",
+            "yasui-adj"
+          ],
+          "furigana": "この米[こめ]は安[やす]いです。"
+        },
+        {
+          "japanese": "料理に米を使います。",
+          "english": "I use rice for cooking.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ryouri",
+            "kome-v",
+            "tsukau"
+          ],
+          "furigana": "料[りょう]理[り]に米[こめ]を使[つか]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "okashi",
@@ -11485,7 +11804,47 @@
           "answer_text": "おかし"
         }
       ],
-      "furigana": "お菓[か]子[し]"
+      "furigana": "お菓[か]子[し]",
+      "example_sentences": [
+        {
+          "japanese": "このお菓子はおいしいです。",
+          "english": "These sweets are delicious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "okashi",
+            "oishii"
+          ],
+          "furigana": "このお菓[か]子[し]はおいしいです。"
+        },
+        {
+          "japanese": "今日はお菓子を買います。",
+          "english": "I'll buy some snacks today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "okashi",
+            "kau-v"
+          ],
+          "furigana": "今日[きょう]はお菓[か]子[し]を買[か]います。"
+        },
+        {
+          "japanese": "妹とお菓子を食べます。",
+          "english": "I eat snacks with my younger sister.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "okashi",
+            "taberu"
+          ],
+          "furigana": "妹[いもうと]とお菓[か]子[し]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bentou",
@@ -11504,7 +11863,47 @@
           "answer_text": "べんとう"
         }
       ],
-      "furigana": "弁[べん]当[とう]"
+      "furigana": "弁[べん]当[とう]",
+      "example_sentences": [
+        {
+          "japanese": "明日弁当を買います。",
+          "english": "I'll buy a boxed lunch tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "bentou",
+            "kau-v"
+          ],
+          "furigana": "明日[あした]弁[べん]当[とう]を買[か]います。"
+        },
+        {
+          "japanese": "その弁当は安いです。",
+          "english": "That boxed lunch is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "bentou",
+            "yasui-adj"
+          ],
+          "furigana": "その弁[べん]当[とう]は安[やす]いです。"
+        },
+        {
+          "japanese": "彼女と弁当を食べます。",
+          "english": "I'll eat a boxed lunch with her.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "bentou",
+            "taberu"
+          ],
+          "furigana": "彼[かの]女[じょ]と弁[べん]当[とう]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "resutoran",
@@ -11523,7 +11922,47 @@
           "answer_text": "レストラン"
         }
       ],
-      "furigana": "レストラン"
+      "furigana": "レストラン",
+      "example_sentences": [
+        {
+          "japanese": "明日レストランに行きます。",
+          "english": "I'm going to a restaurant tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "resutoran",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]レストランに行[い]きます。"
+        },
+        {
+          "japanese": "このレストランはおいしいです。",
+          "english": "This restaurant is delicious.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "resutoran",
+            "oishii"
+          ],
+          "furigana": "このレストランはおいしいです。"
+        },
+        {
+          "japanese": "友達とレストランで食べます。",
+          "english": "I eat at a restaurant with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "resutoran",
+            "taberu"
+          ],
+          "furigana": "友[とも]達[だち]とレストランで食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kissaten",
@@ -11542,7 +11981,49 @@
           "answer_text": "きっさてん"
         }
       ],
-      "furigana": "喫[きっ]茶[さ]店[てん]"
+      "furigana": "喫[きっ]茶[さ]店[てん]",
+      "example_sentences": [
+        {
+          "japanese": "私は喫茶店でコーヒーを飲みます。",
+          "english": "I drink coffee at a coffee shop.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kissaten",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "私[わたし]は喫[きっ]茶[さ]店[みせ]でコーヒーを飲[の]みます。"
+        },
+        {
+          "japanese": "友達と喫茶店に行きました。",
+          "english": "I went to a coffee shop with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kissaten",
+            "iku-v"
+          ],
+          "furigana": "友[とも]達[だち]と喫[きっ]茶[さ]店[みせ]に行[い]きました。"
+        },
+        {
+          "japanese": "この喫茶店のお茶はおいしいです。",
+          "english": "The tea at this coffee shop is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "kissaten",
+            "ocha",
+            "oishii"
+          ],
+          "furigana": "この喫[きっ]茶[さ]店[みせ]のお茶[ちゃ]はおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ie",
@@ -11561,7 +12042,47 @@
           "answer_text": "いえ"
         }
       ],
-      "furigana": "家[いえ]"
+      "furigana": "家[いえ]",
+      "example_sentences": [
+        {
+          "japanese": "家に帰ります。",
+          "english": "I'm going home.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "家[いえ]に帰[かえ]ります。"
+        },
+        {
+          "japanese": "この家はいいです。",
+          "english": "This house is nice.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "ie",
+            "ii"
+          ],
+          "furigana": "この家[いえ]はいいです。"
+        },
+        {
+          "japanese": "週末は家で映画を見ます。",
+          "english": "On weekends I watch movies at home.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "ie",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]は家[いえ]で映[えい]画[が]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "uchi",
@@ -11580,7 +12101,47 @@
           "answer_text": "うち"
         }
       ],
-      "furigana": "うち"
+      "furigana": "うち",
+      "example_sentences": [
+        {
+          "japanese": "今日うちに帰ります。",
+          "english": "I'm going home today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "uchi",
+            "kaeru-v"
+          ],
+          "furigana": "今日[きょう]うちに帰[かえ]ります。"
+        },
+        {
+          "japanese": "友達がうちに来ます。",
+          "english": "A friend is coming over to my place.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "uchi",
+            "kuru-v"
+          ],
+          "furigana": "友[とも]達[だち]がうちに来[らい]ます。"
+        },
+        {
+          "japanese": "うちでご飯を食べます。",
+          "english": "I eat at home.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "uchi",
+            "gohan",
+            "taberu"
+          ],
+          "furigana": "うちでご飯[はん]を食[た]べます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gakkou-v",
@@ -11599,7 +12160,49 @@
           "answer_text": "がっこう"
         }
       ],
-      "furigana": "学[がっ]校[こう]"
+      "furigana": "学[がっ]校[こう]",
+      "example_sentences": [
+        {
+          "japanese": "私は毎日学校へ行きます。",
+          "english": "I go to school every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "明日友達と学校で会います。",
+          "english": "Tomorrow I'll meet my friend at school.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "gakkou-v",
+            "au"
+          ],
+          "furigana": "明日[あした]友[とも]達[だち]と学[がっ]校[こう]で会[あ]います。"
+        },
+        {
+          "japanese": "この学校は楽しいです。",
+          "english": "This school is fun.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "gakkou-v",
+            "tanoshii"
+          ],
+          "furigana": "この学[がっ]校[こう]は楽[たの]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "daigaku",
@@ -11618,7 +12221,47 @@
           "answer_text": "だいがく"
         }
       ],
-      "furigana": "大[だい]学[がく]"
+      "furigana": "大[だい]学[がく]",
+      "example_sentences": [
+        {
+          "japanese": "私は大学の学生です。",
+          "english": "I'm a university student.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "daigaku",
+            "gakusei"
+          ],
+          "furigana": "私[わたし]は大[だい]学[がく]の学[がく]生[せい]です。"
+        },
+        {
+          "japanese": "明日、大学に行きます。",
+          "english": "I'm going to the university tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "daigaku",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、大[だい]学[がく]に行[い]きます。"
+        },
+        {
+          "japanese": "友達と大学で会います。",
+          "english": "I'm meeting a friend at the university.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "daigaku",
+            "au"
+          ],
+          "furigana": "友[とも]達[だち]と大[だい]学[がく]で会[あ]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaisha",
@@ -11637,7 +12280,49 @@
           "answer_text": "かいしゃ"
         }
       ],
-      "furigana": "会[かい]社[しゃ]"
+      "furigana": "会[かい]社[しゃ]",
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝会社に行きます。",
+          "english": "I go to the office every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "kaisha",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]会[かい]社[しゃ]に行[い]きます。"
+        },
+        {
+          "japanese": "今日は会社で忙しいです。",
+          "english": "I'm busy at the office today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "kaisha",
+            "isogashii"
+          ],
+          "furigana": "今日[きょう]は会[かい]社[しゃ]で忙[いそが]しいです。"
+        },
+        {
+          "japanese": "明日友達と会社で会います。",
+          "english": "Tomorrow I'm meeting a friend at the office.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "kaisha",
+            "au"
+          ],
+          "furigana": "明日[あした]友[とも]達[だち]と会[かい]社[しゃ]で会[あ]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "byouin",
@@ -11656,7 +12341,49 @@
           "answer_text": "びょういん"
         }
       ],
-      "furigana": "病[びょう]院[いん]"
+      "furigana": "病[びょう]院[いん]",
+      "example_sentences": [
+        {
+          "japanese": "明日、父と病院に行きます。",
+          "english": "Tomorrow I'm going to the hospital with my father.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "chichi",
+            "byouin",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、父[ちち]と病[びょう]院[いん]に行[い]きます。"
+        },
+        {
+          "japanese": "この病院はあそこです。",
+          "english": "This hospital is over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "byouin",
+            "asoko"
+          ],
+          "furigana": "この病[びょう]院[いん]はあそこです。"
+        },
+        {
+          "japanese": "友達は病院で本を読みます。",
+          "english": "My friend reads a book at the hospital.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "byouin",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "友[とも]達[だち]は病[びょう]院[いん]で本[ほん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ginkou",
@@ -11675,7 +12402,47 @@
           "answer_text": "ぎんこう"
         }
       ],
-      "furigana": "銀[ぎん]行[こう]"
+      "furigana": "銀[ぎん]行[こう]",
+      "example_sentences": [
+        {
+          "japanese": "私は銀行に行きます。",
+          "english": "I'm going to the bank.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ginkou",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は銀[ぎん]行[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "銀行はどこですか。",
+          "english": "Where is the bank?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ginkou",
+            "doko"
+          ],
+          "furigana": "銀[ぎん]行[こう]はどこですか。"
+        },
+        {
+          "japanese": "彼は明日銀行で待ちます。",
+          "english": "He's waiting at the bank tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "ashita",
+            "ginkou",
+            "matsu"
+          ],
+          "furigana": "彼[かれ]は明日[あした]銀[ぎん]行[こう]で待[ま]ちます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yuubinkyoku",
@@ -11694,7 +12461,46 @@
           "answer_text": "ゆうびんきょく"
         }
       ],
-      "furigana": "郵[ゆう]便[びん]局[きょく]"
+      "furigana": "郵[ゆう]便[びん]局[きょく]",
+      "example_sentences": [
+        {
+          "japanese": "今日、郵便局に行きます。",
+          "english": "I'm going to the post office today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "yuubinkyoku",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]、郵[ゆう]便[びん]局[きょく]に行[い]きます。"
+        },
+        {
+          "japanese": "郵便局はどこですか。",
+          "english": "Where is the post office?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yuubinkyoku",
+            "doko"
+          ],
+          "furigana": "郵[ゆう]便[びん]局[きょく]はどこですか。"
+        },
+        {
+          "japanese": "郵便局で彼女を待ちます。",
+          "english": "I'll wait for her at the post office.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yuubinkyoku",
+            "kanojo",
+            "matsu"
+          ],
+          "furigana": "郵[ゆう]便[びん]局[きょく]で彼[かの]女[じょ]を待[ま]ちます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "toshokan",
@@ -11713,7 +12519,48 @@
           "answer_text": "としょかん"
         }
       ],
-      "furigana": "図[と]書[しょ]館[かん]"
+      "furigana": "図[と]書[しょ]館[かん]",
+      "example_sentences": [
+        {
+          "japanese": "図書館はどこですか。",
+          "english": "Where is the library?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toshokan",
+            "doko"
+          ],
+          "furigana": "図[と]書[しょ]館[かん]はどこですか。"
+        },
+        {
+          "japanese": "私は毎日図書館に行く。",
+          "english": "I go to the library every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "toshokan",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]図[と]書[しょ]館[かん]に行[い]く。"
+        },
+        {
+          "japanese": "友達と図書館で本を読む。",
+          "english": "I read books at the library with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "toshokan",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "友[とも]達[だち]と図[と]書[しょ]館[かん]で本[ほん]を読[よ]む。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "eki",
@@ -11732,7 +12579,47 @@
           "answer_text": "えき"
         }
       ],
-      "furigana": "駅[えき]"
+      "furigana": "駅[えき]",
+      "example_sentences": [
+        {
+          "japanese": "駅で友達を待ちます。",
+          "english": "I wait for my friend at the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "tomodachi",
+            "matsu"
+          ],
+          "furigana": "駅[えき]で友[とも]達[だち]を待[ま]ちます。"
+        },
+        {
+          "japanese": "午後に駅へ行きます。",
+          "english": "I go to the station in the afternoon.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gogo",
+            "eki",
+            "iku-v"
+          ],
+          "furigana": "午[ご]後[ご]に駅[えき]へ行[い]きます。"
+        },
+        {
+          "japanese": "駅で弁当を買いました。",
+          "english": "I bought a boxed lunch at the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "bentou",
+            "kau-v"
+          ],
+          "furigana": "駅[えき]で弁[べん]当[とう]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kuukou",
@@ -11751,7 +12638,46 @@
           "answer_text": "くうこう"
         }
       ],
-      "furigana": "空[くう]港[こう]"
+      "furigana": "空[くう]港[こう]",
+      "example_sentences": [
+        {
+          "japanese": "空港はどこですか。",
+          "english": "Where is the airport?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kuukou",
+            "doko"
+          ],
+          "furigana": "空[くう]港[こう]はどこですか。"
+        },
+        {
+          "japanese": "明日、空港に行きます。",
+          "english": "I'm going to the airport tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "kuukou",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、空[くう]港[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "空港でお茶を飲みます。",
+          "english": "I'll drink tea at the airport.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuukou",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "空[くう]港[こう]でお茶[ちゃ]を飲[の]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mise",
@@ -11770,7 +12696,50 @@
           "answer_text": "みせ"
         }
       ],
-      "furigana": "店[みせ]"
+      "furigana": "店[みせ]",
+      "example_sentences": [
+        {
+          "japanese": "この店は安いです。",
+          "english": "This shop is cheap.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "yasui-adj"
+          ],
+          "furigana": "この店[みせ]は安[やす]いです。"
+        },
+        {
+          "japanese": "私は店で本を買いました。",
+          "english": "I bought a book at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "mise",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は店[みせ]で本[ほん]を買[か]いました。"
+        },
+        {
+          "japanese": "明日、友達とあの店に行きます。",
+          "english": "Tomorrow I'm going to that shop with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "ano",
+            "mise",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]とあの店[みせ]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "depaato",
@@ -11789,7 +12758,47 @@
           "answer_text": "デパート"
         }
       ],
-      "furigana": "デパート"
+      "furigana": "デパート",
+      "example_sentences": [
+        {
+          "japanese": "私はデパートに行きます。",
+          "english": "I'm going to the department store.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "depaato",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]はデパートに行[い]きます。"
+        },
+        {
+          "japanese": "デパートで本を買いました。",
+          "english": "I bought a book at the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "depaato",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "デパートで本[ほん]を買[か]いました。"
+        },
+        {
+          "japanese": "このデパートは安いです。",
+          "english": "This department store is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "depaato",
+            "yasui-adj"
+          ],
+          "furigana": "このデパートは安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suupaa",
@@ -11808,7 +12817,49 @@
           "answer_text": "スーパー"
         }
       ],
-      "furigana": "スーパー"
+      "furigana": "スーパー",
+      "example_sentences": [
+        {
+          "japanese": "私はスーパーで魚を買います。",
+          "english": "I buy fish at the supermarket.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "suupaa",
+            "sakana",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]はスーパーで魚[さかな]を買[か]います。"
+        },
+        {
+          "japanese": "週末にスーパーへ行きませんか。",
+          "english": "Shall we go to the supermarket this weekend?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "suupaa",
+            "iku-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]にスーパーへ行[い]きませんか。"
+        },
+        {
+          "japanese": "あのスーパーのお菓子はおいしい。",
+          "english": "The snacks at that supermarket are delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "suupaa",
+            "okashi",
+            "oishii"
+          ],
+          "furigana": "あのスーパーのお菓[か]子[し]はおいしい。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konbini",
@@ -11827,7 +12878,47 @@
           "answer_text": "コンビニ"
         }
       ],
-      "furigana": "コンビニ"
+      "furigana": "コンビニ",
+      "example_sentences": [
+        {
+          "japanese": "コンビニでお茶を買います。",
+          "english": "I buy tea at the convenience store.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "konbini",
+            "ocha",
+            "kau-v"
+          ],
+          "furigana": "コンビニでお茶[ちゃ]を買[か]います。"
+        },
+        {
+          "japanese": "明日コンビニに行きます。",
+          "english": "I'm going to the convenience store tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "konbini",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]コンビニに行[い]きます。"
+        },
+        {
+          "japanese": "このコンビニは安いです。",
+          "english": "This convenience store is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "konbini",
+            "yasui-adj"
+          ],
+          "furigana": "このコンビニは安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kouen",
@@ -11846,7 +12937,48 @@
           "answer_text": "こうえん"
         }
       ],
-      "furigana": "公[こう]園[えん]"
+      "furigana": "公[こう]園[えん]",
+      "example_sentences": [
+        {
+          "japanese": "私は毎日公園へ行く。",
+          "english": "I go to the park every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]公[こう]園[えん]へ行[い]く。"
+        },
+        {
+          "japanese": "公園でお弁当を食べる。",
+          "english": "I eat a boxed lunch at the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "bentou",
+            "taberu"
+          ],
+          "furigana": "公[こう]園[えん]でお弁[べん]当[とう]を食[た]べる。"
+        },
+        {
+          "japanese": "あの公園は楽しいです。",
+          "english": "That park over there is fun.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "kouen",
+            "tanoshii"
+          ],
+          "furigana": "あの公[こう]園[えん]は楽[たの]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "machi-v",
@@ -11865,7 +12997,48 @@
           "answer_text": "まち"
         }
       ],
-      "furigana": "町[まち]"
+      "furigana": "町[まち]",
+      "example_sentences": [
+        {
+          "japanese": "週末に町へ行きます。",
+          "english": "I'm going to town this weekend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "machi-v",
+            "iku-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]に町[まち]へ行[い]きます。"
+        },
+        {
+          "japanese": "町でパンを買いました。",
+          "english": "I bought bread in town.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "machi-v",
+            "pan",
+            "kau-v"
+          ],
+          "furigana": "町[まち]でパンを買[か]いました。"
+        },
+        {
+          "japanese": "この町の公園は楽しいです。",
+          "english": "The park in this town is fun.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "machi-v",
+            "kouen",
+            "tanoshii"
+          ],
+          "furigana": "この町[まち]の公[こう]園[えん]は楽[たの]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "eigakan",
@@ -11884,7 +13057,47 @@
           "answer_text": "えいがかん"
         }
       ],
-      "furigana": "映[えい]画[が]館[かん]"
+      "furigana": "映[えい]画[が]館[かん]",
+      "example_sentences": [
+        {
+          "japanese": "週末、映画館に行きます。",
+          "english": "This weekend I'm going to the cinema.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "eigakan",
+            "iku-v"
+          ],
+          "furigana": "週[しゅう]末[まつ]、映[えい]画[が]館[かん]に行[い]きます。"
+        },
+        {
+          "japanese": "映画館で映画を見ました。",
+          "english": "I watched a movie at the cinema.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eigakan",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "映[えい]画[が]館[かん]で映[えい]画[が]を見[み]ました。"
+        },
+        {
+          "japanese": "この映画館は安いです。",
+          "english": "This cinema is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "eigakan",
+            "yasui-adj"
+          ],
+          "furigana": "この映[えい]画[が]館[かん]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "heya",
@@ -11903,7 +13116,47 @@
           "answer_text": "へや"
         }
       ],
-      "furigana": "部屋[へや]"
+      "furigana": "部屋[へや]",
+      "example_sentences": [
+        {
+          "japanese": "この部屋は寒いです。",
+          "english": "This room is cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "samui"
+          ],
+          "furigana": "この部屋[へや]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "部屋で本を読みます。",
+          "english": "I read a book in the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "部屋[へや]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "友達の部屋に行きます。",
+          "english": "I'm going to my friend's room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "heya",
+            "iku-v"
+          ],
+          "furigana": "友[とも]達[だち]の部屋[へや]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "toire",
@@ -11922,7 +13175,46 @@
           "answer_text": "トイレ"
         }
       ],
-      "furigana": "トイレ"
+      "furigana": "トイレ",
+      "example_sentences": [
+        {
+          "japanese": "トイレに行きます。",
+          "english": "I'm going to the toilet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toire",
+            "iku-v"
+          ],
+          "furigana": "トイレに行[い]きます。"
+        },
+        {
+          "japanese": "このトイレを使います。",
+          "english": "I'll use this toilet.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "toire",
+            "tsukau"
+          ],
+          "furigana": "このトイレを使[つか]います。"
+        },
+        {
+          "japanese": "駅のトイレはあそこです。",
+          "english": "The station toilet is over there.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "toire",
+            "asoko"
+          ],
+          "furigana": "駅[えき]のトイレはあそこです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "otearai",
@@ -11941,7 +13233,45 @@
           "answer_text": "おてあらい"
         }
       ],
-      "furigana": "お手[て]洗[あら]い"
+      "furigana": "お手[て]洗[あら]い",
+      "example_sentences": [
+        {
+          "japanese": "お手洗いはあそこです。",
+          "english": "The restroom is over there.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "otearai",
+            "asoko"
+          ],
+          "furigana": "お手[て]洗[あら]いはあそこです。"
+        },
+        {
+          "japanese": "お手洗いに行きます。",
+          "english": "I'm going to the restroom.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otearai",
+            "iku-v"
+          ],
+          "furigana": "お手[て]洗[あら]いに行[い]きます。"
+        },
+        {
+          "japanese": "コンビニのお手洗いに入ります。",
+          "english": "I'm going into the convenience store restroom.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "konbini",
+            "otearai",
+            "hairu-v"
+          ],
+          "furigana": "コンビニのお手[て]洗[あら]いに入[い]ります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "daidokoro",
@@ -11960,7 +13290,47 @@
           "answer_text": "だいどころ"
         }
       ],
-      "furigana": "台[だい]所[どころ]"
+      "furigana": "台[だい]所[どころ]",
+      "example_sentences": [
+        {
+          "japanese": "私は台所に入ります。",
+          "english": "I go into the kitchen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "daidokoro",
+            "hairu-v"
+          ],
+          "furigana": "私[わたし]は台[だい]所[どころ]に入[い]ります。"
+        },
+        {
+          "japanese": "台所でお茶を飲みます。",
+          "english": "I drink tea in the kitchen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "daidokoro",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "台[だい]所[どころ]でお茶[ちゃ]を飲[の]みます。"
+        },
+        {
+          "japanese": "台所の窓を開けます。",
+          "english": "I open the kitchen window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "daidokoro",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "台[だい]所[どころ]の窓[まど]を開[あ]けます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "niwa",
@@ -11979,7 +13349,49 @@
           "answer_text": "にわ"
         }
       ],
-      "furigana": "庭[にわ]"
+      "furigana": "庭[にわ]",
+      "example_sentences": [
+        {
+          "japanese": "子供は庭で遊びます。",
+          "english": "The kids play in the yard.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "niwa",
+            "asobu"
+          ],
+          "furigana": "子[こ]供[ども]は庭[にわ]で遊[あそ]びます。"
+        },
+        {
+          "japanese": "父は今、庭に出ます。",
+          "english": "Dad is heading out to the garden now.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "ima",
+            "niwa",
+            "deru-v"
+          ],
+          "furigana": "父[ちち]は今[いま]、庭[にわ]に出[で]ます。"
+        },
+        {
+          "japanese": "彼女は庭で本を読みます。",
+          "english": "She reads a book in the garden.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "niwa",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かの]女[じょ]は庭[にわ]で本[ほん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "michi-v",
@@ -11998,7 +13410,46 @@
           "answer_text": "みち"
         }
       ],
-      "furigana": "道[みち]"
+      "furigana": "道[みち]",
+      "example_sentences": [
+        {
+          "japanese": "この道を行きます。",
+          "english": "I'll take this road.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "iku-v"
+          ],
+          "furigana": "この道[みち]を行[い]きます。"
+        },
+        {
+          "japanese": "道はどこですか。",
+          "english": "Where is the road?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "michi-v",
+            "doko"
+          ],
+          "furigana": "道[みち]はどこですか。"
+        },
+        {
+          "japanese": "友達と道で会います。",
+          "english": "I'll meet my friend on the street.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "michi-v",
+            "au"
+          ],
+          "furigana": "友[とも]達[だち]と道[みち]で会[あ]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hashi-bridge",
@@ -12017,7 +13468,48 @@
           "answer_text": "はし"
         }
       ],
-      "furigana": "橋[はし]"
+      "furigana": "橋[はし]",
+      "example_sentences": [
+        {
+          "japanese": "あの橋は高いです。",
+          "english": "That bridge over there is tall.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "hashi-bridge",
+            "takai-adj"
+          ],
+          "furigana": "あの橋[はし]は高[たか]いです。"
+        },
+        {
+          "japanese": "橋で友達を待ちます。",
+          "english": "I'll wait for my friend at the bridge.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hashi-bridge",
+            "tomodachi",
+            "matsu"
+          ],
+          "furigana": "橋[はし]で友[とも]達[だち]を待[ま]ちます。"
+        },
+        {
+          "japanese": "今日、公園の橋に行きます。",
+          "english": "Today I'm going to the bridge in the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "kouen",
+            "hashi-bridge",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]、公[こう]園[えん]の橋[はし]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kado",
@@ -12036,7 +13528,49 @@
           "answer_text": "かど"
         }
       ],
-      "furigana": "角[かど]"
+      "furigana": "角[かど]",
+      "example_sentences": [
+        {
+          "japanese": "駅の角で友達を待ちます。",
+          "english": "I wait for my friend at the station corner.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "kado",
+            "tomodachi",
+            "matsu"
+          ],
+          "furigana": "駅[えき]の角[かど]で友[とも]達[だち]を待[ま]ちます。"
+        },
+        {
+          "japanese": "角の店でパンを買います。",
+          "english": "I buy bread at the shop on the corner.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kado",
+            "mise",
+            "pan",
+            "kau-v"
+          ],
+          "furigana": "角[かど]の店[みせ]でパンを買[か]います。"
+        },
+        {
+          "japanese": "公園の角に行きます。",
+          "english": "I'm going to the corner of the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kouen",
+            "kado",
+            "iku-v"
+          ],
+          "furigana": "公[こう]園[えん]の角[かど]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kouban",
@@ -12055,7 +13589,46 @@
           "answer_text": "こうばん"
         }
       ],
-      "furigana": "交[こう]番[ばん]"
+      "furigana": "交[こう]番[ばん]",
+      "example_sentences": [
+        {
+          "japanese": "交番はどこですか。",
+          "english": "Where is the police box?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kouban",
+            "doko"
+          ],
+          "furigana": "交[こう]番[ばん]はどこですか。"
+        },
+        {
+          "japanese": "昨日、交番に行きました。",
+          "english": "Yesterday I went to the police box.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "kouban",
+            "iku-v"
+          ],
+          "furigana": "昨日[きのう]、交[こう]番[ばん]に行[い]きました。"
+        },
+        {
+          "japanese": "交番で道を聞きました。",
+          "english": "I asked for directions at the police box.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kouban",
+            "michi-v",
+            "kiku-v"
+          ],
+          "furigana": "交[こう]番[ばん]で道[みち]を聞[き]きました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "takushii",
@@ -12074,7 +13647,49 @@
           "answer_text": "タクシー"
         }
       ],
-      "furigana": "タクシー"
+      "furigana": "タクシー",
+      "example_sentences": [
+        {
+          "japanese": "今日タクシーで会社に行く。",
+          "english": "Today I'm going to the office by taxi.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "takushii",
+            "kaisha",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]タクシーで会[かい]社[しゃ]に行[い]く。"
+        },
+        {
+          "japanese": "私たちは駅でタクシーを待つ。",
+          "english": "We wait for a taxi at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "eki",
+            "takushii",
+            "matsu"
+          ],
+          "furigana": "私[わたし]たちは駅[えき]でタクシーを待[ま]つ。"
+        },
+        {
+          "japanese": "あのタクシーは安い。",
+          "english": "That taxi over there is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "takushii",
+            "yasui-adj"
+          ],
+          "furigana": "あのタクシーは安[やす]い。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "basu",
@@ -12093,7 +13708,49 @@
           "answer_text": "バス"
         }
       ],
-      "furigana": "バス"
+      "furigana": "バス",
+      "example_sentences": [
+        {
+          "japanese": "駅でバスを待ちます。",
+          "english": "I wait for the bus at the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "basu",
+            "matsu"
+          ],
+          "furigana": "駅[えき]でバスを待[ま]ちます。"
+        },
+        {
+          "japanese": "明日バスで海へ行きます。",
+          "english": "Tomorrow I'll go to the sea by bus.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "basu",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]バスで海[うみ]へ行[い]きます。"
+        },
+        {
+          "japanese": "このバスはデパートへ行きます。",
+          "english": "This bus goes to the department store.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "basu",
+            "depaato",
+            "iku-v"
+          ],
+          "furigana": "このバスはデパートへ行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hon",
@@ -12112,7 +13769,47 @@
           "answer_text": "ほん"
         }
       ],
-      "furigana": "本[ほん]"
+      "furigana": "本[ほん]",
+      "example_sentences": [
+        {
+          "japanese": "毎日本を読みます。",
+          "english": "I read books every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "毎[まい]日本[にほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "店で本を買いました。",
+          "english": "I bought a book at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]で本[ほん]を買[か]いました。"
+        },
+        {
+          "japanese": "この本は難しいです。",
+          "english": "This book is difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "muzukashii"
+          ],
+          "furigana": "この本[ほん]は難[むずか]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "jisho",
@@ -12131,7 +13828,47 @@
           "answer_text": "じしょ"
         }
       ],
-      "furigana": "辞[じ]書[しょ]"
+      "furigana": "辞[じ]書[しょ]",
+      "example_sentences": [
+        {
+          "japanese": "私は辞書を使います。",
+          "english": "I use a dictionary.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "jisho",
+            "tsukau"
+          ],
+          "furigana": "私[わたし]は辞[じ]書[しょ]を使[つか]います。"
+        },
+        {
+          "japanese": "この辞書は安いです。",
+          "english": "This dictionary is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "jisho",
+            "yasui-adj"
+          ],
+          "furigana": "この辞[じ]書[しょ]は安[やす]いです。"
+        },
+        {
+          "japanese": "友達は辞書を買いました。",
+          "english": "My friend bought a dictionary.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "jisho",
+            "kau-v"
+          ],
+          "furigana": "友[とも]達[だち]は辞[じ]書[しょ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shinbun",
@@ -12150,7 +13887,48 @@
           "answer_text": "しんぶん"
         }
       ],
-      "furigana": "新[しん]聞[ぶん]"
+      "furigana": "新[しん]聞[ぶん]",
+      "example_sentences": [
+        {
+          "japanese": "毎朝新聞を読みます。",
+          "english": "I read the newspaper every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "shinbun",
+            "yomu"
+          ],
+          "furigana": "毎[まい]朝[あさ]新[しん]聞[ぶん]を読[よ]みます。"
+        },
+        {
+          "japanese": "父は駅で新聞を買いました。",
+          "english": "My father bought a newspaper at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "eki",
+            "shinbun",
+            "kau-v"
+          ],
+          "furigana": "父[ちち]は駅[えき]で新[しん]聞[ぶん]を買[か]いました。"
+        },
+        {
+          "japanese": "この新聞は安いです。",
+          "english": "This newspaper is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "shinbun",
+            "yasui-adj"
+          ],
+          "furigana": "この新[しん]聞[ぶん]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zasshi",
@@ -12169,7 +13947,48 @@
           "answer_text": "ざっし"
         }
       ],
-      "furigana": "雑[ざっ]誌[し]"
+      "furigana": "雑[ざっ]誌[し]",
+      "example_sentences": [
+        {
+          "japanese": "図書館で雑誌を読む。",
+          "english": "I read magazines at the library.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toshokan",
+            "zasshi",
+            "yomu"
+          ],
+          "furigana": "図[と]書[しょ]館[かん]で雑[ざっ]誌[し]を読[よ]む。"
+        },
+        {
+          "japanese": "その雑誌は楽しい。",
+          "english": "That magazine is fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "zasshi",
+            "tanoshii"
+          ],
+          "furigana": "その雑[ざっ]誌[し]は楽[たの]しい。"
+        },
+        {
+          "japanese": "妹は週末に雑誌を買う。",
+          "english": "My younger sister buys a magazine on the weekend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "shuumatsu",
+            "zasshi",
+            "kau-v"
+          ],
+          "furigana": "妹[いもうと]は週[しゅう]末[まつ]に雑[ざっ]誌[し]を買[か]う。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kami-paper",
@@ -12188,7 +14007,47 @@
           "answer_text": "かみ"
         }
       ],
-      "furigana": "紙[かみ]"
+      "furigana": "紙[かみ]",
+      "example_sentences": [
+        {
+          "japanese": "私は紙を買います。",
+          "english": "I buy paper.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kami-paper",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は紙[かみ]を買[か]います。"
+        },
+        {
+          "japanese": "この紙は安いです。",
+          "english": "This paper is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "kami-paper",
+            "yasui-adj"
+          ],
+          "furigana": "この紙[かみ]は安[やす]いです。"
+        },
+        {
+          "japanese": "先生は紙に書きます。",
+          "english": "The teacher writes on paper.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "kami-paper",
+            "kaku"
+          ],
+          "furigana": "先[せん]生[せい]は紙[かみ]に書[か]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "enpitsu",
@@ -12207,7 +14066,47 @@
           "answer_text": "えんぴつ"
         }
       ],
-      "furigana": "鉛[えん]筆[ぴつ]"
+      "furigana": "鉛[えん]筆[ぴつ]",
+      "example_sentences": [
+        {
+          "japanese": "私は鉛筆で書きます。",
+          "english": "I write with a pencil.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "enpitsu",
+            "kaku"
+          ],
+          "furigana": "私[わたし]は鉛[えん]筆[ぴつ]で書[か]きます。"
+        },
+        {
+          "japanese": "この鉛筆は安いです。",
+          "english": "This pencil is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "enpitsu",
+            "yasui-adj"
+          ],
+          "furigana": "この鉛[えん]筆[ぴつ]は安[やす]いです。"
+        },
+        {
+          "japanese": "鉛筆を三つ買いました。",
+          "english": "I bought three pencils.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "enpitsu",
+            "mittsu",
+            "kau-v"
+          ],
+          "furigana": "鉛[えん]筆[ぴつ]を三[さん]つ買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "pen",
@@ -12226,7 +14125,47 @@
           "answer_text": "ペン"
         }
       ],
-      "furigana": "ペン"
+      "furigana": "ペン",
+      "example_sentences": [
+        {
+          "japanese": "これは私のペンです。",
+          "english": "This is my pen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "watashi",
+            "pen"
+          ],
+          "furigana": "これは私[わたし]のペンです。"
+        },
+        {
+          "japanese": "ペンで紙に書きます。",
+          "english": "I write on paper with a pen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pen",
+            "kami-paper",
+            "kaku"
+          ],
+          "furigana": "ペンで紙[かみ]に書[か]きます。"
+        },
+        {
+          "japanese": "コンビニでペンを買った。",
+          "english": "I bought a pen at the convenience store.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "konbini",
+            "pen",
+            "kau-v"
+          ],
+          "furigana": "コンビニでペンを買[か]った。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "booru-pen",
@@ -12245,7 +14184,47 @@
           "answer_text": "ボールペン"
         }
       ],
-      "furigana": "ボールペン"
+      "furigana": "ボールペン",
+      "example_sentences": [
+        {
+          "japanese": "コンビニでボールペンを買います。",
+          "english": "I'll buy a ballpoint pen at the convenience store.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "konbini",
+            "booru-pen",
+            "kau-v"
+          ],
+          "furigana": "コンビニでボールペンを買[か]います。"
+        },
+        {
+          "japanese": "私はボールペンで書きます。",
+          "english": "I write with a ballpoint pen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "booru-pen",
+            "kaku"
+          ],
+          "furigana": "私[わたし]はボールペンで書[か]きます。"
+        },
+        {
+          "japanese": "そのボールペンは安いです。",
+          "english": "That ballpoint pen is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "booru-pen",
+            "yasui-adj"
+          ],
+          "furigana": "そのボールペンは安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaban",
@@ -12264,7 +14243,46 @@
           "answer_text": "かばん"
         }
       ],
-      "furigana": "かばん"
+      "furigana": "かばん",
+      "example_sentences": [
+        {
+          "japanese": "かばんはどこですか。",
+          "english": "Where is the bag?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kaban",
+            "doko"
+          ],
+          "furigana": "かばんはどこですか。"
+        },
+        {
+          "japanese": "彼女のかばんを見ました。",
+          "english": "I saw her bag.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kaban",
+            "miru-v"
+          ],
+          "furigana": "彼[かの]女[じょ]のかばんを見[み]ました。"
+        },
+        {
+          "japanese": "スーパーでかばんを買います。",
+          "english": "I'll buy a bag at the supermarket.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "suupaa",
+            "kaban",
+            "kau-v"
+          ],
+          "furigana": "スーパーでかばんを買[か]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saifu",
@@ -12283,7 +14301,46 @@
           "answer_text": "さいふ"
         }
       ],
-      "furigana": "財[さい]布[ふ]"
+      "furigana": "財[さい]布[ふ]",
+      "example_sentences": [
+        {
+          "japanese": "この財布を買います。",
+          "english": "I'll buy this wallet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "saifu",
+            "kau-v"
+          ],
+          "furigana": "この財[さい]布[ふ]を買[か]います。"
+        },
+        {
+          "japanese": "財布はどこですか。",
+          "english": "Where is the wallet?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "saifu",
+            "doko"
+          ],
+          "furigana": "財[さい]布[ふ]はどこですか。"
+        },
+        {
+          "japanese": "私の財布は安いです。",
+          "english": "My wallet is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "saifu",
+            "yasui-adj"
+          ],
+          "furigana": "私[わたし]の財[さい]布[ふ]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tokei",
@@ -12302,7 +14359,47 @@
           "answer_text": "とけい"
         }
       ],
-      "furigana": "時計[とけい]"
+      "furigana": "時計[とけい]",
+      "example_sentences": [
+        {
+          "japanese": "私は時計を見ます。",
+          "english": "I look at the clock.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "tokei",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]は時計[とけい]を見[み]ます。"
+        },
+        {
+          "japanese": "この時計は高いです。",
+          "english": "This watch is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "tokei",
+            "takai-adj"
+          ],
+          "furigana": "この時計[とけい]は高[たか]いです。"
+        },
+        {
+          "japanese": "店で時計を買います。",
+          "english": "I buy a watch at the shop.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mise",
+            "tokei",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]で時計[とけい]を買[か]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "megane",
@@ -12321,7 +14418,48 @@
           "answer_text": "めがね"
         }
       ],
-      "furigana": "眼鏡[めがね]"
+      "furigana": "眼鏡[めがね]",
+      "example_sentences": [
+        {
+          "japanese": "今日、眼鏡を買いました。",
+          "english": "I bought glasses today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "megane",
+            "kau-v"
+          ],
+          "furigana": "今日[きょう]、眼鏡[めがね]を買[か]いました。"
+        },
+        {
+          "japanese": "その眼鏡は誰のですか。",
+          "english": "Whose glasses are those?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "megane",
+            "dare"
+          ],
+          "furigana": "その眼鏡[めがね]は誰[だれ]のですか。"
+        },
+        {
+          "japanese": "僕は眼鏡で本を読みます。",
+          "english": "I read books with my glasses on.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "megane",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "僕[ぼく]は眼鏡[めがね]で本[ほん]を読[よ]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kasa",
@@ -12340,7 +14478,47 @@
           "answer_text": "かさ"
         }
       ],
-      "furigana": "傘[かさ]"
+      "furigana": "傘[かさ]",
+      "example_sentences": [
+        {
+          "japanese": "今日は傘を使います。",
+          "english": "I'll use an umbrella today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "kasa",
+            "tsukau"
+          ],
+          "furigana": "今日[きょう]は傘[かさ]を使[つか]います。"
+        },
+        {
+          "japanese": "店で傘を買いました。",
+          "english": "I bought an umbrella at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise",
+            "kasa",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]で傘[かさ]を買[か]いました。"
+        },
+        {
+          "japanese": "その傘は安いです。",
+          "english": "That umbrella is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "kasa",
+            "yasui-adj"
+          ],
+          "furigana": "その傘[かさ]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "denwa",
@@ -12359,7 +14537,47 @@
           "answer_text": "でんわ"
         }
       ],
-      "furigana": "電[でん]話[わ]"
+      "furigana": "電[でん]話[わ]",
+      "example_sentences": [
+        {
+          "japanese": "明日、母に電話します。",
+          "english": "I'll call my mom tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "haha",
+            "denwa"
+          ],
+          "furigana": "明日[あした]、母[はは]に電[でん]話[わ]します。"
+        },
+        {
+          "japanese": "彼の電話を待っています。",
+          "english": "I'm waiting for his call.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "denwa",
+            "matsu"
+          ],
+          "furigana": "彼[かれ]の電[でん]話[わ]を待[ま]っています。"
+        },
+        {
+          "japanese": "この電話は安いです。",
+          "english": "This phone is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "denwa",
+            "yasui-adj"
+          ],
+          "furigana": "この電[でん]話[わ]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "keitai",
@@ -12378,7 +14596,47 @@
           "answer_text": "けいたい"
         }
       ],
-      "furigana": "携[けい]帯[たい]"
+      "furigana": "携[けい]帯[たい]",
+      "example_sentences": [
+        {
+          "japanese": "私の携帯は高いです。",
+          "english": "My mobile phone is expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "keitai",
+            "takai-adj"
+          ],
+          "furigana": "私[わたし]の携[けい]帯[たい]は高[たか]いです。"
+        },
+        {
+          "japanese": "駅で携帯を使います。",
+          "english": "I use my phone at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "keitai",
+            "tsukau"
+          ],
+          "furigana": "駅[えき]で携[けい]帯[たい]を使[つか]います。"
+        },
+        {
+          "japanese": "この携帯は安いです。",
+          "english": "This phone is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "keitai",
+            "yasui-adj"
+          ],
+          "furigana": "この携[けい]帯[たい]は安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "terebi",
@@ -12397,7 +14655,47 @@
           "answer_text": "テレビ"
         }
       ],
-      "furigana": "テレビ"
+      "furigana": "テレビ",
+      "example_sentences": [
+        {
+          "japanese": "今、テレビを見ています。",
+          "english": "I'm watching TV right now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "terebi",
+            "miru-v"
+          ],
+          "furigana": "今[いま]、テレビを見[み]ています。"
+        },
+        {
+          "japanese": "このテレビは安いです。",
+          "english": "This TV is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "terebi",
+            "yasui-adj"
+          ],
+          "furigana": "このテレビは安[やす]いです。"
+        },
+        {
+          "japanese": "妹はテレビを買いました。",
+          "english": "My little sister bought a TV.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "terebi",
+            "kau-v"
+          ],
+          "furigana": "妹[いもうと]はテレビを買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "rajio",
@@ -12416,7 +14714,47 @@
           "answer_text": "ラジオ"
         }
       ],
-      "furigana": "ラジオ"
+      "furigana": "ラジオ",
+      "example_sentences": [
+        {
+          "japanese": "毎朝ラジオを聞きます。",
+          "english": "I listen to the radio every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "rajio",
+            "kiku-v"
+          ],
+          "furigana": "毎[まい]朝[あさ]ラジオを聞[き]きます。"
+        },
+        {
+          "japanese": "このラジオは安いです。",
+          "english": "This radio is cheap.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "rajio",
+            "yasui-adj"
+          ],
+          "furigana": "このラジオは安[やす]いです。"
+        },
+        {
+          "japanese": "店でラジオを買いました。",
+          "english": "I bought a radio at the store.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mise",
+            "rajio",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]でラジオを買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kamera",
@@ -12435,7 +14773,47 @@
           "answer_text": "カメラ"
         }
       ],
-      "furigana": "カメラ"
+      "furigana": "カメラ",
+      "example_sentences": [
+        {
+          "japanese": "これは私のカメラです。",
+          "english": "This is my camera.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "watashi",
+            "kamera"
+          ],
+          "furigana": "これは私[わたし]のカメラです。"
+        },
+        {
+          "japanese": "デパートでカメラを買いました。",
+          "english": "I bought a camera at the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "depaato",
+            "kamera",
+            "kau-v"
+          ],
+          "furigana": "デパートでカメラを買[か]いました。"
+        },
+        {
+          "japanese": "今日、カメラを使います。",
+          "english": "I'll use the camera today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "kamera",
+            "tsukau"
+          ],
+          "furigana": "今日[きょう]、カメラを使[つか]います。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "pasokon",
@@ -12454,7 +14832,48 @@
           "answer_text": "パソコン"
         }
       ],
-      "furigana": "パソコン"
+      "furigana": "パソコン",
+      "example_sentences": [
+        {
+          "japanese": "私は家でパソコンを使います。",
+          "english": "I use a computer at home.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ie",
+            "pasokon",
+            "tsukau"
+          ],
+          "furigana": "私[わたし]は家[いえ]でパソコンを使[つか]います。"
+        },
+        {
+          "japanese": "このパソコンは高いです。",
+          "english": "This computer is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "pasokon",
+            "takai-adj"
+          ],
+          "furigana": "このパソコンは高[たか]いです。"
+        },
+        {
+          "japanese": "どのパソコンがいいですか。",
+          "english": "Which computer is good?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dono",
+            "pasokon",
+            "ii"
+          ],
+          "furigana": "どのパソコンがいいですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "isu",
@@ -12473,7 +14892,49 @@
           "answer_text": "いす"
         }
       ],
-      "furigana": "椅[い]子[す]"
+      "furigana": "椅[い]子[す]",
+      "example_sentences": [
+        {
+          "japanese": "私はこの椅子に座ります。",
+          "english": "I sit in this chair.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kono",
+            "isu",
+            "suwaru"
+          ],
+          "furigana": "私[わたし]はこの椅[い]子[す]に座[すわ]ります。"
+        },
+        {
+          "japanese": "店で椅子を二つ買いました。",
+          "english": "I bought two chairs at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise",
+            "isu",
+            "futatsu",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]で椅[い]子[す]を二[に]つ買[か]いました。"
+        },
+        {
+          "japanese": "あの椅子は高いです。",
+          "english": "That chair over there is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "isu",
+            "takai-adj"
+          ],
+          "furigana": "あの椅[い]子[す]は高[たか]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsukue",
@@ -12492,7 +14953,47 @@
           "answer_text": "つくえ"
         }
       ],
-      "furigana": "机[つくえ]"
+      "furigana": "机[つくえ]",
+      "example_sentences": [
+        {
+          "japanese": "私は机に座ります。",
+          "english": "I sit at the desk.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "tsukue",
+            "suwaru"
+          ],
+          "furigana": "私[わたし]は机[つくえ]に座[すわ]ります。"
+        },
+        {
+          "japanese": "机で本を読みます。",
+          "english": "I read a book at the desk.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tsukue",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "机[つくえ]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "この机は高いです。",
+          "english": "This desk is expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "tsukue",
+            "takai-adj"
+          ],
+          "furigana": "この机[つくえ]は高[たか]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "teeburu",
@@ -12511,7 +15012,46 @@
           "answer_text": "テーブル"
         }
       ],
-      "furigana": "テーブル"
+      "furigana": "テーブル",
+      "example_sentences": [
+        {
+          "japanese": "このテーブルは高いです。",
+          "english": "This table is expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "teeburu",
+            "takai-adj"
+          ],
+          "furigana": "このテーブルは高[たか]いです。"
+        },
+        {
+          "japanese": "テーブルで朝ご飯を食べます。",
+          "english": "I eat breakfast at the table.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "teeburu",
+            "asagohan",
+            "taberu"
+          ],
+          "furigana": "テーブルで朝[あさ]ご飯[はん]を食[た]べます。"
+        },
+        {
+          "japanese": "部屋にテーブルがあります。",
+          "english": "There's a table in the room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "heya",
+            "teeburu"
+          ],
+          "furigana": "部屋[へや]にテーブルがあります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "beddo",
@@ -12530,7 +15070,48 @@
           "answer_text": "ベッド"
         }
       ],
-      "furigana": "ベッド"
+      "furigana": "ベッド",
+      "example_sentences": [
+        {
+          "japanese": "私はベッドで寝ます。",
+          "english": "I sleep in bed.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "beddo",
+            "neru"
+          ],
+          "furigana": "私[わたし]はベッドで寝[ね]ます。"
+        },
+        {
+          "japanese": "このベッドは高いです。",
+          "english": "This bed is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "beddo",
+            "takai-adj"
+          ],
+          "furigana": "このベッドは高[たか]いです。"
+        },
+        {
+          "japanese": "彼はベッドで本を読む。",
+          "english": "He reads books in bed.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "beddo",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かれ]はベッドで本[ほん]を読[よ]む。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doa",
@@ -12549,7 +15130,46 @@
           "answer_text": "ドア"
         }
       ],
-      "furigana": "ドア"
+      "furigana": "ドア",
+      "example_sentences": [
+        {
+          "japanese": "ドアを開けます。",
+          "english": "I open the door.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "doa",
+            "akeru"
+          ],
+          "furigana": "ドアを開[あ]けます。"
+        },
+        {
+          "japanese": "そのドアを閉めます。",
+          "english": "I close that door.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "doa",
+            "shimeru"
+          ],
+          "furigana": "そのドアを閉[し]めます。"
+        },
+        {
+          "japanese": "部屋のドアから入ります。",
+          "english": "I go in through the room's door.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "heya",
+            "doa",
+            "hairu-v"
+          ],
+          "furigana": "部屋[へや]のドアから入[い]ります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mado",
@@ -12568,7 +15188,48 @@
           "answer_text": "まど"
         }
       ],
-      "furigana": "窓[まど]"
+      "furigana": "窓[まど]",
+      "example_sentences": [
+        {
+          "japanese": "どの窓を開けますか。",
+          "english": "Which window will you open?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "dono",
+            "mado",
+            "akeru"
+          ],
+          "furigana": "どの窓[まど]を開[あ]けますか。"
+        },
+        {
+          "japanese": "私は窓から海を見ます。",
+          "english": "I look at the sea from the window.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "mado",
+            "umi",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]は窓[まど]から海[うみ]を見[み]ます。"
+        },
+        {
+          "japanese": "寒いので、窓を閉めます。",
+          "english": "It's cold, so I'm closing the window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "samui",
+            "mado",
+            "shimeru"
+          ],
+          "furigana": "寒[さむ]いので、窓[まど]を閉[し]めます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "denki",
@@ -12587,7 +15248,48 @@
           "answer_text": "でんき"
         }
       ],
-      "furigana": "電[でん]気[き]"
+      "furigana": "電[でん]気[き]",
+      "example_sentences": [
+        {
+          "japanese": "家の電気は高いです。",
+          "english": "The electricity at home is expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ie",
+            "denki",
+            "takai-adj"
+          ],
+          "furigana": "家[いえ]の電[でん]気[き]は高[たか]いです。"
+        },
+        {
+          "japanese": "夜は部屋で電気を使います。",
+          "english": "At night I use the lights in my room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yoru",
+            "heya",
+            "denki",
+            "tsukau"
+          ],
+          "furigana": "夜[よる]は部屋[へや]で電[でん]気[き]を使[つか]います。"
+        },
+        {
+          "japanese": "その電気はどこですか。",
+          "english": "Where is that light?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "denki",
+            "doko"
+          ],
+          "furigana": "その電[でん]気[き]はどこですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kagi",
@@ -12606,7 +15308,47 @@
           "answer_text": "かぎ"
         }
       ],
-      "furigana": "鍵[かぎ]"
+      "furigana": "鍵[かぎ]",
+      "example_sentences": [
+        {
+          "japanese": "この鍵でドアを開けます。",
+          "english": "I open the door with this key.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kagi",
+            "doa",
+            "akeru"
+          ],
+          "furigana": "この鍵[かぎ]でドアを開[あ]けます。"
+        },
+        {
+          "japanese": "鍵はかばんにあります。",
+          "english": "The key is in the bag.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kagi",
+            "kaban"
+          ],
+          "furigana": "鍵[かぎ]はかばんにあります。"
+        },
+        {
+          "japanese": "家の鍵を買いました。",
+          "english": "I bought a house key.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ie",
+            "kagi",
+            "kau-v"
+          ],
+          "furigana": "家[いえ]の鍵[かぎ]を買[か]いました。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shashin",
@@ -12625,7 +15367,49 @@
           "answer_text": "しゃしん"
         }
       ],
-      "furigana": "写[しゃ]真[しん]"
+      "furigana": "写[しゃ]真[しん]",
+      "example_sentences": [
+        {
+          "japanese": "これは私の家族の写真です。",
+          "english": "This is a photo of my family.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "watashi",
+            "kazoku",
+            "shashin"
+          ],
+          "furigana": "これは私[わたし]の家[か]族[ぞく]の写[しゃ]真[しん]です。"
+        },
+        {
+          "japanese": "昨日、友達の写真を見ました。",
+          "english": "Yesterday I looked at my friend's photos.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "tomodachi",
+            "shashin",
+            "miru-v"
+          ],
+          "furigana": "昨日[きのう]、友[とも]達[だち]の写[しゃ]真[しん]を見[み]ました。"
+        },
+        {
+          "japanese": "彼女の写真はどこですか。",
+          "english": "Where is her photo?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "shashin",
+            "doko"
+          ],
+          "furigana": "彼[かの]女[じょ]の写[しゃ]真[しん]はどこですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tegami",
@@ -12644,7 +15428,49 @@
           "answer_text": "てがみ"
         }
       ],
-      "furigana": "手[て]紙[がみ]"
+      "furigana": "手[て]紙[がみ]",
+      "example_sentences": [
+        {
+          "japanese": "昨日彼女に手紙を書いた。",
+          "english": "I wrote her a letter yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "kanojo",
+            "tegami",
+            "kaku"
+          ],
+          "furigana": "昨日[きのう]彼[かの]女[じょ]に手[て]紙[がみ]を書[か]いた。"
+        },
+        {
+          "japanese": "毎日父の手紙を読む。",
+          "english": "I read Dad's letters every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "chichi",
+            "tegami",
+            "yomu"
+          ],
+          "furigana": "毎[まい]日[にち]父[ちち]の手[て]紙[がみ]を読[よ]む。"
+        },
+        {
+          "japanese": "この手紙は難しい。",
+          "english": "This letter is difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "tegami",
+            "muzukashii"
+          ],
+          "furigana": "この手[て]紙[がみ]は難[むずか]しい。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kitte",
@@ -12663,7 +15489,48 @@
           "answer_text": "きって"
         }
       ],
-      "furigana": "切[きっ]手[て]"
+      "furigana": "切[きっ]手[て]",
+      "example_sentences": [
+        {
+          "japanese": "郵便局で切手を買います。",
+          "english": "I'll buy stamps at the post office.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yuubinkyoku",
+            "kitte",
+            "kau-v"
+          ],
+          "furigana": "郵[ゆう]便[びん]局[きょく]で切[きっ]手[て]を買[か]います。"
+        },
+        {
+          "japanese": "この切手はいくらですか。",
+          "english": "How much is this stamp?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "kitte",
+            "ikura"
+          ],
+          "furigana": "この切[きっ]手[て]はいくらですか。"
+        },
+        {
+          "japanese": "明日、切手を買いに行きます。",
+          "english": "Tomorrow I'm going to buy stamps.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "kitte",
+            "kau-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、切[きっ]手[て]を買[か]いに行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hako",
@@ -12682,7 +15549,47 @@
           "answer_text": "はこ"
         }
       ],
-      "furigana": "箱[はこ]"
+      "furigana": "箱[はこ]",
+      "example_sentences": [
+        {
+          "japanese": "この箱を開けてください。",
+          "english": "Please open this box.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hako",
+            "akeru"
+          ],
+          "furigana": "この箱[はこ]を開[あ]けてください。"
+        },
+        {
+          "japanese": "私は店で箱を買いました。",
+          "english": "I bought a box at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "mise",
+            "hako",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は店[みせ]で箱[はこ]を買[か]いました。"
+        },
+        {
+          "japanese": "箱に本があります。",
+          "english": "There's a book in the box.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hako",
+            "hon"
+          ],
+          "furigana": "箱[はこ]に本[ほん]があります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nooto",
@@ -12701,7 +15608,47 @@
           "answer_text": "ノート"
         }
       ],
-      "furigana": "ノート"
+      "furigana": "ノート",
+      "example_sentences": [
+        {
+          "japanese": "私はノートを買います。",
+          "english": "I buy a notebook.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "nooto",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]はノートを買[か]います。"
+        },
+        {
+          "japanese": "彼女はノートに書きます。",
+          "english": "She writes in a notebook.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "nooto",
+            "kaku"
+          ],
+          "furigana": "彼[かの]女[じょ]はノートに書[か]きます。"
+        },
+        {
+          "japanese": "このノートは安いです。",
+          "english": "This notebook is cheap.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "nooto",
+            "yasui-adj"
+          ],
+          "furigana": "このノートは安[やす]いです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fuku",
@@ -12720,7 +15667,48 @@
           "answer_text": "ふく"
         }
       ],
-      "furigana": "服[ふく]"
+      "furigana": "服[ふく]",
+      "example_sentences": [
+        {
+          "japanese": "この服は高いです。",
+          "english": "These clothes are expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "fuku",
+            "takai-adj"
+          ],
+          "furigana": "この服[ふく]は高[たか]いです。"
+        },
+        {
+          "japanese": "デパートで服を買います。",
+          "english": "I'm buying clothes at the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "depaato",
+            "fuku",
+            "kau-v"
+          ],
+          "furigana": "デパートで服[ふく]を買[か]います。"
+        },
+        {
+          "japanese": "明日、友達と服を見ます。",
+          "english": "Tomorrow I'll look at clothes with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "fuku",
+            "miru-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と服[ふく]を見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kutsu",
@@ -12739,7 +15727,46 @@
           "answer_text": "くつ"
         }
       ],
-      "furigana": "靴[くつ]"
+      "furigana": "靴[くつ]",
+      "example_sentences": [
+        {
+          "japanese": "この靴は高いです。",
+          "english": "These shoes are expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kutsu",
+            "takai-adj"
+          ],
+          "furigana": "この靴[くつ]は高[たか]いです。"
+        },
+        {
+          "japanese": "デパートで靴を買いました。",
+          "english": "I bought shoes at the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "depaato",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "デパートで靴[くつ]を買[か]いました。"
+        },
+        {
+          "japanese": "靴はどこですか。",
+          "english": "Where are the shoes?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kutsu",
+            "doko"
+          ],
+          "furigana": "靴[くつ]はどこですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "boushi",
@@ -12758,7 +15785,46 @@
           "answer_text": "ぼうし"
         }
       ],
-      "furigana": "帽[ぼう]子[し]"
+      "furigana": "帽[ぼう]子[し]",
+      "example_sentences": [
+        {
+          "japanese": "この帽子は安いです。",
+          "english": "This hat is cheap.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "boushi",
+            "yasui-adj"
+          ],
+          "furigana": "この帽[ぼう]子[し]は安[やす]いです。"
+        },
+        {
+          "japanese": "店で帽子を買いました。",
+          "english": "I bought a hat at the shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mise",
+            "boushi",
+            "kau-v"
+          ],
+          "furigana": "店[みせ]で帽[ぼう]子[し]を買[か]いました。"
+        },
+        {
+          "japanese": "帽子はどこですか。",
+          "english": "Where is the hat?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boushi",
+            "doko"
+          ],
+          "furigana": "帽[ぼう]子[し]はどこですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shatsu",
@@ -12777,7 +15843,47 @@
           "answer_text": "シャツ"
         }
       ],
-      "furigana": "シャツ"
+      "furigana": "シャツ",
+      "example_sentences": [
+        {
+          "japanese": "このシャツは高いです。",
+          "english": "This shirt is expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "shatsu",
+            "takai-adj"
+          ],
+          "furigana": "このシャツは高[たか]いです。"
+        },
+        {
+          "japanese": "明日シャツを買います。",
+          "english": "I'll buy a shirt tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "shatsu",
+            "kau-v"
+          ],
+          "furigana": "明日[あした]シャツを買[か]います。"
+        },
+        {
+          "japanese": "彼女のシャツはどこですか。",
+          "english": "Where is her shirt?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "shatsu",
+            "doko"
+          ],
+          "furigana": "彼[かの]女[じょ]のシャツはどこですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kooto",
@@ -12796,7 +15902,47 @@
           "answer_text": "コート"
         }
       ],
-      "furigana": "コート"
+      "furigana": "コート",
+      "example_sentences": [
+        {
+          "japanese": "デパートでコートを買いました。",
+          "english": "I bought a coat at the department store.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "depaato",
+            "kooto",
+            "kau-v"
+          ],
+          "furigana": "デパートでコートを買[か]いました。"
+        },
+        {
+          "japanese": "このコートは高いです。",
+          "english": "This coat is expensive.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "kooto",
+            "takai-adj"
+          ],
+          "furigana": "このコートは高[たか]いです。"
+        },
+        {
+          "japanese": "彼女のコートを見ます。",
+          "english": "I'm looking at her coat.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kooto",
+            "miru-v"
+          ],
+          "furigana": "彼[かの]女[じょ]のコートを見[み]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tenki",
@@ -12815,7 +15961,48 @@
           "answer_text": "てんき"
         }
       ],
-      "furigana": "天[てん]気[き]"
+      "furigana": "天[てん]気[き]",
+      "example_sentences": [
+        {
+          "japanese": "今日の天気はいいです。",
+          "english": "Today's weather is nice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "tenki",
+            "ii"
+          ],
+          "furigana": "今日[きょう]の天[てん]気[き]はいいです。"
+        },
+        {
+          "japanese": "明日はどんな天気ですか。",
+          "english": "What kind of weather will it be tomorrow?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "donna",
+            "tenki"
+          ],
+          "furigana": "明日[あした]はどんな天[てん]気[き]ですか。"
+        },
+        {
+          "japanese": "天気がいいから公園に行きます。",
+          "english": "The weather's nice, so I'm going to the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tenki",
+            "ii",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "天[てん]気[き]がいいから公[こう]園[えん]に行[い]きます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ame-v",
@@ -12834,7 +16021,46 @@
           "answer_text": "あめ"
         }
       ],
-      "furigana": "雨[あめ]"
+      "furigana": "雨[あめ]",
+      "example_sentences": [
+        {
+          "japanese": "今日は雨です。",
+          "english": "It's raining today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "ame-v"
+          ],
+          "furigana": "今日[きょう]は雨[あめ]です。"
+        },
+        {
+          "japanese": "雨で傘を買います。",
+          "english": "I'll buy an umbrella because of the rain.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ame-v",
+            "kasa",
+            "kau-v"
+          ],
+          "furigana": "雨[あめ]で傘[かさ]を買[か]います。"
+        },
+        {
+          "japanese": "夕方から雨が来ます。",
+          "english": "It'll start raining in the evening.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yuugata",
+            "ame-v",
+            "kuru-v"
+          ],
+          "furigana": "夕[ゆう]方[がた]から雨[あめ]が来[らい]ます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yuki",

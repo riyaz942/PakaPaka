@@ -67,6 +67,41 @@
       "review_status": "draft"
     }
   },
+  "ame-v": {
+    "example_sentences": [
+      {
+        "japanese": "今日は雨です。",
+        "english": "It's raining today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ame-v"
+        ]
+      },
+      {
+        "japanese": "雨で傘を買います。",
+        "english": "I'll buy an umbrella because of the rain.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "kasa",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "夕方から雨が来ます。",
+        "english": "It'll start raining in the evening.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "ame-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "anata": {
     "example_sentences": [
       {
@@ -606,6 +641,153 @@
       "review_status": "draft"
     }
   },
+  "basu": {
+    "example_sentences": [
+      {
+        "japanese": "駅でバスを待ちます。",
+        "english": "I wait for the bus at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "basu",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "明日バスで海へ行きます。",
+        "english": "Tomorrow I'll go to the sea by bus.",
+        "vocabulary_slugs": [
+          "ashita",
+          "basu",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "このバスはデパートへ行きます。",
+        "english": "This bus goes to the department store.",
+        "vocabulary_slugs": [
+          "kono",
+          "basu",
+          "depaato",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "beddo": {
+    "example_sentences": [
+      {
+        "japanese": "私はベッドで寝ます。",
+        "english": "I sleep in bed.",
+        "vocabulary_slugs": [
+          "watashi",
+          "beddo",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "このベッドは高いです。",
+        "english": "This bed is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "beddo",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "彼はベッドで本を読む。",
+        "english": "He reads books in bed.",
+        "vocabulary_slugs": [
+          "kare",
+          "beddo",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bentou": {
+    "example_sentences": [
+      {
+        "japanese": "明日弁当を買います。",
+        "english": "I'll buy a boxed lunch tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "bentou",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "その弁当は安いです。",
+        "english": "That boxed lunch is cheap.",
+        "vocabulary_slugs": [
+          "sono",
+          "bentou",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "彼女と弁当を食べます。",
+        "english": "I'll eat a boxed lunch with her.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "bentou",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "biiru": {
+    "example_sentences": [
+      {
+        "japanese": "私はビールを飲みます。",
+        "english": "I drink beer.",
+        "vocabulary_slugs": [
+          "watashi",
+          "biiru",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "このビールはおいしいです。",
+        "english": "This beer is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "biiru",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "友達とビールを買いました。",
+        "english": "I bought beer with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "biiru",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "boku": {
     "example_sentences": [
       {
@@ -634,6 +816,77 @@
           "issho-ni",
           "kouen",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "booru-pen": {
+    "example_sentences": [
+      {
+        "japanese": "コンビニでボールペンを買います。",
+        "english": "I'll buy a ballpoint pen at the convenience store.",
+        "vocabulary_slugs": [
+          "konbini",
+          "booru-pen",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "私はボールペンで書きます。",
+        "english": "I write with a ballpoint pen.",
+        "vocabulary_slugs": [
+          "watashi",
+          "booru-pen",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "そのボールペンは安いです。",
+        "english": "That ballpoint pen is cheap.",
+        "vocabulary_slugs": [
+          "sono",
+          "booru-pen",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "boushi": {
+    "example_sentences": [
+      {
+        "japanese": "この帽子は安いです。",
+        "english": "This hat is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "boushi",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "店で帽子を買いました。",
+        "english": "I bought a hat at the shop.",
+        "vocabulary_slugs": [
+          "mise",
+          "boushi",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "帽子はどこですか。",
+        "english": "Where is the hat?",
+        "vocabulary_slugs": [
+          "boushi",
+          "doko"
         ]
       }
     ],
@@ -680,6 +933,44 @@
       "review_status": "draft"
     }
   },
+  "byouin": {
+    "example_sentences": [
+      {
+        "japanese": "明日、父と病院に行きます。",
+        "english": "Tomorrow I'm going to the hospital with my father.",
+        "vocabulary_slugs": [
+          "ashita",
+          "chichi",
+          "byouin",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この病院はあそこです。",
+        "english": "This hospital is over there.",
+        "vocabulary_slugs": [
+          "kono",
+          "byouin",
+          "asoko"
+        ]
+      },
+      {
+        "japanese": "友達は病院で本を読みます。",
+        "english": "My friend reads a book at the hospital.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "byouin",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "chichi": {
     "example_sentences": [
       {
@@ -717,6 +1008,78 @@
       "review_status": "draft"
     }
   },
+  "daidokoro": {
+    "example_sentences": [
+      {
+        "japanese": "私は台所に入ります。",
+        "english": "I go into the kitchen.",
+        "vocabulary_slugs": [
+          "watashi",
+          "daidokoro",
+          "hairu-v"
+        ]
+      },
+      {
+        "japanese": "台所でお茶を飲みます。",
+        "english": "I drink tea in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "台所の窓を開けます。",
+        "english": "I open the kitchen window.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "mado",
+          "akeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "daigaku": {
+    "example_sentences": [
+      {
+        "japanese": "私は大学の学生です。",
+        "english": "I'm a university student.",
+        "vocabulary_slugs": [
+          "watashi",
+          "daigaku",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "明日、大学に行きます。",
+        "english": "I'm going to the university tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "daigaku",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達と大学で会います。",
+        "english": "I'm meeting a friend at the university.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "daigaku",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "dare": {
     "example_sentences": [
       {
@@ -743,6 +1106,150 @@
           "ashita",
           "dare",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "denki": {
+    "example_sentences": [
+      {
+        "japanese": "家の電気は高いです。",
+        "english": "The electricity at home is expensive.",
+        "vocabulary_slugs": [
+          "ie",
+          "denki",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "夜は部屋で電気を使います。",
+        "english": "At night I use the lights in my room.",
+        "vocabulary_slugs": [
+          "yoru",
+          "heya",
+          "denki",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "その電気はどこですか。",
+        "english": "Where is that light?",
+        "vocabulary_slugs": [
+          "sono",
+          "denki",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "denwa": {
+    "example_sentences": [
+      {
+        "japanese": "明日、母に電話します。",
+        "english": "I'll call my mom tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "haha",
+          "denwa"
+        ]
+      },
+      {
+        "japanese": "彼の電話を待っています。",
+        "english": "I'm waiting for his call.",
+        "vocabulary_slugs": [
+          "kare",
+          "denwa",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "この電話は安いです。",
+        "english": "This phone is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "denwa",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "depaato": {
+    "example_sentences": [
+      {
+        "japanese": "私はデパートに行きます。",
+        "english": "I'm going to the department store.",
+        "vocabulary_slugs": [
+          "watashi",
+          "depaato",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "デパートで本を買いました。",
+        "english": "I bought a book at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "このデパートは安いです。",
+        "english": "This department store is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "depaato",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "doa": {
+    "example_sentences": [
+      {
+        "japanese": "ドアを開けます。",
+        "english": "I open the door.",
+        "vocabulary_slugs": [
+          "doa",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "そのドアを閉めます。",
+        "english": "I close that door.",
+        "vocabulary_slugs": [
+          "sono",
+          "doa",
+          "shimeru"
+        ]
+      },
+      {
+        "japanese": "部屋のドアから入ります。",
+        "english": "I go in through the room's door.",
+        "vocabulary_slugs": [
+          "heya",
+          "doa",
+          "hairu-v"
         ]
       }
     ],
@@ -1070,6 +1577,78 @@
       "review_status": "draft"
     }
   },
+  "eigakan": {
+    "example_sentences": [
+      {
+        "japanese": "週末、映画館に行きます。",
+        "english": "This weekend I'm going to the cinema.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "eigakan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "映画館で映画を見ました。",
+        "english": "I watched a movie at the cinema.",
+        "vocabulary_slugs": [
+          "eigakan",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この映画館は安いです。",
+        "english": "This cinema is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "eigakan",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "eki": {
+    "example_sentences": [
+      {
+        "japanese": "駅で友達を待ちます。",
+        "english": "I wait for my friend at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "午後に駅へ行きます。",
+        "english": "I go to the station in the afternoon.",
+        "vocabulary_slugs": [
+          "gogo",
+          "eki",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "駅で弁当を買いました。",
+        "english": "I bought a boxed lunch at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "bentou",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ekiin": {
     "example_sentences": [
       {
@@ -1095,6 +1674,79 @@
           "kyou",
           "ekiin",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "enpitsu": {
+    "example_sentences": [
+      {
+        "japanese": "私は鉛筆で書きます。",
+        "english": "I write with a pencil.",
+        "vocabulary_slugs": [
+          "watashi",
+          "enpitsu",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "この鉛筆は安いです。",
+        "english": "This pencil is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "enpitsu",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "鉛筆を三つ買いました。",
+        "english": "I bought three pencils.",
+        "vocabulary_slugs": [
+          "enpitsu",
+          "mittsu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fuku": {
+    "example_sentences": [
+      {
+        "japanese": "この服は高いです。",
+        "english": "These clothes are expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "デパートで服を買います。",
+        "english": "I'm buying clothes at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "fuku",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日、友達と服を見ます。",
+        "english": "Tomorrow I'll look at clothes with a friend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "fuku",
+          "miru-v"
         ]
       }
     ],
@@ -1249,6 +1901,44 @@
       "review_status": "draft"
     }
   },
+  "gakkou-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日学校へ行きます。",
+        "english": "I go to school every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "明日友達と学校で会います。",
+        "english": "Tomorrow I'll meet my friend at school.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "gakkou-v",
+          "au"
+        ]
+      },
+      {
+        "japanese": "この学校は楽しいです。",
+        "english": "This school is fun.",
+        "vocabulary_slugs": [
+          "kono",
+          "gakkou-v",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "gakusei": {
     "example_sentences": [
       {
@@ -1311,6 +2001,42 @@
           "asa",
           "koohii",
           "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ginkou": {
+    "example_sentences": [
+      {
+        "japanese": "私は銀行に行きます。",
+        "english": "I'm going to the bank.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ginkou",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "銀行はどこですか。",
+        "english": "Where is the bank?",
+        "vocabulary_slugs": [
+          "ginkou",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "彼は明日銀行で待ちます。",
+        "english": "He's waiting at the bank tomorrow.",
+        "vocabulary_slugs": [
+          "kare",
+          "ashita",
+          "ginkou",
+          "matsu"
         ]
       }
     ],
@@ -1652,6 +2378,42 @@
       "review_status": "draft"
     }
   },
+  "hako": {
+    "example_sentences": [
+      {
+        "japanese": "この箱を開けてください。",
+        "english": "Please open this box.",
+        "vocabulary_slugs": [
+          "kono",
+          "hako",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "私は店で箱を買いました。",
+        "english": "I bought a box at the shop.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mise",
+          "hako",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "箱に本があります。",
+        "english": "There's a book in the box.",
+        "vocabulary_slugs": [
+          "hako",
+          "hon"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "han-time": {
     "example_sentences": [
       {
@@ -1725,6 +2487,43 @@
       "review_status": "draft"
     }
   },
+  "hashi-bridge": {
+    "example_sentences": [
+      {
+        "japanese": "あの橋は高いです。",
+        "english": "That bridge over there is tall.",
+        "vocabulary_slugs": [
+          "ano",
+          "hashi-bridge",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "橋で友達を待ちます。",
+        "english": "I'll wait for my friend at the bridge.",
+        "vocabulary_slugs": [
+          "hashi-bridge",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "今日、公園の橋に行きます。",
+        "english": "Today I'm going to the bridge in the park.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kouen",
+          "hashi-bridge",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hatsuka": {
     "example_sentences": [
       {
@@ -1751,6 +2550,42 @@
           "raigetsu",
           "hatsuka",
           "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "heya": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は寒いです。",
+        "english": "This room is cold.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "部屋で本を読みます。",
+        "english": "I read a book in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "友達の部屋に行きます。",
+        "english": "I'm going to my friend's room.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "heya",
+          "iku-v"
         ]
       }
     ],
@@ -1910,6 +2745,42 @@
       "review_status": "draft"
     }
   },
+  "hon": {
+    "example_sentences": [
+      {
+        "japanese": "毎日本を読みます。",
+        "english": "I read books every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "店で本を買いました。",
+        "english": "I bought a book at the shop.",
+        "vocabulary_slugs": [
+          "mise",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この本は難しいです。",
+        "english": "This book is difficult.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "muzukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hyaku-v": {
     "example_sentences": [
       {
@@ -1975,6 +2846,42 @@
         "vocabulary_slugs": [
           "eiga",
           "ichi-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ie": {
+    "example_sentences": [
+      {
+        "japanese": "家に帰ります。",
+        "english": "I'm going home.",
+        "vocabulary_slugs": [
+          "ie",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "この家はいいです。",
+        "english": "This house is nice.",
+        "vocabulary_slugs": [
+          "kono",
+          "ie",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "週末は家で映画を見ます。",
+        "english": "On weekends I watch movies at home.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "ie",
+          "eiga",
           "miru-v"
         ]
       }
@@ -2197,6 +3104,44 @@
       "review_status": "draft"
     }
   },
+  "isu": {
+    "example_sentences": [
+      {
+        "japanese": "私はこの椅子に座ります。",
+        "english": "I sit in this chair.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kono",
+          "isu",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "店で椅子を二つ買いました。",
+        "english": "I bought two chairs at the shop.",
+        "vocabulary_slugs": [
+          "mise",
+          "isu",
+          "futatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あの椅子は高いです。",
+        "english": "That chair over there is expensive.",
+        "vocabulary_slugs": [
+          "ano",
+          "isu",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "example_sentences": [
       {
@@ -2410,6 +3355,42 @@
       "review_status": "draft"
     }
   },
+  "jisho": {
+    "example_sentences": [
+      {
+        "japanese": "私は辞書を使います。",
+        "english": "I use a dictionary.",
+        "vocabulary_slugs": [
+          "watashi",
+          "jisho",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "この辞書は安いです。",
+        "english": "This dictionary is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "jisho",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "友達は辞書を買いました。",
+        "english": "My friend bought a dictionary.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "jisho",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "juu-v": {
     "example_sentences": [
       {
@@ -2435,6 +3416,153 @@
         "vocabulary_slugs": [
           "inu",
           "juu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaban": {
+    "example_sentences": [
+      {
+        "japanese": "かばんはどこですか。",
+        "english": "Where is the bag?",
+        "vocabulary_slugs": [
+          "kaban",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "彼女のかばんを見ました。",
+        "english": "I saw her bag.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kaban",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "スーパーでかばんを買います。",
+        "english": "I'll buy a bag at the supermarket.",
+        "vocabulary_slugs": [
+          "suupaa",
+          "kaban",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kado": {
+    "example_sentences": [
+      {
+        "japanese": "駅の角で友達を待ちます。",
+        "english": "I wait for my friend at the station corner.",
+        "vocabulary_slugs": [
+          "eki",
+          "kado",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "角の店でパンを買います。",
+        "english": "I buy bread at the shop on the corner.",
+        "vocabulary_slugs": [
+          "kado",
+          "mise",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "公園の角に行きます。",
+        "english": "I'm going to the corner of the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "kado",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kagi": {
+    "example_sentences": [
+      {
+        "japanese": "この鍵でドアを開けます。",
+        "english": "I open the door with this key.",
+        "vocabulary_slugs": [
+          "kono",
+          "kagi",
+          "doa",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "鍵はかばんにあります。",
+        "english": "The key is in the bag.",
+        "vocabulary_slugs": [
+          "kagi",
+          "kaban"
+        ]
+      },
+      {
+        "japanese": "家の鍵を買いました。",
+        "english": "I bought a house key.",
+        "vocabulary_slugs": [
+          "ie",
+          "kagi",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kaisha": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝会社に行きます。",
+        "english": "I go to the office every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今日は会社で忙しいです。",
+        "english": "I'm busy at the office today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaisha",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "明日友達と会社で会います。",
+        "english": "Tomorrow I'm meeting a friend at the office.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "kaisha",
+          "au"
         ]
       }
     ],
@@ -2481,6 +3609,42 @@
       "review_status": "draft"
     }
   },
+  "kamera": {
+    "example_sentences": [
+      {
+        "japanese": "これは私のカメラです。",
+        "english": "This is my camera.",
+        "vocabulary_slugs": [
+          "kore",
+          "watashi",
+          "kamera"
+        ]
+      },
+      {
+        "japanese": "デパートでカメラを買いました。",
+        "english": "I bought a camera at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "kamera",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "今日、カメラを使います。",
+        "english": "I'll use the camera today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kamera",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kami-hair": {
     "example_sentences": [
       {
@@ -2509,6 +3673,42 @@
           "kyou",
           "kami-hair",
           "dou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kami-paper": {
+    "example_sentences": [
+      {
+        "japanese": "私は紙を買います。",
+        "english": "I buy paper.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kami-paper",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この紙は安いです。",
+        "english": "This paper is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "kami-paper",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "先生は紙に書きます。",
+        "english": "The teacher writes on paper.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kami-paper",
+          "kaku"
         ]
       }
     ],
@@ -2666,6 +3866,42 @@
       "review_status": "draft"
     }
   },
+  "kasa": {
+    "example_sentences": [
+      {
+        "japanese": "今日は傘を使います。",
+        "english": "I'll use an umbrella today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kasa",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "店で傘を買いました。",
+        "english": "I bought an umbrella at the shop.",
+        "vocabulary_slugs": [
+          "mise",
+          "kasa",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "その傘は安いです。",
+        "english": "That umbrella is cheap.",
+        "vocabulary_slugs": [
+          "sono",
+          "kasa",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kayoubi": {
     "example_sentences": [
       {
@@ -2776,6 +4012,42 @@
       "review_status": "draft"
     }
   },
+  "keitai": {
+    "example_sentences": [
+      {
+        "japanese": "私の携帯は高いです。",
+        "english": "My mobile phone is expensive.",
+        "vocabulary_slugs": [
+          "watashi",
+          "keitai",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "駅で携帯を使います。",
+        "english": "I use my phone at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "keitai",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "この携帯は安いです。",
+        "english": "This phone is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "keitai",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kimi": {
     "example_sentences": [
       {
@@ -2876,6 +4148,81 @@
           "kinyoubi",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kissaten": {
+    "example_sentences": [
+      {
+        "japanese": "私は喫茶店でコーヒーを飲みます。",
+        "english": "I drink coffee at a coffee shop.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kissaten",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "友達と喫茶店に行きました。",
+        "english": "I went to a coffee shop with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kissaten",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この喫茶店のお茶はおいしいです。",
+        "english": "The tea at this coffee shop is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "kissaten",
+          "ocha",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kitte": {
+    "example_sentences": [
+      {
+        "japanese": "郵便局で切手を買います。",
+        "english": "I'll buy stamps at the post office.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "kitte",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この切手はいくらですか。",
+        "english": "How much is this stamp?",
+        "vocabulary_slugs": [
+          "kono",
+          "kitte",
+          "ikura"
+        ]
+      },
+      {
+        "japanese": "明日、切手を買いに行きます。",
+        "english": "Tomorrow I'm going to buy stamps.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kitte",
+          "kau-v",
+          "iku-v"
         ]
       }
     ],
@@ -3100,6 +4447,78 @@
       "review_status": "draft"
     }
   },
+  "kome-v": {
+    "example_sentences": [
+      {
+        "japanese": "母は米を買います。",
+        "english": "My mother buys rice.",
+        "vocabulary_slugs": [
+          "haha",
+          "kome-v",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この米は安いです。",
+        "english": "This rice is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "kome-v",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "料理に米を使います。",
+        "english": "I use rice for cooking.",
+        "vocabulary_slugs": [
+          "ryouri",
+          "kome-v",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "konbini": {
+    "example_sentences": [
+      {
+        "japanese": "コンビニでお茶を買います。",
+        "english": "I buy tea at the convenience store.",
+        "vocabulary_slugs": [
+          "konbini",
+          "ocha",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日コンビニに行きます。",
+        "english": "I'm going to the convenience store tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "konbini",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "このコンビニは安いです。",
+        "english": "This convenience store is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "konbini",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kongetsu": {
     "example_sentences": [
       {
@@ -3243,6 +4662,77 @@
       "review_status": "draft"
     }
   },
+  "koohii": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝コーヒーを飲みます。",
+        "english": "I drink coffee every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "このコーヒーはおいしいです。",
+        "english": "This coffee is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "コーヒーはいくらですか。",
+        "english": "How much is the coffee?",
+        "vocabulary_slugs": [
+          "koohii",
+          "ikura"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kooto": {
+    "example_sentences": [
+      {
+        "japanese": "デパートでコートを買いました。",
+        "english": "I bought a coat at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "kooto",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "このコートは高いです。",
+        "english": "This coat is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "kooto",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "彼女のコートを見ます。",
+        "english": "I'm looking at her coat.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kooto",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kore": {
     "example_sentences": [
       {
@@ -3303,6 +4793,78 @@
           "kotoshi",
           "umi",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kouban": {
+    "example_sentences": [
+      {
+        "japanese": "交番はどこですか。",
+        "english": "Where is the police box?",
+        "vocabulary_slugs": [
+          "kouban",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "昨日、交番に行きました。",
+        "english": "Yesterday I went to the police box.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kouban",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "交番で道を聞きました。",
+        "english": "I asked for directions at the police box.",
+        "vocabulary_slugs": [
+          "kouban",
+          "michi-v",
+          "kiku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kouen": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日公園へ行く。",
+        "english": "I go to the park every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "公園でお弁当を食べる。",
+        "english": "I eat a boxed lunch at the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "bentou",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "あの公園は楽しいです。",
+        "english": "That park over there is fun.",
+        "vocabulary_slugs": [
+          "ano",
+          "kouen",
+          "tanoshii"
         ]
       }
     ],
@@ -3456,6 +5018,76 @@
       "review_status": "draft"
     }
   },
+  "kutsu": {
+    "example_sentences": [
+      {
+        "japanese": "この靴は高いです。",
+        "english": "These shoes are expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "kutsu",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "デパートで靴を買いました。",
+        "english": "I bought shoes at the department store.",
+        "vocabulary_slugs": [
+          "depaato",
+          "kutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "靴はどこですか。",
+        "english": "Where are the shoes?",
+        "vocabulary_slugs": [
+          "kutsu",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kuukou": {
+    "example_sentences": [
+      {
+        "japanese": "空港はどこですか。",
+        "english": "Where is the airport?",
+        "vocabulary_slugs": [
+          "kuukou",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "明日、空港に行きます。",
+        "english": "I'm going to the airport tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kuukou",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "空港でお茶を飲みます。",
+        "english": "I'll drink tea at the airport.",
+        "vocabulary_slugs": [
+          "kuukou",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kyonen": {
     "example_sentences": [
       {
@@ -3594,6 +5226,80 @@
           "kare",
           "kyuu-v",
           "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "machi-v": {
+    "example_sentences": [
+      {
+        "japanese": "週末に町へ行きます。",
+        "english": "I'm going to town this weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "machi-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "町でパンを買いました。",
+        "english": "I bought bread in town.",
+        "vocabulary_slugs": [
+          "machi-v",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この町の公園は楽しいです。",
+        "english": "The park in this town is fun.",
+        "vocabulary_slugs": [
+          "kono",
+          "machi-v",
+          "kouen",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mado": {
+    "example_sentences": [
+      {
+        "japanese": "どの窓を開けますか。",
+        "english": "Which window will you open?",
+        "vocabulary_slugs": [
+          "dono",
+          "mado",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "私は窓から海を見ます。",
+        "english": "I look at the sea from the window.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mado",
+          "umi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "寒いので、窓を閉めます。",
+        "english": "It's cold, so I'm closing the window.",
+        "vocabulary_slugs": [
+          "samui",
+          "mado",
+          "shimeru"
         ]
       }
     ],
@@ -3908,6 +5614,78 @@
       "review_status": "draft"
     }
   },
+  "megane": {
+    "example_sentences": [
+      {
+        "japanese": "今日、眼鏡を買いました。",
+        "english": "I bought glasses today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "megane",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "その眼鏡は誰のですか。",
+        "english": "Whose glasses are those?",
+        "vocabulary_slugs": [
+          "sono",
+          "megane",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "僕は眼鏡で本を読みます。",
+        "english": "I read books with my glasses on.",
+        "vocabulary_slugs": [
+          "boku",
+          "megane",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "michi-v": {
+    "example_sentences": [
+      {
+        "japanese": "この道を行きます。",
+        "english": "I'll take this road.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "道はどこですか。",
+        "english": "Where is the road?",
+        "vocabulary_slugs": [
+          "michi-v",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "友達と道で会います。",
+        "english": "I'll meet my friend on the street.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "michi-v",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mikka": {
     "example_sentences": [
       {
@@ -4005,6 +5783,45 @@
           "ashita",
           "minna",
           "umi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mise": {
+    "example_sentences": [
+      {
+        "japanese": "この店は安いです。",
+        "english": "This shop is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "私は店で本を買いました。",
+        "english": "I bought a book at the shop.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mise",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日、友達とあの店に行きます。",
+        "english": "Tomorrow I'm going to that shop with a friend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "ano",
+          "mise",
           "iku-v"
         ]
       }
@@ -4623,6 +6440,44 @@
       "review_status": "draft"
     }
   },
+  "niwa": {
+    "example_sentences": [
+      {
+        "japanese": "子供は庭で遊びます。",
+        "english": "The kids play in the yard.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "niwa",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "父は今、庭に出ます。",
+        "english": "Dad is heading out to the garden now.",
+        "vocabulary_slugs": [
+          "chichi",
+          "ima",
+          "niwa",
+          "deru-v"
+        ]
+      },
+      {
+        "japanese": "彼女は庭で本を読みます。",
+        "english": "She reads a book in the garden.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "niwa",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "nomimono": {
     "example_sentences": [
       {
@@ -4649,6 +6504,42 @@
           "mizu",
           "yasui-adj",
           "nomimono"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nooto": {
+    "example_sentences": [
+      {
+        "japanese": "私はノートを買います。",
+        "english": "I buy a notebook.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nooto",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女はノートに書きます。",
+        "english": "She writes in a notebook.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "nooto",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "このノートは安いです。",
+        "english": "This notebook is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "nooto",
+          "yasui-adj"
         ]
       }
     ],
@@ -4888,6 +6779,42 @@
       "review_status": "draft"
     }
   },
+  "okashi": {
+    "example_sentences": [
+      {
+        "japanese": "このお菓子はおいしいです。",
+        "english": "These sweets are delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "okashi",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "今日はお菓子を買います。",
+        "english": "I'll buy some snacks today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "okashi",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "妹とお菓子を食べます。",
+        "english": "I eat snacks with my younger sister.",
+        "vocabulary_slugs": [
+          "imouto",
+          "okashi",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "okusan": {
     "example_sentences": [
       {
@@ -5098,6 +7025,75 @@
           "issho-ni",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "osake": {
+    "example_sentences": [
+      {
+        "japanese": "友達とお酒を飲みます。",
+        "english": "I drink alcohol with my friends.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "osake",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "お酒を買いました。",
+        "english": "I bought some alcohol.",
+        "vocabulary_slugs": [
+          "osake",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "このお酒はおいしいです。",
+        "english": "This sake is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "osake",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "otearai": {
+    "example_sentences": [
+      {
+        "japanese": "お手洗いはあそこです。",
+        "english": "The restroom is over there.",
+        "vocabulary_slugs": [
+          "otearai",
+          "asoko"
+        ]
+      },
+      {
+        "japanese": "お手洗いに行きます。",
+        "english": "I'm going to the restroom.",
+        "vocabulary_slugs": [
+          "otearai",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "コンビニのお手洗いに入ります。",
+        "english": "I'm going into the convenience store restroom.",
+        "vocabulary_slugs": [
+          "konbini",
+          "otearai",
+          "hairu-v"
         ]
       }
     ],
@@ -5398,6 +7394,79 @@
       "review_status": "draft"
     }
   },
+  "pasokon": {
+    "example_sentences": [
+      {
+        "japanese": "私は家でパソコンを使います。",
+        "english": "I use a computer at home.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ie",
+          "pasokon",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "このパソコンは高いです。",
+        "english": "This computer is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "pasokon",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "どのパソコンがいいですか。",
+        "english": "Which computer is good?",
+        "vocabulary_slugs": [
+          "dono",
+          "pasokon",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "pen": {
+    "example_sentences": [
+      {
+        "japanese": "これは私のペンです。",
+        "english": "This is my pen.",
+        "vocabulary_slugs": [
+          "kore",
+          "watashi",
+          "pen"
+        ]
+      },
+      {
+        "japanese": "ペンで紙に書きます。",
+        "english": "I write on paper with a pen.",
+        "vocabulary_slugs": [
+          "pen",
+          "kami-paper",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "コンビニでペンを買った。",
+        "english": "I bought a pen at the convenience store.",
+        "vocabulary_slugs": [
+          "konbini",
+          "pen",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "raigetsu": {
     "example_sentences": [
       {
@@ -5505,6 +7574,42 @@
       "review_status": "draft"
     }
   },
+  "rajio": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝ラジオを聞きます。",
+        "english": "I listen to the radio every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "rajio",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "このラジオは安いです。",
+        "english": "This radio is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "rajio",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "店でラジオを買いました。",
+        "english": "I bought a radio at the store.",
+        "vocabulary_slugs": [
+          "mise",
+          "rajio",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "rei": {
     "example_sentences": [
       {
@@ -5529,6 +7634,42 @@
         "vocabulary_slugs": [
           "okane",
           "rei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "resutoran": {
+    "example_sentences": [
+      {
+        "japanese": "明日レストランに行きます。",
+        "english": "I'm going to a restaurant tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "resutoran",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "このレストランはおいしいです。",
+        "english": "This restaurant is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "resutoran",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "友達とレストランで食べます。",
+        "english": "I eat at a restaurant with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "resutoran",
+          "taberu"
         ]
       }
     ],
@@ -5565,6 +7706,77 @@
           "roku-v",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ryouri": {
+    "example_sentences": [
+      {
+        "japanese": "この料理はおいしいです。",
+        "english": "This dish is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "母は毎日料理をします。",
+        "english": "My mom cooks every day.",
+        "vocabulary_slugs": [
+          "haha",
+          "mainichi",
+          "ryouri"
+        ]
+      },
+      {
+        "japanese": "友達の料理を食べました。",
+        "english": "I ate my friend's cooking.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ryouri",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "saifu": {
+    "example_sentences": [
+      {
+        "japanese": "この財布を買います。",
+        "english": "I'll buy this wallet.",
+        "vocabulary_slugs": [
+          "kono",
+          "saifu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "財布はどこですか。",
+        "english": "Where is the wallet?",
+        "vocabulary_slugs": [
+          "saifu",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "私の財布は安いです。",
+        "english": "My wallet is cheap.",
+        "vocabulary_slugs": [
+          "watashi",
+          "saifu",
+          "yasui-adj"
         ]
       }
     ],
@@ -5638,6 +7850,42 @@
           "eiga",
           "san-v",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "satou": {
+    "example_sentences": [
+      {
+        "japanese": "コーヒーと砂糖を買います。",
+        "english": "I'll buy coffee and sugar.",
+        "vocabulary_slugs": [
+          "koohii",
+          "satou",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この砂糖は安いです。",
+        "english": "This sugar is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "satou",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "彼女は砂糖を使います。",
+        "english": "She uses sugar.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "satou",
+          "tsukau"
         ]
       }
     ],
@@ -5830,6 +8078,80 @@
       "review_status": "draft"
     }
   },
+  "shashin": {
+    "example_sentences": [
+      {
+        "japanese": "これは私の家族の写真です。",
+        "english": "This is a photo of my family.",
+        "vocabulary_slugs": [
+          "kore",
+          "watashi",
+          "kazoku",
+          "shashin"
+        ]
+      },
+      {
+        "japanese": "昨日、友達の写真を見ました。",
+        "english": "Yesterday I looked at my friend's photos.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "shashin",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼女の写真はどこですか。",
+        "english": "Where is her photo?",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shashin",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shatsu": {
+    "example_sentences": [
+      {
+        "japanese": "このシャツは高いです。",
+        "english": "This shirt is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "shatsu",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "明日シャツを買います。",
+        "english": "I'll buy a shirt tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女のシャツはどこですか。",
+        "english": "Where is her shirt?",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shatsu",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shi-num": {
     "example_sentences": [
       {
@@ -5893,6 +8215,116 @@
           "shichi-num",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shinbun": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝新聞を読みます。",
+        "english": "I read the newspaper every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "shinbun",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "父は駅で新聞を買いました。",
+        "english": "My father bought a newspaper at the station.",
+        "vocabulary_slugs": [
+          "chichi",
+          "eki",
+          "shinbun",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この新聞は安いです。",
+        "english": "This newspaper is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "shinbun",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shio": {
+    "example_sentences": [
+      {
+        "japanese": "塩を買いました。",
+        "english": "I bought some salt.",
+        "vocabulary_slugs": [
+          "shio",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "この塩は安いです。",
+        "english": "This salt is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "shio",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "母は毎日塩を使います。",
+        "english": "My mom uses salt every day.",
+        "vocabulary_slugs": [
+          "haha",
+          "mainichi",
+          "shio",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shokuji": {
+    "example_sentences": [
+      {
+        "japanese": "友達と一緒に食事をします。",
+        "english": "I'll have a meal together with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "issho-ni",
+          "shokuji"
+        ]
+      },
+      {
+        "japanese": "この食事はおいしいです。",
+        "english": "This meal is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "shokuji",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "明日、彼と食事に行きます。",
+        "english": "Tomorrow I'll go out for a meal with him.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kare",
+          "shokuji",
+          "iku-v"
         ]
       }
     ],
@@ -6230,6 +8662,44 @@
       "review_status": "draft"
     }
   },
+  "suupaa": {
+    "example_sentences": [
+      {
+        "japanese": "私はスーパーで魚を買います。",
+        "english": "I buy fish at the supermarket.",
+        "vocabulary_slugs": [
+          "watashi",
+          "suupaa",
+          "sakana",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "週末にスーパーへ行きませんか。",
+        "english": "Shall we go to the supermarket this weekend?",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "suupaa",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あのスーパーのお菓子はおいしい。",
+        "english": "The snacks at that supermarket are delicious.",
+        "vocabulary_slugs": [
+          "ano",
+          "suupaa",
+          "okashi",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tabemono": {
     "example_sentences": [
       {
@@ -6258,6 +8728,44 @@
           "donna",
           "tabemono",
           "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "takushii": {
+    "example_sentences": [
+      {
+        "japanese": "今日タクシーで会社に行く。",
+        "english": "Today I'm going to the office by taxi.",
+        "vocabulary_slugs": [
+          "kyou",
+          "takushii",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私たちは駅でタクシーを待つ。",
+        "english": "We wait for a taxi at the station.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "eki",
+          "takushii",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "あのタクシーは安い。",
+        "english": "That taxi over there is cheap.",
+        "vocabulary_slugs": [
+          "ano",
+          "takushii",
+          "yasui-adj"
         ]
       }
     ],
@@ -6331,6 +8839,223 @@
           "ima",
           "te-v",
           "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "teeburu": {
+    "example_sentences": [
+      {
+        "japanese": "このテーブルは高いです。",
+        "english": "This table is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "teeburu",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "テーブルで朝ご飯を食べます。",
+        "english": "I eat breakfast at the table.",
+        "vocabulary_slugs": [
+          "teeburu",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "部屋にテーブルがあります。",
+        "english": "There's a table in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "teeburu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tegami": {
+    "example_sentences": [
+      {
+        "japanese": "昨日彼女に手紙を書いた。",
+        "english": "I wrote her a letter yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kanojo",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "毎日父の手紙を読む。",
+        "english": "I read Dad's letters every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "chichi",
+          "tegami",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "この手紙は難しい。",
+        "english": "This letter is difficult.",
+        "vocabulary_slugs": [
+          "kono",
+          "tegami",
+          "muzukashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tenki": {
+    "example_sentences": [
+      {
+        "japanese": "今日の天気はいいです。",
+        "english": "Today's weather is nice.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tenki",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "明日はどんな天気ですか。",
+        "english": "What kind of weather will it be tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "donna",
+          "tenki"
+        ]
+      },
+      {
+        "japanese": "天気がいいから公園に行きます。",
+        "english": "The weather's nice, so I'm going to the park.",
+        "vocabulary_slugs": [
+          "tenki",
+          "ii",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "terebi": {
+    "example_sentences": [
+      {
+        "japanese": "今、テレビを見ています。",
+        "english": "I'm watching TV right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "このテレビは安いです。",
+        "english": "This TV is cheap.",
+        "vocabulary_slugs": [
+          "kono",
+          "terebi",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "妹はテレビを買いました。",
+        "english": "My little sister bought a TV.",
+        "vocabulary_slugs": [
+          "imouto",
+          "terebi",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "toire": {
+    "example_sentences": [
+      {
+        "japanese": "トイレに行きます。",
+        "english": "I'm going to the toilet.",
+        "vocabulary_slugs": [
+          "toire",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "このトイレを使います。",
+        "english": "I'll use this toilet.",
+        "vocabulary_slugs": [
+          "kono",
+          "toire",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "駅のトイレはあそこです。",
+        "english": "The station toilet is over there.",
+        "vocabulary_slugs": [
+          "eki",
+          "toire",
+          "asoko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tokei": {
+    "example_sentences": [
+      {
+        "japanese": "私は時計を見ます。",
+        "english": "I look at the clock.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tokei",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この時計は高いです。",
+        "english": "This watch is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "tokei",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "店で時計を買います。",
+        "english": "I buy a watch at the shop.",
+        "vocabulary_slugs": [
+          "mise",
+          "tokei",
+          "kau-v"
         ]
       }
     ],
@@ -6449,6 +9174,43 @@
       "review_status": "draft"
     }
   },
+  "toshokan": {
+    "example_sentences": [
+      {
+        "japanese": "図書館はどこですか。",
+        "english": "Where is the library?",
+        "vocabulary_slugs": [
+          "toshokan",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "私は毎日図書館に行く。",
+        "english": "I go to the library every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "toshokan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達と図書館で本を読む。",
+        "english": "I read books at the library with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tsuitachi": {
     "example_sentences": [
       {
@@ -6475,6 +9237,42 @@
           "kongetsu",
           "tsuitachi",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsukue": {
+    "example_sentences": [
+      {
+        "japanese": "私は机に座ります。",
+        "english": "I sit at the desk.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tsukue",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "机で本を読みます。",
+        "english": "I read a book at the desk.",
+        "vocabulary_slugs": [
+          "tsukue",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "この机は高いです。",
+        "english": "This desk is expensive.",
+        "vocabulary_slugs": [
+          "kono",
+          "tsukue",
+          "takai-adj"
         ]
       }
     ],
@@ -6514,6 +9312,42 @@
           "tsuma",
           "kouen",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uchi": {
+    "example_sentences": [
+      {
+        "japanese": "今日うちに帰ります。",
+        "english": "I'm going home today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "uchi",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "友達がうちに来ます。",
+        "english": "A friend is coming over to my place.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "uchi",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "うちでご飯を食べます。",
+        "english": "I eat at home.",
+        "vocabulary_slugs": [
+          "uchi",
+          "gohan",
+          "taberu"
         ]
       }
     ],
@@ -6850,6 +9684,41 @@
       "review_status": "draft"
     }
   },
+  "yuubinkyoku": {
+    "example_sentences": [
+      {
+        "japanese": "今日、郵便局に行きます。",
+        "english": "I'm going to the post office today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "yuubinkyoku",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "郵便局はどこですか。",
+        "english": "Where is the post office?",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "郵便局で彼女を待ちます。",
+        "english": "I'll wait for her at the post office.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "kanojo",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yuugata": {
     "example_sentences": [
       {
@@ -6877,6 +9746,43 @@
           "kyou",
           "yuugata",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zasshi": {
+    "example_sentences": [
+      {
+        "japanese": "図書館で雑誌を読む。",
+        "english": "I read magazines at the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "zasshi",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "その雑誌は楽しい。",
+        "english": "That magazine is fun.",
+        "vocabulary_slugs": [
+          "sono",
+          "zasshi",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "妹は週末に雑誌を買う。",
+        "english": "My younger sister buys a magazine on the weekend.",
+        "vocabulary_slugs": [
+          "imouto",
+          "shuumatsu",
+          "zasshi",
+          "kau-v"
         ]
       }
     ],
