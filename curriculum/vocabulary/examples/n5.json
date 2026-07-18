@@ -175,6 +175,111 @@
       "review_status": "draft"
     }
   },
+  "asa": {
+    "example_sentences": [
+      {
+        "japanese": "朝は寒い。",
+        "english": "The morning is cold.",
+        "vocabulary_slugs": [
+          "asa",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "朝、コーヒーを飲む。",
+        "english": "I drink coffee in the morning.",
+        "vocabulary_slugs": [
+          "asa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "明日の朝、起きる。",
+        "english": "I'll get up tomorrow morning.",
+        "vocabulary_slugs": [
+          "ashita",
+          "asa",
+          "okiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "asatte": {
+    "example_sentences": [
+      {
+        "japanese": "明後日学校に行きます。",
+        "english": "I'm going to school the day after tomorrow.",
+        "vocabulary_slugs": [
+          "asatte",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "明後日友達と会います。",
+        "english": "I'm meeting a friend the day after tomorrow.",
+        "vocabulary_slugs": [
+          "asatte",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "明後日は忙しいです。",
+        "english": "I'm busy the day after tomorrow.",
+        "vocabulary_slugs": [
+          "asatte",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ashita": {
+    "example_sentences": [
+      {
+        "japanese": "明日学校に行きます。",
+        "english": "I'm going to school tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "明日は忙しいです。",
+        "english": "Tomorrow I'm busy.",
+        "vocabulary_slugs": [
+          "ashita",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "明日映画を見ます。",
+        "english": "I'm watching a movie tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "asoko": {
     "example_sentences": [
       {
@@ -199,6 +304,43 @@
         "english": "I watch movies over there.",
         "vocabulary_slugs": [
           "asoko",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ban": {
+    "example_sentences": [
+      {
+        "japanese": "晩に本を読みます。",
+        "english": "I read a book in the evening.",
+        "vocabulary_slugs": [
+          "ban",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "今日の晩は寒いです。",
+        "english": "It's cold this evening.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ban",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "明日の晩、映画を見ます。",
+        "english": "I'll watch a movie tomorrow evening.",
+        "vocabulary_slugs": [
+          "ashita",
+          "ban",
           "eiga",
           "miru-v"
         ]
@@ -238,6 +380,43 @@
           "issho-ni",
           "kouen",
           "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "byou": {
+    "example_sentences": [
+      {
+        "japanese": "十秒待ちます。",
+        "english": "I'll wait ten seconds.",
+        "vocabulary_slugs": [
+          "juu-v",
+          "byou",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "三秒見てください。",
+        "english": "Please look for three seconds.",
+        "vocabulary_slugs": [
+          "san-v",
+          "byou",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "今、三十秒です。",
+        "english": "It's at thirty seconds now.",
+        "vocabulary_slugs": [
+          "ima",
+          "san-v",
+          "juu-v",
+          "byou"
         ]
       }
     ],
@@ -563,6 +742,80 @@
       "review_status": "draft"
     }
   },
+  "doyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "土曜日に公園で遊びます。",
+        "english": "I play at the park on Saturday.",
+        "vocabulary_slugs": [
+          "doyoubi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "土曜日は家で本を読みます。",
+        "english": "On Saturday I read a book at home.",
+        "vocabulary_slugs": [
+          "doyoubi",
+          "ie",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "来週の土曜日に会いましょう。",
+        "english": "Let's meet next Saturday.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "doyoubi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fun": {
+    "example_sentences": [
+      {
+        "japanese": "五分待ちます。",
+        "english": "I'll wait five minutes.",
+        "vocabulary_slugs": [
+          "go-v",
+          "fun",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "十分で帰ります。",
+        "english": "I'll head home in ten minutes.",
+        "vocabulary_slugs": [
+          "juu-v",
+          "fun",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "三分だけ本を読みます。",
+        "english": "I'll read a book for just three minutes.",
+        "vocabulary_slugs": [
+          "san-v",
+          "fun",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "futatsu": {
     "example_sentences": [
       {
@@ -591,6 +844,78 @@
           "eiga",
           "futatsu",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "futsuka": {
+    "example_sentences": [
+      {
+        "japanese": "二日学校に行きます。",
+        "english": "I'm going to school on the 2nd.",
+        "vocabulary_slugs": [
+          "futsuka",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達が二日来ます。",
+        "english": "A friend is coming for two days.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "futsuka",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "明日は二日です。",
+        "english": "Tomorrow is the 2nd.",
+        "vocabulary_slugs": [
+          "ashita",
+          "futsuka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "getsuyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "月曜日に学校に行きます。",
+        "english": "I go to school on Monday.",
+        "vocabulary_slugs": [
+          "getsuyoubi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "来週の月曜日は忙しいです。",
+        "english": "Next Monday is busy.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "getsuyoubi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "月曜日の朝、コーヒーを飲みます。",
+        "english": "I drink coffee on Monday morning.",
+        "vocabulary_slugs": [
+          "getsuyoubi",
+          "asa",
+          "koohii",
+          "nomu-v"
         ]
       }
     ],
@@ -636,6 +961,80 @@
       "review_status": "draft"
     }
   },
+  "gogo": {
+    "example_sentences": [
+      {
+        "japanese": "午後にコーヒーを飲みます。",
+        "english": "I'll have coffee in the afternoon.",
+        "vocabulary_slugs": [
+          "gogo",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "今日の午後は忙しいです。",
+        "english": "I'm busy this afternoon.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gogo",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "午後に公園で遊びます。",
+        "english": "I'll hang out at the park in the afternoon.",
+        "vocabulary_slugs": [
+          "gogo",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "gozen": {
+    "example_sentences": [
+      {
+        "japanese": "今日は午前十時に会います。",
+        "english": "Today we'll meet at ten a.m.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gozen",
+          "juu-v",
+          "au"
+        ]
+      },
+      {
+        "japanese": "彼は午前にコーヒーを飲みます。",
+        "english": "He drinks coffee in the morning.",
+        "vocabulary_slugs": [
+          "kare",
+          "gozen",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "映画は午前九時です。",
+        "english": "The movie is at nine a.m.",
+        "vocabulary_slugs": [
+          "eiga",
+          "gozen",
+          "kyuu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hachi-v": {
     "example_sentences": [
       {
@@ -663,6 +1062,80 @@
           "tomodachi",
           "hachi-v",
           "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "han-time": {
+    "example_sentences": [
+      {
+        "japanese": "今は九時半です。",
+        "english": "It's nine-thirty now.",
+        "vocabulary_slugs": [
+          "ima",
+          "kyuu-v",
+          "han-time"
+        ]
+      },
+      {
+        "japanese": "七時半に起きます。",
+        "english": "I get up at seven-thirty.",
+        "vocabulary_slugs": [
+          "nana-v",
+          "han-time",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "友達と二時半に会います。",
+        "english": "I'm meeting a friend at two-thirty.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ni-v",
+          "han-time",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hiru": {
+    "example_sentences": [
+      {
+        "japanese": "昼に公園へ行きます。",
+        "english": "I go to the park at noon.",
+        "vocabulary_slugs": [
+          "hiru",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今日の昼は暑いです。",
+        "english": "It's hot this midday.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hiru",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "彼は昼に家へ帰ります。",
+        "english": "He goes home at noon.",
+        "vocabulary_slugs": [
+          "kare",
+          "hiru",
+          "ie",
+          "kaeru-v"
         ]
       }
     ],
@@ -887,6 +1360,41 @@
       "review_status": "draft"
     }
   },
+  "ima": {
+    "example_sentences": [
+      {
+        "japanese": "今、昼ご飯を食べます。",
+        "english": "I'm eating lunch now.",
+        "vocabulary_slugs": [
+          "ima",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "今は暑いです。",
+        "english": "It's hot right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "atsui-hot"
+        ]
+      },
+      {
+        "japanese": "今、公園に行きます。",
+        "english": "I'm going to the park now.",
+        "vocabulary_slugs": [
+          "ima",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "example_sentences": [
       {
@@ -914,6 +1422,114 @@
           "itsu",
           "bangohan",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itsutsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を五つ買いました。",
+        "english": "I bought five books.",
+        "vocabulary_slugs": [
+          "hon",
+          "itsutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "写真を五つ見ました。",
+        "english": "I looked at five photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "itsutsu",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "パンを五つ食べます。",
+        "english": "I'll eat five pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "itsutsu",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jibun-time": {
+    "example_sentences": [
+      {
+        "japanese": "今時分はもう夜です。",
+        "english": "It's already night around this time of day.",
+        "vocabulary_slugs": [
+          "ima",
+          "jibun-time",
+          "yoru"
+        ]
+      },
+      {
+        "japanese": "この時分は寒いです。",
+        "english": "It's cold at this time of day.",
+        "vocabulary_slugs": [
+          "kono",
+          "jibun-time",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "昼の時分にご飯を食べます。",
+        "english": "I eat around midday.",
+        "vocabulary_slugs": [
+          "hiru",
+          "jibun-time",
+          "gohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jikan": {
+    "example_sentences": [
+      {
+        "japanese": "今は時間がありません。",
+        "english": "I don't have time right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "jikan"
+        ]
+      },
+      {
+        "japanese": "二時間待ちました。",
+        "english": "I waited for two hours.",
+        "vocabulary_slugs": [
+          "ni-v",
+          "jikan",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "友達と遊ぶ時間があります。",
+        "english": "I have time to hang out with friends.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "asobu",
+          "jikan"
         ]
       }
     ],
@@ -1031,6 +1647,42 @@
       "review_status": "draft"
     }
   },
+  "kayoubi": {
+    "example_sentences": [
+      {
+        "japanese": "火曜日に映画を見ます。",
+        "english": "I'll watch a movie on Tuesday.",
+        "vocabulary_slugs": [
+          "kayoubi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "明日は火曜日です。",
+        "english": "Tomorrow is Tuesday.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kayoubi"
+        ]
+      },
+      {
+        "japanese": "来週の火曜日に友達と会います。",
+        "english": "I'll meet a friend next Tuesday.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "kayoubi",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kimi": {
     "example_sentences": [
       {
@@ -1060,6 +1712,77 @@
           "kimi",
           "ocha",
           "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kinou": {
+    "example_sentences": [
+      {
+        "japanese": "昨日映画を見ました。",
+        "english": "I watched a movie yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "昨日友達と遊びました。",
+        "english": "I hung out with a friend yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "tomodachi",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "昨日は忙しかったです。",
+        "english": "Yesterday was busy.",
+        "vocabulary_slugs": [
+          "kinou",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kinyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "今日は金曜日です。",
+        "english": "Today is Friday.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kinyoubi"
+        ]
+      },
+      {
+        "japanese": "金曜日に友達と会います。",
+        "english": "I'm meeting a friend on Friday.",
+        "vocabulary_slugs": [
+          "kinyoubi",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "来週の金曜日、映画を見ます。",
+        "english": "Next Friday, I'll watch a movie.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "kinyoubi",
+          "eiga",
+          "miru-v"
         ]
       }
     ],
@@ -1130,6 +1853,77 @@
           "ashita",
           "koko",
           "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kokonotsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を九つ買いました。",
+        "english": "I bought nine books.",
+        "vocabulary_slugs": [
+          "hon",
+          "kokonotsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "パンを九つ食べます。",
+        "english": "I'll eat nine pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "kokonotsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "写真を九つ見ました。",
+        "english": "I looked at nine photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "kokonotsu",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kongetsu": {
+    "example_sentences": [
+      {
+        "japanese": "今月は忙しいです。",
+        "english": "I'm busy this month.",
+        "vocabulary_slugs": [
+          "kongetsu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "今月、友達に会います。",
+        "english": "I'll meet a friend this month.",
+        "vocabulary_slugs": [
+          "kongetsu",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今月は海に行きます。",
+        "english": "I'm going to the sea this month.",
+        "vocabulary_slugs": [
+          "kongetsu",
+          "umi",
+          "iku-v"
         ]
       }
     ],
@@ -1212,6 +2006,41 @@
       "review_status": "draft"
     }
   },
+  "konshuu": {
+    "example_sentences": [
+      {
+        "japanese": "今週は忙しいです。",
+        "english": "I'm busy this week.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "今週、友達と遊びます。",
+        "english": "I'm hanging out with a friend this week.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "tomodachi",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "今週、何を食べますか。",
+        "english": "What are you eating this week?",
+        "vocabulary_slugs": [
+          "konshuu",
+          "nani",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kore": {
     "example_sentences": [
       {
@@ -1237,6 +2066,41 @@
         "vocabulary_slugs": [
           "kore",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kotoshi": {
+    "example_sentences": [
+      {
+        "japanese": "今年は忙しいです。",
+        "english": "I'm busy this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "今年、彼女に会います。",
+        "english": "I'll meet her this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "kanojo",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今年は海に行きました。",
+        "english": "I went to the ocean this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "umi",
+          "iku-v"
         ]
       }
     ],
@@ -1282,6 +2146,81 @@
       "review_status": "draft"
     }
   },
+  "kyonen": {
+    "example_sentences": [
+      {
+        "japanese": "去年、友達と海に行きました。",
+        "english": "Last year I went to the sea with a friend.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "tomodachi",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私は去年この本を買いました。",
+        "english": "I bought this book last year.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyonen",
+          "kono",
+          "hon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "去年は忙しかったです。",
+        "english": "I was busy last year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kyou": {
+    "example_sentences": [
+      {
+        "japanese": "今日は学校に行きます。",
+        "english": "I'm going to school today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私は今日パンを食べます。",
+        "english": "I'm eating bread today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyou",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "今日は友達に会います。",
+        "english": "I'm meeting a friend today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kyuu-v": {
     "example_sentences": [
       {
@@ -1308,6 +2247,235 @@
           "kare",
           "kyuu-v",
           "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "maiasa": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝コーヒーを飲みます。",
+        "english": "I drink coffee every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "毎朝友達と公園に行きます。",
+        "english": "I go to the park with a friend every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "tomodachi",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は毎朝本を読みます。",
+        "english": "She reads a book every morning.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "maiasa",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "maiban": {
+    "example_sentences": [
+      {
+        "japanese": "毎晩お茶を飲みます。",
+        "english": "I drink tea every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "僕は毎晩本を読む。",
+        "english": "I read a book every night.",
+        "vocabulary_slugs": [
+          "boku",
+          "maiban",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼女は毎晩映画を見る。",
+        "english": "She watches a movie every night.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "maiban",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mainen": {
+    "example_sentences": [
+      {
+        "japanese": "毎年友達に会います。",
+        "english": "I meet my friends every year.",
+        "vocabulary_slugs": [
+          "mainen",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "私は毎年本を読みます。",
+        "english": "I read books every year.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainen",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼女は毎年海に行きます。",
+        "english": "She goes to the sea every year.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "mainen",
+          "umi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mainichi": {
+    "example_sentences": [
+      {
+        "japanese": "毎日コーヒーを飲みます。",
+        "english": "I drink coffee every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "僕は毎日本を読みます。",
+        "english": "I read a book every day.",
+        "vocabulary_slugs": [
+          "boku",
+          "mainichi",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼女は毎日忙しいです。",
+        "english": "She's busy every day.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "mainichi",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "maishuu": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎週本を読む。",
+        "english": "I read books every week.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maishuu",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "毎週友達と公園に行く。",
+        "english": "I go to the park with friends every week.",
+        "vocabulary_slugs": [
+          "maishuu",
+          "tomodachi",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は毎週お茶を飲む。",
+        "english": "She drinks tea every week.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "maishuu",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "maitsuki": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎月お金を使います。",
+        "english": "I spend money every month.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maitsuki",
+          "okane",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "友達と毎月会います。",
+        "english": "I meet my friend every month.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "maitsuki",
+          "au"
+        ]
+      },
+      {
+        "japanese": "彼は毎月海に行きます。",
+        "english": "He goes to the sea every month.",
+        "vocabulary_slugs": [
+          "kare",
+          "maitsuki",
+          "umi",
+          "iku-v"
         ]
       }
     ],
@@ -1356,6 +2524,40 @@
       "review_status": "draft"
     }
   },
+  "mikka": {
+    "example_sentences": [
+      {
+        "japanese": "今日は三日です。",
+        "english": "Today is the 3rd.",
+        "vocabulary_slugs": [
+          "kyou",
+          "mikka"
+        ]
+      },
+      {
+        "japanese": "三日待ちます。",
+        "english": "I'll wait three days.",
+        "vocabulary_slugs": [
+          "mikka",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "三日、友達と遊びました。",
+        "english": "I played with a friend for three days.",
+        "vocabulary_slugs": [
+          "mikka",
+          "tomodachi",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mittsu": {
     "example_sentences": [
       {
@@ -1382,6 +2584,77 @@
         "vocabulary_slugs": [
           "shashin",
           "mittsu",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mokuyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "木曜日に学校に行きます。",
+        "english": "I go to school on Thursday.",
+        "vocabulary_slugs": [
+          "mokuyoubi",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "木曜日は忙しいです。",
+        "english": "Thursday is busy.",
+        "vocabulary_slugs": [
+          "mokuyoubi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "来週の木曜日に会います。",
+        "english": "I'll meet (them) next Thursday.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "mokuyoubi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "muttsu": {
+    "example_sentences": [
+      {
+        "japanese": "パンを六つ買います。",
+        "english": "I'll buy six loaves of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "muttsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "魚を六つ食べました。",
+        "english": "I ate six pieces of fish.",
+        "vocabulary_slugs": [
+          "sakana",
+          "muttsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "写真を六つ見ます。",
+        "english": "I'll look at six photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "muttsu",
           "miru-v"
         ]
       }
@@ -1455,6 +2728,41 @@
           "nana-v",
           "tomodachi",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nanatsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を七つ買いました。",
+        "english": "I bought seven books.",
+        "vocabulary_slugs": [
+          "hon",
+          "nanatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "写真が七つあります。",
+        "english": "There are seven photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "nanatsu"
+        ]
+      },
+      {
+        "japanese": "パンを七つ食べました。",
+        "english": "I ate seven pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "nanatsu",
+          "taberu"
         ]
       }
     ],
@@ -1594,6 +2902,185 @@
           "tomodachi",
           "ni-v",
           "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nichiyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "日曜日に公園で遊びます。",
+        "english": "I play at the park on Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "日曜日の夜に映画を見ます。",
+        "english": "I watch a movie on Sunday night.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "yoru",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "日曜日は友達と会います。",
+        "english": "I meet my friends on Sunday.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ototoi": {
+    "example_sentences": [
+      {
+        "japanese": "一昨日映画を見ました。",
+        "english": "I watched a movie the day before yesterday.",
+        "vocabulary_slugs": [
+          "ototoi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "一昨日友達と遊びました。",
+        "english": "I hung out with a friend the day before yesterday.",
+        "vocabulary_slugs": [
+          "ototoi",
+          "tomodachi",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "一昨日は忙しかったです。",
+        "english": "I was busy the day before yesterday.",
+        "vocabulary_slugs": [
+          "ototoi",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "raigetsu": {
+    "example_sentences": [
+      {
+        "japanese": "来月友達に会います。",
+        "english": "I'll meet my friend next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "来月は忙しいです。",
+        "english": "I'm busy next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "彼は来月学校に行きます。",
+        "english": "He's going to school next month.",
+        "vocabulary_slugs": [
+          "kare",
+          "raigetsu",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "rainen": {
+    "example_sentences": [
+      {
+        "japanese": "来年海に行きます。",
+        "english": "I'm going to the sea next year.",
+        "vocabulary_slugs": [
+          "rainen",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "来年は忙しいです。",
+        "english": "Next year will be busy.",
+        "vocabulary_slugs": [
+          "rainen",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "来年友達と映画を見ます。",
+        "english": "I'll watch a movie with a friend next year.",
+        "vocabulary_slugs": [
+          "rainen",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "raishuu": {
+    "example_sentences": [
+      {
+        "japanese": "来週友達に会います。",
+        "english": "I'll meet a friend next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "来週映画を見ます。",
+        "english": "I'll watch a movie next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "来週は忙しいです。",
+        "english": "I'm busy next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "isogashii"
         ]
       }
     ],
@@ -1746,6 +3233,78 @@
       "review_status": "draft"
     }
   },
+  "sengetsu": {
+    "example_sentences": [
+      {
+        "japanese": "先月映画を見ました。",
+        "english": "I watched a movie last month.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "先月は忙しかったです。",
+        "english": "Last month was busy.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "先月友達と公園に行きました。",
+        "english": "I went to the park with a friend last month.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "tomodachi",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "senshuu": {
+    "example_sentences": [
+      {
+        "japanese": "先週猫を見ました。",
+        "english": "I saw a cat last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "neko",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "先週家に帰りました。",
+        "english": "I went home last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "ie",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "先週友達と話しました。",
+        "english": "I talked with a friend last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "tomodachi",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shi-num": {
     "example_sentences": [
       {
@@ -1809,6 +3368,44 @@
           "shichi-num",
           "eiga",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shuumatsu": {
+    "example_sentences": [
+      {
+        "japanese": "週末に公園で遊びます。",
+        "english": "I hang out at the park on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "この週末は映画を見ます。",
+        "english": "I'm watching a movie this weekend.",
+        "vocabulary_slugs": [
+          "kono",
+          "shuumatsu",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "週末は友達とご飯を食べます。",
+        "english": "On the weekend I eat with friends.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tomodachi",
+          "gohan",
+          "taberu"
         ]
       }
     ],
@@ -1995,6 +3592,114 @@
       "review_status": "draft"
     }
   },
+  "suiyoubi": {
+    "example_sentences": [
+      {
+        "japanese": "水曜日は忙しいです。",
+        "english": "Wednesday is busy.",
+        "vocabulary_slugs": [
+          "suiyoubi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "水曜日に友達と遊びます。",
+        "english": "I hang out with friends on Wednesday.",
+        "vocabulary_slugs": [
+          "suiyoubi",
+          "tomodachi",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "水曜日の午後、家に帰ります。",
+        "english": "I go home on Wednesday afternoon.",
+        "vocabulary_slugs": [
+          "suiyoubi",
+          "gogo",
+          "ie",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "too": {
+    "example_sentences": [
+      {
+        "japanese": "パンを十買います。",
+        "english": "I'll buy ten loaves of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "too",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "部屋に写真が十あります。",
+        "english": "There are ten photos in the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "shashin",
+          "too"
+        ]
+      },
+      {
+        "japanese": "昨日、魚を十食べました。",
+        "english": "Yesterday I ate ten fish.",
+        "vocabulary_slugs": [
+          "kinou",
+          "sakana",
+          "too",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tsuitachi": {
+    "example_sentences": [
+      {
+        "japanese": "明日は一日です。",
+        "english": "Tomorrow is the 1st.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tsuitachi"
+        ]
+      },
+      {
+        "japanese": "一日に友達と会います。",
+        "english": "I'll meet a friend on the 1st.",
+        "vocabulary_slugs": [
+          "tsuitachi",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今月の一日は忙しいです。",
+        "english": "The 1st of this month is busy.",
+        "vocabulary_slugs": [
+          "kongetsu",
+          "tsuitachi",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "watashi": {
     "example_sentences": [
       {
@@ -2070,6 +3775,42 @@
       "review_status": "draft"
     }
   },
+  "yattsu": {
+    "example_sentences": [
+      {
+        "japanese": "本を八つ買いました。",
+        "english": "I bought eight books.",
+        "vocabulary_slugs": [
+          "hon",
+          "yattsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "パンを八つ食べます。",
+        "english": "I'll eat eight pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "yattsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "写真を八つ見ました。",
+        "english": "I looked at eight photos.",
+        "vocabulary_slugs": [
+          "shashin",
+          "yattsu",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yon-v": {
     "example_sentences": [
       {
@@ -2108,6 +3849,42 @@
       "review_status": "draft"
     }
   },
+  "yoru": {
+    "example_sentences": [
+      {
+        "japanese": "夜に本を読みます。",
+        "english": "I read a book at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "夜は寒いです。",
+        "english": "It's cold at night.",
+        "vocabulary_slugs": [
+          "yoru",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "明日の夜、家に帰ります。",
+        "english": "Tomorrow night, I'll go home.",
+        "vocabulary_slugs": [
+          "ashita",
+          "yoru",
+          "ie",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "yottsu": {
     "example_sentences": [
       {
@@ -2135,6 +3912,42 @@
           "pan",
           "yottsu",
           "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yuugata": {
+    "example_sentences": [
+      {
+        "japanese": "夕方に晩ご飯を食べます。",
+        "english": "I eat dinner in the evening.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "bangohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "夕方、友達と会います。",
+        "english": "I meet a friend in the evening.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今日の夕方は忙しいです。",
+        "english": "This evening I'm busy.",
+        "vocabulary_slugs": [
+          "kyou",
+          "yuugata",
+          "isogashii"
         ]
       }
     ],
