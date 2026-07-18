@@ -1250,7 +1250,44 @@
           "answer_text": "あちら"
         }
       ],
-      "furigana": "あちら"
+      "furigana": "あちら",
+      "example_sentences": [
+        {
+          "japanese": "あちらに行きます。",
+          "english": "I'm going over there.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "achira",
+            "iku-v"
+          ],
+          "furigana": "あちらに行[い]きます。"
+        },
+        {
+          "japanese": "あちらで待ちます。",
+          "english": "I'll wait over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "achira",
+            "matsu"
+          ],
+          "furigana": "あちらで待[ま]ちます。"
+        },
+        {
+          "japanese": "あちらは海です。",
+          "english": "Over there is the sea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "achira",
+            "umi"
+          ],
+          "furigana": "あちらは海[うみ]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dochira",
@@ -1269,7 +1306,44 @@
           "answer_text": "どちら"
         }
       ],
-      "furigana": "どちら"
+      "furigana": "どちら",
+      "example_sentences": [
+        {
+          "japanese": "どちらに行きますか？",
+          "english": "Which way are you going?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "dochira",
+            "iku-v"
+          ],
+          "furigana": "どちらに行[い]きますか？"
+        },
+        {
+          "japanese": "公園はどちらですか？",
+          "english": "Which way is the park?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "dochira"
+          ],
+          "furigana": "公[こう]園[えん]はどちらですか？"
+        },
+        {
+          "japanese": "どちらから来ましたか？",
+          "english": "Which way did you come from?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dochira",
+            "kuru-v"
+          ],
+          "furigana": "どちらから来[らい]ましたか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konna",
@@ -1288,7 +1362,48 @@
           "answer_text": "こんな"
         }
       ],
-      "furigana": "こんな"
+      "furigana": "こんな",
+      "example_sentences": [
+        {
+          "japanese": "こんな本を読みます。",
+          "english": "I read this kind of book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "konna",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "こんな本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "こんな映画は楽しいです。",
+          "english": "This kind of movie is fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "konna",
+            "eiga",
+            "tanoshii"
+          ],
+          "furigana": "こんな映[えい]画[が]は楽[たの]しいです。"
+        },
+        {
+          "japanese": "私はこんなお茶を飲みます。",
+          "english": "I drink this kind of tea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "konna",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "私[わたし]はこんなお茶[ちゃ]を飲[の]みます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sonna",
@@ -1307,7 +1422,47 @@
           "answer_text": "そんな"
         }
       ],
-      "furigana": "そんな"
+      "furigana": "そんな",
+      "example_sentences": [
+        {
+          "japanese": "そんな本は高いです。",
+          "english": "That kind of book is expensive.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sonna",
+            "hon",
+            "takai-adj"
+          ],
+          "furigana": "そんな本[ほん]は高[たか]いです。"
+        },
+        {
+          "japanese": "私はそんな映画を見ません。",
+          "english": "I don't watch that kind of movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "sonna",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]はそんな映[えい]画[が]を見[み]ません。"
+        },
+        {
+          "japanese": "そんなに忙しくないです。",
+          "english": "I'm not that busy.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sonna",
+            "isogashii"
+          ],
+          "furigana": "そんなに忙[いそが]しくないです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "anna",
@@ -1326,7 +1481,49 @@
           "answer_text": "あんな"
         }
       ],
-      "furigana": "あんな"
+      "furigana": "あんな",
+      "example_sentences": [
+        {
+          "japanese": "あんな映画は楽しいです。",
+          "english": "That kind of movie is fun.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "anna",
+            "eiga",
+            "tanoshii"
+          ],
+          "furigana": "あんな映[えい]画[が]は楽[たの]しいです。"
+        },
+        {
+          "japanese": "あんな本を昨日読みました。",
+          "english": "I read that kind of book yesterday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "anna",
+            "hon",
+            "kinou",
+            "yomu"
+          ],
+          "furigana": "あんな本[ほん]を昨日[きのう]読[よ]みました。"
+        },
+        {
+          "japanese": "あんなに高いお茶は買わない。",
+          "english": "I don't buy tea that expensive.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "anna",
+            "takai-adj",
+            "ocha",
+            "kau-v"
+          ],
+          "furigana": "あんなに高[たか]いお茶[ちゃ]は買[か]わない。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "donna",
@@ -1345,7 +1542,48 @@
           "answer_text": "どんな"
         }
       ],
-      "furigana": "どんな"
+      "furigana": "どんな",
+      "example_sentences": [
+        {
+          "japanese": "どんな本を読みますか？",
+          "english": "What kind of books do you read?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "donna",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "どんな本[ほん]を読[よ]みますか？"
+        },
+        {
+          "japanese": "友達はどんな映画を見ますか？",
+          "english": "What kind of movies does your friend watch?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "donna",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "友[とも]達[だち]はどんな映[えい]画[が]を見[み]ますか？"
+        },
+        {
+          "japanese": "どんなお茶がおいしいですか？",
+          "english": "What kind of tea is delicious?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "donna",
+            "ocha",
+            "oishii"
+          ],
+          "furigana": "どんなお茶[ちゃ]がおいしいですか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dare",
@@ -1364,7 +1602,46 @@
           "answer_text": "だれ"
         }
       ],
-      "furigana": "誰[だれ]"
+      "furigana": "誰[だれ]",
+      "example_sentences": [
+        {
+          "japanese": "あれは誰ですか？",
+          "english": "Who is that over there?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "are",
+            "dare"
+          ],
+          "furigana": "あれは誰[だれ]ですか？"
+        },
+        {
+          "japanese": "誰が学校に行きますか？",
+          "english": "Who is going to school?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dare",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "誰[だれ]が学[がっ]校[こう]に行[い]きますか？"
+        },
+        {
+          "japanese": "明日は誰と会いますか？",
+          "english": "Who are you meeting tomorrow?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "dare",
+            "au"
+          ],
+          "furigana": "明日[あした]は誰[だれ]と会[あ]いますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "donata",
@@ -1383,7 +1660,46 @@
           "answer_text": "どなた"
         }
       ],
-      "furigana": "どなた"
+      "furigana": "どなた",
+      "example_sentences": [
+        {
+          "japanese": "あの学生はどなたですか。",
+          "english": "Who is that student?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "gakusei",
+            "donata"
+          ],
+          "furigana": "あの学[がく]生[せい]はどなたですか。"
+        },
+        {
+          "japanese": "どなたが来ますか。",
+          "english": "Who is coming?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "donata",
+            "kuru-v"
+          ],
+          "furigana": "どなたが来[らい]ますか。"
+        },
+        {
+          "japanese": "どなたと一緒に行きますか。",
+          "english": "Who are you going with?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "donata",
+            "issho-ni",
+            "iku-v"
+          ],
+          "furigana": "どなたと一[いっ]緒[しょ]に行[い]きますか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nani",
@@ -1402,7 +1718,45 @@
           "answer_text": "なに"
         }
       ],
-      "furigana": "何[なに]"
+      "furigana": "何[なに]",
+      "example_sentences": [
+        {
+          "japanese": "これは何ですか？",
+          "english": "What is this?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "nani"
+          ],
+          "furigana": "これは何[なに]ですか？"
+        },
+        {
+          "japanese": "何を食べますか？",
+          "english": "What are you going to eat?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nani",
+            "taberu"
+          ],
+          "furigana": "何[なに]を食[た]べますか？"
+        },
+        {
+          "japanese": "今日何を見ますか？",
+          "english": "What will you watch today?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "nani",
+            "miru-v"
+          ],
+          "furigana": "今日[きょう]何[なに]を見[み]ますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nan",
@@ -1421,7 +1775,47 @@
           "answer_text": "なん"
         }
       ],
-      "furigana": "何[なん]"
+      "furigana": "何[なん]",
+      "example_sentences": [
+        {
+          "japanese": "明日は何時に行きますか？",
+          "english": "What time are you going tomorrow?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "nan",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]は何[なに]時[じ]に行[い]きますか？"
+        },
+        {
+          "japanese": "友達は何人来ますか？",
+          "english": "How many friends are coming?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "nan",
+            "kuru-v"
+          ],
+          "furigana": "友[とも]達[だち]は何[なに]人[ひと]来[らい]ますか？"
+        },
+        {
+          "japanese": "本を何冊買いますか？",
+          "english": "How many books will you buy?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "nan",
+            "kau-v"
+          ],
+          "furigana": "本[ほん]を何[なに]冊[さつ]買[か]いますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itsu",
@@ -1440,7 +1834,47 @@
           "answer_text": "いつ"
         }
       ],
-      "furigana": "いつ"
+      "furigana": "いつ",
+      "example_sentences": [
+        {
+          "japanese": "いつ学校に行きますか？",
+          "english": "When do you go to school?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "itsu",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "いつ学[がっ]校[こう]に行[い]きますか？"
+        },
+        {
+          "japanese": "彼はいつ来ますか？",
+          "english": "When is he coming?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "itsu",
+            "kuru-v"
+          ],
+          "furigana": "彼[かれ]はいつ来[らい]ますか？"
+        },
+        {
+          "japanese": "いつ晩ご飯を食べますか？",
+          "english": "When do you eat dinner?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "itsu",
+            "bangohan",
+            "taberu"
+          ],
+          "furigana": "いつ晩[ばん]ご飯[はん]を食[た]べますか？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "naze",
@@ -1459,7 +1893,48 @@
           "answer_text": "なぜ"
         }
       ],
-      "furigana": "なぜ"
+      "furigana": "なぜ",
+      "example_sentences": [
+        {
+          "japanese": "なぜ今日忙しいですか。",
+          "english": "Why are you busy today?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "naze",
+            "kyou",
+            "isogashii"
+          ],
+          "furigana": "なぜ今日[きょう]忙[いそが]しいですか。"
+        },
+        {
+          "japanese": "彼はなぜ帰りませんか。",
+          "english": "Why isn't he going home?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "naze",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かれ]はなぜ帰[かえ]りませんか。"
+        },
+        {
+          "japanese": "なぜその本を読みますか。",
+          "english": "Why do you read that book?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "naze",
+            "sono",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "なぜその本[ほん]を読[よ]みますか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doushite",
@@ -1478,7 +1953,49 @@
           "answer_text": "どうして"
         }
       ],
-      "furigana": "どうして"
+      "furigana": "どうして",
+      "example_sentences": [
+        {
+          "japanese": "どうして学校に行かないの？",
+          "english": "Why aren't you going to school?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "doushite",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "どうして学[がっ]校[こう]に行[い]かないの？"
+        },
+        {
+          "japanese": "どうしてその映画を見るの？",
+          "english": "Why are you watching that movie?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "doushite",
+            "sono",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "どうしてその映[えい]画[が]を見[み]るの？"
+        },
+        {
+          "japanese": "彼はどうして昨日帰ったの？",
+          "english": "Why did he go home yesterday?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "doushite",
+            "kinou",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かれ]はどうして昨日[きのう]帰[かえ]ったの？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dou",
@@ -1497,7 +2014,45 @@
           "answer_text": "どう"
         }
       ],
-      "furigana": "どう"
+      "furigana": "どう",
+      "example_sentences": [
+        {
+          "japanese": "お茶はどうですか。",
+          "english": "How about some tea?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ocha",
+            "dou"
+          ],
+          "furigana": "お茶[ちゃ]はどうですか。"
+        },
+        {
+          "japanese": "どう書きますか。",
+          "english": "How do you write it?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dou",
+            "kaku"
+          ],
+          "furigana": "どう書[か]きますか。"
+        },
+        {
+          "japanese": "この映画はどうですか。",
+          "english": "How is this movie?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "eiga",
+            "dou"
+          ],
+          "furigana": "この映[えい]画[が]はどうですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ikaga",
@@ -1516,7 +2071,45 @@
           "answer_text": "いかが"
         }
       ],
-      "furigana": "いかが"
+      "furigana": "いかが",
+      "example_sentences": [
+        {
+          "japanese": "お茶はいかがですか。",
+          "english": "Would you like some tea?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ocha",
+            "ikaga"
+          ],
+          "furigana": "お茶[ちゃ]はいかがですか。"
+        },
+        {
+          "japanese": "映画はいかがでしたか。",
+          "english": "How was the movie?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eiga",
+            "ikaga"
+          ],
+          "furigana": "映[えい]画[が]はいかがでしたか。"
+        },
+        {
+          "japanese": "この本はいかがですか。",
+          "english": "How about this book?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "ikaga"
+          ],
+          "furigana": "この本[ほん]はいかがですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ikutsu",

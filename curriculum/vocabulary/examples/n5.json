@@ -1,4 +1,37 @@
 {
+  "achira": {
+    "example_sentences": [
+      {
+        "japanese": "あちらに行きます。",
+        "english": "I'm going over there.",
+        "vocabulary_slugs": [
+          "achira",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "あちらで待ちます。",
+        "english": "I'll wait over there.",
+        "vocabulary_slugs": [
+          "achira",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "あちらは海です。",
+        "english": "Over there is the sea.",
+        "vocabulary_slugs": [
+          "achira",
+          "umi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "anata": {
     "example_sentences": [
       {
@@ -26,6 +59,44 @@
           "anata",
           "kyou",
           "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "anna": {
+    "example_sentences": [
+      {
+        "japanese": "あんな映画は楽しいです。",
+        "english": "That kind of movie is fun.",
+        "vocabulary_slugs": [
+          "anna",
+          "eiga",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "あんな本を昨日読みました。",
+        "english": "I read that kind of book yesterday.",
+        "vocabulary_slugs": [
+          "anna",
+          "hon",
+          "kinou",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "あんなに高いお茶は買わない。",
+        "english": "I don't buy tea that expensive.",
+        "vocabulary_slugs": [
+          "anna",
+          "takai-adj",
+          "ocha",
+          "kau-v"
         ]
       }
     ],
@@ -176,6 +247,74 @@
       "review_status": "draft"
     }
   },
+  "dare": {
+    "example_sentences": [
+      {
+        "japanese": "あれは誰ですか？",
+        "english": "Who is that over there?",
+        "vocabulary_slugs": [
+          "are",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "誰が学校に行きますか？",
+        "english": "Who is going to school?",
+        "vocabulary_slugs": [
+          "dare",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "明日は誰と会いますか？",
+        "english": "Who are you meeting tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "dare",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dochira": {
+    "example_sentences": [
+      {
+        "japanese": "どちらに行きますか？",
+        "english": "Which way are you going?",
+        "vocabulary_slugs": [
+          "dochira",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "公園はどちらですか？",
+        "english": "Which way is the park?",
+        "vocabulary_slugs": [
+          "kouen",
+          "dochira"
+        ]
+      },
+      {
+        "japanese": "どちらから来ましたか？",
+        "english": "Which way did you come from?",
+        "vocabulary_slugs": [
+          "dochira",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "doko": {
     "example_sentences": [
       {
@@ -202,6 +341,78 @@
           "ashita",
           "doko",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "donata": {
+    "example_sentences": [
+      {
+        "japanese": "あの学生はどなたですか。",
+        "english": "Who is that student?",
+        "vocabulary_slugs": [
+          "ano",
+          "gakusei",
+          "donata"
+        ]
+      },
+      {
+        "japanese": "どなたが来ますか。",
+        "english": "Who is coming?",
+        "vocabulary_slugs": [
+          "donata",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "どなたと一緒に行きますか。",
+        "english": "Who are you going with?",
+        "vocabulary_slugs": [
+          "donata",
+          "issho-ni",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "donna": {
+    "example_sentences": [
+      {
+        "japanese": "どんな本を読みますか？",
+        "english": "What kind of books do you read?",
+        "vocabulary_slugs": [
+          "donna",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "友達はどんな映画を見ますか？",
+        "english": "What kind of movies does your friend watch?",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "donna",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "どんなお茶がおいしいですか？",
+        "english": "What kind of tea is delicious?",
+        "vocabulary_slugs": [
+          "donna",
+          "ocha",
+          "oishii"
         ]
       }
     ],
@@ -271,6 +482,148 @@
         "vocabulary_slugs": [
           "hon",
           "dore"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dou": {
+    "example_sentences": [
+      {
+        "japanese": "お茶はどうですか。",
+        "english": "How about some tea?",
+        "vocabulary_slugs": [
+          "ocha",
+          "dou"
+        ]
+      },
+      {
+        "japanese": "どう書きますか。",
+        "english": "How do you write it?",
+        "vocabulary_slugs": [
+          "dou",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "この映画はどうですか。",
+        "english": "How is this movie?",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "dou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "doushite": {
+    "example_sentences": [
+      {
+        "japanese": "どうして学校に行かないの？",
+        "english": "Why aren't you going to school?",
+        "vocabulary_slugs": [
+          "doushite",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "どうしてその映画を見るの？",
+        "english": "Why are you watching that movie?",
+        "vocabulary_slugs": [
+          "doushite",
+          "sono",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼はどうして昨日帰ったの？",
+        "english": "Why did he go home yesterday?",
+        "vocabulary_slugs": [
+          "kare",
+          "doushite",
+          "kinou",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ikaga": {
+    "example_sentences": [
+      {
+        "japanese": "お茶はいかがですか。",
+        "english": "Would you like some tea?",
+        "vocabulary_slugs": [
+          "ocha",
+          "ikaga"
+        ]
+      },
+      {
+        "japanese": "映画はいかがでしたか。",
+        "english": "How was the movie?",
+        "vocabulary_slugs": [
+          "eiga",
+          "ikaga"
+        ]
+      },
+      {
+        "japanese": "この本はいかがですか。",
+        "english": "How about this book?",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "ikaga"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "itsu": {
+    "example_sentences": [
+      {
+        "japanese": "いつ学校に行きますか？",
+        "english": "When do you go to school?",
+        "vocabulary_slugs": [
+          "itsu",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼はいつ来ますか？",
+        "english": "When is he coming?",
+        "vocabulary_slugs": [
+          "kare",
+          "itsu",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "いつ晩ご飯を食べますか？",
+        "english": "When do you eat dinner?",
+        "vocabulary_slugs": [
+          "itsu",
+          "bangohan",
+          "taberu"
         ]
       }
     ],
@@ -462,6 +815,43 @@
       "review_status": "draft"
     }
   },
+  "konna": {
+    "example_sentences": [
+      {
+        "japanese": "こんな本を読みます。",
+        "english": "I read this kind of book.",
+        "vocabulary_slugs": [
+          "konna",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "こんな映画は楽しいです。",
+        "english": "This kind of movie is fun.",
+        "vocabulary_slugs": [
+          "konna",
+          "eiga",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "私はこんなお茶を飲みます。",
+        "english": "I drink this kind of tea.",
+        "vocabulary_slugs": [
+          "watashi",
+          "konna",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kono": {
     "example_sentences": [
       {
@@ -523,6 +913,113 @@
         "vocabulary_slugs": [
           "kore",
           "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nan": {
+    "example_sentences": [
+      {
+        "japanese": "明日は何時に行きますか？",
+        "english": "What time are you going tomorrow?",
+        "vocabulary_slugs": [
+          "ashita",
+          "nan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達は何人来ますか？",
+        "english": "How many friends are coming?",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "nan",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "本を何冊買いますか？",
+        "english": "How many books will you buy?",
+        "vocabulary_slugs": [
+          "hon",
+          "nan",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nani": {
+    "example_sentences": [
+      {
+        "japanese": "これは何ですか？",
+        "english": "What is this?",
+        "vocabulary_slugs": [
+          "kore",
+          "nani"
+        ]
+      },
+      {
+        "japanese": "何を食べますか？",
+        "english": "What are you going to eat?",
+        "vocabulary_slugs": [
+          "nani",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "今日何を見ますか？",
+        "english": "What will you watch today?",
+        "vocabulary_slugs": [
+          "kyou",
+          "nani",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "naze": {
+    "example_sentences": [
+      {
+        "japanese": "なぜ今日忙しいですか。",
+        "english": "Why are you busy today?",
+        "vocabulary_slugs": [
+          "naze",
+          "kyou",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "彼はなぜ帰りませんか。",
+        "english": "Why isn't he going home?",
+        "vocabulary_slugs": [
+          "kare",
+          "naze",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "なぜその本を読みますか。",
+        "english": "Why do you read that book?",
+        "vocabulary_slugs": [
+          "naze",
+          "sono",
+          "hon",
+          "yomu"
         ]
       }
     ],
@@ -594,6 +1091,42 @@
           "watashitachi",
           "soko",
           "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sonna": {
+    "example_sentences": [
+      {
+        "japanese": "そんな本は高いです。",
+        "english": "That kind of book is expensive.",
+        "vocabulary_slugs": [
+          "sonna",
+          "hon",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "私はそんな映画を見ません。",
+        "english": "I don't watch that kind of movie.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sonna",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "そんなに忙しくないです。",
+        "english": "I'm not that busy.",
+        "vocabulary_slugs": [
+          "sonna",
+          "isogashii"
         ]
       }
     ],
