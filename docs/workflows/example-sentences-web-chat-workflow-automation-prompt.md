@@ -1,15 +1,13 @@
 Task: Generate N5 Kanji/Vocab Example Sentences via Gemini Web
 
 Use the existing logged-in Gemini session in my Chrome browser to generate Phase 2c
-example sentences for the following items. This run is for ONE content type at a time.
+example sentences. This run is for ONE content type at a time and **auto-selects the
+next batch of not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug
+list.
 
 Content type (one of `kanji` or `vocab`):
 
 <type>
-
-Slugs (all of the type above):
-
-<slug, slug>
 
 This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_examples.py`. Only the "call the
@@ -19,6 +17,19 @@ the API path. See `docs/workflows/example-sentences-web-chat-workflow.md`.
 
 Note: there is NO `radical` type in this flow — radicals do not get example
 sentences. The only content types are `kanji` and `vocab`.
+
+Run size (BATCH_LIMIT)
+
+This run processes up to 10 slugs (BATCH_LIMIT, set in Step 1). Each slug is an
+independent browser cycle — fresh chat, model/thinking verification, paste,
+completion polling, download, ingest, and possibly a repair subagent — so a run's
+cost in tool calls and accumulated context grows fast. 10 is tuned for a
+lower-reasoning driver model (e.g. Claude Code Sonnet 5 "low"), where long sessions
+are the main quality risk: as context fills, the driver starts skipping the
+paste-integrity and stop-button checks and silently corrupts replies. If the driver
+is clearly holding up, you can raise BATCH_LIMIT toward 15; treat ~20 as the ceiling
+before session degradation gets real, and prefer running the automation twice over
+pushing a single run past it.
 
 Browser Requirements
 
@@ -36,19 +47,45 @@ Process one slug at a time. Every slug must use a fresh Gemini chat with no shar
 conversation context. Do NOT mix content types in one run — all slugs in this run
 share the same <type>.
 
-Step 1: Generate Prompt
+Step 1: Select Slugs and Generate Prompts
 
-From the following directory:
+Work from:
 
 curriculum/_build
 
-Run:
+1a. Select this run's slugs automatically. Do NOT hand-pick or paste a slug list.
+Pick the next BATCH_LIMIT slugs of <type> (in curriculum sort order) that are
+neither generated (absent from the committed sidecar) nor drafted (no record under
+`drafts/examples`). Substitute this run's <type> for KIND, then run:
 
-.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level n5 --slugs <slug>
+.venv/bin/python - <<'PY'
+import json, os, sys; sys.path.insert(0, '.')
+from generate_content import example_context as ec
+LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', 10   # KIND: 'vocab' or 'kanji'
+subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
+sidecar = f'../{subdir}/examples/{LEVEL}.json'
+generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
+drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
+drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
+drafted.discard('requests-preview')
+done = generated | drafted
+todo = [s for s in ec.all_slugs(LEVEL, KIND) if s not in done][:BATCH_LIMIT]
+print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}):')
+print(','.join(todo))
+PY
 
-Generating multiple prompts at once is acceptable, but each slug must still use its
-own Gemini chat. `--slugs` is a single comma-separated string with NO spaces after
-the commas. The prompt file is written to:
+If it prints 0 slugs, this level+type is already fully generated/drafted — stop and
+report that; do not open Gemini. Otherwise treat the printed comma list as this
+run's slug set: every later step iterates over exactly these slugs, and no slug
+outside this list is touched.
+
+1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
+single comma-separated string with NO spaces after the commas:
+
+.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level n5 --slugs <selected,slugs,...>
+
+Generating all prompts at once is fine, but each slug must still use its own fresh
+Gemini chat. Each prompt file is written to:
 
 curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
 
@@ -314,9 +351,11 @@ Do not waste additional Gemini turns.
 
 Ordering Note
 
-Each run is a single content type. Do vocab and kanji as separate runs, and do N5
-fully before N4. When piloting, run ~10 items of one type first and confirm the
-assembled output reads well before widening to the whole level.
+Each run is a single content type and covers only its auto-selected BATCH_LIMIT
+slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
+runs, and do N5 fully before N4. On the first run of a fresh type, read the assembled
+output before launching more runs — the batch size is already pilot-sized, so one run
+doubles as the pilot.
 
 ---
 
@@ -352,9 +391,11 @@ Final Report
 
 Provide a summary containing:
 
+- The content type and the exact auto-selected slug set for this run (with the count vs. BATCH_LIMIT)
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs
 - ❌ Failed slugs
+- Roughly how many slugs of this type remain not-yet-done for the level (re-run Step 1a to get the count), so it's clear whether another run is needed
 - The number of subagent repair attempts used for each affected slug
 - Validation or ingestion issues encountered
 - Validation errors remaining after the final allowed attempt
