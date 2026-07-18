@@ -45,7 +45,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、友達と一緒に海に行きます。",
+          "english": "I am going to the sea with a friend tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "issho-ni",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と一[いっ]緒[しょ]に海[うみ]に行[い]きます。"
+        },
+        {
+          "japanese": "朝ご飯にパンを一つ食べました。",
+          "english": "I ate one piece of bread for breakfast.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "asagohan",
+            "pan",
+            "hitotsu",
+            "taberu"
+          ],
+          "furigana": "朝[あさ]ご飯[はん]にパンを一[いち]つ食[た]べました。"
+        },
+        {
+          "japanese": "水が一番安いです。",
+          "english": "Water is the cheapest.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mizu",
+            "ichiban",
+            "yasui-adj"
+          ],
+          "furigana": "水[みず]が一[いち]番[ばん]安[やす]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-ni",
@@ -91,7 +129,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "これを二つ買います。",
+          "english": "I'll buy two of these.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "futatsu",
+            "kau-v"
+          ],
+          "furigana": "これを二[に]つ買[か]います。"
+        },
+        {
+          "japanese": "二日、犬と遊びました。",
+          "english": "I played with my dog for two days.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "futsuka",
+            "inu",
+            "asobu"
+          ],
+          "furigana": "二[に]日[ひ]、犬[いぬ]と遊[あそ]びました。"
+        },
+        {
+          "japanese": "二十日に彼女が来ます。",
+          "english": "My girlfriend is coming over on the twentieth.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hatsuka",
+            "kanojo",
+            "kuru-v"
+          ],
+          "furigana": "二[に]十[じゅう]日[ひ]に彼[かの]女[じょ]が来[らい]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-san",
@@ -137,7 +210,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の部屋は三です。",
+          "english": "My room is number three.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "heya",
+            "san-v"
+          ],
+          "furigana": "私[わたし]の部屋[へや]は三[さん]です。"
+        },
+        {
+          "japanese": "パンを三つ買いました。",
+          "english": "I bought three pieces of bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "mittsu",
+            "kau-v"
+          ],
+          "furigana": "パンを三[さん]つ買[か]いました。"
+        },
+        {
+          "japanese": "ここで三日待ちます。",
+          "english": "I will wait here for three days.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koko",
+            "mikka",
+            "matsu"
+          ],
+          "furigana": "ここで三[さん]日[ひ]待[ま]ちます。"
+        }
+      ]
     },
     {
       "slug": "n5-yon",
@@ -183,7 +291,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "パンを四つ買いました。",
+          "english": "I bought four pieces of bread.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "pan",
+            "yottsu",
+            "kau-v"
+          ],
+          "furigana": "パンを四[よん]つ買[か]いました。"
+        },
+        {
+          "japanese": "四日に友達に会います。",
+          "english": "I will meet my friend on the fourth.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yokka",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "四[よん]日[ひ]に友[とも]達[だち]に会[あ]います。"
+        },
+        {
+          "japanese": "これは四ですか？",
+          "english": "Is this a four?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "yon-v"
+          ],
+          "furigana": "これは四[よん]ですか？"
+        }
+      ]
     },
     {
       "slug": "n5-go",
@@ -229,7 +371,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "パンを五つ買います。",
+          "english": "I will buy five pieces of bread.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "pan",
+            "itsutsu",
+            "kau-v"
+          ],
+          "furigana": "パンを五[ご]つ買[か]います。"
+        },
+        {
+          "japanese": "明日、五時に学校へ行きます。",
+          "english": "I will go to school at five tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "go-v",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "明日[あした]、五[ご]時[じ]に学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "彼は五日待ちました。",
+          "english": "He waited for five days.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "itsuka",
+            "matsu"
+          ],
+          "furigana": "彼[かれ]は五[ご]日[ひ]待[ま]ちました。"
+        }
+      ]
     },
     {
       "slug": "n5-roku",
@@ -275,7 +453,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は今日六時に起きました。",
+          "english": "I got up at six o'clock today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kyou",
+            "roku-v",
+            "okiru"
+          ],
+          "furigana": "私[わたし]は今日[きょう]六[ろく]時[じ]に起[お]きました。"
+        },
+        {
+          "japanese": "この部屋にパンが六つあります。",
+          "english": "There are six pieces of bread in this room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "pan",
+            "muttsu"
+          ],
+          "furigana": "この部屋[へや]にパンが六[ろく]つあります。"
+        },
+        {
+          "japanese": "六日に友達と映画を見ます。",
+          "english": "I am going to watch a movie with my friend on the 6th.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "muika",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "六[ろく]日[ひ]に友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-nana",
@@ -321,7 +537,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は七日に学校へ行きます。",
+          "english": "I will go to school on the seventh.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "nanoka",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は七[なな]日[ひ]に学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "今日、パンを七つ買いました。",
+          "english": "I bought seven pieces of bread today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "pan",
+            "nanatsu",
+            "kau-v"
+          ],
+          "furigana": "今日[きょう]、パンを七[なな]つ買[か]いました。"
+        },
+        {
+          "japanese": "明日、七時に起きます。",
+          "english": "I will wake up at seven o'clock tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "shichi-num",
+            "okiru"
+          ],
+          "furigana": "明日[あした]、七[なな]時[じ]に起[お]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-hachi",
@@ -367,7 +620,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "ここに八を書きます。",
+          "english": "I will write an eight here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "hachi-v",
+            "kaku"
+          ],
+          "furigana": "ここに八[はち]を書[か]きます。"
+        },
+        {
+          "japanese": "昨日、パンを八つ買いました。",
+          "english": "I bought eight pieces of bread yesterday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "pan",
+            "yattsu",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、パンを八[はち]つ買[か]いました。"
+        },
+        {
+          "japanese": "八日に友達と会います。",
+          "english": "I'm meeting a friend on the eighth.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "youka",
+            "tomodachi",
+            "au"
+          ],
+          "furigana": "八[はち]日[ひ]に友[とも]達[だち]と会[あ]います。"
+        }
+      ]
     },
     {
       "slug": "n5-kyuu",
@@ -413,7 +702,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、パンを九つ買いました。",
+          "english": "I bought nine pieces of bread yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "pan",
+            "kokonotsu",
+            "kau-v"
+          ],
+          "furigana": "昨日[きのう]、パンを九[きゅう]つ買[か]いました。"
+        },
+        {
+          "japanese": "今日、学生が九人来ました。",
+          "english": "Nine students came today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "gakusei",
+            "kyuu-v",
+            "kuru-v"
+          ],
+          "furigana": "今日[きょう]、学[がく]生[せい]が九[きゅう]人[ひと]来[らい]ました。"
+        },
+        {
+          "japanese": "ここで彼を九日待ちました。",
+          "english": "I waited for him here for nine days.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koko",
+            "kare",
+            "kokonoka",
+            "matsu"
+          ],
+          "furigana": "ここで彼[かれ]を九[きゅう]日[ひ]待[ま]ちました。"
+        }
+      ]
     },
     {
       "slug": "n5-juu",
@@ -459,7 +786,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "これを十買います。",
+          "english": "I will buy ten of these.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "too",
+            "kau-v"
+          ],
+          "furigana": "これを十[じゅう]買[か]います。"
+        },
+        {
+          "japanese": "十日に家へ帰ります。",
+          "english": "I will go home on the 10th.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tooka",
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "十[じゅう]日[ひ]に家[いえ]へ帰[かえ]ります。"
+        },
+        {
+          "japanese": "一から十まで書きます。",
+          "english": "I will write from one to ten.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ichi-v",
+            "juu-v",
+            "kaku"
+          ],
+          "furigana": "一[いち]から十[じゅう]まで書[か]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-hyaku",

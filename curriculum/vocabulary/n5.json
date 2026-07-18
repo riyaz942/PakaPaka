@@ -18,7 +18,49 @@
           "answer_text": "わたし"
         }
       ],
-      "furigana": "私[わたし]"
+      "furigana": "私[わたし]",
+      "example_sentences": [
+        {
+          "japanese": "私は明日、友達と映画を見ます。",
+          "english": "I will watch a movie with my friend tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ashita",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]は明日[あした]、友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "私の部屋は寒いです。",
+          "english": "My room is cold.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "heya",
+            "samui"
+          ],
+          "furigana": "私[わたし]の部屋[へや]は寒[さむ]いです。"
+        },
+        {
+          "japanese": "私はコーヒーを飲みません。",
+          "english": "I don't drink coffee.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "koohii",
+            "nomu-v"
+          ],
+          "furigana": "私[わたし]はコーヒーを飲[の]みません。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "watashitachi",

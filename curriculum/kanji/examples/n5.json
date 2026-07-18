@@ -1,0 +1,374 @@
+{
+  "n5-go": {
+    "example_sentences": [
+      {
+        "japanese": "パンを五つ買います。",
+        "english": "I will buy five pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "itsutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日、五時に学校へ行きます。",
+        "english": "I will go to school at five tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "go-v",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼は五日待ちました。",
+        "english": "He waited for five days.",
+        "vocabulary_slugs": [
+          "kare",
+          "itsuka",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-hachi": {
+    "example_sentences": [
+      {
+        "japanese": "ここに八を書きます。",
+        "english": "I will write an eight here.",
+        "vocabulary_slugs": [
+          "koko",
+          "hachi-v",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "昨日、パンを八つ買いました。",
+        "english": "I bought eight pieces of bread yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "pan",
+          "yattsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "八日に友達と会います。",
+        "english": "I'm meeting a friend on the eighth.",
+        "vocabulary_slugs": [
+          "youka",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ichi": {
+    "example_sentences": [
+      {
+        "japanese": "明日、友達と一緒に海に行きます。",
+        "english": "I am going to the sea with a friend tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "issho-ni",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "朝ご飯にパンを一つ食べました。",
+        "english": "I ate one piece of bread for breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "pan",
+          "hitotsu",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "水が一番安いです。",
+        "english": "Water is the cheapest.",
+        "vocabulary_slugs": [
+          "mizu",
+          "ichiban",
+          "yasui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-juu": {
+    "example_sentences": [
+      {
+        "japanese": "これを十買います。",
+        "english": "I will buy ten of these.",
+        "vocabulary_slugs": [
+          "kore",
+          "too",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "十日に家へ帰ります。",
+        "english": "I will go home on the 10th.",
+        "vocabulary_slugs": [
+          "tooka",
+          "ie",
+          "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "一から十まで書きます。",
+        "english": "I will write from one to ten.",
+        "vocabulary_slugs": [
+          "ichi-v",
+          "juu-v",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-kyuu": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、パンを九つ買いました。",
+        "english": "I bought nine pieces of bread yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "pan",
+          "kokonotsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "今日、学生が九人来ました。",
+        "english": "Nine students came today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "gakusei",
+          "kyuu-v",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "ここで彼を九日待ちました。",
+        "english": "I waited for him here for nine days.",
+        "vocabulary_slugs": [
+          "koko",
+          "kare",
+          "kokonoka",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-nana": {
+    "example_sentences": [
+      {
+        "japanese": "私は七日に学校へ行きます。",
+        "english": "I will go to school on the seventh.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nanoka",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今日、パンを七つ買いました。",
+        "english": "I bought seven pieces of bread today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "pan",
+          "nanatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日、七時に起きます。",
+        "english": "I will wake up at seven o'clock tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shichi-num",
+          "okiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ni": {
+    "example_sentences": [
+      {
+        "japanese": "これを二つ買います。",
+        "english": "I'll buy two of these.",
+        "vocabulary_slugs": [
+          "kore",
+          "futatsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "二日、犬と遊びました。",
+        "english": "I played with my dog for two days.",
+        "vocabulary_slugs": [
+          "futsuka",
+          "inu",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "二十日に彼女が来ます。",
+        "english": "My girlfriend is coming over on the twentieth.",
+        "vocabulary_slugs": [
+          "hatsuka",
+          "kanojo",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-roku": {
+    "example_sentences": [
+      {
+        "japanese": "私は今日六時に起きました。",
+        "english": "I got up at six o'clock today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyou",
+          "roku-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "この部屋にパンが六つあります。",
+        "english": "There are six pieces of bread in this room.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "pan",
+          "muttsu"
+        ]
+      },
+      {
+        "japanese": "六日に友達と映画を見ます。",
+        "english": "I am going to watch a movie with my friend on the 6th.",
+        "vocabulary_slugs": [
+          "muika",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-san": {
+    "example_sentences": [
+      {
+        "japanese": "私の部屋は三です。",
+        "english": "My room is number three.",
+        "vocabulary_slugs": [
+          "watashi",
+          "heya",
+          "san-v"
+        ]
+      },
+      {
+        "japanese": "パンを三つ買いました。",
+        "english": "I bought three pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "mittsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "ここで三日待ちます。",
+        "english": "I will wait here for three days.",
+        "vocabulary_slugs": [
+          "koko",
+          "mikka",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-yon": {
+    "example_sentences": [
+      {
+        "japanese": "パンを四つ買いました。",
+        "english": "I bought four pieces of bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "yottsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "四日に友達に会います。",
+        "english": "I will meet my friend on the fourth.",
+        "vocabulary_slugs": [
+          "yokka",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "これは四ですか？",
+        "english": "Is this a four?",
+        "vocabulary_slugs": [
+          "kore",
+          "yon-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  }
+}
