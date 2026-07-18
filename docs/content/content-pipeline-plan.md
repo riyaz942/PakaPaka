@@ -284,7 +284,10 @@ forced `submit_example_sentences` tool call per item, 3-attempt requeue then
 (`review_status: draft`); `generate.py` inlines them into the item JSON, adds
 tokenizer furigana, and — when an item already carries 2b `_meta` — keeps the
 least-reviewed status so drafts stay behind the compile gate. The no-API
-web-chat lane (`webprompts`/`ingest`) mirrors 2a/2b for the cost swap.
+web-chat lane (`webprompts`/`ingest`) mirrors 2a/2b for the cost swap and is
+documented in `docs/workflows/example-sentences-web-chat-workflow.md` (with an
+automation prompt for driving Gemini web in
+`docs/workflows/example-sentences-web-chat-workflow-automation-prompt.md`).
 Generation itself (N5/N4 batches) has not run yet.
 
 ### Mechanical validation gate (before any human review)
