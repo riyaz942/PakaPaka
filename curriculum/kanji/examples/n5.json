@@ -1,4 +1,79 @@
 {
+  "n5-ashi": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は足が長いです。",
+        "english": "She has long legs.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ashi-v",
+          "nagai-adj"
+        ]
+      },
+      {
+        "japanese": "足が冷たいです。",
+        "english": "My feet are cold.",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "tsumetai"
+        ]
+      },
+      {
+        "japanese": "犬は足が速いです。",
+        "english": "Dogs run fast.",
+        "vocabulary_slugs": [
+          "inu",
+          "ashi-v",
+          "hayai-fast"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-chikara": {
+    "example_sentences": [
+      {
+        "japanese": "あの男の人は力が強いですね。",
+        "english": "That man is strong, isn't he?",
+        "vocabulary_slugs": [
+          "ano",
+          "otokonohito",
+          "chikara-v",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "私の祖父は力が弱いです。",
+        "english": "My grandfather doesn't have much strength.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sofu",
+          "chikara-v",
+          "yowai"
+        ]
+      },
+      {
+        "japanese": "テーブルが重いですから、一緒に力を使いましょう。",
+        "english": "The table is heavy, so let's use our strength together.",
+        "vocabulary_slugs": [
+          "teeburu",
+          "omoi",
+          "issho-ni",
+          "chikara-v",
+          "tsukau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-dai-big": {
     "example_sentences": [
       {
@@ -554,6 +629,42 @@
       "review_status": "draft"
     }
   },
+  "n5-jikan-ji": {
+    "example_sentences": [
+      {
+        "japanese": "今は何時ですか。",
+        "english": "What time is it now?",
+        "vocabulary_slugs": [
+          "ima",
+          "nannji"
+        ]
+      },
+      {
+        "japanese": "新しい時計を買いました。",
+        "english": "I bought a new watch.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "tokei",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "時々友達と映画を見ます。",
+        "english": "I sometimes watch movies with friends.",
+        "vocabulary_slugs": [
+          "tokidoki",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-juu": {
     "example_sentences": [
       {
@@ -813,6 +924,43 @@
       "review_status": "draft"
     }
   },
+  "n5-kon-now": {
+    "example_sentences": [
+      {
+        "japanese": "今、私は忙しいです。",
+        "english": "I am busy right now.",
+        "vocabulary_slugs": [
+          "ima",
+          "watashi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "今日、友達が家に来ます。",
+        "english": "A friend is coming to my house today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tomodachi",
+          "ie",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "今週、映画を見ます。",
+        "english": "I will watch a movie this week.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-kuchi": {
     "example_sentences": [
       {
@@ -883,6 +1031,44 @@
     ],
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-ma-interval": {
+    "example_sentences": [
+      {
+        "japanese": "病院はデパートと駅の間です。",
+        "english": "The hospital is between the department store and the station.",
+        "vocabulary_slugs": [
+          "byouin",
+          "depaato",
+          "eki",
+          "aida"
+        ]
+      },
+      {
+        "japanese": "二時間テレビを見ました。",
+        "english": "I watched TV for two hours.",
+        "vocabulary_slugs": [
+          "ni-v",
+          "jikan-counter",
+          "terebi",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "三週間待ちました。",
+        "english": "I waited for three weeks.",
+        "vocabulary_slugs": [
+          "san-v",
+          "shuukan",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -989,6 +1175,42 @@
           "jibun",
           "me-v",
           "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-meiname": {
+    "example_sentences": [
+      {
+        "japanese": "先生の名前は何ですか。",
+        "english": "What is the teacher's name?",
+        "vocabulary_slugs": [
+          "sensei",
+          "namae",
+          "nan"
+        ]
+      },
+      {
+        "japanese": "彼は有名な医者です。",
+        "english": "He is a famous doctor.",
+        "vocabulary_slugs": [
+          "kare",
+          "yuumei",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "あの映画は有名です。",
+        "english": "That movie is famous.",
+        "vocabulary_slugs": [
+          "ano",
+          "eiga",
+          "yuumei"
         ]
       }
     ],
@@ -1219,6 +1441,44 @@
       "review_status": "draft"
     }
   },
+  "n5-nen": {
+    "example_sentences": [
+      {
+        "japanese": "去年、海に行きました。",
+        "english": "I went to the sea last year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "umi",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今年、新しいパソコンを買います。",
+        "english": "I will buy a new computer this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "atarashii-adj",
+          "pasokon",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "来年、兄は大学に行きます。",
+        "english": "My older brother will go to university next year.",
+        "vocabulary_slugs": [
+          "rainen",
+          "ani",
+          "daigaku",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-ni": {
     "example_sentences": [
       {
@@ -1288,6 +1548,45 @@
     ],
     "_meta": {
       "generator_model": "claude-opus-subagent",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-nichiyou": {
+    "example_sentences": [
+      {
+        "japanese": "水曜日にデパートで新しい靴を買います。",
+        "english": "I will buy new shoes at the department store on Wednesday.",
+        "vocabulary_slugs": [
+          "suiyoubi",
+          "depaato",
+          "atarashii-adj",
+          "kutsu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "金曜日の夜は楽しいです。",
+        "english": "Friday night is fun.",
+        "vocabulary_slugs": [
+          "kinyoubi",
+          "yoru",
+          "tanoshii"
+        ]
+      },
+      {
+        "japanese": "日曜日に公園で本を読みます。",
+        "english": "I read books in the park on Sundays.",
+        "vocabulary_slugs": [
+          "nichiyoubi",
+          "kouen",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1477,6 +1776,45 @@
       "review_status": "draft"
     }
   },
+  "n5-sei-life": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、駅で先生に会いました。",
+        "english": "I met my teacher at the station yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "eki",
+          "sensei",
+          "au"
+        ]
+      },
+      {
+        "japanese": "学生は毎日図書館で本を読みます。",
+        "english": "Students read books at the library every day.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "mainichi",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "去年、妹が生まれました。",
+        "english": "My younger sister was born last year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "imouto",
+          "umareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-sen": {
     "example_sentences": [
       {
@@ -1578,6 +1916,42 @@
         "vocabulary_slugs": [
           "kinou",
           "chiisai",
+          "hon",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gemini-3.1-pro",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n5-shu-week": {
+    "example_sentences": [
+      {
+        "japanese": "週末に友達と遊びます。",
+        "english": "I play with my friends on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tomodachi",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "来週は忙しいです。",
+        "english": "I am busy next week.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "先週、新しい本を買いました。",
+        "english": "I bought a new book last week.",
+        "vocabulary_slugs": [
+          "senshuu",
+          "atarashii-adj",
           "hon",
           "kau-v"
         ]

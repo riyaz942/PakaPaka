@@ -3819,7 +3819,41 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は足が長いです。",
+          "english": "She has long legs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ashi-v",
+            "nagai-adj"
+          ],
+          "furigana": "彼[かの]女[じょ]は足[あし]が長[なが]いです。"
+        },
+        {
+          "japanese": "足が冷たいです。",
+          "english": "My feet are cold.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashi-v",
+            "tsumetai"
+          ],
+          "furigana": "足[あし]が冷[つめ]たいです。"
+        },
+        {
+          "japanese": "犬は足が速いです。",
+          "english": "Dogs run fast.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "ashi-v",
+            "hayai-fast"
+          ],
+          "furigana": "犬[いぬ]は足[あし]が速[はや]いです。"
+        }
+      ]
     },
     {
       "slug": "n5-chikara",
@@ -3857,7 +3891,46 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの男の人は力が強いですね。",
+          "english": "That man is strong, isn't he?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "otokonohito",
+            "chikara-v",
+            "tsuyoi"
+          ],
+          "furigana": "あの男[おとこ]の人[ひと]は力[ちから]が強[つよ]いですね。"
+        },
+        {
+          "japanese": "私の祖父は力が弱いです。",
+          "english": "My grandfather doesn't have much strength.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "sofu",
+            "chikara-v",
+            "yowai"
+          ],
+          "furigana": "私[わたし]の祖[そ]父[ふ]は力[ちから]が弱[よわ]いです。"
+        },
+        {
+          "japanese": "テーブルが重いですから、一緒に力を使いましょう。",
+          "english": "The table is heavy, so let's use our strength together.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "teeburu",
+            "omoi",
+            "issho-ni",
+            "chikara-v",
+            "tsukau"
+          ],
+          "furigana": "テーブルが重[おも]いですから、一[いっ]緒[しょ]に力[ちから]を使[つか]いましょう。"
+        }
+      ]
     },
     {
       "slug": "n5-sei-life",
@@ -3895,7 +3968,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、駅で先生に会いました。",
+          "english": "I met my teacher at the station yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "eki",
+            "sensei",
+            "au"
+          ],
+          "furigana": "昨日[きのう]、駅[えき]で先[せん]生[せい]に会[あ]いました。"
+        },
+        {
+          "japanese": "学生は毎日図書館で本を読みます。",
+          "english": "Students read books at the library every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "gakusei",
+            "mainichi",
+            "toshokan",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "学[がく]生[せい]は毎[まい]日[にち]図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "去年、妹が生まれました。",
+          "english": "My younger sister was born last year.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyonen",
+            "imouto",
+            "umareru"
+          ],
+          "furigana": "去[きょ]年[ねん]、妹[いもうと]が生[う]まれました。"
+        }
+      ]
     },
     {
       "slug": "n5-meiname",
@@ -3933,7 +4044,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生の名前は何ですか。",
+          "english": "What is the teacher's name?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "namae",
+            "nan"
+          ],
+          "furigana": "先[せん]生[せい]の名[な]前[まえ]は何[なに]ですか。"
+        },
+        {
+          "japanese": "彼は有名な医者です。",
+          "english": "He is a famous doctor.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "yuumei",
+            "isha"
+          ],
+          "furigana": "彼[かれ]は有[ゆう]名[めい]な医[い]者[しゃ]です。"
+        },
+        {
+          "japanese": "あの映画は有名です。",
+          "english": "That movie is famous.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "eiga",
+            "yuumei"
+          ],
+          "furigana": "あの映[えい]画[が]は有[ゆう]名[めい]です。"
+        }
+      ]
     },
     {
       "slug": "n5-nen",
@@ -3971,7 +4117,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "去年、海に行きました。",
+          "english": "I went to the sea last year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyonen",
+            "umi",
+            "iku-v"
+          ],
+          "furigana": "去[きょ]年[ねん]、海[うみ]に行[い]きました。"
+        },
+        {
+          "japanese": "今年、新しいパソコンを買います。",
+          "english": "I will buy a new computer this year.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kotoshi",
+            "atarashii-adj",
+            "pasokon",
+            "kau-v"
+          ],
+          "furigana": "今年[ことし]、新[あたら]しいパソコンを買[か]います。"
+        },
+        {
+          "japanese": "来年、兄は大学に行きます。",
+          "english": "My older brother will go to university next year.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "rainen",
+            "ani",
+            "daigaku",
+            "iku-v"
+          ],
+          "furigana": "来[らい]年[ねん]、兄[あに]は大[だい]学[がく]に行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n5-jikan-ji",
@@ -4009,7 +4192,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今は何時ですか。",
+          "english": "What time is it now?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "nannji"
+          ],
+          "furigana": "今[いま]は何[なん]時[じ]ですか。"
+        },
+        {
+          "japanese": "新しい時計を買いました。",
+          "english": "I bought a new watch.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "tokei",
+            "kau-v"
+          ],
+          "furigana": "新[あたら]しい時計[とけい]を買[か]いました。"
+        },
+        {
+          "japanese": "時々友達と映画を見ます。",
+          "english": "I sometimes watch movies with friends.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tokidoki",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "時[とき]々[どき]友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-ma-interval",
@@ -4047,7 +4265,44 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "病院はデパートと駅の間です。",
+          "english": "The hospital is between the department store and the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "byouin",
+            "depaato",
+            "eki",
+            "aida"
+          ],
+          "furigana": "病[びょう]院[いん]はデパートと駅[えき]の間[あいだ]です。"
+        },
+        {
+          "japanese": "二時間テレビを見ました。",
+          "english": "I watched TV for two hours.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ni-v",
+            "jikan-counter",
+            "terebi",
+            "miru-v"
+          ],
+          "furigana": "二[に]時[じ]間[かん]テレビを見[み]ました。"
+        },
+        {
+          "japanese": "三週間待ちました。",
+          "english": "I waited for three weeks.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "san-v",
+            "shuukan",
+            "matsu"
+          ],
+          "furigana": "三[さん]週[しゅう]間[かん]待[ま]ちました。"
+        }
+      ]
     },
     {
       "slug": "n5-nichiyou",
@@ -4080,7 +4335,45 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "水曜日にデパートで新しい靴を買います。",
+          "english": "I will buy new shoes at the department store on Wednesday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "suiyoubi",
+            "depaato",
+            "atarashii-adj",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "水[すい]曜[よう]日[ひ]にデパートで新[あたら]しい靴[くつ]を買[か]います。"
+        },
+        {
+          "japanese": "金曜日の夜は楽しいです。",
+          "english": "Friday night is fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinyoubi",
+            "yoru",
+            "tanoshii"
+          ],
+          "furigana": "金[きん]曜[よう]日[ひ]の夜[よる]は楽[たの]しいです。"
+        },
+        {
+          "japanese": "日曜日に公園で本を読みます。",
+          "english": "I read books in the park on Sundays.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nichiyoubi",
+            "kouen",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "日[にち]曜[よう]日[ひ]に公[こう]園[えん]で本[ほん]を読[よ]みます。"
+        }
+      ]
     },
     {
       "slug": "n5-kon-now",
@@ -4118,7 +4411,43 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "今、私は忙しいです。",
+          "english": "I am busy right now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "watashi",
+            "isogashii"
+          ],
+          "furigana": "今[いま]、私[わたし]は忙[いそが]しいです。"
+        },
+        {
+          "japanese": "今日、友達が家に来ます。",
+          "english": "A friend is coming to my house today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "tomodachi",
+            "ie",
+            "kuru-v"
+          ],
+          "furigana": "今日[きょう]、友[とも]達[だち]が家[いえ]に来[らい]ます。"
+        },
+        {
+          "japanese": "今週、映画を見ます。",
+          "english": "I will watch a movie this week.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "konshuu",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "今[こん]週[しゅう]、映[えい]画[が]を見[み]ます。"
+        }
+      ]
     },
     {
       "slug": "n5-shu-week",
@@ -4151,7 +4480,42 @@
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "週末に友達と遊びます。",
+          "english": "I play with my friends on the weekend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "tomodachi",
+            "asobu"
+          ],
+          "furigana": "週[しゅう]末[まつ]に友[とも]達[だち]と遊[あそ]びます。"
+        },
+        {
+          "japanese": "来週は忙しいです。",
+          "english": "I am busy next week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "raishuu",
+            "isogashii"
+          ],
+          "furigana": "来[らい]週[しゅう]は忙[いそが]しいです。"
+        },
+        {
+          "japanese": "先週、新しい本を買いました。",
+          "english": "I bought a new book last week.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "senshuu",
+            "atarashii-adj",
+            "hon",
+            "kau-v"
+          ],
+          "furigana": "先[せん]週[しゅう]、新[あたら]しい本[ほん]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n5-mai-every",
