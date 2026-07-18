@@ -1,4 +1,323 @@
 {
+  "anata": {
+    "example_sentences": [
+      {
+        "japanese": "あなたは学生ですか。",
+        "english": "Are you a student?",
+        "vocabulary_slugs": [
+          "anata",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "あなたと一緒に映画を見ます。",
+        "english": "I'll watch a movie with you.",
+        "vocabulary_slugs": [
+          "anata",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "あなたは今日忙しいですか。",
+        "english": "Are you busy today?",
+        "vocabulary_slugs": [
+          "anata",
+          "kyou",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "are": {
+    "example_sentences": [
+      {
+        "japanese": "あれは猫です。",
+        "english": "That over there is a cat.",
+        "vocabulary_slugs": [
+          "are",
+          "neko"
+        ]
+      },
+      {
+        "japanese": "あれを買います。",
+        "english": "I'll buy that over there.",
+        "vocabulary_slugs": [
+          "are",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あれはおいしいです。",
+        "english": "That over there looks delicious.",
+        "vocabulary_slugs": [
+          "are",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "boku": {
+    "example_sentences": [
+      {
+        "japanese": "僕は学生です。",
+        "english": "I'm a student.",
+        "vocabulary_slugs": [
+          "boku",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "僕は今日映画を見る。",
+        "english": "I'm watching a movie today.",
+        "vocabulary_slugs": [
+          "boku",
+          "kyou",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "僕と一緒に公園に行く？",
+        "english": "Want to go to the park with me?",
+        "vocabulary_slugs": [
+          "boku",
+          "issho-ni",
+          "kouen",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dore": {
+    "example_sentences": [
+      {
+        "japanese": "どれがいいですか。",
+        "english": "Which one do you want?",
+        "vocabulary_slugs": [
+          "dore",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "どれを買いますか。",
+        "english": "Which one will you buy?",
+        "vocabulary_slugs": [
+          "dore",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "本はどれですか。",
+        "english": "Which one is the book?",
+        "vocabulary_slugs": [
+          "hon",
+          "dore"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kanojo": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は本を読みます。",
+        "english": "She reads books.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "僕は彼女と公園に行きます。",
+        "english": "I'm going to the park with my girlfriend.",
+        "vocabulary_slugs": [
+          "boku",
+          "kanojo",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "彼女は今忙しいです。",
+        "english": "She's busy right now.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ima",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kare": {
+    "example_sentences": [
+      {
+        "japanese": "彼は学生です。",
+        "english": "He's a student.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakusei"
+        ]
+      },
+      {
+        "japanese": "彼と一緒に映画を見ます。",
+        "english": "I watch a movie with him.",
+        "vocabulary_slugs": [
+          "kare",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "彼は今日家に帰ります。",
+        "english": "He's going home today.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyou",
+          "ie",
+          "kaeru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kimi": {
+    "example_sentences": [
+      {
+        "japanese": "君は明日来る？",
+        "english": "Are you coming tomorrow?",
+        "vocabulary_slugs": [
+          "kimi",
+          "ashita",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "僕は君と一緒に公園に行く。",
+        "english": "I'm going to the park with you.",
+        "vocabulary_slugs": [
+          "boku",
+          "kimi",
+          "issho-ni",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "君はお茶を飲む？",
+        "english": "Will you have some tea?",
+        "vocabulary_slugs": [
+          "kimi",
+          "ocha",
+          "nomu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kore": {
+    "example_sentences": [
+      {
+        "japanese": "これは私の本です。",
+        "english": "This is my book.",
+        "vocabulary_slugs": [
+          "kore",
+          "watashi",
+          "hon"
+        ]
+      },
+      {
+        "japanese": "これを買います。",
+        "english": "I'll buy this one.",
+        "vocabulary_slugs": [
+          "kore",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "これはおいしいです。",
+        "english": "This is delicious.",
+        "vocabulary_slugs": [
+          "kore",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sore": {
+    "example_sentences": [
+      {
+        "japanese": "それはおいしいです。",
+        "english": "That one is delicious.",
+        "vocabulary_slugs": [
+          "sore",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "それを買います。",
+        "english": "I'll buy that one.",
+        "vocabulary_slugs": [
+          "sore",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "それは私の本です。",
+        "english": "That's my book.",
+        "vocabulary_slugs": [
+          "sore",
+          "watashi",
+          "hon"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "watashi": {
     "example_sentences": [
       {
@@ -33,6 +352,43 @@
     ],
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "watashitachi": {
+    "example_sentences": [
+      {
+        "japanese": "私たちは映画を見ます。",
+        "english": "We watch movies.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私たちは明日学校に行きます。",
+        "english": "We're going to school tomorrow.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "ashita",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私たちは一緒に遊びます。",
+        "english": "We play together.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "issho-ni",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "cursor-grok-4.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }

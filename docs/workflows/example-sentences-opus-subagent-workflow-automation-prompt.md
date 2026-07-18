@@ -15,7 +15,7 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Content type (one of `kanji` or `vocab`):
 
-<type = kanji>
+<type = vocab>
 
 Note: there is NO `radical` type in this flow — radicals do not get example
 sentences. The only content types are `kanji` and `vocab`.
@@ -35,7 +35,7 @@ Model notes
 - Record the model actually used in the final report, and pass it as the ingest
   `--model` provenance value (Step 3) so `_meta.generator_model` is honest.
 
-Run size (BATCH_LIMIT = 10)
+Run size (BATCH_LIMIT = 15)
 
 This run processes up to 10 slugs (BATCH_LIMIT, set in Step 1). A text-only Opus
 subagent is far lighter than the browser lane (no screenshots), but Opus is heavy

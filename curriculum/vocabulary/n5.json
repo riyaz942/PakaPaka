@@ -79,7 +79,48 @@
           "answer_text": "わたしたち"
         }
       ],
-      "furigana": "私[わたし]たち"
+      "furigana": "私[わたし]たち",
+      "example_sentences": [
+        {
+          "japanese": "私たちは映画を見ます。",
+          "english": "We watch movies.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "私[わたし]たちは映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "私たちは明日学校に行きます。",
+          "english": "We're going to school tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "ashita",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]たちは明日[あした]学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "私たちは一緒に遊びます。",
+          "english": "We play together.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "issho-ni",
+            "asobu"
+          ],
+          "furigana": "私[わたし]たちは一[いっ]緒[しょ]に遊[あそ]びます。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "boku",
@@ -98,7 +139,48 @@
           "answer_text": "ぼく"
         }
       ],
-      "furigana": "僕[ぼく]"
+      "furigana": "僕[ぼく]",
+      "example_sentences": [
+        {
+          "japanese": "僕は学生です。",
+          "english": "I'm a student.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "boku",
+            "gakusei"
+          ],
+          "furigana": "僕[ぼく]は学[がく]生[せい]です。"
+        },
+        {
+          "japanese": "僕は今日映画を見る。",
+          "english": "I'm watching a movie today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "kyou",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "僕[ぼく]は今日[きょう]映[えい]画[が]を見[み]る。"
+        },
+        {
+          "japanese": "僕と一緒に公園に行く？",
+          "english": "Want to go to the park with me?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "issho-ni",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "僕[ぼく]と一[いっ]緒[しょ]に公[こう]園[えん]に行[い]く？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "anata",
@@ -117,7 +199,47 @@
           "answer_text": "あなた"
         }
       ],
-      "furigana": "あなた"
+      "furigana": "あなた",
+      "example_sentences": [
+        {
+          "japanese": "あなたは学生ですか。",
+          "english": "Are you a student?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "anata",
+            "gakusei"
+          ],
+          "furigana": "あなたは学[がく]生[せい]ですか。"
+        },
+        {
+          "japanese": "あなたと一緒に映画を見ます。",
+          "english": "I'll watch a movie with you.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "anata",
+            "issho-ni",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "あなたと一[いっ]緒[しょ]に映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "あなたは今日忙しいですか。",
+          "english": "Are you busy today?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "anata",
+            "kyou",
+            "isogashii"
+          ],
+          "furigana": "あなたは今日[きょう]忙[いそが]しいですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kimi",
@@ -136,7 +258,49 @@
           "answer_text": "きみ"
         }
       ],
-      "furigana": "君[きみ]"
+      "furigana": "君[きみ]",
+      "example_sentences": [
+        {
+          "japanese": "君は明日来る？",
+          "english": "Are you coming tomorrow?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kimi",
+            "ashita",
+            "kuru-v"
+          ],
+          "furigana": "君[きみ]は明日[あした]来[く]る？"
+        },
+        {
+          "japanese": "僕は君と一緒に公園に行く。",
+          "english": "I'm going to the park with you.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "kimi",
+            "issho-ni",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "僕[ぼく]は君[きみ]と一[いっ]緒[しょ]に公[こう]園[えん]に行[い]く。"
+        },
+        {
+          "japanese": "君はお茶を飲む？",
+          "english": "Will you have some tea?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kimi",
+            "ocha",
+            "nomu-v"
+          ],
+          "furigana": "君[きみ]はお茶[ちゃ]を飲[の]む？"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kare",
@@ -155,7 +319,48 @@
           "answer_text": "かれ"
         }
       ],
-      "furigana": "彼[かれ]"
+      "furigana": "彼[かれ]",
+      "example_sentences": [
+        {
+          "japanese": "彼は学生です。",
+          "english": "He's a student.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "gakusei"
+          ],
+          "furigana": "彼[かれ]は学[がく]生[せい]です。"
+        },
+        {
+          "japanese": "彼と一緒に映画を見ます。",
+          "english": "I watch a movie with him.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "issho-ni",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "彼[かれ]と一[いっ]緒[しょ]に映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "彼は今日家に帰ります。",
+          "english": "He's going home today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kyou",
+            "ie",
+            "kaeru-v"
+          ],
+          "furigana": "彼[かれ]は今日[きょう]家[いえ]に帰[かえ]ります。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanojo",
@@ -174,7 +379,48 @@
           "answer_text": "かのじょ"
         }
       ],
-      "furigana": "彼[かの]女[じょ]"
+      "furigana": "彼[かの]女[じょ]",
+      "example_sentences": [
+        {
+          "japanese": "彼女は本を読みます。",
+          "english": "She reads books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かの]女[じょ]は本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "僕は彼女と公園に行きます。",
+          "english": "I'm going to the park with my girlfriend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "kanojo",
+            "kouen",
+            "iku-v"
+          ],
+          "furigana": "僕[ぼく]は彼[かの]女[じょ]と公[こう]園[えん]に行[い]きます。"
+        },
+        {
+          "japanese": "彼女は今忙しいです。",
+          "english": "She's busy right now.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ima",
+            "isogashii"
+          ],
+          "furigana": "彼[かの]女[じょ]は今[いま]忙[いそが]しいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kore",
@@ -193,7 +439,45 @@
           "answer_text": "これ"
         }
       ],
-      "furigana": "これ"
+      "furigana": "これ",
+      "example_sentences": [
+        {
+          "japanese": "これは私の本です。",
+          "english": "This is my book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "watashi",
+            "hon"
+          ],
+          "furigana": "これは私[わたし]の本[ほん]です。"
+        },
+        {
+          "japanese": "これを買います。",
+          "english": "I'll buy this one.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "kau-v"
+          ],
+          "furigana": "これを買[か]います。"
+        },
+        {
+          "japanese": "これはおいしいです。",
+          "english": "This is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "oishii"
+          ],
+          "furigana": "これはおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sore",
@@ -212,7 +496,45 @@
           "answer_text": "それ"
         }
       ],
-      "furigana": "それ"
+      "furigana": "それ",
+      "example_sentences": [
+        {
+          "japanese": "それはおいしいです。",
+          "english": "That one is delicious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sore",
+            "oishii"
+          ],
+          "furigana": "それはおいしいです。"
+        },
+        {
+          "japanese": "それを買います。",
+          "english": "I'll buy that one.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sore",
+            "kau-v"
+          ],
+          "furigana": "それを買[か]います。"
+        },
+        {
+          "japanese": "それは私の本です。",
+          "english": "That's my book.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sore",
+            "watashi",
+            "hon"
+          ],
+          "furigana": "それは私[わたし]の本[ほん]です。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "are",
@@ -231,7 +553,44 @@
           "answer_text": "あれ"
         }
       ],
-      "furigana": "あれ"
+      "furigana": "あれ",
+      "example_sentences": [
+        {
+          "japanese": "あれは猫です。",
+          "english": "That over there is a cat.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "are",
+            "neko"
+          ],
+          "furigana": "あれは猫[ねこ]です。"
+        },
+        {
+          "japanese": "あれを買います。",
+          "english": "I'll buy that over there.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "are",
+            "kau-v"
+          ],
+          "furigana": "あれを買[か]います。"
+        },
+        {
+          "japanese": "あれはおいしいです。",
+          "english": "That over there looks delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "are",
+            "oishii"
+          ],
+          "furigana": "あれはおいしいです。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dore",
@@ -250,7 +609,44 @@
           "answer_text": "どれ"
         }
       ],
-      "furigana": "どれ"
+      "furigana": "どれ",
+      "example_sentences": [
+        {
+          "japanese": "どれがいいですか。",
+          "english": "Which one do you want?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "dore",
+            "ii"
+          ],
+          "furigana": "どれがいいですか。"
+        },
+        {
+          "japanese": "どれを買いますか。",
+          "english": "Which one will you buy?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dore",
+            "kau-v"
+          ],
+          "furigana": "どれを買[か]いますか。"
+        },
+        {
+          "japanese": "本はどれですか。",
+          "english": "Which one is the book?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hon",
+            "dore"
+          ],
+          "furigana": "本[ほん]はどれですか。"
+        }
+      ],
+      "_meta": {
+        "generator_model": "cursor-grok-4.5-high",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kono",
