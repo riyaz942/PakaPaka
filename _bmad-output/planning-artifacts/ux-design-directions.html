@@ -311,6 +311,91 @@
     overflow: hidden;
   }
 
+
+  /* v2 Home sections */
+  .home-greeting { font-size: 15px; color: var(--text-secondary); margin: 8px 0 0; }
+  .home-section-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .home-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.6px; color: var(--text-muted); margin-bottom: 8px; }
+  .forecast-days { display: flex; gap: 6px; }
+  .forecast-day {
+    flex: 1; text-align: center; padding: 8px 4px; border-radius: 8px;
+    background: var(--surface-elevated); font-size: 11px;
+  }
+  .forecast-day .dow { color: var(--text-muted); margin-bottom: 4px; }
+  .forecast-day .load { font-weight: 700; font-size: 13px; }
+  .forecast-day.wall { border: 1px solid var(--feedback-warning); background: rgba(238,170,34,0.08); }
+  .forecast-day.wall .load { color: var(--feedback-warning); }
+  .readiness-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .readiness-meter {
+    height: 6px; border-radius: 3px; background: var(--border); margin-top: 10px; overflow: hidden;
+  }
+  .readiness-meter > div { height: 100%; background: linear-gradient(90deg, var(--content-reading), var(--feedback-info)); }
+  .days-studied-card {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;
+  }
+  .overshoot-badge {
+    display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 700;
+    color: var(--ring-complete); background: rgba(68,187,238,0.15);
+    padding: 2px 8px; border-radius: 999px;
+  }
+  .tab-bar { font-size: 9px; }
+  .tab-item { font-size: 9px; gap: 2px; }
+  .tab-icon { font-size: 14px; }
+  .browse-search {
+    width: 100%; padding: 12px 14px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text-primary); font-size: 15px; margin-bottom: 10px;
+  }
+  .filter-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .filter-pill {
+    font-size: 11px; padding: 5px 10px; border-radius: 999px;
+    background: var(--surface-elevated); color: var(--text-secondary); border: 1px solid var(--border);
+  }
+  .filter-pill.active { border-color: var(--feedback-info); color: var(--feedback-info); background: rgba(68,136,238,0.12); }
+  .browse-row {
+    display: flex; gap: 12px; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .browse-row .glyph { font-size: 22px; font-weight: 700; width: 36px; text-align: center; }
+  .browse-row .meta { flex: 1; min-width: 0; }
+  .browse-row .title { font-size: 14px; font-weight: 600; }
+  .browse-row .sub { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lock-chip { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(238,170,34,0.15); color: var(--content-reading); font-weight: 600; }
+  .chat-bubble {
+    max-width: 85%; padding: 10px 12px; border-radius: 12px; font-size: 14px; margin-bottom: 10px; line-height: 1.45;
+  }
+  .chat-bubble.ai { background: var(--surface); border: 1px solid var(--border); align-self: flex-start; }
+  .chat-bubble.user { background: rgba(68,136,238,0.2); border: 1px solid rgba(68,136,238,0.35); align-self: flex-end; }
+  .chat-flag { color: var(--feedback-warning); text-decoration: underline; text-underline-offset: 2px; }
+  .composer-bar {
+    display: flex; gap: 8px; align-items: center; padding: 10px 12px;
+    border-top: 1px solid var(--border); background: var(--surface);
+  }
+  .composer-input {
+    flex: 1; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 20px; color: var(--text-primary); font-size: 14px;
+  }
+  .mic-btn {
+    width: 40px; height: 40px; border-radius: 20px; border: none;
+    background: var(--feedback-info); color: white; font-size: 16px; font-weight: 700;
+  }
+  .picker-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 10px;
+  }
+  .picker-card .ptitle { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .picker-card .psub { font-size: 12px; color: var(--text-secondary); }
+  .offline-banner {
+    margin: 12px 16px; padding: 12px; border-radius: 10px;
+    background: rgba(238,68,102,0.1); border: 1px solid rgba(238,68,102,0.25);
+    font-size: 13px; color: var(--feedback-incorrect); text-align: center;
+  }
+
   /* Responsive */
   @media (max-width: 850px) {
     .mockup-pair { flex-direction: column; align-items: center; }
@@ -322,7 +407,7 @@
 
 <div class="page-header">
   <h1>japanese-learning — Design Directions</h1>
-  <p>Six design direction mockups. <strong>Review density:</strong> Direction A (compact) is the chosen default. <strong>Home:</strong> simplified — ring, Review &amp; Learn with icons, streak; SRS stage counts live on Stats. <strong>Grammar:</strong> hints are progressive (tap to reveal), not shown on the initial prompt.</p>
+  <p>Design direction mockups — <strong>v2 shell (2026-07-20)</strong>. <strong>Review:</strong> Direction A compact (chosen). <strong>Home:</strong> adaptive <em>goal</em> ring (overshoot OK), Review &amp; Learn CTAs, forecast + reading readiness — <strong>no streak</strong>. <strong>Tabs:</strong> Home · Browse · Conversation · Stats · Settings. <strong>Grammar:</strong> progressive hints. Passages live in Browse; Conversation replaces Read.</p>
 </div>
 
 <nav class="nav-bar">
@@ -332,6 +417,8 @@
   <button class="nav-btn" onclick="scrollToSection('dir-d', this)">D: Post-Session</button>
   <button class="nav-btn" onclick="scrollToSection('dir-e', this)">E: Grammar + Hints</button>
   <button class="nav-btn" onclick="scrollToSection('dir-f', this)">F: Onboarding</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-g', this)">G: Browse</button>
+  <button class="nav-btn" onclick="scrollToSection('dir-h', this)">H: Conversation</button>
 </nav>
 
 <!-- DIRECTION A: Compact Review (chosen) -->
@@ -358,7 +445,7 @@
             <span class="item-type-badge" style="background:rgba(238,68,136,0.15);color:var(--content-kanji);">KANJI</span>
           </div>
           <div class="focal-zone">
-            <div class="prompt-label">Reading</div>
+            <div class="prompt-label">Reading — on'yomi</div>
             <div class="kanji-display">食</div>
           </div>
           <div class="input-zone">
@@ -489,9 +576,9 @@
 
 <!-- DIRECTION C: Home + Stats -->
 <div class="section" id="dir-c">
-  <div class="direction-tag" style="background:rgba(34,204,136,0.15);color:var(--feedback-correct);">Direction C</div>
-  <div class="section-title">Home &amp; Stats — Simplified Home</div>
-  <div class="section-desc"><strong>Home</strong> focuses on cognitive load ring, illustrated <strong>Review</strong> and <strong>Learn</strong> actions, and streak — less at-a-glance noise. <strong>Apprentice / Guru / Master / Burned</strong> counts and similar SRS breakdowns move to the <strong>Stats</strong> tab. Decorative hero graphics frame the ring on Home.</div>
+  <div class="direction-tag" style="background:rgba(34,204,136,0.15);color:var(--feedback-correct);">Direction C — v2</div>
+  <div class="section-title">Home &amp; Stats — Goal Ring (v2)</div>
+  <div class="section-desc"><strong>Home</strong> uses an adaptive <strong>goal</strong> ring (fills from lessons + reviews; may overshoot 100%), illustrated <strong>Review</strong> and <strong>Learn</strong> CTAs, one-week forecast with a &quot;wall&quot; day, and reading readiness. <strong>No streak.</strong> SRS stage counts and <strong>days studied this month</strong> live on <strong>Stats</strong>. Tabs: Home · Browse · Conversation · Stats · Settings.</div>
 
   <div class="mockup-pair">
     <div>
@@ -500,6 +587,7 @@
         <div class="phone-status-bar"><span>9:41</span><span>⚡ 92%</span></div>
         <div class="phone-body-scroll">
           <div class="dashboard-content">
+            <div class="home-greeting">Good morning — ready when you are.</div>
             <div class="home-hero-wrap">
               <svg class="home-hero-svg" viewBox="0 0 335 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -516,7 +604,7 @@
                 </svg>
                 <div class="ring-center-text">
                   <div class="pct">0%</div>
-                  <div class="label">Today's Load</div>
+                  <div class="label">Today's Goal</div>
                 </div>
               </div>
             </div>
@@ -539,12 +627,27 @@
               </button>
             </div>
 
-            <div class="streak-card">
-              <span class="streak-flame">🔥</span>
-              <div class="streak-info">
-                <div class="streak-count">23 days</div>
-                <div class="streak-label">Current streak</div>
+            <div class="home-section-card">
+              <div class="home-section-title">This week</div>
+              <div class="forecast-days">
+                <div class="forecast-day"><div class="dow">Mon</div><div class="load">12</div></div>
+                <div class="forecast-day"><div class="dow">Tue</div><div class="load">18</div></div>
+                <div class="forecast-day wall"><div class="dow">Wed</div><div class="load">41</div></div>
+                <div class="forecast-day"><div class="dow">Thu</div><div class="load">9</div></div>
+                <div class="forecast-day"><div class="dow">Fri</div><div class="load">14</div></div>
+                <div class="forecast-day"><div class="dow">Sat</div><div class="load">7</div></div>
+                <div class="forecast-day"><div class="dow">Sun</div><div class="load">11</div></div>
               </div>
+              <div style="font-size:11px;color:var(--feedback-warning);margin-top:8px;">Wall day Wed — 41 due</div>
+            </div>
+
+            <div class="home-section-card">
+              <div class="home-section-title">Reading readiness</div>
+              <div class="readiness-row">
+                <span style="font-size:13px;font-weight:600;">Café conversation</span>
+                <span style="font-size:12px;color:var(--text-secondary);">3 items away</span>
+              </div>
+              <div class="readiness-meter"><div style="width:78%;"></div></div>
             </div>
 
             <div class="level-section">
@@ -562,8 +665,8 @@
 
           <div class="tab-bar">
             <div class="tab-item active"><span class="tab-icon">⬡</span>Home</div>
-            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
-            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item"><span class="tab-icon">💬</span>Talk</div>
             <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
             <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
           </div>
@@ -572,7 +675,7 @@
       </div>
     </div>
     <div>
-      <div class="mockup-label">Home — Mid session</div>
+      <div class="mockup-label">Home — Goal overshoot</div>
       <div class="phone-frame">
         <div class="phone-status-bar"><span>12:34</span><span>⚡ 78%</span></div>
         <div class="phone-body-scroll">
@@ -580,7 +683,7 @@
             <div class="home-hero-wrap">
               <svg class="home-hero-svg" viewBox="0 0 335 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#EECC44" stop-opacity="0.25"/><stop offset="100%" stop-color="#4488EE" stop-opacity="0.08"/></linearGradient>
+                  <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#44BBEE" stop-opacity="0.35"/><stop offset="100%" stop-color="#4488EE" stop-opacity="0.08"/></linearGradient>
                 </defs>
                 <circle cx="260" cy="50" r="85" fill="url(#hg2)"/>
                 <circle cx="50" cy="150" r="65" fill="rgba(34,187,170,0.12)"/>
@@ -588,11 +691,13 @@
               <div class="ring-large">
                 <svg viewBox="0 0 160 160">
                   <circle class="ring-bg" cx="80" cy="80" r="68"/>
-                  <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-yellow)" stroke-dasharray="280 427"/>
+                  <circle class="ring-fill" cx="80" cy="80" r="68" stroke="var(--ring-complete)" stroke-dasharray="427 427"/>
+                  <circle class="ring-fill" cx="80" cy="80" r="76" stroke="var(--ring-complete)" stroke-width="4" stroke-dasharray="85 477" opacity="0.55"/>
                 </svg>
                 <div class="ring-center-text">
-                  <div class="pct">66%</div>
-                  <div class="label">Today's Load</div>
+                  <div class="pct" style="color:var(--ring-complete);">120%</div>
+                  <div class="label">Today's Goal</div>
+                  <div class="overshoot-badge">+20% overshoot</div>
                 </div>
               </div>
             </div>
@@ -614,12 +719,27 @@
               </button>
             </div>
 
-            <div class="streak-card">
-              <span class="streak-flame">🔥</span>
-              <div class="streak-info">
-                <div class="streak-count">23 days</div>
-                <div class="streak-label">Current streak</div>
+            <div class="home-section-card">
+              <div class="home-section-title">This week</div>
+              <div class="forecast-days">
+                <div class="forecast-day"><div class="dow">Mon</div><div class="load">12</div></div>
+                <div class="forecast-day"><div class="dow">Tue</div><div class="load">18</div></div>
+                <div class="forecast-day wall"><div class="dow">Wed</div><div class="load">41</div></div>
+                <div class="forecast-day"><div class="dow">Thu</div><div class="load">9</div></div>
+                <div class="forecast-day"><div class="dow">Fri</div><div class="load">14</div></div>
+                <div class="forecast-day"><div class="dow">Sat</div><div class="load">7</div></div>
+                <div class="forecast-day"><div class="dow">Sun</div><div class="load">11</div></div>
               </div>
+              <div style="font-size:11px;color:var(--feedback-warning);margin-top:8px;">Wall day Wed — 41 due</div>
+            </div>
+
+            <div class="home-section-card">
+              <div class="home-section-title">Reading readiness</div>
+              <div class="readiness-row">
+                <span style="font-size:13px;font-weight:600;">Café conversation</span>
+                <span style="font-size:12px;color:var(--text-secondary);">3 items away</span>
+              </div>
+              <div class="readiness-meter"><div style="width:78%;"></div></div>
             </div>
 
             <div class="level-section">
@@ -637,8 +757,8 @@
 
           <div class="tab-bar">
             <div class="tab-item active"><span class="tab-icon">⬡</span>Home</div>
-            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
-            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item"><span class="tab-icon">💬</span>Talk</div>
             <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
             <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
           </div>
@@ -656,7 +776,15 @@
         <div class="phone-body-scroll">
           <div class="dashboard-content" style="padding-top: 20px;">
             <div style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Stats</div>
-            <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">SRS stages across all items</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">SRS stages · study activity</div>
+
+            <div class="days-studied-card">
+              <div style="font-size:28px;font-weight:700;color:var(--feedback-info);">12</div>
+              <div>
+                <div style="font-size:14px;font-weight:600;">Days studied this month</div>
+                <div style="font-size:12px;color:var(--text-secondary);">Calm activity — not a streak</div>
+              </div>
+            </div>
 
             <div class="stats-row">
               <div class="stat-card">
@@ -711,8 +839,8 @@
 
           <div class="tab-bar">
             <div class="tab-item"><span class="tab-icon">⬡</span>Home</div>
-            <div class="tab-item"><span class="tab-icon">本</span>Learn</div>
-            <div class="tab-item"><span class="tab-icon">📖</span>Read</div>
+            <div class="tab-item"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item"><span class="tab-icon">💬</span>Talk</div>
             <div class="tab-item active"><span class="tab-icon">📊</span>Stats</div>
             <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
           </div>
@@ -729,7 +857,7 @@
 <div class="section" id="dir-d">
   <div class="direction-tag" style="background:rgba(68,187,238,0.15);color:var(--ring-complete);">Direction D</div>
   <div class="section-title">Post-Session Summary — The Viral Moment</div>
-  <div class="section-desc">Screenshot-worthy completion screen. Cognitive load ring completed with cyan glow. Time compression as the centerpiece. Domain breakdown and weakness trend. Designed for sharing.</div>
+  <div class="section-desc">Screenshot-worthy completion screen. Goal ring completed (or overshoot) with cyan glow. Time compression as the centerpiece. Domain breakdown and weakness trend. <strong>No streak row.</strong> Designed for sharing.</div>
 
   <div class="mockup-pair">
     <div>
@@ -745,11 +873,11 @@
               </svg>
               <div class="ring-center-text">
                 <div class="pct" style="color:var(--ring-complete);">✓</div>
-                <div class="label">Complete</div>
+                <div class="label">Goal met</div>
               </div>
             </div>
             <div class="summary-title">Session Complete</div>
-            <div class="summary-subtitle">35 items reviewed across 3 domains</div>
+            <div class="summary-subtitle">42 cards across 3 domains</div>
 
             <div class="domain-row">
               <div class="domain-card">
@@ -784,12 +912,9 @@
               </div>
             </div>
 
-            <div class="streak-card" style="width:100%;">
-              <span class="streak-flame">🔥</span>
-              <div class="streak-info">
-                <div class="streak-count">24 days</div>
-                <div class="streak-label">Streak continues!</div>
-              </div>
+            <div class="home-section-card" style="width:100%;text-align:center;">
+              <div style="font-size:13px;color:var(--text-secondary);">Daily goal</div>
+              <div style="font-size:18px;font-weight:700;color:var(--ring-complete);margin-top:4px;">Met — keep going anytime</div>
             </div>
           </div>
         </div>
@@ -1103,6 +1228,225 @@
             </div>
 
             <button class="review-btn" style="margin-top:auto;">Start Your First Review →</button>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- DIRECTION G: Browse -->
+<div class="section" id="dir-g">
+  <div class="direction-tag" style="background:rgba(238,170,34,0.15);color:var(--content-reading);">Direction G — v2</div>
+  <div class="section-title">Browse — Unified Discovery</div>
+  <div class="section-desc">Replaces separate Learn-per-level screens and the Read tab. Flat virtualized list of radicals, kanji, vocab, grammar, and <strong>passages as first-class rows</strong>. Faceted filters + fan-out search. Locked passages show a to-do list, not a dead end.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Browse — search + filters</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:50</span><span>⚡ 88%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content" style="padding-top:16px;">
+            <div style="font-size:22px;font-weight:700;margin-bottom:12px;">Browse</div>
+            <input class="browse-search" type="text" value="taberu" readonly>
+            <div class="filter-pills">
+              <span class="filter-pill active">N5</span>
+              <span class="filter-pill active">Vocab</span>
+              <span class="filter-pill">Grammar</span>
+              <span class="filter-pill">Passages</span>
+              <span class="filter-pill">Guru+</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;">12 results · Apply ready</div>
+
+            <div class="browse-row">
+              <div class="glyph" style="color:var(--content-vocabulary);">食べる</div>
+              <div class="meta">
+                <div class="title">to eat</div>
+                <div class="sub">たべる · Vocab · Guru</div>
+              </div>
+            </div>
+            <div class="browse-row">
+              <div class="glyph" style="color:var(--content-kanji);">食</div>
+              <div class="meta">
+                <div class="title">eat, food</div>
+                <div class="sub">Kanji · Master · on'yomi しょく</div>
+              </div>
+            </div>
+            <div class="browse-row">
+              <div class="glyph" style="color:var(--content-grammar);">〜た</div>
+              <div class="meta">
+                <div class="title">Past tense (た-form)</div>
+                <div class="sub">Grammar · uses 食べる in examples</div>
+              </div>
+            </div>
+            <div class="browse-row">
+              <div class="glyph" style="color:var(--content-reading);">文</div>
+              <div class="meta">
+                <div class="title">Lunch at the station</div>
+                <div class="sub">駅の近くで昼ご飯を食べた話 · A short lunch story</div>
+              </div>
+              <span class="lock-chip">3 to go</span>
+            </div>
+          </div>
+          <div class="tab-bar">
+            <div class="tab-item"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item active"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item"><span class="tab-icon">💬</span>Talk</div>
+            <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Locked passage — to-do</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>9:51</span><span>⚡ 88%</span></div>
+        <div class="phone-body">
+          <div style="padding:48px 20px;flex:1;display:flex;flex-direction:column;">
+            <div style="font-size:13px;color:var(--content-reading);font-weight:600;margin-bottom:8px;">PASSAGE · LOCKED</div>
+            <div style="font-size:22px;font-weight:700;margin-bottom:6px;">Lunch at the station</div>
+            <div style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">駅の近くで昼ご飯を食べた話 · A short lunch story</div>
+            <div class="home-section-card">
+              <div class="home-section-title">You need these to unlock (≥90% Guru+)</div>
+              <div style="font-size:14px;margin-bottom:8px;">• 駅 (station) — Apprentice</div>
+              <div style="font-size:14px;margin-bottom:8px;">• 昼ご飯 (lunch) — not started</div>
+              <div style="font-size:14px;margin-bottom:8px;">• 〜た past tense — Guru ✓</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:12px;">A to-do list, not a dead end.</div>
+            </div>
+            <button class="review-btn" style="margin-top:auto;">Study these 2 items</button>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- DIRECTION H: Conversation -->
+<div class="section" id="dir-h">
+  <div class="direction-tag" style="background:rgba(68,136,238,0.2);color:var(--feedback-info);">Direction H — v2</div>
+  <div class="section-title">AI Conversation — BYOK Practice</div>
+  <div class="section-desc">Fills the removed Read tab slot. Chat is the default; mic promotes to push-to-talk. AI replies in furigana bracket format. Unknown words flagged (not enforced). Corrections only in the end-of-session summary. Requires network.</div>
+
+  <div class="mockup-pair">
+    <div>
+      <div class="mockup-label">Start picker (empty state)</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>10:10</span><span>⚡ 80%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content" style="padding-top:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div style="font-size:22px;font-weight:700;">Conversation</div>
+              <div style="font-size:12px;color:var(--feedback-info);">Past ↗</div>
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">Practise what you've learned — bring your own API key.</div>
+            <div class="picker-card" style="border-color:var(--feedback-info);">
+              <div class="ptitle">Practise recent grammar</div>
+              <div class="psub">〜た past tense · studied 2 days ago</div>
+            </div>
+            <div class="picker-card">
+              <div class="ptitle">Choose a grammar point</div>
+              <div class="psub">Pick from what you've unlocked</div>
+            </div>
+            <div class="picker-card">
+              <div class="ptitle">Role-play</div>
+              <div class="psub">Scenarios grounded in your level</div>
+            </div>
+            <div class="picker-card">
+              <div class="ptitle">Random</div>
+              <div class="psub">Surprise prompt from known items</div>
+            </div>
+          </div>
+          <div class="tab-bar">
+            <div class="tab-item"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item active"><span class="tab-icon">💬</span>Talk</div>
+            <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">Chat + flagged word</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>10:12</span><span>⚡ 79%</span></div>
+        <div class="phone-body" style="display:flex;flex-direction:column;">
+          <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:15px;font-weight:600;">〜た practice</div>
+            <div style="font-size:12px;color:var(--text-secondary);">End</div>
+          </div>
+          <div style="flex:1;padding:16px;display:flex;flex-direction:column;overflow:hidden;">
+            <div class="chat-bubble ai">昨日、何を<span style="border-bottom:1px dotted var(--text-secondary);">食[た]べ</span>ましたか？</div>
+            <div class="chat-bubble user">ラーメンを食べました。</div>
+            <div class="chat-bubble ai">いいですね！駅の近くの店ですか？ <span class="chat-flag">駅</span> — you'll learn this soon</div>
+          </div>
+          <div class="composer-bar">
+            <input class="composer-input" type="text" placeholder="Type in Japanese…" readonly>
+            <button class="mic-btn" type="button" title="Push to talk">🎙</button>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-pair" style="margin-top:32px;">
+    <div>
+      <div class="mockup-label">Offline / requires internet</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>10:15</span><span>⚡ 77%</span></div>
+        <div class="phone-body-scroll">
+          <div class="dashboard-content" style="padding-top:16px;">
+            <div style="font-size:22px;font-weight:700;margin-bottom:8px;">Conversation</div>
+            <div class="offline-banner">Requires internet — study features still work offline.</div>
+            <div style="font-size:13px;color:var(--text-secondary);text-align:center;margin-top:24px;padding:0 12px;">Your reviews, Browse, and lessons are fully available. Come back here when you're online.</div>
+          </div>
+          <div class="tab-bar">
+            <div class="tab-item"><span class="tab-icon">⬡</span>Home</div>
+            <div class="tab-item"><span class="tab-icon">⌕</span>Browse</div>
+            <div class="tab-item active"><span class="tab-icon">💬</span>Talk</div>
+            <div class="tab-item"><span class="tab-icon">📊</span>Stats</div>
+            <div class="tab-item"><span class="tab-icon">⚙</span>Settings</div>
+          </div>
+        </div>
+        <div class="phone-home-indicator"></div>
+      </div>
+    </div>
+    <div>
+      <div class="mockup-label">End-of-session summary</div>
+      <div class="phone-frame">
+        <div class="phone-status-bar"><span>10:20</span><span>⚡ 76%</span></div>
+        <div class="phone-body">
+          <div style="padding:40px 20px;flex:1;display:flex;flex-direction:column;">
+            <div style="font-size:22px;font-weight:700;margin-bottom:6px;">Session summary</div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;">Corrections waited until now — never mid-chat.</div>
+            <div class="home-section-card">
+              <div class="home-section-title">Worth fixing (3)</div>
+              <div style="font-size:13px;margin-bottom:6px;">• を → が after 好き</div>
+              <div style="font-size:13px;margin-bottom:6px;">• Past polite: 食べた → 食べました</div>
+              <div style="font-size:13px;">• Particle で for location of action</div>
+            </div>
+            <div class="home-section-card">
+              <div class="home-section-title">Words you met</div>
+              <div style="font-size:13px;margin-bottom:6px;">In curriculum: 駅 · 店</div>
+              <div style="font-size:13px;">Off-curriculum: ラーメン屋 (display only)</div>
+            </div>
+            <div class="home-section-card">
+              <div class="home-section-title">Grammar practised</div>
+              <div style="font-size:13px;">〜た used 4× in this chat</div>
+            </div>
+            <button class="review-btn" style="margin-top:auto;">Done</button>
           </div>
         </div>
         <div class="phone-home-indicator"></div>
