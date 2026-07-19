@@ -7,6 +7,7 @@ import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/
 import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
+import { combinePairGrades } from '@/core/srs/pairGrading';
 import type { ReviewGrade, ReviewItem, SRSState, StageTransition } from '@/core/srs/srs.types';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
@@ -36,7 +37,7 @@ type SessionSummary = {
 type ReviewSessionState = {
   currentItem: ReviewItem | null;
   prefetchBuffer: ReviewItem[];
-  /** Count of distinct items retired (answered correctly at least once). Never decreases. */
+  /** Count of cards retired (answered correctly at least once). Never decreases. */
   currentIndex: number;
   totalItems: number;
   /** Position in the working queue (including retries). Increments on every grade — key card resets on this. */
@@ -98,11 +99,12 @@ export function ReviewSessionProvider({ children }: Props) {
   const { userDb } = useDatabase();
   const { queue, isLoading, error, refetch } = useReviewQueue();
   const [cursor, setCursor] = useState(0);
-  // Incorrect items re-asked later in the session. Always appended at the tail
+  // Incorrect cards re-asked later in the session. Always appended at the tail
   // of the working queue so the maximum number of other items intervene before
   // the re-ask (WaniKani-style: don't let the user pattern-match off the reveal).
   const [retryItems, setRetryItems] = useState<ReviewItem[]>([]);
-  // Distinct items answered correctly at least once — drives header progress.
+  // Cards answered correctly at least once — drives header progress. Card-
+  // scoped, not item-scoped, so a two-card kanji advances the header per card.
   const [retiredCount, setRetiredCount] = useState(0);
   const [baseLoad, setBaseLoad] = useState(0);
   const [sessionLoad, setSessionLoad] = useState(0);
@@ -125,6 +127,13 @@ export function ReviewSessionProvider({ children }: Props) {
   // Streak credit is earned by the first graded item of a session (any review
   // activity that day counts), not by finishing the whole queue.
   const streakRecordedRef = useRef(false);
+  // First-attempt terminal grades per two-card kanji item, held until both the
+  // meaning and reading cards are terminal — then a single worst-of-both FSRS
+  // write fires (FR83). In-memory only; abandoning the session mid-pair writes
+  // nothing, exactly like abandoning before a single card's first attempt.
+  const pairGradesRef = useRef<Map<string, { meaning?: ReviewGrade; reading?: ReviewGrade }>>(
+    new Map(),
+  );
 
   useEffect(() => {
     setCursor(0);
@@ -143,6 +152,7 @@ export function ReviewSessionProvider({ children }: Props) {
     };
     correctCountRef.current = 0;
     streakRecordedRef.current = false;
+    pairGradesRef.current = new Map();
   }, [queue]);
 
   useEffect(() => {
@@ -196,31 +206,20 @@ export function ReviewSessionProvider({ children }: Props) {
     .slice(cursor + 1, cursor + 1 + MAX_PREFETCH)
     .map((entry) => entry.item);
 
-  const gradeCurrentItem = useCallback(
-    (grade: ReviewGrade) => {
-      if (!currentEntry || isGrading.current) return;
-      const currentItem = currentEntry.item;
-      // grade === 1 (Again) → incorrect; anything else → correct.
-      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
-
-      // Retry cards are pedagogical only: the FSRS grade, weakness outcome,
-      // cognitive load, boosts, and summary counters were all written on the
-      // first attempt. Correct retires the item; incorrect re-queues it again.
-      if (currentEntry.isRetry) {
-        if (outcomeResult === 'correct') {
-          setRetiredCount((count) => count + 1);
-        } else {
-          setRetryItems((items) => [...items, currentItem]);
-        }
-        setCursor((i) => i + 1);
-        return;
-      }
-
+  /**
+   * Item-level grade application: the single FSRS write plus every once-per-item
+   * side effect (boost consume, streak, related boosts, cognitive load, summary
+   * counters). Single-card items call this on their first attempt; a two-card
+   * kanji calls it exactly once, when the pair's worst-of-both grade is known.
+   * Weakness is per terminal card, so pair completion passes recordWeakness: false.
+   */
+  const applyItemGrade = useCallback(
+    (item: ReviewItem, grade: ReviewGrade, options: { recordWeakness: boolean }) => {
       isGrading.current = true;
-      const nextState = gradeItem(currentItem.srsState, grade, new Date());
-      const gradedItemType = currentItem.itemType;
-      const promptType = currentItem.promptType;
-      const itemId = currentItem.itemId;
+      const nextState = gradeItem(item.srsState, grade, new Date());
+      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
+      const promptType = item.promptType;
+      const itemId = item.itemId;
 
       Promise.resolve()
         .then(() => {
@@ -257,27 +256,29 @@ export function ReviewSessionProvider({ children }: Props) {
           }
 
           // Related-item boosts on any non-Again grade (correct answers only).
-          if (grade !== 1 && currentItem.relatedItems.length > 0) {
-            const deltas = computeBoosts(currentItem.relatedItems);
+          if (grade !== 1 && item.relatedItems.length > 0) {
+            const deltas = computeBoosts(item.relatedItems);
             const boostResult = applyBoosts(userDb, deltas);
             if (!boostResult.ok && __DEV__) {
               console.warn('[ReviewSession] boost persist failed', boostResult.error);
             }
           }
 
-          // Weakness outcome recording — best-effort, never blocks or crashes.
-          const weaknessResult = recordOutcome(userDb, {
-            itemId,
-            result: outcomeResult,
-            promptType,
-          });
-          if (!weaknessResult.ok && __DEV__) {
-            console.warn('[ReviewSession] weakness record failed', weaknessResult.error);
+          if (options.recordWeakness) {
+            // Weakness outcome recording — best-effort, never blocks or crashes.
+            const weaknessResult = recordOutcome(userDb, {
+              itemId,
+              result: outcomeResult,
+              promptType,
+            });
+            if (!weaknessResult.ok && __DEV__) {
+              console.warn('[ReviewSession] weakness record failed', weaknessResult.error);
+            }
           }
 
           const increment = computeLoadIncrement({
-            itemType: currentItem.itemType,
-            stageLabel: currentItem.srsState.srsStageLabel,
+            itemType: item.itemType,
+            stageLabel: item.srsState.srsStageLabel,
             outcome: outcomeResult,
           });
           const loadResult = addDailyLoad(userDb, {
@@ -300,24 +301,99 @@ export function ReviewSessionProvider({ children }: Props) {
           isGrading.current = false;
         });
 
-      domainCountsRef.current[gradedItemType] += 1;
+      domainCountsRef.current[item.itemType] += 1;
       if (outcomeResult === 'correct') {
         correctCountRef.current += 1;
+      }
+    },
+    [userDb],
+  );
+
+  const gradeCurrentItem = useCallback(
+    (grade: ReviewGrade) => {
+      if (!currentEntry || isGrading.current) return;
+      const currentItem = currentEntry.item;
+      // grade === 1 (Again) → incorrect; anything else → correct.
+      const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
+
+      // Retry cards are pedagogical only: the FSRS grade, weakness outcome,
+      // cognitive load, boosts, and summary counters were all written on the
+      // first attempt. Correct retires the card; incorrect re-queues it again.
+      if (currentEntry.isRetry) {
+        if (outcomeResult === 'correct') {
+          setRetiredCount((count) => count + 1);
+        } else {
+          setRetryItems((items) => [...items, currentItem]);
+        }
+        setCursor((i) => i + 1);
+        return;
+      }
+
+      // Per-card progress and retry: correct retires the card; incorrect
+      // re-queues only this card (the pair's other card is unaffected).
+      if (outcomeResult === 'correct') {
         setRetiredCount((count) => count + 1);
       } else {
         setRetryItems((items) => [...items, currentItem]);
       }
 
+      if (currentItem.isTwoCardItem) {
+        // Weakness is recorded per terminal card with that card's promptType,
+        // so meaning-vs-reading weakness stays meaningful (Story 1.1).
+        const itemId = currentItem.itemId;
+        const promptType = currentItem.promptType;
+        Promise.resolve()
+          .then(() => {
+            const weaknessResult = recordOutcome(userDb, {
+              itemId,
+              result: outcomeResult,
+              promptType,
+            });
+            if (!weaknessResult.ok && __DEV__) {
+              console.warn('[ReviewSession] weakness record failed', weaknessResult.error);
+            }
+          })
+          .catch((cause) => {
+            if (__DEV__) {
+              console.warn('[ReviewSession] weakness write failed', cause);
+            }
+          });
+
+        const entry = pairGradesRef.current.get(itemId) ?? {};
+        entry[currentItem.promptType === 'meaning' ? 'meaning' : 'reading'] = grade;
+        pairGradesRef.current.set(itemId, entry);
+
+        if (entry.meaning !== undefined && entry.reading !== undefined) {
+          pairGradesRef.current.delete(itemId);
+          applyItemGrade(currentItem, combinePairGrades(entry.meaning, entry.reading), {
+            recordWeakness: false,
+          });
+        }
+        setCursor((i) => i + 1);
+        return;
+      }
+
+      applyItemGrade(currentItem, grade, { recordWeakness: true });
       setCursor((i) => i + 1);
     },
-    [currentEntry, userDb],
+    [applyItemGrade, currentEntry, userDb],
   );
 
   const peekStageTransition = useCallback(
     (grade: ReviewGrade): StageTransition | null => {
       if (!currentEntry || currentEntry.isRetry) return null;
-      const from = currentEntry.item.srsState.srsStageLabel;
-      const to = gradeItem(currentEntry.item.srsState, grade, new Date()).srsStageLabel;
+      const item = currentEntry.item;
+      let effectiveGrade = grade;
+      if (item.isTwoCardItem) {
+        // The item-level grade is unknown until both cards are terminal — only
+        // the pair-completing card may peek, and it peeks the combined grade.
+        const entry = pairGradesRef.current.get(item.itemId);
+        const otherGrade = item.promptType === 'meaning' ? entry?.reading : entry?.meaning;
+        if (otherGrade === undefined) return null;
+        effectiveGrade = combinePairGrades(otherGrade, grade);
+      }
+      const from = item.srsState.srsStageLabel;
+      const to = gradeItem(item.srsState, effectiveGrade, new Date()).srsStageLabel;
       return from === to ? null : { from, to };
     },
     [currentEntry],

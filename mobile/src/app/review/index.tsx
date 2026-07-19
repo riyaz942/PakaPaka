@@ -98,7 +98,10 @@ export default function ReviewScreen() {
   const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
 
   const inputEditable =
-    cardState === 'prompting' || cardState === 'typo' || cardState === 'wrong_script';
+    cardState === 'prompting' ||
+    cardState === 'typo' ||
+    cardState === 'wrong_script' ||
+    cardState === 'wrong_reading_type';
 
   usePreventRemove(hasActiveSession && !exitVisible && !isEndingRef.current, () => {
     setExitVisible(true);
@@ -158,7 +161,8 @@ export default function ReviewScreen() {
       cardState !== 'correct' &&
       cardState !== 'incorrect' &&
       cardState !== 'typo' &&
-      cardState !== 'wrong_script'
+      cardState !== 'wrong_script' &&
+      cardState !== 'wrong_reading_type'
     ) {
       return;
     }
@@ -178,7 +182,11 @@ export default function ReviewScreen() {
 
         void focusScreenReaderOn(resultRef.current).then(() => {
           if (cancelled) return;
-          if (cardState === 'typo' || cardState === 'wrong_script') {
+          if (
+            cardState === 'typo' ||
+            cardState === 'wrong_script' ||
+            cardState === 'wrong_reading_type'
+          ) {
             typoInputTimer = setTimeout(
               () => inputRef.current?.focus(),
               screenReaderEnabled ? 300 : 0,
@@ -227,7 +235,9 @@ export default function ReviewScreen() {
     // so the non-terminal typo/wrong_script states collapse to incorrect.
     if (
       options?.fromMc &&
-      (evaluation.result === 'typo' || evaluation.result === 'wrong_script')
+      (evaluation.result === 'typo' ||
+        evaluation.result === 'wrong_script' ||
+        evaluation.result === 'wrong_reading_type')
     ) {
       evaluation = { result: 'incorrect' };
     }
@@ -264,6 +274,15 @@ export default function ReviewScreen() {
       // Category error, not a knowledge error: nudge and re-prompt without
       // grading or recording anything — a script mixup is not a weakness signal.
       setCardState('wrong_script');
+      setAnswerText('');
+      isSubmittingRef.current = false;
+      return;
+    }
+
+    if (evaluation.result === 'wrong_reading_type') {
+      // Valid kun'yomi at the on'yomi prompt (FR82): non-terminal like
+      // wrong_script — no grade, no weakness signal, nudge and re-prompt.
+      setCardState('wrong_reading_type');
       setAnswerText('');
       isSubmittingRef.current = false;
       return;

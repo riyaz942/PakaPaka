@@ -1,4 +1,9 @@
-export type AnswerResult = 'correct' | 'incorrect' | 'typo' | 'wrong_script';
+export type AnswerResult =
+  | 'correct'
+  | 'incorrect'
+  | 'typo'
+  | 'wrong_script'
+  | 'wrong_reading_type';
 
 export type EvaluationResult = {
   result: AnswerResult;

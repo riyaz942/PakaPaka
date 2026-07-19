@@ -48,6 +48,12 @@ jest.mock('@/data/user/streakRepository', () => ({
   recordReviewAndUpdateStreak: (...args: unknown[]) => mockRecordReviewAndUpdateStreak(...args),
 }));
 
+const mockRecordOutcome = jest.fn();
+
+jest.mock('@/data/user/weaknessRepository', () => ({
+  recordOutcome: (...args: unknown[]) => mockRecordOutcome(...args),
+}));
+
 const NOW = '2026-06-27T10:00:00.000Z';
 
 function makeReviewItem(id: string, itemType: ReviewItem['itemType'] = 'kanji'): ReviewItem {
@@ -96,6 +102,8 @@ describe('ReviewSessionProvider', () => {
     mockAddDailyLoad.mockReset();
     mockGetSessionIntensity.mockReset();
     mockRecordReviewAndUpdateStreak.mockReset();
+    mockRecordOutcome.mockReset();
+    mockRecordOutcome.mockReturnValue({ ok: true, value: undefined });
     mockUpsertSrsState.mockReturnValue({ ok: true, value: undefined });
     mockApplyBoosts.mockReturnValue({ ok: true, value: undefined });
     mockClearBoosts.mockReturnValue({ ok: true, value: undefined });
@@ -821,5 +829,262 @@ describe('ReviewSessionProvider', () => {
 
     expect(result.current.sessionSummary.itemsReviewed).toBe(0);
     expect(result.current.sessionSummary.domainCounts.kanji).toBe(0);
+  });
+
+  describe('two-card kanji worst-of-both grading (Story 1.1, FR83)', () => {
+    // A kanji pair: meaning card + on'yomi reading card sharing itemId/srsState.
+    function makeTwoCardPair(id: string): [ReviewItem, ReviewItem] {
+      const base = makeReviewItem(id);
+      return [
+        { ...base, promptType: 'meaning', isTwoCardItem: true },
+        { ...base, promptType: 'reading', isTwoCardItem: true },
+      ];
+    }
+
+    function mockPairQueue(id = 'k1') {
+      const [meaningCard, readingCard] = makeTwoCardPair(id);
+      mockUseReviewQueue.mockReturnValue({
+        queue: [meaningCard, readingCard],
+        isLoading: false,
+        error: null,
+        refetch: jest.fn(),
+        queueBuildMs: 12,
+      });
+    }
+
+    it('both cards correct → exactly one FSRS write, load/domain/correct counted once', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      // First card terminal — nothing item-level fires yet.
+      expect(mockUpsertSrsState).not.toHaveBeenCalled();
+      expect(mockAddDailyLoad).not.toHaveBeenCalled();
+      expect(result.current.sessionSummary.itemsReviewed).toBe(0);
+      expect(result.current.currentItem?.promptType).toBe('reading');
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      expect(mockAddDailyLoad).toHaveBeenCalledTimes(1);
+      expect(mockClearBoosts).toHaveBeenCalledTimes(1);
+      expect(result.current.sessionSummary.domainCounts.kanji).toBe(1);
+      expect(result.current.sessionSummary.itemsReviewed).toBe(1);
+      expect(result.current.sessionSummary.correctCount).toBe(1);
+      expect(result.current.isComplete).toBe(true);
+    });
+
+    it('one card incorrect → single write with worst-of-both Again, only the failed card retries', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      // Meaning fails, reading succeeds.
+      act(() => {
+        result.current.gradeCurrentItem(1);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      // Worst-of-both: Again → the written state reflects a lapse (Relearning).
+      const writtenState = mockUpsertSrsState.mock.calls[0][1];
+      expect(writtenState.fsrsState).toBe('relearning');
+      // Again → no related-item boosts, no correctCount.
+      expect(mockApplyBoosts).not.toHaveBeenCalled();
+      expect(result.current.sessionSummary.correctCount).toBe(0);
+
+      // Only the failed meaning card is re-asked.
+      expect(result.current.isComplete).toBe(false);
+      expect(result.current.currentItem?.promptType).toBe('meaning');
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      // Retry is pedagogical — still exactly one FSRS write.
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      expect(result.current.isComplete).toBe(true);
+    });
+
+    it('both cards incorrect → one Again write and both cards re-queued', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(1);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      act(() => {
+        result.current.gradeCurrentItem(1);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      // Both cards come back as retries.
+      expect(result.current.currentItem?.promptType).toBe('meaning');
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      expect(result.current.currentItem?.promptType).toBe('reading');
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      expect(result.current.isComplete).toBe(true);
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+    });
+
+    it('records weakness per terminal card with that card\'s promptType', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+      act(() => {
+        result.current.gradeCurrentItem(1);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      const outcomes = mockRecordOutcome.mock.calls.map(([, outcome]) => outcome);
+      expect(outcomes).toEqual([
+        { itemId: 'k1', result: 'correct', promptType: 'meaning' },
+        { itemId: 'k1', result: 'incorrect', promptType: 'reading' },
+      ]);
+    });
+
+    it('advances header progress per completed card, not per completed pair', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      expect(result.current.totalItems).toBe(2);
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      // First card of the pair already moves the header (no stall).
+      expect(result.current.currentIndex).toBe(1);
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      expect(result.current.currentIndex).toBe(2);
+    });
+
+    it('peekStageTransition is null until the pair-completing card, then peeks worst-of-both', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      // First card: the item grade is unknown — nothing to peek.
+      expect(result.current.peekStageTransition(1)).toBeNull();
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      // Completing card: Again on this card drags the guru fixture down.
+      expect(result.current.peekStageTransition(1)).toEqual({
+        from: 'guru',
+        to: 'apprentice',
+      });
+      // A Good completion peeks combined(3,3)=3 — an upward move, never the
+      // Again drop this card alone couldn't decide.
+      const goodPeek = result.current.peekStageTransition(3);
+      expect(goodPeek?.from).toBe('guru');
+      expect(goodPeek?.to).not.toBe('apprentice');
+    });
+
+    it('single-card items keep the immediate-grade path (regression)', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockUseReviewQueue.mockReturnValue({
+        queue: [makeReviewItem('v1', 'vocabulary')],
+        isLoading: false,
+        error: null,
+        refetch: jest.fn(),
+        queueBuildMs: 12,
+      });
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.itemId).toBe('v1');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      expect(mockRecordOutcome).toHaveBeenCalledTimes(1);
+      expect(result.current.sessionSummary.itemsReviewed).toBe(1);
+      expect(result.current.isComplete).toBe(true);
+    });
   });
 });

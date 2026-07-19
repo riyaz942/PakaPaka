@@ -1,6 +1,6 @@
 import type { EvaluationResult } from '@/core/answer/answer.types';
 import { evaluateMeaning, normalizeMeaning } from '@/core/answer/meaningEvaluator';
-import { evaluateReading } from '@/core/answer/readingEvaluator';
+import { evaluateReading, normalizeKana } from '@/core/answer/readingEvaluator';
 import { hasJapaneseScript } from '@/core/answer/scriptDetection';
 import { evaluateGrammarAnswer } from '@/core/grammar/answerEvaluator';
 import { assessGrammarNearMiss } from '@/core/grammar/nearMiss';
@@ -52,12 +52,27 @@ export function evaluateReviewAnswer(
       return evaluateMeaning(userAnswer, answerKey.acceptedMeanings);
     }
     const evaluation = evaluateReading(userAnswer, answerKey.acceptedReadings);
-    if (
-      evaluation.result === 'incorrect' &&
-      !hasJapaneseScript(userAnswer) &&
-      matchesAcceptedMeaning(userAnswer, answerKey.acceptedMeanings)
-    ) {
-      return { result: 'wrong_script' };
+    if (evaluation.result === 'incorrect') {
+      // Right item, wrong reading type (FR82): an exact kun'yomi at the
+      // on'yomi prompt nudges and re-prompts instead of grading. Checked only
+      // after the accepted set fully missed — a near-miss on'yomi is still a
+      // typo, and a non-matching answer is still plain incorrect.
+      const alternates = answerKey.alternateReadings;
+      if (alternates && alternates.length > 0) {
+        const normalized = normalizeKana(userAnswer);
+        if (
+          normalized &&
+          alternates.some((reading) => normalizeKana(reading) === normalized)
+        ) {
+          return { result: 'wrong_reading_type' };
+        }
+      }
+      if (
+        !hasJapaneseScript(userAnswer) &&
+        matchesAcceptedMeaning(userAnswer, answerKey.acceptedMeanings)
+      ) {
+        return { result: 'wrong_script' };
+      }
     }
     return evaluation;
   }
@@ -94,9 +109,10 @@ export function evaluateReviewAnswer(
 }
 
 /**
- * FSRS grade mapping: correct → Good (3); incorrect → Again (1); typo and
- * wrong_script → no grade (non-terminal). Revealing hints never changes the
- * grade — the hint ladder is scaffolding, not a penalty (Plan 10).
+ * FSRS grade mapping: correct → Good (3); incorrect → Again (1); typo,
+ * wrong_script and wrong_reading_type → no grade (non-terminal). Revealing
+ * hints never changes the grade — the hint ladder is scaffolding, not a
+ * penalty (Plan 10).
  */
 export function gradeForResult(
   result: EvaluationResult['result'],

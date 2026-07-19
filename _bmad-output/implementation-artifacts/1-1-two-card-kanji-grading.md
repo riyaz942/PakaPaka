@@ -1,6 +1,10 @@
+---
+baseline_commit: ff3fc6fca4038e1993aa2214a3bd6bedb3681c8d
+---
+
 # Story 1.1: Two-Card Kanji Grading
 
-Status: ready-for-dev
+Status: review
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -35,55 +39,55 @@ so that I practise the right skill and my SRS grade isn’t polluted by acceptin
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1 — Fix kanji answer-key assembly (BUG3)** (AC: #1, #3)
-  - [ ] In `buildAnswerKey` (`useReviewQueue.ts`), for `itemType === 'kanji'` reading prompts: accept **only** `onyomi` rows from `getKanjiReadings` (+ user reading synonyms). Do **not** merge all `kanji_readings` or untyped `accepted_answers` readings into one flat set.
-  - [ ] Keep kun'yomi available for evaluation as an alternate set (e.g. `alternateReadings` / `rejectedTypeReadings` on `ReviewAnswerKey`) so `wrong_reading_type` can detect them — do not treat them as correct.
-  - [ ] Vocabulary / radical / grammar answer-key paths unchanged.
+- [x] **Task 1 — Fix kanji answer-key assembly (BUG3)** (AC: #1, #3)
+  - [x] In `buildAnswerKey` (`useReviewQueue.ts`), for `itemType === 'kanji'` reading prompts: accept **only** `onyomi` rows from `getKanjiReadings` (+ user reading synonyms). Do **not** merge all `kanji_readings` or untyped `accepted_answers` readings into one flat set.
+  - [x] Keep kun'yomi available for evaluation as an alternate set (e.g. `alternateReadings` / `rejectedTypeReadings` on `ReviewAnswerKey`) so `wrong_reading_type` can detect them — do not treat them as correct.
+  - [x] Vocabulary / radical / grammar answer-key paths unchanged.
 
-- [ ] **Task 2 — Emit two cards per due kanji** (AC: #1, #4)
-  - [ ] Stop using rep-parity for kanji (`resolvePromptType` parity path must not choose meaning XOR reading for kanji).
-  - [ ] For each due kanji, emit **two** `ReviewItem`s (same `itemId` / `srsState`): one `promptType: 'meaning'`, one `promptType: 'reading'` with on'yomi-only `acceptedReadings`.
-  - [ ] Prefer expanding **before** / as part of queue build so the mixer can separate the pair (do not force meaning→reading back-to-back).
-  - [ ] Vocabulary (including kanji-bearing vocab) and grammar remain **one card** with existing `resolvePromptType` behavior.
-  - [ ] Edge: kanji with **zero** on'yomi rows → emit meaning card only; grade immediately like a single-card item (log `__DEV__` warning). Do not emit an empty reading card.
+- [x] **Task 2 — Emit two cards per due kanji** (AC: #1, #4)
+  - [x] Stop using rep-parity for kanji (`resolvePromptType` parity path must not choose meaning XOR reading for kanji).
+  - [x] For each due kanji, emit **two** `ReviewItem`s (same `itemId` / `srsState`): one `promptType: 'meaning'`, one `promptType: 'reading'` with on'yomi-only `acceptedReadings`.
+  - [x] Prefer expanding **before** / as part of queue build so the mixer can separate the pair (do not force meaning→reading back-to-back).
+  - [x] Vocabulary (including kanji-bearing vocab) and grammar remain **one card** with existing `resolvePromptType` behavior.
+  - [x] Edge: kanji with **zero** on'yomi rows → emit meaning card only; grade immediately like a single-card item (log `__DEV__` warning). Do not emit an empty reading card.
 
-- [ ] **Task 3 — `wrong_reading_type` evaluation** (AC: #2)
-  - [ ] Extend `AnswerResult` with `'wrong_reading_type'` (parallel to `'wrong_script'`, not only a `feedbackKind`).
-  - [ ] In `evaluateReviewAnswer` for kanji reading prompts: if answer matches a kun'yomi / alternate reading (after `normalizeKana`) but not an accepted on'yomi → `{ result: 'wrong_reading_type' }`.
-  - [ ] `gradeForResult('wrong_reading_type')` → `null` (non-terminal).
-  - [ ] Typo / incorrect / wrong_script precedence unchanged: check wrong_reading_type only when the answer is a valid alternate-type reading; near-miss on'yomi still uses typo path.
+- [x] **Task 3 — `wrong_reading_type` evaluation** (AC: #2)
+  - [x] Extend `AnswerResult` with `'wrong_reading_type'` (parallel to `'wrong_script'`, not only a `feedbackKind`).
+  - [x] In `evaluateReviewAnswer` for kanji reading prompts: if answer matches a kun'yomi / alternate reading (after `normalizeKana`) but not an accepted on'yomi → `{ result: 'wrong_reading_type' }`.
+  - [x] `gradeForResult('wrong_reading_type')` → `null` (non-terminal).
+  - [x] Typo / incorrect / wrong_script precedence unchanged: check wrong_reading_type only when the answer is a valid alternate-type reading; near-miss on'yomi still uses typo path.
 
-- [ ] **Task 4 — Worst-of-both single FSRS write** (AC: #3)
-  - [ ] In `ReviewSessionProvider`, hold first-attempt terminal outcomes per `itemId` for two-card kanji until **both** cards have a terminal first-attempt (`correct` | `incorrect`).
-  - [ ] Then call `gradeItem` / `upsertSrsState` **once** with worst-of-both:
+- [x] **Task 4 — Worst-of-both single FSRS write** (AC: #3)
+  - [x] In `ReviewSessionProvider`, hold first-attempt terminal outcomes per `itemId` for two-card kanji until **both** cards have a terminal first-attempt (`correct` | `incorrect`).
+  - [x] Then call `gradeItem` / `upsertSrsState` **once** with worst-of-both:
     - any card `incorrect` → Again (`1`)
     - else if any card used hints (existing Story 5.4 rule) → Hard (`2`)
     - else both correct → Good (`3`)
-  - [ ] Never double-update FSRS. No `srs_states` PK / schema change.
-  - [ ] `addDailyLoad` / `domainCounts` / `correctCount` / streak / boosts: fire **once** when the item grade is applied (not per card).
-  - [ ] Weakness `recordOutcome`: once per **terminal card** with that card’s `promptType` (so meaning vs reading weakness stays useful); **never** on `wrong_reading_type` / typo / wrong_script.
-  - [ ] Retries: re-queue **only the failed card** (existing retry tail behavior); retries remain pedagogical (no second FSRS write).
-  - [ ] Single-card items (vocab / grammar / radical / meaning-only kanji edge): keep current immediate-grade path.
+  - [x] Never double-update FSRS. No `srs_states` PK / schema change.
+  - [x] `addDailyLoad` / `domainCounts` / `correctCount` / streak / boosts: fire **once** when the item grade is applied (not per card).
+  - [x] Weakness `recordOutcome`: once per **terminal card** with that card’s `promptType` (so meaning vs reading weakness stays useful); **never** on `wrong_reading_type` / typo / wrong_script.
+  - [x] Retries: re-queue **only the failed card** (existing retry tail behavior); retries remain pedagogical (no second FSRS write).
+  - [x] Single-card items (vocab / grammar / radical / meaning-only kanji edge): keep current immediate-grade path.
 
-- [ ] **Task 5 — UI: label + non-terminal nudge** (AC: #1, #2)
-  - [ ] Kanji reading mode label: `Reading — on'yomi` (not bare `Reading`). Meaning stays `Meaning`.
-  - [ ] Add `ReviewCardState` / screen branch for `wrong_reading_type` mirroring `wrong_script` (amber nudge, clear input, re-prompt, keep input editable).
-  - [ ] Nudge copy: `We're looking for the on'yomi reading.`
-  - [ ] Wire `review/index.tsx` submit path: treat `wrong_reading_type` like `wrong_script` (no `gradeCurrentItem`, no typo weakness).
-  - [ ] Stage-transition peek / pending grade: only when the item-level grade is known (both cards done for two-card kanji).
+- [x] **Task 5 — UI: label + non-terminal nudge** (AC: #1, #2)
+  - [x] Kanji reading mode label: `Reading — on'yomi` (not bare `Reading`). Meaning stays `Meaning`.
+  - [x] Add `ReviewCardState` / screen branch for `wrong_reading_type` mirroring `wrong_script` (amber nudge, clear input, re-prompt, keep input editable).
+  - [x] Nudge copy: `We're looking for the on'yomi reading.`
+  - [x] Wire `review/index.tsx` submit path: treat `wrong_reading_type` like `wrong_script` (no `gradeCurrentItem`, no typo weakness).
+  - [x] Stage-transition peek / pending grade: only when the item-level grade is known (both cards done for two-card kanji).
 
-- [ ] **Task 6 — Session progress must not stall under two cards** (AC: #1, #3; enables Story 1.2)
-  - [ ] Treat the queue as **cards**: `totalItems = queue.length` after expansion.
-  - [ ] Advance `retiredCount` / header progress **per completed card** (correct first-attempt or successful retry), not only when the pair’s FSRS write fires — otherwise the header stalls (BUG4 precursor).
-  - [ ] Full FR86 polish / AnswerReveal / Return-to-advance remain Story **1.2** — do not implement those here.
+- [x] **Task 6 — Session progress must not stall under two cards** (AC: #1, #3; enables Story 1.2)
+  - [x] Treat the queue as **cards**: `totalItems = queue.length` after expansion.
+  - [x] Advance `retiredCount` / header progress **per completed card** (correct first-attempt or successful retry), not only when the pair’s FSRS write fires — otherwise the header stalls (BUG4 precursor).
+  - [x] Full FR86 polish / AnswerReveal / Return-to-advance remain Story **1.2** — do not implement those here.
 
-- [ ] **Task 7 — Tests** (AC: #1–#4)
-  - [ ] `buildAnswerKey` / queue: kanji → two cards; on'yomi-only readings; vocab/grammar single-card unchanged.
-  - [ ] `evaluateReviewAnswer`: kun'yomi on on'yomi prompt → `wrong_reading_type`; true on'yomi → correct; unknown → incorrect; typo still typo.
-  - [ ] `gradeForResult`: `wrong_reading_type` → null.
-  - [ ] `ReviewSessionProvider`: two-card item → exactly one `upsertSrsState`; worst-of-both matrix (both good / one fail / both fail); load increment once; failed card only retries; single-card path regression.
-  - [ ] `ReviewCard` / `review/index`: label + nudge + non-terminal submit path.
-  - [ ] Update `promptResolver` tests: kanji no longer depends on parity for the two-card emit path.
+- [x] **Task 7 — Tests** (AC: #1–#4)
+  - [x] `buildAnswerKey` / queue: kanji → two cards; on'yomi-only readings; vocab/grammar single-card unchanged.
+  - [x] `evaluateReviewAnswer`: kun'yomi on on'yomi prompt → `wrong_reading_type`; true on'yomi → correct; unknown → incorrect; typo still typo.
+  - [x] `gradeForResult`: `wrong_reading_type` → null.
+  - [x] `ReviewSessionProvider`: two-card item → exactly one `upsertSrsState`; worst-of-both matrix (both good / one fail / both fail); load increment once; failed card only retries; single-card path regression.
+  - [x] `ReviewCard` / `review/index`: label + nudge + non-terminal submit path.
+  - [x] Update `promptResolver` tests: kanji no longer depends on parity for the two-card emit path.
 
 ## Dev Notes
 
@@ -204,10 +208,45 @@ No `project-context.md` in repo. Follow `CLAUDE.md` / workspace conventions: `Re
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Fable 5 (claude-fable-5) via Claude Code
 
 ### Debug Log References
 
+- Full suite: 121 suites / 905 tests pass. `npm run typecheck` clean. `npm run lint` clean.
+- Only pre-existing test updates needed: kanji parity expectations in `promptResolver.test.ts`, bare `Reading` label in `ReviewCard.test.tsx` (both were asserting the old behavior this story removes).
+
 ### Completion Notes List
 
+- **BUG3 fixed** in `buildAnswerKey`: kanji reading key now accepts only `onyomi` rows from `getKanjiReadings` plus user reading synonyms. Untyped `accepted_answers` reading rows are dropped for kanji; kun'yomi rows go to a new `ReviewAnswerKey.alternateReadings` field (deduped, minus normalized collisions with accepted readings). Non-kanji paths untouched.
+- **Two-card emit** lives in `buildReviewQueue`: the round-robin mixer orders items, then an expansion pass emits meaning + reading cards (`isTwoCardItem: true`, shared `srsState`) for each kanji with `kanjiHasOnyomi`. The reading card is deferred at least `KANJI_PAIR_MIN_GAP` (2) cards so the pair never lands back-to-back unless the queue is too short. Zero-on'yomi kanji emit a meaning card only (single-card grade path) with a `__DEV__` warning; `resolvePromptType` now returns `meaning` for kanji (parity kept for vocabulary only).
+- **`wrong_reading_type`** added as a top-level `AnswerResult`. Detected in `evaluateReviewAnswer` only when the accepted set fully missed and the answer exactly matches an alternate reading after `normalizeKana` — near-miss on'yomi still hits the typo path; unknown readings stay `incorrect`. `gradeForResult` returns `null` (non-terminal). `PassageAnswerResult` excludes it (passages stay correct/incorrect).
+- **Worst-of-both single write**: `ReviewSessionProvider` holds first-attempt grades per two-card item in an in-memory `pairGradesRef` map; when both cards are terminal it applies `combinePairGrades` (numeric min — Again dominates, Hard capped, preserving the Story 5.4 hint→Hard rule structurally) via a new `applyItemGrade` helper that owns the single `upsertSrsState`, boost consume/apply, streak, cognitive load, and summary counters. Weakness `recordOutcome` fires once per terminal card with that card's `promptType`. Retries re-queue only the failed card and never write. `peekStageTransition` returns null on a two-card item until the pair-completing card, which peeks the combined grade. Abandoning a session mid-pair writes nothing (same contract as abandoning before any first attempt).
+- **UI**: kanji reading card labeled `Reading — on'yomi`; `wrong_reading_type` card state mirrors `wrong_script` (amber nudge `We're looking for the on'yomi reading.`, input cleared, editable, re-prompt, no grade/weakness). MC collapse in `review/index.tsx` includes the new state defensively (grammar MC can't produce it).
+- **Progress**: queue is already card-native after expansion (`totalItems = queue.length`); `retiredCount` advances per completed card, so the header never stalls waiting for a pair's FSRS write.
+- Note: kanji cards currently have no hint UI (hints are grammar-only), so `combinePairGrades` will see Hard only if a future story threads hint-derived grades; the combiner already supports it.
+
 ### File List
+
+- mobile/src/core/answer/answer.types.ts — `wrong_reading_type` in `AnswerResult`
+- mobile/src/core/answer/reviewAnswerEvaluator.ts — alternate-reading detection; doc update
+- mobile/src/core/answer/evaluatePassageAnswer.ts — exclude `wrong_reading_type` from passage results
+- mobile/src/core/srs/srs.types.ts — `ReviewAnswerKey.alternateReadings`, `ReviewItem.isTwoCardItem`
+- mobile/src/core/srs/promptResolver.ts — kanji no longer parity-driven
+- mobile/src/core/srs/queueBuilder.ts — two-card expansion with pair gap; `kanjiHasOnyomi` input; prompt override in mapper
+- mobile/src/core/srs/pairGrading.ts — new: `combinePairGrades` worst-of-both
+- mobile/src/data/hooks/useReviewQueue.ts — BUG3 fix in `buildAnswerKey` (now exported); `kanjiHasOnyomi` threading; zero-on'yomi dev warning
+- mobile/src/providers/ReviewSessionProvider.tsx — pair bookkeeping, `applyItemGrade`, per-card weakness/progress, pair-gated peek
+- mobile/src/app/review/index.tsx — `wrong_reading_type` submit branch, editable/focus states, MC collapse
+- mobile/src/components/review/ReviewCard.tsx — `Reading — on'yomi` label; `wrong_reading_type` nudge state
+- mobile/src/core/srs/pairGrading.test.ts — new
+- mobile/src/data/hooks/useReviewQueue.test.ts — new: `buildAnswerKey` unit tests
+- mobile/src/core/srs/queueBuilder.test.ts — two-card expansion suite
+- mobile/src/core/srs/promptResolver.test.ts — kanji expectations updated
+- mobile/src/core/answer/reviewAnswerEvaluator.test.ts — `wrong_reading_type` suite; `gradeForResult` null case
+- mobile/src/providers/ReviewSessionProvider.test.tsx — worst-of-both matrix, per-card weakness/progress, peek gating, single-card regression; `recordOutcome` mocked
+- mobile/src/components/review/ReviewCard.test.tsx — label tests split kanji/vocab; nudge state test
+- mobile/src/app/review/index.test.tsx — kun'yomi nudge non-terminal path; label test
+
+## Change Log
+
+- 2026-07-20 — Story 1.1 implemented: two-card kanji grading (meaning + on'yomi), BUG3 on'yomi-only answer key, non-terminal `wrong_reading_type`, worst-of-both single FSRS write, card-native session progress. 121 suites / 905 tests green; typecheck + lint clean. Status → review.

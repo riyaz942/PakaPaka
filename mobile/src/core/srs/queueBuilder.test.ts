@@ -332,4 +332,83 @@ describe('buildReviewQueue', () => {
       expect(result[5].itemType).toBe('radical');
     });
   });
+
+  describe('two-card kanji expansion (Story 1.1)', () => {
+    const onyomiKey = {
+      acceptedMeanings: ['eat'],
+      acceptedReadings: ['しょく'],
+      alternateReadings: ['たべる'],
+    };
+
+    it('emits two cards for a kanji with on\'yomi: meaning + reading, same item and srsState', () => {
+      const items = [
+        makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+      ];
+      const result = buildReviewQueue(items, { now: NOW });
+
+      expect(result).toHaveLength(2);
+      expect(result.map((card) => card.itemId)).toEqual(['k1', 'k1']);
+      expect(result.map((card) => card.promptType).sort()).toEqual(['meaning', 'reading']);
+      expect(result.every((card) => card.isTwoCardItem)).toBe(true);
+      expect(result[0].srsState).toBe(result[1].srsState);
+      const readingCard = result.find((card) => card.promptType === 'reading')!;
+      expect(readingCard.answerKey.acceptedReadings).toEqual(['しょく']);
+      expect(readingCard.answerKey.alternateReadings).toEqual(['たべる']);
+    });
+
+    it('emits a meaning card only for a kanji with zero on\'yomi (single-card item)', () => {
+      const items = [makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: false })];
+      const result = buildReviewQueue(items, { now: NOW });
+
+      expect(result).toHaveLength(1);
+      expect(result[0].promptType).toBe('meaning');
+      expect(result[0].isTwoCardItem).toBeUndefined();
+    });
+
+    it('keeps vocabulary and grammar single-card with existing prompt behavior', () => {
+      const items = [
+        makeQueueItem('v1', 'vocabulary', PAST),
+        makeQueueItem('g1', 'grammar', PAST),
+      ];
+      const result = buildReviewQueue(items, { now: NOW });
+
+      expect(result).toHaveLength(2);
+      expect(result.every((card) => card.isTwoCardItem === undefined)).toBe(true);
+      const grammar = result.find((card) => card.itemType === 'grammar')!;
+      expect(grammar.promptType).toBe('production');
+      // reps=3 (odd) → vocabulary parity gives meaning, unchanged from 5.x.
+      const vocab = result.find((card) => card.itemType === 'vocabulary')!;
+      expect(vocab.promptType).toBe('meaning');
+    });
+
+    it('separates the pair — the reading card never directly follows its meaning card when other cards exist', () => {
+      const items = [
+        makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+        makeQueueItem('v1', 'vocabulary', PAST),
+        makeQueueItem('v2', 'vocabulary', PAST),
+        makeQueueItem('v3', 'vocabulary', PAST),
+        makeQueueItem('v4', 'vocabulary', PAST),
+      ];
+      const result = buildReviewQueue(items, { now: NOW });
+
+      expect(result).toHaveLength(6);
+      const meaningIndex = result.findIndex(
+        (card) => card.itemId === 'k1' && card.promptType === 'meaning',
+      );
+      const readingIndex = result.findIndex(
+        (card) => card.itemId === 'k1' && card.promptType === 'reading',
+      );
+      expect(meaningIndex).toBeGreaterThanOrEqual(0);
+      // At least KANJI_PAIR_MIN_GAP cards sit between the pair.
+      expect(readingIndex - meaningIndex).toBeGreaterThan(2);
+    });
+
+    it('still emits both cards when the queue is too short to honor the gap', () => {
+      const items = [
+        makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+      ];
+      const result = buildReviewQueue(items, { now: NOW });
+      expect(result.map((card) => card.promptType)).toEqual(['meaning', 'reading']);
+    });
+  });
 });

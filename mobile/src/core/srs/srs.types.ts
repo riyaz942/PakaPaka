@@ -33,6 +33,12 @@ export type StageTransition = {
 export type ReviewAnswerKey = {
   acceptedMeanings: string[];
   acceptedReadings: string[];
+  /**
+   * Readings that are valid for the item but not for the prompted reading type
+   * (kanji: kun'yomi on the on'yomi card). Never accepted as correct — they
+   * drive the non-terminal `wrong_reading_type` nudge (FR81/FR82).
+   */
+  alternateReadings?: string[];
   grammar?: {
     structure: string;
     conjugationRules: Record<string, unknown>;
@@ -50,6 +56,12 @@ export type ReviewItem = {
   meanings: string[];
   srsState: SRSState;
   promptType: 'reading' | 'meaning' | 'production';
+  /**
+   * True on both cards of a two-card kanji pair (meaning + on'yomi reading).
+   * The session provider holds the pair's first-attempt outcomes and applies a
+   * single worst-of-both FSRS write when both are terminal (FR83).
+   */
+  isTwoCardItem?: boolean;
   /**
    * Grammar cloze prompt (Plan 07): a JP sentence or structure frame with the
    * grammar chunk blanked. When present, the review card shows this instead of

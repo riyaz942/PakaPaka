@@ -42,8 +42,18 @@ describe('ReviewCard — prompting state', () => {
     expect(screen.getByText('食')).toBeTruthy();
   });
 
-  it('shows "Reading" mode label for reading prompt', () => {
+  it('shows "Reading — on\'yomi" mode label for a kanji reading prompt (FR81)', () => {
     render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="prompting" />);
+    expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
+  });
+
+  it('shows bare "Reading" mode label for a vocabulary reading prompt', () => {
+    render(
+      <ReviewCard
+        item={makeItem({ itemType: 'vocabulary', primaryForm: '食べる', promptType: 'reading' })}
+        state="prompting"
+      />,
+    );
     expect(screen.getByText('Reading')).toBeTruthy();
   });
 
@@ -74,6 +84,14 @@ describe('ReviewCard — prompting state', () => {
   it('shows SRS stage indicator', () => {
     render(<ReviewCard item={makeItem()} state="prompting" />);
     expect(screen.getByLabelText('SRS stage: Apprentice')).toBeTruthy();
+  });
+
+  it('shows the on\'yomi nudge for wrong_reading_type without revealing the answer', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="wrong_reading_type" />);
+    expect(screen.getByText("We're looking for the on'yomi reading.")).toBeTruthy();
+    // Prompt stays visible; the accepted reading is never revealed.
+    expect(screen.getByText('食')).toBeTruthy();
+    expect(screen.queryByText('たべる')).toBeNull();
   });
 
   it('renders null for evaluating state (placeholder for 5.3)', () => {

@@ -20,7 +20,8 @@ export type ReviewCardState =
   | 'correct'
   | 'incorrect'
   | 'typo'
-  | 'wrong_script';
+  | 'wrong_script'
+  | 'wrong_reading_type';
 
 type ReviewCardProps = {
   item: ReviewItem;
@@ -81,6 +82,10 @@ const WRONG_SCRIPT_NUDGE: Record<PromptType, string> = {
   production: "We're looking for the conjugated form in kana or romaji.",
 };
 
+// Right item, wrong reading type (FR82): the answer was a valid kun'yomi, so
+// nudge toward the prompted type without revealing the on'yomi.
+const WRONG_READING_TYPE_NUDGE = "We're looking for the on'yomi reading.";
+
 export function ReviewCard({
   item,
   state,
@@ -102,7 +107,13 @@ export function ReviewCard({
   // "Grammar", not "Production", to stop implying kanji-style drills.
   const isGrammarCloze = itemType === 'grammar' && !!item.clozePrompt;
   const promptText = isGrammarCloze ? item.clozePrompt! : primaryForm;
-  const modeLabel = itemType === 'grammar' ? 'Grammar' : MODE_LABEL[promptType];
+  // Kanji reading cards validate on'yomi only (FR81) — the label must say so.
+  const modeLabel =
+    itemType === 'grammar'
+      ? 'Grammar'
+      : itemType === 'kanji' && promptType === 'reading'
+        ? "Reading — on'yomi"
+        : MODE_LABEL[promptType];
 
   if (state === 'evaluating') {
     return null;
@@ -144,21 +155,21 @@ export function ReviewCard({
     );
   }
 
-  if (state === 'wrong_script') {
+  if (state === 'wrong_script' || state === 'wrong_reading_type') {
     // One-line nudge only: the user hasn't been told the answer, so don't reveal detail.
+    const nudge =
+      state === 'wrong_reading_type' ? WRONG_READING_TYPE_NUDGE : WRONG_SCRIPT_NUDGE[promptType];
     return (
       <View
         ref={resultRef}
         accessible
-        accessibilityLabel={WRONG_SCRIPT_NUDGE[promptType]}
+        accessibilityLabel={nudge}
         className="gap-space-md items-center">
         <Text
           className={`${isGrammarCloze ? 'text-title-lg' : 'text-display'} text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
           {promptText}
         </Text>
-        <Text className="text-body-lg text-feedback-warning text-center">
-          {WRONG_SCRIPT_NUDGE[promptType]}
-        </Text>
+        <Text className="text-body-lg text-feedback-warning text-center">{nudge}</Text>
       </View>
     );
   }

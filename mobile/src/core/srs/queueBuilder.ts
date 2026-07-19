@@ -52,6 +52,12 @@ export type QueueInputItem = {
   inputMode?: 'mc' | 'type_in';
   /** Shuffled MC options when inputMode === 'mc'; null when no distractors. */
   mcOptions?: string[] | null;
+  /**
+   * True when a kanji item has at least one on'yomi row — it is emitted as a
+   * two-card pair (meaning + on'yomi reading). Kanji without on'yomi get a
+   * meaning card only. Ignored for non-kanji types.
+   */
+  kanjiHasOnyomi?: boolean;
   /** Bounded ordering nudge from related-item boosts; default 0 */
   boost?: number;
   relatedItems?: RelatedItem[];
@@ -125,8 +131,9 @@ export function buildReviewQueue(
     }
   }
 
-  // Weighted round-robin
-  const result: ReviewItem[] = [];
+  // Weighted round-robin over items (a two-card kanji still occupies one slot
+  // in the rotation — expansion into cards happens below).
+  const ordered: QueueInputItem[] = [];
   const indices = new Map<ContentItemType, number>(TYPE_ORDER.map((type) => [type, 0]));
   let anyProgress = true;
 
@@ -138,12 +145,42 @@ export function buildReviewQueue(
       const start = indices.get(type)!;
       const end = Math.min(start + weight, bucket.length);
       for (let i = start; i < end; i++) {
-        const item = bucket[i];
-        result.push(mapToReviewItem(item));
+        ordered.push(bucket[i]);
         anyProgress = true;
       }
       indices.set(type, end);
     }
+  }
+
+  // Two-card expansion (Story 1.1): each kanji with on'yomi becomes a meaning
+  // card plus an on'yomi reading card. The reading card is deferred at least
+  // KANJI_PAIR_MIN_GAP cards so the pair never lands back-to-back unless the
+  // queue is too short to allow it.
+  const result: ReviewItem[] = [];
+  const pendingReadingCards: { earliestIndex: number; card: ReviewItem }[] = [];
+  const flushReadyReadingCards = () => {
+    while (
+      pendingReadingCards.length > 0 &&
+      pendingReadingCards[0].earliestIndex <= result.length
+    ) {
+      result.push(pendingReadingCards.shift()!.card);
+    }
+  };
+  for (const input of ordered) {
+    flushReadyReadingCards();
+    if (input.curriculumItem.itemType === 'kanji' && input.kanjiHasOnyomi) {
+      result.push(mapToReviewItem(input, { promptType: 'meaning', isTwoCardItem: true }));
+      pendingReadingCards.push({
+        earliestIndex: result.length + KANJI_PAIR_MIN_GAP,
+        card: mapToReviewItem(input, { promptType: 'reading', isTwoCardItem: true }),
+      });
+    } else {
+      result.push(mapToReviewItem(input));
+    }
+    flushReadyReadingCards();
+  }
+  while (pendingReadingCards.length > 0) {
+    result.push(pendingReadingCards.shift()!.card);
   }
 
   if (options.limit !== undefined) {
@@ -152,7 +189,13 @@ export function buildReviewQueue(
   return result;
 }
 
-function mapToReviewItem(item: QueueInputItem): ReviewItem {
+/** Minimum other cards between a kanji's meaning card and its reading card. */
+export const KANJI_PAIR_MIN_GAP = 2;
+
+function mapToReviewItem(
+  item: QueueInputItem,
+  overrides?: { promptType: 'reading' | 'meaning'; isTwoCardItem: boolean },
+): ReviewItem {
   return {
     itemId: item.srsState.itemId,
     itemType: item.curriculumItem.itemType,
@@ -160,11 +203,14 @@ function mapToReviewItem(item: QueueInputItem): ReviewItem {
     displayMeaning: item.curriculumItem.meaning,
     meanings: item.answerKey.acceptedMeanings,
     srsState: item.srsState,
-    promptType: resolvePromptType(
-      item.curriculumItem.itemType,
-      item.srsState,
-      item.curriculumItem.primaryForm,
-    ),
+    promptType:
+      overrides?.promptType ??
+      resolvePromptType(
+        item.curriculumItem.itemType,
+        item.srsState,
+        item.curriculumItem.primaryForm,
+      ),
+    isTwoCardItem: overrides?.isTwoCardItem,
     clozePrompt: item.clozePrompt ?? null,
     clozeAnswer: item.clozeAnswer ?? null,
     clozeNudge: item.clozeNudge ?? null,

@@ -28,16 +28,11 @@ describe('resolvePromptType', () => {
   });
 
   describe('kanji', () => {
-    it('returns reading when reps is even', () => {
-      expect(resolvePromptType('kanji', makeSrsState(0), '一')).toBe('reading');
-      expect(resolvePromptType('kanji', makeSrsState(2), '一')).toBe('reading');
-      expect(resolvePromptType('kanji', makeSrsState(10), '一')).toBe('reading');
-    });
-
-    it('returns meaning when reps is odd', () => {
+    it('always returns meaning regardless of parity — the queue builder emits the paired reading card (Story 1.1)', () => {
+      expect(resolvePromptType('kanji', makeSrsState(0), '一')).toBe('meaning');
       expect(resolvePromptType('kanji', makeSrsState(1), '一')).toBe('meaning');
-      expect(resolvePromptType('kanji', makeSrsState(3), '一')).toBe('meaning');
-      expect(resolvePromptType('kanji', makeSrsState(9), '一')).toBe('meaning');
+      expect(resolvePromptType('kanji', makeSrsState(2), '一')).toBe('meaning');
+      expect(resolvePromptType('kanji', makeSrsState(10), '一')).toBe('meaning');
     });
   });
 

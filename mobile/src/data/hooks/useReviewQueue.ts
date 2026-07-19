@@ -3,6 +3,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { QUEUE_FETCH_LIMIT } from '@/config/constants';
 import { deriveMeaningCandidates } from '@/core/answer/meaningEvaluator';
+import { normalizeKana } from '@/core/answer/readingEvaluator';
 import { isItemUnlocked } from '@/core/content/dependencyGraph';
 import type { ReinforcementSrsSnapshot } from '@/core/content/content.types';
 import { resolveReinforcement } from '@/core/content/reinforcementResolver';
@@ -49,13 +50,13 @@ type UseReviewQueueResult = {
   queueBuildMs: number | null;
 };
 
-function buildAnswerKey(
+export function buildAnswerKey(
   curriculumDb: SQLiteDatabase,
   itemId: string,
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar',
   displayMeaning: string,
   userSynonyms: UserSynonym[],
-): ReviewAnswerKey {
+): { answerKey: ReviewAnswerKey; kanjiHasOnyomi: boolean } {
   const acceptedAnswers = getAcceptedAnswers(curriculumDb, itemId);
 
   // Many items (radicals, most grammar) have no accepted_answers rows, and the
@@ -78,15 +79,31 @@ function buildAnswerKey(
     .filter((a) => a.answerType === 'reading' || a.answerType === 'production')
     .map((a) => a.answerText);
 
-  if (itemType === 'kanji') {
-    const kanjiReadings = getKanjiReadings(curriculumDb, itemId).map((r) => r.reading);
-    acceptedReadings = [...new Set([...acceptedReadings, ...kanjiReadings])];
-  }
-
   const userReadings = userSynonyms
     .filter((s) => s.answerType === 'reading')
     .map((s) => s.answerText);
-  if (userReadings.length > 0) {
+
+  let alternateReadings: string[] | undefined;
+  let kanjiHasOnyomi = false;
+  if (itemType === 'kanji') {
+    // BUG3 fix (FR81/FR5): the kanji reading card validates on'yomi only.
+    // Kun'yomi rows are carried as alternates so the evaluator can nudge with
+    // wrong_reading_type — never merged into the accepted set. Untyped
+    // accepted_answers readings are dropped for kanji for the same reason.
+    const kanjiReadings = getKanjiReadings(curriculumDb, itemId);
+    const onyomi = kanjiReadings
+      .filter((r) => r.readingType === 'onyomi')
+      .map((r) => r.reading);
+    const kunyomi = kanjiReadings
+      .filter((r) => r.readingType === 'kunyomi')
+      .map((r) => r.reading);
+    kanjiHasOnyomi = onyomi.length > 0;
+    acceptedReadings = [...new Set([...onyomi, ...userReadings])];
+    const acceptedNormalized = new Set(acceptedReadings.map((r) => normalizeKana(r)));
+    alternateReadings = [...new Set(kunyomi)].filter(
+      (reading) => !acceptedNormalized.has(normalizeKana(reading)),
+    );
+  } else if (userReadings.length > 0) {
     acceptedReadings = [...new Set([...acceptedReadings, ...userReadings])];
   }
 
@@ -102,7 +119,10 @@ function buildAnswerKey(
     }
   }
 
-  return { acceptedMeanings, acceptedReadings, grammar };
+  return {
+    answerKey: { acceptedMeanings, acceptedReadings, alternateReadings, grammar },
+    kanjiHasOnyomi,
+  };
 }
 
 function getInProgressItemIds(userDb: import('expo-sqlite').SQLiteDatabase): string[] {
@@ -216,13 +236,18 @@ export function useReviewQueue(): UseReviewQueueResult {
         );
 
         const personalMnemonic = getPersonalMnemonic(userDb, srsState.itemId);
-        const answerKey = buildAnswerKey(
+        const { answerKey, kanjiHasOnyomi } = buildAnswerKey(
           curriculumDb,
           srsState.itemId,
           curriculumItem.itemType,
           curriculumItem.meaning,
           synonymMap.get(srsState.itemId) ?? [],
         );
+        if (__DEV__ && curriculumItem.itemType === 'kanji' && !kanjiHasOnyomi) {
+          console.warn(
+            `[ReviewQueue] Kanji ${srsState.itemId} has no on'yomi rows — emitting meaning card only`,
+          );
+        }
 
         // Grammar cloze contract (Plan 07): the review prompt is a sentence
         // with the grammar chunk blanked, never the bare form itself.
@@ -297,6 +322,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           clozeEnglish,
           inputMode,
           mcOptions,
+          kanjiHasOnyomi,
           boost: boostMap.get(srsState.itemId) ?? 0,
           relatedItems,
           reinforcementLink: reinforcementLinks[0] ?? null,

@@ -122,6 +122,49 @@ describe('evaluateReviewAnswer', () => {
   });
 });
 
+describe('wrong_reading_type — kanji on\'yomi card (Story 1.1, FR82)', () => {
+  // 食: on'yomi しょく/じき accepted; kun'yomi たべる carried as alternate.
+  const kanjiReadingCard = () =>
+    makeItem({
+      primaryForm: '食',
+      displayMeaning: 'eat',
+      meanings: ['eat'],
+      isTwoCardItem: true,
+      answerKey: {
+        acceptedMeanings: ['eat'],
+        acceptedReadings: ['ショク', 'ジキ'],
+        alternateReadings: ['たべる'],
+      },
+    });
+
+  it('accepts a true on\'yomi (katakana key, hiragana input)', () => {
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'しょく').result).toBe('correct');
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'じき').result).toBe('correct');
+  });
+
+  it('returns wrong_reading_type for an exact kun\'yomi, in kana or romaji', () => {
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'たべる').result).toBe('wrong_reading_type');
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'taberu').result).toBe('wrong_reading_type');
+  });
+
+  it('never accepts a kun\'yomi as correct on the on\'yomi card (BUG3 fixed)', () => {
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'たべる').result).not.toBe('correct');
+  });
+
+  it('grades an unknown reading incorrect, not wrong_reading_type', () => {
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'かん').result).toBe('incorrect');
+  });
+
+  it('still routes a near-miss on\'yomi through the typo path', () => {
+    // しよく vs しょく — one edit apart on a 3-kana reading.
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'しよく').result).toBe('typo');
+  });
+
+  it('grades a near-miss kun\'yomi incorrect — only an exact alternate nudges', () => {
+    expect(evaluateReviewAnswer(kanjiReadingCard(), 'たべ').result).toBe('incorrect');
+  });
+});
+
 describe('gradeForResult', () => {
   it('maps correct to Good (3)', () => {
     expect(gradeForResult('correct')).toBe(3);
@@ -133,6 +176,10 @@ describe('gradeForResult', () => {
 
   it('returns null for typo (no advance)', () => {
     expect(gradeForResult('typo')).toBeNull();
+  });
+
+  it('returns null for wrong_reading_type (non-terminal, no FSRS grade)', () => {
+    expect(gradeForResult('wrong_reading_type')).toBeNull();
   });
 
   it('never penalizes hint usage — correct is Good regardless of hints (Plan 10)', () => {

@@ -249,6 +249,41 @@ describe('ReviewScreen accessibility', () => {
     expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
   });
 
+  it('nudges without grading or recording when the on\'yomi card gets a kun\'yomi (Story 1.1)', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({
+      isTwoCardItem: true,
+      answerKey: {
+        acceptedMeanings: ['eat', 'food'],
+        acceptedReadings: ['ショク'],
+        alternateReadings: ['たべる'],
+      },
+    });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText("We're looking for the on'yomi reading.")).toBeTruthy();
+    });
+
+    // Non-terminal like wrong_script: no grade, no typo record, re-prompt.
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+    expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
+    expect(screen.queryByLabelText('Continue')).toBeNull();
+    expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
+  });
+
+  it('shows the "Reading — on\'yomi" label on the kanji reading card', () => {
+    mockCurrentItem = makeReviewItem({ isTwoCardItem: true });
+    render(<ReviewScreen />);
+    expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
+  });
+
   it('offers the rejected answer as a synonym on the incorrect reveal', async () => {
     jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
 
