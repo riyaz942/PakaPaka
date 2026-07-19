@@ -4,1078 +4,878 @@ stepsCompleted:
   - step-02-design-epics
   - step-03-create-stories
   - step-04-final-validation
-workflowStatus: complete
-completedAt: '2026-05-03'
+status: complete
+completedAt: '2026-07-20'
+storiesCompletedEpics: [1, 2, 3, 4, 5]
+storySizingPreference: '2-3 larger stories per epic (vertical slices)'
+validationNotes:
+  - 'Brownfield: starter-template story correctly omitted (Architecture retain Expo 55)'
+  - 'Migrations created only when first needed (015 in 4.2, 016+ in 5.1, goal-ring in 2.1)'
+  - 'FR89 past-threads AC added during validation'
+  - 'OA4/OA5 remain non-blocking placeholders inside Epic 5'
 inputDocuments:
-  - _bmad-output/planning-artifacts/prd.md
-  - _bmad-output/planning-artifacts/architecture.md
-  - _bmad-output/planning-artifacts/ux-design-specification.md
+  - '_bmad-output/planning-artifacts/prd.md'
+  - '_bmad-output/planning-artifacts/architecture.md'
+  - '_bmad-output/planning-artifacts/ux-design-specification.md'
+  - '_bmad-output/planning-artifacts/ux-design-directions.html'
+  - '_bmad-output/planning-artifacts/.decision-log.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-18-2244.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-18-2354.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-19-1322.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-19-1322-learn-page.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-19-1628.md'
+  - '_bmad-output/brainstorming/brainstorming-session-2026-07-19-1651-ai-conversation.md'
+excludedDocuments:
+  - '_bmad-output/planning-artifacts/product-brief-japanese-learning-2026-04-12.md'
+  - '_bmad-output/planning-artifacts/prd-validation-report.md'
+  - '_bmad-output/planning-artifacts/implementation-readiness-report-2026-05-03.md'
+project_name: japanese-learning
+date: '2026-07-20'
 ---
 
 # japanese-learning - Epic Breakdown
 
 ## Overview
 
-This document provides the complete epic and story breakdown for japanese-learning, decomposing the requirements from the PRD, UX Design, and Architecture into implementable stories.
+This document provides the complete epic and story breakdown for japanese-learning, decomposing the requirements from the PRD, UX Design, Architecture, decision log, and July 2026 brainstorming sessions into implementable stories.
+
+**Context:** Brownfield — existing Expo SDK 55 app. PRD Revision v2 (UX upgrade + AI Conversation) is the primary delta; v1 FRs remain in force as amended. Do **not** re-run `create-expo-app`.
 
 ## Requirements Inventory
 
 ### Functional Requirements
 
-#### Learning Content & Progression
+**Learning Content & Progression (v1, retained / amended)**
 
 - FR1: Learners can study kanji organized by JLPT level (N5→N1) with parallel progression within each level.
 - FR2: Learners can study vocabulary organized by JLPT level (N5→N1) with parallel progression within each level.
 - FR3: Learners can study grammar points organized by JLPT level (N5→N1) with input-based testing, including verb conjugation practice integrated into grammar reviews.
-- FR4: Learners can study radicals as building blocks for kanji, with a strict dependency graph: radicals must be learned before their associated kanji, kanji before associated vocabulary. The dependency graph (`radical_id → kanji_id → vocab_id`) is precomputed and stored in SQLite.
-- FR4b: Each radical displays an AI-generated visual mnemonic image that creates a memorable association with the radical's meaning. Images are pre-generated and served from Cloudflare R2.
-- FR5: Each kanji and vocabulary item supports multiple accepted answers — a primary meaning plus accepted synonyms stored in a dedicated table. Onyomi and kunyomi readings are tracked separately for kanji.
-- FR5b: Items progress through SRS stages including a burn/mastered stage where review intervals become very long, equivalent to WaniKani's burn system.
-- FR6: Grammar points use a structured schema: structure pattern, accepted forms, and conjugation rules — not free-text explanations only.
-- FR6b: Grammar answer validation uses parser-based, conjugation-aware checking that understands verb forms (e.g., distinguishes て-form from た-form errors) rather than relying solely on Levenshtein string distance.
-- FR6c: Each grammar point includes a minimum of 5–10 example sentences that use vocabulary the learner has already studied where possible.
-- FR7: Vocabulary items include contextual meanings (usage in context, not just dictionary definitions) and example sentences tied to grammar points.
-- FR8: The system presents grammar examples that prioritize vocabulary the learner has already studied, queried as `SELECT sentence WHERE vocab IN user_known_vocab ORDER BY reinforcement_score DESC`.
-- FR8b: Learners can read pre-seeded passages (creator-authored) tagged by JLPT level, with comprehension questions that validate understanding.
-- FR8c: Reading passages use vocabulary and grammar from the learner's current/completed JLPT level.
+- FR4: Learners can study radicals as building blocks for kanji, with a strict dependency graph: radicals → kanji → vocabulary, precomputed and stored in SQLite.
+- FR4b: Each radical displays an AI-generated visual mnemonic image (pre-generated, Cloudflare R2).
+- FR5: [Amended v2] Each kanji/vocab item supports multiple accepted answers; on'yomi and kun'yomi tracked separately. On a kanji **reading** prompt the system asks a specific reading type and validates against only that type (see FR81–FR83).
+- FR5b: Items progress through SRS stages including burn/mastered.
+- FR6: Grammar points use structured schema: structure pattern, accepted forms, conjugation rules.
+- FR6b: Grammar validation uses parser-based, conjugation-aware checking (not Levenshtein-only).
+- FR6c: Each grammar point includes 5–10 example sentences preferring known vocabulary.
+- FR7: Vocabulary items include contextual meanings and example sentences tied to grammar points.
+- FR8: Grammar examples prioritize vocabulary the learner has already studied (reinforcement-ranked query).
+- FR8b: [Amended v2] Learners can read pre-seeded passages with comprehension questions — reached via unified Browse (not a dedicated Read tab); see FR62–FR70.
+- FR8c: [Amended v2] Passages use vocabulary/grammar from the learner's current/completed level, with progress-driven access states in Browse.
 
-#### SRS Engine & Review
+**SRS Engine & Review (v1 amended + v2)**
 
-- FR9: Learners can prove knowledge through input-based testing — typing answers rather than self-grading. The review loop is keyboard-first: show → type → result → next, with no menus or animations between items.
-- FR10: The system schedules reviews using FSRS (Free Spaced Repetition Scheduler) for research-backed optimal intervals.
-- FR11: The system provides a unified review session that interleaves kanji, vocabulary, and grammar items intelligently. Sessions start immediately upon tapping "Review" — no intermediate screens.
-- FR12: The system maintains a static relationship layer that maps connections between content types (kanji↔vocabulary, kanji↔radicals, grammar↔vocabulary). When a grammar example uses kanji or vocabulary the learner studied recently, it is highlighted explicitly in the UI (e.g., "食べる ← you learned this yesterday"). Reinforcement is visible, not invisible.
-- FR12b: The system applies micro-adjustments to related items when one is reviewed (e.g., reviewing a kanji boosts scheduling priority of its associated vocabulary and grammar).
-- FR13: Learners can input Japanese text via embedded romaji-to-hiragana conversion (WanaKana) without relying on the OS keyboard.
-- FR14: The system detects typos using Levenshtein distance for meaning answers (accepting with warning for minor typos, rejecting with "close!" hint for near-misses) and parser-based conjugation-aware validation for grammar answers.
+- FR9: [Amended v2] Input-based testing; keyboard-first show → type → result → next; gains two-card model and Return-to-advance (FR81–FR86).
+- FR10: Reviews scheduled using FSRS.
+- FR11: [Amended v2] Unified review session interleaving kanji, vocabulary, and grammar; starts immediately on "Review"; two-card pacing applied.
+- FR12: Visible cross-domain reinforcement — recently studied kanji/vocab highlighted explicitly in grammar examples and passages.
+- FR12b: Micro-adjustments to related items when one is reviewed.
+- FR13: Embedded romaji-to-hiragana conversion (WanaKana).
+- FR14: Typo detection (Levenshtein) for meaning answers; parser-based validation for grammar; non-terminal states for near-misses.
 
-#### Cognitive Load & Engagement
+**Cognitive Load → Goal Ring & Engagement (v1 amended → v2)**
 
-- FR15: The system tracks daily cognitive load through a visual ring that fills as the learner studies, with heavier items (new kanji) costing more energy than light reviews (mature vocabulary).
-- FR16: The system communicates to the learner when they have done enough for the day based on their cognitive load threshold.
-- FR17: The cognitive load threshold adapts over time as the learner grows stronger.
-- FR18: Learners can maintain a daily streak, with the streak count visible in the app.
-- FR19: The system sends opt-in push notifications for daily review reminders and streak-at-risk alerts.
-- FR20: Learners can configure notification timing and opt out of notifications entirely.
+- FR15–FR17: [Amended v2 → FR55–FR58] Cognitive-load capacity ceiling reframed as adaptive goal ring.
+- FR18–FR19: [Amended v2 → FR59 / Stats] Daily streak removed from Home; streak-at-risk notifications dropped; days-studied-this-month in Stats.
+- FR20: Learners can configure notification timing and opt out entirely (review nudges retained if product-desired; streak-at-risk removed).
+- FR55: Daily ring is an adaptive **goal** (not capacity ceiling): fills from lessons and reviews, may overshoot 100%, no maximum.
+- FR56: Goal recalculates weekly as average daily achievement over prior week (active days only), with minimum sample; otherwise carries forward.
+- FR57: Goal rises only (congratulatory prompt + change offer); never auto-drops; after 2–3 miss weeks offers opt-in reduction; user-configurable unbounded in Settings.
+- FR58: Home = permanent sections with designed empty states (greeting, goal ring, Learn CTA, Review CTA, one-week forecast with wall annotation, reading readiness) + conditional content (at-risk, welcome-back, curriculum banner, shadow-mode prompt, import nudge). Home offers; never auto-starts.
+- FR59: At-risk/refresher section when items genuinely at risk: count + top 5–10 items, inline revision CTA, full-list on tap; invitation framing.
+- FR60: Reading-readiness meter frames locked passages as destination ("N items from unlocking").
+- FR61: Welcome-back triage after absence ("20 of your 340 due") instead of full backlog dump.
 
-#### Onboarding & Customization
+**Unified Browse & Search (v2)**
 
-- FR21: Learners can select their starting JLPT level (N5 for beginners, or higher for existing learners) on first launch.
-- FR22: Learners can import existing progress via WaniKani API, Bunpro import, or Anki deck upload during onboarding.
-- FR23: Learners can mark individual kanji, vocabulary, or grammar items as "already known" (skip), "in progress" (add to SRS at appropriate interval), or "not started."
-- FR24: Learners can bulk-mark items when importing existing knowledge (e.g., mark all N5 kanji as known).
-- FR25: Learners can select session intensity preference (relaxed ~15 min or intense ~30 min daily sessions).
-- FR26: Learners can begin using the app without creating an account or providing personal information.
+- FR62: Single unified discovery surface replaces per-level Learn screens and Read tab; flat virtualized paginated list; JLPT level is a filter.
+- FR63: Passages are first-class rows (UNION items + reading_passages); Read tab removed.
+- FR64: Faceted multi-select filters (level, type, performance, SRS stage, lock) via drawers; live result count on Apply (disabled at zero); self-summarizing pills.
+- FR65: Fan-out search (EN/romaji/kana/kanji) with ~200ms debounce; romaji→kana in parallel without replacing raw query.
+- FR66: Each passage has bilingual (JA/EN) one-line summary (searchable + list display).
+- FR67: Kanji/vocab/grammar always viewable in Browse; "locked" applies to passages only (view permission ≠ lesson eligibility).
+- FR68: Passage unlocks when ≥90% of linked vocab+grammar reach Guru+.
+- FR69: Tapping locked passage shows needed vocab/grammar to-do list.
+- FR70: Passage reader long-press on word opens details in place (authored word-boundary item_ids); passage_practice_results drive completed state / disable correct inputs.
 
-#### Personal Content
+**Item Details & Lesson (v2)**
 
-- FR26b: Learners can write personal mnemonics for any kanji, vocabulary, or grammar item, stored locally on-device.
-- FR27: Learners can view the pre-generated visual mnemonic images for radicals and text mnemonics for kanji, vocabulary, and grammar items.
-- FR28: Learners can view their weakness detection statistics — per-item error history, confusion clusters, and pattern accuracy trends over time.
+- FR71: Lesson = three-section paged flow (Intro → Mnemonic → Examples & links); details = single vertical scroll with disclosures; compositions split.
+- FR72: Type-appropriate cross-references from dependency edges (radical→kanji, kanji→vocab, vocab→component kanji, grammar→vocab).
+- FR73: Shared SectionHeading with optional info affordance → bottom sheet explainer.
+- FR74: On'yomi/kun'yomi primer shown unprompted to absolute beginners (onboarding path + seenKanjiReadingPrimer flag) on first dual-reading kanji; later via heading info.
+- FR75: Personal mnemonic one-per-item as content (empty / saved / editing states; delete confirms; Save disabled when empty).
+- FR76: Passive non-blocking study-status banner; details never a lesson entry point; content always visible.
+- FR77: Curriculum accepted answers behind disclosure (vs user synonyms editor naming collision).
+- FR78: Furigana auto-hiding keys on vocabulary item mastery (Guru+ or known), never component kanji.
+- FR79: Tap-to-toggle furigana is stateless peek; persistent overrides in Settings with reset; resolution: Settings override → SRS default → global pref; overrides independent of study status.
+- FR80: Comparison view (sticky glyphs, columns, stacked prose, component chips) via Compare picker / route params with two preselected items.
 
-#### Weakness Detection Engine
+**Review Flow (v2)**
 
-- FR29: The system tracks per-user, per-item error statistics: correct count, incorrect count, and error type history (e.g., reading mistake vs meaning mistake for kanji, conjugation error type for grammar).
-- FR30: Items are tagged with pattern labels (e.g., `grammar_tag: "te-form"`, `kanji_tag: "reading_confusion"`) to enable confusion cluster detection — identifying groups of items the learner consistently confuses.
-- FR31: The review queue is biased by weakness: `priority = fsrs_score × 0.7 + weakness_score × 0.3`. Items the learner struggles with appear more frequently than pure FSRS scheduling would dictate.
-- FR32: Weakness statistics are visible to the learner — they can see which patterns are weakest and track improvement over time (e.g., "te-form accuracy: 45% → 72% over 2 weeks").
-- FR33: Confusion clusters are surfaced to the learner (e.g., "You often confuse て-form and た-form") to build awareness of specific weak areas.
+- FR81: Kanji = two cards (meaning + on'yomi), both required; prompt labels reading type; kun'yomi via vocabulary pairing.
+- FR82: Valid-but-wrong reading type = non-terminal `wrong_reading_type` (no grade, no weakness, nudge + re-prompt).
+- FR83: Two cards → single SRS state via worst-of-both, once per item per session (no double FSRS update).
+- FR84: Return advances on correct (submit then continue); 800ms auto-advance opt-in off by default; MC gets Continue; deferred-grade flush preserved for indefinite wait.
+- FR85: Inline AnswerReveal (reading + meaning) on correct and incorrect paths; deeper detail via details route under `review/` (session survives).
+- FR86: Progress counter counts **cards** not items; answer-collision reveal links to Compare (FR80) with both items preselected.
 
-#### Time Compression Display
+**Onboarding & Customization (v1 retained)**
 
-- FR33b: After each review session, the system displays a summary showing items reviewed broken down by domain (kanji, grammar, vocabulary), total time spent, and an estimated equivalent time in a multi-app stack (e.g., "18 min → ~35–40 min across separate apps").
-- FR33c: The time compression estimate is based on documented session patterns in separate tools (separate logins, separate review queues, no cross-domain mixing) and is conservative to maintain credibility.
+- FR21: Select starting JLPT level on first launch.
+- FR22: Import via WaniKani API, Bunpro, or Anki during onboarding.
+- FR23: Mark items known / in-progress / not started.
+- FR24: Bulk-mark items when importing knowledge.
+- FR25: Session intensity preference (relaxed ~15 / intense ~30).
+- FR26: Use app without account or personal information.
 
-#### Progress Import
+**Personal Content & Weakness (v1 retained)**
 
-- FR33d: Learners can import their WaniKani progress via the WaniKani API — items are mapped to internal curriculum items, and WaniKani SRS intervals are converted to FSRS state. Burned items remain burned, apprentice items enter at short intervals.
-- FR33e: Learners can import their Bunpro grammar progress — grammar points are mapped to internal grammar items, and Bunpro SRS intervals are converted to FSRS state. Import method depends on Bunpro's available API/export functionality.
-- FR33f: Learners can import Anki decks — the system parses standard Anki export formats and maps cards to internal curriculum items where a match exists, converting intervals to FSRS state.
-- FR33g: Unmatched imported items (e.g., custom Anki cards not in the structured curriculum) are clearly flagged for the learner to handle manually.
-- FR33h: The import process provides a clear summary of what was imported, what was mapped, and what remains unmatched before finalizing.
+- FR26b: Personal mnemonics for any item, local.
+- FR27: View pre-generated visual radical mnemonics and text mnemonics.
+- FR28: View weakness detection statistics.
+- FR29: Per-user per-item error stats (correct/incorrect, error type history).
+- FR30: Pattern tags for confusion clusters.
+- FR31: Review queue biased `fsrs × 0.7 + weakness × 0.3`.
+- FR32: Weakness stats visible with improvement over time.
+- FR33: Confusion clusters surfaced to learner.
 
-#### Shadow Mode (Post-MVP)
+**Time Compression (v1 retained)**
 
-- FR33i-PM: Learners who import progress can enable shadow mode — reviews are scheduled normally, but the app explicitly positions itself as a parallel tool ("try before you commit") rather than a replacement.
-- FR33j-PM: Post-session stats in shadow mode show retention rate, items covered across domains, and total time — providing data the user can compare with their existing tool experience.
-- FR33k-PM: Shadow mode displays periodic prompts after 1–2 weeks of usage: "You've been comparing for X days — ready to switch fully?" without forcing a decision.
+- FR33b: Post-session summary: domain breakdown, total time, equivalent multi-app stack time.
+- FR33c: Conservative estimate based on documented separate-tool patterns.
 
-#### Administration & Content Pipeline
+**Progress Import (v1 retained)**
 
-- FR34: The project creator generates and manages visual mnemonic images for radicals, uploading them to Cloudflare R2.
-- FR35: The system automatically validates curriculum content against JSON schema rules via CI (GitHub Actions).
-- FR36: The system automatically compiles JSON source data into an optimized SQLite database when changes are merged (GitHub Actions).
-- FR37: The compiled SQLite database is versioned and stored in the repository via Git LFS.
-- FR37b: Visual mnemonic image URLs are stored in the curriculum data and referenced by the app to load images from Cloudflare R2.
+- FR33d: WaniKani API import → map items, convert SRS → FSRS; burned stay burned.
+- FR33e: Bunpro grammar import → map + FSRS conversion (API/export dependent).
+- FR33f: Anki deck import → map cards where possible + FSRS conversion.
+- FR33g: Unmatched imported items clearly flagged.
+- FR33h: Import summary before finalizing (mapped / unmatched).
 
-#### AI-Generated Reading Stories (Post-MVP)
+**Shadow Mode (Post-MVP)**
 
-- FR38-PM: Learners with an AI API key (BYO or obtained via OpenRouter) can generate reading stories that use their active kanji, vocabulary, and grammar — creating narrative reinforcement of current learning material.
-- FR39-PM: The system supports multiple AI providers (OpenAI, Anthropic, OpenRouter) via stored API key, with appropriate error handling.
-- FR40-PM: Learners can obtain an AI API key through two paths: (1) entering their own BYO key, or (2) being redirected to OpenRouter to purchase API credits.
+- FR33i-PM / FR33j-PM / FR33k-PM: Shadow mode parallel tool framing, comparative stats, periodic switch prompts.
 
-#### Community Contribution (Post-MVP)
+**Administration & Pipeline (v1 retained)**
 
-- FR41-PM: Contributors can propose edits to curriculum content (kanji descriptions, readings, grammar details, synonyms, example sentences) through an in-app flow.
-- FR42-PM: The system creates a GitHub branch and pull request from the contributor's edits without requiring git knowledge.
-- FR43-PM: Contributors can authenticate via GitHub OAuth when choosing to contribute (not required for general app usage).
-- FR44-PM: Contributors can accumulate local edits and batch-submit them as a single contribution.
-- FR45-PM: All contributed content is tagged with its origin (human-authored or AI-generated) so reviewers and users can distinguish provenance.
+- FR34: Creator manages radical mnemonic images on R2.
+- FR35: CI validates curriculum JSON schema.
+- FR36: CI compiles JSON → SQLite on merge.
+- FR37: Compiled DB versioned via Git LFS.
+- FR37b: Mnemonic image URLs in curriculum data.
 
-#### Data & Offline
+**AI Reading Stories / Community (Post-MVP)**
 
-- FR46: The app stores all curriculum data, user progress, and weakness detection statistics locally in SQLite on-device.
-- FR47: The app functions fully offline after the initial content download. All SRS review, weakness detection, time compression display, and reading features work without network.
-- FR48: The app checks for curriculum database updates on launch and downloads the updated database if a new version is available.
-- FR49: Visual mnemonic images are cached locally after first load — subsequent views work offline.
-- FR50: WaniKani and Bunpro import require a one-time network connection to access their respective APIs. After import, all data is local.
-- FR51: The app receives over-the-air JavaScript bundle updates without requiring a new app store submission, enabling rapid bug fixes and non-native code changes.
+- FR38-PM–FR40-PM: BYO-key AI reading stories.
+- FR41-PM–FR45-PM: In-app contribution / GitHub PR pipeline.
 
-#### Accessibility
+**Data & Offline (v1 retained)**
 
-- FR52: The app supports screen readers (TalkBack on Android, VoiceOver on iOS) for navigation, review sessions, and results.
-- FR53: The app provides sufficient color contrast ratios for all UI elements including the cognitive load ring.
-- FR54: The app supports scalable text for all learning content.
+- FR46: All curriculum, progress, weakness stats local in SQLite.
+- FR47: Fully offline after initial download (except AI Conversation per NFR24).
+- FR48: Curriculum DB update check/download on launch.
+- FR49: Mnemonic images cached locally after first load.
+- FR50: Import requires one-time network; then local.
+- FR51: OTA JS bundle updates via Expo Updates.
+
+**Accessibility (v1 retained)**
+
+- FR52: Screen reader support (TalkBack / VoiceOver).
+- FR53: Sufficient contrast including goal ring.
+- FR54: Scalable text for learning content.
+
+**AI Conversation (v2 — MVP scope)**
+
+- FR87: AI Conversation tab (replaces Read; 5-tab shell); always visible; unconfigured → key-setup.
+- FR88: BYOK; OpenAI-compatible (editable base URL) + Anthropic adapters; Result type; keys in secure store (tab + Settings).
+- FR89: Empty state = start picker (practise recent / choose grammar / role-play / random); past conversations secondary.
+- FR90: Chat default; mic promotes to conversation mode mid-session.
+- FR91: AI replies in curriculum furigana bracket format; parse fail → plain text, no error.
+- FR92: Unknown words flagged (local lookup); curriculum-unstudied deep-links to details; off-curriculum display-only; flagging = long-press discoverability.
+- FR93: AI words never enter SRS directly (no item_id → no SRS row).
+- FR94: Turn budget steers role-plays / cost ceiling (formula OA4 TBD); steer not hard cutoff.
+- FR95: Never correct mid-conversation; end-of-session summary (≤5 mistakes, words met by membership, grammar practice).
+- FR96: Summary on-demand and cached (never regenerate); end via AI wrap-up, user End, or abandon (silent, resumable).
+- FR97: Hidden in-band structured markers (no tool-calling layer).
+- FR98: Conversation mode full-screen PTT: AI latest line (text + TTS) + user transcription; history hidden.
+- FR99: STT lands in composer for confirm/edit before send; on-device STT default; cloud STT explicit opt-in only.
+- FR100: On-device TTS/STT via executorch (Supertonic + Whisper); no interim system-TTS.
 
 ### NonFunctional Requirements
 
-#### Performance
+**Performance**
 
-- NFR1: SRS review interactions (presenting an item, accepting input, displaying result) complete in under 100ms on mid-range devices. The review loop must feel instantaneous — show → type → result → next with zero perceptible lag. This is non-negotiable for a "serious tool" UX.
-- NFR2: SQLite query response time for standard operations (fetching review queue, loading item details, updating SRS state, weakness score calculation) stays under 100ms on mid-range devices.
-- NFR3: App cold start to first interactive screen completes within 3 seconds on mid-range devices. Tapping "Review" launches the first item with no intermediate screens.
-- NFR4: Curriculum database update download completes within 30 seconds on a standard mobile connection for incremental updates.
-- NFR5: WanaKana romaji-to-hiragana conversion renders in real-time during keystroke input with no visible delay.
-- NFR5b: No UI animations are permitted within the review loop (between items). Animations are allowed only for non-blocking UI (cognitive load ring fill, streak counter) and never delay the next review item.
+- NFR1: SRS review interactions <100ms on mid-range devices.
+- NFR2: SQLite standard ops (queue, details, SRS update, weakness) <100ms.
+- NFR3: Cold start to interactive <3s; Review → first item with no intermediate screens.
+- NFR4: Curriculum incremental update download <30s on standard mobile connection.
+- NFR5: WanaKana conversion real-time with no visible delay.
+- NFR5b: No UI animations in review loop between items.
 
-#### Security
+**Security & Privacy**
 
-- NFR6: WaniKani and Bunpro API keys used for import are stored using platform-appropriate secure storage (Keychain on iOS, Android Keystore on Android) during the import process and can be discarded after import completes.
-- NFR7: Import API calls transmit only the respective API key to WaniKani/Bunpro endpoints over HTTPS. No user learning data from this app is sent externally.
-- NFR8: No user learning data, progress, weakness statistics, or personal information is transmitted off-device. All learning state remains local to the device.
-- NFR9: Anki deck import processes files locally on-device. No imported data is transmitted to any external service.
+- NFR6: Import API keys in platform secure storage; discardable after import.
+- NFR7: Import transmits only API key over HTTPS; no learning data sent.
+- NFR8: No learning data/progress/weakness/PII transmitted off-device.
+- NFR9: Anki import processes entirely on-device.
 
-#### Data Integrity & Reliability
+**Data Integrity**
 
-- NFR10: User progress data (SRS state, streaks, cognitive load history, personal mnemonics) survives app updates, OS updates, and curriculum database updates without data loss.
-- NFR11: The JSON-to-SQLite compilation pipeline validates schema integrity on every build. A compilation failure blocks the database update from being published.
-- NFR12: If a curriculum database download is interrupted, the app continues operating with the existing database version. Partial downloads are discarded, not applied.
-- NFR13: Streak tracking persists accurately across timezone changes, device restarts, and offline periods.
+- NFR10: User progress survives app/OS/curriculum updates.
+- NFR11: JSON→SQLite validates schema; failure blocks publish.
+- NFR12: Interrupted curriculum download discarded; continue with existing DB.
+- NFR13: Streak/activity tracking accurate across timezone/restart/offline (activity days replace Home streak).
 
-#### Accessibility
+**Accessibility**
 
-- NFR14: The app meets WCAG 2.1 Level AA contrast ratio requirements (minimum 4.5:1 for normal text, 3:1 for large text) across all screens.
-- NFR15: All interactive elements are navigable and operable via screen reader (TalkBack/VoiceOver) with meaningful labels.
-- NFR16: Text content scales to 200% of default size without loss of content or functionality.
-- NFR17: Input-based testing is operable via accessibility keyboards and input methods without requiring gesture-based interaction.
+- NFR14: WCAG 2.1 AA contrast (4.5:1 normal / 3:1 large).
+- NFR15: All interactive elements operable via screen reader with meaningful labels.
+- NFR16: Text scales to 200% without loss.
+- NFR17: Input testing operable via a11y keyboards/IMEs.
 
-#### Integration
+**Integration**
 
-- NFR18: WaniKani and Bunpro API integration handles rate limiting, invalid keys, and API changes gracefully with clear error messages and no app crashes. If either API is unreachable, the app offers manual item marking as a fallback.
-- NFR19: Anki deck import handles malformed files, unsupported formats, and partial matches gracefully — clearly communicating what was imported, what failed, and why.
-- NFR20: Cloudflare R2 image loading handles unavailability gracefully — cached images display from local storage; missing images show a text-based fallback mnemonic rather than a broken image state.
+- NFR18: WaniKani/Bunpro handle rate limits, invalid keys, API changes; fallback to manual marking.
+- NFR19: Anki import handles malformed/unsupported/partial matches gracefully.
+- NFR20: R2 image load failure → cache or text mnemonic fallback.
 
-#### Content Scalability
+**Scalability**
 
-- NFR21: The SQLite database structure supports content growth from N5-only (MVP seed) to full N5–N1 coverage without requiring schema changes or app updates.
-- NFR22: Database query performance remains within the <100ms target as content scales from initial seed (~500 items) to full curriculum (~10,000+ items across all JLPT levels).
+- NFR21: Schema supports N5→N1 growth without schema break.
+- NFR22: Query performance <100ms at ~10k+ items.
+
+**v2 Platform / AI**
+
+- NFR23: Platform floor iOS 17 / Android 13 (API 33) + New Architecture (executorch); v1 mins retired.
+- NFR24: AI Conversation network-exempt from offline-first; BYOK key only to user-configured HTTPS endpoints; no learning data to unconfigured endpoints.
+- NFR25: On-device model downloads explicit, user-initiated, size-disclosed; app usable (chat without voice) before complete.
+- NFR26: BYOK cost bounded/legible via turn budget + on-demand summaries; adapter usage accounting.
+- NFR27: Streaming via expo/fetch SSE; partial/failed streams degrade without corrupting transcript.
+- NFR28: New user.db tables via numbered migrations (`015_furigana_overrides`, `016+` AI) preserving NFR10.
+- NFR29: First onLongPress surfaces require non-gesture a11y alternative (CI-enforced).
+- NFR30: Pinned executorch nightly — manual upgrade + re-verify accepted cost.
 
 ### Additional Requirements
 
-**Epic 1 / first implementation (Architecture):** Initialize the mobile codebase with `npx create-expo-app@latest japanese-learning --template default@sdk-55` (Expo SDK 55 default template: Expo Router v4, TypeScript strict, React 19.2 / RN 0.83, Native Tabs, `/src` layout). Then add NativeWind v4+, `tailwind.config.js`, and core dependencies per architecture table (`expo-sqlite`, `ts-fsrs`, `wanakana`, `expo-secure-store`, `expo-file-system`, `expo-haptics`, `expo-notifications`, `expo-updates`, `expo-screen-orientation`, `expo-image`).
+**Brownfield / foundation (Architecture — do not re-init Expo app)**
 
-- **Dual SQLite databases:** `curriculum.db` (read-only, replaceable on update) and `user.db` (read-write, never replaced); use `ATTACH DATABASE` for cross-db joins when needed; curriculum vs user progress must never be conflated on update.
-- **SQLite library:** Default `expo-sqlite`; benchmark queue build; fallback to `op-sqlite` if <100ms target is violated.
-- **Queue build budget:** FSRS + weakness biasing + interleaving must complete within performance budget; pre-fetch next 3–5 items in the review loop; no blocking work between items.
-- **Layer boundaries:** `core/` must not import from `data/` or UI; use Result-type error handling and transactional SQLite writes; batch bulk updates to avoid write-lock issues.
-- **Routing structure:** Expo Router under `src/app/` — `(tabs)` for Home/Learn/Read/Stats/Settings; `review/` modal stack (session + summary); `onboarding/` linear flow; drill-down under `learn/`.
-- **CI/CD:** `.github/workflows/ci.yml` (lint, typecheck, test); `compile-curriculum.yml` for JSON → SQLite; curriculum seed bundled at `assets/curriculum-seed/curriculum.db`; `curriculum/` JSON + `scripts/compile-curriculum.ts` + schema validation.
-- **Git LFS:** Version compiled curriculum SQLite in-repo per architecture.
-- **WaniKani API:** v2 integration with rate-limit handling (~60 req/min), mapping table `subject_id` → internal `item_id`, FSRS state conversion.
-- **Bunpro / Anki:** Shared mapping + SRS conversion abstraction; documented fallback to manual marking if Bunpro API/export unavailable; Anki `.apkg` local parse only.
-- **Grammar validation:** Rule-based conjugation parser for common patterns with Levenshtein fallback where parser does not apply.
-- **Cross-platform parity:** Android and iOS feature parity; EAS Build/Submit; Expo Updates for OTA JS.
-- **Testing:** Jest for core logic; React Native Testing Library for components (per architecture).
-- **Dependency graph:** Precomputed adjacency in `curriculum.db` for fast unlock and reinforcement queries.
+- Retain Expo SDK 55 + Expo Router + NativeWind v4 + dual SQLite + custom dev client; evolve in place.
+- Enable New Architecture (`newArchEnabled: true`) and min OS iOS 17.0 / Android API 33 via `expo-build-properties`.
+- Tab shell: Home · Browse · AI Conversation · Stats · Settings (Read removed; temporary redirects from learn/read OK during rollout).
+- Dual-DB contract retained: curriculum.db read-only/replaceable; user.db numbered migrations; ATTACH for joins.
+- All fallible async returns `Result<T, AppError>`; never throw across async in core/data.
+- Semantic NativeWind tokens only — no deprecated Colors / raw hex in new code.
+
+**Curriculum pipeline deltas**
+
+- Compile contract must emit bilingual passage one-line summaries and authored word-boundary spans linking vocabulary `item_id`s.
+- Curriculum OTA: download → SHA-256 verify → atomic rename (unchanged).
+
+**Review / grading engine deltas**
+
+- Two-card kanji → worst-of-both single FSRS update; never double-update.
+- Answer feedback kinds include `wrong_reading_type` alongside `wrong_script` / `confused_with`.
+- Progress UI counts cards; SessionHeader / counter must not stall under two-card model.
+- Deferred-grade flush must work when advance wait is indefinite (Return-to-advance).
+- Details routes mounted under `review/` so session survives.
+
+**Goal ring / Home**
+
+- Goal-ring fields in user.db (target, weekly ratchet, achievement); never clamp as capacity ceiling.
+- Daily load accounting must include lesson contributions (`addDailyLoad` from lesson flow — fixes BUG2).
+- Remove Home streak UI and streak-at-risk notifications.
+- Stats shows days-studied-this-month.
+
+**Browse / search**
+
+- Virtualized UNION query over items + reading_passages; filter indexes for NFR22.
+- Separate view permission (passages) from lesson eligibility.
+- Passage unlock = ≥90% linked vocab+grammar at Guru+ (derived query, no unlock table).
+
+**Furigana / AI persistence**
+
+- Migration `015_furigana_overrides`; resolution helper: Settings override → SRS default → global pref.
+- Migrations `016+` for ai_sessions / ai_messages / cached summaries.
+- BYOK adapters in `core/ai/adapters/`; markers in `core/ai/markers.ts`; voice in `data/ai/voice/`.
+- Never create SRS rows from AI/off-curriculum words.
+- Cloud STT only if `cloudSttOptIn === true`.
+
+**Known bugs to fix in stories (PRD v2 Bug Batch)**
+
+- BUG1: Home metrics don't refresh after lesson/review until tab switch.
+- BUG2: Goal ring shows 0% for lesson-only users (no addDailyLoad in lesson flow).
+- BUG3: Any kanji reading accepted on reading prompt (on/kun flattened).
+- BUG4: Progress counter stalls once two-card model lands.
+- BUG5: passage_practice_results written but never read back.
+- BUG6: Furigana auto-hide keyed on kanji characters instead of vocabulary mastery.
+- BUG7: Dependency-graph locking wrongly applied to kanji/vocab rows in browse list.
+
+**Open items (non-blocking placeholders)**
+
+- OA4: Turn-budget formula — implement behind named pure function with placeholder constants.
+- OA5: Role-play scenario library — ship picker shells + stub scenarios.
+- OA6: Furigana parse-failure → plain text (already FR91).
+- OA7: Long-press a11y pattern before shipping those gestures.
+
+**Architecture implementation sequence (v2 delta-first)**
+
+1. Platform floor + New Architecture verify (dev client rebuild)
+2. User migrations: furigana overrides, goal-ring fields, AI tables
+3. Review two-card / worst-of-both / Return-to-advance / card progress
+4. Home goal-ring + streak removal + triage
+5. Unified Browse + pipeline passage summaries/spans
+6. Lesson/details split + comparison + furigana fixes
+7. BYOK adapters + chat UI + summary cache
+8. executorch TTS/STT + model downloads + conversation mode
+9. A11y long-press alternatives; polish
 
 ### UX Design Requirements
 
-- UX-DR1: Configure **NativeWind v4+** with Expo; add `global.css` with Tailwind directives; ensure compile-time styles align with `<100ms` review path (no runtime style thrash in hot path).
-- UX-DR2: Implement **`tailwind.config.js`** as single source of truth for tokens: dark-first palette (`background`, `surface`, `surface-elevated`, `text-primary` / `secondary` / `muted`, `border`), light theme secondary set, SRS stage colors (`srs-apprentice` … `srs-burned`), feedback colors (`feedback-correct` / `incorrect` / `warning` / `info`), cognitive load ring gradient stops, content-type accents (`content-radical` … `content-reading`), reinforcement tokens (`reinforcement-text`, `reinforcement-bg`).
-- UX-DR3: Implement **typography tokens** (`display`, `title-lg`, `title`, `body-lg`, `body`, `body-sm`, `caption`, `overline`) and **spacing** (`space-xs` … `space-2xl`) and **radius** (`radius-sm` … `radius-full`) per UX spec.
-- UX-DR4: Build **`CognitiveLoadRing`** (SVG arc, large ~120–180px responsive / small ~32px header), states empty/filling/full/idle, color gradient green→yellow→orange→cyan complete, **numeric percent always paired** with ring (not color-only), `accessibilityRole="progressbar"` + `accessibilityValue`.
-- UX-DR5: Build **`ReviewCard`** with states `prompting` | `evaluating` | `correct` | `incorrect` | `typo`; variants for kanji / vocabulary / grammar (cloze + hint affordance); full a11y labels for prompt and result.
-- UX-DR6: Build **`WanaKanaInput`** — full-width, real-time romaji→kana, placeholder "type in romaji...", focus management for submit/re-prompt loop; a11y announces converted kana on submit.
-- UX-DR7: Build **`ProgressiveHint`** — pill "Hint" control, stacked levels (conjugation scope → lesson tie-in → full cross-domain reinforcement), button shows "Hint N of M", exhausted disabled state; **hint usage feeds weakness analytics** per UX; screen reader announces each new hint panel.
-- UX-DR8: Build **`ReinforcementHighlight`** — subdued inline annotation on **correct** answers (and result screen for grammar per progressive rules); `reinforcement-*` tokens; supplementary `accessibilityLabel`.
-- UX-DR9: Build **`TimeCompressionSummary`** per **Direction D** — domain counts, session minutes, conservative multi-app equivalence line, date; share-ready layout; full verbalized `accessibilityLabel`s for numbers.
-- UX-DR10: Build **`PostSessionShareCard`** — screenshot-optimized card (branding + stats + time compression + streak); native share / save.
-- UX-DR11: Build **`ImportSummaryCard`** with states loading / summary / confirmed / error; mapped vs unmatched tables; clear SRS stage mapping copy; a11y summary role.
-- UX-DR12: Build **`LevelProgressBar`** for Home — JLPT label, thin gradient fill, compact Kanji/Grammar/Vocab counts; `progressbar` semantics.
-- UX-DR13: Build **`SRSStageIndicator`** — pill with **text label + color** (never color-only); token-mapped stage colors.
-- UX-DR14: Build **`WeaknessStatCard`** for Stats — pattern name, accuracy, mini trend, improving/declining/stable styling.
-- UX-DR15: Build **`StreakCounter`** — flame + count + states (active / at-risk / broken copy); a11y streak announcement.
-- UX-DR16: Build **`SessionHeader`** — small ring, item index count, content-type badge; a11y session context on focus.
-- UX-DR17: Build **`OnboardingStep`** reusable cards (illustration slot, heading, body, primary/secondary/skip).
-- UX-DR18: Build **`TabBar`** — five tabs Home, Learn, Read, Stats, Settings; **hidden during review**; Home badge when reviews pending; tab a11y roles/states.
-- UX-DR19: **Home screen (chosen direction):** simplified home — cognitive load ring with optional low-contrast hero graphic behind; **Review** (primary) + **Learn** (secondary) with **dedicated icons/illustrations**; streak card; **JLPT progress bar** with compact domain counts on first view; **SRS stage bucket counts live on Stats tab only** (not Home).
-- UX-DR20: **Review layout Direction A (compact):** three zones — fixed header (~56px), center-weighted focal, fixed input bottom; full-width input; safe-area aware; **no raw "pending reviews" anxiety counter** as primary chrome (ring/capacity framing).
-- UX-DR21: **Grammar prompts:** no automatic reinforcement line on initial question; reinforcement via ProgressiveHint or **after** answer on result screen per stakeholder decision.
-- UX-DR22: **Onboarding Flow F** as specified in UX doc and `ux-design-directions.html` reference.
-- UX-DR23: **Feedback pattern:** correct = green + ✓ + light haptic + optional auto-advance setting; incorrect = red + ✗ + medium haptic + **no auto-advance**; typo = amber + soft haptic + re-prompt; **never color-only**.
-- UX-DR24: **Session exit:** explicit action with bottom sheet confirmation ("End session? Progress is saved."); no accidental swipe loss; tab bar hidden in session.
-- UX-DR25: **Banners:** top push (not overlay); **none during review** — queue until session end.
-- UX-DR26: **Button hierarchy:** max one primary per surface; Review vs Learn primary/secondary pairing; disabled = 40% opacity with explanation, not removed.
-- UX-DR27: **Empty/loading states** per UX tables (e.g. all caught up, first stats, import skeletons); skeletons match final layouts.
-- UX-DR28: **Portrait lock** on phones via `expo-screen-orientation`; tablet rules per spec.
-- UX-DR29: **Responsive NativeWind breakpoints** (`md:`, `lg:`) for ring sizing and `lg:max-w-[500px]` content column on tablets.
-- UX-DR30: **Motion:** zero animations **between review items**; ring fill subtle and **optional disable** in accessibility settings; respect reduced motion preferences where applicable.
-- UX-DR31: **Touch targets** minimum 44×44pt; submit oversized during review.
-- UX-DR32: **Focus management** in review: after submit → result announcement; after advance → input focus; `accessibilityLiveRegion="polite"` for dynamic hints/results.
-- UX-DR33: **Mnemonic images:** `expo-image` caching; `accessibilityLabel` with text fallback when image unavailable (aligns with NFR20).
-- UX-DR34: **Reading vs meaning clarity:** instant type indicator (label/color) for expected answer mode on every item.
-- UX-DR35: **Automated a11y checks** in CI (`react-native-a11y` / Axe) per UX testing strategy when pipeline exists.
+- UX-DR1: Implement NativeWind semantic token system per UX color/typography/spacing spec (dark-first; SRS/feedback/content/goal-ring/reinforcement tokens); CI contrast check remains authoritative.
+- UX-DR2: Rename CognitiveLoadRing → GoalRing; support 0% / filling / goal-met / overshoot (>100% cyan extended arc + `+N%` badge); large Home (~160px) and small session header (~32px); a11y progressbar announces percent including overshoot.
+- UX-DR3: TabBar: Home · Browse · Conversation (short label **Talk** OK) · Stats · Settings; hide during review/lesson/PTT; reviews-ready count on Review CTA only (no tab badge).
+- UX-DR4: Home composition per FR58–61 — greeting with day-1 fallback, goal ring hero, illustrated Review (primary) + Learn (secondary) CTAs, thin JLPT progress bar under CTAs, forecast+wall, reading readiness, designed empty states; soft hero graphics behind ring; no streak.
+- UX-DR5: Conditional Home sections: at-risk refresher, welcome-back triage, curriculum-update banner, import nudge — invitation framing, never shame/auto-start.
+- UX-DR6: Direction A compact review layout default (dense header, large focal, full-width input); zero animations in review loop; Direction B reference-only for later a11y preference.
+- UX-DR7: ReviewCard states: prompting / correct / incorrect / typo / wrong_reading_type / wrong_script; variants for kanji meaning, kanji on'yomi (labeled), vocab, grammar (+ Hint).
+- UX-DR8: Shared AnswerReveal (reading + meaning) on correct and incorrect paths; collision line + Compare deep-link.
+- UX-DR9: SessionHeader: small GoalRing + card progress `N of M` + type badge.
+- UX-DR10: Return-to-advance on correct; Continue on MC/incorrect; 800ms auto-advance Settings opt-in off by default.
+- UX-DR11: ProgressiveHint for grammar (Direction E ladder: scope → lesson → full reinforcement); no automatic reinforcement on initial prompt; full notes on result.
+- UX-DR12: Post-session TimeCompressionSummary / PostSessionShareCard — time compression centerpiece; goal-met/overshoot; domain breakdown; optional weakness delta; **no streak row**.
+- UX-DR13: BrowseList / BrowseRow / FilterDrawer / FilterPill / SearchField — virtualized UNION list; passage rows show bilingual summary + lock/readiness; Apply shows live count (disabled at zero); self-summarizing pills.
+- UX-DR14: Locked passage UX = needed-items to-do list (never dead end); reading-readiness meter destination framing.
+- UX-DR15: Passage reader long-press word details + visible non-gesture a11y alternative (NFR29 / OA7).
+- UX-DR16: Lesson 3-section paged flow vs details single-scroll split; SectionHeading + info bottom sheets; StudyStatusBanner passive; PersonalMnemonic content states; accepted-answers disclosure.
+- UX-DR17: On'yomi/kun'yomi primer for absolute beginners (FR74) as first-kanji section content + later via info affordance.
+- UX-DR18: CompareView sticky side-by-side comparison reachable from details and answer-collision.
+- UX-DR19: FuriganaText shared renderer; vocab-mastery auto-hide; tap = peek; Settings overrides + reset UI.
+- UX-DR20: DaysStudiedStat on Stats (calm monthly activity — no flame); SRS stage buckets + weakness trends retained on Stats.
+- UX-DR21: ConversationStartPicker as empty state; KeySetup for unconfigured BYOK; ChatBubble / Composer / PTTSession / ConversationSummary components.
+- UX-DR22: Conversation offline empty/error: clear "requires internet"; study features remain available messaging.
+- UX-DR23: Voice model missing: chat OK; mic prompts explicit download with size disclosure.
+- UX-DR24: Flagged unknown words tappable (curriculum) with non-gesture alternative; never mid-convo correction UI.
+- UX-DR25: ImportSummaryCard transparent mapped/unmatched summary (Direction F trust pattern).
+- UX-DR26: Onboarding intensity = two options only (Relaxed ~15 / Intense ~30); no account.
+- UX-DR27: Remove streak-at-risk warning banners and streak-recovery sheets from product surfaces.
+- UX-DR28: Goal-rise congratulatory overlay/prompt with change offer (FR57); non-review only.
+- UX-DR29: Feedback patterns: correct=green+reveal+Return; incorrect=red+reveal+manual; typo/wrong_reading_type=amber nudge+re-prompt; collision=Compare link.
+- UX-DR30: Empty/loading states for no reviews, Browse no-matches, Conversation unconfigured/offline, Stats first-run, locked passage, voice models missing — per UX Consistency Patterns table.
+- UX-DR31: Visual reference implementation must match refreshed `ux-design-directions.html` v2 shell (Directions A, C-v2 Home, D post-session, E hints, F onboarding, G Browse, H Conversation); PRD wins on IA/behavior conflicts.
+- UX-DR32: Conversation accent reuses `feedback-info` blue; content-reading accent for passages.
+- UX-DR33: Settings surfaces: unbounded goal config, furigana overrides+reset, review auto-advance, notifications (no streak-at-risk), AI key, cloud STT opt-in, haptics, intensity.
+- UX-DR34: Session exit confirm ("Progress is saved"); tab bar hidden in focused session contexts; max Browse drill-down ~2.
 
 ### FR Coverage Map
 
-FR1: Epic 4 — JLPT kanji progression and browse/learn
-FR2: Epic 4 — JLPT vocabulary progression
-FR3: Epic 4 — JLPT grammar progression and integrated conjugation practice
-FR4: Epic 4 — Radical→kanji→vocab dependency graph
-FR4b: Epic 4 — Visual mnemonic images for radicals (R2)
-FR5: Epic 4 — Multiple accepted answers; onyomi/kunyomi
-FR5b: Epic 5 — SRS burn/mastered stages in review lifecycle
-FR6: Epic 4 — Structured grammar schema in curriculum
-FR6b: Epic 5 — Parser-based grammar validation in review
-FR6c: Epic 4 — Example sentences per grammar point (content)
-FR7: Epic 4 — Contextual vocabulary meanings
-FR8: Epic 4 — Grammar sentence selection for known vocab (data + selection rules); presentation in Epic 5–6
-FR8b: Epic 4 — Reading passages and comprehension (content + reader)
-FR8c: Epic 4 — Reading aligned to learner JLPT level
-FR9: Epic 5 — Input-based testing; keyboard-first review loop
-FR10: Epic 5 — FSRS scheduling
-FR11: Epic 5 — Unified interleaved review session
-FR12: Epic 5 — Relationship layer and visible reinforcement in review/result
-FR12b: Epic 5 — Micro-adjustments to related items on review
-FR13: Epic 5 — WanaKana embedded input
-FR14: Epic 5 — Levenshtein + conjugation-aware validation
-FR15: Epic 6 — Cognitive load ring tracking
-FR16: Epic 6 — “Enough for today” communication
-FR17: Epic 6 — Adaptive cognitive load threshold
-FR18: Epic 6 — Streak display
-FR19: Epic 6 — Opt-in push notifications
-FR20: Epic 6 — Notification preferences
-FR21: Epic 2 — JLPT starting level selection
-FR22: Epic 3 — Import entry (WaniKani / Bunpro / Anki) in onboarding
-FR23: Epic 2 — Per-item known / in-progress / not started
-FR24: Epic 2 — Bulk marking of known items
-FR25: Epic 2 — Session intensity preference
-FR26: Epic 2 — No account required
-FR26b: Epic 4 — Personal mnemonics on-device
-FR27: Epic 4 — View official mnemonics and radical images
-FR28: Epic 6 — Weakness statistics UI
-FR29: Epic 6 — Per-item error statistics
-FR30: Epic 6 — Pattern tags and confusion clusters (data + logic)
-FR31: Epic 6 — Weakness-biased queue priority
-FR32: Epic 6 — Visible weakness trends
-FR33: Epic 6 — Surfaced confusion clusters to learner
-FR33b: Epic 6 — Post-session time compression summary
-FR33c: Epic 6 — Credible time-compression methodology
-FR33d: Epic 3 — WaniKani API import and FSRS mapping
-FR33e: Epic 3 — Bunpro import and FSRS mapping
-FR33f: Epic 3 — Anki deck import and FSRS mapping
-FR33g: Epic 3 — Unmatched import items flagged
-FR33h: Epic 3 — Import summary before finalize
-FR33i-PM: Epic 8 — Shadow mode (post-MVP)
-FR33j-PM: Epic 8 — Shadow mode comparative stats
-FR33k-PM: Epic 8 — Shadow mode switch prompts
-FR34: Epic 1 — Maintainer mnemonic generation / R2 (ops; enables FR4b)
-FR35: Epic 1 — JSON schema validation in CI
-FR36: Epic 1 — JSON→SQLite compile in CI
-FR37: Epic 1 — Git LFS for compiled curriculum DB
-FR37b: Epic 1 — Mnemonic URLs in curriculum data
-FR38-PM: Epic 8 — AI-generated reading stories
-FR39-PM: Epic 8 — Multi-provider AI keys
-FR40-PM: Epic 8 — BYO / OpenRouter key paths
-FR41-PM: Epic 8 — In-app curriculum edit proposals
-FR42-PM: Epic 8 — Invisible GitHub PR flow
-FR43-PM: Epic 8 — GitHub OAuth for contributors
-FR44-PM: Epic 8 — Batch contribution submit
-FR45-PM: Epic 8 — Content provenance tagging
-FR46: Epic 1 — Local SQLite for curriculum + progress
-FR47: Epic 1 — Offline-capable app after initial content
-FR48: Epic 1 — Curriculum DB version check and download
-FR49: Epic 1 — Cached mnemonic images for offline
-FR50: Epic 3 — One-time network for WK/Bunpro import (with Epic 1 connectivity plumbing)
-FR51: Epic 1 — OTA JS updates (Expo Updates)
-FR52: Epic 7 — Screen reader support (implemented across flows; epic gates compliance)
-FR53: Epic 7 — Contrast for UI including cognitive load ring
-FR54: Epic 7 — Scalable learning text
+**Epic 1 — Kanji Review Clarity**
+- FR5: Specific reading-type validation on kanji reading prompts (amended)
+- FR9: Input-based review loop with two-card / Return-advance (amended)
+- FR11: Unified review session with two-card pacing (amended)
+- FR14: Non-terminal wrong_reading_type alongside typo / wrong_script paths
+- FR81: Two-card kanji (meaning + labeled on'yomi); kun'yomi via vocabulary
+- FR82: wrong_reading_type non-terminal state
+- FR83: Worst-of-both single SRS update per item/session
+- FR84: Return-to-advance; auto-advance opt-in off by default
+- FR85: Shared AnswerReveal; details under review/
+- FR86: Card-based progress counter; answer-collision → Compare
+
+**Epic 2 — Goal-Driven Daily Home**
+- FR18→Stats: Days studied this month (streak removed from Home)
+- FR20: Notification config (streak-at-risk removed)
+- FR33b: Post-session domain + time summary (no streak row)
+- FR33c: Conservative time-compression estimate
+- FR55: Adaptive goal ring (lessons + reviews, overshoot, no max)
+- FR56: Weekly goal recalculation (active days, min sample)
+- FR57: Goal rises only; opt-in reduction offer; Settings unbounded
+- FR58: Home permanent sections + empty states + conditional triage
+- FR59: At-risk / refresher section
+- FR60: Reading-readiness meter
+- FR61: Welcome-back triage
+
+**Epic 3 — Unified Browse & Passages**
+- FR8b: Pre-seeded passages with comprehension (via Browse, not Read tab)
+- FR8c: Passages use current/completed level content + access states
+- FR62: Unified virtualized discovery list; level as filter
+- FR63: Passages as first-class rows; Read tab removed
+- FR64: Faceted filters with live Apply count + pills
+- FR65: Fan-out search (~200ms debounce)
+- FR66: Bilingual passage one-line summaries
+- FR67: Kanji/vocab/grammar always viewable; lock = passages only
+- FR68: ≥90% Guru+ unlock gating
+- FR69: Locked passage needed-items to-do
+- FR70: Long-press word details; passage_practice_results read-back
+
+**Epic 4 — Clear Lessons & Honest Details**
+- FR26b: Personal mnemonics as content states
+- FR27: View mnemonics on details surfaces
+- FR71: Lesson 3-section paged vs details scroll split
+- FR72: Type-appropriate cross-references
+- FR73: SectionHeading + info bottom sheet
+- FR74: On'yomi/kun'yomi primer for beginners
+- FR75: Personal mnemonic empty/saved/editing UX
+- FR76: Passive study-status banner; details ≠ lesson entry
+- FR77: Accepted answers behind disclosure
+- FR78: Furigana auto-hide on vocabulary mastery
+- FR79: Stateless tap peek; Settings overrides + reset
+- FR80: Comparison view via picker / route params
+
+**Epic 5 — AI Conversation Practice**
+- FR87: Conversation tab (replaces Read); key-setup when unconfigured
+- FR88: BYOK OpenAI-compatible + Anthropic adapters; secure store
+- FR89: Start picker empty state; past threads secondary
+- FR90: Chat default; mic → conversation mode
+- FR91: Furigana bracket replies; plain-text fallback
+- FR92: Unknown-word flagging + curriculum deep-links
+- FR93: Never inject AI words into SRS
+- FR94: Turn budget steer (OA4 placeholder OK)
+- FR95: Deferred correction → end summary
+- FR96: On-demand cached summary; end / abandon rules
+- FR97: In-band control markers
+- FR98: Full-screen PTT conversation mode
+- FR99: STT → composer confirm; cloud STT opt-in only
+- FR100: On-device TTS/STT via executorch
+
+**Deferred (Post-MVP)**
+- FR33i-PM, FR33j-PM, FR33k-PM: Shadow mode
+- FR38-PM–FR45-PM: AI reading stories; community contribution
+
+**Shipped baseline (v1 — no new stories unless gap/regression)**
+- FR1–FR4b, FR5b–FR8, FR10, FR12–FR13, FR21–FR33h, FR34–FR54, FR46–FR51
 
 ## Epic List
 
-### Epic 1: Installable app with local curriculum and update pipeline
+**Story sizing (approved):** Prefer **2–3 larger stories per epic**, each a vertical slice covering a coherent user outcome (not micro-tickets).
 
-Learners and maintainers get a store-ready shell: bundled or downloaded **curriculum** and separate **user progress** databases, validated **JSON→SQLite** automation, **versioned curriculum** distribution, **R2-backed** radical imagery in content, **offline-first** behavior after content is present, **curriculum updates** without losing progress, and **OTA** fixes for JS — matching the architecture first-mile story (Expo SDK 55 template + NativeWind + dual DB) without requiring later epics for the app to open and show real data.
+### Epic 1: Kanji Review Clarity
+Learners prove meaning and on'yomi as separate cards, advance on Return, and see inline reveals — without double-grading or a stalled progress counter.
+**FRs covered:** FR5 (amended), FR9 (amended), FR11 (amended), FR14 (wrong_reading_type), FR81–FR86
+**Also:** BUG3, BUG4 · UX-DR6–11, UX-DR29 · NFR1, NFR5b
 
-**FRs covered:** FR34, FR35, FR36, FR37, FR37b, FR46, FR47, FR48, FR49, FR51
+### Epic 2: Goal-Driven Daily Home
+Learners work toward an adaptive daily goal (lessons + reviews, overshoot OK) with Home triage — no streak guilt, no auto-start.
+**FRs covered:** FR55–FR61, FR20 (amended), FR33b–FR33c, days-studied (ex-FR18/FR19)
+**Also:** BUG1, BUG2 · UX-DR2–5, UX-DR12, UX-DR20, UX-DR27–28, UX-DR30
 
-**Implementation notes:** `create-expo-app` default@sdk-55; `curriculum.db` + `user.db`; GitHub Actions compile + LFS; `expo-image` cache; NFR2–3, NFR10–12, NFR21–22 addressed incrementally with this foundation.
+### Epic 3: Unified Browse & Passages
+Learners find radicals, kanji, vocab, grammar, and passages in one searchable, filterable list — locked passages become to-dos, not dead ends.
+**FRs covered:** FR8b–FR8c (amended), FR62–FR70
+**Also:** BUG5, BUG7 · UX-DR3, UX-DR13–15, UX-DR31–32 · pipeline summaries + word spans
 
----
+### Epic 4: Clear Lessons & Honest Details
+Learners get a three-section lesson flow and a details page that explains, cross-links, and peeks furigana correctly — never conflating details with “start lesson.”
+**FRs covered:** FR71–FR80, FR26b, FR27 (details surfaces)
+**Also:** BUG6 · UX-DR16–19 · migration `015_furigana_overrides`
 
-### Epic 2: First-run path — level, intensity, and calibration without an account
+### Epic 5: AI Conversation Practice
+Learners practise Japanese in a BYOK Conversation tab (chat default, optional on-device voice), grounded in curriculum — corrections only at the end.
+**FRs covered:** FR87–FR100
+**Also:** NFR23–NFR30 · UX-DR21–24, UX-DR33 · platform floor + New Architecture + executorch · migrations `016+`
 
-Learners complete **first launch** with **no account**, pick **JLPT starting level**, set **session intensity**, **mark known or in-progress items** (including **bulk** actions), and land in a state where the app can serve meaningful work — independent of import (Epic 3).
+**Natural implementation order:** Epic 1 → 2 → 3 → 4 → 5 (matches Architecture). Platform floor / New Arch opens Epic 5 (no separate Epic 0). Epic 3 may leave a Conversation placeholder tab until Epic 5.
 
-**FRs covered:** FR21, FR23, FR24, FR25, FR26
+## Epic 1: Kanji Review Clarity
 
-**Implementation notes:** Onboarding Flow F + `OnboardingStep`; pairs with UX-DR17, UX-DR22, home placeholders until Epic 4–6.
+Learners prove meaning and on'yomi as separate cards, advance on Return, and see inline reveals — without double-grading or a stalled progress counter.
 
----
+### Story 1.1: Two-Card Kanji Grading
 
-### Epic 3: Trustworthy import from WaniKani, Bunpro, and Anki
-
-Switchers **bring existing progress**: API or file import, **mapping** to internal items, **FSRS conversion**, **transparent summary** of mapped vs **unmatched** items, **secure key handling** — so the first session reflects true level (feeds Epic 5–6).
-
-**FRs covered:** FR22, FR33d, FR33e, FR33f, FR33g, FR33h, FR50
-
-**Implementation notes:** `ImportSummaryCard` (UX-DR11), `expo-secure-store`, shared mapper abstraction; NFR6–9, NFR18–20.
-
----
-
-### Epic 4: Structured Japanese content — study, read, and remember
-
-Learners **browse and learn** along **JLPT** tracks with **dependency-ordered radicals→kanji→vocabulary**, rich **grammar** points and **reading passages**, **visual/text mnemonics**, and **personal notes** — the curriculum experience outside the timed review loop.
-
-**FRs covered:** FR1, FR2, FR3, FR4, FR4b, FR5, FR6, FR6c, FR7, FR8, FR8b, FR8c, FR26b, FR27
-
-**Implementation notes:** Learn/Read tabs, `LevelProgressBar` (UX-DR12); FR8 selection logic may share modules with Epic 5–6 for reinforcement.
-
----
-
-### Epic 5: Unified review loop — type, validate, schedule, interconnect
-
-Learners run the **core product**: **one-tap** mixed **reviews**, **FSRS** intervals, **input-based** answers, **WanaKana**, **typo and conjugation-aware** checking, **visible cross-domain ties** and **related-item boosts** — fast loop per NFR1 / NFR5b / UX “serious tool” bar.
-
-**FRs covered:** FR9, FR10, FR11, FR5b, FR6b, FR12, FR12b, FR13, FR14
-
-**Implementation notes:** `ReviewCard`, `WanaKanaInput`, `ProgressiveHint`, `ReinforcementHighlight`, `SessionHeader`, pre-fetch queue; grammar validation shares parser with FR6 curriculum rules.
-
----
-
-### Epic 6: Streaks, cognitive load, weakness targeting, and session proof
-
-Learners feel **daily capacity** (ring), **habit** (streak + optional nudges), **targeted drilling**, **stats and confusion insights**, and **credible time-compressed** session proof — the differentiation vs single-domain SRS tools.
-
-**FRs covered:** FR15, FR16, FR17, FR18, FR19, FR20, FR28, FR29, FR30, FR31, FR32, FR33, FR33b, FR33c
-
-**Implementation notes:** `CognitiveLoadRing`, `TimeCompressionSummary`, `PostSessionShareCard`, `WeaknessStatCard`, `StreakCounter`, `expo-notifications`; ring fill must not block NFR1.
-
----
-
-### Epic 7: Accessible, inclusive experience for serious daily use
-
-Learners using **VoiceOver/TalkBack**, **high contrast**, **larger text**, or **accessibility keyboards** get a **WCAG 2.1 AA**-aligned experience across navigation, review, and results — release-quality inclusive polish.
-
-**FRs covered:** FR52, FR53, FR54
-
-**Implementation notes:** Cross-cutting with Epics 1–6; epic owns audits, token verification, CI a11y gates (UX-DR35), NFR14–17.
-
----
-
-### Epic 8: Post-MVP expansion (shadow mode, AI stories, community curriculum)
-
-Deferred product: **shadow mode**, **AI reading**, **community PR pipeline** — tracked so MVP epics do not silently drop `-PM` FRs.
-
-**FRs covered:** FR33i-PM, FR33j-PM, FR33k-PM, FR38-PM, FR39-PM, FR40-PM, FR41-PM, FR42-PM, FR43-PM, FR44-PM, FR45-PM
-
-**Implementation notes:** No MVP engineering dependency; data model should not block these (per architecture).
-
----
-
-## Epic 1: Installable app with local curriculum and update pipeline
-
-Learners and maintainers get a store-ready shell: bundled or downloaded **curriculum** and separate **user progress** databases, validated **JSON→SQLite** automation, **versioned curriculum** distribution, **R2-backed** radical imagery in content, **offline-first** behavior after content is present, **curriculum updates** without losing progress, and **OTA** fixes for JS — matching the architecture first-mile story (Expo SDK 55 template + NativeWind + dual DB) without requiring later epics for the app to open and show real data.
-
-### Story 1.1: Bootstrap Expo SDK 55 app with CI and OTA hooks
-
-As a **maintainer**,
-I want **the official Expo SDK 55 default template with TypeScript, Expo Router, and baseline CI**,
-So that **the team has a reproducible app entrypoint aligned with architecture (EAS-ready, Expo Updates wired minimally)**.
+As a learner,
+I want each kanji reviewed as separate meaning and on'yomi cards with correct reading-type validation,
+So that I practise the right skill and my SRS grade isn’t polluted by accepting the wrong reading type.
 
 **Acceptance Criteria:**
 
-**Given** a clean checkout of the repo  
-**When** a developer runs the documented init command (`npx create-expo-app@latest … --template default@sdk-55`) or uses the committed baseline  
-**Then** the app builds for iOS and Android simulators with TypeScript strict and Expo Router resolving `/src/app` routes  
-**And** `.github/workflows/ci.yml` runs lint, typecheck, and tests on PR (stub test OK if none yet) per architecture
+**Given** a kanji due for review
+**When** the queue builds cards for that item
+**Then** I receive two cards — meaning and on'yomi reading — both required before the item can advance
+**And** the reading prompt is labeled (e.g. “Reading — on'yomi”) and validates only on'yomi (FR81, FR5)
+**And** kun'yomi is not accepted as the kanji reading answer (kun'yomi delivered via vocabulary pairing)
 
-**Given** the project is configured for Expo Updates  
-**When** a release channel build is produced  
-**Then** `expo-updates` can report runtime version metadata (no crash on missing update)  
-**And** documentation states how OTA will be used for JS-only fixes (FR51 foundation)
+**Given** I submit a reading that is valid for the other reading type but not the prompted type
+**When** the answer is evaluated
+**Then** the result is non-terminal `wrong_reading_type` (nudge + re-prompt)
+**And** no FSRS grade and no weakness signal are recorded (FR82, FR14)
 
-### Story 1.2: NativeWind design tokens and global styling
+**Given** I have answered both cards for a kanji in one session
+**When** the item’s grade is applied
+**Then** a single FSRS update uses worst-of-both
+**And** there is no double FSRS write and no SRS schema change (FR83)
+**And** BUG3 is fixed (flattened any-reading acceptance is gone)
 
-As a **learner**,
-I want **consistent NativeWind/Tailwind tokens for colors, type, spacing, and radius**,
-So that **later screens match the UX spec without ad-hoc styles (UX-DR1–UX-DR3)**.
+**Given** vocabulary or grammar cards in the same session
+**When** they are presented
+**Then** existing single-card behavior remains unchanged
 
-**Acceptance Criteria:**
+### Story 1.2: Review Pacing, Reveal & Card Progress
 
-**Given** `tailwind.config.js` defines dark-first semantic colors, SRS stage tokens, feedback tokens, ring gradient tokens, content-type accents, and reinforcement tokens per UX spec  
-**When** any screen uses utility classes for backgrounds and text  
-**Then** tokens resolve correctly in light and dark theme toggles where implemented  
-**And** `global.css` includes Tailwind directives and is imported from the root layout
-
-### Story 1.3: Dual SQLite databases on first launch
-
-As a **learner**,
-I want **separate curriculum and user databases opened on launch**,
-So that **curriculum can be replaced later without touching my progress (FR46, NFR10)**.
+As a learner,
+I want Return-to-advance pacing, a clear inline reveal, and a progress counter that tracks cards,
+So that a longer two-card session still feels fast, honest, and controllable.
 
 **Acceptance Criteria:**
 
-**Given** the app is launched for the first time  
-**When** the database provider initializes  
-**Then** `curriculum.db` is opened from the bundled asset path (read-only connection pattern) and `user.db` is created in app sandbox if missing  
-**And** only minimal `user.db` tables required for this epic exist (e.g. preferences, schema version row)—no “create all future tables” dump
+**Given** I answered a card correctly
+**When** I press Return
+**Then** the answer is submitted on first Return and the session advances on the next Return
+**And** 800ms auto-advance is off by default and only runs if enabled in Settings (FR84)
+**And** multiple-choice / incorrect paths show a visible Continue control
 
-**Given** a subsequent app start  
-**When** initialization runs  
-**Then** both databases open without error and no user tables are dropped on curriculum-only operations
+**Given** any graded answer (correct or incorrect)
+**When** the result is shown
+**Then** a shared `AnswerReveal` shows reading + meaning (trimmed) on both paths (FR85, UX-DR8)
+**And** no review-loop animations delay the next card (NFR5b)
+**And** deeper detail opens a details route mounted under `review/` so the session survives (FR85)
 
-### Story 1.4: Five-tab app shell with hidden review route placeholder
+**Given** a session that includes two-card kanji
+**When** I view the session header progress
+**Then** progress counts **cards** (`N of M`), not items (FR86, UX-DR9)
+**And** BUG4 is fixed (counter does not stall)
 
-As a **learner**,
-I want **Home, Learn, Read, Stats, and Settings tabs using Expo Router**,
-So that **navigation matches the UX model before features land (UX-DR18 skeleton)**.
+**Given** my answer collides with another item’s accepted answer
+**When** the reveal is shown
+**Then** one extra line explains the collision and links to Compare with both items preselected (FR86)
+**And** if Compare UI is not yet built, the route/params contract is stubbed so Epic 4 can fill it without rework
 
-**Acceptance Criteria:**
+**Given** deferred grades waiting on an indefinite Return advance
+**When** I eventually continue or leave the session
+**Then** the deferred-grade flush contract still applies correctly (FR84)
 
-**Given** the tab layout from architecture (`(tabs)/_layout.tsx`)  
-**When** I tap each tab  
-**Then** I see a placeholder screen with the correct title for Home, Learn, Read, Stats, Settings  
-**And** safe areas and portrait orientation lock on phones are applied (`expo-screen-orientation`, UX-DR28)
+## Epic 2: Goal-Driven Daily Home
 
-### Story 1.5: Curriculum JSON validation, SQLite compile, Actions, LFS, and bundled seed
+Learners work toward an adaptive daily goal (lessons + reviews, overshoot OK) with Home triage — no streak guilt, no auto-start.
 
-As a **maintainer**,
-I want **JSON curriculum validated and compiled to SQLite in CI with artifacts versioned for the app bundle**,
-So that **learners ship with real N5 seed content and integrity is enforced (FR35, FR36, FR37, FR37b, NFR11)**.
+### Story 2.1: Adaptive Goal Ring from Lessons & Reviews
 
-**Acceptance Criteria:**
-
-**Given** `curriculum/` JSON and `curriculum/schema/curriculum.schema.json`  
-**When** `validate-schema` and `compile-curriculum` scripts run locally or in GitHub Actions  
-**Then** invalid JSON fails the workflow with a clear error and no partial `curriculum.db` is published  
-**And** a successful build produces `curriculum.db` referenced for bundling under `assets/curriculum-seed/` per architecture
-
-**Given** Git LFS is configured for the compiled database  
-**When** a contributor clones the repo  
-**Then** documentation explains how to pull LFS objects  
-**And** mnemonic image URL fields in compiled rows resolve to public R2 URLs (FR37b data shape)
-
-### Story 1.6: Curriculum version check and atomic on-device update
-
-As a **learner**,
-I want **the app to detect newer curriculum and replace it atomically without corrupting progress**,
-So that **I stay current and never lose SRS data (FR48, NFR12)**.
+As a learner,
+I want a daily goal ring that fills from both lessons and reviews and can overshoot 100%,
+So that progress feels like an aspiration I can beat — not a capacity ceiling.
 
 **Acceptance Criteria:**
 
-**Given** bundled curriculum metadata includes a semantic version  
-**When** the app starts with network available and a newer version is advertised (local mock or static manifest OK for first slice)  
-**Then** the download starts, completes, validates, and swaps `curriculum.db` in one atomic operation  
-**And** if download fails mid-way, the previous curriculum remains active and no partial file is used (NFR12)
+**Given** I complete review cards and/or lesson items in a day
+**When** daily load is recorded
+**Then** both lessons and reviews contribute to the goal ring (FR55)
+**And** BUG2 is fixed (`addDailyLoad` is called from the lesson flow, not only reviews)
 
-**Given** no network  
-**When** the app starts  
-**Then** no error banner blocks the UI; last good curriculum continues (graceful degradation)
+**Given** my achievement exceeds the daily target
+**When** the ring renders
+**Then** it may show >100% with cyan overshoot arc and a `+N%` badge (UX-DR2)
+**And** there is no maximum clamp; the ring never blocks continuing to study (FR55)
 
-### Story 1.7: Cached radical mnemonic images and maintainer R2 workflow
+**Given** a week of activity with enough active days
+**When** the weekly recalculation runs
+**Then** the new goal is the average daily achievement over active days only (FR56)
+**And** if the minimum active-day sample is not met, the current goal carries forward
 
-As a **learner**,
-I want **radical mnemonic images loaded from URLs in curriculum and cached for offline viewing**,
-So that **I see visuals without broken states when offline (FR49, FR4b delivery path, NFR20)**.
+**Given** the recalculated average is higher than my current goal
+**When** the rise is surfaced
+**Then** I see a congratulatory prompt that also offers to change the goal (FR57, UX-DR28)
+**And** the goal never auto-drops; after 2–3 consecutive miss weeks the system may *offer* an opt-in reduction
+**And** Settings lets me set an unbounded goal manually (FR57, UX-DR33)
 
-**Acceptance Criteria:**
+**Given** I finish a lesson or review and return to Home
+**When** Home is focused/visible
+**Then** goal and related metrics refresh without requiring a tab switch (BUG1)
 
-**Given** a radical row includes an R2 HTTPS image URL  
-**When** the learner views that radical  
-**Then** `expo-image` loads, caches, and displays the image  
-**And** if the network and cache miss, a text fallback mnemonic or alt label is shown—not a broken image (NFR20, UX-DR33)
+**Given** assistive technology reads the ring
+**When** progress is announced
+**Then** it exposes a progressbar including overshoot percent (e.g. “Goal 120 percent”) (UX-DR2)
 
-**Given** a maintainer follows `docs/` or README instructions generated in this story  
-**When** they upload new mnemonic assets to R2 and update JSON URLs  
-**Then** the next curriculum compile includes those URLs and CI still passes (FR34 operational path documented)
+### Story 2.2: Home Triage, Post-Session Proof & Days Studied
 
----
-
-## Epic 2: First-run path — level, intensity, and calibration without an account
-
-Learners complete **first launch** with **no account**, pick **JLPT starting level**, set **session intensity**, **mark known or in-progress items** (including **bulk** actions), and land in a state where the app can serve meaningful work — independent of import (Epic 3).
-
-### Story 2.1: Welcome and JLPT starting level without sign-up
-
-As a **new learner**,
-I want **to choose my JLPT starting level on first launch with no account**,
-So that **the app respects my entry point and privacy (FR21, FR26, UX-DR17, UX-DR22)**.
+As a learner,
+I want Home to offer today’s work with clear empty states and triage, and Stats to show calm monthly activity,
+So that I always know what to do next without streak anxiety or an overdue mountain.
 
 **Acceptance Criteria:**
 
-**Given** first launch (`onboarding` flow)  
-**When** I complete the welcome step and select a JLPT level (N5–N1)  
-**Then** the choice is persisted to `user.db` and onboarding advances  
-**And** no email, OAuth, or account collection UI appears (FR26)
+**Given** I open Home
+**When** the screen renders
+**Then** permanent sections are present: greeting (comprehensible sentence + day-1 fallback), goal ring, Learn CTA, Review CTA, one-week forecast with wall annotation on heavy days, reading readiness (FR58, UX-DR4)
+**And** Home never auto-starts a session — I choose the mode
+**And** Review is primary and Learn is secondary; reviews-ready count lives on the Review CTA only (UX-DR3)
+**And** a thin JLPT progress bar may sit under the CTAs
+**And** no streak flame or streak-at-risk UI appears (R2, UX-DR27)
 
-### Story 2.2: Session intensity preference
+**Given** items are genuinely at risk
+**When** the at-risk section is shown
+**Then** I see a count plus top 5–10 items and an inline “do a small revision” CTA (FR59)
+**And** tapping opens a full list; framing is invitation, never failure
 
-As a **learner**,
-I want **to pick relaxed vs intense daily session targets**,
-So that **cognitive load defaults match my schedule (FR25)**.
+**Given** passages remain locked
+**When** reading readiness is shown
+**Then** it frames a destination (“N items from unlocking…”) not a dead end (FR60)
 
-**Acceptance Criteria:**
+**Given** I return after an absence with a large backlog
+**When** welcome-back triage appears
+**Then** it offers a slice (e.g. “20 of your 340 due”) instead of dumping the full backlog (FR61)
 
-**Given** onboarding intensity step  
-**When** I select a documented preset (e.g. relaxed ~15 min vs intense ~30 min per PRD)  
-**Then** the value is stored in user preferences for Epic 6 ring logic to consume  
-**And** I can change this later from Settings (stub Settings persistence OK if Settings UI minimal)
+**Given** conditional banners apply (curriculum update, import nudge, etc.)
+**When** they are eligible
+**Then** they appear as designed empty-state-aware conditionals without blocking the permanent sections (FR58, UX-DR5)
 
-### Story 2.3: Per-item study status (known / in progress / not started)
+**Given** I complete a review session
+**When** the post-session summary shows
+**Then** time compression is the centerpiece with domain breakdown and goal-met/overshoot state (FR33b–c, UX-DR12)
+**And** there is no streak row on the share card
 
-As a **returning learner**,
-I want **to mark individual kanji, vocabulary, or grammar items as known, in progress, or not started**,
-So that **my queue reflects what I already know (FR23)**.
+**Given** I visit Stats
+**When** activity is displayed
+**Then** I see “days studied this month” (calm, no flame) (UX-DR20)
+**And** streak-at-risk notifications are not sent (FR20 amended)
 
-**Acceptance Criteria:**
+## Epic 3: Unified Browse & Passages
 
-**Given** an onboarding calibration list that queries `curriculum.db` for items at my chosen JLPT level (no dependency on the Learn tab UI from Epic 4)  
-**When** I change an item’s status  
-**Then** the status writes to `user.db` only and survives app restart  
-**And** invalid transitions are prevented (e.g. cannot mark “known” without satisfying dependency rules if those rules are enforced in this slice—document behavior)
+Learners find radicals, kanji, vocab, grammar, and passages in one searchable, filterable list — locked passages become to-dos, not dead ends.
 
-### Story 2.4: Bulk mark known items for a level or preset
+### Story 3.1: Unified Browse List, Search & Filters
 
-As a **returning learner**,
-I want **to bulk-mark sets of items (e.g. all N5 kanji) as known**,
-So that **I avoid re-proving obvious material (FR24)**.
-
-**Acceptance Criteria:**
-
-**Given** a bulk action UI tied to curriculum queries (JLPT + item type)  
-**When** I confirm bulk mark as known  
-**Then** matching items receive the known state in `user.db` using batched writes to avoid SQLite lock stalls (architecture bulk-update note)  
-**And** a summary count of updated items is shown
-
-### Story 2.5: Onboarding completion gate to main tabs
-
-As a **learner**,
-I want **onboarding to end with a clear handoff to the main app**,
-So that **I never feel stuck between flows (UX-DR22)**.
+As a learner,
+I want one Browse surface for radicals, kanji, vocab, grammar, and passages with search and filters,
+So that I can find anything without navigating per-level Learn screens or a separate Read tab.
 
 **Acceptance Criteria:**
 
-**Given** required onboarding steps for the chosen path are complete  
-**When** I finish the flow  
-**Then** `(tabs)` becomes the default route and `user.db` stores `onboarding_completed`  
-**And** relaunch skips onboarding unless a “reset onboarding” dev flag or settings action exists for QA
+**Given** the app tab shell
+**When** I open the discovery tab
+**Then** it is labeled Browse (replacing Learn-as-tab discovery) and the dedicated Read tab is removed (FR62–FR63, UX-DR3)
+**And** a Conversation/Talk placeholder tab may occupy the freed slot until Epic 5
+**And** temporary redirects from `learn/*` / `read/*` are allowed during rollout
 
----
+**Given** Browse is open
+**When** the list loads
+**Then** it is a flat, virtualized, paginated UNION of items and reading passages (FR62–FR63, UX-DR13)
+**And** JLPT level is a filter attribute, not a navigational container
 
-## Epic 3: Trustworthy import from WaniKani, Bunpro, and Anki
+**Given** I apply faceted multi-select filters (level, type, performance, SRS stage, lock)
+**When** I view the Apply control
+**Then** it shows a live result count and is disabled at zero (FR64)
+**And** active selections appear as self-summarizing pills
 
-Switchers **bring existing progress**: API or file import, **mapping** to internal items, **FSRS conversion**, **transparent summary** of mapped vs **unmatched** items, **secure key handling** — so the first session reflects true level (feeds Epic 5–6).
+**Given** I type in the search field (English, romaji, kana, or kanji)
+**When** ~200ms debounce elapses
+**Then** a fan-out query runs with parallel OR branches (FR65)
+**And** romaji converts to kana in parallel without replacing the raw query
 
-### Story 3.1: Secure storage for import credentials
+**Given** kanji, vocabulary, or grammar rows
+**When** they appear in Browse
+**Then** they are always viewable regardless of lesson eligibility (FR67)
+**And** BUG7 is fixed — dependency-graph locking is not applied to these rows
 
-As a **switcher**,
-I want **API keys held in secure storage only for the import session**,
-So that **my credentials are not leaked (NFR6, NFR7)**.
+**Given** a passage row
+**When** it is rendered
+**Then** it shows its bilingual (JA/EN) one-line summary when available (FR66)
+**And** lock/readiness affordance is passage-specific (UX-DR13–14)
 
-**Acceptance Criteria:**
+**Given** Browse has no matches for current filters/search
+**When** the empty state shows
+**Then** I see “No matches” with a clear-filters action (UX-DR30)
 
-**Given** import screens for WaniKani/Bunpro  
-**When** I paste an API key  
-**Then** the value is stored with `expo-secure-store` and never logged to analytics or plaintext files  
-**And** I can discard the key after successful import (FR33d/FR33e support)
+### Story 3.2: Passage Unlock, Reader & Practice State
 
-### Story 3.2: WaniKani v2 import with mapping and FSRS conversion
-
-As a **WaniKani user**,
-I want **my assignments mapped to internal items with FSRS-equivalent states**,
-So that **burned items stay burned and apprentice intervals feel right (FR33d, NFR18)**.
-
-**Acceptance Criteria:**
-
-**Given** a valid WaniKani API key and network  
-**When** import runs  
-**Then** the client respects documented rate limits (queue/retry) and surfaces readable errors for invalid keys or HTTP failures  
-**And** each mapped subject uses the shared mapping table architecture describes, converting WK stages to FSRS fields in `user.db`
-
-### Story 3.3: Bunpro import or documented fallback
-
-As a **Bunpro user**,
-I want **grammar progress imported when an API or export exists, or a clear fallback**,
-So that **I am not blocked silently (FR33e, NFR18)**.
+As a learner,
+I want passages to unlock when I’m mostly ready, show what’s missing when locked, and remember practice answers,
+So that reading feels like a destination I can work toward — not a dead end.
 
 **Acceptance Criteria:**
 
-**Given** Bunpro connectivity per investigation outcome documented in-repo  
-**When** import is available and succeeds  
-**Then** grammar items map to internal IDs with FSRS conversion analogous to WK  
-**And** when import is unavailable, the UI offers manual marking / skip with explicit limitation text (PRD fallback)
+**Given** a passage with linked vocabulary and grammar
+**When** unlock is evaluated
+**Then** it unlocks when ≥90% of linked vocab+grammar are Guru or above (FR68)
+**And** a single leech cannot keep the passage fully locked
 
-### Story 3.4: Local Anki `.apkg` import
+**Given** a locked passage
+**When** I tap it
+**Then** I see the specific vocab/grammar still needed as a to-do list (FR69, UX-DR14)
+**And** I am not shown a dead-end empty state
 
-As an **Anki user**,
-I want **to pick a deck file and import locally with no cloud upload**,
-So that **my decks stay private (FR33f, NFR9, NFR19)**.
+**Given** the curriculum compile pipeline
+**When** passages are compiled
+**Then** bilingual one-line summaries and authored word-boundary spans linking vocabulary `item_id`s are emitted into `curriculum.db`
 
-**Acceptance Criteria:**
+**Given** an unlocked passage reader
+**When** I long-press a word with an authored boundary
+**Then** meaning/reading/details open in place (FR70)
+**And** a visible non-gesture alternative exists for the same action (NFR29, UX-DR15)
 
-**Given** a supported `.apkg` selected via file picker  
-**When** import runs  
-**Then** parsing happens entirely on-device and malformed zips show a specific error (NFR19)  
-**And** mapped cards update `user.db` FSRS fields; unmatched cards are listed for follow-up (FR33g)
+**Given** I previously answered comprehension inputs correctly
+**When** I reopen the passage
+**Then** `passage_practice_results` are read back to show completed state and disable already-correct inputs (FR70)
+**And** BUG5 is fixed (results are no longer write-only)
 
-### Story 3.5: Import summary and unmatched transparency
+## Epic 4: Clear Lessons & Honest Details
 
-As a **switcher**,
-I want **a summary of mapped vs unmatched items and SRS mapping before I confirm**,
-So that **I trust the transition (FR33h, FR33g, UX-DR11)**.
+Learners get a three-section lesson flow and a details page that explains, cross-links, and peeks furigana correctly — never conflating details with “start lesson.”
 
-**Acceptance Criteria:**
+### Story 4.1: Lesson / Details Split, Cross-Refs & Primer
 
-**Given** any successful import partial result  
-**When** the summary screen renders  
-**Then** counts for mapped/unmatched and SRS stage mapping are visible in `ImportSummaryCard` layout  
-**And** confirming persists mapped progress; cancel returns without corrupting prior `user.db` state
-
-### Story 3.6: Onboarding branch to import sources
-
-As a **switcher**,
-I want **to choose WaniKani, Bunpro, Anki, or skip import during onboarding**,
-So that **I land on the path that matches my history (FR22, FR50)**.
+As a learner,
+I want lessons paced in three clear sections and details pages that show honest cross-links and study status,
+So that studying an item feels guided while browsing an item never pretends to be a lesson.
 
 **Acceptance Criteria:**
 
-**Given** onboarding “existing knowledge” branch  
-**When** I pick an import source  
-**Then** I am routed to the correct subflow and return to onboarding completion with data persisted  
-**And** skipping import still allows manual calibration (Epic 2) without dead ends
+**Given** I start a lesson for an item
+**When** the lesson UI loads
+**Then** it uses a three-section paged flow: Introduction → Mnemonic → Examples & links, advanced by Continue (FR71, UX-DR16)
+**And** section content is authored once into the correct surface (lesson vs details)
 
----
+**Given** I open an item details page
+**When** the page renders
+**Then** it is a single vertical scroll with sections collapsible behind disclosures (FR71)
+**And** the details page is never a lesson entry point (FR76)
 
-## Epic 4: Structured Japanese content — study, read, and remember
+**Given** any content type on details
+**When** cross-references render
+**Then** they come from dependency edges: radical→example kanji, kanji→vocabulary using it, vocabulary→component kanji (browsable), grammar→vocabulary using the pattern (FR72)
 
-Learners **browse and learn** along **JLPT** tracks with **dependency-ordered radicals→kanji→vocabulary**, rich **grammar** points and **reading passages**, **visual/text mnemonics**, and **personal notes** — the curriculum experience outside the timed review loop.
+**Given** a section heading that needs an explainer (on'yomi/kun'yomi, radical, burned, transitive, etc.)
+**When** I use the info affordance on `SectionHeading`
+**Then** an explainer opens as a bottom sheet (FR73, UX-DR16)
 
-### Story 4.1: JLPT Learn hub and per-type item lists
+**Given** I am an absolute beginner (onboarding path) and have not seen the kanji reading primer
+**When** I reach the first kanji that has both reading types
+**Then** an on'yomi/kun'yomi primer is shown unprompted as section-1 content (FR74, UX-DR17)
+**And** `seenKanjiReadingPrimer` is set so it does not repeat; the primer remains reachable via heading info later
 
-As a **learner**,
-I want **to browse kanji, vocabulary, and grammar by JLPT level**,
-So that **I know what to study next in structure (FR1, FR2, FR3)**.
+**Given** my study status for the viewed item
+**When** the details page shows
+**Then** a passive non-blocking study-status banner orients me (locked → what’s needed; prereqs-met-not-started → “you haven’t studied this yet”; in-progress/known → nothing) (FR76)
+**And** content stays fully visible in every state
 
-**Acceptance Criteria:**
+**Given** curriculum accepted answers vs my personal synonyms
+**When** I view accepted answers
+**Then** they are behind a disclosure that does not collide with the synonyms editor naming (FR77)
 
-**Given** `curriculum.db` seeded content  
-**When** I open Learn and pick a JLPT level  
-**Then** I see separate lists or filters for kanji, vocabulary, and grammar with counts  
-**And** list queries complete within the architecture performance budget on mid-range devices for N5 seed sizes (NFR2 baseline)
+**Given** personal mnemonic for an item
+**When** I view or edit it
+**Then** empty shows a muted “add your own” line; saved shows text with edit + delete (delete confirms); editing disables Save when empty (FR75, FR26b, UX-DR16)
 
-### Story 4.2: Radical detail with mnemonic image
+### Story 4.2: Furigana Model, Settings Overrides & Compare View
 
-As a **learner**,
-I want **radical detail with meaning and mnemonic image**,
-So that **radicals stick before kanji (FR4, FR4b, FR27)**.
-
-**Acceptance Criteria:**
-
-**Given** a radical with optional R2 URL  
-**When** I open its detail page  
-**Then** meaning, strokes, and mnemonic image (or text fallback) display using shared image cache behavior from Epic 1  
-**And** dependency “required radicals” for a kanji link out correctly when graph data exists (FR4)
-
-### Story 4.3: Item detail screens for kanji, vocabulary, and grammar
-
-*Consolidates original stories 4.3, 4.4, and 4.5 — all follow the same detail-screen pattern.*
-
-As a **learner**,
-I want **rich detail screens for kanji (readings, meanings, synonyms, mnemonics), vocabulary (contextual usage, examples), and grammar (structured rules, accepted forms, example sentences)**,
-So that **I can study all content types in depth outside reviews (FR5, FR6, FR6c, FR7, FR27)**.
+As a learner,
+I want furigana that follows vocabulary mastery (with Settings overrides) and a side-by-side Compare view,
+So that reading practice matches what I actually know and lookalike mistakes become teachable.
 
 **Acceptance Criteria:**
 
-**Given** a kanji item  
-**When** I view detail  
-**Then** primary and synonym meanings render from the dedicated answers model  
-**And** readings are labeled distinctly to reduce reading-vs-meaning confusion (UX-DR34 alignment on labels)
+**Given** furigana `auto` mode on vocabulary
+**When** visibility is resolved
+**Then** auto-hide keys on the vocabulary item’s mastery (Guru+ or known), never on component kanji characters (FR78)
+**And** BUG6 is fixed (`getKnownKanjiCharacters()` is not the mastery unit)
 
-**Given** a vocabulary item with contextual gloss and linked example sentences  
-**When** I open detail  
-**Then** contextual meaning and at least one example render when present in seed data  
-**And** grammar cross-links display when `grammar` associations exist in curriculum
+**Given** I tap furigana on a word
+**When** visibility toggles
+**Then** the tap is a stateless peek/self-test only (FR79)
 
-**Given** a grammar point with `accepted_forms` and `conjugation_rules` JSON  
-**When** I view the grammar detail screen  
-**Then** structure, accepted forms, and ≥5 example sentences render when data provides them (FR6c)  
-**And** conjugation rules are exposed to the same parser module Epic 5 imports for validation (shared package or folder, no duplication)
+**Given** I set persistent per-word show/hide in Settings
+**When** furigana resolves
+**Then** order is Settings override → SRS default → global preference mode (FR79, UX-DR19, UX-DR33)
+**And** overrides live in `user.db` via migration `015_furigana_overrides`, independent of `item_study_status`
+**And** Settings provides a reset for overrides
 
-### Story 4.4: Reading passages with comprehension prompts
+**Given** I open Compare from details or from a review answer-collision link
+**When** two items are provided (picker or route params)
+**Then** Compare shows sticky side-by-side glyphs, columnized short attributes, stacked prose, and component chips with shared parts dimmed (FR80, UX-DR18)
+**And** the route/params contract from Story 1.2 is fulfilled (no stub left)
 
-As a **learner**,
-I want **JLPT-tagged reading passages with questions**,
-So that **I practice comprehension in context (FR8b, FR8c)**.
+**Given** shared furigana rendering
+**When** curriculum bracket text is displayed (details, passages, later AI replies)
+**Then** the shared `FuriganaText` component is used (UX-DR19)
 
-**Acceptance Criteria:**
+## Epic 5: AI Conversation Practice
 
-**Given** a passage at my level  
-**When** I open the reader  
-**Then** passage text and comprehension prompts render; answering stores practice results in `user.db` minimally (or read-only practice for first slice—document choice)  
-**And** passage vocabulary/grammar aligns to stated JLPT constraints in seed data (FR8c)
+Learners practise Japanese in a BYOK Conversation tab (chat default, optional on-device voice), grounded in curriculum — corrections only at the end.
 
-### Story 4.5: Dependency graph visibility for unlock status
+### Story 5.1: Platform Floor, BYOK Chat & Session Summary
 
-As a **learner**,
-I want **to see why a kanji or vocab is locked**,
-So that **the radical→kanji→vocab path feels fair (FR4)**.
-
-**Acceptance Criteria:**
-
-**Given** graph edges in `curriculum.db`  
-**When** I view a locked item  
-**Then** the UI lists unmet prerequisites with links  
-**And** unlocked items show clear “available” state
-
-### Story 4.6: Personal mnemonics editor
-
-As a **learner**,
-I want **to add or edit personal mnemonics per item**,
-So that **I can reinforce memory my way (FR26b)**.
+As a learner,
+I want a Conversation tab with bring-your-own-key chat grounded in what I’ve learned, and coaching only after I end,
+So that I can practise real Japanese without mid-chat corrections or handing data to a vendor I didn’t choose.
 
 **Acceptance Criteria:**
 
-**Given** an item detail for kanji/vocab/grammar  
-**When** I edit my mnemonic text and save  
-**Then** text persists in `user.db` and survives curriculum updates  
-**And** empty personal mnemonic removes the override without deleting curriculum text
+**Given** the app build configuration
+**When** native builds are produced
+**Then** minimum OS is iOS 17.0 / Android API 33 and New Architecture is enabled via `expo-build-properties` (NFR23)
+**And** a custom dev client is required (Expo Go is insufficient for later voice work)
 
----
+**Given** the tab shell after Epic 3
+**When** I open the Conversation/Talk tab
+**Then** it replaces the Read slot and is always visible (FR87, UX-DR3, UX-DR21)
+**And** if no key is configured, I see KeySetup; otherwise the start picker is the empty state (FR88–FR89)
 
-## Epic 5: Unified review loop — type, validate, schedule, interconnect
+**Given** I configure BYOK
+**When** I enter credentials in the tab or Settings
+**Then** two adapters are supported: OpenAI-compatible (editable base URL) and Anthropic (FR88)
+**And** keys are stored in platform secure storage and only sent to the user-configured HTTPS endpoint (NFR24)
+**And** all adapter calls return `Result<T, AppError>`
 
-Learners run the **core product**: **one-tap** mixed **reviews**, **FSRS** intervals, **input-based** answers, **WanaKana**, **typo and conjugation-aware** checking, **visible cross-domain ties** and **related-item boosts** — fast loop per NFR1 / NFR5b / UX “serious tool” bar.
+**Given** I start a session from the picker (practise recent grammar / choose grammar / role-play / random)
+**When** chat runs
+**Then** chat is the default mode (FR90)
+**And** AI replies use curriculum furigana bracket format rendered by `FuriganaText`; parse failure renders plain text with no error toast (FR91, OA6)
+**And** control signals use hidden in-band markers stripped before render — no tool-calling layer (FR97)
+**And** streaming uses `expo/fetch` SSE; partial/failed streams do not corrupt the persisted transcript (NFR27)
 
-### Story 5.1: Review queue builder, FSRS scheduling, and prefetch
+**Given** the AI uses a word I don’t know
+**When** local lookup flags it
+**Then** curriculum-but-unstudied words deep-link to details; off-curriculum words are display-and-translate only (FR92, UX-DR24)
+**And** flagged words never create SRS rows (FR93)
+**And** a non-gesture alternative exists for flag/long-press actions (NFR29)
 
-*Consolidates original stories 5.1, 5.9, and 5.10 — all review-engine internals: queue construction, state updates, and lookahead.*
+**Given** I end a session (End button or AI wrap-up signal) or abandon it
+**When** summary is requested
+**Then** end-of-session summary is generated on demand once and cached (never regenerated) (FR95–FR96)
+**And** summary includes ≤5 mistakes worth fixing, words met by curriculum membership, and grammar practice notes
+**And** abandon closes silently, un-summarised but resumable
+**And** a turn budget steers endings (placeholder constants OK for OA4) without a hard cutoff (FR94, NFR26)
 
-As a **learner**,
-I want **a unified due queue with FSRS-driven scheduling and prefetched items**,
-So that **sessions start instantly, stay honest, and never stutter (FR10, FR11, FR5b, NFR1, NFR2)**.
+**Given** I have past conversation sessions
+**When** I use the top-corner entry on the Conversation tab
+**Then** I can open prior threads as a secondary surface (FR89)
+**And** the start picker remains the primary empty state for new sessions
 
-**Acceptance Criteria:**
+**Given** I am offline
+**When** I open Conversation
+**Then** I see a clear “requires internet” state; other tabs remain fully usable (NFR24, UX-DR22)
 
-**Given** FSRS due fields in `user.db` for multiple item types  
-**When** I start a review session from a documented QA entry point for this story only (e.g. `review` route deep link or temporary in-story button; the Home Review button is finalized in Epic 6)  
-**Then** the first item appears with no intermediate configuration screen (FR11)  
-**And** interleaving policy is deterministic and documented (e.g. weighted round-robin) without requiring Epic 6 weakness yet (weakness can default to 0)
+**Given** persistence needs
+**When** migrations run
+**Then** `016+` AI sessions/messages/cached summaries are created without breaking existing user data (NFR28)
 
-**Given** a graded answer  
-**When** results are shown  
-**Then** `ts-fsrs` transitions update `user.db` within the performance budget and the next item can load without blocking the UI thread with heavy sync I/O (document batching)  
-**And** SRS stage badge uses text + color (UX-DR13)
+### Story 5.2: Push-to-Talk Voice with On-Device TTS/STT
 
-**Given** a running session  
-**When** I am answering item *n*  
-**Then** items *n+1…n+k* metadata are prefetched into memory  
-**And** measured tap-to-next-item stays within the PRD interaction budget on a mid-range test device (document test method)
-
-### Story 5.2: Review session UI, layout, and card prompting
-
-*Consolidates original stories 5.2 and 5.3 — session chrome and card rendering are one unified UI pass.*
-
-As a **learner**,
-I want **a focused review screen with header context, safe exit, and clear answer-type prompts**,
-So that **I stay oriented, never lose progress, and always know what to type (FR9, UX-DR5, UX-DR16, UX-DR20, UX-DR24, UX-DR34)**.
-
-**Acceptance Criteria:**
-
-**Given** an active review session route outside tabs  
-**When** the session renders  
-**Then** the tab bar is hidden (UX-DR18) and `SessionHeader` shows item index and type badge  
-**And** attempting to leave opens a bottom sheet confirming end session; progress saved to `user.db` on confirm (UX-DR24)
-
-**Given** an item in `prompting` state  
-**When** it renders  
-**Then** labels/color coding indicate expected answer mode per UX spec  
-**And** no celebratory animations block the prompt (NFR5b)
-
-### Story 5.3: Answer input and validation (WanaKana, Levenshtein, conjugation)
-
-*Consolidates original stories 5.4, 5.5, and 5.6 — all answer validation pipelines sharing a common input field.*
-
-As a **learner**,
-I want **romaji-to-kana input, fair typo tolerance on meanings, and conjugation-aware grammar validation**,
-So that **every answer type is checked accurately and fairly (FR6b, FR13, FR14, UX-DR6, UX-DR23, NFR5)**.
+As a learner,
+I want optional on-device voice conversation I explicitly download and control,
+So that I can speak Japanese in full-screen PTT mode without silent cloud fallbacks or blocking the rest of the app.
 
 **Acceptance Criteria:**
 
-**Given** a reading prompt  
-**When** I type romaji in the answer field  
-**Then** hiragana/katakana updates per keystroke with acceptable latency on a mid-range device (NFR5)  
-**And** accessibility labels describe the input mode (UX-DR6)
-
-**Given** a meaning prompt with primary and synonym answers  
-**When** I submit within Levenshtein accept threshold  
-**Then** I see a warning state (typo) and can retry or accept per product rule without advancing SRS incorrectly (document chosen rule)  
-**And** near-misses show "close!" hint path (FR14)
-
-**Given** a grammar item with parser-supported rules  
-**When** I submit an answer  
-**Then** parser validation runs first and incorrect conjugations fail with correct answer shown  
-**And** unsupported patterns fall back to Levenshtein with explicit "parser fallback" behavior logged only in dev if needed
-
-### Story 5.4: Progressive hints, reinforcement, and related-item boosts
-
-*Consolidates original stories 5.7 and 5.8 — both leverage the dependency graph for cross-item intelligence during review.*
-
-As a **learner**,
-I want **layered hints, visible reinforcement links, and scheduling boosts for related items**,
-So that **the review loop reveals connections and strengthens related knowledge (FR12, FR12b, UX-DR7, UX-DR8, UX-DR21)**.
-**Acceptance Criteria:**
-
-**Given** a grammar item in review  
-**When** I tap Hint repeatedly  
-**Then** hint levels advance with updated button copy until exhausted, and screen reader announces new panels (UX-DR7)  
-**And** after submit, result view may show `ReinforcementHighlight` when graph data supports a link (FR12), without showing full spoiler on initial prompt (UX-DR21)
-
-**Given** graph relationships exist  
-**When** I answer a kanji item correctly  
-**Then** related item records receive a bounded priority adjustment persisted for next queue build  
-**And** the adjustment is idempotent per session rules (document caps to prevent starvation)
-
----
-
-## Epic 6: Streaks, cognitive load, weakness targeting, and session proof
-
-Learners feel **daily capacity** (ring), **habit** (streak + optional nudges), **targeted drilling**, **stats and confusion insights**, and **credible time-compressed** session proof — the differentiation vs single-domain SRS tools.
-
-### Story 6.1: Weakness detection pipeline (recording, patterns, queue bias)
-
-*Consolidates original stories 6.1, 6.2, and 6.3 — record errors → detect clusters → bias queue is one end-to-end pipeline.*
-
-As a **learner**,
-I want **my misses recorded by type, grouped into confusion clusters, and used to bias my review queue**,
-So that **reviews target my real weaknesses (FR29, FR30, FR31, FR33)**.
-**Acceptance Criteria:**
-
-**Given** a wrong or typo outcome in review  
-**When** the result is committed  
-**Then** counters and last-error metadata append in `user.db` without blocking the next item (NFR1)  
-**And** schema supports pattern tags from FR30 in following story
-
-**Given** curriculum tags on items  
-**When** weakness aggregation runs (on schedule end or stats screen entry)  
-**Then** clusters with sustained error rates surface copy such as “You often confuse て-form and た-form” when thresholds met (FR33)  
-**And** false positives are damped by minimum sample sizes (document constants)
-
-**Given** weakness scores and FSRS priorities  
-**When** the queue is built at session start  
-**Then** ordering uses `priority = fsrs_score × 0.7 + weakness_score × 0.3` (or documented tuned default)  
-**And** disabling bias in Settings preserves pure FSRS ordering (PRD mitigation)
-
-### Story 6.2: Stats tab with weakness trends and SRS stage breakdown
-
-As a **learner**,
-I want **Stats showing weakness cards and SRS stage counts**,
-So that **I see proof of progress (FR28, FR32, UX-DR14, UX-DR13)**.
-
-**Acceptance Criteria:**
-
-**Given** the Stats tab  
-**When** I open it after some reviews  
-**Then** `WeaknessStatCard` list shows pattern accuracy trends and SRS buckets are visible here (not on Home per UX-DR19)  
-**And** empty state matches UX empty-state pattern (UX-DR27)
-
-### Story 6.3: Cognitive load ring and daily threshold guidance
-
-*Consolidates original stories 6.5 and 6.6 — ring data model and "enough for today" guidance are tightly coupled.*
-
-As a **learner**,
-I want **a cognitive load ring that fills as I study and gentle guidance when I’ve done enough**,
-So that **I understand mental spend and feel permission to stop (FR15, FR16, FR17, UX-DR4, UX-DR30)**.
-**Acceptance Criteria:**
-
-**Given** item weights by type/difficulty in config  
-**When** I complete items in a session  
-**Then** cumulative load increases and the ring visual + numeric percent update (never color-only)  
-**And** ring updates do not block the <100ms answer path (off-main-thread or lightweight computation)
-
-**Given** session intensity preference from Epic 2  
-**When** cumulative load crosses the adaptive threshold  
-**Then** informational messaging appears per UX tone (WHOOP-like, not nagging)  
-**And** I can still continue reviewing if I choose (FR16 informative-only)
-
-### Story 6.4: Streak tracking and opt-in notifications
-
-*Consolidates original stories 6.7 and 6.8 — both serve the daily habit loop.*
-
-As a **learner**,
-I want **a visible streak counter and configurable daily reminders**,
-So that **daily habit is reinforced without toxic gamification or spam (FR18, FR19, FR20, UX-DR15, UX-DR19)**.
-**Acceptance Criteria:**
-
-**Given** a completed session marks the calendar day  
-**When** I view Home  
-**Then** `StreakCounter` shows current streak and state (active/at-risk)  
-**And** streak survives timezone change and offline use (NFR13)
-
-**Given** notification permission not granted  
-**When** I enable reminders in Settings  
-**Then** OS permission prompts follow platform rules and scheduling respects “max one/day” PRD principle  
-**And** disabling notifications cancels pending scheduled notifications
-
-### Story 6.5: Post-session summary and home screen composition
-
-*Consolidates original stories 6.9 and 6.10 — both are key composition screens that define the app’s daily face.*
-
-As a **learner**,
-I want **a screenshot-friendly session summary with time savings and a Home screen with ring, actions, streak, and progress**,
-So that **I feel the value every session and know what to do next at a glance (FR33b, FR33c, UX-DR9, UX-DR10, UX-DR12, UX-DR19, UX-DR26)**.
-**Acceptance Criteria:**
-
-**Given** a completed or user-ended session  
-**When** I reach the summary route  
-**Then** `TimeCompressionSummary` shows domains, minutes studied, and conservative multi-app estimate with methodology tooltip or settings link (FR33c)  
-**And** optional share uses `PostSessionShareCard` with native share sheet (UX-DR10)
-
-**Given** Home tab after onboarding  
-**When** I open the app  
-**Then** primary Review and secondary Learn buttons follow button hierarchy (UX-DR26) with icons/illustrations per direction decision  
-**And** `LevelProgressBar` shows compact domain counts; Review button reflects availability without terror backlog copy (UX-DR20 philosophy)
-
----
-
-## Epic 7: Accessible, inclusive experience for serious daily use
-
-Learners using **VoiceOver/TalkBack**, **high contrast**, **larger text**, or **accessibility keyboards** get a **WCAG 2.1 AA**-aligned experience across navigation, review, and results — release-quality inclusive polish.
-
-### Story 7.1: Screen reader, keyboard, and input accessibility
-
-*Consolidates original stories 7.1 and 7.4 — both navigation/input accessibility for assisted users.*
-
-As a **learner using assistive technology**,
-I want **meaningful screen reader semantics, keyboard navigation, and accessible input methods**,
-So that **I can complete core flows with VoiceOver/TalkBack or external keyboards (FR52, FR54, NFR15, NFR17)**.
-
-**Acceptance Criteria:**
-
-**Given** VoiceOver (iOS) or TalkBack (Android) enabled  
-**When** I traverse Home, Learn, and a full review item cycle  
-**Then** each interactive control announces purpose and state (tabs, buttons, input, hints, results)  
-**And** live regions announce dynamic results politely (UX-DR32)
-
-**Given** a Bluetooth keyboard connected  
-**When** I focus the answer field and press Enter  
-**Then** the answer submits and focus moves predictably through result → next prompt  
-**And** every gesture-only affordance has an on-screen alternative (NFR17)
-
-### Story 7.2: Visual accessibility (contrast, scaling, reduced motion)
-
-*Consolidates original stories 7.2, 7.3, and 7.6 — all visual accommodation settings.*
-
-As a **learner with visual or motion sensitivities**,
-I want **WCAG AA contrast, scalable text to 200%, and optional reduced motion**,
-So that **the app is comfortable for daily use regardless of visual ability (FR53, FR54, NFR14, NFR16, UX-DR30)**.
-
-**Acceptance Criteria:**
-
-**Given** token pairs from `tailwind.config.js`  
-**When** automated contrast checks run in CI or script  
-**Then** normal text ≥4.5:1 and large text ≥3:1 against declared backgrounds including ring states  
-**And** failures block merge or are tracked as defects with fix path (team policy documented)
-
-**Given** OS text size increased toward 200%  
-**When** I open review and Home layouts  
-**Then** focal zones grow/scroll without hiding the submit action permanently  
-**And** Japanese prompt text scales per UX typography rules without overlapping illegibly
-
-**Given** system reduced motion or in-app toggle  
-**When** enabled  
-**Then** ring fill uses stepped updates or static state changes without continuous animation  
-**And** review loop remains free of inter-item animations (NFR5b)
-
-### Story 7.3: Automated accessibility checks in CI
-
-As a **maintainer**,
-I want **CI to run basic accessibility linting on components**,
-So that **regressions are caught early (UX-DR35)**.
-
-**Acceptance Criteria:**
-
-**Given** CI pipeline  
-**When** PR runs  
-**Then** configured `react-native-a11y` or Axe step executes on representative screens or component tests  
-**And** failures print actionable rule names
-
----
-
-## Epic 8: Post-MVP expansion (shadow mode, AI stories, community curriculum)
-
-Deferred product: **shadow mode**, **AI reading**, **community PR pipeline** — tracked so MVP epics do not silently drop `-PM` FRs.
-
-### Story 8.1: Shadow mode (positioning, stats, switch prompts)
-
-*Consolidates original stories 8.1 and 8.2 — both shadow mode features, small scope.*
-
-As a **switcher (post-MVP)**,
-I want **shadow mode framing with comparative stats and gentle switch prompts after sustained use**,
-So that **I can trial the app alongside paid tools and decide when to commit (FR33i-PM, FR33j-PM, FR33k-PM)**.
-
-**Acceptance Criteria:**
-
-**Given** feature flag `shadow_mode` off by default  
-**When** enabled in a future build  
-**Then** UI copy positions parallel use without breaking FSRS scheduling assumptions (architecture note)  
-**And** post-session stats include comparison metrics specified in PRD when data exists (FR33j-PM)
-
-**Given** shadow mode active for ≥14 days  
-**When** threshold met  
-**Then** a non-blocking prompt offers “ready to switch fully?” with dismiss and snooze  
-**And** no forced migration path
-
-### Story 8.2: AI-generated reading and community contribution backlog
-
-As a **product owner**,
-I want **scoped discovery stories for AI reading and GitHub-based contributions**,
-So that **engineering estimates post-MVP work (FR38-PM–FR45-PM)**.
-
-**Acceptance Criteria:**
-
-**Given** PRD post-MVP bullets  
-**When** this story completes  
-**Then** a short design note lists API key storage risks, OAuth scope minimization, and PR automation constraints  
-**And** no MVP code paths depend on these features being enabled
-
----
-
-## Create Epics and Stories — Step 4 validation
-
-**Date:** 2026-05-03
-
-| Check | Result |
-| --- | --- |
-| **FR coverage** | Pass — every FR in the Requirements Inventory appears in the FR Coverage Map; stories per epic implement that scope. |
-| **Starter template** | Pass — Story 1.1 matches Architecture: `create-expo-app` with `default@sdk-55`. |
-| **DB / entity discipline** | Pass — Story 1.3 limits initial `user.db` schema; no “create all tables upfront” story. |
-| **Epic user value** | Pass — epics are outcome-oriented (onboarding, import, content, review, intelligence, a11y, deferral). |
-| **Epic independence** | Pass with notes — Epic 2 does not require Epic 3. Epic 3 requires Epic 1 (DB). Epics 4–6 stack as product slices; Epic 7 cross-cuts. |
-| **Within-epic story order** | Pass after edits — Story 2.3 uses onboarding-only `curriculum.db` queries (no Epic 4 Learn dependency). Story 5.1 uses a QA entry point until Home Review is finalized in Story 6.5. |
-| **NFR / UX-DR** | Pass — NFRs and UX-DRs are reflected in story ACs where applicable; full NFR matrix can be traced via epic scope + architecture doc. |
-
-**Adjustments in this validation pass:** Story **2.3** and **5.1** acceptance criteria were tightened to remove forward cross-epic assumptions.
-
-**Consolidation pass (2026-06-21):** Related backlog stories combined to reduce from 35 remaining stories to 21. Epics 4 (3→1 detail screens), 5 (10→4 review engine), 6 (10→5 intelligence layer), 7 (6→3 accessibility), 8 (3→2 post-MVP). All acceptance criteria preserved; no FR coverage changes.
+**Given** chat is in progress
+**When** I tap the mic in the composer
+**Then** I am promoted to conversation mode mid-session with no up-front mode choice (FR90, FR98)
+
+**Given** conversation mode is active
+**When** the PTT UI shows
+**Then** it is full-screen with chat history hidden: AI latest line (readable text + on-device TTS) and my latest transcription, with push-to-talk below (FR98, UX-DR21)
+
+**Given** on-device STT produces a transcript
+**When** I finish a utterance
+**Then** text lands in the composer for confirm/edit/retry before send — never straight onto the wire (FR99)
+**And** exiting conversation mode needs no chat-log reconciliation
+
+**Given** TTS/STT runtime
+**When** models are used
+**Then** they ship via pinned `react-native-executorch` nightly with Supertonic Japanese TTS + Whisper Japanese STT (FR100, NFR30)
+**And** no interim system-TTS engine is adopted
+
+**Given** models are not yet downloaded
+**When** I try to use voice
+**Then** chat remains usable; mic prompts an explicit user-initiated download with clear size disclosure (NFR25, UX-DR23)
+**And** downloads do not block cold start or other tabs (NFR3, NFR25)
+
+**Given** cloud STT
+**When** transcription is configured
+**Then** cloud STT is an explicit Settings opt-in only — never an automatic fallback (FR99, UX-DR33)
