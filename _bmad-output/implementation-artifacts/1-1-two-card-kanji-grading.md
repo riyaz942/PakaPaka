@@ -4,7 +4,7 @@ baseline_commit: ff3fc6fca4038e1993aa2214a3bd6bedb3681c8d
 
 # Story 1.1: Two-Card Kanji Grading
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -250,3 +250,11 @@ Claude Fable 5 (claude-fable-5) via Claude Code
 ## Change Log
 
 - 2026-07-20 — Story 1.1 implemented: two-card kanji grading (meaning + on'yomi), BUG3 on'yomi-only answer key, non-terminal `wrong_reading_type`, worst-of-both single FSRS write, card-native session progress. 121 suites / 905 tests green; typecheck + lint clean. Status → review.
+- 2026-07-20 — Code review patches applied: pair-safe queue limit, duplicate grade latch, exact-alternate-over-typo precedence, blank on'yomi filter. Status → done.
+
+### Review Findings
+
+- [x] [Review][Patch] `options.limit` can orphan a two-card kanji pair — slice after expansion can keep `isTwoCardItem: true` meaning without its reading partner, so `pairGradesRef` never completes and FSRS never writes [`mobile/src/core/srs/queueBuilder.ts:186`]
+- [x] [Review][Patch] Unguarded double `gradeCurrentItem` on incomplete two-card item — first pair card never latches `isGrading`, and `handleContinueIncorrect` has no submit latch, so a double Continue advances the cursor twice and can skip the partner (pair never FSRS-writes) [`mobile/src/providers/ReviewSessionProvider.tsx:340`] [`mobile/src/app/review/index.tsx:303`]
+- [x] [Review][Patch] Exact kun'yomi can lose to typo path — `wrong_reading_type` is only checked when `evaluateReading` returns `incorrect`, so an exact alternate within on'yomi typo distance records typo/weakness instead of the non-terminal nudge (AC2 / Task 3) [`mobile/src/core/answer/reviewAnswerEvaluator.ts:54`]
+- [x] [Review][Patch] Blank/whitespace on'yomi rows still set `kanjiHasOnyomi` — emits a reading card with no usable accepted readings [`mobile/src/data/hooks/useReviewQueue.ts:94`]

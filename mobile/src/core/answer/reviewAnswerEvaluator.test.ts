@@ -163,6 +163,23 @@ describe('wrong_reading_type — kanji on\'yomi card (Story 1.1, FR82)', () => {
   it('grades a near-miss kun\'yomi incorrect — only an exact alternate nudges', () => {
     expect(evaluateReviewAnswer(kanjiReadingCard(), 'たべ').result).toBe('incorrect');
   });
+
+  it('prefers wrong_reading_type over typo when an exact kun\'yomi is within on\'yomi edit distance', () => {
+    // じょう is one edit from しょう — evaluateReading would return typo, but
+    // an exact alternate must nudge (AC2) instead of recording a typo/weakness.
+    const item = makeItem({
+      primaryForm: '正',
+      displayMeaning: 'correct',
+      meanings: ['correct'],
+      isTwoCardItem: true,
+      answerKey: {
+        acceptedMeanings: ['correct'],
+        acceptedReadings: ['しょう'],
+        alternateReadings: ['じょう'],
+      },
+    });
+    expect(evaluateReviewAnswer(item, 'じょう').result).toBe('wrong_reading_type');
+  });
 });
 
 describe('gradeForResult', () => {

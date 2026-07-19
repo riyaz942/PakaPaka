@@ -52,11 +52,12 @@ export function evaluateReviewAnswer(
       return evaluateMeaning(userAnswer, answerKey.acceptedMeanings);
     }
     const evaluation = evaluateReading(userAnswer, answerKey.acceptedReadings);
-    if (evaluation.result === 'incorrect') {
-      // Right item, wrong reading type (FR82): an exact kun'yomi at the
-      // on'yomi prompt nudges and re-prompts instead of grading. Checked only
-      // after the accepted set fully missed — a near-miss on'yomi is still a
-      // typo, and a non-matching answer is still plain incorrect.
+    // Right item, wrong reading type (FR82): an exact kun'yomi at the on'yomi
+    // prompt nudges and re-prompts instead of grading. Checked on any
+    // non-correct outcome so an exact alternate that also sits within on'yomi
+    // typo distance still nudges (never typo/weakness). Near-miss on'yomi that
+    // is not an exact alternate still uses the typo path.
+    if (evaluation.result !== 'correct') {
       const alternates = answerKey.alternateReadings;
       if (alternates && alternates.length > 0) {
         const normalized = normalizeKana(userAnswer);
@@ -67,6 +68,8 @@ export function evaluateReviewAnswer(
           return { result: 'wrong_reading_type' };
         }
       }
+    }
+    if (evaluation.result === 'incorrect') {
       if (
         !hasJapaneseScript(userAnswer) &&
         matchesAcceptedMeaning(userAnswer, answerKey.acceptedMeanings)

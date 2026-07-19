@@ -301,6 +301,10 @@ export default function ReviewScreen() {
   }, [answerText, submitAnswer]);
 
   function handleContinueIncorrect() {
+    // isSubmittingRef stays true after an incorrect reveal until the cursor
+    // advances — reuse it so a double-tap Continue cannot grade twice.
+    if (cardState !== 'incorrect' || !isSubmittingRef.current) return;
+    isSubmittingRef.current = false;
     gradeCurrentItem(gradeForResult('incorrect') ?? 1);
   }
 

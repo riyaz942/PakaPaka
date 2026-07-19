@@ -410,5 +410,23 @@ describe('buildReviewQueue', () => {
       const result = buildReviewQueue(items, { now: NOW });
       expect(result.map((card) => card.promptType)).toEqual(['meaning', 'reading']);
     });
+
+    it('does not orphan a two-card pair when limit cuts between meaning and reading', () => {
+      const items = [
+        makeQueueItem('k1', 'kanji', PAST, { kanjiHasOnyomi: true, answerKey: onyomiKey }),
+        makeQueueItem('v1', 'vocabulary', PAST),
+        makeQueueItem('v2', 'vocabulary', PAST),
+      ];
+      // Unbounded queue places meaning early and reading after the gap; a raw
+      // slice(0, 1) would keep only the meaning card with isTwoCardItem true.
+      const unbounded = buildReviewQueue(items, { now: NOW });
+      expect(unbounded.filter((c) => c.itemId === 'k1')).toHaveLength(2);
+
+      const result = buildReviewQueue(items, { now: NOW, limit: 1 });
+      const pair = result.filter((c) => c.itemId === 'k1');
+      expect(pair).toHaveLength(2);
+      expect(pair.map((c) => c.promptType).sort()).toEqual(['meaning', 'reading']);
+      expect(pair.every((c) => c.isTwoCardItem)).toBe(true);
+    });
   });
 });

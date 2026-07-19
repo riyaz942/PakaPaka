@@ -184,9 +184,59 @@ export function buildReviewQueue(
   }
 
   if (options.limit !== undefined) {
-    return result.slice(0, Math.max(0, options.limit));
+    return applyQueueLimit(result, options.limit);
   }
   return result;
+}
+
+/**
+ * Truncate the card queue without splitting a two-card kanji pair. When the
+ * cut would orphan a meaning or reading card, pull its partner in (may exceed
+ * `limit` by one). If the partner is somehow absent, demote the orphan so it
+ * grades as a single-card item instead of blocking FSRS forever.
+ */
+function applyQueueLimit(items: ReviewItem[], limit: number): ReviewItem[] {
+  if (limit <= 0) return [];
+  let sliced = items.slice(0, limit);
+
+  const incompleteIds: string[] = [];
+  for (const card of sliced) {
+    if (!card.isTwoCardItem) continue;
+    if (incompleteIds.includes(card.itemId)) continue;
+    const hasPartner = sliced.some(
+      (other) =>
+        other.itemId === card.itemId &&
+        other.isTwoCardItem &&
+        other.promptType !== card.promptType,
+    );
+    if (!hasPartner) incompleteIds.push(card.itemId);
+  }
+
+  for (const itemId of incompleteIds) {
+    const orphan = sliced.find((c) => c.itemId === itemId && c.isTwoCardItem)!;
+    const partner = items.find(
+      (c) =>
+        c.itemId === itemId &&
+        c.isTwoCardItem &&
+        c.promptType !== orphan.promptType,
+    );
+    const partnerAlreadyInSlice =
+      partner !== undefined &&
+      sliced.some(
+        (c) => c.itemId === itemId && c.promptType === partner.promptType,
+      );
+    if (partner && !partnerAlreadyInSlice) {
+      sliced = [...sliced, partner];
+    } else if (!partner) {
+      sliced = sliced.map((c) =>
+        c.itemId === itemId && c.isTwoCardItem
+          ? { ...c, isTwoCardItem: undefined }
+          : c,
+      );
+    }
+  }
+
+  return sliced;
 }
 
 /** Minimum other cards between a kanji's meaning card and its reading card. */

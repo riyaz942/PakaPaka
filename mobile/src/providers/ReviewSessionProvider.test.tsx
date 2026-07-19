@@ -1086,5 +1086,39 @@ describe('ReviewSessionProvider', () => {
       expect(result.current.sessionSummary.itemsReviewed).toBe(1);
       expect(result.current.isComplete).toBe(true);
     });
+
+    it('ignores a duplicate gradeCurrentItem on the first card of an incomplete pair', async () => {
+      const db = await openDatabaseAsync('user.db');
+      const wrapper = await createWrapper(db);
+      mockPairQueue();
+
+      const { result } = renderHook(() => useReviewSession(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.currentItem?.promptType).toBe('meaning');
+      });
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      // Second call must not skip the reading partner.
+      expect(result.current.currentItem?.promptType).toBe('reading');
+      expect(mockUpsertSrsState).not.toHaveBeenCalled();
+      expect(mockRecordOutcome).toHaveBeenCalledTimes(1);
+
+      act(() => {
+        result.current.gradeCurrentItem(3);
+      });
+      await act(async () => {
+        await Promise.resolve();
+      });
+
+      expect(mockUpsertSrsState).toHaveBeenCalledTimes(1);
+      expect(result.current.isComplete).toBe(true);
+    });
   });
 });

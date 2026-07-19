@@ -93,10 +93,12 @@ export function buildAnswerKey(
     const kanjiReadings = getKanjiReadings(curriculumDb, itemId);
     const onyomi = kanjiReadings
       .filter((r) => r.readingType === 'onyomi')
-      .map((r) => r.reading);
+      .map((r) => r.reading)
+      .filter((reading) => normalizeKana(reading).length > 0);
     const kunyomi = kanjiReadings
       .filter((r) => r.readingType === 'kunyomi')
-      .map((r) => r.reading);
+      .map((r) => r.reading)
+      .filter((reading) => normalizeKana(reading).length > 0);
     kanjiHasOnyomi = onyomi.length > 0;
     acceptedReadings = [...new Set([...onyomi, ...userReadings])];
     const acceptedNormalized = new Set(acceptedReadings.map((r) => normalizeKana(r)));

@@ -111,6 +111,11 @@ export function ReviewSessionProvider({ children }: Props) {
   const thresholdRef = useRef(30);
   const loadInitialized = useRef(false);
   const isGrading = useRef(false);
+  // Blocks a second gradeCurrentItem for the same working-queue entry before
+  // React re-renders on cursor advance (e.g. double-tap Continue on incorrect).
+  // Cleared when cursor moves; isGrading alone is insufficient on the incomplete
+  // two-card path because that path never opens applyItemGrade's async latch.
+  const gradedEntryKeyRef = useRef<string | null>(null);
   const pendingWrites = useRef<SRSState[]>([]);
   const sessionStartRef = useRef<number | null>(null);
   const durationSnapshotRef = useRef<number | null>(null);
@@ -153,7 +158,12 @@ export function ReviewSessionProvider({ children }: Props) {
     correctCountRef.current = 0;
     streakRecordedRef.current = false;
     pairGradesRef.current = new Map();
+    gradedEntryKeyRef.current = null;
   }, [queue]);
+
+  useEffect(() => {
+    gradedEntryKeyRef.current = null;
+  }, [cursor]);
 
   useEffect(() => {
     if (loadInitialized.current || isLoading) return;
@@ -312,6 +322,10 @@ export function ReviewSessionProvider({ children }: Props) {
   const gradeCurrentItem = useCallback(
     (grade: ReviewGrade) => {
       if (!currentEntry || isGrading.current) return;
+      const entryKey = `${cursor}:${currentEntry.item.itemId}:${currentEntry.item.promptType}:${currentEntry.isRetry ? 'r' : 'f'}`;
+      if (gradedEntryKeyRef.current === entryKey) return;
+      gradedEntryKeyRef.current = entryKey;
+
       const currentItem = currentEntry.item;
       // grade === 1 (Again) → incorrect; anything else → correct.
       const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
@@ -376,7 +390,7 @@ export function ReviewSessionProvider({ children }: Props) {
       applyItemGrade(currentItem, grade, { recordWeakness: true });
       setCursor((i) => i + 1);
     },
-    [applyItemGrade, currentEntry, userDb],
+    [applyItemGrade, currentEntry, cursor, userDb],
   );
 
   const peekStageTransition = useCallback(

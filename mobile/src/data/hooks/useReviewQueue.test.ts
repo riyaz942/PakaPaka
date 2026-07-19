@@ -91,6 +91,19 @@ describe('buildAnswerKey — kanji on\'yomi-only reading key (BUG3 fix, Story 1.
     expect(answerKey.alternateReadings).toEqual(['たべる']);
   });
 
+  it('ignores blank/whitespace-only on\'yomi rows when deciding kanjiHasOnyomi', () => {
+    mockGetKanjiReadings.mockReturnValue([
+      { id: 1, readingType: 'onyomi', reading: '   ', sortOrder: 0 },
+      { id: 2, readingType: 'kunyomi', reading: 'たべる', sortOrder: 1 },
+    ]);
+
+    const { answerKey, kanjiHasOnyomi } = buildAnswerKey(db, '1', 'kanji', 'eat', []);
+
+    expect(kanjiHasOnyomi).toBe(false);
+    expect(answerKey.acceptedReadings).toEqual([]);
+    expect(answerKey.alternateReadings).toEqual(['たべる']);
+  });
+
   it('leaves the vocabulary path unchanged: accepted_answers readings plus synonyms, no alternates', () => {
     mockGetAcceptedAnswers.mockReturnValue([
       { id: 1, answerType: 'reading', answerText: 'たべもの', isPrimary: true },
