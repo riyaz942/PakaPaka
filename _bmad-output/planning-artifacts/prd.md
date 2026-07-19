@@ -29,12 +29,31 @@ classification:
   domain: edtech
   complexity: medium
   projectContext: greenfield
+status: final
+revisions:
+  - version: v1
+    date: '2026-04-19'
+    intent: create
+    status: final
+  - version: v2
+    date: '2026-07-19'
+    intent: update
+    status: final
+    summary: 'Post-launch UX upgrade (Home/goal ring, unified Browse/Search, Item Details & Lesson, Review flow) plus net-new AI Conversation tab. Reverses 4 v1 commitments (R1-R4).'
+    inputDocuments:
+      - "brainstorming/brainstorming-session-2026-07-18-2244.md"
+      - "brainstorming/brainstorming-session-2026-07-18-2354.md"
+      - "brainstorming/brainstorming-session-2026-07-19-1322.md"
+      - "brainstorming/brainstorming-session-2026-07-19-1322-learn-page.md"
+      - "brainstorming/brainstorming-session-2026-07-19-1628.md"
+      - "brainstorming/brainstorming-session-2026-07-19-1651-ai-conversation.md"
+    decisionLog: "planning-artifacts/.decision-log.md"
 ---
 
 # Product Requirements Document - japanese-learning
 
 **Author:** Riyaz
-**Date:** 2026-04-19
+**Date:** 2026-04-19 (v1) · 2026-07-19 (v2 revision — see end of document)
 
 ## Executive Summary
 
@@ -704,3 +723,247 @@ The app is designed offline-first — network is the exception, not the requirem
 
 - NFR21: The SQLite database structure supports content growth from N5-only (MVP seed) to full N5–N1 coverage without requiring schema changes or app updates.
 - NFR22: Database query performance remains within the <100ms target as content scales from initial seed (~500 items) to full curriculum (~10,000+ items across all JLPT levels).
+
+---
+
+# Revision v2 — Post-launch: UX Upgrade & AI Conversation
+
+**Author:** Riyaz · **Date:** 2026-07-19 · **Status:** final
+
+This revision reconciles six page-by-page brainstorming sessions (2026-07-18 → 2026-07-19)
+into requirements. It refines several v1 features, **reverses four v1 commitments**, and
+adds one net-new capability group (AI Conversation). The v1 sections above are preserved;
+where a v2 requirement supersedes a v1 one, the v1 FR is annotated as **[Amended in v2]**
+and the change is stated here. Reversals are logged in `.decision-log.md` (R1–R4).
+
+Requirement IDs continue the global sequence (FR55+, NFR23+). Bug fixes surfaced during the
+sessions are catalogued in **§ v2 Bug Batch** and belong in stories, not as FRs.
+
+## v2 Success-metric amendments
+
+- **Replace** the KPI *"80%+ of sessions end within the cognitive-load threshold"* —
+  incoherent under the goal reframe (R1, no ceiling). Replacement (**decided 2026-07-19**):
+  **goal-ring completion rate** (share of active days reaching 100% of the adaptive goal)
+  plus **overshoot rate** (share of active days the user chose to continue past goal).
+- **Replace** the KPI *"streak maintenance 7+ days"* (R2, streak removed). Replacement
+  (**decided 2026-07-19**): **active study days per month at D30**.
+- Journey 1 (Yuki) copy "you've done enough for today" and "45-day streak" are superseded
+  by the goal-ring framing and the days-studied-this-month stat respectively.
+
+## Amendments to v1 requirements
+
+- **FR5 [Amended in v2]** — On a kanji **reading** prompt the system asks a *specific*
+  reading type and validates against only that type. On'yomi/kun'yomi readings must not be
+  flattened into one interchangeable accepted-readings set. (See FR81–FR83.)
+- **FR8b / FR8c [Amended in v2]** — Reading passages are no longer reached through a
+  dedicated Read tab. They are first-class rows in the unified Browse/Search surface with
+  progress-driven access states. (See FR62–FR70; R3.)
+- **FR9 / FR11 [Amended in v2]** — The unified review loop gains a two-card model for kanji
+  and Return-to-advance pacing. (See FR81–FR86; R4.)
+- **FR15 / FR16 / FR17 [Amended in v2]** — The cognitive-load ring is reframed from a
+  capacity ceiling to an adaptive **goal**. (See FR55–FR58; R1.)
+- **FR18 / FR19 [Amended in v2]** — The daily streak is removed from Home; streak-at-risk
+  notifications are dropped. A non-loss-aversion "days studied this month" stat lives in
+  Stats. (See FR59; R2.)
+
+## Functional Requirements (v2)
+
+### Home Screen & Goal Ring
+
+- FR55: The daily ring is presented as an adaptive **goal** (not a capacity ceiling): it
+  fills from both lessons and reviews, may **overshoot 100%**, and has **no maximum**.
+- FR56: The daily goal recalculates on a **weekly** cadence as the average daily achievement
+  over the prior week (dividing by active days only), subject to a minimum active-days
+  sample before recalculating; otherwise the current goal carries forward.
+- FR57: The goal **rises only** and is surfaced via a congratulatory prompt that also offers
+  to change it; it **never auto-drops**. After 2–3 consecutive weeks of misses the system
+  *offers* an opt-in reduction. The goal is user-configurable in Settings, unbounded.
+- FR58: The Home screen is composed of **permanent sections with designed empty states**
+  (header greeting with a fully-comprehensible sentence and day-1 fallback, goal ring, Learn
+  CTA, Review CTA, one-week forecast with an inline "wall" annotation on heavy days, reading
+  readiness) plus **conditional content** (at-risk/leech refresher, welcome-back triage,
+  curriculum-update banner, shadow-mode prompt, import nudge). The user always chooses the
+  mode; Home offers, it never auto-starts a session.
+- FR59: An **at-risk / refresher** section surfaces when items are genuinely at risk,
+  showing a count plus the top 5–10 items (worst-performing combined with closest-to-
+  dropping-a-stage), a "do a small revision" CTA inline, and a full-list modal/page on tap.
+  Framed as invitation ("ready for a refresher"), never as failure.
+- FR60: A **reading-readiness meter** frames locked passages as a destination ("you're N
+  items from unlocking this passage"), not a locked door.
+- FR61: After an absence, **welcome-back triage** eases the user in ("20 of your 340 due")
+  rather than dumping the full backlog.
+
+### Unified Browse & Search
+
+- FR62: A single **unified discovery surface** replaces the separate Learn per-level screens
+  and the Read tab: a flat, virtualized, paginated list where JLPT level is a filter
+  attribute rather than a navigational container.
+- FR63: **Passages are first-class rows** in this list alongside radicals/kanji/vocabulary/
+  grammar (the list UNION-joins the `items` and `reading_passages` sources). The dedicated
+  Read tab is removed.
+- FR64: The list supports **faceted multi-select filters** (level, type, performance, SRS
+  stage, lock) via drawers, with a **live result count on the Apply control** (disabled at
+  zero) and **self-summarizing pills** that show active selections inline.
+- FR65: A **search** input accepts input in whatever form it arrives (English, romaji, kana,
+  kanji) using a fan-out query with parallel OR branches rather than guessing input type;
+  romaji converts to kana in parallel without replacing the raw query. ~200ms debounce.
+- FR66: Each passage carries a **bilingual (JA/EN) one-line summary** that search covers and
+  the list row displays.
+- FR67: In Browse, **kanji, vocabulary and grammar are always viewable** regardless of
+  lesson eligibility. "Locked" applies to **passages only** (view permission), separate from
+  lesson eligibility (which stays in the lesson planner).
+- FR68: A passage **unlocks when ≥90%** of its linked vocabulary and grammar reach Guru or
+  above (not all-or-nothing), so a single leech cannot hold a readable passage shut.
+- FR69: Tapping a **locked passage** shows the specific vocabulary/grammar it still needs
+  ("you need these 4 words and 1 grammar point") — a to-do list, not a dead end.
+- FR70: In the passage reader, **long-pressing a word** opens its meaning/reading/details in
+  place (word boundaries carrying the linked vocabulary `item_id` are authored in the content
+  pipeline). Stored passage answers (`passage_practice_results`) are read back to drive
+  completed state and to disable inputs on already-correct answers.
+
+### Item Details & Lesson
+
+- FR71: **Lesson** pages use a three-section paged flow (1 Introduction → 2 Mnemonic →
+  3 Examples & links), advanced by Continue. The **details** page remains a single vertical
+  scroll (sections may be collapsed behind disclosures). Lesson and details compositions are
+  split so a section is authored once into the correct surface.
+- FR72: Each content type shows **type-appropriate cross-references** rendered from existing
+  dependency edges: radical→example kanji, kanji→vocabulary using it, vocabulary→component
+  kanji (browsable, not collapsed to a single "prerequisites met" line), and grammar→
+  vocabulary that uses the pattern.
+- FR73: A shared **`SectionHeading` with an optional info affordance** lets headings carry an
+  explainer (on'yomi/kun'yomi, radical, burned, transitive verb, …) as content, opened as a
+  bottom sheet.
+- FR74: An **on'yomi/kun'yomi primer** is shown unprompted to absolute beginners (gated on
+  onboarding path + a `seenKanjiReadingPrimer` flag) as section-1 content on the first kanji
+  that has both reading types, and is reachable thereafter via the heading info affordance.
+- FR75: **Personal mnemonic** is one-per-item and rendered as content (not an always-open
+  form): empty → a muted "add your own" line; saved → text with edit + delete icons (delete
+  confirms); editing → input with Save disabled when empty.
+- FR76: A passive, **non-blocking study-status banner** orients the viewer (locked → what's
+  needed; prereqs-met-not-started → "you haven't studied this yet"; in-progress/known →
+  nothing). Content stays fully visible in every state; the details page is **never** a
+  lesson entry point.
+- FR77: Curriculum **accepted answers** are surfaced behind a disclosure, resolving the
+  naming collision with the user's own synonyms editor.
+- FR78: **Furigana `auto`-hiding keys on the vocabulary item's mastery** (Guru+ or known),
+  never inferred from component kanji.
+- FR79: **Tap-to-toggle furigana stays stateless** (a peek/self-test). Persistent per-word
+  show/hide **overrides live in Settings** with a reset; resolution order is Settings
+  override → SRS default → global preference mode. Overrides are stored independently of
+  `item_study_status` so tidying a reading view never alters the study schedule.
+- FR80: A **comparison view** (sticky side-by-side glyphs, columnized short attributes,
+  stacked prose, component chips with shared parts dimmed) is reachable from a details-page
+  Compare picker and accepts **two preselected items** via route params.
+
+### Review Flow
+
+- FR81: Kanji are prompted as **two cards — meaning and on'yomi reading — both required**
+  before the kanji advances. The prompt **labels the reading type** ("Reading — on'yomi").
+  Kun'yomi is delivered through vocabulary pairing, not the kanji card.
+- FR82: A **valid-but-wrong reading type** is a non-terminal `wrong_reading_type` state (no
+  grade, no weakness signal, nudge and re-prompt) — mirroring `wrong_script`.
+- FR83: The two cards resolve to a **single SRS state via worst-of-both**, applied once per
+  item per session (no double FSRS update, no schema change).
+- FR84: **Return advances** on a correct answer (Return to submit, Return again to continue);
+  the 800ms auto-advance becomes an **opt-in setting, off by default**. Multiple-choice cards
+  get a visible Continue button. The deferred-grade flush contract is preserved when the wait
+  becomes indefinite.
+- FR85: A trimmed **inline reveal panel (reading + meaning only)** shows on the correct path
+  as well as the incorrect path (extracted into a shared `AnswerReveal`). Deeper detail is a
+  deliberate trip to a details route **mounted under `review/`** so the session survives.
+- FR86: The session **progress counter counts cards** (the unit of work experienced), not
+  items, so it does not stall under the two-card model. On an answer-collision, the reveal
+  adds one line ("what you answered belongs to a different item") and links to the comparison
+  view (FR80) with both items preselected.
+
+### AI Conversation
+
+- FR87: A new **AI Conversation tab** (replacing the removed Read slot; shell stays at five
+  tabs) lets the learner converse with an LLM in Japanese, grounded in what they have
+  learned. The tab is always visible; unconfigured, it opens a key-setup screen.
+- FR88: The feature is **bring-your-own-key**. Provider transport is normalized by **two
+  adapters** — OpenAI-compatible (with a user-editable base URL, covering OpenAI/OpenRouter/
+  Hugging Face TGI plus local Ollama/LM Studio) and Anthropic. All calls return
+  `Result<T, AppError>`. Key entry lives both in the tab (first run) and in Settings,
+  extending the existing secure credential store.
+- FR89: The **empty state is the start picker** (practise recent grammar / choose grammar /
+  role-play / random), with a live recent-grammar suggestion sourced from study-status
+  recency. Past conversations are a secondary surface reached from a top-corner entry point.
+- FR90: **Chat is the default mode**; a mic button in the composer promotes to conversation
+  mode mid-session (no up-front mode choice).
+- FR91: The AI **replies in the curriculum's furigana bracket format**, rendered by the
+  existing furigana component and obeying the vocabulary-keyed furigana model (FR78). If the
+  format parse fails, the reply renders as **plain text with no flags/furigana** (no error).
+- FR92: **Unknown words are flagged** (local lookup, zero token cost), not enforced. A flagged
+  word that exists in the curriculum but is unstudied **deep-links to its details page**
+  ("you'll learn this soon"); an off-curriculum word is display-and-translate only. Flagging
+  also serves as the discoverability affordance for long-press.
+- FR93: AI-encountered words **can never enter SRS directly** — every SRS row is keyed to a
+  curriculum `item_id`; off-curriculum words are a display-only dead end by design.
+- FR94: A **turn budget** (dynamic by level and completion; exact formula TBD — OA4) steers
+  role-plays toward a natural ending and gives BYOK users a reasoned cost ceiling; it is a
+  steer, not a hard cutoff.
+- FR95: The AI **never corrects mid-conversation**; correction is deferred to an
+  **end-of-session summary** (mistakes worth fixing ≤5, words you met split by curriculum
+  membership, and whether/how often the practised grammar was used).
+- FR96: The **summary is generated on demand and cached** (never regenerated). Sessions end
+  three ways — AI-initiated (in-band wrap-up signal raises an end popup), user-initiated
+  (always-present End button), or abandoned (closes silently, un-summarised but resumable).
+- FR97: Control signals use **hidden in-band structured markers** the app catches and strips
+  before rendering (no normalized tool-calling layer, which is unreliable across BYOK
+  provider/model choices).
+- FR98: **Conversation mode (push-to-talk)** is full-screen with chat history hidden: the
+  AI's latest line (shown as readable text and spoken via on-device TTS) and the user's
+  latest transcription, push-to-talk below.
+- FR99: Push-to-talk transcription **lands in the composer for confirm/edit/retry before
+  sending** (never straight onto the wire), so the chat log is exact and exiting conversation
+  mode needs no reconciliation. On-device STT is default; **cloud STT is an explicit opt-in
+  setting**, never an automatic fallback.
+- FR100: On-device **TTS and STT** ship via the executorch integration (Supertonic Japanese
+  TTS + Whisper Japanese STT). No interim system-TTS engine is adopted.
+
+## Non-Functional Requirements (v2)
+
+- NFR23: The AI Conversation feature raises the platform floor to **iOS 17 / Android 13
+  (API 33)** with New Architecture (executorch requirement). **Decided 2026-07-19: accepted
+  as a whole-app launch constraint** — the v1 minimums (Android 10 / iOS 15) are retired.
+  This tension with offline-first positioning is accepted as the cost of shipping the voice
+  stack in this scope.
+- NFR24: AI Conversation requires network at runtime and is exempt from the offline-first
+  guarantee; all other features remain fully offline. The BYOK key is stored in
+  platform-appropriate secure storage and only ever transmitted to the user-configured
+  provider endpoint over HTTPS; no learning data is sent to any endpoint the user did not
+  configure.
+- NFR25: On-device model downloads (Whisper `small` ≈ 485 MB iOS / ≈ 1.1 GB Android; the
+  Supertonic model) are one-time, explicit, user-initiated downloads with clear size
+  disclosure; the app is fully usable (chat excluded from voice) before they complete.
+- NFR26: BYOK cost is bounded and legible — the turn budget and on-demand summaries keep
+  per-session token cost predictable; usage accounting from each adapter surfaces cost to the
+  user.
+- NFR27: Streaming AI responses use `expo/fetch` SSE; partial/failed streams degrade
+  gracefully without crashing or corrupting the persisted transcript.
+- NFR28: New `user.db` tables (AI sessions/messages; furigana overrides) are introduced via
+  numbered migrations (`015_furigana_overrides`, then `016+` for AI) preserving the v1
+  data-integrity guarantee (NFR10).
+- NFR29: The first `onLongPress` interactions in the app (passage reader FR70, AI unknown-word
+  FR92) require a **non-gesture alternative** to satisfy the CI-enforced a11y rules.
+- NFR30: The pinned executorch **nightly** dependency has no semver/release-note guarantee;
+  upgrades are manual and must be re-verified. Documented as an accepted maintenance cost.
+
+## v2 Bug Batch (→ stories, not FRs)
+
+| # | Bug | Locus |
+|---|---|---|
+| BUG1 | Home metrics don't refresh after a lesson/review until a tab switch | `index.tsx:153-159` initial-focus skip |
+| BUG2 | Goal ring shows 0% for lesson-only users (no `addDailyLoad` call site in the lesson flow) | `ReviewSessionProvider.tsx:283` sole call site |
+| BUG3 | Any kanji reading accepted on a reading prompt (on'yomi/kun'yomi flattened) | `useReviewQueue.ts:81-84` |
+| BUG4 | Progress counter stalls at 0 once the two-card model lands | `SessionHeader.tsx:27` |
+| BUG5 | `passage_practice_results` written but never read back (no completed state / input disabling) | `getPassagePracticeResults` unused |
+| BUG6 | Furigana `auto`-hide keyed on kanji characters instead of vocabulary mastery | `getKnownKanjiCharacters()` |
+| BUG7 | Dependency-graph locking wrongly applied to kanji/vocab rows in the browse list | `learn/[level].tsx:105-110` |
+
+## v2 Open Items (see `.decision-log.md`)
+
+OA1 goal-ring KPI · OA2 study-days KPI · OA3 platform-floor sign-off · OA4 turn-budget formula ·
+OA5 role-play scenario library · OA6 furigana parse-failure behaviour · OA7 long-press a11y.
