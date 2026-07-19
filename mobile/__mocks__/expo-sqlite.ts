@@ -655,6 +655,56 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return [...rows];
   }
 
+  if (/FROM accepted_answers aa/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
+    // Answer-collision lookup (Story 1.2, FR86):
+    // params = (answer_type, exclude_item_id, ...lowercased candidates)
+    const answers = state.tables.get('accepted_answers') ?? [];
+    const items = state.tables.get('items') ?? [];
+    const answerType = params[0];
+    const excludeId = Number(params[1]);
+    const candidates = new Set(params.slice(2).map((value) => String(value).toLowerCase()));
+    return answers
+      .filter(
+        (row) =>
+          row.answer_type === answerType &&
+          Number(row.item_id) !== excludeId &&
+          candidates.has(String(row.answer_text).toLowerCase()),
+      )
+      .map((row) => {
+        const item = items.find((candidate) => candidate.id === row.item_id);
+        return {
+          item_id: row.item_id,
+          answer_text: row.answer_text,
+          primary_form: item?.primary_form ?? '',
+          item_type: item?.item_type,
+        };
+      });
+  }
+
+  if (/FROM kanji_readings kr/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
+    // Answer-collision lookup against kanji readings (Story 1.2, FR86):
+    // params = (exclude_item_id, ...lowercased candidates)
+    const readings = state.tables.get('kanji_readings') ?? [];
+    const items = state.tables.get('items') ?? [];
+    const excludeId = Number(params[0]);
+    const candidates = new Set(params.slice(1).map((value) => String(value).toLowerCase()));
+    return readings
+      .filter(
+        (row) =>
+          Number(row.item_id) !== excludeId &&
+          candidates.has(String(row.reading).toLowerCase()),
+      )
+      .map((row) => {
+        const item = items.find((candidate) => candidate.id === row.item_id);
+        return {
+          item_id: row.item_id,
+          answer_text: row.reading,
+          primary_form: item?.primary_form ?? '',
+          item_type: item?.item_type,
+        };
+      });
+  }
+
   if (/FROM accepted_answers/i.test(trimmed)) {
     let rows = [...(state.tables.get('accepted_answers') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {

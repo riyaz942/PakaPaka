@@ -10,6 +10,7 @@ import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 
+import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
 import { ProgressiveHint } from './ProgressiveHint';
 import { ReinforcementHighlight } from './ReinforcementHighlight';
@@ -41,6 +42,8 @@ type ReviewCardProps = {
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
   onAddSynonym?: (options?: { force?: boolean }) => void;
+  /** Another item's accepted answer matched the submission (FR86) */
+  answerCollision?: AnswerCollision | null;
 };
 
 const MODE_LABEL: Record<PromptType, string> = {
@@ -98,6 +101,7 @@ export function ReviewCard({
   rejectedAnswer,
   synonymState,
   onAddSynonym,
+  answerCollision,
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
@@ -129,11 +133,11 @@ export function ReviewCard({
           accessibilityLabel={`Correct, ${label.toLowerCase()}: ${value}`}
           className="gap-space-md items-center">
           <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
-          <Text className="text-body-lg text-primary text-center">
-            {label}: {value}
-          </Text>
         </View>
         {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
+        {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
+            shown expanded, never gated behind an icon. */}
+        <AnswerReveal item={item} detail={revealDetail ?? null} collision={answerCollision} />
         <ReinforcementHighlight link={reinforcementLink} />
       </View>
     );
@@ -151,6 +155,7 @@ export function ReviewCard({
         rejectedAnswer={rejectedAnswer}
         synonymState={synonymState}
         onAddSynonym={onAddSynonym}
+        answerCollision={answerCollision}
       />
     );
   }

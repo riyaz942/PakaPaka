@@ -3,6 +3,8 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import SettingsScreen from './settings';
 
 const mockSetReducedMotion = jest.fn();
+const mockSetAutoAdvanceEnabled = jest.fn();
+let mockAutoAdvanceEnabled = false;
 const mockEnableShadowMode = jest.fn();
 const mockDisableShadowMode = jest.fn();
 const mockSetFuriganaMode = jest.fn();
@@ -23,6 +25,13 @@ jest.mock('@/data/hooks/useReducedMotion', () => ({
     reducedMotion: false,
     preference: null,
     setReducedMotion: mockSetReducedMotion,
+  }),
+}));
+
+jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
+  useReviewAutoAdvance: () => ({
+    autoAdvanceEnabled: mockAutoAdvanceEnabled,
+    setAutoAdvanceEnabled: mockSetAutoAdvanceEnabled,
   }),
 }));
 
@@ -82,6 +91,38 @@ describe('SettingsScreen accessibility', () => {
     render(<SettingsScreen />);
     fireEvent(screen.getByTestId('settings-reduced-motion-toggle'), 'valueChange', true);
     expect(mockSetReducedMotion).toHaveBeenCalledWith(true);
+  });
+});
+
+describe('SettingsScreen review auto-advance toggle (Story 1.2, FR84 / UX-DR10)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockAutoAdvanceEnabled = false;
+  });
+
+  it('renders the auto-advance switch off by default', () => {
+    render(<SettingsScreen />);
+    const toggle = screen.getByRole('switch', { name: 'Auto-advance after correct answers' });
+    expect(toggle).toBeTruthy();
+    expect(toggle.props.value).toBe(false);
+  });
+
+  it('labels the setting as Lightning Mode in the description', () => {
+    render(<SettingsScreen />);
+    expect(screen.getByText(/Lightning Mode/)).toBeTruthy();
+  });
+
+  it('persists the preference when toggled on', () => {
+    render(<SettingsScreen />);
+    fireEvent(screen.getByTestId('settings-review-auto-advance-toggle'), 'valueChange', true);
+    expect(mockSetAutoAdvanceEnabled).toHaveBeenCalledWith(true);
+  });
+
+  it('reflects a stored ON preference', () => {
+    mockAutoAdvanceEnabled = true;
+    render(<SettingsScreen />);
+    const toggle = screen.getByTestId('settings-review-auto-advance-toggle');
+    expect(toggle.props.value).toBe(true);
   });
 });
 

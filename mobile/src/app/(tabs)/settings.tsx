@@ -14,6 +14,7 @@ import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
+import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import {
   clearOnboardingCompleted,
@@ -50,6 +51,7 @@ export default function SettingsScreen() {
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion } = useReducedMotion();
   const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
+  const { autoAdvanceEnabled, setAutoAdvanceEnabled } = useReviewAutoAdvance();
   const {
     canEnable: shadowModeCanEnable,
     isEnabled: shadowModeEnabled,
@@ -172,6 +174,26 @@ export default function SettingsScreen() {
             testID="settings-weakness-bias-toggle"
             value={weaknessBiasEnabled}
             onValueChange={handleWeaknessBiasToggle}
+          />
+        </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Review pacing</Text>
+
+        <View className="mt-4 flex-row items-center justify-between">
+          <View className="flex-1 pr-space-md">
+            <Text className="text-body text-primary">Auto-advance after correct answers</Text>
+            <Text className="mt-1 text-body-sm text-secondary">
+              Lightning Mode: move to the next card automatically after a correct answer. When
+              off, press Return (or Continue) to advance.
+            </Text>
+          </View>
+          <Switch
+            accessibilityLabel="Auto-advance after correct answers"
+            testID="settings-review-auto-advance-toggle"
+            value={autoAdvanceEnabled}
+            onValueChange={setAutoAdvanceEnabled}
           />
         </View>
       </View>

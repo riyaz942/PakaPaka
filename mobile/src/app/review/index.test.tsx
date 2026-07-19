@@ -7,6 +7,7 @@ import type { ReviewItem } from '@/core/srs/srs.types';
 import ReviewScreen from './index';
 
 const mockGradeCurrentItem = jest.fn();
+const mockDetectAnswerCollision = jest.fn();
 const mockRecordTypoForCurrentItem = jest.fn();
 const mockAddSynonymForCurrentItem = jest.fn().mockReturnValue({ status: 'added' });
 const mockInputFocus = jest.fn();
@@ -15,6 +16,7 @@ const mockFocusScreenReaderOn = jest.fn().mockResolvedValue(undefined);
 let mockCurrentItem: ReviewItem | null = makeReviewItem();
 let mockCurrentIndex = 0;
 let mockCursor = 0;
+let mockAutoAdvanceEnabled = false;
 
 function makeReviewItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
   return {
@@ -85,6 +87,20 @@ jest.mock('@/data/hooks/useReviewRevealDetails', () => ({
   useReviewRevealDetails: () => () => null,
 }));
 
+jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
+  useReviewAutoAdvance: () => ({
+    autoAdvanceEnabled: mockAutoAdvanceEnabled,
+    setAutoAdvanceEnabled: jest.fn(),
+  }),
+}));
+
+jest.mock('@/data/hooks/useAnswerCollision', () => ({
+  useAnswerCollision:
+    () =>
+    (...args: unknown[]) =>
+      mockDetectAnswerCollision(...args),
+}));
+
 jest.mock('@/components/review/WanaKanaInput', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest mock factory
   const { forwardRef, useImperativeHandle } = require('react');
@@ -132,6 +148,8 @@ describe('ReviewScreen accessibility', () => {
     mockCurrentItem = makeReviewItem();
     mockCurrentIndex = 0;
     mockCursor = 0;
+    mockAutoAdvanceEnabled = false;
+    mockDetectAnswerCollision.mockReturnValue(null);
     mockFocusScreenReaderOn.mockResolvedValue(undefined);
 
     jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
@@ -308,6 +326,42 @@ describe('ReviewScreen accessibility', () => {
     });
   });
 
+  it('shows the collision line on the incorrect reveal when the answer belongs to another item (FR86)', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    mockDetectAnswerCollision.mockReturnValue({ itemId: 'other-9', primaryForm: '飲' });
+
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'drink');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Your answer belongs to a different item: 飲.')).toBeTruthy();
+    });
+    expect(mockDetectAnswerCollision).toHaveBeenCalledWith(mockCurrentItem, 'drink');
+    expect(screen.getByLabelText('Compare with 飲')).toBeTruthy();
+  });
+
+  it('shows no collision line for a plain miss', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Continue' })).toBeTruthy();
+    });
+    expect(screen.queryByText(/different item/)).toBeNull();
+  });
+
   it('wraps the focal zone in a scroll container and keeps the input zone mounted', () => {
     render(<ReviewScreen />);
 
@@ -413,6 +467,187 @@ describe('ReviewScreen accessibility', () => {
   });
 });
 
+describe('ReviewScreen — Return-to-advance pacing (Story 1.2, FR84)', () => {
+  function makeMcGrammarItem(): ReviewItem {
+    return makeReviewItem({
+      itemType: 'grammar',
+      promptType: 'production',
+      primaryForm: 'は',
+      displayMeaning: 'topic marker',
+      clozePrompt: '私＿＿＿学生です。',
+      inputMode: 'mc',
+      mcOptions: ['が', 'は', 'を', 'に'],
+      answerKey: {
+        acceptedMeanings: ['topic marker'],
+        acceptedReadings: [],
+        grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+      },
+    });
+  }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.useFakeTimers();
+    mockCurrentItem = makeReviewItem();
+    mockCurrentIndex = 0;
+    mockCursor = 0;
+    mockAutoAdvanceEnabled = false;
+    mockDetectAnswerCollision.mockReturnValue(null);
+    mockFocusScreenReaderOn.mockResolvedValue(undefined);
+
+    jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+      cb(0);
+      return 0;
+    });
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    jest.spyOn(AccessibilityInfo, 'announceForAccessibility').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('waits indefinitely after a correct answer by default (no 800ms auto-advance)', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(screen.getByLabelText('Correct, reading: たべる')).toBeTruthy();
+
+    await act(async () => {
+      jest.advanceTimersByTime(5000);
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+  });
+
+  it('advances on the second Return without re-evaluating the (empty) input', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    // The input stays editable so the return key can still fire.
+    expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
+
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('a third Return is a no-op (grade applied once)', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+  });
+
+  it('auto-advances after 800ms when Lightning Mode is enabled', async () => {
+    mockAutoAdvanceEnabled = true;
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    await act(async () => {
+      jest.advanceTimersByTime(800);
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('Return during the Lightning window advances immediately and cancels the timer', async () => {
+    mockAutoAdvanceEnabled = true;
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+
+    // The cancelled timer must not grade a second time.
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+  });
+
+  it('flushes the pending grade on unmount under the indefinite wait (FR84)', async () => {
+    const { unmount } = render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    unmount();
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('shows a visible Continue on MC-correct and advances through it', async () => {
+    mockCurrentItem = makeMcGrammarItem();
+    render(<ReviewScreen />);
+
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText('は'));
+    });
+
+    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    expect(continueButton).toBeTruthy();
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.press(continueButton);
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('keeps the Continue control on MC-correct even with Lightning Mode on (MC has no Return)', async () => {
+    mockAutoAdvanceEnabled = true;
+    mockCurrentItem = makeMcGrammarItem();
+    render(<ReviewScreen />);
+
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText('は'));
+    });
+
+    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    fireEvent.press(continueButton);
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('ReviewScreen — hints never affect grading (Plan 10.2)', () => {
   function makeHintedGrammarItem(): ReviewItem {
     return makeReviewItem({
@@ -439,6 +674,8 @@ describe('ReviewScreen — hints never affect grading (Plan 10.2)', () => {
     jest.clearAllMocks();
     mockCurrentIndex = 0;
     mockCursor = 0;
+    mockAutoAdvanceEnabled = false;
+    mockDetectAnswerCollision.mockReturnValue(null);
     mockCurrentItem = makeHintedGrammarItem();
 
     jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {

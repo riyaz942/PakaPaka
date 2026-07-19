@@ -1,12 +1,13 @@
-import { useState, type Ref } from 'react';
+import { type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
-import { deriveMeaningCandidates, normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
+
+import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 
 export type AddSynonymUiState =
   | { status: 'idle' }
@@ -28,26 +29,9 @@ type IncorrectRevealProps = {
   rejectedAnswer?: string;
   synonymState?: AddSynonymUiState;
   onAddSynonym?: (options?: { force?: boolean }) => void;
+  /** Another item's accepted answer matched the submission (FR86) */
+  answerCollision?: AnswerCollision | null;
 };
-
-/**
- * Alternates worth listing under the primary meaning: accepted meanings that
- * aren't just split-outs of the display string (those would be noise).
- */
-function meaningAlternates(displayMeaning: string, meanings: string[]): string[] {
-  const derived = new Set(deriveMeaningCandidates(displayMeaning).map(normalizeMeaning));
-  const seen = new Set<string>();
-  const alternates: string[] = [];
-  for (const meaning of meanings) {
-    const normalized = normalizeMeaning(meaning);
-    if (!normalized || derived.has(normalized) || seen.has(normalized)) continue;
-    seen.add(normalized);
-    alternates.push(meaning);
-  }
-  return alternates;
-}
-
-const READING_TYPE_LABEL = { onyomi: "On'yomi", kunyomi: "Kun'yomi" } as const;
 
 export function IncorrectReveal({
   item,
@@ -59,18 +43,8 @@ export function IncorrectReveal({
   rejectedAnswer,
   synonymState = { status: 'idle' },
   onAddSynonym,
+  answerCollision,
 }: IncorrectRevealProps) {
-  const [expanded, setExpanded] = useState(false);
-
-  const alternates = meaningAlternates(item.displayMeaning, item.meanings);
-  const mnemonic = item.personalMnemonic ?? item.mnemonic;
-  const kanjiReadings = detail?.kanjiReadings ?? [];
-  const vocabReadings =
-    item.itemType === 'vocabulary'
-      ? item.answerKey.acceptedReadings.filter((reading) => reading !== item.primaryForm)
-      : [];
-  const exampleSentences = detail?.exampleSentences ?? [];
-
   // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
   // and show the completed sentence so the blank's scope is unmistakable.
   const isIncomplete = !!incompleteAnswer && item.itemType === 'grammar';
@@ -125,66 +99,9 @@ export function IncorrectReveal({
         </View>
       ) : null}
 
-      <View className="gap-space-sm rounded-radius-md bg-surface p-space-md">
-        <View>
-          <Text className="text-overline uppercase text-secondary">Meaning</Text>
-          <Text className="text-body-lg text-primary">{item.displayMeaning}</Text>
-          {alternates.length > 0 ? (
-            <Text className="text-body-sm text-secondary">
-              Also accepted: {alternates.join(', ')}
-            </Text>
-          ) : null}
-        </View>
-
-        {kanjiReadings.length > 0 ? (
-          <View>
-            <Text className="text-overline uppercase text-secondary">Readings</Text>
-            {(['onyomi', 'kunyomi'] as const).map((type) => {
-              const readings = kanjiReadings.filter((r) => r.readingType === type);
-              if (readings.length === 0) return null;
-              return (
-                <Text key={type} className="text-body text-primary">
-                  {READING_TYPE_LABEL[type]}: {readings.map((r) => r.reading).join('、')}
-                </Text>
-              );
-            })}
-          </View>
-        ) : vocabReadings.length > 0 ? (
-          <View>
-            <Text className="text-overline uppercase text-secondary">Reading</Text>
-            <Text className="text-body text-primary">{vocabReadings.join('、')}</Text>
-          </View>
-        ) : null}
-
-        {mnemonic ? (
-          <View>
-            <Text className="text-overline uppercase text-secondary">Mnemonic</Text>
-            <Text className="text-body text-secondary">{mnemonic}</Text>
-          </View>
-        ) : null}
-
-        {exampleSentences.length > 0 ? (
-          expanded ? (
-            <View className="gap-space-xs">
-              <Text className="text-overline uppercase text-secondary">Examples</Text>
-              {exampleSentences.map((sentence) => (
-                <View key={sentence.id}>
-                  <Text className="text-body text-primary">{sentence.japanese}</Text>
-                  <Text className="text-body-sm text-secondary">{sentence.english}</Text>
-                </View>
-              ))}
-            </View>
-          ) : (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="See full details"
-              onPress={() => setExpanded(true)}
-              className="min-h-[44px] justify-center">
-              <Text className="text-body text-feedback-info">See full details</Text>
-            </Pressable>
-          )
-        ) : null}
-      </View>
+      {/* Shared trimmed panel (FR85): reading + meaning only — mnemonic and
+          examples moved to the details route under review/. */}
+      <AnswerReveal item={item} detail={detail} collision={answerCollision} />
 
       {synonymState.status === 'added' ? (
         <Text className="text-body-sm text-feedback-correct text-center">

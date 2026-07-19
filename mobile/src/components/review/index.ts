@@ -1,3 +1,5 @@
+export { AnswerReveal } from './AnswerReveal';
+export type { AnswerCollision } from './AnswerReveal';
 export { ReviewCard, resolveCorrectReveal } from './ReviewCard';
 export type { ReviewCardState } from './ReviewCard';
 export { GrammarMcOptions } from './GrammarMcOptions';

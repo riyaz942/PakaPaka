@@ -47,7 +47,11 @@ export const CLUSTER_MIN_SAMPLE = 5;
  */
 export const CLUSTER_ACCURACY_THRESHOLD = 0.6;
 
-/** Pause before auto-advancing after a correct answer (Epic 6 will make this configurable). */
+/**
+ * Lightning Mode delay: pause before auto-advancing after a correct answer.
+ * Only runs when the `review_auto_advance` Settings toggle is ON — the default
+ * review loop waits indefinitely for Return/Continue (FR84).
+ */
 export const REVIEW_CORRECT_AUTO_ADVANCE_MS = 800;
 
 /**

@@ -21,6 +21,7 @@ export const PREFERENCE_KEYS = {
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
   reducedMotion: 'reduced_motion',
+  reviewAutoAdvance: 'review_auto_advance',
   furiganaDisplay: 'furigana_display',
   shadowModeEnabled: 'shadow_mode_enabled',
   shadowModeEnabledAt: 'shadow_mode_enabled_at',
@@ -157,6 +158,19 @@ export function getReducedMotionEnabled(userDb: SQLiteDatabase): boolean | null 
 
 export function setReducedMotionEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.reducedMotion, enabled ? 'true' : 'false');
+}
+
+/**
+ * Returns true when auto-advance after a correct review answer (Lightning Mode)
+ * is enabled. Default is OFF when unset (FR84): the review loop waits for
+ * Return/Continue unless the learner opts in via Settings.
+ */
+export function getReviewAutoAdvanceEnabled(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.reviewAutoAdvance) === 'true';
+}
+
+export function setReviewAutoAdvanceEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.reviewAutoAdvance, enabled ? 'true' : 'false');
 }
 
 /**

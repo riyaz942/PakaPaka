@@ -397,6 +397,78 @@ export function getAcceptedAnswers(
   return rows.map(mapAcceptedAnswerRow);
 }
 
+export type AcceptedAnswerMatch = {
+  itemId: string;
+  primaryForm: string;
+  itemType: ItemType;
+  /** The stored answer text that matched, for caller-side normalized verification. */
+  answerText: string;
+};
+
+type AcceptedAnswerMatchRow = {
+  item_id: number | string;
+  primary_form: string;
+  item_type: ItemType;
+  answer_text: string;
+};
+
+/**
+ * Finds curriculum items (other than `excludeItemId`) whose accepted answer
+ * matches one of `candidates` — the answer-collision lookup (FR86). Exact
+ * lowercase SQL matching keeps this on the sync fast path (NFR1); callers
+ * re-verify hits with the JS normalization helpers. For readings, kanji
+ * on'yomi/kun'yomi rows are searched in addition to `accepted_answers`.
+ */
+export function findItemsByAcceptedAnswer(
+  db: SQLiteDatabase,
+  answerType: 'meaning' | 'reading',
+  candidates: string[],
+  excludeItemId: string,
+): AcceptedAnswerMatch[] {
+  const lowered = [...new Set(candidates.map((c) => c.trim().toLowerCase()).filter(Boolean))];
+  if (lowered.length === 0) {
+    return [];
+  }
+  const placeholders = lowered.map(() => '?').join(', ');
+
+  const rows = db.getAllSync<AcceptedAnswerMatchRow>(
+    `SELECT aa.item_id, aa.answer_text, i.primary_form, i.item_type
+     FROM accepted_answers aa
+     JOIN items i ON i.id = aa.item_id
+     WHERE aa.answer_type = ? AND aa.item_id != ? AND lower(aa.answer_text) IN (${placeholders})`,
+    answerType,
+    Number(excludeItemId),
+    ...lowered,
+  );
+
+  const readingRows =
+    answerType === 'reading'
+      ? db.getAllSync<AcceptedAnswerMatchRow>(
+          `SELECT kr.item_id, kr.reading AS answer_text, i.primary_form, i.item_type
+           FROM kanji_readings kr
+           JOIN items i ON i.id = kr.item_id
+           WHERE kr.item_id != ? AND lower(kr.reading) IN (${placeholders})`,
+          Number(excludeItemId),
+          ...lowered,
+        )
+      : [];
+
+  const seen = new Set<string>();
+  const matches: AcceptedAnswerMatch[] = [];
+  for (const row of [...rows, ...readingRows]) {
+    const itemId = String(row.item_id);
+    if (seen.has(itemId)) continue;
+    seen.add(itemId);
+    matches.push({
+      itemId,
+      primaryForm: row.primary_form,
+      itemType: row.item_type,
+      answerText: row.answer_text,
+    });
+  }
+  return matches;
+}
+
 function parseCautionNotes(raw: string | null | undefined): string[] {
   if (!raw) {
     return [];

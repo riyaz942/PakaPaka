@@ -16,12 +16,14 @@ import {
   getShadowModePromptSnoozedUntil,
   getStartingJlptLevel,
   getReducedMotionEnabled,
+  getReviewAutoAdvanceEnabled,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
   setFuriganaDisplay,
   setOnboardingCompleted,
   setOnboardingPath,
   setReducedMotionEnabled,
+  setReviewAutoAdvanceEnabled,
   setSessionIntensity,
   setShadowModeEnabled,
   setShadowModeEnabledAt,
@@ -202,6 +204,40 @@ describe('preferencesRepository reduced motion preference', () => {
 
     setReducedMotionEnabled(db, false);
     expect(getReducedMotionEnabled(db)).toBe(false);
+  });
+});
+
+describe('preferencesRepository review auto-advance (Lightning Mode) preference', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults to OFF when unset (FR84)', async () => {
+    const db = await createUserDb();
+    expect(getReviewAutoAdvanceEnabled(db)).toBe(false);
+  });
+
+  it('round-trips review_auto_advance and persists ON', async () => {
+    const db = await createUserDb();
+
+    setReviewAutoAdvanceEnabled(db, true);
+    expect(getReviewAutoAdvanceEnabled(db)).toBe(true);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.reviewAutoAdvance,
+      )?.value,
+    ).toBe('true');
+
+    setReviewAutoAdvanceEnabled(db, false);
+    expect(getReviewAutoAdvanceEnabled(db)).toBe(false);
   });
 });
 

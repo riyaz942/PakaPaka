@@ -27,12 +27,15 @@ import {
   type WanaKanaInputRef,
 } from '@/components/review';
 import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
+import type { AnswerCollision } from '@/core/answer/answer.types';
 import {
   evaluateReviewAnswer,
   gradeForResult,
 } from '@/core/answer/reviewAnswerEvaluator';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
+import { useAnswerCollision } from '@/data/hooks/useAnswerCollision';
+import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
 import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSessionProvider';
 import { focusScreenReaderOn } from '@/utils/accessibilityFocus';
@@ -68,6 +71,8 @@ export default function ReviewScreen() {
     snapshotSessionDuration,
   } = useReviewSession();
   const getRevealDetail = useReviewRevealDetails(currentItem, prefetchBuffer);
+  const { autoAdvanceEnabled } = useReviewAutoAdvance();
+  const detectAnswerCollision = useAnswerCollision();
 
   const [exitVisible, setExitVisible] = useState(false);
   const [thresholdNoticeVisible, setThresholdNoticeVisible] = useState(false);
@@ -84,6 +89,8 @@ export default function ReviewScreen() {
   });
   // Near-miss teaching flag for the incorrect reveal (Plan 10).
   const [incompleteAnswer, setIncompleteAnswer] = useState(false);
+  // The submitted answer matched a different item's accepted answer (FR86).
+  const [answerCollision, setAnswerCollision] = useState<AnswerCollision | null>(null);
   const inputRef = useRef<WanaKanaInputRef>(null);
   const resultRef = useRef<RNView>(null);
   const continueButtonRef = useRef<RNView>(null);
@@ -97,11 +104,15 @@ export default function ReviewScreen() {
   const isEndingRef = useRef(false);
   const hasActiveSession = totalItems > 0 && !isComplete && !isLoading && !error;
 
-  const inputEditable =
+  const canSubmitAnswer =
     cardState === 'prompting' ||
     cardState === 'typo' ||
     cardState === 'wrong_script' ||
     cardState === 'wrong_reading_type';
+
+  // The input stays editable (and focused — submitBehavior="submit") through the
+  // correct state so the second Return can advance without re-tapping (FR84).
+  const inputEditable = canSubmitAnswer || cardState === 'correct';
 
   usePreventRemove(hasActiveSession && !exitVisible && !isEndingRef.current, () => {
     setExitVisible(true);
@@ -145,6 +156,7 @@ export default function ReviewScreen() {
     setRejectedAnswer('');
     setSynonymState({ status: 'idle' });
     setIncompleteAnswer(false);
+    setAnswerCollision(null);
     isSubmittingRef.current = false;
     if (autoAdvanceTimer.current) {
       clearTimeout(autoAdvanceTimer.current);
@@ -221,7 +233,7 @@ export default function ReviewScreen() {
   }, [isComplete]);
 
   const submitAnswer = useCallback((submittedAnswer: string, options?: { fromMc?: boolean }) => {
-    if (!currentItem || !inputEditable) return;
+    if (!currentItem || !canSubmitAnswer) return;
     if (!submittedAnswer.trim()) return;
     // Guard against a second submit (e.g. rapid double return-key) racing the
     // state-derived `inputEditable` flag before it re-renders.
@@ -250,12 +262,16 @@ export default function ReviewScreen() {
       setCardState('correct');
       const grade = gradeForResult(evaluation.result) ?? 3;
       setStageTransition(peekStageTransition(grade));
+      // Default (FR84): hold the grade until the next Return/Continue. The
+      // 800ms timer only runs when Lightning Mode is enabled in Settings.
       pendingGradeRef.current = grade;
-      autoAdvanceTimer.current = setTimeout(() => {
-        autoAdvanceTimer.current = null;
-        pendingGradeRef.current = null;
-        gradeCurrentItem(grade);
-      }, REVIEW_CORRECT_AUTO_ADVANCE_MS);
+      if (autoAdvanceEnabled) {
+        autoAdvanceTimer.current = setTimeout(() => {
+          autoAdvanceTimer.current = null;
+          pendingGradeRef.current = null;
+          gradeCurrentItem(grade);
+        }, REVIEW_CORRECT_AUTO_ADVANCE_MS);
+      }
       return;
     }
 
@@ -292,13 +308,34 @@ export default function ReviewScreen() {
     setDisplayAnswer(answer);
     setRejectedAnswer(submittedAnswer.trim());
     setIncompleteAnswer(evaluation.feedbackKind === 'incomplete');
+    // Sync curriculum lookup — never blocks the <100ms feedback path (NFR1).
+    setAnswerCollision(detectAnswerCollision(currentItem, submittedAnswer));
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
-  }, [currentItem, gradeCurrentItem, inputEditable, peekStageTransition, recordTypoForCurrentItem]);
+  }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
+
+  // Second Return (or MC Continue) after a correct answer: apply the deferred
+  // grade and advance. Never re-evaluates input — the answer already graded.
+  const advanceFromCorrect = useCallback(() => {
+    if (cardState !== 'correct') return;
+    if (autoAdvanceTimer.current) {
+      clearTimeout(autoAdvanceTimer.current);
+      autoAdvanceTimer.current = null;
+    }
+    const grade = pendingGradeRef.current;
+    if (grade !== null) {
+      pendingGradeRef.current = null;
+      gradeCurrentItem(grade);
+    }
+  }, [cardState, gradeCurrentItem]);
 
   const handleSubmit = useCallback(() => {
+    if (cardState === 'correct') {
+      advanceFromCorrect();
+      return;
+    }
     submitAnswer(answerText);
-  }, [answerText, submitAnswer]);
+  }, [advanceFromCorrect, answerText, cardState, submitAnswer]);
 
   function handleContinueIncorrect() {
     // isSubmittingRef stays true after an incorrect reveal until the cursor
@@ -316,7 +353,7 @@ export default function ReviewScreen() {
   // "Don't know" — reveal the correct answer and mark the item incorrect,
   // reusing the same incorrect flow as a wrong submission (Continue grades it).
   function handleDontKnow() {
-    if (!currentItem || !inputEditable) return;
+    if (!currentItem || !canSubmitAnswer) return;
     if (isSubmittingRef.current) return;
     isSubmittingRef.current = true;
     const { value } = resolveCorrectReveal(currentItem);
@@ -422,8 +459,8 @@ export default function ReviewScreen() {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <SessionHeader
-        currentIndex={currentIndex}
-        totalItems={totalItems}
+        cardsCompleted={currentIndex}
+        totalCards={totalItems}
         itemType={currentItem.itemType}
         cognitiveLoadPercent={cognitiveLoadPercent}
         onExitPress={() => setExitVisible(true)}
@@ -451,15 +488,19 @@ export default function ReviewScreen() {
             rejectedAnswer={rejectedAnswer}
             synonymState={synonymState}
             onAddSynonym={handleAddSynonym}
+            answerCollision={answerCollision}
           />
         </ScrollView>
 
-        {cardState === 'incorrect' ? (
+        {cardState === 'incorrect' || (cardState === 'correct' && isMcCard) ? (
+          // MC has no Return key, so the correct path always shows a visible
+          // Continue — it doubles as an early advance while the Lightning
+          // Mode timer is pending (FR84).
           <View className="px-space-md pb-space-md">
             <Button
               ref={continueButtonRef}
               label="Continue"
-              onPress={handleContinueIncorrect}
+              onPress={cardState === 'incorrect' ? handleContinueIncorrect : advanceFromCorrect}
               variant="primary"
             />
           </View>
@@ -467,20 +508,20 @@ export default function ReviewScreen() {
           <View
             className={cn(
               'gap-space-sm px-space-md pb-space-md',
-              !inputEditable && 'opacity-50',
+              !canSubmitAnswer && 'opacity-50',
             )}>
             <GrammarMcOptions
               key={cursor}
               options={currentItem.mcOptions!}
               onSelect={(option) => submitAnswer(option, { fromMc: true })}
-              disabled={!inputEditable}
+              disabled={!canSubmitAnswer}
             />
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Don't know"
-              accessibilityState={{ disabled: !inputEditable }}
+              accessibilityState={{ disabled: !canSubmitAnswer }}
               className="min-h-[44px] items-center justify-center"
-              disabled={!inputEditable}
+              disabled={!canSubmitAnswer}
               onPress={handleDontKnow}>
               <Text className="text-caption text-secondary">Don&apos;t know</Text>
             </Pressable>
@@ -492,7 +533,7 @@ export default function ReviewScreen() {
           <View
             className={cn(
               'gap-space-sm px-space-md pb-space-md',
-              !inputEditable && 'opacity-50',
+              !canSubmitAnswer && 'opacity-50',
             )}>
             <WanaKanaInput
               ref={inputRef}
@@ -511,9 +552,9 @@ export default function ReviewScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Don't know"
-              accessibilityState={{ disabled: !inputEditable }}
+              accessibilityState={{ disabled: !canSubmitAnswer }}
               className="min-h-[44px] items-center justify-center"
-              disabled={!inputEditable}
+              disabled={!canSubmitAnswer}
               onPress={handleDontKnow}>
               <Text className="text-caption text-secondary">Don&apos;t know</Text>
             </Pressable>

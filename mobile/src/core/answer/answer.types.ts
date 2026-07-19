@@ -5,6 +5,17 @@ export type AnswerResult =
   | 'wrong_script'
   | 'wrong_reading_type';
 
+/**
+ * Another curriculum item whose accepted answer matches what the user
+ * submitted (FR86). Detection needs the curriculum DB, so it happens outside
+ * the pure evaluator and annotates the reveal props — this is the single
+ * collision representation for answer feedback (do not add a parallel one).
+ */
+export type AnswerCollision = {
+  itemId: string;
+  primaryForm: string;
+};
+
 export type EvaluationResult = {
   result: AnswerResult;
   /** Primary accepted answer to display on incorrect */

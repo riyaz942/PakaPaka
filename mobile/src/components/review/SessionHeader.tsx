@@ -7,26 +7,31 @@ import type { ReviewItem } from '@/core/srs/srs.types';
 type ItemType = ReviewItem['itemType'];
 
 type SessionHeaderProps = {
-  /** Distinct items retired (answered correctly at least once) — monotonic, never backwards. */
-  currentIndex: number;
-  totalItems: number;
+  /**
+   * Cards completed (answered correctly at least once) — monotonic, never
+   * backwards. Card-scoped, not item-scoped (FR86): a two-card kanji advances
+   * this per card, never waiting on the pair's worst-of-both FSRS write.
+   */
+  cardsCompleted: number;
+  /** Total cards in the session queue, after two-card kanji expansion. */
+  totalCards: number;
   itemType: ItemType;
   cognitiveLoadPercent?: number;
   onExitPress: () => void;
 };
 
 export function SessionHeader({
-  currentIndex,
-  totalItems,
+  cardsCompleted,
+  totalCards,
   itemType,
   cognitiveLoadPercent = 0,
   onExitPress,
 }: SessionHeaderProps) {
-  // Clamp: once every item is retired except in-flight retries, retiredCount can
-  // equal totalItems while retry cards are still being shown.
-  const displayNumber = Math.min(currentIndex + 1, totalItems);
+  // Clamp: once every card is completed except in-flight retries, cardsCompleted
+  // can equal totalCards while retry cards are still being shown.
+  const displayNumber = Math.min(cardsCompleted + 1, totalCards);
   const accent = CONTENT_TYPE_ACCENT[itemType];
-  const a11yLabel = `Item ${displayNumber} of ${totalItems}, cognitive load ${cognitiveLoadPercent} percent, ${itemType} item`;
+  const a11yLabel = `Card ${displayNumber} of ${totalCards}, cognitive load ${cognitiveLoadPercent} percent, ${itemType} card`;
 
   return (
     <View className="flex-row items-center px-space-md" style={{ height: 56 }}>
@@ -37,7 +42,7 @@ export function SessionHeader({
         <CognitiveLoadRing variant="small" percent={cognitiveLoadPercent} />
 
         <Text className="text-body font-semibold text-primary">
-          {`${displayNumber} of ${totalItems}`}
+          {`${displayNumber} of ${totalCards}`}
         </Text>
 
         <View className={`rounded-radius-sm px-space-xs py-[2px] ${accent.tint}`}>

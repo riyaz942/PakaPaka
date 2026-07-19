@@ -5,7 +5,7 @@ depends_on: 1-1-two-card-kanji-grading
 
 # Story 1.2: Review Pacing, Reveal & Card Progress
 
-Status: ready-for-dev
+Status: review
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -45,52 +45,52 @@ so that a longer two-card session still feels fast, honest, and controllable.
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1 — Return-to-advance + Lightning Mode preference** (AC: #1, #5)
-  - [ ] Stop unconditional `setTimeout(..., REVIEW_CORRECT_AUTO_ADVANCE_MS)` on correct in `review/index.tsx`.
-  - [ ] Default path: set `cardState = 'correct'`, stash grade in `pendingGradeRef`, **wait** for second Return (or Continue) before calling `gradeCurrentItem`.
-  - [ ] Second Return while `cardState === 'correct'`: clear pending + call `gradeCurrentItem` (advance). Do **not** re-evaluate empty input. Today `inputEditable` excludes `correct` and `editable={false}` — fix so Return still advances (keep input mounted/focused for typed path; see Dev Notes).
-  - [ ] MC correct + incorrect: always show visible **Continue** (no keyboard assumption). Incorrect Continue already exists; add Continue for MC-correct when auto-advance is off (and keep it as the advance control when Lightning Mode is on too for MC — MC has no Return).
-  - [ ] Add preference key (e.g. `review_auto_advance`) via `PREFERENCE_KEYS` + `get`/`set` helpers in `preferencesRepository.ts`. **Default off** (`null`/`false` = off).
-  - [ ] Settings toggle (UX-DR10 / UX-DR33): label clearly as auto-advance after correct / Lightning Mode; pattern after `useReducedMotion` + Settings `Switch`.
-  - [ ] When preference **on**: restore 800ms timer using existing `REVIEW_CORRECT_AUTO_ADVANCE_MS` (keep constant; update its comment — no longer “Epic 6”).
-  - [ ] Preserve `flushPendingGrade` on unmount and `handleEndSession`. Under indefinite wait, pending grade must still flush on exit/unmount so a correct answer is never lost (FR84). Cursor-change reset may clear timer/pending **without** flush only when advancing (existing intentional behavior).
-  - [ ] No new review-loop animations (NFR5b).
+- [x] **Task 1 — Return-to-advance + Lightning Mode preference** (AC: #1, #5)
+  - [x] Stop unconditional `setTimeout(..., REVIEW_CORRECT_AUTO_ADVANCE_MS)` on correct in `review/index.tsx`.
+  - [x] Default path: set `cardState = 'correct'`, stash grade in `pendingGradeRef`, **wait** for second Return (or Continue) before calling `gradeCurrentItem`.
+  - [x] Second Return while `cardState === 'correct'`: clear pending + call `gradeCurrentItem` (advance). Do **not** re-evaluate empty input. Today `inputEditable` excludes `correct` and `editable={false}` — fix so Return still advances (keep input mounted/focused for typed path; see Dev Notes).
+  - [x] MC correct + incorrect: always show visible **Continue** (no keyboard assumption). Incorrect Continue already exists; add Continue for MC-correct when auto-advance is off (and keep it as the advance control when Lightning Mode is on too for MC — MC has no Return).
+  - [x] Add preference key (e.g. `review_auto_advance`) via `PREFERENCE_KEYS` + `get`/`set` helpers in `preferencesRepository.ts`. **Default off** (`null`/`false` = off).
+  - [x] Settings toggle (UX-DR10 / UX-DR33): label clearly as auto-advance after correct / Lightning Mode; pattern after `useReducedMotion` + Settings `Switch`.
+  - [x] When preference **on**: restore 800ms timer using existing `REVIEW_CORRECT_AUTO_ADVANCE_MS` (keep constant; update its comment — no longer “Epic 6”).
+  - [x] Preserve `flushPendingGrade` on unmount and `handleEndSession`. Under indefinite wait, pending grade must still flush on exit/unmount so a correct answer is never lost (FR84). Cursor-change reset may clear timer/pending **without** flush only when advancing (existing intentional behavior).
+  - [x] No new review-loop animations (NFR5b).
 
-- [ ] **Task 2 — Shared trimmed `AnswerReveal`** (AC: #2)
-  - [ ] Create `mobile/src/components/review/AnswerReveal.tsx` (+ tests): panel shows **reading + meaning only** (trimmed). Reuse data already available from `ReviewItem` + prefetched `ReviewRevealDetail` (`useReviewRevealDetails`) — do not fetch on reveal.
-  - [ ] Wire on **correct** path in `ReviewCard` (under ✓ / keep stage badge + `ReinforcementHighlight`).
-  - [ ] Refactor `IncorrectReveal` to compose `AnswerReveal` for the meaning/reading block; **remove** mnemonic + examples from the inline incorrect panel (move depth to details link — FR85/B2). Keep near-miss grammar teaching chrome, synonym offer, and primary-form / “Correct answer” header as incorrect-path chrome around the shared panel.
-  - [ ] Export from `components/review/index.ts`.
-  - [ ] Resolve ambiguity: correct path shows the panel **expanded** (epics/FR85/UX-DR8). Do **not** gate behind an icon unless product revisits — brainstorm “collapsed behind icon” is superseded by AC wording “shows”.
-  - [ ] Historical `docs/feedback/03-*` mnemonic-on-incorrect is **superseded** by FR85 — do not restore mnemonic/examples inline.
+- [x] **Task 2 — Shared trimmed `AnswerReveal`** (AC: #2)
+  - [x] Create `mobile/src/components/review/AnswerReveal.tsx` (+ tests): panel shows **reading + meaning only** (trimmed). Reuse data already available from `ReviewItem` + prefetched `ReviewRevealDetail` (`useReviewRevealDetails`) — do not fetch on reveal.
+  - [x] Wire on **correct** path in `ReviewCard` (under ✓ / keep stage badge + `ReinforcementHighlight`).
+  - [x] Refactor `IncorrectReveal` to compose `AnswerReveal` for the meaning/reading block; **remove** mnemonic + examples from the inline incorrect panel (move depth to details link — FR85/B2). Keep near-miss grammar teaching chrome, synonym offer, and primary-form / “Correct answer” header as incorrect-path chrome around the shared panel.
+  - [x] Export from `components/review/index.ts`.
+  - [x] Resolve ambiguity: correct path shows the panel **expanded** (epics/FR85/UX-DR8). Do **not** gate behind an icon unless product revisits — brainstorm “collapsed behind icon” is superseded by AC wording “shows”.
+  - [x] Historical `docs/feedback/03-*` mnemonic-on-incorrect is **superseded** by FR85 — do not restore mnemonic/examples inline.
 
-- [ ] **Task 3 — Details route under `review/`** (AC: #2)
-  - [ ] Add nested route e.g. `mobile/src/app/review/item/[id].tsx` inside the existing `review/_layout.tsx` `Stack` so `ReviewSessionProvider` **does not remount**.
-  - [ ] “See full details” (or equivalent) from the reveal navigates here — **never** to `(tabs)/learn/item/[id]` (that destroys the session; review is a fullScreenModal sibling of tabs).
-  - [ ] Stub or thin reuse of existing detail sections is OK for this story; session back-stack must return to the same card. Prefer a working back affordance over a perfect details redesign (Epic 4 owns full details split).
+- [x] **Task 3 — Details route under `review/`** (AC: #2)
+  - [x] Add nested route e.g. `mobile/src/app/review/item/[id].tsx` inside the existing `review/_layout.tsx` `Stack` so `ReviewSessionProvider` **does not remount**.
+  - [x] “See full details” (or equivalent) from the reveal navigates here — **never** to `(tabs)/learn/item/[id]` (that destroys the session; review is a fullScreenModal sibling of tabs).
+  - [x] Stub or thin reuse of existing detail sections is OK for this story; session back-stack must return to the same card. Prefer a working back affordance over a perfect details redesign (Epic 4 owns full details split).
 
-- [ ] **Task 4 — Card-based progress / BUG4** (AC: #3)
-  - [ ] Coordinate with Story **1.1** Task 6: queue length = **cards** after kanji expansion; advance header progress **per completed card**, not when the item’s worst-of-both FSRS write fires.
-  - [ ] If 1.1 is not merged yet: implement progress semantics so that when two cards share an `itemId`, the header still moves per card completion; do not wait on pair FSRS.
-  - [ ] Update `SessionHeader` comments / a11y from “Item N of M” → card-oriented wording (architecture naming: prefer `cardsCompleted` / `totalCards` in progress UI semantics; prop renames OK if call sites updated). Keep visual `"N of M"`.
-  - [ ] Preserve monotonic progress (never moves backwards) and clamp while retries are in flight.
-  - [ ] Do **not** make vocabulary two-card (Epic AC forbids; 1.1 scope table).
+- [x] **Task 4 — Card-based progress / BUG4** (AC: #3)
+  - [x] Coordinate with Story **1.1** Task 6: queue length = **cards** after kanji expansion; advance header progress **per completed card**, not when the item’s worst-of-both FSRS write fires.
+  - [x] If 1.1 is not merged yet: implement progress semantics so that when two cards share an `itemId`, the header still moves per card completion; do not wait on pair FSRS.
+  - [x] Update `SessionHeader` comments / a11y from “Item N of M” → card-oriented wording (architecture naming: prefer `cardsCompleted` / `totalCards` in progress UI semantics; prop renames OK if call sites updated). Keep visual `"N of M"`.
+  - [x] Preserve monotonic progress (never moves backwards) and clamp while retries are in flight.
+  - [x] Do **not** make vocabulary two-card (Epic AC forbids; 1.1 scope table).
 
-- [ ] **Task 5 — Answer-collision line + Compare route stub** (AC: #4)
-  - [ ] On graded incorrect (and optionally correct if a collision context exists — primary case is incorrect / confusion): if the submitted answer matches another curriculum item’s accepted answer, show one extra line (copy intent: what you answered belongs to a different item) + link to Compare with **both** item IDs preselected (FR86, UX-DR8/29, D-DET-2).
-  - [ ] Prefer a formal `feedbackKind: 'confused_with'` (architecture answer-feedback union) when detection is clean; otherwise annotate reveal props — but do not invent a second parallel collision system. Reuse normalization helpers (`normalizeMeaning` / `normalizeKana`). Synonym-add collision in `addSynonymForCurrentItem` is a **related** pattern but scans only the session queue — evaluation collision should look up against curriculum accepted answers (or a dedicated query), not only the current queue.
-  - [ ] **Stub Compare route** under `review/` so session survives, e.g. `review/compare.tsx` with search params:
+- [x] **Task 5 — Answer-collision line + Compare route stub** (AC: #4)
+  - [x] On graded incorrect (and optionally correct if a collision context exists — primary case is incorrect / confusion): if the submitted answer matches another curriculum item’s accepted answer, show one extra line (copy intent: what you answered belongs to a different item) + link to Compare with **both** item IDs preselected (FR86, UX-DR8/29, D-DET-2).
+  - [x] Prefer a formal `feedbackKind: 'confused_with'` (architecture answer-feedback union) when detection is clean; otherwise annotate reveal props — but do not invent a second parallel collision system. Reuse normalization helpers (`normalizeMeaning` / `normalizeKana`). Synonym-add collision in `addSynonymForCurrentItem` is a **related** pattern but scans only the session queue — evaluation collision should look up against curriculum accepted answers (or a dedicated query), not only the current queue.
+  - [x] **Stub Compare route** under `review/` so session survives, e.g. `review/compare.tsx` with search params:
     - **Contract (lock for Epic 4 / Story 4.2):** `left` = current item id, `right` = colliding item id (both required strings).
     - Stub UI: minimal placeholder (“Compare coming soon”) + Back; preserve params. Do not build sticky glyphs / chips here (Story 4.2).
-  - [ ] Document the contract in Dev Notes / code comment on the stub route so Story 4.2 can replace the body without changing the deep-link shape.
+  - [x] Document the contract in Dev Notes / code comment on the stub route so Story 4.2 can replace the body without changing the deep-link shape.
 
-- [ ] **Task 6 — Tests** (AC: #1–#5)
-  - [ ] `review/index.test.tsx`: Return submit → correct waits; second Return advances; Lightning Mode on → auto-advance after 800ms; unmount/end still flushes pending grade under indefinite wait; MC correct shows Continue.
-  - [ ] `AnswerReveal.test.tsx`: reading + meaning on both composition paths; no mnemonic/examples in shared panel.
-  - [ ] `IncorrectReveal` / `ReviewCard` tests updated for trim + shared panel.
-  - [ ] `SessionHeader` / provider: card progress under a two-card (same `itemId`) fixture does not stall; a11y label card-oriented.
-  - [ ] Preferences + Settings toggle: default off; persists on.
-  - [ ] Compare stub: navigates with `left`/`right` params; details under `review/item/[id]` does not remount provider (smoke via layout or navigation test if practical).
+- [x] **Task 6 — Tests** (AC: #1–#5)
+  - [x] `review/index.test.tsx`: Return submit → correct waits; second Return advances; Lightning Mode on → auto-advance after 800ms; unmount/end still flushes pending grade under indefinite wait; MC correct shows Continue.
+  - [x] `AnswerReveal.test.tsx`: reading + meaning on both composition paths; no mnemonic/examples in shared panel.
+  - [x] `IncorrectReveal` / `ReviewCard` tests updated for trim + shared panel.
+  - [x] `SessionHeader` / provider: card progress under a two-card (same `itemId`) fixture does not stall; a11y label card-oriented.
+  - [x] Preferences + Settings toggle: default off; persists on.
+  - [x] Compare stub: navigates with `left`/`right` params; details under `review/item/[id]` does not remount provider (smoke via layout or navigation test if practical).
 
 ## Dev Notes
 
@@ -274,10 +274,65 @@ No `project-context.md` in repo. Follow `CLAUDE.md` / workspace conventions: `Re
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+claude-fable-5 (Claude Fable 5)
+
+### Implementation Plan
+
+- **Pacing (Task 1):** Split the old `inputEditable` into `canSubmitAnswer` (prompting/typo/wrong_script/wrong_reading_type — gates evaluation, Don't-know, MC options, dim styling) and `inputEditable` (adds `correct` — the `WanaKanaInput` stays editable and focused via `submitBehavior="submit"` so the second Return fires `onSubmitEditing`). `handleSubmit` branches: `cardState === 'correct'` → `advanceFromCorrect()` (clears timer, applies `pendingGradeRef` via `gradeCurrentItem`, never re-evaluates); otherwise → `submitAnswer`. The 800ms timer is now gated on `useReviewAutoAdvance().autoAdvanceEnabled`. `flushPendingGrade` on unmount/end-session unchanged and covers the indefinite wait (FR84). MC-correct renders the same Continue button as incorrect (MC has no Return), kept even when Lightning Mode is on.
+- **Preference:** `review_auto_advance` key + `getReviewAutoAdvanceEnabled`/`setReviewAutoAdvanceEnabled` (default OFF when unset), `useReviewAutoAdvance` hook mirroring `useReducedMotion`, Settings "Review pacing" section with a Switch labeled "Auto-advance after correct answers" + Lightning Mode subtitle.
+- **AnswerReveal (Task 2):** New shared panel = meaning (+ non-derived alternates) + readings (grouped on'/kun' from prefetched `ReviewRevealDetail`, falling back to non-tautological `answerKey.acceptedReadings`), collision line + Compare link, and a "See full details" link → `/review/item/[id]`. `ReviewCard` correct path renders it expanded under ✓ (stage badge + `ReinforcementHighlight` kept; the one-line `Label: value` text was replaced by the panel while `resolveCorrectReveal` still drives the result-region a11y label so announcements agree). `IncorrectReveal` composes it and dropped mnemonic/examples/inline-expand (FR85 supersedes docs/feedback/03-*).
+- **Details route (Task 3):** `review/item/[id].tsx` thin-reuses `useItemDetail` + the learn detail section components inside the review Stack; `ReviewSessionProvider` ownership stays in `review/_layout.tsx` (no layout change needed — Expo Router auto-registers nested file routes), so the session survives and Back returns to the same card.
+- **Card progress (Task 4):** Provider-side card-scoped `retiredCount` landed in Story 1.1 (its provider test asserts the first card of a pair already moves the header — no stall/BUG4). This story renamed `SessionHeader` props to `cardsCompleted`/`totalCards`, switched a11y copy to "Card N of M … card", kept the visual `N of M` + clamp, and updated the call site.
+- **Collision (Task 5):** Detection needs the curriculum DB, so the pure evaluator cannot emit `feedbackKind: 'confused_with'` — per the story's fallback, the reveal props are annotated instead with a single `AnswerCollision` type in `core/answer/answer.types.ts` (no parallel system). `findItemsByAcceptedAnswer` (itemRepository) does exact lowercase SQL matching against `accepted_answers` + `kanji_readings` (readings), excluding the current item; `useAnswerCollision` builds candidates (trimmed / normalized / katakana variant for readings, since curriculum on'yomi are katakana while `normalizeKana` yields hiragana) and re-verifies hits with `normalizeMeaning`/`normalizeKana`. Sync lookup on the graded-incorrect branch only (NFR1). Compare stub at `review/compare.tsx` locks the `left`/`right` search-param contract for Story 4.2.
 
 ### Debug Log References
 
+- Full suite: 126 suites / 954 tests pass; `expo lint` clean; `tsc --noEmit` clean; `npm run check-contrast` (repo root) — 72 pairs pass.
+- Expo typed routes for the new `review/item/[id]` and `review/compare` screens were regenerated (`.expo/types/router.d.ts`, gitignored) via a brief `expo start` — required for `tsc` to accept the new `Href`s.
+
 ### Completion Notes List
 
+- AC1: 800ms auto-advance is OFF by default and only runs with the Settings toggle on; first Return submits, second Return advances; MC-correct and incorrect always show Continue. Covered by 8 new pacing tests in `review/index.test.tsx` + settings/preference/hook tests.
+- AC2: shared trimmed `AnswerReveal` (reading + meaning, expanded) on both paths; no new review-loop animations; depth moved to `review/item/[id]` inside the review Stack (session-safe; back returns to the same card). Mnemonic/examples removed from the inline incorrect panel by design — the prior `ReviewCard` test asserting inline mnemonic was inverted to assert the trim (FR85 supersedes `docs/feedback/03-*`).
+- AC3: header counts cards (`cardsCompleted`/`totalCards`), advances per completed card (Story 1.1 provider behavior verified by its existing two-card no-stall test), a11y label now card-oriented, monotonic + clamped.
+- AC4: graded-incorrect submissions that match another item's accepted answer show one explanatory line + "Compare these items" linking `review/compare?left=<current>&right=<other>`; contract documented on the stub for Story 4.2. Detection is annotate-reveal-props (documented rationale: evaluator is pure, collision needs DB).
+- AC5: deferred grade under indefinite wait still flushes on unmount and End Session (explicit regression test).
+- Provider non-remount for nested routes is guaranteed structurally (`ReviewSessionProvider` stays in `review/_layout.tsx`; both new screens are children of that Stack) and smoke-tested at the route level; a full navigation-container remount test was not practical in RNTL and was skipped per the story's "if practical" qualifier.
+- `mobile/__mocks__/expo-sqlite.ts` gained two JOIN-aware query branches for the collision lookup (mock is regex-per-query-shape by design).
+
 ### File List
+
+**New**
+- mobile/src/components/review/AnswerReveal.tsx
+- mobile/src/components/review/AnswerReveal.test.tsx
+- mobile/src/data/hooks/useReviewAutoAdvance.ts
+- mobile/src/data/hooks/useReviewAutoAdvance.test.tsx
+- mobile/src/data/hooks/useAnswerCollision.ts
+- mobile/src/data/hooks/useAnswerCollision.test.tsx
+- mobile/src/app/review/item/[id].tsx
+- mobile/src/app/review/item/[id].test.tsx
+- mobile/src/app/review/compare.tsx
+- mobile/src/app/review/compare.test.tsx
+
+**Modified**
+- mobile/src/app/review/index.tsx
+- mobile/src/app/review/index.test.tsx
+- mobile/src/app/(tabs)/settings.tsx
+- mobile/src/app/(tabs)/settings.test.tsx
+- mobile/src/components/review/ReviewCard.tsx
+- mobile/src/components/review/ReviewCard.test.tsx
+- mobile/src/components/review/IncorrectReveal.tsx
+- mobile/src/components/review/SessionHeader.tsx
+- mobile/src/components/review/SessionHeader.test.tsx
+- mobile/src/components/review/index.ts
+- mobile/src/config/constants.ts
+- mobile/src/core/answer/answer.types.ts
+- mobile/src/data/curriculum/itemRepository.ts
+- mobile/src/data/curriculum/itemRepository.test.ts
+- mobile/src/data/user/preferencesRepository.ts
+- mobile/src/data/user/preferencesRepository.test.ts
+- mobile/__mocks__/expo-sqlite.ts
+
+## Change Log
+
+- 2026-07-20 — Story 1.2 implemented (claude-fable-5): Return-to-advance pacing with opt-in Lightning Mode (`review_auto_advance`, default off) + Settings toggle; shared trimmed `AnswerReveal` on correct & incorrect paths with depth moved to new session-safe `review/item/[id]` route; `SessionHeader` progress renamed to card semantics (`cardsCompleted`/`totalCards`, "Card N of M" a11y); answer-collision line with curriculum-wide lookup (`findItemsByAcceptedAnswer` + `useAnswerCollision`) and `review/compare` stub locking the `left`/`right` param contract for Story 4.2. All tasks complete; 954 tests pass, lint/typecheck/contrast clean. Status → review.

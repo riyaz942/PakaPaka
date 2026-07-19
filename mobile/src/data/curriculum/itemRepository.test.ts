@@ -15,6 +15,7 @@ import {
 import {
   countItemsByLevel,
   countItemsByLevelAndType,
+  findItemsByAcceptedAnswer,
   getAcceptedAnswers,
   getExampleSentences,
   getGrammarLinksForVocab,
@@ -590,5 +591,96 @@ describe('itemRepository', () => {
     expect(result.get('51')).toEqual([
       { id: '21', itemType: 'vocabulary', primaryForm: '飲む', meaning: 'to drink', relationshipType: 'reinforces' },
     ]);
+  });
+});
+
+describe('itemRepository answer-collision lookup (Story 1.2, FR86)', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createCollisionDb() {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'eat',
+        primary_form: '食',
+        meaning: 'eat, food',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'drink',
+        primary_form: '飲',
+        meaning: 'drink',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+    ]);
+    __mockSetAcceptedAnswers('curriculum.db.test', [
+      { id: 1, item_id: 1, answer_type: 'meaning', answer_text: 'eat', is_primary: 1 },
+      { id: 2, item_id: 2, answer_type: 'meaning', answer_text: 'drink', is_primary: 1 },
+      { id: 3, item_id: 2, answer_type: 'reading', answer_text: 'イン', is_primary: 1 },
+    ]);
+    __mockSetKanjiReadings('curriculum.db.test', [
+      { id: 1, item_id: 2, reading_type: 'onyomi', reading: 'イン', sort_order: 0 },
+      { id: 2, item_id: 2, reading_type: 'kunyomi', reading: 'のむ', sort_order: 1 },
+    ]);
+
+    return db;
+  }
+
+  it('finds another item by accepted meaning, excluding the current item', async () => {
+    const db = await createCollisionDb();
+
+    const matches = findItemsByAcceptedAnswer(db, 'meaning', ['drink'], '1');
+
+    expect(matches).toEqual([
+      { itemId: '2', primaryForm: '飲', itemType: 'kanji', answerText: 'drink' },
+    ]);
+  });
+
+  it('excludes the current item from its own accepted answers', async () => {
+    const db = await createCollisionDb();
+
+    const matches = findItemsByAcceptedAnswer(db, 'meaning', ['eat'], '1');
+
+    expect(matches).toEqual([]);
+  });
+
+  it('finds reading collisions in kanji_readings and dedupes with accepted_answers', async () => {
+    const db = await createCollisionDb();
+
+    // 'イン' is both an accepted reading answer and an on'yomi row for item 2 —
+    // must come back exactly once.
+    const matches = findItemsByAcceptedAnswer(db, 'reading', ['イン'], '1');
+
+    expect(matches).toHaveLength(1);
+    expect(matches[0]).toMatchObject({ itemId: '2', primaryForm: '飲' });
+  });
+
+  it('finds a kun\'yomi collision that only exists in kanji_readings', async () => {
+    const db = await createCollisionDb();
+
+    const matches = findItemsByAcceptedAnswer(db, 'reading', ['のむ'], '1');
+
+    expect(matches).toEqual([
+      { itemId: '2', primaryForm: '飲', itemType: 'kanji', answerText: 'のむ' },
+    ]);
+  });
+
+  it('returns empty for blank candidates without querying', async () => {
+    const db = await createCollisionDb();
+
+    expect(findItemsByAcceptedAnswer(db, 'meaning', ['', '  '], '1')).toEqual([]);
   });
 });

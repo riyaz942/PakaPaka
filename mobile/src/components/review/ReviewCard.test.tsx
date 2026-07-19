@@ -4,6 +4,10 @@ import type { ReviewItem } from '@/core/srs/srs.types';
 
 import { ReviewCard } from './ReviewCard';
 
+jest.mock('expo-router', () => ({
+  router: { push: jest.fn(), back: jest.fn() },
+}));
+
 function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
   return {
     itemId: 'test-1',
@@ -165,29 +169,33 @@ describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
     expect(screen.queryByText('は')).toBeNull();
   });
 
-  it('reveals the grammar chunk as "Answer" (not "Reading") on correct', () => {
+  it('announces the grammar chunk as "answer" (not "reading") on correct', () => {
     render(<ReviewCard item={waTopic()} state="correct" />);
-    expect(screen.getByText('Answer: は')).toBeTruthy();
-    expect(screen.queryByText(/Reading:/)).toBeNull();
+    // The graded chunk is announced via the result region; the visible reveal
+    // is the shared trimmed panel (Story 1.2, FR85).
     expect(screen.getByLabelText('Correct, answer: は')).toBeTruthy();
+    expect(screen.queryByText(/Reading:/)).toBeNull();
+    expect(screen.getByText('topic marker')).toBeTruthy();
   });
 });
 
 describe('ReviewCard — result states', () => {
-  it('shows correct state with icon and revealed meaning', () => {
+  it('shows correct state with icon and the shared trimmed panel (FR85)', () => {
     render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
     expect(screen.getByText('✓ Correct')).toBeTruthy();
-    expect(screen.getByText('Meaning: eat, food')).toBeTruthy();
+    // Shared AnswerReveal: meaning + reading, expanded, with a details link.
+    expect(screen.getByText('eat, food')).toBeTruthy();
+    expect(screen.getByText('たべる')).toBeTruthy();
+    expect(screen.getByLabelText('See full details')).toBeTruthy();
   });
 
-  it('reveals the reading (not the meaning mislabeled) on a correct reading prompt', () => {
+  it('announces the accepted reading (not the meaning mislabeled) on a correct reading prompt', () => {
     render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="correct" />);
-    expect(screen.getByText('Reading: たべる')).toBeTruthy();
-    expect(screen.queryByText('Reading: eat, food')).toBeNull();
     expect(screen.getByLabelText('Correct, reading: たべる')).toBeTruthy();
+    expect(screen.getByText('たべる')).toBeTruthy();
   });
 
-  it('falls back to meaning reveal when a reading prompt has no accepted reading', () => {
+  it('falls back to meaning announcement when a reading prompt has no accepted reading', () => {
     render(
       <ReviewCard
         item={makeItem({
@@ -197,7 +205,8 @@ describe('ReviewCard — result states', () => {
         state="correct"
       />,
     );
-    expect(screen.getByText('Meaning: eat, food')).toBeTruthy();
+    expect(screen.getByLabelText('Correct, meaning: eat, food')).toBeTruthy();
+    expect(screen.getByText('eat, food')).toBeTruthy();
   });
 
   it('shows incorrect state with icon and correct answer', () => {
@@ -231,7 +240,7 @@ describe('ReviewCard — result states', () => {
     expect(screen.getByText("We're looking for the meaning in English.")).toBeTruthy();
   });
 
-  it('shows full item detail on incorrect: meanings, readings, and mnemonic', () => {
+  it('shows the trimmed shared panel on incorrect: meaning + readings, no mnemonic/examples (FR85)', () => {
     render(
       <ReviewCard
         item={makeItem({ mnemonic: 'A roof over a fire cooking food.' })}
@@ -253,14 +262,35 @@ describe('ReviewCard — result states', () => {
             { id: 'r1', readingType: 'onyomi', reading: 'しょく', sortOrder: 0 },
             { id: 'r2', readingType: 'kunyomi', reading: 'た', sortOrder: 1 },
           ],
-          exampleSentences: [],
+          exampleSentences: [
+            { id: 's1', japanese: '食べます', furigana: null, english: 'I eat.', sortOrder: 0 },
+          ],
         }}
       />,
     );
     expect(screen.getByText('eat, food')).toBeTruthy();
     expect(screen.getByText("On'yomi: しょく")).toBeTruthy();
     expect(screen.getByText("Kun'yomi: た")).toBeTruthy();
-    expect(screen.getByText('A roof over a fire cooking food.')).toBeTruthy();
+    // Depth moved to the details route (Story 1.2): no inline mnemonic/examples.
+    expect(screen.queryByText('A roof over a fire cooking food.')).toBeNull();
+    expect(screen.queryByText('食べます')).toBeNull();
+    expect(screen.getByLabelText('See full details')).toBeTruthy();
+  });
+
+  it('threads the answer collision line through both reveal paths (FR86)', () => {
+    const collision = { itemId: 'other-9', primaryForm: '飲' };
+    const { rerender } = render(
+      <ReviewCard
+        item={makeItem()}
+        state="incorrect"
+        displayAnswer="たべる"
+        answerCollision={collision}
+      />,
+    );
+    expect(screen.getByText('Your answer belongs to a different item: 飲.')).toBeTruthy();
+
+    rerender(<ReviewCard item={makeItem()} state="correct" answerCollision={collision} />);
+    expect(screen.getByText('Your answer belongs to a different item: 飲.')).toBeTruthy();
   });
 
   it('offers to accept the rejected answer as a user synonym on incorrect', () => {
