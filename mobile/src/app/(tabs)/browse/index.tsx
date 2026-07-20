@@ -1,6 +1,6 @@
 import { useFocusEffect, useLocalSearchParams, router, type Href } from 'expo-router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrowseList } from '@/components/browse/BrowseList';
@@ -12,13 +12,31 @@ import {
   BROWSE_FACET_KEYS,
   EMPTY_BROWSE_FILTERS,
   isBrowseFiltersEmpty,
+  isBrowseTypeValue,
   summarizeFacet,
   toggleFacetValue,
   type BrowseFacetKey,
   type BrowseFilters,
+  type BrowseTypeValue,
 } from '@/core/browse/browseFilters';
-import { isJlptLevel } from '@/data/curriculum/curriculum.types';
+import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useBrowseDraftCount, useBrowseItems } from '@/data/hooks/useBrowseItems';
+
+function firstParam(value: string | string[] | undefined): string | null {
+  if (Array.isArray(value)) return value[0] ?? null;
+  return value ?? null;
+}
+
+/** Normalize Expo search params that may arrive as `string | string[]`. */
+function seededLevelFromParams(level: string | string[] | undefined): JLPTLevel | null {
+  const value = firstParam(level);
+  return value && isJlptLevel(value) ? value : null;
+}
+
+function seededTypeFromParams(type: string | string[] | undefined): BrowseTypeValue | null {
+  const value = firstParam(type);
+  return value && isBrowseTypeValue(value) ? value : null;
+}
 
 /**
  * Unified Browse (FR62–FR67): one discovery surface for radicals, kanji,
@@ -26,20 +44,23 @@ import { useBrowseDraftCount, useBrowseItems } from '@/data/hooks/useBrowseItems
  * screens and the separate Read tab.
  */
 export default function BrowseScreen() {
-  const params = useLocalSearchParams<{ level?: string; type?: string }>();
+  const params = useLocalSearchParams<{ level?: string | string[]; type?: string | string[] }>();
   const {
     rows,
     totalCount,
     loading,
     loadingMore,
+    error,
     searchInput,
     setSearchInput,
+    debouncedSearch,
     filters,
     applyFilters,
     clearFilters,
     clearFacetFilter,
     loadMore,
     refresh,
+    reload,
     passageUnlock,
   } = useBrowseItems();
 
@@ -47,23 +68,36 @@ export default function BrowseScreen() {
   const [draft, setDraft] = useState<BrowseFilters>(filters);
 
   // Passage unlock is derived from SRS state, so returning from a review or
-  // lesson can change which passages are locked.
+  // lesson can change which passages are locked. Stable unlock Map identity
+  // (when content is unchanged) keeps this from wiping the list.
   useFocusEffect(
     useCallback(() => {
       refresh();
     }, [refresh]),
   );
 
-  // `/learn/[level]` redirects arrive with a level in the query string. Level is
-  // a facet now, so seed it as a filter — once, so the learner can clear it.
-  const seededLevel = params.level && isJlptLevel(params.level) ? params.level : null;
-  const seedAppliedRef = useRef(false);
+  // `/learn/[level]` redirects arrive with level/type in the query string.
+  // Seed those as facets, then strip the params so remount/clear cannot
+  // re-apply a stale seed.
+  const seededLevel = seededLevelFromParams(params.level);
+  const seededType = seededTypeFromParams(params.type);
+  const lastSeedKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!seededLevel || seedAppliedRef.current) return;
-    seedAppliedRef.current = true;
-    applyFilters({ ...EMPTY_BROWSE_FILTERS, levels: [seededLevel] });
-  }, [seededLevel, applyFilters]);
+    if (!seededLevel && !seededType) return;
+
+    const seedKey = `${seededLevel ?? ''}|${seededType ?? ''}`;
+    if (lastSeedKeyRef.current === seedKey) return;
+    lastSeedKeyRef.current = seedKey;
+
+    applyFilters({
+      ...EMPTY_BROWSE_FILTERS,
+      ...(seededLevel ? { levels: [seededLevel] } : {}),
+      ...(seededType ? { types: [seededType] } : {}),
+    });
+
+    router.setParams({ level: undefined, type: undefined });
+  }, [seededLevel, seededType, applyFilters]);
 
   const openDrawer = useCallback(
     (facet: BrowseFacetKey) => {
@@ -75,7 +109,7 @@ export default function BrowseScreen() {
 
   const { count: draftCount, isCounting } = useBrowseDraftCount(
     draft,
-    searchInput,
+    debouncedSearch,
     passageUnlock,
   );
 
@@ -96,6 +130,12 @@ export default function BrowseScreen() {
     if (!openFacet) return;
     setDraft((current) => ({ ...current, [openFacet]: [] }));
   }, [openFacet]);
+
+  const handleClearAll = useCallback(() => {
+    clearFilters();
+    lastSeedKeyRef.current = null;
+    router.setParams({ level: undefined, type: undefined });
+  }, [clearFilters]);
 
   const hasActiveFilters = !isBrowseFiltersEmpty(filters) || searchInput.length > 0;
 
@@ -123,7 +163,7 @@ export default function BrowseScreen() {
           horizontal
           showsHorizontalScrollIndicator={false}
           className="mt-space-md max-h-[56px] flex-grow-0"
-          contentContainerClassName="gap-space-sm pr-space-lg">
+          contentContainerClassName="items-center gap-space-sm pr-space-lg">
           {BROWSE_FACET_KEYS.map((facet) => {
             const active = filters[facet].length > 0;
             return (
@@ -137,9 +177,19 @@ export default function BrowseScreen() {
               />
             );
           })}
+          {hasActiveFilters ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Clear all filters and search"
+              onPress={handleClearAll}
+              testID="browse-clear-all"
+              className="min-h-[44px] justify-center px-space-sm">
+              <Text className="text-body-sm text-feedback-info">Clear all</Text>
+            </Pressable>
+          ) : null}
         </ScrollView>
 
-        {!loading ? (
+        {!loading && !error ? (
           <Text className="mt-space-sm text-body-sm text-secondary" testID="browse-result-count">
             {totalCount === 1 ? '1 result' : `${totalCount} results`}
           </Text>
@@ -150,11 +200,13 @@ export default function BrowseScreen() {
             rows={rows}
             loading={loading}
             loadingMore={loadingMore}
+            error={error}
             onEndReached={loadMore}
             onSelectItem={(id) => router.push(`/browse/item/${id}` as Href)}
             onSelectPassage={(id) => router.push(`/browse/passage/${id}` as Href)}
-            onClearFilters={clearFilters}
+            onClearFilters={handleClearAll}
             canClearFilters={hasActiveFilters}
+            onRetry={reload}
           />
         </View>
       </SafeAreaView>

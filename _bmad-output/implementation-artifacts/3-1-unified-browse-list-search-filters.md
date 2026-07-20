@@ -4,7 +4,7 @@ baseline_commit: e736944
 
 # Story 3.1: Unified Browse List, Search & Filters
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -117,6 +117,21 @@ so that I can find anything without navigating per-level Learn screens or a sepa
   - [x] Component/RNTL: Browse tab label; empty “No matches” + clear; Apply disabled at 0; pills summarize; search debounce (fake timers).
   - [x] Update/remove obsolete `learn/[level].test.tsx` lock assertions if level screen is deleted or reduced to redirect.
   - [x] Gates: `npm run typecheck`, `npm run lint`, `npm test` from `mobile/`.
+
+### Review Findings
+
+- [x] [Review][Patch] Paginated append can corrupt the list across filter/search resets [`mobile/src/data/hooks/useBrowseItems.ts:113`] — `loadMore` appends with stale `rows.length` / new `queryInput` when `onEndReached` races a first-page reset; add a generation/request token so appends ignore superseded queries.
+- [x] [Review][Patch] Every Browse focus recomputes unlock for all passages and reloads page 0 [`mobile/src/data/hooks/useBrowseItems.ts:75`] [`mobile/src/app/(tabs)/browse/index.tsx:51`] — `refresh()` bumps unlock → new `queryInput` → full list reset; avoid remounting the list when unlock map is unchanged (or refresh unlock without resetting scroll/pages).
+- [x] [Review][Patch] `/learn/[level]?type=` redirect drops the type facet [`mobile/src/app/(tabs)/browse/index.tsx:29`] — `learn/[level]` forwards `type`, but Browse only seeds `levels`; apply `params.type` into `filters.types` when valid.
+- [x] [Review][Patch] Level seed is one-shot and sticky; `?level=` is never cleared from the URL [`mobile/src/app/(tabs)/browse/index.tsx:60`] — later `/browse?level=` navigations while mounted are ignored; remount after clear re-applies the old param. Re-seed on param change and strip/clear the query after apply / on clearFilters.
+- [x] [Review][Patch] LIKE fan-out does not escape `%` / `_` [`mobile/src/data/curriculum/browseRepository.ts:100`] — bind escaped patterns (or `ESCAPE`) so literal wildcards do not broaden results.
+- [x] [Review][Patch] Query / unlock failures are swallowed as empty curriculum [`mobile/src/data/hooks/useBrowseItems.ts:102`] — ATTACH/SQL errors become `[]` / `0` and the “nothing to browse yet” empty state; surface a distinct error path.
+- [x] [Review][Patch] Unlock-map failure renders every passage as unlocked [`mobile/src/data/hooks/useBrowseItems.ts:79`] [`mobile/src/data/curriculum/browseRepository.ts:327`] — empty Map + `locked: status ? … : false` fails open; fail closed or treat missing status as unknown/error.
+- [x] [Review][Patch] Clear-all is missing from the filter bar when the list is non-empty [`mobile/src/app/(tabs)/browse/index.tsx:122`] — Task 3 requires clear-one / clear-all; `clearFilters` is only wired through the empty state.
+- [x] [Review][Patch] Draft Apply count uses raw search while the list uses debounced search [`mobile/src/app/(tabs)/browse/index.tsx:76`] — `Apply (N)` can disagree with visible rows around the 200ms debounce; count with the same debounced term (and flush debounce on clearFilters).
+- [x] [Review][Patch] Apply control hides the live count while draft count is in flight [`mobile/src/components/browse/FilterDrawer.tsx:121`] — shows bare `Apply` and disables during `isCounting`; keep last settled `N` visible and only disable when settled count is 0.
+- [x] [Review][Patch] Duplicate/array `level` param skips seeding [`mobile/src/app/(tabs)/browse/index.tsx:59`] — if Expo supplies `string[]`, `isJlptLevel` fails and Browse loads unscoped; normalize to the first string value.
+- [x] [Review][Defer] Home screen engagement/forecast churn shipped inside the story path set [`mobile/src/app/(tabs)/index.tsx`] — deferred, pre-existing (Story 2.2 / baseline mix); only the Browse passage retarget is in 3.1 scope
 
 ## Dev Notes
 
@@ -374,3 +389,4 @@ claude-opus-4-8 (Claude Opus 4.8)
 
 - 2026-07-20 — Story context created (ready-for-dev). Ultimate context engine analysis completed — comprehensive developer guide created.
 - 2026-07-20 — Implemented Story 3.1. Browse replaces Learn/Read as the single discovery tab (Talk placeholder added); new `browseRepository` UNION query layer with ATTACH joins, pagination and a count query that cannot drift from the page; five multi-select facets with a live `Apply (N)` that disables at zero; 200ms-debounced fan-out search with parallel kana branches; BUG7 fixed structurally (Browse item rows have no lock affordance and no prop to pass one). Legacy `learn/*` and `read/*` routes kept as redirects. Gates: typecheck clean, lint clean, 141 suites / 1117 tests green, contrast check passes. Also fixed a pre-existing `countDueSrsStates` failure caused by the expo-sqlite mock counting before filtering.
+- 2026-07-20 — Code review patches applied: pagination generation guard, stable unlock Map on focus, type+level seed with URL clear, LIKE ESCAPE, distinct query error UI, unlock fail-closed, Clear all on filter bar, synced Apply/list debounce, Apply keeps settled N while recounting. Story → done.

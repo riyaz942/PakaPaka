@@ -180,11 +180,23 @@ describe('buildBrowsePageQuery', () => {
         { limit: 40, offset: 0 },
       );
 
-      expect(query?.sql).toContain('i.primary_form LIKE ?');
-      expect(query?.sql).toContain('i.meaning LIKE ?');
+      expect(query?.sql).toContain("i.primary_form LIKE ? ESCAPE '\\'");
+      expect(query?.sql).toContain("i.meaning LIKE ? ESCAPE '\\'");
       expect(query?.sql).toContain('curriculum.accepted_answers');
       expect(query?.sql).toContain('curriculum.kanji_readings');
       expect(query?.params).toEqual(expect.arrayContaining(['%nihon%', '%にほん%', '%ニホン%']));
+    });
+
+    it('escapes LIKE wildcards in the bound patterns', () => {
+      const query = buildBrowsePageQuery(
+        input({ search: buildSearchBranches('100%_off') }),
+        { limit: 40, offset: 0 },
+      );
+
+      expect(query?.params).toEqual(
+        expect.arrayContaining(['%100\\%\\_off%']),
+      );
+      expect(query?.sql).toContain("ESCAPE '\\'");
     });
 
     it('searches passage title and english translation', () => {
@@ -193,8 +205,8 @@ describe('buildBrowsePageQuery', () => {
         { limit: 40, offset: 0 },
       );
 
-      expect(query?.sql).toContain('p.title LIKE ?');
-      expect(query?.sql).toContain('p.english_translation LIKE ?');
+      expect(query?.sql).toContain("p.title LIKE ? ESCAPE '\\'");
+      expect(query?.sql).toContain("p.english_translation LIKE ? ESCAPE '\\'");
     });
 
     it('omits the search predicate entirely for a blank query', () => {

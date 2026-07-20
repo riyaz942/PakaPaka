@@ -25,9 +25,15 @@ export type UseBrowseItemsResult = {
   loading: boolean;
   loadingMore: boolean;
   hasMore: boolean;
+  /** Set when the list query fails — distinct from a genuine empty curriculum. */
+  error: string | null;
+  /** Set when passage unlock could not be derived; passage lock chips fail closed. */
+  unlockError: boolean;
   /** Raw text as typed — never rewritten to kana (FR65). */
   searchInput: string;
   setSearchInput: (value: string) => void;
+  /** Debounced search used by the list and the Apply count (kept in sync). */
+  debouncedSearch: string;
   /** Currently applied filters (drafts live in the drawer until Apply). */
   filters: BrowseFilters;
   applyFilters: (filters: BrowseFilters) => void;
@@ -36,9 +42,30 @@ export type UseBrowseItemsResult = {
   loadMore: () => void;
   /** Recomputes derived passage unlock state (e.g. after a review session). */
   refresh: () => void;
+  /** Re-runs unlock + the current list query (error recovery). */
+  reload: () => void;
   /** Derived passage unlock state, shared with the drawer's live count. */
   passageUnlock: ReadonlyMap<string, PassageUnlockStatus>;
 };
+
+function passageUnlockMapsEqual(
+  left: ReadonlyMap<string, PassageUnlockStatus>,
+  right: ReadonlyMap<string, PassageUnlockStatus>,
+): boolean {
+  if (left === right) return true;
+  if (left.size !== right.size) return false;
+  for (const [id, status] of left) {
+    const other = right.get(id);
+    if (
+      !other ||
+      other.unlocked !== status.unlocked ||
+      other.itemsRemainingToUnlock !== status.itemsRemainingToUnlock
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
 
 /**
  * Browse list state (FR62–FR67): debounced search, applied facets, page
@@ -58,11 +85,19 @@ export function useBrowseItems(): UseBrowseItemsResult {
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState(0);
+  const [listEpoch, setListEpoch] = useState(0);
 
   // Guards loadMore against firing twice for the same offset while FlatList's
   // onEndReached bounces during a fast scroll.
   const loadingMoreRef = useRef(false);
+  // Bumped whenever the applied query identity changes so a late loadMore
+  // cannot append pages from a superseded filter/search combination.
+  const queryGenerationRef = useRef(0);
+  // Keeps Map identity stable across focus refreshes when unlock content is
+  // unchanged, so the list query does not reset scroll/pages.
+  const passageUnlockCacheRef = useRef<Map<string, PassageUnlockStatus>>(new Map());
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -72,17 +107,23 @@ export function useBrowseItems(): UseBrowseItemsResult {
     return () => clearTimeout(timer);
   }, [searchInput]);
 
-  const passageUnlock = useMemo(
-    () => {
-      try {
-        return listPassageUnlockStates(curriculumDb, userDb);
-      } catch {
-        return new Map();
+  const { passageUnlock, unlockError } = useMemo(() => {
+    try {
+      const next = listPassageUnlockStates(curriculumDb, userDb);
+      if (passageUnlockMapsEqual(passageUnlockCacheRef.current, next)) {
+        return { passageUnlock: passageUnlockCacheRef.current, unlockError: false };
       }
-    },
+      passageUnlockCacheRef.current = next;
+      return { passageUnlock: next, unlockError: false };
+    } catch {
+      // Fail closed: empty map + flag so rows do not render as unlocked and the
+      // Lock facet does not invent matches.
+      const empty = new Map<string, PassageUnlockStatus>();
+      passageUnlockCacheRef.current = empty;
+      return { passageUnlock: empty, unlockError: true };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- refreshToken is an explicit recompute trigger
-    [curriculumDb, userDb, refreshToken],
-  );
+  }, [curriculumDb, userDb, refreshToken]);
 
   const queryInput: BrowseQueryInput = useMemo(
     () => ({
@@ -93,20 +134,34 @@ export function useBrowseItems(): UseBrowseItemsResult {
     [filters, debouncedSearch, passageUnlock],
   );
 
-  // First page: re-runs whenever the applied filters or debounced search change.
+  // First page: re-runs whenever the applied filters, debounced search, or
+  // unlock-dependent Lock facet scope changes. Stable unlock Map identity (when
+  // content is unchanged) avoids wiping scroll position on every tab focus.
   useEffect(() => {
+    const generation = ++queryGenerationRef.current;
+    loadingMoreRef.current = false;
     setLoading(true);
+    setError(null);
     try {
-      setRows(listBrowsePage(userDb, queryInput, { limit: BROWSE_PAGE_SIZE, offset: 0 }));
-      setTotalCount(countBrowse(userDb, queryInput));
+      const nextRows = listBrowsePage(userDb, queryInput, {
+        limit: BROWSE_PAGE_SIZE,
+        offset: 0,
+      });
+      const nextCount = countBrowse(userDb, queryInput);
+      if (generation !== queryGenerationRef.current) return;
+      setRows(nextRows);
+      setTotalCount(nextCount);
     } catch {
-      // A failed read shows the empty state rather than tearing down the tab.
+      if (generation !== queryGenerationRef.current) return;
       setRows([]);
       setTotalCount(0);
+      setError("Couldn't load browse results. Try again.");
     } finally {
-      setLoading(false);
+      if (generation === queryGenerationRef.current) {
+        setLoading(false);
+      }
     }
-  }, [userDb, queryInput]);
+  }, [userDb, queryInput, listEpoch]);
 
   const hasMore = rows.length < totalCount;
 
@@ -114,19 +169,28 @@ export function useBrowseItems(): UseBrowseItemsResult {
     if (loadingMoreRef.current) return;
     if (rows.length >= totalCount) return;
 
+    const generation = queryGenerationRef.current;
+    const offset = rows.length;
     loadingMoreRef.current = true;
     setLoadingMore(true);
     try {
       const nextPage = listBrowsePage(userDb, queryInput, {
         limit: BROWSE_PAGE_SIZE,
-        offset: rows.length,
+        offset,
       });
-      setRows((current) => [...current, ...nextPage]);
+      if (generation !== queryGenerationRef.current) return;
+      setRows((current) => {
+        // Drop the append if a reset already replaced the list under us.
+        if (current.length !== offset) return current;
+        return [...current, ...nextPage];
+      });
     } catch {
       // Keep what is already on screen; the next end-reached can retry.
     } finally {
-      loadingMoreRef.current = false;
-      setLoadingMore(false);
+      if (generation === queryGenerationRef.current) {
+        loadingMoreRef.current = false;
+        setLoadingMore(false);
+      }
     }
   }, [userDb, queryInput, rows.length, totalCount]);
 
@@ -137,6 +201,9 @@ export function useBrowseItems(): UseBrowseItemsResult {
   const clearFilters = useCallback(() => {
     setFilters(EMPTY_BROWSE_FILTERS);
     setSearchInput('');
+    // Flush immediately so Apply count and the list do not keep the old term
+    // for up to BROWSE_SEARCH_DEBOUNCE_MS after the user cleared.
+    setDebouncedSearch('');
   }, []);
 
   const clearFacetFilter = useCallback((facet: BrowseFacetKey) => {
@@ -147,20 +214,29 @@ export function useBrowseItems(): UseBrowseItemsResult {
     setRefreshToken((token) => token + 1);
   }, []);
 
+  const reload = useCallback(() => {
+    setRefreshToken((token) => token + 1);
+    setListEpoch((epoch) => epoch + 1);
+  }, []);
+
   return {
     rows,
     totalCount,
     loading,
     loadingMore,
     hasMore,
+    error,
+    unlockError,
     searchInput,
     setSearchInput,
+    debouncedSearch,
     filters,
     applyFilters,
     clearFilters,
     clearFacetFilter,
     loadMore,
     refresh,
+    reload,
     passageUnlock,
   };
 }
@@ -169,6 +245,9 @@ export function useBrowseItems(): UseBrowseItemsResult {
  * Live "Apply (N)" count for the filter drawer (FR64). Draft filters are counted
  * on their own short debounce so rapid chip toggling does not fire a query per
  * tap, while the number still feels immediate.
+ *
+ * Pass the same debounced search the list uses so Apply (N) cannot disagree
+ * with the visible rows around the search debounce window.
  */
 export function useBrowseDraftCount(
   draft: BrowseFilters,

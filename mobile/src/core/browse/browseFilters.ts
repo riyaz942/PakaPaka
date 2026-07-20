@@ -49,6 +49,10 @@ export const BROWSE_TYPE_VALUES: readonly BrowseTypeValue[] = [
   'passage',
 ] as const;
 
+export function isBrowseTypeValue(value: string): value is BrowseTypeValue {
+  return (BROWSE_TYPE_VALUES as readonly string[]).includes(value);
+}
+
 export const BROWSE_SRS_STAGES: readonly SRSStageLabel[] = [
   'apprentice',
   'guru',

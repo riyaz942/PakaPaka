@@ -97,14 +97,25 @@ function placeholders(count: number): string {
   return Array.from({ length: count }, () => '?').join(', ');
 }
 
+/** Escape SQLite LIKE metacharacters so `%` / `_` / `\` match literally. */
+function escapeLikeLiteral(value: string): string {
+  return value.replace(/([\\%_])/g, '\\$1');
+}
+
 function likeParams(search: BrowseSearchBranches, perBranch: number): string[] {
   const params: string[] = [];
   for (const branch of search.all) {
+    const pattern = `%${escapeLikeLiteral(branch)}%`;
     for (let index = 0; index < perBranch; index += 1) {
-      params.push(`%${branch}%`);
+      params.push(pattern);
     }
   }
   return params;
+}
+
+/** LIKE predicate with a fixed ESCAPE so bound patterns treat `%`/`_` as literals. */
+function likeClause(column: string): string {
+  return `${column} LIKE ? ESCAPE '\\'`;
 }
 
 /** `CASE ... END` mapping JLPT level to an easy-first sort rank (N5 → 0). */
@@ -183,9 +194,9 @@ function buildItemBranch(input: BrowseQueryInput): QueryFragment | null {
   if (search) {
     const branchClauses = search.all.map(
       () =>
-        `(i.primary_form LIKE ? OR i.meaning LIKE ?` +
-        ` OR EXISTS (SELECT 1 FROM ${C}.accepted_answers aa WHERE aa.item_id = i.id AND aa.answer_text LIKE ?)` +
-        ` OR EXISTS (SELECT 1 FROM ${C}.kanji_readings kr WHERE kr.item_id = i.id AND kr.reading LIKE ?))`,
+        `(${likeClause('i.primary_form')} OR ${likeClause('i.meaning')}` +
+        ` OR EXISTS (SELECT 1 FROM ${C}.accepted_answers aa WHERE aa.item_id = i.id AND ${likeClause('aa.answer_text')})` +
+        ` OR EXISTS (SELECT 1 FROM ${C}.kanji_readings kr WHERE kr.item_id = i.id AND ${likeClause('kr.reading')}))`,
     );
     conditions.push(`(${branchClauses.join(' OR ')})`);
     params.push(...likeParams(search, 4));
@@ -230,7 +241,7 @@ function buildPassageBranch(input: BrowseQueryInput): QueryFragment | null {
 
   if (search) {
     const branchClauses = search.all.map(
-      () => `(p.title LIKE ? OR p.english_translation LIKE ?)`,
+      () => `(${likeClause('p.title')} OR ${likeClause('p.english_translation')})`,
     );
     conditions.push(`(${branchClauses.join(' OR ')})`);
     params.push(...likeParams(search, 2));
@@ -316,6 +327,8 @@ function mapRow(
 
   if (row.kind === 'passage') {
     const status = passageUnlock.get(id);
+    // Fail closed when unlock status is missing (e.g. unlock map failed to
+    // load): treat as locked rather than showing a false "open" chip.
     return {
       kind: 'passage',
       id,
@@ -324,7 +337,7 @@ function mapRow(
       title: row.title ?? '',
       summaryJa: null,
       summaryEn: row.english_translation ?? null,
-      locked: status ? !status.unlocked : false,
+      locked: status ? !status.unlocked : true,
       itemsRemainingToUnlock: status?.itemsRemainingToUnlock ?? 0,
     };
   }

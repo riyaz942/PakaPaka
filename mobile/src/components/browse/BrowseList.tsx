@@ -10,11 +10,13 @@ type BrowseListProps = {
   rows: BrowseRowModel[];
   loading: boolean;
   loadingMore: boolean;
+  error?: string | null;
   onEndReached: () => void;
   onSelectItem: (id: string) => void;
   onSelectPassage: (id: string) => void;
   onClearFilters: () => void;
   canClearFilters: boolean;
+  onRetry?: () => void;
 };
 
 /**
@@ -29,11 +31,13 @@ export function BrowseList({
   rows,
   loading,
   loadingMore,
+  error = null,
   onEndReached,
   onSelectItem,
   onSelectPassage,
   onClearFilters,
   canClearFilters,
+  onRetry,
 }: BrowseListProps) {
   const keyExtractor = useCallback(
     (row: BrowseRowModel) => `${row.kind}:${row.id}`,
@@ -63,6 +67,17 @@ export function BrowseList({
       <View className="mt-space-2xl items-center">
         <ActivityIndicator accessibilityLabel="Loading results" />
       </View>
+    );
+  }
+
+  if (error && rows.length === 0) {
+    return (
+      <BrowseEmptyState
+        onClearFilters={onClearFilters}
+        canClear={false}
+        error={error}
+        onRetry={onRetry}
+      />
     );
   }
 

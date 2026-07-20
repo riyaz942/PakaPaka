@@ -234,7 +234,7 @@ describe('useBrowseItems', () => {
     });
   });
 
-  it('surfaces an empty list instead of throwing when a query fails', async () => {
+  it('surfaces an error instead of a silent empty curriculum when a query fails', async () => {
     mockListBrowsePage.mockImplementation(() => {
       throw new Error('malformed query');
     });
@@ -244,5 +244,60 @@ describe('useBrowseItems', () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.rows).toEqual([]);
     expect(result.current.totalCount).toBe(0);
+    expect(result.current.error).toMatch(/couldn't load/i);
+  });
+
+  it('flushes the debounced search immediately when filters are cleared', async () => {
+    jest.useFakeTimers();
+    try {
+      const { result } = renderHook(() => useBrowseItems());
+      await act(async () => {
+        jest.runOnlyPendingTimers();
+      });
+
+      act(() => {
+        result.current.setSearchInput('mizu');
+      });
+      await act(async () => {
+        jest.advanceTimersByTime(200);
+      });
+      expect(result.current.debouncedSearch).toBe('mizu');
+
+      act(() => {
+        result.current.clearFilters();
+      });
+
+      expect(result.current.searchInput).toBe('');
+      expect(result.current.debouncedSearch).toBe('');
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('ignores a loadMore append after the query identity has changed', async () => {
+    mockListBrowsePage.mockReturnValue(page(BROWSE_PAGE_SIZE));
+    mockCountBrowse.mockReturnValue(BROWSE_PAGE_SIZE * 2);
+
+    const { result } = renderHook(() => useBrowseItems());
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.rows).toHaveLength(BROWSE_PAGE_SIZE);
+
+    // Simulate a stale end-reached: change filters (resets to page 0 with 2 rows)
+    // then attempt loadMore against the old offset semantics.
+    mockListBrowsePage.mockReturnValue(page(2));
+    mockCountBrowse.mockReturnValue(2);
+    act(() => {
+      result.current.applyFilters({ ...EMPTY_BROWSE_FILTERS, levels: ['N5'] });
+    });
+    await waitFor(() => expect(result.current.rows).toHaveLength(2));
+
+    const callsBefore = mockListBrowsePage.mock.calls.length;
+    act(() => {
+      result.current.loadMore();
+    });
+
+    // totalCount is 2 and rows.length is 2 — loadMore should no-op.
+    expect(mockListBrowsePage.mock.calls.length).toBe(callsBefore);
+    expect(result.current.rows).toHaveLength(2);
   });
 });

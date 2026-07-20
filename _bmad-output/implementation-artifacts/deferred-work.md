@@ -125,3 +125,7 @@
 
 - **Greeting sentence does up to 20 sequential curriculum lookups on every Home focus** — documented I4 interim (no `vocabulary_slugs` on example sentences); optimize later. [`mobile/src/data/curriculum/greetingRepository.ts`]
 - **`useReadingReadiness` N+1 link/SRS fetches per passage on each Home focus** — correct unlock math; batch/optimize when Story 3.2 reuses `passageUnlock`. [`mobile/src/data/hooks/useReadingReadiness.ts`]
+
+## Deferred from: code review of 3-1-unified-browse-list-search-filters (2026-07-20)
+
+- **Home screen engagement/forecast churn in the story-scoped diff** — `mobile/src/app/(tabs)/index.tsx` includes Goal/forecast/banner work from Story 2.2 mixed under baseline `e736944`; only the Browse passage retarget belongs to 3.1. Split or ignore when reviewing Browse-only patches.

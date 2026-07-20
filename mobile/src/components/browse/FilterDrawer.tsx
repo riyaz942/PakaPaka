@@ -40,7 +40,10 @@ export function FilterDrawer({
   isCounting,
 }: FilterDrawerProps) {
   const options = BROWSE_FACET_OPTIONS[facet];
-  const applyDisabled = count === 0 || isCounting;
+  // Disable only at a zero result count (FR64). Keep showing the last settled N
+  // while a recount is in flight — do not blank the label or disable solely
+  // because isCounting flipped true.
+  const applyDisabled = count === 0;
 
   return (
     <Modal
@@ -105,7 +108,7 @@ export function FilterDrawer({
           accessibilityLabel={
             count === 0 ? 'No matches for this selection' : `Apply filters, ${count} results`
           }
-          accessibilityState={{ disabled: applyDisabled }}
+          accessibilityState={{ disabled: applyDisabled, busy: isCounting }}
           disabled={applyDisabled}
           onPress={onApply}
           testID={`browse-filter-apply-${facet}`}
@@ -118,7 +121,7 @@ export function FilterDrawer({
               'text-body font-semibold',
               applyDisabled ? 'text-secondary' : 'text-background',
             )}>
-            {isCounting ? 'Apply' : `Apply (${count})`}
+            {`Apply (${count})`}
           </Text>
         </Pressable>
       </View>

@@ -12,10 +12,14 @@ import {
 import BrowseScreen from './index';
 
 const mockPush = jest.fn();
-const mockUseLocalSearchParams = jest.fn(() => ({}) as Record<string, string>);
+const mockSetParams = jest.fn();
+const mockUseLocalSearchParams = jest.fn(() => ({}) as Record<string, string | string[]>);
 
 jest.mock('expo-router', () => ({
-  router: { push: (...args: unknown[]) => mockPush(...args) },
+  router: {
+    push: (...args: unknown[]) => mockPush(...args),
+    setParams: (...args: unknown[]) => mockSetParams(...args),
+  },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.mock factories cannot reference out-of-scope imports
   useFocusEffect: (callback: () => void) => require('react').useEffect(callback, [callback]),
@@ -261,5 +265,59 @@ describe('BrowseScreen', () => {
       const queryInput = mockListBrowsePage.mock.calls.at(-1)?.[1];
       expect(queryInput?.filters.levels).toEqual(['N4']);
     });
+    expect(mockSetParams).toHaveBeenCalledWith({ level: undefined, type: undefined });
+  });
+
+  it('seeds type alongside level from the learn redirect query string', async () => {
+    mockUseLocalSearchParams.mockReturnValue({ level: 'N5', type: 'vocabulary' });
+    renderBrowse();
+
+    await waitFor(() => {
+      const queryInput = mockListBrowsePage.mock.calls.at(-1)?.[1];
+      expect(queryInput?.filters.levels).toEqual(['N5']);
+      expect(queryInput?.filters.types).toEqual(['vocabulary']);
+    });
+  });
+
+  it('normalizes a repeated level param array before seeding', async () => {
+    mockUseLocalSearchParams.mockReturnValue({ level: ['N3', 'N2'] });
+    renderBrowse();
+
+    await waitFor(() => {
+      const queryInput = mockListBrowsePage.mock.calls.at(-1)?.[1];
+      expect(queryInput?.filters.levels).toEqual(['N3']);
+    });
+  });
+
+  it('offers Clear all on the filter bar when facets or search are active', async () => {
+    renderBrowse();
+    await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+
+    fireEvent.press(screen.getByTestId('browse-filter-pill-levels'));
+    fireEvent.press(screen.getByTestId('browse-filter-option-levels-N5'));
+    mockCountBrowse.mockReturnValue(12);
+    await waitFor(() =>
+      expect(screen.getByTestId('browse-filter-apply-levels')).toHaveTextContent('Apply (12)'),
+    );
+    fireEvent.press(screen.getByTestId('browse-filter-apply-levels'));
+
+    await waitFor(() => expect(screen.getByTestId('browse-clear-all')).toBeTruthy());
+    fireEvent.press(screen.getByTestId('browse-clear-all'));
+
+    await waitFor(() =>
+      expect(screen.getByTestId('browse-filter-pill-levels')).toHaveTextContent('Level'),
+    );
+    expect(mockSetParams).toHaveBeenCalledWith({ level: undefined, type: undefined });
+  });
+
+  it('shows a distinct error state when the browse query fails', async () => {
+    mockListBrowsePage.mockImplementation(() => {
+      throw new Error('boom');
+    });
+    renderBrowse();
+
+    await waitFor(() => expect(screen.getByTestId('browse-error')).toBeTruthy());
+    expect(screen.getByTestId('browse-error-retry')).toBeTruthy();
+    expect(screen.queryByTestId('browse-empty')).toBeNull();
   });
 });
