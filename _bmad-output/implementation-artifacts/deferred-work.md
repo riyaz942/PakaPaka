@@ -111,3 +111,8 @@
 
 - **`useReducedMotion` reads the in-app preference once per mount** — a Settings toggle while Home stays mounted doesn't propagate to already-mounted `FadeSlideIn`/`PressableScale` instances until remount; pre-existing hook design (local `useState` seed, no shared subscription). [`mobile/src/data/hooks/useReducedMotion.ts`]
 - **Review a11y label says "Review 1 items due" for a single item** — pre-existing label wording, pinned verbatim by tests and this story's AC ("identical to today"); the new visible subtitle pluralizes correctly, so label and subtitle diverge at dueCount=1. Fix label + test together in a copy pass. [`mobile/src/app/(tabs)/index.tsx`]
+
+## Deferred from: code review of 2-1-adaptive-goal-ring-from-lessons-reviews (2026-07-20)
+
+- **Mid-session goal denominator stays stale** — `ReviewSessionProvider` resolves sticky goal once when the queue loads; accepting a rise/reduction or editing Settings mid-session leaves in-session percent on the old goal until remount. Session-capture pattern; out of Home-focused AC scope.
+- **Device clock rollback can re-judge a week** — if stored `goalWeekStart` is after `weekStartKey(now)`, `runWeeklyGoalCheck` re-runs the prior-week judgment and can double-apply miss/offer updates. Rare clock/timezone edge.

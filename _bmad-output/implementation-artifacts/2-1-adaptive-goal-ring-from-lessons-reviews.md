@@ -4,7 +4,7 @@ baseline_commit: 5362079
 
 # Story 2.1: Adaptive Goal Ring from Lessons & Reviews
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -108,6 +108,18 @@ so that progress feels like an aspiration I can beat — not a capacity ceiling.
   - [x] `npm run typecheck`, `npm run lint`, `npm test` green from `mobile/`.
   - [x] Manual: lesson-only day fills ring; review still fills; overshoot shows >100 + badge; weekly rise prompt appears in a seeded scenario; Settings can set a high goal; Home updates after lesson without tab switch; screen reader announces overshoot %.
 
+### Review Findings
+
+- [x] [Review][Patch] Exact-mean week is a hit [`thresholdCalculator.ts:77`] — decided: `proposal === currentGoal` resets miss counter and clears pending offers (not a miss). Align code + canonical algorithm (§ Weekly ratchet step 6) with Task 2 (`mean < goal` only).
+- [x] [Review][Patch] Multi-week app gap skips intermediate weeks [`goalRingRepository.ts:187`] — `runWeeklyGoalCheck` only judges `[currentMonday-7, currentMonday)` then jumps `goalWeekStart` to now; weeks skipped while the app was closed never update miss/rise state.
+- [x] [Review][Patch] Rise dismiss hides later offers while Home stays mounted [`index.tsx`] — dismiss now keys off the pending value (`dismissedRiseTo`), so a later week’s different offer reappears while Home stays mounted.
+- [x] [Review][Patch] Manual goal save leaves reduction offer stale [`goalRingRepository.ts:124`] — `setDailyGoalTarget` clears `pendingRiseTo` but not `pendingReductionTo`; accepting the stale offer can overwrite the manual target.
+- [x] [Review][Patch] Accept/decline handlers ignore `Result` [`index.tsx:132`] — `handleAcceptRise` / reduction accept/decline call writers then always `refetchLoad()` without checking `.ok`.
+- [x] [Review][Patch] Accepting one pending offer does not clear the other [`goalRingRepository.ts:128`] — `acceptPendingRise` / `acceptPendingReduction` only null their own field; combined with the Settings clear gap, both prompts can appear.
+- [x] [Review][Patch] Weekly proposal can round to 0 [`thresholdCalculator.ts:75`] — `Math.round(mean)` with tiny loads yields `0`; `acceptPendingReduction` writes it without a `> 0` guard (resolve falls back, but sticky target becomes 0).
+- [x] [Review][Defer] Mid-session goal denominator stays stale [`ReviewSessionProvider.tsx`] — deferred, pre-existing session-capture pattern; threshold ref resolved once when queue loads
+- [x] [Review][Defer] Device clock rollback can re-judge a week [`goalRingRepository.ts:179`] — deferred, rare clock/timezone edge; no guard when stored `goalWeekStart` is in the future
+
 ## Dev Notes
 
 ### Scope boundary (critical)
@@ -150,7 +162,7 @@ From FR56–57 + brainstorming 2244 O7–O9 / Risk 1:
 3. `proposal = mean(loads for active days in prior week)`.
 4. If `activeDays < MIN` → no change to target or miss counter (carry forward).
 5. If `proposal > target` → set pending rise (prompt); do not silent-write target.
-6. If `proposal <= target` → hold target; `missWeeks++`; at threshold set pending reduction offer.
+6. If `proposal < target` → hold target; `missWeeks++`; at threshold set pending reduction offer. If `proposal === target` → hit (reset misses, clear offers).
 7. Accepting a rise writes target and clears pending; rejecting reduction clears offer.
 
 **Why mean not best-day:** keeps overshoot reachable ~half the time (Anti-Solution Risk 1). Do not implement best-day or silent daily Garmin-style auto goal.
@@ -263,7 +275,7 @@ Claude Fable 5 (claude-fable-5)
 - **BUG1:** Home now fetches everything in a single `useFocusEffect` path (fires on initial focus too); the mount effect and `isInitialFocusRef` skip are gone.
 - **Ring fidelity (honest scope):** `react-native-svg` was NOT added. Overshoot is expressed via uncapped numeric %, a `+N%` badge (large/hero variants; the 32px small variant has no room), and the cyan `ring-complete` band for ≥90 and all overshoot. True proportional overflow arc remains deferred polish. Hero size raised 144→160.
 - **A11y:** default ring label is `Goal ${percent} percent`; `accessibilityValue.max = Math.max(100, percent)` so overshoot is announced uncapped. SessionHeader group label updated to goal language.
-- **Prompts:** `GoalRisePrompt` / `GoalReductionPrompt` render on Home only. Rise dismiss hides for the current visit and keeps the offer pending (documented product choice); reduction decline clears the offer and resets the miss counter.
+- **Prompts:** `GoalRisePrompt` / `GoalReductionPrompt` render on Home only. Rise dismiss hides the current pending value (`dismissedRiseTo`) and keeps the offer pending; a later different pending value reappears. Reduction decline clears the offer and resets the miss counter.
 - **Settings:** unbounded "Daily goal" numeric field near Session intensity; validates > 0 inline; intensity changes refresh the displayed seed but never overwrite a user-set goal.
 
 ### File List
@@ -308,8 +320,9 @@ Claude Fable 5 (claude-fable-5)
 ## Change Log
 
 - 2026-07-20 — Story 2.1 implemented: sticky adaptive goal ring (migration 015 + goalRingRepository), unclamped overshoot percent, weekly active-day-mean ratchet with rise/reduction offers, lesson-flow load recording (BUG2), Home focus refresh (BUG1), GoalRing rename with `+N%` badge and goal a11y, Settings unbounded daily goal, DailyThresholdNotice goal-met copy. Gate: typecheck, lint, 986 tests / 128 suites green.
+- 2026-07-20 — Code review patches: exact-mean week = hit; multi-week gap walks intermediate weeks; rise dismiss resets on focus/`pendingRiseTo`; Settings/accept clear both pending offers; Home Result checks before refetch; proposal floored at 1.
 
 ---
 
-**Status:** review  
-**Completion note:** Implementation complete — all ACs satisfied, full suite green.
+**Status:** done  
+**Completion note:** Implementation complete — all ACs satisfied; code review patches applied (exact-mean hit, multi-week ratchet walk, rise-dismiss reset, pending-offer clears, Result checks, proposal floor).

@@ -138,6 +138,49 @@ describe('goalRingRepository', () => {
     expect(state.dailyGoalTarget).toBe(100); // still never auto-dropped
   });
 
+  it('judges skipped intermediate weeks when the app was closed across boundaries', async () => {
+    const userDb = await createUserDb();
+    expect(setDailyGoalTarget(userDb, 100).ok).toBe(true);
+    runWeeklyGoalCheck(userDb, new Date(2026, 6, 6)); // anchor Jul 6
+
+    // Miss week of Jul 6 (loads while app was "open").
+    addDailyLoad(userDb, { date: '2026-07-07', increment: 20, threshold: 100 });
+    addDailyLoad(userDb, { date: '2026-07-08', increment: 20, threshold: 100 });
+    addDailyLoad(userDb, { date: '2026-07-09', increment: 20, threshold: 100 });
+    // Miss week of Jul 13 (recorded, but app not opened until Jul 20).
+    addDailyLoad(userDb, { date: '2026-07-14', increment: 25, threshold: 100 });
+    addDailyLoad(userDb, { date: '2026-07-15', increment: 25, threshold: 100 });
+    addDailyLoad(userDb, { date: '2026-07-16', increment: 25, threshold: 100 });
+
+    // Jump two week boundaries in one check — both miss weeks must count.
+    expect(runWeeklyGoalCheck(userDb, new Date(2026, 6, 20)).ok).toBe(true);
+    const state = getGoalRingState(userDb);
+    expect(state.goalWeekStart).toBe('2026-07-20');
+    expect(state.consecutiveMissWeeks).toBe(2);
+    expect(state.pendingReductionTo).toBe(25);
+  });
+
+  it('clears both pending offers when the user sets a manual goal', async () => {
+    const userDb = await createUserDb();
+    expect(setDailyGoalTarget(userDb, 100).ok).toBe(true);
+    runWeeklyGoalCheck(userDb, new Date(2026, 6, 6));
+    for (const date of ['2026-07-07', '2026-07-08', '2026-07-09']) {
+      addDailyLoad(userDb, { date, increment: 20, threshold: 100 });
+    }
+    runWeeklyGoalCheck(userDb, new Date(2026, 6, 13));
+    for (const date of ['2026-07-14', '2026-07-15', '2026-07-16']) {
+      addDailyLoad(userDb, { date, increment: 20, threshold: 100 });
+    }
+    runWeeklyGoalCheck(userDb, new Date(2026, 6, 20));
+    expect(getGoalRingState(userDb).pendingReductionTo).not.toBeNull();
+
+    expect(setDailyGoalTarget(userDb, 55).ok).toBe(true);
+    const state = getGoalRingState(userDb);
+    expect(state.dailyGoalTarget).toBe(55);
+    expect(state.pendingRiseTo).toBeNull();
+    expect(state.pendingReductionTo).toBeNull();
+  });
+
   it('accepting a rise writes the target and clears pending state', async () => {
     const userDb = await createUserDb();
     runWeeklyGoalCheck(userDb, new Date(2026, 6, 13));

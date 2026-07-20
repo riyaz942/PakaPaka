@@ -160,6 +160,23 @@ describe('HomeScreen', () => {
     expect(mockRefetchLoad).toHaveBeenCalled();
   });
 
+  it('does not refetch when accepting a rise fails', () => {
+    mockPendingRiseTo = 45;
+    mockAcceptPendingRise.mockReturnValueOnce({
+      ok: false as const,
+      error: { code: 'goal_ring_persist_failed', message: 'fail' },
+    });
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    mockRefetchLoad.mockClear();
+    render(<HomeScreen />);
+    const callsAfterMount = mockRefetchLoad.mock.calls.length;
+
+    fireEvent.press(screen.getByTestId('goal-rise-accept'));
+    expect(mockAcceptPendingRise).toHaveBeenCalledTimes(1);
+    expect(mockRefetchLoad).toHaveBeenCalledTimes(callsAfterMount);
+    warnSpy.mockRestore();
+  });
+
   it('dismissing the rise prompt hides it without accepting', () => {
     mockPendingRiseTo = 45;
     render(<HomeScreen />);

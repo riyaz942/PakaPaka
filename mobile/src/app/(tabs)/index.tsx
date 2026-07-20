@@ -125,13 +125,18 @@ export default function HomeScreen() {
     isLoading: loadLoading,
     refetch: refetchLoad,
   } = useCognitiveLoad();
-  // Hides the rise prompt for this visit only — the offer stays pending until
-  // the user accepts or adjusts (product choice, story 2.1).
-  const [risePromptHidden, setRisePromptHidden] = useState(false);
+  // Dismiss hides only the current pending rise value. A later week's different
+  // offer reappears even while Home stays mounted (tab screens are long-lived).
+  const [dismissedRiseTo, setDismissedRiseTo] = useState<number | null>(null);
 
   const handleAcceptRise = useCallback(() => {
-    acceptPendingRise(userDb);
-    refetchLoad();
+    const result = acceptPendingRise(userDb);
+    if (result.ok) {
+      setDismissedRiseTo(null);
+      refetchLoad();
+    } else if (__DEV__) {
+      console.warn('[Home] acceptPendingRise failed', result.error);
+    }
   }, [userDb, refetchLoad]);
 
   const handleAdjustGoal = useCallback(() => {
@@ -139,13 +144,21 @@ export default function HomeScreen() {
   }, []);
 
   const handleAcceptReduction = useCallback(() => {
-    acceptPendingReduction(userDb);
-    refetchLoad();
+    const result = acceptPendingReduction(userDb);
+    if (result.ok) {
+      refetchLoad();
+    } else if (__DEV__) {
+      console.warn('[Home] acceptPendingReduction failed', result.error);
+    }
   }, [userDb, refetchLoad]);
 
   const handleDeclineReduction = useCallback(() => {
-    declinePendingReduction(userDb);
-    refetchLoad();
+    const result = declinePendingReduction(userDb);
+    if (result.ok) {
+      refetchLoad();
+    } else if (__DEV__) {
+      console.warn('[Home] declinePendingReduction failed', result.error);
+    }
   }, [userDb, refetchLoad]);
   const {
     currentStreak,
@@ -238,13 +251,13 @@ export default function HomeScreen() {
             </View>
           </FadeSlideIn>
 
-          {pendingRiseTo !== null && !risePromptHidden ? (
+          {pendingRiseTo !== null && pendingRiseTo !== dismissedRiseTo ? (
             <GoalRisePrompt
               proposedGoal={pendingRiseTo}
               currentGoal={dailyGoal}
               onAccept={handleAcceptRise}
               onAdjust={handleAdjustGoal}
-              onDismiss={() => setRisePromptHidden(true)}
+              onDismiss={() => setDismissedRiseTo(pendingRiseTo)}
             />
           ) : null}
 

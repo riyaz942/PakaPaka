@@ -121,10 +121,15 @@ export function setDailyGoalTarget(
     };
   }
   const state = getGoalRingState(userDb);
-  return persistState(userDb, { ...state, dailyGoalTarget: target, pendingRiseTo: null });
+  return persistState(userDb, {
+    ...state,
+    dailyGoalTarget: target,
+    pendingRiseTo: null,
+    pendingReductionTo: null,
+  });
 }
 
-/** Accepts a pending rise: writes the target, clears the offer, resets misses. */
+/** Accepts a pending rise: writes the target, clears all offers, resets misses. */
 export function acceptPendingRise(userDb: SQLiteDatabase): Result<void, AppError> {
   const state = getGoalRingState(userDb);
   if (state.pendingRiseTo === null) {
@@ -134,19 +139,29 @@ export function acceptPendingRise(userDb: SQLiteDatabase): Result<void, AppError
     ...state,
     dailyGoalTarget: state.pendingRiseTo,
     pendingRiseTo: null,
+    pendingReductionTo: null,
     consecutiveMissWeeks: 0,
   });
 }
 
-/** Accepts the opt-in reduction: lowers the target and clears the offer. */
+/** Accepts the opt-in reduction: lowers the target and clears all offers. */
 export function acceptPendingReduction(userDb: SQLiteDatabase): Result<void, AppError> {
   const state = getGoalRingState(userDb);
   if (state.pendingReductionTo === null) {
     return { ok: true, value: undefined };
   }
+  if (!Number.isFinite(state.pendingReductionTo) || state.pendingReductionTo <= 0) {
+    return persistState(userDb, {
+      ...state,
+      pendingRiseTo: null,
+      pendingReductionTo: null,
+      consecutiveMissWeeks: 0,
+    });
+  }
   return persistState(userDb, {
     ...state,
     dailyGoalTarget: state.pendingReductionTo,
+    pendingRiseTo: null,
     pendingReductionTo: null,
     consecutiveMissWeeks: 0,
   });
@@ -163,11 +178,10 @@ export function declinePendingReduction(userDb: SQLiteDatabase): Result<void, Ap
 }
 
 /**
- * Weekly ratchet driver (FR56–57). Runs at most once per calendar week
- * (Monday-start, local): on the first call of a new week it recalculates over
- * the just-ended week's active days and persists pending flags; the goal
- * itself is only ever changed by the user (accept/Settings). First call ever
- * just anchors `goalWeekStart` — there is no prior week to judge.
+ * Weekly ratchet driver (FR56–57). On each new Monday-start week it judges
+ * every week since the last run (so multi-week app gaps still accumulate miss
+ * / rise state). The goal itself is only ever changed by the user
+ * (accept/Settings). First call ever just anchors `goalWeekStart`.
  */
 export function runWeeklyGoalCheck(
   userDb: SQLiteDatabase,
@@ -184,24 +198,39 @@ export function runWeeklyGoalCheck(
     return persistState(userDb, { ...state, goalWeekStart: currentWeekStart });
   }
 
-  const priorWeekStart = addDaysToKey(currentWeekStart, -7);
-  const activeDayLoads = getActiveDayLoadsInRange(userDb, priorWeekStart, currentWeekStart);
-  const update = computeWeeklyGoalUpdate({
-    currentGoal: resolveDailyGoalTarget(userDb),
-    activeDayLoads,
-    consecutiveMissWeeks: state.consecutiveMissWeeks,
-  });
+  // Walk each Monday boundary from the last anchored week up to now so skipped
+  // calendar weeks are still judged (miss streaks / rise offers stay accurate).
+  let weekCursor = state.goalWeekStart;
+  let consecutiveMissWeeks = state.consecutiveMissWeeks;
+  let pendingRiseTo = state.pendingRiseTo;
+  let pendingReductionTo = state.pendingReductionTo;
+  const currentGoal = resolveDailyGoalTarget(userDb);
 
-  // A carry-forward week (sample not met) keeps existing offers alive so an
-  // unanswered prompt is not silently lost (product choice: keep pending until
-  // the user answers). A judged week replaces them with the new outcome.
-  const sampleMet = activeDayLoads.length >= GOAL_RING_MIN_ACTIVE_DAYS;
+  while (weekCursor < currentWeekStart) {
+    const nextWeekStart = addDaysToKey(weekCursor, 7);
+    const activeDayLoads = getActiveDayLoadsInRange(userDb, weekCursor, nextWeekStart);
+    const update = computeWeeklyGoalUpdate({
+      currentGoal,
+      activeDayLoads,
+      consecutiveMissWeeks,
+    });
+
+    // Carry-forward (sample not met) keeps existing offers alive so an
+    // unanswered prompt is not silently lost. A judged week replaces them.
+    const sampleMet = activeDayLoads.length >= GOAL_RING_MIN_ACTIVE_DAYS;
+    consecutiveMissWeeks = update.consecutiveMissWeeks;
+    if (sampleMet) {
+      pendingRiseTo = update.pendingRiseTo;
+      pendingReductionTo = update.pendingReductionTo;
+    }
+    weekCursor = nextWeekStart;
+  }
 
   return persistState(userDb, {
     ...state,
     goalWeekStart: currentWeekStart,
-    consecutiveMissWeeks: update.consecutiveMissWeeks,
-    pendingRiseTo: sampleMet ? update.pendingRiseTo : state.pendingRiseTo,
-    pendingReductionTo: sampleMet ? update.pendingReductionTo : state.pendingReductionTo,
+    consecutiveMissWeeks,
+    pendingRiseTo,
+    pendingReductionTo,
   });
 }

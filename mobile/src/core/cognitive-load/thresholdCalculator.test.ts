@@ -79,6 +79,27 @@ describe('computeWeeklyGoalUpdate', () => {
     expect(result.consecutiveMissWeeks).toBe(1);
   });
 
+  it('treats an exact-mean week as a hit (resets misses, no reduction)', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 40,
+      activeDayLoads: [40, 40, 40],
+      consecutiveMissWeeks: 2,
+    });
+    expect(result.pendingRiseTo).toBeNull();
+    expect(result.pendingReductionTo).toBeNull();
+    expect(result.consecutiveMissWeeks).toBe(0);
+  });
+
+  it('floors a near-zero mean proposal at 1 load unit', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 50,
+      activeDayLoads: [0.1, 0.2, 0.1],
+      consecutiveMissWeeks: GOAL_RING_MISS_WEEKS_BEFORE_OFFER - 1,
+    });
+    expect(result.pendingReductionTo).toBe(1);
+    expect(result.consecutiveMissWeeks).toBe(GOAL_RING_MISS_WEEKS_BEFORE_OFFER);
+  });
+
   it('offers an opt-in reduction after enough consecutive miss weeks', () => {
     const result = computeWeeklyGoalUpdate({
       currentGoal: 50,

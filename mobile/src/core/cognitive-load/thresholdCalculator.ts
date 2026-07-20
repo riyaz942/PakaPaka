@@ -72,10 +72,17 @@ export function computeWeeklyGoalUpdate(input: WeeklyGoalUpdateInput): WeeklyGoa
 
   const mean =
     input.activeDayLoads.reduce((sum, load) => sum + load, 0) / input.activeDayLoads.length;
-  const proposal = Math.round(mean);
+  // Floor at 1 so a pending reduction can never become a non-positive sticky goal.
+  const proposal = Math.max(1, Math.round(mean));
 
   if (proposal > input.currentGoal) {
     return { pendingRiseTo: proposal, pendingReductionTo: null, consecutiveMissWeeks: 0 };
+  }
+
+  // Exact match is a hit — meeting the goal resets the miss streak (Task 2: miss
+  // only when mean < goal).
+  if (proposal === input.currentGoal) {
+    return { pendingRiseTo: null, pendingReductionTo: null, consecutiveMissWeeks: 0 };
   }
 
   const missWeeks = input.consecutiveMissWeeks + 1;
