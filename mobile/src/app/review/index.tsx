@@ -1,5 +1,5 @@
 import { usePreventRemove } from '@react-navigation/core';
-import { router, type Href } from 'expo-router';
+import { router, useFocusEffect, type Href } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AccessibilityInfo,
@@ -147,6 +147,20 @@ export default function ReviewScreen() {
       flushPendingGrade();
     };
   }, [flushPendingGrade]);
+
+  // Nested details/compare push blurs this screen — cancel Lightning Mode so
+  // the session cannot advance under the overlay. Pending grade stays for
+  // Return/Continue (or flush on exit/unmount).
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        if (autoAdvanceTimer.current) {
+          clearTimeout(autoAdvanceTimer.current);
+          autoAdvanceTimer.current = null;
+        }
+      };
+    }, []),
+  );
 
   useEffect(() => {
     setCardState('prompting');
@@ -309,7 +323,14 @@ export default function ReviewScreen() {
     setRejectedAnswer(submittedAnswer.trim());
     setIncompleteAnswer(evaluation.feedbackKind === 'incomplete');
     // Sync curriculum lookup — never blocks the <100ms feedback path (NFR1).
-    setAnswerCollision(detectAnswerCollision(currentItem, submittedAnswer));
+    // Guard throws so a DB/lookup failure cannot leave the card stuck evaluating.
+    let collision: AnswerCollision | null = null;
+    try {
+      collision = detectAnswerCollision(currentItem, submittedAnswer);
+    } catch {
+      collision = null;
+    }
+    setAnswerCollision(collision);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
     setCardState('incorrect');
   }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
@@ -492,15 +513,41 @@ export default function ReviewScreen() {
           />
         </ScrollView>
 
-        {cardState === 'incorrect' || (cardState === 'correct' && isMcCard) ? (
-          // MC has no Return key, so the correct path always shows a visible
-          // Continue — it doubles as an early advance while the Lightning
-          // Mode timer is pending (FR84).
+        {cardState === 'incorrect' ? (
           <View className="px-space-md pb-space-md">
             <Button
               ref={continueButtonRef}
               label="Continue"
-              onPress={cardState === 'incorrect' ? handleContinueIncorrect : advanceFromCorrect}
+              onPress={handleContinueIncorrect}
+              variant="primary"
+            />
+          </View>
+        ) : cardState === 'correct' ? (
+          // Visible Continue for typed and MC correct (touch / soft-keyboard).
+          // Typed path also keeps the input mounted so second Return still
+          // advances (FR84). Continue doubles as early advance while Lightning
+          // Mode's timer is pending.
+          <View className="gap-space-sm px-space-md pb-space-md">
+            {!isMcCard ? (
+              <WanaKanaInput
+                ref={inputRef}
+                mode={inputMode}
+                value={answerText}
+                onChangeText={setAnswerText}
+                onSubmit={handleSubmit}
+                placeholder={
+                  currentItem.itemType === 'grammar'
+                    ? GRAMMAR_PLACEHOLDER
+                    : PLACEHOLDER[currentItem.promptType]
+                }
+                editable={inputEditable}
+                autoFocus={inputEditable}
+              />
+            ) : null}
+            <Button
+              ref={continueButtonRef}
+              label="Continue"
+              onPress={advanceFromCorrect}
               variant="primary"
             />
           </View>

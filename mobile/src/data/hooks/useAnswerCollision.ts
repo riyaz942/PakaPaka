@@ -28,6 +28,10 @@ export function useAnswerCollision(): (
       const trimmed = userAnswer.trim();
       if (!trimmed) return null;
 
+      // Production prompts are cloze/form fills — not meaning/reading lookups.
+      // Mapping them to 'reading' would miss grammar collisions or false-hit kana.
+      if (item.promptType === 'production') return null;
+
       const answerType = item.promptType === 'meaning' ? 'meaning' : 'reading';
       const normalize = answerType === 'meaning' ? normalizeMeaning : normalizeKana;
       const normalized = normalize(trimmed);
@@ -41,7 +45,11 @@ export function useAnswerCollision(): (
           : [trimmed, normalized];
 
       const matches = findItemsByAcceptedAnswer(curriculumDb, answerType, candidates, item.itemId);
-      const verified = matches.find((match) => normalize(match.answerText) === normalized);
+      // Deterministic when multiple items collide — lowest itemId wins so
+      // Compare `right` is stable across runs.
+      const verified = matches
+        .filter((match) => normalize(match.answerText) === normalized)
+        .sort((a, b) => a.itemId.localeCompare(b.itemId, undefined, { numeric: true }))[0];
       return verified ? { itemId: verified.itemId, primaryForm: verified.primaryForm } : null;
     },
     [curriculumDb],

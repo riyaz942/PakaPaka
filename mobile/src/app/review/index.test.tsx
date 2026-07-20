@@ -58,8 +58,22 @@ jest.mock('@react-navigation/core', () => ({
   usePreventRemove: jest.fn(),
 }));
 
+/** Set by the focus-effect mock when a cleanup is registered — used to simulate blur. */
+let simulateReviewBlur: (() => void) | null = null;
+
 jest.mock('expo-router', () => ({
   router: { replace: jest.fn(), back: jest.fn() },
+  useFocusEffect: (cb: () => void | (() => void)) => {
+    const { useEffect } = jest.requireActual<typeof import('react')>('react');
+    useEffect(() => {
+      const cleanup = cb();
+      simulateReviewBlur = typeof cleanup === 'function' ? cleanup : null;
+      return () => {
+        if (typeof cleanup === 'function') cleanup();
+        simulateReviewBlur = null;
+      };
+    }, [cb]);
+  },
 }));
 
 jest.mock('@/providers/ReviewSessionProvider', () => ({
@@ -609,6 +623,85 @@ describe('ReviewScreen — Return-to-advance pacing (Story 1.2, FR84)', () => {
     unmount();
     expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
     expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('flushes the pending grade on End Session under the indefinite wait (FR84)', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByLabelText('End session'));
+    // Header ✕ and the sheet's destructive action share the same a11y name —
+    // pick the sheet button (last match once the sheet is open).
+    const endButtons = screen.getAllByRole('button', { name: 'End session' });
+    fireEvent.press(endButtons[endButtons.length - 1]!);
+
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('shows a visible Continue on typed correct and advances through it', async () => {
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    expect(continueButton).toBeTruthy();
+    // Input stays mounted so second Return still works alongside Continue.
+    expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.press(continueButton);
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('cancels Lightning Mode when the review screen blurs (nested details)', async () => {
+    mockAutoAdvanceEnabled = true;
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    await act(async () => {
+      simulateReviewBlur?.();
+    });
+
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
+    expect(mockGradeCurrentItem).toHaveBeenCalledWith(3);
+  });
+
+  it('still reaches the incorrect reveal when collision detection throws', async () => {
+    mockDetectAnswerCollision.mockImplementation(() => {
+      throw new Error('collision lookup failed');
+    });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Continue' })).toBeTruthy();
+    });
+    expect(mockGradeCurrentItem).not.toHaveBeenCalled();
   });
 
   it('shows a visible Continue on MC-correct and advances through it', async () => {

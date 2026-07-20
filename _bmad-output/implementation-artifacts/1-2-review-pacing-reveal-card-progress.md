@@ -5,7 +5,7 @@ depends_on: 1-1-two-card-kanji-grading
 
 # Story 1.2: Review Pacing, Reveal & Card Progress
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -94,13 +94,13 @@ so that a longer two-card session still feels fast, honest, and controllable.
 
 ### Review Findings
 
-- [ ] [Review][Decision] Visible Continue on typed correct path — AC1 only requires Continue for MC/incorrect (typed uses second Return). Soft-keyboard / touch-only users who dismiss the keyboard may have no obvious advance control when Lightning Mode is off. Decide whether to add a typed-path Continue (or equivalent) for a11y/touch, or keep Return-only as specified.
-- [ ] [Review][Patch] Cancel Lightning Mode auto-advance when navigating to nested details [`mobile/src/app/review/index.tsx`]
-- [ ] [Review][Patch] Do not map grammar `production` prompts to reading collision lookup [`mobile/src/data/hooks/useAnswerCollision.ts`]
-- [ ] [Review][Patch] Guard `detectAnswerCollision` so a throw cannot leave the card stuck in `evaluating` [`mobile/src/app/review/index.tsx`]
-- [ ] [Review][Patch] Stabilize multi-match collision pick (deterministic Compare `right`) [`mobile/src/data/hooks/useAnswerCollision.ts` / `itemRepository.ts`]
-- [ ] [Review][Patch] Normalize Compare `left`/`right` when Expo Router yields `string[]` [`mobile/src/app/review/compare.tsx`]
-- [ ] [Review][Patch] Add End Session flush regression test claimed by Task 6 [`mobile/src/app/review/index.test.tsx`]
+- [x] [Review][Patch] Show Continue on typed correct path (in addition to second Return) [`mobile/src/app/review/index.tsx`]
+- [x] [Review][Patch] Cancel Lightning Mode auto-advance when navigating to nested details [`mobile/src/app/review/index.tsx`]
+- [x] [Review][Patch] Do not map grammar `production` prompts to reading collision lookup [`mobile/src/data/hooks/useAnswerCollision.ts`]
+- [x] [Review][Patch] Guard `detectAnswerCollision` so a throw cannot leave the card stuck in `evaluating` [`mobile/src/app/review/index.tsx`]
+- [x] [Review][Patch] Stabilize multi-match collision pick (deterministic Compare `right`) [`mobile/src/data/hooks/useAnswerCollision.ts` / `itemRepository.ts`]
+- [x] [Review][Patch] Normalize Compare `left`/`right` when Expo Router yields `string[]` [`mobile/src/app/review/compare.tsx`]
+- [x] [Review][Patch] Add End Session flush regression test claimed by Task 6 [`mobile/src/app/review/index.test.tsx`]
 - [x] [Review][Defer] Sync exact-match collision SQL can miss normalize-equal answers / may slow as curriculum grows [`mobile/src/data/curriculum/itemRepository.ts`] — deferred, pre-existing NFR1 tradeoff from this story's intentional design
 
 ## Dev Notes
@@ -347,3 +347,4 @@ claude-fable-5 (Claude Fable 5)
 ## Change Log
 
 - 2026-07-20 — Story 1.2 implemented (claude-fable-5): Return-to-advance pacing with opt-in Lightning Mode (`review_auto_advance`, default off) + Settings toggle; shared trimmed `AnswerReveal` on correct & incorrect paths with depth moved to new session-safe `review/item/[id]` route; `SessionHeader` progress renamed to card semantics (`cardsCompleted`/`totalCards`, "Card N of M" a11y); answer-collision line with curriculum-wide lookup (`findItemsByAcceptedAnswer` + `useAnswerCollision`) and `review/compare` stub locking the `left`/`right` param contract for Story 4.2. All tasks complete; 954 tests pass, lint/typecheck/contrast clean. Status → review.
+- 2026-07-20 — Code review patches applied: Continue on typed correct; cancel Lightning timer on nested-route blur; skip production collision lookup; guard collision throws; deterministic multi-match pick; Compare `string[]` param normalize; End Session flush test. Status → done.

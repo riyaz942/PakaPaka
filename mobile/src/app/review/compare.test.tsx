@@ -51,4 +51,12 @@ describe('ReviewCompareScreen stub (Story 1.2 — contract locked for Story 4.2)
     renderCompare();
     expect(screen.getByText('Compare coming soon')).toBeTruthy();
   });
+
+  it('normalizes string[] search params to the first value', () => {
+    mockUseLocalSearchParams.mockReturnValue({ left: ['1', 'extra'], right: ['2'] });
+    renderCompare();
+    expect(screen.getByTestId('review-compare-params')).toHaveTextContent(
+      /Side-by-side comparison for items 1 and 2/,
+    );
+  });
 });

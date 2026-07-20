@@ -17,8 +17,15 @@ import { ScreenHeader } from '@/components/common/ScreenHeader';
  * Story 4.2 replaces this body with the full Compare UI (sticky glyphs,
  * chips) without changing the deep-link shape. Do not build that here.
  */
+function paramString(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) return value[0];
+  return value;
+}
+
 export default function ReviewCompareScreen() {
-  const { left, right } = useLocalSearchParams<{ left: string; right: string }>();
+  const params = useLocalSearchParams<{ left?: string | string[]; right?: string | string[] }>();
+  const left = paramString(params.left);
+  const right = paramString(params.right);
 
   return (
     <View className="flex-1 bg-background">
