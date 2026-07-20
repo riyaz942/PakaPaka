@@ -98,6 +98,58 @@ export function getPassageById(db: SQLiteDatabase, id: string): PassageDetail | 
   return row ? mapPassageDetailRow(row) : null;
 }
 
+export type PassageSummary = {
+  id: string;
+  title: string;
+  jlptLevel: JLPTLevel;
+  sortOrder: number;
+};
+
+const JLPT_EASY_FIRST: JLPTLevel[] = ['N5', 'N4', 'N3', 'N2', 'N1'];
+
+/** All passages, easiest JLPT level first then sort order (readiness scan). */
+export function listAllPassages(db: SQLiteDatabase): PassageSummary[] {
+  const rows = db.getAllSync<{
+    id: number | string;
+    title: string;
+    jlpt_level: JLPTLevel;
+    sort_order: number;
+  }>(`SELECT id, title, jlpt_level, sort_order FROM reading_passages`);
+
+  return rows
+    .map((row) => ({
+      id: String(row.id),
+      title: row.title,
+      jlptLevel: row.jlpt_level,
+      sortOrder: row.sort_order,
+    }))
+    .sort((left, right) => {
+      const levelCompare =
+        JLPT_EASY_FIRST.indexOf(left.jlptLevel) - JLPT_EASY_FIRST.indexOf(right.jlptLevel);
+      if (levelCompare !== 0) return levelCompare;
+      return left.sortOrder - right.sortOrder;
+    });
+}
+
+/**
+ * Linked vocab + grammar item IDs for a passage (FR68 derived unlock inputs).
+ * Reads the compiled `passage_vocabulary_links` / `passage_grammar_links`.
+ */
+export function getPassageLinkedItemIds(db: SQLiteDatabase, passageId: string): string[] {
+  const vocabRows = db.getAllSync<{ vocabulary_item_id: number | string }>(
+    `SELECT vocabulary_item_id FROM passage_vocabulary_links WHERE passage_id = ?`,
+    Number(passageId),
+  );
+  const grammarRows = db.getAllSync<{ grammar_item_id: number | string }>(
+    `SELECT grammar_item_id FROM passage_grammar_links WHERE passage_id = ?`,
+    Number(passageId),
+  );
+  return [
+    ...vocabRows.map((row) => String(row.vocabulary_item_id)),
+    ...grammarRows.map((row) => String(row.grammar_item_id)),
+  ];
+}
+
 export function getPassageQuestions(db: SQLiteDatabase, passageId: string): PassageQuestion[] {
   const rows = db.getAllSync<PassageQuestionRow>(
     `SELECT id, passage_id, prompt, prompt_furigana, accepted_answers, sort_order

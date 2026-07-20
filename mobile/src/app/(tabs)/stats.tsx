@@ -1,12 +1,14 @@
 import { useFocusEffect } from 'expo-router';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { DaysStudiedStat } from '@/components/engagement';
 import { SrsStageBreakdown } from '@/components/stats/SrsStageBreakdown';
 import { StatsEmptyState, WeaknessEmptySubState } from '@/components/stats/StatsEmptyState';
 import { WeaknessStatCard } from '@/components/stats/WeaknessStatCard';
 import { MaxContentWidth } from '@/constants/theme';
+import { useDaysStudied } from '@/data/hooks/useDaysStudied';
 import { useSRSBreakdown } from '@/data/hooks/useSRSBreakdown';
 import { useWeaknessStats } from '@/data/hooks/useWeaknessStats';
 
@@ -26,19 +28,19 @@ export default function StatsScreen() {
     refetch: refetchSrsBreakdown,
   } = useSRSBreakdown();
 
-  const isInitialFocusRef = useRef(true);
+  const { daysStudied, isLoading: daysLoading, refetch: refetchDaysStudied } = useDaysStudied();
+
+  // BUG1 pattern (mirrors Home): refetch on *every* focus including the first,
+  // so returning from a session immediately reflects the new study day.
   useFocusEffect(
     useCallback(() => {
-      if (isInitialFocusRef.current) {
-        isInitialFocusRef.current = false;
-        return;
-      }
       refetchWeakness();
       refetchSrsBreakdown();
-    }, [refetchWeakness, refetchSrsBreakdown]),
+      refetchDaysStudied();
+    }, [refetchWeakness, refetchSrsBreakdown, refetchDaysStudied]),
   );
 
-  const isLoading = weaknessLoading || srsLoading;
+  const isLoading = weaknessLoading || srsLoading || daysLoading;
   const hasError = weaknessError !== null || srsError !== null;
   const isFirstLaunchEmpty =
     srsTotal === 0 && weaknessStats.length === 0 && !isLoading && !hasError;
@@ -67,6 +69,7 @@ export default function StatsScreen() {
           <StatsEmptyState />
         ) : (
           <ScrollView className="mt-6" contentContainerClassName="gap-space-lg pb-space-md">
+            <DaysStudiedStat daysStudied={daysStudied} />
             <View>
               <Text className="mb-space-sm text-body-lg font-semibold text-primary">
                 SRS stages

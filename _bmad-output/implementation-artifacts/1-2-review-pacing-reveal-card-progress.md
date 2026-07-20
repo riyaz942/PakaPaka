@@ -92,6 +92,17 @@ so that a longer two-card session still feels fast, honest, and controllable.
   - [x] Preferences + Settings toggle: default off; persists on.
   - [x] Compare stub: navigates with `left`/`right` params; details under `review/item/[id]` does not remount provider (smoke via layout or navigation test if practical).
 
+### Review Findings
+
+- [ ] [Review][Decision] Visible Continue on typed correct path — AC1 only requires Continue for MC/incorrect (typed uses second Return). Soft-keyboard / touch-only users who dismiss the keyboard may have no obvious advance control when Lightning Mode is off. Decide whether to add a typed-path Continue (or equivalent) for a11y/touch, or keep Return-only as specified.
+- [ ] [Review][Patch] Cancel Lightning Mode auto-advance when navigating to nested details [`mobile/src/app/review/index.tsx`]
+- [ ] [Review][Patch] Do not map grammar `production` prompts to reading collision lookup [`mobile/src/data/hooks/useAnswerCollision.ts`]
+- [ ] [Review][Patch] Guard `detectAnswerCollision` so a throw cannot leave the card stuck in `evaluating` [`mobile/src/app/review/index.tsx`]
+- [ ] [Review][Patch] Stabilize multi-match collision pick (deterministic Compare `right`) [`mobile/src/data/hooks/useAnswerCollision.ts` / `itemRepository.ts`]
+- [ ] [Review][Patch] Normalize Compare `left`/`right` when Expo Router yields `string[]` [`mobile/src/app/review/compare.tsx`]
+- [ ] [Review][Patch] Add End Session flush regression test claimed by Task 6 [`mobile/src/app/review/index.test.tsx`]
+- [x] [Review][Defer] Sync exact-match collision SQL can miss normalize-equal answers / may slow as curriculum grows [`mobile/src/data/curriculum/itemRepository.ts`] — deferred, pre-existing NFR1 tradeoff from this story's intentional design
+
 ## Dev Notes
 
 ### Scope boundaries

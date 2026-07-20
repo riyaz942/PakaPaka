@@ -116,3 +116,7 @@
 
 - **Mid-session goal denominator stays stale** — `ReviewSessionProvider` resolves sticky goal once when the queue loads; accepting a rise/reduction or editing Settings mid-session leaves in-session percent on the old goal until remount. Session-capture pattern; out of Home-focused AC scope.
 - **Device clock rollback can re-judge a week** — if stored `goalWeekStart` is after `weekStartKey(now)`, `runWeeklyGoalCheck` re-runs the prior-week judgment and can double-apply miss/offer updates. Rare clock/timezone edge.
+
+## Deferred from: code review of 1-2-review-pacing-reveal-card-progress (2026-07-20)
+
+- **Sync exact-match collision SQL can miss normalize-equal answers / may slow as curriculum grows** — `findItemsByAcceptedAnswer` uses `lower(...) IN (...)` only (intentional for NFR1); JS normalize verify never sees candidates that differ only by meaning-normalization (e.g. “eat” vs “to eat”), and full-table IN scans may degrade as `accepted_answers` grows. Revisit with indexed/normalized lookup if false negatives or latency appear. [`mobile/src/data/curriculum/itemRepository.ts`]

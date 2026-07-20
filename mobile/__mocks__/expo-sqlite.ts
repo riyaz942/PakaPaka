@@ -930,6 +930,22 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM passage_vocabulary_links/i.test(trimmed)) {
+    let rows = [...(state.tables.get('passage_vocabulary_links') ?? [])];
+    if (/WHERE passage_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.passage_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM passage_grammar_links/i.test(trimmed)) {
+    let rows = [...(state.tables.get('passage_grammar_links') ?? [])];
+    if (/WHERE passage_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.passage_id === params[0]);
+    }
+    return rows;
+  }
+
   if (/FROM passage_questions/i.test(trimmed)) {
     let rows = [...(state.tables.get('passage_questions') ?? [])];
     if (/WHERE passage_id = \?/i.test(trimmed)) {
@@ -1152,6 +1168,16 @@ export function __mockSetGrammarRelatedLinks(databaseName: string, rows: Row[]) 
 export function __mockSetReadingPassages(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('reading_passages', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPassageVocabularyLinks(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('passage_vocabulary_links', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPassageGrammarLinks(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('passage_grammar_links', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetPassageQuestions(databaseName: string, rows: Row[]) {

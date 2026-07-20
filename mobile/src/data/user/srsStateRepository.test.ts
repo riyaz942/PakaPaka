@@ -4,6 +4,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 import {
   countStartedItemsByIds,
   getDueSrsStates,
+  getUpcomingDueDates,
   getSrsStageCounts,
   getSrsState,
   seedMissingSrsStatesForInProgress,
@@ -116,6 +117,24 @@ describe('getDueSrsStates', () => {
     ]);
     const result = getDueSrsStates(db, NOW, 2);
     expect(result).toHaveLength(2);
+  });
+});
+
+describe('getUpcomingDueDates', () => {
+  it('returns due-date strings for non-burned states within the window, sorted ascending', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 1, stability: 5, difficulty: 5, due_date: FUTURE_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 3, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 1, srs_stage_label: 'burned', updated_at: PAST_ISO },
+      { item_id: 4, stability: 5, difficulty: 5, due_date: '2026-07-05T10:00:00.000Z', fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+    ]);
+
+    const result = getUpcomingDueDates(db, '2026-06-30T00:00:00.000Z');
+    expect(result).toEqual([PAST_ISO, FUTURE_ISO]);
+  });
+
+  it('returns an empty array when no states exist', () => {
+    expect(getUpcomingDueDates(db, '2026-06-30T00:00:00.000Z')).toEqual([]);
   });
 });
 

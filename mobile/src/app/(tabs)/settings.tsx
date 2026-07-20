@@ -8,7 +8,7 @@ import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensity
 import {
   cancelAllNotifications,
   requestNotificationPermission,
-  scheduleStreakReminder,
+  scheduleReviewReminder,
 } from '@/config/notifications';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
@@ -116,7 +116,7 @@ export default function SettingsScreen() {
           setNotificationsEnabled(userDb, true);
           setNotificationsEnabledState(true);
           setNotificationPermissionDenied(false);
-          await scheduleStreakReminder(NOTIFICATION_TIME_HOURS[notificationTime]);
+          await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[notificationTime]);
         } else {
           setNotificationPermissionDenied(true);
         }
@@ -136,7 +136,7 @@ export default function SettingsScreen() {
     setNotificationTime(userDb, time);
     setNotificationTimeState(time);
     if (notificationsEnabled) {
-      await scheduleStreakReminder(NOTIFICATION_TIME_HOURS[time]);
+      await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[time]);
     }
   };
 

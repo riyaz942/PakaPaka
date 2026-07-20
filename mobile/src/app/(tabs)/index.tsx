@@ -6,12 +6,16 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { PressableScale } from '@/components/common/PressableScale';
 import {
+  AtRiskSection,
   GoalReductionPrompt,
   GoalRing,
   GoalRisePrompt,
+  ImportNudgeCard,
   LevelProgressBar,
+  ReadingReadiness,
+  ReviewForecast,
   ShadowModeSwitchPrompt,
-  StreakCounter,
+  WelcomeBackCard,
 } from '@/components/engagement';
 import { MaxContentWidth } from '@/constants/theme';
 import {
@@ -21,20 +25,29 @@ import {
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLevelProgress } from '@/data/hooks/useLevelProgress';
+import { useAtRiskItems } from '@/data/hooks/useAtRiskItems';
+import { useReadingReadiness } from '@/data/hooks/useReadingReadiness';
+import { useReviewForecast } from '@/data/hooks/useReviewForecast';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
-import { useStreak } from '@/data/hooks/useStreak';
-import { todayKey } from '@/data/user/cognitiveLoadRepository';
+import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
   getSessionIntensity,
   getStartingJlptLevel,
+  isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
+import { getLastActiveDate, todayKey } from '@/data/user/cognitiveLoadRepository';
 import {
   acceptPendingReduction,
   acceptPendingRise,
   declinePendingReduction,
 } from '@/data/user/goalRingRepository';
+import { setReviewPriority } from '@/data/reviewPriorityStore';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
+import { countImportMetadataRows } from '@/data/user/importRepository';
+import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
+import { WELCOME_BACK_SLICE } from '@/config/constants';
+import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { cn } from '@/utils/cn';
 
 type ActionCardProps = {
@@ -94,11 +107,17 @@ function ActionCard({
 }
 
 export default function HomeScreen() {
-  const { userDb } = useDatabase();
+  const { curriculumDb, userDb } = useDatabase();
   const [level, setLevel] = useState<ReturnType<typeof getStartingJlptLevel>>(null);
+  const [greetingSentence, setGreetingSentence] = useState<string | null>(null);
   const [dueCount, setDueCount] = useState(0);
   const [dueCountLoading, setDueCountLoading] = useState(true);
   const [lessonAllowance, setLessonAllowance] = useState<DailyAllowance | null>(null);
+  const [welcomeBackOffer, setWelcomeBackOffer] = useState<WelcomeBackOffer | null>(null);
+  // Visit-scoped dismissals (mirrors risePromptHidden semantics from 2.1).
+  const [welcomeBackDismissed, setWelcomeBackDismissed] = useState(false);
+  const [importNudgeDismissed, setImportNudgeDismissed] = useState(false);
+  const [showImportNudge, setShowImportNudge] = useState(false);
 
   const readLessonAllowance = useCallback(
     (reviewsDueCount: number) => {
@@ -161,17 +180,33 @@ export default function HomeScreen() {
     }
   }, [userDb, refetchLoad]);
   const {
-    currentStreak,
-    streakState,
-    isLoading: streakLoading,
-    refetch: refetchStreak,
-  } = useStreak();
-  const {
     perType,
     overallPercent,
     isLoading: progressLoading,
     refetch: refetchProgress,
   } = useLevelProgress(level);
+  const { forecast, refetch: refetchForecast } = useReviewForecast();
+  const { target: readingTarget, refetch: refetchReadiness } = useReadingReadiness();
+  const {
+    totalCount: atRiskCount,
+    topItems: atRiskTopItems,
+    allItems: atRiskAllItems,
+    rankedItemIds: atRiskRankedIds,
+    refetch: refetchAtRisk,
+  } = useAtRiskItems();
+
+  const handleStartRevision = useCallback(() => {
+    setReviewPriority({ itemIds: atRiskRankedIds, limit: null });
+    router.push('/review');
+  }, [atRiskRankedIds]);
+
+  const handleStartWelcomeBackSlice = useCallback(() => {
+    setReviewPriority({ itemIds: [], limit: WELCOME_BACK_SLICE });
+    router.push('/review');
+  }, []);
+
+  const { showCurriculumUpdatedBanner, dismissCurriculumUpdatedBanner } =
+    useCurriculumUpdateBanner();
   const {
     daysActive: shadowModeDaysActive,
     shouldShowSwitchPrompt,
@@ -189,9 +224,16 @@ export default function HomeScreen() {
   useFocusEffect(
     useCallback(() => {
       refetchLoad();
-      refetchStreak();
       refetchProgress();
       refetchShadowMode();
+      refetchForecast();
+      refetchReadiness();
+      refetchAtRisk();
+      try {
+        setGreetingSentence(getGreetingSentence(curriculumDb, userDb));
+      } catch {
+        setGreetingSentence(null);
+      }
       let due = 0;
       try {
         setLevel(getStartingJlptLevel(userDb));
@@ -203,11 +245,38 @@ export default function HomeScreen() {
         setDueCountLoading(false);
       }
       readLessonAllowance(due);
+      try {
+        // Include today when finding the last active day — studying today
+        // ends the absence immediately.
+        const now = new Date();
+        const tomorrow = todayKey(
+          new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1),
+        );
+        setWelcomeBackOffer(
+          computeWelcomeBackOffer({
+            lastActiveDate: getLastActiveDate(userDb, tomorrow),
+            todayKey: todayKey(now),
+            dueCount: due,
+          }),
+        );
+      } catch {
+        setWelcomeBackOffer(null);
+      }
+      try {
+        setShowImportNudge(
+          countImportMetadataRows(userDb) === 0 && isOnboardingCompleted(userDb),
+        );
+      } catch {
+        setShowImportNudge(false);
+      }
     }, [
       refetchLoad,
-      refetchStreak,
       refetchProgress,
       refetchShadowMode,
+      refetchForecast,
+      refetchReadiness,
+      refetchAtRisk,
+      curriculumDb,
       userDb,
       readLessonAllowance,
     ]),
@@ -217,7 +286,7 @@ export default function HomeScreen() {
     disableShadowMode();
   }, [disableShadowMode]);
 
-  const isLoading = loadLoading || streakLoading || progressLoading || dueCountLoading;
+  const isLoading = loadLoading || progressLoading || dueCountLoading;
 
   return (
     <View className="flex-1 bg-background">
@@ -234,8 +303,9 @@ export default function HomeScreen() {
           contentContainerClassName="gap-space-md pb-space-lg">
           <FadeSlideIn index={0} className="py-space-sm">
             <Text className="text-title-lg text-primary">おかえり！</Text>
-            <Text className="mt-space-xs text-body-sm text-secondary">
-              Welcome back — here&apos;s today at a glance.
+            {/* Comprehensible sentence from started vocab; calm invitation on day 1. */}
+            <Text className="mt-space-xs text-body-sm text-secondary" testID="home-greeting-subtitle">
+              {greetingSentence ?? 'Welcome back — here’s today at a glance.'}
             </Text>
           </FadeSlideIn>
 
@@ -270,38 +340,68 @@ export default function HomeScreen() {
             />
           ) : null}
 
-          <FadeSlideIn index={2}>
-            <ActionCard
-              title="Today's lesson"
-              subtitle={
-                lessonAllowance === null
-                  ? 'A guided lesson picked for you'
-                  : lessonAllowance.remaining > 0
-                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
-                    : "You've learned enough today. Come back tomorrow, or clear some reviews."
-              }
-              glyph="学"
-              muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
-              onPress={() => router.push('/lesson')}
-              accessibilityLabel={
-                lessonAllowance !== null && lessonAllowance.remaining === 0
-                  ? 'Daily lesson limit reached'
-                  : "Start today's lesson"
-              }
-              testID="home-learn-button"
-            />
-          </FadeSlideIn>
-
           {isLoading ? (
             <ActivityIndicator accessibilityLabel="Loading home stats" />
           ) : (
             <>
-              <FadeSlideIn index={3}>
+              {/* Single conditional banner slot (UX-DR5, brainstorm O2):
+                  highest-priority eligible banner wins; permanent sections
+                  below always render. */}
+              {welcomeBackOffer && !welcomeBackDismissed ? (
+                <FadeSlideIn index={1}>
+                  <WelcomeBackCard
+                    sliceSize={welcomeBackOffer.sliceSize}
+                    dueCount={welcomeBackOffer.dueCount}
+                    onStartSlice={handleStartWelcomeBackSlice}
+                    onDismiss={() => setWelcomeBackDismissed(true)}
+                  />
+                </FadeSlideIn>
+              ) : showCurriculumUpdatedBanner ? (
+                <FadeSlideIn index={1}>
+                  <View
+                    testID="home-curriculum-updated-card"
+                    className="rounded-radius-lg border border-border bg-surface p-space-md">
+                    <Text className="text-body font-semibold text-primary">
+                      Curriculum updated
+                    </Text>
+                    <Text className="mt-space-xs text-body-sm text-secondary">
+                      Fresh content is live — nothing to do on your side.
+                    </Text>
+                    <Text
+                      accessibilityRole="button"
+                      accessibilityLabel="Dismiss curriculum update notice"
+                      onPress={dismissCurriculumUpdatedBanner}
+                      testID="home-curriculum-updated-dismiss"
+                      className="mt-space-sm text-body-sm text-feedback-info">
+                      Got it
+                    </Text>
+                  </View>
+                </FadeSlideIn>
+              ) : showImportNudge && !importNudgeDismissed ? (
+                <FadeSlideIn index={1}>
+                  <ImportNudgeCard
+                    onImport={() => router.push('/settings')}
+                    onDismiss={() => setImportNudgeDismissed(true)}
+                  />
+                </FadeSlideIn>
+              ) : shouldShowSwitchPrompt ? (
+                <FadeSlideIn index={1}>
+                  <ShadowModeSwitchPrompt
+                    daysActive={shadowModeDaysActive}
+                    onCommit={handleShadowModeCommit}
+                    onSnooze={snoozeShadowModePrompt}
+                    onDismiss={dismissShadowModePrompt}
+                  />
+                </FadeSlideIn>
+              ) : null}
+              {/* UX-DR3: Review is the primary CTA and sits first; the
+                  reviews-ready count lives here only — never on a tab badge. */}
+              <FadeSlideIn index={2}>
                 <ActionCard
                   title={dueCount > 0 ? 'Review' : 'All caught up'}
                   subtitle={
                     dueCount > 0
-                      ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} due now`
+                      ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
                       : 'No reviews due — nice work'
                   }
                   glyph="復"
@@ -316,15 +416,29 @@ export default function HomeScreen() {
                   testID="home-review-button"
                 />
               </FadeSlideIn>
-              <FadeSlideIn index={4}>
-                <StreakCounter
-                  currentStreak={currentStreak}
-                  streakState={streakState}
-                  testID="home-streak-counter"
+              <FadeSlideIn index={3}>
+                <ActionCard
+                  title="Today's lesson"
+                  subtitle={
+                    lessonAllowance === null
+                      ? 'A guided lesson picked for you'
+                      : lessonAllowance.remaining > 0
+                        ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                        : "You've learned enough today. Come back tomorrow, or clear some reviews."
+                  }
+                  glyph="学"
+                  muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
+                  onPress={() => router.push('/lesson')}
+                  accessibilityLabel={
+                    lessonAllowance !== null && lessonAllowance.remaining === 0
+                      ? 'Daily lesson limit reached'
+                      : "Start today's lesson"
+                  }
+                  testID="home-learn-button"
                 />
               </FadeSlideIn>
               {level ? (
-                <FadeSlideIn index={5}>
+                <FadeSlideIn index={4}>
                   <LevelProgressBar
                     level={level}
                     perType={perType}
@@ -332,13 +446,26 @@ export default function HomeScreen() {
                   />
                 </FadeSlideIn>
               ) : null}
-              {shouldShowSwitchPrompt ? (
+              {forecast ? (
+                <FadeSlideIn index={5}>
+                  <ReviewForecast forecast={forecast} />
+                </FadeSlideIn>
+              ) : null}
+              {readingTarget ? (
                 <FadeSlideIn index={6}>
-                  <ShadowModeSwitchPrompt
-                    daysActive={shadowModeDaysActive}
-                    onCommit={handleShadowModeCommit}
-                    onSnooze={snoozeShadowModePrompt}
-                    onDismiss={dismissShadowModePrompt}
+                  <ReadingReadiness
+                    target={readingTarget}
+                    onPress={() => router.push(`/read/${readingTarget.passageId}`)}
+                  />
+                </FadeSlideIn>
+              ) : null}
+              {atRiskCount > 0 ? (
+                <FadeSlideIn index={7}>
+                  <AtRiskSection
+                    totalCount={atRiskCount}
+                    topItems={atRiskTopItems}
+                    allItems={atRiskAllItems}
+                    onStartRevision={handleStartRevision}
                   />
                 </FadeSlideIn>
               ) : null}

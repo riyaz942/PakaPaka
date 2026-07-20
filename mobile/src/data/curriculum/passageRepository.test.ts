@@ -2,13 +2,17 @@ import { openDatabaseAsync } from 'expo-sqlite';
 
 import {
   __mockResetSqlite,
+  __mockSetPassageGrammarLinks,
   __mockSetPassageQuestions,
+  __mockSetPassageVocabularyLinks,
   __mockSetReadingPassages,
 } from '../../../__mocks__/expo-sqlite';
 
 import {
   getPassageById,
+  getPassageLinkedItemIds,
   getPassageQuestions,
+  listAllPassages,
   listPassagesByLevel,
 } from '@/data/curriculum/passageRepository';
 
@@ -122,5 +126,28 @@ describe('passageRepository', () => {
       acceptedAnswers: ['学生', 'がくせい'],
       sortOrder: 1,
     });
+  });
+
+  it('lists all passages easiest level first, then sort order', async () => {
+    const db = await seedPassages();
+    const all = listAllPassages(db);
+
+    expect(all.map((p) => p.id)).toEqual(['1', '2', '3']);
+    expect(all[0].jlptLevel).toBe('N5');
+  });
+
+  it('returns combined vocab + grammar linked item ids for a passage', async () => {
+    const db = await seedPassages();
+    __mockSetPassageVocabularyLinks('curriculum.db.test', [
+      { passage_id: 1, vocabulary_item_id: 10 },
+      { passage_id: 1, vocabulary_item_id: 11 },
+      { passage_id: 2, vocabulary_item_id: 12 },
+    ]);
+    __mockSetPassageGrammarLinks('curriculum.db.test', [
+      { passage_id: 1, grammar_item_id: 30 },
+    ]);
+
+    expect(getPassageLinkedItemIds(db, '1')).toEqual(['10', '11', '30']);
+    expect(getPassageLinkedItemIds(db, '3')).toEqual([]);
   });
 });

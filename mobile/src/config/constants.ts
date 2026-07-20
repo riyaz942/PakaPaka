@@ -156,6 +156,50 @@ export function hintButtonLabel(revealed: number, total: number): string {
  */
 export const SHADOW_MODE_FEATURE_ENABLED = false;
 
+/**
+ * Passage unlock coverage (FR60/FR68): a passage unlocks when this fraction of
+ * its linked vocab + grammar items is at Guru or above (burned counts).
+ */
+export const PASSAGE_UNLOCK_COVERAGE = 0.9;
+
+/** Minimum due count on a single forecast day before it can be flagged as a wall. */
+export const FORECAST_WALL_MIN_DUE = 30;
+
+/** A wall day must also carry at least this multiple of the week's mean daily count. */
+export const FORECAST_WALL_RATIO = 1.5;
+
+/** How many at-risk items are listed on Home (within the FR59 5–10 band). */
+export const AT_RISK_TOP_N = 8;
+
+/** Days without study activity before welcome-back triage can appear. */
+export const WELCOME_BACK_ABSENCE_DAYS = 3;
+
+/** Minimum review backlog before welcome-back triage offers a slice. */
+export const WELCOME_BACK_MIN_DUE = 40;
+
+/** Size of the eased "20 of your N due" welcome-back review slice. */
+export const WELCOME_BACK_SLICE = 20;
+
+/**
+ * Per-item minutes a learner would plausibly spend in separate single-purpose
+ * apps (FR33b) — deliberately conservative estimates.
+ */
+export const TIME_COMPRESSION_PER_ITEM_SECONDS: Record<
+  'radical' | 'kanji' | 'vocabulary' | 'grammar',
+  number
+> = {
+  radical: 15,
+  kanji: 40,
+  vocabulary: 30,
+  grammar: 50,
+};
+
+/** App-switching overhead added per extra single-purpose app (FR33b). */
+export const TIME_COMPRESSION_SESSION_OVERHEAD_MINUTES = 5;
+
+/** Overhead only applies when the session spans at least this many domains. */
+export const TIME_COMPRESSION_MIN_DOMAINS_FOR_OVERHEAD = 2;
+
 /** Days of active shadow mode before the non-blocking "ready to switch?" prompt appears. */
 export const SHADOW_MODE_SWITCH_PROMPT_DAYS = 14;
 

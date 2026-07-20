@@ -10,7 +10,12 @@ export async function getNotificationPermissionStatus(): Promise<boolean> {
   return result.granted;
 }
 
-export async function scheduleStreakReminder(hour: number, minute = 0): Promise<void> {
+/**
+ * Daily review nudge ("Time to review!") at the user's chosen hour.
+ * Deliberately not streak-framed — there is no streak-at-risk notification
+ * in this product (FR20 amended, R2).
+ */
+export async function scheduleReviewReminder(hour: number, minute = 0): Promise<void> {
   try {
     await cancelAllNotifications();
     await Notifications.scheduleNotificationAsync({
@@ -26,7 +31,7 @@ export async function scheduleStreakReminder(hour: number, minute = 0): Promise<
     });
   } catch (cause) {
     if (__DEV__) {
-      console.warn('[notifications] scheduleStreakReminder failed', cause);
+      console.warn('[notifications] scheduleReviewReminder failed', cause);
     }
   }
 }

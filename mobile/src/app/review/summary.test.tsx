@@ -11,14 +11,9 @@ const mockSessionSummary = {
 };
 
 let mockShadowModeEnabled = false;
-let mockCelebration = { shouldCelebrate: false, currentStreak: 0 };
 
 jest.mock('expo-router', () => ({
   router: { dismissAll: jest.fn() },
-}));
-
-jest.mock('@/data/hooks/useStreakCelebration', () => ({
-  useStreakCelebration: () => mockCelebration,
 }));
 
 jest.mock('@/data/hooks/useReducedMotion', () => ({
@@ -29,32 +24,57 @@ jest.mock('@/providers/ReviewSessionProvider', () => ({
   useReviewSession: () => ({ sessionSummary: mockSessionSummary }),
 }));
 
-jest.mock('@/data/hooks/useStreak', () => ({
-  useStreak: () => ({ currentStreak: 3 }),
-}));
-
 jest.mock('@/data/hooks/useShadowMode', () => ({
   useShadowMode: () => ({ isEnabled: mockShadowModeEnabled }),
+}));
+
+let mockGoalPercent = 120;
+
+jest.mock('@/data/hooks/useCognitiveLoad', () => ({
+  useCognitiveLoad: () => ({
+    percent: mockGoalPercent,
+    isLoading: false,
+    refetch: jest.fn(),
+  }),
 }));
 
 describe('ReviewSummaryScreen', () => {
   beforeEach(() => {
     mockShadowModeEnabled = false;
-    mockCelebration = { shouldCelebrate: false, currentStreak: 0 };
+    mockGoalPercent = 120;
   });
 
-  it('renders the streak celebration when today earned it', () => {
-    mockCelebration = { shouldCelebrate: true, currentStreak: 4 };
-    render(<ReviewSummaryScreen />);
-
-    expect(screen.getByTestId('streak-celebration')).toBeTruthy();
-    expect(screen.getByText('4 day streak')).toBeTruthy();
-  });
-
-  it('does not render the streak celebration when already celebrated today', () => {
+  it('never renders streak UI (R2 / UX-DR27)', () => {
     render(<ReviewSummaryScreen />);
 
     expect(screen.queryByTestId('streak-celebration')).toBeNull();
+    expect(screen.queryByText(/day streak/)).toBeNull();
+  });
+
+  it('shows the multi-app time compression as centerpiece (FR33b)', () => {
+    // 8 kanji + 5 vocab + 2 grammar → 570s ≈ 10 min + 2×5 overhead = 20 min vs 12 actual.
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByTestId('time-compression-block')).toBeTruthy();
+    expect(screen.getByText('12 min here — ~20 min in separate apps')).toBeTruthy();
+  });
+
+  it('shows overshoot goal state, never a streak row', () => {
+    mockGoalPercent = 120;
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
+      'Goal met — +20% overshoot',
+    );
+  });
+
+  it('shows calm partial-goal state when under 100%', () => {
+    mockGoalPercent = 60;
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
+      "60% of today's goal",
+    );
   });
 
   it('shows first-try accuracy so retried items are not counted as correct', () => {

@@ -7,28 +7,32 @@ import {
   PostSessionShareCard,
   SessionSummaryCard,
   ShadowModeComparison,
-  StreakCelebration,
   buildShareMessage,
 } from '@/components/engagement';
+import { goalStateLine } from '@/components/engagement/SessionSummaryCard';
+import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
-import { useStreak } from '@/data/hooks/useStreak';
-import { useStreakCelebration } from '@/data/hooks/useStreakCelebration';
 import { useReviewSession } from '@/providers/ReviewSessionProvider';
-import { formatMinutes } from '@/utils/timeFormat';
+import { estimateMultiAppMinutes, formatMinutes, hasSavings } from '@/utils/timeFormat';
 
 export default function ReviewSummaryScreen() {
   const { sessionSummary } = useReviewSession();
-  const { currentStreak } = useStreak();
   const { isEnabled: shadowModeEnabled } = useShadowMode();
-  const celebration = useStreakCelebration(sessionSummary.itemsReviewed > 0);
+  const { percent: goalPercent, isLoading: goalLoading } = useCognitiveLoad();
 
   const sessionDate = new Date(sessionSummary.sessionEndAt);
   const actualMinutes = formatMinutes(sessionSummary.durationMs);
+  // FR33b-c: the multi-app estimate is the centerpiece — only claimed when it
+  // actually beats the real time (conservative by design).
+  const estimate = estimateMultiAppMinutes(sessionSummary.domainCounts);
+  const estimatedMinutes = hasSavings(estimate, actualMinutes) ? estimate : null;
+  const resolvedGoalPercent = goalLoading ? null : goalPercent;
 
   const shareCardProps = {
     domainCounts: sessionSummary.domainCounts,
     actualMinutes,
-    currentStreak,
+    estimatedMinutes,
+    goalLine: resolvedGoalPercent !== null ? goalStateLine(resolvedGoalPercent) : null,
     sessionDate,
   };
 
@@ -45,9 +49,6 @@ export default function ReviewSummaryScreen() {
       <View className="flex-1 justify-center gap-space-lg">
         {sessionSummary.itemsReviewed > 0 ? (
           <>
-            {celebration.shouldCelebrate ? (
-              <StreakCelebration streakCount={celebration.currentStreak} />
-            ) : null}
             <PostSessionShareCard {...shareCardProps} />
             <Text
               className="text-body text-secondary text-center"
@@ -58,6 +59,8 @@ export default function ReviewSummaryScreen() {
             <SessionSummaryCard
               domainCounts={sessionSummary.domainCounts}
               actualMinutes={actualMinutes}
+              estimatedMinutes={estimatedMinutes}
+              goalPercent={resolvedGoalPercent}
               onShare={handleShare}
               sessionDate={sessionDate}
             />

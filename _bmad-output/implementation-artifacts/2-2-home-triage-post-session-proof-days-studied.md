@@ -4,7 +4,7 @@ baseline_commit: 76ddc97
 
 # Story 2.2: Home Triage, Post-Session Proof & Days Studied
 
-Status: ready-for-dev
+Status: review
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -53,91 +53,91 @@ so that I always know what to do next without streak anxiety or an overdue mount
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1 — Remove streak product surfaces (Home + post-session)** (AC: #1, #6, #7)
-  - [ ] Remove `StreakCounter` from `app/(tabs)/index.tsx` (and stop fetching `useStreak` solely for Home UI).
-  - [ ] Remove streak row from `PostSessionShareCard` + `buildShareMessage` (drop `currentStreak` prop).
-  - [ ] Remove `StreakCelebration` from `review/summary.tsx` and `lesson/complete.tsx` (R2 / UX-DR12 / UX-DR27). Keep `streaks` table + `recordReviewAndUpdateStreak` writes for now (data may still feed future Stats polish); do **not** surface flame/at-risk UI.
-  - [ ] Confirm notifications: `scheduleStreakReminder` already schedules a generic review nudge (“Time to review!”) — **no streak-at-risk push exists**. Rename to `scheduleReviewReminder` (or keep name with a deprecation comment) so Settings copy is not streak-framed. Do not add streak-at-risk notifications.
-  - [ ] Update Home / share-card / summary / Settings tests accordingly.
+- [x] **Task 1 — Remove streak product surfaces (Home + post-session)** (AC: #1, #6, #7)
+  - [x] Remove `StreakCounter` from `app/(tabs)/index.tsx` (and stop fetching `useStreak` solely for Home UI).
+  - [x] Remove streak row from `PostSessionShareCard` + `buildShareMessage` (drop `currentStreak` prop).
+  - [x] Remove `StreakCelebration` from `review/summary.tsx` and `lesson/complete.tsx` (R2 / UX-DR12 / UX-DR27). Keep `streaks` table + `recordReviewAndUpdateStreak` writes for now (data may still feed future Stats polish); do **not** surface flame/at-risk UI.
+  - [x] Confirm notifications: `scheduleStreakReminder` already schedules a generic review nudge (“Time to review!”) — **no streak-at-risk push exists**. Rename to `scheduleReviewReminder` (or keep name with a deprecation comment) so Settings copy is not streak-framed. Do not add streak-at-risk notifications.
+  - [x] Update Home / share-card / summary / Settings tests accordingly.
 
-- [ ] **Task 2 — Home CTA hierarchy + permanent shell** (AC: #1)
-  - [ ] Reorder CTAs: **Review first (primary / accent)**, **Learn second (secondary)**. Today Learn is above Review — that violates UX-DR3/UX-DR4.
-  - [ ] Review CTA copy: `Review — N ready` when due > 0; calm empty state when 0 (`All caught up` / next-due hint if cheap). Count on CTA only — no tab badge.
-  - [ ] Keep Learn allowance subtitle behavior from feedback 04 (remaining / exhausted).
-  - [ ] Keep thin `LevelProgressBar` under CTAs when starting JLPT level is set.
-  - [ ] Preserve Story 2.1 GoalRing hero + rise/reduction prompts + focus refetch (BUG1). Do not regress goal semantics.
-  - [ ] Soft hero: calm surface behind ring is enough — no new illustration assets.
+- [x] **Task 2 — Home CTA hierarchy + permanent shell** (AC: #1)
+  - [x] Reorder CTAs: **Review first (primary / accent)**, **Learn second (secondary)**. Today Learn is above Review — that violates UX-DR3/UX-DR4.
+  - [x] Review CTA copy: `Review — N ready` when due > 0; calm empty state when 0 (`All caught up` / next-due hint if cheap). Count on CTA only — no tab badge.
+  - [x] Keep Learn allowance subtitle behavior from feedback 04 (remaining / exhausted).
+  - [x] Keep thin `LevelProgressBar` under CTAs when starting JLPT level is set.
+  - [x] Preserve Story 2.1 GoalRing hero + rise/reduction prompts + focus refetch (BUG1). Do not regress goal semantics.
+  - [x] Soft hero: calm surface behind ring is enough — no new illustration assets.
 
-- [ ] **Task 3 — Greeting: comprehensible sentence + day-1 fallback** (AC: #1)
-  - [ ] Keep `おかえり！` title.
-  - [ ] Subtitle day-1 / empty fallback: calm invitation (existing “Welcome back — here's today at a glance.” or UX mock “Good morning — ready when you are.”).
-  - [ ] **Honest scope for I4:** `example_sentences` in `curriculum.db` does **not** store `vocabulary_slugs` (only japanese/furigana/english/tags). Full “every word already learned” filtering is blocked without a curriculum pipeline change.
-  - [ ] **Interim:** when the user has ≥1 started vocabulary item with an example sentence, show that sentence’s Japanese (prefer Guru+ if available); otherwise fallback. Document the interim in Completion Notes. Do **not** expand the compile pipeline in this story.
+- [x] **Task 3 — Greeting: comprehensible sentence + day-1 fallback** (AC: #1)
+  - [x] Keep `おかえり！` title.
+  - [x] Subtitle day-1 / empty fallback: calm invitation (existing “Welcome back — here's today at a glance.” or UX mock “Good morning — ready when you are.”).
+  - [x] **Honest scope for I4:** `example_sentences` in `curriculum.db` does **not** store `vocabulary_slugs` (only japanese/furigana/english/tags). Full “every word already learned” filtering is blocked without a curriculum pipeline change.
+  - [x] **Interim:** when the user has ≥1 started vocabulary item with an example sentence, show that sentence’s Japanese (prefer Guru+ if available); otherwise fallback. Document the interim in Completion Notes. Do **not** expand the compile pipeline in this story.
 
-- [ ] **Task 4 — One-week forecast + wall annotation** (AC: #1)
-  - [ ] Pure helper in `core/` (e.g. `core/engagement/reviewForecast.ts`): given non-burned `srs_states` with `due_date`, bucket counts into **local calendar days** for today → today+6.
-  - [ ] Data: add a cheap repo read (e.g. `getUpcomingDueDates(userDb, untilIso)`) returning due dates only — avoid building the full review queue on Home focus.
-  - [ ] UI component `ReviewForecast` (engagement/): seven day cells + counts; designed empty state when all zeros (day 1).
-  - [ ] **Wall rule (resolve brainstorm O3):** flag the day with the maximum count when `max >= max(FORECAST_WALL_MIN_DUE, ceil(mean * FORECAST_WALL_RATIO))` with named constants (suggest `FORECAST_WALL_MIN_DUE = 30`, `FORECAST_WALL_RATIO = 1.5`). Annotation copy invitation-style: e.g. “Wall day Wed — 41 due. Go light on lessons.” If no day qualifies, no wall annotation (flat heavy weeks stay quiet).
-  - [ ] Co-locate pure tests for bucketing + wall trigger.
+- [x] **Task 4 — One-week forecast + wall annotation** (AC: #1)
+  - [x] Pure helper in `core/` (e.g. `core/engagement/reviewForecast.ts`): given non-burned `srs_states` with `due_date`, bucket counts into **local calendar days** for today → today+6.
+  - [x] Data: add a cheap repo read (e.g. `getUpcomingDueDates(userDb, untilIso)`) returning due dates only — avoid building the full review queue on Home focus.
+  - [x] UI component `ReviewForecast` (engagement/): seven day cells + counts; designed empty state when all zeros (day 1).
+  - [x] **Wall rule (resolve brainstorm O3):** flag the day with the maximum count when `max >= max(FORECAST_WALL_MIN_DUE, ceil(mean * FORECAST_WALL_RATIO))` with named constants (suggest `FORECAST_WALL_MIN_DUE = 30`, `FORECAST_WALL_RATIO = 1.5`). Annotation copy invitation-style: e.g. “Wall day Wed — 41 due. Go light on lessons.” If no day qualifies, no wall annotation (flat heavy weeks stay quiet).
+  - [x] Co-locate pure tests for bucketing + wall trigger.
 
-- [ ] **Task 5 — Reading readiness (FR60) with shared unlock helper** (AC: #3)
-  - [ ] **M1 decision (required):** extract shared unlock math now so Story 3.2 reuses it — do **not** invent interim lock math.
-  - [ ] Pure `core/content/passageUnlock.ts` (name flexible):
+- [x] **Task 5 — Reading readiness (FR60) with shared unlock helper** (AC: #3)
+  - [x] **M1 decision (required):** extract shared unlock math now so Story 3.2 reuses it — do **not** invent interim lock math.
+  - [x] Pure `core/content/passageUnlock.ts` (name flexible):
     - Inputs: linked vocab+grammar item IDs + map of `srs_stage_label` (or equivalent).
     - Unlock when `guruOrAboveCount / linkedCount >= PASSAGE_UNLOCK_COVERAGE` (**0.9**). Empty linked set → treat as locked with N = 0 or hide section (document choice; prefer hide readiness when no passages/links).
     - Guru+ = stage in `guru | master | enlightened | burned` (burned counts as covered).
     - `itemsRemainingToUnlock` = how many more linked items need Guru+ to cross 90% (ceil math — pure + tested).
-  - [ ] Curriculum reads: query `passage_vocabulary_links` + `passage_grammar_links` (already compiled). Extend `passageRepository` with link getters + a “next destination” picker (lowest remaining among locked passages at user’s JLPT, else first locked overall).
-  - [ ] UI `ReadingReadiness`: destination framing (“N items from unlocking {title}”); empty state for day 1 that is **not** a shame wall (e.g. “Your first passage unlocks as you learn — start a lesson”).
-  - [ ] Tap → navigate to Read/Browse passage detail if route exists (`/read/[id]` today); acceptable until Epic 3 Browse lands.
+  - [x] Curriculum reads: query `passage_vocabulary_links` + `passage_grammar_links` (already compiled). Extend `passageRepository` with link getters + a “next destination” picker (lowest remaining among locked passages at user’s JLPT, else first locked overall).
+  - [x] UI `ReadingReadiness`: destination framing (“N items from unlocking {title}”); empty state for day 1 that is **not** a shame wall (e.g. “Your first passage unlocks as you learn — start a lesson”).
+  - [x] Tap → navigate to Read/Browse passage detail if route exists (`/read/[id]` today); acceptable until Epic 3 Browse lands.
 
-- [ ] **Task 6 — At-risk / refresher section (FR59)** (AC: #2)
-  - [ ] Pure ranker in `core/` (e.g. `selectAtRiskItems`): combine **weakness score** (`calculateWeaknessScore`) with **due proximity** (overdue/soonest `due_date`). Require `WEAKNESS_MIN_SAMPLE` met and score > 0 (or a small `AT_RISK_MIN_SCORE` constant). Cap list; expose `totalCount` + `topItems` (5–10).
-  - [ ] Wire via `weaknessRepository` + `srsStateRepository` batch reads (chunked `IN` — match existing patterns). Hook e.g. `useAtRiskItems`.
-  - [ ] UI: conditional Home section — invitation copy (“N items ready for a refresher”), top 5–10 rows (form/meaning if cheap via curriculum batch), “+N more”, inline CTA “Do a small revision”.
-  - [ ] Full list: modal or lightweight route; same CTA.
-  - [ ] **Revision session:** memory store (mirror `importPreviewStore`) holding prioritized `itemId[]`. On CTA, set store → `router.push('/review')`. `useReviewQueue` / queue build: if store non-empty, prefer those IDs among due items (or allow due+those IDs), then clear store after queue materializes. Do not invent a second review engine.
-  - [ ] Never show section when count = 0.
+- [x] **Task 6 — At-risk / refresher section (FR59)** (AC: #2)
+  - [x] Pure ranker in `core/` (e.g. `selectAtRiskItems`): combine **weakness score** (`calculateWeaknessScore`) with **due proximity** (overdue/soonest `due_date`). Require `WEAKNESS_MIN_SAMPLE` met and score > 0 (or a small `AT_RISK_MIN_SCORE` constant). Cap list; expose `totalCount` + `topItems` (5–10).
+  - [x] Wire via `weaknessRepository` + `srsStateRepository` batch reads (chunked `IN` — match existing patterns). Hook e.g. `useAtRiskItems`.
+  - [x] UI: conditional Home section — invitation copy (“N items ready for a refresher”), top 5–10 rows (form/meaning if cheap via curriculum batch), “+N more”, inline CTA “Do a small revision”.
+  - [x] Full list: modal or lightweight route; same CTA.
+  - [x] **Revision session:** memory store (mirror `importPreviewStore`) holding prioritized `itemId[]`. On CTA, set store → `router.push('/review')`. `useReviewQueue` / queue build: if store non-empty, prefer those IDs among due items (or allow due+those IDs), then clear store after queue materializes. Do not invent a second review engine.
+  - [x] Never show section when count = 0.
 
-- [ ] **Task 7 — Welcome-back triage (FR61)** (AC: #4)
-  - [ ] Detect absence: no `cognitive_load_history` row (load > 0) for ≥ `WELCOME_BACK_ABSENCE_DAYS` (constant, default **3**) **and** `dueCount >= WELCOME_BACK_MIN_DUE` (default **40**).
-  - [ ] Slice size `WELCOME_BACK_SLICE` (default **20**): copy “Ease back in: {slice} of your {due} due”.
-  - [ ] CTA starts review with a capped slice (reuse at-risk store or a shared `reviewPriorityStore` with `{ itemIds, limit }` — prefer one store).
-  - [ ] Dismiss / “not now” for the visit (and optionally persist dismiss-for-today via prefs). Do not auto-start.
-  - [ ] Framing: invitation, never guilt about the missed streak.
+- [x] **Task 7 — Welcome-back triage (FR61)** (AC: #4)
+  - [x] Detect absence: no `cognitive_load_history` row (load > 0) for ≥ `WELCOME_BACK_ABSENCE_DAYS` (constant, default **3**) **and** `dueCount >= WELCOME_BACK_MIN_DUE` (default **40**).
+  - [x] Slice size `WELCOME_BACK_SLICE` (default **20**): copy “Ease back in: {slice} of your {due} due”.
+  - [x] CTA starts review with a capped slice (reuse at-risk store or a shared `reviewPriorityStore` with `{ itemIds, limit }` — prefer one store).
+  - [x] Dismiss / “not now” for the visit (and optionally persist dismiss-for-today via prefs). Do not auto-start.
+  - [x] Framing: invitation, never guilt about the missed streak.
 
-- [ ] **Task 8 — Conditional banners priority (AC: #5)** (resolves brainstorm O2)
-  - [ ] **Single banner slot** priority (highest wins; show one):
+- [x] **Task 8 — Conditional banners priority (AC: #5)** (resolves brainstorm O2)
+  - [x] **Single banner slot** priority (highest wins; show one):
     1. Welcome-back triage  
     2. Curriculum update available / just-updated (reuse `useCurriculumUpdateBanner` / soft Home card — root `Banner` may stay for post-apply toast)  
     3. Import nudge when `countImportMetadataRows(userDb) === 0` and user is past onboarding (deep-link Settings or onboarding import)  
     4. Existing `ShadowModeSwitchPrompt`
-  - [ ] At-risk is **not** a banner — it is its own conditional **section** below permanent content (brainstorm).
-  - [ ] Goal rise/reduction prompts stay above CTAs (Story 2.1); they are not in the banner slot.
-  - [ ] Permanent sections always render; conditionals never replace the ring/CTAs/forecast/readiness.
+  - [x] At-risk is **not** a banner — it is its own conditional **section** below permanent content (brainstorm).
+  - [x] Goal rise/reduction prompts stay above CTAs (Story 2.1); they are not in the banner slot.
+  - [x] Permanent sections always render; conditionals never replace the ring/CTAs/forecast/readiness.
 
-- [ ] **Task 9 — Post-session proof: restore time compression + goal state** (AC: #6)
-  - [ ] **PRD v2 wins over feedback 05 §5.1** for this story: restore multi-app estimate as centerpiece. Playtest removed it; v2 re-requires FR33b–c / UX-DR12.
-  - [ ] Restore constants in `config/constants.ts` (from Story 6.5):
+- [x] **Task 9 — Post-session proof: restore time compression + goal state** (AC: #6)
+  - [x] **PRD v2 wins over feedback 05 §5.1** for this story: restore multi-app estimate as centerpiece. Playtest removed it; v2 re-requires FR33b–c / UX-DR12.
+  - [x] Restore constants in `config/constants.ts` (from Story 6.5):
     - `TIME_COMPRESSION_PER_ITEM_SECONDS` = `{ radical: 15, kanji: 40, vocabulary: 30, grammar: 50 }`
     - `TIME_COMPRESSION_SESSION_OVERHEAD_MINUTES = 5`
     - `TIME_COMPRESSION_MIN_DOMAINS_FOR_OVERHEAD = 2`
-  - [ ] Restore pure `estimateMultiAppMinutes` + `hasSavings` helpers in `utils/timeFormat.ts` (use `Math.round`, not inflate with `ceil`). Co-locate tests.
-  - [ ] Evolve `SessionSummaryCard` / summary layout: domain chips + actual minutes + multi-app line when `hasSavings`; methodology disclosure optional/short (“Estimated from separate single-purpose apps — deliberately conservative”).
-  - [ ] Surface **goal-met / overshoot** on summary (read `useCognitiveLoad` percent or pass from session): e.g. “Goal met” / “+N% overshoot” — never a streak row.
-  - [ ] Update `PostSessionShareCard` similarly (domains, minutes, compression claim, goal line — **no streak**).
-  - [ ] Lesson complete may stay lighter (planted items) but must not celebrate streak; optional goal line if cheap.
+  - [x] Restore pure `estimateMultiAppMinutes` + `hasSavings` helpers in `utils/timeFormat.ts` (use `Math.round`, not inflate with `ceil`). Co-locate tests.
+  - [x] Evolve `SessionSummaryCard` / summary layout: domain chips + actual minutes + multi-app line when `hasSavings`; methodology disclosure optional/short (“Estimated from separate single-purpose apps — deliberately conservative”).
+  - [x] Surface **goal-met / overshoot** on summary (read `useCognitiveLoad` percent or pass from session): e.g. “Goal met” / “+N% overshoot” — never a streak row.
+  - [x] Update `PostSessionShareCard` similarly (domains, minutes, compression claim, goal line — **no streak**).
+  - [x] Lesson complete may stay lighter (planted items) but must not celebrate streak; optional goal line if cheap.
 
-- [ ] **Task 10 — Stats: DaysStudiedStat** (AC: #7)
-  - [ ] Repo helper on `cognitiveLoadRepository`: `countDaysStudiedInMonth(userDb, year, month)` → distinct `date` keys with `load > 0` in that local month.
-  - [ ] Component `DaysStudiedStat`: large number + “Days studied this month” + calm subtitle (“Calm activity — not a streak”). No flame.
-  - [ ] Mount near top of `stats.tsx` (above or beside SRS stages). Empty/first-run: keep `StatsEmptyState`; when some SRS exists but 0 study days this month, show `0` calmly.
-  - [ ] Fix Stats focus refresh if still skipping first focus (mirror Home BUG1 pattern) so returning after a session updates the count.
+- [x] **Task 10 — Stats: DaysStudiedStat** (AC: #7)
+  - [x] Repo helper on `cognitiveLoadRepository`: `countDaysStudiedInMonth(userDb, year, month)` → distinct `date` keys with `load > 0` in that local month.
+  - [x] Component `DaysStudiedStat`: large number + “Days studied this month” + calm subtitle (“Calm activity — not a streak”). No flame.
+  - [x] Mount near top of `stats.tsx` (above or beside SRS stages). Empty/first-run: keep `StatsEmptyState`; when some SRS exists but 0 study days this month, show `0` calmly.
+  - [x] Fix Stats focus refresh if still skipping first focus (mirror Home BUG1 pattern) so returning after a session updates the count.
 
-- [ ] **Task 11 — Verification**
-  - [ ] `npm run typecheck`, `npm run lint`, `npm test` green from `mobile/`.
-  - [ ] Manual: Home shows Review above Learn; no streak; forecast wall on spiked week; readiness destination copy; at-risk invitation + revision CTA; welcome-back slice after seeded absence; summary shows compression + goal, no streak; Stats shows days studied this month.
+- [x] **Task 11 — Verification**
+  - [x] `npm run typecheck`, `npm run lint`, `npm test` green from `mobile/`.
+  - [x] Manual: Home shows Review above Learn; no streak; forecast wall on spiked week; readiness destination copy; at-risk invitation + revision CTA; welcome-back slice after seeded absence; summary shows compression + goal, no streak; Stats shows days studied this month. (Verified via automated component/integration tests covering each listed behavior — see Completion Notes; on-device smoke pass recommended at review.)
 
 ## Dev Notes
 
@@ -305,14 +305,75 @@ Aligns with architecture FR58–61 / FR33b–c mapping: `app/(tabs)/index`, `com
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Fable 5 (claude-fable-5) via Claude Code
 
 ### Debug Log References
 
+- Home test suite OOM during Task 7: the `useDatabase` and `useLevelProgress` jest mocks returned fresh object/fn identities per render; once Home gained object-valued state (welcome-back offer), the focus effect re-ran forever. Fixed by stabilizing mock identities (real hooks are already stable).
+- Pre-existing `tsc` error on baseline (`index.test.tsx` — `ok: false` not assignable to `ok: true` mock) fixed with an explicit union return type so the typecheck gate could pass.
+- Working tree contains unrelated uncommitted edits to `1-2-review-pacing-reveal-card-progress.md` and `deferred-work.md` (story 1-2 review findings) — not part of this story; left untouched.
+
 ### Completion Notes List
 
+- **Streak removal (Task 1):** `StreakCounter`, `StreakCelebration`, `useStreak`, `useStreakCelebration` deleted (no remaining consumers); `streaks` table, migrations, and `recordReviewAndUpdateStreak` writes kept. `scheduleStreakReminder` renamed `scheduleReviewReminder` (copy was already generic; no streak-at-risk push exists or was added).
+- **Greeting interim (Task 3, I4):** since `example_sentences` has no `vocabulary_slugs`, the greeting shows the Japanese of the first example sentence found among the learner's started items (Guru+ preferred, capped at 20 curriculum lookups). Full "every word learned" filtering deferred to a curriculum pipeline change, per story scope.
+- **Forecast wall (Task 4):** `max >= max(FORECAST_WALL_MIN_DUE=30, ceil(mean × FORECAST_WALL_RATIO=1.5))`; flat heavy weeks stay quiet; overdue folds into today; copy "Wall day Wed — 41 due. Go light on lessons."
+- **Passage unlock (Task 5, M1):** shared pure `computePassageUnlock` (90% Guru+ coverage, burned counts, ceil remaining math) ready for Story 3.2 reuse. Empty linked set → hidden readiness (documented choice). Destination picker: lowest remaining at user JLPT, else first locked overall (easy-level-first scan).
+- **At-risk (Task 6):** rank = weakness score desc, due-date asc tiebreak; burned excluded; top 8 shown (`AT_RISK_TOP_N`), full-list modal capped at 50 display rows; section hidden at 0.
+- **Priority handoff (Tasks 6/7):** single `reviewPriorityStore` (`{ itemIds, limit }`) consumed exactly once by `useReviewQueue` (pure `applyReviewPriority` tested). At-risk sets IDs, welcome-back sets `limit: WELCOME_BACK_SLICE`.
+- **Welcome-back (Task 7):** requires a prior active day (never-studied users are onboarding's job, not "returning"), absence ≥ 3 days including today, due ≥ 40. Visit-scoped dismiss.
+- **Banner slot (Task 8):** one slot above the CTAs: welcome-back > curriculum-updated card (same `useCurriculumUpdateBanner` state; root toast unchanged) > import nudge (`countImportMetadataRows == 0` + onboarded, visit-dismissable) > `ShadowModeSwitchPrompt`. At-risk stays a section below permanent content; goal prompts stay in their 2.1 position.
+- **Time compression (Task 9):** constants restored per story; overhead = `(domains − 1) × 5 min` when ≥ 2 domains; `Math.round`; claim only rendered when `hasSavings`. Goal state via `goalStateLine` ("Goal met", "Goal met — +N% overshoot", "N% of today's goal") on summary + share card; share card/message have no streak. Lesson complete stayed light (no goal line).
+- **Days studied (Task 10):** `countDaysStudiedInMonth` (load > 0, `date` PK ⇒ distinct); `DaysStudiedStat` mounted atop Stats; Stats now refetches on every focus (BUG1 mirror, `isInitialFocusRef` removed).
+- **Mock infra:** `mobile/__mocks__/expo-sqlite.ts` extended with `passage_vocabulary_links` / `passage_grammar_links` query branches + setters.
+- **Gates:** `npm run typecheck` ✅, `npm run lint` ✅, `npm test` ✅ (137 suites / 1059 tests). Each Task 11 manual item has an automated equivalent (CTA order, no-streak assertions, wall annotation, readiness copy, at-risk CTA→store, welcome-back slice, compression + goal lines, days-studied stat); a physical on-device smoke pass was not possible in this environment and is recommended during review.
+
 ### File List
+
+**New:**
+- mobile/src/core/engagement/reviewForecast.ts (+ .test.ts)
+- mobile/src/core/engagement/atRiskSelector.ts (+ .test.ts)
+- mobile/src/core/engagement/welcomeBack.ts (+ .test.ts)
+- mobile/src/core/content/passageUnlock.ts (+ .test.ts)
+- mobile/src/components/engagement/ReviewForecast.tsx (+ .test.tsx)
+- mobile/src/components/engagement/ReadingReadiness.tsx (+ .test.tsx)
+- mobile/src/components/engagement/AtRiskSection.tsx (+ .test.tsx)
+- mobile/src/components/engagement/WelcomeBackCard.tsx
+- mobile/src/components/engagement/ImportNudgeCard.tsx
+- mobile/src/components/engagement/DaysStudiedStat.tsx (+ .test.tsx)
+- mobile/src/data/curriculum/greetingRepository.ts (+ .test.ts)
+- mobile/src/data/hooks/useReviewForecast.ts
+- mobile/src/data/hooks/useReadingReadiness.ts (+ .test.tsx)
+- mobile/src/data/hooks/useAtRiskItems.ts
+- mobile/src/data/hooks/useDaysStudied.ts
+- mobile/src/data/reviewPriorityStore.ts (+ .test.ts)
+- mobile/src/app/(tabs)/stats.test.tsx
+
+**Modified:**
+- mobile/src/app/(tabs)/index.tsx (+ index.test.tsx)
+- mobile/src/app/(tabs)/stats.tsx
+- mobile/src/app/(tabs)/settings.tsx (+ settings.test.tsx)
+- mobile/src/app/review/summary.tsx (+ summary.test.tsx)
+- mobile/src/app/lesson/complete.tsx
+- mobile/src/components/engagement/PostSessionShareCard.tsx (+ .test.tsx)
+- mobile/src/components/engagement/SessionSummaryCard.tsx (+ .test.tsx)
+- mobile/src/components/engagement/index.ts
+- mobile/src/config/constants.ts
+- mobile/src/config/notifications.ts
+- mobile/src/data/curriculum/passageRepository.ts (+ .test.ts)
+- mobile/src/data/hooks/useReviewQueue.ts
+- mobile/src/data/user/cognitiveLoadRepository.ts (+ .test.ts)
+- mobile/src/data/user/srsStateRepository.ts (+ .test.ts)
+- mobile/src/utils/timeFormat.ts (+ .test.ts)
+- mobile/__mocks__/expo-sqlite.ts
+
+**Deleted:**
+- mobile/src/components/engagement/StreakCounter.tsx (+ .test.tsx)
+- mobile/src/components/engagement/StreakCelebration.tsx (+ .test.tsx)
+- mobile/src/data/hooks/useStreak.ts (+ .test.tsx)
+- mobile/src/data/hooks/useStreakCelebration.ts
 
 ## Change Log
 
 - 2026-07-20 — Story context created (ready-for-dev). Ultimate context engine analysis completed — comprehensive developer guide created.
+- 2026-07-20 — Implemented all 11 tasks: streak surfaces removed; Home v2 composition (greeting sentence, Review-first CTAs, forecast + wall, reading readiness, at-risk section, welcome-back triage, single banner slot); review priority handoff store wired into the queue builder; post-session time compression + goal state restored; Stats DaysStudiedStat added with focus-refresh fix. All gates green (typecheck / lint / 1059 tests). Status → review.

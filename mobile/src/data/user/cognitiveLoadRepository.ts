@@ -59,6 +59,44 @@ export function getActiveDayLoadsInRange(
   return rows.map((row) => row.load);
 }
 
+/**
+ * Most recent active day (load > 0) strictly before `beforeDateExclusive`
+ * (YYYY-MM-DD), or null when the learner has never studied. Feeds
+ * welcome-back absence detection (FR61).
+ */
+export function getLastActiveDate(
+  userDb: SQLiteDatabase,
+  beforeDateExclusive: string,
+): string | null {
+  const row = userDb.getFirstSync<{ date: string }>(
+    'SELECT date FROM cognitive_load_history WHERE date < ? AND load > 0 ORDER BY date DESC LIMIT ?',
+    beforeDateExclusive,
+    1,
+  );
+  return row?.date ?? null;
+}
+
+/**
+ * Distinct active days (load > 0) in the given local month (UX-DR20).
+ * `month` is 1-based. `date` is the primary key, so rows are already distinct.
+ */
+export function countDaysStudiedInMonth(
+  userDb: SQLiteDatabase,
+  year: number,
+  month: number,
+): number {
+  const monthPrefix = `${year}-${String(month).padStart(2, '0')}`;
+  const startInclusive = `${monthPrefix}-01`;
+  const nextMonth = month === 12 ? `${year + 1}-01-01` : `${year}-${String(month + 1).padStart(2, '0')}-01`;
+
+  const rows = userDb.getAllSync<{ date: string }>(
+    'SELECT date FROM cognitive_load_history WHERE date >= ? AND date < ? AND load > 0',
+    startInclusive,
+    nextMonth,
+  );
+  return rows.length;
+}
+
 export function addDailyLoad(
   userDb: SQLiteDatabase,
   params: { date: string; increment: number; threshold: number },

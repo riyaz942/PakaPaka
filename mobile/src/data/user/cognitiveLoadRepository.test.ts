@@ -6,7 +6,9 @@ import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitiv
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   addDailyLoad,
+  countDaysStudiedInMonth,
   getDailyLoad,
+  getLastActiveDate,
   getRecentDailyLoads,
   todayKey,
 } from '@/data/user/cognitiveLoadRepository';
@@ -63,6 +65,42 @@ describe('cognitiveLoadRepository', () => {
 });
 
 describe('todayKey', () => {
+  it('getLastActiveDate returns the most recent active day before the cutoff, or null', async () => {
+    __mockResetSqlite();
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db as never, [migration008CognitiveLoadHistory]);
+
+    expect(getLastActiveDate(db as never, '2026-07-21')).toBeNull();
+
+    addDailyLoad(db as never, { date: '2026-07-10', increment: 12, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-07-15', increment: 8, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-07-20', increment: 5, threshold: 30 });
+
+    expect(getLastActiveDate(db as never, '2026-07-20')).toBe('2026-07-15');
+    expect(getLastActiveDate(db as never, '2026-07-21')).toBe('2026-07-20');
+  });
+
+  it('countDaysStudiedInMonth counts only active days inside the month, including December rollover', async () => {
+    __mockResetSqlite();
+    const db = await openDatabaseAsync('user.db');
+    runMigrations(db as never, [migration008CognitiveLoadHistory]);
+
+    expect(countDaysStudiedInMonth(db as never, 2026, 7)).toBe(0);
+
+    addDailyLoad(db as never, { date: '2026-06-30', increment: 5, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-07-01', increment: 5, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-07-15', increment: 5, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-07-31', increment: 5, threshold: 30 });
+    addDailyLoad(db as never, { date: '2026-08-01', increment: 5, threshold: 30 });
+    // A zero-load row is a rest day, not a study day.
+    addDailyLoad(db as never, { date: '2026-07-20', increment: 0, threshold: 30 });
+
+    expect(countDaysStudiedInMonth(db as never, 2026, 7)).toBe(3);
+
+    addDailyLoad(db as never, { date: '2026-12-31', increment: 5, threshold: 30 });
+    expect(countDaysStudiedInMonth(db as never, 2026, 12)).toBe(1);
+  });
+
   it('returns local YYYY-MM-DD', () => {
     const key = todayKey(new Date(2026, 5, 28, 23, 30));
     expect(key).toBe('2026-06-28');

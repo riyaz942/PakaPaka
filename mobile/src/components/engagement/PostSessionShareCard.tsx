@@ -5,7 +5,10 @@ import type { DomainCounts } from '@/utils/timeFormat';
 type PostSessionShareCardProps = {
   domainCounts: DomainCounts;
   actualMinutes: number;
-  currentStreak: number;
+  /** Multi-app estimate (FR33b) — pass only when it beats actualMinutes. */
+  estimatedMinutes?: number | null;
+  /** Goal state line, e.g. "Goal met — +20% overshoot"; never a streak. */
+  goalLine?: string | null;
   sessionDate?: Date;
 };
 
@@ -20,7 +23,8 @@ function formatSessionDate(date: Date): string {
 export function PostSessionShareCard({
   domainCounts,
   actualMinutes,
-  currentStreak,
+  estimatedMinutes = null,
+  goalLine = null,
   sessionDate = new Date(),
 }: PostSessionShareCardProps) {
   const domainParts: string[] = [];
@@ -38,13 +42,18 @@ export function PostSessionShareCard({
 
       <Text className="mt-space-md text-body text-primary">{domainParts.join(' · ') || 'No items reviewed'}</Text>
       <Text className="mt-space-sm text-body-lg font-semibold text-primary">{`${actualMinutes} min studied`}</Text>
-      <Text className="mt-space-sm text-body text-secondary">{`${currentStreak} day streak`}</Text>
+      {estimatedMinutes !== null ? (
+        <Text className="mt-space-xs text-body text-secondary">{`~${estimatedMinutes} min in separate apps`}</Text>
+      ) : null}
+      {goalLine !== null ? (
+        <Text className="mt-space-xs text-body text-secondary">{goalLine}</Text>
+      ) : null}
     </View>
   );
 }
 
 export function buildShareMessage(props: PostSessionShareCardProps): string {
-  const { domainCounts, actualMinutes, currentStreak } = props;
+  const { domainCounts, actualMinutes, estimatedMinutes = null, goalLine = null } = props;
   const parts: string[] = [];
 
   if (domainCounts.kanji > 0) parts.push(`Kanji: ${domainCounts.kanji}`);
@@ -53,7 +62,12 @@ export function buildShareMessage(props: PostSessionShareCardProps): string {
   if (domainCounts.radical > 0) parts.push(`Radical: ${domainCounts.radical}`);
 
   const domainLine = parts.length > 0 ? parts.join(', ') : 'No items reviewed';
-  const timeLine = `${actualMinutes} min studied`;
+  const timeLine =
+    estimatedMinutes !== null
+      ? `${actualMinutes} min studied (~${estimatedMinutes} min in separate apps)`
+      : `${actualMinutes} min studied`;
 
-  return `Japanese Learning session complete!\n${domainLine}\n${timeLine}\n${currentStreak} day streak`;
+  const lines = [`Japanese Learning session complete!`, domainLine, timeLine];
+  if (goalLine !== null) lines.push(goalLine);
+  return lines.join('\n');
 }

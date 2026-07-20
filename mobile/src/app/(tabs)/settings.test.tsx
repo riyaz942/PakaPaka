@@ -72,7 +72,7 @@ jest.mock('@/data/user/preferencesRepository', () => ({
 
 jest.mock('@/config/notifications', () => ({
   requestNotificationPermission: jest.fn(),
-  scheduleStreakReminder: jest.fn(),
+  scheduleReviewReminder: jest.fn(),
   cancelAllNotifications: jest.fn(),
 }));
 

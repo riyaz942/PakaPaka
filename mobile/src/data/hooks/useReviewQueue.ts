@@ -36,6 +36,11 @@ import { getBoosts } from '@/data/user/relatedItemBoostRepository';
 import { getWeaknessBiasEnabled } from '@/data/user/preferencesRepository';
 import { getWeaknessScores } from '@/data/user/weaknessRepository';
 import {
+  applyReviewPriority,
+  clearReviewPriority,
+  getReviewPriority,
+} from '@/data/reviewPriorityStore';
+import {
   getDueSrsStates,
   getSrsStatesForItems,
   seedMissingSrsStatesForInProgress,
@@ -170,7 +175,16 @@ export function useReviewQueue(): UseReviewQueueResult {
       }
 
       const now = new Date();
-      const dueSrsStates = getDueSrsStates(userDb, now, QUEUE_FETCH_LIMIT);
+      let dueSrsStates = getDueSrsStates(userDb, now, QUEUE_FETCH_LIMIT);
+
+      // Home triage handoff (FR59/FR61): a one-shot priority hint narrows the
+      // due set to the requested items and/or caps the session size. Consumed
+      // exactly once — backing out drops it rather than replaying.
+      const priority = getReviewPriority();
+      if (priority) {
+        clearReviewPriority();
+        dueSrsStates = applyReviewPriority(dueSrsStates, priority);
+      }
 
       if (dueSrsStates.length === 0) {
         const elapsed = Date.now() - t0;

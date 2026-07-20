@@ -101,6 +101,26 @@ export function getDueSrsStates(
   return rows.map(mapRowToState);
 }
 
+/**
+ * Due-date strings only (non-burned, due on or before untilIso) — cheap Home
+ * forecast read that avoids materializing full SRS rows on every focus.
+ */
+export function getUpcomingDueDates(
+  userDb: SQLiteDatabase,
+  untilIso: string,
+  limit = 2000,
+): string[] {
+  const rows = userDb.getAllSync<{ due_date: string }>(
+    `SELECT due_date FROM srs_states
+     WHERE due_date <= ? AND is_burned = 0
+     ORDER BY due_date ASC
+     LIMIT ?`,
+    untilIso,
+    limit,
+  );
+  return rows.map((row) => row.due_date);
+}
+
 export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | null {
   const row = userDb.getFirstSync<SrsStateRow>(
     `SELECT item_id, stability, difficulty, due_date, fsrs_state, reps, lapses, learning_steps, is_burned, srs_stage_label, last_reviewed_at, updated_at

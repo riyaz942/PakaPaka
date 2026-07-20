@@ -6,16 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
-import { StreakCelebration } from '@/components/engagement';
 import { MaxContentWidth } from '@/constants/theme';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
-import { useStreakCelebration } from '@/data/hooks/useStreakCelebration';
 
 export default function LessonCompleteScreen() {
   const params = useLocalSearchParams<{ count?: string }>();
   const count = Math.max(0, Number(params.count) || 0);
   const { reducedMotion } = useReducedMotion();
-  const { shouldCelebrate, currentStreak } = useStreakCelebration();
 
   const emblem = (
     <View className="h-24 w-24 items-center justify-center rounded-radius-full bg-feedback-correct/15">
@@ -29,9 +26,7 @@ export default function LessonCompleteScreen() {
         className="w-full flex-1 self-center px-space-lg"
         style={{ maxWidth: MaxContentWidth }}>
         <View className="flex-1 items-center justify-center gap-space-md">
-          {shouldCelebrate ? (
-            <StreakCelebration streakCount={currentStreak} />
-          ) : reducedMotion ? (
+          {reducedMotion ? (
             emblem
           ) : (
             <Animated.View entering={ZoomIn.springify().damping(12)}>{emblem}</Animated.View>
