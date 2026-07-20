@@ -4,7 +4,7 @@
 # project_key: NOKEY
 # tracking_system: file-system
 # story_location: _bmad-output/implementation-artifacts
-# note: 3-1 story context created; epic-3 → in-progress
+# note: 3-2 story context created (passage unlock / reader / practice)
 
 # STATUS DEFINITIONS:
 # ==================
@@ -54,8 +54,8 @@ development_status:
   epic-2-retrospective: optional
 
   epic-3: in-progress
-  3-1-unified-browse-list-search-filters: review
-  3-2-passage-unlock-reader-practice-state: backlog
+  3-1-unified-browse-list-search-filters: done
+  3-2-passage-unlock-reader-practice-state: review
   epic-3-retrospective: optional
 
   epic-4: backlog

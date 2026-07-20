@@ -9,6 +9,7 @@ import {
 } from '../../../__mocks__/expo-sqlite';
 
 import {
+  getAllPassageLinkedItemIds,
   getPassageById,
   getPassageLinkedItemIds,
   getPassageQuestions,
@@ -103,6 +104,8 @@ describe('passageRepository', () => {
       title: '自己紹介',
       body: '私は学生です。',
       bodyFurigana: null,
+      summaryJa: null,
+      summaryEn: null,
       jlptLevel: 'N5',
       sortOrder: 1,
     });
@@ -150,4 +153,45 @@ describe('passageRepository', () => {
     expect(getPassageLinkedItemIds(db, '1')).toEqual(['10', '11', '30']);
     expect(getPassageLinkedItemIds(db, '3')).toEqual([]);
   });
+
+  it('batches linked item ids for every passage in one pass', async () => {
+    const db = await seedPassages();
+    __mockSetPassageVocabularyLinks('curriculum.db.test', [
+      { passage_id: 1, vocabulary_item_id: 10 },
+      { passage_id: 1, vocabulary_item_id: 11 },
+      { passage_id: 2, vocabulary_item_id: 12 },
+    ]);
+    __mockSetPassageGrammarLinks('curriculum.db.test', [
+      { passage_id: 1, grammar_item_id: 30 },
+      { passage_id: 2, grammar_item_id: 31 },
+    ]);
+
+    const byPassage = getAllPassageLinkedItemIds(db);
+
+    expect(byPassage.get('1')).toEqual(['10', '11', '30']);
+    expect(byPassage.get('2')).toEqual(['12', '31']);
+    // Passage 3 has no links at all and is simply absent from the map.
+    expect(byPassage.has('3')).toBe(false);
+  });
+
+  it('exposes passage summaries alongside the body', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetReadingPassages('curriculum.db.test', [
+      {
+        id: 1,
+        jlpt_level: 'N5',
+        title: '自己紹介',
+        body: '私は学生です。',
+        summary_ja: '学生の自己紹介。',
+        summary_en: 'A student introduces themselves.',
+        sort_order: 1,
+      },
+    ]);
+
+    const passage = getPassageById(db, '1');
+
+    expect(passage?.summaryJa).toBe('学生の自己紹介。');
+    expect(passage?.summaryEn).toBe('A student introduces themselves.');
+  });
+
 });

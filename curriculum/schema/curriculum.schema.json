@@ -275,6 +275,16 @@
         "sort_order": { "type": "integer", "minimum": 0 }
       }
     },
+    "passageWordSpan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vocabulary_slug", "start", "end"],
+      "properties": {
+        "vocabulary_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 1 }
+      }
+    },
     "readingPassage": {
       "type": "object",
       "additionalProperties": false,
@@ -286,6 +296,12 @@
         "body": { "type": "string", "minLength": 1 },
         "body_furigana": { "type": "string", "minLength": 1 },
         "english_translation": { "type": "string", "minLength": 1 },
+        "summary_ja": { "type": "string", "minLength": 1 },
+        "summary_en": { "type": "string", "minLength": 1 },
+        "word_spans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/passageWordSpan" }
+        },
         "grammar_slugs": {
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },

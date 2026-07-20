@@ -956,6 +956,17 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM passage_word_spans/i.test(trimmed)) {
+    let rows = [...(state.tables.get('passage_word_spans') ?? [])];
+    if (/WHERE passage_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.passage_id === params[0]);
+    }
+    if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+      rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+    }
+    return rows;
+  }
+
   if (/FROM passage_questions/i.test(trimmed)) {
     let rows = [...(state.tables.get('passage_questions') ?? [])];
     if (/WHERE passage_id = \?/i.test(trimmed)) {
@@ -972,6 +983,16 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
     if (/WHERE id = \?/i.test(trimmed)) {
       return rows.filter((row) => row.id === params[0]);
+    }
+
+    if (/WHERE id IN/i.test(trimmed)) {
+      // Honour the IN list: ignoring it would silently return the whole table
+      // and make id-filtered reads look correct when they are not.
+      rows = rows.filter((row) => params.includes(row.id as never));
+      if (/ORDER BY sort_order ASC/i.test(trimmed)) {
+        rows.sort((left, right) => Number(left.sort_order) - Number(right.sort_order));
+      }
+      return rows;
     }
 
     if (/item_type = 'radical'/i.test(trimmed) && /jlpt_level = \?/i.test(trimmed)) {
@@ -1188,6 +1209,11 @@ export function __mockSetPassageVocabularyLinks(databaseName: string, rows: Row[
 export function __mockSetPassageGrammarLinks(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('passage_grammar_links', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetPassageWordSpans(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('passage_word_spans', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetPassageQuestions(databaseName: string, rows: Row[]) {

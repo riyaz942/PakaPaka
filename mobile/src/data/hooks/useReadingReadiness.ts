@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { computePassageUnlock } from '@/core/content/passageUnlock';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
-  getPassageLinkedItemIds,
+  getAllPassageLinkedItemIds,
   listAllPassages,
 } from '@/data/curriculum/passageRepository';
 import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
@@ -44,18 +44,27 @@ export function useReadingReadiness(): UseReadingReadinessResult {
       const level = getStartingJlptLevel(userDb);
       const passages = listAllPassages(curriculumDb);
 
+      // Batched link + SRS reads: one pass over each link table and a single
+      // SRS query for the union of linked ids, rather than three queries per
+      // passage (the N+1 deferred from 2.2). Selection semantics below are
+      // unchanged.
+      const linkedByPassageId = getAllPassageLinkedItemIds(curriculumDb);
+      const allLinkedIds = new Set<string>();
+      for (const linkedIds of linkedByPassageId.values()) {
+        for (const itemId of linkedIds) allLinkedIds.add(itemId);
+      }
+
+      const stageByItemId = new Map<string, SRSStageLabel>();
+      for (const [itemId, state] of getSrsStatesForItems(userDb, [...allLinkedIds])) {
+        stageByItemId.set(itemId, state.srsStageLabel);
+      }
+
       type LockedCandidate = ReadingReadinessTarget & { atUserLevel: boolean };
       const locked: LockedCandidate[] = [];
 
       for (const passage of passages) {
-        const linkedIds = getPassageLinkedItemIds(curriculumDb, passage.id);
+        const linkedIds = linkedByPassageId.get(passage.id) ?? [];
         if (linkedIds.length === 0) continue; // unlinked passages never gate readiness
-
-        const srsStates = getSrsStatesForItems(userDb, linkedIds);
-        const stageByItemId = new Map<string, SRSStageLabel>();
-        for (const [itemId, state] of srsStates) {
-          stageByItemId.set(itemId, state.srsStageLabel);
-        }
 
         const status = computePassageUnlock(linkedIds, stageByItemId);
         if (status.unlocked) continue;

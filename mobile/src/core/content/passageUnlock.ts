@@ -13,7 +13,8 @@ export type PassageUnlockStatus = {
   itemsRemainingToUnlock: number;
 };
 
-const GURU_PLUS: ReadonlySet<SRSStageLabel> = new Set([
+/** Stages that count as "covered" for passage unlock (FR68). */
+export const GURU_PLUS: ReadonlySet<SRSStageLabel> = new Set([
   'guru',
   'master',
   'enlightened',

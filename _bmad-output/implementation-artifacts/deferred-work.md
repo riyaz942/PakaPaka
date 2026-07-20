@@ -124,7 +124,7 @@
 ## Deferred from: code review of 2-2-home-triage-post-session-proof-days-studied (2026-07-20)
 
 - **Greeting sentence does up to 20 sequential curriculum lookups on every Home focus** — documented I4 interim (no `vocabulary_slugs` on example sentences); optimize later. [`mobile/src/data/curriculum/greetingRepository.ts`]
-- **`useReadingReadiness` N+1 link/SRS fetches per passage on each Home focus** — correct unlock math; batch/optimize when Story 3.2 reuses `passageUnlock`. [`mobile/src/data/hooks/useReadingReadiness.ts`]
+- ~~**`useReadingReadiness` N+1 link/SRS fetches per passage on each Home focus**~~ — RESOLVED in Story 3.2: `getAllPassageLinkedItemIds` batches both link tables in one pass and a single `getSrsStatesForItems` covers the union of linked ids. Same fix applied to `listPassageUnlockStates`. [`mobile/src/data/hooks/useReadingReadiness.ts`, `mobile/src/data/curriculum/browseRepository.ts`]
 
 ## Deferred from: code review of 3-1-unified-browse-list-search-filters (2026-07-20)
 

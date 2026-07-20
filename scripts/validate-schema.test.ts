@@ -316,6 +316,34 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
+  it('accepts passage summaries and authored word spans', () => {
+    const tempDir = writeTempReadingsDir({
+      title: 'Test',
+      body: 'テストです。',
+      summary_ja: 'テストの話。',
+      summary_en: 'A short test passage.',
+      word_spans: [{ vocabulary_slug: 'ichi-v', start: 0, end: 3 }],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects a word span missing its offsets', () => {
+    const tempDir = writeTempReadingsDir({
+      title: 'Test',
+      body: 'テストです。',
+      word_spans: [{ vocabulary_slug: 'ichi-v', start: 0 }],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('rejects a zero word_count via the schema', () => {
     const tempDir = writeTempReadingsDir({
       title: 'Test',

@@ -27,7 +27,86 @@
           "prompt_furigana": "荷[に]物[もつ]はもう全[ぜん]部[ぶ]片付[かたづ]きましたか。"
         }
       ],
-      "body_furigana": "先[せん]月[げつ]、新[あたら]しいアパートに引[ひ]っ越[こ]しました。前[まえ]の部屋[へや]より広[ひろ]くなったので、家[か]具[ぐ]をたくさん置[お]くことができます。駅[えき]から近[ちか]いし、スーパーも近[ちか]いので、とても便[べん]利[り]です。ただ、まだ荷[に]物[もつ]が全[ぜん]部[ぶ]片付[かたづ]いていません。今[こん]週[しゅう]中[なか]に終[お]わらせるつもりです。"
+      "body_furigana": "先[せん]月[げつ]、新[あたら]しいアパートに引[ひ]っ越[こ]しました。前[まえ]の部屋[へや]より広[ひろ]くなったので、家[か]具[ぐ]をたくさん置[お]くことができます。駅[えき]から近[ちか]いし、スーパーも近[ちか]いので、とても便[べん]利[り]です。ただ、まだ荷[に]物[もつ]が全[ぜん]部[ぶ]片付[かたづ]いていません。今[こん]週[しゅう]中[なか]に終[お]わらせるつもりです。",
+      "english_translation": "Last month I moved into a new flat. It became wider than my previous room, so I can put a lot of furniture in it. It's close to the station and the supermarket is close too, so it's very convenient. It's just that my luggage isn't all tidied away yet. I intend to finish within this week.",
+      "summary_ja": "駅に近い新しいアパートへ引っ越した話。",
+      "summary_en": "Moving into a wider flat near the station — boxes still unpacked.",
+      "grammar_slugs": [
+        "n4-node",
+        "dictionary-koto-ga-dekiru",
+        "naru-become",
+        "n4-teiru-result",
+        "n4-tsumori"
+      ],
+      "vocabulary_slugs": [
+        "atarashii-adj",
+        "benri",
+        "chikai",
+        "heya",
+        "hikkoshi",
+        "nimotsu",
+        "oku",
+        "sengetsu",
+        "suupaa",
+        "takusan"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "sengetsu",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "atarashii-adj",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "vocabulary_slug": "hikkoshi",
+          "start": 11,
+          "end": 15
+        },
+        {
+          "vocabulary_slug": "heya",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "vocabulary_slug": "takusan",
+          "start": 36,
+          "end": 40
+        },
+        {
+          "vocabulary_slug": "oku",
+          "start": 40,
+          "end": 42
+        },
+        {
+          "vocabulary_slug": "chikai",
+          "start": 53,
+          "end": 55
+        },
+        {
+          "vocabulary_slug": "suupaa",
+          "start": 57,
+          "end": 61
+        },
+        {
+          "vocabulary_slug": "chikai",
+          "start": 62,
+          "end": 64
+        },
+        {
+          "vocabulary_slug": "benri",
+          "start": 70,
+          "end": 72
+        },
+        {
+          "vocabulary_slug": "nimotsu",
+          "start": 80,
+          "end": 82
+        }
+      ]
     },
     {
       "title": "アルバイトの面接",
@@ -53,7 +132,57 @@
           "prompt_furigana": "結[けっ]果[か]はどうやって知[し]らされますか。"
         }
       ],
-      "body_furigana": "昨日[きのう]、カフェでアルバイトの面[めん]接[せつ]を受[う]けました。緊[きん]張[ちょう]しましたが、店[てん]長[ちょう]は優[やさ]しく質[しつ]問[もん]してくれました。「いつから働[はたら]けますか」と聞[き]かれたので、「来[らい]週[しゅう]から働[はたら]けます」と答[こた]えました。結[けっ]果[か]は今[こん]週[しゅう]中[なか]に電[でん]話[わ]で知[し]らせてくれるそうです。受[う]かるといいなと思[おも]っています。"
+      "body_furigana": "昨日[きのう]、カフェでアルバイトの面[めん]接[せつ]を受[う]けました。緊[きん]張[ちょう]しましたが、店[てん]長[ちょう]は優[やさ]しく質[しつ]問[もん]してくれました。「いつから働[はたら]けますか」と聞[き]かれたので、「来[らい]週[しゅう]から働[はたら]けます」と答[こた]えました。結[けっ]果[か]は今[こん]週[しゅう]中[なか]に電[でん]話[わ]で知[し]らせてくれるそうです。受[う]かるといいなと思[おも]っています。",
+      "english_translation": "Yesterday I had an interview for a part-time job at a cafe. I was nervous, but the manager asked the questions kindly. I was asked \"When can you start working?\", so I answered \"I can start next week.\" They say they will let me know the result by phone within this week. I hope I get it.",
+      "summary_ja": "カフェのアルバイト面接を受けた話。",
+      "summary_en": "A part-time job interview at a cafe, waiting on the result.",
+      "grammar_slugs": [
+        "n4-potential",
+        "n4-passive",
+        "n4-souda-hearsay",
+        "n4-node",
+        "moraru-ageru-kureru"
+      ],
+      "vocabulary_slugs": [
+        "denwa",
+        "kekka",
+        "kinou",
+        "kotae",
+        "raishuu",
+        "shitsumon"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kinou",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "shitsumon",
+          "start": 36,
+          "end": 38
+        },
+        {
+          "vocabulary_slug": "raishuu",
+          "start": 66,
+          "end": 68
+        },
+        {
+          "vocabulary_slug": "kotae",
+          "start": 76,
+          "end": 78
+        },
+        {
+          "vocabulary_slug": "kekka",
+          "start": 82,
+          "end": 84
+        },
+        {
+          "vocabulary_slug": "denwa",
+          "start": 89,
+          "end": 91
+        }
+      ]
     },
     {
       "title": "病院に行った話",
@@ -80,7 +209,75 @@
           "prompt_furigana": "今[いま]の体[たい]調[ちょう]はどうですか。"
         }
       ],
-      "body_furigana": "先[せん]週[しゅう]、風邪[かぜ]をひいて熱[ねつ]が出[で]たので、病[びょう]院[いん]に行[い]きました。医[い]者[しゃ]に「三[さん]日[ひ]分[ふん]の薬[くすり]を出[だ]しますから、ちゃんと飲[の]んでください」と言[い]われました。薬[くすり]を飲[の]んで、家[いえ]でゆっくり休[やす]んだら、だんだん元[げん]気[き]になりました。今[いま]はもう治[なお]って、普[ふ]通[つう]に仕[し]事[ごと]をしています。"
+      "body_furigana": "先[せん]週[しゅう]、風邪[かぜ]をひいて熱[ねつ]が出[で]たので、病[びょう]院[いん]に行[い]きました。医[い]者[しゃ]に「三[さん]日[ひ]分[ふん]の薬[くすり]を出[だ]しますから、ちゃんと飲[の]んでください」と言[い]われました。薬[くすり]を飲[の]んで、家[いえ]でゆっくり休[やす]んだら、だんだん元[げん]気[き]になりました。今[いま]はもう治[なお]って、普[ふ]通[つう]に仕[し]事[ごと]をしています。",
+      "english_translation": "Last week I caught a cold and had a fever, so I went to the hospital. The doctor told me, \"I'll give you three days' worth of medicine, so please take it properly.\" I took the medicine and rested at home, and I gradually got better. Now I've recovered and I'm working normally.",
+      "summary_ja": "風邪をひいて病院へ行き、治るまでの話。",
+      "summary_en": "A cold, a doctor's visit, three days of medicine, and recovery.",
+      "grammar_slugs": [
+        "n4-node",
+        "n4-tara",
+        "n4-passive",
+        "te-kudasai",
+        "kara-because"
+      ],
+      "vocabulary_slugs": [
+        "byouin",
+        "dandan",
+        "futsuu",
+        "genki",
+        "isha",
+        "kaze-cold",
+        "senshuu",
+        "shigoto",
+        "yukkuri"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "senshuu",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "kaze-cold",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "vocabulary_slug": "byouin",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "vocabulary_slug": "isha",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "vocabulary_slug": "yukkuri",
+          "start": 70,
+          "end": 74
+        },
+        {
+          "vocabulary_slug": "dandan",
+          "start": 79,
+          "end": 83
+        },
+        {
+          "vocabulary_slug": "genki",
+          "start": 83,
+          "end": 85
+        },
+        {
+          "vocabulary_slug": "futsuu",
+          "start": 100,
+          "end": 102
+        },
+        {
+          "vocabulary_slug": "shigoto",
+          "start": 103,
+          "end": 105
+        }
+      ]
     },
     {
       "title": "日本語が上手になった理由",
@@ -107,7 +304,110 @@
           "prompt_furigana": "分[わ]からない言[こと]葉[ば]があったら、どうしますか。"
         }
       ],
-      "body_furigana": "私[わたし]は三[さん]年[ねん]前[まえ]に日本[にほん]語[ご]の勉[べん]強[きょう]を始[はじ]めました。最[さい]初[しょ]は簡[かん]単[たん]な言[こと]葉[ば]しか分[わ]かりませんでしたが、毎[まい]日[にち]ニュースを聞[き]いたり、日本[にほん]人[ひと]の友[とも]達[だち]と話[はな]したりしているうちに、だんだん上手[じょうず]になりました。分[わ]からない言[こと]葉[ば]があったら、すぐ辞[じ]書[しょ]で調[しら]べるようにしています。これからも頑張[がんば]って勉[べん]強[きょう]し続[つづ]けるつもりです。"
+      "body_furigana": "私[わたし]は三[さん]年[ねん]前[まえ]に日本[にほん]語[ご]の勉[べん]強[きょう]を始[はじ]めました。最[さい]初[しょ]は簡[かん]単[たん]な言[こと]葉[ば]しか分[わ]かりませんでしたが、毎[まい]日[にち]ニュースを聞[き]いたり、日本[にほん]人[ひと]の友[とも]達[だち]と話[はな]したりしているうちに、だんだん上手[じょうず]になりました。分[わ]からない言[こと]葉[ば]があったら、すぐ辞[じ]書[しょ]で調[しら]べるようにしています。これからも頑張[がんば]って勉[べん]強[きょう]し続[つづ]けるつもりです。",
+      "english_translation": "I started studying Japanese three years ago. At first I only understood simple words, but while listening to the news every day and talking with Japanese friends, I gradually got better. When there's a word I don't know, I make a point of looking it up in a dictionary right away. I intend to keep working hard at my studies from now on too.",
+      "summary_ja": "毎日の習慣で日本語が上手になった理由。",
+      "summary_en": "Why three years of daily news and conversation paid off.",
+      "grammar_slugs": [
+        "n4-uchi-ni",
+        "n4-tara",
+        "n4-youni-suru",
+        "n4-tsumori",
+        "tari-tari",
+        "naru-become"
+      ],
+      "vocabulary_slugs": [
+        "benkyou",
+        "dandan",
+        "ganbatte",
+        "jisho",
+        "jouzu",
+        "kantan-n4",
+        "kotoba",
+        "mainichi",
+        "nihongo",
+        "nyuusu",
+        "saisho",
+        "tomodachi",
+        "tsuzukeru-v"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "nihongo",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "vocabulary_slug": "benkyou",
+          "start": 10,
+          "end": 12
+        },
+        {
+          "vocabulary_slug": "saisho",
+          "start": 19,
+          "end": 21
+        },
+        {
+          "vocabulary_slug": "kantan-n4",
+          "start": 22,
+          "end": 24
+        },
+        {
+          "vocabulary_slug": "kotoba",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "vocabulary_slug": "mainichi",
+          "start": 40,
+          "end": 42
+        },
+        {
+          "vocabulary_slug": "nyuusu",
+          "start": 42,
+          "end": 46
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 56,
+          "end": 58
+        },
+        {
+          "vocabulary_slug": "dandan",
+          "start": 71,
+          "end": 75
+        },
+        {
+          "vocabulary_slug": "jouzu",
+          "start": 75,
+          "end": 77
+        },
+        {
+          "vocabulary_slug": "kotoba",
+          "start": 89,
+          "end": 91
+        },
+        {
+          "vocabulary_slug": "jisho",
+          "start": 99,
+          "end": 101
+        },
+        {
+          "vocabulary_slug": "ganbatte",
+          "start": 119,
+          "end": 123
+        },
+        {
+          "vocabulary_slug": "benkyou",
+          "start": 123,
+          "end": 125
+        },
+        {
+          "vocabulary_slug": "tsuzukeru-v",
+          "start": 126,
+          "end": 129
+        }
+      ]
     },
     {
       "title": "台風の日",
@@ -134,7 +434,62 @@
           "prompt_furigana": "今朝[けさ]の天[てん]気[き]はどうでしたか。"
         }
       ],
-      "body_furigana": "昨日[きのう]は大[おお]きな台[たい]風[ふう]が来[らい]たので、電[でん]車[しゃ]が止[と]まってしまいました。会[かい]社[しゃ]に行[い]けなかった人[ひと]も多[おお]かったようです。私[わたし]は家[いえ]で仕[し]事[ごと]をすることにしました。夜[よる]になって風[かぜ]がだんだん弱[よわ]くなり、今朝[けさ]は久[ひさ]しぶりにきれいな青[あお]空[ぞら]が見[み]えました。台[たい]風[ふう]のせいで木[き]も倒[たお]れたそうです。"
+      "body_furigana": "昨日[きのう]は大[おお]きな台[たい]風[ふう]が来[らい]たので、電[でん]車[しゃ]が止[と]まってしまいました。会[かい]社[しゃ]に行[い]けなかった人[ひと]も多[おお]かったようです。私[わたし]は家[いえ]で仕[し]事[ごと]をすることにしました。夜[よる]になって風[かぜ]がだんだん弱[よわ]くなり、今朝[けさ]は久[ひさ]しぶりにきれいな青[あお]空[ぞら]が見[み]えました。台[たい]風[ふう]のせいで木[き]も倒[たお]れたそうです。",
+      "english_translation": "Yesterday a big typhoon came, so the trains stopped. It seems many people couldn't get to work. I decided to work at home. As night came the wind gradually weakened, and this morning I saw a beautiful blue sky for the first time in a while. They say trees fell because of the typhoon.",
+      "summary_ja": "台風で電車が止まり、家で働いた日の話。",
+      "summary_en": "A typhoon stops the trains, so the day is worked from home.",
+      "grammar_slugs": [
+        "n4-node",
+        "n4-teshimau",
+        "n4-youda",
+        "n4-koto-ni-suru",
+        "n4-souda-hearsay"
+      ],
+      "vocabulary_slugs": [
+        "dandan",
+        "densha",
+        "kaisha",
+        "kinou",
+        "shigoto",
+        "taifuu"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kinou",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "taifuu",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "vocabulary_slug": "densha",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "vocabulary_slug": "kaisha",
+          "start": 28,
+          "end": 30
+        },
+        {
+          "vocabulary_slug": "shigoto",
+          "start": 52,
+          "end": 54
+        },
+        {
+          "vocabulary_slug": "dandan",
+          "start": 72,
+          "end": 76
+        },
+        {
+          "vocabulary_slug": "taifuu",
+          "start": 102,
+          "end": 104
+        }
+      ]
     },
     {
       "title": "料理教室に通い始めた",
@@ -159,7 +514,74 @@
           "prompt_furigana": "今[いま]、家[いえ]で何[なに]が作[つく]れるようになりましたか。"
         }
       ],
-      "body_furigana": "料[りょう]理[り]が下手[へた]なので、先[せん]月[げつ]から料[りょう]理[り]教[きょう]室[しつ]に通[かよ]い始[はじ]めました。先[せん]生[せい]に教[おし]えてもらいながら作[つく]ると、思[おも]ったより簡[かん]単[たん]にできることが分[わ]かりました。今[いま]では家[いえ]でも和[わ]食[しょく]が作[つく]れるようになりました。もっと色[いろ]々[いろ]な料[りょう]理[り]を作[つく]れるようになりたいと思[おも]っています。"
+      "body_furigana": "料[りょう]理[り]が下手[へた]なので、先[せん]月[げつ]から料[りょう]理[り]教[きょう]室[しつ]に通[かよ]い始[はじ]めました。先[せん]生[せい]に教[おし]えてもらいながら作[つく]ると、思[おも]ったより簡[かん]単[たん]にできることが分[わ]かりました。今[いま]では家[いえ]でも和[わ]食[しょく]が作[つく]れるようになりました。もっと色[いろ]々[いろ]な料[りょう]理[り]を作[つく]れるようになりたいと思[おも]っています。",
+      "english_translation": "Because I'm bad at cooking, I started going to a cooking class last month. When I cook while being taught by the teacher, I found it can be done more easily than I thought. Now I can make Japanese food at home too. I want to become able to cook a greater variety of dishes.",
+      "summary_ja": "料理教室に通って和食が作れるようになった話。",
+      "summary_en": "Cooking classes turn 'bad at cooking' into home-made washoku.",
+      "grammar_slugs": [
+        "n4-node",
+        "nagara",
+        "n4-youninaru",
+        "n4-potential",
+        "to-omou"
+      ],
+      "vocabulary_slugs": [
+        "heta",
+        "iroiro",
+        "kantan-n4",
+        "ryouri",
+        "sengetsu",
+        "sensei",
+        "tsukuru",
+        "washoku"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "ryouri",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "heta",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "vocabulary_slug": "sengetsu",
+          "start": 9,
+          "end": 11
+        },
+        {
+          "vocabulary_slug": "sensei",
+          "start": 26,
+          "end": 28
+        },
+        {
+          "vocabulary_slug": "tsukuru",
+          "start": 38,
+          "end": 40
+        },
+        {
+          "vocabulary_slug": "kantan-n4",
+          "start": 47,
+          "end": 49
+        },
+        {
+          "vocabulary_slug": "washoku",
+          "start": 69,
+          "end": 71
+        },
+        {
+          "vocabulary_slug": "iroiro",
+          "start": 87,
+          "end": 89
+        },
+        {
+          "vocabulary_slug": "ryouri",
+          "start": 90,
+          "end": 92
+        }
+      ]
     },
     {
       "title": "友達とけんかした話",
@@ -186,7 +608,45 @@
           "prompt_furigana": "けんかの後[あと]、二人[ふたり]はどうなりましたか。"
         }
       ],
-      "body_furigana": "先[せん]週[しゅう]、親[しん]友[ゆう]とちょっとしたことでけんかをしてしまいました。私[わたし]が悪[わる]かったので、次[つぎ]の日[ひ]に謝[あやま]ることにしました。「ごめん、私[わたし]が悪[わる]かった」と言[い]ったら、友[とも]達[だち]も「私[わたし]も言[い]い過[す]ぎた」と言[い]ってくれました。今[いま]はまた仲[なか]良[よ]くなって、前[まえ]より仲[なか]がいいかもしれません。"
+      "body_furigana": "先[せん]週[しゅう]、親[しん]友[ゆう]とちょっとしたことでけんかをしてしまいました。私[わたし]が悪[わる]かったので、次[つぎ]の日[ひ]に謝[あやま]ることにしました。「ごめん、私[わたし]が悪[わる]かった」と言[い]ったら、友[とも]達[だち]も「私[わたし]も言[い]い過[す]ぎた」と言[い]ってくれました。今[いま]はまた仲[なか]良[よ]くなって、前[まえ]より仲[なか]がいいかもしれません。",
+      "english_translation": "Last week I ended up having a fight with a close friend over something small. I was in the wrong, so I decided to apologise the next day. When I said \"Sorry, I was wrong,\" my friend also said \"I said too much as well.\" Now we're on good terms again, and maybe closer than before.",
+      "summary_ja": "親友とけんかして、謝って仲直りした話。",
+      "summary_en": "A fight with a close friend, an apology, and a stronger friendship.",
+      "grammar_slugs": [
+        "n4-teshimau",
+        "n4-koto-ni-suru",
+        "n4-tara",
+        "n4-kamoshirenai",
+        "moraru-ageru-kureru"
+      ],
+      "vocabulary_slugs": [
+        "ayamaru",
+        "chotto",
+        "senshuu",
+        "tomodachi"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "senshuu",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "chotto",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "vocabulary_slug": "ayamaru",
+          "start": 41,
+          "end": 43
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 69,
+          "end": 71
+        }
+      ]
     },
     {
       "title": "初めての一人暮らし",
@@ -213,7 +673,81 @@
           "prompt_furigana": "一人[ひとり]暮[ぐ]らしで大[たい]変[へん]なことは何[なに]ですか。"
         }
       ],
-      "body_furigana": "大[だい]学[がく]に入[はい]るために、初[はじ]めて一人[ひとり]暮[ぐ]らしを始[はじ]めました。親[おや]と離[はな]れて暮[く]らすのは寂[さび]しいと思[おも]っていましたが、実[じっ]際[さい]に住[す]んでみると、自[じ]由[ゆう]な時[じ]間[かん]が増[ふ]えて楽[たの]しいです。ただ、料[りょう]理[り]や掃[そう]除[じ]など、家[か]事[じ]は全[ぜん]部[ぶ]自[じ]分[ぶん]でしなければならないので、大[たい]変[へん]な時[じ]もあります。それでも、この経[けい]験[けん]を通[とお]して、色[いろ]々[いろ]なことができるようになったと思[おも]います。"
+      "body_furigana": "大[だい]学[がく]に入[はい]るために、初[はじ]めて一人[ひとり]暮[ぐ]らしを始[はじ]めました。親[おや]と離[はな]れて暮[く]らすのは寂[さび]しいと思[おも]っていましたが、実[じっ]際[さい]に住[す]んでみると、自[じ]由[ゆう]な時[じ]間[かん]が増[ふ]えて楽[たの]しいです。ただ、料[りょう]理[り]や掃[そう]除[じ]など、家[か]事[じ]は全[ぜん]部[ぶ]自[じ]分[ぶん]でしなければならないので、大[たい]変[へん]な時[じ]もあります。それでも、この経[けい]験[けん]を通[とお]して、色[いろ]々[いろ]なことができるようになったと思[おも]います。",
+      "english_translation": "In order to enter university, I started living alone for the first time. I had thought living apart from my parents would be lonely, but once I actually tried living that way, my free time increased and it's enjoyable. It's just that housework — cooking, cleaning and so on — all has to be done by myself, so there are hard times too. Even so, I think that through this experience I've become able to do all sorts of things.",
+      "summary_ja": "大学のために始めた一人暮らしの良い点と大変な点。",
+      "summary_en": "Living alone for university: freedom, chores, and growing up.",
+      "grammar_slugs": [
+        "n4-tame",
+        "n4-to-conditional",
+        "n4-nakerebanaranai",
+        "n4-youninaru",
+        "n4-node"
+      ],
+      "vocabulary_slugs": [
+        "daigaku",
+        "hairu-v",
+        "hajime",
+        "iroiro",
+        "jikan",
+        "jiyuu",
+        "ryouri",
+        "sabishii",
+        "taihen",
+        "tanoshii"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "daigaku",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "hairu-v",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "vocabulary_slug": "hajime",
+          "start": 9,
+          "end": 11
+        },
+        {
+          "vocabulary_slug": "sabishii",
+          "start": 34,
+          "end": 37
+        },
+        {
+          "vocabulary_slug": "jiyuu",
+          "start": 57,
+          "end": 59
+        },
+        {
+          "vocabulary_slug": "jikan",
+          "start": 60,
+          "end": 62
+        },
+        {
+          "vocabulary_slug": "tanoshii",
+          "start": 66,
+          "end": 69
+        },
+        {
+          "vocabulary_slug": "ryouri",
+          "start": 75,
+          "end": 77
+        },
+        {
+          "vocabulary_slug": "taihen",
+          "start": 103,
+          "end": 105
+        },
+        {
+          "vocabulary_slug": "iroiro",
+          "start": 127,
+          "end": 129
+        }
+      ]
     },
     {
       "title": "ごみ問題について",
@@ -239,7 +773,63 @@
           "prompt_furigana": "筆[ひっ]者[しゃ]は買[か]い物[もの]のとき、何[なに]を持[も]って行[い]きますか。"
         }
       ],
-      "body_furigana": "最[さい]近[きん]、ごみの量[りょう]が増[ふ]えていることが問[もん]題[だい]になっています。使[つか]い捨[す]ての物[もの]を減[へ]らせば、ごみも少[すく]なくなるはずです。私[わたし]も買[か]い物[もの]に行[い]くときは、エコバッグを持[も]って行[い]くようにしています。一人[ひとり]一人[ひとり]が気[き]をつければ、環[かん]境[きょう]はきっと良[よ]くなると思[おも]います。"
+      "body_furigana": "最[さい]近[きん]、ごみの量[りょう]が増[ふ]えていることが問[もん]題[だい]になっています。使[つか]い捨[す]ての物[もの]を減[へ]らせば、ごみも少[すく]なくなるはずです。私[わたし]も買[か]い物[もの]に行[い]くときは、エコバッグを持[も]って行[い]くようにしています。一人[ひとり]一人[ひとり]が気[き]をつければ、環[かん]境[きょう]はきっと良[よ]くなると思[おも]います。",
+      "english_translation": "Recently the amount of rubbish increasing has become a problem. If we reduce disposable items, the rubbish should decrease too. I also make a point of taking an eco bag when I go shopping. If each and every person is careful, I think the environment will surely get better.",
+      "summary_ja": "ごみを減らすために一人一人ができること。",
+      "summary_en": "Rubbish is piling up — what each person can do about it.",
+      "grammar_slugs": [
+        "n4-teiru-progressive",
+        "n4-ba",
+        "n4-hazu",
+        "n4-youni-suru",
+        "to-omou"
+      ],
+      "vocabulary_slugs": [
+        "baggu",
+        "iku-v",
+        "kaimono",
+        "kankyou",
+        "mondai",
+        "motteiku",
+        "saikin"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "saikin",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "mondai",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "vocabulary_slug": "kaimono",
+          "start": 53,
+          "end": 56
+        },
+        {
+          "vocabulary_slug": "iku-v",
+          "start": 57,
+          "end": 59
+        },
+        {
+          "vocabulary_slug": "baggu",
+          "start": 65,
+          "end": 68
+        },
+        {
+          "vocabulary_slug": "motteiku",
+          "start": 69,
+          "end": 74
+        },
+        {
+          "vocabulary_slug": "kankyou",
+          "start": 95,
+          "end": 97
+        }
+      ]
     }
   ]
 }

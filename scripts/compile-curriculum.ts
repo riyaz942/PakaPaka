@@ -143,6 +143,17 @@ type PassageQuestion = {
   sort_order?: number;
 };
 
+/**
+ * Authored word boundary into a passage `body`. `start`/`end` are UTF-16
+ * (JavaScript string) indices, inclusive start and exclusive end, measured
+ * against `body` — never against `body_furigana` markup.
+ */
+type PassageWordSpan = {
+  vocabulary_slug: string;
+  start: number;
+  end: number;
+};
+
 type ReadingPassage = {
   _meta?: SidecarMeta;
   slug?: string;
@@ -150,6 +161,9 @@ type ReadingPassage = {
   body: string;
   body_furigana?: string;
   english_translation?: string;
+  summary_ja?: string;
+  summary_en?: string;
+  word_spans?: PassageWordSpan[];
   grammar_slugs?: string[];
   vocabulary_slugs?: string[];
   word_count?: number;
@@ -621,8 +635,12 @@ export function compileCurriculum(
     }
 
     const insertPassage = db.prepare(`
-      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, english_translation, word_count, sort_order)
-      VALUES (@jlpt_level, @title, @body, @body_furigana, @english_translation, @word_count, @sort_order)
+      INSERT INTO reading_passages (jlpt_level, title, body, body_furigana, english_translation, summary_ja, summary_en, word_count, sort_order)
+      VALUES (@jlpt_level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
+    `);
+    const insertPassageWordSpan = db.prepare(`
+      INSERT INTO passage_word_spans (passage_id, vocabulary_item_id, start_offset, end_offset, sort_order)
+      VALUES (@passage_id, @vocabulary_item_id, @start_offset, @end_offset, @sort_order)
     `);
     const insertQuestion = db.prepare(`
       INSERT INTO passage_questions (passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
@@ -645,6 +663,8 @@ export function compileCurriculum(
           body: passage.body,
           body_furigana: passage.body_furigana ?? null,
           english_translation: passage.english_translation ?? null,
+          summary_ja: passage.summary_ja ?? null,
+          summary_en: passage.summary_en ?? null,
           word_count: passage.word_count ?? null,
           sort_order: passage.sort_order ?? index,
         });
@@ -669,6 +689,42 @@ export function compileCurriculum(
             );
           }
           insertPassageVocabLink.run({ passage_id: passageId, vocabulary_item_id: vocabId });
+        }
+
+        // Word spans are stored in body order and must not overlap: the reader
+        // composes the body as [plain, span, plain, span, ...] segments.
+        const sortedSpans = [...(passage.word_spans ?? [])].sort(
+          (left, right) => left.start - right.start,
+        );
+        let previousEnd = 0;
+        for (const [spanIndex, span] of sortedSpans.entries()) {
+          const vocabId = idByKey.get(itemKey('vocabulary', span.vocabulary_slug));
+          if (!vocabId) {
+            throw new Error(
+              `Unresolved passage word span: ${passageLabel} -> vocabulary:${span.vocabulary_slug}`,
+            );
+          }
+          if (span.start < 0 || span.end > passage.body.length || span.start >= span.end) {
+            throw new Error(
+              `Invalid passage word span offsets: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
+                `[${span.start}, ${span.end}) outside body of length ${passage.body.length}`,
+            );
+          }
+          if (span.start < previousEnd) {
+            throw new Error(
+              `Overlapping passage word span: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
+                `starts at ${span.start} before previous span ends at ${previousEnd}`,
+            );
+          }
+          previousEnd = span.end;
+
+          insertPassageWordSpan.run({
+            passage_id: passageId,
+            vocabulary_item_id: vocabId,
+            start_offset: span.start,
+            end_offset: span.end,
+            sort_order: spanIndex,
+          });
         }
 
         for (const [qIndex, question] of (passage.questions ?? []).entries()) {

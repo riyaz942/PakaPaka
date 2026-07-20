@@ -25,7 +25,45 @@
           "prompt_furigana": "アンナさんは今[いま]、何[なに]を勉[べん]強[きょう]していますか。"
         }
       ],
-      "body_furigana": "はじめまして。私[わたし]はアンナです。イギリスから来[らい]ました。今[いま]、日本[にほん]語[ご]を勉[べん]強[きょう]しています。大[だい]学[がく]生[せい]です。よろしくお願[ねが]いします。"
+      "body_furigana": "はじめまして。私[わたし]はアンナです。イギリスから来[らい]ました。今[いま]、日本[にほん]語[ご]を勉[べん]強[きょう]しています。大[だい]学[がく]生[せい]です。よろしくお願[ねが]いします。",
+      "english_translation": "Nice to meet you. I'm Anna. I came from England. Right now I'm studying Japanese. I'm a university student. Pleased to make your acquaintance.",
+      "summary_ja": "イギリスから来た大学生アンナの自己紹介。",
+      "summary_en": "Anna, a university student from England, introduces herself.",
+      "grammar_slugs": [
+        "desu",
+        "wa-topic",
+        "masu",
+        "kara-from",
+        "te-iru"
+      ],
+      "vocabulary_slugs": [
+        "benkyou",
+        "hajimemashite",
+        "nihongo",
+        "onegaishimasu"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "hajimemashite",
+          "start": 0,
+          "end": 6
+        },
+        {
+          "vocabulary_slug": "nihongo",
+          "start": 28,
+          "end": 31
+        },
+        {
+          "vocabulary_slug": "benkyou",
+          "start": 32,
+          "end": 34
+        },
+        {
+          "vocabulary_slug": "onegaishimasu",
+          "start": 50,
+          "end": 56
+        }
+      ]
     },
     {
       "title": "私の家族",
@@ -61,7 +99,45 @@
           "prompt_furigana": "犬[いぬ]の名[な]前[まえ]は何[なに]ですか。"
         }
       ],
-      "body_furigana": "私[わたし]の家[か]族[ぞく]は四[よん]人[ひと]です。父[ちち]と母[はは]と姉[あね]と私[わたし]です。父[ちち]は先[せん]生[せい]です。母[はは]は医[い]者[しゃ]です。姉[あね]は大[だい]学[がく]生[せい]です。犬[いぬ]も一[いち]匹[ひき]います。名[な]前[まえ]はポチです。"
+      "body_furigana": "私[わたし]の家[か]族[ぞく]は四[よん]人[ひと]です。父[ちち]と母[はは]と姉[あね]と私[わたし]です。父[ちち]は先[せん]生[せい]です。母[はは]は医[い]者[しゃ]です。姉[あね]は大[だい]学[がく]生[せい]です。犬[いぬ]も一[いち]匹[ひき]います。名[な]前[まえ]はポチです。",
+      "english_translation": "My family is four people. My father, my mother, my older sister, and me. My father is a teacher. My mother is a doctor. My older sister is a university student. We also have one dog. His name is Pochi.",
+      "summary_ja": "四人家族と犬のポチを紹介する話。",
+      "summary_en": "A family of four, plus a dog named Pochi.",
+      "grammar_slugs": [
+        "desu",
+        "wa-topic",
+        "to-and",
+        "mo-also",
+        "no-possessive"
+      ],
+      "vocabulary_slugs": [
+        "isha",
+        "kazoku",
+        "namae",
+        "sensei"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kazoku",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "vocabulary_slug": "sensei",
+          "start": 22,
+          "end": 24
+        },
+        {
+          "vocabulary_slug": "isha",
+          "start": 29,
+          "end": 31
+        },
+        {
+          "vocabulary_slug": "namae",
+          "start": 50,
+          "end": 52
+        }
+      ]
     },
     {
       "title": "買い物",
@@ -88,7 +164,56 @@
           "prompt_furigana": "全[ぜん]部[ぶ]でいくらでしたか。"
         }
       ],
-      "body_furigana": "今日[きょう]、スーパーへ行[い]きました。りんごとパンと牛[ぎゅう]乳[にゅう]を買[か]いました。りんごは百[ひゃく]円[えん]でした。パンは二[に]百[ひゃく]円[えん]でした。全[ぜん]部[ぶ]で五[ご]百[ひゃく]円[えん]でした。安[やす]かったです。"
+      "body_furigana": "今日[きょう]、スーパーへ行[い]きました。りんごとパンと牛[ぎゅう]乳[にゅう]を買[か]いました。りんごは百[ひゃく]円[えん]でした。パンは二[に]百[ひゃく]円[えん]でした。全[ぜん]部[ぶ]で五[ご]百[ひゃく]円[えん]でした。安[やす]かったです。",
+      "english_translation": "Today I went to the supermarket. I bought apples, bread, and milk. The apples were one hundred yen. The bread was two hundred yen. It was five hundred yen in total. It was cheap.",
+      "summary_ja": "スーパーで買った物と値段の話。",
+      "summary_en": "A supermarket trip, item by item, with prices.",
+      "grammar_slugs": [
+        "mashita",
+        "wo",
+        "to-and",
+        "he-direction",
+        "adj-i-conjugation"
+      ],
+      "vocabulary_slugs": [
+        "gyuunyuu",
+        "kyou",
+        "pan",
+        "suupaa",
+        "zenbu"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kyou",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "suupaa",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "vocabulary_slug": "pan",
+          "start": 18,
+          "end": 20
+        },
+        {
+          "vocabulary_slug": "gyuunyuu",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "vocabulary_slug": "pan",
+          "start": 40,
+          "end": 42
+        },
+        {
+          "vocabulary_slug": "zenbu",
+          "start": 50,
+          "end": 52
+        }
+      ]
     },
     {
       "title": "私の一日",
@@ -116,7 +241,62 @@
           "prompt_furigana": "授[じゅ]業[ぎょう]は何[なに]時[じ]に始[はじ]まりますか。"
         }
       ],
-      "body_furigana": "私[わたし]は毎[まい]朝[あさ]六[ろく]時[じ]に起[お]きます。朝[あさ]ご飯[はん]を食[た]べてから、学[がっ]校[こう]へ行[い]きます。授[じゅ]業[ぎょう]は八[はち]時[じ]半[はん]に始[はじ]まります。午[ご]後[ご]、友[とも]達[だち]と昼[ひる]ご飯[はん]を食[た]べます。夜[よる]は家[いえ]で宿[しゅく]題[だい]をします。十[じゅう]一[いち]時[じ]ごろ寝[ね]ます。"
+      "body_furigana": "私[わたし]は毎[まい]朝[あさ]六[ろく]時[じ]に起[お]きます。朝[あさ]ご飯[はん]を食[た]べてから、学[がっ]校[こう]へ行[い]きます。授[じゅ]業[ぎょう]は八[はち]時[じ]半[はん]に始[はじ]まります。午[ご]後[ご]、友[とも]達[だち]と昼[ひる]ご飯[はん]を食[た]べます。夜[よる]は家[いえ]で宿[しゅく]題[だい]をします。十[じゅう]一[いち]時[じ]ごろ寝[ね]ます。",
+      "english_translation": "I get up at six every morning. After eating breakfast, I go to school. Class starts at eight thirty. In the afternoon I eat lunch with a friend. At night I do homework at home. I go to bed around eleven.",
+      "summary_ja": "朝起きてから夜寝るまでの一日の流れ。",
+      "summary_en": "One day, from the morning alarm to bedtime.",
+      "grammar_slugs": [
+        "masu",
+        "te-kara",
+        "ni-direction",
+        "he-direction"
+      ],
+      "vocabulary_slugs": [
+        "asagohan",
+        "gakkou-v",
+        "gogo",
+        "hirugohan",
+        "jugyou",
+        "shukudai",
+        "tomodachi"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "asagohan",
+          "start": 12,
+          "end": 15
+        },
+        {
+          "vocabulary_slug": "gakkou-v",
+          "start": 22,
+          "end": 24
+        },
+        {
+          "vocabulary_slug": "jugyou",
+          "start": 30,
+          "end": 32
+        },
+        {
+          "vocabulary_slug": "gogo",
+          "start": 43,
+          "end": 45
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 46,
+          "end": 48
+        },
+        {
+          "vocabulary_slug": "hirugohan",
+          "start": 49,
+          "end": 52
+        },
+        {
+          "vocabulary_slug": "shukudai",
+          "start": 62,
+          "end": 64
+        }
+      ]
     },
     {
       "title": "天気",
@@ -143,7 +323,73 @@
           "prompt_furigana": "明日[あした]は何[なに]が降[ふ]るかもしれませんか。"
         }
       ],
-      "body_furigana": "昨日[きのう]はいい天[てん]気[き]でした。とても暑[あつ]かったです。今日[きょう]は朝[あさ]から雨[あめ]が降[ふ]っています。少[すこ]し寒[さむ]いです。明日[あした]は雪[ゆき]が降[ふ]るかもしれません。冬[ふゆ]は寒[さむ]いですから、コートを着[ちゃく]ます。"
+      "body_furigana": "昨日[きのう]はいい天[てん]気[き]でした。とても暑[あつ]かったです。今日[きょう]は朝[あさ]から雨[あめ]が降[ふ]っています。少[すこ]し寒[さむ]いです。明日[あした]は雪[ゆき]が降[ふ]るかもしれません。冬[ふゆ]は寒[さむ]いですから、コートを着[ちゃく]ます。",
+      "english_translation": "Yesterday the weather was nice. It was very hot. Today it has been raining since morning. It is a little cold. Tomorrow it might snow. Winter is cold, so I wear a coat.",
+      "summary_ja": "昨日から明日までの天気と服装の話。",
+      "summary_en": "Yesterday's heat, today's rain, and maybe snow tomorrow.",
+      "grammar_slugs": [
+        "adj-i-conjugation",
+        "te-iru",
+        "kamoshirenai",
+        "kara-because"
+      ],
+      "vocabulary_slugs": [
+        "ashita",
+        "furu-rain",
+        "kinou",
+        "kooto",
+        "kyou",
+        "samui",
+        "sukoshi",
+        "tenki"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kinou",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "tenki",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "vocabulary_slug": "kyou",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "vocabulary_slug": "sukoshi",
+          "start": 36,
+          "end": 38
+        },
+        {
+          "vocabulary_slug": "samui",
+          "start": 38,
+          "end": 40
+        },
+        {
+          "vocabulary_slug": "ashita",
+          "start": 43,
+          "end": 45
+        },
+        {
+          "vocabulary_slug": "furu-rain",
+          "start": 48,
+          "end": 50
+        },
+        {
+          "vocabulary_slug": "samui",
+          "start": 60,
+          "end": 62
+        },
+        {
+          "vocabulary_slug": "kooto",
+          "start": 67,
+          "end": 70
+        }
+      ]
     },
     {
       "title": "レストランで",
@@ -170,7 +416,61 @@
           "prompt_furigana": "飲[の]み物[もの]は何[なに]を飲[の]みましたか。"
         }
       ],
-      "body_furigana": "昨日[きのう]、友[とも]達[だち]とレストランへ行[い]きました。私[わたし]は魚[さかな]とご飯[はん]を食[た]べました。友[とも]達[だち]は肉[にく]を食[た]べました。飲[の]み物[もの]はお茶[ちゃ]を飲[の]みました。とてもおいしかったです。また行[い]きたいです。"
+      "body_furigana": "昨日[きのう]、友[とも]達[だち]とレストランへ行[い]きました。私[わたし]は魚[さかな]とご飯[はん]を食[た]べました。友[とも]達[だち]は肉[にく]を食[た]べました。飲[の]み物[もの]はお茶[ちゃ]を飲[の]みました。とてもおいしかったです。また行[い]きたいです。",
+      "english_translation": "Yesterday I went to a restaurant with a friend. I ate fish and rice. My friend ate meat. For a drink I had tea. It was very delicious. I want to go again.",
+      "summary_ja": "友達とレストランで食べた物の話。",
+      "summary_en": "Dinner out with a friend, and what each of them ordered.",
+      "grammar_slugs": [
+        "mashita",
+        "wo",
+        "he-direction",
+        "tai"
+      ],
+      "vocabulary_slugs": [
+        "gohan",
+        "kinou",
+        "nomimono",
+        "ocha",
+        "resutoran",
+        "tomodachi"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "kinou",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "vocabulary_slug": "resutoran",
+          "start": 6,
+          "end": 11
+        },
+        {
+          "vocabulary_slug": "gohan",
+          "start": 22,
+          "end": 24
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 31,
+          "end": 33
+        },
+        {
+          "vocabulary_slug": "nomimono",
+          "start": 42,
+          "end": 45
+        },
+        {
+          "vocabulary_slug": "ocha",
+          "start": 46,
+          "end": 48
+        }
+      ]
     },
     {
       "title": "週末",
@@ -199,7 +499,79 @@
           "prompt_furigana": "日[にち]曜[よう]日[ひ]はどこへ行[い]きますか。"
         }
       ],
-      "body_furigana": "週[しゅう]末[まつ]はいつも忙[いそが]しいです。土[ど]曜[よう]日[ひ]は部屋[へや]を掃[そう]除[じ]したり、洗[せん]濯[たく]をしたりします。日[にち]曜[よう]日[ひ]は友[とも]達[だち]と公[こう]園[えん]へ行[い]きます。公[こう]園[えん]で散[さん]歩[ぽ]をします。天[てん]気[き]がいい日[ひ]はとても楽[たの]しいです。"
+      "body_furigana": "週[しゅう]末[まつ]はいつも忙[いそが]しいです。土[ど]曜[よう]日[ひ]は部屋[へや]を掃[そう]除[じ]したり、洗[せん]濯[たく]をしたりします。日[にち]曜[よう]日[ひ]は友[とも]達[だち]と公[こう]園[えん]へ行[い]きます。公[こう]園[えん]で散[さん]歩[ぽ]をします。天[てん]気[き]がいい日[ひ]はとても楽[たの]しいです。",
+      "english_translation": "Weekends are always busy. On Saturday I do things like clean my room and do the laundry. On Sunday I go to the park with a friend. We take a walk in the park. Days with good weather are a lot of fun.",
+      "summary_ja": "掃除や散歩をして過ごす週末の話。",
+      "summary_en": "A busy weekend of chores on Saturday and a park walk on Sunday.",
+      "grammar_slugs": [
+        "tari-tari",
+        "adj-i-conjugation",
+        "he-direction",
+        "wa-topic"
+      ],
+      "vocabulary_slugs": [
+        "doyoubi",
+        "heya",
+        "isogashii",
+        "kouen",
+        "nichiyoubi",
+        "shuumatsu",
+        "tanoshii",
+        "tenki",
+        "tomodachi"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "shuumatsu",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "isogashii",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "vocabulary_slug": "doyoubi",
+          "start": 12,
+          "end": 15
+        },
+        {
+          "vocabulary_slug": "heya",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "vocabulary_slug": "nichiyoubi",
+          "start": 35,
+          "end": 38
+        },
+        {
+          "vocabulary_slug": "tomodachi",
+          "start": 39,
+          "end": 41
+        },
+        {
+          "vocabulary_slug": "kouen",
+          "start": 42,
+          "end": 44
+        },
+        {
+          "vocabulary_slug": "kouen",
+          "start": 50,
+          "end": 52
+        },
+        {
+          "vocabulary_slug": "tenki",
+          "start": 60,
+          "end": 62
+        },
+        {
+          "vocabulary_slug": "tanoshii",
+          "start": 70,
+          "end": 73
+        }
+      ]
     },
     {
       "title": "駅への道",
@@ -228,7 +600,39 @@
           "prompt_furigana": "駅[えき]まで歩[ある]いてどのくらいかかりますか。"
         }
       ],
-      "body_furigana": "すみません、駅[えき]はどこですか。この道[みち]をまっすぐ行[い]ってください。二[に]つ目[め]の角[かど]を右[みぎ]に曲[ま]がってください。銀[ぎん]行[こう]の前[まえ]に駅[えき]があります。歩[ある]いて十[じゅう]分[ふん]ぐらいです。"
+      "body_furigana": "すみません、駅[えき]はどこですか。この道[みち]をまっすぐ行[い]ってください。二[に]つ目[め]の角[かど]を右[みぎ]に曲[ま]がってください。銀[ぎん]行[こう]の前[まえ]に駅[えき]があります。歩[ある]いて十[じゅう]分[ふん]ぐらいです。",
+      "english_translation": "Excuse me, where is the station? Please go straight along this road. Please turn right at the second corner. The station is in front of the bank. It's about ten minutes on foot.",
+      "summary_ja": "駅までの道を尋ねて教えてもらう会話。",
+      "summary_en": "Asking for directions to the station, and getting them.",
+      "grammar_slugs": [
+        "te-kudasai",
+        "wo",
+        "ni-direction",
+        "gurai",
+        "ka-question"
+      ],
+      "vocabulary_slugs": [
+        "futatsu",
+        "ginkou",
+        "sumimasen"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "sumimasen",
+          "start": 0,
+          "end": 5
+        },
+        {
+          "vocabulary_slug": "futatsu",
+          "start": 30,
+          "end": 32
+        },
+        {
+          "vocabulary_slug": "ginkou",
+          "start": 47,
+          "end": 49
+        }
+      ]
     },
     {
       "title": "誕生日",
@@ -254,7 +658,45 @@
           "prompt_furigana": "姉[あね]は何[なに]を作[つく]りますか。"
         }
       ],
-      "body_furigana": "来[らい]週[しゅう]の日[にち]曜[よう]日[ひ]は母[はは]の誕[たん]生[じょう]日[ひ]です。私[わたし]は母[はは]にプレゼントをあげます。きれいな花[はな]を買[か]います。姉[あね]はケーキを作[つく]ります。みんなで一[いっ]緒[しょ]に晩[ばん]ご飯[はん]を食[た]べます。楽[たの]しみです。"
+      "body_furigana": "来[らい]週[しゅう]の日[にち]曜[よう]日[ひ]は母[はは]の誕[たん]生[じょう]日[ひ]です。私[わたし]は母[はは]にプレゼントをあげます。きれいな花[はな]を買[か]います。姉[あね]はケーキを作[つく]ります。みんなで一[いっ]緒[しょ]に晩[ばん]ご飯[はん]を食[た]べます。楽[たの]しみです。",
+      "english_translation": "Next Sunday is my mother's birthday. I will give my mother a present. I will buy pretty flowers. My older sister will make a cake. Everyone will eat dinner together. I'm looking forward to it.",
+      "summary_ja": "母の誕生日にみんなでお祝いする計画。",
+      "summary_en": "Plans to celebrate Mum's birthday next Sunday.",
+      "grammar_slugs": [
+        "no-possessive",
+        "ni-indirect",
+        "moraru-ageru-kureru",
+        "adj-na-conjugation",
+        "masu"
+      ],
+      "vocabulary_slugs": [
+        "bangohan",
+        "issho-ni",
+        "nichiyoubi",
+        "raishuu"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "raishuu",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "vocabulary_slug": "nichiyoubi",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "vocabulary_slug": "issho-ni",
+          "start": 56,
+          "end": 59
+        },
+        {
+          "vocabulary_slug": "bangohan",
+          "start": 59,
+          "end": 62
+        }
+      ]
     },
     {
       "title": "日本語の勉強",
@@ -283,7 +725,80 @@
           "prompt_furigana": "分[わ]からないとき、誰[だれ]に聞[き]きますか。"
         }
       ],
-      "body_furigana": "日本[にほん]語[ご]の勉[べん]強[きょう]は難[むずか]しいですが、面[おも]白[しろ]いです。漢[かん]字[じ]はたくさんありますから、毎[まい]日[にち]少[すこ]しずつ覚[おぼ]えます。先[せん]生[せい]はとても親[しん]切[せつ]です。分[わ]からないとき、先[せん]生[せい]に聞[き]きます。上手[じょうず]になりたいです。"
+      "body_furigana": "日本[にほん]語[ご]の勉[べん]強[きょう]は難[むずか]しいですが、面[おも]白[しろ]いです。漢[かん]字[じ]はたくさんありますから、毎[まい]日[にち]少[すこ]しずつ覚[おぼ]えます。先[せん]生[せい]はとても親[しん]切[せつ]です。分[わ]からないとき、先[せん]生[せい]に聞[き]きます。上手[じょうず]になりたいです。",
+      "english_translation": "Studying Japanese is difficult, but it is interesting. There are many kanji, so I memorise a few each day. My teacher is very kind. When I don't understand, I ask the teacher. I want to become good at it.",
+      "summary_ja": "難しいけれど面白い日本語の勉強の話。",
+      "summary_en": "Japanese study is hard but interesting — kanji a little at a time.",
+      "grammar_slugs": [
+        "kara-because",
+        "adj-i-conjugation",
+        "toki",
+        "naru-become",
+        "tai"
+      ],
+      "vocabulary_slugs": [
+        "benkyou",
+        "jouzu",
+        "kanji-word",
+        "muzukashii",
+        "nihongo",
+        "omoshiroi",
+        "sensei",
+        "shinsetsu",
+        "takusan"
+      ],
+      "word_spans": [
+        {
+          "vocabulary_slug": "nihongo",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "vocabulary_slug": "benkyou",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "vocabulary_slug": "muzukashii",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "vocabulary_slug": "omoshiroi",
+          "start": 14,
+          "end": 17
+        },
+        {
+          "vocabulary_slug": "kanji-word",
+          "start": 20,
+          "end": 22
+        },
+        {
+          "vocabulary_slug": "takusan",
+          "start": 23,
+          "end": 27
+        },
+        {
+          "vocabulary_slug": "sensei",
+          "start": 45,
+          "end": 47
+        },
+        {
+          "vocabulary_slug": "shinsetsu",
+          "start": 51,
+          "end": 53
+        },
+        {
+          "vocabulary_slug": "sensei",
+          "start": 64,
+          "end": 66
+        },
+        {
+          "vocabulary_slug": "jouzu",
+          "start": 72,
+          "end": 74
+        }
+      ]
     }
   ]
 }

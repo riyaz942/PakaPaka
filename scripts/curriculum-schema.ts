@@ -104,7 +104,23 @@ CREATE TABLE reading_passages (
   body TEXT NOT NULL,
   body_furigana TEXT,
   english_translation TEXT,
+  summary_ja TEXT,
+  summary_en TEXT,
   word_count INTEGER,
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+-- Authored word boundaries into reading_passages.body (Story 3.2 / FR70).
+-- Offsets are UTF-16 (JavaScript string) indices into the body, inclusive
+-- start and exclusive end, so body.slice(start_offset, end_offset) is the
+-- surface form. Spans are authored, never auto-segmented; unspanned text
+-- stays inert.
+CREATE TABLE passage_word_spans (
+  id INTEGER PRIMARY KEY NOT NULL,
+  passage_id INTEGER NOT NULL REFERENCES reading_passages(id),
+  vocabulary_item_id INTEGER NOT NULL REFERENCES items(id),
+  start_offset INTEGER NOT NULL,
+  end_offset INTEGER NOT NULL,
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
@@ -140,6 +156,7 @@ CREATE INDEX idx_grammar_cloze_variants_item ON grammar_cloze_variants(item_id);
 CREATE INDEX idx_grammar_related_links_item ON grammar_related_links(grammar_item_id);
 CREATE INDEX idx_passage_grammar_links_passage ON passage_grammar_links(passage_id);
 CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(passage_id);
+CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

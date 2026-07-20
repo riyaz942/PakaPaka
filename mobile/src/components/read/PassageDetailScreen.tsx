@@ -1,9 +1,10 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams, type Href } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScreenHeader } from '@/components/common/ScreenHeader';
+import { PassageLockedTodo } from '@/components/read/PassageLockedTodo';
 import { PassageReader } from '@/components/read/PassageReader';
 import { MaxContentWidth } from '@/constants/theme';
 import { usePassageDetail } from '@/data/hooks/usePassageDetail';
@@ -17,7 +18,17 @@ import type { PassagePracticeResult } from '@/data/user/passagePracticeRepositor
 export function PassageDetailScreen() {
   const params = useLocalSearchParams<{ id: string }>();
   const passageId = params.id ?? null;
-  const { passage, questions, practiceResults, loading, notFound } = usePassageDetail(passageId);
+  const {
+    passage,
+    questions,
+    practiceResults,
+    wordSpans,
+    unlock,
+    isUnlocked,
+    neededItems,
+    loading,
+    notFound,
+  } = usePassageDetail(passageId);
   const [localPracticeResults, setLocalPracticeResults] =
     useState<PassagePracticeResult[]>(practiceResults);
 
@@ -51,12 +62,22 @@ export function PassageDetailScreen() {
           <Text className="mt-8 text-body text-secondary">Passage not found.</Text>
         ) : (
           <ScrollView>
-            <PassageReader
-              passage={passage}
-              questions={questions}
-              practiceResults={localPracticeResults}
-              onAnswerSubmitted={handleAnswerSubmitted}
-            />
+            {isUnlocked ? (
+              <PassageReader
+                passage={passage}
+                questions={questions}
+                practiceResults={localPracticeResults}
+                wordSpans={wordSpans}
+                onAnswerSubmitted={handleAnswerSubmitted}
+              />
+            ) : (
+              <PassageLockedTodo
+                passage={passage}
+                unlock={unlock}
+                neededItems={neededItems}
+                onItemPress={(itemId) => router.push(`/browse/item/${itemId}` as Href)}
+              />
+            )}
           </ScrollView>
         )}
       </SafeAreaView>

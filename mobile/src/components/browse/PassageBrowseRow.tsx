@@ -50,9 +50,7 @@ function PassageBrowseRowComponent({ row, onPress, testID }: PassageBrowseRowPro
         ) : null}
       </View>
 
-      {/* Bilingual one-liner (FR66). `summaryJa` stays null until the Story 3.2
-          pipeline compiles summary columns; `summaryEn` falls back to the
-          passage's English translation until then. */}
+      {/* Bilingual one-liner (FR66), from the compiled summary columns. */}
       {row.summaryJa ? (
         <Text numberOfLines={1} className="mt-space-xs text-body text-primary">
           {row.summaryJa}

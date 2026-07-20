@@ -7,7 +7,7 @@ import type { SRSStageLabel } from '@/core/srs/srs.types';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import {
-  getPassageLinkedItemIds,
+  getAllPassageLinkedItemIds,
   listAllPassages,
 } from '@/data/curriculum/passageRepository';
 import { CURRICULUM_ATTACH_ALIAS } from '@/data/database';
@@ -52,10 +52,9 @@ export type BrowsePassageRow = {
   sortOrder: number;
   title: string;
   /**
-   * Bilingual one-line summaries (FR66). The curriculum pipeline does not
-   * compile `summary_ja` / `summary_en` yet (Story 3.2), so `summaryJa` is
-   * null today and `summaryEn` falls back to the passage's English
-   * translation. Row props are already shaped for the real columns.
+   * Bilingual one-line summaries (FR66), read from the compiled
+   * `summary_ja` / `summary_en` columns. `summaryEn` falls back to the
+   * passage's full English translation only when no one-liner is authored.
    */
   summaryJa: string | null;
   summaryEn: string | null;
@@ -210,7 +209,7 @@ function buildItemBranch(input: BrowseQueryInput): QueryFragment | null {
       ` ${levelRankExpression('i.jlpt_level')} AS level_rank,` +
       ` i.item_type AS item_type, i.primary_form AS primary_form, i.meaning AS meaning,` +
       ` s.status AS study_status, r.srs_stage_label AS srs_stage,` +
-      ` NULL AS title, NULL AS english_translation` +
+      ` NULL AS title, NULL AS english_translation, NULL AS summary_ja, NULL AS summary_en` +
       ` FROM ${C}.items i` +
       ` LEFT JOIN item_study_status s ON s.item_id = i.id` +
       ` LEFT JOIN srs_states r ON r.item_id = i.id` +
@@ -240,11 +239,15 @@ function buildPassageBranch(input: BrowseQueryInput): QueryFragment | null {
   }
 
   if (search) {
+    // Summaries are searchable alongside the title (FR66): the one-liner is
+    // often what a learner remembers about a passage.
     const branchClauses = search.all.map(
-      () => `(${likeClause('p.title')} OR ${likeClause('p.english_translation')})`,
+      () =>
+        `(${likeClause('p.title')} OR ${likeClause('p.english_translation')}` +
+        ` OR ${likeClause('p.summary_ja')} OR ${likeClause('p.summary_en')})`,
     );
     conditions.push(`(${branchClauses.join(' OR ')})`);
-    params.push(...likeParams(search, 2));
+    params.push(...likeParams(search, 4));
   }
 
   const where = conditions.length > 0 ? ` WHERE ${conditions.join(' AND ')}` : '';
@@ -255,7 +258,8 @@ function buildPassageBranch(input: BrowseQueryInput): QueryFragment | null {
       ` ${levelRankExpression('p.jlpt_level')} AS level_rank,` +
       ` NULL AS item_type, NULL AS primary_form, NULL AS meaning,` +
       ` NULL AS study_status, NULL AS srs_stage,` +
-      ` p.title AS title, p.english_translation AS english_translation` +
+      ` p.title AS title, p.english_translation AS english_translation,` +
+      ` p.summary_ja AS summary_ja, p.summary_en AS summary_en` +
       ` FROM ${C}.reading_passages p` +
       where,
     params,
@@ -317,6 +321,8 @@ type BrowseRow = {
   srs_stage: SRSStageLabel | null;
   title: string | null;
   english_translation: string | null;
+  summary_ja: string | null;
+  summary_en: string | null;
 };
 
 function mapRow(
@@ -335,8 +341,10 @@ function mapRow(
       jlptLevel: row.jlpt_level,
       sortOrder: row.sort_order,
       title: row.title ?? '',
-      summaryJa: null,
-      summaryEn: row.english_translation ?? null,
+      summaryJa: row.summary_ja ?? null,
+      // The full English translation is only a fallback for passages that have
+      // no authored one-liner yet.
+      summaryEn: row.summary_en ?? row.english_translation ?? null,
       locked: status ? !status.unlocked : true,
       itemsRemainingToUnlock: status?.itemsRemainingToUnlock ?? 0,
     };
@@ -388,10 +396,29 @@ export function listPassageUnlockStates(
   userDb: SQLiteDatabase,
 ): Map<string, PassageUnlockStatus> {
   const states = new Map<string, PassageUnlockStatus>();
+  const passages = listAllPassages(curriculumDb);
 
-  for (const passage of listAllPassages(curriculumDb)) {
-    const linkedIds = getPassageLinkedItemIds(curriculumDb, passage.id);
+  // Batched: one pass over each link table, then a single SRS read for the
+  // union of linked ids — instead of two link queries plus one SRS query per
+  // passage (the N+1 deferred from 2.2).
+  const linkedByPassageId = getAllPassageLinkedItemIds(curriculumDb);
+  const allLinkedIds = new Set<string>();
+  for (const linkedIds of linkedByPassageId.values()) {
+    for (const itemId of linkedIds) allLinkedIds.add(itemId);
+  }
 
+  const stageByItemId = new Map<string, SRSStageLabel>();
+  for (const [itemId, state] of getSrsStatesForItems(userDb, [...allLinkedIds])) {
+    stageByItemId.set(itemId, state.srsStageLabel);
+  }
+
+  for (const passage of passages) {
+    const linkedIds = linkedByPassageId.get(passage.id) ?? [];
+
+    // Empty-link policy (Story 3.2): a passage with no authored links is
+    // surfaced as unlocked here so Browse never shows a padlock the learner
+    // has no way to open. `computePassageUnlock` itself stays pure and reports
+    // such a passage as locked with 0 remaining; Home readiness skips them.
     if (linkedIds.length === 0) {
       states.set(passage.id, {
         unlocked: true,
@@ -401,11 +428,6 @@ export function listPassageUnlockStates(
         itemsRemainingToUnlock: 0,
       });
       continue;
-    }
-
-    const stageByItemId = new Map<string, SRSStageLabel>();
-    for (const [itemId, state] of getSrsStatesForItems(userDb, linkedIds)) {
-      stageByItemId.set(itemId, state.srsStageLabel);
     }
 
     states.set(passage.id, computePassageUnlock(linkedIds, stageByItemId));

@@ -118,9 +118,19 @@ describe('compile-curriculum', () => {
       expect(relatedLink).toEqual({ from_slug: 'desu', to_slug: 'ja-nai' });
 
       const passage = db
-        .prepare('SELECT id, english_translation, word_count FROM reading_passages')
-        .get() as { id: number; english_translation: string | null; word_count: number | null };
+        .prepare(
+          'SELECT id, english_translation, summary_ja, summary_en, word_count FROM reading_passages',
+        )
+        .get() as {
+        id: number;
+        english_translation: string | null;
+        summary_ja: string | null;
+        summary_en: string | null;
+        word_count: number | null;
+      };
       expect(passage.english_translation).toBe('It is a test.');
+      expect(passage.summary_ja).toBe('テストの話。');
+      expect(passage.summary_en).toBe('A short test passage.');
       expect(passage.word_count).toBe(2);
 
       const passageGrammar = db
@@ -140,6 +150,24 @@ describe('compile-curriculum', () => {
         )
         .all(passage.id) as { slug: string }[];
       expect(passageVocab).toEqual([{ slug: 'ichi-v' }]);
+
+      const wordSpans = db
+        .prepare(
+          `SELECT items.slug AS slug, span.start_offset, span.end_offset, span.sort_order
+           FROM passage_word_spans span
+           JOIN items ON items.id = span.vocabulary_item_id
+           WHERE span.passage_id = ?
+           ORDER BY span.sort_order ASC`,
+        )
+        .all(passage.id) as {
+        slug: string;
+        start_offset: number;
+        end_offset: number;
+        sort_order: number;
+      }[];
+      expect(wordSpans).toEqual([
+        { slug: 'ichi-v', start_offset: 0, end_offset: 3, sort_order: 0 },
+      ]);
     } finally {
       db.close();
       fs.rmSync(tempDir, { recursive: true, force: true });
@@ -255,5 +283,45 @@ describe('compile-curriculum', () => {
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
+  });
+
+  function compileWithWordSpans(wordSpans: unknown[]): () => void {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
+    readingsFile.passages[0].word_spans = wordSpans;
+    fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
+
+    return () => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir);
+  }
+
+  it('throws on a word span with an unresolved vocabulary slug', () => {
+    expect(
+      compileWithWordSpans([{ vocabulary_slug: 'no-such-vocab', start: 0, end: 3 }]),
+    ).toThrow('Unresolved passage word span: Test -> vocabulary:no-such-vocab');
+  });
+
+  it('throws on a word span whose end offset runs past the body', () => {
+    expect(compileWithWordSpans([{ vocabulary_slug: 'ichi-v', start: 0, end: 99 }])).toThrow(
+      /Invalid passage word span offsets/,
+    );
+  });
+
+  it('throws on a word span with a non-increasing range', () => {
+    expect(compileWithWordSpans([{ vocabulary_slug: 'ichi-v', start: 3, end: 3 }])).toThrow(
+      /Invalid passage word span offsets/,
+    );
+  });
+
+  it('throws on overlapping word spans', () => {
+    expect(
+      compileWithWordSpans([
+        { vocabulary_slug: 'ichi-v', start: 0, end: 3 },
+        { vocabulary_slug: 'ichi-v', start: 2, end: 5 },
+      ]),
+    ).toThrow(/Overlapping passage word span/);
   });
 });

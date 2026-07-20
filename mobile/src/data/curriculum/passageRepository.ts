@@ -15,6 +15,9 @@ export type PassageDetail = {
   title: string;
   body: string;
   bodyFurigana: string | null;
+  /** Bilingual one-line summaries (FR66); null until authored. */
+  summaryJa: string | null;
+  summaryEn: string | null;
   jlptLevel: JLPTLevel;
   sortOrder: number;
 };
@@ -41,6 +44,8 @@ type PassageDetailRow = {
   title: string;
   body: string;
   body_furigana: string | null;
+  summary_ja: string | null;
+  summary_en: string | null;
   jlpt_level: JLPTLevel;
   sort_order: number;
 };
@@ -70,6 +75,8 @@ function mapPassageDetailRow(row: PassageDetailRow): PassageDetail {
     title: row.title,
     body: row.body,
     bodyFurigana: row.body_furigana ?? null,
+    summaryJa: row.summary_ja ?? null,
+    summaryEn: row.summary_en ?? null,
     jlptLevel: row.jlpt_level,
     sortOrder: row.sort_order,
   };
@@ -92,7 +99,8 @@ export function listPassagesByLevel(
 
 export function getPassageById(db: SQLiteDatabase, id: string): PassageDetail | null {
   const row = db.getFirstSync<PassageDetailRow>(
-    `SELECT id, title, body, body_furigana, jlpt_level, sort_order FROM reading_passages WHERE id = ?`,
+    `SELECT id, title, body, body_furigana, summary_ja, summary_en, jlpt_level, sort_order
+     FROM reading_passages WHERE id = ?`,
     Number(id),
   );
   return row ? mapPassageDetailRow(row) : null;
@@ -148,6 +156,46 @@ export function getPassageLinkedItemIds(db: SQLiteDatabase, passageId: string): 
     ...vocabRows.map((row) => String(row.vocabulary_item_id)),
     ...grammarRows.map((row) => String(row.grammar_item_id)),
   ];
+}
+
+/**
+ * Linked vocab + grammar item IDs for every passage, in one pass per link
+ * table. Callers that evaluate unlock across the whole library (Browse's lock
+ * facet, Home reading readiness) use this instead of calling
+ * `getPassageLinkedItemIds` per passage, which was an N+1 (deferred from 2.2).
+ *
+ * Passages with no links at all are simply absent from the map; callers decide
+ * what an unlinked passage means (see `listPassageUnlockStates`).
+ */
+export function getAllPassageLinkedItemIds(db: SQLiteDatabase): Map<string, string[]> {
+  const byPassageId = new Map<string, string[]>();
+
+  const append = (passageId: string, itemId: string): void => {
+    const existing = byPassageId.get(passageId);
+    if (existing) {
+      existing.push(itemId);
+    } else {
+      byPassageId.set(passageId, [itemId]);
+    }
+  };
+
+  const vocabRows = db.getAllSync<{
+    passage_id: number | string;
+    vocabulary_item_id: number | string;
+  }>(`SELECT passage_id, vocabulary_item_id FROM passage_vocabulary_links`);
+  for (const row of vocabRows) {
+    append(String(row.passage_id), String(row.vocabulary_item_id));
+  }
+
+  const grammarRows = db.getAllSync<{
+    passage_id: number | string;
+    grammar_item_id: number | string;
+  }>(`SELECT passage_id, grammar_item_id FROM passage_grammar_links`);
+  for (const row of grammarRows) {
+    append(String(row.passage_id), String(row.grammar_item_id));
+  }
+
+  return byPassageId;
 }
 
 export function getPassageQuestions(db: SQLiteDatabase, passageId: string): PassageQuestion[] {

@@ -2,6 +2,7 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import type { RelatedItem } from '@/core/content/content.types';
+import { chunkForSqlVariables } from '@/data/sqlChunk';
 
 export type ItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
@@ -159,6 +160,39 @@ export function getItemById(
     Number(id),
   );
   return row ? mapRowToDetail(row) : null;
+}
+
+/**
+ * Compact labels for a set of item ids, in the order the ids were given.
+ *
+ * Used by the locked passage to-do list (FR69), which needs a surface form,
+ * meaning and type accent for each still-needed vocab/grammar item without
+ * paying for a full `getItemById` per row.
+ */
+export function listItemSummariesByIds(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): CurriculumListItem[] {
+  if (itemIds.length === 0) return [];
+
+  const numericIds = itemIds.map((id) => Number(id));
+  const byId = new Map<string, CurriculumListItem>();
+
+  for (const chunk of chunkForSqlVariables(numericIds)) {
+    const placeholders = chunk.map(() => '?').join(', ');
+    const rows = db.getAllSync<ItemRow>(
+      `SELECT id, slug, primary_form, meaning, item_type, sort_order
+       FROM items WHERE id IN (${placeholders})`,
+      ...chunk,
+    );
+    for (const row of rows) {
+      byId.set(String(row.id), mapRowToListItem(row));
+    }
+  }
+
+  return itemIds
+    .map((id) => byId.get(id))
+    .filter((item): item is CurriculumListItem => item !== undefined);
 }
 
 type ParentRow = {

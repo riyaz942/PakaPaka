@@ -42,7 +42,11 @@ export function PassageQuestion({
   }, [savedResult, question.id]);
 
   const trimmedAnswer = userAnswer.trim();
-  const canSubmit = trimmedAnswer.length > 0;
+  const isCorrect = result === 'correct';
+  // BUG5: only a correct answer closes the question. An incorrect one stays
+  // editable so the learner can retry; the upsert overwrites on the
+  // (passage_id, question_id) primary key either way.
+  const canSubmit = trimmedAnswer.length > 0 && !isCorrect;
 
   const handleSubmit = () => {
     if (!canSubmit) {
@@ -86,25 +90,29 @@ export function PassageQuestion({
         accessibilityLabel={`${question.prompt} Your answer.`}
         autoCapitalize="none"
         autoCorrect={false}
-        editable={result === null}
+        editable={!isCorrect}
         onChangeText={setUserAnswer}
         testID={`passage-question-input-${question.id}`}
         value={userAnswer}
         className="mt-3 min-h-[44px] rounded-radius-md border border-border bg-surface px-space-md py-2 text-body text-primary"
       />
 
-      {result === null ? (
+      {isCorrect ? null : (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Submit answer"
+          accessibilityLabel={result === 'incorrect' ? 'Try again' : 'Submit answer'}
           accessibilityState={{ disabled: !canSubmit }}
           disabled={!canSubmit}
           onPress={handleSubmit}
           testID={`passage-question-submit-${question.id}`}
           className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-feedback-info px-space-md py-2">
-          <Text className="text-body font-semibold text-on-primary">Submit</Text>
+          <Text className="text-body font-semibold text-on-primary">
+            {result === 'incorrect' ? 'Try again' : 'Submit'}
+          </Text>
         </Pressable>
-      ) : (
+      )}
+
+      {result === null ? null : (
         <View
           accessibilityLiveRegion="polite"
           accessibilityLabel={feedbackMessage ?? undefined}
