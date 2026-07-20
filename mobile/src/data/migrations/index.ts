@@ -12,6 +12,7 @@ import { migration011SrsLearningSteps } from '@/data/migrations/011_srs_learning
 import { migration012UserSynonyms } from '@/data/migrations/012_user_synonyms';
 import { migration013DailyLessonLog } from '@/data/migrations/013_daily_lesson_log';
 import { migration014StreakCelebration } from '@/data/migrations/014_streak_celebration';
+import { migration015GoalRingState } from '@/data/migrations/015_goal_ring_state';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -29,4 +30,5 @@ export const migrations: Migration[] = [
   migration012UserSynonyms,
   migration013DailyLessonLog,
   migration014StreakCelebration,
+  migration015GoalRingState,
 ];

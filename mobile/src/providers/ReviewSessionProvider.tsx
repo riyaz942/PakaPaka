@@ -1,10 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import { COGNITIVE_LOAD_HISTORY_WINDOW, MAX_PREFETCH } from '@/config/constants';
+import { MAX_PREFETCH } from '@/config/constants';
 import { normalizeMeaning } from '@/core/answer/meaningEvaluator';
 import { normalizeKana } from '@/core/answer/readingEvaluator';
 import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/loadTracker';
-import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import { combinePairGrades } from '@/core/srs/pairGrading';
@@ -12,13 +11,8 @@ import type { ReviewGrade, ReviewItem, SRSState, StageTransition } from '@/core/
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
-import {
-  addDailyLoad,
-  getDailyLoad,
-  getRecentDailyLoads,
-  todayKey,
-} from '@/data/user/cognitiveLoadRepository';
-import { getSessionIntensity } from '@/data/user/preferencesRepository';
+import { addDailyLoad, getDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
+import { resolveDailyGoalTarget } from '@/data/user/goalRingRepository';
 import { applyBoosts, clearBoosts } from '@/data/user/relatedItemBoostRepository';
 import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { recordOutcome } from '@/data/user/weaknessRepository';
@@ -172,9 +166,8 @@ export function ReviewSessionProvider({ children }: Props) {
 
     const today = todayKey();
     const daily = getDailyLoad(userDb, today);
-    const recentLoads = getRecentDailyLoads(userDb, today, COGNITIVE_LOAD_HISTORY_WINDOW);
-    const intensity = getSessionIntensity(userDb) ?? 'relaxed';
-    thresholdRef.current = computeThreshold({ intensity, recentLoads });
+    // Sticky daily goal — same denominator as the Home ring (FR55).
+    thresholdRef.current = resolveDailyGoalTarget(userDb);
     setBaseLoad(daily?.load ?? 0);
   }, [userDb, isLoading]);
 

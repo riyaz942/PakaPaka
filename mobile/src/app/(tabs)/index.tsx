@@ -1,12 +1,14 @@
 import { useFocusEffect, router } from 'expo-router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { PressableScale } from '@/components/common/PressableScale';
 import {
-  CognitiveLoadRing,
+  GoalReductionPrompt,
+  GoalRing,
+  GoalRisePrompt,
   LevelProgressBar,
   ShadowModeSwitchPrompt,
   StreakCounter,
@@ -27,6 +29,11 @@ import {
   getSessionIntensity,
   getStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
+import {
+  acceptPendingReduction,
+  acceptPendingRise,
+  declinePendingReduction,
+} from '@/data/user/goalRingRepository';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
 import { cn } from '@/utils/cn';
 
@@ -112,9 +119,34 @@ export default function HomeScreen() {
 
   const {
     percent: cognitiveLoadPercent,
+    threshold: dailyGoal,
+    pendingRiseTo,
+    pendingReductionTo,
     isLoading: loadLoading,
     refetch: refetchLoad,
   } = useCognitiveLoad();
+  // Hides the rise prompt for this visit only — the offer stays pending until
+  // the user accepts or adjusts (product choice, story 2.1).
+  const [risePromptHidden, setRisePromptHidden] = useState(false);
+
+  const handleAcceptRise = useCallback(() => {
+    acceptPendingRise(userDb);
+    refetchLoad();
+  }, [userDb, refetchLoad]);
+
+  const handleAdjustGoal = useCallback(() => {
+    router.push('/settings');
+  }, []);
+
+  const handleAcceptReduction = useCallback(() => {
+    acceptPendingReduction(userDb);
+    refetchLoad();
+  }, [userDb, refetchLoad]);
+
+  const handleDeclineReduction = useCallback(() => {
+    declinePendingReduction(userDb);
+    refetchLoad();
+  }, [userDb, refetchLoad]);
   const {
     currentStreak,
     streakState,
@@ -136,37 +168,26 @@ export default function HomeScreen() {
     refetch: refetchShadowMode,
   } = useShadowMode();
 
-  useEffect(() => {
-    let due = 0;
-    try {
-      setLevel(getStartingJlptLevel(userDb));
-      due = getDueSrsStates(userDb).length;
-      setDueCount(due);
-    } catch {
-      setDueCount(0);
-    } finally {
-      setDueCountLoading(false);
-    }
-    readLessonAllowance(due);
-  }, [userDb, readLessonAllowance]);
-
-  const isInitialFocusRef = useRef(true);
+  // BUG1: refetch on *every* focus, including the first. Returning from
+  // /lesson or /review re-focuses Home without a blur in between, so skipping
+  // the initial focus left the ring and counts stale until a tab switch.
+  // Focus-only (no mount effect) — useFocusEffect fires on initial mount too,
+  // so a single path covers first load and every return.
   useFocusEffect(
     useCallback(() => {
-      if (isInitialFocusRef.current) {
-        isInitialFocusRef.current = false;
-        return;
-      }
       refetchLoad();
       refetchStreak();
       refetchProgress();
       refetchShadowMode();
       let due = 0;
       try {
+        setLevel(getStartingJlptLevel(userDb));
         due = getDueSrsStates(userDb).length;
         setDueCount(due);
       } catch {
         setDueCount(0);
+      } finally {
+        setDueCountLoading(false);
       }
       readLessonAllowance(due);
     }, [
@@ -207,15 +228,34 @@ export default function HomeScreen() {
 
           <FadeSlideIn index={1}>
             <View className="items-center rounded-radius-lg bg-surface py-space-xl">
-              <CognitiveLoadRing variant="hero" percent={cognitiveLoadPercent} />
+              <GoalRing variant="hero" percent={cognitiveLoadPercent} />
               <Text className="mt-space-md text-body font-semibold text-primary">
-                Today&apos;s load
+                Today&apos;s goal
               </Text>
               <Text className="mt-space-xs text-body-sm text-secondary">
-                Your study capacity for today
+                Something to beat — going past 100% is the good part
               </Text>
             </View>
           </FadeSlideIn>
+
+          {pendingRiseTo !== null && !risePromptHidden ? (
+            <GoalRisePrompt
+              proposedGoal={pendingRiseTo}
+              currentGoal={dailyGoal}
+              onAccept={handleAcceptRise}
+              onAdjust={handleAdjustGoal}
+              onDismiss={() => setRisePromptHidden(true)}
+            />
+          ) : null}
+
+          {pendingReductionTo !== null ? (
+            <GoalReductionPrompt
+              proposedGoal={pendingReductionTo}
+              currentGoal={dailyGoal}
+              onAccept={handleAcceptReduction}
+              onDecline={handleDeclineReduction}
+            />
+          ) : null}
 
           <FadeSlideIn index={2}>
             <ActionCard

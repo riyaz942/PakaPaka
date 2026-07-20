@@ -96,7 +96,11 @@ export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
 /** Floor for adapted threshold — never collapses below this on light days. */
 export const COGNITIVE_LOAD_THRESHOLD_MIN = 20;
 
-/** Ceiling for adapted threshold — prevents runaway growth. */
+/**
+ * @deprecated The goal ring has no ceiling (FR55/FR57): the goal is unbounded
+ * and overshoot >100% is celebrated, never clamped. Kept only so historical
+ * references compile; do not use in new code.
+ */
 export const COGNITIVE_LOAD_THRESHOLD_MAX = 90;
 
 /** Number of prior calendar days used for threshold adaptation. */
@@ -107,6 +111,18 @@ export const COGNITIVE_LOAD_HISTORY_WINDOW = 7;
  * 0.35 means 35% weight on rolling average, 65% on intensity base.
  */
 export const COGNITIVE_LOAD_THRESHOLD_ADAPTATION_GAIN = 0.35;
+
+/**
+ * Minimum active days (load > 0) in the prior week before the weekly goal
+ * recalculation is accepted; below this the current goal carries forward.
+ */
+export const GOAL_RING_MIN_ACTIVE_DAYS = 3;
+
+/**
+ * Consecutive miss weeks (weekly mean below goal, sample met) before the app
+ * *offers* an opt-in goal reduction. The goal never auto-drops.
+ */
+export const GOAL_RING_MISS_WEEKS_BEFORE_OFFER = 2;
 
 /**
  * Daily lesson allowance = lesson batch size × this multiplier

@@ -349,6 +349,22 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO goal_ring_state/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [dailyGoalTarget, goalWeekStart, consecutiveMissWeeks, pendingRiseTo, pendingReductionTo, updatedAt] = params;
+    state.tables.set('goal_ring_state', [
+      {
+        id: 1,
+        daily_goal_target: dailyGoalTarget,
+        goal_week_start: goalWeekStart,
+        consecutive_miss_weeks: consecutiveMissWeeks,
+        pending_rise_to: pendingRiseTo,
+        pending_reduction_to: pendingReductionTo,
+        updated_at: updatedAt,
+      },
+    ]);
+    return;
+  }
+
   if (/^INSERT INTO daily_lesson_log/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const [date, itemsStarted] = params;
     const rows = state.tables.get('daily_lesson_log') ?? [];
@@ -831,6 +847,17 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     if (/WHERE date < \?/i.test(trimmed)) {
       rows = rows.filter((row) => String(row.date) < String(params[0]));
     }
+    if (/WHERE date >= \? AND date < \?/i.test(trimmed)) {
+      rows = rows.filter(
+        (row) => String(row.date) >= String(params[0]) && String(row.date) < String(params[1]),
+      );
+    }
+    if (/AND load > 0/i.test(trimmed)) {
+      rows = rows.filter((row) => Number(row.load) > 0);
+    }
+    if (/ORDER BY date ASC/i.test(trimmed)) {
+      rows.sort((left, right) => String(left.date).localeCompare(String(right.date)));
+    }
     if (/ORDER BY date DESC/i.test(trimmed)) {
       rows.sort((left, right) => String(right.date).localeCompare(String(left.date)));
     }
@@ -848,6 +875,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     let rows = [...(state.tables.get('daily_lesson_log') ?? [])];
     if (/WHERE date = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.date === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM goal_ring_state/i.test(trimmed)) {
+    const rows = [...(state.tables.get('goal_ring_state') ?? [])];
+    if (/WHERE id = 1/i.test(trimmed)) {
+      return rows.filter((row) => Number(row.id) === 1);
     }
     return rows;
   }

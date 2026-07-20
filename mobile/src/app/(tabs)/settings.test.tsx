@@ -16,8 +16,12 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
 }));
 
+const mockUserDb = {};
+
 jest.mock('@/data/hooks/useDatabase', () => ({
-  useDatabase: () => ({ userDb: {} }),
+  // Stable reference: a fresh object per render would re-run [userDb] effects
+  // on every render and reset screen state mid-test.
+  useDatabase: () => ({ userDb: mockUserDb }),
 }));
 
 jest.mock('@/data/hooks/useReducedMotion', () => ({
@@ -71,6 +75,48 @@ jest.mock('@/config/notifications', () => ({
   scheduleStreakReminder: jest.fn(),
   cancelAllNotifications: jest.fn(),
 }));
+
+let mockDailyGoalTarget = 30;
+const mockSetDailyGoalTarget = jest.fn((_db: unknown, target: number) => {
+  mockDailyGoalTarget = target;
+  return { ok: true as const, value: undefined };
+});
+
+jest.mock('@/data/user/goalRingRepository', () => ({
+  resolveDailyGoalTarget: () => mockDailyGoalTarget,
+  setDailyGoalTarget: (db: unknown, target: number) => mockSetDailyGoalTarget(db, target),
+}));
+
+describe('SettingsScreen daily goal (Story 2.1, FR57 / UX-DR33)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockDailyGoalTarget = 30;
+  });
+
+  it('shows the current goal in an unbounded numeric field', () => {
+    render(<SettingsScreen />);
+    const input = screen.getByTestId('settings-daily-goal-input');
+    expect(input.props.value).toBe('30');
+  });
+
+  it('persists an unbounded goal above the legacy maximum and reads it back', () => {
+    render(<SettingsScreen />);
+    const input = screen.getByTestId('settings-daily-goal-input');
+    fireEvent.changeText(input, '200');
+    fireEvent(screen.getByTestId('settings-daily-goal-input'), 'blur');
+    expect(mockSetDailyGoalTarget).toHaveBeenCalledWith(expect.anything(), 200);
+    expect(screen.getByTestId('settings-daily-goal-input').props.value).toBe('200');
+  });
+
+  it('rejects a non-positive goal with an inline error and no write', () => {
+    render(<SettingsScreen />);
+    const input = screen.getByTestId('settings-daily-goal-input');
+    fireEvent.changeText(input, '0');
+    fireEvent(screen.getByTestId('settings-daily-goal-input'), 'blur');
+    expect(mockSetDailyGoalTarget).not.toHaveBeenCalled();
+    expect(screen.getByText('Enter a number greater than zero.')).toBeTruthy();
+  });
+});
 
 describe('SettingsScreen accessibility', () => {
   beforeEach(() => {

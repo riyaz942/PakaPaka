@@ -8,9 +8,12 @@ import { __mockResetSqlite, __mockSetItems } from '../../../__mocks__/expo-sqlit
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_srs_states_and_import_metadata';
+import { migration008CognitiveLoadHistory } from '@/data/migrations/008_cognitive_load_history';
 import { migration009Streak } from '@/data/migrations/009_streak';
 import { migration014StreakCelebration } from '@/data/migrations/014_streak_celebration';
+import { migration015GoalRingState } from '@/data/migrations/015_goal_ring_state';
 import { runMigrations } from '@/data/migrations/migrationRunner';
+import { getDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 import { setStartingJlptLevel } from '@/data/user/preferencesRepository';
 import { getDueSrsStates } from '@/data/user/srsStateRepository';
@@ -89,8 +92,10 @@ describe('LessonScreen', () => {
       migration001Initial,
       migration002ItemStudyStatus,
       migration003SrsStatesAndImportMetadata,
+      migration008CognitiveLoadHistory,
       migration009Streak,
       migration014StreakCelebration,
+      migration015GoalRingState,
     ]);
     expect(migrationResult.ok).toBe(true);
 
@@ -133,6 +138,10 @@ describe('LessonScreen', () => {
 
     // Finishing a lesson earns the daily streak credit.
     expect(getStreak(userDb).currentStreak).toBe(1);
+
+    // BUG2: lessons contribute to the daily goal ring. Two radicals (1 each)
+    // and one kanji (3) at apprentice/correct → 5 load units, one batched write.
+    expect(getDailyLoad(userDb, todayKey())?.load).toBe(5);
 
     expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
   });

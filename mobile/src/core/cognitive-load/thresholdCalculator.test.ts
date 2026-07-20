@@ -1,18 +1,19 @@
-import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import {
   COGNITIVE_LOAD_THRESHOLD_BASE,
-  COGNITIVE_LOAD_THRESHOLD_MAX,
-  COGNITIVE_LOAD_THRESHOLD_MIN,
+  GOAL_RING_MIN_ACTIVE_DAYS,
+  GOAL_RING_MISS_WEEKS_BEFORE_OFFER,
 } from '@/config/constants';
+import {
+  addDaysToKey,
+  computeWeeklyGoalUpdate,
+  initialGoalForIntensity,
+  weekStartKey,
+} from '@/core/cognitive-load/thresholdCalculator';
 
-describe('thresholdCalculator', () => {
-  it('returns intensity base when recent history is empty', () => {
-    expect(computeThreshold({ intensity: 'relaxed', recentLoads: [] })).toBe(
-      COGNITIVE_LOAD_THRESHOLD_BASE.relaxed,
-    );
-    expect(computeThreshold({ intensity: 'intense', recentLoads: [] })).toBe(
-      COGNITIVE_LOAD_THRESHOLD_BASE.intense,
-    );
+describe('initialGoalForIntensity', () => {
+  it('seeds from the intensity base', () => {
+    expect(initialGoalForIntensity('relaxed')).toBe(COGNITIVE_LOAD_THRESHOLD_BASE.relaxed);
+    expect(initialGoalForIntensity('intense')).toBe(COGNITIVE_LOAD_THRESHOLD_BASE.intense);
   });
 
   it('uses a higher base for intense than relaxed', () => {
@@ -20,32 +21,90 @@ describe('thresholdCalculator', () => {
       COGNITIVE_LOAD_THRESHOLD_BASE.relaxed,
     );
   });
+});
 
-  it('raises threshold when recent daily loads are sustained high', () => {
-    const baseOnly = computeThreshold({ intensity: 'relaxed', recentLoads: [] });
-    const adapted = computeThreshold({
-      intensity: 'relaxed',
-      recentLoads: [45, 48, 50, 46, 44],
-    });
-    expect(adapted).toBeGreaterThan(baseOnly);
+describe('weekStartKey', () => {
+  it('returns the local Monday for any day of the week', () => {
+    // 2026-07-20 is a Monday.
+    expect(weekStartKey(new Date(2026, 6, 20))).toBe('2026-07-20');
+    expect(weekStartKey(new Date(2026, 6, 22))).toBe('2026-07-20'); // Wednesday
+    expect(weekStartKey(new Date(2026, 6, 26))).toBe('2026-07-20'); // Sunday
   });
 
-  it('never exceeds MAX or drops below MIN', () => {
-    const high = computeThreshold({
-      intensity: 'intense',
-      recentLoads: Array(7).fill(200),
-    });
-    expect(high).toBeLessThanOrEqual(COGNITIVE_LOAD_THRESHOLD_MAX);
+  it('crosses month boundaries correctly', () => {
+    // 2026-08-01 is a Saturday → Monday is 2026-07-27.
+    expect(weekStartKey(new Date(2026, 7, 1))).toBe('2026-07-27');
+  });
+});
 
-    const low = computeThreshold({
-      intensity: 'relaxed',
-      recentLoads: Array(7).fill(1),
+describe('addDaysToKey', () => {
+  it('adds and subtracts days across month boundaries', () => {
+    expect(addDaysToKey('2026-07-20', 7)).toBe('2026-07-27');
+    expect(addDaysToKey('2026-07-20', -7)).toBe('2026-07-13');
+    expect(addDaysToKey('2026-08-01', -1)).toBe('2026-07-31');
+  });
+});
+
+describe('computeWeeklyGoalUpdate', () => {
+  it('carries the goal forward when the active-day sample is too small', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 30,
+      activeDayLoads: Array(GOAL_RING_MIN_ACTIVE_DAYS - 1).fill(60),
+      consecutiveMissWeeks: 1,
     });
-    expect(low).toBeGreaterThanOrEqual(COGNITIVE_LOAD_THRESHOLD_MIN);
+    expect(result.pendingRiseTo).toBeNull();
+    expect(result.pendingReductionTo).toBeNull();
+    expect(result.consecutiveMissWeeks).toBe(1);
   });
 
-  it('returns a non-zero threshold on first session', () => {
-    const threshold = computeThreshold({ intensity: 'relaxed', recentLoads: [] });
-    expect(threshold).toBeGreaterThan(0);
+  it('proposes a rise (pending, not applied) when the weekly mean beats the goal', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 30,
+      activeDayLoads: [40, 50, 60],
+      consecutiveMissWeeks: 1,
+    });
+    expect(result.pendingRiseTo).toBe(50);
+    expect(result.pendingReductionTo).toBeNull();
+    expect(result.consecutiveMissWeeks).toBe(0);
+  });
+
+  it('never auto-drops: a miss week holds the goal and increments the miss counter', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 50,
+      activeDayLoads: [20, 25, 30],
+      consecutiveMissWeeks: 0,
+    });
+    expect(result.pendingRiseTo).toBeNull();
+    expect(result.pendingReductionTo).toBeNull();
+    expect(result.consecutiveMissWeeks).toBe(1);
+  });
+
+  it('offers an opt-in reduction after enough consecutive miss weeks', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 50,
+      activeDayLoads: [20, 25, 30],
+      consecutiveMissWeeks: GOAL_RING_MISS_WEEKS_BEFORE_OFFER - 1,
+    });
+    expect(result.pendingRiseTo).toBeNull();
+    expect(result.pendingReductionTo).toBe(25);
+    expect(result.consecutiveMissWeeks).toBe(GOAL_RING_MISS_WEEKS_BEFORE_OFFER);
+  });
+
+  it('rounds proposals to whole load units', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 30,
+      activeDayLoads: [40, 41, 41],
+      consecutiveMissWeeks: 0,
+    });
+    expect(result.pendingRiseTo).toBe(41);
+  });
+
+  it('does not clamp the proposal to any maximum', () => {
+    const result = computeWeeklyGoalUpdate({
+      currentGoal: 90,
+      activeDayLoads: [200, 220, 240],
+      consecutiveMissWeeks: 0,
+    });
+    expect(result.pendingRiseTo).toBe(220);
   });
 });

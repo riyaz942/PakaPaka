@@ -42,6 +42,23 @@ export function getRecentDailyLoads(
   return rows.map((row) => row.load);
 }
 
+/**
+ * Daily loads for active days (load > 0) within [startInclusive, endExclusive).
+ * Feeds the weekly goal recalculation — rest days are excluded by definition.
+ */
+export function getActiveDayLoadsInRange(
+  userDb: SQLiteDatabase,
+  startInclusive: string,
+  endExclusive: string,
+): number[] {
+  const rows = userDb.getAllSync<{ load: number }>(
+    'SELECT load FROM cognitive_load_history WHERE date >= ? AND date < ? AND load > 0 ORDER BY date ASC',
+    startInclusive,
+    endExclusive,
+  );
+  return rows.map((row) => row.load);
+}
+
 export function addDailyLoad(
   userDb: SQLiteDatabase,
   params: { date: string; increment: number; threshold: number },

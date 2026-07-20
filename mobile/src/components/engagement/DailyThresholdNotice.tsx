@@ -6,9 +6,9 @@ type DailyThresholdNoticeProps = {
 };
 
 const NOTICE_COPY =
-  "You've done enough for today 🎉 — keep going if you like, or wrap up anytime.";
+  'Goal met 🎉 — keep going if you like, every extra card counts past 100%.';
 const NOTICE_COPY_A11Y =
-  "You've done enough for today — keep going if you like, or wrap up anytime.";
+  'Goal met — keep going if you like, every extra card counts past 100 percent.';
 
 export function DailyThresholdNotice({ visible, onDismiss }: DailyThresholdNoticeProps) {
   if (!visible) {

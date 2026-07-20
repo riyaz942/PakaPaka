@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Pressable, ScrollView, Switch, Text, View } from 'react-native';
+import { Pressable, ScrollView, Switch, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
@@ -30,6 +30,10 @@ import {
   type FuriganaDisplayMode,
   type NotificationTime,
 } from '@/data/user/preferencesRepository';
+import {
+  resolveDailyGoalTarget,
+  setDailyGoalTarget,
+} from '@/data/user/goalRingRepository';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 import { cn } from '@/utils/cn';
 
@@ -63,6 +67,8 @@ export default function SettingsScreen() {
   const [notificationsEnabled, setNotificationsEnabledState] = useState(false);
   const [notificationTime, setNotificationTimeState] = useState<NotificationTime>('evening');
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
+  const [goalInput, setGoalInput] = useState('');
+  const [goalError, setGoalError] = useState(false);
   const isRequestingPermission = useRef(false);
 
   useEffect(() => {
@@ -70,11 +76,29 @@ export default function SettingsScreen() {
     setWeaknessBiasEnabledState(getWeaknessBiasEnabled(userDb));
     setNotificationsEnabledState(getNotificationsEnabled(userDb));
     setNotificationTimeState(getNotificationTime(userDb));
+    setGoalInput(String(resolveDailyGoalTarget(userDb)));
   }, [userDb]);
+
+  const handleGoalCommit = () => {
+    const parsed = Number(goalInput);
+    const result =
+      Number.isFinite(parsed) && parsed > 0
+        ? setDailyGoalTarget(userDb, parsed)
+        : ({ ok: false } as const);
+    if (result.ok) {
+      setGoalError(false);
+      setGoalInput(String(resolveDailyGoalTarget(userDb)));
+    } else {
+      setGoalError(true);
+    }
+  };
 
   const handleSelect = (intensity: SessionIntensity) => {
     setSessionIntensity(userDb, intensity);
     setSelectedIntensity(intensity);
+    // Intensity only seeds the goal while it is unset — refresh the displayed
+    // value, but never overwrite a user-set goal.
+    setGoalInput(String(resolveDailyGoalTarget(userDb)));
   };
 
   const handleWeaknessBiasToggle = (value: boolean) => {
@@ -157,6 +181,30 @@ export default function SettingsScreen() {
             testID="settings-intensity-picker"
           />
         </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Daily goal</Text>
+        <Text className="mt-1 text-body-sm text-secondary">
+          Your goal ring fills toward this many load units per day. No upper limit — set it as
+          high as you like. It also rises with a prompt when you keep beating it.
+        </Text>
+
+        <TextInput
+          accessibilityLabel="Daily goal"
+          testID="settings-daily-goal-input"
+          keyboardType="numeric"
+          value={goalInput}
+          onChangeText={setGoalInput}
+          onBlur={handleGoalCommit}
+          onSubmitEditing={handleGoalCommit}
+          className="mt-4 min-h-[44px] rounded-radius-md border border-border bg-surface px-4 text-body text-primary"
+        />
+        {goalError ? (
+          <Text className="mt-2 text-body-sm text-feedback-incorrect">
+            Enter a number greater than zero.
+          </Text>
+        ) : null}
       </View>
 
       <View className="mt-8">

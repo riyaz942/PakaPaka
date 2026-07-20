@@ -63,7 +63,7 @@ describe('SessionHeader', () => {
   it('uses card-oriented wording in the accessibilityLabel (Story 1.2)', () => {
     render(<SessionHeader {...defaultProps} cognitiveLoadPercent={0} />);
     expect(
-      screen.getByLabelText('Card 12 of 42, cognitive load 0 percent, kanji card'),
+      screen.getByLabelText('Card 12 of 42, goal 0 percent, kanji card'),
     ).toBeTruthy();
   });
 });

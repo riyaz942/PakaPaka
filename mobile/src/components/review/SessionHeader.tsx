@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from 'react-native';
 
-import { CognitiveLoadRing } from '@/components/engagement';
+import { GoalRing } from '@/components/engagement';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { ReviewItem } from '@/core/srs/srs.types';
 
@@ -31,7 +31,7 @@ export function SessionHeader({
   // can equal totalCards while retry cards are still being shown.
   const displayNumber = Math.min(cardsCompleted + 1, totalCards);
   const accent = CONTENT_TYPE_ACCENT[itemType];
-  const a11yLabel = `Card ${displayNumber} of ${totalCards}, cognitive load ${cognitiveLoadPercent} percent, ${itemType} card`;
+  const a11yLabel = `Card ${displayNumber} of ${totalCards}, goal ${cognitiveLoadPercent} percent, ${itemType} card`;
 
   return (
     <View className="flex-row items-center px-space-md" style={{ height: 56 }}>
@@ -39,7 +39,7 @@ export function SessionHeader({
         accessible={true}
         accessibilityLabel={a11yLabel}
         className="flex-1 flex-row items-center gap-space-sm">
-        <CognitiveLoadRing variant="small" percent={cognitiveLoadPercent} />
+        <GoalRing variant="small" percent={cognitiveLoadPercent} />
 
         <Text className="text-body font-semibold text-primary">
           {`${displayNumber} of ${totalCards}`}

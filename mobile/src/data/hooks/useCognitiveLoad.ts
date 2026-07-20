@@ -1,22 +1,27 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { COGNITIVE_LOAD_HISTORY_WINDOW } from '@/config/constants';
 import { computeLoadPercent } from '@/core/cognitive-load/loadTracker';
-import { computeThreshold } from '@/core/cognitive-load/thresholdCalculator';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { getDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
 import {
-  getDailyLoad,
-  getRecentDailyLoads,
-  todayKey,
-} from '@/data/user/cognitiveLoadRepository';
-import { getSessionIntensity } from '@/data/user/preferencesRepository';
+  getGoalRingState,
+  resolveDailyGoalTarget,
+  runWeeklyGoalCheck,
+} from '@/data/user/goalRingRepository';
 import type { AppError } from '@/types/result.types';
 
 type UseCognitiveLoadResult = {
   todayLoad: number;
+  /** Sticky daily goal in load units — the ring's denominator. */
   threshold: number;
+  /** Unclamped: overshoot reads >100. */
   percent: number;
   isComplete: boolean;
+  isOvershoot: boolean;
+  /** Proposed higher goal awaiting user acknowledgement (weekly ratchet). */
+  pendingRiseTo: number | null;
+  /** Opt-in reduction offer after sustained miss weeks. */
+  pendingReductionTo: number | null;
   isLoading: boolean;
   error: AppError | null;
   refetch: () => void;
@@ -26,6 +31,8 @@ export function useCognitiveLoad(): UseCognitiveLoadResult {
   const { userDb } = useDatabase();
   const [todayLoad, setTodayLoad] = useState(0);
   const [threshold, setThreshold] = useState(0);
+  const [pendingRiseTo, setPendingRiseTo] = useState<number | null>(null);
+  const [pendingReductionTo, setPendingReductionTo] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<AppError | null>(null);
   const [fetchCount, setFetchCount] = useState(0);
@@ -34,15 +41,22 @@ export function useCognitiveLoad(): UseCognitiveLoadResult {
     setIsLoading(true);
     setError(null);
     try {
-      const today = todayKey();
-      const daily = getDailyLoad(userDb, today);
-      const load = daily?.load ?? 0;
-      const recentLoads = getRecentDailyLoads(userDb, today, COGNITIVE_LOAD_HISTORY_WINDOW);
-      const intensity = getSessionIntensity(userDb) ?? 'relaxed';
-      const computedThreshold = computeThreshold({ intensity, recentLoads });
+      // Weekly ratchet runs on read: at most once per calendar week it turns
+      // last week's active days into pending rise/reduction offers. Best-effort
+      // — a failed check must not take down the ring.
+      const checkResult = runWeeklyGoalCheck(userDb);
+      if (!checkResult.ok && __DEV__) {
+        console.warn('[useCognitiveLoad] weekly goal check failed', checkResult.error);
+      }
 
-      setTodayLoad(load);
-      setThreshold(computedThreshold);
+      const daily = getDailyLoad(userDb, todayKey());
+      const goal = resolveDailyGoalTarget(userDb);
+      const goalState = getGoalRingState(userDb);
+
+      setTodayLoad(daily?.load ?? 0);
+      setThreshold(goal);
+      setPendingRiseTo(goalState.pendingRiseTo);
+      setPendingReductionTo(goalState.pendingReductionTo);
     } catch (cause) {
       setError({
         code: 'cognitive_load_load_failed',
@@ -59,7 +73,17 @@ export function useCognitiveLoad(): UseCognitiveLoadResult {
   }, []);
 
   const percent = computeLoadPercent(todayLoad, threshold);
-  const isComplete = percent >= 100;
 
-  return { todayLoad, threshold, percent, isComplete, isLoading, error, refetch };
+  return {
+    todayLoad,
+    threshold,
+    percent,
+    isComplete: percent >= 100,
+    isOvershoot: percent > 100,
+    pendingRiseTo,
+    pendingReductionTo,
+    isLoading,
+    error,
+    refetch,
+  };
 }

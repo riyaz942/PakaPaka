@@ -7,9 +7,11 @@ import { Button } from '@/components/common/Button';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
 import { MaxContentWidth } from '@/constants/theme';
+import { computeLoadIncrement } from '@/core/cognitive-load/loadTracker';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useLessonPlan } from '@/data/hooks/useLessonPlan';
-import { todayKey } from '@/data/user/cognitiveLoadRepository';
+import { addDailyLoad, todayKey } from '@/data/user/cognitiveLoadRepository';
+import { resolveDailyGoalTarget } from '@/data/user/goalRingRepository';
 import { startLessonItems } from '@/data/user/lessonProgressRepository';
 import { recordReviewAndUpdateStreak } from '@/data/user/streakRepository';
 import { safeBack } from '@/utils/safeBack';
@@ -59,6 +61,30 @@ export default function LessonScreen() {
     const streakResult = recordReviewAndUpdateStreak(userDb, todayKey());
     if (!streakResult.ok && __DEV__) {
       console.warn('[Lesson] streak update failed', streakResult.error);
+    }
+
+    // Lessons fill the goal ring too (FR55): new items enter at apprentice and
+    // the lesson UI has no incorrect outcome. One batched write for the whole
+    // lesson — best-effort, never blocks completion.
+    const loadIncrement = items.reduce(
+      (sum, lessonItem) =>
+        sum +
+        computeLoadIncrement({
+          itemType: lessonItem.itemType,
+          stageLabel: 'apprentice',
+          outcome: 'correct',
+        }),
+      0,
+    );
+    if (loadIncrement > 0) {
+      const loadResult = addDailyLoad(userDb, {
+        date: todayKey(),
+        increment: loadIncrement,
+        threshold: resolveDailyGoalTarget(userDb),
+      });
+      if (!loadResult.ok && __DEV__) {
+        console.warn('[Lesson] cognitive load persist failed', loadResult.error);
+      }
     }
 
     router.replace(`/lesson/complete?count=${items.length}` as Href);
