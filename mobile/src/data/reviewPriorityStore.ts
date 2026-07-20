@@ -4,9 +4,9 @@
  * simply drops the priority hint.
  */
 export type ReviewPriority = {
-  /** Item IDs to prefer among due items; empty = no preference. */
+  /** Item IDs to prefer; empty = no preference (welcome-back uses limit only). */
   itemIds: string[];
-  /** Cap on session size (welcome-back slice); null = no cap. */
+  /** Cap on session size (welcome-back / at-risk slice); null = no cap. */
   limit: number | null;
 };
 
@@ -25,21 +25,34 @@ export function clearReviewPriority(): void {
 }
 
 /**
- * Applies a priority hint to the due set: narrow to the preferred IDs when any
- * of them are actually due (falling back to the full set otherwise), then cap
- * to `limit`. Pure — the queue builder still owns ordering.
+ * Applies a priority hint to the candidate set.
+ *
+ * When `itemIds` is non-empty: keep only those IDs (in Home ranking order),
+ * merging `dueStates` with `preferredStates` so not-yet-due preferred items
+ * can still enter a refresher. Never falls back to the full due backlog.
+ *
+ * When `itemIds` is empty: start from `dueStates` (welcome-back slice path).
+ * Then apply `limit` if set.
  */
 export function applyReviewPriority<T extends { itemId: string }>(
   dueStates: T[],
   priority: ReviewPriority | null,
+  preferredStates: T[] = [],
 ): T[] {
   if (!priority) return dueStates;
 
   let result = dueStates;
   if (priority.itemIds.length > 0) {
-    const preferredIds = new Set(priority.itemIds);
-    const preferred = result.filter((state) => preferredIds.has(state.itemId));
-    if (preferred.length > 0) result = preferred;
+    const byId = new Map<string, T>();
+    for (const state of dueStates) {
+      byId.set(state.itemId, state);
+    }
+    for (const state of preferredStates) {
+      byId.set(state.itemId, state);
+    }
+    result = priority.itemIds
+      .map((id) => byId.get(id))
+      .filter((state): state is T => state != null);
   }
   if (priority.limit !== null) {
     result = result.slice(0, priority.limit);

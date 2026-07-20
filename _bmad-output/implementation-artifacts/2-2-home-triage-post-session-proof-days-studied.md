@@ -4,7 +4,7 @@ baseline_commit: 76ddc97
 
 # Story 2.2: Home Triage, Post-Session Proof & Days Studied
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -138,6 +138,21 @@ so that I always know what to do next without streak anxiety or an overdue mount
 - [x] **Task 11 — Verification**
   - [x] `npm run typecheck`, `npm run lint`, `npm test` green from `mobile/`.
   - [x] Manual: Home shows Review above Learn; no streak; forecast wall on spiked week; readiness destination copy; at-risk invitation + revision CTA; welcome-back slice after seeded absence; summary shows compression + goal, no streak; Stats shows days studied this month. (Verified via automated component/integration tests covering each listed behavior — see Completion Notes; on-device smoke pass recommended at review.)
+
+### Review Findings
+
+- [x] [Review][Decision] At-risk preferred IDs with zero currently-due matches — resolved: include preferred IDs even when not yet due (refresher); never fall back to the full due backlog. [`mobile/src/data/reviewPriorityStore.ts`]
+- [x] [Review][Decision] Uncapped at-risk revision session — resolved: cap at `AT_RISK_TOP_N` (8). [`mobile/src/app/(tabs)/index.tsx`]
+- [x] [Review][Patch] Clear review priority only after the queue successfully materializes [`mobile/src/data/hooks/useReviewQueue.ts`]
+- [x] [Review][Patch] Home `dueCount` / welcome-back use uncapped `countDueSrsStates` [`mobile/src/app/(tabs)/index.tsx`] [`mobile/src/data/user/srsStateRepository.ts`]
+- [x] [Review][Patch] When priority `itemIds` are set, resolve those SRS rows via `getSrsStatesForItems` [`mobile/src/data/hooks/useReviewQueue.ts`]
+- [x] [Review][Patch] Permanent Home sections (Review/Learn CTAs, forecast, readiness) always render; spinner no longer replaces them [`mobile/src/app/(tabs)/index.tsx`]
+- [x] [Review][Patch] Mount `ReviewForecast` with designed empty state when forecast is still null [`mobile/src/app/(tabs)/index.tsx`]
+- [x] [Review][Patch] Exclude missing curriculum rows from at-risk `totalCount` / `rankedItemIds` [`mobile/src/data/hooks/useAtRiskItems.ts`]
+- [x] [Review][Patch] Remove `getUpcomingDueDates` hard `LIMIT 2000` so the 7-day wall is accurate [`mobile/src/data/user/srsStateRepository.ts`]
+- [x] [Review][Patch] Hide redundant `${actualMinutes} min studied` when the time-compression centerpiece is shown [`mobile/src/components/engagement/SessionSummaryCard.tsx`]
+- [x] [Review][Defer] Greeting sentence does up to 20 sequential curriculum lookups on every Home focus — documented I4 interim; optimize later [`mobile/src/data/curriculum/greetingRepository.ts`] — deferred, pre-existing
+- [x] [Review][Defer] `useReadingReadiness` N+1 link/SRS fetches per passage on each Home focus — works; batch/optimize with Story 3.2 reuse [`mobile/src/data/hooks/useReadingReadiness.ts`] — deferred, pre-existing
 
 ## Dev Notes
 
@@ -377,3 +392,4 @@ Claude Fable 5 (claude-fable-5) via Claude Code
 
 - 2026-07-20 — Story context created (ready-for-dev). Ultimate context engine analysis completed — comprehensive developer guide created.
 - 2026-07-20 — Implemented all 11 tasks: streak surfaces removed; Home v2 composition (greeting sentence, Review-first CTAs, forecast + wall, reading readiness, at-risk section, welcome-back triage, single banner slot); review priority handoff store wired into the queue builder; post-session time compression + goal state restored; Stats DaysStudiedStat added with focus-refresh fix. All gates green (typecheck / lint / 1059 tests). Status → review.
+- 2026-07-20 — Code review: resolved 2 decisions (preferred-not-due refresher + AT_RISK_TOP_N cap) and applied 8 patches (priority clear timing, uncapped due count, preferred SRS fetch, permanent Home shell, forecast empty state, at-risk orphans, forecast limit, summary minutes). Status → done.

@@ -43,10 +43,11 @@ import {
   declinePendingReduction,
 } from '@/data/user/goalRingRepository';
 import { setReviewPriority } from '@/data/reviewPriorityStore';
-import { getDueSrsStates } from '@/data/user/srsStateRepository';
+import { countDueSrsStates } from '@/data/user/srsStateRepository';
 import { countImportMetadataRows } from '@/data/user/importRepository';
+import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
-import { WELCOME_BACK_SLICE } from '@/config/constants';
+import { AT_RISK_TOP_N, WELCOME_BACK_SLICE } from '@/config/constants';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 import { cn } from '@/utils/cn';
 
@@ -196,7 +197,7 @@ export default function HomeScreen() {
   } = useAtRiskItems();
 
   const handleStartRevision = useCallback(() => {
-    setReviewPriority({ itemIds: atRiskRankedIds, limit: null });
+    setReviewPriority({ itemIds: atRiskRankedIds, limit: AT_RISK_TOP_N });
     router.push('/review');
   }, [atRiskRankedIds]);
 
@@ -237,7 +238,7 @@ export default function HomeScreen() {
       let due = 0;
       try {
         setLevel(getStartingJlptLevel(userDb));
-        due = getDueSrsStates(userDb).length;
+        due = countDueSrsStates(userDb);
         setDueCount(due);
       } catch {
         setDueCount(0);
@@ -342,135 +343,136 @@ export default function HomeScreen() {
 
           {isLoading ? (
             <ActivityIndicator accessibilityLabel="Loading home stats" />
-          ) : (
-            <>
-              {/* Single conditional banner slot (UX-DR5, brainstorm O2):
-                  highest-priority eligible banner wins; permanent sections
-                  below always render. */}
-              {welcomeBackOffer && !welcomeBackDismissed ? (
-                <FadeSlideIn index={1}>
-                  <WelcomeBackCard
-                    sliceSize={welcomeBackOffer.sliceSize}
-                    dueCount={welcomeBackOffer.dueCount}
-                    onStartSlice={handleStartWelcomeBackSlice}
-                    onDismiss={() => setWelcomeBackDismissed(true)}
-                  />
-                </FadeSlideIn>
-              ) : showCurriculumUpdatedBanner ? (
-                <FadeSlideIn index={1}>
-                  <View
-                    testID="home-curriculum-updated-card"
-                    className="rounded-radius-lg border border-border bg-surface p-space-md">
-                    <Text className="text-body font-semibold text-primary">
-                      Curriculum updated
-                    </Text>
-                    <Text className="mt-space-xs text-body-sm text-secondary">
-                      Fresh content is live — nothing to do on your side.
-                    </Text>
-                    <Text
-                      accessibilityRole="button"
-                      accessibilityLabel="Dismiss curriculum update notice"
-                      onPress={dismissCurriculumUpdatedBanner}
-                      testID="home-curriculum-updated-dismiss"
-                      className="mt-space-sm text-body-sm text-feedback-info">
-                      Got it
-                    </Text>
-                  </View>
-                </FadeSlideIn>
-              ) : showImportNudge && !importNudgeDismissed ? (
-                <FadeSlideIn index={1}>
-                  <ImportNudgeCard
-                    onImport={() => router.push('/settings')}
-                    onDismiss={() => setImportNudgeDismissed(true)}
-                  />
-                </FadeSlideIn>
-              ) : shouldShowSwitchPrompt ? (
-                <FadeSlideIn index={1}>
-                  <ShadowModeSwitchPrompt
-                    daysActive={shadowModeDaysActive}
-                    onCommit={handleShadowModeCommit}
-                    onSnooze={snoozeShadowModePrompt}
-                    onDismiss={dismissShadowModePrompt}
-                  />
-                </FadeSlideIn>
-              ) : null}
-              {/* UX-DR3: Review is the primary CTA and sits first; the
-                  reviews-ready count lives here only — never on a tab badge. */}
-              <FadeSlideIn index={2}>
-                <ActionCard
-                  title={dueCount > 0 ? 'Review' : 'All caught up'}
-                  subtitle={
-                    dueCount > 0
-                      ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
-                      : 'No reviews due — nice work'
-                  }
-                  glyph="復"
-                  accent
-                  onPress={() => router.push('/review')}
-                  disabled={dueCount === 0}
-                  accessibilityLabel={
-                    dueCount > 0
-                      ? `Review ${dueCount} items due`
-                      : 'All caught up, no reviews due'
-                  }
-                  testID="home-review-button"
-                />
-              </FadeSlideIn>
-              <FadeSlideIn index={3}>
-                <ActionCard
-                  title="Today's lesson"
-                  subtitle={
-                    lessonAllowance === null
-                      ? 'A guided lesson picked for you'
-                      : lessonAllowance.remaining > 0
-                        ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
-                        : "You've learned enough today. Come back tomorrow, or clear some reviews."
-                  }
-                  glyph="学"
-                  muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
-                  onPress={() => router.push('/lesson')}
-                  accessibilityLabel={
-                    lessonAllowance !== null && lessonAllowance.remaining === 0
-                      ? 'Daily lesson limit reached'
-                      : "Start today's lesson"
-                  }
-                  testID="home-learn-button"
-                />
-              </FadeSlideIn>
-              {level ? (
-                <FadeSlideIn index={4}>
-                  <LevelProgressBar
-                    level={level}
-                    perType={perType}
-                    overallPercent={overallPercent}
-                  />
-                </FadeSlideIn>
-              ) : null}
-              {forecast ? (
-                <FadeSlideIn index={5}>
-                  <ReviewForecast forecast={forecast} />
-                </FadeSlideIn>
-              ) : null}
-              {readingTarget ? (
-                <FadeSlideIn index={6}>
-                  <ReadingReadiness
-                    target={readingTarget}
-                    onPress={() => router.push(`/read/${readingTarget.passageId}`)}
-                  />
-                </FadeSlideIn>
-              ) : null}
-              {atRiskCount > 0 ? (
-                <FadeSlideIn index={7}>
-                  <AtRiskSection
-                    totalCount={atRiskCount}
-                    topItems={atRiskTopItems}
-                    allItems={atRiskAllItems}
-                    onStartRevision={handleStartRevision}
-                  />
-                </FadeSlideIn>
-              ) : null}
-            </>
-          )}
+          ) : null}
+
+          {/* Single conditional banner slot (UX-DR5, brainstorm O2):
+              highest-priority eligible banner wins; permanent sections
+              below always render. */}
+          {!isLoading && welcomeBackOffer && !welcomeBackDismissed ? (
+            <FadeSlideIn index={1}>
+              <WelcomeBackCard
+                sliceSize={welcomeBackOffer.sliceSize}
+                dueCount={welcomeBackOffer.dueCount}
+                onStartSlice={handleStartWelcomeBackSlice}
+                onDismiss={() => setWelcomeBackDismissed(true)}
+              />
+            </FadeSlideIn>
+          ) : !isLoading && showCurriculumUpdatedBanner ? (
+            <FadeSlideIn index={1}>
+              <View
+                testID="home-curriculum-updated-card"
+                className="rounded-radius-lg border border-border bg-surface p-space-md">
+                <Text className="text-body font-semibold text-primary">
+                  Curriculum updated
+                </Text>
+                <Text className="mt-space-xs text-body-sm text-secondary">
+                  Fresh content is live — nothing to do on your side.
+                </Text>
+                <Text
+                  accessibilityRole="button"
+                  accessibilityLabel="Dismiss curriculum update notice"
+                  onPress={dismissCurriculumUpdatedBanner}
+                  testID="home-curriculum-updated-dismiss"
+                  className="mt-space-sm text-body-sm text-feedback-info">
+                  Got it
+                </Text>
+              </View>
+            </FadeSlideIn>
+          ) : !isLoading && showImportNudge && !importNudgeDismissed ? (
+            <FadeSlideIn index={1}>
+              <ImportNudgeCard
+                onImport={() => router.push('/settings')}
+                onDismiss={() => setImportNudgeDismissed(true)}
+              />
+            </FadeSlideIn>
+          ) : !isLoading && shouldShowSwitchPrompt ? (
+            <FadeSlideIn index={1}>
+              <ShadowModeSwitchPrompt
+                daysActive={shadowModeDaysActive}
+                onCommit={handleShadowModeCommit}
+                onSnooze={snoozeShadowModePrompt}
+                onDismiss={dismissShadowModePrompt}
+              />
+            </FadeSlideIn>
+          ) : null}
+
+          {/* UX-DR3: Review is the primary CTA and sits first; the
+              reviews-ready count lives here only — never on a tab badge. */}
+          <FadeSlideIn index={2}>
+            <ActionCard
+              title={dueCount > 0 ? 'Review' : 'All caught up'}
+              subtitle={
+                dueCountLoading
+                  ? 'Checking what’s due…'
+                  : dueCount > 0
+                    ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
+                    : 'No reviews due — nice work'
+              }
+              glyph="復"
+              accent
+              onPress={() => router.push('/review')}
+              disabled={dueCountLoading || dueCount === 0}
+              accessibilityLabel={
+                dueCountLoading
+                  ? 'Checking reviews due'
+                  : dueCount > 0
+                    ? `Review ${dueCount} items due`
+                    : 'All caught up, no reviews due'
+              }
+              testID="home-review-button"
+            />
+          </FadeSlideIn>
+          <FadeSlideIn index={3}>
+            <ActionCard
+              title="Today's lesson"
+              subtitle={
+                lessonAllowance === null
+                  ? 'A guided lesson picked for you'
+                  : lessonAllowance.remaining > 0
+                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                    : "You've learned enough today. Come back tomorrow, or clear some reviews."
+              }
+              glyph="学"
+              muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
+              onPress={() => router.push('/lesson')}
+              accessibilityLabel={
+                lessonAllowance !== null && lessonAllowance.remaining === 0
+                  ? 'Daily lesson limit reached'
+                  : "Start today's lesson"
+              }
+              testID="home-learn-button"
+            />
+          </FadeSlideIn>
+          {level ? (
+            <FadeSlideIn index={4}>
+              <LevelProgressBar
+                level={level}
+                perType={perType}
+                overallPercent={overallPercent}
+              />
+            </FadeSlideIn>
+          ) : null}
+          <FadeSlideIn index={5}>
+            <ReviewForecast forecast={forecast ?? buildReviewForecast([])} />
+          </FadeSlideIn>
+          {readingTarget ? (
+            <FadeSlideIn index={6}>
+              <ReadingReadiness
+                target={readingTarget}
+                onPress={() => router.push(`/read/${readingTarget.passageId}`)}
+              />
+            </FadeSlideIn>
+          ) : null}
+          {atRiskCount > 0 ? (
+            <FadeSlideIn index={7}>
+              <AtRiskSection
+                totalCount={atRiskCount}
+                topItems={atRiskTopItems}
+                allItems={atRiskAllItems}
+                onStartRevision={handleStartRevision}
+              />
+            </FadeSlideIn>
+          ) : null}
         </ScrollView>
       </SafeAreaView>
     </View>

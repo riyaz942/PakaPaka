@@ -34,6 +34,7 @@ describe('SessionSummaryCard', () => {
     expect(
       screen.getByText('Estimated from separate single-purpose apps — deliberately conservative.'),
     ).toBeTruthy();
+    expect(screen.queryByText('18 min studied')).toBeNull();
     expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
       'Goal met — +30% overshoot',
     );

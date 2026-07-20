@@ -178,18 +178,25 @@ export function useReviewQueue(): UseReviewQueueResult {
       let dueSrsStates = getDueSrsStates(userDb, now, QUEUE_FETCH_LIMIT);
 
       // Home triage handoff (FR59/FR61): a one-shot priority hint narrows the
-      // due set to the requested items and/or caps the session size. Consumed
-      // exactly once — backing out drops it rather than replaying.
+      // candidate set and/or caps session size. Cleared only after the queue
+      // successfully materializes so a failed build can retry the same hint.
       const priority = getReviewPriority();
-      if (priority) {
-        clearReviewPriority();
-        dueSrsStates = applyReviewPriority(dueSrsStates, priority);
+      let preferredStates: typeof dueSrsStates = [];
+      if (priority && priority.itemIds.length > 0) {
+        const preferredMap = getSrsStatesForItems(userDb, priority.itemIds);
+        preferredStates = priority.itemIds
+          .map((id) => preferredMap.get(id))
+          .filter((state): state is (typeof dueSrsStates)[number] =>
+            state != null && !state.isBurned,
+          );
       }
+      dueSrsStates = applyReviewPriority(dueSrsStates, priority, preferredStates);
 
       if (dueSrsStates.length === 0) {
         const elapsed = Date.now() - t0;
         setQueueBuildMs(elapsed);
         setQueue([]);
+        if (priority) clearReviewPriority();
         setIsLoading(false);
         return;
       }
@@ -361,6 +368,7 @@ export function useReviewQueue(): UseReviewQueueResult {
 
       setQueueBuildMs(elapsed);
       setQueue(built);
+      if (priority) clearReviewPriority();
     } catch (cause) {
       setError({
         code: 'queue_build_failed',

@@ -152,10 +152,10 @@ jest.mock('@/providers/CurriculumUpdateContext', () => ({
   }),
 }));
 
-const mockGetDueSrsStates = jest.fn();
+const mockCountDueSrsStates = jest.fn();
 
 jest.mock('@/data/user/srsStateRepository', () => ({
-  getDueSrsStates: (...args: unknown[]) => mockGetDueSrsStates(...args),
+  countDueSrsStates: (...args: unknown[]) => mockCountDueSrsStates(...args),
 }));
 
 const mockShadowModeDisable = jest.fn();
@@ -180,7 +180,7 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
 describe('HomeScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockGetDueSrsStates.mockReturnValue([]);
+    mockCountDueSrsStates.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
     mockPendingRiseTo = null;
@@ -197,9 +197,7 @@ describe('HomeScreen', () => {
   });
 
   function seedBigBacklog(count = 45) {
-    mockGetDueSrsStates.mockReturnValue(
-      Array.from({ length: count }, (_, i) => ({ itemId: String(i + 1) })),
-    );
+    mockCountDueSrsStates.mockReturnValue(count);
   }
 
   it('offers welcome-back triage only after absence with a big backlog; CTA starts a capped slice', () => {
@@ -281,7 +279,7 @@ describe('HomeScreen', () => {
 
     expect(screen.getByText('3 items ready for a refresher')).toBeTruthy();
     fireEvent.press(screen.getByTestId('at-risk-start-revision'));
-    expect(getReviewPriority()).toEqual({ itemIds: ['5', '9', '12'], limit: null });
+    expect(getReviewPriority()).toEqual({ itemIds: ['5', '9', '12'], limit: 8 });
     expect(mockRouterPush).toHaveBeenCalledWith('/review');
   });
 
@@ -302,6 +300,14 @@ describe('HomeScreen', () => {
   it('hides reading readiness when there is no locked destination', () => {
     render(<HomeScreen />);
     expect(screen.queryByTestId('reading-readiness')).toBeNull();
+  });
+
+  it('renders the designed forecast empty state when forecast data is not ready yet', () => {
+    mockForecast = null;
+    render(<HomeScreen />);
+
+    expect(screen.getByTestId('review-forecast')).toBeTruthy();
+    expect(screen.getByTestId('review-forecast-empty')).toBeTruthy();
   });
 
   it('renders the one-week forecast when data is available and refetches it on focus', () => {
@@ -337,7 +343,7 @@ describe('HomeScreen', () => {
   });
 
   it('renders goal ring, Review and Learn buttons, and progress bar — no streak UI', () => {
-    mockGetDueSrsStates.mockReturnValue([{ itemId: '1' }, { itemId: '2' }]);
+    mockCountDueSrsStates.mockReturnValue(2);
     render(<HomeScreen />);
 
     const ring = screen.getByLabelText('Goal 42 percent');
@@ -351,7 +357,7 @@ describe('HomeScreen', () => {
   });
 
   it('renders Review above Learn (UX-DR3: review-first hierarchy)', () => {
-    mockGetDueSrsStates.mockReturnValue([{ itemId: '1' }, { itemId: '2' }]);
+    mockCountDueSrsStates.mockReturnValue(2);
     render(<HomeScreen />);
 
     const buttons = screen.getAllByRole('button');
@@ -366,7 +372,7 @@ describe('HomeScreen', () => {
   it('refetches goal data on focus (BUG1: no skipped first focus)', () => {
     render(<HomeScreen />);
     expect(mockRefetchLoad).toHaveBeenCalled();
-    expect(mockGetDueSrsStates).toHaveBeenCalled();
+    expect(mockCountDueSrsStates).toHaveBeenCalled();
   });
 
   it('does not render SRS stage breakdown', () => {
@@ -376,7 +382,7 @@ describe('HomeScreen', () => {
   });
 
   it('disables Review button when zero items are due', () => {
-    mockGetDueSrsStates.mockReturnValue([]);
+    mockCountDueSrsStates.mockReturnValue(0);
     render(<HomeScreen />);
 
     const reviewButton = screen.getByRole('button', { name: /all caught up/i });

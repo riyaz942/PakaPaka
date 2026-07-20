@@ -120,3 +120,8 @@
 ## Deferred from: code review of 1-2-review-pacing-reveal-card-progress (2026-07-20)
 
 - **Sync exact-match collision SQL can miss normalize-equal answers / may slow as curriculum grows** — `findItemsByAcceptedAnswer` uses `lower(...) IN (...)` only (intentional for NFR1); JS normalize verify never sees candidates that differ only by meaning-normalization (e.g. “eat” vs “to eat”), and full-table IN scans may degrade as `accepted_answers` grows. Revisit with indexed/normalized lookup if false negatives or latency appear. [`mobile/src/data/curriculum/itemRepository.ts`]
+
+## Deferred from: code review of 2-2-home-triage-post-session-proof-days-studied (2026-07-20)
+
+- **Greeting sentence does up to 20 sequential curriculum lookups on every Home focus** — documented I4 interim (no `vocabulary_slugs` on example sentences); optimize later. [`mobile/src/data/curriculum/greetingRepository.ts`]
+- **`useReadingReadiness` N+1 link/SRS fetches per passage on each Home focus** — correct unlock math; batch/optimize when Story 3.2 reuses `passageUnlock`. [`mobile/src/data/hooks/useReadingReadiness.ts`]

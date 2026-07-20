@@ -29,20 +29,25 @@ describe('applyReviewPriority', () => {
     expect(applyReviewPriority(states, null)).toBe(states);
   });
 
-  it('narrows to preferred IDs that are actually due (at-risk revision)', () => {
+  it('keeps preferred IDs in ranking order (at-risk revision)', () => {
     const result = applyReviewPriority(due('1', '2', '3'), {
       itemIds: ['3', '1', '99'],
       limit: null,
     });
-    expect(result.map((s) => s.itemId)).toEqual(['1', '3']);
+    expect(result.map((s) => s.itemId)).toEqual(['3', '1']);
   });
 
-  it('falls back to the full due set when no preferred ID is due', () => {
+  it('includes preferred IDs from preferredStates even when not in the due set', () => {
+    const result = applyReviewPriority(due('1', '2'), { itemIds: ['99', '1'], limit: null }, due('99'));
+    expect(result.map((s) => s.itemId)).toEqual(['99', '1']);
+  });
+
+  it('does not fall back to the full due set when no preferred ID resolves', () => {
     const result = applyReviewPriority(due('1', '2'), { itemIds: ['99'], limit: null });
-    expect(result.map((s) => s.itemId)).toEqual(['1', '2']);
+    expect(result).toEqual([]);
   });
 
-  it('caps the session with limit (welcome-back slice)', () => {
+  it('caps the session with limit (welcome-back / at-risk slice)', () => {
     const states = due(...Array.from({ length: 50 }, (_, i) => String(i + 1)));
     const result = applyReviewPriority(states, { itemIds: [], limit: 20 });
     expect(result).toHaveLength(20);

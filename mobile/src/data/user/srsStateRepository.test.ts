@@ -2,6 +2,7 @@ import { openDatabaseAsync, __mockResetSqlite, __mockSetSrsStates } from '../../
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import {
+  countDueSrsStates,
   countStartedItemsByIds,
   getDueSrsStates,
   getUpcomingDueDates,
@@ -117,6 +118,18 @@ describe('getDueSrsStates', () => {
     ]);
     const result = getDueSrsStates(db, NOW, 2);
     expect(result).toHaveLength(2);
+  });
+});
+
+describe('countDueSrsStates', () => {
+  it('returns an uncapped count of non-burned dues', () => {
+    __mockSetSrsStates('user.db', [
+      { item_id: 1, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 1, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 2, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 3, stability: 5, difficulty: 5, due_date: FUTURE_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
+      { item_id: 4, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 1, srs_stage_label: 'burned', updated_at: PAST_ISO },
+    ]);
+    expect(countDueSrsStates(db, NOW)).toBe(2);
   });
 });
 

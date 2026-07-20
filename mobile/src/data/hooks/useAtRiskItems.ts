@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { AT_RISK_TOP_N } from '@/config/constants';
 import { selectAtRiskItems } from '@/core/engagement/atRiskSelector';
 import { calculateWeaknessScore } from '@/core/srs/weaknessEngine';
 import { getItemById } from '@/data/curriculum/itemRepository';
@@ -63,19 +64,18 @@ export function useAtRiskItems(): UseAtRiskItemsResult {
 
       const selection = selectAtRiskItems(candidates);
 
-      const displayIds = selection.rankedItemIds.slice(0, AT_RISK_DISPLAY_LIMIT);
-      const display: AtRiskListItem[] = [];
-      for (const itemId of displayIds) {
+      // Drop orphans (SRS/weakness without a curriculum row) from counts and handoff.
+      const resolved: AtRiskListItem[] = [];
+      for (const itemId of selection.rankedItemIds) {
         const item = getItemById(curriculumDb, itemId);
-        if (item) {
-          display.push({ itemId, primaryForm: item.primaryForm, meaning: item.meaning });
-        }
+        if (!item) continue;
+        resolved.push({ itemId, primaryForm: item.primaryForm, meaning: item.meaning });
       }
 
-      setTotalCount(selection.totalCount);
-      setTopItems(display.slice(0, selection.topItemIds.length));
-      setAllItems(display);
-      setRankedItemIds(selection.rankedItemIds);
+      setTotalCount(resolved.length);
+      setTopItems(resolved.slice(0, AT_RISK_TOP_N));
+      setAllItems(resolved.slice(0, AT_RISK_DISPLAY_LIMIT));
+      setRankedItemIds(resolved.map((row) => row.itemId));
     } catch {
       setTotalCount(0);
       setTopItems([]);

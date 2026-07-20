@@ -92,12 +92,14 @@ export function SessionSummaryCard({
         ) : null}
       </View>
 
-      <Text
-        accessibilityRole="text"
-        accessibilityLabel={`${actualMinutes} minutes studied this session`}
-        className="text-body-lg text-primary">
-        {`${actualMinutes} min studied`}
-      </Text>
+      {estimatedMinutes === null ? (
+        <Text
+          accessibilityRole="text"
+          accessibilityLabel={`${actualMinutes} minutes studied this session`}
+          className="text-body-lg text-primary">
+          {`${actualMinutes} min studied`}
+        </Text>
+      ) : null}
 
       {goalPercent !== null ? (
         <Text

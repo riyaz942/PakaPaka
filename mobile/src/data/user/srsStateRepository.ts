@@ -101,22 +101,27 @@ export function getDueSrsStates(
   return rows.map(mapRowToState);
 }
 
+/** Uncapped due count for Home CTA / welcome-back copy (FR61). */
+export function countDueSrsStates(userDb: SQLiteDatabase, now: Date = new Date()): number {
+  const row = userDb.getFirstSync<{ count: number }>(
+    `SELECT COUNT(*) AS count FROM srs_states
+     WHERE due_date <= ? AND is_burned = 0`,
+    now.toISOString(),
+  );
+  return row?.count ?? 0;
+}
+
 /**
  * Due-date strings only (non-burned, due on or before untilIso) — cheap Home
  * forecast read that avoids materializing full SRS rows on every focus.
+ * No row cap: the 7-day wall annotation needs the full window.
  */
-export function getUpcomingDueDates(
-  userDb: SQLiteDatabase,
-  untilIso: string,
-  limit = 2000,
-): string[] {
+export function getUpcomingDueDates(userDb: SQLiteDatabase, untilIso: string): string[] {
   const rows = userDb.getAllSync<{ due_date: string }>(
     `SELECT due_date FROM srs_states
      WHERE due_date <= ? AND is_burned = 0
-     ORDER BY due_date ASC
-     LIMIT ?`,
+     ORDER BY due_date ASC`,
     untilIso,
-    limit,
   );
   return rows.map((row) => row.due_date);
 }
