@@ -175,9 +175,11 @@ export function setReviewAutoAdvanceEnabled(userDb: SQLiteDatabase, enabled: boo
 }
 
 /**
- * 'auto' hides furigana only on kanji the user already knows (item_study_status
- * = 'known' or an SRS stage of guru+), per the furigana support plan. Default
- * is 'auto', not 'shown' — furigana should help on unfamiliar kanji by default.
+ * Global furigana display preference. In 'auto', visibility is resolved per
+ * surface: vocabulary item's own mastery (Tier 1) or characters appearing in
+ * mastered vocabulary (Tier 2) — never merely because a standalone kanji item
+ * is mastered (FR78 / BUG6). Default is 'auto', not 'shown' — furigana should
+ * help on unfamiliar words by default.
  */
 export type FuriganaDisplayMode = 'shown' | 'hidden' | 'auto';
 

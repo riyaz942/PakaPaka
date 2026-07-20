@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { resolveFuriganaMode } from '@/core/furigana/resolveFuriganaMode';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { subscribeFuriganaOverrides } from '@/data/user/furiganaOverrideEvents';
 import {
   clearAllFuriganaOverrides,
   clearFuriganaOverride,
@@ -51,6 +52,12 @@ export function useFuriganaPreference(): UseFuriganaPreferenceResult {
     getAllFuriganaOverrides(userDb),
   );
 
+  useEffect(() => {
+    return subscribeFuriganaOverrides(() => {
+      setOverrides(getAllFuriganaOverrides(userDb));
+    });
+  }, [userDb]);
+
   const setMode = useCallback(
     (next: FuriganaDisplayMode) => {
       setFuriganaDisplay(userDb, next);
@@ -72,7 +79,7 @@ export function useFuriganaPreference(): UseFuriganaPreferenceResult {
   const setOverride = useCallback(
     (itemId: string, next: FuriganaOverrideMode) => {
       setFuriganaOverride(userDb, itemId, next);
-      setOverrides((previous) => new Map(previous).set(itemId, next));
+      // Local map is also refreshed via subscribeFuriganaOverrides (repository notify).
     },
     [userDb],
   );
@@ -80,18 +87,12 @@ export function useFuriganaPreference(): UseFuriganaPreferenceResult {
   const clearOverride = useCallback(
     (itemId: string) => {
       clearFuriganaOverride(userDb, itemId);
-      setOverrides((previous) => {
-        const next = new Map(previous);
-        next.delete(itemId);
-        return next;
-      });
     },
     [userDb],
   );
 
   const clearAllOverrides = useCallback(() => {
     clearAllFuriganaOverrides(userDb);
-    setOverrides(new Map());
   }, [userDb]);
 
   return {

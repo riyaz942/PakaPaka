@@ -1,5 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { notifyFuriganaOverridesChanged } from '@/data/user/furiganaOverrideEvents';
+
 /**
  * A persistent per-word furigana choice (FR79). Deliberately narrower than
  * `FuriganaDisplayMode`: an override is always definite, and 'auto' is
@@ -47,37 +49,41 @@ export function setFuriganaOverride(
     mode,
     new Date().toISOString(),
   );
+  notifyFuriganaOverridesChanged();
 }
 
 export function clearFuriganaOverride(userDb: SQLiteDatabase, itemId: string): void {
   userDb.runSync('DELETE FROM furigana_overrides WHERE item_id = ?', itemId);
+  notifyFuriganaOverridesChanged();
 }
 
 /** Settings "reset overrides" (AC #3) — drops every per-word choice at once. */
 export function clearAllFuriganaOverrides(userDb: SQLiteDatabase): void {
   userDb.runSync('DELETE FROM furigana_overrides');
+  notifyFuriganaOverridesChanged();
 }
 
 /**
- * Overrides with their word labels, for the Settings list. Joins the
- * `curriculum` alias attached by `attachCurriculumForQuery` (see database.ts),
- * the same cross-DB mechanism `getKnownVocabularyCharacters` uses.
+ * Overrides with their word labels, for the Settings list. Left-joins the
+ * `curriculum` alias attached by `attachCurriculumForQuery` (see database.ts)
+ * so rows whose item was removed by a curriculum OTA still appear and can be
+ * reset (INNER JOIN would hide them while `getAllFuriganaOverrides` kept applying them).
  */
 export function listFuriganaOverrides(userDb: SQLiteDatabase): FuriganaOverrideEntry[] {
   const rows = userDb.getAllSync<{
     item_id: string;
-    primary_form: string;
+    primary_form: string | null;
     display_mode: FuriganaOverrideMode;
   }>(
     `SELECT o.item_id, i.primary_form, o.display_mode
      FROM furigana_overrides o
-     JOIN curriculum.items i ON i.id = o.item_id
+     LEFT JOIN curriculum.items i ON i.id = o.item_id
      ORDER BY o.updated_at DESC`,
   );
 
   return rows.map((row) => ({
     itemId: row.item_id,
-    primaryForm: row.primary_form,
+    primaryForm: row.primary_form ?? '(removed)',
     mode: row.display_mode,
   }));
 }

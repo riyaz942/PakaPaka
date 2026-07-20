@@ -15,6 +15,13 @@ jest.mock('expo-router', () => ({
   router: {
     push: (...args: unknown[]) => mockPush(...args),
   },
+  useFocusEffect: (callback: () => void | (() => void)) => {
+    const { useEffect } = jest.requireActual<typeof import('react')>('react');
+    useEffect(() => {
+      const cleanup = callback();
+      return typeof cleanup === 'function' ? cleanup : undefined;
+    }, [callback]);
+  },
 }));
 
 jest.mock('@/data/hooks/useDatabase', () => {

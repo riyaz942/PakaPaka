@@ -31,9 +31,11 @@ export function PassageWordDetailSheet({
   visible,
   onDismiss,
 }: PassageWordDetailSheetProps) {
-  const { modeForItem } = useFuriganaPreference();
-  // The sheet shows exactly one item's own word, so its own mastery decides.
-  const isKnownWord = useIsKnownWord(item?.itemType === 'vocabulary' ? item.id : null);
+  const { modeForItem, knownKanji } = useFuriganaPreference();
+  const isVocabulary = item?.itemType === 'vocabulary';
+  // Tier 1 only for vocabulary: a defined `isKnownWord` short-circuits Tier 2,
+  // so kanji/radical/grammar must omit the prop and use knownKanji instead.
+  const isKnownWord = useIsKnownWord(isVocabulary && item ? item.id : null);
   const accent = item ? CONTENT_TYPE_ACCENT[item.itemType] : null;
 
   return (
@@ -56,7 +58,8 @@ export function PassageWordDetailSheet({
               <FuriganaText
                 text={item.furigana ?? item.primaryForm}
                 mode={modeForItem(item.id)}
-                isKnownWord={isKnownWord}
+                isKnownWord={isVocabulary ? isKnownWord : undefined}
+                knownKanji={isVocabulary ? undefined : knownKanji}
                 accessibilityRole="header"
                 className={cn('text-title-lg', accent?.text)}
               />

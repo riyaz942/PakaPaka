@@ -4,7 +4,7 @@ baseline_commit: 683d598
 
 # Story 4.2: Furigana Model, Settings Overrides & Compare View
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -74,6 +74,17 @@ so that reading practice matches what I actually know and lookalike mistakes bec
   - [x] Unit: `getKnownVocabularyCharacters`/renamed mastery function (guru+/known predicate now against `item_type = 'vocabulary'`); `furiganaOverrideRepository` get/set/clear/list; override resolution order (override → item mastery → global mode) as a pure function if extracted, or via the hook.
   - [x] Component/RNTL: `FuriganaText` Tier 1 known-word path (AC #1); confirm existing per-segment stateless toggle behavior is unchanged — resets on `text` prop change, no persisted state (AC #2); `CompareView` renders both items, dims shared component chips, sticky glyph behavior (structural test, not visual regression) (AC #4); `review/compare` still resolves `left`/`right` params correctly after the stub is replaced (AC #4); Settings overrides list renders + reset works (AC #3); spot-check that details/lesson/passage surfaces still render via the shared `FuriganaText` primitive with no per-surface fork (AC #5).
   - [x] Gates from `mobile/`: `npm run typecheck`, `npm run lint`, `npm test` (targeted suites OK while iterating; full test before review) — mirror Story 4.1's gate results (150 suites / 1192 tests passing baseline; expect growth, not shrinkage).
+
+### Review Findings
+
+- [x] [Review][Patch] Override control and hero use disconnected `useFuriganaPreference` state — setting Always show/hide updates the control's local map (and DB) but not the parent's `modeForItem`, so the hero stays stale until remount [`VocabularyDetail.tsx:43`][`FuriganaOverrideControl.tsx:27`]
+- [x] [Review][Patch] Settings override reset does not invalidate other mounted furigana hooks — Expo tabs keep screens alive; `useFuriganaOverrideList` clears DB + its own list while retained `useFuriganaPreference` maps stay stale [`useFuriganaOverrideList.ts:31`][`useFuriganaPreference.ts:50`]
+- [x] [Review][Patch] Passage word sheet forces Tier-1 always-show for non-vocab — `useIsKnownWord(null)` is `false`, and passing `isKnownWord={false}` skips Tier 2; omit the prop (and restore `knownKanji`) when `itemType !== 'vocabulary'` [`PassageWordDetailSheet.tsx:36`]
+- [x] [Review][Patch] CompareView omits the Reading short attribute required by AC #4 / Task 4 (`meaning, reading, item type, JLPT level`) — `useItemDetail` already loads `kanjiReadings` / `acceptedAnswers` but Compare never surfaces them [`CompareView.tsx:184`]
+- [x] [Review][Patch] Orphan overrides stay active but vanish from Settings — `listFuriganaOverrides` INNER JOINs curriculum; `getAllFuriganaOverrides` still applies missing-item rows that cannot be reset individually [`furiganaOverrideRepository.ts:72`]
+- [x] [Review][Patch] `useIsKnownWord` never refreshes after mastery changes — memoized on `[userDb, itemId]` only; a still-mounted hero/sheet keeps pre-promotion Tier 1 visibility [`useIsKnownWord.ts:17`]
+- [x] [Review][Patch] Shared Compare chips use `opacity-40` which likely fails readable contrast — mute via semantic tokens (`text-secondary` / surface) without crushing opacity [`CompareView.tsx:92`]
+- [x] [Review][Patch] Stale `preferencesRepository` furigana doc comment still says auto hides on known *kanji* — Task 2 required updating it for vocabulary-mastery [`preferencesRepository.ts:178`]
 
 ## Dev Notes
 
@@ -295,3 +306,4 @@ Two tiers, as scoped:
 | Date | Change |
 | --- | --- |
 | 2026-07-20 | Story 4.2 implemented: migration `016_furigana_overrides`, per-word override repository/hooks/UI, BUG6 vocabulary-mastery furigana fix (Tier 1 + Tier 2), shared `CompareView` fulfilling the Story 1.2 `review/compare` contract plus a new Browse Compare picker route. Status → review. |
+| 2026-07-20 | Code review patches applied: cross-mount override sync, passage Tier-1/Tier-2 fix, Compare Reading column + chip contrast, orphan override listing, `useIsKnownWord` focus refresh, preferences doc. Status → done. |

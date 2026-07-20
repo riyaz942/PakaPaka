@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { isVocabularyItemKnown } from '@/data/user/masteryRepository';
@@ -10,9 +11,23 @@ import { isVocabularyItemKnown } from '@/data/user/masteryRepository';
  *
  * Returns false for a null id or a non-vocabulary item: only vocabulary carries
  * furigana, and only its own mastery may hide it.
+ *
+ * Re-reads on focus so a still-mounted detail/sheet picks up a promotion from
+ * a lesson or review that ran while this screen stayed alive in the tab stack.
  */
 export function useIsKnownWord(itemId: string | null | undefined): boolean {
   const { userDb } = useDatabase();
+  const [known, setKnown] = useState(() => isVocabularyItemKnown(userDb, itemId));
 
-  return useMemo(() => isVocabularyItemKnown(userDb, itemId), [userDb, itemId]);
+  const refresh = useCallback(() => {
+    setKnown(isVocabularyItemKnown(userDb, itemId));
+  }, [userDb, itemId]);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  useFocusEffect(refresh);
+
+  return known;
 }

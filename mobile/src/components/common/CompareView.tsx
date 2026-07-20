@@ -4,7 +4,12 @@ import { ScrollView, Text, View } from 'react-native';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
-import type { CurriculumItemDetail, CurriculumParentItem } from '@/data/curriculum/itemRepository';
+import type {
+  AcceptedAnswer,
+  CurriculumItemDetail,
+  CurriculumParentItem,
+  KanjiReading,
+} from '@/data/curriculum/itemRepository';
 import { useComponentParents } from '@/data/hooks/useComponentParents';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
@@ -17,6 +22,25 @@ type CompareViewProps = {
 };
 
 type Side = 'left' | 'right';
+
+/** Short-attribute reading label for Compare (AC #4 / FR80). */
+export function formatCompareReading(
+  item: CurriculumItemDetail,
+  kanjiReadings: KanjiReading[] | null,
+  acceptedAnswers: AcceptedAnswer[],
+): string {
+  if (item.itemType === 'kanji') {
+    const readings = (kanjiReadings ?? []).map((reading) => reading.reading);
+    return readings.length > 0 ? readings.join(' · ') : '—';
+  }
+
+  const readings = acceptedAnswers
+    .filter((answer) => answer.answerType === 'reading' || answer.answerType === 'production')
+    .sort((a, b) => Number(b.isPrimary) - Number(a.isPrimary))
+    .map((answer) => answer.answerText);
+
+  return readings.length > 0 ? readings.join(' · ') : '—';
+}
 
 function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }) {
   const { modeForItem } = useFuriganaPreference();
@@ -86,10 +110,10 @@ function ComponentChips({
               shared ? `${parent.primaryForm}, shared component` : parent.primaryForm
             }
             className={cn(
-              'min-h-[44px] min-w-[44px] justify-center rounded-radius-md px-3 py-2',
-              // Shared parts recede so the *differences* are what stands out —
-              // the whole point of opening Compare on a lookalike collision.
-              shared ? 'bg-surface opacity-40' : 'bg-surface',
+              'min-h-[44px] min-w-[44px] justify-center rounded-radius-md bg-surface px-3 py-2',
+              // Shared parts recede via secondary text (not opacity) so labels
+              // stay readable while differences still stand out.
+              shared ? 'border border-border' : 'border border-transparent',
             )}>
             <Text className={cn('text-body', shared ? 'text-secondary' : 'text-primary')}>
               {parent.primaryForm}
@@ -182,6 +206,11 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
         contentContainerClassName="px-space-lg pt-space-md pb-space-2xl"
         testID="compare-scroll">
         <AttributeRow label="Meaning" left={leftItem.meaning} right={rightItem.meaning} />
+        <AttributeRow
+          label="Reading"
+          left={formatCompareReading(leftItem, left.kanjiReadings, left.acceptedAnswers)}
+          right={formatCompareReading(rightItem, right.kanjiReadings, right.acceptedAnswers)}
+        />
         <AttributeRow
           label="Type"
           left={CONTENT_TYPE_LABEL[leftItem.itemType]}

@@ -1,6 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { subscribeFuriganaOverrides } from '@/data/user/furiganaOverrideEvents';
 import {
   clearAllFuriganaOverrides,
   clearFuriganaOverride,
@@ -20,7 +21,9 @@ type UseFuriganaOverrideListResult = {
  * or reset them all.
  *
  * Read synchronously on mount rather than in an effect, so the list never
- * renders an empty shell that fills in a tick later.
+ * renders an empty shell that fills in a tick later. Subscribes to override
+ * writes so a reset on this screen (or a set on a detail page) stays in sync
+ * with other mounted furigana surfaces.
  */
 export function useFuriganaOverrideList(): UseFuriganaOverrideListResult {
   const { userDb } = useDatabase();
@@ -28,17 +31,21 @@ export function useFuriganaOverrideList(): UseFuriganaOverrideListResult {
     listFuriganaOverrides(userDb),
   );
 
+  useEffect(() => {
+    return subscribeFuriganaOverrides(() => {
+      setEntries(listFuriganaOverrides(userDb));
+    });
+  }, [userDb]);
+
   const clearOne = useCallback(
     (itemId: string) => {
       clearFuriganaOverride(userDb, itemId);
-      setEntries((previous) => previous.filter((entry) => entry.itemId !== itemId));
     },
     [userDb],
   );
 
   const clearAll = useCallback(() => {
     clearAllFuriganaOverrides(userDb);
-    setEntries([]);
   }, [userDb]);
 
   return { entries, clearOne, clearAll };

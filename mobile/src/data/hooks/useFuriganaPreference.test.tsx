@@ -119,4 +119,16 @@ describe('useFuriganaPreference', () => {
 
     expect(result.current.modeForItem(undefined)).toBe('auto');
   });
+
+  it('reloads overrides when another hook instance writes', async () => {
+    const { wrapper } = await setup();
+    const first = renderHook(() => useFuriganaPreference(), { wrapper });
+    const second = renderHook(() => useFuriganaPreference(), { wrapper });
+
+    act(() => {
+      second.result.current.setOverride('vocab-1', 'hidden');
+    });
+
+    expect(first.result.current.modeForItem('vocab-1')).toBe('hidden');
+  });
 });

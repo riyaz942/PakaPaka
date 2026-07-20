@@ -22,11 +22,29 @@ function makeItem(overrides: Partial<CurriculumItemDetail> = {}): CurriculumItem
 const details: Record<string, ReturnType<typeof makeDetail>> = {};
 const parents: Record<string, CurriculumParentItem[]> = {};
 
-function makeDetail(item: CurriculumItemDetail | null, loading = false) {
+function makeDetail(
+  item: CurriculumItemDetail | null,
+  loading = false,
+  extras: Partial<ReturnType<typeof makeDetailBase>> = {},
+) {
+  return {
+    ...makeDetailBase(item, loading),
+    ...extras,
+  };
+}
+
+function makeDetailBase(item: CurriculumItemDetail | null, loading = false) {
   return {
     item,
-    kanjiReadings: null,
-    acceptedAnswers: [],
+    kanjiReadings: null as
+      | null
+      | { id: string; readingType: 'onyomi' | 'kunyomi'; reading: string; sortOrder: number }[],
+    acceptedAnswers: [] as {
+      id: string;
+      answerType: 'meaning' | 'reading' | 'production';
+      answerText: string;
+      isPrimary: boolean;
+    }[],
     grammarRule: null,
     exampleSentences: [],
     grammarVocabLinks: [],
@@ -106,10 +124,27 @@ describe('CompareView', () => {
   });
 
   it('columnizes short attributes for both items', () => {
+    details['left-1'] = makeDetail(makeItem(), false, {
+      kanjiReadings: [
+        { id: 'r1', readingType: 'onyomi', reading: 'ショク', sortOrder: 1 },
+      ],
+    });
+    details['right-1'] = makeDetail(
+      makeItem({ id: 'right-1', slug: 'drink', primaryForm: '飲', meaning: 'drink' }),
+      false,
+      {
+        kanjiReadings: [
+          { id: 'r2', readingType: 'onyomi', reading: 'イン', sortOrder: 1 },
+        ],
+      },
+    );
     render(<CompareView leftId="left-1" rightId="right-1" />);
 
     expect(screen.getByText('eat, food')).toBeTruthy();
     expect(screen.getByText('drink')).toBeTruthy();
+    expect(screen.getByText('Reading')).toBeTruthy();
+    expect(screen.getByText('ショク')).toBeTruthy();
+    expect(screen.getByText('イン')).toBeTruthy();
     expect(screen.getAllByText('N5')).toHaveLength(2);
   });
 

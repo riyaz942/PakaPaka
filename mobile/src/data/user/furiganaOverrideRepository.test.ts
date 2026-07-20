@@ -95,11 +95,22 @@ describe('listFuriganaOverrides', () => {
     ]);
   });
 
-  it('joins curriculum items for the word label', () => {
+  it('left-joins curriculum items so orphan overrides still list', () => {
     const db = fakeUserDb([]);
     listFuriganaOverrides(db);
     const [sql] = (db.getAllSync as jest.Mock).mock.calls[0];
     expect(sql).toContain('curriculum.items');
+    expect(sql).toContain('LEFT JOIN');
+  });
+
+  it('labels orphans when curriculum no longer has the item', () => {
+    const db = fakeUserDb([
+      { item_id: 'gone-1', primary_form: null, display_mode: 'shown' },
+    ]);
+
+    expect(listFuriganaOverrides(db)).toEqual([
+      { itemId: 'gone-1', primaryForm: '(removed)', mode: 'shown' },
+    ]);
   });
 
   it('returns an empty list when nothing is overridden', () => {

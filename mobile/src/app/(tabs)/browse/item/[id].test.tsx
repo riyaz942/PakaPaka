@@ -17,6 +17,13 @@ jest.mock('expo-router', () => ({
     back: () => mockBack(),
   },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
+  useFocusEffect: (callback: () => void | (() => void)) => {
+    const { useEffect } = jest.requireActual<typeof import('react')>('react');
+    useEffect(() => {
+      const cleanup = callback();
+      return typeof cleanup === 'function' ? cleanup : undefined;
+    }, [callback]);
+  },
 }));
 
 function renderDetailScreen(
