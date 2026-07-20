@@ -4,7 +4,7 @@ baseline_commit: e736944
 
 # Story 3.1: Unified Browse List, Search & Filters
 
-Status: ready-for-dev
+Status: review
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -53,28 +53,28 @@ so that I can find anything without navigating per-level Learn screens or a sepa
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1 — Tab shell: Browse + remove Read + Conversation placeholder** (AC: #1)
-  - [ ] Update `app/(tabs)/_layout.tsx`: tabs = **Home · Browse · Talk · Stats · Settings**. Icon suggestions: Browse `search` / `menu-book`; Talk `chat` / `forum`. Short label **Talk** is OK (UX-DR3).
-  - [ ] Add `app/(tabs)/browse/` stack (`_layout.tsx`, `index.tsx`). Remove or unmount Read as a tab screen.
-  - [ ] Add `app/(tabs)/converse/index.tsx` (or `talk/`) placeholder: calm empty state (“Conversation coming soon” / offline-friendly). No BYOK, no chat — Epic 5 owns that.
-  - [ ] Temporary redirects: `learn/*` → browse equivalents; `read/index` → `/browse`; `read/[id]` → `/browse/passage/[id]` (Expo Router redirect or thin re-export screens). Keep working deep-links from Home readiness (`/read/[id]` today).
-  - [ ] Home **Learn CTA stays “Learn”** and still starts a lesson (`/lesson`) — Home offers study modes; Browse is discovery (FR58 vs FR62). Do not rename Home CTA to Browse.
-  - [ ] Retarget `ReadingReadiness` navigation to `/browse/passage/[id]` (keep `/read/[id]` redirect as safety).
-  - [ ] Update tab layout tests / any hardcoded “Learn” / “Read” tab assertions.
+- [x] **Task 1 — Tab shell: Browse + remove Read + Conversation placeholder** (AC: #1)
+  - [x] Update `app/(tabs)/_layout.tsx`: tabs = **Home · Browse · Talk · Stats · Settings**. Icon suggestions: Browse `search` / `menu-book`; Talk `chat` / `forum`. Short label **Talk** is OK (UX-DR3).
+  - [x] Add `app/(tabs)/browse/` stack (`_layout.tsx`, `index.tsx`). Remove or unmount Read as a tab screen.
+  - [x] Add `app/(tabs)/converse/index.tsx` (or `talk/`) placeholder: calm empty state (“Conversation coming soon” / offline-friendly). No BYOK, no chat — Epic 5 owns that.
+  - [x] Temporary redirects: `learn/*` → browse equivalents; `read/index` → `/browse`; `read/[id]` → `/browse/passage/[id]` (Expo Router redirect or thin re-export screens). Keep working deep-links from Home readiness (`/read/[id]` today).
+  - [x] Home **Learn CTA stays “Learn”** and still starts a lesson (`/lesson`) — Home offers study modes; Browse is discovery (FR58 vs FR62). Do not rename Home CTA to Browse.
+  - [x] Retarget `ReadingReadiness` navigation to `/browse/passage/[id]` (keep `/read/[id]` redirect as safety).
+  - [x] Update tab layout tests / any hardcoded “Learn” / “Read” tab assertions.
 
-- [ ] **Task 2 — Browse query layer (UNION + pagination + count)** (AC: #2, #3, #4)
-  - [ ] New `data/curriculum/browseRepository.ts` (SQL lives here — **never** build UNION SQL in JSX).
-  - [ ] Row model e.g. `BrowseRowModel`:
+- [x] **Task 2 — Browse query layer (UNION + pagination + count)** (AC: #2, #3, #4)
+  - [x] New `data/curriculum/browseRepository.ts` (SQL lives here — **never** build UNION SQL in JSX).
+  - [x] Row model e.g. `BrowseRowModel`:
     - Discriminated: `{ kind: 'item' | 'passage'; id; jlptLevel; sortKey; ... }`
     - Item: `itemType`, `primaryForm`, `meaning`, optional reading snippet, optional study/SRS fields for display
     - Passage: `title`, `summaryJa?`, `summaryEn?`, `locked`, `itemsRemainingToUnlock?`
-  - [ ] `listBrowsePage(userDb, filters, search, { limit, offset })` and `countBrowse(userDb, filters, search)` using **ATTACH** (`CURRICULUM_ATTACH_ALIAS` / `curriculum.*`) so SRS + study status join in one query when facets need them.
-  - [ ] Default sort: JLPT easy-first (N5→N1) then `sort_order`, with a stable tie-break (e.g. kind+id) so pagination does not duplicate/skip.
-  - [ ] Page size constant (suggest `BROWSE_PAGE_SIZE = 40`) in `config/constants.ts`.
-  - [ ] Indexes: if LIKE search is slow on device, add curriculum compile indexes on searched columns (`items.primary_form`, `items.meaning`, `accepted_answers.answer_text`, passage title/summary fields) — measure before inventing FTS.
+  - [x] `listBrowsePage(userDb, filters, search, { limit, offset })` and `countBrowse(userDb, filters, search)` using **ATTACH** (`CURRICULUM_ATTACH_ALIAS` / `curriculum.*`) so SRS + study status join in one query when facets need them.
+  - [x] Default sort: JLPT easy-first (N5→N1) then `sort_order`, with a stable tie-break (e.g. kind+id) so pagination does not duplicate/skip.
+  - [x] Page size constant (suggest `BROWSE_PAGE_SIZE = 40`) in `config/constants.ts`.
+  - [x] Indexes: if LIKE search is slow on device, add curriculum compile indexes on searched columns (`items.primary_form`, `items.meaning`, `accepted_answers.answer_text`, passage title/summary fields) — measure before inventing FTS.
 
-- [ ] **Task 3 — Faceted filters + live Apply count + pills** (AC: #3, #7)
-  - [ ] Facets (multi-select each; empty facet = no constraint):
+- [x] **Task 3 — Faceted filters + live Apply count + pills** (AC: #3, #7)
+  - [x] Facets (multi-select each; empty facet = no constraint):
     | Facet | Values | Source |
     | --- | --- | --- |
     | Level | N5–N1 | `items.jlpt_level` / `reading_passages.jlpt_level` |
@@ -82,41 +82,41 @@ so that I can find anything without navigating per-level Learn screens or a sepa
     | Performance | known, in_progress, not_started | `item_study_status` (default missing → `not_started`); passages: map via unlock or exclude from this facet when N/A — document choice (prefer: performance applies to items only; selecting performance alone still returns matching items + all/unfiltered passages unless Type=passage also set) |
     | SRS stage | apprentice, guru, master, enlightened, burned | `srs_states.srs_stage_label` (items without SRS row = no stage — only match when facet empty or treat as not-in-SRS; do **not** invent fake stages) |
     | Lock | locked, unlocked | **Passages only** via `computePassageUnlock` (≥90% Guru+). Items never participate in lock facet. |
-  - [ ] UI: five `FilterPill` entry points → `FilterDrawer` (modal/bottom sheet) with multi-select options + **Apply (N)** live count (debounce count queries ~100–150ms while toggling). Disable Apply when N=0.
-  - [ ] Applied filters render as **self-summarizing pills** (e.g. “N5”, “Vocab + Grammar”, “Guru+”, “Locked”) with clear-one / clear-all.
-  - [ ] Filter state: local React state or tiny `BrowseFilterContext` — **not** `ReviewSessionProvider`.
-  - [ ] Empty list: “No matches” + clear-filters action (UX-DR30). Distinct from loading skeletons.
+  - [x] UI: five `FilterPill` entry points → `FilterDrawer` (modal/bottom sheet) with multi-select options + **Apply (N)** live count (debounce count queries ~100–150ms while toggling). Disable Apply when N=0.
+  - [x] Applied filters render as **self-summarizing pills** (e.g. “N5”, “Vocab + Grammar”, “Guru+”, “Locked”) with clear-one / clear-all.
+  - [x] Filter state: local React state or tiny `BrowseFilterContext` — **not** `ReviewSessionProvider`.
+  - [x] Empty list: “No matches” + clear-filters action (UX-DR30). Distinct from loading skeletons.
 
-- [ ] **Task 4 — Fan-out search (~200ms debounce)** (AC: #4)
-  - [ ] `SearchField` at top of Browse (Direction G). Controlled input; debounce **200ms** before querying.
-  - [ ] Fan-out: keep **raw query** always; if romaji-ish, also compute `wanakana.toHiragana(raw)` (and optionally katakana) **in parallel as extra OR branches** — never replace the TextInput value with kana (unlike review `WanaKanaInput`).
-  - [ ] OR branches (case-insensitive WHERE possible): `primary_form`, `meaning`, `accepted_answers.answer_text`, `kanji_readings.reading`, passage `title`, passage summary JA/EN when columns exist, fallback `english_translation` for EN.
-  - [ ] Partial romaji: untranslated consonant tail must not break search (brainstorm) — keep raw prefix; treat failed kana conversion as “raw only”.
-  - [ ] Reject progressive/streaming result merging — one ranked/ordered query after debounce (sync SQLite).
+- [x] **Task 4 — Fan-out search (~200ms debounce)** (AC: #4)
+  - [x] `SearchField` at top of Browse (Direction G). Controlled input; debounce **200ms** before querying.
+  - [x] Fan-out: keep **raw query** always; if romaji-ish, also compute `wanakana.toHiragana(raw)` (and optionally katakana) **in parallel as extra OR branches** — never replace the TextInput value with kana (unlike review `WanaKanaInput`).
+  - [x] OR branches (case-insensitive WHERE possible): `primary_form`, `meaning`, `accepted_answers.answer_text`, `kanji_readings.reading`, passage `title`, passage summary JA/EN when columns exist, fallback `english_translation` for EN.
+  - [x] Partial romaji: untranslated consonant tail must not break search (brainstorm) — keep raw prefix; treat failed kana conversion as “raw only”.
+  - [x] Reject progressive/streaming result merging — one ranked/ordered query after debounce (sync SQLite).
 
-- [ ] **Task 5 — Browse list UI + BUG7** (AC: #2, #5, #6, #7)
-  - [ ] Components under `components/browse/`: `BrowseList`, `BrowseRow` (items), `PassageBrowseRow`, `SearchField`, `FilterPill`, `FilterDrawer`, empty state.
-  - [ ] Virtualized list: **RN `FlatList` + pagination** is the default for this story (no FlashList dependency yet; New Architecture / FlashList is Epic 5 platform work). Memoize row components; stable `keyExtractor` (`item:{id}` / `passage:{id}`). Load next page on end-reached.
-  - [ ] Item rows: content-type accent (`CONTENT_TYPE_ACCENT` / `content-reading` for passages). **Never** pass `isLocked` / dependency dimming for kanji/vocab/grammar — fix BUG7 by not porting `learn/[level].tsx:105-110` logic.
-  - [ ] Tapping item → `/browse/item/[id]` (reuse existing detail components from `components/learn/*` via thin route wrapper; redirects from `/learn/item/[id]` OK).
-  - [ ] Passage rows: title + bilingual summary when available; lock chip as destination framing (“3 to go”), not a dead-end padlock-only. Tap unlocked → `/browse/passage/[id]` (reuse `read/[id]` reader for now). Tap locked → **temporary**: navigate to passage route or show a lightweight “needs more study” sheet — full needed-items to-do list is **Story 3.2**. For 3.1, showing lock chip + opening a stub/existing reader that already handles locked state is OK if it is not a blank dead end; do not invent the full FR69 list here.
-  - [ ] Passage accent token: reuse `content-reading` (UX-DR32). Extend `contentType.ts` if needed for a passage label.
+- [x] **Task 5 — Browse list UI + BUG7** (AC: #2, #5, #6, #7)
+  - [x] Components under `components/browse/`: `BrowseList`, `BrowseRow` (items), `PassageBrowseRow`, `SearchField`, `FilterPill`, `FilterDrawer`, empty state.
+  - [x] Virtualized list: **RN `FlatList` + pagination** is the default for this story (no FlashList dependency yet; New Architecture / FlashList is Epic 5 platform work). Memoize row components; stable `keyExtractor` (`item:{id}` / `passage:{id}`). Load next page on end-reached.
+  - [x] Item rows: content-type accent (`CONTENT_TYPE_ACCENT` / `content-reading` for passages). **Never** pass `isLocked` / dependency dimming for kanji/vocab/grammar — fix BUG7 by not porting `learn/[level].tsx:105-110` logic.
+  - [x] Tapping item → `/browse/item/[id]` (reuse existing detail components from `components/learn/*` via thin route wrapper; redirects from `/learn/item/[id]` OK).
+  - [x] Passage rows: title + bilingual summary when available; lock chip as destination framing (“3 to go”), not a dead-end padlock-only. Tap unlocked → `/browse/passage/[id]` (reuse `read/[id]` reader for now). Tap locked → **temporary**: navigate to passage route or show a lightweight “needs more study” sheet — full needed-items to-do list is **Story 3.2**. For 3.1, showing lock chip + opening a stub/existing reader that already handles locked state is OK if it is not a blank dead end; do not invent the full FR69 list here.
+  - [x] Passage accent token: reuse `content-reading` (UX-DR32). Extend `contentType.ts` if needed for a passage label.
 
-- [ ] **Task 6 — Passage summary display (FR66 interim)** (AC: #6)
-  - [ ] Schema today: `reading_passages` has `title`, `body`, `english_translation` — **no** `summary_ja` / `summary_en` columns yet (Story 3.2 pipeline).
-  - [ ] Interim display: EN line from `english_translation` (truncated one-line); JA line omit or use a short title-adjacent fallback — **do not** block 3.1 on compile-pipeline summary columns. Wire row props so real summary columns plug in later.
-  - [ ] Search interim: include `title` + `english_translation` in fan-out; when summary columns land in 3.2, extend OR branches.
+- [x] **Task 6 — Passage summary display (FR66 interim)** (AC: #6)
+  - [x] Schema today: `reading_passages` has `title`, `body`, `english_translation` — **no** `summary_ja` / `summary_en` columns yet (Story 3.2 pipeline).
+  - [x] Interim display: EN line from `english_translation` (truncated one-line); JA line omit or use a short title-adjacent fallback — **do not** block 3.1 on compile-pipeline summary columns. Wire row props so real summary columns plug in later.
+  - [x] Search interim: include `title` + `english_translation` in fan-out; when summary columns land in 3.2, extend OR branches.
 
-- [ ] **Task 7 — Hook wiring** (AC: #2–#4)
-  - [ ] `data/hooks/useBrowseItems.ts`: debounce search, hold applied filters, page accumulation, `loading` / `loadingMore`, `totalCount`, `clearFilters`, `loadMore`.
-  - [ ] Separate cheap `countBrowse` for drawer live Apply (pending draft filters ≠ applied filters until Apply).
-  - [ ] Use `userDb` (with curriculum ATTACH) for joined queries; never write curriculum.
+- [x] **Task 7 — Hook wiring** (AC: #2–#4)
+  - [x] `data/hooks/useBrowseItems.ts`: debounce search, hold applied filters, page accumulation, `loading` / `loadingMore`, `totalCount`, `clearFilters`, `loadMore`.
+  - [x] Separate cheap `countBrowse` for drawer live Apply (pending draft filters ≠ applied filters until Apply).
+  - [x] Use `userDb` (with curriculum ATTACH) for joined queries; never write curriculum.
 
-- [ ] **Task 8 — Verification**
-  - [ ] Unit: browse filter SQL builder / fan-out branch construction; debounce behavior; lock facet uses `computePassageUnlock` only for passages; BUG7 — item rows have no lock prop from deps.
-  - [ ] Component/RNTL: Browse tab label; empty “No matches” + clear; Apply disabled at 0; pills summarize; search debounce (fake timers).
-  - [ ] Update/remove obsolete `learn/[level].test.tsx` lock assertions if level screen is deleted or reduced to redirect.
-  - [ ] Gates: `npm run typecheck`, `npm run lint`, `npm test` from `mobile/`.
+- [x] **Task 8 — Verification**
+  - [x] Unit: browse filter SQL builder / fan-out branch construction; debounce behavior; lock facet uses `computePassageUnlock` only for passages; BUG7 — item rows have no lock prop from deps.
+  - [x] Component/RNTL: Browse tab label; empty “No matches” + clear; Apply disabled at 0; pills summarize; search debounce (fake timers).
+  - [x] Update/remove obsolete `learn/[level].test.tsx` lock assertions if level screen is deleted or reduced to redirect.
+  - [x] Gates: `npm run typecheck`, `npm run lint`, `npm test` from `mobile/`.
 
 ## Dev Notes
 
@@ -280,14 +280,97 @@ Aligns with architecture target tree: `app/(tabs)/browse`, `components/browse`, 
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+claude-opus-4-8 (Claude Opus 4.8)
 
 ### Debug Log References
 
+- **Expo Router type generation broke on a `_layout.test.tsx` sibling.** The tab-shell test was first written as `src/app/(tabs)/_layout.test.tsx`. Expo Router treats *any* `_layout.*` file in a route directory as a layout, so the duplicate silently dropped every `(tabs)` route from `.expo/types/router.d.ts` (14K → 7.6K), which surfaced as ~8 bogus "not assignable to Href" typecheck errors across untouched files. Moved to `mobile/__tests__/tabs-layout.test.tsx`; types regenerate fully (16K) and typecheck is clean. Comment left in the test file so it is not moved back.
+- **Infinite render loop in the first `useBrowseItems` test run** (V8 OOM). Cause was the test's `useDatabase` mock returning a fresh object literal per render, invalidating the `passageUnlock` memo and re-firing the query effect forever. The real `DatabaseProvider` hands out a stable context value; the mock now does too, and the reason is commented in the test.
+- **Pre-existing suite failure fixed:** `countDueSrsStates › returns an uncapped count of non-burned dues` was already red on the baseline commit (verified by stashing this story's work and re-running). The `srs_states` `COUNT(*)` branch of the expo-sqlite mock counted the whole table before applying `WHERE due_date <= ? AND is_burned = 0` — exactly the "GROUP BY / COUNT ignoring WHERE" pitfall recorded in `deferred-work.md` and flagged in this story's Dev Notes. Fixed in the mock rather than worked around, since Browse relies on count queries being truthful.
+
 ### Completion Notes List
 
+**Architecture decisions worth knowing:**
+
+- **One `UNION ALL` query, not two merged reads.** Items and passages are unioned in SQL with a shared `level_rank` column so ordering, `LIMIT` and `OFFSET` apply once across both kinds. Merging two paginated result sets in JS cannot page correctly across a combined ordering.
+- **Ordering is total:** `level_rank ASC, sort_order ASC, kind ASC, id ASC`. The `kind`+`id` tie-break is what stops pagination duplicating or skipping rows when an item and a passage share a level and sort order.
+- **Count and page cannot drift.** Both `buildBrowsePageQuery` and `buildBrowseCountQuery` are built from one `buildBrowseUnion(...)`; the page query is literally the counted subquery plus ordering and paging. A test asserts the count query contains the page query's exact `FROM`/`WHERE` body and identical params. This is a stronger guarantee than the "count matches page length" fixture test the story suggested, which the ATTACH-blind sqlite mock cannot express honestly.
+- **Passage lock is resolved before the query, not in it.** Unlock is derived from `computePassageUnlock` (reused from Story 2.2 — the 90% Guru+ math was not reimplemented) and cannot be expressed in SQL. `listPassageUnlockStates` resolves it up front and binds the matching passage ids into the query, so the Lock facet still paginates correctly without inventing an unlock table.
+- **Facets that do not apply to a row kind leave that kind unconstrained** (the choice the story asked to be documented): Performance and SRS stage narrow items while passages still show; Lock narrows passages while items still show. Narrowing to a single kind is what the Type facet is for. Documented on the `BrowseFilters` type.
+- **SRS stage facet uses no `COALESCE`.** An item with no SRS row has no stage; giving it a stand-in would let it match a facet the learner never earned. A test asserts the absence of `COALESCE(r.srs_stage_label`.
+
+**BUG7 (AC #5) is fixed structurally, not by omission.** `BrowseRow` accepts no lock, prerequisite or dependency prop — there is nowhere to pass one — and `BrowseItemRow` carries no such field. The old `learn/[level].tsx:105-110` dimming logic was not ported. Covered by a repository test (mapped item rows have no `locked`/`isLocked` key) and a screen test (row is enabled, un-dimmed, has no dependency hints, and navigates on press).
+
+**FR66 passage summaries are interim, as scoped.** `reading_passages` has no `summary_ja` / `summary_en` columns yet (Story 3.2 pipeline). `summaryJa` is null today and `summaryEn` falls back to `english_translation`; the row props and search branches are already shaped so the real columns drop in without touching the component.
+
+**Search never rewrites the input.** `SearchField` is deliberately not a `WanaKanaInput`. Kana conversion happens downstream as *extra OR branches* — "mizu" probes the raw text plus みず and ミズ, because it may legitimately be an English meaning too. A partial romaji tail ("nihonk") keeps the convertible kana prefix and drops the unmatchable remainder rather than breaking the branch.
+
+**Deliberately NOT done (out of scope per the story's scope table):**
+
+- **Task 2's index subtask was conditional and its condition was not met.** It reads "if LIKE search is slow on device... measure before inventing FTS". No on-device measurement was performed in this story, so no curriculum compile indexes and no FTS5 were added. This is the documented NFR22 deferral, not an oversight — flagging it explicitly so it is not mistaken for completed work.
+- Locked-passage rows open the existing reader (which already handles locked state) with a "3 to go" destination chip. The full FR69 needed-items to-do sheet is Story 3.2, as scoped.
+- FlashList / New Architecture (Epic 5), FR70 long-press word details, BUG5 practice read-back, and the `summary_ja/en` compile pipeline were all left alone.
+
+**Legacy routes:** `learn/*` and `read/*` are now `<Redirect>` screens kept mounted via `href: null` in the tab layout, so the Read/Learn tabs are gone from the bar while existing deep links (including the `/read/[id]` one Story 2.2 shipped on Home) still resolve. `/learn/[level]` forwards into Browse with that level seeded as a *filter*, since level is a facet now and never a route. Both `_layout.tsx` files carry a comment saying they are safe to delete once no shipped build links into them.
+
+**Detail screens were extracted, not duplicated:** `ItemDetailScreen` and `PassageDetailScreen` now live in `components/`, with the Browse routes as thin wrappers. Their existing test suites moved with them rather than being dropped.
+
 ### File List
+
+**New:**
+- `mobile/src/app/(tabs)/browse/_layout.tsx`
+- `mobile/src/app/(tabs)/browse/index.tsx`
+- `mobile/src/app/(tabs)/browse/index.test.tsx`
+- `mobile/src/app/(tabs)/browse/item/[id].tsx`
+- `mobile/src/app/(tabs)/browse/passage/[id].tsx`
+- `mobile/src/app/(tabs)/converse/index.tsx`
+- `mobile/src/app/(tabs)/converse/index.test.tsx`
+- `mobile/src/components/browse/BrowseList.tsx`
+- `mobile/src/components/browse/BrowseRow.tsx`
+- `mobile/src/components/browse/PassageBrowseRow.tsx`
+- `mobile/src/components/browse/SearchField.tsx`
+- `mobile/src/components/browse/FilterPill.tsx`
+- `mobile/src/components/browse/FilterDrawer.tsx`
+- `mobile/src/components/browse/BrowseEmptyState.tsx`
+- `mobile/src/components/learn/ItemDetailScreen.tsx`
+- `mobile/src/components/read/PassageDetailScreen.tsx`
+- `mobile/src/core/browse/browseFilters.ts`
+- `mobile/src/core/browse/browseFilters.test.ts`
+- `mobile/src/core/browse/browseSearch.ts`
+- `mobile/src/core/browse/browseSearch.test.ts`
+- `mobile/src/data/curriculum/browseRepository.ts`
+- `mobile/src/data/curriculum/browseRepository.test.ts`
+- `mobile/src/data/hooks/useBrowseItems.ts`
+- `mobile/src/data/hooks/useBrowseItems.test.tsx`
+- `mobile/__tests__/tabs-layout.test.tsx`
+
+**Moved (test suites followed their screens into Browse):**
+- `mobile/src/app/(tabs)/learn/item/[id].test.tsx` → `mobile/src/app/(tabs)/browse/item/[id].test.tsx`
+- `mobile/src/app/(tabs)/read/[id].test.tsx` → `mobile/src/app/(tabs)/browse/passage/[id].test.tsx`
+
+**Modified:**
+- `mobile/src/app/(tabs)/_layout.tsx` — tabs are Home · Browse · Talk · Stats · Settings; learn/read hidden via `href: null`
+- `mobile/src/app/(tabs)/_layout.web.tsx` — matching web tab triggers
+- `mobile/src/app/(tabs)/index.tsx` — `ReadingReadiness` navigates to `/browse/passage/[id]`
+- `mobile/src/app/(tabs)/index.test.tsx` — updated readiness navigation assertion
+- `mobile/src/app/(tabs)/learn/index.tsx` — redirect to `/browse`
+- `mobile/src/app/(tabs)/learn/[level].tsx` — redirect to `/browse` with the level seeded as a filter
+- `mobile/src/app/(tabs)/learn/item/[id].tsx` — redirect to `/browse/item/[id]`
+- `mobile/src/app/(tabs)/learn/_layout.tsx` — comment recording redirect-only purpose
+- `mobile/src/app/(tabs)/read/index.tsx` — redirect to `/browse`
+- `mobile/src/app/(tabs)/read/[id].tsx` — redirect to `/browse/passage/[id]`
+- `mobile/src/app/(tabs)/read/_layout.tsx` — comment recording redirect-only purpose
+- `mobile/src/config/constants.ts` — `BROWSE_PAGE_SIZE`, `BROWSE_SEARCH_DEBOUNCE_MS`, `BROWSE_COUNT_DEBOUNCE_MS`
+- `mobile/src/constants/contentType.ts` — `PASSAGE_CONTENT_ACCENT` / `PASSAGE_CONTENT_LABEL` on the `content-reading` token
+- `mobile/src/data/database.ts` — exported `CURRICULUM_ATTACH_ALIAS`
+- `mobile/__mocks__/expo-sqlite.ts` — `srs_states` `COUNT(*)` now applies the due/burned predicate before counting
+
+**Deleted (screens replaced by redirects):**
+- `mobile/src/app/(tabs)/learn/index.test.tsx`
+- `mobile/src/app/(tabs)/learn/[level].test.tsx`
+- `mobile/src/app/(tabs)/read/index.test.tsx`
 
 ## Change Log
 
 - 2026-07-20 — Story context created (ready-for-dev). Ultimate context engine analysis completed — comprehensive developer guide created.
+- 2026-07-20 — Implemented Story 3.1. Browse replaces Learn/Read as the single discovery tab (Talk placeholder added); new `browseRepository` UNION query layer with ATTACH joins, pagination and a count query that cannot drift from the page; five multi-select facets with a live `Apply (N)` that disables at zero; 200ms-debounced fan-out search with parallel kana branches; BUG7 fixed structurally (Browse item rows have no lock affordance and no prop to pass one). Legacy `learn/*` and `read/*` routes kept as redirects. Gates: typecheck clean, lint clean, 141 suites / 1117 tests green, contrast check passes. Also fixed a pre-existing `countDueSrsStates` failure caused by the expo-sqlite mock counting before filtering.

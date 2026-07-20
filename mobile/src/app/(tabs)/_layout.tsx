@@ -35,13 +35,18 @@ export default function TabsLayout() {
         options={{ title: 'Home', tabBarIcon: tabIcon('home') }}
       />
       <Tabs.Screen
-        name="learn"
-        options={{ title: 'Learn', tabBarIcon: tabIcon('menu-book') }}
+        name="browse"
+        options={{ title: 'Browse', tabBarIcon: tabIcon('search') }}
       />
       <Tabs.Screen
-        name="read"
-        options={{ title: 'Read', tabBarIcon: tabIcon('auto-stories') }}
+        name="converse"
+        options={{ title: 'Talk', tabBarIcon: tabIcon('chat') }}
       />
+      {/* Learn and Read are no longer tabs (FR62–FR63, UX-DR3) — Browse is the
+          single discovery surface. The routes stay mounted with `href: null` so
+          existing deep links keep resolving to their redirect screens. */}
+      <Tabs.Screen name="learn" options={{ href: null }} />
+      <Tabs.Screen name="read" options={{ href: null }} />
       <Tabs.Screen
         name="stats"
         options={{ title: 'Stats', tabBarIcon: tabIcon('bar-chart') }}

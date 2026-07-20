@@ -21,11 +21,11 @@ export default function TabsLayout() {
           <TabTrigger name="home" href="/" asChild>
             <TabButton>Home</TabButton>
           </TabTrigger>
-          <TabTrigger name="learn" href="/learn" asChild>
-            <TabButton>Learn</TabButton>
+          <TabTrigger name="browse" href="/browse" asChild>
+            <TabButton>Browse</TabButton>
           </TabTrigger>
-          <TabTrigger name="read" href="/read" asChild>
-            <TabButton>Read</TabButton>
+          <TabTrigger name="converse" href="/converse" asChild>
+            <TabButton>Talk</TabButton>
           </TabTrigger>
           <TabTrigger name="stats" href="/stats" asChild>
             <TabButton>Stats</TabButton>

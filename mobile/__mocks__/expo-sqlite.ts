@@ -564,6 +564,16 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       return rows;
     }
     if (/COUNT\(\*\)/i.test(trimmed)) {
+      // Apply the predicate *before* counting. Counting the whole table and
+      // ignoring the WHERE silently reports inflated totals (the mock pitfall
+      // recorded in deferred-work.md).
+      if (/WHERE due_date <= \? AND is_burned = 0/i.test(trimmed)) {
+        const nowIso = String(params[0]);
+        rows = rows.filter(
+          (row) => String(row.due_date) <= nowIso && row.is_burned === 0,
+        );
+      }
+
       if (/GROUP BY srs_stage_label/i.test(trimmed)) {
         const counts = new Map<string, number>();
         for (const row of rows) {

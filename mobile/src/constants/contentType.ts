@@ -23,6 +23,19 @@ export const CONTENT_TYPE_LABEL: Record<ItemType, string> = {
   grammar: 'Grammar',
 };
 
+/**
+ * Reading passages are not curriculum `items`, but they share the Browse list
+ * with them (FR63), so they need the same accent vocabulary. `content-reading`
+ * is the passage accent per UX-DR32.
+ */
+export const PASSAGE_CONTENT_LABEL = 'Passage';
+
+export const PASSAGE_CONTENT_ACCENT: ContentAccent = {
+  text: 'text-content-reading',
+  tint: 'bg-content-reading/15',
+  barLeft: 'border-l-content-reading',
+};
+
 export const CONTENT_TYPE_ACCENT: Record<ItemType, ContentAccent> = {
   radical: {
     text: 'text-content-radical',

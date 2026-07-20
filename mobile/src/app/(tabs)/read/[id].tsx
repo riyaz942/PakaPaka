@@ -1,60 +1,18 @@
-import { useLocalSearchParams } from 'expo-router';
-import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Redirect, useLocalSearchParams, type Href } from 'expo-router';
+import React from 'react';
 
-import { ScreenHeader } from '@/components/common/ScreenHeader';
-import { PassageReader } from '@/components/read/PassageReader';
-import { MaxContentWidth } from '@/constants/theme';
-import { usePassageDetail } from '@/data/hooks/usePassageDetail';
-import type { PassagePracticeResult } from '@/data/user/passagePracticeRepository';
-
-export default function ReadPassageScreen() {
+/**
+ * Rollout redirect: the Read tab folded into Browse (FR63). Kept so existing
+ * `/read/[id]` deep links (Home reading readiness shipped one in Story 2.2)
+ * keep resolving.
+ */
+export default function ReadPassageRedirect() {
   const params = useLocalSearchParams<{ id: string }>();
-  const passageId = params.id ?? null;
-  const { passage, questions, practiceResults, loading, notFound } = usePassageDetail(passageId);
-  const [localPracticeResults, setLocalPracticeResults] =
-    useState<PassagePracticeResult[]>(practiceResults);
+  const id = params.id;
 
-  useEffect(() => {
-    setLocalPracticeResults(practiceResults);
-  }, [practiceResults, passageId]);
+  if (!id) {
+    return <Redirect href="/browse" />;
+  }
 
-  const handleAnswerSubmitted = useCallback((result: PassagePracticeResult) => {
-    setLocalPracticeResults((current) => {
-      const withoutQuestion = current.filter((entry) => entry.questionId !== result.questionId);
-      return [...withoutQuestion, result];
-    });
-  }, []);
-
-  return (
-    <View className="flex-1 bg-background">
-      <ScreenHeader backTestID="read-passage-back" />
-      <SafeAreaView
-        edges={['left', 'right']}
-        className="flex-1 px-space-lg pt-space-md"
-        style={{
-          alignSelf: 'center',
-          maxWidth: MaxContentWidth,
-          width: '100%',
-        }}>
-        {loading ? (
-          <View className="mt-8 items-center">
-            <ActivityIndicator accessibilityLabel="Loading passage" />
-          </View>
-        ) : notFound || !passage ? (
-          <Text className="mt-8 text-body text-secondary">Passage not found.</Text>
-        ) : (
-          <ScrollView>
-            <PassageReader
-              passage={passage}
-              questions={questions}
-              practiceResults={localPracticeResults}
-              onAnswerSubmitted={handleAnswerSubmitted}
-            />
-          </ScrollView>
-        )}
-      </SafeAreaView>
-    </View>
-  );
+  return <Redirect href={`/browse/passage/${id}` as Href} />;
 }

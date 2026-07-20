@@ -459,7 +459,7 @@ export default function HomeScreen() {
             <FadeSlideIn index={6}>
               <ReadingReadiness
                 target={readingTarget}
-                onPress={() => router.push(`/read/${readingTarget.passageId}`)}
+                onPress={() => router.push(`/browse/passage/${readingTarget.passageId}`)}
               />
             </FadeSlideIn>
           ) : null}

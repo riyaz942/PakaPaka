@@ -162,6 +162,22 @@ export const SHADOW_MODE_FEATURE_ENABLED = false;
  */
 export const PASSAGE_UNLOCK_COVERAGE = 0.9;
 
+/** Rows fetched per Browse page (FR62 virtualized paginated list). */
+export const BROWSE_PAGE_SIZE = 40;
+
+/**
+ * Debounce before a Browse search fans out to SQLite (FR65). SQLite reads are
+ * synchronous, so this is the only thing standing between a fast typist and a
+ * query per keystroke.
+ */
+export const BROWSE_SEARCH_DEBOUNCE_MS = 200;
+
+/**
+ * Debounce for the filter drawer's live "Apply (N)" count (FR64). Shorter than
+ * search: toggling a facet chip should feel like it answers immediately.
+ */
+export const BROWSE_COUNT_DEBOUNCE_MS = 120;
+
 /** Minimum due count on a single forecast day before it can be flagged as a wall. */
 export const FORECAST_WALL_MIN_DUE = 30;
 

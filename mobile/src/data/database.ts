@@ -95,7 +95,7 @@ export async function reopenCurriculumDatabase(): Promise<Result<SQLiteDatabase,
   }
 }
 
-const CURRICULUM_ATTACH_ALIAS = 'curriculum';
+export const CURRICULUM_ATTACH_ALIAS = 'curriculum';
 
 /**
  * Attaches curriculum.db onto the user.db connection so repositories can join
