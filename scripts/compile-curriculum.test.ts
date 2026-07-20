@@ -128,8 +128,8 @@ describe('compile-curriculum', () => {
         summary_en: string | null;
         word_count: number | null;
       };
-      expect(passage.english_translation).toBe('It is a test.');
-      expect(passage.summary_ja).toBe('テストの話。');
+      expect(passage.english_translation).toBe('It is one.');
+      expect(passage.summary_ja).toBe('一の話。');
       expect(passage.summary_en).toBe('A short test passage.');
       expect(passage.word_count).toBe(2);
 
@@ -166,7 +166,7 @@ describe('compile-curriculum', () => {
         sort_order: number;
       }[];
       expect(wordSpans).toEqual([
-        { slug: 'ichi-v', start_offset: 0, end_offset: 3, sort_order: 0 },
+        { slug: 'ichi-v', start_offset: 0, end_offset: 1, sort_order: 0 },
       ]);
     } finally {
       db.close();
@@ -312,16 +312,22 @@ describe('compile-curriculum', () => {
 
   it('throws on a word span with a non-increasing range', () => {
     expect(compileWithWordSpans([{ vocabulary_slug: 'ichi-v', start: 3, end: 3 }])).toThrow(
-      /Invalid passage word span offsets/,
+      /must be > 3|Invalid passage word span offsets/,
     );
   });
 
   it('throws on overlapping word spans', () => {
     expect(
       compileWithWordSpans([
-        { vocabulary_slug: 'ichi-v', start: 0, end: 3 },
-        { vocabulary_slug: 'ichi-v', start: 2, end: 5 },
+        { vocabulary_slug: 'ichi-v', start: 0, end: 1 },
+        { vocabulary_slug: 'ichi-v', start: 0, end: 1 },
       ]),
     ).toThrow(/Overlapping passage word span/);
+  });
+
+  it('throws when a word span surface does not match the vocabulary primary_form', () => {
+    expect(compileWithWordSpans([{ vocabulary_slug: 'ichi-v', start: 1, end: 2 }])).toThrow(
+      /Passage word span surface mismatch/,
+    );
   });
 });

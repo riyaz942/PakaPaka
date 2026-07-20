@@ -66,11 +66,13 @@ export function PassageBody({
             onAccessibilityAction={handlePress}
             onPress={handlePress}
             onLongPress={handlePress}
-            testID={`passage-word-${vocabularyItemId}`}>
+            testID={`passage-word-${vocabularyItemId}-${index}`}>
             <FuriganaText
               text={part.text}
               mode={furiganaMode}
               knownKanji={knownKanji}
+              // Nested furigana toggles would steal the span tap (NFR29).
+              interactive={false}
               className="text-body-lg text-content-vocabulary underline"
             />
           </Pressable>

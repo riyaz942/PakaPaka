@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
 
 import { listNeededItemsForPassage } from '@/core/content/passageNeededItems';
 import { computePassageUnlock, type PassageUnlockStatus } from '@/core/content/passageUnlock';
@@ -66,7 +67,7 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
-  useEffect(() => {
+  const load = useCallback(() => {
     const reset = (): void => {
       setPassage(null);
       setQuestions([]);
@@ -122,6 +123,14 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
     setNotFound(false);
     setLoading(false);
   }, [curriculumDb, userDb, passageId]);
+
+  // Refetch on every focus: returning from a needed-item /browse/item/[id]
+  // (or a lesson/review) can change SRS stages and unlock the reader.
+  useFocusEffect(
+    useCallback(() => {
+      load();
+    }, [load]),
+  );
 
   const isDataStale = Boolean(passage && passageId && passage.id !== passageId);
 

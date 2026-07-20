@@ -372,6 +372,9 @@ export function compileCurriculum(
   }
 
   const idByKey = assignItemIds(radicals, kanji, vocabulary, grammar);
+  const primaryFormByVocabSlug = new Map(
+    vocabulary.map((item) => [item.slug, item.primary_form] as const),
+  );
 
   const outputDir = path.dirname(outputPath);
   fs.mkdirSync(outputDir, { recursive: true });
@@ -717,6 +720,15 @@ export function compileCurriculum(
             );
           }
           previousEnd = span.end;
+
+          const primaryForm = primaryFormByVocabSlug.get(span.vocabulary_slug);
+          const surface = passage.body.slice(span.start, span.end);
+          if (primaryForm !== undefined && surface !== primaryForm) {
+            throw new Error(
+              `Passage word span surface mismatch: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
+                `slice "${surface}" !== primary_form "${primaryForm}"`,
+            );
+          }
 
           insertPassageWordSpan.run({
             passage_id: passageId,

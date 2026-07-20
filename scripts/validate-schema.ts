@@ -289,7 +289,7 @@ export function validateCurriculum(
 ): ValidateCurriculumResult {
   const schemaPath = resolveSchemaPath(curriculumDir);
   const schemaRaw = JSON.parse(fs.readFileSync(schemaPath, 'utf8')) as Record<string, unknown>;
-  const ajv = new Ajv({ allErrors: true, strict: false });
+  const ajv = new Ajv({ allErrors: true, strict: false, $data: true });
   addFormats(ajv);
 
   const schemaId = (schemaRaw.$id as string) ?? 'curriculum.schema.json';

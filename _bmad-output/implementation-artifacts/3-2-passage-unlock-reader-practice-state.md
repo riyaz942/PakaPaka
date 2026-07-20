@@ -4,7 +4,7 @@ baseline_commit: 3b47d54
 
 # Story 3.2: Passage Unlock, Reader & Practice State
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -100,6 +100,16 @@ so that reading feels like a destination I can work toward — not a dead end.
   - [x] Repo: summaries round-trip; spans join vocabulary ids; Browse search hits summary columns.
   - [x] UI/RNTL: locked → to-do (not practice); unlocked → reader; long-press + tap alt open same sheet; correct inputs disabled on reload; incorrect still editable.
   - [x] Gates: `npm run validate-schema`, `npm run compile-curriculum` (root); from `mobile/`: `npm run typecheck`, `npm run lint`, `npm test`.
+
+### Review Findings
+
+- [x] [Review][Patch] Hide accepted-answer feedback until the answer is correct (incorrect stays retryable without reveal) [`PassageQuestion.tsx:72`]
+- [x] [Review][Patch] Nested FuriganaText Pressables steal span taps (NFR29 broken for annotated spans) [`PassageBody.tsx:61`]
+- [x] [Review][Patch] Locked passage unlock state never refreshes on focus after studying needed items [`usePassageDetail.ts:69`]
+- [x] [Review][Patch] Compile does not assert span surface matches vocabulary `primary_form` [`compile-curriculum.ts:707`]
+- [x] [Review][Patch] JSON schema allows invalid span ranges (`end ≤ start`) [`curriculum.schema.json:284`]
+- [x] [Review][Patch] Duplicate `testID`s when the same vocab is spanned twice [`PassageBody.tsx:69`]
+- [x] [Review][Defer] Malformed `bodyFurigana` can desync span offsets from rendered text [`passageBodyParts.ts:45`] — deferred, pre-existing
 
 ## Dev Notes
 
@@ -341,3 +351,4 @@ Also closed the `useReadingReadiness` N+1 entry in `deferred-work.md`.
 
 - 2026-07-20 — Story context created (ready-for-dev). Ultimate context engine analysis completed — comprehensive developer guide created.
 - 2026-07-20 — Implemented all 7 tasks. Pipeline emits summaries + `passage_word_spans`; all 19 passages authored with links/summaries/spans; unlock unified with a needed-items helper and batched I/O (closes the 2.2 N+1); locked passages show a needed-items to-do instead of the reader; word spans support long-press *and* tap with a labelled button role (NFR29); BUG5 fixed so only correct answers lock the input. Gates: typecheck, lint, 1151 mobile tests, 44 script tests, validate-schema, compile-curriculum, check-contrast — all green. Status → review.
+- 2026-07-20 — Code review patches applied: hide accepted answers until correct; `FuriganaText interactive={false}` for spans; focus-refetch unlock; compile surface==primary_form; schema `$data` end>start; unique span testIDs. Status → done.

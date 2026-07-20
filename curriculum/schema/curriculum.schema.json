@@ -282,7 +282,10 @@
       "properties": {
         "vocabulary_slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "start": { "type": "integer", "minimum": 0 },
-        "end": { "type": "integer", "minimum": 1 }
+        "end": {
+          "type": "integer",
+          "exclusiveMinimum": { "$data": "1/start" }
+        }
       }
     },
     "readingPassage": {

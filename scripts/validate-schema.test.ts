@@ -319,10 +319,10 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
   it('accepts passage summaries and authored word spans', () => {
     const tempDir = writeTempReadingsDir({
       title: 'Test',
-      body: 'テストです。',
-      summary_ja: 'テストの話。',
+      body: '一です。',
+      summary_ja: '一の話。',
       summary_en: 'A short test passage.',
-      word_spans: [{ vocabulary_slug: 'ichi-v', start: 0, end: 3 }],
+      word_spans: [{ vocabulary_slug: 'ichi-v', start: 0, end: 1 }],
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(true);
@@ -331,10 +331,23 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
+  it('rejects a word span whose end is not greater than start', () => {
+    const tempDir = writeTempReadingsDir({
+      title: 'Test',
+      body: '一です。',
+      word_spans: [{ vocabulary_slug: 'ichi-v', start: 2, end: 1 }],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('rejects a word span missing its offsets', () => {
     const tempDir = writeTempReadingsDir({
       title: 'Test',
-      body: 'テストです。',
+      body: '一です。',
       word_spans: [{ vocabulary_slug: 'ichi-v', start: 0 }],
     });
     try {

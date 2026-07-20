@@ -129,3 +129,7 @@
 ## Deferred from: code review of 3-1-unified-browse-list-search-filters (2026-07-20)
 
 - **Home screen engagement/forecast churn in the story-scoped diff** — `mobile/src/app/(tabs)/index.tsx` includes Goal/forecast/banner work from Story 2.2 mixed under baseline `e736944`; only the Browse passage retarget belongs to 3.1. Split or ignore when reviewing Browse-only patches.
+
+## Deferred from: code review of 3-2-passage-unlock-reader-practice-state (2026-07-20)
+
+- **Malformed `bodyFurigana` can desync span offsets from rendered text** — `buildPassageBodyParts` walks `parseFurigana(bodyFurigana ?? body)` while spans index plain `body`; ill-formed furigana markup can attach pressable slices to the wrong characters. Pre-existing furigana/body integrity concern; compile already validates shipped content. [`mobile/src/core/content/passageBodyParts.ts`]

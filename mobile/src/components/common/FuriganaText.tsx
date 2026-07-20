@@ -31,6 +31,12 @@ type FuriganaTextProps = {
   style?: StyleProp<TextStyle>;
   /** Passed through to the container (or plain-text fallback) for a11y parity with a bare <Text>. */
   accessibilityRole?: AccessibilityRole;
+  /**
+   * When false, annotated runs render without nested Pressables so a parent
+   * Pressable (e.g. passage word spans) can own the tap. Readings still follow
+   * `mode` / `knownKanji`; they just are not individually togglable.
+   */
+  interactive?: boolean;
 };
 
 function isSegmentKnown(segment: FuriganaSegment, knownKanji: ReadonlySet<string>): boolean {
@@ -73,6 +79,7 @@ export function FuriganaText({
   className,
   style,
   accessibilityRole,
+  interactive = true,
 }: FuriganaTextProps) {
   const segments = parseFurigana(text);
   const [toggled, setToggled] = useState<Set<number>>(() => new Set());
@@ -110,9 +117,11 @@ export function FuriganaText({
       // above; gap-y separates wrapped lines so a line's furigana never
       // collides with the text of the line above it.
       className="flex-row flex-wrap items-end gap-y-space-sm"
-      accessible
-      accessibilityRole={accessibilityRole}
-      accessibilityLabel={plainLabel}>
+      // When nested under a parent Pressable, stay non-accessible so the
+      // parent's button role/label is what screen readers hit.
+      accessible={interactive}
+      accessibilityRole={interactive ? accessibilityRole : undefined}
+      accessibilityLabel={interactive ? plainLabel : undefined}>
       {segments.map((segment, index) => {
         if (!segment.reading) {
           return (
@@ -122,22 +131,35 @@ export function FuriganaText({
           );
         }
 
-        const isVisible = toggled.has(index)
-          ? !defaultFuriganaVisible(segment, mode, knownKanji)
-          : defaultFuriganaVisible(segment, mode, knownKanji);
+        const isVisible =
+          interactive && toggled.has(index)
+            ? !defaultFuriganaVisible(segment, mode, knownKanji)
+            : defaultFuriganaVisible(segment, mode, knownKanji);
+
+        const readingBlock = (
+          <View className="items-center">
+            {isVisible ? (
+              <Text className="text-furigana text-secondary text-center" accessible={false}>
+                {segment.reading}
+              </Text>
+            ) : null}
+            <Text className={className} style={style} accessible={false}>
+              {segment.text}
+            </Text>
+          </View>
+        );
+
+        if (!interactive) {
+          return (
+            <View key={index} accessible={false}>
+              {readingBlock}
+            </View>
+          );
+        }
 
         return (
           <Pressable key={index} accessible={false} onPress={() => toggleSegment(index)}>
-            <View className="items-center">
-              {isVisible ? (
-                <Text className="text-furigana text-secondary text-center" accessible={false}>
-                  {segment.reading}
-                </Text>
-              ) : null}
-              <Text className={className} style={style} accessible={false}>
-                {segment.text}
-              </Text>
-            </View>
+            {readingBlock}
           </Pressable>
         );
       })}

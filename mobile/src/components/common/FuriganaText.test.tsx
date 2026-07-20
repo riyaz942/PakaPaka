@@ -43,6 +43,14 @@ describe('FuriganaText', () => {
     expect(screen.queryByText('た')).toBeNull();
   });
 
+  it('does not toggle readings when interactive is false', () => {
+    render(<FuriganaText text={SENTENCE} mode="hidden" interactive={false} />);
+    expect(screen.queryByText('た')).toBeNull();
+
+    fireEvent.press(screen.getByText('食'));
+    expect(screen.queryByText('た')).toBeNull();
+  });
+
   it('sets the container accessibility label to the plain stripped text', () => {
     render(<FuriganaText text="私[わたし]は学生[がくせい]です。" mode="shown" />);
     expect(screen.getByLabelText('私は学生です。')).toBeTruthy();

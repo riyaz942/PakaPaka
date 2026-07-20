@@ -69,11 +69,13 @@ export function PassageQuestion({
   };
 
   const acceptedAnswersLabel = formatAcceptedAnswers(question.acceptedAnswers);
+  // Reveal accepted answers only after a correct submit so "Try again" is not
+  // just copy-paste from the feedback line.
   const feedbackMessage =
     result === 'correct'
       ? `Correct. Accepted answer: ${acceptedAnswersLabel}`
       : result === 'incorrect'
-        ? `Incorrect. Accepted answer: ${acceptedAnswersLabel}`
+        ? 'Incorrect'
         : null;
 
   return (
@@ -128,9 +130,11 @@ export function PassageQuestion({
             )}>
             {result === 'correct' ? 'Correct' : 'Incorrect'}
           </Text>
-          <Text className="mt-1 text-body text-primary">
-            Accepted answer: {acceptedAnswersLabel}
-          </Text>
+          {result === 'correct' ? (
+            <Text className="mt-1 text-body text-primary">
+              Accepted answer: {acceptedAnswersLabel}
+            </Text>
+          ) : null}
         </View>
       )}
     </View>

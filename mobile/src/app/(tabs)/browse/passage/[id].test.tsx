@@ -31,6 +31,11 @@ jest.mock('expo-router', () => ({
     push: (href: string) => mockPush(href),
   },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
+  useFocusEffect: (callback: () => void | (() => void)) =>
+    require('react').useEffect(() => {
+      const cleanup = callback();
+      return typeof cleanup === 'function' ? cleanup : undefined;
+    }, [callback]),
 }));
 
 function renderPassageScreen(
@@ -156,7 +161,7 @@ describe('BrowsePassageRoute', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Incorrect')).toBeTruthy();
-      expect(screen.getByText('Accepted answer: 学生 / がくせい')).toBeTruthy();
+      expect(screen.queryByText(/Accepted answer:/)).toBeNull();
     });
   });
 
@@ -321,14 +326,14 @@ describe('BrowsePassageRoute', () => {
       renderPassageScreen(curriculumDb, userDb);
 
       await waitFor(() => {
-        expect(screen.getByTestId('passage-word-10')).toBeTruthy();
+        expect(screen.getByTestId(/^passage-word-10-/)).toBeTruthy();
       });
     }
 
     it('opens the detail sheet on a plain tap — the visible non-gesture path', async () => {
       await renderWithSpans();
 
-      fireEvent.press(screen.getByTestId('passage-word-10'));
+      fireEvent.press(screen.getByTestId(/^passage-word-10-/));
 
       await waitFor(() => {
         expect(screen.getByText('student')).toBeTruthy();
@@ -338,7 +343,7 @@ describe('BrowsePassageRoute', () => {
     it('opens the same detail sheet on long press', async () => {
       await renderWithSpans();
 
-      fireEvent(screen.getByTestId('passage-word-10'), 'longPress');
+      fireEvent(screen.getByTestId(/^passage-word-10-/), 'longPress');
 
       await waitFor(() => {
         expect(screen.getByText('student')).toBeTruthy();
@@ -348,7 +353,7 @@ describe('BrowsePassageRoute', () => {
     it('labels the span as a button naming the word and the action', async () => {
       await renderWithSpans();
 
-      const span = screen.getByTestId('passage-word-10');
+      const span = screen.getByTestId(/^passage-word-10-/);
       expect(span.props.accessibilityRole).toBe('button');
       expect(span.props.accessibilityLabel).toBe('学生, show word details');
     });
@@ -357,7 +362,7 @@ describe('BrowsePassageRoute', () => {
       await renderWithSpans();
 
       // 私 has no span, so there is no pressable for it.
-      expect(screen.queryByTestId('passage-word-11')).toBeNull();
+      expect(screen.queryByTestId(/^passage-word-11-/)).toBeNull();
     });
   });
 
