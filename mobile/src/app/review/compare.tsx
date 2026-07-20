@@ -1,21 +1,23 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import { CompareView } from '@/components/common/CompareView';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 
 /**
- * Compare route stub (Story 1.2 / FR86) — CONTRACT LOCKED FOR STORY 4.2.
+ * Compare route (Story 1.2 / FR86, body filled in by Story 4.2) — CONTRACT LOCKED.
  *
  * Route: `review/compare` (nested in the review Stack so the answer-collision
  * link never leaves the session — `ReviewSessionProvider` must not remount).
  *
- * Search params (both required strings — Story 4.2 must keep these names):
+ * Search params (both required strings — do not rename):
  * - `left`  = the item id of the card being reviewed
  * - `right` = the colliding item id (whose accepted answer the user typed)
  *
- * Story 4.2 replaces this body with the full Compare UI (sticky glyphs,
- * chips) without changing the deep-link shape. Do not build that here.
+ * The comparison UI itself lives in `components/common/CompareView`, shared
+ * with the Browse entry point (`(tabs)/browse/compare`) so the two surfaces
+ * cannot drift — and so Browse never has to push a `review/*` route.
  */
 function paramString(value: string | string[] | undefined): string | undefined {
   if (Array.isArray(value)) return value[0];
@@ -34,13 +36,7 @@ export default function ReviewCompareScreen() {
         backTestID="review-compare-back"
         backAccessibilityLabel="Back to review"
       />
-      <View className="flex-1 items-center justify-center gap-space-sm px-space-lg">
-        <Text className="text-title text-primary">Compare coming soon</Text>
-        <Text className="text-body text-secondary text-center" testID="review-compare-params">
-          Side-by-side comparison for items {left ?? '?'} and {right ?? '?'} arrives with the
-          full Compare view.
-        </Text>
-      </View>
+      <CompareView leftId={left} rightId={right} />
     </View>
   );
 }

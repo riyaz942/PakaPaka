@@ -15,8 +15,19 @@ type FuriganaTextProps = {
   /** Annotated (JmdictFurigana bracket notation) or plain Japanese text. */
   text: string;
   mode: FuriganaDisplayMode;
-  /** Known kanji characters, required for 'auto' mode. */
+  /**
+   * Known characters (from mastered vocabulary), for 'auto' mode on embedded
+   * multi-word text where there are no word boundaries to key on.
+   */
   knownKanji?: ReadonlySet<string>;
+  /**
+   * Set only when this component is rendering exactly one vocabulary item's
+   * own word (detail hero, lesson hero, passage word sheet): whether the
+   * learner has mastered *that word*. In 'auto' mode it decides on its own and
+   * the per-character `knownKanji` check is skipped — the mastery unit is the
+   * word, never its component kanji (FR78 / BUG6).
+   */
+  isKnownWord?: boolean;
   /**
    * Text styling (font size/weight/color) for the base-text segments.
    * Must contain only text classes — layout margins leak between the
@@ -48,6 +59,7 @@ export function defaultFuriganaVisible(
   segment: FuriganaSegment,
   mode: FuriganaDisplayMode,
   knownKanji: ReadonlySet<string> | undefined,
+  isKnownWord?: boolean,
 ): boolean {
   if (!segment.reading) {
     return false;
@@ -58,7 +70,13 @@ export function defaultFuriganaVisible(
   if (mode === 'hidden') {
     return false;
   }
-  // 'auto': hidden only once every kanji character in this run is known.
+  // 'auto', Tier 1: the caller knows this is one vocabulary item's own word,
+  // so that word's mastery is the whole answer.
+  if (isKnownWord !== undefined) {
+    return !isKnownWord;
+  }
+  // 'auto', Tier 2 (embedded multi-word text): hidden only once every
+  // character in this run appears in vocabulary the learner has mastered.
   if (!knownKanji) {
     return true;
   }
@@ -76,6 +94,7 @@ export function FuriganaText({
   text,
   mode,
   knownKanji,
+  isKnownWord,
   className,
   style,
   accessibilityRole,
@@ -131,10 +150,11 @@ export function FuriganaText({
           );
         }
 
+        const visibleByDefault = defaultFuriganaVisible(segment, mode, knownKanji, isKnownWord);
+        // The tap is a stateless peek (FR79): it flips this render's default
+        // and resets on `text` change — it never persists.
         const isVisible =
-          interactive && toggled.has(index)
-            ? !defaultFuriganaVisible(segment, mode, knownKanji)
-            : defaultFuriganaVisible(segment, mode, knownKanji);
+          interactive && toggled.has(index) ? !visibleByDefault : visibleByDefault;
 
         const readingBlock = (
           <View className="items-center">

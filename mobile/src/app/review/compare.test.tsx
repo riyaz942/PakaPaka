@@ -6,6 +6,7 @@ import ReviewCompareScreen from './compare';
 
 const mockBack = jest.fn();
 const mockUseLocalSearchParams = jest.fn();
+const mockCompareView = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
@@ -13,6 +14,18 @@ jest.mock('expo-router', () => ({
   },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
 }));
+
+// The comparison UI has its own tests; here we only assert the route contract —
+// which ids reach CompareView, and that the header/back behaviour is unchanged.
+jest.mock('@/components/common/CompareView', () => {
+  const { Text } = jest.requireActual('react-native');
+  return {
+    CompareView: (props: { leftId?: string; rightId?: string }) => {
+      mockCompareView(props);
+      return <Text testID="compare-view">compare</Text>;
+    },
+  };
+});
 
 function renderCompare() {
   return render(
@@ -26,17 +39,18 @@ function renderCompare() {
   );
 }
 
-describe('ReviewCompareScreen stub (Story 1.2 — contract locked for Story 4.2)', () => {
+describe('ReviewCompareScreen (Story 1.2 contract, Story 4.2 body)', () => {
   beforeEach(() => {
     mockBack.mockClear();
+    mockCompareView.mockClear();
     mockUseLocalSearchParams.mockReturnValue({ left: '1', right: '2' });
   });
 
-  it('reads the left/right search params and preserves them in the placeholder', () => {
+  it('passes the left/right search params through to CompareView', () => {
     renderCompare();
-    expect(screen.getByText('Compare coming soon')).toBeTruthy();
-    expect(screen.getByTestId('review-compare-params')).toHaveTextContent(
-      /Side-by-side comparison for items 1 and 2/,
+    expect(screen.getByTestId('compare-view')).toBeTruthy();
+    expect(mockCompareView).toHaveBeenCalledWith(
+      expect.objectContaining({ leftId: '1', rightId: '2' }),
     );
   });
 
@@ -46,17 +60,19 @@ describe('ReviewCompareScreen stub (Story 1.2 — contract locked for Story 4.2)
     expect(mockBack).toHaveBeenCalledTimes(1);
   });
 
-  it('renders a placeholder even with missing params (deep-link safety)', () => {
+  it('renders without crashing on missing params (deep-link safety)', () => {
     mockUseLocalSearchParams.mockReturnValue({});
     renderCompare();
-    expect(screen.getByText('Compare coming soon')).toBeTruthy();
+    expect(mockCompareView).toHaveBeenCalledWith(
+      expect.objectContaining({ leftId: undefined, rightId: undefined }),
+    );
   });
 
   it('normalizes string[] search params to the first value', () => {
     mockUseLocalSearchParams.mockReturnValue({ left: ['1', 'extra'], right: ['2'] });
     renderCompare();
-    expect(screen.getByTestId('review-compare-params')).toHaveTextContent(
-      /Side-by-side comparison for items 1 and 2/,
+    expect(mockCompareView).toHaveBeenCalledWith(
+      expect.objectContaining({ leftId: '1', rightId: '2' }),
     );
   });
 });

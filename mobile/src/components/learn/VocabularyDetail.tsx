@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
+import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
@@ -19,6 +20,7 @@ import type {
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 
 type VocabularyDetailProps = {
   item: CurriculumItemDetail;
@@ -38,21 +40,24 @@ export function VocabularyDetail({
   related = [],
 }: VocabularyDetailProps) {
   const isLongWord = item.primaryForm.length > 4;
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { modeForItem } = useFuriganaPreference();
+  const isKnownWord = useIsKnownWord(item.id);
 
   return (
     <View testID="vocabulary-detail">
       <ItemDetailHeader itemType="vocabulary" meaning={item.meaning}>
         <FuriganaText
           text={item.furigana ?? item.primaryForm}
-          mode={furiganaMode}
-          knownKanji={knownKanji}
+          mode={modeForItem(item.id)}
+          isKnownWord={isKnownWord}
           className={CONTENT_TYPE_ACCENT.vocabulary.text}
           style={isLongWord ? { fontSize: 28, lineHeight: 34 } : { fontSize: 48, lineHeight: 53 }}
         />
       </ItemDetailHeader>
 
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
+
+      <FuriganaOverrideControl itemId={item.id} />
 
       {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
 

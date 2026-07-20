@@ -311,6 +311,27 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^DELETE FROM furigana_overrides/i.test(trimmed)) {
+    const rows = state.tables.get('furigana_overrides') ?? [];
+    // No WHERE clause = the Settings "reset all overrides" action.
+    state.tables.set(
+      'furigana_overrides',
+      /WHERE item_id = \?/i.test(trimmed) ? rows.filter((row) => row.item_id !== params[0]) : [],
+    );
+    return;
+  }
+
+  if (/^INSERT INTO furigana_overrides/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [itemId, displayMode, updatedAt] = params;
+    const rows = state.tables.get('furigana_overrides') ?? [];
+    const idx = rows.findIndex((row) => row.item_id === itemId);
+    const next = { item_id: itemId, display_mode: displayMode, updated_at: updatedAt };
+    if (idx >= 0) rows[idx] = next;
+    else rows.push(next);
+    state.tables.set('furigana_overrides', rows);
+    return;
+  }
+
   if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertPassagePracticeResult(state, params);
     return;
@@ -839,6 +860,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM personal_mnemonics/i.test(trimmed)) {
     let rows = [...(state.tables.get('personal_mnemonics') ?? [])];
+    if (/WHERE item_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.item_id === params[0]);
+    }
+    return rows;
+  }
+
+  if (/FROM furigana_overrides/i.test(trimmed)) {
+    let rows = [...(state.tables.get('furigana_overrides') ?? [])];
     if (/WHERE item_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.item_id === params[0]);
     }

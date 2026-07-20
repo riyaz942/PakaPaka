@@ -12,6 +12,7 @@ import {
 } from '@/config/notifications';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useFuriganaOverrideList } from '@/data/hooks/useFuriganaOverrideList';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
@@ -55,6 +56,11 @@ export default function SettingsScreen() {
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion } = useReducedMotion();
   const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
+  const {
+    entries: furiganaOverrides,
+    clearOne: clearOneFuriganaOverride,
+    clearAll: clearAllFuriganaOverrides,
+  } = useFuriganaOverrideList();
   const { autoAdvanceEnabled, setAutoAdvanceEnabled } = useReviewAutoAdvance();
   const {
     canEnable: shadowModeCanEnable,
@@ -294,6 +300,45 @@ export default function SettingsScreen() {
             );
           })}
         </View>
+
+        {furiganaOverrides.length > 0 ? (
+          <View className="mt-4" testID="settings-furigana-overrides">
+            <Text className="text-body-sm font-semibold text-primary">Per-word overrides</Text>
+            <Text className="mt-1 text-body-sm text-secondary">
+              Words you set individually on their detail page. These win over the setting above.
+            </Text>
+
+            {furiganaOverrides.map((override) => (
+              <View
+                key={override.itemId}
+                className="mt-3 flex-row items-center justify-between gap-space-md">
+                <View className="flex-1">
+                  <Text className="text-body text-primary">{override.primaryForm}</Text>
+                  <Text className="text-caption text-secondary">
+                    {override.mode === 'shown' ? 'Shown' : 'Hidden'}
+                  </Text>
+                </View>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`Reset furigana override for ${override.primaryForm}`}
+                  onPress={() => clearOneFuriganaOverride(override.itemId)}
+                  testID={`settings-furigana-override-reset-${override.itemId}`}
+                  className="min-h-[44px] min-w-[44px] justify-center rounded-radius-md border border-border px-3">
+                  <Text className="text-body-sm text-feedback-info">Reset</Text>
+                </Pressable>
+              </View>
+            ))}
+
+            <View className="mt-4">
+              <Button
+                label="Reset all overrides"
+                variant="secondary"
+                onPress={clearAllFuriganaOverrides}
+                testID="settings-furigana-overrides-reset"
+              />
+            </View>
+          </View>
+        ) : null}
       </View>
 
       <View className="mt-8">

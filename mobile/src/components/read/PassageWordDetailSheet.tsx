@@ -6,6 +6,7 @@ import { FuriganaText } from '@/components/common/FuriganaText';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { cn } from '@/utils/cn';
 
 type PassageWordDetailSheetProps = {
@@ -30,7 +31,9 @@ export function PassageWordDetailSheet({
   visible,
   onDismiss,
 }: PassageWordDetailSheetProps) {
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { modeForItem } = useFuriganaPreference();
+  // The sheet shows exactly one item's own word, so its own mastery decides.
+  const isKnownWord = useIsKnownWord(item?.itemType === 'vocabulary' ? item.id : null);
   const accent = item ? CONTENT_TYPE_ACCENT[item.itemType] : null;
 
   return (
@@ -52,8 +55,8 @@ export function PassageWordDetailSheet({
             <View className="flex-row items-start justify-between">
               <FuriganaText
                 text={item.furigana ?? item.primaryForm}
-                mode={furiganaMode}
-                knownKanji={knownKanji}
+                mode={modeForItem(item.id)}
+                isKnownWord={isKnownWord}
                 accessibilityRole="header"
                 className={cn('text-title-lg', accent?.text)}
               />

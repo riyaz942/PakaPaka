@@ -6,6 +6,7 @@ export default function BrowseTabLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="item/[id]" />
+      <Stack.Screen name="compare" />
       <Stack.Screen name="passage/[id]" />
     </Stack>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 
+import { CompareEntryPoint } from '@/components/learn/CompareEntryPoint';
 import { GrammarDetail } from '@/components/learn/GrammarDetail';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
@@ -91,6 +92,8 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
           related={related}
         />
       ) : null}
+
+      <CompareEntryPoint itemId={item.id} />
     </>
   );
 }

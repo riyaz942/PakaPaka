@@ -23,6 +23,7 @@ import type {
   RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
 import { cn } from '@/utils/cn';
 
@@ -53,7 +54,8 @@ function formatConjugationValue(value: unknown): string {
 }
 
 function LessonHero({ item }: { item: CurriculumItemDetail }) {
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { modeForItem } = useFuriganaPreference();
+  const isKnownWord = useIsKnownWord(item.itemType === 'vocabulary' ? item.id : null);
   const accent = CONTENT_TYPE_ACCENT[item.itemType];
 
   if (item.itemType === 'vocabulary') {
@@ -62,8 +64,8 @@ function LessonHero({ item }: { item: CurriculumItemDetail }) {
       <ItemDetailHeader itemType="vocabulary" meaning={item.meaning} size="lg">
         <FuriganaText
           text={item.furigana ?? item.primaryForm}
-          mode={furiganaMode}
-          knownKanji={knownKanji}
+          mode={modeForItem(item.id)}
+          isKnownWord={isKnownWord}
           className={accent.text}
           style={isLongWord ? HERO_FONT_SIZE.word : HERO_FONT_SIZE.glyph}
         />

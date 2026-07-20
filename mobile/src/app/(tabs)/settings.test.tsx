@@ -8,6 +8,9 @@ let mockAutoAdvanceEnabled = false;
 const mockEnableShadowMode = jest.fn();
 const mockDisableShadowMode = jest.fn();
 const mockSetFuriganaMode = jest.fn();
+const mockClearOneOverride = jest.fn();
+const mockClearAllOverrides = jest.fn();
+let mockOverrideEntries: { itemId: string; primaryForm: string; mode: 'shown' | 'hidden' }[] = [];
 
 let mockShadowModeCanEnable = false;
 let mockShadowModeEnabled = false;
@@ -54,6 +57,19 @@ jest.mock('@/data/hooks/useFuriganaPreference', () => ({
     setMode: mockSetFuriganaMode,
     knownKanji: new Set(),
     refreshKnownKanji: jest.fn(),
+    overrides: new Map(),
+    modeForItem: () => 'auto',
+    setOverride: jest.fn(),
+    clearOverride: jest.fn(),
+    clearAllOverrides: jest.fn(),
+  }),
+}));
+
+jest.mock('@/data/hooks/useFuriganaOverrideList', () => ({
+  useFuriganaOverrideList: () => ({
+    entries: mockOverrideEntries,
+    clearOne: mockClearOneOverride,
+    clearAll: mockClearAllOverrides,
   }),
 }));
 
@@ -212,5 +228,54 @@ describe('SettingsScreen shadow mode toggle (AC1/AC2/AC3 gating)', () => {
     fireEvent(screen.getByTestId('settings-shadow-mode-toggle'), 'valueChange', false);
     expect(mockDisableShadowMode).toHaveBeenCalledTimes(1);
     expect(mockEnableShadowMode).not.toHaveBeenCalled();
+  });
+});
+
+describe('SettingsScreen — per-word furigana overrides', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockOverrideEntries = [];
+  });
+
+  it('omits the overrides list entirely when nothing is overridden', () => {
+    // Same empty-state policy as CrossReferenceSection: no empty shells.
+    render(<SettingsScreen />);
+    expect(screen.queryByTestId('settings-furigana-overrides')).toBeNull();
+    expect(screen.queryByTestId('settings-furigana-overrides-reset')).toBeNull();
+  });
+
+  it('lists each overridden word with its mode', () => {
+    mockOverrideEntries = [
+      { itemId: 'vocab-1', primaryForm: '食べる', mode: 'hidden' },
+      { itemId: 'vocab-2', primaryForm: '学校', mode: 'shown' },
+    ];
+    render(<SettingsScreen />);
+
+    expect(screen.getByTestId('settings-furigana-overrides')).toBeTruthy();
+    expect(screen.getByText('食べる')).toBeTruthy();
+    expect(screen.getByText('学校')).toBeTruthy();
+    // Distinct from the global picker's "Always hidden"/"Always shown" labels,
+    // which are on screen at the same time.
+    expect(screen.getByText('Hidden')).toBeTruthy();
+    expect(screen.getByText('Shown')).toBeTruthy();
+  });
+
+  it('resets a single word', () => {
+    mockOverrideEntries = [{ itemId: 'vocab-1', primaryForm: '食べる', mode: 'hidden' }];
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-furigana-override-reset-vocab-1'));
+    expect(mockClearOneOverride).toHaveBeenCalledWith('vocab-1');
+  });
+
+  it('resets every override at once', () => {
+    mockOverrideEntries = [
+      { itemId: 'vocab-1', primaryForm: '食べる', mode: 'hidden' },
+      { itemId: 'vocab-2', primaryForm: '学校', mode: 'shown' },
+    ];
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-furigana-overrides-reset'));
+    expect(mockClearAllOverrides).toHaveBeenCalledTimes(1);
   });
 });

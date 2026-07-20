@@ -2,6 +2,7 @@ import { __mockResetSqlite, openDatabaseAsync } from '../../../__mocks__/expo-sq
 
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
+import { migrations } from '@/data/migrations';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 
 describe('runMigrations', () => {
@@ -62,5 +63,24 @@ describe('runMigrations', () => {
     expect(firstRun.ok).toBe(true);
     expect(secondRun.ok).toBe(true);
     expect(db.getAllSync('SELECT version FROM schema_migrations')).toHaveLength(2);
+  });
+
+  it('applies the full migration list, ending with 016_furigana_overrides', async () => {
+    const db = await openDatabaseAsync('user.db');
+
+    const result = runMigrations(db, migrations);
+
+    expect(result.ok).toBe(true);
+    expect(migrations.map((migration) => migration.version)).toEqual(
+      migrations.map((_, index) => index + 1),
+    );
+    expect(migrations[migrations.length - 1].name).toBe('016_furigana_overrides');
+    expect(
+      // Parameterized form: the shared mock only special-cases a few literal
+      // table names in sqlite_master queries, but handles `name = ?` generically.
+      db.getAllSync("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?", [
+        'furigana_overrides',
+      ]),
+    ).toHaveLength(1);
   });
 });
