@@ -212,16 +212,10 @@ function mapParentRow(row: ParentRow): CurriculumParentItem {
   };
 }
 
-export function getRequiredParentLabels(
-  db: SQLiteDatabase,
-  itemId: string,
-): string[] {
-  return getRequiredParentLabelsForItems(db, [itemId]).get(itemId) ?? [];
-}
-
-export function getRequiredParentsForItems(
+function getParentsByRelationshipType(
   db: SQLiteDatabase,
   itemIds: string[],
+  relationshipType: 'requires' | 'builds_on' | 'reinforces',
 ): Map<string, CurriculumParentItem[]> {
   const result = new Map<string, CurriculumParentItem[]>();
 
@@ -236,9 +230,10 @@ export function getRequiredParentsForItems(
     `SELECT r.child_item_id, p.id, p.primary_form, p.meaning, p.item_type, p.sort_order
      FROM item_relationships r
      JOIN items p ON p.id = r.parent_item_id
-     WHERE r.child_item_id IN (${placeholders}) AND r.relationship_type = 'requires'
+     WHERE r.child_item_id IN (${placeholders}) AND r.relationship_type = ?
      ORDER BY r.child_item_id ASC, p.sort_order ASC`,
     ...numericIds,
+    relationshipType,
   );
 
   for (const row of rows) {
@@ -249,6 +244,41 @@ export function getRequiredParentsForItems(
   }
 
   return result;
+}
+
+export function getRequiredParentLabels(
+  db: SQLiteDatabase,
+  itemId: string,
+): string[] {
+  return getRequiredParentLabelsForItems(db, [itemId]).get(itemId) ?? [];
+}
+
+export function getRequiredParentsForItems(
+  db: SQLiteDatabase,
+  itemIds: string[],
+): Map<string, CurriculumParentItem[]> {
+  return getParentsByRelationshipType(db, itemIds, 'requires');
+}
+
+/**
+ * Graph parents for FR72 component chips ("Built from" / "Kanji in this word").
+ *
+ * Vocabulary components use `requires` (kanji → vocab). Kanji components use
+ * `builds_on` (radical → kanji) — not `requires`, which the curriculum never
+ * authors for that edge.
+ */
+export function getComponentParentsForItem(
+  db: SQLiteDatabase,
+  itemId: string,
+  itemType: ItemType,
+): CurriculumParentItem[] {
+  if (itemType === 'vocabulary') {
+    return getRequiredParentsForItems(db, [itemId]).get(itemId) ?? [];
+  }
+  if (itemType === 'kanji') {
+    return getParentsByRelationshipType(db, [itemId], 'builds_on').get(itemId) ?? [];
+  }
+  return [];
 }
 
 export function getRequiredParentLabelsForItems(

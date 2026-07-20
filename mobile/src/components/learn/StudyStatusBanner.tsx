@@ -28,10 +28,8 @@ export function StudyStatusBanner({
   isLocked,
   unmetPrerequisites,
 }: StudyStatusBannerProps) {
-  if (status === 'in_progress' || status === 'known') {
-    return null;
-  }
-
+  // Lock orientation wins over study-status quiet — a locked item that somehow
+  // already has progress still needs to name what is unmet.
   if (isLocked && unmetPrerequisites.length > 0) {
     return (
       <View
@@ -49,6 +47,10 @@ export function StudyStatusBanner({
         </View>
       </View>
     );
+  }
+
+  if (status === 'in_progress' || status === 'known') {
+    return null;
   }
 
   return (

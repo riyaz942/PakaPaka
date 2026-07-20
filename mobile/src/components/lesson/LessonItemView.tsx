@@ -8,7 +8,7 @@ import {
   LessonMnemonicSectionView,
   type LessonSectionProps,
 } from '@/components/lesson/LessonItemSections';
-import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
+import { useComponentParents } from '@/data/hooks/useComponentParents';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 import { useKanjiReadingPrimer } from '@/data/hooks/useKanjiReadingPrimer';
 
@@ -33,10 +33,11 @@ export function LessonItemView({ itemId, sectionIndex }: LessonItemViewProps) {
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
+    relatedGrammar,
     loading,
     notFound,
   } = useItemDetail(itemId);
-  const { parents } = useItemDependencyStatus(itemId);
+  const parents = useComponentParents(itemId, item?.itemType ?? null);
 
   const readings = kanjiReadings ?? [];
   const isDualReadingKanji =
@@ -66,6 +67,7 @@ export function LessonItemView({ itemId, sectionIndex }: LessonItemViewProps) {
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
+    relatedGrammar,
     parents,
     showReadingPrimer,
   };

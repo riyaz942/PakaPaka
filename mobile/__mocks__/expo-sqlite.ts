@@ -794,15 +794,20 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
         });
     }
 
+    const literalType = trimmed.match(/relationship_type\s*=\s*'(\w+)'/i)?.[1];
+    const usesBoundType = /relationship_type\s*=\s*\?/i.test(trimmed);
+    const relationshipType = literalType ?? (usesBoundType ? String(params[params.length - 1]) : 'requires');
+    const idParams = usesBoundType ? params.slice(0, -1) : params;
+
     const childIds = /child_item_id IN/i.test(trimmed)
-      ? new Set(params)
-      : new Set([params[0]]);
+      ? new Set(idParams)
+      : new Set([idParams[0]]);
 
     return relationships
       .filter(
         (relationship) =>
           childIds.has(relationship.child_item_id) &&
-          relationship.relationship_type === 'requires',
+          relationship.relationship_type === relationshipType,
       )
       .map((relationship) => {
         const parent = items.find((item) => item.id === relationship.parent_item_id);

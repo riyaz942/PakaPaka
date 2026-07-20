@@ -17,6 +17,7 @@ import {
   countItemsByLevelAndType,
   findItemsByAcceptedAnswer,
   getAcceptedAnswers,
+  getComponentParentsForItem,
   getExampleSentences,
   getGrammarLinksForVocab,
   getGrammarRule,
@@ -234,6 +235,48 @@ describe('itemRepository', () => {
       { id: '1', primaryForm: '日', itemType: 'radical' },
       { id: '2', primaryForm: '口', itemType: 'radical' },
     ]);
+  });
+
+  it('returns builds_on radical parents for kanji component chips', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '日',
+        meaning: 'sun',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      {
+        child_item_id: 10,
+        parent_item_id: 1,
+        relationship_type: 'builds_on',
+      },
+    ]);
+
+    expect(getComponentParentsForItem(db, '10', 'kanji')).toEqual([
+      { id: '1', primaryForm: '日', itemType: 'radical' },
+    ]);
+    expect(getRequiredParentsForItems(db, ['10']).get('10')).toBeUndefined();
   });
 
   it('returns kanji readings ordered by sort_order', async () => {

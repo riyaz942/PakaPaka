@@ -4,7 +4,7 @@ baseline_commit: 82dc757
 
 # Story 4.1: Lesson / Details Split, Cross-Refs & Primer
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -117,7 +117,18 @@ so that studying an item feels guided while browsing an item never pretends to b
 
 ### Review Findings
 
-_(filled by code-review)_
+- [x] [Review][Patch] Wire `builds_on` parents for kanji “Built from” chips (decision: keep section) [`mobile/src/components/learn/ItemCrossReferences.tsx` / parents fetch]
+- [x] [Review][Patch] Add `relatedGrammar` chips to lesson Examples & links (decision: parity with details) [`mobile/src/components/lesson/LessonItemSections.tsx`]
+- [x] [Review][Patch] Primer vanishes on section remount after `seenKanjiReadingPrimer` write [`mobile/src/data/hooks/useKanjiReadingPrimer.ts:32`]
+- [x] [Review][Patch] Lesson mounts `PersonalMnemonicEditor` for radicals (details correctly omit) [`mobile/src/components/lesson/LessonItemSections.tsx:198`]
+- [x] [Review][Patch] `StudyStatusBanner` can flash “haven’t studied yet” before deps finish loading [`mobile/src/components/learn/ItemDetailBody.tsx:38`]
+- [x] [Review][Patch] Banner returns null for `in_progress`/`known` before checking lock [`mobile/src/components/learn/StudyStatusBanner.tsx:31`]
+- [x] [Review][Patch] `infoTopic="transitive"` on every Conjugation rules heading [`mobile/src/components/learn/GrammarDetail.tsx:98`]
+- [x] [Review][Patch] Stale study status until effect runs when `itemId` changes [`mobile/src/data/hooks/useItemStudyStatus.ts:10`]
+- [x] [Review][Patch] Stale related chips / false empty Examples until `useRelatedItems` effect settles [`mobile/src/data/hooks/useRelatedItems.ts:37`]
+
+- [x] [Review][Defer] `getRequiredParentsForItems` ignores `builds_on` so kanji unlock/lock never sees radical parents [`mobile/src/data/curriculum/itemRepository.ts:239`] — deferred, pre-existing
+- [x] [Review][Defer] `setPersonalMnemonic` / `clearPersonalMnemonic` throw with no UI catch [`mobile/src/components/learn/PersonalMnemonicEditor.tsx`] — deferred, pre-existing
 
 ## Dev Notes
 
@@ -361,6 +372,7 @@ disclosure, mnemonic content states, `/browse/item` chip routing).
 - `mobile/src/data/hooks/useKanjiReadingPrimer.test.tsx`
 - `mobile/src/data/hooks/useRelatedItems.ts`
 - `mobile/src/data/hooks/useRelatedItems.test.tsx`
+- `mobile/src/data/hooks/useComponentParents.ts`
 
 **Modified**
 - `mobile/src/app/lesson/index.tsx`
@@ -369,6 +381,7 @@ disclosure, mnemonic content states, `/browse/item` chip routing).
 - `mobile/src/app/review/item/[id].test.tsx`
 - `mobile/src/app/(tabs)/browse/item/[id].test.tsx`
 - `mobile/src/components/learn/GrammarDetail.tsx`
+- `mobile/src/components/learn/GrammarDetail.test.tsx`
 - `mobile/src/components/learn/ItemDetailScreen.tsx`
 - `mobile/src/components/learn/KanjiDependencyHints.tsx`
 - `mobile/src/components/learn/KanjiDetail.tsx`
@@ -378,8 +391,11 @@ disclosure, mnemonic content states, `/browse/item` chip routing).
 - `mobile/src/components/learn/VocabularyDetail.tsx`
 - `mobile/src/components/learn/VocabularyDetail.test.tsx`
 - `mobile/src/components/lesson/LessonItemView.tsx`
+- `mobile/src/data/curriculum/itemRepository.ts`
+- `mobile/src/data/curriculum/itemRepository.test.ts`
 - `mobile/src/data/user/preferencesRepository.ts`
 - `mobile/src/data/user/preferencesRepository.test.ts`
+- `mobile/__mocks__/expo-sqlite.ts`
 - `_bmad-output/implementation-artifacts/sprint-status.yaml`
 
 ### Change Log
@@ -387,6 +403,7 @@ disclosure, mnemonic content states, `/browse/item` chip routing).
 | Date | Change |
 | --- | --- |
 | 2026-07-20 | Implemented Story 4.1: split lesson vs details compositions (D-DET-1), three-section lesson pager with Continue, `SectionHeading` + explainer bottom sheets, unprompted on'yomi/kun'yomi primer with `seenKanjiReadingPrimer`, passive `StudyStatusBanner`, accepted-answers disclosure (FR77), personal-mnemonic content states (FR75), and all four FR72 cross-reference directions from existing graph edges. Status → review. |
+| 2026-07-20 | Code review patches: kanji `builds_on` “Built from” parents, lesson related-grammar parity, primer remount latch, radical mnemonic omit, study-banner lock/loading fixes, sync related/study hooks, drop miswired transitive explainer. Status → done. |
 
 ---
 

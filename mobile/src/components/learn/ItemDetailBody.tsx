@@ -6,6 +6,7 @@ import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
 import { StudyStatusBanner } from '@/components/learn/StudyStatusBanner';
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
+import { useComponentParents } from '@/data/hooks/useComponentParents';
 import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
 import { useItemStudyStatus } from '@/data/hooks/useItemStudyStatus';
@@ -35,11 +36,12 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
     loading,
     notFound,
   } = useItemDetail(itemId);
-  const { parents, isLocked, unmetPrerequisites } = useItemDependencyStatus(itemId);
+  const { isLocked, unmetPrerequisites, loading: depsLoading } = useItemDependencyStatus(itemId);
+  const componentParents = useComponentParents(itemId, item?.itemType ?? null);
   const studyStatus = useItemStudyStatus(itemId);
   const related = useRelatedItems(itemId, item?.itemType ?? null);
 
-  if (loading) {
+  if (loading || depsLoading) {
     return (
       <View className="mt-8 items-center">
         <ActivityIndicator accessibilityLabel="Loading item" />
@@ -67,7 +69,7 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
           kanjiReadings={kanjiReadings ?? []}
           acceptedAnswers={acceptedAnswers}
           exampleSentences={exampleSentences}
-          parents={parents}
+          parents={componentParents}
           related={related}
         />
       ) : item.itemType === 'vocabulary' ? (
@@ -76,7 +78,7 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
           acceptedAnswers={acceptedAnswers}
           exampleSentences={exampleSentences}
           grammarVocabLinks={grammarVocabLinks}
-          parents={parents}
+          parents={componentParents}
           related={related}
         />
       ) : item.itemType === 'grammar' ? (

@@ -111,7 +111,7 @@ describe('GrammarDetail', () => {
     expect(screen.getByText(/copula closes a sentence/)).toBeTruthy();
     expect(screen.getByTestId('grammar-caution-notes')).toBeTruthy();
     expect(screen.getByText('です never attaches directly to verbs.')).toBeTruthy();
-    expect(screen.getByTestId('related-grammar-51')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-related-grammar-51')).toBeTruthy();
     expect(screen.getByText('じゃない')).toBeTruthy();
     expect(screen.getByText('negative copula')).toBeTruthy();
   });

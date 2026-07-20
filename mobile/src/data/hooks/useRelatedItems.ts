@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 import type { RelatedItem } from '@/core/content/content.types';
 import { getRelatedItemsForItems, type ItemType } from '@/data/curriculum/itemRepository';
@@ -16,7 +16,7 @@ import { useDatabase } from '@/data/hooks/useDatabase';
  * | vocabulary | _(none)_                      | components come from parents    |
  *
  * Vocabulary's own cross-refs are its component kanji (graph *parents*, via
- * `useItemDependencyStatus`) and its grammar links (`getGrammarLinksForVocab`),
+ * `useComponentParents`) and its grammar links (`getGrammarLinksForVocab`),
  * so there is nothing to fetch here for it.
  */
 const RELATED_EDGE_BY_TYPE: Record<
@@ -34,24 +34,17 @@ export function useRelatedItems(
   itemType: ItemType | null,
 ): RelatedItem[] {
   const { curriculumDb } = useDatabase();
-  const [related, setRelated] = useState<RelatedItem[]>([]);
 
-  useEffect(() => {
+  return useMemo(() => {
     const edge = itemType ? RELATED_EDGE_BY_TYPE[itemType] : null;
     if (!itemId || !edge) {
-      setRelated([]);
-      return;
+      return [];
     }
 
     const children = getRelatedItemsForItems(curriculumDb, [itemId]).get(itemId) ?? [];
-    setRelated(
-      children.filter(
-        (child) =>
-          child.relationshipType === edge.relationshipType &&
-          child.itemType === edge.childType,
-      ),
+    return children.filter(
+      (child) =>
+        child.relationshipType === edge.relationshipType && child.itemType === edge.childType,
     );
   }, [curriculumDb, itemId, itemType]);
-
-  return related;
 }

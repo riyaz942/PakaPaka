@@ -10,6 +10,7 @@ import type {
   CurriculumItemDetail,
   CurriculumParentItem,
   GrammarVocabLink,
+  RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
 
 type ItemCrossReferencesProps = {
@@ -17,9 +18,10 @@ type ItemCrossReferencesProps = {
   /** Graph children from `useRelatedItems`, passed in so callers can also ask
    * whether this section will render anything at all. */
   related: RelatedItem[];
-  /** Graph parents from `useItemDependencyStatus` — the component direction. */
+  /** Graph parents from `useComponentParents` — the component direction. */
   parents?: CurriculumParentItem[];
   grammarVocabLinks?: GrammarVocabLink[];
+  relatedGrammar?: RelatedGrammarItem[];
 };
 
 const RELATED_LABEL: Record<string, string> = {
@@ -33,7 +35,7 @@ const COMPONENT_LABEL: Record<string, string> = {
   vocabulary: 'Kanji in this word',
 };
 
-function toChips(items: (RelatedItem | CurriculumParentItem)[]): CrossReferenceChip[] {
+function toChips(items: (RelatedItem | CurriculumParentItem | RelatedGrammarItem)[]): CrossReferenceChip[] {
   return items.map((entry) => ({
     id: entry.id,
     primaryForm: entry.primaryForm,
@@ -42,8 +44,9 @@ function toChips(items: (RelatedItem | CurriculumParentItem)[]): CrossReferenceC
 }
 
 /**
- * All four FR72 cross-reference directions for one item, shared by the lesson
- * "Examples & links" section and the details scroll.
+ * All FR72 cross-reference directions for one item, shared by the lesson
+ * "Examples & links" section and the details scroll — plus related-grammar
+ * sibling links when present (details parity).
  *
  * Component chips (vocabulary → kanji, kanji → radical) are always browsable —
  * they are never collapsed into a bare "Prerequisites met" line. Whether those
@@ -54,6 +57,7 @@ export function ItemCrossReferences({
   related,
   parents = [],
   grammarVocabLinks = [],
+  relatedGrammar = [],
 }: ItemCrossReferencesProps) {
   const componentLabel = COMPONENT_LABEL[item.itemType];
   const relatedLabel = RELATED_LABEL[item.itemType];
@@ -89,6 +93,14 @@ export function ItemCrossReferences({
             meaning: link.vocabularyMeaning,
           }))}
           testID="cross-ref-grammar"
+        />
+      ) : null}
+
+      {item.itemType === 'grammar' ? (
+        <CrossReferenceSection
+          label="Related grammar"
+          items={toChips(relatedGrammar)}
+          testID="cross-ref-related-grammar"
         />
       ) : null}
     </View>

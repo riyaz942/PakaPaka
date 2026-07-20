@@ -4,7 +4,10 @@ import React, { type ReactNode } from 'react';
 
 import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 
-import { useKanjiReadingPrimer } from '@/data/hooks/useKanjiReadingPrimer';
+import {
+  __resetKanjiReadingPrimerSessionForTests,
+  useKanjiReadingPrimer,
+} from '@/data/hooks/useKanjiReadingPrimer';
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
@@ -47,6 +50,7 @@ function renderPrimer(
 describe('useKanjiReadingPrimer gating', () => {
   beforeEach(() => {
     __mockResetSqlite();
+    __resetKanjiReadingPrimerSessionForTests();
   });
 
   it('shows unprompted for a beginner on their first dual-reading kanji', async () => {
@@ -116,5 +120,18 @@ describe('useKanjiReadingPrimer gating', () => {
     rerender({});
 
     expect(result.current).toBe(true);
+  });
+
+  it('stays visible across remount after the flag is written (section pager)', async () => {
+    const userDb = await createUserDb();
+    setOnboardingPath(userDb, 'beginner');
+
+    const first = renderPrimer(userDb, { itemId: '2', isDualReadingKanji: true });
+    expect(first.result.current).toBe(true);
+    expect(getSeenKanjiReadingPrimer(userDb)).toBe(true);
+    first.unmount();
+
+    const second = renderPrimer(userDb, { itemId: '2', isDualReadingKanji: true });
+    expect(second.result.current).toBe(true);
   });
 });

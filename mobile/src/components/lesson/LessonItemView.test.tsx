@@ -10,6 +10,7 @@ import {
 } from '../../../__mocks__/expo-sqlite';
 
 import { LessonItemView } from '@/components/lesson/LessonItemView';
+import { __resetKanjiReadingPrimerSessionForTests } from '@/data/hooks/useKanjiReadingPrimer';
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { runMigrations } from '@/data/migrations/migrationRunner';
@@ -27,6 +28,17 @@ async function createDatabases() {
   expect(result.ok).toBe(true);
 
   __mockSetItems('curriculum.db.test', [
+    {
+      id: 1,
+      item_type: 'radical',
+      jlpt_level: 'N5',
+      slug: 'sun',
+      primary_form: '一',
+      meaning: 'one',
+      mnemonic_text: null,
+      visual_mnemonic_url: null,
+      sort_order: 1,
+    },
     {
       id: 2,
       item_type: 'kanji',
@@ -57,6 +69,7 @@ async function createDatabases() {
   ]);
 
   __mockSetItemRelationships('curriculum.db.test', [
+    { parent_item_id: 1, child_item_id: 2, relationship_type: 'builds_on' },
     { parent_item_id: 2, child_item_id: 3, relationship_type: 'requires' },
   ]);
 
@@ -85,6 +98,7 @@ function mount(
 describe('LessonItemView sections', () => {
   beforeEach(() => {
     __mockResetSqlite();
+    __resetKanjiReadingPrimerSessionForTests();
   });
 
   it('section 1 introduces the item without examples or links', async () => {
@@ -115,6 +129,8 @@ describe('LessonItemView sections', () => {
     mount(curriculumDb, userDb, 2);
 
     expect(screen.getByTestId('lesson-section-examples')).toBeTruthy();
+    expect(screen.getByText('Built from')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-components-1')).toBeTruthy();
     expect(screen.getByText('Vocabulary using this kanji')).toBeTruthy();
     expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
   });

@@ -1,6 +1,5 @@
-import { router, type Href } from 'expo-router';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { SectionHeading } from '@/components/common/SectionHeading';
@@ -8,7 +7,6 @@ import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDis
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
-import { useItemHref } from '@/components/learn/ItemLinkContext';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -51,7 +49,6 @@ export function GrammarDetail({
   related = [],
 }: GrammarDetailProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
-  const hrefFor = useItemHref();
 
   return (
     <View testID="grammar-detail">
@@ -95,7 +92,7 @@ export function GrammarDetail({
 
           {Object.keys(grammarRule.conjugationRules).length > 0 ? (
             <View className="mt-4">
-              <SectionHeading label="Conjugation rules" infoTopic="transitive" />
+              <SectionHeading label="Conjugation rules" />
               {Object.entries(grammarRule.conjugationRules).map(([key, value]) => (
                 <Text key={key} className="mt-1 text-body text-primary">
                   {key}: {formatConjugationValue(value)}
@@ -125,27 +122,7 @@ export function GrammarDetail({
 
       <ExampleSentencesSection sentences={exampleSentences} testIDPrefix="grammar-example" />
 
-      <ItemCrossReferences item={item} related={related} />
-
-      {relatedGrammar.length > 0 ? (
-        <View className="mt-4">
-          <SectionHeading label="Related grammar" />
-          <View className="mt-2 flex-row flex-wrap gap-2">
-            {relatedGrammar.map((entry) => (
-              <Pressable
-                key={entry.id}
-                accessibilityRole="link"
-                accessibilityLabel={`Related grammar ${entry.primaryForm}, ${entry.meaning}`}
-                onPress={() => router.push(hrefFor(entry.id) as Href)}
-                testID={`related-grammar-${entry.id}`}
-                className="min-h-[44px] min-w-[44px] justify-center rounded-radius-md bg-surface px-3 py-2">
-                <Text className="text-body text-feedback-info">{entry.primaryForm}</Text>
-                <Text className="text-caption text-secondary">{entry.meaning}</Text>
-              </Pressable>
-            ))}
-          </View>
-        </View>
-      ) : null}
+      <ItemCrossReferences item={item} related={related} relatedGrammar={relatedGrammar} />
     </View>
   );
 }

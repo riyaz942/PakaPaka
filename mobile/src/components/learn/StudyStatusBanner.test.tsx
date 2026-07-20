@@ -43,6 +43,15 @@ describe('StudyStatusBanner', () => {
     expect(screen.queryByTestId('study-status-banner')).toBeNull();
   });
 
+  it('still names unmet prerequisites when locked even if status is in progress', () => {
+    render(
+      <StudyStatusBanner status="in_progress" isLocked unmetPrerequisites={parents} />,
+    );
+
+    expect(screen.getByText(/Study these first/)).toBeTruthy();
+    expect(screen.getByText('一')).toBeTruthy();
+  });
+
   it('stays passive — it offers no lesson entry point', () => {
     render(
       <StudyStatusBanner status="not_started" isLocked unmetPrerequisites={parents} />,

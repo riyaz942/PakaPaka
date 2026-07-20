@@ -133,3 +133,8 @@
 ## Deferred from: code review of 3-2-passage-unlock-reader-practice-state (2026-07-20)
 
 - **Malformed `bodyFurigana` can desync span offsets from rendered text** — `buildPassageBodyParts` walks `parseFurigana(bodyFurigana ?? body)` while spans index plain `body`; ill-formed furigana markup can attach pressable slices to the wrong characters. Pre-existing furigana/body integrity concern; compile already validates shipped content. [`mobile/src/core/content/passageBodyParts.ts`]
+
+## Deferred from: code review of 4-1-lesson-details-split-cross-refs-primer (2026-07-20)
+
+- **`getRequiredParentsForItems` only reads `requires`** — real radical→kanji edges are `builds_on`, so kanji lock/unlock and “Built from” parents stay empty against bundled curriculum. Pre-existing graph/API mismatch; unlock fix is broader than this story’s UI wiring. [`mobile/src/data/curriculum/itemRepository.ts`]
+- **No error handling around `setPersonalMnemonic` / `clearPersonalMnemonic` in the editor** — repo can throw (e.g. `parseItemId`); pre-existing user-repo pattern. [`mobile/src/components/learn/PersonalMnemonicEditor.tsx`]

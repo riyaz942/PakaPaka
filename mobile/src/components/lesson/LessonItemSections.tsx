@@ -20,6 +20,7 @@ import type {
   GrammarRule,
   GrammarVocabLink,
   KanjiReading,
+  RelatedGrammarItem,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
@@ -36,6 +37,7 @@ export type LessonSectionProps = {
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
+  relatedGrammar: RelatedGrammarItem[];
   parents: CurriculumParentItem[];
   showReadingPrimer: boolean;
 };
@@ -195,7 +197,7 @@ export function LessonMnemonicSectionView({ item }: LessonSectionProps) {
         </View>
       ) : null}
 
-      <PersonalMnemonicEditor itemId={item.id} />
+      {item.itemType !== 'radical' ? <PersonalMnemonicEditor itemId={item.id} /> : null}
     </View>
   );
 }
@@ -205,6 +207,7 @@ export function LessonExamplesSection({
   item,
   exampleSentences,
   grammarVocabLinks,
+  relatedGrammar,
   parents,
 }: LessonSectionProps) {
   const related = useRelatedItems(item.id, item.itemType);
@@ -212,7 +215,8 @@ export function LessonExamplesSection({
     exampleSentences.length === 0 &&
     related.length === 0 &&
     parents.length === 0 &&
-    grammarVocabLinks.length === 0;
+    grammarVocabLinks.length === 0 &&
+    relatedGrammar.length === 0;
 
   return (
     <View testID="lesson-section-examples">
@@ -225,6 +229,7 @@ export function LessonExamplesSection({
         related={related}
         parents={parents}
         grammarVocabLinks={grammarVocabLinks}
+        relatedGrammar={relatedGrammar}
       />
       {hasNothing ? (
         <Text className="mt-4 text-body text-secondary" testID="lesson-examples-empty">
