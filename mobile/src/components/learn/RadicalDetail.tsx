@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { MnemonicImage } from '@/components/common/MnemonicImage';
-import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
+import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import type { RelatedItem } from '@/core/content/content.types';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
 import { isValidMnemonicImageUrl } from '@/utils/mnemonicAccessibilityLabel';
 
 type RadicalDetailProps = {
   item: CurriculumItemDetail;
-  size?: HeroSize;
+  related?: RelatedItem[];
 };
 
-export function RadicalDetail({ item, size = 'md' }: RadicalDetailProps) {
+export function RadicalDetail({ item, related = [] }: RadicalDetailProps) {
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
   const hasValidImageUrl = isValidMnemonicImageUrl(item.visualMnemonicUrl);
 
@@ -27,10 +29,10 @@ export function RadicalDetail({ item, size = 'md' }: RadicalDetailProps) {
 
   return (
     <View testID="radical-detail">
-      <ItemDetailHeader itemType="radical" meaning={item.meaning} size={size}>
+      <ItemDetailHeader itemType="radical" meaning={item.meaning}>
         <Text
           className={cn('text-center font-bold', CONTENT_TYPE_ACCENT.radical.text)}
-          style={size === 'lg' ? HERO_FONT_SIZE.glyph : { fontSize: 48, lineHeight: 53 }}>
+          style={{ fontSize: 48, lineHeight: 53 }}>
           {item.primaryForm}
         </Text>
       </ItemDetailHeader>
@@ -52,6 +54,8 @@ export function RadicalDetail({ item, size = 'md' }: RadicalDetailProps) {
       </View>
 
       <UserSynonymEditor itemId={item.id} />
+
+      <ItemCrossReferences item={item} related={related} />
     </View>
   );
 }

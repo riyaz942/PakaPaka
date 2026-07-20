@@ -1,31 +1,52 @@
 import React from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 
-import { GrammarDetail } from '@/components/learn/GrammarDetail';
-import { KanjiDetail } from '@/components/learn/KanjiDetail';
-import { RadicalDetail } from '@/components/learn/RadicalDetail';
-import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
+import {
+  LESSON_SECTION_LABELS,
+  LessonExamplesSection,
+  LessonIntroSection,
+  LessonMnemonicSectionView,
+  type LessonSectionProps,
+} from '@/components/lesson/LessonItemSections';
 import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
+import { useKanjiReadingPrimer } from '@/data/hooks/useKanjiReadingPrimer';
 
 type LessonItemViewProps = {
   itemId: string;
+  /** 0-based index into the three lesson sections; owned by the session loop. */
+  sectionIndex: number;
 };
 
-/** Renders the full teach card for one lesson item, reusing the Learn detail views. */
-export function LessonItemView({ itemId }: LessonItemViewProps) {
+/**
+ * One lesson item, paged into three sections (D-DET-1, FR71).
+ *
+ * This is the *lesson* composition: it deliberately no longer renders the
+ * Browse `*Detail` scroll. Both surfaces share section atoms (hero, mnemonic,
+ * examples, cross-refs), but a lesson paces content while details is a single
+ * reference scroll.
+ */
+export function LessonItemView({ itemId, sectionIndex }: LessonItemViewProps) {
   const {
     item,
     kanjiReadings,
-    acceptedAnswers,
     grammarRule,
     exampleSentences,
     grammarVocabLinks,
-    relatedGrammar,
     loading,
     notFound,
   } = useItemDetail(itemId);
-  const { parents, isLocked, unmetPrerequisites } = useItemDependencyStatus(itemId);
+  const { parents } = useItemDependencyStatus(itemId);
+
+  const readings = kanjiReadings ?? [];
+  const isDualReadingKanji =
+    item?.itemType === 'kanji' &&
+    readings.some((reading) => reading.readingType === 'onyomi') &&
+    readings.some((reading) => reading.readingType === 'kunyomi');
+  const showReadingPrimer = useKanjiReadingPrimer({
+    itemId: loading ? null : itemId,
+    isDualReadingKanji,
+  });
 
   if (loading) {
     return (
@@ -39,50 +60,27 @@ export function LessonItemView({ itemId }: LessonItemViewProps) {
     return <Text className="mt-space-xl text-body text-secondary">Item not found.</Text>;
   }
 
-  switch (item.itemType) {
-    case 'radical':
-      return <RadicalDetail item={item} size="lg" />;
-    case 'kanji':
-      return (
-        <KanjiDetail
-          item={item}
-          kanjiReadings={kanjiReadings ?? []}
-          acceptedAnswers={acceptedAnswers}
-          exampleSentences={exampleSentences}
-          parents={parents}
-          isLocked={isLocked}
-          unmetPrerequisites={unmetPrerequisites}
-          size="lg"
-          mnemonicCollapsible
-        />
-      );
-    case 'vocabulary':
-      return (
-        <VocabularyDetail
-          item={item}
-          acceptedAnswers={acceptedAnswers}
-          exampleSentences={exampleSentences}
-          grammarVocabLinks={grammarVocabLinks}
-          parents={parents}
-          isLocked={isLocked}
-          unmetPrerequisites={unmetPrerequisites}
-          size="lg"
-          mnemonicCollapsible
-        />
-      );
-    case 'grammar':
-      return (
-        <GrammarDetail
-          item={item}
-          acceptedAnswers={acceptedAnswers}
-          grammarRule={grammarRule}
-          exampleSentences={exampleSentences}
-          relatedGrammar={relatedGrammar}
-          size="lg"
-          mnemonicCollapsible
-        />
-      );
-    default:
-      return null;
-  }
+  const sectionProps: LessonSectionProps = {
+    item,
+    kanjiReadings: readings,
+    grammarRule,
+    exampleSentences,
+    grammarVocabLinks,
+    parents,
+    showReadingPrimer,
+  };
+
+  return (
+    <View>
+      <Text className="text-overline uppercase text-secondary" testID="lesson-section-label">
+        {`${LESSON_SECTION_LABELS[sectionIndex] ?? LESSON_SECTION_LABELS[0]} · ${
+          sectionIndex + 1
+        } of ${LESSON_SECTION_LABELS.length}`}
+      </Text>
+
+      {sectionIndex === 0 ? <LessonIntroSection {...sectionProps} /> : null}
+      {sectionIndex === 1 ? <LessonMnemonicSectionView {...sectionProps} /> : null}
+      {sectionIndex >= 2 ? <LessonExamplesSection {...sectionProps} /> : null}
+    </View>
+  );
 }

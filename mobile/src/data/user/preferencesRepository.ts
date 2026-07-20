@@ -27,6 +27,7 @@ export const PREFERENCE_KEYS = {
   shadowModeEnabledAt: 'shadow_mode_enabled_at',
   shadowModePromptDismissed: 'shadow_mode_prompt_dismissed',
   shadowModePromptSnoozedUntil: 'shadow_mode_prompt_snoozed_until',
+  seenKanjiReadingPrimer: 'seen_kanji_reading_primer',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -288,6 +289,20 @@ export function getShadowModePromptSnoozedUntil(userDb: SQLiteDatabase): string 
 
 export function setShadowModePromptSnoozedUntil(userDb: SQLiteDatabase, iso: string): void {
   setPreference(userDb, PREFERENCE_KEYS.shadowModePromptSnoozedUntil, iso);
+}
+
+/**
+ * True once the on'yomi/kun'yomi primer has been shown unprompted (FR74).
+ * Defaults to false so a fresh beginner sees it exactly once; there is no
+ * "un-see" setter — the primer stays reachable through the readings heading
+ * info affordance instead.
+ */
+export function getSeenKanjiReadingPrimer(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.seenKanjiReadingPrimer) === 'true';
+}
+
+export function setSeenKanjiReadingPrimer(userDb: SQLiteDatabase): void {
+  setPreference(userDb, PREFERENCE_KEYS.seenKanjiReadingPrimer, 'true');
 }
 
 export function setCurriculumInstallMetadata(

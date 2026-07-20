@@ -2,12 +2,17 @@ import { router, type Href } from 'expo-router';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { FuriganaText } from '@/components/common/FuriganaText';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
-import { HERO_FONT_SIZE, ItemDetailHeader, type HeroSize } from '@/components/learn/ItemDetailHeader';
+import { SectionHeading } from '@/components/common/SectionHeading';
+import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
+import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
+import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import { useItemHref } from '@/components/learn/ItemLinkContext';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import type { RelatedItem } from '@/core/content/content.types';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -24,16 +29,8 @@ type GrammarDetailProps = {
   grammarRule: GrammarRule | null;
   exampleSentences: ExampleSentence[];
   relatedGrammar?: RelatedGrammarItem[];
-  size?: HeroSize;
-  /** Collapse the mnemonic behind a disclosure (lesson sessions). */
-  mnemonicCollapsible?: boolean;
+  related?: RelatedItem[];
 };
-
-function synonymMeanings(acceptedAnswers: AcceptedAnswer[]): string[] {
-  return acceptedAnswers
-    .filter((answer) => answer.answerType === 'meaning' && !answer.isPrimary)
-    .map((answer) => answer.answerText);
-}
 
 function formatConjugationValue(value: unknown): string {
   if (typeof value === 'boolean') {
@@ -51,28 +48,22 @@ export function GrammarDetail({
   grammarRule,
   exampleSentences,
   relatedGrammar = [],
-  size = 'md',
-  mnemonicCollapsible = false,
+  related = [],
 }: GrammarDetailProps) {
-  const synonyms = synonymMeanings(acceptedAnswers);
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const hrefFor = useItemHref();
 
   return (
     <View testID="grammar-detail">
-      <ItemDetailHeader itemType="grammar" meaning={item.meaning} size={size}>
+      <ItemDetailHeader itemType="grammar" meaning={item.meaning}>
         <Text
           className={cn('font-mono text-center font-bold', CONTENT_TYPE_ACCENT.grammar.text)}
-          style={size === 'lg' ? HERO_FONT_SIZE.pattern : { fontSize: 28, lineHeight: 34 }}>
+          style={{ fontSize: 28, lineHeight: 34 }}>
           {item.primaryForm}
         </Text>
       </ItemDetailHeader>
 
-      {synonyms.length > 0 ? (
-        <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Synonyms</Text>
-          <Text className="mt-1 text-body text-primary">{synonyms.join(', ')}</Text>
-        </View>
-      ) : null}
+      <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
 
       {grammarRule?.explanationMarkdown ? (
         <View className="mt-4" testID="grammar-lesson-body">
@@ -87,13 +78,13 @@ export function GrammarDetail({
       {grammarRule ? (
         <>
           <View className="mt-4">
-            <Text className="text-body-sm uppercase text-secondary">Structure</Text>
+            <SectionHeading label="Structure" />
             <Text className="mt-1 text-body text-primary">{grammarRule.structure}</Text>
           </View>
 
           {grammarRule.acceptedForms.length > 0 ? (
             <View className="mt-4">
-              <Text className="text-body-sm uppercase text-secondary">Accepted forms</Text>
+              <SectionHeading label="Accepted forms" />
               {grammarRule.acceptedForms.map((form) => (
                 <Text key={form} className="mt-1 text-body text-primary">
                   • {form}
@@ -104,7 +95,7 @@ export function GrammarDetail({
 
           {Object.keys(grammarRule.conjugationRules).length > 0 ? (
             <View className="mt-4">
-              <Text className="text-body-sm uppercase text-secondary">Conjugation rules</Text>
+              <SectionHeading label="Conjugation rules" infoTopic="transitive" />
               {Object.entries(grammarRule.conjugationRules).map(([key, value]) => (
                 <Text key={key} className="mt-1 text-body text-primary">
                   {key}: {formatConjugationValue(value)}
@@ -128,43 +119,28 @@ export function GrammarDetail({
         </View>
       ) : null}
 
-      {item.mnemonicText ? (
-        <MnemonicSection mnemonicText={item.mnemonicText} collapsible={mnemonicCollapsible} />
-      ) : null}
+      {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
 
       <PersonalMnemonicEditor itemId={item.id} />
 
-      {exampleSentences.length > 0 ? (
-        <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Examples</Text>
-          {exampleSentences.map((sentence) => (
-            <View key={sentence.id} className="mt-2" testID={`grammar-example-${sentence.id}`}>
-              <FuriganaText
-                text={sentence.furigana ?? sentence.japanese}
-                mode={furiganaMode}
-                knownKanji={knownKanji}
-                className="text-body text-primary"
-              />
-              <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
-            </View>
-          ))}
-        </View>
-      ) : null}
+      <ExampleSentencesSection sentences={exampleSentences} testIDPrefix="grammar-example" />
+
+      <ItemCrossReferences item={item} related={related} />
 
       {relatedGrammar.length > 0 ? (
         <View className="mt-4">
-          <Text className="text-body-sm uppercase text-secondary">Related grammar</Text>
+          <SectionHeading label="Related grammar" />
           <View className="mt-2 flex-row flex-wrap gap-2">
-            {relatedGrammar.map((related) => (
+            {relatedGrammar.map((entry) => (
               <Pressable
-                key={related.id}
-                accessibilityRole="button"
-                accessibilityLabel={`Related grammar ${related.primaryForm}, ${related.meaning}`}
-                onPress={() => router.push(`/learn/item/${related.id}` as Href)}
-                testID={`related-grammar-${related.id}`}
-                className="min-h-[44px] min-w-[44px] justify-center rounded-md bg-surface px-3 py-2">
-                <Text className="text-body text-feedback-info">{related.primaryForm}</Text>
-                <Text className="text-caption text-secondary">{related.meaning}</Text>
+                key={entry.id}
+                accessibilityRole="link"
+                accessibilityLabel={`Related grammar ${entry.primaryForm}, ${entry.meaning}`}
+                onPress={() => router.push(hrefFor(entry.id) as Href)}
+                testID={`related-grammar-${entry.id}`}
+                className="min-h-[44px] min-w-[44px] justify-center rounded-radius-md bg-surface px-3 py-2">
+                <Text className="text-body text-feedback-info">{entry.primaryForm}</Text>
+                <Text className="text-caption text-secondary">{entry.meaning}</Text>
               </Pressable>
             ))}
           </View>

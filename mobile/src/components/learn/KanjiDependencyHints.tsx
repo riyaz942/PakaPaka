@@ -4,6 +4,13 @@ import { Pressable, Text, View } from 'react-native';
 
 import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 
+/**
+ * Compact prerequisite hints for *list rows* (`LearnItemRow`).
+ *
+ * Detail screens no longer use this: they show always-browsable component
+ * chips via `CrossReferenceSection` plus a passive `StudyStatusBanner`, so
+ * lock state never doubles as the only way to see an item's parts (FR72/FR76).
+ */
 type KanjiDependencyHintsProps = {
   parents: CurriculumParentItem[];
   mode?: 'all' | 'unmet';
@@ -34,7 +41,7 @@ export function KanjiDependencyHints({
                 ? `Radical ${parent.primaryForm}`
                 : `${parent.primaryForm}`
             }
-            onPress={() => router.push(`/learn/item/${parent.id}` as Href)}
+            onPress={() => router.push(`/browse/item/${parent.id}` as Href)}
             testID={testID ? `${testID}-${parent.id}` : undefined}
             className="min-h-[44px] min-w-[44px] justify-center px-2 py-1">
             <Text className="text-caption text-feedback-info">{parent.primaryForm}</Text>

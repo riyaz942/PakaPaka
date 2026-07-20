@@ -9,6 +9,7 @@ import {
   clearOnboardingCompleted,
   getFuriganaDisplay,
   getOnboardingPath,
+  getSeenKanjiReadingPrimer,
   getSessionIntensity,
   getShadowModeEnabled,
   getShadowModeEnabledAt,
@@ -24,6 +25,7 @@ import {
   setOnboardingPath,
   setReducedMotionEnabled,
   setReviewAutoAdvanceEnabled,
+  setSeenKanjiReadingPrimer,
   setSessionIntensity,
   setShadowModeEnabled,
   setShadowModeEnabledAt,
@@ -358,5 +360,38 @@ describe('preferencesRepository shadow mode preferences', () => {
 
     setShadowModePromptSnoozedUntil(db, iso);
     expect(getShadowModePromptSnoozedUntil(db)).toBe(iso);
+  });
+});
+
+describe('preferencesRepository kanji reading primer flag', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults seen_kanji_reading_primer to false when unset', async () => {
+    const db = await createUserDb();
+    expect(getSeenKanjiReadingPrimer(db)).toBe(false);
+  });
+
+  it('marks the primer seen and stays seen', async () => {
+    const db = await createUserDb();
+
+    setSeenKanjiReadingPrimer(db);
+    expect(getSeenKanjiReadingPrimer(db)).toBe(true);
+
+    // Re-marking is idempotent — the primer never comes back unprompted.
+    setSeenKanjiReadingPrimer(db);
+    expect(getSeenKanjiReadingPrimer(db)).toBe(true);
+  });
+
+  it('exposes the preference key so callers do not hardcode the string', async () => {
+    expect(PREFERENCE_KEYS.seenKanjiReadingPrimer).toBe('seen_kanji_reading_primer');
   });
 });

@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
+import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
 import { MaxContentWidth } from '@/constants/theme';
 import { computeLoadIncrement } from '@/core/cognitive-load/loadTracker';
@@ -27,23 +28,42 @@ export default function LessonScreen() {
     ignoreAllowance: learnAnyway,
   });
   const [index, setIndex] = useState(0);
+  // Inner section index, local to the current item and reset whenever the item
+  // changes. The progress bar stays item-based — sections are pacing, not
+  // progress the learner is measured against.
+  const [sectionIndex, setSectionIndex] = useState(0);
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const current = items[index] ?? null;
   const isLast = index === items.length - 1;
   const isFirst = index === 0;
+  const isLastSection = sectionIndex === LESSON_SECTION_COUNT - 1;
 
   // Nothing is committed until the final card, so stepping backwards to
-  // re-read an earlier item is free — no state beyond the index changes.
+  // re-read an earlier item — or an earlier section — is free.
   const handleBack = () => {
+    if (sectionIndex > 0) {
+      setSectionIndex((value) => value - 1);
+      return;
+    }
     if (!isFirst) {
       setIndex((value) => value - 1);
+      // Re-entering an item starts at its introduction.
+      setSectionIndex(0);
     }
   };
 
   const handleNext = () => {
+    // Continue walks the three sections of the current item before the outer
+    // control advances to the next item (FR71).
+    if (!isLastSection) {
+      setSectionIndex((value) => value + 1);
+      return;
+    }
+
     if (!isLast) {
       setIndex((value) => value + 1);
+      setSectionIndex(0);
       return;
     }
 
@@ -167,11 +187,11 @@ export default function LessonScreen() {
         </View>
 
         {current ? (
-          <FadeSlideIn key={current.id} className="flex-1">
+          <FadeSlideIn key={`${current.id}-${sectionIndex}`} className="flex-1">
             <ScrollView
               className="mt-space-md flex-1"
               contentContainerClassName="pb-space-lg">
-              <LessonItemView itemId={current.id} />
+              <LessonItemView itemId={current.id} sectionIndex={sectionIndex} />
             </ScrollView>
           </FadeSlideIn>
         ) : null}
@@ -187,13 +207,17 @@ export default function LessonScreen() {
             label="Back"
             variant="secondary"
             onPress={handleBack}
-            disabled={isFirst}
-            accessibilityLabel="Back to previous item"
+            disabled={isFirst && sectionIndex === 0}
+            accessibilityLabel={
+              sectionIndex > 0 ? 'Back to previous section' : 'Back to previous item'
+            }
             testID="lesson-back"
             className="flex-1"
           />
           <Button
-            label={isLast ? 'Finish lesson' : 'Got it — next'}
+            label={
+              !isLastSection ? 'Continue' : isLast ? 'Finish lesson' : 'Got it — next'
+            }
             onPress={handleNext}
             testID="lesson-next"
             className="flex-[2]"

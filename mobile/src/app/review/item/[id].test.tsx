@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   __mockResetSqlite,
   __mockSetAcceptedAnswers,
+  __mockSetItemRelationships,
   __mockSetItems,
   __mockSetKanjiReadings,
 } from '../../../../__mocks__/expo-sqlite';
@@ -15,11 +16,13 @@ import { DatabaseContext } from '@/providers/DatabaseContext';
 import ReviewItemDetailScreen from './[id]';
 
 const mockBack = jest.fn();
+const mockPush = jest.fn();
 const mockUseLocalSearchParams = jest.fn();
 
 jest.mock('expo-router', () => ({
   router: {
     back: () => mockBack(),
+    push: (...args: unknown[]) => mockPush(...args),
   },
   useLocalSearchParams: () => mockUseLocalSearchParams(),
 }));
@@ -52,6 +55,7 @@ describe('ReviewItemDetailScreen (Story 1.2, FR85 — details under review/)', (
   beforeEach(() => {
     __mockResetSqlite();
     mockBack.mockClear();
+    mockPush.mockClear();
     mockUseLocalSearchParams.mockReturnValue({ id: '2' });
   });
 
@@ -71,6 +75,20 @@ describe('ReviewItemDetailScreen (Story 1.2, FR85 — details under review/)', (
         visual_mnemonic_url: null,
         sort_order: 1,
       },
+      {
+        id: 3,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'taberu',
+        primary_form: '食べる',
+        meaning: 'to eat',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+    __mockSetItemRelationships('curriculum.db.test', [
+      { parent_item_id: 2, child_item_id: 3, relationship_type: 'requires' },
     ]);
     __mockSetKanjiReadings('curriculum.db.test', [
       { id: 1, item_id: 2, reading_type: 'onyomi', reading: 'しょく', sort_order: 0 },
@@ -101,6 +119,20 @@ describe('ReviewItemDetailScreen (Story 1.2, FR85 — details under review/)', (
     });
     fireEvent.press(screen.getByTestId('review-item-back'));
     expect(mockBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps cross-reference chips inside the review stack', async () => {
+    const { curriculumDb, userDb } = await createDbs();
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByTestId('cross-ref-related-3'));
+
+    // Pushing /browse/item from here would unmount ReviewSessionProvider.
+    expect(mockPush).toHaveBeenCalledWith('/review/item/3');
   });
 
   it('shows a not-found message for an unknown id', async () => {

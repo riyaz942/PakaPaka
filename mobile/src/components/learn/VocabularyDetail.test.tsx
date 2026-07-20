@@ -86,8 +86,46 @@ describe('VocabularyDetail', () => {
     expect(screen.getByText('私は学生です。')).toBeTruthy();
     expect(screen.getByText('I am a student.')).toBeTruthy();
     expect(screen.getByText('Think of private self.')).toBeTruthy();
-    expect(screen.getByTestId('grammar-link-50')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-grammar-50')).toBeTruthy();
     expect(screen.getByText('です')).toBeTruthy();
+  });
+
+  it('keeps component kanji browsable rather than collapsing them to a status line', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+        parents={[{ id: '2', itemType: 'kanji', primaryForm: '私' }]}
+      />,
+    );
+
+    expect(screen.getByText('Kanji in this word')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-components-2')).toBeTruthy();
+    expect(screen.queryByText('Prerequisites met')).toBeNull();
+  });
+
+  it('puts curriculum accepted answers behind a disclosure, distinct from the user editor', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={[
+          ...acceptedAnswers,
+          { id: '2', answerType: 'meaning', answerText: 'myself', isPrimary: false },
+        ]}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    // Collapsed by default, and never sharing a title with "Your accepted answers".
+    expect(screen.queryByText('myself')).toBeNull();
+    expect(screen.getByText('Accepted answers')).toBeTruthy();
+    expect(screen.getByText('Your accepted answers')).toBeTruthy();
+
+    fireEvent.press(screen.getByTestId('accepted-answers-disclosure-toggle'));
+    expect(screen.getByText('myself')).toBeTruthy();
   });
 
   it('navigates to grammar detail when a grammar link is pressed', () => {
@@ -100,8 +138,9 @@ describe('VocabularyDetail', () => {
       />,
     );
 
-    fireEvent.press(screen.getByTestId('grammar-link-50'));
+    fireEvent.press(screen.getByTestId('cross-ref-grammar-50'));
 
-    expect(mockPush).toHaveBeenCalledWith('/learn/item/50');
+    // Browse is the canonical discovery surface for cross-references.
+    expect(mockPush).toHaveBeenCalledWith('/browse/item/50');
   });
 });

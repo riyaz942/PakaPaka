@@ -221,8 +221,27 @@ describe('BrowseItemDetailRoute', () => {
       expect(screen.getByText('ニチ')).toBeTruthy();
       expect(screen.getByText("Kun'yomi")).toBeTruthy();
       expect(screen.getByText('ひ')).toBeTruthy();
-      expect(screen.getByText('sun')).toBeTruthy();
     });
+
+    // Curriculum accepted answers sit behind a disclosure (FR77).
+    expect(screen.queryByText('sun')).toBeNull();
+    fireEvent.press(screen.getByTestId('accepted-answers-disclosure-toggle'));
+    expect(screen.getByText('sun')).toBeTruthy();
+  });
+
+  it('shows a passive study-status banner without gating content', async () => {
+    const { curriculumDb, userDb } = await createCurriculumDb();
+    mockUseLocalSearchParams.mockReturnValue({ id: '2' });
+    renderDetailScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('study-status-banner')).toBeTruthy();
+    });
+
+    expect(screen.getByText("You haven't studied this yet.")).toBeTruthy();
+    // Content stays fully visible, and details is never a lesson entry point.
+    expect(screen.getByText('日')).toBeTruthy();
+    expect(screen.queryByText(/Start lesson/i)).toBeNull();
   });
 
   it('renders vocabulary detail with examples and grammar links', async () => {
@@ -234,7 +253,7 @@ describe('BrowseItemDetailRoute', () => {
       expect(screen.getByTestId('vocabulary-detail')).toBeTruthy();
       expect(screen.getByText('私')).toBeTruthy();
       expect(screen.getByText('私は学生です。')).toBeTruthy();
-      expect(screen.getByTestId('grammar-link-4')).toBeTruthy();
+      expect(screen.getByTestId('cross-ref-grammar-4')).toBeTruthy();
     });
   });
 
@@ -337,15 +356,17 @@ describe('BrowseItemDetailRoute', () => {
     renderDetailScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('personal-mnemonic-input')).toBeTruthy();
+      expect(screen.getByTestId('personal-mnemonic-empty')).toBeTruthy();
     });
 
+    fireEvent.press(screen.getByTestId('personal-mnemonic-empty'));
     fireEvent.changeText(screen.getByTestId('personal-mnemonic-input'), 'My day mnemonic');
     fireEvent.press(screen.getByTestId('personal-mnemonic-save'));
 
     await waitFor(() => {
-      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('My day mnemonic');
+      expect(screen.getByTestId('personal-mnemonic-text')).toBeTruthy();
     });
+    expect(screen.getByText('My day mnemonic')).toBeTruthy();
   });
 
   it('clears personal override while curriculum mnemonic remains', async () => {
@@ -362,16 +383,17 @@ describe('BrowseItemDetailRoute', () => {
     renderDetailScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('Override mnemonic');
+      expect(screen.getByText('Override mnemonic')).toBeTruthy();
       expect(screen.getByText('The sun rises each day.')).toBeTruthy();
     });
 
-    fireEvent.changeText(screen.getByTestId('personal-mnemonic-input'), '');
-    fireEvent.press(screen.getByTestId('personal-mnemonic-save'));
+    fireEvent.press(screen.getByTestId('personal-mnemonic-delete'));
+    fireEvent.press(screen.getByTestId('personal-mnemonic-delete-confirm'));
 
     await waitFor(() => {
-      expect(screen.getByTestId('personal-mnemonic-input').props.value).toBe('');
-      expect(screen.getByText('The sun rises each day.')).toBeTruthy();
+      expect(screen.getByTestId('personal-mnemonic-empty')).toBeTruthy();
     });
+    // Deleting the personal override leaves the curriculum mnemonic intact.
+    expect(screen.getByText('The sun rises each day.')).toBeTruthy();
   });
 });

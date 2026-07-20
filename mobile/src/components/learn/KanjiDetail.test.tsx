@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import React from 'react';
 
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
@@ -61,8 +61,37 @@ describe('KanjiDetail', () => {
     expect(screen.getByText('ニチ')).toBeTruthy();
     expect(screen.getByText("Kun'yomi")).toBeTruthy();
     expect(screen.getByText('ひ')).toBeTruthy();
-    expect(screen.getByText('sun')).toBeTruthy();
     expect(screen.getByText('The sun rises each day.')).toBeTruthy();
+  });
+
+  it('opens the reading primer from the readings heading, on any path', () => {
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+      />,
+    );
+
+    fireEvent.press(screen.getByTestId("section-heading-info-on'yomi"));
+
+    expect(screen.getByText("On'yomi and kun'yomi")).toBeTruthy();
+  });
+
+  it('hides curriculum accepted answers behind a disclosure', () => {
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+      />,
+    );
+
+    expect(screen.queryByText('sun')).toBeNull();
+
+    fireEvent.press(screen.getByTestId('accepted-answers-disclosure-toggle'));
+
+    expect(screen.getByText('sun')).toBeTruthy();
   });
 
   it('renders example sentences when provided', () => {

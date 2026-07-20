@@ -109,6 +109,18 @@ describe('LessonScreen', () => {
     return { userDb, curriculumDb };
   }
 
+  /** Walks the three sections of the current item, landing on section 3. */
+  function walkToLastSection() {
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    fireEvent.press(screen.getByTestId('lesson-next'));
+  }
+
+  /** Section 1 → 2 → 3 → next item. */
+  function advanceItem() {
+    walkToLastSection();
+    fireEvent.press(screen.getByTestId('lesson-next'));
+  }
+
   it('walks the auto-built lesson and commits items on finish', async () => {
     const { userDb, curriculumDb } = await createDatabases();
     renderLessonScreen(curriculumDb, userDb);
@@ -118,10 +130,15 @@ describe('LessonScreen', () => {
     });
     expect(screen.getByText('1/3')).toBeTruthy();
 
+    // Sections pace the item; the progress bar still counts items only.
+    walkToLastSection();
+    expect(screen.getByText('1/3')).toBeTruthy();
     fireEvent.press(screen.getByTestId('lesson-next'));
     expect(screen.getByText('2/3')).toBeTruthy();
-    fireEvent.press(screen.getByTestId('lesson-next'));
+    advanceItem();
     expect(screen.getByText('3/3')).toBeTruthy();
+
+    walkToLastSection();
 
     // Nothing committed until the lesson is finished.
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
@@ -146,7 +163,7 @@ describe('LessonScreen', () => {
     expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
   });
 
-  it('navigates backwards and forwards without committing anything', async () => {
+  it('advances and rewinds sections before items, committing nothing', async () => {
     const { userDb, curriculumDb } = await createDatabases();
     renderLessonScreen(curriculumDb, userDb);
 
@@ -154,32 +171,53 @@ describe('LessonScreen', () => {
       expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
     });
 
-    // Back is disabled on the first item.
+    // Back is disabled on the first section of the first item.
     expect(
       screen.getByTestId('lesson-back').props.accessibilityState.disabled,
     ).toBe(true);
     fireEvent.press(screen.getByTestId('lesson-back'));
     expect(screen.getByText('1/3')).toBeTruthy();
 
+    // Continue walks sections, then hands over to the item control.
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Introduction · 1 of 3',
+    );
     fireEvent.press(screen.getByTestId('lesson-next'));
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Mnemonic · 2 of 3',
+    );
     fireEvent.press(screen.getByTestId('lesson-next'));
-    expect(screen.getByText('3/3')).toBeTruthy();
-
-    fireEvent.press(screen.getByTestId('lesson-back'));
-    expect(screen.getByText('2/3')).toBeTruthy();
-    expect(
-      screen.getByTestId('lesson-back').props.accessibilityState.disabled,
-    ).toBe(false);
-    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Examples & links · 3 of 3',
+    );
     expect(screen.getByText('1/3')).toBeTruthy();
 
-    // Walking backwards commits nothing.
+    // Back rewinds within the item before leaving it.
+    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Mnemonic · 2 of 3',
+    );
+    expect(screen.getByText('1/3')).toBeTruthy();
+
+    // From section 2: one Continue to section 3, one more to the next item.
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    expect(screen.getByText('2/3')).toBeTruthy();
+
+    // Stepping back into the previous item restarts it at its introduction.
+    fireEvent.press(screen.getByTestId('lesson-back'));
+    expect(screen.getByText('1/3')).toBeTruthy();
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Introduction · 1 of 3',
+    );
+
+    // Walking around commits nothing.
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
 
     // Forwards again to the end still commits the full batch.
-    fireEvent.press(screen.getByTestId('lesson-next'));
-    fireEvent.press(screen.getByTestId('lesson-next'));
-    fireEvent.press(screen.getByTestId('lesson-next'));
+    advanceItem();
+    advanceItem();
+    advanceItem();
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
   });
 
