@@ -7,6 +7,8 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   clearOnboardingCompleted,
+  getAiModel,
+  getAiOpenAiBaseUrl,
   getCloudSttOptIn,
   getFuriganaDisplay,
   getOnboardingPath,
@@ -21,6 +23,8 @@ import {
   getReviewAutoAdvanceEnabled,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setAiModel,
+  setAiOpenAiBaseUrl,
   setCloudSttOptIn,
   setFuriganaDisplay,
   setOnboardingCompleted,
@@ -429,5 +433,67 @@ describe('preferencesRepository cloud STT opt-in', () => {
 
     setCloudSttOptIn(db, false);
     expect(getCloudSttOptIn(db)).toBe(false);
+  });
+});
+
+describe('preferencesRepository AI model and base URL guards', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('clears the model row when set to blank so the adapter default applies', async () => {
+    const db = await createUserDb();
+
+    setAiModel(db, 'openai', 'gpt-4o-mini');
+    expect(getAiModel(db, 'openai')).toBe('gpt-4o-mini');
+
+    setAiModel(db, 'openai', '   ');
+    // Null, not '', so resolveAiConfig falls through to DEFAULT_MODELS.
+    expect(getAiModel(db, 'openai')).toBeNull();
+  });
+
+  it('keeps provider model overrides separate', async () => {
+    const db = await createUserDb();
+
+    setAiModel(db, 'openai', 'gpt-4o-mini');
+    setAiModel(db, 'anthropic', 'claude-opus-4-8');
+
+    expect(getAiModel(db, 'openai')).toBe('gpt-4o-mini');
+    expect(getAiModel(db, 'anthropic')).toBe('claude-opus-4-8');
+  });
+
+  it('stores https and loopback base URLs', async () => {
+    const db = await createUserDb();
+
+    setAiOpenAiBaseUrl(db, 'https://api.example.com/v1');
+    expect(getAiOpenAiBaseUrl(db)).toBe('https://api.example.com/v1');
+
+    setAiOpenAiBaseUrl(db, 'http://localhost:1234/v1');
+    expect(getAiOpenAiBaseUrl(db)).toBe('http://localhost:1234/v1');
+  });
+
+  it('refuses a plaintext remote base URL and leaves the stored one intact (NFR24)', async () => {
+    const db = await createUserDb();
+
+    setAiOpenAiBaseUrl(db, 'https://api.example.com/v1');
+    setAiOpenAiBaseUrl(db, 'http://api.example.com/v1');
+
+    expect(getAiOpenAiBaseUrl(db)).toBe('https://api.example.com/v1');
+  });
+
+  it('clears the base URL when set to blank', async () => {
+    const db = await createUserDb();
+
+    setAiOpenAiBaseUrl(db, 'https://api.example.com/v1');
+    setAiOpenAiBaseUrl(db, '  ');
+
+    expect(getAiOpenAiBaseUrl(db)).toBeNull();
   });
 });

@@ -340,6 +340,16 @@ _Chunk B (PTT UI) — 2026-07-21. Chunks C–E still queued._
 - [x] [Review][Defer] `handleFinish` does not catch `end()` failure — end prompt can stick [`session/[id].tsx:124`] — deferred, pre-existing
 - [x] [Review][Defer] Connectivity checked once per focus only — mid-session offline/online flips do not update chat gate [`session/[id].tsx:53`] — deferred, pre-existing
 
+_Chunk C (cloud STT settings + prefs) — 2026-07-21. Chunks D–E still queued._
+
+- [x] [Review][Patch] Cloud STT toggle can strand ON and unreachable — `disabled` ignores current value, so removing the OpenAI key while opted in freezes the switch at `true`; every PTT turn then errors "turn cloud transcription off" via a control the learner can no longer touch [`ByokSettingsSection.tsx:170`] — done (`disabled={!cloudSttAvailable && !cloudStt}`, plus `handleRemove('openai')` clears the opt-in)
+- [x] [Review][Patch] Toggle gate (`configured.includes('openai')`) disagrees with the runtime gate (active provider === `'openai'`) — with both keys saved and Anthropic active, Settings offers cloud STT and `transcribeTurn` refuses it [`ByokSettingsSection.tsx:169`] [`transcription.ts:35`] — done (reuses the exported `resolveActiveProvider`, third copy state for "key saved but not active")
+- [x] [Review][Patch] New BYOK error message uses the undefined `feedback-error` token — adds a 7th usage of the exact defect this story's `docs/known-issues.md` flags; renders with no colour [`ByokSettingsSection.tsx:87`] — done (`text-feedback-incorrect`; the pre-existing 6 stay for the tracked global fix)
+- [x] [Review][Patch] Two behaviour changes in `preferencesRepository` ship with zero coverage: empty `setAiModel` now DELETEs the row, and `setAiOpenAiBaseUrl` now rejects disallowed URLs [`preferencesRepository.ts:353`] [`preferencesRepository.ts:402`] — done (5 new tests incl. plaintext-remote rejection leaving the stored URL intact)
+- [x] [Review][Patch] Disabled switch has no `accessibilityHint` — a screen-reader user hears "dimmed" with the reason only in a separate, easily-skipped Text node [`ByokSettingsSection.tsx:167`] — done (hint carries the same reason string)
+- [x] [Review][Defer] `setAiOpenAiBaseUrl` silently no-ops on a rejected URL; unreachable today because `KeySetup.tsx:66` validates first, but a silent drop conflicts with the no-hidden-fallback rule if a future caller skips it [`preferencesRepository.ts:353`] — deferred, defence-in-depth only
+- [x] [Review][Defer] `refresh()` sets state from an unguarded `.then` after a possible unmount [`ByokSettingsSection.tsx:44`] — deferred, pre-existing pattern
+
 ## Change Log
 
 | Date | Change |
@@ -348,4 +358,6 @@ _Chunk B (PTT UI) — 2026-07-21. Chunks C–E still queued._
 | 2026-07-21 | Code review Chunk A (voice engine): findings recorded under Review Findings. |
 | 2026-07-21 | Code review Chunk A patches applied (load gate, size probe, audio Result/session/playback, cloud STT timeout, mic copy, cancel API). |
 | 2026-07-21 | Code review Chunk B (PTT UI): findings recorded under Review Findings. |
-| 2026-07-21 | Code review Chunk B patches applied (press race, TTS/streaming gates, spokenRef, wrap-up/offline exit, privacy copy, download cancel, safe area, empty STT hint, tests). |)
+| 2026-07-21 | Code review Chunk B patches applied (press race, TTS/streaming gates, spokenRef, wrap-up/offline exit, privacy copy, download cancel, safe area, empty STT hint, tests). |
+| 2026-07-21 | Code review Chunk C (cloud STT settings + prefs): findings recorded under Review Findings. |
+| 2026-07-21 | Code review Chunk C patches applied (toggle gate matches `transcribeTurn`'s active-provider rule, opt-in always switchable off and cleared on key removal, defined colour token, a11y hint, 9 new tests). |)

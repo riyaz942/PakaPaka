@@ -7,6 +7,7 @@ import {
   BYOK_PROVIDERS,
   type ByokProvider,
 } from '@/data/ai/byokCredential.types';
+import { resolveActiveProvider } from '@/data/ai/aiConfig';
 import {
   discardByokKey,
   listConfiguredByokProviders,
@@ -70,8 +71,23 @@ export function ByokSettingsSection() {
       setError(result.error.userMessage ?? result.error.message);
       return;
     }
+    if (provider === 'openai') {
+      // The opt-in must not outlive the only key that can honour it, or the
+      // learner is left opted into an upload path that can never run.
+      setCloudSttOptIn(userDb, false);
+    }
     refresh();
   }
+
+  // Cloud STT rides on whichever provider a new turn would actually use, which
+  // is what `transcribeTurn` asks for — gating on "an OpenAI key exists" would
+  // offer a switch the transcription path then refuses.
+  const cloudSttAvailable = resolveActiveProvider(userDb, configured) === 'openai';
+  const cloudSttReason = cloudSttAvailable
+    ? 'Off by default: speaking practice is transcribed on this device and your voice never leaves it. Turn this on to send recordings to your OpenAI-compatible provider instead.'
+    : configured.includes('openai')
+      ? 'Only the active provider can transcribe, and Anthropic has no transcription endpoint. Make OpenAI-compatible the active provider above to use this. Speaking practice is transcribed on this device.'
+      : 'Needs an OpenAI-compatible key — Anthropic has no transcription endpoint. Speaking practice is transcribed on this device.';
 
   return (
     <View className="mt-8">
@@ -84,7 +100,7 @@ export function ByokSettingsSection() {
       {error ? (
         <Text
           accessibilityLiveRegion="polite"
-          className="mt-4 text-body-sm text-feedback-error">
+          className="mt-4 text-body-sm text-feedback-incorrect">
           {error}
         </Text>
       ) : null}
@@ -156,8 +172,10 @@ export function ByokSettingsSection() {
         on-device result rather than quietly becoming an upload.
 
         Only the OpenAI-compatible adapter has a transcription endpoint at all;
-        Anthropic has none. With no such key the switch is shown disabled with
-        the reason rather than hidden, so the option does not appear to vanish.
+        Anthropic has none. When it is not the active provider the switch is
+        shown disabled with the reason rather than hidden, so the option does
+        not appear to vanish — but an opt-in that is already on stays operable,
+        so turning it back off is never a dead end.
       */}
       <View className="mt-8 border-t border-border pt-4">
         <View className="flex-row items-center justify-between">
@@ -165,9 +183,10 @@ export function ByokSettingsSection() {
             Transcribe speech in the cloud
           </Text>
           <Switch
+            accessibilityHint={cloudSttReason}
             accessibilityLabel="Transcribe speech in the cloud"
-            accessibilityState={{ disabled: !configured.includes('openai') }}
-            disabled={!configured.includes('openai')}
+            accessibilityState={{ disabled: !cloudSttAvailable && !cloudStt }}
+            disabled={!cloudSttAvailable && !cloudStt}
             onValueChange={(next) => {
               setCloudSttOptIn(userDb, next);
               setCloudSttState(next);
@@ -176,11 +195,7 @@ export function ByokSettingsSection() {
             value={cloudStt}
           />
         </View>
-        <Text className="mt-1 text-body-sm text-secondary">
-          {configured.includes('openai')
-            ? 'Off by default: speaking practice is transcribed on this device and your voice never leaves it. Turn this on to send recordings to your OpenAI-compatible provider instead.'
-            : 'Needs an OpenAI-compatible key — Anthropic has no transcription endpoint. Speaking practice is transcribed on this device.'}
-        </Text>
+        <Text className="mt-1 text-body-sm text-secondary">{cloudSttReason}</Text>
       </View>
 
       {isEditing ? (
