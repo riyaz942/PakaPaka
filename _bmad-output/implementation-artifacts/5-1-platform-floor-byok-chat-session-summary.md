@@ -82,6 +82,19 @@ so that I can practise real Japanese without mid-chat corrections or handing dat
 - [x] [Review][Patch] Fix `PREFERENCE_KEYS` comment that says “these two” while four BYOK keys were added [`preferencesRepository.ts:31-36`]
 - [x] [Review][Patch] “lists past sessions newest first” never asserts order — only membership [`aiSessionRepository.test.ts:160-177`]
 
+<!-- Chunk 2 review (AI core / adapters / streaming / data AI) -->
+- [x] [Review][Patch] Enforce HTTPS for OpenAI-compatible base URL, with `http:` allowed only for localhost/loopback — reject other schemes before attach/send [`openAiCompatibleAdapter.ts:22-25`] [`preferencesRepository.ts:340-348`]
+- [x] [Review][Patch] `listRecentGrammar` uses `MAX(...)` with bare columns and no `GROUP BY`, so SQLite collapses to a single arbitrary row instead of up to `limit` recent grammar items [`recentGrammarRepository.ts:30-41`]
+- [x] [Review][Patch] SSE loop never flushes leftover `buffer` or `TextDecoder` on `done`, so a final frame without a trailing blank line (or a split multi-byte UTF-8 sequence) is silently dropped [`streamingClient.ts:124-166`]
+- [x] [Review][Patch] `parseStreamData` returns only `delta` when the same choice frame has both content and `finish_reason`, so `complete` stays false when the provider omits a separate `[DONE]` [`openAiCompatibleAdapter.ts:88-95`]
+- [x] [Review][Patch] `lookupFlaggedWord` matches `primary_form` with no `item_type` preference/order — 69 kanji/vocab collisions in seed curriculum can deep-link to the wrong details page [`wordLookupRepository.ts:49-62`]
+- [x] [Review][Patch] `resolveAiConfig` uses `getAiModel(...) ?? DEFAULT_MODELS` — empty string from `setAiModel` (trim-only) bypasses the default and sends an empty model name [`aiConfig.ts:105`] [`preferencesRepository.ts:375-384`]
+- [x] [Review][Patch] After a failed turn that committed only the user message, the next send yields consecutive `user` roles; Anthropic Messages API rejects that — coalesce or insert a placeholder assistant before build [`useAiConversation.ts:40-42`] [`anthropicAdapter.ts:40-43`]
+- [x] [Review][Patch] Grammar prompt topics never load `example_sentences` even though `GrammarPromptTopic` / `buildConversationSystemPrompt` support them — practise/choose-grammar prompts omit the examples Dev Notes say to use [`recentGrammarRepository.ts:26-71`] [`systemPrompt.ts:72-74`]
+- [x] [Review][Patch] `hasByokKey` treats any non-null SecureStore value as configured, including `""` [`byokCredentialStore.ts:59-65`]
+- [x] [Review][Patch] Unbounded SSE `buffer` growth when the peer never emits a blank-line delimiter — add a max buffer size and fail the turn [`streamingClient.ts:120-134`]
+- [x] [Review][Defer] OpenAI-compatible requests always send `max_tokens`; some newer compatible models want `max_completion_tokens` instead — deferred, provider API variance beyond v1 transport normalize [`openAiCompatibleAdapter.ts:37`]
+
 ## Dev Notes
 
 **Scope boundary — read before starting:** This story is chat-only. Push-to-talk, executorch, Supertonic TTS, Whisper STT, and the mic-button mode promotion (FR90's second half, FR98–FR100) are **Story 5.2**, already a separate backlog entry (`5-2-push-to-talk-voice-with-on-device-tts-stt`). Story 5.1 raises the platform floor that 5.2 depends on but must not pull voice work forward — the source brainstorming session's build order (`_bmad-output/brainstorming/brainstorming-session-2026-07-19-1651-ai-conversation.md`, "Suggested build order" + "Revised build order") explicitly sequences chat (steps 1–7) before executorch (step 8) as one unit, precisely to avoid a half-shipped voice feature.

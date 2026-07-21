@@ -2,8 +2,10 @@ import { fetch } from 'expo/fetch';
 
 import type {
   AdapterRequest,
+  AdapterStreamEvent,
   AiAdapter,
 } from '@/core/ai/aiSession.types';
+import { isAllowedByokRequestUrl } from '@/data/ai/byokCredential.types';
 import type { Result } from '@/types/result.types';
 
 /**
@@ -40,6 +42,10 @@ export type StreamFailure = {
   cause?: unknown;
 };
 
+/** Cap on the unfinished SSE block held between wire chunks — a peer that never
+ * emits a blank-line delimiter must not grow this without bound. */
+const MAX_SSE_BUFFER_BYTES = 256 * 1024;
+
 const SSE_FIELD_SEPARATOR = /\r?\n/;
 
 function decodeSseBlock(block: string): { event?: string; data: string } | null {
@@ -73,6 +79,40 @@ async function readErrorBody(response: { text: () => Promise<string> }): Promise
   }
 }
 
+type FrameHandlerResult =
+  | { kind: 'continue'; complete: boolean }
+  | { kind: 'fail'; error: StreamFailure };
+
+function handleParsedFrame(
+  parsed: AdapterStreamEvent,
+  accumulated: string,
+  onDelta: (text: string) => void,
+): { accumulated: string; result: FrameHandlerResult } {
+  if (parsed.type === 'delta') {
+    const next = accumulated + parsed.text;
+    onDelta(parsed.text);
+    return {
+      accumulated: next,
+      result: { kind: 'continue', complete: Boolean(parsed.done) },
+    };
+  }
+  if (parsed.type === 'done') {
+    return { accumulated, result: { kind: 'continue', complete: true } };
+  }
+  return {
+    accumulated,
+    result: {
+      kind: 'fail',
+      error: {
+        code: 'ai_stream_error',
+        message: parsed.message,
+        userMessage: 'The reply stopped early.',
+        partialText: accumulated,
+      },
+    },
+  };
+}
+
 /**
  * Streams one assistant turn. Resolves with the accumulated text, or with a
  * failure that still carries whatever text arrived first.
@@ -85,6 +125,20 @@ export async function streamAssistantTurn(
 ): Promise<Result<StreamOutcome, StreamFailure>> {
   const httpRequest = adapter.buildStreamRequest(request);
   let accumulated = '';
+
+  // NFR24: never attach the key to a non-HTTPS (non-loopback) endpoint.
+  if (!isAllowedByokRequestUrl(httpRequest.url)) {
+    return {
+      ok: false,
+      error: {
+        code: 'ai_insecure_endpoint',
+        message: `Refusing non-HTTPS endpoint: ${httpRequest.url}`,
+        userMessage:
+          'That endpoint is not HTTPS. Use https://, or http:// only for localhost.',
+        partialText: '',
+      },
+    };
+  }
 
   try {
     const response = await fetch(httpRequest.url, {
@@ -120,6 +174,28 @@ export async function streamAssistantTurn(
     let buffer = '';
     let complete = false;
 
+    const processBlock = (block: string): StreamFailure | null => {
+      const frame = decodeSseBlock(block);
+      if (!frame) {
+        return null;
+      }
+
+      const parsed = adapter.parseStreamData(frame.data, frame.event);
+      if (!parsed) {
+        return null;
+      }
+
+      const handled = handleParsedFrame(parsed, accumulated, callbacks.onDelta);
+      accumulated = handled.accumulated;
+      if (handled.result.kind === 'fail') {
+        return handled.result.error;
+      }
+      if (handled.result.complete) {
+        complete = true;
+      }
+      return null;
+    };
+
     // Drained via the reader's `done` break below.
     while (true) {
       const { done, value } = await reader.read();
@@ -128,38 +204,37 @@ export async function streamAssistantTurn(
       }
 
       buffer += decoder.decode(value, { stream: true });
+      if (buffer.length > MAX_SSE_BUFFER_BYTES) {
+        return {
+          ok: false,
+          error: {
+            code: 'ai_stream_error',
+            message: 'SSE buffer exceeded maximum size',
+            userMessage: 'The reply stopped early.',
+            partialText: accumulated,
+          },
+        };
+      }
 
       // SSE blocks are separated by a blank line; keep the trailing partial.
       const blocks = buffer.split(/\r?\n\r?\n/);
       buffer = blocks.pop() ?? '';
 
       for (const block of blocks) {
-        const frame = decodeSseBlock(block);
-        if (!frame) {
-          continue;
+        const failure = processBlock(block);
+        if (failure) {
+          return { ok: false, error: failure };
         }
+      }
+    }
 
-        const parsed = adapter.parseStreamData(frame.data, frame.event);
-        if (!parsed) {
-          continue;
-        }
-
-        if (parsed.type === 'delta') {
-          accumulated += parsed.text;
-          callbacks.onDelta(parsed.text);
-        } else if (parsed.type === 'done') {
-          complete = true;
-        } else {
-          return {
-            ok: false,
-            error: {
-              code: 'ai_stream_error',
-              message: parsed.message,
-              userMessage: 'The reply stopped early.',
-              partialText: accumulated,
-            },
-          };
-        }
+    // Flush a trailing multi-byte sequence and any final SSE frame that lacked
+    // a terminating blank line.
+    buffer += decoder.decode();
+    if (buffer.trim().length > 0) {
+      const failure = processBlock(buffer);
+      if (failure) {
+        return { ok: false, error: failure };
       }
     }
 

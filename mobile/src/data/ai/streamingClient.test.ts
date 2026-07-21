@@ -195,4 +195,46 @@ describe('streamAssistantTurn', () => {
     expect(calls[0].url).toBe('https://my-proxy.example.com/v1/chat/completions');
     expect(calls[0].headers.authorization).toBe('Bearer sk-test');
   });
+
+  it('allows http:// only for localhost / loopback', async () => {
+    __mockEnqueueSseResponse([sseFrame('[DONE]')]);
+
+    const result = await streamAssistantTurn(
+      openAiCompatibleAdapter,
+      { ...request, baseUrl: 'http://localhost:11434/v1' },
+      { onDelta: () => {} },
+    );
+
+    expect(result.ok).toBe(true);
+    expect(__mockGetFetchCalls()[0].url).toBe('http://localhost:11434/v1/chat/completions');
+  });
+
+  it('refuses a remote http:// endpoint before the key is sent', async () => {
+    const result = await streamAssistantTurn(
+      openAiCompatibleAdapter,
+      { ...request, baseUrl: 'http://evil.example.com/v1' },
+      { onDelta: () => {} },
+    );
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.error.code).toBe('ai_insecure_endpoint');
+    expect(__mockGetFetchCalls()).toHaveLength(0);
+  });
+
+  it('flushes a trailing SSE frame that lacks a final blank line', async () => {
+    // No trailing `\n\n` — the leftover buffer must still be decoded on done.
+    __mockEnqueueSseResponse([
+      'data: {"choices":[{"delta":{"content":"はい"},"finish_reason":"stop"}]}\n',
+    ]);
+
+    const result = await streamAssistantTurn(openAiCompatibleAdapter, request, {
+      onDelta: () => {},
+    });
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.value.text).toBe('はい');
+    expect(result.value.complete).toBe(true);
+  });
 });

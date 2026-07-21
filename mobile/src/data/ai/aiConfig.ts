@@ -6,6 +6,7 @@ import type { AiAdapter } from '@/core/ai/aiSession.types';
 import {
   DEFAULT_MODELS,
   DEFAULT_OPENAI_BASE_URL,
+  isAllowedOpenAiBaseUrl,
   isByokProvider,
   type ByokProvider,
 } from '@/data/ai/byokCredential.types';
@@ -96,17 +97,23 @@ export async function resolveAiConfig(
     };
   }
 
+  const model = (getAiModel(userDb, provider) ?? '').trim() || DEFAULT_MODELS[provider];
+  const storedBaseUrl = provider === 'openai' ? getAiOpenAiBaseUrl(userDb) : null;
+  const baseUrl =
+    provider === 'openai'
+      ? storedBaseUrl && isAllowedOpenAiBaseUrl(storedBaseUrl)
+        ? storedBaseUrl
+        : DEFAULT_OPENAI_BASE_URL
+      : undefined;
+
   return {
     ok: true,
     value: {
       provider,
       adapter: getAdapter(provider),
       apiKey: keyResult.value,
-      model: getAiModel(userDb, provider) ?? DEFAULT_MODELS[provider],
-      baseUrl:
-        provider === 'openai'
-          ? getAiOpenAiBaseUrl(userDb) ?? DEFAULT_OPENAI_BASE_URL
-          : undefined,
+      model,
+      baseUrl,
     },
   };
 }

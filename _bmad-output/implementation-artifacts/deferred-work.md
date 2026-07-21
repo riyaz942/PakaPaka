@@ -1,5 +1,9 @@
 # Deferred Work
 
+## Deferred from: code review of 5-1-platform-floor-byok-chat-session-summary (2026-07-21)
+
+- **OpenAI-compatible requests always send `max_tokens`** — some newer compatible models prefer/require `max_completion_tokens`; deferred as provider API variance beyond v1 transport normalize (`openAiCompatibleAdapter.ts`).
+
 ## Deferred from: code review of 7-3-automated-accessibility-checks-in-ci (2026-07-02)
 
 - **Unrelated quote-style churn bundled into `eslint.config.js`** — double→single quotes changed on pre-existing lines alongside the feature change; diff-hygiene nit, not a defect.

@@ -87,7 +87,12 @@ function parseStreamData(data: string): AdapterStreamEvent | null {
 
   const content = choice.delta?.content;
   if (typeof content === 'string' && content.length > 0) {
-    return { type: 'delta', text: content };
+    // Some providers end the turn in the same frame as the last token. Surface
+    // both so the stream reports `complete: true` without needing a separate
+    // `[DONE]` / empty finish_reason frame.
+    return choice.finish_reason
+      ? { type: 'delta', text: content, done: true }
+      : { type: 'delta', text: content };
   }
 
   if (choice.finish_reason) {

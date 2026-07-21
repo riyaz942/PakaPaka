@@ -62,7 +62,8 @@ export type AdapterHttpRequest = {
  * bookkeeping) so the streaming client can ignore them uniformly.
  */
 export type AdapterStreamEvent =
-  | { type: 'delta'; text: string }
+  /** `done: true` when the provider ends the turn in the same frame as text. */
+  | { type: 'delta'; text: string; done?: boolean }
   | { type: 'done' }
   | { type: 'error'; message: string };
 

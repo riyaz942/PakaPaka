@@ -56,6 +56,12 @@ export function lookupFlaggedWord(
                  THEN 1 ELSE 0 END AS studied
      FROM curriculum.items i
      WHERE i.primary_form = ?
+     ORDER BY CASE i.item_type
+       WHEN 'vocabulary' THEN 0
+       WHEN 'kanji' THEN 1
+       WHEN 'grammar' THEN 2
+       ELSE 3
+     END
      LIMIT 1`,
     ...KNOWN_SRS_STAGES,
     trimmed,

@@ -1,0 +1,135 @@
+---
+baseline_commit: 238aa18077623e3994cd7bdc573c4a871049d8b2
+---
+# Story 5.2: Push-to-Talk Voice with On-Device TTS/STT
+
+Status: ready-for-dev
+
+<!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
+
+## Story
+
+As a learner,
+I want optional on-device voice conversation I explicitly download and control,
+so that I can speak Japanese in full-screen PTT mode without silent cloud fallbacks or blocking the rest of the app.
+
+## Acceptance Criteria
+
+1. **Mic promotes mid-session** (FR90, FR98): tapping the mic in the composer (chat is already in progress) promotes the session to conversation mode — there is no up-front mode choice at session start.
+2. **Full-screen PTT layout** (FR98, UX-DR21): conversation mode is full-screen with chat history hidden. On screen: the AI's latest line (readable text, plus on-device TTS speaking it) and the learner's latest transcription, with push-to-talk below.
+3. **Transcript confirms before sending** (FR99): on-device STT output lands in an editable field for confirm/edit/retry — never straight onto the wire. Exiting conversation mode needs no chat-log reconciliation (every spoken turn was already confirmed text before it was sent).
+4. **Pinned executorch runtime** (FR100, NFR30): TTS/STT ship via a pinned `react-native-executorch` nightly with Supertonic Japanese TTS + Whisper Japanese STT. No interim system-TTS engine (`expo-speech` or otherwise) is adopted at any point.
+5. **Explicit, non-blocking model download** (NFR25, NFR3, UX-DR23): if the voice models are not yet downloaded, chat remains fully usable; tapping the mic prompts an explicit user-initiated download with clear size disclosure. The download never blocks cold start or any other tab.
+6. **Cloud STT is opt-in only** (FR99, UX-DR33): cloud transcription is available only as an explicit Settings toggle, never an automatic fallback when on-device STT is unavailable or performs poorly.
+
+## Tasks / Subtasks
+
+- [ ] **Task 1 — Pin `react-native-executorch` + build wiring** (AC: 4)
+  - [ ] Add `react-native-executorch` as a pinned nightly dependency in `mobile/package.json`. **Do not use `npm install react-native-executorch@latest`** — npm `latest` is still `0.9.2`, which has no Japanese in its `TextToSpeechLanguage` union (Kokoro has no `ja` phonemizer). Japanese TTS (Supertonic) only exists on a nightly dist-tag off `main`. A nightly verified during planning was `react-native-executorch@0.10.0-nightly-a0bf85b-20260719` (2026-07-19) — **re-verify and pin whatever the current nightly dist-tag actually is** at implementation time (today is later); do not assume that exact string is still current or installable.
+  - [ ] After installing, **read the package's own setup docs/type definitions in `node_modules/react-native-executorch`** for the real API surface (hook/function names for TTS speak, STT start/stop, and model download/status). Nothing in this codebase or the planning docs names the exact API — do not guess or invent hook names; confirm against the installed package before writing `data/ai/voice/`.
+  - [ ] Add the manual `metro.config.js` `assetExts` entries executorch's docs require (no Expo config plugin exists for this package — confirmed during planning; autolinking + this one manual Metro edit is the full integration surface). `mobile/metro.config.js` currently has no `assetExts` customization — add only what executorch's own setup instructions specify.
+  - [ ] No Expo Go — already true for this project since Story 5.1 (custom dev client). Confirm the dev client still boots after adding the native module (this needs a machine with Xcode/Android Studio, same constraint 5.1 flagged as outstanding for its own platform-floor change).
+- [ ] **Task 2 — `data/ai/voice/` module** (AC: 4, 5)
+  - [ ] Create `mobile/src/data/ai/voice/` per architecture §Format Patterns ("Voice (STT/TTS) — `data/ai/voice/` wrapping executorch — not inside review components"). Suggested split: `ttsClient.ts` (Supertonic Japanese speak), `sttClient.ts` (Whisper Japanese start/stop + transcript), `modelDownloadManager.ts` (download/status). All fallible operations return `Result<T, AppError>` — never throw across the async boundary, matching every other `data/` module.
+  - [ ] Model files are downloaded explicitly to app storage, **not inside either SQLite DB** (architecture §Data Architecture, "Caching"). Model presence is a filesystem fact, not a DB row — check via `getInfoAsync`-equivalent on each use, the same pattern `curriculumUpdate.ts` uses for `curriculum.db` (`mobile/src/data/curriculum/curriculumUpdate.ts:195-221`), not a new preference flag as the source of truth (a preference can drift from the filesystem; a stale "downloaded" flag pointing at a deleted file is exactly the kind of silent-failure trap this codebase's `no-hidden-fallback-paths` principle rejects).
+  - [ ] Whisper model sizes (verified during planning, both platforms fp32 on Android so ~3× iOS): `whisper-tiny` 232.6 MB / 76.8 MB, `whisper-base` 398.7 MB / 146.6 MB, `whisper-small` 1128.7 MB / 485.3 MB (Android / iOS). **Use `whisper-small`** — tiny's Japanese WER is too poor for learner speech; this was an explicit accepted-cost decision, not an oversight. Disclose the real size for whichever variant you pin (~1.1 GB Android / ~485 MB iOS for `whisper-small`) in the download prompt — do not show a placeholder number.
+  - [ ] Use `expo-file-system/legacy` for the download (same import path `curriculumUpdate.ts` uses — the mocked module only maps `expo-file-system/legacy`, not the new File/Directory API). Given the download is ~1 GB (vs. curriculum's much smaller `downloadAsync`), a progress callback is needed for a usable progress bar — check whether `expo-file-system/legacy`'s `createDownloadResumable` is available and use it; if not, `downloadAsync` with a coarse "downloading… / done" state is an acceptable fallback, but say so explicitly in your completion notes rather than silently shipping no progress indication.
+  - [ ] Extend `mobile/__mocks__/expo-file-system.ts` with whatever download function you use (it currently mocks `downloadAsync` but not `createDownloadResumable`) so voice-download tests don't hit a real network call.
+  - [ ] Downloads must never block cold start or other tabs (NFR3, NFR25): confirm nothing in `data/ai/voice/` is imported/executed eagerly from app init — it should only run when a learner explicitly taps the mic and confirms the download prompt.
+- [ ] **Task 3 — Model download UX** (AC: 5)
+  - [ ] When the mic is tapped and models are missing, show an explicit prompt with size disclosure and a Download action — never an automatic silent download. Chat must stay fully usable while this prompt is open or a download is in progress (UX-DR23, UX Consistency Patterns "Voice models missing").
+  - [ ] Surface download progress; a failed/interrupted download must not leave a half-written model file mistaken for a complete one (re-run the same filesystem-presence check Task 2 established, not a separate "download succeeded" flag that could be wrong).
+- [ ] **Task 4 — Composer mic button** (AC: 1)
+  - [ ] Add a mic button to `mobile/src/components/converse/Composer.tsx`. It currently has **no** mic affordance by design (Story 5.1's explicit scope boundary — see its docstring and `mobile/src/app/(tabs)/converse/index.test.tsx:108` asserting no mic on the *start-picker* screen, which is a different screen and does not need touching). This is the one intentional piece of 5.1 this story reverses; update `Composer.tsx`'s own docstring since its "no mic" comment will now be false.
+  - [ ] Composer currently has zero test coverage (`Composer.test.tsx` does not exist) — add it alongside the mic button, not as an afterthought.
+  - [ ] Tapping the mic with models downloaded enters conversation mode immediately (AC 1); tapping it without models downloaded triggers Task 3's prompt instead — the mic button is the single entry point for both states, not two different buttons.
+- [ ] **Task 5 — Conversation mode (PTT) screen** (AC: 1, 2, 3)
+  - [ ] Add a full-screen conversation-mode view — architecture's project-structure tree names it `PttOverlay` (`mobile/src/components/converse/`); the UX spec calls the same thing `PTTSession` in its component-strategy list. These are the same component under two names in two documents — pick one file name (recommend following the architecture tree literally: `PttOverlay.tsx`) and do not build two components.
+  - [ ] Entered from `Composer`'s mic tap inside `mobile/src/app/(tabs)/converse/session/[id].tsx`. This screen already holds all conversation state via `useAiConversation(sessionId)` (`mobile/src/data/hooks/useAiConversation.ts`) — conversation mode is a different **view** over the same session, not a new data path. A local `mode: 'chat' | 'ptt'` state in the session screen is sufficient; do not build a new `AiConversationContext` for this — architecture §Communication Patterns names one, but Story 5.1 did not create it (state lives in the `useAiConversation` hook instead), and introducing a Context now for one boolean would be inconsistent with the pattern actually shipped.
+  - [ ] Layout per FR98/UX-DR21 and the brainstorming session's confirmed conversation-mode spec: full screen, tab bar and chat history hidden; only the AI's latest line and the learner's latest transcription are visible; push-to-talk control below. Reuse `parseFurigana(text).map(s => s.text).join('')` (the exact pattern `ChatBubble.tsx:49-51` already uses for its screen-reader label) to get the plain-text sentence for both the readable AI line and what TTS speaks — do not write a second furigana-stripping function.
+  - [ ] Press-and-hold to record, release to stop and transcribe (push-to-talk, not open-mic — confirmed decision, not an implementation detail up for reinterpretation). The transcript lands in an editable text field; the learner confirms/edits/clears-and-retries before it sends via the *same* `send()` from `useAiConversation` used by chat mode — do not add a second send path.
+  - [ ] AI replies while in conversation mode speak via Supertonic TTS (Task 2's `ttsClient`) as well as rendering as text — both, not either/or (FR98: "readable text ... **and** ... TTS").
+  - [ ] An explicit exit control returns to the normal chat view with the full transcript intact and unchanged — because every turn was confirmed text before sending, there is nothing to reconcile (AC 3). Don't build any reconciliation logic; its absence is the point.
+- [ ] **Task 6 — Cloud STT opt-in setting** (AC: 6)
+  - [ ] Add a `cloudSttOptIn` preference following the exact existing pattern in `mobile/src/data/user/preferencesRepository.ts` (`PREFERENCE_KEYS`, boolean stored as `'true'`/`'false'`, getter/setter pair — same shape as `weaknessBiasEnabled`/`reviewAutoAdvance`). Default `false`.
+  - [ ] Add the toggle to the Settings screen's existing BYOK section (`mobile/src/app/(tabs)/settings.tsx`, added in Story 5.1 Task 12) per UX-DR33 ("Settings surfaces: ... cloud STT opt-in ..."). This is one more toggle in an existing section, not a new one.
+  - [ ] **Open design point you must resolve, not skip:** no planning document names a concrete cloud-STT provider contract. The only description anywhere is "Whisper via the user's key." Of the two BYOK adapters, only OpenAI (and OpenAI-compatible endpoints) expose an audio-transcription endpoint — Anthropic has none. A reasonable, minimal-scope resolution: cloud STT is only offered/effective when the OpenAI-compatible adapter is the configured/active provider; if only Anthropic is configured, either hide the toggle or show it disabled with an explanatory note — do not build a third adapter abstraction for this. Document whichever choice you make in Completion Notes; this is exactly the kind of judgment call 5.1 made explicitly for provider selection (see its Dev Notes, "Adapter/provider selection is an open design point").
+  - [ ] Whatever you build, the core rule is non-negotiable: on-device STT is the default and cloud STT fires **only** when the toggle is on — never a silent fallback when on-device fails or underperforms (this is the same `no-hidden-fallback-paths` principle 5.1's "active provider" preference already follows).
+- [ ] **Task 7 — Tests**
+  - [ ] `data/ai/voice/*.test.ts` (mock executorch calls and the filesystem), `modelDownloadManager` tests for the missing/partial/complete states, `Composer.test.tsx` (mic button present, tap behavior, disabled states), conversation-mode screen tests (enter/exit, transcript confirm/edit/retry, TTS invoked on new AI line), `cloudSttOptIn` preference tests, Settings toggle test.
+  - [ ] Run `npx tsc --noEmit` and `npm run lint` (mobile/) before considering the story complete.
+
+## Dev Notes
+
+**Scope boundary — read before starting.** Story 5.1 (chat, BYOK, summary — status: review, one code-review pass already applied and committed at `238aa18`) deliberately shipped **zero** voice code: no mic button, no `data/ai/voice/`, no executorch dependency. Everything in FR98–FR100 is this story. Do not assume any voice scaffolding already exists — `Composer.tsx` has no mic today, and this is one of the very few places in the codebase where you are reversing a previous story's explicit "this is deliberately absent" decision.
+
+**This is one unit of work, not a staged rollout.** The planning session explicitly considered and rejected shipping TTS into chat mode first ("tap a message to hear it") as a lower-risk intermediate step, then rejected it: *"v1 is the complete two-mode feature, not a partial one that grows"* (brainstorming §Revised build order). Don't invent an intermediate TTS-only milestone inside this story either — chat-mode "tap to hear" is not an AC and not requested.
+
+**The executorch API surface is not documented anywhere in this repo or the planning docs — go read the installed package.** Everything here about executorch (Supertonic having `'ja'`, Whisper's `{ language: 'ja' }` option, model sizes) came from a source-verified subagent investigation during planning, not from writing any code against it. The actual hook/function names for triggering TTS speech, starting/stopping STT recording, and checking/triggering model downloads are unknown to this story file. Confirm them against `node_modules/react-native-executorch`'s own type definitions and docs after pinning the dependency (Task 1) — do not invent an API shape that merely "sounds plausible."
+
+**Nightly pin, not a release.** `react-native-executorch`'s npm `latest` tag (`0.9.2` as of planning) has no Japanese TTS at all — Supertonic's `ja` support only exists on a nightly dist-tag built off `main`, with no semver guarantee and no release notes (NFR30's accepted cost). The specific nightly string verified during planning (`0.10.0-nightly-a0bf85b-20260719`) is dated 2026-07-19; treat it as evidence the capability exists on *some* nightly, not as the exact string to install today — re-check and pin whatever nightly is current, then re-verify Japanese TTS/STT still work on it (NFR30's "manual upgrade + re-verify accepted cost" applies from day one, not just future upgrades).
+
+**Why executorch and not `expo-speech`/`react-native-tts`.** This was investigated and explicitly rejected, not overlooked: `expo-speech` on Android fails **silently** when Japanese voice data isn't installed (`Speech.speak` produces no sound and does not throw — a real upstream Expo issue) and `react-native-tts` wraps the identical OS engines with no quality gain. Supertonic ships its own model rather than depending on user-installed OS voice data, which is exactly why it avoids that silent-failure class. Do not add either as a stopgap.
+
+**Model download precedent to reuse, not reinvent.** `mobile/src/data/curriculum/curriculumUpdate.ts` is the only existing "download a large file, verify it, use it" flow in this codebase — study its `Result`-returning shape, its temp-file-then-atomic-placement pattern, and its `expo-file-system/legacy` import path (not the new File/Directory API — the Jest mock only covers `/legacy`). It does **not** need a progress callback (curriculum DB downloads are small); voice models do, at ~0.5–1.1 GB, so you'll need more than that precedent gives you for the progress bar — see Task 2.
+
+**Model presence is a filesystem fact, not a database row or a trusted preference flag.** Per architecture §Data Architecture: "STT/TTS model files downloaded explicitly to app storage (not inside either DB)." No new migration is needed for this story — checking whether the model files exist on disk is the source of truth every time, the same way `curriculumUpdate.ts` checks `getInfoAsync` rather than trusting a cached belief that a file is there.
+
+**`AiConversationContext` named in architecture was never built — don't build it now either.** Architecture §Communication Patterns lists a planned `AiConversationContext` ("Session id, stream buffer, mode (chat vs PTT)"). Story 5.1 implemented equivalent state entirely through the `useAiConversation` hook + local component state, with no React Context. Follow the pattern that actually shipped: conversation-mode's chat/PTT toggle is local state in `session/[id].tsx`, not a new Context — introducing one now for a single boolean would contradict the established precedent for no clear benefit.
+
+**Reuse the furigana-stripping pattern already proven for accessibility.** `ChatBubble.tsx` already computes a plain-text "spoken" version of an AI reply for its screen-reader label (`parseFurigana(text).map((segment) => segment.text).join('')`, `ChatBubble.tsx:49-51`). This is exactly the text TTS should speak and exactly the text conversation mode should show as the "readable" AI line — reuse it, don't write a second furigana-stripping helper.
+
+**Send path is shared, not forked.** `useAiConversation(sessionId).send(text)` (`mobile/src/data/hooks/useAiConversation.ts:92-175`) already commits the learner's turn, streams the reply, and degrades a partial/failed stream without corrupting the transcript (NFR27, proven in Story 5.1). Conversation mode's confirmed transcript must call this same function — do not build a parallel "voice send" path with different persistence semantics.
+
+**Naming mismatch between planning docs, not a real ambiguity in the codebase.** Architecture's project-structure tree names the full-screen component `PttOverlay`; the UX spec's component-strategy list names it `PTTSession`. Same component, two documents, two names — pick one (recommend `PttOverlay.tsx`, matching the literal directory tree) rather than treating this as license to build two.
+
+**Cloud STT has no defined provider contract anywhere in planning** — see Task 6. This is the single biggest open design point in this story, comparable to how Story 5.1 had to resolve BYOK adapter/provider selection without an AC dictating it. Resolve it pragmatically (only the OpenAI-compatible adapter has an audio-transcription endpoint), document the choice, and do not let it block the rest of the story — the non-negotiable part is only that it's opt-in and never a silent fallback.
+
+**Hard conventions (project-wide, re-affirmed for this story):**
+- Every fallible async operation (executorch calls, model download, file I/O) returns `Result<T, AppError>` — never throw across an async boundary.
+- No new `curriculum.db` or `user.db` schema changes are anticipated for this story (model presence is filesystem-checked; cloud STT opt-in is a `user_preferences` row via the existing generic key-value store). If you find yourself reaching for a migration, stop and re-read architecture §Data Architecture's caching note above — it's very likely you don't need one.
+- NativeWind semantic tokens only — no raw hex, no deprecated `Colors` object.
+- Co-locate tests (`Foo.ts` → `Foo.test.ts`), named exports only, no default exports, no barrel imports from `core/`.
+- No silent fallbacks anywhere in this story: not model-download-to-nothing, not STT-failure-to-cloud, not TTS-failure-to-system-voice. Every alternate path is either a visible user action (download prompt, cloud STT toggle) or a visible error state.
+
+**Anti-patterns specific to this story:**
+- Silent cloud STT fallback when on-device STT is missing, slow, or inaccurate → forbidden; toggle-gated only (FR99, UX-DR33).
+- Auto-triggering a ~1 GB download on cold start, tab open, or any non-mic-tap event → forbidden (NFR3, NFR25).
+- A new `AiConversationContext` for the chat/PTT mode toggle → inconsistent with the hook-based pattern Story 5.1 actually shipped; use local state instead.
+- Adding `expo-speech` or `react-native-tts` as an interim voice engine "until Supertonic is ready" → explicitly rejected during planning; Supertonic is already the target for v1, not a future upgrade.
+- Reconciliation logic between "what was spoken" and "what was logged" when exiting conversation mode → unnecessary by construction; every turn was confirmed text before it was sent.
+
+### Project Structure Notes
+
+- New `data/ai/voice/` (per architecture §Format Patterns): `ttsClient.ts`, `sttClient.ts`, `modelDownloadManager.ts` (naming illustrative — split as the installed executorch API naturally suggests, but keep it under `data/ai/voice/`, not inside `components/converse/` or any review component).
+- New `components/converse/PttOverlay.tsx` (== UX spec's `PTTSession` — same component, see Dev Notes).
+- Modified: `components/converse/Composer.tsx` (mic button, docstring update), `app/(tabs)/converse/session/[id].tsx` (chat/PTT mode toggle, mounts `PttOverlay`), `app/(tabs)/settings.tsx` (cloud STT toggle in existing BYOK section), `data/user/preferencesRepository.ts` (`cloudSttOptIn` key + accessors), `mobile/package.json` (pinned `react-native-executorch` nightly), `mobile/metro.config.js` (`assetExts`), `__mocks__/expo-file-system.ts` (whichever download function Task 2 uses).
+- No changes to `curriculum/`, `scripts/`, or any `curriculum.db`/`user.db` schema expected.
+- No new migration file expected — flag it in Completion Notes if you find you genuinely need one, since that would contradict the architecture note this story's Dev Notes rely on.
+
+### References
+
+- [Source: _bmad-output/planning-artifacts/epics.md#Story 5.2: Push-to-Talk Voice with On-Device TTS/STT] — canonical AC source
+- [Source: _bmad-output/planning-artifacts/prd.md#AI Conversation] FR98–FR100, NFR3, NFR23, NFR25, NFR30
+- [Source: _bmad-output/planning-artifacts/architecture.md#Project Structure & Boundaries, §Format Patterns, §Communication Patterns] `data/ai/voice/` placement, `PttOverlay` in directory tree, model-file caching note, `AiConversationContext` (planned but not built in 5.1)
+- [Source: _bmad-output/planning-artifacts/ux-design-specification.md#Flow 6: AI Conversation Session, #Component Strategy, #UX Consistency Patterns] `PTTSession` naming, full-screen/history-hidden layout, voice-model-missing empty state
+- [Source: _bmad-output/brainstorming/brainstorming-session-2026-07-19-1651-ai-conversation.md §3.1–3.4, §Post-session revision] push-to-talk UX decisions (3.2/3.3), executorch investigation findings (3.5–3.10), model sizes, Supertonic/Whisper decision rationale, "no interim TTS" and "cloud STT is a visible setting" principles, confirmed v1 conversation-mode scope
+- [Source: _bmad-output/planning-artifacts/.decision-log.md] D-AI-5, OA3 — platform-floor + voice-in-v1 decisions
+- [Source: _bmad-output/implementation-artifacts/5-1-platform-floor-byok-chat-session-summary.md] previous story: scope boundary this story fills, migration numbering precedent (017 taken; no new migration expected here), `useAiConversation` hook shape, `ChatBubble` furigana-stripping pattern, no-hidden-fallback principle applied to provider selection
+- [Source: mobile/src/data/hooks/useAiConversation.ts] session state/send/end — the single data path conversation mode must reuse
+- [Source: mobile/src/components/converse/ChatBubble.tsx:49-51] furigana-to-plain-text pattern for TTS/accessibility
+- [Source: mobile/src/components/converse/Composer.tsx] current no-mic state to change
+- [Source: mobile/src/data/curriculum/curriculumUpdate.ts] large-file download/verify precedent (`expo-file-system/legacy`, `Result`-returning, atomic placement)
+- [Source: mobile/src/data/user/preferencesRepository.ts] generic preference storage precedent for `cloudSttOptIn`
+- [Source: mobile/__mocks__/expo-file-system.ts, mobile/test-support/file-system-test-state.ts] existing filesystem mock to extend for model-download tests
+- [Source: mobile/package.json, mobile/metro.config.js] current dependency/Metro config state (no executorch, no `assetExts` yet)
+
+## Dev Agent Record
+
+### Agent Model Used
+
+### Debug Log References
+
+### Completion Notes List
+
+### File List

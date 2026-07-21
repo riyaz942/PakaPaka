@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import { isAllowedOpenAiBaseUrl } from '@/data/ai/byokCredential.types';
 import type { CurriculumUpdateSource } from '@/data/curriculum/curriculumManifest.types';
 import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import {
@@ -347,6 +348,10 @@ export function setAiOpenAiBaseUrl(userDb: SQLiteDatabase, baseUrl: string): voi
     );
     return;
   }
+  // HTTPS everywhere; http:// only for localhost/loopback (NFR24 + local proxies).
+  if (!isAllowedOpenAiBaseUrl(trimmed)) {
+    return;
+  }
   setPreference(userDb, PREFERENCE_KEYS.aiOpenAiBaseUrl, trimmed);
 }
 
@@ -377,9 +382,13 @@ export function setAiModel(
   provider: 'openai' | 'anthropic',
   model: string,
 ): void {
-  setPreference(
-    userDb,
-    provider === 'openai' ? PREFERENCE_KEYS.aiOpenAiModel : PREFERENCE_KEYS.aiAnthropicModel,
-    model.trim(),
-  );
+  const key =
+    provider === 'openai' ? PREFERENCE_KEYS.aiOpenAiModel : PREFERENCE_KEYS.aiAnthropicModel;
+  const trimmed = model.trim();
+  if (trimmed.length === 0) {
+    // Empty must clear so resolveAiConfig falls back to DEFAULT_MODELS.
+    userDb.runSync('DELETE FROM user_preferences WHERE key = ?', key);
+    return;
+  }
+  setPreference(userDb, key, trimmed);
 }

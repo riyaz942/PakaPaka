@@ -78,6 +78,16 @@ describe('openAiCompatibleAdapter.parseStreamData', () => {
     expect(event).toEqual({ type: 'done' });
   });
 
+  it('marks complete when the same frame carries content and finish_reason', () => {
+    const event = openAiCompatibleAdapter.parseStreamData(
+      JSON.stringify({
+        choices: [{ delta: { content: 'です' }, finish_reason: 'stop' }],
+      }),
+    );
+
+    expect(event).toEqual({ type: 'delta', text: 'です', done: true });
+  });
+
   it('ignores the role-only preamble frame', () => {
     const event = openAiCompatibleAdapter.parseStreamData(
       JSON.stringify({ choices: [{ delta: { role: 'assistant' } }] }),

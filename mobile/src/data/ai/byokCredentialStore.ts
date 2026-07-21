@@ -62,7 +62,7 @@ export async function hasByokKey(provider: ByokProvider): Promise<Result<boolean
     return result;
   }
 
-  return { ok: true, value: result.value !== null };
+  return { ok: true, value: Boolean(result.value && result.value.trim().length > 0) };
 }
 
 export async function discardByokKey(provider: ByokProvider): Promise<Result<void>> {

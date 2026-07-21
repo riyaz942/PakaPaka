@@ -37,8 +37,23 @@ type ConversationState = {
   dismissError: () => void;
 };
 
+/**
+ * Collapses consecutive same-role turns. A failed stream that committed only
+ * the learner message leaves two `user` rows back-to-back; Anthropic's Messages
+ * API rejects that, and OpenAI-compatible endpoints are happier with a single
+ * merged user turn than with a silent empty assistant placeholder.
+ */
 function toAdapterMessages(messages: ChatMessage[]): AdapterMessage[] {
-  return messages.map((message) => ({ role: message.role, content: message.content }));
+  const adapted: AdapterMessage[] = [];
+  for (const message of messages) {
+    const previous = adapted[adapted.length - 1];
+    if (previous && previous.role === message.role) {
+      previous.content = `${previous.content}\n${message.content}`;
+      continue;
+    }
+    adapted.push({ role: message.role, content: message.content });
+  }
+  return adapted;
 }
 
 /**

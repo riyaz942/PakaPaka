@@ -77,6 +77,21 @@ describe('lookupFlaggedWord', () => {
     expect(boundParams[boundParams.length - 1]).toBe('猫');
   });
 
+  it('prefers vocabulary when primary_form collides across item types', () => {
+    const { db, getFirstSync } = fakeUserDb({
+      id: 5,
+      primary_form: '上',
+      meaning: 'up / above',
+      studied: 0,
+    });
+
+    lookupFlaggedWord(db, '上');
+
+    const sql = getFirstSync.mock.calls[0][0] as string;
+    expect(sql).toMatch(/ORDER BY CASE i\.item_type/);
+    expect(sql).toMatch(/WHEN 'vocabulary' THEN 0/);
+  });
+
   it('short-circuits an empty selection without querying', () => {
     const { db, getFirstSync } = fakeUserDb(null);
 
