@@ -1,15 +1,33 @@
-- The `app.json` microphone permission string claims the learner’s voice is “never uploaded,” but `transcribeJapaneseViaCloud` deliberately posts WAV audio (and the API key) to a remote endpoint whenever cloud STT is opted in — the platform copy is factually false for that path.
-- `audioSession.ts` never calls `AudioManager.setAudioSessionOptions` or `setAudioSessionActivity` before record/play, even though `react-native-audio-api` exposes those as the native session gate; recording and playback can fail or fight other audio with no handling in this module.
-- `playWaveform` returns `{ ok: true }` immediately after `source.start()` and never waits on `onEnded`, so callers cannot know when speech finished and `releaseAudioSession` can `close()` the shared `AudioContext` while audio is still playing.
-- `AudioRecorder.onError` is never wired; mid-recording mic/session failures are dropped, and `stopRecording` then typically surfaces `voice_recording_empty` instead of the real cause.
-- `startRecording` has no re-entrancy or “already recording” guard: a second start clears `capturedChunks` while the shared `AudioRecorder` may still be running, so overlapping callbacks can wipe or interleave buffers.
-- Module-level `recorder` / `playbackContext` / `capturedChunks` are unsynchronized process singletons; concurrent `playWaveform` calls do not stop prior `BufferSource`s, and play-during-record sharing is undefined.
-- `releaseSttModel` / `releaseTtsModel` null the cached promise then asynchronously `delete()` the module; an in-flight `transcribe` / `forward`, or a reload started before `delete` finishes, can race against a freed native module.
-- `react-native-executorch` is pinned to a 2026-07-21 nightly while `react-native-executorch-expo-resource-fetcher` is a 2026-05-27 nightly marked deprecated in the lockfile — twin packages from different nightlies are an ABI/API drift hazard for a ~1 GB download path.
-- `downloadVoiceModels` never exposes `ExpoResourceFetcher.cancelFetching` (present on the real API and in the mock); a multi-hundred-MB fetch cannot be aborted from this layer if the learner leaves mid-download.
-- `getVoiceModelDownloadBytes` treats any successful `getFilesTotalSize` as truth, including `0` when sizes are missing; that contradicts the comment that a failed/unknown size must not be substituted, and can disclose “0 bytes” to the download prompt.
-- `areVoiceModelsDownloaded` only checks sanitized basenames from `listDownloadedFiles` with no size or hash check, so a truncated/corrupt file still reports models as ready.
-- `resampleTo16kHz` does not reject non-positive or non-finite `sourceSampleRate`; bad rates produce `Infinity`/`NaN` lengths and garbage waveforms instead of a `Result` error.
-- Cloud STT tests assert FormData field names but never verify the WAV multipart part bytes or filename encoding through `expo/fetch`; `new Blob([ArrayBuffer])` as the file body is an unproven React Native upload path relative to the rest of the BYOK client.
-- `SpeechToTextModule.fromModelName` / `TextToSpeechModule.fromModelName` can still download on first load if presence detection and fetcher paths diverge, undermining the “explicit learner-initiated download only / no surprise network” story that `modelDownloadManager` documents (NFR25).
-- `ensureMicrophonePermission` re-calls `requestRecordingPermissions` for any non-`Granted` status, including permanent `Denied`, with no distinct “open Settings” outcome — repeated no-ops that still look like a soft denial.
+# Blind Hunter findings — Chunk B (PTT UI)
+
+- `PttOverlay.handlePressIn` is async and only sets `phase` to `'recording'` after `ensureMicrophonePermission` and `startRecording` resolve, while `handlePressOut` no-ops unless `phase === 'recording'`. A quick tap, or the OS permission dialog stealing the touch, fires `pressOut` while still `'idle'`, so recording can start afterward with no matching stop — the UI then sits in “Listening” with the mic live until a later accidental press/release.
+
+- The PTT hold button is only disabled for `transcribing` / `sending`, not while TTS is still playing. After a reply finishes streaming, `synthesizeJapanese` + `playWaveform` run with `phase === 'idle'`, so the learner can hold-to-talk over the loudspeaker and feed the model its own audio.
+
+- `spokenRef.current` is assigned to the new line *before* synthesis/playback succeeds. A failed TTS/play leaves that line permanently marked as spoken, so the overlay never retries reading it aloud.
+
+- Effect cleanup only flips a `cancelled` flag; it does not stop an in-flight `playWaveform`. A newer assistant line (or exit) can leave the previous waveform still playing until the audio graph is torn down on unmount.
+
+- Exit (`onExit` / Android `onRequestClose`) only flips `mode` back to `'chat'`. It does not stop recording, cancel transcription, or clear phase first — teardown relies on unmount `release*` calls, so a mid-hold or mid-transcribe exit can drop audio work on the floor without user-facing feedback.
+
+- Conversation wrap-up / end UI lives under the chat tree, while PTT is a full-screen `Modal`. If the AI signals wrap-up (or the user had end pending) while conversation mode is open, the Finish / Keep talking prompt is invisible, yet `PttOverlay` can still `send` — unlike the Composer, which is disabled when `endPromptVisible`.
+
+- An ended session does not force `mode` back to `'chat'`. If the session flips to ended while the overlay is up, the Modal can remain with a live Send path even though the chat chrome has switched to the finished state.
+
+- `VoiceModelDownloadPrompt` copy claims speech models run entirely on-device and “nothing you say is uploaded,” and `PttOverlay`’s file comment says there is “no cloud path anywhere in this component,” but the overlay calls `transcribeTurn`, which uploads audio when cloud STT opt-in is on. The UI/docs actively misstate the privacy boundary.
+
+- While a download is in progress the prompt hides both Download and Not now, so a multi‑hundred‑MB fetch cannot be dismissed or cancelled from this UI; navigating away still leaves `downloadVoiceModels` running and can invoke `onDownloaded` → `setMode('ptt')` after the session screen has unmounted.
+
+- `formatBytes` always divides by `1e9` and shows one decimal GB. Totals under ~50 MB render as `0.0 GB`, and anything in the low hundreds of MB is a coarse/misleading disclosure relative to AC5’s “real download size” intent.
+
+- `PttOverlay`’s root is a plain `View` inside a React Native `Modal` with no `SafeAreaView` / inset handling. The close control and the large hold-to-speak button will collide with notches and the home indicator on devices this app’s platform floor explicitly targets.
+
+- Session screen connectivity is checked only once per focus (`useFocusEffect` + empty deps). Going offline mid-chat does not update `online`, and conversely the offline branch replaces the entire transcript UI — local history cannot be read without a network check succeeding, which fights the offline-first posture for everything except the AI turn itself.
+
+- Empty successful transcriptions (`ok: true` with `""`) clear into the editable field with no error or hint, so a silent/too-short utterance looks identical to “nothing happened” after release, despite tests covering only hard failures.
+
+- The `PttOverlay` test “speaks each new AI line once, not on every render” waits twice for `synthesizeCalls` length `1` without re-rendering or changing props, so it cannot catch duplicate speech on re-render and gives false confidence.
+
+- Chat errors use `text-feedback-error` while voice / download / PTT errors use `text-feedback-incorrect` on the same session surface, so failure styling is inconsistent for what the learner experiences as one conversation flow.
+
+- `latestAssistantText` is derived only from committed `messages`, ignoring `pendingReply`. Combined with `isStreaming` swapping the center pane to a spinner, conversation mode never shows the in-progress reply text — only a spinner — then jumps to the final line, which is a weaker FR98 “show the AI line” experience than chat itself.

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
   __mockPlayedBuffers,
@@ -35,17 +36,33 @@ jest.mock('@/data/user/preferencesRepository', () => ({
 
 function renderOverlay(overrides: Partial<React.ComponentProps<typeof PttOverlay>> = {}) {
   const props = {
-    assistantText: '元気[げんき]ですか。',
+    assistantText: '元気[げんき]ですか。' as string | null,
     isStreaming: false,
     onSend: jest.fn().mockResolvedValue(true),
     onExit: jest.fn(),
     ...overrides,
   };
-  render(<PttOverlay {...props} />);
-  return props;
+  const result = render(
+    <SafeAreaProvider
+      initialMetrics={{
+        frame: { x: 0, y: 0, width: 390, height: 844 },
+        insets: { top: 47, left: 0, right: 0, bottom: 34 },
+      }}>
+      <PttOverlay {...props} />
+    </SafeAreaProvider>,
+  );
+  return { ...props, ...result };
+}
+
+/** Hold is disabled while TTS plays — wait until the mic is interactive again. */
+async function awaitMicReady() {
+  await waitFor(() =>
+    expect(screen.getByTestId('ptt-button').props.accessibilityState.disabled).toBe(false),
+  );
 }
 
 async function holdAndRelease() {
+  await awaitMicReady();
   const button = screen.getByTestId('ptt-button');
   fireEvent(button, 'pressIn');
   await waitFor(() => expect(screen.getByTestId('ptt-button').props.accessibilityState.busy).toBe(true));
@@ -85,11 +102,27 @@ describe('PttOverlay', () => {
   });
 
   it('speaks each new AI line once, not on every render', async () => {
-    renderOverlay();
+    const { rerender, onSend, onExit } = renderOverlay();
 
     await waitFor(() => expect(__mockExecutorchState().synthesizeCalls).toHaveLength(1));
-    // A re-render with the same line must not re-speak it.
+
+    rerender(
+      <SafeAreaProvider
+        initialMetrics={{
+          frame: { x: 0, y: 0, width: 390, height: 844 },
+          insets: { top: 47, left: 0, right: 0, bottom: 34 },
+        }}>
+        <PttOverlay
+          assistantText="元気[げんき]ですか。"
+          isStreaming={false}
+          onSend={onSend}
+          onExit={onExit}
+        />
+      </SafeAreaProvider>,
+    );
+
     await waitFor(() => expect(__mockExecutorchState().synthesizeCalls).toHaveLength(1));
+    expect(__mockExecutorchState().synthesizeCalls).toHaveLength(1);
   });
 
   it('puts the transcript in an editable field instead of sending it (FR99)', async () => {
@@ -169,10 +202,20 @@ describe('PttOverlay', () => {
     expect(props.onSend).not.toHaveBeenCalled();
   });
 
+  it('hints when transcription succeeds with empty text', async () => {
+    renderOverlay();
+    __mockSetTranscription('   ');
+
+    await holdAndRelease();
+
+    await waitFor(() => expect(screen.getByText(/didn't catch any speech/i)).toBeTruthy());
+    expect(screen.getByLabelText('Your spoken message').props.value).toBe('');
+  });
+
   it('surfaces a denied microphone rather than recording silently', async () => {
     __mockSetPermission('Undetermined');
     __mockSetPermissionRequestResult('Denied');
-    renderOverlay();
+    renderOverlay({ assistantText: null });
 
     fireEvent(screen.getByTestId('ptt-button'), 'pressIn');
 
@@ -192,5 +235,11 @@ describe('PttOverlay', () => {
 
     await waitFor(() => expect(screen.getByTestId('ptt-assistant-line')).toBeTruthy());
     expect(screen.queryByTestId('chat-bubble-lookup')).toBeNull();
+  });
+
+  it('disables hold-to-speak while a reply is streaming', async () => {
+    renderOverlay({ isStreaming: true });
+
+    expect(screen.getByTestId('ptt-button').props.accessibilityState.disabled).toBe(true);
   });
 });

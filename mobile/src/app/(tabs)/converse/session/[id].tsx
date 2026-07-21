@@ -121,6 +121,14 @@ export default function ConversationSessionScreen() {
     }
   }, [wrapUpSignalled]);
 
+  // PTT is a covering Modal — wrap-up, session-ended, and offline UI live under
+  // chat. Drop back so Finish / Keep talking / offline messaging stay reachable.
+  useEffect(() => {
+    if (endPromptVisible || ended || online === false) {
+      setMode('chat');
+    }
+  }, [endPromptVisible, ended, online]);
+
   async function handleFinish() {
     const reason = endingReason ?? (wrapUpSignalled ? 'ai_wrap_up' : 'user_end');
     await end(reason);

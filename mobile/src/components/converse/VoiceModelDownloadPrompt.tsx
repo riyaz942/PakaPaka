@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
 import {
+  cancelVoiceModelDownload,
   downloadVoiceModels,
   getVoiceModelDownloadBytes,
 } from '@/data/ai/voice/modelDownloadManager';
@@ -36,6 +37,15 @@ export function VoiceModelDownloadPrompt({
   const [sizeBytes, setSizeBytes] = useState<number | null>(null);
   const [progress, setProgress] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const downloadingRef = useRef(false);
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -55,9 +65,17 @@ export function VoiceModelDownloadPrompt({
   }, []);
 
   const handleDownload = useCallback(async () => {
+    if (downloadingRef.current) {
+      return;
+    }
+    downloadingRef.current = true;
     setError(null);
     setProgress(0);
     const result = await downloadVoiceModels(setProgress);
+    downloadingRef.current = false;
+    if (!mountedRef.current) {
+      return;
+    }
     if (!result.ok) {
       setProgress(null);
       setError(result.error.userMessage ?? result.error.message);
@@ -67,6 +85,17 @@ export function VoiceModelDownloadPrompt({
     onDownloaded();
   }, [onDownloaded]);
 
+  const handleCancel = useCallback(async () => {
+    if (downloadingRef.current || progress !== null) {
+      await cancelVoiceModelDownload();
+      downloadingRef.current = false;
+      if (mountedRef.current) {
+        setProgress(null);
+      }
+    }
+    onCancel();
+  }, [onCancel, progress]);
+
   const isDownloading = progress !== null;
 
   return (
@@ -75,8 +104,9 @@ export function VoiceModelDownloadPrompt({
         Speaking practice needs a one-time download
       </Text>
       <Text className="mt-space-sm text-body-sm text-secondary">
-        The Japanese voice and speech models run entirely on this device, so nothing you say is
-        uploaded. You can keep typing while they download.
+        The Japanese voice and speech models run on this device by default, so chat stays usable
+        while they download. Optional cloud transcription is a separate Settings toggle — it is
+        never used unless you turn it on.
       </Text>
 
       {sizeBytes !== null ? (
@@ -94,12 +124,22 @@ export function VoiceModelDownloadPrompt({
       ) : null}
 
       {isDownloading ? (
-        <Text
-          accessibilityLiveRegion="polite"
-          className="mt-space-md text-body-sm text-secondary"
-          testID="voice-model-progress">
-          Downloading… {Math.round(progress * 100)}%
-        </Text>
+        <View className="mt-space-md gap-space-sm">
+          <Text
+            accessibilityLiveRegion="polite"
+            className="text-body-sm text-secondary"
+            testID="voice-model-progress">
+            Downloading… {Math.round(progress * 100)}%
+          </Text>
+          <Button
+            label="Cancel"
+            onPress={() => {
+              void handleCancel();
+            }}
+            testID="voice-model-cancel"
+            variant="secondary"
+          />
+        </View>
       ) : (
         <View className="mt-space-md flex-row gap-space-sm">
           {sizeBytes !== null ? (
@@ -115,7 +155,9 @@ export function VoiceModelDownloadPrompt({
           <Button
             className="flex-1"
             label="Not now"
-            onPress={onCancel}
+            onPress={() => {
+              void handleCancel();
+            }}
             testID="voice-model-cancel"
             variant="secondary"
           />

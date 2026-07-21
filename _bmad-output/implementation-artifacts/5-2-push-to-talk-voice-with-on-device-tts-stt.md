@@ -323,10 +323,29 @@ _Chunk A (voice engine / deps / mocks) — 2026-07-21. Chunks B–E still queued
 - [x] [Review][Defer] Presence check is basename-only (no size/hash) — truncated/corrupt but listed files still report ready; cache-then-move already prevents half-files from listing; deeper integrity check deferred pending on-device soak [`modelDownloadManager.ts`] — deferred, accepted residual risk
 - [x] [Review][Defer] Cloud STT `Blob`+`FormData` multipart path unproven on device — API shape covered by mocks; first device build must confirm upload encoding [`cloudSttClient.ts`] — deferred, needs device verification
 
+_Chunk B (PTT UI) — 2026-07-21. Chunks C–E still queued._
+
+- [x] [Review][Patch] PTT pressIn/pressOut race: `handlePressOut` no-ops until `phase === 'recording'`, so permission dialog / quick tap can leave the mic stuck in Listening [`PttOverlay.tsx:100`] — done (press generation guard)
+- [x] [Review][Patch] Hold-to-speak stays enabled while TTS plays — learner can record over loudspeaker and feed the model its own audio [`PttOverlay.tsx:227`] — done (`speaking` gate)
+- [x] [Review][Patch] `spokenRef` set before synth/play succeeds — failed TTS permanently skips that line [`PttOverlay.tsx:79`] — done (set only after play succeeds)
+- [x] [Review][Patch] Wrap-up / ended UI lives under chat while PTT `Modal` covers it — Finish/Keep talking unreachable; Send still live [`session/[id].tsx:257`] [`session/[id].tsx:332`] — done (force `mode: 'chat'` on wrap-up/ended/offline)
+- [x] [Review][Patch] Download prompt + PttOverlay docs claim speech is never uploaded / “no cloud path”, but `transcribeTurn` uploads when cloud STT is opted in [`VoiceModelDownloadPrompt.tsx:78`] [`PttOverlay.tsx:40`] — done
+- [x] [Review][Patch] In-progress download hides Cancel/Not now and never calls `cancelVoiceModelDownload`; double-tap can start parallel fetches; `onDownloaded` can fire after unmount [`VoiceModelDownloadPrompt.tsx:57`] — done
+- [x] [Review][Patch] PTT `Modal` root has no safe-area insets — close control and hold button collide with notch / home indicator [`PttOverlay.tsx:160`] — done (`SafeAreaView`)
+- [x] [Review][Patch] Going offline while `mode === 'ptt'` leaves the Modal up with Send still offered; offline block stays under the Modal [`session/[id].tsx:332`] — done (same force-chat effect)
+- [x] [Review][Patch] Hold/Send not gated on `isStreaming` — overlapping turns while a reply is still streaming [`PttOverlay.tsx:157`] — done
+- [x] [Review][Patch] Empty successful transcription clears into the field with no hint — silent/too-short utterance looks like nothing happened [`PttOverlay.tsx:135`] — done (defensive empty guard + sttClient empty path)
+- [x] [Review][Patch] “Speaks once” test waits twice for length 1 without a re-render — cannot catch duplicate speech [`PttOverlay.test.tsx:87`] — done
+- [x] [Review][Defer] `getAiSession` sits outside the grammar `try` — sync SQLite throw would crash the effect [`session/[id].tsx:71`] — deferred, pre-existing
+- [x] [Review][Defer] `handleFinish` does not catch `end()` failure — end prompt can stick [`session/[id].tsx:124`] — deferred, pre-existing
+- [x] [Review][Defer] Connectivity checked once per focus only — mid-session offline/online flips do not update chat gate [`session/[id].tsx:53`] — deferred, pre-existing
+
 ## Change Log
 
 | Date | Change |
 | --- | --- |
 | 2026-07-21 | Implemented Story 5.2: pinned executorch nightly + Supertonic/Whisper Japanese models, `data/ai/voice/` module, explicit model download UX, composer mic, full-screen PTT conversation mode, cloud STT opt-in. Added `react-native-audio-api` (user-approved) for microphone capture and playback, which executorch does not provide. |
 | 2026-07-21 | Code review Chunk A (voice engine): findings recorded under Review Findings. |
-| 2026-07-21 | Code review Chunk A patches applied (load gate, size probe, audio Result/session/playback, cloud STT timeout, mic copy, cancel API). |)
+| 2026-07-21 | Code review Chunk A patches applied (load gate, size probe, audio Result/session/playback, cloud STT timeout, mic copy, cancel API). |
+| 2026-07-21 | Code review Chunk B (PTT UI): findings recorded under Review Findings. |
+| 2026-07-21 | Code review Chunk B patches applied (press race, TTS/streaming gates, spokenRef, wrap-up/offline exit, privacy copy, download cancel, safe area, empty STT hint, tests). |)

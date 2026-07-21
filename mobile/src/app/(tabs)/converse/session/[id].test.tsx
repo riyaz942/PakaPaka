@@ -49,13 +49,16 @@ jest.mock('@/data/user/aiSessionRepository', () => ({
 }));
 
 let mockMessages: { id: string; role: string; content: string }[] = [];
+let mockWrapUpSignalled = false;
 jest.mock('@/data/hooks/useAiConversation', () => ({
   useAiConversation: () => ({
     session: { id: 'session-1', mode: 'free_chat', endedAt: null },
     messages: mockMessages,
     pendingReply: '',
     isStreaming: false,
-    wrapUpSignalled: false,
+    get wrapUpSignalled() {
+      return mockWrapUpSignalled;
+    },
     error: null,
     send: mockSend,
     end: jest.fn(),
@@ -99,6 +102,7 @@ describe('ConversationSessionScreen voice promotion', () => {
     __mockResetAudioApi();
     __mockSetSynthesis(new Float32Array([0.1]));
     mockMessages = [{ id: 'm1', role: 'assistant', content: '元気[げんき]ですか。' }];
+    mockWrapUpSignalled = false;
     mockSend.mockClear();
   });
 
@@ -169,5 +173,28 @@ describe('ConversationSessionScreen voice promotion', () => {
     await waitFor(() => expect(screen.queryByTestId('ptt-overlay')).toBeNull());
     // The same message list the chat view had before — nothing reconciled.
     expect(screen.getByText('元気')).toBeTruthy();
+  });
+
+  it('drops conversation mode when wrap-up arrives so Finish is reachable', async () => {
+    markModelsPresent();
+    const { rerender } = renderScreen();
+
+    await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());
+    fireEvent.press(screen.getByTestId('composer-mic'));
+    await waitFor(() => expect(screen.getByTestId('ptt-overlay')).toBeTruthy());
+
+    mockWrapUpSignalled = true;
+    rerender(
+      <SafeAreaProvider
+        initialMetrics={{
+          frame: { x: 0, y: 0, width: 390, height: 844 },
+          insets: { top: 0, left: 0, right: 0, bottom: 0 },
+        }}>
+        <ConversationSessionScreen />
+      </SafeAreaProvider>,
+    );
+
+    await waitFor(() => expect(screen.queryByTestId('ptt-overlay')).toBeNull());
+    expect(screen.getByTestId('confirm-end-session')).toBeTruthy();
   });
 });

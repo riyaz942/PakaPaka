@@ -4,6 +4,9 @@
 
 - **Presence check is basename-only (no size/hash)** — `areVoiceModelsDownloaded` trusts listed filenames; cache-then-move already keeps half-files out of the listing. Deeper integrity (size/hash) deferred pending on-device soak (`modelDownloadManager.ts`).
 - **Cloud STT `Blob`+`FormData` multipart path unproven on device** — unit tests cover field names against mocks; first real-device build must confirm WAV upload encoding through `expo/fetch` (`cloudSttClient.ts`).
+- **`getAiSession` outside grammar `try`** — sync SQLite throw would crash the session effect; pre-existing 5.1 pattern in `session/[id].tsx`, not introduced by PTT wiring.
+- **`handleFinish` does not catch `end()` failure** — end prompt can stick / summary never opens; pre-existing wrap-up path from 5.1.
+- **Connectivity checked once per focus** — mid-session offline/online flips do not refresh the chat gate; pre-existing Conversation connectivity UX from 5.1.
 
 ## Deferred from: code review of 5-1-platform-floor-byok-chat-session-summary (2026-07-21)
 

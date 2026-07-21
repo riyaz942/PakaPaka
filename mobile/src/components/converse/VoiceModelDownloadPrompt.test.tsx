@@ -103,4 +103,27 @@ describe('VoiceModelDownloadPrompt', () => {
 
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
+
+  it('keeps Cancel available while downloading', async () => {
+    sizeEverySourceAt(150_000_000);
+    const onCancel = jest.fn();
+
+    render(<VoiceModelDownloadPrompt onCancel={onCancel} onDownloaded={jest.fn()} />);
+
+    await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+    fireEvent.press(screen.getByTestId('voice-model-download'));
+
+    await waitFor(() => expect(screen.getByTestId('voice-model-progress')).toBeTruthy());
+    expect(screen.getByTestId('voice-model-cancel')).toBeTruthy();
+  });
+
+  it('does not claim speech is never uploaded', async () => {
+    sizeEverySourceAt(150_000_000);
+
+    render(<VoiceModelDownloadPrompt onCancel={jest.fn()} onDownloaded={jest.fn()} />);
+
+    await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+    expect(screen.queryByText(/nothing you say is uploaded/i)).toBeNull();
+    expect(screen.getByText(/Settings toggle/i)).toBeTruthy();
+  });
 });
