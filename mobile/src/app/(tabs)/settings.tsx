@@ -4,6 +4,7 @@ import { Pressable, ScrollView, Switch, Text, TextInput, View } from 'react-nati
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { ByokSettingsSection } from '@/components/converse/ByokSettingsSection';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import {
   cancelAllNotifications,
@@ -411,6 +412,8 @@ export default function SettingsScreen() {
           </View>
         </View>
       ) : null}
+
+      <ByokSettingsSection />
 
       {__DEV__ ? (
         <View className="mt-10">

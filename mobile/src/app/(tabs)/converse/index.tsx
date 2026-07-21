@@ -1,20 +1,117 @@
-import React from 'react';
-import { Text } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { router, useFocusEffect } from 'expo-router';
+import React, { useCallback, useState } from 'react';
+import { ActivityIndicator, Pressable, Text, useColorScheme, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TabPlaceholderScreen } from '@/components/common/TabPlaceholderScreen';
+import { ConversationStartPicker } from '@/components/converse/ConversationStartPicker';
+import { KeySetup } from '@/components/converse/KeySetup';
+import { getSemanticColors } from '@/constants/semantic-colors';
+import type { ConversationMode } from '@/core/ai/aiSession.types';
+import { resolveActiveProvider } from '@/data/ai/aiConfig';
+import { DEFAULT_MODELS } from '@/data/ai/byokCredential.types';
+import { isOnline } from '@/data/ai/connectivity';
+import {
+  listRecentGrammar,
+  type RecentGrammarItem,
+} from '@/data/ai/recentGrammarRepository';
+import { useByokStatus } from '@/data/hooks/useByokStatus';
+import { useDatabase } from '@/data/hooks/useDatabase';
+import { createAiSession } from '@/data/user/aiSessionRepository';
+import { getAiModel } from '@/data/user/preferencesRepository';
+import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 /**
- * Talk tab placeholder (UX-DR3). Holds the slot freed by removing the Read tab
- * until Epic 5 ships conversation practice. Deliberately inert — no BYOK key
- * setup, no chat surface, nothing that reaches the network.
+ * The Conversation tab (FR87, UX-DR3, UX-DR21).
+ *
+ * Three states, in order of precedence: offline, unconfigured, ready. The
+ * offline state is scoped to this tab only — every other tab stays fully usable
+ * without a connection (UX-DR22).
  */
 export default function ConverseScreen() {
+  const insets = useSafeAreaInsets();
+  const { userDb } = useDatabase();
+  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const { configured, isReady, refresh } = useByokStatus();
+  const [online, setOnline] = useState<boolean | null>(null);
+  const [recentGrammar, setRecentGrammar] = useState<RecentGrammarItem[]>([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      let cancelled = false;
+
+      void isOnline().then((result) => {
+        if (!cancelled) {
+          setOnline(result);
+        }
+      });
+
+      try {
+        setRecentGrammar(listRecentGrammar(userDb));
+      } catch {
+        // Recent grammar decorates one picker row; it is never a blocker, so an
+        // empty list just falls back to that row's static description.
+        setRecentGrammar([]);
+      }
+
+      return () => {
+        cancelled = true;
+      };
+    }, [userDb]),
+  );
+
+  function handleStart(mode: ConversationMode) {
+    const provider = resolveActiveProvider(userDb, configured ?? []);
+    if (!provider) {
+      return;
+    }
+
+    const session = createAiSession(userDb, {
+      provider,
+      model: getAiModel(userDb, provider) ?? DEFAULT_MODELS[provider],
+      mode,
+    });
+
+    router.push(`/converse/session/${session.id}`);
+  }
+
   return (
-    <TabPlaceholderScreen title="Conversation coming soon">
-      <Text className="text-center text-body text-secondary">
-        Practice speaking and chatting in Japanese will live here. Everything you study in
-        Browse is getting you ready for it.
-      </Text>
-    </TabPlaceholderScreen>
+    <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
+      <View className="flex-row items-center justify-between px-space-md py-space-sm">
+        <Text accessibilityRole="header" className="text-title text-primary">
+          Talk
+        </Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Past conversations"
+          onPress={() => router.push('/converse/history')}
+          testID="converse-history-entry"
+          className="min-h-[44px] min-w-[44px] items-end justify-center"
+          hitSlop={8}>
+          <MaterialIcons name="history" size={24} color={colors.feedbackInfo} />
+        </Pressable>
+      </View>
+
+      {online === false ? (
+        <View className="flex-1 items-center justify-center p-space-lg">
+          <MaterialIcons name="cloud-off" size={40} color={colors.secondary} />
+          <Text accessibilityRole="header" className="mt-space-md text-title text-primary">
+            Conversation needs internet
+          </Text>
+          <Text className="mt-space-sm text-center text-body text-secondary">
+            Chat runs through the AI provider you configured, so this tab needs a connection.
+            Everything else in the app still works offline.
+          </Text>
+        </View>
+      ) : !isReady ? (
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator accessibilityLabel="Checking your saved key" />
+        </View>
+      ) : (configured?.length ?? 0) === 0 ? (
+        <KeySetup onSaved={refresh} />
+      ) : (
+        <ConversationStartPicker recentGrammar={recentGrammar} onStart={handleStart} />
+      )}
+    </View>
   );
 }

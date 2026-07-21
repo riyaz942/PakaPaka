@@ -45,7 +45,20 @@
       "expo-asset",
       "expo-secure-store",
       "expo-image",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "17.0",
+            "newArchEnabled": true
+          },
+          "android": {
+            "minSdkVersion": 33,
+            "newArchEnabled": true
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

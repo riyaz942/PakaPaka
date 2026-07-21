@@ -502,10 +502,108 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     );
     return;
   }
+
+  // --- AI conversation tables (017_ai_sessions) ---
+
+  if (/^INSERT INTO ai_sessions/i.test(trimmed)) {
+    const rows = state.tables.get('ai_sessions') ?? [];
+    rows.push({
+      id: params[0],
+      provider: params[1],
+      model: params[2],
+      mode: params[3],
+      topic_item_id: params[4],
+      started_at: params[5],
+      ended_at: null,
+      ended_reason: null,
+      turn_count: 0,
+      summary_json: null,
+      summary_generated_at: null,
+    });
+    state.tables.set('ai_sessions', rows);
+    return;
+  }
+
+  if (/^INSERT INTO ai_messages/i.test(trimmed)) {
+    const rows = state.tables.get('ai_messages') ?? [];
+    rows.push({
+      id: params[0],
+      session_id: params[1],
+      role: params[2],
+      content: params[3],
+      created_at: params[4],
+    });
+    state.tables.set('ai_messages', rows);
+    return;
+  }
+
+  if (/^UPDATE ai_sessions/i.test(trimmed)) {
+    const rows = state.tables.get('ai_sessions') ?? [];
+    // The id is always the last bound parameter across every ai_sessions update.
+    const sessionId = params[params.length - 1];
+    const index = rows.findIndex((row) => row.id === sessionId);
+    if (index >= 0) {
+      if (/turn_count = turn_count \+ 1/i.test(trimmed)) {
+        rows[index] = {
+          ...rows[index],
+          turn_count: Number(rows[index].turn_count ?? 0) + 1,
+        };
+      } else if (/ended_at = \?/i.test(trimmed)) {
+        rows[index] = { ...rows[index], ended_at: params[0], ended_reason: params[1] };
+      } else if (/summary_json = \?/i.test(trimmed)) {
+        rows[index] = {
+          ...rows[index],
+          summary_json: params[0],
+          summary_generated_at: params[1],
+        };
+      }
+      state.tables.set('ai_sessions', rows);
+    }
+    return;
+  }
+
+  if (/^DELETE FROM ai_sessions/i.test(trimmed)) {
+    const rows = state.tables.get('ai_sessions') ?? [];
+    state.tables.set(
+      'ai_sessions',
+      rows.filter((row) => row.id !== params[0]),
+    );
+    return;
+  }
 }
 
 function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []): Row[] {
   const trimmed = sql.trim();
+
+  if (/FROM ai_sessions/i.test(trimmed)) {
+    let rows = [...(state.tables.get('ai_sessions') ?? [])];
+    if (/WHERE id = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.id === params[0]);
+    }
+    if (/ORDER BY started_at DESC/i.test(trimmed)) {
+      rows.sort((left, right) => String(right.started_at).localeCompare(String(left.started_at)));
+    }
+    return rows;
+  }
+
+  if (/FROM ai_messages/i.test(trimmed)) {
+    let rows = [...(state.tables.get('ai_messages') ?? [])];
+    if (/WHERE session_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.session_id === params[0]);
+    }
+    if (/ORDER BY created_at ASC/i.test(trimmed)) {
+      // Stable within a millisecond: two turns written in the same tick keep
+      // insertion order, which is the order they were actually spoken.
+      rows = rows
+        .map((row, index) => ({ row, index }))
+        .sort((left, right) => {
+          const byTime = String(left.row.created_at).localeCompare(String(right.row.created_at));
+          return byTime !== 0 ? byTime : left.index - right.index;
+        })
+        .map((entry) => entry.row);
+    }
+    return rows;
+  }
 
   if (/FROM sqlite_master/i.test(trimmed)) {
     const names = Array.from(state.tables.keys());
@@ -1113,6 +1211,8 @@ class MockSQLiteDatabase {
       'srs_states',
       'import_metadata',
       'item_study_status',
+      'ai_sessions',
+      'ai_messages',
     ]);
     state.inTransaction = true;
     try {

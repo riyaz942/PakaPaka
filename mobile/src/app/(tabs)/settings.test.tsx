@@ -84,6 +84,14 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   setNotificationTime: jest.fn(),
   clearOnboardingCompleted: jest.fn(),
   NOTIFICATION_TIME_HOURS: { evening: 19 },
+  // BYOK section (Story 5.1) — the fake `userDb` has no query methods, so the
+  // AI preference reads are stubbed alongside the rest of this module.
+  getAiActiveProvider: () => null,
+  getAiModel: () => null,
+  getAiOpenAiBaseUrl: () => null,
+  setAiActiveProvider: jest.fn(),
+  setAiModel: jest.fn(),
+  setAiOpenAiBaseUrl: jest.fn(),
 }));
 
 jest.mock('@/config/notifications', () => ({

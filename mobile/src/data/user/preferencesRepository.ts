@@ -28,6 +28,12 @@ export const PREFERENCE_KEYS = {
   shadowModePromptDismissed: 'shadow_mode_prompt_dismissed',
   shadowModePromptSnoozedUntil: 'shadow_mode_prompt_snoozed_until',
   seenKanjiReadingPrimer: 'seen_kanji_reading_primer',
+  // BYOK config that is not a secret — the key itself lives in secure storage
+  // (see data/ai/byokCredentialStore.ts), these two do not.
+  aiOpenAiBaseUrl: 'ai_openai_base_url',
+  aiActiveProvider: 'ai_active_provider',
+  aiOpenAiModel: 'ai_openai_model',
+  aiAnthropicModel: 'ai_anthropic_model',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -320,4 +326,51 @@ export function setCurriculumInstallMetadata(
   if (options.contentHash) {
     setPreference(userDb, PREFERENCE_KEYS.installedCurriculumContentHash, options.contentHash);
   }
+}
+
+/**
+ * OpenAI-compatible base URL (FR88). Not a credential — it is user-editable
+ * config, so it lives here rather than in secure storage. Null means "not set";
+ * the caller applies `DEFAULT_OPENAI_BASE_URL`.
+ */
+export function getAiOpenAiBaseUrl(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.aiOpenAiBaseUrl);
+}
+
+export function setAiOpenAiBaseUrl(userDb: SQLiteDatabase, baseUrl: string): void {
+  setPreference(userDb, PREFERENCE_KEYS.aiOpenAiBaseUrl, baseUrl.trim());
+}
+
+/**
+ * Which adapter new sessions use. Both providers can be configured at once
+ * (FR88), so the choice is an explicit, visible setting rather than an implicit
+ * "whichever key we found first" — no hidden fallback path. Null means the
+ * caller should default to the single configured provider.
+ */
+export function getAiActiveProvider(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.aiActiveProvider);
+}
+
+export function setAiActiveProvider(userDb: SQLiteDatabase, provider: string): void {
+  setPreference(userDb, PREFERENCE_KEYS.aiActiveProvider, provider);
+}
+
+/** Per-provider model id override. Null means the adapter's documented default. */
+export function getAiModel(userDb: SQLiteDatabase, provider: 'openai' | 'anthropic'): string | null {
+  return getPreference(
+    userDb,
+    provider === 'openai' ? PREFERENCE_KEYS.aiOpenAiModel : PREFERENCE_KEYS.aiAnthropicModel,
+  );
+}
+
+export function setAiModel(
+  userDb: SQLiteDatabase,
+  provider: 'openai' | 'anthropic',
+  model: string,
+): void {
+  setPreference(
+    userDb,
+    provider === 'openai' ? PREFERENCE_KEYS.aiOpenAiModel : PREFERENCE_KEYS.aiAnthropicModel,
+    model.trim(),
+  );
 }

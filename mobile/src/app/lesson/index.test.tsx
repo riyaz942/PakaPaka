@@ -31,6 +31,10 @@ jest.mock('expo-router', () => ({
     back: (...args: unknown[]) => mockBack(...args),
     canGoBack: () => true,
   },
+  // LessonHero -> useIsKnownWord subscribes via useFocusEffect; without it the
+  // mocked module leaves the hook undefined and the whole screen fails to render.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest.mock factories cannot reference out-of-scope imports
+  useFocusEffect: (callback: () => void) => require('react').useEffect(callback, [callback]),
 }));
 
 function item(

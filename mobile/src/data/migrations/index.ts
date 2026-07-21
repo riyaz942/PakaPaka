@@ -14,6 +14,7 @@ import { migration013DailyLessonLog } from '@/data/migrations/013_daily_lesson_l
 import { migration014StreakCelebration } from '@/data/migrations/014_streak_celebration';
 import { migration015GoalRingState } from '@/data/migrations/015_goal_ring_state';
 import { migration016FuriganaOverrides } from '@/data/migrations/016_furigana_overrides';
+import { migration017AiSessions } from '@/data/migrations/017_ai_sessions';
 import type { Migration } from '@/data/migrations/migrations.types';
 
 export const migrations: Migration[] = [
@@ -33,4 +34,5 @@ export const migrations: Migration[] = [
   migration014StreakCelebration,
   migration015GoalRingState,
   migration016FuriganaOverrides,
+  migration017AiSessions,
 ];

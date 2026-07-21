@@ -65,7 +65,7 @@ describe('runMigrations', () => {
     expect(db.getAllSync('SELECT version FROM schema_migrations')).toHaveLength(2);
   });
 
-  it('applies the full migration list, ending with 016_furigana_overrides', async () => {
+  it('applies the full migration list, ending with 017_ai_sessions', async () => {
     const db = await openDatabaseAsync('user.db');
 
     const result = runMigrations(db, migrations);
@@ -74,12 +74,17 @@ describe('runMigrations', () => {
     expect(migrations.map((migration) => migration.version)).toEqual(
       migrations.map((_, index) => index + 1),
     );
-    expect(migrations[migrations.length - 1].name).toBe('016_furigana_overrides');
+    expect(migrations[migrations.length - 1].name).toBe('017_ai_sessions');
     expect(
       // Parameterized form: the shared mock only special-cases a few literal
       // table names in sqlite_master queries, but handles `name = ?` generically.
       db.getAllSync("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?", [
         'furigana_overrides',
+      ]),
+    ).toHaveLength(1);
+    expect(
+      db.getAllSync("SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?", [
+        'ai_sessions',
       ]),
     ).toHaveLength(1);
   });

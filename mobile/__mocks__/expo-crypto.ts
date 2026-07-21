@@ -41,3 +41,15 @@ export async function digest(
   const hashed = createHash('sha256').update(bytes).digest();
   return hashed.buffer.slice(hashed.byteOffset, hashed.byteOffset + hashed.byteLength);
 }
+
+let uuidCounter = 0;
+
+/** Mirrors expo-crypto's `randomUUID`, but deterministic so tests can assert ids. */
+export function randomUUID(): string {
+  uuidCounter += 1;
+  return `00000000-0000-4000-8000-${String(uuidCounter).padStart(12, '0')}`;
+}
+
+export function __mockResetUuid(): void {
+  uuidCounter = 0;
+}
