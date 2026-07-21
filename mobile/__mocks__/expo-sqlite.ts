@@ -550,12 +550,24 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
         };
       } else if (/ended_at = \?/i.test(trimmed)) {
         rows[index] = { ...rows[index], ended_at: params[0], ended_reason: params[1] };
-      } else if (/summary_json = \?/i.test(trimmed)) {
+      } else if (/summary_json = NULL/i.test(trimmed) && /summary_generated_at = NULL/i.test(trimmed)) {
         rows[index] = {
           ...rows[index],
-          summary_json: params[0],
-          summary_generated_at: params[1],
+          summary_json: null,
+          summary_generated_at: null,
         };
+      } else if (/summary_json = \?/i.test(trimmed)) {
+        if (/summary_generated_at IS NULL/i.test(trimmed) && rows[index].summary_generated_at != null) {
+          // Once-only cache: leave the existing summary untouched.
+        } else {
+          rows[index] = {
+            ...rows[index],
+            summary_json: params[0],
+            summary_generated_at: params[1],
+          };
+        }
+      } else if (/started_at = \?/i.test(trimmed)) {
+        rows[index] = { ...rows[index], started_at: params[0] };
       }
       state.tables.set('ai_sessions', rows);
     }
@@ -563,10 +575,17 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
   }
 
   if (/^DELETE FROM ai_sessions/i.test(trimmed)) {
+    const sessionId = params[0];
     const rows = state.tables.get('ai_sessions') ?? [];
     state.tables.set(
       'ai_sessions',
-      rows.filter((row) => row.id !== params[0]),
+      rows.filter((row) => row.id !== sessionId),
+    );
+    // Mirror ON DELETE CASCADE (PRAGMA foreign_keys = ON in production).
+    const messages = state.tables.get('ai_messages') ?? [];
+    state.tables.set(
+      'ai_messages',
+      messages.filter((row) => row.session_id !== sessionId),
     );
     return;
   }

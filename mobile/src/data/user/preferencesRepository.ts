@@ -29,7 +29,7 @@ export const PREFERENCE_KEYS = {
   shadowModePromptSnoozedUntil: 'shadow_mode_prompt_snoozed_until',
   seenKanjiReadingPrimer: 'seen_kanji_reading_primer',
   // BYOK config that is not a secret — the key itself lives in secure storage
-  // (see data/ai/byokCredentialStore.ts), these two do not.
+  // (see data/ai/byokCredentialStore.ts); these four do not.
   aiOpenAiBaseUrl: 'ai_openai_base_url',
   aiActiveProvider: 'ai_active_provider',
   aiOpenAiModel: 'ai_openai_model',
@@ -338,7 +338,16 @@ export function getAiOpenAiBaseUrl(userDb: SQLiteDatabase): string | null {
 }
 
 export function setAiOpenAiBaseUrl(userDb: SQLiteDatabase, baseUrl: string): void {
-  setPreference(userDb, PREFERENCE_KEYS.aiOpenAiBaseUrl, baseUrl.trim());
+  const trimmed = baseUrl.trim();
+  if (trimmed.length === 0) {
+    // Empty must clear, not store "": callers use `?? DEFAULT_OPENAI_BASE_URL`.
+    userDb.runSync(
+      'DELETE FROM user_preferences WHERE key = ?',
+      PREFERENCE_KEYS.aiOpenAiBaseUrl,
+    );
+    return;
+  }
+  setPreference(userDb, PREFERENCE_KEYS.aiOpenAiBaseUrl, trimmed);
 }
 
 /**

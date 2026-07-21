@@ -71,6 +71,17 @@ so that I can practise real Japanese without mid-chat corrections or handing dat
   - [x] `core/ai/markers.test.ts`, `core/ai/turnBudget.test.ts`, adapter tests (mock `expo/fetch`), `017_ai_sessions` migration test, unknown-word flagging unit tests, RNTL tests for `KeySetup`/`ConversationStartPicker`/offline empty state.
   - [x] Run `npx tsc --noEmit` and `npm run lint` (mobile/) before considering the story complete — both are enforcement rules, not optional.
 
+### Review Findings
+
+- [x] [Review][Patch] Back without Finish must not call `endAiSession` — leave `ended_at` null so history reopens chat; only explicit Finish (End button / AI wrap-up → Finish) sets `ended_at` [`session/[id].tsx:60-63`]
+- [x] [Review][Patch] Corrupt `summary_json` with `summary_generated_at` set permanently blocks regeneration — `parseSummary` returns null but timestamp remains; `useSessionSummary` treats any non-null timestamp as cached [`aiSessionRepository.ts:51-87`] [`useSessionSummary.ts:60-64`]
+- [x] [Review][Patch] `saveAiSessionSummary` does not enforce once-only at the DB boundary — concurrent `generate()` can overwrite; use `UPDATE … WHERE summary_generated_at IS NULL` [`aiSessionRepository.ts:218-228`]
+- [x] [Review][Patch] Remove dead `newArchEnabled` keys from `expo-build-properties` — SDK 55 makes New Architecture mandatory and the plugin ignores these keys; keep iOS 17 / API 33 floors [`app.json:52-59`]
+- [x] [Review][Patch] `ON DELETE CASCADE` is inert without `PRAGMA foreign_keys = ON` — enable on user.db open and make the SQLite mock cascade-delete `ai_messages` [`017_ai_sessions.ts:38`] [`database.ts`]
+- [x] [Review][Patch] `setAiOpenAiBaseUrl` can persist empty/whitespace after trim — empty string defeats `?? DEFAULT_OPENAI_BASE_URL` [`preferencesRepository.ts:340-341`]
+- [x] [Review][Patch] Fix `PREFERENCE_KEYS` comment that says “these two” while four BYOK keys were added [`preferencesRepository.ts:31-36`]
+- [x] [Review][Patch] “lists past sessions newest first” never asserts order — only membership [`aiSessionRepository.test.ts:160-177`]
+
 ## Dev Notes
 
 **Scope boundary — read before starting:** This story is chat-only. Push-to-talk, executorch, Supertonic TTS, Whisper STT, and the mic-button mode promotion (FR90's second half, FR98–FR100) are **Story 5.2**, already a separate backlog entry (`5-2-push-to-talk-voice-with-on-device-tts-stt`). Story 5.1 raises the platform floor that 5.2 depends on but must not pull voice work forward — the source brainstorming session's build order (`_bmad-output/brainstorming/brainstorming-session-2026-07-19-1651-ai-conversation.md`, "Suggested build order" + "Revised build order") explicitly sequences chat (steps 1–7) before executorch (step 8) as one unit, precisely to avoid a half-shipped voice feature.
@@ -242,3 +253,4 @@ claude-opus-4-8 (BMad dev-story workflow)
 | Date | Change |
 | --- | --- |
 | 2026-07-21 | Story 5.1 implemented: platform floor + New Architecture config, migration 017, BYOK credential storage, two streaming adapters over `expo/fetch`, in-band control markers, turn-budget placeholder (OA4), chat surface with furigana replies, unknown-word flagging, start picker + history, on-demand once-only summary, offline state, and Settings BYOK management. 1376 tests passing; lint, typecheck, and contrast gates clean. Task 1's native dev-client rebuild remains outstanding — it requires Xcode / Android Studio. |
+| 2026-07-21 | Code review chunk 1 (platform + persistence): applied 8 patches — back-without-Finish no longer ends the session; corrupt summary cache heals; once-only summary write guarded in SQL; removed dead `newArchEnabled` keys (SDK 55 always-on); enabled `PRAGMA foreign_keys`; empty base URL clears preference; preference comment + history order test fixed. Chunks 2–3 (AI core / UI) still pending review. |

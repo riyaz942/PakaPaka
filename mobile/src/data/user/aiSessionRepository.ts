@@ -87,6 +87,21 @@ function toSessionRecord(row: SessionRow): AiSessionRecord {
   };
 }
 
+/**
+ * Clears a corrupt once-only cache in place so a later generate can write
+ * (FR96). Returns the row as it should be read after healing.
+ */
+function withHealedSummaryCache(userDb: SQLiteDatabase, row: SessionRow): SessionRow {
+  if (row.summary_json == null || parseSummary(row.summary_json) !== null) {
+    return row;
+  }
+  userDb.runSync(
+    'UPDATE ai_sessions SET summary_json = NULL, summary_generated_at = NULL WHERE id = ?',
+    row.id,
+  );
+  return { ...row, summary_json: null, summary_generated_at: null };
+}
+
 function toChatMessage(row: MessageRow): ChatMessage {
   return {
     id: row.id,
@@ -174,7 +189,7 @@ export function getAiSession(userDb: SQLiteDatabase, sessionId: string): AiSessi
     'SELECT * FROM ai_sessions WHERE id = ?',
     sessionId,
   );
-  return row ? toSessionRecord(row) : null;
+  return row ? toSessionRecord(withHealedSummaryCache(userDb, row)) : null;
 }
 
 /** Past threads for the history surface (FR89), newest first. */
@@ -182,7 +197,7 @@ export function listAiSessions(userDb: SQLiteDatabase): AiSessionRecord[] {
   const rows = userDb.getAllSync<SessionRow>(
     'SELECT * FROM ai_sessions ORDER BY started_at DESC',
   );
-  return rows.map(toSessionRecord);
+  return rows.map((row) => toSessionRecord(withHealedSummaryCache(userDb, row)));
 }
 
 export function listAiMessages(userDb: SQLiteDatabase, sessionId: string): ChatMessage[] {
@@ -212,8 +227,8 @@ export function endAiSession(
 }
 
 /**
- * Writes the generated summary once. Callers must check
- * `summaryGeneratedAt` first — this is the cache, not a regenerate.
+ * Writes the generated summary once. The `summary_generated_at IS NULL` guard
+ * is the DB-level once-only cache (FR96) — concurrent callers cannot overwrite.
  */
 export function saveAiSessionSummary(
   userDb: SQLiteDatabase,
@@ -221,8 +236,13 @@ export function saveAiSessionSummary(
   summary: SessionSummary,
 ): void {
   userDb.runSync(
-    'UPDATE ai_sessions SET summary_json = ?, summary_generated_at = ? WHERE id = ?',
-    JSON.stringify(summary),
+    `UPDATE ai_sessions
+       SET summary_json = ?, summary_generated_at = ?
+     WHERE id = ? AND summary_generated_at IS NULL`,
+    JSON.stringify({
+      ...summary,
+      mistakes: summary.mistakes.slice(0, MAX_SUMMARY_MISTAKES),
+    }),
     new Date().toISOString(),
     sessionId,
   );

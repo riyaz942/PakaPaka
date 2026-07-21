@@ -130,6 +130,9 @@ export async function initializeDatabases(): Promise<Result<DatabaseHandles, App
 
   try {
     userDb = await openDatabaseAsync(USER_DB_NAME);
+    // SQLite keeps foreign keys off unless enabled per connection. Migration
+    // 017's ON DELETE CASCADE on ai_messages is inert without this.
+    userDb.execSync('PRAGMA foreign_keys = ON');
 
     const migrationResult = runMigrations(userDb, migrations);
     if (!migrationResult.ok) {

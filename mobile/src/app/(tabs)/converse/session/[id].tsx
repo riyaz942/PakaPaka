@@ -55,12 +55,8 @@ export default function ConversationSessionScreen() {
       <ScreenHeader
         title="Conversation"
         backAccessibilityLabel="Leave conversation"
-        // Leaving without ending is an abandon (FR94): silent, un-summarised,
-        // and still resumable from the history list.
-        onBack={() => {
-          end('abandoned');
-          router.back();
-        }}
+        // Leaving without Finish is not an end (FR94): ended_at stays null so
+        // history reopens this chat. Only the End / wrap-up Finish path ends it.
       />
 
       <KeyboardAvoidingView

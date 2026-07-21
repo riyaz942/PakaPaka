@@ -89,19 +89,17 @@ describe('aiSessionRepository', () => {
     }
   });
 
-  it('leaves an abandoned session un-summarised but still resumable (FR94)', async () => {
+  it('leaves a navigated-away session un-ended so it stays resumable (FR94)', async () => {
     const db = await freshDb();
     const session = createAiSession(db, { provider: 'openai', model: 'm', mode: 'random' });
     appendAiMessage(db, session.id, 'user', 'こんにちは');
 
-    endAiSession(db, session.id, 'abandoned');
-
-    const ended = getAiSession(db, session.id);
-    expect(ended?.endedReason).toBe('abandoned');
-    // Ending never generates a summary — that is a separate, on-demand call.
-    expect(ended?.summary).toBeNull();
-    expect(ended?.summaryGeneratedAt).toBeNull();
-    // The transcript survives, so the session can be reopened and summarised later.
+    // Back without Finish does not call endAiSession — ended_at stays null.
+    const open = getAiSession(db, session.id);
+    expect(open?.endedAt).toBeNull();
+    expect(open?.endedReason).toBeNull();
+    expect(open?.summary).toBeNull();
+    expect(open?.summaryGeneratedAt).toBeNull();
     expect(listAiMessages(db, session.id)).toHaveLength(1);
   });
 
@@ -123,6 +121,14 @@ describe('aiSessionRepository', () => {
     const loaded = getAiSession(db, session.id);
     expect(loaded?.summary).toEqual(summary);
     expect(loaded?.summaryGeneratedAt).not.toBeNull();
+
+    // Once-only: a second write must not overwrite the cache.
+    saveAiSessionSummary(db, session.id, {
+      mistakes: [{ quote: 'overwrite', correction: 'nope', note: 'should not stick' }],
+      wordsMet: [],
+      grammarNotes: [],
+    });
+    expect(getAiSession(db, session.id)?.summary).toEqual(summary);
   });
 
   it('caps a stored mistake list at five (FR95) even if the model returned more', async () => {
@@ -139,10 +145,16 @@ describe('aiSessionRepository', () => {
       grammarNotes: [],
     });
 
+    const row = db.getFirstSync<{ summary_json: string }>(
+      'SELECT summary_json FROM ai_sessions WHERE id = ?',
+      session.id,
+    );
+    const stored = JSON.parse(row!.summary_json) as SessionSummary;
+    expect(stored.mistakes).toHaveLength(5);
     expect(getAiSession(db, session.id)?.summary?.mistakes).toHaveLength(5);
   });
 
-  it('degrades a corrupt stored summary to null rather than throwing', async () => {
+  it('degrades a corrupt stored summary to null and unlocks regeneration', async () => {
     const db = await freshDb();
     const session = createAiSession(db, { provider: 'openai', model: 'm', mode: 'random' });
 
@@ -154,7 +166,16 @@ describe('aiSessionRepository', () => {
     );
 
     expect(() => getAiSession(db, session.id)).not.toThrow();
-    expect(getAiSession(db, session.id)?.summary).toBeNull();
+    const loaded = getAiSession(db, session.id);
+    expect(loaded?.summary).toBeNull();
+    expect(loaded?.summaryGeneratedAt).toBeNull();
+
+    const row = db.getFirstSync<{ summary_json: string | null; summary_generated_at: string | null }>(
+      'SELECT summary_json, summary_generated_at FROM ai_sessions WHERE id = ?',
+      session.id,
+    );
+    expect(row?.summary_json).toBeNull();
+    expect(row?.summary_generated_at).toBeNull();
   });
 
   it('lists past sessions newest first for the history surface', async () => {
@@ -163,17 +184,18 @@ describe('aiSessionRepository', () => {
     const second = createAiSession(db, { provider: 'openai', model: 'm', mode: 'role_play' });
 
     db.runSync(
-      'UPDATE ai_sessions SET ended_at = ?, ended_reason = ? WHERE id = ?',
+      'UPDATE ai_sessions SET started_at = ? WHERE id = ?',
       '2026-01-01T00:00:00.000Z',
-      'user_end',
       first.id,
+    );
+    db.runSync(
+      'UPDATE ai_sessions SET started_at = ? WHERE id = ?',
+      '2026-01-02T00:00:00.000Z',
+      second.id,
     );
 
     const listed = listAiSessions(db);
-    const ids = listed.map((session) => session.id);
-    expect(ids).toHaveLength(2);
-    expect(ids).toContain(first.id);
-    expect(ids).toContain(second.id);
+    expect(listed.map((session) => session.id)).toEqual([second.id, first.id]);
   });
 
   it('returns null for an unknown session id', async () => {
