@@ -20,8 +20,10 @@ const state = {
   sizeByUri: new Map<string, number>(),
   fetchError: null as Error | null,
   sizeError: null as Error | null,
+  listError: null as Error | null,
   progressSteps: [0.5, 1] as number[],
   fetchCallCount: 0,
+  cancelCallCount: 0,
 };
 
 export function __mockResetResourceFetcher(): void {
@@ -29,8 +31,10 @@ export function __mockResetResourceFetcher(): void {
   state.sizeByUri.clear();
   state.fetchError = null;
   state.sizeError = null;
+  state.listError = null;
   state.progressSteps = [0.5, 1];
   state.fetchCallCount = 0;
+  state.cancelCallCount = 0;
 }
 
 /** Marks these source URLs as already present on disk. */
@@ -52,12 +56,23 @@ export function __mockFailSizeProbe(error: Error): void {
   state.sizeError = error;
 }
 
+export function __mockFailListDownloaded(error: Error): void {
+  state.listError = error;
+}
+
 export function __mockFetchCallCount(): number {
   return state.fetchCallCount;
 }
 
+export function __mockCancelCallCount(): number {
+  return state.cancelCallCount;
+}
+
 export const ExpoResourceFetcher = {
   async listDownloadedFiles(): Promise<string[]> {
+    if (state.listError) {
+      throw state.listError;
+    }
     return [...state.downloaded].map((filename) => `${RNE_DIRECTORY}${filename}`);
   },
 
@@ -105,5 +120,8 @@ export const ExpoResourceFetcher = {
     }
   },
 
-  async cancelFetching(..._sources: unknown[]): Promise<void> {},
+  async cancelFetching(..._sources: unknown[]): Promise<void> {
+    state.cancelCallCount += 1;
+    throw new Error('None of given sources are currently during downloading process.');
+  },
 };

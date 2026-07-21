@@ -17,6 +17,9 @@ import type { Result } from '@/types/result.types';
 /** The transcription model id OpenAI-compatible endpoints universally expose. */
 export const DEFAULT_CLOUD_STT_MODEL = 'whisper-1';
 
+/** Cap hung cloud transcriptions so the PTT UI cannot wait forever. */
+const CLOUD_STT_TIMEOUT_MS = 30_000;
+
 type CloudSttOptions = {
   apiKey: string;
   baseUrl: string;
@@ -41,19 +44,24 @@ export async function transcribeJapaneseViaCloud(
     };
   }
 
-  const form = new FormData();
-  form.append('file', new Blob([encodeWav16BitPcm(waveform, STT_SAMPLE_RATE)], {
-    type: 'audio/wav',
-  }), 'speech.wav');
-  form.append('model', model);
-  form.append('language', 'ja');
-
   let response: Awaited<ReturnType<typeof fetch>>;
   try {
+    const form = new FormData();
+    form.append(
+      'file',
+      new Blob([encodeWav16BitPcm(waveform, STT_SAMPLE_RATE)], {
+        type: 'audio/wav',
+      }),
+      'speech.wav',
+    );
+    form.append('model', model);
+    form.append('language', 'ja');
+
     response = await fetch(url, {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}` },
       body: form,
+      signal: AbortSignal.timeout(CLOUD_STT_TIMEOUT_MS),
     });
   } catch (cause) {
     return {

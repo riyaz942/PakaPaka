@@ -27,9 +27,27 @@ function toError(code: string, userMessage: string, cause: unknown): AppError {
   return { code, message: String(cause), userMessage, cause };
 }
 
+/** Before the first download the model directory often does not exist yet. */
+function isMissingModelDirectory(cause: unknown): boolean {
+  const message = String(cause).toLowerCase();
+  return (
+    message.includes('not found') ||
+    message.includes('does not exist') ||
+    message.includes('no such file') ||
+    message.includes('could not be read') ||
+    message.includes('cannot be read') ||
+    message.includes('directory could not')
+  );
+}
+
+function isInactiveDownload(cause: unknown): boolean {
+  const message = String(cause).toLowerCase();
+  return message.includes('none of given sources') || message.includes('notactive');
+}
+
 export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
-  ensureExecutorchInitialised();
   try {
+    ensureExecutorchInitialised();
     const present = new Set(
       (await ExpoResourceFetcher.listDownloadedFiles()).map((path) =>
         path.slice(path.lastIndexOf('/') + 1),
@@ -41,6 +59,9 @@ export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
       value: required.every((name) => name !== null && present.has(name)),
     };
   } catch (cause) {
+    if (isMissingModelDirectory(cause)) {
+      return { ok: true, value: false };
+    }
     return {
       ok: false,
       error: toError(
@@ -57,13 +78,41 @@ export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
  *
  * A failure is returned rather than substituted with an estimate: the download
  * prompt has to disclose a true size, and a device that cannot reach the model
- * host cannot download them anyway.
+ * host cannot download them anyway. Each remote source is probed individually
+ * so a partial HEAD failure cannot under-report as a successful total.
  */
 export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
-  ensureExecutorchInitialised();
   try {
-    const bytes = await ExpoResourceFetcher.getFilesTotalSize(...voiceModelSources());
-    return { ok: true, value: bytes };
+    ensureExecutorchInitialised();
+    let total = 0;
+    for (const source of voiceModelSources()) {
+      if (typeof source !== 'string') {
+        continue;
+      }
+      const bytes = await ExpoResourceFetcher.getFilesTotalSize(source);
+      if (!Number.isFinite(bytes) || bytes <= 0) {
+        return {
+          ok: false,
+          error: toError(
+            'voice_model_size_unavailable',
+            'Could not reach the voice model download. Check your connection and try again.',
+            `Size probe returned ${bytes} for ${source}`,
+          ),
+        };
+      }
+      total += bytes;
+    }
+    if (total <= 0) {
+      return {
+        ok: false,
+        error: toError(
+          'voice_model_size_unavailable',
+          'Could not reach the voice model download. Check your connection and try again.',
+          'Combined model size was zero',
+        ),
+      };
+    }
+    return { ok: true, value: total };
   } catch (cause) {
     return {
       ok: false,
@@ -79,8 +128,8 @@ export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
 export async function downloadVoiceModels(
   onProgress?: (progress: number) => void,
 ): Promise<Result<void>> {
-  ensureExecutorchInitialised();
   try {
+    ensureExecutorchInitialised();
     await ExpoResourceFetcher.fetch(
       (progress) => onProgress?.(progress),
       ...voiceModelSources(),
@@ -92,6 +141,27 @@ export async function downloadVoiceModels(
       error: toError(
         'voice_model_download_failed',
         'The voice model download did not finish. You can try again.',
+        cause,
+      ),
+    };
+  }
+}
+
+/** Aborts an in-flight model download. No-op success when nothing is active. */
+export async function cancelVoiceModelDownload(): Promise<Result<void>> {
+  try {
+    ensureExecutorchInitialised();
+    await ExpoResourceFetcher.cancelFetching(...voiceModelSources());
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    if (isInactiveDownload(cause)) {
+      return { ok: true, value: undefined };
+    }
+    return {
+      ok: false,
+      error: toError(
+        'voice_model_cancel_failed',
+        'Could not cancel the voice model download.',
         cause,
       ),
     };

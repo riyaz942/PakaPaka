@@ -8,8 +8,13 @@ import {
   __mockResetExecutorch,
   __mockSetTranscription,
 } from '../../../../__mocks__/react-native-executorch';
+import {
+  __mockMarkDownloaded,
+  __mockResetResourceFetcher,
+} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
 
 import { transcribeTurn } from '@/data/ai/voice/transcription';
+import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
 let mockCloudOptIn = false;
 jest.mock('@/data/user/preferencesRepository', () => ({
@@ -30,6 +35,8 @@ describe('transcribeTurn', () => {
   beforeEach(() => {
     __mockResetFetch();
     __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
     mockCloudOptIn = false;
     mockConfig = { ok: true, value: null };
   });

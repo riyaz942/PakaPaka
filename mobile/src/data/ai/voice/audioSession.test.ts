@@ -48,6 +48,13 @@ describe('audioSession', () => {
     it('returns an empty array for empty input', () => {
       expect(resampleTo16kHz(new Float32Array(0), 44100)).toHaveLength(0);
     });
+
+    it('returns the input untouched when the source rate is non-positive', () => {
+      const samples = new Float32Array([0.1, 0.2]);
+
+      expect(resampleTo16kHz(samples, 0)).toBe(samples);
+      expect(resampleTo16kHz(samples, Number.NaN)).toBe(samples);
+    });
   });
 
   describe('ensureMicrophonePermission', () => {
@@ -110,8 +117,8 @@ describe('audioSession', () => {
       }
     });
 
-    it('surfaces a recorder failure instead of returning silence', async () => {
-      __mockFailRecorderStart(new Error('mic busy'));
+    it('surfaces a recorder Result error instead of returning silence', async () => {
+      __mockFailRecorderStart(new Error('mic busy'), true);
 
       const result = await startRecording();
 

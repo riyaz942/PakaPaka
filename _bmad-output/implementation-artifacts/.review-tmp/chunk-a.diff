@@ -1,0 +1,2217 @@
+diff --git a/mobile/__mocks__/expo-fetch.ts b/mobile/__mocks__/expo-fetch.ts
+index 51aaa5c..2b61c4a 100644
+--- a/mobile/__mocks__/expo-fetch.ts
++++ b/mobile/__mocks__/expo-fetch.ts
+@@ -13,12 +13,16 @@ type MockResponse = {
+   errorBody: string;
+   /** Throw partway through the stream, to exercise the partial-failure path. */
+   throwAfterChunks?: number;
++  /** Whole-body JSON, for the non-streaming calls (cloud transcription). */
++  json?: unknown;
+ };
+ 
+ type MockCall = {
+   url: string;
+   headers: Record<string, string>;
+   body: string;
++  /** The unstringified body, so form-data fields stay inspectable. */
++  rawBody: unknown;
+ };
+ 
+ const queue: MockResponse[] = [];
+@@ -41,6 +45,11 @@ export function __mockEnqueueSseFailure(chunks: string[], throwAfterChunks: numb
+   queue.push({ ok: true, status: 200, chunks, errorBody: '', throwAfterChunks });
+ }
+ 
++/** Queue a successful non-streaming JSON response. */
++export function __mockEnqueueJsonResponse(json: unknown): void {
++  queue.push({ ok: true, status: 200, chunks: [], errorBody: '', json });
++}
++
+ /** Queue a non-2xx response. */
+ export function __mockEnqueueHttpError(status: number, errorBody = ''): void {
+   queue.push({ ok: false, status, chunks: [], errorBody });
+@@ -60,6 +69,7 @@ export async function fetch(url: string, init: RequestInit) {
+     url,
+     headers: (init.headers ?? {}) as Record<string, string>,
+     body: String(init.body ?? ''),
++    rawBody: init.body,
+   });
+ 
+   if (networkError) {
+@@ -82,6 +92,16 @@ export async function fetch(url: string, init: RequestInit) {
+     };
+   }
+ 
++  if (queued.json !== undefined) {
++    return {
++      ok: true,
++      status: queued.status,
++      body: null,
++      text: async () => JSON.stringify(queued.json),
++      json: async () => queued.json,
++    };
++  }
++
+   const encoder = new TextEncoder();
+   let index = 0;
+ 
+diff --git a/mobile/__mocks__/react-native-audio-api.ts b/mobile/__mocks__/react-native-audio-api.ts
+new file mode 100644
+index 0000000..4efa20e
+--- /dev/null
++++ b/mobile/__mocks__/react-native-audio-api.ts
+@@ -0,0 +1,186 @@
++/**
++ * Stands in for `react-native-audio-api` under Jest.
++ *
++ * This library is the microphone and the speaker — executorch supplies neither.
++ * The mock lets a test drive what the mic "heard" (`__mockSetRecordedChunks`)
++ * and assert what reached the speaker (`__mockPlayedBuffers`).
++ */
++
++type PermissionStatus = 'Undetermined' | 'Denied' | 'Granted';
++
++type CallbackOptions = {
++  sampleRate: number;
++  bufferLength: number;
++  channelCount: number;
++};
++
++type AudioReadyEvent = {
++  buffer: {
++    sampleRate: number;
++    getChannelData: (channel: number) => Float32Array;
++  };
++  numFrames: number;
++};
++
++const state = {
++  recordedChunks: [] as Float32Array[],
++  recordedSampleRate: 16000,
++  permission: 'Granted' as PermissionStatus,
++  permissionRequestResult: 'Granted' as PermissionStatus,
++  startError: null as Error | null,
++  played: [] as { samples: Float32Array; sampleRate: number }[],
++  permissionRequests: 0,
++};
++
++export function __mockResetAudioApi(): void {
++  state.recordedChunks = [];
++  state.recordedSampleRate = 16000;
++  state.permission = 'Granted';
++  state.permissionRequestResult = 'Granted';
++  state.startError = null;
++  state.played = [];
++  state.permissionRequests = 0;
++}
++
++/** Audio the microphone will deliver on the next recording. */
++export function __mockSetRecordedChunks(chunks: Float32Array[], sampleRate = 16000): void {
++  state.recordedChunks = chunks;
++  state.recordedSampleRate = sampleRate;
++}
++
++/** The permission state before anything is asked. */
++export function __mockSetPermission(status: PermissionStatus): void {
++  state.permission = status;
++}
++
++/** What the learner chooses when the system prompt appears. */
++export function __mockSetPermissionRequestResult(status: PermissionStatus): void {
++  state.permissionRequestResult = status;
++}
++
++export function __mockFailRecorderStart(error: Error): void {
++  state.startError = error;
++}
++
++export function __mockPlayedBuffers(): { samples: Float32Array; sampleRate: number }[] {
++  return state.played;
++}
++
++export function __mockPermissionRequestCount(): number {
++  return state.permissionRequests;
++}
++
++export class AudioRecorder {
++  private callback: ((event: AudioReadyEvent) => void) | null = null;
++  private recording = false;
++
++  onAudioReady(_options: CallbackOptions, callback: (event: AudioReadyEvent) => void) {
++    this.callback = callback;
++    return { status: 'success' as const };
++  }
++
++  clearOnAudioReady(): void {
++    this.callback = null;
++  }
++
++  async start(): Promise<{ status: 'success' } | { status: 'error' }> {
++    if (state.startError) {
++      throw state.startError;
++    }
++    this.recording = true;
++    for (const chunk of state.recordedChunks) {
++      this.callback?.({
++        buffer: {
++          sampleRate: state.recordedSampleRate,
++          getChannelData: () => chunk,
++        },
++        numFrames: chunk.length,
++      });
++    }
++    return { status: 'success' };
++  }
++
++  async stop(): Promise<{ status: 'success' } | { status: 'error' }> {
++    this.recording = false;
++    return { status: 'success' };
++  }
++
++  isRecording(): boolean {
++    return this.recording;
++  }
++
++  onError(_callback: (error: unknown) => void): void {}
++  clearOnError(): void {}
++}
++
++class MockAudioBuffer {
++  readonly channelData: Float32Array;
++
++  constructor(
++    readonly numberOfChannels: number,
++    readonly length: number,
++    readonly sampleRate: number,
++  ) {
++    this.channelData = new Float32Array(length);
++  }
++
++  getChannelData(): Float32Array {
++    return this.channelData;
++  }
++
++  copyToChannel(source: Float32Array, _channel: number, startInChannel = 0): void {
++    this.channelData.set(source, startInChannel);
++  }
++}
++
++class MockBufferSource {
++  buffer: MockAudioBuffer | null = null;
++  onEnded: (() => void) | null = null;
++
++  connect(_destination: unknown): void {}
++  disconnect(): void {}
++
++  start(): void {
++    if (this.buffer) {
++      state.played.push({
++        samples: this.buffer.getChannelData(),
++        sampleRate: this.buffer.sampleRate,
++      });
++    }
++    this.onEnded?.();
++  }
++
++  stop(): void {}
++}
++
++export class AudioContext {
++  readonly destination = {};
++  readonly sampleRate: number;
++
++  constructor(options?: { sampleRate?: number }) {
++    this.sampleRate = options?.sampleRate ?? 44100;
++  }
++
++  createBuffer(numberOfChannels: number, length: number, sampleRate: number) {
++    return new MockAudioBuffer(numberOfChannels, length, sampleRate);
++  }
++
++  createBufferSource() {
++    return new MockBufferSource();
++  }
++
++  async close(): Promise<void> {}
++}
++
++export const AudioManager = {
++  async checkRecordingPermissions(): Promise<PermissionStatus> {
++    return state.permission;
++  },
++  async requestRecordingPermissions(): Promise<PermissionStatus> {
++    state.permissionRequests += 1;
++    state.permission = state.permissionRequestResult;
++    return state.permission;
++  },
++  setAudioSessionOptions(_options: unknown): void {},
++  async setAudioSessionActivity(_enabled: boolean): Promise<void> {},
++};
+diff --git a/mobile/__mocks__/react-native-executorch-expo-resource-fetcher.ts b/mobile/__mocks__/react-native-executorch-expo-resource-fetcher.ts
+new file mode 100644
+index 0000000..c48d3a7
+--- /dev/null
++++ b/mobile/__mocks__/react-native-executorch-expo-resource-fetcher.ts
+@@ -0,0 +1,109 @@
++/**
++ * Stands in for the executorch Expo resource fetcher under Jest.
++ *
++ * The real fetcher downloads into `RNEDirectory` via a cache-then-move, so a
++ * half-written file never appears in the directory `listDownloadedFiles` reads.
++ * This mock keeps that property: `fetch` only records a file as present once it
++ * resolves, so an interrupted download leaves nothing behind.
++ */
++
++const RNE_DIRECTORY = 'file:///mock-documents/react-native-executorch/';
++
++function filenameFromUri(uri: string): string {
++  let cleanUri = uri.replace(/^https?:\/\//, '');
++  cleanUri = cleanUri.split('#')?.[0] ?? cleanUri;
++  return cleanUri.replace(/[^a-zA-Z0-9._-]/g, '_');
++}
++
++const state = {
++  downloaded: new Set<string>(),
++  sizeByUri: new Map<string, number>(),
++  fetchError: null as Error | null,
++  sizeError: null as Error | null,
++  progressSteps: [0.5, 1] as number[],
++  fetchCallCount: 0,
++};
++
++export function __mockResetResourceFetcher(): void {
++  state.downloaded.clear();
++  state.sizeByUri.clear();
++  state.fetchError = null;
++  state.sizeError = null;
++  state.progressSteps = [0.5, 1];
++  state.fetchCallCount = 0;
++}
++
++/** Marks these source URLs as already present on disk. */
++export function __mockMarkDownloaded(...uris: string[]): void {
++  for (const uri of uris) {
++    state.downloaded.add(filenameFromUri(uri));
++  }
++}
++
++export function __mockSetRemoteSize(uri: string, bytes: number): void {
++  state.sizeByUri.set(uri, bytes);
++}
++
++export function __mockFailFetch(error: Error): void {
++  state.fetchError = error;
++}
++
++export function __mockFailSizeProbe(error: Error): void {
++  state.sizeError = error;
++}
++
++export function __mockFetchCallCount(): number {
++  return state.fetchCallCount;
++}
++
++export const ExpoResourceFetcher = {
++  async listDownloadedFiles(): Promise<string[]> {
++    return [...state.downloaded].map((filename) => `${RNE_DIRECTORY}${filename}`);
++  },
++
++  async getFilesTotalSize(...sources: unknown[]): Promise<number> {
++    if (state.sizeError) {
++      throw state.sizeError;
++    }
++    return sources.reduce<number>(
++      (total, source) =>
++        total + (typeof source === 'string' ? (state.sizeByUri.get(source) ?? 0) : 0),
++      0,
++    );
++  },
++
++  async fetch(
++    callback?: (progress: number) => void,
++    ...sources: unknown[]
++  ): Promise<string[]> {
++    state.fetchCallCount += 1;
++    for (const step of state.progressSteps) {
++      callback?.(step);
++    }
++    if (state.fetchError) {
++      // Interrupted: nothing lands in the directory, mirroring the real
++      // cache-then-move behaviour.
++      throw state.fetchError;
++    }
++    const paths: string[] = [];
++    for (const source of sources) {
++      if (typeof source !== 'string') {
++        continue;
++      }
++      const filename = filenameFromUri(source);
++      state.downloaded.add(filename);
++      paths.push(`${RNE_DIRECTORY}${filename}`);
++    }
++    return paths;
++  },
++
++  async deleteResources(...sources: unknown[]): Promise<void> {
++    for (const source of sources) {
++      if (typeof source === 'string') {
++        state.downloaded.delete(filenameFromUri(source));
++      }
++    }
++  },
++
++  async cancelFetching(..._sources: unknown[]): Promise<void> {},
++};
+diff --git a/mobile/__mocks__/react-native-executorch.ts b/mobile/__mocks__/react-native-executorch.ts
+new file mode 100644
+index 0000000..f23ce98
+--- /dev/null
++++ b/mobile/__mocks__/react-native-executorch.ts
+@@ -0,0 +1,163 @@
++/**
++ * Stands in for the pinned `react-native-executorch` nightly under Jest.
++ *
++ * The real package is a native module: it cannot load in node, and its model
++ * URLs point at multi-hundred-megabyte files. Only the surface `data/ai/voice/`
++ * actually calls is reproduced here — `models`, the two module classes, and the
++ * filename helper the download manager uses to check what is on disk.
++ *
++ * `getFilenameFromUri` mirrors the real implementation exactly, because the
++ * download manager's presence check depends on that derivation matching what
++ * the fetcher wrote.
++ */
++
++type SttModule = {
++  transcribe: (waveform: Float32Array, options?: { language?: string }) => Promise<{ text: string }>;
++  delete: () => void;
++};
++
++type TtsModule = {
++  forward: (input: string) => Promise<Float32Array>;
++  delete: () => void;
++};
++
++const state = {
++  transcription: '',
++  synthesis: new Float32Array(0) as Float32Array<ArrayBufferLike>,
++  sttLoadError: null as Error | null,
++  ttsLoadError: null as Error | null,
++  transcribeError: null as Error | null,
++  synthesizeError: null as Error | null,
++  initCount: 0,
++  sttLoadCount: 0,
++  ttsLoadCount: 0,
++  transcribeCalls: [] as { waveform: Float32Array; language?: string }[],
++  synthesizeCalls: [] as string[],
++};
++
++export function __mockResetExecutorch(): void {
++  state.transcription = '';
++  state.synthesis = new Float32Array(0);
++  state.sttLoadError = null;
++  state.ttsLoadError = null;
++  state.transcribeError = null;
++  state.synthesizeError = null;
++  state.initCount = 0;
++  state.sttLoadCount = 0;
++  state.ttsLoadCount = 0;
++  state.transcribeCalls = [];
++  state.synthesizeCalls = [];
++}
++
++export function __mockSetTranscription(text: string): void {
++  state.transcription = text;
++}
++
++export function __mockSetSynthesis(samples: Float32Array): void {
++  state.synthesis = samples;
++}
++
++export function __mockFailSttLoad(error: Error): void {
++  state.sttLoadError = error;
++}
++
++export function __mockFailTtsLoad(error: Error): void {
++  state.ttsLoadError = error;
++}
++
++export function __mockFailTranscribe(error: Error): void {
++  state.transcribeError = error;
++}
++
++export function __mockFailSynthesize(error: Error): void {
++  state.synthesizeError = error;
++}
++
++export function __mockExecutorchState() {
++  return state;
++}
++
++export function initExecutorch(_config: unknown): void {
++  state.initCount += 1;
++}
++
++export const models = {
++  speech_to_text: {
++    whisper_small: () => ({
++      modelName: 'whisper-small' as const,
++      isMultilingual: true as const,
++      modelSource: 'https://models.test/whisper/whisper_small.pte',
++      tokenizerSource: 'https://models.test/whisper/tokenizer.json',
++    }),
++  },
++  text_to_speech: {
++    supertonic: {
++      f1: () => ({
++        model: {
++          modelName: 'supertonic' as const,
++          unicodeIndexerSource: 'https://models.test/supertonic/indexer.pte',
++          durationPredictorSource: 'https://models.test/supertonic/duration.pte',
++          textEncoderSource: 'https://models.test/supertonic/encoder.pte',
++          vectorEstimatorSource: 'https://models.test/supertonic/vector.pte',
++          vocoderSource: 'https://models.test/supertonic/vocoder.pte',
++        },
++        voiceSource: 'https://models.test/supertonic/voice_f1.bin',
++      }),
++    },
++  },
++};
++
++export const SpeechToTextModule = {
++  async fromModelName(
++    _config: unknown,
++    _vad?: unknown,
++    onDownloadProgress?: (progress: number) => void,
++  ): Promise<SttModule> {
++    state.sttLoadCount += 1;
++    onDownloadProgress?.(1);
++    if (state.sttLoadError) {
++      throw state.sttLoadError;
++    }
++    return {
++      async transcribe(waveform, options) {
++        state.transcribeCalls.push({ waveform, language: options?.language });
++        if (state.transcribeError) {
++          throw state.transcribeError;
++        }
++        return { text: state.transcription };
++      },
++      delete() {},
++    };
++  },
++};
++
++export const TextToSpeechModule = {
++  async fromModelName(
++    _config: unknown,
++    onDownloadProgress?: (progress: number) => void,
++  ): Promise<TtsModule> {
++    state.ttsLoadCount += 1;
++    onDownloadProgress?.(1);
++    if (state.ttsLoadError) {
++      throw state.ttsLoadError;
++    }
++    return {
++      async forward(input) {
++        state.synthesizeCalls.push(input);
++        if (state.synthesizeError) {
++          throw state.synthesizeError;
++        }
++        return state.synthesis;
++      },
++      delete() {},
++    };
++  },
++};
++
++export const ResourceFetcherUtils = {
++  getFilenameFromUri(uri: string): string {
++    let cleanUri = uri.replace(/^https?:\/\//, '');
++    cleanUri = cleanUri.split('#')?.[0] ?? cleanUri;
++    return cleanUri.replace(/[^a-zA-Z0-9._-]/g, '_');
++  },
++};
+diff --git a/mobile/app.json b/mobile/app.json
+index ab9f44f..41689b1 100644
+--- a/mobile/app.json
++++ b/mobile/app.json
+@@ -46,6 +46,15 @@
+       "expo-secure-store",
+       "expo-image",
+       "expo-web-browser",
++      [
++        "react-native-audio-api",
++        {
++          "iosMicrophonePermission": "Lets you speak Japanese during conversation practice. Your voice is transcribed on this device and never uploaded.",
++          "androidPermissions": ["android.permission.RECORD_AUDIO"],
++          "iosBackgroundMode": false,
++          "androidForegroundService": false
++        }
++      ],
+       [
+         "expo-build-properties",
+         {
+diff --git a/mobile/package-lock.json b/mobile/package-lock.json
+index a20185a..d50f09e 100644
+--- a/mobile/package-lock.json
++++ b/mobile/package-lock.json
+@@ -41,6 +41,9 @@
+         "react": "19.2.0",
+         "react-dom": "19.2.0",
+         "react-native": "0.83.6",
++        "react-native-audio-api": "0.13.2",
++        "react-native-executorch": "0.10.0-nightly-a0bf85b-20260721",
++        "react-native-executorch-expo-resource-fetcher": "0.10.0-nightly-0a8fe7e-20260527",
+         "react-native-gesture-handler": "~2.30.0",
+         "react-native-reanimated": "4.2.1",
+         "react-native-safe-area-context": "~5.6.2",
+@@ -2579,6 +2582,15 @@
+         "js-yaml": "bin/js-yaml.js"
+       }
+     },
++    "node_modules/@huggingface/jinja": {
++      "version": "0.5.9",
++      "resolved": "https://registry.npmjs.org/@huggingface/jinja/-/jinja-0.5.9.tgz",
++      "integrity": "sha512-uWTG+l3VJRsl7EXxYizuL3P+cCPoc3cRqbWWRcQN0FhejRfbdq0RNhCmbY/YDtnTcz9icdLYuLDjsnz4d8JMuw==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/@humanfs/core": {
+       "version": "0.19.2",
+       "resolved": "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz",
+@@ -11264,6 +11276,24 @@
+         "node": ">=6"
+       }
+     },
++    "node_modules/jsonrepair": {
++      "version": "3.15.0",
++      "resolved": "https://registry.npmjs.org/jsonrepair/-/jsonrepair-3.15.0.tgz",
++      "integrity": "sha512-wy8OTjwsJwQRnQJkKnMJJ9vcytRdBPAgIF/Hy6+s1dAj42BHMKiyL8JzEieIl3JY7idt8eyHwBWTO8mh/+mtwA==",
++      "license": "ISC",
++      "bin": {
++        "jsonrepair": "bin/cli.js"
++      }
++    },
++    "node_modules/jsonschema": {
++      "version": "1.5.0",
++      "resolved": "https://registry.npmjs.org/jsonschema/-/jsonschema-1.5.0.tgz",
++      "integrity": "sha512-K+A9hhqbn0f3pJX17Q/7H6yQfD/5OXgdrR5UE12gMXCiN9D5Xq2o5mddV2QEcX/bjla99ASsAAQUyMCCRWAEhw==",
++      "license": "MIT",
++      "engines": {
++        "node": "*"
++      }
++    },
+     "node_modules/jsx-ast-utils": {
+       "version": "3.3.5",
+       "resolved": "https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-3.3.5.tgz",
+@@ -13593,6 +13623,28 @@
+         }
+       }
+     },
++    "node_modules/react-native-audio-api": {
++      "version": "0.13.2",
++      "resolved": "https://registry.npmjs.org/react-native-audio-api/-/react-native-audio-api-0.13.2.tgz",
++      "integrity": "sha512-xwJyj43uB2vxqHoSWQgdWL6/XO3Six8Dh1HIikidZiz3njeLuBYGzzFvZ7kg4ruhu0vSJO4ubgJQZcKBMm781w==",
++      "license": "MIT",
++      "dependencies": {
++        "semver": "^7.7.3"
++      },
++      "bin": {
++        "setup-rn-audio-api-web": "scripts/setup-rn-audio-api-web.js"
++      },
++      "peerDependencies": {
++        "react": "*",
++        "react-native": "*",
++        "react-native-worklets": ">= 0.6.0"
++      },
++      "peerDependenciesMeta": {
++        "react-native-worklets": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/react-native-css-interop": {
+       "version": "0.2.4",
+       "resolved": "https://registry.npmjs.org/react-native-css-interop/-/react-native-css-interop-0.2.4.tgz",
+@@ -13864,6 +13916,58 @@
+         "url": "https://opencollective.com/parcel"
+       }
+     },
++    "node_modules/react-native-device-info": {
++      "version": "15.0.2",
++      "resolved": "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-15.0.2.tgz",
++      "integrity": "sha512-dd71eXG2l3Cwp66IvKNadMTB8fhU3PEjyVddI97sYan+D4bgIAUmgGDhbSOFvHcGavksb2U17kiQYaDiK2WK2g==",
++      "license": "MIT",
++      "peerDependencies": {
++        "react-native": "*"
++      }
++    },
++    "node_modules/react-native-executorch": {
++      "version": "0.10.0-nightly-a0bf85b-20260721",
++      "resolved": "https://registry.npmjs.org/react-native-executorch/-/react-native-executorch-0.10.0-nightly-a0bf85b-20260721.tgz",
++      "integrity": "sha512-44Ad1ztEoQnVZWAZPBb+3jjUmvkx4zBZc0CoB1By0PY7+EsTwFzK1Ztz4q0c4wZD+oY5uL6QBPQcyx0Z9h61Qw==",
++      "license": "MIT",
++      "workspaces": [
++        "example"
++      ],
++      "dependencies": {
++        "@huggingface/jinja": "^0.5.0",
++        "jsonrepair": "^3.12.0",
++        "jsonschema": "^1.5.0",
++        "react-native-device-info": "^15.0.2",
++        "zod": "^4.3.6"
++      },
++      "peerDependencies": {
++        "react": "*",
++        "react-native": "*"
++      }
++    },
++    "node_modules/react-native-executorch-expo-resource-fetcher": {
++      "version": "0.10.0-nightly-0a8fe7e-20260527",
++      "resolved": "https://registry.npmjs.org/react-native-executorch-expo-resource-fetcher/-/react-native-executorch-expo-resource-fetcher-0.10.0-nightly-0a8fe7e-20260527.tgz",
++      "integrity": "sha512-oWtfh1KHbQZ0MlqOLrXtli2fPJ9jizV2nFGCEzusJA0H5nbCPcVmSS6BM8L889tTwZjJMfOVMjj9JTcp5Uidig==",
++      "deprecated": "Nightly builds are no longer published; use the latest stable release.",
++      "license": "MIT",
++      "peerDependencies": {
++        "expo": ">=54.0.0",
++        "expo-asset": ">=12.0.0",
++        "expo-file-system": ">=19.0.0",
++        "react-native": "*",
++        "react-native-executorch": "*"
++      }
++    },
++    "node_modules/react-native-executorch/node_modules/zod": {
++      "version": "4.4.3",
++      "resolved": "https://registry.npmjs.org/zod/-/zod-4.4.3.tgz",
++      "integrity": "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==",
++      "license": "MIT",
++      "funding": {
++        "url": "https://github.com/sponsors/colinhacks"
++      }
++    },
+     "node_modules/react-native-gesture-handler": {
+       "version": "2.30.1",
+       "resolved": "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.30.1.tgz",
+diff --git a/mobile/package.json b/mobile/package.json
+index c8aeb00..5a5ea54 100644
+--- a/mobile/package.json
++++ b/mobile/package.json
+@@ -46,6 +46,9 @@
+     "react": "19.2.0",
+     "react-dom": "19.2.0",
+     "react-native": "0.83.6",
++    "react-native-audio-api": "0.13.2",
++    "react-native-executorch": "0.10.0-nightly-a0bf85b-20260721",
++    "react-native-executorch-expo-resource-fetcher": "0.10.0-nightly-0a8fe7e-20260527",
+     "react-native-gesture-handler": "~2.30.0",
+     "react-native-reanimated": "4.2.1",
+     "react-native-safe-area-context": "~5.6.2",
+@@ -94,7 +97,10 @@
+       "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
+       "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx",
+       "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts",
+-      "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx"
++      "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx",
++      "^react-native-executorch$": "<rootDir>/__mocks__/react-native-executorch.ts",
++      "^react-native-executorch-expo-resource-fetcher$": "<rootDir>/__mocks__/react-native-executorch-expo-resource-fetcher.ts",
++      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts"
+     }
+   }
+ }
+diff --git a/mobile/src/data/ai/voice/audioSession.test.ts b/mobile/src/data/ai/voice/audioSession.test.ts
+new file mode 100644
+index 0000000..0d4890f
+--- /dev/null
++++ b/mobile/src/data/ai/voice/audioSession.test.ts
+@@ -0,0 +1,156 @@
++import {
++  __mockFailRecorderStart,
++  __mockPermissionRequestCount,
++  __mockPlayedBuffers,
++  __mockResetAudioApi,
++  __mockSetPermission,
++  __mockSetPermissionRequestResult,
++  __mockSetRecordedChunks,
++} from '../../../../__mocks__/react-native-audio-api';
++
++import {
++  ensureMicrophonePermission,
++  playWaveform,
++  resampleTo16kHz,
++  startRecording,
++  stopRecording,
++} from '@/data/ai/voice/audioSession';
++import { TTS_SAMPLE_RATE } from '@/data/ai/voice/voiceModels';
++
++describe('audioSession', () => {
++  beforeEach(() => {
++    __mockResetAudioApi();
++  });
++
++  describe('resampleTo16kHz', () => {
++    it('returns the input untouched when it is already 16 kHz', () => {
++      const samples = new Float32Array([0.1, 0.2, 0.3]);
++
++      expect(resampleTo16kHz(samples, 16000)).toBe(samples);
++    });
++
++    it('halves the sample count when downsampling from 32 kHz', () => {
++      const samples = new Float32Array([0, 0.25, 0.5, 0.75, 1, 0.75, 0.5, 0.25]);
++
++      const resampled = resampleTo16kHz(samples, 32000);
++
++      expect(resampled).toHaveLength(4);
++      expect(resampled[0]).toBeCloseTo(0);
++      expect(resampled[1]).toBeCloseTo(0.5);
++    });
++
++    it('preserves duration when downsampling from 48 kHz', () => {
++      const samples = new Float32Array(48000);
++
++      expect(resampleTo16kHz(samples, 48000)).toHaveLength(16000);
++    });
++
++    it('returns an empty array for empty input', () => {
++      expect(resampleTo16kHz(new Float32Array(0), 44100)).toHaveLength(0);
++    });
++  });
++
++  describe('ensureMicrophonePermission', () => {
++    it('succeeds when the learner grants access', async () => {
++      __mockSetPermission('Undetermined');
++
++      const result = await ensureMicrophonePermission();
++
++      expect(result.ok).toBe(true);
++      expect(__mockPermissionRequestCount()).toBe(1);
++    });
++
++    it('reports a denial rather than recording silently', async () => {
++      __mockSetPermission('Undetermined');
++      __mockSetPermissionRequestResult('Denied');
++
++      const result = await ensureMicrophonePermission();
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_microphone_denied');
++      }
++    });
++
++    it('does not re-prompt when permission is already granted', async () => {
++      __mockSetPermission('Granted');
++
++      await ensureMicrophonePermission();
++
++      expect(__mockPermissionRequestCount()).toBe(0);
++    });
++  });
++
++  describe('recording', () => {
++    it('returns the captured audio as a single 16 kHz waveform', async () => {
++      __mockSetRecordedChunks([new Float32Array([0.1, 0.2]), new Float32Array([0.3])], 16000);
++
++      await startRecording();
++      const result = await stopRecording();
++
++      expect(result.ok).toBe(true);
++      if (result.ok) {
++        expect(Array.from(result.value)).toEqual([
++          expect.closeTo(0.1),
++          expect.closeTo(0.2),
++          expect.closeTo(0.3),
++        ]);
++      }
++    });
++
++    it('resamples hardware that ignores the requested rate', async () => {
++      __mockSetRecordedChunks([new Float32Array(48000)], 48000);
++
++      await startRecording();
++      const result = await stopRecording();
++
++      expect(result.ok).toBe(true);
++      if (result.ok) {
++        expect(result.value).toHaveLength(16000);
++      }
++    });
++
++    it('surfaces a recorder failure instead of returning silence', async () => {
++      __mockFailRecorderStart(new Error('mic busy'));
++
++      const result = await startRecording();
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_recording_failed');
++      }
++    });
++
++    it('reports an error when stopping without having recorded anything', async () => {
++      const result = await stopRecording();
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_recording_empty');
++      }
++    });
++  });
++
++  describe('playWaveform', () => {
++    it('sends the synthesized samples to the speaker at the TTS sample rate', async () => {
++      const samples = new Float32Array([0.5, -0.5, 0.25]);
++
++      const result = await playWaveform(samples);
++
++      expect(result.ok).toBe(true);
++      const played = __mockPlayedBuffers();
++      expect(played).toHaveLength(1);
++      expect(played[0].sampleRate).toBe(TTS_SAMPLE_RATE);
++      expect(Array.from(played[0].samples)).toEqual([0.5, -0.5, 0.25]);
++    });
++
++    it('reports an error for an empty waveform rather than pretending it played', async () => {
++      const result = await playWaveform(new Float32Array(0));
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_playback_empty');
++      }
++    });
++  });
++});
+diff --git a/mobile/src/data/ai/voice/audioSession.ts b/mobile/src/data/ai/voice/audioSession.ts
+new file mode 100644
+index 0000000..f27d7ba
+--- /dev/null
++++ b/mobile/src/data/ai/voice/audioSession.ts
+@@ -0,0 +1,202 @@
++import { AudioContext, AudioManager, AudioRecorder } from 'react-native-audio-api';
++
++import { STT_SAMPLE_RATE, TTS_SAMPLE_RATE } from '@/data/ai/voice/voiceModels';
++import type { Result } from '@/types/result.types';
++
++/**
++ * The microphone and the speaker.
++ *
++ * Executorch deals only in sample arrays — it neither records nor plays. This
++ * module is the pipe on both ends: it captures what Whisper transcribes, and it
++ * plays what Supertonic synthesizes. It adds no voice and no processing of its
++ * own beyond rate conversion.
++ */
++
++/** Buffer size the recorder callback aims for — ~64 ms at 16 kHz. */
++const RECORD_BUFFER_LENGTH = 1024;
++
++let recorder: AudioRecorder | null = null;
++let capturedChunks: Float32Array[] = [];
++let capturedSampleRate = STT_SAMPLE_RATE;
++let playbackContext: AudioContext | null = null;
++
++/**
++ * Linear resample to Whisper's 16 kHz.
++ *
++ * The recorder documents that hardware may ignore the requested rate, and
++ * Whisper silently misreads audio at the wrong rate rather than rejecting it —
++ * so the delivered rate is always honoured rather than assumed.
++ */
++export function resampleTo16kHz(samples: Float32Array, sourceSampleRate: number): Float32Array {
++  if (sourceSampleRate === STT_SAMPLE_RATE || samples.length === 0) {
++    return samples;
++  }
++
++  const ratio = sourceSampleRate / STT_SAMPLE_RATE;
++  const targetLength = Math.floor(samples.length / ratio);
++  const resampled = new Float32Array(targetLength);
++
++  for (let index = 0; index < targetLength; index += 1) {
++    const position = index * ratio;
++    const lower = Math.floor(position);
++    const upper = Math.min(lower + 1, samples.length - 1);
++    const weight = position - lower;
++    resampled[index] = samples[lower] * (1 - weight) + samples[upper] * weight;
++  }
++
++  return resampled;
++}
++
++export async function ensureMicrophonePermission(): Promise<Result<void>> {
++  try {
++    let status = await AudioManager.checkRecordingPermissions();
++    if (status !== 'Granted') {
++      status = await AudioManager.requestRecordingPermissions();
++    }
++    if (status !== 'Granted') {
++      return {
++        ok: false,
++        error: {
++          code: 'voice_microphone_denied',
++          message: `Microphone permission ${status}`,
++          userMessage:
++            'Speaking practice needs microphone access. You can grant it in your device settings.',
++        },
++      };
++    }
++    return { ok: true, value: undefined };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_microphone_unavailable',
++        message: String(cause),
++        userMessage: 'Could not access the microphone.',
++        cause,
++      },
++    };
++  }
++}
++
++export async function startRecording(): Promise<Result<void>> {
++  capturedChunks = [];
++  capturedSampleRate = STT_SAMPLE_RATE;
++
++  try {
++    recorder ??= new AudioRecorder();
++    recorder.onAudioReady(
++      { sampleRate: STT_SAMPLE_RATE, bufferLength: RECORD_BUFFER_LENGTH, channelCount: 1 },
++      (event) => {
++        capturedSampleRate = event.buffer.sampleRate;
++        capturedChunks.push(Float32Array.from(event.buffer.getChannelData(0)));
++      },
++    );
++    await recorder.start();
++    return { ok: true, value: undefined };
++  } catch (cause) {
++    recorder?.clearOnAudioReady();
++    return {
++      ok: false,
++      error: {
++        code: 'voice_recording_failed',
++        message: String(cause),
++        userMessage: 'Could not start recording.',
++        cause,
++      },
++    };
++  }
++}
++
++/** Stops recording and returns everything captured as one 16 kHz mono waveform. */
++export async function stopRecording(): Promise<Result<Float32Array>> {
++  try {
++    await recorder?.stop();
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_recording_failed',
++        message: String(cause),
++        userMessage: 'Could not finish the recording.',
++        cause,
++      },
++    };
++  } finally {
++    recorder?.clearOnAudioReady();
++  }
++
++  const chunks = capturedChunks;
++  const sampleRate = capturedSampleRate;
++  capturedChunks = [];
++
++  const totalLength = chunks.reduce((total, chunk) => total + chunk.length, 0);
++  if (totalLength === 0) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_recording_empty',
++        message: 'No audio captured',
++        userMessage: "That didn't record any audio. Hold the button while you speak.",
++      },
++    };
++  }
++
++  const combined = new Float32Array(totalLength);
++  let offset = 0;
++  for (const chunk of chunks) {
++    combined.set(chunk, offset);
++    offset += chunk.length;
++  }
++
++  return { ok: true, value: resampleTo16kHz(combined, sampleRate) };
++}
++
++export async function playWaveform(
++  samples: Float32Array,
++  sampleRate: number = TTS_SAMPLE_RATE,
++): Promise<Result<void>> {
++  if (samples.length === 0) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_playback_empty',
++        message: 'Nothing to play',
++        userMessage: 'There was no audio to play.',
++      },
++    };
++  }
++
++  try {
++    playbackContext ??= new AudioContext({ sampleRate });
++    const buffer = playbackContext.createBuffer(1, samples.length, sampleRate);
++    // `copyToChannel` is the sanctioned write path — `getChannelData` crosses
++    // the JSI boundary and is not guaranteed to hand back the live array.
++    const channel = new Float32Array(samples.length);
++    channel.set(samples);
++    buffer.copyToChannel(channel, 0);
++    const source = playbackContext.createBufferSource();
++    source.buffer = buffer;
++    source.connect(playbackContext.destination);
++    source.start();
++    return { ok: true, value: undefined };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_playback_failed',
++        message: String(cause),
++        userMessage: 'Could not play the reply aloud.',
++        cause,
++      },
++    };
++  }
++}
++
++/** Tears down the shared recorder and audio context when conversation mode closes. */
++export function releaseAudioSession(): void {
++  recorder?.clearOnAudioReady();
++  recorder = null;
++  capturedChunks = [];
++  void playbackContext?.close().catch(() => {});
++  playbackContext = null;
++}
+diff --git a/mobile/src/data/ai/voice/cloudSttClient.test.ts b/mobile/src/data/ai/voice/cloudSttClient.test.ts
+new file mode 100644
+index 0000000..51c0c17
+--- /dev/null
++++ b/mobile/src/data/ai/voice/cloudSttClient.test.ts
+@@ -0,0 +1,95 @@
++import {
++  __mockEnqueueHttpError,
++  __mockEnqueueJsonResponse,
++  __mockGetFetchCalls,
++  __mockResetFetch,
++  __mockSetNetworkError,
++} from '../../../../__mocks__/expo-fetch';
++
++import { transcribeJapaneseViaCloud } from '@/data/ai/voice/cloudSttClient';
++
++const options = { apiKey: 'sk-test', baseUrl: 'https://api.openai.com/v1' };
++
++describe('transcribeJapaneseViaCloud', () => {
++  beforeEach(() => {
++    __mockResetFetch();
++  });
++
++  it('posts the audio to the transcription endpoint with the learner key', async () => {
++    __mockEnqueueJsonResponse({ text: 'こんにちは' });
++
++    const result = await transcribeJapaneseViaCloud(new Float32Array([0.1, 0.2]), options);
++
++    expect(result).toEqual({ ok: true, value: 'こんにちは' });
++    const [call] = __mockGetFetchCalls();
++    expect(call.url).toBe('https://api.openai.com/v1/audio/transcriptions');
++    expect(call.headers.Authorization).toBe('Bearer sk-test');
++  });
++
++  it('asks for Japanese explicitly', async () => {
++    __mockEnqueueJsonResponse({ text: 'はい' });
++
++    await transcribeJapaneseViaCloud(new Float32Array([0.1]), options);
++
++    const form = __mockGetFetchCalls()[0].rawBody as FormData;
++    expect(form.get('language')).toBe('ja');
++    expect(form.get('model')).toBe('whisper-1');
++  });
++
++  it('tolerates a base URL with a trailing slash', async () => {
++    __mockEnqueueJsonResponse({ text: 'はい' });
++
++    await transcribeJapaneseViaCloud(new Float32Array([0.1]), {
++      ...options,
++      baseUrl: 'https://api.openai.com/v1/',
++    });
++
++    expect(__mockGetFetchCalls()[0].url).toBe('https://api.openai.com/v1/audio/transcriptions');
++  });
++
++  it('refuses to send audio over plain http (NFR24)', async () => {
++    const result = await transcribeJapaneseViaCloud(new Float32Array([0.1]), {
++      ...options,
++      baseUrl: 'http://example.com/v1',
++    });
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_insecure_url');
++    }
++    expect(__mockGetFetchCalls()).toHaveLength(0);
++  });
++
++  it('reports a rejected request', async () => {
++    __mockEnqueueHttpError(401, 'bad key');
++
++    const result = await transcribeJapaneseViaCloud(new Float32Array([0.1]), options);
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_rejected');
++    }
++  });
++
++  it('reports an unreachable service', async () => {
++    __mockSetNetworkError(new Error('offline'));
++
++    const result = await transcribeJapaneseViaCloud(new Float32Array([0.1]), options);
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_unreachable');
++    }
++  });
++
++  it('treats an empty transcript as nothing heard', async () => {
++    __mockEnqueueJsonResponse({ text: '  ' });
++
++    const result = await transcribeJapaneseViaCloud(new Float32Array([0.1]), options);
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_empty');
++    }
++  });
++});
+diff --git a/mobile/src/data/ai/voice/cloudSttClient.ts b/mobile/src/data/ai/voice/cloudSttClient.ts
+new file mode 100644
+index 0000000..20a1254
+--- /dev/null
++++ b/mobile/src/data/ai/voice/cloudSttClient.ts
+@@ -0,0 +1,106 @@
++import { fetch } from 'expo/fetch';
++
++import { isAllowedByokRequestUrl } from '@/data/ai/byokCredential.types';
++import { encodeWav16BitPcm } from '@/data/ai/voice/wav';
++import { STT_SAMPLE_RATE } from '@/data/ai/voice/voiceModels';
++import type { Result } from '@/types/result.types';
++
++/**
++ * Cloud transcription through the learner's own OpenAI-compatible key (FR99).
++ *
++ * Reached only when the Settings toggle is on — never as a fallback for the
++ * on-device model. Of the two BYOK adapters only this one has an audio
++ * transcription endpoint at all; Anthropic has none, which is why there is no
++ * adapter abstraction here.
++ */
++
++/** The transcription model id OpenAI-compatible endpoints universally expose. */
++export const DEFAULT_CLOUD_STT_MODEL = 'whisper-1';
++
++type CloudSttOptions = {
++  apiKey: string;
++  baseUrl: string;
++  model?: string;
++};
++
++export async function transcribeJapaneseViaCloud(
++  waveform: Float32Array,
++  { apiKey, baseUrl, model = DEFAULT_CLOUD_STT_MODEL }: CloudSttOptions,
++): Promise<Result<string>> {
++  const url = `${baseUrl.replace(/\/+$/, '')}/audio/transcriptions`;
++  // The learner's key and their voice both leave the device here, so the same
++  // HTTPS rule the chat client enforces applies (NFR24).
++  if (!isAllowedByokRequestUrl(url)) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_cloud_stt_insecure_url',
++        message: `Refusing to send audio to ${url}`,
++        userMessage: 'Cloud transcription needs an HTTPS endpoint.',
++      },
++    };
++  }
++
++  const form = new FormData();
++  form.append('file', new Blob([encodeWav16BitPcm(waveform, STT_SAMPLE_RATE)], {
++    type: 'audio/wav',
++  }), 'speech.wav');
++  form.append('model', model);
++  form.append('language', 'ja');
++
++  let response: Awaited<ReturnType<typeof fetch>>;
++  try {
++    response = await fetch(url, {
++      method: 'POST',
++      headers: { Authorization: `Bearer ${apiKey}` },
++      body: form,
++    });
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_cloud_stt_unreachable',
++        message: String(cause),
++        userMessage: 'Could not reach the transcription service.',
++        cause,
++      },
++    };
++  }
++
++  if (!response.ok) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_cloud_stt_rejected',
++        message: `Transcription request failed with ${response.status}`,
++        userMessage: 'The transcription service rejected that request.',
++      },
++    };
++  }
++
++  try {
++    const payload = (await response.json()) as { text?: unknown };
++    const text = typeof payload.text === 'string' ? payload.text.trim() : '';
++    if (text.length === 0) {
++      return {
++        ok: false,
++        error: {
++          code: 'voice_cloud_stt_empty',
++          message: 'Transcription returned no text',
++          userMessage: "That didn't catch any speech. Try again.",
++        },
++      };
++    }
++    return { ok: true, value: text };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_cloud_stt_unreadable',
++        message: String(cause),
++        userMessage: 'The transcription service sent something unreadable.',
++        cause,
++      },
++    };
++  }
++}
+diff --git a/mobile/src/data/ai/voice/executorchRuntime.ts b/mobile/src/data/ai/voice/executorchRuntime.ts
+new file mode 100644
+index 0000000..272706d
+--- /dev/null
++++ b/mobile/src/data/ai/voice/executorchRuntime.ts
+@@ -0,0 +1,20 @@
++import { initExecutorch } from 'react-native-executorch';
++import { ExpoResourceFetcher } from 'react-native-executorch-expo-resource-fetcher';
++
++let initialised = false;
++
++/**
++ * Registers the Expo resource fetcher executorch downloads through.
++ *
++ * Deliberately lazy rather than called from app init: voice is opt-in and its
++ * models are ~1 GB, so nothing about it may sit on the cold-start path (NFR3,
++ * NFR25). Importing this module does nothing; the first explicit voice action
++ * pays the cost.
++ */
++export function ensureExecutorchInitialised(): void {
++  if (initialised) {
++    return;
++  }
++  initExecutorch({ resourceFetcher: ExpoResourceFetcher });
++  initialised = true;
++}
+diff --git a/mobile/src/data/ai/voice/modelDownloadManager.test.ts b/mobile/src/data/ai/voice/modelDownloadManager.test.ts
+new file mode 100644
+index 0000000..959ff4d
+--- /dev/null
++++ b/mobile/src/data/ai/voice/modelDownloadManager.test.ts
+@@ -0,0 +1,98 @@
++import {
++  __mockFailFetch,
++  __mockFailSizeProbe,
++  __mockFetchCallCount,
++  __mockMarkDownloaded,
++  __mockResetResourceFetcher,
++  __mockSetRemoteSize,
++} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
++
++import {
++  areVoiceModelsDownloaded,
++  downloadVoiceModels,
++  getVoiceModelDownloadBytes,
++} from '@/data/ai/voice/modelDownloadManager';
++import { voiceModelSources } from '@/data/ai/voice/voiceModels';
++
++describe('modelDownloadManager', () => {
++  beforeEach(() => {
++    __mockResetResourceFetcher();
++  });
++
++  describe('areVoiceModelsDownloaded', () => {
++    it('reports false when no model file is on disk', async () => {
++      const result = await areVoiceModelsDownloaded();
++
++      expect(result).toEqual({ ok: true, value: false });
++    });
++
++    it('reports false when only some model files are present', async () => {
++      const sources = voiceModelSources();
++      __mockMarkDownloaded(...(sources.slice(0, 2) as string[]));
++
++      const result = await areVoiceModelsDownloaded();
++
++      expect(result).toEqual({ ok: true, value: false });
++    });
++
++    it('reports true only once every model file is present', async () => {
++      __mockMarkDownloaded(...(voiceModelSources() as string[]));
++
++      const result = await areVoiceModelsDownloaded();
++
++      expect(result).toEqual({ ok: true, value: true });
++    });
++  });
++
++  describe('getVoiceModelDownloadBytes', () => {
++    it('sums the real remote sizes of every model file', async () => {
++      const sources = voiceModelSources() as string[];
++      for (const source of sources) {
++        __mockSetRemoteSize(source, 1_000_000);
++      }
++
++      const result = await getVoiceModelDownloadBytes();
++
++      expect(result).toEqual({ ok: true, value: sources.length * 1_000_000 });
++    });
++
++    it('returns an error rather than a guessed size when the probe fails', async () => {
++      __mockFailSizeProbe(new Error('offline'));
++
++      const result = await getVoiceModelDownloadBytes();
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_model_size_unavailable');
++      }
++    });
++  });
++
++  describe('downloadVoiceModels', () => {
++    it('downloads every model source and reports progress', async () => {
++      const progress: number[] = [];
++
++      const result = await downloadVoiceModels((value) => progress.push(value));
++
++      expect(result.ok).toBe(true);
++      expect(progress).toEqual([0.5, 1]);
++      await expect(areVoiceModelsDownloaded()).resolves.toEqual({ ok: true, value: true });
++    });
++
++    it('leaves nothing behind that a presence check would mistake for a complete download', async () => {
++      __mockFailFetch(new Error('connection lost'));
++
++      const result = await downloadVoiceModels();
++
++      expect(result.ok).toBe(false);
++      if (!result.ok) {
++        expect(result.error.code).toBe('voice_model_download_failed');
++      }
++      await expect(areVoiceModelsDownloaded()).resolves.toEqual({ ok: true, value: false });
++    });
++
++    it('does not start a download merely by importing the module', () => {
++      expect(__mockFetchCallCount()).toBe(0);
++    });
++  });
++});
+diff --git a/mobile/src/data/ai/voice/modelDownloadManager.ts b/mobile/src/data/ai/voice/modelDownloadManager.ts
+new file mode 100644
+index 0000000..472e3f2
+--- /dev/null
++++ b/mobile/src/data/ai/voice/modelDownloadManager.ts
+@@ -0,0 +1,99 @@
++import { ResourceFetcherUtils } from 'react-native-executorch';
++import { ExpoResourceFetcher } from 'react-native-executorch-expo-resource-fetcher';
++
++import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
++import { voiceModelSources } from '@/data/ai/voice/voiceModels';
++import type { AppError, Result } from '@/types/result.types';
++
++/**
++ * Explicit, learner-initiated download of the voice models (AC5, NFR25, UX-DR23).
++ *
++ * Nothing here runs unless the learner taps the mic and confirms — no cold-start
++ * work, no background fetch, no "warm the cache" call.
++ *
++ * Presence is a filesystem fact, checked every time. The fetcher downloads into
++ * the cache directory and only moves the file into its model directory once the
++ * transfer completes, so a listing of that directory cannot show a half-written
++ * file. That is why there is no "download succeeded" flag anywhere — a flag can
++ * drift from the disk, and a stale one pointing at a missing model is exactly
++ * the silent failure this feature must not have.
++ */
++
++function fileNameOf(source: unknown): string | null {
++  return typeof source === 'string' ? ResourceFetcherUtils.getFilenameFromUri(source) : null;
++}
++
++function toError(code: string, userMessage: string, cause: unknown): AppError {
++  return { code, message: String(cause), userMessage, cause };
++}
++
++export async function areVoiceModelsDownloaded(): Promise<Result<boolean>> {
++  ensureExecutorchInitialised();
++  try {
++    const present = new Set(
++      (await ExpoResourceFetcher.listDownloadedFiles()).map((path) =>
++        path.slice(path.lastIndexOf('/') + 1),
++      ),
++    );
++    const required = voiceModelSources().map(fileNameOf);
++    return {
++      ok: true,
++      value: required.every((name) => name !== null && present.has(name)),
++    };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: toError(
++        'voice_model_check_failed',
++        'Could not check whether the voice models are downloaded.',
++        cause,
++      ),
++    };
++  }
++}
++
++/**
++ * The real combined size of the model files, read from the server.
++ *
++ * A failure is returned rather than substituted with an estimate: the download
++ * prompt has to disclose a true size, and a device that cannot reach the model
++ * host cannot download them anyway.
++ */
++export async function getVoiceModelDownloadBytes(): Promise<Result<number>> {
++  ensureExecutorchInitialised();
++  try {
++    const bytes = await ExpoResourceFetcher.getFilesTotalSize(...voiceModelSources());
++    return { ok: true, value: bytes };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: toError(
++        'voice_model_size_unavailable',
++        'Could not reach the voice model download. Check your connection and try again.',
++        cause,
++      ),
++    };
++  }
++}
++
++export async function downloadVoiceModels(
++  onProgress?: (progress: number) => void,
++): Promise<Result<void>> {
++  ensureExecutorchInitialised();
++  try {
++    await ExpoResourceFetcher.fetch(
++      (progress) => onProgress?.(progress),
++      ...voiceModelSources(),
++    );
++    return { ok: true, value: undefined };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: toError(
++        'voice_model_download_failed',
++        'The voice model download did not finish. You can try again.',
++        cause,
++      ),
++    };
++  }
++}
+diff --git a/mobile/src/data/ai/voice/sttClient.test.ts b/mobile/src/data/ai/voice/sttClient.test.ts
+new file mode 100644
+index 0000000..ff65b11
+--- /dev/null
++++ b/mobile/src/data/ai/voice/sttClient.test.ts
+@@ -0,0 +1,88 @@
++import {
++  __mockExecutorchState,
++  __mockFailSttLoad,
++  __mockFailTranscribe,
++  __mockResetExecutorch,
++  __mockSetTranscription,
++} from '../../../../__mocks__/react-native-executorch';
++
++import { releaseSttModel, transcribeJapanese } from '@/data/ai/voice/sttClient';
++
++describe('sttClient', () => {
++  beforeEach(() => {
++    __mockResetExecutorch();
++    releaseSttModel();
++  });
++
++  it('transcribes a waveform as Japanese', async () => {
++    __mockSetTranscription('こんにちは');
++
++    const result = await transcribeJapanese(new Float32Array([0.1, 0.2]));
++
++    expect(result).toEqual({ ok: true, value: 'こんにちは' });
++    expect(__mockExecutorchState().transcribeCalls[0].language).toBe('ja');
++  });
++
++  it('initialises the executorch runtime before the first transcription', async () => {
++    // A fresh module registry: runtime setup is intentionally once-per-process,
++    // so this only means anything before anything else has touched it.
++    await jest.isolateModulesAsync(async () => {
++      // eslint-disable-next-line @typescript-eslint/no-require-imports -- isolateModules needs a runtime require to hit the fresh registry
++      const executorch = require('react-native-executorch');
++      // eslint-disable-next-line @typescript-eslint/no-require-imports -- same: a static import would bind the outer registry's module
++      const { transcribeJapanese: freshTranscribe } = require('@/data/ai/voice/sttClient');
++
++      await freshTranscribe(new Float32Array([0.1]));
++
++      expect(executorch.__mockExecutorchState().initCount).toBe(1);
++    });
++  });
++
++  it('loads the model once and reuses it across transcriptions', async () => {
++    await transcribeJapanese(new Float32Array([0.1]));
++    await transcribeJapanese(new Float32Array([0.2]));
++
++    expect(__mockExecutorchState().sttLoadCount).toBe(1);
++  });
++
++  it('reports a load failure instead of returning empty text', async () => {
++    __mockFailSttLoad(new Error('model missing'));
++
++    const result = await transcribeJapanese(new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_stt_load_failed');
++    }
++  });
++
++  it('reports a transcription failure rather than a blank transcript', async () => {
++    __mockFailTranscribe(new Error('decode error'));
++
++    const result = await transcribeJapanese(new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_stt_failed');
++    }
++  });
++
++  it('treats a whitespace-only transcript as nothing heard', async () => {
++    __mockSetTranscription('   ');
++
++    const result = await transcribeJapanese(new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_stt_empty');
++    }
++  });
++
++  it('reloads the model after it is released', async () => {
++    await transcribeJapanese(new Float32Array([0.1]));
++    releaseSttModel();
++    await transcribeJapanese(new Float32Array([0.2]));
++
++    expect(__mockExecutorchState().sttLoadCount).toBe(2);
++  });
++});
+diff --git a/mobile/src/data/ai/voice/sttClient.ts b/mobile/src/data/ai/voice/sttClient.ts
+new file mode 100644
+index 0000000..da9f32f
+--- /dev/null
++++ b/mobile/src/data/ai/voice/sttClient.ts
+@@ -0,0 +1,76 @@
++import { SpeechToTextModule } from 'react-native-executorch';
++
++import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
++import { JAPANESE_STT_MODEL } from '@/data/ai/voice/voiceModels';
++import type { Result } from '@/types/result.types';
++
++/**
++ * On-device Japanese transcription (FR99).
++ *
++ * Every failure is returned, never swallowed: nothing here ever reaches for a
++ * cloud endpoint. Cloud STT is a separate, Settings-gated path (UX-DR33), so a
++ * model that will not load or a transcription that comes back empty is an error
++ * the learner sees, not a quiet handover to the network.
++ */
++
++type LoadedModule = Awaited<ReturnType<typeof SpeechToTextModule.fromModelName>>;
++
++let modulePromise: Promise<LoadedModule> | null = null;
++
++function loadModule(): Promise<LoadedModule> {
++  ensureExecutorchInitialised();
++  modulePromise ??= SpeechToTextModule.fromModelName(JAPANESE_STT_MODEL);
++  return modulePromise;
++}
++
++/** Frees the loaded model. Called when conversation mode closes. */
++export function releaseSttModel(): void {
++  const pending = modulePromise;
++  modulePromise = null;
++  void pending?.then((module) => module.delete()).catch(() => {});
++}
++
++export async function transcribeJapanese(waveform: Float32Array): Promise<Result<string>> {
++  let module: LoadedModule;
++  try {
++    module = await loadModule();
++  } catch (cause) {
++    // A failed load must not poison every later attempt.
++    modulePromise = null;
++    return {
++      ok: false,
++      error: {
++        code: 'voice_stt_load_failed',
++        message: String(cause),
++        userMessage: 'The speech model could not be loaded.',
++        cause,
++      },
++    };
++  }
++
++  try {
++    const result = await module.transcribe(waveform, { language: 'ja' });
++    const text = result.text.trim();
++    if (text.length === 0) {
++      return {
++        ok: false,
++        error: {
++          code: 'voice_stt_empty',
++          message: 'Transcription produced no text',
++          userMessage: "That didn't catch any speech. Try holding the button and speaking again.",
++        },
++      };
++    }
++    return { ok: true, value: text };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_stt_failed',
++        message: String(cause),
++        userMessage: 'Could not transcribe that recording.',
++        cause,
++      },
++    };
++  }
++}
+diff --git a/mobile/src/data/ai/voice/transcription.test.ts b/mobile/src/data/ai/voice/transcription.test.ts
+new file mode 100644
+index 0000000..cd29ec4
+--- /dev/null
++++ b/mobile/src/data/ai/voice/transcription.test.ts
+@@ -0,0 +1,98 @@
++import {
++  __mockEnqueueJsonResponse,
++  __mockGetFetchCalls,
++  __mockResetFetch,
++} from '../../../../__mocks__/expo-fetch';
++import {
++  __mockFailTranscribe,
++  __mockResetExecutorch,
++  __mockSetTranscription,
++} from '../../../../__mocks__/react-native-executorch';
++
++import { transcribeTurn } from '@/data/ai/voice/transcription';
++
++let mockCloudOptIn = false;
++jest.mock('@/data/user/preferencesRepository', () => ({
++  getCloudSttOptIn: () => mockCloudOptIn,
++}));
++
++let mockConfig: {
++  ok: boolean;
++  value?: { provider: string; apiKey: string; baseUrl?: string } | null;
++} = { ok: true, value: null };
++jest.mock('@/data/ai/aiConfig', () => ({
++  resolveAiConfig: () => Promise.resolve(mockConfig),
++}));
++
++const userDb = {} as never;
++
++describe('transcribeTurn', () => {
++  beforeEach(() => {
++    __mockResetFetch();
++    __mockResetExecutorch();
++    mockCloudOptIn = false;
++    mockConfig = { ok: true, value: null };
++  });
++
++  it('uses the on-device model by default', async () => {
++    __mockSetTranscription('こんにちは');
++
++    const result = await transcribeTurn(userDb, new Float32Array([0.1]));
++
++    expect(result).toEqual({ ok: true, value: 'こんにちは' });
++    expect(__mockGetFetchCalls()).toHaveLength(0);
++  });
++
++  it('never reaches for the cloud when on-device transcription fails (AC6)', async () => {
++    __mockFailTranscribe(new Error('decode error'));
++
++    const result = await transcribeTurn(userDb, new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    expect(__mockGetFetchCalls()).toHaveLength(0);
++  });
++
++  it('uses the cloud only once the learner opts in', async () => {
++    mockCloudOptIn = true;
++    mockConfig = {
++      ok: true,
++      value: { provider: 'openai', apiKey: 'sk-test', baseUrl: 'https://api.openai.com/v1' },
++    };
++    __mockEnqueueJsonResponse({ text: 'クラウド' });
++
++    const result = await transcribeTurn(userDb, new Float32Array([0.1]));
++
++    expect(result).toEqual({ ok: true, value: 'クラウド' });
++    expect(__mockGetFetchCalls()).toHaveLength(1);
++  });
++
++  it('does not silently fall back to on-device when the cloud call fails', async () => {
++    mockCloudOptIn = true;
++    mockConfig = {
++      ok: true,
++      value: { provider: 'openai', apiKey: 'sk-test', baseUrl: 'https://api.openai.com/v1' },
++    };
++    __mockSetTranscription('on-device would have worked');
++    __mockEnqueueJsonResponse({ text: '' });
++
++    const result = await transcribeTurn(userDb, new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_empty');
++    }
++  });
++
++  it('explains why cloud transcription cannot run on an Anthropic-only setup', async () => {
++    mockCloudOptIn = true;
++    mockConfig = { ok: true, value: { provider: 'anthropic', apiKey: 'sk-ant' } };
++
++    const result = await transcribeTurn(userDb, new Float32Array([0.1]));
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_cloud_stt_unavailable');
++    }
++    expect(__mockGetFetchCalls()).toHaveLength(0);
++  });
++});
+diff --git a/mobile/src/data/ai/voice/transcription.ts b/mobile/src/data/ai/voice/transcription.ts
+new file mode 100644
+index 0000000..c520918
+--- /dev/null
++++ b/mobile/src/data/ai/voice/transcription.ts
+@@ -0,0 +1,51 @@
++import type { SQLiteDatabase } from 'expo-sqlite';
++
++import { DEFAULT_OPENAI_BASE_URL } from '@/data/ai/byokCredential.types';
++import { resolveAiConfig } from '@/data/ai/aiConfig';
++import { transcribeJapaneseViaCloud } from '@/data/ai/voice/cloudSttClient';
++import { transcribeJapanese } from '@/data/ai/voice/sttClient';
++import { getCloudSttOptIn } from '@/data/user/preferencesRepository';
++import type { Result } from '@/types/result.types';
++
++/**
++ * The single decision about where a spoken turn gets transcribed (FR99, UX-DR33).
++ *
++ * The rule is symmetric and has no fallback in either direction: with the
++ * toggle off, transcription is on-device and an on-device failure stays a
++ * failure — it never quietly reaches for the network with the learner's audio.
++ * With it on, transcription is cloud-only and a cloud failure is reported
++ * rather than silently retried on-device.
++ *
++ * Only the OpenAI-compatible adapter exposes a transcription endpoint, so an
++ * Anthropic-only setup with the toggle on is an explicit error telling the
++ * learner why, not an invisible downgrade.
++ */
++export async function transcribeTurn(
++  userDb: SQLiteDatabase,
++  waveform: Float32Array,
++): Promise<Result<string>> {
++  if (!getCloudSttOptIn(userDb)) {
++    return transcribeJapanese(waveform);
++  }
++
++  const config = await resolveAiConfig(userDb);
++  if (!config.ok) {
++    return config;
++  }
++  if (!config.value || config.value.provider !== 'openai') {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_cloud_stt_unavailable',
++        message: 'Cloud transcription needs an OpenAI-compatible key',
++        userMessage:
++          'Cloud transcription needs an OpenAI-compatible key. Add one in Settings, or turn cloud transcription off to use the on-device model.',
++      },
++    };
++  }
++
++  return transcribeJapaneseViaCloud(waveform, {
++    apiKey: config.value.apiKey,
++    baseUrl: config.value.baseUrl ?? DEFAULT_OPENAI_BASE_URL,
++  });
++}
+diff --git a/mobile/src/data/ai/voice/ttsClient.test.ts b/mobile/src/data/ai/voice/ttsClient.test.ts
+new file mode 100644
+index 0000000..9cdc4b9
+--- /dev/null
++++ b/mobile/src/data/ai/voice/ttsClient.test.ts
+@@ -0,0 +1,69 @@
++import {
++  __mockExecutorchState,
++  __mockFailSynthesize,
++  __mockFailTtsLoad,
++  __mockResetExecutorch,
++  __mockSetSynthesis,
++} from '../../../../__mocks__/react-native-executorch';
++
++import { releaseTtsModel, synthesizeJapanese } from '@/data/ai/voice/ttsClient';
++
++describe('ttsClient', () => {
++  beforeEach(() => {
++    __mockResetExecutorch();
++    releaseTtsModel();
++  });
++
++  it('synthesizes a waveform from Japanese text', async () => {
++    __mockSetSynthesis(new Float32Array([0.1, 0.2, 0.3]));
++
++    const result = await synthesizeJapanese('こんにちは');
++
++    expect(result.ok).toBe(true);
++    if (result.ok) {
++      expect(Array.from(result.value)).toHaveLength(3);
++    }
++    expect(__mockExecutorchState().synthesizeCalls).toEqual(['こんにちは']);
++  });
++
++  it('loads the model once and reuses it across replies', async () => {
++    __mockSetSynthesis(new Float32Array([0.1]));
++
++    await synthesizeJapanese('一つ目');
++    await synthesizeJapanese('二つ目');
++
++    expect(__mockExecutorchState().ttsLoadCount).toBe(1);
++  });
++
++  it('reports a load failure rather than falling back to another voice', async () => {
++    __mockFailTtsLoad(new Error('model missing'));
++
++    const result = await synthesizeJapanese('こんにちは');
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_tts_load_failed');
++    }
++  });
++
++  it('reports a synthesis failure', async () => {
++    __mockFailSynthesize(new Error('inference error'));
++
++    const result = await synthesizeJapanese('こんにちは');
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_tts_failed');
++    }
++  });
++
++  it('rejects empty text without loading the model', async () => {
++    const result = await synthesizeJapanese('   ');
++
++    expect(result.ok).toBe(false);
++    if (!result.ok) {
++      expect(result.error.code).toBe('voice_tts_empty_text');
++    }
++    expect(__mockExecutorchState().ttsLoadCount).toBe(0);
++  });
++});
+diff --git a/mobile/src/data/ai/voice/ttsClient.ts b/mobile/src/data/ai/voice/ttsClient.ts
+new file mode 100644
+index 0000000..00bcde0
+--- /dev/null
++++ b/mobile/src/data/ai/voice/ttsClient.ts
+@@ -0,0 +1,78 @@
++import { TextToSpeechModule } from 'react-native-executorch';
++
++import { ensureExecutorchInitialised } from '@/data/ai/voice/executorchRuntime';
++import { JAPANESE_TTS_MODEL } from '@/data/ai/voice/voiceModels';
++import type { Result } from '@/types/result.types';
++
++/**
++ * On-device Japanese speech synthesis via Supertonic (FR98, FR100).
++ *
++ * Returns the waveform rather than playing it — executorch has no audio output.
++ * `audioSession.playWaveform` is the speaker.
++ *
++ * There is no system-voice fallback by design: `expo-speech` on Android goes
++ * silent when Japanese voice data is not installed, without raising an error,
++ * and that whole class of failure is why Supertonic ships its own model. A
++ * synthesis failure surfaces as an error here instead.
++ */
++
++type LoadedModule = Awaited<ReturnType<typeof TextToSpeechModule.fromModelName>>;
++
++let modulePromise: Promise<LoadedModule> | null = null;
++
++function loadModule(): Promise<LoadedModule> {
++  ensureExecutorchInitialised();
++  modulePromise ??= TextToSpeechModule.fromModelName(JAPANESE_TTS_MODEL);
++  return modulePromise;
++}
++
++/** Frees the loaded model. Called when conversation mode closes. */
++export function releaseTtsModel(): void {
++  const pending = modulePromise;
++  modulePromise = null;
++  void pending?.then((module) => module.delete()).catch(() => {});
++}
++
++export async function synthesizeJapanese(text: string): Promise<Result<Float32Array>> {
++  const trimmed = text.trim();
++  if (trimmed.length === 0) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_tts_empty_text',
++        message: 'Nothing to speak',
++        userMessage: 'There was nothing to read aloud.',
++      },
++    };
++  }
++
++  let module: LoadedModule;
++  try {
++    module = await loadModule();
++  } catch (cause) {
++    modulePromise = null;
++    return {
++      ok: false,
++      error: {
++        code: 'voice_tts_load_failed',
++        message: String(cause),
++        userMessage: 'The Japanese voice could not be loaded.',
++        cause,
++      },
++    };
++  }
++
++  try {
++    return { ok: true, value: await module.forward(trimmed) };
++  } catch (cause) {
++    return {
++      ok: false,
++      error: {
++        code: 'voice_tts_failed',
++        message: String(cause),
++        userMessage: 'Could not read that reply aloud.',
++        cause,
++      },
++    };
++  }
++}
+diff --git a/mobile/src/data/ai/voice/voiceModels.ts b/mobile/src/data/ai/voice/voiceModels.ts
+new file mode 100644
+index 0000000..4093c2f
+--- /dev/null
++++ b/mobile/src/data/ai/voice/voiceModels.ts
+@@ -0,0 +1,58 @@
++import { models } from 'react-native-executorch';
++import type {
++  ResourceSource,
++  TextToSpeechModelConfig,
++  TextToSpeechModelSources,
++} from 'react-native-executorch';
++
++/**
++ * The pinned Japanese voice models (FR100, NFR30).
++ *
++ * `whisper-small` rather than tiny/base: tiny's Japanese word error rate is too
++ * poor for learner speech, and the download size is the accepted cost of that
++ * choice, not an oversight.
++ *
++ * Supertonic is the only built-in TTS with a Japanese language token — Kokoro
++ * has no `ja` phonemizer, which is why this story pins an executorch nightly
++ * rather than a release. The registry accessors resolve the right backend per
++ * platform (MLX on iOS, XNNPACK on Android) on their own.
++ */
++
++/** Whisper's fixed input rate. Anything the microphone gives us is resampled to it. */
++export const STT_SAMPLE_RATE = 16000;
++
++/** Supertonic's fixed output rate (`supertonic/Constants.h`: `kSamplingRate`). */
++export const TTS_SAMPLE_RATE = 44100;
++
++export const JAPANESE_STT_MODEL = models.speech_to_text.whisper_small();
++
++export const JAPANESE_TTS_MODEL: TextToSpeechModelConfig = {
++  ...models.text_to_speech.supertonic.f1(),
++  lang: 'ja',
++};
++
++function ttsModelSources(model: TextToSpeechModelSources): ResourceSource[] {
++  if (model.modelName === 'kokoro') {
++    return [model.durationPredictorSource, model.synthesizerSource];
++  }
++  return [
++    model.unicodeIndexerSource,
++    model.durationPredictorSource,
++    model.textEncoderSource,
++    model.vectorEstimatorSource,
++    model.vocoderSource,
++  ];
++}
++
++/**
++ * Every file that must be on disk before voice works. The download manager uses
++ * this both to size the download and to decide whether it already happened.
++ */
++export function voiceModelSources(): ResourceSource[] {
++  return [
++    JAPANESE_STT_MODEL.modelSource,
++    JAPANESE_STT_MODEL.tokenizerSource,
++    ...ttsModelSources(JAPANESE_TTS_MODEL.model),
++    JAPANESE_TTS_MODEL.voiceSource,
++  ];
++}
+diff --git a/mobile/src/data/ai/voice/wav.test.ts b/mobile/src/data/ai/voice/wav.test.ts
+new file mode 100644
+index 0000000..9e4e983
+--- /dev/null
++++ b/mobile/src/data/ai/voice/wav.test.ts
+@@ -0,0 +1,50 @@
++import { encodeWav16BitPcm } from '@/data/ai/voice/wav';
++
++function readAscii(view: DataView, offset: number, length: number): string {
++  let text = '';
++  for (let index = 0; index < length; index += 1) {
++    text += String.fromCharCode(view.getUint8(offset + index));
++  }
++  return text;
++}
++
++describe('encodeWav16BitPcm', () => {
++  it('writes a RIFF/WAVE container', () => {
++    const view = new DataView(encodeWav16BitPcm(new Float32Array([0, 0.5]), 16000));
++
++    expect(readAscii(view, 0, 4)).toBe('RIFF');
++    expect(readAscii(view, 8, 4)).toBe('WAVE');
++    expect(readAscii(view, 12, 4)).toBe('fmt ');
++    expect(readAscii(view, 36, 4)).toBe('data');
++  });
++
++  it('describes mono 16-bit PCM at the given sample rate', () => {
++    const view = new DataView(encodeWav16BitPcm(new Float32Array([0]), 16000));
++
++    expect(view.getUint16(20, true)).toBe(1); // PCM
++    expect(view.getUint16(22, true)).toBe(1); // mono
++    expect(view.getUint32(24, true)).toBe(16000);
++    expect(view.getUint16(34, true)).toBe(16); // bits per sample
++  });
++
++  it('sizes the buffer as header plus two bytes per sample', () => {
++    const buffer = encodeWav16BitPcm(new Float32Array(100), 16000);
++
++    expect(buffer.byteLength).toBe(44 + 200);
++  });
++
++  it('scales floats to signed 16-bit', () => {
++    const view = new DataView(encodeWav16BitPcm(new Float32Array([0, 1, -1]), 16000));
++
++    expect(view.getInt16(44, true)).toBe(0);
++    expect(view.getInt16(46, true)).toBe(32767);
++    expect(view.getInt16(48, true)).toBe(-32768);
++  });
++
++  it('clamps samples outside the -1..1 range instead of wrapping', () => {
++    const view = new DataView(encodeWav16BitPcm(new Float32Array([2, -2]), 16000));
++
++    expect(view.getInt16(44, true)).toBe(32767);
++    expect(view.getInt16(46, true)).toBe(-32768);
++  });
++});
+diff --git a/mobile/src/data/ai/voice/wav.ts b/mobile/src/data/ai/voice/wav.ts
+new file mode 100644
+index 0000000..6de02ce
+--- /dev/null
++++ b/mobile/src/data/ai/voice/wav.ts
+@@ -0,0 +1,54 @@
++/**
++ * Minimal WAV container for the cloud transcription upload.
++ *
++ * Transcription endpoints take an audio file, not a raw sample array, so the
++ * captured waveform is wrapped in the smallest header that describes it. Only
++ * mono 16-bit PCM is produced — that is exactly what the recorder delivers
++ * after resampling, so there is nothing to configure.
++ */
++
++const HEADER_BYTES = 44;
++const BITS_PER_SAMPLE = 16;
++const CHANNELS = 1;
++
++function writeAscii(view: DataView, offset: number, text: string): void {
++  for (let index = 0; index < text.length; index += 1) {
++    view.setUint8(offset + index, text.charCodeAt(index));
++  }
++}
++
++export function encodeWav16BitPcm(samples: Float32Array, sampleRate: number): ArrayBuffer {
++  const dataBytes = samples.length * 2;
++  const buffer = new ArrayBuffer(HEADER_BYTES + dataBytes);
++  const view = new DataView(buffer);
++  const byteRate = (sampleRate * CHANNELS * BITS_PER_SAMPLE) / 8;
++
++  writeAscii(view, 0, 'RIFF');
++  view.setUint32(4, HEADER_BYTES - 8 + dataBytes, true);
++  writeAscii(view, 8, 'WAVE');
++
++  writeAscii(view, 12, 'fmt ');
++  view.setUint32(16, 16, true); // fmt chunk size
++  view.setUint16(20, 1, true); // PCM
++  view.setUint16(22, CHANNELS, true);
++  view.setUint32(24, sampleRate, true);
++  view.setUint32(28, byteRate, true);
++  view.setUint16(32, (CHANNELS * BITS_PER_SAMPLE) / 8, true); // block align
++  view.setUint16(34, BITS_PER_SAMPLE, true);
++
++  writeAscii(view, 36, 'data');
++  view.setUint32(40, dataBytes, true);
++
++  for (let index = 0; index < samples.length; index += 1) {
++    // Clamp before scaling: a sample past full scale would otherwise wrap to
++    // the opposite extreme and read as a loud click.
++    const clamped = Math.max(-1, Math.min(1, samples[index]));
++    view.setInt16(
++      HEADER_BYTES + index * 2,
++      clamped < 0 ? clamped * 0x8000 : clamped * 0x7fff,
++      true,
++    );
++  }
++
++  return buffer;
++}

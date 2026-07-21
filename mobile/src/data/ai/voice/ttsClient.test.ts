@@ -5,12 +5,19 @@ import {
   __mockResetExecutorch,
   __mockSetSynthesis,
 } from '../../../../__mocks__/react-native-executorch';
+import {
+  __mockMarkDownloaded,
+  __mockResetResourceFetcher,
+} from '../../../../__mocks__/react-native-executorch-expo-resource-fetcher';
 
 import { releaseTtsModel, synthesizeJapanese } from '@/data/ai/voice/ttsClient';
+import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
 describe('ttsClient', () => {
   beforeEach(() => {
     __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
     releaseTtsModel();
   });
 
@@ -24,6 +31,18 @@ describe('ttsClient', () => {
       expect(Array.from(result.value)).toHaveLength(3);
     }
     expect(__mockExecutorchState().synthesizeCalls).toEqual(['こんにちは']);
+  });
+
+  it('refuses to load when the models are not on disk', async () => {
+    __mockResetResourceFetcher();
+
+    const result = await synthesizeJapanese('こんにちは');
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error.code).toBe('voice_tts_models_missing');
+    }
+    expect(__mockExecutorchState().ttsLoadCount).toBe(0);
   });
 
   it('loads the model once and reuses it across replies', async () => {
@@ -48,6 +67,17 @@ describe('ttsClient', () => {
 
   it('reports a synthesis failure', async () => {
     __mockFailSynthesize(new Error('inference error'));
+
+    const result = await synthesizeJapanese('こんにちは');
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.error.code).toBe('voice_tts_failed');
+    }
+  });
+
+  it('treats an empty synthesis waveform as failure', async () => {
+    __mockSetSynthesis(new Float32Array(0));
 
     const result = await synthesizeJapanese('こんにちは');
 

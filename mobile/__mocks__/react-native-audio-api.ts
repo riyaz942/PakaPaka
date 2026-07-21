@@ -28,6 +28,7 @@ const state = {
   permission: 'Granted' as PermissionStatus,
   permissionRequestResult: 'Granted' as PermissionStatus,
   startError: null as Error | null,
+  startErrorAsResult: false,
   played: [] as { samples: Float32Array; sampleRate: number }[],
   permissionRequests: 0,
 };
@@ -38,6 +39,7 @@ export function __mockResetAudioApi(): void {
   state.permission = 'Granted';
   state.permissionRequestResult = 'Granted';
   state.startError = null;
+  state.startErrorAsResult = false;
   state.played = [];
   state.permissionRequests = 0;
 }
@@ -58,8 +60,9 @@ export function __mockSetPermissionRequestResult(status: PermissionStatus): void
   state.permissionRequestResult = status;
 }
 
-export function __mockFailRecorderStart(error: Error): void {
+export function __mockFailRecorderStart(error: Error, asResult = false): void {
   state.startError = error;
+  state.startErrorAsResult = asResult;
 }
 
 export function __mockPlayedBuffers(): { samples: Float32Array; sampleRate: number }[] {
@@ -72,6 +75,7 @@ export function __mockPermissionRequestCount(): number {
 
 export class AudioRecorder {
   private callback: ((event: AudioReadyEvent) => void) | null = null;
+  private errorCallback: ((error: unknown) => void) | null = null;
   private recording = false;
 
   onAudioReady(_options: CallbackOptions, callback: (event: AudioReadyEvent) => void) {
@@ -83,8 +87,11 @@ export class AudioRecorder {
     this.callback = null;
   }
 
-  async start(): Promise<{ status: 'success' } | { status: 'error' }> {
+  async start(): Promise<{ status: 'success' } | { status: 'error'; message: string }> {
     if (state.startError) {
+      if (state.startErrorAsResult) {
+        return { status: 'error', message: state.startError.message };
+      }
       throw state.startError;
     }
     this.recording = true;
@@ -100,7 +107,7 @@ export class AudioRecorder {
     return { status: 'success' };
   }
 
-  async stop(): Promise<{ status: 'success' } | { status: 'error' }> {
+  async stop(): Promise<{ status: 'success' } | { status: 'error'; message: string }> {
     this.recording = false;
     return { status: 'success' };
   }
@@ -109,8 +116,13 @@ export class AudioRecorder {
     return this.recording;
   }
 
-  onError(_callback: (error: unknown) => void): void {}
-  clearOnError(): void {}
+  onError(callback: (error: unknown) => void): void {
+    this.errorCallback = callback;
+  }
+
+  clearOnError(): void {
+    this.errorCallback = null;
+  }
 }
 
 class MockAudioBuffer {

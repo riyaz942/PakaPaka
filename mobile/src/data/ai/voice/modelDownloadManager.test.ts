@@ -1,7 +1,9 @@
 import {
   __mockFailFetch,
+  __mockFailListDownloaded,
   __mockFailSizeProbe,
   __mockFetchCallCount,
+  __mockCancelCallCount,
   __mockMarkDownloaded,
   __mockResetResourceFetcher,
   __mockSetRemoteSize,
@@ -9,6 +11,7 @@ import {
 
 import {
   areVoiceModelsDownloaded,
+  cancelVoiceModelDownload,
   downloadVoiceModels,
   getVoiceModelDownloadBytes,
 } from '@/data/ai/voice/modelDownloadManager';
@@ -42,6 +45,14 @@ describe('modelDownloadManager', () => {
 
       expect(result).toEqual({ ok: true, value: true });
     });
+
+    it('treats a missing model directory as not downloaded, not a check failure', async () => {
+      __mockFailListDownloaded(new Error('Directory could not be read: path does not exist'));
+
+      const result = await areVoiceModelsDownloaded();
+
+      expect(result).toEqual({ ok: true, value: false });
+    });
   });
 
   describe('getVoiceModelDownloadBytes', () => {
@@ -58,6 +69,19 @@ describe('modelDownloadManager', () => {
 
     it('returns an error rather than a guessed size when the probe fails', async () => {
       __mockFailSizeProbe(new Error('offline'));
+
+      const result = await getVoiceModelDownloadBytes();
+
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(result.error.code).toBe('voice_model_size_unavailable');
+      }
+    });
+
+    it('returns an error when a HEAD probe under-reports as zero', async () => {
+      const sources = voiceModelSources() as string[];
+      __mockSetRemoteSize(sources[0], 1_000_000);
+      // Remaining sources intentionally unset → mock returns 0 for those.
 
       const result = await getVoiceModelDownloadBytes();
 
@@ -93,6 +117,15 @@ describe('modelDownloadManager', () => {
 
     it('does not start a download merely by importing the module', () => {
       expect(__mockFetchCallCount()).toBe(0);
+    });
+  });
+
+  describe('cancelVoiceModelDownload', () => {
+    it('succeeds when nothing is in flight', async () => {
+      const result = await cancelVoiceModelDownload();
+
+      expect(result.ok).toBe(true);
+      expect(__mockCancelCallCount()).toBe(1);
     });
   });
 });

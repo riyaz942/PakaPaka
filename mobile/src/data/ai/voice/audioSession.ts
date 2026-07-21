@@ -1,4 +1,5 @@
 import { AudioContext, AudioManager, AudioRecorder } from 'react-native-audio-api';
+import type { AudioBufferSourceNode } from 'react-native-audio-api';
 
 import { STT_SAMPLE_RATE, TTS_SAMPLE_RATE } from '@/data/ai/voice/voiceModels';
 import type { Result } from '@/types/result.types';
@@ -18,7 +19,10 @@ const RECORD_BUFFER_LENGTH = 1024;
 let recorder: AudioRecorder | null = null;
 let capturedChunks: Float32Array[] = [];
 let capturedSampleRate = STT_SAMPLE_RATE;
+let recordingFault: string | null = null;
 let playbackContext: AudioContext | null = null;
+let playbackSource: AudioBufferSourceNode | null = null;
+let audioSessionReady = false;
 
 /**
  * Linear resample to Whisper's 16 kHz.
@@ -28,6 +32,9 @@ let playbackContext: AudioContext | null = null;
  * so the delivered rate is always honoured rather than assumed.
  */
 export function resampleTo16kHz(samples: Float32Array, sourceSampleRate: number): Float32Array {
+  if (!Number.isFinite(sourceSampleRate) || sourceSampleRate <= 0) {
+    return samples;
+  }
   if (sourceSampleRate === STT_SAMPLE_RATE || samples.length === 0) {
     return samples;
   }
@@ -45,6 +52,33 @@ export function resampleTo16kHz(samples: Float32Array, sourceSampleRate: number)
   }
 
   return resampled;
+}
+
+async function ensureNativeAudioSession(): Promise<Result<void>> {
+  if (audioSessionReady) {
+    return { ok: true, value: undefined };
+  }
+  try {
+    AudioManager.setAudioSessionOptions({
+      iosCategory: 'playAndRecord',
+      iosMode: 'spokenAudio',
+      iosOptions: ['defaultToSpeaker', 'allowBluetoothHFP'],
+      iosNotifyOthersOnDeactivation: true,
+    });
+    await AudioManager.setAudioSessionActivity(true);
+    audioSessionReady = true;
+    return { ok: true, value: undefined };
+  } catch (cause) {
+    return {
+      ok: false,
+      error: {
+        code: 'voice_audio_session_failed',
+        message: String(cause),
+        userMessage: 'Could not prepare audio for speaking practice.',
+        cause,
+      },
+    };
+  }
 }
 
 export async function ensureMicrophonePermission(): Promise<Result<void>> {
@@ -79,22 +113,68 @@ export async function ensureMicrophonePermission(): Promise<Result<void>> {
 }
 
 export async function startRecording(): Promise<Result<void>> {
-  capturedChunks = [];
-  capturedSampleRate = STT_SAMPLE_RATE;
+  const session = await ensureNativeAudioSession();
+  if (!session.ok) {
+    return session;
+  }
 
   try {
+    if (recorder?.isRecording()) {
+      await recorder.stop();
+    }
+    recorder?.clearOnAudioReady();
+    recorder?.clearOnError();
+
+    capturedChunks = [];
+    capturedSampleRate = STT_SAMPLE_RATE;
+    recordingFault = null;
+
     recorder ??= new AudioRecorder();
-    recorder.onAudioReady(
+    const ready = recorder.onAudioReady(
       { sampleRate: STT_SAMPLE_RATE, bufferLength: RECORD_BUFFER_LENGTH, channelCount: 1 },
       (event) => {
-        capturedSampleRate = event.buffer.sampleRate;
-        capturedChunks.push(Float32Array.from(event.buffer.getChannelData(0)));
+        try {
+          capturedSampleRate = event.buffer.sampleRate;
+          capturedChunks.push(Float32Array.from(event.buffer.getChannelData(0)));
+        } catch (cause) {
+          recordingFault = String(cause);
+        }
       },
     );
-    await recorder.start();
+    if (ready.status === 'error') {
+      return {
+        ok: false,
+        error: {
+          code: 'voice_recording_failed',
+          message: ready.message,
+          userMessage: 'Could not start recording.',
+        },
+      };
+    }
+
+    recorder.onError((error) => {
+      recordingFault = typeof error === 'object' && error && 'message' in error
+        ? String((error as { message: unknown }).message)
+        : String(error);
+    });
+
+    const started = await recorder.start();
+    if (started.status === 'error') {
+      recorder.clearOnAudioReady();
+      recorder.clearOnError();
+      return {
+        ok: false,
+        error: {
+          code: 'voice_recording_failed',
+          message: started.message,
+          userMessage: 'Could not start recording.',
+        },
+      };
+    }
     return { ok: true, value: undefined };
   } catch (cause) {
     recorder?.clearOnAudioReady();
+    recorder?.clearOnError();
     return {
       ok: false,
       error: {
@@ -110,7 +190,17 @@ export async function startRecording(): Promise<Result<void>> {
 /** Stops recording and returns everything captured as one 16 kHz mono waveform. */
 export async function stopRecording(): Promise<Result<Float32Array>> {
   try {
-    await recorder?.stop();
+    const stopped = await recorder?.stop();
+    if (stopped && stopped.status === 'error') {
+      return {
+        ok: false,
+        error: {
+          code: 'voice_recording_failed',
+          message: stopped.message,
+          userMessage: 'Could not finish the recording.',
+        },
+      };
+    }
   } catch (cause) {
     return {
       ok: false,
@@ -123,6 +213,21 @@ export async function stopRecording(): Promise<Result<Float32Array>> {
     };
   } finally {
     recorder?.clearOnAudioReady();
+    recorder?.clearOnError();
+  }
+
+  if (recordingFault) {
+    const message = recordingFault;
+    recordingFault = null;
+    capturedChunks = [];
+    return {
+      ok: false,
+      error: {
+        code: 'voice_recording_failed',
+        message,
+        userMessage: 'Could not finish the recording.',
+      },
+    };
   }
 
   const chunks = capturedChunks;
@@ -166,8 +271,27 @@ export async function playWaveform(
     };
   }
 
+  const session = await ensureNativeAudioSession();
+  if (!session.ok) {
+    return session;
+  }
+
   try {
+    if (playbackSource) {
+      try {
+        playbackSource.stop();
+      } catch {
+        // Already stopped.
+      }
+      playbackSource = null;
+    }
+
+    if (playbackContext && playbackContext.sampleRate !== sampleRate) {
+      await playbackContext.close().catch(() => {});
+      playbackContext = null;
+    }
     playbackContext ??= new AudioContext({ sampleRate });
+
     const buffer = playbackContext.createBuffer(1, samples.length, sampleRate);
     // `copyToChannel` is the sanctioned write path — `getChannelData` crosses
     // the JSI boundary and is not guaranteed to hand back the live array.
@@ -177,7 +301,24 @@ export async function playWaveform(
     const source = playbackContext.createBufferSource();
     source.buffer = buffer;
     source.connect(playbackContext.destination);
-    source.start();
+    playbackSource = source;
+
+    await new Promise<void>((resolve, reject) => {
+      source.onEnded = () => {
+        if (playbackSource === source) {
+          playbackSource = null;
+        }
+        resolve();
+      };
+      try {
+        source.start();
+      } catch (cause) {
+        if (playbackSource === source) {
+          playbackSource = null;
+        }
+        reject(cause);
+      }
+    });
     return { ok: true, value: undefined };
   } catch (cause) {
     return {
@@ -194,9 +335,25 @@ export async function playWaveform(
 
 /** Tears down the shared recorder and audio context when conversation mode closes. */
 export function releaseAudioSession(): void {
+  if (recorder?.isRecording()) {
+    void recorder.stop().catch(() => {});
+  }
   recorder?.clearOnAudioReady();
+  recorder?.clearOnError();
   recorder = null;
   capturedChunks = [];
+  recordingFault = null;
+
+  if (playbackSource) {
+    try {
+      playbackSource.stop();
+    } catch {
+      // Already stopped.
+    }
+    playbackSource = null;
+  }
   void playbackContext?.close().catch(() => {});
   playbackContext = null;
+  audioSessionReady = false;
+  void AudioManager.setAudioSessionActivity(false).catch(() => {});
 }

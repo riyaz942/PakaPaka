@@ -15,8 +15,13 @@ import {
   __mockSetSynthesis,
   __mockSetTranscription,
 } from '../../../__mocks__/react-native-executorch';
+import {
+  __mockMarkDownloaded,
+  __mockResetResourceFetcher,
+} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
 
 import { PttOverlay } from '@/components/converse/PttOverlay';
+import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 
 jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => ({ userDb: {} }),
@@ -58,6 +63,8 @@ describe('PttOverlay', () => {
   beforeEach(() => {
     __mockResetAudioApi();
     __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
     __mockSetSynthesis(new Float32Array([0.1, 0.2]));
     __mockSetRecordedChunks([new Float32Array([0.3, 0.4])]);
   });

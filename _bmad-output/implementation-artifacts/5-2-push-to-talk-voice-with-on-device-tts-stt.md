@@ -145,6 +145,10 @@ confirmed present on this build: `TextToSpeechSupertonicLanguage` includes `'ja'
 `SpeechToTextLanguage` includes `'ja'`. Also pinned
 `react-native-executorch-expo-resource-fetcher@0.10.0-nightly-0a8fe7e-20260527` (that package's own
 current nightly tag; it publishes less often than the main package). Both exact-pinned, no `^`.
+**Code-review decision (2026-07-21):** this July-main / May-fetcher skew is **accepted**. Same-date
+alignment would require the May main package, which has Kokoro only (no Supertonic/`ja`) and fails
+AC4. No newer fetcher nightly exists. Tracked in `docs/known-issues.md`; re-check when upstream
+publishes a matching fetcher or stable-with-`ja`.
 
 **New dependency approved mid-story: `react-native-audio-api@0.13.2`.** The story assumed executorch
 covered the whole voice surface. It does not — it has no microphone capture and no audio playback.
@@ -295,8 +299,34 @@ permission is prompted correctly on both platforms.
 **Added (not app code)**
 - `docs/known-issues.md` (tracker for the pre-existing `feedback-error` token defect)
 
+### Review Findings
+
+_Chunk A (voice engine / deps / mocks) — 2026-07-21. Chunks B–E still queued._
+
+- [x] [Review][Decision] Executorch vs resource-fetcher nightly skew — **Resolved:** keep July main (`…a0bf85b-20260721`) + May fetcher (`…0a8fe7e-20260527`). Same-date alignment is impossible without dropping Supertonic/`ja` (May main is Kokoro-only); no newer fetcher nightly exists. Documented as accepted upstream publishing skew; re-check when a matching fetcher or stable-with-`ja` ships.
+- [x] [Review][Patch] Document forced executorch/fetcher nightly skew in Completion Notes + `docs/known-issues.md` (July main required for Japanese; May fetcher is tip of `executorch-nightly` for that package) — done
+- [x] [Review][Patch] `fromModelName` can still download models — gated `sttClient`/`ttsClient` load behind `areVoiceModelsDownloaded` so missing models cannot trigger `ResourceFetcher.fetch` (AC5/NFR25)
+- [x] [Review][Patch] Size disclosure can return 0 / under-report — probe each remote source individually; reject non-positive sizes
+- [x] [Review][Patch] Missing model directory treated as check failure — map missing-dir errors to `{ ok: true, value: false }`
+- [x] [Review][Patch] `AudioRecorder.start` / `onAudioReady` / `stop` Results ignored — inspect `status === 'error'`
+- [x] [Review][Patch] Mic permission copy claims voice is “never uploaded” — reworded for default on-device + optional cloud STT
+- [x] [Review][Patch] `playWaveform` returns before playback ends — await `onEnded`; stop prior source; recreate context on sample-rate change
+- [x] [Review][Patch] `AudioRecorder.onError` never wired — surface mid-capture faults via `recordingFault`
+- [x] [Review][Patch] `startRecording` has no already-recording guard — stop/clear before restarting
+- [x] [Review][Patch] Model/audio release races — skip model delete while in-flight; stop recorder on session release
+- [x] [Review][Patch] Download cannot be cancelled — added `cancelVoiceModelDownload`
+- [x] [Review][Patch] Native audio session never configured — `setAudioSessionOptions` + `setAudioSessionActivity` before record/play
+- [x] [Review][Patch] Cloud STT fetch has no timeout; `FormData`/`Blob` construction sits outside the try/catch — 30s AbortSignal + construction inside try
+- [x] [Review][Patch] Reject non-finite/non-positive `sourceSampleRate` in `resampleTo16kHz`
+- [x] [Review][Patch] Move `ensureExecutorchInitialised()` inside each manager try/catch so init failures stay `Result`
+- [x] [Review][Patch] Treat empty TTS `forward()` output as `voice_tts_failed`, not success
+- [x] [Review][Defer] Presence check is basename-only (no size/hash) — truncated/corrupt but listed files still report ready; cache-then-move already prevents half-files from listing; deeper integrity check deferred pending on-device soak [`modelDownloadManager.ts`] — deferred, accepted residual risk
+- [x] [Review][Defer] Cloud STT `Blob`+`FormData` multipart path unproven on device — API shape covered by mocks; first device build must confirm upload encoding [`cloudSttClient.ts`] — deferred, needs device verification
+
 ## Change Log
 
 | Date | Change |
 | --- | --- |
 | 2026-07-21 | Implemented Story 5.2: pinned executorch nightly + Supertonic/Whisper Japanese models, `data/ai/voice/` module, explicit model download UX, composer mic, full-screen PTT conversation mode, cloud STT opt-in. Added `react-native-audio-api` (user-approved) for microphone capture and playback, which executorch does not provide. |
+| 2026-07-21 | Code review Chunk A (voice engine): findings recorded under Review Findings. |
+| 2026-07-21 | Code review Chunk A patches applied (load gate, size probe, audio Result/session/playback, cloud STT timeout, mic copy, cancel API). |)

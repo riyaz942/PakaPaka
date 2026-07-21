@@ -1,5 +1,10 @@
 # Deferred Work
 
+## Deferred from: code review of 5-2-push-to-talk-voice-with-on-device-tts-stt (2026-07-21)
+
+- **Presence check is basename-only (no size/hash)** — `areVoiceModelsDownloaded` trusts listed filenames; cache-then-move already keeps half-files out of the listing. Deeper integrity (size/hash) deferred pending on-device soak (`modelDownloadManager.ts`).
+- **Cloud STT `Blob`+`FormData` multipart path unproven on device** — unit tests cover field names against mocks; first real-device build must confirm WAV upload encoding through `expo/fetch` (`cloudSttClient.ts`).
+
 ## Deferred from: code review of 5-1-platform-floor-byok-chat-session-summary (2026-07-21)
 
 - **OpenAI-compatible requests always send `max_tokens`** — some newer compatible models prefer/require `max_completion_tokens`; deferred as provider API variance beyond v1 transport normalize (`openAiCompatibleAdapter.ts`).
