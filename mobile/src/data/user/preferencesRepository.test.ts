@@ -7,6 +7,7 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
 import {
   clearOnboardingCompleted,
+  getCloudSttOptIn,
   getFuriganaDisplay,
   getOnboardingPath,
   getSeenKanjiReadingPrimer,
@@ -20,6 +21,7 @@ import {
   getReviewAutoAdvanceEnabled,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setCloudSttOptIn,
   setFuriganaDisplay,
   setOnboardingCompleted,
   setOnboardingPath,
@@ -393,5 +395,39 @@ describe('preferencesRepository kanji reading primer flag', () => {
 
   it('exposes the preference key so callers do not hardcode the string', async () => {
     expect(PREFERENCE_KEYS.seenKanjiReadingPrimer).toBe('seen_kanji_reading_primer');
+  });
+});
+
+describe('preferencesRepository cloud STT opt-in', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults to OFF so speech stays on-device unless asked otherwise (FR99)', async () => {
+    const db = await createUserDb();
+    expect(getCloudSttOptIn(db)).toBe(false);
+  });
+
+  it('round-trips cloud_stt_opt_in', async () => {
+    const db = await createUserDb();
+
+    setCloudSttOptIn(db, true);
+    expect(getCloudSttOptIn(db)).toBe(true);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.cloudSttOptIn,
+      )?.value,
+    ).toBe('true');
+
+    setCloudSttOptIn(db, false);
+    expect(getCloudSttOptIn(db)).toBe(false);
   });
 });

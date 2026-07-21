@@ -46,6 +46,9 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.6",
+    "react-native-audio-api": "0.13.2",
+    "react-native-executorch": "0.10.0-nightly-a0bf85b-20260721",
+    "react-native-executorch-expo-resource-fetcher": "0.10.0-nightly-0a8fe7e-20260527",
     "react-native-gesture-handler": "~2.30.0",
     "react-native-reanimated": "4.2.1",
     "react-native-safe-area-context": "~5.6.2",
@@ -94,7 +97,10 @@
       "^expo-asset$": "<rootDir>/__mocks__/expo-asset.ts",
       "^expo-image$": "<rootDir>/__mocks__/expo-image.tsx",
       "^expo-document-picker$": "<rootDir>/__mocks__/expo-document-picker.ts",
-      "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx"
+      "^@expo/vector-icons$": "<rootDir>/__mocks__/expo-vector-icons.tsx",
+      "^react-native-executorch$": "<rootDir>/__mocks__/react-native-executorch.ts",
+      "^react-native-executorch-expo-resource-fetcher$": "<rootDir>/__mocks__/react-native-executorch-expo-resource-fetcher.ts",
+      "^react-native-audio-api$": "<rootDir>/__mocks__/react-native-audio-api.ts"
     }
   }
 }

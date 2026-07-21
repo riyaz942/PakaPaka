@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Switch, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
 import { KeySetup } from '@/components/converse/KeySetup';
@@ -14,7 +14,9 @@ import {
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
   getAiActiveProvider,
+  getCloudSttOptIn,
   setAiActiveProvider,
+  setCloudSttOptIn,
 } from '@/data/user/preferencesRepository';
 import { cn } from '@/utils/cn';
 
@@ -36,6 +38,7 @@ export function ByokSettingsSection() {
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [listFailed, setListFailed] = useState(false);
+  const [cloudStt, setCloudSttState] = useState(false);
 
   const refresh = useCallback(() => {
     void listConfiguredByokProviders().then((result) => {
@@ -50,6 +53,7 @@ export function ByokSettingsSection() {
       setConfigured(result.value);
     });
     setActiveProviderState(getAiActiveProvider(userDb));
+    setCloudSttState(getCloudSttOptIn(userDb));
   }, [userDb]);
 
   useEffect(refresh, [refresh]);
@@ -144,6 +148,40 @@ export function ByokSettingsSection() {
           </View>
         </View>
       ) : null}
+
+      {/*
+        Speech is transcribed on-device by default. This is the only switch that
+        sends a learner's voice anywhere, so it is visible, off by default, and
+        never flipped automatically — a poor on-device result stays a poor
+        on-device result rather than quietly becoming an upload.
+
+        Only the OpenAI-compatible adapter has a transcription endpoint at all;
+        Anthropic has none. With no such key the switch is shown disabled with
+        the reason rather than hidden, so the option does not appear to vanish.
+      */}
+      <View className="mt-8 border-t border-border pt-4">
+        <View className="flex-row items-center justify-between">
+          <Text className="flex-1 pr-space-md text-body text-primary">
+            Transcribe speech in the cloud
+          </Text>
+          <Switch
+            accessibilityLabel="Transcribe speech in the cloud"
+            accessibilityState={{ disabled: !configured.includes('openai') }}
+            disabled={!configured.includes('openai')}
+            onValueChange={(next) => {
+              setCloudSttOptIn(userDb, next);
+              setCloudSttState(next);
+            }}
+            testID="cloud-stt-toggle"
+            value={cloudStt}
+          />
+        </View>
+        <Text className="mt-1 text-body-sm text-secondary">
+          {configured.includes('openai')
+            ? 'Off by default: speaking practice is transcribed on this device and your voice never leaves it. Turn this on to send recordings to your OpenAI-compatible provider instead.'
+            : 'Needs an OpenAI-compatible key — Anthropic has no transcription endpoint. Speaking practice is transcribed on this device.'}
+        </Text>
+      </View>
 
       {isEditing ? (
         <View className="mt-4">

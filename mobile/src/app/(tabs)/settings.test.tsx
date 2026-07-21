@@ -92,6 +92,9 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   setAiActiveProvider: jest.fn(),
   setAiModel: jest.fn(),
   setAiOpenAiBaseUrl: jest.fn(),
+  // Cloud STT opt-in (Story 5.2) — same reason as the AI reads above.
+  getCloudSttOptIn: () => false,
+  setCloudSttOptIn: jest.fn(),
 }));
 
 jest.mock('@/config/notifications', () => ({

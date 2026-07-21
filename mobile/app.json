@@ -47,6 +47,15 @@
       "expo-image",
       "expo-web-browser",
       [
+        "react-native-audio-api",
+        {
+          "iosMicrophonePermission": "Lets you speak Japanese during conversation practice. Your voice is transcribed on this device and never uploaded.",
+          "androidPermissions": ["android.permission.RECORD_AUDIO"],
+          "iosBackgroundMode": false,
+          "androidForegroundService": false
+        }
+      ],
+      [
         "expo-build-properties",
         {
           "ios": {

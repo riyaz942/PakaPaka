@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
+  Modal,
   Platform,
   ScrollView,
   Text,
@@ -15,10 +16,13 @@ import { Button } from '@/components/common/Button';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ChatBubble } from '@/components/converse/ChatBubble';
 import { Composer } from '@/components/converse/Composer';
+import { PttOverlay } from '@/components/converse/PttOverlay';
+import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { WordLookupSheet } from '@/components/converse/WordLookupSheet';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import type { GrammarPromptTopic } from '@/core/ai/systemPrompt';
 import { isOnline } from '@/data/ai/connectivity';
+import { areVoiceModelsDownloaded } from '@/data/ai/voice/modelDownloadManager';
 import {
   getGrammarTopicById,
   listRecentGrammar,
@@ -98,6 +102,11 @@ export default function ConversationSessionScreen() {
   } = useAiConversation(sessionId, grammarTopics);
 
   const [lookupText, setLookupText] = useState<string | null>(null);
+  // Conversation mode is another view over this same session, so a local flag
+  // is the whole of it — no second data path, no Context for one boolean.
+  const [mode, setMode] = useState<'chat' | 'ptt'>('chat');
+  const [showVoiceDownload, setShowVoiceDownload] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
   const [showEndPrompt, setShowEndPrompt] = useState(false);
   const [endingReason, setEndingReason] = useState<'ai_wrap_up' | 'user_end' | null>(null);
   const scrollRef = useRef<ScrollView>(null);
@@ -119,6 +128,28 @@ export default function ConversationSessionScreen() {
     setEndingReason(null);
     router.replace(`/converse/summary/${sessionId}`);
   }
+
+  /**
+   * The mic is one entry point covering both states (FR90): enter conversation
+   * mode when the models are there, prompt to fetch them when they are not.
+   * Presence is read from disk on every tap rather than remembered.
+   */
+  async function handleMicPress() {
+    setVoiceError(null);
+    const downloaded = await areVoiceModelsDownloaded();
+    if (!downloaded.ok) {
+      setVoiceError(downloaded.error.userMessage ?? downloaded.error.message);
+      return;
+    }
+    if (downloaded.value) {
+      setMode('ptt');
+      return;
+    }
+    setShowVoiceDownload(true);
+  }
+
+  const latestAssistantText =
+    [...messages].reverse().find((message) => message.role === 'assistant')?.content ?? null;
 
   function handleKeepTalking() {
     setShowEndPrompt(false);
@@ -262,14 +293,53 @@ export default function ConversationSessionScreen() {
             </View>
           )}
 
+          {voiceError ? (
+            <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
+              <Text accessibilityLiveRegion="polite" className="text-body text-feedback-incorrect">
+                {voiceError}
+              </Text>
+            </View>
+          ) : null}
+
+          {showVoiceDownload ? (
+            <VoiceModelDownloadPrompt
+              onCancel={() => setShowVoiceDownload(false)}
+              onDownloaded={() => {
+                setShowVoiceDownload(false);
+                setMode('ptt');
+              }}
+            />
+          ) : null}
+
           {!ended ? (
             <Composer
               disabled={isStreaming || endPromptVisible}
               onSend={(text) => send(text)}
+              onMicPress={() => {
+                void handleMicPress();
+              }}
             />
           ) : null}
         </KeyboardAvoidingView>
       )}
+
+      {/*
+        A full-screen Modal rather than a swapped-out view: conversation mode has
+        to cover the tab bar too (UX-DR21), and the tab bar belongs to the parent
+        navigator. The chat below stays mounted and untouched, which is why
+        leaving needs no reconciliation.
+      */}
+      <Modal
+        animationType="slide"
+        visible={mode === 'ptt'}
+        onRequestClose={() => setMode('chat')}>
+        <PttOverlay
+          assistantText={latestAssistantText}
+          isStreaming={isStreaming}
+          onSend={(text) => send(text)}
+          onExit={() => setMode('chat')}
+        />
+      </Modal>
 
       <WordLookupSheet
         visible={lookupText !== null}

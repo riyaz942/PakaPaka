@@ -35,6 +35,7 @@ export const PREFERENCE_KEYS = {
   aiActiveProvider: 'ai_active_provider',
   aiOpenAiModel: 'ai_openai_model',
   aiAnthropicModel: 'ai_anthropic_model',
+  cloudSttOptIn: 'cloud_stt_opt_in',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -367,6 +368,22 @@ export function getAiActiveProvider(userDb: SQLiteDatabase): string | null {
 
 export function setAiActiveProvider(userDb: SQLiteDatabase, provider: string): void {
   setPreference(userDb, PREFERENCE_KEYS.aiActiveProvider, provider);
+}
+
+/**
+ * Whether speech is transcribed by the learner's cloud provider instead of the
+ * on-device model (FR99, UX-DR33). Default OFF.
+ *
+ * This is the only thing that can route speech off the device, and it is never
+ * consulted as a fallback: on-device STT failing does not reach for the cloud,
+ * and this being on does not fall back to on-device. One path, chosen visibly.
+ */
+export function getCloudSttOptIn(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.cloudSttOptIn) === 'true';
+}
+
+export function setCloudSttOptIn(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.cloudSttOptIn, enabled ? 'true' : 'false');
 }
 
 /** Per-provider model id override. Null means the adapter's documented default. */

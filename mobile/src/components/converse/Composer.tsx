@@ -8,21 +8,29 @@ import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 type ComposerProps = {
   /** Resolves true when the turn was accepted (draft may clear). */
   onSend: (text: string) => boolean | Promise<boolean>;
+  /**
+   * Promotes the session to conversation mode (FR90). Omitted on surfaces that
+   * do not host voice, which is why the mic is conditional rather than always
+   * rendered and sometimes inert.
+   */
+  onMicPress?: () => void;
   disabled?: boolean;
 };
 
 /**
  * The chat input.
  *
- * There is deliberately no mic button: push-to-talk, on-device STT/TTS, and the
- * mic-to-conversation-mode promotion are Story 5.2. A missing mic affordance
- * here is the correct shape for this story, not a gap.
+ * The mic is the single entry point to voice (FR90): it reports the tap and the
+ * session screen decides what happens — enter conversation mode, or prompt for
+ * the model download first. One button covers both states, so the learner never
+ * has to know which one they are in.
  */
-export function Composer({ onSend, disabled = false }: ComposerProps) {
+export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps) {
   const [draft, setDraft] = useState('');
   const [isSending, setIsSending] = useState(false);
   const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
   const canSend = draft.trim().length > 0 && !disabled && !isSending;
+  const canSpeak = !disabled && !isSending;
 
   async function handleSend() {
     if (!canSend) {
@@ -51,6 +59,19 @@ export function Composer({ onSend, disabled = false }: ComposerProps) {
         placeholder="日本語で書いてみましょう"
         value={draft}
       />
+      {onMicPress ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Speak instead of typing"
+          accessibilityState={{ disabled: !canSpeak }}
+          disabled={!canSpeak}
+          onPress={onMicPress}
+          testID="composer-mic"
+          className="min-h-[44px] min-w-[44px] items-center justify-center rounded-radius-md bg-surface-elevated">
+          <MaterialIcons name="mic" size={20} color={canSpeak ? colors.primary : colors.secondary} />
+        </Pressable>
+      ) : null}
+
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Send message"

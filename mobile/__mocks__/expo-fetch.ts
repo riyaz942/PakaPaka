@@ -13,12 +13,16 @@ type MockResponse = {
   errorBody: string;
   /** Throw partway through the stream, to exercise the partial-failure path. */
   throwAfterChunks?: number;
+  /** Whole-body JSON, for the non-streaming calls (cloud transcription). */
+  json?: unknown;
 };
 
 type MockCall = {
   url: string;
   headers: Record<string, string>;
   body: string;
+  /** The unstringified body, so form-data fields stay inspectable. */
+  rawBody: unknown;
 };
 
 const queue: MockResponse[] = [];
@@ -41,6 +45,11 @@ export function __mockEnqueueSseFailure(chunks: string[], throwAfterChunks: numb
   queue.push({ ok: true, status: 200, chunks, errorBody: '', throwAfterChunks });
 }
 
+/** Queue a successful non-streaming JSON response. */
+export function __mockEnqueueJsonResponse(json: unknown): void {
+  queue.push({ ok: true, status: 200, chunks: [], errorBody: '', json });
+}
+
 /** Queue a non-2xx response. */
 export function __mockEnqueueHttpError(status: number, errorBody = ''): void {
   queue.push({ ok: false, status, chunks: [], errorBody });
@@ -60,6 +69,7 @@ export async function fetch(url: string, init: RequestInit) {
     url,
     headers: (init.headers ?? {}) as Record<string, string>,
     body: String(init.body ?? ''),
+    rawBody: init.body,
   });
 
   if (networkError) {
@@ -79,6 +89,16 @@ export async function fetch(url: string, init: RequestInit) {
       status: queued.status,
       body: null,
       text: async () => queued.errorBody,
+    };
+  }
+
+  if (queued.json !== undefined) {
+    return {
+      ok: true,
+      status: queued.status,
+      body: null,
+      text: async () => JSON.stringify(queued.json),
+      json: async () => queued.json,
     };
   }
 
