@@ -11,6 +11,11 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {
+  SafeAreaProvider,
+  useSafeAreaFrame,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
@@ -46,6 +51,10 @@ export default function ConversationSessionScreen() {
   const sessionId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
   const { userDb } = useDatabase();
   const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  // Insets do not cross into a react-native Modal on Android, so conversation
+  // mode gets its own provider seeded with what this screen already measured.
+  const safeAreaFrame = useSafeAreaFrame();
+  const safeAreaInsets = useSafeAreaInsets();
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
   const [online, setOnline] = useState<boolean | null>(null);
   const [grammarTopics, setGrammarTopics] = useState<GrammarPromptTopic[]>([]);
@@ -110,6 +119,8 @@ export default function ConversationSessionScreen() {
   const [showEndPrompt, setShowEndPrompt] = useState(false);
   const [endingReason, setEndingReason] = useState<'ai_wrap_up' | 'user_end' | null>(null);
   const scrollRef = useRef<ScrollView>(null);
+  /** Guards against a second mic tap racing the first presence check. */
+  const micCheckRef = useRef(false);
   const ended = Boolean(session?.endedAt);
 
   const endPromptVisible = showEndPrompt || wrapUpSignalled;
@@ -122,12 +133,20 @@ export default function ConversationSessionScreen() {
   }, [wrapUpSignalled]);
 
   // PTT is a covering Modal — wrap-up, session-ended, and offline UI live under
-  // chat. Drop back so Finish / Keep talking / offline messaging stay reachable.
+  // chat. Drop back so Finish / Keep talking / offline messaging stay reachable,
+  // and clear the voice surfaces that no longer have a session to speak into.
+  const pttBlocked = endPromptVisible || ended || online === false;
+  // Read after an await, where the closure's copy would already be stale.
+  const pttBlockedRef = useRef(pttBlocked);
+  pttBlockedRef.current = pttBlocked;
+
   useEffect(() => {
-    if (endPromptVisible || ended || online === false) {
+    if (pttBlocked) {
       setMode('chat');
+      setShowVoiceDownload(false);
+      setVoiceError(null);
     }
-  }, [endPromptVisible, ended, online]);
+  }, [pttBlocked]);
 
   async function handleFinish() {
     const reason = endingReason ?? (wrapUpSignalled ? 'ai_wrap_up' : 'user_end');
@@ -138,22 +157,48 @@ export default function ConversationSessionScreen() {
   }
 
   /**
+   * Both routes into conversation mode land here rather than calling `setMode`
+   * directly: the presence check and the download both resolve long after the
+   * tap, by which time wrap-up, Finish, or going offline may have claimed the
+   * screen — and the overlay would cover the only controls for those.
+   */
+  function enterPttMode() {
+    setShowVoiceDownload(false);
+    if (pttBlockedRef.current) {
+      return;
+    }
+    // One presentation at a time: iOS drops a Modal raised over another.
+    setLookupText(null);
+    setMode('ptt');
+  }
+
+  /**
    * The mic is one entry point covering both states (FR90): enter conversation
    * mode when the models are there, prompt to fetch them when they are not.
    * Presence is read from disk on every tap rather than remembered.
    */
   async function handleMicPress() {
+    if (micCheckRef.current) {
+      return;
+    }
+    micCheckRef.current = true;
     setVoiceError(null);
-    const downloaded = await areVoiceModelsDownloaded();
-    if (!downloaded.ok) {
-      setVoiceError(downloaded.error.userMessage ?? downloaded.error.message);
-      return;
+    try {
+      const downloaded = await areVoiceModelsDownloaded();
+      if (!downloaded.ok) {
+        setVoiceError(downloaded.error.userMessage ?? downloaded.error.message);
+        return;
+      }
+      if (downloaded.value) {
+        enterPttMode();
+        return;
+      }
+      if (!pttBlockedRef.current) {
+        setShowVoiceDownload(true);
+      }
+    } finally {
+      micCheckRef.current = false;
     }
-    if (downloaded.value) {
-      setMode('ptt');
-      return;
-    }
-    setShowVoiceDownload(true);
   }
 
   const latestAssistantText =
@@ -312,10 +357,7 @@ export default function ConversationSessionScreen() {
           {showVoiceDownload ? (
             <VoiceModelDownloadPrompt
               onCancel={() => setShowVoiceDownload(false)}
-              onDownloaded={() => {
-                setShowVoiceDownload(false);
-                setMode('ptt');
-              }}
+              onDownloaded={enterPttMode}
             />
           ) : null}
 
@@ -341,12 +383,15 @@ export default function ConversationSessionScreen() {
         animationType="slide"
         visible={mode === 'ptt'}
         onRequestClose={() => setMode('chat')}>
-        <PttOverlay
-          assistantText={latestAssistantText}
-          isStreaming={isStreaming}
-          onSend={(text) => send(text)}
-          onExit={() => setMode('chat')}
-        />
+        <SafeAreaProvider initialMetrics={{ frame: safeAreaFrame, insets: safeAreaInsets }}>
+          <PttOverlay
+            assistantText={latestAssistantText}
+            conversationError={error ? (error.userMessage ?? error.message) : null}
+            isStreaming={isStreaming}
+            onSend={(text) => send(text)}
+            onExit={() => setMode('chat')}
+          />
+        </SafeAreaProvider>
       </Modal>
 
       <WordLookupSheet

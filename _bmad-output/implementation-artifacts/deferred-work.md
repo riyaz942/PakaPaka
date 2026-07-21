@@ -152,3 +152,11 @@
 
 - **`getRequiredParentsForItems` only reads `requires`** — real radical→kanji edges are `builds_on`, so kanji lock/unlock and “Built from” parents stay empty against bundled curriculum. Pre-existing graph/API mismatch; unlock fix is broader than this story’s UI wiring. [`mobile/src/data/curriculum/itemRepository.ts`]
 - **No error handling around `setPersonalMnemonic` / `clearPersonalMnemonic` in the editor** — repo can throw (e.g. `parseItemId`); pre-existing user-repo pattern. [`mobile/src/components/learn/PersonalMnemonicEditor.tsx`]
+
+## Deferred from: code review of 5-2-push-to-talk-voice-with-on-device-tts-stt — Chunk D (2026-07-21)
+
+- **Connectivity is refreshed only on focus** — going offline while conversation mode is open is never noticed; the offline block renders under the covering Modal and sends keep failing. Pre-existing pattern, also deferred in Chunk B. [`mobile/src/app/(tabs)/converse/session/[id].tsx`]
+- **Exit / Android back while recording tears the overlay down mid-capture** — `releaseAudioSession` stops the recorder so nothing leaks, but the utterance is dropped with no explanation to the learner. [`mobile/src/components/converse/PttOverlay.tsx`]
+- **STT/TTS models are released and re-loaded on every chat↔PTT toggle** — deliberate memory decision (whisper-small is hundreds of MB resident); the cost is a multi-second stall on re-entry that needs on-device measurement before deciding whether to cache. [`mobile/src/components/converse/PttOverlay.tsx`]
+- **PTT state is not reset when `sessionId` changes without a remount** — a deep link to another conversation while this screen is on top would leave the overlay bound to the previous session's `send`. Not reachable through current navigation. [`mobile/src/app/(tabs)/converse/session/[id].tsx`]
+- **Non-string `ResourceSource` values can never satisfy the presence check** — `fileNameOf` returns null, so `areVoiceModelsDownloaded` stays false and the mic would prompt for an already-completed download forever. Not reachable with the pinned models (all remote URLs); the new test helpers filter the case out. [`mobile/src/data/ai/voice/modelDownloadManager.ts`]

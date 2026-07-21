@@ -37,6 +37,7 @@ jest.mock('@/data/user/preferencesRepository', () => ({
 function renderOverlay(overrides: Partial<React.ComponentProps<typeof PttOverlay>> = {}) {
   const props = {
     assistantText: '元気[げんき]ですか。' as string | null,
+    conversationError: null as string | null,
     isStreaming: false,
     onSend: jest.fn().mockResolvedValue(true),
     onExit: jest.fn(),
@@ -114,6 +115,7 @@ describe('PttOverlay', () => {
         }}>
         <PttOverlay
           assistantText="元気[げんき]ですか。"
+          conversationError={null}
           isStreaming={false}
           onSend={onSend}
           onExit={onExit}
@@ -235,6 +237,24 @@ describe('PttOverlay', () => {
 
     await waitFor(() => expect(screen.getByTestId('ptt-assistant-line')).toBeTruthy());
     expect(screen.queryByTestId('chat-bubble-lookup')).toBeNull();
+  });
+
+  it('shows the conversation error here, since the chat banner is under this Modal', async () => {
+    renderOverlay({ conversationError: 'Add an API key in Settings to start chatting.' });
+
+    expect(screen.getByTestId('ptt-error')).toBeTruthy();
+    expect(screen.getByText('Add an API key in Settings to start chatting.')).toBeTruthy();
+  });
+
+  it('puts the learner’s own voice fault ahead of a stale conversation error', async () => {
+    __mockSetPermission('Undetermined');
+    __mockSetPermissionRequestResult('Denied');
+    renderOverlay({ assistantText: null, conversationError: 'That reply did not arrive.' });
+
+    fireEvent(screen.getByTestId('ptt-button'), 'pressIn');
+
+    await waitFor(() => expect(screen.getByText(/microphone access/i)).toBeTruthy());
+    expect(screen.queryByText('That reply did not arrive.')).toBeNull();
   });
 
   it('disables hold-to-speak while a reply is streaming', async () => {

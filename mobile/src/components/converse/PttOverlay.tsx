@@ -22,6 +22,13 @@ import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 type PttOverlayProps = {
   /** Latest assistant turn in curriculum bracket notation, or null before one exists. */
   assistantText: string | null;
+  /**
+   * The conversation's own error (provider, config, stream). It is shown here
+   * because the chat banner that normally carries it sits under this Modal, and
+   * `send` reports the turn as accepted the moment it is committed — so a failed
+   * reply would otherwise look like the turn simply vanished.
+   */
+  conversationError: string | null;
   isStreaming: boolean;
   /** The same `send` chat mode uses — resolves true once the turn is committed. */
   onSend: (text: string) => boolean | Promise<boolean>;
@@ -47,7 +54,13 @@ type Phase = 'idle' | 'recording' | 'transcribing' | 'sending';
  * what was logged: every turn in the transcript was confirmed text before it
  * went out.
  */
-export function PttOverlay({ assistantText, isStreaming, onSend, onExit }: PttOverlayProps) {
+export function PttOverlay({
+  assistantText,
+  conversationError,
+  isStreaming,
+  onSend,
+  onExit,
+}: PttOverlayProps) {
   const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
   const { userDb } = useDatabase();
   const [phase, setPhase] = useState<Phase>('idle');
@@ -190,6 +203,8 @@ export function PttOverlay({ assistantText, isStreaming, onSend, onExit }: PttOv
   const isBusy = phase === 'transcribing' || phase === 'sending';
   const micDisabled = isBusy || speaking || isStreaming;
   const canSend = transcript.trim().length > 0 && phase === 'idle' && !isStreaming;
+  // A voice fault the learner just caused reads ahead of a stale reply failure.
+  const shownError = error ?? conversationError;
 
   return (
     <SafeAreaView className="flex-1 bg-background" edges={['top', 'bottom', 'left', 'right']}>
@@ -222,11 +237,12 @@ export function PttOverlay({ assistantText, isStreaming, onSend, onExit }: PttOv
           )}
         </View>
 
-        {error ? (
+        {shownError ? (
           <Text
             accessibilityLiveRegion="polite"
-            className="mb-space-md text-center text-body-sm text-feedback-incorrect">
-            {error}
+            className="mb-space-md text-center text-body-sm text-feedback-incorrect"
+            testID="ptt-error">
+            {shownError}
           </Text>
         ) : null}
 

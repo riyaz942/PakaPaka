@@ -63,6 +63,7 @@ export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Speak instead of typing"
+          accessibilityHint="Opens conversation mode, or asks first if the voice models still need downloading"
           accessibilityState={{ disabled: !canSpeak }}
           disabled={!canSpeak}
           onPress={onMicPress}

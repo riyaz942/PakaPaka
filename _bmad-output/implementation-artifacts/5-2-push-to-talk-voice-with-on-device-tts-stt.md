@@ -350,6 +350,22 @@ _Chunk C (cloud STT settings + prefs) — 2026-07-21. Chunks D–E still queued.
 - [x] [Review][Defer] `setAiOpenAiBaseUrl` silently no-ops on a rejected URL; unreachable today because `KeySetup.tsx:66` validates first, but a silent drop conflicts with the no-hidden-fallback rule if a future caller skips it [`preferencesRepository.ts:353`] — deferred, defence-in-depth only
 - [x] [Review][Defer] `refresh()` sets state from an unguarded `.then` after a possible unmount [`ByokSettingsSection.tsx:44`] — deferred, pre-existing pattern
 
+_Chunk D (session screen wiring + composer mic) — 2026-07-21. Chunk E still queued._
+
+- [x] [Review][Patch] Conversation errors are invisible in PTT mode — `send()` sets `accepted = true` as soon as the learner's turn is committed, so a provider/stream failure clears the transcript and returns success while the only error banner sits under the covering Modal; the learner's spoken turn vanishes with no reply and no message [`session/[id].tsx:247`] [`session/[id].tsx:344`]
+- [x] [Review][Patch] `setMode('ptt')` from the async mic check and from `onDownloaded` never re-checks wrap-up / ended / offline — the guard effect only fires on dep change, so a state flip *during* the await or the download leaves PTT opening over an unreachable Finish prompt or an ended session where every send fails [`session/[id].tsx:152`] [`session/[id].tsx:317`]
+- [x] [Review][Patch] `handleMicPress` has no in-flight guard — a double tap runs two concurrent presence checks whose results race, leaving the download prompt mounted under the overlay or re-opening it over a promoted session [`session/[id].tsx:145`]
+- [x] [Review][Patch] `showVoiceDownload` and `voiceError` are never cleared by the promote path or by the wrap-up/ended/offline guard — a stale download card (with a transfer still running) and a stale error survive into a session the learner can no longer speak into [`session/[id].tsx:126`] [`session/[id].tsx:152`]
+- [x] [Review][Patch] `SafeAreaView` inside a bare RN `Modal` gets no insets on Android (no provider inside the modal) — exit control and the 88px hold button collide with the status bar / gesture pill; the new test pins insets to 0 so it can never catch it [`session/[id].tsx:340`]
+- [x] [Review][Patch] Test gaps: the `!downloaded.ok` voice-error branch has zero coverage, AC5's "never an automatic download" is never asserted (`__mockFetchCallCount()` unused), and the AC3 "transcript intact" check reads a constant fixture no path could mutate [`session/[id].test.tsx:132`] [`session/[id].test.tsx:169`]
+- [x] [Review][Patch] Mic button has no `accessibilityHint` — one tap may open full-screen conversation mode or a ~1 GB download prompt, with no advance signal (same class as the Chunk C hint fix) [`Composer.tsx:62`]
+- [x] [Review][Patch] PTT `Modal` can be presented while `WordLookupSheet`'s modal is up (download completing behind the sheet) — iOS drops the second presentation, leaving `mode === 'ptt'` with no overlay and no exit control [`session/[id].tsx:340`]
+- [x] [Review][Defer] Connectivity is refreshed only on focus, so going offline mid-PTT is never noticed and the offline block stays under the Modal [`session/[id].tsx:53`] — deferred, pre-existing (same finding deferred in Chunk B)
+- [x] [Review][Defer] Exit / Android back while recording unmounts the overlay mid-capture; `releaseAudioSession` stops the recorder, so the residual risk is a dropped utterance with no explanation [`PttOverlay.tsx:69`] — deferred, Chunk B surface, low residual risk
+- [x] [Review][Defer] STT/TTS models are released and re-loaded on every chat↔PTT toggle — deliberate memory decision, but a multi-second stall on re-entry needs on-device measurement [`PttOverlay.tsx:69`] — deferred, needs device verification
+- [x] [Review][Defer] `mode` / `showVoiceDownload` / `voiceError` are not reset if `sessionId` changes without a remount (deep link to another conversation while this screen is on top) [`session/[id].tsx:107`] — deferred, unreachable through current navigation
+- [x] [Review][Defer] A non-string `ResourceSource` can never satisfy the presence check, so the mic would prompt for an already-completed download forever; the new test helpers step around exactly that case [`modelDownloadManager.ts:22`] — deferred, Chunk A scope, not reachable with the pinned models
+
 ## Change Log
 
 | Date | Change |
@@ -361,3 +377,5 @@ _Chunk C (cloud STT settings + prefs) — 2026-07-21. Chunks D–E still queued.
 | 2026-07-21 | Code review Chunk B patches applied (press race, TTS/streaming gates, spokenRef, wrap-up/offline exit, privacy copy, download cancel, safe area, empty STT hint, tests). |
 | 2026-07-21 | Code review Chunk C (cloud STT settings + prefs): findings recorded under Review Findings. |
 | 2026-07-21 | Code review Chunk C patches applied (toggle gate matches `transcribeTurn`'s active-provider rule, opt-in always switchable off and cleared on key removal, defined colour token, a11y hint, 9 new tests). |)
+| 2026-07-21 | Code review Chunk D (session wiring + composer mic): findings recorded under Review Findings. |
+| 2026-07-21 | Code review Chunk D patches applied (conversation error surfaced in PTT, guarded PTT entry after async waits, mic in-flight guard, stale prompt/error cleared, safe-area provider inside the Modal, download cancelled on prompt unmount, mic a11y hint, 6 new tests). |

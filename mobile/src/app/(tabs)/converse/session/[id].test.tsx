@@ -3,6 +3,8 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
+  __mockFailListDownloaded,
+  __mockFetchCallCount,
   __mockMarkDownloaded,
   __mockResetResourceFetcher,
   __mockSetRemoteSize,
@@ -15,7 +17,12 @@ import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import ConversationSessionScreen from './[id]';
 
 const mockUserDb = {};
-const mockSend = jest.fn().mockResolvedValue(true);
+// Commits the turn the way the real hook does, so "the transcript survives the
+// exit" can be asserted against a list the test actually changed.
+const mockSend = jest.fn(async (text: string) => {
+  mockMessages = [...mockMessages, { id: `u${mockMessages.length}`, role: 'user', content: text }];
+  return true;
+});
 
 jest.mock('expo-router', () => ({
   router: { replace: jest.fn(), push: jest.fn() },
@@ -73,6 +80,18 @@ jest.mock('@/data/hooks/useFuriganaPreference', () => ({
 
 function renderScreen() {
   return render(
+    <SafeAreaProvider
+      initialMetrics={{
+        frame: { x: 0, y: 0, width: 390, height: 844 },
+        insets: { top: 0, left: 0, right: 0, bottom: 0 },
+      }}>
+      <ConversationSessionScreen />
+    </SafeAreaProvider>,
+  );
+}
+
+function rerenderScreen(rerender: (ui: React.ReactElement) => void) {
+  rerender(
     <SafeAreaProvider
       initialMetrics={{
         frame: { x: 0, y: 0, width: 390, height: 844 },
@@ -168,11 +187,59 @@ describe('ConversationSessionScreen voice promotion', () => {
     fireEvent.press(screen.getByTestId('composer-mic'));
     await waitFor(() => expect(screen.getByTestId('ptt-overlay')).toBeTruthy());
 
+    // A turn confirmed and sent from conversation mode, through the same send.
+    fireEvent.changeText(screen.getByLabelText('Your spoken message'), 'げんきです');
+    fireEvent.press(screen.getByTestId('ptt-send'));
+    await waitFor(() => expect(mockSend).toHaveBeenCalledWith('げんきです'));
+
     fireEvent.press(screen.getByTestId('ptt-exit'));
 
     await waitFor(() => expect(screen.queryByTestId('ptt-overlay')).toBeNull());
-    // The same message list the chat view had before — nothing reconciled.
+    // Both turns are in the chat below, unchanged — nothing reconciled.
     expect(screen.getByText('元気')).toBeTruthy();
+    expect(screen.getByText('げんきです')).toBeTruthy();
+  });
+
+  it('starts no download by itself — the mic only ever asks (AC5)', async () => {
+    sizeModels();
+    renderScreen();
+
+    await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());
+    expect(__mockFetchCallCount()).toBe(0);
+
+    fireEvent.press(screen.getByTestId('composer-mic'));
+    await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+
+    expect(__mockFetchCallCount()).toBe(0);
+  });
+
+  it('shows why voice is unavailable when the presence check fails', async () => {
+    __mockFailListDownloaded(new Error('EPERM: permission denied'));
+    renderScreen();
+
+    await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());
+    fireEvent.press(screen.getByTestId('composer-mic'));
+
+    await waitFor(() =>
+      expect(screen.getByText(/could not check whether the voice models/i)).toBeTruthy(),
+    );
+    expect(screen.queryByTestId('ptt-overlay')).toBeNull();
+    expect(screen.queryByTestId('voice-model-download')).toBeNull();
+  });
+
+  it('drops the download prompt when wrap-up arrives', async () => {
+    sizeModels();
+    const { rerender } = renderScreen();
+
+    await waitFor(() => expect(screen.getByTestId('composer-mic')).toBeTruthy());
+    fireEvent.press(screen.getByTestId('composer-mic'));
+    await waitFor(() => expect(screen.getByTestId('voice-model-download')).toBeTruthy());
+
+    mockWrapUpSignalled = true;
+    rerenderScreen(rerender);
+
+    await waitFor(() => expect(screen.queryByTestId('voice-model-download')).toBeNull());
+    expect(screen.getByTestId('confirm-end-session')).toBeTruthy();
   });
 
   it('drops conversation mode when wrap-up arrives so Finish is reachable', async () => {
@@ -184,15 +251,7 @@ describe('ConversationSessionScreen voice promotion', () => {
     await waitFor(() => expect(screen.getByTestId('ptt-overlay')).toBeTruthy());
 
     mockWrapUpSignalled = true;
-    rerender(
-      <SafeAreaProvider
-        initialMetrics={{
-          frame: { x: 0, y: 0, width: 390, height: 844 },
-          insets: { top: 0, left: 0, right: 0, bottom: 0 },
-        }}>
-        <ConversationSessionScreen />
-      </SafeAreaProvider>,
-    );
+    rerenderScreen(rerender);
 
     await waitFor(() => expect(screen.queryByTestId('ptt-overlay')).toBeNull());
     expect(screen.getByTestId('confirm-end-session')).toBeTruthy();

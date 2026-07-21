@@ -44,6 +44,12 @@ export function VoiceModelDownloadPrompt({
     mountedRef.current = true;
     return () => {
       mountedRef.current = false;
+      // Unmounting is not a reason to keep fetching hundreds of megabytes with
+      // no progress display and no way to stop it.
+      if (downloadingRef.current) {
+        downloadingRef.current = false;
+        void cancelVoiceModelDownload();
+      }
     };
   }, []);
 
