@@ -39,6 +39,7 @@ export default function ConverseScreen() {
   const [online, setOnline] = useState<boolean | null>(null);
   const [recentGrammar, setRecentGrammar] = useState<RecentGrammarItem[]>([]);
   const [allGrammar, setAllGrammar] = useState<RecentGrammarItem[]>([]);
+  const [grammarLoadFailed, setGrammarLoadFailed] = useState(false);
   const startingRef = useRef(false);
 
   useFocusEffect(
@@ -55,11 +56,14 @@ export default function ConverseScreen() {
       try {
         setRecentGrammar(listRecentGrammar(userDb));
         setAllGrammar(listAllGrammar(userDb));
+        setGrammarLoadFailed(false);
       } catch {
-        // Grammar decorates start options; empty lists just fall back to
-        // static descriptions / an empty choose-grammar sheet.
+        // A failed read must not read as "you have no grammar" — the picker
+        // says so and disables the grammar options rather than starting an
+        // ungrounded session under a grammar label.
         setRecentGrammar([]);
         setAllGrammar([]);
+        setGrammarLoadFailed(true);
       }
 
       return () => {
@@ -91,6 +95,7 @@ export default function ConverseScreen() {
         model: getAiModel(userDb, provider) ?? DEFAULT_MODELS[provider],
         mode: request.mode,
         topicItemId: request.topicItemId ?? null,
+        topicItemIds: request.topicItemIds ?? [],
       });
       router.push(`/converse/session/${session.id}`);
     } finally {
@@ -145,6 +150,7 @@ export default function ConverseScreen() {
         <ConversationStartPicker
           recentGrammar={recentGrammar}
           allGrammar={allGrammar}
+          grammarLoadFailed={grammarLoadFailed}
           onStart={(request) => {
             void handleStart(request);
           }}

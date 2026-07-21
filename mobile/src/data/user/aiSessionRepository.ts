@@ -23,6 +23,7 @@ type SessionRow = {
   model: string;
   mode: string;
   topic_item_id: string | null;
+  topic_item_ids: string | null;
   started_at: string;
   ended_at: string | null;
   ended_reason: string | null;
@@ -71,6 +72,28 @@ function parseSummary(json: string | null): SessionSummary | null {
   }
 }
 
+/**
+ * The grammar set the session was started with. Stored as JSON so the ids
+ * survive a resume unchanged; a corrupt or pre-migration value degrades to the
+ * single `topic_item_id`, which is what every row written before 018 has.
+ */
+function parseTopicItemIds(json: string | null, fallback: string | null): string[] {
+  if (json) {
+    try {
+      const parsed: unknown = JSON.parse(json);
+      if (Array.isArray(parsed)) {
+        const ids = parsed.filter((entry): entry is string => typeof entry === 'string');
+        if (ids.length > 0) {
+          return ids;
+        }
+      }
+    } catch {
+      // Fall through to the single-id form below.
+    }
+  }
+  return fallback ? [fallback] : [];
+}
+
 function toSessionRecord(row: SessionRow): AiSessionRecord {
   return {
     id: row.id,
@@ -78,6 +101,7 @@ function toSessionRecord(row: SessionRow): AiSessionRecord {
     model: row.model,
     mode: isConversationMode(row.mode) ? row.mode : 'random',
     topicItemId: row.topic_item_id,
+    topicItemIds: parseTopicItemIds(row.topic_item_ids, row.topic_item_id),
     startedAt: row.started_at,
     endedAt: row.ended_at,
     endedReason: isEndReason(row.ended_reason) ? row.ended_reason : null,
@@ -119,21 +143,30 @@ export function createAiSession(
     model: string;
     mode: ConversationMode;
     topicItemId?: string | null;
+    /** The full grammar set this session is grounded in, pinned at start. */
+    topicItemIds?: string[];
   },
 ): AiSessionRecord {
   const id = randomUUID();
   const startedAt = new Date().toISOString();
+  const topicItemIds =
+    options.topicItemIds && options.topicItemIds.length > 0
+      ? options.topicItemIds
+      : options.topicItemId
+        ? [options.topicItemId]
+        : [];
 
   userDb.runSync(
     `INSERT INTO ai_sessions
-       (id, provider, model, mode, topic_item_id, started_at, ended_at, ended_reason,
-        turn_count, summary_json, summary_generated_at)
-     VALUES (?, ?, ?, ?, ?, ?, NULL, NULL, 0, NULL, NULL)`,
+       (id, provider, model, mode, topic_item_id, topic_item_ids, started_at, ended_at,
+        ended_reason, turn_count, summary_json, summary_generated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, NULL, NULL, 0, NULL, NULL)`,
     id,
     options.provider,
     options.model,
     options.mode,
     options.topicItemId ?? null,
+    topicItemIds.length > 0 ? JSON.stringify(topicItemIds) : null,
     startedAt,
   );
 
@@ -143,6 +176,7 @@ export function createAiSession(
     model: options.model,
     mode: options.mode,
     topicItemId: options.topicItemId ?? null,
+    topicItemIds,
     startedAt,
     endedAt: null,
     endedReason: null,

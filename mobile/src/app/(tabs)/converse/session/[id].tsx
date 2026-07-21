@@ -83,13 +83,20 @@ export default function ConversationSessionScreen() {
       return;
     }
     try {
-      if (record.mode === 'practise_recent_grammar') {
-        setGrammarTopics(listRecentGrammar(userDb));
+      // Replay the set pinned at session start. Re-deriving "recent" here would
+      // silently re-ground a resumed conversation in whatever the learner has
+      // studied since.
+      if (record.topicItemIds.length > 0) {
+        const topics = record.topicItemIds
+          .map((itemId) => getGrammarTopicById(userDb, itemId))
+          .filter((topic): topic is NonNullable<typeof topic> => topic !== null);
+        setGrammarTopics(topics);
         return;
       }
-      if (record.mode === 'choose_grammar' && record.topicItemId) {
-        const topic = getGrammarTopicById(userDb, record.topicItemId);
-        setGrammarTopics(topic ? [topic] : []);
+      // Sessions started before the set was pinned (migration 018) fall back to
+      // the live list, which is the behaviour they were created under.
+      if (record.mode === 'practise_recent_grammar') {
+        setGrammarTopics(listRecentGrammar(userDb));
         return;
       }
       setGrammarTopics([]);
@@ -106,6 +113,8 @@ export default function ConversationSessionScreen() {
     wrapUpSignalled,
     error,
     send,
+    retry,
+    canRetry,
     end,
     dismissWrapUp,
   } = useAiConversation(sessionId, grammarTopics);
@@ -291,9 +300,22 @@ export default function ConversationSessionScreen() {
 
           {error ? (
             <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
-              <Text accessibilityLiveRegion="polite" className="text-body text-feedback-error">
+              <Text accessibilityLiveRegion="polite" className="text-body text-feedback-incorrect">
                 {error.userMessage ?? error.message}
               </Text>
+              {/* Resending re-asks for a reply to the turn already sent, rather
+                  than stacking another message onto a transcript that stalled. */}
+              {canRetry ? (
+                <Button
+                  className="mt-space-md"
+                  label="Resend"
+                  onPress={() => {
+                    void retry();
+                  }}
+                  testID="conversation-retry"
+                  variant="secondary"
+                />
+              ) : null}
             </View>
           ) : null}
 
@@ -397,6 +419,7 @@ export default function ConversationSessionScreen() {
       <WordLookupSheet
         visible={lookupText !== null}
         messageText={lookupText ?? ''}
+        session={session ? { provider: session.provider, model: session.model } : null}
         onClose={() => setLookupText(null)}
       />
     </View>

@@ -42,9 +42,14 @@ export type StreamFailure = {
   cause?: unknown;
 };
 
-/** Cap on the unfinished SSE block held between wire chunks — a peer that never
- * emits a blank-line delimiter must not grow this without bound. */
-const MAX_SSE_BUFFER_BYTES = 256 * 1024;
+/**
+ * Cap on the *residual* SSE block — the trailing fragment left after every
+ * complete frame has been split off. A peer that never emits a blank-line
+ * delimiter must not grow this without bound. Measured after the split so a
+ * proxy that flushes many well-formed frames in one read is not punished for
+ * the size of a legitimate reply.
+ */
+const MAX_SSE_RESIDUAL_CHARS = 256 * 1024;
 
 const SSE_FIELD_SEPARATOR = /\r?\n/;
 
@@ -146,7 +151,24 @@ export async function streamAssistantTurn(
       headers: httpRequest.headers,
       body: httpRequest.body,
       signal,
+      // NFR24 again: the pre-flight check above only sees the first URL. Left
+      // to itself, fetch would follow a 302 to http:// and replay the key on
+      // the redirect, which is the exact thing that check exists to stop.
+      redirect: 'manual',
     });
+
+    if (response.status >= 300 && response.status < 400) {
+      return {
+        ok: false,
+        error: {
+          code: 'ai_insecure_endpoint',
+          message: `Refusing redirect (HTTP ${response.status}) from ${httpRequest.url}`,
+          userMessage:
+            'Your provider endpoint redirected somewhere else. Point the base URL straight at the API.',
+          partialText: '',
+        },
+      };
+    }
 
     if (!response.ok) {
       const body = await readErrorBody(response);
@@ -196,46 +218,55 @@ export async function streamAssistantTurn(
       return null;
     };
 
-    // Drained via the reader's `done` break below.
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) {
-        break;
+    try {
+      // Drained via the reader's `done` break below.
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+          break;
+        }
+
+        buffer += decoder.decode(value, { stream: true });
+
+        // SSE blocks are separated by a blank line; keep the trailing partial.
+        const blocks = buffer.split(/\r?\n\r?\n/);
+        buffer = blocks.pop() ?? '';
+
+        // Only the leftover fragment is capped — the complete frames just
+        // split off are legitimate however many arrived in one read.
+        if (buffer.length > MAX_SSE_RESIDUAL_CHARS) {
+          return {
+            ok: false,
+            error: {
+              code: 'ai_stream_error',
+              message: 'SSE frame exceeded maximum size without a delimiter',
+              userMessage: 'The reply stopped early.',
+              partialText: accumulated,
+            },
+          };
+        }
+
+        for (const block of blocks) {
+          const failure = processBlock(block);
+          if (failure) {
+            return { ok: false, error: failure };
+          }
+        }
       }
 
-      buffer += decoder.decode(value, { stream: true });
-      if (buffer.length > MAX_SSE_BUFFER_BYTES) {
-        return {
-          ok: false,
-          error: {
-            code: 'ai_stream_error',
-            message: 'SSE buffer exceeded maximum size',
-            userMessage: 'The reply stopped early.',
-            partialText: accumulated,
-          },
-        };
-      }
-
-      // SSE blocks are separated by a blank line; keep the trailing partial.
-      const blocks = buffer.split(/\r?\n\r?\n/);
-      buffer = blocks.pop() ?? '';
-
-      for (const block of blocks) {
-        const failure = processBlock(block);
+      // Flush a trailing multi-byte sequence and any final SSE frame that
+      // lacked a terminating blank line.
+      buffer += decoder.decode();
+      if (buffer.trim().length > 0) {
+        const failure = processBlock(buffer);
         if (failure) {
           return { ok: false, error: failure };
         }
       }
-    }
-
-    // Flush a trailing multi-byte sequence and any final SSE frame that lacked
-    // a terminating blank line.
-    buffer += decoder.decode();
-    if (buffer.trim().length > 0) {
-      const failure = processBlock(buffer);
-      if (failure) {
-        return { ok: false, error: failure };
-      }
+    } finally {
+      // Every exit above leaves the body open otherwise — including the plain
+      // `break`, where cancelling an already-drained stream is a no-op.
+      void reader.cancel().catch(() => {});
     }
 
     return { ok: true, value: { text: accumulated, complete } };

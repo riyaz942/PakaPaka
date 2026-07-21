@@ -16,8 +16,10 @@ import { useDatabase } from '@/data/hooks/useDatabase';
 import {
   getAiActiveProvider,
   getCloudSttOptIn,
+  getWordTranslateOptIn,
   setAiActiveProvider,
   setCloudSttOptIn,
+  setWordTranslateOptIn,
 } from '@/data/user/preferencesRepository';
 import { cn } from '@/utils/cn';
 
@@ -25,6 +27,9 @@ const PROVIDER_LABELS: Record<ByokProvider, string> = {
   openai: 'OpenAI-compatible',
   anthropic: 'Anthropic',
 };
+
+const WORD_TRANSLATE_REASON =
+  'Off, an unknown word still opens with its meaning left blank. On, each tap spends one provider call to translate it.';
 
 /**
  * BYOK key management in Settings (FR88, NFR24).
@@ -40,6 +45,7 @@ export function ByokSettingsSection() {
   const [error, setError] = useState<string | null>(null);
   const [listFailed, setListFailed] = useState(false);
   const [cloudStt, setCloudSttState] = useState(false);
+  const [wordTranslate, setWordTranslateState] = useState(false);
 
   const refresh = useCallback(() => {
     void listConfiguredByokProviders().then((result) => {
@@ -55,6 +61,7 @@ export function ByokSettingsSection() {
     });
     setActiveProviderState(getAiActiveProvider(userDb));
     setCloudSttState(getCloudSttOptIn(userDb));
+    setWordTranslateState(getWordTranslateOptIn(userDb));
   }, [userDb]);
 
   useEffect(refresh, [refresh]);
@@ -196,6 +203,31 @@ export function ByokSettingsSection() {
           />
         </View>
         <Text className="mt-1 text-body-sm text-secondary">{cloudSttReason}</Text>
+      </View>
+
+      {/*
+        Tapping a word the curriculum does not know can spend a provider call on
+        a translation. Off, the word still opens and still says it is outside
+        the curriculum — the toggle buys the billed round-trip, nothing else, so
+        it is the learner's to opt into rather than a silent cost.
+      */}
+      <View className="mt-8 border-t border-border pt-4">
+        <View className="flex-row items-center justify-between">
+          <Text className="flex-1 pr-space-md text-body text-primary">
+            Translate unknown words
+          </Text>
+          <Switch
+            accessibilityHint={WORD_TRANSLATE_REASON}
+            accessibilityLabel="Translate unknown words"
+            onValueChange={(next) => {
+              setWordTranslateOptIn(userDb, next);
+              setWordTranslateState(next);
+            }}
+            testID="word-translate-toggle"
+            value={wordTranslate}
+          />
+        </View>
+        <Text className="mt-1 text-body-sm text-secondary">{WORD_TRANSLATE_REASON}</Text>
       </View>
 
       {isEditing ? (

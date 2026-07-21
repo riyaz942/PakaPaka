@@ -1,6 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import { resolveAiConfig } from '@/data/ai/aiConfig';
+import type { ByokProvider } from '@/data/ai/byokCredential.types';
+import { resolveAiConfigForSession } from '@/data/ai/aiConfig';
 import { streamAssistantTurn } from '@/data/ai/streamingClient';
 import type { Result } from '@/types/result.types';
 
@@ -9,6 +10,10 @@ import type { Result } from '@/types/result.types';
  *
  * Local curriculum lookup is always tried first — this path only runs when the
  * surface form is absent from the bundled items. Never writes SRS state.
+ *
+ * The provider comes from the session the word was read in, not from live
+ * preferences: the word is part of that conversation's transcript, so changing
+ * the active provider in Settings must not redirect it to another endpoint.
  */
 
 export type OffCurriculumTranslation = {
@@ -25,6 +30,11 @@ const TRANSLATE_SYSTEM_PROMPT = [
   'reading is kana (hiragana or katakana). meaning is a short English gloss.',
   'No markdown, no commentary, no furigana brackets.',
 ].join(' ');
+
+function clampGloss(value: string, limit: number): string {
+  const trimmed = value.trim();
+  return trimmed.length > limit ? `${trimmed.slice(0, limit).trimEnd()}…` : trimmed;
+}
 
 function extractJsonObject(text: string): unknown {
   const trimmed = text.trim();
@@ -47,6 +57,8 @@ function extractJsonObject(text: string): unknown {
 export async function translateOffCurriculumWord(
   userDb: SQLiteDatabase,
   text: string,
+  session: { provider: ByokProvider; model: string },
+  signal?: AbortSignal,
 ): Promise<Result<OffCurriculumTranslation>> {
   const trimmed = text.trim();
   if (trimmed.length === 0) {
@@ -60,7 +72,7 @@ export async function translateOffCurriculumWord(
     };
   }
 
-  const configResult = await resolveAiConfig(userDb);
+  const configResult = await resolveAiConfigForSession(userDb, session);
   if (!configResult.ok) {
     return configResult;
   }
@@ -87,6 +99,7 @@ export async function translateOffCurriculumWord(
       maxTokens: MAX_TRANSLATE_TOKENS,
     },
     { onDelta: () => {} },
+    signal,
   );
 
   if (!result.ok) {
@@ -114,8 +127,10 @@ export async function translateOffCurriculumWord(
   }
 
   const record = parsed as { reading?: unknown; meaning?: unknown };
-  const reading = typeof record.reading === 'string' ? record.reading.trim() : '';
-  const meaning = typeof record.meaning === 'string' ? record.meaning.trim() : '';
+  // A model that ignores "compact JSON" can return an essay; this is a one-word
+  // gloss, so trim it to something the sheet can lay out.
+  const reading = typeof record.reading === 'string' ? clampGloss(record.reading, 64) : '';
+  const meaning = typeof record.meaning === 'string' ? clampGloss(record.meaning, 200) : '';
   if (reading.length === 0 && meaning.length === 0) {
     return {
       ok: false,

@@ -23,6 +23,8 @@ type MockCall = {
   body: string;
   /** The unstringified body, so form-data fields stay inspectable. */
   rawBody: unknown;
+  /** Redirect policy, so the NFR24 no-follow guard is assertable. */
+  redirect?: RequestRedirect;
 };
 
 const queue: MockResponse[] = [];
@@ -70,6 +72,7 @@ export async function fetch(url: string, init: RequestInit) {
     headers: (init.headers ?? {}) as Record<string, string>,
     body: String(init.body ?? ''),
     rawBody: init.body,
+    redirect: init.redirect,
   });
 
   if (networkError) {
@@ -125,6 +128,10 @@ export async function fetch(url: string, init: RequestInit) {
             const chunk = queued.chunks[index];
             index += 1;
             return { done: false, value: encoder.encode(chunk) };
+          },
+          // Present on every real reader; callers release the body through it.
+          async cancel() {
+            index = queued.chunks.length;
           },
         };
       },

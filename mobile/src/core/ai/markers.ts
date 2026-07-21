@@ -67,3 +67,25 @@ export function stripControlMarkers(reply: string): MarkerScanResult {
 export function containsControlMarker(partial: string): boolean {
   return AI_CONTROL_MARKERS.some((marker) => partial.includes(marker));
 }
+
+/**
+ * The renderable part of a mid-stream reply.
+ *
+ * A marker can straddle two deltas, so the tail is withheld while it is still a
+ * viable prefix of one (`<<<END_SESS`): that text either completes into a
+ * sentinel and is stripped, or turns out to be ordinary and appears one delta
+ * later. Withholding a few characters is invisible; flashing half a sentinel is
+ * not. Complete markers are removed outright.
+ */
+export function displayableStreamText(partial: string): string {
+  const stripped = containsControlMarker(partial) ? stripControlMarkers(partial).text : partial;
+
+  for (const marker of AI_CONTROL_MARKERS) {
+    for (let length = marker.length - 1; length > 0; length -= 1) {
+      if (stripped.endsWith(marker.slice(0, length))) {
+        return stripped.slice(0, stripped.length - length);
+      }
+    }
+  }
+  return stripped;
+}

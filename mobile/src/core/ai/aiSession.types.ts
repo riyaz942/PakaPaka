@@ -96,6 +96,12 @@ export type AiSessionRecord = {
   model: string;
   mode: ConversationMode;
   topicItemId: string | null;
+  /**
+   * Every grammar item this session was grounded in, pinned when it started.
+   * Resuming replays these rather than re-deriving "recent", which drifts as
+   * the learner studies. Empty for modes that are not grammar-grounded.
+   */
+  topicItemIds: string[];
   startedAt: string;
   endedAt: string | null;
   endedReason: SessionEndReason | null;

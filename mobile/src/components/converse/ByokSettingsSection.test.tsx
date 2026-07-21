@@ -25,6 +25,8 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   getAiActiveProvider: () => mockActiveProvider,
   setAiActiveProvider: jest.fn(),
   getCloudSttOptIn: () => mockCloudSttOptIn,
+  getWordTranslateOptIn: () => false,
+  setWordTranslateOptIn: jest.fn(),
   setCloudSttOptIn: (...args: unknown[]) => mockSetCloudSttOptIn(...args),
 }));
 

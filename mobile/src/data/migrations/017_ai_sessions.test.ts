@@ -25,8 +25,8 @@ describe('017_ai_sessions', () => {
     expect(migration017AiSessions.name).toBe('017_ai_sessions');
   });
 
-  it('is registered last in the migration list with no duplicate versions', () => {
-    expect(migrations[migrations.length - 1]).toBe(migration017AiSessions);
+  it('is registered in the migration list with no duplicate versions', () => {
+    expect(migrations).toContain(migration017AiSessions);
 
     const versions = migrations.map((migration) => migration.version);
     expect(new Set(versions).size).toBe(versions.length);

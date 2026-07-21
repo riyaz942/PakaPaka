@@ -94,6 +94,8 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   setAiOpenAiBaseUrl: jest.fn(),
   // Cloud STT opt-in (Story 5.2) — same reason as the AI reads above.
   getCloudSttOptIn: () => false,
+  getWordTranslateOptIn: () => false,
+  setWordTranslateOptIn: jest.fn(),
   setCloudSttOptIn: jest.fn(),
 }));
 

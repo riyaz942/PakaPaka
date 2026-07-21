@@ -222,6 +222,21 @@ describe('streamAssistantTurn', () => {
     expect(__mockGetFetchCalls()).toHaveLength(0);
   });
 
+  it('refuses to follow a redirect rather than replay the key on the next hop', async () => {
+    // The pre-flight HTTPS check only ever sees the first URL, so a 302 must be
+    // a failure here rather than something fetch quietly follows (NFR24).
+    __mockEnqueueHttpError(302, '');
+
+    const result = await streamAssistantTurn(openAiCompatibleAdapter, request, {
+      onDelta: () => {},
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.error.code).toBe('ai_insecure_endpoint');
+    expect(__mockGetFetchCalls()[0].redirect).toBe('manual');
+  });
+
   it('flushes a trailing SSE frame that lacks a final blank line', async () => {
     // No trailing `\n\n` — the leftover buffer must still be decoded on done.
     __mockEnqueueSseResponse([

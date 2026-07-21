@@ -36,6 +36,7 @@ export const PREFERENCE_KEYS = {
   aiOpenAiModel: 'ai_openai_model',
   aiAnthropicModel: 'ai_anthropic_model',
   cloudSttOptIn: 'cloud_stt_opt_in',
+  wordTranslateOptIn: 'word_translate_opt_in',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -384,6 +385,22 @@ export function getCloudSttOptIn(userDb: SQLiteDatabase): boolean {
 
 export function setCloudSttOptIn(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.cloudSttOptIn, enabled ? 'true' : 'false');
+}
+
+/**
+ * Whether tapping a word the curriculum does not know may spend a provider call
+ * on a translation (FR92). Default OFF.
+ *
+ * Off is not a degraded lookup: the word still opens, still says it is outside
+ * the curriculum, and still never reaches SRS. The only thing the toggle buys
+ * is the billed round-trip, so it is the learner's to opt into.
+ */
+export function getWordTranslateOptIn(userDb: SQLiteDatabase): boolean {
+  return getPreference(userDb, PREFERENCE_KEYS.wordTranslateOptIn) === 'true';
+}
+
+export function setWordTranslateOptIn(userDb: SQLiteDatabase, enabled: boolean): void {
+  setPreference(userDb, PREFERENCE_KEYS.wordTranslateOptIn, enabled ? 'true' : 'false');
 }
 
 /** Per-provider model id override. Null means the adapter's documented default. */
