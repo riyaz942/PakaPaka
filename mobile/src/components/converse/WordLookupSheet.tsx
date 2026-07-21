@@ -1,9 +1,13 @@
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
 import { extractWordCandidates } from '@/core/ai/wordCandidates';
+import {
+  translateOffCurriculumWord,
+  type OffCurriculumTranslation,
+} from '@/data/ai/translateOffCurriculum';
 import { lookupFlaggedWord, type FlaggedWordLookup } from '@/data/ai/wordLookupRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 
@@ -14,21 +18,43 @@ type WordLookupSheetProps = {
   onClose: () => void;
 };
 
+type SelectedLookup =
+  | Extract<FlaggedWordLookup, { kind: 'curriculum' }>
+  | { kind: 'off_curriculum_translated'; translation: OffCurriculumTranslation }
+  | { kind: 'off_curriculum_pending'; text: string }
+  | { kind: 'off_curriculum_failed'; text: string; message: string };
+
 /**
  * Flagged-word lookup (FR92, FR93).
  *
  * A word that exists in the curriculum deep-links to its details page. A word
- * that does not is display-and-translate only — no link, and no SRS row is ever
- * written for it, because SRS state is keyed to a curriculum item id that an
- * off-curriculum word simply does not have.
+ * that does not gets a one-shot BYOK gloss (display-and-translate only) — no
+ * link, and no SRS row is ever written for it, because SRS state is keyed to a
+ * curriculum item id that an off-curriculum word simply does not have.
  */
 export function WordLookupSheet({ visible, messageText, onClose }: WordLookupSheetProps) {
   const { userDb } = useDatabase();
-  const [selected, setSelected] = useState<FlaggedWordLookup | null>(null);
+  const [selected, setSelected] = useState<SelectedLookup | null>(null);
   const candidates = extractWordCandidates(messageText);
 
-  function handleSelect(word: string) {
-    setSelected(lookupFlaggedWord(userDb, word));
+  async function handleSelect(word: string) {
+    const lookup = lookupFlaggedWord(userDb, word);
+    if (lookup.kind === 'curriculum') {
+      setSelected(lookup);
+      return;
+    }
+
+    setSelected({ kind: 'off_curriculum_pending', text: lookup.text });
+    const translated = await translateOffCurriculumWord(userDb, lookup.text);
+    if (!translated.ok) {
+      setSelected({
+        kind: 'off_curriculum_failed',
+        text: lookup.text,
+        message: translated.error.userMessage ?? translated.error.message,
+      });
+      return;
+    }
+    setSelected({ kind: 'off_curriculum_translated', translation: translated.value });
   }
 
   function handleClose() {
@@ -66,7 +92,9 @@ export function WordLookupSheet({ visible, messageText, onClose }: WordLookupShe
                     key={word}
                     accessibilityRole="button"
                     accessibilityLabel={`Look up ${word}`}
-                    onPress={() => handleSelect(word)}
+                    onPress={() => {
+                      void handleSelect(word);
+                    }}
                     testID={`word-candidate-${word}`}
                     className="min-h-[44px] justify-center rounded-radius-md border border-border bg-surface px-space-md py-space-sm">
                     <Text className="text-body text-primary">{word}</Text>
@@ -95,9 +123,39 @@ export function WordLookupSheet({ visible, messageText, onClose }: WordLookupShe
                     variant="secondary"
                   />
                 </>
-              ) : (
+              ) : selected.kind === 'off_curriculum_pending' ? (
                 <>
                   <Text className="text-title text-primary">{selected.text}</Text>
+                  <View className="mt-space-md flex-row items-center gap-space-sm">
+                    <ActivityIndicator accessibilityLabel="Looking up translation" />
+                    <Text className="text-body-sm text-secondary">Asking your provider…</Text>
+                  </View>
+                </>
+              ) : selected.kind === 'off_curriculum_failed' ? (
+                <>
+                  <Text className="text-title text-primary">{selected.text}</Text>
+                  <Text
+                    accessibilityLiveRegion="polite"
+                    className="mt-space-sm text-body text-feedback-error">
+                    {selected.message}
+                  </Text>
+                  <Text className="mt-space-sm text-body-sm text-secondary">
+                    Not part of your curriculum — it will not be added to your reviews.
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <Text className="text-title text-primary">{selected.translation.text}</Text>
+                  {selected.translation.reading.length > 0 ? (
+                    <Text className="mt-space-xs text-body text-secondary">
+                      {selected.translation.reading}
+                    </Text>
+                  ) : null}
+                  {selected.translation.meaning.length > 0 ? (
+                    <Text className="mt-space-xs text-body text-primary">
+                      {selected.translation.meaning}
+                    </Text>
+                  ) : null}
                   <Text className="mt-space-sm text-body-sm text-secondary">
                     Not part of your curriculum — here for reference only. It will not be added to
                     your reviews.

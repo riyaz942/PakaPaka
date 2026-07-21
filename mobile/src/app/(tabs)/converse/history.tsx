@@ -1,11 +1,22 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
 import React, { useCallback, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
 
 import { ScreenHeader } from '@/components/common/ScreenHeader';
+import { getSemanticColors } from '@/constants/semantic-colors';
 import type { AiSessionRecord, ConversationMode } from '@/core/ai/aiSession.types';
+import { isOnline } from '@/data/ai/connectivity';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { listAiSessions } from '@/data/user/aiSessionRepository';
+import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 const MODE_LABELS: Record<ConversationMode, string> = {
   practise_recent_grammar: 'Recent grammar',
@@ -26,18 +37,30 @@ function describeStatus(session: AiSessionRecord): string {
 
 /**
  * Past threads (FR89) — a secondary surface reached from the tab header. The
- * start picker stays the primary empty state for new sessions.
+ * start picker stays the primary empty state for starting something new.
  *
  * An unfinished or un-summarised session is still reachable here: abandoning
- * closes silently but never destroys the transcript.
+ * closes silently but never destroys the transcript. Listing itself is local;
+ * opening a chat or generating notes still needs a connection.
  */
 export default function ConversationHistoryScreen() {
   const { userDb } = useDatabase();
+  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
   const [sessions, setSessions] = useState<AiSessionRecord[]>([]);
+  const [online, setOnline] = useState<boolean | null>(null);
 
   useFocusEffect(
     useCallback(() => {
+      let cancelled = false;
       setSessions(listAiSessions(userDb));
+      void isOnline().then((result) => {
+        if (!cancelled) {
+          setOnline(result);
+        }
+      });
+      return () => {
+        cancelled = true;
+      };
     }, [userDb]),
   );
 
@@ -45,7 +68,22 @@ export default function ConversationHistoryScreen() {
     <View className="flex-1 bg-background">
       <ScreenHeader title="Past conversations" backAccessibilityLabel="Back to Talk" />
 
-      {sessions.length === 0 ? (
+      {online === null ? (
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator accessibilityLabel="Checking connection" />
+        </View>
+      ) : online === false ? (
+        <View className="flex-1 items-center justify-center p-space-lg">
+          <MaterialIcons name="cloud-off" size={40} color={colors.secondary} />
+          <Text accessibilityRole="header" className="mt-space-md text-title text-primary">
+            Conversation needs internet
+          </Text>
+          <Text className="mt-space-sm text-center text-body text-secondary">
+            Opening a past chat or generating notes needs a connection. Everything else in the app
+            still works offline.
+          </Text>
+        </View>
+      ) : sessions.length === 0 ? (
         <View className="flex-1 items-center justify-center p-space-lg">
           <Text className="text-center text-body text-secondary">
             No conversations yet. Start one from the Talk tab.

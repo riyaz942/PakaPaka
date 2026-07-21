@@ -6,6 +6,7 @@ import {
   BYOK_PROVIDERS,
   DEFAULT_MODELS,
   DEFAULT_OPENAI_BASE_URL,
+  isAllowedOpenAiBaseUrl,
   type ByokProvider,
 } from '@/data/ai/byokCredential.types';
 import { saveByokKey } from '@/data/ai/byokCredentialStore';
@@ -50,6 +51,7 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
 
   function handleProviderChange(next: ByokProvider) {
     setProvider(next);
+    setApiKey('');
     setStatus(null);
     setModel(getAiModel(userDb, next) ?? DEFAULT_MODELS[next]);
   }
@@ -59,13 +61,22 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
     setIsSaving(true);
 
     try {
+      if (provider === 'openai') {
+        const trimmedUrl = baseUrl.trim();
+        if (trimmedUrl.length > 0 && !isAllowedOpenAiBaseUrl(trimmedUrl)) {
+          setStatus('Enter a valid HTTPS URL (http:// only for localhost).');
+          return;
+        }
+      }
+
       const result = await saveByokKey(provider, apiKey);
       if (!result.ok) {
         setStatus(result.error.userMessage ?? result.error.message);
         return;
       }
 
-      if (provider === 'openai' && baseUrl.trim().length > 0) {
+      if (provider === 'openai') {
+        // Empty clears the preference so the default endpoint is used.
         setAiOpenAiBaseUrl(userDb, baseUrl);
       }
       if (model.trim().length > 0) {
@@ -137,7 +148,8 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
         <View className="mt-space-lg">
           <Text className="text-body font-semibold text-primary">Base URL</Text>
           <Text className="mt-space-xs text-body-sm text-secondary">
-            Any endpoint that speaks the OpenAI chat-completions format. Must be HTTPS.
+            Any endpoint that speaks the OpenAI chat-completions format. Must be HTTPS (or
+            localhost HTTP).
           </Text>
           <TextInput
             accessibilityLabel="OpenAI-compatible base URL"

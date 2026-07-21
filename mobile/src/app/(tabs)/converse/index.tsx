@@ -1,17 +1,20 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, useColorScheme, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { ConversationStartPicker } from '@/components/converse/ConversationStartPicker';
+import {
+  ConversationStartPicker,
+  type ConversationStartRequest,
+} from '@/components/converse/ConversationStartPicker';
 import { KeySetup } from '@/components/converse/KeySetup';
 import { getSemanticColors } from '@/constants/semantic-colors';
-import type { ConversationMode } from '@/core/ai/aiSession.types';
 import { resolveActiveProvider } from '@/data/ai/aiConfig';
 import { DEFAULT_MODELS } from '@/data/ai/byokCredential.types';
 import { isOnline } from '@/data/ai/connectivity';
 import {
+  listAllGrammar,
   listRecentGrammar,
   type RecentGrammarItem,
 } from '@/data/ai/recentGrammarRepository';
@@ -32,13 +35,16 @@ export default function ConverseScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
   const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
-  const { configured, isReady, refresh } = useByokStatus();
+  const { configured, isReady, error: byokError, refresh } = useByokStatus();
   const [online, setOnline] = useState<boolean | null>(null);
   const [recentGrammar, setRecentGrammar] = useState<RecentGrammarItem[]>([]);
+  const [allGrammar, setAllGrammar] = useState<RecentGrammarItem[]>([]);
+  const startingRef = useRef(false);
 
   useFocusEffect(
     useCallback(() => {
       let cancelled = false;
+      refresh();
 
       void isOnline().then((result) => {
         if (!cancelled) {
@@ -48,31 +54,48 @@ export default function ConverseScreen() {
 
       try {
         setRecentGrammar(listRecentGrammar(userDb));
+        setAllGrammar(listAllGrammar(userDb));
       } catch {
-        // Recent grammar decorates one picker row; it is never a blocker, so an
-        // empty list just falls back to that row's static description.
+        // Grammar decorates start options; empty lists just fall back to
+        // static descriptions / an empty choose-grammar sheet.
         setRecentGrammar([]);
+        setAllGrammar([]);
       }
 
       return () => {
         cancelled = true;
       };
-    }, [userDb]),
+    }, [userDb, refresh]),
   );
 
-  function handleStart(mode: ConversationMode) {
+  async function handleStart(request: ConversationStartRequest) {
+    if (startingRef.current) {
+      return;
+    }
+
+    const stillOnline = await isOnline();
+    setOnline(stillOnline);
+    if (!stillOnline) {
+      return;
+    }
+
     const provider = resolveActiveProvider(userDb, configured ?? []);
     if (!provider) {
       return;
     }
 
-    const session = createAiSession(userDb, {
-      provider,
-      model: getAiModel(userDb, provider) ?? DEFAULT_MODELS[provider],
-      mode,
-    });
-
-    router.push(`/converse/session/${session.id}`);
+    startingRef.current = true;
+    try {
+      const session = createAiSession(userDb, {
+        provider,
+        model: getAiModel(userDb, provider) ?? DEFAULT_MODELS[provider],
+        mode: request.mode,
+        topicItemId: request.topicItemId ?? null,
+      });
+      router.push(`/converse/session/${session.id}`);
+    } finally {
+      startingRef.current = false;
+    }
   }
 
   return (
@@ -92,7 +115,11 @@ export default function ConverseScreen() {
         </Pressable>
       </View>
 
-      {online === false ? (
+      {online === null || !isReady ? (
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator accessibilityLabel="Checking conversation readiness" />
+        </View>
+      ) : online === false ? (
         <View className="flex-1 items-center justify-center p-space-lg">
           <MaterialIcons name="cloud-off" size={40} color={colors.secondary} />
           <Text accessibilityRole="header" className="mt-space-md text-title text-primary">
@@ -103,14 +130,25 @@ export default function ConverseScreen() {
             Everything else in the app still works offline.
           </Text>
         </View>
-      ) : !isReady ? (
-        <View className="flex-1 items-center justify-center">
-          <ActivityIndicator accessibilityLabel="Checking your saved key" />
+      ) : byokError ? (
+        <View className="flex-1 items-center justify-center p-space-lg">
+          <Text accessibilityRole="header" className="text-title text-primary">
+            Could not access secure storage
+          </Text>
+          <Text className="mt-space-sm text-center text-body text-secondary">
+            {byokError.userMessage ?? byokError.message}
+          </Text>
         </View>
       ) : (configured?.length ?? 0) === 0 ? (
         <KeySetup onSaved={refresh} />
       ) : (
-        <ConversationStartPicker recentGrammar={recentGrammar} onStart={handleStart} />
+        <ConversationStartPicker
+          recentGrammar={recentGrammar}
+          allGrammar={allGrammar}
+          onStart={(request) => {
+            void handleStart(request);
+          }}
+        />
       )}
     </View>
   );

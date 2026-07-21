@@ -1,15 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { resolveActiveProvider } from '@/data/ai/aiConfig';
 import type { ByokProvider } from '@/data/ai/byokCredential.types';
 import { listConfiguredByokProviders } from '@/data/ai/byokCredentialStore';
+import type { AppError } from '@/types/result.types';
 
 type ByokStatus = {
   /** Null while the secure-store read is still in flight. */
   configured: ByokProvider[] | null;
   activeProvider: ByokProvider | null;
   isReady: boolean;
+  error: AppError | null;
   refresh: () => void;
 };
 
@@ -22,33 +24,35 @@ type ByokStatus = {
 export function useByokStatus(): ByokStatus {
   const { userDb } = useDatabase();
   const [configured, setConfigured] = useState<ByokProvider[] | null>(null);
+  const [error, setError] = useState<AppError | null>(null);
+  const requestIdRef = useRef(0);
 
   const refresh = useCallback(() => {
-    let cancelled = false;
+    const requestId = ++requestIdRef.current;
 
     void listConfiguredByokProviders().then((result) => {
-      if (cancelled) {
+      if (requestId !== requestIdRef.current) {
         return;
       }
-      setConfigured(result.ok ? result.value : []);
+      if (!result.ok) {
+        setError(result.error);
+        setConfigured([]);
+        return;
+      }
+      setError(null);
+      setConfigured(result.value);
     });
-
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   useEffect(() => {
-    const cancel = refresh();
-    return cancel;
+    refresh();
   }, [refresh]);
 
   return {
     configured,
     activeProvider: configured ? resolveActiveProvider(userDb, configured) : null,
     isReady: configured !== null,
-    refresh: () => {
-      refresh();
-    },
+    error,
+    refresh,
   };
 }

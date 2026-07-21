@@ -34,10 +34,20 @@ export function ByokSettingsSection() {
   const [configured, setConfigured] = useState<ByokProvider[]>([]);
   const [activeProvider, setActiveProviderState] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [listFailed, setListFailed] = useState(false);
 
   const refresh = useCallback(() => {
     void listConfiguredByokProviders().then((result) => {
-      setConfigured(result.ok ? result.value : []);
+      if (!result.ok) {
+        setListFailed(true);
+        setError(result.error.userMessage ?? result.error.message);
+        setConfigured([]);
+        return;
+      }
+      setListFailed(false);
+      setError(null);
+      setConfigured(result.value);
     });
     setActiveProviderState(getAiActiveProvider(userDb));
   }, [userDb]);
@@ -50,7 +60,12 @@ export function ByokSettingsSection() {
   }
 
   async function handleRemove(provider: ByokProvider) {
-    await discardByokKey(provider);
+    setError(null);
+    const result = await discardByokKey(provider);
+    if (!result.ok) {
+      setError(result.error.userMessage ?? result.error.message);
+      return;
+    }
     refresh();
   }
 
@@ -62,7 +77,19 @@ export function ByokSettingsSection() {
         secure storage and are only ever sent to the endpoint you configure.
       </Text>
 
-      {configured.length === 0 ? (
+      {error ? (
+        <Text
+          accessibilityLiveRegion="polite"
+          className="mt-4 text-body-sm text-feedback-error">
+          {error}
+        </Text>
+      ) : null}
+
+      {listFailed ? (
+        <Text className="mt-4 text-body-sm text-secondary">
+          Could not access secure storage to list saved keys.
+        </Text>
+      ) : configured.length === 0 ? (
         <Text className="mt-4 text-body-sm text-secondary">No key saved yet.</Text>
       ) : (
         <View className="mt-4 gap-3">

@@ -95,6 +95,25 @@ export function listRecentGrammar(
   return mapRows(userDb, rows);
 }
 
+/** One grammar topic by curriculum item id — for choose-grammar sessions. */
+export function getGrammarTopicById(
+  userDb: SQLiteDatabase,
+  itemId: string,
+): RecentGrammarItem | null {
+  const rows = userDb.getAllSync<RecentGrammarRow>(
+    `SELECT i.id, i.primary_form, i.meaning, g.structure, '' AS last_touched_at
+     FROM curriculum.items i
+     LEFT JOIN curriculum.grammar_rules g ON g.item_id = i.id
+     WHERE i.item_type = 'grammar' AND i.id = ?
+     LIMIT 1`,
+    Number(itemId),
+  );
+  if (rows.length === 0) {
+    return null;
+  }
+  return mapRows(userDb, rows)[0] ?? null;
+}
+
 /** Every grammar item, for the "choose grammar" picker. */
 export function listAllGrammar(userDb: SQLiteDatabase, limit = 200): RecentGrammarItem[] {
   const safeLimit = clampLimit(limit);

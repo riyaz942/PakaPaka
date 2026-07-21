@@ -3,7 +3,7 @@ baseline_commit: 9a1a826949e2a33f657c465fb0bdf3447ec61796
 ---
 # Story 5.1: Platform Floor, BYOK Chat & Session Summary
 
-Status: review (code complete; Task 1 native dev-client rebuild smoke test outstanding — owner to verify on a machine with Xcode / Android Studio)
+Status: done (Task 1 native dev-client rebuild smoke test still outstanding — owner to verify on a machine with Xcode / Android Studio)
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -94,6 +94,27 @@ so that I can practise real Japanese without mid-chat corrections or handing dat
 - [x] [Review][Patch] `hasByokKey` treats any non-null SecureStore value as configured, including `""` [`byokCredentialStore.ts:59-65`]
 - [x] [Review][Patch] Unbounded SSE `buffer` growth when the peer never emits a blank-line delimiter — add a max buffer size and fail the turn [`streamingClient.ts:120-134`]
 - [x] [Review][Defer] OpenAI-compatible requests always send `max_tokens`; some newer compatible models want `max_completion_tokens` instead — deferred, provider API variance beyond v1 transport normalize [`openAiCompatibleAdapter.ts:37`]
+
+<!-- Chunk 3 review (hooks / UI / routes) -->
+- [x] [Review][Patch] Off-curriculum words need a one-shot BYOK translate fallback — local curriculum miss → single adapter call for reading/meaning; display only, never write SRS [`WordLookupSheet.tsx:98-106`] [`wordLookupRepository.ts:17-26`]
+- [x] [Review][Patch] Grammar start modes are cosmetic — recent grammar is display-only, `grammarTopics`/`topicItemId` never reach `useAiConversation`, and Choose grammar starts immediately with no picker (`listAllGrammar` unused) [`converse/index.tsx:63-75`] [`session/[id].tsx:33`] [`ConversationStartPicker.tsx:69-76`]
+- [x] [Review][Patch] Streaming `pendingReply` renders raw deltas — control markers are stripped only at commit, so wrap-up sentinels can flash in the bubble (AC6) [`session/[id].tsx:89-95`] [`useAiConversation.ts:161-163`]
+- [x] [Review][Patch] Concurrent send race — `isStreaming` is set only after `await resolveAiConfig`, so double-tap can interleave turns and overwrite `abortRef` [`useAiConversation.ts:107-147`]
+- [x] [Review][Patch] Chat/summary use `resolveAiConfig` (active prefs) instead of the session’s stored provider/model — resumed threads or mid-session Settings changes can send the transcript to a different endpoint [`useAiConversation.ts:116`] [`useSessionSummary.ts:80`]
+- [x] [Review][Patch] `KeySetup` reports “Key saved.” even when the base URL is invalid/rejected, and clearing the URL field skips `setAiOpenAiBaseUrl` so the old endpoint stays active [`KeySetup.tsx:68-77`]
+- [x] [Review][Patch] Switching provider in `KeySetup` keeps the typed API key — a key entered for one provider can be saved under the other [`KeySetup.tsx:51-55`]
+- [x] [Review][Patch] Talk tab does not refresh BYOK status on focus — keys added/removed in Settings leave a stale configured/unconfigured gate until remount [`converse/index.tsx:39-60`] [`useByokStatus.ts:26-38`]
+- [x] [Review][Patch] Offline gate is index-only and treats `online === null` as online — history/session can open network actions offline; picker can flash before the probe settles [`converse/index.tsx:95-113`] [`history.tsx`] [`session/[id].tsx`]
+- [x] [Review][Patch] No in-flight guard on start — rapid presses create multiple empty sessions [`converse/index.tsx:63-75`]
+- [x] [Review][Patch] Composer clears the draft immediately even when `send` later fails before persisting the user turn [`Composer.tsx:25-30`]
+- [x] [Review][Patch] “Keep talking” after AI wrap-up leaves `wrapUpSignalled` true — a later Finish is recorded as `ai_wrap_up`, and further wrap-up signals cannot re-open the prompt [`session/[id].tsx:41-45,118-124`]
+- [x] [Review][Patch] Ending while streaming aborts then navigates immediately — a late partial commit can land after `end` / be omitted from a promptly generated summary [`session/[id].tsx:47-50`] [`useAiConversation.ts:192-197`]
+- [x] [Review][Patch] `send` does not refuse missing or already-ended sessions — direct routes can append after Finish [`useAiConversation.ts:80-83,107-140`]
+- [x] [Review][Patch] Secure-store list failures are coerced to “no key configured”; `discardByokKey` failures are ignored with no user-visible error [`useByokStatus.ts:29-34`] [`ByokSettingsSection.tsx:38-55`]
+- [x] [Review][Patch] Summary `generate` races on React state only — double-tap before rerender can issue two paid provider calls [`useSessionSummary.ts:50-77`]
+- [x] [Review][Patch] Composer send icon uses raw `#FFFFFF` instead of semantic `onPrimary` [`Composer.tsx:57`]
+- [x] [Review][Defer] Auto-scroll on every content-size change during streaming prevents reading earlier turns / lookup — deferred UX polish [`session/[id].tsx:69`]
+- [x] [Review][Defer] Assistant bubbles lack a live-region announcement when a reply completes — deferred a11y polish beyond NFR29’s gesture alternative [`ChatBubble.tsx`] [`session/[id].tsx`]
 
 ## Dev Notes
 

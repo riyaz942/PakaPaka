@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { SessionSummary } from '@/core/ai/aiSession.types';
 import { parseSessionSummary } from '@/core/ai/summaryParser';
 import { buildSummarySystemPrompt } from '@/core/ai/systemPrompt';
-import { resolveAiConfig } from '@/data/ai/aiConfig';
+import { resolveAiConfigForSession } from '@/data/ai/aiConfig';
 import { streamAssistantTurn } from '@/data/ai/streamingClient';
 import { lookupFlaggedWord } from '@/data/ai/wordLookupRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
@@ -40,6 +40,7 @@ export function useSessionSummary(sessionId: string): SummaryState {
   const [isCached, setIsCached] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<AppError | null>(null);
+  const generatingRef = useRef(false);
 
   useEffect(() => {
     const session = getAiSession(userDb, sessionId);
@@ -48,12 +49,17 @@ export function useSessionSummary(sessionId: string): SummaryState {
   }, [userDb, sessionId]);
 
   const generate = useCallback(async () => {
-    if (isGenerating) {
+    if (generatingRef.current) {
       return;
     }
 
     const session = getAiSession(userDb, sessionId);
     if (!session) {
+      setError({
+        code: 'ai_session_not_found',
+        message: `Session ${sessionId} not found`,
+        userMessage: 'This conversation could not be found.',
+      });
       return;
     }
     // Already generated: serve the cache, never spend a second call.
@@ -73,11 +79,12 @@ export function useSessionSummary(sessionId: string): SummaryState {
       return;
     }
 
+    generatingRef.current = true;
     setError(null);
     setIsGenerating(true);
 
     try {
-      const configResult = await resolveAiConfig(userDb);
+      const configResult = await resolveAiConfigForSession(userDb, session);
       if (!configResult.ok) {
         setError(configResult.error);
         return;
@@ -140,9 +147,10 @@ export function useSessionSummary(sessionId: string): SummaryState {
       setSummary(resolved);
       setIsCached(true);
     } finally {
+      generatingRef.current = false;
       setIsGenerating(false);
     }
-  }, [userDb, sessionId, isGenerating]);
+  }, [userDb, sessionId]);
 
   return { summary, isCached, isGenerating, error, generate };
 }

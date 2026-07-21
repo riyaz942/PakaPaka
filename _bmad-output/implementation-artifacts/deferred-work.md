@@ -3,6 +3,8 @@
 ## Deferred from: code review of 5-1-platform-floor-byok-chat-session-summary (2026-07-21)
 
 - **OpenAI-compatible requests always send `max_tokens`** — some newer compatible models prefer/require `max_completion_tokens`; deferred as provider API variance beyond v1 transport normalize (`openAiCompatibleAdapter.ts`).
+- **Auto-scroll on every content-size change during streaming** — `session/[id].tsx` always `scrollToEnd`s; learners reading earlier turns or opening lookup get dragged to the bottom. Deferred UX polish.
+- **Assistant reply completion has no live-region announcement** — screen readers may miss that a new AI turn arrived; NFR29’s non-gesture lookup alternative is already present. Deferred a11y polish.
 
 ## Deferred from: code review of 7-3-automated-accessibility-checks-in-ci (2026-07-02)
 

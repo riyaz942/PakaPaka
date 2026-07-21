@@ -31,6 +31,7 @@ jest.mock('@/data/ai/byokCredentialStore', () => ({
 
 jest.mock('@/data/ai/recentGrammarRepository', () => ({
   listRecentGrammar: () => [],
+  listAllGrammar: () => [],
 }));
 
 // The fake `userDb` has no query methods, so stub the preference reads the

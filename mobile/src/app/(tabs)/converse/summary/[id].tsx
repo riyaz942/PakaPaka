@@ -12,7 +12,8 @@ import { useSessionSummary } from '@/data/hooks/useSessionSummary';
  */
 export default function ConversationSummaryScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { summary, isCached, isGenerating, error, generate } = useSessionSummary(String(id));
+  const sessionId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
+  const { summary, isCached, isGenerating, error, generate } = useSessionSummary(sessionId);
 
   return (
     <View className="flex-1 bg-background">

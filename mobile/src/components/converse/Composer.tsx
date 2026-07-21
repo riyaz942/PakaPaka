@@ -6,7 +6,8 @@ import { getSemanticColors } from '@/constants/semantic-colors';
 import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 
 type ComposerProps = {
-  onSend: (text: string) => void;
+  /** Resolves true when the turn was accepted (draft may clear). */
+  onSend: (text: string) => boolean | Promise<boolean>;
   disabled?: boolean;
 };
 
@@ -19,15 +20,24 @@ type ComposerProps = {
  */
 export function Composer({ onSend, disabled = false }: ComposerProps) {
   const [draft, setDraft] = useState('');
+  const [isSending, setIsSending] = useState(false);
   const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
-  const canSend = draft.trim().length > 0 && !disabled;
+  const canSend = draft.trim().length > 0 && !disabled && !isSending;
 
-  function handleSend() {
+  async function handleSend() {
     if (!canSend) {
       return;
     }
-    onSend(draft);
-    setDraft('');
+    const text = draft;
+    setIsSending(true);
+    try {
+      const accepted = await onSend(text);
+      if (accepted) {
+        setDraft('');
+      }
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
@@ -35,7 +45,7 @@ export function Composer({ onSend, disabled = false }: ComposerProps) {
       <TextInput
         accessibilityLabel="Your message"
         className="max-h-[120px] flex-1 rounded-radius-md border border-border bg-background px-space-md py-space-sm text-body text-primary"
-        editable={!disabled}
+        editable={!disabled && !isSending}
         multiline
         onChangeText={setDraft}
         placeholder="日本語で書いてみましょう"
@@ -46,7 +56,9 @@ export function Composer({ onSend, disabled = false }: ComposerProps) {
         accessibilityLabel="Send message"
         accessibilityState={{ disabled: !canSend }}
         disabled={!canSend}
-        onPress={handleSend}
+        onPress={() => {
+          void handleSend();
+        }}
         testID="composer-send"
         className={`min-h-[44px] min-w-[44px] items-center justify-center rounded-radius-md ${
           canSend ? 'bg-feedback-info' : 'bg-surface-elevated'
@@ -54,7 +66,7 @@ export function Composer({ onSend, disabled = false }: ComposerProps) {
         <MaterialIcons
           name="send"
           size={20}
-          color={canSend ? '#FFFFFF' : colors.secondary}
+          color={canSend ? colors.onPrimary : colors.secondary}
         />
       </Pressable>
     </View>

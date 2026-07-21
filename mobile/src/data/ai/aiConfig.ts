@@ -117,3 +117,50 @@ export async function resolveAiConfig(
     },
   };
 }
+
+/**
+ * Resolves credentials for an existing session's stored provider/model.
+ *
+ * Resumed threads and mid-session Settings edits must not silently retarget the
+ * transcript to a different endpoint — the learner consented to the provider
+ * recorded on the session row.
+ */
+export async function resolveAiConfigForSession(
+  userDb: SQLiteDatabase,
+  session: { provider: ByokProvider; model: string },
+): Promise<Result<ResolvedAiConfig | null>> {
+  const keyResult = await getByokKey(session.provider);
+  if (!keyResult.ok) {
+    return keyResult;
+  }
+  if (!keyResult.value) {
+    return {
+      ok: false,
+      error: {
+        code: 'ai_key_missing',
+        message: `No stored key for ${session.provider}`,
+        userMessage: 'That provider has no API key saved. Add one in Settings.',
+      },
+    };
+  }
+
+  const model = session.model.trim() || DEFAULT_MODELS[session.provider];
+  const storedBaseUrl = session.provider === 'openai' ? getAiOpenAiBaseUrl(userDb) : null;
+  const baseUrl =
+    session.provider === 'openai'
+      ? storedBaseUrl && isAllowedOpenAiBaseUrl(storedBaseUrl)
+        ? storedBaseUrl
+        : DEFAULT_OPENAI_BASE_URL
+      : undefined;
+
+  return {
+    ok: true,
+    value: {
+      provider: session.provider,
+      adapter: getAdapter(session.provider),
+      apiKey: keyResult.value,
+      model,
+      baseUrl,
+    },
+  };
+}
