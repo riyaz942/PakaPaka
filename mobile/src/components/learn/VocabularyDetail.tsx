@@ -6,8 +6,9 @@ import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDis
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
-import { MnemonicSection } from '@/components/learn/MnemonicSection';
+import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -59,7 +60,9 @@ export function VocabularyDetail({
 
       <FuriganaOverrideControl itemId={item.id} />
 
-      {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
+      <ItemMnemonicSections item={item} />
+
+      <ItemDescriptionSection item={item} />
 
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />

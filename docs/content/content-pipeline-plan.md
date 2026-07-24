@@ -176,6 +176,19 @@ The Rev 1 twin of Phase 0.5: the DB already carries `meaning_mnemonic` /
 Fallback rule: while old sidecar data lingers, render `mnemonic_text` only when
 the split fields are absent — one path, visible in the UI, no silent merging.
 
+*Status: built.* `itemRepository` selects the split mnemonics + `description` and
+resolves look-alikes (`getVisuallySimilarItems`, [] on DBs compiled before the
+`visually_similar_links` table); `useItemDetail` carries both to the surfaces.
+Shared renderers: `ItemMnemonicSections` (composition line + split blocks +
+legacy-blob fallback), `ItemDescriptionSection`, `LookAlikeSection` (chips open
+Compare on whichever surface the detail is mounted on, per `ItemLinkContext`).
+Kanji/vocabulary details and the lesson mnemonic section use them; `RadicalDetail`
+and the lesson radical section caption the image with `description`; grammar's
+curriculum `MnemonicSection` is gone (`PersonalMnemonicEditor` stays). `CompareView`
+gained a "Descriptions" section above "Mnemonics" — that prose is what a look-alike
+chip is sent there to read. Not covered: the review card mnemonic
+(`queueBuilder`) and `PassageWordDetailSheet`, which still read `mnemonic_text`.
+
 Each generated artifact carries sidecar metadata (frontmatter in the .md, or a `_meta`
 key in datasets): `generator_model`, `prompt_version`, `review_status: draft|reviewed`,
 `reviewed_by`. `compile-curriculum` warns (CI: fails a flag-gated check) on `draft`

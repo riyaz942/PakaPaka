@@ -34,6 +34,7 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
     exampleSentences,
     grammarVocabLinks,
     relatedGrammar,
+    visuallySimilar,
     loading,
     notFound,
   } = useItemDetail(itemId);
@@ -63,7 +64,7 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
       />
 
       {item.itemType === 'radical' ? (
-        <RadicalDetail item={item} related={related} />
+        <RadicalDetail item={item} related={related} lookAlikes={visuallySimilar} />
       ) : item.itemType === 'kanji' ? (
         <KanjiDetail
           item={item}
@@ -72,6 +73,7 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
           exampleSentences={exampleSentences}
           parents={componentParents}
           related={related}
+          lookAlikes={visuallySimilar}
         />
       ) : item.itemType === 'vocabulary' ? (
         <VocabularyDetail

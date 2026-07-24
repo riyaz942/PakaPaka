@@ -8,8 +8,12 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { HERO_FONT_SIZE, ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
+import {
+  hasCurriculumMnemonic,
+  ItemMnemonicSections,
+} from '@/components/learn/ItemMnemonicSections';
 import { KanjiReadingsSection } from '@/components/learn/KanjiReadingsSection';
-import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { KanjiReadingPrimer } from '@/components/lesson/KanjiReadingPrimer';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -169,37 +173,56 @@ export function LessonIntroSection({
 }
 
 /**
- * Section 2 — how to remember it: curriculum mnemonic, the radical's visual
- * mnemonic, and the learner's own mnemonic. Paging replaces the old collapsed
- * mnemonic disclosure, so nothing here hides behind a tap.
+ * Section 2 — how to remember it: the curriculum's mnemonics and description,
+ * the radical's visual mnemonic, and the learner's own mnemonic. Paging
+ * replaces the old collapsed mnemonic disclosure, so nothing here hides behind
+ * a tap.
+ *
+ * Radicals carry a `description` instead of a mnemonic (content pipeline
+ * Rev 1) — it reads as the image's story, not under a "Mnemonic" heading.
  */
-export function LessonMnemonicSectionView({ item }: LessonSectionProps) {
-  const hasVisual = item.itemType === 'radical';
+export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps) {
+  if (item.itemType === 'radical') {
+    const story = item.description ?? item.mnemonicText;
+
+    return (
+      <View testID="lesson-section-mnemonic">
+        {story ? (
+          <Text className="mt-4 text-body text-secondary" testID="radical-description">
+            {story}
+          </Text>
+        ) : null}
+
+        <View className="mt-6">
+          <MnemonicImage
+            className="h-48"
+            imageUrl={item.visualMnemonicUrl}
+            mnemonicText={story}
+            meaning={item.meaning}
+            primaryForm={item.primaryForm}
+            testID="radical-mnemonic-image"
+          />
+        </View>
+      </View>
+    );
+  }
+
+  const hasContent = hasCurriculumMnemonic(item) || Boolean(item.description);
 
   return (
     <View testID="lesson-section-mnemonic">
-      {item.mnemonicText ? (
-        <MnemonicSection mnemonicText={item.mnemonicText} />
+      {hasContent ? (
+        <>
+          <ItemMnemonicSections item={item} parents={parents} />
+          <ItemDescriptionSection item={item} />
+        </>
       ) : (
         <Text className="mt-4 text-body text-secondary" testID="lesson-mnemonic-empty">
           No mnemonic for this one yet — write your own below.
         </Text>
       )}
 
-      {hasVisual ? (
-        <View className="mt-6">
-          <MnemonicImage
-            className="h-48"
-            imageUrl={item.visualMnemonicUrl}
-            mnemonicText={item.mnemonicText}
-            meaning={item.meaning}
-            primaryForm={item.primaryForm}
-            testID="radical-mnemonic-image"
-          />
-        </View>
-      ) : null}
-
-      {item.itemType !== 'radical' ? <PersonalMnemonicEditor itemId={item.id} /> : null}
+      <PersonalMnemonicEditor itemId={item.id} />
     </View>
   );
 }

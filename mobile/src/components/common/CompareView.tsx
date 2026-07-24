@@ -125,21 +125,38 @@ function ComponentChips({
   );
 }
 
+/**
+ * Descriptions carry the "how to tell these apart" prose (content pipeline
+ * Rev 1) — the reason a look-alike chip opens Compare in the first place — so
+ * they lead. Mnemonics follow: split meaning mnemonic when present, otherwise
+ * the pre-Rev-1 single blob, never both.
+ */
+function compareProse(item: CurriculumItemDetail): { description: string | null; mnemonic: string | null } {
+  return {
+    description: item.description,
+    mnemonic: item.meaningMnemonic ?? item.mnemonicText,
+  };
+}
+
 function Prose({
-  item,
+  text,
+  primaryForm,
   side,
+  testIDPrefix,
 }: {
-  item: CurriculumItemDetail;
+  text: string | null;
+  primaryForm: string;
   side: Side;
+  testIDPrefix: string;
 }) {
-  if (!item.mnemonicText) {
+  if (!text) {
     return null;
   }
 
   return (
-    <View className="mt-3" testID={`compare-prose-${side}`}>
-      <Text className="text-caption text-secondary">{item.primaryForm}</Text>
-      <Text className="mt-1 text-body text-primary">{item.mnemonicText}</Text>
+    <View className="mt-3" testID={`${testIDPrefix}-${side}`}>
+      <Text className="text-caption text-secondary">{primaryForm}</Text>
+      <Text className="mt-1 text-body text-primary">{text}</Text>
     </View>
   );
 }
@@ -190,7 +207,10 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
     leftParents.map((parent) => parent.id).filter((id) => rightParentIds.has(id)),
   );
   const hasComponents = leftParents.length > 0 || rightParents.length > 0;
-  const hasProse = Boolean(leftItem.mnemonicText || rightItem.mnemonicText);
+  const leftProse = compareProse(leftItem);
+  const rightProse = compareProse(rightItem);
+  const hasDescriptions = Boolean(leftProse.description || rightProse.description);
+  const hasMnemonics = Boolean(leftProse.mnemonic || rightProse.mnemonic);
 
   return (
     <View className="flex-1">
@@ -231,11 +251,39 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
           </View>
         ) : null}
 
-        {hasProse ? (
+        {hasDescriptions ? (
+          <View className="mt-4">
+            <SectionHeading label="Descriptions" />
+            <Prose
+              text={leftProse.description}
+              primaryForm={leftItem.primaryForm}
+              side="left"
+              testIDPrefix="compare-description"
+            />
+            <Prose
+              text={rightProse.description}
+              primaryForm={rightItem.primaryForm}
+              side="right"
+              testIDPrefix="compare-description"
+            />
+          </View>
+        ) : null}
+
+        {hasMnemonics ? (
           <View className="mt-4">
             <SectionHeading label="Mnemonics" />
-            <Prose item={leftItem} side="left" />
-            <Prose item={rightItem} side="right" />
+            <Prose
+              text={leftProse.mnemonic}
+              primaryForm={leftItem.primaryForm}
+              side="left"
+              testIDPrefix="compare-prose"
+            />
+            <Prose
+              text={rightProse.mnemonic}
+              primaryForm={rightItem.primaryForm}
+              side="right"
+              testIDPrefix="compare-prose"
+            />
           </View>
         ) : null}
       </ScrollView>

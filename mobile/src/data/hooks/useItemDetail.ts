@@ -8,6 +8,7 @@ import {
   getItemById,
   getKanjiReadings,
   getRelatedGrammarItems,
+  getVisuallySimilarItems,
   type AcceptedAnswer,
   type CurriculumItemDetail,
   type ExampleSentence,
@@ -15,6 +16,7 @@ import {
   type GrammarVocabLink,
   type KanjiReading,
   type RelatedGrammarItem,
+  type VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 
@@ -26,6 +28,8 @@ export type ItemDetailResult = {
   exampleSentences: ExampleSentence[];
   grammarVocabLinks: GrammarVocabLink[];
   relatedGrammar: RelatedGrammarItem[];
+  /** Look-alikes (Rev 1); radical/kanji only, [] elsewhere. */
+  visuallySimilar: VisuallySimilarItem[];
   loading: boolean;
   notFound: boolean;
 };
@@ -39,6 +43,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
   const [exampleSentences, setExampleSentences] = useState<ExampleSentence[]>([]);
   const [grammarVocabLinks, setGrammarVocabLinks] = useState<GrammarVocabLink[]>([]);
   const [relatedGrammar, setRelatedGrammar] = useState<RelatedGrammarItem[]>([]);
+  const [visuallySimilar, setVisuallySimilar] = useState<VisuallySimilarItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -51,6 +56,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setExampleSentences([]);
       setGrammarVocabLinks([]);
       setRelatedGrammar([]);
+      setVisuallySimilar([]);
       setNotFound(true);
       setLoading(false);
       return;
@@ -67,6 +73,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setExampleSentences([]);
       setGrammarVocabLinks([]);
       setRelatedGrammar([]);
+      setVisuallySimilar([]);
       setNotFound(true);
       setLoading(false);
       return;
@@ -82,21 +89,25 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
       setGrammarRule(null);
       setGrammarVocabLinks([]);
       setRelatedGrammar([]);
+      setVisuallySimilar(getVisuallySimilarItems(curriculumDb, itemId));
     } else if (detail.itemType === 'grammar') {
       setKanjiReadings(null);
       setGrammarRule(getGrammarRule(curriculumDb, itemId));
       setGrammarVocabLinks([]);
       setRelatedGrammar(getRelatedGrammarItems(curriculumDb, itemId));
+      setVisuallySimilar([]);
     } else if (detail.itemType === 'vocabulary') {
       setKanjiReadings(null);
       setGrammarRule(null);
       setGrammarVocabLinks(getGrammarLinksForVocab(curriculumDb, itemId));
       setRelatedGrammar([]);
+      setVisuallySimilar([]);
     } else {
       setKanjiReadings(null);
       setGrammarRule(null);
       setGrammarVocabLinks([]);
       setRelatedGrammar([]);
+      setVisuallySimilar(getVisuallySimilarItems(curriculumDb, itemId));
     }
 
     setLoading(false);
@@ -112,6 +123,7 @@ export function useItemDetail(itemId: string | null): ItemDetailResult {
     exampleSentences,
     grammarVocabLinks,
     relatedGrammar,
+    visuallySimilar,
     loading: loading || isDataStale,
     notFound,
   };

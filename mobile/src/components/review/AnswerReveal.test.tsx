@@ -55,6 +55,9 @@ function makeDetail(): ReviewRevealDetail {
       furigana: null,
       meaning: 'eat, food',
       mnemonicText: 'A roof over a fire cooking food.',
+      meaningMnemonic: null,
+      readingMnemonic: null,
+      description: null,
       visualMnemonicUrl: null,
     },
     kanjiReadings: [

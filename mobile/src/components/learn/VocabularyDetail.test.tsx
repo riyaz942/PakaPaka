@@ -46,6 +46,9 @@ const baseItem: CurriculumItemDetail = {
   furigana: null,
   meaning: 'I, me',
   mnemonicText: 'Think of private self.',
+  meaningMnemonic: null,
+  readingMnemonic: null,
+  description: null,
   visualMnemonicUrl: null,
 };
 
@@ -149,5 +152,50 @@ describe('VocabularyDetail', () => {
 
     // Browse is the canonical discovery surface for cross-references.
     expect(mockPush).toHaveBeenCalledWith('/browse/item/50');
+  });
+});
+
+describe('VocabularyDetail Rev 1 content', () => {
+  const revisedItem: CurriculumItemDetail = {
+    ...baseItem,
+    mnemonicText: 'Stale one-line mnemonic.',
+    meaningMnemonic: 'The private grain stalk you keep for yourself: me.',
+    readingMnemonic: 'You already know わたし from 私 — the reading comes straight across.',
+    description: 'Neutral-polite. Men often use 僕 in casual speech instead.',
+  };
+
+  it('renders split mnemonics and the description instead of the legacy blob', () => {
+    render(
+      <VocabularyDetail
+        item={revisedItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByText('Meaning mnemonic')).toBeTruthy();
+    expect(screen.getByText('The private grain stalk you keep for yourself: me.')).toBeTruthy();
+    expect(screen.getByText('Reading mnemonic')).toBeTruthy();
+    expect(screen.getByText('About this word')).toBeTruthy();
+    expect(
+      screen.getByText('Neutral-polite. Men often use 僕 in casual speech instead.'),
+    ).toBeTruthy();
+    expect(screen.queryByText('Stale one-line mnemonic.')).toBeNull();
+  });
+
+  it('falls back to the single mnemonic while an item has no split fields', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByText('Mnemonic')).toBeTruthy();
+    expect(screen.getByText('Think of private self.')).toBeTruthy();
+    expect(screen.queryByText('Meaning mnemonic')).toBeNull();
   });
 });

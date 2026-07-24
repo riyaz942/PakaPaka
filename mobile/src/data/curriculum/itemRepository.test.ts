@@ -10,6 +10,7 @@ import {
   __mockSetItemRelationships,
   __mockSetItems,
   __mockSetKanjiReadings,
+  __mockSetVisuallySimilarLinks,
 } from '../../../__mocks__/expo-sqlite';
 
 import {
@@ -28,6 +29,7 @@ import {
   getRequiredParentsForItems,
   getRelatedGrammarItems,
   getRelatedItemsForItems,
+  getVisuallySimilarItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
 } from '@/data/curriculum/itemRepository';
@@ -173,6 +175,9 @@ describe('itemRepository', () => {
       furigana: null,
       meaning: 'one',
       mnemonicText: 'Radical one (一)',
+      meaningMnemonic: null,
+      readingMnemonic: null,
+      description: null,
       visualMnemonicUrl: 'https://example.com/one.png',
     });
     expect(getItemById(db, '999')).toBeNull();
@@ -379,6 +384,84 @@ describe('itemRepository', () => {
       explanationMarkdown: '# です\n\nThe polite copula.',
       cautionNotes: ['Never attaches directly to verbs.'],
     });
+  });
+
+  it('returns the Rev 1 split mnemonics and description on item detail', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 10,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'east',
+        primary_form: '東',
+        meaning: 'east',
+        mnemonic_text: null,
+        meaning_mnemonic: 'The sun rises through the tree in the east.',
+        reading_mnemonic: 'とう like a tow truck heading east.',
+        description: 'Used in 東京. Do not confuse it with 車.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    const detail = getItemById(db, '10');
+    expect(detail?.meaningMnemonic).toBe('The sun rises through the tree in the east.');
+    expect(detail?.readingMnemonic).toBe('とう like a tow truck heading east.');
+    expect(detail?.description).toBe('Used in 東京. Do not confuse it with 車.');
+    expect(detail?.mnemonicText).toBeNull();
+  });
+
+  it('returns visually similar items in authored order', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 60,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'person',
+        primary_form: '人',
+        meaning: 'person',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 61,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'enter',
+        primary_form: '入',
+        meaning: 'enter',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+      {
+        id: 62,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'eight',
+        primary_form: '八',
+        meaning: 'eight',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 3,
+      },
+    ]);
+    __mockSetVisuallySimilarLinks('curriculum.db.test', [
+      { id: 1, item_id: 60, similar_item_id: 62, sort_order: 1 },
+      { id: 2, item_id: 60, similar_item_id: 61, sort_order: 0 },
+      { id: 3, item_id: 61, similar_item_id: 60, sort_order: 0 },
+    ]);
+
+    expect(getVisuallySimilarItems(db, '60')).toEqual([
+      { id: '61', primaryForm: '入', meaning: 'enter', itemType: 'kanji' },
+      { id: '62', primaryForm: '八', meaning: 'eight', itemType: 'radical' },
+    ]);
+    expect(getVisuallySimilarItems(db, '62')).toEqual([]);
   });
 
   it('returns related grammar items in authored order', async () => {

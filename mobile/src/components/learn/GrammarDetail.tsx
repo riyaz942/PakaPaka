@@ -7,7 +7,6 @@ import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDis
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
-import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { RelatedItem } from '@/core/content/content.types';
@@ -115,8 +114,6 @@ export function GrammarDetail({
           ))}
         </View>
       ) : null}
-
-      {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
 
       <PersonalMnemonicEditor itemId={item.id} />
 

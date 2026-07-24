@@ -29,6 +29,9 @@ const baseItem: CurriculumItemDetail = {
   furigana: null,
   meaning: 'to be (polite)',
   mnemonicText: 'Desu sounds like "deserve" politeness.',
+  meaningMnemonic: null,
+  readingMnemonic: null,
+  description: null,
   visualMnemonicUrl: null,
 };
 
@@ -54,7 +57,7 @@ const acceptedAnswers: AcceptedAnswer[] = [
 ];
 
 describe('GrammarDetail', () => {
-  it('renders pattern, structure, forms, conjugation rules, sentences, and mnemonic', () => {
+  it('renders pattern, structure, forms, conjugation rules, and sentences', () => {
     render(
       <GrammarDetail
         item={baseItem}
@@ -73,7 +76,23 @@ describe('GrammarDetail', () => {
     expect(screen.getByText('polite: yes')).toBeTruthy();
     expect(screen.getByText('これは本です。')).toBeTruthy();
     expect(screen.getByText('今日は月曜日です。')).toBeTruthy();
-    expect(screen.getByText('Desu sounds like "deserve" politeness.')).toBeTruthy();
+  });
+
+  // Rev 1: grammar teaches through the lesson body, so the curriculum mnemonic
+  // is gone from the schema and must not render even from stale sidecar data.
+  it('never renders a curriculum mnemonic, only the learner-owned one', () => {
+    render(
+      <GrammarDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        grammarRule={grammarRule}
+        exampleSentences={exampleSentences}
+      />,
+    );
+
+    expect(screen.queryByText('Desu sounds like "deserve" politeness.')).toBeNull();
+    expect(screen.queryByText('Mnemonic')).toBeNull();
+    expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
   });
 
   it('omits lesson body, caution, and related sections when unauthored', () => {

@@ -38,7 +38,19 @@ export type CurriculumItemDetail = {
   /** Annotated (JmdictFurigana bracket notation) form. Vocabulary only, else null. */
   furigana: string | null;
   meaning: string;
+  /**
+   * Single-blob mnemonic (pre-Rev-1 content). Rendered only when the split
+   * fields below are absent — never merged with them.
+   */
   mnemonicText: string | null;
+  /** Split WaniKani-style mnemonics (content pipeline Rev 1); kanji + vocabulary. */
+  meaningMnemonic: string | null;
+  readingMnemonic: string | null;
+  /**
+   * Meaning nuance, glyph description and look-alike contrasts (Rev 1). On
+   * radicals it is the story the Tier 2 image is generated from.
+   */
+  description: string | null;
   visualMnemonicUrl: string | null;
 };
 
@@ -133,6 +145,9 @@ type ItemDetailRow = {
   furigana: string | null;
   meaning: string;
   mnemonic_text: string | null;
+  meaning_mnemonic: string | null;
+  reading_mnemonic: string | null;
+  description: string | null;
   visual_mnemonic_url: string | null;
 };
 
@@ -146,6 +161,9 @@ function mapRowToDetail(row: ItemDetailRow): CurriculumItemDetail {
     furigana: row.furigana ?? null,
     meaning: row.meaning,
     mnemonicText: row.mnemonic_text,
+    meaningMnemonic: row.meaning_mnemonic ?? null,
+    readingMnemonic: row.reading_mnemonic ?? null,
+    description: row.description ?? null,
     visualMnemonicUrl: row.visual_mnemonic_url,
   };
 }
@@ -155,7 +173,8 @@ export function getItemById(
   id: string,
 ): CurriculumItemDetail | null {
   const row = db.getFirstSync<ItemDetailRow>(
-    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text, visual_mnemonic_url
+    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text,
+            meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url
      FROM items WHERE id = ?`,
     Number(id),
   );
@@ -612,6 +631,47 @@ export function getRelatedGrammarItems(
       id: String(row.id),
       primaryForm: row.primary_form,
       meaning: row.meaning,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/** Data-derived look-alike of a radical/kanji (content pipeline Rev 1). */
+export type VisuallySimilarItem = {
+  id: string;
+  primaryForm: string;
+  meaning: string;
+  itemType: ItemType;
+};
+
+/**
+ * Look-alikes for a radical/kanji, in authored order. Returns [] on curriculum
+ * DBs compiled before the visually_similar_links table existed.
+ */
+export function getVisuallySimilarItems(
+  db: SQLiteDatabase,
+  itemId: string,
+): VisuallySimilarItem[] {
+  try {
+    const rows = db.getAllSync<{
+      id: number | string;
+      primary_form: string;
+      meaning: string;
+      item_type: ItemType;
+    }>(
+      `SELECT i.id, i.primary_form, i.meaning, i.item_type
+       FROM visually_similar_links vsl
+       JOIN items i ON i.id = vsl.similar_item_id
+       WHERE vsl.item_id = ?
+       ORDER BY vsl.sort_order ASC`,
+      Number(itemId),
+    );
+    return rows.map((row) => ({
+      id: String(row.id),
+      primaryForm: row.primary_form,
+      meaning: row.meaning,
+      itemType: row.item_type,
     }));
   } catch {
     return [];

@@ -4,9 +4,11 @@ import { Text, View } from 'react-native';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { KanjiReadingsSection } from '@/components/learn/KanjiReadingsSection';
-import { MnemonicSection } from '@/components/learn/MnemonicSection';
+import { LookAlikeSection } from '@/components/learn/LookAlikeSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -17,6 +19,7 @@ import type {
   CurriculumParentItem,
   ExampleSentence,
   KanjiReading,
+  VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
 
@@ -27,6 +30,7 @@ type KanjiDetailProps = {
   exampleSentences?: ExampleSentence[];
   parents?: CurriculumParentItem[];
   related?: RelatedItem[];
+  lookAlikes?: VisuallySimilarItem[];
 };
 
 /**
@@ -41,6 +45,7 @@ export function KanjiDetail({
   exampleSentences = [],
   parents = [],
   related = [],
+  lookAlikes = [],
 }: KanjiDetailProps) {
   return (
     <View testID="kanji-detail">
@@ -56,7 +61,11 @@ export function KanjiDetail({
 
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
 
-      {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
+      <ItemMnemonicSections item={item} parents={parents} />
+
+      <ItemDescriptionSection item={item} />
+
+      <LookAlikeSection item={item} lookAlikes={lookAlikes} />
 
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />

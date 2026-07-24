@@ -14,6 +14,9 @@ function makeItem(overrides: Partial<CurriculumItemDetail> = {}): CurriculumItem
     furigana: null,
     meaning: 'eat, food',
     mnemonicText: null,
+    meaningMnemonic: null,
+    readingMnemonic: null,
+    description: null,
     visualMnemonicUrl: null,
     ...overrides,
   };
@@ -159,6 +162,33 @@ describe('CompareView', () => {
     expect(screen.getByTestId('compare-prose-right')).toBeTruthy();
     expect(screen.getByText('A mouth eating rice.')).toBeTruthy();
     expect(screen.getByText('Sipping.')).toBeTruthy();
+  });
+
+  it('leads with the descriptions that spell out how look-alikes differ', () => {
+    details['left-1'] = makeDetail(
+      makeItem({
+        description: '食 has a roof over the rice.',
+        meaningMnemonic: 'A mouth eating rice.',
+        mnemonicText: 'Stale one-line mnemonic.',
+      }),
+    );
+    details['right-1'] = makeDetail(
+      makeItem({
+        id: 'right-1',
+        primaryForm: '飲',
+        meaning: 'drink',
+        description: '飲 adds the yawning mouth on the right.',
+        meaningMnemonic: 'Sipping.',
+      }),
+    );
+    render(<CompareView leftId="left-1" rightId="right-1" />);
+
+    expect(screen.getByText('Descriptions')).toBeTruthy();
+    expect(screen.getByText('食 has a roof over the rice.')).toBeTruthy();
+    expect(screen.getByText('飲 adds the yawning mouth on the right.')).toBeTruthy();
+    expect(screen.getByText('Mnemonics')).toBeTruthy();
+    expect(screen.getByText('A mouth eating rice.')).toBeTruthy();
+    expect(screen.queryByText('Stale one-line mnemonic.')).toBeNull();
   });
 
   it('dims component chips the two items share', () => {

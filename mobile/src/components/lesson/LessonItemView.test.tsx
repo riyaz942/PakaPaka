@@ -142,6 +142,45 @@ describe('LessonItemView sections', () => {
     expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
   });
 
+  it('section 2 renders the Rev 1 split mnemonics, description, and composition line', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'sun',
+        primary_form: '一',
+        meaning: 'one',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: 'The sun rises each day.',
+        meaning_mnemonic: 'One flat horizon with the sun pinned to it: a day.',
+        reading_mnemonic: 'ニチ — the sun knocks twice and says nichi.',
+        description: 'Also means sun. Do not confuse it with 目.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    mount(curriculumDb, userDb, 1);
+
+    expect(screen.getByText('一 = 日')).toBeTruthy();
+    expect(screen.getByText('One flat horizon with the sun pinned to it: a day.')).toBeTruthy();
+    expect(screen.getByText('ニチ — the sun knocks twice and says nichi.')).toBeTruthy();
+    expect(screen.getByText('About this kanji')).toBeTruthy();
+    expect(screen.queryByText('The sun rises each day.')).toBeNull();
+  });
+
   it('shows the reading primer inline as section-1 content for a beginner', async () => {
     const { curriculumDb, userDb } = await createDatabases();
     setOnboardingPath(userDb, 'beginner');
