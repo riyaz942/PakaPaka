@@ -72,13 +72,20 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013) + “Lea
 **Not done (content):** Wave B/C variant authoring (rest of N5, then N4) and families for N4 grammar — tracked in plan 09 §9.4. Remaining N5 points still use interim Plan 07 cloze derivation.
 
 ### [Content quality pipeline](./content/content-pipeline-plan.md)
-**Done:** Phase 0 schema (explanation / caution / related / split mnemonics / passage enrichment); Phase 0.5 `LessonMarkdown` UI; Phase 1 fact skeleton + audit tooling; mechanical validators; **N5 grammar depth** (74/74 lessons reviewed with `explanation_markdown`); N5 mnemonic + example generators/sidecars (still mostly `draft`); root `NOTICE` file; cloze schema coordination with Wave A.
+**Done:** Phase 0 schema (explanation / caution / related / split mnemonics / passage enrichment); Phase 0.5 `LessonMarkdown` UI; Phase 1 fact skeleton + audit tooling; mechanical validators; **N5 grammar depth** (74/74 lessons reviewed with `explanation_markdown`); N5 mnemonic + example generators/sidecars (still mostly `draft`; mnemonic drafts superseded by Rev 1); root `NOTICE` file; cloze schema coordination with Wave A. Composition chips (`ItemCrossReferences`) already ship.
+
+**Rev 1 (July 2026) — planned, not built:** new per-type model (radical description only; kanji/vocab split WaniKani-depth mnemonics chained radical→kanji→vocab; drop grammar `mnemonic_text`); look-alike pairs; deeper prompts (`prompt_version: 2`); humor-tagged passages; cloze nudge rewrite.
 
 **Not done / thin:**
+- **R1.2 Phase 0.6 (critical path):** app still selects/renders only `mnemonic_text` — split mnemonics/`description`/`visually_similar_slugs` are invisible until repository + detail/lesson UI work
+- **R1.1** Rev 1 schema/DDL/compiler (radical/vocab `description`, vocab split mnemonics, `visually_similar_slugs`; stop emitting grammar `mnemonic_text`)
+- **R1.3** look-alike pair derivation (curated + graph/KanjiVG; never LLM-invented)
+- **R1.4** Rev-2 prompts/gate + wholesale regen N5 radicals → kanji → vocab (2d); N4 same order after
+- **R1.5** cloze nudge rewrite (shipped N5 nudges are definitional giveaways)
 - N4 grammar lessons (0) and N4 mnemonic/example authoring
 - Cast-coherence / ship gate for draft → reviewed mnemonics & examples
-- Phase 3 radical/kanji images (KanjiVG card render + Tier 2 art) — overlaps radical-mnemonic-images CDN gap
-- Phase 4 closed-loop reading generation (`word_count` never set — 0/10 N5 and 0/9 N4 passages)
+- Phase 3 radical/kanji images (KanjiVG card render + Tier 2 art from radical `description`) — overlaps radical-mnemonic-images CDN gap
+- Phase 4 closed-loop reading generation + 50–60% humorous tone mix (`word_count` never set — 0/10 N5 and 0/9 N4 passages)
 - Phase 5 review tooling (`npm run review-content` / local HTML review UI)
 - Settings → About attribution UI (NOTICE exists; in-app surface does not)
 - Default CI compile does not `--fail-on-draft`
