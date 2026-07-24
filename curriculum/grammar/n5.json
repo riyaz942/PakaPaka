@@ -6,7 +6,6 @@
       "primary_form": "は",
       "meaning": "topic marker",
       "structure": "Noun + は + comment",
-      "mnemonic_text": "は marks what the sentence is about — the topic on the table.",
       "sort_order": 1,
       "conjugation_rules": {
         "particle": "topic"
@@ -143,7 +142,6 @@
       "primary_form": "です",
       "meaning": "copula (to be)",
       "structure": "Noun / na-adj + です",
-      "mnemonic_text": "です is the polite 'is/am/are' that ends a statement.",
       "sort_order": 2,
       "conjugation_rules": {
         "polite": true,
@@ -281,7 +279,6 @@
       "primary_form": "ではありません",
       "meaning": "negative copula (is not)",
       "structure": "Noun + ではありません / じゃないです",
-      "mnemonic_text": "The polite way to say something is NOT the case.",
       "sort_order": 3,
       "conjugation_rules": {
         "polite": true,
@@ -371,7 +368,6 @@
       "primary_form": "ます",
       "meaning": "polite verb ending",
       "structure": "Verb stem + ます",
-      "mnemonic_text": "ます turns any verb into its polite form.",
       "sort_order": 4,
       "conjugation_rules": {
         "polite": true,
@@ -474,7 +470,6 @@
       "primary_form": "ません",
       "meaning": "polite negative verb ending",
       "structure": "Verb stem + ません",
-      "mnemonic_text": "Swap ます for ません to say you do NOT do it.",
       "sort_order": 5,
       "conjugation_rules": {
         "polite": true,
@@ -562,7 +557,6 @@
       "primary_form": "ました",
       "meaning": "polite past tense",
       "structure": "Verb stem + ました",
-      "mnemonic_text": "ました is the polite past — it already happened.",
       "sort_order": 6,
       "conjugation_rules": {
         "polite": true,
@@ -652,7 +646,6 @@
       "primary_form": "ましょう",
       "meaning": "let's / shall we",
       "structure": "Verb stem + ましょう",
-      "mnemonic_text": "ましょう invites everyone: let's do it together.",
       "sort_order": 7,
       "conjugation_rules": {
         "polite": true,
@@ -737,7 +730,6 @@
       "primary_form": "ませんか",
       "meaning": "won't you? (invitation)",
       "structure": "Verb stem + ませんか",
-      "mnemonic_text": "A soft negative question that means 'won't you join me?'",
       "sort_order": 8,
       "conjugation_rules": {
         "polite": true,
@@ -815,7 +807,6 @@
       "primary_form": "を",
       "meaning": "direct object marker",
       "structure": "Noun + を + Verb",
-      "mnemonic_text": "を tags the thing the verb acts on.",
       "sort_order": 9,
       "conjugation_rules": {
         "particle": "object"
@@ -938,7 +929,6 @@
       "primary_form": "が",
       "meaning": "subject marker",
       "structure": "Noun + が + Predicate",
-      "mnemonic_text": "が spotlights the subject, often something new.",
       "sort_order": 10,
       "conjugation_rules": {
         "particle": "subject"
@@ -1064,7 +1054,6 @@
       "primary_form": "の",
       "meaning": "possessive / linking particle",
       "structure": "Noun + の + Noun",
-      "mnemonic_text": "の links two nouns: A's B, or B of A.",
       "sort_order": 11,
       "conjugation_rules": {
         "particle": "possessive"
@@ -1152,7 +1141,6 @@
       "primary_form": "の",
       "meaning": "nominalizer / explanatory",
       "structure": "Verb (plain) + の / んです",
-      "mnemonic_text": "の turns a whole action into a noun, or explains why.",
       "sort_order": 12,
       "conjugation_rules": {
         "nominalizer": true
@@ -1228,7 +1216,6 @@
       "primary_form": "に",
       "meaning": "to / at (direction, time, target)",
       "structure": "Noun + に",
-      "mnemonic_text": "に pins an action to a point in time or a destination.",
       "sort_order": 13,
       "conjugation_rules": {
         "particle": "target"
@@ -1313,7 +1300,6 @@
       "primary_form": "へ",
       "meaning": "toward (direction)",
       "structure": "Noun + へ",
-      "mnemonic_text": "へ points the way you are heading.",
       "sort_order": 14,
       "conjugation_rules": {
         "particle": "direction"
@@ -1389,7 +1375,6 @@
       "primary_form": "で",
       "meaning": "at / by / with (place of action, means)",
       "structure": "Noun + で + Verb",
-      "mnemonic_text": "で marks where an action happens or the means used.",
       "sort_order": 15,
       "conjugation_rules": {
         "particle": "location_means"
@@ -1476,7 +1461,6 @@
       "primary_form": "と",
       "meaning": "and / with (exhaustive)",
       "structure": "Noun + と + Noun",
-      "mnemonic_text": "と ties a full list of nouns or a companion together.",
       "sort_order": 16,
       "conjugation_rules": {
         "particle": "and_with"
@@ -1555,7 +1539,6 @@
       "primary_form": "や",
       "meaning": "and (among others)",
       "structure": "Noun + や + Noun (など)",
-      "mnemonic_text": "や lists examples — 'things like A and B'.",
       "sort_order": 17,
       "conjugation_rules": {
         "particle": "nonexhaustive_and"
@@ -1625,7 +1608,6 @@
       "primary_form": "も",
       "meaning": "also / too",
       "structure": "Noun + も",
-      "mnemonic_text": "も adds 'as well' — me too, this too.",
       "sort_order": 18,
       "conjugation_rules": {
         "particle": "also"
@@ -1736,7 +1718,6 @@
       "primary_form": "から",
       "meaning": "from (starting point)",
       "structure": "Noun + から",
-      "mnemonic_text": "から marks the start: from here, from then.",
       "sort_order": 19,
       "conjugation_rules": {
         "particle": "start"
@@ -1811,7 +1792,6 @@
       "primary_form": "まで",
       "meaning": "until / as far as",
       "structure": "Noun + まで",
-      "mnemonic_text": "まで marks the end point: up to here, until then.",
       "sort_order": 20,
       "conjugation_rules": {
         "particle": "end"
@@ -1886,7 +1866,6 @@
       "primary_form": "から",
       "meaning": "because (reason)",
       "structure": "Clause (plain/polite) + から",
-      "mnemonic_text": "から after a clause gives the reason: because...",
       "sort_order": 21,
       "conjugation_rules": {
         "reason": true
@@ -1962,7 +1941,6 @@
       "primary_form": "ので",
       "meaning": "because (soft/objective)",
       "structure": "Clause (plain) + ので",
-      "mnemonic_text": "ので is a gentler 'because' than から.",
       "sort_order": 22,
       "conjugation_rules": {
         "reason": true,
@@ -2032,7 +2010,6 @@
       "primary_form": "に (相手)",
       "meaning": "to (recipient / indirect object)",
       "structure": "Person + に + Verb",
-      "mnemonic_text": "に marks who receives the action.",
       "sort_order": 23,
       "conjugation_rules": {
         "particle": "recipient"
@@ -2112,7 +2089,6 @@
       "primary_form": "か",
       "meaning": "question marker",
       "structure": "Sentence + か",
-      "mnemonic_text": "か at the end turns a statement into a question.",
       "sort_order": 24,
       "conjugation_rules": {
         "particle": "question"
@@ -2184,7 +2160,6 @@
       "primary_form": "ね",
       "meaning": "confirmation / agreement tag",
       "structure": "Sentence + ね",
-      "mnemonic_text": "ね seeks agreement: '..., right?'",
       "sort_order": 25,
       "conjugation_rules": {
         "particle": "confirmation"
@@ -2254,7 +2229,6 @@
       "primary_form": "よ",
       "meaning": "assertion / emphasis tag",
       "structure": "Sentence + よ",
-      "mnemonic_text": "よ tells the listener something they don't know: 'you know!'",
       "sort_order": 26,
       "conjugation_rules": {
         "particle": "emphasis"
@@ -2318,7 +2292,6 @@
       "primary_form": "て形",
       "meaning": "te-form (connective)",
       "structure": "Verb → て form",
-      "mnemonic_text": "The て-form chains actions and links to many endings.",
       "sort_order": 27,
       "conjugation_rules": {
         "connective": true,
@@ -2405,7 +2378,6 @@
       "primary_form": "てください",
       "meaning": "please do (request)",
       "structure": "Verb-て + ください",
-      "mnemonic_text": "Add ください to the て-form to politely ask someone to do it.",
       "sort_order": 28,
       "conjugation_rules": {
         "request": true,
@@ -2482,7 +2454,6 @@
       "primary_form": "ている",
       "meaning": "progressive / ongoing state",
       "structure": "Verb-て + いる",
-      "mnemonic_text": "て + いる = doing right now, or an ongoing state.",
       "sort_order": 29,
       "conjugation_rules": {
         "aspect": "progressive"
@@ -2560,7 +2531,6 @@
       "primary_form": "てもいい",
       "meaning": "may / it's okay to",
       "structure": "Verb-て + もいい(です)",
-      "mnemonic_text": "て + もいい gives permission: 'you may...'",
       "sort_order": 30,
       "conjugation_rules": {
         "permission": true
@@ -2629,7 +2599,6 @@
       "primary_form": "てはいけない",
       "meaning": "must not / may not",
       "structure": "Verb-て + はいけない",
-      "mnemonic_text": "て + はいけない forbids it: 'you must not...'",
       "sort_order": 31,
       "conjugation_rules": {
         "prohibition": true
@@ -2699,7 +2668,6 @@
       "primary_form": "てから",
       "meaning": "after doing",
       "structure": "Verb-て + から",
-      "mnemonic_text": "て + から = only after this action does the next happen.",
       "sort_order": 32,
       "conjugation_rules": {
         "sequence": true
@@ -2767,7 +2735,6 @@
       "primary_form": "ない形",
       "meaning": "plain negative",
       "structure": "Verb → ない form",
-      "mnemonic_text": "The ない-form is the casual 'do not'.",
       "sort_order": 33,
       "conjugation_rules": {
         "negative": true,
@@ -2843,7 +2810,6 @@
       "primary_form": "ないでください",
       "meaning": "please don't",
       "structure": "Verb-ない + でください",
-      "mnemonic_text": "Politely ask someone NOT to do something.",
       "sort_order": 34,
       "conjugation_rules": {
         "request": true,
@@ -2908,7 +2874,6 @@
       "primary_form": "なければならない",
       "meaning": "must / have to",
       "structure": "Verb-ない stem + なければならない",
-      "mnemonic_text": "If you don't, it won't do — so you MUST.",
       "sort_order": 35,
       "conjugation_rules": {
         "obligation": true
@@ -2978,7 +2943,6 @@
       "primary_form": "なくてもいい",
       "meaning": "don't have to",
       "structure": "Verb-ない stem + なくてもいい",
-      "mnemonic_text": "Even if you don't, it's fine — no need to.",
       "sort_order": 36,
       "conjugation_rules": {
         "no_obligation": true
@@ -3046,7 +3010,6 @@
       "primary_form": "た形",
       "meaning": "plain past",
       "structure": "Verb → た form",
-      "mnemonic_text": "The た-form is the casual past tense.",
       "sort_order": 37,
       "conjugation_rules": {
         "past": true,
@@ -3115,7 +3078,6 @@
       "primary_form": "たことがある",
       "meaning": "have done before (experience)",
       "structure": "Verb-た + ことがある",
-      "mnemonic_text": "There's a past 'thing' you've experienced.",
       "sort_order": 38,
       "conjugation_rules": {
         "experience": true
@@ -3183,7 +3145,6 @@
       "primary_form": "たり〜たりする",
       "meaning": "doing things like (listing actions)",
       "structure": "Verb-たり + Verb-たり + する",
-      "mnemonic_text": "List a few sample actions among others.",
       "sort_order": 39,
       "conjugation_rules": {
         "listing": true
@@ -3246,7 +3207,6 @@
       "primary_form": "たい",
       "meaning": "want to (do)",
       "structure": "Verb stem + たい",
-      "mnemonic_text": "たい expresses your own desire to do something.",
       "sort_order": 40,
       "conjugation_rules": {
         "desire": true,
@@ -3325,7 +3285,6 @@
       "primary_form": "がほしい",
       "meaning": "want (a thing)",
       "structure": "Noun + がほしい",
-      "mnemonic_text": "ほしい is wanting to HAVE a thing, not to do.",
       "sort_order": 41,
       "conjugation_rules": {
         "desire": true,
@@ -3392,7 +3351,6 @@
       "primary_form": "に行く",
       "meaning": "go in order to (purpose)",
       "structure": "Verb stem + に + 行く/来る/帰る",
-      "mnemonic_text": "に + a motion verb marks the purpose of going.",
       "sort_order": 42,
       "conjugation_rules": {
         "purpose": true
@@ -3464,7 +3422,6 @@
       "primary_form": "前に",
       "meaning": "before (doing)",
       "structure": "Verb (dict) / Noun の + 前に",
-      "mnemonic_text": "前に places an action before another.",
       "sort_order": 43,
       "conjugation_rules": {
         "time_order": "before"
@@ -3532,7 +3489,6 @@
       "primary_form": "後で",
       "meaning": "after (doing)",
       "structure": "Verb-た / Noun の + 後で",
-      "mnemonic_text": "後で places an action after another.",
       "sort_order": 44,
       "conjugation_rules": {
         "time_order": "after"
@@ -3602,7 +3558,6 @@
       "primary_form": "とき",
       "meaning": "when / at the time of",
       "structure": "Clause (plain) + とき",
-      "mnemonic_text": "とき marks the moment 'when' something happens.",
       "sort_order": 45,
       "conjugation_rules": {
         "time": true
@@ -3673,7 +3628,6 @@
       "primary_form": "ことができる",
       "meaning": "can / be able to",
       "structure": "Verb (dict) + ことができる",
-      "mnemonic_text": "The 'thing' of doing is possible: you can do it.",
       "sort_order": 46,
       "conjugation_rules": {
         "ability": true
@@ -3739,7 +3693,6 @@
       "primary_form": "い形容詞",
       "meaning": "i-adjective conjugation",
       "structure": "い-adj → past くかった / neg くない",
-      "mnemonic_text": "Drop the い and add くない / かった to conjugate.",
       "sort_order": 47,
       "conjugation_rules": {
         "past": "かった",
@@ -3811,7 +3764,6 @@
       "primary_form": "な形容詞",
       "meaning": "na-adjective usage",
       "structure": "な-adj + な + Noun / + です",
-      "mnemonic_text": "na-adjectives borrow な before a noun and です to end.",
       "sort_order": 48,
       "conjugation_rules": {
         "attributive": "な",
@@ -3883,7 +3835,6 @@
       "primary_form": "く (副詞化)",
       "meaning": "make an i-adjective into an adverb",
       "structure": "い-adj (drop い) + く",
-      "mnemonic_text": "はやい → はやく: describe HOW an action is done.",
       "sort_order": 49,
       "conjugation_rules": {
         "adverbial": "く"
@@ -3949,7 +3900,6 @@
       "primary_form": "に (副詞化)",
       "meaning": "make a na-adjective into an adverb",
       "structure": "な-adj + に",
-      "mnemonic_text": "しずか → しずかに: describe HOW with a na-adjective.",
       "sort_order": 50,
       "conjugation_rules": {
         "adverbial": "に"
@@ -4014,7 +3964,6 @@
       "primary_form": "より",
       "meaning": "more than (comparison)",
       "structure": "A は B より + adj",
-      "mnemonic_text": "より marks the thing you compare against.",
       "sort_order": 51,
       "conjugation_rules": {
         "comparison": true
@@ -4082,7 +4031,6 @@
       "primary_form": "一番",
       "meaning": "the most / number one",
       "structure": "(の中で) 一番 + adj",
-      "mnemonic_text": "一番 crowns the top of the group.",
       "sort_order": 52,
       "conjugation_rules": {
         "superlative": true
@@ -4150,7 +4098,6 @@
       "primary_form": "どうですか",
       "meaning": "how is it? / how about?",
       "structure": "Noun + はどうですか",
-      "mnemonic_text": "Ask an opinion or make an offer with どうですか.",
       "sort_order": 53,
       "conjugation_rules": {
         "question": true
@@ -4216,7 +4163,6 @@
       "primary_form": "だろう",
       "meaning": "probably (plain)",
       "structure": "Plain form + だろう",
-      "mnemonic_text": "だろう guesses: 'probably so'.",
       "sort_order": 54,
       "conjugation_rules": {
         "probability": true
@@ -4282,7 +4228,6 @@
       "primary_form": "かもしれない",
       "meaning": "might / maybe",
       "structure": "Plain form + かもしれない",
-      "mnemonic_text": "It might be so — you can't be sure.",
       "sort_order": 55,
       "conjugation_rules": {
         "possibility": true
@@ -4348,7 +4293,6 @@
       "primary_form": "と思う",
       "meaning": "I think that",
       "structure": "Plain form + と思う",
-      "mnemonic_text": "と quotes your thought before 思う.",
       "sort_order": 56,
       "conjugation_rules": {
         "opinion": true
@@ -4416,7 +4360,6 @@
       "primary_form": "という",
       "meaning": "called / named (quotation)",
       "structure": "X という + Noun",
-      "mnemonic_text": "という introduces what something is called.",
       "sort_order": 57,
       "conjugation_rules": {
         "quotation": true
@@ -4484,7 +4427,6 @@
       "primary_form": "すぎる",
       "meaning": "too much / excessively",
       "structure": "Verb stem / adj stem + すぎる",
-      "mnemonic_text": "すぎる pushes past the limit: too ___.",
       "sort_order": 58,
       "conjugation_rules": {
         "excess": true
@@ -4551,7 +4493,6 @@
       "primary_form": "ほうがいい",
       "meaning": "had better / should",
       "structure": "Verb-た / Verb-ない + ほうがいい",
-      "mnemonic_text": "One side (ほう) is better — advice.",
       "sort_order": 59,
       "conjugation_rules": {
         "advice": true
@@ -4620,7 +4561,6 @@
       "primary_form": "でしょう",
       "meaning": "probably / right? (polite)",
       "structure": "Plain form + でしょう",
-      "mnemonic_text": "The polite guess or confirmation.",
       "sort_order": 60,
       "conjugation_rules": {
         "probability": true,
@@ -4687,7 +4627,6 @@
       "primary_form": "まだ〜ていない",
       "meaning": "have not yet done",
       "structure": "まだ + Verb-て + いない",
-      "mnemonic_text": "Still not done — まだ + ていない.",
       "sort_order": 61,
       "conjugation_rules": {
         "not_yet": true
@@ -4751,7 +4690,6 @@
       "primary_form": "もう〜ました",
       "meaning": "already did",
       "structure": "もう + Verb-ました",
-      "mnemonic_text": "もう means it's already done.",
       "sort_order": 62,
       "conjugation_rules": {
         "already": true
@@ -4817,7 +4755,6 @@
       "primary_form": "だけ",
       "meaning": "only / just",
       "structure": "Noun / Verb + だけ",
-      "mnemonic_text": "だけ limits it to only that.",
       "sort_order": 63,
       "conjugation_rules": {
         "limit": true
@@ -4882,7 +4819,6 @@
       "primary_form": "しか〜ない",
       "meaning": "only / nothing but",
       "structure": "Noun + しか + Verb-ない",
-      "mnemonic_text": "しか + negative = nothing but this.",
       "sort_order": 64,
       "conjugation_rules": {
         "limit": true,
@@ -4949,7 +4885,6 @@
       "primary_form": "ぐらい / くらい",
       "meaning": "about / approximately",
       "structure": "Quantity + ぐらい",
-      "mnemonic_text": "ぐらい rounds it off: about that much.",
       "sort_order": 65,
       "conjugation_rules": {
         "approximation": true
@@ -5013,7 +4948,6 @@
       "primary_form": "ごろ",
       "meaning": "around (a point in time)",
       "structure": "Time + ごろ",
-      "mnemonic_text": "ごろ rounds a clock time: around then.",
       "sort_order": 66,
       "conjugation_rules": {
         "approximate_time": true
@@ -5078,7 +5012,6 @@
       "primary_form": "全然〜ない",
       "meaning": "not at all",
       "structure": "全然 + negative",
-      "mnemonic_text": "全然 pairs with a negative: not in the least.",
       "sort_order": 67,
       "conjugation_rules": {
         "negative_emphasis": true
@@ -5146,7 +5079,6 @@
       "primary_form": "あまり〜ない",
       "meaning": "not very / not much",
       "structure": "あまり + negative",
-      "mnemonic_text": "あまり + negative softens to 'not very'.",
       "sort_order": 68,
       "conjugation_rules": {
         "negative_degree": true
@@ -5213,7 +5145,6 @@
       "primary_form": "でも (suggestion)",
       "meaning": "or something (soft suggestion)",
       "structure": "Noun + でも",
-      "mnemonic_text": "でも offers a loose example: '...or something'.",
       "sort_order": 69,
       "conjugation_rules": {
         "suggestion": true
@@ -5277,7 +5208,6 @@
       "primary_form": "ながら",
       "meaning": "while doing (simultaneous)",
       "structure": "Verb stem + ながら",
-      "mnemonic_text": "ながら does two things at once.",
       "sort_order": 70,
       "conjugation_rules": {
         "simultaneous": true
@@ -5347,7 +5277,6 @@
       "primary_form": "じゃないですか",
       "meaning": "isn't it? (seeking agreement)",
       "structure": "Plain form + じゃないですか",
-      "mnemonic_text": "A negative question that expects a yes.",
       "sort_order": 71,
       "conjugation_rules": {
         "confirmation": true
@@ -5413,7 +5342,6 @@
       "primary_form": "ため(に)",
       "meaning": "for the sake of / in order to",
       "structure": "Verb (dict) / Noun の + ため(に)",
-      "mnemonic_text": "ため marks the goal you act for.",
       "sort_order": 72,
       "conjugation_rules": {
         "purpose": true
@@ -5482,7 +5410,6 @@
       "primary_form": "くなる / になる",
       "meaning": "become",
       "structure": "adj-く / na-adj/Noun に + なる",
-      "mnemonic_text": "なる marks a change into a new state.",
       "sort_order": 73,
       "conjugation_rules": {
         "change_of_state": true
@@ -5550,7 +5477,6 @@
       "primary_form": "あげる・くれる・もらう",
       "meaning": "giving and receiving verbs",
       "structure": "Person に + あげる / が + くれる / から + もらう",
-      "mnemonic_text": "Direction of the gift decides which verb you use.",
       "sort_order": 74,
       "conjugation_rules": {
         "giving_receiving": true

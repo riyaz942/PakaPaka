@@ -74,6 +74,16 @@ CREATE TABLE grammar_cloze_variants (
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
+-- Data-derived look-alike pairs on radical/kanji items (content pipeline
+-- Rev 1). Stored directional per item in authored order; the pair dataset
+-- itself is symmetric.
+CREATE TABLE visually_similar_links (
+  id INTEGER PRIMARY KEY NOT NULL,
+  item_id INTEGER NOT NULL REFERENCES items(id),
+  similar_item_id INTEGER NOT NULL REFERENCES items(id),
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
 CREATE TABLE example_sentences (
   id INTEGER PRIMARY KEY NOT NULL,
   item_id INTEGER NOT NULL REFERENCES items(id),
@@ -154,6 +164,7 @@ CREATE TABLE external_id_mappings (
 
 CREATE INDEX idx_grammar_cloze_variants_item ON grammar_cloze_variants(item_id);
 CREATE INDEX idx_grammar_related_links_item ON grammar_related_links(grammar_item_id);
+CREATE INDEX idx_visually_similar_links_item ON visually_similar_links(item_id);
 CREATE INDEX idx_passage_grammar_links_passage ON passage_grammar_links(passage_id);
 CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(passage_id);
 CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);

@@ -55,6 +55,8 @@ type RadicalItem = {
   primary_form: string;
   meaning: string;
   mnemonic_text?: string;
+  description?: string;
+  visually_similar_slugs?: string[];
   visual_mnemonic_url: string;
   sort_order?: number;
   accepted_answers?: AcceptedAnswer[];
@@ -81,6 +83,7 @@ type KanjiItem = {
   meaning_mnemonic?: string;
   reading_mnemonic?: string;
   description?: string;
+  visually_similar_slugs?: string[];
   visual_mnemonic_url?: string;
   sort_order?: number;
   readings?: KanjiReading[];
@@ -95,6 +98,9 @@ type VocabItem = {
   furigana?: string;
   meaning: string;
   mnemonic_text?: string;
+  meaning_mnemonic?: string;
+  reading_mnemonic?: string;
+  description?: string;
   sort_order?: number;
   accepted_answers?: AcceptedAnswer[];
   example_sentences?: ExampleSentence[];
@@ -122,7 +128,6 @@ type GrammarItem = {
   slug: string;
   primary_form: string;
   meaning: string;
-  mnemonic_text?: string;
   explanation_markdown?: string;
   caution_notes?: string[];
   related_grammar_slugs?: string[];
@@ -405,6 +410,43 @@ export function compileCurriculum(
       INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
       VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
     `);
+    const insertVisuallySimilarLink = db.prepare(`
+      INSERT INTO visually_similar_links (item_id, similar_item_id, sort_order)
+      VALUES (@item_id, @similar_item_id, @sort_order)
+    `);
+    // Look-alikes can point at items later in the compile order (or the other
+    // item type), so links are resolved up front and inserted after all item
+    // rows exist. A slug may name a radical or a kanji — never ambiguously both.
+    const pendingSimilarLinks: {
+      item_id: number;
+      similar_item_id: number;
+      sort_order: number;
+    }[] = [];
+    const collectSimilarLinks = (
+      itemId: number,
+      label: string,
+      slugs: string[] | undefined,
+    ) => {
+      for (const [index, similarSlug] of (slugs ?? []).entries()) {
+        const radicalId = idByKey.get(itemKey('radical', similarSlug));
+        const kanjiId = idByKey.get(itemKey('kanji', similarSlug));
+        if (radicalId && kanjiId) {
+          throw new Error(
+            `Ambiguous visually similar link: ${label} -> ${similarSlug} matches both a radical and a kanji`,
+          );
+        }
+        const similarId = radicalId ?? kanjiId;
+        if (!similarId) {
+          throw new Error(`Unresolved visually similar link: ${label} -> ${similarSlug}`);
+        }
+        pendingSimilarLinks.push({
+          item_id: itemId,
+          similar_item_id: similarId,
+          sort_order: index,
+        });
+      }
+    };
+
     const insertExamples = (itemId: number, sentences: ExampleSentence[]) => {
       for (const [index, sentence] of sentences.entries()) {
         insertExample.run({
@@ -433,10 +475,12 @@ export function compileCurriculum(
         mnemonic_text: radical.mnemonic_text ?? null,
         meaning_mnemonic: null,
         reading_mnemonic: null,
-        description: null,
+        description: radical.description ?? null,
         visual_mnemonic_url: radical.visual_mnemonic_url,
         sort_order: radical.sort_order ?? 0,
       });
+
+      collectSimilarLinks(id, `radical:${radical.slug}`, radical.visually_similar_slugs);
 
       for (const answer of radical.accepted_answers ?? []) {
         insertAnswer.run({
@@ -465,6 +509,8 @@ export function compileCurriculum(
         visual_mnemonic_url: kanjiItem.visual_mnemonic_url ?? null,
         sort_order: kanjiItem.sort_order ?? 0,
       });
+
+      collectSimilarLinks(id, `kanji:${kanjiItem.slug}`, kanjiItem.visually_similar_slugs);
 
       for (const [index, reading] of (kanjiItem.readings ?? []).entries()) {
         insertReading.run({
@@ -498,9 +544,9 @@ export function compileCurriculum(
         furigana: vocab.furigana ?? null,
         meaning: vocab.meaning,
         mnemonic_text: vocab.mnemonic_text ?? null,
-        meaning_mnemonic: null,
-        reading_mnemonic: null,
-        description: null,
+        meaning_mnemonic: vocab.meaning_mnemonic ?? null,
+        reading_mnemonic: vocab.reading_mnemonic ?? null,
+        description: vocab.description ?? null,
         visual_mnemonic_url: null,
         sort_order: vocab.sort_order ?? 0,
       });
@@ -552,7 +598,7 @@ export function compileCurriculum(
         primary_form: grammarItem.primary_form,
         furigana: null,
         meaning: grammarItem.meaning,
-        mnemonic_text: grammarItem.mnemonic_text ?? null,
+        mnemonic_text: null,
         meaning_mnemonic: null,
         reading_mnemonic: null,
         description: null,
@@ -615,6 +661,10 @@ export function compileCurriculum(
 
     for (const link of pendingRelatedLinks) {
       insertGrammarRelatedLink.run(link);
+    }
+
+    for (const link of pendingSimilarLinks) {
+      insertVisuallySimilarLink.run(link);
     }
 
     const insertRelationship = db.prepare(`

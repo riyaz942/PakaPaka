@@ -382,7 +382,6 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_reading
             "primary_form": g["primary_form"],
             "meaning": g["meaning"],
             "structure": g["structure"],
-            "mnemonic_text": g["mnemonic"],
             "sort_order": i,
             "conjugation_rules": g["conjugation_rules"],
             "accepted_forms": g["accepted_forms"],

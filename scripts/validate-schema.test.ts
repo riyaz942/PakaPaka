@@ -420,6 +420,99 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
   });
 });
 
+describe('validateCurriculum Rev 1 fields', () => {
+  function writeTempRadicalDir(radicalItem: Record<string, unknown>): string {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-radical-'));
+    fs.writeFileSync(
+      path.join(tempDir, 'metadata.json'),
+      JSON.stringify({
+        version: '0.0.1-test',
+        jlpt_levels: ['N5'],
+        description: 'Fixture metadata for radical validation tests',
+      }),
+    );
+    fs.mkdirSync(path.join(tempDir, 'radicals'));
+    fs.writeFileSync(
+      path.join(tempDir, 'radicals', 'n5.json'),
+      JSON.stringify({ jlpt_level: 'N5', items: [radicalItem] }),
+    );
+    return tempDir;
+  }
+
+  const baseRadical = {
+    slug: 'ichi',
+    primary_form: '一',
+    meaning: 'one',
+    visual_mnemonic_url: 'https://assets.example/radicals/n5/ichi.png',
+  };
+
+  it('accepts a radical description and visually_similar_slugs', () => {
+    const tempDir = writeTempRadicalDir({
+      ...baseRadical,
+      description: 'A single stroke lying flat: the ground.',
+      visually_similar_slugs: ['n5-ichi'],
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('errors when radical visually_similar_slugs references the item itself', () => {
+    const tempDir = writeTempRadicalDir({
+      ...baseRadical,
+      visually_similar_slugs: ['ichi'],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      if (!result.ok) {
+        expect(
+          result.errors.some((e) =>
+            e.includes('visually_similar_slugs must not reference the item itself'),
+          ),
+        ).toBe(true);
+      }
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('rejects grammar mnemonic_text via the schema', () => {
+    const tempDir = writeTempGrammarDir({
+      slug: 'wa-topic',
+      primary_form: 'は',
+      meaning: 'topic marker',
+      structure: 'Noun + は + comment',
+      conjugation_rules: {},
+      accepted_forms: ['は'],
+      mnemonic_text: 'は marks the topic.',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('accepts vocabulary split mnemonics and description', () => {
+    const tempDir = writeTempCurriculumDir({
+      slug: 'ichi-v',
+      primary_form: '一',
+      meaning: 'one',
+      meaning_mnemonic: 'The kanji 一 standing alone is the number one.',
+      reading_mnemonic: 'You already know いち from 一.',
+      description: 'The plain counting word for one.',
+    });
+    try {
+      expect(validateCurriculum(tempDir).ok).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+});
+
 describe('curriculum schema validation', () => {
   it('accepts valid radicals fixture', () => {
     const validate = compileRadicalsValidator();

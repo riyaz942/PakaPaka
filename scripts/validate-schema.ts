@@ -167,6 +167,7 @@ function runFuriganaChecks(
     const file = data as {
       items: {
         slug: string;
+        visually_similar_slugs?: string[];
         example_sentences?: { japanese: string; furigana?: string }[];
       }[];
     };
@@ -180,6 +181,17 @@ function runFuriganaChecks(
           warnings,
         );
       }
+      checkVisuallySimilarSlugs(`${relative} kanji:${item.slug}`, item, errors);
+    }
+    return;
+  }
+
+  if (validatorKey === 'radicalsFile') {
+    const file = data as {
+      items: { slug: string; visually_similar_slugs?: string[] }[];
+    };
+    for (const item of file.items) {
+      checkVisuallySimilarSlugs(`${relative} radical:${item.slug}`, item, errors);
     }
     return;
   }
@@ -243,6 +255,18 @@ function runFuriganaChecks(
         );
       }
     }
+  }
+}
+
+/** Rev 1 look-alikes: an item must not list itself. Cross-file slug existence
+ * is enforced at compile time when the links are resolved to item ids. */
+function checkVisuallySimilarSlugs(
+  label: string,
+  item: { slug: string; visually_similar_slugs?: string[] },
+  errors: string[],
+): void {
+  if ((item.visually_similar_slugs ?? []).includes(item.slug)) {
+    errors.push(`${label}: visually_similar_slugs must not reference the item itself`);
   }
 }
 

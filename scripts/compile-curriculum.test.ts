@@ -174,6 +174,75 @@ describe('compile-curriculum', () => {
     }
   });
 
+  it('compiles Rev 1 fields (radical/vocab description, vocab split mnemonics, look-alike links)', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const dbPath = path.join(tempDir, 'curriculum.db');
+
+    compileCurriculum(dbPath, FIXTURE_DIR);
+
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const radical = db
+        .prepare('SELECT description FROM items WHERE item_type = ? AND slug = ?')
+        .get('radical', 'ichi') as { description: string | null };
+      expect(radical.description).toContain('single stroke');
+
+      const vocab = db
+        .prepare(
+          'SELECT meaning_mnemonic, reading_mnemonic, description FROM items WHERE item_type = ? AND slug = ?',
+        )
+        .get('vocabulary', 'ichi-v') as {
+        meaning_mnemonic: string | null;
+        reading_mnemonic: string | null;
+        description: string | null;
+      };
+      expect(vocab.meaning_mnemonic).toContain('number one');
+      expect(vocab.reading_mnemonic).toContain('いち');
+      expect(vocab.description).toContain('counting word');
+
+      const links = db
+        .prepare(
+          `SELECT source.slug AS from_slug, similar.slug AS to_slug
+           FROM visually_similar_links link
+           JOIN items source ON source.id = link.item_id
+           JOIN items similar ON similar.id = link.similar_item_id
+           ORDER BY source.slug ASC`,
+        )
+        .all() as { from_slug: string; to_slug: string }[];
+      expect(links).toEqual([
+        { from_slug: 'ichi', to_slug: 'n5-ichi' },
+        { from_slug: 'n5-ichi', to_slug: 'ichi' },
+      ]);
+
+      const grammarMnemonic = db
+        .prepare('SELECT mnemonic_text FROM items WHERE item_type = ? AND slug = ?')
+        .get('grammar', 'desu') as { mnemonic_text: string | null };
+      expect(grammarMnemonic.mnemonic_text).toBeNull();
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws on an unresolved visually similar slug', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const kanjiPath = path.join(curriculumDir, 'kanji', 'n5.json');
+    const kanjiFile = JSON.parse(fs.readFileSync(kanjiPath, 'utf8'));
+    kanjiFile.items[0].visually_similar_slugs = ['no-such-item'];
+    fs.writeFileSync(kanjiPath, JSON.stringify(kanjiFile));
+
+    try {
+      expect(() => compileCurriculum(path.join(tempDir, 'curriculum.db'), curriculumDir)).toThrow(
+        'Unresolved visually similar link: kanji:n5-ichi -> no-such-item',
+      );
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   it('throws on an unresolved related grammar slug', () => {
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
     const curriculumDir = path.join(tempDir, 'curriculum');

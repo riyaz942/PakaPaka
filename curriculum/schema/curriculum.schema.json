@@ -50,6 +50,12 @@
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
+        "description": { "type": "string", "minLength": 1 },
+        "visually_similar_slugs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true
+        },
         "visual_mnemonic_url": { "type": "string", "format": "uri", "pattern": "^https://" },
         "sort_order": { "type": "integer", "minimum": 0 },
         "accepted_answers": {
@@ -104,6 +110,11 @@
         "meaning_mnemonic": { "type": "string", "minLength": 1 },
         "reading_mnemonic": { "type": "string", "minLength": 1 },
         "description": { "type": "string", "minLength": 1 },
+        "visually_similar_slugs": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true
+        },
         "visual_mnemonic_url": { "type": "string", "format": "uri", "pattern": "^https://" },
         "sort_order": { "type": "integer", "minimum": 0 },
         "readings": {
@@ -144,6 +155,9 @@
         "furigana": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
         "mnemonic_text": { "type": "string" },
+        "meaning_mnemonic": { "type": "string", "minLength": 1 },
+        "reading_mnemonic": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
         "sort_order": { "type": "integer", "minimum": 0 },
         "accepted_answers": {
           "type": "array",
@@ -208,7 +222,6 @@
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "primary_form": { "type": "string", "minLength": 1 },
         "meaning": { "type": "string", "minLength": 1 },
-        "mnemonic_text": { "type": "string" },
         "explanation_markdown": { "type": "string", "minLength": 1 },
         "caution_notes": {
           "type": "array",

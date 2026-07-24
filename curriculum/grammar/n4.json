@@ -6,7 +6,6 @@
       "primary_form": "ので",
       "meaning": "because (neutral reason)",
       "structure": "Plain form + ので",
-      "mnemonic_text": "ので gives an objective, softer reason than から.",
       "sort_order": 1,
       "conjugation_rules": {
         "reason": true,
@@ -88,7 +87,6 @@
       "primary_form": "のに",
       "meaning": "although / even though",
       "structure": "Plain form + のに",
-      "mnemonic_text": "のに sets up a surprising contrast with what follows.",
       "sort_order": 2,
       "conjugation_rules": {
         "contrast": true
@@ -158,7 +156,6 @@
       "primary_form": "そうだ (hearsay)",
       "meaning": "I heard that / apparently",
       "structure": "Plain form + そうだ",
-      "mnemonic_text": "そうだ after a plain sentence reports something you heard.",
       "sort_order": 3,
       "conjugation_rules": {
         "hearsay": true
@@ -230,7 +227,6 @@
       "primary_form": "そうだ (looks like)",
       "meaning": "looks like / seems (appearance)",
       "structure": "い-adj stem / な-adj / Verb stem + そうだ",
-      "mnemonic_text": "そうだ on a stem describes how something visually appears.",
       "sort_order": 4,
       "conjugation_rules": {
         "appearance": true
@@ -299,7 +295,6 @@
       "primary_form": "たら",
       "meaning": "if / when (conditional)",
       "structure": "Ta-form + ら",
-      "mnemonic_text": "たら sets a condition: once this happens, then...",
       "sort_order": 5,
       "conjugation_rules": {
         "conditional": true
@@ -381,7 +376,6 @@
       "primary_form": "ば",
       "meaning": "if (conditional, general truth)",
       "structure": "Verb/adj ba-form + ば",
-      "mnemonic_text": "ば describes a general or hypothetical if-then relationship.",
       "sort_order": 6,
       "conjugation_rules": {
         "conditional": true,
@@ -454,7 +448,6 @@
       "primary_form": "なら",
       "meaning": "if (topic-based conditional)",
       "structure": "Noun / Plain form + なら",
-      "mnemonic_text": "なら reacts to a topic someone just raised: 'if that's the case...'",
       "sort_order": 7,
       "conjugation_rules": {
         "conditional": true,
@@ -515,7 +508,6 @@
       "primary_form": "れる・られる",
       "meaning": "potential form (can do)",
       "structure": "Verb stem + れる / られる",
-      "mnemonic_text": "The potential form expresses ability: what you can do.",
       "sort_order": 8,
       "conjugation_rules": {
         "potential": true
@@ -588,7 +580,6 @@
       "primary_form": "れる・られる (passive)",
       "meaning": "passive voice",
       "structure": "Verb stem + れる / られる",
-      "mnemonic_text": "The passive form flips who receives the action.",
       "sort_order": 9,
       "conjugation_rules": {
         "passive": true
@@ -657,7 +648,6 @@
       "primary_form": "せる・させる",
       "meaning": "causative (make/let someone do)",
       "structure": "Verb stem + せる / させる",
-      "mnemonic_text": "The causative makes or lets someone else do the action.",
       "sort_order": 10,
       "conjugation_rules": {
         "causative": true
@@ -722,7 +712,6 @@
       "primary_form": "せられる・させられる",
       "meaning": "causative-passive (made to do, against one's will)",
       "structure": "Verb stem + せられる / させられる",
-      "mnemonic_text": "Causative + passive: being forced into doing something unwanted.",
       "sort_order": 11,
       "conjugation_rules": {
         "causative_passive": true
@@ -774,7 +763,6 @@
       "primary_form": "ように",
       "meaning": "in order to / so that",
       "structure": "Dictionary form / ない form + ように",
-      "mnemonic_text": "ように sets a goal for a change or effort to reach.",
       "sort_order": 12,
       "conjugation_rules": {
         "purpose": true
@@ -831,7 +819,6 @@
       "primary_form": "ようになる",
       "meaning": "come to be able to / reach the point of",
       "structure": "Dictionary form / potential form + ようになる",
-      "mnemonic_text": "ようになる marks a gradual change reaching a new ability or state.",
       "sort_order": 13,
       "conjugation_rules": {
         "change": true
@@ -893,7 +880,6 @@
       "primary_form": "なくなる",
       "meaning": "come to no longer / stop doing",
       "structure": "Verb ない-stem + なくなる",
-      "mnemonic_text": "なくなる marks the loss of a previous ability or habit.",
       "sort_order": 14,
       "conjugation_rules": {
         "change": true,
@@ -945,7 +931,6 @@
       "primary_form": "はず",
       "meaning": "should be / expected to be",
       "structure": "Plain form + はず",
-      "mnemonic_text": "はず is a confident expectation based on evidence or reason.",
       "sort_order": 15,
       "conjugation_rules": {
         "expectation": true
@@ -1006,7 +991,6 @@
       "primary_form": "はずがない",
       "meaning": "there's no way / can't be",
       "structure": "Plain form + はずがない",
-      "mnemonic_text": "はずがない strongly denies an expectation: impossible.",
       "sort_order": 16,
       "conjugation_rules": {
         "strong_negative_expectation": true
@@ -1056,7 +1040,6 @@
       "primary_form": "らしい",
       "meaning": "seems like / I heard (based on evidence)",
       "structure": "Plain form + らしい",
-      "mnemonic_text": "らしい is a conjecture based on outside information or evidence.",
       "sort_order": 17,
       "conjugation_rules": {
         "conjecture": true
@@ -1116,7 +1099,6 @@
       "primary_form": "ようだ",
       "meaning": "seems / appears (based on inference)",
       "structure": "Plain form / Noun + の + ようだ",
-      "mnemonic_text": "ようだ paints a picture of what seems true from what you sense.",
       "sort_order": 18,
       "conjugation_rules": {
         "appearance": true
@@ -1176,7 +1158,6 @@
       "primary_form": "みたいだ",
       "meaning": "seems like (casual)",
       "structure": "Plain form + みたいだ",
-      "mnemonic_text": "みたいだ is the casual cousin of ようだ.",
       "sort_order": 19,
       "conjugation_rules": {
         "appearance": true,
@@ -1228,7 +1209,6 @@
       "primary_form": "ている",
       "meaning": "progressive / ongoing action",
       "structure": "Te-form + いる",
-      "mnemonic_text": "ている shows an action currently in progress.",
       "sort_order": 20,
       "conjugation_rules": {
         "progressive": true
@@ -1288,7 +1268,6 @@
       "primary_form": "ている (resultant state)",
       "meaning": "resulting state (has become / is)",
       "structure": "Te-form + いる",
-      "mnemonic_text": "ている on a change verb shows the lasting result of that change.",
       "sort_order": 21,
       "conjugation_rules": {
         "resultant_state": true
@@ -1346,7 +1325,6 @@
       "primary_form": "てある",
       "meaning": "has been done (resultant state, tr. verb)",
       "structure": "Te-form (transitive) + ある",
-      "mnemonic_text": "てある shows a deliberate result left in place for a purpose.",
       "sort_order": 22,
       "conjugation_rules": {
         "resultant": true
@@ -1395,7 +1373,6 @@
       "primary_form": "ておく",
       "meaning": "to do in advance / leave as is",
       "structure": "Te-form + おく",
-      "mnemonic_text": "ておく sets something up ahead of time for later use.",
       "sort_order": 23,
       "conjugation_rules": {
         "preparation": true
@@ -1447,7 +1424,6 @@
       "primary_form": "てしまう",
       "meaning": "to finish completely / end up doing (regret)",
       "structure": "Te-form + しまう",
-      "mnemonic_text": "てしまう completes an action, often with a note of regret.",
       "sort_order": 24,
       "conjugation_rules": {
         "completion": true
@@ -1500,7 +1476,6 @@
       "primary_form": "ていく・てくる",
       "meaning": "to go on doing / to come to do (direction of change)",
       "structure": "Te-form + いく / くる",
-      "mnemonic_text": "ていく moves away in time; てくる moves toward now.",
       "sort_order": 25,
       "conjugation_rules": {
         "directional_change": true
@@ -1550,7 +1525,6 @@
       "primary_form": "ても",
       "meaning": "even if / even though",
       "structure": "Te-form + も",
-      "mnemonic_text": "ても keeps the result the same, no matter the condition.",
       "sort_order": 26,
       "conjugation_rules": {
         "concession": true
@@ -1600,7 +1574,6 @@
       "primary_form": "てもいい",
       "meaning": "may / it's okay to",
       "structure": "Te-form + もいい",
-      "mnemonic_text": "てもいい grants permission: it's fine if you do this.",
       "sort_order": 27,
       "conjugation_rules": {
         "permission": true
@@ -1650,7 +1623,6 @@
       "primary_form": "てはいけない",
       "meaning": "must not / not allowed to",
       "structure": "Te-form + はいけない",
-      "mnemonic_text": "てはいけない forbids an action outright.",
       "sort_order": 28,
       "conjugation_rules": {
         "prohibition": true
@@ -1696,7 +1668,6 @@
       "primary_form": "なくてもいい",
       "meaning": "don't have to / not necessary",
       "structure": "Verb ない-stem + くてもいい",
-      "mnemonic_text": "なくてもいい lifts an obligation: it's fine not to.",
       "sort_order": 29,
       "conjugation_rules": {
         "non_obligation": true
@@ -1748,7 +1719,6 @@
       "primary_form": "なければならない",
       "meaning": "must / have to",
       "structure": "Verb ない-stem + ければならない",
-      "mnemonic_text": "なければならない says: if you don't, it won't do — you must.",
       "sort_order": 30,
       "conjugation_rules": {
         "obligation": true
@@ -1798,7 +1768,6 @@
       "primary_form": "そうになる",
       "meaning": "almost / on the verge of",
       "structure": "Verb stem + そうになる",
-      "mnemonic_text": "そうになる is teetering right at the edge of happening.",
       "sort_order": 31,
       "conjugation_rules": {
         "near_miss": true
@@ -1846,7 +1815,6 @@
       "primary_form": "つもり",
       "meaning": "intend to / plan to",
       "structure": "Dictionary form + つもり",
-      "mnemonic_text": "つもり holds your intention in mind before acting.",
       "sort_order": 32,
       "conjugation_rules": {
         "intention": true
@@ -1900,7 +1868,6 @@
       "primary_form": "ようにする",
       "meaning": "to try to make it so / make a habit of",
       "structure": "Dictionary form / ない form + ようにする",
-      "mnemonic_text": "ようにする is a conscious effort to bring about a habit.",
       "sort_order": 33,
       "conjugation_rules": {
         "effort": true
@@ -1952,7 +1919,6 @@
       "primary_form": "ことがある",
       "meaning": "have (done) before / sometimes happens",
       "structure": "Ta-form + ことがある",
-      "mnemonic_text": "ことがある points to a past experience or occasional event.",
       "sort_order": 34,
       "conjugation_rules": {
         "experience": true
@@ -2004,7 +1970,6 @@
       "primary_form": "ことにする",
       "meaning": "to decide to (one's own choice)",
       "structure": "Dictionary form / ない form + ことにする",
-      "mnemonic_text": "ことにする is a personal decision you settle on.",
       "sort_order": 35,
       "conjugation_rules": {
         "decision": true
@@ -2052,7 +2017,6 @@
       "primary_form": "ことになる",
       "meaning": "it has been decided that / turns out that",
       "structure": "Dictionary form / ない form + ことになる",
-      "mnemonic_text": "ことになる marks a decision made by circumstance, not you.",
       "sort_order": 36,
       "conjugation_rules": {
         "external_decision": true
@@ -2103,7 +2067,6 @@
       "primary_form": "もの",
       "meaning": "used to (nostalgic habit) / because (emotional)",
       "structure": "Plain form + もの / だもの",
-      "mnemonic_text": "もの adds an emotional weight to a habitual memory or excuse.",
       "sort_order": 37,
       "conjugation_rules": {
         "nostalgia": true
@@ -2141,7 +2104,6 @@
       "primary_form": "ばかり",
       "meaning": "only / just did",
       "structure": "Noun + ばかり / Ta-form + ばかり",
-      "mnemonic_text": "ばかり piles onto just one thing, or marks something just finished.",
       "sort_order": 38,
       "conjugation_rules": {
         "exclusive_or_recent": true
@@ -2187,7 +2149,6 @@
       "primary_form": "ところ",
       "meaning": "just about to / in the middle of / just finished",
       "structure": "Dictionary/て-form/Ta-form + ところ",
-      "mnemonic_text": "ところ freezes a moment: right before, during, or right after.",
       "sort_order": 39,
       "conjugation_rules": {
         "moment": true
@@ -2237,7 +2198,6 @@
       "primary_form": "間・間に",
       "meaning": "while / during the interval",
       "structure": "Verb-ている / Noun の + 間(に)",
-      "mnemonic_text": "間 marks a stretch of time; 間に marks a moment within it.",
       "sort_order": 40,
       "conjugation_rules": {
         "duration": true
@@ -2289,7 +2249,6 @@
       "primary_form": "うちに",
       "meaning": "while (before it's too late) / during",
       "structure": "Plain form + うちに",
-      "mnemonic_text": "うちに urges you to act before a window of opportunity closes.",
       "sort_order": 41,
       "conjugation_rules": {
         "opportunity_window": true
@@ -2337,7 +2296,6 @@
       "primary_form": "たびに",
       "meaning": "every time / whenever",
       "structure": "Dictionary form / Noun の + たびに",
-      "mnemonic_text": "たびに repeats: each and every time this happens.",
       "sort_order": 42,
       "conjugation_rules": {
         "repetition": true
@@ -2378,7 +2336,6 @@
       "primary_form": "場合",
       "meaning": "in the case of / if the situation is",
       "structure": "Plain form / Noun の + 場合",
-      "mnemonic_text": "場合 frames a specific hypothetical scenario.",
       "sort_order": 43,
       "conjugation_rules": {
         "scenario": true
@@ -2429,7 +2386,6 @@
       "primary_form": "と",
       "meaning": "if / when (natural/automatic result)",
       "structure": "Plain form (present) + と",
-      "mnemonic_text": "と links a condition to an automatic, predictable outcome.",
       "sort_order": 44,
       "conjugation_rules": {
         "conditional": true,
@@ -2479,7 +2435,6 @@
       "primary_form": "から (formal reason, reused)",
       "meaning": "because (subjective reason)",
       "structure": "Plain form + から",
-      "mnemonic_text": "から gives your own subjective reason, more direct than ので.",
       "sort_order": 45,
       "conjugation_rules": {
         "reason": true,
@@ -2525,7 +2480,6 @@
       "primary_form": "代わりに",
       "meaning": "instead of / in exchange for",
       "structure": "Noun の / Dictionary form + 代わりに",
-      "mnemonic_text": "代わりに swaps one thing in for another.",
       "sort_order": 46,
       "conjugation_rules": {
         "substitution": true
@@ -2564,7 +2518,6 @@
       "primary_form": "というより",
       "meaning": "rather than say / more accurately",
       "structure": "Plain form + というより",
-      "mnemonic_text": "というより revises a statement to something more accurate.",
       "sort_order": 47,
       "conjugation_rules": {
         "correction": true
@@ -2602,7 +2555,6 @@
       "primary_form": "として",
       "meaning": "as (in the role/capacity of)",
       "structure": "Noun + として",
-      "mnemonic_text": "として labels the role or capacity someone acts in.",
       "sort_order": 48,
       "conjugation_rules": {
         "role": true
@@ -2643,7 +2595,6 @@
       "primary_form": "について",
       "meaning": "about / regarding",
       "structure": "Noun + について",
-      "mnemonic_text": "について zooms in on the topic you're discussing.",
       "sort_order": 49,
       "conjugation_rules": {
         "topic": true
@@ -2684,7 +2635,6 @@
       "primary_form": "によると",
       "meaning": "according to",
       "structure": "Noun + によると",
-      "mnemonic_text": "によると cites a source before reporting hearsay.",
       "sort_order": 50,
       "conjugation_rules": {
         "source": true
@@ -2725,7 +2675,6 @@
       "primary_form": "ため (cause)",
       "meaning": "due to / because of (formal cause)",
       "structure": "Plain form / Noun の + ため",
-      "mnemonic_text": "ため as a cause explains a formal, often negative, result.",
       "sort_order": 51,
       "conjugation_rules": {
         "cause_formal": true
@@ -2766,7 +2715,6 @@
       "primary_form": "限り",
       "meaning": "as far as / as long as",
       "structure": "Plain form + 限り",
-      "mnemonic_text": "限り marks the outer limit of what you know or can do.",
       "sort_order": 52,
       "conjugation_rules": {
         "limit": true
@@ -2806,7 +2754,6 @@
       "primary_form": "たとえ〜ても",
       "meaning": "even if (hypothetical emphasis)",
       "structure": "たとえ + Te-form + も",
-      "mnemonic_text": "たとえ〜ても stresses the concession, however extreme.",
       "sort_order": 53,
       "conjugation_rules": {
         "strong_concession": true
@@ -2844,7 +2791,6 @@
       "primary_form": "っけ",
       "meaning": "wasn't it? / trying to recall",
       "structure": "Plain form + っけ",
-      "mnemonic_text": "っけ is a casual mutter trying to recall something forgotten.",
       "sort_order": 54,
       "conjugation_rules": {
         "recollection": true,
@@ -2880,7 +2826,6 @@
       "primary_form": "のだ・んだ",
       "meaning": "explanatory emphasis (the thing is...)",
       "structure": "Plain form + のだ / んです",
-      "mnemonic_text": "んです adds emphasis, explaining the reason behind a statement.",
       "sort_order": 55,
       "conjugation_rules": {
         "explanation": true
@@ -2929,7 +2874,6 @@
       "primary_form": "でしょう",
       "meaning": "probably / I guess (softened assertion)",
       "structure": "Plain form + でしょう",
-      "mnemonic_text": "でしょう softens a guess into a polite probability.",
       "sort_order": 56,
       "conjugation_rules": {
         "probability": true
@@ -2977,7 +2921,6 @@
       "primary_form": "かもしれない",
       "meaning": "might / maybe",
       "structure": "Plain form + かもしれない",
-      "mnemonic_text": "かもしれない leaves the door open — it might be true.",
       "sort_order": 57,
       "conjugation_rules": {
         "possibility": true
@@ -3028,7 +2971,6 @@
       "primary_form": "にくい・やすい",
       "meaning": "hard to / easy to (do)",
       "structure": "Verb stem + にくい / やすい",
-      "mnemonic_text": "やすい makes it easy; にくい makes it a hassle.",
       "sort_order": 58,
       "conjugation_rules": {
         "ease_difficulty": true
@@ -3080,7 +3022,6 @@
       "primary_form": "すぎる",
       "meaning": "too much / excessively",
       "structure": "Verb stem / adj stem + すぎる",
-      "mnemonic_text": "すぎる spills past the reasonable limit — too much of it.",
       "sort_order": 59,
       "conjugation_rules": {
         "excess": true
@@ -3131,7 +3072,6 @@
       "primary_form": "つつある",
       "meaning": "in the process of (formal, ongoing change)",
       "structure": "Verb stem + つつある",
-      "mnemonic_text": "つつある marks a change quietly unfolding right now.",
       "sort_order": 60,
       "conjugation_rules": {
         "ongoing_change": true,
@@ -3170,7 +3110,6 @@
       "primary_form": "あげく",
       "meaning": "in the end (after much effort, often bad result)",
       "structure": "Ta-form + あげく",
-      "mnemonic_text": "あげく arrives at the end of a long struggle, often disappointing.",
       "sort_order": 61,
       "conjugation_rules": {
         "final_outcome": true
@@ -3199,7 +3138,6 @@
       "primary_form": "わけ",
       "meaning": "reason / makes sense that",
       "structure": "Plain form + わけ",
-      "mnemonic_text": "わけ explains the logical reason things turned out this way.",
       "sort_order": 62,
       "conjugation_rules": {
         "logical_reason": true
@@ -3241,7 +3179,6 @@
       "primary_form": "わけがない",
       "meaning": "there's no way that",
       "structure": "Plain form + わけがない",
-      "mnemonic_text": "わけがない firmly rejects a possibility as illogical.",
       "sort_order": 63,
       "conjugation_rules": {
         "strong_denial": true
@@ -3283,7 +3220,6 @@
       "primary_form": "かなり",
       "meaning": "quite / fairly (degree)",
       "structure": "かなり + adjective/verb",
-      "mnemonic_text": "かなり pushes the degree up to 'quite a lot'.",
       "sort_order": 64,
       "conjugation_rules": {
         "degree": true
@@ -3320,7 +3256,6 @@
       "primary_form": "ほど",
       "meaning": "to the extent of / the more...the more",
       "structure": "Noun / Plain form + ほど",
-      "mnemonic_text": "ほど measures just how far something reaches.",
       "sort_order": 65,
       "conjugation_rules": {
         "degree_comparison": true
@@ -3362,7 +3297,6 @@
       "primary_form": "くらい (degree)",
       "meaning": "to the extent that / about as much as",
       "structure": "Plain form + くらい",
-      "mnemonic_text": "くらい marks the rough extent something reaches to.",
       "sort_order": 66,
       "conjugation_rules": {
         "extent": true
@@ -3398,7 +3332,6 @@
       "primary_form": "だけでなく",
       "meaning": "not only... but also",
       "structure": "Noun / Plain form + だけでなく",
-      "mnemonic_text": "だけでなく breaks past 'only' to add even more.",
       "sort_order": 67,
       "conjugation_rules": {
         "addition": true
@@ -3439,7 +3372,6 @@
       "primary_form": "に限らず",
       "meaning": "not limited to",
       "structure": "Noun + に限らず",
-      "mnemonic_text": "に限らず widens the scope beyond just one example.",
       "sort_order": 68,
       "conjugation_rules": {
         "scope_extension": true
@@ -3469,7 +3401,6 @@
       "primary_form": "一方で",
       "meaning": "on the other hand",
       "structure": "Plain form + 一方で",
-      "mnemonic_text": "一方で shows the flip side of the same coin.",
       "sort_order": 69,
       "conjugation_rules": {
         "contrast": true
@@ -3497,7 +3428,6 @@
       "primary_form": "にとって",
       "meaning": "for / from the perspective of",
       "structure": "Noun + にとって",
-      "mnemonic_text": "にとって views things through someone's standpoint.",
       "sort_order": 70,
       "conjugation_rules": {
         "perspective": true
@@ -3527,7 +3457,6 @@
       "primary_form": "に関して",
       "meaning": "regarding / concerning (formal)",
       "structure": "Noun + に関して",
-      "mnemonic_text": "に関して formally connects the discussion to its topic.",
       "sort_order": 71,
       "conjugation_rules": {
         "topic_formal": true
@@ -3556,7 +3485,6 @@
       "primary_form": "そういう・こういう",
       "meaning": "that kind of / this kind of",
       "structure": "そういう / こういう + Noun",
-      "mnemonic_text": "こういう points at 'this sort'; そういう points at 'that sort'.",
       "sort_order": 72,
       "conjugation_rules": {
         "demonstrative_kind": true
@@ -3598,7 +3526,6 @@
       "primary_form": "って",
       "meaning": "casual quotation / topic marker",
       "structure": "Plain form + って",
-      "mnemonic_text": "って is the casual shortcut for と or は in speech.",
       "sort_order": 73,
       "conjugation_rules": {
         "casual_quote": true
@@ -3638,7 +3565,6 @@
       "primary_form": "ったら・ってば",
       "meaning": "emphatic address / exasperation",
       "structure": "Noun/Plain form + ったら・ってば",
-      "mnemonic_text": "ってば expresses mild exasperation calling someone out.",
       "sort_order": 74,
       "conjugation_rules": {
         "emphasis": true,
@@ -3668,7 +3594,6 @@
       "primary_form": "かどうか",
       "meaning": "whether or not",
       "structure": "Plain form + かどうか",
-      "mnemonic_text": "かどうか leaves the yes/no question hanging, unresolved.",
       "sort_order": 75,
       "conjugation_rules": {
         "uncertainty": true
@@ -3705,7 +3630,6 @@
       "primary_form": "か何か",
       "meaning": "or something",
       "structure": "Noun + か何か",
-      "mnemonic_text": "か何か leaves room for something similar, unspecified.",
       "sort_order": 76,
       "conjugation_rules": {
         "vague_example": true
@@ -3733,7 +3657,6 @@
       "primary_form": "とか",
       "meaning": "things like / and so on (casual listing)",
       "structure": "Noun + とか + Noun + とか",
-      "mnemonic_text": "とか casually tosses out a few loose examples.",
       "sort_order": 77,
       "conjugation_rules": {
         "casual_listing": true
@@ -3757,7 +3680,6 @@
       "primary_form": "反面",
       "meaning": "while at the same time / conversely",
       "structure": "Plain form + 反面",
-      "mnemonic_text": "反面 flips to show the opposite face of the same situation.",
       "sort_order": 78,
       "conjugation_rules": {
         "contrast": true
@@ -3787,7 +3709,6 @@
       "primary_form": "ところが",
       "meaning": "however / unexpectedly",
       "structure": "Sentence. + ところが + Sentence.",
-      "mnemonic_text": "ところが flips the story with an unexpected twist.",
       "sort_order": 79,
       "conjugation_rules": {
         "unexpected_contrast": true
@@ -3815,7 +3736,6 @@
       "primary_form": "それでも",
       "meaning": "even so / nevertheless",
       "structure": "Sentence. + それでも + Sentence.",
-      "mnemonic_text": "それでも holds firm despite what was just said.",
       "sort_order": 80,
       "conjugation_rules": {
         "concession_connector": true
@@ -3843,7 +3763,6 @@
       "primary_form": "そこで",
       "meaning": "so / therefore (leading to action)",
       "structure": "Sentence. + そこで + Sentence.",
-      "mnemonic_text": "そこで pivots from a situation straight into action.",
       "sort_order": 81,
       "conjugation_rules": {
         "resulting_action": true
@@ -3873,7 +3792,6 @@
       "primary_form": "そのため",
       "meaning": "for that reason / because of that",
       "structure": "Sentence. + そのため + Sentence.",
-      "mnemonic_text": "そのため links a stated cause directly to its consequence.",
       "sort_order": 82,
       "conjugation_rules": {
         "consequence_connector": true
@@ -3903,7 +3821,6 @@
       "primary_form": "すると",
       "meaning": "then / and then (sequential)",
       "structure": "Sentence. + すると + Sentence.",
-      "mnemonic_text": "すると narrates what happened right after, in sequence.",
       "sort_order": 83,
       "conjugation_rules": {
         "sequence": true
@@ -3931,7 +3848,6 @@
       "primary_form": "以外",
       "meaning": "except / other than",
       "structure": "Noun + 以外",
-      "mnemonic_text": "以外 steps outside the boundary of what was named.",
       "sort_order": 84,
       "conjugation_rules": {
         "exception": true
@@ -3963,7 +3879,6 @@
       "primary_form": "以来",
       "meaning": "ever since",
       "structure": "Noun / Te-form + 以来",
-      "mnemonic_text": "以来 marks a starting point stretching all the way to now.",
       "sort_order": 85,
       "conjugation_rules": {
         "since": true
@@ -3991,7 +3906,6 @@
       "primary_form": "反対に",
       "meaning": "on the contrary / conversely",
       "structure": "反対に + Sentence.",
-      "mnemonic_text": "反対に turns the situation completely around.",
       "sort_order": 86,
       "conjugation_rules": {
         "opposite": true
@@ -4021,7 +3935,6 @@
       "primary_form": "こそ",
       "meaning": "precisely / for sure (emphasis)",
       "structure": "Noun + こそ",
-      "mnemonic_text": "こそ underlines exactly this one, and no other.",
       "sort_order": 87,
       "conjugation_rules": {
         "emphasis": true
@@ -4053,7 +3966,6 @@
       "primary_form": "さえ",
       "meaning": "even (extreme example)",
       "structure": "Noun + さえ",
-      "mnemonic_text": "さえ picks the most extreme example to prove a point.",
       "sort_order": 88,
       "conjugation_rules": {
         "extreme_example": true
@@ -4084,7 +3996,6 @@
       "primary_form": "さえ〜ば",
       "meaning": "if only / as long as",
       "structure": "Noun + さえ + Verb-ば",
-      "mnemonic_text": "さえ〜ば narrows a condition down to just one crucial thing.",
       "sort_order": 89,
       "conjugation_rules": {
         "minimal_condition": true
@@ -4114,7 +4025,6 @@
       "primary_form": "のみ",
       "meaning": "only (formal)",
       "structure": "Noun + のみ",
-      "mnemonic_text": "のみ is the formal, written cousin of だけ.",
       "sort_order": 90,
       "conjugation_rules": {
         "exclusive_formal": true
@@ -4138,7 +4048,6 @@
       "primary_form": "ほかない",
       "meaning": "have no choice but to",
       "structure": "Dictionary form + ほかない",
-      "mnemonic_text": "ほかない leaves no other road but the one ahead.",
       "sort_order": 91,
       "conjugation_rules": {
         "no_alternative": true
@@ -4167,7 +4076,6 @@
       "primary_form": "によって",
       "meaning": "by / due to / depending on",
       "structure": "Noun + によって",
-      "mnemonic_text": "によって traces the cause or agent behind the result.",
       "sort_order": 92,
       "conjugation_rules": {
         "agent_or_dependency": true
@@ -4208,7 +4116,6 @@
       "primary_form": "ついでに",
       "meaning": "while I'm at it / incidentally",
       "structure": "Dictionary form / Noun の + ついでに",
-      "mnemonic_text": "ついでに tacks on an extra errand while already out.",
       "sort_order": 93,
       "conjugation_rules": {
         "incidental": true
@@ -4238,7 +4145,6 @@
       "primary_form": "上で",
       "meaning": "after / on the basis of (formal)",
       "structure": "Ta-form + 上で",
-      "mnemonic_text": "上で builds the next step on top of a completed one.",
       "sort_order": 94,
       "conjugation_rules": {
         "formal_sequence": true
@@ -4266,7 +4172,6 @@
       "primary_form": "最中に",
       "meaning": "right in the middle of",
       "structure": "Verb-ている / Noun の + 最中に",
-      "mnemonic_text": "最中に interrupts right at the peak of an action.",
       "sort_order": 95,
       "conjugation_rules": {
         "interruption": true
@@ -4294,7 +4199,6 @@
       "primary_form": "および",
       "meaning": "and / as well as (formal)",
       "structure": "Noun + および + Noun",
-      "mnemonic_text": "および formally joins two items in written Japanese.",
       "sort_order": 96,
       "conjugation_rules": {
         "formal_conjunction": true
@@ -4324,7 +4228,6 @@
       "primary_form": "に対して",
       "meaning": "towards / in contrast to",
       "structure": "Noun + に対して",
-      "mnemonic_text": "に対して directs an attitude or action right at its target.",
       "sort_order": 97,
       "conjugation_rules": {
         "directed_toward": true
