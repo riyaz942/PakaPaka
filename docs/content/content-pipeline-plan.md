@@ -42,6 +42,67 @@ This is a schema + content + tooling gap, not just missing data.
    `generate.py` → `curriculum/**/*.json` → `validate-schema` → `compile-curriculum` →
    `curriculum.db` (LFS) → OTA. New tooling feeds `_build`, never bypasses it.
 
+## Revision 1 — content depth, tone, and per-type model (July 2026)
+
+Direction change after reading the first N5 drafts against the WaniKani bar.
+The **per-item content model** changes; grammar lessons, example sentences, and
+the pipeline machinery are untouched. Decided against the code as it exists
+today — what is already built vs. missing is called out per point.
+
+**Target content model per item type:**
+
+| Type | Mnemonics | Description |
+|---|---|---|
+| radical | **none** | story-like, funny explanation of the glyph that doubles as the Tier 2 image prompt — it must match the generated image closely; plus look-alike warnings |
+| kanji | `meaning_mnemonic` (story built from the taught radicals' *established images*) + `reading_mnemonic` (cast character, contains the kana) — both substantially longer, funnier, WaniKani-depth | meaning nuance + glyph description + look-alike kanji/radicals with the subtle visual differences spelled out |
+| vocabulary | `meaning_mnemonic` (story connecting the component kanji → the word) + `reading_mnemonic` (full story; or a one-line "reading comes straight from 食 you already know" derivation note when the reading is regular) | meaning nuance, usage register, which kanji the word contains |
+| grammar | **none** — drop `mnemonic_text`; the `explanation_markdown` lesson is the teaching artifact | n/a |
+
+Mnemonics chain **radical → kanji → vocabulary**: a kanji story reuses each
+component radical's established image (the kanji prompt already receives the
+radical text via `mnemonic_context.format_components`; keep that mechanism, feed
+it the new descriptions), and a vocab story reuses its kanji's established
+meaning hooks. Regeneration order is therefore radicals → kanji → vocab.
+
+**Findings that shape the work (verified in code):**
+
+1. **Depth:** current prompts cap kanji mnemonics at 2–4 sentences and radical
+   text at 1–2 (`prompts/kanji-mnemonic.md`, `prompts/radical-mnemonic.md`;
+   `validate_mnemonics.LEN_BOUNDS`). Rev-2 prompts raise the target to short
+   WaniKani-style story paragraphs — funny, strange, concrete — and raise the
+   length bounds to match. The N5 drafts (106 kanji, 76 radicals) are
+   `review_status: draft`, never shipped: regenerate wholesale under
+   `prompt_version: 2`, don't patch.
+2. **App surfacing gap (critical path):** `meaning_mnemonic`,
+   `reading_mnemonic`, and `description` are compiled into `curriculum.db` but
+   the app never reads them — `itemRepository` selects only `mnemonic_text`,
+   and `KanjiDetail`/lesson sections render only `mnemonicText`. Without the
+   surfacing work (Phase 0.6 below) the whole revision is invisible.
+3. **Grammar mnemonics:** `generate.py` still emits hand-authored one-liners
+   and `GrammarDetail` renders them via `MnemonicSection`. Drop both (the
+   learner-owned `PersonalMnemonicEditor` stays).
+4. **Radical model:** rename/reframe radical `mnemonic_text` → `description`.
+   Same text still drives Tier 2 image generation (text is written first, image
+   is prompted from it — that coupling is what keeps description and image
+   matching).
+5. **Composition display:** already shipped — kanji details/lessons show
+   "Built from" radical chips and vocab shows "Kanji in this word"
+   (`ItemCrossReferences` + `useComponentParents`). Remaining nicety: a
+   WaniKani-style composition line (木 + 日 = 東) at the top of the kanji
+   meaning-mnemonic section.
+6. **Look-alike ("visually similar") content** needs a *data-derived* pair
+   list — the LLM must never invent confusables. New Phase 1 task below;
+   structured `visually_similar_slugs` on radical/kanji plus prose in the
+   description explaining the subtle differences. The app's existing
+   `CompareView` is the natural render target for the chips.
+7. **Passage tone:** Phase 4 generation has not run (current 10 N5 / 9 N4
+   passages are hand-authored in `_build/*_readings.py`). When it runs, target
+   **50–60% humorous** via tone-tagged topic seeds — not every passage, but
+   most memorable ones.
+8. **Cloze nudges reveal the answer:** the shipped nudges are hand-authored in
+   `_build/n5_grammar.py` and are definitional giveaways ("Marks the topic —
+   what the sentence is about" for は *is* the answer). Rewrite spec below.
+
 ## Phase 0 — Schema extensions (prerequisite, ~1 day)
 
 Additive changes to `curriculum/schema/curriculum.schema.json`,
@@ -53,6 +114,10 @@ migration concerns; the app's read repositories gain optional fields.
 |---|---|---|
 | grammar | `explanation_markdown` (long-form lesson body), `caution_notes`, `related_grammar_slugs` | the MaruMori-depth lesson has nowhere to live today (`grammar_rules` has only structure/conjugation/forms) |
 | kanji | `meaning_mnemonic` + `reading_mnemonic` (split, WaniKani-style), `description`, reuse existing `items.visual_mnemonic_url` | reading mnemonics need the reading in the story; one blob can't serve both quiz directions |
+| kanji (Rev 1) | `visually_similar_slugs`; `description` spec upgraded from "one plain sentence" to a descriptive block (meaning nuance + glyph + look-alike contrasts) | look-alikes are a top review-failure cause; structured slugs enable Compare links, prose carries the "how to tell them apart" |
+| radicals (Rev 1) | `description` (replaces the mnemonic role of `mnemonic_text`), `visually_similar_slugs` | radicals get no mnemonic; the description explains the glyph/image story-style and is the Tier 2 image prompt |
+| vocabulary (Rev 1) | `meaning_mnemonic`, `reading_mnemonic`, `description` | vocab mnemonics must chain from the component kanji; split serves the meaning/reading quiz directions same as kanji |
+| grammar (Rev 1) | **stop emitting `mnemonic_text`** (`generate.py:385`) | grammar has full lessons now; a one-line mnemonic is noise |
 | example sentences | keep `vocabulary_slugs`; validator gains a **level check** (see Phase 2) | prevents N3 vocab leaking into N5 examples |
 
 Note: example-sentence `furigana` is **not** a new field — `generate.py` already emits it
@@ -86,6 +151,30 @@ standalone example sentences go in ` ```jp ` fenced blocks; Japanese embedded in
 just carries the usual bracket notation (`私[わたし]`) inline — no extra delimiter.
 Supported markdown: `#`–`###` headings, paragraphs, `-`/`1.` lists, `>` callouts,
 fenced blocks; inline `**bold**`, `*italic*`, `` `code` ``.*
+
+### Phase 0.6 — Item-detail surfacing (Rev 1, critical path)
+
+The Rev 1 twin of Phase 0.5: the DB already carries `meaning_mnemonic` /
+`reading_mnemonic` / `description`, but `itemRepository` selects only
+`mnemonic_text` and the detail/lesson views render only that. Work:
+
+- `itemRepository` (+ `curriculum.types.ts`) selects the new columns, including
+  the Rev 1 additions (radical/vocab `description`, vocab split mnemonics,
+  `visually_similar_slugs`).
+- `KanjiDetail` + lesson mnemonic section: split "Meaning mnemonic" /
+  "Reading mnemonic" blocks, `description` panel, composition line
+  (木 + 日 = 東) above the meaning mnemonic (data already available via
+  `useComponentParents`).
+- `RadicalDetail`: render `description` with the image (it *is* the image's
+  caption/story); drop the mnemonic framing.
+- `VocabularyDetail` + lesson: split mnemonics + description ("Kanji in this
+  word" chips already exist).
+- `GrammarDetail` + grammar lesson section: remove the curriculum
+  `MnemonicSection`; keep `PersonalMnemonicEditor`.
+- Look-alike chips on kanji/radical details, linking into `CompareView`.
+
+Fallback rule: while old sidecar data lingers, render `mnemonic_text` only when
+the split fields are absent — one path, visible in the UI, no silent merging.
 
 Each generated artifact carries sidecar metadata (frontmatter in the .md, or a `_meta`
 key in datasets): `generator_model`, `prompt_version`, `review_status: draft|reviewed`,
@@ -123,6 +212,16 @@ references — requires restructuring the tuples into dicts (or dataclasses) fir
 that restructuring as the first Phase 1 task, mechanically (script converts tuples →
 dicts, `generate.py` output byte-identical before/after), so importers and generators
 have named fields to write into.
+
+**Rev 1 addition — look-alike pair derivation.** The confusable pairs that feed
+kanji/radical descriptions come from data, never from the LLM: (a) a curated
+seed list of the classic traps within our taught set (人/入, 大/犬/太, 土/士,
+未/末, 白/百, 千/干, 石/右, ソ/ン-style radical pairs, …), plus (b) automated
+candidates — items in the taught N5+N4 set sharing most taught components
+(from `dependencies/graph.json`) or near-identical KanjiVG stroke skeletons.
+Output: a reviewed `_build` dataset of symmetric pairs → `visually_similar_slugs`.
+Hard rule mirroring the mnemonic component rule: a description may only name a
+look-alike that is **in the taught set**; the validator enforces slug existence.
 
 Deliverable: a fact-audit report diffing current `_build` facts against the
 authoritative sources (wrong readings, missing kunyomi, meaning drift). Fix facts before
@@ -255,6 +354,33 @@ Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pa
 (drafts do not ship past `compile-curriculum`'s draft gate until
 `review_status: reviewed`).
 
+**Rev 1 changes to 2b (prompt_version 2, regenerate N5 drafts wholesale):**
+
+- **Radicals: no mnemonic.** The `submit_radical_mnemonic` output becomes a
+  `description`: a story-like, funny, drawable explanation of the glyph — what
+  the strokes look like becoming the meaning, told as a memorable scene. It is
+  simultaneously (a) what the learner reads next to the image and (b) the Tier 2
+  image prompt, so it must describe one concrete picture the image will show.
+  Where the radical has look-alikes, the description closes with the contrast
+  ("don't confuse it with 入 — the short stroke leans the *other* way").
+- **Kanji mnemonics get WaniKani depth.** Meaning mnemonic: a short story
+  paragraph (not 2–4 sentences) that *continues each component radical's
+  established image* — `mnemonic_context` already injects the radical text; it
+  now injects the new descriptions, so the chain radical → kanji is literal, not
+  just name-dropping. Funny, strange, concrete; ends on the meaning. Reading
+  mnemonic: same depth, cast-driven, kana verbatim (unchanged rule).
+- **Kanji `description` upgraded** from one factual sentence to a descriptive
+  block: meaning nuance and usage, a plain description of the glyph, and — when
+  `visually_similar_slugs` is non-empty — the look-alikes with the subtle
+  visual differences spelled out. The pair list is prompt *input* (from
+  Phase 1); the LLM writes only the contrast prose.
+- **Gate updates** (`validate_mnemonics.py`): raise `LEN_BOUNDS` to story-
+  paragraph range; radical checks move from `mnemonic_text` to `description`;
+  new check — every character named as a look-alike resolves to a slug in
+  `visually_similar_slugs`, and every listed look-alike is mentioned.
+- **Generation order**: radicals first (their descriptions feed kanji prompts),
+  then kanji, then 2d vocab.
+
 ### 2c. Example sentences (kanji + vocab)
 
 Generate original sentences, using in-level Tatoeba candidates (filtered by the
@@ -293,6 +419,51 @@ subagents (same `webprompts`/`ingest` commands and gate) is in
 `docs/workflows/example-sentences-opus-subagent-workflow-automation-prompt.md`.
 Generation itself (N5/N4 batches) has not run yet.
 
+### 2d. Vocabulary mnemonics + descriptions (Rev 1, new)
+
+Completes the radical → kanji → vocabulary chain. Today vocab has hand-authored
+one-liners ("watashi plus tachi: I and my group, we"). New generator
+(`generate_mnemonics.py --type vocab`, same driver/gate pattern as 2b):
+
+- Inputs per word: component kanji (from the graph — the same edges the app's
+  "Kanji in this word" chips use) **with their reviewed meaning mnemonics'
+  hooks**, the word's reading, meaning + accepted answers, and the cast lore
+  for its readings.
+- `meaning_mnemonic`: story connecting the kanji meanings to the word's meaning,
+  reusing the kanji stories' imagery. Kana-only words get a standalone story.
+- `reading_mnemonic`: full story when the reading is irregular or introduces an
+  unlearned reading; when the reading is exactly the taught readings of its
+  kanji, a one-line derivation note ("you already know both readings — 食(た)べる
+  from 食") is correct and *preferred* — don't pad regular readings into
+  stories.
+- `description`: meaning nuance, register (casual/formal, spoken/written), and
+  anything the glosses can't carry.
+- Gate: reading-regularity is computed mechanically (word reading vs. taught
+  kanji readings) so the "story vs. derivation note" choice is checkable; slug
+  references validated; same plain-prose/length rules.
+
+Volume: ~1,450 N5+N4 words — the largest batch, still tens of dollars via
+Message Batches; the web-chat lane applies as usual.
+
+### 2e. Cloze nudge rewrite (Rev 1, new — fixes the giveaway hints)
+
+The hint ladder (docs/feedback 09–10, `buildGrammarHintLevels`) intends rung 1
+to be a *pedagogical poke*; the shipped nudges in `_build/n5_grammar.py` are
+definitions that name the answer's function outright — for a two-choice particle
+blank that's the answer. New spec:
+
+- A nudge asks a question or points at the *sentence*, never defines the
+  particle/pattern: for 私＿学生です not "Marks the topic — what the sentence is
+  about" but "Is 私 *doing* something here, or being talked about?".
+- Never contains: the answer string, any `accepted_forms` entry, the item's
+  `meaning` gloss, or the pattern's textbook name.
+- Mechanical checks in the gate (answer/forms containment is exact-checkable;
+  the meaning-gloss overlap is a heuristic + human skim).
+- Path: rewrite the ~74 N5 items' hand-authored nudges (and N4's) via a small
+  batch pass reusing the 2a prompt context; the 2a generator's candidate
+  `cloze_variants` guidance ("describing the pattern's function without naming
+  it") is tightened to this spec too, so future drafts inherit it.
+
 ### Mechanical validation gate (before any human review)
 
 `curriculum/_build/generate_content/validate_drafts.py`, run on every batch output:
@@ -328,7 +499,9 @@ disk caching + text fallback).
   and radicals immediately; zero marginal cost; visually consistent by construction.
   Add a `kanji/{level}/{slug}.png` prefix alongside the existing radicals convention.
 - **Tier 2 — curated AI art for radicals only (~150 items):** image-generation model
-  prompted from each radical's `mnemonic_text`, one shared style directive (flat color,
+  prompted from each radical's `description` (Rev 1; formerly `mnemonic_text` —
+  text is written first and the image is generated from it, which is what keeps
+  the learner-facing description matching the image), one shared style directive (flat color,
   bold line weight, readable at 140 px per the existing checklist). Small enough to
   human-review every image. Kanji stay on Tier 1 cards — pictorial mnemonics matter
   most at the radical layer.
@@ -339,7 +512,12 @@ The strongest-constrained generation, and the one where verification makes the
 difference between filler and a real graded reader:
 
 1. Input: exact vocab + grammar slug lists available at the passage's curriculum
-   position, target length, topic seed.
+   position, target length, topic seed — and (Rev 1) a **tone tag** on the seed:
+   `humorous` for 50–60% of each level's seeds, `neutral` for the rest. Humor is
+   assigned at the seed level (planned mix), not left to per-call chance; the
+   persona doc gains a short comedy-register section (absurd situations and
+   deadpan, not wordplay that breaks the level constraint) shared with the
+   Rev 1 mnemonic prompts.
 2. Generate passage + `english_translation` + comprehension questions with
    `accepted_answers` in one call.
 3. **Closed loop:** tokenize the output (same fugashi tagger, same exception policy as
@@ -381,6 +559,22 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | 6 | Example sentence upgrade (2c) | 1 day | level-check green |
 | 7 | Reading passages (Phase 4) | 1 day | tokenizer loop green, full read |
 | 8 | Tier 2 radical art, R2 upload per existing doc | best effort | per-image visual review |
+
+### Rev 1 execution order (supersedes steps 5–6 above where they overlap)
+
+| Step | What | Gate |
+|---|---|---|
+| R1.1 | Rev 1 schema/DDL/compiler: radical + vocab `description`, vocab split mnemonics, `visually_similar_slugs`; stop emitting grammar `mnemonic_text` | `validate-schema` + `compile-curriculum` green |
+| R1.2 | Phase 0.6 app surfacing (repository + detail/lesson UI, grammar mnemonic removal, composition line, look-alike chips) | typecheck/tests green; new fields visible on device |
+| R1.3 | Look-alike pair derivation (Phase 1 addition): curated seed list + graph/KanjiVG candidates, human-reviewed | pair dataset reviewed |
+| R1.4 | Rev-2 prompts + gate (depth, humor, chain, descriptions, confusable prose); regenerate N5 **radicals → kanji**, then 2d **vocab**; N4 follows the same order | `validate_mnemonics` green; spot review in the app UI (R1.2 is the renderer, same go/no-go logic as the grammar pilot) |
+| R1.5 | 2e nudge rewrite (N5 + N4) | no nudge contains its answer/forms/gloss; skim read |
+| R1.6 | Phase 4 passage generation with the 50–60% humor mix | tokenizer loop green; tone mix honored; full read |
+
+R1.2 before R1.4 matters for the same reason Phase 0.5 preceded the grammar
+pilot: the depth go/no-go read must happen in the real rendering. A pilot slice
+applies here too — regenerate ~10 radicals + ~10 kanji (one dependency
+neighborhood, e.g. 日/木/東) and read them in the app before batching the rest.
 
 **Coordination with review-quality work (docs 07–09):** deep lessons improve *Learn*;
 `cloze_variants` authoring (already in schema/compiler) improves *Review*. Grammar
