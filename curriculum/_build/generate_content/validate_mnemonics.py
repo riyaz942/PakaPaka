@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Mechanical validation gate for generated kanji/radical mnemonics (Phase 2b).
+"""Mechanical validation gate for generated radical/kanji/vocab prose (2b + 2d).
 
 Run on every batch output before any human sees it
-(docs/content/content-pipeline-plan.md, "Mechanical validation gate", adapted for 2b):
+(docs/content/content-pipeline-plan.md, "Mechanical validation gate", adapted
+for 2b/2d under Rev 1 `prompt_version: 2`):
 
+  radical (no mnemonic — a `description` that is also the Tier 2 image prompt):
+    1. description present, non-empty, story-paragraph length, plain prose
+    2. the radical's meaning is recognisable in the image
+    3. look-alikes: every reviewed confusable is named, and no unreviewed
+       character is presented as one
   kanji:
     1. all three fields present and non-empty (meaning/reading mnemonic +
        description), within length bounds
@@ -14,9 +20,16 @@ Run on every batch output before any human sees it
        no taught decomposition, the check is skipped: it is a whole-character
        pictograph)
     4. plain prose only — no markdown/HTML the storage layer would ship raw
-  radical:
-    1. mnemonic_text present, non-empty, within length bounds, plain prose
-    2. the radical's meaning is recognisable in the image
+    5. the same look-alike checks as radicals, on the description
+  vocabulary (2d):
+    1. all three fields present, plain prose, within length bounds
+    2. meaning_mnemonic references every taught component kanji's meaning, so
+       the radical -> kanji -> vocabulary chain is literal
+    3. reading_mnemonic contains the word's reading, and its *shape* matches the
+       mechanically computed reading regularity: a regular or kana-only reading
+       gets a one-line derivation note (bounded short), an irregular one gets a
+       full story (bounded long)
+    4. the description names no kanji beyond the word and its components
 
 This gate is a floor: the cast-coherence pass and "does it actually help you
 remember" judgement are human review (Phase 5). `validate-schema` after assembly
@@ -40,14 +53,31 @@ from generate_content import mnemonic_context  # noqa: E402
 
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", "mnemonics")
 
-#: Length guards — mnemonics are reread dozens of times, so keep them tight, but
-#: long enough to actually tell a story.
+#: Length guards, per content type. Rev 1 (`prompt_version: 2`) raises these to
+#: a WaniKani-style story-paragraph range: the v1 floors produced 2–4 sentence
+#: mnemonics, which is the depth gap the revision exists to close. The ceilings
+#: still matter — a learner rereads these dozens of times.
 LEN_BOUNDS = {
-    "meaning_mnemonic": (20, 700),
-    "reading_mnemonic": (12, 600),
-    "description": (10, 320),
-    "mnemonic_text": (12, 500),
+    "radical": {"description": (150, 900)},
+    "kanji": {
+        "meaning_mnemonic": (200, 1100),
+        "reading_mnemonic": (150, 900),
+        "description": (120, 900),
+    },
+    "vocab": {
+        "meaning_mnemonic": (150, 1000),
+        "reading_mnemonic": (30, 900),
+        "description": (60, 500),
+    },
 }
+
+#: A vocab reading the learner can already derive from its kanji gets a one-line
+#: note, not a story (docs 2d: "don't pad regular readings into stories"). The
+#: regularity is computed mechanically in mnemonic_context, so which bound
+#: applies is not the model's choice.
+DERIVATION_NOTE_BOUNDS = (30, 320)
+READING_STORY_BOUNDS = (150, 900)
+_DERIVATION_KINDS = ("regular", "kana_only")
 
 #: Structural markdown/markup we never want stored raw in a mnemonic string.
 _MARKUP_CHECKS = [
@@ -77,14 +107,48 @@ def _markup_errors(field, text):
     return errors
 
 
-def _length_errors(field, text):
-    lo, hi = LEN_BOUNDS[field]
+def _length_errors(field, text, bounds):
+    lo, hi = bounds
     n = len(text.strip())
     if n < lo:
         return [f"{field} is too short ({n} chars; need >= {lo})"]
     if n > hi:
         return [f"{field} is too long ({n} chars; keep <= {hi})"]
     return []
+
+
+def _field_errors(kind, field, text):
+    return _markup_errors(field, text) + _length_errors(
+        field, text, LEN_BOUNDS[kind][field])
+
+
+def _look_alike_errors(field, text, ctx, own_form, extra_allowed_forms=()):
+    """Rev 1 confusable checks: the reviewed look-alikes (and only those) are
+    what a description may present as easily-mixed-up characters.
+
+    Two directions, both mechanical:
+      * every look-alike in the reviewed pair dataset is actually named
+      * no *other* kanji/radical character appears in the prose — the model must
+        not invent a confusable, and descriptions carry no furigana, so stray
+        Japanese in them would render unreadable anyway.
+    """
+    errors = []
+    allowed = {own_form} | set(extra_allowed_forms)
+    for entry in ctx["look_alikes"]:
+        allowed.add(entry["form"])
+        if entry["form"] not in text:
+            errors.append(
+                f"{field} never mentions the look-alike {entry['form']} "
+                f"(“{entry['meaning']}”); spell out how to tell them apart"
+            )
+    for ch in dict.fromkeys(mnemonic_context._CJK_RE.findall(text)):
+        if ch not in allowed:
+            errors.append(
+                f"{field} names the character {ch}, which is not a reviewed "
+                "look-alike for this item; never invent confusables, and keep "
+                "other Japanese out of the description"
+            )
+    return errors
 
 
 def _meaning_words(synonyms):
@@ -117,9 +181,7 @@ def validate_kanji(level, slug, draft, ctx=None):
         return errors
 
     for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
-        text = draft[field]
-        errors += _markup_errors(field, text)
-        errors += _length_errors(field, text)
+        errors += _field_errors("kanji", field, draft[field])
 
     # 2. reading present
     primary = ctx["primary_reading"]
@@ -139,6 +201,11 @@ def validate_kanji(level, slug, draft, ctx=None):
                 f"(“{comp['meaning']}”); the story must be built from the taught decomposition"
             )
 
+    # 5. look-alikes (Rev 1): named exactly, invented never
+    errors += _look_alike_errors(
+        "description", draft["description"], ctx, ctx["char"],
+        extra_allowed_forms=[c["form"] for c in ctx["components"]])
+
     return errors
 
 
@@ -146,19 +213,74 @@ def validate_radical(level, slug, draft, ctx=None):
     ctx = ctx or mnemonic_context.radical_context(level, slug)
     errors = []
 
-    text = draft.get("mnemonic_text")
+    text = draft.get("description")
     if not isinstance(text, str) or not text.strip():
-        return ["missing or empty field mnemonic_text"]
+        return ["missing or empty field description"]
 
-    errors += _markup_errors("mnemonic_text", text)
-    errors += _length_errors("mnemonic_text", text)
+    errors += _field_errors("radical", "description", text)
 
     words = _meaning_words(ctx["meaning_synonyms"])
     if words and not _references(text, words):
         errors.append(
-            f"mnemonic_text never lands on the meaning “{ctx['meaning']}”; the image "
+            f"description never lands on the meaning “{ctx['meaning']}”; the image "
             "must resolve to that meaning"
         )
+    errors += _look_alike_errors("description", text, ctx, ctx["form"])
+    return errors
+
+
+def validate_vocab(level, slug, draft, ctx=None):
+    ctx = ctx or mnemonic_context.vocab_context(level, slug)
+    errors = []
+
+    for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+        value = draft.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"missing or empty field {field}")
+    if errors:
+        return errors
+
+    errors += _markup_errors("meaning_mnemonic", draft["meaning_mnemonic"])
+    errors += _markup_errors("reading_mnemonic", draft["reading_mnemonic"])
+    errors += _field_errors("vocab", "meaning_mnemonic", draft["meaning_mnemonic"])
+    errors += _field_errors("vocab", "description", draft["description"])
+
+    # 2. the kanji -> vocabulary chain is literal, not name-dropped
+    for comp in ctx["components"]:
+        words = _meaning_words(comp["meaning_synonyms"])
+        if words and not _references(draft["meaning_mnemonic"], words):
+            errors.append(
+                f"meaning_mnemonic never references the component kanji {comp['char']} "
+                f"(“{comp['meaning']}”); the story must connect its kanji to the word"
+            )
+
+    # 3. reading present, and shaped by the mechanically computed regularity
+    reading = ctx["reading"]
+    reading_text = draft["reading_mnemonic"]
+    if reading and _hira(reading) not in _hira(reading_text):
+        errors.append(
+            f"reading_mnemonic must contain the reading 「{reading}」 verbatim"
+        )
+    kind = ctx["regularity"]["kind"]
+    if kind in _DERIVATION_KINDS:
+        errors += _length_errors(
+            "reading_mnemonic (a derivation note — this reading is "
+            f"{'kana-only' if kind == 'kana_only' else 'regular'}, so do not "
+            "write a story)", reading_text, DERIVATION_NOTE_BOUNDS)
+    else:
+        errors += _length_errors(
+            "reading_mnemonic (a full story — this reading is not derivable "
+            "from the taught readings)", reading_text, READING_STORY_BOUNDS)
+
+    # 4. no stray kanji in the description (it carries no furigana)
+    allowed = set(ctx["form"]) | {c["char"] for c in ctx["components"]}
+    for ch in dict.fromkeys(mnemonic_context._CJK_RE.findall(draft["description"])):
+        if ch not in allowed:
+            errors.append(
+                f"description names the kanji {ch}, which is neither in this word "
+                "nor one of its taught components; descriptions carry no furigana"
+            )
+
     return errors
 
 
@@ -167,13 +289,16 @@ def validate_draft(level, kind, slug, draft, ctx=None):
         return validate_kanji(level, slug, draft, ctx)
     if kind == "radical":
         return validate_radical(level, slug, draft, ctx)
+    if kind == "vocab":
+        return validate_vocab(level, slug, draft, ctx)
     raise ValueError(f"unknown mnemonic type {kind!r}")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--level", default="n5")
-    parser.add_argument("--type", dest="kind", choices=["kanji", "radical"], required=True)
+    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab"],
+                        required=True)
     args = parser.parse_args()
 
     level_dir = os.path.join(DRAFTS_DIR, args.level, args.kind)

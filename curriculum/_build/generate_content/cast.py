@@ -133,13 +133,14 @@ def lore_for_readings(readings, cast=None):
     return out
 
 
-def format_cast_block(reading_lore, cast=None):
+def format_cast_block(reading_lore, cast=None, subject="this kanji"):
     """The prompt fragment: the matched character(s) for this item's readings,
-    plus the shared settings list. Deterministic across runs."""
+    plus the shared settings list. Deterministic across runs. `subject` names
+    the item in the prose ("this kanji" / "this word")."""
     cast = cast or load_cast()
     parts = []
     if reading_lore:
-        parts.append("Cast members fixed to this kanji's reading(s) — use them, "
+        parts.append(f"Cast members fixed to {subject}'s reading(s) — use them, "
                      "do not invent a substitute:")
         for entry in reading_lore:
             parts.append(
@@ -147,7 +148,7 @@ def format_cast_block(reading_lore, cast=None):
             )
     else:
         parts.append(
-            "No cast member is fixed to this kanji's reading yet. Write a vivid, "
+            f"No cast member is fixed to {subject}'s reading yet. Write a vivid, "
             "reading-appropriate character, but keep it simple and reusable — a "
             "reviewer may promote it into the cast bible."
         )

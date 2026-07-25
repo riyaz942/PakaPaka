@@ -38,10 +38,12 @@ _SIMILAR_SLUGS = build_similar_map()
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
-#: Phase 2b mnemonic sidecars (generate_content/generate_mnemonics.py), inlined
-#: into the kanji/radical items below keyed by slug. Absent when 2b has not run.
+#: Phase 2b/2d mnemonic sidecars (generate_content/generate_mnemonics.py),
+#: inlined into the radical/kanji/vocab items below keyed by slug. Absent when
+#: the generator has not run for that type.
 KANJI_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "kanji", "mnemonics")
 RADICAL_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "radicals", "mnemonics")
+VOCAB_MNEMONICS_DIR = os.path.join(CURRICULUM_DIR, "vocabulary", "mnemonics")
 
 #: Phase 2c example-sentence sidecars (generate_content/generate_examples.py),
 #: inlined into the kanji/vocab items below keyed by slug. Absent when 2c has
@@ -158,7 +160,11 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
-            # Phase 2b generated image replaces the seed dataset mnemonic.
+            # Rev 1: a radical has no mnemonic — the generated `description` is
+            # the image story (and the Tier 2 image prompt). Pre-Rev-1 sidecars
+            # carry `mnemonic_text` instead; both paths are explicit.
+            if mnemonic.get("description"):
+                item["description"] = mnemonic["description"]
             if mnemonic.get("mnemonic_text"):
                 item["mnemonic_text"] = mnemonic["mnemonic_text"]
             meta = _sidecar_meta(mnemonic)
@@ -233,6 +239,7 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=No
 
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
                        extra_vocab_slugs=None):
+    mnemonics = _load_sidecar(VOCAB_MNEMONICS_DIR, jlpt_level.lower())
     examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
     vocab_slugs = {v["slug"] for v in vocab_entries} | set(extra_vocab_slugs or ())
     errors = []
@@ -252,6 +259,16 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
         furigana = furigana_lib.annotate_word(v["form"], v["reading"])
         if furigana:
             item["furigana"] = furigana
+        mnemonic = mnemonics.get(v["slug"])
+        if mnemonic:
+            # Phase 2d split mnemonics: the meaning mnemonic chains from the
+            # component kanji's stories, the reading mnemonic is either a story
+            # or a derivation note depending on the word's reading regularity.
+            # The legacy one-line mnemonic_text stays as the pre-2d fallback.
+            for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+                if mnemonic.get(field):
+                    item[field] = mnemonic[field]
+            _merge_sidecar_meta(item, _sidecar_meta(mnemonic))
         example_entry = examples.get(v["slug"])
         if example_entry:
             _inline_examples(item, example_entry, known_readings, vocab_slugs,

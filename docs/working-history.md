@@ -85,11 +85,27 @@ Same pass fixed a generator trap: passage enrichment (translations, summaries, g
 word spans) was hand-added to `curriculum/readings/*.json` only, so regenerating stripped it while
 `validate-schema` and `compile-curriculum` stayed green (the fields are schema-optional) — it now lives
 in the `_build` datasets, and a `generator-drift` CI job fails when regeneration diffs the committed JSON.
-Still planned, not built: deeper prompts (`prompt_version: 2`) and the wholesale N5 regen chained
-radical→kanji→vocab, humor-tagged passages, cloze nudge rewrite.
+Still planned, not built: humor-tagged passages, cloze nudge rewrite.
+
+**R1.4 (tooling) built:** `prompt_version: 2` across the mnemonic lane. Radicals emit a
+`description` and no mnemonic (`prompts/radical-description.md`, `submit_radical_description`);
+kanji prompts ask for story paragraphs that continue each component radical's *established
+description* and a description block contrasting the reviewed look-alikes; the new 2d vocab
+generator (`--type vocab`, `prompts/vocab-mnemonic.md`) chains from the component kanji's meaning
+mnemonics and classifies the word's reading (regular / kana-only / irregular / untaught kanji) by
+matching it against the taught kanji readings, which is what makes "regular reading gets a one-line
+derivation note, not a story" a gate check rather than a request. `validate_mnemonics.py` gained
+per-type story-paragraph length bounds and two-way look-alike checks (every reviewed confusable
+named; no other Japanese in a description, which carries no furigana). `persona.md` is v2 with a
+comedy-register section, shared with the Phase 4 passage seeds. `generate.py` inlines radical
+`description` and the new `curriculum/vocabulary/mnemonics/<level>.json` sidecar; `run` re-queues
+drafts recorded under an older prompt version so a regen is wholesale, not a patch.
 
 **Not done / thin:**
-- **R1.4** Rev-2 prompts/gate + wholesale regen N5 radicals → kanji → vocab (2d); N4 same order after
+- **R1.4 (generation)** the wholesale N5 regen radicals → kanji → vocab (2d) has not run — needs
+  API credentials or the web-chat lane; N4 same order after. Shipped N5 radical/kanji mnemonics are
+  still the v1 drafts, which now fail the Rev-2 gate by design (too short, no radical `description`,
+  look-alikes unaddressed)
 - **R1.5** cloze nudge rewrite (shipped N5 nudges are definitional giveaways)
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read `mnemonic_text` only — outside R1.2's scope
 - N4 grammar lessons (0) and N4 mnemonic/example authoring

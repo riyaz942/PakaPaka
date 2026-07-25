@@ -1,9 +1,14 @@
-# Teaching voice (persona) — v1
+# Teaching voice (persona) — v2
 
 This is the voice every generated lesson, mnemonic, and example set is written in.
 It is a prerequisite for Phase 2 generation (docs/content/content-pipeline-plan.md, step 3):
 regenerating content later without this exact sheet is how a corpus drifts apart,
 so treat edits to this file as a new `prompt_version`.
+
+**v2 (Rev 1)** adds the *comedy register* section below, shared by the Rev 1
+mnemonic prompts (`prompt_version: 2`) and the Phase 4 passage seeds. Nothing
+else changed, so the N5 grammar lessons generated and reviewed against v1 remain
+valid — the addition constrains humour that v1 simply didn't ask for.
 
 ## Who is talking
 
@@ -41,6 +46,26 @@ They are talking to **one** learner, not lecturing a classroom.
 9. **No filler openers or closers.** Never "In this lesson we will learn…" and
    never "Happy studying!". Open inside the scenario; close on the last useful
    thought (usually the forward tease or a one-line recap).
+
+## Comedy register
+
+Mnemonics and roughly half the reading passages are *meant* to be funny — a
+picture you can't unsee is what survives the fourth review of the week. But the
+humour has a narrow shape:
+
+1. **Absurd situations, deadpan delivery.** The scene is ridiculous; the telling
+   is flat and matter-of-fact, as if reporting it. Never nudge the learner
+   ("hilarious, right?") and never explain the joke.
+2. **Physical and specific.** Something goes wrong to a particular object in a
+   particular place. Vagueness isn't funny and isn't memorable.
+3. **No wordplay that fights the level.** Puns across English and Japanese are
+   fine when the Japanese is a reading the learner is being taught right now;
+   a joke that needs a word they don't have is a joke that costs them the item.
+4. **Nothing that ages or excludes.** No celebrities, brands, politics, current
+   events, sex, cruelty, or stereotypes — including "funny foreigner" bits.
+   Mild slapstick and undignified animals do the job.
+5. **Funny is a means.** If the joke and the memory hook pull apart, the hook
+   wins. Every scene still has to end on the meaning.
 
 ## Vocabulary discipline
 

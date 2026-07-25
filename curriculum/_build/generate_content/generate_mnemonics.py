@@ -1,27 +1,39 @@
 # -*- coding: utf-8 -*-
-"""Phase 2b kanji + radical mnemonic generator (docs/content/content-pipeline-plan.md).
+"""Phase 2b/2d radical, kanji + vocabulary prose generator
+(docs/content/content-pipeline-plan.md).
 
 Build-time generation on the maintainer machine, mirroring the 2a grammar
 pipeline (generate_grammar_lessons.py): one Message Batches request per item
 (50% cost, latency irrelevant), structured output via a single forced tool
 call, drafts written under generate_content/drafts/mnemonics/, and — only after
 passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
-sidecars that generate.py inlines into the shipped kanji/radical JSON:
+sidecars that generate.py inlines into the shipped JSON:
 
-    curriculum/kanji/mnemonics/<level>.json     (meaning/reading mnemonic + description)
-    curriculum/radicals/mnemonics/<level>.json  (one vivid image per radical)
+    curriculum/radicals/mnemonics/<level>.json    (description — no mnemonic)
+    curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + description)
+    curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + description)
 
-Both carry `_meta` (generator_model, prompt_version, review_status: draft) per
-item, so compile-curriculum warns on unreviewed prose and nothing ships
+All three carry `_meta` (generator_model, prompt_version, review_status: draft)
+per item, so compile-curriculum warns on unreviewed prose and nothing ships
 silently. Nothing here writes shipped JSON directly.
 
-The kanji generator injects (per docs 2b): the taught decomposition from
-dependencies/graph.json in our radical names — never an untaught component —
-and the reading's fixed cast character from the cast bible, since batch calls
-are independent and a static style sheet alone won't keep the cast coherent.
+**Generation order is radicals -> kanji -> vocabulary** (Rev 1): each layer's
+prompt is built from the layer below it — a kanji story continues its radicals'
+established images, a vocabulary story hooks into its kanji's meaning stories —
+so regenerating out of order chains onto stale prose.
+
+Per-item injection (docs 2b/2d): the taught decomposition from
+dependencies/graph.json in our radical names — never an untaught component; the
+reviewed look-alike pairs from _build/visually_similar.py — never a model-invented
+confusable; the reading's fixed cast character from the cast bible, since batch
+calls are independent and a static style sheet alone won't keep the cast
+coherent; and, for vocabulary, the mechanically computed reading regularity that
+decides whether the reading gets a story or a one-line derivation note.
 
 Failed drafts are auto-requeued with the gate errors appended to the prompt,
 capped at MAX_ATTEMPTS, then recorded `review_status: flagged_for_rewrite`.
+Drafts generated under an older PROMPT_VERSION are regenerated wholesale rather
+than patched.
 
 Usage (from curriculum/_build, venv with `anthropic` installed):
     .venv/bin/python -m generate_content.generate_mnemonics requests --type radical
@@ -52,9 +64,11 @@ WEB_DIR = os.path.join(HERE, "web", "mnemonics")
 
 MODEL = "claude-opus-4-8"
 #: Bump together with the mnemonic prompts, persona.md, and cast-bible.md.
-PROMPT_VERSION = 1
+#: 2 = Rev 1 (story-depth mnemonics, radical description replaces the radical
+#: mnemonic, look-alike prose, vocabulary mnemonics).
+PROMPT_VERSION = 2
 MAX_ATTEMPTS = 3
-MAX_TOKENS = 2000
+MAX_TOKENS = 3000
 POLL_SECONDS = 30
 POLL_TIMEOUT_SECONDS = 90 * 60
 
@@ -77,21 +91,45 @@ SUBMIT_TOOLS = {
         },
     },
     "radical": {
-        "name": "submit_radical_mnemonic",
+        "name": "submit_radical_description",
         "description": (
-            "Submit the completed mnemonic for one radical. Call exactly once."
+            "Submit the completed description for one radical. Call exactly once."
         ),
         "strict": True,
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
-            "required": ["mnemonic_text"],
-            "properties": {"mnemonic_text": {"type": "string"}},
+            "required": ["description"],
+            "properties": {"description": {"type": "string"}},
+        },
+    },
+    "vocab": {
+        "name": "submit_vocab_mnemonic",
+        "description": (
+            "Submit the completed mnemonics for one vocabulary word. Call exactly once."
+        ),
+        "strict": True,
+        "input_schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["meaning_mnemonic", "reading_mnemonic", "description"],
+            "properties": {
+                "meaning_mnemonic": {"type": "string"},
+                "reading_mnemonic": {"type": "string"},
+                "description": {"type": "string"},
+            },
         },
     },
 }
 
-PROMPT_FILES = {"kanji": "kanji-mnemonic.md", "radical": "radical-mnemonic.md"}
+PROMPT_FILES = {
+    "kanji": "kanji-mnemonic.md",
+    "radical": "radical-description.md",
+    "vocab": "vocab-mnemonic.md",
+}
+
+#: Curriculum directory each type's items and sidecar live under.
+KIND_DIR = {"kanji": "kanji", "radical": "radicals", "vocab": "vocabulary"}
 
 
 def _read_prompt(name):
@@ -114,7 +152,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
     template = _read_prompt(PROMPT_FILES[kind])
     if kind == "kanji":
         subs = {
-            "{{LEVEL}}": ctx["slug"].split("-")[0].upper(),
+            "{{LEVEL}}": ctx["level"].upper(),
             "{{CHAR}}": ctx["char"],
             "{{MEANING}}": ctx["meaning"],
             "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
@@ -122,15 +160,30 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{KUNYOMI}}": "、".join(ctx["kunyomi"]) or "(none)",
             "{{PRIMARY_READING}}": ctx["primary_reading"] or "(none)",
             "{{COMPONENTS}}": mc.format_components(ctx["components"]),
+            "{{LOOK_ALIKES}}": mc.format_look_alikes(ctx["look_alikes"]),
             "{{CAST_BLOCK}}": cast_lib.format_cast_block(ctx["reading_lore"], ctx["cast"]),
+            "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
+        }
+    elif kind == "vocab":
+        subs = {
+            "{{LEVEL}}": ctx["level"].upper(),
+            "{{FORM}}": ctx["form"],
+            "{{READING}}": ctx["reading"],
+            "{{MEANING}}": ctx["meaning"],
+            "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{COMPONENTS}}": mc.format_vocab_components(ctx["components"]),
+            "{{REGULARITY}}": mc.format_regularity(ctx["regularity"], ctx["reading"]),
+            "{{CAST_BLOCK}}": cast_lib.format_cast_block(
+                ctx["reading_lore"], ctx["cast"], subject="this word"),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
         }
     else:
         subs = {
-            "{{LEVEL}}": ctx["slug"].split("-")[0].upper() if "-" in ctx["slug"] else "N5",
+            "{{LEVEL}}": ctx["level"].upper(),
             "{{FORM}}": ctx["form"],
             "{{MEANING}}": ctx["meaning"],
             "{{MEANING_SYNONYMS}}": ", ".join(dict.fromkeys(ctx["meaning_synonyms"])),
+            "{{LOOK_ALIKES}}": mc.format_look_alikes(ctx["look_alikes"]),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
         }
     for token, value in subs.items():
@@ -139,7 +192,9 @@ def build_user_prompt(kind, ctx, validator_errors=None):
 
 
 def _context_for(level, kind, slug):
-    return mc.kanji_context(level, slug) if kind == "kanji" else mc.radical_context(level, slug)
+    builder = {"kanji": mc.kanji_context, "radical": mc.radical_context,
+               "vocab": mc.vocab_context}[kind]
+    return builder(level, slug)
 
 
 def build_request(level, kind, slug, attempt, ctx, validator_errors=None):
@@ -273,7 +328,7 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
 # --- commands --------------------------------------------------------------
 
 def _default_slugs(level, kind):
-    return mc.all_slugs(level, "kanji" if kind == "kanji" else "radicals")
+    return mc.all_slugs(level, KIND_DIR[kind])
 
 
 def cmd_requests(args):
@@ -296,10 +351,16 @@ def cmd_run(args):
     records = {slug: _load_draft(args.level, args.kind, slug) for slug in args.slugs}
 
     # Resumable: re-validate stored output against the *current* gate first.
+    # A draft from an older prompt version is regenerated wholesale, not
+    # patched (docs Rev 1: "regenerate wholesale under prompt_version: 2").
     pending = {}
     for slug in args.slugs:
         record = records[slug]
-        if record["tool_input"] is not None:
+        if record.get("prompt_version") not in (None, PROMPT_VERSION):
+            print(f"{slug}: draft was generated under prompt_version "
+                  f"{record['prompt_version']} — regenerating")
+            pending[slug] = None
+        elif record["tool_input"] is not None:
             errors = validate_draft(args.level, args.kind, slug, record["tool_input"], contexts[slug])
             if not errors:
                 if record["status"] != "draft":
@@ -358,11 +419,8 @@ def cmd_assemble(args):
 
 # --- assembly into sidecars generate.py inlines ----------------------------
 
-SIDECAR_KIND_DIR = {"kanji": "kanji", "radical": "radicals"}
-
-
 def sidecar_path(level, kind):
-    return os.path.join(mc.CURRICULUM_DIR, SIDECAR_KIND_DIR[kind], "mnemonics", f"{level}.json")
+    return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics", f"{level}.json")
 
 
 def write_sidecar(level, kind):
@@ -404,17 +462,20 @@ def write_sidecar(level, kind):
 # --- web-chat (no-API) lane, mirroring 2a ----------------------------------
 
 WEB_TOOL_LINE = {
-    "kanji": "Call the `submit_kanji_mnemonic` tool exactly once with:",
-    "radical": "Call the `submit_radical_mnemonic` tool exactly once with:",
+    kind: f"Call the `{tool['name']}` tool exactly once with:"
+    for kind, tool in SUBMIT_TOOLS.items()
 }
 WEB_OUTPUT_INSTRUCTION = (
     "Reply with **exactly one** fenced ```json code block and nothing after it. "
     "Do not call any tools, and do not add any commentary outside the block. "
     "The JSON object must use these exact key names:"
 )
+_SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
+                   '"reading_mnemonic": "...",\n  "description": "..."\n}\n```')
 WEB_SKELETON = {
-    "kanji": '```json\n{\n  "meaning_mnemonic": "...",\n  "reading_mnemonic": "...",\n  "description": "..."\n}\n```',
-    "radical": '```json\n{\n  "mnemonic_text": "..."\n}\n```',
+    "kanji": _SPLIT_SKELETON,
+    "vocab": _SPLIT_SKELETON,
+    "radical": '```json\n{\n  "description": "..."\n}\n```',
 }
 
 
@@ -517,7 +578,8 @@ def main():
     parser.add_argument("command",
                         choices=["requests", "run", "assemble", "collect",
                                  "webprompts", "ingest"])
-    parser.add_argument("--type", dest="kind", choices=["kanji", "radical"], required=True)
+    parser.add_argument("--type", dest="kind", choices=["kanji", "radical", "vocab"],
+                        required=True)
     parser.add_argument("--level", default="n5")
     parser.add_argument("--slugs", default=None,
                         help="comma-separated slugs (default: every item of the type)")

@@ -1,13 +1,14 @@
-Task: Generate N5 Kanji/Radical Mnemonics via Gemini Web
+Task: Generate N5 Radical/Kanji/Vocabulary Mnemonics via Gemini Web
 
 
 
-Use the existing logged-in Gemini session in my Chrome browser to generate Phase 2b
-mnemonics for the following items. This run is for ONE content type at a time.
+Use the existing logged-in Gemini session in my Chrome browser to generate Phase
+2b/2d mnemonic prose for the following items. This run is for ONE content type at a
+time.
 
 
 
-Content type (one of `kanji` or `radical`):
+Content type (one of `radical`, `kanji` or `vocab`):
 
 
 
@@ -350,7 +351,15 @@ Instead:
 
      - For <type> = radical:
 
-       - mnemonic_text
+       - description
+
+     - For <type> = vocab:
+
+       - meaning_mnemonic
+
+       - reading_mnemonic
+
+       - description
 
 
 
@@ -408,9 +417,11 @@ The item is merged into the per-level sidecar:
 
 
 
-- kanji  → curriculum/kanji/mnemonics/n5.json
-
 - radical → curriculum/radicals/mnemonics/n5.json
+
+- kanji   → curriculum/kanji/mnemonics/n5.json
+
+- vocab   → curriculum/vocabulary/mnemonics/n5.json
 
 
 
@@ -508,13 +519,17 @@ Repair Procedure
 
    - Preserve the required reply-file format (a single fenced ```json block).
 
-   - Preserve the exact required JSON keys for the content type (kanji: meaning_mnemonic, reading_mnemonic, description; radical: mnemonic_text).
+   - Preserve the exact required JSON keys for the content type (kanji and vocab: meaning_mnemonic, reading_mnemonic, description; radical: description).
 
    - Ensure the repaired content parses as valid JSON.
 
    - For kanji: the meaning_mnemonic must reference every taught component listed in the prompt's "Taught decomposition" section, and must not name any component that is not listed there.
 
    - For kanji: the reading_mnemonic must contain the target reading kana shown in the prompt, verbatim.
+
+   - For vocab: the meaning_mnemonic must reference every kanji listed in the prompt's "The kanji in this word" section; the reading_mnemonic must contain the word's reading verbatim and must follow the prompt's "The reading" section — a one-line derivation note when it says the reading is regular or kana-only, a full story when it says otherwise.
+
+   - For radical and kanji: the description must name every look-alike listed in the prompt and no other Japanese character.
 
    - Keep all fields plain prose — no markdown, headings, lists, bold/italic, furigana brackets, or romaji.
 
@@ -594,9 +609,10 @@ Ordering Note
 
 
 
-If this run covers both types, do radicals first, then kanji. Kanji meaning
-mnemonics are built from radical names, so the radical set should be settled before
-the kanji it feeds. (Each run is one type; sequence the runs accordingly.)
+Types chain: radicals first, then kanji, then vocab. A kanji story continues its
+radicals' established descriptions and a vocab story hooks into its kanji's meaning
+mnemonics, so each layer should be settled before the layer that feeds on it.
+(Each run is one type; sequence the runs accordingly.)
 
 
 
@@ -723,11 +739,12 @@ Notes on differences from the grammar automation prompt
 
 
 
-- This flow is parameterized by `--type` (kanji or radical); the required JSON keys
-  and the repair requirements differ per type (Step 7, Step 8).
+- This flow is parameterized by `--type` (radical, kanji or vocab); the required
+  JSON keys and the repair requirements differ per type (Step 7, Step 8).
 
 - The committed artifact is a per-level, keyed-by-slug sidecar
-  (`curriculum/<kanji|radicals>/mnemonics/n5.json`) that `ingest` merges into — not
+  (`curriculum/<radicals|kanji|vocabulary>/mnemonics/n5.json`) that `ingest` merges
+  into — not
   a per-slug file as with grammar lessons. There is no separate assembled file to
   inspect per item; inspect the sidecar entry.
 

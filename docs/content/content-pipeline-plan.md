@@ -66,8 +66,8 @@ meaning hooks. Regeneration order is therefore radicals → kanji → vocab.
 
 **Findings that shape the work (verified in code):**
 
-1. **Depth:** current prompts cap kanji mnemonics at 2–4 sentences and radical
-   text at 1–2 (`prompts/kanji-mnemonic.md`, `prompts/radical-mnemonic.md`;
+1. **Depth:** the v1 prompts capped kanji mnemonics at 2–4 sentences and radical
+   text at 1–2 (`prompts/kanji-mnemonic.md`, `prompts/radical-description.md`;
    `validate_mnemonics.LEN_BOUNDS`). Rev-2 prompts raise the target to short
    WaniKani-style story paragraphs — funny, strange, concrete — and raise the
    length bounds to match. The N5 drafts (106 kanji, 76 radicals) are
@@ -343,8 +343,10 @@ must be read in the Phase 0.5 lesson renderer, not as raw markdown.
   coherent. Budget a cross-batch coherence pass at review time; drift across batches is
   expected even with injection.
 
-*Status: tooling built + N5 generated (draft).* `curriculum/_build/generate_content/`
-holds the mnemonic prompts (`prompts/kanji-mnemonic.md`, `prompts/radical-mnemonic.md`),
+*Status (v1, superseded by the Rev 1 changes below — read those for what the
+tooling does today): tooling built + N5 generated (draft).*
+`curriculum/_build/generate_content/`
+holds the mnemonic prompts (`prompts/kanji-mnemonic.md`, `prompts/radical-description.md`),
 the cast-bible loader (`cast.py`, parses `prompts/cast-bible.md` and injects the
 reading's fixed character per item), the context builder (`mnemonic_context.py` — kanji
 readings + the **taught decomposition read straight from `dependencies/graph.json`** in
@@ -393,6 +395,22 @@ Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pa
   `visually_similar_slugs`, and every listed look-alike is mentioned.
 - **Generation order**: radicals first (their descriptions feed kanji prompts),
   then kanji, then 2d vocab.
+
+*Status: Rev-2 tooling built (R1.4); generation has not run.* `PROMPT_VERSION = 2`
+in `generate_mnemonics.py`, and `run` re-queues any draft recorded under an older
+prompt version, so a regen is wholesale rather than a patch. The radical prompt is
+now `prompts/radical-description.md` and its tool is `submit_radical_description`
+(one `description`, no mnemonic); `prompts/kanji-mnemonic.md` asks for story
+paragraphs that continue each component radical's *established description*
+(`mnemonic_context.format_components` injects it) plus a description block that
+contrasts the reviewed look-alikes; `prompts/vocab-mnemonic.md` + `--type vocab`
+are the new 2d generator. `persona.md` is v2 — the added comedy-register section
+is what "funny" means here, and it is shared with the Phase 4 passage seeds.
+The gate (`validate_mnemonics.py`) has story-paragraph `LEN_BOUNDS` per type,
+checks radicals on `description`, and enforces look-alikes in both directions:
+every reviewed confusable is named, and no other Japanese character appears in a
+description (descriptions carry no furigana). `generate.py` inlines radical
+`description` and the new `curriculum/vocabulary/mnemonics/<level>.json` sidecar.
 
 ### 2c. Example sentences (kanji + vocab)
 
@@ -457,6 +475,21 @@ one-liners ("watashi plus tachi: I and my group, we"). New generator
 
 Volume: ~1,450 N5+N4 words — the largest batch, still tens of dollars via
 Message Batches; the web-chat lane applies as usual.
+
+*Status: tooling built (R1.4); generation has not run.*
+`generate_mnemonics.py --type vocab` shares the 2b driver, gate and web-chat
+lane. `mnemonic_context.vocab_context` supplies the component kanji from the
+`requires` edges (the same ones the app's "Kanji in this word" chips use) with
+their established meaning mnemonics, and classifies the reading as
+`regular` / `kana_only` / `irregular` / `untaught` by matching it against the
+kanji's taught readings (allowing rendaku, handakuon and gemination). That class
+picks the reading-mnemonic length bound, so "regular reading gets a one-line
+derivation note" is enforced, not requested. N5 splits 155 regular / 127 kana-only
+/ 34 irregular / 400 containing a kanji not yet taught — the last two get full
+stories. Note the level asymmetry the `untaught` bucket is mostly made of: a word
+can sit a level below one of its own kanji (N5's 明日 uses 明, taught at N4), and
+that kanji is deliberately withheld from the prompt — a story may only build on
+kanji the learner has already met.
 
 ### 2e. Cloze nudge rewrite (Rev 1, new — fixes the giveaway hints)
 
@@ -584,7 +617,9 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | R1.5 | 2e nudge rewrite (N5 + N4) | no nudge contains its answer/forms/gloss; skim read |
 | R1.6 | Phase 4 passage generation with the 50–60% humor mix | tokenizer loop green; tone mix honored; full read |
 
-**Built as of 2026-07-25: R1.1, R1.2, R1.3.** R1.3's reviewed pair dataset is
+**Built as of 2026-07-25: R1.1, R1.2, R1.3, and R1.4's tooling** (Rev-2 prompts,
+gate and the 2d vocab generator — the regeneration run itself is still owed and
+needs API credentials or the web-chat lane). R1.3's reviewed pair dataset is
 `curriculum/_build/visually_similar.py` (52 pairs → 104 `visually_similar_links` rows);
 candidates are logged in `curriculum/_build/reports/visually-similar-candidates.md`.
 Per-step status lives in [working-history.md](../working-history.md).

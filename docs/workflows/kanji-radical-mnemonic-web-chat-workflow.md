@@ -1,14 +1,15 @@
-# Generating kanji + radical mnemonics via web chat (no API cost)
+# Generating radical/kanji/vocabulary mnemonics via web chat (no API cost)
 
-This is the **no-API alternative** to the Message Batches driver for producing
-the Phase 2b kanji + radical mnemonics (`docs/content/content-pipeline-plan.md`, 2b). The
-N5 set (76 radicals + 106 kanji) was generated through the API for a few dollars;
-regenerating a level, or extending to N4, can instead be done by pasting each
-item's prompt into a Claude or Gemini web chat (covered by a flat subscription)
-and feeding the reply back through the **same context builder and the same
-mechanical gate** the API path uses. Only the "call the model" step moves to the
-browser — nothing about the decomposition constraint, the reading constraint, the
-cast injection, or the validation changes.
+This is the **no-API alternative** to the Message Batches driver for producing the
+radical descriptions, kanji mnemonics and vocabulary mnemonics
+(`docs/content/content-pipeline-plan.md`, 2b + 2d). The N5 set was first generated
+through the API for a few dollars; regenerating a level under Rev 1's
+`prompt_version: 2`, or extending to N4, can instead be done by pasting each item's
+prompt into a Claude or Gemini web chat (covered by a flat subscription) and feeding
+the reply back through the **same context builder and the same mechanical gate** the
+API path uses. Only the "call the model" step moves to the browser — nothing about
+the decomposition constraint, the reading constraint, the look-alike list, the cast
+injection, or the validation changes.
 
 For a copy-paste browser-automation task (Gemini web), see
 [`kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`](./kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md).
@@ -21,8 +22,9 @@ cd curriculum/_build
 ```
 
 The one command you use is the mnemonic generator with two subcommands,
-`webprompts` and `ingest`. **Every command takes `--type kanji` or
-`--type radical`** — the two content types are generated separately:
+`webprompts` and `ingest`. **Every command takes `--type radical`, `--type kanji` or
+`--type vocab`** — the three content types are generated separately, in that order
+(see "Doing a batch efficiently" below):
 
 ```bash
 .venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji   --level n5 --slugs <slug,slug,...>
@@ -35,12 +37,14 @@ Working files live under
 **not** a per-item file (that's how grammar lessons work); it is the per-level,
 keyed-by-slug **sidecar** that `ingest` merges each passing item into:
 
-- kanji → `curriculum/kanji/mnemonics/<level>.json`
 - radicals → `curriculum/radicals/mnemonics/<level>.json`
+- kanji → `curriculum/kanji/mnemonics/<level>.json`
+- vocabulary → `curriculum/vocabulary/mnemonics/<level>.json`
 
-`generate.py` inlines those sidecars into the shipped kanji/radical JSON at build
-time (kanji get `meaning_mnemonic` / `reading_mnemonic` / `description`; radicals
-get their vivid `mnemonic_text`), each carrying `_meta.review_status: draft`.
+`generate.py` inlines those sidecars into the shipped JSON at build time (kanji and
+vocabulary get `meaning_mnemonic` / `reading_mnemonic` / `description`; radicals get
+a `description` and no mnemonic — Rev 1), each carrying
+`_meta.review_status: draft`.
 
 ---
 
@@ -48,16 +52,22 @@ get their vivid `mnemonic_text`), each carrying `_meta.review_status: draft`.
 
 The expensive, error-prone parts are automated; only copy/paste is manual.
 
-- **The taught decomposition, the reading target, and the cast character** are
-  computed from the curriculum and baked into each prompt — you never pick these
-  yourself. The kanji prompt lists the *exact* taught radicals (from
-  `dependencies/graph.json`, in our radical names) the meaning mnemonic must be
-  built from, the primary reading the reading mnemonic must contain, and the
-  fixed cast character for that reading (from `prompts/cast-bible.md`).
+- **The taught decomposition, the reading target, the look-alikes and the cast
+  character** are computed from the curriculum and baked into each prompt — you
+  never pick these yourself. The kanji prompt lists the *exact* taught radicals
+  (from `dependencies/graph.json`, in our radical names) the meaning mnemonic must
+  be built from, along with each radical's established description so the story
+  continues that image; the primary reading the reading mnemonic must contain; the
+  reviewed look-alike pairs (from `_build/visually_similar.py`) the description must
+  contrast; and the fixed cast character for that reading (from
+  `prompts/cast-bible.md`). The vocab prompt adds the component kanji's meaning
+  mnemonics and the **mechanically computed reading regularity**, which decides
+  whether the reading gets a story or a one-line derivation note.
 - **The mechanical gate** (`validate_mnemonics.py`) runs on ingest exactly as it
   does in the API path: it rejects a meaning mnemonic that ignores a taught
-  component, a reading mnemonic missing the target reading, unsupported markdown,
-  and out-of-bounds lengths. A reply that passes the gate is as constraint-clean
+  component, a reading mnemonic missing the target reading, a description that
+  skips a reviewed look-alike or invents one, a regular vocabulary reading padded
+  into a story, unsupported markdown, and out-of-bounds lengths. A reply that passes the gate is as constraint-clean
   as an API-generated one.
 - **Provenance is honest:** the `--model` you pass is recorded in the sidecar
   entry's `_meta.generator_model` (`claude-web` / `gemini-web`), so a reviewer can
@@ -113,8 +123,9 @@ The JSON keys the model must return depend on the type:
 
 | Type | Required JSON keys |
 |---|---|
+| `radical` | `description` |
 | `kanji` | `meaning_mnemonic`, `reading_mnemonic`, `description` |
-| `radical` | `mnemonic_text` |
+| `vocab` | `meaning_mnemonic`, `reading_mnemonic`, `description` |
 
 ### 4. Ingest
 
@@ -155,8 +166,9 @@ work them one chat at a time:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-level, kind = 'n5', 'kanji'            # kind: 'kanji' or 'radical'
-subdir = 'kanji' if kind == 'kanji' else 'radicals'
+from generate_content.generate_mnemonics import KIND_DIR
+level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
+subdir = KIND_DIR[kind]
 sidecar = f'../{subdir}/mnemonics/{level}.json'
 done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
 todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
@@ -166,10 +178,18 @@ PY
 ```
 
 Paste that comma list into `webprompts --type kanji --slugs ...`. Work in
-curriculum order (the list is already sorted by `sort_order`). Do **radicals
-before kanji** — kanji meaning mnemonics are built from radical names, so the
-radical set should be settled (and reviewed) first. And do N5 fully before N4
-(`--level n4`).
+curriculum order (the list is already sorted by `sort_order`). Do **radicals, then
+kanji, then vocabulary** — a kanji story continues its radicals' descriptions and a
+vocabulary story hooks into its kanji's meaning mnemonics, so each layer must be
+settled (and ideally reviewed) before the layer built on it, and `generate.py` has
+to be re-run between layers so the next layer's prompts read the new prose. And do
+N5 fully before N4 (`--level n4`).
+
+> The snippet lists items that have **no** sidecar entry yet. After a
+> `PROMPT_VERSION` bump (Rev 1 raised it to 2) the existing entries are stale, not
+> done: regenerate the whole level rather than the gaps, and let `ingest`
+> overwrite. The API path does this for you — `run` re-queues any draft recorded
+> under an older prompt version.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.
@@ -207,7 +227,7 @@ fail on it, so unreviewed prose can't silently ship.
 
 | Step | Command / action |
 |---|---|
-| Make prompts | `... webprompts --type kanji --level n5 --slugs a,b,c` |
+| Make prompts | `... webprompts --type <radical|kanji|vocab> --level n5 --slugs a,b,c` |
 | Paste | one item per fresh Claude/Gemini chat (skip the header comment) |
 | Save reply | `web/mnemonics/<level>/<type>/<slug>.reply.md` |
 | Ingest + gate | `... ingest --type kanji --level n5 --slug a --model claude-web` |
