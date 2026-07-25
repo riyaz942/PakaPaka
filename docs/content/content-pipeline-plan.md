@@ -365,6 +365,10 @@ inlines them into the kanji/radical JSON (`meaning_mnemonic`/`reading_mnemonic`/
 web-chat lane (`webprompts`/`ingest`) mirrors 2a for the cost swap and is documented
 in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md` (with an automation prompt for
 driving Gemini web in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`).
+A no-API, no-browser variant that produces each reply with in-session subagents (same
+`webprompts`/`ingest` commands and gate, auto-selecting the next batch of slugs stale
+under the current `PROMPT_VERSION`) is in
+`docs/workflows/kanji-radical-mnemonic-subagent-workflow-automation-prompt.md`.
 Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pass
 (drafts do not ship past `compile-curriculum`'s draft gate until
 `review_status: reviewed`).
@@ -447,7 +451,7 @@ automation prompt for driving Gemini web in
 `docs/workflows/example-sentences-web-chat-workflow-automation-prompt.md`). A
 no-API, no-browser variant that produces each reply with in-session Claude Opus
 subagents (same `webprompts`/`ingest` commands and gate) is in
-`docs/workflows/example-sentences-opus-subagent-workflow-automation-prompt.md`.
+`docs/workflows/example-sentences-subagent-workflow-automation-prompt.md`.
 Generation itself (N5/N4 batches) has not run yet.
 
 ### 2d. Vocabulary mnemonics + descriptions (Rev 1, new)

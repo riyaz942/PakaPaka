@@ -103,7 +103,9 @@ drafts recorded under an older prompt version so a regen is wholesale, not a pat
 
 **Not done / thin:**
 - **R1.4 (generation)** the wholesale N5 regen radicals → kanji → vocab (2d) has not run — needs
-  API credentials or the web-chat lane; N4 same order after. Shipped N5 radical/kanji mnemonics are
+  API credentials, the web-chat lane, or the no-browser subagent lane
+  (`docs/workflows/kanji-radical-mnemonic-subagent-workflow-automation-prompt.md`);
+  N4 same order after. Shipped N5 radical/kanji mnemonics are
   still the v1 drafts, which now fail the Rev-2 gate by design (too short, no radical `description`,
   look-alikes unaddressed)
 - **R1.5** cloze nudge rewrite (shipped N5 nudges are definitional giveaways)
