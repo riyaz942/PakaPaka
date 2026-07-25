@@ -51,3 +51,38 @@ jobs:
           name: curriculum-db
           path: dist/curriculum.db
           if-no-files-found: error
+
+  generator-drift:
+    name: generator reproduces committed JSON
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: curriculum/_build/requirements.txt
+
+      - name: Install generator dependencies
+        run: pip install -r curriculum/_build/requirements.txt
+
+      - name: Fetch furigana dataset
+        run: curriculum/_build/fetch_furigana_dataset.sh
+
+      - name: Regenerate curriculum JSON
+        run: |
+          python curriculum/_build/generate.py --level n5
+          python curriculum/_build/generate.py --level n4
+
+      # Fields authored only in the JSON (not in the _build datasets) are
+      # optional in the schema, so dropping them still validates and compiles.
+      # Regenerating in CI is what actually catches that.
+      - name: Fail if regeneration changed committed JSON
+        run: |
+          if ! git diff --quiet -- curriculum; then
+            echo "Regenerating from curriculum/_build produced a diff."
+            echo "Either commit the regenerated JSON, or move the hand-edit into the _build datasets."
+            git diff -- curriculum
+            exit 1
+          fi

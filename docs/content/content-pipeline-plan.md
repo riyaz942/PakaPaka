@@ -584,6 +584,11 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | R1.5 | 2e nudge rewrite (N5 + N4) | no nudge contains its answer/forms/gloss; skim read |
 | R1.6 | Phase 4 passage generation with the 50–60% humor mix | tokenizer loop green; tone mix honored; full read |
 
+**Built as of 2026-07-25: R1.1, R1.2, R1.3.** R1.3's reviewed pair dataset is
+`curriculum/_build/visually_similar.py` (52 pairs → 104 `visually_similar_links` rows);
+candidates are logged in `curriculum/_build/reports/visually-similar-candidates.md`.
+Per-step status lives in [working-history.md](../working-history.md).
+
 R1.2 before R1.4 matters for the same reason Phase 0.5 preceded the grammar
 pilot: the depth go/no-go read must happen in the real rendering. A pilot slice
 applies here too — regenerate ~10 radicals + ~10 kanji (one dependency

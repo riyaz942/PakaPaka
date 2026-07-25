@@ -1,6 +1,6 @@
 # Docs working history
 
-Last checked against the codebase: **2026-07-24**
+Last checked against the codebase: **2026-07-25**
 
 Status legend: **Done** = plan acceptance met (or investigation closed). **Partial** = meaningful work shipped, open leftovers listed. **Not done** = no product work yet (or design-only by intent).
 
@@ -74,15 +74,21 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013) + “Lea
 ### [Content quality pipeline](./content/content-pipeline-plan.md)
 **Done:** Phase 0 schema (explanation / caution / related / split mnemonics / passage enrichment); Phase 0.5 `LessonMarkdown` UI; Phase 1 fact skeleton + audit tooling; mechanical validators; **N5 grammar depth** (74/74 lessons reviewed with `explanation_markdown`); N5 mnemonic + example generators/sidecars (still mostly `draft`; mnemonic drafts superseded by Rev 1); root `NOTICE` file; cloze schema coordination with Wave A. Composition chips (`ItemCrossReferences`) already ship.
 
-**Rev 1 (July 2026) — R1.1–R1.2 built:** schema/DDL/compiler carry radical + vocab `description`,
+**Rev 1 (July 2026) — R1.1–R1.3 built:** schema/DDL/compiler carry radical + vocab `description`,
 vocab split mnemonics and `visually_similar_links`, and grammar no longer emits `mnemonic_text` (R1.1);
 the app reads and renders all of it — split meaning/reading mnemonic blocks, description panels,
 kanji composition line, radical description-as-image-caption, look-alike chips into Compare (R1.2).
-Still planned, not built: the content itself — look-alike pairs, deeper prompts (`prompt_version: 2`)
-and the wholesale N5 regen chained radical→kanji→vocab, humor-tagged passages, cloze nudge rewrite.
+Look-alike pairs are derived and reviewed (R1.3): `curriculum/_build/visually_similar.py` holds the
+curated seed + graph/KanjiVG candidates, 52 reviewed pairs → 104 `visually_similar_links` rows, with
+the candidate report kept at `curriculum/_build/reports/visually-similar-candidates.md`.
+Same pass fixed a generator trap: passage enrichment (translations, summaries, grammar/vocab links,
+word spans) was hand-added to `curriculum/readings/*.json` only, so regenerating stripped it while
+`validate-schema` and `compile-curriculum` stayed green (the fields are schema-optional) — it now lives
+in the `_build` datasets, and a `generator-drift` CI job fails when regeneration diffs the committed JSON.
+Still planned, not built: deeper prompts (`prompt_version: 2`) and the wholesale N5 regen chained
+radical→kanji→vocab, humor-tagged passages, cloze nudge rewrite.
 
 **Not done / thin:**
-- **R1.3** look-alike pair derivation (curated + graph/KanjiVG; never LLM-invented)
 - **R1.4** Rev-2 prompts/gate + wholesale regen N5 radicals → kanji → vocab (2d); N4 same order after
 - **R1.5** cloze nudge rewrite (shipped N5 nudges are definitional giveaways)
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read `mnemonic_text` only — outside R1.2's scope
