@@ -32,7 +32,6 @@ VISUALLY_SIMILAR_PAIRS = [
     ("n5-nichi", "n5-shiro-white"),     # 日 / 白
     ("n5-me-eye", "n4-ji-self"),        # 目 / 自
     ("n5-nichi", "n5-me-eye"),          # 日 / 目
-    ("n5-nichi", "n5-kuchi"),           # 日 / 口
     ("n5-moku", "n5-hon"),              # 木 / 本
     ("n5-migi", "n5-hidari"),           # 右 / 左
     ("n5-man", "n4-hou"),               # 万 / 方
