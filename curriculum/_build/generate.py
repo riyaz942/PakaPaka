@@ -29,6 +29,12 @@ sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+from visually_similar import build_similar_map  # noqa: E402
+
+#: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
+#: radical/kanji items. compile-curriculum resolves and hard-fails on any
+#: slug that is not a taught radical/kanji.
+_SIMILAR_SLUGS = build_similar_map()
 
 LESSONS_DIR = os.path.join(CURRICULUM_DIR, "grammar", "lessons")
 
@@ -148,6 +154,8 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             "visual_mnemonic_url": f"https://assets.japanese-learning.app/radicals/{slug_prefix}/{r['slug']}.png",
             "sort_order": i,
         }
+        if r["slug"] in _SIMILAR_SLUGS:
+            item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
             # Phase 2b generated image replaces the seed dataset mnemonic.
@@ -199,6 +207,8 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=No
             "readings": readings,
             "accepted_answers": accepted,
         }
+        if slug in _SIMILAR_SLUGS:
+            item["visually_similar_slugs"] = _SIMILAR_SLUGS[slug]
         mnemonic = mnemonics.get(slug)
         if mnemonic:
             # Phase 2b split mnemonics (docs/content/content-pipeline-plan.md 2b): the
@@ -429,6 +439,20 @@ def build_n5_grammar(vocab_slugs, known_readings=None):
     return _build_grammar_level("N5", N5_GRAMMAR, vocab_slugs, known_readings)
 
 
+#: Passage fields authored in the n5/n4 readings datasets and copied through
+#: verbatim. The reader UI and passage unlock depend on them, and they are
+#: optional in the schema, so a generator that dropped them would compile green
+#: and silently lock every passage.
+_PASSAGE_AUTHORED_KEYS = (
+    "english_translation",
+    "summary_ja",
+    "summary_en",
+    "grammar_slugs",
+    "vocabulary_slugs",
+    "word_spans",
+)
+
+
 def _build_readings_level(jlpt_level, reading_entries, known_readings=None):
     passages = []
     for i, p in enumerate(reading_entries, start=1):
@@ -452,6 +476,9 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None):
         body_furigana = furigana_lib.annotate_sentence(p["body"], known_readings)
         if body_furigana:
             passage["body_furigana"] = body_furigana
+        for key in _PASSAGE_AUTHORED_KEYS:
+            if key in p:
+                passage[key] = p[key]
         passages.append(passage)
     return {"jlpt_level": jlpt_level, "passages": passages}
 

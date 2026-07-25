@@ -15,7 +15,11 @@
       "meaning": "tap / action",
       "mnemonic_text": "A hand holding a small stick, tapping something into action.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/bokuzukuri.png",
-      "sort_order": 2
+      "sort_order": 2,
+      "visually_similar_slugs": [
+        "chichi",
+        "kakeru"
+      ]
     },
     {
       "slug": "madare",
@@ -23,7 +27,11 @@
       "meaning": "cliff / shelter",
       "mnemonic_text": "A sloped roof over an open cliffside shelter.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/madare.png",
-      "sort_order": 3
+      "sort_order": 3,
+      "visually_similar_slugs": [
+        "yamaidare",
+        "shikabane"
+      ]
     },
     {
       "slug": "yamaidare",
@@ -31,7 +39,10 @@
       "meaning": "sickness",
       "mnemonic_text": "A sickbed leaning against the wall: illness.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/yamaidare.png",
-      "sort_order": 4
+      "sort_order": 4,
+      "visually_similar_slugs": [
+        "madare"
+      ]
     },
     {
       "slug": "hitsuji",
@@ -39,7 +50,10 @@
       "meaning": "sheep",
       "mnemonic_text": "A woolly head with two curling horns: a sheep.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/hitsuji.png",
-      "sort_order": 5
+      "sort_order": 5,
+      "visually_similar_slugs": [
+        "n5-hantime"
+      ]
     },
     {
       "slug": "furutori",
@@ -55,7 +69,11 @@
       "meaning": "dog",
       "mnemonic_text": "A dog sitting with one ear perked up and a wagging tail dot.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/inu.png",
-      "sort_order": 7
+      "sort_order": 7,
+      "visually_similar_slugs": [
+        "n5-dai-big",
+        "n4-futoi"
+      ]
     },
     {
       "slug": "gatsuhen",
@@ -71,7 +89,10 @@
       "meaning": "king / jewel",
       "mnemonic_text": "Three strata joined by a single line: the king's authority.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/ou-king.png",
-      "sort_order": 9
+      "sort_order": 9,
+      "visually_similar_slugs": [
+        "n4-shu-main"
+      ]
     },
     {
       "slug": "ono",
@@ -95,7 +116,11 @@
       "meaning": "corpse / body",
       "mnemonic_text": "A body slumped over, reclining.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/shikabane.png",
-      "sort_order": 12
+      "sort_order": 12,
+      "visually_similar_slugs": [
+        "shikabane-kan",
+        "madare"
+      ]
     },
     {
       "slug": "yumihen",
@@ -119,7 +144,10 @@
       "meaning": "cover",
       "mnemonic_text": "A flat cloth draped over something: a cover.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/kanmuri.png",
-      "sort_order": 15
+      "sort_order": 15,
+      "visually_similar_slugs": [
+        "keigamae"
+      ]
     },
     {
       "slug": "shikabane-kan",
@@ -127,7 +155,10 @@
       "meaning": "door",
       "mnemonic_text": "A single swinging door panel.",
       "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n4/shikabane-kan.png",
-      "sort_order": 16
+      "sort_order": 16,
+      "visually_similar_slugs": [
+        "shikabane"
+      ]
     },
     {
       "slug": "hoko",
