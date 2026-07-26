@@ -118,16 +118,6 @@ export default function ReviewScreen() {
     setExitVisible(true);
   });
 
-  useEffect(() => {
-    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
-      if (!hasActiveSession) return false;
-      if (exitVisible) return true;
-      setExitVisible(true);
-      return true;
-    });
-    return () => sub.remove();
-  }, [hasActiveSession, exitVisible]);
-
   const flushPendingGrade = useCallback(() => {
     if (autoAdvanceTimer.current) {
       clearTimeout(autoAdvanceTimer.current);
@@ -151,15 +141,28 @@ export default function ReviewScreen() {
   // Nested details/compare push blurs this screen — cancel Lightning Mode so
   // the session cannot advance under the overlay. Pending grade stays for
   // Return/Continue (or flush on exit/unmount).
+  //
+  // Hardware back is registered only while focused: a global listener would
+  // steal back from `/review/item` / `/review/compare` and open "End session?"
+  // instead of popping the nested screen (the Modal renders above everything).
   useFocusEffect(
     useCallback(() => {
+      const backSub = hasActiveSession
+        ? BackHandler.addEventListener('hardwareBackPress', () => {
+            if (exitVisible) return true;
+            setExitVisible(true);
+            return true;
+          })
+        : null;
+
       return () => {
+        backSub?.remove();
         if (autoAdvanceTimer.current) {
           clearTimeout(autoAdvanceTimer.current);
           autoAdvanceTimer.current = null;
         }
       };
-    }, []),
+    }, [hasActiveSession, exitVisible]),
   );
 
   useEffect(() => {

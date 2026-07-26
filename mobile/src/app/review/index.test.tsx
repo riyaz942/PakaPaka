@@ -101,6 +101,15 @@ jest.mock('@/data/hooks/useReviewRevealDetails', () => ({
   useReviewRevealDetails: () => () => null,
 }));
 
+jest.mock('@/data/hooks/useFuriganaPreference', () => ({
+  useFuriganaPreference: () => ({
+    mode: 'shown',
+    knownKanji: new Set<string>(),
+    setMode: jest.fn(),
+    modeForItem: () => 'shown',
+  }),
+}));
+
 jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
   useReviewAutoAdvance: () => ({
     autoAdvanceEnabled: mockAutoAdvanceEnabled,
