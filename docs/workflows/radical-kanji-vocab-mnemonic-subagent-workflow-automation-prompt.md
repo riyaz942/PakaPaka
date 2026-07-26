@@ -21,7 +21,7 @@ Content type (one of `radical`, `kanji` or `vocab`):
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = opus-5>
+<subagent-model = sonnet-5>
 
 Model notes
 

@@ -879,6 +879,13 @@
         }
       ],
       "furigana": "どの",
+      "meaning_mnemonic": "At Koichi's konbini the onigiri shelf holds forty identical rice balls, and the man ahead of you has frozen solid, finger hovering back and forth while the till beeps behind him. Which one, which one, which one — he can never land on an answer, and now the whole line is stuck asking the same thing he is: which.",
+      "reading_mnemonic": "どの is written in kana exactly as it's read, with no kanji to decode — just sound out <reading>どの</reading> as it appears on the page.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "どの本を読みますか。",
@@ -913,12 +920,7 @@
           ],
           "furigana": "どのお茶[ちゃ]を飲[の]みますか。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "koko",
@@ -938,6 +940,13 @@
         }
       ],
       "furigana": "ここ",
+      "meaning_mnemonic": "Grandma Kane rings the shrine's one enormous bell every morning, but the rope has vanished among the mossy steps and circling cats. She stamps one paving stone and declares the rope must be tied down right there, jabbing the ground: here, here, here — and that exact stamped spot is where it's always been.",
+      "reading_mnemonic": "ここ is pure kana, read exactly as it looks, so there's no hidden kanji to unpack — <reading>ここ</reading> is simply pronounced as written.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "ここは公園です。",
@@ -971,12 +980,7 @@
           ],
           "furigana": "明日[あした]ここに来[らい]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "soko",
@@ -996,6 +1000,13 @@
         }
       ],
       "furigana": "そこ",
+      "meaning_mnemonic": "Down at the riverbank, someone drops a sandal mid-crossing and it snags on a rock partway across the water. You point at the exact spot from the near bank, arm out straight, calling out to the person wading in: there, there, no, THERE — the sandal never moves, but your pointing finger fixes the place for good.",
+      "reading_mnemonic": "そこ is written entirely in kana the way it sounds, with no kanji standing behind it — you read <reading>そこ</reading> exactly as it's spelled.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "そこでお茶を飲みます。",
@@ -1031,12 +1042,7 @@
           ],
           "furigana": "私[わたし]たちはそこで会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "asoko",
