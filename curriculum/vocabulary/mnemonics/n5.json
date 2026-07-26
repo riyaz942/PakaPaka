@@ -9,6 +9,16 @@
       "review_status": "draft"
     }
   },
+  "ano": {
+    "meaning_mnemonic": "Halfway up the mountain trail a goat sits down across the path and will not budge until you say what you are climbing toward. You point at the vending machine improbably parked at the summit, a speck against the sky, and groan ah, no, not that far. The goat only accepts things too distant to touch: that vending machine over there, that peak over there.",
+    "reading_mnemonic": "Nothing hidden in this one: it is written in kana exactly the way it is spoken, <reading>あの</reading>.",
+    "description": "Attaches directly to a noun and never stands alone. It points at something far from both you and the listener, or at something you both already know about even when it is nowhere in sight. Stretched out on its own, with the first vowel held, it is also the ordinary hesitation noise, roughly English um, and carries no pointing sense at all.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "are": {
     "meaning_mnemonic": "Halfway up the mountain trail you and a stranger both stop and squint at the vending machine glowing at the very summit, hopelessly far from either of you. All you can manage is a long flat ahh, and the stranger adds a defeated eh. Nobody is reaching it today. Not near you, not near them, just a speck up the slope — that over there.",
     "reading_mnemonic": "Kana only, said exactly as it is written: <reading>あれ</reading>, with nothing to decode.",
@@ -66,11 +76,31 @@
       "review_status": "draft"
     }
   },
+  "kono": {
+    "meaning_mnemonic": "You are in Koichi's konbini holding a waffle cone, and the beeping till will not stop until you name what you are buying. You do not know the word for cone, so you jab it at Koichi and repeat cone-oh, cone-oh until he gives up. He rings up whatever you are jabbing at: this cone, this onigiri, this rice ball — always the one right here in your hand.",
+    "reading_mnemonic": "There is nothing to decode here: the word is written in kana exactly as it is said, <reading>この</reading>.",
+    "description": "Always attaches directly to a noun and never stands on its own. English happily says I want this with nothing after it; this word cannot do that, and a bare this needs a different standalone word. It marks the thing as near you, the speaker, rather than near the person you are talking to.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "kore": {
     "meaning_mnemonic": "At Koichi's konbini you jab a finger at the onigiri closest to you, ignoring the whole shelf behind it. The cashier doesn't ask which one — pointing already decided it. That's the one you meant, this one, and nothing else on the shelf matters anymore.",
     "reading_mnemonic": "これ is kana all the way through, no kanji hiding underneath — just read <reading>これ</reading> exactly the way it's written.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sono": {
+    "meaning_mnemonic": "Your friend is squatting on the riverbank with three soaked shoes lined up beside them, and you are holding a sonar gun that refuses to lock onto anything near you. It only pings at objects sitting next to somebody else, whining so-no, so-no as it swings toward them. Whatever it picks out is that shoe, that bucket, that dripping thing over by your friend.",
+    "reading_mnemonic": "No decoding needed: this word is spelled in kana precisely as it is pronounced, <reading>その</reading>.",
+    "description": "Attaches directly to a noun and never stands alone. It points at something in the listener's zone rather than yours, so a thing in their hand or on their side of the table takes this word even where English would say this. It also picks up something the other person has just mentioned, with nothing visible to point at.",
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
