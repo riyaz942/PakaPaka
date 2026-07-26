@@ -60,7 +60,21 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+## 5. Communicate Crisp and Clear
+
+**Summarize. Don't dump. Write for a technical manager, not a code dump.**
+
+Default responses should be short and scannable — the core message intact, not a wall of text. Prefer:
+
+- **Done** — what changed / what you found (1–3 bullets or short sentences)
+- **Next** — the immediate next step (if any)
+- **Need from you** — decisions, approvals, or inputs required (only when relevant)
+
+Tone: plain language a manager with some technical background can follow. Use product and outcome wording first; name files, APIs, or implementation detail only when they matter for the decision or next step. Avoid jargon-heavy walkthroughs, long paste-backs of logs/diffs, and step-by-step narration of exploration unless asked.
+
+Expand only when asked (deep dive, full diff walkthrough, debugging transcript). For long answers, lead with the verdict in 1–2 sentences.
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, clarifying questions come before implementation rather than after mistakes, and replies stay short enough to skim without losing the decision points.
 
 ---
 
