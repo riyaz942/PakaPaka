@@ -9,12 +9,32 @@
       "review_status": "draft"
     }
   },
+  "are": {
+    "meaning_mnemonic": "Halfway up the mountain trail you and a stranger both stop and squint at the vending machine glowing at the very summit, hopelessly far from either of you. All you can manage is a long flat ahh, and the stranger adds a defeated eh. Nobody is reaching it today. Not near you, not near them, just a speck up the slope — that over there.",
+    "reading_mnemonic": "Kana only, said exactly as it is written: <reading>あれ</reading>, with nothing to decode.",
+    "description": "Used for something far from both you and the person you are talking to, not merely far from you. It also does duty for a thing you both already know about but is not present — the that in that trip we took — which is why it turns up so often in conversation with no object in sight.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "boku": {
     "meaning_mnemonic": "At the riverbank, a boy waist-deep in the current catches nothing all afternoon, and when a fish finally leaps straight into his rival's net instead of his own, he plants his rod in the mud and announces to the whole bank that he, personally, will be the one telling this story later — not his friend, not the fish, him. That flat, proud claim to being the one talking is the meaning you want: I, said the rough, boyish way a kid says it.",
     "reading_mnemonic": "He slaps his soggy fishing log down on a rock and reads the cover aloud in a gruff voice, <reading>book</reading>, <reading>book</reading>, until it slurs into <reading>ぼく</reading> — the plain, boyish way to say I that he now uses for himself as often as for the log.",
     "description": "Used mainly by men and boys, in casual to neutral speech; it reads as too soft or boyish for very formal contexts and is rarely used by adult women.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dore": {
+    "meaning_mnemonic": "Sei's school hallway has twelve identical doors, and behind exactly one of them a ball is bouncing. You work down the row knocking on every door, and each knock comes back the same hollow thud, so you start rattling handles instead. Twelve doors, one ball, and only one question left in your head — which one.",
+    "reading_mnemonic": "Written in kana just as it sounds, <reading>どれ</reading>, so there is nothing to work out.",
+    "description": "Asks you to pick from three or more things in view. When the choice is between exactly two, Japanese uses a different question word instead. Like its near and far partners, it stands alone as a pronoun and is not placed directly before a noun.",
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -51,6 +71,16 @@
     "reading_mnemonic": "これ is kana all the way through, no kanji hiding underneath — just read <reading>これ</reading> exactly the way it's written.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sore": {
+    "meaning_mnemonic": "At Koichi's konbini a customer holds an onigiri up under your nose, and your pointing finger is so sore from a full shift at the beeping till that you can barely straighten it. You waggle the sore finger at the rice ball sitting there in his hands and grunt. Whatever is over by him, close enough for him to touch — that one.",
+    "reading_mnemonic": "This word is written in kana exactly as it is said, <reading>それ</reading>, so there is no reading to decode.",
+    "description": "Points at something near the person you are talking to, rather than near you — the middle rung of the near, middle, far set. It stands alone as a pronoun, so it never sits directly in front of a noun; the form that does that is a separate word.",
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "4",
       "review_status": "draft"
     }

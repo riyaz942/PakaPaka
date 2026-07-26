@@ -17,11 +17,11 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = radical>
+<type = vocab>
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = sonnet-5>
+<subagent-model = opus-5>
 
 Model notes
 
