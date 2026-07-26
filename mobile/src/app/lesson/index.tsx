@@ -70,6 +70,8 @@ export default function LessonScreen() {
   const isLastSection = sectionIndex === LESSON_SECTION_COUNT - 1;
   /** Very first card of the lesson — there is nothing behind it. */
   const isAtStart = isFirst && sectionIndex === 0;
+  /** Finish-lesson advances navigate away — there is no card to slide back in. */
+  const nextHasEnterAnimation = !(isLastSection && isLast);
 
   const { width: windowWidth } = useWindowDimensions();
   /** Far enough that the card is fully clear of the screen before the swap. */
@@ -77,6 +79,13 @@ export default function LessonScreen() {
   const translateX = useSharedValue(0);
   /** Guards the exit leg so a double-tap can't stack two transitions. */
   const isSwiping = useRef(false);
+  /**
+   * Direction waiting for the swapped card to finish loading before the enter
+   * leg runs. Starting enter in the same tick as setState raced the re-render
+   * and briefly slid the *previous* card back on screen.
+   */
+  const pendingEnterDirection = useRef<SwipeDirection | null>(null);
+  const scrollRef = useRef<ScrollView>(null);
 
   const { reducedMotion } = useReducedMotion();
   const reducedMotionRef = useRef(reducedMotion);
@@ -157,11 +166,22 @@ export default function LessonScreen() {
   // Gesture callbacks are captured when the detector attaches and are not
   // refreshed on re-render, so everything they need is read through a ref —
   // otherwise they would keep replaying the first card's state.
-  const cardRef = useRef({ handleBack, handleNext, canGoBack: !isAtStart });
-  cardRef.current = { handleBack, handleNext, canGoBack: !isAtStart };
+  const cardRef = useRef({
+    handleBack,
+    handleNext,
+    canGoBack: !isAtStart,
+    nextHasEnterAnimation,
+  });
+  cardRef.current = {
+    handleBack,
+    handleNext,
+    canGoBack: !isAtStart,
+    nextHasEnterAnimation,
+  };
 
   /** Release below threshold, or nothing to go back to: card returns home. */
   const cancelSwipe = useCallback(() => {
+    pendingEnterDirection.current = null;
     translateX.value = withTiming(0, {
       duration: ENTER_MS,
       easing: Easing.out(Easing.cubic),
@@ -177,22 +197,61 @@ export default function LessonScreen() {
     }
   }, []);
 
-  // The card has flown off. Advance while it is off-screen, then bring it in
-  // from the opposite edge — the swap and the reposition land in the same tick,
-  // so what slides in is already the new card. An unfinished exit means the
-  // learner grabbed the card mid-flight: release the guard, advance nothing.
-  const onExitComplete = useCallback(
-    (direction: SwipeDirection, finished: boolean) => {
-      isSwiping.current = false;
-      if (!finished) return;
-
-      applyDirection(direction);
-
+  /** Slide the parked (already-swapped) card back onto the screen. */
+  const startEnterAnimation = useCallback(
+    (direction: SwipeDirection) => {
       translateX.value = direction === 'next' ? exitDistance : -exitDistance;
       translateX.value = withTiming(0, {
         duration: ENTER_MS,
         easing: Easing.out(Easing.cubic),
       });
+    },
+    [exitDistance, translateX],
+  );
+
+  /**
+   * LessonItemView calls this once the new card is paint-ready. Until then the
+   * card stays parked off-screen so a slow grammar load never reveals the
+   * previous item mid-enter.
+   */
+  const onCardContentReady = useCallback(() => {
+    const direction = pendingEnterDirection.current;
+    if (!direction) return;
+    pendingEnterDirection.current = null;
+    isSwiping.current = false;
+    // Reset while still off-screen so a tall previous card doesn't leave the
+    // incoming one scrolled halfway down.
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    startEnterAnimation(direction);
+  }, [startEnterAnimation]);
+
+  // The card has flown off. Park it on the opposite edge, swap content, and
+  // wait for onCardContentReady before the enter leg — setState alone does not
+  // paint in the same tick as the reposition. An unfinished exit means the
+  // learner grabbed the card mid-flight: release the guard, advance nothing.
+  const onExitComplete = useCallback(
+    (direction: SwipeDirection, finished: boolean) => {
+      if (!finished) {
+        isSwiping.current = false;
+        return;
+      }
+
+      const shouldEnter =
+        direction === 'back'
+          ? cardRef.current.canGoBack
+          : cardRef.current.nextHasEnterAnimation;
+
+      if (shouldEnter) {
+        pendingEnterDirection.current = direction;
+        // Hold off-screen while React commits + loads the next card. Keep the
+        // swipe guard until onCardContentReady so a slow load can't be
+        // interrupted mid-park.
+        translateX.value = direction === 'next' ? exitDistance : -exitDistance;
+      } else {
+        isSwiping.current = false;
+      }
+
+      applyDirection(direction);
     },
     [applyDirection, exitDistance, translateX],
   );
@@ -208,6 +267,7 @@ export default function LessonScreen() {
 
       // Reduced motion keeps the navigation, drops the travel.
       if (reducedMotionRef.current) {
+        pendingEnterDirection.current = null;
         translateX.value = 0;
         applyDirection(direction);
         return;
@@ -342,10 +402,16 @@ export default function LessonScreen() {
                 content inside can swap without interrupting the motion. */}
             <Animated.View className="flex-1" style={cardStyle}>
               <ScrollView
+                ref={scrollRef}
                 className="mt-space-md flex-1"
                 contentContainerClassName="pb-space-lg">
                 <ItemLinkProvider base="/lesson/item">
-                  <LessonItemView itemId={current.id} sectionIndex={sectionIndex} />
+                  <LessonItemView
+                    key={current.id}
+                    itemId={current.id}
+                    sectionIndex={sectionIndex}
+                    onContentReady={onCardContentReady}
+                  />
                 </ItemLinkProvider>
               </ScrollView>
             </Animated.View>

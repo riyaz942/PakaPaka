@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 
 import {
@@ -16,6 +16,12 @@ type LessonItemViewProps = {
   itemId: string;
   /** 0-based index into the three lesson sections; owned by the session loop. */
   sectionIndex: number;
+  /**
+   * Fired after layout when this card's content is ready to show. The lesson
+   * swipe uses it to start the enter animation only once the swapped card is
+   * painted — not while the previous item is still on screen.
+   */
+  onContentReady?: () => void;
 };
 
 /**
@@ -26,7 +32,11 @@ type LessonItemViewProps = {
  * examples, cross-refs), but a lesson paces content while details is a single
  * reference scroll.
  */
-export function LessonItemView({ itemId, sectionIndex }: LessonItemViewProps) {
+export function LessonItemView({
+  itemId,
+  sectionIndex,
+  onContentReady,
+}: LessonItemViewProps) {
   const {
     item,
     kanjiReadings,
@@ -48,6 +58,15 @@ export function LessonItemView({ itemId, sectionIndex }: LessonItemViewProps) {
     itemId: loading ? null : itemId,
     isDualReadingKanji,
   });
+
+  // Tell the session loop as soon as this card is paint-ready (including the
+  // not-found path — still a settled UI). Section changes re-fire so an enter
+  // animation waiting on the same item can proceed.
+  useLayoutEffect(() => {
+    if (!loading) {
+      onContentReady?.();
+    }
+  }, [loading, itemId, sectionIndex, onContentReady]);
 
   if (loading) {
     return (
