@@ -19,6 +19,13 @@
         }
       ],
       "furigana": "私[わたし]",
+      "meaning_mnemonic": "At Koichi's konbini, a tanuki knocks over the shiny new security mirror by the till and freezes, nose to nose with itself. It taps the glass, tilts its head, and decides, flatly, that the animal staring back must be the most important customer in the store: itself. From then on it restocks the onigiri shelf for nobody else, certain of exactly who it means when it talks about I.",
+      "reading_mnemonic": "The tanuki taps the glass and gasps at what it sees — <reading>what a shiny</reading> creature — then realizes it's only its own reflection, saying <reading>わたし</reading>, I, over and over, delighted that the shiniest thing in the konbini turned out to be itself.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は明日、友達と映画を見ます。",
@@ -55,12 +62,7 @@
           ],
           "furigana": "私[わたし]はコーヒーを飲[の]みません。"
         }
-      ],
-      "_meta": {
-        "generator_model": "gemini-web",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "watashitachi",
@@ -80,6 +82,13 @@
         }
       ],
       "furigana": "私[わたし]たち",
+      "meaning_mnemonic": "On the mossy steps of Grandma Kane's shrine, one cat rings the enormous bell and every other cat in the place mobs the sound, wedging in shoulder to shoulder until they're one solid, purring mass on the step. Ask any single cat its name and the whole pile answers at once, because as far as they're concerned there's no such thing as one cat here anymore, only the pile. That fused, shoulder-to-shoulder answer is the meaning you want: we.",
+      "reading_mnemonic": "Try to pet just one cat in the pile and the whole mass yowls back what sounds like <reading>what a she, touchy</reading> bunch — really the cats shouting <reading>わたしたち</reading>, we, in one voice, refusing to be split apart even for the bell.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私たちは映画を見ます。",
@@ -115,12 +124,7 @@
           ],
           "furigana": "私[わたし]たちは一[いっ]緒[しょ]に遊[あそ]びます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "boku",
@@ -140,6 +144,14 @@
         }
       ],
       "furigana": "僕[ぼく]",
+      "meaning_mnemonic": "At the riverbank, a boy waist-deep in the current catches nothing all afternoon, and when a fish finally leaps straight into his rival's net instead of his own, he plants his rod in the mud and announces to the whole bank that he, personally, will be the one telling this story later — not his friend, not the fish, him. That flat, proud claim to being the one talking is the meaning you want: I, said the rough, boyish way a kid says it.",
+      "reading_mnemonic": "He slaps his soggy fishing log down on a rock and reads the cover aloud in a gruff voice, <reading>book</reading>, <reading>book</reading>, until it slurs into <reading>ぼく</reading> — the plain, boyish way to say I that he now uses for himself as often as for the log.",
+      "description": "Used mainly by men and boys, in casual to neutral speech; it reads as too soft or boyish for very formal contexts and is rarely used by adult women.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "僕は学生です。",
@@ -175,12 +187,7 @@
           ],
           "furigana": "僕[ぼく]と一[いっ]緒[しょ]に公[こう]園[えん]に行[い]く？"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "anata",
@@ -200,6 +207,14 @@
         }
       ],
       "furigana": "あなた",
+      "meaning_mnemonic": "At Koichi's konbini, the till breaks and starts beeping the same word at whoever steps up to pay — anata, anata — refusing to learn a single name. Customers give up introducing themselves and just answer to it, until the word stops being rude and becomes the only way anyone in that line ever gets addressed: you.",
+      "reading_mnemonic": "あなた is written exactly the way it sounds — plain kana, no kanji hiding a different reading — so the word you say is simply 「<reading>あなた</reading>」.",
+      "description": "In real conversation あなた is used sparingly — Japanese usually addresses people by name or title, and aiming あなた at a stranger or superior can sound distant or even confrontational; it is most naturally heard from a wife speaking to her husband.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "あなたは学生ですか。",
@@ -234,12 +249,7 @@
           ],
           "furigana": "あなたは今日[きょう]忙[いそが]しいですか。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kimi",
@@ -259,6 +269,13 @@
         }
       ],
       "furigana": "君[きみ]",
+      "meaning_mnemonic": "At Sei's school, the coach's whistle breaks, so instead of names he just barks the same word at whichever kid is nearest the ball — kimi, kimi — pointing, never naming. By the end of practice the whole team answers to it, the casual, jabbing word you'd only ever aim at a friend or someone younger than you.",
+      "reading_mnemonic": "On the sports field at Sei's school, a scruffy stray dog answers only to the coach's shout of <reading>きみ</reading> — it sounds just like calling out <reading>key, me!</reading> while he jangles his whistle-keys — and the dog comes running to whichever kid the coach is jabbing a finger at.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "君は明日来る？",
@@ -295,12 +312,7 @@
           ],
           "furigana": "君[きみ]はお茶[ちゃ]を飲[の]む？"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kare",
@@ -320,6 +332,13 @@
         }
       ],
       "furigana": "彼[かれ]",
+      "meaning_mnemonic": "At the riverbank, a heron keeps prying the side mirror off a toy car and dropping it at the feet of whichever man happens to be standing closest, like a tiny crown. The locals start calling that unlucky guy by the same word every single time — and since he's always some woman's boyfriend waiting there for her, the word settles on him: he, boyfriend.",
+      "reading_mnemonic": "At the riverbank, a heron drops a plastic toy <reading>car</reading> at your feet, and someone mutters <reading>かれ</reading>, eh, nodding toward whichever man it landed nearest — and the name sticks to him alone, every single time the bird does it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "彼は学生です。",
@@ -355,12 +374,7 @@
           ],
           "furigana": "彼[かれ]は今日[きょう]家[いえ]に帰[かえ]ります。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kanojo",
@@ -380,6 +394,13 @@
         }
       ],
       "furigana": "彼[かの]女[じょ]",
+      "meaning_mnemonic": "Koichi points across the konbini at the kneeling <kanji>woman</kanji> restocking the onigiri shelf, arm sweeping the row into place. He doesn't explain, just tilts his head and grins: that's the one he's been talking about all week. You don't need more than that look to know she's his girlfriend, and now you know who she is too.",
+      "reading_mnemonic": "At Grandma Kane's shrine, she keeps introducing the same woman standing by the bell alongside a man named Joe: Kane, and Joe. Say it fast — <reading>Kane-Joe</reading> — and you land on <reading>かのじょ</reading>, the word for her, the girlfriend everyone at the shrine already knows by name.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "彼女は本を読みます。",
@@ -415,12 +436,7 @@
           ],
           "furigana": "彼[かの]女[じょ]は今[いま]忙[いそが]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kore",
@@ -440,6 +456,13 @@
         }
       ],
       "furigana": "これ",
+      "meaning_mnemonic": "At Koichi's konbini you jab a finger at the onigiri closest to you, ignoring the whole shelf behind it. The cashier doesn't ask which one — pointing already decided it. That's the one you meant, this one, and nothing else on the shelf matters anymore.",
+      "reading_mnemonic": "これ is kana all the way through, no kanji hiding underneath — just read <reading>これ</reading> exactly the way it's written.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "これは私の本です。",
@@ -472,12 +495,7 @@
           ],
           "furigana": "これはおいしいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "sore",
