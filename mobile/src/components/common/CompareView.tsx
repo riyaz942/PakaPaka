@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
+import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
@@ -140,12 +141,12 @@ function compareProse(item: CurriculumItemDetail): { description: string | null;
 
 function Prose({
   text,
-  primaryForm,
+  item,
   side,
   testIDPrefix,
 }: {
   text: string | null;
-  primaryForm: string;
+  item: CurriculumItemDetail;
   side: Side;
   testIDPrefix: string;
 }) {
@@ -155,8 +156,12 @@ function Prose({
 
   return (
     <View className="mt-3" testID={`${testIDPrefix}-${side}`}>
-      <Text className="text-caption text-secondary">{primaryForm}</Text>
-      <Text className="mt-1 text-body text-primary">{text}</Text>
+      <Text className="text-caption text-secondary">{item.primaryForm}</Text>
+      <AnnotatedText
+        text={text}
+        itemType={item.itemType}
+        className="mt-1 text-body text-primary"
+      />
     </View>
   );
 }
@@ -256,13 +261,13 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
             <SectionHeading label="Descriptions" />
             <Prose
               text={leftProse.description}
-              primaryForm={leftItem.primaryForm}
+              item={leftItem}
               side="left"
               testIDPrefix="compare-description"
             />
             <Prose
               text={rightProse.description}
-              primaryForm={rightItem.primaryForm}
+              item={rightItem}
               side="right"
               testIDPrefix="compare-description"
             />
@@ -274,13 +279,13 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
             <SectionHeading label="Mnemonics" />
             <Prose
               text={leftProse.mnemonic}
-              primaryForm={leftItem.primaryForm}
+              item={leftItem}
               side="left"
               testIDPrefix="compare-prose"
             />
             <Prose
               text={rightProse.mnemonic}
-              primaryForm={rightItem.primaryForm}
+              item={rightItem}
               side="right"
               testIDPrefix="compare-prose"
             />

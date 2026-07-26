@@ -5,7 +5,17 @@ radical, and a story for each kanji built from those radicals. Now the kanji
 combine into a *word*, and your job is to make that combination feel inevitable.
 Follow the teaching voice above.
 
-Two mnemonics (they serve two different quiz directions) plus a description.
+Two mnemonics — they serve two different quiz directions — and, only when this
+word needs one, a description.
+
+## How long
+
+Aim for **roughly 350–700 characters** for the meaning mnemonic — about four to
+six sentences. That is the size that has actually worked: long enough to carry a
+scene, short enough that a tired learner reads it instead of skipping it. Treat
+it as the target, not a rule: going over to finish a scene is fine, padding to
+reach a number is not. (The reading mnemonic follows the reading section below —
+a derivation note stays one sentence no matter what.)
 
 ## The word
 
@@ -29,12 +39,29 @@ with what they already remember. These are the only kanji you may name.
 
 {{CAST_BLOCK}}
 
+## Highlighting
+
+The app colours the pieces the learner is meant to connect, so you mark them
+inline. Two tags, one per field, and nothing else:
+
+- In `meaning_mnemonic`, wrap **every component kanji's meaning**, where the
+  story uses it, in `<kanji>…</kanji>`. Tag the word doing the work in the
+  sentence, not a label bolted on: `the <kanji>ground</kanji> splits`, never
+  `the ground (<kanji>ground</kanji>) splits`.
+- In `reading_mnemonic`, wrap the kana 「{{READING}}」 in `<reading>…</reading>`,
+  **and** wrap the English word your scene uses to carry that sound — the
+  phonetic hook — in the same tag. In a derivation note, tagging the reading
+  itself is enough.
+
+Don't tag anything else — a tag on an ordinary word teaches the learner that the
+colour means nothing.
+
 ## What to write
 
 Call the `submit_vocab_mnemonic` tool exactly once with:
 
-1. **`meaning_mnemonic`** — a story paragraph (roughly three to six sentences)
-   that runs the component kanji's meanings together until they land on
+1. **`meaning_mnemonic`** — a story that runs the component kanji's meanings
+   together until they land on
    “{{MEANING}}”. Start from the imagery those kanji already carry, put them in
    one scene, and let the word's meaning fall out of what happens. Strange and
    funny is what survives reviews. End on the meaning. If no kanji are listed
@@ -46,23 +73,32 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
    says to write a derivation note, write **one sentence** that points at the
    readings the learner already knows and moves on; padding a regular reading
    into a story teaches them to distrust the ones that *are* stories. When it
-   says to write a full story, write one of real depth (three to five sentences),
-   cast-driven, with the reading in it verbatim.
+   says to write a full story, write one of real depth in the same 350–700
+   character band, cast-driven, with the reading in it verbatim.
 
-3. **`description`** — the reference block on the item's info panel. No story:
-   what the word actually means beyond the gloss, its register (casual or formal,
-   spoken or written, who says it to whom), and anything that trips people up —
-   a false friend, a sense that doesn't transfer from English, a form it usually
-   appears in.
+3. **`description`** — **optional. Omit this key entirely unless this word
+   actually needs it.** The two mnemonics are what the learner reads; a
+   description that restates the gloss is noise they scroll past. Write one only
+   when there is something the story cannot carry: a register that would get
+   them in trouble (who says this to whom), a false friend, a sense that doesn't
+   transfer from English, or a form the word almost always appears in. When you
+   do write one: plain factual prose, no story, no highlight tags, and shorter
+   than a mnemonic.
 
 ## Hard rules
 
-- Plain prose only. No markdown, no headings, no lists, no bold/italic, no
-  furigana brackets, no romaji (write kana). Stored as plain strings.
-- Meaning mnemonic: reference every kanji listed above by its taught meaning.
-  Never name a kanji that is not in that list.
-- Reading mnemonic: 「{{READING}}」 must appear verbatim.
-- Description: no Japanese characters beyond this word and its own kanji.
-  Descriptions carry no furigana, so stray Japanese renders unreadable.
+- Plain prose only, apart from the two highlight tags. No markdown, no headings,
+  no lists, no bold/italic, no furigana brackets, no romaji (write kana). Stored
+  as plain strings.
+- `<kanji>` appears only in the meaning mnemonic, `<reading>` only in the
+  reading mnemonic, neither in the description. Every tag you open, close. Never
+  nest them.
+- Meaning mnemonic: reference every kanji listed above by its taught meaning,
+  each wrapped in `<kanji>` where the story uses it. Never name a kanji that is
+  not in that list.
+- Reading mnemonic: 「{{READING}}」 must appear verbatim, inside a `<reading>` tag.
+- Description, when you write one: no Japanese characters beyond this word and
+  its own kanji. Descriptions carry no furigana, so stray Japanese renders
+  unreadable.
 - No emoji.
 {{VALIDATOR_FEEDBACK}}

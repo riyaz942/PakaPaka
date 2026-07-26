@@ -347,7 +347,8 @@ Instead:
 
        - reading_mnemonic
 
-       - description
+       - description (optional — present only when the item has look-alikes to
+         contrast or a nuance the mnemonics cannot carry)
 
      - For <type> = radical:
 
@@ -359,7 +360,7 @@ Instead:
 
        - reading_mnemonic
 
-       - description
+       - description (optional, same rule as kanji)
 
 
 
@@ -519,19 +520,21 @@ Repair Procedure
 
    - Preserve the required reply-file format (a single fenced ```json block).
 
-   - Preserve the exact required JSON keys for the content type (kanji and vocab: meaning_mnemonic, reading_mnemonic, description; radical: description).
+   - Preserve the exact required JSON keys for the content type (kanji and vocab: meaning_mnemonic and reading_mnemonic, plus description only when the item needs one; radical: description). Do not add a description the earlier draft omitted unless an error asks for one.
 
    - Ensure the repaired content parses as valid JSON.
 
    - For kanji: the meaning_mnemonic must reference every taught component listed in the prompt's "Taught decomposition" section, and must not name any component that is not listed there.
 
-   - For kanji: the reading_mnemonic must contain the target reading kana shown in the prompt, verbatim.
+   - For kanji: the reading_mnemonic must contain the target reading kana shown in the prompt, verbatim, inside a `<reading>` tag.
+
+   - Highlight tags (kanji and vocab): each taught component's meaning is wrapped where the story uses it — `<radical>` in a kanji meaning mnemonic, `<kanji>` in a vocab one — and the reading kana plus the English phonetic hook are wrapped in `<reading>` in the reading mnemonic. One tag per field, every tag closed, none nested, and none in a description or a radical.
 
    - For vocab: the meaning_mnemonic must reference every kanji listed in the prompt's "The kanji in this word" section; the reading_mnemonic must contain the word's reading verbatim and must follow the prompt's "The reading" section — a one-line derivation note when it says the reading is regular or kana-only, a full story when it says otherwise.
 
-   - For radical and kanji: the description must name every look-alike listed in the prompt and no other Japanese character.
+   - For radical and kanji: when a description is present it must name every look-alike listed in the prompt and no other Japanese character; a kanji whose prompt lists look-alikes must have one.
 
-   - Keep all fields plain prose — no markdown, headings, lists, bold/italic, furigana brackets, or romaji.
+   - Keep all fields plain prose apart from the highlight tags — no markdown, headings, lists, bold/italic, furigana brackets, or romaji. Aim for roughly 350–700 characters per mnemonic.
 
    - Keep each field within the length bounds implied by the gate errors.
 

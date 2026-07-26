@@ -10,8 +10,8 @@ passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
 sidecars that generate.py inlines into the shipped JSON:
 
     curriculum/radicals/mnemonics/<level>.json    (description — no mnemonic)
-    curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + description)
-    curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + description)
+    curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + optional description)
+    curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + optional description)
 
 All three carry `_meta` (generator_model, prompt_version, review_status: draft)
 per item, so compile-curriculum warns on unreviewed prose and nothing ships
@@ -63,10 +63,15 @@ DRAFTS_DIR = os.path.join(HERE, "drafts", "mnemonics")
 WEB_DIR = os.path.join(HERE, "web", "mnemonics")
 
 MODEL = "claude-opus-4-8"
-#: Bump together with the mnemonic prompts, persona.md, and cast-bible.md.
+#: Bump the entry for a type together with that type's prompt, persona.md, or
+#: cast-bible.md. Versioned per type because the three prompts move
+#: independently: Rev 2 rewrote the kanji/vocab contract and left the radical
+#: prompt untouched, so re-running radicals would have discarded good prose.
 #: 2 = Rev 1 (story-depth mnemonics, radical description replaces the radical
-#: mnemonic, look-alike prose, vocabulary mnemonics).
-PROMPT_VERSION = 2
+#:     mnemonic, look-alike prose, vocabulary mnemonics)
+#: 3 = Rev 2, kanji/vocab only (tighter length band, highlight tags on the
+#:     borrowed components and the reading, description optional)
+PROMPT_VERSION = {"radical": 2, "kanji": 3, "vocab": 3}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
 POLL_SECONDS = 30
@@ -82,7 +87,10 @@ SUBMIT_TOOLS = {
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
-            "required": ["meaning_mnemonic", "reading_mnemonic", "description"],
+            # Rev 2: `description` is optional — omit it unless this item has a
+            # nuance the two mnemonics cannot carry (reviewed look-alikes to
+            # contrast, an odd register, a usage trap).
+            "required": ["meaning_mnemonic", "reading_mnemonic"],
             "properties": {
                 "meaning_mnemonic": {"type": "string"},
                 "reading_mnemonic": {"type": "string"},
@@ -112,7 +120,10 @@ SUBMIT_TOOLS = {
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
-            "required": ["meaning_mnemonic", "reading_mnemonic", "description"],
+            # Rev 2: `description` is optional — omit it unless this item has a
+            # nuance the two mnemonics cannot carry (reviewed look-alikes to
+            # contrast, an odd register, a usage trap).
+            "required": ["meaning_mnemonic", "reading_mnemonic"],
             "properties": {
                 "meaning_mnemonic": {"type": "string"},
                 "reading_mnemonic": {"type": "string"},
@@ -311,7 +322,7 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
         record["attempts"].append({"attempt": attempt, "errors": errors})
         record["tool_input"] = tool_input
         record["generator_model"] = MODEL
-        record["prompt_version"] = PROMPT_VERSION
+        record["prompt_version"] = PROMPT_VERSION[kind]
         if errors:
             next_pending[slug] = errors
             record["status"] = "failed_validation"
@@ -356,7 +367,7 @@ def cmd_run(args):
     pending = {}
     for slug in args.slugs:
         record = records[slug]
-        if record.get("prompt_version") not in (None, PROMPT_VERSION):
+        if record.get("prompt_version") not in (None, PROMPT_VERSION[args.kind]):
             print(f"{slug}: draft was generated under prompt_version "
                   f"{record['prompt_version']} — regenerating")
             pending[slug] = None
@@ -443,7 +454,7 @@ def write_sidecar(level, kind):
                 "generator_model": record.get("generator_model", MODEL),
                 # sidecarMeta.prompt_version is a string in the schema (matches
                 # the grammar lesson frontmatter, which stores scalars as text).
-                "prompt_version": str(record.get("prompt_version", PROMPT_VERSION)),
+                "prompt_version": str(record.get("prompt_version", PROMPT_VERSION[kind])),
                 "review_status": "draft",
             }
             entries[record["slug"]] = {**record["tool_input"], "_meta": meta}
@@ -471,6 +482,9 @@ WEB_OUTPUT_INSTRUCTION = (
     "The JSON object must use these exact key names:"
 )
 _SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
+                   '"reading_mnemonic": "..."\n}\n```\n\n'
+                   'and, only when this item needs one, with `description` added:\n\n'
+                   '```json\n{\n  "meaning_mnemonic": "...",\n  '
                    '"reading_mnemonic": "...",\n  "description": "..."\n}\n```')
 WEB_SKELETON = {
     "kanji": _SPLIT_SKELETON,
@@ -554,7 +568,7 @@ def cmd_ingest(args):
     record = _load_draft(args.level, args.kind, args.slug)
     record["tool_input"] = tool_input
     record["generator_model"] = args.model
-    record["prompt_version"] = PROMPT_VERSION
+    record["prompt_version"] = PROMPT_VERSION[args.kind]
     record["attempts"].append({"attempt": len(record["attempts"]) + 1, "errors": errors})
     record["status"] = "draft" if not errors else "failed_validation"
     _save_draft(record)

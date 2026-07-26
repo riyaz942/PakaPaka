@@ -11,24 +11,28 @@ for 2b/2d under Rev 1 `prompt_version: 2`):
     3. look-alikes: every reviewed confusable is named, and no unreviewed
        character is presented as one
   kanji:
-    1. all three fields present and non-empty (meaning/reading mnemonic +
-       description), within length bounds
+    1. both mnemonics present and non-empty, within length bounds (measured on
+       the tag-stripped prose); `description` is optional under Rev 2 and is
+       required only when the item has reviewed look-alikes to contrast
     2. reading_mnemonic literally contains the target reading kana
-       (kana-normalised, so コウ satisfies こう)
+       (kana-normalised, so コウ satisfies こう) inside a <reading> tag
     3. meaning_mnemonic references the taught decomposition — every taught
-       component's meaning is recognisable in the story (or, when the kanji has
-       no taught decomposition, the check is skipped: it is a whole-character
-       pictograph)
-    4. plain prose only — no markdown/HTML the storage layer would ship raw
+       component's meaning is recognisable in the story *and wrapped in a
+       <radical> tag* (or, when the kanji has no taught decomposition, the check
+       is skipped: it is a whole-character pictograph)
+    4. plain prose only — no markdown/HTML beyond the one highlight tag each
+       field allows, and none at all in a description
     5. the same look-alike checks as radicals, on the description
   vocabulary (2d):
-    1. all three fields present, plain prose, within length bounds
-    2. meaning_mnemonic references every taught component kanji's meaning, so
-       the radical -> kanji -> vocabulary chain is literal
-    3. reading_mnemonic contains the word's reading, and its *shape* matches the
-       mechanically computed reading regularity: a regular or kana-only reading
-       gets a one-line derivation note (bounded short), an irregular one gets a
-       full story (bounded long)
+    1. both mnemonics present, plain prose, within length bounds; `description`
+       optional as above
+    2. meaning_mnemonic references every taught component kanji's meaning inside
+       a <kanji> tag, so the radical -> kanji -> vocabulary chain is literal and
+       visible
+    3. reading_mnemonic contains the word's reading in a <reading> tag, and its
+       *shape* matches the mechanically computed reading regularity: a regular
+       or kana-only reading gets a one-line derivation note (bounded short), an
+       irregular one gets a full story (bounded long)
     4. the description names no kanji beyond the word and its components
 
 This gate is a floor: the cast-coherence pass and "does it actually help you
@@ -53,20 +57,22 @@ from generate_content import mnemonic_context  # noqa: E402
 
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", "mnemonics")
 
-#: Length guards, per content type. Rev 1 (`prompt_version: 2`) raises these to
-#: a WaniKani-style story-paragraph range: the v1 floors produced 2–4 sentence
-#: mnemonics, which is the depth gap the revision exists to close. The ceilings
-#: still matter — a learner rereads these dozens of times.
+#: Length guards, per content type, measured on the **tag-stripped** text so the
+#: highlight markup never counts toward the budget. Rev 2 (`prompt_version: 3`
+#: for kanji/vocab) tightens the ceilings Rev 1 left open: the reviewed radical
+#: descriptions land at 330–790 characters, and that is the size a learner
+#: actually rereads. The prompts aim at 350–700; these bounds are the backstop
+#: that leaves headroom for an item that genuinely needs more.
 LEN_BOUNDS = {
     "radical": {"description": (150, 900)},
     "kanji": {
-        "meaning_mnemonic": (200, 1100),
-        "reading_mnemonic": (150, 900),
-        "description": (120, 900),
+        "meaning_mnemonic": (300, 850),
+        "reading_mnemonic": (250, 750),
+        "description": (120, 700),
     },
     "vocab": {
-        "meaning_mnemonic": (150, 1000),
-        "reading_mnemonic": (30, 900),
+        "meaning_mnemonic": (250, 800),
+        "reading_mnemonic": (30, 750),
         "description": (60, 500),
     },
 }
@@ -76,8 +82,30 @@ LEN_BOUNDS = {
 #: regularity is computed mechanically in mnemonic_context, so which bound
 #: applies is not the model's choice.
 DERIVATION_NOTE_BOUNDS = (30, 320)
-READING_STORY_BOUNDS = (150, 900)
+READING_STORY_BOUNDS = (250, 750)
 _DERIVATION_KINDS = ("regular", "kana_only")
+
+#: Highlight markup (Rev 2). A mnemonic wraps the pieces the learner is meant to
+#: connect — the taught components it borrows, and the sound the reading hangs
+#: on — so the app can render them in the content accent colours instead of
+#: burying them in a wall of prose. Exactly one tag is legal per field, which is
+#: what makes "did it actually tag the components" mechanically checkable.
+#:
+#:   kanji  meaning_mnemonic  <radical>ground</radical>
+#:   kanji  reading_mnemonic  <reading>いち</reading>
+#:   vocab  meaning_mnemonic  <kanji>one</kanji>
+#:   vocab  reading_mnemonic  <reading>ひとつ</reading>
+#:
+#: Descriptions carry no markup at all: they are reference prose, not a story
+#: the learner has to reassemble.
+ALLOWED_TAG = {
+    ("kanji", "meaning_mnemonic"): "radical",
+    ("kanji", "reading_mnemonic"): "reading",
+    ("vocab", "meaning_mnemonic"): "kanji",
+    ("vocab", "reading_mnemonic"): "reading",
+}
+
+_ANY_TAG_RE = re.compile(r"</?[^<>]*>")
 
 #: Structural markdown/markup we never want stored raw in a mnemonic string.
 _MARKUP_CHECKS = [
@@ -117,9 +145,59 @@ def _length_errors(field, text, bounds):
     return []
 
 
+def _tag_pattern(tag):
+    return re.compile(rf"<{tag}>(.*?)</{tag}>", re.S)
+
+
+def _tag_errors(field, text, tag):
+    """Structural check on the highlight markup: the only tag in this field is
+    `tag`, every one opens and closes in order, none nest, none are empty."""
+    errors = []
+    depth = 0
+    for match in _ANY_TAG_RE.finditer(text):
+        token = match.group(0)
+        if token == f"<{tag}>":
+            if depth:
+                errors.append(f"{field} nests <{tag}> inside another <{tag}>; tags may not overlap")
+            depth += 1
+        elif token == f"</{tag}>":
+            if depth:
+                depth -= 1
+            else:
+                errors.append(f"{field} closes </{tag}> without opening one")
+        else:
+            errors.append(
+                f"{field} contains {token}; the only markup allowed here is "
+                f"<{tag}>...</{tag}>"
+            )
+    if depth:
+        errors.append(f"{field} leaves a <{tag}> tag unclosed")
+    if errors:
+        return errors
+    if any(not inner.strip() for inner in _tag_pattern(tag).findall(text)):
+        errors.append(f"{field} has an empty <{tag}></{tag}> pair; tag the words themselves")
+    return errors
+
+
+def _strip_tags(text, tag):
+    return _tag_pattern(tag).sub(lambda m: m.group(1), text) if tag else text
+
+
+def _tagged_spans(text, tag):
+    return _tag_pattern(tag).findall(text) if tag else []
+
+
 def _field_errors(kind, field, text):
-    return _markup_errors(field, text) + _length_errors(
-        field, text, LEN_BOUNDS[kind][field])
+    """Markup + length, both measured on the tag-stripped prose. Malformed tags
+    short-circuit: stripping them is meaningless until they parse."""
+    tag = ALLOWED_TAG.get((kind, field))
+    if tag:
+        tag_errors = _tag_errors(field, text, tag)
+        if tag_errors:
+            return tag_errors
+    plain = _strip_tags(text, tag)
+    return _markup_errors(field, plain) + _length_errors(
+        field, plain, LEN_BOUNDS[kind][field])
 
 
 def _look_alike_errors(field, text, ctx, own_form, extra_allowed_forms=()):
@@ -169,42 +247,82 @@ def _references(text, words):
     return any(re.search(rf"\b{re.escape(w)}", lowered) for w in words)
 
 
+def _component_errors(field, text, tag, components, noun, why):
+    """Rev 2: a taught component must be *highlighted* where the story uses it,
+    not merely mentioned somewhere in the paragraph. The tag is what lets the
+    app colour the borrowed piece, which is the whole point of the chain —
+    the learner should see at a glance which words came from below."""
+    errors = []
+    plain = _strip_tags(text, tag)
+    spans = _tagged_spans(text, tag)
+    for comp in components:
+        words = _meaning_words(comp["meaning_synonyms"])
+        if not words:
+            continue
+        phrase = f"{noun} {comp.get('form') or comp.get('char')} (“{comp['meaning']}”)"
+        if not _references(plain, words):
+            errors.append(f"{field} never references {phrase}; {why}")
+        elif not any(_references(span, words) for span in spans):
+            errors.append(
+                f"{field} references {phrase} but never wraps it in "
+                f"<{tag}>...</{tag}>; highlight the taught meaning where the story uses it"
+            )
+    return errors
+
+
+def _reading_errors(field, text, reading):
+    """The reading must be present verbatim *and* highlighted — the kana is the
+    single thing the learner is trying to pull out of this story."""
+    if _hira(reading) not in _hira(_strip_tags(text, "reading")):
+        return [f"{field} must contain the target reading 「{reading}」 verbatim"]
+    if not any(_hira(reading) in _hira(span) for span in _tagged_spans(text, "reading")):
+        return [
+            f"{field} does not highlight the reading; wrap it as "
+            f"<reading>{reading}</reading> so the sound stands out"
+        ]
+    return []
+
+
 def validate_kanji(level, slug, draft, ctx=None):
     ctx = ctx or mnemonic_context.kanji_context(level, slug)
     errors = []
 
-    for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+    for field in ("meaning_mnemonic", "reading_mnemonic"):
         value = draft.get(field)
         if not isinstance(value, str) or not value.strip():
             errors.append(f"missing or empty field {field}")
     if errors:
         return errors
 
-    for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+    for field in ("meaning_mnemonic", "reading_mnemonic"):
         errors += _field_errors("kanji", field, draft[field])
 
-    # 2. reading present
+    # 2. reading present and highlighted
     primary = ctx["primary_reading"]
     if primary:
-        if _hira(primary) not in _hira(draft["reading_mnemonic"]):
-            errors.append(
-                f"reading_mnemonic must contain the target reading 「{primary}」 verbatim"
-            )
+        errors += _reading_errors("reading_mnemonic", draft["reading_mnemonic"], primary)
 
-    # 3. decomposition referenced
-    meaning_text = draft["meaning_mnemonic"]
-    for comp in ctx["components"]:
-        words = _meaning_words(comp["meaning_synonyms"])
-        if words and not _references(meaning_text, words):
-            errors.append(
-                f"meaning_mnemonic never references the taught component {comp['form']} "
-                f"(“{comp['meaning']}”); the story must be built from the taught decomposition"
-            )
+    # 3. decomposition referenced and highlighted
+    errors += _component_errors(
+        "meaning_mnemonic", draft["meaning_mnemonic"], "radical", ctx["components"],
+        "the taught component",
+        "the story must be built from the taught decomposition")
 
-    # 5. look-alikes (Rev 1): named exactly, invented never
-    errors += _look_alike_errors(
-        "description", draft["description"], ctx, ctx["char"],
-        extra_allowed_forms=[c["form"] for c in ctx["components"]])
+    # 4. description (Rev 2: optional — written only when the item has something
+    #    a mnemonic cannot carry). Look-alike contrast prose is exactly that, so
+    #    an item with reviewed confusables still owes one.
+    description = draft.get("description")
+    if isinstance(description, str) and description.strip():
+        errors += _field_errors("kanji", "description", description)
+        errors += _look_alike_errors(
+            "description", description, ctx, ctx["char"],
+            extra_allowed_forms=[c["form"] for c in ctx["components"]])
+    elif ctx["look_alikes"]:
+        forms = ", ".join(entry["form"] for entry in ctx["look_alikes"])
+        errors.append(
+            f"description is omitted, but this kanji has reviewed look-alikes ({forms}); "
+            "the contrast prose is what saves those reviews, so a description is required here"
+        )
 
     return errors
 
@@ -233,53 +351,59 @@ def validate_vocab(level, slug, draft, ctx=None):
     ctx = ctx or mnemonic_context.vocab_context(level, slug)
     errors = []
 
-    for field in ("meaning_mnemonic", "reading_mnemonic", "description"):
+    for field in ("meaning_mnemonic", "reading_mnemonic"):
         value = draft.get(field)
         if not isinstance(value, str) or not value.strip():
             errors.append(f"missing or empty field {field}")
     if errors:
         return errors
 
-    errors += _markup_errors("meaning_mnemonic", draft["meaning_mnemonic"])
-    errors += _markup_errors("reading_mnemonic", draft["reading_mnemonic"])
+    # reading_mnemonic's length is bounded by the regularity branch below, not
+    # by LEN_BOUNDS, so its markup is checked here rather than via _field_errors.
+    reading_text = draft["reading_mnemonic"]
     errors += _field_errors("vocab", "meaning_mnemonic", draft["meaning_mnemonic"])
-    errors += _field_errors("vocab", "description", draft["description"])
+    tag_errors = _tag_errors("reading_mnemonic", reading_text, "reading")
+    if tag_errors:
+        errors += tag_errors
+    else:
+        errors += _markup_errors("reading_mnemonic", _strip_tags(reading_text, "reading"))
 
     # 2. the kanji -> vocabulary chain is literal, not name-dropped
-    for comp in ctx["components"]:
-        words = _meaning_words(comp["meaning_synonyms"])
-        if words and not _references(draft["meaning_mnemonic"], words):
-            errors.append(
-                f"meaning_mnemonic never references the component kanji {comp['char']} "
-                f"(“{comp['meaning']}”); the story must connect its kanji to the word"
-            )
+    errors += _component_errors(
+        "meaning_mnemonic", draft["meaning_mnemonic"], "kanji", ctx["components"],
+        "the component kanji",
+        "the story must connect its kanji to the word")
 
-    # 3. reading present, and shaped by the mechanically computed regularity
+    # 3. reading present and highlighted, and shaped by the mechanically
+    #    computed regularity
     reading = ctx["reading"]
-    reading_text = draft["reading_mnemonic"]
-    if reading and _hira(reading) not in _hira(reading_text):
-        errors.append(
-            f"reading_mnemonic must contain the reading 「{reading}」 verbatim"
-        )
+    if reading:
+        errors += _reading_errors("reading_mnemonic", reading_text, reading)
     kind = ctx["regularity"]["kind"]
+    reading_plain = _strip_tags(reading_text, "reading")
     if kind in _DERIVATION_KINDS:
         errors += _length_errors(
             "reading_mnemonic (a derivation note — this reading is "
             f"{'kana-only' if kind == 'kana_only' else 'regular'}, so do not "
-            "write a story)", reading_text, DERIVATION_NOTE_BOUNDS)
+            "write a story)", reading_plain, DERIVATION_NOTE_BOUNDS)
     else:
         errors += _length_errors(
             "reading_mnemonic (a full story — this reading is not derivable "
-            "from the taught readings)", reading_text, READING_STORY_BOUNDS)
+            "from the taught readings)", reading_plain, READING_STORY_BOUNDS)
 
-    # 4. no stray kanji in the description (it carries no furigana)
-    allowed = set(ctx["form"]) | {c["char"] for c in ctx["components"]}
-    for ch in dict.fromkeys(mnemonic_context._CJK_RE.findall(draft["description"])):
-        if ch not in allowed:
-            errors.append(
-                f"description names the kanji {ch}, which is neither in this word "
-                "nor one of its taught components; descriptions carry no furigana"
-            )
+    # 4. description (Rev 2: optional — only when the word carries a nuance the
+    #    mnemonics cannot). When present it still names no stray kanji, since it
+    #    carries no furigana.
+    description = draft.get("description")
+    if isinstance(description, str) and description.strip():
+        errors += _field_errors("vocab", "description", description)
+        allowed = set(ctx["form"]) | {c["char"] for c in ctx["components"]}
+        for ch in dict.fromkeys(mnemonic_context._CJK_RE.findall(description)):
+            if ch not in allowed:
+                errors.append(
+                    f"description names the kanji {ch}, which is neither in this word "
+                    "nor one of its taught components; descriptions carry no furigana"
+                )
 
     return errors
 

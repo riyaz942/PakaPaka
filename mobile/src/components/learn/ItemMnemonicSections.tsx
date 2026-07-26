@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { MnemonicSection } from '@/components/learn/MnemonicSection';
 import type {
@@ -47,14 +48,22 @@ export function ItemMnemonicSections({ item, parents = [] }: ItemMnemonicSection
           {item.meaningMnemonic ? (
             <View className="mt-4" testID="meaning-mnemonic">
               <SectionHeading label="Meaning mnemonic" />
-              <Text className="mt-1 text-body text-secondary">{item.meaningMnemonic}</Text>
+              <AnnotatedText
+                text={item.meaningMnemonic}
+                itemType={item.itemType}
+                className="mt-1 text-body text-secondary"
+              />
             </View>
           ) : null}
 
           {item.readingMnemonic ? (
             <View className="mt-4" testID="reading-mnemonic">
               <SectionHeading label="Reading mnemonic" />
-              <Text className="mt-1 text-body text-secondary">{item.readingMnemonic}</Text>
+              <AnnotatedText
+                text={item.readingMnemonic}
+                itemType={item.itemType}
+                className="mt-1 text-body text-secondary"
+              />
             </View>
           ) : null}
         </>

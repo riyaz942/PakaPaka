@@ -189,10 +189,12 @@ to be re-run between layers so the next layer's prompts read the new prose. And 
 N5 fully before N4 (`--level n4`).
 
 > The snippet lists items that have **no** sidecar entry yet. After a
-> `PROMPT_VERSION` bump (Rev 1 raised it to 2) the existing entries are stale, not
-> done: regenerate the whole level rather than the gaps, and let `ingest`
-> overwrite. The API path does this for you — `run` re-queues any draft recorded
-> under an older prompt version.
+> `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
+> whole level rather than the gaps, and let `ingest` overwrite. The API path does
+> this for you — `run` re-queues any draft recorded under an older prompt version.
+> `PROMPT_VERSION` is keyed by type (`{"radical": 2, "kanji": 3, "vocab": 3}`),
+> because the three prompts move independently: Rev 1 raised all three to 2, and
+> Rev 2 raised only kanji and vocab to 3.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.

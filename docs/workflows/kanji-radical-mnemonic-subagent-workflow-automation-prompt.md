@@ -16,7 +16,7 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = radical>
+<type = kanji>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -35,7 +35,7 @@ Model notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 10>
+<batch-size = 5>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
@@ -99,7 +99,7 @@ if os.path.isdir(drafts_dir):
         if not name.endswith('.json') or name == 'requests-preview.json':
             continue
         rec = json.load(open(os.path.join(drafts_dir, name)))
-        if rec.get('status') == 'draft' and rec.get('prompt_version') == PROMPT_VERSION:
+        if rec.get('status') == 'draft' and rec.get('prompt_version') == PROMPT_VERSION[KIND]:
             done.add(rec['slug'])
 todo = [s for s in mc.all_slugs(LEVEL, KIND_DIR[KIND]) if s not in done][:BATCH_LIMIT]
 print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}, done={len(done)}):')
@@ -107,8 +107,11 @@ print(','.join(todo))
 PY
 
 Note what "done" means here: a draft recorded under an **older** prompt version is
-stale, not done, so the Rev 1 bump correctly re-selects every v1 item for
+stale, not done, so a version bump correctly re-selects every out-of-date item for
 regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
+`PROMPT_VERSION` is keyed by type (`{"radical": 2, "kanji": 3, "vocab": 3}`) —
+Rev 2 changed the kanji and vocab contract only, so radical drafts written under
+Rev 1 are still current and are not re-selected.
 
 If it prints 0 slugs, this level+type is already fully generated at the current
 prompt version — stop and report that. Otherwise treat the printed comma list as
@@ -162,27 +165,48 @@ Give the subagent these instructions:
     use them verbatim and add no others.
   - Return the keys for this type:
       radical → `description`
-      kanji   → `meaning_mnemonic`, `reading_mnemonic`, `description`
-      vocab   → `meaning_mnemonic`, `reading_mnemonic`, `description`
+      kanji   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
+                if this kanji needs one** (see below)
+      vocab   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
+                if this word needs one**
+  - `description` is optional for kanji and vocab. Omit the key entirely unless
+    the prompt lists look-alikes (then it is required, and its job is the visual
+    contrast) or the item has a real nuance the mnemonics cannot carry — an odd
+    register, a false friend, a usage trap, a piece of history that explains the
+    character. A description that only restates the meaning and counts strokes is
+    noise; leave it out.
+  - Aim for **roughly 350–700 characters** per mnemonic, about four to six
+    sentences. That is a target, not a rule: overrunning it to finish a scene the
+    item genuinely needs is fine, padding to reach it is not.
   - Build the story from the components the prompt lists, and **continue the
     established image each component already carries** — do not invent a fresh
     scene that competes with what the learner has already read. Reference every
     listed component by its taught meaning. Never name a component, radical or
     kanji that is not in that list.
-  - The reading mnemonic must contain the target reading verbatim, in kana, and
-    should use the cast character the prompt assigns for that reading.
+  - Highlight tags (kanji and vocab only, exactly as the prompt's "Highlighting"
+    section describes): wrap each taught component's meaning where the story uses
+    it — `<radical>…</radical>` in a kanji meaning mnemonic, `<kanji>…</kanji>` in
+    a vocab one — and wrap both the target reading kana and the English phonetic
+    hook in `<reading>…</reading>` in the reading mnemonic. One tag per field, no
+    nesting, every tag closed, and none at all in a description or a radical.
+  - The reading mnemonic must contain the target reading verbatim, in kana, inside
+    a `<reading>` tag, and should use the cast character the prompt assigns for
+    that reading.
   - For vocab, obey the reading-regularity block exactly: when it says the reading
     is regular or kana-only, write **one sentence** of derivation and stop —
     padding a regular reading into a story is a gate failure, not a stylistic
     preference. When it says irregular or not-derivable, write the full story.
-  - The description must address **every** look-alike the prompt lists, spelling
-    out the visual difference, and must not introduce any other Japanese character.
-    Descriptions carry no furigana, so stray Japanese renders unreadable.
+  - When you write a description, it must address **every** look-alike the prompt
+    lists, spelling out the visual difference, and must not introduce any other
+    Japanese character. Descriptions carry no furigana, so stray Japanese renders
+    unreadable.
   - Write all Japanese as plain text — no furigana brackets, no romaji (write
-    kana), no markdown, no headings, no lists, no bold/italic, no emoji. These are
-    stored as plain strings and rendered as prose.
-  - Aim for real depth within the prompt's stated sentence ranges; the gate
-    enforces minimum lengths because thin stories do not survive reviews.
+    kana), no markdown, no headings, no lists, no bold/italic, no emoji. The
+    highlight tags above are the only markup allowed; everything else is stored as
+    a plain string and rendered as prose.
+  - Aim for real depth inside that length band; the gate enforces minimum lengths
+    because thin stories do not survive reviews, and maximums because a learner
+    rereads these dozens of times.
   - Do not set or add any review_status field.
   - Do not modify any file other than the reply file. Do not run tools to fetch
     external content.
@@ -239,13 +263,18 @@ Give the repair subagent these instructions:
   - Do not modify validators, ingestion code, curriculum source data, the
     look-alike dataset, the cast bible, or the assembled sidecar.
   - Preserve the reply-file format (a single fenced ```json block) and the exact
-    key names for this type.
+    key names for this type. Do not add a `description` the earlier draft omitted
+    unless an error asks for one.
   - A "too short" error means the story lacks substance — add scene, not filler
-    clauses. A "too long" error means cut, not compress into one dense sentence.
-  - Keep every field plain prose (no markdown/brackets/romaji/emoji), keep the
-    reading verbatim, keep every listed component referenced, keep every listed
-    look-alike addressed, and introduce no Japanese character the prompt did not
-    list.
+    clauses. A "too long" error means cut, not compress into one dense sentence;
+    the target is roughly 350–700 characters per mnemonic.
+  - A "never wraps it in <radical>…" or "does not highlight the reading" error
+    means the words are there but untagged — add the tags around the words the
+    story already uses, do not rewrite the story.
+  - Keep every field plain prose apart from the highlight tags (no
+    markdown/brackets/romaji/emoji), keep the reading verbatim, keep every listed
+    component referenced and tagged, keep every listed look-alike addressed, and
+    introduce no Japanese character the prompt did not list.
   - Ensure valid JSON. Add no commentary outside the JSON block. Do not set
     review_status.
 
@@ -309,8 +338,9 @@ And:
 npm run compile-curriculum
 
 `generate.py` inlines the mnemonic sidecars into the shipped radical/kanji/vocab
-JSON (radicals get a `description` and no mnemonic; kanji and vocab get the three
-split fields), each carrying `_meta.review_status: draft`. Use the current
+JSON (radicals get a `description` and no mnemonic; kanji and vocab get the two
+mnemonics, plus a `description` on the items that needed one), each carrying
+`_meta.review_status: draft`. Use the current
 project-specific `generate.py` invocation and flags found under
 `curriculum/_build/`. Do not guess if the documented invocation has changed.
 
