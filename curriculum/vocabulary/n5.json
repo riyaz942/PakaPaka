@@ -2698,6 +2698,13 @@
         }
       ],
       "furigana": "四[よん]",
+      "meaning_mnemonic": "Behind the beeping till at Koichi's konbini sits that same sealed box, the mouth still trapped inside counting onigiri through the glass. Tonight it's a slow delivery — one, two, three — and on the next rice ball the mouth presses flat against the glass and stops. That flattened stare is the number stamped on this word: <kanji>four</kanji>.",
+      "reading_mnemonic": "Nothing to derive here — 四 already taught you the <reading>よん</reading> reading, the same stretch you reach for right before a big <reading>yawn</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は本を四つ読みます。",
@@ -2734,12 +2741,7 @@
           ],
           "furigana": "明日[あした]、友[とも]達[だち]が四[よん]人[ひと]来[らい]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "shi-num",
@@ -2759,6 +2761,14 @@
         }
       ],
       "furigana": "四[し]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the same sealed box waits among the mossy steps, its trapped mouth still murmuring numbers into the corner. A cat swats it off the step and the lid cracks — the mouth peeks out just far enough to hiss a hushed <kanji>four</kanji> before a monk claps the lid shut, refusing to let it say the number again.",
+      "reading_mnemonic": "That hushed <reading>し</reading> is the same reading 四 already taught you — the clipped <reading>shh</reading> the monk uses to cut the mouth off mid-count.",
+      "description": "This reading of 四 sounds identical to a much darker word, so hospitals, hotels, and gift-givers avoid it — floor numbers, room numbers, and counted items switch to the other reading, よん, instead. Learn to recognize both, but default to よん when you're the one speaking.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "一、二、三、四と書きます。",
@@ -2794,12 +2804,7 @@
           ],
           "furigana": "先[せん]生[せい]は四[よん]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "go-v",
@@ -2819,6 +2824,13 @@
         }
       ],
       "furigana": "五[ご]",
+      "meaning_mnemonic": "On the mountain trail, that same hooked hand reaches out from beside the vending machine, snagging snacks lined along the ledge. It's already got four stacked in your arms when the crooked hook swipes once more and lands a fifth off the top shelf. One hook, five snacks: that's the word for <kanji>five</kanji>.",
+      "reading_mnemonic": "That practiced swipe already speaks the <reading>ご</reading> reading you learned for 五 — the clipped <reading>go</reading> you mutter to yourself right before you reach.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は五時に起きます。",
@@ -2853,12 +2865,7 @@
           ],
           "furigana": "五[ご]時[じ]に学[がっ]校[こう]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "roku-v",
@@ -2878,6 +2885,13 @@
         }
       ],
       "furigana": "六[ろく]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, eight cats are sprawled across the mossy steps at dawn. She sets the heavy iron offering lid down with a clang right on the top step, and two cats bolt at the sound, tails high. What's left staring up at the enormous bell is <kanji>six</kanji> cats, thoroughly unimpressed by the racket. The lid on top of eight, as always, leaves <kanji>six</kanji>.",
+      "reading_mnemonic": "六's reading here is just the number's own reading you already learned: <reading>ろく</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "六時に公園へ行きます。",
@@ -2912,12 +2926,7 @@
           ],
           "furigana": "六[ろく]時[じ]に映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "nana-v",
@@ -2937,6 +2946,13 @@
         }
       ],
       "furigana": "七[なな]",
+      "meaning_mnemonic": "By the door of Koichi's konbini, the coat hook is really just one bent nail sticking out of the wall. A delivery driver piles dripping rain jackets onto it between beeps of the till, one after another, until the nail bends almost flat under the weight. You count the jackets before it snaps: <kanji>seven</kanji>, all hanging off one crooked hook.",
+      "reading_mnemonic": "七's reading here is the one you already know from the kanji itself: <reading>なな</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "七時に朝ご飯を食べます。",
@@ -2971,12 +2987,7 @@
           ],
           "furigana": "七[なな]時[じ]に友[とも]達[だち]と会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "shichi-num",
@@ -2996,6 +3007,14 @@
         }
       ],
       "furigana": "七[しち]",
+      "meaning_mnemonic": "In Sei's school hallway, the same bent-nail hook holds gym jerseys instead of coats. There's only one hook by the lockers, so seven players fresh off the field cram their jerseys onto it at once, the nail sagging nearly sideways under the pile. The coach counts before it gives way: <kanji>seven</kanji> jerseys, all balanced on one crooked hook.",
+      "reading_mnemonic": "七's reading here keeps the reading you already learned for formal counting: <reading>しち</reading>.",
+      "description": "しち is the older, more formal reading of 七 — used in compounds, in reading dates and times aloud, and in fixed set phrases. なな is generally preferred when counting items alone or aloud, since しち can be mistaken for the word for one in quick speech.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今、七時です。",
@@ -3029,12 +3048,7 @@
           ],
           "furigana": "七[なな]時[じ]に映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hachi-v",
@@ -3054,6 +3068,13 @@
         }
       ],
       "furigana": "八[はち]",
+      "meaning_mnemonic": "Those two strokes are still splitting wider at the bottom, the same spread that already meant <kanji>eight</kanji> when you met the kanji alone. Let that split happen four times over, fanned out beneath one twitching body, legs still moving until there are eight of them — a spider, standing on exactly the number this word names.",
+      "reading_mnemonic": "This word borrows 八's own reading untouched, so it's read exactly <reading>はち</reading>, the same sound you already learned for the kanji itself.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は八時に起きます。",
@@ -3088,12 +3109,7 @@
           ],
           "furigana": "友[とも]達[だち]が八[はち]人[ひと]来[らい]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kyuu-v",
@@ -3113,6 +3129,13 @@
         }
       ],
       "furigana": "九[きゅう]",
+      "meaning_mnemonic": "The hook is still propped at the last switchback of the mountain trail, right where you left it leaning into <kanji>nine</kanji>. This time it's snagged a sock, blown off a line at the riverbank and dragged all the way up, caught fast on the hook at the top — bend nine, the last one, the whole climb done.",
+      "reading_mnemonic": "This word just keeps 九's own reading, so it's read exactly <reading>きゅう</reading>, the same sound you already learned for the kanji by itself.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は九時に起きます。",
@@ -3146,12 +3169,7 @@
           ],
           "furigana": "彼[かれ]は九[きゅう]を書[か]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ku-num",
@@ -3171,6 +3189,13 @@
         }
       ],
       "furigana": "九[く]",
+      "meaning_mnemonic": "That same hook is on closing duty tonight, yanking down the shutter at Koichi's konbini one slat at a time. It catches, drags, catches again — nine short tugs before the shutter seals shut, and the last tug is the one that lands on <kanji>nine</kanji>, alt reading and all, right as the beeping till goes quiet.",
+      "reading_mnemonic": "At Grandma Kane's shrine, a lone dove has nested in among the cats, and none of them touch it. When the bell rings, it doesn't screech — it lets out one flat <reading>coo</reading>, over and over, and that flat sound is exactly how this word is read: <reading>く</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "七、八、九と書きます。",
@@ -3205,12 +3230,7 @@
           ],
           "furigana": "先[せん]生[せい]は九[きゅう]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "juu-v",
@@ -3230,6 +3250,13 @@
         }
       ],
       "furigana": "十[じゅう]",
+      "meaning_mnemonic": "At Koichi's konbini the till beeps once for every raised finger, and the cashier keeps raising both hands until every finger is up, tracing the same <kanji>ten</kanji> cross in the air. The till stops beeping exactly when both hands are full — ten, and not one beep more.",
+      "reading_mnemonic": "This word is just the kanji 十 on its own, so it keeps exactly the reading you already know: <reading>じゅう</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今、十時です。",
@@ -3262,12 +3289,7 @@
           ],
           "furigana": "犬[いぬ]が十[じゅう]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hyaku-v",
@@ -3287,6 +3309,13 @@
         }
       ],
       "furigana": "百[ひゃく]",
+      "meaning_mnemonic": "Grandma Kane lights one stick of incense at the shrine, and the smoke catches the white glow off the mossy steps until it multiplies before her eyes, exactly like that lone stroke stacking over the whiteness. By the time she looks up, the courtyard cats have multiplied to match — a whole <kanji>hundred</kanji> of them prowling the steps.",
+      "reading_mnemonic": "This word is just the kanji 百 by itself, so it keeps exactly the reading you already know: <reading>ひゃく</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は本を百買います。",
@@ -3324,12 +3353,7 @@
           ],
           "furigana": "百[ひゃく]の友[とも]達[だち]が公[こう]園[えん]で遊[あそ]びます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "sen-v",
@@ -3349,6 +3373,13 @@
         }
       ],
       "furigana": "千[せん]",
+      "meaning_mnemonic": "At the top of the mountain trail, the lone vending machine's price display multiplies without warning: one bold slash scratches straight across the readout, the same slash that once capped that plus-sign cross into something bigger, and the number keeps climbing past every digit until it locks on one round <kanji>thousand</kanji> and finally stops beeping.",
+      "reading_mnemonic": "This word is just the kanji 千 on its own, so it keeps exactly the reading you already know: <reading>せん</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "部屋に本が千あります。",
@@ -3384,12 +3415,7 @@
           ],
           "furigana": "私[わたし]は本[ほん]を二千[にせん]買[か]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "man-v",
