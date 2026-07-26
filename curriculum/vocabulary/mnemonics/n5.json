@@ -132,6 +132,16 @@
       "review_status": "draft"
     }
   },
+  "itsu": {
+    "meaning_mnemonic": "A heron standing in the shallows at the riverbank wears a wristwatch and answers questions for free. You ask about the water going down: it's two. You ask about the ferry: it's two. You ask about getting your own watch back off its leg: it's two. Ask a heron anything and it hands you a time, so the question you are really asking is when.",
+    "reading_mnemonic": "This word is written in kana exactly as it is said, so <reading>いつ</reading> is both the spelling and the reading — nothing to decode.",
+    "description": "English lets you say when for both the question and the joining word, as in the sentence about what happens when it rains. This word only does the question. The joining sense uses different grammar entirely.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "kanojo": {
     "meaning_mnemonic": "Koichi points across the konbini at the kneeling <kanji>woman</kanji> restocking the onigiri shelf, arm sweeping the row into place. He doesn't explain, just tilts his head and grins: that's the one he's been talking about all week. You don't need more than that look to know she's his girlfriend, and now you know who she is too.",
     "reading_mnemonic": "At Grandma Kane's shrine, she keeps introducing the same woman standing by the bell alongside a man named Joe: Kane, and Joe. Say it fast — <reading>Kane-Joe</reading> — and you land on <reading>かのじょ</reading>, the word for her, the girlfriend everyone at the shrine already knows by name.",
@@ -202,6 +212,26 @@
     "reading_mnemonic": "これ is kana all the way through, no kanji hiding underneath — just read <reading>これ</reading> exactly the way it's written.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nan": {
+    "meaning_mnemonic": "Cats keep arriving on the mossy steps of Grandma Kane's shrine, and you gave up asking what a cat is hours ago. Every question you have left comes with a number stuck to it: how many cats, what floor they have reached, what time they stop. This is the shape the question takes when a counter follows — what, before counters.",
+    "reading_mnemonic": "A tiny <reading>nun</reading> has claimed the vending machine at the top of the mountain trail and runs it like a ticket window. She will not press a button until you say <reading>なん</reading> and then the counter for what you want, and she makes you start again if you mumble the number.",
+    "description": "This is the same word as the standalone question, wearing the shape it takes when a counter, the plain copula, or a word beginning with a t, d, or n sound follows it. You almost never meet it alone; it arrives glued to whatever is being counted.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nani": {
+    "meaning_mnemonic": "A frazzled nanny in the echoing hallways of Sei's school is handed things by a toddler all morning: a wet sock, half a stapler, a beetle that is still alive. She has stopped guessing what any of it is. She just holds each object out at arm's length and asks the one flat question that covers all of it — what.",
+    "reading_mnemonic": "The same <reading>nanny</reading> takes a night shift at Koichi's konbini, and every time the beeping till coughs up an item she does not recognise she holds it over the onigiri shelf and says <reading>なに</reading> at the ceiling. By closing she has said it forty times and solved nothing.",
+    "description": "On its own — as a bare question, or with most particles — the word takes this reading. When a counter, the plain copula, or a word beginning with a t, d, or n sound follows, it switches to the shorter reading you learn separately.",
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
