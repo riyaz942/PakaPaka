@@ -132,6 +132,62 @@
       "review_status": "draft"
     }
   },
+  "dou": {
+    "meaning_mnemonic": "At the top of the mountain trail, one impossible vending machine hums between the trees, accepting a coin no one on the trail carries. A hiker who just spent an hour climbing pokes button after button, turns to a stranger nearby, and asks the only sensible question left: how does this thing even work.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>どう</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "doushite": {
+    "meaning_mnemonic": "At Koichi's konbini, the till beeps and charges double for the same onigiri, for the third night running. Koichi stares at the receipt under the fluorescent lights, not with a customer's cool complaint but a genuine, immediate splutter — why, how come, what is going on here.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>どうして</reading>.",
+    "description": "どうして carries more feeling than a neutral question — it often doubles as an exclamation of surprise or frustration, how did this even happen, rather than a calm request for a reason, and it's the version heard far more in casual conversation than in writing.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ichi-v": {
+    "meaning_mnemonic": "Judging her own talent show yet again, the smug goat holds up a single hoof and announces the score before anyone can ask: <kanji>one</kanji> out of one. There was only ever one entrant, one stage, one strip of dirt to stand on, so the number was settled before the show even began. She says it like a verdict, not a count: one.",
+    "reading_mnemonic": "One line, one reading: 一 alone still reads <reading>いち</reading>, the same reading you already learned for it standing by itself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ikaga": {
+    "meaning_mnemonic": "Grandma Kane catches a cat dragging a rice offering off the shrine's mossy steps. Instead of shouting, she bows a fraction and asks, syrupy with formality, how the day has been treating it. The cat freezes mid-theft, offering still in its mouth, trapped by the world's politest how. Courtesy, not curiosity, is the whole word.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: 「<reading>いかが</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ikura": {
+    "meaning_mnemonic": "A hiker drags himself up the mountain trail to the vending machine improbably waiting at the top, expecting water. The display keeps climbing past every price he's paid for a drink, digit by digit, as he jabs the button asking how much this could possibly cost. It never stops long enough to answer — the only punchline the machine needs.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: 「<reading>いくら</reading>」.",
+    "description": "いくら written this way is also the everyday word for salmon roe, the bright orange fish eggs served over rice — a completely different word that happens to share the same sound and spelling. Context sorts them out fast: paired with a price or a question, it means how much; sitting on a plate, it means the food.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ikutsu": {
+    "meaning_mnemonic": "A kid parked at Koichi's till points at the leaning tower of onigiri and demands how many are stacked there. Koichi starts counting, and halfway through, the kid swivels and asks the identical question about his age. The tower wobbles, forgotten, as Koichi answers both with the same flat number — how many and how old are one demand wearing two coats to this kid.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: 「<reading>いくつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "meaning_mnemonic": "A heron standing in the shallows at the riverbank wears a wristwatch and answers questions for free. You ask about the water going down: it's two. You ask about the ferry: it's two. You ask about getting your own watch back off its leg: it's two. Ask a heron anything and it hands you a time, so the question you are really asking is when.",
     "reading_mnemonic": "This word is written in kana exactly as it is said, so <reading>いつ</reading> is both the spelling and the reading — nothing to decode.",
@@ -236,6 +292,53 @@
       "review_status": "draft"
     }
   },
+  "nannji": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: what <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
+    "reading_mnemonic": "At the shrine, a jetlagged traveler keeps calling to her grandmother, 'Nan, gee, what time is it?' — sliding into <reading>Nan-gee</reading> each time. The cats now answer back with that same sound, <reading>なんじ</reading>, since that's all anyone there asks: what time.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "naze": {
+    "meaning_mnemonic": "At the riverbank, a fisherman reels in his line for the ninth time and finds nothing but a waterlogged boot, same as the last eight. He doesn't swear, doesn't sigh — he just plants his feet in the mud, glares at the current, and asks the only question left standing: why.",
+    "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>なぜ</reading>.",
+    "description": "なぜ reads as blunter and more formal than a casual why — common in writing, official questions, and pointed interrogation. Dropped into an ordinary chat with a friend, on its own it can land as accusatory rather than merely curious.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ni-v": {
+    "meaning_mnemonic": "The waiter arrives to ask how many are dining and finds his answer already snapped in half on the table: two chopsticks, a short one laid over a long one, matching exactly like the pair of raccoons who broke them that way. He doesn't need to count paws underneath — the <kanji>two</kanji> sticks already told him. Table for two.",
+    "reading_mnemonic": "二 alone already reads <reading>に</reading>, the same reading it carried in the chopstick story — nothing new to learn here.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rei": {
+    "meaning_mnemonic": "At the vending machine on the mountain trail, a ranger posts an official notice board each morning with the exact temperature. One frost-bitten dawn, the mercury refuses to rise past the middle line at all, and the ranger stamps the report with one stiff, formal number before trudging back down. That number is zero.",
+    "reading_mnemonic": "The ranger reading the thermometer is named Ray, and he announces temperatures stiffly, formally, no contractions ever. He reads the number in one clipped word, <reading>れい</reading> — <reading>Ray</reading> only sounds this formal when the mercury freezes at zero.",
+    "description": "零 is the formal, written register for zero — the word you'd see on an official temperature report or hear in a stiff announcement, not the one you'd use casually reading out a phone number or a game score.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "san-v": {
+    "meaning_mnemonic": "A teacher taps a chalk pointer against three stacked lines on the board, one, two, three, and by the third tap the class already knows what word is coming before she says it. There is no trick to uncover here: <kanji>three</kanji> lines stacked in a character just spells the word three, plainly, the way it has all along.",
+    "reading_mnemonic": "三 alone already reads <reading>さん</reading>, the same reading you counted out tapping the three lines.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "sochira": {
     "meaning_mnemonic": "You're already at Koichi's till, practically leaning on the register, when you ask where the onigiri is. Koichi doesn't even look up — he just tilts his chin two feet toward the shelf you're basically touching and grunts the sound out, because when the thing you want is that close, all you need to say is that way.",
     "reading_mnemonic": "You already know そ, ち, and ら from other kana words; <reading>そちら</reading> just strings them together into the sound <reading>\"so-chee-rah\"</reading>, read exactly as it's spelled, no twist to catch you out.",
@@ -295,6 +398,16 @@
   "watashitachi": {
     "meaning_mnemonic": "On the mossy steps of Grandma Kane's shrine, one cat rings the enormous bell and every other cat in the place mobs the sound, wedging in shoulder to shoulder until they're one solid, purring mass on the step. Ask any single cat its name and the whole pile answers at once, because as far as they're concerned there's no such thing as one cat here anymore, only the pile. That fused, shoulder-to-shoulder answer is the meaning you want: we.",
     "reading_mnemonic": "Try to pet just one cat in the pile and the whole mass yowls back what sounds like <reading>what a she, touchy</reading> bunch — really the cats shouting <reading>わたしたち</reading>, we, in one voice, refusing to be split apart even for the bell.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "zero": {
+    "meaning_mnemonic": "At Sei's school, the team spends the entire match slipping on the wet grass, missing every shot, while the goalkeeper falls asleep against the post. The final whistle blows, the scoreboard locks in one flat, humiliating number, and the whole bench stares at it in silence. That number is zero.",
+    "reading_mnemonic": "ゼロ is spelled exactly the way it sounds — read the katakana <reading>ゼロ</reading> straight through, no hidden reading to dig for.",
+    "description": "ゼロ is the everyday spoken form, heard in scores, phone numbers, and casual temperature talk; formal or written contexts often reach for a different, more formal word instead.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
