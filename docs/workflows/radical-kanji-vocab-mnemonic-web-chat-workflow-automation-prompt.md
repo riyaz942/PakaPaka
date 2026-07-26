@@ -11,7 +11,7 @@ Content type (one of `radical`, `kanji` or `vocab`):
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 3>
+<batch-size = 12>
 
 This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_mnemonics.py`. Only the "call the
@@ -35,7 +35,7 @@ sessions seamless — the next run picks up exactly where you left off.
 Group size (how many slugs one Gemini chat writes in a single pass; used as
 GROUP_SIZE in Step 1):
 
-<group-size = 3>
+<group-size = 4>
 
 The run's slugs are split into groups of at most <group-size>, and each group is
 written by ONE fresh Gemini chat that sees every item in the group. Why group at

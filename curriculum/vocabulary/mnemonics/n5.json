@@ -103,6 +103,15 @@
       "review_status": "draft"
     }
   },
+  "byou": {
+    "meaning_mnemonic": "You are buying an onigiri at the fluorescent-bright convenience store. The cashier hits a button on the beeping till and announces you have exactly one second to hand over your cash. You panic and throw your wallet at the counter, terrified of how fast a single second passes.",
+    "reading_mnemonic": "The wallet sails through the air, but a person standing right <reading>by you</reading> (<reading>びょう</reading>) snatches it. They pocket your money and walk out the door, leaving you to spend your last second in total disbelief.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "dare": {
     "meaning_mnemonic": "At Grandma Kane's shrine, the enormous bell rings itself in the dead of night. The cats scatter, the mossy steps creak, and no one is standing anywhere near the rope. Grandma Kane storms out onto the steps demanding an answer to the only question that matters: who.",
     "reading_mnemonic": "Every night the bell rings and nobody's there, so Grandma Kane leans out over the mossy steps and bellows into the dark: who <reading>dares</reading> touch my bell? The cats scatter at the challenge in her voice, and that same dare is exactly the sound of <reading>だれ</reading> — the question of who it could possibly be.",
@@ -187,12 +196,30 @@
       "review_status": "draft"
     }
   },
+  "fun": {
+    "meaning_mnemonic": "You are sitting on the riverbank with a massive pie. You use a heavy knife to chop off a <kanji>minute</kanji> wedge to throw to the ducks. The ducks completely ignore the pastry and aggressively bite your ankles for an entire minute.",
+    "reading_mnemonic": "The reading for this word is exactly what you learned for the kanji: <reading>ふん</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "futatsu": {
     "meaning_mnemonic": "The second raccoon inspects the snapped chopsticks on the table, short stick over long stick, and realizes they aren't cutlery anymore — just identical wooden splinters. It pockets both, satisfied that whatever it's counting tonight, the tally stops right there at <kanji>two</kanji> things, no broth-soaked evidence left to explain.",
     "reading_mnemonic": "The reading is just 二（ふた）plus the counter つ, giving you <reading>ふたつ</reading> exactly as you'd expect.",
     "description": "Like its sibling word for one item, this is a native Japanese number used for counting generic objects on its own, without a separate counter word attached — distinct from the Chinese-derived counting series paired with counters for people, flat objects, and so on.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "getsuyoubi": {
+    "meaning_mnemonic": "The squawking birds on your <kanji>weekday</kanji> calendar square are completely asleep under a thin crescent <kanji>moon</kanji>. They stubbornly refuse to wake up and look at the window showing the morning <kanji>sun</kanji>, because everyone is too exhausted on Monday.",
+    "reading_mnemonic": "Since you learned the readings for these kanji already, combining them gives you <reading>げつようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -229,6 +256,16 @@
     "reading_mnemonic": "This word borrows 八's own reading untouched, so it's read exactly <reading>はち</reading>, the same sound you already learned for the kanji itself.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "han-time": {
+    "meaning_mnemonic": "You stare at the clock as the minute hand hits the bottom, turning the face into a giant exclamation point split right down the middle. That exact moment when the hour is chopped in <kanji>half</kanji> means it is half (past).",
+    "reading_mnemonic": "Since you already know the reading for this kanji, you know the reading for this word is <reading>はん</reading>.",
+    "description": "You will see this attached directly to hour counters to say half past the hour.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -326,6 +363,24 @@
       "review_status": "draft"
     }
   },
+  "jibun-time": {
+    "meaning_mnemonic": "You drag a heavy pie all the way up the steep mountain trail to check the <kanji>time</kanji> closer to the sun. You chop it into a tiny <kanji>part</kanji> to act as a sundial needle on a flat rock. A hawk immediately swoops down and steals the slice, leaving you with absolutely no idea what time (of day) it is.",
+    "reading_mnemonic": "This word uses the exact kanji readings you already know, making it <reading>じぶん</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "jikan": {
+    "meaning_mnemonic": "You are tracking the <kanji>time</kanji> by watching the sun climb the sky. But when it hits the <kanji>interval</kanji> of the open gate, the sun gets completely wedged in the gap. It stops moving, which means all the time / hours in the world have frozen.",
+    "reading_mnemonic": "Since this word is made of kanji you already learned, the reading is just <reading>じかん</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "juu-v": {
     "meaning_mnemonic": "At Koichi's konbini the till beeps once for every raised finger, and the cashier keeps raising both hands until every finger is up, tracing the same <kanji>ten</kanji> cross in the air. The till stops beeping exactly when both hands are full — ten, and not one beep more.",
     "reading_mnemonic": "This word is just the kanji 十 on its own, so it keeps exactly the reading you already know: <reading>じゅう</reading>.",
@@ -353,6 +408,15 @@
       "review_status": "draft"
     }
   },
+  "kayoubi": {
+    "meaning_mnemonic": "You flip your calendar to check the <kanji>weekday</kanji>, but the square for today's <kanji>day</kanji> is completely charred. Looking closely, a tiny sparking figure made of <kanji>fire</kanji> is running around inside the window frame, burning up the paper. You sigh. The calendar always bursts into flames on Tuesday.",
+    "reading_mnemonic": "Since you already know the reading for each kanji, you can simply put them together to form <reading>かようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "kimi": {
     "meaning_mnemonic": "At Sei's school, the coach's whistle breaks, so instead of names he just barks the same word at whichever kid is nearest the ball — kimi, kimi — pointing, never naming. By the end of practice the whole team answers to it, the casual, jabbing word you'd only ever aim at a friend or someone younger than you.",
     "reading_mnemonic": "On the sports field at Sei's school, a scruffy stray dog answers only to the coach's shout of <reading>きみ</reading> — it sounds just like calling out <reading>key, me!</reading> while he jangles his whistle-keys — and the dog comes running to whichever kid the coach is jabbing a finger at.",
@@ -367,6 +431,15 @@
     "reading_mnemonic": "Every evening, Grandma Kane's shrine cats knock her <reading>keno</reading> ticket off the mossy steps, and by the time she finds it, the numbers already belong to a closed draw. She reads them anyway and sighs 「<reading>きのう</reading>」 — already over, every time.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kinyoubi": {
+    "meaning_mnemonic": "You go into Koichi's konbini to buy a single onigiri to start your <kanji>day</kanji>. When the till beeps, Koichi doesn't ask for regular yen; he demands a literal pile of <kanji>gold</kanji>. You complain that this is the only <kanji>weekday</kanji> he does this, and hand over your treasure because it is Friday.",
+    "reading_mnemonic": "This word is completely regular, so just read the kanji exactly as you learned them to get <reading>きんようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -563,6 +636,15 @@
       "review_status": "draft"
     }
   },
+  "mokuyoubi": {
+    "meaning_mnemonic": "You arrive at Sei's school for a normal <kanji>weekday</kanji> of classes, but looking out the window, a massive <kanji>tree</kanji> has smashed right through the sports field to block out the <kanji>sun</kanji>. The principal announces over the intercom that classes are cancelled, which is typical for Thursday.",
+    "reading_mnemonic": "You can sound this word out by stringing together the readings you learned for its component kanji to get <reading>もくようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "muttsu": {
     "meaning_mnemonic": "The lid clamps down on eight again, this time capping a stack of teacups on the shrine steps outside Grandma Kane's hall. Two cups vanish under the pressure, same trick as always, and the cats scatter as the stack settles low. She counts what is left before ringing the bell: <kanji>six</kanji> teacups, six things, capped for good.",
     "reading_mnemonic": "六 reads むっ here and combines with the counter つ, giving you 「<reading>むっつ</reading>」.",
@@ -634,6 +716,15 @@
     "reading_mnemonic": "二 alone already reads <reading>に</reading>, the same reading it carried in the chopstick story — nothing new to learn here.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nichiyoubi": {
+    "meaning_mnemonic": "You peer through a window at the <kanji>sun</kanji>, only to realize it is just a painting inside a massive <kanji>weekday</kanji> calendar square. Before you can process the trick, a real <kanji>sun</kanji> rises behind it and sets the whole paper structure on fire to celebrate Sunday.",
+    "reading_mnemonic": "You already know the readings for the kanji in this word, so you just put them together to get <reading>にちようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -749,6 +840,15 @@
       "review_status": "draft"
     }
   },
+  "shuumatsu": {
+    "meaning_mnemonic": "You trace the winding path for the <kanji>week</kanji> until you run out of calendar page completely and your finger slips off the paper. Dropping off the edge of that grid lands you right in the weekend.",
+    "reading_mnemonic": "You spend your entire weekend at the riverbank scrubbing the mud out of your car's <reading>shoe mats</reading> (<reading>しゅうまつ</reading>). You wash them for two days straight, completely ruining your actual weekend.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "sochira": {
     "meaning_mnemonic": "You're already at Koichi's till, practically leaning on the register, when you ask where the onigiri is. Koichi doesn't even look up — he just tilts his chin two feet toward the shelf you're basically touching and grunts the sound out, because when the thing you want is that close, all you need to say is that way.",
     "reading_mnemonic": "You already know そ, ち, and ら from other kana words; <reading>そちら</reading> just strings them together into the sound <reading>\"so-chee-rah\"</reading>, read exactly as it's spelled, no twist to catch you out.",
@@ -792,6 +892,15 @@
     "description": "Points at something near the person you are talking to, rather than near you — the middle rung of the near, middle, far set. It stands alone as a pronoun, so it never sits directly in front of a noun; the form that does that is a separate word.",
     "_meta": {
       "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "suiyoubi": {
+    "meaning_mnemonic": "Every <kanji>weekday</kanji>, you stand by the riverbank to watch the <kanji>sun</kanji> come up, but today a massive geyser of freezing <kanji>water</kanji> blasts out of the river and knocks you flat into the mud. You scrape yourself off, remembering that this mid-week flood always happens on Wednesday.",
+    "reading_mnemonic": "There are no new sounds to learn here, just combine the kanji readings you already know into <reading>すいようび</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
