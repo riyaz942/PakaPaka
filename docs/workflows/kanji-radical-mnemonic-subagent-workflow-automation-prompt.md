@@ -4,8 +4,9 @@ Generate Rev 1 (`prompt_version: 2`) radical descriptions, kanji mnemonics or
 vocabulary mnemonics using in-session subagents (model configurable below; a
 strong reasoning model is recommended) — no API credentials and no browser. This
 is the no-API, no-browser sibling of the Gemini automation prompt: only the "call
-the model" step differs. Here each item's reply is produced by a fresh subagent
-instead of a web chat or the Message Batches API; the context builder (the taught
+the model" step differs. Here replies are produced by fresh subagents — one
+subagent per small **group** of related items (see <group-size> below) — instead
+of a web chat or the Message Batches API; the context builder (the taught
 decomposition, the established component prose, the reading target, the reviewed
 look-alikes, the cast injection) and the mechanical gate are identical to every
 other lane. See `docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md` for
@@ -16,11 +17,11 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = kanji>
+<type = radical>
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = claude-opus-5>
+<subagent-model = sonnet-5>
 
 Model notes
 
@@ -35,7 +36,7 @@ Model notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 5>
+<batch-size = 3>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
@@ -43,6 +44,33 @@ usage. Consider starting smaller (~5–8) and calibrating: run one small batch, 
 how much usage it consumed, and size later runs from that. The auto-select makes
 stopping and resuming across sessions seamless — the next run picks up exactly
 where you left off.
+
+Group size (how many slugs one subagent writes in a single pass; used as
+GROUP_SIZE in Step 1):
+
+<group-size = 3>
+
+The run's slugs are split into groups of at most <group-size>, and each group is
+written by ONE subagent that sees every item in the group. Why group at all:
+
+- **Cross-item consistency.** The gate proves an item is in-constraints; it does
+  not prove the cast and scene shapes stay coherent across items generated
+  independently. A subagent writing three related kanji can see what it already
+  used and deliberately vary — three independent subagents cannot, and they drift
+  toward the same handful of scene shapes.
+- **Modest cost saving.** One subagent's fixed overhead and one read of the shared
+  teaching-voice sheet instead of <group-size> of each. Real but not dramatic;
+  thinking and prose output do not shrink, so do not group for cost alone.
+
+Keep <group-size> small. At 3 the last item still gets real effort; past 4–5 two
+things degrade — the subagent's attention thins out on the final item, and each
+successive reply it writes re-bills the earlier replies as context, which eats the
+saving. Set it to 1 to get the old strictly-per-slug behaviour.
+
+Grouping never changes the unit of ingestion or repair. Each slug keeps its own
+prompt file, its own reply file, its own gate run, and its own 3-attempt budget —
+**a failing slug is repaired alone, and its passing group-mates are never
+regenerated** (Step 3).
 
 ---
 
@@ -70,11 +98,12 @@ n5` → kanji → `generate.py --level n5` → vocab**. Do N5 fully before N4. I
 
 Workflow
 
-Process one slug at a time, each with its own fresh subagent (no shared context
-between slugs — a fresh subagent per slug is the equivalent of the browser lane's
-"fresh chat per slug"). Do NOT mix content types in one run — all slugs in this run
-share the same <type>. Everything is local files plus subagents: no browser, no
-clipboard, no downloads.
+Process one **group** at a time, each with its own fresh subagent (no shared
+context between groups — a fresh subagent per group is the equivalent of the
+browser lane's "fresh chat"). Within a group the subagent writes every item in one
+pass, then each slug is ingested and, if it fails, repaired individually. Do NOT
+mix content types in one run — all slugs in this run share the same <type>.
+Everything is local files plus subagents: no browser, no clipboard, no downloads.
 
 Step 1: Select Slugs and Generate Prompts
 
@@ -82,16 +111,19 @@ Work from:
 
 curriculum/_build
 
-1a. Select this run's slugs automatically. Do NOT hand-pick or paste a slug list.
-Pick the next <batch-size> slugs of <type> (in curriculum sort order) that do not
-already have a gate-passing draft **at the current `PROMPT_VERSION`**. Substitute
-this run's <type> for KIND and <batch-size> for BATCH_LIMIT, then run:
+1a. Select this run's slugs automatically and split them into groups. Do NOT
+hand-pick or paste a slug list. Pick the next <batch-size> slugs of <type> (in
+curriculum sort order) that do not already have a gate-passing draft **at the
+current `PROMPT_VERSION`**, then chunk them into groups of at most <group-size>,
+preferring to put items that **share a taught component** in the same group.
+Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
+<group-size> for GROUP_SIZE, then run:
 
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION
-LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', <batch-size>   # KIND: 'radical', 'kanji' or 'vocab'
+LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = 'n5', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji' or 'vocab'
 drafts_dir = f'generate_content/drafts/mnemonics/{LEVEL}/{KIND}'
 done = set()
 if os.path.isdir(drafts_dir):
@@ -102,8 +134,32 @@ if os.path.isdir(drafts_dir):
         if rec.get('status') == 'draft' and rec.get('prompt_version') == PROMPT_VERSION[KIND]:
             done.add(rec['slug'])
 todo = [s for s in mc.all_slugs(LEVEL, KIND_DIR[KIND]) if s not in done][:BATCH_LIMIT]
-print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}, done={len(done)}):')
-print(','.join(todo))
+# Shared-component data for grouping; radicals have no components, so they fall
+# back to sequential chunks (curriculum order already clusters related radicals).
+comps = {}
+if KIND == 'kanji':
+    comps = mc.decomposition_edges(LEVEL)
+elif KIND == 'vocab':
+    comps = mc.vocab_component_edges(LEVEL)
+remaining, groups = list(todo), []
+while remaining:
+    head = remaining.pop(0)
+    group, shared = [head], set(comps.get(head, []))
+    for cand in list(remaining):          # pull in later slugs sharing a component
+        if len(group) >= GROUP_SIZE:
+            break
+        if shared & set(comps.get(cand, [])):
+            group.append(cand); shared |= set(comps.get(cand, []))
+            remaining.remove(cand)
+    while remaining and len(group) < GROUP_SIZE:   # top up in curriculum order
+        group.append(remaining.pop(0))
+    groups.append(group)
+print(f'{len(todo)} slug(s) selected (BATCH_LIMIT={BATCH_LIMIT}, done={len(done)}) '
+      f'in {len(groups)} group(s) of <= {GROUP_SIZE}:')
+for i, g in enumerate(groups, 1):
+    print(f'  group {i}: {",".join(g)}')
+print()
+print('ALL:', ','.join(todo))
 PY
 
 Note what "done" means here: a draft recorded under an **older** prompt version is
@@ -114,12 +170,19 @@ Rev 2 changed the kanji and vocab contract only, so radical drafts written under
 Rev 1 are still current and are not re-selected.
 
 If it prints 0 slugs, this level+type is already fully generated at the current
-prompt version — stop and report that. Otherwise treat the printed comma list as
-this run's slug set: every later step iterates over exactly these slugs, and no
-slug outside this list is touched.
+prompt version — stop and report that. Otherwise treat the printed `ALL:` list as
+this run's slug set and the printed groups as this run's generation units: every
+later step iterates over exactly these slugs, and no slug outside this list is
+touched. Record the group composition — the final report names it.
 
-1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
-single comma-separated string with NO spaces after the commas:
+Grouping is a hint for the writer, not a constraint on the content: items in a
+group share a subagent, nothing else. Each still gets its own prompt file built
+from its own context, and no item may reference another group-mate's components.
+
+1b. Generate the prompt files for the selected slugs in one call — all groups at
+once, since each slug gets its own prompt file exactly as before. `--slugs` is a
+single comma-separated string with NO spaces after the commas (use the `ALL:`
+list):
 
 .venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --level n5 --slugs <selected,slugs,...>
 
@@ -136,33 +199,50 @@ ValueError, the layer below is unfinished — see Layer Ordering above and stop.
 
 ---
 
-Step 2: Generate the Reply with a Subagent
+Step 2: Generate the Group's Replies with One Subagent
 
-For the current slug, launch ONE general-purpose subagent (using <subagent-model>,
-high reasoning) in the foreground — ingestion must wait for it to finish. Give the
-subagent the prompt file path:
+For the current group, launch ONE general-purpose subagent (using
+<subagent-model>, high reasoning) in the foreground — ingestion must wait for it to
+finish. List every prompt file path in the group explicitly — one line per slug,
+resolved, not a template:
 
 curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
-  Read `<slug>.prompt.md`. Everything BELOW the HTML comment header (the block that
-  opens with `<!--` and ends with a line ending in `-->`) is your complete,
-  self-contained task: the teaching-voice sheet, the item itself, its taught
+  Read each of the prompt files listed above — one per item, N items in this group.
+  In each file, everything BELOW the HTML comment header (the block that opens with
+  `<!--` and ends with a line ending in `-->`) is the complete, self-contained task
+  for that item: the teaching-voice sheet, the item itself, its taught
   decomposition with each component's established prose, the reading target, the
   reviewed look-alikes, the cast block, the writing rules, and the JSON output
   contract. The header itself is orchestration instructions for the caller — ignore
-  it.
+  it. Each header names its own slug; do not let one file's header send you to
+  another file's reply path.
 
-  Write the mnemonics exactly as the prompt body asks, then write your answer to:
+  The teaching-voice sheet is identical in every file — read it once and apply it
+  to all of them. Everything from "The kanji" / "The radical" / "The word" onward
+  is per-item and must be obeyed per item.
+
+  Write the mnemonics for every item exactly as its own prompt body asks, then
+  write ONE reply file per item, each to its own path:
 
   curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.reply.md
 
+  Do not write a combined file, and do not put two items in one file — each slug's
+  reply file must contain only that slug's JSON.
+
   Requirements:
 
-  - Write EXACTLY one fenced ```json code block and nothing else in the file — no
-    preamble, no commentary before or after. The prompt shows the exact key names;
-    use them verbatim and add no others.
+  - Write EXACTLY one fenced ```json code block and nothing else in each reply file
+    — no preamble, no commentary before or after, and nothing that refers to the
+    other items in the group. The prompt shows the exact key names; use them
+    verbatim and add no others.
+  - Treat each item's constraints as independent. An item may only name the
+    components ITS OWN prompt lists, and may only mention the look-alikes ITS OWN
+    prompt lists — even when a group-mate shares a component or is itself a
+    look-alike. Seeing the sibling items is for varying your writing, never for
+    widening what an item is allowed to reference.
   - Return the keys for this type:
       radical → `description`
       kanji   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
@@ -183,6 +263,17 @@ Give the subagent these instructions:
     scene that competes with what the learner has already read. Reference every
     listed component by its taught meaning. Never name a component, radical or
     kanji that is not in that list.
+  - **Make the group's items feel different from each other.** This is the whole
+    reason you were given them together. Do not reuse a scene shape, setting,
+    animal, gag structure, or sentence rhythm across two items in the group, and do
+    not let two items resolve the same way. Where a group shares a component, that
+    component's established image must still be continued in each item — but it
+    should be *doing something different* each time, not replaying the same beat.
+    Items in a group are also likely to be items the learner reviews near each
+    other, so collisions here are exactly the ones that cost them.
+  - Give the last item in the group the same effort as the first. If you find
+    yourself writing to a template by item three, stop and re-read that item's own
+    decomposition before continuing.
   - Highlight tags (kanji and vocab only, exactly as the prompt's "Highlighting"
     section describes): wrap each taught component's meaning where the story uses
     it — `<radical>…</radical>` in a kanji meaning mnemonic, `<kanji>…</kanji>` in
@@ -208,16 +299,31 @@ Give the subagent these instructions:
     because thin stories do not survive reviews, and maximums because a learner
     rereads these dozens of times.
   - Do not set or add any review_status field.
-  - Do not modify any file other than the reply file. Do not run tools to fetch
-    external content.
+  - Do not modify any file other than this group's reply files. In particular do
+    not edit any `.prompt.md`. Do not run tools to fetch external content.
 
-Use a fresh subagent for each slug; never reuse a subagent's context across slugs.
+Use a fresh subagent for each group; never reuse a subagent's context across
+groups. If the subagent finishes having written only some of the group's reply
+files, do not relaunch it for the whole group — ingest the files it did write
+(Step 3) and treat each missing slug as a failed attempt 1, repaired by the
+per-slug repair subagent below.
 
 ---
 
-Step 3: Ingest and Repair
+Step 3: Ingest and Repair — one slug at a time
 
-Run:
+Grouping stops at the end of Step 2. From here every slug is handled entirely on
+its own: its own ingest, its own gate result, its own repair subagent, its own
+3-attempt budget. Ingest each slug in the group in turn.
+
+**A failure never invalidates its group-mates.** If one slug in a group of three
+fails the gate, repair that slug alone — the other two are already ingested and
+must not be regenerated, re-ingested, or touched. Never relaunch the group's
+generation subagent to fix one item: that would rewrite passing content, cost three
+items' generation to fix one, and lose drafts that already passed. The repair
+subagent below sees only the failing slug's own prompt and reply files.
+
+For each slug in the group, run:
 
 .venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
 
@@ -242,10 +348,11 @@ curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
-Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
-(<subagent-model>, high reasoning, foreground) to repair the existing reply.
+Do not regenerate from scratch, and do not regenerate the group. Instead, launch a
+FRESH general-purpose subagent (<subagent-model>, high reasoning, foreground) to
+repair this one slug's existing reply.
 
-Give the repair subagent these files:
+Give the repair subagent these files — this slug's only, never a group-mate's:
 
 - curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
 - curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.reply.md
@@ -277,6 +384,8 @@ Give the repair subagent these instructions:
     introduce no Japanese character the prompt did not list.
   - Ensure valid JSON. Add no commentary outside the JSON block. Do not set
     review_status.
+  - Edit only this slug's reply file. Other slugs generated alongside it have
+    already passed the gate and are none of this task's business.
 
 Then run ingestion again:
 
@@ -284,18 +393,25 @@ Then run ingestion again:
 
 Retry Limit
 
-Allow at most three ingestion attempts per slug, including the initial attempt:
+The budget is **per slug, not per group**. Allow at most three ingestion attempts
+for each slug, including the initial attempt:
 
-- Attempt 1: original generation subagent (Step 2)
-- Attempt 2: first repair subagent
-- Attempt 3: second repair subagent
+- Attempt 1: the group's generation subagent (Step 2)
+- Attempt 2: this slug's first repair subagent
+- Attempt 3: this slug's second repair subagent
+
+Attempt 1 is shared — one group subagent produces the first attempt for every slug
+in the group — but attempts 2 and 3 are always single-slug. Each slug's counter is
+independent: one slug burning all three attempts has no effect on its group-mates'
+budgets, and a group of three that fails on one item costs at most two extra repair
+subagents, not a second group pass.
 
 Use a fresh subagent for each attempt. If the third ingestion attempt fails:
 
 - Stop retrying the slug.
 - Record it as failed or skipped.
 - Preserve the latest validation errors for the final report.
-- Proceed to the next slug.
+- Proceed to the next slug — finish the rest of the group before moving on.
 
 A skipped slug matters more here than in the example-sentences lane: a radical
 with no description blocks every kanji built on it, and a kanji with no meaning
@@ -312,7 +428,10 @@ Do radicals fully (all runs), then kanji, then vocab, re-running `generate.py`
 between layers so the next layer's prompts read the new prose. Do N5 fully before
 N4. On the first run of a fresh type, read the assembled output in the app before
 launching more runs — the batch size is already pilot-sized, so one run doubles as
-the pilot.
+the pilot. Read a whole group's items side by side when you do: that is the only
+way to see whether grouping is buying the variety it is meant to buy, and whether
+the last item in each group is as strong as the first. If it is visibly thinner,
+drop <group-size>.
 
 ---
 
@@ -353,12 +472,13 @@ Final Report
 
 Provide a summary containing:
 
-- The content type, <batch-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
+- The content type, <batch-size>, <group-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
+- The groups as generated, listing each group's slugs, so a reviewer can read a group's items together and judge cross-item variety
 - The model actually used for generation and repair
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs — call these out as blockers for the layer above
 - ❌ Failed slugs
-- The number of subagent repair attempts used for each affected slug
+- The number of subagent repair attempts used for each affected slug, and which group it came from — a group whose items mostly needed repair is a signal that <group-size> is too high
 - Validation or ingestion issues encountered
 - Validation errors remaining after the final allowed attempt
 - Roughly how many slugs of this type remain not-yet-done for the level (re-run Step 1a to get the count), so it's clear whether another run is needed
@@ -375,8 +495,12 @@ the cast stays consistent across independently generated items.
 
 Important Constraints
 
-- Each slug's reply is produced by a fresh <subagent-model> subagent; never share
-  subagent context across slugs.
+- Each group's replies are produced by a fresh <subagent-model> subagent; never
+  share subagent context across groups.
+- Grouping affects only who writes the first draft. Ingestion, the gate, the repair
+  subagent and the 3-attempt budget are per slug, always.
+- Never regenerate a whole group to fix one slug, and never let a repair subagent
+  see or edit a group-mate's files.
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the look-alike dataset
   (`_build/visually_similar.py`), the cast bible, the prompt templates, or
@@ -393,8 +517,12 @@ Notes on differences from the Gemini web-chat automation prompt
 
 - The model is called via an in-session subagent (Step 2), not a browser chat,
   so there are no browser-setup, paste-integrity, completion-polling, or
-  download/rename steps. The generation subagent writes the reply file directly.
-- Everything else is identical: the same auto-select (Step 1), the same
-  `webprompts`/`ingest` commands and gate, the same 3-attempt repair cap, the same
-  per-level keyed-by-slug sidecar, the same layer ordering, and the same
-  draft/`review_status` discipline.
+  download/rename steps. The generation subagent writes the reply files directly.
+- The generation unit is a group of up to <group-size> related items rather than a
+  single item, because one subagent can be told to keep a group's scenes distinct
+  in a way N independent chats cannot. The Gemini lane still pastes one item per
+  chat.
+- Everything else is identical: the same auto-select (Step 1a, plus grouping), the
+  same `webprompts`/`ingest` commands and gate, the same per-slug 3-attempt repair
+  cap, the same per-level keyed-by-slug sidecar, the same layer ordering, and the
+  same draft/`review_status` discipline.
