@@ -3435,6 +3435,14 @@
         }
       ],
       "furigana": "万[まん]",
+      "meaning_mnemonic": "Someone climbs a ladder to recount the banner's zeros herself, licking a finger to peel back each heavy fold of cloth. Her arms give out before the counting does, so she chalks a final total on the last scrap of space and declares the stall sold out at <kanji>ten thousand</kanji> onigiri — not one more, not one less.",
+      "reading_mnemonic": "The reading is just 万 read <reading>まん</reading>, exactly like the banner kanji you already know.",
+      "description": "Japanese counts large numbers in blocks of ten thousand rather than thousands, so 万 anchors the whole system used for big figures. English commas group by thousands, so converting between the two takes practice — a million lands on a multiple of ten thousand here, not on a clean round number.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "部屋に本が一万あります。",
@@ -3472,12 +3480,7 @@
           ],
           "furigana": "昨日[きのう]、写[しゃ]真[しん]を一[いち]万[まん]見[み]ました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hitotsu",
@@ -3497,6 +3500,14 @@
         }
       ],
       "furigana": "一[ひと]つ",
+      "meaning_mnemonic": "Backstage after her talent show, the goat is handed a raffle box to count the night's takings. She digs through it hoping for more, but there is exactly <kanji>one</kanji> ticket rattling around inside, no stub, no runner-up prize. She holds it to the light anyway, satisfied that at least one thing tonight was worth keeping.",
+      "reading_mnemonic": "The reading is just 一（ひと）plus the counter つ, giving you <reading>ひとつ</reading> exactly as you'd expect.",
+      "description": "This is one of the native Japanese numbers used for counting generic objects, distinct from the Chinese-derived counting series paired with counter words for people, flat objects, and so on. It stands on its own without a separate counter attached, up through ten items.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私はパンを一つ食べます。",
@@ -3532,12 +3543,7 @@
           ],
           "furigana": "彼[かれ]は本[ほん]を一[いち]つ買[か]いました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "futatsu",
@@ -3557,6 +3563,14 @@
         }
       ],
       "furigana": "二[ふた]つ",
+      "meaning_mnemonic": "The second raccoon inspects the snapped chopsticks on the table, short stick over long stick, and realizes they aren't cutlery anymore — just identical wooden splinters. It pockets both, satisfied that whatever it's counting tonight, the tally stops right there at <kanji>two</kanji> things, no broth-soaked evidence left to explain.",
+      "reading_mnemonic": "The reading is just 二（ふた）plus the counter つ, giving you <reading>ふたつ</reading> exactly as you'd expect.",
+      "description": "Like its sibling word for one item, this is a native Japanese number used for counting generic objects on its own, without a separate counter word attached — distinct from the Chinese-derived counting series paired with counters for people, flat objects, and so on.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を二つ買いました。",
@@ -3592,12 +3606,7 @@
           ],
           "furigana": "今日[きょう]、映[えい]画[が]を二[に]つ見[み]ました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "mittsu",
@@ -3617,6 +3626,13 @@
         }
       ],
       "furigana": "三[みっ]つ",
+      "meaning_mnemonic": "You're at the riverbank stacking flat stones into a cairn, the way the character for <kanji>three</kanji> stacks its own three flat lines. One stone, then a second balanced on top, and just as the tower wobbles you set down a third to steady it. Three stones, standing exactly as tall as the character taught you: three things, balanced and done.",
+      "reading_mnemonic": "三 already carries the reading <reading>みっ</reading>, and つ stays つ, so together they give you exactly <reading>みっつ</reading> — three things, built straight from readings you already know.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を三つ買いました。",
@@ -3651,12 +3667,7 @@
           ],
           "furigana": "写[しゃ]真[しん]を三[さん]つ見[み]ました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "yottsu",
@@ -3676,6 +3687,13 @@
         }
       ],
       "furigana": "四[よっ]つ",
+      "meaning_mnemonic": "At Koichi's konbini, the trapped <kanji>four</kanji> mouth from inside the enclosure has escaped into the stockroom and wedged itself into a cardboard case behind the counter, still muttering its count under its breath. Koichi hauls the case onto the shelf and counts what's rattling around inside: four onigiri, no more, no less. Four things, sealed in one box.",
+      "reading_mnemonic": "四 already carries the reading <reading>よっ</reading>, and つ stays つ, giving you exactly <reading>よっつ</reading> — four things, straight from readings you already know.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を四つ買いました。",
@@ -3710,12 +3728,7 @@
           ],
           "furigana": "パンを四[よん]つ食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "itsutsu",
@@ -3735,6 +3748,13 @@
         }
       ],
       "furigana": "五[いつ]つ",
+      "meaning_mnemonic": "You reach the vending machine at the top of the mountain trail, your arm still cramped into the hooked shape from the character for <kanji>five</kanji> reaching sideways. Coins drop, cans thunk out one after another, and on the fifth thunk your hooked hand snags it before it hits the dirt. Five cans lined up at your feet, caught in one long, aching reach: five things.",
+      "reading_mnemonic": "五 already carries the reading <reading>いつ</reading>, and つ stays つ, giving you exactly <reading>いつつ</reading> — five things, straight from the readings you already know.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を五つ買いました。",
@@ -3769,12 +3789,7 @@
           ],
           "furigana": "パンを五[ご]つ食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "muttsu",
@@ -3794,6 +3809,13 @@
         }
       ],
       "furigana": "六[むっ]つ",
+      "meaning_mnemonic": "The lid clamps down on eight again, this time capping a stack of teacups on the shrine steps outside Grandma Kane's hall. Two cups vanish under the pressure, same trick as always, and the cats scatter as the stack settles low. She counts what is left before ringing the bell: <kanji>six</kanji> teacups, six things, capped for good.",
+      "reading_mnemonic": "六 reads むっ here and combines with the counter つ, giving you 「<reading>むっつ</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "パンを六つ買います。",
@@ -3828,12 +3850,7 @@
           ],
           "furigana": "写[しゃ]真[しん]を六[ろく]つ見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "nanatsu",
@@ -3853,6 +3870,13 @@
         }
       ],
       "furigana": "七[なな]つ",
+      "meaning_mnemonic": "The hook by the konbini door already sags under a full row of <kanji>seven</kanji> coats, bent halfway into the wall from the weight. A customer tries to squeeze one more sleeve onto it and the whole thing groans, but the hook holds firm — it was built to carry exactly seven things and not one more.",
+      "reading_mnemonic": "七 reads なな here and combines with the counter つ, giving you 「<reading>ななつ</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を七つ買いました。",
@@ -3886,12 +3910,7 @@
           ],
           "furigana": "パンを七[なな]つ食[た]べました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "yattsu",
@@ -3911,6 +3930,13 @@
         }
       ],
       "furigana": "八[やっ]つ",
+      "meaning_mnemonic": "At the base of the mountain trail, two hikers' legs split wider with every step up the steep slope, spreading apart like the shape of the number <kanji>eight</kanji> itself. By the vending machine at the top, you count the pairs of boots left behind by exhausted climbers: eight things, scattered where the trail finally levels out.",
+      "reading_mnemonic": "八 reads やっ here and combines with the counter つ, giving you 「<reading>やっつ</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を八つ買いました。",
@@ -3945,12 +3971,7 @@
           ],
           "furigana": "写[しゃ]真[しん]を八[はち]つ見[み]ました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kokonotsu",
@@ -3970,6 +3991,13 @@
         }
       ],
       "furigana": "九[ここの]つ",
+      "meaning_mnemonic": "Hana reaches switchback <kanji>nine</kanji> on the mountain trail, exactly where hikers lean their hooked canes against the rock to catch their breath. Someone already got there first — not one cane but a whole row of them, hooked over the same ledge like abandoned question marks. She counts twice to be sure: nine things, propped together at the ninth bend.",
+      "reading_mnemonic": "This word simply takes 九's kun'yomi reading ここの and adds つ, the counter for physical things, giving 「<reading>ここのつ</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "本を九つ買いました。",
@@ -4004,12 +4032,7 @@
           ],
           "furigana": "写[しゃ]真[しん]を九[きゅう]つ見[み]ました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "too",
@@ -4029,6 +4052,13 @@
         }
       ],
       "furigana": "十[とお]",
+      "meaning_mnemonic": "At Koichi's konbini, someone has arranged the onigiri into a stack of perfect crosses — the <kanji>ten</kanji> mark hikers make with two raised hands when they reach a full count. There are ten of them lined up by the register, each shaped like that same cross, and the till beeps once for every single one as the clerk recounts them. Ten things, stacked in crosses at the counter.",
+      "reading_mnemonic": "This word is just 十's kun'yomi reading standing alone as the number word for ten things: 「<reading>とお</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "パンを十買います。",
@@ -4064,12 +4094,7 @@
           ],
           "furigana": "昨日[きのう]、魚[さかな]を十[じゅう]食[た]べました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ima",
@@ -4089,6 +4114,13 @@
         }
       ],
       "furigana": "今[いま]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a cat ducks under the eaves the instant the rain starts — exactly the <kanji>now</kanji> image, a person taking cover under a wide roof, caring about nothing before or after. It won't budge from that dry spot even when the enormous bell rings, because for that cat there is no later, only this exact drip-free moment: now.",
+      "reading_mnemonic": "This word is just 今 read with the kun'yomi you already know, standing alone as 「<reading>いま</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今、昼ご飯を食べます。",
@@ -4122,12 +4154,7 @@
           ],
           "furigana": "今[いま]、公[こう]園[えん]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kyou",

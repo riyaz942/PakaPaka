@@ -151,6 +151,16 @@
       "review_status": "draft"
     }
   },
+  "futatsu": {
+    "meaning_mnemonic": "The second raccoon inspects the snapped chopsticks on the table, short stick over long stick, and realizes they aren't cutlery anymore — just identical wooden splinters. It pockets both, satisfied that whatever it's counting tonight, the tally stops right there at <kanji>two</kanji> things, no broth-soaked evidence left to explain.",
+    "reading_mnemonic": "The reading is just 二（ふた）plus the counter つ, giving you <reading>ふたつ</reading> exactly as you'd expect.",
+    "description": "Like its sibling word for one item, this is a native Japanese number used for counting generic objects on its own, without a separate counter word attached — distinct from the Chinese-derived counting series paired with counters for people, flat objects, and so on.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "go-v": {
     "meaning_mnemonic": "On the mountain trail, that same hooked hand reaches out from beside the vending machine, snagging snacks lined along the ledge. It's already got four stacked in your arms when the crooked hook swipes once more and lands a fifth off the top shelf. One hook, five snacks: that's the word for <kanji>five</kanji>.",
     "reading_mnemonic": "That practiced swipe already speaks the <reading>ご</reading> reading you learned for 五 — the clipped <reading>go</reading> you mutter to yourself right before you reach.",
@@ -163,6 +173,16 @@
   "hachi-v": {
     "meaning_mnemonic": "Those two strokes are still splitting wider at the bottom, the same spread that already meant <kanji>eight</kanji> when you met the kanji alone. Let that split happen four times over, fanned out beneath one twitching body, legs still moving until there are eight of them — a spider, standing on exactly the number this word names.",
     "reading_mnemonic": "This word borrows 八's own reading untouched, so it's read exactly <reading>はち</reading>, the same sound you already learned for the kanji itself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hitotsu": {
+    "meaning_mnemonic": "Backstage after her talent show, the goat is handed a raffle box to count the night's takings. She digs through it hoping for more, but there is exactly <kanji>one</kanji> ticket rattling around inside, no stub, no runner-up prize. She holds it to the light anyway, satisfied that at least one thing tonight was worth keeping.",
+    "reading_mnemonic": "The reading is just 一（ひと）plus the counter つ, giving you <reading>ひとつ</reading> exactly as you'd expect.",
+    "description": "This is one of the native Japanese numbers used for counting generic objects, distinct from the Chinese-derived counting series paired with counter words for people, flat objects, and so on. It stands on its own without a separate counter attached, up through ten items.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -215,12 +235,30 @@
       "review_status": "draft"
     }
   },
+  "ima": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a cat ducks under the eaves the instant the rain starts — exactly the <kanji>now</kanji> image, a person taking cover under a wide roof, caring about nothing before or after. It won't budge from that dry spot even when the enormous bell rings, because for that cat there is no later, only this exact drip-free moment: now.",
+    "reading_mnemonic": "This word is just 今 read with the kun'yomi you already know, standing alone as 「<reading>いま</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "meaning_mnemonic": "A heron standing in the shallows at the riverbank wears a wristwatch and answers questions for free. You ask about the water going down: it's two. You ask about the ferry: it's two. You ask about getting your own watch back off its leg: it's two. Ask a heron anything and it hands you a time, so the question you are really asking is when.",
     "reading_mnemonic": "This word is written in kana exactly as it is said, so <reading>いつ</reading> is both the spelling and the reading — nothing to decode.",
     "description": "English lets you say when for both the question and the joining word, as in the sentence about what happens when it rains. This word only does the question. The joining sense uses different grammar entirely.",
     "_meta": {
       "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "itsutsu": {
+    "meaning_mnemonic": "You reach the vending machine at the top of the mountain trail, your arm still cramped into the hooked shape from the character for <kanji>five</kanji> reaching sideways. Coins drop, cans thunk out one after another, and on the fifth thunk your hooked hand snags it before it hits the dirt. Five cans lined up at your feet, caught in one long, aching reach: five things.",
+    "reading_mnemonic": "五 already carries the reading <reading>いつ</reading>, and つ stays つ, giving you exactly <reading>いつつ</reading> — five things, straight from the readings you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -280,6 +318,15 @@
       "review_status": "draft"
     }
   },
+  "kokonotsu": {
+    "meaning_mnemonic": "Hana reaches switchback <kanji>nine</kanji> on the mountain trail, exactly where hikers lean their hooked canes against the rock to catch their breath. Someone already got there first — not one cane but a whole row of them, hooked over the same ledge like abandoned question marks. She counts twice to be sure: nine things, propped together at the ninth bend.",
+    "reading_mnemonic": "This word simply takes 九's kun'yomi reading ここの and adds つ, the counter for physical things, giving 「<reading>ここのつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "konna": {
     "meaning_mnemonic": "Koichi is standing behind his own register, holding up the onigiri that is already in his hand, insisting to the customer that no substitute will do — only this kind of rice ball, the exact one gripped between his fingers, right here and nowhere else.",
     "reading_mnemonic": "This word is written the way it sounds, straight kana, so <reading>こんな</reading> is read exactly as it looks — no hidden reading to hunt for.",
@@ -326,6 +373,34 @@
       "review_status": "draft"
     }
   },
+  "man-v": {
+    "meaning_mnemonic": "Someone climbs a ladder to recount the banner's zeros herself, licking a finger to peel back each heavy fold of cloth. Her arms give out before the counting does, so she chalks a final total on the last scrap of space and declares the stall sold out at <kanji>ten thousand</kanji> onigiri — not one more, not one less.",
+    "reading_mnemonic": "The reading is just 万 read <reading>まん</reading>, exactly like the banner kanji you already know.",
+    "description": "Japanese counts large numbers in blocks of ten thousand rather than thousands, so 万 anchors the whole system used for big figures. English commas group by thousands, so converting between the two takes practice — a million lands on a multiple of ten thousand here, not on a clean round number.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mittsu": {
+    "meaning_mnemonic": "You're at the riverbank stacking flat stones into a cairn, the way the character for <kanji>three</kanji> stacks its own three flat lines. One stone, then a second balanced on top, and just as the tower wobbles you set down a third to steady it. Three stones, standing exactly as tall as the character taught you: three things, balanced and done.",
+    "reading_mnemonic": "三 already carries the reading <reading>みっ</reading>, and つ stays つ, so together they give you exactly <reading>みっつ</reading> — three things, built straight from readings you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "muttsu": {
+    "meaning_mnemonic": "The lid clamps down on eight again, this time capping a stack of teacups on the shrine steps outside Grandma Kane's hall. Two cups vanish under the pressure, same trick as always, and the cats scatter as the stack settles low. She counts what is left before ringing the bell: <kanji>six</kanji> teacups, six things, capped for good.",
+    "reading_mnemonic": "六 reads むっ here and combines with the counter つ, giving you 「<reading>むっつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "nan": {
     "meaning_mnemonic": "Cats keep arriving on the mossy steps of Grandma Kane's shrine, and you gave up asking what a cat is hours ago. Every question you have left comes with a number stuck to it: how many cats, what floor they have reached, what time they stop. This is the shape the question takes when a counter follows — what, before counters.",
     "reading_mnemonic": "A tiny <reading>nun</reading> has claimed the vending machine at the top of the mountain trail and runs it like a ticket window. She will not press a button until you say <reading>なん</reading> and then the counter for what you want, and she makes you start again if you mumble the number.",
@@ -339,6 +414,15 @@
   "nana-v": {
     "meaning_mnemonic": "By the door of Koichi's konbini, the coat hook is really just one bent nail sticking out of the wall. A delivery driver piles dripping rain jackets onto it between beeps of the till, one after another, until the nail bends almost flat under the weight. You count the jackets before it snaps: <kanji>seven</kanji>, all hanging off one crooked hook.",
     "reading_mnemonic": "七's reading here is the one you already know from the kanji itself: <reading>なな</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nanatsu": {
+    "meaning_mnemonic": "The hook by the konbini door already sags under a full row of <kanji>seven</kanji> coats, bent halfway into the wall from the weight. A customer tries to squeeze one more sleeve onto it and the whole thing groans, but the hook holds firm — it was built to carry exactly seven things and not one more.",
+    "reading_mnemonic": "七 reads なな here and combines with the counter つ, giving you 「<reading>ななつ</reading>」.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -487,6 +571,15 @@
       "review_status": "draft"
     }
   },
+  "too": {
+    "meaning_mnemonic": "At Koichi's konbini, someone has arranged the onigiri into a stack of perfect crosses — the <kanji>ten</kanji> mark hikers make with two raised hands when they reach a full count. There are ten of them lined up by the register, each shaped like that same cross, and the till beeps once for every single one as the clerk recounts them. Ten things, stacked in crosses at the counter.",
+    "reading_mnemonic": "This word is just 十's kun'yomi reading standing alone as the number word for ten things: 「<reading>とお</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "watashi": {
     "meaning_mnemonic": "At Koichi's konbini, a tanuki knocks over the shiny new security mirror by the till and freezes, nose to nose with itself. It taps the glass, tilts its head, and decides, flatly, that the animal staring back must be the most important customer in the store: itself. From then on it restocks the onigiri shelf for nobody else, certain of exactly who it means when it talks about I.",
     "reading_mnemonic": "The tanuki taps the glass and gasps at what it sees — <reading>what a shiny</reading> creature — then realizes it's only its own reflection, saying <reading>わたし</reading>, I, over and over, delighted that the shiniest thing in the konbini turned out to be itself.",
@@ -505,9 +598,27 @@
       "review_status": "draft"
     }
   },
+  "yattsu": {
+    "meaning_mnemonic": "At the base of the mountain trail, two hikers' legs split wider with every step up the steep slope, spreading apart like the shape of the number <kanji>eight</kanji> itself. By the vending machine at the top, you count the pairs of boots left behind by exhausted climbers: eight things, scattered where the trail finally levels out.",
+    "reading_mnemonic": "八 reads やっ here and combines with the counter つ, giving you 「<reading>やっつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "yon-v": {
     "meaning_mnemonic": "Behind the beeping till at Koichi's konbini sits that same sealed box, the mouth still trapped inside counting onigiri through the glass. Tonight it's a slow delivery — one, two, three — and on the next rice ball the mouth presses flat against the glass and stops. That flattened stare is the number stamped on this word: <kanji>four</kanji>.",
     "reading_mnemonic": "Nothing to derive here — 四 already taught you the <reading>よん</reading> reading, the same stretch you reach for right before a big <reading>yawn</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yottsu": {
+    "meaning_mnemonic": "At Koichi's konbini, the trapped <kanji>four</kanji> mouth from inside the enclosure has escaped into the stockroom and wedged itself into a cardboard case behind the counter, still muttering its count under its breath. Koichi hauls the case onto the shelf and counts what's rattling around inside: four onigiri, no more, no less. Four things, sealed in one box.",
+    "reading_mnemonic": "四 already carries the reading <reading>よっ</reading>, and つ stays つ, giving you exactly <reading>よっつ</reading> — four things, straight from readings you already know.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
