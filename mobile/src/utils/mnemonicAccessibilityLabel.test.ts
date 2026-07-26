@@ -10,6 +10,16 @@ describe('mnemonicAccessibilityLabel', () => {
     );
   });
 
+  it('strips highlight tags so a screen reader never announces the markup', () => {
+    expect(
+      buildMnemonicAccessibilityLabel(
+        'Two legs mid-stride and no head at all: a <radical>person</radical>.',
+        'person',
+        '人',
+      ),
+    ).toBe('Two legs mid-stride and no head at all: a person.');
+  });
+
   it('composes meaning and primary form when mnemonic text is absent', () => {
     expect(buildMnemonicAccessibilityLabel(null, 'one', '一')).toBe('one (一)');
   });

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
+import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
@@ -50,10 +51,13 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
         </Text>
       </ItemDetailHeader>
 
-      {showStoryAbove ? (
-        <Text className="mt-4 text-body text-secondary" testID="radical-description">
-          {story}
-        </Text>
+      {showStoryAbove && story ? (
+        <AnnotatedText
+          text={story}
+          itemType="radical"
+          className="mt-4 text-body text-secondary"
+          testID="radical-description"
+        />
       ) : null}
 
       <View className="mt-6">

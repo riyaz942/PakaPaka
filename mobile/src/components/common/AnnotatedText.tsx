@@ -4,14 +4,7 @@ import { Text } from 'react-native';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
-
-/**
- * Highlight tags the mnemonic pipeline emits (content pipeline Rev 2). A
- * meaning mnemonic wraps the taught components it borrows, a reading mnemonic
- * wraps the sound it hangs on, so the learner can see at a glance which words
- * carried over from the layer below.
- */
-const HIGHLIGHT_RE = /<(radical|kanji|reading)>([\s\S]*?)<\/\1>/g;
+import { HIGHLIGHT_TAG_RE } from '@/utils/highlightTags';
 
 type Segment = { text: string; tag: 'radical' | 'kanji' | 'reading' | null };
 
@@ -20,7 +13,7 @@ function parseSegments(text: string): Segment[] {
   const segments: Segment[] = [];
   let cursor = 0;
 
-  for (const match of text.matchAll(HIGHLIGHT_RE)) {
+  for (const match of text.matchAll(HIGHLIGHT_TAG_RE)) {
     const start = match.index ?? 0;
     if (start > cursor) {
       segments.push({ text: text.slice(cursor, start), tag: null });

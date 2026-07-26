@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
@@ -189,9 +190,12 @@ export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps)
     return (
       <View testID="lesson-section-mnemonic">
         {story ? (
-          <Text className="mt-4 text-body text-secondary" testID="radical-description">
-            {story}
-          </Text>
+          <AnnotatedText
+            text={story}
+            itemType="radical"
+            className="mt-4 text-body text-secondary"
+            testID="radical-description"
+          />
         ) : null}
 
         <View className="mt-6">

@@ -7,7 +7,9 @@ for 2b/2d):
 
   radical (a `mnemonic_text` that is also the Tier 2 image prompt):
     1. mnemonic_text present, non-empty, within length bounds, plain prose
-    2. the radical's meaning is recognisable in the image
+    2. the radical's meaning is recognisable in the image *and wrapped in a
+       <radical> tag*, so the word a kanji story will later borrow is the same
+       word the learner saw highlighted here
     3. `description` is optional (Rev 3, matching kanji/vocab) and is required
        only when the item has reviewed look-alikes to contrast; when present it
        names every one of them and invents none
@@ -106,14 +108,20 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #: burying them in a wall of prose. Exactly one tag is legal per field, which is
 #: what makes "did it actually tag the components" mechanically checkable.
 #:
+#:   radical mnemonic_text    <radical>mouth</radical>
 #:   kanji  meaning_mnemonic  <radical>ground</radical>
 #:   kanji  reading_mnemonic  <reading>いち</reading>
 #:   vocab  meaning_mnemonic  <kanji>one</kanji>
 #:   vocab  reading_mnemonic  <reading>ひとつ</reading>
 #:
+#: A radical borrows nothing from below, so the piece it highlights is its own
+#: meaning — the word the story lands on, and the exact word a kanji story will
+#: later reuse. Tagging it makes the two ends of the chain match visually.
+#:
 #: Descriptions carry no markup at all: they are reference prose, not a story
 #: the learner has to reassemble.
 ALLOWED_TAG = {
+    ("radical", "mnemonic_text"): "radical",
     ("kanji", "meaning_mnemonic"): "radical",
     ("kanji", "reading_mnemonic"): "reading",
     ("vocab", "meaning_mnemonic"): "kanji",
@@ -352,12 +360,23 @@ def validate_radical(level, slug, draft, ctx=None):
 
     errors += _field_errors("radical", "mnemonic_text", text)
 
+    # The meaning must be reached *and* highlighted. A radical has no components
+    # to borrow, so the one thing worth colouring is the word the story resolves
+    # to — the same word every kanji built on this radical will pull upward.
     words = _meaning_words(ctx["meaning_synonyms"])
-    if words and not _references(text, words):
-        errors.append(
-            f"mnemonic_text never lands on the meaning “{ctx['meaning']}”; the image "
-            "must resolve to that meaning"
-        )
+    if words:
+        plain = _strip_tags(text, "radical")
+        spans = _tagged_spans(text, "radical")
+        if not _references(plain, words):
+            errors.append(
+                f"mnemonic_text never lands on the meaning “{ctx['meaning']}”; the image "
+                "must resolve to that meaning"
+            )
+        elif not any(_references(span, words) for span in spans):
+            errors.append(
+                f"mnemonic_text reaches the meaning “{ctx['meaning']}” but never wraps it in "
+                "<radical>...</radical>; highlight the word the picture resolves to"
+            )
 
     # Rev 3: a radical's `description` is optional on the same terms as a
     # kanji's — the mnemonic is what the learner reads, so a description that

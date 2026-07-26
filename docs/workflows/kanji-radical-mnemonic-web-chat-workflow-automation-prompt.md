@@ -530,7 +530,7 @@ Repair Procedure
 
    - For kanji: the reading_mnemonic must contain the target reading kana shown in the prompt, verbatim, inside a `<reading>` tag.
 
-   - Highlight tags (kanji and vocab): each taught component's meaning is wrapped where the story uses it — `<radical>` in a kanji meaning mnemonic, `<kanji>` in a vocab one — and the reading kana plus the English phonetic hook are wrapped in `<reading>` in the reading mnemonic. One tag per field, every tag closed, none nested, and none in a description or a radical.
+   - Highlight tags: each taught component's meaning is wrapped where the story uses it — `<radical>` in a kanji meaning mnemonic, `<kanji>` in a vocab one — and the reading kana plus the English phonetic hook are wrapped in `<reading>` in the reading mnemonic. A radical borrows nothing, so its `mnemonic_text` wraps its own meaning — the word the picture resolves to — in `<radical>`. One kind of tag per field, every tag closed, none nested, and none in a description.
 
    - For vocab: the meaning_mnemonic must reference every kanji listed in the prompt's "The kanji in this word" section; the reading_mnemonic must contain the word's reading verbatim and must follow the prompt's "The reading" section — a one-line derivation note when it says the reading is regular or kana-only, a full story when it says otherwise.
 

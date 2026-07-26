@@ -2,6 +2,7 @@ import { router, type Href } from 'expo-router';
 import React from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 
+import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
@@ -73,7 +74,11 @@ export function PassageWordDetailSheet({
             <Text className="text-body-lg text-primary">{item.meaning}</Text>
 
             {item.mnemonicText ? (
-              <Text className="text-body text-secondary">{item.mnemonicText}</Text>
+              <AnnotatedText
+                text={item.mnemonicText}
+                itemType={item.itemType}
+                className="text-body text-secondary"
+              />
             ) : null}
 
             <Pressable

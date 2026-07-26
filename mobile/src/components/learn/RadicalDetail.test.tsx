@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, within } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import React from 'react';
 
@@ -53,6 +53,23 @@ describe('RadicalDetail', () => {
     expect(screen.getByTestId('radical-description')).toBeTruthy();
     expect(screen.getByText('A person walking.')).toBeTruthy();
     expect(screen.queryByText('Mnemonic')).toBeNull();
+  });
+
+  it('highlights the meaning the story lands on and never shows the markup', () => {
+    render(
+      <RadicalDetail
+        item={{
+          ...baseItem,
+          mnemonicText: 'Two legs mid-stride: a <radical>person</radical>.',
+        }}
+      />,
+    );
+
+    // Scoped to the caption: "person" is also the meaning printed in the header.
+    const caption = within(screen.getByTestId('radical-description'));
+    expect(caption.getByText('person').props.className).toContain('text-content-radical');
+    expect(caption.getByText('Two legs mid-stride: a ')).toBeTruthy();
+    expect(screen.queryByText(/<radical>/)).toBeNull();
   });
 
   it('omits the description block when the radical has no nuance to add', () => {

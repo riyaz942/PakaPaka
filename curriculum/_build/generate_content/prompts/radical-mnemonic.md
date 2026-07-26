@@ -54,7 +54,8 @@ Call the `submit_radical_mnemonic` tool exactly once with:
 1. **`mnemonic_text`** — the scene. Walk the strokes — say what *that* line and
    *that* hook look like — and let the picture grow out of them, so the shape
    and the meaning are glued together. End on the meaning “{{MEANING}}”, so the
-   last thing in their head is the answer.
+   last thing in their head is the answer, and wrap that word in
+   `<radical>...</radical>` — see "Highlighting" below.
 
 2. **`description`** — **optional. Omit this key entirely unless this radical
    actually needs it.** The mnemonic is what the learner reads; a description
@@ -73,15 +74,25 @@ Call the `submit_radical_mnemonic` tool exactly once with:
    than the mnemonic. If all you can think of to say is “this shape means X”,
    that is the signal to omit it.
 
+## Highlighting
+
+Wrap the word the picture resolves to — the meaning “{{MEANING}}”, or whichever
+accepted answer you actually used — in `<radical>...</radical>`. The app renders
+it in the radical accent colour, so the learner's eye lands on the answer.
+
+    ...and the whole thing tips over into a shouting <radical>mouth</radical>.
+
+Exactly one tag, around the meaning word itself and nothing else — not the
+sentence it sits in. `<kanji>` and `<reading>` belong to the layers above;
+never use them here. The tag does not count toward the length, and the
+`description` carries no tags at all.
+
 ## Hard rules
 
 - Plain prose only. No markdown, headings, lists, bold/italic, furigana, or
-  romaji. Stored as plain strings.
-- No highlight tags. Radicals are the bottom of the chain — they borrow nothing,
-  so there is nothing to colour. `<radical>`, `<kanji>` and `<reading>` belong
-  in the kanji and vocabulary prompts, never here.
+  romaji. Stored as plain strings. `<radical>` is the one exception.
 - The meaning “{{MEANING}}” (or one of its accepted answers) must be
-  recognisable in the mnemonic.
+  recognisable in the mnemonic, inside the `<radical>` tag.
 - One concrete, drawable scene — not two competing images, not a menu of
   options. An illustrator reads this and draws exactly one picture.
 - Description, when you write one: mention every look-alike listed above and

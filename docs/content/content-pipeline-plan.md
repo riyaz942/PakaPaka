@@ -442,13 +442,35 @@ rather than intent.
   150–280). Rev 2's floors (300/250) were derived from the discarded long radical
   descriptions and would have rejected most of the kept prose. `PROMPT_VERSION` is
   `{"radical": 1, "kanji": 4, "vocab": 4}`.
-- **Highlight tags survive from Rev 2** unchanged (`<radical>`/`<kanji>` around
-  borrowed component meanings, `<reading>` around the kana and its phonetic hook),
-  rendered by `AnnotatedText` in the content accent colours. Radicals carry no
-  tags — they are the bottom of the chain and borrow nothing.
-- **Known gap:** 23 of the 76 N5 radicals have reviewed look-alikes and no
-  `description`, so they fail the new requirement. They predate the rule and are
-  already merged; the gate only bites if they are regenerated.
+- **Highlight tags carry over from Rev 2 and now reach radicals too**
+  (`<radical>`/`<kanji>` around borrowed component meanings, `<reading>` around the
+  kana and its phonetic hook), rendered by `AnnotatedText` in the content accent
+  colours. A radical borrows nothing, so the piece it highlights is **its own
+  meaning** — the word the picture resolves to, which is the same word a kanji
+  story later pulls upward, so both ends of the chain highlight the same thing.
+  `ALLOWED_TAG` gains `("radical", "mnemonic_text") → "radical"` and
+  `validate_radical` requires the meaning to be tagged, not merely reached.
+
+  The N5 prose that predates the tags was **retagged mechanically, not
+  regenerated**: the words needing a wrapper were already in the text because the
+  gate had required them there. 76/76 radicals, 75/75 kanji with a taught
+  decomposition (the other 31 are pictographs and correctly carry none) and
+  104/104 readings tagged, under the invariant that stripping the tags back out
+  reproduces the original prose byte-for-byte. Nothing was rewritten for
+  highlighting.
+- **`PROMPT_VERSION` means "conforms to contract N", not "was produced by prompt
+  N".** The N5 kanji were generated under 1 and 2 and brought up to 4 in place, so
+  they are stamped 4. Leaving them behind the current number would mark 106
+  reviewed items stale and let the next `run` overwrite them.
+- **The description backlog is closed.** All 23 N5 radicals with reviewed
+  look-alikes now carry contrast prose, as do the 31 kanji whose descriptions
+  named the wrong characters or missed a confusable. 18 kanji with no look-alikes
+  had descriptions that were generic filler name-dropping unmet compounds
+  ("shows up in 土曜日") — those were dropped rather than rewritten, since the
+  mnemonic already carries the meaning. 一 and 二 were generated under Rev 2's
+  long-form contract at roughly 2× every Rev 3 ceiling and were cut to size with
+  their cast intact. The full N5 set now passes the mechanical gate: 76/76
+  radicals, 106/106 kanji.
 
 ### 2c. Example sentences (kanji + vocab)
 

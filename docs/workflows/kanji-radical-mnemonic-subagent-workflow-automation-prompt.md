@@ -171,6 +171,13 @@ Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` 
 ~150–300 characters, description demoted to optional — so the reviewed N5 radicals
 already match the current prompt and are correctly *not* re-selected.
 
+The number records **conformance, not provenance**: it answers "does this draft
+satisfy contract N", not "which prompt wrote it". The N5 kanji were generated
+under 1 and 2 and then brought up to 4 in place — retagged mechanically, with the
+description backlog cleared — so they are stamped 4. Stamping is only ever correct
+after the item passes the gate under the new contract; a draft that merely
+predates a bump is stale and must be regenerated, not renumbered.
+
 If it prints 0 slugs, this level+type is already fully generated at the current
 prompt version — stop and report that. Otherwise treat the printed `ALL:` list as
 this run's slug set and the printed groups as this run's generation units: every
@@ -285,12 +292,16 @@ Give the subagent these instructions:
   - Give the last item in the group the same effort as the first. If you find
     yourself writing to a template by item three, stop and re-read that item's own
     decomposition before continuing.
-  - Highlight tags (kanji and vocab only, exactly as the prompt's "Highlighting"
-    section describes): wrap each taught component's meaning where the story uses
-    it — `<radical>…</radical>` in a kanji meaning mnemonic, `<kanji>…</kanji>` in
-    a vocab one — and wrap both the target reading kana and the English phonetic
-    hook in `<reading>…</reading>` in the reading mnemonic. One tag per field, no
-    nesting, every tag closed, and none at all in a description or a radical.
+  - Highlight tags, exactly as the prompt's "Highlighting" section describes:
+    wrap each taught component's meaning where the story uses it —
+    `<radical>…</radical>` in a kanji meaning mnemonic, `<kanji>…</kanji>` in a
+    vocab one — and wrap both the target reading kana and the English phonetic
+    hook in `<reading>…</reading>` in the reading mnemonic. A radical borrows
+    nothing, so its `mnemonic_text` wraps **its own meaning** — the word the
+    picture resolves to — in `<radical>…</radical>`; that is the same word a kanji
+    story will later pull upward, so both ends of the chain highlight the same
+    thing. One kind of tag per field, no nesting, every tag closed, and none at
+    all in a description.
   - The reading mnemonic must contain the target reading verbatim, in kana, inside
     a `<reading>` tag, and should use the cast character the prompt assigns for
     that reading.

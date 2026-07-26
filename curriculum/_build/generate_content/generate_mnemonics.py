@@ -78,6 +78,15 @@ MODEL = "claude-opus-4-8"
 #: of ~150–300 characters, with the description demoted to optional — so the
 #: reviewed N5 radicals are exactly what the current prompt asks for. Numbering
 #: them 5 would mark 76 kept items stale and regenerate them for nothing.
+#:
+#: Radicals stay at 1 through the Rev 3 highlight-tag change as well. The tag
+#: was added to the existing N5 prose mechanically (nothing was rewritten), so
+#: every kept radical already satisfies the current prompt.
+#:
+#: The number means "conforms to contract N", not "was produced by prompt N".
+#: The N5 kanji were generated under 1 and 2 and then brought up to 4 in place,
+#: so they are stamped 4 — leaving them behind the current number would mark
+#: 106 reviewed items stale and let the next `run` overwrite them.
 PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 4}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
