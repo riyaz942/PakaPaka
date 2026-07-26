@@ -11759,6 +11759,13 @@
         }
       ],
       "furigana": "コーヒー",
+      "meaning_mnemonic": "At Koichi's konbini, the till beeps furiously at three in the morning as a zombie-eyed customer clutches an empty paper cup, breathing out fumes so bitter the onigiri shelf seems to lean away from him. He doesn't order food. He doesn't speak. He just raises the cup, and the cashier refills it without a word: coffee.",
+      "reading_mnemonic": "コーヒー is written exactly the way it sounds, straight through in kana — <reading>コーヒー</reading> — nothing here to decode, just read it aloud.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "毎朝コーヒーを飲みます。",
@@ -11792,12 +11799,7 @@
           ],
           "furigana": "コーヒーはいくらですか。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "osake",
@@ -11817,6 +11819,14 @@
         }
       ],
       "furigana": "お酒[さけ]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the cats curled by the enormous bell always find the one jar the priest forgot to lock away. By the time you arrive for New Year's prayers, three of them are sprawled belly-up on the mossy steps, hiccuping softly, radiating that unmistakable warm reek of alcohol.",
+      "reading_mnemonic": "Grandma Kane spots the empty jar and gasps <reading>Oh, sake</reading>, her shocked cry stretching into <reading>おさけ</reading> as she chases the wobbling cats down the mossy steps, the enormous bell clanging behind her the whole way.",
+      "description": "お酒 means alcohol in general — beer, wine, spirits, anything you drink to get tipsy — not only the rice wine English speakers picture when they hear the word sake.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "友達とお酒を飲みます。",
@@ -11850,12 +11860,7 @@
           ],
           "furigana": "このお酒[さけ]はおいしいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "biiru",
@@ -11875,6 +11880,13 @@
         }
       ],
       "furigana": "ビール",
+      "meaning_mnemonic": "The mountain trail's summit reward is one vending machine, impossibly humming after two hours of switchbacks. You feed it coins with shaking hands, and instead of water it drops a cold gold can that hisses and foams straight over your boots: beer, at the top of the mountain, before you've even sat down.",
+      "reading_mnemonic": "ビール is written just as it's read, kana straight through — <reading>ビール</reading> — nothing to sound out beyond what's already on the can.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私はビールを飲みます。",
@@ -11909,12 +11921,7 @@
           ],
           "furigana": "友[とも]達[だち]とビールを買[か]いました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "satou",
@@ -11934,6 +11941,13 @@
         }
       ],
       "furigana": "砂[さ]糖[とう]",
+      "meaning_mnemonic": "At the riverbank, someone drops a paper packet off the little footbridge, and instead of sinking it dissolves mid-air into the current, turning a whole stretch of water thick and slow, the fish drifting through it like it's honey — that's what falls into your tea as sugar.",
+      "reading_mnemonic": "Sei's homeroom teacher introduces herself as <reading>Sato</reading>-sensei, then skips the chalkboard and just pours a spoonful into her tea to prove the name: <reading>さとう</reading>, she says, tapping the packet, sweet like she is.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "コーヒーと砂糖を買います。",
@@ -11968,12 +11982,7 @@
           ],
           "furigana": "彼[かの]女[じょ]は砂[さ]糖[とう]を使[つか]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "shio",
@@ -11993,6 +12002,13 @@
         }
       ],
       "furigana": "塩[しお]",
+      "meaning_mnemonic": "Every dawn at Grandma Kane's shrine, the temple cats watch her fling a scoop of coarse white grains across the gate, a purifying toss meant to sting bare skin. One greedy cat licks a stray grain from the stone, recoils hard, and spends the hour draining the well dry. That sharp mineral bite on its tongue is salt.",
+      "reading_mnemonic": "Grandma Kane hands her shrine attendant Ren a sack for the purification toss. He trips on the steps, and it bursts everywhere as he yelps '<reading>She, oh!</reading>' watching grains fill his sandals — that yelp is exactly <reading>しお</reading>, salt.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "塩を買いました。",
@@ -12027,12 +12043,7 @@
           ],
           "furigana": "母[はは]は毎[まい]日[にち]塩[しお]を使[つか]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ryouri",
@@ -12052,6 +12063,13 @@
         }
       ],
       "furigana": "料[りょう]理[り]",
+      "meaning_mnemonic": "It's 2 a.m. at Koichi's konbini, fluorescent lights buzzing over the onigiri shelf while the till beeps through a lull. Bored, the night clerk pulls ingredients off the shelves — instant miso, a rice ball, a squeeze of mayo — and assembles them into something new on the counter. By closing, he's turned convenience-store scraps into an actual dish: cooking.",
+      "reading_mnemonic": "The clerk introduces himself over the counter, 'I'm <reading>Leo Uri</reading>, konbini cooking champion of aisle three.' He says his name so fast it comes out as one word — <reading>りょうり</reading> — which is exactly how you ask for cooking or a dish.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "この料理はおいしいです。",
@@ -12086,12 +12104,7 @@
           ],
           "furigana": "友[とも]達[だち]の料[りょう]理[り]を食[た]べました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "shokuji",
@@ -12111,6 +12124,13 @@
         }
       ],
       "furigana": "食[しょく]事[じ]",
+      "meaning_mnemonic": "At exactly noon a bell rings through Sei's school, and dozens of <kanji>eat</kanji> tents pop up along the hallway floor — the same roof-made-of-dinner shelter you already know, one for every student ducking in to eat. Trays pile up under each roof until the bell rings again. That whole stretch, from first bite to last, is the meal.",
+      "reading_mnemonic": "A student named Shoko checks her watch in the echoing hallway and gasps '<reading>Shock, gee</reading>, is it that late already?' — she's smelling the trays before she sees them. That gasp is exactly <reading>しょくじ</reading>: meal.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "友達と一緒に食事をします。",
@@ -12146,12 +12166,7 @@
           ],
           "furigana": "明日[あした]、彼[かれ]と食[しょく]事[じ]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kome-v",
@@ -12171,6 +12186,13 @@
         }
       ],
       "furigana": "米[こめ]",
+      "meaning_mnemonic": "Near the top of the mountain trail, past the last switchback, hikers find the one vending machine standing improbably at the summit. Its slots hold no soda or tea — only small bags of hard, pale grains, unwashed and uncooked. A disappointed hiker buys one anyway, shakes it like a maraca, and trudges back down still hungry: uncooked rice.",
+      "reading_mnemonic": "A hiker at the summit rattles her bag of grains and mutters '<reading>Comb</reading> through this later,' annoyed she packed the wrong snack. That mutter is exactly <reading>こめ</reading> — uncooked rice, the kind you rinse before cooking, not eat straight from the bag.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "母は米を買います。",
@@ -12205,12 +12227,7 @@
           ],
           "furigana": "料[りょう]理[り]に米[こめ]を使[つか]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "okashi",
@@ -12230,6 +12247,13 @@
         }
       ],
       "furigana": "お菓[か]子[し]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, someone leaves rice crackers by the bell as an offering. A <kanji>child</kanji> wriggles free of its wrap — arms flung wide, the exact shape that means <kanji>child</kanji> — snatches the whole plate and is found later face-down in crumbs. The monks give up on real food; now they just leave out sweets.",
+      "reading_mnemonic": "Behind Koichi's konbini, there's a locked drawer everyone whispers about. Pry it open and you find <reading>おかし</reading> — an entire <reading>cache</reading> of sweets he's been hoarding since spring, more candy than any kid could eat in a year.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "このお菓子はおいしいです。",
@@ -12264,12 +12288,7 @@
           ],
           "furigana": "妹[いもうと]とお菓[か]子[し]を食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "bentou",
@@ -12289,6 +12308,13 @@
         }
       ],
       "furigana": "弁[べん]当[とう]",
+      "meaning_mnemonic": "Halfway up the mountain trail, past the improbable summit vending machine, a hiker unzips her pack instead of buying anything. Inside sits a perfectly packed rectangular box — rice, a pickled plum, a segment of grilled fish — eaten cold on a rock at the top. That neat travel box is a boxed lunch.",
+      "reading_mnemonic": "On the mountain trail, Ben trips over a root and sends his lunch tumbling downhill. He chases it hollering '<reading>Ben, my toe!</reading>' — say it fast and you land on <reading>べんとう</reading>, the boxed lunch he's sprinting to save before the crows find it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "明日弁当を買います。",
@@ -12323,12 +12349,7 @@
           ],
           "furigana": "彼[かの]女[じょ]と弁[べん]当[とう]を食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "resutoran",
@@ -12348,6 +12369,14 @@
         }
       ],
       "furigana": "レストラン",
+      "meaning_mnemonic": "Someone moors a floating diner to a post on the riverbank so it can't drift off. A chalkboard menu hangs from the mast, and the one waiter wades out in rubber boots to deliver plates. Tourists queue on the bank just to eat somewhere that technically counts as a restaurant, even though it's really a raft with silverware.",
+      "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>レストラン</reading>.",
+      "description": "レストラン specifically means a Western-style sit-down restaurant. Casual Japanese eateries, noodle counters, and specialty food shops usually go by other names, not this word.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "明日レストランに行きます。",
@@ -12382,12 +12411,7 @@
           ],
           "furigana": "友[とも]達[だち]とレストランで食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kissaten",
@@ -12407,6 +12431,14 @@
         }
       ],
       "furigana": "喫[きっ]茶[さ]店[てん]",
+      "meaning_mnemonic": "Sei ducks out of gym class through a gap in the fence and ends up in an impossibly quiet shop three streets over — dim lighting, one old man refolding the same newspaper, a menu of drinks nobody at school has heard of. It is a coffee shop, and gym period never felt shorter.",
+      "reading_mnemonic": "Behind the coffee shop counter, the barista scores every espresso out of ten, and when one hits a perfect score, plants a theatrical <reading>kiss a ten</reading> on the cup before serving it. Regulars just call the place <reading>きっさてん</reading> and never ask about the ritual.",
+      "description": "きっさてん usually points at an old-style Japanese coffee shop — dim, quiet, often decades-old — rather than a modern chain cafe.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は喫茶店でコーヒーを飲みます。",
@@ -12443,12 +12475,7 @@
           ],
           "furigana": "この喫[きっ]茶[さ]店[みせ]のお茶[ちゃ]はおいしいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ie",
@@ -12468,6 +12495,13 @@
         }
       ],
       "furigana": "家[いえ]",
+      "meaning_mnemonic": "Halfway up the mountain trail, past the lone vending machine, a hermit crab stops dragging its blistered shell. It wedges into a hollow rock at the trail's edge, lines up four pinecones in the doorway like doormats, and won't budge again. That hollow rock, doormats and all, is officially somebody's house — the crab has made itself a home.",
+      "reading_mnemonic": "A builder named Ei nails one crooked wall onto that same hollow rock and steps back beaming, waiting for someone to ask about the roof. Instead he throws both arms up and shouts <reading>いえ</reading>, which lands on the ear exactly like an English <reading>yay</reading>, and declares the one wall a finished house.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "家に帰ります。",
@@ -12502,12 +12536,7 @@
           ],
           "furigana": "週[しゅう]末[まつ]は家[いえ]で映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "uchi",
@@ -12527,6 +12556,14 @@
         }
       ],
       "furigana": "うち",
+      "meaning_mnemonic": "Every evening at Grandma Kane's shrine, the stray cats pile into one shivering heap on the mossy steps — not because any cat owns the place, but because the heap itself is the point. Ask an outsider cat to squeeze in and the whole pile hisses as one; ask one inside where home is, and it just presses closer. The heap is home.",
+      "reading_mnemonic": "This word is pure kana, spelled exactly the way it sounds, so <reading>うち</reading> needs no decoding — just read it as written.",
+      "description": "うち means home in the sense of your own group or household, not just a building. Japanese speakers use it to mark insiders against outsiders, so it can describe a company, a team, or a family circle as easily as a physical house — a nuance the English word 'home' does not carry on its own.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日うちに帰ります。",
@@ -12561,12 +12598,7 @@
           ],
           "furigana": "うちでご飯[はん]を食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "gakkou-v",
@@ -12586,6 +12618,13 @@
         }
       ],
       "furigana": "学[がっ]校[こう]",
+      "meaning_mnemonic": "The swaddled <kanji>study</kanji> child, still parked under its canopy of scribbled lesson notes, gets carried to the courtyard and set at the foot of the one great <kanji>school</kanji> tree. Roots tangle around the roof of notes, a bell rings somewhere in the branches, and the courtyard fills with kids at recess — canopy and tree have grown into one building: a school.",
+      "reading_mnemonic": "You already know 学 as がく and 校 as こう — chain them together (がく softens to がっ before こう) and you get exactly <reading>がっこう</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は毎日学校へ行きます。",
@@ -12622,12 +12661,7 @@
           ],
           "furigana": "この学[がっ]校[こう]は楽[たの]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "daigaku",
@@ -12647,6 +12681,13 @@
         }
       ],
       "furigana": "大[だい]学[がく]",
+      "meaning_mnemonic": "The same wide-armed stretcher who's always bragging how <kanji>big</kanji> his catch was plants himself over the swaddled <kanji>study</kanji> child's roof of lesson notes and stretches even wider, insisting the canopy is huge too. He keeps stretching until the notes swell into a whole campus of towering lecture halls — the biggest school there is: a university.",
+      "reading_mnemonic": "You already know 大 as だい and 学 as がく — put them back to back, no softening needed, and you get exactly <reading>だいがく</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は大学の学生です。",
@@ -12681,12 +12722,7 @@
           ],
           "furigana": "友[とも]達[だち]と大[だい]学[がく]で会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kaisha",
@@ -12706,6 +12742,13 @@
         }
       ],
       "furigana": "会[かい]社[しゃ]",
+      "meaning_mnemonic": "The landlord insists the view improves productivity, so the office gets hauled up the steep mountain trail — desks wedged between boulders, the printer jamming two switchbacks from the top. The boss holds the meeting by the vending machine, tapping his coffee like a whiteboard. A hiker asks if this is really a company. It is.",
+      "reading_mnemonic": "At the top of the mountain trail, <reading>Kai shares</reading> his last rice ball with a gasping hiker, then checks his watch — his 「<reading>かいしゃ</reading>」 starts at nine and he still has to jog back down. Kai shares his snacks the same way he shares deadlines: reluctantly, but right on schedule.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は毎朝会社に行きます。",
@@ -12742,12 +12785,7 @@
           ],
           "furigana": "明日[あした]友[とも]達[だち]と会[かい]社[しゃ]で会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "byouin",
@@ -12767,6 +12805,13 @@
         }
       ],
       "furigana": "病[びょう]院[いん]",
+      "meaning_mnemonic": "A rowboat flips at the riverbank, and instead of a rescue crew, a whole hospital floats out to meet it — beds lashed to buoys, an IV drip swinging from a fishing rod, a nurse checking pulses waist-deep in the current. The patient is hauled onto the nearest buoy, wrapped in a blanket, declared stable before the clipboard stops dripping.",
+      "reading_mnemonic": "The floating buoy at the riverbank turns out to be a tiny inn — a nurse leans out of the porthole and calls it the <reading>buoy inn</reading> for short. 「<reading>びょういん</reading>」, she says, tapping the sign nailed to the mast, and the soaked patient checks in like it's a hotel with worse pillows.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "明日、父と病院に行きます。",
@@ -12803,12 +12848,7 @@
           ],
           "furigana": "友[とも]達[だち]は病[びょう]院[いん]で本[ほん]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ginkou",
@@ -12828,6 +12868,13 @@
         }
       ],
       "furigana": "銀[ぎん]行[こう]",
+      "meaning_mnemonic": "The figure who's always mid-stride, legs split wide, leaning into the step, never leaves the building — he paces the lobby, stamping passbooks between strides because he won't stand still long enough to finish one. Customers behind him catch the same itch to <kanji>go</kanji> before their money finishes counting — a building built around cash that never sits still.",
+      "reading_mnemonic": "Koichi restocks the onigiri shelf at 3 a.m. when a man demands gin. Koichi doesn't sell gin — he runs a konbini — but the man insists so loudly Koichi starts a private ledger, tracking yen owed for gin he never carries. <reading>Gin, Koichi</reading> mutters, ringing up onigiri instead, and the shelf becomes the block's unofficial 「<reading>ぎんこう</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は銀行に行きます。",
@@ -12862,12 +12909,7 @@
           ],
           "furigana": "彼[かれ]は明日[あした]銀[ぎん]行[こう]で待[ま]ちます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "yuubinkyoku",
@@ -12887,6 +12929,13 @@
         }
       ],
       "furigana": "郵[ゆう]便[びん]局[きょく]",
+      "meaning_mnemonic": "The cats at Grandma Kane's shrine have turned the mossy steps into a sorting office, stacking twigs, feathers, and dead beetles beside the enormous bell. Visitors expecting incense get a paw stamping their sandal instead, like a receipt. By evening prayers the pile is sorted, labeled with cat hair, and ready for pickup.",
+      "reading_mnemonic": "At Grandma Kane's shrine, the cats treat the mossy steps like a drop box, leaving one twig at a time beside the enormous bell. When the pile is tall enough, Grandma rings the bell, calls out <reading>you bin, cuckoo</reading>, and sorts them by size. The steps become her 「<reading>ゆうびんきょく</reading>」 — the hillside post office nobody asked for.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日、郵便局に行きます。",
@@ -12920,12 +12969,7 @@
           ],
           "furigana": "郵[ゆう]便[びん]局[きょく]で彼[かの]女[じょ]を待[ま]ちます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "toshokan",
@@ -12945,6 +12989,13 @@
         }
       ],
       "furigana": "図[と]書[しょ]館[かん]",
+      "meaning_mnemonic": "You step into a hall of shelves stretching past where the light reaches. Every page began the same way: someone let the sun sink over their desk while their hand kept moving, filling line after line to <kanji>write</kanji>. Multiply that by ten thousand desks and stack it under one roof — that's a library.",
+      "reading_mnemonic": "Kaa the fire-breathing crow lands on the library roof and singes her own claw. Hopping in place, she does a frantic <reading>toe show, khan</reading>-style hobble past the front desk, and the librarian's endless shushing blurs her yelp into one word: <reading>としょかん</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "図書館はどこですか。",
@@ -12980,12 +13031,7 @@
           ],
           "furigana": "友[とも]達[だち]と図[と]書[しょ]館[かん]で本[ほん]を読[よ]む。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "eki",
@@ -13005,6 +13051,13 @@
         }
       ],
       "furigana": "駅[えき]",
+      "meaning_mnemonic": "Every morning another <kanji>station</kanji> platform fills with hoofprints instead of footprints — the local horses treat the place like open pasture. Today one gallops so hard it clears the ticket gates and skids onto a departing train, mane flying. Staff gave up chasing them years ago.",
+      "reading_mnemonic": "駅's own taught reading carries straight over unchanged, so <reading>えき</reading> is exactly what you already know it to be.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "駅で友達を待ちます。",
@@ -13039,12 +13092,7 @@
           ],
           "furigana": "駅[えき]で弁[べん]当[とう]を買[か]いました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kuukou",
@@ -13064,6 +13112,13 @@
         }
       ],
       "furigana": "空[くう]港[こう]",
+      "meaning_mnemonic": "A city block gets flattened overnight — grass paved over, buildings hauled off — replaced by flat runway under an empty stretch of sky. Nowhere to sit, nowhere to shop, just tarmac waiting for the next jet to lift into all that emptiness. That whole open, sky-swallowed lot is what people mean by airport.",
+      "reading_mnemonic": "A clockwork cuckoo escapes its clock and takes over the tower speakers, popping out every hour to screech instead of chime. Pilots stop listening for gate numbers and taxi in the moment they hear its <reading>cuckoo</reading> call — the whole runway complex ends up named for that shout: <reading>くうこう</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "空港はどこですか。",
@@ -13097,12 +13152,7 @@
           ],
           "furigana": "空[くう]港[こう]でお茶[ちゃ]を飲[の]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "mise",
@@ -13122,6 +13172,13 @@
         }
       ],
       "furigana": "店[みせ]",
+      "meaning_mnemonic": "A hand-painted sign hangs above one sliding door: vegetable bins spill onto the pavement, a bell over the frame jingles nonstop, and the till keeps popping open from coins going in and out all day. Nothing about the place is fancy — just one small room built around handing things to people for money. That room is a shop.",
+      "reading_mnemonic": "A tiny shopkeeper mouse rings up every sale by squeaking the price twice, so customers just call the cramped counter <reading>mice, eh</reading> — say it fast enough and you get <reading>みせ</reading>, the shop everyone in town swears is run entirely by rodents.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "この店は安いです。",
@@ -13159,12 +13216,7 @@
           ],
           "furigana": "明日[あした]、友[とも]達[だち]とあの店[みせ]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "depaato",
