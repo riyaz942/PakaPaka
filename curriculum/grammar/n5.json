@@ -88,40 +88,35 @@
           "english": "I am a student.",
           "answer": "は",
           "nudge": "Marks the topic — what the sentence is about.",
-          "sort_order": 0,
-          "jp_cloze_furigana": "私[わたし]＿＿＿学[がく]生[せい]です。"
+          "sort_order": 0
         },
         {
           "jp_cloze": "これ＿＿＿本です。",
           "english": "This is a book.",
           "answer": "は",
           "nudge": "Marks the topic — what the sentence is about.",
-          "sort_order": 1,
-          "jp_cloze_furigana": "これ＿＿＿本[ほん]です。"
+          "sort_order": 1
         },
         {
           "jp_cloze": "今日＿＿＿暑いです。",
           "english": "Today is hot.",
           "answer": "は",
           "nudge": "Marks the topic — what the sentence is about.",
-          "sort_order": 2,
-          "jp_cloze_furigana": "今日[きょう]＿＿＿暑[あつ]いです。"
+          "sort_order": 2
         },
         {
           "jp_cloze": "田中さん＿＿＿先生です。",
           "english": "Mr. Tanaka is a teacher.",
           "answer": "は",
           "nudge": "Marks the topic — what the sentence is about.",
-          "sort_order": 3,
-          "jp_cloze_furigana": "田中[たなか]さん＿＿＿先[せん]生[せい]です。"
+          "sort_order": 3
         },
         {
           "jp_cloze": "この水＿＿＿冷たいです。",
           "english": "This water is cold.",
           "answer": "は",
           "nudge": "Marks the topic — what the sentence is about.",
-          "sort_order": 4,
-          "jp_cloze_furigana": "この水[みず]＿＿＿冷[つめ]たいです。"
+          "sort_order": 4
         }
       ],
       "explanation_markdown": "You're at a friend's place, pointing at yourself to introduce who you are. You want to say \"I'm a student.\" You've got the words — 私[わたし] for *I*, 学[がく]生[せい] for *student* — but how do you glue them together so it sounds like a real sentence and not two nouns dropped on the floor? That glue is は, the topic marker.\n\nは is the very first particle most learners meet, and for good reason: it's how Japanese says \"okay, here's what I'm talking about — now let me tell you something about it.\" You name your topic, stick は after it, and then make your comment.\n\n```jp\n私[わたし]は学[がく]生[せい]です。\n```\n\n*I'm a student.*\n\nThat's the whole shape. 私[わたし] is the topic, は marks it, and 学[がく]生[せい]です is the comment about it. Notice one thing right away that trips everyone up the first week: this particle is written with the character は but pronounced *wa*, not *ha*. That's normal — it's a historical spelling quirk, and it only happens when は is doing this topic job.\n\n## How it works\n\nThe structure is simple: **Noun + は + comment**. The noun is what you want to talk about. は announces it as the topic. Everything after は is your statement about that topic.\n\nThink of は as drawing a line: \"As for this thing — here's the deal.\" A loose but useful translation of は is \"as for.\" *As for me, student.* Clunky in English, perfectly natural in Japanese.\n\n```jp\nこれは本[ほん]です。\n```\n\n*This is a book.*\n\nHere これ (this one) is the topic, and 本[ほん]です (is a book) is the comment. The comment doesn't have to be short, and it doesn't have to be a です sentence either — but everything you know so far ends in です, so that's what we'll lean on.\n\nYou can make the topic a person's name, a pronoun, or any noun at all:\n\n```jp\n彼[かれ]は学[がく]生[せい]です。\n```\n\n*He is a student.*\n\n```jp\nあなたは学[がく]生[せい]です。\n```\n\n*You are a student.*\n\nThe pattern never changes based on what the topic is. は itself doesn't conjugate, doesn't shift form, doesn't care whether the topic is singular or plural. It's one of the most stable pieces of machinery in the whole language — it just sits there marking the topic, every single time.\n\n## Rules and exceptions\n\nThe biggest thing to internalize: は marks the **topic**, not necessarily the grammatical subject. In simple sentences these overlap so much that you won't feel the difference yet, but keep the word \"topic\" in your head. It'll matter soon.\n\nBecause は sets up \"what we're talking about,\" Japanese loves to drop things once the topic is clear. If it's obvious you're talking about yourself, you can leave off 私[わたし]は entirely and just say 学[がく]生[せい]です. That's not lazy — it's how the language breathes. The topic, once established, doesn't need repeating.\n\n> は is pronounced *wa* when it's the topic marker, even though it's written with the character for *ha*. When は is just part of a word (not a particle), it's read *ha* normally. This one spelling quirk confuses everyone at first — you're not misreading it.\n\nOne more caution: don't sprinkle は onto every noun in a sentence. A sentence usually has **one** topic. Marking two different nouns with は in the same breath will sound strange unless you're deliberately drawing a contrast, which is a move you'll learn later.\n\n## Casual speech\n\nGood news here: は as a topic marker stays は in casual speech. It doesn't contract or drop the way some particles do. What changes around it is the *comment* — casual speakers often drop the です at the end.\n\n```jp\nこれは本[ほん]。\n```\n\n*This is a book. (casual)*\n\nSame topic, same は, just a more relaxed comment with です chopped off. So the particle you're learning now carries straight over into casual speech unchanged — one less thing to relearn later.\n\n## Contrast\n\nYou haven't met other particles yet, so there's nothing to line は up against just now. But here's the tease worth holding onto.\n\nVery soon you'll meet が, the subject marker. It looks like it does the same job as は — and the difference between は and が is one of the genuinely hard, genuinely famous puzzles in Japanese. The short version: は says \"as for X, here's the news,\" while が points a spotlight and says \"*X* is the one.\" You don't need that distinction yet, but plant a flag here, because when が arrives, the first question will be \"wait, how is this different from は?\"\n\nYou'll also soon meet を for marking the object of a verb, and の for linking nouns together. All three live in the same neighborhood as は — little particles doing the quiet structural work — but は is the one that sets the stage for everything else.\n\nRecap: name your topic, add は (say it *wa*), then comment. That's the backbone of the Japanese sentence, and you'll use it in nearly everything you ever say.\n",
@@ -233,40 +228,35 @@
           "english": "This is water.",
           "answer": "です",
           "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 0,
-          "jp_cloze_furigana": "これは水[みず]＿＿＿。"
+          "sort_order": 0
         },
         {
           "jp_cloze": "彼は先生＿＿＿。",
           "english": "He is a teacher.",
           "answer": "です",
           "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 1,
-          "jp_cloze_furigana": "彼[かれ]は先[せん]生[せい]＿＿＿。"
+          "sort_order": 1
         },
         {
           "jp_cloze": "この店は静か＿＿＿。",
           "english": "This shop is quiet.",
           "answer": "です",
           "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 2,
-          "jp_cloze_furigana": "この店[みせ]は静[しず]か＿＿＿。"
+          "sort_order": 2
         },
         {
           "jp_cloze": "学校は近い＿＿＿。",
           "english": "The school is nearby.",
           "answer": "です",
           "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 3,
-          "jp_cloze_furigana": "学[がっ]校[こう]は近[ちか]い＿＿＿。"
+          "sort_order": 3
         },
         {
           "jp_cloze": "私は元気＿＿＿。",
           "english": "I am fine.",
           "answer": "です",
           "nudge": "Polite copula — 'is / am / are' closing the sentence.",
-          "sort_order": 4,
-          "jp_cloze_furigana": "私[わたし]は元[げん]気[き]＿＿＿。"
+          "sort_order": 4
         }
       ],
       "explanation_markdown": "You're looking at a photo with a friend, or pointing at something on a table, and you need to identify it. In English, you connect things to reality with \"is\", \"am\", or \"are\". In Japanese, you use one small word at the very end of your sentence: です—the copula (the word that works like *is/am/are*).\n\n## How it works\n\nJapanese sentences build backward compared to English. The core action or state always anchors the end. When you want to declare what something is, です lands at the finish line.\n\n```jp\nこれはお茶[ちゃ]です。\n```\n*This is tea.*\n\n```jp\n私[わたし]は学[がく]生[せい]です。\n```\n*I am a student.*\n\nYou don't always need to include the \"This is\" or \"I am\" part. If you're both looking right at a dog, you don't need to specify what you're talking about. You just say the noun and wrap it up with です.\n\n```jp\n犬[いぬ]です。\n```\n*It is a dog.*\n\n## Time and truth\n\nIn English, \"is\" changes to \"was\" or \"is not\" depending on when it happened or if it's true. Japanese does the same thing, changing the shape of です.\n\nTo talk about the past, です becomes でした.\n\n```jp\n昨日[きのう]は学[がっ]校[こう]でした。\n```\n*Yesterday was school.*\n\nTo say something *isn't* the case, です becomes ではありません. We will give this negative form its own dedicated spotlight later, but you should start recognizing it now as the standard way to say \"is not\".\n\n```jp\n肉[にく]ではありません。\n```\n*It is not meat.*\n\n## Rules and exceptions\n\nThe copula です attaches directly to nouns. You don't need any extra linking words between the noun and です.\n\n> **Watch out:** You cannot stick です onto verbs to make them polite. Verbs have their own polite rules. Saying `食べるです` to mean \"I politely eat\" is a classic beginner trap.\n\n## Casual speech\n\nです is polite. You use it with teachers, strangers, and coworkers. But if you're talking to a close friend, です drops its polite suit and becomes だ.\n\n```jp\n水[みず]だ。\n```\n*It is water.*\n\nJust be careful with it. だ sounds a bit punchy and emphatic. Often, in casual speech, people drop it entirely and just say the noun. But when you need to make a firm statement, だ is the actual casual equivalent of です.\n\nThat is the foundation of Japanese right there. Once you know how to declare that something *is*, you have the basic structure down. Hold onto this—soon we'll swap the ending for words like でしょう to say \"It's probably water, right?\"\n",
@@ -888,40 +878,35 @@
           "english": "I drink water.",
           "answer": "を",
           "nudge": "Marks the direct object — the thing the verb acts on.",
-          "sort_order": 0,
-          "jp_cloze_furigana": "水[みず]＿＿＿飲[の]みます。"
+          "sort_order": 0
         },
         {
           "jp_cloze": "本＿＿＿読みます。",
           "english": "I read a book.",
           "answer": "を",
           "nudge": "Marks the direct object — the thing the verb acts on.",
-          "sort_order": 1,
-          "jp_cloze_furigana": "本[ほん]＿＿＿読[よ]みます。"
+          "sort_order": 1
         },
         {
           "jp_cloze": "ご飯＿＿＿食べます。",
           "english": "I eat a meal.",
           "answer": "を",
           "nudge": "Marks the direct object — the thing the verb acts on.",
-          "sort_order": 2,
-          "jp_cloze_furigana": "ご飯[はん]＿＿＿食[た]べます。"
+          "sort_order": 2
         },
         {
           "jp_cloze": "音楽＿＿＿聞きます。",
           "english": "I listen to music.",
           "answer": "を",
           "nudge": "Marks the direct object — the thing the verb acts on.",
-          "sort_order": 3,
-          "jp_cloze_furigana": "音[おん]楽[がく]＿＿＿聞[き]きます。"
+          "sort_order": 3
         },
         {
           "jp_cloze": "手紙＿＿＿書きます。",
           "english": "I write a letter.",
           "answer": "を",
           "nudge": "Marks the direct object — the thing the verb acts on.",
-          "sort_order": 4,
-          "jp_cloze_furigana": "手[て]紙[がみ]＿＿＿書[か]きます。"
+          "sort_order": 4
         }
       ],
       "explanation_markdown": "Imagine it is early morning. You have just woken up, you stumble into the kitchen, and you pour yourself some coffee. If you want to describe this routine, you already know the word for coffee (コーヒー) and the verb for drinking (飲[の]む). \n\nBut in Japanese, you cannot just shove a noun and a verb together and hope your listener figures it out. You need a way to tell them, \"Hey, this coffee? It is the thing taking the hit. It is the target of my action.\"\n\nIn English, we rely entirely on the order of the words to know who is doing what. \"I drink coffee\" makes perfect sense, but \"Coffee drink I\" sounds like nonsense. Japanese, however, handles this completely differently. Instead of relying on a strict order, Japanese uses tiny grammatical tags attached to the ends of words to announce their job in the sentence.\n\nEnter the particle を.\n\n## How the object marker works\n\nThink of を as a target reticle. It is a particle—a little word that attaches directly to the end of a noun—and its entire job is to point at an action and say, \"The action happens to THIS.\"\n\nWhenever you eat something, drink something, watch something, or buy something, the thing receiving that action gets the を particle.\n\n```jp\nコーヒーを飲[の]む。\nパンを食[た]べる。\n本[ほん]を読[よ]む。\n```\n*I drink coffee.*\n*I eat bread.*\n*I read a book.*\n\nTyping and pronunciation note: When you are typing on a keyboard, you will type this character as \"wo\". However, in modern spoken Japanese, the \"w\" sound is almost entirely dropped. You will hear native speakers pronounce it exactly like the vowel \"o\" (お). It is a special character that exists almost exclusively to serve as this grammar particle.\n\n## Building bigger sentences\n\nBecause particles like を act as permanent nametags for your words, it gives Japanese incredible flexibility. Let's bring back the topic marker は (the particle that means \"as for X...\") and see how they play together.\n\n```jp\n私[わたし]はお茶[ちゃ]を飲[の]む。\n彼[かの]女[じょ]は映[えい]画[が]を見[み]る。\n```\n*I drink tea.*\n*She watches a movie.*\n\nNotice the natural rhythm of a standard Japanese sentence: Topic は Object を Verb. The topic sets the stage at the beginning, the object receives the action in the middle, and the verb rigidly anchors the very end of the sentence.\n\nBut here is where the particle system shines. Because the particles are attached to the nouns, you can actually shuffle the order of the information before the verb, and the sentence still means the exact same thing.\n\n```jp\n私[わたし]は肉[にく]を食[た]べる。\n肉[にく]を私[わたし]は食[た]べる。\n```\n*I eat meat.*\n*As for the meat, I eat it.*\n\nBoth sentences mean you are eating meat. The second one just places a bit more emphasis on the meat by putting it first. Because を is glued to 肉[にく], and は is glued to 私[わたし], your listener never gets confused about who is eating and what is being eaten.\n\n## Asking what someone is doing\n\nYou will use を constantly when asking people about their plans or their habits. If you want to ask \"what\" someone is doing, you combine the question word 何[なに] (what) with the を particle.\n\n```jp\n何[なに]を買[か]う？\n明日[あした]、パンを買[か]う。\n```\n*What will you buy?*\n*Tomorrow, I will buy bread.*\n\n```jp\n毎[まい]日[にち]、何[なに]を見[み]る？\n映[えい]画[が]を見[み]る。\n```\n*What do you watch every day?*\n*I watch movies.*\n\n> Notice how we didn't use the topic marker は for \"you\" or \"I\" in these examples? If you are looking right at your friend and asking a question, they already know you are talking to them. Japanese loves efficiency—if the topic is obvious from the context, you just drop it entirely and jump straight to the object and the verb.\n\n## Rules and exceptions\n\nThere is one massive, unbreakable rule for を: it only ever works with action verbs.\n\nYou use it for eating, reading, buying, seeing, and listening. You absolutely **never** use it with the copula です (the word that works like *is/am/are*). \n\nIf you want to say \"It is water,\" you say `水です`. If you try to say `水をです`, you are basically saying \"I am doing an action to the water... is.\" It is grammatical gibberish. Save を strictly for when a noun is actively having something done to it.\n\n## Casual speech\n\nHere is a messy truth about conversational Japanese that textbooks often hide until much later: when you are chatting casually with your friends, the を particle frequently vanishes into thin air.\n\nWhen the context is totally clear, native speakers speak quickly and drop the object marker to save a syllable.\n\n```jp\nお酒[さけ]飲[の]む？\nこれ食[た]べる。\n```\n*Want to drink alcohol?*\n*I'll eat this.*\n\nTechnically, these are `お酒を飲む？` and `これを食べる。`. While you are still building your muscle memory and getting used to how Japanese sentences are structured, you should practice using を every time. But do not be surprised when you hear your Japanese friends skipping it in casual situations.\n\n## Contrast: は vs を\n\nBecause Japanese lets you omit so much information, it is completely normal for beginners to get confused about when to use the topic marker は and when to use the object marker を. \n\nLet's look at a sentence with both, and then see what happens if we mix them up.\n\n```jp\n猫[ねこ]は魚[さかな]を食[た]べる。\n```\n*The cat eats fish.*\n\nHere, the cat (猫[ねこ]) is the topic. We are talking about the cat. The fish (魚[さかな]) is the target of the eating. The universe is in harmony.\n\nBut what if you panic and swap the particles?\n\n```jp\n魚[さかな]は猫[ねこ]を食[た]べる。\n```\n*The fish eats the cat.*\n\nNow the fish is the topic (the one doing the action), and the cat is the one taking the hit! \n\nThis is why particles are so vital. は sets the stage and introduces the main actor. を paints the target on the thing receiving the action. \n\nを is your absolute best friend for describing what you do to the world around you. You drink water, you read books, you meet friends. But what happens when something does an action *to* you? Or what if you want to emphasize exactly *who* is doing the action, rather than just treating them as a general topic? Hold onto that thought—it becomes incredibly important when we introduce the subject marker が a little later on.\n",
@@ -1016,40 +1001,35 @@
           "english": "There is a cat.",
           "answer": "が",
           "nudge": "Marks the grammatical subject — who or what exists, happens, or is preferred.",
-          "sort_order": 0,
-          "jp_cloze_furigana": "猫[ねこ]＿＿＿います。"
+          "sort_order": 0
         },
         {
           "jp_cloze": "誰＿＿＿来ますか。",
           "english": "Who is coming?",
           "answer": "が",
           "nudge": "Marks the grammatical subject — who or what exists, happens, or is preferred.",
-          "sort_order": 1,
-          "jp_cloze_furigana": "誰[だれ]＿＿＿来[らい]ますか。"
+          "sort_order": 1
         },
         {
           "jp_cloze": "お金＿＿＿ありません。",
           "english": "I have no money.",
           "answer": "が",
           "nudge": "Marks the grammatical subject — who or what exists, happens, or is preferred.",
-          "sort_order": 2,
-          "jp_cloze_furigana": "お金[かね]＿＿＿ありません。"
+          "sort_order": 2
         },
         {
           "jp_cloze": "私は犬＿＿＿好きです。",
           "english": "I like dogs.",
           "answer": "が",
           "nudge": "Marks the grammatical subject — who or what exists, happens, or is preferred.",
-          "sort_order": 3,
-          "jp_cloze_furigana": "私[わたし]は犬[いぬ]＿＿＿好[す]きです。"
+          "sort_order": 3
         },
         {
           "jp_cloze": "時間＿＿＿ありません。",
           "english": "There is no time.",
           "answer": "が",
           "nudge": "Marks the grammatical subject — who or what exists, happens, or is preferred.",
-          "sort_order": 4,
-          "jp_cloze_furigana": "時[じ]間[かん]＿＿＿ありません。"
+          "sort_order": 4
         }
       ],
       "explanation_markdown": "You're sitting in a quiet room and something moves in the corner. You want to say it out loud — \"a cat!\" — but not as the topic of a conversation, just pointing at the plain fact that a cat is *there*. This is the moment が was built for.\n\nが is the subject marker: the little word that tags **who or what is actually doing the verb or being the thing**. Where は steps back and says \"as for this, here's my comment,\" が leans in and points: *this one, right here, is the one.*\n\n```jp\n猫[ねこ]がいる。\n```\n\n*There's a cat.*\n\nNotice there's no \"as for\" flavor here. You're not commenting on the cat as an already-known topic — you're announcing it. が does that announcing work.\n\n## How it works\n\nThe structure is as simple as it looks: **Noun + が + Predicate**. The noun before が is the subject — the thing that exists, acts, or is described by whatever comes after.\n\nThe clearest place to feel が is with question words. When you ask *who* or *what* is doing something, you almost always reach for が, because you're asking the listener to fill in the unknown subject.\n\n```jp\n誰[だれ]がいる。\n```\n\n*Who's there?*\n\nYou can't make 誰[だれ] a topic — you can't comment on something you don't know yet. So は is off the table, and が steps in naturally. This is the single most reliable が instinct you can build: **question-word subjects take が.**\n\nAnd the answer comes back with が too, because the answer is the newly-identified subject:\n\n```jp\n彼[かれ]がいる。\n```\n\n*He's there.*\n\nが works the same way for existence and possession. When you're stating that something simply *exists* or that you *have* it, the thing that exists is marked with が.\n\n```jp\nお金[かね]がある。\n```\n\n*There's money. / I have money.*\n\nSame shape every time: the thing being pointed at, then が, then the predicate. You don't conjugate が or change it — it's one fixed syllable doing one job.\n\n## Rules and exceptions\n\nThe trap almost every learner falls into is reaching for が when they mean a general topic. If you're talking *about* yourself as the subject of an ongoing conversation, は is usually what you want. が is for the *new*, the *specific*, the *answer to a question* — the piece of information that wasn't already on the table.\n\n> When a question word like 誰[だれ] or 何[なに] is the subject, use が, never は. \"As for who?\" is not a sentence.\n\nThere's a mirror rule that surprises people: the *answer* to a が question also takes が, but if you then shift to talking about that person generally, you switch back to は. The particle tracks what's new versus what's settled, not the grammar of the word itself.\n\n> が marks the subject, but not every subject wears が. Once something becomes the known topic of the conversation, it often trades が for は.\n\n## Casual speech\n\nが itself doesn't contract — it's already a single clean syllable, so there's nothing to shorten. But in fast, casual speech, people often just *drop* it entirely when the meaning is obvious.\n\n```jp\n今[いま]、猫[ねこ]がいる。\n猫[ねこ]いる。\n```\n\n*Right now, there's a cat. / A cat, there is.*\n\nThe first line is the full, neutral form. The second is what a friend might actually say pointing across the room — が gone, meaning intact. This dropping is casual only; in careful or polite speech, keep the が in.\n\n## Contrast\n\nHere's where が earns its keep against は, the topic marker you already know. Swap one for the other and the *feeling* of the sentence changes completely.\n\n```jp\n彼[かれ]がいる。\n彼[かれ]は来[く]る。\n```\n\n*HE's the one who's here. / As for him, he'll come.*\n\nThe first line answers \"who's here?\" — が spotlights 彼[かれ] as the new, specific subject. The second uses は to set 彼[かれ] up as the topic and then comments about him. が points a finger; は sets a stage.\n\nAnd against を, the direct object marker: を marks *what the action lands on*, while が marks *who does the action*. In a fuller sentence they'd sit on opposite sides of the verb — the doer in が, the done-to in を. For now, just hold the split: が is the actor, を is the target.\n\nThat's the whole core: が points at the subject, especially when it's new information or an answer to *who* or *what*. Hold onto this feeling — it comes back the moment we meet の and start linking nouns together.\n",
@@ -1687,24 +1667,21 @@
           "english": "I am a student too.",
           "answer": "も",
           "nudge": "Means 'also / too' — it replaces は or が.",
-          "sort_order": 0,
-          "jp_cloze_furigana": "私[わたし]＿＿＿学[がく]生[せい]です。"
+          "sort_order": 0
         },
         {
           "jp_cloze": "これ＿＿＿ください。",
           "english": "This one too, please.",
           "answer": "も",
           "nudge": "Means 'also / too' — it replaces は or が.",
-          "sort_order": 1,
-          "jp_cloze_furigana": "これ＿＿＿ください。"
+          "sort_order": 1
         },
         {
           "jp_cloze": "彼＿＿＿来ます。",
           "english": "He is coming as well.",
           "answer": "も",
           "nudge": "Means 'also / too' — it replaces は or が.",
-          "sort_order": 2,
-          "jp_cloze_furigana": "彼[かれ]＿＿＿来[らい]ます。"
+          "sort_order": 2
         },
         {
           "jp_cloze": "水＿＿＿飲みます。",
