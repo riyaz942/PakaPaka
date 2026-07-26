@@ -12,11 +12,11 @@ the decomposition constraint, the reading constraint, the look-alike list, the c
 injection, or the validation changes.
 
 For a copy-paste browser-automation task (Gemini web), see
-[`kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`](./kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md).
+[`radical-kanji-vocab-mnemonic-web-chat-workflow-automation-prompt.md`](./radical-kanji-vocab-mnemonic-web-chat-workflow-automation-prompt.md).
 For a no-browser variant that produces replies with in-session subagents — same
 `webprompts`/`ingest` commands, same gate, but one subagent per small group of
 related items so their scenes can be kept distinct — see
-[`kanji-radical-mnemonic-subagent-workflow-automation-prompt.md`](./kanji-radical-mnemonic-subagent-workflow-automation-prompt.md).
+[`radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md`](./radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md).
 Ingestion and repair stay per item in every lane.
 
 Everything runs from `curriculum/_build` with the existing venv:

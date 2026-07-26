@@ -9,7 +9,7 @@ subagent per small **group** of related items (see <group-size> below) — inste
 of a web chat or the Message Batches API; the context builder (the taught
 decomposition, the established component prose, the reading target, the reviewed
 look-alikes, the cast injection) and the mechanical gate are identical to every
-other lane. See `docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md` for
+other lane. See `docs/workflows/radical-kanji-vocab-mnemonic-web-chat-workflow.md` for
 the shared pipeline background.
 
 This run is for ONE content type at a time and **auto-selects the next batch of

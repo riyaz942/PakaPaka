@@ -363,12 +363,12 @@ requeue then `flagged_for_rewrite`). Run from `curriculum/_build` with API crede
 inlines them into the kanji/radical JSON (`meaning_mnemonic`/`reading_mnemonic`/
 `description` on kanji, the vivid image into radical `mnemonic_text`). The no-API
 web-chat lane (`webprompts`/`ingest`) mirrors 2a for the cost swap and is documented
-in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow.md` (with an automation prompt for
-driving Gemini web in `docs/workflows/kanji-radical-mnemonic-web-chat-workflow-automation-prompt.md`).
+in `docs/workflows/radical-kanji-vocab-mnemonic-web-chat-workflow.md` (with an automation prompt for
+driving Gemini web in `docs/workflows/radical-kanji-vocab-mnemonic-web-chat-workflow-automation-prompt.md`).
 A no-API, no-browser variant that produces each reply with in-session subagents (same
 `webprompts`/`ingest` commands and gate, auto-selecting the next batch of slugs stale
 under the current `PROMPT_VERSION`) is in
-`docs/workflows/kanji-radical-mnemonic-subagent-workflow-automation-prompt.md`.
+`docs/workflows/radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md`.
 Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pass
 (drafts do not ship past `compile-curriculum`'s draft gate until
 `review_status: reviewed`).
