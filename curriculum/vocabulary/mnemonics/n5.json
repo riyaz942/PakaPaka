@@ -1,8 +1,27 @@
 {
+  "achira": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a tourist bows too deep and asks, ever so formally, where the enormous bell hangs. Grandma Kane doesn't just point — she straightens up, sweeps her whole arm in a slow, ceremonial arc past the mossy steps and every lounging cat, all the way to the far tower, because when the distance is real and the company deserves manners, you don't jab a finger — you gesture, grandly, over there.",
+    "reading_mnemonic": "You already know あ, ち, and ら from other kana words; <reading>あちら</reading> just strings them together into the sound <reading>\"ah-chee-rah\"</reading>, read exactly as it's spelled, nothing hidden underneath.",
+    "description": "This is the polite, distance-marking form of \"over there\" — the one you use with strangers, customers, or anyone above you in status, not the clipped, casual version you'd use with close friends. Point far away formally, not with a jabbed finger.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "anata": {
     "meaning_mnemonic": "At Koichi's konbini, the till breaks and starts beeping the same word at whoever steps up to pay — anata, anata — refusing to learn a single name. Customers give up introducing themselves and just answer to it, until the word stops being rude and becomes the only way anyone in that line ever gets addressed: you.",
     "reading_mnemonic": "あなた is written exactly the way it sounds — plain kana, no kanji hiding a different reading — so the word you say is simply 「<reading>あなた</reading>」.",
     "description": "In real conversation あなた is used sparingly — Japanese usually addresses people by name or title, and aiming あなた at a stranger or superior can sound distant or even confrontational; it is most naturally heard from a wife speaking to her husband.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "anna": {
+    "meaning_mnemonic": "Partway up the mountain trail, Sei points at the vending machine improbably perched at the summit, far beyond arm's reach, and mutters that only that kind of machine — the distant one neither of them chose — would end up all the way up there.",
+    "reading_mnemonic": "This is another kana-only word, so <reading>あんな</reading> is simply read as written, with no separate derivation needed.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -29,10 +48,65 @@
       "review_status": "draft"
     }
   },
+  "asoko": {
+    "meaning_mnemonic": "At the riverbank, a stray sock slips off the washing line and drifts downstream before anyone notices. By the time someone looks up, it's bobbing far off, snagged on a rock past the bend — not here, not nearby, just over there. That distant, can't-quite-reach spot is exactly what this word points at: over there.",
+    "reading_mnemonic": "This word is written in kana exactly as it's read — <reading>あそこ</reading>, nothing more to decode.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "boku": {
     "meaning_mnemonic": "At the riverbank, a boy waist-deep in the current catches nothing all afternoon, and when a fish finally leaps straight into his rival's net instead of his own, he plants his rod in the mud and announces to the whole bank that he, personally, will be the one telling this story later — not his friend, not the fish, him. That flat, proud claim to being the one talking is the meaning you want: I, said the rough, boyish way a kid says it.",
     "reading_mnemonic": "He slaps his soggy fishing log down on a rock and reads the cover aloud in a gruff voice, <reading>book</reading>, <reading>book</reading>, until it slurs into <reading>ぼく</reading> — the plain, boyish way to say I that he now uses for himself as often as for the log.",
     "description": "Used mainly by men and boys, in casual to neutral speech; it reads as too soft or boyish for very formal contexts and is rarely used by adult women.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dare": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the enormous bell rings itself in the dead of night. The cats scatter, the mossy steps creak, and no one is standing anywhere near the rope. Grandma Kane storms out onto the steps demanding an answer to the only question that matters: who.",
+    "reading_mnemonic": "Every night the bell rings and nobody's there, so Grandma Kane leans out over the mossy steps and bellows into the dark: who <reading>dares</reading> touch my bell? The cats scatter at the challenge in her voice, and that same dare is exactly the sound of <reading>だれ</reading> — the question of who it could possibly be.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "dochira": {
+    "meaning_mnemonic": "You've dragged yourself up the mountain trail to the one improbable vending machine at the top, expecting relief, and instead find the path splits into two identical forks beyond it. The machine hums, unhelpful as ever, while you stand there turning your head between both paths, asking the trail itself, out loud, which way.",
+    "reading_mnemonic": "You already know ど, ち, and ら from other kana words; <reading>どちら</reading> just strings them together into the sound <reading>\"doh-chee-rah\"</reading>, read exactly as it's spelled, no surprises left to decode.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "doko": {
+    "meaning_mnemonic": "Partway up the mountain trail, a hiker's bag splits open and rice balls tumble everywhere. She scrambles after them, asking every passerby the same question over and over, all the way to the vending machine at the top: where did they go, where did that one land, where is the last one. The whole climb becomes one word, repeated: where.",
+    "reading_mnemonic": "This word is written in kana exactly as it's read — <reading>どこ</reading>, no hidden reading underneath.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "donata": {
+    "meaning_mnemonic": "At the top of the mountain trail, past the lone vending machine, a hiker meets a stranger wrapped head to toe against the wind. Too winded to be casual, they bow deeply and ask with careful formality: might I ask, to whom do I have the honor of speaking? The mountain answers only with silence, and the polite question just hangs there: who, respectfully asked.",
+    "reading_mnemonic": "どなた is written exactly as it sounds, kana only — read straight through as <reading>どなた</reading>, no hidden reading to derive.",
+    "description": "This is the polite version of the plain word for who, used when asking after a stranger, a guest, or anyone you would address formally, the way English shifts from a blunt who's that to who, may I ask. Save the plain form for friends and family instead.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "donna": {
+    "meaning_mnemonic": "At Koichi's konbini, a clerk named Donna refuses to just ring anything up. She grabs every item — onigiri, drinks, gum — and interrogates the shopper: what kind of rice is inside, what kind of flavor, what kind of wrapper. The beeping till never moves on until she gets an answer to her only question: what kind of.",
+    "reading_mnemonic": "どんな is written exactly as it sounds — kana only, nothing to dig for — just read <reading>どんな</reading> straight through as it's written.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -85,9 +159,28 @@
       "review_status": "draft"
     }
   },
+  "kochira": {
+    "meaning_mnemonic": "At Sei's school, on the sports field, the coach spots a shy transfer student hovering by the gate and waves the whole team over with one arm: this way, everyone — then, turning to the team, this is our new player. One gesture does both jobs, aiming a direction and introducing a person, which is exactly what this word covers: this way, this person.",
+    "reading_mnemonic": "This word is written in kana exactly as it's read — <reading>こちら</reading>, nothing to derive.",
+    "description": "This is the polite register: it is what you use to gesture someone toward a direction in front of others, or to introduce a person formally (a host presenting a guest, a clerk directing a customer), not casual chatter between friends about where something is.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "koko": {
     "meaning_mnemonic": "Grandma Kane rings the shrine's one enormous bell every morning, but the rope has vanished among the mossy steps and circling cats. She stamps one paving stone and declares the rope must be tied down right there, jabbing the ground: here, here, here — and that exact stamped spot is where it's always been.",
     "reading_mnemonic": "ここ is pure kana, read exactly as it looks, so there's no hidden kanji to unpack — <reading>ここ</reading> is simply pronounced as written.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "konna": {
+    "meaning_mnemonic": "Koichi is standing behind his own register, holding up the onigiri that is already in his hand, insisting to the customer that no substitute will do — only this kind of rice ball, the exact one gripped between his fingers, right here and nowhere else.",
+    "reading_mnemonic": "This word is written the way it sounds, straight kana, so <reading>こんな</reading> is read exactly as it looks — no hidden reading to hunt for.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -113,9 +206,27 @@
       "review_status": "draft"
     }
   },
+  "sochira": {
+    "meaning_mnemonic": "You're already at Koichi's till, practically leaning on the register, when you ask where the onigiri is. Koichi doesn't even look up — he just tilts his chin two feet toward the shelf you're basically touching and grunts the sound out, because when the thing you want is that close, all you need to say is that way.",
+    "reading_mnemonic": "You already know そ, ち, and ら from other kana words; <reading>そちら</reading> just strings them together into the sound <reading>\"so-chee-rah\"</reading>, read exactly as it's spelled, no twist to catch you out.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "soko": {
     "meaning_mnemonic": "Down at the riverbank, someone drops a sandal mid-crossing and it snags on a rock partway across the water. You point at the exact spot from the near bank, arm out straight, calling out to the person wading in: there, there, no, THERE — the sandal never moves, but your pointing finger fixes the place for good.",
     "reading_mnemonic": "そこ is written entirely in kana the way it sounds, with no kanji standing behind it — you read <reading>そこ</reading> exactly as it's spelled.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sonna": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a cat knocks the enormous bell clean off its stand, and when she's told it was an accident she just stares at the wreckage — that kind of excuse, the kind aimed right back at whoever just spoke, never quite convincing her.",
+    "reading_mnemonic": "Like its cousins, this word is pure kana, so <reading>そんな</reading> is pronounced exactly as spelled, with nothing underneath to decode.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
