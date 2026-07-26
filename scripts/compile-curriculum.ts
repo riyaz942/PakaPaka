@@ -117,6 +117,8 @@ type ExampleSentence = {
 
 type GrammarClozeVariant = {
   jp_cloze: string;
+  /** Bracket-notation cloze with blank preserved; optional (Plan 11.8). */
+  jp_cloze_furigana?: string;
   english: string;
   answer: string;
   nudge: string;
@@ -598,8 +600,8 @@ export function compileCurriculum(
       VALUES (@grammar_item_id, @related_item_id, @sort_order)
     `);
     const insertClozeVariant = db.prepare(`
-      INSERT INTO grammar_cloze_variants (item_id, jp_cloze, english, answer, nudge, sort_order)
-      VALUES (@item_id, @jp_cloze, @english, @answer, @nudge, @sort_order)
+      INSERT INTO grammar_cloze_variants (item_id, jp_cloze, jp_cloze_furigana, english, answer, nudge, sort_order)
+      VALUES (@item_id, @jp_cloze, @jp_cloze_furigana, @english, @answer, @nudge, @sort_order)
     `);
     const insertGrammarVocabLink = db.prepare(`
       INSERT INTO grammar_vocabulary_links (grammar_item_id, vocabulary_item_id)
@@ -662,6 +664,7 @@ export function compileCurriculum(
         insertClozeVariant.run({
           item_id: id,
           jp_cloze: variant.jp_cloze,
+          jp_cloze_furigana: variant.jp_cloze_furigana ?? null,
           english: variant.english,
           answer: variant.answer,
           nudge: variant.nudge,

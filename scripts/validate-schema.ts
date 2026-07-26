@@ -282,7 +282,7 @@ function runClozeVariantChecks(
   item: {
     slug: string;
     accepted_forms: string[];
-    cloze_variants?: { jp_cloze: string; answer: string }[];
+    cloze_variants?: { jp_cloze: string; jp_cloze_furigana?: string; answer: string }[];
   },
   errors: string[],
 ): void {
@@ -291,6 +291,9 @@ function runClozeVariantChecks(
     const label = `${relative} grammar:${item.slug} cloze_variants[${index}]`;
     if (!CLOZE_BLANK_RE.test(variant.jp_cloze)) {
       errors.push(`${label}: jp_cloze has no ＿ blank`);
+    }
+    if (variant.jp_cloze_furigana !== undefined && !CLOZE_BLANK_RE.test(variant.jp_cloze_furigana)) {
+      errors.push(`${label}: jp_cloze_furigana has no ＿ blank`);
     }
     if (!accepted.has(variant.answer.normalize('NFKC'))) {
       errors.push(

@@ -68,6 +68,7 @@ CREATE TABLE grammar_cloze_variants (
   id INTEGER PRIMARY KEY NOT NULL,
   item_id INTEGER NOT NULL REFERENCES items(id),
   jp_cloze TEXT NOT NULL,
+  jp_cloze_furigana TEXT,
   english TEXT NOT NULL,
   answer TEXT NOT NULL,
   nudge TEXT NOT NULL,

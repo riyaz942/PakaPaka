@@ -208,6 +208,7 @@
       "required": ["jp_cloze", "english", "answer", "nudge"],
       "properties": {
         "jp_cloze": { "type": "string", "minLength": 1, "pattern": "＿" },
+        "jp_cloze_furigana": { "type": "string", "minLength": 1, "pattern": "＿" },
         "english": { "type": "string", "minLength": 1 },
         "answer": { "type": "string", "minLength": 1 },
         "nudge": { "type": "string" },

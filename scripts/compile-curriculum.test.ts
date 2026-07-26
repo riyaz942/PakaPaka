@@ -65,9 +65,16 @@ describe('compile-curriculum', () => {
       expect(rule.family).toBe('copula');
 
       const variant = db
-        .prepare('SELECT jp_cloze, english, answer, nudge FROM grammar_cloze_variants')
-        .get() as { jp_cloze: string; english: string; answer: string; nudge: string };
+        .prepare('SELECT jp_cloze, jp_cloze_furigana, english, answer, nudge FROM grammar_cloze_variants')
+        .get() as {
+        jp_cloze: string;
+        jp_cloze_furigana: string | null;
+        english: string;
+        answer: string;
+        nudge: string;
+      };
       expect(variant.jp_cloze).toBe('これは水＿＿＿。');
+      expect(variant.jp_cloze_furigana).toBe('これは水[みず]＿＿＿。');
       expect(variant.answer).toBe('です');
       expect(variant.nudge).toContain('copula');
     } finally {

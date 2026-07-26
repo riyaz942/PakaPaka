@@ -42,6 +42,8 @@ export type QueueInputItem = {
   answerKey: ReviewAnswerKey;
   /** Grammar cloze prompt derived at load time; null/absent for non-grammar items. */
   clozePrompt?: string | null;
+  /** Furigana-annotated cloze prompt (Plan 11.8); grammar only. */
+  clozePromptFurigana?: string | null;
   /** Chunk the cloze blanks (authored variant answer); grammar only. */
   clozeAnswer?: string | null;
   /** Hint rung 1 content (Plan 10); grammar only. */
@@ -262,6 +264,7 @@ function mapToReviewItem(
       ),
     isTwoCardItem: overrides?.isTwoCardItem,
     clozePrompt: item.clozePrompt ?? null,
+    clozePromptFurigana: item.clozePromptFurigana ?? null,
     clozeAnswer: item.clozeAnswer ?? null,
     clozeNudge: item.clozeNudge ?? null,
     clozeEnglish: item.clozeEnglish ?? null,

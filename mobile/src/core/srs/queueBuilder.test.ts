@@ -202,14 +202,19 @@ describe('buildReviewQueue', () => {
 
   it('passes clozePrompt through to the review item (grammar cloze contract)', () => {
     const items = [
-      makeQueueItem('1', 'grammar', PAST, { clozePrompt: '私＿＿＿学生です。' }),
+      makeQueueItem('1', 'grammar', PAST, {
+        clozePrompt: '私＿＿＿学生です。',
+        clozePromptFurigana: '私[わたし]＿＿＿学[がく]生[せい]です。',
+      }),
       makeQueueItem('2', 'kanji', PAST),
     ];
     const result = buildReviewQueue(items, { now: NOW });
     const grammar = result.find((i) => i.itemId === '1')!;
     const kanji = result.find((i) => i.itemId === '2')!;
     expect(grammar.clozePrompt).toBe('私＿＿＿学生です。');
+    expect(grammar.clozePromptFurigana).toBe('私[わたし]＿＿＿学[がく]生[せい]です。');
     expect(kanji.clozePrompt).toBeNull();
+    expect(kanji.clozePromptFurigana).toBeNull();
   });
 
   it('preserves existing ordering when boost is omitted (default 0)', () => {

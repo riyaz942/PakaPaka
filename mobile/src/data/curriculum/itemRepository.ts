@@ -362,6 +362,11 @@ export type GrammarClozeVariant = {
   id: string;
   /** JP sentence with the grammar chunk replaced by ＿＿＿. */
   jpCloze: string;
+  /**
+   * Bracket-notation cloze with blank preserved (Plan 11.8). Null when the
+   * variant was authored without furigana.
+   */
+  jpClozeFurigana: string | null;
   /** Full-sentence English — hint rung 2, never on-card by default. */
   english: string;
   /** The chunk the blank expects; aligns with accepted_forms. */
@@ -708,18 +713,20 @@ export function getGrammarClozeVariants(
     const rows = db.getAllSync<{
       id: number | string;
       jp_cloze: string;
+      jp_cloze_furigana: string | null;
       english: string;
       answer: string;
       nudge: string;
       sort_order: number;
     }>(
-      `SELECT id, jp_cloze, english, answer, nudge, sort_order
+      `SELECT id, jp_cloze, jp_cloze_furigana, english, answer, nudge, sort_order
        FROM grammar_cloze_variants WHERE item_id = ? ORDER BY sort_order ASC`,
       Number(itemId),
     );
     return rows.map((row) => ({
       id: String(row.id),
       jpCloze: row.jp_cloze,
+      jpClozeFurigana: row.jp_cloze_furigana ?? null,
       english: row.english,
       answer: row.answer,
       nudge: row.nudge,

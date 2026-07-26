@@ -276,6 +276,7 @@ export function useReviewQueue(): UseReviewQueueResult {
         // with the grammar chunk blanked, never the bare form itself.
         // Authored variants (Plan 09) win; sentence derivation is the fallback.
         let clozePrompt: string | null = null;
+        let clozePromptFurigana: string | null = null;
         let clozeAnswer: string | null = null;
         let clozeNudge: string | null = null;
         let clozeEnglish: string | null = null;
@@ -286,6 +287,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           if (variants.length > 0) {
             const variant = variants[Math.floor(Math.random() * variants.length)];
             clozePrompt = variant.jpCloze;
+            clozePromptFurigana = variant.jpClozeFurigana;
             clozeAnswer = variant.answer;
             clozeNudge = variant.nudge || null;
             clozeEnglish = variant.english || null;
@@ -297,6 +299,7 @@ export function useReviewQueue(): UseReviewQueueResult {
               structure: answerKey.grammar.structure,
             });
             clozePrompt = cloze?.prompt ?? null;
+            clozePromptFurigana = cloze?.promptFurigana ?? null;
             // Interim hint rung 2 (Plan 10): first example sentence's English.
             clozeEnglish = examples[0]?.english ?? null;
           }
@@ -340,6 +343,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           personalMnemonic,
           answerKey,
           clozePrompt,
+          clozePromptFurigana,
           clozeAnswer,
           clozeNudge,
           clozeEnglish,

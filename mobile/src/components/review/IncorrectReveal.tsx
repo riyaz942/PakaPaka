@@ -1,10 +1,12 @@
 import { type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
@@ -45,11 +47,13 @@ export function IncorrectReveal({
   onAddSynonym,
   answerCollision,
 }: IncorrectRevealProps) {
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+
   // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
   // and show the completed sentence so the blank's scope is unmistakable.
   const isIncomplete = !!incompleteAnswer && item.itemType === 'grammar';
   const completedSentence = isIncomplete
-    ? resolveCompletedSentence(item.clozePrompt, displayAnswer)
+    ? resolveCompletedSentence(item.clozePromptFurigana ?? item.clozePrompt, displayAnswer)
     : null;
 
   const canOfferSynonym =
@@ -84,7 +88,12 @@ export function IncorrectReveal({
         </Text>
         {isIncomplete ? (
           completedSentence ? (
-            <Text className="text-body-lg text-primary text-center">{completedSentence}</Text>
+            <FuriganaText
+              text={completedSentence}
+              mode={furiganaMode}
+              knownKanji={knownKanji}
+              className="text-body-lg text-primary text-center"
+            />
           ) : null
         ) : (
           <Text className="text-body-lg text-primary text-center">

@@ -15,12 +15,17 @@ export type GrammarClozeSource = 'example' | 'structure';
 export type GrammarCloze = {
   /** Sentence or structure frame with the grammar chunk replaced by CLOZE_BLANK. */
   prompt: string;
+  /**
+   * Furigana-annotated prompt (bracket notation, blank preserved) when derived
+   * from an annotated example. Null for structure frames / unannotated sources.
+   */
+  promptFurigana: string | null;
   source: GrammarClozeSource;
 };
 
 export type GrammarClozeInput = {
   /** Example sentences in display order; the first blankable one wins. */
-  exampleSentences: { japanese: string }[];
+  exampleSentences: { japanese: string; furigana?: string | null }[];
   /** Accepted grammar forms — the gradeable chunks (e.g. ["てください", "でください"]). */
   acceptedForms: string[];
   /** Structure frame fallback, e.g. "Noun + は + comment". */
@@ -37,6 +42,49 @@ function blankableForms(acceptedForms: string[]): string[] {
     .filter((form) => form.length > 0 && !form.includes('〜'))
     // Longest-match wins so multi-mora forms (てください) beat their prefixes (て).
     .sort((a, b) => b.length - a.length);
+}
+
+/**
+ * Replace the first surface occurrence of `form` in a furigana-annotated
+ * string (text outside `[...]` reading brackets) with `replacement`.
+ * Returns null when the form is not found on the surface.
+ */
+export function blankFormInFurigana(
+  annotated: string,
+  form: string,
+  replacement: string = CLOZE_BLANK,
+): string | null {
+  if (!annotated || !form) return null;
+
+  // Map each surface character to its index in the annotated string.
+  const surfaceIndexes: number[] = [];
+  let inBracket = false;
+  for (let i = 0; i < annotated.length; i++) {
+    const ch = annotated[i];
+    if (ch === '[') {
+      inBracket = true;
+      continue;
+    }
+    if (ch === ']') {
+      inBracket = false;
+      continue;
+    }
+    if (!inBracket) surfaceIndexes.push(i);
+  }
+
+  const surface = surfaceIndexes.map((i) => annotated[i]).join('');
+  const index = surface.indexOf(form);
+  if (index === -1) return null;
+
+  const start = surfaceIndexes[index];
+  let end = surfaceIndexes[index + form.length - 1] + 1;
+  // Consume a trailing `[reading]` that belongs to the last blanked character.
+  if (annotated[end] === '[') {
+    const close = annotated.indexOf(']', end);
+    if (close !== -1) end = close + 1;
+  }
+
+  return annotated.slice(0, start) + replacement + annotated.slice(end);
 }
 
 /**
@@ -61,7 +109,10 @@ export function buildGrammarCloze(input: GrammarClozeInput): GrammarCloze | null
         sentence.japanese.slice(0, index) +
         CLOZE_BLANK +
         sentence.japanese.slice(index + form.length);
-      return { prompt, source: 'example' };
+      const promptFurigana = sentence.furigana
+        ? blankFormInFurigana(sentence.furigana, form)
+        : null;
+      return { prompt, promptFurigana, source: 'example' };
     }
   }
 
@@ -75,7 +126,7 @@ export function buildGrammarCloze(input: GrammarClozeInput): GrammarCloze | null
   const tokenIndex = tokens.findIndex((token) => input.acceptedForms.includes(token));
   if (tokenIndex !== -1) {
     tokens[tokenIndex] = CLOZE_BLANK;
-    return { prompt: tokens.join(' + '), source: 'structure' };
+    return { prompt: tokens.join(' + '), promptFurigana: null, source: 'structure' };
   }
 
   for (const form of forms) {
@@ -83,9 +134,10 @@ export function buildGrammarCloze(input: GrammarClozeInput): GrammarCloze | null
     if (index === -1) continue;
     return {
       prompt: structure.slice(0, index) + CLOZE_BLANK + structure.slice(index + form.length),
+      promptFurigana: null,
       source: 'structure',
     };
   }
 
-  return { prompt: structure, source: 'structure' };
+  return { prompt: structure, promptFurigana: null, source: 'structure' };
 }

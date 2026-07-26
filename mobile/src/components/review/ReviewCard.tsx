@@ -1,12 +1,14 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
+import { FuriganaText } from '@/components/common/FuriganaText';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
+import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
 
@@ -105,12 +107,16 @@ export function ReviewCard({
 }: ReviewCardProps) {
   const { primaryForm, promptType, srsState, displayMeaning, itemType, reinforcementLink, answerKey } =
     item;
+  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
 
   // Grammar cloze contract (Plan 07): prompt with the blanked sentence/frame,
   // never the bare form (for particles the form IS the answer). Label the mode
   // "Grammar", not "Production", to stop implying kanji-style drills.
   const isGrammarCloze = itemType === 'grammar' && !!item.clozePrompt;
   const promptText = isGrammarCloze ? item.clozePrompt! : primaryForm;
+  const promptDisplay = isGrammarCloze
+    ? (item.clozePromptFurigana ?? item.clozePrompt!)
+    : primaryForm;
   // Kanji reading cards validate on'yomi only (FR81) — the label must say so.
   const modeLabel =
     itemType === 'grammar'
@@ -118,6 +124,20 @@ export function ReviewCard({
       : itemType === 'kanji' && promptType === 'reading'
         ? "Reading — on'yomi"
         : MODE_LABEL[promptType];
+
+  const grammarPromptClass = `text-title-lg text-center ${CONTENT_TYPE_ACCENT[itemType].text}`;
+  const grammarPrompt = isGrammarCloze ? (
+    <FuriganaText
+      text={promptDisplay}
+      mode={furiganaMode}
+      knownKanji={knownKanji}
+      className={grammarPromptClass}
+    />
+  ) : (
+    <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+      {promptText}
+    </Text>
+  );
 
   if (state === 'evaluating') {
     return null;
@@ -170,10 +190,7 @@ export function ReviewCard({
         accessible
         accessibilityLabel={nudge}
         className="gap-space-md items-center">
-        <Text
-          className={`${isGrammarCloze ? 'text-title-lg' : 'text-display'} text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
-          {promptText}
-        </Text>
+        {grammarPrompt}
         <Text className="text-body-lg text-feedback-warning text-center">{nudge}</Text>
       </View>
     );
@@ -213,10 +230,7 @@ export function ReviewCard({
         {modeLabel}
       </Text>
 
-      <Text
-        className={`${isGrammarCloze ? 'text-title-lg' : 'text-display'} text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
-        {promptText}
-      </Text>
+      {grammarPrompt}
 
       <SRSStageIndicator stage={srsState.srsStageLabel} />
 

@@ -74,6 +74,11 @@ export type ReviewItem = {
    * Falls back to answerKey.grammar.acceptedForms[0] when absent.
    */
   clozeAnswer?: string | null;
+  /**
+   * Furigana-annotated cloze prompt (Plan 11.8). When present, the review card
+   * renders through FuriganaText; otherwise falls back to plain clozePrompt.
+   */
+  clozePromptFurigana?: string | null;
   /** Hint rung 1 (Plan 10): short pedagogical poke, allowed at every stage. */
   clozeNudge?: string | null;
   /** Hint rung 2 (Plan 10): English sentence/meaning — gated off at Enlightened+. */

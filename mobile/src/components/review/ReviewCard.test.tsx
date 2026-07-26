@@ -8,6 +8,10 @@ jest.mock('expo-router', () => ({
   router: { push: jest.fn(), back: jest.fn() },
 }));
 
+jest.mock('@/data/hooks/useFuriganaPreference', () => ({
+  useFuriganaPreference: () => ({ mode: 'shown', knownKanji: new Set<string>() }),
+}));
+
 function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
   return {
     itemId: 'test-1',
@@ -149,6 +153,19 @@ describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
   it('prompts with the cloze sentence, never the bare particle', () => {
     render(<ReviewCard item={waTopic()} state="prompting" />);
     expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
+    expect(screen.queryByText('は')).toBeNull();
+  });
+
+  it('renders authored cloze furigana through FuriganaText (Plan 11.8)', () => {
+    render(
+      <ReviewCard
+        item={waTopic({ clozePromptFurigana: '私[わたし]＿＿＿学[がく]生[せい]です。' })}
+        state="prompting"
+      />,
+    );
+    // Annotated runs expose the surface via accessibilityLabel.
+    expect(screen.getByLabelText('私＿＿＿学生です。')).toBeTruthy();
+    expect(screen.getByText('わたし')).toBeTruthy();
     expect(screen.queryByText('は')).toBeNull();
   });
 
@@ -507,6 +524,22 @@ describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
       screen.getByText('You had the right idea — we need just the grammar piece:'),
     ).toBeTruthy();
     expect(screen.getByText('私は学生です。')).toBeTruthy();
+  });
+
+  it('renders the completed sentence with furigana when authored (Plan 11.8)', () => {
+    render(
+      <ReviewCard
+        item={{
+          ...waTopic,
+          clozePromptFurigana: '私[わたし]＿＿＿学[がく]生[せい]です。',
+        }}
+        state="incorrect"
+        displayAnswer="は"
+        incompleteAnswer
+      />,
+    );
+    expect(screen.getByLabelText('私は学生です。')).toBeTruthy();
+    expect(screen.getByText('わたし')).toBeTruthy();
   });
 
   it('plain incorrect keeps the standard reveal', () => {
