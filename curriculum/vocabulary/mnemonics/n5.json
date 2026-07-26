@@ -19,6 +19,26 @@
       "review_status": "draft"
     }
   },
+  "ane": {
+    "meaning_mnemonic": "At the riverbank, your older sister has already claimed the flattest washing stone before you're even awake, scrubbing yesterday's clothes while lecturing you for not helping. She never once asks if you mind. That unasked-for seniority, exercised at six in the morning by the water, is what (my) older sister names.",
+    "reading_mnemonic": "At the riverbank, a horse comes down to drink beside her washing stone and lets out a flat <reading>ah, neigh</reading> right in her ear — which is exactly how <reading>あね</reading> sounds, and exactly why she never washes clothes there again.",
+    "description": "A plain, informal word for your own older sister when talking about her to someone else — not used to address her directly or to speak politely about someone else's older sister.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ani": {
+    "meaning_mnemonic": "At Koichi's konbini, the last good onigiri is one shelf away. Your older brother doesn't ask — he plants a hand on your shoulder, uses you as a step stool, and takes it while you're still off balance. That casual, lifelong right to shove you aside without apologizing is what (my) older brother names.",
+    "reading_mnemonic": "At Koichi's konbini, he shoves past you and you catch the shelf edge with your knee. <reading>Ah, knee</reading>, you groan, doubled over by the onigiri — which is exactly how <reading>あに</reading> sounds, and exactly who just walked off without noticing.",
+    "description": "A plain, informal word for your own older brother when talking about him to someone else — never used to address him directly, and not the word used to speak politely about someone else's older brother (that is oniisan).",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "anna": {
     "meaning_mnemonic": "Partway up the mountain trail, Sei points at the vending machine improbably perched at the summit, far beyond arm's reach, and mutters that only that kind of machine — the distant one neither of them chose — would end up all the way up there.",
     "reading_mnemonic": "This is another kana-only word, so <reading>あんな</reading> is simply read as written, with no separate derivation needed.",
@@ -112,6 +132,16 @@
       "review_status": "draft"
     }
   },
+  "chichi": {
+    "meaning_mnemonic": "At Koichi's konbini you're bragging to the clerk about how your father rewired the flickering sign himself. But every time the word for father leaves your mouth it comes out clipped and small, a fast double note like a chick cheeping under the counter, because that's the plain, low-key way you refer to your own father, never anyone else's.",
+    "reading_mnemonic": "A chick has gotten loose behind Koichi's register and won't stop cheeping two identical notes at the customers. The sound lands exactly like <reading>ちち</reading>, the same clipped double <reading>chee-chee</reading> twice in a row, and it's the one word stuck to that particular chirp from now on.",
+    "description": "父 (chichi) is the plain, humble word for your own father, used only when talking about him to people outside the family — never for someone else's father, and not usually what you'd call him to his face. お父さん (otousan) is the polite counterpart: what you call your own dad directly, or how you refer to someone else's father.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "dare": {
     "meaning_mnemonic": "At Grandma Kane's shrine, the enormous bell rings itself in the dead of night. The cats scatter, the mossy steps creak, and no one is standing anywhere near the rope. Grandma Kane storms out onto the steps demanding an answer to the only question that matters: who.",
     "reading_mnemonic": "Every night the bell rings and nobody's there, so Grandma Kane leans out over the mossy steps and bellows into the dark: who <reading>dares</reading> touch my bell? The cats scatter at the challenge in her voice, and that same dare is exactly the sound of <reading>だれ</reading> — the question of who it could possibly be.",
@@ -196,6 +226,15 @@
       "review_status": "draft"
     }
   },
+  "doyoubi": {
+    "meaning_mnemonic": "On the calendar, Saturday's square holds a wooden cross planted into the page, dirt piling around its base — <kanji>earth</kanji> dug into the paper. Beside it crowds a tangle of feathers marking the square as a <kanji>weekday</kanji>, while a windowed frame shows the sun climbing to start the <kanji>day</kanji>: earth, weekday, and day stacked on one square make Saturday.",
+    "reading_mnemonic": "The reading is just the pieces you already know lined up in order: 土（ど）＋曜（よう）＋日（び）＝<reading>どようび</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "fun": {
     "meaning_mnemonic": "You are sitting on the riverbank with a massive pie. You use a heavy knife to chop off a <kanji>minute</kanji> wedge to throw to the ducks. The ducks completely ignore the pastry and aggressively bite your ankles for an entire minute.",
     "reading_mnemonic": "The reading for this word is exactly what you learned for the kanji: <reading>ふん</reading>.",
@@ -209,6 +248,15 @@
     "meaning_mnemonic": "The second raccoon inspects the snapped chopsticks on the table, short stick over long stick, and realizes they aren't cutlery anymore — just identical wooden splinters. It pockets both, satisfied that whatever it's counting tonight, the tally stops right there at <kanji>two</kanji> things, no broth-soaked evidence left to explain.",
     "reading_mnemonic": "The reading is just 二（ふた）plus the counter つ, giving you <reading>ふたつ</reading> exactly as you'd expect.",
     "description": "Like its sibling word for one item, this is a native Japanese number used for counting generic objects on its own, without a separate counter word attached — distinct from the Chinese-derived counting series paired with counters for people, flat objects, and so on.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "futsuka": {
+    "meaning_mnemonic": "The raccoon's broth has already gone cold once, but true to form, a second raccoon slips in and snaps its own chopstick to match the <kanji>two</kanji> lines exactly — and it only ever happens after the sun has climbed back through the window to open a fresh <kanji>day</kanji>. By the time the matching ritual is finished, that first day is gone and a second one has quietly started: two days, four paws, still nobody eating.",
+    "reading_mnemonic": "Koichi's konbini clerk trips over the same forgotten mop bucket two mornings running and lands flat on his back, socks soaked both times, groaning that his feet have gone <reading>footsore</reading>. Everyone at the register agrees this is just how <reading>ふつか</reading> goes — the second day is always the one that actually gets you.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -260,12 +308,31 @@
       "review_status": "draft"
     }
   },
+  "haha": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, among the mossy steps and the cats sprawled everywhere, your mother doubles over laughing at some joke only she finds funny, the sound bouncing flat off the one enormous bell. That plain, unpolished laugh is exactly the humble word you use for your own mother, never for anyone else's.",
+    "reading_mnemonic": "Her laugh rings off the shrine bell as two dry, identical beats, <reading>ha-ha</reading>, the same flat sound as <reading>はは</reading>, over and over until the cats scatter. It's a plain, low sound on purpose, nothing decorative, matching the plain word it belongs to.",
+    "description": "母 (haha) is the plain, humble word for your own mother, used when speaking about her to people outside the family — never for someone else's mother, and not typically what you call her to her face. It contrasts with お母さん (okaasan), the polite form used to address your own mother directly or refer to someone else's.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "han-time": {
     "meaning_mnemonic": "You stare at the clock as the minute hand hits the bottom, turning the face into a giant exclamation point split right down the middle. That exact moment when the hour is chopped in <kanji>half</kanji> means it is half (past).",
     "reading_mnemonic": "Since you already know the reading for this kanji, you know the reading for this word is <reading>はん</reading>.",
     "description": "You will see this attached directly to hour counters to say half past the hour.",
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hatsuka": {
+    "meaning_mnemonic": "The two raccoons are still hunched over their cold noodle broth, each guarding its snapped chopstick — the same two you met before. Every <kanji>day</kanji> new sun through the window finds them arranging the four chopstick halves into one perfect cross, the shape of <kanji>ten</kanji>, then doubling that cross because there are <kanji>two</kanji> raccoons at the table. After twenty of these sunrises nobody has eaten a single noodle: the twentieth day.",
+    "reading_mnemonic": "At Koichi's konbini, a customer grabs coffee straight off the warmer and spills it across the hood of his parked <reading>hot car</reading> right by the beeping till. Twenty days running he does this at checkout, and the staff now just call it <reading>はつか</reading> — the 20th, twenty days of the same scalded hood.",
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -344,12 +411,30 @@
       "review_status": "draft"
     }
   },
+  "imouto": {
+    "meaning_mnemonic": "Picture the small girl who insists on carrying her own backpack up the mountain trail, refuses help, then sits down halfway and cries until someone caves and carries both the backpack and her. That stubborn, still-needs-looking-after littlest-girl energy is exactly a younger sister.",
+    "reading_mnemonic": "Halfway up the mountain trail, the small girl stubs her toe on a root and yelps three sharp sounds — <reading>ee, moh, toe</reading> — before anyone can catch her. The hiker behind logs it plainly as <reading>いもうと</reading>, the toe-stubbing little sister, and keeps climbing.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "itsu": {
     "meaning_mnemonic": "A heron standing in the shallows at the riverbank wears a wristwatch and answers questions for free. You ask about the water going down: it's two. You ask about the ferry: it's two. You ask about getting your own watch back off its leg: it's two. Ask a heron anything and it hands you a time, so the question you are really asking is when.",
     "reading_mnemonic": "This word is written in kana exactly as it is said, so <reading>いつ</reading> is both the spelling and the reading — nothing to decode.",
     "description": "English lets you say when for both the question and the joining word, as in the sentence about what happens when it rains. This word only does the question. The joining sense uses different grammar entirely.",
     "_meta": {
       "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "itsuka": {
+    "meaning_mnemonic": "The hooked hand sweeps the shelf one more time, snagging snacks until the last crooked pull lands a perfect <kanji>five</kanji>, its fifth catch of the morning. By the time it stacks them by the window, the bar overhead has swung wide and the <kanji>sun</kanji> is climbing into a fresh <kanji>day</kanji> — five snacks, five days counted off on the shelf.",
+    "reading_mnemonic": "Partway up the mountain trail, the hiker stops at the lone vending machine and <reading>eats a</reading> whole bag of chips — her fifth stop like this today. She sighs and calls it <reading>いつか</reading>, day five of pretending she'll pace herself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -417,6 +502,15 @@
       "review_status": "draft"
     }
   },
+  "kazoku": {
+    "meaning_mnemonic": "Zookeeper Zoe stopped filing her animals by species years ago. Now every enclosure is sorted by family: otters piled in one tank, meerkats packed into one den, and the daily headcount sheet has only one column, because at her zoo the only unit that ever matters is the whole family showing up together.",
+    "reading_mnemonic": "Every evening Zoe cups her hands at the gate and calls out, a shout that lands in your ear as <reading>call-a-zoo, koo</reading>, the same two beats as <reading>かぞく</reading>. Every parent and cub trots out together the second they hear it, because that call means the whole family, not one animal.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "kimi": {
     "meaning_mnemonic": "At Sei's school, the coach's whistle breaks, so instead of names he just barks the same word at whichever kid is nearest the ball — kimi, kimi — pointing, never naming. By the end of practice the whole team answers to it, the casual, jabbing word you'd only ever aim at a friend or someone younger than you.",
     "reading_mnemonic": "On the sports field at Sei's school, a scruffy stray dog answers only to the coach's shout of <reading>きみ</reading> — it sounds just like calling out <reading>key, me!</reading> while he jangles his whistle-keys — and the dog comes running to whichever kid the coach is jabbing a finger at.",
@@ -457,6 +551,15 @@
   "koko": {
     "meaning_mnemonic": "Grandma Kane rings the shrine's one enormous bell every morning, but the rope has vanished among the mossy steps and circling cats. She stamps one paving stone and declares the rope must be tied down right there, jabbing the ground: here, here, here — and that exact stamped spot is where it's always been.",
     "reading_mnemonic": "ここ is pure kana, read exactly as it looks, so there's no hidden kanji to unpack — <reading>ここ</reading> is simply pronounced as written.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kokonoka": {
+    "meaning_mnemonic": "Every <kanji>day</kanji> a fresh sun climbs through its window and lights one more switchback on the mountain trail, but you don't stop until the final bend, the one curled like a cane — the shape of <kanji>nine</kanji>. Eight sunrises come and go while you climb. On the ninth sunrise you finally round that hooked bend and lean your whole weight on the cane at last: nine days of switchbacks to reach the ninth.",
+    "reading_mnemonic": "At the top of the mountain trail, past the hooked bend of nine, a vendor next to the lone vending machine sells nothing but <reading>coconut</reading>s, shouting the word at every exhausted hiker. It sounds close enough to <reading>ここのか</reading> that hikers now just call this spot the ninth — nine days of trail to reach a man and his coconuts.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -627,6 +730,15 @@
       "review_status": "draft"
     }
   },
+  "mikka": {
+    "meaning_mnemonic": "Stack the <kanji>three</kanji> flat lines on top of each other and each one turns out to be its own tiny windowed frame with a sun climbing up through it — a triple-decker calendar. One <kanji>day</kanji> passes on the bottom line, then the middle one lights up, then the top, and the sun never bothers waiting around for a fourth: three days, no more, no less.",
+    "reading_mnemonic": "Sei collapses after the third whistle blast on the sports field, and the nurse says she's gone <reading>meeker</reading> by the hour — flu, straight home for <reading>みっか</reading>, three full days in bed before anyone lets her back on the field.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "mittsu": {
     "meaning_mnemonic": "You're at the riverbank stacking flat stones into a cairn, the way the character for <kanji>three</kanji> stacks its own three flat lines. One stone, then a second balanced on top, and just as the tower wobbles you set down a third to steady it. Three stones, standing exactly as tall as the character taught you: three things, balanced and done.",
     "reading_mnemonic": "三 already carries the reading <reading>みっ</reading>, and つ stays つ, so together they give you exactly <reading>みっつ</reading> — three things, built straight from readings you already know.",
@@ -641,6 +753,15 @@
     "reading_mnemonic": "You can sound this word out by stringing together the readings you learned for its component kanji to get <reading>もくようび</reading>.",
     "_meta": {
       "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "muika": {
+    "meaning_mnemonic": "The eight stands tall until someone claps a lid on top, capping it down to <kanji>six</kanji>. That very lid turns out to be the window's bar swinging shut over the <kanji>sun</kanji>, sealing off one whole <kanji>day</kanji> at a time — six lids, six sunsets, and that's the 6th, six days gone.",
+    "reading_mnemonic": "Down at the riverbank a cow wades in to wash off and lets out six long moos in a row, counting each one on its hooves. On the sixth <reading>moo</reading> it wobbles and calls out <reading>むいか</reading> before toppling into the current — six days, six moos, one soaked cow.",
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -701,6 +822,15 @@
       "review_status": "draft"
     }
   },
+  "nanoka": {
+    "meaning_mnemonic": "The bent nail hook holds seven coats until one more lands and it creaks under the weight, confirming <kanji>seven</kanji>. Framed just behind it, the window's bar lets the <kanji>sun</kanji> through for one more <kanji>day</kanji> to close out — seven coats, seven days, the 7th of the month.",
+    "reading_mnemonic": "At Grandma Kane's shrine the enormous bell tolls seven times, and on the last strike she looks up bewildered and mutters '<reading>Nan, oh, kah</reading>?' — her way of asking if it's really day seven already. The cats don't answer, and <reading>なのか</reading> is what she calls the day from then on.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "naze": {
     "meaning_mnemonic": "At the riverbank, a fisherman reels in his line for the ninth time and finds nothing but a waterlogged boot, same as the last eight. He doesn't swear, doesn't sigh — he just plants his feet in the mud, glares at the current, and asks the only question left standing: why.",
     "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>なぜ</reading>.",
@@ -729,9 +859,57 @@
       "review_status": "draft"
     }
   },
+  "okaasan": {
+    "meaning_mnemonic": "Halfway up the mountain trail, a boy collapses by the lone vending machine, certain he can't take one more step. Then his mother crests the rise behind him, unbothered, carrying his backpack, her water bottle, and a spare pair of socks, somehow not out of breath. That endless, unglamorous readiness is what mother (polite) means.",
+    "reading_mnemonic": "Driving the mountain trail's last hairpin toward the vending machine at the top, she doesn't slow down. The kids in the back seat brace and yell <reading>oh, car, san</reading> — which is exactly how <reading>おかあさん</reading> sounds, screamed by children who have done this drive with her before.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "oneesan": {
+    "meaning_mnemonic": "Picture the captain of the school relay team, the one every younger kid looks up to and never dares call by her first name. She lines up the little ones, ties their shoelaces, and lets them win. That respectful, polite way you address someone's honored older sister is exactly this word.",
+    "reading_mnemonic": "At Sei's school sports day, the team captain warms up by impersonating a horse, letting out an exaggerated <reading>neigh</reading> before every sprint. The younger kids salute her respectfully as <reading>おねえさん</reading>, the neighing captain, and nobody questions it.",
+    "description": "This word is the respectful way to refer to or address someone else's older sister, or an unrelated older woman as a term of respect — it is not the plain, private term you'd use among your own family growing up with a younger sibling.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "oniisan": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a young man rings the enormous bell for an elderly stranger who can't reach the rope, then carries her offering up the mossy steps himself while the shrine cats trail behind them. Nobody there is related to him, but everyone calls him older brother (polite) anyway, because that is simply what the word is for.",
+    "reading_mnemonic": "At Grandma Kane's shrine, the cats climb his leg the moment he sits on the mossy steps, and he winces <reading>oh, knee, sahn</reading> as claws land — which is exactly how <reading>おにいさん</reading> sounds, and exactly why the cats never leave him alone.",
+    "description": "The polite, respectful form used to talk about or address someone else's older brother, or a young man in general as a courteous form of address — contrast with the plain word used only for your own older brother.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "ototoi": {
     "meaning_mnemonic": "The smug goat is certain her one-contestant talent show already happened — she just can't recall which sun-window <kanji>day</kanji> it played in. She backs through yesterday's window, then one more window behind that, since in her world there is only ever <kanji>one</kanji> winner. Two windows back is where she finds it: the day before yesterday.",
     "reading_mnemonic": "At the riverbank, a scruffy otter drags the same battered toy from the water, swearing it's the first time. The other otters know better — they watched that toy sink two mornings back, on <reading>おととい</reading>, and nobody tells the <reading>otter</reading> <reading>toy</reading> story twice.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "otousan": {
+    "meaning_mnemonic": "At the top of the mountain trail, red-faced and sweating under the noon sun, a father hauls a stalled cart the last hundred meters by rope while his kid cheers from beside the lone vending machine. That's the picture pinned to father, polite: the dad you'd point out respectfully to a stranger, not the tired grumble you'd use at home.",
+    "reading_mnemonic": "As he heaves the cart past the vending machine, the kid shouts the word for him, and it lands in your ear as <reading>oh, tow, sun</reading> — dad towing, sun blazing overhead — the same beats as <reading>おとうさん</reading>. That's the polite word for pointing him out to a stranger on the trail, not the plain one for talking about your own.",
+    "description": "お父さん (otousan) is the polite, respectful word for father — what you call your own dad directly, or how you refer to someone else's father in conversation. It contrasts with the plain 父 (chichi), which you use only when talking about your own father to people outside the family.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "otouto": {
+    "meaning_mnemonic": "Picture the pesky little brother who trails you everywhere, small enough that shopkeepers assume he's still in diapers, always demanding you carry him piggyback until your arms give out. That exact whiny, tag-along presence is what points straight at a younger brother.",
+    "reading_mnemonic": "At Koichi's konbini, the small brother stomps on the same customer's foot twice reaching for onigiri, and the customer yelps <reading>oh, toe, toe</reading> each time. The beeping till clerk sighs and says it again, plain: <reading>おとうと</reading>, always causing trouble.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -858,6 +1036,15 @@
       "review_status": "draft"
     }
   },
+  "sofu": {
+    "meaning_mnemonic": "Picture the old man who rings Grandma Kane's one enormous shrine bell every single morning, out of habit rather than faith, then complains for an hour that his arm hurts. That specific, grumbling, ritual-bound old man is exactly your grandfather.",
+    "reading_mnemonic": "After ringing the enormous bell, the old man collapses onto the shrine steps and announces he's <reading>so full</reading> — of aches, not food. The cats ignore him as he mutters it again, <reading>そふ</reading>, and refuses to get up.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "soko": {
     "meaning_mnemonic": "Down at the riverbank, someone drops a sandal mid-crossing and it snags on a rock partway across the water. You point at the exact spot from the near bank, arm out straight, calling out to the person wading in: there, there, no, THERE — the sandal never moves, but your pointing finger fixes the place for good.",
     "reading_mnemonic": "そこ is written entirely in kana the way it sounds, with no kanji standing behind it — you read <reading>そこ</reading> exactly as it's spelled.",
@@ -914,6 +1101,24 @@
       "review_status": "draft"
     }
   },
+  "tooka": {
+    "meaning_mnemonic": "Every <kanji>day</kanji> the sun climbs through its window and finds you at the shrine steps, raising both hands a little higher than yesterday, palms open like the <kanji>ten</kanji>-shaped cross you make once all your fingers are up. Nine sunrises of half-raised hands pass before the tenth, when both hands finally form that perfect cross overhead — ten days of raising, and it's the tenth.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a cat keeps shoving the same toy car down all ten mossy steps, and it lands on your <reading>toe</reading> every single time. <reading>とおか</reading>, right on the toe, ten steps down — ten days of bruises later, you finally admit that's the sound of the tenth.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tsuitachi": {
+    "meaning_mnemonic": "The smug goat's one-contestant talent show — one stage, one prize, one judge, all her — only ever opens the instant the sun first climbs through the windowed frame of a brand new <kanji>day</kanji>. She refuses to be anything but <kanji>one</kanji>, so she insists on staging it the very moment each month's sun rises for the first time, never later. That stubborn need to go first, first day, every single month: the 1st.",
+    "reading_mnemonic": "Grandma Kane opens the shrine on the very first morning of the month and finds her legs unbearably <reading>too itchy</reading> — poison ivy from clearing the mossy steps. She scratches through the whole ceremony, grumbling that the reading for this day, <reading>ついたち</reading>, always shows up with an itch she can't shake.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "watashi": {
     "meaning_mnemonic": "At Koichi's konbini, a tanuki knocks over the shiny new security mirror by the till and freezes, nose to nose with itself. It taps the glass, tilts its head, and decides, flatly, that the animal staring back must be the most important customer in the store: itself. From then on it restocks the onigiri shelf for nobody else, certain of exactly who it means when it talks about I.",
     "reading_mnemonic": "The tanuki taps the glass and gasps at what it sees — <reading>what a shiny</reading> creature — then realizes it's only its own reflection, saying <reading>わたし</reading>, I, over and over, delighted that the shiniest thing in the konbini turned out to be itself.",
@@ -941,6 +1146,15 @@
       "review_status": "draft"
     }
   },
+  "yokka": {
+    "meaning_mnemonic": "Trapped inside the enclosure, the mouth keeps counting under its breath, and on the try that decides everything it finally lands on <kanji>four</kanji>. The instant it shouts the number, the window's bar snaps back and the <kanji>sun</kanji> pours through into a brand new <kanji>day</kanji>. Four counted breaths, one sunrise — that's the 4th, four days gone.",
+    "reading_mnemonic": "At Koichi's konbini the onigiri shelf is stocked with egg yolks instead of rice this morning. He counts them rolling off one by one — one, two, three — and on the <reading>yolk</reading> that nearly hits the floor he calls out <reading>よっか</reading>, the fourth yolk saved just before day four's shift ends.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "yon-v": {
     "meaning_mnemonic": "Behind the beeping till at Koichi's konbini sits that same sealed box, the mouth still trapped inside counting onigiri through the glass. Tonight it's a slow delivery — one, two, three — and on the next rice ball the mouth presses flat against the glass and stops. That flattened stare is the number stamped on this word: <kanji>four</kanji>.",
     "reading_mnemonic": "Nothing to derive here — 四 already taught you the <reading>よん</reading> reading, the same stretch you reach for right before a big <reading>yawn</reading>.",
@@ -962,6 +1176,15 @@
   "yottsu": {
     "meaning_mnemonic": "At Koichi's konbini, the trapped <kanji>four</kanji> mouth from inside the enclosure has escaped into the stockroom and wedged itself into a cardboard case behind the counter, still muttering its count under its breath. Koichi hauls the case onto the shelf and counts what's rattling around inside: four onigiri, no more, no less. Four things, sealed in one box.",
     "reading_mnemonic": "四 already carries the reading <reading>よっ</reading>, and つ stays つ, giving you exactly <reading>よっつ</reading> — four things, straight from readings you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "youka": {
+    "meaning_mnemonic": "Every <kanji>day</kanji> the sun climbs through its window and lights the same crack in the riverbank ice — a crack shaped exactly like the splitting legs of <kanji>eight</kanji>. Each sunrise splits it wider: one, two, three, all the way to the eighth. By the eighth sunrise the ice has split clean into two drifting halves, eight days of widening, and it's officially the eighth.",
+    "reading_mnemonic": "A yoga instructor greets every sunrise with a pose that curls her spine into two loops, exactly like the number eight. She names this ritual her <reading>yoga</reading> day, and said quickly in Japanese it comes out as <reading>ようか</reading> — the 8th, eight days of practice in.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",

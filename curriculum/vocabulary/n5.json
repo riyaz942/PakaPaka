@@ -6571,6 +6571,13 @@
         }
       ],
       "furigana": "土[ど]曜[よう]日[び]",
+      "meaning_mnemonic": "On the calendar, Saturday's square holds a wooden cross planted into the page, dirt piling around its base — <kanji>earth</kanji> dug into the paper. Beside it crowds a tangle of feathers marking the square as a <kanji>weekday</kanji>, while a windowed frame shows the sun climbing to start the <kanji>day</kanji>: earth, weekday, and day stacked on one square make Saturday.",
+      "reading_mnemonic": "The reading is just the pieces you already know lined up in order: 土（ど）＋曜（よう）＋日（び）＝<reading>どようび</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "土曜日に公園で遊びます。",
@@ -6606,12 +6613,7 @@
           ],
           "furigana": "来[らい]週[しゅう]の土[ど]曜[よう]日[ひ]に会[あ]いましょう。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "tsuitachi",
@@ -6631,6 +6633,13 @@
         }
       ],
       "furigana": "一日[ついたち]",
+      "meaning_mnemonic": "The smug goat's one-contestant talent show — one stage, one prize, one judge, all her — only ever opens the instant the sun first climbs through the windowed frame of a brand new <kanji>day</kanji>. She refuses to be anything but <kanji>one</kanji>, so she insists on staging it the very moment each month's sun rises for the first time, never later. That stubborn need to go first, first day, every single month: the 1st.",
+      "reading_mnemonic": "Grandma Kane opens the shrine on the very first morning of the month and finds her legs unbearably <reading>too itchy</reading> — poison ivy from clearing the mossy steps. She scratches through the whole ceremony, grumbling that the reading for this day, <reading>ついたち</reading>, always shows up with an itch she can't shake.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "明日は一日です。",
@@ -6664,12 +6673,7 @@
           ],
           "furigana": "今[こん]月[げつ]の一日[ついたち]は忙[いそが]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "futsuka",
@@ -6689,6 +6693,13 @@
         }
       ],
       "furigana": "二日[ふつか]",
+      "meaning_mnemonic": "The raccoon's broth has already gone cold once, but true to form, a second raccoon slips in and snaps its own chopstick to match the <kanji>two</kanji> lines exactly — and it only ever happens after the sun has climbed back through the window to open a fresh <kanji>day</kanji>. By the time the matching ritual is finished, that first day is gone and a second one has quietly started: two days, four paws, still nobody eating.",
+      "reading_mnemonic": "Koichi's konbini clerk trips over the same forgotten mop bucket two mornings running and lands flat on his back, socks soaked both times, groaning that his feet have gone <reading>footsore</reading>. Everyone at the register agrees this is just how <reading>ふつか</reading> goes — the second day is always the one that actually gets you.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "二日学校に行きます。",
@@ -6722,12 +6733,7 @@
           ],
           "furigana": "明日[あした]は二[に]日[ひ]です。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "mikka",
@@ -6747,6 +6753,13 @@
         }
       ],
       "furigana": "三[みっ]日[か]",
+      "meaning_mnemonic": "Stack the <kanji>three</kanji> flat lines on top of each other and each one turns out to be its own tiny windowed frame with a sun climbing up through it — a triple-decker calendar. One <kanji>day</kanji> passes on the bottom line, then the middle one lights up, then the top, and the sun never bothers waiting around for a fourth: three days, no more, no less.",
+      "reading_mnemonic": "Sei collapses after the third whistle blast on the sports field, and the nurse says she's gone <reading>meeker</reading> by the hour — flu, straight home for <reading>みっか</reading>, three full days in bed before anyone lets her back on the field.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は三日です。",
@@ -6779,12 +6792,7 @@
           ],
           "furigana": "三[さん]日[ひ]、友[とも]達[だち]と遊[あそ]びました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "yokka",
@@ -6804,6 +6812,13 @@
         }
       ],
       "furigana": "四[よっ]日[か]",
+      "meaning_mnemonic": "Trapped inside the enclosure, the mouth keeps counting under its breath, and on the try that decides everything it finally lands on <kanji>four</kanji>. The instant it shouts the number, the window's bar snaps back and the <kanji>sun</kanji> pours through into a brand new <kanji>day</kanji>. Four counted breaths, one sunrise — that's the 4th, four days gone.",
+      "reading_mnemonic": "At Koichi's konbini the onigiri shelf is stocked with egg yolks instead of rice this morning. He counts them rolling off one by one — one, two, three — and on the <reading>yolk</reading> that nearly hits the floor he calls out <reading>よっか</reading>, the fourth yolk saved just before day four's shift ends.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "四日に友達に会います。",
@@ -6837,12 +6852,7 @@
           ],
           "furigana": "四[よん]日[ひ]、海[うみ]で遊[あそ]びます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "itsuka",
@@ -6862,6 +6872,13 @@
         }
       ],
       "furigana": "五[いつ]日[か]",
+      "meaning_mnemonic": "The hooked hand sweeps the shelf one more time, snagging snacks until the last crooked pull lands a perfect <kanji>five</kanji>, its fifth catch of the morning. By the time it stacks them by the window, the bar overhead has swung wide and the <kanji>sun</kanji> is climbing into a fresh <kanji>day</kanji> — five snacks, five days counted off on the shelf.",
+      "reading_mnemonic": "Partway up the mountain trail, the hiker stops at the lone vending machine and <reading>eats a</reading> whole bag of chips — her fifth stop like this today. She sighs and calls it <reading>いつか</reading>, day five of pretending she'll pace herself.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は五日です。",
@@ -6894,12 +6911,7 @@
           ],
           "furigana": "五[ご]日[ひ]に友[とも]達[だち]と会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "muika",
@@ -6919,6 +6931,13 @@
         }
       ],
       "furigana": "六[むい]日[か]",
+      "meaning_mnemonic": "The eight stands tall until someone claps a lid on top, capping it down to <kanji>six</kanji>. That very lid turns out to be the window's bar swinging shut over the <kanji>sun</kanji>, sealing off one whole <kanji>day</kanji> at a time — six lids, six sunsets, and that's the 6th, six days gone.",
+      "reading_mnemonic": "Down at the riverbank a cow wades in to wash off and lets out six long moos in a row, counting each one on its hooves. On the sixth <reading>moo</reading> it wobbles and calls out <reading>むいか</reading> before toppling into the current — six days, six moos, one soaked cow.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は六日です。",
@@ -6951,12 +6970,7 @@
           ],
           "furigana": "六[ろく]日[ひ]待[ま]ちました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "nanoka",
@@ -6976,6 +6990,13 @@
         }
       ],
       "furigana": "七[なの]日[か]",
+      "meaning_mnemonic": "The bent nail hook holds seven coats until one more lands and it creaks under the weight, confirming <kanji>seven</kanji>. Framed just behind it, the window's bar lets the <kanji>sun</kanji> through for one more <kanji>day</kanji> to close out — seven coats, seven days, the 7th of the month.",
+      "reading_mnemonic": "At Grandma Kane's shrine the enormous bell tolls seven times, and on the last strike she looks up bewildered and mutters '<reading>Nan, oh, kah</reading>?' — her way of asking if it's really day seven already. The cats don't answer, and <reading>なのか</reading> is what she calls the day from then on.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は七日です。",
@@ -7009,12 +7030,7 @@
           ],
           "furigana": "七[なな]日[ひ]海[うみ]へ行[い]きました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "youka",
@@ -7034,6 +7050,13 @@
         }
       ],
       "furigana": "八[よう]日[か]",
+      "meaning_mnemonic": "Every <kanji>day</kanji> the sun climbs through its window and lights the same crack in the riverbank ice — a crack shaped exactly like the splitting legs of <kanji>eight</kanji>. Each sunrise splits it wider: one, two, three, all the way to the eighth. By the eighth sunrise the ice has split clean into two drifting halves, eight days of widening, and it's officially the eighth.",
+      "reading_mnemonic": "A yoga instructor greets every sunrise with a pose that curls her spine into two loops, exactly like the number eight. She names this ritual her <reading>yoga</reading> day, and said quickly in Japanese it comes out as <reading>ようか</reading> — the 8th, eight days of practice in.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は八日です。",
@@ -7066,12 +7089,7 @@
           ],
           "furigana": "八[はち]日[ひ]に映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kokonoka",
@@ -7091,6 +7109,13 @@
         }
       ],
       "furigana": "九[ここの]日[か]",
+      "meaning_mnemonic": "Every <kanji>day</kanji> a fresh sun climbs through its window and lights one more switchback on the mountain trail, but you don't stop until the final bend, the one curled like a cane — the shape of <kanji>nine</kanji>. Eight sunrises come and go while you climb. On the ninth sunrise you finally round that hooked bend and lean your whole weight on the cane at last: nine days of switchbacks to reach the ninth.",
+      "reading_mnemonic": "At the top of the mountain trail, past the hooked bend of nine, a vendor next to the lone vending machine sells nothing but <reading>coconut</reading>s, shouting the word at every exhausted hiker. It sounds close enough to <reading>ここのか</reading> that hikers now just call this spot the ninth — nine days of trail to reach a man and his coconuts.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "九日に友達と会います。",
@@ -7123,12 +7148,7 @@
           ],
           "furigana": "今日[きょう]は九[きゅう]日[ひ]です。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "tooka",
@@ -7148,6 +7168,13 @@
         }
       ],
       "furigana": "十[とお]日[か]",
+      "meaning_mnemonic": "Every <kanji>day</kanji> the sun climbs through its window and finds you at the shrine steps, raising both hands a little higher than yesterday, palms open like the <kanji>ten</kanji>-shaped cross you make once all your fingers are up. Nine sunrises of half-raised hands pass before the tenth, when both hands finally form that perfect cross overhead — ten days of raising, and it's the tenth.",
+      "reading_mnemonic": "At Grandma Kane's shrine, a cat keeps shoving the same toy car down all ten mossy steps, and it lands on your <reading>toe</reading> every single time. <reading>とおか</reading>, right on the toe, ten steps down — ten days of bruises later, you finally admit that's the sound of the tenth.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "十日に友達と会います。",
@@ -7181,12 +7208,7 @@
           ],
           "furigana": "来[らい]月[げつ]の十[じゅう]日[ひ]に帰[かえ]ります。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hatsuka",
@@ -7206,6 +7228,13 @@
         }
       ],
       "furigana": "二十日[はつか]",
+      "meaning_mnemonic": "The two raccoons are still hunched over their cold noodle broth, each guarding its snapped chopstick — the same two you met before. Every <kanji>day</kanji> new sun through the window finds them arranging the four chopstick halves into one perfect cross, the shape of <kanji>ten</kanji>, then doubling that cross because there are <kanji>two</kanji> raccoons at the table. After twenty of these sunrises nobody has eaten a single noodle: the twentieth day.",
+      "reading_mnemonic": "At Koichi's konbini, a customer grabs coffee straight off the warmer and spills it across the hood of his parked <reading>hot car</reading> right by the beeping till. Twenty days running he does this at checkout, and the staff now just call it <reading>はつか</reading> — the 20th, twenty days of the same scalded hood.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日は二十日です。",
@@ -7239,12 +7268,7 @@
           ],
           "furigana": "来[らい]月[げつ]の二[に]十[じゅう]日[ひ]に帰[かえ]ります。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kazoku",
@@ -7264,6 +7288,13 @@
         }
       ],
       "furigana": "家[か]族[ぞく]",
+      "meaning_mnemonic": "Zookeeper Zoe stopped filing her animals by species years ago. Now every enclosure is sorted by family: otters piled in one tank, meerkats packed into one den, and the daily headcount sheet has only one column, because at her zoo the only unit that ever matters is the whole family showing up together.",
+      "reading_mnemonic": "Every evening Zoe cups her hands at the gate and calls out, a shout that lands in your ear as <reading>call-a-zoo, koo</reading>, the same two beats as <reading>かぞく</reading>. Every parent and cub trots out together the second they hear it, because that call means the whole family, not one animal.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私の家族は五人です。",
@@ -7300,12 +7331,7 @@
           ],
           "furigana": "家[か]族[ぞく]と一[いっ]緒[しょ]に朝[あさ]ご飯[はん]を食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "chichi",
@@ -7325,6 +7351,14 @@
         }
       ],
       "furigana": "父[ちち]",
+      "meaning_mnemonic": "At Koichi's konbini you're bragging to the clerk about how your father rewired the flickering sign himself. But every time the word for father leaves your mouth it comes out clipped and small, a fast double note like a chick cheeping under the counter, because that's the plain, low-key way you refer to your own father, never anyone else's.",
+      "reading_mnemonic": "A chick has gotten loose behind Koichi's register and won't stop cheeping two identical notes at the customers. The sound lands exactly like <reading>ちち</reading>, the same clipped double <reading>chee-chee</reading> twice in a row, and it's the one word stuck to that particular chirp from now on.",
+      "description": "父 (chichi) is the plain, humble word for your own father, used only when talking about him to people outside the family — never for someone else's father, and not usually what you'd call him to his face. お父さん (otousan) is the polite counterpart: what you call your own dad directly, or how you refer to someone else's father.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "父は朝ご飯を食べます。",
@@ -7360,12 +7394,7 @@
           ],
           "furigana": "父[ちち]は本[ほん]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "otousan",
@@ -7385,6 +7414,14 @@
         }
       ],
       "furigana": "お父[とう]さん",
+      "meaning_mnemonic": "At the top of the mountain trail, red-faced and sweating under the noon sun, a father hauls a stalled cart the last hundred meters by rope while his kid cheers from beside the lone vending machine. That's the picture pinned to father, polite: the dad you'd point out respectfully to a stranger, not the tired grumble you'd use at home.",
+      "reading_mnemonic": "As he heaves the cart past the vending machine, the kid shouts the word for him, and it lands in your ear as <reading>oh, tow, sun</reading> — dad towing, sun blazing overhead — the same beats as <reading>おとうさん</reading>. That's the polite word for pointing him out to a stranger on the trail, not the plain one for talking about your own.",
+      "description": "お父さん (otousan) is the polite, respectful word for father — what you call your own dad directly, or how you refer to someone else's father in conversation. It contrasts with the plain 父 (chichi), which you use only when talking about your own father to people outside the family.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "お父さんは今忙しいです。",
@@ -7421,12 +7458,7 @@
           ],
           "furigana": "お父[ちち]さんは毎[まい]朝[あさ]コーヒーを飲[の]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "haha",
@@ -7446,6 +7478,14 @@
         }
       ],
       "furigana": "母[はは]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, among the mossy steps and the cats sprawled everywhere, your mother doubles over laughing at some joke only she finds funny, the sound bouncing flat off the one enormous bell. That plain, unpolished laugh is exactly the humble word you use for your own mother, never for anyone else's.",
+      "reading_mnemonic": "Her laugh rings off the shrine bell as two dry, identical beats, <reading>ha-ha</reading>, the same flat sound as <reading>はは</reading>, over and over until the cats scatter. It's a plain, low sound on purpose, nothing decorative, matching the plain word it belongs to.",
+      "description": "母 (haha) is the plain, humble word for your own mother, used when speaking about her to people outside the family — never for someone else's mother, and not typically what you call her to her face. It contrasts with お母さん (okaasan), the polite form used to address your own mother directly or refer to someone else's.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "母は毎朝お茶を飲みます。",
@@ -7483,12 +7523,7 @@
           ],
           "furigana": "母[はは]と一[いっ]緒[しょ]に家[いえ]に帰[かえ]ります。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "okaasan",
@@ -7508,6 +7543,13 @@
         }
       ],
       "furigana": "お母[かあ]さん",
+      "meaning_mnemonic": "Halfway up the mountain trail, a boy collapses by the lone vending machine, certain he can't take one more step. Then his mother crests the rise behind him, unbothered, carrying his backpack, her water bottle, and a spare pair of socks, somehow not out of breath. That endless, unglamorous readiness is what mother (polite) means.",
+      "reading_mnemonic": "Driving the mountain trail's last hairpin toward the vending machine at the top, she doesn't slow down. The kids in the back seat brace and yell <reading>oh, car, san</reading> — which is exactly how <reading>おかあさん</reading> sounds, screamed by children who have done this drive with her before.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "お母さんはお茶を飲む。",
@@ -7543,12 +7585,7 @@
           ],
           "furigana": "お母[はは]さんと一[いっ]緒[しょ]に公[こう]園[えん]に行[い]く。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ani",
@@ -7568,6 +7605,14 @@
         }
       ],
       "furigana": "兄[あに]",
+      "meaning_mnemonic": "At Koichi's konbini, the last good onigiri is one shelf away. Your older brother doesn't ask — he plants a hand on your shoulder, uses you as a step stool, and takes it while you're still off balance. That casual, lifelong right to shove you aside without apologizing is what (my) older brother names.",
+      "reading_mnemonic": "At Koichi's konbini, he shoves past you and you catch the shelf edge with your knee. <reading>Ah, knee</reading>, you groan, doubled over by the onigiri — which is exactly how <reading>あに</reading> sounds, and exactly who just walked off without noticing.",
+      "description": "A plain, informal word for your own older brother when talking about him to someone else — never used to address him directly, and not the word used to speak politely about someone else's older brother (that is oniisan).",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "兄は毎日学校に行きます。",
@@ -7605,12 +7650,7 @@
           ],
           "furigana": "兄[あに]と一[いっ]緒[しょ]に映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "oniisan",
@@ -7630,6 +7670,14 @@
         }
       ],
       "furigana": "お兄[にい]さん",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a young man rings the enormous bell for an elderly stranger who can't reach the rope, then carries her offering up the mossy steps himself while the shrine cats trail behind them. Nobody there is related to him, but everyone calls him older brother (polite) anyway, because that is simply what the word is for.",
+      "reading_mnemonic": "At Grandma Kane's shrine, the cats climb his leg the moment he sits on the mossy steps, and he winces <reading>oh, knee, sahn</reading> as claws land — which is exactly how <reading>おにいさん</reading> sounds, and exactly why the cats never leave him alone.",
+      "description": "The polite, respectful form used to talk about or address someone else's older brother, or a young man in general as a courteous form of address — contrast with the plain word used only for your own older brother.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "お兄さんは公園で遊びます。",
@@ -7664,12 +7712,7 @@
           ],
           "furigana": "彼[かれ]のお兄[あに]さんは学[がく]生[せい]です。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ane",
@@ -7689,6 +7732,14 @@
         }
       ],
       "furigana": "姉[あね]",
+      "meaning_mnemonic": "At the riverbank, your older sister has already claimed the flattest washing stone before you're even awake, scrubbing yesterday's clothes while lecturing you for not helping. She never once asks if you mind. That unasked-for seniority, exercised at six in the morning by the water, is what (my) older sister names.",
+      "reading_mnemonic": "At the riverbank, a horse comes down to drink beside her washing stone and lets out a flat <reading>ah, neigh</reading> right in her ear — which is exactly how <reading>あね</reading> sounds, and exactly why she never washes clothes there again.",
+      "description": "A plain, informal word for your own older sister when talking about her to someone else — not used to address her directly or to speak politely about someone else's older sister.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "姉は今忙しいです。",
@@ -7723,12 +7774,7 @@
           ],
           "furigana": "姉[あね]は学[がっ]校[こう]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "oneesan",
@@ -7748,6 +7794,14 @@
         }
       ],
       "furigana": "お姉[ねえ]さん",
+      "meaning_mnemonic": "Picture the captain of the school relay team, the one every younger kid looks up to and never dares call by her first name. She lines up the little ones, ties their shoelaces, and lets them win. That respectful, polite way you address someone's honored older sister is exactly this word.",
+      "reading_mnemonic": "At Sei's school sports day, the team captain warms up by impersonating a horse, letting out an exaggerated <reading>neigh</reading> before every sprint. The younger kids salute her respectfully as <reading>おねえさん</reading>, the neighing captain, and nobody questions it.",
+      "description": "This word is the respectful way to refer to or address someone else's older sister, or an unrelated older woman as a term of respect — it is not the plain, private term you'd use among your own family growing up with a younger sibling.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "あなたのお姉さんは先生です。",
@@ -7784,12 +7838,7 @@
           ],
           "furigana": "お姉[あね]さんは明日[あした]学[がっ]校[こう]へ行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "otouto",
@@ -7809,6 +7858,13 @@
         }
       ],
       "furigana": "弟[おとうと]",
+      "meaning_mnemonic": "Picture the pesky little brother who trails you everywhere, small enough that shopkeepers assume he's still in diapers, always demanding you carry him piggyback until your arms give out. That exact whiny, tag-along presence is what points straight at a younger brother.",
+      "reading_mnemonic": "At Koichi's konbini, the small brother stomps on the same customer's foot twice reaching for onigiri, and the customer yelps <reading>oh, toe, toe</reading> each time. The beeping till clerk sighs and says it again, plain: <reading>おとうと</reading>, always causing trouble.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私の弟は学生です。",
@@ -7844,12 +7900,7 @@
           ],
           "furigana": "弟[おとうと]は毎[まい]晩[ばん]本[ほん]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "imouto",
@@ -7869,6 +7920,13 @@
         }
       ],
       "furigana": "妹[いもうと]",
+      "meaning_mnemonic": "Picture the small girl who insists on carrying her own backpack up the mountain trail, refuses help, then sits down halfway and cries until someone caves and carries both the backpack and her. That stubborn, still-needs-looking-after littlest-girl energy is exactly a younger sister.",
+      "reading_mnemonic": "Halfway up the mountain trail, the small girl stubs her toe on a root and yelps three sharp sounds — <reading>ee, moh, toe</reading> — before anyone can catch her. The hiker behind logs it plainly as <reading>いもうと</reading>, the toe-stubbing little sister, and keeps climbing.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私の妹は学生です。",
@@ -7904,12 +7962,7 @@
           ],
           "furigana": "妹[いもうと]は毎[まい]朝[あさ]お茶[ちゃ]を飲[の]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "sofu",
@@ -7929,6 +7982,13 @@
         }
       ],
       "furigana": "祖[そ]父[ふ]",
+      "meaning_mnemonic": "Picture the old man who rings Grandma Kane's one enormous shrine bell every single morning, out of habit rather than faith, then complains for an hour that his arm hurts. That specific, grumbling, ritual-bound old man is exactly your grandfather.",
+      "reading_mnemonic": "After ringing the enormous bell, the old man collapses onto the shrine steps and announces he's <reading>so full</reading> — of aches, not food. The cats ignore him as he mutters it again, <reading>そふ</reading>, and refuses to get up.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "祖父は毎朝お茶を飲みます。",
@@ -7966,12 +8026,7 @@
           ],
           "furigana": "明日[あした]、祖[そ]父[ふ]と映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ojiisan",
