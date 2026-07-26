@@ -546,9 +546,10 @@ Notes on differences from the Gemini web-chat automation prompt
   download/rename steps. The generation subagent writes the reply files directly.
 - The generation unit is a group of up to <group-size> related items rather than a
   single item, because one subagent can be told to keep a group's scenes distinct
-  in a way N independent chats cannot. The Gemini lane still pastes one item per
-  chat.
-- Everything else is identical: the same auto-select (Step 1a, plus grouping), the
+  in a way N independent single-item chats cannot. The Gemini lane groups the same
+  way — one fresh chat per group with a combined paste — rather than one chat per
+  slug.
+- Everything else is identical: the same auto-select + grouping (Step 1a), the
   same `webprompts`/`ingest` commands and gate, the same per-slug 3-attempt repair
   cap, the same per-level keyed-by-slug sidecar, the same layer ordering, and the
   same draft/`review_status` discipline.
