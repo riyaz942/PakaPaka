@@ -1,6 +1,11 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
+import { State } from 'react-native-gesture-handler';
+import {
+  fireGestureHandler,
+  getByGestureTestId,
+} from 'react-native-gesture-handler/jest-utils';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { __mockResetSqlite, __mockSetItems } from '../../../__mocks__/expo-sqlite';
@@ -125,6 +130,34 @@ describe('LessonScreen', () => {
     fireEvent.press(screen.getByTestId('lesson-next'));
   }
 
+  /**
+   * Drags the card past the commit threshold and releases. Gesture callbacks
+   * land outside React's event path, so the state update needs its own act().
+   */
+  function swipe(direction: 'next' | 'back') {
+    const sign = direction === 'next' ? -1 : 1;
+    act(() => {
+      fireGestureHandler(getByGestureTestId('lesson-card-pan'), [
+        { state: State.BEGAN, translationX: 0 },
+        { state: State.ACTIVE, translationX: sign * 60 },
+        { state: State.ACTIVE, translationX: sign * 140 },
+        { state: State.END, translationX: sign * 140, velocityX: sign * 900 },
+      ]);
+    });
+  }
+
+  /** Drags short of the threshold and releases — the card should snap back. */
+  function swipeAndCancel(direction: 'next' | 'back') {
+    const sign = direction === 'next' ? -1 : 1;
+    act(() => {
+      fireGestureHandler(getByGestureTestId('lesson-card-pan'), [
+        { state: State.BEGAN, translationX: 0 },
+        { state: State.ACTIVE, translationX: sign * 30 },
+        { state: State.END, translationX: sign * 30, velocityX: sign * 40 },
+      ]);
+    });
+  }
+
   it('walks the auto-built lesson and commits items on finish', async () => {
     const { userDb, curriculumDb } = await createDatabases();
     renderLessonScreen(curriculumDb, userDb);
@@ -208,21 +241,112 @@ describe('LessonScreen', () => {
     fireEvent.press(screen.getByTestId('lesson-next'));
     expect(screen.getByText('2/3')).toBeTruthy();
 
-    // Stepping back into the previous item restarts it at its introduction.
+    // Back is the inverse of Continue: stepping out of an item backwards lands
+    // on the previous item's *last* section, not its introduction.
     fireEvent.press(screen.getByTestId('lesson-back'));
     expect(screen.getByText('1/3')).toBeTruthy();
     expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Introduction · 1 of 3',
+      'Examples & links · 3 of 3',
     );
 
     // Walking around commits nothing.
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
 
     // Forwards again to the end still commits the full batch.
-    advanceItem();
+    fireEvent.press(screen.getByTestId('lesson-next'));
     advanceItem();
     advanceItem();
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
+  });
+
+  it('swipes through sections and items exactly like the buttons', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderLessonScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+    });
+
+    // Swiping left walks the sections before handing over to the item control.
+    swipe('next');
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Mnemonic · 2 of 3',
+    );
+    swipe('next');
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Examples & links · 3 of 3',
+    );
+    expect(screen.getByText('1/3')).toBeTruthy();
+
+    swipe('next');
+    expect(screen.getByText('2/3')).toBeTruthy();
+
+    // Swiping right rewinds onto the previous item's last section — swiping back
+    // resumes where the item ended, not at its introduction.
+    swipe('back');
+    expect(screen.getByText('1/3')).toBeTruthy();
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Examples & links · 3 of 3',
+    );
+
+    // Swipe and buttons share one path, so they interleave freely.
+    fireEvent.press(screen.getByTestId('lesson-next'));
+    expect(screen.getByText('2/3')).toBeTruthy();
+    swipe('back');
+    expect(screen.getByText('1/3')).toBeTruthy();
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Examples & links · 3 of 3',
+    );
+
+    // Nothing is committed while walking around.
+    expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
+  });
+
+  it('leaves the card where it was when a drag is released short', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderLessonScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+    });
+
+    // A half-hearted drag in either direction commits nothing — the card
+    // returns home and the section is untouched.
+    swipeAndCancel('next');
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Introduction · 1 of 3',
+    );
+
+    swipe('next');
+    swipeAndCancel('back');
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Mnemonic · 2 of 3',
+    );
+    expect(screen.getByText('1/3')).toBeTruthy();
+  });
+
+  it('ignores a back-swipe on the very first card and finishes on the last', async () => {
+    const { userDb, curriculumDb } = await createDatabases();
+    renderLessonScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+    });
+
+    // A back-swipe is inert where the Back button is.
+    swipe('back');
+    expect(screen.getByText('1/3')).toBeTruthy();
+    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
+      'Introduction · 1 of 3',
+    );
+
+    // Nine swipes left = three sections × three items, ending in the commit.
+    for (let step = 0; step < 9; step += 1) {
+      swipe('next');
+    }
+
+    expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(3);
+    expect(mockReplace).toHaveBeenCalledWith('/lesson/complete?count=3');
   });
 
   it('closes without committing anything', async () => {

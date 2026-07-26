@@ -82,6 +82,9 @@
       "**/__tests__/**/*.test.ts?(x)",
       "**/src/**/*.test.ts?(x)"
     ],
+    "setupFilesAfterEnv": [
+      "react-native-gesture-handler/jestSetup"
+    ],
     "moduleNameMapper": {
       "^@/assets/(.*)$": "<rootDir>/assets/$1",
       "^@/test-support/(.*)$": "<rootDir>/test-support/$1",
