@@ -5,14 +5,14 @@ Loads the *generated* curriculum JSON (curriculum/{kanji,radicals,vocabulary}/
 <level>.json, the canonical output of generate.py) and derives the per-item
 inputs the generator prompt and the mechanical gate both need:
 
-  * radical (Rev 1): form + meaning (its own accepted meanings) + look-alikes —
-    the output is a `description`, one vivid concrete image that doubles as the
-    Tier 2 image prompt, no mnemonic.
+  * radical: form + meaning (its own accepted meanings) + look-alikes — the
+    output is a `mnemonic_text`, one vivid concrete image that doubles as the
+    Tier 2 image prompt, plus an optional `description` for contrast/nuance.
   * kanji: primary reading target (the reading the mnemonic must contain),
     onyomi/kunyomi, meaning + accepted meanings, look-alikes, and the **taught
     decomposition** — the radicals that build_on the kanji per
     dependencies/graph.json, in *our* taught radical names, carrying each
-    radical's established Rev 1 `description` so the kanji story continues the
+    radical's established `mnemonic_text` so the kanji story continues the
     radical's image rather than name-dropping it. That graph (not KRADFILE) is
     the app's truth for kanji -> radical; a mnemonic must reference exactly
     those components and never a component the learner was not taught
@@ -181,10 +181,11 @@ def kanji_context(level, slug, cast=None):
             "form": r["primary_form"],
             "meaning": r["meaning"],
             "meaning_synonyms": _meaning_answers(r) or [r["meaning"]],
-            # Rev 1: the radical's established image. Empty until the radical
-            # layer has been regenerated — format_components refuses to build a
-            # prompt in that state (the gate does not need it).
-            "description": r.get("description", ""),
+            # The radical's established image, which lives in its
+            # `mnemonic_text` (Rev 3). Empty until the radical layer has been
+            # generated — format_components refuses to build a prompt in that
+            # state (the gate does not need it).
+            "image": r.get("mnemonic_text", ""),
         })
 
     cast = cast or cast_lib.load_cast()
@@ -407,19 +408,19 @@ def format_components(components):
                 "and do NOT name any component the learner has not been taught)")
     lines = []
     for c in components:
-        if not c["description"]:
-            # Rev 1 chains radical -> kanji: a kanji story continues its
-            # radicals' current images. Building the prompt without them would
-            # silently chain onto whatever prose is left over from before.
+        if not c["image"]:
+            # The chain radical -> kanji: a kanji story continues its radicals'
+            # current images. Building the prompt without them would silently
+            # chain onto whatever prose is left over from before.
             raise ValueError(
-                f"component radical {c['slug']} has no `description` yet. "
-                "Regenerate the radical layer first (`generate_mnemonics run "
+                f"component radical {c['slug']} has no `mnemonic_text` yet. "
+                "Generate the radical layer first (`generate_mnemonics run "
                 "--type radical` for the level that teaches it, then "
                 "`generate.py --level <level>`)."
             )
         syn = " / ".join(dict.fromkeys(c["meaning_synonyms"]))
         lines.append(f"- {c['form']} — “{syn}”\n  Its established image, which your "
-                     f"story must continue: {c['description']}")
+                     f"story must continue: {c['image']}")
     return "\n".join(lines)
 
 

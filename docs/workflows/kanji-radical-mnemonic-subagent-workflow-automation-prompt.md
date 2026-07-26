@@ -1,7 +1,7 @@
 Task: Generate N5 Radical/Kanji/Vocabulary Mnemonics via Subagents
 
-Generate Rev 1 (`prompt_version: 2`) radical descriptions, kanji mnemonics or
-vocabulary mnemonics using in-session subagents (model configurable below; a
+Generate radical mnemonics, kanji mnemonics or vocabulary mnemonics using
+in-session subagents (model configurable below; a
 strong reasoning model is recommended) — no API credentials and no browser. This
 is the no-API, no-browser sibling of the Gemini automation prompt: only the "call
 the model" step differs. Here replies are produced by fresh subagents — one
@@ -79,7 +79,7 @@ Layer Ordering — read before starting
 The three types are a chain, not three independent jobs:
 
 - a **kanji** meaning mnemonic continues each component radical's established
-  `description`
+  `mnemonic_text`
 - a **vocabulary** meaning mnemonic hooks into its component kanji's
   `meaning_mnemonic`
 
@@ -87,7 +87,7 @@ So a layer must be finished, ingested, **and inlined by `generate.py`** before t
 layer above it is generated. This is enforced, not advisory: `webprompts --type
 kanji` raises
 
-  ValueError: component radical hi-sun has no `description` yet. Regenerate the
+  ValueError: component radical hi-sun has no `mnemonic_text` yet. Generate the
   radical layer first (...)
 
 if you try to skip ahead. Order for a level: **radicals → `generate.py --level
@@ -165,9 +165,11 @@ PY
 Note what "done" means here: a draft recorded under an **older** prompt version is
 stale, not done, so a version bump correctly re-selects every out-of-date item for
 regeneration. This mirrors the API path, whose `run` re-queues old-version drafts.
-`PROMPT_VERSION` is keyed by type (`{"radical": 2, "kanji": 3, "vocab": 3}`) —
-Rev 2 changed the kanji and vocab contract only, so radical drafts written under
-Rev 1 are still current and are not re-selected.
+`PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+because the three prompts move independently. Radicals sitting at 1 is deliberate:
+Rev 3 reverted the radical contract to the original shape — a `mnemonic_text` of
+~150–300 characters, description demoted to optional — so the reviewed N5 radicals
+already match the current prompt and are correctly *not* re-selected.
 
 If it prints 0 slugs, this level+type is already fully generated at the current
 prompt version — stop and report that. Otherwise treat the printed `ALL:` list as
@@ -194,7 +196,7 @@ Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministica
 and any appended gate errors from an earlier failure are dropped, which is correct
 for a fresh attempt.
 
-If this command raises the "no `description` yet" / "no `meaning_mnemonic` yet"
+If this command raises the "no `mnemonic_text` yet" / "no `meaning_mnemonic` yet"
 ValueError, the layer below is unfinished — see Layer Ordering above and stop.
 
 ---
@@ -244,20 +246,29 @@ Give the subagent these instructions:
     look-alike. Seeing the sibling items is for varying your writing, never for
     widening what an item is allowed to reference.
   - Return the keys for this type:
-      radical → `description`
+      radical → `mnemonic_text`, and `description` **only if this radical needs
+                one** (see below)
       kanji   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
-                if this kanji needs one** (see below)
+                if this kanji needs one**
       vocab   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
                 if this word needs one**
-  - `description` is optional for kanji and vocab. Omit the key entirely unless
-    the prompt lists look-alikes (then it is required, and its job is the visual
-    contrast) or the item has a real nuance the mnemonics cannot carry — an odd
-    register, a false friend, a usage trap, a piece of history that explains the
-    character. A description that only restates the meaning and counts strokes is
-    noise; leave it out.
-  - Aim for **roughly 350–700 characters** per mnemonic, about four to six
-    sentences. That is a target, not a rule: overrunning it to finish a scene the
-    item genuinely needs is fine, padding to reach it is not.
+  - `description` is optional for **all three** types. Omit the key entirely
+    unless the prompt lists look-alikes (then it is required, and its job is the
+    visual contrast) or the item has a real nuance the mnemonics cannot carry —
+    an odd register, a false friend, a usage trap, a piece of history that
+    explains the character. A description that only restates the meaning and
+    counts strokes is noise; leave it out.
+  - Length, per field:
+      radical `mnemonic_text`  roughly **150–300** characters, two to three
+                               sentences — and lean funny; at this length the
+                               image itself has to be the joke
+      kanji/vocab meaning      roughly **180–330** characters
+      kanji/vocab reading      roughly **150–280** characters (a vocab derivation
+                               note stays at one sentence — see below)
+    These are targets, not rules: overrunning to finish a scene the item
+    genuinely needs is fine, padding to reach one is not. They are short on
+    purpose — the depth comes from how specific the picture is, not from how many
+    sentences it takes.
   - Build the story from the components the prompt lists, and **continue the
     established image each component already carries** — do not invent a fresh
     scene that competes with what the learner has already read. Reference every
@@ -374,10 +385,14 @@ Give the repair subagent these instructions:
     unless an error asks for one.
   - A "too short" error means the story lacks substance — add scene, not filler
     clauses. A "too long" error means cut, not compress into one dense sentence;
-    the target is roughly 350–700 characters per mnemonic.
+    the targets are in Step 2 (radical ~150–300, meaning ~180–330, reading
+    ~150–280).
   - A "never wraps it in <radical>…" or "does not highlight the reading" error
     means the words are there but untagged — add the tags around the words the
     story already uses, do not rewrite the story.
+  - A "description is omitted, but this item has reviewed look-alikes" error is
+    the one case where you *add* a key. Add only the description; leave the
+    mnemonic(s) exactly as they are.
   - Keep every field plain prose apart from the highlight tags (no
     markdown/brackets/romaji/emoji), keep the reading verbatim, keep every listed
     component referenced and tagged, keep every listed look-alike addressed, and
@@ -414,7 +429,7 @@ Use a fresh subagent for each attempt. If the third ingestion attempt fails:
 - Proceed to the next slug — finish the rest of the group before moving on.
 
 A skipped slug matters more here than in the example-sentences lane: a radical
-with no description blocks every kanji built on it, and a kanji with no meaning
+with no mnemonic blocks every kanji built on it, and a kanji with no meaning
 mnemonic blocks every word built on it. Report skips prominently — they must be
 cleared before the next layer runs.
 
@@ -457,8 +472,8 @@ And:
 npm run compile-curriculum
 
 `generate.py` inlines the mnemonic sidecars into the shipped radical/kanji/vocab
-JSON (radicals get a `description` and no mnemonic; kanji and vocab get the two
-mnemonics, plus a `description` on the items that needed one), each carrying
+JSON (radicals get a `mnemonic_text`; kanji and vocab get the two mnemonics; all
+three get a `description` only on the items that needed one), each carrying
 `_meta.review_status: draft`. Use the current
 project-specific `generate.py` invocation and flags found under
 `curriculum/_build/`. Do not guess if the documented invocation has changed.

@@ -47,27 +47,34 @@ describe('RadicalDetail', () => {
     jest.mocked(router.push).mockClear();
   });
 
-  it('captions the image with the description and drops the mnemonic framing', () => {
+  it('captions the image with the mnemonic and drops the "Mnemonic" framing', () => {
+    render(<RadicalDetail item={baseItem} />);
+
+    expect(screen.getByTestId('radical-description')).toBeTruthy();
+    expect(screen.getByText('A person walking.')).toBeTruthy();
+    expect(screen.queryByText('Mnemonic')).toBeNull();
+  });
+
+  it('omits the description block when the radical has no nuance to add', () => {
+    render(<RadicalDetail item={baseItem} />);
+
+    expect(screen.queryByTestId('item-description')).toBeNull();
+  });
+
+  it('renders the description as its own block, not in place of the mnemonic', () => {
     render(
       <RadicalDetail
         item={{
           ...baseItem,
-          description: 'Two legs mid-stride, leaning into a headwind: a person.',
+          description: 'Not to be confused with 入, whose left stroke starts higher.',
         }}
       />,
     );
 
-    expect(screen.getByTestId('radical-description')).toBeTruthy();
+    expect(screen.getByTestId('item-description')).toBeTruthy();
     expect(
-      screen.getByText('Two legs mid-stride, leaning into a headwind: a person.'),
+      screen.getByText('Not to be confused with 入, whose left stroke starts higher.'),
     ).toBeTruthy();
-    expect(screen.queryByText('Mnemonic')).toBeNull();
-    expect(screen.queryByText('A person walking.')).toBeNull();
-  });
-
-  it('falls back to the pre-Rev-1 mnemonic text until the radical is regenerated', () => {
-    render(<RadicalDetail item={baseItem} />);
-
     expect(screen.getByText('A person walking.')).toBeTruthy();
   });
 

@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
 import { LookAlikeSection } from '@/components/learn/LookAlikeSection';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
@@ -22,10 +23,11 @@ type RadicalDetailProps = {
 };
 
 /**
- * Radicals carry no mnemonic (content pipeline Rev 1): the `description` is the
- * glyph's story and the prompt the image was generated from, so it reads as the
- * image's caption rather than under a "Mnemonic" heading. Pre-Rev-1 content only
- * has `mnemonic_text`, which fills the same slot until it is regenerated.
+ * A radical's `mnemonic_text` is both the glyph's story and the prompt its
+ * image was generated from, so it reads as the image's caption rather than
+ * under a "Mnemonic" heading. The `description` is a separate, optional block
+ * (content pipeline Rev 3) carrying look-alike contrast and usage nuance — the
+ * things a single drawable picture cannot say.
  */
 export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDetailProps) {
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
@@ -35,7 +37,7 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
     setImageLoadFailed(false);
   }, [item.visualMnemonicUrl]);
 
-  const story = item.description ?? item.mnemonicText;
+  const story = item.mnemonicText;
   const showStoryAbove = Boolean(story) && hasValidImageUrl && !imageLoadFailed;
 
   return (
@@ -65,6 +67,8 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
           onLoadError={() => setImageLoadFailed(true)}
         />
       </View>
+
+      <ItemDescriptionSection item={item} />
 
       <LookAlikeSection item={item} lookAlikes={lookAlikes} />
 

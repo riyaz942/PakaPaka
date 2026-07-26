@@ -400,7 +400,8 @@ Still owed before ship: the Phase 5 human review + cross-batch cast-coherence pa
 - **Generation order**: radicals first (their descriptions feed kanji prompts),
   then kanji, then 2d vocab.
 
-*Status: Rev-2 tooling built (R1.4); generation has not run.* `PROMPT_VERSION = 2`
+*Status (Rev 2, partly superseded by Rev 3 below — read that for what the tooling
+does today): Rev-2 tooling built (R1.4).* `PROMPT_VERSION = 2`
 in `generate_mnemonics.py`, and `run` re-queues any draft recorded under an older
 prompt version, so a regen is wholesale rather than a patch. The radical prompt is
 now `prompts/radical-description.md` and its tool is `submit_radical_description`
@@ -415,6 +416,39 @@ checks radicals on `description`, and enforces look-alikes in both directions:
 every reviewed confusable is named, and no other Japanese character appears in a
 description (descriptions carry no furigana). `generate.py` inlines radical
 `description` and the new `curriculum/vocabulary/mnemonics/<level>.json` sidecar.
+
+*Status: Rev 3 (July 2026) — calibrated against reviewed output.* Rev 1's bet that
+radicals wanted a long `description` instead of a mnemonic did not survive contact
+with the generated prose: the maintainer read the N5 set and kept the original
+short mnemonics. So Rev 3 reverts that swap and recalibrates length from data
+rather than intent.
+
+- **Radicals go back to `mnemonic_text`**, ~150–300 characters, in a prompt that
+  asks for a funnier image (`prompts/radical-mnemonic.md`,
+  `submit_radical_mnemonic`). `PROMPT_VERSION["radical"]` is therefore **1**, not a
+  new high number — a draft written under the original prompt is exactly what the
+  current one asks for, and marking 76 kept items stale would regenerate them for
+  nothing. `mnemonic_context.format_components` now injects the radical's
+  `mnemonic_text` as the established image the kanji story must continue.
+- **`description` is optional on all three types.** It is required only when the
+  item has reviewed look-alikes (the visual contrast is the one thing a story
+  cannot carry) and otherwise written only for a real nuance. The gate enforces
+  both halves: it validates a description when present, and demands one when the
+  item has confusables.
+- **Length bounds come from the reviewed N5 set**, not from a target picked in the
+  abstract: radical mnemonics 144–299 chars, kanji meaning 144–366, kanji reading
+  133–272, kanji description 59–165. `LEN_BOUNDS` sits just outside those ranges;
+  the prompts aim at the middle (radical 150–300, meaning 180–330, reading
+  150–280). Rev 2's floors (300/250) were derived from the discarded long radical
+  descriptions and would have rejected most of the kept prose. `PROMPT_VERSION` is
+  `{"radical": 1, "kanji": 4, "vocab": 4}`.
+- **Highlight tags survive from Rev 2** unchanged (`<radical>`/`<kanji>` around
+  borrowed component meanings, `<reading>` around the kana and its phonetic hook),
+  rendered by `AnnotatedText` in the content accent colours. Radicals carry no
+  tags — they are the bottom of the chain and borrow nothing.
+- **Known gap:** 23 of the 76 N5 radicals have reviewed look-alikes and no
+  `description`, so they fail the new requirement. They predate the rule and are
+  already merged; the gate only bites if they are regenerated.
 
 ### 2c. Example sentences (kanji + vocab)
 

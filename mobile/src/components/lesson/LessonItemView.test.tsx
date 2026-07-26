@@ -181,6 +181,36 @@ describe('LessonItemView sections', () => {
     expect(screen.queryByText('The sun rises each day.')).toBeNull();
   });
 
+  it('section 2 captions a radical with its mnemonic and keeps the description separate', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 2,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'person',
+        primary_form: '人',
+        meaning: 'person',
+        mnemonic_text: 'Two legs mid-stride and no head at all: a person.',
+        description: 'Not to be confused with 入, whose left stroke starts lower.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    mount(curriculumDb, userDb, 1);
+
+    // Also surfaces as the image's alt text, hence getAllByText.
+    expect(screen.getByTestId('radical-description')).toBeTruthy();
+    expect(
+      screen.getAllByText('Two legs mid-stride and no head at all: a person.').length,
+    ).toBeGreaterThan(0);
+    expect(screen.getByText('About this radical')).toBeTruthy();
+    expect(
+      screen.getByText('Not to be confused with 入, whose left stroke starts lower.'),
+    ).toBeTruthy();
+  });
+
   it('shows the reading primer inline as section-1 content for a beginner', async () => {
     const { curriculumDb, userDb } = await createDatabases();
     setOnboardingPath(userDb, 'beginner');

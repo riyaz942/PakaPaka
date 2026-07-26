@@ -178,12 +178,13 @@ export function LessonIntroSection({
  * replaces the old collapsed mnemonic disclosure, so nothing here hides behind
  * a tap.
  *
- * Radicals carry a `description` instead of a mnemonic (content pipeline
- * Rev 1) — it reads as the image's story, not under a "Mnemonic" heading.
+ * A radical's `mnemonic_text` reads as the image's story, not under a "Mnemonic"
+ * heading; its optional `description` (content pipeline Rev 3) is the separate
+ * look-alike/nuance block, same as on kanji and vocabulary.
  */
 export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps) {
   if (item.itemType === 'radical') {
-    const story = item.description ?? item.mnemonicText;
+    const story = item.mnemonicText;
 
     return (
       <View testID="lesson-section-mnemonic">
@@ -203,6 +204,8 @@ export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps)
             testID="radical-mnemonic-image"
           />
         </View>
+
+        <ItemDescriptionSection item={item} />
       </View>
     );
   }

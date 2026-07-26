@@ -47,9 +47,9 @@ keyed-by-slug **sidecar** that `ingest` merges each passing item into:
 - vocabulary → `curriculum/vocabulary/mnemonics/<level>.json`
 
 `generate.py` inlines those sidecars into the shipped JSON at build time (kanji and
-vocabulary get `meaning_mnemonic` / `reading_mnemonic` / `description`; radicals get
-a `description` and no mnemonic — Rev 1), each carrying
-`_meta.review_status: draft`.
+vocabulary get `meaning_mnemonic` / `reading_mnemonic`; radicals get
+`mnemonic_text`; all three get a `description` only when the item needed one),
+each carrying `_meta.review_status: draft`.
 
 ---
 
@@ -61,7 +61,7 @@ The expensive, error-prone parts are automated; only copy/paste is manual.
   character** are computed from the curriculum and baked into each prompt — you
   never pick these yourself. The kanji prompt lists the *exact* taught radicals
   (from `dependencies/graph.json`, in our radical names) the meaning mnemonic must
-  be built from, along with each radical's established description so the story
+  be built from, along with each radical's established `mnemonic_text` so the story
   continues that image; the primary reading the reading mnemonic must contain; the
   reviewed look-alike pairs (from `_build/visually_similar.py`) the description must
   contrast; and the fixed cast character for that reading (from
@@ -126,11 +126,15 @@ The filename must match the slug and the `--type` subfolder.
 
 The JSON keys the model must return depend on the type:
 
-| Type | Required JSON keys |
-|---|---|
-| `radical` | `description` |
-| `kanji` | `meaning_mnemonic`, `reading_mnemonic`, `description` |
-| `vocab` | `meaning_mnemonic`, `reading_mnemonic`, `description` |
+| Type | Required JSON keys | Optional |
+|---|---|---|
+| `radical` | `mnemonic_text` | `description` |
+| `kanji` | `meaning_mnemonic`, `reading_mnemonic` | `description` |
+| `vocab` | `meaning_mnemonic`, `reading_mnemonic` | `description` |
+
+`description` is written only when the item has reviewed look-alikes to contrast
+(then it is required) or a nuance the mnemonic cannot carry. Omitting it
+otherwise is correct, not incomplete.
 
 ### 4. Ingest
 
@@ -194,9 +198,12 @@ N5 fully before N4 (`--level n4`).
 > `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
 > whole level rather than the gaps, and let `ingest` overwrite. The API path does
 > this for you — `run` re-queues any draft recorded under an older prompt version.
-> `PROMPT_VERSION` is keyed by type (`{"radical": 2, "kanji": 3, "vocab": 3}`),
-> because the three prompts move independently: Rev 1 raised all three to 2, and
-> Rev 2 raised only kanji and vocab to 3.
+> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+> because the three prompts move independently. Radicals sitting at 1 is
+> deliberate: Rev 3 reverted the radical contract to the original shape — a
+> `mnemonic_text` of ~150–300 characters, description demoted to optional — so a
+> draft written under the original prompt is exactly what the current one asks
+> for, and is correctly not re-selected.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.

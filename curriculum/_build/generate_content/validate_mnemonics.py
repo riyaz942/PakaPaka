@@ -3,17 +3,18 @@
 
 Run on every batch output before any human sees it
 (docs/content/content-pipeline-plan.md, "Mechanical validation gate", adapted
-for 2b/2d under Rev 1 `prompt_version: 2`):
+for 2b/2d):
 
-  radical (no mnemonic — a `description` that is also the Tier 2 image prompt):
-    1. description present, non-empty, story-paragraph length, plain prose
+  radical (a `mnemonic_text` that is also the Tier 2 image prompt):
+    1. mnemonic_text present, non-empty, within length bounds, plain prose
     2. the radical's meaning is recognisable in the image
-    3. look-alikes: every reviewed confusable is named, and no unreviewed
-       character is presented as one
+    3. `description` is optional (Rev 3, matching kanji/vocab) and is required
+       only when the item has reviewed look-alikes to contrast; when present it
+       names every one of them and invents none
   kanji:
     1. both mnemonics present and non-empty, within length bounds (measured on
-       the tag-stripped prose); `description` is optional under Rev 2 and is
-       required only when the item has reviewed look-alikes to contrast
+       the tag-stripped prose); `description` is optional and is required only
+       when the item has reviewed look-alikes to contrast
     2. reading_mnemonic literally contains the target reading kana
        (kana-normalised, so コウ satisfies こう) inside a <reading> tag
     3. meaning_mnemonic references the taught decomposition — every taught
@@ -58,31 +59,45 @@ from generate_content import mnemonic_context  # noqa: E402
 DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", "mnemonics")
 
 #: Length guards, per content type, measured on the **tag-stripped** text so the
-#: highlight markup never counts toward the budget. Rev 2 (`prompt_version: 3`
-#: for kanji/vocab) tightens the ceilings Rev 1 left open: the reviewed radical
-#: descriptions land at 330–790 characters, and that is the size a learner
-#: actually rereads. The prompts aim at 350–700; these bounds are the backstop
-#: that leaves headroom for an item that genuinely needs more.
+#: highlight markup never counts toward the budget.
+#:
+#: Rev 3 calibrates these against the prose the maintainer actually kept, rather
+#: than against a target picked in the abstract. The reviewed N5 set lands at:
+#:
+#:   radical mnemonic_text    144–299 chars (median 214)
+#:   kanji   meaning_mnemonic 144–366        (median 256)
+#:   kanji   reading_mnemonic 133–272        (median 204)
+#:   kanji   description       59–165        (median 104)
+#:
+#: The prompts aim at the middle of each range; these bounds sit just outside it
+#: so an item that genuinely needs more room still passes. Rev 2's floors (300 /
+#: 250) were set from the since-discarded long radical descriptions and would
+#: have rejected most of the kept content — a band is only worth anything if the
+#: prose you like fits inside it.
 LEN_BOUNDS = {
-    "radical": {"description": (150, 900)},
-    "kanji": {
-        "meaning_mnemonic": (300, 850),
-        "reading_mnemonic": (250, 750),
-        "description": (120, 700),
+    "radical": {
+        "mnemonic_text": (120, 400),
+        "description": (60, 400),
     },
+    "kanji": {
+        "meaning_mnemonic": (140, 450),
+        "reading_mnemonic": (120, 380),
+        "description": (50, 400),
+    },
+    # vocab reading_mnemonic is bounded by the regularity branch below, not here.
     "vocab": {
-        "meaning_mnemonic": (250, 800),
-        "reading_mnemonic": (30, 750),
-        "description": (60, 500),
+        "meaning_mnemonic": (140, 450),
+        "description": (50, 350),
     },
 }
 
 #: A vocab reading the learner can already derive from its kanji gets a one-line
 #: note, not a story (docs 2d: "don't pad regular readings into stories"). The
 #: regularity is computed mechanically in mnemonic_context, so which bound
-#: applies is not the model's choice.
-DERIVATION_NOTE_BOUNDS = (30, 320)
-READING_STORY_BOUNDS = (250, 750)
+#: applies is not the model's choice. The note's ceiling stays well under the
+#: story's floor, so "one line" and "a story" cannot blur into each other.
+DERIVATION_NOTE_BOUNDS = (30, 220)
+READING_STORY_BOUNDS = (120, 380)
 _DERIVATION_KINDS = ("regular", "kana_only")
 
 #: Highlight markup (Rev 2). A mnemonic wraps the pieces the learner is meant to
@@ -331,19 +346,34 @@ def validate_radical(level, slug, draft, ctx=None):
     ctx = ctx or mnemonic_context.radical_context(level, slug)
     errors = []
 
-    text = draft.get("description")
+    text = draft.get("mnemonic_text")
     if not isinstance(text, str) or not text.strip():
-        return ["missing or empty field description"]
+        return ["missing or empty field mnemonic_text"]
 
-    errors += _field_errors("radical", "description", text)
+    errors += _field_errors("radical", "mnemonic_text", text)
 
     words = _meaning_words(ctx["meaning_synonyms"])
     if words and not _references(text, words):
         errors.append(
-            f"description never lands on the meaning “{ctx['meaning']}”; the image "
+            f"mnemonic_text never lands on the meaning “{ctx['meaning']}”; the image "
             "must resolve to that meaning"
         )
-    errors += _look_alike_errors("description", text, ctx, ctx["form"])
+
+    # Rev 3: a radical's `description` is optional on the same terms as a
+    # kanji's — the mnemonic is what the learner reads, so a description that
+    # retells it is noise. Look-alike contrast is the one thing the mnemonic
+    # cannot carry (it would have to name a character the story isn't about),
+    # so a radical with reviewed confusables still owes one.
+    description = draft.get("description")
+    if isinstance(description, str) and description.strip():
+        errors += _field_errors("radical", "description", description)
+        errors += _look_alike_errors("description", description, ctx, ctx["form"])
+    elif ctx["look_alikes"]:
+        forms = ", ".join(entry["form"] for entry in ctx["look_alikes"])
+        errors.append(
+            f"description is omitted, but this radical has reviewed look-alikes ({forms}); "
+            "the contrast prose is what saves those reviews, so a description is required here"
+        )
     return errors
 
 

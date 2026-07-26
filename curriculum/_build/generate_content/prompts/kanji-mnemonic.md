@@ -11,14 +11,16 @@ a bad decision in it is not.
 
 ## How long
 
-Aim for **roughly 350–700 characters** per mnemonic — about four to six
-sentences. That is the size that has actually worked: long enough to carry a
-scene, short enough that a tired learner reads it instead of skipping it.
+Aim for **roughly 180–330 characters** for the meaning mnemonic and **150–280**
+for the reading mnemonic — two to four sentences each. That is the size that has
+actually worked: long enough to carry a scene, short enough that a tired learner
+reads it instead of skipping it. These are short on purpose; the depth comes
+from how specific the picture is, not from how many sentences it takes.
 
-Treat it as the target, not a rule. A kanji with four components and a look-alike
-may genuinely need more, and going over to finish the job is fine. What is not
-fine is padding: a second joke, a restated ending, or a sentence that adds words
-without adding picture. If the scene is complete at 350 characters, stop there.
+Treat it as the target, not a rule. A kanji with four components may genuinely
+need more, and going over to finish the job is fine. What is not fine is
+padding: a second joke, a restated ending, or a sentence that adds words without
+adding picture. If the scene is complete at 180 characters, stop there.
 
 ## The kanji
 

@@ -160,9 +160,9 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
-            # Rev 1: a radical has no mnemonic — the generated `description` is
-            # the image story (and the Tier 2 image prompt). Pre-Rev-1 sidecars
-            # carry `mnemonic_text` instead; both paths are explicit.
+            # A radical's `mnemonic_text` is the image story (and the Tier 2
+            # image prompt); `description` is optional and carries look-alike
+            # contrast or usage nuance. Both paths are explicit.
             if mnemonic.get("description"):
                 item["description"] = mnemonic["description"]
             if mnemonic.get("mnemonic_text"):

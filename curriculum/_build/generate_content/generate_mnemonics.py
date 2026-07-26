@@ -9,7 +9,7 @@ call, drafts written under generate_content/drafts/mnemonics/, and — only afte
 passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
 sidecars that generate.py inlines into the shipped JSON:
 
-    curriculum/radicals/mnemonics/<level>.json    (description — no mnemonic)
+    curriculum/radicals/mnemonics/<level>.json    (mnemonic + optional description)
     curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + optional description)
     curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + optional description)
 
@@ -65,13 +65,20 @@ WEB_DIR = os.path.join(HERE, "web", "mnemonics")
 MODEL = "claude-opus-4-8"
 #: Bump the entry for a type together with that type's prompt, persona.md, or
 #: cast-bible.md. Versioned per type because the three prompts move
-#: independently: Rev 2 rewrote the kanji/vocab contract and left the radical
-#: prompt untouched, so re-running radicals would have discarded good prose.
+#: independently, and a draft under an older version is regenerated wholesale.
+#: 1 = original (single mnemonic_text per item)
 #: 2 = Rev 1 (story-depth mnemonics, radical description replaces the radical
 #:     mnemonic, look-alike prose, vocabulary mnemonics)
-#: 3 = Rev 2, kanji/vocab only (tighter length band, highlight tags on the
-#:     borrowed components and the reading, description optional)
-PROMPT_VERSION = {"radical": 2, "kanji": 3, "vocab": 3}
+#: 3 = Rev 2, kanji/vocab only (highlight tags on the borrowed components and
+#:     the reading, description optional)
+#: 4 = Rev 3, kanji/vocab (length band recalibrated to the reviewed N5 sizes)
+#:
+#: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
+#: reverts the radical contract to the original shape and size — a mnemonic_text
+#: of ~150–300 characters, with the description demoted to optional — so the
+#: reviewed N5 radicals are exactly what the current prompt asks for. Numbering
+#: them 5 would mark 76 kept items stale and regenerate them for nothing.
+PROMPT_VERSION = {"radical": 1, "kanji": 4, "vocab": 4}
 MAX_ATTEMPTS = 3
 MAX_TOKENS = 3000
 POLL_SECONDS = 30
@@ -99,16 +106,22 @@ SUBMIT_TOOLS = {
         },
     },
     "radical": {
-        "name": "submit_radical_description",
+        "name": "submit_radical_mnemonic",
         "description": (
-            "Submit the completed description for one radical. Call exactly once."
+            "Submit the completed mnemonic for one radical. Call exactly once."
         ),
         "strict": True,
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
-            "required": ["description"],
-            "properties": {"description": {"type": "string"}},
+            # Rev 3: `description` is optional here too — omit it unless the
+            # radical has reviewed look-alikes to contrast or a nuance the
+            # mnemonic cannot carry.
+            "required": ["mnemonic_text"],
+            "properties": {
+                "mnemonic_text": {"type": "string"},
+                "description": {"type": "string"},
+            },
         },
     },
     "vocab": {
@@ -135,7 +148,7 @@ SUBMIT_TOOLS = {
 
 PROMPT_FILES = {
     "kanji": "kanji-mnemonic.md",
-    "radical": "radical-description.md",
+    "radical": "radical-mnemonic.md",
     "vocab": "vocab-mnemonic.md",
 }
 
@@ -481,15 +494,19 @@ WEB_OUTPUT_INSTRUCTION = (
     "Do not call any tools, and do not add any commentary outside the block. "
     "The JSON object must use these exact key names:"
 )
+_OPTIONAL_DESCRIPTION_LINE = (
+    "\n\nand, only when this item needs one, with `description` added:\n\n")
 _SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
-                   '"reading_mnemonic": "..."\n}\n```\n\n'
-                   'and, only when this item needs one, with `description` added:\n\n'
+                   '"reading_mnemonic": "..."\n}\n```'
+                   + _OPTIONAL_DESCRIPTION_LINE +
                    '```json\n{\n  "meaning_mnemonic": "...",\n  '
                    '"reading_mnemonic": "...",\n  "description": "..."\n}\n```')
 WEB_SKELETON = {
     "kanji": _SPLIT_SKELETON,
     "vocab": _SPLIT_SKELETON,
-    "radical": '```json\n{\n  "description": "..."\n}\n```',
+    "radical": ('```json\n{\n  "mnemonic_text": "..."\n}\n```'
+                + _OPTIONAL_DESCRIPTION_LINE +
+                '```json\n{\n  "mnemonic_text": "...",\n  "description": "..."\n}\n```'),
 }
 
 

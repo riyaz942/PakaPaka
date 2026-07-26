@@ -10,12 +10,13 @@ word needs one, a description.
 
 ## How long
 
-Aim for **roughly 350–700 characters** for the meaning mnemonic — about four to
-six sentences. That is the size that has actually worked: long enough to carry a
-scene, short enough that a tired learner reads it instead of skipping it. Treat
-it as the target, not a rule: going over to finish a scene is fine, padding to
-reach a number is not. (The reading mnemonic follows the reading section below —
-a derivation note stays one sentence no matter what.)
+Aim for **roughly 180–330 characters** for the meaning mnemonic — two to four
+sentences, the same size as the radical and kanji mnemonics the learner has been
+reading all the way up the chain. That is the size that has actually worked:
+long enough to carry a scene, short enough that a tired learner reads it instead
+of skipping it. Treat it as the target, not a rule: going over to finish a scene
+is fine, padding to reach a number is not. (The reading mnemonic follows the
+reading section below — a derivation note stays one sentence no matter what.)
 
 ## The word
 
@@ -73,8 +74,8 @@ Call the `submit_vocab_mnemonic` tool exactly once with:
    says to write a derivation note, write **one sentence** that points at the
    readings the learner already knows and moves on; padding a regular reading
    into a story teaches them to distrust the ones that *are* stories. When it
-   says to write a full story, write one of real depth in the same 350–700
-   character band, cast-driven, with the reading in it verbatim.
+   says to write a full story, write one of real depth in the 150–280 character
+   band, cast-driven, with the reading in it verbatim.
 
 3. **`description`** — **optional. Omit this key entirely unless this word
    actually needs it.** The two mnemonics are what the learner reads; a

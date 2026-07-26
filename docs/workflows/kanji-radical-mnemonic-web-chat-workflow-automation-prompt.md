@@ -352,7 +352,9 @@ Instead:
 
      - For <type> = radical:
 
-       - description
+       - mnemonic_text
+
+       - description (optional, same rule as kanji)
 
      - For <type> = vocab:
 
@@ -520,7 +522,7 @@ Repair Procedure
 
    - Preserve the required reply-file format (a single fenced ```json block).
 
-   - Preserve the exact required JSON keys for the content type (kanji and vocab: meaning_mnemonic and reading_mnemonic, plus description only when the item needs one; radical: description). Do not add a description the earlier draft omitted unless an error asks for one.
+   - Preserve the exact required JSON keys for the content type (kanji and vocab: meaning_mnemonic and reading_mnemonic; radical: mnemonic_text; all three: description only when the item needs one). Do not add a description the earlier draft omitted unless an error asks for one — and when one does, add only the description and leave the mnemonic(s) untouched.
 
    - Ensure the repaired content parses as valid JSON.
 
@@ -532,9 +534,9 @@ Repair Procedure
 
    - For vocab: the meaning_mnemonic must reference every kanji listed in the prompt's "The kanji in this word" section; the reading_mnemonic must contain the word's reading verbatim and must follow the prompt's "The reading" section — a one-line derivation note when it says the reading is regular or kana-only, a full story when it says otherwise.
 
-   - For radical and kanji: when a description is present it must name every look-alike listed in the prompt and no other Japanese character; a kanji whose prompt lists look-alikes must have one.
+   - For radical and kanji: when a description is present it must name every look-alike listed in the prompt and no other Japanese character; an item whose prompt lists look-alikes must have one.
 
-   - Keep all fields plain prose apart from the highlight tags — no markdown, headings, lists, bold/italic, furigana brackets, or romaji. Aim for roughly 350–700 characters per mnemonic.
+   - Keep all fields plain prose apart from the highlight tags — no markdown, headings, lists, bold/italic, furigana brackets, or romaji. Aim for roughly 150–300 characters for a radical mnemonic, 180–330 for a meaning mnemonic, and 150–280 for a reading mnemonic.
 
    - Keep each field within the length bounds implied by the gate errors.
 
@@ -613,7 +615,7 @@ Ordering Note
 
 
 Types chain: radicals first, then kanji, then vocab. A kanji story continues its
-radicals' established descriptions and a vocab story hooks into its kanji's meaning
+radicals' established mnemonics and a vocab story hooks into its kanji's meaning
 mnemonics, so each layer should be settled before the layer that feeds on it.
 (Each run is one type; sequence the runs accordingly.)
 
