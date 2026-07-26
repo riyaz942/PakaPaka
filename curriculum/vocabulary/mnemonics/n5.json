@@ -445,11 +445,29 @@
       "review_status": "draft"
     }
   },
+  "kotoshi": {
+    "meaning_mnemonic": "You invite the scarecrow to take cover under the roof right <kanji>now</kanji>. It's used to standing out in the weather for a full <kanji>year</kanji> at a time, but you decide it deserves to stay inside for this year.",
+    "reading_mnemonic": "You find the scarecrow shivering in the snow, so you give her a thick winter <reading>coat. She</reading> puts it on with her stiff straw arms, grateful that <reading>ことし</reading> she won't freeze.",
+    "_meta": {
+      "generator_model": "gemini-web",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "ku-num": {
     "meaning_mnemonic": "That same hook is on closing duty tonight, yanking down the shutter at Koichi's konbini one slat at a time. It catches, drags, catches again — nine short tugs before the shutter seals shut, and the last tug is the one that lands on <kanji>nine</kanji>, alt reading and all, right as the beeping till goes quiet.",
     "reading_mnemonic": "At Grandma Kane's shrine, a lone dove has nested in among the cats, and none of them touch it. When the bell rings, it doesn't screech — it lets out one flat <reading>coo</reading>, over and over, and that flat sound is exactly how this word is read: <reading>く</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kyonen": {
+    "meaning_mnemonic": "You walk up to the scarecrow that has been silently watching the field for a whole <kanji>year</kanji>. Its straw arms are sagging and birds have built nests in its hat, clearly showing that it has been stuck out here since last year.",
+    "reading_mnemonic": "You are directing a play starring the scarecrow, but it keeps missing its <reading>cue. Nena</reading>, your stage manager, sighs and reminds you that it was much better at acting <reading>きょねん</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }
@@ -634,6 +652,15 @@
     "reading_mnemonic": "来 already gives you らい and 月 already gives you げつ — stack them straight through into <reading>らいげつ</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rainen": {
+    "meaning_mnemonic": "The tree at the crossroads waves its branches at the scarecrow, telling it to <kanji>come</kanji> rest in the shade. The scarecrow yells back that it has to stand in the field for the rest of the <kanji>year</kanji>, but promises to finally take a break next year.",
+    "reading_mnemonic": "The reading is exactly what you learned for the kanji: 来 (らい) plus 年 (ねん) makes <reading>らいねん</reading>.",
+    "_meta": {
+      "generator_model": "gemini-web",
       "prompt_version": "4",
       "review_status": "draft"
     }

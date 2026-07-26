@@ -7,11 +7,11 @@ time and **auto-selects the next batch of not-yet-done slugs** for that type
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type>
+<type = vocab>
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 10>
+<batch-size = 3>
 
 This is the browser-driven, no-API equivalent of the Message Batches driver in
 `curriculum/_build/generate_content/generate_mnemonics.py`. Only the "call the

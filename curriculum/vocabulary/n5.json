@@ -5648,6 +5648,13 @@
         }
       ],
       "furigana": "今年[ことし]",
+      "meaning_mnemonic": "You invite the scarecrow to take cover under the roof right <kanji>now</kanji>. It's used to standing out in the weather for a full <kanji>year</kanji> at a time, but you decide it deserves to stay inside for this year.",
+      "reading_mnemonic": "You find the scarecrow shivering in the snow, so you give her a thick winter <reading>coat. She</reading> puts it on with her stiff straw arms, grateful that <reading>ことし</reading> she won't freeze.",
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今年は忙しいです。",
@@ -5681,12 +5688,7 @@
           ],
           "furigana": "今年[ことし]は海[うみ]に行[い]きました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "rainen",
@@ -5706,6 +5708,13 @@
         }
       ],
       "furigana": "来[らい]年[ねん]",
+      "meaning_mnemonic": "The tree at the crossroads waves its branches at the scarecrow, telling it to <kanji>come</kanji> rest in the shade. The scarecrow yells back that it has to stand in the field for the rest of the <kanji>year</kanji>, but promises to finally take a break next year.",
+      "reading_mnemonic": "The reading is exactly what you learned for the kanji: 来 (らい) plus 年 (ねん) makes <reading>らいねん</reading>.",
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "来年海に行きます。",
@@ -5740,12 +5749,7 @@
           ],
           "furigana": "来[らい]年[ねん]友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kyonen",
@@ -5765,6 +5769,13 @@
         }
       ],
       "furigana": "去[きょ]年[ねん]",
+      "meaning_mnemonic": "You walk up to the scarecrow that has been silently watching the field for a whole <kanji>year</kanji>. Its straw arms are sagging and birds have built nests in its hat, clearly showing that it has been stuck out here since last year.",
+      "reading_mnemonic": "You are directing a play starring the scarecrow, but it keeps missing its <reading>cue. Nena</reading>, your stage manager, sighs and reminds you that it was much better at acting <reading>きょねん</reading>.",
+      "_meta": {
+        "generator_model": "gemini-web",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "去年、友達と海に行きました。",
@@ -5801,12 +5812,7 @@
           ],
           "furigana": "去[きょ]年[ねん]は忙[いそが]しかったです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "jikan",

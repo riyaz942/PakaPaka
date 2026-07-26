@@ -48,7 +48,7 @@ where you left off.
 Group size (how many slugs one subagent writes in a single pass; used as
 GROUP_SIZE in Step 1):
 
-<group-size = 3>
+<group-size = 4>
 
 The run's slugs are split into groups of at most <group-size>, and each group is
 written by ONE subagent that sees every item in the group. Why group at all:
