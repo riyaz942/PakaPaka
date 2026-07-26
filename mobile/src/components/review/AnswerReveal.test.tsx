@@ -65,7 +65,7 @@ function makeDetail(): ReviewRevealDetail {
       { id: 'r2', readingType: 'kunyomi', reading: 'た', sortOrder: 1 },
     ],
     exampleSentences: [
-      { id: 's1', japanese: '食べます', furigana: null, english: 'I eat.', sortOrder: 0 },
+      { id: 's1', japanese: '食べます', furigana: null, english: 'I eat.', sortOrder: 0, vocabularyLinks: [] },
     ],
   };
 }

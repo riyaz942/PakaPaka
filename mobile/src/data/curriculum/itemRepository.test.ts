@@ -4,6 +4,7 @@ import {
   __mockResetSqlite,
   __mockSetAcceptedAnswers,
   __mockSetExampleSentences,
+  __mockSetExampleSentenceVocab,
   __mockSetGrammarRelatedLinks,
   __mockSetGrammarRules,
   __mockSetGrammarVocabLinks,
@@ -531,6 +532,7 @@ describe('itemRepository', () => {
         furigana: null,
         english: 'This is a book.',
         sortOrder: 1,
+        vocabularyLinks: [],
       },
       {
         id: '2',
@@ -538,6 +540,64 @@ describe('itemRepository', () => {
         furigana: null,
         english: 'I am a student.',
         sortOrder: 2,
+        vocabularyLinks: [],
+      },
+    ]);
+  });
+
+  it('attaches authored vocabulary links to example sentences', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 20,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'watashi',
+        primary_form: '私',
+        meaning: 'I, me',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 21,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'gakusei',
+        primary_form: '学生',
+        meaning: 'student',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+    ]);
+    __mockSetExampleSentences('curriculum.db.test', [
+      {
+        id: 1,
+        item_id: 20,
+        japanese: '私は学生です。',
+        furigana: '私[わたし]は学生[がくせい]です。',
+        english: 'I am a student.',
+        sort_order: 0,
+      },
+    ]);
+    __mockSetExampleSentenceVocab('curriculum.db.test', [
+      { id: 1, sentence_id: 1, item_id: 20, sort_order: 0 },
+      { id: 2, sentence_id: 1, item_id: 21, sort_order: 1 },
+    ]);
+
+    expect(getExampleSentences(db, '20')).toEqual([
+      {
+        id: '1',
+        japanese: '私は学生です。',
+        furigana: '私[わたし]は学生[がくせい]です。',
+        english: 'I am a student.',
+        sortOrder: 0,
+        vocabularyLinks: [
+          { itemId: '20', primaryForm: '私' },
+          { itemId: '21', primaryForm: '学生' },
+        ],
       },
     ]);
   });

@@ -63,6 +63,7 @@ const exampleSentences: ExampleSentence[] = [
     furigana: null,
     english: 'I am a student.',
     sortOrder: 1,
+    vocabularyLinks: [],
   },
 ];
 

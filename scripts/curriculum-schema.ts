@@ -94,6 +94,16 @@ CREATE TABLE example_sentences (
   reinforcement_tags TEXT
 );
 
+-- Authored vocabulary links on example sentences (Plan 11.6). Spans are
+-- located at runtime by the first primary_form match in the japanese text —
+-- never auto-segmented. Unmatched surfaces stay inert.
+CREATE TABLE example_sentence_vocab (
+  id INTEGER PRIMARY KEY NOT NULL,
+  sentence_id INTEGER NOT NULL REFERENCES example_sentences(id),
+  item_id INTEGER NOT NULL REFERENCES items(id),
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
 CREATE TABLE item_relationships (
   id INTEGER PRIMARY KEY NOT NULL,
   parent_item_id INTEGER NOT NULL REFERENCES items(id),

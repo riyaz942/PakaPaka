@@ -371,12 +371,19 @@ export type GrammarClozeVariant = {
   sortOrder: number;
 };
 
+export type ExampleSentenceVocabLink = {
+  itemId: string;
+  primaryForm: string;
+};
+
 export type ExampleSentence = {
   id: string;
   japanese: string;
   furigana: string | null;
   english: string;
   sortOrder: number;
+  /** Authored vocab links (Plan 11.6); empty when the sentence has none. */
+  vocabularyLinks: ExampleSentenceVocabLink[];
 };
 
 export type GrammarVocabLink = {
@@ -439,13 +446,23 @@ function mapAcceptedAnswerRow(row: AcceptedAnswerRow): AcceptedAnswer {
   };
 }
 
-function mapExampleSentenceRow(row: ExampleSentenceRow): ExampleSentence {
+type ExampleSentenceVocabRow = {
+  sentence_id: number | string;
+  item_id: number | string;
+  primary_form: string;
+};
+
+function mapExampleSentenceRow(
+  row: ExampleSentenceRow,
+  vocabularyLinks: ExampleSentenceVocabLink[],
+): ExampleSentence {
   return {
     id: String(row.id),
     japanese: row.japanese,
     furigana: row.furigana ?? null,
     english: row.english,
     sortOrder: row.sort_order,
+    vocabularyLinks,
   };
 }
 
@@ -769,7 +786,37 @@ export function getExampleSentences(
     `SELECT id, japanese, furigana, english, sort_order FROM example_sentences WHERE item_id = ? ORDER BY sort_order ASC`,
     Number(itemId),
   );
-  return rows.map(mapExampleSentenceRow);
+  if (rows.length === 0) {
+    return [];
+  }
+
+  const linksBySentence = new Map<string, ExampleSentenceVocabLink[]>();
+  try {
+    const placeholders = rows.map(() => '?').join(', ');
+    const linkRows = db.getAllSync<ExampleSentenceVocabRow>(
+      `SELECT esv.sentence_id, esv.item_id, i.primary_form
+       FROM example_sentence_vocab esv
+       JOIN items i ON i.id = esv.item_id
+       WHERE esv.sentence_id IN (${placeholders})
+       ORDER BY esv.sort_order ASC`,
+      ...rows.map((row) => Number(row.id)),
+    );
+    for (const link of linkRows) {
+      const sentenceId = String(link.sentence_id);
+      const list = linksBySentence.get(sentenceId) ?? [];
+      list.push({
+        itemId: String(link.item_id),
+        primaryForm: link.primary_form,
+      });
+      linksBySentence.set(sentenceId, list);
+    }
+  } catch {
+    // Pre-Plan-11.6 DB without the example_sentence_vocab table.
+  }
+
+  return rows.map((row) =>
+    mapExampleSentenceRow(row, linksBySentence.get(String(row.id)) ?? []),
+  );
 }
 
 export function getGrammarLinksForVocab(

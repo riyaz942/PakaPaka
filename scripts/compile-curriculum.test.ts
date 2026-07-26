@@ -151,6 +151,19 @@ describe('compile-curriculum', () => {
         .all(passage.id) as { slug: string }[];
       expect(passageVocab).toEqual([{ slug: 'ichi-v' }]);
 
+      const exampleVocab = db
+        .prepare(
+          `SELECT sentence.japanese AS japanese, vocab.slug AS slug, link.sort_order
+           FROM example_sentence_vocab link
+           JOIN example_sentences sentence ON sentence.id = link.sentence_id
+           JOIN items vocab ON vocab.id = link.item_id
+           ORDER BY link.sort_order ASC`,
+        )
+        .all() as { japanese: string; slug: string; sort_order: number }[];
+      expect(exampleVocab).toEqual([
+        { japanese: '一があります。', slug: 'ichi-v', sort_order: 0 },
+      ]);
+
       const wordSpans = db
         .prepare(
           `SELECT items.slug AS slug, span.start_offset, span.end_offset, span.sort_order

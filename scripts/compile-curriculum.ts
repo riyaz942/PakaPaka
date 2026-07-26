@@ -410,6 +410,18 @@ export function compileCurriculum(
       INSERT INTO example_sentences (item_id, japanese, furigana, english, sort_order, reinforcement_tags)
       VALUES (@item_id, @japanese, @furigana, @english, @sort_order, @reinforcement_tags)
     `);
+    const insertExampleVocab = db.prepare(`
+      INSERT INTO example_sentence_vocab (sentence_id, item_id, sort_order)
+      VALUES (@sentence_id, @item_id, @sort_order)
+    `);
+    // Example-sentence vocab links can point at vocabulary items that compile
+    // later than the owning kanji/grammar row, so resolve ids up front and
+    // insert after every item row exists.
+    const pendingExampleVocabLinks: {
+      sentence_id: number;
+      item_id: number;
+      sort_order: number;
+    }[] = [];
     const insertVisuallySimilarLink = db.prepare(`
       INSERT INTO visually_similar_links (item_id, similar_item_id, sort_order)
       VALUES (@item_id, @similar_item_id, @sort_order)
@@ -447,9 +459,9 @@ export function compileCurriculum(
       }
     };
 
-    const insertExamples = (itemId: number, sentences: ExampleSentence[]) => {
+    const insertExamples = (itemId: number, sentences: ExampleSentence[], ownerLabel: string) => {
       for (const [index, sentence] of sentences.entries()) {
-        insertExample.run({
+        const result = insertExample.run({
           item_id: itemId,
           japanese: sentence.japanese,
           furigana: sentence.furigana ?? null,
@@ -459,6 +471,20 @@ export function compileCurriculum(
             ? JSON.stringify(sentence.reinforcement_tags)
             : null,
         });
+        const sentenceId = Number(result.lastInsertRowid);
+        for (const [slugIndex, vocabSlug] of (sentence.vocabulary_slugs ?? []).entries()) {
+          const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
+          if (!vocabId) {
+            throw new Error(
+              `Unresolved example vocabulary link: ${ownerLabel} example[${index}] -> vocabulary:${vocabSlug}`,
+            );
+          }
+          pendingExampleVocabLinks.push({
+            sentence_id: sentenceId,
+            item_id: vocabId,
+            sort_order: slugIndex,
+          });
+        }
       }
     };
 
@@ -530,7 +556,7 @@ export function compileCurriculum(
         });
       }
 
-      insertExamples(id, kanjiItem.example_sentences ?? []);
+      insertExamples(id, kanjiItem.example_sentences ?? [], `kanji:${kanjiItem.slug}`);
     }
 
     for (const vocab of vocabulary) {
@@ -560,7 +586,7 @@ export function compileCurriculum(
         });
       }
 
-      insertExamples(id, vocab.example_sentences ?? []);
+      insertExamples(id, vocab.example_sentences ?? [], `vocabulary:${vocab.slug}`);
     }
 
     const insertGrammarRule = db.prepare(`
@@ -643,7 +669,7 @@ export function compileCurriculum(
         });
       }
 
-      insertExamples(id, grammarItem.example_sentences ?? []);
+      insertExamples(id, grammarItem.example_sentences ?? [], `grammar:${grammarItem.slug}`);
 
       for (const vocabSlug of grammarItem.vocabulary_slugs ?? []) {
         const vocabId = idByKey.get(itemKey('vocabulary', vocabSlug));
@@ -665,6 +691,10 @@ export function compileCurriculum(
 
     for (const link of pendingSimilarLinks) {
       insertVisuallySimilarLink.run(link);
+    }
+
+    for (const link of pendingExampleVocabLinks) {
+      insertExampleVocab.run(link);
     }
 
     const insertRelationship = db.prepare(`

@@ -4,11 +4,10 @@ import React, { createContext, useContext, type ReactNode } from 'react';
  * Which route detail cross-references navigate into.
  *
  * Browse is the canonical discovery surface, so `/browse/item` is the default.
- * The review nested detail screen overrides it with `/review/item`: pushing a
- * Browse route from inside a review would leave the review Stack and destroy
- * the session.
+ * Nested detail screens override it (`/review/item`, `/lesson/item`): pushing a
+ * Browse route from inside those stacks would leave the session behind.
  */
-export type ItemLinkBase = '/browse/item' | '/review/item';
+export type ItemLinkBase = '/browse/item' | '/review/item' | '/lesson/item';
 
 const ItemLinkContext = createContext<ItemLinkBase>('/browse/item');
 

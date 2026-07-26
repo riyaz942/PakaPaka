@@ -10,6 +10,7 @@ export default function LessonLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="complete" />
+        <Stack.Screen name="item/[id]" />
       </Stack>
     </GestureHandlerRootView>
   );

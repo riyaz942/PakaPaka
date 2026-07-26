@@ -20,6 +20,7 @@ import Animated, {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
 import { MaxContentWidth } from '@/constants/theme';
@@ -343,7 +344,9 @@ export default function LessonScreen() {
               <ScrollView
                 className="mt-space-md flex-1"
                 contentContainerClassName="pb-space-lg">
-                <LessonItemView itemId={current.id} sectionIndex={sectionIndex} />
+                <ItemLinkProvider base="/lesson/item">
+                  <LessonItemView itemId={current.id} sectionIndex={sectionIndex} />
+                </ItemLinkProvider>
               </ScrollView>
             </Animated.View>
           </GestureDetector>
