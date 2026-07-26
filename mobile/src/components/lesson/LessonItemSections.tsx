@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
@@ -31,6 +31,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
 import { cn } from '@/utils/cn';
+import { isValidMnemonicImageUrl } from '@/utils/mnemonicAccessibilityLabel';
 
 /** Intro → Mnemonic → Examples & links (FR71, UX-DR16). */
 export const LESSON_SECTION_COUNT = 3;
@@ -94,27 +95,41 @@ function LessonHero({ item }: { item: CurriculumItemDetail }) {
 }
 
 /**
- * Section 1 — what the item *is*: hero, meaning, readings (kanji), pattern
- * structure (grammar). No examples, no cross-links: those are section 3.
+ * Section 1 — what the item *is*: hero, meaning, the radical's visual mnemonic,
+ * description, pattern structure (grammar). No examples, no cross-links: those
+ * are section 3.
+ *
+ * Kanji readings live in the Mnemonic section, next to the reading mnemonic
+ * they explain. A radical's description sits with its story there too.
  */
-export function LessonIntroSection({
-  item,
-  kanjiReadings,
-  grammarRule,
-  showReadingPrimer,
-}: LessonSectionProps) {
+export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const [imageFailed, setImageFailed] = useState(false);
+
+  const showRadicalImage =
+    item.itemType === 'radical' &&
+    isValidMnemonicImageUrl(item.visualMnemonicUrl) &&
+    !imageFailed;
 
   return (
     <View testID="lesson-section-intro">
       <LessonHero item={item} />
 
-      {item.itemType === 'kanji' ? (
-        <>
-          {showReadingPrimer ? <KanjiReadingPrimer /> : null}
-          <KanjiReadingsSection kanjiReadings={kanjiReadings} />
-        </>
+      {showRadicalImage ? (
+        <View className="mt-6">
+          <MnemonicImage
+            className="h-48"
+            imageUrl={item.visualMnemonicUrl}
+            mnemonicText={item.mnemonicText}
+            meaning={item.meaning}
+            primaryForm={item.primaryForm}
+            onLoadError={() => setImageFailed(true)}
+            testID="radical-mnemonic-image"
+          />
+        </View>
       ) : null}
+
+      {item.itemType === 'radical' ? null : <ItemDescriptionSection item={item} />}
 
       {item.itemType === 'grammar' && grammarRule ? (
         <>
@@ -181,33 +196,26 @@ export function LessonIntroSection({
  *
  * A radical's `mnemonic_text` reads as the image's story, not under a "Mnemonic"
  * heading; its optional `description` (content pipeline Rev 3) is the separate
- * look-alike/nuance block, same as on kanji and vocabulary.
+ * look-alike/nuance block, same as on kanji and vocabulary. The image itself
+ * sits with the glyph in section 1.
  */
-export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps) {
+export function LessonMnemonicSectionView({
+  item,
+  parents,
+  kanjiReadings,
+  showReadingPrimer,
+}: LessonSectionProps) {
   if (item.itemType === 'radical') {
-    const story = item.mnemonicText;
-
     return (
       <View testID="lesson-section-mnemonic">
-        {story ? (
+        {item.mnemonicText ? (
           <AnnotatedText
-            text={story}
+            text={item.mnemonicText}
             itemType="radical"
             className="mt-4 text-body text-secondary"
             testID="radical-description"
           />
         ) : null}
-
-        <View className="mt-6">
-          <MnemonicImage
-            className="h-48"
-            imageUrl={item.visualMnemonicUrl}
-            mnemonicText={story}
-            meaning={item.meaning}
-            primaryForm={item.primaryForm}
-            testID="radical-mnemonic-image"
-          />
-        </View>
 
         <ItemDescriptionSection item={item} />
       </View>
@@ -215,18 +223,25 @@ export function LessonMnemonicSectionView({ item, parents }: LessonSectionProps)
   }
 
   const hasContent = hasCurriculumMnemonic(item) || Boolean(item.description);
+  const readingsBlock =
+    item.itemType === 'kanji' ? (
+      <View testID="lesson-kanji-readings">
+        {showReadingPrimer ? <KanjiReadingPrimer /> : null}
+        <KanjiReadingsSection kanjiReadings={kanjiReadings} />
+      </View>
+    ) : null;
 
   return (
     <View testID="lesson-section-mnemonic">
       {hasContent ? (
-        <>
-          <ItemMnemonicSections item={item} parents={parents} />
-          <ItemDescriptionSection item={item} />
-        </>
+        <ItemMnemonicSections item={item} parents={parents} readingSlot={readingsBlock} />
       ) : (
-        <Text className="mt-4 text-body text-secondary" testID="lesson-mnemonic-empty">
-          No mnemonic for this one yet — write your own below.
-        </Text>
+        <>
+          <Text className="mt-4 text-body text-secondary" testID="lesson-mnemonic-empty">
+            No mnemonic for this one yet — write your own below.
+          </Text>
+          {readingsBlock}
+        </>
       )}
 
       <PersonalMnemonicEditor itemId={item.id} />

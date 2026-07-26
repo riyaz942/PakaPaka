@@ -115,7 +115,8 @@ describe('LessonItemView sections', () => {
     expect(screen.getByTestId('lesson-section-intro')).toBeTruthy();
     expect(screen.getByText('日')).toBeTruthy();
     expect(screen.getByText('day')).toBeTruthy();
-    expect(screen.getByText('ニチ')).toBeTruthy();
+    // Readings moved to the Mnemonic section, next to the reading mnemonic.
+    expect(screen.queryByText('ニチ')).toBeNull();
     expect(screen.queryByTestId('lesson-section-examples')).toBeNull();
     expect(screen.queryByTestId('item-cross-references')).toBeNull();
   });
@@ -142,8 +143,7 @@ describe('LessonItemView sections', () => {
     expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
   });
 
-  it('section 2 renders the Rev 1 split mnemonics, description, and composition line', async () => {
-    const { curriculumDb, userDb } = await createDatabases();
+  function setRev1Kanji() {
     __mockSetItems('curriculum.db.test', [
       {
         id: 1,
@@ -171,14 +171,69 @@ describe('LessonItemView sections', () => {
         sort_order: 1,
       },
     ]);
+  }
+
+  it('section 1 puts the description directly under the hero', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    setRev1Kanji();
+
+    mount(curriculumDb, userDb, 0);
+
+    expect(screen.getByTestId('item-description')).toBeTruthy();
+    expect(screen.getByText('Also means sun. Do not confuse it with 目.')).toBeTruthy();
+  });
+
+  it('section 2 renders the Rev 1 split mnemonics and composition line, without the description', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    setRev1Kanji();
 
     mount(curriculumDb, userDb, 1);
 
     expect(screen.getByText('一 = 日')).toBeTruthy();
     expect(screen.getByText('One flat horizon with the sun pinned to it: a day.')).toBeTruthy();
     expect(screen.getByText('ニチ — the sun knocks twice and says nichi.')).toBeTruthy();
-    expect(screen.getByText('About this kanji')).toBeTruthy();
+    expect(screen.queryByTestId('item-description')).toBeNull();
     expect(screen.queryByText('The sun rises each day.')).toBeNull();
+  });
+
+  it('section 2 slots the kanji readings between the meaning and reading mnemonics', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    setRev1Kanji();
+
+    mount(curriculumDb, userDb, 1);
+
+    expect(screen.getByTestId('lesson-kanji-readings')).toBeTruthy();
+    expect(screen.getByText('ニチ')).toBeTruthy();
+    expect(screen.getByText('ひ')).toBeTruthy();
+
+    const tree = JSON.stringify(screen.toJSON());
+    const meaningMnemonic = tree.indexOf('One flat horizon');
+    const readings = tree.indexOf('ニチ"');
+    const readingMnemonic = tree.indexOf('ニチ — the sun knocks twice');
+    expect(meaningMnemonic).toBeLessThan(readings);
+    expect(readings).toBeLessThan(readingMnemonic);
+  });
+
+  it('section 2 still shows the kanji readings when the item has no mnemonic', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 2,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'day',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    mount(curriculumDb, userDb, 1);
+
+    expect(screen.getByTestId('lesson-mnemonic-empty')).toBeTruthy();
+    expect(screen.getByText('ニチ')).toBeTruthy();
   });
 
   it('section 2 captions a radical with its mnemonic and keeps the description separate', async () => {
@@ -200,33 +255,82 @@ describe('LessonItemView sections', () => {
 
     mount(curriculumDb, userDb, 1);
 
-    // Also surfaces as the image's alt text, hence getAllByText.
+    // The story renders exactly once — the image (and its text fallback, which
+    // repeated the story) is no longer on this section.
     expect(screen.getByTestId('radical-description')).toBeTruthy();
-    expect(
-      screen.getAllByText('Two legs mid-stride and no head at all: a person.').length,
-    ).toBeGreaterThan(0);
+    expect(screen.queryByTestId('radical-mnemonic-image')).toBeNull();
+    expect(screen.getAllByText('Two legs mid-stride and no head at all: a person.')).toHaveLength(
+      1,
+    );
     expect(screen.getByText('About this radical')).toBeTruthy();
     expect(
       screen.getByText('Not to be confused with 入, whose left stroke starts lower.'),
     ).toBeTruthy();
   });
 
-  it('shows the reading primer inline as section-1 content for a beginner', async () => {
+  it('section 1 shows the radical glyph, meaning, then its image', async () => {
     const { curriculumDb, userDb } = await createDatabases();
-    setOnboardingPath(userDb, 'beginner');
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 2,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'person',
+        primary_form: '人',
+        meaning: 'person',
+        mnemonic_text: 'Two legs mid-stride and no head at all: a person.',
+        visual_mnemonic_url: 'https://example.com/person.png',
+        sort_order: 1,
+      },
+    ]);
+
     mount(curriculumDb, userDb, 0);
 
-    const primer = screen.getByTestId('kanji-reading-primer');
-    expect(primer).toBeTruthy();
-    // Inline in the intro, not a wall in front of the lesson.
-    expect(screen.getByTestId('lesson-section-intro')).toBeTruthy();
-    expect(screen.getByText('日')).toBeTruthy();
+    expect(screen.getByTestId('radical-mnemonic-image')).toBeTruthy();
+
+    const tree = JSON.stringify(screen.toJSON());
+    expect(tree.indexOf('人')).toBeLessThan(tree.indexOf('person"'));
+    expect(tree.indexOf('person"')).toBeLessThan(tree.indexOf('radical-mnemonic-image'));
+  });
+
+  it('section 1 hides the image slot when the radical has no usable image', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 2,
+        item_type: 'radical',
+        jlpt_level: 'N5',
+        slug: 'person',
+        primary_form: '人',
+        meaning: 'person',
+        mnemonic_text: 'Two legs mid-stride and no head at all: a person.',
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    mount(curriculumDb, userDb, 0);
+
+    expect(screen.queryByTestId('radical-mnemonic-image')).toBeNull();
+    expect(
+      screen.queryByText('Two legs mid-stride and no head at all: a person.'),
+    ).toBeNull();
+  });
+
+  it('shows the reading primer with the readings in section 2 for a beginner', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    setOnboardingPath(userDb, 'beginner');
+    mount(curriculumDb, userDb, 1);
+
+    // Inline beside the readings it explains, not a wall in front of the lesson.
+    expect(screen.getByTestId('kanji-reading-primer')).toBeTruthy();
+    expect(screen.getByTestId('lesson-kanji-readings')).toBeTruthy();
   });
 
   it('does not show the primer unprompted on the manual path', async () => {
     const { curriculumDb, userDb } = await createDatabases();
     setOnboardingPath(userDb, 'manual');
-    mount(curriculumDb, userDb, 0);
+    mount(curriculumDb, userDb, 1);
 
     expect(screen.queryByTestId('kanji-reading-primer')).toBeNull();
     // The same explainer is still reachable from the readings heading.

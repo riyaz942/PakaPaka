@@ -13,6 +13,12 @@ type ItemMnemonicSectionsProps = {
   item: CurriculumItemDetail;
   /** Component parents from `useComponentParents` — the kanji composition line. */
   parents?: CurriculumParentItem[];
+  /**
+   * Rendered directly above the reading mnemonic. The lesson puts the kanji
+   * readings here so the reading mnemonic never references unseen sounds
+   * (Browse detail shows the readings higher up instead).
+   */
+  readingSlot?: React.ReactNode;
 };
 
 /** Whether the curriculum carries any mnemonic prose for this item. */
@@ -28,7 +34,11 @@ export function hasCurriculumMnemonic(item: CurriculumItemDetail): boolean {
  * through the legacy `MnemonicSection`, and only when neither split field is
  * present — the two are never merged into one block.
  */
-export function ItemMnemonicSections({ item, parents = [] }: ItemMnemonicSectionsProps) {
+export function ItemMnemonicSections({
+  item,
+  parents = [],
+  readingSlot = null,
+}: ItemMnemonicSectionsProps) {
   const hasSplitMnemonics = Boolean(item.meaningMnemonic || item.readingMnemonic);
   const compositionLine =
     item.itemType === 'kanji' && parents.length > 0
@@ -56,6 +66,8 @@ export function ItemMnemonicSections({ item, parents = [] }: ItemMnemonicSection
             </View>
           ) : null}
 
+          {readingSlot}
+
           {item.readingMnemonic ? (
             <View className="mt-4" testID="reading-mnemonic">
               <SectionHeading label="Reading mnemonic" />
@@ -67,9 +79,12 @@ export function ItemMnemonicSections({ item, parents = [] }: ItemMnemonicSection
             </View>
           ) : null}
         </>
-      ) : item.mnemonicText ? (
-        <MnemonicSection mnemonicText={item.mnemonicText} />
-      ) : null}
+      ) : (
+        <>
+          {item.mnemonicText ? <MnemonicSection mnemonicText={item.mnemonicText} /> : null}
+          {readingSlot}
+        </>
+      )}
     </View>
   );
 }
