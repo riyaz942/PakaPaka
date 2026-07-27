@@ -43,7 +43,7 @@ import {
   declinePendingReduction,
 } from '@/data/user/goalRingRepository';
 import { setReviewPriority } from '@/data/reviewPriorityStore';
-import { countDueSrsStates } from '@/data/user/srsStateRepository';
+import { countServableDueItems } from '@/data/reviewEligibility';
 import { countImportMetadataRows } from '@/data/user/importRepository';
 import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
@@ -238,7 +238,7 @@ export default function HomeScreen() {
       let due = 0;
       try {
         setLevel(getStartingJlptLevel(userDb));
-        due = countDueSrsStates(userDb);
+        due = countServableDueItems(curriculumDb, userDb);
         setDueCount(due);
       } catch {
         setDueCount(0);

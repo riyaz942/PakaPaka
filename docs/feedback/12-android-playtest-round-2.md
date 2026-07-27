@@ -12,9 +12,9 @@ analysis — each has repro steps so they can be verified on-device before fixin
 | [12.3](#123--prompt-disappears-after-a-correct-answer) | Prompt disappears after a correct answer | P1 | **Done** |
 | [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | **Done** |
 | [12.5](#125--abrupt-feedback--add-a-transition) | Abrupt feedback — add a transition | P2 | **Done** |
-| [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | Reported; scope decided (option 1) |
+| [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | **Done** — option 1 (week total + today split) |
 | [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | **Done** — post-session sharing removed too |
-| [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | Found in analysis — verify |
+| [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | **Done** — counts now run the queue's eligibility filters |
 | [12.9](#129--found-priority-hint-cleared-on-an-empty-build) | Priority hint cleared on an empty build | P3 | Found in analysis (folds into 12.2) |
 | [12.10](#1210--found-at-risk-list-can-include-items-with-no-srs-row) | At-risk list can include items with no SRS row | P3 | Found in analysis — verify |
 
@@ -236,6 +236,13 @@ recommendation below. Options 2 and 3 stay listed as future candidates only.
 later today") and today's "due now" number always matches the Home Review card
 count.
 
+**Implemented (2026-07-27).** `buildReviewForecast` now also returns
+`dueNowCount` (due timestamp ≤ now, i.e. overdue + already-due today — the same
+filter as `countDueSrsStates`, so Home's "N items ready" agrees) and
+`laterTodayCount` (today's bucket minus that). `ReviewForecast` renders the
+summary line under the "This week" header; the "…, Y more later today" clause is
+dropped when nothing else lands today.
+
 **Files.** `mobile/src/components/engagement/ReviewForecast.tsx`,
 `mobile/src/core/engagement/reviewForecast.ts`.
 
@@ -311,6 +318,28 @@ mismatches in practice, park this.
 filters, or accept the cheap count but derive the Home label from the built
 queue length when a session starts.
 
+**Fix (2026-07-27): count through the same filters.** Rather than wait for a
+device repro, the divergence was closed at the source — one shared filter now
+backs every "how many reviews" number on Home.
+
+- New `mobile/src/data/reviewEligibility.ts` — `filterServableItemIds` applies
+  the queue's three drops (missing curriculum row, locked parent, study status
+  `known`), reusing `isItemUnlocked` so the unlock rule stays single-sourced.
+  `countServableDueItems` is the Home count built on it.
+- `srsStateRepository`: `countDueSrsStates` → `getDueItemIds` (ids, not a raw
+  count) and `getUpcomingDueDates` → `getUpcomingDueItems` (ids + due dates),
+  since both counts now need ids to filter on.
+- The 7-day forecast filters through the same set, so its "N now" split and
+  Home's "N items ready" still agree — 12.6 tied them together deliberately.
+
+**Not changed.** Home stays uncapped while a session fetches at most
+`QUEUE_FETCH_LIMIT` (100) items; a >100 backlog still shows the true total on
+Home by design.
+
+**Files.** `data/reviewEligibility.ts` *(new, + test)*,
+`data/user/srsStateRepository.ts`, `data/hooks/useReviewForecast.ts`,
+`app/(tabs)/index.tsx`, 2 test files.
+
 ---
 
 ## 12.9 — (Found) Priority hint cleared on an empty build
@@ -343,4 +372,4 @@ SRS row. Cheap hardening: require an SRS state when building at-risk candidates
    do together so the animation lands on the final layout.
 4. **12.7** — mechanical removal; independent.
 5. **12.6** — week total + today split (option 1); independent.
-6. **12.8 / 12.10** — verify on-device first; fix only if confirmed.
+6. **12.8** *(done)* **/ 12.10** — verify on-device first; fix only if confirmed.

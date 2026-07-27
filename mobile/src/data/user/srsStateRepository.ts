@@ -101,29 +101,35 @@ export function getDueSrsStates(
   return rows.map(mapRowToState);
 }
 
-/** Uncapped due count for Home CTA / welcome-back copy (FR61). */
-export function countDueSrsStates(userDb: SQLiteDatabase, now: Date = new Date()): number {
-  const row = userDb.getFirstSync<{ count: number }>(
-    `SELECT COUNT(*) AS count FROM srs_states
+/**
+ * Uncapped due item ids (non-burned) for Home CTA / welcome-back copy (FR61).
+ * Ids, not counts: Home filters them through the queue's eligibility rules
+ * before showing a number (see `data/reviewEligibility.ts`).
+ */
+export function getDueItemIds(userDb: SQLiteDatabase, now: Date = new Date()): string[] {
+  const rows = userDb.getAllSync<{ item_id: number | string }>(
+    `SELECT item_id FROM srs_states
      WHERE due_date <= ? AND is_burned = 0`,
     now.toISOString(),
   );
-  return row?.count ?? 0;
+  return rows.map((row) => String(row.item_id));
 }
 
+export type UpcomingDue = { itemId: string; dueDate: string };
+
 /**
- * Due-date strings only (non-burned, due on or before untilIso) — cheap Home
+ * Item id + due date only (non-burned, due on or before untilIso) — cheap Home
  * forecast read that avoids materializing full SRS rows on every focus.
  * No row cap: the 7-day wall annotation needs the full window.
  */
-export function getUpcomingDueDates(userDb: SQLiteDatabase, untilIso: string): string[] {
-  const rows = userDb.getAllSync<{ due_date: string }>(
-    `SELECT due_date FROM srs_states
+export function getUpcomingDueItems(userDb: SQLiteDatabase, untilIso: string): UpcomingDue[] {
+  const rows = userDb.getAllSync<{ item_id: number | string; due_date: string }>(
+    `SELECT item_id, due_date FROM srs_states
      WHERE due_date <= ? AND is_burned = 0
      ORDER BY due_date ASC`,
     untilIso,
   );
-  return rows.map((row) => row.due_date);
+  return rows.map((row) => ({ itemId: String(row.item_id), dueDate: row.due_date }));
 }
 
 export function getSrsState(userDb: SQLiteDatabase, itemId: string): SRSState | null {

@@ -152,10 +152,10 @@ jest.mock('@/providers/CurriculumUpdateContext', () => ({
   }),
 }));
 
-const mockCountDueSrsStates = jest.fn();
+const mockCountServableDueItems = jest.fn();
 
-jest.mock('@/data/user/srsStateRepository', () => ({
-  countDueSrsStates: (...args: unknown[]) => mockCountDueSrsStates(...args),
+jest.mock('@/data/reviewEligibility', () => ({
+  countServableDueItems: (...args: unknown[]) => mockCountServableDueItems(...args),
 }));
 
 const mockShadowModeDisable = jest.fn();
@@ -180,7 +180,7 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
 describe('HomeScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockCountDueSrsStates.mockReturnValue(0);
+    mockCountServableDueItems.mockReturnValue(0);
     mockShouldShowSwitchPrompt = false;
     mockShadowModeDaysActive = 0;
     mockPendingRiseTo = null;
@@ -197,7 +197,7 @@ describe('HomeScreen', () => {
   });
 
   function seedBigBacklog(count = 45) {
-    mockCountDueSrsStates.mockReturnValue(count);
+    mockCountServableDueItems.mockReturnValue(count);
   }
 
   it('offers welcome-back triage only after absence with a big backlog; CTA starts a capped slice', () => {
@@ -344,7 +344,7 @@ describe('HomeScreen', () => {
   });
 
   it('renders goal ring, Review and Learn buttons, and progress bar — no streak UI', () => {
-    mockCountDueSrsStates.mockReturnValue(2);
+    mockCountServableDueItems.mockReturnValue(2);
     render(<HomeScreen />);
 
     const ring = screen.getByLabelText('Goal 42 percent');
@@ -358,7 +358,7 @@ describe('HomeScreen', () => {
   });
 
   it('renders Review above Learn (UX-DR3: review-first hierarchy)', () => {
-    mockCountDueSrsStates.mockReturnValue(2);
+    mockCountServableDueItems.mockReturnValue(2);
     render(<HomeScreen />);
 
     const buttons = screen.getAllByRole('button');
@@ -373,7 +373,7 @@ describe('HomeScreen', () => {
   it('refetches goal data on focus (BUG1: no skipped first focus)', () => {
     render(<HomeScreen />);
     expect(mockRefetchLoad).toHaveBeenCalled();
-    expect(mockCountDueSrsStates).toHaveBeenCalled();
+    expect(mockCountServableDueItems).toHaveBeenCalled();
   });
 
   it('does not render SRS stage breakdown', () => {
@@ -383,7 +383,7 @@ describe('HomeScreen', () => {
   });
 
   it('disables Review button when zero items are due', () => {
-    mockCountDueSrsStates.mockReturnValue(0);
+    mockCountServableDueItems.mockReturnValue(0);
     render(<HomeScreen />);
 
     const reviewButton = screen.getByRole('button', { name: /all caught up/i });

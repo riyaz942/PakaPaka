@@ -2,10 +2,10 @@ import { openDatabaseAsync, __mockResetSqlite, __mockSetSrsStates } from '../../
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import {
-  countDueSrsStates,
   countStartedItemsByIds,
+  getDueItemIds,
   getDueSrsStates,
-  getUpcomingDueDates,
+  getUpcomingDueItems,
   getSrsStageCounts,
   getSrsState,
   seedMissingSrsStatesForInProgress,
@@ -121,20 +121,20 @@ describe('getDueSrsStates', () => {
   });
 });
 
-describe('countDueSrsStates', () => {
-  it('returns an uncapped count of non-burned dues', () => {
+describe('getDueItemIds', () => {
+  it('returns an uncapped list of non-burned due item ids', () => {
     __mockSetSrsStates('user.db', [
       { item_id: 1, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 1, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
       { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 2, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
       { item_id: 3, stability: 5, difficulty: 5, due_date: FUTURE_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
       { item_id: 4, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 1, srs_stage_label: 'burned', updated_at: PAST_ISO },
     ]);
-    expect(countDueSrsStates(db, NOW)).toBe(2);
+    expect(getDueItemIds(db, NOW)).toEqual(['1', '2']);
   });
 });
 
-describe('getUpcomingDueDates', () => {
-  it('returns due-date strings for non-burned states within the window, sorted ascending', () => {
+describe('getUpcomingDueItems', () => {
+  it('returns id + due date for non-burned states within the window, sorted ascending', () => {
     __mockSetSrsStates('user.db', [
       { item_id: 1, stability: 5, difficulty: 5, due_date: FUTURE_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
       { item_id: 2, stability: 5, difficulty: 5, due_date: PAST_ISO, fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
@@ -142,12 +142,15 @@ describe('getUpcomingDueDates', () => {
       { item_id: 4, stability: 5, difficulty: 5, due_date: '2026-07-05T10:00:00.000Z', fsrs_state: 'review', reps: 3, lapses: 0, is_burned: 0, srs_stage_label: 'guru', updated_at: PAST_ISO },
     ]);
 
-    const result = getUpcomingDueDates(db, '2026-06-30T00:00:00.000Z');
-    expect(result).toEqual([PAST_ISO, FUTURE_ISO]);
+    const result = getUpcomingDueItems(db, '2026-06-30T00:00:00.000Z');
+    expect(result).toEqual([
+      { itemId: '2', dueDate: PAST_ISO },
+      { itemId: '1', dueDate: FUTURE_ISO },
+    ]);
   });
 
   it('returns an empty array when no states exist', () => {
-    expect(getUpcomingDueDates(db, '2026-06-30T00:00:00.000Z')).toEqual([]);
+    expect(getUpcomingDueItems(db, '2026-06-30T00:00:00.000Z')).toEqual([]);
   });
 });
 

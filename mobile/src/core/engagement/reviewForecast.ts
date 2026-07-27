@@ -14,6 +14,10 @@ export type ForecastDay = {
 export type ReviewForecast = {
   days: ForecastDay[];
   totalCount: number;
+  /** Reviews answerable right now (overdue + already-due today). */
+  dueNowCount: number;
+  /** Reviews that become due later today. `dueNowCount + laterTodayCount === days[0].count`. */
+  laterTodayCount: number;
   /** Date key of the flagged wall day, or null when no day qualifies. */
   wallDateKey: string | null;
 };
@@ -30,7 +34,8 @@ const WEEKDAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 /**
  * Buckets due dates (ISO strings from non-burned srs_states) into the seven
  * local calendar days today → today+6. Anything already overdue counts toward
- * today; dues beyond the window are ignored.
+ * today; dues beyond the window are ignored. Today's bucket is also split into
+ * what is answerable now vs. what lands later today.
  *
  * Wall rule (brainstorm O3): flag the max-count day when
  * `max >= max(FORECAST_WALL_MIN_DUE, ceil(mean × FORECAST_WALL_RATIO))`.
@@ -53,6 +58,8 @@ export function buildReviewForecast(dueDates: string[], now: Date = new Date()):
   const countsByKey = new Map(days.map((day) => [day.dateKey, day]));
 
   let totalCount = 0;
+  let dueNowCount = 0;
+  let laterTodayCount = 0;
   for (const iso of dueDates) {
     const due = new Date(iso);
     if (Number.isNaN(due.getTime())) continue;
@@ -63,6 +70,9 @@ export function buildReviewForecast(dueDates: string[], now: Date = new Date()):
     if (!bucket) continue;
     bucket.count += 1;
     totalCount += 1;
+    // Same filter as countDueSrsStates (Home's "N items ready"), so the two agree.
+    if (due.getTime() <= now.getTime()) dueNowCount += 1;
+    else if (key === todayKey) laterTodayCount += 1;
   }
 
   const max = Math.max(...days.map((day) => day.count));
@@ -71,5 +81,5 @@ export function buildReviewForecast(dueDates: string[], now: Date = new Date()):
   const wallDateKey =
     max >= threshold ? (days.find((day) => day.count === max)?.dateKey ?? null) : null;
 
-  return { days, totalCount, wallDateKey };
+  return { days, totalCount, dueNowCount, laterTodayCount, wallDateKey };
 }

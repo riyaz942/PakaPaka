@@ -16,6 +16,10 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
     ? forecast.days.find((day) => day.dateKey === forecast.wallDateKey)
     : null;
 
+  const summary =
+    `${forecast.totalCount} this week · ${forecast.dueNowCount} due now` +
+    (forecast.laterTodayCount > 0 ? `, ${forecast.laterTodayCount} more later today` : '');
+
   return (
     <View
       testID="review-forecast"
@@ -28,6 +32,12 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
           No reviews scheduled yet — your first lessons will fill this in.
         </Text>
       ) : (
+        <Text className="mt-space-xs text-body-sm text-secondary" testID="forecast-summary">
+          {summary}
+        </Text>
+      )}
+
+      {forecast.totalCount > 0 ? (
         <View className="mt-space-sm flex-row justify-between">
           {forecast.days.map((day) => {
             const isWall = day.dateKey === forecast.wallDateKey;
@@ -54,7 +64,7 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
             );
           })}
         </View>
-      )}
+      ) : null}
 
       {wallDay ? (
         <Text className="mt-space-sm text-body-sm text-feedback-info" testID="forecast-wall-note">

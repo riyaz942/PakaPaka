@@ -39,6 +39,30 @@ describe('buildReviewForecast', () => {
     expect(forecast.totalCount).toBe(5);
   });
 
+  it('splits today into due-now and later-today', () => {
+    const forecast = buildReviewForecast(
+      [
+        isoOnLocalDay(-1), // overdue → due now
+        isoOnLocalDay(0, 9), // earlier today → due now
+        isoOnLocalDay(0, 20), // later today
+        isoOnLocalDay(0, 22), // later today
+        isoOnLocalDay(3), // other day → neither
+      ],
+      NOW,
+    );
+
+    expect(forecast.dueNowCount).toBe(2);
+    expect(forecast.laterTodayCount).toBe(2);
+    expect(forecast.dueNowCount + forecast.laterTodayCount).toBe(forecast.days[0].count);
+  });
+
+  it('reports a zero today split when nothing is due today', () => {
+    const forecast = buildReviewForecast([isoOnLocalDay(2), isoOnLocalDay(4)], NOW);
+
+    expect(forecast.dueNowCount).toBe(0);
+    expect(forecast.laterTodayCount).toBe(0);
+  });
+
   it('ignores invalid date strings', () => {
     const forecast = buildReviewForecast(['not-a-date', isoOnLocalDay(1)], NOW);
     expect(forecast.totalCount).toBe(1);
