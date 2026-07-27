@@ -1,10 +1,9 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { useColorScheme } from 'react-native';
 
 import { getSemanticColors } from '@/constants/semantic-colors';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type IconName = React.ComponentProps<typeof MaterialIcons>['name'];
 
@@ -15,8 +14,7 @@ function tabIcon(name: IconName) {
 }
 
 export default function TabsLayout() {
-  const colorScheme = useColorScheme();
-  const colors = getSemanticColors(resolveColorScheme(colorScheme));
+  const colors = getSemanticColors(usePaintedColorScheme());
 
   return (
     <Tabs

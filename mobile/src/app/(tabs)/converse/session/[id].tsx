@@ -8,7 +8,6 @@ import {
   Platform,
   ScrollView,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 import {
@@ -36,7 +35,7 @@ import { useAiConversation } from '@/data/hooks/useAiConversation';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { getAiSession } from '@/data/user/aiSessionRepository';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 /**
  * The chat surface (FR89–FR91, FR94).
@@ -50,7 +49,7 @@ export default function ConversationSessionScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const sessionId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
   const { userDb } = useDatabase();
-  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const colors = getSemanticColors(usePaintedColorScheme());
   // Insets do not cross into a react-native Modal on Android, so conversation
   // mode gets its own provider seeded with what this screen already measured.
   const safeAreaFrame = useSafeAreaFrame();

@@ -6,7 +6,6 @@ import {
   Pressable,
   ScrollView,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
@@ -16,7 +15,7 @@ import type { AiSessionRecord, ConversationMode } from '@/core/ai/aiSession.type
 import { isOnline } from '@/data/ai/connectivity';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { listAiSessions } from '@/data/user/aiSessionRepository';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 const MODE_LABELS: Record<ConversationMode, string> = {
   practise_recent_grammar: 'Recent grammar',
@@ -45,7 +44,7 @@ function describeStatus(session: AiSessionRecord): string {
  */
 export default function ConversationHistoryScreen() {
   const { userDb } = useDatabase();
-  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const colors = getSemanticColors(usePaintedColorScheme());
   const [sessions, setSessions] = useState<AiSessionRecord[]>([]);
   const [online, setOnline] = useState<boolean | null>(null);
 

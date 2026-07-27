@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, Text, TextInput, useColorScheme, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
@@ -17,7 +17,7 @@ import { releaseSttModel } from '@/data/ai/voice/sttClient';
 import { transcribeTurn } from '@/data/ai/voice/transcription';
 import { releaseTtsModel, synthesizeJapanese } from '@/data/ai/voice/ttsClient';
 import { useDatabase } from '@/data/hooks/useDatabase';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type PttOverlayProps = {
   /** Latest assistant turn in curriculum bracket notation, or null before one exists. */
@@ -61,7 +61,7 @@ export function PttOverlay({
   onSend,
   onExit,
 }: PttOverlayProps) {
-  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const colors = getSemanticColors(usePaintedColorScheme());
   const { userDb } = useDatabase();
   const [phase, setPhase] = useState<Phase>('idle');
   const [speaking, setSpeaking] = useState(false);

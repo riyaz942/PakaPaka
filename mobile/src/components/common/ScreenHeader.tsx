@@ -1,12 +1,12 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
-import { Pressable, Text, useColorScheme, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { MaxContentWidth } from '@/constants/theme';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type ScreenHeaderProps = {
   title?: string;
@@ -27,8 +27,7 @@ export function ScreenHeader({
   onBack,
 }: ScreenHeaderProps) {
   const insets = useSafeAreaInsets();
-  const colorScheme = useColorScheme();
-  const colors = getSemanticColors(resolveColorScheme(colorScheme));
+  const colors = getSemanticColors(usePaintedColorScheme());
 
   return (
     <View className="border-b border-border bg-surface" style={{ paddingTop: insets.top }}>

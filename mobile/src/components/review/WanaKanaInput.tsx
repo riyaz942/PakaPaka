@@ -1,9 +1,9 @@
-import { useColorScheme as useNativeWindColorScheme } from 'nativewind';
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
-import { TextInput, useColorScheme, type TextInputProps } from 'react-native';
+import { TextInput, type TextInputProps } from 'react-native';
 import * as wanakana from 'wanakana';
 
 import { getSemanticColors } from '@/constants/semantic-colors';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 export type WanaKanaInputMode = 'kana' | 'english';
 
@@ -43,13 +43,8 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
     const inputRef = useRef<TextInput>(null);
     // The raw text/placeholder/selection colors must track the exact theme the
     // `bg-surface-elevated`/`text-primary` classNames render with, or typed text
-    // can end up near-white on a light input. NativeWind's own scheme is the
-    // source of truth, but it returns `undefined` in "system" mode — in that
-    // case fall back to RN's actual device scheme (never assume dark).
-    const { colorScheme: nativeWindScheme } = useNativeWindColorScheme();
-    const deviceScheme = useColorScheme();
-    const scheme = nativeWindScheme ?? (deviceScheme === 'dark' ? 'dark' : 'light');
-    const colors = getSemanticColors(scheme);
+    // can end up near-white on a light input.
+    const colors = getSemanticColors(usePaintedColorScheme());
 
     useImperativeHandle(ref, () => ({
       focus: () => inputRef.current?.focus(),

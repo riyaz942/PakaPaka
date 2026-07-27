@@ -1,7 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
 import React, { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, Text, useColorScheme, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -22,7 +22,7 @@ import { useByokStatus } from '@/data/hooks/useByokStatus';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { createAiSession } from '@/data/user/aiSessionRepository';
 import { getAiModel } from '@/data/user/preferencesRepository';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 /**
  * The Conversation tab (FR87, UX-DR3, UX-DR21).
@@ -34,7 +34,7 @@ import { resolveColorScheme } from '@/utils/resolve-color-scheme';
 export default function ConverseScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
-  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const colors = getSemanticColors(usePaintedColorScheme());
   const { configured, isReady, error: byokError, refresh } = useByokStatus();
   const [online, setOnline] = useState<boolean | null>(null);
   const [recentGrammar, setRecentGrammar] = useState<RecentGrammarItem[]>([]);

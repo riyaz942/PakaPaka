@@ -1,9 +1,9 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Pressable, TextInput, useColorScheme, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 
 import { getSemanticColors } from '@/constants/semantic-colors';
-import { resolveColorScheme } from '@/utils/resolve-color-scheme';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type ComposerProps = {
   /** Resolves true when the turn was accepted (draft may clear). */
@@ -28,7 +28,7 @@ type ComposerProps = {
 export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps) {
   const [draft, setDraft] = useState('');
   const [isSending, setIsSending] = useState(false);
-  const colors = getSemanticColors(resolveColorScheme(useColorScheme()));
+  const colors = getSemanticColors(usePaintedColorScheme());
   const canSend = draft.trim().length > 0 && !disabled && !isSending;
   const canSpeak = !disabled && !isSending;
 
