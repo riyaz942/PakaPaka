@@ -13236,6 +13236,13 @@
         }
       ],
       "furigana": "デパート",
+      "meaning_mnemonic": "A tower shop devours entire departments whole — one floor is nothing but shoes, the next is only teapots, and a man in a necktie gets trapped between six escalators that all disagree about which way is up. Every level swallows a different specialty until the whole building is just department after department stacked to the ceiling: a department store.",
+      "reading_mnemonic": "デパート is kana spelling its own sound — say <reading>department</reading> and you've already said <reading>デパート</reading>, no decoding needed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私はデパートに行きます。",
@@ -13270,12 +13277,7 @@
           ],
           "furigana": "このデパートは安[やす]いです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "suupaa",
@@ -13295,6 +13297,13 @@
         }
       ],
       "furigana": "スーパー",
+      "meaning_mnemonic": "A shopping cart rolls out the automatic doors hauling forty bags of rice, an entire side of beef, and a wobbling pyramid of soap boxes, because an ordinary grocery run won't cut it here. One roof, every aisle, everything in bulk — the store is proud enough of the scale to call itself super for it: a supermarket.",
+      "reading_mnemonic": "スーパー is kana spelling its own sound — say <reading>super</reading> and you've already said <reading>スーパー</reading>, nothing to derive.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私はスーパーで魚を買います。",
@@ -13331,12 +13340,7 @@
           ],
           "furigana": "あのスーパーのお菓[か]子[し]はおいしい。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "konbini",
@@ -13356,6 +13360,13 @@
         }
       ],
       "furigana": "コンビニ",
+      "meaning_mnemonic": "Koichi's shop never closes, the till beeps without pause, and the onigiri shelf by the door restocks itself like clockwork at three in the morning. Someone pays a phone bill at the register while another customer photocopies a form, all before the entry chime finishes ringing. That does-everything, always-open little shop is a convenience store.",
+      "reading_mnemonic": "コンビニ is kana spelling its own sound — say <reading>conveni</reading>, short for convenience, and you've already said <reading>コンビニ</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "コンビニでお茶を買います。",
@@ -13390,12 +13401,7 @@
           ],
           "furigana": "このコンビニは安[やす]いです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kouen",
@@ -13415,6 +13421,13 @@
         }
       ],
       "furigana": "公[こう]園[えん]",
+      "meaning_mnemonic": "A city block gets squeezed between an office tower and a train station, so someone covers it in grass, wedges in three benches and a rusty swing set, and leaves the gate open for pigeons and toddlers to fight over the last patch of shade. That leftover square of green boxed in by concrete is a park.",
+      "reading_mnemonic": "A gatekeeper named <reading>Cohen</reading> stands at the entrance every morning and won't lift the chain until the sun clears the trees. Kids rattle the fence chanting his name until he finally waves them onto the grass — the moment he answers is the moment the <reading>こうえん</reading> opens for the day.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は毎日公園へ行く。",
@@ -13450,12 +13463,7 @@
           ],
           "furigana": "あの公[こう]園[えん]は楽[たの]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "machi-v",
@@ -13475,6 +13483,13 @@
         }
       ],
       "furigana": "町[まち]",
+      "meaning_mnemonic": "Hover over that same grid again — fields squared off on the left, the straight road cutting through on the right. Now watch it fill in: roofs go up along the road, a bakery claims the corner, kids race bikes past the fields. Roads plus fields plus everyone building a life between them — that's a <kanji>town</kanji>.",
+      "reading_mnemonic": "This word borrows the reading you already learned for 町 itself — <reading>まち</reading>, no new sound to add.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "週末に町へ行きます。",
@@ -13510,12 +13525,7 @@
           ],
           "furigana": "この町[まち]の公[こう]園[えん]は楽[たの]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "eigakan",
@@ -13535,6 +13545,13 @@
         }
       ],
       "furigana": "映[えい]画[が]館[かん]",
+      "meaning_mnemonic": "Every night, folding chairs fill Koichi's konbini parking lot — instant ramen cups, someone's dog draped over a cooler. A bedsheet gets clipped to the delivery truck for a screen, the shutter light doubles as a projector, and the whole block settles in to watch: a cinema built out of nothing but a parking lot and a bedsheet.",
+      "reading_mnemonic": "A giant film can rolls out of Koichi's walk-in freezer, crashes through the automatic doors, and unspools across the lot before anyone can grab it. He throws up his hands and grumbles that <reading>a giant can</reading> just opened a <reading>えいがかん</reading> right in his parking lot.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "週末、映画館に行きます。",
@@ -13569,12 +13586,7 @@
           ],
           "furigana": "この映[えい]画[が]館[かん]は安[やす]いです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "heya",
@@ -13594,6 +13606,13 @@
         }
       ],
       "furigana": "部屋[へや]",
+      "meaning_mnemonic": "Past the mountain trail's improbable vending machine, someone has wedged a plain door straight into the rock face. Push it open and there's nothing dramatic inside — just four walls, one chair, and quiet, built for the sole purpose of finally sitting down after the climb: a room, carved out of nowhere in particular.",
+      "reading_mnemonic": "The hiker collapses through that door, drops her pack, and sighs <reading>hay, yeah</reading> — worn out enough that even four bare walls feel like paradise. That sigh is exactly how you say <reading>へや</reading>, room, once you're finally inside one.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "この部屋は寒いです。",
@@ -13628,12 +13647,7 @@
           ],
           "furigana": "友[とも]達[だち]の部屋[へや]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "toire",
@@ -13653,6 +13667,13 @@
         }
       ],
       "furigana": "トイレ",
+      "meaning_mnemonic": "The bell rings at Sei's school and the hallway turns into a stampede — everyone sprinting for the same door before the next class starts. Whoever gets there first slams it shut, and the rest line up outside, jiggling, staring at their shoes: the single most fought-over room in the whole building, the toilet.",
+      "reading_mnemonic": "Written and read exactly as it sounds, letter for letter: <reading>トイレ</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "トイレに行きます。",
@@ -13686,12 +13707,7 @@
           ],
           "furigana": "駅[えき]のトイレはあそこです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "otearai",
@@ -13711,6 +13727,13 @@
         }
       ],
       "furigana": "お手[て]洗[あら]い",
+      "meaning_mnemonic": "At the riverbank a door stands with a huge <kanji>hand</kanji> painted on it, fingers spread wide and dripping wet. Everyone in line shakes that dripping <kanji>hand</kanji> before ducking inside to hunt for the toilet. The dripping hand is the whole point of the sign: wash first, then go — this is the restroom.",
+      "reading_mnemonic": "At Grandma Kane's shrine, a visitor doubles over on the mossy steps and yells <reading>oh, tea-uh-rye!</reading> — the cats scatter as she sprints past the enormous bell, shouting the word for restroom: <reading>おてあらい</reading>, praying she makes it past every last cat in time.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "お手洗いはあそこです。",
@@ -13743,12 +13766,7 @@
           ],
           "furigana": "コンビニのお手[て]洗[あら]いに入[い]ります。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "daidokoro",
@@ -13768,6 +13786,13 @@
         }
       ],
       "furigana": "台[だい]所[どころ]",
+      "meaning_mnemonic": "Koichi's konbini has one door marked staff-only, and behind it he's wedged in a battered stove, a cutting board on two beer crates, a rice cooker plugged into the drinks fridge. Customers assume it's storage, but at three in the morning he's frying eggs back there between restocking onigiri — his whole kitchen, hidden in plain sight.",
+      "reading_mnemonic": "Behind the konbini's staff-only door, Koichi knocks over green food colouring and hollers <reading>dye the dough, oh!</reading> as it splatters across the rice cooker — the exact sound of <reading>だいどころ</reading>, the cramped little kitchen where he cooks between shifts.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は台所に入ります。",
@@ -13802,12 +13827,7 @@
           ],
           "furigana": "台[だい]所[どころ]の窓[まど]を開[あ]けます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "niwa",
@@ -13827,6 +13847,13 @@
         }
       ],
       "furigana": "庭[にわ]",
+      "meaning_mnemonic": "Behind Sei's school, past the sports field, there's a locked gate nobody bothers with anymore. Squeeze through and you find a garden gone completely wild — tomato vines swallowing the old goalposts, cats sunbathing on a rusted rake nobody put away. Teachers pretend it isn't there. Everyone else just calls it the yard behind the yard.",
+      "reading_mnemonic": "In that tangled garden behind the school, a cat pounces off the rusted rake and lands wrong, yowling <reading>knee, wah!</reading> — that garbled yelp is exactly the sound of <reading>にわ</reading>, the overgrown little yard where the school's stray cats actually live.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "子供は庭で遊びます。",
@@ -13863,12 +13890,7 @@
           ],
           "furigana": "彼[かの]女[じょ]は庭[にわ]で本[ほん]を読[よ]みます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "michi-v",
@@ -13888,6 +13910,13 @@
         }
       ],
       "furigana": "道[みち]",
+      "meaning_mnemonic": "You keep following that winding <kanji>road</kanji> up the mountain trail, switchback after switchback, until it stops being a hiking route — a delivery scooter buzzes past, a mailbox appears at the bend, gravel turns to pavement. It isn't a trail anymore; it's somebody's street. That's the word: <kanji>road</kanji>, the ordinary road or street right outside a door.",
+      "reading_mnemonic": "This word is read exactly like the kanji you already know: 道 is <reading>みち</reading>, so no new story is needed here.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "この道を行きます。",
@@ -13921,12 +13950,7 @@
           ],
           "furigana": "友[とも]達[だち]と道[みち]で会[あ]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hashi-bridge",
@@ -13946,6 +13970,13 @@
         }
       ],
       "furigana": "橋[はし]",
+      "meaning_mnemonic": "At the riverbank, a delivery cart stalls at the water's edge, wheels churning mud. Someone drags two empty vending-machine crates out, sets them end to end across the current, and rolls the cart straight over the water without a splash. The crate-line stays there after — a bridge, built out of pure stubbornness.",
+      "reading_mnemonic": "A cook at the riverbank burns a batch of <reading>hash</reading> browns and, furious, flings them one by one across the current. They land in a perfect line, crisp edge to crisp edge, and someone simply walks across on the hash line — which is exactly how you say <reading>はし</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "あの橋は高いです。",
@@ -13981,12 +14012,7 @@
           ],
           "furigana": "今日[きょう]、公[こう]園[えん]の橋[はし]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kado",
@@ -14006,6 +14032,13 @@
         }
       ],
       "furigana": "角[かど]",
+      "meaning_mnemonic": "Koichi's konbini sits right on the corner, and a delivery van cuts the turn too sharp. It clips the onigiri shelf through the window, spins once, and wedges itself nose-first into the exact corner of the building — where it stays, blocking the corner entrance for the rest of the shift.",
+      "reading_mnemonic": "The van's <reading>car door</reading> pops open on impact and won't shut again — it hangs there at the corner of the konbini like a broken wing. Koichi just tapes a sign to it: this is the corner now. That crumpled car door is exactly how you remember <reading>かど</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "駅の角で友達を待ちます。",
@@ -14042,12 +14075,7 @@
           ],
           "furigana": "公[こう]園[えん]の角[かど]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kouban",
@@ -14067,6 +14095,14 @@
         }
       ],
       "furigana": "交[こう]番[ばん]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a lost tourist keeps ringing the enormous bell for directions. A patient officer steps out of a tiny booth by the mossy steps, cats streaming past his ankles, and points down the street to the actual police box — the booth that exists purely to rescue people from ringing the wrong bell.",
+      "reading_mnemonic": "The officer's name badge just says Ban, and his sergeant radios him constantly: <reading>cope, Ban</reading>, another tourist's at the bell again. He sighs, straightens his booth's little roof, and steps out — that tired radio call is exactly how you say <reading>こうばん</reading>.",
+      "description": "A 交番 is a small neighborhood police post, usually staffed by one or two officers, common on street corners and near stations — not the blue British police telephone box the English name might bring to mind. Locals stop by for directions about as often as for anything police-related.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "交番はどこですか。",
@@ -14100,12 +14136,7 @@
           ],
           "furigana": "交[こう]番[ばん]で道[みち]を聞[き]きました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "takushii",
@@ -14125,6 +14156,13 @@
         }
       ],
       "furigana": "タクシー",
+      "meaning_mnemonic": "The mountain trail is so steep that hikers stop believing in the vending machine at the top — until a taxi comes crawling up the switchbacks behind them, meter running, wheels spinning on loose gravel. It pulls up right next to the machine and idles patiently, because someone actually ordered a taxi to fetch canned coffee from the summit.",
+      "reading_mnemonic": "This word is a loanword borrowed straight from English \"taxi\" and written in katakana exactly as it's read: <reading>タクシー</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "今日タクシーで会社に行く。",
@@ -14161,12 +14199,7 @@
           ],
           "furigana": "あのタクシーは安[やす]い。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "basu",
@@ -14186,6 +14219,13 @@
         }
       ],
       "furigana": "バス",
+      "meaning_mnemonic": "At Koichi's konbini, something huge screeches to a stop right outside the sliding doors, tires shrieking against the curb loud enough to rattle the onigiri shelf. The doors hiss open, exhaust rolls in over the till, and a wall of tired passengers shuffles out into the fluorescent light — this rattling monster is the bus, and it stops here every hour on the hour.",
+      "reading_mnemonic": "バス is written exactly as it sounds, so just read it as <reading>バス</reading> — the same sound as the English word <reading>bus</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "駅でバスを待ちます。",
@@ -14222,12 +14262,7 @@
           ],
           "furigana": "このバスはデパートへ行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hon",
@@ -14247,6 +14282,13 @@
         }
       ],
       "furigana": "本[ほん]",
+      "meaning_mnemonic": "At the school, Sei kneels by the tree with that single flat line marking its <kanji>origin</kanji> and presses a stack of blank paper flat against the mark. When she peels the pages away, the origin's whole shape has bled through onto every sheet, and she staples the stack edge to edge — a bound stack of someone's origin, pressed flat and readable, is exactly what a book is.",
+      "reading_mnemonic": "本 keeps the reading you already learned for it — read it as <reading>ほん</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "毎日本を読みます。",
@@ -14281,12 +14323,7 @@
           ],
           "furigana": "この本[ほん]は難[むずか]しいです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "jisho",
@@ -14306,6 +14343,13 @@
         }
       ],
       "furigana": "辞[じ]書[しょ]",
+      "meaning_mnemonic": "Long after the <kanji>write</kanji> sun has sunk below your notebook and your hand is still moving on its own from that daily ritual, the pile of scribbled pages has grown so thick it needs its own spine. You bind the whole towering stack into one fat volume you flip through every time you're stuck on a word — a book that exists only to make writing easier: a dictionary.",
+      "reading_mnemonic": "Kaa the crow swoops down, snatches the book off your desk, and squawks '<reading>じしょ</reading>!' — which sounds exactly like someone yelling '<reading>gee, show!</reading>' as he flips through it hunting for a word he can't recognize, refusing to give it back until he finds it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は辞書を使います。",
@@ -14340,12 +14384,7 @@
           ],
           "furigana": "友[とも]達[だち]は辞[じ]書[しょ]を買[か]いました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "shinbun",
@@ -14365,6 +14404,13 @@
         }
       ],
       "furigana": "新[しん]聞[ぶん]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, someone <kanji>new</kanji> in town stands beaming beside a fresh stack of printed pages, and every cat under the big bell presses an ear to the stack like it's a gate, straining to <kanji>hear</kanji> what's inside before anyone thinks to ask. By the time the bell rings, the whole shrine already knows what's inside those pages pressed flat — the newspaper.",
+      "reading_mnemonic": "新聞 keeps both taught readings back to back, so read it as <reading>しんぶん</reading> — new, then hear.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "毎朝新聞を読みます。",
@@ -14400,12 +14446,7 @@
           ],
           "furigana": "この新[しん]聞[ぶん]は安[やす]いです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "zasshi",
@@ -14425,6 +14466,13 @@
         }
       ],
       "furigana": "雑[ざっ]誌[し]",
+      "meaning_mnemonic": "The onigiri shelf at Koichi's konbini gets restocked every hour, but the rack beside it never does — gossip pages, fishing weeklies, and a torn coupon insert all wedged into one groaning shelf the clerk just calls 'the magazine,' singular, because nobody has ever managed to tell where one issue ends and the next begins.",
+      "reading_mnemonic": "A customer swipes the last gossip weekly off Koichi's rack, and the till beeps twice — zap, zap — before the cashier sighs, that's her again. <reading>ざっし</reading> is that double beep and sigh: <reading>zap-she</reading>, rung up on the same magazine every week.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "図書館で雑誌を読む。",
@@ -14460,12 +14508,7 @@
           ],
           "furigana": "妹[いもうと]は週[しゅう]末[まつ]に雑[ざっ]誌[し]を買[か]う。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kami-paper",
@@ -14485,6 +14528,13 @@
         }
       ],
       "furigana": "紙[かみ]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the cats leap along the mossy steps and swat every fortune slip off the branches, until by dusk the ground is drifted white with thin square sheets — not snow, just fallen paper, blanketing the whole shrine before Grandma Kane can ring the bell.",
+      "reading_mnemonic": "Grandma Kane catches a cat pawing through the drifted fortune slips and snaps, come, me! — meaning drop it and follow her to the shrine office. <reading>かみ</reading> is that snap: <reading>come-me</reading>, aimed at a cat sitting on a pile of shrine paper.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は紙を買います。",
@@ -14519,12 +14569,7 @@
           ],
           "furigana": "先[せん]生[せい]は紙[かみ]に書[か]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "enpitsu",
@@ -14544,6 +14589,13 @@
         }
       ],
       "furigana": "鉛[えん]筆[ぴつ]",
+      "meaning_mnemonic": "In the echoing hallway of Sei's school, a boy chews the eraser end of a thin gray stick down to nothing, tapping the point against his desk until it snaps clean in half during the exam — the exact anxious shape and worry of a pencil.",
+      "reading_mnemonic": "Sei checks the biology closet and finds the terrarium empty — the class hamster is loose again. She sighs, empty zoo, scrawling the note with the stub left in her pencil case. <reading>えんぴつ</reading> is that sigh: <reading>empty-zoo</reading>, written before the pencil's own lead breaks.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は鉛筆で書きます。",
@@ -14578,12 +14630,7 @@
           ],
           "furigana": "鉛[えん]筆[ぴつ]を三[さん]つ買[か]いました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "pen",
@@ -14603,6 +14650,13 @@
         }
       ],
       "furigana": "ペン",
+      "meaning_mnemonic": "At the top of the mountain trail, the lone vending machine sells exactly one item no hiker asked for: a pen that leaks the instant you click it, blooming blue across your knuckles and smearing your name across the summit logbook the second you try to sign it — a pen, and now a permanent one.",
+      "reading_mnemonic": "ペン is kana all the way through, read exactly as written and borrowed straight from English: 「<reading>ペン</reading>」 is simply pen.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "これは私のペンです。",
@@ -14637,12 +14691,7 @@
           ],
           "furigana": "コンビニでペンを買[か]った。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "booru-pen",
