@@ -60,6 +60,16 @@ prompt file, its own reply file, its own gate run, and its own 3-attempt budget 
 **a failing slug is repaired alone, and its passing group-mates are never
 regenerated** (Step 8).
 
+Repair subagent effort (reasoning effort every repair subagent in this run uses):
+
+<repair-subagent-effort = high>
+
+Generation is Gemini; only failed slugs are repaired by an in-session subagent
+(Step 8). Pass <repair-subagent-effort> explicitly when launching each repair
+subagent — do not silently drop lower. `high` is recommended; do not use `low`
+for mnemonic repairs. (The *orchestrator* / browser driver running this prompt
+may itself be on a cheaper / lower-effort model — that is fine.)
+
 Browser Requirements
 
 - Use Chrome, not Edge.
@@ -475,8 +485,12 @@ Instead, use a subagent to repair the existing reply.
 Repair Procedure
 
 1. Launch a general-purpose subagent.
-   - Prefer the latest available Opus model with high reasoning.
-   - If an Opus model is unavailable, use the strongest suitable reasoning or coding model available.
+   - Prefer the latest available Opus model at <repair-subagent-effort>
+     effort.
+   - If an Opus model is unavailable, use the strongest suitable reasoning or
+     coding model available — still at <repair-subagent-effort>.
+   - Pass the effort explicitly when launching; do not silently drop to a lower
+     effort.
    - Run the subagent in the foreground because ingestion must wait for the repair to finish.
 
 2. Give the subagent these files — this slug's only, never a group-mate's:
@@ -634,8 +648,9 @@ Final Report
 
 Provide a summary containing:
 
-- The content type, <batch-size>, <group-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
+- The content type, <batch-size>, <group-size>, <repair-subagent-effort>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
 - The groups as generated, listing each group's slugs, so a reviewer can read a group's items together and judge cross-item variety
+- The repair-subagent model and effort actually used (confirm effort matches <repair-subagent-effort>, or call out any forced substitute)
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs — call these out as blockers for the layer above
 - ❌ Failed slugs
@@ -665,7 +680,8 @@ Important Constraints
   see or edit a group-mate's files.
 - Gemini is used only to produce the first reply for each group's slugs.
 - Never return to Gemini after an ingestion failure.
-- Repair failed replies using an Opus-preferred subagent.
+- Repair failed replies using an Opus-preferred subagent at
+  <repair-subagent-effort> (default `high`; do not use `low`).
 - Always rerun ingestion after a subagent updates a reply.
 - Use a fresh repair subagent for each failed repair attempt.
 - Do not bypass or weaken validation.

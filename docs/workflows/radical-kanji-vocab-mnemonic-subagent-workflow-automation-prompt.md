@@ -23,20 +23,31 @@ Subagent model (which model every subagent in this run uses):
 
 <subagent-model = sonnet-5>
 
-Model notes
+Subagent effort (reasoning effort every subagent in this run uses):
 
-- The value above is used for BOTH the generation subagent (Step 2) and every
-  repair subagent (Step 3). A strong reasoning model is recommended — these are
-  the mnemonics themselves, the thing the app is actually for.
-- Give it as your environment names the model. If the requested model is
-  unavailable, stop and say so rather than silently substituting — then re-run
-  with a model you actually have.
-- Record the model actually used in the final report, and pass it as the ingest
-  `--model` provenance value (Step 3) so `_meta.generator_model` is honest.
+<subagent-effort = high>
+
+Model and effort notes
+
+- Both values above are used for BOTH the generation subagent (Step 2) and every
+  repair subagent (Step 3). Pass them explicitly when launching each subagent —
+  do not silently drop to a lower effort.
+- A strong reasoning model at **high** effort is recommended — these are the
+  mnemonics themselves, the thing the app is actually for. `medium` is an
+  acceptable cost tradeoff if you are calibrating; do not use `low` for
+  generation or repair. (The *orchestrator* running this prompt may itself be
+  on a cheaper / lower-effort model — that is fine; only the subagents write
+  the prose.)
+- Give the model as your environment names it. If the requested model or effort
+  is unavailable, stop and say so rather than silently substituting — then
+  re-run with a combination you actually have.
+- Record the model and effort actually used in the final report, and pass the
+  model as the ingest `--model` provenance value (Step 3) so
+  `_meta.generator_model` is honest.
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 24>
+<batch-size = 36>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
@@ -211,7 +222,7 @@ ValueError, the layer below is unfinished — see Layer Ordering above and stop.
 Step 2: Generate the Group's Replies with One Subagent
 
 For the current group, launch ONE general-purpose subagent (using
-<subagent-model>, high reasoning) in the foreground — ingestion must wait for it to
+<subagent-model> at <subagent-effort> effort) in the foreground — ingestion must wait for it to
 finish. List every prompt file path in the group explicitly — one line per slug,
 resolved, not a template:
 
@@ -371,8 +382,8 @@ curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
 with the validation errors appended.
 
 Do not regenerate from scratch, and do not regenerate the group. Instead, launch a
-FRESH general-purpose subagent (<subagent-model>, high reasoning, foreground) to
-repair this one slug's existing reply.
+FRESH general-purpose subagent (<subagent-model> at <subagent-effort> effort,
+foreground) to repair this one slug's existing reply.
 
 Give the repair subagent these files — this slug's only, never a group-mate's:
 
@@ -498,9 +509,9 @@ Final Report
 
 Provide a summary containing:
 
-- The content type, <batch-size>, <group-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
+- The content type, <batch-size>, <group-size>, <subagent-model>, <subagent-effort>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
 - The groups as generated, listing each group's slugs, so a reviewer can read a group's items together and judge cross-item variety
-- The model actually used for generation and repair
+- The model and effort actually used for generation and repair (confirm they match <subagent-model> / <subagent-effort>, or call out any forced substitute)
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs — call these out as blockers for the layer above
 - ❌ Failed slugs
@@ -521,7 +532,8 @@ the cast stays consistent across independently generated items.
 
 Important Constraints
 
-- Each group's replies are produced by a fresh <subagent-model> subagent; never
+- Each group's replies are produced by a fresh <subagent-model> subagent at
+  <subagent-effort> effort; never
   share subagent context across groups.
 - Grouping affects only who writes the first draft. Ingestion, the gate, the repair
   subagent and the 3-attempt budget are per slug, always.
