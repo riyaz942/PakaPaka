@@ -53,14 +53,15 @@ export function useAtRiskItems(): UseAtRiskItemsResult {
         scored.map((entry) => entry.itemId),
       );
 
-      const candidates: AtRiskCandidate[] = scored
-        // Burned items are done — never invite a refresher for them.
-        .filter((entry) => !(srsStates.get(entry.itemId)?.isBurned ?? false))
-        .map((entry) => ({
-          itemId: entry.itemId,
-          weaknessScore: entry.weaknessScore,
-          dueDate: srsStates.get(entry.itemId)?.dueDate ?? null,
-        }));
+      const candidates: AtRiskCandidate[] = scored.flatMap((entry) => {
+        const state = srsStates.get(entry.itemId);
+        // No SRS row → the session can never serve it; burned → done. Neither
+        // belongs in a refresher invitation (Plan 12.10).
+        if (!state || state.isBurned) return [];
+        return [
+          { itemId: entry.itemId, weaknessScore: entry.weaknessScore, dueDate: state.dueDate },
+        ];
+      });
 
       const selection = selectAtRiskItems(candidates);
 

@@ -16,7 +16,7 @@ analysis — each has repro steps so they can be verified on-device before fixin
 | [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | **Done** — post-session sharing removed too |
 | [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | **Done** — counts now run the queue's eligibility filters |
 | [12.9](#129--found-priority-hint-cleared-on-an-empty-build) | Priority hint cleared on an empty build | P3 | Found in analysis (folds into 12.2) |
-| [12.10](#1210--found-at-risk-list-can-include-items-with-no-srs-row) | At-risk list can include items with no SRS row | P3 | Found in analysis — verify |
+| [12.10](#1210--found-at-risk-list-can-include-items-with-no-srs-row) | At-risk list can include items with no SRS row | P3 | **Done** — candidates now require an SRS row |
 
 ---
 
@@ -361,6 +361,11 @@ after the 12.2 fix, since the queue's preferred-state fetch drops IDs with no
 SRS row. Cheap hardening: require an SRS state when building at-risk candidates
 (one-line filter), which also makes the at-risk count honest.
 
+**Done.** `useAtRiskItems.ts` now drops a scored item when `getSrsStatesForItems`
+returns no row for it (same pass that drops burned items), so the "N items ready
+for a refresher" count and the revision handoff only contain items a session can
+actually serve. New `useAtRiskItems.test.tsx` covers both exclusions.
+
 ---
 
 ## Suggested sequencing
@@ -372,4 +377,4 @@ SRS row. Cheap hardening: require an SRS state when building at-risk candidates
    do together so the animation lands on the final layout.
 4. **12.7** — mechanical removal; independent.
 5. **12.6** — week total + today split (option 1); independent.
-6. **12.8** *(done)* **/ 12.10** — verify on-device first; fix only if confirmed.
+6. **12.8** *(done)* **/ 12.10** *(done)* — verify on-device first; fix only if confirmed.
