@@ -447,6 +447,15 @@
       "review_status": "draft"
     }
   },
+  "bikkuri-suru": {
+    "meaning_mnemonic": "You're washing dishes at the riverbank when a heron that's been standing motionless for an hour suddenly explodes upward in a panic of wings and shrieks, sending dishes clattering into the water. That full-body jolt — the one where your whole body reacts before your brain has caught up — is being surprised.",
+    "reading_mnemonic": "びっくりする is written exactly as it sounds — <reading>びっくりする</reading> — no kanji to decode, just the kana as your eyes see them.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "boku": {
     "meaning_mnemonic": "At the riverbank, a boy waist-deep in the current catches nothing all afternoon, and when a fish finally leaps straight into his rival's net instead of his own, he plants his rod in the mud and announces to the whole bank that he, personally, will be the one telling this story later — not his friend, not the fish, him. That flat, proud claim to being the one talking is the meaning you want: I, said the rough, boyish way a kid says it.",
     "reading_mnemonic": "He slaps his soggy fishing log down on a rock and reads the cover aloud in a gruff voice, <reading>book</reading>, <reading>book</reading>, until it slurs into <reading>ぼく</reading> — the plain, boyish way to say I that he now uses for himself as often as for the log.",
@@ -930,6 +939,16 @@
       "review_status": "draft"
     }
   },
+  "furu-rain": {
+    "meaning_mnemonic": "Inside Koichi's konbini, the ceiling mascot's stuffing has sprung a slow leak, and tufts drift down over the onigiri shelf like a private snowfall that never reaches the door. The till keeps beeping through it as customers brush fluff off their shoulders. Whatever comes down from above, steadily and without asking, is what falls.",
+    "reading_mnemonic": "Customers call that drifting stuff the mascot's <reading>fur</reading>, and the clerk mutters the word every time it happens — <reading>ふる</reading> — since in this konbini it never rains, it just falls.",
+    "description": "This verb is reserved for rain and snow falling from the sky — it doesn't extend to objects falling in general, so don't reach for it when something merely drops or tips over.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "furui-adj": {
     "meaning_mnemonic": "Grandma Kane's shrine borrows that same mouth held up by ancient crossbeams — its bell hangs from timber so weathered the wood has gone the color of ash. Cats doze in the beam's shadow, moss creeps up every post, and the mouth beneath keeps repeating the same worn story to anyone who'll listen: this whole place is <kanji>old</kanji>.",
     "reading_mnemonic": "古 already reads ふる in old, tack on the adjective ending い, and you get exactly <reading>ふるい</reading> as taught.",
@@ -1015,6 +1034,15 @@
   "genki": {
     "meaning_mnemonic": "Grandma Kane's rice bowl breathes out that same curling <kanji>spirit</kanji> steam every morning, but today it rises so fast and so high it nearly knocks the bell clean off its hook. She grins — a bowl steaming that lively means the person eating it is healthy and lively too.",
     "reading_mnemonic": "Kiki the tree spirit hands a hiker a glowing <reading>Gen key</reading> that unlocks nothing but pure energy — one turn and the hiker springs up the mountain trail without even panting. The trees whisper 「<reading>げんき</reading>」 every time someone uses it and comes back bursting with life.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "genkin": {
+    "meaning_mnemonic": "Under Koichi's konbini till sits that same roof-covered stash of gleaming <kanji>money</kanji>, kept buried safe the way it's always been. One slow night the clerk actually digs it up, counts every bill by hand, and slaps the stack flat on the counter — no card, no swipe, just physical bills you can hold. That dug-up, countable stack is cash.",
+    "reading_mnemonic": "Ken forgets his card at the konbini every single week, so the clerk just sighs, '<reading>again, Ken</reading>?' and taps the register for cash instead. That resigned sigh is exactly the sound of <reading>げんきん</reading> — same till, same excuse, every time.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -1250,6 +1278,15 @@
       "review_status": "draft"
     }
   },
+  "haru-attach": {
+    "meaning_mnemonic": "Koichi finds the drink-cooler's price sticker curling up at the corner, licks the back of a fresh one from the roll, and presses it down flat against the glass with his whole palm until every corner is glued flat. That's sticking something into place for good — to stick, to paste.",
+    "reading_mnemonic": "Koichi keeps a toy <reading>harpoon</reading> by the register and spears each curling flyer clean onto the corkboard so it stays flat, muttering <reading>はる</reading> under his breath with every satisfying thunk.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "haru": {
     "meaning_mnemonic": "Every year on the mountain trail, the vending machine at the top freezes solid through winter — until one morning the ice around its buttons melts, a marmot pokes its head out of a burrow beside it, and the whole slope turns to mud and green shoots overnight. That sudden thaw, when everything wakes up at once, is spring.",
     "reading_mnemonic": "A groundhog named Haru climbs out of her burrow on the mountain trail every thaw and bellows a cheerful <reading>halloo</reading> across the valley to announce she's awake. Everyone down at the shrine started calling that first warm shout <reading>はる</reading>, and the name stuck.",
@@ -1352,6 +1389,15 @@
   "higashi-v": {
     "meaning_mnemonic": "Every morning that same tree at the horizon snags the sun in its branches again, right on schedule. You watch it happen daily: the sun claws its way through the tangle, breaks free, and you know exactly which direction you're facing when it does — <kanji>east</kanji>.",
     "reading_mnemonic": "東 already gives you this exact word's sound, so you just say <reading>ひがし</reading> straight from what you learned.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hikaru": {
+    "meaning_mnemonic": "Near the top of the steep mountain trail, the one lonely vending machine keeps its light on all night, a single bright square glowing over the dark ridge. Hikers exhausted from the climb spot it from three switchbacks away before anything else on the mountain — the machine's whole purpose, up here, is simply to shine.",
+    "reading_mnemonic": "The hiker who restocks that machine is named <reading>Hikaru</reading>, and climbers joke that both he and the machine do the same job on that ridge: <reading>ひかる</reading>, shining so you don't miss the top.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -1676,6 +1722,15 @@
       "review_status": "draft"
     }
   },
+  "isogu": {
+    "meaning_mnemonic": "The last train chimes its warning right outside Koichi's konbini, and you abandon your basket mid-scan, shove past the onigiri shelf, and pelt for the platform doors as they begin to slide shut. There's no time left to think — only to hurry.",
+    "reading_mnemonic": "A cat bolts down the mossy steps of Grandma Kane's shrine for no reason at all, and you chase after it shouting '<reading>easy, go, easy, go!</reading>' — <reading>いそぐ</reading> — sprinting the whole way down before the enormous bell finishes its first toll.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "isu": {
     "meaning_mnemonic": "Picture a heavy wooden seat with a tall carved back, and look closely — the carving is shaped exactly like a swaddled <kanji>child</kanji>, arms flung wide the way it always reaches. Those flung-out arms become the armrests, the swaddling becomes the seat, and the whole piece of furniture is built around that one reaching shape: a chair.",
     "reading_mnemonic": "At the top of the mountain trail, a hiker spots the only bench and calls out to her friend, 'Ee, <reading>Sue</reading>, over here!' as she drops onto it with a groan. The two sounds run together into <reading>いす</reading> — the exact sigh of relief you make cornering the one thing at the summit built for sitting.",
@@ -1813,6 +1868,15 @@
       "review_status": "draft"
     }
   },
+  "junbi-suru": {
+    "meaning_mnemonic": "On the mountain trail, a bee named June spends the whole climb before the cold sets in — stocking the hive, patching every gap, checking the vending machine at the top for one last snack. Getting everything lined up and ready before the real thing starts is exactly what to prepare means.",
+    "reading_mnemonic": "June the bee never starts the climb without her checklist, and the other bees have started calling her ritual <reading>じゅんびする</reading> — said fast it lands as <reading>June-bee, sure</reading>, her name and her certainty rolled into one. That pre-climb checklist is the sound of the word.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "juu-v": {
     "meaning_mnemonic": "At Koichi's konbini the till beeps once for every raised finger, and the cashier keeps raising both hands until every finger is up, tracing the same <kanji>ten</kanji> cross in the air. The till stops beeping exactly when both hands are full — ten, and not one beep more.",
     "reading_mnemonic": "This word is just the kanji 十 on its own, so it keeps exactly the reading you already know: <reading>じゅう</reading>.",
@@ -1834,6 +1898,16 @@
   "kado": {
     "meaning_mnemonic": "Koichi's konbini sits right on the corner, and a delivery van cuts the turn too sharp. It clips the onigiri shelf through the window, spins once, and wedges itself nose-first into the exact corner of the building — where it stays, blocking the corner entrance for the rest of the shift.",
     "reading_mnemonic": "The van's <reading>car door</reading> pops open on impact and won't shut again — it hangs there at the corner of the konbini like a broken wing. Koichi just tapes a sign to it: this is the corner now. That crumpled car door is exactly how you remember <reading>かど</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kaeru-change": {
+    "meaning_mnemonic": "At the riverbank, a courier frog named Kaera swaps one basket for another on every crossing — rice one way, laundry the other, never both at once. She doesn't just move things, she changes what's in someone else's hands entirely. That deliberate swap is what the word teaches: something changes because someone changed it.",
+    "reading_mnemonic": "Kaera the frog announces each swap with a croak that sounds like <reading>かえる</reading> — the vendors nearby just call her <reading>Kaera</reading>, and the name stuck to the sound itself.",
+    "description": "This is the transitive verb — you change something (someone changes their mind, changes the schedule), always with an object. There's a separate intransitive partner meaning something changes on its own; that one takes a different reading, so don't reach for this word when nothing did the changing.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -2141,6 +2215,15 @@
       "review_status": "draft"
     }
   },
+  "kawaru": {
+    "meaning_mnemonic": "You watch an intersection from the corner for a full minute: the light is red, then amber, then green, then back to red, cars stopping and starting each time. Nothing about the pole itself moves, yet everything it signals is different every time you look. That shifting-in-place is the meaning: to change.",
+    "reading_mnemonic": "At Sei's school sports field, someone drives a tiny toy car through a puddle shaped exactly like a <reading>car wash</reading>, and it rolls out a completely different color than it went in. Sei blinks at the repainted car and mutters that everything on this field has just <reading>かわる</reading>, changed.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "kayoubi": {
     "meaning_mnemonic": "You flip your calendar to check the <kanji>weekday</kanji>, but the square for today's <kanji>day</kanji> is completely charred. Looking closely, a tiny sparking figure made of <kanji>fire</kanji> is running around inside the window frame, burning up the paper. You sigh. The calendar always bursts into flames on Tuesday.",
     "reading_mnemonic": "Since you already know the reading for each kanji, you can simply put them together to form <reading>かようび</reading>.",
@@ -2190,6 +2273,15 @@
   "keitai": {
     "meaning_mnemonic": "At Koichi's konbini, the new clerk Kei ties his phone to his belt with butcher's string before every shift, certain he won't survive the beeping till without it. By closing time the string has looped him to the register three times over, and everyone has stopped calling it a phone — it's just his mobile phone now.",
     "reading_mnemonic": "Picture the manager at Koichi's konbini shouting across the shop as the string tangles again: '<reading>Kay, tie</reading>!' — tie it down before it beeps once more. That shout is <reading>けいたい</reading>, the reading of mobile phone, the word Kei now answers to more than his own name.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kekkon-suru": {
+    "meaning_mnemonic": "At the mountain trail's summit, a hiker collapses to one knee in front of the lone vending machine, holds up a coin like a ring, and asks it to supply him forever. The machine accepts, clunking out two canned coffees like vows exchanged. That absurd, binding transaction at the top of the mountain is what it means to marry.",
+    "reading_mnemonic": "Kek, a scheming toad, runs his wedding tent as one long con, selling rings he calls forever deals. He names the racket <reading>けっこんする</reading>, and every couple lining up for <reading>Kek's con</reading> has no idea the scam is what actually binds them for life.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -2408,6 +2500,15 @@
   "kokonotsu": {
     "meaning_mnemonic": "Hana reaches switchback <kanji>nine</kanji> on the mountain trail, exactly where hikers lean their hooked canes against the rock to catch their breath. Someone already got there first — not one cane but a whole row of them, hooked over the same ledge like abandoned question marks. She counts twice to be sure: nine things, propped together at the ninth bend.",
     "reading_mnemonic": "This word simply takes 九's kun'yomi reading ここの and adds つ, the counter for physical things, giving 「<reading>ここのつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "komaru": {
+    "meaning_mnemonic": "You are locked out of your apartment in the rain, keys sitting in plain view on the kitchen counter through the window, phone dead, neighbor not home. You stand under the awning testing the same doorknob for the tenth time, and this exact useless loop is the meaning: to be troubled.",
+    "reading_mnemonic": "At the vending machine on the mountain trail, a scruffy kangaroo blocks your way, its fur knotted with burrs. You crouch down and <reading>comb a roo</reading> right there on the gravel, and the line of hikers behind you groans, thoroughly <reading>こまる</reading> at the wait.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -3141,6 +3242,15 @@
       "review_status": "draft"
     }
   },
+  "nakunaru": {
+    "meaning_mnemonic": "The supply cabinet at your office has exactly one stapler, and by Friday afternoon it is simply gone — not broken, not borrowed, gone. You check the same empty shelf three times as if it might reappear. That total vanishing, the running-out-to-nothing, is the meaning: to disappear, to run out.",
+    "reading_mnemonic": "Down at the riverbank, a woodpecker hammers the same dead branch for hours until it finally splits and topples into the current. The birds go quiet — <reading>knock, no more</reading> — and the fisherman sighs: whatever was there has become <reading>なくなる</reading>, gone for good.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "nakusu": {
     "meaning_mnemonic": "You set your umbrella down for one second on the mossy steps of Grandma Kane's shrine, and when you turn back there is only a cat sitting in exactly that spot, looking innocent. The umbrella is not behind the cat, not under the cat, not anywhere. It has simply stopped existing. That is what it means to lose something.",
     "reading_mnemonic": "The shrine cat on Grandma Kane's mossy steps has one trick: she'll <reading>knock loose</reading> any offering balanced near the edge, and once it slides past the bell into the dark underneath, the shrine keeper just sighs and says <reading>なくす</reading> — it's gone, no use looking.",
@@ -3242,6 +3352,15 @@
       "review_status": "draft"
     }
   },
+  "naru-ring": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, one of the countless cats leaps for a moth and misses, slamming into the enormous mossy bell instead. The whole hillside goes still for a second, then the bell answers — one huge sound rolling down the steps. Nobody rang it on purpose; it simply rang, sound arriving as a consequence, not a choice.",
+    "reading_mnemonic": "The shrine cat is named <reading>Naru</reading>, and when she yowls at the bell it answers with a tone the locals swear sounds just like her name — <reading>なる</reading> — echoing down the steps every time.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "naru": {
     "meaning_mnemonic": "At Grandma Kane's shrine, one persistent cat has taken to shadowing her every move — copying exactly how she rings the enormous bell, sweeps the mossy steps, and bows twice before the altar. Nobody assigned it a lesson; it simply watched an expert long enough to learn from her, one gesture at a time.",
     "reading_mnemonic": "Grandma Kane names the shrine cat <reading>Nara</reading>, after the old temple town where she trained as a girl, since it watches her rites with such focus. Every dawn it edges closer to her heels, and by autumn the visitors swear the cat has started to <reading>ならう</reading> her exact bow.",
@@ -3264,6 +3383,15 @@
     "meaning_mnemonic": "At the riverbank, a fisherman reels in his line for the ninth time and finds nothing but a waterlogged boot, same as the last eight. He doesn't swear, doesn't sigh — he just plants his feet in the mud, glares at the current, and asks the only question left standing: why.",
     "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>なぜ</reading>.",
     "description": "なぜ reads as blunter and more formal than a casual why — common in writing, official questions, and pointed interrogation. Dropped into an ordinary chat with a friend, on its own it can land as accusatory rather than merely curious.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nedan": {
+    "meaning_mnemonic": "At the summit vending machine, legs shaking from the climb, you watch the little display flicker between eight hundred yen and eight million before settling. It isn't broken, it's just deciding what altitude is worth. That flickering number, haggling with your exhaustion, is the price you paid to get here.",
+    "reading_mnemonic": "Ned the horse trader neighs at dawn every morning before chalking a new number on his cart. Villagers set their clocks by his <reading>neigh-at-dawn</reading> ritual, since that's exactly how you say <reading>ねだん</reading>, the price he's picked for the day.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -3399,6 +3527,15 @@
   "noboru": {
     "meaning_mnemonic": "At Grandma Kane's shrine, a cat spots the enormous bell rope dangling above and decides the bell tower looks like a throne. Paw over paw, it hauls itself up the mossy steps, then straight up the rope, refusing to stop until it's perched on the bell's crown surveying the cats below — that relentless paw-over-paw haul is what it means to climb.",
     "reading_mnemonic": "Nobu, the shrine cat's owner, snaps at a neighbor asking to borrow his ladder: '<reading>No, borrow</reading> nothing — watch this instead.' He hauls himself up the mossy steps hand over hand, the whole climb echoing through the cats as one long <reading>のぼる</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nokoru": {
+    "meaning_mnemonic": "After the birthday party ends and the last guest waves goodbye, one lonely slice of cake sits alone on the table, uneaten, crumbs scattered everywhere else. Everyone else got their piece and left; only this slice stayed behind. That staying-behind, the leftover, is the meaning: to remain.",
+    "reading_mnemonic": "At Koichi's konbini, the last onigiri on the shelf turns out to be a display fake with <reading>no core</reading> — just rice on the outside, hollow within. Koichi leaves it sitting there past closing, the one item that never sells: it simply <reading>のこる</reading>, remains, night after night.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -3566,6 +3703,24 @@
   "okiru": {
     "meaning_mnemonic": "You fell asleep leaning against the onigiri shelf at Koichi's konbini, and the till starts beeping nonstop over a jammed barcode. The noise won't quit, so you peel your eyes open, stagger upright, and blink at the fluorescent lights. That beeping is the whole story: to wake up, to get up.",
     "reading_mnemonic": "Oki the night clerk always oversleeps at Koichi's konbini. Every morning the manager shouts <reading>おきる</reading>, get up, and jangles the shutter key — <reading>oh, key</reading> — until Oki finally rolls off the floor and opens the store.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "oku": {
+    "meaning_mnemonic": "Grandma Kane crosses the mossy shrine steps every morning with a saucer of milk, choosing the exact same paw-worn stone by the enormous bell and setting it down without a wobble, right where the cats expect it. That precise, deliberate setting-down is putting or placing something exactly where it belongs.",
+    "reading_mnemonic": "She lowers the saucer onto a gnarled root of <reading>oak</reading> jutting from the shrine steps, whispering <reading>おく</reading> each time like a little rule for where things go.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "okureru": {
+    "meaning_mnemonic": "You wake with the sun already high, sprint to Sei's school still wearing one shoe, and skid into the echoing hallway just as the bell finishes its last ring. Every other seat is filled, every face turned toward the door, toward you, standing there late.",
+    "reading_mnemonic": "Sei tears down the mountain trail toward school, trips over a root by the lone vending machine, and yells '<reading>oh, curry!</reading>' as his lunchbox bursts open — <reading>おくれる</reading> — arriving with rice down his shirt and the bell already silent.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -3812,6 +3967,15 @@
       "review_status": "draft"
     }
   },
+  "otsuri": {
+    "meaning_mnemonic": "At the riverbank, a fisherman reels in his line expecting a fish and instead pulls up a dripping fistful of coins, more than he ever paid to be there. He shrugs, stuffs the extra into his pocket, and keeps casting. That unexpected excess handed back to you is change.",
+    "reading_mnemonic": "Otsu, the riverbank fisherman, always over-tips the ferry boy, then waves off the leftover coins with a cheerful <reading>oh, too rich</reading>! Grandma Kane says his running joke is exactly how you remember <reading>おつり</reading>, the change he never wants back.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "otto": {
     "meaning_mnemonic": "At the riverbank, a woman is washing laundry when her husband wades in fully dressed, chasing a sock that floated loose, soaking his only good shirt in the process. She doesn't even look up — of course that's who waded in after one sock, nobody else would bother. That reliable, faintly ridiculous devotion is (my) husband.",
     "reading_mnemonic": "He climbs out of the river dripping head to toe, sock triumphantly in hand, and she just sighs, <reading>Otto</reading>, not again — the exact sound of <reading>おっと</reading>, her name for the husband who always wades in after the laundry.",
@@ -3913,6 +4077,15 @@
       "review_status": "draft"
     }
   },
+  "renshuu-suru": {
+    "meaning_mnemonic": "On Sei's sports field, a wren lands by the goalpost and shoos the same three pigeons off the grass, over and over, a hundred times before the whistle even blows. It never varies the routine, never skips a rep — that relentless repeating drill, doing the same motion until it's automatic, is what to practice means.",
+    "reading_mnemonic": "The wren on the field never just shoos once — it shoos, resets, shoos again, and the coach starts calling the drill <reading>れんしゅうする</reading>, which sounds exactly like <reading>wren-shoo, over and over</reading>. That repeated wren-shoo routine is the sound of the word.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "resutoran": {
     "meaning_mnemonic": "Someone moors a floating diner to a post on the riverbank so it can't drift off. A chalkboard menu hangs from the mast, and the one waiter wades out in rubber boots to deliver plates. Tourists queue on the bank just to eat somewhere that technically counts as a restaurant, even though it's really a raft with silverware.",
     "reading_mnemonic": "This word is written in kana exactly as it sounds: <reading>レストラン</reading>.",
@@ -3926,6 +4099,15 @@
   "roku-v": {
     "meaning_mnemonic": "At Grandma Kane's shrine, eight cats are sprawled across the mossy steps at dawn. She sets the heavy iron offering lid down with a clang right on the top step, and two cats bolt at the sound, tails high. What's left staring up at the enormous bell is <kanji>six</kanji> cats, thoroughly unimpressed by the racket. The lid on top of eight, as always, leaves <kanji>six</kanji>.",
     "reading_mnemonic": "六's reading here is just the number's own reading you already learned: <reading>ろく</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ryokan": {
+    "meaning_mnemonic": "You cross the riverbank on a rickety ferry, soaked and shivering, and the only building on the far bank is a lantern-lit lodge with steaming baths and futons laid out. There's nowhere else to go, so you stay the night. That riverside shelter with a bath and a bed is an inn.",
+    "reading_mnemonic": "Ryo, the ferryman, refuses to paddle back once the sun sets, mooring his boat with a satisfied <reading>leo-con</reading> and marching guests inside for the night. Grandma Kane says his nightly cry is exactly how you say <reading>りょかん</reading>, the inn he refuses to leave.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -3962,6 +4144,15 @@
   "ryouri": {
     "meaning_mnemonic": "It's 2 a.m. at Koichi's konbini, fluorescent lights buzzing over the onigiri shelf while the till beeps through a lull. Bored, the night clerk pulls ingredients off the shelves — instant miso, a rice ball, a squeeze of mayo — and assembles them into something new on the counter. By closing, he's turned convenience-store scraps into an actual dish: cooking.",
     "reading_mnemonic": "The clerk introduces himself over the counter, 'I'm <reading>Leo Uri</reading>, konbini cooking champion of aisle three.' He says his name so fast it comes out as one word — <reading>りょうり</reading> — which is exactly how you ask for cooking or a dish.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ryoushuusho": {
+    "meaning_mnemonic": "At Koichi's konbini the register light dims like the sinking sun that once taught your hand to write. As it fades, the printer's little arm keeps that same sun-fed urge to <kanji>write</kanji>, scribbling out a curling strip of paper long after the customer's gone. That printed proof of the sale is the receipt.",
+    "reading_mnemonic": "Leo Shoeshaw, the shrine's fussy clerk, won't hand back your coin offering until he's written a slip, barking his own name like a stamp: <reading>Leo! Shoe! Show!</reading> Grandma Kane says that clipped bark is exactly how you say <reading>りょうしゅうしょ</reading>, the receipt he presses into your palm.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -4121,6 +4312,15 @@
       "review_status": "draft"
     }
   },
+  "setsumei-suru": {
+    "meaning_mnemonic": "At Koichi's konbini the till locks up mid-beep and nobody knows why. The new clerk grabs a marker, draws arrows all over a torn onigiri wrapper, and holds it up to the confused line of customers, mapping error code to fix one scribble at a time. That's the whole job here: to explain, arrow by arrow, until the confusion drains out of the room.",
+    "reading_mnemonic": "Everyone at the konbini calls the diagram-happy clerk <reading>Setsumei</reading> behind her back, since that's basically what she does all shift. Picture her cornering yet another customer, marker in hand, doing full <reading>せつめいする</reading> mode over a jammed slushie machine.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "shashin": {
     "meaning_mnemonic": "At Grandma Kane's shrine, a dozen cats sprawl across the mossy steps, and just as the great bell tolls, a bulb pops and freezes every yawn and twitching tail at once, the whole moment trapped flat and still forever. That frozen instant, kept for good, is a photograph.",
     "reading_mnemonic": "A tourist barges into the shrine's hush, camera raised, and the old priest just hisses <reading>shush in</reading> before you break it — too late, the shutter already clicked. He hands back the camera; the saved file reads simply <reading>しゃしん</reading>.",
@@ -4168,6 +4368,15 @@
       "review_status": "draft"
     }
   },
+  "shigotoba": {
+    "meaning_mnemonic": "Koichi never really leaves his konbini. The fluorescent lights buzz all night, the onigiri shelf never empties, and he sleeps propped against the beeping till between customers. Every inch of that cramped bright box — from the door to the register — has become entirely his workplace, no separate word needed.",
+    "reading_mnemonic": "Shigeko clocks out the instant the beep sounds, and every night without fail, <reading>she goes, to bar</reading> — same stool, same drink, before she's even said goodnight to the till. Everyone at the konbini agrees: <reading>しごとば</reading> is simply wherever she ends up, evening after evening.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "shiken": {
     "meaning_mnemonic": "At Grandma Kane's shrine, the mossy steps fill every February with silent students ringing the one enormous bell, clapping twice, and begging the cats for luck. The weight of it all — one bell, one prayer, one date circled on the calendar for weeks — is exactly what an exam is: the single test everything has been building toward.",
     "reading_mnemonic": "A student rings Grandma Kane's enormous bell so hard a cat topples off the railing, then stands there muttering over and over, <reading>しけん</reading>, convincing herself <reading>she can</reading> pass tomorrow's exam if the bell just rings back loud enough.",
@@ -4189,6 +4398,15 @@
   "shinbun": {
     "meaning_mnemonic": "At Grandma Kane's shrine, someone <kanji>new</kanji> in town stands beaming beside a fresh stack of printed pages, and every cat under the big bell presses an ear to the stack like it's a gate, straining to <kanji>hear</kanji> what's inside before anyone thinks to ask. By the time the bell rings, the whole shrine already knows what's inside those pages pressed flat — the newspaper.",
     "reading_mnemonic": "新聞 keeps both taught readings back to back, so read it as <reading>しんぶん</reading> — new, then hear.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shinpai-suru": {
+    "meaning_mnemonic": "You leave the house and immediately start replaying the stove, the door, the iron — did you actually turn them off? By the time you reach the corner you've invented three new disasters that haven't happened yet. That spiral of manufactured dread, dragging you back home just to check, is what it feels like to worry.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a cat named Shin balances a warm <reading>shin pie</reading> on his knee and paces the mossy steps, certain it will slide off. His fretting whisper is the sound: <reading>しんぱいする</reading> — worry itself, baked into a pie he can't stop watching.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -4277,9 +4495,27 @@
       "review_status": "draft"
     }
   },
+  "shitsurei-suru": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a monk barges through a crowd of cats mid-ceremony, gives the enormous bell one stiff bow, and backs straight out through the gate before the abbot can even turn around. That clipped, apologetic retreat — bow, mutter, gone — is exactly what to excuse oneself means: leaving politely before you've overstayed the room.",
+    "reading_mnemonic": "The monk's name is Ray, and every time he flees a cat pile at the shrine he mutters it fast — <reading>しつれいする</reading> — which lands on your ear as <reading>she, too, RAY</reading>, like someone ducking out right behind him. That hurried, apologetic double-exit is the sound of the word.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "shizuka": {
     "meaning_mnemonic": "At Grandma Kane's shrine, the mossy steps lead up to one enormous bell that nobody dares ring — even the cats stop mid-stride and flatten their ears, padding past on silent paws so nothing disturbs the hush. Not a chime, not a meow, not a footstep. That held-breath stillness is quiet.",
     "reading_mnemonic": "A cat named Shizuka naps under that same enormous bell, and visitors tiptoe past whispering '<reading>she's-zoo-kah</reading>, don't wake her' so as not to break the hush. That whispered warning carries 「<reading>しずか</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shokuji-suru": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the cats gather every dusk under the little tent-roof shelter that is, as you already know, a roof made entirely of dinner. Tonight it's a full sit-down affair: bowls set in a row, tails tucked, nobody leaving until the tray's been properly cleared. That polite, four-legged sitting-down to <kanji>eat</kanji> is what the word describes — an actual meal, not just a snack.",
+    "reading_mnemonic": "The shrine cats have one among them everyone calls <reading>Shokuji</reading>, because she's the only cat who sits down properly to eat instead of just snatching food. Even Grandma Kane comments on it — that cat, she says, actually does <reading>しょくじする</reading>, dining like a person instead of a stray.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -4295,9 +4531,27 @@
       "review_status": "draft"
     }
   },
+  "shoukai-suru": {
+    "meaning_mnemonic": "At Sei's school, the new transfer student gets dragged in front of the class by the homeroom teacher, who cups both hands around her mouth like a game-show host unveiling a prize. Name, hometown, hobby — she rattles off all three before the poor kid can say a single word himself. That shove-and-announce routine is what it means to introduce someone.",
+    "reading_mnemonic": "The homeroom teacher earned the nickname <reading>Shoukai</reading> from the class years ago, since introducing new people is basically her whole personality. Every transfer student gets the same routine: name, hometown, hobby, <reading>しょうかいする</reading> in full game-show voice before homeroom has even started.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "shukudai": {
     "meaning_mnemonic": "Every night, Koichi finds a fresh stack of workbooks wedged onto the onigiri shelf, exactly where the rice balls should be — someone keeps swapping snacks for problem sets nobody asked for. He bags them for customers anyway, grumbling that unfinished pages waiting for you at home, whether you want them or not, is exactly what homework is.",
     "reading_mnemonic": "At the beeping konbini till, a tired student shakes a single die over his stack of worksheets, muttering <reading>しゅくだい</reading> every time it lands, hoping the number will somehow do his <reading>shook-die</reading> homework for him before Koichi rings him up and shoves him out the door.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shumi": {
+    "meaning_mnemonic": "Grandma Kane's one true hobby is chasing the shrine cats with a broom, shouting them off the mossy steps every morning — then, the instant they scatter, she sits right down where they were and sighs happily, surrounded by the very cats she just chased. That ritual, pointless and adored, is what a hobby actually is.",
+    "reading_mnemonic": "Every cat on Grandma Kane's mossy shrine steps knows the routine: she waves her broom and yells '<reading>shoo, me</reading> first!' at the fattest one, who never budges an inch. The neighbors just call it her <reading>しゅみ</reading> now — that daily standoff nobody ever wins.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -4649,6 +4903,16 @@
       "review_status": "draft"
     }
   },
+  "tetsudau": {
+    "meaning_mnemonic": "Koichi's konbini till is buried under boxes he can't shift alone, so you hold up your <kanji>hand</kanji>, fingers spread the way you always picture it, and slide it under the heaviest crate just before it tips. You're not doing his job for him — you're only lending a <kanji>hand</kanji>, which is exactly what helping means.",
+    "reading_mnemonic": "On the sports field at Sei's school, your friend can't lift the net alone, so you jog over saying '<reading>let's do</reading> this together' — <reading>てつだう</reading> — and grab the other end before he drops it.",
+    "description": "手伝う specifically means pitching in on a task that's mainly someone else's — helping with chores, homework, or work — rather than a general word for rescuing or assisting in any sense.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "tobu": {
     "meaning_mnemonic": "Halfway up the mountain trail, a cat sunning itself beside the vending machine is startled by a hiker's dropped can, and it doesn't just scurry off — it launches clean over the machine in one motion, all four paws leaving the ground at once. That single clean launch off the ground, whether across a gap or straight up, is to fly or jump.",
     "reading_mnemonic": "As the cat sails over the machine, it clips a tuba someone left leaning against it, and the horn lets out a low <reading>toh-buh</reading> honk mid-air — the exact sound the hikers now shout as <reading>とぶ</reading> every time that cat launches itself again.",
@@ -4697,6 +4961,15 @@
   "tomaru": {
     "meaning_mnemonic": "Toto the door-to-door turtle grinds up the mountain trail with his shell stacked full of sample doors, aiming for the vending machine at the top. Right at the steepest switchback he plants one foot flat against the gravel and freezes — the same <kanji>stop</kanji> pose the trail already taught you — and won't haul his doors another step until someone flags him down.",
     "reading_mnemonic": "止（と）＋ま＋る spell out <reading>とまる</reading> exactly the way you already learned to read 止 — the readings just fall into place, no new story needed.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tomeru-stop": {
+    "meaning_mnemonic": "Koichi's onigiri cart breaks loose and rolls for the door. You don't chase it — you do what the mountain trail already taught your foot: plant it flat and hard, right in the cart's path. The wheels ram your ankle and jam dead, frozen mid-roll. That's your foot learning to <kanji>stop</kanji> something other than itself.",
+    "reading_mnemonic": "止（と）＋める gives you the reading <reading>とめる</reading> straight from the と you already know for 止 plus the plain める ending — nothing new to memorize here.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -4895,6 +5168,24 @@
       "review_status": "draft"
     }
   },
+  "ugokasu": {
+    "meaning_mnemonic": "Down at the riverbank, a rowboat sits beached and refuses to budge. Sue plants both feet in the mud, braces against the hull, and shoves until it finally slides free into the current. The boat never moves itself — Sue is the one who moves it, which is exactly what it means to move something.",
+    "reading_mnemonic": "As the hull finally scrapes free, someone on the bank yells <reading>a go-car, Sue!</reading> — cheering her on, and about as close as English gets to <reading>うごかす</reading>, moving something that wouldn't move on its own.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ugoku": {
+    "meaning_mnemonic": "At the top of the mountain trail, someone parks a go-kart beside the lone vending machine and wanders off for a drink. By the time they turn back, the kart has already rolled halfway down the slope on its own, nobody behind the wheel, nothing pushing it — it's simply moving.",
+    "reading_mnemonic": "Watching the driverless kart trundle downhill, you swear its engine mutters <reading>a go-kart</reading>, which is about as close as English gets to <reading>うごく</reading> — the sound of something moving all by itself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "umareru": {
     "meaning_mnemonic": "The same shoot that broke through the earth in the story of <kanji>life</kanji> keeps climbing past where anyone was watching, until one morning it splits its last husk open in the sun and unfurls a leaf nobody planted. No ceremony, no announcement — something that wasn't there yesterday is simply, suddenly alive: it has been born.",
     "reading_mnemonic": "At school, Sei is put in charge of the class tomato plant, certain nothing will come of it. Weeks later she sprints down the hallway insisting <reading>you're merely</reading> looking at a seed one day, and then — <reading>うまれる</reading> — a whole red tomato hangs off the vine she swore was empty.",
@@ -4907,6 +5198,15 @@
   "umi": {
     "meaning_mnemonic": "A fisherman leaves one bucket of water by his back door to rinse his boots, but it rains so hard overnight that the bucket overflows and never stops — by morning his whole street sits underwater, waves lapping at the mailbox. One forgotten bucket, given enough time, became an entire sea.",
     "reading_mnemonic": "Sei wades into the riverbank current on a school trip, certain it's shallow, until the ground vanishes and cold water rushes to her shoulders. She yelps <reading>ooh, me</reading>, right before the current sweeps her toward the open <reading>うみ</reading> the river was hiding all along.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "unten-suru": {
+    "meaning_mnemonic": "A vending-machine restocker's truck grinds up the mountain trail's switchbacks in first gear, engine screaming, cans rattling in the back, aiming for the one machine improbably parked at the summit. Nobody walks this delivery route — someone has to sit behind the wheel and wrestle it up every hairpin turn. That's the whole job: to drive, all the way to the top.",
+    "reading_mnemonic": "The delivery driver grinding up the mountain trail goes by <reading>Unten</reading> to the vending-machine regulars, since that's all he ever seems to be doing. Ten hairpin turns in, he's still muttering <reading>うんてんする</reading> to himself like a chant, wheel in a death grip.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -5025,6 +5325,15 @@
   "watashitachi": {
     "meaning_mnemonic": "On the mossy steps of Grandma Kane's shrine, one cat rings the enormous bell and every other cat in the place mobs the sound, wedging in shoulder to shoulder until they're one solid, purring mass on the step. Ask any single cat its name and the whole pile answers at once, because as far as they're concerned there's no such thing as one cat here anymore, only the pile. That fused, shoulder-to-shoulder answer is the meaning you want: we.",
     "reading_mnemonic": "Try to pet just one cat in the pile and the whole mass yowls back what sounds like <reading>what a she, touchy</reading> bunch — really the cats shouting <reading>わたしたち</reading>, we, in one voice, refusing to be split apart even for the bell.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "watasu": {
+    "meaning_mnemonic": "At the riverbank the current is too fast to wade, so instead of crossing yourself you stretch out and hand the umbrella straight across to the woman waiting on the far bank. She catches it one-handed, dry the whole time — you didn't cross the river, you handed it over.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a cat drags a stray pot of stew up the mossy steps and dumps it at your feet. '<reading>What a stew</reading>,' you mutter — <reading>わたす</reading> — as Grandma Kane scolds you for feeding the shrine cats her prized dinner.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -5176,10 +5485,28 @@
       "review_status": "draft"
     }
   },
+  "yoyaku-suru": {
+    "meaning_mnemonic": "At Koichi's konbini, a yak shoulders its way to the onigiri shelf before opening hours, plants a hoof on the exact spot it wants, and refuses to budge even when customers stack up behind it. Claiming a spot ahead of everyone else, locking it in before anyone can take it, is exactly what to reserve means.",
+    "reading_mnemonic": "The yak at the shelf grunts a greeting every morning before claiming its spot — a flat <reading>yo</reading> followed by a stubborn <reading>YAK</reading> — and Koichi has started calling the whole ritual <reading>よやくする</reading>. That yo-YAK grunt, locking down the spot before anyone else can, is the sound of the word.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
   "yuki": {
     "meaning_mnemonic": "Halfway up the mountain trail, the path turns white — not sand, not ash, just cold pale flakes settling on your shoulders and melting the second they land. It piles on the vending machine's roof, on the railing, on your shoes, until the whole trail is buried under it. There's one word for that pale, cold covering: snow.",
     "reading_mnemonic": "At the top of the mountain trail the vending machine jams, burying a hiker under white flakes from its coin slot. She digs through the cold pile shouting <reading>you, key</reading> — hunting her dropped key — and every shout comes out sounding exactly like <reading>ゆき</reading>.",
     "description": "ゆき is also an extremely common Japanese given name for girls, so outside of weather talk it will usually be someone's name rather than the word for snow.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yume": {
+    "meaning_mnemonic": "Halfway up the mountain trail, the vending machine at the summit isn't real — it never has cold drinks, it's always one more switchback past your last break, and it vanishes the moment you actually reach the top. Everyone who's hiked that trail knows the machine at the peak is only ever a dream.",
+    "reading_mnemonic": "At the base of the mountain trail, a sign reads '<reading>you may</reading> rest here, traveler' — but climb further and the exact same sign keeps reappearing, word for word, at every switchback. Hikers swear the trail itself is a <reading>ゆめ</reading>, a dream that only pretends to have an end.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",

@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Deck — onboarding brainstorm, 27 Jul 2026</title>
+<style>
+  :root{
+    --paper:#F7F3EA; --paper-2:#FFFDF7; --sumi:#1C1A17; --sumi-soft:#4A453D;
+    --shu:#C8442E; --shu-soft:#E4785F; --ai:#2E5A7A; --matcha:#6B7F4E;
+    --gold:#B08A3E; --rule:#DDD5C4; --shadow:rgba(28,26,23,.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14130F; --paper-2:#1D1B16; --sumi:#EDE7DA; --sumi-soft:#A79F8E;
+      --shu:#E86B50; --shu-soft:#8A3A29; --ai:#7FB0D4; --matcha:#9CB374;
+      --gold:#D9B45F; --rule:#33302A; --shadow:rgba(0,0,0,.45);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--sumi);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--shu) 5%, transparent) 0, transparent 42%),
+      radial-gradient(circle at 88% 72%, color-mix(in srgb, var(--ai) 6%, transparent) 0, transparent 45%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- cover ---------- */
+  .cover{min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .kicker{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--shu);margin-bottom:26px}
+  h1{font-size:clamp(42px,8.5vw,92px);line-height:.98;margin:0 0 8px;font-weight:400;letter-spacing:-.02em}
+  h1 em{font-style:normal;color:var(--shu)}
+  .sub{font-size:clamp(17px,2.4vw,23px);color:var(--sumi-soft);max-width:34ch;margin:18px 0 0}
+  .meta{margin-top:52px;display:flex;flex-wrap:wrap;gap:10px 30px;
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;letter-spacing:.08em;color:var(--sumi-soft)}
+  .meta b{color:var(--sumi);font-weight:600}
+  .tategaki{position:absolute;right:6px;top:12%;writing-mode:vertical-rl;font-size:13px;letter-spacing:.5em;
+    color:var(--rule);user-select:none}
+
+  /* ---------- the composing kanji ---------- */
+  .compose{display:flex;align-items:center;gap:clamp(10px,3vw,28px);margin:44px 0 0;flex-wrap:wrap}
+  .glyph{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;line-height:1;
+    font-size:clamp(38px,8vw,74px);color:var(--sumi)}
+  .glyph.dim{color:var(--sumi-soft);opacity:.5}
+  .glyph.hot{color:var(--shu)}
+  .arrow{color:var(--rule);font-size:22px}
+  .compose figcaption{width:100%;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+    letter-spacing:.16em;color:var(--sumi-soft);margin-top:14px}
+  @keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+  .glyph.hot{animation:breathe 4.5s ease-in-out infinite}
+
+  /* ---------- section chrome ---------- */
+  section{padding:86px 0 24px;border-top:1px solid var(--rule);margin-top:64px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+  .sec-no{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.28em;color:var(--shu)}
+  h2{font-size:clamp(28px,4.6vw,46px);margin:0;font-weight:400;letter-spacing:-.015em}
+  .sec-lede{color:var(--sumi-soft);max-width:60ch;margin:14px 0 40px;font-size:17.5px}
+  .count{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--sumi-soft);
+    border:1px solid var(--rule);border-radius:99px;padding:3px 11px}
+
+  /* ---------- 01 personas ---------- */
+  .persona{margin-bottom:38px;display:grid;grid-template-columns:190px 1fr;gap:26px}
+  .persona-id{position:sticky;top:22px;align-self:start}
+  .persona-glyph{font-family:"Hiragino Mincho ProN",serif;font-size:44px;line-height:1;color:var(--shu-soft);
+    display:block;margin-bottom:10px}
+  .persona-name{font-size:19px;line-height:1.25;margin:0 0 6px}
+  .persona-want{font-size:13.5px;color:var(--sumi-soft);line-height:1.45;font-style:italic}
+  ul.cards{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  ul.cards li{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;
+    padding:13px 16px 13px 44px;position:relative;font-size:15.5px;line-height:1.5;
+    box-shadow:0 1px 0 var(--shadow);transition:transform .18s ease, border-color .18s ease}
+  ul.cards li:hover{transform:translateX(4px);border-color:var(--shu-soft)}
+  ul.cards li::before{content:attr(data-n);position:absolute;left:14px;top:13px;
+    font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--shu);letter-spacing:.05em}
+
+  /* ---------- 02 field notes ---------- */
+  .field{background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:clamp(20px,4vw,38px);
+    font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;line-height:1.62}
+  .field h3{font-family:inherit;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--ai);margin:0 0 20px;padding-bottom:10px;border-bottom:1px dashed var(--rule)}
+  .field h3.b{color:var(--matcha);margin-top:46px}
+  .obs{display:grid;grid-template-columns:auto 1fr;gap:12px 16px;margin-bottom:15px;align-items:start}
+  .obs span{color:var(--sumi-soft);font-size:11px;padding-top:3px;white-space:nowrap}
+  .obs p{margin:0;font-family:"Iowan Old Style",Georgia,serif;font-size:15.5px;line-height:1.52}
+  .obs p b{color:var(--shu);font-weight:600}
+  .cols{columns:2;column-gap:44px}
+  @media(max-width:820px){.cols{columns:1}.persona{grid-template-columns:1fr}.persona-id{position:static}}
+
+  /* ---------- 03 spotlight ---------- */
+  .stage{background:var(--paper-2);border:1px solid var(--rule);border-radius:6px;
+    padding:clamp(28px,6vw,64px) clamp(20px,4vw,40px);text-align:center;position:relative;overflow:hidden;
+    box-shadow:0 18px 44px -28px var(--shadow)}
+  .stage::before{content:"";position:absolute;inset:-40% 20% auto;height:120%;
+    background:radial-gradient(ellipse at top, color-mix(in srgb, var(--gold) 14%, transparent), transparent 66%);
+    pointer-events:none}
+  .stage .label{position:relative;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .stage .the-card{position:relative;margin:26px auto 0;max-width:420px;background:var(--paper);
+    border:1px solid var(--rule);border-radius:8px;padding:32px 24px;box-shadow:0 10px 30px -18px var(--shadow)}
+  .stage .big{font-family:"Hiragino Mincho ProN",serif;font-size:clamp(44px,10vw,80px);line-height:1.05}
+  .stage .cap{font-size:14.5px;color:var(--sumi-soft);margin-top:14px}
+  .rivals{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:34px}
+  .rival{background:var(--paper-2);border:1px solid var(--rule);border-left:3px solid var(--ai);
+    border-radius:3px;padding:16px 18px;font-size:15px}
+  .rival b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ai);
+    margin-bottom:7px;font-family:ui-monospace,Menlo,monospace;font-weight:600}
+  .polish{display:grid;gap:8px;margin-top:34px}
+  .polish li{list-style:none;padding-left:26px;position:relative;font-size:15.5px}
+  .polish li::before{content:"◆";position:absolute;left:0;color:var(--gold);font-size:11px;top:4px}
+  .cut{margin-top:38px;padding:22px 24px;border:1px dashed var(--shu-soft);border-radius:4px;
+    background:color-mix(in srgb, var(--shu) 4%, transparent)}
+  .cut h4{margin:0 0 12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--shu)}
+  .cut s{color:var(--sumi-soft);text-decoration-color:var(--shu);text-decoration-thickness:1.5px}
+  .keep{color:var(--sumi);font-weight:600}
+
+  /* ---------- synthesis ---------- */
+  .climax{border-top:2px solid var(--shu)}
+  .timeline{position:relative;margin:44px 0 60px;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;
+    background:linear-gradient(var(--shu),var(--ai),var(--rule))}
+  .beat{position:relative;margin-bottom:26px}
+  .beat::before{content:"";position:absolute;left:-30px;top:7px;width:10px;height:10px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--shu)}
+  .beat .when{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--shu)}
+  .beat .what{font-size:19px;margin:3px 0 3px}
+  .beat .fix{color:var(--sumi-soft);font-size:15.5px}
+  .findings{display:grid;gap:16px}
+  .finding{background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;
+    padding:22px 26px;border-left:4px solid var(--matcha)}
+  .finding:nth-child(odd){border-left-color:var(--shu)}
+  .finding h4{margin:0 0 8px;font-size:19px;font-weight:400}
+  .finding h4 span{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--sumi-soft);
+    letter-spacing:.2em;margin-right:12px}
+  .finding p{margin:0;color:var(--sumi-soft);font-size:16px}
+  .chosen{margin-top:46px;background:var(--sumi);color:var(--paper);border-radius:6px;
+    padding:clamp(26px,5vw,44px)}
+  .chosen h3{margin:0 0 6px;font-size:26px;font-weight:400;color:var(--paper)}
+  .chosen .n{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--shu-soft)}
+  .chosen ol{margin:22px 0 0;padding-left:20px;display:grid;gap:12px}
+  .chosen li{font-size:17px;line-height:1.5;color:color-mix(in srgb, var(--paper) 82%, transparent)}
+  .chosen li b{color:var(--paper);font-weight:600}
+
+  footer{padding:70px 0 90px;color:var(--sumi-soft);font-family:ui-monospace,Menlo,monospace;font-size:11.5px;
+    letter-spacing:.1em;border-top:1px solid var(--rule);margin-top:70px}
+  footer a{color:var(--shu);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="cover">
+  <div class="tategaki">入門　案内　札</div>
+  <div class="kicker">Brainstorm · Ideate-for-me · 27 July 2026</div>
+  <h1>The <em>Deck</em></h1>
+  <p class="sub">103 ideas for what a beginner should be told — before, during, and long after onboarding.</p>
+
+  <figure class="compose">
+    <span class="glyph dim">日</span><span class="arrow">+</span>
+    <span class="glyph dim">月</span><span class="arrow">→</span>
+    <span class="glyph hot">明</span><span class="arrow">→</span>
+    <span class="glyph">明日</span>
+    <figcaption>SUN + MOON → BRIGHT → TOMORROW · the one card that teaches the whole app</figcaption>
+  </figure>
+
+  <div class="meta">
+    <div><b>Topic</b> · onboarding &amp; post-onboarding guidance cards</div>
+    <div><b>Techniques</b> · Persona Journey · Alien Anthropologist · One Feature Only</div>
+    <div><b>Log</b> · 114 entries</div>
+  </div>
+</header>
+
+<!-- ================= 01 ================= -->
+<section>
+  <div class="sec-head">
+    <span class="sec-no">TECHNIQUE 01</span>
+    <h2>Persona Journey</h2>
+    <span class="count">40 ideas</span>
+  </div>
+  <p class="sec-lede">Ten archetypes walk into the app on day one. Each one is confused by something completely
+  different — and each confusion is a card. Solved in-character, not in the abstract.</p>
+
+  <div class="persona">
+    <div class="persona-id">
+      <span class="persona-glyph">熱</span>
+      <p class="persona-name">The Anime Kid</p>
+      <p class="persona-want">16. Wants to drop subtitles. Zero patience for theory. Will bounce off a lecture.</p>
+    </div>
+    <ul class="cards">
+      <li data-n="01">First card isn't instructions — one anime-style Japanese line with furigana and <b>"you'll read this in 6 weeks."</b> Tap reveals the breakdown. Teach by promise, not explanation.</li>
+      <li data-n="02">Open with the payoff: the actual three kanji from today's first lesson, big, before SRS is mentioned at all.</li>
+      <li data-n="03">Two-panel manga card answering "why does the app show the same kanji twice" — one mask for meaning, one for on'yomi.</li>
+      <li data-n="04">Swipe <b>up</b> = "I know this, hide this card family forever." A gesture that teaches the deck is disposable — not a Skip All button.</li>
+      <li data-n="05">Wordless card: the radical → kanji → vocab chain animates itself into a tiny tree. Zero sentences.</li>
+      <li data-n="06">Zero-text composition: 日 + 本 → 日本 → Japan. Compositional kanji taught in three glyphs.</li>
+      <li data-n="07">Cards re-openable from a "How this works" shelf in Browse — dismissing costs nothing.</li>
+      <li data-n="08">Deliberate mis-teaching card: show a wrong answer <em>being marked wrong</em>, so the first real one isn't a shock.</li>
+      <li data-n="09">Pre-empt the top interleaving confusion: "The app will show you things you haven't finished learning. That's on purpose."</li>
+      <li data-n="10">Anti-lecture hard rule: 12 words max of body text. If it needs more, it's two cards.</li>
+    </ul>
+  </div>
+
+  <div class="persona">
+    <div class="persona-id">
+      <span class="persona-glyph">燐</span>
+      <p class="persona-name">The Duolingo Refugee</p>
+      <p class="persona-want">28. Trained on streaks, gems and hearts. Reads their absence as "this app has no motivation."</p>
+    </div>
+    <ul class="cards">
+      <li data-n="11">Name the competitor's model and break it: <b>"There's no streak here. Here's what replaces it."</b> → the goal ring.</li>
+      <li data-n="12">Goal-ring card showing the ring overshooting past 100% with "that's allowed" — the single most confusing visual in the app.</li>
+      <li data-n="13">The ring ratchets weekly, upward only, and is <em>not</em> a capacity ceiling.</li>
+      <li data-n="14">"Missing a day costs you nothing" — explicitly de-weaponizes the guilt loop other apps install.</li>
+      <li data-n="15">Say where the streak number went: days-studied lives in Stats, on purpose.</li>
+      <li data-n="16">Reframe: reviews aren't punishment for forgetting. They <em>are</em> the product.</li>
+      <li data-n="17">One item at all five SRS stages on one screen — Apprentice→Guru→Master becomes spatial, not vocabulary to memorize.</li>
+      <li data-n="18">Weakness biasing in one line: "Stuff you keep missing comes back sooner. The app watches your misses, not the clock."</li>
+      <li data-n="19">An offline card the user can test <em>right now</em>: "Turn on airplane mode and keep going."</li>
+      <li data-n="20">Negative-space onboarding: a card listing what this app deliberately doesn't have — no gems, no lives, no hearts — and why.</li>
+    </ul>
+  </div>
+
+  <div class="persona">
+    <div class="persona-id">
+      <span class="persona-glyph">鍛</span>
+      <p class="persona-name">The WaniKani Veteran</p>
+      <p class="persona-want">34. Knows SRS, radicals, Guru. Would be insulted by a beginner deck — but needs the diffs.</p>
+    </div>
+    <ul class="cards">
+      <li data-n="21">Import-aware deck: if a WaniKani/Anki/Bunpro import was detected, collapse to 3 cards led by "here's what's different."</li>
+      <li data-n="22">A diff card, not a tutorial: two columns — "WaniKani does X / this app does Y" — for radical naming, kun'yomi, review ordering.</li>
+      <li data-n="23">The choice veterans will hunt for: kun'yomi isn't drilled on the kanji card — it's learned through vocabulary.</li>
+      <li data-n="24">The unified interleaved queue: no batching by item type. Everything mixed.</li>
+      <li data-n="25">Fast-path toggle on card 1 — "I've done SRS before" — swaps the whole deck for the advanced one.</li>
+      <li data-n="26">Glossary strip: Apprentice, Guru, Master, radical, on'yomi, Guru+ coverage. The app's vocabulary in one place.</li>
+      <li data-n="27">Passages unlock at 90% Guru+ coverage — otherwise the reading content is invisible and feels <em>missing</em>.</li>
+      <li data-n="28">Plain-words card for the 0.7 FSRS + 0.3 weakness blend, with a "see the math" expander for min-maxers.</li>
+    </ul>
+  </div>
+
+  <div class="persona">
+    <div class="persona-id">
+      <span class="persona-glyph">遍</span>
+      <p class="persona-name">Heritage · Traveler · Grandparent · Commuter</p>
+      <p class="persona-want">Speaks but can't read · needs politeness before kanji · needs 200% text · has 12 offline minutes and one hand.</p>
+    </div>
+    <ul class="cards">
+      <li data-n="29">The deck asks exactly <b>one</b> branching question — "can you already speak some?" — and reshapes itself. One question, not a survey.</li>
+      <li data-n="30">Politeness: です/ます vs plain, framed as "you'll sound rude by accident — here's the one rule that prevents it."</li>
+      <li data-n="31">Counters: Japanese counts things differently depending on what they are. One visual, three counters, no memorization ask.</li>
+      <li data-n="32">Three scripts as three <em>jobs</em>, not three alphabets: hiragana is glue, katakana is foreign, kanji is meaning.</li>
+      <li data-n="33">Kana lookalikes: シ/ツ, ソ/ン, ね/れ/わ side by side with stroke direction animated — the highest-frequency beginner error.</li>
+      <li data-n="34">Pitch accent as <em>permission to ignore</em>: "you don't need this yet, but here's why 橋 and 箸 differ."</li>
+      <li data-n="35">Accessibility-first rule: readable at 200% text scale, tap zones as large as swipe, a Next button always present so swiping is never required.</li>
+      <li data-n="36">One-handed commuter mode: tap anywhere advances, swipe optional, no timed animation that punishes interruption.</li>
+      <li data-n="37">The deck remembers position — resume mid-deck days later, never restart at card 1.</li>
+      <li data-n="38">Every card carries a persistent "Start learning" escape. The deck is opt-out at any point and never blocks.</li>
+      <li data-n="39">Trickle, don't dump: 3 cards now, the rest fired the first time each concept appears — first wrong answer fires the SRS card, first Guru fires the stage card.</li>
+      <li data-n="40">For the serial quitter: "Week 3 is when people quit. Here's what to do when reviews pile up" — with the load-reducing button embedded in the card.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 02 ================= -->
+<section>
+  <div class="sec-head">
+    <span class="sec-no">TECHNIQUE 02</span>
+    <h2>Alien Anthropologist</h2>
+    <span class="count">36 ideas</span>
+  </div>
+  <p class="sec-lede">A baffled outsider observes the app, and then observes the language. It turns out both are
+  full of things that are perfectly sensible once explained — and completely insane until then.</p>
+
+  <div class="field">
+    <h3>Field notes A — observing the application</h3>
+
+    <div class="obs"><span>OBS-41</span><p>There is a tab for talking to a robot that needs a key from a company, inside an app that proudly needs <b>no account</b>. → card honestly explaining Talk is the one online feature, and why BYOK.</p></div>
+    <div class="obs"><span>OBS-42</span><p>It teaches <b>shapes that are not words</b> before it teaches words. Radicals need justification or beginners read them as busywork.</p></div>
+    <div class="obs"><span>OBS-43</span><p>The furigana <b>silently vanishes</b> and nobody warned the human. → card: auto-hide keys on vocabulary mastery, overridable in Settings.</p></div>
+    <div class="obs"><span>OBS-44</span><p>One kanji is graded by the <b>worst</b> of two answers. Feels unfair unless stated: "we grade the weaker half, because that's the half that'll fail you."</p></div>
+    <div class="obs"><span>OBS-45</span><p>A keyboard key is a navigation control. → card teaching the <b>Return-to-advance</b> rhythm — type, Return, Return — that makes reviews fast.</p></div>
+    <div class="obs"><span>OBS-46</span><p>Browse is full of things you're <b>not allowed to learn yet</b>. → reframe Browse as a map, not a menu.</p></div>
+    <div class="obs"><span>OBS-47</span><p>No accounts means losing the phone loses everything. → an honest backup/export card, shown <b>before</b> the user has anything to lose.</p></div>
+    <div class="obs"><span>OBS-48</span><p>Nothing tells the human <b>how long this takes</b>. → an honest horizon ("N5 in about X months") computed from their chosen intensity.</p></div>
+    <div class="obs"><span>OBS-49</span><p>Humans pick "intensity" <b>before</b> knowing what a lesson feels like. → re-offer the choice as a card <em>after</em> the first lesson, when it's informed.</p></div>
+    <div class="obs"><span>OBS-50</span><p>Free, no ads, no subscription reads as <b>suspicious</b>. → a "who made this and why" card, because trust is an onboarding problem.</p></div>
+    <div class="obs"><span>OBS-51</span><p>Five tabs, and a beginner needs one. → a card granting explicit <b>permission to ignore four tabs</b> for the first week.</p></div>
+    <div class="obs"><span>OBS-52</span><p>What happens if I answer everything wrong on purpose? → card: the app adapts <b>down</b>, it doesn't punish.</p></div>
+    <div class="obs"><span>OBS-53</span><p>What does a <b>140% day</b> mean on the ring? → a card that actually answers overshoot.</p></div>
+    <div class="obs"><span>OBS-54</span><p>Lessons and reviews are different acts feeding one ring. → separate them visually exactly once.</p></div>
+
+    <h3 class="b">Field notes B — observing the language</h3>
+    <div class="cols">
+      <div class="obs"><span>OBS-55</span><p>This species writes one language in <b>three scripts simultaneously</b> and mixes them mid-sentence. The single best framing for why Japanese looks scary.</p></div>
+      <div class="obs"><span>OBS-56</span><p>On'yomi vs kun'yomi told as a <b>history card</b> — borrowed from Chinese vs native — rather than a rule to memorize.</p></div>
+      <div class="obs"><span>OBS-57</span><p>Kanji aren't an alphabet. Closer to <b>emoji with a fixed vocabulary</b> — and they compose.</p></div>
+      <div class="obs"><span>OBS-58</span><p>There are <b>no spaces between words</b>. Show one real sentence with and without artificial spaces.</p></div>
+      <div class="obs"><span>OBS-59</span><p>The verb lands at the end — you can't know if it's a yes or a no until then.</p></div>
+      <div class="obs"><span>OBS-60</span><p>Particles as <b>sticky labels</b>: tiny words that label each noun's job, shown physically attached to a sentence.</p></div>
+      <div class="obs"><span>OBS-61</span><p>は is pronounced <b>wa</b> when it's a particle — the first thing that makes beginners think they're broken.</p></div>
+      <div class="obs"><span>OBS-62</span><p>Numbers change shape depending on what you count — 本 / 枚 / 匹.</p></div>
+      <div class="obs"><span>OBS-63</span><p>No plurals, no articles, subject often dropped. "Japanese leaves out what you consider mandatory."</p></div>
+      <div class="obs"><span>OBS-64</span><p>Politeness is <b>grammatical, not tonal</b> — you conjugate respect.</p></div>
+      <div class="obs"><span>OBS-65</span><p>Day-one confidence: katakana signals foreign, so you already know hundreds of words — コーヒー, テレビ.</p></div>
+      <div class="obs"><span>OBS-66</span><p>Instant win: <b>you already know some kanji</b> — 一二三, 山, 川 — shown as pictures.</p></div>
+      <div class="obs"><span>OBS-67</span><p>Stroke order matters for lookup and legibility, but you won't be graded on it here. Expectation set early.</p></div>
+      <div class="obs"><span>OBS-68</span><p>Pitch accent exists; this app doesn't drill it; here's why that's an acceptable beginner trade.</p></div>
+      <div class="obs"><span>OBS-69</span><p>Good news to counterbalance the scary: Japanese has <b>almost no irregular verbs</b>.</p></div>
+      <div class="obs"><span>OBS-70</span><p>Honest scope: reading and speaking are different skills and this app leans toward reading — so nobody feels cheated in month 3.</p></div>
+      <div class="obs"><span>OBS-71</span><p>The same kanji in a person's <b>name</b> is pronounced differently and even Japanese people ask. Normalize the confusion.</p></div>
+      <div class="obs"><span>OBS-72</span><p>Mountain reframe: you're not learning 2,000 characters — you're learning <b>~200 parts that combine</b>.</p></div>
+      <div class="obs"><span>OBS-73</span><p>Delight: loanwords are mangled beyond recognition (マクドナルド) — and it teaches katakana vowel lengthening.</p></div>
+      <div class="obs"><span>OBS-74</span><p>Onomatopoeia is a real grammatical category here. A delight card, explicitly optional.</p></div>
+      <div class="obs"><span>OBS-75</span><p>Every card carries a <b>real curriculum item</b> pulled live from <code>curriculum.db</code> — the "how it works" deck doubles as first exposure.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 ================= -->
+<section>
+  <div class="sec-head">
+    <span class="sec-no">TECHNIQUE 03</span>
+    <h2>One Feature Only</h2>
+    <span class="count">27 ideas</span>
+  </div>
+  <p class="sec-lede">You may ship exactly <em>one</em> card. Everything else is deleted. Pick it — then make it
+  unbelievably good. The constraint turned out to be the most productive part of the session: it didn't just
+  choose a card, it reorganised the whole idea.</p>
+
+  <div class="stage">
+    <div class="label">The card that survives</div>
+    <div class="the-card">
+      <div class="big"><span style="opacity:.45">日</span> + <span style="opacity:.45">月</span> → <span style="color:var(--shu)">明</span> → 明日</div>
+      <p class="cap">One animated composition. It teaches the whole app model, the dependency graph,
+      and one real word — with no sentences at all.</p>
+    </div>
+
+    <div class="rivals">
+      <div class="rival"><b>Rival 77</b>The first-wrong-answer card. Everything else is discoverable; being marked wrong is where people quit.</div>
+      <div class="rival"><b>Rival 78</b>A live mini-review — you actually answer one real item inside the card. Onboarding by doing, one item deep.</div>
+      <div class="rival"><b>Rival 79</b>A promise with a date: "On <em>[date]</em> you'll read this sentence," derived from their intensity pick. Screenshot-able.</div>
+    </div>
+
+    <ul class="polish">
+      <li>Build it from the <b>real review UI components</b>, not a mockup — transfer to the real screen is 1:1 and it can't drift.</li>
+      <li>The example item is the user's <b>actual next lesson item</b>, read live from <code>curriculum.db</code>.</li>
+      <li>Shareable as an image — the only share surface in the app that isn't a streak brag.</li>
+      <li>Replayable forever from Home overflow, showing a quiet "seen 3×" so it never feels like a wall.</li>
+      <li>Hand-verified at 200% font scale and in dark mode — polish one card can afford where twelve cannot.</li>
+      <li>Exactly one interaction: a single drag that builds the kanji out of its radicals.</li>
+    </ul>
+
+    <div class="cut">
+      <h4>What the constraint deleted — and what it saved</h4>
+      <p style="margin:0 0 10px">Keep-test: <em>does not knowing this cause a support question or a quit?</em></p>
+      <p style="margin:0"><s>pitch accent</s> · <s>stroke order</s> · <s>onomatopoeia</s> · <s>counters</s>
+      → all move to Browse item pages. &nbsp;Survivors: <span class="keep">three scripts</span> ·
+      <span class="keep">on'yomi vs kun'yomi</span> · <span class="keep">no spaces between words</span>.</p>
+    </div>
+  </div>
+
+  <ul class="cards" style="margin-top:34px">
+    <li data-n="86">If only one card survives, every other concept must become <b>just-in-time</b> — no concept gets a card until the user actually hits it.</li>
+    <li data-n="87">Build a small <b>"explain this" primitive</b>: an info affordance on the goal ring, the SRS stage chip, the furigana toggle, and the two kanji card types. Each opens one card. The deck becomes a library, not a sequence.</li>
+    <li data-n="88">The deck is really an <b>index</b>: Settings gets "How this works," listing every card. Onboarding shows three.</li>
+    <li data-n="89">Kill the deck entirely: a 45-second first lesson that <b>is</b> the tutorial — first items 日, 一, 人, with the surrounding copy teaching the app.</li>
+    <li data-n="97">Storage: a <code>card_seen</code> table in <code>user.db</code> keyed by card id — cards can be re-shown, skipped, or reordered later without migration pain.</li>
+    <li data-n="98">Dismissal is meaningful and final: swiping a card away marks it seen and the app never re-fires it unprompted. No nagging, one visible path.</li>
+    <li data-n="99">"Skip all, I know how apps work" on card 1 actually skips <em>and</em> marks every intro card seen — while leaving the Settings library intact.</li>
+    <li data-n="100">Length cap: the intro deck must be shorter than the app's own load-to-ready time. If it's longer, it's too long.</li>
+    <li data-n="101">The last card isn't a summary — it's the Start button in disguise, so finishing the deck and starting to learn are the same tap.</li>
+    <li data-n="102">No analytics exist (offline, no accounts), so the only feedback loop is asking playtesters which card they remember a week later. Design every card to be <b>memorable in one line</b>.</li>
+  </ul>
+</section>
+
+<!-- ================= synthesis ================= -->
+<section class="climax">
+  <div class="sec-head">
+    <span class="sec-no">SYNTHESIS</span>
+    <h2>What the 103 ideas actually said</h2>
+  </div>
+  <p class="sec-lede">Read together, the three techniques kept colliding on the same few points. The biggest one
+  isn't about Japanese at all.</p>
+
+  <div class="findings">
+    <div class="finding">
+      <h4><span>01</span>The subject isn't "teaching Japanese." It's explaining the app's deliberate differences.</h4>
+      <p>Almost every confusion the Alien found is a choice the app made on purpose and never announced:
+      two-card kanji, worst-of-both grading, furigana auto-hide, ring overshoot, Browse locks, no streak, no account.
+      The deck is a <em>changelog against the user's expectations</em>.</p>
+    </div>
+    <div class="finding">
+      <h4><span>02</span>It's not one deck. It's about five micro-decks, fired by trigger.</h4>
+      <p>Ordering by <em>when confusion strikes</em> rather than by topic breaks the deck apart on its own —
+      and only the first piece belongs in onboarding.</p>
+    </div>
+    <div class="finding">
+      <h4><span>03</span>Three ideas are one idea wearing three hats.</h4>
+      <p>The <code>card_seen</code> table, the "explain this" info affordance, and the Settings "How this works"
+      library are one card registry. The intro deck is just a filtered view of it.</p>
+    </div>
+    <div class="finding">
+      <h4><span>04</span>Teaching material and app content should be the same object.</h4>
+      <p>Cards render real curriculum items using the real review components; the 45-second first lesson
+      <em>is</em> the tutorial. Nothing is a mockup, so transfer is 1:1 and the deck can never drift from the app.</p>
+    </div>
+    <div class="finding">
+      <h4><span>05</span>Silent adaptive behaviour is the enemy.</h4>
+      <p>Furigana vanishing, weakness biasing, the adaptive ring, adapting down after wrong answers — each is
+      invisible help that reads as a bug. Every silent behaviour needs a card or a visible control.</p>
+    </div>
+    <div class="finding">
+      <h4><span>06</span>The personalization is already free.</h4>
+      <p><code>onboarding_path</code> (beginner / manual / import) and <code>starting_jlpt_level</code> are already
+      written during welcome. The deck can branch on them today: beginners get the language deck,
+      importers get the WaniKani diff deck, manual gets the glossary.</p>
+    </div>
+    <div class="finding">
+      <h4><span>07</span>Trust is an onboarding problem, not a marketing one.</h4>
+      <p>"Free, no ads, no account" reads as suspicious — and no account means losing the phone loses everything.
+      A who-made-this card and a backup card belong in the deck <em>before</em> the user has anything to lose.</p>
+    </div>
+  </div>
+
+  <h3 style="margin:64px 0 0;font-weight:400;font-size:24px">The confusion timeline</h3>
+  <p class="sec-lede" style="margin-bottom:26px">The ordering rule that falls out of everything above: cards fire
+  when the confusion actually arrives.</p>
+
+  <div class="timeline">
+    <div class="beat"><div class="when">Minute 1</div><div class="what">Script shock</div>
+      <div class="fix">Three scripts, three jobs · you already know some kanji · katakana means foreign</div></div>
+    <div class="beat"><div class="when">Minute 3</div><div class="what">First wrong answer</div>
+      <div class="fix">Being wrong is the mechanism, not a failure · the app adapts down, it doesn't punish</div></div>
+    <div class="beat"><div class="when">Day 2</div><div class="what">"Why is this item back again?"</div>
+      <div class="fix">Reviews are the product · weakness biasing watches your misses, not the clock</div></div>
+    <div class="beat"><div class="when">Week 1</div><div class="what">Browse is full of locks</div>
+      <div class="fix">Browse is a map, not a menu · passages unlock at 90% Guru+ coverage</div></div>
+    <div class="beat"><div class="when">Week 2</div><div class="what">The ring reads 140%</div>
+      <div class="fix">Overshoot is allowed · the ring ratchets weekly, upward only, and isn't a ceiling</div></div>
+    <div class="beat"><div class="when">Week 3</div><div class="what">The furigana disappeared</div>
+      <div class="fix">Auto-hide keys on vocabulary mastery · here's the override, in Settings</div></div>
+  </div>
+
+  <div class="chosen">
+    <div class="n">Chosen directions</div>
+    <h3>Where this goes next</h3>
+    <ol>
+      <li><b>Micro-decks fired by trigger</b>, not one intro dump — onboarding keeps only the minute-1 deck.</li>
+      <li><b>A single card registry in <code>user.db</code></b> powering the intro deck, the "explain this" affordances, and the Settings library.</li>
+      <li><b>Cards built from real curriculum items and real review components</b> — no mockups, no drift.</li>
+      <li><b>Three language-nuance cards only</b>: three scripts · on'yomi vs kun'yomi · no spaces between words.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  103 ideas · 114 log entries · Persona Journey / Alien Anthropologist / One Feature Only<br>
+  Source of record: <a href="./.memlog.md">.memlog.md</a> · japanese-learning · 27 July 2026
+</footer>
+
+</div>
+</body>
+</html>
