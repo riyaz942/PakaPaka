@@ -16915,6 +16915,13 @@
         }
       ],
       "furigana": "日[ひ]",
+      "meaning_mnemonic": "Picture the same window with a bar across it that you already know: the <kanji>sun</kanji> is climbing into the frame right now, filling the room with morning light. That one image was always doing double duty — window, bar, climbing sun — and standing alone it's already the whole word for sun and <kanji>day</kanji>, no second kanji needed to lean on.",
+      "reading_mnemonic": "This word is written with the very kanji you already read as <reading>ひ</reading>, so the sound carries straight over — no new reading to learn.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "朝、日が出る。",
@@ -16949,12 +16956,7 @@
           ],
           "furigana": "今日[きょう]はいい日[ひ]です。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "tsuki-v",
@@ -16974,6 +16976,13 @@
         }
       ],
       "furigana": "月[つき]",
+      "meaning_mnemonic": "Grandma Kane climbs her mossy shrine steps and looks straight up: there's the same sliver she already knows, the <kanji>moon</kanji> that fattens and fades to mark off a whole <kanji>month</kanji>. Tonight she isn't tracking the calendar at all, just staring at the sliver itself — and that sliver, on its own, is simply the word moon.",
+      "reading_mnemonic": "The reading is just the kanji's own <reading>つき</reading>, the same sound you already attached to that crescent, carried straight into the word.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "夜、月を見ます。",
@@ -17007,12 +17016,7 @@
           ],
           "furigana": "公[こう]園[えん]で月[つき]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hoshi",
@@ -17032,6 +17036,13 @@
         }
       ],
       "furigana": "星[ほし]",
+      "meaning_mnemonic": "Koichi strings cheap fairy lights along the konbini ceiling, but half of them burn out by midnight, leaving a scatter of tiny bright points against black tile. Late customers buying onigiri look up and see a private sky punched with pinholes of light, one fixed point at a time. That single point of light, sitting alone in the dark, is exactly the word: star.",
+      "reading_mnemonic": "Two hikers reach the mountain trail's summit vending machine at last light. One collapses against it, and her friend blurts <reading>Whoa, she's</reading> done — then both look up to find a single point of light waiting over the ridge: the <reading>ほし</reading> that guided the whole climb.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "窓から星を見ます。",
@@ -17069,12 +17080,7 @@
           ],
           "furigana": "明日[あした]の夜[よる]、星[ほし]を見[み]に行[い]きます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "umi",
@@ -17094,6 +17100,13 @@
         }
       ],
       "furigana": "海[うみ]",
+      "meaning_mnemonic": "A fisherman leaves one bucket of water by his back door to rinse his boots, but it rains so hard overnight that the bucket overflows and never stops — by morning his whole street sits underwater, waves lapping at the mailbox. One forgotten bucket, given enough time, became an entire sea.",
+      "reading_mnemonic": "Sei wades into the riverbank current on a school trip, certain it's shallow, until the ground vanishes and cold water rushes to her shoulders. She yelps <reading>ooh, me</reading>, right before the current sweeps her toward the open <reading>うみ</reading> the river was hiding all along.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "明日、海に行きます。",
@@ -17128,12 +17141,7 @@
           ],
           "furigana": "私[わたし]たちは海[うみ]で遊[あそ]びます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "yama-v",
@@ -17153,6 +17161,13 @@
         }
       ],
       "furigana": "山[やま]",
+      "meaning_mnemonic": "Halfway up the mountain trail, legs burning, you stop and count peaks the old way: three ridges, the middle one tallest. Except now it isn't ink on a page — it's rock under your boots, wind in your ears, and a vending machine glowing improbably at the summit. You've hiked straight into the shape that means <kanji>mountain</kanji>.",
+      "reading_mnemonic": "山 keeps the same reading you already learned for the character itself — <reading>やま</reading>, the same <reading>yah-mah</reading> sound.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は山に行きます。",
@@ -17187,12 +17202,7 @@
           ],
           "furigana": "山[やま]の写[しゃ]真[しん]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "kawa-v",
@@ -17212,6 +17222,13 @@
         }
       ],
       "furigana": "川[かわ]",
+      "meaning_mnemonic": "At the riverbank, you crouch to rinse your hands and watch three currents braid together exactly the way you learned to see them: three flowing lines side by side. Cup your palms and the water doesn't care about the drawing — it just runs, cold and fast, over your fingers. That current has a name: <kanji>river</kanji>.",
+      "reading_mnemonic": "川 keeps the same reading you already learned for the character itself — <reading>かわ</reading>, the same <reading>kah-wah</reading> sound.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私は川に行きます。",
@@ -17246,12 +17263,7 @@
           ],
           "furigana": "川[かわ]で魚[さかな]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "ki-tree-v",
@@ -17271,6 +17283,13 @@
         }
       ],
       "furigana": "木[き]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, one trunk splits the mossy steps clean in half, roots shoving down into the stone and branches spreading wide over the enormous bell. Cats scatter into its shade every afternoon. There's no need to explain what's growing there — trunk, roots, branches, unmistakably a <kanji>tree</kanji>.",
+      "reading_mnemonic": "木 keeps the same reading you already learned for the character itself — <reading>き</reading>, the same <reading>key</reading> sound, home to Kiki the tree spirit.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "公園に高い木があります。",
@@ -17305,12 +17324,7 @@
           ],
           "furigana": "庭[にわ]の木[き]を見[み]ます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "hana-v",
@@ -17330,6 +17344,13 @@
         }
       ],
       "furigana": "花[はな]",
+      "meaning_mnemonic": "Under the fluorescent glare of Koichi's konbini, someone has wedged a single potted plant by the onigiri shelf: one stem leaning hard to the side, its bloom spilling clean over the pot's rim. Customers keep stopping mid-reach for rice balls just to stare at it. Stem below, blossom bursting above — a <kanji>flower</kanji> where nobody expected one.",
+      "reading_mnemonic": "花 keeps the same reading you already learned for the character itself — <reading>はな</reading>, the same <reading>hah-nah</reading> sound.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "公園で花を見ます。",
@@ -17364,12 +17385,7 @@
           ],
           "furigana": "この花[はな]は高[たか]いです。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "inu",
@@ -17389,6 +17405,13 @@
         }
       ],
       "furigana": "犬[いぬ]",
+      "meaning_mnemonic": "Every evening a dog parks himself outside Koichi's konbini, nose pressed to the glass, staring at the onigiri shelf like it personally wronged him. He never begs, never barks — just stands there radiating quiet judgment until someone caves and brings one out. That silent, immovable stare is what dog means here.",
+      "reading_mnemonic": "A new part-timer trips over the dog camped by Koichi's door and asks if he's some kind of mascot. Koichi shakes his head: he's just <reading>いぬ</reading>, plain and simple, and the easiest way to hold onto that is to hear it as <reading>in new</reading> — like he wandered in new and never left.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "私の犬は公園で遊びます。",
@@ -17426,12 +17449,7 @@
           ],
           "furigana": "兄[あに]の犬[いぬ]は肉[にく]を食[た]べます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "neko",
@@ -17451,6 +17469,13 @@
         }
       ],
       "furigana": "猫[ねこ]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, cats already outnumber worshippers, but one has decided the offering bell is a toy. She swats the rope, ducks under the railing, and curls up exactly where the incense smoke is warmest, ignoring every polite attempt to shoo her off. That smug, entitled little squatter is what cat means.",
+      "reading_mnemonic": "A visitor watches the shrine cat arch and stretch across the warm stone and winces, worried for her <reading>neck, oh</reading> — just as the cat flops flatter, completely unbothered. That half-panicked warning is the shape of <reading>ねこ</reading>, and the cat never once looks up to acknowledge it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "猫が魚を食べます。",
@@ -17486,12 +17511,7 @@
           ],
           "furigana": "公[こう]園[えん]で猫[ねこ]と遊[あそ]びます。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "tori",
@@ -17511,6 +17531,13 @@
         }
       ],
       "furigana": "鳥[とり]",
+      "meaning_mnemonic": "Halfway up the mountain trail, past the vending machine that shouldn't be there, something small and feathered dive-bombs a hiker's rice ball straight out of his hand and is gone before he can react. He never even sees it land — just a blur, a gap in the air, and an empty wrapper. That blur is what bird means.",
+      "reading_mnemonic": "The hiker shouts that the thing just <reading>tore</reading> his rice ball clean out of his hand, and the guide behind him laughs — everyone's shout sounds like that the first time it happens. That's <reading>とり</reading>: the sound of something snatching your lunch and vanishing before you can name it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "公園で鳥を見ました。",
@@ -17546,12 +17573,7 @@
           ],
           "furigana": "妹[いもうと]は鳥[とり]の声[こえ]を聞[き]きました。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "doubutsu",
@@ -17571,6 +17593,13 @@
         }
       ],
       "furigana": "動[どう]物[ぶつ]",
+      "meaning_mnemonic": "Sei's school announces a surprise visit from the local shelter, and by lunchtime every hallway smells like fur and nervous energy. Rabbits loose in the gym, a goat wandering near the vending machines, someone's parakeet shrieking over the PA by accident. Whatever has fur, feathers, or four legs and absolutely does not belong indoors — that's animal today.",
+      "reading_mnemonic": "A teacher at Sei's school trips over the stray goat's hoof in the hallway and yelps <reading>though, boots</reading> as she catches herself against the wall. The goat stays entirely unbothered. Everyone agrees that yelp is the closest an English mouth gets to <reading>どうぶつ</reading>, and after today nobody forgets it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
       "example_sentences": [
         {
           "japanese": "公園で動物を見ます。",
@@ -17606,12 +17635,7 @@
           ],
           "furigana": "妹[いもうと]は動[どう]物[ぶつ]の本[ほん]を買[か]います。"
         }
-      ],
-      "_meta": {
-        "generator_model": "cursor-grok-4.5-high",
-        "prompt_version": "1",
-        "review_status": "draft"
-      }
+      ]
     },
     {
       "slug": "haru",
