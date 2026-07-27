@@ -12,8 +12,8 @@ analysis — each has repro steps so they can be verified on-device before fixin
 | [12.3](#123--prompt-disappears-after-a-correct-answer) | Prompt disappears after a correct answer | P1 | Reported; confirmed in code |
 | [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | Reported; confirmed in code |
 | [12.5](#125--abrupt-feedback--add-a-transition) | Abrupt feedback — add a transition | P2 | Reported |
-| [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | Reported; needs a scope pick |
-| [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | Reported; repeat of plan 05 §5.1 |
+| [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | Reported; scope decided (option 1) |
+| [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | Reported; repeat of plan 05 §5.1 — full removal decided |
 | [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | Found in analysis — verify |
 | [12.9](#129--found-priority-hint-cleared-on-an-empty-build) | Priority hint cleared on an empty build | P3 | Found in analysis (folds into 12.2) |
 | [12.10](#1210--found-at-risk-list-can-include-items-with-no-srs-row) | At-risk list can include items with no SRS row | P3 | Found in analysis — verify |
@@ -220,9 +220,10 @@ weekday, plus a wall-day note only when a spike hits ≥30 due
 (`FORECAST_WALL_MIN_DUE`). Data comes from due-date strings only
 (`useReviewForecast.ts` → `buildReviewForecast.ts`).
 
-**Needs a pick — options, cheapest first:**
+**Decision (2026-07-27): option 1.** Week total + today split, per the
+recommendation below. Options 2 and 3 stay listed as future candidates only.
 
-1. **Week total + today split** *(recommended)*: a summary line — e.g.
+1. **Week total + today split** *(chosen)*: a summary line — e.g.
    "42 this week · 5 due now, 3 more later today". Today's cell currently
    mixes overdue-now with due-tonight; splitting it answers "what happens if I
    review now". Data already available (due timestamps).
@@ -231,11 +232,12 @@ weekday, plus a wall-day note only when a spike hits ≥30 due
 3. **Hour-level today view**: "next batch at 14:00". Cheap (timestamps exist)
    but only matters for same-day cadence.
 
-**Acceptance.** Depends on the pick; option 1 = the summary line renders and
-today's "due now" number always matches the Home Review card count.
+**Acceptance.** The summary line renders ("N this week · X due now, Y more
+later today") and today's "due now" number always matches the Home Review card
+count.
 
 **Files.** `mobile/src/components/engagement/ReviewForecast.tsx`,
-`mobile/src/core/engagement/reviewForecast.ts` (+ hook/query if option 2).
+`mobile/src/core/engagement/reviewForecast.ts`.
 
 ---
 
@@ -261,13 +263,12 @@ issue — remove it fully this time.
   `mobile/src/utils/timeFormat.ts:21-42` and the `estimatedMinutes` computation
   in `mobile/src/app/review/summary.tsx:27-28`.
 
-**Fix.** Delete the comparison block and caption from `SessionSummaryCard`
-(keep "X min studied", date, domain chips, goal line). Remove the estimate line
-from `PostSessionShareCard`. Recommend removing it from `buildShareMessage`
-too and deleting the now-dead `estimateMultiAppMinutes` / `hasSavings` +
-`TIME_COMPRESSION_*` constants — flagging in case the share-message copy was
-wanted; keeping a claim in shared text that the app no longer shows would be
-odd. Update the four tests currently asserting the string.
+**Fix (decision 2026-07-27: full removal, share message included).** Delete
+the comparison block and caption from `SessionSummaryCard` (keep "X min
+studied", date, domain chips, goal line). Remove the estimate line from
+`PostSessionShareCard` **and** from `buildShareMessage`, then delete the
+now-dead `estimateMultiAppMinutes` / `hasSavings` + `TIME_COMPRESSION_*`
+constants. Update the four tests currently asserting the string.
 
 **Acceptance.** No "separate apps" phrasing anywhere in the summary screen or
 the share message; `grep -r "separate apps" mobile/src` returns only removed
@@ -329,5 +330,5 @@ SRS row. Cheap hardening: require an SRS state when building at-risk candidates
 3. **12.3 + 12.4 + 12.5** — one cluster, all inside `ReviewCard`/`IncorrectReveal`;
    do together so the animation lands on the final layout.
 4. **12.7** — mechanical removal; independent.
-5. **12.6** — after the scope pick.
+5. **12.6** — week total + today split (option 1); independent.
 6. **12.8 / 12.10** — verify on-device first; fix only if confirmed.
