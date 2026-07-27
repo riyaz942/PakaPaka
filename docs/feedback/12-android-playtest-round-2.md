@@ -13,7 +13,7 @@ analysis — each has repro steps so they can be verified on-device before fixin
 | [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | **Done** |
 | [12.5](#125--abrupt-feedback--add-a-transition) | Abrupt feedback — add a transition | P2 | **Done** |
 | [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | Reported; scope decided (option 1) |
-| [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | Reported; repeat of plan 05 §5.1 — full removal decided |
+| [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | **Done** — post-session sharing removed too |
 | [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | Found in analysis — verify |
 | [12.9](#129--found-priority-hint-cleared-on-an-empty-build) | Priority hint cleared on an empty build | P3 | Found in analysis (folds into 12.2) |
 | [12.10](#1210--found-at-risk-list-can-include-items-with-no-srs-row) | At-risk list can include items with no SRS row | P3 | Found in analysis — verify |
@@ -274,9 +274,21 @@ constants. Update the four tests currently asserting the string.
 the share message; `grep -r "separate apps" mobile/src` returns only removed
 tests' updates (i.e. nothing).
 
-**Files.** `SessionSummaryCard.tsx`, `PostSessionShareCard.tsx`,
-`review/summary.tsx`, `mobile/src/utils/timeFormat.ts`,
-`mobile/src/config/constants.ts`, 2 test files.
+**Follow-on decision (2026-07-27): post-session sharing removed entirely.** On
+review of the fix, sharing session stats out to other apps was deemed unwanted
+for now, so the whole feature went with it — `PostSessionShareCard.tsx` (+ test)
+deleted, `buildShareMessage` and the RN `Share.share` call removed, and the
+`Share` button / `onShare` prop dropped from `SessionSummaryCard`. The summary
+screen now shows only the share-free `SessionSummaryCard` (date, domain chips,
+"X min studied", goal line), first-try accuracy, and shadow-mode comparison.
+This also resolves the "X min studied" duplication the share card caused.
+Supersedes UX-DR10 / UX-DR12's share affordance — treat re-adding sharing as a
+new product decision, not a regression.
+
+**Files.** `SessionSummaryCard.tsx`, `PostSessionShareCard.tsx` *(deleted)*,
+`components/engagement/index.ts`, `review/summary.tsx`,
+`mobile/src/utils/timeFormat.ts`, `mobile/src/config/constants.ts`, 3 test files
+(1 deleted).
 
 ---
 

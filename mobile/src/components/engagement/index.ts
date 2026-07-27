@@ -6,7 +6,6 @@ export { GoalReductionPrompt, GoalRisePrompt } from './GoalRisePrompt';
 export { ImportNudgeCard } from './ImportNudgeCard';
 export { LevelProgressBar } from './LevelProgressBar';
 export { WelcomeBackCard } from './WelcomeBackCard';
-export { PostSessionShareCard, buildShareMessage } from './PostSessionShareCard';
 export { ShadowModeComparison } from './ShadowModeComparison';
 export { ShadowModeSwitchPrompt } from './ShadowModeSwitchPrompt';
 export { ReadingReadiness } from './ReadingReadiness';

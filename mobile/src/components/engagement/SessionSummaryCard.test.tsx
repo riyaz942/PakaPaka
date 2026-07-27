@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 
 import { goalStateLine, SessionSummaryCard } from './SessionSummaryCard';
 
@@ -17,24 +17,18 @@ describe('SessionSummaryCard', () => {
     expect(screen.getByText('Vocab 5')).toBeTruthy();
   });
 
-  it('shows minutes studied without a multi-app claim when no estimate is passed', () => {
+  it('shows minutes studied and never a multi-app comparison', () => {
     render(<SessionSummaryCard {...BASE_PROPS} />);
 
     expect(screen.getByText('18 min studied')).toBeTruthy();
-    expect(screen.queryByTestId('time-compression-block')).toBeNull();
+    expect(screen.queryByText(/separate apps/)).toBeNull();
     expect(screen.queryByTestId('session-goal-state')).toBeNull();
   });
 
-  it('renders the time compression centerpiece and goal state when provided', () => {
-    render(
-      <SessionSummaryCard {...BASE_PROPS} estimatedMinutes={42} goalPercent={130} />,
-    );
+  it('renders the goal state when a goal percent is provided', () => {
+    render(<SessionSummaryCard {...BASE_PROPS} goalPercent={130} />);
 
-    expect(screen.getByText('18 min here — ~42 min in separate apps')).toBeTruthy();
-    expect(
-      screen.getByText('Estimated from separate single-purpose apps — deliberately conservative.'),
-    ).toBeTruthy();
-    expect(screen.queryByText('18 min studied')).toBeNull();
+    expect(screen.getByText('18 min studied')).toBeTruthy();
     expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
       'Goal met — +30% overshoot',
     );
@@ -45,12 +39,9 @@ describe('SessionSummaryCard', () => {
     expect(screen.queryByText(/Radical/)).toBeNull();
   });
 
-  it('fires onShare when Share button is pressed', () => {
-    const onShare = jest.fn();
-    render(<SessionSummaryCard {...BASE_PROPS} onShare={onShare} />);
-
-    fireEvent.press(screen.getByLabelText('Share session summary'));
-    expect(onShare).toHaveBeenCalledTimes(1);
+  it('offers no share action', () => {
+    render(<SessionSummaryCard {...BASE_PROPS} />);
+    expect(screen.queryByLabelText('Share session summary')).toBeNull();
   });
 });
 

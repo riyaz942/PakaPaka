@@ -51,12 +51,18 @@ describe('ReviewSummaryScreen', () => {
     expect(screen.queryByText(/day streak/)).toBeNull();
   });
 
-  it('shows the multi-app time compression as centerpiece (FR33b)', () => {
-    // 8 kanji + 5 vocab + 2 grammar → 570s ≈ 10 min + 2×5 overhead = 20 min vs 12 actual.
+  it('shows minutes studied with no multi-app comparison (plan 12.7)', () => {
     render(<ReviewSummaryScreen />);
 
-    expect(screen.getByTestId('time-compression-block')).toBeTruthy();
-    expect(screen.getByText('12 min here — ~20 min in separate apps')).toBeTruthy();
+    expect(screen.getByText('12 min studied')).toBeTruthy();
+    expect(screen.queryByText(/separate apps/)).toBeNull();
+  });
+
+  it('offers no share action or share card', () => {
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.queryByLabelText('Share session summary')).toBeNull();
+    expect(screen.queryByTestId('post-session-share-card')).toBeNull();
   });
 
   it('shows overshoot goal state, never a streak row', () => {

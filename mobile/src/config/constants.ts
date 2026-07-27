@@ -196,26 +196,6 @@ export const WELCOME_BACK_MIN_DUE = 40;
 /** Size of the eased "20 of your N due" welcome-back review slice. */
 export const WELCOME_BACK_SLICE = 20;
 
-/**
- * Per-item minutes a learner would plausibly spend in separate single-purpose
- * apps (FR33b) — deliberately conservative estimates.
- */
-export const TIME_COMPRESSION_PER_ITEM_SECONDS: Record<
-  'radical' | 'kanji' | 'vocabulary' | 'grammar',
-  number
-> = {
-  radical: 15,
-  kanji: 40,
-  vocabulary: 30,
-  grammar: 50,
-};
-
-/** App-switching overhead added per extra single-purpose app (FR33b). */
-export const TIME_COMPRESSION_SESSION_OVERHEAD_MINUTES = 5;
-
-/** Overhead only applies when the session spans at least this many domains. */
-export const TIME_COMPRESSION_MIN_DOMAINS_FOR_OVERHEAD = 2;
-
 /** Days of active shadow mode before the non-blocking "ready to switch?" prompt appears. */
 export const SHADOW_MODE_SWITCH_PROMPT_DAYS = 14;
 
