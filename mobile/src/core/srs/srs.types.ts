@@ -106,6 +106,12 @@ export type QueueBuildOptions = {
   weaknessScores?: Map<string, number>; // reserved for Epic 6; defaults to 0
   /** When true, apply weakness bias to within-bucket sort order. Default: true when weaknessScores is provided. */
   weaknessBiasEnabled?: boolean;
+  /**
+   * Item IDs exempt from the due-date filter (Home refresher handoff): a
+   * not-yet-due weak item may enter the queue. Burned / 'known' / lock filters
+   * still apply.
+   */
+  dueExemptItemIds?: Set<string>;
 };
 
 /**

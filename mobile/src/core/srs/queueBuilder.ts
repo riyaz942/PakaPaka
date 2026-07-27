@@ -76,11 +76,12 @@ export function buildReviewQueue(
   const nowIso = now.toISOString();
 
   // Filter: due, not burned, unlocked, not known
+  const dueExempt = options.dueExemptItemIds;
   const eligible = items.filter((item) => {
     if (item.srsState.isBurned) return false;
     if (item.studyStatus === 'known') return false;
     if (!isItemUnlocked(item.parents, item.parentStatuses)) return false;
-    if (item.srsState.dueDate > nowIso) return false;
+    if (item.srsState.dueDate > nowIso && !dueExempt?.has(item.srsState.itemId)) return false;
     return true;
   });
 

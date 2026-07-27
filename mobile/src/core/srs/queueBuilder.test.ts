@@ -65,6 +65,52 @@ describe('buildReviewQueue', () => {
     expect(result).toHaveLength(0);
   });
 
+  it('includes a not-yet-due item when it is due-exempt (Home refresher)', () => {
+    const items = [makeQueueItem('1', 'kanji', FUTURE)];
+    const result = buildReviewQueue(items, {
+      now: NOW,
+      dueExemptItemIds: new Set(['1']),
+    });
+    expect(result.map((card) => card.itemId)).toEqual(['1']);
+  });
+
+  it('still applies burned / known / lock filters to due-exempt items', () => {
+    const exempt = { now: NOW, dueExemptItemIds: new Set(['1']) };
+    expect(
+      buildReviewQueue(
+        [
+          makeQueueItem('1', 'kanji', FUTURE, {
+            srsState: makeSrsState('1', FUTURE, { isBurned: true }),
+          }),
+        ],
+        exempt,
+      ),
+    ).toHaveLength(0);
+    expect(
+      buildReviewQueue([makeQueueItem('1', 'kanji', FUTURE, { studyStatus: 'known' })], exempt),
+    ).toHaveLength(0);
+    expect(
+      buildReviewQueue(
+        [
+          makeQueueItem('1', 'kanji', FUTURE, {
+            parents: [{ id: '99', primaryForm: 'radical', itemType: 'radical' }],
+            parentStatuses: new Map([['99', 'not_started']]),
+          }),
+        ],
+        exempt,
+      ),
+    ).toHaveLength(0);
+  });
+
+  it('leaves non-exempt not-yet-due items out of the queue', () => {
+    const items = [makeQueueItem('1', 'kanji', FUTURE), makeQueueItem('2', 'kanji', FUTURE)];
+    const result = buildReviewQueue(items, {
+      now: NOW,
+      dueExemptItemIds: new Set(['1']),
+    });
+    expect(result.map((card) => card.itemId)).toEqual(['1']);
+  });
+
   it('excludes burned items', () => {
     const items = [
       makeQueueItem('1', 'kanji', PAST, {

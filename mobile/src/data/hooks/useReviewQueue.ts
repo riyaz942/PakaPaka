@@ -196,7 +196,6 @@ export function useReviewQueue(): UseReviewQueueResult {
         const elapsed = Date.now() - t0;
         setQueueBuildMs(elapsed);
         setQueue([]);
-        if (priority) clearReviewPriority();
         setIsLoading(false);
         return;
       }
@@ -360,6 +359,10 @@ export function useReviewQueue(): UseReviewQueueResult {
         now,
         weaknessScores: weaknessScoreMap,
         weaknessBiasEnabled,
+        // Preferred items were admitted above precisely because they are weak,
+        // not because they are due — exempt them from the builder's due check
+        // so a refresher isn't filtered back down to empty.
+        dueExemptItemIds: new Set(priority?.itemIds ?? []),
       });
       const elapsed = Date.now() - t0;
 
