@@ -52,8 +52,10 @@ export function IncorrectReveal({
   // Near-miss teaching reveal (Plan 10): acknowledge intent, show the chunk,
   // and show the completed sentence so the blank's scope is unmistakable.
   const isIncomplete = !!incompleteAnswer && item.itemType === 'grammar';
+  const clozeSentence =
+    item.itemType === 'grammar' ? (item.clozePromptFurigana ?? item.clozePrompt) : null;
   const completedSentence = isIncomplete
-    ? resolveCompletedSentence(item.clozePromptFurigana ?? item.clozePrompt, displayAnswer)
+    ? resolveCompletedSentence(clozeSentence, displayAnswer)
     : null;
 
   const canOfferSynonym =
@@ -83,6 +85,16 @@ export function IncorrectReveal({
         ) : (
           <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
         )}
+        {/* Plan 12.4: keep the sentence the blank came from on screen, so the
+            revealed chunk has context. */}
+        {!isIncomplete && clozeSentence ? (
+          <FuriganaText
+            text={clozeSentence}
+            mode={furiganaMode}
+            knownKanji={knownKanji}
+            className="text-body-lg text-secondary text-center"
+          />
+        ) : null}
         <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[item.itemType].text}`}>
           {isIncomplete ? displayAnswer : item.primaryForm}
         </Text>

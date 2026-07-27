@@ -9,9 +9,9 @@ analysis — each has repro steps so they can be verified on-device before fixin
 |---|------|----------|--------|
 | [12.1](#121--status-bar-unreadable-white-on-white) | Status bar unreadable (white on white) | **P0** | Reported; root cause has 2 candidates |
 | [12.2](#122--do-a-small-revision-opens-no-reviews-due) | "Do a small revision" opens "No Reviews Due" | **P0** | Reported; **root cause confirmed in code** |
-| [12.3](#123--prompt-disappears-after-a-correct-answer) | Prompt disappears after a correct answer | P1 | Reported; confirmed in code |
-| [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | Reported; confirmed in code |
-| [12.5](#125--abrupt-feedback--add-a-transition) | Abrupt feedback — add a transition | P2 | Reported |
+| [12.3](#123--prompt-disappears-after-a-correct-answer) | Prompt disappears after a correct answer | P1 | **Done** |
+| [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | **Done** |
+| [12.5](#125--abrupt-feedback--add-a-transition) | Abrupt feedback — add a transition | P2 | **Done** |
 | [12.6](#126--review-forecast-needs-more-detail) | Review forecast needs more detail | P2 | Reported; scope decided (option 1) |
 | [12.7](#127--remove-the-min-in-separate-apps-message) | Remove the "min in separate apps" message | P2 | Reported; repeat of plan 05 §5.1 — full removal decided |
 | [12.8](#128--found-home-review-count-can-overstate-the-queue) | Home review count can overstate the queue | P2 | Found in analysis — verify |

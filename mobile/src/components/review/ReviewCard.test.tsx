@@ -12,6 +12,10 @@ jest.mock('@/data/hooks/useFuriganaPreference', () => ({
   useFuriganaPreference: () => ({ mode: 'shown', knownKanji: new Set<string>() }),
 }));
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: false }),
+}));
+
 function makeItem(overrides: Partial<ReviewItem> = {}): ReviewItem {
   return {
     itemId: 'test-1',
@@ -102,11 +106,10 @@ describe('ReviewCard — prompting state', () => {
     expect(screen.queryByText('たべる')).toBeNull();
   });
 
-  it('renders null for evaluating state (placeholder for 5.3)', () => {
-    const { toJSON } = render(
-      <ReviewCard item={makeItem()} state="evaluating" />,
-    );
-    expect(toJSON()).toBeNull();
+  it('keeps the prompt on screen while evaluating (no blank frame — Plan 12.5)', () => {
+    render(<ReviewCard item={makeItem()} state="evaluating" />);
+    expect(screen.getByText('食')).toBeTruthy();
+    expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
   });
 
   it('shows primary form for radical', () => {
@@ -389,6 +392,57 @@ describe('ReviewCard — result states', () => {
     rerender(<ReviewCard item={makeItem()} state="typo" />);
     result = screen.getByLabelText('Close, try again');
     expect(result.props.accessible).toBe(true);
+  });
+});
+
+describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)', () => {
+  const cloze = makeItem({
+    itemType: 'grammar',
+    promptType: 'production',
+    primaryForm: 'は',
+    displayMeaning: 'topic marker',
+    clozePrompt: '私＿＿＿学生です。',
+    answerKey: {
+      acceptedMeanings: ['topic marker'],
+      acceptedReadings: [],
+      grammar: { structure: 'Noun + は + comment', conjugationRules: {}, acceptedForms: ['は'] },
+    },
+  });
+
+  it('keeps the prompt and mode label after a correct answer', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="correct" />);
+    expect(screen.getByText('食')).toBeTruthy();
+    expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
+    expect(screen.getByText('✓ Correct')).toBeTruthy();
+  });
+
+  it('fills the blank in the cloze sentence on a correct grammar answer', () => {
+    render(<ReviewCard item={cloze} state="correct" />);
+    expect(screen.getByText('私は学生です。')).toBeTruthy();
+    expect(screen.queryByText('私＿＿＿学生です。')).toBeNull();
+  });
+
+  it('keeps the prompt, mode label, and stage indicator on a typo nudge', () => {
+    render(<ReviewCard item={makeItem()} state="typo" />);
+    expect(screen.getByText('~ Close! Try again.')).toBeTruthy();
+    expect(screen.getByText('食')).toBeTruthy();
+    expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
+    expect(screen.getByLabelText('SRS stage: Apprentice')).toBeTruthy();
+  });
+
+  it('keeps the mode label and stage indicator on a wrong-script nudge', () => {
+    render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="wrong_script" />);
+    expect(screen.getByText("We're looking for the meaning in English.")).toBeTruthy();
+    expect(screen.getByText('食')).toBeTruthy();
+    expect(screen.getByText('Meaning')).toBeTruthy();
+    expect(screen.getByLabelText('SRS stage: Apprentice')).toBeTruthy();
+  });
+
+  it('shows the cloze sentence on a terminal incorrect grammar reveal', () => {
+    render(<ReviewCard item={cloze} state="incorrect" displayAnswer="は" />);
+    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
+    expect(screen.getByText('Correct answer: は')).toBeTruthy();
   });
 });
 

@@ -8,6 +8,8 @@ type FadeSlideInProps = {
   children: React.ReactNode;
   /** Stagger index — each step delays entry by 70ms. */
   index?: number;
+  /** Entrance duration in ms. */
+  duration?: number;
   className?: string;
 };
 
@@ -15,7 +17,7 @@ type FadeSlideInProps = {
  * Entrance wrapper: content fades in and slides up on mount, staggered by
  * `index`. Renders a plain View when reduced motion is active.
  */
-export function FadeSlideIn({ children, index = 0, className }: FadeSlideInProps) {
+export function FadeSlideIn({ children, index = 0, duration = 320, className }: FadeSlideInProps) {
   const { reducedMotion } = useReducedMotion();
 
   if (reducedMotion) {
@@ -25,7 +27,7 @@ export function FadeSlideIn({ children, index = 0, className }: FadeSlideInProps
   return (
     <Animated.View
       className={className}
-      entering={FadeInDown.duration(320).delay(index * 70)}>
+      entering={FadeInDown.duration(duration).delay(index * 70)}>
       {children}
     </Animated.View>
   );

@@ -110,6 +110,10 @@ jest.mock('@/data/hooks/useFuriganaPreference', () => ({
   }),
 }));
 
+jest.mock('@/data/hooks/useReducedMotion', () => ({
+  useReducedMotion: () => ({ reducedMotion: false }),
+}));
+
 jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
   useReviewAutoAdvance: () => ({
     autoAdvanceEnabled: mockAutoAdvanceEnabled,

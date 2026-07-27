@@ -1,11 +1,13 @@
 import { type Ref } from 'react';
 import { Text, View } from 'react-native';
 
+import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
+import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -91,6 +93,12 @@ const WRONG_SCRIPT_NUDGE: Record<PromptType, string> = {
 // nudge toward the prompted type without revealing the on'yomi.
 const WRONG_READING_TYPE_NUDGE = "We're looking for the on'yomi reading.";
 
+const TYPO_NUDGE = '~ Close! Try again.';
+
+// Short enough that the feedback still lands inside NFR1's <100ms perception
+// budget — decoration on top of information already on screen, never a gate.
+const FEEDBACK_ANIMATION_MS = 200;
+
 export function ReviewCard({
   item,
   state,
@@ -113,7 +121,6 @@ export function ReviewCard({
   // never the bare form (for particles the form IS the answer). Label the mode
   // "Grammar", not "Production", to stop implying kanji-style drills.
   const isGrammarCloze = itemType === 'grammar' && !!item.clozePrompt;
-  const promptText = isGrammarCloze ? item.clozePrompt! : primaryForm;
   const promptDisplay = isGrammarCloze
     ? (item.clozePromptFurigana ?? item.clozePrompt!)
     : primaryForm;
@@ -126,42 +133,20 @@ export function ReviewCard({
         : MODE_LABEL[promptType];
 
   const grammarPromptClass = `text-title-lg text-center ${CONTENT_TYPE_ACCENT[itemType].text}`;
-  const grammarPrompt = isGrammarCloze ? (
-    <FuriganaText
-      text={promptDisplay}
-      mode={furiganaMode}
-      knownKanji={knownKanji}
-      className={grammarPromptClass}
-    />
-  ) : (
-    <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
-      {promptText}
-    </Text>
-  );
-
-  if (state === 'evaluating') {
-    return null;
-  }
-
-  if (state === 'correct') {
-    const { label, value } = resolveCorrectReveal(item);
-    return (
-      <View className="gap-space-md w-full items-center">
-        <View
-          ref={resultRef}
-          accessible
-          accessibilityLabel={`Correct, ${label.toLowerCase()}: ${value}`}
-          className="gap-space-md items-center">
-          <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
-        </View>
-        {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
-        {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
-            shown expanded, never gated behind an icon. */}
-        <AnswerReveal item={item} detail={revealDetail ?? null} collision={answerCollision} />
-        <ReinforcementHighlight link={reinforcementLink} />
-      </View>
+  const renderPrompt = (display: string) =>
+    isGrammarCloze ? (
+      <FuriganaText
+        text={display}
+        mode={furiganaMode}
+        knownKanji={knownKanji}
+        className={grammarPromptClass}
+      />
+    ) : (
+      <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+        {display}
+      </Text>
     );
-  }
+  const grammarPrompt = renderPrompt(promptDisplay);
 
   if (state === 'incorrect') {
     return (
@@ -180,33 +165,26 @@ export function ReviewCard({
     );
   }
 
-  if (state === 'wrong_script' || state === 'wrong_reading_type') {
-    // One-line nudge only: the user hasn't been told the answer, so don't reveal detail.
-    const nudge =
-      state === 'wrong_reading_type' ? WRONG_READING_TYPE_NUDGE : WRONG_SCRIPT_NUDGE[promptType];
-    return (
-      <View
-        ref={resultRef}
-        accessible
-        accessibilityLabel={nudge}
-        className="gap-space-md items-center">
-        {grammarPrompt}
-        <Text className="text-body-lg text-feedback-warning text-center">{nudge}</Text>
-      </View>
-    );
-  }
+  // Plan 12.3/12.4: every non-terminal state and the correct reveal keep the
+  // original question on screen — feedback is appended beneath the prompt,
+  // never swapped in for it.
+  const nudge =
+    state === 'typo'
+      ? TYPO_NUDGE
+      : state === 'wrong_reading_type'
+        ? WRONG_READING_TYPE_NUDGE
+        : state === 'wrong_script'
+          ? WRONG_SCRIPT_NUDGE[promptType]
+          : null;
 
-  if (state === 'typo') {
-    return (
-      <View
-        ref={resultRef}
-        accessible
-        accessibilityLabel="Close, try again"
-        className="gap-space-md items-center">
-        <Text className="text-title-lg text-feedback-warning">~ Close! Try again.</Text>
-      </View>
-    );
-  }
+  const correctReveal = state === 'correct' ? resolveCorrectReveal(item) : null;
+  // A correct grammar cloze reads best with the blank filled in.
+  const promptNode =
+    correctReveal && isGrammarCloze
+      ? renderPrompt(
+          resolveCompletedSentence(promptDisplay, correctReveal.value) ?? promptDisplay,
+        )
+      : grammarPrompt;
 
   // Two-rung hint ladder (Plan 10): nudge → English, with the English rung
   // gated off at Enlightened+ (Plan 08 scaffolding gate). Interim fallbacks
@@ -230,12 +208,42 @@ export function ReviewCard({
         {modeLabel}
       </Text>
 
-      {grammarPrompt}
+      {promptNode}
 
-      <SRSStageIndicator stage={srsState.srsStageLabel} />
+      {correctReveal ? null : <SRSStageIndicator stage={srsState.srsStageLabel} />}
 
-      {itemType === 'grammar' ? (
+      {itemType === 'grammar' && !correctReveal ? (
         <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />
+      ) : null}
+
+      {correctReveal ? (
+        <FadeSlideIn
+          duration={FEEDBACK_ANIMATION_MS}
+          className="gap-space-md w-full items-center">
+          <View
+            ref={resultRef}
+            accessible
+            accessibilityLabel={`Correct, ${correctReveal.label.toLowerCase()}: ${correctReveal.value}`}>
+            <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
+          </View>
+          {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
+          {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
+              shown expanded, never gated behind an icon. */}
+          <AnswerReveal item={item} detail={revealDetail ?? null} collision={answerCollision} />
+          <ReinforcementHighlight link={reinforcementLink} />
+        </FadeSlideIn>
+      ) : null}
+
+      {nudge ? (
+        // One-line nudge only: the user hasn't been told the answer, so don't reveal detail.
+        <FadeSlideIn duration={FEEDBACK_ANIMATION_MS} className="items-center">
+          <View
+            ref={resultRef}
+            accessible
+            accessibilityLabel={state === 'typo' ? 'Close, try again' : nudge}>
+            <Text className="text-body-lg text-feedback-warning text-center">{nudge}</Text>
+          </View>
+        </FadeSlideIn>
       ) : null}
     </View>
   );
