@@ -19,6 +19,7 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 | [08](08-grammar-stage-ladder.md) | Grammar stage ladder | P1 | MC → type-in; Enlightened no-English |
 | [09](09-grammar-cloze-curriculum.md) | Cloze variants & families | P2 | Schema, 5 variants, family distractors |
 | [10](10-grammar-hints-and-nearmiss.md) | Grammar hints & near-miss | P1 | Nudge→EN hints; incomplete = incorrect |
+| [12](12-android-playtest-round-2.md) | Android playtest round 2 | P0–P3 | Status bar unreadable; refresher opens "No Reviews Due"; prompt disappears on correct/typo; abrupt feedback; forecast detail; remove "separate apps" claim |
 
 ## Suggested sequencing
 
