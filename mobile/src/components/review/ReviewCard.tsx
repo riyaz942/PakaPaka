@@ -6,6 +6,7 @@ import { FuriganaText } from '@/components/common/FuriganaText';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
+import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
 import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { PromptType } from '@/core/srs/promptResolver';
@@ -190,12 +191,18 @@ export function ReviewCard({
 
   // Two-rung hint ladder (Plan 10): nudge → English, with the English rung
   // gated off at Enlightened+ (Plan 08 scaffolding gate). Interim fallbacks
-  // until authored variants cover every item: structure as the nudge, the
-  // labeled meaning as the English rung.
+  // until authored variants cover every item: the structure frame as the nudge
+  // — blanked, since "Noun + を + Verb" hands over a one-particle answer
+  // (R1.5) — and the labeled meaning as the English rung.
   const hintLevels =
     itemType === 'grammar'
       ? buildGrammarHintLevels({
-          nudge: item.clozeNudge ?? answerKey.grammar?.structure,
+          nudge:
+            item.clozeNudge ??
+            blankFormsInStructure(answerKey.grammar?.structure, [
+              ...(item.clozeAnswer ? [item.clozeAnswer] : []),
+              ...(answerKey.grammar?.acceptedForms ?? []),
+            ]),
           english:
             item.clozeEnglish ??
             (displayMeaning ? `Meaning (hint): ${displayMeaning}` : null),

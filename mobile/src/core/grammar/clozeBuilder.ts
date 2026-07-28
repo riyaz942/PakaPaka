@@ -88,6 +88,41 @@ export function blankFormInFurigana(
 }
 
 /**
+ * Structure frame with the grammar chunk blanked out
+ * ("Noun + は + comment" → "Noun + ＿＿＿ + comment"). Returns the frame
+ * unchanged when it carries no accepted form, and null when the frame *is* a
+ * form (nothing safe would be left to show).
+ *
+ * Used both as the cloze prompt fallback and as the hint-ladder nudge fallback
+ * (R1.5): a raw frame names the answer it is supposed to hint at.
+ */
+export function blankFormsInStructure(
+  structure: string | null | undefined,
+  acceptedForms: string[],
+): string | null {
+  const frame = structure?.trim();
+  if (!frame) return null;
+  if (acceptedForms.includes(frame)) return null;
+
+  // Token-level blank first ("Noun + は + comment" → "Noun + ＿＿＿ + comment")
+  // so a particle inside another token is not mangled.
+  const tokens = frame.split('+').map((token) => token.trim());
+  const tokenIndex = tokens.findIndex((token) => acceptedForms.includes(token));
+  if (tokenIndex !== -1) {
+    tokens[tokenIndex] = CLOZE_BLANK;
+    return tokens.join(' + ');
+  }
+
+  for (const form of blankableForms(acceptedForms)) {
+    const index = frame.indexOf(form);
+    if (index === -1) continue;
+    return frame.slice(0, index) + CLOZE_BLANK + frame.slice(index + form.length);
+  }
+
+  return frame;
+}
+
+/**
  * Derives a cloze prompt for a grammar item, or null when nothing safe exists.
  *
  * Order of preference:
@@ -116,28 +151,7 @@ export function buildGrammarCloze(input: GrammarClozeInput): GrammarCloze | null
     }
   }
 
-  const structure = input.structure?.trim();
-  if (!structure) return null;
-  if (input.acceptedForms.includes(structure)) return null;
-
-  // Token-level blank first ("Noun + は + comment" → "Noun + ＿＿＿ + comment")
-  // so a particle inside another token is not mangled.
-  const tokens = structure.split('+').map((token) => token.trim());
-  const tokenIndex = tokens.findIndex((token) => input.acceptedForms.includes(token));
-  if (tokenIndex !== -1) {
-    tokens[tokenIndex] = CLOZE_BLANK;
-    return { prompt: tokens.join(' + '), promptFurigana: null, source: 'structure' };
-  }
-
-  for (const form of forms) {
-    const index = structure.indexOf(form);
-    if (index === -1) continue;
-    return {
-      prompt: structure.slice(0, index) + CLOZE_BLANK + structure.slice(index + form.length),
-      promptFurigana: null,
-      source: 'structure',
-    };
-  }
-
-  return { prompt: structure, promptFurigana: null, source: 'structure' };
+  const frame = blankFormsInStructure(input.structure, input.acceptedForms);
+  if (!frame) return null;
+  return { prompt: frame, promptFurigana: null, source: 'structure' };
 }

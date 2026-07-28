@@ -1,4 +1,30 @@
-import { blankFormInFurigana, buildGrammarCloze, CLOZE_BLANK } from './clozeBuilder';
+import {
+  blankFormInFurigana,
+  blankFormsInStructure,
+  buildGrammarCloze,
+  CLOZE_BLANK,
+} from './clozeBuilder';
+
+describe('blankFormsInStructure (R1.5 nudge fallback)', () => {
+  it('blanks the form token so the frame never names the answer', () => {
+    expect(blankFormsInStructure('Noun + を + Verb', ['を'])).toBe(`Noun + ${CLOZE_BLANK} + Verb`);
+  });
+
+  it('blanks a form embedded in a token', () => {
+    expect(blankFormsInStructure('Verb stem + たいです', ['たい'])).toBe(
+      `Verb stem + ${CLOZE_BLANK}です`,
+    );
+  });
+
+  it('returns the frame unchanged when it carries no accepted form', () => {
+    expect(blankFormsInStructure('Noun + Noun', ['の'])).toBe('Noun + Noun');
+  });
+
+  it('returns null for a missing frame or a frame that is the answer', () => {
+    expect(blankFormsInStructure(null, ['は'])).toBeNull();
+    expect(blankFormsInStructure('は', ['は'])).toBeNull();
+  });
+});
 
 describe('blankFormInFurigana', () => {
   it('blanks a particle outside reading brackets', () => {

@@ -1,8 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { Appearance } from 'react-native';
 
 import SettingsScreen from './settings';
 
 const mockSetReducedMotion = jest.fn();
+const mockSetThemeMode = jest.fn();
+let mockStoredThemeMode: 'system' | 'light' | 'dark' = 'system';
 const mockSetAutoAdvanceEnabled = jest.fn();
 let mockAutoAdvanceEnabled = false;
 const mockEnableShadowMode = jest.fn();
@@ -97,6 +100,11 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   getWordTranslateOptIn: () => false,
   setWordTranslateOptIn: jest.fn(),
   setCloudSttOptIn: jest.fn(),
+  // Appearance section — same reason as the AI reads above.
+  getThemeMode: () => mockStoredThemeMode,
+  // Indirected like setDailyGoalTarget below: the factory runs at import time,
+  // before the module-scope mock consts are initialised.
+  setThemeMode: (db: unknown, mode: string) => mockSetThemeMode(db, mode),
 }));
 
 jest.mock('@/config/notifications', () => ({
@@ -290,5 +298,48 @@ describe('SettingsScreen — per-word furigana overrides', () => {
 
     fireEvent.press(screen.getByTestId('settings-furigana-overrides-reset'));
     expect(mockClearAllOverrides).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('SettingsScreen appearance (light/dark palette)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockStoredThemeMode = 'system';
+  });
+
+  it('offers System, Light and Dark, defaulting to System', () => {
+    render(<SettingsScreen />);
+
+    for (const mode of ['system', 'light', 'dark']) {
+      expect(screen.getByTestId(`settings-theme-mode-${mode}`)).toBeTruthy();
+    }
+    expect(
+      screen.getByTestId('settings-theme-mode-system').props.accessibilityState.selected,
+    ).toBe(true);
+  });
+
+  it('persists the chosen mode and applies it to the app appearance', () => {
+    const setColorScheme = jest.spyOn(Appearance, 'setColorScheme');
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-theme-mode-dark'));
+
+    expect(mockSetThemeMode).toHaveBeenCalledWith(mockUserDb, 'dark');
+    expect(setColorScheme).toHaveBeenLastCalledWith('dark');
+  });
+
+  it('reflects a stored preference and maps System to the device setting', () => {
+    const setColorScheme = jest.spyOn(Appearance, 'setColorScheme');
+    mockStoredThemeMode = 'light';
+    render(<SettingsScreen />);
+
+    expect(screen.getByTestId('settings-theme-mode-light').props.accessibilityState.selected).toBe(
+      true,
+    );
+    expect(setColorScheme).toHaveBeenLastCalledWith('light');
+
+    fireEvent.press(screen.getByTestId('settings-theme-mode-system'));
+    expect(mockSetThemeMode).toHaveBeenCalledWith(mockUserDb, 'system');
+    expect(setColorScheme).toHaveBeenLastCalledWith('unspecified');
   });
 });

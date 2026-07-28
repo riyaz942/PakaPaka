@@ -12,7 +12,7 @@ const expoBrand = {
 
 /**
  * UX-DR2 semantic palette for APIs that need raw hex (e.g. NativeTabs).
- * Keep in sync with `src/global.css` :root / prefers-color-scheme light overrides.
+ * Keep in sync with `src/global.css` :root / prefers-color-scheme dark overrides.
  */
 const semanticColors = {
   light: {

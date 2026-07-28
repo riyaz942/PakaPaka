@@ -63,24 +63,23 @@ function parseHex(hex: string): { r: number; g: number; b: number } {
 }
 
 export function parseCssPalette(css: string, theme: ThemeName): Palette {
-  const darkBlock = css.match(/:root\s*\{([^}]+)\}/)?.[1] ?? '';
-  const darkPalette: Palette = {};
-  for (const match of darkBlock.matchAll(CSS_VAR)) {
-    darkPalette[match[1]] = match[2].toLowerCase();
-  }
-
-  if (theme === 'dark') {
-    return darkPalette;
-  }
-
-  const lightBlock =
-    css.match(/@media\s*\(prefers-color-scheme:\s*light\)\s*\{[^}]*:root\s*\{([^}]+)\}/)?.[1] ??
-    '';
-  const lightPalette: Palette = { ...darkPalette };
+  const lightBlock = css.match(/:root\s*\{([^}]+)\}/)?.[1] ?? '';
+  const lightPalette: Palette = {};
   for (const match of lightBlock.matchAll(CSS_VAR)) {
     lightPalette[match[1]] = match[2].toLowerCase();
   }
-  return lightPalette;
+
+  if (theme === 'light') {
+    return lightPalette;
+  }
+
+  const darkBlock =
+    css.match(/@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[^}]*:root\s*\{([^}]+)\}/)?.[1] ?? '';
+  const darkPalette: Palette = { ...lightPalette };
+  for (const match of darkBlock.matchAll(CSS_VAR)) {
+    darkPalette[match[1]] = match[2].toLowerCase();
+  }
+  return darkPalette;
 }
 
 export function buildPalettes(

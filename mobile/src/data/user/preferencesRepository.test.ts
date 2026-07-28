@@ -21,8 +21,10 @@ import {
   getStartingJlptLevel,
   getReducedMotionEnabled,
   getReviewAutoAdvanceEnabled,
+  getThemeMode,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
+  setPreference,
   setAiModel,
   setAiOpenAiBaseUrl,
   setCloudSttOptIn,
@@ -38,6 +40,7 @@ import {
   setShadowModePromptDismissed,
   setShadowModePromptSnoozedUntil,
   setStartingJlptLevel,
+  setThemeMode,
 } from '@/data/user/preferencesRepository';
 
 describe('preferencesRepository JLPT onboarding preferences', () => {
@@ -283,6 +286,54 @@ describe('preferencesRepository furigana display preference', () => {
 
     setFuriganaDisplay(db, 'auto');
     expect(getFuriganaDisplay(db)).toBe('auto');
+  });
+});
+
+describe('preferencesRepository theme mode preference', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults to "system" when unset', async () => {
+    const db = await createUserDb();
+    expect(getThemeMode(db)).toBe('system');
+  });
+
+  it('round-trips each mode', async () => {
+    const db = await createUserDb();
+
+    setThemeMode(db, 'dark');
+    expect(getThemeMode(db)).toBe('dark');
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.themeMode,
+      )?.value,
+    ).toBe('dark');
+
+    setThemeMode(db, 'light');
+    expect(getThemeMode(db)).toBe('light');
+
+    setThemeMode(db, 'system');
+    expect(getThemeMode(db)).toBe('system');
+  });
+
+  it('rejects an unknown mode', async () => {
+    const db = await createUserDb();
+    expect(() => setThemeMode(db, 'sepia' as never)).toThrow(/Invalid theme mode/);
+  });
+
+  it('falls back to "system" when the stored value is not a known mode', async () => {
+    const db = await createUserDb();
+    setPreference(db, PREFERENCE_KEYS.themeMode, 'sepia');
+    expect(getThemeMode(db)).toBe('system');
   });
 });
 

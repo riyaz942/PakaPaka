@@ -22,6 +22,7 @@ export const PREFERENCE_KEYS = {
   notificationsEnabled: 'notifications_enabled',
   notificationReminderTime: 'notification_reminder_time',
   reducedMotion: 'reduced_motion',
+  themeMode: 'theme_mode',
   reviewAutoAdvance: 'review_auto_advance',
   furiganaDisplay: 'furigana_display',
   shadowModeEnabled: 'shadow_mode_enabled',
@@ -168,6 +169,33 @@ export function getReducedMotionEnabled(userDb: SQLiteDatabase): boolean | null 
 
 export function setReducedMotionEnabled(userDb: SQLiteDatabase, enabled: boolean): void {
   setPreference(userDb, PREFERENCE_KEYS.reducedMotion, enabled ? 'true' : 'false');
+}
+
+/**
+ * Light/dark palette selection. 'system' follows the device setting, which is the
+ * default — the palette has always been driven by `prefers-color-scheme`.
+ */
+export type ThemeMode = 'system' | 'light' | 'dark';
+
+const THEME_MODES: readonly ThemeMode[] = ['system', 'light', 'dark'];
+
+export function isThemeMode(value: string): value is ThemeMode {
+  return (THEME_MODES as readonly string[]).includes(value);
+}
+
+export function getThemeMode(userDb: SQLiteDatabase): ThemeMode {
+  const value = getPreference(userDb, PREFERENCE_KEYS.themeMode);
+  if (value && isThemeMode(value)) {
+    return value;
+  }
+  return 'system';
+}
+
+export function setThemeMode(userDb: SQLiteDatabase, mode: ThemeMode): void {
+  if (!isThemeMode(mode)) {
+    throw new Error(`Invalid theme mode: ${mode}`);
+  }
+  setPreference(userDb, PREFERENCE_KEYS.themeMode, mode);
 }
 
 /**

@@ -18,6 +18,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
+import { useThemeMode } from '@/data/hooks/useThemeMode';
 import {
   clearOnboardingCompleted,
   getNotificationTime,
@@ -31,6 +32,7 @@ import {
   setWeaknessBiasEnabled,
   type FuriganaDisplayMode,
   type NotificationTime,
+  type ThemeMode,
 } from '@/data/user/preferencesRepository';
 import {
   resolveDailyGoalTarget,
@@ -46,6 +48,12 @@ const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = 
   { value: 'night', label: 'Night (21:00)' },
 ];
 
+const THEME_MODE_OPTIONS: { value: ThemeMode; label: string }[] = [
+  { value: 'system', label: 'System' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+];
+
 const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] = [
   { value: 'auto', label: 'Auto (until known)' },
   { value: 'shown', label: 'Always shown' },
@@ -56,6 +64,7 @@ export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
   const { reducedMotion, setReducedMotion } = useReducedMotion();
+  const { mode: themeMode, setMode: setThemeMode } = useThemeMode();
   const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
   const {
     entries: furiganaOverrides,
@@ -250,6 +259,35 @@ export default function SettingsScreen() {
             value={autoAdvanceEnabled}
             onValueChange={setAutoAdvanceEnabled}
           />
+        </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Appearance</Text>
+        <Text className="mt-1 text-body-sm text-secondary">
+          Light or dark palette. Follows your device setting unless you pick one here.
+        </Text>
+
+        <View className="mt-4 flex-row flex-wrap gap-3">
+          {THEME_MODE_OPTIONS.map((option) => {
+            const selected = themeMode === option.value;
+
+            return (
+              <Pressable
+                key={option.value}
+                accessibilityRole="radio"
+                accessibilityState={{ selected }}
+                accessibilityLabel={option.label}
+                onPress={() => setThemeMode(option.value)}
+                testID={`settings-theme-mode-${option.value}`}
+                className={cn(
+                  'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
+                  selected ? 'border-2 border-feedback-info' : 'border border-border',
+                )}>
+                <Text className="text-body-sm font-semibold text-primary">{option.label}</Text>
+              </Pressable>
+            );
+          })}
         </View>
       </View>
 

@@ -7,7 +7,7 @@ analysis — each has repro steps so they can be verified on-device before fixin
 
 | # | Item | Priority | Status |
 |---|------|----------|--------|
-| [12.1](#121--status-bar-unreadable-white-on-white) | Status bar unreadable (white on white) | **P0** | Reported; root cause has 2 candidates |
+| [12.1](#121--status-bar-unreadable-white-on-white) | Status bar unreadable (white on white) | **P0** | **Done** — neither candidate; `global.css` compiled no dark palette |
 | [12.2](#122--do-a-small-revision-opens-no-reviews-due) | "Do a small revision" opens "No Reviews Due" | **P0** | Reported; **root cause confirmed in code** |
 | [12.3](#123--prompt-disappears-after-a-correct-answer) | Prompt disappears after a correct answer | P1 | **Done** |
 | [12.4](#124--prompt-disappears-on-try-again-nudges) | Prompt disappears on "Try again" nudges | P1 | **Done** |
@@ -46,7 +46,28 @@ dark icons on the light theme. Two independent things can break it:
    SDK 55 / RN 0.83 / New Architecture combo, icons stay light regardless of
    the `style` prop.
 
-**Diagnosis step (do first).** Temporarily hardcode `<StatusBar style="dark" />`
+**Root cause — confirmed (neither candidate above).** The app never painted its
+dark palette at all: it rendered the **light** surfaces in both schemes, so on a
+dark-theme phone the status bar correctly went white while the page stayed
+near-white. NativeWind records a *dark* value for a `:root` custom property only
+when the declaration sits inside `@media (prefers-color-scheme: dark)`
+(`css-to-rn/normalize-selectors.js` → `isDarkModeMediaQuery`). A bare `:root`
+block is recorded as *light* — and so is a `@media (prefers-color-scheme: light)`
+block, because it is simply "not the dark query". `global.css` declared the dark
+palette in bare `:root` and the light palette in a light media query, so **every
+token compiled to a light value and zero dark values**; at runtime the dark
+observable falls back to light (`cssVariableObservable`). Verified by running the
+compiler over `global.css`: 0 of 28 root variables had a dark value before the
+fix, 21 after.
+
+Fix: `global.css` is now light-base + `@media (prefers-color-scheme: dark)`
+overrides (same hex values, inverted structure). `scripts/check-contrast.ts`
+parsed the old shape and was updated to match. The 12.1 status-bar wiring in
+`_layout.tsx` needed no further change — `usePaintedColorScheme` now genuinely
+matches the painted surfaces. Note this is the first build in which dark mode
+actually renders dark.
+
+**Diagnosis step (superseded — kept for the record).** Temporarily hardcode `<StatusBar style="dark" />`
 in `_layout.tsx`, rebuild, launch with the phone in light theme:
 
 - Icons turn black → cause 1 (resolution mismatch). Fix: derive `isDark` from

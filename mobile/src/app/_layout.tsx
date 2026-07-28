@@ -9,6 +9,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
+import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
 import { readUpdatesRuntimeMetadata } from '@/lib/safe-updates-metadata';
@@ -31,6 +32,12 @@ function CurriculumUpdateBannerHost() {
   );
 }
 
+/** Re-applies the stored light/dark preference on launch; Settings writes it. */
+function ThemeModeHost() {
+  useThemeMode();
+  return null;
+}
+
 function RootLayoutContent() {
   const isDark = usePaintedColorScheme() === 'dark';
 
@@ -39,6 +46,7 @@ function RootLayoutContent() {
       <StatusBar style={isDark ? 'light' : 'dark'} />
       <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
         <DatabaseProvider>
+          <ThemeModeHost />
           <OnboardingRedirect />
           <CurriculumUpdateBannerHost />
           <AnimatedSplashOverlay />
