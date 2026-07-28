@@ -571,6 +571,29 @@ blank that's the answer. New spec:
   `cloze_variants` guidance ("describing the pattern's function without naming
   it") is tightened to this spec too, so future drafts inherit it.
 
+*Status: built (R1.5), hand-rewritten rather than batched.* The shipped corpus
+was 25 nudges across 5 points (docs-09 Wave A — the "~74" above is the grammar
+point count, not the nudge count), so a batch pass would have cost more than
+writing them. All 25 are now per-sentence pokes in `_build/n5_grammar.py`; N4
+ships no cloze variants yet, so it had none to rewrite. Per-sentence wording is
+also load-bearing, not stylistic: 私＿学生です, 水＿飲みます and 猫＿います each
+appear under two points, so a single per-point nudge could not distinguish
+は/が/を from も at rung 1. The gate is `validate_drafts.nudge_errors` (answer,
+accepted forms, meaning gloss, and duplicate nudges within a point), wired into
+the 2a draft gate and runnable standalone over the shipped JSON:
+`.venv/bin/python -m generate_content.check_nudges`. `prompts/grammar-lesson.md`
+carries the spec for future drafts. Known follow-on: the 64/74 N5 lesson drafts
+whose candidate `cloze_variants` now fail the check are authoring input for the
+docs-09 cloze effort and need the rewrite when promoted, not before.
+
+App-side twin (same bug, outside the dataset): with no authored variants —
+69/74 N5 points and all of N4 — `ReviewCard`'s rung 1 fell back to the raw
+structure frame, and "Noun + を + Verb" *is* the answer to a one-particle blank.
+`blankFormsInStructure` (extracted from `buildGrammarCloze`, which already
+blanked the frame when using it as the cloze *prompt*) now blanks it for the
+nudge as well, so the frame still teaches the slot shape without naming the
+filler.
+
 ### Mechanical validation gate (before any human review)
 
 `curriculum/_build/generate_content/validate_drafts.py`, run on every batch output:
@@ -684,7 +707,7 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | R1.5 | 2e nudge rewrite (N5 + N4) | no nudge contains its answer/forms/gloss; skim read |
 | R1.6 | Phase 4 passage generation with the 50–60% humor mix | tokenizer loop green; tone mix honored; full read |
 
-**Built as of 2026-07-25: R1.1, R1.2, R1.3, and R1.4's tooling** (Rev-2 prompts,
+**Built as of 2026-07-28: R1.1, R1.2, R1.3, R1.5, and R1.4's tooling** (Rev-2 prompts,
 gate and the 2d vocab generator — the regeneration run itself is still owed and
 needs API credentials or the web-chat lane). R1.3's reviewed pair dataset is
 `curriculum/_build/visually_similar.py` (52 pairs → 104 `visually_similar_links` rows);

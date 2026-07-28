@@ -15,6 +15,8 @@ Run on every batch output before any human sees it
   5. structural checks: jp fences and example_sentences match one-to-one,
      cloze variants carry the ＿＿＿ blank, markdown stays inside the
      renderer's subset (no tables / links / HTML)
+  6. cloze nudges give nothing away (R1.5): no answer, accepted form or
+     meaning gloss, and no two variants share a nudge
 
 `validate-schema` after assembly is the pipeline's final backstop (run by the
 `run` command in generate_grammar_lessons.py); this gate catches everything
@@ -119,6 +121,35 @@ def furigana_ok(text, known_readings):
     return True
 
 
+#: Gloss words too generic to count as a giveaway when a nudge reuses them.
+NUDGE_GLOSS_STOPWORDS = {"and", "for", "form", "not", "the", "with", "you"}
+
+
+def nudge_errors(nudge, answer, item):
+    """R1.5: rung 1 pokes at the sentence; it never hands over the answer.
+
+    A nudge may not contain the blanked answer, any accepted form or the
+    primary form, nor repeat the item's meaning gloss (which is the pattern's
+    textbook name — "Marks the topic" *is* the answer for a two-particle blank).
+    """
+    text = (nudge or "").strip()
+    if not text:
+        return ["nudge is empty"]
+    errors = []
+    forms = {f for f in [answer, item["primary_form"], *item["accepted_forms"]] if f}
+    hits = sorted(f for f in forms if f in text)
+    if hits:
+        errors.append(f"nudge contains the answer / an accepted form: {', '.join(hits)}")
+    gloss = {w for w in re.findall(r"[a-z]{3,}", item["meaning"].lower())
+             if w not in NUDGE_GLOSS_STOPWORDS}
+    repeated = sorted(w for w in gloss if re.search(rf"\b{w}\b", text.lower()))
+    if repeated:
+        errors.append(
+            f"nudge repeats the meaning gloss ({item['meaning']!r}): {', '.join(repeated)}"
+        )
+    return errors
+
+
 def item_context(level, slug):
     """Everything the gate (and the generator prompt) needs for one item."""
     item = context.grammar_item(level, slug)
@@ -179,9 +210,17 @@ def validate_draft(level, slug, draft, ctx=None):
         )
     if not 4 <= len(draft["cloze_variants"]) <= 8:
         errors.append("expected 4-6 cloze_variants")
+    seen_nudges = set()
     for i, cloze in enumerate(draft["cloze_variants"]):
         if CLOZE_BLANK not in cloze.get("jp_cloze", ""):
             errors.append(f"cloze_variants[{i}].jp_cloze has no ＿＿＿ blank")
+        for error in nudge_errors(cloze.get("nudge"), cloze.get("answer"), ctx["item"]):
+            errors.append(f"cloze_variants[{i}]: {error}")
+        # A nudge that points at its own sentence can't be reused verbatim.
+        nudge = (cloze.get("nudge") or "").strip()
+        if nudge and nudge in seen_nudges:
+            errors.append(f"cloze_variants[{i}].nudge repeats an earlier variant's nudge")
+        seen_nudges.add(nudge)
     if not 1 <= len(draft["caution_notes"]) <= 4:
         errors.append("expected 1-4 caution_notes")
 

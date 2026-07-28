@@ -104,9 +104,15 @@ Call the `submit_grammar_lesson` tool exactly once with:
   slugs listed above).
 - `cloze_variants` — 4–6 candidate fill-in-the-blank drills for this pattern:
   `jp_cloze` uses ＿＿＿ (U+FF3F ×3) in place of the pattern, `answer` is the
-  removed text, `english` is the sentence translation, `nudge` is a one-line
-  hint describing the pattern's function without naming it. Reuse sentences
-  from `example_sentences` where possible; the same vocabulary constraints
-  apply.
+  removed text, `english` is the sentence translation. Reuse sentences from
+  `example_sentences` where possible; the same vocabulary constraints apply.
+  `nudge` is the learner's first hint, shown before the English one, and it
+  must be written **about that specific sentence** — a question or an
+  observation about what the words in it are doing ("Is 私 doing anything here,
+  or is it what the sentence talks about?"), never a definition of the pattern
+  ("Marks the topic — what the sentence is about", which for a one-particle
+  blank simply *is* the answer). Rules: a different nudge per variant; never
+  contains the answer, any accepted form, or the wording of the pattern's
+  meaning gloss / textbook name; one line.
 
 {{VALIDATOR_FEEDBACK}}

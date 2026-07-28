@@ -87,7 +87,7 @@ Same pass fixed a generator trap: passage enrichment (translations, summaries, g
 word spans) was hand-added to `curriculum/readings/*.json` only, so regenerating stripped it while
 `validate-schema` and `compile-curriculum` stayed green (the fields are schema-optional) — it now lives
 in the `_build` datasets, and a `generator-drift` CI job fails when regeneration diffs the committed JSON.
-Still planned, not built: humor-tagged passages, cloze nudge rewrite.
+Still planned, not built: humor-tagged passages.
 
 **R1.4 (tooling) built:** `prompt_version: 2` across the mnemonic lane. Radicals emit a
 `description` and no mnemonic (`prompts/radical-description.md`, `submit_radical_description`);
@@ -103,14 +103,32 @@ comedy-register section, shared with the Phase 4 passage seeds. `generate.py` in
 `description` and the new `curriculum/vocabulary/mnemonics/<level>.json` sidecar; `run` re-queues
 drafts recorded under an older prompt version so a regen is wholesale, not a patch.
 
+**R1.5 (cloze nudge rewrite) built:** all 25 shipped N5 nudges are rewritten per sentence — rung 1
+now asks about the sentence in front of the learner ("Is 私 doing anything here, or is it what the
+sentence talks about?") instead of defining the pattern ("Marks the topic — what the sentence is
+about", which for a one-particle blank *was* the answer). Per-sentence wording also fixes a real
+ambiguity: 私＿学生です, 水＿飲みます and 猫＿います each appear under two points, so one nudge per
+point could not tell は/が/を apart from も at rung 1 (the disambiguating English is rung 2 and gated
+at Enlightened+). The rule is mechanical now, not editorial: `validate_drafts.nudge_errors` rejects a
+nudge containing the answer, any accepted form or the item's meaning gloss, plus duplicate nudges
+within a point; it runs inside the 2a draft gate and standalone over the shipped JSON via
+`generate_content/check_nudges.py`. `prompts/grammar-lesson.md` carries the same spec so future
+drafts inherit it. The app had the same bug outside the dataset: with no authored variants (69/74
+N5 points and all of N4) the hint fell back to the raw structure frame, and "Noun + を + Verb" names
+the answer — `blankFormsInStructure` (extracted from `buildGrammarCloze`, which already blanked the
+frame when using it as the *prompt*) now blanks it for the nudge too.
+
 **Not done / thin:**
+- **R1.5 follow-on:** 64/74 N5 lesson drafts' candidate `cloze_variants` fail the new nudge check
+  (231 nudges) — they are authoring input for the docs-09 cloze effort and do not ship, but they
+  need the rewrite when promoted. N4 has no cloze variants at all, so its nudges are entirely the
+  (now blanked) structure frame.
 - **R1.4 (generation)** the wholesale N5 regen radicals → kanji → vocab (2d) has not run — needs
   API credentials, the web-chat lane, or the no-browser subagent lane
   (`docs/workflows/radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md`);
   N4 same order after. Shipped N5 radical/kanji mnemonics are
   still the v1 drafts, which now fail the Rev-2 gate by design (too short, no radical `description`,
   look-alikes unaddressed)
-- **R1.5** cloze nudge rewrite (shipped N5 nudges are definitional giveaways)
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read `mnemonic_text` only — outside R1.2's scope
 - N4 grammar lessons (0) and N4 mnemonic/example authoring
 - Cast-coherence / ship gate for draft → reviewed mnemonics & examples
