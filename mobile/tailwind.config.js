@@ -8,46 +8,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // UX-DR2 — surfaces & text (CSS variables; dark-first in global.css :root)
-        background: 'var(--color-background)',
-        surface: 'var(--color-surface)',
-        'surface-elevated': 'var(--color-surface-elevated)',
-        'surface-hover': 'var(--color-surface-hover)',
-        border: 'var(--color-border)',
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        muted: 'var(--color-muted)',
-        'on-primary': 'var(--color-on-primary)',
+        // UX-DR2 — surfaces & text. Tokens are channel triplets in global.css so the
+        // `<alpha-value>` wrapper lets opacity modifiers (`bg-surface/15`) compile.
+        // Light is the base palette; dark overrides live in the media query.
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        'surface-elevated': 'rgb(var(--color-surface-elevated) / <alpha-value>)',
+        'surface-hover': 'rgb(var(--color-surface-hover) / <alpha-value>)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        'on-primary': 'rgb(var(--color-on-primary) / <alpha-value>)',
 
         // UX-DR2 — SRS stages
-        'srs-apprentice': 'var(--color-srs-apprentice)',
-        'srs-guru': 'var(--color-srs-guru)',
-        'srs-master': 'var(--color-srs-master)',
-        'srs-enlightened': 'var(--color-srs-enlightened)',
-        'srs-burned': 'var(--color-srs-burned)',
+        'srs-apprentice': 'rgb(var(--color-srs-apprentice) / <alpha-value>)',
+        'srs-guru': 'rgb(var(--color-srs-guru) / <alpha-value>)',
+        'srs-master': 'rgb(var(--color-srs-master) / <alpha-value>)',
+        'srs-enlightened': 'rgb(var(--color-srs-enlightened) / <alpha-value>)',
+        'srs-burned': 'rgb(var(--color-srs-burned) / <alpha-value>)',
 
         // UX-DR2 — feedback
-        'feedback-correct': 'var(--color-feedback-correct)',
-        'feedback-incorrect': 'var(--color-feedback-incorrect)',
-        'feedback-warning': 'var(--color-feedback-warning)',
-        'feedback-info': 'var(--color-feedback-info)',
+        'feedback-correct': 'rgb(var(--color-feedback-correct) / <alpha-value>)',
+        'feedback-incorrect': 'rgb(var(--color-feedback-incorrect) / <alpha-value>)',
+        'feedback-warning': 'rgb(var(--color-feedback-warning) / <alpha-value>)',
+        'feedback-info': 'rgb(var(--color-feedback-info) / <alpha-value>)',
 
         // UX-DR2 — cognitive load ring stops
-        'ring-start': 'var(--color-ring-start)',
-        'ring-mid': 'var(--color-ring-mid)',
-        'ring-end': 'var(--color-ring-end)',
-        'ring-complete': 'var(--color-ring-complete)',
+        'ring-start': 'rgb(var(--color-ring-start) / <alpha-value>)',
+        'ring-mid': 'rgb(var(--color-ring-mid) / <alpha-value>)',
+        'ring-end': 'rgb(var(--color-ring-end) / <alpha-value>)',
+        'ring-complete': 'rgb(var(--color-ring-complete) / <alpha-value>)',
 
         // UX-DR2 — content-type accents
-        'content-radical': 'var(--color-content-radical)',
-        'content-kanji': 'var(--color-content-kanji)',
-        'content-vocabulary': 'var(--color-content-vocabulary)',
-        'content-grammar': 'var(--color-content-grammar)',
-        'content-reading': 'var(--color-content-reading)',
+        'content-radical': 'rgb(var(--color-content-radical) / <alpha-value>)',
+        'content-kanji': 'rgb(var(--color-content-kanji) / <alpha-value>)',
+        'content-vocabulary': 'rgb(var(--color-content-vocabulary) / <alpha-value>)',
+        'content-grammar': 'rgb(var(--color-content-grammar) / <alpha-value>)',
+        'content-reading': 'rgb(var(--color-content-reading) / <alpha-value>)',
 
         // UX-DR2 — reinforcement
-        'reinforcement-text': 'var(--color-reinforcement-text)',
-        'reinforcement-bg': 'var(--color-reinforcement-bg)',
+        'reinforcement-text': 'rgb(var(--color-reinforcement-text) / <alpha-value>)',
+        'reinforcement-bg': 'rgb(var(--color-reinforcement-bg) / <alpha-value>)',
 
         // Expo template splash/icon (design-tokens.js — programmatic StyleSheet only)
         'expo-splash': expoBrand.splash,

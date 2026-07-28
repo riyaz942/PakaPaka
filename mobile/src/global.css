@@ -8,79 +8,84 @@
    `@media (prefers-color-scheme: light)` block — so declaring the dark palette
    in bare `:root` left every token with no dark value at all, and the runtime
    fell back to light in both schemes (plan 12.1 white-on-white). Base = light,
-   overrides = dark. */
+   overrides = dark.
+
+   Values are space-separated sRGB channels, not hex, because `tailwind.config.js`
+   wraps each one as `rgb(var(--token) / <alpha-value>)`. Tailwind cannot apply an
+   opacity modifier to a bare `var()` color — it silently emits no rule at all, so
+   `bg-content-kanji/15` used to render nothing. Keep new tokens in this format. */
 @layer base {
   :root {
     /* UX-DR2 — light surfaces & text (base palette) */
-    --color-background: #f8f8fa;
-    --color-surface: #ffffff;
-    --color-surface-elevated: #f0f0f4;
-    --color-surface-hover: #e8e8ee;
-    --color-border: #d8d8e0;
-    --color-primary: #1a1a2e;
-    --color-secondary: #686878;
-    --color-muted: #9898a8;
+    --color-background: 248 248 250;
+    --color-surface: 255 255 255;
+    --color-surface-elevated: 240 240 244;
+    --color-surface-hover: 232 232 238;
+    --color-border: 216 216 224;
+    --color-primary: 26 26 46;
+    --color-secondary: 104 104 120;
+    --color-muted: 152 152 168;
     /* Label color on filled accent buttons (bg-feedback-info) */
-    --color-on-primary: #ffffff;
+    --color-on-primary: 255 255 255;
 
     /* UX-DR2 — SRS stages */
-    --color-srs-apprentice: #dd4488;
-    --color-srs-guru: #8844cc;
-    --color-srs-master: #3388dd;
-    --color-srs-enlightened: #007e9e;
-    --color-srs-burned: #8a7000;
+    --color-srs-apprentice: 221 68 136;
+    --color-srs-guru: 136 68 204;
+    --color-srs-master: 51 136 221;
+    --color-srs-enlightened: 0 126 158;
+    --color-srs-burned: 138 112 0;
 
     /* UX-DR2 — feedback */
-    --color-feedback-correct: #127a4f;
-    --color-feedback-incorrect: #c73652;
-    --color-feedback-warning: #8a6506;
-    --color-feedback-info: #2d6fc9;
+    --color-feedback-correct: 18 122 79;
+    --color-feedback-incorrect: 199 54 82;
+    --color-feedback-warning: 138 101 6;
+    --color-feedback-info: 45 111 201;
 
     /* UX-DR2 — cognitive load ring stops */
-    --color-ring-start: #158f5a;
-    --color-ring-mid: #9a7208;
-    --color-ring-end: #b35f12;
-    --color-ring-complete: #1a8fb8;
+    --color-ring-start: 21 143 90;
+    --color-ring-mid: 154 114 8;
+    --color-ring-end: 179 95 18;
+    --color-ring-complete: 26 143 184;
 
     /* UX-DR2 — content-type accents: radical=blue, kanji=pink, vocabulary=green, grammar=purple */
-    --color-content-radical: #2d7fb8;
-    --color-content-kanji: #ee4488;
-    --color-content-vocabulary: #188a50;
-    --color-content-grammar: #aa44dd;
-    --color-content-reading: #9a7208;
+    --color-content-radical: 45 127 184;
+    --color-content-kanji: 238 68 136;
+    --color-content-vocabulary: 24 138 80;
+    --color-content-grammar: 170 68 221;
+    --color-content-reading: 154 114 8;
 
     /* UX-DR2 — reinforcement */
-    --color-reinforcement-text: #6f92c2;
-    --color-reinforcement-bg: #1a2233;
+    --color-reinforcement-text: 111 146 194;
+    --color-reinforcement-bg: 26 34 51;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-background: #0a0a0f;
-      --color-surface: #141420;
-      --color-surface-elevated: #1e1e2e;
-      --color-surface-hover: #252538;
-      --color-border: #2a2a3c;
-      --color-primary: #eeeef0;
-      --color-secondary: #9898a8;
-      --color-muted: #5c5c6e;
+      --color-background: 10 10 15;
+      --color-surface: 20 20 32;
+      --color-surface-elevated: 30 30 46;
+      --color-surface-hover: 37 37 56;
+      --color-border: 42 42 60;
+      --color-primary: 238 238 240;
+      --color-secondary: 152 152 168;
+      --color-muted: 92 92 110;
       /* Dark text on the bright dark-theme blue */
-      --color-on-primary: #0a0a0f;
+      --color-on-primary: 10 10 15;
 
       /* Dark surfaces carry the brighter accent hues */
-      --color-srs-enlightened: #00aadd;
-      --color-srs-burned: #ccaa00;
-      --color-feedback-correct: #22cc88;
-      --color-feedback-incorrect: #ee4466;
-      --color-feedback-warning: #eeaa22;
-      --color-feedback-info: #4488ee;
-      --color-ring-start: #22cc88;
-      --color-ring-mid: #eecc44;
-      --color-ring-end: #ee8833;
-      --color-ring-complete: #44bbee;
-      --color-content-radical: #44aaee;
-      --color-content-vocabulary: #22bb66;
-      --color-content-reading: #eeaa22;
+      --color-srs-enlightened: 0 170 221;
+      --color-srs-burned: 204 170 0;
+      --color-feedback-correct: 34 204 136;
+      --color-feedback-incorrect: 238 68 102;
+      --color-feedback-warning: 238 170 34;
+      --color-feedback-info: 68 136 238;
+      --color-ring-start: 34 204 136;
+      --color-ring-mid: 238 204 68;
+      --color-ring-end: 238 136 51;
+      --color-ring-complete: 68 187 238;
+      --color-content-radical: 68 170 238;
+      --color-content-vocabulary: 34 187 102;
+      --color-content-reading: 238 170 34;
     }
   }
 }

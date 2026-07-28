@@ -33,7 +33,17 @@ const THRESHOLDS: Record<Exclude<TextClass, 'exempt'>, number> = {
   'non-text-ui': 3,
 };
 
-const CSS_VAR = /--color-([a-z-]+):\s*(#[0-9a-fA-F]{6})/g;
+/**
+ * Palette tokens are space-separated sRGB channels (`26 26 46`), not hex, so that
+ * `tailwind.config.js` can wrap them as `rgb(var(--token) / <alpha-value>)`.
+ */
+const CSS_VAR = /--color-([a-z-]+):\s*(\d{1,3})\s+(\d{1,3})\s+(\d{1,3})/g;
+
+function channelsToHex(r: string, g: string, b: string): string {
+  return `#${[r, g, b]
+    .map((channel) => Number(channel).toString(16).padStart(2, '0'))
+    .join('')}`;
+}
 
 /** WCAG 2.1 relative-luminance contrast ratio between two sRGB hex colors. */
 export function contrastRatio(foreground: string, background: string): number {
@@ -66,7 +76,13 @@ export function parseCssPalette(css: string, theme: ThemeName): Palette {
   const lightBlock = css.match(/:root\s*\{([^}]+)\}/)?.[1] ?? '';
   const lightPalette: Palette = {};
   for (const match of lightBlock.matchAll(CSS_VAR)) {
-    lightPalette[match[1]] = match[2].toLowerCase();
+    lightPalette[match[1]] = channelsToHex(match[2], match[3], match[4]);
+  }
+
+  if (Object.keys(lightPalette).length === 0) {
+    throw new Error(
+      'No --color-* tokens parsed from global.css — the palette format changed and this gate is checking nothing.',
+    );
   }
 
   if (theme === 'light') {
@@ -77,7 +93,7 @@ export function parseCssPalette(css: string, theme: ThemeName): Palette {
     css.match(/@media\s*\(prefers-color-scheme:\s*dark\)\s*\{[^}]*:root\s*\{([^}]+)\}/)?.[1] ?? '';
   const darkPalette: Palette = { ...lightPalette };
   for (const match of darkBlock.matchAll(CSS_VAR)) {
-    darkPalette[match[1]] = match[2].toLowerCase();
+    darkPalette[match[1]] = channelsToHex(match[2], match[3], match[4]);
   }
   return darkPalette;
 }
