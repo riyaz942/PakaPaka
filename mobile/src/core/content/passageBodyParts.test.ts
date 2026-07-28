@@ -89,4 +89,15 @@ describe('buildPassageBodyParts', () => {
     expect(spanPart?.text).toBe('学生[がくせい]');
     expect(parts.map((part) => part.surface).join('')).toBe('私は学生です。');
   });
+
+  it('emits re-parseable notation for a span that punctuation follows', () => {
+    const parts = buildPassageBodyParts('明日、学校に行きます。', '明日[あした]、学[がっ]校[こう]に行[い]きます。', [
+      { vocabularyItemId: '214', startOffset: 0, endOffset: 2 },
+    ]);
+
+    const spanPart = parts.find((part) => part.vocabularyItemId === '214');
+    expect(spanPart?.text).toBe('明日[あした]');
+    expect(spanPart?.surface).toBe('明日');
+    expect(parts.map((part) => part.surface).join('')).toBe('明日、学校に行きます。');
+  });
 });

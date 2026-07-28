@@ -48,8 +48,12 @@ function mergeTrailingPunctuation(segments: FuriganaSegment[]): FuriganaSegment[
     const isTrailingPunctuation =
       !segment.reading && segment.text.length === 1 && TRAILING_PUNCTUATION_RE.test(segment.text);
 
-    if (isTrailingPunctuation && merged.length > 0) {
-      const previous = merged[merged.length - 1];
+    const previous = merged.length > 0 ? merged[merged.length - 1] : null;
+
+    // Never merge into an annotated run: the punctuation would sit under that
+    // run's reading, and re-serialising the segment yields invalid notation
+    // (`明日、[あした]`) that loses the reading on the next parse.
+    if (isTrailingPunctuation && previous && !previous.reading) {
       merged[merged.length - 1] = { ...previous, text: previous.text + segment.text };
     } else {
       merged.push(segment);

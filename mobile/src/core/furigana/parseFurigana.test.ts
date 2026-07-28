@@ -28,6 +28,12 @@ describe('parseFurigana', () => {
     expect(last.text).not.toBe('。');
   });
 
+  it('keeps punctuation out of an annotated run so the reading survives a re-parse', () => {
+    const segments = parseFurigana('明日[あした]、学[がっ]校[こう]に行[い]きます。');
+    expect(segments[0]).toEqual({ text: '明日', reading: 'あした' });
+    expect(segments[1]).toEqual({ text: '、' });
+  });
+
   it('accepts katakana readings', () => {
     const segments = parseFurigana('東京[トウキョウ]');
     expect(segments).toContainEqual({ text: '東京', reading: 'トウキョウ' });
