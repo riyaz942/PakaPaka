@@ -150,18 +150,20 @@ export function ReviewCard({
 
   if (state === 'incorrect') {
     return (
-      <IncorrectReveal
-        item={item}
-        displayAnswer={displayAnswer ?? displayMeaning}
-        detail={revealDetail ?? null}
-        incompleteAnswer={incompleteAnswer}
-        stageTransition={stageTransition}
-        resultRef={resultRef}
-        rejectedAnswer={rejectedAnswer}
-        synonymState={synonymState}
-        onAddSynonym={onAddSynonym}
-        answerCollision={answerCollision}
-      />
+      <FadeSlideIn duration={FEEDBACK_ANIMATION_MS} className="w-full">
+        <IncorrectReveal
+          item={item}
+          displayAnswer={displayAnswer ?? displayMeaning}
+          detail={revealDetail ?? null}
+          incompleteAnswer={incompleteAnswer}
+          stageTransition={stageTransition}
+          resultRef={resultRef}
+          rejectedAnswer={rejectedAnswer}
+          synonymState={synonymState}
+          onAddSynonym={onAddSynonym}
+          answerCollision={answerCollision}
+        />
+      </FadeSlideIn>
     );
   }
 
