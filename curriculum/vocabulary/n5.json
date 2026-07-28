@@ -29036,7 +29036,14 @@
           "answer_text": "ホテル"
         }
       ],
-      "furigana": "ホテル"
+      "furigana": "ホテル",
+      "meaning_mnemonic": "Koichi's konbini run for onigiri turns into an all-nighter when the shelves multiply into fluorescent corridors, till after till after till, until he realizes he's wandered into a lobby lined with beds instead of shelves — he's checked into a hotel without meaning to.",
+      "reading_mnemonic": "ホテル is a loanword written exactly as it sounds, straight from the English <reading>hotel</reading> — just recognize 「<reading>ホテル</reading>」 as the borrowed sound and move on.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "heya-bangou",
@@ -29055,7 +29062,14 @@
           "answer_text": "へやばんごう"
         }
       ],
-      "furigana": "部屋[へや]番[ばん]号[ごう]"
+      "furigana": "部屋[へや]番[ばん]号[ごう]",
+      "meaning_mnemonic": "At Sei's school, the gym gets carved overnight into a maze of tiny rooms with no labels, so students keep wandering into supply closets looking for homeroom. The janitor storms through stapling a number to every single door until each one wears its room number like a name tag.",
+      "reading_mnemonic": "A hall monitor at Sei's school bellows through a megaphone, <reading>hey, uh — bang, GO!</reading>, banging a gong before sprinting off, and the scrambling classroom just catches her cry fading down the corridor: 「<reading>へやばんごう</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "juusho",
@@ -29074,7 +29088,14 @@
           "answer_text": "じゅうしょ"
         }
       ],
-      "furigana": "住[じゅう]所[しょ]"
+      "furigana": "住[じゅう]所[しょ]",
+      "meaning_mnemonic": "A courier at the riverbank keeps miscounting his stack of parcels, so he starts tying each one to a labeled post driven into the bank, one per house upstream, until every home along the water has its own numbered post marking exactly where its mail belongs — its address.",
+      "reading_mnemonic": "On the riverbank, the courier hollers a <reading>zoo show</reading> parade of names through his megaphone before untying the last parcel — the post reads 「<reading>じゅうしょ</reading>」, the address stamped in waterproof ink, and off he paddles.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bangou",
@@ -29093,7 +29114,14 @@
           "answer_text": "ばんごう"
         }
       ],
-      "furigana": "番[ばん]号[ごう]"
+      "furigana": "番[ばん]号[ごう]",
+      "meaning_mnemonic": "At the summit of the mountain trail, the lone vending machine refuses every coin unless you first announce which slot you want, so hikers gasping from the climb start shouting out a number before they can get their can of coffee — the machine only understands you by your number.",
+      "reading_mnemonic": "Partway up the mountain trail, hikers bang on the summit vending machine's glass, yelling <reading>bang, GO!</reading> at the slot they want, and the machine finally clatters out a can once it hears 「<reading>ばんごう</reading>」 shouted correctly.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "denwabangou",
@@ -29112,7 +29140,14 @@
           "answer_text": "でんわばんごう"
         }
       ],
-      "furigana": "電[でん]話[わ]番[ばん]号[ごう]"
+      "furigana": "電[でん]話[わ]番[ばん]号[ごう]",
+      "meaning_mnemonic": "The storm's <kanji>electricity</kanji> knocks the lights out at Koichi's konbini, and in the sudden dark the till clerk won't stop the <kanji>talk</kanji>, tongue wagging as he shouts a string of digits into the dead payphone. Nobody asked, but now you have his phone number.",
+      "reading_mnemonic": "At Grandma Kane's shrine, she bangs the enormous bell nine times, grabs the old phone, and chants <reading>でんわばんごう</reading> like a mantra while thumping a spare <reading>Denver bongo</reading> drum on every digit, refusing to hang up until the whole number lands.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "youji",
@@ -29131,7 +29166,14 @@
           "answer_text": "ようじ"
         }
       ],
-      "furigana": "用[よう]事[じ]"
+      "furigana": "用[よう]事[じ]",
+      "meaning_mnemonic": "You have exactly one afternoon and four separate errands — a form, a package, a shrine offering, a lost cat — and a goose at the riverbank follows you between every stop, honking as if supervising your business for the day. Four errands, one honking overseer: that's the whole word, errand, business, sorted.",
+      "reading_mnemonic": "On the mountain trail, a butler skids up to the vending machine and announces himself before every single errand: '<reading>ようじ</reading>, sir!' It comes out like <reading>yo, Jeeves</reading> shouted through cupped hands, over and over, one errand at a time.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsugou",
@@ -29150,7 +29192,14 @@
           "answer_text": "つごう"
         }
       ],
-      "furigana": "都[つ]合[ごう]"
+      "furigana": "都[つ]合[ごう]",
+      "meaning_mnemonic": "Sei's school reschedules the exam for the exact hour the sports field floods and the vending machine jams — three disasters stacking into one tidy circumstance. The teacher just shrugs and cancels class: how convenient the timing turned out to be. That's circumstances, and convenience, in one word.",
+      "reading_mnemonic": "At the riverbank, a fisherman reels in a vending machine still stocked with cold drinks, and all he can say is <reading>つごう</reading> — it comes out sounding like <reading>too good</reading> to be true. That's つごう: the lucky circumstance, the convenience nobody arranged.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "riyuu",
@@ -29169,7 +29218,14 @@
           "answer_text": "りゆう"
         }
       ],
-      "furigana": "理[り]由[ゆう]"
+      "furigana": "理[り]由[ゆう]",
+      "meaning_mnemonic": "Halfway up the mountain trail, a hiker turns back at the exact same rock every single time, and every time he has a brand new one lined up before anyone even asks — the sun, his knee, a text he needs to send. Stack enough of those up and you've got his reason, freshly invented, every single climb.",
+      "reading_mnemonic": "Grandma Kane finds another cat sprawled on the shrine steps and demands, '<reading>りゆう</reading>?' — which comes out sounding like <reading>really, you</reading>? — insisting the cat explain itself before it's allowed to nap there. That demand for an explanation is exactly what りゆう means: the reason.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kimochi",
@@ -29188,7 +29244,14 @@
           "answer_text": "きもち"
         }
       ],
-      "furigana": "気[き]持[も]ち"
+      "furigana": "気[き]持[も]ち",
+      "meaning_mnemonic": "The <kanji>spirit</kanji> puffing off your rice bowl never behaves the same way twice — some mornings it billows thick and warm, curling lazily upward; other mornings it comes out thin and jagged, quick to vanish. Whatever shape that rising wisp takes right now is exactly what you're carrying inside: your feeling, your mood.",
+      "reading_mnemonic": "Kiki the tree spirit slips from the shrine's mossy trunk to check on the sulking cats and croons her singsong <reading>“kee-mochi, kee-mochi”</reading> at each one, her own way of asking <reading>きもち</reading> — how are you feeling — until every tail flicks back up happy.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chikara-v",
@@ -29207,7 +29270,14 @@
           "answer_text": "ちから"
         }
       ],
-      "furigana": "力[ちから]"
+      "furigana": "力[ちから]",
+      "meaning_mnemonic": "That flexed-arm stroke you already know as <kanji>power</kanji> doesn't stay still — picture it arm-wrestling every kid at Sei's school, elbow slammed onto the sports field bench, muscle bulging. It flattens every challenger the same way every time: raw <kanji>strength</kanji>, just proving itself in a bigger arena.",
+      "reading_mnemonic": "力 keeps the exact reading you already learned for it, so the word for power and strength is simply <reading>ちから</reading> — no new sound to memorize.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kibun",
@@ -29226,7 +29296,14 @@
           "answer_text": "きぶん"
         }
       ],
-      "furigana": "気[き]分[ぶん]"
+      "furigana": "気[き]分[ぶん]",
+      "meaning_mnemonic": "The <kanji>spirit</kanji>-wisp that curls off warm rice drifts up the mountain trail and meets the same blade that once cut a pie into eight wedges. It slices the wisp into shifting <kanji>parts</kanji>, some warm, some sharp, and whichever part you're holding when you reach the vending machine at the summit — that's exactly your mood, your feeling.",
+      "reading_mnemonic": "気分 just stacks the readings you already know, 気（き）plus 分（ぶん）, giving you <reading>きぶん</reading> straight down the line — nothing new to learn.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "seki-seat",
@@ -29245,7 +29322,14 @@
           "answer_text": "せき"
         }
       ],
-      "furigana": "席[せき]"
+      "furigana": "席[せき]",
+      "meaning_mnemonic": "A heron wades to the exact same flat rock on the riverbank every single evening, shoves aside any duck already perched there, and refuses to fish from anywhere else. It has, unmistakably, claimed its seat, and nothing short of a flood will move it.",
+      "reading_mnemonic": "At Koichi's konbini, a heron waddles in from the riverbank and hops onto the one stool by the onigiri shelf, hissing <reading>“seh-kee, seh-kee”</reading> at anyone who gets close. The till beeps in protest, but the bird has already claimed its <reading>せき</reading>, and it isn't moving for till hours.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "basho",
@@ -29264,7 +29348,14 @@
           "answer_text": "ばしょ"
         }
       ],
-      "furigana": "場[ば]所[しょ]"
+      "furigana": "場[ば]所[しょ]",
+      "meaning_mnemonic": "Grandma Kane pins a paper map to the shrine gate and stabs one finger at a single dot, refusing to move it no matter how the wind flaps the paper. Everyone who asks directions gets sent to that exact dot — the place, and only that place.",
+      "reading_mnemonic": "At the mountain trail's lone vending machine, a badger drags out a hand-painted sign and slaps it against the machine, yelling that the <reading>bash show</reading> starts right <reading>ばしょ</reading> — this exact spot, nowhere else, no matter how far the crowd already climbed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chika",
@@ -29283,7 +29374,14 @@
           "answer_text": "ちか"
         }
       ],
-      "furigana": "地[ち]下[か]"
+      "furigana": "地[ち]下[か]",
+      "meaning_mnemonic": "That dangling tail on the shelf mark doesn't stop at the floor — it keeps boring straight <kanji>down, below</kanji> the konbini's tile until it opens into a second, windowless shop stocked entirely in the dark. Everything down there, beneath ordinary ground, is underground — the basement level Koichi never mentions to customers.",
+      "reading_mnemonic": "Kaa perches above Koichi's konbini and breathes one puff of fire clean through a floor grate. Down in the scorched cellar it leaves behind a cheeky little scorch mark — <reading>ちか</reading>, the <reading>cheeky</reading> ash patch — proof he was there, one floor underground.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mannaka",
@@ -29302,7 +29400,14 @@
           "answer_text": "まんなか"
         }
       ],
-      "furigana": "真[ま]ん中[なか]"
+      "furigana": "真[ま]ん中[なか]",
+      "meaning_mnemonic": "That same spear, driven clean through the mouth-shaped opening, doesn't stop at one skewer — it pins three coins to the shrine step in a perfect row, and no matter how Grandma Kane's cats bat at the ends, the spear always balances dead level at its <kanji>middle, inside</kanji> point. Whatever sits there, exactly equidistant from both edges, is the center — the true middle.",
+      "reading_mnemonic": "Chuu marches to the exact middle of the shrine steps and refuses to budge, topknot bobbing, no matter how the cats circle him. When Grandma Kane asks where he's planted himself, he squeaks the answer proudly: <reading>まんなか</reading> — <reading>the man in the middle</reading> — dead center, not one step off.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kaidan",
@@ -29321,7 +29426,14 @@
           "answer_text": "かいだん"
         }
       ],
-      "furigana": "階[かい]段[だん]"
+      "furigana": "階[かい]段[だん]",
+      "meaning_mnemonic": "The mountain trail swaps its steep dirt slope for a perfectly cut staircase overnight, one vending machine still stranded at the very top like nothing changed. Climbers now count each step aloud, relieved someone finally built proper stairs instead of a slope.",
+      "reading_mnemonic": "At Sei's school, a boy named Kai races his friend Dan up the new staircase, shouting a countdown as they climb: <reading>かいだん</reading> — <reading>Kai, Dan</reading> — one name per step, over and over, until they reach the landing out of breath. Stairs, and the boys who race them.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "erebeetaa",
@@ -29340,7 +29452,14 @@
           "answer_text": "エレベーター"
         }
       ],
-      "furigana": "エレベーター"
+      "furigana": "エレベーター",
+      "meaning_mnemonic": "A vending machine sits at the very top of the mountain trail, impossible to reach on foot. Some hiker gave up climbing years ago and bolted a box to the cliff face that just goes straight up, dinging at each impossible landing until the doors slide open right onto the summit. That box is the elevator.",
+      "reading_mnemonic": "エレベーター is a katakana loanword straight from English, so saying <reading>elevator</reading> is saying <reading>エレベーター</reading> — the sound is the whole word, no decoding needed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "esukareetaa",
@@ -29359,7 +29478,14 @@
           "answer_text": "エスカレーター"
         }
       ],
-      "furigana": "エスカレーター"
+      "furigana": "エスカレーター",
+      "meaning_mnemonic": "Grandma Kane's mossy shrine steps got tired of climbers stopping to catch their breath, so one day the whole staircase started crawling upward on its own, each step sliding onto the next in an endless diagonal parade. The shrine cats ride it like a conveyor belt straight past the enormous bell. That self-walking staircase is the escalator.",
+      "reading_mnemonic": "エスカレーター is a katakana loanword straight from English, so saying <reading>escalator</reading> is saying <reading>エスカレーター</reading> — the sound is the whole word.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iriguchi",
@@ -29378,7 +29504,14 @@
           "answer_text": "いりぐち"
         }
       ],
-      "furigana": "入[いり]口[ぐち]"
+      "furigana": "入[いり]口[ぐち]",
+      "meaning_mnemonic": "Koichi's konbini has one doorway low enough that you have to duck your head to step through — that's the ducking figure who <kanji>enters</kanji>. Beyond it the sliding doors gape like a giant <kanji>mouth</kanji>, wide open all night, swallowing customers whole. Duck, then get swallowed by the mouth: that gaping doorway is the entrance.",
+      "reading_mnemonic": "Koichi hangs a mock sign over the gaping doorway reading <reading>いりぐち</reading>, joking it looks like the entrance to an <reading>eerie Gucci</reading> boutique — pure velvet-rope energy for a konbini. Duck under, get swallowed by the mouth, and you've found the entrance.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "deguchi",
@@ -29397,7 +29530,14 @@
           "answer_text": "でぐち"
         }
       ],
-      "furigana": "出[で]口[ぐち]"
+      "furigana": "出[で]口[ぐち]",
+      "meaning_mnemonic": "Two mountains stacked one on top of the other are already more <kanji>exit</kanji> than anyone wants to climb, so the exhausted hiker at Koichi's konbini rest stop bolts for the nearest gaping <kanji>mouth</kanji> of a doorway instead of scaling a third summit. Two mountains too many plus a wide-open mouth: that's the exit.",
+      "reading_mnemonic": "出 read で and 口 read ぐち combine exactly as taught, giving <reading>でぐち</reading> straight from the parts you already know.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "madoguchi",
@@ -29416,7 +29556,14 @@
           "answer_text": "まどぐち"
         }
       ],
-      "furigana": "窓[まど]口[ぐち]"
+      "furigana": "窓[まど]口[ぐち]",
+      "meaning_mnemonic": "Koichi cuts one narrow slot into his konbini's front glass so customers never have to walk inside - just an open <kanji>mouth</kanji> in the pane, nothing else. You slide your money through it, a voice on the other side takes your order, and that slot is the service window.",
+      "reading_mnemonic": "A customer once tracked <reading>muddy goo</reading> straight up to Koichi's register, so he cut that slot to keep boots outside entirely. Now everyone hands their cash through the gap instead of walking in, and he calls the whole setup the <reading>まどぐち</reading> - the window that keeps the mud out.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hikidashi",
@@ -29435,7 +29582,14 @@
           "answer_text": "ひきだし"
         }
       ],
-      "furigana": "引[ひ]き出[だ]し"
+      "furigana": "引[ひ]き出[だ]し",
+      "meaning_mnemonic": "Your dresser has a wooden box wedged into it like a second peak stacked on the mountain of drawers above it. Tug the handle and the box finally does what its shape always threatened: it does its best <kanji>exit / leave</kanji> impression, sliding all the way out and dumping your socks on the floor. That sliding box is the drawer.",
+      "reading_mnemonic": "Hana sprints across the library the moment a card-catalog drawer jams, calling it her <reading>hickey dash</reading> - the mad scramble to yank it loose before it swallows someone's fingers. Everyone now calls the stuck drawer itself the <reading>ひきだし</reading>, since it's always the reason for her sprint.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "reizouko",
@@ -29454,7 +29608,14 @@
           "answer_text": "れいぞうこ"
         }
       ],
-      "furigana": "冷[れい]蔵[ぞう]庫[こ]"
+      "furigana": "冷[れい]蔵[ぞう]庫[こ]",
+      "meaning_mnemonic": "Every night at Grandma Kane's shrine, the rice offerings spoil in the heat before the cats even get to them, so the priest wedges a tall humming metal locker in beside the mossy steps. It breathes cold air and keeps everything frost-stiff till morning. Villagers just call the humming locker the refrigerator.",
+      "reading_mnemonic": "Rei keeps a penguin egg in Koichi's walk-in cooler and insists on calling the whole humming steel box her <reading>ray's zoo crate</reading>, since it's the only place cold enough for it. The other clerks shortened that to <reading>れいぞうこ</reading>, and now it just means the fridge.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sara",
@@ -29473,7 +29634,14 @@
           "answer_text": "さら"
         }
       ],
-      "furigana": "皿[さら]"
+      "furigana": "皿[さら]",
+      "meaning_mnemonic": "Everyone at the riverbank campsite balances their food on flat stones fished out of the water, one apiece, since nobody packed real ones. It works fine until the stones tip over the second a fish bone hits them. What the trip actually needed was a proper plate.",
+      "reading_mnemonic": "Sara refuses to eat off river stones like the rest of the campers and packs an actual dish for every single meal. The others tease that of course <reading>Sara</reading> brought her own <reading>さら</reading> - it's practically her name.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chawan",
@@ -29492,7 +29660,14 @@
           "answer_text": "ちゃわん"
         }
       ],
-      "furigana": "茶[ちゃ]碗[わん]"
+      "furigana": "茶[ちゃ]碗[わん]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the cats never come for the incense — they come for what's set beside it: a chipped ceramic bowl brimming with warm rice, left out every evening as an offering. By the time the bell stops ringing, every cat in the yard is circling that single rice bowl.",
+      "reading_mnemonic": "The head priest only allows one bowl of rice per cat, so he stands by the bell shouting <reading>ちゃわん</reading> — which lands in your ear as <reading>Cha, one!</reading> — one cry per cat, one bowl each, no seconds no matter how loudly they beg.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hashi-chopsticks",
@@ -29511,7 +29686,14 @@
           "answer_text": "はし"
         }
       ],
-      "furigana": "箸[はし]"
+      "furigana": "箸[はし]",
+      "meaning_mnemonic": "At the top of the mountain trail, the only vending machine sits with two thin metal prongs sticking out where the coin slot should be — the last hiker jammed his chopsticks in there trying to pry loose a stuck can. Nobody's fixed it since; they just call it the chopsticks machine.",
+      "reading_mnemonic": "By the time a hiker drags themselves up to that machine, all they can manage is a rasping <reading>はし</reading> — it comes out as <reading>ha-shh</reading>, half word, half exhale — right as they spot the two chopsticks still propping the jammed coin door open.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koppu",
@@ -29530,7 +29712,14 @@
           "answer_text": "コップ"
         }
       ],
-      "furigana": "コップ"
+      "furigana": "コップ",
+      "meaning_mnemonic": "At Koichi's konbini, the hot-drink machine drops every order with a hollow knock — kop — straight into a plastic cup waiting below. Regulars just call the whole machine 'the koppu machine,' since that's the sound the cup makes catching the drink every single time.",
+      "reading_mnemonic": "コップ is written exactly as it sounds — <reading>コップ</reading> — a katakana borrowing of the English word <reading>cup</reading>, no decoding needed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "supuun",
@@ -29549,7 +29738,14 @@
           "answer_text": "スプーン"
         }
       ],
-      "furigana": "スプーン"
+      "furigana": "スプーン",
+      "meaning_mnemonic": "In the cafeteria at Sei's school, someone catapults a lump of mashed potato clean across the room with a spoon during lunch, and it lands with a wet slap on the sports-field banner outside the window. Every year the students blame a new first-year, and every year it's the same bent spoon.",
+      "reading_mnemonic": "スプーン is written exactly as it sounds — <reading>スプーン</reading> — a katakana borrowing of the English word <reading>spoon</reading>, no decoding needed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "fooku",
@@ -29568,7 +29764,14 @@
           "answer_text": "フォーク"
         }
       ],
-      "furigana": "フォーク"
+      "furigana": "フォーク",
+      "meaning_mnemonic": "At Koichi's konbini, the till clerk jabs a four-pronged skewer into the rotating hot dog case just to see what happens, and the sausage spins loose, flies across the aisle, and lands spiked upright on the onigiri shelf like a tiny flag. Four sharp points, one impaled sausage: that whole ridiculous skewer is a fork.",
+      "reading_mnemonic": "<reading>フォーク</reading> is written exactly as it sounds - a borrowed word, so it is simply the English fork clipped down into kana, nothing to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "naifu",
@@ -29587,7 +29790,14 @@
           "answer_text": "ナイフ"
         }
       ],
-      "furigana": "ナイフ"
+      "furigana": "ナイフ",
+      "meaning_mnemonic": "At the top of the mountain trail, a hiker too hungry to wait rams a thin blade sideways into the vending machine's coin slot, prying the stuck snack loose in one clean, mean slice before it even finishes falling. The narrow single-edged tool built for exactly that kind of job is a knife.",
+      "reading_mnemonic": "<reading>ナイフ</reading> is written exactly as it sounds - it comes straight from English knife, rounded off into kana, nothing more to it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taoru",
@@ -29606,7 +29816,14 @@
           "answer_text": "タオル"
         }
       ],
-      "furigana": "タオル"
+      "furigana": "タオル",
+      "meaning_mnemonic": "Down at the riverbank, someone finishing the dishes flings a soaked cloth overhead to dry it in the wind, and it sails wide, landing draped square across a passing fisherman's shoulders, soaking through his shirt before he's even noticed. That oversized wet cloth everyone keeps grabbing for and missing is a towel.",
+      "reading_mnemonic": "<reading>タオル</reading> is written exactly as it sounds - a loanword from the English towel, squeezed into kana, nothing to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sekken",
@@ -29625,7 +29842,14 @@
           "answer_text": "せっけん"
         }
       ],
-      "furigana": "石[せっ]鹸[けん]"
+      "furigana": "石[せっ]鹸[けん]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, one of the resident cats bats a pale, chalky slab off the mossy steps and it tumbles straight into the offering basin, foaming white as it rolls under the water until the cat backs away, thoroughly appalled at what it started. A stone that lathers the moment it touches water is soap.",
+      "reading_mnemonic": "A stagehand named Ken keeps a foaming stone can set backstage at the shrine's bell tower, and every time he sets the can down near water it hisses into suds; the caretaker started calling it his <reading>せっけん</reading>, the <reading>set-Ken</reading> can, and the name outlived the joke and stuck to every bar of soap since.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "haburashi",
@@ -29644,7 +29868,14 @@
           "answer_text": "はブラシ"
         }
       ],
-      "furigana": "歯[は]ブラシ"
+      "furigana": "歯[は]ブラシ",
+      "meaning_mnemonic": "Koichi's konbini vending machine jams and spits out nothing but bristled sticks — hundreds of them, rattling into the till tray while the beeping never stops. Koichi tries one on his molars out of curiosity and it actually works. By morning he's stacked them by the onigiri shelf with a hand-written label: toothbrush, one per customer.",
+      "reading_mnemonic": "The stickers on Koichi's new stock just say <reading>はブラシ</reading> — he sounded it out as 'ha' for the gap-toothed grin on the box art and 'brush' for the bristles, so regulars just call them <reading>ha-brush</reading> and never mispronounce the label again.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yakkyoku",
@@ -29663,7 +29894,14 @@
           "answer_text": "やっきょく"
         }
       ],
-      "furigana": "薬[やっ]局[きょく]"
+      "furigana": "薬[やっ]局[きょく]",
+      "meaning_mnemonic": "Hikers stagger up the mountain trail certain the summit vending machine only sells sports drinks, but this one's shelves are stocked with bandages, cough drops, and blister pads instead. A local hiker who restocks it twice a week finally admits she carries the whole supply up on her own back — the trail's unofficial pharmacy, open only when she feels like climbing.",
+      "reading_mnemonic": "Everyone on the trail calls her <reading>やっきょく</reading> — it started as an exhausted climber gasping <reading>'yuck, yo, cure'</reading> at the sight of her bandage stash, and it stuck so hard the vending machine now has it taped above the coin slot.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iin",
@@ -29682,7 +29920,14 @@
           "answer_text": "いいん"
         }
       ],
-      "furigana": "医[い]院[いん]"
+      "furigana": "医[い]院[いん]",
+      "meaning_mnemonic": "Sei's school converts the equipment closet into a one-desk clinic every flu season — a single cot, a desk fan, and a nurse who treats every complaint with the same orange lozenge. Sei fakes a stomachache to skip laps, then turns pale for real when the lozenge turns out to be a mislabeled wasabi candy. Word spreads, and the closet earns a hand-lettered sign: clinic, enter at your own risk.",
+      "reading_mnemonic": "The nurse only ever answers <reading>いいん</reading> — 'yes, fine' — no matter the symptom, patting the cot and repeating <reading>'ee-een, ee-een'</reading> like a metronome until whoever's sick just gives up arguing and lies down.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kanban",
@@ -29701,7 +29946,14 @@
           "answer_text": "かんばん"
         }
       ],
-      "furigana": "看[かん]板[ばん]"
+      "furigana": "看[かん]板[ばん]",
+      "meaning_mnemonic": "A washed-up plank keeps drifting back to the same spot on the riverbank no matter how far downstream the current drags it, until someone finally hauls it out, props it upright in the mud, and nails a warning to it. Within a week every angler on the bank reads it before casting a line — the plank has become the riverbank's one official signboard.",
+      "reading_mnemonic": "Anglers just call the plank <reading>かんばん</reading>, shorthand born from an old fisherman grumbling <reading>'can ban'</reading> fishing here since the current keeps wrecking his line, and the name outlasted his complaint by years.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chizuchou",
