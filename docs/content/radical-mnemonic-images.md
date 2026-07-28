@@ -1,117 +1,113 @@
 # Radical mnemonic images — maintainer workflow
 
-This guide covers how to create, host, and wire radical mnemonic images for the mobile app.
+This guide covers how to create, commit, and wire radical mnemonic images for the mobile app.
+
+**Scope:** radicals only. Kanji (and vocab/grammar) do not get mnemonic images.
+
+## Decision (July 2026)
+
+Radical mnemonic images are **stored in this repository and bundled into the app binary**. There is no CDN, R2 bucket, or remote image host — learners get images offline on first install.
+
+Rationale: the taught radical set is small and finite (~150 for N5+N4; Kangxi ceiling 214), art changes rarely, and bundling matches the offline-first product better than HTTPS fetch + disk cache.
 
 ## Purpose
 
-- **FR34** — Maintainers manage mnemonic image assets.
+- **FR34** — Maintainers manage mnemonic image assets (in-repo files + curriculum refs).
 - **FR4b** — Learners see radical mnemonic images in the app.
-- **FR37b** — Curriculum JSON stores full HTTPS URLs in `visual_mnemonic_url`, compiled to `items.visual_mnemonic_url`.
-- **FR49 / NFR20** — The app caches images on disk and falls back to text when an image is missing or fails to load.
+- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** (compiled into `items.visual_mnemonic_url` or a successor field). Legacy seed rows may still carry placeholder `https://…` values until the schema/app wiring lands; those placeholders are not a hosting plan.
+- **NFR20** — Missing or unloadable assets fall back to text (`mnemonic_text` / meaning). No broken-image icon.
 
-Placeholder URLs in seed data are valid HTTPS links. They may return **404** until assets are uploaded. The app must still show readable text fallback — that is expected behavior, not a bug.
+## Where files live
+
+| Role | Path |
+| --- | --- |
+| Radical art (source of truth) | `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` (or `.png`) |
+| Git | Prefer **Git LFS** for `mobile/assets/radicals/**` (same pattern as `curriculum.db`) so clones stay lean |
+| App | Expo packs `mobile/assets/` into the binary; images update with app releases, not a separate media deploy |
+
+Slug must match the radical entry in `curriculum/radicals/*.json`. JLPT segment is lowercase (`n5`, `n4`, …).
+
+Examples:
+
+- `mobile/assets/radicals/n5/ichi.webp`
+- `mobile/assets/radicals/n5/ni.webp`
 
 ## Asset specification
 
 | Property | Recommendation |
 | --- | --- |
-| Format | PNG (preferred) |
+| Format | **WebP preferred**; PNG acceptable |
 | Aspect ratio | Square or 4:3 |
-| Max file size | ~512 KB per image |
+| **Hard size budget** | **≤80 KB per image** (aim 30–80 KB). Pack target: ~150 radicals ≈ **5–12 MB** total |
+| Soft ceiling (reject in review) | Do not ship images that push the radical pack toward tens of MB; recompress or simplify before merging |
 | Transparency | OK |
-| Naming | `{slug}.png` (matches curriculum `slug`, e.g. `ichi.png`) |
+| Naming | `{slug}.webp` / `{slug}.png` (matches curriculum `slug`) |
 
-Review checklist before upload:
+The old ~512 KB-per-image ceiling assumed CDN delivery. At that size, ~214 radicals would bloat the IPA/APK — **byte budget is the real constraint**, not hosting.
+
+Review checklist before commit:
 
 - Image clearly illustrates the radical mnemonic
 - No offensive or misleading content
 - Readable at ~140 px display height on a phone
-- File size reasonable for mobile cache
+- File size within the hard budget above
+- If derived from KanjiVG: record share-alike obligation in root `NOTICE` (CC BY-SA 3.0)
 
-## URL convention
+## Curriculum / app wiring
 
-Public CDN pattern (single source of truth):
+Target shape (implement with Phase 3; until then seed may still show HTTPS placeholders and text fallback):
 
-```text
-https://assets.japanese-learning.app/radicals/{jlpt_lower}/{slug}.png
-```
-
-Examples:
-
-- `https://assets.japanese-learning.app/radicals/n5/ichi.png`
-- `https://assets.japanese-learning.app/radicals/n5/ni.png`
-
-JLPT level segment is lowercase (`n5`, `n4`, …). The slug must match the radical entry in `curriculum/radicals/*.json`.
-
-## Generation tips
-
-- Use consistent art style across a level (color palette, line weight, background).
-- Anchor the mnemonic story in `mnemonic_text` — the image should reinforce that text.
-- Prefer simple compositions; detail is lost at small sizes.
-- Run a quick visual pass on device after upload (Learn tab).
-
-## Cloudflare R2 upload (high level)
-
-1. Create an R2 bucket (e.g. bound to custom domain `assets.japanese-learning.app`).
-2. Enable **public read** for the `radicals/` prefix (or entire bucket if appropriate).
-3. Map the custom domain in Cloudflare DNS / R2 settings.
-4. Upload objects with the path `{jlpt_lower}/{slug}.png`.
-
-**Do not commit credentials** to this repository. Use local env vars or a secrets manager.
-
-### Example: Wrangler CLI
-
-```bash
-# Placeholders — replace BUCKET and paths
-wrangler r2 object put "BUCKET/radicals/n5/ichi.png" --file ./out/ichi.png --content-type image/png
-```
-
-### Example: AWS CLI (S3-compatible API)
-
-```bash
-# Placeholders — configure endpoint + credentials via env/profile
-aws s3 cp ./out/ichi.png s3://BUCKET/radicals/n5/ichi.png \
-  --endpoint-url https://<account-id>.r2.cloudflarestorage.com \
-  --content-type image/png
-```
-
-## Curriculum update
-
-1. Edit the radical row in `curriculum/radicals/n5.json` (or the relevant level file):
-
-   ```json
-   "visual_mnemonic_url": "https://assets.japanese-learning.app/radicals/n5/ichi.png"
-   ```
-
-2. From repo root, validate and compile:
+1. Commit the image under `mobile/assets/radicals/{level}/{slug}.…`.
+2. Point the radical row at the bundled asset (path or stable asset key — exact field shape lands with the schema change that drops the HTTPS-only rule).
+3. From repo root:
 
    ```bash
    npm run validate-schema && npm run compile-curriculum
    ```
 
-3. Commit:
-   - Updated JSON under `curriculum/`
+4. Commit together:
+   - Image file(s) under `mobile/assets/radicals/…` (LFS)
+   - Updated JSON under `curriculum/radicals/`
    - Recompiled `mobile/assets/curriculum-seed/curriculum.db` (Git LFS)
 
-4. CI workflow `compile-curriculum.yml` must pass on the PR.
+5. CI `compile-curriculum.yml` must pass; validator should eventually fail if a radical references a missing bundled file.
+
+`MnemonicImage` should load via the bundler / local asset map (not `source={{ uri: https… }}`). Text fallback remains for missing files.
+
+## Generation tips
+
+- Use consistent art style across a level (color palette, line weight, background).
+- Anchor the image in the radical's mnemonic / description text — generate text first, then art from it (see content pipeline Phase 3).
+- Prefer simple compositions; detail is lost at small sizes.
+- Compress aggressively (WebP, limited palette) before committing.
+- Run a quick visual pass on device after wiring (Learn / radical detail).
+
+## Tier 1 vs Tier 2 (content pipeline Phase 3)
+
+Both tiers are **radicals only** — same paths and size budget.
+
+- **Tier 1 — deterministic KanjiVG cards:** render radical stroke SVGs into card images (theme-consistent backgrounds, readable at 140 px). Ships coverage quickly; visually consistent.
+- **Tier 2 — curated AI art (~150):** prompted from each radical's established mnemonic/description; human-review every image. Replaces or supersedes Tier 1 per radical when ready.
 
 ## Verification
 
-1. Open the app **Learn** tab (N5 radical list).
-2. Online: confirm images load for uploaded assets; placeholders show **text fallback** until upload.
-3. Offline: revisit a radical whose image loaded once — cached image should appear without network.
-4. Force a bad URL in dev — text fallback only, no broken-image icon.
+1. Open radical detail / lesson with a wired asset — image shows with no network.
+2. Airplane mode on a fresh install — image still shows (bundled, not “cache after first fetch”).
+3. Missing file or bad ref — text fallback only, no broken-image icon.
+4. After replacing an image, ship a new app build (bundled assets do not OTA independently of the binary).
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Action |
 | --- | --- | --- |
-| Text instead of image | 404 or URL typo | Confirm R2 object path and JSON URL match |
-| Text instead of image | Offline, never cached | Expected (NFR20); load online first |
-| Stale image after replace | expo-image disk cache | Reinstall app or clear app data; optional future: `Image.clearDiskCache()` |
-| CI compile fails | Schema / HTTPS validation | Fix JSON; URLs must be `https://` |
+| Text instead of image | Asset not committed or path/slug mismatch | Confirm file under `mobile/assets/radicals/…` and curriculum ref |
+| Text instead of image | Schema/app still on HTTPS placeholder | Expected until Phase 3 wiring; fallback is correct |
+| Stale image after replace | Old binary / Metro cache | Rebuild app; clear Metro cache if needed |
+| CI / validate fails | Missing file or oversize asset | Add file, recompress, or fix slug |
+| Clone / repo huge | Images not on LFS | Track `mobile/assets/radicals/**` with Git LFS |
 
 ## Related docs
 
-- [curriculum/README.md](../curriculum/README.md) — compile commands and FR37b overview
-- Story 1.7 implementation — `MnemonicImage` component with `cachePolicy="disk"`
+- [curriculum/README.md](../../curriculum/README.md) — compile commands and radical image overview
+- [content-pipeline-plan.md](./content-pipeline-plan.md) — Phase 3 image generation
+- `MnemonicImage` — shared renderer (text fallback); update load path when bundling lands

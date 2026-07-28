@@ -50,9 +50,11 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013) + “Lea
 ## Partial
 
 ### [Radical mnemonic images](./content/radical-mnemonic-images.md)
-**Done:** `MnemonicImage` (disk cache + text fallback), HTTPS URL validation, curriculum placeholder URLs for all N5 + N4 radicals, maintainer upload/wiring runbook.
+**Done:** `MnemonicImage` (text fallback), curriculum placeholder refs for all N5 + N4 radicals, maintainer runbook.
 
-**Not done:** Image generation, R2/CDN upload, and live assets. CDN URLs do not currently serve usable images — the app shows text fallback. No local PNG assets in the repo.
+**Decision (July 2026):** images are **in-repo + bundled** under `mobile/assets/radicals/` (Git LFS, ≤80 KB/image) — no CDN/R2. **Radicals only** (no kanji images).
+
+**Not done:** Image generation, bundled asset files, schema/app wiring off HTTPS placeholders onto local asset refs. App still shows text fallback.
 
 ### [Furigana support plan](./content/furigana-support-plan.md)
 **Done:** Schema + compile/validate, generation pipeline, corpus coverage (vocab / examples / passages / questions), `FuriganaText`, Settings preference (`auto` / `shown` / `hidden`), mastery-aware auto + per-word overrides (Phase 4 shipped early). Review prompts correctly omit furigana.
@@ -112,7 +114,7 @@ drafts recorded under an older prompt version so a regen is wholesale, not a pat
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read `mnemonic_text` only — outside R1.2's scope
 - N4 grammar lessons (0) and N4 mnemonic/example authoring
 - Cast-coherence / ship gate for draft → reviewed mnemonics & examples
-- Phase 3 radical/kanji images (KanjiVG card render + Tier 2 art from radical `description`) — overlaps radical-mnemonic-images CDN gap
+- Phase 3 radical images only (KanjiVG Tier 1 + Tier 2 art → `mobile/assets/radicals/`, bundled; drop HTTPS-only `visual_mnemonic_url`; no kanji images)
 - Phase 4 closed-loop reading generation + 50–60% humorous tone mix (`word_count` never set — 0/10 N5 and 0/9 N4 passages)
 - Phase 5 review tooling (`npm run review-content` / local HTML review UI)
 - Settings → About attribution UI (NOTICE exists; in-app surface does not)

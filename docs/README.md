@@ -16,7 +16,7 @@ For detailed done / not-done status, see [working-history.md](./working-history.
 
 | Doc | Notes |
 | --- | --- |
-| [content/radical-mnemonic-images.md](./content/radical-mnemonic-images.md) | Radical mnemonic PNG → R2 → curriculum compile |
+| [content/radical-mnemonic-images.md](./content/radical-mnemonic-images.md) | Radical mnemonic images in-repo → bundled in app build |
 | [content/furigana-support-plan.md](./content/furigana-support-plan.md) | Furigana schema / pipeline / UI (shipped; reference) |
 
 ## Feedback plans

@@ -21,15 +21,11 @@ Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`).
 
 ## Radical mnemonic images (FR37b)
 
-Radical rows store full HTTPS URLs in `visual_mnemonic_url`, compiled to `items.visual_mnemonic_url`. Expected CDN pattern:
+**Decision:** radical images live **in the repo and are bundled with the app** — no CDN, and **no kanji images**. Files go under `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` (Git LFS preferred), with a hard per-image size budget so the pack stays small (~5–12 MB for ~150 radicals).
 
-`https://assets.japanese-learning.app/radicals/n5/{slug}.png`
+Curriculum rows will point at those bundled assets (schema/app wiring lands with Phase 3). Seed data may still carry legacy placeholder `https://…` values until then; the app shows **text fallback** when an image is missing — that is expected, not a hosting plan.
 
-N4 uses the same pattern with `n4/` in the path (e.g. `…/radicals/n4/n4-hito.png`).
-
-See **[docs/content/radical-mnemonic-images.md](../docs/content/radical-mnemonic-images.md)** for the full maintainer workflow: asset spec, R2 upload, curriculum re-compile, and verification.
-
-Placeholder URLs are valid HTTPS until assets ship. The app shows **text fallback** (`mnemonic_text` or meaning label) when an image 404s or is offline-uncached — do not block releases on CDN going live.
+See **[docs/content/radical-mnemonic-images.md](../docs/content/radical-mnemonic-images.md)** for asset spec, paths, size budget, and verification.
 
 ## Item ID assignment
 

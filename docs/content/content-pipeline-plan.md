@@ -1,8 +1,9 @@
 # Content quality pipeline — plan
 
 Goal: bring curriculum content up to the quality bar of the best commercial tools —
-MaruMori-depth grammar lessons, WaniKani-depth radical/kanji mnemonics with images,
-and genuinely graded reading passages — without copying any copyrighted prose.
+MaruMori-depth grammar lessons, WaniKani-depth radical/kanji mnemonics (with
+**radical-only** mnemonic images), and genuinely graded reading passages — without
+copying any copyrighted prose.
 
 Quality reference: the saved MaruMori lesson (かどうか・Question-word + か). What makes
 it good, concretely:
@@ -27,9 +28,9 @@ This is a schema + content + tooling gap, not just missing data.
    Tatoeba sentences are CC BY 2.0 FR. All are compatible with a free open-source app,
    but require an attribution screen in Settings and a NOTICE file in the repo.
    Avoid NC-licensed sources (e.g. Tae Kim is CC BY-NC-SA) — NC is a legal gray zone
-   even for a free app. Note: KanjiVG's share-alike means the Tier 1 card PNGs we
-   render from its SVGs are themselves CC BY-SA 3.0 — the R2 assets inherit the
-   license; record this in the NOTICE file.
+   even for a free app. Note: KanjiVG's share-alike means radical Tier 1 card images we
+   render from its SVGs are themselves CC BY-SA 3.0 — the **bundled** assets in
+   `mobile/assets/radicals/` inherit the license; record this in the NOTICE file.
    **Tatoeba lane decision:** Tatoeba sentences are *style anchors only* — we generate
    original examples and never ship Tatoeba text verbatim or "adapted" (a paraphrase of
    a CC BY sentence is still a derivative work requiring per-sentence attribution;
@@ -207,7 +208,7 @@ correct *facts* before any AI touches anything.
 | vocab glosses, readings, part-of-speech, common-word flags | JMdict | EDRDG (CC BY-SA) | verify vocab meanings/readings; pick example vocab |
 | JP/EN sentence pairs searchable by word | Tatoeba | CC BY 2.0 FR | candidate pool for example sentences (real, native-written) |
 | furigana segmentation for JMdict entries | JmdictFurigana | CC BY-SA | furigana for vocab; base dictionary for the tokenizer |
-| stroke-order SVGs with per-stroke/-component grouping | KanjiVG | CC BY-SA 3.0 | Phase 3 image cards |
+| stroke-order SVGs with per-stroke/-component grouping | KanjiVG | CC BY-SA 3.0 | Phase 3 radical Tier 1 cards |
 | JP tokenizer | **reuse `furigana.py`'s fugashi/unidic tagger** (already in `_build/requirements.txt`) | BSD | level-checking examples and passages (Phases 2/4) |
 
 **One tokenizer, not two.** The level-checker must use the same fugashi/unidic tagger
@@ -593,24 +594,30 @@ Failures are auto-requeued with the validator error appended to the prompt, **ca
 3 attempts**, then written with `review_status: flagged_for_rewrite` for manual
 handling so batches never hang on an unsatisfiable constraint.
 
-## Phase 3 — Images
+## Phase 3 — Images (radicals only)
 
-Extends `docs/content/radical-mnemonic-images.md` (spec: PNG, square/4:3, ≤512 KB, R2 at
-`https://assets.japanese-learning.app/radicals/{level}/{slug}.png`; app already has
-disk caching + text fallback).
+Extends `docs/content/radical-mnemonic-images.md`. **Kanji get no mnemonic images** —
+pictorial mnemonics stop at the radical layer; kanji use text mnemonics only.
 
-- **Tier 1 — deterministic, ship first:** script renders KanjiVG SVGs into card PNGs —
-  the character with its mnemonic-relevant component highlighted in the
-  `content-radical` accent color, on theme-consistent backgrounds. Covers *all* kanji
-  and radicals immediately; zero marginal cost; visually consistent by construction.
-  Add a `kanji/{level}/{slug}.png` prefix alongside the existing radicals convention.
-- **Tier 2 — curated AI art for radicals only (~150 items):** image-generation model
-  prompted from each radical's `description` (Rev 1; formerly `mnemonic_text` —
-  text is written first and the image is generated from it, which is what keeps
-  the learner-facing description matching the image), one shared style directive (flat color,
-  bold line weight, readable at 140 px per the existing checklist). Small enough to
-  human-review every image. Kanji stay on Tier 1 cards — pictorial mnemonics matter
-  most at the radical layer.
+**Hosting decision (July 2026): local only** — commit images under
+`mobile/assets/radicals/{level}/{slug}.webp` (Git LFS), bundle them into the app
+binary, and resolve them as bundled assets in `MnemonicImage`. No CDN / R2 /
+remote URLs. Hard size budget **≤80 KB per image** (pack target ~5–12 MB for
+~150 radicals) so the IPA/APK stays sane; text fallback when a file is missing.
+
+Schema/app today may still expect HTTPS placeholders in `visual_mnemonic_url`;
+Phase 3 includes dropping that rule in favor of bundled asset refs.
+
+- **Tier 1 — deterministic, ship first:** script renders KanjiVG radical SVGs into
+  card images on theme-consistent backgrounds. Covers taught radicals immediately;
+  zero hosting cost; visually consistent by construction.
+  Path: `mobile/assets/radicals/{level}/{slug}.…`.
+- **Tier 2 — curated AI art (~150 items):** image-generation model prompted from
+  each radical's mnemonic/description (text is written first and the image is
+  generated from it, which is what keeps the learner-facing prose matching the
+  image), one shared style directive (flat color, bold line weight, readable at
+  140 px per the existing checklist). Same in-repo paths and size budget. Small
+  enough to human-review every image.
 
 ## Phase 4 — Reading passages
 
@@ -661,10 +668,10 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | 2 | Phase 1 tuple→dict restructure, importers + fact audit, fix `_build` facts; spot-check allowed-vocab derivation | 2–3 days | `generate.py` output unchanged by restructure; audit report clean |
 | 3 | Voice doc + cast bible → **grammar pilot: 10 N5 points** (Phase 2a) | 1 day + iteration | side-by-side read against the かどうか lesson, in the Phase 0.5 renderer — go/no-go on the whole approach |
 | 4 | Batch remaining N5+N4 grammar; review | ~1 week (mostly review) | all lessons `reviewed` |
-| 5 | Kanji/radical mnemonics (2b) + Tier 1 image cards (Phase 3) | 1–2 days | validator green, spot review + cast-coherence pass |
+| 5 | Kanji/radical mnemonics (2b) + radical Tier 1 image cards (Phase 3) | 1–2 days | validator green, spot review + cast-coherence pass |
 | 6 | Example sentence upgrade (2c) | 1 day | level-check green |
 | 7 | Reading passages (Phase 4) | 1 day | tokenizer loop green, full read |
-| 8 | Tier 2 radical art, R2 upload per existing doc | best effort | per-image visual review |
+| 8 | Tier 2 radical art → commit under `mobile/assets/radicals/` (LFS), wire bundled refs | best effort | per-image visual review + size budget |
 
 ### Rev 1 execution order (supersedes steps 5–6 above where they overlap)
 
@@ -704,7 +711,7 @@ review tooling) starting with N5 — everything else in the plan still stands.
 
 - **Attribution UI:** Settings → About, grouped by source type (dictionary data:
   JMdict/KANJIDIC2/KRADFILE — EDRDG; furigana: JmdictFurigana; stroke orders: KanjiVG,
-  incl. the share-alike note on our derived PNGs). Tatoeba appears only if we ever ship
+  incl. the share-alike note on our derived radical card images). Tatoeba appears only if we ever ship
   its text (we don't, per the lane decision). Required before shipping Phase 1 data.
 - **N3+ expansion:** same pipeline, but grammar point *inventory* for N3+ needs
   curating first (open lists vary in quality); out of scope here.
