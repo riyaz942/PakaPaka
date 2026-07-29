@@ -34,6 +34,7 @@ import { listSynonymsForItems, type UserSynonym } from '@/data/user/userSynonymR
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
 import { getBoosts } from '@/data/user/relatedItemBoostRepository';
 import { getWeaknessBiasEnabled } from '@/data/user/preferencesRepository';
+import { isVacationActive } from '@/data/user/vacationRepository';
 import { getWeaknessScores } from '@/data/user/weaknessRepository';
 import {
   applyReviewPriority,
@@ -162,6 +163,14 @@ export function useReviewQueue(): UseReviewQueueResult {
 
     try {
       const t0 = Date.now();
+
+      // Vacation mode freezes reviews. Home already hides the entry point; this
+      // covers deep links and the legacy href:null routes.
+      if (isVacationActive(userDb)) {
+        setQueue([]);
+        setIsLoading(false);
+        return;
+      }
 
       const inProgressIds = getInProgressItemIds(userDb);
       if (inProgressIds.length > 0) {

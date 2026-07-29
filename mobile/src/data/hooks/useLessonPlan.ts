@@ -22,6 +22,7 @@ import {
   getStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
 import { getDueSrsStates, getSrsStatesForItems } from '@/data/user/srsStateRepository';
+import { isVacationActive } from '@/data/user/vacationRepository';
 
 export type LessonPlan = {
   items: LessonCandidate[];
@@ -113,6 +114,19 @@ export function useLessonPlan(
   useEffect(() => {
     setIsLoading(true);
     try {
+      // Vacation mode pauses lessons as well as reviews. Home hides the entry
+      // point; this covers deep links straight into /lesson.
+      if (isVacationActive(userDb)) {
+        setPlan({
+          items: [],
+          level: null,
+          size: 0,
+          allowance: EMPTY_ALLOWANCE,
+          capReached: false,
+        });
+        return;
+      }
+
       const startingLevel = getStartingJlptLevel(userDb) ?? 'N5';
       const intensity = getSessionIntensity(userDb);
       const size = lessonSizeForIntensity(intensity);

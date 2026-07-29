@@ -22,6 +22,7 @@ import {
   getReducedMotionEnabled,
   getReviewAutoAdvanceEnabled,
   getThemeMode,
+  getVacationStartedAt,
   isOnboardingCompleted,
   PREFERENCE_KEYS,
   setPreference,
@@ -41,6 +42,7 @@ import {
   setShadowModePromptSnoozedUntil,
   setStartingJlptLevel,
   setThemeMode,
+  setVacationStartedAt,
 } from '@/data/user/preferencesRepository';
 
 describe('preferencesRepository JLPT onboarding preferences', () => {
@@ -249,6 +251,53 @@ describe('preferencesRepository review auto-advance (Lightning Mode) preference'
 
     setReviewAutoAdvanceEnabled(db, false);
     expect(getReviewAutoAdvanceEnabled(db)).toBe(false);
+  });
+});
+
+describe('preferencesRepository vacation mode start timestamp', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('defaults to null when unset', async () => {
+    const db = await createUserDb();
+    expect(getVacationStartedAt(db)).toBeNull();
+  });
+
+  it('round-trips the ISO start timestamp', async () => {
+    const db = await createUserDb();
+
+    setVacationStartedAt(db, '2026-07-01T09:00:00.000Z');
+
+    expect(getVacationStartedAt(db)).toBe('2026-07-01T09:00:00.000Z');
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.vacationStartedAt,
+      )?.value,
+    ).toBe('2026-07-01T09:00:00.000Z');
+  });
+
+  it('removes the row when set to null, so "off" reads back as null', async () => {
+    const db = await createUserDb();
+
+    setVacationStartedAt(db, '2026-07-01T09:00:00.000Z');
+    setVacationStartedAt(db, null);
+
+    expect(getVacationStartedAt(db)).toBeNull();
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.vacationStartedAt,
+      ),
+    ).toBeFalsy();
   });
 });
 

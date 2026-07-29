@@ -19,6 +19,7 @@ import { useReducedMotion } from '@/data/hooks/useReducedMotion';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
+import { useVacationMode } from '@/data/hooks/useVacationMode';
 import {
   clearOnboardingCompleted,
   getNotificationTime,
@@ -60,6 +61,12 @@ const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] 
   { value: 'hidden', label: 'Always hidden' },
 ];
 
+function formatVacationStart(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return 'earlier';
+  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
@@ -73,6 +80,12 @@ export default function SettingsScreen() {
   } = useFuriganaOverrideList();
   const { autoAdvanceEnabled, setAutoAdvanceEnabled } = useReviewAutoAdvance();
   const {
+    isVacationActive,
+    startedAt: vacationStartedAt,
+    start: startVacationMode,
+    end: endVacationMode,
+  } = useVacationMode();
+  const {
     canEnable: shadowModeCanEnable,
     isEnabled: shadowModeEnabled,
     enable: enableShadowMode,
@@ -85,6 +98,7 @@ export default function SettingsScreen() {
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
   const [goalInput, setGoalInput] = useState('');
   const [goalError, setGoalError] = useState(false);
+  const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
   const isRequestingPermission = useRef(false);
 
   useEffect(() => {
@@ -120,6 +134,25 @@ export default function SettingsScreen() {
   const handleWeaknessBiasToggle = (value: boolean) => {
     setWeaknessBiasEnabled(userDb, value);
     setWeaknessBiasEnabledState(value);
+  };
+
+  const handleVacationToggle = (value: boolean) => {
+    if (value) {
+      startVacationMode();
+      setVacationResultMessage(null);
+      return;
+    }
+    const result = endVacationMode();
+    if (!result.ok) {
+      setVacationResultMessage(result.error.userMessage ?? result.error.message);
+      return;
+    }
+    const { shiftedCount } = result.value;
+    setVacationResultMessage(
+      shiftedCount > 0
+        ? `Welcome back — ${shiftedCount} ${shiftedCount === 1 ? 'review' : 'reviews'} rescheduled.`
+        : 'Welcome back — nothing needed rescheduling.',
+    );
   };
 
   const handleNotificationsToggle = async (value: boolean) => {
@@ -260,6 +293,35 @@ export default function SettingsScreen() {
             onValueChange={setAutoAdvanceEnabled}
           />
         </View>
+      </View>
+
+      <View className="mt-8">
+        <Text className="text-body font-semibold text-primary">Vacation mode</Text>
+
+        <View className="mt-4 flex-row items-center justify-between">
+          <View className="flex-1 pr-space-md">
+            <Text className="text-body text-primary">Pause reviews and lessons</Text>
+            <Text className="mt-1 text-body-sm text-secondary">
+              {isVacationActive && vacationStartedAt
+                ? `Paused since ${formatVacationStart(vacationStartedAt)}. Turn this off when you're back and your reviews will pick up where they left off.`
+                : "Going away? Nothing piles up while this is on — your reviews wait for you and resume where you left off."}
+            </Text>
+          </View>
+          <Switch
+            accessibilityLabel="Pause reviews and lessons"
+            testID="settings-vacation-mode-toggle"
+            value={isVacationActive}
+            onValueChange={handleVacationToggle}
+          />
+        </View>
+
+        {vacationResultMessage !== null ? (
+          <Text
+            className="mt-space-sm text-body-sm text-secondary"
+            testID="settings-vacation-result">
+            {vacationResultMessage}
+          </Text>
+        ) : null}
       </View>
 
       <View className="mt-8">

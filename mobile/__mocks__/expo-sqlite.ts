@@ -429,6 +429,23 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  // Vacation resume shifts one card at a time (see srsStateRepository).
+  if (/^UPDATE srs_states\s+SET due_date = \?, last_reviewed_at = \?, updated_at = \?/i.test(trimmed)) {
+    const rows = state.tables.get('srs_states') ?? [];
+    const [dueDate, lastReviewedAt, updatedAt, itemId] = params;
+    const index = rows.findIndex((row) => row.item_id === itemId);
+    if (index >= 0) {
+      rows[index] = {
+        ...rows[index],
+        due_date: dueDate,
+        last_reviewed_at: lastReviewedAt,
+        updated_at: updatedAt,
+      };
+      state.tables.set('srs_states', rows);
+    }
+    return;
+  }
+
   if (/^INSERT INTO weakness_stats/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     const rows = state.tables.get('weakness_stats') ?? [];
     const numericId = Number(params[0]);
@@ -736,6 +753,13 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
         .sort((a, b) => String(a.due_date).localeCompare(String(b.due_date)))
         .slice(0, limit);
       return rows;
+    }
+    // Vacation resume: the not-yet-due, unburned rows to push forward.
+    if (/WHERE due_date > \? AND is_burned = 0/i.test(trimmed)) {
+      const afterIso = String(params[0]);
+      return rows.filter(
+        (row) => String(row.due_date) > afterIso && row.is_burned === 0,
+      );
     }
     return rows;
   }

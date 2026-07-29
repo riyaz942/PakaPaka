@@ -45,6 +45,7 @@ import {
 import { setReviewPriority } from '@/data/reviewPriorityStore';
 import { countServableDueItems } from '@/data/reviewEligibility';
 import { countImportMetadataRows } from '@/data/user/importRepository';
+import { isVacationActive } from '@/data/user/vacationRepository';
 import { buildReviewForecast } from '@/core/engagement/reviewForecast';
 import { computeWelcomeBackOffer, type WelcomeBackOffer } from '@/core/engagement/welcomeBack';
 import { AT_RISK_TOP_N, WELCOME_BACK_SLICE } from '@/config/constants';
@@ -119,6 +120,7 @@ export default function HomeScreen() {
   const [welcomeBackDismissed, setWelcomeBackDismissed] = useState(false);
   const [importNudgeDismissed, setImportNudgeDismissed] = useState(false);
   const [showImportNudge, setShowImportNudge] = useState(false);
+  const [onVacation, setOnVacation] = useState(false);
 
   const readLessonAllowance = useCallback(
     (reviewsDueCount: number) => {
@@ -235,17 +237,32 @@ export default function HomeScreen() {
       } catch {
         setGreetingSentence(null);
       }
+      // Vacation mode freezes everything: skip the due and allowance reads so
+      // the paused surface can't quote a backlog that is still growing behind
+      // it, and so nothing here re-enables the disabled CTAs.
+      let paused = false;
+      try {
+        paused = isVacationActive(userDb);
+      } catch {
+        paused = false;
+      }
+      setOnVacation(paused);
+
       let due = 0;
       try {
         setLevel(getStartingJlptLevel(userDb));
-        due = countServableDueItems(curriculumDb, userDb);
+        due = paused ? 0 : countServableDueItems(curriculumDb, userDb);
         setDueCount(due);
       } catch {
         setDueCount(0);
       } finally {
         setDueCountLoading(false);
       }
-      readLessonAllowance(due);
+      if (paused) {
+        setLessonAllowance(null);
+      } else {
+        readLessonAllowance(due);
+      }
       try {
         // Include today when finding the last active day — studying today
         // ends the absence immediately.
@@ -310,19 +327,46 @@ export default function HomeScreen() {
             </Text>
           </FadeSlideIn>
 
+          {/* Vacation mode takes the hero slot outright rather than dimming the
+              ring: a paused goal has nothing honest to show, and a rest that
+              looks like a failed day defeats the point of taking one. */}
           <FadeSlideIn index={1}>
-            <View className="items-center rounded-radius-lg bg-surface py-space-xl">
-              <GoalRing variant="hero" percent={cognitiveLoadPercent} />
-              <Text className="mt-space-md text-body font-semibold text-primary">
-                Today&apos;s goal
-              </Text>
-              <Text className="mt-space-xs text-body-sm text-secondary">
-                Something to beat — going past 100% is the good part
-              </Text>
-            </View>
+            {onVacation ? (
+              <View
+                className="items-center rounded-radius-lg bg-surface px-space-md py-space-xl"
+                testID="home-vacation-card">
+                <View className="h-24 w-24 items-center justify-center rounded-full bg-surface-elevated">
+                  <Text className="text-display text-secondary">休</Text>
+                </View>
+                <Text className="mt-space-md text-body font-semibold text-primary">
+                  Vacation mode is on
+                </Text>
+                <Text className="mt-space-xs text-center text-body-sm text-secondary">
+                  Reviews and lessons are paused. Nothing is piling up — take your time.
+                </Text>
+                <Text
+                  accessibilityRole="button"
+                  accessibilityLabel="Turn off vacation mode in Settings"
+                  onPress={() => router.push('/settings')}
+                  testID="home-vacation-settings-link"
+                  className="mt-space-md min-h-[44px] text-body-sm text-feedback-info">
+                  Turn off vacation mode
+                </Text>
+              </View>
+            ) : (
+              <View className="items-center rounded-radius-lg bg-surface py-space-xl">
+                <GoalRing variant="hero" percent={cognitiveLoadPercent} />
+                <Text className="mt-space-md text-body font-semibold text-primary">
+                  Today&apos;s goal
+                </Text>
+                <Text className="mt-space-xs text-body-sm text-secondary">
+                  Something to beat — going past 100% is the good part
+                </Text>
+              </View>
+            )}
           </FadeSlideIn>
 
-          {pendingRiseTo !== null && pendingRiseTo !== dismissedRiseTo ? (
+          {!onVacation && pendingRiseTo !== null && pendingRiseTo !== dismissedRiseTo ? (
             <GoalRisePrompt
               proposedGoal={pendingRiseTo}
               currentGoal={dailyGoal}
@@ -332,7 +376,7 @@ export default function HomeScreen() {
             />
           ) : null}
 
-          {pendingReductionTo !== null ? (
+          {!onVacation && pendingReductionTo !== null ? (
             <GoalReductionPrompt
               proposedGoal={pendingReductionTo}
               currentGoal={dailyGoal}
@@ -400,24 +444,28 @@ export default function HomeScreen() {
               reviews-ready count lives here only — never on a tab badge. */}
           <FadeSlideIn index={2}>
             <ActionCard
-              title={dueCount > 0 ? 'Review' : 'All caught up'}
+              title={onVacation ? 'Review' : dueCount > 0 ? 'Review' : 'All caught up'}
               subtitle={
-                dueCountLoading
-                  ? 'Checking what’s due…'
-                  : dueCount > 0
-                    ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
-                    : 'No reviews due — nice work'
+                onVacation
+                  ? 'Paused for vacation'
+                  : dueCountLoading
+                    ? 'Checking what’s due…'
+                    : dueCount > 0
+                      ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
+                      : 'No reviews due — nice work'
               }
               glyph="復"
-              accent
+              accent={!onVacation}
               onPress={() => router.push('/review')}
-              disabled={dueCountLoading || dueCount === 0}
+              disabled={onVacation || dueCountLoading || dueCount === 0}
               accessibilityLabel={
-                dueCountLoading
-                  ? 'Checking reviews due'
-                  : dueCount > 0
-                    ? `Review ${dueCount} items due`
-                    : 'All caught up, no reviews due'
+                onVacation
+                  ? 'Reviews paused for vacation mode'
+                  : dueCountLoading
+                    ? 'Checking reviews due'
+                    : dueCount > 0
+                      ? `Review ${dueCount} items due`
+                      : 'All caught up, no reviews due'
               }
               testID="home-review-button"
             />
@@ -426,19 +474,24 @@ export default function HomeScreen() {
             <ActionCard
               title="Today's lesson"
               subtitle={
-                lessonAllowance === null
-                  ? 'A guided lesson picked for you'
-                  : lessonAllowance.remaining > 0
-                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
-                    : "You've learned enough today. Come back tomorrow, or clear some reviews."
+                onVacation
+                  ? 'Paused for vacation'
+                  : lessonAllowance === null
+                    ? 'A guided lesson picked for you'
+                    : lessonAllowance.remaining > 0
+                      ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                      : "You've learned enough today. Come back tomorrow, or clear some reviews."
               }
               glyph="学"
-              muted={lessonAllowance !== null && lessonAllowance.remaining === 0}
+              disabled={onVacation}
+              muted={!onVacation && lessonAllowance !== null && lessonAllowance.remaining === 0}
               onPress={() => router.push('/lesson')}
               accessibilityLabel={
-                lessonAllowance !== null && lessonAllowance.remaining === 0
-                  ? 'Daily lesson limit reached'
-                  : "Start today's lesson"
+                onVacation
+                  ? 'Lessons paused for vacation mode'
+                  : lessonAllowance !== null && lessonAllowance.remaining === 0
+                    ? 'Daily lesson limit reached'
+                    : "Start today's lesson"
               }
               testID="home-learn-button"
             />
@@ -452,9 +505,11 @@ export default function HomeScreen() {
               />
             </FadeSlideIn>
           ) : null}
-          <FadeSlideIn index={5}>
-            <ReviewForecast forecast={forecast ?? buildReviewForecast([])} />
-          </FadeSlideIn>
+          {!onVacation ? (
+            <FadeSlideIn index={5}>
+              <ReviewForecast forecast={forecast ?? buildReviewForecast([])} />
+            </FadeSlideIn>
+          ) : null}
           {readingTarget ? (
             <FadeSlideIn index={6}>
               <ReadingReadiness
@@ -463,7 +518,7 @@ export default function HomeScreen() {
               />
             </FadeSlideIn>
           ) : null}
-          {atRiskCount > 0 ? (
+          {!onVacation && atRiskCount > 0 ? (
             <FadeSlideIn index={7}>
               <AtRiskSection
                 totalCount={atRiskCount}

@@ -18,6 +18,14 @@ let mockOverrideEntries: { itemId: string; primaryForm: string; mode: 'shown' | 
 let mockShadowModeCanEnable = false;
 let mockShadowModeEnabled = false;
 
+let mockVacationActive = false;
+let mockVacationStartedAt: string | null = null;
+const mockStartVacation = jest.fn();
+const mockEndVacation = jest.fn(() => ({
+  ok: true as const,
+  value: { shiftedCount: 12, days: 10 },
+}));
+
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ top: 0, bottom: 0, left: 0, right: 0 }),
 }));
@@ -42,6 +50,15 @@ jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
   useReviewAutoAdvance: () => ({
     autoAdvanceEnabled: mockAutoAdvanceEnabled,
     setAutoAdvanceEnabled: mockSetAutoAdvanceEnabled,
+  }),
+}));
+
+jest.mock('@/data/hooks/useVacationMode', () => ({
+  useVacationMode: () => ({
+    isVacationActive: mockVacationActive,
+    startedAt: mockVacationStartedAt,
+    start: mockStartVacation,
+    end: mockEndVacation,
   }),
 }));
 
@@ -152,6 +169,64 @@ describe('SettingsScreen daily goal (Story 2.1, FR57 / UX-DR33)', () => {
     fireEvent(screen.getByTestId('settings-daily-goal-input'), 'blur');
     expect(mockSetDailyGoalTarget).not.toHaveBeenCalled();
     expect(screen.getByText('Enter a number greater than zero.')).toBeTruthy();
+  });
+});
+
+describe('SettingsScreen vacation mode toggle', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockVacationActive = false;
+    mockVacationStartedAt = null;
+  });
+
+  it('renders the switch off by default', () => {
+    render(<SettingsScreen />);
+    const toggle = screen.getByRole('switch', { name: 'Pause reviews and lessons' });
+    expect(toggle.props.value).toBe(false);
+  });
+
+  it('starts vacation mode when toggled on', () => {
+    render(<SettingsScreen />);
+    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', true);
+    expect(mockStartVacation).toHaveBeenCalled();
+    expect(mockEndVacation).not.toHaveBeenCalled();
+  });
+
+  it('shows when the break began while paused', () => {
+    mockVacationActive = true;
+    mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
+    render(<SettingsScreen />);
+    expect(screen.getByTestId('settings-vacation-mode-toggle').props.value).toBe(true);
+    expect(screen.getByText(/Paused since/)).toBeTruthy();
+  });
+
+  it('reports how many reviews were rescheduled on resume', () => {
+    mockVacationActive = true;
+    mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
+    render(<SettingsScreen />);
+    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', false);
+    expect(mockEndVacation).toHaveBeenCalled();
+    expect(screen.getByTestId('settings-vacation-result')).toHaveTextContent(
+      'Welcome back — 12 reviews rescheduled.',
+    );
+  });
+
+  it('surfaces the error message when resuming fails', () => {
+    mockVacationActive = true;
+    mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
+    mockEndVacation.mockReturnValueOnce({
+      ok: false,
+      error: {
+        code: 'vacation_resume_failed',
+        message: 'boom',
+        userMessage: 'Vacation mode could not be turned off. Please try again.',
+      },
+    } as unknown as ReturnType<typeof mockEndVacation>);
+    render(<SettingsScreen />);
+    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', false);
+    expect(screen.getByTestId('settings-vacation-result')).toHaveTextContent(
+      'Vacation mode could not be turned off. Please try again.',
+    );
   });
 });
 

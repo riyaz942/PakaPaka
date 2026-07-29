@@ -29,6 +29,7 @@ export const PREFERENCE_KEYS = {
   shadowModeEnabledAt: 'shadow_mode_enabled_at',
   shadowModePromptDismissed: 'shadow_mode_prompt_dismissed',
   shadowModePromptSnoozedUntil: 'shadow_mode_prompt_snoozed_until',
+  vacationStartedAt: 'vacation_started_at',
   seenKanjiReadingPrimer: 'seen_kanji_reading_primer',
   // BYOK config that is not a secret — the key itself lives in secure storage
   // (see data/ai/byokCredentialStore.ts); these four do not.
@@ -70,6 +71,10 @@ export function setPreference(
     value,
     updatedAt,
   );
+}
+
+export function clearPreference(userDb: SQLiteDatabase, key: string): void {
+  userDb.runSync('DELETE FROM user_preferences WHERE key = ?', key);
 }
 
 export function getCurriculumUpdateSource(
@@ -328,6 +333,23 @@ export function getShadowModePromptSnoozedUntil(userDb: SQLiteDatabase): string 
 
 export function setShadowModePromptSnoozedUntil(userDb: SQLiteDatabase, iso: string): void {
   setPreference(userDb, PREFERENCE_KEYS.shadowModePromptSnoozedUntil, iso);
+}
+
+/**
+ * When vacation mode began, or null when it is off. One key carries both the
+ * on/off state and the start timestamp, because ending vacation needs the
+ * elapsed span to shift due dates by (see data/user/vacationRepository.ts).
+ */
+export function getVacationStartedAt(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.vacationStartedAt);
+}
+
+export function setVacationStartedAt(userDb: SQLiteDatabase, iso: string | null): void {
+  if (iso === null) {
+    clearPreference(userDb, PREFERENCE_KEYS.vacationStartedAt);
+    return;
+  }
+  setPreference(userDb, PREFERENCE_KEYS.vacationStartedAt, iso);
 }
 
 /**

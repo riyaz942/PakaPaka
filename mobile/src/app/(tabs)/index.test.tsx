@@ -158,6 +158,12 @@ jest.mock('@/data/reviewEligibility', () => ({
   countServableDueItems: (...args: unknown[]) => mockCountServableDueItems(...args),
 }));
 
+let mockOnVacation = false;
+
+jest.mock('@/data/user/vacationRepository', () => ({
+  isVacationActive: () => mockOnVacation,
+}));
+
 const mockShadowModeDisable = jest.fn();
 const mockShadowModeDismissPrompt = jest.fn();
 const mockShadowModeSnoozePrompt = jest.fn();
@@ -193,6 +199,7 @@ describe('HomeScreen', () => {
     mockLastActiveDate = null;
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
+    mockOnVacation = false;
     clearReviewPriority();
   });
 
@@ -453,5 +460,74 @@ describe('HomeScreen', () => {
     mockShadowModeDaysActive = 14;
     render(<HomeScreen />);
     expect(screen.getByText("You've been comparing for 14 days")).toBeTruthy();
+  });
+
+  describe('vacation mode', () => {
+    it('replaces the goal ring with the vacation card', () => {
+      mockOnVacation = true;
+      render(<HomeScreen />);
+
+      expect(screen.getByTestId('home-vacation-card')).toBeTruthy();
+      expect(screen.queryByText("Today's goal")).toBeNull();
+    });
+
+    it('disables both Review and Learn', () => {
+      mockOnVacation = true;
+      seedBigBacklog(45);
+      render(<HomeScreen />);
+
+      expect(screen.getByTestId('home-review-button').props.accessibilityState.disabled).toBe(
+        true,
+      );
+      expect(screen.getByTestId('home-learn-button').props.accessibilityState.disabled).toBe(
+        true,
+      );
+    });
+
+    it('never quotes the backlog that is still accruing behind the pause', () => {
+      mockOnVacation = true;
+      seedBigBacklog(45);
+      render(<HomeScreen />);
+
+      expect(mockCountServableDueItems).not.toHaveBeenCalled();
+      expect(screen.queryByText(/45 items ready/)).toBeNull();
+    });
+
+    it('hides the forecast, at-risk section and goal prompts', () => {
+      mockOnVacation = true;
+      mockPendingRiseTo = 40;
+      mockPendingReductionTo = 20;
+      mockAtRisk = {
+        totalCount: 3,
+        topItems: [{ itemId: '1', primaryForm: '水', meaning: 'water' }],
+        allItems: [{ itemId: '1', primaryForm: '水', meaning: 'water' }],
+        rankedItemIds: ['1'],
+      };
+      render(<HomeScreen />);
+
+      expect(screen.queryByTestId('review-forecast')).toBeNull();
+      expect(screen.queryByTestId('goal-rise-prompt')).toBeNull();
+      expect(screen.queryByTestId('goal-reduction-prompt')).toBeNull();
+    });
+
+    it('routes to Settings from the vacation card', () => {
+      mockOnVacation = true;
+      render(<HomeScreen />);
+
+      fireEvent.press(screen.getByTestId('home-vacation-settings-link'));
+      expect(mockRouterPush).toHaveBeenCalledWith('/settings');
+    });
+
+    it('restores the goal ring and CTAs once vacation is off', () => {
+      mockOnVacation = false;
+      seedBigBacklog(45);
+      render(<HomeScreen />);
+
+      expect(screen.queryByTestId('home-vacation-card')).toBeNull();
+      expect(screen.getByText("Today's goal")).toBeTruthy();
+      expect(screen.getByTestId('home-review-button').props.accessibilityState.disabled).toBe(
+        false,
+      );
+    });
   });
 });

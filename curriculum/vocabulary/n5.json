@@ -29972,7 +29972,14 @@
           "answer_text": "ちずちょう"
         }
       ],
-      "furigana": "地[ち]図[ず]帳[ちょう]"
+      "furigana": "地[ち]図[ず]帳[ちょう]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a cat drags a folded sheet bigger than the mossy steps and spreads it flat across the bell. Every country, every coastline is drawn on it in ink, and the cat just sits in the middle purring at the whole world laid out under one bell — an atlas.",
+      "reading_mnemonic": "A tourist at the riverbank unfolds the huge sheet and squints, muttering \"cheese... chew...\" as she tries to fold it back along the crease. Passersby hear only <reading>ちずちょう</reading>, the <reading>cheese-chew</reading> woman fighting her map by the water.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shorui",
@@ -29991,7 +29998,14 @@
           "answer_text": "しょるい"
         }
       ],
-      "furigana": "書[しょ]類[るい]"
+      "furigana": "書[しょ]類[るい]",
+      "meaning_mnemonic": "At Koichi's konbini, the sun sinks in the window behind the register the way it always does, and a hand starts to <kanji>write</kanji> on its own, filling page after page. But tonight it doesn't stop at one notebook — it keeps going until the whole counter is buried under stacked, filled pages: a mountain of documents nobody asked for.",
+      "reading_mnemonic": "Kaa the fire-breathing crow lands on that same stack at the konbini and squawks \"show, Louie!\" at the clerk, puffing a little flame that singes the top page. The clerk sighs and reads out <reading>しょるい</reading> from the scorched pile, half \"<reading>show</reading>,\" half \"<reading>Louie</reading>,\" all smoke.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yotei",
@@ -30010,7 +30024,14 @@
           "answer_text": "よてい"
         }
       ],
-      "furigana": "予[よ]定[てい]"
+      "furigana": "予[よ]定[てい]",
+      "meaning_mnemonic": "On the whiteboard in Sei's school hallway, someone has drawn out every practice, exam, and holiday for the whole term in tidy boxes, weeks in advance, nothing left to chance. Students stop and check it before doing anything else. That fixed grid of what's coming next is the plan, the schedule.",
+      "reading_mnemonic": "A hall monitor at the school taps that whiteboard every morning and barks \"yo, Tay!\" at the same drowsy student, reading the day's slot off the grid before he can wander off. The bark comes out as <reading>よてい</reading>, a flat \"<reading>yo, Tay</reading>\" nobody in the hallway even looks up for anymore.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsuzuki",
@@ -30029,7 +30050,14 @@
           "answer_text": "つづき"
         }
       ],
-      "furigana": "続[つづ]き"
+      "furigana": "続[つづ]き",
+      "meaning_mnemonic": "At Koichi's konbini, the little television behind the register freezes on a soap-opera cliffhanger just as the till starts beeping. The customer refuses to pay until the show comes back. Nobody moves, nobody rings anyone up, everything just waits for the continuation.",
+      "reading_mnemonic": "A raccoon named Zuzu patrols the riverbank looking for the <reading>zoo key</reading> that reopens the closed exhibit gate. She finds it wedged under a rock, holds it up, and the sign flips to 「<reading>つづき</reading>」 — to be continued tomorrow.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "owari",
@@ -30048,7 +30076,14 @@
           "answer_text": "おわり"
         }
       ],
-      "furigana": "終[お]わり"
+      "furigana": "終[お]わり",
+      "meaning_mnemonic": "On Sei's sports field, a relay race is going fine until the last runner trips over his own shoelace two meters from the tape and just lies there. The whistle blows anyway. Nobody finishes cleanly, but the race is over, and over is over.",
+      "reading_mnemonic": "A spinning top at Grandma Kane's shrine wobbles slower and slower across the mossy steps until it tips onto its side. A cat watches it go <reading>oh, whirly</reading> one last time before it stops — that stop is 「<reading>おわり</reading>」, the end.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hajime",
@@ -30067,7 +30102,14 @@
           "answer_text": "はじめ"
         }
       ],
-      "furigana": "初[はじ]め"
+      "furigana": "初[はじ]め",
+      "meaning_mnemonic": "At the foot of the mountain trail, a hiker adjusts her boots, looks up at the impossibly steep path, and takes exactly one step. That single step, before the vending machine at the top is even a speck, is the whole beginning.",
+      "reading_mnemonic": "At the starting line on Sei's sports field, the coach cups his hands and shouts <reading>ha, Jimmy!</reading> to the runner who hasn't noticed the race started. Jimmy bolts — that shout is 「<reading>はじめ</reading>」, the beginning.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "suugaku",
@@ -30086,7 +30128,14 @@
           "answer_text": "すうがく"
         }
       ],
-      "furigana": "数[すう]学[がく]"
+      "furigana": "数[すう]学[がく]",
+      "meaning_mnemonic": "The swaddled child still sits under the canopy of scribbled lessons, but today someone dumps a whole crate of numbers onto the roof. They slide down through the notes, stack themselves into columns, and pile up in the child's lap until <kanji>study</kanji>-time is nothing but numbers. That mess of numbers under the lesson-canopy is mathematics.",
+      "reading_mnemonic": "At Sei's school, a girl named Sue gawks at a chalkboard someone has covered edge to edge in equations overnight. She just stands there, and <reading>Sue gawks</reading> is exactly how you remember 「<reading>すうがく</reading>」, mathematics.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kagaku",
@@ -30105,7 +30154,14 @@
           "answer_text": "かがく"
         }
       ],
-      "furigana": "科[か]学[がく]"
+      "furigana": "科[か]学[がく]",
+      "meaning_mnemonic": "The <kanji>study</kanji> canopy over the swaddled child is stacked with scribbled diagrams, but tonight he isn't reading them — he wires two batteries to a fork and dunks it in a puddle by the riverbank, just to see the duck jump. Poking the world until it reacts, then writing down what happened, is exactly what grows under that roof: science.",
+      "reading_mnemonic": "Koichi's konbini installs a broken vending machine that beeps out formulas instead of prices, drawing a scientist in a lab coat who plants himself at the window to <reading>car gawk</reading> — literally gawking at a parked car. He narrates every beep as proof of something. That's <reading>かがく</reading>: proof demanded even from the most mundane object.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "rekishi",
@@ -30124,7 +30180,14 @@
           "answer_text": "れきし"
         }
       ],
-      "furigana": "歴[れき]史[し]"
+      "furigana": "歴[れき]史[し]",
+      "meaning_mnemonic": "The vending machine at the top of the mountain trail turns out to be decades older than the trail itself — dented, rusted, still dispensing drinks with labels nobody's printed in years. Under it, hikers dig up a buried plaque naming every person who hauled supplies up before there was any summit machine at all. Layers of forgotten human effort stacked beneath one ordinary object: that's history.",
+      "reading_mnemonic": "Grandma Kane's shrine cats keep digging near the riverbank and uncover the hull of a <reading>wrecked ship</reading> half-buried in the mud, centuries older than the shrine itself. Villagers gather at the bank to read the waterlogged log inside it aloud, page by page, piecing together who these people were. Reconstructing what happened long before you were born is <reading>れきし</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chiri",
@@ -30143,7 +30206,14 @@
           "answer_text": "ちり"
         }
       ],
-      "furigana": "地[ち]理[り]"
+      "furigana": "地[ち]理[り]",
+      "meaning_mnemonic": "An old man stands at the very top of the mountain trail, past the lone vending machine, turning slowly to point out every river, city, and coastline visible from up there. He isn't just admiring the view — he's naming what each valley is called and why it sits where it does. That's geography.",
+      "reading_mnemonic": "Down at the school sports field, Sei's teacher points at a chalk map and asks the class to repeat the subject's name. The kids chant it back flat and bored: <reading>ちり</reading>, sounding exactly like a tired \"<reading>cheery</reading>\" with none of the cheer left in it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bungaku",
@@ -30162,7 +30232,14 @@
           "answer_text": "ぶんがく"
         }
       ],
-      "furigana": "文[ぶん]学[がく]"
+      "furigana": "文[ぶん]学[がく]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, someone has stacked mildewed paperbacks under the <kanji>study</kanji> canopy where the swaddled child usually sits, and the shrine cats have nested in cracked spines instead of scribbled diagrams. The child ignores the diagrams entirely, transfixed by a water-stained page of verse he can't stop rereading. When study bends toward stories instead of formulas, you get literature.",
+      "reading_mnemonic": "At Koichi's konbini, a novelist camps by the onigiri shelf, buying nothing, just standing there to <reading>bun gawk</reading> — literally gawking at the milk buns while drafting a whole chapter about them in a battered notebook. The till keeps beeping, unanswered. That obsessive staring at an ordinary object until a story crawls out of it is <reading>ぶんがく</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taiiku",
@@ -30181,7 +30258,14 @@
           "answer_text": "たいいく"
         }
       ],
-      "furigana": "体[たい]育[いく]"
+      "furigana": "体[たい]育[いく]",
+      "meaning_mnemonic": "At Sei's school, the sports field gets roped off every single morning into lanes, hurdles, and a rope-climb nobody wants to attempt, all before homeroom even starts. Nobody is teaching a subject out there — they are just making bodies move, sweat, and complain in unison before the bell rings. That daily, compulsory shoving of the body through drills is physical education.",
+      "reading_mnemonic": "On Sei's school field, the coach knots the climbing rope so tight a kid yelps '<reading>tie, eek</reading>!' mid-scramble, and the whole line has to wait, laughing, while he wriggles free. Every morning it's the same rope and the same yelp. That's <reading>たいいく</reading> — students dragged through drills before the bell.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bijutsu",
@@ -30200,7 +30284,14 @@
           "answer_text": "びじゅつ"
         }
       ],
-      "furigana": "美[び]術[じゅつ]"
+      "furigana": "美[び]術[じゅつ]",
+      "meaning_mnemonic": "A bee lands on Grandma Kane's mossy shrine wall, dips its stinger in a bowl of spilled ink, and starts slashing perfect brushstrokes across the stone — one clean stroke, then another, then a whole mountain scene. The priest stops sweeping mid-swing and just stares at the bee's art.",
+      "reading_mnemonic": "Down at the riverbank, that same bee dips its stinger in the mud and drags it across a flat rock, calling its stripes <reading>bee-jutsu</reading> — say it fast and you've got <reading>びじゅつ</reading>, the reading for art.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ongakushitsu",
@@ -30219,7 +30310,14 @@
           "answer_text": "おんがくしつ"
         }
       ],
-      "furigana": "音[おん]楽[がく]室[しつ]"
+      "furigana": "音[おん]楽[がく]室[しつ]",
+      "meaning_mnemonic": "Down one echoing hallway at Sei's school there's a door nobody opens during class, because behind it a moose is mid-trumpet-solo, hooves stomping the beat, antlers knocking the light fixtures. The janitor padded every wall just to contain the daily racket — that padded room is the music room.",
+      "reading_mnemonic": "Ask why the moose gets away with it and Sei just shrugs: the walls are soundproofed, so nobody outside hears him <reading>on-gawk-shoot</reading> through his solos — run those three words together and you get <reading>おんがくしつ</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyoushitsu",
@@ -30238,7 +30336,14 @@
           "answer_text": "きょうしつ"
         }
       ],
-      "furigana": "教[きょう]室[しつ]"
+      "furigana": "教[きょう]室[しつ]",
+      "meaning_mnemonic": "Grandma Kane has turned the mossy steps behind her shrine's enormous bell into rows of little desks, and every cat in the neighborhood sits at one, tails curled, waiting for her to tap the bell between lessons. Rows of desks under a temple bell, cats included, is what a classroom looks like here.",
+      "reading_mnemonic": "Before each drill she holds up a <reading>cue sheet</reading> so the cats know which trick comes next — read her handwriting on it fast and it comes out <reading>きょうしつ</reading>, the reading for classroom.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koutei",
@@ -30257,7 +30362,14 @@
           "answer_text": "こうてい"
         }
       ],
-      "furigana": "校[こう]庭[てい]"
+      "furigana": "校[こう]庭[てい]",
+      "meaning_mnemonic": "The same lone tree from the <kanji>school</kanji> courtyard is still there, except now the walls are gone — just open dirt stretching out around the trunk, kids sprinting circles around it during recess, using the roots as home base for tag. Bare ground ringing that one tree is the schoolyard.",
+      "reading_mnemonic": "Koichi, restless behind the konbini register, wheels a folding <reading>table</reading> out to that dirt yard to sell onigiri at recess — the kids call it Koichi's <reading>table</reading> so often it's worn down to <reading>こうてい</reading>, the reading for schoolyard.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kyoukasho",
@@ -30276,7 +30388,14 @@
           "answer_text": "きょうかしょ"
         }
       ],
-      "furigana": "教[きょう]科[か]書[しょ]"
+      "furigana": "教[きょう]科[か]書[しょ]",
+      "meaning_mnemonic": "Your teacher drops a heavy book on your desk before the sun even starts sinking outside the window. Every page is already crammed with lessons, leaving blank space below each one just so you can <kanji>write</kanji> your answers there — and that crammed, half-finished book is exactly what a textbook is for.",
+      "reading_mnemonic": "Kaa the fire-breathing crow nests on the school roof, hoarding one fat book she never lets anyone borrow. When a kid on the field yells up, <reading>yo, cash, show</reading> me the pages, she screeches <reading>きょうかしょ</reading> and singes their fingers instead, book still hugged to her chest.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "kokuban",
@@ -30295,7 +30414,14 @@
           "answer_text": "こくばん"
         }
       ],
-      "furigana": "黒[こく]板[ばん]"
+      "furigana": "黒[こく]板[ばん]",
+      "meaning_mnemonic": "The soot-caked village wall from the fire that turned everything <kanji>black</kanji> gets sawed down and hauled to school. Bolted to the front of the classroom, chalk dust just adds more soot on top of soot, so the teacher's writing surface ends up exactly the color the village already was: a blackboard.",
+      "reading_mnemonic": "A jet-black boar named Kokuban barrels into the school hallway and flops onto its back like a dropped soda can, fizzing coke across its belly. The teacher wipes it down and starts chalking sums right on the boar's <reading>coke-can</reading> hide, and the class just calls it the <reading>こくばん</reading> from then on.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "chooku",
@@ -30314,7 +30440,14 @@
           "answer_text": "チョーク"
         }
       ],
-      "furigana": "チョーク"
+      "furigana": "チョーク",
+      "meaning_mnemonic": "A plump white hen waddles onto the classroom windowsill and lays one perfectly cylindrical, rock-hard white egg on the chalk tray. The teacher shrugs, picks it up, and starts writing the day's kanji with it — the henhouse egg works exactly like chalk once it dries stiff and white.",
+      "reading_mnemonic": "チョーク is written just the way it sounds, plain katakana carrying the borrowed word straight across: <reading>チョーク</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "totemo",
@@ -30333,7 +30466,14 @@
           "answer_text": "とても"
         }
       ],
-      "furigana": "とても"
+      "furigana": "とても",
+      "meaning_mnemonic": "A tiny turtle named Toby plants all four feet under one pebble and grunts like he's hoisting a boulder, veins bulging, shell trembling with effort. Everyone watching can see it's just a pebble, but his groaning insists the weight is very, very much more than that.",
+      "reading_mnemonic": "とても is written just the way it sounds, plain hiragana carrying the word straight across: <reading>とても</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "amari",
@@ -30352,7 +30492,15 @@
           "answer_text": "あまり"
         }
       ],
-      "furigana": "あまり"
+      "furigana": "あまり",
+      "meaning_mnemonic": "Every closing shift at Koichi's konbini, the new clerk restocks the onigiri shelf and counts what's left before locking the till. Delivery day or not, the shelf never fills back up — there's just never much sitting there, and she's stopped expecting otherwise.",
+      "reading_mnemonic": "あまり is pure kana, written and read exactly as <reading>あまり</reading> with nothing to derive.",
+      "description": "あまり typically appears with a negative verb or adjective to mean not much or not very; expect it paired with a negative predicate rather than standing alone as a quantity word.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yoku",
@@ -30371,7 +30519,14 @@
           "answer_text": "よく"
         }
       ],
-      "furigana": "よく"
+      "furigana": "よく",
+      "meaning_mnemonic": "Partway up the mountain trail sits one lone vending machine, and the same hiker keeps reappearing at it, not once but again and again, always pausing to gulp his drink down slowly and thoroughly. He climbs often, and every time, he drinks well.",
+      "reading_mnemonic": "よく is plain kana, read and written exactly as <reading>よく</reading>, nothing more to derive.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itsumo",
@@ -30390,7 +30545,14 @@
           "answer_text": "いつも"
         }
       ],
-      "furigana": "いつも"
+      "furigana": "いつも",
+      "meaning_mnemonic": "Grandma Kane's shrine has cats sprawled on every mossy step, and no matter which morning you visit, rain, festival day, ordinary Tuesday, they are always there in the exact same spots, as if none of them ever left at all.",
+      "reading_mnemonic": "いつも is plain kana, read and written exactly as <reading>いつも</reading>, with nothing to derive.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tokidoki",
@@ -30409,7 +30571,14 @@
           "answer_text": "ときどき"
         }
       ],
-      "furigana": "時[とき]々[どき]"
+      "furigana": "時[とき]々[どき]",
+      "meaning_mnemonic": "You're back at the shrine watching the sun mark the <kanji>time</kanji>, but instead of climbing straight up like always, it stutters, vanishing behind a cloud, popping back out, vanishing again. That broken, doubled version of <kanji>time</kanji>, ticking on and off instead of running straight, is sometimes.",
+      "reading_mnemonic": "At Grandma Kane's shrine, a bird named Toki rings the huge bell in a stuttering double knock, and the caretaker mutters <reading>okey-dokey</reading> each time, but only when Toki bothers to show up, which is <reading>ときどき</reading>, sometimes, never on a schedule.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tama-ni",
@@ -30428,7 +30597,14 @@
           "answer_text": "たまに"
         }
       ],
-      "furigana": "たまに"
+      "furigana": "たまに",
+      "meaning_mnemonic": "Grandma Kane's shrine cats swarm the mossy steps every single day, certain of scraps. But the enormous bell above the steps only tips over and rings once in a great while — a stray gust, a startled crow — and when it does, every cat scatters, because that bell only ever rings occasionally.",
+      "reading_mnemonic": "「<reading>たまに</reading>」is written in kana exactly as it sounds, so you just read it as it appears — no kanji to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mou",
@@ -30447,7 +30623,14 @@
           "answer_text": "もう"
         }
       ],
-      "furigana": "もう"
+      "furigana": "もう",
+      "meaning_mnemonic": "Koichi's konbini gets exactly one onigiri delivery a day. You wander in at noon expecting a full shelf, but it's already bare — the whole batch sold out before the till even finished beeping. Koichi just shrugs: the next batch arrives soon, but for now, you're already too late.",
+      "reading_mnemonic": "「<reading>もう</reading>」is written in kana exactly as it sounds, so you just read it as it appears — no kanji to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mada",
@@ -30466,7 +30649,14 @@
           "answer_text": "まだ"
         }
       ],
-      "furigana": "まだ"
+      "furigana": "まだ",
+      "meaning_mnemonic": "The clock over Sei's sports field already says race time, but Sei is still on the bench, still knotting one shoelace, still not standing up. Everyone else is lined up at the start line waiting on her. The whistle hasn't blown, because for her it's still, stubbornly, not yet time.",
+      "reading_mnemonic": "「<reading>まだ</reading>」is written in kana exactly as it sounds, so you just read it as it appears — no kanji to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sugu",
@@ -30485,7 +30675,14 @@
           "answer_text": "すぐ"
         }
       ],
-      "furigana": "すぐ"
+      "furigana": "すぐ",
+      "meaning_mnemonic": "Near the top of the steep mountain trail sits one improbable vending machine. The instant a hiker spots it through the trees, he breaks into a sprint — no pause for the view, no catching his breath, straight up the last slope immediately, because a cold drink that close cannot wait even one more step.",
+      "reading_mnemonic": "「<reading>すぐ</reading>」is written in kana exactly as it sounds, so you just read it as it appears — no kanji to decode.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dandan",
@@ -30504,7 +30701,14 @@
           "answer_text": "だんだん"
         }
       ],
-      "furigana": "だんだん"
+      "furigana": "だんだん",
+      "meaning_mnemonic": "At Grandma Kane's shrine, one cat climbs onto the mossy steps. Then another. Then another, each pause exactly the length of a slow drumbeat: dan... dan... dan... By the time the enormous bell finally rings, forty cats blanket the steps, and it happened so gradually that nobody ever saw the moment it became too many.",
+      "reading_mnemonic": "「<reading>だんだん</reading>」 is pure kana with no kanji hiding underneath, so you read it exactly as it's spelled, every single time.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "zenzen",
@@ -30523,7 +30727,14 @@
           "answer_text": "ぜんぜん"
         }
       ],
-      "furigana": "全[ぜん]然[ぜん]"
+      "furigana": "全[ぜん]然[ぜん]",
+      "meaning_mnemonic": "You haul yourself up the mountain trail certain of one reward: the vending machine waiting at the top. You press every button. Nothing happens — it's empty, every slot glass-eyed and blank, and the silence answers you plainly: there was never anything up here to begin with, not at all.",
+      "reading_mnemonic": "A monk called <reading>Zen</reading> sits at Grandma Kane's shrine promising perfect stillness. Asked if he's ever startled, he says <reading>ぜんぜん</reading> — not at all — right as the enormous bell crashes down beside him, and he doesn't blink.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hontou-ni",
@@ -30542,7 +30753,14 @@
           "answer_text": "ほんとうに"
         }
       ],
-      "furigana": "本[ほん]当[とう]に"
+      "furigana": "本[ほん]当[とう]に",
+      "meaning_mnemonic": "Koichi finds a battered <kanji>book</kanji> behind the konbini till and swears its water-stained page is the exact <kanji>origin</kanji> of the beeping glitch everyone blames on ghosts. He traces the story back to that origin page, hands it to the manager, and it turns out he's telling the truth — really and truly.",
+      "reading_mnemonic": "Koichi drops to one knee at the shrine, hand flat on his own kneecap, swearing <reading>honest to knee</reading> — <reading>ほんとうに</reading> — that the till really did start beeping on its own, while Grandma Kane just stares at the kneeling man.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yukkuri",
@@ -30561,7 +30779,14 @@
           "answer_text": "ゆっくり"
         }
       ],
-      "furigana": "ゆっくり"
+      "furigana": "ゆっくり",
+      "meaning_mnemonic": "At the riverbank, an old turtle decides to wash a single sock, letting the current do the work while it dozes on a warm rock. The whole chore takes the entire afternoon, and nobody hurries it along, because that unbothered, whole-afternoon pace is exactly what slowly and leisurely means.",
+      "reading_mnemonic": "「<reading>ゆっくり</reading>」 is plain kana from front to back, so you read it exactly as written — no shortcuts, no detours, same unhurried pace as the word itself.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "motto",
@@ -30580,7 +30805,14 @@
           "answer_text": "もっと"
         }
       ],
-      "furigana": "もっと"
+      "furigana": "もっと",
+      "meaning_mnemonic": "The vending machine at the top of the mountain trail dispenses one can, then rattles and drops a second on top of it, then a third, refusing to stop even after the hiker steps back and holds up both hands. It just keeps deciding that whatever amount already exists, there needs to be more.",
+      "reading_mnemonic": "もっと is pure kana, so <reading>もっと</reading> is read exactly as it's spelled — no hidden reading to work out here.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ichiban",
@@ -30599,7 +30831,14 @@
           "answer_text": "いちばん"
         }
       ],
-      "furigana": "一[いち]番[ばん]"
+      "furigana": "一[いち]番[ばん]",
+      "meaning_mnemonic": "The goat's one-contestant talent show finally gets real judges. They tally the votes, find there is only <kanji>one</kanji> name on the ballot, and rank her <kanji>number one</kanji> without protest. She was always going to be the most decorated goat on the plain, and now it's simply official.",
+      "reading_mnemonic": "At the riverbank, an old angler weighs every catch twice, then declares his own the <reading>いちばん</reading> — the <reading>itchy bun</reading> of fish, unbeatable — before anyone else can even measure theirs.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "issho-ni",
@@ -30618,7 +30857,14 @@
           "answer_text": "いっしょに"
         }
       ],
-      "furigana": "一[いっ]緒[しょ]に"
+      "furigana": "一[いっ]緒[しょ]に",
+      "meaning_mnemonic": "The goat's one-contestant show attracts a crowd of hopefuls, but she won't compete against them — she drags them all onto the <kanji>one</kanji> stage at once and calls it a single unified act. There's no more soloist, only one crowded platform, everyone lumped together under her name.",
+      "reading_mnemonic": "At Sei's school, the whole team squeezes onto one bench, knee to knee, yelling <reading>いっしょに</reading> — which the coach mishears as <reading>a show, knee!</reading> — but that tangled pile-up on one bench is exactly the point: everyone crammed in together.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hitori-de",
@@ -30637,7 +30883,14 @@
           "answer_text": "ひとりで"
         }
       ],
-      "furigana": "一人[ひとり]で"
+      "furigana": "一人[ひとり]で",
+      "meaning_mnemonic": "The goat abandons her one-contestant stage and packs it in, but the only <kanji>person</kanji> who ever bought a ticket — a lone figure with two legs striding forward — has already left too, walking the <kanji>one</kanji> straight line of dirt without another soul in sight. That's alone: one person, nobody else.",
+      "reading_mnemonic": "Jin the friendly giant ducks through Koichi's konbini doorway alone tonight, with no one steering him clear of the frame, and snags his shoulder so hard the whole thing groans — <reading>ひとりで</reading>, exactly as <reading>he tore it</reading>, with nobody there to warn him.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mata",
@@ -30656,7 +30909,14 @@
           "answer_text": "また"
         }
       ],
-      "furigana": "また"
+      "furigana": "また",
+      "meaning_mnemonic": "At Koichi's konbini, a customer buys the exact same onigiri, eats it on the curb, forgets he ever ate it, and shuffles straight back inside to buy the exact same onigiri. The till beeps the identical price for the fourth time that hour. He always does it again.",
+      "reading_mnemonic": "This word is written in kana exactly as it's read, <reading>また</reading>, so there's nothing to decode — just read it as it looks.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mazu",
@@ -30675,7 +30935,14 @@
           "answer_text": "まず"
         }
       ],
-      "furigana": "まず"
+      "furigana": "まず",
+      "meaning_mnemonic": "Before ringing the enormous bell at Grandma Kane's shrine, every visitor pauses to clap twice and bow — first of all, that; only then the pull on the rope. One tourist skips straight to the bell and yanks it, and the cats scatter hissing, because he never did it first of all.",
+      "reading_mnemonic": "This word is written in kana exactly as it's read, <reading>まず</reading>, plain and phonetic all the way through.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsugi",
@@ -30694,7 +30961,14 @@
           "answer_text": "つぎ"
         }
       ],
-      "furigana": "次[つぎ]"
+      "furigana": "次[つぎ]",
+      "meaning_mnemonic": "At the mountain trail's lone vending machine, a line forms mid-slope. Each hiker steps up, buys a drink, and steps aside without a word, and the one standing there simply becomes whoever is next before the machine even finishes humming. Nobody skips ahead; the queue just moves forward one body at a time.",
+      "reading_mnemonic": "At the vending machine, Sei mutters <reading>two geese</reading> under his breath every time someone new steps up — his private way of marking whose turn is next. By the fortieth hiker it's worn into a chant, and that chant is exactly how you say <reading>つぎ</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saigo",
@@ -30713,7 +30987,14 @@
           "answer_text": "さいご"
         }
       ],
-      "furigana": "最[さい]後[ご]"
+      "furigana": "最[さい]後[ご]",
+      "meaning_mnemonic": "The trailing runner never catches up — race after race he crosses last, one leg forever dangling <kanji>behind</kanji> him. Meet after meet he never places anywhere but there: dead last, the very end of the results board, right where <kanji>after</kanji> always plants him.",
+      "reading_mnemonic": "At the finish line, the runner who's always after, always behind, finally stumbles in, gives one long <reading>sigh</reading>, and is waved through with a flat <reading>go</reading> — sigh, go, <reading>さいご</reading>, last place, race over.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "saisho",
@@ -30732,7 +31013,14 @@
           "answer_text": "さいしょ"
         }
       ],
-      "furigana": "最[さい]初[しょ]"
+      "furigana": "最[さい]初[しょ]",
+      "meaning_mnemonic": "Before Grandma Kane opens the shrine gates, one scrawny cat drags itself onto the bell platform and lets out an enormous, theatrical sigh — stretching, yawning, groaning at the sunrise. Nothing at the shrine happens before that sigh; the monks wait for it, the other cats wait for it. It's the very beginning of the day.",
+      "reading_mnemonic": "Locals nickname that daily ritual the <reading>sigh-show</reading> — say it fast and it becomes <reading>さいしょ</reading>. It's the first performance of the morning at the shrine, and by shrine law nothing else is allowed to start before it airs.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "dakara",
@@ -30751,7 +31039,15 @@
           "answer_text": "だから"
         }
       ],
-      "furigana": "だから"
+      "furigana": "だから",
+      "meaning_mnemonic": "At Koichi's konbini the register has a broken speaker. Instead of a plain beep, it stutters out a garbled little excuse every time someone tries to leave without paying, as if explaining itself before anyone even asks. Koichi says it always gives the reason first, then the result. That's exactly this word's job: therefore, so, here's why.",
+      "reading_mnemonic": "だから is written exactly the way it sounds, so once you can read だ and から on their own, reading <reading>だから</reading> together is nothing new.",
+      "description": "だから often opens a sentence on its own, almost like a blunt so? in English — fine between friends explaining themselves, but it can land as curt or impatient in a formal reply, where から attached to a full clause is the safer choice.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "demo",
@@ -30770,7 +31066,15 @@
           "answer_text": "でも"
         }
       ],
-      "furigana": "でも"
+      "furigana": "でも",
+      "meaning_mnemonic": "At Sei's school there's one rule painted on the gym wall: everyone runs the lap. But the gym teacher stands at the start line every single morning with a raised hand and a face that says otherwise — some days he waves the slowest kid through, no lap required, no explanation given. The rule always holds, but there's always one however waiting at the start line.",
+      "reading_mnemonic": "でも is pure kana, so it's read exactly as spelled: <reading>でも</reading>, no hidden readings to work out, just say what you see.",
+      "description": "でも usually opens a sentence to mean but or however, but attached straight after a noun it switches jobs entirely and means even — even a cat, even me — with no contrast implied at all.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "soshite",
@@ -30789,7 +31093,14 @@
           "answer_text": "そして"
         }
       ],
-      "furigana": "そして"
+      "furigana": "そして",
+      "meaning_mnemonic": "At the riverbank, the crossing only works one stone at a time: you step onto the first rock, wait for your balance, then the next, then the next. Someone yells directions from the far bank — first this stone, then that one, then the last — and the whole crossing becomes one long chain of and-then, and-then, and-then, until you're standing on the other side.",
+      "reading_mnemonic": "そして is written exactly as it's read — <reading>そして</reading>, straight through, with no kanji hiding a different sound underneath.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sorekara",
@@ -30808,7 +31119,14 @@
           "answer_text": "それから"
         }
       ],
-      "furigana": "それから"
+      "furigana": "それから",
+      "meaning_mnemonic": "A hiker collapses at the vending machine improbably parked at the mountain trail's summit, drains an entire can without pausing for breath, wipes their mouth on a sleeve, and only then turns to look at the view spread out below. That gap between finishing the can and turning around is the whole word: after that, first one thing happens, then the next.",
+      "reading_mnemonic": "This word is pure kana — sound out <reading>それから</reading> exactly as it is written and you already have the reading, no detour needed.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sorede",
@@ -30827,7 +31145,14 @@
           "answer_text": "それで"
         }
       ],
-      "furigana": "それで"
+      "furigana": "それで",
+      "meaning_mnemonic": "The onigiri shelf at Koichi's konbini goes completely empty during the lunch rush, the till keeps beeping at customers who have nothing left to buy, and so the clerk flips the sign to closed without waiting for anyone's approval. Cause tips straight into effect with no gap between them, no hesitation, no other option — that domino roll is and so.",
+      "reading_mnemonic": "Plain kana again — read <reading>それで</reading> just as it is spelled and the sound is the entire answer.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shikashi",
@@ -30846,7 +31171,14 @@
           "answer_text": "しかし"
         }
       ],
-      "furigana": "しかし"
+      "furigana": "しかし",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the cats sprawl fast asleep across every mossy step, completely unbothered by the enormous bell hanging right over their heads. However, the instant a visitor's hand touches the bell rope, every single cat bolts upright at once and scatters. That flip from total calm to sudden chaos, with nothing gradual about it, is however.",
+      "reading_mnemonic": "Kana straight through — sound out <reading>しかし</reading> exactly as written and you have already got the reading.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tabun",
@@ -30865,7 +31197,14 @@
           "answer_text": "たぶん"
         }
       ],
-      "furigana": "たぶん"
+      "furigana": "たぶん",
+      "meaning_mnemonic": "At Sei's school, the sports field scoreboard flickers between two different numbers all afternoon, and nobody on the sidelines will commit to which one is actually correct. Ask a teacher and all you get is a shrug: probably the higher number, maybe not, hard to say for certain. That shrug, refusing to commit either way, is probably, maybe.",
+      "reading_mnemonic": "This one is plain kana too — read <reading>たぶん</reading> exactly as it is written and there is nothing left to derive.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mochiron",
@@ -30884,7 +31223,15 @@
           "answer_text": "もちろん"
         }
       ],
-      "furigana": "もちろん"
+      "furigana": "もちろん",
+      "meaning_mnemonic": "At Koichi's konbini, a customer asks the clerk if the mochi by the register is actually fresh. The clerk, a rice-cake vendor everyone calls Ron, doesn't even glance up — restocking that shelf every single hour is his whole job. Obviously it's fresh. Of course it is.",
+      "reading_mnemonic": "This word is written in kana exactly as it's read — <reading>もちろん</reading> sounds just like the confident vendor's name, <reading>Mochi-Ron</reading>, shrugging off the question.",
+      "description": "This is a confident, assertive of course — fine with friends or in casual replies, but answering a boss or teacher with it can come across as presumptuous, so softening the tone or adding a more formal ending is often safer.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "taitei",
@@ -30903,7 +31250,14 @@
           "answer_text": "たいてい"
         }
       ],
-      "furigana": "たいてい"
+      "furigana": "たいてい",
+      "meaning_mnemonic": "At the riverbank, a fisherman named Tai washes the same net every morning. Mostly he hauls up nothing but weeds, and usually that's exactly the day he decides to give up — right before the one big fish finally shows up. So he keeps going, mostly, usually, forever.",
+      "reading_mnemonic": "This word is written exactly as it sounds — picture tidy <reading>Tai</reading> scrubbing his net at the riverbank to get the reading <reading>たいてい</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hai",
@@ -30922,7 +31276,14 @@
           "answer_text": "はい"
         }
       ],
-      "furigana": "はい"
+      "furigana": "はい",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the priest swings the enormous bell and calls the roll for the cats scattered across the mossy steps. Each cat shoots a paw straight up the instant its name rings out — an immediate, unmistakable yes, no hesitation, no exceptions.",
+      "reading_mnemonic": "This word is written just as it sounds — picture each cat's paw shooting <reading>high</reading> the moment its name is called, and you have the reading <reading>はい</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ee",
@@ -30941,7 +31302,15 @@
           "answer_text": "ええ"
         }
       ],
-      "furigana": "ええ"
+      "furigana": "ええ",
+      "meaning_mnemonic": "Near the vending machine at the top of the mountain trail, one hiker collapses onto a rock and asks if the other wants to stop too. The other doesn't even break stride, just tosses back a lazy eh — yeah, obviously, why else would there be a vending machine all the way up here.",
+      "reading_mnemonic": "This word is written exactly as it sounds — the hiker's lazy <reading>eh</reading> stretched out on the trail gives you the reading <reading>ええ</reading>.",
+      "description": "This is a softer, more casual yeah than the standard yes — natural between friends or equals in relaxed conversation, but it can sound too casual toward a stranger, a boss, or a teacher, where the more formal option is safer.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "iie",
@@ -30960,7 +31329,15 @@
           "answer_text": "いいえ"
         }
       ],
-      "furigana": "いいえ"
+      "furigana": "いいえ",
+      "meaning_mnemonic": "Halfway up the mountain trail, the summit vending machine jams on the same drink three times running. You don't bother explaining — you just fold your arms, stretch your mouth into a long groan, and shake your head slowly. That stretched, reluctant groan is the whole word: no.",
+      "reading_mnemonic": "いいえ is spelled exactly as it sounds, no hidden readings to untangle — read the kana <reading>いいえ</reading> straight through, drawn out like the groan <reading>ee-yeah</reading> you just gave that stubborn machine.",
+      "description": "This is the standard textbook \"no,\" but it leans formal and can sound blunt if used bare — Japanese speakers often soften a refusal or deny a compliment with it rather than flatly reject something, so it does more polite work than the English word suggests.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "doumo",
@@ -30979,7 +31356,15 @@
           "answer_text": "どうも"
         }
       ],
-      "furigana": "どうも"
+      "furigana": "どうも",
+      "meaning_mnemonic": "At Koichi's konbini, the till won't stop beeping — somehow he's rung up the same rice ball five separate times. Rather than work out how it happened, he just presses his hands together toward the register and mutters a loose, all-purpose noise of gratitude at the mess he's made, one sound doing double duty for both the mystery and the thanks.",
+      "reading_mnemonic": "どうも is pure kana, read just as written — sound out <reading>どうも</reading> the way Koichi mutters it, a low <reading>dohh-moh</reading> rolled out under his breath at the register.",
+      "description": "This word covers two unrelated jobs: a vague intensifier meaning \"somehow\" or \"quite,\" and a casual, often incomplete way of saying thanks — like saying \"thanks\" without finishing \"thank you very much.\" Used alone it's breezy and informal, not something you'd offer a boss or a stranger you owe a real apology to.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konnichiwa",
@@ -30998,7 +31383,15 @@
           "answer_text": "こんにちは"
         }
       ],
-      "furigana": "こんにちは"
+      "furigana": "こんにちは",
+      "meaning_mnemonic": "Right at midday, Grandma Kane rings the shrine's one enormous bell and every cat on the mossy steps looks up at once. She doesn't say a word to any of them — she just nods at the sun sitting directly overhead, because this greeting only comes out when the day is that bright and that high: hello, said squarely in the afternoon.",
+      "reading_mnemonic": "こんにちは is plain kana, read exactly as written with no hidden readings to decode: <reading>こんにちは</reading>, pronounced like <reading>kon-nee-chee-wah</reading>.",
+      "description": "This greeting is tied to daylight hours — roughly late morning through early evening — and isn't the everyday word you'd say to family at home or close friends you see constantly; it's for acquaintances, strangers, and daytime encounters generally.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ohayou",
@@ -31017,7 +31410,15 @@
           "answer_text": "おはよう"
         }
       ],
-      "furigana": "おはよう"
+      "furigana": "おはよう",
+      "meaning_mnemonic": "Sei sprints through the school gate half a minute before the bell, hair still flat on one side, and skids past the sports field waving at everyone in one long breath instead of stopping for each person. The greeting comes out squashed together and a little too loud for how early it is — the sound the whole school makes before anyone's fully awake: good morning.",
+      "reading_mnemonic": "おはよう is plain kana, read exactly as spelled — call out <reading>おはよう</reading> the way Sei does, a rushed <reading>oh-hi-yo</reading> tossed over one shoulder while still running.",
+      "description": "This is the casual form, fine for classmates and friends; the polite version adds ございます on the end and is what you'd use with a teacher, a boss, or anyone you don't know well — dropping that ending in the wrong setting reads as overly familiar.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konbanwa",
@@ -31036,7 +31437,15 @@
           "answer_text": "こんばんは"
         }
       ],
-      "furigana": "こんばんは"
+      "furigana": "こんばんは",
+      "meaning_mnemonic": "Koichi flips the konbini sign to closed at dusk, but the shrine cat slips in first, same time every night, tail curling around the onigiri shelf as the till gives its last beep. He never shoos it. He just crouches, says the one line reserved for exactly this hour, and lets it out: good evening.",
+      "reading_mnemonic": "This one is pure kana, said exactly as it looks: <reading>こんばんは</reading> reads like \"<reading>cone-bahn-wah</reading>\" — sound it out and you're already saying good evening.",
+      "description": "This greeting only works after dusk, when the sky has actually gone dark — it is not a general-purpose hello, and it is never used to say goodbye, even though it looks like it could close a conversation.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sayounara",
@@ -31055,7 +31464,15 @@
           "answer_text": "さようなら"
         }
       ],
-      "furigana": "さようなら"
+      "furigana": "さようなら",
+      "meaning_mnemonic": "At Grandma Kane's shrine, an old bell only gets rung once a year, at the one moment everyone agrees a season has truly ended. Nobody rings it for a quick trip to the vending machine and back. When it finally tolls, mossy steps empty, cats scatter, and the whole shrine seems to exhale: goodbye.",
+      "reading_mnemonic": "Picture <reading>さようなら</reading> as someone slowly waving from a departing ferry, calling out \"<reading>sigh-oh-nara</reading>\" until the shape of them disappears past the riverbank.",
+      "description": "This word carries real finality — Japanese speakers reach for it when a parting is long, permanent, or dramatic (moving away, a breakup), not for the daily goodbye to a coworker or friend you'll see tomorrow, where a lighter phrase fits better.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "arigatou",
@@ -31074,7 +31491,15 @@
           "answer_text": "ありがとう"
         }
       ],
-      "furigana": "ありがとう"
+      "furigana": "ありがとう",
+      "meaning_mnemonic": "A stray cat drags a whole rice ball off Koichi's shelf and bolts up the mountain trail, and Koichi just laughs and lets it go. At the top, by the lone vending machine, the cat drops half the rice ball at the feet of a hiker who'd fed it yesterday — the closest a cat gets to saying thank you.",
+      "reading_mnemonic": "Hear <reading>ありがとう</reading> as the hiker muttering \"<reading>ah-ri-gah-toh</reading>\" under his breath at the cat's odd little gift, half touched, half confused.",
+      "description": "This is the plain, casual form — fine with friends, family, or a cat, but too casual for a shopkeeper, a boss, or anyone you'd address politely; those situations call for a longer, more formal version of the same word.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sumimasen",
@@ -31093,7 +31518,15 @@
           "answer_text": "すみません"
         }
       ],
-      "furigana": "すみません"
+      "furigana": "すみません",
+      "meaning_mnemonic": "Sei knocks over an entire display at Koichi's konbini reaching for a drink, cans rolling under the beeping till in every direction. She freezes, hands up, apologizing to Koichi and to the three customers she nearly took out — one word covering the mess, the noise, and the bruised dignity: excuse me, sorry.",
+      "reading_mnemonic": "Hear <reading>すみません</reading> as Sei's voice cutting through the clatter, rushed and apologetic: \"<reading>soo-mee-mah-sen</reading>, soo-mee-mah-sen\" — over and over as the cans keep rolling.",
+      "description": "This one covers both a sincere apology and a polite way to get someone's attention (like flagging down a waiter), so the same word that says sorry for a mess also opens a request — context, not the word itself, tells you which.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gomennasai",
@@ -31112,7 +31545,14 @@
           "answer_text": "ごめんなさい"
         }
       ],
-      "furigana": "ごめんなさい"
+      "furigana": "ごめんなさい",
+      "meaning_mnemonic": "At Koichi's konbini, a delivery cart clips the onigiri shelf and forty rice balls roll toward the door. The clerk doesn't shout — he just bows lower and lower, repeating the same syllables, until the last onigiri stops at a customer's shoe. That ritual of taking full blame for something rolling away from you is: I'm sorry.",
+      "reading_mnemonic": "This word is written exactly the way it sounds, kana all the way through, so there's no puzzle to solve — just recognize <reading>ごめんなさい</reading> on sight and you already have the reading.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "onegaishimasu",
@@ -31131,7 +31571,14 @@
           "answer_text": "おねがいします"
         }
       ],
-      "furigana": "お願[ねが]いします"
+      "furigana": "お願[ねが]いします",
+      "meaning_mnemonic": "Halfway up the mountain trail, the vending machine hums but won't drop the can until you press both palms together and bow toward it like it's a shrine bell. Everyone on the trail does this — palms pressed, head dipped, asking properly instead of grabbing — and that whole gesture, spoken aloud, is exactly how you ask someone for a favor: please.",
+      "reading_mnemonic": "Oto kneels on the mountain trail and begs the temperamental vending machine, palms pressed together, chanting <reading>oh-nay-gai-shee-mas</reading> until the plea lands as <reading>おねがいします</reading>, her word for please, and the can finally drops.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hajimemashite",
@@ -31150,7 +31597,14 @@
           "answer_text": "はじめまして"
         }
       ],
-      "furigana": "はじめまして"
+      "furigana": "はじめまして",
+      "meaning_mnemonic": "On Sei's first day at the new school, the hallway echoes so much his greeting bounces back before he finishes it. He bows to the wrong homeroom twice, and each time the whole class stands and returns the same ritual line anyway — the one you say only once, to someone you're meeting for the very first time: nice to meet you.",
+      "reading_mnemonic": "This word is written exactly the way it sounds, kana all the way through, so there's no puzzle to solve — just recognize <reading>はじめまして</reading> on sight and you already have the reading.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "oyasuminasai",
@@ -31169,7 +31623,14 @@
           "answer_text": "おやすみなさい"
         }
       ],
-      "furigana": "おやすみなさい"
+      "furigana": "おやすみなさい",
+      "meaning_mnemonic": "Every evening the shrine cats pile onto Grandma Kane's mossy steps, and one always shoves against the enormous bell just as she pulls the rope, so the whole shrine rings out over the neighborhood at the exact moment she says her nightly line to send everyone home to bed: good night.",
+      "reading_mnemonic": "This word is written exactly the way it sounds, kana all the way through, so there's no puzzle to solve — just recognize <reading>おやすみなさい</reading> on sight and you already have the reading.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itadakimasu",
@@ -31188,7 +31649,14 @@
           "answer_text": "いただきます"
         }
       ],
-      "furigana": "いただきます"
+      "furigana": "いただきます",
+      "meaning_mnemonic": "At the mountaintop vending machine, a hiker finally reaches the summit and presses both palms flat together before tearing into the rice ball — a silent thanks to whoever grew the rice and carried it up that slope. Only after that press of palms does the first bite happen. Press, then bite: let's eat, thanks for the food.",
+      "reading_mnemonic": "Written exactly as it sounds — read the kana straight through and you get 「<reading>いただきます</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gochisousama",
@@ -31207,7 +31675,14 @@
           "answer_text": "ごちそうさま"
         }
       ],
-      "furigana": "ごちそうさま"
+      "furigana": "ごちそうさま",
+      "meaning_mnemonic": "At Grandma Kane's shrine, a fat cat licks its bowl of dried fish clean, then rolls over on the mossy steps in a stretch that looks exactly like a deep, satisfied bow. Every cat there does the same roll once the bowl is empty, as if the shrine teaches manners. That lazy roll is the whole phrase: thanks for the meal, already finished.",
+      "reading_mnemonic": "Written exactly as it sounds — read the kana straight through and you get 「<reading>ごちそうさま</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ittekimasu",
@@ -31226,7 +31701,14 @@
           "answer_text": "いってきます"
         }
       ],
-      "furigana": "行[い]ってきます"
+      "furigana": "行[い]ってきます",
+      "meaning_mnemonic": "Koichi bursts out of his konbini mid-shift, legs split wide in that stride you know as <kanji>go</kanji> — off to restock from the vending machine down the road. He shouts through the door that he's <kanji>going</kanji>, but the shout carries a promise to come right back. That's what you say the instant you're the one walking out.",
+      "reading_mnemonic": "The reading is just its parts said in order — 行 as い, plus って, き, ます — spelling out 「<reading>いってきます</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tadaima",
@@ -31245,7 +31727,14 @@
           "answer_text": "ただいま"
         }
       ],
-      "furigana": "ただいま"
+      "furigana": "ただいま",
+      "meaning_mnemonic": "Sei drops her bag the second she's through the door after school, sports-field mud still on her shoes, and calls out into the hallway before her shoes are even off. Nobody answers right away, but she says it anyway, announcing herself to a house that already knows her. That first shout through the door is the whole word: I'm home.",
+      "reading_mnemonic": "Written exactly as it sounds — read the kana straight through and you get 「<reading>ただいま</reading>」.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "okaerinasai",
@@ -31264,7 +31753,14 @@
           "answer_text": "おかえりなさい"
         }
       ],
-      "furigana": "お帰[かえ]りなさい"
+      "furigana": "お帰[かえ]りなさい",
+      "meaning_mnemonic": "The weary traveler finally reaches the door, walking stick clattering to the floor as the whole house seems to lean forward to catch him. You fling the door open before he can even knock, already shouting the words that make the <kanji>return</kanji> complete: welcome back.",
+      "reading_mnemonic": "Regular derivation: the polite prefix お plus 帰（かえ）plus the closing りなさい string together exactly as read, giving you <reading>おかえりなさい</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     }
   ]
 }

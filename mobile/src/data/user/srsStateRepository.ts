@@ -190,6 +190,68 @@ export function countStartedItemsByIds(
   return total;
 }
 
+/**
+ * Pushes every not-yet-due card forward by `shiftMs` — the vacation-mode
+ * resume step. Cards already overdue when the break began (`due_date <=
+ * afterIso`) stay put; everything else keeps its spacing relative to the
+ * others, so the backlog re-spreads over the days after resume instead of
+ * landing all at once.
+ *
+ * `last_reviewed_at` moves by the same delta so FSRS sees the same elapsed
+ * gap it would have without the break — otherwise it would credit the user
+ * with retaining each card across the whole vacation and stretch every
+ * subsequent interval (see core/srs/fsrsScheduler.ts `toFsrsCard`).
+ *
+ * Timestamps are recomputed in JS rather than with SQLite's `datetime()`,
+ * which emits `YYYY-MM-DD HH:MM:SS` and would break the lexicographic ISO
+ * comparison the whole due path relies on.
+ *
+ * Returns the number of rows shifted.
+ */
+export function shiftDueDatesAfter(
+  userDb: SQLiteDatabase,
+  afterIso: string,
+  shiftMs: number,
+): number {
+  if (shiftMs <= 0) return 0;
+
+  const rows = userDb.getAllSync<{
+    item_id: number | string;
+    due_date: string;
+    last_reviewed_at: string | null;
+  }>(
+    `SELECT item_id, due_date, last_reviewed_at FROM srs_states
+     WHERE due_date > ? AND is_burned = 0`,
+    afterIso,
+  );
+  if (rows.length === 0) return 0;
+
+  const updatedAt = new Date().toISOString();
+  userDb.withTransactionSync(() => {
+    for (const row of rows) {
+      const shiftedDue = new Date(
+        new Date(row.due_date).getTime() + shiftMs,
+      ).toISOString();
+      const shiftedLastReviewed =
+        row.last_reviewed_at === null
+          ? null
+          : new Date(new Date(row.last_reviewed_at).getTime() + shiftMs).toISOString();
+
+      userDb.runSync(
+        `UPDATE srs_states
+         SET due_date = ?, last_reviewed_at = ?, updated_at = ?
+         WHERE item_id = ?`,
+        shiftedDue,
+        shiftedLastReviewed,
+        updatedAt,
+        row.item_id,
+      );
+    }
+  });
+
+  return rows.length;
+}
+
 export function upsertSrsState(
   userDb: SQLiteDatabase,
   state: SRSState,

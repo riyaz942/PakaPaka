@@ -8,6 +8,7 @@ import {
   resolveDailyGoalTarget,
   runWeeklyGoalCheck,
 } from '@/data/user/goalRingRepository';
+import { isVacationActive } from '@/data/user/vacationRepository';
 import type { AppError } from '@/types/result.types';
 
 type UseCognitiveLoadResult = {
@@ -43,10 +44,13 @@ export function useCognitiveLoad(): UseCognitiveLoadResult {
     try {
       // Weekly ratchet runs on read: at most once per calendar week it turns
       // last week's active days into pending rise/reduction offers. Best-effort
-      // — a failed check must not take down the ring.
-      const checkResult = runWeeklyGoalCheck(userDb);
-      if (!checkResult.ok && __DEV__) {
-        console.warn('[useCognitiveLoad] weekly goal check failed', checkResult.error);
+      // — a failed check must not take down the ring. Skipped during vacation
+      // mode so weeks away are never judged as missed; endVacation re-anchors.
+      if (!isVacationActive(userDb)) {
+        const checkResult = runWeeklyGoalCheck(userDb);
+        if (!checkResult.ok && __DEV__) {
+          console.warn('[useCognitiveLoad] weekly goal check failed', checkResult.error);
+        }
       }
 
       const daily = getDailyLoad(userDb, todayKey());

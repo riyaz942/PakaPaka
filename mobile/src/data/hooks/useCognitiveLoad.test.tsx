@@ -15,11 +15,16 @@ import { DatabaseContext, type DatabaseContextValue } from '@/providers/Database
 
 jest.mock('@/data/user/preferencesRepository', () => ({
   getSessionIntensity: jest.fn(() => null),
+  // Read by isVacationActive: the ratchet is skipped while paused.
+  getVacationStartedAt: jest.fn(() => mockVacationStartedAt),
 }));
+
+let mockVacationStartedAt: string | null = null;
 
 describe('useCognitiveLoad', () => {
   beforeEach(() => {
     __mockResetSqlite();
+    mockVacationStartedAt = null;
   });
 
   async function createWrapper(userDb: Awaited<ReturnType<typeof openDatabaseAsync>>) {
@@ -115,6 +120,35 @@ describe('useCognitiveLoad', () => {
     expect(result.current.pendingRiseTo).toBe(60);
     // The goal itself is untouched until the user accepts.
     expect(result.current.threshold).toBe(30);
+  });
+
+  it('skips the weekly check during vacation mode so weeks away are not judged', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, [migration008CognitiveLoadHistory, migration015GoalRingState]);
+
+    const thisWeekStart = weekStartKey(new Date());
+    const priorWeekStart = addDaysToKey(thisWeekStart, -7);
+    const [py, pm, pd] = priorWeekStart.split('-').map(Number);
+    runWeeklyGoalCheck(userDb, new Date(py, pm - 1, pd));
+    for (let day = 0; day < 3; day++) {
+      addDailyLoad(userDb, {
+        date: addDaysToKey(priorWeekStart, day),
+        increment: 60,
+        threshold: 30,
+      });
+    }
+
+    mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
+
+    const wrapper = await createWrapper(userDb);
+    const { result } = renderHook(() => useCognitiveLoad(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBe(false);
+    });
+
+    // Same setup that produces a rise offer above — suppressed while paused.
+    expect(result.current.pendingRiseTo).toBeNull();
   });
 
   it('surfaces error state on read failure', async () => {

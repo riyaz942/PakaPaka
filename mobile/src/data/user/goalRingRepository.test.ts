@@ -11,6 +11,7 @@ import { addDailyLoad } from '@/data/user/cognitiveLoadRepository';
 import {
   acceptPendingReduction,
   acceptPendingRise,
+  anchorGoalWeek,
   declinePendingReduction,
   getGoalRingState,
   resolveDailyGoalTarget,
@@ -74,6 +75,28 @@ describe('goalRingRepository', () => {
     const state = getGoalRingState(userDb);
     expect(state.goalWeekStart).toBe('2026-07-20');
     expect(state.pendingRiseTo).toBeNull();
+  });
+
+  it('anchorGoalWeek skips the weeks in between instead of judging them as missed', async () => {
+    const userDb = await createUserDb();
+    runWeeklyGoalCheck(userDb, new Date(2026, 6, 6)); // anchor week of Jul 6
+
+    // Three empty weeks pass — a vacation. Re-anchoring must not bank misses.
+    expect(anchorGoalWeek(userDb, new Date(2026, 6, 27)).ok).toBe(true);
+
+    const state = getGoalRingState(userDb);
+    expect(state.goalWeekStart).toBe('2026-07-27');
+    expect(state.consecutiveMissWeeks).toBe(0);
+    expect(state.pendingReductionTo).toBeNull();
+  });
+
+  it('anchorGoalWeek leaves the goal target untouched', async () => {
+    const userDb = await createUserDb();
+    setDailyGoalTarget(userDb, 45);
+
+    anchorGoalWeek(userDb, new Date(2026, 6, 27));
+
+    expect(resolveDailyGoalTarget(userDb)).toBe(45);
   });
 
   it('is a no-op within the same week', async () => {

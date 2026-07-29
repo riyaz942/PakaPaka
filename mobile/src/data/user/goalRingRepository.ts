@@ -178,6 +178,21 @@ export function declinePendingReduction(userDb: SQLiteDatabase): Result<void, Ap
 }
 
 /**
+ * Moves the ratchet's anchor to the current week without judging anything in
+ * between. Used when vacation mode ends: `runWeeklyGoalCheck` walks every
+ * Monday boundary since the last anchor and increments `consecutiveMissWeeks`
+ * for each one, so without re-anchoring a multi-week break would greet the
+ * user with a "been a tough stretch?" reduction offer they didn't earn.
+ */
+export function anchorGoalWeek(
+  userDb: SQLiteDatabase,
+  now: Date = new Date(),
+): Result<void, AppError> {
+  const state = getGoalRingState(userDb);
+  return persistState(userDb, { ...state, goalWeekStart: weekStartKey(now) });
+}
+
+/**
  * Weekly ratchet driver (FR56–57). On each new Monday-start week it judges
  * every week since the last run (so multi-week app gaps still accumulate miss
  * / rise state). The goal itself is only ever changed by the user
