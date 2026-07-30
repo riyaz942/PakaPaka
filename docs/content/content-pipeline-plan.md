@@ -581,10 +581,40 @@ appear under two points, so a single per-point nudge could not distinguish
 は/が/を from も at rung 1. The gate is `validate_drafts.nudge_errors` (answer,
 accepted forms, meaning gloss, and duplicate nudges within a point), wired into
 the 2a draft gate and runnable standalone over the shipped JSON:
-`.venv/bin/python -m generate_content.check_nudges`. `prompts/grammar-lesson.md`
-carries the spec for future drafts. Known follow-on: the 64/74 N5 lesson drafts
-whose candidate `cloze_variants` now fail the check are authoring input for the
-docs-09 cloze effort and need the rewrite when promoted, not before.
+`.venv/bin/python -m generate_content.check_cloze`. `prompts/grammar-lesson.md`
+carries the spec for future drafts.
+
+*Follow-on: N5 Wave B promoted (2026-07-29).* The 64/74 lesson drafts whose
+candidate `cloze_variants` failed the check have been rewritten and promoted, so
+**73/74 N5 points now ship authored variants (367 total)**, up from 5. Promotion
+turned up a defect the nudge rule alone would not have caught: 128 of the 347
+candidates blanked a whole word (`読みました`, `早く`, `あげました`) rather than
+the gradeable chunk, violating docs-09 §68 (`answer` ∈ `accepted_forms`). The
+app grades a grammar answer against `accepted_forms` alone
+(`core/grammar/answerEvaluator` → `parseConjugation`, which never sees
+`clozeAnswer`), so shipping those would have marked a correct learner *wrong*.
+77 re-cut mechanically (the accepted form is a suffix of the whole word, so the
+stem moves out of the blank); 51 were rewritten by hand.
+
+The gate therefore grew past nudges and was renamed
+`generate_content/check_cloze.py`: blank present, `answer` ∈ `accepted_forms`,
+and the *filled* sentence level-checked + furigana-annotated — the same two
+checks the draft gate runs on example sentences, which cloze variants had never
+been subject to. A variant lifted verbatim from the item's own
+`example_sentences` skips the vocabulary cutoff; that content is separately
+curated and the cutoff exists to catch newly authored Japanese.
+
+Two points remain unauthored by design:
+- **`mada-teinai`** — its `accepted_forms` are discontinuous templates
+  (`まだ〜ていない`), so no single blank can equal one. Needs the forms split
+  before it can carry variants; falls back to the blanked structure frame today.
+- **`ya-among`'s `やなど`** — real usage is 「AやBなど」, which has no single-blank
+  slot, so all five variants blank `や`.
+
+Related dataset gap found while authoring: `ta-koto-ga-aru` lists only
+`たことがある(ます)` and not the rendaku `だ` variant, so its sentences must avoid
+む/ぶ/ぬ/ぐ verbs. `ta-form`, `te-form`, `te-kudasai` and `tari-tari` all list
+both.
 
 App-side twin (same bug, outside the dataset): with no authored variants —
 69/74 N5 points and all of N4 — `ReviewCard`'s rung 1 fell back to the raw
@@ -704,10 +734,11 @@ Review is what actually reaches the MaruMori bar; make it cheap:
 | R1.2 | Phase 0.6 app surfacing (repository + detail/lesson UI, grammar mnemonic removal, composition line, look-alike chips) | typecheck/tests green; new fields visible on device |
 | R1.3 | Look-alike pair derivation (Phase 1 addition): curated seed list + graph/KanjiVG candidates, human-reviewed | pair dataset reviewed |
 | R1.4 | Rev-2 prompts + gate (depth, humor, chain, descriptions, confusable prose); regenerate N5 **radicals → kanji**, then 2d **vocab**; N4 follows the same order | `validate_mnemonics` green; spot review in the app UI (R1.2 is the renderer, same go/no-go logic as the grammar pilot) |
-| R1.5 | 2e nudge rewrite (N5 + N4) | no nudge contains its answer/forms/gloss; skim read |
+| R1.5 | 2e nudge rewrite (N5 + N4) + N5 Wave B cloze promotion | `check_cloze` green: no nudge contains its answer/forms/gloss, `answer` ∈ `accepted_forms`, filled sentence in level; skim read |
 | R1.6 | Phase 4 passage generation with the 50–60% humor mix | tokenizer loop green; tone mix honored; full read |
 
-**Built as of 2026-07-28: R1.1, R1.2, R1.3, R1.5, and R1.4's tooling** (Rev-2 prompts,
+**Built as of 2026-07-29: R1.1, R1.2, R1.3, R1.5 (including N5 Wave B —
+73/74 points carry authored cloze variants), and R1.4's tooling** (Rev-2 prompts,
 gate and the 2d vocab generator — the regeneration run itself is still owed and
 needs API credentials or the web-chat lane). R1.3's reviewed pair dataset is
 `curriculum/_build/visually_similar.py` (52 pairs → 104 `visually_similar_links` rows);

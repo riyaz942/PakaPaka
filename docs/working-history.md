@@ -69,9 +69,11 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013) + “Lea
 - §5.2 — streak celebration data path exists (migration 014, `claimStreakCelebration`) but **no celebration UI**; not wired from review/lesson completion screens
 
 ### [07–10 — Grammar review redesign](./feedback/07-grammar-review-overview.md)
-**Done (app):** Universal JP cloze contract (07); stage ladder — apprentice MC / Guru+ type-in / Enlightened no-English gate (08); schema `family` + `cloze_variants`, compile pipeline, Wave A authoring — wa-topic/ga/wo/mo-also/desu × 5 variants (09); two-rung hints + near-miss “incomplete” teaching reveal (10).
+**Done (app):** Universal JP cloze contract (07); stage ladder — apprentice MC / Guru+ type-in / Enlightened no-English gate (08); schema `family` + `cloze_variants`, compile pipeline, two-rung hints + near-miss “incomplete” teaching reveal (10).
 
-**Not done (content):** Wave B/C variant authoring (rest of N5, then N4) and families for N4 grammar — tracked in plan 09 §9.4. Remaining N5 points still use interim Plan 07 cloze derivation.
+**Done (content):** Wave A (wa-topic/ga/wo/mo-also/desu × 5) and **Wave B — 73/74 N5 points now carry authored cloze variants, 367 in total** (see R1.5 follow-on below). Only `mada-teinai` is left on interim Plan 07 cloze derivation, and by design.
+
+**Not done (content):** Wave C variant authoring (N4) and families for N4 grammar — tracked in plan 09 §9.4.
 
 ### [Content quality pipeline](./content/content-pipeline-plan.md)
 **Done:** Phase 0 schema (explanation / caution / related / split mnemonics / passage enrichment); Phase 0.5 `LessonMarkdown` UI; Phase 1 fact skeleton + audit tooling; mechanical validators; **N5 grammar depth** (74/74 lessons reviewed with `explanation_markdown`); N5 mnemonic + example generators/sidecars (still mostly `draft`; mnemonic drafts superseded by Rev 1); root `NOTICE` file; cloze schema coordination with Wave A. Composition chips (`ItemCrossReferences`) already ship.
@@ -112,17 +114,31 @@ point could not tell は/が/を apart from も at rung 1 (the disambiguating En
 at Enlightened+). The rule is mechanical now, not editorial: `validate_drafts.nudge_errors` rejects a
 nudge containing the answer, any accepted form or the item's meaning gloss, plus duplicate nudges
 within a point; it runs inside the 2a draft gate and standalone over the shipped JSON via
-`generate_content/check_nudges.py`. `prompts/grammar-lesson.md` carries the same spec so future
+`generate_content/check_cloze.py`. `prompts/grammar-lesson.md` carries the same spec so future
 drafts inherit it. The app had the same bug outside the dataset: with no authored variants (69/74
 N5 points and all of N4) the hint fell back to the raw structure frame, and "Noun + を + Verb" names
 the answer — `blankFormsInStructure` (extracted from `buildGrammarCloze`, which already blanked the
 frame when using it as the *prompt*) now blanks it for the nudge too.
 
+**R1.5 follow-on — N5 Wave B promoted (2026-07-29):** the 64 lesson drafts whose candidate
+`cloze_variants` failed the check are rewritten and promoted, so **73/74 N5 points now carry
+authored variants (367 total)**, up from 5. Promotion exposed a defect the nudge rule alone missed:
+128 of the 347 candidates blanked a whole word (`読みました`, `早く`, `あげました`) instead of the
+gradeable chunk, breaking docs-09 §68 (`answer` ∈ `accepted_forms`). Since the app grades against
+`accepted_forms` alone (`parseConjugation` never sees `clozeAnswer`), shipping them would have marked
+correct learners *wrong* — 77 re-cut mechanically, 51 by hand. The gate outgrew its name and is now
+`generate_content/check_cloze.py`: blank present, `answer` ∈ `accepted_forms`, and the *filled*
+sentence level-checked + furigana-annotated (checks cloze variants had never faced), with variants
+lifted verbatim from the item's own `example_sentences` exempt from the vocabulary cutoff.
+
 **Not done / thin:**
-- **R1.5 follow-on:** 64/74 N5 lesson drafts' candidate `cloze_variants` fail the new nudge check
-  (231 nudges) — they are authoring input for the docs-09 cloze effort and do not ship, but they
-  need the rewrite when promoted. N4 has no cloze variants at all, so its nudges are entirely the
-  (now blanked) structure frame.
+- **N4 cloze variants (Wave C)** — still zero, so every N4 nudge is the (now blanked) structure
+  frame. Blocked on N4 grammar lesson generation, which has not run.
+- **Two N5 points can't carry variants as authored:** `mada-teinai`'s `accepted_forms` are
+  discontinuous templates (`まだ〜ていない`) that no single blank can equal, and `ya-among`'s
+  `やなど` has no single-blank slot (real usage is 「AやBなど」). Both need the forms split first.
+  Related: `ta-koto-ga-aru` omits the rendaku `だことがある`, so its sentences must dodge
+  む/ぶ/ぬ/ぐ verbs.
 - **R1.4 (generation)** the wholesale N5 regen radicals → kanji → vocab (2d) has not run — needs
   API credentials, the web-chat lane, or the no-browser subagent lane
   (`docs/workflows/radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md`);

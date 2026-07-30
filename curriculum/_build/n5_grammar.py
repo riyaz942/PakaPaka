@@ -86,6 +86,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kore", "hon", "gakusei"],
         "family": "copula",
+        "cloze_variants": [
+            {"jp_cloze": "これは水＿＿＿。", "english": "This is not water.", "answer": "じゃないです", "nudge": "Whatever is in the glass, it isn't 水 — say so in everyday polite speech."},
+            {"jp_cloze": "私は学生＿＿＿。", "english": "I am not a student.", "answer": "ではありません", "nudge": "Deny 学生 in the most formal way there is."},
+            {"jp_cloze": "彼は先生＿＿＿。", "english": "He is not a teacher.", "answer": "じゃありません", "nudge": "彼 teaches nothing — reject the label, still politely."},
+            {"jp_cloze": "あれは学校＿＿＿。", "english": "That is not a school.", "answer": "じゃないです", "nudge": "The building over there gets ruled out."},
+            {"jp_cloze": "これは肉＿＿＿。", "english": "This is not meat.", "answer": "ではない", "nudge": "Plain speech: 肉 is simply ruled out, no politeness attached."},
+        ],
     },
     {
         "slug": "masu",
@@ -105,6 +112,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["nihongo", "benkyou", "nomu-v"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "私はパンを食べ＿＿＿。", "english": "I eat bread.", "answer": "ます", "nudge": "A plain habit, stated courteously in the present."},
+            {"jp_cloze": "コーヒーを飲み＿＿＿。", "english": "I drink coffee.", "answer": "ます", "nudge": "An ongoing routine, formal register, nothing denied."},
+            {"jp_cloze": "先生は学校に行き＿＿＿。", "english": "The teacher goes to school.", "answer": "ます", "nudge": "The teacher's routine, present and courteous."},
+            {"jp_cloze": "昨日、映画を見＿＿＿。", "english": "Yesterday, I watched a movie.", "answer": "ました", "nudge": "昨日 forces the tail backwards in time."},
+            {"jp_cloze": "友達は来＿＿＿。", "english": "My friend is not coming.", "answer": "ません", "nudge": "The friend isn't coming — deny it courteously."},
+        ],
     },
     {
         "slug": "masen",
@@ -123,6 +137,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["osake", "nomu-v", "taberu"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "今日、学校に行き＿＿＿。", "english": "I will not go to school today.", "answer": "ません", "nudge": "School is off today — refuse it courteously."},
+            {"jp_cloze": "明日、一緒に公園に行き＿＿＿か。", "english": "Won't you go to the park together tomorrow?", "answer": "ません", "nudge": "A denial turned into an invitation."},
+            {"jp_cloze": "昨日、本を読み＿＿＿。", "english": "I did not read the book yesterday.", "answer": "ませんでした", "nudge": "It didn't happen, and it was 昨日."},
+            {"jp_cloze": "私はコーヒーを飲み＿＿＿。", "english": "I do not drink coffee.", "answer": "ません", "nudge": "A standing habit you don't have."},
+            {"jp_cloze": "お酒を飲み＿＿＿。", "english": "I will not drink alcohol.", "answer": "ません", "nudge": "You're turning the drink down."},
+        ],
     },
     {
         "slug": "mashita",
@@ -141,6 +162,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kinou", "eiga", "miru-v"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "昨日、本を読み＿＿＿。", "english": "Yesterday, I read a book.", "answer": "ました", "nudge": "昨日 is over and done; close it courteously."},
+            {"jp_cloze": "今日、コーヒーを飲み＿＿＿。", "english": "I did not drink coffee today.", "answer": "ませんでした", "nudge": "It didn't happen, and the window has closed."},
+            {"jp_cloze": "先生は今日、学校に来＿＿＿。", "english": "The teacher came to school today.", "answer": "ました", "nudge": "The teacher's arrival already took place."},
+            {"jp_cloze": "今、起き＿＿＿。", "english": "I woke up just now.", "answer": "ました", "nudge": "You're up — it just finished happening."},
+            {"jp_cloze": "一緒に遊び＿＿＿。", "english": "We played together.", "answer": "ました", "nudge": "The playing is behind you now."},
+            {"jp_cloze": "昨日、肉を食べ＿＿＿。", "english": "Yesterday, I ate meat.", "answer": "ました", "nudge": "The meal is finished, told courteously."},
+        ],
     },
     {
         "slug": "mashou",
@@ -159,6 +188,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["issho-ni", "iku-v", "ocha"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "一緒にご飯を食べ＿＿＿。", "english": "Let's eat a meal together.", "answer": "ましょう", "nudge": "You're proposing the meal for both of you."},
+            {"jp_cloze": "コーヒーを飲み＿＿＿。", "english": "Let's drink coffee.", "answer": "ましょう", "nudge": "A joint suggestion, not a solo plan."},
+            {"jp_cloze": "窓を開け＿＿＿か。", "english": "Shall I open the window?", "answer": "ましょう", "nudge": "You're offering to open it, checking first."},
+            {"jp_cloze": "ここで待ち＿＿＿。", "english": "Let's wait here.", "answer": "ましょう", "nudge": "Rally the group into waiting here."},
+            {"jp_cloze": "明日、映画を見＿＿＿。", "english": "Let's watch a movie tomorrow.", "answer": "ましょう", "nudge": "Put tomorrow's film to the two of you."},
+        ],
     },
     {
         "slug": "masen-ka",
@@ -176,6 +212,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["issho-ni", "ocha", "eiga"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "一緒に映画を見＿＿＿。", "english": "Won't you watch a movie with me?", "answer": "ませんか", "nudge": "You're inviting them along, phrased as a gentle denial."},
+            {"jp_cloze": "一緒にお茶を飲み＿＿＿。", "english": "Won't you have some tea with me?", "answer": "ませんか", "nudge": "Ask them to join you for tea, softly."},
+            {"jp_cloze": "今日、映画を見＿＿＿？", "english": "Won't you watch a movie today?", "answer": "ませんか", "nudge": "A film today — put it to them as a question."},
+            {"jp_cloze": "明日、一緒にご飯を食べ＿＿＿。", "english": "Won't you eat a meal with me tomorrow?", "answer": "ませんか", "nudge": "Suggest a meal together without pushing."},
+            {"jp_cloze": "彼と一緒にお茶を飲み＿＿＿。", "english": "Won't you have tea with him?", "answer": "ませんか", "nudge": "Propose tea with 彼, leaving room to decline."},
+        ],
     },
     {
         "slug": "wo",
@@ -244,6 +287,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["watashi", "hon", "nihongo"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "それは私＿＿＿本です。", "english": "That is my book.", "answer": "の", "nudge": "The book belongs to 私."},
+            {"jp_cloze": "これは誰＿＿＿ですか。", "english": "Whose is this?", "answer": "の", "nudge": "You're asking who owns it."},
+            {"jp_cloze": "学校＿＿＿写真を見ます。", "english": "I will look at photos of the school.", "answer": "の", "nudge": "The photos depict the school — one noun hangs off the other."},
+            {"jp_cloze": "私＿＿＿友達の猫は魚を食べます。", "english": "My friend's cat eats fish.", "answer": "の", "nudge": "The friend is mine; that's the first link in the chain."},
+            {"jp_cloze": "私の友達＿＿＿猫は魚を食べます。", "english": "My friend's cat eats fish.", "answer": "の", "nudge": "The cat belongs to the friend — the second link in the chain."},
+        ],
     },
     {
         "slug": "no-nominalizer",
@@ -261,6 +311,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["taberu", "suki", "yomu"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "帰る＿＿＿か。", "english": "Are you going home?", "answer": "んです", "nudge": "You're asking for the story behind the leaving, politely."},
+            {"jp_cloze": "明日行く＿＿＿。", "english": "The thing is, I'm going tomorrow.", "answer": "んです", "nudge": "You're setting up an explanation, not just stating a plan."},
+            {"jp_cloze": "何を買う＿＿＿か。", "english": "What is it that you are buying?", "answer": "んです", "nudge": "You want the background to the shopping."},
+            {"jp_cloze": "今食べる＿＿＿？", "english": "Are you eating now?", "answer": "の", "nudge": "A casual probe into what's going on with the eating."},
+            {"jp_cloze": "どうして飲まない＿＿＿？", "english": "Why aren't you drinking?", "answer": "の", "nudge": "どうして wants a reason, and the question stays casual."},
+        ],
     },
     {
         "slug": "ni-direction",
@@ -279,6 +336,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["gakkou-v", "iku-v", "tomodachi"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "彼は家＿＿＿帰ります。", "english": "He returns home.", "answer": "に", "nudge": "家 is the endpoint of the going."},
+            {"jp_cloze": "何時＿＿＿起きますか。", "english": "What time do you wake up?", "answer": "に", "nudge": "The clock reading is the moment it happens."},
+            {"jp_cloze": "先生＿＿＿聞きます。", "english": "I ask the teacher.", "answer": "に", "nudge": "先生 is the one the question lands on."},
+            {"jp_cloze": "日曜日＿＿＿公園に行きます。", "english": "I will go to the park on Sunday.", "answer": "に", "nudge": "Sunday is the slot the trip sits in."},
+            {"jp_cloze": "友達＿＿＿会います。", "english": "I meet a friend.", "answer": "に", "nudge": "The meeting is aimed at 友達."},
+        ],
     },
     {
         "slug": "he-direction",
@@ -296,6 +360,12 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ie", "kaeru-v", "iku-v"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "私は公園＿＿＿行きます。", "english": "I am heading to the park.", "answer": "へ", "nudge": "公園 is the destination you're aimed at."},
+            {"jp_cloze": "先生が学校＿＿＿来ます。", "english": "The teacher comes to the school.", "answer": "へ", "nudge": "The teacher's movement points at 学校."},
+            {"jp_cloze": "彼は家＿＿＿帰ります。", "english": "He is returning home.", "answer": "へ", "nudge": "Home is where 彼 is headed."},
+            {"jp_cloze": "明日、海＿＿＿行きます。", "english": "Tomorrow, we will head to the sea.", "answer": "へ", "nudge": "The sea is the target of the trip."},
+        ],
     },
     {
         "slug": "de-location",
@@ -314,6 +384,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["toshokan", "basu", "hashi-chopsticks"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "家＿＿＿映画を見る。", "english": "I watch movies at home.", "answer": "で", "nudge": "家 is where the watching happens, not the thing watched."},
+            {"jp_cloze": "バス＿＿＿学校に行く。", "english": "I go to school by bus.", "answer": "で", "nudge": "バス is how you get there."},
+            {"jp_cloze": "箸＿＿＿魚を食べる。", "english": "I eat fish with chopsticks.", "answer": "で", "nudge": "箸 is the tool doing the work."},
+            {"jp_cloze": "これ、どこ＿＿＿買う？", "english": "Where do you buy this?", "answer": "で", "nudge": "You're asking about the shop, not the item."},
+            {"jp_cloze": "週末、図書館＿＿＿本を読む。", "english": "On the weekend, I read books at the library.", "answer": "で", "nudge": "図書館 is the setting the reading happens in."},
+        ],
     },
     {
         "slug": "to-and",
@@ -331,6 +408,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["pan", "tamago", "tomodachi"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "パン＿＿＿卵", "english": "Bread plus eggs.", "answer": "と", "nudge": "A complete pair: bread plus eggs, nothing left out."},
+            {"jp_cloze": "肉＿＿＿魚と卵を買います。", "english": "I will buy meat, fish, eggs.", "answer": "と", "nudge": "The list is closed; these three are the whole of it."},
+            {"jp_cloze": "私は友達＿＿＿公園へ行きます。", "english": "I will go to the park together with a friend.", "answer": "と", "nudge": "友達 accompanies you on the trip."},
+            {"jp_cloze": "彼女＿＿＿一緒に映画を見ます。", "english": "I will watch a movie together with my girlfriend.", "answer": "と", "nudge": "彼女 is your companion for the film."},
+            {"jp_cloze": "これ＿＿＿それを使います。", "english": "I will use this one plus that one.", "answer": "と", "nudge": "Both items get used — the full set."},
+        ],
     },
     {
         "slug": "ya-among",
@@ -347,6 +431,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["yasai", "kudamono", "zasshi"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "本＿＿＿雑誌を読みます。", "english": "I read books, magazines, things like that.", "answer": "や", "nudge": "Books plus magazines are examples, not the full list."},
+            {"jp_cloze": "朝ご飯にパン＿＿＿果物を食べます。", "english": "For breakfast I eat bread, fruit, the like.", "answer": "や", "nudge": "Bread plus fruit — a sample of breakfast, not the whole of it."},
+            {"jp_cloze": "明日、海＿＿＿公園へ行きます。", "english": "Tomorrow I will go to the sea, a park, so on.", "answer": "や", "nudge": "The sea plus a park, with room for further stops."},
+            {"jp_cloze": "学校で先生＿＿＿学生に会います。", "english": "At school I meet teachers, students, so on.", "answer": "や", "nudge": "Teachers plus students, standing in for everyone there."},
+            {"jp_cloze": "今日、肉＿＿＿魚を買います。", "english": "Today I will buy meat, fish, so on.", "answer": "や", "nudge": "Meat plus fish are representative of the shopping."},
+        ],
     },
     {
         "slug": "mo-also",
@@ -388,6 +479,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["eki", "aruku", "nihon"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "どこ＿＿＿来ましたか。", "english": "Where did you come from?", "answer": "から", "nudge": "You're asking about the origin of the journey."},
+            {"jp_cloze": "何時＿＿＿コーヒーを飲みますか。", "english": "From what time will you drink coffee?", "answer": "から", "nudge": "You want the hour the drinking begins."},
+            {"jp_cloze": "家＿＿＿歩きます。", "english": "I will walk from home.", "answer": "から", "nudge": "家 is where the walk begins, not where it ends."},
+            {"jp_cloze": "日本＿＿＿来ました。", "english": "I came from Japan.", "answer": "から", "nudge": "日本 is the place left behind."},
+            {"jp_cloze": "朝＿＿＿本を読みます。", "english": "I will read a book from the morning.", "answer": "から", "nudge": "Morning is when the reading kicks off."},
+        ],
     },
     {
         "slug": "made-until",
@@ -405,6 +503,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["eki", "aruku", "gakkou-v"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "昼＿＿＿待ちます。", "english": "I will wait until noon.", "answer": "まで", "nudge": "Noon is the cut-off for the waiting."},
+            {"jp_cloze": "駅＿＿＿歩きます。", "english": "I will walk as far as the station.", "answer": "まで", "nudge": "The walk stops once the station is reached."},
+            {"jp_cloze": "朝から晩＿＿＿遊びます。", "english": "I will play from morning until evening.", "answer": "まで", "nudge": "朝 opened the span; 晩 closes it."},
+            {"jp_cloze": "家から学校＿＿＿歩きます。", "english": "I will walk from the house to school.", "answer": "まで", "nudge": "The route ends at 学校."},
+            {"jp_cloze": "海＿＿＿行きます。", "english": "I will go as far as the sea.", "answer": "まで", "nudge": "The sea is the limit of the trip."},
+        ],
     },
     {
         "slug": "kara-because",
@@ -422,6 +527,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["samui", "isogashii", "takai-adj"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "私は学生＿＿＿。", "english": "Because I'm a student.", "answer": "ですから", "nudge": "This clause is the justification, stated politely on its own."},
+            {"jp_cloze": "今日は忙しいです＿＿＿、昼ご飯は肉です。", "english": "Because I'm busy today, lunch is meat.", "answer": "から", "nudge": "Being busy is what explains the lunch choice."},
+            {"jp_cloze": "昼ご飯は肉です。忙しいです＿＿＿。", "english": "Lunch is meat. Because I'm busy.", "answer": "から", "nudge": "The explanation arrives after the fact it explains."},
+            {"jp_cloze": "今日は寒い＿＿＿。", "english": "Because it's cold today.", "answer": "から", "nudge": "Plain speech giving the cause and nothing else."},
+            {"jp_cloze": "今日は忙しい＿＿＿。", "english": "Because I'm busy today.", "answer": "から", "nudge": "A busy day is what accounts for it."},
+        ],
     },
     {
         "slug": "node-because",
@@ -438,6 +550,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["jikan", "byouki", "yasui-adj"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "これは安い＿＿＿、これにします。", "english": "This one's cheap, so I'll go with this one.", "answer": "ので", "nudge": "The low price is the grounds for the choice, stated gently."},
+            {"jp_cloze": "彼は医者な＿＿＿、こちらがいいです。", "english": "He's a doctor, so this way is better.", "answer": "ので", "nudge": "His job is the calm justification for the suggestion."},
+            {"jp_cloze": "父は今、病気な＿＿＿、私が行きます。", "english": "My father is sick right now, so I'll go.", "answer": "ので", "nudge": "The illness explains the swap, matter-of-factly."},
+            {"jp_cloze": "今日は病気な＿＿＿、うちにいます。", "english": "I'm sick today, so I'm staying home.", "answer": "んで", "nudge": "The same gentle reasoning, slurred into casual speech."},
+            {"jp_cloze": "赤ちゃんです＿＿＿、こちらはどうですか。", "english": "It's a baby, so how about over here?", "answer": "ので", "nudge": "The baby is the quiet grounds for steering them elsewhere."},
+        ],
     },
     {
         "slug": "ni-indirect",
@@ -455,6 +574,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["tomodachi", "denwa-suru", "sensei"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "友達＿＿＿電話する", "english": "I will call a friend.", "answer": "に", "nudge": "友達 is the one on the other end of the call."},
+            {"jp_cloze": "今日、彼女＿＿＿会う", "english": "I will meet my girlfriend today.", "answer": "に", "nudge": "The meeting has 彼女 on the receiving end."},
+            {"jp_cloze": "男の人＿＿＿話す", "english": "I will speak to the man.", "answer": "に", "nudge": "The words are directed at the man."},
+            {"jp_cloze": "子供＿＿＿本を読む", "english": "I will read a book to the child.", "answer": "に", "nudge": "The child is the audience, not the thing read."},
+            {"jp_cloze": "父＿＿＿聞く", "english": "I will ask my father.", "answer": "に", "nudge": "父 is who gets asked."},
+        ],
     },
     {
         "slug": "ka-question",
@@ -472,6 +598,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["gakusei", "iku-v", "nani"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "何を食べます＿＿＿。", "english": "What will you eat?", "answer": "か", "nudge": "何 is left dangling — the sentence never turns into a real ask."},
+            {"jp_cloze": "明日、本を読みます＿＿＿。", "english": "Will you read a book tomorrow?", "answer": "か", "nudge": "This is a yes-or-no enquiry, not a statement."},
+            {"jp_cloze": "あの人は学生です＿＿＿。", "english": "Is that person a student?", "answer": "か", "nudge": "You're checking whether they study, not announcing it."},
+            {"jp_cloze": "どこから帰ります＿＿＿。", "english": "Where will you return from?", "answer": "か", "nudge": "どこ needs the sentence to actually ask something."},
+            {"jp_cloze": "誰に話します＿＿＿。", "english": "Who will you speak to?", "answer": "か", "nudge": "誰 stays unanswered until the sentence becomes an enquiry."},
+            {"jp_cloze": "今日、肉を食べます＿＿＿。", "english": "Will you eat meat today?", "answer": "か", "nudge": "Turn the plain report into something the listener must answer."},
+        ],
     },
     {
         "slug": "ne-tag",
@@ -489,6 +623,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["tenki", "atsui-hot", "oishii"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "このコーヒーはおいしいです＿＿＿。", "english": "This coffee is delicious, isn't it?", "answer": "ね", "nudge": "You expect them to taste it the same way."},
+            {"jp_cloze": "図書館はあそこです＿＿＿。", "english": "The library is over there, right?", "answer": "ね", "nudge": "You're checking your memory of the location out loud."},
+            {"jp_cloze": "今日の天気は寒いです＿＿＿。", "english": "Today's weather is cold, isn't it?", "answer": "ね", "nudge": "Shared shivering — invite them to concur."},
+            {"jp_cloze": "＿＿＿、お母さんはどこですか。", "english": "Hey, where is mom?", "answer": "ねえ", "nudge": "A drawn-out call to get someone's attention first."},
+            {"jp_cloze": "あの人は医者です＿＿＿。", "english": "That person is a doctor, right?", "answer": "ね", "nudge": "You're fairly sure of the job and want a nod back."},
+        ],
     },
     {
         "slug": "yo-emphasis",
@@ -505,6 +646,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kore", "oishii", "abunai"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "これ、安いです＿＿＿。", "english": "This one is cheap, you know.", "answer": "よ", "nudge": "You're telling them something they didn't know."},
+            {"jp_cloze": "私は明日行きます＿＿＿。", "english": "I am going tomorrow, I'm telling you.", "answer": "よ", "nudge": "Pressing your plan on the listener."},
+            {"jp_cloze": "今日は日曜日です＿＿＿。", "english": "Today is Sunday, remember?", "answer": "よ", "nudge": "Correcting them about the day, with force."},
+            {"jp_cloze": "先生、危ないです＿＿＿。", "english": "Teacher, it's dangerous!", "answer": "よ", "nudge": "A warning shouted to get their attention."},
+            {"jp_cloze": "あの映画、楽しいです＿＿＿。", "english": "That movie is fun, I'm telling you.", "answer": "よ", "nudge": "Pushing your recommendation at them."},
+        ],
     },
     {
         "slug": "te-form",
@@ -522,6 +670,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["okiru", "gohan", "taberu"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "起き＿＿＿、朝ご飯を食べます。", "english": "I wake up and eat breakfast.", "answer": "て", "nudge": "The waking hands off to the eating."},
+            {"jp_cloze": "毎朝起き＿＿＿、朝ご飯を食べます。", "english": "Every morning I get up and eat breakfast.", "answer": "て", "nudge": "Two habits chained into one sentence."},
+            {"jp_cloze": "昨日、本を読ん＿＿＿、寝ました。", "english": "Yesterday I read a book, then slept.", "answer": "で", "nudge": "読む ends in む, so the link voices."},
+            {"jp_cloze": "朝ご飯を食べ＿＿＿、学校へ行きます。", "english": "I eat breakfast and go to school.", "answer": "て", "nudge": "The meal hands off to the trip to school."},
+            {"jp_cloze": "書く → 書い＿＿＿", "english": "to write → writing", "answer": "て", "nudge": "Show the linking shape of 書く on its own."},
+            {"jp_cloze": "待つ → 待っ＿＿＿", "english": "to wait → waiting", "answer": "て", "nudge": "待つ takes the small-つ stem, then the link."},
+        ],
     },
     {
         "slug": "te-kudasai",
@@ -539,6 +695,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["chotto", "matsu", "namae"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "口を開け＿＿＿。", "english": "Open your mouth.", "answer": "てください", "nudge": "A polite instruction to open up."},
+            {"jp_cloze": "ここに名前を書い＿＿＿。", "english": "Write your name here.", "answer": "てください", "nudge": "Ask them courteously to write it here."},
+            {"jp_cloze": "水を飲ん＿＿＿。", "english": "Drink some water.", "answer": "でください", "nudge": "飲む ends in む, so the ask voices its link."},
+            {"jp_cloze": "明日、うちに来＿＿＿。", "english": "Come to my house tomorrow.", "answer": "てください", "nudge": "A courteous invitation to come over."},
+            {"jp_cloze": "ここでちょっと待っ＿＿＿。", "english": "Wait here a moment.", "answer": "てください", "nudge": "Ask them to hold on a moment, politely."},
+        ],
     },
     {
         "slug": "te-iru",
@@ -556,6 +719,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ima", "benkyou", "furu-rain"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "朝ご飯を食べ＿＿＿。", "english": "I am eating breakfast.", "answer": "ています", "nudge": "The meal is happening as you speak, politely reported."},
+            {"jp_cloze": "今、雨が降っ＿＿＿。", "english": "It is raining right now.", "answer": "ています", "nudge": "The rain is falling at this very moment."},
+            {"jp_cloze": "友達を待っ＿＿＿。", "english": "I am waiting for a friend.", "answer": "ています", "nudge": "You're mid-wait, told courteously."},
+            {"jp_cloze": "テレビを見＿＿＿の？", "english": "Are you watching TV?", "answer": "てる", "nudge": "A clipped, casual check on what they're up to."},
+            {"jp_cloze": "彼を知っ＿＿＿。", "english": "I know him.", "answer": "ています", "nudge": "Knowing him is a condition you're in, not an act you perform."},
+        ],
     },
     {
         "slug": "te-mo-ii",
@@ -572,6 +742,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["koko", "suwaru", "shashin"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "ここでご飯を食べ＿＿＿ですか。", "english": "Is it fine if I eat here?", "answer": "てもいい", "nudge": "You're asking whether eating here is allowed."},
+            {"jp_cloze": "ここに座っ＿＿＿ですか。", "english": "Is it fine if I sit here?", "answer": "てもいい", "nudge": "Checking that the seat is free to take."},
+            {"jp_cloze": "テレビを見＿＿＿ですよ。", "english": "You are free to watch TV.", "answer": "てもいい", "nudge": "Granting them permission to watch."},
+            {"jp_cloze": "ここで待っ＿＿＿。", "english": "Wait here — I don't mind at all.", "answer": "てもかまいません", "nudge": "Waiting here bothers nobody — the most gracious way to allow it."},
+            {"jp_cloze": "窓を開け＿＿＿ですか。", "english": "Is it fine if I open the window?", "answer": "てもいい", "nudge": "Asking whether opening the window would be acceptable."},
+            {"jp_cloze": "一緒に行っ＿＿＿ですか。", "english": "Is it fine if I come along?", "answer": "てもいい", "nudge": "Asking whether tagging along is welcome."},
+        ],
     },
     {
         "slug": "te-wa-ikenai",
@@ -588,6 +766,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["koko", "shashin", "osake"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "ここで電話を使っ＿＿＿。", "english": "You are forbidden to use the phone here.", "answer": "てはいけません", "nudge": "Phones are banned here, stated formally."},
+            {"jp_cloze": "その部屋に入っ＿＿＿。", "english": "You are forbidden to enter that room.", "answer": "てはいけません", "nudge": "Entry to that room is off limits, politely worded."},
+            {"jp_cloze": "子供はお酒を買っ＿＿＿。", "english": "Children are forbidden to buy alcohol.", "answer": "てはいけません", "nudge": "Children are barred from the purchase, formally."},
+            {"jp_cloze": "夜にテレビを見＿＿＿。", "english": "You are forbidden to watch TV at night.", "answer": "てはいけない", "nudge": "A plain-speech ban on late-night viewing."},
+            {"jp_cloze": "それを食べ＿＿＿。", "english": "You can't eat that.", "answer": "ちゃいけない", "nudge": "A blunt, contracted warning off the food."},
+        ],
     },
     {
         "slug": "te-kara",
@@ -604,6 +789,12 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["gohan", "shukudai", "arau"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "手を洗っ＿＿＿、ご飯を食べます。", "english": "I will eat once I have washed my hands.", "answer": "てから", "nudge": "The washing must finish first; only then the meal."},
+            {"jp_cloze": "うちに帰っ＿＿＿、寝ます。", "english": "I will sleep once I get home.", "answer": "てから", "nudge": "Sleep waits until you're home."},
+            {"jp_cloze": "映画を見＿＿＿、帰ります。", "english": "I will go home once the movie is over.", "answer": "てから", "nudge": "The film comes first, the trip home second."},
+            {"jp_cloze": "窓を閉め＿＿＿、出ました。", "english": "I left once I had closed the window.", "answer": "てから", "nudge": "The window was shut, and only then did you leave."},
+        ],
     },
     {
         "slug": "nai-form",
@@ -621,6 +812,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kyou", "iku-v", "niku"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "肉を食べ＿＿＿。", "english": "I don't eat meat.", "answer": "ない", "nudge": "肉 is off the table, said casually."},
+            {"jp_cloze": "今日は学校に行か＿＿＿。", "english": "I won't go to school today.", "answer": "ない", "nudge": "Skipping school today, with no politeness attached."},
+            {"jp_cloze": "新しい靴を買わ＿＿＿。", "english": "I won't buy new shoes.", "answer": "ない", "nudge": "The shoes stay on the shelf."},
+            {"jp_cloze": "昨日は遊ば＿＿＿。", "english": "I didn't play yesterday.", "answer": "なかった", "nudge": "Nothing happened, and it was 昨日."},
+            {"jp_cloze": "彼は来＿＿＿。", "english": "He will not come.", "answer": "ない", "nudge": "彼 stays away — a casual refusal of the fact."},
+        ],
     },
     {
         "slug": "naide-kudasai",
@@ -637,6 +835,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["koko", "shinpai-suru", "wasureru"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "窓を開け＿＿＿。", "english": "Please don't open the window.", "answer": "ないでください", "nudge": "Ask them to leave the window shut, politely."},
+            {"jp_cloze": "傘を忘れ＿＿＿。", "english": "Please don't forget your umbrella.", "answer": "ないでください", "nudge": "A courteous request not to leave the umbrella behind."},
+            {"jp_cloze": "その水を飲ま＿＿＿。", "english": "Please don't drink that water.", "answer": "ないでください", "nudge": "Warn them off that water, kindly."},
+            {"jp_cloze": "今日は学校に行か＿＿＿。", "english": "Please don't go to school today.", "answer": "ないでください", "nudge": "Tell them to stay away from school, with courtesy."},
+            {"jp_cloze": "私の部屋に入ら＿＿＿。", "english": "Please don't enter my room.", "answer": "ないでください", "nudge": "Keep them out of the room, but ask nicely."},
+        ],
     },
     {
         "slug": "nakereba-naranai",
@@ -653,6 +858,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["benkyou", "kusuri", "kaeru-v"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "私は帰ら＿＿＿。", "english": "I have to go home.", "answer": "なければなりません", "nudge": "Going home isn't optional, and you're being formal about it."},
+            {"jp_cloze": "薬を飲ま＿＿＿。", "english": "I have to take medicine.", "answer": "なければなりません", "nudge": "The medicine is an obligation, stated formally."},
+            {"jp_cloze": "今日、会社に行か＿＿＿。", "english": "I have to go to the office today.", "answer": "なくてはいけない", "nudge": "The office is unavoidable today, in plain speech."},
+            {"jp_cloze": "今、寝＿＿＿。", "english": "I have to sleep now.", "answer": "なきゃ", "nudge": "Sleep is forced on you — clipped and casual."},
+            {"jp_cloze": "明日、本を買わ＿＿＿。", "english": "I have to buy a book tomorrow.", "answer": "なきゃ", "nudge": "The book purchase is compulsory, muttered casually."},
+        ],
     },
     {
         "slug": "nakutemo-ii",
@@ -669,6 +881,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kuru-v", "okane", "isogu"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "野菜を食べ＿＿＿です。", "english": "You don't have to eat the vegetables.", "answer": "なくてもいい", "nudge": "The vegetables are optional; nobody is forcing them."},
+            {"jp_cloze": "新しい本を買わ＿＿＿です。", "english": "You don't have to buy a new book.", "answer": "なくてもいい", "nudge": "Buying is permitted to be skipped."},
+            {"jp_cloze": "明日は学校に行か＿＿＿です。", "english": "I don't have to go to school tomorrow.", "answer": "なくてもいい", "nudge": "School is off the hook tomorrow."},
+            {"jp_cloze": "その水を飲ま＿＿＿です。", "english": "You don't have to drink that water.", "answer": "なくてもいい", "nudge": "Drinking it is not required of you."},
+            {"jp_cloze": "この新聞を読ま＿＿＿ですか。", "english": "Do I not have to read this newspaper?", "answer": "なくてもいい", "nudge": "You're checking whether the reading is optional."},
+        ],
     },
     {
         "slug": "ta-form",
@@ -685,6 +904,12 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kinou", "eiga", "mou"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "昨日友達と昼ご飯を食べ＿＿＿。", "english": "Yesterday, I ate lunch with a friend.", "answer": "た", "nudge": "昨日 is done, and there's no politeness on the end."},
+            {"jp_cloze": "先週海に行っ＿＿＿。", "english": "Last week, I went to the sea.", "answer": "た", "nudge": "Last week's trip is finished, casually told."},
+            {"jp_cloze": "今日学校で友達に会っ＿＿＿。", "english": "Today I met my friend at school.", "answer": "た", "nudge": "The meeting already happened, with no polite ending on it."},
+            {"jp_cloze": "手紙を書いて、寝＿＿＿。", "english": "I wrote a letter, and went to sleep.", "answer": "た", "nudge": "The writing is over and so is the sleeping."},
+        ],
     },
     {
         "slug": "ta-koto-ga-aru",
@@ -701,6 +926,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["nihon", "iku-v", "eiga"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "私は日本に行っ＿＿＿。", "english": "I have been to Japan.", "answer": "たことがあります", "nudge": "Japan is on your résumé, politely stated."},
+            {"jp_cloze": "私はあの映画を見＿＿＿。", "english": "I have seen that movie.", "answer": "たことがあります", "nudge": "The film sits in your history at least once."},
+            {"jp_cloze": "日本の料理を食べ＿＿＿か。", "english": "Have you ever eaten Japanese food?", "answer": "たことがあります", "nudge": "You're asking whether it has ever happened to them."},
+            {"jp_cloze": "私はこの魚を食べ＿＿＿。", "english": "I have eaten this fish.", "answer": "たことがあります", "nudge": "This fish has crossed your plate at some point."},
+            {"jp_cloze": "彼はこの料理を食べ＿＿＿。", "english": "He has eaten this dish.", "answer": "たことがあります", "nudge": "彼 has this dish somewhere in his history."},
+            {"jp_cloze": "彼は日本に来＿＿＿。", "english": "He has come to Japan.", "answer": "たことがあります", "nudge": "彼 has made the trip at least once."},
+        ],
     },
     {
         "slug": "tari-tari",
@@ -716,6 +949,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["shuumatsu", "yomu", "eiga"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "週末、本を読ん＿＿＿、テレビを見たりしました。", "english": "Over the weekend, I read books and watched TV among other things.", "answer": "だり", "nudge": "読む voices its ending here, and this is a sample of the weekend, not the full account."},
+            {"jp_cloze": "明日、町へ行ったり、服を買っ＿＿＿します。", "english": "Tomorrow I will go to town and buy clothes among other things.", "answer": "たり", "nudge": "The shopping is the second example in an open-ended pair."},
+            {"jp_cloze": "昨日は、家で寝＿＿＿しました。", "english": "Yesterday I slept at home among other things.", "answer": "たり", "nudge": "Sleeping is offered as one representative example."},
+            {"jp_cloze": "公園で遊ん＿＿＿、水を飲んだりしました。", "english": "I played in the park and drank water among other things.", "answer": "だり", "nudge": "遊ぶ takes the voiced ending, and it's one item on a loose list."},
+            {"jp_cloze": "図書館で話したり、電話を使っ＿＿＿してはいけません。", "english": "You must not talk or use the phone in the library, among other things.", "answer": "たり", "nudge": "The phone is the second banned example, not the whole ban."},
+        ],
     },
     {
         "slug": "tai",
@@ -733,6 +973,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["nihon", "iku-v", "mizu"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "私は日本へ行き＿＿＿です。", "english": "I would like to go to Japan.", "answer": "たい", "nudge": "Japan is your wish, and it's alive right now."},
+            {"jp_cloze": "今日は会社へ行き＿＿＿です。", "english": "I would rather not go to the office today.", "answer": "たくない", "nudge": "The office holds no appeal today — refuse the urge."},
+            {"jp_cloze": "昨日、あの本を買い＿＿＿です。", "english": "Yesterday, I felt like buying that book.", "answer": "たかった", "nudge": "The urge to buy sat in 昨日 and has passed."},
+            {"jp_cloze": "水が飲み＿＿＿です。", "english": "I could really use some water.", "answer": "たい", "nudge": "Your throat is asking for it."},
+            {"jp_cloze": "週末は寝＿＿＿です。", "english": "Sleeping is my weekend plan.", "answer": "たい", "nudge": "Sleep is the weekend plan you're craving."},
+        ],
     },
     {
         "slug": "hoshii",
@@ -749,6 +996,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["atarashii-adj", "kuruma", "okane"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "水が＿＿＿です。", "english": "I want water.", "answer": "ほしい", "nudge": "Your throat is dry and 水 is what would fix it."},
+            {"jp_cloze": "新しい車が＿＿＿です。", "english": "I want a new car.", "answer": "ほしい", "nudge": "The new car is a craving, not a purchase yet."},
+            {"jp_cloze": "古い服は＿＿＿です。", "english": "I don't want old clothes.", "answer": "ほしくない", "nudge": "Old clothes hold no appeal — turn them down."},
+            {"jp_cloze": "去年、カメラが＿＿＿です。", "english": "Last year, I wanted a camera.", "answer": "ほしかった", "nudge": "The craving for a camera sits in 去年, not today."},
+            {"jp_cloze": "パソコンが＿＿＿です。", "english": "I want a computer.", "answer": "ほしい", "nudge": "A computer is on your wish list right now."},
+        ],
     },
     {
         "slug": "ni-iku",
@@ -765,6 +1019,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["eiga", "kau-v", "au"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "映画館へ映画を見＿＿＿。", "english": "I'm going to the cinema to watch a movie.", "answer": "に行く", "nudge": "The trip out exists so the film can be watched."},
+            {"jp_cloze": "友達がうちへ遊び＿＿＿。", "english": "A friend is coming to my house to hang out.", "answer": "に来る", "nudge": "The friend is heading your way, and the play is why."},
+            {"jp_cloze": "妹は毎晩、晩ご飯を食べ＿＿＿。", "english": "Every night, my younger sister returns home to eat dinner.", "answer": "に帰る", "nudge": "妹 heads back home, dinner being the reason."},
+            {"jp_cloze": "毎日、学校へ勉強し＿＿＿。", "english": "Every day, I go to school to study.", "answer": "に行く", "nudge": "The going happens so the studying can."},
+            {"jp_cloze": "レストランへおいしいご飯を食べ＿＿＿。", "english": "I go to a restaurant to eat delicious food.", "answer": "に行く", "nudge": "The restaurant trip is motivated by the meal."},
+        ],
     },
     {
         "slug": "mae-ni",
@@ -781,6 +1042,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["neru", "arau", "jugyou"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "食べる＿＿＿手を洗う。", "english": "I wash my hands before eating.", "answer": "前に", "nudge": "Hands get washed first, eating second."},
+            {"jp_cloze": "晩ご飯の＿＿＿テレビを見る。", "english": "I watch TV before dinner.", "answer": "前に", "nudge": "The TV comes first; dinner waits."},
+            {"jp_cloze": "寝る＿＿＿本を読んだ。", "english": "I read a book before sleeping.", "answer": "前に", "nudge": "Reading happened, then sleep."},
+            {"jp_cloze": "三時間＿＿＿来た。", "english": "I came three hours ago.", "answer": "前に", "nudge": "Three hours have passed since the arrival."},
+            {"jp_cloze": "友達が来る＿＿＿、部屋を出る。", "english": "I leave the room before my friend comes.", "answer": "前に", "nudge": "You're gone by the time the friend shows up."},
+        ],
     },
     {
         "slug": "ato-de",
@@ -797,6 +1065,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["taberu", "jugyou", "shigoto"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "仕事の＿＿＿、電話します。", "english": "After work, I will call.", "answer": "後で", "nudge": "The call comes once 仕事 is finished."},
+            {"jp_cloze": "授業の＿＿＿、映画を見ます。", "english": "After class, I will watch a movie.", "answer": "後で", "nudge": "授業 ends first, then the film."},
+            {"jp_cloze": "ご飯を食べた＿＿＿、お茶を飲みます。", "english": "After eating a meal, I drink tea.", "answer": "後で", "nudge": "The eating is already done when the tea starts."},
+            {"jp_cloze": "本を読んだ＿＿＿、寝ました。", "english": "After I read a book, I went to sleep.", "answer": "後で", "nudge": "Reading came first; sleep followed it."},
+            {"jp_cloze": "映画を見た＿＿＿、ご飯を食べます。", "english": "After watching a movie, I will eat a meal.", "answer": "あとで", "nudge": "The film is over by the time the meal starts."},
+        ],
     },
     {
         "slug": "toki",
@@ -813,6 +1088,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["kodomo-v", "hima", "shashin"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "子供の＿＿＿、野菜が嫌いでした。", "english": "As a child, I hated vegetables.", "answer": "時", "nudge": "Childhood is the window the dislike sat in."},
+            {"jp_cloze": "暇な＿＿＿、本を読みます。", "english": "I read books during free moments.", "answer": "時", "nudge": "Free moments are the occasion for reading."},
+            {"jp_cloze": "暑い＿＿＿、冷たい水を飲みます。", "english": "On hot days I drink cold water.", "answer": "時", "nudge": "Hot spells are what prompt the cold water."},
+            {"jp_cloze": "家へ帰る＿＿＿、パンを買いました。", "english": "On the way home, I bought bread.", "answer": "時", "nudge": "The bread was bought mid-journey, before arriving."},
+            {"jp_cloze": "家へ帰った＿＿＿、テレビを見ました。", "english": "Once home, I watched TV.", "answer": "時", "nudge": "You were already inside before the TV went on."},
+        ],
     },
     {
         "slug": "dictionary-koto-ga-dekiru",
@@ -829,6 +1111,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["nihongo", "hanasu-v", "kanji-word"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "彼女は日本語を話す＿＿＿。", "english": "She can speak Japanese.", "answer": "ことができます", "nudge": "She has the ability, not merely the habit."},
+            {"jp_cloze": "あの鳥は高く飛ぶ＿＿＿。", "english": "That bird can fly high.", "answer": "ことができます", "nudge": "The bird is capable of it, whether or not it does so now."},
+            {"jp_cloze": "ここで本を読む＿＿＿か。", "english": "Can I read a book here?", "answer": "ことができます", "nudge": "You're asking about permission, not about a plan."},
+            {"jp_cloze": "僕は漢字を書く＿＿＿。", "english": "I can write kanji.", "answer": "ことができる", "nudge": "The skill is there; state it in plain speech."},
+            {"jp_cloze": "ここで寝る＿＿＿。", "english": "You are able to sleep here.", "answer": "ことができる", "nudge": "This spot is available for sleeping."},
+        ],
     },
     {
         "slug": "adj-i-conjugation",
@@ -845,6 +1134,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["atsui-hot", "takai-adj", "omoshiroi"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "このカメラは高＿＿＿です。", "english": "This camera is not expensive.", "answer": "くない", "nudge": "The price is being denied, so the stem needs a negative tail."},
+            {"jp_cloze": "レストランの料理はおいし＿＿＿です。", "english": "The restaurant's food was delicious.", "answer": "かった", "nudge": "The meal is over — the taste belongs to the past."},
+            {"jp_cloze": "その本は難し＿＿＿です。", "english": "That book was not difficult.", "answer": "くなかった", "nudge": "Past tense and a denial at the same time."},
+            {"jp_cloze": "今日の天気はよ＿＿＿です。", "english": "Today's weather is not good.", "answer": "くない", "nudge": "The weather is being denied right now, not yesterday."},
+            {"jp_cloze": "昨日は寒＿＿＿です。", "english": "Yesterday was cold.", "answer": "かった", "nudge": "昨日 puts the cold behind you."},
+        ],
     },
     {
         "slug": "adj-na-conjugation",
@@ -861,6 +1157,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["shizuka", "shinsetsu", "benri"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "部屋はきれい＿＿＿。", "english": "The room was clean.", "answer": "でした", "nudge": "The tidiness is in the past — close the statement politely."},
+            {"jp_cloze": "ここは静か＿＿＿町です。", "english": "This is a quiet town.", "answer": "な", "nudge": "静か is stuck straight onto 町 and needs its linking tail."},
+            {"jp_cloze": "私は暇＿＿＿。", "english": "I am not free.", "answer": "ではありません", "nudge": "暇 is being denied, and the register stays formal."},
+            {"jp_cloze": "有名＿＿＿人に会いました。", "english": "I met a famous person.", "answer": "な", "nudge": "有名 sits right before 人 and has to hook onto it."},
+            {"jp_cloze": "犬が好き＿＿＿。", "english": "I do not like dogs.", "answer": "ではありません", "nudge": "好き gets turned down here, in full polite form."},
+        ],
     },
     {
         "slug": "adj-i-adverb",
@@ -877,6 +1180,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["hayai-early", "ookii", "yasui-adj"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "明日は早＿＿＿起きます。", "english": "I will wake up early tomorrow.", "answer": "く", "nudge": "早い has to modify 起きます here, not 明日 itself."},
+            {"jp_cloze": "これを安＿＿＿買いました。", "english": "I bought this cheaply.", "answer": "く", "nudge": "安い is telling you how the buying went."},
+            {"jp_cloze": "彼は速＿＿＿走ります。", "english": "He runs fast.", "answer": "く", "nudge": "速い describes the running, not 彼."},
+            {"jp_cloze": "ノートに大き＿＿＿書きました。", "english": "I wrote big in the notebook.", "answer": "く", "nudge": "大きい here says how the writing was done."},
+            {"jp_cloze": "毎日よ＿＿＿勉強します。", "english": "I study well every day.", "answer": "く", "nudge": "よい leans on 勉強します, and changes shape to do it."},
+        ],
     },
     {
         "slug": "adj-na-adverb",
@@ -893,6 +1203,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["shizuka", "kirei", "genki"],
         "family": "conjugations",
+        "cloze_variants": [
+            {"jp_cloze": "私は静か＿＿＿勉強します。", "english": "I study quietly.", "answer": "に", "nudge": "静か describes the studying, not 私."},
+            {"jp_cloze": "彼女は上手＿＿＿歌います。", "english": "She sings skillfully.", "answer": "に", "nudge": "上手 has to lean on 歌います here."},
+            {"jp_cloze": "手紙を丁寧＿＿＿書きます。", "english": "I write the letter carefully.", "answer": "に", "nudge": "丁寧 tells you how the writing is done."},
+            {"jp_cloze": "部屋をきれい＿＿＿掃除します。", "english": "I clean the room until it is spotless.", "answer": "に", "nudge": "きれい is the manner of the cleaning, not a label for 部屋."},
+            {"jp_cloze": "子供は元気＿＿＿遊びます。", "english": "The child plays energetically.", "answer": "に", "nudge": "元気 attaches to 遊びます, so it cannot stay bare."},
+        ],
     },
     {
         "slug": "comparative-yori",
@@ -909,6 +1226,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["basu", "kyou", "inu"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "タクシーはバス＿＿＿速いです。", "english": "Taxis are faster than buses.", "answer": "より", "nudge": "バス is the yardstick the taxi is measured against."},
+            {"jp_cloze": "今日は昨日＿＿＿暑いです。", "english": "Today is hotter than yesterday.", "answer": "より", "nudge": "昨日 is the benchmark today beats."},
+            {"jp_cloze": "ひらがな＿＿＿漢字は難しいです。", "english": "Compared to hiragana, kanji is difficult.", "answer": "より", "nudge": "ひらがな is the easy end of the scale here."},
+            {"jp_cloze": "肉は魚＿＿＿好きです。", "english": "I like meat more than fish.", "answer": "より", "nudge": "魚 loses out to 肉 in this ranking."},
+            {"jp_cloze": "あの店＿＿＿この店は安いです。", "english": "Compared to that shop over there, this shop is cheaper.", "answer": "より", "nudge": "あの店 sets the price this shop undercuts."},
+        ],
     },
     {
         "slug": "superlative-ichiban",
@@ -925,6 +1249,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["yasui-adj", "natsu", "suki"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "富士山は日本で＿＿＿高い山です。", "english": "Mt. Fuji is the highest mountain in Japan.", "answer": "一番", "nudge": "Nothing in Japan tops it."},
+            {"jp_cloze": "家族で誰が＿＿＿忙しいですか。", "english": "Who is the busiest in your family?", "answer": "一番", "nudge": "You want the single busiest person, not a list."},
+            {"jp_cloze": "今、カメラが＿＿＿欲しいです。", "english": "A camera is what I want above all right now.", "answer": "一番", "nudge": "The camera beats everything else on your wish list."},
+            {"jp_cloze": "ここのご飯が＿＿＿おいしい！", "english": "The food here beats everywhere else!", "answer": "いちばん", "nudge": "Ranked above every other meal, said with excitement."},
+            {"jp_cloze": "私は肉が＿＿＿好きです。", "english": "Meat is my favourite.", "answer": "一番", "nudge": "肉 sits at the top of your preferences."},
+        ],
     },
     {
         "slug": "dou-desu-ka",
@@ -941,6 +1272,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ocha", "nihon", "eiga"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "明日は＿＿＿。", "english": "How about tomorrow?", "answer": "どうですか", "nudge": "You're floating tomorrow as an option and waiting for a verdict."},
+            {"jp_cloze": "新しい仕事は＿＿＿。", "english": "How is the new job?", "answer": "どうですか", "nudge": "You want their impression of the new job."},
+            {"jp_cloze": "この店は＿＿＿。", "english": "How is this shop?", "answer": "どうですか", "nudge": "You're after an opinion of this shop."},
+            {"jp_cloze": "お茶は＿＿＿。", "english": "How about some tea?", "answer": "いかがですか", "nudge": "Offering tea to someone you'd address with extra courtesy."},
+            {"jp_cloze": "土曜日の夜は＿＿＿。", "english": "How about Saturday night?", "answer": "どうですか", "nudge": "Proposing Saturday evening and waiting to hear back."},
+        ],
     },
     {
         "slug": "darou",
@@ -957,6 +1295,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ashita", "ame-v", "muzukashii"],
         "family": "copula",
+        "cloze_variants": [
+            {"jp_cloze": "彼は帰る＿＿＿。", "english": "He will probably return home.", "answer": "だろう", "nudge": "You're guessing about 彼's return, not stating it — and casually."},
+            {"jp_cloze": "あの店の服は高い＿＿＿。", "english": "The clothes at that shop are probably expensive.", "answer": "だろう", "nudge": "You haven't checked the price tag; it's a hunch."},
+            {"jp_cloze": "明日は雨＿＿＿。", "english": "Tomorrow will probably be rain.", "answer": "だろう", "nudge": "Tomorrow's rain is a forecast, not a fact."},
+            {"jp_cloze": "猫はベッドにいる＿＿＿。", "english": "The cat is probably on the bed.", "answer": "だろう", "nudge": "You think that's where the cat is, but you haven't looked."},
+            {"jp_cloze": "彼は医者じゃない＿＿＿。", "english": "He is probably not a doctor.", "answer": "だろう", "nudge": "A casual guess stacked on top of a denial."},
+        ],
     },
     {
         "slug": "kamoshirenai",
@@ -973,6 +1318,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ashita", "yuki", "isogashii"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "明日は雨＿＿＿。", "english": "It might rain tomorrow.", "answer": "かもしれません", "nudge": "Rain is one possibility, hedged politely."},
+            {"jp_cloze": "この映画はつまらない＿＿＿。", "english": "This movie might be boring.", "answer": "かもしれない", "nudge": "You suspect it's dull but wouldn't swear to it."},
+            {"jp_cloze": "ここは病院＿＿＿。", "english": "This place might be a hospital.", "answer": "かもしれない", "nudge": "You're unsure what the building actually is."},
+            {"jp_cloze": "あれは犬＿＿＿。", "english": "That over there might be a dog.", "answer": "かも", "nudge": "A clipped, casual hedge about the animal."},
+            {"jp_cloze": "彼は明日来る＿＿＿。", "english": "He might come tomorrow.", "answer": "かもしれません", "nudge": "His arrival is uncertain, and you're being polite about it."},
+        ],
     },
     {
         "slug": "to-omou",
@@ -989,6 +1341,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ashita", "hon", "omou"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "あの映画は面白い＿＿＿。", "english": "In my view that movie is interesting.", "answer": "と思います", "nudge": "Your opinion of the film, offered politely."},
+            {"jp_cloze": "彼は今日来ない＿＿＿。", "english": "In my view he will not come today.", "answer": "と思います", "nudge": "You reckon he'll stay away, politely hedged."},
+            {"jp_cloze": "この店は静かだ＿＿＿。", "english": "In my view this shop is quiet.", "answer": "と思います", "nudge": "静か needs its plain ending before your view attaches."},
+            {"jp_cloze": "明日は雨だ＿＿＿。", "english": "In my view it will rain tomorrow.", "answer": "と思います", "nudge": "Your forecast, hung off a plain noun clause."},
+            {"jp_cloze": "これはいい＿＿＿か。", "english": "Is this good, in your view?", "answer": "と思います", "nudge": "You're asking for their opinion, not giving yours."},
+        ],
     },
     {
         "slug": "to-iu",
@@ -1005,6 +1364,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["hito", "hana-v", "eiga"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "春＿＿＿喫茶店に行きました。", "english": "I went to a coffee shop by the name of Spring.", "answer": "という", "nudge": "春 is the label on the door, not the season."},
+            {"jp_cloze": "これは何＿＿＿花ですか。", "english": "What is this flower's name?", "answer": "という", "nudge": "You want the flower's label."},
+            {"jp_cloze": "白＿＿＿犬がいます。", "english": "I have a dog by the name of White.", "answer": "という", "nudge": "白 is what the dog answers to."},
+            {"jp_cloze": "時間＿＿＿映画を見ました。", "english": "I watched a movie by the name of Time.", "answer": "っていう", "nudge": "The film's title, dropped in casual speech."},
+            {"jp_cloze": "明日海に行く＿＿＿約束があります。", "english": "I have a promise to go to the sea tomorrow.", "answer": "という", "nudge": "A whole clause gets packaged as the content of the promise."},
+        ],
     },
     {
         "slug": "sugiru",
@@ -1021,6 +1387,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["taberu", "fuku", "nomu-v"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "彼は働き＿＿＿。", "english": "He overworks.", "answer": "すぎる", "nudge": "彼 overdoes the work, plainly stated."},
+            {"jp_cloze": "昨日、パンを食べ＿＿＿。", "english": "Yesterday, I overate bread.", "answer": "すぎた", "nudge": "The overeating is already behind you."},
+            {"jp_cloze": "このかばんは高＿＿＿。", "english": "This bag is overpriced.", "answer": "すぎる", "nudge": "The price crosses the line, said casually."},
+            {"jp_cloze": "部屋が寒＿＿＿。", "english": "The room is unbearably cold.", "answer": "すぎます", "nudge": "The cold goes past bearable, told courteously."},
+            {"jp_cloze": "あの店は高＿＿＿。", "english": "That shop is overpriced.", "answer": "すぎます", "nudge": "That shop's prices exceed reason, politely put."},
+        ],
     },
     {
         "slug": "hou-ga-ii",
@@ -1037,6 +1410,14 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["neru", "kusuri", "iku-v"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "病院に行った＿＿＿ですよ。", "english": "You should go to the hospital.", "answer": "ほうがいい", "nudge": "You're advising a hospital trip, not describing one."},
+            {"jp_cloze": "薬を飲んだ＿＿＿です。", "english": "You should take medicine.", "answer": "ほうがいい", "nudge": "This is advice about the medicine, not a report."},
+            {"jp_cloze": "そのお酒を飲まない＿＿＿です。", "english": "You'd better not drink that alcohol.", "answer": "ほうがいい", "nudge": "Advice to hold off on the alcohol."},
+            {"jp_cloze": "今日は泳がない＿＿＿ですよ。", "english": "You'd better not swim today.", "answer": "ほうがいい", "nudge": "You're warning them off swimming today."},
+            {"jp_cloze": "早く寝た＿＿＿よ。", "english": "You'd better go to sleep early.", "answer": "ほうがいい", "nudge": "Casual advice to turn in early."},
+            {"jp_cloze": "傘を持った＿＿＿ですよ。", "english": "You'd better take an umbrella.", "answer": "ほうがいい", "nudge": "Recommending an umbrella before they leave."},
+        ],
     },
     {
         "slug": "deshou",
@@ -1053,6 +1434,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ashita", "atsui-hot", "daijoubu"],
         "family": "copula",
+        "cloze_variants": [
+            {"jp_cloze": "明日、彼は来る＿＿＿。", "english": "Tomorrow, he will probably come.", "answer": "でしょう", "nudge": "A courteous guess about 彼's arrival."},
+            {"jp_cloze": "そのカメラは高い＿＿＿。", "english": "That camera is probably expensive.", "answer": "でしょう", "nudge": "You're estimating the camera's price for a listener."},
+            {"jp_cloze": "この人は先生＿＿＿。", "english": "This person is probably a teacher.", "answer": "でしょう", "nudge": "You suspect their job but won't assert it."},
+            {"jp_cloze": "昨日の映画は面白かった＿＿＿？", "english": "Yesterday's movie was interesting, right?", "answer": "でしょう", "nudge": "You're fishing for agreement about the film."},
+            {"jp_cloze": "明日は雨＿＿＿。", "english": "I wonder if it will rain tomorrow?", "answer": "でしょうか", "nudge": "You're wondering aloud about tomorrow's weather."},
+        ],
     },
     {
         "slug": "mada-teinai",
@@ -1085,6 +1473,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["mou", "taberu", "shukudai"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "＿＿＿切符を買いました。", "english": "I already bought the ticket.", "answer": "もう", "nudge": "The ticket is in hand — that purchase is behind you."},
+            {"jp_cloze": "＿＿＿映画が終わりました。", "english": "The movie has already ended.", "answer": "もう", "nudge": "The credits have rolled sooner than expected."},
+            {"jp_cloze": "彼は＿＿＿帰りました。", "english": "He already went home.", "answer": "もう", "nudge": "彼 has left; there's no waiting for him."},
+            {"jp_cloze": "宿題は＿＿＿しましたか。", "english": "Have you already done the homework?", "answer": "もう", "nudge": "You're checking whether the homework is finished by now."},
+            {"jp_cloze": "薬は＿＿＿飲みましたか。", "english": "Have you already taken the medicine?", "answer": "もう", "nudge": "You want to know if the medicine is taken care of yet."},
+        ],
     },
     {
         "slug": "dake",
@@ -1101,6 +1496,12 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["mizu", "nomu-v", "miru-v"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "水＿＿＿飲みます。", "english": "I only drink water.", "answer": "だけ", "nudge": "Nothing else gets drunk — water is the whole list."},
+            {"jp_cloze": "見る＿＿＿です。", "english": "I am just looking.", "answer": "だけ", "nudge": "You're browsing and buying nothing."},
+            {"jp_cloze": "千円＿＿＿あります。", "english": "I only have a thousand yen.", "answer": "だけ", "nudge": "A thousand yen is all there is, no more."},
+            {"jp_cloze": "彼＿＿＿に話します。", "english": "I will speak only to him.", "answer": "だけ", "nudge": "Nobody but 彼 hears it."},
+        ],
     },
     {
         "slug": "shika-nai",
@@ -1117,6 +1518,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["en-money", "mizu", "nomu-v"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "財布の中に百円＿＿＿ありません。", "english": "I have just 100 yen in my wallet.", "answer": "しか", "nudge": "A hundred yen is all the wallet holds, and the verb goes negative to say it."},
+            {"jp_cloze": "朝ご飯はパン＿＿＿食べませんでした。", "english": "Bread was all I ate for breakfast.", "answer": "しか", "nudge": "Bread was the whole breakfast, paired with a negative verb."},
+            {"jp_cloze": "水＿＿＿飲みません。", "english": "I drink water and nothing else.", "answer": "しか", "nudge": "Water is the sole exception to a blanket refusal."},
+            {"jp_cloze": "私は家で＿＿＿勉強しません。", "english": "Home is the one place I study.", "answer": "しか", "nudge": "Studying happens in a single place and nowhere else."},
+            {"jp_cloze": "今日は千円＿＿＿。", "english": "A thousand yen is all I have today.", "answer": "しかない", "nudge": "A thousand yen is the whole sum, and the sentence ends right there."},
+        ],
     },
     {
         "slug": "gurai",
@@ -1133,6 +1541,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["fun-counter", "en-money", "kuru-v"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "一時間＿＿＿待ちます。", "english": "I will wait for about one hour.", "answer": "ぐらい", "nudge": "One hour is a rough estimate of the wait."},
+            {"jp_cloze": "この本は千円＿＿＿です。", "english": "This book is about one thousand yen.", "answer": "くらい", "nudge": "The price is ballpark, not exact."},
+            {"jp_cloze": "何時間＿＿＿寝ますか。", "english": "About how many hours do you sleep?", "answer": "ぐらい", "nudge": "You want a rough number of hours, not a precise one."},
+            {"jp_cloze": "明日、三時＿＿＿に行きます。", "english": "I will go at about three o'clock tomorrow.", "answer": "ぐらい", "nudge": "Three is a loose target, not a fixed appointment."},
+            {"jp_cloze": "百円＿＿＿あります。", "english": "I have about one hundred yen.", "answer": "ぐらい", "nudge": "A hundred yen, give or take."},
+        ],
     },
     {
         "slug": "goro",
@@ -1149,6 +1564,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["okiru", "hiru", "taberu"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "三時＿＿＿駅で会いますか。", "english": "Shall we meet at the station around three o'clock?", "answer": "ごろ", "nudge": "Three is approximate, not to the minute."},
+            {"jp_cloze": "子供の＿＿＿、毎日牛乳を飲みました。", "english": "When I was a child, I drank milk every day.", "answer": "頃", "nudge": "Childhood is a vague stretch of years, not a date."},
+            {"jp_cloze": "来週＿＿＿、新しい車を買います。", "english": "I will buy a new car around next week.", "answer": "ごろ", "nudge": "Next week is a ballpark, not a booking."},
+            {"jp_cloze": "十日＿＿＿帰ります。", "english": "I will return home around the 10th.", "answer": "ごろ", "nudge": "The 10th is loose — give or take a day."},
+            {"jp_cloze": "夕方＿＿＿に雨が降ります。", "english": "It will rain around evening.", "answer": "ごろ", "nudge": "Evening here is fuzzy, not a clock reading."},
+        ],
     },
     {
         "slug": "zenzen-nai",
@@ -1165,6 +1587,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["zenzen", "wakaru", "okane"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "漢字が＿＿＿分かりません。", "english": "I do not understand the kanji in the slightest.", "answer": "全然", "nudge": "The lack of understanding is total, with zero exceptions."},
+            {"jp_cloze": "今日は＿＿＿忙しくないです。", "english": "I am not the least bit busy today.", "answer": "全然", "nudge": "Zero busyness today, emphatically."},
+            {"jp_cloze": "あの映画は＿＿＿面白くなかったです。", "english": "That movie was not the least bit interesting.", "answer": "全然", "nudge": "The film was a complete write-off."},
+            {"jp_cloze": "お金が＿＿＿ないです。", "english": "I have absolutely no money.", "answer": "全然", "nudge": "The wallet is empty, with no hedging."},
+            {"jp_cloze": "私は野菜を＿＿＿食べません。", "english": "I never eat vegetables, ever.", "answer": "全然", "nudge": "Vegetables never pass your lips."},
+        ],
     },
     {
         "slug": "amari-nai",
@@ -1181,6 +1610,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["amari", "taberu", "takai-adj"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "その映画は＿＿＿面白くないです。", "english": "That movie isn't very interesting.", "answer": "あまり", "nudge": "The film isn't flatly boring — the denial is being softened."},
+            {"jp_cloze": "今日は＿＿＿寒くないです。", "english": "Today is not very cold.", "answer": "あまり", "nudge": "Today's chill is played down rather than ruled out."},
+            {"jp_cloze": "私は＿＿＿肉を食べません。", "english": "I do not eat meat much.", "answer": "あまり", "nudge": "肉 isn't off the menu entirely — it's just rare."},
+            {"jp_cloze": "彼は＿＿＿勉強しません。", "english": "He doesn't study much.", "answer": "あんまり", "nudge": "彼 opens a book sometimes, just not often."},
+            {"jp_cloze": "日本語は＿＿＿難しくないです。", "english": "Japanese is not very difficult.", "answer": "あまり", "nudge": "The difficulty is being dialled back, not erased."},
+        ],
     },
     {
         "slug": "demo-suggestion",
@@ -1197,6 +1633,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ocha", "eiga", "sanpo-suru"],
         "family": "particles",
+        "cloze_variants": [
+            {"jp_cloze": "お茶＿＿＿どうですか。", "english": "How about some tea or something?", "answer": "でも", "nudge": "お茶 is one idea among many, not a fixed order."},
+            {"jp_cloze": "コーヒー＿＿＿飲みませんか。", "english": "Would you like to drink coffee or something?", "answer": "でも", "nudge": "You're floating コーヒー loosely, open to swaps."},
+            {"jp_cloze": "週末、映画＿＿＿見ませんか。", "english": "Shall we watch a movie or something this weekend?", "answer": "でも", "nudge": "映画 is a starting proposal, not the sole option."},
+            {"jp_cloze": "公園＿＿＿歩きませんか。", "english": "Shall we walk in the park or something?", "answer": "でも", "nudge": "公園 is thrown out casually as one possibility."},
+            {"jp_cloze": "お茶＿＿＿飲む？", "english": "Want to drink tea or something?", "answer": "でも", "nudge": "A relaxed offer of tea, take it or leave it."},
+        ],
     },
     {
         "slug": "nagara",
@@ -1213,6 +1656,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ongaku", "aruku", "terebi"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "音楽を聞き＿＿＿勉強します。", "english": "I study while listening to music.", "answer": "ながら", "nudge": "Both run at once, and 勉強 is the main one."},
+            {"jp_cloze": "病院で雑誌を読み＿＿＿待ちました。", "english": "I waited at the hospital while reading a magazine.", "answer": "ながら", "nudge": "The magazine filled the wait rather than replacing it."},
+            {"jp_cloze": "テレビを見＿＿＿ご飯を食べます。", "english": "I eat a meal while watching TV.", "answer": "ながら", "nudge": "The screen is on in the background of the meal."},
+            {"jp_cloze": "昨日、友達と話し＿＿＿歩きました。", "english": "Yesterday, I walked while talking with a friend.", "answer": "ながら", "nudge": "Talking and walking happened together."},
+            {"jp_cloze": "歌い＿＿＿掃除します。", "english": "I clean while singing.", "answer": "ながら", "nudge": "The singing accompanies the cleaning."},
+        ],
     },
     {
         "slug": "janai-desu-ka",
@@ -1229,6 +1679,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["ii", "benri", "sensei"],
         "family": "copula",
+        "cloze_variants": [
+            {"jp_cloze": "あれは学校＿＿＿。", "english": "That is a school, isn't it?", "answer": "じゃないですか", "nudge": "You're fairly sure it's a school and want it confirmed."},
+            {"jp_cloze": "このお茶、熱い＿＿＿。", "english": "This tea is hot, isn't it?", "answer": "じゃないですか", "nudge": "You expect them to notice the heat too."},
+            {"jp_cloze": "この町は賑やか＿＿＿。", "english": "This town is lively, isn't it?", "answer": "じゃないですか", "nudge": "You're inviting them to nod along about the town."},
+            {"jp_cloze": "彼は毎日走る＿＿＿。", "english": "He runs every day, doesn't he?", "answer": "じゃないですか", "nudge": "You already believe he runs; you want it echoed back."},
+            {"jp_cloze": "この辞書は便利＿＿＿。", "english": "This dictionary is convenient, isn't it?", "answer": "ではないですか", "nudge": "A stiffer, more formal way to invite the same nod."},
+        ],
     },
     {
         "slug": "tame-ni",
@@ -1245,6 +1702,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["aruku", "nihongo", "kazoku"],
         "family": "connectors",
+        "cloze_variants": [
+            {"jp_cloze": "日本へ行く＿＿＿、日本語を勉強します。", "english": "I am studying Japanese so that I can go to Japan.", "answer": "ために", "nudge": "The studying serves the trip."},
+            {"jp_cloze": "家族の＿＿＿、毎日働きます。", "english": "I work every day on behalf of my family.", "answer": "ために", "nudge": "The family is the beneficiary of all that work."},
+            {"jp_cloze": "新しい車を買う＿＿＿、仕事をします。", "english": "I will work so that I can buy a new car.", "answer": "ために", "nudge": "The job exists so the car can be bought."},
+            {"jp_cloze": "旅行の＿＿＿、カメラを買いました。", "english": "I bought a camera on account of the trip.", "answer": "ため", "nudge": "The trip is what the camera is meant to serve."},
+            {"jp_cloze": "先生になる＿＿＿、大学で勉強します。", "english": "I will study at university so that I can be a teacher.", "answer": "ために", "nudge": "University is the means; teaching is the goal."},
+        ],
     },
     {
         "slug": "naru-become",
@@ -1261,6 +1725,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["samui", "nihongo", "genki"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "夏は暑＿＿＿。", "english": "Summer turns hot.", "answer": "くなる", "nudge": "暑い shifts into a change of state, plainly."},
+            {"jp_cloze": "娘は医者＿＿＿。", "english": "My daughter will be a doctor one day.", "answer": "になる", "nudge": "医者 is a noun, so it needs the noun-side link into the change."},
+            {"jp_cloze": "町は静か＿＿＿。", "english": "The town grew quiet.", "answer": "になりました", "nudge": "静か takes the noun-side link, and the shift already happened."},
+            {"jp_cloze": "空が暗＿＿＿。", "english": "The sky turned dark.", "answer": "くなりました", "nudge": "暗い has already shifted, told politely."},
+            {"jp_cloze": "勉強が好き＿＿＿。", "english": "I grew fond of studying.", "answer": "になりました", "nudge": "好き took hold at some point behind you."},
+        ],
     },
     {
         "slug": "moraru-ageru-kureru",
@@ -1277,6 +1748,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["tomodachi", "haha", "sensei"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "私は友達に本を＿＿＿。", "english": "I give a book to a friend.", "answer": "あげる", "nudge": "The book travels away from 私, out to someone else."},
+            {"jp_cloze": "友達が私に辞書を＿＿＿。", "english": "A friend gives me a dictionary.", "answer": "くれる", "nudge": "The dictionary lands with you, and the friend is the one who acted."},
+            {"jp_cloze": "僕は兄から時計を＿＿＿。", "english": "I receive a watch from my older brother.", "answer": "もらう", "nudge": "You end up holding the watch, and 兄 is the source."},
+            {"jp_cloze": "彼女は友達に犬を＿＿＿。", "english": "She receives a dog from a friend.", "answer": "もらう", "nudge": "彼女 walks away with the dog; the friend hands it over."},
+            {"jp_cloze": "先生は私に手紙を＿＿＿。", "english": "The teacher gives me a letter.", "answer": "くれる", "nudge": "The letter comes toward you from 先生, told from your side."},
+        ],
     },
 ]
 
