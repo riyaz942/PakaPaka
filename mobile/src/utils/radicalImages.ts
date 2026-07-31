@@ -22,6 +22,8 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/juu.webp': require('../../assets/radicals/n5/juu.webp'),
   'radicals/n5/keigamae.webp': require('../../assets/radicals/n5/keigamae.webp'),
   'radicals/n5/ki.webp': require('../../assets/radicals/n5/ki.webp'),
+  'radicals/n5/kuchi.webp': require('../../assets/radicals/n5/kuchi.webp'),
+  'radicals/n5/kunigamae.webp': require('../../assets/radicals/n5/kunigamae.webp'),
   'radicals/n5/ni.webp': require('../../assets/radicals/n5/ni.webp'),
   'radicals/n5/ninben.webp': require('../../assets/radicals/n5/ninben.webp'),
   'radicals/n5/san.webp': require('../../assets/radicals/n5/san.webp'),

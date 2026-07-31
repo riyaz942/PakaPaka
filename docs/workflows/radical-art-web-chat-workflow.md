@@ -6,38 +6,49 @@ vocabulary and grammar get text mnemonics and no art.
 
 ## How to run this
 
-**To actually run the lane, hand an agent
-[`radical-art-web-chat-workflow-automation-prompt.md`](./radical-art-web-chat-workflow-automation-prompt.md).**
-That is the executable version, tuned for a Sonnet driver at low reasoning effort, and
-**the agent drives Chrome itself** — it opens the Gemini chat, pastes the style message,
-sends each scene, waits for the image, and downloads it. Nothing is copy-pasted into
-Gemini by hand, exactly as in the mnemonic and example-sentence lanes.
+**Generation is manual. The agent does the bookkeeping either side of it.** The browser is
+not automated in this lane — you drive Gemini yourself, because hand-driving it turned out
+to be more reliable than automating it and it puts you in front of every image as it
+appears.
 
-Two things stay human: granting permission before the first download, and **judging the
-images**. The agent generates and installs the whole batch, then stops and reports; you
-open the files and name the slugs that need redoing. It re-rolls those and hands the batch
-back. It never decides on its own that an image is good or bad.
+A run is two asks and one manual stretch:
 
-This file is the maintainer reference: what the pipeline is, why the style rules exist,
-and the canonical STYLE block the automation pastes. Read it when changing the lane;
-run the automation prompt when producing art.
+| | Who | What |
+| --- | --- | --- |
+| **1. Build the batch** | Agent | *"Generate radical art prompts for the next `<batch-size>`."* It picks the radicals, writes one **self-contained prompt per radical** — style block and scene in a single copyable block — and saves them to a batch file. |
+| **2. Generate** | You | One **fresh Gemini chat per radical**. Paste that radical's whole prompt as the only message, generate, download. Leave the downloads where they land. |
+| **3. Install** | Agent | *"Images are downloaded, install them."* It collects them from `~/Downloads`, matches each to its radical, converts to WebP, installs, runs the gates, and reports. |
+| **4. Judge** | You | Open the installed images. Reply "all good", or name the slugs to redo and why. |
+| **5. Re-roll** | Agent | Revises just those prompts and hands them back for step 2. |
+
+**One chat per radical, one message per chat.** That is why each prompt carries the style
+block inside it — there is no separate style message to send first, and nothing depends on
+chat history. Every image is generated under identical conditions, which is a cleaner
+consistency story than the batched-chat approach it replaced.
+
+**The agent does not judge the art.** It has to *look* at each image in step 3 to work out
+which radical it belongs to, and it will flag anything factually broken it notices in
+passing — visible text, a blank frame — but it does not rate images, rank them, or decide
+what to re-roll. That's step 4, and it's yours.
+
+This file is the whole lane: the pipeline, why the style rules exist, and the canonical
+STYLE block.
 
 ## Scope and state
 
 | | |
 | --- | --- |
-| `<images-per-session>` | **5** radicals per Gemini session — one fresh chat, one style message, five scenes |
-| `<session-count>` | How many sessions one run creates. A run covers `images-per-session × session-count` radicals |
-| Ordering | **Sequential.** One browser, one chat at a time; downloads carry no slug, so parallel sessions would scramble which image is which |
+| `<batch-size>` | How many radicals one run covers. Each gets its own chat, so this is purely how much you want to paste in one sitting |
+| Sessions | **One fresh Gemini chat per radical**, single message. No chat is reused, and chat history carries nothing |
 | Levels | N5 (76 radicals, all mnemonics reviewed — ready) · N4 (33 radicals, **0 reviewed — not ready**) |
 | Model | Gemini web, Pro with extended thinking. AI Studio was tried and rejected |
-| Style carrier | The STYLE message alone. **No reference image is attached** |
+| Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
 | Committed | `mobile/assets/radicals/{level}/{slug}.webp` (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
 
-Keep `<images-per-session>` at 5: past that a chat's grip on the style loosens and later
-images drift; below it you pay the fixed setup cost too often. Cover more radicals by
-raising `<session-count>`, not the session size.
+Batch size is a comfort setting now, not a quality one. The old lane capped a session at 5
+because a chat's grip on the style loosened after that; with one chat per radical there is
+no such ceiling. Pick whatever you want to sit and paste.
 
 **Text first, art second.** A radical's `mnemonic_text` must be `review_status: reviewed`
 before its art is generated — the prose ships to the learner alongside the picture, so
@@ -48,33 +59,33 @@ Prerequisites: `cwebp` on PATH (`brew install webp libtiff`).
 
 ---
 
-## Step 0 — pick the run's radicals
+## Step 0 — agent: pick the run's radicals
 
-A run selects `<images-per-session> × <session-count>` radicals and splits them into
-sessions. The selector below shows one session's worth; the automation prompt's Step 1
-is the same query generalised over both variables.
-
-From the repo root:
+Radicals are **auto-selected**, never hand-picked: the next `<batch-size>` in curriculum
+order that have no art yet and whose mnemonic is reviewed. From the repo root:
 
 ```bash
 python3 - <<'PY'
 import json, os
-level = 'n5'
-items = json.load(open(f'curriculum/radicals/{level}.json'))['items']
-have = {f[:-5] for f in os.listdir(f'mobile/assets/radicals/{level}') if f.endswith('.webp')}
+LEVEL, BATCH_SIZE = 'n5', 5
+items = json.load(open(f'curriculum/radicals/{LEVEL}.json'))['items']
+have = {f[:-5] for f in os.listdir(f'mobile/assets/radicals/{LEVEL}') if f.endswith('.webp')}
 todo = [i for i in items if i['slug'] not in have
         and i.get('_meta', {}).get('review_status') == 'reviewed']
-print(f'{len(todo)} {level} radicals still need art\n')
-for i in todo[:5]:
+print(f'{len(todo)} {LEVEL} radicals still need art\n')
+for i in todo[:BATCH_SIZE]:
     print(f"--- {i['slug']}  {i['primary_form']}  ({i['meaning']})")
     print(i['mnemonic_text'], '\n')
 PY
 ```
 
-That prints the next five in curriculum order with their reviewed mnemonic prose. Work
-in that order — don't cherry-pick.
+If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
+selects fewer than `<batch-size>`, the level is running out; use what it found.
 
-## Step 1 — write the scene prompts
+Auto-selection is what makes stopping and resuming free: the next run picks up exactly
+where the last one left off, with no list to keep.
+
+## Step 1 — agent: write the scene prompts
 
 One scene prompt per radical, written from its `mnemonic_text`. Keep them in the pilot's
 shape, because that is what produced the set that shipped: **a heading line naming the
@@ -124,46 +135,95 @@ the pilot's own scene, and it is a good calibration for length:
 > bottom right, a small puddle they're heading for. The three unconnected drops on the
 > left are the subject; the brush and puddle are supporting props, drawn smaller.
 
-Write every scene prompt for the run before opening the browser. Save them to
-`curriculum/_build/generate_content/web/radical-art/<level>-scenes.md`, one `## <slug>`
-heading each, so a re-roll doesn't mean rewriting them.
+### Assembling the batch file
 
-## Step 2 — run the Gemini session
+Each radical gets **one self-contained prompt** — the STYLE block, then its scene — so it
+can be pasted into a fresh chat as a single message with nothing sent before it.
 
-One **fresh** Gemini chat per session of five. Fresh matters: a long chat drifts.
+Extract the STYLE block from this file's appendix rather than retyping it; retyping is how
+rules go missing. Then write
+`curriculum/_build/generate_content/web/radical-art/<level>-batch.md` with one section per
+radical:
 
-**Message 1** — the STYLE block from the appendix below, verbatim, nothing else. Wait
-for it to acknowledge.
+    ## sanzui
 
-**Messages 2–6** — one scene prompt each, sent alone. **No image is attached to any
-message**, and no "match this reference" line is added. The style block already fixes
-the palette, line weight and background, and the generated set holds that style without
-an anchor image.
+    ```
+    <STYLE block, verbatim>
 
-That makes the STYLE message the single point of failure for the whole session: paste it
-complete, and verify it before sending. A truncated style message costs every image in
-the chat.
+    Now generate this image:
 
-Scenes go one at a time — send, wait for the image, download it, then send the next. The
-run does not stop to evaluate anything: every scene is generated and staged, whatever it
-looks like. Quality is judged once, by a human, after the whole batch is installed
-(Step 5). A scene is only re-sent mid-run when Gemini produced no file at all.
+    Scene — `sanzui` 氵 (water, left-side form)
 
-## Step 3 — download and stage
+    Three small separate droplets stacked down the LEFT edge of the square, …
+    ```
 
-Download each image and name it after the **curriculum slug**, `.png`, into the staging
-directory:
+The fenced block is the copy unit — everything inside it goes into Gemini, nothing else.
+Keep the `## <slug>` heading outside the fence so it names the file to expect but never
+reaches the model.
 
+Yes, this repeats the style block once per radical. That is the point: it removes chat
+history as a dependency, so no image can inherit a truncated paste or a drifted chat from
+another.
+
+## Step 2 — you: generate the images
+
+For each section in the batch file:
+
+1. Open a **brand new** Gemini chat. Never reuse one, not even for the next radical in the
+   batch.
+2. Set the model to **Pro** and enable **extended thinking**.
+3. Paste the whole fenced block as the only message. Send.
+4. Download the image.
+
+Leave the downloads in `~/Downloads` under whatever name Gemini gives them — the agent
+identifies them in Step 3, so there's no renaming to do. Do not clear out unrelated
+`Gemini_Generated_Image_*.png` files from an earlier run first; tell the agent if any are
+left over.
+
+Order matters slightly: generating in batch-file order gives the agent a download-time
+ordering to check its identification against. It isn't required, but say so if you jump
+around.
+
+Generate the whole batch before handing back. Don't stop to re-roll — if one looks wrong,
+note it and keep going; re-rolls are Step 5, after everything is installed and you can see
+them at real size.
+
+## Step 3 — agent: identify the downloads and stage them
+
+Gemini names every download `Gemini_Generated_Image_<random>.png`. Nothing in the filename
+says which radical it is, so the agent has to work that out — and it has to be **right**,
+because a mis-assigned image ships a picture of a tree on the radical for "power".
+
+List the candidates newest-last:
+
+```bash
+ls -t -r ~/Downloads/Gemini_Generated_Image_*.png
 ```
-curriculum/_build/generate_content/web/radical-art/{slug}.png
+
+Then, for each file **open it and look at it**, and match it against the scenes in the
+batch file. This is identification, not review: "three droplets off a brush" versus "a
+flexed arm" is unambiguous at a glance, and a batch of distinct scenes makes it reliable.
+Download order gives you an expected mapping to check against — it should agree.
+
+**If the picture and the expected order disagree, or any image is ambiguous, stop and
+ask.** Do not guess, do not fall back to ordering alone, and do not quietly reassign the
+rest to make a set fit. Naming the two candidates and asking costs one message; a silently
+mis-assigned image is invisible until a learner sees it.
+
+Stage each one under its curriculum slug — from `curriculum/radicals/{level}.json`, not
+from memory of the radical's name (`sanzui`, not `sansui`):
+
+```bash
+mv ~/Downloads/Gemini_Generated_Image_<random>.png \
+   curriculum/_build/generate_content/web/radical-art/<slug>.png
 ```
 
-Slugs come from `curriculum/radicals/{level}.json`, not from your memory of the radical's
-name. `sanzui`, not `sansui`.
+Report the mapping — `file → slug` — as part of the install summary, so a wrong guess is
+visible to a human before it becomes a commit.
 
-## Step 4 — install
+## Step 4 — agent: install
 
-Once, after every session in the run has finished staging. From the repo root:
+Once the whole batch is staged. From the repo root:
 
 ```bash
 STAGE=curriculum/_build/generate_content/web/radical-art
@@ -184,19 +244,21 @@ far inside the 80 KB budget in `docs/content/radical-mnemonic-images.md`.
 flat — re-roll it rather than dropping quality, because grain is a style failure, not a
 compression problem.
 
-## Step 5 — review each image (human only)
+## Step 5 — you: review each image
 
-The generator checks bytes and filenames. Nothing in the automated lane checks whether a
-picture is any *good* — deliberately. **The agent does not review the art and does not
-decide what to re-roll.** It installs the whole batch, reports the file list, and stops;
-a person opens the images and returns a verdict, naming the slugs that need redoing and
-why. The agent then re-rolls exactly those, in a fresh chat, and hands the batch back.
+The gate checks bytes and filenames. Nothing checks whether a picture is any *good* —
+deliberately. **The agent does not review the art and does not decide what to re-roll.**
+It installs the batch, reports the file list and the `file → slug` mapping, and stops.
+
+The one thing it may say about an image is factual and noticed in passing while
+identifying it — "this one has Japanese text in it", "this one came out blank". It does
+not rate images, rank them, call them weak, or pre-emptively redo any.
 
 That split exists because "is this a good mnemonic image" is a taste judgement about
 content that ships to learners, and an agent asked to make it will quietly re-roll
 acceptable images and keep bad ones. A re-roll round costs one chat; a wrong image ships.
 
-The checklist below is the reviewer's, not the agent's:
+The checklist is yours:
 
 - [ ] **Is the stroke shape actually readable in the picture?** Not "is it a nice
       drawing" — can you trace the radical's shape in the subject's main lines?
@@ -222,7 +284,22 @@ reserves that corner.** An earlier version of the STYLE block asked for the bott
 eighth to be left bare and the model over-obeyed, cutting a visible bite out of the
 composition. If you find that instruction anywhere, delete it.
 
-## Step 6 — commit
+## Step 6 — re-roll round (only for the slugs you name)
+
+Only runs when you've named specific radicals. The agent never starts one on its own.
+
+1. It revises those scene prompts using your reason, keeping the Step 1 format — heading
+   line plus one short paragraph. **Fixing a bad image by adding clauses makes the next one
+   worse**; change the description, don't pile constraints onto it.
+2. It rebuilds the batch file with just those radicals, style block embedded as usual.
+3. You generate them in fresh chats (Step 2) — a re-roll is a new chat, never a follow-up
+   message in the chat that produced the bad image.
+4. Agent reinstalls (Steps 3–4); the new PNG overwrites the old one for that slug.
+5. Back to Step 5.
+
+As many rounds as you want. A radical you give up on simply ships without art.
+
+## Step 7 — commit
 
 ```bash
 git add mobile/assets/radicals mobile/src/utils/radicalImages.ts
@@ -243,8 +320,9 @@ before the art does and simply resolves to text until the file lands.
 
 | Symptom | Cause | Fix |
 | --- | --- | --- |
-| Image five looks nothing like image one | Style message truncated on paste, or session too long | Verify the paste before sending; keep `<images-per-session>` at 5 |
-| A late session's images don't match an early session's | Style message differs between sessions | Always extract it from this doc's appendix rather than retyping |
+| One image is wildly off-style from the rest | Its prompt was pasted incomplete — the style block is long and a partial paste is easy to miss | Re-paste the whole fenced block into a new chat; check it starts with "You are generating illustrations" |
+| Images drift between one batch and a later one | Style block was retyped or edited between batches | Always extract it from this doc's appendix; it is the only style carrier |
+| An image is installed under the wrong radical | Downloads were identified by order alone after generating out of order | Re-check by opening the files; the agent must confirm by picture, not position |
 | Thin outline drawing, no fills | Model reverted to "minimal line art" | Re-roll with "thick solid shapes with bold outlines" |
 | Colour runs to the edge of the square | Full-bleed ban ignored | Re-roll; the off-white margin is what makes the set cohere |
 | A corner is conspicuously empty, composition lopsided | A prompt asked to keep the bottom-right clear — the model over-obeys and cuts a bite out | Remove that instruction; nothing in this lane reserves a corner |
@@ -254,7 +332,7 @@ before the art does and simply resolves to text until the file lands.
 | WebP over 80 KB | Grain in nominally flat fills | Re-roll for flatter art; don't lower quality |
 | Props that aren't in the mnemonic | Model embellished | Re-roll with "draw only what is described, no extra objects" |
 
-## Appendix — STYLE block (paste verbatim as message 1)
+## Appendix — STYLE block (embedded verbatim at the top of every prompt)
 
 You are generating illustrations for a Japanese-learning app. They are mnemonic
 images for *radicals* — the shape-components kanji are built from. Each image has
@@ -293,13 +371,11 @@ Hold this style fixed for every image in this conversation:
 - **Tone:** deadpan and a bit absurd. Mild slapstick and undignified animals are good.
   No celebrities, brands, gore, or stereotypes.
 
-Reply "ready" and I'll send the first scene.
-
 ---
 
 ## Related
 
-- [`radical-art-web-chat-workflow-automation-prompt.md`](./radical-art-web-chat-workflow-automation-prompt.md) — **the executable version; hand this to the agent**
+- [`radical-art-web-chat-workflow-automation-prompt.md`](./radical-art-web-chat-workflow-automation-prompt.md) — **superseded**; the old browser-automated lane, kept for its Gemini automation notes
 - [`docs/content/radical-mnemonic-images.md`](../content/radical-mnemonic-images.md) — asset spec, paths, LFS, app wiring
 - [`docs/content/content-pipeline-plan.md`](../content/content-pipeline-plan.md) — Phase 3, Tier 1 vs Tier 2
 - [`docs/radical-image-pilot-prompt.md`](../radical-image-pilot-prompt.md) — the pilot this workflow came out of
