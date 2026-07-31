@@ -17,6 +17,12 @@ import { runMigrations } from '@/data/migrations/migrationRunner';
 import { setOnboardingPath } from '@/data/user/preferencesRepository';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
+// Radical art is bundled, so the real map only contains committed files. These
+// tests exercise layout, not asset resolution: treat any ref as drawn.
+jest.mock('@/utils/radicalImages', () => ({
+  getRadicalImage: (ref?: string | null) => (ref ? 1 : undefined),
+}));
+
 jest.mock('expo-router', () => ({
   router: { push: jest.fn() },
   useFocusEffect: (callback: () => void | (() => void)) => {
@@ -279,7 +285,7 @@ describe('LessonItemView sections', () => {
         primary_form: '人',
         meaning: 'person',
         mnemonic_text: 'Two legs mid-stride and no head at all: a person.',
-        visual_mnemonic_url: 'https://example.com/person.png',
+        visual_mnemonic_url: 'radicals/n5/person.webp',
         sort_order: 1,
       },
     ]);

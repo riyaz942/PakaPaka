@@ -1,7 +1,4 @@
-import {
-  buildMnemonicAccessibilityLabel,
-  isValidMnemonicImageUrl,
-} from '@/utils/mnemonicAccessibilityLabel';
+import { buildMnemonicAccessibilityLabel } from '@/utils/mnemonicAccessibilityLabel';
 
 describe('mnemonicAccessibilityLabel', () => {
   it('prefers mnemonic text for accessibility label', () => {
@@ -26,16 +23,5 @@ describe('mnemonicAccessibilityLabel', () => {
 
   it('returns default label when no descriptive props are provided', () => {
     expect(buildMnemonicAccessibilityLabel()).toBe('Mnemonic image unavailable');
-  });
-
-  it('accepts https image URLs only', () => {
-    expect(isValidMnemonicImageUrl('https://assets.japanese-learning.app/radicals/n5/ichi.png')).toBe(
-      true,
-    );
-    expect(isValidMnemonicImageUrl('http://assets.japanese-learning.app/radicals/n5/ichi.png')).toBe(
-      false,
-    );
-    expect(isValidMnemonicImageUrl('not-a-url')).toBe(false);
-    expect(isValidMnemonicImageUrl(null)).toBe(false);
   });
 });

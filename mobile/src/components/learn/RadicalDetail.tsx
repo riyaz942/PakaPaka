@@ -15,7 +15,7 @@ import type {
   VisuallySimilarItem,
 } from '@/data/curriculum/itemRepository';
 import { cn } from '@/utils/cn';
-import { isValidMnemonicImageUrl } from '@/utils/mnemonicAccessibilityLabel';
+import { getRadicalImage } from '@/utils/radicalImages';
 
 type RadicalDetailProps = {
   item: CurriculumItemDetail;
@@ -32,7 +32,7 @@ type RadicalDetailProps = {
  */
 export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDetailProps) {
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
-  const hasValidImageUrl = isValidMnemonicImageUrl(item.visualMnemonicUrl);
+  const hasValidImageUrl = Boolean(getRadicalImage(item.visualMnemonicUrl));
 
   useEffect(() => {
     setImageLoadFailed(false);

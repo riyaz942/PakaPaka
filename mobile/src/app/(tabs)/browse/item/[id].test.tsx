@@ -9,6 +9,12 @@ import { DatabaseContext } from '@/providers/DatabaseContext';
 
 import BrowseItemDetailRoute from './[id]';
 
+// Radical art is bundled, so the real map only contains committed files. These
+// tests exercise layout, not asset resolution: treat any ref as drawn.
+jest.mock('@/utils/radicalImages', () => ({
+  getRadicalImage: (ref?: string | null) => (ref ? 1 : undefined),
+}));
+
 const mockBack = jest.fn();
 const mockUseLocalSearchParams = jest.fn();
 
@@ -70,7 +76,7 @@ describe('BrowseItemDetailRoute', () => {
         primary_form: '一',
         meaning: 'one',
         mnemonic_text: 'Radical one (一)',
-        visual_mnemonic_url: 'https://example.com/one.png',
+        visual_mnemonic_url: 'radicals/n5/ichi.webp',
         sort_order: 1,
       },
       {

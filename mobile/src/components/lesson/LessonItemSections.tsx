@@ -31,7 +31,7 @@ import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { useRelatedItems } from '@/data/hooks/useRelatedItems';
 import { cn } from '@/utils/cn';
-import { isValidMnemonicImageUrl } from '@/utils/mnemonicAccessibilityLabel';
+import { getRadicalImage } from '@/utils/radicalImages';
 
 /** Intro → Mnemonic → Examples & links (FR71, UX-DR16). */
 export const LESSON_SECTION_COUNT = 3;
@@ -108,7 +108,7 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
 
   const showRadicalImage =
     item.itemType === 'radical' &&
-    isValidMnemonicImageUrl(item.visualMnemonicUrl) &&
+    Boolean(getRadicalImage(item.visualMnemonicUrl)) &&
     !imageFailed;
 
   return (

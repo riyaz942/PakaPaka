@@ -2,11 +2,19 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 
+// The real map is generated from the art committed under assets/radicals/, so
+// these tests stand in two known refs rather than depending on which radicals
+// have been drawn.
+jest.mock('@/utils/radicalImages', () => ({
+  getRadicalImage: (ref?: string | null) =>
+    ref === 'radicals/n5/ichi.webp' || ref === 'radicals/n5/ni.webp' ? 1 : undefined,
+}));
+
 describe('MnemonicImage', () => {
-  it('shows text fallback when image URL is invalid', () => {
+  it('shows text fallback when the ref has no bundled image', () => {
     render(
       <MnemonicImage
-        imageUrl="not-a-url"
+        imageUrl="radicals/n5/undrawn.webp"
         meaning="one"
         mnemonicText="Radical one (一)"
         primaryForm="一"
@@ -18,7 +26,7 @@ describe('MnemonicImage', () => {
     expect(screen.queryByTestId('mock-expo-image')).toBeNull();
   });
 
-  it('shows text fallback when image URL is missing', () => {
+  it('shows text fallback when the ref is missing', () => {
     render(
       <MnemonicImage
         imageUrl={null}
@@ -33,10 +41,24 @@ describe('MnemonicImage', () => {
     expect(screen.getByText('Radical one (一)')).toBeTruthy();
   });
 
-  it('retries image load when imageUrl changes after an error', () => {
+  it('shows text fallback when a remote URL is passed — art is bundled only', () => {
+    render(
+      <MnemonicImage
+        imageUrl="https://assets.japanese-learning.app/radicals/n5/ichi.png"
+        meaning="one"
+        mnemonicText="Radical one (一)"
+        primaryForm="一"
+      />,
+    );
+
+    expect(screen.queryByTestId('mock-expo-image')).toBeNull();
+    expect(screen.getByText('Radical one (一)')).toBeTruthy();
+  });
+
+  it('retries image load when the ref changes after an error', () => {
     const { rerender } = render(
       <MnemonicImage
-        imageUrl="https://assets.japanese-learning.app/radicals/n5/bad.png"
+        imageUrl="radicals/n5/ni.webp"
         meaning="one"
         mnemonicText="Radical one (一)"
         primaryForm="一"
@@ -48,7 +70,7 @@ describe('MnemonicImage', () => {
 
     rerender(
       <MnemonicImage
-        imageUrl="https://assets.japanese-learning.app/radicals/n5/ichi.png"
+        imageUrl="radicals/n5/ichi.webp"
         meaning="one"
         mnemonicText="Radical one (一)"
         primaryForm="一"
@@ -61,7 +83,7 @@ describe('MnemonicImage', () => {
   it('shows text fallback when image fails to load', () => {
     render(
       <MnemonicImage
-        imageUrl="https://assets.japanese-learning.app/radicals/n5/ichi.png"
+        imageUrl="radicals/n5/ichi.webp"
         meaning="one"
         mnemonicText="Radical one (一)"
         primaryForm="一"
@@ -74,21 +96,15 @@ describe('MnemonicImage', () => {
   });
 
   it('sets accessibilityLabel on rendered image', () => {
-    render(
-      <MnemonicImage
-        imageUrl="https://assets.japanese-learning.app/radicals/n5/ichi.png"
-        meaning="one"
-        primaryForm="一"
-      />,
-    );
+    render(<MnemonicImage imageUrl="radicals/n5/ichi.webp" meaning="one" primaryForm="一" />);
 
     expect(screen.getByLabelText('one (一)')).toBeTruthy();
   });
 
-  it('renders mocked expo-image for a valid URL', () => {
+  it('renders mocked expo-image for a bundled ref', () => {
     render(
       <MnemonicImage
-        imageUrl="https://assets.japanese-learning.app/radicals/n5/ichi.png"
+        imageUrl="radicals/n5/ichi.webp"
         meaning="one"
         mnemonicText="Radical one (一)"
         primaryForm="一"

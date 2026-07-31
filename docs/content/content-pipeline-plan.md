@@ -658,8 +658,10 @@ binary, and resolve them as bundled assets in `MnemonicImage`. No CDN / R2 /
 remote URLs. Hard size budget **≤80 KB per image** (pack target ~5–12 MB for
 ~150 radicals) so the IPA/APK stays sane; text fallback when a file is missing.
 
-Schema/app today may still expect HTTPS placeholders in `visual_mnemonic_url`;
-Phase 3 includes dropping that rule in favor of bundled asset refs.
+The HTTPS-only rule on `visual_mnemonic_url` is gone: the schema now requires
+`radicals/{level}/{slug}.webp` and `MnemonicImage` resolves it against a generated
+`require()` map (`mobile/src/utils/radicalImages.ts`, rebuilt via
+`npm run generate-radical-assets`).
 
 - **Tier 1 — deterministic, ship first:** script renders KanjiVG radical SVGs into
   card images on theme-consistent backgrounds. Covers taught radicals immediately;

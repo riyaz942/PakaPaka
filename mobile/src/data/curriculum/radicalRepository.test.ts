@@ -21,7 +21,7 @@ describe('radicalRepository', () => {
         primary_form: '二',
         meaning: 'two',
         mnemonic_text: 'Radical two (二)',
-        visual_mnemonic_url: 'https://assets.japanese-learning.app/radicals/n5/ni.png',
+        visual_mnemonic_url: 'radicals/n5/ni.webp',
         sort_order: 2,
       },
       {
@@ -32,7 +32,7 @@ describe('radicalRepository', () => {
         primary_form: '一',
         meaning: 'one',
         mnemonic_text: 'Radical one (一)',
-        visual_mnemonic_url: 'https://assets.japanese-learning.app/radicals/n5/ichi.png',
+        visual_mnemonic_url: 'radicals/n5/ichi.webp',
         sort_order: 1,
       },
       {
@@ -57,7 +57,7 @@ describe('radicalRepository', () => {
       primaryForm: '一',
       meaning: 'one',
       mnemonicText: 'Radical one (一)',
-      visualMnemonicUrl: 'https://assets.japanese-learning.app/radicals/n5/ichi.png',
+      visualMnemonicUrl: 'radicals/n5/ichi.webp',
       sortOrder: 1,
     });
     expect(radicals[1]?.slug).toBe('ni');

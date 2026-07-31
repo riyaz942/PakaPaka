@@ -2,13 +2,12 @@ import { Image } from 'expo-image';
 import { useEffect, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 
-import {
-  buildMnemonicAccessibilityLabel,
-  isValidMnemonicImageUrl,
-} from '@/utils/mnemonicAccessibilityLabel';
+import { buildMnemonicAccessibilityLabel } from '@/utils/mnemonicAccessibilityLabel';
+import { getRadicalImage } from '@/utils/radicalImages';
 import { cn } from '@/utils/cn';
 
 export type MnemonicImageProps = {
+  /** Curriculum `visual_mnemonic_url` — a bundled asset ref, not a network URL. */
   imageUrl: string | null | undefined;
   mnemonicText?: string | null;
   meaning?: string | null;
@@ -38,9 +37,9 @@ export function MnemonicImage({
     [mnemonicText, meaning, primaryForm],
   );
 
-  const showImage = isValidMnemonicImageUrl(imageUrl) && !hasError;
+  const source = getRadicalImage(imageUrl);
 
-  if (!showImage) {
+  if (!source || hasError) {
     return (
       <View
         accessibilityLabel={accessibilityLabel}
@@ -60,13 +59,12 @@ export function MnemonicImage({
       testID={testID}>
       <Image
         accessibilityLabel={accessibilityLabel}
-        cachePolicy="disk"
         contentFit="contain"
         onError={() => {
           setHasError(true);
           onLoadError?.();
         }}
-        source={{ uri: imageUrl!.trim() }}
+        source={source}
         style={{ height: '100%', width: '100%' }}
       />
     </View>

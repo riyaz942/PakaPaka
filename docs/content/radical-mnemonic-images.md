@@ -14,15 +14,16 @@ Rationale: the taught radical set is small and finite (~150 for N5+N4; Kangxi ce
 
 - **FR34** — Maintainers manage mnemonic image assets (in-repo files + curriculum refs).
 - **FR4b** — Learners see radical mnemonic images in the app.
-- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** (compiled into `items.visual_mnemonic_url` or a successor field). Legacy seed rows may still carry placeholder `https://…` values until the schema/app wiring lands; those placeholders are not a hosting plan.
+- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** in `items.visual_mnemonic_url`: `radicals/{level}/{slug}.webp`, relative to `mobile/assets/`. The schema rejects `https://` values, so a remote URL cannot be reintroduced by accident.
 - **NFR20** — Missing or unloadable assets fall back to text (`mnemonic_text` / meaning). No broken-image icon.
 
 ## Where files live
 
 | Role | Path |
 | --- | --- |
-| Radical art (source of truth) | `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` (or `.png`) |
-| Git | Prefer **Git LFS** for `mobile/assets/radicals/**` (same pattern as `curriculum.db`) so clones stay lean |
+| Radical art (source of truth) | `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` |
+| Git | **Git LFS**, via `mobile/assets/radicals/**/*.webp` in `.gitattributes` (same pattern as `curriculum.db`) so clones stay lean |
+| App | `mobile/src/utils/radicalImages.ts` — generated `require()` map; never hand-edited |
 | App | Expo packs `mobile/assets/` into the binary; images update with app releases, not a separate media deploy |
 
 Slug must match the radical entry in `curriculum/radicals/*.json`. JLPT segment is lowercase (`n5`, `n4`, …).
@@ -36,12 +37,12 @@ Examples:
 
 | Property | Recommendation |
 | --- | --- |
-| Format | **WebP preferred**; PNG acceptable |
+| Format | **WebP only** — the schema pattern and the asset-map generator both reject anything else, so convert generated PNGs before committing |
 | Aspect ratio | Square or 4:3 |
 | **Hard size budget** | **≤80 KB per image** (aim 30–80 KB). Pack target: ~150 radicals ≈ **5–12 MB** total |
 | Soft ceiling (reject in review) | Do not ship images that push the radical pack toward tens of MB; recompress or simplify before merging |
 | Transparency | OK |
-| Naming | `{slug}.webp` / `{slug}.png` (matches curriculum `slug`) |
+| Naming | `{slug}.webp` (matches curriculum `slug`) |
 
 The old ~512 KB-per-image ceiling assumed CDN delivery. At that size, ~214 radicals would bloat the IPA/APK — **byte budget is the real constraint**, not hosting.
 
@@ -55,11 +56,22 @@ Review checklist before commit:
 
 ## Curriculum / app wiring
 
-Target shape (implement with Phase 3; until then seed may still show HTTPS placeholders and text fallback):
+Every radical already carries its ref (`radicals/{level}/{slug}.webp`), written by
+`curriculum/_build/generate.py`. Adding art is therefore just dropping the file in and
+regenerating the map — no curriculum edit needed unless the slug changes.
 
-1. Commit the image under `mobile/assets/radicals/{level}/{slug}.…`.
-2. Point the radical row at the bundled asset (path or stable asset key — exact field shape lands with the schema change that drops the HTTPS-only rule).
-3. From repo root:
+1. Save the image as `mobile/assets/radicals/{level}/{slug}.webp` (≤80 KB).
+2. From `mobile/`, rebuild the bundler's asset map:
+
+   ```bash
+   npm run generate-radical-assets
+   ```
+
+   This rewrites `src/utils/radicalImages.ts` with one literal `require()` per file — Metro
+   cannot resolve a path built at runtime, so the map has to be checked in. The script exits
+   non-zero on anything that is not `{n1-n5}/{slug}.webp`.
+
+3. If you changed any curriculum JSON, from repo root:
 
    ```bash
    npm run validate-schema && npm run compile-curriculum
@@ -67,12 +79,13 @@ Target shape (implement with Phase 3; until then seed may still show HTTPS place
 
 4. Commit together:
    - Image file(s) under `mobile/assets/radicals/…` (LFS)
-   - Updated JSON under `curriculum/radicals/`
-   - Recompiled `mobile/assets/curriculum-seed/curriculum.db` (Git LFS)
+   - Regenerated `mobile/src/utils/radicalImages.ts`
+   - Any updated JSON under `curriculum/radicals/` + recompiled `mobile/assets/curriculum-seed/curriculum.db` (Git LFS)
 
-5. CI `compile-curriculum.yml` must pass; validator should eventually fail if a radical references a missing bundled file.
+5. CI `compile-curriculum.yml` must pass. The validator does **not** yet cross-check that a
+   radical's ref has a matching file on disk — a typo'd slug shows text, not an error.
 
-`MnemonicImage` should load via the bundler / local asset map (not `source={{ uri: https… }}`). Text fallback remains for missing files.
+`MnemonicImage` resolves refs through `getRadicalImage()` in `src/utils/radicalImages.ts`. There is no URL path left in the component — a ref with no entry in the map renders the mnemonic text.
 
 ## Generation tips
 
@@ -101,7 +114,7 @@ Both tiers are **radicals only** — same paths and size budget.
 | Symptom | Likely cause | Action |
 | --- | --- | --- |
 | Text instead of image | Asset not committed or path/slug mismatch | Confirm file under `mobile/assets/radicals/…` and curriculum ref |
-| Text instead of image | Schema/app still on HTTPS placeholder | Expected until Phase 3 wiring; fallback is correct |
+| Text instead of image | Asset map not regenerated after adding art | Run `npm run generate-radical-assets` in `mobile/` and commit the result |
 | Stale image after replace | Old binary / Metro cache | Rebuild app; clear Metro cache if needed |
 | CI / validate fails | Missing file or oversize asset | Add file, recompress, or fix slug |
 | Clone / repo huge | Images not on LFS | Track `mobile/assets/radicals/**` with Git LFS |
@@ -110,4 +123,4 @@ Both tiers are **radicals only** — same paths and size budget.
 
 - [curriculum/README.md](../../curriculum/README.md) — compile commands and radical image overview
 - [content-pipeline-plan.md](./content-pipeline-plan.md) — Phase 3 image generation
-- `MnemonicImage` — shared renderer (text fallback); update load path when bundling lands
+- `MnemonicImage` — shared renderer (text fallback for refs with no bundled file)

@@ -10,6 +10,12 @@ import type {
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn() } }));
 
+// Radical art is bundled, so the real map only contains committed files. These
+// tests exercise layout, not asset resolution: treat any ref as drawn.
+jest.mock('@/utils/radicalImages', () => ({
+  getRadicalImage: (ref?: string | null) => (ref ? 1 : undefined),
+}));
+
 jest.mock('@/data/hooks/useDatabase', () => {
   // Stable object: an unstable identity would re-fire db-keyed effects every render.
   const databases = {
@@ -35,7 +41,7 @@ const baseItem: CurriculumItemDetail = {
   meaningMnemonic: null,
   readingMnemonic: null,
   description: null,
-  visualMnemonicUrl: 'https://assets.example.com/radicals/n5/person.png',
+  visualMnemonicUrl: 'radicals/n5/person.webp',
 };
 
 const lookAlikes: VisuallySimilarItem[] = [

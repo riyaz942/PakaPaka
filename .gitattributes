@@ -1,1 +1,2 @@
 mobile/assets/curriculum-seed/curriculum.db filter=lfs diff=lfs merge=lfs -text
+mobile/assets/radicals/**/*.webp filter=lfs diff=lfs merge=lfs -text

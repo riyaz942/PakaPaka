@@ -153,7 +153,9 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             "primary_form": r["form"],
             "meaning": r["meaning"],
             "mnemonic_text": r["mnemonic"],
-            "visual_mnemonic_url": f"https://assets.japanese-learning.app/radicals/{slug_prefix}/{r['slug']}.png",
+            # Bundled asset ref, not a URL: art ships inside the app binary under
+            # mobile/assets/radicals/. Missing files fall back to mnemonic text.
+            "visual_mnemonic_url": f"radicals/{slug_prefix}/{r['slug']}.webp",
             "sort_order": i,
         }
         if r["slug"] in _SIMILAR_SLUGS:
