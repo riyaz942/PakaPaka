@@ -11,8 +11,12 @@ vocabulary and grammar get text mnemonics and no art.
 That is the executable version, tuned for a Sonnet driver at low reasoning effort, and
 **the agent drives Chrome itself** — it opens the Gemini chat, pastes the style message,
 sends each scene, waits for the image, and downloads it. Nothing is copy-pasted into
-Gemini by hand, exactly as in the mnemonic and example-sentence lanes. The only human
-interaction is granting permission before the first download.
+Gemini by hand, exactly as in the mnemonic and example-sentence lanes.
+
+Two things stay human: granting permission before the first download, and **judging the
+images**. The agent generates and installs the whole batch, then stops and reports; you
+open the files and name the slugs that need redoing. It re-rolls those and hands the batch
+back. It never decides on its own that an image is good or bad.
 
 This file is the maintainer reference: what the pipeline is, why the style rules exist,
 and the canonical STYLE block the automation pastes. Read it when changing the lane;
@@ -72,61 +76,53 @@ in that order — don't cherry-pick.
 
 ## Step 1 — write the scene prompts
 
-One scene prompt per radical, written from its `mnemonic_text`. Each is a shape-reference
-line followed by three short paragraphs.
+One scene prompt per radical, written from its `mnemonic_text`. Keep them in the pilot's
+shape, because that is what produced the set that shipped: **a heading line naming the
+radical, then one short prose paragraph.**
 
-**Line 1 — the shape reference.** The radical's character (`primary_form`), on its own
-line, framed as a target to trace rather than something to draw:
+**The heading line** — slug, the radical's character (`primary_form`), and its meaning:
 
-    Target shape — trace this with the objects in the scene. It is a reference for the
-    composition only: do NOT draw this character, and do not render it as text or as a
-    written glyph anywhere in the image. 氵
+    Scene — `sanzui` 氵 (water, left-side form)
 
-Then:
+The character earns its place there. Prompts that described the strokes in words alone
+came back looking like nothing in particular for the abstract radicals — a lid, a single
+drop, a hook; there is no wording that pins those down. Seeing the shape fixes it. It
+lives in the heading rather than in an instruction so it reads as *which radical this
+is*, not as something to draw.
 
-1. **The strokes.** How many strokes and how they sit relative to each other — direction,
-   angle, which touch and which don't. This paragraph is the whole point of the image.
-2. **The scene.** The situation from `mnemonic_text`, restated as something drawable.
-   Stay faithful to the prose; the learner reads both.
-3. **The constraint.** What must stay crisp at thumbnail size, and what to leave out.
+**The paragraph** — four to six sentences carrying the strokes and the scene together:
+how many strokes and how they sit relative to each other, then the situation from
+`mnemonic_text` that carries them, then the one thing that most needs to survive at
+thumbnail size. Stay faithful to the prose; the learner reads both.
 
 Hard rules for writing scene prompts:
 
-- **Always include the shape reference.** This was learned the hard way: prompts that
-  described the strokes in words alone produced images that looked like nothing in
-  particular for the abstract radicals — a lid, a single drop, a hook. There is no
-  wording that pins those down. Give the model the target and let the scene trace it.
-- **Describe objects, not symbols.** Outside the reference line the shape has to arrive
-  through what the objects *are* — a striding figure's legs, a tree's roots — not through
-  a drawn sign. Don't say "the character", "kanji", "Japanese", or "strokes" as writing.
-- **Say where things sit in the frame**, especially "left third", "centred", "small, at
-  the top". The model does not infer composition from the mnemonic.
-- **Always end with:** *"Leave the bottom-right eighth of the square completely clear —
-  bare background, nothing drawn in it."*
+- **Keep it short. Don't over-specify.** This is the rule that gets broken, and breaking
+  it is what produced the bad batch. A prompt stacked with clauses about exact angles,
+  framing, what to omit and what to keep crisp comes back *worse* than a loose one — the
+  model spends its attention satisfying constraints instead of drawing. Under-specifying
+  is the safer failure. If a scene prompt is longer than the worked example below, cut it.
+- **Describe objects, not symbols.** Outside the heading the shape has to arrive through
+  what the objects *are* — a striding figure's legs, a tree's roots — not through a drawn
+  sign. Don't say "the character", "kanji", "Japanese", or "strokes" as writing.
+- **Say where things sit** only where it matters — "down the left third" for a left-side
+  radical, "centred" for a standalone one. Otherwise leave the framing alone.
 - One subject. Name at most two supporting props, and say they're drawn smaller.
 
-The reference line and the "no text" rule are not in conflict. The character is an input
-describing the target shape; the rule governs the output, where nothing may appear as
-writing. A pictograph like 木 legitimately ends up looking close to its character — that
-is the shape doing its job. A drawn glyph sitting on the card as a label is not.
+A pictograph like 木 legitimately ends up looking close to its character — that is the
+shape doing its job, not a violation. The STYLE block already bans text in the finished
+image; a scene prompt does not need to repeat it.
 
-Worked example — `sanzui` 氵, whose mnemonic is about droplets flicking off a brush:
+Worked example — `sanzui`, whose mnemonic is about droplets flicking off a brush. This is
+the pilot's own scene, and it is a good calibration for length:
 
-> Target shape — trace this with the objects in the scene. It is a reference for the
-> composition only: do NOT draw this character, and do not render it as text or as a
-> written glyph anywhere in the image. 氵
+> Scene — `sanzui` 氵 (water, left-side form)
 >
-> Three small separate droplets stacked down the left third of the square, none of them
-> touching each other or anything else — the top two slanting the same way, the bottom one
-> flicking up and to the right.
->
-> They have just come off a wet paintbrush held at the upper left. At the bottom of the
-> frame, a small puddle they're heading for. The brush and puddle are supporting props,
-> drawn smaller.
->
-> The three unconnected drops on the left are the subject; keep them clearly separate at
-> thumbnail size. Leave the bottom-right eighth of the square completely clear — bare
-> background, nothing drawn in it.
+> Three small separate droplets stacked down the LEFT edge of the square, none of them
+> touching each other or anything else — top two slanting the same way, the bottom one
+> flicking upward. They have just come off a wet paintbrush held at the upper left. At the
+> bottom right, a small puddle they're heading for. The three unconnected drops on the
+> left are the subject; the brush and puddle are supporting props, drawn smaller.
 
 Write every scene prompt for the run before opening the browser. Save them to
 `curriculum/_build/generate_content/web/radical-art/<level>-scenes.md`, one `## <slug>`
@@ -148,11 +144,10 @@ That makes the STYLE message the single point of failure for the whole session: 
 complete, and verify it before sending. A truncated style message costs every image in
 the chat.
 
-Scenes go one at a time — send, wait for the image, download it, then send the next.
-Re-roll a scene immediately if it comes back wrong rather than moving on; a bad image
-early in a chat pollutes the ones after it. Three attempts per radical, then skip it —
-a skipped radical falls back to its mnemonic text (NFR20), which is safe. A wrong image
-is not.
+Scenes go one at a time — send, wait for the image, download it, then send the next. The
+run does not stop to evaluate anything: every scene is generated and staged, whatever it
+looks like. Quality is judged once, by a human, after the whole batch is installed
+(Step 5). A scene is only re-sent mid-run when Gemini produced no file at all.
 
 ## Step 3 — download and stage
 
@@ -189,10 +184,19 @@ far inside the 80 KB budget in `docs/content/radical-mnemonic-images.md`.
 flat — re-roll it rather than dropping quality, because grain is a style failure, not a
 compression problem.
 
-## Step 5 — review each image
+## Step 5 — review each image (human only)
 
-The generator checks bytes and filenames. It cannot check whether the picture is any
-good. Every image needs a human (or agent) pass on all of these:
+The generator checks bytes and filenames. Nothing in the automated lane checks whether a
+picture is any *good* — deliberately. **The agent does not review the art and does not
+decide what to re-roll.** It installs the whole batch, reports the file list, and stops;
+a person opens the images and returns a verdict, naming the slugs that need redoing and
+why. The agent then re-rolls exactly those, in a fresh chat, and hands the batch back.
+
+That split exists because "is this a good mnemonic image" is a taste judgement about
+content that ships to learners, and an agent asked to make it will quietly re-roll
+acceptable images and keep bad ones. A re-roll round costs one chat; a wrong image ships.
+
+The checklist below is the reviewer's, not the agent's:
 
 - [ ] **Is the stroke shape actually readable in the picture?** Not "is it a nice
       drawing" — can you trace the radical's shape in the subject's main lines?
@@ -204,12 +208,19 @@ good. Every image needs a human (or agent) pass on all of these:
       left out.
 - [ ] **Any text?** No kanji, kana, letters, numbers, or signage. Re-roll; this is
       usually fixed on the second try.
-- [ ] **Bottom-right corner clear?** The Gemini sparkle watermark lands there. On bare
-      off-white it's invisible; on a colour field it shows. This rule gets ignored
-      roughly a third of the time — check it, and re-roll with an explicit reminder.
+- [ ] **Is the composition balanced?** No conspicuously empty corner or lopsided gap.
 - [ ] Nothing offensive, no brands, no celebrities, no stereotypes.
 
-Re-roll anything that fails. Do not "fix it in post" — there is no post.
+Hand back the failing slugs with a one-line reason each — the reason becomes the scene
+prompt revision, so "the drop reads as a leaf" is useful and "looks off" is not. A
+radical can also be left with no art: it falls back to its mnemonic text (NFR20), which
+is safe. A wrong image is not. Do not "fix it in post" — there is no post.
+
+Gemini stamps a pale sparkle in the bottom-right of every image. The off-white margin
+required on all four sides is enough to make it inconspicuous, so **nothing in this lane
+reserves that corner.** An earlier version of the STYLE block asked for the bottom-right
+eighth to be left bare and the model over-obeyed, cutting a visible bite out of the
+composition. If you find that instruction anywhere, delete it.
 
 ## Step 6 — commit
 
@@ -236,9 +247,10 @@ before the art does and simply resolves to text until the file lands.
 | A late session's images don't match an early session's | Style message differs between sessions | Always extract it from this doc's appendix rather than retyping |
 | Thin outline drawing, no fills | Model reverted to "minimal line art" | Re-roll with "thick solid shapes with bold outlines" |
 | Colour runs to the edge of the square | Full-bleed ban ignored | Re-roll; the off-white margin is what makes the set cohere |
-| Sparkle watermark clearly visible | Something drawn in the bottom-right | Re-roll with the corner rule repeated as its own sentence |
-| Subject looks like nothing in particular | Shape reference line missing — words alone can't pin an abstract radical down | Add the `primary_form` target-shape line and re-roll |
-| The character is drawn as a glyph or label | Reference line reworded, or its "do NOT draw this character" clause dropped | Restore the exact wording; the target-shape framing is what keeps it an input |
+| A corner is conspicuously empty, composition lopsided | A prompt asked to keep the bottom-right clear — the model over-obeys and cuts a bite out | Remove that instruction; nothing in this lane reserves a corner |
+| Whole batch is stiff, cluttered or off-mnemonic | Scene prompts over-specified — too many clauses about angles, framing and omissions | Rewrite shorter, one paragraph, and re-roll |
+| Subject looks like nothing in particular | Heading line missing the radical's character — words alone can't pin an abstract radical down | Put `primary_form` back in the heading and re-roll |
+| The character is drawn as a glyph or label | Character moved out of the heading into the prose as an instruction | Return it to the heading; naming it inline reads as "draw this" |
 | WebP over 80 KB | Grain in nominally flat fills | Re-roll for flatter art; don't lower quality |
 | Props that aren't in the mnemonic | Model embellished | Re-roll with "draw only what is described, no extra objects" |
 
@@ -265,9 +277,6 @@ Hold this style fixed for every image in this conversation:
   four sides, and the subject sits on it as an object, not in a scene.
 - **No frame.** Do not draw a border, outline, rounded card, or rule around the image.
   The illustration bleeds into the off-white background with nothing enclosing it.
-- **Keep the bottom-right corner clear.** Leave roughly the bottom-right eighth of the
-  square as bare off-white with nothing drawn in it — no subject, no prop, no shadow,
-  no colour field.
 - **Composition:** one subject, centred, large, generous margin. It must be readable
   at 140 pixels tall on a phone. If a detail disappears at thumbnail size, remove it.
 - **Nothing that isn't asked for.** Draw only what the scene describes. No extra props,
@@ -278,9 +287,9 @@ Hold this style fixed for every image in this conversation:
   between two colour fields. Get the shape right first, then make the scene charming.
 - **No text of any kind in the finished image.** No Japanese characters, no kanji, no
   kana, no letters, no numbers, no signage, no watermark. If a scene seems to want a
-  label, leave it blank. A scene may show you a character as a **target shape** — that is
-  a reference for the composition to trace with objects, never something to draw. The
-  character itself must not appear in the image.
+  label, leave it blank. A scene's heading shows you the radical's character — that
+  identifies the **shape to trace with objects**, never something to draw. The character
+  itself must not appear in the image.
 - **Tone:** deadpan and a bit absurd. Mild slapstick and undignified animals are good.
   No celebrities, brands, gore, or stereotypes.
 

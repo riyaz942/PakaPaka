@@ -3,8 +3,12 @@ Task: Generate Radical Mnemonic Art via Gemini Web
 Use the existing logged-in Gemini session in my Chrome browser to generate Phase 3
 Tier 2 radical art. **You drive the browser yourself** — you open the chat, paste the
 style message, send each scene, wait for the image, and download it. Do not ask me to
-copy-paste anything into Gemini or to download anything by hand. The only thing you
-need from me is permission before the first download of the session.
+copy-paste anything into Gemini or to download anything by hand.
+
+You need exactly two things from me: permission before the first download, and my verdict
+on the finished images. **Judging the art is mine, not yours** — you generate and install
+the whole batch, then stop and hand it to me. I tell you which radicals need redoing, and
+only then do you re-roll (Steps 9 and 10).
 
 This run **auto-selects** the next radicals that have no art yet (Step 1) — you do NOT
 paste a slug list.
@@ -106,41 +110,51 @@ Record the session composition — the final report names it.
 Step 2: Write the Scene Prompts
 
 Before opening the browser, write one scene prompt per selected radical, from its
-`mnemonic_text`. Each scene prompt is a shape-reference line followed by three short
-paragraphs:
+`mnemonic_text`. Each scene prompt is **a heading line, then one short paragraph** —
+nothing more.
 
-**Line 1 — the shape reference.** Open every scene prompt with the radical's character,
-on its own line, in exactly this form (substituting the radical's `primary_form` from
-Step 1's output):
+**The heading line.** Open every scene prompt with the slug, the radical's character
+(`primary_form` from Step 1's output), and its meaning, in exactly this form:
 
-    Target shape — trace this with the objects in the scene. It is a reference for the
-    composition only: do NOT draw this character, and do not render it as text or as a
-    written glyph anywhere in the image. 亠
+    Scene — `sanzui` 氵 (water, left-side form)
 
-Then:
+**The paragraph.** Four to six sentences, run together as one paragraph: how many
+strokes and how they sit relative to each other, then the situation from `mnemonic_text`
+that carries them, then the one thing that most needs to stay readable at thumbnail
+size. Stay faithful to the prose; the learner reads both.
 
-1. **The strokes.** How many strokes and how they sit relative to each other —
-   direction, angle, which touch and which do not. This paragraph is the point of the
-   image.
-2. **The scene.** The situation from `mnemonic_text`, restated as something drawable.
-   Stay faithful to the prose; the learner reads both.
-3. **The constraint.** What must stay crisp at thumbnail size and what to leave out.
+This is a worked example at the right length — do not exceed it:
+
+    Scene — `sanzui` 氵 (water, left-side form)
+
+    Three small separate droplets stacked down the LEFT edge of the square, none of them
+    touching each other or anything else — top two slanting the same way, the bottom one
+    flicking upward. They have just come off a wet paintbrush held at the upper left. At
+    the bottom right, a small puddle they're heading for. The three unconnected drops on
+    the left are the subject; the brush and puddle are supporting props, drawn smaller.
 
 Hard rules:
 
-- **Always include the shape reference line.** Words alone cannot pin down an abstract
-  radical — a lid, a single drop, a hook — and that is precisely where the drawing comes
-  back looking like nothing in particular. Give Gemini the target and let the objects
-  trace it.
-- **Describe objects, not symbols.** The character is the shape the scene traces, never
-  something drawn. Outside the reference line, don't say "the character", "kanji",
-  "Japanese", or "strokes" as writing — say "two shapes meeting at a peak". Pictographs
-  will legitimately end up close to the character; that is the shape doing its job, not
-  a violation.
-- **State where things sit in the frame** — "left third", "centred", "small, at the top".
-  Gemini does not infer composition from the mnemonic.
-- **Always end each scene with:** *"Leave the bottom-right eighth of the square
-  completely clear — bare background, nothing drawn in it."*
+- **Keep it short. Do not over-specify.** This is the rule you will be tempted to break,
+  and breaking it is what produced a batch of bad images. A prompt stacked with clauses
+  about exact angles, framing, what to omit and what to keep crisp comes back *worse*
+  than a loose one — Gemini spends its attention satisfying constraints instead of
+  drawing. Under-specifying is the safer failure. If a scene prompt runs longer than the
+  example above, cut it back.
+- **Always keep the radical's character in the heading.** Words alone cannot pin down an
+  abstract radical — a lid, a single drop, a hook — and that is exactly where the drawing
+  comes back looking like nothing in particular. Seeing the shape fixes it. Keep it in the
+  heading, never as an instruction in the prose: naming it inline reads as "draw this" and
+  gets you a glyph on the card.
+- **Describe objects, not symbols.** Outside the heading, don't say "the character",
+  "kanji", "Japanese", or "strokes" as writing — say "two shapes meeting at a peak".
+  Pictographs will legitimately end up close to the character; that is the shape doing
+  its job, not a violation.
+- **State where things sit** only where it matters — "down the left third" for a
+  left-side radical, "centred" for a standalone one. Otherwise leave the framing alone.
+- **Never ask Gemini to keep a corner or region clear.** It over-obeys and cuts a visible
+  bite out of the composition. The off-white margin in the STYLE block is all that's
+  needed.
 - One subject; at most two supporting props, described as drawn smaller.
 
 Save all of this run's scene prompts to
@@ -257,12 +271,15 @@ For each radical in this session, **in order, one at a time**:
 
 5. Confirm the staged file exists and is non-empty, then send the next scene.
 
-If a scene comes back visibly wrong against the Step 8 checklist — wrong style, drawn
-frame, full-bleed colour, visible text — re-roll it in the same chat immediately rather
-than moving on. A bad image early in a chat pollutes the ones after it. Allow at most
-**three attempts per radical**; if the third fails, leave that radical without art,
-record it as skipped, and continue with the next one. A radical with no art falls back
-to its mnemonic text in the app, so a skip is safe — a wrong image is not.
+**You do not judge the images.** Send the scene, wait, download, stage, move on — even if
+a picture looks wrong to you. I review the whole run at the end and tell you what to redo.
+Do not re-roll on your own initiative, and do not skip a radical because you think its
+image came out badly.
+
+Re-send a scene only when Gemini produced **no usable file** — it errored, refused, or
+returned something that is not an image. That is a mechanical failure, not a verdict on
+the art. Two attempts; if the second also produces no file, record that radical as "no
+image produced" and continue with the next one.
 
 Step 7: Close the Session and Repeat
 
@@ -293,30 +310,41 @@ No curriculum JSON changes are needed. `generate.py` already writes
 `visual_mnemonic_url: radicals/{level}/{slug}.webp` for every radical, so the ref exists
 before the art does and resolves to text until the file lands.
 
-Step 9: Review Every Image
+Step 9: Hand the Run Back to Me for Review
 
-The gate checks bytes and filenames. It cannot tell whether the picture is any good.
-Open each generated image and check all of:
+**You do not review the images and you do not decide whether they are any good.** Step 8
+already checked the only two things that can be checked mechanically — filename and byte
+size. Everything else is my call, not yours.
 
-- Is the radical's stroke shape actually traceable in the subject's main lines? Not "is
-  it a nice drawing".
-- Does it match that radical's `mnemonic_text`? The learner reads both; a picture that
-  contradicts the prose is worse than no picture.
-- Does it belong to the set — same line weight, solid fills, same palette, off-white
-  background, no drawn frame, off-white visible on all four sides?
-- Legible shrunk to 140 px?
-- Any kanji, kana, letters, numbers or signage? Re-roll.
-- Bottom-right corner clear, so Gemini's sparkle watermark lands on bare background?
-- Nothing offensive, no brands, no celebrities, no stereotypes.
+When Step 8 passes, stop and give me the Final Report below. List every staged image with
+its slug and its path so I can open them. Do not say whether an image looks correct, do
+not rate or rank them, do not flag ones you suspect are weak, and do not re-roll anything
+in anticipation.
 
-Because no reference image is used, cross-session consistency rests entirely on the
-style message. Compare an image from the last session against one from the first before
-finishing — that comparison is what would catch drift, and nothing upstream checks it.
+Then wait for me. I will reply with either:
 
-Re-roll anything that fails, then re-run Step 8. Do not attempt to edit an image;
-there is no post-processing step in this lane.
+- **"all good"** — the run is done; go to Step 11.
+- **a list of slugs that need redoing**, with what was wrong about each — go to Step 10.
 
-Step 10: Stage for Commit
+Step 10: Re-roll Round — only for the radicals I name
+
+Run this only when I have named specific slugs. Never start a re-roll round on your own.
+
+1. Revise those radicals' scene prompts in `<level>-scenes.md` using the reason I gave.
+   Keep the Step 2 format — heading line plus one short paragraph — and keep it short.
+   Fixing a bad image by adding clauses makes the next one worse; change the description,
+   don't pile constraints onto it.
+2. Open a **fresh** Gemini chat and redo Steps 3–5 (Pro, Extended thinking, style message
+   first). Do not reuse the chat a failed image came from.
+3. Send the revised scenes one at a time, downloading and staging exactly as in Step 6.
+   The staged PNG overwrites the previous one for that slug.
+4. Re-run Step 8 to reinstall.
+5. Return to Step 9 — report the redone images and wait for my verdict again.
+
+Repeat for as many rounds as I ask. If I decide a radical isn't worth more attempts I
+will say so; it then ships with no art and the app falls back to its mnemonic text.
+
+Step 11: Stage for Commit
 
 git add mobile/assets/radicals mobile/src/utils/radicalImages.ts
 git status --short && git lfs status
@@ -330,21 +358,23 @@ Leave the changes staged. Do not commit — that is mine.
 
 Final Report
 
-Provide a summary containing:
+Report facts, not opinions about the art. Provide:
 
 - <level>, <images-per-session>, <session-count>, and the exact auto-selected slug set
   for this run (count vs. the <images-per-session> × <session-count> target)
-- The sessions as run, listing each session's slugs, so a reviewer can compare a late
-  session's images against an early one and judge style drift
-- ✅ Radicals that got art, with each file's final WebP size
-- ⚠️ Radicals skipped after three failed attempts, and what was wrong with each
-- Re-roll counts per radical — a session needing many re-rolls is a signal the style
-  message was truncated or <images-per-session> is too high
+- The sessions as run, listing each session's slugs in order, so I can tell which images
+  came from which chat when I look for style drift
+- Every image produced, as `slug → mobile/assets/radicals/<level>/<slug>.webp`, with its
+  WebP size — this is the list I review against
+- ⚠️ Any radical where Gemini produced no usable file after two attempts, and what it did
+  instead (errored, refused, returned non-image)
 - Gate results: `generate-radical-assets`, `typecheck`, `lint`
-- Confirmation that every `.webp` is LFS-tracked
 - Roughly how many radicals of this level still need art (re-run Step 1 to get the
   count), so it is clear whether another run is needed
 - Any manual follow-up required
+
+Then stop and wait for my verdict. Do not stage for commit, and do not start another run
+or a re-roll round, until I have replied.
 
 ---
 
@@ -356,13 +386,21 @@ Important Constraints
 - Sessions are sequential, never parallel. Scenes within a session are sequential.
 - Each session is a fresh Gemini chat; never share chat context across sessions.
 - **Never attach a reference image.** The style message is the sole style carrier.
-- Every scene prompt opens with the radical's `primary_form` as a target-shape reference,
-  using the exact wording in Step 2. Outside that line, don't name the character, kanji,
-  or Japanese in the prose.
+- Every scene prompt is a heading line carrying the radical's `primary_form`, then one
+  short paragraph — the format in Step 2. Outside the heading, don't name the character,
+  kanji, or Japanese in the prose.
+- Scene prompts stay short. Over-specifying makes the images worse, not better, and never
+  ask Gemini to keep a corner clear.
 - Rename and stage each download immediately, before sending the next scene — the
   downloaded filename carries no slug.
 - Never generate art for a radical whose `mnemonic_text` is not `reviewed`.
-- At most three attempts per radical; skipping is safe, a wrong image is not.
+- **You do not judge the images. I do.** Generate, download, stage, install, report — then
+  stop. No re-rolling on your own initiative, no skipping a radical because you think it
+  came out badly, no opinions about quality in the report. Re-roll only the slugs I name,
+  in Step 10.
+- The one exception is a **mechanical** failure: Gemini produced no file at all (two
+  attempts), or the 80 KB gate rejected one. Those are objective, so act on them without
+  asking. Everything else waits for me.
 - Do not lower WebP quality to pass the size gate; re-roll for flatter art.
 - Do not edit `generate-radical-asset-map.js`, the schema, or curriculum source data to
   make an asset pass.
