@@ -114,7 +114,7 @@ migration concerns; the app's read repositories gain optional fields.
 | Content | New fields | Rationale |
 |---|---|---|
 | grammar | `explanation_markdown` (long-form lesson body), `caution_notes`, `related_grammar_slugs` | the MaruMori-depth lesson has nowhere to live today (`grammar_rules` has only structure/conjugation/forms) |
-| kanji | `meaning_mnemonic` + `reading_mnemonic` (split, WaniKani-style), `description`, reuse existing `items.visual_mnemonic_url` | reading mnemonics need the reading in the story; one blob can't serve both quiz directions |
+| kanji | `meaning_mnemonic` + `reading_mnemonic` (split, WaniKani-style), `description` — no `visual_mnemonic_url`, the schema rejects it on kanji | reading mnemonics need the reading in the story; one blob can't serve both quiz directions |
 | kanji (Rev 1) | `visually_similar_slugs`; `description` spec upgraded from "one plain sentence" to a descriptive block (meaning nuance + glyph + look-alike contrasts) | look-alikes are a top review-failure cause; structured slugs enable Compare links, prose carries the "how to tell them apart" |
 | radicals (Rev 1) | `description` (replaces the mnemonic role of `mnemonic_text`), `visually_similar_slugs` | radicals get no mnemonic; the description explains the glyph/image story-style and is the Tier 2 image prompt |
 | vocabulary (Rev 1) | `meaning_mnemonic`, `reading_mnemonic`, `description` | vocab mnemonics must chain from the component kanji; split serves the meaning/reading quiz directions same as kanji |

@@ -84,7 +84,6 @@ type KanjiItem = {
   reading_mnemonic?: string;
   description?: string;
   visually_similar_slugs?: string[];
-  visual_mnemonic_url?: string;
   sort_order?: number;
   readings?: KanjiReading[];
   accepted_answers?: AcceptedAnswer[];
@@ -534,7 +533,8 @@ export function compileCurriculum(
         meaning_mnemonic: kanjiItem.meaning_mnemonic ?? null,
         reading_mnemonic: kanjiItem.reading_mnemonic ?? null,
         description: kanjiItem.description ?? null,
-        visual_mnemonic_url: kanjiItem.visual_mnemonic_url ?? null,
+        // Mnemonic art stops at the radical layer; kanji use text mnemonics only.
+        visual_mnemonic_url: null,
         sort_order: kanjiItem.sort_order ?? 0,
       });
 

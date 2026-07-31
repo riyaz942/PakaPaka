@@ -104,7 +104,8 @@ describe('compile-curriculum', () => {
       expect(kanji.meaning_mnemonic).toContain('single horizontal stroke');
       expect(kanji.reading_mnemonic).toContain('いち');
       expect(kanji.description).toContain('simplest kanji');
-      expect(kanji.visual_mnemonic_url).toBe('https://assets.example/kanji/n5/n5-ichi.png');
+      // Kanji get no mnemonic art — the column stays null for them.
+      expect(kanji.visual_mnemonic_url).toBeNull();
 
       const rule = db
         .prepare('SELECT explanation_markdown, caution_notes FROM grammar_rules WHERE structure = ?')

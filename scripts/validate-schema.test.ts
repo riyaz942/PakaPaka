@@ -388,7 +388,7 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     return tempDir;
   }
 
-  it('accepts split kanji mnemonics, description, and visual_mnemonic_url', () => {
+  it('accepts split kanji mnemonics and description', () => {
     const tempDir = writeTempKanjiDir({
       slug: 'n5-ichi',
       primary_form: '一',
@@ -396,7 +396,6 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
       meaning_mnemonic: 'A single stroke: one.',
       reading_mnemonic: 'You itch (いち) after one mosquito bite.',
       description: 'The simplest kanji.',
-      visual_mnemonic_url: 'https://assets.example/kanji/n5/n5-ichi.png',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(true);
@@ -405,12 +404,12 @@ describe('validateCurriculum Phase 0 content-pipeline fields', () => {
     }
   });
 
-  it('rejects a non-https kanji visual_mnemonic_url via the schema', () => {
+  it('rejects visual_mnemonic_url on kanji — mnemonic art stops at the radical layer', () => {
     const tempDir = writeTempKanjiDir({
       slug: 'n5-ichi',
       primary_form: '一',
       meaning: 'one',
-      visual_mnemonic_url: 'http://assets.example/kanji/n5/n5-ichi.png',
+      visual_mnemonic_url: 'radicals/n5/ichi.webp',
     });
     try {
       expect(validateCurriculum(tempDir).ok).toBe(false);
