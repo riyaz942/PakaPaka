@@ -16,10 +16,12 @@ const OUTPUT_FILE = path.join(MOBILE_ROOT, 'src', 'utils', 'radicalImages.ts');
 
 const LEVEL_PATTERN = /^n[1-5]$/;
 const FILE_PATTERN = /^[a-z0-9-]+\.webp$/;
+const MAX_BYTES = 80 * 1024;
 
 function collectImages() {
   const refs = [];
   const rejected = [];
+  const oversize = [];
 
   for (const level of fs.readdirSync(ASSETS_DIR).sort()) {
     const levelDir = path.join(ASSETS_DIR, level);
@@ -38,14 +40,19 @@ function collectImages() {
         rejected.push(`${level}/${file}`);
         continue;
       }
+      const bytes = fs.statSync(path.join(levelDir, file)).size;
+      if (bytes > MAX_BYTES) {
+        oversize.push(`${level}/${file} (${Math.round(bytes / 1024)} KB)`);
+        continue;
+      }
       refs.push(`radicals/${level}/${file}`);
     }
   }
 
-  return { refs, rejected };
+  return { refs, rejected, oversize };
 }
 
-const { refs, rejected } = collectImages();
+const { refs, rejected, oversize } = collectImages();
 
 if (rejected.length > 0) {
   console.error(
@@ -56,15 +63,18 @@ if (rejected.length > 0) {
   process.exit(1);
 }
 
+if (oversize.length > 0) {
+  console.error(
+    `Radical art over the ${MAX_BYTES / 1024} KB budget:\n` +
+      oversize.map((entry) => `  ${entry}`).join('\n') +
+      '\nRecompress (see docs/workflows/radical-art-web-chat-workflow.md) before committing.',
+  );
+  process.exit(1);
+}
+
 const entries = refs.map((ref) => `  '${ref}': require('../../assets/${ref}'),`).join('\n');
 
-// Only emitted alongside real requires; an unused directive is itself a warning.
-const eslintHeader = entries
-  ? `/* eslint-disable @typescript-eslint/no-require-imports -- Metro resolves bundled
-   assets only through literal require() calls. */\n`
-  : '';
-
-const contents = `${eslintHeader}// GENERATED FILE — do not edit by hand.
+const contents = `// GENERATED FILE — do not edit by hand.
 // Run \`npm run generate-radical-assets\` after adding or removing art under
 // \`assets/radicals/\`. See docs/content/radical-mnemonic-images.md.
 

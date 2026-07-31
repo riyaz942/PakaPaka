@@ -10,7 +10,13 @@ import type { ImageSourcePropType } from 'react-native';
  * There is no remote image host, so a key missing here means that radical's art
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
-const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {};
+const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/n5/chikara.webp': require('../../assets/radicals/n5/chikara.webp'),
+  'radicals/n5/hito.webp': require('../../assets/radicals/n5/hito.webp'),
+  'radicals/n5/ichi.webp': require('../../assets/radicals/n5/ichi.webp'),
+  'radicals/n5/ki.webp': require('../../assets/radicals/n5/ki.webp'),
+  'radicals/n5/sanzui.webp': require('../../assets/radicals/n5/sanzui.webp'),
+};
 
 export function getRadicalImage(ref: string | null | undefined): ImageSourcePropType | undefined {
   const key = ref?.trim();

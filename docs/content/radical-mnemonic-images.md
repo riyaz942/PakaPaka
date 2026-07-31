@@ -100,7 +100,7 @@ regenerating the map — no curriculum edit needed unless the slug changes.
 Both tiers are **radicals only** — same paths and size budget.
 
 - **Tier 1 — deterministic KanjiVG cards:** render radical stroke SVGs into card images (theme-consistent backgrounds, readable at 140 px). Ships coverage quickly; visually consistent.
-- **Tier 2 — curated AI art (~150):** prompted from each radical's established mnemonic/description; human-review every image. Replaces or supersedes Tier 1 per radical when ready.
+- **Tier 2 — curated AI art (~150):** prompted from each radical's established mnemonic/description; human-review every image. Replaces or supersedes Tier 1 per radical when ready. Process: [`docs/workflows/radical-art-web-chat-workflow.md`](../workflows/radical-art-web-chat-workflow.md).
 
 ## Verification
 
