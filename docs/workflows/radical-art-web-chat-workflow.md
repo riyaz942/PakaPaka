@@ -342,6 +342,7 @@ before the art does and simply resolves to text until the file lands.
 | Whole batch is stiff, cluttered or off-mnemonic | Scene prompts over-specified — too many clauses about angles, framing and omissions | Rewrite shorter, one paragraph, and re-roll |
 | Subject looks like nothing in particular | Heading line missing the radical's character — words alone can't pin an abstract radical down | Put `primary_form` back in the heading and re-roll |
 | Good drawing, but you can't trace the radical in it | Scene was written straight from the mnemonic prose and never bent onto the stroke skeleton | Rewrite the scene around the shape — repose, tilt or re-stack the subject — and re-roll |
+| Shape is right but the subject changed — water became pipes, a tree became scaffolding | Asked to match the shape, the model swapped in an object that bends more easily instead of reposing the one it was given | Re-roll in a **fresh** chat with the scene rewritten so the named subject itself lands on the shape; never ask a chat to "fix the shape" of an image it already drew |
 | The character is drawn as a glyph or label | Character moved out of the heading into the prose as an instruction | Return it to the heading; naming it inline reads as "draw this" |
 | WebP over 80 KB | Grain in nominally flat fills | Re-roll for flatter art; don't lower quality |
 | Props that aren't in the mnemonic | Model embellished | Re-roll with "draw only what is described, no extra objects" |
@@ -375,12 +376,18 @@ Hold this style fixed for every image in this conversation:
   no decorative objects, no incidental details.
 - **The shape is the point:** the subject's main lines must trace the stroke shape
   described in each prompt, at roughly the same angles and proportions, including which
-  strokes touch and which stay separate. The shape must be carried by the *drawn strokes*
+  strokes touch and which stay separate. Squinted at, the finished image should read as
+  the character shown in the scene's heading — same skeleton, same proportions — drawn
+  out of the scene's own objects. The shape must be carried by the *drawn strokes*
   of the subject itself — never by the boundary between two colour fields. If the scene as
   written won't sit on that shape, change the pose, tilt or arrangement until it does —
   the shape is fixed, the staging is not. An odd or absurd pose in service of the shape is
   correct; a natural pose that loses the shape is wrong. Get the shape right first, then
   make the scene charming.
+- **Keep the subject the scene names.** Reposing, tilting or re-stacking it onto the shape
+  is expected; substituting a different object or material because it bends more easily is
+  not. If the scene says water, the shape has to be traced in water — not in pipework that
+  happens to have the right silhouette.
 - **No text of any kind in the finished image.** No Japanese characters, no kanji, no
   kana, no letters, no numbers, no signage, no watermark. If a scene seems to want a
   label, leave it blank. A scene's heading shows you the radical's character — that
