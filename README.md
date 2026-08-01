@@ -2,6 +2,8 @@
 
 Planning artifacts live under `_bmad-output/`. The **Expo (React Native) app** for this project lives in **`mobile/`**.
 
+New here? [**docs/app-overview.md**](docs/app-overview.md) explains what the app is, how a learner moves through it, and what each screen does. The rest of this file is setup and build/run instructions.
+
 ## Prerequisites
 
 - **Node.js:** use an **Active LTS** version that satisfies Expo SDK 55 (CI uses **22.13.0**; **20.x** is also supported by Expo—see [Expo prerequisites](https://docs.expo.dev/get-started/installation/)).

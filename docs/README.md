@@ -8,6 +8,7 @@ For detailed done / not-done status, see [working-history.md](./working-history.
 
 | Doc | Notes |
 | --- | --- |
+| [app-overview.md](./app-overview.md) | What the app is, the learner flow, and what each screen does |
 | [known-issues.md](./known-issues.md) | Confirmed open defects found outside their discovering story's scope |
 | [content/content-pipeline-plan.md](./content/content-pipeline-plan.md) | Master content-quality plan (grammar depth, mnemonics, attribution) |
 | [workflows/](./workflows/) | No-API web-chat generation runbooks + browser automation prompts |
