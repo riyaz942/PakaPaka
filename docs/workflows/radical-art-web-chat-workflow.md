@@ -106,6 +106,16 @@ how many strokes and how they sit relative to each other, then the situation fro
 `mnemonic_text` that carries them, then the one thing that most needs to survive at
 thumbnail size. Stay faithful to the prose; the learner reads both.
 
+**Work out the shape before writing the scene.** Read `primary_form` and note its
+skeleton first — how many strokes, which are long and which short, vertical, horizontal
+or diagonal, where they touch and where they deliberately don't. Then bend the scene so
+the subject's own lines land on that skeleton: pose the figure, tilt the object, re-stack
+the props, swap in a different member of the same family. Bending is expected, not a
+liberty — the mnemonic prose decides *what* is in the picture, the radical's shape decides
+*how it is arranged*, and when the two pull against each other the arrangement wins.
+Absurd is fine and always was; a charming scene that doesn't trace the shape is a failed
+image, however good it looks.
+
 Hard rules for writing scene prompts:
 
 - **Keep it short. Don't over-specify.** This is the rule that gets broken, and breaking
@@ -116,8 +126,11 @@ Hard rules for writing scene prompts:
 - **Describe objects, not symbols.** Outside the heading the shape has to arrive through
   what the objects *are* — a striding figure's legs, a tree's roots — not through a drawn
   sign. Don't say "the character", "kanji", "Japanese", or "strokes" as writing.
-- **Say where things sit** only where it matters — "down the left third" for a left-side
-  radical, "centred" for a standalone one. Otherwise leave the framing alone.
+- **Say where things sit** wherever the position *is* the shape — "three drops stacked
+  down the left edge, none touching", "one long horizontal arm with two short strokes
+  hanging under it". That is the stroke layout and it has to be stated. Framing that
+  isn't carrying a stroke — camera angle, lighting, what's in the background — leave
+  alone.
 - One subject. Name at most two supporting props, and say they're drawn smaller.
 
 A pictograph like 木 legitimately ends up looking close to its character — that is the
@@ -328,6 +341,7 @@ before the art does and simply resolves to text until the file lands.
 | A corner is conspicuously empty, composition lopsided | A prompt asked to keep the bottom-right clear — the model over-obeys and cuts a bite out | Remove that instruction; nothing in this lane reserves a corner |
 | Whole batch is stiff, cluttered or off-mnemonic | Scene prompts over-specified — too many clauses about angles, framing and omissions | Rewrite shorter, one paragraph, and re-roll |
 | Subject looks like nothing in particular | Heading line missing the radical's character — words alone can't pin an abstract radical down | Put `primary_form` back in the heading and re-roll |
+| Good drawing, but you can't trace the radical in it | Scene was written straight from the mnemonic prose and never bent onto the stroke skeleton | Rewrite the scene around the shape — repose, tilt or re-stack the subject — and re-roll |
 | The character is drawn as a glyph or label | Character moved out of the heading into the prose as an instruction | Return it to the heading; naming it inline reads as "draw this" |
 | WebP over 80 KB | Grain in nominally flat fills | Re-roll for flatter art; don't lower quality |
 | Props that aren't in the mnemonic | Model embellished | Re-roll with "draw only what is described, no extra objects" |
@@ -360,9 +374,13 @@ Hold this style fixed for every image in this conversation:
 - **Nothing that isn't asked for.** Draw only what the scene describes. No extra props,
   no decorative objects, no incidental details.
 - **The shape is the point:** the subject's main lines must trace the stroke shape
-  described in each prompt, at roughly the same angles and proportions. The shape must
-  be carried by the *drawn strokes* of the subject itself — never by the boundary
-  between two colour fields. Get the shape right first, then make the scene charming.
+  described in each prompt, at roughly the same angles and proportions, including which
+  strokes touch and which stay separate. The shape must be carried by the *drawn strokes*
+  of the subject itself — never by the boundary between two colour fields. If the scene as
+  written won't sit on that shape, change the pose, tilt or arrangement until it does —
+  the shape is fixed, the staging is not. An odd or absurd pose in service of the shape is
+  correct; a natural pose that loses the shape is wrong. Get the shape right first, then
+  make the scene charming.
 - **No text of any kind in the finished image.** No Japanese characters, no kanji, no
   kana, no letters, no numbers, no signage, no watermark. If a scene seems to want a
   label, leave it blank. A scene's heading shows you the radical's character — that

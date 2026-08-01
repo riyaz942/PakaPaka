@@ -22,13 +22,19 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/juu.webp': require('../../assets/radicals/n5/juu.webp'),
   'radicals/n5/keigamae.webp': require('../../assets/radicals/n5/keigamae.webp'),
   'radicals/n5/ki.webp': require('../../assets/radicals/n5/ki.webp'),
+  'radicals/n5/ko.webp': require('../../assets/radicals/n5/ko.webp'),
   'radicals/n5/kuchi.webp': require('../../assets/radicals/n5/kuchi.webp'),
   'radicals/n5/kunigamae.webp': require('../../assets/radicals/n5/kunigamae.webp'),
   'radicals/n5/ni.webp': require('../../assets/radicals/n5/ni.webp'),
   'radicals/n5/ninben.webp': require('../../assets/radicals/n5/ninben.webp'),
+  'radicals/n5/onna.webp': require('../../assets/radicals/n5/onna.webp'),
   'radicals/n5/san.webp': require('../../assets/radicals/n5/san.webp'),
   'radicals/n5/sanzui.webp': require('../../assets/radicals/n5/sanzui.webp'),
+  'radicals/n5/shou.webp': require('../../assets/radicals/n5/shou.webp'),
+  'radicals/n5/sun.webp': require('../../assets/radicals/n5/sun.webp'),
   'radicals/n5/ten.webp': require('../../assets/radicals/n5/ten.webp'),
+  'radicals/n5/tsuchi.webp': require('../../assets/radicals/n5/tsuchi.webp'),
+  'radicals/n5/yamahen.webp': require('../../assets/radicals/n5/yamahen.webp'),
 };
 
 export function getRadicalImage(ref: string | null | undefined): ImageSourcePropType | undefined {

@@ -27,7 +27,7 @@ Level:
 Images per Gemini session (how many radicals one fresh chat draws; used as
 IMAGES_PER_SESSION in Step 1):
 
-<images-per-session = 4>
+<images-per-session = 5>
 
 Number of Gemini sessions this run creates (used as SESSION_COUNT in Step 1):
 
