@@ -11,10 +11,13 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/n5/aka.webp': require('../../assets/radicals/n5/aka.webp'),
   'radicals/n5/ana.webp': require('../../assets/radicals/n5/ana.webp'),
+  'radicals/n5/ashi-foot.webp': require('../../assets/radicals/n5/ashi-foot.webp'),
   'radicals/n5/bou.webp': require('../../assets/radicals/n5/bou.webp'),
   'radicals/n5/chichi.webp': require('../../assets/radicals/n5/chichi.webp'),
   'radicals/n5/chikara.webp': require('../../assets/radicals/n5/chikara.webp'),
+  'radicals/n5/gonben.webp': require('../../assets/radicals/n5/gonben.webp'),
   'radicals/n5/haba.webp': require('../../assets/radicals/n5/haba.webp'),
   'radicals/n5/hachigashira.webp': require('../../assets/radicals/n5/hachigashira.webp'),
   'radicals/n5/hi-fire.webp': require('../../assets/radicals/n5/hi-fire.webp'),
@@ -30,6 +33,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/itoko.webp': require('../../assets/radicals/n5/itoko.webp'),
   'radicals/n5/iwaku.webp': require('../../assets/radicals/n5/iwaku.webp'),
   'radicals/n5/juu.webp': require('../../assets/radicals/n5/juu.webp'),
+  'radicals/n5/kai-shell.webp': require('../../assets/radicals/n5/kai-shell.webp'),
   'radicals/n5/kakeru.webp': require('../../assets/radicals/n5/kakeru.webp'),
   'radicals/n5/kawa.webp': require('../../assets/radicals/n5/kawa.webp'),
   'radicals/n5/keigamae.webp': require('../../assets/radicals/n5/keigamae.webp'),
@@ -45,6 +49,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/mannaka.webp': require('../../assets/radicals/n5/mannaka.webp'),
   'radicals/n5/me.webp': require('../../assets/radicals/n5/me.webp'),
   'radicals/n5/mimi.webp': require('../../assets/radicals/n5/mimi.webp'),
+  'radicals/n5/miru.webp': require('../../assets/radicals/n5/miru.webp'),
   'radicals/n5/mizu.webp': require('../../assets/radicals/n5/mizu.webp'),
   'radicals/n5/mushi.webp': require('../../assets/radicals/n5/mushi.webp'),
   'radicals/n5/ni.webp': require('../../assets/radicals/n5/ni.webp'),
