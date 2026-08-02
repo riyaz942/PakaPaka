@@ -27082,8 +27082,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は上手に歌う。",
+          "english": "She sings well.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "jouzu",
+            "utau"
+          ],
+          "furigana": "彼[かの]女[じょ]は上手[じょうず]に歌[うた]う。"
+        },
+        {
+          "japanese": "夜、友達と一緒に歌う。",
+          "english": "At night I sing with my friends.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yoru",
+            "tomodachi",
+            "issho-ni",
+            "utau"
+          ],
+          "furigana": "夜[よる]、友[とも]達[だち]と一[いっ]緒[しょ]に歌[うた]う。"
+        },
+        {
+          "japanese": "僕は歌うのが好きです。",
+          "english": "I like singing.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "utau",
+            "suki"
+          ],
+          "furigana": "僕[ぼく]は歌[うた]うのが好[す]きです。"
+        }
+      ]
     },
     {
       "slug": "odoru",
@@ -27108,8 +27144,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "週末に友達と踊ります。",
+          "english": "I dance with friends on the weekend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "tomodachi",
+            "odoru"
+          ],
+          "furigana": "週[しゅう]末[まつ]に友[とも]達[だち]と踊[おど]ります。"
+        },
+        {
+          "japanese": "公園で一緒に踊りましょう。",
+          "english": "Let's dance together in the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "issho-ni",
+            "odoru"
+          ],
+          "furigana": "公[こう]園[えん]で一[いっ]緒[しょ]に踊[おど]りましょう。"
+        },
+        {
+          "japanese": "子供が庭で踊っています。",
+          "english": "The kids are dancing in the yard.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "niwa",
+            "odoru"
+          ],
+          "furigana": "子[こ]供[ども]が庭[にわ]で踊[おど]っています。"
+        }
+      ]
     },
     {
       "slug": "warau",
@@ -27134,8 +27205,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達が笑う。",
+          "english": "My friend laughs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "warau"
+          ],
+          "furigana": "友[とも]達[だち]が笑[わら]う。"
+        },
+        {
+          "japanese": "面白い映画を見て笑う。",
+          "english": "I laugh watching a funny movie.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "omoshiroi",
+            "eiga",
+            "miru-v",
+            "warau"
+          ],
+          "furigana": "面[おも]白[しろ]い映[えい]画[が]を見[み]て笑[わら]う。"
+        },
+        {
+          "japanese": "赤ちゃんが今笑っている。",
+          "english": "The baby is smiling now.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "akachan",
+            "ima",
+            "warau",
+            "iru-exist"
+          ],
+          "furigana": "赤[あか]ちゃんが今[いま]笑[わら]っている。"
+        }
+      ]
     },
     {
       "slug": "naku",
@@ -27160,8 +27267,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "赤ちゃんが今泣いています。",
+          "english": "The baby is crying right now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "akachan",
+            "ima",
+            "naku"
+          ],
+          "furigana": "赤[あか]ちゃんが今[いま]泣[な]いています。"
+        },
+        {
+          "japanese": "弟は部屋で泣きました。",
+          "english": "My younger brother cried in his room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "heya",
+            "naku"
+          ],
+          "furigana": "弟[おとうと]は部屋[へや]で泣[な]きました。"
+        },
+        {
+          "japanese": "母の手紙を読んで泣いた。",
+          "english": "I cried reading my mother's letter.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "tegami",
+            "yomu",
+            "naku"
+          ],
+          "furigana": "母[はは]の手[て]紙[がみ]を読[よ]んで泣[な]いた。"
+        }
+      ]
     },
     {
       "slug": "shinu",
@@ -27186,8 +27329,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "祖父が去年死にました。",
+          "english": "My grandfather died last year.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sofu",
+            "kyonen",
+            "shinu"
+          ],
+          "furigana": "祖[そ]父[ふ]が去[きょ]年[ねん]死[し]にました。"
+        },
+        {
+          "japanese": "この木は冬に死ぬ。",
+          "english": "This tree dies in winter.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "ki-tree-v",
+            "fuyu",
+            "shinu"
+          ],
+          "furigana": "この木[き]は冬[ふゆ]に死[し]ぬ。"
+        },
+        {
+          "japanese": "犬が死んで悲しい。",
+          "english": "I'm sad that the dog died.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "inu",
+            "shinu",
+            "kanashii"
+          ],
+          "furigana": "犬[いぬ]が死[し]んで悲[かな]しい。"
+        }
+      ]
     },
     {
       "slug": "umareru",
@@ -27212,8 +27391,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "来月赤ちゃんが生まれる。",
+          "english": "A baby will be born next month.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "akachan",
+            "umareru"
+          ],
+          "furigana": "来[らい]月[げつ]赤[あか]ちゃんが生[う]まれる。"
+        },
+        {
+          "japanese": "弟は去年生まれました。",
+          "english": "My younger brother was born last year.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "kyonen",
+            "umareru"
+          ],
+          "furigana": "弟[おとうと]は去[きょ]年[ねん]生[う]まれました。"
+        },
+        {
+          "japanese": "猫に子供が生まれた。",
+          "english": "The cat had kittens.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "neko",
+            "kodomo-v",
+            "umareru"
+          ],
+          "furigana": "猫[ねこ]に子[こ]供[ども]が生[う]まれた。"
+        }
+      ]
     },
     {
       "slug": "sumu",
@@ -27238,8 +27452,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はここに住んでいます。",
+          "english": "I live here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "koko",
+            "sumu"
+          ],
+          "furigana": "私[わたし]はここに住[す]んでいます。"
+        },
+        {
+          "japanese": "どこに住んでいますか。",
+          "english": "Where do you live?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "doko",
+            "sumu"
+          ],
+          "furigana": "どこに住[す]んでいますか。"
+        },
+        {
+          "japanese": "家族と一緒に住みます。",
+          "english": "I live together with my family.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kazoku",
+            "issho-ni",
+            "sumu"
+          ],
+          "furigana": "家[か]族[ぞく]と一[いっ]緒[しょ]に住[す]みます。"
+        }
+      ]
     },
     {
       "slug": "iru-need",
@@ -27264,8 +27512,41 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "新しいペンが要る。",
+          "english": "I need a new pen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "pen",
+            "iru-need"
+          ],
+          "furigana": "新[あたら]しいペンが要[い]る。"
+        },
+        {
+          "japanese": "お金は要りません。",
+          "english": "I don't need money.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "iru-need"
+          ],
+          "furigana": "お金[かね]は要[い]りません。"
+        },
+        {
+          "japanese": "それ、要る？",
+          "english": "Do you need that?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sore",
+            "iru-need"
+          ],
+          "furigana": "それ、要[い]る？"
+        }
+      ]
     },
     {
       "slug": "mieru",
@@ -27290,8 +27571,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "山が見えます。",
+          "english": "I can see the mountain.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yama-v",
+            "mieru"
+          ],
+          "furigana": "山[やま]が見[み]えます。"
+        },
+        {
+          "japanese": "夜、星が見える。",
+          "english": "At night, the stars are visible.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yoru",
+            "hoshi",
+            "mieru"
+          ],
+          "furigana": "夜[よる]、星[ほし]が見[み]える。"
+        },
+        {
+          "japanese": "暗くて何も見えない。",
+          "english": "It's so dark nothing is visible.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kurai",
+            "nani",
+            "mieru"
+          ],
+          "furigana": "暗[くら]くて何[なに]も見[み]えない。"
+        }
+      ]
     },
     {
       "slug": "kikoeru",
@@ -27316,8 +27631,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "窓から声が聞こえます。",
+          "english": "I can hear a voice from the window.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mado",
+            "koe",
+            "kikoeru"
+          ],
+          "furigana": "窓[まど]から声[こえ]が聞[き]こえます。"
+        },
+        {
+          "japanese": "ラジオが聞こえますか。",
+          "english": "Can you hear the radio?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "rajio",
+            "kikoeru"
+          ],
+          "furigana": "ラジオが聞[き]こえますか。"
+        },
+        {
+          "japanese": "彼の声が聞こえません。",
+          "english": "I can't hear his voice.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "koe",
+            "kikoeru"
+          ],
+          "furigana": "彼[かれ]の声[こえ]が聞[き]こえません。"
+        }
+      ]
     },
     {
       "slug": "kureru",
@@ -27343,8 +27692,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達が本をくれる。",
+          "english": "My friend gives me a book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "hon",
+            "kureru"
+          ],
+          "furigana": "友[とも]達[だち]が本[ほん]をくれる。"
+        },
+        {
+          "japanese": "母がお菓子をくれました。",
+          "english": "Mom gave me some sweets.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "okashi",
+            "kureru"
+          ],
+          "furigana": "母[はは]がお菓[か]子[し]をくれました。"
+        },
+        {
+          "japanese": "誰がこれをくれる？",
+          "english": "Who's going to give me this?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "dare",
+            "kore",
+            "kureru"
+          ],
+          "furigana": "誰[だれ]がこれをくれる？"
+        }
+      ]
     },
     {
       "slug": "ageru",
@@ -27370,8 +27754,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達に本をあげます。",
+          "english": "I'll give a book to my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "hon",
+            "ageru"
+          ],
+          "furigana": "友[とも]達[だち]に本[ほん]をあげます。"
+        },
+        {
+          "japanese": "母は私にお菓子をあげた。",
+          "english": "My mom gave me some sweets.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "watashi",
+            "okashi",
+            "ageru"
+          ],
+          "furigana": "母[はは]は私[わたし]にお菓[か]子[し]をあげた。"
+        },
+        {
+          "japanese": "これをあなたにあげます。",
+          "english": "I'll give this to you.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kore",
+            "anata",
+            "ageru"
+          ],
+          "furigana": "これをあなたにあげます。"
+        }
+      ]
     },
     {
       "slug": "morau",
@@ -27397,8 +27817,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達から本をもらう。",
+          "english": "I get a book from my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "hon",
+            "morau"
+          ],
+          "furigana": "友[とも]達[だち]から本[ほん]をもらう。"
+        },
+        {
+          "japanese": "母からお菓子をもらった。",
+          "english": "I got some sweets from my mom.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "okashi",
+            "morau"
+          ],
+          "furigana": "母[はは]からお菓[か]子[し]をもらった。"
+        },
+        {
+          "japanese": "先生にペンをもらいました。",
+          "english": "I received a pen from my teacher.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "pen",
+            "morau"
+          ],
+          "furigana": "先[せん]生[せい]にペンをもらいました。"
+        }
+      ]
     },
     {
       "slug": "dekiru",
@@ -27424,8 +27879,41 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "料理ができます。",
+          "english": "I can cook.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ryouri",
+            "dekiru"
+          ],
+          "furigana": "料[りょう]理[り]ができます。"
+        },
+        {
+          "japanese": "晩ご飯ができました。",
+          "english": "Dinner's ready.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "bangohan",
+            "dekiru"
+          ],
+          "furigana": "晩[ばん]ご飯[はん]ができました。"
+        },
+        {
+          "japanese": "ここで電話ができますか。",
+          "english": "Can I make a phone call here?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "koko",
+            "denwa",
+            "dekiru"
+          ],
+          "furigana": "ここで電[でん]話[わ]ができますか。"
+        }
+      ]
     },
     {
       "slug": "nakusu",
@@ -27450,8 +27938,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "財布を無くしました。",
+          "english": "I lost my wallet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "saifu",
+            "nakusu"
+          ],
+          "furigana": "財[さい]布[ふ]を無[な]くしました。"
+        },
+        {
+          "japanese": "駅で鍵を無くした。",
+          "english": "I lost my keys at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "kagi",
+            "nakusu"
+          ],
+          "furigana": "駅[えき]で鍵[かぎ]を無[な]くした。"
+        },
+        {
+          "japanese": "彼女は眼鏡を無くした。",
+          "english": "She lost her glasses.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "megane",
+            "nakusu"
+          ],
+          "furigana": "彼[かの]女[じょ]は眼鏡[めがね]を無[な]くした。"
+        }
+      ]
     },
     {
       "slug": "mitsukeru",
@@ -27476,8 +27998,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "鍵を見つけました。",
+          "english": "I found the key.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kagi",
+            "mitsukeru"
+          ],
+          "furigana": "鍵[かぎ]を見[み]つけました。"
+        },
+        {
+          "japanese": "どこでそれを見つけたの？",
+          "english": "Where did you find that?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "doko",
+            "sore",
+            "mitsukeru"
+          ],
+          "furigana": "どこでそれを見[み]つけたの？"
+        },
+        {
+          "japanese": "昨日、いい店を見つけた。",
+          "english": "Yesterday I found a good shop.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "ii",
+            "mise",
+            "mitsukeru"
+          ],
+          "furigana": "昨日[きのう]、いい店[みせ]を見[み]つけた。"
+        }
+      ]
     },
     {
       "slug": "okuru",
@@ -27502,8 +28059,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達に手紙を送る。",
+          "english": "I send a letter to my friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "tegami",
+            "okuru"
+          ],
+          "furigana": "友[とも]達[だち]に手[て]紙[がみ]を送[おく]る。"
+        },
+        {
+          "japanese": "空港まで友達を送る。",
+          "english": "I see my friend off to the airport.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kuukou",
+            "tomodachi",
+            "okuru"
+          ],
+          "furigana": "空[くう]港[こう]まで友[とも]達[だち]を送[おく]る。"
+        },
+        {
+          "japanese": "母に写真を送った。",
+          "english": "I sent a photo to my mom.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "shashin",
+            "okuru"
+          ],
+          "furigana": "母[はは]に写[しゃ]真[しん]を送[おく]った。"
+        }
+      ]
     },
     {
       "slug": "hakobu",
@@ -27528,8 +28120,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この箱を運んでください。",
+          "english": "Please carry this box.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hako",
+            "hakobu"
+          ],
+          "furigana": "この箱[はこ]を運[はこ]んでください。"
+        },
+        {
+          "japanese": "友達と机を運ぶ。",
+          "english": "I carry the desk with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "tsukue",
+            "hakobu"
+          ],
+          "furigana": "友[とも]達[だち]と机[つくえ]を運[はこ]ぶ。"
+        },
+        {
+          "japanese": "母は野菜を家に運んだ。",
+          "english": "Mom carried the vegetables home.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "yasai",
+            "ie",
+            "hakobu"
+          ],
+          "furigana": "母[はは]は野[や]菜[さい]を家[いえ]に運[はこ]んだ。"
+        }
+      ]
     },
     {
       "slug": "erabu",
@@ -27554,8 +28182,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はこの本を選びます。",
+          "english": "I'll choose this book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kono",
+            "hon",
+            "erabu"
+          ],
+          "furigana": "私[わたし]はこの本[ほん]を選[えら]びます。"
+        },
+        {
+          "japanese": "どれを選びますか。",
+          "english": "Which one will you choose?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "dore",
+            "erabu"
+          ],
+          "furigana": "どれを選[えら]びますか。"
+        },
+        {
+          "japanese": "彼女は赤い服を選んだ。",
+          "english": "She chose the red clothes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "akai",
+            "fuku",
+            "erabu"
+          ],
+          "furigana": "彼[かの]女[じょ]は赤[あか]い服[ふく]を選[えら]んだ。"
+        }
+      ]
     },
     {
       "slug": "miseru",
@@ -27580,8 +28244,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "写真を見せてください。",
+          "english": "Please show me the photo.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shashin",
+            "miseru"
+          ],
+          "furigana": "写[しゃ]真[しん]を見[み]せてください。"
+        },
+        {
+          "japanese": "彼は新しい本を見せた。",
+          "english": "He showed a new book.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "atarashii-adj",
+            "hon",
+            "miseru"
+          ],
+          "furigana": "彼[かれ]は新[あたら]しい本[ほん]を見[み]せた。"
+        },
+        {
+          "japanese": "友達にこれを見せます。",
+          "english": "I'll show this to my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kore",
+            "miseru"
+          ],
+          "furigana": "友[とも]達[だち]にこれを見[み]せます。"
+        }
+      ]
     },
     {
       "slug": "yobu",
@@ -27606,8 +28305,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達は私をケンと呼ぶ。",
+          "english": "My friends call me Ken.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "watashi",
+            "yobu"
+          ],
+          "furigana": "友[とも]達[だち]は私[わたし]をケンと呼[よ]ぶ。"
+        },
+        {
+          "japanese": "明日友達を呼びます。",
+          "english": "I'll invite a friend tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "yobu"
+          ],
+          "furigana": "明日[あした]友[とも]達[だち]を呼[よ]びます。"
+        },
+        {
+          "japanese": "彼はタクシーを呼んだ。",
+          "english": "He called a taxi.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "takushii",
+            "yobu"
+          ],
+          "furigana": "彼[かれ]はタクシーを呼[よ]んだ。"
+        }
+      ]
     },
     {
       "slug": "naosu",
@@ -27632,8 +28366,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父が時計を直します。",
+          "english": "My father fixes the clock.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "tokei",
+            "naosu"
+          ],
+          "furigana": "父[ちち]が時計[とけい]を直[なお]します。"
+        },
+        {
+          "japanese": "このドアを直した。",
+          "english": "I fixed this door.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "doa",
+            "naosu"
+          ],
+          "furigana": "このドアを直[なお]した。"
+        },
+        {
+          "japanese": "友達がパソコンを直す。",
+          "english": "My friend will fix the computer.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "pasokon",
+            "naosu"
+          ],
+          "furigana": "友[とも]達[だち]がパソコンを直[なお]す。"
+        }
+      ]
     },
     {
       "slug": "tomaru-stay",
@@ -27658,8 +28427,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達の家に泊まります。",
+          "english": "I'll stay at a friend's house.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "ie",
+            "tomaru-stay"
+          ],
+          "furigana": "友[とも]達[だち]の家[いえ]に泊[と]まります。"
+        },
+        {
+          "japanese": "どこに泊まりますか。",
+          "english": "Where will you stay?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "doko",
+            "tomaru-stay"
+          ],
+          "furigana": "どこに泊[と]まりますか。"
+        },
+        {
+          "japanese": "週末は彼の家に泊まる。",
+          "english": "I'll stay at his place for the weekend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "kare",
+            "ie",
+            "tomaru-stay"
+          ],
+          "furigana": "週[しゅう]末[まつ]は彼[かれ]の家[いえ]に泊[と]まる。"
+        }
+      ]
     },
     {
       "slug": "noboru",
@@ -27684,8 +28488,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は山に登ります。",
+          "english": "I climb mountains.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "yama-v",
+            "noboru"
+          ],
+          "furigana": "私[わたし]は山[やま]に登[のぼ]ります。"
+        },
+        {
+          "japanese": "昨日高い山に登った。",
+          "english": "Yesterday I climbed a tall mountain.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "takai-adj",
+            "yama-v",
+            "noboru"
+          ],
+          "furigana": "昨日[きのう]高[たか]い山[やま]に登[のぼ]った。"
+        },
+        {
+          "japanese": "弟と一緒に木に登る。",
+          "english": "I climb a tree with my younger brother.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otouto",
+            "issho-ni",
+            "ki-tree-v",
+            "noboru"
+          ],
+          "furigana": "弟[おとうと]と一[いっ]緒[しょ]に木[き]に登[のぼ]る。"
+        }
+      ]
     },
     {
       "slug": "sagasu",
@@ -27710,8 +28551,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "部屋で鍵を探す。",
+          "english": "I look for my keys in the room.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "heya",
+            "kagi",
+            "sagasu"
+          ],
+          "furigana": "部屋[へや]で鍵[かぎ]を探[さが]す。"
+        },
+        {
+          "japanese": "駅で友達を探します。",
+          "english": "I'll look for my friend at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "tomodachi",
+            "sagasu"
+          ],
+          "furigana": "駅[えき]で友[とも]達[だち]を探[さが]します。"
+        },
+        {
+          "japanese": "昨日財布を探した。",
+          "english": "Yesterday I searched for my wallet.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "saifu",
+            "sagasu"
+          ],
+          "furigana": "昨日[きのう]財[さい]布[ふ]を探[さが]した。"
+        }
+      ]
     },
     {
       "slug": "naraberu",
@@ -27736,8 +28612,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "本を机に並べる。",
+          "english": "I line up the books on the desk.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hon",
+            "tsukue",
+            "naraberu"
+          ],
+          "furigana": "本[ほん]を机[つくえ]に並[なら]べる。"
+        },
+        {
+          "japanese": "母が野菜を並べます。",
+          "english": "Mom lines up the vegetables.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "yasai",
+            "naraberu"
+          ],
+          "furigana": "母[はは]が野[や]菜[さい]を並[なら]べます。"
+        },
+        {
+          "japanese": "子供が椅子を並べた。",
+          "english": "The child lined up the chairs.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "isu",
+            "naraberu"
+          ],
+          "furigana": "子[こ]供[ども]が椅[い]子[す]を並[なら]べた。"
+        }
+      ]
     },
     {
       "slug": "tsutaeru",
@@ -27762,8 +28673,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼にこれを伝えます。",
+          "english": "I'll tell him this.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kore",
+            "tsutaeru"
+          ],
+          "furigana": "彼[かれ]にこれを伝[つた]えます。"
+        },
+        {
+          "japanese": "先生に伝えてください。",
+          "english": "Please tell the teacher.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "tsutaeru"
+          ],
+          "furigana": "先[せん]生[せい]に伝[つた]えてください。"
+        },
+        {
+          "japanese": "彼女に好きだと伝えた。",
+          "english": "I told her that I like her.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "suki",
+            "tsutaeru"
+          ],
+          "furigana": "彼[かの]女[じょ]に好[す]きだと伝[つた]えた。"
+        }
+      ]
     },
     {
       "slug": "kotaeru",
@@ -27788,8 +28733,41 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生に答えます。",
+          "english": "I answer the teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "kotaeru"
+          ],
+          "furigana": "先[せん]生[せい]に答[こた]えます。"
+        },
+        {
+          "japanese": "彼女は丁寧に答えました。",
+          "english": "She answered politely.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "teinei",
+            "kotaeru"
+          ],
+          "furigana": "彼[かの]女[じょ]は丁[てい]寧[ねい]に答[こた]えました。"
+        },
+        {
+          "japanese": "何と答えますか。",
+          "english": "What will you answer?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nani",
+            "kotaeru"
+          ],
+          "furigana": "何[なに]と答[こた]えますか。"
+        }
+      ]
     },
     {
       "slug": "shitsumon-suru",
@@ -27814,8 +28792,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は先生に質問する。",
+          "english": "I ask the teacher a question.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "sensei",
+            "shitsumon-suru"
+          ],
+          "furigana": "私[わたし]は先[せん]生[せい]に質[しつ]問[もん]する。"
+        },
+        {
+          "japanese": "何を質問する？",
+          "english": "What will you ask?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nani",
+            "shitsumon-suru"
+          ],
+          "furigana": "何[なに]を質[しつ]問[もん]する？"
+        },
+        {
+          "japanese": "学生が先生に質問する。",
+          "english": "The student asks the teacher a question.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gakusei",
+            "sensei",
+            "shitsumon-suru"
+          ],
+          "furigana": "学[がく]生[せい]が先[せん]生[せい]に質[しつ]問[もん]する。"
+        }
+      ]
     },
     {
       "slug": "denwa-suru",
@@ -27840,8 +28852,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今、母に電話する。",
+          "english": "I'm going to phone my mother now.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "haha",
+            "denwa-suru"
+          ],
+          "furigana": "今[いま]、母[はは]に電[でん]話[わ]する。"
+        },
+        {
+          "japanese": "明日、友達に電話する。",
+          "english": "I'll phone my friend tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "denwa-suru"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]に電[でん]話[わ]する。"
+        },
+        {
+          "japanese": "彼は毎晩彼女に電話する。",
+          "english": "He phones his girlfriend every night.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "maiban",
+            "kanojo",
+            "denwa-suru"
+          ],
+          "furigana": "彼[かれ]は毎[まい]晩[ばん]彼[かの]女[じょ]に電[でん]話[わ]する。"
+        }
+      ]
     },
     {
       "slug": "ryokou-suru",
@@ -27866,8 +28914,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "来月、友達と旅行する。",
+          "english": "Next month I'll travel with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "tomodachi",
+            "ryokou-suru"
+          ],
+          "furigana": "来[らい]月[げつ]、友[とも]達[だち]と旅[りょ]行[こう]する。"
+        },
+        {
+          "japanese": "週末に旅行するのが好きです。",
+          "english": "I like traveling on the weekend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "ryokou-suru",
+            "suki"
+          ],
+          "furigana": "週[しゅう]末[まつ]に旅[りょ]行[こう]するのが好[す]きです。"
+        },
+        {
+          "japanese": "家族と旅行する暇がない。",
+          "english": "I have no free time to travel with my family.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kazoku",
+            "ryokou-suru",
+            "hima"
+          ],
+          "furigana": "家[か]族[ぞく]と旅[りょ]行[こう]する暇[ひま]がない。"
+        }
+      ]
     },
     {
       "slug": "kaimono-suru",
@@ -27892,8 +28975,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日スーパーで買い物する。",
+          "english": "I shop at the supermarket today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "suupaa",
+            "kaimono-suru"
+          ],
+          "furigana": "今日[きょう]スーパーで買[か]い物[もの]する。"
+        },
+        {
+          "japanese": "母と一緒に買い物する。",
+          "english": "I shop with my mother.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "issho-ni",
+            "kaimono-suru"
+          ],
+          "furigana": "母[はは]と一[いっ]緒[しょ]に買[か]い物[もの]する。"
+        },
+        {
+          "japanese": "週末デパートで買い物する。",
+          "english": "I shop at the department store on weekends.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "depaato",
+            "kaimono-suru"
+          ],
+          "furigana": "週[しゅう]末[まつ]デパートで買[か]い物[もの]する。"
+        }
+      ]
     },
     {
       "slug": "sanpo-suru",
@@ -27918,8 +29036,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父は毎朝散歩する。",
+          "english": "My father takes a walk every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "maiasa",
+            "sanpo-suru"
+          ],
+          "furigana": "父[ちち]は毎[まい]朝[あさ]散[さん]歩[ぽ]する。"
+        },
+        {
+          "japanese": "僕は夜散歩するのが好きです。",
+          "english": "I like taking walks at night.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "yoru",
+            "sanpo-suru",
+            "suki"
+          ],
+          "furigana": "僕[ぼく]は夜[よる]散[さん]歩[ぽ]するのが好[す]きです。"
+        },
+        {
+          "japanese": "彼女と一緒に散歩する。",
+          "english": "I take a walk with her.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "issho-ni",
+            "sanpo-suru"
+          ],
+          "furigana": "彼[かの]女[じょ]と一[いっ]緒[しょ]に散[さん]歩[ぽ]する。"
+        }
+      ]
     },
     {
       "slug": "souji-suru",
@@ -27944,8 +29098,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎日部屋を掃除する。",
+          "english": "I clean my room every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mainichi",
+            "heya",
+            "souji-suru"
+          ],
+          "furigana": "毎[まい]日[にち]部屋[へや]を掃[そう]除[じ]する。"
+        },
+        {
+          "japanese": "母が台所を掃除する。",
+          "english": "Mom cleans the kitchen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "daidokoro",
+            "souji-suru"
+          ],
+          "furigana": "母[はは]が台[だい]所[どころ]を掃[そう]除[じ]する。"
+        },
+        {
+          "japanese": "一緒にトイレを掃除する。",
+          "english": "We clean the bathroom together.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "issho-ni",
+            "toire",
+            "souji-suru"
+          ],
+          "furigana": "一[いっ]緒[しょ]にトイレを掃[そう]除[じ]する。"
+        }
+      ]
     },
     {
       "slug": "sentaku-suru",
@@ -27970,8 +29159,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日、服を洗濯する。",
+          "english": "I'll do laundry for my clothes today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "fuku",
+            "sentaku-suru"
+          ],
+          "furigana": "今日[きょう]、服[ふく]を洗[せん]濯[たく]する。"
+        },
+        {
+          "japanese": "母は毎朝洗濯する。",
+          "english": "My mother does laundry every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "haha",
+            "maiasa",
+            "sentaku-suru"
+          ],
+          "furigana": "母[はは]は毎[まい]朝[あさ]洗[せん]濯[たく]する。"
+        },
+        {
+          "japanese": "汚いシャツを洗濯する。",
+          "english": "I'll wash the dirty shirt.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kitanai",
+            "shatsu",
+            "sentaku-suru"
+          ],
+          "furigana": "汚[きたな]いシャツを洗[せん]濯[たく]する。"
+        }
+      ]
     },
     {
       "slug": "ryouri-suru",
@@ -27996,8 +29220,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "母は台所で料理する。",
+          "english": "My mother cooks in the kitchen.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "daidokoro",
+            "ryouri-suru"
+          ],
+          "furigana": "母[はは]は台[だい]所[どころ]で料[りょう]理[り]する。"
+        },
+        {
+          "japanese": "今日は魚を料理する。",
+          "english": "I cook fish today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "sakana",
+            "ryouri-suru"
+          ],
+          "furigana": "今日[きょう]は魚[さかな]を料[りょう]理[り]する。"
+        },
+        {
+          "japanese": "彼女は料理するのが好きです。",
+          "english": "She likes cooking.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ryouri-suru",
+            "suki"
+          ],
+          "furigana": "彼[かの]女[じょ]は料[りょう]理[り]するのが好[す]きです。"
+        }
+      ]
     },
     {
       "slug": "shigoto",
@@ -28022,8 +29281,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は仕事があります。",
+          "english": "I have work today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "shigoto",
+            "aru"
+          ],
+          "furigana": "今日[きょう]は仕[し]事[ごと]があります。"
+        },
+        {
+          "japanese": "この仕事は難しいです。",
+          "english": "This job is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "shigoto",
+            "muzukashii"
+          ],
+          "furigana": "この仕[し]事[ごと]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "明日は仕事を休みます。",
+          "english": "Tomorrow I'm taking the day off work.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "shigoto",
+            "yasumu"
+          ],
+          "furigana": "明日[あした]は仕[し]事[ごと]を休[やす]みます。"
+        }
+      ]
     },
     {
       "slug": "jugyou",
@@ -28048,8 +29342,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は授業があります。",
+          "english": "I have class today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "jugyou",
+            "aru"
+          ],
+          "furigana": "今日[きょう]は授[じゅ]業[ぎょう]があります。"
+        },
+        {
+          "japanese": "授業は何時に始まりますか。",
+          "english": "What time does class start?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "jugyou",
+            "nannji",
+            "hajimaru"
+          ],
+          "furigana": "授[じゅ]業[ぎょう]は何[なに]時[じ]に始[はじ]まりますか。"
+        },
+        {
+          "japanese": "彼女は授業を休みました。",
+          "english": "She skipped class.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "jugyou",
+            "yasumu"
+          ],
+          "furigana": "彼[かの]女[じょ]は授[じゅ]業[ぎょう]を休[やす]みました。"
+        }
+      ]
     },
     {
       "slug": "shukudai",
@@ -28074,8 +29403,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日の宿題を忘れました。",
+          "english": "I forgot today's homework.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "shukudai",
+            "wasureru"
+          ],
+          "furigana": "今日[きょう]の宿[しゅく]題[だい]を忘[わす]れました。"
+        },
+        {
+          "japanese": "弟は宿題をしません。",
+          "english": "My younger brother doesn't do his homework.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "shukudai",
+            "suru"
+          ],
+          "furigana": "弟[おとうと]は宿[しゅく]題[だい]をしません。"
+        },
+        {
+          "japanese": "先生は宿題を出します。",
+          "english": "The teacher assigns homework.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "shukudai",
+            "dasu"
+          ],
+          "furigana": "先[せん]生[せい]は宿[しゅく]題[だい]を出[だ]します。"
+        }
+      ]
     },
     {
       "slug": "shiken",
@@ -28100,8 +29464,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "来週は試験です。",
+          "english": "There's an exam next week.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "raishuu",
+            "shiken"
+          ],
+          "furigana": "来[らい]週[しゅう]は試[し]験[けん]です。"
+        },
+        {
+          "japanese": "この試験は難しいです。",
+          "english": "This exam is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "shiken",
+            "muzukashii"
+          ],
+          "furigana": "この試[し]験[けん]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "明日、学校で試験があります。",
+          "english": "There's an exam at school tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "gakkou-v",
+            "shiken",
+            "aru"
+          ],
+          "furigana": "明日[あした]、学[がっ]校[こう]で試[し]験[けん]があります。"
+        }
+      ]
     },
     {
       "slug": "tesuto",
@@ -28126,8 +29525,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日はテストがあります。",
+          "english": "There's a test tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tesuto",
+            "aru"
+          ],
+          "furigana": "明日[あした]はテストがあります。"
+        },
+        {
+          "japanese": "このテストは難しいです。",
+          "english": "This test is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "tesuto",
+            "muzukashii"
+          ],
+          "furigana": "このテストは難[むずか]しいです。"
+        },
+        {
+          "japanese": "先生はテストを出しました。",
+          "english": "The teacher handed out a test.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "tesuto",
+            "dasu"
+          ],
+          "furigana": "先[せん]生[せい]はテストを出[だ]しました。"
+        }
+      ]
     },
     {
       "slug": "benkyou",
@@ -28152,8 +29586,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "勉強は難しいです。",
+          "english": "Studying is difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "benkyou",
+            "muzukashii"
+          ],
+          "furigana": "勉[べん]強[きょう]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "毎朝勉強をします。",
+          "english": "I study every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "maiasa",
+            "benkyou",
+            "suru"
+          ],
+          "furigana": "毎[まい]朝[あさ]勉[べん]強[きょう]をします。"
+        },
+        {
+          "japanese": "彼女は勉強が好きです。",
+          "english": "She likes studying.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "benkyou",
+            "suki"
+          ],
+          "furigana": "彼[かの]女[じょ]は勉[べん]強[きょう]が好[す]きです。"
+        }
+      ]
     },
     {
       "slug": "mondai",
@@ -28178,8 +29646,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "大きな問題があります。",
+          "english": "There's a big problem.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ookii",
+            "mondai",
+            "aru"
+          ],
+          "furigana": "大[おお]きな問[もん]題[だい]があります。"
+        },
+        {
+          "japanese": "この問題に答えます。",
+          "english": "I'll answer this question.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "mondai",
+            "kotaeru"
+          ],
+          "furigana": "この問[もん]題[だい]に答[こた]えます。"
+        },
+        {
+          "japanese": "試験の問題は難しいです。",
+          "english": "The exam questions are difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shiken",
+            "mondai",
+            "muzukashii"
+          ],
+          "furigana": "試[し]験[けん]の問[もん]題[だい]は難[むずか]しいです。"
+        }
+      ]
     },
     {
       "slug": "kotae",
@@ -28204,8 +29707,41 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "答えはこれです。",
+          "english": "The answer is this one.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kotae",
+            "kore"
+          ],
+          "furigana": "答[こた]えはこれです。"
+        },
+        {
+          "japanese": "難しい答えを書きました。",
+          "english": "I wrote a difficult answer.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "muzukashii",
+            "kotae",
+            "kaku"
+          ],
+          "furigana": "難[むずか]しい答[こた]えを書[か]きました。"
+        },
+        {
+          "japanese": "答えが分かりません。",
+          "english": "I don't understand the answer.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kotae",
+            "wakaru"
+          ],
+          "furigana": "答[こた]えが分[わ]かりません。"
+        }
+      ]
     },
     {
       "slug": "imi",
@@ -28230,8 +29766,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この問題の意味が分かりません。",
+          "english": "I don't understand what this question means.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "mondai",
+            "imi",
+            "wakaru"
+          ],
+          "furigana": "この問[もん]題[だい]の意[い]味[み]が分[わ]かりません。"
+        },
+        {
+          "japanese": "その意味を教えてください。",
+          "english": "Please tell me what that means.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "imi",
+            "oshieru"
+          ],
+          "furigana": "その意[い]味[み]を教[おし]えてください。"
+        },
+        {
+          "japanese": "何の意味ですか。",
+          "english": "What does that mean?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nani",
+            "imi"
+          ],
+          "furigana": "何[なに]の意[い]味[み]ですか。"
+        }
+      ]
     },
     {
       "slug": "kotoba",
@@ -28256,8 +29827,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この言葉の意味が分かりません。",
+          "english": "I don't understand the meaning of this word.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kotoba",
+            "imi",
+            "wakaru"
+          ],
+          "furigana": "この言[こと]葉[ば]の意[い]味[み]が分[わ]かりません。"
+        },
+        {
+          "japanese": "先生は新しい言葉を教えます。",
+          "english": "The teacher teaches a new word.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "atarashii-adj",
+            "kotoba",
+            "oshieru"
+          ],
+          "furigana": "先[せん]生[せい]は新[あたら]しい言[こと]葉[ば]を教[おし]えます。"
+        },
+        {
+          "japanese": "難しい言葉を忘れました。",
+          "english": "I forgot a difficult word.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "muzukashii",
+            "kotoba",
+            "wasureru"
+          ],
+          "furigana": "難[むずか]しい言[こと]葉[ば]を忘[わす]れました。"
+        }
+      ]
     },
     {
       "slug": "namae",
@@ -28282,8 +29890,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の名前はユキです。",
+          "english": "My name is Yuki.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "namae"
+          ],
+          "furigana": "私[わたし]の名[な]前[まえ]はユキです。"
+        },
+        {
+          "japanese": "あなたの名前は何ですか。",
+          "english": "What is your name?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "anata",
+            "namae",
+            "nani"
+          ],
+          "furigana": "あなたの名[な]前[まえ]は何[なに]ですか。"
+        },
+        {
+          "japanese": "彼の名前を忘れました。",
+          "english": "I forgot his name.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "namae",
+            "wasureru"
+          ],
+          "furigana": "彼[かれ]の名[な]前[まえ]を忘[わす]れました。"
+        }
+      ]
     },
     {
       "slug": "kanji-word",
@@ -28308,8 +29950,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この漢字は難しいです。",
+          "english": "This kanji is difficult.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kanji-word",
+            "muzukashii"
+          ],
+          "furigana": "この漢[かん]字[じ]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "毎日漢字を勉強します。",
+          "english": "I study kanji every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "kanji-word",
+            "benkyou-suru"
+          ],
+          "furigana": "毎[まい]日[にち]漢[かん]字[じ]を勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "ノートに漢字を書きます。",
+          "english": "I write kanji in my notebook.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nooto",
+            "kanji-word",
+            "kaku"
+          ],
+          "furigana": "ノートに漢[かん]字[じ]を書[か]きます。"
+        }
+      ]
     },
     {
       "slug": "hiragana",
@@ -28334,8 +30011,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はひらがなを書けます。",
+          "english": "I can write hiragana.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hiragana",
+            "kaku"
+          ],
+          "furigana": "私[わたし]はひらがなを書[か]けます。"
+        },
+        {
+          "japanese": "ひらがなは読めますか。",
+          "english": "Can you read hiragana?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hiragana",
+            "yomu"
+          ],
+          "furigana": "ひらがなは読[よ]めますか。"
+        },
+        {
+          "japanese": "毎日ひらがなを勉強します。",
+          "english": "I study hiragana every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "mainichi",
+            "hiragana",
+            "benkyou-suru"
+          ],
+          "furigana": "毎[まい]日[にち]ひらがなを勉[べん]強[きょう]します。"
+        }
+      ]
     },
     {
       "slug": "katakana",
@@ -28360,8 +30071,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "ノートにカタカナを書きます。",
+          "english": "I write katakana in my notebook.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "nooto",
+            "katakana",
+            "kaku"
+          ],
+          "furigana": "ノートにカタカナを書[か]きます。"
+        },
+        {
+          "japanese": "カタカナは難しいです。",
+          "english": "Katakana is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "katakana",
+            "muzukashii"
+          ],
+          "furigana": "カタカナは難[むずか]しいです。"
+        },
+        {
+          "japanese": "ひらがなとカタカナを覚えます。",
+          "english": "I memorize hiragana and katakana.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hiragana",
+            "katakana",
+            "oboeru"
+          ],
+          "furigana": "ひらがなとカタカナを覚[おぼ]えます。"
+        }
+      ]
     },
     {
       "slug": "eigo",
