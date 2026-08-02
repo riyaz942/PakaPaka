@@ -37,7 +37,7 @@ const THRESHOLDS: Record<Exclude<TextClass, 'exempt'>, number> = {
  * Palette tokens are space-separated sRGB channels (`26 26 46`), not hex, so that
  * `tailwind.config.js` can wrap them as `rgb(var(--token) / <alpha-value>)`.
  */
-const CSS_VAR = /--color-([a-z-]+):\s*(\d{1,3})\s+(\d{1,3})\s+(\d{1,3})/g;
+const CSS_VAR = /--color-([a-z0-9-]+):\s*(\d{1,3})\s+(\d{1,3})\s+(\d{1,3})/g;
 
 function channelsToHex(r: string, g: string, b: string): string {
   return `#${[r, g, b]
@@ -107,6 +107,10 @@ export function buildPalettes(
   };
 }
 
+/** Content and feedback families both split into base / soft / deep roles. */
+const CONTENT_TYPES = ['radical', 'kanji', 'vocabulary', 'grammar', 'passage'] as const;
+const FEEDBACK_TYPES = ['correct', 'incorrect', 'warning', 'info'] as const;
+
 /** Pairing manifest — single source for which token pairs must meet WCAG AA. */
 export function contrastPairManifest(): ContrastPair[] {
   const surfaceTokens = ['background', 'surface'] as const;
@@ -127,22 +131,46 @@ export function contrastPairManifest(): ContrastPair[] {
           theme,
           rationale: 'Decorative/disabled copy only — not used for meaningful body text',
         },
+        {
+          name: `faint on ${bg}`,
+          foreground: 'faint',
+          background: bg,
+          textClass: 'exempt',
+          theme,
+          rationale: 'Design System v2 restricts faint to captions and decoration — never body text',
+        },
       );
     }
 
-    for (const feedback of [
-      'feedback-correct',
-      'feedback-incorrect',
-      'feedback-warning',
-      'feedback-info',
-    ] as const) {
-      pairs.push({
-        name: `${feedback} on surface`,
-        foreground: feedback,
-        background: 'surface',
-        textClass: 'normal-text',
-        theme,
-      });
+    // Feedback base carries icons, 1.5px state borders and fills — non-text under
+    // WCAG 1.4.11. The readable copy in each state uses the `-deep` step below.
+    for (const feedback of FEEDBACK_TYPES) {
+      for (const bg of surfaceTokens) {
+        pairs.push({
+          name: `feedback-${feedback} icon/border on ${bg}`,
+          foreground: `feedback-${feedback}`,
+          background: bg,
+          textClass: 'non-text-ui',
+          theme,
+        });
+      }
+
+      pairs.push(
+        {
+          name: `feedback-${feedback}-deep on feedback-${feedback}-soft`,
+          foreground: `feedback-${feedback}-deep`,
+          background: `feedback-${feedback}-soft`,
+          textClass: 'normal-text',
+          theme,
+        },
+        {
+          name: `feedback-${feedback}-deep on surface`,
+          foreground: `feedback-${feedback}-deep`,
+          background: 'surface',
+          textClass: 'normal-text',
+          theme,
+        },
+      );
     }
 
     for (const srs of [
@@ -161,22 +189,35 @@ export function contrastPairManifest(): ContrastPair[] {
       });
     }
 
-    for (const content of [
-      'content-radical',
-      'content-kanji',
-      'content-vocabulary',
-      'content-grammar',
-      'content-reading',
-    ] as const) {
+    for (const content of CONTENT_TYPES) {
       for (const bg of surfaceTokens) {
         pairs.push({
-          name: `${content} accent on ${bg}`,
-          foreground: content,
+          name: `content-${content} accent on ${bg}`,
+          foreground: `content-${content}`,
           background: bg,
           textClass: 'large-text',
           theme,
         });
       }
+
+      pairs.push({
+        name: `content-${content}-deep on content-${content}-soft`,
+        foreground: `content-${content}-deep`,
+        background: `content-${content}-soft`,
+        textClass: 'normal-text',
+        theme,
+      });
+    }
+
+    // Alias of content-passage until Session 5 of the v2 redesign renames call sites.
+    for (const bg of surfaceTokens) {
+      pairs.push({
+        name: `content-reading accent on ${bg}`,
+        foreground: 'content-reading',
+        background: bg,
+        textClass: 'large-text',
+        theme,
+      });
     }
 
     for (const ring of ['ring-start', 'ring-mid', 'ring-end', 'ring-complete'] as const) {
@@ -191,13 +232,41 @@ export function contrastPairManifest(): ContrastPair[] {
       }
     }
 
-    pairs.push({
-      name: 'on-primary on feedback-info',
-      foreground: 'on-primary',
-      background: 'feedback-info',
-      textClass: 'normal-text',
-      theme,
-    });
+    for (const bg of surfaceTokens) {
+      pairs.push(
+        {
+          name: `brand-text on ${bg}`,
+          foreground: 'brand-text',
+          background: bg,
+          textClass: 'normal-text',
+          theme,
+        },
+        {
+          name: `brand-500 ring/border on ${bg}`,
+          foreground: 'brand-500',
+          background: bg,
+          textClass: 'non-text-ui',
+          theme,
+        },
+      );
+    }
+
+    pairs.push(
+      {
+        name: 'on-primary on brand-600',
+        foreground: 'on-primary',
+        background: 'brand-600',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
+        name: 'brand-800 on brand-50',
+        foreground: 'brand-800',
+        background: 'brand-50',
+        textClass: 'normal-text',
+        theme,
+      },
+    );
 
     pairs.push({
       name: 'reinforcement-text on reinforcement-bg',

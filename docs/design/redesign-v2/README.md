@@ -89,14 +89,27 @@ SRS stages (both themes): apprentice `#E14D86` · guru `#8B5AD4` · master `#2F8
 
 **Goal:** the whole token layer speaks v2. App may look half-baked afterwards (old layouts, new colors) — that's expected; screens are restyled in later sessions.
 
-- [ ] Replace palette values in `mobile/src/global.css` (light `:root` + dark media block) with the tables above. Keep channel-triplet format. Keep existing token names; add: `content-*-soft`, `content-*-deep` (all 5 types), `content-passage` (+soft/deep), `feedback-*-soft`, brand scale (`brand-50` … `brand-900`), `surface-elevated` remap to spec surf-2.
-- [ ] Mirror in `mobile/tailwind.config.js` (colors, `borderRadius` sm/md/lg/xl, `boxShadow`/elevation utilities, `fontFamily`) and `mobile/src/constants/design-tokens.js` (raw-hex mirror for NativeTabs/SVG APIs — update the sync comment).
-- [ ] Decide + document (in this file) the fate of ring gradient tokens `ring-start/mid/end/complete`: v2 goal ring is **single jade fill** with a jade halo past 100%. Keep the token names pointing at jade values or remove uses — no orange/gold ring stops remain.
-- [ ] Fonts: add `@expo-google-fonts/plus-jakarta-sans`, `@expo-google-fonts/noto-sans-jp`, `@expo-google-fonts/zen-maru-gothic`; load in `mobile/src/app/_layout.tsx` (block splash until loaded — offline-first, fonts must be bundled, never fetched at runtime). Add `font-ui` / `font-jp` / `font-jp-round` families to Tailwind. Don't sweep the app applying them yet — that happens per-screen; just make the utilities work and set `font-ui` as the sensible default where a root text style exists.
-- [ ] Run `npm run check-contrast` (repo root) and fix the token config it validates so CI passes with the new palette. If a spec color genuinely fails AA for its documented role, darken minimally and note the deviation in this doc.
-- [ ] `mobile`: lint, typecheck, test — fix fallout (theme/token tests like `semantic-colors.test.ts`, `tailwind-palette.test.ts` will need updating to v2 values).
+- [x] Replace palette values in `mobile/src/global.css` (light `:root` + dark media block) with the tables above. Keep channel-triplet format. Keep existing token names; add: `content-*-soft`, `content-*-deep` (all 5 types), `content-passage` (+soft/deep), `feedback-*-soft`, brand scale (`brand-50` … `brand-900`), `surface-elevated` remap to spec surf-2.
+- [x] Mirror in `mobile/tailwind.config.js` (colors, `borderRadius` sm/md/lg/xl, `boxShadow`/elevation utilities, `fontFamily`) and `mobile/src/constants/design-tokens.js` (raw-hex mirror for NativeTabs/SVG APIs — update the sync comment).
+- [x] Decide + document (in this file) the fate of ring gradient tokens `ring-start/mid/end/complete`: v2 goal ring is **single jade fill** with a jade halo past 100%. Keep the token names pointing at jade values or remove uses — no orange/gold ring stops remain.
+- [x] Fonts: add `@expo-google-fonts/plus-jakarta-sans`, `@expo-google-fonts/noto-sans-jp`, `@expo-google-fonts/zen-maru-gothic`; load in `mobile/src/app/_layout.tsx` (block splash until loaded — offline-first, fonts must be bundled, never fetched at runtime). Add `font-ui` / `font-jp` / `font-jp-round` families to Tailwind. Don't sweep the app applying them yet — that happens per-screen; just make the utilities work and set `font-ui` as the sensible default where a root text style exists.
+- [x] Run `npm run check-contrast` (repo root) and fix the token config it validates so CI passes with the new palette. If a spec color genuinely fails AA for its documented role, darken minimally and note the deviation in this doc.
+- [x] `mobile`: lint, typecheck, test — fix fallout (theme/token tests like `semantic-colors.test.ts`, `tailwind-palette.test.ts` will need updating to v2 values).
 
 **Files:** `global.css`, `tailwind.config.js`, `design-tokens.js`, `semantic-colors.ts`, `theme.ts` (verify nothing re-exports deprecated `Colors`), `_layout.tsx`, `package.json`, contrast script config, token tests.
+
+### Session 1 decisions (carry into later sessions)
+
+**Ring tokens.** `ring-start/mid/end/complete` all now resolve to **brand-600** `#0E8163` in both themes — one jade, no stops, and the one place that puts white text on the ring color (`GoalRing`'s overshoot badge) clears AA. `GoalRing`'s band logic still compiles but is a visual no-op; **Session 4 collapses the four tokens into one** and adds the ≥100% jade halo.
+
+**Three-role colors.** Content types *and* feedback both read `base` / `-soft` / `-deep`:
+`base` = glyphs, chips, 5px list edges, icons, 1.5px state borders · `-soft` = tinted fills · `-deep` = text sitting on that fill. Never set state or type *text* in the base hue on a plain surface — that pairing does not clear AA in light mode (see deviations 1–3).
+
+**Jade roles.** `brand-500` is the accent/ring/border jade (non-text). Filled jade CTAs are **`bg-brand-600` + `text-on-primary`**. Jade *text* on background/surface uses **`text-brand-text`**, which flips 700→300 with the scheme; the fixed `brand-*` steps cannot.
+
+**Fonts.** Weight comes from the utility, not `font-bold`: `font-ui` / `-medium` / `-semibold` / `-bold` / `-extrabold`, `font-jp` / `-medium` / `-bold` / `-black`, `font-jp-round` / `-bold` / `-black`. Static Google Fonts register one family per weight, so `font-ui font-bold` would silently render Regular.
+
+**Type scale.** `display`, `title-lg`, `title` and `overline` were retuned to v2 and `label` (14/600) added. `body`, `body-sm`, `body-lg` and `furigana` were left alone — changing their default weight would embolden text across screens that have not been restyled yet. Screens adopt the rest of the scale in their own session.
 
 ## Session 2 — Shared UI kit + tab shell
 
@@ -188,4 +201,25 @@ Spec refs: screens 9–10 (Talk start, Talk conversation dark); Components → c
 
 ## Deviations log
 
-Record any place implementation has to diverge from the spec (contrast fixes, data/platform constraints), so the design project can be updated to match. Empty until implementation starts.
+Record any place implementation has to diverge from the spec (contrast fixes, data/platform constraints), so the design project can be updated to match.
+
+### Session 1
+
+Contrast figures below are WCAG 2.1 ratios; the gate is `npm run check-contrast` (124 pairs, both themes).
+
+1. **Feedback base darkened in light mode.** `success #1FA971 → #1D9F6A` and `warn #E58A1E → #CA791A`. As drawn, both sit at 2.6–3.0:1 against `bg`/`surface`, and they carry the 1.5px state border on answer inputs — meaningful non-text UI, which WCAG 1.4.11 puts at 3:1. Dark keeps the spec hexes. `danger` and `info` were already clear.
+2. **Feedback gained a `-deep` step** (light `#177D54` `#BD3C33` `#995C14` `#276FAF`; dark `#3CB483` `#E97B73` `#E7912C` `#61A2DB`). The spec sets state *text* in the base hue (`color:var(--success)` on `--success-soft`), which tops out at ~3.4:1 — no minimal darkening reaches 4.5:1 without turning the whole feedback family muddy. Splitting the role keeps the spec's fills, icons and borders exactly as drawn and gives the copy an AA-clean shade, matching how the content types already work.
+3. **`content-grammar` darkened in light mode**, `#CE912C → #BA8125` (2.72 → 3.36:1 on surface). Gold is the one content hue too light to carry a glyph. Soft/deep are unchanged; dark keeps `#DFA94E`.
+4. **SRS stage nudges.** `enlightened` light `#17A2C4 → #1698B8` (2.999 → 3.38:1 — the spec value misses 3:1 by a rounding error). `burned` dark `#57534B → #706D65` (2.09 → 3.10:1); the spec reuses one burned grey for both themes, but on `#24211E` it disappears.
+5. **White-on-jade needs brand-600.** White on `brand-500 #159E77` is 3.39:1 — under AA for a 16px button label. Filled jade CTAs therefore use `brand-600 #0E8163` (4.84:1); `brand-500` stays the accent/ring/border jade. Added `brand-text` (700 light / 300 dark) for jade text, since the fixed brand steps cannot flip per scheme — `brand-700` is 2.3:1 on dark surface.
+6. **Dark `-soft` tints are flattened, not alpha.** RN palette tokens are channel triplets with no alpha channel, so each spec `rgba(...,.18/.20/.22)` was composited over dark surface `#24211E`. Anything placed on a *non*-surface dark background needs the alpha form (`bg-content-kanji/18`) instead.
+7. **Elevation is single-layer.** NativeWind maps a `shadow-*` utility to React Native's one shadow, so `e1`–`e3` merge the spec's two CSS layers into the one that carries the depth, plus an `elevation` value for Android. Dark shadows are *not* theme-flipped — on dark surfaces the spec's own mockups separate cards with `border` + `surface-elevated`, which is what Sessions 2+ should lean on.
+8. **`content-reading` kept as an alias** of `content-passage` so passage surfaces read slate immediately. Session 5 renames the call sites (`contentType.ts`, `PassageListRow`, `ReviewCard`) and deletes the token.
+9. **`on-primary` is now white in both themes** (was near-black in dark, for the old bright-blue fill). The three buttons that used `bg-feedback-info` + `text-on-primary` (`PersonalMnemonicEditor`, `UserSynonymEditor`, `PassageQuestion`) moved to `bg-brand-600` in this session rather than shipping white-on-blue at 3.94:1 for six sessions — they become proper primary buttons in Session 2 anyway.
+10. **No root text style exists.** React Native does not cascade text styles, and the app has no shared `Text` wrapper in use (`themed-text.tsx` is legacy template code still on deprecated `Colors`). So `font-ui` gets applied per component from Session 2, and `theme.ts`'s `Colors`/`Fonts` survive until the Session 8 sweep.
+
+### Font bundle size — accepted
+
+All 12 faces the spec documents ship bundled, as offline-first requires: Plus Jakarta Sans 400/500/600/700/800, Noto Sans JP 400/500/700/900, Zen Maru Gothic 500/700/900. That is **~32 MB** of the binary — Plus Jakarta Sans is 96 KB/weight, but Noto Sans JP runs 5.2 MB/weight and Zen Maru Gothic 3.6 MB/weight.
+
+**Decision (2026-08-02): accepted, no trimming.** Later sessions should use any weight in this list freely rather than working around the size. Subsetting the JP faces to the curriculum's character set would recover roughly 90% of it via a build step (fonttools/pyftsubset in the curriculum pipeline) — worth revisiting only if store limits force it, not as a design constraint.

@@ -22,11 +22,11 @@ describe('palette alpha support', () => {
   });
 
   it.each(varColors)('%s is wrapped so opacity modifiers compile', (_name, value) => {
-    expect(value).toMatch(/^rgb\(var\(--color-[a-z-]+\) \/ <alpha-value>\)$/);
+    expect(value).toMatch(/^rgb\(var\(--color-[a-z0-9-]+\) \/ <alpha-value>\)$/);
   });
 
   it('declares every global.css color as sRGB channels, not hex', () => {
-    const hexTokens = [...GLOBAL_CSS.matchAll(/(--color-[a-z-]+):\s*(#[0-9a-fA-F]+)/g)].map(
+    const hexTokens = [...GLOBAL_CSS.matchAll(/(--color-[a-z0-9-]+):\s*(#[0-9a-fA-F]+)/g)].map(
       (match) => `${match[1]}: ${match[2]}`,
     );
     expect(hexTokens).toEqual([]);
@@ -34,13 +34,13 @@ describe('palette alpha support', () => {
 
   it('backs every wrapped token with a declared variable', () => {
     const declared = new Set(
-      [...GLOBAL_CSS.matchAll(/(--color-[a-z-]+):\s*\d{1,3}\s+\d{1,3}\s+\d{1,3}/g)].map(
+      [...GLOBAL_CSS.matchAll(/(--color-[a-z0-9-]+):\s*\d{1,3}\s+\d{1,3}\s+\d{1,3}/g)].map(
         (match) => match[1],
       ),
     );
 
     const missing = varColors
-      .map(([, value]) => /var\((--color-[a-z-]+)\)/.exec(value)?.[1])
+      .map(([, value]) => /var\((--color-[a-z0-9-]+)\)/.exec(value)?.[1])
       .filter((name) => name && !declared.has(name));
 
     expect(missing).toEqual([]);

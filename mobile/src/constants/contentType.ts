@@ -1,8 +1,8 @@
 import type { ItemType } from '@/data/curriculum/itemRepository';
 
 /**
- * Content-type accent colors (radical=blue, kanji=pink, vocabulary=green,
- * grammar=purple). Sourced from the `content-*` NativeWind tokens so light/dark
+ * Content-type accent colors (radical=blue, kanji=pink, vocabulary=purple,
+ * grammar=gold). Sourced from the `content-*` NativeWind tokens so light/dark
  * WCAG-AA overrides in global.css stay authoritative. Use these class bundles
  * anywhere an item's type should read at a glance (badges, list accents, headers).
  */

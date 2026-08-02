@@ -107,7 +107,7 @@ export function PassageQuestion({
           disabled={!canSubmit}
           onPress={handleSubmit}
           testID={`passage-question-submit-${question.id}`}
-          className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-feedback-info px-space-md py-2">
+          className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-brand-600 px-space-md py-2">
           <Text className="text-body font-semibold text-on-primary">
             {result === 'incorrect' ? 'Try again' : 'Submit'}
           </Text>

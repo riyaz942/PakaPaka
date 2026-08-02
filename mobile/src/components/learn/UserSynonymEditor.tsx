@@ -77,7 +77,7 @@ export function UserSynonymEditor({ itemId }: UserSynonymEditorProps) {
         accessibilityLabel="Save accepted answer"
         onPress={handleAdd}
         testID="user-synonym-save"
-        className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-feedback-info px-space-md py-2">
+        className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-brand-600 px-space-md py-2">
         <Text className="text-body font-semibold text-on-primary">Add answer</Text>
       </Pressable>
     </View>

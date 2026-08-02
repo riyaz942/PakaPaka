@@ -86,7 +86,7 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
               onPress={handleSave}
               testID="personal-mnemonic-save"
               className={`min-h-[44px] flex-1 items-center justify-center rounded-radius-md px-space-md py-2 ${
-                canSave ? 'bg-feedback-info' : 'bg-surface'
+                canSave ? 'bg-brand-600' : 'bg-surface'
               }`}>
               <Text
                 className={`text-body font-semibold ${

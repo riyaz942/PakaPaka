@@ -7,11 +7,16 @@ export const expoBrand: {
 type SemanticPalette = {
   readonly background: string;
   readonly surface: string;
+  readonly surfaceElevated: string;
   readonly border: string;
   readonly primary: string;
   readonly secondary: string;
   readonly muted: string;
+  readonly faint: string;
   readonly onPrimary: string;
+  readonly brand: string;
+  readonly brandFill: string;
+  readonly brandText: string;
   readonly feedbackInfo: string;
 };
 

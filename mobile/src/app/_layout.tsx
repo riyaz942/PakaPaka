@@ -1,7 +1,9 @@
 import '@/global.css';
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
@@ -9,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
+import { appFonts } from '@/constants/fonts';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import { usePortraitOrientationLock } from '@/hooks/usePortraitOrientationLock';
@@ -68,12 +71,32 @@ function RootLayoutContent() {
   );
 }
 
+// Holds the native splash so the first frame is never drawn in a system font.
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
   usePortraitOrientationLock();
+  const [fontsLoaded, fontError] = useFonts(appFonts);
 
   useEffect(() => {
     readUpdatesRuntimeMetadata();
   }, []);
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  // Faces are bundled, so a load failure means a broken build, not a slow
+  // network — surface it instead of quietly rendering system fonts.
+  if (fontError) {
+    throw fontError;
+  }
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <SafeAreaProvider>

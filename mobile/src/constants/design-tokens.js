@@ -3,7 +3,7 @@
  * Prefer NativeWind className tokens in new UI; use these when APIs require raw colors.
  */
 
-/** Expo template splash/icon branding — not part of UX-DR2 semantic palette */
+/** Expo template splash/icon branding — not part of the v2 semantic palette */
 const expoBrand = {
   splash: '#208aef',
   splashGradientStart: '#3c9ffe',
@@ -11,30 +11,41 @@ const expoBrand = {
 };
 
 /**
- * UX-DR2 semantic palette for APIs that need raw hex (e.g. NativeTabs).
+ * Design System v2 palette for APIs that need raw hex (e.g. NativeTabs, SVG props).
  * Keep in sync with `src/global.css` :root / prefers-color-scheme dark overrides,
  * which store the same colors as sRGB channel triplets rather than hex.
+ * `semantic-colors.test.ts` fails if the two drift apart.
  */
 const semanticColors = {
   light: {
-    background: '#f8f8fa',
+    background: '#f7f5f2',
     surface: '#ffffff',
-    border: '#d8d8e0',
-    primary: '#1a1a2e',
-    secondary: '#686878',
-    muted: '#9898a8',
+    surfaceElevated: '#f2efea',
+    border: '#e7e2db',
+    primary: '#23201c',
+    secondary: '#46423b',
+    muted: '#7c766c',
+    faint: '#a8a199',
     onPrimary: '#ffffff',
-    feedbackInfo: '#2d6fc9',
+    brand: '#159e77',
+    brandFill: '#0e8163',
+    brandText: '#0c654e',
+    feedbackInfo: '#2f84d0',
   },
   dark: {
-    background: '#0a0a0f',
-    surface: '#141420',
-    border: '#2a2a3c',
-    primary: '#eeeef0',
-    secondary: '#9898a8',
-    muted: '#5c5c6e',
-    onPrimary: '#0a0a0f',
-    feedbackInfo: '#4488ee',
+    background: '#1b1917',
+    surface: '#24211e',
+    surfaceElevated: '#2d2a26',
+    border: '#3a362f',
+    primary: '#f6f3ee',
+    secondary: '#d8d3ca',
+    muted: '#a29c90',
+    faint: '#726c61',
+    onPrimary: '#ffffff',
+    brand: '#159e77',
+    brandFill: '#0e8163',
+    brandText: '#66cbab',
+    feedbackInfo: '#2f84d0',
   },
 };
 
