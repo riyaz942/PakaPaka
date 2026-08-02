@@ -5,6 +5,7 @@ import {
   AccessibilityInfo,
   ActivityIndicator,
   BackHandler,
+  Keyboard,
   KeyboardAvoidingView,
   Pressable,
   ScrollView,
@@ -277,6 +278,7 @@ export default function ReviewScreen() {
     }
 
     if (evaluation.result === 'correct') {
+      Keyboard.dismiss();
       setCardState('correct');
       const grade = gradeForResult(evaluation.result) ?? 3;
       setStageTransition(peekStageTransition(grade));
@@ -336,6 +338,7 @@ export default function ReviewScreen() {
     }
     setAnswerCollision(collision);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
+    Keyboard.dismiss();
     setCardState('incorrect');
   }, [autoAdvanceEnabled, canSubmitAnswer, currentItem, detectAnswerCollision, gradeCurrentItem, peekStageTransition, recordTypoForCurrentItem]);
 
@@ -384,6 +387,7 @@ export default function ReviewScreen() {
     const { value } = resolveCorrectReveal(currentItem);
     setDisplayAnswer(value);
     setStageTransition(peekStageTransition(gradeForResult('incorrect') ?? 1));
+    Keyboard.dismiss();
     setCardState('incorrect');
   }
 

@@ -158,6 +158,16 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
             )}
             placeholder={placeholder}
             placeholderTextColor={colors.faint}
+            // Android pins the first line to the top of the 44px tap target, and
+            // the placeholder — unlike the typed value — never gets RN's line
+            // height span, so the JP face's tall ascenders clip against the top
+            // edge. Centring both lines the placeholder up with the answer.
+            textAlignVertical="center"
+            // includeFontPadding (Android default: true) reserves extra top/bottom
+            // space sized off the font's raw ascent/descent metrics — for Noto
+            // Sans JP that band is unusually tall, so on an empty field it pushes
+            // the hint past the 44px box before centring even applies. No-op on iOS.
+            style={{ includeFontPadding: false }}
             selectionColor={colors.brand}
             value={value}
             onChangeText={handleChangeText}
