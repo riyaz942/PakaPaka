@@ -48,7 +48,7 @@ export function MnemonicImage({
           className,
         )}
         testID={testID}>
-        <Text className="text-center text-body text-secondary">{accessibilityLabel}</Text>
+        <Text className="text-center text-body font-ui text-secondary">{accessibilityLabel}</Text>
       </View>
     );
   }

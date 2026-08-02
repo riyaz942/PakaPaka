@@ -318,15 +318,43 @@ Spec refs: screens 11 (lesson mnemonic), 12 (review quiz, dark), 13 (session sum
 
 Spec refs: screens 9–10 (Talk start, Talk conversation dark); Components → chat bubbles.
 
-- [ ] **Talk start** (`(tabs)/converse/index.tsx`, `components/converse/`): header with history icon; "Start a conversation" title + "Nothing is corrected while you talk…" sub; starter cards — "Practise recent grammar" highlighted with 2px gra border + gra-soft glyph square, then Choose grammar / Role-play / Surprise me; BYOK footnote row with lock icon ("Only online feature — key in secure storage, transcripts on-device").
-- [ ] **Conversation** (`converse/session/`): sub-header (back, "Conversation", grammar-point caption in gra); chat bubbles from kit (AI ruby furigana); "Look up words" links; centered "End conversation" pill; composer (JP placeholder pill input, mic circle, jade send circle).
-- [ ] **History + summary** (`converse/history.tsx`, `converse/summary/`): same kit; summary reuses Session 7 summary patterns where sensible.
-- [ ] **Final sweep (whole app):**
-  - [ ] grep for raw hex / old palette remnants (old green vocab `188a50`-era values, old ring golds, `Colors` from `theme.ts`) — migrate stragglers (import/*, hint-row, external-link, web-badge, animated-icon, error/empty states);
-  - [ ] every screen quick-passed in light + dark; e3 on all modals/sheets;
-  - [ ] delete any tokens/components the redesign orphaned (only if truly unused);
-  - [ ] `npm run check-contrast`, lint, typecheck, full test suite;
-  - [ ] update `docs/app-overview.md` screenshots/wording if it references old colors, and mark this plan done in `docs/README.md`.
+- [x] **Talk start** (`(tabs)/converse/index.tsx`, `components/converse/`): header with history icon; "Start a conversation" title + "Nothing is corrected while you talk…" sub; starter cards — "Practise recent grammar" highlighted with 2px gra border + gra-soft glyph square, then Choose grammar / Role-play / Surprise me; BYOK footnote row with lock icon ("Only online feature — key in secure storage, transcripts on-device").
+- [x] **Conversation** (`converse/session/`): sub-header (back, "Conversation", grammar-point caption in gra); chat bubbles from kit (AI ruby furigana); "Look up words" links; centered "End conversation" pill; composer (JP placeholder pill input, mic circle, jade send circle).
+- [x] **History + summary** (`converse/history.tsx`, `converse/summary/`): same kit; summary reuses Session 7 summary patterns where sensible.
+- [x] **Final sweep (whole app):**
+  - [x] grep for raw hex / old palette remnants (old green vocab `188a50`-era values, old ring golds, `Colors` from `theme.ts`) — migrate stragglers (import/*, hint-row, external-link, web-badge, animated-icon, error/empty states);
+  - [x] every screen quick-passed in light + dark; e3 on all modals/sheets;
+  - [x] delete any tokens/components the redesign orphaned (only if truly unused);
+  - [x] `npm run check-contrast`, lint, typecheck, full test suite;
+  - [x] update `docs/app-overview.md` screenshots/wording if it references old colors, and mark this plan done in `docs/README.md`.
+
+### Session 8 decisions
+
+**Talk chrome is the kit.** History / offline / mic / send / lock all go through `Icon` — `MaterialIcons` is gone from the converse surfaces. A new `offline` glyph covers the cloud-off empty states (not in the spec grid; drawn to the same 24 / 1.75 / round-cap rules). Tab title is `ScreenTitle`; conversation title + grammar caption fill `ScreenHeader`'s children slot the way item detail does.
+
+**The recent-grammar card is highlighted, not selected.** It is a start action, not a radio, so it does not use `ChoiceCard`. The 2px `content-grammar` border + soft glyph square mark it as the suggested path; the other three stay plain surface + border. The subtitle is `form · meaning` of the newest recent item (what the spec draws), not the full joined set — the whole set is still what gets pinned onto the session.
+
+**End conversation is a pill inside the transcript, not a footer ghost.** Spec screen 10 centres it between the bubbles and the composer. The confirm / keep-talking card still appears below when tapped.
+
+**Summary reuses `SessionCompleteHeader`.** Mistakes sit on incorrect-soft; curriculum words you met are vocabulary-soft chips (deep text); grammar notes are grammar-soft cards. Kickers are the same tracked overline used on Settings and item detail.
+
+**Template leftovers deleted.** `themed-text` / `themed-view` / `hint-row` / `web-badge` / `external-link` / `ui/collapsible` / `use-theme` / `resolve-color-scheme` were Expo-template code with no product call sites. `theme.ts` now only exports `Spacing` and `MaxContentWidth` — the deprecated `Colors` / `Fonts` maps are gone.
+
+**Sheets take e3 + grabber.** `WordLookupSheet`, the choose-grammar modal, `FilterDrawer`, and `ExplainerSheet` match `SessionExitSheet`: surface sheet, `shadow-e3`, top grabber. Full-screen covering modals (PTT) stay plain — e3 on a root view still renders nothing.
+
+**The launch screen is v2, and `expoBrand` is gone.** The first sweep left `animated-icon.tsx` painting `expoBrand.splash` `#208AEF` over the whole app at every cold start, and the plugin's Android splash drew a white Expo mark on it — Expo template branding, not the documented raw-colour exception, which covers *v2* hexes only. `app.json` now launches on `background` (`#F7F5F2` / `#1B1917` via the plugin's `dark` block) and `AnimatedSplashOverlay` fades the same scheme-aware `background`, so the handoff stays one surface. The Android splash image was dropped rather than reskinned: the asset was the Expo wordmark and there is no replacement mark to draw. `expoBrand` and the `expo-splash*` Tailwind colours are deleted, along with the unused `AnimatedIcon` and the `expo-logo` / `logo-glow` / `expo-badge` / `react-logo` / `splash-icon` assets. **The app icon and adaptive icon are still Expo art** — that needs real design work, tracked in `docs/app-overview.md`.
+
+**The `-deep`-for-text rule was applied to the surfaces earlier sessions never opened.** `check-contrast` gates a curated token manifest, not call sites, so it passed while ~13 places still set state or type *text* in a base hue. All now take `-deep`, and link-style affordances take `text-brand-text` — the jade the sweep had already settled on for Settings, Browse and the sheets. Touched: `review/index.tsx` error and empty states, `AnswerReveal`, `IncorrectReveal`, `ProgressiveHint`, `GrammarMcOptions`, `lesson/index.tsx`, `LessonItemSections`, `DailyThresholdNotice`, `ShadowModeComparison`, `KanjiDependencyHints`, `VoiceModelDownloadPrompt`. Base hues survive only where they are icons or heroed glyphs — the roles that clear the 3:1 non-text threshold.
+
+**Fifteen components had never been opened by any session.** They rendered in the system font with pre-v2 chrome. Now swept: `VoiceModelDownloadPrompt` (a Talk surface, so in this session's own scope), `KanjiReadingPrimer`, `LessonMarkdown`, `FuriganaText`, `LearnItemRow`, `ReinforcementHighlight`, `ShadowModeComparison`, `ShadowModeSwitchPrompt`, `DailyThresholdNotice`, `MnemonicImage`, `TabPlaceholderScreen`, `AnswerReveal`, `GrammarMcOptions`, `ProgressiveHint`, `KanjiDependencyHints`. Two things worth carrying forward: **`LessonMarkdown`'s bold spans were `font-bold`**, which `cn` keeps *alongside* `font-ui` rather than replacing it, so bold prose was silently rendering Regular — inline weight must be a family (`font-ui-bold`), the trap Session 1 named; and **ruby was familyless** in both `FuriganaText` and `LessonMarkdown`, so every furigana in the app fell back to the system font instead of Noto Sans JP.
+
+**Two more orphans removed.** `DailyThresholdNotice` carried a 🎉, the one emoji left in the UI — it is the banner slot's success styling now, with a drawn `correct` mark and a drawn close. `ContentAccent.text` / `.tint`, the pre-v2 pairing the type kept "for call sites that have not been restyled yet", reached zero call sites and are deleted.
+
+### Session 8 deviations
+
+36. **Talk send / hold-to-speak fill with `brand-600`, not the spec's `brand-500`.** Same white-on-jade AA reason as Session 1 deviation 5 and Session 2's primary button. The mic circle stays outlined surface-elevated so the jade send is the only filled control in the composer.
+37. **Grammar caption under "Conversation" uses `-deep`, not the base gold.** Spec sets it in `--gra` at 11px/600; on a plain surface that misses 4.5:1 in light mode. Same deep-for-text rule as Sessions 4/6/7.
+38. **The pre-notes summary opens with the jade check disc.** Spec screen 13 is a review summary; Talk has no accuracy ring or goal contribution to show. `SessionCompleteHeader` is the shared "session ended" signal for both the empty "get my notes" state and the filled notes scroll — inventing a Talk-only empty state would fork the kit for one screen.
 
 ---
 
@@ -347,7 +375,7 @@ Contrast figures below are WCAG 2.1 ratios; the gate is `npm run check-contrast`
 7. **Elevation is single-layer.** NativeWind maps a `shadow-*` utility to React Native's one shadow, so `e1`–`e3` merge the spec's two CSS layers into the one that carries the depth, plus an `elevation` value for Android. Dark shadows are *not* theme-flipped — on dark surfaces the spec's own mockups separate cards with `border` + `surface-elevated`, which is what Sessions 2+ should lean on.
 8. **`content-reading` kept as an alias** of `content-passage` so passage surfaces read slate immediately. Session 5 renames the call sites (`contentType.ts`, `PassageListRow`, `ReviewCard`) and deletes the token.
 9. **`on-primary` is now white in both themes** (was near-black in dark, for the old bright-blue fill). The three buttons that used `bg-feedback-info` + `text-on-primary` (`PersonalMnemonicEditor`, `UserSynonymEditor`, `PassageQuestion`) moved to `bg-brand-600` in this session rather than shipping white-on-blue at 3.94:1 for six sessions — they become proper primary buttons in Session 2 anyway.
-10. **No root text style exists.** React Native does not cascade text styles, and the app has no shared `Text` wrapper in use (`themed-text.tsx` is legacy template code still on deprecated `Colors`). So `font-ui` gets applied per component from Session 2, and `theme.ts`'s `Colors`/`Fonts` survive until the Session 8 sweep.
+10. **No root text style exists.** React Native does not cascade text styles, and the app has no shared `Text` wrapper in use. So `font-ui` gets applied per component from Session 2. Session 8 deleted the Expo-template `Colors`/`Fonts` maps and the unused `themed-text` / `themed-view` wrappers that carried them.
 
 ### Font bundle size — accepted
 

@@ -137,18 +137,18 @@ export function IncorrectReveal({
       <AnswerReveal item={item} detail={detail} collision={answerCollision} />
 
       {synonymState.status === 'added' ? (
-        <Text className="text-body-sm text-feedback-correct text-center">
+        <Text className="text-center text-body-sm font-ui text-feedback-correct-deep">
           Added — it will be accepted on this item&apos;s next review.
         </Text>
       ) : canOfferSynonym ? (
         <View className="items-center gap-space-xs">
           {synonymState.status === 'collision' ? (
-            <Text className="text-body-sm text-feedback-warning text-center">
+            <Text className="text-center text-body-sm font-ui text-feedback-warning-deep">
               &ldquo;{rejectedAnswer}&rdquo; is already accepted for {synonymState.collidesWith}.
             </Text>
           ) : null}
           {synonymState.status === 'error' ? (
-            <Text className="text-body-sm text-feedback-incorrect text-center">
+            <Text className="text-center text-body-sm font-ui text-feedback-incorrect-deep">
               Couldn&apos;t save your answer. Try again.
             </Text>
           ) : null}
@@ -157,7 +157,7 @@ export function IncorrectReveal({
             accessibilityLabel={`Accept ${rejectedAnswer} as my answer`}
             onPress={() => onAddSynonym?.({ force: synonymState.status === 'collision' })}
             className="min-h-[44px] justify-center px-space-md">
-            <Text className="text-body text-feedback-info">
+            <Text className="text-body font-ui-semibold text-brand-text">
               {synonymState.status === 'collision'
                 ? 'Add it anyway'
                 : `Accept "${rejectedAnswer}" as my answer`}

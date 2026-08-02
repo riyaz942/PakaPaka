@@ -404,7 +404,7 @@ export default function LessonScreen() {
           ) : null}
 
           {saveError ? (
-            <Text className="mb-space-sm text-body-sm font-ui-semibold text-feedback-incorrect">
+            <Text className="mb-space-sm text-body-sm font-ui-semibold text-feedback-incorrect-deep">
               {saveError}
             </Text>
           ) : null}

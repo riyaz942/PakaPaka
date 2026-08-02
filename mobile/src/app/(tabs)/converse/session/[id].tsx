@@ -1,4 +1,3 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -6,6 +5,7 @@ import {
   KeyboardAvoidingView,
   Modal,
   Platform,
+  Pressable,
   ScrollView,
   Text,
   View,
@@ -17,13 +17,13 @@ import {
 } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { Icon } from '@/components/common/Icon';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ChatBubble } from '@/components/converse/ChatBubble';
 import { Composer } from '@/components/converse/Composer';
 import { PttOverlay } from '@/components/converse/PttOverlay';
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { WordLookupSheet } from '@/components/converse/WordLookupSheet';
-import { getSemanticColors } from '@/constants/semantic-colors';
 import type { GrammarPromptTopic } from '@/core/ai/systemPrompt';
 import { isOnline } from '@/data/ai/connectivity';
 import { areVoiceModelsDownloaded } from '@/data/ai/voice/modelDownloadManager';
@@ -35,7 +35,7 @@ import { useAiConversation } from '@/data/hooks/useAiConversation';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { getAiSession } from '@/data/user/aiSessionRepository';
-import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { cn } from '@/utils/cn';
 
 /**
  * The chat surface (FR89–FR91, FR94).
@@ -49,7 +49,6 @@ export default function ConversationSessionScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const sessionId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
   const { userDb } = useDatabase();
-  const colors = getSemanticColors(usePaintedColorScheme());
   // Insets do not cross into a react-native Modal on Android, so conversation
   // mode gets its own provider seeded with what this screen already measured.
   const safeAreaFrame = useSafeAreaFrame();
@@ -132,6 +131,17 @@ export default function ConversationSessionScreen() {
   const ended = Boolean(session?.endedAt);
 
   const endPromptVisible = showEndPrompt || wrapUpSignalled;
+
+  const grammarCaption = useMemo(() => {
+    if (grammarTopics.length === 0) {
+      return null;
+    }
+    const first = grammarTopics[0];
+    if (grammarTopics.length === 1) {
+      return `${first.primaryForm} · ${first.meaning}`;
+    }
+    return grammarTopics.map((topic) => topic.primaryForm).join(' · ');
+  }, [grammarTopics]);
 
   useEffect(() => {
     if (wrapUpSignalled) {
@@ -218,27 +228,43 @@ export default function ConversationSessionScreen() {
     dismissWrapUp();
   }
 
-  const offlineBlock = useMemo(
-    () => (
-      <View className="flex-1 items-center justify-center p-space-lg">
-        <MaterialIcons name="cloud-off" size={40} color={colors.secondary} />
-        <Text accessibilityRole="header" className="mt-space-md text-title text-primary">
-          Conversation needs internet
+  const offlineBlock = (
+    <View className="flex-1 items-center justify-center p-space-lg">
+      <Icon name="offline" size={40} strokeWidth={1.75} className="text-muted" />
+      <Text
+        accessibilityRole="header"
+        className="mt-space-md text-title font-ui-extrabold text-primary">
+        Conversation needs internet
+      </Text>
+      <Text className="mt-space-sm text-center text-body font-ui text-secondary">
+        Chat runs through the AI provider you configured, so this screen needs a connection.
+      </Text>
+    </View>
+  );
+
+  const conversationHeader = (
+    <ScreenHeader backAccessibilityLabel="Leave conversation">
+      <View className="flex-1 py-space-xs">
+        <Text accessibilityRole="header" className="text-body-lg font-ui-extrabold text-primary">
+          Conversation
         </Text>
-        <Text className="mt-space-sm text-center text-body text-secondary">
-          Chat runs through the AI provider you configured, so this screen needs a connection.
-        </Text>
+        {grammarCaption ? (
+          <Text className="text-caption font-ui-semibold text-content-grammar-deep">
+            {grammarCaption}
+          </Text>
+        ) : null}
       </View>
-    ),
-    [colors.secondary],
+    </ScreenHeader>
   );
 
   if (!sessionId) {
     return (
       <View className="flex-1 bg-background">
-        <ScreenHeader title="Conversation" backAccessibilityLabel="Leave conversation" />
+        {conversationHeader}
         <View className="flex-1 items-center justify-center p-space-lg">
-          <Text className="text-body text-secondary">This conversation could not be found.</Text>
+          <Text className="text-body font-ui text-secondary">
+            This conversation could not be found.
+          </Text>
         </View>
       </View>
     );
@@ -246,12 +272,7 @@ export default function ConversationSessionScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <ScreenHeader
-        title="Conversation"
-        backAccessibilityLabel="Leave conversation"
-        // Leaving without Finish is not an end (FR94): ended_at stays null so
-        // history reopens this chat. Only the End / wrap-up Finish path ends it.
-      />
+      {conversationHeader}
 
       {online === null ? (
         <View className="flex-1 items-center justify-center">
@@ -269,7 +290,7 @@ export default function ConversationSessionScreen() {
             contentContainerClassName="p-space-md"
             onContentSizeChange={() => scrollRef.current?.scrollToEnd({ animated: true })}>
             {messages.length === 0 && !isStreaming ? (
-              <Text className="mt-space-lg text-center text-body text-secondary">
+              <Text className="mt-space-lg text-center text-body font-ui text-secondary">
                 Say something to get started — 日本語でどうぞ。
               </Text>
             ) : null}
@@ -295,11 +316,32 @@ export default function ConversationSessionScreen() {
                 knownKanji={knownKanji}
               />
             ) : null}
+
+            {!ended && !endPromptVisible ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="End conversation"
+                accessibilityState={{ disabled: isStreaming }}
+                disabled={isStreaming}
+                onPress={() => {
+                  setEndingReason('user_end');
+                  setShowEndPrompt(true);
+                }}
+                testID="end-session"
+                className={cn(
+                  'mt-space-md min-h-[44px] items-center justify-center self-center rounded-radius-full border border-border px-space-lg py-space-sm',
+                  isStreaming && 'opacity-50',
+                )}>
+                <Text className="text-label font-ui-semibold text-muted">End conversation</Text>
+              </Pressable>
+            ) : null}
           </ScrollView>
 
           {error ? (
-            <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
-              <Text accessibilityLiveRegion="polite" className="text-body text-feedback-incorrect">
+            <View className="mx-space-md mb-space-sm rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+              <Text
+                accessibilityLiveRegion="polite"
+                className="text-body font-ui text-feedback-incorrect-deep">
                 {error.userMessage ?? error.message}
               </Text>
               {/* Resending re-asks for a reply to the turn already sent, rather
@@ -320,7 +362,9 @@ export default function ConversationSessionScreen() {
 
           {ended ? (
             <View className="mx-space-md mb-space-sm p-space-md">
-              <Text className="text-body text-secondary">This conversation has finished.</Text>
+              <Text className="text-body font-ui text-secondary">
+                This conversation has finished.
+              </Text>
               <Button
                 className="mt-space-md"
                 label="View session notes"
@@ -329,8 +373,8 @@ export default function ConversationSessionScreen() {
               />
             </View>
           ) : endPromptVisible ? (
-            <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
-              <Text className="text-body text-primary">
+            <View className="mx-space-md mb-space-sm rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+              <Text className="text-body font-ui text-primary">
                 {wrapUpSignalled || endingReason === 'ai_wrap_up'
                   ? 'That felt like a natural place to stop. Finish up?'
                   : 'End this conversation?'}
@@ -352,24 +396,13 @@ export default function ConversationSessionScreen() {
                 />
               </View>
             </View>
-          ) : (
-            <View className="px-space-md pb-space-sm">
-              <Button
-                label="End conversation"
-                onPress={() => {
-                  setEndingReason('user_end');
-                  setShowEndPrompt(true);
-                }}
-                testID="end-session"
-                variant="ghost"
-                disabled={isStreaming}
-              />
-            </View>
-          )}
+          ) : null}
 
           {voiceError ? (
-            <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
-              <Text accessibilityLiveRegion="polite" className="text-body text-feedback-incorrect">
+            <View className="mx-space-md mb-space-sm rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+              <Text
+                accessibilityLiveRegion="polite"
+                className="text-body font-ui text-feedback-incorrect-deep">
                 {voiceError}
               </Text>
             </View>

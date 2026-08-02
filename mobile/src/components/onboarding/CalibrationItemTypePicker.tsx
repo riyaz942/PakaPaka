@@ -47,12 +47,12 @@ export function CalibrationItemTypePicker({
             testID={testID ? `${testID}-${option.value}` : undefined}
             className={cn(
               'min-h-[44px] min-w-[44px] flex-1 justify-center rounded-radius-md bg-surface px-2 py-2',
-              selected ? 'border-2 border-feedback-info' : 'border border-border',
+              selected ? 'border-2 border-brand-500 bg-brand-soft' : 'border border-border',
             )}>
             <Text
               className={cn(
                 'text-center text-body-sm',
-                selected ? 'font-semibold text-primary' : 'text-secondary',
+                selected ? 'font-ui-semibold text-primary' : 'text-secondary',
               )}>
               {option.label}
             </Text>

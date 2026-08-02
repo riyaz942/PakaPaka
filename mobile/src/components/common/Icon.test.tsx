@@ -27,6 +27,8 @@ const ALL_ICONS: IconName[] = [
   'info',
   'chevron',
   'device',
+  'image',
+  'offline',
 ];
 
 describe('Icon', () => {

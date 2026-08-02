@@ -1,9 +1,10 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 
+import { Icon } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { cn } from '@/utils/cn';
 
 type ComposerProps = {
   /** Resolves true when the turn was accepted (draft may clear). */
@@ -49,14 +50,15 @@ export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps
   }
 
   return (
-    <View className="flex-row items-end gap-space-sm border-t border-border bg-surface px-space-md py-space-sm">
+    <View className="flex-row items-center gap-[9px] border-t border-border px-space-md py-space-md">
       <TextInput
         accessibilityLabel="Your message"
-        className="max-h-[120px] flex-1 rounded-radius-md border border-border bg-background px-space-md py-space-sm text-body text-primary"
+        className="max-h-[120px] min-h-[44px] flex-1 rounded-radius-full border border-border bg-surface-elevated px-space-md py-space-sm text-body font-jp-medium text-primary"
         editable={!disabled && !isSending}
         multiline
         onChangeText={setDraft}
         placeholder="日本語で書いてみましょう"
+        placeholderTextColor={colors.faint}
         value={draft}
       />
       {onMicPress ? (
@@ -68,8 +70,16 @@ export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps
           disabled={!canSpeak}
           onPress={onMicPress}
           testID="composer-mic"
-          className="min-h-[44px] min-w-[44px] items-center justify-center rounded-radius-md bg-surface-elevated">
-          <MaterialIcons name="mic" size={20} color={canSpeak ? colors.primary : colors.secondary} />
+          className={cn(
+            'h-11 w-11 items-center justify-center rounded-radius-full border border-border bg-surface-elevated',
+            !canSpeak && 'opacity-50',
+          )}>
+          <Icon
+            name="mic"
+            size={19}
+            strokeWidth={1.9}
+            className={canSpeak ? 'text-primary' : 'text-muted'}
+          />
         </Pressable>
       ) : null}
 
@@ -82,13 +92,15 @@ export function Composer({ onSend, onMicPress, disabled = false }: ComposerProps
           void handleSend();
         }}
         testID="composer-send"
-        className={`min-h-[44px] min-w-[44px] items-center justify-center rounded-radius-md ${
-          canSend ? 'bg-feedback-info' : 'bg-surface-elevated'
-        }`}>
-        <MaterialIcons
+        className={cn(
+          'h-11 w-11 items-center justify-center rounded-radius-full',
+          canSend ? 'bg-brand-600' : 'bg-surface-elevated',
+        )}>
+        <Icon
           name="send"
-          size={20}
-          color={canSend ? colors.onPrimary : colors.secondary}
+          size={19}
+          strokeWidth={1.9}
+          className={canSend ? 'text-on-primary' : 'text-muted'}
         />
       </Pressable>
     </View>

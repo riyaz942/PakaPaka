@@ -413,21 +413,21 @@ export default function ReviewScreen() {
     return (
       <SafeAreaView className="flex-1 bg-background px-space-lg">
         <View className="flex-1 justify-center gap-space-md">
-          <Text className="text-title text-primary">Review Unavailable</Text>
-          <Text className="text-body text-secondary">
+          <Text className="text-title font-ui-extrabold text-primary">Review Unavailable</Text>
+          <Text className="text-body font-ui text-secondary">
             {error.userMessage ?? error.message}
           </Text>
           <Pressable
             accessibilityRole="button"
-            className="self-start rounded-radius-md bg-surface px-space-md py-space-sm"
+            className="min-h-[44px] justify-center self-start rounded-radius-md bg-surface px-space-md py-space-sm"
             onPress={refetch}>
-            <Text className="text-body text-feedback-info">Retry</Text>
+            <Text className="text-body font-ui-semibold text-brand-text">Retry</Text>
           </Pressable>
           <Pressable
             accessibilityRole="button"
-            className="self-start rounded-radius-md bg-surface px-space-md py-space-sm"
+            className="min-h-[44px] justify-center self-start rounded-radius-md bg-surface px-space-md py-space-sm"
             onPress={safeBack}>
-            <Text className="text-body text-secondary">Back</Text>
+            <Text className="text-body font-ui text-secondary">Back</Text>
           </Pressable>
         </View>
       </SafeAreaView>
@@ -439,15 +439,15 @@ export default function ReviewScreen() {
     return (
       <SafeAreaView className="flex-1 bg-background px-space-lg">
         <View className="flex-1 justify-center gap-space-md">
-          <Text className="text-title text-primary">No Reviews Due</Text>
-          <Text className="text-body text-secondary">
+          <Text className="text-title font-ui-extrabold text-primary">No Reviews Due</Text>
+          <Text className="text-body font-ui text-secondary">
             No items due for review right now.
           </Text>
           <Pressable
             accessibilityRole="button"
-            className="self-start rounded-radius-md bg-surface px-space-md py-space-sm"
+            className="min-h-[44px] justify-center self-start rounded-radius-md bg-surface px-space-md py-space-sm"
             onPress={safeBack}>
-            <Text className="text-body text-feedback-info">Back</Text>
+            <Text className="text-body font-ui-semibold text-brand-text">Back</Text>
           </Pressable>
         </View>
       </SafeAreaView>

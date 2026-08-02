@@ -23,11 +23,11 @@ export function ShadowModeSwitchPrompt({
     <View
       accessibilityRole="summary"
       accessibilityLabel={`You've been comparing for ${daysActive} days. Ready to switch fully?`}
-      className="gap-space-md rounded-radius-md border border-border bg-surface p-space-md">
-      <Text accessibilityRole="header" className="text-title text-primary">
+      className="gap-space-md rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text accessibilityRole="header" className="text-title font-ui-extrabold text-primary">
         {`You've been comparing for ${daysActive} days`}
       </Text>
-      <Text className="text-body text-secondary">
+      <Text className="text-body font-ui text-secondary">
         Ready to switch fully? No rush — nothing changes until you decide.
       </Text>
 

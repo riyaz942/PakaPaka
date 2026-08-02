@@ -80,7 +80,7 @@ Two different screens, two different problems, one shared complaint.
 
 Treat them separately.
 
-**Lessons.** Wrap the mnemonic in a collapsible disclosure — collapsed by default, chevron + "Mnemonic" label, tap to expand. `mobile/src/components/ui/collapsible.tsx` already exists; check whether it is theme-token compliant before reusing. Expanding it once should be remembered for the session (not persisted) so a user who wants mnemonics doesn't tap four times per lesson. Radicals are the exception: `RadicalDetail` pairs the mnemonic with its `MnemonicImage`, and the image *is* the mnemonic for radicals — keep that visible.
+**Lessons.** Wrap the mnemonic in a collapsible disclosure — collapsed by default, chevron + "Mnemonic" label, tap to expand. Use `mobile/src/components/common/Disclosure.tsx` (the Design System v2 disclosure); the Expo-template `ui/collapsible.tsx` this note originally pointed at was deleted in the v2 restyle. Expanding it once should be remembered for the session (not persisted) so a user who wants mnemonics doesn't tap four times per lesson. Radicals are the exception: `RadicalDetail` pairs the mnemonic with its `MnemonicImage`, and the image *is* the mnemonic for radicals — keep that visible.
 
 Note this interacts with **Plan 03 §3.5** (full item detail on the incorrect reveal). That reveal will reuse these same detail components. Decide the disclosure default once: recommend **collapsed in lessons** (the user is reading, not recalling) and **expanded on an incorrect reveal** (the user just failed and needs the hook). Same component, different default via prop.
 
@@ -114,4 +114,4 @@ Note this interacts with **Plan 03 §3.5** (full item detail on the incorrect re
 - `mobile/src/app/review/summary.tsx`
 - `mobile/src/app/review/index.tsx`
 - `mobile/src/components/learn/KanjiDetail.tsx`, `RadicalDetail.tsx`, `VocabularyDetail.tsx`, `GrammarDetail.tsx`
-- `mobile/src/components/ui/collapsible.tsx`
+- `mobile/src/components/common/Disclosure.tsx`

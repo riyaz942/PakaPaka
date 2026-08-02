@@ -19,7 +19,7 @@ export function TabPlaceholderScreen({ title, children }: TabPlaceholderScreenPr
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Text className="text-center text-title text-primary">{title}</Text>
+        <Text className="text-center text-title font-ui-extrabold text-primary">{title}</Text>
         {children}
       </SafeAreaView>
     </View>

@@ -156,12 +156,14 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
 
           {grammarRule.cautionNotes.length > 0 ? (
             <View className="mt-4" testID="grammar-caution-notes">
-              <Text className="text-body-sm uppercase text-feedback-warning">Watch out</Text>
+              <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-feedback-warning-deep">
+                Watch out
+              </Text>
               {grammarRule.cautionNotes.map((note, index) => (
                 <View
                   key={index}
-                  className="mt-2 border-l-2 border-feedback-warning pl-space-md py-space-xs">
-                  <Text className="text-body text-primary">{note}</Text>
+                  className="mt-2 border-l-2 border-feedback-warning py-space-xs pl-space-md">
+                  <Text className="text-body font-ui text-primary">{note}</Text>
                 </View>
               ))}
             </View>

@@ -26,7 +26,6 @@ export function LearnItemRow({
   isLocked,
   unmetPrerequisites,
 }: LearnItemRowProps) {
-  const isGrammar = item.itemType === 'grammar';
   const isJapaneseForm = item.itemType === 'radical' || item.itemType === 'kanji';
   const accent = CONTENT_TYPE_ACCENT[item.itemType];
 
@@ -34,13 +33,16 @@ export function LearnItemRow({
     <>
       <Text
         className={cn(
-          isJapaneseForm ? 'text-display' : 'text-body',
-          accent.text,
-          isGrammar && 'font-mono',
+          // A heroed glyph clears the 3:1 non-text threshold and takes the base
+          // hue; the smaller forms are copy, so they take `-deep` like every
+          // other type-coloured label.
+          isJapaneseForm
+            ? cn('text-display font-jp-round-black', accent.glyph)
+            : cn('text-body font-jp-medium', accent.deep),
         )}>
         {item.primaryForm}
       </Text>
-      <Text className="mt-1 text-body text-primary">{item.meaning}</Text>
+      <Text className="mt-1 text-body font-ui text-primary">{item.meaning}</Text>
 
       {isLocked && unmetPrerequisites && unmetPrerequisites.length > 0 ? (
         <KanjiDependencyHints

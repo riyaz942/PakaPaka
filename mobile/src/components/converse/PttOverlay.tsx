@@ -1,9 +1,9 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { Icon } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { parseFurigana } from '@/core/furigana/parseFurigana';
 import {
@@ -216,7 +216,7 @@ export function PttOverlay({
             onPress={onExit}
             testID="ptt-exit"
             className="min-h-[44px] min-w-[44px] items-center justify-center rounded-radius-md">
-            <MaterialIcons name="close" size={24} color={colors.primary} />
+            <Icon name="close" size={24} strokeWidth={2} className="text-primary" />
           </Pressable>
         </View>
 
@@ -226,12 +226,12 @@ export function PttOverlay({
           ) : readableLine.length > 0 ? (
             <Text
               accessibilityLiveRegion="polite"
-              className="text-center text-title text-primary"
+              className="text-center text-title font-ui-extrabold text-primary"
               testID="ptt-assistant-line">
               {readableLine}
             </Text>
           ) : (
-            <Text className="text-center text-body text-secondary">
+            <Text className="text-center text-body font-ui text-secondary">
               Hold the button and say something — 日本語でどうぞ。
             </Text>
           )}
@@ -240,7 +240,7 @@ export function PttOverlay({
         {shownError ? (
           <Text
             accessibilityLiveRegion="polite"
-            className="mb-space-md text-center text-body-sm text-feedback-incorrect"
+            className="mb-space-md text-center text-body-sm font-ui text-feedback-incorrect-deep"
             testID="ptt-error">
             {shownError}
           </Text>
@@ -248,11 +248,12 @@ export function PttOverlay({
 
         <TextInput
           accessibilityLabel="Your spoken message"
-          className="max-h-[120px] rounded-radius-md border border-border bg-surface px-space-md py-space-sm text-body text-primary"
+          className="max-h-[120px] rounded-radius-sm border border-border bg-surface-elevated px-space-md py-space-sm text-body font-jp-medium text-primary"
           editable={phase === 'idle'}
           multiline
           onChangeText={setTranscript}
           placeholder="What you said will appear here to check before sending"
+          placeholderTextColor={colors.faint}
           value={transcript}
         />
 
@@ -289,11 +290,11 @@ export function PttOverlay({
             void handlePressOut();
           }}
           testID="ptt-button"
-          className={`mt-space-lg min-h-[88px] items-center justify-center rounded-radius-md ${
-            isRecording ? 'bg-feedback-incorrect' : 'bg-feedback-info'
+          className={`mt-space-lg min-h-[88px] items-center justify-center rounded-radius-lg ${
+            isRecording ? 'bg-feedback-incorrect-fill' : 'bg-brand-600'
           } ${micDisabled ? 'opacity-40' : ''}`}>
-          <MaterialIcons name="mic" size={32} color={colors.onPrimary} />
-          <Text className="mt-space-xs text-body font-semibold text-white">
+          <Icon name="mic" size={32} strokeWidth={1.9} className="text-on-primary" />
+          <Text className="mt-space-xs text-body font-ui-semibold text-on-primary">
             {isRecording
               ? 'Listening — release when done'
               : phase === 'transcribing'

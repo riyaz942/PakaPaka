@@ -1,5 +1,3 @@
-const { expoBrand } = require('./src/constants/design-tokens');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'media',
@@ -84,11 +82,6 @@ module.exports = {
         // v2 — reinforcement
         'reinforcement-text': 'rgb(var(--color-reinforcement-text) / <alpha-value>)',
         'reinforcement-bg': 'rgb(var(--color-reinforcement-bg) / <alpha-value>)',
-
-        // Expo template splash/icon (design-tokens.js — programmatic StyleSheet only)
-        'expo-splash': expoBrand.splash,
-        'expo-splash-light': expoBrand.splashGradientStart,
-        'expo-splash-dark': expoBrand.splashGradientEnd,
       },
       // v2 — font families. Static Google Fonts register one family per weight, so
       // `font-bold` cannot switch face: pick the utility that carries the weight.

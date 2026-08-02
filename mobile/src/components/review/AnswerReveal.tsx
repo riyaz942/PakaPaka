@@ -52,12 +52,14 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
       : [];
 
   return (
-    <View className="gap-space-sm rounded-radius-md bg-surface p-space-md w-full">
+    <View className="w-full gap-space-sm rounded-radius-lg border border-border bg-surface p-space-md">
       <View>
-        <Text className="text-overline uppercase text-secondary">Meaning</Text>
-        <Text className="text-body-lg text-primary">{item.displayMeaning}</Text>
+        <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
+          Meaning
+        </Text>
+        <Text className="text-body-lg font-ui-semibold text-primary">{item.displayMeaning}</Text>
         {alternates.length > 0 ? (
-          <Text className="text-body-sm text-secondary">
+          <Text className="text-body-sm font-ui text-secondary">
             Also accepted: {alternates.join(', ')}
           </Text>
         ) : null}
@@ -65,12 +67,14 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
 
       {kanjiReadings.length > 0 ? (
         <View>
-          <Text className="text-overline uppercase text-secondary">Readings</Text>
+          <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
+            Readings
+          </Text>
           {(['onyomi', 'kunyomi'] as const).map((type) => {
             const readings = kanjiReadings.filter((r) => r.readingType === type);
             if (readings.length === 0) return null;
             return (
-              <Text key={type} className="text-body text-primary">
+              <Text key={type} className="text-body font-jp-medium text-primary">
                 {READING_TYPE_LABEL[type]}: {readings.map((r) => r.reading).join('、')}
               </Text>
             );
@@ -78,14 +82,18 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
         </View>
       ) : acceptedReadings.length > 0 ? (
         <View>
-          <Text className="text-overline uppercase text-secondary">Reading</Text>
-          <Text className="text-body text-primary">{acceptedReadings.join('、')}</Text>
+          <Text className="text-overline font-ui-bold uppercase tracking-[0.08em] text-faint">
+            Reading
+          </Text>
+          <Text className="text-body font-jp-medium text-primary">
+            {acceptedReadings.join('、')}
+          </Text>
         </View>
       ) : null}
 
       {collision ? (
         <View>
-          <Text className="text-body-sm text-feedback-warning">
+          <Text className="text-body-sm font-ui text-feedback-warning-deep">
             Your answer belongs to a different item: {collision.primaryForm}.
           </Text>
           <Pressable
@@ -98,7 +106,7 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
               } as Href)
             }
             className="min-h-[44px] justify-center">
-            <Text className="text-body text-feedback-info">Compare these items</Text>
+            <Text className="text-body font-ui-semibold text-brand-text">Compare these items</Text>
           </Pressable>
         </View>
       ) : null}
@@ -108,7 +116,7 @@ export function AnswerReveal({ item, detail, collision }: AnswerRevealProps) {
         accessibilityLabel="See full details"
         onPress={() => router.push(`/review/item/${item.itemId}` as Href)}
         className="min-h-[44px] justify-center">
-        <Text className="text-body text-feedback-info">See full details</Text>
+        <Text className="text-body font-ui-semibold text-brand-text">See full details</Text>
       </Pressable>
     </View>
   );

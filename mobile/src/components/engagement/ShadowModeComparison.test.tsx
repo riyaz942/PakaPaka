@@ -22,25 +22,26 @@ describe('ShadowModeComparison', () => {
   it('renders domain counts with full-context accessibility labels', () => {
     render(<ShadowModeComparison {...BASE_PROPS} />);
 
-    expect(screen.getByText('Kanji 8')).toBeTruthy();
+    // Each type is one soft-filled tile stacking the count over the label, so
+    // the pair is read through the tile's accessibility label.
     expect(screen.getByLabelText('Kanji: 8 items reviewed')).toBeTruthy();
-    expect(screen.getByText('Grammar 2')).toBeTruthy();
-    expect(screen.getByText('Vocab 5')).toBeTruthy();
+    expect(screen.getByLabelText('Grammar: 2 items reviewed')).toBeTruthy();
+    expect(screen.getByLabelText('Vocabulary: 5 items reviewed')).toBeTruthy();
   });
 
-  it('hides the radical row when count is zero', () => {
+  it('hides the radical tile when count is zero', () => {
     render(<ShadowModeComparison {...BASE_PROPS} />);
-    expect(screen.queryByText(/Radical/)).toBeNull();
+    expect(screen.queryByText('Radical')).toBeNull();
   });
 
-  it('shows the radical row when count is greater than zero', () => {
+  it('shows the radical tile when count is greater than zero', () => {
     render(
       <ShadowModeComparison
         {...BASE_PROPS}
         domainCounts={{ ...BASE_PROPS.domainCounts, radical: 3 }}
       />,
     );
-    expect(screen.getByText('Radical 3')).toBeTruthy();
+    expect(screen.getByLabelText('Radical: 3 items reviewed')).toBeTruthy();
   });
 
   it('renders total minutes studied', () => {

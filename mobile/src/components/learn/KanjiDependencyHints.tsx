@@ -28,12 +28,12 @@ export function KanjiDependencyHints({
 
   return (
     <View testID={testID} className="mt-2 flex-row flex-wrap items-center gap-1">
-      <Text className="text-caption text-secondary">
+      <Text className="text-caption font-ui-medium text-muted">
         {mode === 'unmet' ? 'Learn first:' : 'Requires:'}
       </Text>
       {parents.map((parent, index) => (
         <React.Fragment key={parent.id}>
-          {index > 0 ? <Text className="text-caption text-secondary">, </Text> : null}
+          {index > 0 ? <Text className="text-caption font-ui-medium text-muted">, </Text> : null}
           <Pressable
             accessibilityRole="link"
             accessibilityLabel={
@@ -44,7 +44,9 @@ export function KanjiDependencyHints({
             onPress={() => router.push(`/browse/item/${parent.id}` as Href)}
             testID={testID ? `${testID}-${parent.id}` : undefined}
             className="min-h-[44px] min-w-[44px] justify-center px-2 py-1">
-            <Text className="text-caption text-feedback-info">{parent.primaryForm}</Text>
+            <Text className="text-caption font-jp-medium text-brand-text">
+              {parent.primaryForm}
+            </Text>
           </Pressable>
         </React.Fragment>
       ))}

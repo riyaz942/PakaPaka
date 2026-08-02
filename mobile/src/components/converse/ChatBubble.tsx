@@ -63,7 +63,7 @@ export function ChatBubble({
         onLongPress={onLookupWords}
         delayLongPress={400}
         style={{ borderBottomLeftRadius: 5 }}
-        className="rounded-radius-lg border border-border bg-surface-elevated px-space-md py-space-sm">
+        className="rounded-radius-lg border border-border bg-surface px-space-md py-space-sm">
         <FuriganaText
           text={text}
           mode={furiganaMode}
@@ -82,7 +82,7 @@ export function ChatBubble({
           onPress={onLookupWords}
           testID="chat-bubble-lookup"
           className="mt-space-xs min-h-[44px] justify-center self-start px-space-xs">
-          <Text className="text-body-sm font-ui-semibold text-brand-text">Look up words</Text>
+          <Text className="text-caption font-ui-semibold text-brand-text">Look up words</Text>
         </Pressable>
       ) : null}
     </View>

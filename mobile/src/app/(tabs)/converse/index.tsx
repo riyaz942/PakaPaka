@@ -1,15 +1,15 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
 import React, { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Icon } from '@/components/common/Icon';
+import { ScreenTitle } from '@/components/common/ScreenTitle';
 import {
   ConversationStartPicker,
   type ConversationStartRequest,
 } from '@/components/converse/ConversationStartPicker';
 import { KeySetup } from '@/components/converse/KeySetup';
-import { getSemanticColors } from '@/constants/semantic-colors';
 import { resolveActiveProvider } from '@/data/ai/aiConfig';
 import { DEFAULT_MODELS } from '@/data/ai/byokCredential.types';
 import { isOnline } from '@/data/ai/connectivity';
@@ -22,7 +22,6 @@ import { useByokStatus } from '@/data/hooks/useByokStatus';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { createAiSession } from '@/data/user/aiSessionRepository';
 import { getAiModel } from '@/data/user/preferencesRepository';
-import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 /**
  * The Conversation tab (FR87, UX-DR3, UX-DR21).
@@ -34,7 +33,6 @@ import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 export default function ConverseScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
-  const colors = getSemanticColors(usePaintedColorScheme());
   const { configured, isReady, error: byokError, refresh } = useByokStatus();
   const [online, setOnline] = useState<boolean | null>(null);
   const [recentGrammar, setRecentGrammar] = useState<RecentGrammarItem[]>([]);
@@ -106,9 +104,7 @@ export default function ConverseScreen() {
   return (
     <View className="flex-1 bg-background" style={{ paddingTop: insets.top }}>
       <View className="flex-row items-center justify-between px-space-md py-space-sm">
-        <Text accessibilityRole="header" className="text-title text-primary">
-          Talk
-        </Text>
+        <ScreenTitle>Talk</ScreenTitle>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Past conversations"
@@ -116,7 +112,7 @@ export default function ConverseScreen() {
           testID="converse-history-entry"
           className="min-h-[44px] min-w-[44px] items-end justify-center"
           hitSlop={8}>
-          <MaterialIcons name="history" size={24} color={colors.feedbackInfo} />
+          <Icon name="history" size={22} strokeWidth={2} className="text-brand-text" />
         </Pressable>
       </View>
 
@@ -126,21 +122,25 @@ export default function ConverseScreen() {
         </View>
       ) : online === false ? (
         <View className="flex-1 items-center justify-center p-space-lg">
-          <MaterialIcons name="cloud-off" size={40} color={colors.secondary} />
-          <Text accessibilityRole="header" className="mt-space-md text-title text-primary">
+          <Icon name="offline" size={40} strokeWidth={1.75} className="text-muted" />
+          <Text
+            accessibilityRole="header"
+            className="mt-space-md text-title font-ui-extrabold text-primary">
             Conversation needs internet
           </Text>
-          <Text className="mt-space-sm text-center text-body text-secondary">
+          <Text className="mt-space-sm text-center text-body font-ui text-secondary">
             Chat runs through the AI provider you configured, so this tab needs a connection.
             Everything else in the app still works offline.
           </Text>
         </View>
       ) : byokError ? (
         <View className="flex-1 items-center justify-center p-space-lg">
-          <Text accessibilityRole="header" className="text-title text-primary">
+          <Text
+            accessibilityRole="header"
+            className="text-title font-ui-extrabold text-primary">
             Could not access secure storage
           </Text>
-          <Text className="mt-space-sm text-center text-body text-secondary">
+          <Text className="mt-space-sm text-center text-body font-ui text-secondary">
             {byokError.userMessage ?? byokError.message}
           </Text>
         </View>

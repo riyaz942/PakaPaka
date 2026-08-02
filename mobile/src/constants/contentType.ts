@@ -7,14 +7,9 @@ import type { ItemType } from '@/data/curriculum/itemRepository';
  * class bundles anywhere an item's type should read at a glance.
  *
  * Design System v2 splits each hue into three roles — see the plan's "Three-role
- * colors" decision. `text`/`tint` are the pre-v2 pairing kept for call sites that
- * have not been restyled yet; new UI should use `glyph` + `soft` + `deep`.
+ * colors" decision: `glyph` for marks, `soft` for fills, `deep` for text on them.
  */
 export type ContentAccent = {
-  /** Accent text color for the form/character and labels. */
-  text: string;
-  /** Low-opacity tinted background for badges and hero headers. */
-  tint: string;
   /** Left-side accent color, paired with `border-l-*` width (e.g. a list-row rule). */
   barLeft: string;
   /** Base hue as text — glyphs, icons and chip labels on a plain surface. */
@@ -43,8 +38,6 @@ export const CONTENT_TYPE_LABEL: Record<ItemType, string> = {
 export const PASSAGE_CONTENT_LABEL = 'Passage';
 
 export const PASSAGE_CONTENT_ACCENT: ContentAccent = {
-  text: 'text-content-passage',
-  tint: 'bg-content-passage/15',
   barLeft: 'border-l-content-passage',
   glyph: 'text-content-passage',
   edge: 'bg-content-passage',
@@ -54,8 +47,6 @@ export const PASSAGE_CONTENT_ACCENT: ContentAccent = {
 
 export const CONTENT_TYPE_ACCENT: Record<ItemType, ContentAccent> = {
   radical: {
-    text: 'text-content-radical',
-    tint: 'bg-content-radical/15',
     barLeft: 'border-l-content-radical',
     glyph: 'text-content-radical',
     edge: 'bg-content-radical',
@@ -63,8 +54,6 @@ export const CONTENT_TYPE_ACCENT: Record<ItemType, ContentAccent> = {
     deep: 'text-content-radical-deep',
   },
   kanji: {
-    text: 'text-content-kanji',
-    tint: 'bg-content-kanji/15',
     barLeft: 'border-l-content-kanji',
     glyph: 'text-content-kanji',
     edge: 'bg-content-kanji',
@@ -72,8 +61,6 @@ export const CONTENT_TYPE_ACCENT: Record<ItemType, ContentAccent> = {
     deep: 'text-content-kanji-deep',
   },
   vocabulary: {
-    text: 'text-content-vocabulary',
-    tint: 'bg-content-vocabulary/15',
     barLeft: 'border-l-content-vocabulary',
     glyph: 'text-content-vocabulary',
     edge: 'bg-content-vocabulary',
@@ -81,8 +68,6 @@ export const CONTENT_TYPE_ACCENT: Record<ItemType, ContentAccent> = {
     deep: 'text-content-vocabulary-deep',
   },
   grammar: {
-    text: 'text-content-grammar',
-    tint: 'bg-content-grammar/15',
     barLeft: 'border-l-content-grammar',
     glyph: 'text-content-grammar',
     edge: 'bg-content-grammar',

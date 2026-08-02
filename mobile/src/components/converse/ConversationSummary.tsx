@@ -3,6 +3,7 @@ import React from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
+import { SessionCompleteHeader } from '@/components/common/SessionCompleteHeader';
 import type { SessionSummary } from '@/core/ai/aiSession.types';
 import type { AppError } from '@/types/result.types';
 
@@ -32,7 +33,9 @@ export function ConversationSummary({
     return (
       <View className="flex-1 items-center justify-center p-space-lg">
         <ActivityIndicator accessibilityLabel="Generating your session summary" />
-        <Text className="mt-space-md text-body text-secondary">Looking over your conversation…</Text>
+        <Text className="mt-space-md text-body font-ui text-secondary">
+          Looking over your conversation…
+        </Text>
       </View>
     );
   }
@@ -40,18 +43,23 @@ export function ConversationSummary({
   if (!summary) {
     return (
       <View className="flex-1 justify-center p-space-lg">
-        <Text accessibilityRole="header" className="text-title text-primary">
-          Session finished
-        </Text>
-        <Text className="mt-space-sm text-body text-secondary">
+        <SessionCompleteHeader title="Session finished" />
+        <Text className="mt-space-md text-center text-body font-ui text-secondary">
           Want notes on how it went? That takes one more request to your provider.
         </Text>
         {error ? (
-          <Text accessibilityLiveRegion="polite" className="mt-space-md text-body text-feedback-error">
+          <Text
+            accessibilityLiveRegion="polite"
+            className="mt-space-md text-center text-body font-ui text-feedback-incorrect-deep">
             {error.userMessage ?? error.message}
           </Text>
         ) : null}
-        <Button className="mt-space-lg" label="Get my notes" onPress={onGenerate} testID="summary-generate" />
+        <Button
+          className="mt-space-lg"
+          label="Get my notes"
+          onPress={onGenerate}
+          testID="summary-generate"
+        />
         <Button
           className="mt-space-sm"
           label="Skip"
@@ -64,15 +72,11 @@ export function ConversationSummary({
 
   return (
     <ScrollView className="flex-1" contentContainerClassName="p-space-lg">
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
-        How that went
-      </Text>
+      <SessionCompleteHeader title="How that went" />
 
-      <Text accessibilityRole="header" className="mt-space-lg text-title text-primary">
-        Worth fixing
-      </Text>
+      <Text className="mt-space-xl text-overline font-ui-bold text-faint">WORTH FIXING</Text>
       {summary.mistakes.length === 0 ? (
-        <Text className="mt-space-sm text-body text-secondary">
+        <Text className="mt-space-sm text-body font-ui text-secondary">
           Nothing worth correcting — nice work.
         </Text>
       ) : (
@@ -80,24 +84,26 @@ export function ConversationSummary({
           {summary.mistakes.map((mistake, index) => (
             <View
               key={`${mistake.correction}-${index}`}
-              className="rounded-radius-md border border-border bg-surface p-space-md">
-              <Text className="text-body text-secondary line-through">{mistake.quote}</Text>
-              <Text className="mt-space-xs text-body font-semibold text-primary">
+              className="rounded-radius-lg border border-border bg-feedback-incorrect-soft p-space-md">
+              <Text className="text-body font-jp-medium text-secondary line-through">
+                {mistake.quote}
+              </Text>
+              <Text className="mt-space-xs text-body font-jp-medium text-primary">
                 {mistake.correction}
               </Text>
               {mistake.note ? (
-                <Text className="mt-space-xs text-body-sm text-secondary">{mistake.note}</Text>
+                <Text className="mt-space-xs text-body-sm font-ui text-secondary">
+                  {mistake.note}
+                </Text>
               ) : null}
             </View>
           ))}
         </View>
       )}
 
-      <Text accessibilityRole="header" className="mt-space-lg text-title text-primary">
-        Words you met
-      </Text>
+      <Text className="mt-space-xl text-overline font-ui-bold text-faint">WORDS YOU MET</Text>
       {summary.wordsMet.length === 0 ? (
-        <Text className="mt-space-sm text-body text-secondary">No new words came up.</Text>
+        <Text className="mt-space-sm text-body font-ui text-secondary">No new words came up.</Text>
       ) : (
         <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
           {summary.wordsMet.map((word) =>
@@ -107,15 +113,17 @@ export function ConversationSummary({
                 accessibilityRole="button"
                 accessibilityLabel={`Open details for ${word.text}`}
                 onPress={() => router.push(`/browse/item/${word.itemId}`)}
-                className="min-h-[44px] justify-center rounded-radius-md border border-feedback-info bg-surface px-space-md py-space-sm">
-                <Text className="text-body text-feedback-info">{word.text}</Text>
+                className="min-h-[44px] justify-center rounded-radius-sm bg-content-vocabulary-soft px-space-md py-space-sm">
+                <Text className="text-body font-jp-medium text-content-vocabulary-deep">
+                  {word.text}
+                </Text>
               </Pressable>
             ) : (
               // Off-curriculum: shown for reference, not linked, never an SRS row.
               <View
                 key={word.text}
-                className="min-h-[44px] justify-center rounded-radius-md border border-border bg-surface px-space-md py-space-sm">
-                <Text className="text-body text-secondary">{word.text}</Text>
+                className="min-h-[44px] justify-center rounded-radius-sm border border-border bg-surface px-space-md py-space-sm">
+                <Text className="text-body font-jp-medium text-secondary">{word.text}</Text>
               </View>
             ),
           )}
@@ -124,21 +132,23 @@ export function ConversationSummary({
 
       {summary.grammarNotes.length > 0 ? (
         <>
-          <Text accessibilityRole="header" className="mt-space-lg text-title text-primary">
-            Grammar you practised
+          <Text className="mt-space-xl text-overline font-ui-bold text-faint">
+            GRAMMAR YOU PRACTISED
           </Text>
-          <View className="mt-space-sm gap-space-xs">
+          <View className="mt-space-sm gap-space-sm">
             {summary.grammarNotes.map((note, index) => (
-              <Text key={`${note}-${index}`} className="text-body text-secondary">
-                • {note}
-              </Text>
+              <View
+                key={`${note}-${index}`}
+                className="rounded-radius-lg bg-content-grammar-soft px-space-md py-space-sm">
+                <Text className="text-body font-ui text-content-grammar-deep">{note}</Text>
+              </View>
             ))}
           </View>
         </>
       ) : null}
 
       {isCached ? (
-        <Text className="mt-space-lg text-body-sm text-secondary">
+        <Text className="mt-space-lg text-body-sm font-ui text-muted">
           Saved with this conversation — reopening it will not spend another request.
         </Text>
       ) : null}
@@ -147,7 +157,6 @@ export function ConversationSummary({
         className="mt-space-lg"
         label="Done"
         onPress={() => router.dismissAll()}
-        variant="secondary"
       />
     </ScrollView>
   );

@@ -35,15 +35,17 @@ export function GrammarMcOptions({ options, onSelect, disabled }: GrammarMcOptio
               onSelect(option);
             }}
             className={cn(
-              'min-h-[44px] justify-center rounded-radius-md border px-space-md py-space-sm',
+              'min-h-[44px] justify-center rounded-radius-md px-space-md py-space-sm',
+              // Soft fill + deep text, the rule every type-coloured surface
+              // follows — the base gold does not clear AA for a label.
               isSelected
-                ? 'border-content-grammar bg-surface-elevated'
-                : 'border-border bg-surface-elevated',
+                ? 'border-2 border-content-grammar bg-content-grammar-soft'
+                : 'border border-border bg-surface-elevated',
             )}>
             <Text
               className={cn(
-                'text-body-lg text-center',
-                isSelected ? 'text-content-grammar' : 'text-primary',
+                'text-center text-body-lg font-jp-medium',
+                isSelected ? 'text-content-grammar-deep' : 'text-primary',
               )}>
               {option}
             </Text>

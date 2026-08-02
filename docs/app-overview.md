@@ -72,9 +72,9 @@ Tapping a row opens a detail page: mnemonics, readings, example sentences, cross
 
 ### Talk — `(tabs)/converse/`
 
-AI conversation practice, and the only network-dependent surface. Three states in precedence order: offline notice (scoped to this tab — it says so explicitly), key setup when no provider is configured, or a start picker that grounds the chat in recent or chosen grammar points.
+AI conversation practice, and the only network-dependent surface. Three states in precedence order: offline notice (scoped to this tab — it says so explicitly), key setup when no provider is configured, or a start picker that grounds the chat in recent or chosen grammar points. The recent-grammar card is highlighted with a grammar-gold border; a lock footnote marks Talk as the only online feature.
 
-Replies use curriculum-appropriate furigana brackets; unknown words are flagged but never injected into SRS. Sessions end through an explicit End button (or the AI's wrap-up marker) into an on-demand summary — landing on the summary screen does not itself spend a request. Past threads live behind the history icon in the tab header. Provider keys go to secure storage; transcripts stay local.
+Replies use curriculum-appropriate furigana brackets; unknown words are flagged but never injected into SRS. Sessions end through a centered End pill (or the AI's wrap-up marker) into an on-demand summary — landing on the summary screen does not itself spend a request. Past threads live behind the history icon in the tab header. Provider keys go to secure storage; transcripts stay local.
 
 ### Stats — `(tabs)/stats.tsx`
 
@@ -90,4 +90,5 @@ Tracked in detail in [working-history.md](./working-history.md) and [known-issue
 
 - Radical mnemonic images are wired end to end but not generated — the app still shows the text fallback.
 - N4 grammar cloze variants and families (Wave C) are unauthored.
-- Streak celebration has a data path (`claimStreakCelebration`) but no UI, and is not wired from review or lesson completion.
+- `claimStreakCelebration` (`src/data/user/streakRepository.ts`) has a data path but no UI and no callers. Streaks were rejected outright by decision R2, so this is dead code awaiting removal, not a missing feature — do not build UI onto it.
+- App icon and adaptive-icon art are still Expo template assets. The launch screen is v2 (warm background, no logo); the icons need real artwork.

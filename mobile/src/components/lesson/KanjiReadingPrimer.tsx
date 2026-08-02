@@ -16,11 +16,11 @@ export function KanjiReadingPrimer() {
     <View
       className="mt-4 gap-space-sm rounded-radius-lg border border-border bg-surface p-space-lg"
       testID="kanji-reading-primer">
-      <Text accessibilityRole="header" className="text-body-lg font-semibold text-primary">
+      <Text accessibilityRole="header" className="text-body-lg font-ui-bold text-primary">
         {content.title}
       </Text>
       {content.paragraphs.map((paragraph, index) => (
-        <Text key={index} className="text-body text-secondary">
+        <Text key={index} className="text-body font-ui text-secondary">
           {paragraph}
         </Text>
       ))}

@@ -82,6 +82,12 @@ describe('ConversationStartPicker', () => {
     expect(screen.getByTestId('start-random').props.accessibilityState.disabled).toBe(false);
   });
 
+  it('shows the first recent grammar form on the highlighted card', () => {
+    render(<ConversationStartPicker recentGrammar={RECENT} allGrammar={ALL} onStart={jest.fn()} />);
+
+    expect(screen.getByText('て form · connecting verbs')).toBeTruthy();
+  });
+
   it('leaves the ungrounded modes available and unpinned', () => {
     const onStart = jest.fn();
     render(<ConversationStartPicker recentGrammar={RECENT} allGrammar={ALL} onStart={onStart} />);

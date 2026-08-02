@@ -130,8 +130,9 @@ export function WordLookupSheet({
       onRequestClose={handleClose}
       accessibilityViewIsModal>
       <View className="flex-1 justify-end bg-black/40">
-        <View className="max-h-[70%] rounded-t-radius-lg border-t border-border bg-background p-space-lg">
-          <Text accessibilityRole="header" className="text-title text-primary">
+        <View className="max-h-[70%] gap-space-md rounded-t-radius-xl border-t border-border bg-surface px-space-lg pb-space-2xl pt-space-lg shadow-e3">
+          <View className="h-1 w-10 self-center rounded-radius-full bg-border" />
+          <Text accessibilityRole="header" className="text-title font-ui-bold text-primary">
             Look up a word
           </Text>
 
@@ -197,7 +198,7 @@ export function WordLookupSheet({
                   <Text className="text-title text-primary">{selected.text}</Text>
                   <Text
                     accessibilityLiveRegion="polite"
-                    className="mt-space-sm text-body text-feedback-incorrect">
+                    className="mt-space-sm text-body font-ui text-feedback-incorrect-deep">
                     {selected.message}
                   </Text>
                   <Text className="mt-space-sm text-body-sm text-secondary">

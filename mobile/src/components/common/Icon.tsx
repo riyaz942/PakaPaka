@@ -39,7 +39,8 @@ export type IconName =
   | 'info'
   | 'chevron'
   | 'device'
-  | 'image';
+  | 'image'
+  | 'offline';
 
 /** Paths are lifted verbatim from the spec's Iconography grid. */
 const ICON_PATHS: Record<IconName, React.ReactNode> = {
@@ -148,6 +149,12 @@ const ICON_PATHS: Record<IconName, React.ReactNode> = {
       <Rect x={3} y={4.5} width={18} height={15} rx={2.5} />
       <Circle cx={8.5} cy={10} r={1.8} />
       <Path d="m3.5 17 5-4.5 4 3.5 3-2.5 5 4" />
+    </>
+  ),
+  offline: (
+    <>
+      <Path d="M6.5 16.5h11a4 4 0 0 0 .4-8 5.5 5.5 0 0 0-10.3-1.6A3.8 3.8 0 0 0 6.5 16.5Z" />
+      <Path d="M4 4l16 16" />
     </>
   ),
 };

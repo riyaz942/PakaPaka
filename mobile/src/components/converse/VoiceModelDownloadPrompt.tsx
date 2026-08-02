@@ -105,18 +105,18 @@ export function VoiceModelDownloadPrompt({
   const isDownloading = progress !== null;
 
   return (
-    <View className="mx-space-md mb-space-sm rounded-radius-md border border-border bg-surface p-space-md">
-      <Text accessibilityRole="header" className="text-body font-semibold text-primary">
+    <View className="mx-space-md mb-space-sm rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text accessibilityRole="header" className="text-body font-ui-extrabold text-primary">
         Speaking practice needs a one-time download
       </Text>
-      <Text className="mt-space-sm text-body-sm text-secondary">
+      <Text className="mt-space-sm text-body-sm font-ui text-secondary">
         The Japanese voice and speech models run on this device by default, so chat stays usable
         while they download. Optional cloud transcription is a separate Settings toggle — it is
         never used unless you turn it on.
       </Text>
 
       {sizeBytes !== null ? (
-        <Text className="mt-space-sm text-body-sm text-secondary">
+        <Text className="mt-space-sm text-body-sm font-ui text-muted">
           Download size: {formatBytes(sizeBytes)}
         </Text>
       ) : null}
@@ -124,7 +124,7 @@ export function VoiceModelDownloadPrompt({
       {error ? (
         <Text
           accessibilityLiveRegion="polite"
-          className="mt-space-sm text-body-sm text-feedback-incorrect">
+          className="mt-space-sm text-body-sm font-ui text-feedback-incorrect-deep">
           {error}
         </Text>
       ) : null}
@@ -133,7 +133,7 @@ export function VoiceModelDownloadPrompt({
         <View className="mt-space-md gap-space-sm">
           <Text
             accessibilityLiveRegion="polite"
-            className="text-body-sm text-secondary"
+            className="text-body-sm font-ui text-secondary"
             testID="voice-model-progress">
             Downloading… {Math.round(progress * 100)}%
           </Text>

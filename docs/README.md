@@ -12,7 +12,7 @@ For detailed done / not-done status, see [working-history.md](./working-history.
 | [known-issues.md](./known-issues.md) | Confirmed open defects found outside their discovering story's scope |
 | [content/content-pipeline-plan.md](./content/content-pipeline-plan.md) | Master content-quality plan (grammar depth, mnemonics, attribution) |
 | [workflows/](./workflows/) | No-API web-chat generation runbooks + browser automation prompts |
-| [design/redesign-v2/](./design/redesign-v2/README.md) | Design System v2 restyle — 8 session-sized implementation chunks + token spec |
+| [design/redesign-v2/](./design/redesign-v2/README.md) | Design System v2 restyle — **done** (Sessions 1–8). Spec + decisions/deviations log. |
 
 ## Maintainer runbooks
 

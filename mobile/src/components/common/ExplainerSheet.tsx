@@ -31,8 +31,9 @@ export function ExplainerSheet({ topic, visible, onDismiss }: ExplainerSheetProp
         onPress={onDismiss}
         className="flex-1 bg-black/40"
       />
-      <View className="max-h-[70%] gap-space-md rounded-t-radius-lg border-t border-border bg-surface p-space-lg">
-        <Text accessibilityRole="header" className="text-title text-primary">
+      <View className="max-h-[70%] gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3">
+        <View className="h-1 w-10 self-center rounded-radius-full bg-border" />
+        <Text accessibilityRole="header" className="text-title font-ui-bold text-primary">
           {content.title}
         </Text>
 
@@ -40,7 +41,11 @@ export function ExplainerSheet({ topic, visible, onDismiss }: ExplainerSheetProp
           {content.paragraphs.map((paragraph, index) => (
             <Text
               key={index}
-              className={index === 0 ? 'text-body text-secondary' : 'mt-space-md text-body text-secondary'}>
+              className={
+                index === 0
+                  ? 'text-body font-ui text-secondary'
+                  : 'mt-space-md text-body font-ui text-secondary'
+              }>
               {paragraph}
             </Text>
           ))}
@@ -52,7 +57,7 @@ export function ExplainerSheet({ topic, visible, onDismiss }: ExplainerSheetProp
           onPress={onDismiss}
           testID="explainer-sheet-close"
           className="min-h-[44px] items-center justify-center rounded-radius-md">
-          <Text className="text-body text-secondary">Close</Text>
+          <Text className="text-body font-ui-semibold text-brand-text">Close</Text>
         </Pressable>
       </View>
     </Modal>

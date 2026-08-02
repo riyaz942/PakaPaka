@@ -30,8 +30,10 @@ analysis — each has repro steps so they can be verified on-device before fixin
 `isDark` comes from `resolveColorScheme(useColorScheme())`. Intent is correct:
 dark icons on the light theme. Two independent things can break it:
 
-1. **Theme-resolution mismatch.** `resolveColorScheme`
-   (`mobile/src/utils/resolve-color-scheme.ts:4`) is dark-first: it returns
+1. **Theme-resolution mismatch.** *(Resolved by the v2 restyle:
+   `resolve-color-scheme.ts` was deleted and every caller now reads
+   `usePaintedColorScheme()`, which is light-first and matches the palette.
+   Kept here for the reasoning.)* `resolveColorScheme` was dark-first: it returned
    `'dark'` whenever React Native reports `null`/unknown. But the actual colors
    come from NativeWind with `darkMode: 'media'`
    (`mobile/tailwind.config.js:5`) + a light-mode media override in
@@ -86,7 +88,7 @@ be (and probably are) fine.
 dark theme, on Android and iOS, on every screen (Home, review full-screen
 modal, lesson, onboarding). No flash of wrong-colored icons on cold start.
 
-**Files.** `mobile/src/app/_layout.tsx`, `mobile/src/utils/resolve-color-scheme.ts`
+**Files.** `mobile/src/app/_layout.tsx`, `mobile/src/hooks/use-painted-color-scheme.ts`
 (and its callers — the same dark-first fallback also feeds the navigation
 `ThemeProvider`, so the mismatch can theme navigation chrome wrong too).
 

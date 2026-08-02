@@ -21,13 +21,18 @@ type LessonMarkdownProps = {
 };
 
 const HEADING_CLASS: Record<number, string> = {
-  1: 'text-title-lg text-primary',
-  2: 'text-title text-primary',
+  1: 'text-title-lg font-ui-extrabold text-primary',
+  2: 'text-title font-ui-extrabold text-primary',
 };
-const SUBHEADING_CLASS = 'text-body-lg font-semibold text-primary';
+const SUBHEADING_CLASS = 'text-body-lg font-ui-bold text-primary';
+const PROSE_CLASS = 'text-body font-ui text-primary';
 
 function inlineModifiers(span: Pick<InlineSpan, 'bold' | 'italic' | 'code'>): string | undefined {
-  return cn(span.bold && 'font-bold', span.italic && 'italic', span.code && 'font-mono') || undefined;
+  // Weight is a font *family* here, not `font-bold`: the static Google Fonts
+  // register one family per weight, so `font-ui font-bold` renders Regular.
+  return (
+    cn(span.bold && 'font-ui-bold', span.italic && 'italic', span.code && 'font-mono') || undefined
+  );
 }
 
 /** Ruby column for one annotated JP run inside mixed prose; tap flips the reading. */
@@ -54,7 +59,7 @@ function RubyToken({
     <Pressable accessible={false} onPress={onToggle}>
       <View className="items-center">
         {isVisible ? (
-          <Text className="text-furigana text-secondary text-center" accessible={false}>
+          <Text className="text-center text-furigana font-jp text-secondary" accessible={false}>
             {token.reading}
           </Text>
         ) : null}
@@ -178,7 +183,7 @@ function BlockView({
             spans={block.spans}
             mode={mode}
             knownKanji={knownKanji}
-            baseClassName="text-body text-primary"
+            baseClassName={PROSE_CLASS}
           />
         </View>
       );
@@ -193,7 +198,7 @@ function BlockView({
             spans={block.spans}
             mode={mode}
             knownKanji={knownKanji}
-            baseClassName="text-body text-primary"
+            baseClassName={PROSE_CLASS}
           />
         </View>
       );
@@ -202,7 +207,7 @@ function BlockView({
         <View className={first ? undefined : 'mt-space-md'}>
           {block.items.map((itemSpans, index) => (
             <View key={index} className={cn('flex-row', index > 0 && 'mt-space-sm')}>
-              <Text className="text-body text-secondary mr-space-sm">
+              <Text className="mr-space-sm text-body font-ui text-secondary">
                 {block.ordered ? `${index + 1}.` : '•'}
               </Text>
               <View className="flex-1">
@@ -210,7 +215,7 @@ function BlockView({
                   spans={itemSpans}
                   mode={mode}
                   knownKanji={knownKanji}
-                  baseClassName="text-body text-primary"
+                  baseClassName={PROSE_CLASS}
                 />
               </View>
             </View>
@@ -230,7 +235,7 @@ function BlockView({
                 text={line}
                 mode={mode}
                 knownKanji={knownKanji}
-                className="text-body-lg text-primary"
+                className="text-body-lg font-jp text-primary"
               />
             </View>
           ))}

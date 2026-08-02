@@ -46,7 +46,7 @@ export function ProgressiveHint({ levels, onReveal }: ProgressiveHintProps) {
             level.isReinforcement ? 'bg-reinforcement-bg' : 'bg-surface-elevated'
           }`}>
           <Text
-            className={`text-caption ${
+            className={`text-caption font-ui-medium ${
               level.isReinforcement ? 'text-reinforcement-text' : 'text-secondary'
             }`}>
             {level.content}
@@ -58,9 +58,9 @@ export function ProgressiveHint({ levels, onReveal }: ProgressiveHintProps) {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={hintButtonLabel(revealedCount, total)}
-          className="self-center rounded-radius-md bg-surface px-space-md py-space-sm"
+          className="min-h-[44px] justify-center self-center rounded-radius-md bg-surface px-space-md py-space-sm"
           onPress={handleReveal}>
-          <Text className="text-body-sm text-feedback-info">
+          <Text className="text-body-sm font-ui-semibold text-brand-text">
             {revealedCount === 0 ? HINT_BUTTON_LABEL : hintButtonLabel(revealedCount, total)}
           </Text>
         </Pressable>

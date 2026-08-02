@@ -159,7 +159,7 @@ export function FuriganaText({
         const readingBlock = (
           <View className="items-center">
             {isVisible ? (
-              <Text className="text-furigana text-secondary text-center" accessible={false}>
+              <Text className="text-center text-furigana font-jp text-secondary" accessible={false}>
                 {segment.reading}
               </Text>
             ) : null}

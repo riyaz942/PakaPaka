@@ -18,6 +18,7 @@ import {
   setAiModel,
   setAiOpenAiBaseUrl,
 } from '@/data/user/preferencesRepository';
+import { cn } from '@/utils/cn';
 
 const PROVIDER_LABELS: Record<ByokProvider, string> = {
   openai: 'OpenAI-compatible',
@@ -99,10 +100,10 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
       keyboardShouldPersistTaps="handled">
       {!compact ? (
         <>
-          <Text accessibilityRole="header" className="text-title-lg text-primary">
+          <Text accessibilityRole="header" className="text-title-lg font-ui-extrabold text-primary">
             Bring your own key
           </Text>
-          <Text className="mt-space-sm text-body text-secondary">
+          <Text className="mt-space-sm text-body font-ui text-secondary">
             Conversation practice uses an AI provider you choose. Your key is stored in this
             device&apos;s secure storage and is only ever sent to the endpoint you configure
             below.
@@ -110,32 +111,45 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
         </>
       ) : null}
 
-      <View className="mt-space-lg flex-row gap-space-sm">
-        {BYOK_PROVIDERS.map((option) => (
-          <Pressable
-            key={option}
-            accessibilityRole="button"
-            accessibilityLabel={`Use ${PROVIDER_LABELS[option]}`}
-            accessibilityState={{ selected: provider === option }}
-            disabled={isSaving}
-            onPress={() => handleProviderChange(option)}
-            className={`min-h-[44px] flex-1 items-center justify-center rounded-radius-md border px-space-md py-space-sm ${
-              provider === option ? 'border-feedback-info bg-surface-elevated' : 'border-border'
-            }`}>
-            <Text className="text-body font-semibold text-primary">
-              {PROVIDER_LABELS[option]}
-            </Text>
-          </Pressable>
-        ))}
+      <View
+        accessibilityRole="radiogroup"
+        accessibilityLabel="AI provider"
+        className="mt-space-lg flex-row gap-space-sm">
+        {BYOK_PROVIDERS.map((option) => {
+          const selected = provider === option;
+          return (
+            <Pressable
+              key={option}
+              accessibilityRole="radio"
+              accessibilityLabel={`Use ${PROVIDER_LABELS[option]}`}
+              accessibilityState={{ selected, checked: selected, disabled: isSaving }}
+              disabled={isSaving}
+              onPress={() => handleProviderChange(option)}
+              className={cn(
+                'min-h-[44px] flex-1 items-center justify-center rounded-radius-md border px-space-md py-space-sm',
+                selected
+                  ? 'border-2 border-brand-500 bg-brand-soft'
+                  : 'border-border bg-surface',
+              )}>
+              <Text
+                className={cn(
+                  'text-center text-caption font-ui-bold',
+                  selected ? 'text-brand-text' : 'text-primary',
+                )}>
+                {PROVIDER_LABELS[option]}
+              </Text>
+            </Pressable>
+          );
+        })}
       </View>
 
       <View className="mt-space-lg">
-        <Text className="text-body font-semibold text-primary">API key</Text>
+        <Text className="text-overline font-ui-bold text-faint">API KEY</Text>
         <TextInput
           accessibilityLabel={`${PROVIDER_LABELS[provider]} API key`}
           autoCapitalize="none"
           autoCorrect={false}
-          className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm text-body text-primary"
+          className="mt-space-sm min-h-[44px] rounded-radius-sm border border-border bg-surface px-space-md py-space-sm text-body font-ui text-primary"
           editable={!isSaving}
           onChangeText={setApiKey}
           placeholder="Paste your API key"
@@ -146,8 +160,8 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
 
       {provider === 'openai' ? (
         <View className="mt-space-lg">
-          <Text className="text-body font-semibold text-primary">Base URL</Text>
-          <Text className="mt-space-xs text-body-sm text-secondary">
+          <Text className="text-overline font-ui-bold text-faint">BASE URL</Text>
+          <Text className="mt-space-xs text-body-sm font-ui text-secondary">
             Any endpoint that speaks the OpenAI chat-completions format. Must be HTTPS (or
             localhost HTTP).
           </Text>
@@ -155,7 +169,7 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
             accessibilityLabel="OpenAI-compatible base URL"
             autoCapitalize="none"
             autoCorrect={false}
-            className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm text-body text-primary"
+            className="mt-space-sm min-h-[44px] rounded-radius-sm border border-border bg-surface px-space-md py-space-sm text-body font-ui text-primary"
             editable={!isSaving}
             keyboardType="url"
             onChangeText={setBaseUrl}
@@ -166,12 +180,12 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
       ) : null}
 
       <View className="mt-space-lg">
-        <Text className="text-body font-semibold text-primary">Model</Text>
+        <Text className="text-overline font-ui-bold text-faint">MODEL</Text>
         <TextInput
           accessibilityLabel="Model name"
           autoCapitalize="none"
           autoCorrect={false}
-          className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm text-body text-primary"
+          className="mt-space-sm min-h-[44px] rounded-radius-sm border border-border bg-surface px-space-md py-space-sm text-body font-ui text-primary"
           editable={!isSaving}
           onChangeText={setModel}
           placeholder={DEFAULT_MODELS[provider]}
@@ -180,7 +194,7 @@ export function KeySetup({ onSaved, compact = false }: KeySetupProps) {
       </View>
 
       {status ? (
-        <Text accessibilityLiveRegion="polite" className="mt-space-md text-body text-secondary">
+        <Text accessibilityLiveRegion="polite" className="mt-space-md text-body font-ui text-secondary">
           {status}
         </Text>
       ) : null}
