@@ -16,6 +16,7 @@ const FONT_SIZE_TOKENS = [
   'body-lg',
   'body',
   'body-sm',
+  'label',
   'caption',
   'overline',
   'furigana',

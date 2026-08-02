@@ -16,7 +16,7 @@ export function JlptLevelPicker({ selectedLevel, onSelect, testID }: JlptLevelPi
       accessibilityRole="radiogroup"
       accessibilityLabel="JLPT level"
       testID={testID}
-      className="mt-3 flex-row flex-wrap gap-2">
+      className="mt-space-sm flex-row flex-wrap gap-space-sm">
       {JLPT_LEVELS.map((level) => {
         const isSelected = selectedLevel === level;
         return (
@@ -28,12 +28,16 @@ export function JlptLevelPicker({ selectedLevel, onSelect, testID }: JlptLevelPi
             onPress={() => onSelect(level)}
             testID={`jlpt-level-${level}`}
             className={cn(
-              'min-h-[44px] min-w-[56px] items-center justify-center rounded-radius-md px-4 py-2',
+              'min-h-[44px] min-w-[56px] items-center justify-center rounded-radius-sm px-space-md py-space-sm',
               isSelected
-                ? 'border-2 border-feedback-info bg-surface-elevated'
+                ? 'border-2 border-brand-500 bg-brand-soft'
                 : 'border border-border bg-surface',
             )}>
-            <Text className={cn('text-body font-semibold', isSelected && 'text-feedback-info')}>
+            <Text
+              className={cn(
+                'text-label font-ui-bold',
+                isSelected ? 'text-brand-text' : 'text-primary',
+              )}>
               {level}
             </Text>
           </Pressable>

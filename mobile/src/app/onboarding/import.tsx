@@ -1,11 +1,15 @@
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Banner } from '@/components/common/Banner';
 import { Button } from '@/components/common/Button';
+import { SectionHeading } from '@/components/common/SectionHeading';
+import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
 import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
+import { getSemanticColors } from '@/constants/semantic-colors';
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setImportPreview } from '@/data/import/importPreviewStore';
@@ -20,11 +24,18 @@ import {
   setOnboardingPath,
   setStartingJlptLevel,
 } from '@/data/user/preferencesRepository';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type ImportSource = 'wanikani' | 'bunpro' | 'anki';
 
 const NETWORK_NOTICE =
   'Requires a one-time internet connection. Data stays on your device after import.';
+
+const SOURCE_OPTIONS: readonly SegmentedPillOption<ImportSource>[] = [
+  { value: 'wanikani', label: 'WaniKani' },
+  { value: 'bunpro', label: 'Bunpro' },
+  { value: 'anki', label: 'Anki' },
+];
 
 function getImportErrorMessage(error: { userMessage?: string; message: string }): string {
   return error.userMessage ?? error.message;
@@ -32,6 +43,7 @@ function getImportErrorMessage(error: { userMessage?: string; message: string })
 
 export default function ImportScreen() {
   const insets = useSafeAreaInsets();
+  const colors = getSemanticColors(usePaintedColorScheme());
   const { curriculumDb, userDb } = useDatabase();
   const [selectedSource, setSelectedSource] = useState<ImportSource>('wanikani');
   const [selectedJlptLevel, setSelectedJlptLevel] = useState<JLPTLevel | null>(
@@ -178,16 +190,20 @@ export default function ImportScreen() {
     <View
       className="flex-1 bg-background px-6"
       style={{ paddingTop: insets.top + 48, paddingBottom: insets.bottom + 16 }}>
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
+      <Text
+        accessibilityRole="header"
+        className="text-title-lg font-ui-extrabold tracking-[-0.01em] text-primary">
         Import my progress
       </Text>
-      <Text className="mt-4 text-body text-secondary">
+      <Text className="mt-[9px] text-body-sm font-ui text-muted">
         Bring SRS progress from another study tool. Credentials stay in secure storage only for the
         import and are removed after a successful import.
       </Text>
 
-      <View className="mt-6">
-        <Text className="text-body font-semibold text-primary">What level are you studying toward?</Text>
+      <View className="mt-space-lg">
+        <Text className="text-body font-ui-semibold text-primary">
+          What level are you studying toward?
+        </Text>
         <JlptLevelPicker
           selectedLevel={selectedJlptLevel}
           onSelect={persistJlptLevel}
@@ -195,56 +211,32 @@ export default function ImportScreen() {
         />
       </View>
 
-      <View className="mt-6 flex-row gap-3">
-        <Pressable
-          accessibilityRole="button"
-          accessibilityState={{ selected: selectedSource === 'wanikani' }}
-          className={`flex-1 rounded-radius-md border px-4 py-3 ${
-            selectedSource === 'wanikani' ? 'border-primary bg-surface' : 'border-border'
-          }`}
-          disabled={isImporting}
-          onPress={() => handleSourceChange('wanikani')}>
-          <Text className="text-center text-body font-semibold text-primary">WaniKani</Text>
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityState={{ selected: selectedSource === 'bunpro' }}
-          className={`flex-1 rounded-radius-md border px-4 py-3 ${
-            selectedSource === 'bunpro' ? 'border-primary bg-surface' : 'border-border'
-          }`}
-          disabled={isImporting}
-          onPress={() => handleSourceChange('bunpro')}>
-          <Text className="text-center text-body font-semibold text-primary">Bunpro</Text>
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityState={{ selected: selectedSource === 'anki' }}
-          className={`flex-1 rounded-radius-md border px-4 py-3 ${
-            selectedSource === 'anki' ? 'border-primary bg-surface' : 'border-border'
-          }`}
-          disabled={isImporting}
-          onPress={() => handleSourceChange('anki')}>
-          <Text className="text-center text-body font-semibold text-primary">Anki</Text>
-        </Pressable>
-      </View>
+      <SegmentedPill
+        accessibilityLabel="Import source"
+        className="mt-space-lg"
+        disabled={isImporting}
+        onChange={handleSourceChange}
+        options={SOURCE_OPTIONS}
+        value={selectedSource}
+      />
 
       {selectedSource === 'wanikani' ? (
-        <View className="mt-8">
-          <Text className="text-body font-semibold text-primary">WaniKani API key</Text>
-          <Text className="mt-2 text-body text-secondary">
+        <View className="mt-space-lg">
+          <SectionHeading label="WaniKani API key" />
+          <Text className="mt-space-sm text-body-sm font-ui text-muted">
             Import from WaniKani maps your assignments to this app&apos;s curriculum and converts SRS
             stages to FSRS.
           </Text>
-          <Text className="mt-2 text-body text-secondary">{NETWORK_NOTICE}</Text>
+          <Banner className="mt-space-sm" message={NETWORK_NOTICE} variant="info" visible />
           <TextInput
             accessibilityLabel="WaniKani API key"
             autoCapitalize="none"
             autoCorrect={false}
-            className="mt-4 rounded-radius-md border border-border bg-surface px-4 py-3 text-body text-primary"
+            className="mt-space-sm min-h-[48px] rounded-radius-sm border border-border bg-surface px-space-md text-body font-ui text-primary"
             editable={!isImporting}
             onChangeText={setWanikaniApiKey}
             placeholder="Paste your WaniKani v2 API key"
-            placeholderTextColor="#8A8A8A"
+            placeholderTextColor={colors.faint}
             secureTextEntry
             value={wanikaniApiKey}
           />
@@ -252,31 +244,33 @@ export default function ImportScreen() {
       ) : null}
 
       {selectedSource === 'bunpro' ? (
-        <View className="mt-8">
-          <View className="rounded-radius-md border border-border bg-surface px-4 py-3">
-            <Text className="text-body font-semibold text-primary">Best-effort import</Text>
-            <Text className="mt-2 text-body text-secondary">
+        <View className="mt-space-lg">
+          <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+            <Text className="text-body font-ui-extrabold text-primary">Best-effort import</Text>
+            <Text className="mt-space-sm text-body-sm font-ui text-muted">
               Bunpro does not offer a public API. Import requires a frontend token you can obtain
               from your browser&apos;s developer tools. This is a best-effort feature — the API may be
               unavailable.
             </Text>
-            <Text className="mt-2 text-body text-secondary">
+            <Text className="mt-space-sm text-body-sm font-ui text-muted">
               Log into bunpro.jp in a browser, open Developer Tools, and find{' '}
-              <Text className="font-semibold">frontend_api_token</Text> in your cookies.
+              <Text className="font-ui-bold text-secondary">frontend_api_token</Text> in your
+              cookies.
             </Text>
-            <Text className="mt-2 text-body text-secondary">{NETWORK_NOTICE}</Text>
           </View>
 
-          <Text className="mt-6 text-body font-semibold text-primary">Bunpro frontend token</Text>
+          <Banner className="mt-space-sm" message={NETWORK_NOTICE} variant="info" visible />
+
+          <SectionHeading label="Bunpro frontend token" />
           <TextInput
             accessibilityLabel="Bunpro frontend token"
             autoCapitalize="none"
             autoCorrect={false}
-            className="mt-2 rounded-radius-md border border-border bg-surface px-4 py-3 text-body text-primary"
+            className="mt-space-sm min-h-[48px] rounded-radius-sm border border-border bg-surface px-space-md text-body font-ui text-primary"
             editable={!isImporting}
             onChangeText={setBunproToken}
             placeholder="Paste your frontend_api_token cookie value"
-            placeholderTextColor="#8A8A8A"
+            placeholderTextColor={colors.faint}
             secureTextEntry
             value={bunproToken}
           />
@@ -284,16 +278,16 @@ export default function ImportScreen() {
       ) : null}
 
       {selectedSource === 'anki' ? (
-        <View className="mt-8">
-          <View className="rounded-radius-md border border-border bg-surface px-4 py-3">
-            <Text className="text-body font-semibold text-primary">Local deck import</Text>
-            <Text className="mt-2 text-body text-secondary">
+        <View className="mt-space-lg">
+          <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+            <Text className="text-body font-ui-extrabold text-primary">Local deck import</Text>
+            <Text className="mt-space-sm text-body-sm font-ui text-muted">
               Your deck file is processed entirely on this device. No data is sent to any server.
             </Text>
           </View>
 
           <Button
-            className="mt-6"
+            className="mt-space-md"
             disabled={isImporting}
             label="Select Anki deck file"
             onPress={handleSelectAnkiDeckPress}
@@ -301,15 +295,17 @@ export default function ImportScreen() {
           />
 
           {ankiFileName ? (
-            <Text className="mt-4 text-body text-secondary">Selected: {ankiFileName}</Text>
+            <Text className="mt-space-sm text-body-sm font-ui-medium text-secondary">
+              Selected: {ankiFileName}
+            </Text>
           ) : null}
         </View>
       ) : null}
 
       {statusMessage ? (
-        <Text accessibilityLiveRegion="polite" className="mt-4 text-body text-secondary">
-          {statusMessage}
-        </Text>
+        <View accessibilityLiveRegion="polite">
+          <Banner className="mt-space-md" message={statusMessage} variant="error" visible />
+        </View>
       ) : null}
 
       {isImporting ? (
@@ -324,12 +320,14 @@ export default function ImportScreen() {
             }
           />
           {selectedSource === 'anki' ? (
-            <Text className="mt-2 text-body text-secondary">Processing deck...</Text>
+            <Text className="mt-space-sm text-body-sm font-ui-medium text-secondary">
+              Processing deck...
+            </Text>
           ) : null}
         </View>
       ) : null}
 
-      <View className="mt-auto gap-3">
+      <View className="mt-auto gap-space-sm">
         {selectedSource === 'wanikani' ? (
           <Button
             disabled={isImporting || wanikaniApiKey.trim().length === 0}
@@ -357,7 +355,7 @@ export default function ImportScreen() {
           onPress={handleSkipImport}
           variant="secondary"
         />
-        <Button label="Back" onPress={() => router.back()} variant="secondary" />
+        <Button label="Back" onPress={() => router.back()} variant="ghost" />
       </View>
     </View>
   );

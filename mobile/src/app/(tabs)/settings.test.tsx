@@ -147,28 +147,32 @@ describe('SettingsScreen daily goal (Story 2.1, FR57 / UX-DR33)', () => {
     mockDailyGoalTarget = 30;
   });
 
-  it('shows the current goal in an unbounded numeric field', () => {
+  it('shows the current goal in the stepper', () => {
     render(<SettingsScreen />);
-    const input = screen.getByTestId('settings-daily-goal-input');
-    expect(input.props.value).toBe('30');
+    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('30');
   });
 
-  it('persists an unbounded goal above the legacy maximum and reads it back', () => {
+  it('persists a raised goal and reads it back', () => {
     render(<SettingsScreen />);
-    const input = screen.getByTestId('settings-daily-goal-input');
-    fireEvent.changeText(input, '200');
-    fireEvent(screen.getByTestId('settings-daily-goal-input'), 'blur');
-    expect(mockSetDailyGoalTarget).toHaveBeenCalledWith(expect.anything(), 200);
-    expect(screen.getByTestId('settings-daily-goal-input').props.value).toBe('200');
+    fireEvent.press(screen.getByTestId('settings-daily-goal-increment'));
+    expect(mockSetDailyGoalTarget).toHaveBeenCalledWith(expect.anything(), 35);
+    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('35');
   });
 
-  it('rejects a non-positive goal with an inline error and no write', () => {
+  it('has no upper bound — the increment never disables', () => {
+    mockDailyGoalTarget = 200;
     render(<SettingsScreen />);
-    const input = screen.getByTestId('settings-daily-goal-input');
-    fireEvent.changeText(input, '0');
-    fireEvent(screen.getByTestId('settings-daily-goal-input'), 'blur');
+    expect(
+      screen.getByTestId('settings-daily-goal-increment').props.accessibilityState.disabled,
+    ).toBe(false);
+  });
+
+  it('cannot step below one load unit step, so no non-positive goal is ever written', () => {
+    mockDailyGoalTarget = 5;
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-daily-goal-decrement'));
     expect(mockSetDailyGoalTarget).not.toHaveBeenCalled();
-    expect(screen.getByText('Enter a number greater than zero.')).toBeTruthy();
+    expect(screen.getByTestId('settings-daily-goal-value')).toHaveTextContent('5');
   });
 });
 
@@ -182,12 +186,12 @@ describe('SettingsScreen vacation mode toggle', () => {
   it('renders the switch off by default', () => {
     render(<SettingsScreen />);
     const toggle = screen.getByRole('switch', { name: 'Pause reviews and lessons' });
-    expect(toggle.props.value).toBe(false);
+    expect(toggle.props.accessibilityState.checked).toBe(false);
   });
 
   it('starts vacation mode when toggled on', () => {
     render(<SettingsScreen />);
-    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', true);
+    fireEvent.press(screen.getByTestId('settings-vacation-mode-toggle'));
     expect(mockStartVacation).toHaveBeenCalled();
     expect(mockEndVacation).not.toHaveBeenCalled();
   });
@@ -196,7 +200,9 @@ describe('SettingsScreen vacation mode toggle', () => {
     mockVacationActive = true;
     mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
     render(<SettingsScreen />);
-    expect(screen.getByTestId('settings-vacation-mode-toggle').props.value).toBe(true);
+    expect(
+      screen.getByTestId('settings-vacation-mode-toggle').props.accessibilityState.checked,
+    ).toBe(true);
     expect(screen.getByText(/Paused since/)).toBeTruthy();
   });
 
@@ -204,7 +210,7 @@ describe('SettingsScreen vacation mode toggle', () => {
     mockVacationActive = true;
     mockVacationStartedAt = '2026-07-01T09:00:00.000Z';
     render(<SettingsScreen />);
-    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', false);
+    fireEvent.press(screen.getByTestId('settings-vacation-mode-toggle'));
     expect(mockEndVacation).toHaveBeenCalled();
     expect(screen.getByTestId('settings-vacation-result')).toHaveTextContent(
       'Welcome back — 12 reviews rescheduled.',
@@ -223,7 +229,7 @@ describe('SettingsScreen vacation mode toggle', () => {
       },
     } as unknown as ReturnType<typeof mockEndVacation>);
     render(<SettingsScreen />);
-    fireEvent(screen.getByTestId('settings-vacation-mode-toggle'), 'valueChange', false);
+    fireEvent.press(screen.getByTestId('settings-vacation-mode-toggle'));
     expect(screen.getByTestId('settings-vacation-result')).toHaveTextContent(
       'Vacation mode could not be turned off. Please try again.',
     );
@@ -241,13 +247,13 @@ describe('SettingsScreen accessibility', () => {
     render(<SettingsScreen />);
     const toggle = screen.getByRole('switch', { name: 'Reduce motion' });
     expect(toggle).toBeTruthy();
-    expect(toggle.props.value).toBe(false);
+    expect(toggle.props.accessibilityState.checked).toBe(false);
     expect(screen.getByTestId('settings-reduced-motion-toggle')).toBeTruthy();
   });
 
   it('persists reduced motion when toggled', () => {
     render(<SettingsScreen />);
-    fireEvent(screen.getByTestId('settings-reduced-motion-toggle'), 'valueChange', true);
+    fireEvent.press(screen.getByTestId('settings-reduced-motion-toggle'));
     expect(mockSetReducedMotion).toHaveBeenCalledWith(true);
   });
 });
@@ -262,7 +268,7 @@ describe('SettingsScreen review auto-advance toggle (Story 1.2, FR84 / UX-DR10)'
     render(<SettingsScreen />);
     const toggle = screen.getByRole('switch', { name: 'Auto-advance after correct answers' });
     expect(toggle).toBeTruthy();
-    expect(toggle.props.value).toBe(false);
+    expect(toggle.props.accessibilityState.checked).toBe(false);
   });
 
   it('labels the setting as Lightning Mode in the description', () => {
@@ -272,7 +278,7 @@ describe('SettingsScreen review auto-advance toggle (Story 1.2, FR84 / UX-DR10)'
 
   it('persists the preference when toggled on', () => {
     render(<SettingsScreen />);
-    fireEvent(screen.getByTestId('settings-review-auto-advance-toggle'), 'valueChange', true);
+    fireEvent.press(screen.getByTestId('settings-review-auto-advance-toggle'));
     expect(mockSetAutoAdvanceEnabled).toHaveBeenCalledWith(true);
   });
 
@@ -280,7 +286,7 @@ describe('SettingsScreen review auto-advance toggle (Story 1.2, FR84 / UX-DR10)'
     mockAutoAdvanceEnabled = true;
     render(<SettingsScreen />);
     const toggle = screen.getByTestId('settings-review-auto-advance-toggle');
-    expect(toggle.props.value).toBe(true);
+    expect(toggle.props.accessibilityState.checked).toBe(true);
   });
 });
 
@@ -311,7 +317,7 @@ describe('SettingsScreen shadow mode toggle (AC1/AC2/AC3 gating)', () => {
     mockShadowModeEnabled = false;
     render(<SettingsScreen />);
 
-    fireEvent(screen.getByTestId('settings-shadow-mode-toggle'), 'valueChange', true);
+    fireEvent.press(screen.getByTestId('settings-shadow-mode-toggle'));
     expect(mockEnableShadowMode).toHaveBeenCalledTimes(1);
     expect(mockDisableShadowMode).not.toHaveBeenCalled();
   });
@@ -321,7 +327,7 @@ describe('SettingsScreen shadow mode toggle (AC1/AC2/AC3 gating)', () => {
     mockShadowModeEnabled = true;
     render(<SettingsScreen />);
 
-    fireEvent(screen.getByTestId('settings-shadow-mode-toggle'), 'valueChange', false);
+    fireEvent.press(screen.getByTestId('settings-shadow-mode-toggle'));
     expect(mockDisableShadowMode).toHaveBeenCalledTimes(1);
     expect(mockEnableShadowMode).not.toHaveBeenCalled();
   });

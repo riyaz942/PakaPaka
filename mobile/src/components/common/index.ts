@@ -11,7 +11,12 @@ export { MnemonicImage, type MnemonicImageProps } from '@/components/common/Mnem
 export { OnboardingStep } from '@/components/common/OnboardingStep';
 export { ScreenHeader } from '@/components/common/ScreenHeader';
 export { ScreenTitle } from '@/components/common/ScreenTitle';
+export { SectionHeading } from '@/components/common/SectionHeading';
 export { SectionStepper } from '@/components/common/SectionStepper';
+export {
+  SegmentedPill,
+  type SegmentedPillOption,
+} from '@/components/common/SegmentedPill';
 export {
   SRSStageDot,
   SRSStageIndicator,

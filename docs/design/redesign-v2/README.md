@@ -160,12 +160,30 @@ Spec refs: Components section (buttons, chips, goal ring, answer inputs, chat bu
 
 Spec refs: screens 1–3 (pick a path, daily pace, ready) + screen 8 (Settings); Components → choice cards, toggle rows.
 
-- [ ] `onboarding/welcome.tsx`: progress dots (jade active), Display title "Learn Japanese for real", three path cards ("Most popular" pill on new-learner; import card shows WaniKani API / Bunpro / Anki pills, selected state = 2px jade + brand-50), full-width primary CTA. Disabled CTA until a path is chosen (grey disabled style).
-- [ ] `onboarding/intensity.tsx`: Relaxed/Intense choice cards ("Recommended for new learners" chip), "Today's lesson at this pace: **5 new items**" callout, jade info banner ("Reviews grow as you learn…").
-- [ ] `onboarding/complete.tsx`: "You're ready" + three value-prop rows with soft-tinted icon squares (rad-soft book, kan-soft target, brand-100 device — drawn icons, no emoji), primary "Start your first lesson" + secondary "Explore on my own".
-- [ ] `onboarding/placement.tsx`, `import.tsx`, `import-summary.tsx`: restyle with the same kit (choice cards, inputs, banners) — no flow changes.
-- [ ] `(tabs)/settings.tsx`: kicker section headers (SESSION / REVIEW QUEUE / APPEARANCE…), pace choice cards, Daily goal stepper row ("load units · no upper limit"), toggle rows (Bias toward weak points, Lightning Mode, Vacation mode), Theme segmented pill (Light/Dark/Auto), destructive actions in danger style.
-- [ ] Update co-located tests; lint/typecheck/test; light + dark pass.
+- [x] `onboarding/welcome.tsx`: progress dots (jade active), Display title "Learn Japanese for real", three path cards ("Most popular" pill on new-learner; import card shows WaniKani API / Bunpro / Anki pills, selected state = 2px jade + brand-50), full-width primary CTA. Disabled CTA until a path is chosen (grey disabled style).
+- [x] `onboarding/intensity.tsx`: Relaxed/Intense choice cards ("Recommended for new learners" chip), "Today's lesson at this pace: **5 new items**" callout, jade info banner ("Reviews grow as you learn…").
+- [x] `onboarding/complete.tsx`: "You're ready" + three value-prop rows with soft-tinted icon squares (rad-soft book, kan-soft target, brand-100 device — drawn icons, no emoji), primary "Start your first lesson" + secondary "Explore on my own".
+- [x] `onboarding/placement.tsx`, `import.tsx`, `import-summary.tsx`: restyle with the same kit (choice cards, inputs, banners) — no flow changes.
+- [x] `(tabs)/settings.tsx`: kicker section headers (SESSION / REVIEW QUEUE / APPEARANCE…), pace choice cards, Daily goal stepper row ("load units · no upper limit"), toggle rows (Bias toward weak points, Lightning Mode, Vacation mode), Theme segmented pill (Light/Dark/Auto), destructive actions in danger style.
+- [x] Update co-located tests; lint/typecheck/test; light + dark pass.
+
+### Session 3 decisions (carry into later sessions)
+
+**One new primitive: `common/SegmentedPill`.** A surface-elevated track holding one jade-filled segment, for short mutually exclusive sets that read better inline than as stacked cards. Two call sites: Settings → Theme, and the import-source selector. Longer option sets (furigana display, reminder times) stay as `ChoiceCard` grids — a 4-way pill is unreadable at 44px segments.
+
+**Onboarding path cards stay buttons.** `LevelPathCard` was restyled in place rather than folded into `ChoiceCard`: two of the three paths navigate on press, so `accessibilityRole="radio"` would lie. It now draws exactly like a selected `ChoiceCard` when `selected` *or* `accentBorder` is set. `SessionIntensityPicker` *is* a real radiogroup and now composes two `ChoiceCard`s — its options report `{ selected, checked }` rather than `{ selected }`.
+
+**Settings groups rows behind one card.** Related toggles sit in a single bordered `surface` card with `border-b` dividers (spec, Settings screen), not as separate labelled blocks. "Session intensity" / "Review pacing" / "Vacation mode" collapsed into SESSION and REVIEW QUEUE accordingly.
+
+**Platform `Switch` is gone from Settings.** Every switch is now `ToggleRow`, including the two in `ByokSettingsSection` (which renders inside Settings and would otherwise have been the only platform-styled control on the screen). Tests must press the row and read `accessibilityState.checked` — `props.value` and `fireEvent(…, 'valueChange', …)` no longer apply, and a disabled `ToggleRow` genuinely swallows the press where a disabled `Switch` did not.
+
+**`cn` knew nothing about `text-label`.** Session 1 added the token to the type scale but not to `FONT_SIZE_TOKENS` in `src/utils/cn.ts`, so `cn('text-label', 'text-primary')` collapsed to one class and dropped the colour. Fixed here; any future `fontSize` token must be registered in both places.
+
+### Session 3 deviations
+
+15. **Daily goal is a stepper, and that costs direct entry.** The spec draws −/30/+ and the plan asks for the stepper row, so the unbounded `TextInput` is gone. Step is 5 load units with a floor of 5 and no ceiling, which keeps FR57's "no upper limit" and makes a non-positive goal unreachable rather than an error state — but moving 200 → 30 is now 34 presses. If large jumps turn out to matter, the row needs a tap-the-value-to-type affordance, not a max.
+16. **Segments are 44px tall, not the spec's 26px.** `SegmentedPill` and the theme row are taller than drawn because each segment has to clear the tap-target floor.
+17. **Onboarding progress dots use `brand-500`.** Decoration, so the 3:1 non-text rule does not apply to the dot itself; the active/inactive pair is also carried by `accessibilityLabel="Step N of M"` rather than colour alone.
 
 ## Session 4 — Home + Stats
 

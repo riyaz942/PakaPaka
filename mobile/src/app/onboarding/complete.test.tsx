@@ -67,7 +67,7 @@ describe('CompleteScreen', () => {
     const userDb = await createUserDb();
     renderCompleteScreen(userDb);
 
-    expect(screen.getByText("You're ready 🎉")).toBeTruthy();
+    expect(screen.getByText("You're ready")).toBeTruthy();
     expect(screen.getByLabelText('Step 4 of 4')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Start your first lesson' })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Explore on my own' })).toBeTruthy();

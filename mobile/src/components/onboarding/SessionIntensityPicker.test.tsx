@@ -49,7 +49,7 @@ describe('SessionIntensityPicker', () => {
     const relaxedOption = screen.getByTestId('intensity-picker-relaxed');
     const intenseOption = screen.getByTestId('intensity-picker-intense');
 
-    expect(relaxedOption.props.accessibilityState).toEqual({ selected: true });
-    expect(intenseOption.props.accessibilityState).toEqual({ selected: false });
+    expect(relaxedOption.props.accessibilityState).toEqual({ selected: true, checked: true });
+    expect(intenseOption.props.accessibilityState).toEqual({ selected: false, checked: false });
   });
 });

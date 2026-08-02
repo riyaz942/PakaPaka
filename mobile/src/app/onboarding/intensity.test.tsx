@@ -66,7 +66,7 @@ describe('IntensityScreen', () => {
     expect(continueButton.props.accessibilityState?.disabled).toBe(false);
 
     const relaxedOption = screen.getByTestId('session-intensity-picker-relaxed');
-    expect(relaxedOption.props.accessibilityState).toEqual({ selected: true });
+    expect(relaxedOption.props.accessibilityState).toEqual({ selected: true, checked: true });
   });
 
   it('keeps Continue enabled after selecting intense', async () => {
@@ -79,6 +79,7 @@ describe('IntensityScreen', () => {
     expect(continueButton.props.accessibilityState?.disabled).toBe(false);
     expect(screen.getByTestId('session-intensity-picker-intense').props.accessibilityState).toEqual({
       selected: true,
+      checked: true,
     });
   });
 

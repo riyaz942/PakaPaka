@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Pressable, Switch, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { Button } from '@/components/common/Button';
+import { SectionHeading } from '@/components/common/SectionHeading';
+import { ToggleRow } from '@/components/common/ToggleRow';
 import { KeySetup } from '@/components/converse/KeySetup';
 import {
   BYOK_PROVIDERS,
@@ -97,9 +99,9 @@ export function ByokSettingsSection() {
       : 'Needs an OpenAI-compatible key — Anthropic has no transcription endpoint. Speaking practice is transcribed on this device.';
 
   return (
-    <View className="mt-8">
-      <Text className="text-body font-semibold text-primary">Conversation (AI key)</Text>
-      <Text className="mt-1 text-body-sm text-secondary">
+    <View className="mt-space-lg">
+      <SectionHeading label="Conversation (AI key)" />
+      <Text className="mt-space-xs text-caption font-ui-medium text-muted">
         Conversation practice uses an AI provider you choose. Keys are held in this device&apos;s
         secure storage and are only ever sent to the endpoint you configure.
       </Text>
@@ -107,24 +109,24 @@ export function ByokSettingsSection() {
       {error ? (
         <Text
           accessibilityLiveRegion="polite"
-          className="mt-4 text-body-sm text-feedback-incorrect">
+          className="mt-space-sm text-body-sm font-ui-semibold text-feedback-incorrect-deep">
           {error}
         </Text>
       ) : null}
 
       {listFailed ? (
-        <Text className="mt-4 text-body-sm text-secondary">
+        <Text className="mt-space-sm text-body-sm font-ui text-secondary">
           Could not access secure storage to list saved keys.
         </Text>
       ) : configured.length === 0 ? (
-        <Text className="mt-4 text-body-sm text-secondary">No key saved yet.</Text>
+        <Text className="mt-space-sm text-body-sm font-ui text-secondary">No key saved yet.</Text>
       ) : (
-        <View className="mt-4 gap-3">
+        <View className="mt-space-sm gap-space-sm">
           {configured.map((provider) => (
             <View
               key={provider}
-              className="flex-row items-center justify-between rounded-radius-md border border-border bg-surface p-4">
-              <Text className="flex-1 pr-space-md text-body text-primary">
+              className="flex-row items-center justify-between rounded-radius-md border border-border bg-surface px-space-md py-space-sm shadow-e1">
+              <Text className="flex-1 pr-space-md text-body font-ui-semibold text-primary">
                 {PROVIDER_LABELS[provider]}
               </Text>
               <Pressable
@@ -135,7 +137,9 @@ export function ByokSettingsSection() {
                 }}
                 testID={`byok-remove-${provider}`}
                 className="min-h-[44px] justify-center px-space-sm">
-                <Text className="text-body-sm text-feedback-error">Remove</Text>
+                <Text className="text-body-sm font-ui-bold text-feedback-incorrect-deep">
+                  Remove
+                </Text>
               </Pressable>
             </View>
           ))}
@@ -143,11 +147,11 @@ export function ByokSettingsSection() {
       )}
 
       {configured.length > 1 ? (
-        <View className="mt-4">
-          <Text className="text-body-sm text-secondary">
+        <View className="mt-space-md">
+          <Text className="text-body-sm font-ui-medium text-secondary">
             Which provider new conversations use:
           </Text>
-          <View className="mt-3 flex-row flex-wrap gap-3">
+          <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
             {BYOK_PROVIDERS.filter((provider) => configured.includes(provider)).map((provider) => {
               const selected = activeProvider === provider;
               return (
@@ -159,10 +163,16 @@ export function ByokSettingsSection() {
                   onPress={() => handleSelectActive(provider)}
                   testID={`byok-active-${provider}`}
                   className={cn(
-                    'min-h-[44px] min-w-[44px] flex-1 justify-center rounded-radius-md bg-surface p-4',
-                    selected ? 'border-2 border-feedback-info' : 'border border-border',
+                    'min-h-[44px] min-w-[44px] flex-1 justify-center rounded-radius-lg p-space-md',
+                    selected
+                      ? 'border-2 border-brand-500 bg-brand-soft'
+                      : 'border border-border bg-surface',
                   )}>
-                  <Text className="text-body-sm font-semibold text-primary">
+                  <Text
+                    className={cn(
+                      'text-body-sm font-ui-bold',
+                      selected ? 'text-brand-text' : 'text-primary',
+                    )}>
                     {PROVIDER_LABELS[provider]}
                   </Text>
                 </Pressable>
@@ -184,25 +194,18 @@ export function ByokSettingsSection() {
         not appear to vanish — but an opt-in that is already on stays operable,
         so turning it back off is never a dead end.
       */}
-      <View className="mt-8 border-t border-border pt-4">
-        <View className="flex-row items-center justify-between">
-          <Text className="flex-1 pr-space-md text-body text-primary">
-            Transcribe speech in the cloud
-          </Text>
-          <Switch
-            accessibilityHint={cloudSttReason}
-            accessibilityLabel="Transcribe speech in the cloud"
-            accessibilityState={{ disabled: !cloudSttAvailable && !cloudStt }}
-            disabled={!cloudSttAvailable && !cloudStt}
-            onValueChange={(next) => {
-              setCloudSttOptIn(userDb, next);
-              setCloudSttState(next);
-            }}
-            testID="cloud-stt-toggle"
-            value={cloudStt}
-          />
-        </View>
-        <Text className="mt-1 text-body-sm text-secondary">{cloudSttReason}</Text>
+      <View className="mt-space-md rounded-radius-md border border-border bg-surface px-space-md shadow-e1">
+        <ToggleRow
+          label="Transcribe speech in the cloud"
+          description={cloudSttReason}
+          disabled={!cloudSttAvailable && !cloudStt}
+          onValueChange={(next) => {
+            setCloudSttOptIn(userDb, next);
+            setCloudSttState(next);
+          }}
+          testID="cloud-stt-toggle"
+          value={cloudStt}
+        />
       </View>
 
       {/*
@@ -211,27 +214,21 @@ export function ByokSettingsSection() {
         the curriculum — the toggle buys the billed round-trip, nothing else, so
         it is the learner's to opt into rather than a silent cost.
       */}
-      <View className="mt-8 border-t border-border pt-4">
-        <View className="flex-row items-center justify-between">
-          <Text className="flex-1 pr-space-md text-body text-primary">
-            Translate unknown words
-          </Text>
-          <Switch
-            accessibilityHint={WORD_TRANSLATE_REASON}
-            accessibilityLabel="Translate unknown words"
-            onValueChange={(next) => {
-              setWordTranslateOptIn(userDb, next);
-              setWordTranslateState(next);
-            }}
-            testID="word-translate-toggle"
-            value={wordTranslate}
-          />
-        </View>
-        <Text className="mt-1 text-body-sm text-secondary">{WORD_TRANSLATE_REASON}</Text>
+      <View className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md shadow-e1">
+        <ToggleRow
+          label="Translate unknown words"
+          description={WORD_TRANSLATE_REASON}
+          onValueChange={(next) => {
+            setWordTranslateOptIn(userDb, next);
+            setWordTranslateState(next);
+          }}
+          testID="word-translate-toggle"
+          value={wordTranslate}
+        />
       </View>
 
       {isEditing ? (
-        <View className="mt-4">
+        <View className="mt-space-md">
           <KeySetup
             compact
             onSaved={() => {
@@ -240,7 +237,7 @@ export function ByokSettingsSection() {
             }}
           />
           <Button
-            className="mt-4 w-full"
+            className="mt-space-md w-full"
             label="Cancel"
             onPress={() => setIsEditing(false)}
             variant="ghost"
@@ -248,7 +245,7 @@ export function ByokSettingsSection() {
         </View>
       ) : (
         <Button
-          className="mt-4 w-full"
+          className="mt-space-md w-full"
           label={configured.length === 0 ? 'Add an API key' : 'Add or replace a key'}
           onPress={() => setIsEditing(true)}
           testID="byok-open-editor"

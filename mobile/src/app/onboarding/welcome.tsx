@@ -42,7 +42,7 @@ export default function WelcomeScreen() {
         onPress: handleContinue,
         disabled: !selectedLevel,
       }}>
-      <View className="gap-3">
+      <View className="gap-space-sm">
         <FadeSlideIn index={0}>
           <LevelPathCard
             title="I'm new to Japanese"
@@ -83,12 +83,12 @@ export default function WelcomeScreen() {
               router.push('/onboarding/import');
             }}
             testID="path-import">
-            <View className="mt-3 flex-row flex-wrap gap-2">
+            <View className="mt-space-sm flex-row flex-wrap gap-space-xs">
               {['WaniKani API', 'Bunpro', 'Anki (.apkg)'].map((label) => (
                 <View
                   key={label}
-                  className="rounded-radius-sm bg-surface-elevated px-2 py-1">
-                  <Text className="text-overline text-secondary">{label}</Text>
+                  className="rounded-radius-full border border-brand-200 bg-surface px-space-sm py-[5px]">
+                  <Text className="text-overline font-ui-bold text-brand-text">{label}</Text>
                 </View>
               ))}
             </View>

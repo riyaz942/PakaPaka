@@ -1,9 +1,15 @@
 import { router } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Pressable, ScrollView, Switch, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { ChoiceCard } from '@/components/common/ChoiceCard';
+import { ScreenTitle } from '@/components/common/ScreenTitle';
+import { SectionHeading } from '@/components/common/SectionHeading';
+import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
+import { StepperRow } from '@/components/common/StepperRow';
+import { ToggleRow } from '@/components/common/ToggleRow';
 import { ByokSettingsSection } from '@/components/converse/ByokSettingsSection';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import {
@@ -40,7 +46,6 @@ import {
   setDailyGoalTarget,
 } from '@/data/user/goalRingRepository';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
-import { cn } from '@/utils/cn';
 
 const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = [
   { value: 'morning', label: 'Morning (8:00)' },
@@ -49,10 +54,11 @@ const NOTIFICATION_TIME_OPTIONS: { value: NotificationTime; label: string }[] = 
   { value: 'night', label: 'Night (21:00)' },
 ];
 
-const THEME_MODE_OPTIONS: { value: ThemeMode; label: string }[] = [
-  { value: 'system', label: 'System' },
-  { value: 'light', label: 'Light' },
-  { value: 'dark', label: 'Dark' },
+/** Spec order: the device-following option sits last and is labelled "Auto". */
+const THEME_MODE_OPTIONS: readonly SegmentedPillOption<ThemeMode>[] = [
+  { value: 'light', label: 'Light', testID: 'settings-theme-mode-light' },
+  { value: 'dark', label: 'Dark', testID: 'settings-theme-mode-dark' },
+  { value: 'system', label: 'Auto', testID: 'settings-theme-mode-system' },
 ];
 
 const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] = [
@@ -61,10 +67,26 @@ const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] 
   { value: 'hidden', label: 'Always hidden' },
 ];
 
+/** The daily goal moves in load units; 5 is one small item's worth of load. */
+const DAILY_GOAL_STEP = 5;
+
 function formatVacationStart(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return 'earlier';
   return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+/** Grouped settings card — the spec stacks related rows behind one border. */
+function SettingsCard({ children }: { children: React.ReactNode }) {
+  return (
+    <View className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md shadow-e1">
+      {children}
+    </View>
+  );
+}
+
+function CardDivider({ children }: { children: React.ReactNode }) {
+  return <View className="border-b border-border">{children}</View>;
 }
 
 export default function SettingsScreen() {
@@ -96,8 +118,7 @@ export default function SettingsScreen() {
   const [notificationsEnabled, setNotificationsEnabledState] = useState(false);
   const [notificationTime, setNotificationTimeState] = useState<NotificationTime>('evening');
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
-  const [goalInput, setGoalInput] = useState('');
-  const [goalError, setGoalError] = useState(false);
+  const [dailyGoal, setDailyGoal] = useState(DAILY_GOAL_STEP);
   const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
   const isRequestingPermission = useRef(false);
 
@@ -106,20 +127,13 @@ export default function SettingsScreen() {
     setWeaknessBiasEnabledState(getWeaknessBiasEnabled(userDb));
     setNotificationsEnabledState(getNotificationsEnabled(userDb));
     setNotificationTimeState(getNotificationTime(userDb));
-    setGoalInput(String(resolveDailyGoalTarget(userDb)));
+    setDailyGoal(resolveDailyGoalTarget(userDb));
   }, [userDb]);
 
-  const handleGoalCommit = () => {
-    const parsed = Number(goalInput);
-    const result =
-      Number.isFinite(parsed) && parsed > 0
-        ? setDailyGoalTarget(userDb, parsed)
-        : ({ ok: false } as const);
+  const handleGoalChange = (next: number) => {
+    const result = setDailyGoalTarget(userDb, next);
     if (result.ok) {
-      setGoalError(false);
-      setGoalInput(String(resolveDailyGoalTarget(userDb)));
-    } else {
-      setGoalError(true);
+      setDailyGoal(resolveDailyGoalTarget(userDb));
     }
   };
 
@@ -128,7 +142,7 @@ export default function SettingsScreen() {
     setSelectedIntensity(intensity);
     // Intensity only seeds the goal while it is unset — refresh the displayed
     // value, but never overwrite a user-set goal.
-    setGoalInput(String(resolveDailyGoalTarget(userDb)));
+    setDailyGoal(resolveDailyGoalTarget(userDb));
   };
 
   const handleWeaknessBiasToggle = (value: boolean) => {
@@ -212,324 +226,246 @@ export default function SettingsScreen() {
         alignSelf: 'center',
         width: '100%',
       }}>
-      <ScrollView contentContainerClassName="px-6 pb-space-md">
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
-        Settings
-      </Text>
+      <ScrollView contentContainerClassName="px-6 pb-space-xl">
+        <ScreenTitle>Settings</ScreenTitle>
 
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Session intensity</Text>
-        <Text className="mt-1 text-body-sm text-secondary">
-          Changes save immediately.
-        </Text>
-
-        <View className="mt-4">
-          <SessionIntensityPicker
-            selectedIntensity={selectedIntensity}
-            onSelect={handleSelect}
-            testID="settings-intensity-picker"
-          />
-        </View>
-      </View>
-
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Daily goal</Text>
-        <Text className="mt-1 text-body-sm text-secondary">
-          Your goal ring fills toward this many load units per day. No upper limit — set it as
-          high as you like. It also rises with a prompt when you keep beating it.
-        </Text>
-
-        <TextInput
-          accessibilityLabel="Daily goal"
-          testID="settings-daily-goal-input"
-          keyboardType="numeric"
-          value={goalInput}
-          onChangeText={setGoalInput}
-          onBlur={handleGoalCommit}
-          onSubmitEditing={handleGoalCommit}
-          className="mt-4 min-h-[44px] rounded-radius-md border border-border bg-surface px-4 text-body text-primary"
-        />
-        {goalError ? (
-          <Text className="mt-2 text-body-sm text-feedback-incorrect">
-            Enter a number greater than zero.
+        <View className="mt-space-lg">
+          <SectionHeading label="Session" />
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Changes save immediately.
           </Text>
-        ) : null}
-      </View>
 
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Review queue</Text>
-
-        <View className="mt-4 flex-row items-center justify-between">
-          <View className="flex-1 pr-space-md">
-            <Text className="text-body text-primary">Bias reviews toward my weak points</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              When enabled, items you often miss appear earlier in the review queue.
-            </Text>
+          <View className="mt-space-sm">
+            <SessionIntensityPicker
+              selectedIntensity={selectedIntensity}
+              onSelect={handleSelect}
+              testID="settings-intensity-picker"
+            />
           </View>
-          <Switch
-            accessibilityLabel="Bias reviews toward my weak points"
-            testID="settings-weakness-bias-toggle"
-            value={weaknessBiasEnabled}
-            onValueChange={handleWeaknessBiasToggle}
-          />
-        </View>
-      </View>
 
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Review pacing</Text>
-
-        <View className="mt-4 flex-row items-center justify-between">
-          <View className="flex-1 pr-space-md">
-            <Text className="text-body text-primary">Auto-advance after correct answers</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              Lightning Mode: move to the next card automatically after a correct answer. When
-              off, press Return (or Continue) to advance.
-            </Text>
-          </View>
-          <Switch
-            accessibilityLabel="Auto-advance after correct answers"
-            testID="settings-review-auto-advance-toggle"
-            value={autoAdvanceEnabled}
-            onValueChange={setAutoAdvanceEnabled}
-          />
-        </View>
-      </View>
-
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Vacation mode</Text>
-
-        <View className="mt-4 flex-row items-center justify-between">
-          <View className="flex-1 pr-space-md">
-            <Text className="text-body text-primary">Pause reviews and lessons</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              {isVacationActive && vacationStartedAt
-                ? `Paused since ${formatVacationStart(vacationStartedAt)}. Turn this off when you're back and your reviews will pick up where they left off.`
-                : "Going away? Nothing piles up while this is on — your reviews wait for you and resume where you left off."}
-            </Text>
-          </View>
-          <Switch
-            accessibilityLabel="Pause reviews and lessons"
-            testID="settings-vacation-mode-toggle"
-            value={isVacationActive}
-            onValueChange={handleVacationToggle}
-          />
-        </View>
-
-        {vacationResultMessage !== null ? (
-          <Text
-            className="mt-space-sm text-body-sm text-secondary"
-            testID="settings-vacation-result">
-            {vacationResultMessage}
+          <SettingsCard>
+            <StepperRow
+              label="Daily goal"
+              description="load units · no upper limit"
+              value={dailyGoal}
+              onValueChange={handleGoalChange}
+              step={DAILY_GOAL_STEP}
+              min={DAILY_GOAL_STEP}
+              unitLabel="load units"
+              testID="settings-daily-goal"
+            />
+          </SettingsCard>
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Your goal ring fills toward this many load units per day. It also rises with a prompt
+            when you keep beating it.
           </Text>
-        ) : null}
-      </View>
-
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Appearance</Text>
-        <Text className="mt-1 text-body-sm text-secondary">
-          Light or dark palette. Follows your device setting unless you pick one here.
-        </Text>
-
-        <View className="mt-4 flex-row flex-wrap gap-3">
-          {THEME_MODE_OPTIONS.map((option) => {
-            const selected = themeMode === option.value;
-
-            return (
-              <Pressable
-                key={option.value}
-                accessibilityRole="radio"
-                accessibilityState={{ selected }}
-                accessibilityLabel={option.label}
-                onPress={() => setThemeMode(option.value)}
-                testID={`settings-theme-mode-${option.value}`}
-                className={cn(
-                  'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
-                  selected ? 'border-2 border-feedback-info' : 'border border-border',
-                )}>
-                <Text className="text-body-sm font-semibold text-primary">{option.label}</Text>
-              </Pressable>
-            );
-          })}
         </View>
-      </View>
 
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Accessibility</Text>
+        <View className="mt-space-lg">
+          <SectionHeading label="Review queue" />
+          <SettingsCard>
+            <CardDivider>
+              <ToggleRow
+                label="Bias reviews toward my weak points"
+                description="Items you often miss come earlier in the queue."
+                value={weaknessBiasEnabled}
+                onValueChange={handleWeaknessBiasToggle}
+                testID="settings-weakness-bias-toggle"
+              />
+            </CardDivider>
+            <CardDivider>
+              <ToggleRow
+                label="Auto-advance after correct answers"
+                description="Lightning Mode: move to the next card automatically after a correct answer. When off, press Return (or Continue) to advance."
+                value={autoAdvanceEnabled}
+                onValueChange={setAutoAdvanceEnabled}
+                testID="settings-review-auto-advance-toggle"
+              />
+            </CardDivider>
+            <ToggleRow
+              label="Pause reviews and lessons"
+              description={
+                isVacationActive && vacationStartedAt
+                  ? `Paused since ${formatVacationStart(vacationStartedAt)}. Turn this off when you're back and your reviews pick up where they left off.`
+                  : 'Vacation mode — nothing piles up while this is on, and your reviews resume where you left off.'
+              }
+              value={isVacationActive}
+              onValueChange={handleVacationToggle}
+              testID="settings-vacation-mode-toggle"
+            />
+          </SettingsCard>
 
-        <View className="mt-4 flex-row items-center justify-between">
-          <View className="flex-1 pr-space-md">
-            <Text className="text-body text-primary">Reduce motion</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              Uses stepped, static updates instead of motion. Defaults to your device setting until
-              you change it here.
+          {vacationResultMessage !== null ? (
+            <Text
+              className="mt-space-sm text-caption font-ui-medium text-muted"
+              testID="settings-vacation-result">
+              {vacationResultMessage}
             </Text>
-          </View>
-          <Switch
-            accessibilityLabel="Reduce motion"
-            testID="settings-reduced-motion-toggle"
-            value={reducedMotion}
-            onValueChange={setReducedMotion}
-          />
+          ) : null}
         </View>
-      </View>
 
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Furigana</Text>
-        <Text className="mt-1 text-body-sm text-secondary">
-          Controls the reading shown above kanji. Tap any kanji in a lesson or passage to toggle
-          it individually.
-        </Text>
+        <View className="mt-space-lg">
+          <SectionHeading label="Appearance" />
+          <SettingsCard>
+            <View className="min-h-[56px] flex-row items-center gap-space-md py-space-sm">
+              <View className="flex-1">
+                <Text className="text-body font-ui-semibold text-primary">Theme</Text>
+                <Text className="mt-[3px] text-caption font-ui-medium text-muted">
+                  Auto follows your device setting.
+                </Text>
+              </View>
+              <SegmentedPill
+                accessibilityLabel="Theme"
+                options={THEME_MODE_OPTIONS}
+                value={themeMode}
+                onChange={setThemeMode}
+              />
+            </View>
+          </SettingsCard>
+        </View>
 
-        <View className="mt-4 flex-row flex-wrap gap-3">
-          {FURIGANA_DISPLAY_OPTIONS.map((option) => {
-            const selected = furiganaMode === option.value;
+        <View className="mt-space-lg">
+          <SectionHeading label="Accessibility" />
+          <SettingsCard>
+            <ToggleRow
+              label="Reduce motion"
+              description="Uses stepped, static updates instead of motion. Defaults to your device setting until you change it here."
+              value={reducedMotion}
+              onValueChange={setReducedMotion}
+              testID="settings-reduced-motion-toggle"
+            />
+          </SettingsCard>
+        </View>
 
-            return (
-              <Pressable
+        <View className="mt-space-lg">
+          <SectionHeading label="Furigana" />
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Controls the reading shown above kanji. Tap any kanji in a lesson or passage to toggle
+            it individually.
+          </Text>
+
+          <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
+            {FURIGANA_DISPLAY_OPTIONS.map((option) => (
+              <ChoiceCard
                 key={option.value}
-                accessibilityRole="radio"
-                accessibilityState={{ selected }}
-                accessibilityLabel={option.label}
+                title={option.label}
+                selected={furiganaMode === option.value}
                 onPress={() => setFuriganaMode(option.value)}
                 testID={`settings-furigana-display-${option.value}`}
-                className={cn(
-                  'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
-                  selected ? 'border-2 border-feedback-info' : 'border border-border',
-                )}>
-                <Text className="text-body-sm font-semibold text-primary">{option.label}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-
-        {furiganaOverrides.length > 0 ? (
-          <View className="mt-4" testID="settings-furigana-overrides">
-            <Text className="text-body-sm font-semibold text-primary">Per-word overrides</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              Words you set individually on their detail page. These win over the setting above.
-            </Text>
-
-            {furiganaOverrides.map((override) => (
-              <View
-                key={override.itemId}
-                className="mt-3 flex-row items-center justify-between gap-space-md">
-                <View className="flex-1">
-                  <Text className="text-body text-primary">{override.primaryForm}</Text>
-                  <Text className="text-caption text-secondary">
-                    {override.mode === 'shown' ? 'Shown' : 'Hidden'}
-                  </Text>
-                </View>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={`Reset furigana override for ${override.primaryForm}`}
-                  onPress={() => clearOneFuriganaOverride(override.itemId)}
-                  testID={`settings-furigana-override-reset-${override.itemId}`}
-                  className="min-h-[44px] min-w-[44px] justify-center rounded-radius-md border border-border px-3">
-                  <Text className="text-body-sm text-feedback-info">Reset</Text>
-                </Pressable>
-              </View>
+                className="min-w-[44px] flex-1"
+              />
             ))}
+          </View>
 
-            <View className="mt-4">
+          {furiganaOverrides.length > 0 ? (
+            <View className="mt-space-md" testID="settings-furigana-overrides">
+              <SectionHeading label="Per-word overrides" />
+              <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+                Words you set individually on their detail page. These win over the setting above.
+              </Text>
+
+              <SettingsCard>
+                {furiganaOverrides.map((override) => (
+                  <View
+                    key={override.itemId}
+                    className="min-h-[56px] flex-row items-center gap-space-md py-space-sm">
+                    <View className="flex-1">
+                      <Text className="text-body font-jp-medium text-primary">
+                        {override.primaryForm}
+                      </Text>
+                      <Text className="mt-[3px] text-caption font-ui-medium text-muted">
+                        {override.mode === 'shown' ? 'Shown' : 'Hidden'}
+                      </Text>
+                    </View>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={`Reset furigana override for ${override.primaryForm}`}
+                      onPress={() => clearOneFuriganaOverride(override.itemId)}
+                      testID={`settings-furigana-override-reset-${override.itemId}`}
+                      className="min-h-[44px] min-w-[44px] justify-center px-space-sm">
+                      <Text className="text-body-sm font-ui-bold text-brand-text">Reset</Text>
+                    </Pressable>
+                  </View>
+                ))}
+              </SettingsCard>
+
               <Button
                 label="Reset all overrides"
-                variant="secondary"
+                variant="destructive"
                 onPress={clearAllFuriganaOverrides}
+                className="mt-space-sm w-full"
                 testID="settings-furigana-overrides-reset"
               />
             </View>
-          </View>
-        ) : null}
-      </View>
-
-      <View className="mt-8">
-        <Text className="text-body font-semibold text-primary">Daily reminders</Text>
-
-        <View className="mt-4 flex-row items-center justify-between">
-          <View className="flex-1 pr-space-md">
-            <Text className="text-body text-primary">Review reminder</Text>
-            <Text className="mt-1 text-body-sm text-secondary">
-              One reminder per day, at your chosen time.
-            </Text>
-          </View>
-          <Switch
-            accessibilityLabel="Enable daily review reminder"
-            testID="settings-notifications-toggle"
-            value={notificationsEnabled}
-            onValueChange={handleNotificationsToggle}
-          />
+          ) : null}
         </View>
 
-        {notificationPermissionDenied ? (
-          <Text className="mt-2 text-body-sm text-secondary">
-            Please enable notifications in device Settings to use this feature.
-          </Text>
-        ) : null}
+        <View className="mt-space-lg">
+          <SectionHeading label="Daily reminders" />
+          <SettingsCard>
+            <ToggleRow
+              label="Review reminder"
+              description="One reminder per day, at your chosen time."
+              value={notificationsEnabled}
+              onValueChange={handleNotificationsToggle}
+              testID="settings-notifications-toggle"
+            />
+          </SettingsCard>
 
-        {notificationsEnabled ? (
-          <View className="mt-4 flex-row flex-wrap gap-3">
-            {NOTIFICATION_TIME_OPTIONS.map((option) => {
-              const selected = notificationTime === option.value;
+          {notificationPermissionDenied ? (
+            <Text className="mt-space-sm text-caption font-ui-medium text-muted">
+              Please enable notifications in device Settings to use this feature.
+            </Text>
+          ) : null}
 
-              return (
-                <Pressable
+          {notificationsEnabled ? (
+            <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
+              {NOTIFICATION_TIME_OPTIONS.map((option) => (
+                <ChoiceCard
                   key={option.value}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected }}
-                  accessibilityLabel={option.label}
+                  title={option.label}
+                  selected={notificationTime === option.value}
                   onPress={() => handleNotificationTimeChange(option.value)}
                   testID={`settings-notification-time-${option.value}`}
-                  className={cn(
-                    'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
-                    selected ? 'border-2 border-feedback-info' : 'border border-border',
-                  )}>
-                  <Text className="text-body-sm font-semibold text-primary">{option.label}</Text>
-                </Pressable>
-              );
-            })}
+                  className="min-w-[44px] flex-1"
+                />
+              ))}
+            </View>
+          ) : null}
+        </View>
+
+        {shadowModeCanEnable ? (
+          <View className="mt-space-lg">
+            <SectionHeading label="Shadow mode" />
+            <SettingsCard>
+              <ToggleRow
+                label="Shadow mode"
+                description="Run this app alongside your current tools and compare your results before you fully switch. Nothing is deleted."
+                value={shadowModeEnabled}
+                onValueChange={handleShadowModeToggle}
+                testID="settings-shadow-mode-toggle"
+              />
+            </SettingsCard>
           </View>
         ) : null}
-      </View>
 
-      {shadowModeCanEnable ? (
-        <View className="mt-8">
-          <Text className="text-body font-semibold text-primary">Shadow mode</Text>
+        <ByokSettingsSection />
 
-          <View className="mt-4 flex-row items-center justify-between">
-            <View className="flex-1 pr-space-md">
-              <Text className="text-body text-primary">Shadow mode</Text>
-              <Text className="mt-1 text-body-sm text-secondary">
-                Run this app alongside your current tools and compare your results before you
-                fully switch. Nothing is deleted.
-              </Text>
-            </View>
-            <Switch
-              accessibilityLabel="Shadow mode"
-              testID="settings-shadow-mode-toggle"
-              value={shadowModeEnabled}
-              onValueChange={handleShadowModeToggle}
+        {__DEV__ ? (
+          <View className="mt-space-lg">
+            <SectionHeading label="Developer" />
+            <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+              Clears onboarding completion only. Level and intensity preferences are kept.
+            </Text>
+            <Button
+              label="Reset onboarding"
+              onPress={handleResetOnboarding}
+              variant="destructive"
+              className="mt-space-sm w-full"
+              testID="dev-reset-onboarding"
             />
           </View>
-        </View>
-      ) : null}
-
-      <ByokSettingsSection />
-
-      {__DEV__ ? (
-        <View className="mt-10">
-          <Text className="text-body font-semibold text-primary">Developer</Text>
-          <Text className="mt-1 text-body-sm text-secondary">
-            Clears onboarding completion only. Level and intensity preferences are kept.
-          </Text>
-          <Button
-            label="Reset onboarding"
-            onPress={handleResetOnboarding}
-            variant="secondary"
-            className="mt-4 w-full"
-            testID="dev-reset-onboarding"
-          />
-        </View>
-      ) : null}
+        ) : null}
       </ScrollView>
     </View>
   );

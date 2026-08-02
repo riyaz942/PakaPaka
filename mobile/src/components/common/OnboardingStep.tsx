@@ -28,16 +28,13 @@ function ProgressDots({ stepIndex, stepCount }: { stepIndex: number; stepCount: 
     <View
       accessibilityRole="progressbar"
       accessibilityLabel={`Step ${stepIndex} of ${stepCount}`}
-      className="mb-6 flex-row items-center justify-center gap-2">
+      className="mb-space-lg flex-row items-center justify-center gap-[7px]">
       {Array.from({ length: stepCount }, (_, index) => {
         const isActive = index + 1 === stepIndex;
         return (
           <View
             key={index}
-            className={cn(
-              'h-2 w-2 rounded-radius-full',
-              isActive ? 'bg-feedback-info' : 'bg-border',
-            )}
+            className={cn('h-2 w-2 rounded-radius-full', isActive ? 'bg-brand-500' : 'bg-border')}
           />
         );
       })}
@@ -66,17 +63,19 @@ export function OnboardingStep({
       style={{ paddingTop: insets.top + 24, paddingBottom: insets.bottom + 16 }}>
       {showProgress ? <ProgressDots stepIndex={stepIndex} stepCount={stepCount} /> : null}
 
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
+      <Text
+        accessibilityRole="header"
+        className="text-title-lg font-ui-extrabold tracking-[-0.01em] text-primary">
         {title}
       </Text>
 
       {description ? (
-        <Text className="mt-2 text-body-sm text-secondary">{description}</Text>
+        <Text className="mt-[9px] text-body-sm font-ui text-muted">{description}</Text>
       ) : null}
 
-      <View className="mt-8 flex-1">{children}</View>
+      <View className="mt-space-lg flex-1">{children}</View>
 
-      <View className="gap-3">
+      <View className="gap-space-sm">
         <Button
           label={primaryAction.label}
           onPress={primaryAction.onPress}

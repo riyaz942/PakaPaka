@@ -1,8 +1,8 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import { ChoiceCard } from '@/components/common/ChoiceCard';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
-import { cn } from '@/utils/cn';
 
 type IntensityOption = {
   value: SessionIntensity;
@@ -33,36 +33,19 @@ export function SessionIntensityPicker({
   testID,
 }: SessionIntensityPickerProps) {
   return (
-    <View
-      accessibilityRole="radiogroup"
-      testID={testID}
-      className="flex-row gap-3">
-      {INTENSITY_OPTIONS.map((option) => {
-        const selected = selectedIntensity === option.value;
-
-        return (
-          <Pressable
-            key={option.value}
-            accessibilityRole="radio"
-            accessibilityState={{ selected }}
-            accessibilityLabel={`${option.title}, ${option.sublabel}`}
-            onPress={() => onSelect(option.value)}
-            testID={testID ? `${testID}-${option.value}` : undefined}
-            className={cn(
-              'min-h-[44px] min-w-[44px] flex-1 rounded-radius-md bg-surface p-4',
-              selected ? 'border-2 border-feedback-info' : 'border border-border',
-            )}>
-            <Text className="text-body font-semibold text-primary">{option.title}</Text>
-            <Text className="mt-1 text-body-sm text-secondary">{option.sublabel}</Text>
-
-            {option.badge ? (
-              <View className="mt-2 self-start rounded-radius-sm bg-feedback-correct/15 px-2 py-1">
-                <Text className="text-caption text-feedback-correct">{option.badge}</Text>
-              </View>
-            ) : null}
-          </Pressable>
-        );
-      })}
+    <View accessibilityRole="radiogroup" testID={testID} className="flex-row gap-space-sm">
+      {INTENSITY_OPTIONS.map((option) => (
+        <ChoiceCard
+          key={option.value}
+          title={option.title}
+          description={option.sublabel}
+          badgeLabel={option.badge}
+          selected={selectedIntensity === option.value}
+          onPress={() => onSelect(option.value)}
+          testID={testID ? `${testID}-${option.value}` : undefined}
+          className="flex-1"
+        />
+      ))}
     </View>
   );
 }

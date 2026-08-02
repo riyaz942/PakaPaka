@@ -42,15 +42,21 @@ describe('ByokSettingsSection cloud STT toggle', () => {
     mockConfigured = ['openai'];
     render(<ByokSettingsSection />);
 
-    await waitFor(() => expect(screen.getByTestId('cloud-stt-toggle').props.value).toBe(false));
+    await waitFor(() =>
+      expect(screen.getByTestId('cloud-stt-toggle').props.accessibilityState.checked).toBe(false),
+    );
   });
 
   it('records the opt-in when the learner turns it on', async () => {
     mockConfigured = ['openai'];
     render(<ByokSettingsSection />);
 
-    await waitFor(() => expect(screen.getByTestId('cloud-stt-toggle')).toBeTruthy());
-    fireEvent(screen.getByTestId('cloud-stt-toggle'), 'valueChange', true);
+    // The switch starts disabled and only opens up once the configured-provider
+    // list has loaded, so wait for that rather than for the row to exist.
+    await waitFor(() =>
+      expect(screen.getByTestId('cloud-stt-toggle').props.accessibilityState.disabled).toBe(false),
+    );
+    fireEvent.press(screen.getByTestId('cloud-stt-toggle'));
 
     expect(mockSetCloudSttOptIn).toHaveBeenCalledWith(mockUserDb, true);
   });
@@ -107,7 +113,7 @@ describe('ByokSettingsSection cloud STT toggle', () => {
     await waitFor(() =>
       expect(screen.getByTestId('cloud-stt-toggle').props.accessibilityState.disabled).toBe(false),
     );
-    fireEvent(screen.getByTestId('cloud-stt-toggle'), 'valueChange', false);
+    fireEvent.press(screen.getByTestId('cloud-stt-toggle'));
 
     expect(mockSetCloudSttOptIn).toHaveBeenCalledWith(mockUserDb, false);
   });

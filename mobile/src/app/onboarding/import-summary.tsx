@@ -65,14 +65,16 @@ export default function ImportSummaryScreen() {
     <View
       className="flex-1 bg-background px-6"
       style={{ paddingTop: insets.top + 48, paddingBottom: insets.bottom + 16 }}>
-      <Text accessibilityRole="header" className="text-title-lg text-primary">
+      <Text
+        accessibilityRole="header"
+        className="text-title-lg font-ui-extrabold tracking-[-0.01em] text-primary">
         Import summary
       </Text>
-      <Text className="mt-4 text-body text-secondary">
+      <Text className="mt-[9px] text-body-sm font-ui text-muted">
         Review what will be imported before confirming. Nothing is saved until you confirm.
       </Text>
 
-      <View className="mt-8">
+      <View className="mt-space-lg">
         <ImportSummaryCard
           errorMessage={errorMessage ?? undefined}
           onCancel={handleCancel}

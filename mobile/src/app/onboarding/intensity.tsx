@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
+import { Banner } from '@/components/common/Banner';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
@@ -49,14 +50,24 @@ export default function IntensityScreen() {
 
       <FadeSlideIn index={1}>
         <View
-          className="mt-4 rounded-radius-md border border-border bg-surface px-4 py-3"
+          className="mt-space-sm rounded-radius-md border border-border bg-surface px-space-md py-space-sm"
           testID="intensity-lesson-preview">
-          <Text className="text-body-sm text-secondary">
+          <Text className="text-body-sm font-ui-medium text-secondary">
             Today&apos;s lesson at this pace:{' '}
-            <Text className="font-semibold text-primary">{lessonSize} new items</Text>
+            <Text className="font-ui-extrabold text-primary">{lessonSize} new items</Text>
             {importPath ? ' — layered on top of your imported progress.' : '.'}
           </Text>
         </View>
+      </FadeSlideIn>
+
+      <FadeSlideIn index={2}>
+        <Banner
+          visible
+          variant="info"
+          message="Reviews grow as you learn — pace only controls new items."
+          className="mt-space-sm"
+          testID="intensity-reviews-note"
+        />
       </FadeSlideIn>
     </OnboardingStep>
   );
