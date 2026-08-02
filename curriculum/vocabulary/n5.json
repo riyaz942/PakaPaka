@@ -23408,8 +23408,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は先生と話します。",
+          "english": "I speak with the teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "sensei",
+            "hanasu-v"
+          ],
+          "furigana": "私[わたし]は先[せん]生[せい]と話[はな]します。"
+        },
+        {
+          "japanese": "僕は友達と話した。",
+          "english": "I talked with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "tomodachi",
+            "hanasu-v"
+          ],
+          "furigana": "僕[ぼく]は友[とも]達[だち]と話[はな]した。"
+        },
+        {
+          "japanese": "彼女は学校で話しません。",
+          "english": "She does not speak at school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "gakkou-v",
+            "hanasu-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は学[がっ]校[こう]で話[はな]しません。"
+        }
+      ]
     },
     {
       "slug": "iu-v",
@@ -23434,8 +23469,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女はこれが好きだと言います。",
+          "english": "She says she likes this.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kore",
+            "suki",
+            "iu-v"
+          ],
+          "furigana": "彼[かの]女[じょ]はこれが好[す]きだと言[い]います。"
+        },
+        {
+          "japanese": "先生は何と言いましたか。",
+          "english": "What did the teacher say?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "nani",
+            "iu-v"
+          ],
+          "furigana": "先[せん]生[せい]は何[なに]と言[い]いましたか。"
+        },
+        {
+          "japanese": "母はお茶を飲むと言いました。",
+          "english": "My mother said she would drink tea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "ocha",
+            "nomu-v",
+            "iu-v"
+          ],
+          "furigana": "母[はは]はお茶[ちゃ]を飲[の]むと言[い]いました。"
+        }
+      ]
     },
     {
       "slug": "yomu",
@@ -23460,8 +23532,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝新聞を読みます。",
+          "english": "I read the newspaper every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "shinbun",
+            "yomu"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]新[しん]聞[ぶん]を読[よ]みます。"
+        },
+        {
+          "japanese": "彼女は図書館で本を読みます。",
+          "english": "She reads books at the library.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "toshokan",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "彼[かの]女[じょ]は図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "僕は今この本を読みます。",
+          "english": "I'm going to read this book now.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "ima",
+            "kono",
+            "hon",
+            "yomu"
+          ],
+          "furigana": "僕[ぼく]は今[いま]この本[ほん]を読[よ]みます。"
+        }
+      ]
     },
     {
       "slug": "kaku",
@@ -23486,8 +23597,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は手紙を書きます。",
+          "english": "I write a letter.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "tegami",
+            "kaku"
+          ],
+          "furigana": "私[わたし]は手[て]紙[がみ]を書[か]きます。"
+        },
+        {
+          "japanese": "僕は毎朝ノートに書きます。",
+          "english": "I write in my notebook every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "maiasa",
+            "nooto",
+            "kaku"
+          ],
+          "furigana": "僕[ぼく]は毎[まい]朝[あさ]ノートに書[か]きます。"
+        },
+        {
+          "japanese": "先生は黒いペンで書きます。",
+          "english": "The teacher writes with a black pen.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "kuroi",
+            "pen",
+            "kaku"
+          ],
+          "furigana": "先[せん]生[せい]は黒[くろ]いペンで書[か]きます。"
+        }
+      ]
     },
     {
       "slug": "kau-v",
@@ -23512,8 +23660,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はパンを買います。",
+          "english": "I buy bread.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "pan",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]はパンを買[か]います。"
+        },
+        {
+          "japanese": "彼女は新しいかばんを買う。",
+          "english": "She buys a new bag.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "atarashii-adj",
+            "kaban",
+            "kau-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は新[あたら]しいかばんを買[か]う。"
+        },
+        {
+          "japanese": "明日、スーパーで牛乳を買います。",
+          "english": "Tomorrow I will buy milk at the supermarket.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "suupaa",
+            "gyuunyuu",
+            "kau-v"
+          ],
+          "furigana": "明日[あした]、スーパーで牛[ぎゅう]乳[にゅう]を買[か]います。"
+        }
+      ]
     },
     {
       "slug": "uru",
@@ -23538,8 +23723,46 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "母は古い服を売ります。",
+          "english": "My mother sells old clothes.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "furui-adj",
+            "fuku",
+            "uru"
+          ],
+          "furigana": "母[はは]は古[ふる]い服[ふく]を売[う]ります。"
+        },
+        {
+          "japanese": "彼は駅で新聞を売ります。",
+          "english": "He sells newspapers at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "eki",
+            "shinbun",
+            "uru"
+          ],
+          "furigana": "彼[かれ]は駅[えき]で新[しん]聞[ぶん]を売[う]ります。"
+        },
+        {
+          "japanese": "この店はパンを売りません。",
+          "english": "This shop does not sell bread.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "pan",
+            "uru"
+          ],
+          "furigana": "この店[みせ]はパンを売[う]りません。"
+        }
+      ]
     },
     {
       "slug": "aruku",
@@ -23564,8 +23787,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝、駅まで歩きます。",
+          "english": "I walk to the station every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "eki",
+            "aruku"
+          ],
+          "furigana": "毎[まい]朝[あさ]、駅[えき]まで歩[ある]きます。"
+        },
+        {
+          "japanese": "友達と公園を歩きました。",
+          "english": "I walked through the park with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kouen",
+            "aruku"
+          ],
+          "furigana": "友[とも]達[だち]と公[こう]園[えん]を歩[ある]きました。"
+        },
+        {
+          "japanese": "今日は家から学校まで歩く。",
+          "english": "Today I walk from home to school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "ie",
+            "gakkou-v",
+            "aruku"
+          ],
+          "furigana": "今日[きょう]は家[いえ]から学[がっ]校[こう]まで歩[ある]く。"
+        }
+      ]
     },
     {
       "slug": "hashiru",
@@ -23590,8 +23849,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝公園を走ります。",
+          "english": "I run in the park every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "kouen",
+            "hashiru"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]公[こう]園[えん]を走[はし]ります。"
+        },
+        {
+          "japanese": "彼は学校まで走りました。",
+          "english": "He ran to school.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "gakkou-v",
+            "hashiru"
+          ],
+          "furigana": "彼[かれ]は学[がっ]校[こう]まで走[はし]りました。"
+        },
+        {
+          "japanese": "明日、友達と駅まで走ります。",
+          "english": "Tomorrow, I will run to the station with a friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "eki",
+            "hashiru"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と駅[えき]まで走[はし]ります。"
+        }
+      ]
     },
     {
       "slug": "oyogu",
@@ -23616,8 +23912,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝川で泳ぎます。",
+          "english": "I swim in the river every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "kawa-v",
+            "oyogu"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]川[かわ]で泳[およ]ぎます。"
+        },
+        {
+          "japanese": "今日、友達と海で泳ぎます。",
+          "english": "Today I swim in the sea with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "tomodachi",
+            "umi",
+            "oyogu"
+          ],
+          "furigana": "今日[きょう]、友[とも]達[だち]と海[うみ]で泳[およ]ぎます。"
+        },
+        {
+          "japanese": "冬は海で泳ぎません。",
+          "english": "I don't swim in the sea in winter.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "fuyu",
+            "umi",
+            "oyogu"
+          ],
+          "furigana": "冬[ふゆ]は海[うみ]で泳[およ]ぎません。"
+        }
+      ]
     },
     {
       "slug": "tobu",
@@ -23642,8 +23975,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の帽子が風で飛びます。",
+          "english": "My hat blows away in the wind.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "boushi",
+            "kaze-wind",
+            "tobu"
+          ],
+          "furigana": "私[わたし]の帽[ぼう]子[し]が風[かぜ]で飛[と]びます。"
+        },
+        {
+          "japanese": "大きい鳥が空を飛びます。",
+          "english": "A big bird flies through the sky.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ookii",
+            "tori",
+            "sora",
+            "tobu"
+          ],
+          "furigana": "大[おお]きい鳥[とり]が空[そら]を飛[と]びます。"
+        },
+        {
+          "japanese": "子供がベッドで飛びます。",
+          "english": "The child jumps on the bed.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kodomo-v",
+            "beddo",
+            "tobu"
+          ],
+          "furigana": "子[こ]供[ども]がベッドで飛[と]びます。"
+        }
+      ]
     },
     {
       "slug": "okiru",

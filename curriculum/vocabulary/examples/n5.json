@@ -607,6 +607,43 @@
       "review_status": "draft"
     }
   },
+  "aruku": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝、駅まで歩きます。",
+        "english": "I walk to the station every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "eki",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "友達と公園を歩きました。",
+        "english": "I walked through the park with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kouen",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "今日は家から学校まで歩く。",
+        "english": "Today I walk from home to school.",
+        "vocabulary_slugs": [
+          "kyou",
+          "ie",
+          "gakkou-v",
+          "aruku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "asa": {
     "example_sentences": [
       {
@@ -3316,6 +3353,42 @@
       "review_status": "draft"
     }
   },
+  "hanasu-v": {
+    "example_sentences": [
+      {
+        "japanese": "私は先生と話します。",
+        "english": "I speak with the teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "僕は友達と話した。",
+        "english": "I talked with a friend.",
+        "vocabulary_slugs": [
+          "boku",
+          "tomodachi",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "彼女は学校で話しません。",
+        "english": "She does not speak at school.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "gakkou-v",
+          "hanasu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hantai": {
     "example_sentences": [
       {
@@ -3423,6 +3496,44 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hashiru": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝公園を走ります。",
+        "english": "I run in the park every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kouen",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "彼は学校まで走りました。",
+        "english": "He ran to school.",
+        "vocabulary_slugs": [
+          "kare",
+          "gakkou-v",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "明日、友達と駅まで走ります。",
+        "english": "Tomorrow, I will run to the station with a friend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "eki",
+          "hashiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -4731,6 +4842,44 @@
       "review_status": "draft"
     }
   },
+  "iu-v": {
+    "example_sentences": [
+      {
+        "japanese": "彼女はこれが好きだと言います。",
+        "english": "She says she likes this.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kore",
+          "suki",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "先生は何と言いましたか。",
+        "english": "What did the teacher say?",
+        "vocabulary_slugs": [
+          "sensei",
+          "nani",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "母はお茶を飲むと言いました。",
+        "english": "My mother said she would drink tea.",
+        "vocabulary_slugs": [
+          "haha",
+          "ocha",
+          "nomu-v",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "jibun-time": {
     "example_sentences": [
       {
@@ -5166,6 +5315,44 @@
       "review_status": "draft"
     }
   },
+  "kaku": {
+    "example_sentences": [
+      {
+        "japanese": "私は手紙を書きます。",
+        "english": "I write a letter.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "僕は毎朝ノートに書きます。",
+        "english": "I write in my notebook every morning.",
+        "vocabulary_slugs": [
+          "boku",
+          "maiasa",
+          "nooto",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "先生は黒いペンで書きます。",
+        "english": "The teacher writes with a black pen.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kuroi",
+          "pen",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kamera": {
     "example_sentences": [
       {
@@ -5562,6 +5749,44 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kau-v": {
+    "example_sentences": [
+      {
+        "japanese": "私はパンを買います。",
+        "english": "I buy bread.",
+        "vocabulary_slugs": [
+          "watashi",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女は新しいかばんを買う。",
+        "english": "She buys a new bag.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "atarashii-adj",
+          "kaban",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "明日、スーパーで牛乳を買います。",
+        "english": "Tomorrow I will buy milk at the supermarket.",
+        "vocabulary_slugs": [
+          "ashita",
+          "suupaa",
+          "gyuunyuu",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -10180,6 +10405,44 @@
       "review_status": "draft"
     }
   },
+  "oyogu": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝川で泳ぎます。",
+        "english": "I swim in the river every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kawa-v",
+          "oyogu"
+        ]
+      },
+      {
+        "japanese": "今日、友達と海で泳ぎます。",
+        "english": "Today I swim in the sea with a friend.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tomodachi",
+          "umi",
+          "oyogu"
+        ]
+      },
+      {
+        "japanese": "冬は海で泳ぎません。",
+        "english": "I don't swim in the sea in winter.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "umi",
+          "oyogu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "pan": {
     "example_sentences": [
       {
@@ -12353,6 +12616,44 @@
       "review_status": "draft"
     }
   },
+  "tobu": {
+    "example_sentences": [
+      {
+        "japanese": "私の帽子が風で飛びます。",
+        "english": "My hat blows away in the wind.",
+        "vocabulary_slugs": [
+          "watashi",
+          "boushi",
+          "kaze-wind",
+          "tobu"
+        ]
+      },
+      {
+        "japanese": "大きい鳥が空を飛びます。",
+        "english": "A big bird flies through the sky.",
+        "vocabulary_slugs": [
+          "ookii",
+          "tori",
+          "sora",
+          "tobu"
+        ]
+      },
+      {
+        "japanese": "子供がベッドで飛びます。",
+        "english": "The child jumps on the bed.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "beddo",
+          "tobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "toire": {
     "example_sentences": [
       {
@@ -13007,6 +13308,45 @@
       "review_status": "draft"
     }
   },
+  "uru": {
+    "example_sentences": [
+      {
+        "japanese": "母は古い服を売ります。",
+        "english": "My mother sells old clothes.",
+        "vocabulary_slugs": [
+          "haha",
+          "furui-adj",
+          "fuku",
+          "uru"
+        ]
+      },
+      {
+        "japanese": "彼は駅で新聞を売ります。",
+        "english": "He sells newspapers at the station.",
+        "vocabulary_slugs": [
+          "kare",
+          "eki",
+          "shinbun",
+          "uru"
+        ]
+      },
+      {
+        "japanese": "この店はパンを売りません。",
+        "english": "This shop does not sell bread.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "pan",
+          "uru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "wakai": {
     "example_sentences": [
       {
@@ -13402,6 +13742,46 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yomu": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝新聞を読みます。",
+        "english": "I read the newspaper every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "shinbun",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼女は図書館で本を読みます。",
+        "english": "She reads books at the library.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "僕は今この本を読みます。",
+        "english": "I'm going to read this book now.",
+        "vocabulary_slugs": [
+          "boku",
+          "ima",
+          "kono",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "gpt-5.5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
