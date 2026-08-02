@@ -80,7 +80,6 @@ module.exports = {
         'content-passage': 'rgb(var(--color-content-passage) / <alpha-value>)',
         'content-passage-soft': 'rgb(var(--color-content-passage-soft) / <alpha-value>)',
         'content-passage-deep': 'rgb(var(--color-content-passage-deep) / <alpha-value>)',
-        'content-reading': 'rgb(var(--color-content-reading) / <alpha-value>)',
 
         // v2 — reinforcement
         'reinforcement-text': 'rgb(var(--color-reinforcement-text) / <alpha-value>)',

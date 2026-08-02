@@ -1,5 +1,7 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+import { Button } from '@/components/common/Button';
 
 type BrowseEmptyStateProps = {
   onClearFilters: () => void;
@@ -23,17 +25,15 @@ export function BrowseEmptyState({
   if (error) {
     return (
       <View className="mt-space-2xl items-center gap-space-md px-space-lg" testID="browse-error">
-        <Text className="text-title text-primary">{"Couldn't load"}</Text>
+        <Text className="text-title font-ui-bold text-primary">{"Couldn't load"}</Text>
         <Text className="text-center text-body text-secondary">{error}</Text>
         {onRetry ? (
-          <Pressable
-            accessibilityRole="button"
+          <Button
+            label="Try again"
             accessibilityLabel="Retry loading browse results"
             onPress={onRetry}
             testID="browse-error-retry"
-            className="min-h-[48px] justify-center rounded-radius-md bg-feedback-info px-space-lg">
-            <Text className="text-body font-semibold text-background">Try again</Text>
-          </Pressable>
+          />
         ) : null}
       </View>
     );
@@ -41,21 +41,19 @@ export function BrowseEmptyState({
 
   return (
     <View className="mt-space-2xl items-center gap-space-md px-space-lg" testID="browse-empty">
-      <Text className="text-title text-primary">No matches</Text>
+      <Text className="text-title font-ui-bold text-primary">No matches</Text>
       <Text className="text-center text-body text-secondary">
         {canClear
           ? 'Nothing here fits those filters. Try widening them.'
           : 'There is nothing to browse yet.'}
       </Text>
       {canClear ? (
-        <Pressable
-          accessibilityRole="button"
+        <Button
+          label="Clear filters"
           accessibilityLabel="Clear all filters and search"
           onPress={onClearFilters}
           testID="browse-empty-clear"
-          className="min-h-[48px] justify-center rounded-radius-md bg-feedback-info px-space-lg">
-          <Text className="text-body font-semibold text-background">Clear filters</Text>
-        </Pressable>
+        />
       ) : null}
     </View>
   );

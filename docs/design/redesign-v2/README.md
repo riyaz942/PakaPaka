@@ -218,11 +218,31 @@ Spec refs: screens 4–5 (Home, Home scrolled) + screen 7 (Stats).
 
 Spec refs: screen 6 (Browse), 16–17 (passage locked/unlocked); Components → search & filter chips, list rows.
 
-- [ ] **Browse index** (`(tabs)/browse/index.tsx`, `components/browse/`): pill search field ("Search anything"), horizontal filter chips (active jade), "1,744 results" count line, unified result list using the 5px-edge rows — radical/kanji/vocab/grammar with Zen Maru glyph, name + reading caption, SRS dot; passage rows show JP title in passage-deep + synopsis + "9 to go" gold pill.
-- [ ] **Passage locked** (`browse/passage/…` and legacy `read/[id]`): pas-soft hero card (JP title, JP+EN synopsis, lock icon, "9 to go … to Guru" pill, progress bar, "Get these to Guru and this passage opens up"), "Still to learn" 5px-edge list.
-- [ ] **Passage unlocked:** OPEN success pill in header, passage body in `font-jp` 17/2.35 with furigana ruby + vocab underline links (voc-deep + 1.5px voc underline), comprehension question card (JP question, answer input, Submit), "you learned this yesterday" voc-soft callout.
-- [ ] Reading/passage surfaces switch from old gold `content-reading` to new slate passage tokens.
-- [ ] Tests, lint, typecheck, light + dark.
+- [x] **Browse index** (`(tabs)/browse/index.tsx`, `components/browse/`): pill search field ("Search anything"), horizontal filter chips (active jade), "1,744 results" count line, unified result list using the 5px-edge rows — radical/kanji/vocab/grammar with Zen Maru glyph, name + reading caption, SRS dot; passage rows show JP title in passage-deep + synopsis + "9 to go" gold pill.
+- [x] **Passage locked** (`browse/passage/…` and legacy `read/[id]`): pas-soft hero card (JP title, JP+EN synopsis, lock icon, "9 to go … to Guru" pill, progress bar, "Get these to Guru and this passage opens up"), "Still to learn" 5px-edge list.
+- [x] **Passage unlocked:** OPEN success pill in header, passage body in `font-jp` 17/2.35 with furigana ruby + vocab underline links (voc-deep + 1.5px voc underline), comprehension question card (JP question, answer input, Submit), "you learned this yesterday" voc-soft callout *(reworded — deviation 23)*.
+- [x] Reading/passage surfaces switch from old gold `content-reading` to new slate passage tokens.
+- [x] Tests, lint, typecheck, light + dark.
+
+### Session 5 decisions (carry into later sessions)
+
+**`ContentListRow` is now the only Browse-style row.** `BrowseRow`, `PassageBrowseRow` and the locked passage's "Still to learn" rows all compose it, and the row grew the props those three needed: `captionSecondary` (the English half of FR66's bilingual summary), `trailingTextClassName` / `trailingTestID`, and `showTypeBadge`. **The type badge is now opt-in** — Browse names the type in the caption instead, so a badge would repeat it; the locked to-do list has no caption room and keeps the badge.
+
+**The glyph steps down with the form's length** (`text-title` ≤2 chars · `text-body-lg` ≤4 · `text-body` beyond). Japanese forms in this curriculum run to seven characters, and a fixed 21px glyph column either truncates はじめまして or pushes the title off the row. Any later surface that heroes a list glyph should reuse `ContentListRow` rather than re-solve this.
+
+**`ScreenHeader` takes `children`.** The bar renders them in place of the title, which is how the spec's detail headers carry a type kicker and a status pill. Session 6's item headers (back arrow + type badge + SRS stage pill) should use the same slot rather than a second header component.
+
+**`content-reading` is gone.** The alias was deleted from `global.css`, `tailwind.config.js` and the contrast manifest. `components/read/PassageListRow.tsx` was orphaned when the Read tab folded into Browse and was deleted with it. `ReviewCard`'s one use was never about passages — it colours the *reading prompt* kicker — and now points at `content-passage` directly, holding its old value until Session 7 retunes that kicker.
+
+**Two display-only data fields.** `BrowseItemRow.reading` (a correlated `accepted_answers` lookup, so multi-reading items cannot fan the row set out) backs the "Kanji · いち" caption; `usePassageDetail().recentWord` reads the SRS rows already loaded for unlock. Neither participates in filtering, ordering or unlock — same rule as Session 4's hook fields.
+
+### Session 5 deviations
+
+21. **Browse item captions carry a reading only where one is authored.** The spec draws "Kanji · いち" on every row; radicals have no reading answer and grammar points rarely do, so those rows caption as just "Radical" / "Grammar". The reading comes from the item's primary `accepted_answers` row of type `reading` — the same string the review screen grades against — so it can never disagree with what the app asks for.
+22. **Passage body leading is ~1.75, not the spec's 2.35.** In CSS the 2.35 exists to make room for ruby *inside* the line box. `FuriganaText` stacks readings in their own view above the text and separates wrapped lines with its own gap, so copying 2.35 would double-count the ruby space and leave the paragraph looking broken up. Size is the spec's 17px, set through `FuriganaText`'s documented `style` escape hatch (there is no 17px type token).
+23. **"You learned this yesterday" became "you reviewed this earlier today / yesterday".** *(Accepted 2026-08-02.)* Nothing records when a specific item was *learned*: `item_study_status.updated_at` also moves on later transitions, and `daily_lesson_log` stores counts, not item ids — so the spec's sentence would be a claim the data cannot back. `srs_states.last_reviewed_at` (migration 010) is already loaded for the unlock check and says exactly what it means. Stage was the other candidate and is unusable here: unlock needs ≥90% of linked items at Guru+, which for any passage with fewer than ten links means *every* linked item is Guru+, so an "apprentice" callout would almost never fire.
+24. **Comprehension cards are numbered "1 of N" rather than a section heading.** The spec's card kicker reads "COMPREHENSION · 1 OF 2" and there is no separate "Comprehension" heading above the set, so the old heading was dropped instead of being kept alongside it.
+25. **The Browse result card frames the list only when it has rows.** The spec draws every result inside one bordered card. An empty or errored list would otherwise render an empty box around "No matches", so the frame is dropped in those states. The card also carries no elevation — a shadow and `overflow-hidden` on the same view do not compose on Android.
 
 ## Session 6 — Item detail pages (radical · kanji · vocab · grammar)
 

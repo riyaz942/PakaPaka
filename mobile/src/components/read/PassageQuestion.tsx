@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 
+import { Button } from '@/components/common/Button';
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { Icon } from '@/components/common/Icon';
+import { getSemanticColors } from '@/constants/semantic-colors';
 import { evaluatePassageAnswer } from '@/core/answer/evaluatePassageAnswer';
 import type { PassageQuestion as PassageQuestionType } from '@/data/curriculum/passageRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 import {
   upsertPassagePracticeResult,
   type PassagePracticeResult,
@@ -15,6 +19,9 @@ import { cn } from '@/utils/cn';
 type PassageQuestionProps = {
   passageId: string;
   question: PassageQuestionType;
+  /** 1-based position, for the card's "COMPREHENSION · 1 OF 2" kicker. */
+  position: number;
+  total: number;
   savedResult: PassagePracticeResult | null;
   onAnswerSubmitted: (result: PassagePracticeResult) => void;
 };
@@ -26,12 +33,16 @@ function formatAcceptedAnswers(acceptedAnswers: string[]): string {
 export function PassageQuestion({
   passageId,
   question,
+  position,
+  total,
   savedResult,
   onAnswerSubmitted,
 }: PassageQuestionProps) {
   const { userDb } = useDatabase();
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const colors = getSemanticColors(usePaintedColorScheme());
   const [userAnswer, setUserAnswer] = useState(savedResult?.userAnswer ?? '');
+  const [focused, setFocused] = useState(false);
   const [result, setResult] = useState<'correct' | 'incorrect' | null>(
     savedResult ? (savedResult.isCorrect ? 'correct' : 'incorrect') : null,
   );
@@ -78,14 +89,32 @@ export function PassageQuestion({
         ? 'Incorrect'
         : null;
 
+  // Field chrome follows the kit's answer-input states: jade while focused,
+  // then the feedback hue once the answer has been graded.
+  const fieldStateClass =
+    result === 'correct'
+      ? 'border-feedback-correct bg-feedback-correct-soft'
+      : result === 'incorrect'
+        ? 'border-feedback-incorrect bg-feedback-incorrect-soft'
+        : focused
+          ? 'border-brand-500 bg-surface-elevated'
+          : 'border-border bg-surface-elevated';
+
   return (
-    <View testID={`passage-question-${question.id}`}>
+    <View
+      testID={`passage-question-${question.id}`}
+      className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+        {`Comprehension · ${position} of ${total}`}
+      </Text>
+
       <FuriganaText
         text={question.promptFurigana ?? question.prompt}
         mode={furiganaMode}
         knownKanji={knownKanji}
         accessibilityRole="header"
-        className="text-body-lg text-primary"
+        className="font-jp-medium text-primary"
+        style={{ fontSize: 17, lineHeight: 30 }}
       />
 
       <TextInput
@@ -94,24 +123,27 @@ export function PassageQuestion({
         autoCorrect={false}
         editable={!isCorrect}
         onChangeText={setUserAnswer}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        placeholder="Your answer"
+        placeholderTextColor={colors.faint}
         testID={`passage-question-input-${question.id}`}
         value={userAnswer}
-        className="mt-3 min-h-[44px] rounded-radius-md border border-border bg-surface px-space-md py-2 text-body text-primary"
+        className={cn(
+          'mt-space-sm min-h-[48px] rounded-radius-md border-[1.5px] px-space-md py-space-sm text-body font-jp-medium text-primary',
+          fieldStateClass,
+        )}
       />
 
       {isCorrect ? null : (
-        <Pressable
-          accessibilityRole="button"
+        <Button
+          label={result === 'incorrect' ? 'Try again' : 'Submit'}
           accessibilityLabel={result === 'incorrect' ? 'Try again' : 'Submit answer'}
-          accessibilityState={{ disabled: !canSubmit }}
           disabled={!canSubmit}
           onPress={handleSubmit}
           testID={`passage-question-submit-${question.id}`}
-          className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-brand-600 px-space-md py-2">
-          <Text className="text-body font-semibold text-on-primary">
-            {result === 'incorrect' ? 'Try again' : 'Submit'}
-          </Text>
-        </Pressable>
+          className="mt-space-sm"
+        />
       )}
 
       {result === null ? null : (
@@ -120,21 +152,33 @@ export function PassageQuestion({
           accessibilityLabel={feedbackMessage ?? undefined}
           testID={`passage-question-feedback-${question.id}`}
           className={cn(
-            'mt-3 rounded-radius-md px-space-md py-3',
-            result === 'correct' ? 'bg-feedback-correct/15' : 'bg-feedback-incorrect/15',
+            'mt-space-sm flex-row items-start gap-space-sm rounded-radius-md px-space-md py-space-sm',
+            result === 'correct' ? 'bg-feedback-correct-soft' : 'bg-feedback-incorrect-soft',
           )}>
-          <Text
-            className={cn(
-              'text-body font-semibold',
-              result === 'correct' ? 'text-feedback-correct' : 'text-feedback-incorrect',
-            )}>
-            {result === 'correct' ? 'Correct' : 'Incorrect'}
-          </Text>
-          {result === 'correct' ? (
-            <Text className="mt-1 text-body text-primary">
-              Accepted answer: {acceptedAnswersLabel}
+          <Icon
+            name={result === 'correct' ? 'correct' : 'close'}
+            size={16}
+            strokeWidth={2.4}
+            className={
+              result === 'correct' ? 'text-feedback-correct-deep' : 'text-feedback-incorrect-deep'
+            }
+          />
+          <View className="flex-1">
+            <Text
+              className={cn(
+                'text-body-sm font-ui-bold',
+                result === 'correct'
+                  ? 'text-feedback-correct-deep'
+                  : 'text-feedback-incorrect-deep',
+              )}>
+              {result === 'correct' ? 'Correct' : 'Incorrect'}
             </Text>
-          ) : null}
+            {result === 'correct' ? (
+              <Text className="mt-space-xs text-body-sm font-ui-medium text-feedback-correct-deep">
+                Accepted answer: {acceptedAnswersLabel}
+              </Text>
+            ) : null}
+          </View>
         </View>
       )}
     </View>

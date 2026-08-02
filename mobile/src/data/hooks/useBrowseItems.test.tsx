@@ -40,6 +40,7 @@ function itemRow(id: number): BrowseRowModel {
     itemType: 'kanji',
     primaryForm: '水',
     meaning: 'water',
+    reading: 'みず',
     studyStatus: 'not_started',
     srsStage: null,
   };

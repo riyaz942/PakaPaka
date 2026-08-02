@@ -82,25 +82,34 @@ export function BrowseList({
   }
 
   return (
-    <FlatList
-      className="flex-1"
-      testID="browse-list"
-      data={rows}
-      keyExtractor={keyExtractor}
-      renderItem={renderItem}
-      onEndReached={onEndReached}
-      onEndReachedThreshold={0.5}
-      keyboardShouldPersistTaps="handled"
-      ListEmptyComponent={
-        <BrowseEmptyState onClearFilters={onClearFilters} canClear={canClearFilters} />
-      }
-      ListFooterComponent={
-        loadingMore ? (
-          <View className="py-space-lg items-center">
-            <ActivityIndicator accessibilityLabel="Loading more results" />
-          </View>
-        ) : null
-      }
-    />
+    <View
+      // The spec holds the whole result set in one bordered card. It only reads
+      // as a card when there is something in it, so an empty list drops the frame.
+      className={
+        rows.length > 0
+          ? 'flex-1 overflow-hidden rounded-radius-md border border-border'
+          : 'flex-1'
+      }>
+      <FlatList
+        className="flex-1"
+        testID="browse-list"
+        data={rows}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
+        keyboardShouldPersistTaps="handled"
+        ListEmptyComponent={
+          <BrowseEmptyState onClearFilters={onClearFilters} canClear={canClearFilters} />
+        }
+        ListFooterComponent={
+          loadingMore ? (
+            <View className="py-space-lg items-center">
+              <ActivityIndicator accessibilityLabel="Loading more results" />
+            </View>
+          ) : null
+        }
+      />
+    </View>
   );
 }

@@ -21,6 +21,8 @@ type PassageReaderProps = {
   questions: PassageQuestionType[];
   practiceResults: PassagePracticeResult[];
   wordSpans: PassageWordSpan[];
+  /** A spanned word reviewed today or yesterday, called out under the text. */
+  recentWord: { itemId: string; surface: string; whenLabel: string } | null;
   onAnswerSubmitted: (result: PassagePracticeResult) => void;
 };
 
@@ -29,6 +31,7 @@ export function PassageReader({
   questions,
   practiceResults,
   wordSpans,
+  recentWord,
   onAnswerSubmitted,
 }: PassageReaderProps) {
   const { curriculumDb } = useDatabase();
@@ -50,17 +53,21 @@ export function PassageReader({
 
   return (
     <View testID="passage-reader">
-      <Text className="text-title text-primary">{passage.title}</Text>
+      <Text accessibilityRole="header" className="text-title-lg font-jp-bold text-primary">
+        {passage.title}
+      </Text>
 
       {/* Bilingual one-liner (FR66) framing what the passage is about. */}
       {passage.summaryJa ? (
-        <Text className="mt-space-sm text-body text-primary">{passage.summaryJa}</Text>
+        <Text className="mt-space-xs text-body-sm font-jp-medium text-secondary">
+          {passage.summaryJa}
+        </Text>
       ) : null}
       {passage.summaryEn ? (
-        <Text className="mt-space-xs text-body-sm text-secondary">{passage.summaryEn}</Text>
+        <Text className="mt-space-xs text-caption font-ui text-muted">{passage.summaryEn}</Text>
       ) : null}
 
-      <View className="mt-4">
+      <View className="mt-space-md">
         <PassageBody
           body={passage.body}
           bodyFurigana={passage.bodyFurigana}
@@ -69,14 +76,26 @@ export function PassageReader({
         />
       </View>
 
+      {recentWord ? (
+        <View
+          testID="passage-recent-word"
+          className="mt-space-md flex-row items-center gap-space-sm rounded-radius-md bg-content-vocabulary-soft px-space-md py-space-sm">
+          <View className="h-[8px] w-[8px] rounded-radius-full bg-content-vocabulary" />
+          <Text className="flex-1 text-caption font-ui-semibold text-content-vocabulary-deep">
+            {recentWord.surface} — you reviewed this {recentWord.whenLabel}
+          </Text>
+        </View>
+      ) : null}
+
       {questions.length > 0 ? (
-        <View className="mt-8 gap-space-lg">
-          <Text className="text-body font-semibold text-primary">Comprehension</Text>
-          {questions.map((question) => (
+        <View className="mt-space-lg gap-space-md">
+          {questions.map((question, index) => (
             <PassageQuestion
               key={question.id}
               passageId={passage.id}
               question={question}
+              position={index + 1}
+              total={questions.length}
               savedResult={practiceByQuestionId.get(question.id) ?? null}
               onAnswerSubmitted={onAnswerSubmitted}
             />

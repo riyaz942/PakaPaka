@@ -219,17 +219,6 @@ export function contrastPairManifest(): ContrastPair[] {
       });
     }
 
-    // Alias of content-passage until Session 5 of the v2 redesign renames call sites.
-    for (const bg of surfaceTokens) {
-      pairs.push({
-        name: `content-reading accent on ${bg}`,
-        foreground: 'content-reading',
-        background: bg,
-        textClass: 'large-text',
-        theme,
-      });
-    }
-
     for (const bg of surfaceTokens) {
       pairs.push({
         name: `goal ring arc on ${bg}`,

@@ -65,7 +65,7 @@ function renderPassageScreen(
 const REVIEWED_ISO = '2026-06-25T10:00:00.000Z';
 
 /** A settled SRS row at the given stage — only the stage matters for unlock. */
-function srsRow(itemId: number, srsStageLabel: string) {
+function srsRow(itemId: number, srsStageLabel: string, lastReviewedAt: string | null = null) {
   return {
     item_id: itemId,
     stability: 5,
@@ -76,6 +76,7 @@ function srsRow(itemId: number, srsStageLabel: string) {
     lapses: 0,
     is_burned: 0,
     srs_stage_label: srsStageLabel,
+    last_reviewed_at: lastReviewedAt,
     updated_at: REVIEWED_ISO,
   };
 }
@@ -281,6 +282,32 @@ describe('BrowsePassageRoute', () => {
       expect(mockPush).toHaveBeenCalledWith('/browse/item/10');
     });
 
+    it('frames the locked hero as a destination: countdown, progress and to-do rows', async () => {
+      const { curriculumDb, userDb } = await createDatabases();
+      seedLockedPassage();
+      __mockSetSrsStates('user.db', [srsRow(10, 'guru')]);
+      renderPassageScreen(curriculumDb, userDb);
+
+      await waitFor(() => {
+        expect(screen.getByTestId('passage-locked-todo')).toBeTruthy();
+      });
+
+      expect(screen.getByTestId('passage-locked-remaining')).toHaveTextContent('1 to go');
+      expect(screen.getByText('to Guru')).toBeTruthy();
+      // One of two linked items is Guru+, so the bar is half filled.
+      expect(screen.getByTestId('passage-locked-progress').props.style).toEqual(
+        expect.objectContaining({ width: '50%' }),
+      );
+      // The to-do rows are the shared 5px-edge rows, in each item's own hue.
+      expect(
+        screen.getByTestId('passage-needed-item-30-edge').props.className,
+      ).toContain('bg-content-grammar');
+      expect(screen.getByText('GRAMMAR')).toBeTruthy();
+
+      // Locked screens never show the OPEN pill.
+      expect(screen.queryByTestId('passage-open-pill')).toBeNull();
+    });
+
     it('opens the reader once linked items reach Guru', async () => {
       const { curriculumDb, userDb } = await createDatabases();
       seedLockedPassage();
@@ -294,6 +321,58 @@ describe('BrowsePassageRoute', () => {
         expect(screen.getByTestId('passage-reader')).toBeTruthy();
       });
       expect(screen.queryByTestId('passage-locked-todo')).toBeNull();
+      expect(screen.getByTestId('passage-open-pill')).toHaveTextContent('Open');
+    });
+  });
+
+  it('numbers each comprehension question against the set', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    renderPassageScreen(curriculumDb, userDb);
+
+    await waitFor(() => {
+      expect(screen.getByText('Comprehension · 1 of 1')).toBeTruthy();
+    });
+  });
+
+  describe('recently reviewed callout', () => {
+    /** Unlocked passage whose spanned word 学生 was reviewed at `reviewedAt`. */
+    async function renderWithReview(reviewedAt: string | null) {
+      const { curriculumDb, userDb } = await createDatabases();
+      __mockSetItems('curriculum.db.test', [
+        {
+          id: 10,
+          slug: 'gakusei',
+          item_type: 'vocabulary',
+          jlpt_level: 'N5',
+          primary_form: '学生',
+          meaning: 'student',
+          sort_order: 1,
+        },
+      ]);
+      __mockSetPassageVocabularyLinks('curriculum.db.test', [
+        { passage_id: 1, vocabulary_item_id: 10 },
+      ]);
+      __mockSetPassageWordSpans('curriculum.db.test', [
+        { id: 1, passage_id: 1, vocabulary_item_id: 10, start_offset: 2, end_offset: 4, sort_order: 0 },
+      ]);
+      __mockSetSrsStates('user.db', [srsRow(10, 'guru', reviewedAt)]);
+      renderPassageScreen(curriculumDb, userDb);
+
+      await waitFor(() => expect(screen.getByTestId('passage-reader')).toBeTruthy());
+    }
+
+    it('names a word the learner reviewed today', async () => {
+      await renderWithReview(new Date().toISOString());
+
+      expect(screen.getByTestId('passage-recent-word')).toHaveTextContent(
+        '学生 — you reviewed this earlier today',
+      );
+    });
+
+    it('stays quiet for a word whose last review has aged out', async () => {
+      await renderWithReview('2020-01-01T10:00:00.000Z');
+
+      expect(screen.queryByTestId('passage-recent-word')).toBeNull();
     });
   });
 

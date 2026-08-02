@@ -265,6 +265,7 @@ describe('listBrowsePage', () => {
         item_type: 'kanji',
         primary_form: '水',
         meaning: 'water',
+        reading: 'みず',
         study_status: 'in_progress',
         srs_stage: 'guru',
         title: null,
@@ -282,6 +283,7 @@ describe('listBrowsePage', () => {
       itemType: 'kanji',
       primaryForm: '水',
       meaning: 'water',
+      reading: 'みず',
       studyStatus: 'in_progress',
       srsStage: 'guru',
     });

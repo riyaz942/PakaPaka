@@ -40,6 +40,12 @@ export type BrowseItemRow = {
   itemType: ItemType;
   primaryForm: string;
   meaning: string;
+  /**
+   * Display-only: the item's primary reading, for the row's caption
+   * ("Kanji · いち"). Null for radicals and anything with no authored reading
+   * answer — it never takes part in filtering or ordering.
+   */
+  reading: string | null;
   studyStatus: StudyStatus;
   /** Null when the item has never entered SRS — never a placeholder stage. */
   srsStage: SRSStageLabel | null;
@@ -208,6 +214,11 @@ function buildItemBranch(input: BrowseQueryInput): QueryFragment | null {
       `SELECT 'item' AS kind, i.id AS id, i.jlpt_level AS jlpt_level, i.sort_order AS sort_order,` +
       ` ${levelRankExpression('i.jlpt_level')} AS level_rank,` +
       ` i.item_type AS item_type, i.primary_form AS primary_form, i.meaning AS meaning,` +
+      // Display-only caption reading. Correlated rather than joined so it cannot
+      // fan the row set out for items with several accepted readings.
+      ` (SELECT aa.answer_text FROM ${C}.accepted_answers aa` +
+      `  WHERE aa.item_id = i.id AND aa.answer_type = 'reading'` +
+      `  ORDER BY aa.is_primary DESC, aa.id ASC LIMIT 1) AS reading,` +
       ` s.status AS study_status, r.srs_stage_label AS srs_stage,` +
       ` NULL AS title, NULL AS english_translation, NULL AS summary_ja, NULL AS summary_en` +
       ` FROM ${C}.items i` +
@@ -256,7 +267,7 @@ function buildPassageBranch(input: BrowseQueryInput): QueryFragment | null {
     sql:
       `SELECT 'passage' AS kind, p.id AS id, p.jlpt_level AS jlpt_level, p.sort_order AS sort_order,` +
       ` ${levelRankExpression('p.jlpt_level')} AS level_rank,` +
-      ` NULL AS item_type, NULL AS primary_form, NULL AS meaning,` +
+      ` NULL AS item_type, NULL AS primary_form, NULL AS meaning, NULL AS reading,` +
       ` NULL AS study_status, NULL AS srs_stage,` +
       ` p.title AS title, p.english_translation AS english_translation,` +
       ` p.summary_ja AS summary_ja, p.summary_en AS summary_en` +
@@ -317,6 +328,7 @@ type BrowseRow = {
   item_type: ItemType | null;
   primary_form: string | null;
   meaning: string | null;
+  reading: string | null;
   study_status: StudyStatus | null;
   srs_stage: SRSStageLabel | null;
   title: string | null;
@@ -361,6 +373,7 @@ function mapRow(
     itemType: row.item_type as ItemType,
     primaryForm: row.primary_form ?? '',
     meaning: row.meaning ?? '',
+    reading: row.reading ?? null,
     studyStatus: row.study_status ?? 'not_started',
     srsStage: row.srs_stage ?? null,
   };

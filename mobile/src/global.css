@@ -106,9 +106,6 @@
     --color-content-passage: 92 107 153;
     --color-content-passage-soft: 234 236 245;
     --color-content-passage-deep: 61 74 115;
-    /* Alias of content-passage — call sites migrate to the passage name in
-       Session 5, then this token goes away. */
-    --color-content-reading: 92 107 153;
 
     /* v2 — reinforcement (cross-domain hint) reuses the info family */
     --color-reinforcement-text: 39 111 175;
@@ -166,7 +163,6 @@
       --color-content-passage: 142 156 196;
       --color-content-passage-soft: 48 49 57;
       --color-content-passage-deep: 195 204 228;
-      --color-content-reading: 142 156 196;
 
       --color-reinforcement-text: 97 162 219;
       --color-reinforcement-bg: 38 53 66;

@@ -7,6 +7,7 @@ import { BrowseList } from '@/components/browse/BrowseList';
 import { FilterDrawer } from '@/components/browse/FilterDrawer';
 import { FilterPill } from '@/components/browse/FilterPill';
 import { SearchField } from '@/components/browse/SearchField';
+import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { MaxContentWidth } from '@/constants/theme';
 import {
   BROWSE_FACET_KEYS,
@@ -149,7 +150,7 @@ export default function BrowseScreen() {
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Text className="text-title text-primary">Browse</Text>
+        <ScreenTitle>Browse</ScreenTitle>
 
         <View className="mt-space-md">
           <SearchField
@@ -184,18 +185,20 @@ export default function BrowseScreen() {
               onPress={handleClearAll}
               testID="browse-clear-all"
               className="min-h-[44px] justify-center px-space-sm">
-              <Text className="text-body-sm text-feedback-info">Clear all</Text>
+              <Text className="text-body-sm font-ui-bold text-brand-text">Clear all</Text>
             </Pressable>
           ) : null}
         </ScrollView>
 
         {!loading && !error ? (
-          <Text className="mt-space-sm text-body-sm text-secondary" testID="browse-result-count">
+          <Text
+            className="mb-space-sm mt-space-sm text-caption font-ui-semibold text-muted"
+            testID="browse-result-count">
             {totalCount === 1 ? '1 result' : `${totalCount} results`}
           </Text>
         ) : null}
 
-        <View className="mt-space-sm flex-1">
+        <View className="flex-1 pb-space-sm">
           <BrowseList
             rows={rows}
             loading={loading}

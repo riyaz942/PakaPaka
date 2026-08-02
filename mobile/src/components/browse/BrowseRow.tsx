@@ -1,10 +1,8 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
 
-import { SRSStageIndicator } from '@/components/common/SRSStageIndicator';
-import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
+import { ContentListRow } from '@/components/common/ContentListRow';
+import { CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { BrowseItemRow } from '@/data/curriculum/browseRepository';
-import { cn } from '@/utils/cn';
 
 type BrowseRowProps = {
   row: BrowseItemRow;
@@ -22,29 +20,22 @@ type BrowseRowProps = {
  * whether the learner may look something up.
  */
 function BrowseRowComponent({ row, onPress, testID }: BrowseRowProps) {
-  const accent = CONTENT_TYPE_ACCENT[row.itemType];
-  const isJapaneseForm = row.itemType === 'radical' || row.itemType === 'kanji';
+  const typeLabel = CONTENT_TYPE_LABEL[row.itemType];
+  // The type lives in the caption here (spec, Browse), so the row carries no
+  // separate type badge — the 5px edge and the glyph already colour-code it.
+  const caption = row.reading ? `${typeLabel} · ${row.reading}` : typeLabel;
 
   return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={`${CONTENT_TYPE_LABEL[row.itemType]}: ${row.primaryForm}, ${row.meaning}`}
+    <ContentListRow
+      rowType={row.itemType}
+      glyph={row.primaryForm}
+      title={row.meaning}
+      caption={caption}
+      srsStage={row.srsStage ?? undefined}
       onPress={onPress}
+      accessibilityLabel={`${typeLabel}: ${row.primaryForm}, ${row.meaning}`}
       testID={testID}
-      className={cn('border-b border-l-4 border-border py-space-md pl-space-md', accent.barLeft)}>
-      <View className="flex-row items-center justify-between pr-space-md">
-        <Text
-          className={cn(
-            isJapaneseForm ? 'text-display' : 'text-body-lg',
-            accent.text,
-            row.itemType === 'grammar' && 'font-mono',
-          )}>
-          {row.primaryForm}
-        </Text>
-        {row.srsStage ? <SRSStageIndicator stage={row.srsStage} /> : null}
-      </View>
-      <Text className="mt-space-xs text-body text-primary">{row.meaning}</Text>
-    </Pressable>
+    />
   );
 }
 

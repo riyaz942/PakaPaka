@@ -11,6 +11,11 @@ type ScreenHeaderProps = {
   backAccessibilityLabel?: string;
   backTestID?: string;
   onBack?: () => void;
+  /**
+   * Fills the bar instead of a plain title — the spec's detail headers carry
+   * badges and status pills there rather than a screen name.
+   */
+  children?: React.ReactNode;
 };
 
 /**
@@ -23,6 +28,7 @@ export function ScreenHeader({
   backAccessibilityLabel = 'Back',
   backTestID,
   onBack,
+  children,
 }: ScreenHeaderProps) {
   const insets = useSafeAreaInsets();
 
@@ -40,7 +46,11 @@ export function ScreenHeader({
           hitSlop={8}>
           <Icon name="back" size={24} strokeWidth={2} className="text-primary" />
         </Pressable>
-        {title ? (
+        {children ? (
+          <View className="flex-1 flex-row items-center gap-space-sm py-space-sm pr-space-md">
+            {children}
+          </View>
+        ) : title ? (
           <Text
             accessibilityRole="header"
             numberOfLines={1}

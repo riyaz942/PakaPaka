@@ -1,15 +1,12 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import {
-  CONTENT_TYPE_ACCENT,
-  CONTENT_TYPE_LABEL,
-  PASSAGE_CONTENT_ACCENT,
-} from '@/constants/contentType';
+import { ContentListRow } from '@/components/common/ContentListRow';
+import { Icon } from '@/components/common/Icon';
+import { CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { PassageUnlockStatus } from '@/core/content/passageUnlock';
 import type { CurriculumListItem } from '@/data/curriculum/itemRepository';
 import type { PassageDetail } from '@/data/curriculum/passageRepository';
-import { cn } from '@/utils/cn';
 
 type PassageLockedTodoProps = {
   passage: PassageDetail;
@@ -36,63 +33,70 @@ export function PassageLockedTodo({
     unlock.itemsRemainingToUnlock > 0
       ? `${unlock.itemsRemainingToUnlock} to go`
       : 'Almost there';
+  const coveragePercent = Math.min(100, Math.max(0, Math.round(unlock.coverage * 100)));
 
   return (
     <View testID="passage-locked-todo">
-      <Text className="text-title text-primary">{passage.title}</Text>
+      {/* The hero wears the passage slate end to end: every line sits on the
+          soft fill in the deep tone, the only step of the hue that carries copy. */}
+      <View className="rounded-radius-xl bg-content-passage-soft p-space-md">
+        <Text className="text-title-lg font-jp-bold text-content-passage-deep">
+          {passage.title}
+        </Text>
 
-      {passage.summaryJa ? (
-        <Text className="mt-space-sm text-body-lg text-primary">{passage.summaryJa}</Text>
-      ) : null}
-      {passage.summaryEn ? (
-        <Text className="mt-space-xs text-body text-secondary">{passage.summaryEn}</Text>
-      ) : null}
+        {passage.summaryJa ? (
+          <Text className="mt-space-sm text-body-sm font-jp-medium text-content-passage-deep">
+            {passage.summaryJa}
+          </Text>
+        ) : null}
+        {passage.summaryEn ? (
+          <Text className="mt-space-xs text-body-sm font-ui text-content-passage-deep/80">
+            {passage.summaryEn}
+          </Text>
+        ) : null}
 
-      <View
-        testID="passage-locked-remaining"
-        className={cn(
-          'mt-space-lg self-start rounded-radius-full px-space-md py-space-xs',
-          PASSAGE_CONTENT_ACCENT.tint,
-        )}>
-        <Text className={cn('text-body font-semibold', PASSAGE_CONTENT_ACCENT.text)}>
-          {remainingLabel}
+        <View className="mt-space-md flex-row items-center gap-space-sm">
+          <Icon name="locked" size={17} strokeWidth={2} className="text-content-passage-deep" />
+          <View
+            testID="passage-locked-remaining"
+            className="rounded-radius-full bg-content-grammar-soft px-space-sm py-[6px]">
+            <Text className="text-body-sm font-ui-extrabold text-content-grammar-deep">
+              {remainingLabel}
+            </Text>
+          </View>
+          <Text className="text-caption font-ui-medium text-content-passage-deep">to Guru</Text>
+        </View>
+
+        {/* No plain surface inside the card, so the track is the passage hue
+            itself held back to a tint. */}
+        <View className="mt-space-sm h-[8px] overflow-hidden rounded-radius-full bg-content-passage/20">
+          <View
+            testID="passage-locked-progress"
+            className="h-full rounded-radius-full bg-content-passage"
+            style={{ width: `${coveragePercent}%` }}
+          />
+        </View>
+
+        <Text className="mt-space-sm text-caption font-ui-medium text-content-passage-deep/85">
+          Get these to Guru and this passage opens up.
         </Text>
       </View>
 
-      <Text className="mt-space-sm text-body text-secondary">
-        Get these to Guru and this passage opens up.
-      </Text>
+      <Text className="mt-space-lg text-body font-ui-extrabold text-primary">Still to learn</Text>
 
-      <View className="mt-space-lg">
-        <Text className="text-body font-semibold text-primary">Still to learn</Text>
-
-        {neededItems.map((item) => {
-          const accent = CONTENT_TYPE_ACCENT[item.itemType];
-          return (
-            <Pressable
-              key={item.id}
-              accessibilityRole="button"
-              accessibilityLabel={`${CONTENT_TYPE_LABEL[item.itemType]}: ${item.primaryForm}, ${item.meaning}`}
-              onPress={() => onItemPress(item.id)}
-              testID={`passage-needed-item-${item.id}`}
-              className={cn(
-                'mt-space-sm min-h-[44px] border-b border-l-4 border-border py-space-md pl-space-md',
-                accent.barLeft,
-              )}>
-              <View className="flex-row items-center justify-between pr-space-md">
-                <Text className={cn('flex-1 text-body-lg', accent.text)}>{item.primaryForm}</Text>
-                <View className={cn('rounded-radius-full px-space-sm py-[2px]', accent.tint)}>
-                  <Text className={cn('text-overline font-semibold', accent.text)}>
-                    {CONTENT_TYPE_LABEL[item.itemType]}
-                  </Text>
-                </View>
-              </View>
-              <Text numberOfLines={1} className="mt-space-xs text-body-sm text-secondary">
-                {item.meaning}
-              </Text>
-            </Pressable>
-          );
-        })}
+      <View className="mt-space-sm overflow-hidden rounded-radius-md border border-border">
+        {neededItems.map((item) => (
+          <ContentListRow
+            key={item.id}
+            rowType={item.itemType}
+            glyph={item.primaryForm}
+            title={item.meaning}
+            showTypeBadge
+            onPress={() => onItemPress(item.id)}
+            accessibilityLabel={`${CONTENT_TYPE_LABEL[item.itemType]}: ${item.primaryForm}, ${item.meaning}`}
+            testID={`passage-needed-item-${item.id}`}
+          />
+        ))}
       </View>
     </View>
   );

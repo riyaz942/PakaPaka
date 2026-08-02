@@ -58,7 +58,9 @@ const MODE_LABEL: Record<PromptType, string> = {
 };
 
 const MODE_LABEL_CLASS: Record<PromptType, string> = {
-  reading: 'text-content-reading',
+  // Slate, as it always was — this is the prompt *type* "reading", unrelated to
+  // reading passages. Session 7 retunes the review prompt kicker.
+  reading: 'text-content-passage',
   meaning: 'text-feedback-info',
   production: 'text-content-grammar',
 };

@@ -50,6 +50,7 @@ const KANJI_ROW: BrowseRowModel = {
   itemType: 'kanji',
   primaryForm: '水',
   meaning: 'water',
+  reading: 'みず',
   studyStatus: 'not_started',
   srsStage: null,
 };
@@ -101,6 +102,19 @@ describe('BrowseScreen', () => {
     await waitFor(() => expect(screen.getByTestId('browse-passage-9')).toBeTruthy());
     expect(screen.getByText('A short trip to the market.')).toBeTruthy();
     expect(screen.getByTestId('browse-passage-9-lock')).toHaveTextContent('3 to go');
+  });
+
+  it('captions an item row with its type and reading, and colours its edge by type', async () => {
+    renderBrowse();
+
+    await waitFor(() => expect(screen.getByTestId('browse-item-1')).toBeTruthy());
+    expect(screen.getByText('water')).toBeTruthy();
+    expect(screen.getByText('Kanji · みず')).toBeTruthy();
+    expect(screen.getByTestId('browse-item-1-edge').props.className).toContain(
+      'bg-content-kanji',
+    );
+    // The caption already names the type, so the row carries no type badge.
+    expect(screen.queryByText('KANJI')).toBeNull();
   });
 
   it('never renders a dependency lock or "learn first" affordance on item rows (BUG7)', async () => {

@@ -3,8 +3,10 @@ import React from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
+import { Button } from '@/components/common/Button';
+import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FuriganaText } from '@/components/common/FuriganaText';
-import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
+import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
@@ -52,26 +54,22 @@ export function PassageWordDetailSheet({
         onPress={onDismiss}
         className="flex-1 bg-black/40"
       />
-      <View className="gap-space-md rounded-t-radius-lg border-t border-border bg-surface p-space-lg">
+      <View className="gap-space-md rounded-t-radius-xl border-t border-border bg-surface p-space-lg shadow-e3">
         {item ? (
           <>
-            <View className="flex-row items-start justify-between">
+            <View className="flex-row items-start justify-between gap-space-md">
               <FuriganaText
                 text={item.furigana ?? item.primaryForm}
                 mode={modeForItem(item.id)}
                 isKnownWord={isVocabulary ? isKnownWord : undefined}
                 knownKanji={isVocabulary ? undefined : knownKanji}
                 accessibilityRole="header"
-                className={cn('text-title-lg', accent?.text)}
+                className={cn('text-title-lg font-jp-round-black', accent?.glyph)}
               />
-              <View className={cn('rounded-radius-full px-space-sm py-[2px]', accent?.tint)}>
-                <Text className={cn('text-overline font-semibold', accent?.text)}>
-                  {CONTENT_TYPE_LABEL[item.itemType]}
-                </Text>
-              </View>
+              <ContentTypeBadge itemType={item.itemType} />
             </View>
 
-            <Text className="text-body-lg text-primary">{item.meaning}</Text>
+            <Text className="text-body-lg font-ui-semibold text-primary">{item.meaning}</Text>
 
             {item.mnemonicText ? (
               <AnnotatedText
@@ -81,17 +79,16 @@ export function PassageWordDetailSheet({
               />
             ) : null}
 
-            <Pressable
-              accessibilityRole="button"
+            <Button
+              label="See full entry"
+              variant="secondary"
               accessibilityLabel={`Open the full entry for ${item.primaryForm}`}
               onPress={() => {
                 onDismiss();
                 router.push(`/browse/item/${item.id}` as Href);
               }}
               testID="passage-word-detail-open-item"
-              className="min-h-[44px] items-center justify-center rounded-radius-md border border-border">
-              <Text className="text-body font-semibold text-feedback-info">See full entry</Text>
-            </Pressable>
+            />
           </>
         ) : (
           <Text testID="passage-word-detail-missing" className="text-body text-secondary">
@@ -101,14 +98,13 @@ export function PassageWordDetailSheet({
           </Text>
         )}
 
-        <Pressable
-          accessibilityRole="button"
+        <Button
+          label="Close"
+          variant="ghost"
           accessibilityLabel="Close word details"
           onPress={onDismiss}
           testID="passage-word-detail-close"
-          className="min-h-[44px] items-center justify-center rounded-radius-md">
-          <Text className="text-body text-secondary">Close</Text>
-        </Pressable>
+        />
       </View>
     </Modal>
   );

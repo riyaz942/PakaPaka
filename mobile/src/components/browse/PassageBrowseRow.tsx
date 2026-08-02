@@ -1,9 +1,8 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
 
-import { PASSAGE_CONTENT_ACCENT, PASSAGE_CONTENT_LABEL } from '@/constants/contentType';
+import { ContentListRow } from '@/components/common/ContentListRow';
+import { PASSAGE_CONTENT_LABEL } from '@/constants/contentType';
 import type { BrowsePassageRow } from '@/data/curriculum/browseRepository';
-import { cn } from '@/utils/cn';
 
 type PassageBrowseRowProps = {
   row: BrowsePassageRow;
@@ -23,45 +22,31 @@ function PassageBrowseRowComponent({ row, onPress, testID }: PassageBrowseRowPro
   const remainingLabel =
     row.itemsRemainingToUnlock > 0 ? `${row.itemsRemainingToUnlock} to go` : 'Almost there';
 
+  // Bilingual one-liner (FR66): the Japanese half leads in `font-jp`, the
+  // English half follows underneath. Either may be missing.
+  const caption = row.summaryJa ?? row.summaryEn ?? undefined;
+  const captionSecondary = row.summaryJa ? (row.summaryEn ?? undefined) : undefined;
+
   return (
-    <Pressable
-      accessibilityRole="button"
+    <ContentListRow
+      rowType="passage"
+      title={row.title}
+      caption={caption}
+      captionSecondary={captionSecondary}
+      // The countdown pill is gold, not slate: it names what the learner still
+      // has to study, not the passage itself (spec, Browse).
+      trailingLabel={row.locked ? remainingLabel : undefined}
+      trailingClassName="bg-content-grammar-soft"
+      trailingTextClassName="text-content-grammar-deep"
+      trailingTestID={testID ? `${testID}-lock` : undefined}
+      onPress={onPress}
       accessibilityLabel={
         row.locked
           ? `${PASSAGE_CONTENT_LABEL}: ${row.title}. ${remainingLabel} until it opens`
           : `${PASSAGE_CONTENT_LABEL}: ${row.title}`
       }
-      onPress={onPress}
       testID={testID}
-      className={cn(
-        'border-b border-l-4 border-border py-space-md pl-space-md',
-        PASSAGE_CONTENT_ACCENT.barLeft,
-      )}>
-      <View className="flex-row items-center justify-between pr-space-md">
-        <Text className={cn('flex-1 text-body-lg', PASSAGE_CONTENT_ACCENT.text)}>{row.title}</Text>
-        {row.locked ? (
-          <View
-            testID={testID ? `${testID}-lock` : undefined}
-            className={cn('rounded-radius-full px-space-sm py-[2px]', PASSAGE_CONTENT_ACCENT.tint)}>
-            <Text className={cn('text-overline font-semibold', PASSAGE_CONTENT_ACCENT.text)}>
-              {remainingLabel}
-            </Text>
-          </View>
-        ) : null}
-      </View>
-
-      {/* Bilingual one-liner (FR66), from the compiled summary columns. */}
-      {row.summaryJa ? (
-        <Text numberOfLines={1} className="mt-space-xs text-body text-primary">
-          {row.summaryJa}
-        </Text>
-      ) : null}
-      {row.summaryEn ? (
-        <Text numberOfLines={1} className="mt-space-xs text-body-sm text-secondary">
-          {row.summaryEn}
-        </Text>
-      ) : null}
-    </Pressable>
+    />
   );
 }
 

@@ -15,14 +15,32 @@ type ContentListRowProps = {
   glyph?: string;
   title: string;
   caption?: string;
+  /** Second caption line — the passage rows' English half of FR66's bilingual summary. */
+  captionSecondary?: string;
   srsStage?: SRSStageLabel;
   /** Trailing pill that replaces the type badge — e.g. a passage's "9 to go". */
   trailingLabel?: string;
   trailingClassName?: string;
+  trailingTextClassName?: string;
+  trailingTestID?: string;
+  /** Names the type on its own pill, where the caption does not already say it. */
+  showTypeBadge?: boolean;
   onPress: () => void;
   accessibilityLabel: string;
   testID?: string;
 };
+
+/**
+ * Japanese forms run from one character to seven, so the glyph steps down a
+ * size rather than truncating: a whole word stays readable next to a single
+ * kanji without either one pushing the title out of the row.
+ */
+function glyphSizeClass(glyph: string): string {
+  const length = Array.from(glyph).length;
+  if (length <= 2) return 'text-title';
+  if (length <= 4) return 'text-body-lg';
+  return 'text-body';
+}
 
 /**
  * The one Browse-style row: a 5px colour edge naming the content type, the
@@ -35,14 +53,19 @@ export function ContentListRow({
   glyph,
   title,
   caption,
+  captionSecondary,
   srsStage,
   trailingLabel,
   trailingClassName,
+  trailingTextClassName,
+  trailingTestID,
+  showTypeBadge = false,
   onPress,
   accessibilityLabel,
   testID,
 }: ContentListRowProps) {
-  const accent = rowType === 'passage' ? PASSAGE_CONTENT_ACCENT : CONTENT_TYPE_ACCENT[rowType];
+  const isPassage = rowType === 'passage';
+  const accent = isPassage ? PASSAGE_CONTENT_ACCENT : CONTENT_TYPE_ACCENT[rowType];
 
   return (
     <Pressable
@@ -55,7 +78,15 @@ export function ContentListRow({
 
       <View className="flex-1 flex-row items-center gap-space-sm px-space-md py-space-sm">
         {glyph ? (
-          <Text className={cn('w-9 text-title font-jp-round-black', accent.glyph)}>{glyph}</Text>
+          <Text
+            numberOfLines={1}
+            className={cn(
+              'min-w-9 max-w-[120px] font-jp-round-black',
+              glyphSizeClass(glyph),
+              accent.glyph,
+            )}>
+            {glyph}
+          </Text>
         ) : null}
 
         <View className="flex-1">
@@ -64,24 +95,40 @@ export function ContentListRow({
               'text-body font-ui-semibold',
               // A passage leads with its Japanese title, so it takes the type's
               // deep tone; item rows lead with an English meaning in ink.
-              rowType === 'passage' ? `font-jp-bold ${accent.deep}` : 'text-primary',
+              isPassage ? `font-jp-bold ${accent.deep}` : 'text-primary',
             )}>
             {title}
           </Text>
           {caption ? (
-            <Text className="mt-[2px] text-caption font-ui-medium text-muted">{caption}</Text>
+            <Text
+              numberOfLines={2}
+              className={cn(
+                'mt-[2px] text-caption',
+                isPassage ? 'font-jp-medium text-secondary' : 'font-ui-medium text-muted',
+              )}>
+              {caption}
+            </Text>
+          ) : null}
+          {captionSecondary ? (
+            <Text numberOfLines={1} className="mt-[2px] text-caption font-ui-medium text-muted">
+              {captionSecondary}
+            </Text>
           ) : null}
         </View>
 
         {trailingLabel ? (
           <View
+            testID={trailingTestID}
             className={cn(
               'rounded-radius-full px-space-sm py-[3px]',
               trailingClassName ?? 'bg-surface-elevated',
             )}>
-            <Text className="text-overline font-ui-bold text-secondary">{trailingLabel}</Text>
+            <Text
+              className={cn('text-overline font-ui-bold', trailingTextClassName ?? 'text-secondary')}>
+              {trailingLabel}
+            </Text>
           </View>
-        ) : rowType !== 'passage' ? (
+        ) : showTypeBadge && !isPassage ? (
           <ContentTypeBadge itemType={rowType} />
         ) : null}
 

@@ -6,6 +6,15 @@ import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 
+/**
+ * The spec sets the body at 17px with 2.35 leading — neither is a type token,
+ * and `FuriganaText` documents `style` as the escape hatch for exactly this.
+ * The leading is held below 2.35 on purpose: readings here stack *above* the
+ * line in their own view rather than sitting inside the line box as CSS ruby
+ * does, so the wrap gap adds the rest of the spec's air.
+ */
+const PASSAGE_LINE_STYLE = { fontSize: 17, lineHeight: 30 };
+
 type PassageBodyProps = {
   body: string;
   bodyFurigana: string | null;
@@ -49,7 +58,8 @@ export function PassageBody({
               text={part.text}
               mode={furiganaMode}
               knownKanji={knownKanji}
-              className="text-body-lg text-primary"
+              className="font-jp text-primary"
+              style={PASSAGE_LINE_STYLE}
             />
           );
         }
@@ -73,7 +83,8 @@ export function PassageBody({
               knownKanji={knownKanji}
               // Nested furigana toggles would steal the span tap (NFR29).
               interactive={false}
-              className="text-body-lg text-content-vocabulary underline"
+              className="font-jp text-content-vocabulary-deep underline"
+              style={PASSAGE_LINE_STYLE}
             />
           </Pressable>
         );

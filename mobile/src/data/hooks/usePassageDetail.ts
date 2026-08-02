@@ -19,6 +19,7 @@ import {
   type CurriculumListItem,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { todayKey } from '@/data/user/cognitiveLoadRepository';
 import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
 import {
   getPassagePracticeResults,
@@ -43,9 +44,18 @@ export type PassageDetailResult = {
   isUnlocked: boolean;
   /** Linked vocab/grammar still below Guru, for the locked to-do list (FR69). */
   neededItems: CurriculumListItem[];
+  /**
+   * Display-only: the first spanned word in the body the learner reviewed today
+   * or yesterday, for the reader's "you saw this recently" callout. Read off the
+   * SRS rows already loaded for unlock — no extra query, and no claim the data
+   * cannot back (see the plan's Session 5 deviation on the spec's wording).
+   */
+  recentWord: { itemId: string; surface: string; whenLabel: string } | null;
   loading: boolean;
   notFound: boolean;
 };
+
+const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 const NO_LINKS_UNLOCK: PassageUnlockStatus = {
   unlocked: false,
@@ -54,6 +64,38 @@ const NO_LINKS_UNLOCK: PassageUnlockStatus = {
   coverage: 0,
   itemsRemainingToUnlock: 0,
 };
+
+/**
+ * First spanned word reviewed today or yesterday. Anything older is left alone
+ * — "recently" stops meaning anything past a day or two, and the callout is
+ * only worth showing when it is a genuine "oh, that one" moment.
+ */
+function findRecentWord(
+  spans: PassageWordSpan[],
+  lastReviewedByItemId: ReadonlyMap<string, string>,
+  body: string,
+  now = new Date(),
+): PassageDetailResult['recentWord'] {
+  const today = todayKey(now);
+  const yesterday = todayKey(new Date(now.getTime() - DAY_IN_MS));
+
+  for (const span of spans) {
+    const reviewedAt = lastReviewedByItemId.get(span.vocabularyItemId);
+    if (!reviewedAt) continue;
+
+    const day = todayKey(new Date(reviewedAt));
+    const whenLabel = day === today ? 'earlier today' : day === yesterday ? 'yesterday' : null;
+    if (!whenLabel) continue;
+
+    return {
+      itemId: span.vocabularyItemId,
+      surface: body.slice(span.startOffset, span.endOffset),
+      whenLabel,
+    };
+  }
+
+  return null;
+}
 
 export function usePassageDetail(passageId: string | null): PassageDetailResult {
   const { curriculumDb, userDb } = useDatabase();
@@ -64,6 +106,7 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
   const [unlock, setUnlock] = useState<PassageUnlockStatus>(NO_LINKS_UNLOCK);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [neededItems, setNeededItems] = useState<CurriculumListItem[]>([]);
+  const [recentWord, setRecentWord] = useState<PassageDetailResult['recentWord']>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -76,6 +119,7 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
       setUnlock(NO_LINKS_UNLOCK);
       setIsUnlocked(false);
       setNeededItems([]);
+      setRecentWord(null);
       setNotFound(true);
       setLoading(false);
     };
@@ -95,8 +139,10 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
 
     const linkedIds = getPassageLinkedItemIds(curriculumDb, passageId);
     const stageByItemId = new Map<string, SRSStageLabel>();
+    const lastReviewedByItemId = new Map<string, string>();
     for (const [itemId, state] of getSrsStatesForItems(userDb, linkedIds)) {
       stageByItemId.set(itemId, state.srsStageLabel);
+      if (state.lastReviewedAt) lastReviewedByItemId.set(itemId, state.lastReviewedAt);
     }
 
     const status = computePassageUnlock(linkedIds, stageByItemId);
@@ -118,7 +164,11 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
     // reader-only reads are skipped entirely while locked.
     setQuestions(unlockedForReader ? getPassageQuestions(curriculumDb, passageId) : []);
     setPracticeResults(unlockedForReader ? getPassagePracticeResults(userDb, passageId) : []);
-    setWordSpans(unlockedForReader ? getPassageWordSpans(curriculumDb, passageId) : []);
+
+    const spans = unlockedForReader ? getPassageWordSpans(curriculumDb, passageId) : [];
+    setWordSpans(spans);
+
+    setRecentWord(findRecentWord(spans, lastReviewedByItemId, detail.body));
 
     setNotFound(false);
     setLoading(false);
@@ -142,6 +192,7 @@ export function usePassageDetail(passageId: string | null): PassageDetailResult 
     unlock,
     isUnlocked,
     neededItems,
+    recentWord,
     loading: loading || isDataStale,
     notFound,
   };
