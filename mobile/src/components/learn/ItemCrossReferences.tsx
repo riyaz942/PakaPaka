@@ -35,11 +35,16 @@ const COMPONENT_LABEL: Record<string, string> = {
   vocabulary: 'Kanji in this word',
 };
 
-function toChips(items: (RelatedItem | CurriculumParentItem | RelatedGrammarItem)[]): CrossReferenceChip[] {
+function toChips(
+  items: (RelatedItem | CurriculumParentItem)[],
+): CrossReferenceChip[] {
   return items.map((entry) => ({
     id: entry.id,
+    itemType: entry.itemType,
     primaryForm: entry.primaryForm,
-    meaning: 'meaning' in entry ? entry.meaning : undefined,
+    // Radicals with no glyph fall back to their name as the form; repeating it
+    // underneath would read as a stutter.
+    meaning: entry.meaning === entry.primaryForm ? undefined : entry.meaning,
   }));
 }
 
@@ -69,6 +74,9 @@ export function ItemCrossReferences({
           label={componentLabel}
           items={toChips(parents)}
           infoTopic={item.itemType === 'kanji' ? 'radical' : undefined}
+          // The parts an item is built from get the layer-below hue as a fill;
+          // what it leads on to stays on plain surface tiles.
+          tileVariant="soft"
           testID="cross-ref-components"
         />
       ) : null}
@@ -89,9 +97,11 @@ export function ItemCrossReferences({
           // field naming in `GrammarVocabLink`).
           items={grammarVocabLinks.map((link) => ({
             id: link.grammarItemId,
+            itemType: 'grammar' as const,
             primaryForm: link.vocabularyPrimaryForm,
             meaning: link.vocabularyMeaning,
           }))}
+          cardType="grammar"
           testID="cross-ref-grammar"
         />
       ) : null}
@@ -99,7 +109,12 @@ export function ItemCrossReferences({
       {item.itemType === 'grammar' ? (
         <CrossReferenceSection
           label="Related grammar"
-          items={toChips(relatedGrammar)}
+          items={relatedGrammar.map((entry) => ({
+            id: entry.id,
+            itemType: 'grammar' as const,
+            primaryForm: entry.primaryForm,
+            meaning: entry.meaning,
+          }))}
           testID="cross-ref-related-grammar"
         />
       ) : null}

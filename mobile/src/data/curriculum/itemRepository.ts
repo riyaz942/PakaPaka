@@ -58,6 +58,13 @@ export type CurriculumParentItem = {
   id: string;
   primaryForm: string;
   itemType: ItemType;
+  /**
+   * Display only — the gloss under a "built from" / "kanji in this word" tile.
+   * Already selected by the parent query, so it costs nothing extra, and it
+   * takes no part in dependency, lock or ordering logic. Optional because the
+   * dependency graph builds parents from ids alone and has no gloss to give.
+   */
+  meaning?: string;
 };
 
 type ItemRow = {
@@ -228,6 +235,7 @@ function mapParentRow(row: ParentRow): CurriculumParentItem {
     id: String(row.id),
     primaryForm: row.primary_form || row.meaning,
     itemType: row.item_type,
+    meaning: row.meaning,
   };
 }
 

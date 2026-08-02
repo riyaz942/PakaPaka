@@ -27,7 +27,7 @@ describe('FuriganaOverrideControl', () => {
     mockOverrides = new Map();
   });
 
-  it('marks "Follow my progress" selected when the word has no override', () => {
+  it('marks "Follow progress" selected when the word has no override', () => {
     render(<FuriganaOverrideControl itemId="vocab-1" />);
 
     expect(
@@ -54,7 +54,7 @@ describe('FuriganaOverrideControl', () => {
     expect(mockSetOverride).toHaveBeenCalledWith('vocab-1', 'shown');
   });
 
-  it('clears the override when returning to "Follow my progress"', () => {
+  it('clears the override when returning to "Follow progress"', () => {
     mockOverrides = new Map([['vocab-1', 'shown']]);
     render(<FuriganaOverrideControl itemId="vocab-1" />);
 

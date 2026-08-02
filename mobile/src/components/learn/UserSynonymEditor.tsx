@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
+import { Button } from '@/components/common/Button';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
   addSynonym,
@@ -45,20 +47,22 @@ export function UserSynonymEditor({ itemId }: UserSynonymEditorProps) {
   };
 
   return (
-    <View className="mt-4" testID="user-synonym-editor">
-      <Text className="text-body-sm uppercase text-secondary">Your accepted answers</Text>
+    <View className="mt-space-md" testID="user-synonym-editor">
+      <SectionHeading label="Your accepted answers" />
 
       {synonyms.map((synonym) => (
         <View
           key={`${synonym.answerType}:${synonym.answerText}`}
-          className="mt-2 flex-row items-center justify-between rounded-radius-md border border-border bg-surface px-space-md py-2">
+          className="mt-space-sm flex-row items-center justify-between rounded-radius-md border border-border bg-surface px-space-md py-space-xs">
           <Text className="flex-1 text-body text-primary">{synonym.answerText}</Text>
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={`Remove accepted answer ${synonym.answerText}`}
             onPress={() => handleRemove(synonym)}
             className="min-h-[44px] justify-center pl-space-md">
-            <Text className="text-body text-feedback-incorrect">Remove</Text>
+            <Text className="text-label font-ui-semibold text-feedback-incorrect-deep">
+              Remove
+            </Text>
           </Pressable>
         </View>
       ))}
@@ -70,16 +74,16 @@ export function UserSynonymEditor({ itemId }: UserSynonymEditorProps) {
         placeholder="Add an answer you want accepted…"
         testID="user-synonym-input"
         value={text}
-        className="mt-2 min-h-[44px] rounded-radius-md border border-border bg-surface px-space-md py-2 text-body text-primary"
+        className="mt-space-sm min-h-[44px] rounded-radius-sm border border-border bg-surface px-space-md py-space-xs text-body text-primary"
       />
-      <Pressable
-        accessibilityRole="button"
+      <Button
+        className="mt-space-sm"
+        label="Add answer"
+        variant="secondary"
         accessibilityLabel="Save accepted answer"
         onPress={handleAdd}
         testID="user-synonym-save"
-        className="mt-3 min-h-[44px] items-center justify-center rounded-radius-md bg-brand-600 px-space-md py-2">
-        <Text className="text-body font-semibold text-on-primary">Add answer</Text>
-      </Pressable>
+      />
     </View>
   );
 }

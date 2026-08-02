@@ -32,7 +32,9 @@ export function AcceptedAnswersDisclosure({
 
   return (
     <Disclosure label="Accepted answers" testID="accepted-answers-disclosure">
-      <Text className="mt-1 text-body text-primary">{synonyms.join(', ')}</Text>
+      <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
+        {synonyms.join(', ')}
+      </Text>
     </Disclosure>
   );
 }

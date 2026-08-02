@@ -21,6 +21,13 @@ type ItemMnemonicSectionsProps = {
   readingSlot?: React.ReactNode;
 };
 
+/**
+ * Mnemonic and description prose across the detail scroll: 14px body copy in the
+ * secondary tone, loosened a step so a paragraph with highlighted keywords in it
+ * still reads as prose rather than as a dense block.
+ */
+export const MNEMONIC_PROSE = 'mt-space-xs text-body-sm font-ui leading-[1.55] text-secondary';
+
 /** Whether the curriculum carries any mnemonic prose for this item. */
 export function hasCurriculumMnemonic(item: CurriculumItemDetail): boolean {
   return Boolean(item.meaningMnemonic || item.readingMnemonic || item.mnemonicText);
@@ -48,20 +55,20 @@ export function ItemMnemonicSections({
   return (
     <View testID="item-mnemonics">
       {compositionLine ? (
-        <View className="mt-4" testID="kanji-composition-line">
-          <Text className="text-body text-secondary">{compositionLine}</Text>
+        <View className="mt-space-md" testID="kanji-composition-line">
+          <Text className="text-body-sm font-jp-medium text-muted">{compositionLine}</Text>
         </View>
       ) : null}
 
       {hasSplitMnemonics ? (
         <>
           {item.meaningMnemonic ? (
-            <View className="mt-4" testID="meaning-mnemonic">
+            <View className="mt-space-md" testID="meaning-mnemonic">
               <SectionHeading label="Meaning mnemonic" />
               <AnnotatedText
                 text={item.meaningMnemonic}
                 itemType={item.itemType}
-                className="mt-1 text-body text-secondary"
+                className={MNEMONIC_PROSE}
               />
             </View>
           ) : null}
@@ -69,12 +76,12 @@ export function ItemMnemonicSections({
           {readingSlot}
 
           {item.readingMnemonic ? (
-            <View className="mt-4" testID="reading-mnemonic">
+            <View className="mt-space-md" testID="reading-mnemonic">
               <SectionHeading label="Reading mnemonic" />
               <AnnotatedText
                 text={item.readingMnemonic}
                 itemType={item.itemType}
-                className="mt-1 text-body text-secondary"
+                className={MNEMONIC_PROSE}
               />
             </View>
           ) : null}

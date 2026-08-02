@@ -190,14 +190,25 @@ export function contrastPairManifest(): ContrastPair[] {
     }
 
     // Stats sets the stage name in its stage hue. Apprentice/guru/master borrow
-    // the matching content `-deep` step; enlightened has its own.
-    pairs.push({
-      name: 'srs-enlightened-deep stage label on surface',
-      foreground: 'srs-enlightened-deep',
-      background: 'surface',
-      textClass: 'normal-text',
-      theme,
-    });
+    // the matching content `-deep` step; enlightened has its own. The detail
+    // header's stage pill puts that same step on the neutral fill it uses where
+    // a stage has no content twin.
+    pairs.push(
+      {
+        name: 'srs-enlightened-deep stage label on surface',
+        foreground: 'srs-enlightened-deep',
+        background: 'surface',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
+        name: 'srs-enlightened-deep stage pill on surface-elevated',
+        foreground: 'srs-enlightened-deep',
+        background: 'surface-elevated',
+        textClass: 'normal-text',
+        theme,
+      },
+    );
 
     for (const content of CONTENT_TYPES) {
       for (const bg of surfaceTokens) {

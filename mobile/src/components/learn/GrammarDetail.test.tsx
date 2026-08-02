@@ -68,11 +68,12 @@ describe('GrammarDetail', () => {
     );
 
     expect(screen.getByTestId('grammar-detail')).toBeTruthy();
-    expect(screen.getByText('です')).toBeTruthy();
+    // The hero pattern and the accepted-form chip are both です, so count them
+    // rather than asking for one.
+    expect(screen.getAllByText('です')).toHaveLength(2);
     expect(screen.getByText('to be (polite)')).toBeTruthy();
     expect(screen.getByText('Noun + です')).toBeTruthy();
-    expect(screen.getByText('• です')).toBeTruthy();
-    expect(screen.getByText('• だ')).toBeTruthy();
+    expect(screen.getByText('だ')).toBeTruthy();
     expect(screen.getByText('polite: yes')).toBeTruthy();
     expect(screen.getByText('これは本です。')).toBeTruthy();
     expect(screen.getByText('今日は月曜日です。')).toBeTruthy();

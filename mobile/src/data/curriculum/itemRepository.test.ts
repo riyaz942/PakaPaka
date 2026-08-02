@@ -238,8 +238,8 @@ describe('itemRepository', () => {
 
     const parents = getRequiredParentsForItems(db, ['10']);
     expect(parents.get('10')).toEqual([
-      { id: '1', primaryForm: '日', itemType: 'radical' },
-      { id: '2', primaryForm: '口', itemType: 'radical' },
+      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
+      { id: '2', primaryForm: '口', itemType: 'radical', meaning: 'mouth' },
     ]);
   });
 
@@ -280,7 +280,7 @@ describe('itemRepository', () => {
     ]);
 
     expect(getComponentParentsForItem(db, '10', 'kanji')).toEqual([
-      { id: '1', primaryForm: '日', itemType: 'radical' },
+      { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
     ]);
     expect(getRequiredParentsForItems(db, ['10']).get('10')).toBeUndefined();
   });

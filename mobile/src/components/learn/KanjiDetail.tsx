@@ -5,7 +5,10 @@ import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDis
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
-import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import {
+  DETAIL_HERO_FONT_SIZE,
+  ItemDetailHeader,
+} from '@/components/learn/ItemDetailHeader';
 import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { KanjiReadingsSection } from '@/components/learn/KanjiReadingsSection';
 import { LookAlikeSection } from '@/components/learn/LookAlikeSection';
@@ -49,10 +52,10 @@ export function KanjiDetail({
 }: KanjiDetailProps) {
   return (
     <View testID="kanji-detail">
-      <ItemDetailHeader itemType="kanji" meaning={item.meaning}>
+      <ItemDetailHeader itemType="kanji" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-bold', CONTENT_TYPE_ACCENT.kanji.text)}
-          style={{ fontSize: 48, lineHeight: 53 }}>
+          className={cn('text-center font-jp-round-black', CONTENT_TYPE_ACCENT.kanji.deep)}
+          style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
         </Text>
       </ItemDetailHeader>

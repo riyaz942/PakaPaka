@@ -10,6 +10,12 @@ import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
 import type { ExampleSentence } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
+/**
+ * Example Japanese sits a step above body copy so ruby has room and the kanji
+ * stay legible — the spec's 17px rounds to the 18px `body-lg` step.
+ */
+const EXAMPLE_JAPANESE = 'text-body-lg font-jp-medium text-primary';
+
 type ExampleSentencesSectionProps = {
   sentences: ExampleSentence[];
   /** Prefix for per-sentence testIDs, e.g. `kanji-example`. */
@@ -35,20 +41,22 @@ export function ExampleSentencesSection({
   }
 
   return (
-    <View className="mt-4">
+    <View className="mt-space-md">
       <SectionHeading label="Examples" />
-      {sentences.map((sentence) => (
-        <View key={sentence.id} className="mt-2" testID={`${testIDPrefix}-${sentence.id}`}>
-          <ExampleSentenceJapanese
-            sentence={sentence}
-            furiganaMode={furiganaMode}
-            knownKanji={knownKanji}
-            hrefFor={hrefFor}
-            testIDPrefix={testIDPrefix}
-          />
-          <Text className="mt-1 text-body text-secondary">{sentence.english}</Text>
-        </View>
-      ))}
+      <View className="mt-space-sm gap-space-md">
+        {sentences.map((sentence) => (
+          <View key={sentence.id} testID={`${testIDPrefix}-${sentence.id}`}>
+            <ExampleSentenceJapanese
+              sentence={sentence}
+              furiganaMode={furiganaMode}
+              knownKanji={knownKanji}
+              hrefFor={hrefFor}
+              testIDPrefix={testIDPrefix}
+            />
+            <Text className="mt-[3px] text-body-sm font-ui text-muted">{sentence.english}</Text>
+          </View>
+        ))}
+      </View>
     </View>
   );
 }
@@ -79,7 +87,7 @@ function ExampleSentenceJapanese({
         text={sentence.furigana ?? sentence.japanese}
         mode={furiganaMode}
         knownKanji={knownKanji}
-        className="text-body text-primary"
+        className={EXAMPLE_JAPANESE}
       />
     );
   }
@@ -98,7 +106,7 @@ function ExampleSentenceJapanese({
               text={part.text}
               mode={furiganaMode}
               knownKanji={knownKanji}
-              className="text-body text-primary"
+              className={EXAMPLE_JAPANESE}
             />
           );
         }
@@ -124,7 +132,7 @@ function ExampleSentenceJapanese({
               knownKanji={knownKanji}
               // Nested furigana toggles would steal the span tap (NFR29).
               interactive={false}
-              className="text-body text-content-vocabulary underline"
+              className="text-body-lg font-jp-medium text-content-vocabulary-deep underline"
             />
           </Pressable>
         );

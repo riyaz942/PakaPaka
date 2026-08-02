@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
+import { Button } from '@/components/common/Button';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { MNEMONIC_PROSE } from '@/components/learn/ItemMnemonicSections';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import {
   clearPersonalMnemonic,
@@ -62,7 +64,7 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
   };
 
   return (
-    <View className="mt-4" testID="personal-mnemonic-editor">
+    <View className="mt-space-md" testID="personal-mnemonic-editor">
       <SectionHeading label="Your mnemonic" />
 
       {editing ? (
@@ -75,49 +77,39 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
             placeholder="Add your own mnemonic…"
             testID="personal-mnemonic-input"
             value={draft}
-            className="mt-2 min-h-[44px] rounded-radius-md border border-border bg-surface px-space-md py-2 text-body text-primary"
+            className="mt-space-sm min-h-[44px] rounded-radius-sm border border-border bg-surface px-space-md py-space-xs text-body text-primary"
           />
-          <View className="mt-3 flex-row gap-space-sm">
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Save personal mnemonic"
-              accessibilityState={{ disabled: !canSave }}
+          <View className="mt-space-sm flex-row gap-space-sm">
+            <Button
+              className="flex-1"
+              label="Save"
               disabled={!canSave}
+              accessibilityLabel="Save personal mnemonic"
               onPress={handleSave}
               testID="personal-mnemonic-save"
-              className={`min-h-[44px] flex-1 items-center justify-center rounded-radius-md px-space-md py-2 ${
-                canSave ? 'bg-brand-600' : 'bg-surface'
-              }`}>
-              <Text
-                className={`text-body font-semibold ${
-                  canSave ? 'text-on-primary' : 'text-secondary'
-                }`}>
-                Save
-              </Text>
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
+            />
+            <Button
+              label="Cancel"
+              variant="ghost"
               accessibilityLabel="Cancel editing personal mnemonic"
               onPress={() => setEditing(false)}
               testID="personal-mnemonic-cancel"
-              className="min-h-[44px] items-center justify-center rounded-radius-md px-space-md py-2">
-              <Text className="text-body text-secondary">Cancel</Text>
-            </Pressable>
+            />
           </View>
         </>
       ) : saved ? (
         <>
-          <Text className="mt-1 text-body text-primary" testID="personal-mnemonic-text">
+          <Text className={MNEMONIC_PROSE} testID="personal-mnemonic-text">
             {saved}
           </Text>
-          <View className="mt-2 flex-row gap-space-md">
+          <View className="mt-space-xs flex-row gap-space-md">
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Edit personal mnemonic"
               onPress={startEditing}
               testID="personal-mnemonic-edit"
               className="min-h-[44px] justify-center">
-              <Text className="text-body text-feedback-info">Edit</Text>
+              <Text className="text-label font-ui-semibold text-brand-text">Edit</Text>
             </Pressable>
             <Pressable
               accessibilityRole="button"
@@ -125,23 +117,25 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
               onPress={() => setConfirmingDelete(true)}
               testID="personal-mnemonic-delete"
               className="min-h-[44px] justify-center">
-              <Text className="text-body text-feedback-incorrect">Delete</Text>
+              <Text className="text-label font-ui-semibold text-feedback-incorrect-deep">
+                Delete
+              </Text>
             </Pressable>
           </View>
 
           {confirmingDelete ? (
-            <View className="mt-2 rounded-radius-md border border-border bg-surface p-space-md">
-              <Text className="text-body-sm text-secondary">
+            <View className="mt-space-sm rounded-radius-md bg-feedback-incorrect-soft p-space-md">
+              <Text className="text-body-sm font-ui-medium text-feedback-incorrect-deep">
                 Delete your mnemonic? This cannot be undone.
               </Text>
-              <View className="mt-2 flex-row gap-space-md">
+              <View className="mt-space-sm flex-row gap-space-md">
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel="Confirm delete personal mnemonic"
                   onPress={handleDelete}
                   testID="personal-mnemonic-delete-confirm"
                   className="min-h-[44px] justify-center">
-                  <Text className="text-body font-semibold text-feedback-incorrect">
+                  <Text className="text-label font-ui-bold text-feedback-incorrect-deep">
                     Delete
                   </Text>
                 </Pressable>
@@ -151,7 +145,7 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
                   onPress={() => setConfirmingDelete(false)}
                   testID="personal-mnemonic-delete-cancel"
                   className="min-h-[44px] justify-center">
-                  <Text className="text-body text-secondary">Cancel</Text>
+                  <Text className="text-label font-ui-semibold text-muted">Cancel</Text>
                 </Pressable>
               </View>
             </View>
@@ -164,7 +158,7 @@ export function PersonalMnemonicEditor({ itemId }: PersonalMnemonicEditorProps) 
           onPress={startEditing}
           testID="personal-mnemonic-empty"
           className="min-h-[44px] justify-center">
-          <Text className="text-body text-secondary">Add your own mnemonic…</Text>
+          <Text className="text-body-sm font-ui-medium text-muted">Add your own mnemonic…</Text>
         </Pressable>
       )}
     </View>

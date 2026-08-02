@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ItemDetailBody } from '@/components/learn/ItemDetailBody';
+import { ItemDetailHeaderBar } from '@/components/learn/ItemDetailHeaderBar';
 import { MaxContentWidth } from '@/constants/theme';
 
 /**
@@ -20,7 +21,9 @@ export function ItemDetailScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <ScreenHeader backTestID="learn-item-back" />
+      <ScreenHeader backTestID="learn-item-back">
+        <ItemDetailHeaderBar itemId={itemId} />
+      </ScreenHeader>
       <SafeAreaView
         edges={['left', 'right']}
         className="flex-1"

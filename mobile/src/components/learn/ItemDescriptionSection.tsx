@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { MNEMONIC_PROSE } from '@/components/learn/ItemMnemonicSections';
 import type { CurriculumItemDetail, ItemType } from '@/data/curriculum/itemRepository';
 
 const DESCRIPTION_LABEL: Partial<Record<ItemType, string>> = {
@@ -24,9 +25,9 @@ export function ItemDescriptionSection({ item }: { item: CurriculumItemDetail })
   }
 
   return (
-    <View className="mt-4" testID="item-description">
+    <View className="mt-space-md" testID="item-description">
       <SectionHeading label={label} />
-      <Text className="mt-1 text-body text-primary">{item.description}</Text>
+      <Text className={MNEMONIC_PROSE}>{item.description}</Text>
     </View>
   );
 }

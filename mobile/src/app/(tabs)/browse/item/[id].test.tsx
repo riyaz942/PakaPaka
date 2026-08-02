@@ -277,9 +277,9 @@ describe('BrowseItemDetailRoute', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('grammar-detail')).toBeTruthy();
-      expect(screen.getByText('です')).toBeTruthy();
+      // Hero pattern plus the accepted-form chip — both read です.
+      expect(screen.getAllByText('です')).toHaveLength(2);
       expect(screen.getByText('Noun + です')).toBeTruthy();
-      expect(screen.getByText('• です')).toBeTruthy();
       expect(screen.getByText('これは本です。')).toBeTruthy();
       expect(screen.getByText('This is a book.')).toBeTruthy();
     });

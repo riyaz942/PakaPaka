@@ -1,7 +1,8 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import { LinkedItemTile } from '@/components/common/LinkedItemTile';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { useItemLinkBase } from '@/components/learn/ItemLinkContext';
 import type {
@@ -34,13 +35,15 @@ export function LookAlikeSection({ item, lookAlikes }: LookAlikeSectionProps) {
   const comparePathname = base === '/review/item' ? '/review/compare' : '/browse/compare';
 
   return (
-    <View className="mt-4" testID="look-alike-section">
+    <View className="mt-space-md" testID="look-alike-section">
       <SectionHeading label="Easily confused with" />
-      <View className="mt-2 flex-row flex-wrap gap-2">
+      <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
         {lookAlikes.map((lookAlike) => (
-          <Pressable
+          <LinkedItemTile
             key={lookAlike.id}
-            accessibilityRole="button"
+            itemType={lookAlike.itemType}
+            form={lookAlike.primaryForm}
+            meaning={lookAlike.meaning}
             accessibilityLabel={`Compare ${item.primaryForm} with ${lookAlike.primaryForm}, ${lookAlike.meaning}`}
             onPress={() =>
               router.push({
@@ -49,10 +52,7 @@ export function LookAlikeSection({ item, lookAlikes }: LookAlikeSectionProps) {
               })
             }
             testID={`look-alike-${lookAlike.id}`}
-            className="min-h-[44px] min-w-[44px] justify-center rounded-radius-md bg-surface px-3 py-2">
-            <Text className="text-body text-feedback-info">{lookAlike.primaryForm}</Text>
-            <Text className="text-caption text-secondary">{lookAlike.meaning}</Text>
-          </Pressable>
+          />
         ))}
       </View>
     </View>

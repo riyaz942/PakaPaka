@@ -248,11 +248,36 @@ Spec refs: screen 6 (Browse), 16–17 (passage locked/unlocked); Components → 
 
 Spec refs: screens 14–15 (kanji & vocab detail) — radical/grammar follow the same template in their own hue. Routes live under `(tabs)/browse/item/` and legacy `(tabs)/learn/item/` (`components/learn/` holds the detail components — biggest component folder, budget time for it).
 
-- [ ] Shared detail template: back-arrow header with type badge + SRS stage pill (stage-colored dot + soft bg); hero card (type-soft fill, r-xl, Zen Maru 900 glyph 66–76px in type-deep, meaning below).
-- [ ] **Kanji:** ON'YOMI / KUN'YOMI cards side-by-side (`font-jp` 21px); MEANING MNEMONIC prose (radical name highlighted in rad base color); BUILT FROM radical tile (rad-soft); VOCABULARY USING THIS KANJI tiles (surface, JP in voc base).
-- [ ] **Vocab:** reading above glyph in hero; FURIGANA FOR THIS WORD segmented pills (Follow progress / Always show / Hide — persists to user.db as today); EXAMPLES with furigana ruby + voc underline on target word + EN translation; GRAMMAR USING THIS WORD gra-soft card with particle chips.
-- [ ] **Radical / Grammar:** same template — radical: mnemonic + "used in these kanji" tiles; grammar: explanation, example sentences with ruby, linked vocab tiles.
-- [ ] All section headers = 10px kicker style (tracked uppercase faint). Update tests; lint/typecheck; light + dark.
+- [x] Shared detail template: back-arrow header with type badge + SRS stage pill (stage-colored dot + soft bg); hero card (type-soft fill, r-xl, Zen Maru 900 glyph 66–76px in type-deep, meaning below).
+- [x] **Kanji:** ON'YOMI / KUN'YOMI cards side-by-side (`font-jp` 21px); MEANING MNEMONIC prose (radical name highlighted in rad base color *— deep, deviation 27*); BUILT FROM radical tile (rad-soft); VOCABULARY USING THIS KANJI tiles (surface, JP in voc base).
+- [x] **Vocab:** reading above glyph in hero; FURIGANA FOR THIS WORD segmented pills (Follow progress / Always show / Hide — persists to user.db as today); EXAMPLES with furigana ruby + voc underline on target word + EN translation; GRAMMAR USING THIS WORD gra-soft card with particle chips.
+- [x] **Radical / Grammar:** same template — radical: mnemonic + "used in these kanji" tiles; grammar: explanation, example sentences with ruby, linked vocab tiles.
+- [x] All section headers = kicker style (tracked uppercase faint) *— 12px, deviation 26*. Update tests; lint/typecheck; light + dark.
+
+### Session 6 decisions (carry into later sessions)
+
+**The header bar reads its own two facts.** `ItemDetailHeaderBar` (backed by the new `useItemHeaderMeta`) fills `ScreenHeader`'s children slot on *both* detail surfaces — `/browse/item/[id]` and the review-nested `/review/item/[id]` — with the type badge and the SRS stage. It costs two primary-key lookups rather than threading `useItemDetail`'s whole result through two screens and `ItemDetailBody`. **The stage pill is absent for an item with no SRS row:** an untaught item has no stage to name, and "not studied yet" belongs in the banner, not the chrome.
+
+**Stage pills borrow the content twin** — the same mapping Session 4 set for stat labels: apprentice = kanji soft/deep, guru = vocabulary, master = radical. Enlightened and burned have no twin and take a neutral `surface-elevated` pill rather than inventing an `srs-*-soft` step; `srs-enlightened-deep on surface-elevated` was added to the contrast manifest. New kit primitive: `common/SRSStageIndicator` → `SRSStagePill`.
+
+**Cross-reference chips became tiles, and direction picks the fill.** `CrossReferenceSection` now renders `LinkedItemTile`s, which grew a `variant`: **the parts an item is made of** ("Built from", "Kanji in this word") take the layer-below hue as a **soft** fill, and **what it leads on to** ("Vocabulary using this kanji", "Related grammar", look-alikes) stays on **surface** tiles. One section — grammar reached from a word — is framed by the whole soft card the spec draws, via `cardType`. Any later surface listing linked items should reuse `LinkedItemTile` and follow the same parts-vs-leads-to rule.
+
+**`CurriculumParentItem` gained `meaning`.** The parent query already selected it; only the mapper dropped it. Optional, because `useItemDependencyStatus` builds parents from the dependency graph, which has ids and no gloss. Display only — same rule as Sessions 4/5.
+
+**The hero is shared with the lesson, so it was restyled in place.** `ItemDetailHeader` is now r-xl on the type's **soft** fill with the glyph and meaning both in the type's **deep** step, plus `DETAIL_HERO_FONT_SIZE` (76/66/34) alongside the lesson's existing `HERO_FONT_SIZE`. `showTypeBadge={false}` on the detail screens — the header bar already names the type. `LessonItemSections` moved to the deep glyph and `font-jp-round-black` with it; Session 7 owns the rest of that card.
+
+**Vocabulary's hero reading needed no new row.** The spec draws the reading as a small line above the glyph, which is exactly what `FuriganaText` already stacks — the furigana override still governs it, so nothing was added to render it separately.
+
+**One shared prose class.** `MNEMONIC_PROSE` (exported from `ItemMnemonicSections`) is the 14px secondary body used by every mnemonic, description, radical story and saved personal mnemonic, so the detail scroll reads as one voice.
+
+**The locked banner is not the kit `Banner`.** It carries a list of prerequisite forms, not a single line, so it stays a hand-built warn-soft block with the lock icon. The "not studied yet" state *is* a `Banner` (`info`).
+
+### Session 6 deviations
+
+26. **Section kickers are 12px, not the spec's 10px.** Same floor as deviation 20 — `overline` (12/700) is the app's smallest UI step, and the only 9px token is `furigana`, which is ruby.
+27. **Mnemonic highlight keywords use the `-deep` step, not the base hue.** The spec sets `<radical>` / `<kanji>` runs in `--rad` / `--kan` at 700; on a plain background that is ~3.9:1 for 14px bold copy. `AnnotatedText` now takes the `-deep` step, exactly as Stats does for stage-coloured labels. (It also moved from `font-semibold` to `font-ui-bold`, which the static Google Fonts require — see Session 1's font decision.)
+28. **Accepted grammar forms became grammar-soft chips.** They were a `• form` bullet list; the spec has no drawing for them, and a row of chips matches how every other short set of forms on the page now reads.
+29. **The on'yomi / kun'yomi cards are taller than drawn.** Each kicker carries the FR74 reading-primer affordance, which has to clear the 44px tap floor inside a half-width card.
 
 ## Session 7 — Lesson + Review sessions (full-screen stacks)
 

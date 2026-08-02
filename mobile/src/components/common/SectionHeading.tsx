@@ -4,11 +4,14 @@ import { Pressable, Text, View } from 'react-native';
 import { ExplainerSheet } from '@/components/common/ExplainerSheet';
 import { Icon } from '@/components/common/Icon';
 import type { ExplainerTopic } from '@/components/learn/explainerContent';
+import { cn } from '@/utils/cn';
 
 type SectionHeadingProps = {
   label: string;
   /** Adds an info affordance that opens the matching explainer sheet (FR73). */
   infoTopic?: ExplainerTopic;
+  /** Overrides the faint tone where the kicker sits on a tinted card. */
+  className?: string;
   testID?: string;
 };
 
@@ -17,14 +20,23 @@ type SectionHeadingProps = {
  * the `text-body-sm uppercase text-secondary` heading duplicated per detail
  * component. Headings that name a piece of jargon carry an info affordance.
  */
-export function SectionHeading({ label, infoTopic, testID }: SectionHeadingProps) {
+export function SectionHeading({
+  label,
+  infoTopic,
+  className,
+  testID,
+}: SectionHeadingProps) {
   const [sheetVisible, setSheetVisible] = useState(false);
 
   return (
     <View className="flex-row items-center gap-space-xs" testID={testID}>
       {/* v2 kicker: 12px, extra-bold, tracked, faint — the section label sits
           quietly above its content instead of competing with it. */}
-      <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+      <Text
+        className={cn(
+          'text-overline font-ui-bold uppercase tracking-[0.12em] text-faint',
+          className,
+        )}>
         {label}
       </Text>
 

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { Icon } from '@/components/common/Icon';
+import { SectionHeading } from '@/components/common/SectionHeading';
+import { MNEMONIC_PROSE } from '@/components/learn/ItemMnemonicSections';
+
 // Session-only memory (deliberately not persisted): once the user opens a
 // mnemonic disclosure, later cards render expanded so a mnemonic reader
 // doesn't tap once per lesson item. Resets on app restart.
@@ -24,9 +28,9 @@ export function MnemonicSection({ mnemonicText, collapsible = false }: MnemonicS
 
   if (!collapsible) {
     return (
-      <View className="mt-4">
-        <Text className="text-body-sm uppercase text-secondary">Mnemonic</Text>
-        <Text className="mt-1 text-body text-secondary">{mnemonicText}</Text>
+      <View className="mt-space-md">
+        <SectionHeading label="Mnemonic" />
+        <Text className={MNEMONIC_PROSE}>{mnemonicText}</Text>
       </View>
     );
   }
@@ -40,7 +44,7 @@ export function MnemonicSection({ mnemonicText, collapsible = false }: MnemonicS
   };
 
   return (
-    <View className="mt-4">
+    <View className="mt-space-md">
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Mnemonic"
@@ -48,11 +52,15 @@ export function MnemonicSection({ mnemonicText, collapsible = false }: MnemonicS
         onPress={toggle}
         testID="mnemonic-disclosure"
         className="min-h-[44px] flex-row items-center gap-space-xs">
-        <Text className="text-body-sm text-secondary">{expanded ? '▾' : '▸'}</Text>
-        <Text className="text-body-sm uppercase text-secondary">Mnemonic</Text>
+        <View style={{ transform: [{ rotate: expanded ? '90deg' : '0deg' }] }}>
+          <Icon name="chevron" size={14} strokeWidth={2.4} className="text-muted" />
+        </View>
+        <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+          Mnemonic
+        </Text>
       </Pressable>
       {expanded ? (
-        <Text className="text-body text-secondary" testID="mnemonic-disclosure-text">
+        <Text className={MNEMONIC_PROSE} testID="mnemonic-disclosure-text">
           {mnemonicText}
         </Text>
       ) : null}

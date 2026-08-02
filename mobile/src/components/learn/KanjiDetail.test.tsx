@@ -54,8 +54,8 @@ const acceptedAnswers: AcceptedAnswer[] = [
 ];
 
 const parents: CurriculumParentItem[] = [
-  { id: '1', primaryForm: '木', itemType: 'radical' },
-  { id: '2', primaryForm: '日', itemType: 'radical' },
+  { id: '1', primaryForm: '木', itemType: 'radical', meaning: 'tree' },
+  { id: '2', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
 ];
 
 const lookAlikes: VisuallySimilarItem[] = [
@@ -193,6 +193,21 @@ describe('KanjiDetail Rev 1 content', () => {
 
     expect(screen.queryByText('Stale one-line mnemonic.')).toBeNull();
     expect(screen.queryByText('Mnemonic')).toBeNull();
+  });
+
+  it('names the radical under each "built from" tile', () => {
+    render(
+      <KanjiDetail
+        item={revisedItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+        parents={parents}
+      />,
+    );
+
+    expect(screen.getByText('Built from')).toBeTruthy();
+    expect(screen.getByLabelText('木, tree')).toBeTruthy();
+    expect(screen.getByText('tree')).toBeTruthy();
   });
 
   it('opens Compare from a look-alike chip, on the surface it is mounted on', () => {

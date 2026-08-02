@@ -18,29 +18,42 @@ export function readingsByType(
 }
 
 /**
- * On'yomi / kun'yomi rows. Both headings carry the reading-primer explainer, so
- * a learner who dismissed (or never got) the unprompted primer can still reach
- * it from any kanji, forever (FR74).
+ * On'yomi / kun'yomi as two side-by-side surface cards, the way the spec draws
+ * them: a kicker naming the reading kind and the readings themselves in the
+ * Japanese face. Both headings carry the reading-primer explainer, so a learner
+ * who dismissed (or never got) the unprompted primer can still reach it from any
+ * kanji, forever (FR74).
+ *
+ * A kanji with only one kind of reading gets one full-width card rather than a
+ * half-width one next to a gap.
  */
+function ReadingCard({
+  label,
+  readings,
+}: {
+  label: string;
+  readings: string[];
+}) {
+  return (
+    <View className="flex-1 rounded-radius-md border border-border bg-surface px-space-md py-space-sm shadow-e1">
+      <SectionHeading label={label} infoTopic="onyomi-kunyomi" />
+      <Text className="mt-[5px] text-title font-jp-bold text-primary">{readings.join('、')}</Text>
+    </View>
+  );
+}
+
 export function KanjiReadingsSection({ kanjiReadings }: KanjiReadingsSectionProps) {
   const onyomi = readingsByType(kanjiReadings, 'onyomi');
   const kunyomi = readingsByType(kanjiReadings, 'kunyomi');
 
-  return (
-    <>
-      {onyomi.length > 0 ? (
-        <View className="mt-4">
-          <SectionHeading label="On'yomi" infoTopic="onyomi-kunyomi" />
-          <Text className="mt-1 text-body text-primary">{onyomi.join(', ')}</Text>
-        </View>
-      ) : null}
+  if (onyomi.length === 0 && kunyomi.length === 0) {
+    return null;
+  }
 
-      {kunyomi.length > 0 ? (
-        <View className="mt-4">
-          <SectionHeading label="Kun'yomi" infoTopic="onyomi-kunyomi" />
-          <Text className="mt-1 text-body text-primary">{kunyomi.join(', ')}</Text>
-        </View>
-      ) : null}
-    </>
+  return (
+    <View className="mt-space-md flex-row gap-space-sm" testID="kanji-readings">
+      {onyomi.length > 0 ? <ReadingCard label="On'yomi" readings={onyomi} /> : null}
+      {kunyomi.length > 0 ? <ReadingCard label="Kun'yomi" readings={kunyomi} /> : null}
+    </View>
   );
 }

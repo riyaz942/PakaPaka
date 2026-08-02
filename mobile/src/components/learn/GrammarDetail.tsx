@@ -1,12 +1,16 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { Icon } from '@/components/common/Icon';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
-import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import {
+  DETAIL_HERO_FONT_SIZE,
+  ItemDetailHeader,
+} from '@/components/learn/ItemDetailHeader';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { RelatedItem } from '@/core/content/content.types';
@@ -51,10 +55,10 @@ export function GrammarDetail({
 
   return (
     <View testID="grammar-detail">
-      <ItemDetailHeader itemType="grammar" meaning={item.meaning}>
+      <ItemDetailHeader itemType="grammar" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('font-mono text-center font-bold', CONTENT_TYPE_ACCENT.grammar.text)}
-          style={{ fontSize: 28, lineHeight: 34 }}>
+          className={cn('text-center font-jp-round-black', CONTENT_TYPE_ACCENT.grammar.deep)}
+          style={DETAIL_HERO_FONT_SIZE.pattern}>
           {item.primaryForm}
         </Text>
       </ItemDetailHeader>
@@ -62,7 +66,7 @@ export function GrammarDetail({
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
 
       {grammarRule?.explanationMarkdown ? (
-        <View className="mt-4" testID="grammar-lesson-body">
+        <View className="mt-space-md" testID="grammar-lesson-body">
           <LessonMarkdown
             markdown={grammarRule.explanationMarkdown}
             mode={furiganaMode}
@@ -73,27 +77,35 @@ export function GrammarDetail({
 
       {grammarRule ? (
         <>
-          <View className="mt-4">
+          <View className="mt-space-md">
             <SectionHeading label="Structure" />
-            <Text className="mt-1 text-body text-primary">{grammarRule.structure}</Text>
+            <Text className="mt-space-xs text-body-lg font-jp-medium text-primary">
+              {grammarRule.structure}
+            </Text>
           </View>
 
           {grammarRule.acceptedForms.length > 0 ? (
-            <View className="mt-4">
+            <View className="mt-space-md">
               <SectionHeading label="Accepted forms" />
-              {grammarRule.acceptedForms.map((form) => (
-                <Text key={form} className="mt-1 text-body text-primary">
-                  • {form}
-                </Text>
-              ))}
+              <View className="mt-space-sm flex-row flex-wrap gap-space-sm">
+                {grammarRule.acceptedForms.map((form) => (
+                  <View
+                    key={form}
+                    className="rounded-radius-sm bg-content-grammar-soft px-space-sm py-[6px]">
+                    <Text className="text-body-sm font-jp-bold text-content-grammar-deep">
+                      {form}
+                    </Text>
+                  </View>
+                ))}
+              </View>
             </View>
           ) : null}
 
           {Object.keys(grammarRule.conjugationRules).length > 0 ? (
-            <View className="mt-4">
+            <View className="mt-space-md">
               <SectionHeading label="Conjugation rules" />
               {Object.entries(grammarRule.conjugationRules).map(([key, value]) => (
-                <Text key={key} className="mt-1 text-body text-primary">
+                <Text key={key} className="mt-space-xs text-body-sm font-ui-medium text-secondary">
                   {key}: {formatConjugationValue(value)}
                 </Text>
               ))}
@@ -103,15 +115,25 @@ export function GrammarDetail({
       ) : null}
 
       {grammarRule && grammarRule.cautionNotes.length > 0 ? (
-        <View className="mt-4" testID="grammar-caution-notes">
-          <Text className="text-body-sm uppercase text-feedback-warning">Watch out</Text>
-          {grammarRule.cautionNotes.map((note, index) => (
-            <View
-              key={index}
-              className="mt-2 border-l-2 border-feedback-warning pl-space-md py-space-xs">
-              <Text className="text-body text-primary">{note}</Text>
-            </View>
-          ))}
+        <View className="mt-space-md" testID="grammar-caution-notes">
+          <SectionHeading label="Watch out" className="text-feedback-warning-deep" />
+          <View className="mt-space-sm gap-space-sm">
+            {grammarRule.cautionNotes.map((note, index) => (
+              <View
+                key={index}
+                className="flex-row items-start gap-space-sm rounded-radius-md bg-feedback-warning-soft px-space-md py-space-sm">
+                <Icon
+                  name="info"
+                  size={17}
+                  strokeWidth={2}
+                  className="mt-[2px] text-feedback-warning-deep"
+                />
+                <Text className="flex-1 text-body-sm font-ui-medium text-feedback-warning-deep">
+                  {note}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
       ) : null}
 

@@ -5,7 +5,11 @@ import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
-import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import {
+  DETAIL_HERO_FONT_SIZE,
+  ItemDetailHeader,
+} from '@/components/learn/ItemDetailHeader';
+import { MNEMONIC_PROSE } from '@/components/learn/ItemMnemonicSections';
 import { LookAlikeSection } from '@/components/learn/LookAlikeSection';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
@@ -43,10 +47,10 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
 
   return (
     <View testID="radical-detail">
-      <ItemDetailHeader itemType="radical" meaning={item.meaning}>
+      <ItemDetailHeader itemType="radical" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-bold', CONTENT_TYPE_ACCENT.radical.text)}
-          style={{ fontSize: 48, lineHeight: 53 }}>
+          className={cn('text-center font-jp-round-black', CONTENT_TYPE_ACCENT.radical.deep)}
+          style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
         </Text>
       </ItemDetailHeader>
@@ -55,12 +59,14 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
         <AnnotatedText
           text={story}
           itemType="radical"
-          className="mt-4 text-body text-secondary"
+          // The story stands alone under the hero rather than under a kicker,
+          // so it takes the section gap instead of the kicker's tight one.
+          className={cn(MNEMONIC_PROSE, 'mt-space-md')}
           testID="radical-description"
         />
       ) : null}
 
-      <View className="mt-6">
+      <View className="mt-space-lg">
         <MnemonicImage
           className="h-48"
           imageUrl={item.visualMnemonicUrl}

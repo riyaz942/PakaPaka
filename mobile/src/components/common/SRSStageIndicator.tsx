@@ -40,6 +40,44 @@ const STAGE_DOT_CLASS: Record<SRSStageLabel, string> = {
 };
 
 /**
+ * Stage pills borrow each stage's content twin — apprentice is the kanji hue,
+ * guru the vocabulary hue, master the radical hue (Session 4's mapping). The two
+ * stages with no twin take a neutral pill rather than inventing a soft step.
+ */
+const STAGE_PILL_CLASS: Record<SRSStageLabel, { fill: string; text: string }> = {
+  apprentice: { fill: 'bg-content-kanji-soft', text: 'text-content-kanji-deep' },
+  guru: { fill: 'bg-content-vocabulary-soft', text: 'text-content-vocabulary-deep' },
+  master: { fill: 'bg-content-radical-soft', text: 'text-content-radical-deep' },
+  enlightened: { fill: 'bg-surface-elevated', text: 'text-srs-enlightened-deep' },
+  burned: { fill: 'bg-surface-elevated', text: 'text-muted' },
+};
+
+/**
+ * The stage as a header pill: stage dot plus the tracked stage name on a soft
+ * fill. Used in the item-detail header bar, where the stage is a status the page
+ * is *about* rather than a marker on a row.
+ */
+export function SRSStagePill({ stage, testID }: { stage: SRSStageLabel; testID?: string }) {
+  const pill = STAGE_PILL_CLASS[stage];
+
+  return (
+    <View
+      accessible
+      accessibilityLabel={`SRS stage: ${STAGE_LABEL[stage]}`}
+      testID={testID}
+      className={cn(
+        'flex-row items-center gap-space-xs rounded-radius-full px-space-sm py-[5px]',
+        pill.fill,
+      )}>
+      <View className={cn('h-[7px] w-[7px] rounded-radius-full', STAGE_DOT_CLASS[stage])} />
+      <Text className={cn('text-overline font-ui-bold uppercase tracking-[0.1em]', pill.text)}>
+        {STAGE_LABEL[stage]}
+      </Text>
+    </View>
+  );
+}
+
+/**
  * The 9px stage dot from the spec's Browse rows — the compact form of the stage,
  * where a full label would crowd the row. Colour alone never carries the meaning:
  * every dot ships an accessibility label naming the stage.

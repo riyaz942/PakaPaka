@@ -72,7 +72,7 @@ function LessonHero({ item }: { item: CurriculumItemDetail }) {
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={accent.text}
+          className={cn('font-jp-round-black', accent.deep)}
           style={isLongWord ? HERO_FONT_SIZE.word : HERO_FONT_SIZE.glyph}
         />
       </ItemDetailHeader>
@@ -82,11 +82,7 @@ function LessonHero({ item }: { item: CurriculumItemDetail }) {
   return (
     <ItemDetailHeader itemType={item.itemType} meaning={item.meaning} size="lg">
       <Text
-        className={cn(
-          'text-center font-bold',
-          item.itemType === 'grammar' && 'font-mono',
-          accent.text,
-        )}
+        className={cn('text-center font-jp-round-black', accent.deep)}
         style={item.itemType === 'grammar' ? HERO_FONT_SIZE.pattern : HERO_FONT_SIZE.glyph}>
         {item.primaryForm}
       </Text>

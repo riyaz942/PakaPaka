@@ -7,7 +7,10 @@ import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSect
 import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
-import { ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import {
+  DETAIL_HERO_FONT_SIZE,
+  ItemDetailHeader,
+} from '@/components/learn/ItemDetailHeader';
 import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
@@ -22,6 +25,7 @@ import type {
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
+import { cn } from '@/utils/cn';
 
 type VocabularyDetailProps = {
   item: CurriculumItemDetail;
@@ -46,13 +50,15 @@ export function VocabularyDetail({
 
   return (
     <View testID="vocabulary-detail">
-      <ItemDetailHeader itemType="vocabulary" meaning={item.meaning}>
+      <ItemDetailHeader itemType="vocabulary" meaning={item.meaning} showTypeBadge={false}>
+        {/* The spec draws the reading as a small line above the glyph, which is
+            exactly what FuriganaText already stacks — no separate reading row. */}
         <FuriganaText
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={CONTENT_TYPE_ACCENT.vocabulary.text}
-          style={isLongWord ? { fontSize: 28, lineHeight: 34 } : { fontSize: 48, lineHeight: 53 }}
+          className={cn('font-jp-round-black', CONTENT_TYPE_ACCENT.vocabulary.deep)}
+          style={isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word}
         />
       </ItemDetailHeader>
 

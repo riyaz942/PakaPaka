@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { Banner } from '@/components/common/Banner';
+import { Icon } from '@/components/common/Icon';
 import type { CurriculumParentItem } from '@/data/curriculum/itemRepository';
 import type { StudyStatus } from '@/data/user/studyStatus.types';
 
@@ -33,17 +35,27 @@ export function StudyStatusBanner({
   if (isLocked && unmetPrerequisites.length > 0) {
     return (
       <View
-        className="mt-4 rounded-radius-md border border-border bg-surface px-space-md py-space-sm"
+        className="mb-space-md flex-row items-start gap-space-sm rounded-radius-md bg-feedback-warning-soft px-space-md py-space-sm"
         testID="study-status-banner">
-        <Text className="text-body-sm text-secondary">
-          Study these first to unlock this item:
-        </Text>
-        <View className="mt-1 flex-row flex-wrap gap-space-sm">
-          {unmetPrerequisites.map((parent) => (
-            <Text key={parent.id} className="text-body text-primary">
-              {parent.primaryForm}
-            </Text>
-          ))}
+        <Icon
+          name="locked"
+          size={18}
+          strokeWidth={2}
+          className="mt-[2px] text-feedback-warning-deep"
+        />
+        <View className="flex-1">
+          <Text className="text-body-sm font-ui-semibold text-feedback-warning-deep">
+            Study these first to unlock this item:
+          </Text>
+          <View className="mt-[2px] flex-row flex-wrap gap-space-sm">
+            {unmetPrerequisites.map((parent) => (
+              <Text
+                key={parent.id}
+                className="text-body font-jp-medium text-feedback-warning-deep">
+                {parent.primaryForm}
+              </Text>
+            ))}
+          </View>
         </View>
       </View>
     );
@@ -54,10 +66,12 @@ export function StudyStatusBanner({
   }
 
   return (
-    <View
-      className="mt-4 rounded-radius-md border border-border bg-surface px-space-md py-space-sm"
-      testID="study-status-banner">
-      <Text className="text-body-sm text-secondary">You haven&apos;t studied this yet.</Text>
-    </View>
+    <Banner
+      className="mb-space-md"
+      message="You haven't studied this yet."
+      variant="info"
+      visible
+      testID="study-status-banner"
+    />
   );
 }

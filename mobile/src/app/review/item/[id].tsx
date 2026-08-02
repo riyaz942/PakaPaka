@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ItemDetailBody } from '@/components/learn/ItemDetailBody';
+import { ItemDetailHeaderBar } from '@/components/learn/ItemDetailHeaderBar';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { MaxContentWidth } from '@/constants/theme';
 
@@ -24,7 +25,9 @@ export default function ReviewItemDetailScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <ScreenHeader backTestID="review-item-back" backAccessibilityLabel="Back to review" />
+      <ScreenHeader backTestID="review-item-back" backAccessibilityLabel="Back to review">
+        <ItemDetailHeaderBar itemId={itemId} />
+      </ScreenHeader>
       <SafeAreaView
         edges={['left', 'right']}
         className="flex-1"

@@ -59,8 +59,11 @@ export function AnnotatedText({ text, itemType, className, testID }: AnnotatedTe
           segment.tag === 'reading'
             ? CONTENT_TYPE_ACCENT[itemType]
             : CONTENT_TYPE_ACCENT[segment.tag === 'radical' ? 'radical' : 'kanji'];
+        // The spec sets highlights in the base hue; on a plain background that
+        // never clears AA for 14px bold copy, so they take the `-deep` step —
+        // the same rule Stats follows for stage-coloured labels.
         return (
-          <Text key={index} className={cn('font-semibold', accent.text)}>
+          <Text key={index} className={cn('font-ui-bold', accent.deep)}>
             {segment.text}
           </Text>
         );

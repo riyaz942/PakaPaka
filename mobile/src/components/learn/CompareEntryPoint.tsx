@@ -1,7 +1,8 @@
 import { router } from 'expo-router';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 
+import { Button } from '@/components/common/Button';
 import { useItemLinkBase } from '@/components/learn/ItemLinkContext';
 
 /**
@@ -20,15 +21,14 @@ export function CompareEntryPoint({ itemId }: { itemId: string }) {
   }
 
   return (
-    <View className="mt-4">
-      <Pressable
-        accessibilityRole="button"
+    <View className="mt-space-lg">
+      <Button
+        label="Compare with…"
+        variant="secondary"
         accessibilityLabel="Compare this item with another"
         onPress={() => router.push({ pathname: '/browse/compare', params: { left: itemId } })}
         testID="compare-entry-point"
-        className="min-h-[44px] justify-center rounded-radius-md border border-border bg-surface px-3 py-2">
-        <Text className="text-body text-feedback-info">Compare with…</Text>
-      </Pressable>
+      />
     </View>
   );
 }

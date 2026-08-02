@@ -27,25 +27,41 @@ export const HERO_FONT_SIZE = {
   pattern: { fontSize: 40, lineHeight: 48 },
 } as const;
 
+/**
+ * The detail hero's own scale. The spec draws 76px for a single kanji and 66px
+ * for a word; grammar patterns run several tokens wide and step down again.
+ */
+export const DETAIL_HERO_FONT_SIZE = {
+  glyph: { fontSize: 76, lineHeight: 84 },
+  word: { fontSize: 66, lineHeight: 76 },
+  pattern: { fontSize: 34, lineHeight: 44 },
+} as const;
+
 type ItemDetailHeaderProps = {
   itemType: ItemType;
   meaning: string;
   /** The rendered primary form (character/word/pattern), colored by the caller. */
   children: ReactNode;
   size?: HeroSize;
+  /**
+   * Names the type on a pill inside the card. The detail screens turn this off:
+   * their header bar already carries the badge, so a second one would repeat it.
+   */
+  showTypeBadge?: boolean;
   testID?: string;
 };
 
 /**
- * Centered, accent-tinted hero shown at the top of every learn/lesson item
- * card. Gives each content type an at-a-glance color identity while keeping the
- * reference sections below left-aligned for readability.
+ * The type-soft hero card every item page and lesson card opens with: the form
+ * heroed in the type's deep tone, its meaning underneath. Extra-large radius
+ * (r-xl) marks it as the page's subject rather than one card among many.
  */
 export function ItemDetailHeader({
   itemType,
   meaning,
   children,
   size = 'md',
+  showTypeBadge = true,
   testID,
 }: ItemDetailHeaderProps) {
   const accent = CONTENT_TYPE_ACCENT[itemType];
@@ -53,16 +69,17 @@ export function ItemDetailHeader({
     <View
       testID={testID}
       className={cn(
-        'items-center gap-space-sm rounded-radius-lg',
+        'items-center gap-space-sm rounded-radius-xl',
         size === 'lg' ? 'p-space-xl' : 'p-space-lg',
-        accent.tint,
+        accent.soft,
       )}>
-      <ContentTypeBadge itemType={itemType} />
+      {showTypeBadge ? <ContentTypeBadge itemType={itemType} /> : null}
       {children}
       <Text
         className={cn(
-          'text-primary text-center',
-          size === 'lg' ? 'text-title' : 'text-body-lg',
+          'text-center font-ui-extrabold',
+          size === 'lg' ? 'text-title-lg' : 'text-title',
+          accent.deep,
         )}>
         {meaning}
       </Text>
