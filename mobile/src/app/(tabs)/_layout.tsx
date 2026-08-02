@@ -1,15 +1,25 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 
+import { Icon, type IconName } from '@/components/common/Icon';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
-type IconName = React.ComponentProps<typeof MaterialIcons>['name'];
-
+/**
+ * Tab icons come from the v2 drawn set. React Navigation hands the tint down as
+ * a raw colour, so the icon takes its class from the focused flag instead —
+ * jade when active, faint when not.
+ */
 function tabIcon(name: IconName) {
-  return function TabIcon({ color, size }: { color: string; size: number }) {
-    return <MaterialIcons name={name} color={color} size={size} />;
+  return function TabIcon({ focused }: { focused: boolean }) {
+    return (
+      <Icon
+        name={name}
+        size={22}
+        strokeWidth={1.9}
+        className={focused ? 'text-brand-500' : 'text-faint'}
+      />
+    );
   };
 }
 
@@ -21,8 +31,12 @@ export default function TabsLayout() {
       backBehavior="initialRoute"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.feedbackInfo,
-        tabBarInactiveTintColor: colors.secondary,
+        tabBarActiveTintColor: colors.brand,
+        tabBarInactiveTintColor: colors.faint,
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontFamily: 'PlusJakartaSans_600SemiBold',
+        },
         tabBarStyle: {
           backgroundColor: colors.surface,
           borderTopColor: colors.border,
@@ -38,7 +52,7 @@ export default function TabsLayout() {
       />
       <Tabs.Screen
         name="converse"
-        options={{ title: 'Talk', tabBarIcon: tabIcon('chat') }}
+        options={{ title: 'Talk', tabBarIcon: tabIcon('talk') }}
       />
       {/* Learn and Read are no longer tabs (FR62–FR63, UX-DR3) — Browse is the
           single discovery surface. The routes stay mounted with `href: null` so
@@ -47,7 +61,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="read" options={{ href: null }} />
       <Tabs.Screen
         name="stats"
-        options={{ title: 'Stats', tabBarIcon: tabIcon('bar-chart') }}
+        options={{ title: 'Stats', tabBarIcon: tabIcon('stats') }}
       />
       <Tabs.Screen
         name="settings"

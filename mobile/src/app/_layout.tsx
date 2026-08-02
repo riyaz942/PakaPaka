@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { Banner } from '@/components/common/Banner';
@@ -21,17 +21,29 @@ import { OnboardingRedirect } from '@/providers/OnboardingRedirect';
 import { useCurriculumUpdateBanner } from '@/providers/CurriculumUpdateContext';
 
 function CurriculumUpdateBannerHost() {
+  const insets = useSafeAreaInsets();
   const { showCurriculumUpdatedBanner, dismissCurriculumUpdatedBanner } =
     useCurriculumUpdateBanner();
 
+  if (!showCurriculumUpdatedBanner) {
+    return null;
+  }
+
+  // The banner itself is the inline v2 slot, so this host owns the placement:
+  // floated under the status bar rather than a full-bleed bar.
   return (
-    <Banner
-      message="Curriculum updated"
-      variant="success"
-      visible={showCurriculumUpdatedBanner}
-      autoDismissMs={3000}
-      onDismiss={dismissCurriculumUpdatedBanner}
-    />
+    <View
+      className="absolute left-0 right-0 top-0 z-10 px-space-md"
+      style={{ paddingTop: insets.top + 12 }}
+      pointerEvents="box-none">
+      <Banner
+        message="Curriculum updated"
+        variant="success"
+        visible
+        autoDismissMs={3000}
+        onDismiss={dismissCurriculumUpdatedBanner}
+      />
+    </View>
   );
 }
 

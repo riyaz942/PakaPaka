@@ -1,4 +1,9 @@
 import { Text, View } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
+
+import { getSemanticColors } from '@/constants/semantic-colors';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
+import { cn } from '@/utils/cn';
 
 type GoalRingProps = {
   variant: 'small' | 'large' | 'hero';
@@ -14,39 +19,36 @@ const SIZE: Record<GoalRingProps['variant'], number> = {
 
 const FONT_SIZE: Record<GoalRingProps['variant'], number> = {
   small: 8,
-  large: 12,
-  hero: 28,
+  large: 14,
+  hero: 34,
 };
 
-function ringBandClasses(percent: number): { border: string; text: string } {
-  // ≥90 (including all overshoot) gets the cyan "complete" treatment — proud,
-  // not alarming (UX-DR2).
-  if (percent >= 90) {
-    return { border: 'border-ring-complete', text: 'text-ring-complete' };
-  }
-  if (percent >= 70) {
-    return { border: 'border-ring-end', text: 'text-ring-end' };
-  }
-  if (percent >= 40) {
-    return { border: 'border-ring-mid', text: 'text-ring-mid' };
-  }
-  return { border: 'border-ring-start', text: 'text-ring-start' };
-}
+/** Band thickness, from the spec's 104px ring with an 80px well. */
+const STROKE_RATIO = 0.115;
 
 /**
- * Daily goal ring. Percent is unclamped above 100 — overshoot is shown raw
- * with a `+N%` badge (large/hero; the 32px small variant has no room). The
- * a11y value raises `max` alongside `now` so screen readers announce the true
- * overshoot percent, never a capped one.
+ * Daily goal ring: one jade arc filling a surface-elevated track — no gradient
+ * stops, because the ring measures a single thing.
+ *
+ * Percent is unclamped above 100. Past the goal the arc closes and the ring
+ * gains a jade halo plus a BEATEN kicker (large and hero only; the 32px session
+ * variant has no room) — overshoot is the good part, so it is celebrated rather
+ * than flagged. The a11y value raises `max` alongside `now` so screen readers
+ * announce the true overshoot percent, never a capped one.
  */
 export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps) {
+  // SVG stroke props take raw colours, so the track and arc read the hex mirror
+  // of the palette rather than a NativeWind class.
+  const colors = getSemanticColors(usePaintedColorScheme());
   const size = SIZE[variant];
   const displayPercent = Math.round(Math.max(0, percent));
-  const overshoot = displayPercent > 100 ? displayPercent - 100 : 0;
+  const beaten = displayPercent >= 100;
   const label = accessibilityLabel ?? `Goal ${displayPercent} percent`;
-  const fontSize = FONT_SIZE[variant];
-  const borderWidth = variant === 'hero' ? 'border-4' : 'border-2';
-  const band = ringBandClasses(displayPercent);
+
+  const strokeWidth = Math.max(3, Math.round(size * STROKE_RATIO));
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const swept = (Math.min(displayPercent, 100) / 100) * circumference;
 
   return (
     <View
@@ -54,19 +56,53 @@ export function GoalRing({ variant, percent, accessibilityLabel }: GoalRingProps
       accessibilityLabel={label}
       accessibilityValue={{ min: 0, max: Math.max(100, displayPercent), now: displayPercent }}
       style={{ width: size, height: size }}
-      className={`items-center justify-center rounded-full ${borderWidth} ${band.border}`}>
-      <Text style={{ fontSize }} className="font-semibold text-primary">
+      className="items-center justify-center rounded-radius-full">
+      {beaten ? (
+        <View
+          testID="goal-ring-halo"
+          pointerEvents="none"
+          className="absolute -inset-1 rounded-radius-full border-4 border-brand-soft-strong"
+        />
+      ) : null}
+
+      <Svg
+        width={size}
+        height={size}
+        // Absolute so the percent label centres on the ring; rotated so the arc
+        // starts at 12 o'clock rather than 3 o'clock.
+        style={{ position: 'absolute', transform: [{ rotate: '-90deg' }] }}>
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={colors.surfaceElevated}
+          strokeWidth={strokeWidth}
+        />
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={colors.brand}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${swept} ${circumference}`}
+        />
+      </Svg>
+
+      <Text
+        style={{ fontSize: FONT_SIZE[variant] }}
+        className={cn('font-ui-extrabold', beaten ? 'text-brand-text' : 'text-primary')}>
         {`${displayPercent}%`}
       </Text>
-      {overshoot > 0 && variant !== 'small' ? (
-        <View
-          testID="goal-ring-overshoot-badge"
-          className="absolute -right-space-xs -top-space-xs rounded-radius-full bg-ring-complete px-space-xs py-[1px]">
-          <Text className="text-caption font-semibold text-white">{`+${overshoot}%`}</Text>
-        </View>
+
+      {beaten && variant !== 'small' ? (
+        <Text
+          testID="goal-ring-beaten-kicker"
+          className="text-overline font-ui-bold uppercase tracking-[0.06em] text-brand-text">
+          Beaten
+        </Text>
       ) : null}
     </View>
   );
 }
-
-export { ringBandClasses };

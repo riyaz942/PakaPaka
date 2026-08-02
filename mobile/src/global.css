@@ -51,6 +51,12 @@
     /* Jade *text* on background/surface — the scale itself cannot flip, so this
        alias picks the step that clears AA in each scheme (700 light, 300 dark). */
     --color-brand-text: 12 101 78;
+    /* Tinted jade fills (banner wash, selected choice card, review card, focus
+       halo). The fixed `brand-50`/`brand-100` steps are near-white, so a card
+       filled with them would glare in dark mode — these flip like `brand-text`,
+       which is the tone that reads on them in both schemes. */
+    --color-brand-soft: 234 247 242;
+    --color-brand-soft-strong: 205 238 226;
 
     /* v2 — SRS stages */
     --color-srs-apprentice: 225 77 134;
@@ -66,6 +72,9 @@
     --color-feedback-incorrect: 225 72 61;
     --color-feedback-incorrect-soft: 252 231 228;
     --color-feedback-incorrect-deep: 189 60 51;
+    /* Filled destructive buttons. Like brand-600 this is a *fill* step, so it
+       does not flip with the scheme — white on the spec's `danger` is 4.04:1. */
+    --color-feedback-incorrect-fill: 189 60 51;
     --color-feedback-warning: 202 121 26;
     --color-feedback-warning-soft: 251 238 218;
     --color-feedback-warning-deep: 153 92 20;
@@ -121,6 +130,9 @@
       /* Jade text goes light-on-dark; the fill step (600) stays put so white
          labels keep the same contrast in both schemes. */
       --color-brand-text: 102 203 171;
+      /* Jade at 18% / 30% over dark surface #24211E. */
+      --color-brand-soft: 33 56 46;
+      --color-brand-soft-strong: 32 71 57;
 
       --color-srs-enlightened: 23 162 196;
       --color-srs-burned: 112 109 101;

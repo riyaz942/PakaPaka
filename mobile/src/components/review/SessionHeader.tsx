@@ -1,7 +1,8 @@
 import { Pressable, Text, View } from 'react-native';
 
+import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
+import { Icon } from '@/components/common/Icon';
 import { GoalRing } from '@/components/engagement';
-import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type { ReviewItem } from '@/core/srs/srs.types';
 
 type ItemType = ReviewItem['itemType'];
@@ -30,7 +31,6 @@ export function SessionHeader({
   // Clamp: once every card is completed except in-flight retries, cardsCompleted
   // can equal totalCards while retry cards are still being shown.
   const displayNumber = Math.min(cardsCompleted + 1, totalCards);
-  const accent = CONTENT_TYPE_ACCENT[itemType];
   const a11yLabel = `Card ${displayNumber} of ${totalCards}, goal ${cognitiveLoadPercent} percent, ${itemType} card`;
 
   return (
@@ -41,15 +41,11 @@ export function SessionHeader({
         className="flex-1 flex-row items-center gap-space-sm">
         <GoalRing variant="small" percent={cognitiveLoadPercent} />
 
-        <Text className="text-body font-semibold text-primary">
+        <Text className="text-body-lg font-ui-extrabold text-primary">
           {`${displayNumber} of ${totalCards}`}
         </Text>
 
-        <View className={`rounded-radius-sm px-space-xs py-[2px] ${accent.tint}`}>
-          <Text className={`text-overline font-semibold ${accent.text}`}>
-            {CONTENT_TYPE_LABEL[itemType].toUpperCase()}
-          </Text>
-        </View>
+        <ContentTypeBadge itemType={itemType} />
       </View>
 
       <Pressable
@@ -57,7 +53,7 @@ export function SessionHeader({
         accessibilityLabel="End session"
         onPress={onExitPress}
         className="min-h-[44px] min-w-[44px] items-center justify-center">
-        <Text className="text-title text-secondary">✕</Text>
+        <Icon name="close" size={22} strokeWidth={2} className="text-muted" />
       </Pressable>
     </View>
   );

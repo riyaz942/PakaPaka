@@ -260,11 +260,49 @@ export function contrastPairManifest(): ContrastPair[] {
         theme,
       },
       {
+        name: 'on-primary on feedback-incorrect-fill',
+        foreground: 'on-primary',
+        background: 'feedback-incorrect-fill',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
         name: 'brand-800 on brand-50',
         foreground: 'brand-800',
         background: 'brand-50',
         textClass: 'normal-text',
         theme,
+      },
+      // The scheme-aware jade wash used for banners, selected choice cards and
+      // the Home review card. `brand-50`/`brand-100` are fixed near-whites.
+      {
+        name: 'brand-text on brand-soft',
+        foreground: 'brand-text',
+        background: 'brand-soft',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
+        name: 'brand-text on brand-soft-strong',
+        foreground: 'brand-text',
+        background: 'brand-soft-strong',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
+        name: 'primary on brand-soft',
+        foreground: 'primary',
+        background: 'brand-soft',
+        textClass: 'normal-text',
+        theme,
+      },
+      {
+        name: 'brand-soft on background',
+        foreground: 'brand-soft',
+        background: 'background',
+        textClass: 'exempt',
+        theme,
+        rationale: 'Card fill, not a boundary — the 2px brand-500 border carries the edge',
       },
     );
 

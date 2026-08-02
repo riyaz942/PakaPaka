@@ -1,6 +1,8 @@
 import React, { useState, type ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { Icon } from '@/components/common/Icon';
+
 type DisclosureProps = {
   label: string;
   children: ReactNode;
@@ -31,8 +33,12 @@ export function Disclosure({
         onPress={() => setExpanded((value) => !value)}
         testID={`${testID}-toggle`}
         className="min-h-[44px] flex-row items-center gap-space-xs">
-        <Text className="text-body-sm text-secondary">{expanded ? '▾' : '▸'}</Text>
-        <Text className="text-body-sm uppercase text-secondary">{label}</Text>
+        <View style={{ transform: [{ rotate: expanded ? '90deg' : '0deg' }] }}>
+          <Icon name="chevron" size={14} strokeWidth={2.4} className="text-muted" />
+        </View>
+        <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+          {label}
+        </Text>
       </Pressable>
       {expanded ? <View testID={`${testID}-content`}>{children}</View> : null}
     </View>

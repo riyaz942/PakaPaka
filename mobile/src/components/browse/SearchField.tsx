@@ -1,7 +1,9 @@
 import React from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 
-import { MaterialIcons } from '@expo/vector-icons';
+import { Icon } from '@/components/common/Icon';
+import { getSemanticColors } from '@/constants/semantic-colors';
+import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type SearchFieldProps = {
   value: string;
@@ -18,19 +20,22 @@ type SearchFieldProps = {
  * happens downstream as extra query branches, never in this field.
  */
 export function SearchField({ value, onChangeText, testID }: SearchFieldProps) {
+  const colors = getSemanticColors(usePaintedColorScheme());
+
   return (
-    <View className="flex-row items-center gap-space-sm rounded-radius-md border border-border bg-surface px-space-md">
-      <MaterialIcons name="search" size={20} className="text-secondary" />
+    <View className="flex-row items-center gap-space-sm rounded-radius-full border border-border bg-surface-elevated px-space-md">
+      <Icon name="search" size={19} strokeWidth={2} className="text-muted" />
       <TextInput
         accessibilityLabel="Search radicals, kanji, vocabulary, grammar and passages"
         placeholder="Search anything"
+        placeholderTextColor={colors.faint}
         value={value}
         onChangeText={onChangeText}
         autoCapitalize="none"
         autoCorrect={false}
         returnKeyType="search"
         testID={testID}
-        className="min-h-[44px] flex-1 text-body text-primary"
+        className="min-h-[44px] flex-1 text-body font-ui-medium text-primary"
       />
       {value.length > 0 ? (
         <Pressable
@@ -39,7 +44,7 @@ export function SearchField({ value, onChangeText, testID }: SearchFieldProps) {
           onPress={() => onChangeText('')}
           testID={testID ? `${testID}-clear` : undefined}
           className="min-h-[44px] min-w-[44px] items-center justify-center">
-          <MaterialIcons name="close" size={20} className="text-secondary" />
+          <Icon name="close" size={18} strokeWidth={2} className="text-muted" />
         </Pressable>
       ) : null}
     </View>

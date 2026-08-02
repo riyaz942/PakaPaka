@@ -44,11 +44,14 @@ function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps) {
     <Pressable {...props} style={({ pressed }) => pressed && styles.pressed}>
       <View
         className={cn(
-          'rounded-radius-md px-space-md py-space-sm',
-          isFocused ? 'bg-surface-elevated' : 'bg-surface',
+          'min-h-[44px] justify-center rounded-radius-md px-space-md py-space-sm',
+          isFocused ? 'bg-brand-soft' : 'bg-surface',
         )}>
         <Text
-          className={cn('text-body-sm', isFocused ? 'text-primary' : 'text-secondary')}>
+          className={cn(
+            'text-body-sm',
+            isFocused ? 'font-ui-bold text-brand-text' : 'font-ui-semibold text-faint',
+          )}>
           {children}
         </Text>
       </View>
@@ -60,7 +63,7 @@ function WebTabList(props: TabListProps) {
   return (
     <View {...props} style={styles.tabListContainer}>
       <View
-        className="flex-row flex-grow items-center gap-space-sm rounded-radius-lg bg-surface px-space-lg py-space-sm"
+        className="flex-row flex-grow items-center gap-space-sm rounded-radius-lg border border-border bg-surface px-space-lg py-space-sm shadow-e2"
         style={{ maxWidth: MaxContentWidth }}>
         {props.children}
       </View>

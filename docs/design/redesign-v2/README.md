@@ -117,21 +117,44 @@ SRS stages (both themes): apprentice `#E14D86` · guru `#8B5AD4` · master `#2F8
 
 Spec refs: Components section (buttons, chips, goal ring, answer inputs, chat bubbles, toggles, choice cards, session headers, list rows, tiles, banners) + Iconography section.
 
-- [ ] **Buttons** (`components/common/` or `ui/`): primary (jade fill, white text, CTA glow, r-md), secondary (surface + 1.5px jade border), tertiary (surface-elevated fill), ghost/text (muted), destructive (danger fill), disabled (surface-elevated + faint text — grey, *not* tinted).
-- [ ] **Pills & chips:** filter chip (active = jade fill white text with ×; inactive = surface + border), type badge (soft bg + deep text, uppercase 10–11px), SRS stage dot (colored 8–9px circle).
-- [ ] **List row with 5px color edge** (Browse rows, "still to learn" lists): left edge strip in content-type base color, glyph in Zen Maru at type base color, title + caption, trailing badge/dot.
-- [ ] **Goal ring:** conic jade fill on surface-elevated track, % in center; ≥100% state adds jade halo (`0 0 0 4px brand-100`) + "BEATEN" kicker. Single color — no gradient stops.
-- [ ] **Answer input states:** focus (1.5px jade border + 4px brand-50 halo), correct (success soft/border + check), incorrect (danger + ×), near-miss (warning soft + explanation line), wrong-script (info soft + hint line). JP text in `font-jp`.
-- [ ] **Toggle & stepper rows** (Settings/onboarding): 48×28 pill toggle (jade on), −/value/+ stepper in surface-elevated.
-- [ ] **Choice cards:** selected = 2px jade border + brand-50 fill (+ optional "Recommended" pill); unselected = surface + border.
-- [ ] **Session headers:** lesson variant (× · progress bar · "2/5") and review variant (mini ring · "4 of 6" · type badge · ×). **Lesson 3-section stepper** pills: INTRO/MNEMONIC/EXAMPLES, active pill = content-type base fill.
-- [ ] **Banner slot:** one-at-a-time info banner (brand-50 / warn-soft, icon + single line).
-- [ ] **Chat bubbles:** user = jade fill white `font-jp`, r-lg with 5px tail corner; AI = surface + border with furigana ruby support; "Look up words" link row.
-- [ ] **Icons:** port the spec's line set (1.75px stroke, round caps/joins, 24px grid — SVGs are all inline in the spec HTML) for: 5 tab icons, review bolt, lesson book, passage lines, weakness target, streak flame, days calendar, filter, mic, send, history, locked, correct, close, back, import. Replace emoji/mismatched icons wherever these primitives use them.
-- [ ] **Tab bar + nav headers:** active tab jade (icon + 10px label), inactive faint; surface bg with top border. Tab title style `font:800 27px font-ui` ink.
-- [ ] Verify kit renders in light + dark; lint/typecheck/test.
+- [x] **Buttons** (`components/common/` or `ui/`): primary (jade fill, white text, CTA glow, r-md), secondary (surface + 1.5px jade border), tertiary (surface-elevated fill), ghost/text (muted), destructive (danger fill), disabled (surface-elevated + faint text — grey, *not* tinted).
+- [x] **Pills & chips:** filter chip (active = jade fill white text with ×; inactive = surface + border), type badge (soft bg + deep text, uppercase 10–11px), SRS stage dot (colored 8–9px circle).
+- [x] **List row with 5px color edge** (Browse rows, "still to learn" lists): left edge strip in content-type base color, glyph in Zen Maru at type base color, title + caption, trailing badge/dot.
+- [x] **Goal ring:** conic jade fill on surface-elevated track, % in center; ≥100% state adds jade halo (`0 0 0 4px brand-100`) + "BEATEN" kicker. Single color — no gradient stops.
+- [x] **Answer input states:** focus (1.5px jade border + 4px brand-50 halo), correct (success soft/border + check), incorrect (danger + ×), near-miss (warning soft + explanation line), wrong-script (info soft + hint line). JP text in `font-jp`.
+- [x] **Toggle & stepper rows** (Settings/onboarding): 48×28 pill toggle (jade on), −/value/+ stepper in surface-elevated.
+- [x] **Choice cards:** selected = 2px jade border + brand-50 fill (+ optional "Recommended" pill); unselected = surface + border.
+- [x] **Session headers:** lesson variant (× · progress bar · "2/5") and review variant (mini ring · "4 of 6" · type badge · ×). **Lesson 3-section stepper** pills: INTRO/MNEMONIC/EXAMPLES, active pill = content-type base fill.
+- [x] **Banner slot:** one-at-a-time info banner (brand-50 / warn-soft, icon + single line).
+- [x] **Chat bubbles:** user = jade fill white `font-jp`, r-lg with 5px tail corner; AI = surface + border with furigana ruby support; "Look up words" link row.
+- [x] **Icons:** port the spec's line set (1.75px stroke, round caps/joins, 24px grid — SVGs are all inline in the spec HTML) for: 5 tab icons, review bolt, lesson book, passage lines, weakness target, streak flame, days calendar, filter, mic, send, history, locked, correct, close, back, import. Replace emoji/mismatched icons wherever these primitives use them.
+- [x] **Tab bar + nav headers:** active tab jade (icon + 10px label), inactive faint; surface bg with top border. Tab title style `font:800 27px font-ui` ink.
+- [x] Verify kit renders in light + dark; lint/typecheck/test.
 
 **Files:** `components/common/`, `components/ui/`, `components/engagement/` (goal ring), `(tabs)/_layout.tsx` (+ `.web`), icon assets/module.
+
+### Session 2 decisions (carry into later sessions)
+
+**The kit lives in `components/common/`.** New: `Icon`, `ContentListRow`, `LinkedItemTile`, `ChoiceCard`, `ToggleRow`, `StepperRow`, `SectionStepper`, `LessonSessionHeader`, `ScreenTitle`. Restyled in place: `Button`, `Banner`, `ContentTypeBadge`, `SRSStageIndicator` (+ new `SRSStageDot`), `SectionHeading`, `ScreenHeader`, `Disclosure`, `engagement/GoalRing`, `browse/FilterPill`, `browse/SearchField`, `review/SessionHeader`, `review/WanaKanaInput`, `converse/ChatBubble`. Where a feature component *is* the primitive, it was restyled rather than duplicated into `common/` — Sessions 5/7/8 assemble those screens around the same component.
+
+**Icons.** `react-native-svg` was added. `Icon` takes a NativeWind colour class, not a hex: the class sets the SVG's `color` through `cssInterop` and every stroke reads `currentColor`. Icons are hidden from assistive tech (`accessibilityElementsHidden`), so they must always sit inside a labelled control — and RNTL queries for them need `{ includeHiddenElements: true }`. Stroke is 1.75 on the 24 grid; pass `strokeWidth={2}`–`2.4` for small emphatic marks, as the spec does.
+
+**Two new palette tokens.** `brand-soft` / `brand-soft-strong` are the *scheme-aware* jade fills (jade at 18% / 30% over the dark surface). Use these — not `brand-50`/`brand-100` — for anything filled: banners, selected choice cards, the goal-ring halo, the focus halo, the Home review card. The fixed brand steps are near-whites and glare in dark mode. Text on them is `text-brand-text`. `feedback-incorrect-fill` is the destructive button fill (non-flipping, like `brand-600`).
+
+**Goal ring.** Now a real arc: `react-native-svg` circle on a `surface-elevated` track, jade fill, no stops. `ringBandClasses` and the `+N%` badge are gone; ≥100% draws a jade halo (`goal-ring-halo`) and a BEATEN kicker (`large`/`hero` only). The four `ring-*` tokens are now unused by the ring itself — Session 4 or 8 can delete them.
+
+**SVG colour, two ways.** `Icon` needs arbitrary tokens (`content-*`, `feedback-*`), so it uses the `cssInterop` `currentColor` route. `GoalRing` needs only `surfaceElevated` and `brand`, which `design-tokens.js` already mirrors, so it passes those hexes to `stroke` — the documented raw-colour exception. Prefer the `design-tokens.js` route when the colour is in that file; `cssInterop` otherwise.
+
+**Focus and halo rings.** React Native shadows have no spread, so the spec's `0 0 0 4px` rings are drawn as an absolutely positioned `-inset-1 border-4` sibling. `Button` keeps `shadow-cta-glow`, which is a real offset shadow.
+
+**Answer input.** `WanaKanaInput` grew `state` (`idle` · `correct` · `incorrect` · `near-miss` · `wrong-script`) and `hint`, and now renders its own field chrome — it is the answer input, so no parallel one was added to `common/`. Kana mode sets the value in `font-jp-medium`. Session 7 wires the states to the evaluator.
+
+### Session 2 deviations
+
+11. **Active stepper pills use soft/deep, not white on the base hue.** The spec fills the lesson section pill with `--kan` and sets the label white. No content hue clears AA against white in both themes (light: blue 3.94, kanji 3.75, gold 3.36, vocab 4.66; dark: every hue below 3.0). `SectionStepper` therefore uses the same soft-fill / deep-text pairing as `ContentTypeBadge`. Filled *type-coloured* surfaces elsewhere should follow the same rule.
+12. **Destructive buttons use `feedback-incorrect-fill` `#BD3C33`.** White on the spec's `--danger` `#E1483D` is 4.04:1 — short of AA for a 15px label. Like `brand-600`, the fill step does not flip with the scheme, because `feedback-incorrect-deep` goes light in dark mode and would take white with it.
+13. **Filter chips fill with `brand-600`, not `brand-500`.** Same white-label reason as the primary button (deviation 5).
+14. **`Banner` became the inline v2 slot.** It was a full-bleed top toast; it is now the spec's soft-fill / icon / one-line banner, and the root `CurriculumUpdateBannerHost` owns the safe-area placement instead.
 
 ## Session 3 — Onboarding + Settings
 

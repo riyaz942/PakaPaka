@@ -35,6 +35,8 @@ module.exports = {
         'brand-800': 'rgb(var(--color-brand-800) / <alpha-value>)',
         'brand-900': 'rgb(var(--color-brand-900) / <alpha-value>)',
         'brand-text': 'rgb(var(--color-brand-text) / <alpha-value>)',
+        'brand-soft': 'rgb(var(--color-brand-soft) / <alpha-value>)',
+        'brand-soft-strong': 'rgb(var(--color-brand-soft-strong) / <alpha-value>)',
 
         // v2 — SRS stages
         'srs-apprentice': 'rgb(var(--color-srs-apprentice) / <alpha-value>)',
@@ -50,6 +52,7 @@ module.exports = {
         'feedback-incorrect': 'rgb(var(--color-feedback-incorrect) / <alpha-value>)',
         'feedback-incorrect-soft': 'rgb(var(--color-feedback-incorrect-soft) / <alpha-value>)',
         'feedback-incorrect-deep': 'rgb(var(--color-feedback-incorrect-deep) / <alpha-value>)',
+        'feedback-incorrect-fill': 'rgb(var(--color-feedback-incorrect-fill) / <alpha-value>)',
         'feedback-warning': 'rgb(var(--color-feedback-warning) / <alpha-value>)',
         'feedback-warning-soft': 'rgb(var(--color-feedback-warning-soft) / <alpha-value>)',
         'feedback-warning-deep': 'rgb(var(--color-feedback-warning-deep) / <alpha-value>)',

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { MaterialIcons } from '@expo/vector-icons';
-
+import { Icon } from '@/components/common/Icon';
 import { cn } from '@/utils/cn';
 
 type FilterPillProps = {
@@ -25,7 +24,9 @@ export function FilterPill({ label, active, onPress, onClear, testID }: FilterPi
     <View
       className={cn(
         'flex-row items-center rounded-radius-full border',
-        active ? 'border-feedback-info bg-surface-elevated' : 'border-border bg-surface',
+        // Active is a solid jade fill with a white label; inactive is a plain
+        // outlined pill (spec, Search & filter chips).
+        active ? 'border-brand-600 bg-brand-600' : 'border-border bg-surface',
       )}>
       <Pressable
         accessibilityRole="button"
@@ -36,8 +37,8 @@ export function FilterPill({ label, active, onPress, onClear, testID }: FilterPi
         className="min-h-[44px] justify-center px-space-md">
         <Text
           className={cn(
-            'text-body-sm font-semibold',
-            active ? 'text-feedback-info' : 'text-secondary',
+            'text-body-sm font-ui-bold',
+            active ? 'text-on-primary' : 'text-secondary',
           )}>
           {label}
         </Text>
@@ -50,7 +51,7 @@ export function FilterPill({ label, active, onPress, onClear, testID }: FilterPi
           onPress={onClear}
           testID={testID ? `${testID}-clear` : undefined}
           className="min-h-[44px] min-w-[44px] items-center justify-center pr-space-sm">
-          <MaterialIcons name="close" size={16} className="text-feedback-info" />
+          <Icon name="close" size={14} strokeWidth={2.6} className="text-on-primary" />
         </Pressable>
       ) : null}
     </View>

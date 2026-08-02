@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { ExplainerSheet } from '@/components/common/ExplainerSheet';
+import { Icon } from '@/components/common/Icon';
 import type { ExplainerTopic } from '@/components/learn/explainerContent';
 
 type SectionHeadingProps = {
@@ -21,7 +22,11 @@ export function SectionHeading({ label, infoTopic, testID }: SectionHeadingProps
 
   return (
     <View className="flex-row items-center gap-space-xs" testID={testID}>
-      <Text className="text-body-sm uppercase text-secondary">{label}</Text>
+      {/* v2 kicker: 12px, extra-bold, tracked, faint — the section label sits
+          quietly above its content instead of competing with it. */}
+      <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+        {label}
+      </Text>
 
       {infoTopic ? (
         <>
@@ -31,7 +36,7 @@ export function SectionHeading({ label, infoTopic, testID }: SectionHeadingProps
             onPress={() => setSheetVisible(true)}
             testID={`section-heading-info-${label.toLowerCase()}`}
             className="min-h-[44px] min-w-[44px] items-center justify-center">
-            <Text className="text-body-sm text-feedback-info">ⓘ</Text>
+            <Icon name="info" size={16} strokeWidth={2} className="text-brand-text" />
           </Pressable>
           <ExplainerSheet
             topic={infoTopic}

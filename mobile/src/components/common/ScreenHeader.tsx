@@ -1,12 +1,10 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { getSemanticColors } from '@/constants/semantic-colors';
+import { Icon } from '@/components/common/Icon';
 import { MaxContentWidth } from '@/constants/theme';
-import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 
 type ScreenHeaderProps = {
   title?: string;
@@ -27,7 +25,6 @@ export function ScreenHeader({
   onBack,
 }: ScreenHeaderProps) {
   const insets = useSafeAreaInsets();
-  const colors = getSemanticColors(usePaintedColorScheme());
 
   return (
     <View className="border-b border-border bg-surface" style={{ paddingTop: insets.top }}>
@@ -41,13 +38,13 @@ export function ScreenHeader({
           testID={backTestID}
           className="min-h-[44px] min-w-[44px] items-start justify-center py-1"
           hitSlop={8}>
-          <MaterialIcons name="arrow-back" size={24} color={colors.feedbackInfo} />
+          <Icon name="back" size={24} strokeWidth={2} className="text-primary" />
         </Pressable>
         {title ? (
           <Text
             accessibilityRole="header"
             numberOfLines={1}
-            className="flex-1 pr-space-md text-title text-primary">
+            className="flex-1 pr-space-md text-title font-ui-bold text-primary">
             {title}
           </Text>
         ) : null}

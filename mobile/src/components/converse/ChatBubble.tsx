@@ -37,9 +37,13 @@ export function ChatBubble({
   const isAssistant = role === 'assistant';
 
   if (!isAssistant) {
+    // The tail is the one square-ish corner on the speaker's side (spec, Chat
+    // bubbles) — the bubble points back at whoever said it.
     return (
-      <View className="mb-space-sm max-w-[85%] self-end rounded-radius-md bg-feedback-info px-space-md py-space-sm">
-        <Text className="text-body text-white">{text}</Text>
+      <View
+        style={{ borderBottomRightRadius: 5 }}
+        className="mb-space-sm max-w-[85%] self-end rounded-radius-lg bg-brand-600 px-space-md py-space-sm">
+        <Text className="text-body-lg font-jp-medium text-on-primary">{text}</Text>
       </View>
     );
   }
@@ -58,12 +62,13 @@ export function ChatBubble({
         accessibilityHint={onLookupWords ? 'Long press to look up words in this message' : undefined}
         onLongPress={onLookupWords}
         delayLongPress={400}
-        className="rounded-radius-md border border-border bg-surface px-space-md py-space-sm">
+        style={{ borderBottomLeftRadius: 5 }}
+        className="rounded-radius-lg border border-border bg-surface-elevated px-space-md py-space-sm">
         <FuriganaText
           text={text}
           mode={furiganaMode}
           knownKanji={knownKanji}
-          className="text-body text-primary"
+          className="text-body-lg font-jp-medium text-primary"
           // The bubble's own Pressable owns the gesture, so readings are not
           // individually tappable here.
           interactive={false}
@@ -77,7 +82,7 @@ export function ChatBubble({
           onPress={onLookupWords}
           testID="chat-bubble-lookup"
           className="mt-space-xs min-h-[44px] justify-center self-start px-space-xs">
-          <Text className="text-body-sm text-feedback-info">Look up words</Text>
+          <Text className="text-body-sm font-ui-semibold text-brand-text">Look up words</Text>
         </Pressable>
       ) : null}
     </View>

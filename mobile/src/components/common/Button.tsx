@@ -15,30 +15,39 @@ type ButtonProps = {
   className?: string;
 };
 
+/**
+ * Design System v2 buttons. Weight comes from the font utility, not `font-bold`
+ * — the static Google Fonts register one family per weight.
+ */
 const variantClasses: Record<ButtonVariant, { container: string; text: string }> = {
   primary: {
-    container: 'bg-feedback-info',
-    // Fixed white on the filled accent — theme text tokens flip to near-black
-    // in light mode and vanish against the blue fill.
-    text: 'text-white font-semibold',
+    // brand-600, not the brand-500 the spec draws: white on 500 is 3.39:1.
+    container: 'bg-brand-600 shadow-cta-glow',
+    text: 'text-on-primary font-ui-bold',
   },
   secondary: {
-    container: 'bg-surface-elevated border border-border',
-    text: 'text-primary font-semibold',
+    container: 'border-[1.5px] border-brand-500 bg-surface',
+    text: 'text-brand-text font-ui-bold',
   },
   tertiary: {
-    container: 'bg-surface border border-border',
-    text: 'text-primary font-medium',
+    container: 'bg-surface-elevated',
+    text: 'text-secondary font-ui-bold',
   },
   ghost: {
     container: 'bg-transparent',
-    text: 'text-secondary font-medium',
+    text: 'text-muted font-ui-semibold',
   },
   destructive: {
-    container: 'bg-feedback-error',
-    text: 'text-white font-semibold',
+    container: 'bg-feedback-incorrect-fill',
+    text: 'text-on-primary font-ui-bold',
   },
 };
+
+/**
+ * Disabled reads grey, never a faded brand tint — onboarding step 1 waits in
+ * this state and a tinted one would look like a live CTA (spec, Buttons).
+ */
+const disabledClasses = { container: 'bg-surface-elevated', text: 'text-faint font-ui-bold' };
 
 export const Button = forwardRef<View, ButtonProps>(function Button(
   {
@@ -52,7 +61,7 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
   },
   ref,
 ) {
-  const styles = variantClasses[variant];
+  const styles = disabled ? disabledClasses : variantClasses[variant];
 
   return (
     <Pressable
@@ -65,9 +74,8 @@ export const Button = forwardRef<View, ButtonProps>(function Button(
       onPress={onPress}
       testID={testID}
       className={cn(
-        'min-h-[44px] items-center justify-center rounded-radius-md px-4 py-3',
+        'min-h-[48px] items-center justify-center rounded-radius-md px-space-lg py-space-md',
         styles.container,
-        disabled && 'opacity-40',
         className,
       )}>
       <Text className={cn('text-body', styles.text)}>{label}</Text>

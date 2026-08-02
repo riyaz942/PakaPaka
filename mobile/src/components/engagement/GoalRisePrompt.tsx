@@ -29,9 +29,9 @@ export function GoalRisePrompt({
     <View
       testID="goal-rise-prompt"
       accessibilityLabel={`You beat your goal last week. Raise your daily goal from ${currentGoal} to ${proposedGoal}?`}
-      className="rounded-radius-lg border border-ring-complete bg-surface p-space-md">
-      <Text className="text-body-lg font-semibold text-primary">
-        You&apos;re outpacing your goal 🎉
+      className="rounded-radius-lg border-[1.5px] border-brand-500 bg-surface p-space-md">
+      <Text className="text-body-lg font-ui-extrabold text-primary">
+        You&apos;re outpacing your goal
       </Text>
       <Text className="mt-space-xs text-body-sm text-secondary">
         Last week you averaged more than your daily goal of {currentGoal}. Want to raise it to{' '}

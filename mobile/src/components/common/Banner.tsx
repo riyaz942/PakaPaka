@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { Icon, type IconName } from '@/components/common/Icon';
+import { cn } from '@/utils/cn';
 
 export type BannerVariant = 'success' | 'error' | 'info' | 'warning';
 
@@ -10,14 +12,37 @@ type BannerProps = {
   visible: boolean;
   autoDismissMs?: number;
   onDismiss?: () => void;
+  className?: string;
+  testID?: string;
 };
 
-const variantClasses: Record<BannerVariant, string> = {
-  success: 'bg-[#22CC88]',
-  error: 'bg-red-600',
-  info: 'bg-blue-600',
-  warning: 'bg-amber-500',
-};
+/**
+ * The v2 banner slot: soft fill, drawn icon, one line of deep-toned copy. Only
+ * ever one on screen at a time — screens pick their single most useful message
+ * rather than stacking notices.
+ *
+ * `info` is the jade house style the spec uses for guidance; the other three
+ * carry their feedback family's soft fill.
+ */
+const variantStyles: Record<BannerVariant, { container: string; content: string; icon: IconName }> =
+  {
+    info: { container: 'bg-brand-soft', content: 'text-brand-text', icon: 'info' },
+    success: {
+      container: 'bg-feedback-correct-soft',
+      content: 'text-feedback-correct-deep',
+      icon: 'correct',
+    },
+    warning: {
+      container: 'bg-feedback-warning-soft',
+      content: 'text-feedback-warning-deep',
+      icon: 'info',
+    },
+    error: {
+      container: 'bg-feedback-incorrect-soft',
+      content: 'text-feedback-incorrect-deep',
+      icon: 'info',
+    },
+  };
 
 export function Banner({
   message,
@@ -25,9 +50,9 @@ export function Banner({
   visible,
   autoDismissMs,
   onDismiss,
+  className,
+  testID,
 }: BannerProps) {
-  const insets = useSafeAreaInsets();
-
   useEffect(() => {
     if (!visible || !autoDismissMs || !onDismiss) {
       return;
@@ -41,13 +66,19 @@ export function Banner({
     return null;
   }
 
+  const styles = variantStyles[variant];
+
   return (
     <View
-      className={`px-4 py-3 ${variantClasses[variant]}`}
-      style={{ paddingTop: insets.top + 12 }}
-      accessibilityRole="alert"
-    >
-      <Text className="text-center text-sm font-medium text-[#0a0a0f]">{message}</Text>
+      testID={testID}
+      className={cn(
+        'flex-row items-center gap-space-sm rounded-radius-md px-space-md py-space-sm',
+        styles.container,
+        className,
+      )}
+      accessibilityRole="alert">
+      <Icon name={styles.icon} size={20} strokeWidth={2} className={styles.content} />
+      <Text className={cn('flex-1 text-body-sm font-ui-semibold', styles.content)}>{message}</Text>
     </View>
   );
 }
