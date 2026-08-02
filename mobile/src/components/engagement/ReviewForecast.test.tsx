@@ -44,6 +44,18 @@ describe('ReviewForecast', () => {
     expect(screen.queryByText(/later today/)).toBeNull();
   });
 
+  it('draws today solid and an empty day as a stub, all in the jade family', () => {
+    const forecast = buildReviewForecast([isoOnLocalDay(0), isoOnLocalDay(2)], NOW);
+    const { toJSON } = render(<ReviewForecast forecast={forecast} />);
+    const tree = JSON.stringify(toJSON());
+
+    // Today is the solid jade column, days ahead are the light step, and an
+    // empty day is a track stub — no other hue enters the chart.
+    expect(tree).toContain('bg-brand-500');
+    expect(tree).toContain('bg-brand-200');
+    expect(tree).toContain('bg-surface-elevated');
+  });
+
   it('annotates the wall day with invitation copy', () => {
     const dues = Array.from({ length: 41 }, () => isoOnLocalDay(2));
     render(<ReviewForecast forecast={buildReviewForecast(dues, NOW)} />);

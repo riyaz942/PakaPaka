@@ -22,9 +22,9 @@ export function WelcomeBackCard({
   return (
     <View
       testID="welcome-back-card"
-      className="rounded-radius-lg border border-feedback-info bg-surface-elevated p-space-md">
-      <Text className="text-body font-semibold text-primary">Good to see you again</Text>
-      <Text className="mt-space-xs text-body-sm text-secondary">
+      className="rounded-radius-lg bg-brand-soft p-space-md">
+      <Text className="text-body font-ui-extrabold text-primary">Good to see you again</Text>
+      <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
         {`Ease back in: ${sliceSize} of your ${dueCount} due. The rest can wait.`}
       </Text>
       <View className="mt-space-md flex-row gap-space-sm">

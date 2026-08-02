@@ -58,11 +58,14 @@
     --color-brand-soft: 234 247 242;
     --color-brand-soft-strong: 205 238 226;
 
-    /* v2 — SRS stages */
+    /* v2 — SRS stages. Apprentice/guru/master are the kanji, vocabulary and
+       radical hues, so stage *text* borrows those `-deep` steps; enlightened is
+       the one stage with no content twin and carries its own deep step. */
     --color-srs-apprentice: 225 77 134;
     --color-srs-guru: 139 90 212;
     --color-srs-master: 47 132 208;
     --color-srs-enlightened: 22 152 184;
+    --color-srs-enlightened-deep: 14 108 131;
     --color-srs-burned: 87 83 75;
 
     /* v2 — feedback */
@@ -82,12 +85,9 @@
     --color-feedback-info-soft: 230 240 251;
     --color-feedback-info-deep: 39 111 175;
 
-    /* v2 — goal ring is a single jade fill; the four band stops are kept as
-       names only until Session 4 collapses them into one token. */
-    --color-ring-start: 14 129 99;
-    --color-ring-mid: 14 129 99;
-    --color-ring-end: 14 129 99;
-    --color-ring-complete: 14 129 99;
+    /* v2 — the goal ring is one jade fill at every percentage: the four band
+       stops of v1 collapsed into this single token in Session 4. */
+    --color-ring: 14 129 99;
 
     /* v2 — content types: radical=blue, kanji=pink, vocabulary=purple,
        grammar=gold, passage=slate */
@@ -135,6 +135,7 @@
       --color-brand-soft-strong: 32 71 57;
 
       --color-srs-enlightened: 23 162 196;
+      --color-srs-enlightened-deep: 97 200 222;
       --color-srs-burned: 112 109 101;
 
       /* Spec `-soft` tints are alpha over the surface; RN tokens carry no alpha,

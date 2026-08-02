@@ -36,28 +36,28 @@ export function LevelProgressBar({ level, perType, overallPercent }: LevelProgre
       accessibilityRole="progressbar"
       accessibilityLabel={accessibilitySummary(level, perType, clamped)}
       accessibilityValue={{ min: 0, max: 100, now: clamped }}
-      className="rounded-radius-lg bg-surface p-space-md">
+      className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
       <View className="flex-row items-baseline justify-between">
-        <Text className="text-body-lg font-semibold text-primary">{`${level} Progress`}</Text>
-        <Text className="text-body-sm font-semibold text-feedback-info">{`${clamped}%`}</Text>
+        <Text className="text-body font-ui-extrabold text-primary">{`${level} Progress`}</Text>
+        <Text className="text-body-sm font-ui-extrabold text-brand-text">{`${clamped}%`}</Text>
       </View>
 
-      <View className="mt-space-sm h-2.5 overflow-hidden rounded-radius-full bg-surface-elevated">
+      <View className="mt-space-sm h-2 overflow-hidden rounded-radius-full bg-surface-elevated">
         <View
-          className="h-full rounded-radius-full bg-feedback-info"
+          className="h-full rounded-radius-full bg-brand-500"
           style={{ width: `${clamped}%` }}
         />
       </View>
 
-      <View className="mt-space-md flex-row flex-wrap gap-x-space-md gap-y-space-sm">
+      <View className="mt-space-sm flex-row flex-wrap gap-x-space-md gap-y-space-xs">
         {(['kanji', 'grammar', 'vocabulary'] as ProgressType[]).map((type) => (
           <View
             key={type}
             accessibilityRole="text"
             accessibilityLabel={`${TYPE_LABELS[type].short}: ${perType[type].started} of ${perType[type].total}`}
             className="flex-row items-center gap-space-xs">
-            <View className={`h-2 w-2 rounded-radius-full ${TYPE_LABELS[type].dot}`} />
-            <Text className="text-body-sm text-secondary">
+            <View className={`h-[7px] w-[7px] rounded-radius-full ${TYPE_LABELS[type].dot}`} />
+            <Text className="text-caption font-ui-semibold text-secondary">
               {`${TYPE_LABELS[type].short} ${perType[type].started}/${perType[type].total}`}
             </Text>
           </View>

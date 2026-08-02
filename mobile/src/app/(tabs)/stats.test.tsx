@@ -56,7 +56,7 @@ describe('StatsScreen', () => {
 
     expect(screen.getByTestId('days-studied-stat')).toBeTruthy();
     expect(screen.getByText('8')).toBeTruthy();
-    expect(screen.getByText('Calm activity — not a streak')).toBeTruthy();
+    expect(screen.getByText('this month · not a streak')).toBeTruthy();
   });
 
   it('shows 0 calmly when SRS exists but no study days this month', () => {
@@ -72,6 +72,16 @@ describe('StatsScreen', () => {
     render(<StatsScreen />);
 
     expect(screen.queryByTestId('days-studied-stat')).toBeNull();
+    expect(screen.queryByTestId('items-tracked-stat')).toBeNull();
+  });
+
+  it('pairs days studied with the tracked-item count, and never a streak', () => {
+    mockDaysStudied = 8;
+    render(<StatsScreen />);
+
+    expect(within(screen.getByTestId('items-tracked-stat')).getByText('10')).toBeTruthy();
+    expect(screen.getByText('Items in review')).toBeTruthy();
+    expect(screen.queryByText('Day streak')).toBeNull();
   });
 
   it('refetches days studied on focus, including the first (BUG1 mirror)', () => {

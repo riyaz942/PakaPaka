@@ -3,9 +3,12 @@ import React, { useCallback } from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ScreenTitle } from '@/components/common/ScreenTitle';
+import { SectionHeading } from '@/components/common/SectionHeading';
 import { DaysStudiedStat } from '@/components/engagement';
 import { SrsStageBreakdown } from '@/components/stats/SrsStageBreakdown';
 import { StatsEmptyState, WeaknessEmptySubState } from '@/components/stats/StatsEmptyState';
+import { StatTile } from '@/components/stats/StatTile';
 import { WeaknessStatCard } from '@/components/stats/WeaknessStatCard';
 import { MaxContentWidth } from '@/constants/theme';
 import { useDaysStudied } from '@/data/hooks/useDaysStudied';
@@ -55,36 +58,46 @@ export default function StatsScreen() {
           maxWidth: MaxContentWidth,
           width: '100%',
         }}>
-        <Text className="text-title text-primary">Stats</Text>
+        <ScreenTitle>Stats</ScreenTitle>
 
         {isLoading ? (
           <View className="mt-8 items-center">
             <ActivityIndicator accessibilityLabel="Loading stats" />
           </View>
         ) : hasError ? (
-          <Text className="mt-8 text-body text-feedback-incorrect">
+          <Text className="mt-8 text-body font-ui-medium text-feedback-incorrect-deep">
             Stats could not be loaded. Try again later.
           </Text>
         ) : isFirstLaunchEmpty ? (
           <StatsEmptyState />
         ) : (
-          <ScrollView className="mt-6" contentContainerClassName="gap-space-lg pb-space-md">
-            <DaysStudiedStat daysStudied={daysStudied} />
-            <View>
-              <Text className="mb-space-sm text-body-lg font-semibold text-primary">
-                SRS stages
-              </Text>
-              <SrsStageBreakdown counts={counts} />
+          <ScrollView className="mt-space-md" contentContainerClassName="gap-space-lg pb-space-md">
+            {/* The spec's two-up headline row. The second tile is the tracked-item
+                count, not the spec's day streak — see the Session 4 deviations. */}
+            <View className="flex-row gap-space-sm">
+              <DaysStudiedStat daysStudied={daysStudied} />
+              <StatTile
+                testID="items-tracked-stat"
+                accessibilityLabel={`${srsTotal} items in review`}
+                value={srsTotal}
+                label="Items in review"
+                caption="across all stages"
+              />
             </View>
 
             <View>
-              <Text className="mb-space-sm text-body-lg font-semibold text-primary">
-                Weak patterns
-              </Text>
+              <SectionHeading label="SRS stages" />
+              <View className="mt-space-sm">
+                <SrsStageBreakdown counts={counts} />
+              </View>
+            </View>
+
+            <View>
+              <SectionHeading label="Weak patterns" />
               {clusters.length === 0 ? (
                 <WeaknessEmptySubState />
               ) : (
-                <View className="gap-space-md">
+                <View className="mt-space-sm gap-space-sm">
                   {clusters.map((cluster) => (
                     <WeaknessStatCard key={cluster.id} cluster={cluster} />
                   ))}

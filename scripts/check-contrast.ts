@@ -189,6 +189,16 @@ export function contrastPairManifest(): ContrastPair[] {
       });
     }
 
+    // Stats sets the stage name in its stage hue. Apprentice/guru/master borrow
+    // the matching content `-deep` step; enlightened has its own.
+    pairs.push({
+      name: 'srs-enlightened-deep stage label on surface',
+      foreground: 'srs-enlightened-deep',
+      background: 'surface',
+      textClass: 'normal-text',
+      theme,
+    });
+
     for (const content of CONTENT_TYPES) {
       for (const bg of surfaceTokens) {
         pairs.push({
@@ -220,16 +230,14 @@ export function contrastPairManifest(): ContrastPair[] {
       });
     }
 
-    for (const ring of ['ring-start', 'ring-mid', 'ring-end', 'ring-complete'] as const) {
-      for (const bg of surfaceTokens) {
-        pairs.push({
-          name: `${ring} ring state on ${bg}`,
-          foreground: ring,
-          background: bg,
-          textClass: 'non-text-ui',
-          theme,
-        });
-      }
+    for (const bg of surfaceTokens) {
+      pairs.push({
+        name: `goal ring arc on ${bg}`,
+        foreground: 'ring',
+        background: bg,
+        textClass: 'non-text-ui',
+        theme,
+      });
     }
 
     for (const bg of surfaceTokens) {

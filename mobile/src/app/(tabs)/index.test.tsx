@@ -90,10 +90,17 @@ jest.mock('@/data/hooks/useReviewForecast', () => ({
 }));
 
 const mockRefetchAtRisk = jest.fn();
+type MockAtRiskItem = {
+  itemId: string;
+  primaryForm: string;
+  meaning: string;
+  itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar';
+};
+
 let mockAtRisk = {
   totalCount: 0,
-  topItems: [] as { itemId: string; primaryForm: string; meaning: string }[],
-  allItems: [] as { itemId: string; primaryForm: string; meaning: string }[],
+  topItems: [] as MockAtRiskItem[],
+  allItems: [] as MockAtRiskItem[],
   rankedItemIds: [] as string[],
 };
 
@@ -278,13 +285,19 @@ describe('HomeScreen', () => {
   it('shows the at-risk refresher; CTA hands ranked IDs to the review queue and navigates', () => {
     mockAtRisk = {
       totalCount: 3,
-      topItems: [{ itemId: '5', primaryForm: '食べる', meaning: 'to eat' }],
-      allItems: [{ itemId: '5', primaryForm: '食べる', meaning: 'to eat' }],
+      topItems: [
+        { itemId: '5', primaryForm: '食べる', meaning: 'to eat', itemType: 'vocabulary' },
+      ],
+      allItems: [
+        { itemId: '5', primaryForm: '食べる', meaning: 'to eat', itemType: 'vocabulary' },
+      ],
       rankedItemIds: ['5', '9', '12'],
     };
     render(<HomeScreen />);
 
-    expect(screen.getByText('3 items ready for a refresher')).toBeTruthy();
+    expect(
+      screen.getByText('3 items are slipping — this session will target them first.'),
+    ).toBeTruthy();
     fireEvent.press(screen.getByTestId('at-risk-start-revision'));
     expect(getReviewPriority()).toEqual({ itemIds: ['5', '9', '12'], limit: 8 });
     expect(mockRouterPush).toHaveBeenCalledWith('/review');
@@ -295,6 +308,7 @@ describe('HomeScreen', () => {
       passageId: '7',
       title: '自己紹介',
       itemsRemainingToUnlock: 4,
+      coverage: 0.55,
       noProgressYet: false,
     };
     render(<HomeScreen />);
@@ -499,8 +513,12 @@ describe('HomeScreen', () => {
       mockPendingReductionTo = 20;
       mockAtRisk = {
         totalCount: 3,
-        topItems: [{ itemId: '1', primaryForm: '水', meaning: 'water' }],
-        allItems: [{ itemId: '1', primaryForm: '水', meaning: 'water' }],
+        topItems: [
+          { itemId: '1', primaryForm: '水', meaning: 'water', itemType: 'vocabulary' },
+        ],
+        allItems: [
+          { itemId: '1', primaryForm: '水', meaning: 'water', itemType: 'vocabulary' },
+        ],
         rankedItemIds: ['1'],
       };
       render(<HomeScreen />);

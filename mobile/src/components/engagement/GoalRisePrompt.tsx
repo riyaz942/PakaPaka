@@ -33,7 +33,7 @@ export function GoalRisePrompt({
       <Text className="text-body-lg font-ui-extrabold text-primary">
         You&apos;re outpacing your goal
       </Text>
-      <Text className="mt-space-xs text-body-sm text-secondary">
+      <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
         Last week you averaged more than your daily goal of {currentGoal}. Want to raise it to{' '}
         {proposedGoal}?
       </Text>
@@ -85,9 +85,9 @@ export function GoalReductionPrompt({
     <View
       testID="goal-reduction-prompt"
       accessibilityLabel={`Been a tough stretch? You could lower your daily goal from ${currentGoal} to ${proposedGoal}.`}
-      className="rounded-radius-lg border border-border bg-surface p-space-md">
-      <Text className="text-body-lg font-semibold text-primary">Been a tough stretch?</Text>
-      <Text className="mt-space-xs text-body-sm text-secondary">
+      className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text className="text-body-lg font-ui-extrabold text-primary">Been a tough stretch?</Text>
+      <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
         Your goal of {currentGoal} has been out of reach lately. A goal of {proposedGoal} would
         match your recent pace — want to ease off? You can raise it again anytime.
       </Text>

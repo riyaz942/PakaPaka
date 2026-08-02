@@ -32,11 +32,16 @@ describe('check-contrast', () => {
     }
   });
 
-  it('includes cognitive-load ring state pairs in the manifest', () => {
+  it('includes the goal ring arc in the manifest, in both themes', () => {
     const pairs = contrastPairManifest();
-    for (const ring of ['ring-start', 'ring-mid', 'ring-end', 'ring-complete']) {
+    for (const theme of ['light', 'dark'] as const) {
       expect(
-        pairs.some((pair) => pair.foreground === ring && pair.textClass === 'non-text-ui'),
+        pairs.some(
+          (pair) =>
+            pair.foreground === 'ring' &&
+            pair.theme === theme &&
+            pair.textClass === 'non-text-ui',
+        ),
       ).toBe(true);
     }
   });

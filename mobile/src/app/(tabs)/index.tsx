@@ -4,6 +4,7 @@ import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
+import { Icon } from '@/components/common/Icon';
 import { PressableScale } from '@/components/common/PressableScale';
 import {
   AtRiskSection,
@@ -65,6 +66,11 @@ type ActionCardProps = {
   testID?: string;
 };
 
+/**
+ * Home's two CTAs. Review is the accented one (2px jade border, jade fill, jade
+ * glyph square); the lesson card stays a plain resting surface, so the review-
+ * first hierarchy of UX-DR3 is carried by weight rather than by order alone.
+ */
 function ActionCard({
   title,
   subtitle,
@@ -86,24 +92,42 @@ function ActionCard({
       onPress={onPress}
       testID={testID}
       className={cn(
-        'min-h-[44px] flex-row items-center gap-space-md rounded-radius-lg border p-space-md',
-        accent ? 'border-feedback-info bg-surface-elevated' : 'border-border bg-surface',
+        'min-h-[44px] flex-row items-center gap-space-md rounded-radius-lg p-space-md',
+        accent
+          ? 'border-2 border-brand-500 bg-brand-soft'
+          : 'border border-border bg-surface shadow-e1',
         disabled && 'opacity-40',
         muted && 'opacity-60',
       )}>
       <View
         className={cn(
-          'h-12 w-12 items-center justify-center rounded-radius-md',
-          accent ? 'bg-feedback-info' : 'bg-surface-elevated',
+          'h-[42px] w-[42px] items-center justify-center rounded-radius-md',
+          accent ? 'bg-brand-600' : 'bg-surface-elevated',
         )}>
-        <Text className={cn('text-title', accent ? 'text-white' : 'text-primary')}>
+        <Text
+          className={cn(
+            'text-title font-jp-round-black',
+            accent ? 'text-on-primary' : 'text-primary',
+          )}>
           {glyph}
         </Text>
       </View>
       <View className="flex-1">
-        <Text className="text-body-lg font-semibold text-primary">{title}</Text>
-        <Text className="mt-space-xs text-body-sm text-secondary">{subtitle}</Text>
+        <Text className="text-body font-ui-extrabold text-primary">{title}</Text>
+        <Text
+          className={cn(
+            'mt-space-xs text-body-sm font-ui-semibold',
+            accent ? 'text-brand-text' : 'text-muted',
+          )}>
+          {subtitle}
+        </Text>
       </View>
+      <Icon
+        name="chevron"
+        size={18}
+        strokeWidth={2.4}
+        className={accent ? 'text-brand-text' : 'text-faint'}
+      />
     </PressableScale>
   );
 }
@@ -320,9 +344,17 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
           contentContainerClassName="gap-space-md pb-space-lg">
           <FadeSlideIn index={0} className="py-space-sm">
-            <Text className="text-title-lg text-primary">おかえり！</Text>
-            {/* Comprehensible sentence from started vocab; calm invitation on day 1. */}
-            <Text className="mt-space-xs text-body-sm text-secondary" testID="home-greeting-subtitle">
+            {/* The greeting is the one place a JP glyph opens a tab screen, so it
+                is set in the rounded display face rather than the UI family. */}
+            <Text className="text-title-lg font-jp-round-black text-primary">おかえり！</Text>
+            {/* Comprehensible sentence from started vocab; calm invitation on day 1.
+                The day-1 fallback is English, so it keeps the UI face. */}
+            <Text
+              className={cn(
+                'mt-space-xs text-body-sm text-muted',
+                greetingSentence ? 'font-jp-medium' : 'font-ui-medium',
+              )}
+              testID="home-greeting-subtitle">
               {greetingSentence ?? 'Welcome back — here’s today at a glance.'}
             </Text>
           </FadeSlideIn>
@@ -333,15 +365,15 @@ export default function HomeScreen() {
           <FadeSlideIn index={1}>
             {onVacation ? (
               <View
-                className="items-center rounded-radius-lg bg-surface px-space-md py-space-xl"
+                className="items-center rounded-radius-xl bg-surface px-space-md py-space-xl shadow-e2"
                 testID="home-vacation-card">
-                <View className="h-24 w-24 items-center justify-center rounded-full bg-surface-elevated">
-                  <Text className="text-display text-secondary">休</Text>
+                <View className="h-24 w-24 items-center justify-center rounded-radius-full bg-surface-elevated">
+                  <Text className="text-display font-jp-round-black text-muted">休</Text>
                 </View>
-                <Text className="mt-space-md text-body font-semibold text-primary">
+                <Text className="mt-space-md text-body font-ui-extrabold text-primary">
                   Vacation mode is on
                 </Text>
-                <Text className="mt-space-xs text-center text-body-sm text-secondary">
+                <Text className="mt-space-xs text-center text-caption font-ui text-muted">
                   Reviews and lessons are paused. Nothing is piling up — take your time.
                 </Text>
                 <Text
@@ -349,17 +381,17 @@ export default function HomeScreen() {
                   accessibilityLabel="Turn off vacation mode in Settings"
                   onPress={() => router.push('/settings')}
                   testID="home-vacation-settings-link"
-                  className="mt-space-md min-h-[44px] text-body-sm text-feedback-info">
+                  className="mt-space-md min-h-[44px] text-body-sm font-ui-semibold text-brand-text">
                   Turn off vacation mode
                 </Text>
               </View>
             ) : (
-              <View className="items-center rounded-radius-lg bg-surface py-space-xl">
+              <View className="items-center rounded-radius-xl bg-surface p-space-md shadow-e2">
                 <GoalRing variant="hero" percent={cognitiveLoadPercent} />
-                <Text className="mt-space-md text-body font-semibold text-primary">
+                <Text className="mt-space-sm text-body font-ui-extrabold text-primary">
                   Today&apos;s goal
                 </Text>
-                <Text className="mt-space-xs text-body-sm text-secondary">
+                <Text className="mt-space-xs text-center text-caption font-ui text-muted">
                   Something to beat — going past 100% is the good part
                 </Text>
               </View>
@@ -403,21 +435,21 @@ export default function HomeScreen() {
             </FadeSlideIn>
           ) : !isLoading && showCurriculumUpdatedBanner ? (
             <FadeSlideIn index={1}>
+              {/* The v2 banner shape (soft jade fill, drawn icon, one line), kept
+                  as its own card because this notice carries a dismiss. */}
               <View
                 testID="home-curriculum-updated-card"
-                className="rounded-radius-lg border border-border bg-surface p-space-md">
-                <Text className="text-body font-semibold text-primary">
-                  Curriculum updated
-                </Text>
-                <Text className="mt-space-xs text-body-sm text-secondary">
-                  Fresh content is live — nothing to do on your side.
+                className="flex-row items-center gap-space-sm rounded-radius-md bg-brand-soft px-space-md py-space-sm">
+                <Icon name="info" size={20} strokeWidth={2} className="text-brand-text" />
+                <Text className="flex-1 text-body-sm font-ui-semibold text-brand-text">
+                  Curriculum updated — fresh content is live.
                 </Text>
                 <Text
                   accessibilityRole="button"
                   accessibilityLabel="Dismiss curriculum update notice"
                   onPress={dismissCurriculumUpdatedBanner}
                   testID="home-curriculum-updated-dismiss"
-                  className="mt-space-sm text-body-sm text-feedback-info">
+                  className="min-h-[44px] px-space-sm pt-space-sm text-body-sm font-ui-bold text-brand-text">
                   Got it
                 </Text>
               </View>

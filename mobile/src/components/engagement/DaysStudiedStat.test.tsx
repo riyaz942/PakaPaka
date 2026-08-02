@@ -7,8 +7,8 @@ describe('DaysStudiedStat', () => {
     render(<DaysStudiedStat daysStudied={12} />);
 
     expect(screen.getByText('12')).toBeTruthy();
-    expect(screen.getByText('Days studied this month')).toBeTruthy();
-    expect(screen.getByText('Calm activity — not a streak')).toBeTruthy();
+    expect(screen.getByText('Days studied')).toBeTruthy();
+    expect(screen.getByText('this month · not a streak')).toBeTruthy();
     expect(screen.queryByText(/🔥/)).toBeNull();
     expect(screen.queryByText(/day streak/)).toBeNull();
   });

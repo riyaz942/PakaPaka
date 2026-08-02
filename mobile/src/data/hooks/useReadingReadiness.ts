@@ -15,6 +15,8 @@ export type ReadingReadinessTarget = {
   passageId: string;
   title: string;
   itemsRemainingToUnlock: number;
+  /** Guru+ coverage ratio in [0, 1] — the fill of the readiness progress bar. */
+  coverage: number;
   /** True while the learner has no Guru+ coverage on the target at all (day 1). */
   noProgressYet: boolean;
 };
@@ -73,6 +75,7 @@ export function useReadingReadiness(): UseReadingReadinessResult {
           passageId: passage.id,
           title: passage.title,
           itemsRemainingToUnlock: status.itemsRemainingToUnlock,
+          coverage: status.coverage,
           noProgressYet: status.guruOrAboveCount === 0,
           atUserLevel: level !== null && passage.jlptLevel === level,
         });
@@ -95,6 +98,7 @@ export function useReadingReadiness(): UseReadingReadinessResult {
               passageId: picked.passageId,
               title: picked.title,
               itemsRemainingToUnlock: picked.itemsRemainingToUnlock,
+              coverage: picked.coverage,
               noProgressYet: picked.noProgressYet,
             }
           : null,

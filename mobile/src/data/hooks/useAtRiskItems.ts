@@ -9,11 +9,14 @@ import { getSrsStatesForItems } from '@/data/user/srsStateRepository';
 import { getAllWeaknessStats } from '@/data/user/weaknessRepository';
 
 import type { AtRiskCandidate } from '@/core/engagement/atRiskSelector';
+import type { ItemType } from '@/data/curriculum/itemRepository';
 
 export type AtRiskListItem = {
   itemId: string;
   primaryForm: string;
   meaning: string;
+  /** Drives the accent on the Home glyph chips (v2 at-risk card). */
+  itemType: ItemType;
 };
 
 type UseAtRiskItemsResult = {
@@ -70,7 +73,12 @@ export function useAtRiskItems(): UseAtRiskItemsResult {
       for (const itemId of selection.rankedItemIds) {
         const item = getItemById(curriculumDb, itemId);
         if (!item) continue;
-        resolved.push({ itemId, primaryForm: item.primaryForm, meaning: item.meaning });
+        resolved.push({
+          itemId,
+          primaryForm: item.primaryForm,
+          meaning: item.meaning,
+          itemType: item.itemType,
+        });
       }
 
       setTotalCount(resolved.length);

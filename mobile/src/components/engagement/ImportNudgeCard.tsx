@@ -12,11 +12,11 @@ export function ImportNudgeCard({ onImport, onDismiss }: ImportNudgeCardProps) {
   return (
     <View
       testID="import-nudge-card"
-      className="rounded-radius-lg border border-border bg-surface p-space-md">
-      <Text className="text-body font-semibold text-primary">
+      className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text className="text-body font-ui-extrabold text-primary">
         Coming from WaniKani, Bunpro, or Anki?
       </Text>
-      <Text className="mt-space-xs text-body-sm text-secondary">
+      <Text className="mt-space-xs text-body-sm font-ui-medium text-secondary">
         Import your review history so your queue starts where you left off.
       </Text>
       <View className="mt-space-md flex-row gap-space-sm">

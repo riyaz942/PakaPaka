@@ -43,6 +43,7 @@ module.exports = {
         'srs-guru': 'rgb(var(--color-srs-guru) / <alpha-value>)',
         'srs-master': 'rgb(var(--color-srs-master) / <alpha-value>)',
         'srs-enlightened': 'rgb(var(--color-srs-enlightened) / <alpha-value>)',
+        'srs-enlightened-deep': 'rgb(var(--color-srs-enlightened-deep) / <alpha-value>)',
         'srs-burned': 'rgb(var(--color-srs-burned) / <alpha-value>)',
 
         // v2 — feedback: base = icon/border, soft = fill, deep = text on soft
@@ -60,11 +61,8 @@ module.exports = {
         'feedback-info-soft': 'rgb(var(--color-feedback-info-soft) / <alpha-value>)',
         'feedback-info-deep': 'rgb(var(--color-feedback-info-deep) / <alpha-value>)',
 
-        // v2 — goal ring stops, all jade until Session 4 collapses them
-        'ring-start': 'rgb(var(--color-ring-start) / <alpha-value>)',
-        'ring-mid': 'rgb(var(--color-ring-mid) / <alpha-value>)',
-        'ring-end': 'rgb(var(--color-ring-end) / <alpha-value>)',
-        'ring-complete': 'rgb(var(--color-ring-complete) / <alpha-value>)',
+        // v2 — the goal ring: one jade fill, no band stops
+        ring: 'rgb(var(--color-ring) / <alpha-value>)',
 
         // v2 — content types: base = glyph/chip/edge, soft = fill, deep = text on soft
         'content-radical': 'rgb(var(--color-content-radical) / <alpha-value>)',

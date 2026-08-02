@@ -7,9 +7,19 @@ type ReviewForecastProps = {
   forecast: ReviewForecastData;
 };
 
+/** Bar-column well, from the spec's 44px chart. */
+const CHART_HEIGHT = 44;
+/** A day with nothing due still draws a stub, so the week reads as seven columns. */
+const EMPTY_BAR_HEIGHT = 4;
+
 /**
  * One-week due forecast (FR58). Wall days get an invitation-style annotation
  * (UX-DR4) — plan lightly, never an alarm.
+ *
+ * The chart is jade only: today is a solid `brand-500` column, the days ahead
+ * are `brand-200`, and an empty day is a `surface-elevated` stub. Bars scale to
+ * the busiest day of the week rather than an absolute count, so a light week
+ * still has shape.
  */
 export function ReviewForecast({ forecast }: ReviewForecastProps) {
   const wallDay = forecast.wallDateKey
@@ -20,44 +30,71 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
     `${forecast.totalCount} this week · ${forecast.dueNowCount} due now` +
     (forecast.laterTodayCount > 0 ? `, ${forecast.laterTodayCount} more later today` : '');
 
+  const peak = Math.max(...forecast.days.map((day) => day.count), 1);
+
   return (
     <View
       testID="review-forecast"
       accessibilityLabel={`Review forecast for the next seven days, ${forecast.totalCount} reviews scheduled`}
-      className="rounded-radius-lg border border-border bg-surface p-space-md">
-      <Text className="text-body font-semibold text-primary">This week</Text>
+      className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+      <Text className="text-body font-ui-extrabold text-primary">This week</Text>
 
       {forecast.totalCount === 0 ? (
-        <Text className="mt-space-sm text-body-sm text-secondary" testID="review-forecast-empty">
+        <Text
+          className="mt-space-xs text-caption font-ui-medium text-muted"
+          testID="review-forecast-empty">
           No reviews scheduled yet — your first lessons will fill this in.
         </Text>
       ) : (
-        <Text className="mt-space-xs text-body-sm text-secondary" testID="forecast-summary">
+        <Text
+          className="mt-space-xs text-caption font-ui-medium text-muted"
+          testID="forecast-summary">
           {summary}
         </Text>
       )}
 
       {forecast.totalCount > 0 ? (
-        <View className="mt-space-sm flex-row justify-between">
+        <View className="mt-space-sm flex-row items-end gap-space-xs">
           {forecast.days.map((day) => {
             const isWall = day.dateKey === forecast.wallDateKey;
+            const empty = day.count === 0;
+            const barHeight = empty
+              ? EMPTY_BAR_HEIGHT
+              : Math.max(EMPTY_BAR_HEIGHT, Math.round((day.count / peak) * CHART_HEIGHT));
+
             return (
               <View
                 key={day.dateKey}
                 testID={`forecast-day-${day.dateKey}`}
-                className={cn(
-                  'min-w-[36px] items-center rounded-radius-sm px-space-xs py-space-xs',
-                  day.isToday && 'bg-surface-elevated',
-                  isWall && 'border border-feedback-info',
-                )}>
+                className="flex-1 items-center">
+                <View className="w-full justify-end" style={{ height: CHART_HEIGHT }}>
+                  <View
+                    className={cn(
+                      'w-full rounded-radius-sm',
+                      empty ? 'bg-surface-elevated' : day.isToday ? 'bg-brand-500' : 'bg-brand-200',
+                      // The wall day is the one spike worth naming; it keeps a jade
+                      // outline to tie the column to the note under the chart.
+                      isWall && !day.isToday && 'border-[1.5px] border-brand-500',
+                    )}
+                    style={{ height: barHeight }}
+                  />
+                </View>
                 <Text
                   className={cn(
-                    'text-body-sm font-semibold',
-                    isWall ? 'text-feedback-info' : 'text-primary',
+                    'mt-space-xs text-body-sm',
+                    day.isToday
+                      ? 'font-ui-extrabold text-primary'
+                      : empty
+                        ? 'font-ui-bold text-faint'
+                        : 'font-ui-bold text-secondary',
                   )}>
                   {day.count}
                 </Text>
-                <Text className="mt-space-xs text-caption text-secondary">
+                <Text
+                  className={cn(
+                    'text-caption',
+                    day.isToday ? 'font-ui-semibold text-brand-text' : 'font-ui-medium text-faint',
+                  )}>
                   {day.isToday ? 'Today' : day.weekdayLabel}
                 </Text>
               </View>
@@ -67,7 +104,9 @@ export function ReviewForecast({ forecast }: ReviewForecastProps) {
       ) : null}
 
       {wallDay ? (
-        <Text className="mt-space-sm text-body-sm text-feedback-info" testID="forecast-wall-note">
+        <Text
+          className="mt-space-sm text-caption font-ui-medium text-brand-text"
+          testID="forecast-wall-note">
           {`Wall day ${wallDay.weekdayLabel} — ${wallDay.count} due. Go light on lessons.`}
         </Text>
       ) : null}

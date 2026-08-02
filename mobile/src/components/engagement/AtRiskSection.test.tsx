@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 import { AtRiskSection } from './AtRiskSection';
 
 const ITEMS = [
-  { itemId: '1', primaryForm: '食べる', meaning: 'to eat' },
-  { itemId: '2', primaryForm: '飲む', meaning: 'to drink' },
+  { itemId: '1', primaryForm: '食べる', meaning: 'to eat', itemType: 'vocabulary' as const },
+  { itemId: '2', primaryForm: '飲む', meaning: 'to drink', itemType: 'vocabulary' as const },
 ];
 
 describe('AtRiskSection', () => {
@@ -18,7 +18,9 @@ describe('AtRiskSection', () => {
       />,
     );
 
-    expect(screen.getByText('12 items ready for a refresher')).toBeTruthy();
+    expect(
+      screen.getByText('12 items are slipping — this session will target them first.'),
+    ).toBeTruthy();
     expect(screen.getByText('食べる')).toBeTruthy();
     expect(screen.getByText('+10 more')).toBeTruthy();
     // Invitation framing only — never failure language.

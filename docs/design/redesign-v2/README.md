@@ -100,7 +100,7 @@ SRS stages (both themes): apprentice `#E14D86` · guru `#8B5AD4` · master `#2F8
 
 ### Session 1 decisions (carry into later sessions)
 
-**Ring tokens.** `ring-start/mid/end/complete` all now resolve to **brand-600** `#0E8163` in both themes — one jade, no stops, and the one place that puts white text on the ring color (`GoalRing`'s overshoot badge) clears AA. `GoalRing`'s band logic still compiles but is a visual no-op; **Session 4 collapses the four tokens into one** and adds the ≥100% jade halo.
+**Ring tokens.** `ring-start/mid/end/complete` all resolved to **brand-600** `#0E8163` in both themes — one jade, no stops. Session 2 rebuilt `GoalRing` as a real arc with the ≥100% halo, and Session 4 collapsed the four names into the single `ring` token.
 
 **Three-role colors.** Content types *and* feedback both read `base` / `-soft` / `-deep`:
 `base` = glyphs, chips, 5px list edges, icons, 1.5px state borders · `-soft` = tinted fills · `-deep` = text sitting on that fill. Never set state or type *text* in the base hue on a plain surface — that pairing does not clear AA in light mode (see deviations 1–3).
@@ -141,7 +141,7 @@ Spec refs: Components section (buttons, chips, goal ring, answer inputs, chat bu
 
 **Two new palette tokens.** `brand-soft` / `brand-soft-strong` are the *scheme-aware* jade fills (jade at 18% / 30% over the dark surface). Use these — not `brand-50`/`brand-100` — for anything filled: banners, selected choice cards, the goal-ring halo, the focus halo, the Home review card. The fixed brand steps are near-whites and glare in dark mode. Text on them is `text-brand-text`. `feedback-incorrect-fill` is the destructive button fill (non-flipping, like `brand-600`).
 
-**Goal ring.** Now a real arc: `react-native-svg` circle on a `surface-elevated` track, jade fill, no stops. `ringBandClasses` and the `+N%` badge are gone; ≥100% draws a jade halo (`goal-ring-halo`) and a BEATEN kicker (`large`/`hero` only). The four `ring-*` tokens are now unused by the ring itself — Session 4 or 8 can delete them.
+**Goal ring.** Now a real arc: `react-native-svg` circle on a `surface-elevated` track, jade fill, no stops. `ringBandClasses` and the `+N%` badge are gone; ≥100% draws a jade halo (`goal-ring-halo`) and a BEATEN kicker (`large`/`hero` only). The four `ring-*` tokens became the single `ring` token in Session 4.
 
 **SVG colour, two ways.** `Icon` needs arbitrary tokens (`content-*`, `feedback-*`), so it uses the `cssInterop` `currentColor` route. `GoalRing` needs only `surfaceElevated` and `brand`, which `design-tokens.js` already mirrors, so it passes those hexes to `stroke` — the documented raw-colour exception. Prefer the `design-tokens.js` route when the colour is in that file; `cssInterop` otherwise.
 
@@ -189,10 +189,30 @@ Spec refs: screens 1–3 (pick a path, daily pace, ready) + screen 8 (Settings);
 
 Spec refs: screens 4–5 (Home, Home scrolled) + screen 7 (Stats).
 
-- [ ] **Home** (`(tabs)/index.tsx` + `components/engagement/`): JP greeting hero (`font-jp-round` 900 27px "おかえり！" + muted JP sentence line); goal-ring card (r-xl, e2) with "Today's goal" + "Something to beat…" caption; **Review card** = 2px jade border + brand-50 fill, jade glyph square 復, "N items ready"; **Lesson card** = plain surface, 学 glyph square; **N5 Progress card** with jade progress bar + per-type dot legend (kanji/grammar/vocab counts); **This week forecast** bar chart (today = jade solid, future = brand-200, empty = surface-elevated); **READING nudge card** (pas-soft fill, deep text, "X items away" + progress bar); **AT RISK card** (danger-soft, target icon, slipping item glyph chips on surface). One banner max. No streak anywhere on Home.
-- [ ] **Stats** (`(tabs)/stats.tsx` + `components/stats/`): two stat cards (Days studied / Day streak with drawn flame icon, "calm, not a nag" caption); SRS stage rows (stage dot + tracked uppercase label in stage-tinted text + mini bar + count); Weak patterns rows (danger-soft / warn-soft with target icon).
-- [ ] Goal ring / forecast use only jade family (see Session 1 ring-token decision).
-- [ ] Tests, lint, typecheck, light + dark.
+- [x] **Home** (`(tabs)/index.tsx` + `components/engagement/`): JP greeting hero (`font-jp-round` 900 27px "おかえり！" + muted JP sentence line); goal-ring card (r-xl, e2) with "Today's goal" + "Something to beat…" caption; **Review card** = 2px jade border + brand-50 fill, jade glyph square 復, "N items ready"; **Lesson card** = plain surface, 学 glyph square; **N5 Progress card** with jade progress bar + per-type dot legend (kanji/grammar/vocab counts); **This week forecast** bar chart (today = jade solid, future = brand-200, empty = surface-elevated); **READING nudge card** (pas-soft fill, deep text, "X items away" + progress bar); **AT RISK card** (danger-soft, target icon, slipping item glyph chips on surface). One banner max. No streak anywhere on Home.
+- [x] **Stats** (`(tabs)/stats.tsx` + `components/stats/`): two stat cards (Days studied / Items in review — no streak, see deviation 18); SRS stage rows (stage dot + tracked uppercase label in stage-tinted text + mini bar + count); Weak patterns rows (danger-soft / warn-soft with target icon).
+- [x] Goal ring / forecast use only jade family (see Session 1 ring-token decision).
+- [x] Tests, lint, typecheck, light + dark.
+
+### Session 4 decisions (carry into later sessions)
+
+**Ring tokens are now one token.** `ring-start/mid/end/complete` collapsed into `ring` (jade `#0E8163`, same value in both themes). It is still not read by `GoalRing` — the arc draws from `design-tokens.js` — but it stays in the palette and in the contrast manifest as the named goal-ring colour.
+
+**`srs-enlightened-deep` added.** Stats sets each stage name in its own hue. Apprentice, guru and master *are* the kanji, vocabulary and radical hues, so their labels borrow those `-deep` steps; enlightened is the one stage with no content twin and needed its own deep step to clear AA at 12px. Burned uses `muted`, as the spec does. Any future stage-coloured text follows the same mapping.
+
+**One new stats primitive: `stats/StatTile`.** The two-up headline card (big value, label, quiet caption, optional drawn icon). `DaysStudiedStat` now composes it and keeps its own testID and a11y label; Session 7's summary tiles can reuse it if the shape fits.
+
+**Charts scale to their own peak.** Both the forecast columns and the SRS stage bars size against the busiest bucket rather than an absolute maximum, so a quiet week and a heavy one both have shape. Empty buckets still draw a `surface-elevated` stub so the row reads as a full set.
+
+**Two hooks gained a display-only field.** `useReadingReadiness` now returns `coverage` (already computed by `computePassageUnlock`) and `useAtRiskItems` returns `itemType` (already read from the curriculum row). Neither changes selection logic — they only let the readiness bar and the at-risk glyph chips render without a second query.
+
+**No streaks — confirmed.** Decision R2 stands: loss-aversion streaks stay out of the product. Spec screen 7's "Day streak" card is replaced by **Items in review** (SRS total already on the screen). The mockup in `design-system-v2.html` is updated to match. Do not reintroduce consecutive-day streak UI or data in later sessions; the flame icon may remain in the kit unused.
+
+### Session 4 deviations
+
+18. **Stats' second headline card is items-in-review, not the spec's Day streak.** *(Accepted 2026-08-02.)* The streak was removed from the product outright by decision R2 (loss aversion rejected as a churn driver); Home has no streak and `days_studied` is the deliberate replacement. Building the spec's flame card would mean reintroducing a rejected mechanic *and* new consecutive-day data. The two-up layout is kept with the SRS total — already loaded on the screen — in the second slot, and the "not a streak" framing moved onto the days-studied caption. Spec screen 7 mockup updated to match.
+19. **The at-risk and reading cards keep their controls.** The spec draws both as passive cards; the app's versions carry a "Do a small revision" CTA (FR59) and a tap-through to the passage (FR60). Both kept — the card is the entry point to the thing it describes.
+20. **Forecast day labels are 12px, not the spec's 10px.** 10px sits below the app's smallest UI step (`caption`); the only 9px token is `furigana`, which is ruby, not a label.
 
 ## Session 5 — Browse + passage screens
 
