@@ -12,7 +12,9 @@ import type { ImageSourcePropType } from 'react-native';
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/aka.webp': require('../../assets/radicals/n5/aka.webp'),
+  'radicals/n5/ame.webp': require('../../assets/radicals/n5/ame.webp'),
   'radicals/n5/ana.webp': require('../../assets/radicals/n5/ana.webp'),
+  'radicals/n5/ao.webp': require('../../assets/radicals/n5/ao.webp'),
   'radicals/n5/ashi-foot.webp': require('../../assets/radicals/n5/ashi-foot.webp'),
   'radicals/n5/bou.webp': require('../../assets/radicals/n5/bou.webp'),
   'radicals/n5/chichi.webp': require('../../assets/radicals/n5/chichi.webp'),
@@ -53,6 +55,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/mimi.webp': require('../../assets/radicals/n5/mimi.webp'),
   'radicals/n5/miru.webp': require('../../assets/radicals/n5/miru.webp'),
   'radicals/n5/mizu.webp': require('../../assets/radicals/n5/mizu.webp'),
+  'radicals/n5/mongamae.webp': require('../../assets/radicals/n5/mongamae.webp'),
   'radicals/n5/mushi.webp': require('../../assets/radicals/n5/mushi.webp'),
   'radicals/n5/nagai.webp': require('../../assets/radicals/n5/nagai.webp'),
   'radicals/n5/ni.webp': require('../../assets/radicals/n5/ni.webp'),
@@ -65,6 +68,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/sanzui.webp': require('../../assets/radicals/n5/sanzui.webp'),
   'radicals/n5/shimesu.webp': require('../../assets/radicals/n5/shimesu.webp'),
   'radicals/n5/shinnyou.webp': require('../../assets/radicals/n5/shinnyou.webp'),
+  'radicals/n5/shiro.webp': require('../../assets/radicals/n5/shiro.webp'),
   'radicals/n5/shita.webp': require('../../assets/radicals/n5/shita.webp'),
   'radicals/n5/shou.webp': require('../../assets/radicals/n5/shou.webp'),
   'radicals/n5/sun.webp': require('../../assets/radicals/n5/sun.webp'),
@@ -77,6 +81,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/tomeru.webp': require('../../assets/radicals/n5/tomeru.webp'),
   'radicals/n5/tsuchi.webp': require('../../assets/radicals/n5/tsuchi.webp'),
   'radicals/n5/tsuki.webp': require('../../assets/radicals/n5/tsuki.webp'),
+  'radicals/n5/uma.webp': require('../../assets/radicals/n5/uma.webp'),
   'radicals/n5/ushi.webp': require('../../assets/radicals/n5/ushi.webp'),
   'radicals/n5/yamahen.webp': require('../../assets/radicals/n5/yamahen.webp'),
   'radicals/n5/yumi.webp': require('../../assets/radicals/n5/yumi.webp'),
