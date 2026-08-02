@@ -73,7 +73,12 @@ export function ItemDetailHeader({
         size === 'lg' ? 'p-space-xl' : 'p-space-lg',
         accent.soft,
       )}>
-      {showTypeBadge ? <ContentTypeBadge itemType={itemType} /> : null}
+      {/* On the soft hero fill the badge's own soft background disappears, so
+          it takes the spec's translucent plate instead — white over the pastel
+          in light, the dark surface over the tint in dark. */}
+      {showTypeBadge ? (
+        <ContentTypeBadge itemType={itemType} className="bg-surface/70" />
+      ) : null}
       {children}
       <Text
         className={cn(

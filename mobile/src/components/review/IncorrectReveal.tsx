@@ -2,8 +2,8 @@ import { type Ref } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { Icon } from '@/components/common/Icon';
 import { SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
-import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { resolveCompletedSentence } from '@/core/grammar/nearMiss';
 import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -34,6 +34,18 @@ type IncorrectRevealProps = {
   /** Another item's accepted answer matched the submission (FR86) */
   answerCollision?: AnswerCollision | null;
 };
+
+/** The verdict headline: drawn × plus the word, both in the danger family. */
+function VerdictLine({ label }: { label: string }) {
+  return (
+    <View className="flex-row items-center gap-space-sm">
+      <Icon name="close" size={24} strokeWidth={2.6} className="text-feedback-incorrect" />
+      <Text className="text-title-lg font-ui-extrabold text-feedback-incorrect-deep">
+        {label}
+      </Text>
+    </View>
+  );
+}
 
 export function IncorrectReveal({
   item,
@@ -77,13 +89,13 @@ export function IncorrectReveal({
         className="gap-space-sm items-center">
         {isIncomplete ? (
           <>
-            <Text className="text-title-lg text-feedback-incorrect">✗ Not quite</Text>
-            <Text className="text-body text-feedback-warning text-center">
+            <VerdictLine label="Not quite" />
+            <Text className="text-body font-ui-medium text-feedback-warning-deep text-center">
               You had the right idea — we need just the grammar piece:
             </Text>
           </>
         ) : (
-          <Text className="text-title-lg text-feedback-incorrect">✗ Incorrect</Text>
+          <VerdictLine label="Incorrect" />
         )}
         {/* Plan 12.4: keep the sentence the blank came from on screen, so the
             revealed chunk has context. */}
@@ -95,7 +107,7 @@ export function IncorrectReveal({
             className="text-body-lg text-secondary text-center"
           />
         ) : null}
-        <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[item.itemType].text}`}>
+        <Text className="text-display text-center font-jp-round-black text-primary">
           {isIncomplete ? displayAnswer : item.primaryForm}
         </Text>
         {isIncomplete ? (
@@ -108,7 +120,7 @@ export function IncorrectReveal({
             />
           ) : null
         ) : (
-          <Text className="text-body-lg text-primary text-center">
+          <Text className="text-body-lg font-ui-semibold text-primary text-center">
             Correct answer: {displayAnswer}
           </Text>
         )}

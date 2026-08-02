@@ -1,9 +1,11 @@
 import React, { useLayoutEffect } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 
+import { SectionStepper } from '@/components/common/SectionStepper';
 import {
-  LESSON_SECTION_LABELS,
+  LESSON_SECTION_STEPS,
   LessonExamplesSection,
+  LessonHero,
   LessonIntroSection,
   LessonMnemonicSectionView,
   type LessonSectionProps,
@@ -92,12 +94,17 @@ export function LessonItemView({
   };
 
   return (
-    <View>
-      <Text className="text-overline uppercase text-secondary" testID="lesson-section-label">
-        {`${LESSON_SECTION_LABELS[sectionIndex] ?? LESSON_SECTION_LABELS[0]} · ${
-          sectionIndex + 1
-        } of ${LESSON_SECTION_LABELS.length}`}
-      </Text>
+    <View className="gap-space-md">
+      <SectionStepper
+        sections={LESSON_SECTION_STEPS}
+        activeIndex={sectionIndex}
+        itemType={item.itemType}
+        testID="lesson-section-stepper"
+      />
+
+      {/* The subject stays on screen through all three sections — the mnemonic
+          is about the glyph, so the glyph shouldn't scroll away from it. */}
+      <LessonHero item={item} />
 
       {sectionIndex === 0 ? <LessonIntroSection {...sectionProps} /> : null}
       {sectionIndex === 1 ? <LessonMnemonicSectionView {...sectionProps} /> : null}

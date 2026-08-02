@@ -7,7 +7,13 @@ import { computeLoadIncrement, computeLoadPercent } from '@/core/cognitive-load/
 import { computeBoosts } from '@/core/srs/boostEngine';
 import { gradeItem } from '@/core/srs/fsrsScheduler';
 import { combinePairGrades } from '@/core/srs/pairGrading';
-import type { ReviewGrade, ReviewItem, SRSState, StageTransition } from '@/core/srs/srs.types';
+import type {
+  ReviewGrade,
+  ReviewItem,
+  SRSStageLabel,
+  SRSState,
+  StageTransition,
+} from '@/core/srs/srs.types';
 import type { ItemType } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useReviewQueue } from '@/data/hooks/useReviewQueue';
@@ -20,12 +26,35 @@ import { upsertSrsState } from '@/data/user/srsStateRepository';
 import { addSynonym } from '@/data/user/userSynonymRepository';
 import type { AppError } from '@/types/result.types';
 
+/** An item this session pushed back down the stage ladder. */
+export type SlippedItem = {
+  itemId: string;
+  primaryForm: string;
+  from: SRSStageLabel;
+  to: SRSStageLabel;
+};
+
 type SessionSummary = {
   domainCounts: Record<ItemType, number>;
   itemsReviewed: number;
   correctCount: number;
   durationMs: number;
   sessionEndAt: number;
+  /** Today's goal ring percent after this session — unclamped, so overshoot reads >100. */
+  goalPercent: number;
+  /** The share of today's goal this session alone added. */
+  goalDeltaPercent: number;
+  /** Items that dropped a stage here, newest last. Display only. */
+  slipped: SlippedItem[];
+};
+
+/** Ladder order, for spotting a demotion. Ranking only — never scheduling. */
+const STAGE_RANK: Record<SRSStageLabel, number> = {
+  apprentice: 0,
+  guru: 1,
+  master: 2,
+  enlightened: 3,
+  burned: 4,
 };
 
 type ReviewSessionState = {
@@ -123,6 +152,9 @@ export function ReviewSessionProvider({ children }: Props) {
   // Additive counter for shadow-mode retention rate (Epic 8). Never read by the
   // review queue builder, FSRS scheduler, or gradeCurrentItem's scheduling logic.
   const correctCountRef = useRef(0);
+  // Stage demotions caused by this session, for the summary's "slipped again"
+  // line. Read off the FSRS write that already happened — display only.
+  const slippedRef = useRef<SlippedItem[]>([]);
   // Streak credit is earned by the first graded item of a session (any review
   // activity that day counts), not by finishing the whole queue.
   const streakRecordedRef = useRef(false);
@@ -150,6 +182,7 @@ export function ReviewSessionProvider({ children }: Props) {
       grammar: 0,
     };
     correctCountRef.current = 0;
+    slippedRef.current = [];
     streakRecordedRef.current = false;
     pairGradesRef.current = new Map();
     gradedEntryKeyRef.current = null;
@@ -307,6 +340,17 @@ export function ReviewSessionProvider({ children }: Props) {
       domainCountsRef.current[item.itemType] += 1;
       if (outcomeResult === 'correct') {
         correctCountRef.current += 1;
+      }
+
+      // `nextState` is the stage the FSRS write just persisted, so a drop here
+      // is the real one — nothing is recomputed for the summary.
+      const from = item.srsState.srsStageLabel;
+      const to = nextState.srsStageLabel;
+      if (STAGE_RANK[to] < STAGE_RANK[from]) {
+        slippedRef.current = [
+          ...slippedRef.current,
+          { itemId, primaryForm: item.primaryForm, from, to },
+        ];
       }
     },
     [userDb],
@@ -497,6 +541,11 @@ export function ReviewSessionProvider({ children }: Props) {
     correctCount: correctCountRef.current,
     durationMs,
     sessionEndAt: sessionEndAtRef.current ?? Date.now(),
+    goalPercent: cognitiveLoadPercent,
+    // What this session alone put on the ring — the same load the header has
+    // been counting up, expressed against the same sticky denominator.
+    goalDeltaPercent: computeLoadPercent(sessionLoad, thresholdRef.current),
+    slipped: slippedRef.current,
   };
 
   const value: ReviewSessionState = {

@@ -1,3 +1,4 @@
+export { AccuracyRing } from './AccuracyRing';
 export { AtRiskSection } from './AtRiskSection';
 export { DailyThresholdNotice } from './DailyThresholdNotice';
 export { DaysStudiedStat } from './DaysStudiedStat';

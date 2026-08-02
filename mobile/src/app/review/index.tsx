@@ -25,6 +25,7 @@ import {
   WanaKanaInput,
   type ReviewCardState,
   type WanaKanaInputRef,
+  type WanaKanaInputState,
 } from '@/components/review';
 import { REVIEW_CORRECT_AUTO_ADVANCE_MS } from '@/config/constants';
 import type { AnswerCollision } from '@/core/answer/answer.types';
@@ -472,6 +473,18 @@ export default function ReviewScreen() {
   const inputMode =
     currentItem.promptType === 'meaning' ? 'english' : 'kana';
 
+  // The field wears the verdict (Session 2's five states). The explanation line
+  // stays in the card, which is what the screen reader is focused on — the
+  // field would only repeat it.
+  const inputState: WanaKanaInputState =
+    cardState === 'correct'
+      ? 'correct'
+      : cardState === 'typo'
+        ? 'near-miss'
+        : cardState === 'wrong_script' || cardState === 'wrong_reading_type'
+          ? 'wrong-script'
+          : 'idle';
+
   // Apprentice grammar answers by multiple choice (Plan 08). Options are
   // built at queue time; absence means fall back to type-in.
   const isMcCard =
@@ -517,7 +530,23 @@ export default function ReviewScreen() {
         </ScrollView>
 
         {cardState === 'incorrect' ? (
-          <View className="px-space-md pb-space-md">
+          <View className="gap-space-sm px-space-md pb-space-md">
+            {/* The rejected answer, kept on screen in the danger chrome — the
+                reveal offers to accept it as a synonym, so it has to be
+                readable. "Don't know" submits nothing, so there is nothing to
+                show for it. */}
+            {rejectedAnswer ? (
+              <WanaKanaInput
+                mode={inputMode}
+                value={rejectedAnswer}
+                onChangeText={() => {}}
+                onSubmit={() => {}}
+                editable={false}
+                autoFocus={false}
+                state="incorrect"
+                testID="review-rejected-answer"
+              />
+            ) : null}
             <Button
               ref={continueButtonRef}
               label="Continue"
@@ -545,6 +574,7 @@ export default function ReviewScreen() {
                 }
                 editable={inputEditable}
                 autoFocus={inputEditable}
+                state={inputState}
               />
             ) : null}
             <Button
@@ -573,7 +603,7 @@ export default function ReviewScreen() {
               className="min-h-[44px] items-center justify-center"
               disabled={!canSubmitAnswer}
               onPress={handleDontKnow}>
-              <Text className="text-caption text-secondary">Don&apos;t know</Text>
+              <Text className="text-label font-ui-semibold text-muted">Don&apos;t know</Text>
             </Pressable>
           </View>
         ) : (
@@ -598,6 +628,7 @@ export default function ReviewScreen() {
               }
               editable={inputEditable}
               autoFocus={inputEditable}
+              state={inputState}
             />
             <Pressable
               accessibilityRole="button"
@@ -606,8 +637,16 @@ export default function ReviewScreen() {
               className="min-h-[44px] items-center justify-center"
               disabled={!canSubmitAnswer}
               onPress={handleDontKnow}>
-              <Text className="text-caption text-secondary">Don&apos;t know</Text>
+              <Text className="text-label font-ui-semibold text-muted">Don&apos;t know</Text>
             </Pressable>
+            {/* Return still submits (FR84) — this is the touch path to the same
+                call, for anyone answering without a hardware keyboard. */}
+            <Button
+              label="Submit"
+              onPress={handleSubmit}
+              disabled={!canSubmitAnswer || !answerText.trim()}
+              testID="review-submit"
+            />
           </View>
         )}
       </KeyboardAvoidingView>

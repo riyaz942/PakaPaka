@@ -2,7 +2,6 @@ import { router, type Href } from 'expo-router';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
-  Pressable,
   ScrollView,
   Text,
   useWindowDimensions,
@@ -20,6 +19,7 @@ import Animated, {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { LessonSessionHeader } from '@/components/common/LessonSessionHeader';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { LESSON_SECTION_COUNT } from '@/components/lesson/LessonItemSections';
 import { LessonItemView } from '@/components/lesson/LessonItemView';
@@ -332,7 +332,7 @@ export default function LessonScreen() {
     return (
       <SafeAreaView className="flex-1 bg-background px-space-lg">
         <View className="flex-1 justify-center gap-space-md">
-          <Text className="text-title text-primary">
+          <Text className="text-title-lg font-ui-extrabold text-primary">
             You&apos;ve learned enough today
           </Text>
           <Text className="text-body text-secondary">
@@ -345,7 +345,7 @@ export default function LessonScreen() {
             onPress={() => setLearnAnyway(true)}
             testID="lesson-learn-anyway"
           />
-          <Button label="Back" variant="secondary" onPress={safeBack} />
+          <Button label="Back" variant="ghost" onPress={safeBack} />
         </View>
       </SafeAreaView>
     );
@@ -355,7 +355,7 @@ export default function LessonScreen() {
     return (
       <SafeAreaView className="flex-1 bg-background px-space-lg">
         <View className="flex-1 justify-center gap-space-md">
-          <Text className="text-title text-primary">Nothing new today</Text>
+          <Text className="text-title-lg font-ui-extrabold text-primary">Nothing new today</Text>
           <Text className="text-body text-secondary">
             You&apos;ve started everything available{level ? ` at ${level}` : ''}. Clear
             some reviews and new items will unlock.
@@ -369,83 +369,70 @@ export default function LessonScreen() {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <View
-        className="w-full flex-1 self-center px-space-lg pt-space-md"
+        className="w-full flex-1 self-center"
         style={{ maxWidth: MaxContentWidth }}>
-        <View className="flex-row items-center gap-space-md">
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Close lesson"
-            onPress={safeBack}
-            testID="lesson-close"
-            className="min-h-[44px] min-w-[44px] items-start justify-center">
-            <Text className="text-title text-secondary">✕</Text>
-          </Pressable>
+        <LessonSessionHeader
+          current={index + 1}
+          total={items.length}
+          itemType={current?.itemType}
+          onExitPress={safeBack}
+          exitAccessibilityLabel="Close lesson"
+          testID="lesson-session-header"
+        />
 
-          <View
-            accessibilityRole="progressbar"
-            accessibilityLabel={`Item ${index + 1} of ${items.length}`}
-            className="h-2 flex-1 overflow-hidden rounded-radius-full bg-border">
-            <View
-              className="h-full rounded-radius-full bg-feedback-info"
-              style={{ width: `${((index + 1) / items.length) * 100}%` }}
+        <View className="flex-1 px-space-md">
+          {current ? (
+            <GestureDetector gesture={cardGesture}>
+              {/* The card itself: one stable view that carries the drag, so the
+                  content inside can swap without interrupting the motion. */}
+              <Animated.View className="flex-1" style={cardStyle}>
+                <ScrollView
+                  ref={scrollRef}
+                  className="mt-space-sm flex-1"
+                  contentContainerClassName="pb-space-lg">
+                  <ItemLinkProvider base="/lesson/item">
+                    <LessonItemView
+                      key={current.id}
+                      itemId={current.id}
+                      sectionIndex={sectionIndex}
+                      onContentReady={onCardContentReady}
+                    />
+                  </ItemLinkProvider>
+                </ScrollView>
+              </Animated.View>
+            </GestureDetector>
+          ) : null}
+
+          {saveError ? (
+            <Text className="mb-space-sm text-body-sm font-ui-semibold text-feedback-incorrect">
+              {saveError}
+            </Text>
+          ) : null}
+
+          <View className="flex-row gap-space-sm pb-space-md pt-space-sm">
+            {/* Buttons route through the same transition as the swipe, so both
+                paths look and behave identically. Back is the spec's fixed 96px
+                tile; Continue takes the rest of the row. */}
+            <Button
+              label="Back"
+              variant="tertiary"
+              onPress={() => runSwipe('back')}
+              disabled={isAtStart}
+              accessibilityLabel={
+                sectionIndex > 0 ? 'Back to previous section' : 'Back to previous item'
+              }
+              testID="lesson-back"
+              className="w-[96px] px-space-sm"
+            />
+            <Button
+              label={
+                !isLastSection ? 'Continue' : isLast ? 'Finish lesson' : 'Got it — next'
+              }
+              onPress={() => runSwipe('next')}
+              testID="lesson-next"
+              className="flex-1"
             />
           </View>
-
-          <Text className="text-body-sm text-secondary" testID="lesson-progress-label">
-            {index + 1}/{items.length}
-          </Text>
-        </View>
-
-        {current ? (
-          <GestureDetector gesture={cardGesture}>
-            {/* The card itself: one stable view that carries the drag, so the
-                content inside can swap without interrupting the motion. */}
-            <Animated.View className="flex-1" style={cardStyle}>
-              <ScrollView
-                ref={scrollRef}
-                className="mt-space-md flex-1"
-                contentContainerClassName="pb-space-lg">
-                <ItemLinkProvider base="/lesson/item">
-                  <LessonItemView
-                    key={current.id}
-                    itemId={current.id}
-                    sectionIndex={sectionIndex}
-                    onContentReady={onCardContentReady}
-                  />
-                </ItemLinkProvider>
-              </ScrollView>
-            </Animated.View>
-          </GestureDetector>
-        ) : null}
-
-        {saveError ? (
-          <Text className="mb-space-sm text-body-sm text-feedback-incorrect">
-            {saveError}
-          </Text>
-        ) : null}
-
-        <View className="flex-row gap-space-sm pb-space-md">
-          {/* Buttons route through the same transition as the swipe, so both
-              paths look and behave identically. */}
-          <Button
-            label="Back"
-            variant="secondary"
-            onPress={() => runSwipe('back')}
-            disabled={isAtStart}
-            accessibilityLabel={
-              sectionIndex > 0 ? 'Back to previous section' : 'Back to previous item'
-            }
-            testID="lesson-back"
-            className="flex-1"
-          />
-          <Button
-            label={
-              !isLastSection ? 'Continue' : isLast ? 'Finish lesson' : 'Got it — next'
-            }
-            onPress={() => runSwipe('next')}
-            testID="lesson-next"
-            className="flex-[2]"
-          />
         </View>
       </View>
     </SafeAreaView>

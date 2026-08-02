@@ -274,7 +274,7 @@ describe('LessonItemView sections', () => {
     ).toBeTruthy();
   });
 
-  it('section 1 shows the radical glyph, meaning, then its image', async () => {
+  it('section 2 shows the radical story, then the illustration it belongs to', async () => {
     const { curriculumDb, userDb } = await createDatabases();
     __mockSetItems('curriculum.db.test', [
       {
@@ -290,16 +290,18 @@ describe('LessonItemView sections', () => {
       },
     ]);
 
-    mount(curriculumDb, userDb, 0);
+    mount(curriculumDb, userDb, 1);
 
     expect(screen.getByTestId('radical-mnemonic-image')).toBeTruthy();
+    expect(screen.queryByTestId('lesson-mnemonic-image-placeholder')).toBeNull();
 
     const tree = JSON.stringify(screen.toJSON());
-    expect(tree.indexOf('人')).toBeLessThan(tree.indexOf('person"'));
-    expect(tree.indexOf('person"')).toBeLessThan(tree.indexOf('radical-mnemonic-image'));
+    expect(tree.indexOf('Two legs mid-stride')).toBeLessThan(
+      tree.indexOf('radical-mnemonic-image'),
+    );
   });
 
-  it('section 1 hides the image slot when the radical has no usable image', async () => {
+  it('keeps the illustration slot as a placeholder when the radical has no image', async () => {
     const { curriculumDb, userDb } = await createDatabases();
     __mockSetItems('curriculum.db.test', [
       {
@@ -315,12 +317,30 @@ describe('LessonItemView sections', () => {
       },
     ]);
 
-    mount(curriculumDb, userDb, 0);
+    mount(curriculumDb, userDb, 1);
 
     expect(screen.queryByTestId('radical-mnemonic-image')).toBeNull();
-    expect(
-      screen.queryByText('Two legs mid-stride and no head at all: a person.'),
-    ).toBeNull();
+    expect(screen.getByTestId('lesson-mnemonic-image-placeholder')).toBeTruthy();
+  });
+
+  it('gives non-radical items no illustration slot at all', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+    mount(curriculumDb, userDb, 1);
+
+    expect(screen.queryByTestId('lesson-mnemonic-image-placeholder')).toBeNull();
+    expect(screen.queryByTestId('radical-mnemonic-image')).toBeNull();
+  });
+
+  it('keeps the stepper and the hero on screen through every section', async () => {
+    const { curriculumDb, userDb } = await createDatabases();
+
+    for (const sectionIndex of [0, 1, 2]) {
+      mount(curriculumDb, userDb, sectionIndex);
+
+      expect(screen.getByTestId('lesson-section-stepper')).toBeTruthy();
+      expect(screen.getAllByText('日').length).toBeGreaterThan(0);
+      screen.unmount();
+    }
   });
 
   it('shows the reading primer with the readings in section 2 for a beginner', async () => {

@@ -23,12 +23,18 @@ const STAGE_LABEL: Record<SRSStageLabel, string> = {
   burned: 'Burned',
 };
 
+/**
+ * Stage names in their own hue, using Session 4's mapping: apprentice, guru and
+ * master *are* the kanji, vocabulary and radical hues, so their labels take
+ * those `-deep` steps — the base hues do not clear AA for a 12px label on a
+ * plain background.
+ */
 const STAGE_CLASS: Record<SRSStageLabel, string> = {
-  apprentice: 'text-srs-apprentice',
-  guru: 'text-srs-guru',
-  master: 'text-srs-master',
-  enlightened: 'text-srs-enlightened',
-  burned: 'text-srs-burned',
+  apprentice: 'text-content-kanji-deep',
+  guru: 'text-content-vocabulary-deep',
+  master: 'text-content-radical-deep',
+  enlightened: 'text-srs-enlightened-deep',
+  burned: 'text-muted',
 };
 
 const STAGE_DOT_CLASS: Record<SRSStageLabel, string> = {

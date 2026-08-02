@@ -4,12 +4,16 @@ import type { SRSStageLabel } from '@/core/srs/srs.types';
 
 import { SRSStageIndicator } from './SRSStageIndicator';
 
+/**
+ * Stage labels borrow their content twin's `-deep` step (Session 4's mapping) —
+ * the base `srs-*` hues do not clear AA for a 12px label on a plain background.
+ */
 const STAGE_TOKEN_CLASS: Record<SRSStageLabel, string> = {
-  apprentice: 'text-srs-apprentice',
-  guru: 'text-srs-guru',
-  master: 'text-srs-master',
-  enlightened: 'text-srs-enlightened',
-  burned: 'text-srs-burned',
+  apprentice: 'text-content-kanji-deep',
+  guru: 'text-content-vocabulary-deep',
+  master: 'text-content-radical-deep',
+  enlightened: 'text-srs-enlightened-deep',
+  burned: 'text-muted',
 };
 
 const STAGES: SRSStageLabel[] = ['apprentice', 'guru', 'master', 'enlightened', 'burned'];

@@ -38,7 +38,8 @@ export type IconName =
   | 'import'
   | 'info'
   | 'chevron'
-  | 'device';
+  | 'device'
+  | 'image';
 
 /** Paths are lifted verbatim from the spec's Iconography grid. */
 const ICON_PATHS: Record<IconName, React.ReactNode> = {
@@ -140,6 +141,13 @@ const ICON_PATHS: Record<IconName, React.ReactNode> = {
     <>
       <Rect x={6} y={2.5} width={12} height={19} rx={2.5} />
       <Path d="M10.5 18.5h3" />
+    </>
+  ),
+  image: (
+    <>
+      <Rect x={3} y={4.5} width={18} height={15} rx={2.5} />
+      <Circle cx={8.5} cy={10} r={1.8} />
+      <Path d="m3.5 17 5-4.5 4 3.5 3-2.5 5 4" />
     </>
   ),
 };

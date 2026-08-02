@@ -155,22 +155,25 @@ export function contrastPairManifest(): ContrastPair[] {
         });
       }
 
-      pairs.push(
-        {
-          name: `feedback-${feedback}-deep on feedback-${feedback}-soft`,
+      pairs.push({
+        name: `feedback-${feedback}-deep on feedback-${feedback}-soft`,
+        foreground: `feedback-${feedback}-deep`,
+        background: `feedback-${feedback}-soft`,
+        textClass: 'normal-text',
+        theme,
+      });
+
+      // Verdict lines and nudges in the review session sit on the plain screen
+      // background, not only on cards.
+      for (const bg of surfaceTokens) {
+        pairs.push({
+          name: `feedback-${feedback}-deep on ${bg}`,
           foreground: `feedback-${feedback}-deep`,
-          background: `feedback-${feedback}-soft`,
+          background: bg,
           textClass: 'normal-text',
           theme,
-        },
-        {
-          name: `feedback-${feedback}-deep on surface`,
-          foreground: `feedback-${feedback}-deep`,
-          background: 'surface',
-          textClass: 'normal-text',
-          theme,
-        },
-      );
+        });
+      }
     }
 
     for (const srs of [
@@ -208,6 +211,13 @@ export function contrastPairManifest(): ContrastPair[] {
         textClass: 'normal-text',
         theme,
       },
+      {
+        name: 'srs-enlightened-deep stage kicker on background',
+        foreground: 'srs-enlightened-deep',
+        background: 'background',
+        textClass: 'normal-text',
+        theme,
+      },
     );
 
     for (const content of CONTENT_TYPES) {
@@ -228,6 +238,19 @@ export function contrastPairManifest(): ContrastPair[] {
         textClass: 'normal-text',
         theme,
       });
+
+      // The `-deep` step also carries type-coloured copy on plain surfaces:
+      // the review prompt kicker, the SRS stage kicker (which borrows its
+      // stage's content twin), and Compare's per-item captions.
+      for (const bg of surfaceTokens) {
+        pairs.push({
+          name: `content-${content}-deep text on ${bg}`,
+          foreground: `content-${content}-deep`,
+          background: bg,
+          textClass: 'normal-text',
+          theme,
+        });
+      }
     }
 
     for (const bg of surfaceTokens) {

@@ -86,6 +86,14 @@ function renderLessonScreen(
   );
 }
 
+/**
+ * The section on screen, read off the stepper — one accessibility node, so the
+ * assertion is exactly what a screen reader announces.
+ */
+function expectSection(label: string) {
+  expect(screen.getByTestId('lesson-section-stepper').props.accessibilityLabel).toBe(label);
+}
+
 describe('LessonScreen', () => {
   beforeEach(() => {
     __mockResetSqlite();
@@ -163,7 +171,7 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header')).toBeTruthy();
     });
     expect(screen.getByText('1/3')).toBeTruthy();
 
@@ -205,7 +213,7 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header')).toBeTruthy();
     });
 
     // Back is disabled on the first section of the first item.
@@ -216,24 +224,16 @@ describe('LessonScreen', () => {
     expect(screen.getByText('1/3')).toBeTruthy();
 
     // Continue walks sections, then hands over to the item control.
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Introduction · 1 of 3',
-    );
+    expectSection('Section 1 of 3: Intro');
     fireEvent.press(screen.getByTestId('lesson-next'));
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Mnemonic · 2 of 3',
-    );
+    expectSection('Section 2 of 3: Mnemonic');
     fireEvent.press(screen.getByTestId('lesson-next'));
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Examples & links · 3 of 3',
-    );
+    expectSection('Section 3 of 3: Examples');
     expect(screen.getByText('1/3')).toBeTruthy();
 
     // Back rewinds within the item before leaving it.
     fireEvent.press(screen.getByTestId('lesson-back'));
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Mnemonic · 2 of 3',
-    );
+    expectSection('Section 2 of 3: Mnemonic');
     expect(screen.getByText('1/3')).toBeTruthy();
 
     // From section 2: one Continue to section 3, one more to the next item.
@@ -245,9 +245,7 @@ describe('LessonScreen', () => {
     // on the previous item's *last* section, not its introduction.
     fireEvent.press(screen.getByTestId('lesson-back'));
     expect(screen.getByText('1/3')).toBeTruthy();
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Examples & links · 3 of 3',
-    );
+    expectSection('Section 3 of 3: Examples');
 
     // Walking around commits nothing.
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
@@ -264,18 +262,14 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header')).toBeTruthy();
     });
 
     // Swiping left walks the sections before handing over to the item control.
     swipe('next');
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Mnemonic · 2 of 3',
-    );
+    expectSection('Section 2 of 3: Mnemonic');
     swipe('next');
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Examples & links · 3 of 3',
-    );
+    expectSection('Section 3 of 3: Examples');
     expect(screen.getByText('1/3')).toBeTruthy();
 
     swipe('next');
@@ -285,18 +279,14 @@ describe('LessonScreen', () => {
     // resumes where the item ended, not at its introduction.
     swipe('back');
     expect(screen.getByText('1/3')).toBeTruthy();
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Examples & links · 3 of 3',
-    );
+    expectSection('Section 3 of 3: Examples');
 
     // Swipe and buttons share one path, so they interleave freely.
     fireEvent.press(screen.getByTestId('lesson-next'));
     expect(screen.getByText('2/3')).toBeTruthy();
     swipe('back');
     expect(screen.getByText('1/3')).toBeTruthy();
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Examples & links · 3 of 3',
-    );
+    expectSection('Section 3 of 3: Examples');
 
     // Nothing is committed while walking around.
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);
@@ -307,21 +297,17 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header')).toBeTruthy();
     });
 
     // A half-hearted drag in either direction commits nothing — the card
     // returns home and the section is untouched.
     swipeAndCancel('next');
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Introduction · 1 of 3',
-    );
+    expectSection('Section 1 of 3: Intro');
 
     swipe('next');
     swipeAndCancel('back');
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Mnemonic · 2 of 3',
-    );
+    expectSection('Section 2 of 3: Mnemonic');
     expect(screen.getByText('1/3')).toBeTruthy();
   });
 
@@ -330,15 +316,13 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-progress-label')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header')).toBeTruthy();
     });
 
     // A back-swipe is inert where the Back button is.
     swipe('back');
     expect(screen.getByText('1/3')).toBeTruthy();
-    expect(screen.getByTestId('lesson-section-label')).toHaveTextContent(
-      'Introduction · 1 of 3',
-    );
+    expectSection('Section 1 of 3: Intro');
 
     // Nine swipes left = three sections × three items, ending in the commit.
     for (let step = 0; step < 9; step += 1) {
@@ -354,10 +338,10 @@ describe('LessonScreen', () => {
     renderLessonScreen(curriculumDb, userDb);
 
     await waitFor(() => {
-      expect(screen.getByTestId('lesson-close')).toBeTruthy();
+      expect(screen.getByTestId('lesson-session-header-exit')).toBeTruthy();
     });
 
-    fireEvent.press(screen.getByTestId('lesson-close'));
+    fireEvent.press(screen.getByTestId('lesson-session-header-exit'));
 
     expect(mockBack).toHaveBeenCalled();
     expect(listStudyStatusesForItems(userDb, ['1', '2', '3']).size).toBe(0);

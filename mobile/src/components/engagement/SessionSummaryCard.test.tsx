@@ -1,42 +1,71 @@
 import { render, screen } from '@testing-library/react-native';
 
-import { goalStateLine, SessionSummaryCard } from './SessionSummaryCard';
+import { goalStateLine, SessionSummaryCard, slippedLine } from './SessionSummaryCard';
 
 const BASE_PROPS = {
   domainCounts: { radical: 0, kanji: 8, vocabulary: 5, grammar: 2 },
-  actualMinutes: 18,
-  sessionDate: new Date('2026-06-29T12:00:00.000Z'),
+  itemsReviewed: 15,
+  correctCount: 13,
 };
 
 describe('SessionSummaryCard', () => {
-  it('renders domain counts', () => {
+  it('renders a count tile per type that appeared in the session', () => {
     render(<SessionSummaryCard {...BASE_PROPS} />);
 
-    expect(screen.getByText('Kanji 8')).toBeTruthy();
-    expect(screen.getByText('Grammar 2')).toBeTruthy();
-    expect(screen.getByText('Vocab 5')).toBeTruthy();
+    expect(screen.getByTestId('session-count-kanji')).toHaveTextContent(/8Kanji/);
+    expect(screen.getByTestId('session-count-vocabulary')).toHaveTextContent(/5Vocab/);
+    expect(screen.getByTestId('session-count-grammar')).toHaveTextContent(/2Grammar/);
   });
 
-  it('shows minutes studied and never a multi-app comparison', () => {
+  it('hides the tile for a type with no items and never compares to other apps', () => {
     render(<SessionSummaryCard {...BASE_PROPS} />);
 
-    expect(screen.getByText('18 min studied')).toBeTruthy();
+    expect(screen.queryByTestId('session-count-radical')).toBeNull();
     expect(screen.queryByText(/separate apps/)).toBeNull();
+  });
+
+  it('shows first-try accuracy on a ring, counting retries as misses', () => {
+    render(<SessionSummaryCard {...BASE_PROPS} />);
+
+    expect(screen.getByTestId('session-accuracy-ring')).toBeTruthy();
+    expect(screen.getByText('13 of 15 right the first time.')).toBeTruthy();
+  });
+
+  it('omits the goal card entirely when no goal percent is known', () => {
+    render(<SessionSummaryCard {...BASE_PROPS} />);
+
     expect(screen.queryByTestId('session-goal-state')).toBeNull();
   });
 
-  it('renders the goal state when a goal percent is provided', () => {
-    render(<SessionSummaryCard {...BASE_PROPS} goalPercent={130} />);
+  it('renders the goal contribution card with the session delta', () => {
+    render(<SessionSummaryCard {...BASE_PROPS} goalPercent={130} goalDeltaPercent={18} />);
 
-    expect(screen.getByText('18 min studied')).toBeTruthy();
     expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
-      'Goal met — +30% overshoot',
+      /Goal met — \+30% overshoot/,
     );
+    expect(screen.getByText('+18%')).toBeTruthy();
   });
 
-  it('hides radical row when count is zero', () => {
+  it('notes items that slipped, without listing every one', () => {
+    render(
+      <SessionSummaryCard
+        {...BASE_PROPS}
+        slipped={[
+          { itemId: '1', primaryForm: '七', from: 'guru', to: 'apprentice' },
+          { itemId: '2', primaryForm: '八', from: 'guru', to: 'apprentice' },
+        ]}
+      />,
+    );
+
+    expect(screen.getByTestId('session-slipped-note')).toHaveTextContent(
+      /七 and 1 other slipped — queued sooner next time\./,
+    );
+    expect(screen.queryByText(/八/)).toBeNull();
+  });
+
+  it('shows no slipped note when nothing dropped a stage', () => {
     render(<SessionSummaryCard {...BASE_PROPS} />);
-    expect(screen.queryByText(/Radical/)).toBeNull();
+    expect(screen.queryByTestId('session-slipped-note')).toBeNull();
   });
 
   it('offers no share action', () => {
@@ -50,5 +79,20 @@ describe('goalStateLine', () => {
     expect(goalStateLine(100)).toBe('Goal met');
     expect(goalStateLine(145)).toBe('Goal met — +45% overshoot');
     expect(goalStateLine(60)).toBe("60% of today's goal");
+  });
+});
+
+describe('slippedLine', () => {
+  it('names the first item and counts the rest', () => {
+    const slip = (primaryForm: string) =>
+      ({ itemId: primaryForm, primaryForm, from: 'guru', to: 'apprentice' }) as const;
+
+    expect(slippedLine([slip('七')])).toBe('七 slipped — queued sooner next time.');
+    expect(slippedLine([slip('七'), slip('八')])).toBe(
+      '七 and 1 other slipped — queued sooner next time.',
+    );
+    expect(slippedLine([slip('七'), slip('八'), slip('九')])).toBe(
+      '七 and 2 others slipped — queued sooner next time.',
+    );
   });
 });

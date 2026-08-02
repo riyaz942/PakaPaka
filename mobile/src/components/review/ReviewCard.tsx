@@ -3,8 +3,8 @@ import { Text, View } from 'react-native';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
-import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
@@ -57,13 +57,35 @@ const MODE_LABEL: Record<PromptType, string> = {
   production: 'Production',
 };
 
+/**
+ * The prompt kicker names what is being asked, so it is coloured by the *ask*,
+ * not the item: meaning in the radical blue the spec draws, readings in the
+ * kanji hue (the only two-card type that asks for one), production in gold.
+ * All three take the `-deep` step — an extrabold 17px kicker is body text by
+ * WCAG's reckoning and the base hues do not clear 4.5:1 in light mode.
+ */
 const MODE_LABEL_CLASS: Record<PromptType, string> = {
-  // Slate, as it always was — this is the prompt *type* "reading", unrelated to
-  // reading passages. Session 7 retunes the review prompt kicker.
-  reading: 'text-content-passage',
-  meaning: 'text-feedback-info',
-  production: 'text-content-grammar',
+  reading: 'text-content-kanji-deep',
+  meaning: 'text-content-radical-deep',
+  production: 'text-content-grammar-deep',
 };
+
+/**
+ * The review glyph is the biggest thing in the app. It steps down as the form
+ * gets longer so a seven-character word still fits the line the spec draws for
+ * a single kanji.
+ */
+const PROMPT_FONT_SIZE = {
+  glyph: { fontSize: 132, lineHeight: 140 },
+  word: { fontSize: 72, lineHeight: 84 },
+  phrase: { fontSize: 44, lineHeight: 56 },
+} as const;
+
+function promptFontSize(display: string) {
+  if (display.length <= 2) return PROMPT_FONT_SIZE.glyph;
+  if (display.length <= 4) return PROMPT_FONT_SIZE.word;
+  return PROMPT_FONT_SIZE.phrase;
+}
 
 /**
  * Resolves the label + value revealed on a correct answer so the displayed text
@@ -135,7 +157,9 @@ export function ReviewCard({
         ? "Reading — on'yomi"
         : MODE_LABEL[promptType];
 
-  const grammarPromptClass = `text-title-lg text-center ${CONTENT_TYPE_ACCENT[itemType].text}`;
+  // The prompt is heroed in ink, not the type hue (spec screen 12) — the header
+  // badge already names the type, and at this size the glyph reads as the page.
+  const grammarPromptClass = 'text-title-lg font-jp-bold text-center text-primary';
   const renderPrompt = (display: string) =>
     isGrammarCloze ? (
       <FuriganaText
@@ -145,7 +169,10 @@ export function ReviewCard({
         className={grammarPromptClass}
       />
     ) : (
-      <Text className={`text-display text-center ${CONTENT_TYPE_ACCENT[itemType].text}`}>
+      <Text
+        testID="review-prompt-glyph"
+        className="text-center font-jp-round-black text-primary"
+        style={promptFontSize(display)}>
         {display}
       </Text>
     );
@@ -215,7 +242,7 @@ export function ReviewCard({
 
   return (
     <View className="gap-space-md w-full items-center">
-      <Text className={`text-body-lg font-semibold ${MODE_LABEL_CLASS[promptType]}`}>
+      <Text className={`text-body-lg font-ui-extrabold ${MODE_LABEL_CLASS[promptType]}`}>
         {modeLabel}
       </Text>
 
@@ -234,8 +261,12 @@ export function ReviewCard({
           <View
             ref={resultRef}
             accessible
-            accessibilityLabel={`Correct, ${correctReveal.label.toLowerCase()}: ${correctReveal.value}`}>
-            <Text className="text-title-lg text-feedback-correct">✓ Correct</Text>
+            accessibilityLabel={`Correct, ${correctReveal.label.toLowerCase()}: ${correctReveal.value}`}
+            className="flex-row items-center gap-space-sm">
+            <Icon name="correct" size={24} strokeWidth={2.6} className="text-feedback-correct" />
+            <Text className="text-title-lg font-ui-extrabold text-feedback-correct-deep">
+              Correct
+            </Text>
           </View>
           {stageTransition ? <SRSStageTransitionBadge transition={stageTransition} /> : null}
           {/* Shared trimmed panel on the correct path too (FR85, UX-DR8) —
@@ -252,7 +283,9 @@ export function ReviewCard({
             ref={resultRef}
             accessible
             accessibilityLabel={state === 'typo' ? 'Close, try again' : nudge}>
-            <Text className="text-body-lg text-feedback-warning text-center">{nudge}</Text>
+            <Text className="text-body-lg font-ui-semibold text-feedback-warning-deep text-center">
+              {nudge}
+            </Text>
           </View>
         </FadeSlideIn>
       ) : null}

@@ -573,6 +573,70 @@ describe('ReviewSessionProvider', () => {
     expect(result.current.sessionSummary.itemsReviewed).toBe(3);
   });
 
+  it('records a stage demotion in the summary, and nothing on a correct answer', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    mockUseReviewQueue.mockReturnValue({
+      queue: makeQueue(3),
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+      queueBuildMs: 12,
+    });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // Again on a guru item drops it back to apprentice.
+    act(() => {
+      result.current.gradeCurrentItem(1);
+    });
+    expect(result.current.sessionSummary.slipped).toEqual([
+      { itemId: '1', primaryForm: 'kanji-1', from: 'guru', to: 'apprentice' },
+    ]);
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('2');
+    });
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+    expect(result.current.sessionSummary.slipped).toHaveLength(1);
+  });
+
+  it('reports the goal percent this session alone contributed', async () => {
+    const db = await openDatabaseAsync('user.db');
+    const wrapper = await createWrapper(db);
+
+    // Today already carries load from an earlier session.
+    mockGetDailyLoad.mockReturnValue({ date: '2026-06-28', load: 6, threshold: 30 });
+
+    const { result } = renderHook(() => useReviewSession(), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.currentItem?.itemId).toBe('1');
+    });
+
+    // The earlier load counts toward the ring but not toward this session.
+    expect(result.current.sessionSummary.goalDeltaPercent).toBe(0);
+    const before = result.current.sessionSummary.goalPercent;
+    expect(before).toBeGreaterThan(0);
+
+    act(() => {
+      result.current.gradeCurrentItem(3);
+    });
+
+    await waitFor(() => {
+      expect(result.current.sessionSummary.goalDeltaPercent).toBeGreaterThan(0);
+    });
+    expect(result.current.sessionSummary.goalPercent).toBeGreaterThan(before);
+  });
+
   it('does not increment correctCount on recordTypoForCurrentItem', async () => {
     const db = await openDatabaseAsync('user.db');
     const wrapper = await createWrapper(db);

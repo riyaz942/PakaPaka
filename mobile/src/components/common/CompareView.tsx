@@ -2,8 +2,10 @@ import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
+import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
+import { MNEMONIC_PROSE } from '@/components/learn/ItemMnemonicSections';
 import { CONTENT_TYPE_ACCENT, CONTENT_TYPE_LABEL } from '@/constants/contentType';
 import type {
   AcceptedAnswer,
@@ -56,17 +58,17 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={accent.text}
+          className={cn('font-jp-round-black', accent.deep)}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}
         />
       ) : (
         <Text
-          className={cn('text-center font-bold', accent.text)}
+          className={cn('text-center font-jp-round-black', accent.deep)}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}>
           {item.primaryForm}
         </Text>
       )}
-      <Text className="text-overline text-secondary">{CONTENT_TYPE_LABEL[item.itemType]}</Text>
+      <ContentTypeBadge itemType={item.itemType} />
     </View>
   );
 }
@@ -74,11 +76,13 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
 /** One short attribute, the two items' values side by side. */
 function AttributeRow({ label, left, right }: { label: string; left: string; right: string }) {
   return (
-    <View className="mt-3">
-      <Text className="text-caption text-secondary">{label}</Text>
-      <View className="mt-1 flex-row gap-space-md">
-        <Text className="flex-1 text-body text-primary">{left}</Text>
-        <Text className="flex-1 text-body text-primary">{right}</Text>
+    <View className="mt-space-md">
+      <Text className="text-overline font-ui-bold uppercase tracking-[0.12em] text-faint">
+        {label}
+      </Text>
+      <View className="mt-space-xs flex-row gap-space-md">
+        <Text className="flex-1 text-body font-ui-medium text-primary">{left}</Text>
+        <Text className="flex-1 text-body font-ui-medium text-primary">{right}</Text>
       </View>
     </View>
   );
@@ -111,12 +115,16 @@ function ComponentChips({
               shared ? `${parent.primaryForm}, shared component` : parent.primaryForm
             }
             className={cn(
-              'min-h-[44px] min-w-[44px] justify-center rounded-radius-md bg-surface px-3 py-2',
-              // Shared parts recede via secondary text (not opacity) so labels
+              'min-h-[44px] min-w-[44px] justify-center rounded-radius-md px-space-sm py-space-sm',
+              // Shared parts recede onto the quiet fill (not opacity) so labels
               // stay readable while differences still stand out.
-              shared ? 'border border-border' : 'border border-transparent',
+              shared ? 'bg-surface-elevated' : 'border border-border bg-surface',
             )}>
-            <Text className={cn('text-body', shared ? 'text-secondary' : 'text-primary')}>
+            <Text
+              className={cn(
+                'text-body font-jp-medium',
+                shared ? 'text-secondary' : 'text-primary',
+              )}>
               {parent.primaryForm}
             </Text>
           </View>
@@ -155,13 +163,11 @@ function Prose({
   }
 
   return (
-    <View className="mt-3" testID={`${testIDPrefix}-${side}`}>
-      <Text className="text-caption text-secondary">{item.primaryForm}</Text>
-      <AnnotatedText
-        text={text}
-        itemType={item.itemType}
-        className="mt-1 text-body text-primary"
-      />
+    <View className="mt-space-md" testID={`${testIDPrefix}-${side}`}>
+      <Text className={cn('text-caption font-jp-medium', CONTENT_TYPE_ACCENT[item.itemType].deep)}>
+        {item.primaryForm}
+      </Text>
+      <AnnotatedText text={text} itemType={item.itemType} className={MNEMONIC_PROSE} />
     </View>
   );
 }
@@ -219,8 +225,10 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
 
   return (
     <View className="flex-1">
+      {/* The pinned glyph row is the one raised plane on the screen — it stays
+          put while the attributes scroll under it. */}
       <View
-        className="flex-row gap-space-md border-b border-border px-space-lg py-space-md"
+        className="flex-row gap-space-md border-b border-border bg-surface px-space-lg py-space-md shadow-e1"
         testID="compare-glyph-row">
         <CompareGlyph item={leftItem} side="left" />
         <CompareGlyph item={rightItem} side="right" />
@@ -228,7 +236,7 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
 
       <ScrollView
         className="flex-1"
-        contentContainerClassName="px-space-lg pt-space-md pb-space-2xl"
+        contentContainerClassName="px-space-lg pt-space-sm pb-space-2xl"
         testID="compare-scroll">
         <AttributeRow label="Meaning" left={leftItem.meaning} right={rightItem.meaning} />
         <AttributeRow
@@ -244,12 +252,12 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
         <AttributeRow label="Level" left={leftItem.jlptLevel} right={rightItem.jlptLevel} />
 
         {hasComponents ? (
-          <View className="mt-4">
+          <View className="mt-space-lg">
             <SectionHeading label="Components" />
-            <Text className="mt-1 text-caption text-secondary">
+            <Text className="mt-space-xs text-caption font-ui-medium text-muted">
               Parts both items share are dimmed.
             </Text>
-            <View className="mt-2 flex-row gap-space-md">
+            <View className="mt-space-sm flex-row gap-space-md">
               <ComponentChips parents={leftParents} sharedIds={sharedIds} side="left" />
               <ComponentChips parents={rightParents} sharedIds={sharedIds} side="right" />
             </View>
@@ -257,7 +265,7 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
         ) : null}
 
         {hasDescriptions ? (
-          <View className="mt-4">
+          <View className="mt-space-lg">
             <SectionHeading label="Descriptions" />
             <Prose
               text={leftProse.description}
@@ -275,7 +283,7 @@ export function CompareView({ leftId, rightId }: CompareViewProps) {
         ) : null}
 
         {hasMnemonics ? (
-          <View className="mt-4">
+          <View className="mt-space-lg">
             <SectionHeading label="Mnemonics" />
             <Prose
               text={leftProse.mnemonic}

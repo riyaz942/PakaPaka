@@ -8,4 +8,8 @@ export { ReinforcementHighlight } from './ReinforcementHighlight';
 export { SessionExitSheet } from './SessionExitSheet';
 export { SessionHeader } from './SessionHeader';
 export { WanaKanaInput } from './WanaKanaInput';
-export type { WanaKanaInputMode, WanaKanaInputRef } from './WanaKanaInput';
+export type {
+  WanaKanaInputMode,
+  WanaKanaInputRef,
+  WanaKanaInputState,
+} from './WanaKanaInput';

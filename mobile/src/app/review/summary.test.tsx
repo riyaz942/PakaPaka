@@ -8,6 +8,9 @@ const mockSessionSummary = {
   correctCount: 13,
   durationMs: 12 * 60_000,
   sessionEndAt: new Date('2026-06-29T12:00:00.000Z').getTime(),
+  goalPercent: 120,
+  goalDeltaPercent: 18,
+  slipped: [] as { itemId: string; primaryForm: string; from: string; to: string }[],
 };
 
 let mockShadowModeEnabled = false;
@@ -28,20 +31,11 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
   useShadowMode: () => ({ isEnabled: mockShadowModeEnabled }),
 }));
 
-let mockGoalPercent = 120;
-
-jest.mock('@/data/hooks/useCognitiveLoad', () => ({
-  useCognitiveLoad: () => ({
-    percent: mockGoalPercent,
-    isLoading: false,
-    refetch: jest.fn(),
-  }),
-}));
-
 describe('ReviewSummaryScreen', () => {
   beforeEach(() => {
     mockShadowModeEnabled = false;
-    mockGoalPercent = 120;
+    mockSessionSummary.goalPercent = 120;
+    mockSessionSummary.slipped = [];
   });
 
   it('never renders streak UI (R2 / UX-DR27)', () => {
@@ -51,10 +45,11 @@ describe('ReviewSummaryScreen', () => {
     expect(screen.queryByText(/day streak/)).toBeNull();
   });
 
-  it('shows minutes studied with no multi-app comparison (plan 12.7)', () => {
+  it('heads the screen with the session tally, no multi-app comparison', () => {
     render(<ReviewSummaryScreen />);
 
-    expect(screen.getByText('12 min studied')).toBeTruthy();
+    expect(screen.getByText('Session complete')).toBeTruthy();
+    expect(screen.getByText('15 reviews · 12 min')).toBeTruthy();
     expect(screen.queryByText(/separate apps/)).toBeNull();
   });
 
@@ -66,27 +61,38 @@ describe('ReviewSummaryScreen', () => {
   });
 
   it('shows overshoot goal state, never a streak row', () => {
-    mockGoalPercent = 120;
+    mockSessionSummary.goalPercent = 120;
     render(<ReviewSummaryScreen />);
 
     expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
-      'Goal met — +20% overshoot',
+      /Goal met — \+20% overshoot/,
     );
   });
 
   it('shows calm partial-goal state when under 100%', () => {
-    mockGoalPercent = 60;
+    mockSessionSummary.goalPercent = 60;
     render(<ReviewSummaryScreen />);
 
     expect(screen.getByTestId('session-goal-state')).toHaveTextContent(
-      "60% of today's goal",
+      /60% of today's goal/,
     );
   });
 
   it('shows first-try accuracy so retried items are not counted as correct', () => {
     render(<ReviewSummaryScreen />);
 
-    expect(screen.getByText('13 of 15 correct first try')).toBeTruthy();
+    expect(screen.getByText('13 of 15 right the first time.')).toBeTruthy();
+  });
+
+  it('flags an item that slipped a stage in this session', () => {
+    mockSessionSummary.slipped = [
+      { itemId: '1', primaryForm: '七', from: 'guru', to: 'apprentice' },
+    ];
+    render(<ReviewSummaryScreen />);
+
+    expect(screen.getByTestId('session-slipped-note')).toHaveTextContent(
+      /七 slipped — queued sooner next time\./,
+    );
   });
 
   it('renders exactly today behavior (no comparison block) when shadow mode is off', () => {

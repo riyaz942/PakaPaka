@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { AnnotatedText } from '@/components/common/AnnotatedText';
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { Icon } from '@/components/common/Icon';
 import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { SectionHeading } from '@/components/common/SectionHeading';
@@ -13,6 +14,7 @@ import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSectio
 import {
   hasCurriculumMnemonic,
   ItemMnemonicSections,
+  MNEMONIC_PROSE,
 } from '@/components/learn/ItemMnemonicSections';
 import { KanjiReadingsSection } from '@/components/learn/KanjiReadingsSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
@@ -38,6 +40,9 @@ export const LESSON_SECTION_COUNT = 3;
 
 export const LESSON_SECTION_LABELS = ['Introduction', 'Mnemonic', 'Examples & links'] as const;
 
+/** The stepper's short forms — the pills have room for one word each. */
+export const LESSON_SECTION_STEPS = ['Intro', 'Mnemonic', 'Examples'] as const;
+
 export type LessonSectionProps = {
   item: CurriculumItemDetail;
   kanjiReadings: KanjiReading[];
@@ -59,7 +64,11 @@ function formatConjugationValue(value: unknown): string {
   return String(value);
 }
 
-function LessonHero({ item }: { item: CurriculumItemDetail }) {
+/**
+ * The teach card's subject, shown above whichever section is on screen (spec
+ * screen 11 keeps the glyph in view while the mnemonic is read).
+ */
+export function LessonHero({ item }: { item: CurriculumItemDetail }) {
   const { modeForItem } = useFuriganaPreference();
   const isKnownWord = useIsKnownWord(item.itemType === 'vocabulary' ? item.id : null);
   const accent = CONTENT_TYPE_ACCENT[item.itemType];
@@ -91,40 +100,19 @@ function LessonHero({ item }: { item: CurriculumItemDetail }) {
 }
 
 /**
- * Section 1 — what the item *is*: hero, meaning, the radical's visual mnemonic,
- * description, pattern structure (grammar). No examples, no cross-links: those
- * are section 3.
+ * Section 1 — what the item *is*: description and pattern structure (grammar).
+ * No examples, no cross-links: those are section 3. The hero above it carries
+ * the glyph and meaning for every section, so a radical's introduction is the
+ * hero alone — its story and illustration belong with the mnemonic.
  *
  * Kanji readings live in the Mnemonic section, next to the reading mnemonic
  * they explain. A radical's description sits with its story there too.
  */
 export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
   const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
-  const [imageFailed, setImageFailed] = useState(false);
-
-  const showRadicalImage =
-    item.itemType === 'radical' &&
-    Boolean(getRadicalImage(item.visualMnemonicUrl)) &&
-    !imageFailed;
 
   return (
     <View testID="lesson-section-intro">
-      <LessonHero item={item} />
-
-      {showRadicalImage ? (
-        <View className="mt-6">
-          <MnemonicImage
-            className="h-48"
-            imageUrl={item.visualMnemonicUrl}
-            mnemonicText={item.mnemonicText}
-            meaning={item.meaning}
-            primaryForm={item.primaryForm}
-            onLoadError={() => setImageFailed(true)}
-            testID="radical-mnemonic-image"
-          />
-        </View>
-      ) : null}
-
       {item.itemType === 'radical' ? null : <ItemDescriptionSection item={item} />}
 
       {item.itemType === 'grammar' && grammarRule ? (
@@ -185,6 +173,49 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
 }
 
 /**
+ * The lesson's illustration slot (spec screen 11). Radicals are the only type
+ * the curriculum draws, so the slot is theirs: the bundled image when one
+ * exists, and the dashed placeholder when it does not — the space is part of
+ * the layout rather than an error state.
+ */
+function LessonMnemonicImageSlot({ item }: { item: CurriculumItemDetail }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (item.itemType !== 'radical') {
+    return null;
+  }
+
+  if (!getRadicalImage(item.visualMnemonicUrl) || imageFailed) {
+    return (
+      <View
+        accessible
+        accessibilityLabel="Illustration coming soon"
+        testID="lesson-mnemonic-image-placeholder"
+        className="mt-space-md h-[132px] items-center justify-center gap-space-sm rounded-radius-lg border-[1.5px] border-dashed border-border bg-surface">
+        <Icon name="image" size={26} strokeWidth={1.8} className="text-faint" />
+        <Text className="text-caption font-ui-semibold text-faint">
+          Illustration coming soon
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <View className="mt-space-md">
+      <MnemonicImage
+        className="h-48"
+        imageUrl={item.visualMnemonicUrl}
+        mnemonicText={item.mnemonicText}
+        meaning={item.meaning}
+        primaryForm={item.primaryForm}
+        onLoadError={() => setImageFailed(true)}
+        testID="radical-mnemonic-image"
+      />
+    </View>
+  );
+}
+
+/**
  * Section 2 — how to remember it: the curriculum's mnemonics and description,
  * the radical's visual mnemonic, and the learner's own mnemonic. Paging
  * replaces the old collapsed mnemonic disclosure, so nothing here hides behind
@@ -192,8 +223,8 @@ export function LessonIntroSection({ item, grammarRule }: LessonSectionProps) {
  *
  * A radical's `mnemonic_text` reads as the image's story, not under a "Mnemonic"
  * heading; its optional `description` (content pipeline Rev 3) is the separate
- * look-alike/nuance block, same as on kanji and vocabulary. The image itself
- * sits with the glyph in section 1.
+ * look-alike/nuance block, same as on kanji and vocabulary. The illustration
+ * sits with that story, which is what it illustrates.
  */
 export function LessonMnemonicSectionView({
   item,
@@ -208,10 +239,12 @@ export function LessonMnemonicSectionView({
           <AnnotatedText
             text={item.mnemonicText}
             itemType="radical"
-            className="mt-4 text-body text-secondary"
+            className={cn(MNEMONIC_PROSE, 'mt-space-md')}
             testID="radical-description"
           />
         ) : null}
+
+        <LessonMnemonicImageSlot item={item} />
 
         <ItemDescriptionSection item={item} />
       </View>

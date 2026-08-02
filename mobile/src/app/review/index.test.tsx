@@ -142,12 +142,16 @@ jest.mock('@/components/review/WanaKanaInput', () => {
         onChangeText,
         onSubmit,
         editable,
+        state,
+        testID,
       }: {
         mode: 'kana' | 'english';
         value: string;
         onChangeText: (text: string) => void;
         onSubmit: () => void;
         editable?: boolean;
+        state?: string;
+        testID?: string;
       },
       ref: React.Ref<{ focus: () => void }>,
     ) {
@@ -155,10 +159,13 @@ jest.mock('@/components/review/WanaKanaInput', () => {
 
       return (
         <RNTextInput
-          testID="review-answer-input"
+          testID={testID ?? 'review-answer-input'}
           accessibilityLabel={
             mode === 'kana' ? 'Answer input, type in romaji' : 'Answer input'
           }
+          // Surfaced so the screen's state wiring is assertable — the real
+          // component turns this into border/fill chrome.
+          accessibilityHint={state}
           value={value}
           onChangeText={onChangeText}
           onSubmitEditing={onSubmit}
@@ -321,6 +328,85 @@ describe('ReviewScreen accessibility', () => {
     expect(mockRecordTypoForCurrentItem).not.toHaveBeenCalled();
     expect(screen.queryByLabelText('Continue')).toBeNull();
     expect(screen.getByTestId('review-answer-input').props.editable).toBe(true);
+  });
+
+  it('dresses the answer field in the verdict for every feedback state', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    render(<ReviewScreen />);
+
+    const field = () => screen.getByTestId('review-answer-input');
+    expect(field().props.accessibilityHint).toBe('idle');
+
+    // Typo — non-terminal, so the field re-prompts wearing the near-miss chrome.
+    fireEvent.changeText(field(), 'たべう');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(field().props.accessibilityHint).toBe('near-miss');
+
+    // Correct — the field keeps its verdict while Return advances.
+    fireEvent.changeText(field(), 'たべる');
+    await act(async () => {
+      fireEvent(field(), 'submitEditing');
+    });
+    expect(field().props.accessibilityHint).toBe('correct');
+  });
+
+  it('marks a wrong-script answer with the info chrome, not the danger chrome', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), '食べる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(screen.getByTestId('review-answer-input').props.accessibilityHint).toBe(
+      'wrong-script',
+    );
+  });
+
+  it('keeps the rejected answer on screen in danger chrome after a wrong answer', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    const rejected = screen.getByTestId('review-rejected-answer');
+    expect(rejected.props.value).toBe('wrong');
+    expect(rejected.props.accessibilityHint).toBe('incorrect');
+    expect(rejected.props.editable).toBe(false);
+  });
+
+  it('shows no rejected-answer field when the learner never submitted one', async () => {
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    render(<ReviewScreen />);
+
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText("Don't know"));
+    });
+
+    expect(screen.queryByTestId('review-rejected-answer')).toBeNull();
+    expect(screen.getByLabelText('Continue')).toBeTruthy();
+  });
+
+  it('offers Submit as the touch path, disabled until something is typed', async () => {
+    render(<ReviewScreen />);
+
+    expect(screen.getByTestId('review-submit').props.accessibilityState.disabled).toBe(true);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    expect(screen.getByTestId('review-submit').props.accessibilityState.disabled).toBe(false);
+
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('review-submit'));
+    });
+
+    expect(screen.getByTestId('review-answer-input').props.accessibilityHint).toBe('correct');
   });
 
   it('shows the "Reading — on\'yomi" label on the kanji reading card', () => {

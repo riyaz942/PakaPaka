@@ -202,7 +202,7 @@ describe('ReviewCard — grammar cloze contract (Plan 07)', () => {
 describe('ReviewCard — result states', () => {
   it('shows correct state with icon and the shared trimmed panel (FR85)', () => {
     render(<ReviewCard item={makeItem({ promptType: 'meaning' })} state="correct" />);
-    expect(screen.getByText('✓ Correct')).toBeTruthy();
+    expect(screen.getByText('Correct')).toBeTruthy();
     // Shared AnswerReveal: meaning + reading, expanded, with a details link.
     expect(screen.getByText('eat, food')).toBeTruthy();
     expect(screen.getByText('たべる')).toBeTruthy();
@@ -237,7 +237,7 @@ describe('ReviewCard — result states', () => {
         displayAnswer="たべる"
       />,
     );
-    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('Incorrect')).toBeTruthy();
     expect(screen.getByText('Correct answer: たべる')).toBeTruthy();
   });
 
@@ -413,7 +413,7 @@ describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)'
     render(<ReviewCard item={makeItem({ promptType: 'reading' })} state="correct" />);
     expect(screen.getByText('食')).toBeTruthy();
     expect(screen.getByText("Reading — on'yomi")).toBeTruthy();
-    expect(screen.getByText('✓ Correct')).toBeTruthy();
+    expect(screen.getByText('Correct')).toBeTruthy();
   });
 
   it('fills the blank in the cloze sentence on a correct grammar answer', () => {
@@ -440,7 +440,7 @@ describe('ReviewCard — prompt stays visible through feedback (Plan 12.3/12.4)'
 
   it('shows the cloze sentence on a terminal incorrect grammar reveal', () => {
     render(<ReviewCard item={cloze} state="incorrect" displayAnswer="は" />);
-    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('Incorrect')).toBeTruthy();
     expect(screen.getByText('私＿＿＿学生です。')).toBeTruthy();
     expect(screen.getByText('Correct answer: は')).toBeTruthy();
   });
@@ -573,7 +573,7 @@ describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
     render(
       <ReviewCard item={waTopic} state="incorrect" displayAnswer="は" incompleteAnswer />,
     );
-    expect(screen.getByText('✗ Not quite')).toBeTruthy();
+    expect(screen.getByText('Not quite')).toBeTruthy();
     expect(
       screen.getByText('You had the right idea — we need just the grammar piece:'),
     ).toBeTruthy();
@@ -598,7 +598,7 @@ describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
 
   it('plain incorrect keeps the standard reveal', () => {
     render(<ReviewCard item={waTopic} state="incorrect" displayAnswer="は" />);
-    expect(screen.getByText('✗ Incorrect')).toBeTruthy();
+    expect(screen.getByText('Incorrect')).toBeTruthy();
     expect(screen.getByText('Correct answer: は')).toBeTruthy();
     expect(screen.queryByText(/right idea/)).toBeNull();
   });
