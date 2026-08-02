@@ -47,6 +47,22 @@ describe('Button', () => {
     expect(onPress).not.toHaveBeenCalled();
   });
 
+  // A shadow class declares a CSS variable, and NativeWind remounts an element
+  // that only starts declaring variables after its first render. Toggling
+  // `disabled` must not add or drop one, or the button remounts under the user.
+  it.each(['primary', 'secondary', 'tertiary', 'ghost', 'destructive'] as const)(
+    'keeps a shadow utility on %s in both the enabled and disabled state',
+    (variant) => {
+      render(<Button label="Continue" onPress={jest.fn()} variant={variant} testID="cta" />);
+      expect(screen.getByTestId('cta').props.className).toMatch(/(^|\s)shadow-/);
+
+      screen.rerender(
+        <Button label="Continue" onPress={jest.fn()} variant={variant} disabled testID="cta" />,
+      );
+      expect(screen.getByTestId('cta').props.className).toMatch(/(^|\s)shadow-/);
+    },
+  );
+
   it('reports the disabled state to assistive tech', () => {
     render(<Button label="Continue" onPress={jest.fn()} disabled testID="cta" />);
     expect(screen.getByTestId('cta').props.accessibilityState).toMatchObject({ disabled: true });

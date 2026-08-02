@@ -18,6 +18,12 @@ type ButtonProps = {
 /**
  * Design System v2 buttons. Weight comes from the font utility, not `font-bold`
  * — the static Google Fonts register one family per weight.
+ *
+ * Every state carries a `shadow-*` utility, `shadow-none` included. NativeWind
+ * compiles shadows to a rule that declares a CSS variable, and a class that
+ * starts declaring variables *after* the first render makes the css-interop
+ * wrap the element in a provider — which remounts it. A button that toggles
+ * `disabled` would otherwise gain/lose the glow and remount mid-session.
  */
 const variantClasses: Record<ButtonVariant, { container: string; text: string }> = {
   primary: {
@@ -26,19 +32,19 @@ const variantClasses: Record<ButtonVariant, { container: string; text: string }>
     text: 'text-on-primary font-ui-bold',
   },
   secondary: {
-    container: 'border-[1.5px] border-brand-500 bg-surface',
+    container: 'border-[1.5px] border-brand-500 bg-surface shadow-none',
     text: 'text-brand-text font-ui-bold',
   },
   tertiary: {
-    container: 'bg-surface-elevated',
+    container: 'bg-surface-elevated shadow-none',
     text: 'text-secondary font-ui-bold',
   },
   ghost: {
-    container: 'bg-transparent',
+    container: 'bg-transparent shadow-none',
     text: 'text-muted font-ui-semibold',
   },
   destructive: {
-    container: 'bg-feedback-incorrect-fill',
+    container: 'bg-feedback-incorrect-fill shadow-none',
     text: 'text-on-primary font-ui-bold',
   },
 };
@@ -47,7 +53,10 @@ const variantClasses: Record<ButtonVariant, { container: string; text: string }>
  * Disabled reads grey, never a faded brand tint — onboarding step 1 waits in
  * this state and a tinted one would look like a live CTA (spec, Buttons).
  */
-const disabledClasses = { container: 'bg-surface-elevated', text: 'text-faint font-ui-bold' };
+const disabledClasses = {
+  container: 'bg-surface-elevated shadow-none',
+  text: 'text-faint font-ui-bold',
+};
 
 export const Button = forwardRef<View, ButtonProps>(function Button(
   {
