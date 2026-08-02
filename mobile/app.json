@@ -37,6 +37,13 @@
           "backgroundColor": "#F7F5F2",
           "dark": {
             "backgroundColor": "#1B1917"
+          },
+          "android": {
+            "image": "./assets/images/android-icon-foreground.png",
+            "imageWidth": 200,
+            "dark": {
+              "image": "./assets/images/android-icon-foreground.png"
+            }
           }
         }
       ],
