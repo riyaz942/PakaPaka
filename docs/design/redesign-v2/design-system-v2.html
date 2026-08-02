@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F5F2}
+a{color:#0E8163;text-decoration:none}
+a:hover{color:#0C654E}
+::selection{background:rgba(21,158,119,.2)}
+rt{font-weight:500}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="--font-ui:'Plus Jakarta Sans',system-ui,sans-serif;--font-jp:'Noto Sans JP',sans-serif;--font-jp-round:'Zen Maru Gothic','Noto Sans JP',sans-serif;--b50:#EAF7F2;--b100:#CDEEE2;--b200:#9FDFC9;--b300:#66CBAB;--b400:#34B48D;--b500:#159E77;--b600:#0E8163;--b700:#0C654E;--b800:#0C503F;--b900:#0B4133;--rad:#2F84D0;--rad-soft:#E6F0FB;--rad-deep:#1E5C97;--kan:#E14D86;--kan-soft:#FCE6EE;--kan-deep:#A82D5E;--voc:#8B5AD4;--voc-soft:#EFE8FB;--voc-deep:#5E3A9E;--gra:#CE912C;--gra-soft:#FBF0DC;--gra-deep:#8F5F16;--pas:#5C6B99;--pas-soft:#EAECF5;--pas-deep:#3D4A73;--success:#1FA971;--success-soft:#E4F6EE;--warn:#E58A1E;--warn-soft:#FBEEDA;--danger:#E1483D;--danger-soft:#FCE7E4;--info:#2F84D0;--info-soft:#E6F0FB;--srs1:#E14D86;--srs2:#8B5AD4;--srs3:#2F84D0;--srs4:#17A2C4;--srs5:#57534B;--bg:#F7F5F2;--surface:#FFFFFF;--surface2:#F2EFEA;--border:#E7E2DB;--ink:#23201C;--text:#46423B;--muted:#7C766C;--faint:#A8A199;--r-sm:10px;--r-md:14px;--r-lg:18px;--r-xl:24px;--e1:0 1px 2px rgba(31,29,26,.06),0 1px 3px rgba(31,29,26,.05);--e2:0 2px 8px rgba(31,29,26,.06),0 10px 28px rgba(31,29,26,.06);--e3:0 10px 40px rgba(31,29,26,.14);background:var(--bg);color:var(--text);min-height:100vh;font-family:var(--font-ui);-webkit-font-smoothing:antialiased">
+
+  <!-- ============ COVER ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:96px 40px 40px">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:56px">
+      <div style="width:52px;height:52px;border-radius:15px;background:linear-gradient(150deg,var(--b400),var(--b600));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(21,158,119,.32)">
+        <span style="font:900 26px var(--font-jp-round);color:#fff">学</span>
+      </div>
+      <div>
+        <div style="font:800 17px/1 var(--font-ui);color:var(--ink)">Japanese Learning</div>
+        <div style="font:500 13px/1.3 var(--font-jp);color:var(--muted);margin-top:3px">日本語学習</div>
+      </div>
+    </div>
+
+    <div style="font:700 13px/1 var(--font-ui);letter-spacing:.18em;color:var(--b600);text-transform:uppercase;margin-bottom:22px">Design System · v2.0</div>
+    <h1 style="font:800 66px/1.02 var(--font-ui);color:var(--ink);margin:0;letter-spacing:-.02em;max-width:920px">Five tabs, one calm system.</h1>
+    <p style="font:400 20px/1.55 var(--font-ui);color:var(--muted);margin:24px 0 0;max-width:660px">Updated for the current build: Home · Browse · Talk · Stats · Settings, with Lesson and Review as full-screen sessions. Warm, encouraging, and built to hero the characters themselves — light and dark, top to bottom.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:40px">
+      <div style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font:600 13px var(--font-ui);color:var(--text);box-shadow:var(--e1)"><span style="width:9px;height:9px;border-radius:999px;background:var(--b500)"></span>Foundations</div>
+      <div style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font:600 13px var(--font-ui);color:var(--text);box-shadow:var(--e1)"><span style="width:9px;height:9px;border-radius:999px;background:var(--kan)"></span>Components</div>
+      <div style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font:600 13px var(--font-ui);color:var(--text);box-shadow:var(--e1)"><span style="width:9px;height:9px;border-radius:999px;background:var(--voc)"></span>14 Screens</div>
+      <div style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font:600 13px var(--font-ui);color:var(--text);box-shadow:var(--e1)"><span style="width:9px;height:9px;border-radius:999px;background:var(--gra)"></span>Light &amp; Dark</div>
+      <div style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:9px 16px;font:600 13px var(--font-ui);color:var(--text);box-shadow:var(--e1)"><span style="width:9px;height:9px;border-radius:999px;background:var(--pas)"></span>Offline-first</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:56px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e2)">
+      <div style="height:120px;background:#159E77;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Brand</span></div>
+      <div style="height:120px;background:#2F84D0;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Radical</span></div>
+      <div style="height:120px;background:#E14D86;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Kanji</span></div>
+      <div style="height:120px;background:#8B5AD4;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Vocab</span></div>
+      <div style="height:120px;background:#CE912C;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Grammar</span></div>
+      <div style="height:120px;background:#5C6B99;display:flex;align-items:flex-end;padding:14px"><span style="font:700 12px var(--font-ui);color:#fff">Passage</span></div>
+    </div>
+
+    <div style="background:var(--b50);border-radius:var(--r-lg);padding:22px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.6"/></svg>
+      <div style="font:500 15px/1.55 var(--font-ui);color:var(--b800)"><strong style="font-weight:800">Changed in v2 —</strong> Learn and Read merged into <strong style="font-weight:700">Browse</strong>; <strong style="font-weight:700">Talk</strong> added; the streak moved to Stats (Home now leads with the beatable goal ring); reading passages gained a fifth content colour; lessons run in three paced sections; review gained near-miss and compare states.</div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--border);max-width:1180px;margin:56px auto 0"></div>
+
+  <!-- ============ COLOR ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:72px 40px">
+    <div style="margin-bottom:44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">01 · Foundations</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Color</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">Jade-teal carries the brand. Five harmonized hues tag the five content types, tuned to similar lightness so no single type shouts. Passages get a desaturated slate — they are containers for the other four, so they sit back.</p>
+    </div>
+
+    <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 14px">Brand · Jade</div>
+    <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:40px">
+      <div><div style="height:76px;border-radius:12px 12px 4px 4px;background:#EAF7F2;border:1px solid var(--border)"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">50</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#CDEEE2"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">100</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#9FDFC9"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">200</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#66CBAB"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">300</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#34B48D"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">400</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#159E77"></div><div style="font:700 11px var(--font-ui);color:var(--ink);margin-top:7px">500 ●</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#0E8163"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">600</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#0C654E"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">700</div></div>
+      <div><div style="height:76px;border-radius:4px;background:#0C503F"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">800</div></div>
+      <div><div style="height:76px;border-radius:4px 4px 12px 12px;background:#0B4133"></div><div style="font:700 11px var(--font-ui);color:var(--text);margin-top:7px">900</div></div>
+    </div>
+
+    <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 4px">Content types</div>
+    <div style="font:400 13px var(--font-ui);color:var(--muted);margin:0 0 16px">Base (chips, glyphs, list edges) · soft tint (hero cards, fills) · deep shade (text on tint).</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1)">
+        <div style="background:#E6F0FB;padding:22px;display:flex;align-items:center;justify-content:center"><span style="font:900 38px var(--font-jp-round);color:#1E5C97">一</span></div>
+        <div style="padding:14px"><div style="font:700 14px var(--font-ui);color:var(--ink)">Radical</div><div style="display:flex;gap:5px;margin-top:10px"><span style="flex:1;height:24px;border-radius:7px;background:#2F84D0"></span><span style="flex:1;height:24px;border-radius:7px;background:#E6F0FB"></span><span style="flex:1;height:24px;border-radius:7px;background:#1E5C97"></span></div><div style="font:500 10px var(--font-ui);color:var(--faint);margin-top:7px">2F84D0 · E6F0FB · 1E5C97</div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1)">
+        <div style="background:#FCE6EE;padding:22px;display:flex;align-items:center;justify-content:center"><span style="font:900 38px var(--font-jp-round);color:#A82D5E">七</span></div>
+        <div style="padding:14px"><div style="font:700 14px var(--font-ui);color:var(--ink)">Kanji</div><div style="display:flex;gap:5px;margin-top:10px"><span style="flex:1;height:24px;border-radius:7px;background:#E14D86"></span><span style="flex:1;height:24px;border-radius:7px;background:#FCE6EE"></span><span style="flex:1;height:24px;border-radius:7px;background:#A82D5E"></span></div><div style="font:500 10px var(--font-ui);color:var(--faint);margin-top:7px">E14D86 · FCE6EE · A82D5E</div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1)">
+        <div style="background:#EFE8FB;padding:22px;display:flex;align-items:center;justify-content:center"><span style="font:900 38px var(--font-jp-round);color:#5E3A9E">私</span></div>
+        <div style="padding:14px"><div style="font:700 14px var(--font-ui);color:var(--ink)">Vocabulary</div><div style="display:flex;gap:5px;margin-top:10px"><span style="flex:1;height:24px;border-radius:7px;background:#8B5AD4"></span><span style="flex:1;height:24px;border-radius:7px;background:#EFE8FB"></span><span style="flex:1;height:24px;border-radius:7px;background:#5E3A9E"></span></div><div style="font:500 10px var(--font-ui);color:var(--faint);margin-top:7px">8B5AD4 · EFE8FB · 5E3A9E</div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1)">
+        <div style="background:#FBF0DC;padding:22px;display:flex;align-items:center;justify-content:center"><span style="font:900 38px var(--font-jp-round);color:#8F5F16">は</span></div>
+        <div style="padding:14px"><div style="font:700 14px var(--font-ui);color:var(--ink)">Grammar</div><div style="display:flex;gap:5px;margin-top:10px"><span style="flex:1;height:24px;border-radius:7px;background:#CE912C"></span><span style="flex:1;height:24px;border-radius:7px;background:#FBF0DC"></span><span style="flex:1;height:24px;border-radius:7px;background:#8F5F16"></span></div><div style="font:500 10px var(--font-ui);color:var(--faint);margin-top:7px">CE912C · FBF0DC · 8F5F16</div></div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1)">
+        <div style="background:#EAECF5;padding:22px;display:flex;align-items:center;justify-content:center"><span style="font:900 38px var(--font-jp-round);color:#3D4A73">文</span></div>
+        <div style="padding:14px"><div style="font:700 14px var(--font-ui);color:var(--ink)">Passage <span style="font:700 10px var(--font-ui);color:var(--b600);background:var(--b50);padding:2px 6px;border-radius:999px;vertical-align:middle">NEW</span></div><div style="display:flex;gap:5px;margin-top:10px"><span style="flex:1;height:24px;border-radius:7px;background:#5C6B99"></span><span style="flex:1;height:24px;border-radius:7px;background:#EAECF5"></span><span style="flex:1;height:24px;border-radius:7px;background:#3D4A73"></span></div><div style="font:500 10px var(--font-ui);color:var(--faint);margin-top:7px">5C6B99 · EAECF5 · 3D4A73</div></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+      <div>
+        <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 14px">Semantic</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:9px;background:#1FA971"></span><span style="width:36px;height:36px;border-radius:9px;background:#E4F6EE"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">Success · correct answer</div><div style="font:500 11px var(--font-ui);color:var(--faint)">#1FA971 · #E4F6EE</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:9px;background:#E58A1E"></span><span style="width:36px;height:36px;border-radius:9px;background:#FBEEDA"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">Warning · near miss, incomplete</div><div style="font:500 11px var(--font-ui);color:var(--faint)">#E58A1E · #FBEEDA</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:9px;background:#E1483D"></span><span style="width:36px;height:36px;border-radius:9px;background:#FCE7E4"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">Danger · incorrect, destructive</div><div style="font:500 11px var(--font-ui);color:var(--faint)">#E1483D · #FCE7E4</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:9px;background:#2F84D0"></span><span style="width:36px;height:36px;border-radius:9px;background:#E6F0FB"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">Info · hints, script warnings</div><div style="font:500 11px var(--font-ui);color:var(--faint)">#2F84D0 · #E6F0FB</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 14px">SRS stages</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#E14D86"></span><span style="font:700 13px var(--font-ui);color:var(--ink);flex:1">Apprentice</span><span style="font:500 11px var(--font-ui);color:var(--faint)">multiple-choice grammar</span></div>
+          <div style="display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#8B5AD4"></span><span style="font:700 13px var(--font-ui);color:var(--ink);flex:1">Guru</span><span style="font:500 11px var(--font-ui);color:var(--faint)">type-in · unlocks passages</span></div>
+          <div style="display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#2F84D0"></span><span style="font:700 13px var(--font-ui);color:var(--ink);flex:1">Master</span><span style="font:500 11px var(--font-ui);color:var(--faint)">—</span></div>
+          <div style="display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#17A2C4"></span><span style="font:700 13px var(--font-ui);color:var(--ink);flex:1">Enlightened</span><span style="font:500 11px var(--font-ui);color:var(--faint)">no-English prompts</span></div>
+          <div style="display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px"><span style="width:14px;height:14px;border-radius:999px;background:#57534B"></span><span style="font:700 13px var(--font-ui);color:var(--ink);flex:1">Burned</span><span style="font:500 11px var(--font-ui);color:var(--faint)">retired from queue</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font:700 14px var(--font-ui);color:var(--ink);margin:40px 0 14px">Neutrals — warm</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:#FFFFFF;border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;box-shadow:var(--e1)">
+        <div style="font:700 12px var(--font-ui);color:#23201C;letter-spacing:.08em;margin-bottom:12px">LIGHT</div>
+        <div style="display:flex;gap:7px">
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#F7F5F2;border:1px solid #E7E2DB"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">bg</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#FFFFFF;border:1px solid #E7E2DB"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">surface</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#F2EFEA"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">surf-2</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#E7E2DB"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">border</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#7C766C"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">muted</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#23201C"></div><div style="font:600 10px var(--font-ui);color:#7C766C;margin-top:6px">ink</div></div>
+        </div>
+      </div>
+      <div style="background:#1B1917;border:1px solid #3A362F;border-radius:var(--r-lg);padding:18px">
+        <div style="font:700 12px var(--font-ui);color:#F6F3EE;letter-spacing:.08em;margin-bottom:12px">DARK</div>
+        <div style="display:flex;gap:7px">
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#1B1917;border:1px solid #3A362F"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">bg</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#24211E;border:1px solid #3A362F"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">surface</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#2D2A26"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">surf-2</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#3A362F"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">border</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#A29C90"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">muted</div></div>
+          <div style="flex:1"><div style="height:52px;border-radius:9px;background:#F6F3EE"></div><div style="font:600 10px var(--font-ui);color:#A29C90;margin-top:6px">ink</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--border);max-width:1180px;margin:0 auto"></div>
+
+  <!-- ============ TYPOGRAPHY ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:72px 40px">
+    <div style="margin-bottom:44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">02 · Foundations</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Typography</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">Plus Jakarta Sans handles all interface text. Japanese splits by role: Zen Maru Gothic for heroed characters, Noto Sans JP for readings, passages, and chat — where furigana and long-form legibility matter most.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;box-shadow:var(--e1)">
+        <div style="font:800 44px/1 var(--font-ui);color:var(--ink)">Aa</div>
+        <div style="font:700 15px var(--font-ui);color:var(--ink);margin-top:18px">Plus Jakarta Sans</div>
+        <div style="font:500 13px var(--font-ui);color:var(--muted);margin-top:4px">Interface · Latin</div>
+        <div style="font:400 13px var(--font-ui);color:var(--faint);margin-top:10px">400 · 500 · 600 · 700 · 800</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;box-shadow:var(--e1)">
+        <div style="font:900 44px/1 var(--font-jp-round);color:var(--ink)">学あ</div>
+        <div style="font:700 15px var(--font-ui);color:var(--ink);margin-top:18px">Zen Maru Gothic</div>
+        <div style="font:500 13px var(--font-ui);color:var(--muted);margin-top:4px">Hero characters · JP display</div>
+        <div style="font:400 13px var(--font-ui);color:var(--faint);margin-top:10px">500 · 700 · 900</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;box-shadow:var(--e1)">
+        <div style="font:900 44px/1 var(--font-jp);color:var(--ink)">日本語</div>
+        <div style="font:700 15px var(--font-ui);color:var(--ink);margin-top:18px">Noto Sans JP</div>
+        <div style="font:500 13px var(--font-ui);color:var(--muted);margin-top:4px">Readings, passages, chat</div>
+        <div style="font:400 13px var(--font-ui);color:var(--faint);margin-top:10px">400 · 500 · 700 · 900</div>
+      </div>
+    </div>
+
+    <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 20px">Type scale</div>
+    <div style="display:flex;flex-direction:column;gap:22px;border-top:1px solid var(--border);padding-top:24px">
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Display / 40</div><div style="font:800 40px/1.05 var(--font-ui);color:var(--ink);letter-spacing:-.02em">Learn Japanese for real</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Title / 28</div><div style="font:800 28px/1.1 var(--font-ui);color:var(--ink);letter-spacing:-.01em">Start a conversation</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Heading / 20</div><div style="font:700 20px/1.2 var(--font-ui);color:var(--ink)">Weak patterns</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Body / 16</div><div style="font:400 16px/1.5 var(--font-ui);color:var(--text)">Each day you&#39;ll get one auto-built lesson plus your reviews.</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Label / 14</div><div style="font:600 14px/1.4 var(--font-ui);color:var(--text)">5 items ready</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Kicker / 12</div><div style="font:700 12px/1 var(--font-ui);color:var(--kan);letter-spacing:.14em;text-transform:uppercase">Mnemonic · 2 of 3</div></div>
+      <div style="display:flex;align-items:baseline;gap:24px"><div style="width:120px;flex:none;font:600 12px var(--font-ui);color:var(--faint)">Caption / 12</div><div style="font:500 12px/1.4 var(--font-ui);color:var(--muted)">Calm activity — not a streak</div></div>
+    </div>
+
+    <div style="font:700 14px var(--font-ui);color:var(--ink);margin:44px 0 16px">Japanese — hero, furigana &amp; passage body</div>
+    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:16px">
+      <div style="background:var(--kan-soft);border-radius:var(--r-lg);padding:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px">
+        <div style="font:900 120px/1 var(--font-jp-round);color:var(--kan-deep)">一</div>
+        <div style="font:700 20px var(--font-ui);color:var(--kan-deep);margin-top:8px">one</div>
+        <div style="font:600 11px var(--font-ui);color:var(--kan-deep);opacity:.7;margin-top:12px;letter-spacing:.1em">HERO · ZEN MARU 900</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;box-shadow:var(--e1)">
+        <div style="font:600 11px var(--font-ui);color:var(--faint);letter-spacing:.1em;margin-bottom:16px">PASSAGE BODY · FURIGANA · LINKED VOCAB</div>
+        <div style="font:500 22px/2.2 var(--font-jp);color:var(--ink)">
+          <span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)">はじめまして</span>。<ruby>私<rt style="font-size:10px;color:var(--muted)">わたし</rt></ruby>はアンナです。イギリスから<ruby>来<rt style="font-size:10px;color:var(--muted)">き</rt></ruby>ました。<ruby>今<rt style="font-size:10px;color:var(--muted)">いま</rt></ruby>、<span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>日本語<rt style="font-size:10px;color:var(--muted)">にほんご</rt></ruby></span>を<span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>勉強<rt style="font-size:10px;color:var(--muted)">べんきょう</rt></ruby></span>しています。
+        </div>
+        <div style="font:400 15px var(--font-ui);color:var(--muted);margin-top:14px">Nice to meet you. I&#39;m Anna. I came from England. Right now I&#39;m studying Japanese.</div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--border);max-width:1180px;margin:0 auto"></div>
+
+  <!-- ============ SPACE / RADII / ELEVATION ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:72px 40px">
+    <div style="margin-bottom:44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">03 · Foundations</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Space, radius &amp; elevation</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">A 4-point grid, generous radii for the friendly feel, three soft shadow levels. Every tap target is at least 44px.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:32px">
+      <div>
+        <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 16px">Spacing · 4pt</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:4px;height:22px;background:var(--b400);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">4 · xs</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:8px;height:22px;background:var(--b400);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">8 · sm</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:22px;background:var(--b400);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">12 · md</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:16px;height:22px;background:var(--b500);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">16 · lg — screen gutter</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:24px;height:22px;background:var(--b500);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">24 · xl</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:32px;height:22px;background:var(--b600);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">32 · 2xl</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:48px;height:22px;background:var(--b600);border-radius:2px"></span><span style="font:600 13px var(--font-ui);color:var(--text)">48 · 3xl</span></div>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 16px">Radius</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:52px;height:44px;background:var(--b100);border:1.5px solid var(--b400);border-radius:var(--r-sm)"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">sm · 10</div><div style="font:500 11px var(--font-ui);color:var(--faint)">chips, inputs</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:52px;height:44px;background:var(--b100);border:1.5px solid var(--b400);border-radius:var(--r-md)"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">md · 14</div><div style="font:500 11px var(--font-ui);color:var(--faint)">buttons, tiles</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:52px;height:44px;background:var(--b100);border:1.5px solid var(--b400);border-radius:var(--r-lg)"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">lg · 18</div><div style="font:500 11px var(--font-ui);color:var(--faint)">cards, chat bubbles</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:52px;height:44px;background:var(--b100);border:1.5px solid var(--b400);border-radius:var(--r-xl)"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">xl · 24</div><div style="font:500 11px var(--font-ui);color:var(--faint)">goal card, hero cards</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:52px;height:44px;background:var(--b100);border:1.5px solid var(--b400);border-radius:999px"></span><div><div style="font:700 13px var(--font-ui);color:var(--ink)">full · 999</div><div style="font:500 11px var(--font-ui);color:var(--faint)">pills, filter chips</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 14px var(--font-ui);color:var(--ink);margin:0 0 16px">Elevation</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:var(--surface);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--e1)"><div style="font:700 13px var(--font-ui);color:var(--ink)">e1 · resting</div><div style="font:500 11px var(--font-ui);color:var(--faint)">list rows, chips, cards</div></div>
+          <div style="background:var(--surface);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--e2)"><div style="font:700 13px var(--font-ui);color:var(--ink)">e2 · raised</div><div style="font:500 11px var(--font-ui);color:var(--faint)">goal card, primary CTA</div></div>
+          <div style="background:var(--surface);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--e3)"><div style="font:700 13px var(--font-ui);color:var(--ink)">e3 · overlay</div><div style="font:500 11px var(--font-ui);color:var(--faint)">sessions, sheets, exit guard</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--border);max-width:1180px;margin:0 auto"></div>
+
+  <!-- ============ ICONOGRAPHY ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:72px 40px">
+    <div style="margin-bottom:44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">04 · Foundations</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Iconography</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">One line set: 1.75px stroke, round caps and joins, 24px grid. No emoji anywhere — the onboarding value props, the streak flame, and the weakness target are all drawn to match.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:12px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">home</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">browse</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/><path d="M8 8.5h8M8 12h5"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">talk</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">stats</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">settings</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">review</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.4-4.5-2-8-2v13c3.5 0 6 .6 8 2 2-1.4 4.5-2 8-2V4c-3.5 0-6 .6-8 2Z"/><path d="M12 6v13"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">lesson</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M7 10h13M4 15h16M7 20h13"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">passage</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="var(--danger)"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">weakness</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gra)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1.5 4-1.5 6.5A2.5 2.5 0 0 0 13 12c1.5-1 1-3 1-3 2 1.5 3 3.7 3 6a5 5 0 0 1-10 0c0-3 2.5-4.5 3-6.5.4-1.6 0-3.5 2-5.5Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">streak</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">days</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">filter</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">mic</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 20 5l-7 15-2.5-6.5Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">send</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">history</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">locked</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">correct</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18M18 6 6 18"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">close</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">back</span></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:18px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:var(--e1)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V8"/><path d="M6.5 13.5 12 8l5.5 5.5"/><path d="M5 4h14"/></svg><span style="font:600 10px var(--font-ui);color:var(--muted)">import</span></div>
+    </div>
+  </section>
+
+  <div style="height:1px;background:var(--border);max-width:1180px;margin:0 auto"></div>
+
+  <!-- ============ COMPONENTS ============ -->
+  <section style="max-width:1180px;margin:0 auto;padding:72px 40px 40px">
+    <div style="margin-bottom:44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">05 · Library</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Components</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">The building blocks, assembled from the tokens above. Everything is themeable — the Theme controls switch all of it to dark, another accent, or sharper corners.</p>
+    </div>
+
+    <!-- BUTTONS -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1);margin-bottom:20px">
+      <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Buttons</div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+        <button style="border:none;background:var(--b500);color:#fff;font:700 15px var(--font-ui);padding:14px 26px;border-radius:var(--r-md);box-shadow:0 6px 16px rgba(21,158,119,.28);cursor:pointer">Continue</button>
+        <button style="background:var(--surface);color:var(--b600);font:700 15px var(--font-ui);padding:13px 24px;border-radius:var(--r-md);border:1.5px solid var(--b500);cursor:pointer">Explore on my own</button>
+        <button style="background:var(--surface2);color:var(--text);font:700 15px var(--font-ui);padding:14px 24px;border-radius:var(--r-md);border:none;cursor:pointer">Back</button>
+        <button style="background:transparent;color:var(--muted);font:600 15px var(--font-ui);padding:14px 12px;border:none;cursor:pointer">Don&#39;t know</button>
+        <button style="background:transparent;color:var(--muted);font:600 15px var(--font-ui);padding:14px 12px;border:none;cursor:pointer">End conversation</button>
+        <button style="border:none;background:var(--danger);color:#fff;font:700 15px var(--font-ui);padding:14px 24px;border-radius:var(--r-md);cursor:pointer">Reset progress</button>
+        <button style="border:none;background:var(--surface2);color:var(--faint);font:700 15px var(--font-ui);padding:14px 24px;border-radius:var(--r-md);cursor:not-allowed;opacity:.7">Continue</button>
+      </div>
+      <div style="font:500 12px var(--font-ui);color:var(--faint);margin-top:14px">Disabled primary (far right) is how onboarding step 1 waits for a path choice — greyed, not tinted brand.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+      <!-- FILTER CHIPS + SEARCH -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Search &amp; filter chips <span style="color:var(--b600)">· Browse</span></div>
+        <div style="display:flex;align-items:center;gap:11px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:13px 18px;margin-bottom:14px">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+          <span style="font:500 15px var(--font-ui);color:var(--faint)">Search anything</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font:700 13px var(--font-ui);color:#fff;background:var(--b500);padding:9px 15px;border-radius:999px;display:inline-flex;align-items:center;gap:7px">Type · Kanji<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg></span>
+          <span style="font:700 13px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:9px 15px;border-radius:999px">Level</span>
+          <span style="font:700 13px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:9px 15px;border-radius:999px">Performance</span>
+          <span style="font:700 13px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:9px 15px;border-radius:999px">SRS stage</span>
+        </div>
+        <div style="font:600 13px var(--font-ui);color:var(--muted);margin-top:16px">1,744 results</div>
+      </div>
+      <!-- GOAL RING -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Goal ring <span style="color:var(--b600)">· beatable</span></div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:104px;height:104px;flex:none;border-radius:999px;background:conic-gradient(var(--b500) 0 .33turn,var(--surface2) .33turn 1turn);display:flex;align-items:center;justify-content:center"><div style="width:80px;height:80px;border-radius:999px;background:var(--surface);display:flex;align-items:center;justify-content:center;font:800 24px var(--font-ui);color:var(--ink)">33%</div></div>
+          <div style="width:104px;height:104px;flex:none;border-radius:999px;background:conic-gradient(var(--b500) 0 1turn,var(--b500) 0);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--b100)"><div style="width:80px;height:80px;border-radius:999px;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font:800 22px var(--font-ui);color:var(--b600)">124%</div><div style="font:700 9px var(--font-ui);color:var(--b500);letter-spacing:.06em">BEATEN</div></div></div>
+          <div style="font:500 13px/1.5 var(--font-ui);color:var(--muted)">Fills toward the daily load target. Past 100% the ring gets a jade halo — going over is the good part.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+      <!-- ANSWER INPUTS -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Answer input — all states</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font:500 15px var(--font-jp);color:var(--faint);background:var(--surface2);border:1.5px solid var(--b500);border-radius:var(--r-md);padding:14px 16px;box-shadow:0 0 0 4px var(--b50)">こたえを入力…</div>
+          <div style="font:600 15px var(--font-jp);color:var(--success);background:var(--success-soft);border:1.5px solid var(--success);border-radius:var(--r-md);padding:14px 16px;display:flex;align-items:center;justify-content:space-between">いち<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div style="font:600 15px var(--font-jp);color:var(--danger);background:var(--danger-soft);border:1.5px solid var(--danger);border-radius:var(--r-md);padding:14px 16px;display:flex;align-items:center;justify-content:space-between">しち<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18M18 6 6 18"/></svg></div>
+          <div style="background:var(--warn-soft);border:1.5px solid var(--warn);border-radius:var(--r-md);padding:12px 16px"><div style="font:600 15px var(--font-jp);color:var(--gra-deep)">ひと</div><div style="font:600 12px var(--font-ui);color:var(--gra-deep);margin-top:5px">Almost — that&#39;s a reading, we want the meaning.</div></div>
+          <div style="background:var(--info-soft);border:1.5px solid var(--info);border-radius:var(--r-md);padding:12px 16px"><div style="font:600 15px var(--font-ui);color:var(--rad-deep)">ichi</div><div style="font:600 12px var(--font-ui);color:var(--rad-deep);margin-top:5px">Wrong script — type it in kana.</div></div>
+        </div>
+        <div style="font:500 12px var(--font-ui);color:var(--faint);margin-top:14px">Focus · correct · incorrect · near-miss (warn) · wrong-script hint (info).</div>
+      </div>
+      <!-- CHAT + TOGGLES -->
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+          <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Chat bubbles <span style="color:var(--b600)">· Talk</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="align-self:flex-end;background:var(--b500);color:#fff;border-radius:var(--r-lg) var(--r-lg) 5px var(--r-lg);padding:12px 16px;font:500 17px var(--font-jp);max-width:78%">私は学生です。</div>
+            <div style="align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 5px;padding:12px 16px;font:500 17px/1.9 var(--font-jp);color:var(--ink);max-width:82%">そうですか。<ruby>何<rt style="font-size:9px;color:var(--muted)">なに</rt></ruby>を<ruby>勉強<rt style="font-size:9px;color:var(--muted)">べんきょう</rt></ruby>していますか。</div>
+            <a href="#" style="align-self:flex-start;font:600 13px var(--font-ui);color:var(--b600)">Look up words</a>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+          <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Toggle &amp; stepper rows <span style="color:var(--b600)">· Settings</span></div>
+          <div style="display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+            <div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">Bias reviews toward weak points</div><div style="font:500 12px/1.45 var(--font-ui);color:var(--muted);margin-top:3px">Items you often miss appear earlier.</div></div>
+            <div style="width:48px;height:28px;flex:none;border-radius:999px;background:var(--b500);padding:3px;display:flex;justify-content:flex-end"><div style="width:22px;height:22px;border-radius:999px;background:#fff"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;padding:14px 0">
+            <div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">Lightning Mode</div><div style="font:500 12px/1.45 var(--font-ui);color:var(--muted);margin-top:3px">Auto-advance after correct answers.</div></div>
+            <div style="width:48px;height:28px;flex:none;border-radius:999px;background:var(--surface2);border:1px solid var(--border);padding:3px;display:flex"><div style="width:22px;height:22px;border-radius:999px;background:var(--faint)"></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--border)">
+            <div style="flex:1;font:600 15px var(--font-ui);color:var(--ink)">Daily goal</div>
+            <div style="display:flex;align-items:center;gap:2px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden"><span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;font:700 18px var(--font-ui);color:var(--b600)">–</span><span style="width:52px;text-align:center;font:800 16px var(--font-ui);color:var(--ink)">30</span><span style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;font:700 18px var(--font-ui);color:var(--b600)">+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+      <!-- CHOICE CARDS -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Choice cards <span style="color:var(--b600)">· onboarding &amp; settings</span></div>
+        <div style="display:flex;gap:12px;margin-bottom:14px">
+          <div style="flex:1;border:2px solid var(--b500);background:var(--b50);border-radius:var(--r-lg);padding:16px"><div style="font:800 16px var(--font-ui);color:var(--ink)">Relaxed</div><div style="font:500 14px var(--font-ui);color:var(--text);margin-top:4px">~15 min/day</div><div style="display:inline-block;font:700 11px var(--font-ui);color:var(--b700);background:var(--b100);padding:5px 10px;border-radius:999px;margin-top:10px">Recommended</div></div>
+          <div style="flex:1;border:1px solid var(--border);background:var(--surface);border-radius:var(--r-lg);padding:16px"><div style="font:800 16px var(--font-ui);color:var(--ink)">Intense</div><div style="font:500 14px var(--font-ui);color:var(--text);margin-top:4px">~30 min/day</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:var(--r-md);padding:13px 16px;font:500 14px var(--font-ui);color:var(--text)">Today&#39;s lesson at this pace: <strong style="font-weight:800;color:var(--ink)">5 new items</strong>.</div>
+      </div>
+      <!-- SECTION STEPPER + SESSION HEADERS -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Session headers</div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+          <div style="flex:1;height:8px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:40%;height:100%;background:var(--b500)"></div></div>
+          <span style="font:700 13px var(--font-ui);color:var(--muted)">2/5</span>
+        </div>
+        <div style="font:700 12px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin:16px 0 10px">LESSON · THREE PACED SECTIONS</div>
+        <div style="display:flex;gap:8px;margin-bottom:20px">
+          <span style="flex:1;text-align:center;font:700 11px var(--font-ui);color:var(--faint);background:var(--surface2);padding:9px 4px;border-radius:999px">INTRO</span>
+          <span style="flex:1;text-align:center;font:700 11px var(--font-ui);color:#fff;background:var(--kan);padding:9px 4px;border-radius:999px">MNEMONIC</span>
+          <span style="flex:1;text-align:center;font:700 11px var(--font-ui);color:var(--faint);background:var(--surface2);padding:9px 4px;border-radius:999px">EXAMPLES</span>
+        </div>
+        <div style="font:700 12px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-bottom:10px">REVIEW · ACCURACY + POSITION + TYPE</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;flex:none;border-radius:999px;background:conic-gradient(var(--b500) 0 .33turn,var(--surface2) .33turn 1turn);display:flex;align-items:center;justify-content:center"><div style="width:30px;height:30px;border-radius:999px;background:var(--surface);display:flex;align-items:center;justify-content:center;font:800 10px var(--font-ui);color:var(--ink)">33%</div></div>
+          <span style="font:800 17px var(--font-ui);color:var(--ink)">1 of 6</span>
+          <span style="font:700 11px var(--font-ui);color:var(--kan-deep);background:var(--kan-soft);padding:5px 11px;border-radius:999px;letter-spacing:.08em">KANJI</span>
+          <span style="flex:1"></span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST ROWS / TILES / BANNERS -->
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+        <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">Browse rows — colour edge per type</div>
+        <div style="border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden">
+          <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--rad)"></span><div style="padding:12px 14px;flex:1;display:flex;align-items:center;gap:12px"><span style="font:900 22px var(--font-jp-round);color:var(--rad);width:36px">一</span><div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">ground / one</div></div><span style="font:700 10px var(--font-ui);color:var(--rad-deep);background:var(--rad-soft);padding:4px 9px;border-radius:999px">RADICAL</span><span style="width:9px;height:9px;border-radius:999px;background:var(--srs2)"></span></div></div>
+          <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--kan)"></span><div style="padding:12px 14px;flex:1;display:flex;align-items:center;gap:12px"><span style="font:900 22px var(--font-jp-round);color:var(--kan);width:36px">一</span><div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">one</div></div><span style="font:700 10px var(--font-ui);color:var(--kan-deep);background:var(--kan-soft);padding:4px 9px;border-radius:999px">KANJI</span><span style="width:9px;height:9px;border-radius:999px;background:var(--srs1)"></span></div></div>
+          <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:12px 14px;flex:1;display:flex;align-items:center;gap:12px"><span style="font:900 22px var(--font-jp-round);color:var(--voc);width:36px">私</span><div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">I / me</div></div><span style="font:700 10px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:4px 9px;border-radius:999px">VOCAB</span><span style="width:9px;height:9px;border-radius:999px;background:var(--srs1)"></span></div></div>
+          <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--gra)"></span><div style="padding:12px 14px;flex:1;display:flex;align-items:center;gap:12px"><span style="font:900 22px var(--font-jp-round);color:var(--gra);width:36px">は</span><div style="flex:1"><div style="font:600 15px var(--font-ui);color:var(--ink)">topic marker</div></div><span style="font:700 10px var(--font-ui);color:var(--gra-deep);background:var(--gra-soft);padding:4px 9px;border-radius:999px">GRAMMAR</span><span style="width:9px;height:9px;border-radius:999px;background:var(--srs1)"></span></div></div>
+          <div style="display:flex;align-items:stretch"><span style="width:5px;flex:none;background:var(--pas)"></span><div style="padding:12px 14px;flex:1;display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font:700 17px var(--font-jp);color:var(--pas-deep)">自己紹介</div><div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:2px">Anna introduces herself</div></div><span style="font:700 11px var(--font-ui);color:var(--gra-deep);background:var(--gra-soft);padding:5px 10px;border-radius:999px">9 to go</span></div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+          <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px">Linked item tiles</div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px">
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;text-align:center"><div style="font:700 20px var(--font-jp);color:var(--rad)">百</div><div style="font:600 11px var(--font-ui);color:var(--muted);margin-top:2px">hundred</div></div>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;text-align:center"><div style="font:700 20px var(--font-jp);color:var(--rad)">本</div><div style="font:600 11px var(--font-ui);color:var(--muted);margin-top:2px">book</div></div>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;text-align:center"><div style="font:700 20px var(--font-jp);color:var(--voc)">一緒に</div><div style="font:600 11px var(--font-ui);color:var(--muted);margin-top:2px">together</div></div>
+            <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 14px;text-align:center"><div style="font:700 20px var(--font-jp);color:var(--gra)">が</div><div style="font:600 11px var(--font-ui);color:var(--muted);margin-top:2px">subject</div></div>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)">
+          <div style="font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px">Banner slot · one at a time</div>
+          <div style="background:var(--b50);border-left:0;border-radius:var(--r-md);padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 20V8"/><path d="M6.5 13.5 12 8l5.5 5.5"/><path d="M5 4h14"/></svg>
+            <div style="font:600 13px/1.4 var(--font-ui);color:var(--b800)">Bring your WaniKani progress across — import in Settings.</div>
+          </div>
+          <div style="background:var(--warn-soft);border-radius:var(--r-md);padding:14px 16px;display:flex;align-items:center;gap:12px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gra-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><path d="M12 15.6v.4"/></svg>
+            <div style="font:600 13px/1.4 var(--font-ui);color:var(--gra-deep)">Vacation mode is on — reviews are paused.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREENS ============ -->
+  <section style="background:var(--surface2);border-top:1px solid var(--border);padding:72px 40px 40px;margin-top:56px">
+    <div style="max-width:1180px;margin:0 auto 44px">
+      <div style="font:700 13px/1 var(--font-ui);letter-spacing:.16em;color:var(--b600);text-transform:uppercase">06 · Applied</div>
+      <h2 style="font:800 38px/1.1 var(--font-ui);color:var(--ink);margin:14px 0 10px;letter-spacing:-.01em">Screens</h2>
+      <p style="font:400 17px/1.55 var(--font-ui);color:var(--muted);max-width:660px;margin:0">Fifteen screens across the whole current flow: onboarding, the five tabs, both full-screen sessions, and the item and passage detail pages. Review, summary and Talk are shown in dark to prove the theme end-to-end.</p>
+    </div>
+
+    <div style="max-width:1180px;margin:0 auto 28px;font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.14em">ONBOARDING</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px 36px;justify-content:center;max-width:1180px;margin:0 auto">
+
+      <!-- 1. ONBOARDING · PICK A PATH -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:14px 20px 0">
+              <div style="display:flex;gap:7px;justify-content:center;margin-bottom:22px"><span style="width:8px;height:8px;border-radius:999px;background:var(--b500)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span></div>
+              <div style="font:800 28px/1.15 var(--font-ui);color:var(--ink);letter-spacing:-.01em">Learn Japanese for real</div>
+              <div style="font:400 14px/1.5 var(--font-ui);color:var(--muted);margin-top:9px">Kanji, vocabulary, and grammar in one app — free, offline, no account.</div>
+              <div style="display:flex;flex-direction:column;gap:11px;margin-top:20px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 15px var(--font-ui);color:var(--ink)">I&#39;m new to Japanese</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--muted);margin-top:4px">Start from zero — radicals, first kanji, grammar foundations.</div><span style="display:inline-block;font:700 11px var(--font-ui);color:var(--b700);background:var(--b100);padding:5px 10px;border-radius:999px;margin-top:9px">Most popular</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 15px var(--font-ui);color:var(--ink)">I know some Japanese</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--muted);margin-top:4px">Pick your JLPT level and take a 1-minute check.</div></div>
+                <div style="background:var(--b50);border:2px solid var(--b500);border-radius:var(--r-lg);padding:15px"><div style="font:800 15px var(--font-ui);color:var(--b700)">I have existing knowledge</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--text);margin-top:4px">Import from WaniKani, Bunpro, or Anki — keep everything.</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px"><span style="font:700 10px var(--font-ui);color:var(--b700);background:var(--surface);border:1px solid var(--b200);padding:5px 9px;border-radius:999px">WaniKani API</span><span style="font:700 10px var(--font-ui);color:var(--b700);background:var(--surface);border:1px solid var(--b200);padding:5px 9px;border-radius:999px">Bunpro</span><span style="font:700 10px var(--font-ui);color:var(--b700);background:var(--surface);border:1px solid var(--b200);padding:5px 9px;border-radius:999px">Anki</span></div></div>
+              </div>
+            </div>
+            <div style="padding:12px 20px 20px"><button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 16px var(--font-ui);padding:16px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Continue</button></div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Onboarding · pick a path</div>
+      </div>
+
+      <!-- 2. ONBOARDING · PACE -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:14px 20px 0">
+              <div style="display:flex;gap:7px;justify-content:center;margin-bottom:22px"><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--b500)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span></div>
+              <div style="font:800 28px/1.15 var(--font-ui);color:var(--ink);letter-spacing:-.01em">Set your daily pace</div>
+              <div style="font:400 14px/1.5 var(--font-ui);color:var(--muted);margin-top:9px">Each day you&#39;ll get one auto-built lesson plus your reviews. Change it anytime in Settings.</div>
+              <div style="display:flex;gap:11px;margin-top:22px">
+                <div style="flex:1;border:2px solid var(--b500);background:var(--b50);border-radius:var(--r-lg);padding:16px"><div style="font:800 17px var(--font-ui);color:var(--ink)">Relaxed</div><div style="font:500 14px var(--font-ui);color:var(--text);margin-top:5px">~15 min/day</div><div style="font:700 11px/1.35 var(--font-ui);color:var(--b700);background:var(--b100);padding:7px 9px;border-radius:8px;margin-top:12px">Recommended for new learners</div></div>
+                <div style="flex:1;border:1px solid var(--border);background:var(--surface);border-radius:var(--r-lg);padding:16px"><div style="font:800 17px var(--font-ui);color:var(--ink)">Intense</div><div style="font:500 14px var(--font-ui);color:var(--text);margin-top:5px">~30 min/day</div></div>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 16px;margin-top:12px;font:500 14px var(--font-ui);color:var(--text)">Today&#39;s lesson at this pace: <strong style="font-weight:800;color:var(--ink)">5 new items</strong>.</div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--b50);border-radius:var(--r-md);padding:13px 15px;margin-top:12px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.6v.5"/></svg><div style="font:600 12px/1.4 var(--font-ui);color:var(--b800)">Reviews grow as you learn — pace only controls new items.</div></div>
+            </div>
+            <div style="padding:12px 20px 20px"><button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 16px var(--font-ui);padding:16px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Continue</button></div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Onboarding · daily pace</div>
+      </div>
+
+      <!-- 3. ONBOARDING · READY -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:14px 20px 0">
+              <div style="display:flex;gap:7px;justify-content:center;margin-bottom:22px"><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--border)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--b500)"></span></div>
+              <div style="font:800 28px/1.15 var(--font-ui);color:var(--ink);letter-spacing:-.01em">You&#39;re ready</div>
+              <div style="font:400 14px/1.5 var(--font-ui);color:var(--muted);margin-top:9px">Your path is set. The fastest way to make it stick? Learn something right now.</div>
+              <div style="display:flex;flex-direction:column;gap:11px;margin-top:22px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;gap:14px;box-shadow:var(--e1)"><div style="width:40px;height:40px;flex:none;border-radius:12px;background:var(--rad-soft);display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--rad)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.4-4.5-2-8-2v13c3.5 0 6 .6 8 2 2-1.4 4.5-2 8-2V4c-3.5 0-6 .6-8 2Z"/><path d="M12 6v13"/></svg></div><div><div style="font:800 15px var(--font-ui);color:var(--ink)">One lesson a day</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--muted);margin-top:3px">Built for you automatically, in the right order.</div></div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;gap:14px;box-shadow:var(--e1)"><div style="width:40px;height:40px;flex:none;border-radius:12px;background:var(--kan-soft);display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--kan)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></div><div><div style="font:800 15px var(--font-ui);color:var(--ink)">Reviews that adapt</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--muted);margin-top:3px">Tuned to your weak spots, not a fixed schedule.</div></div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;gap:14px;box-shadow:var(--e1)"><div style="width:40px;height:40px;flex:none;border-radius:12px;background:var(--b100);display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></div><div><div style="font:800 15px var(--font-ui);color:var(--ink)">Yours, offline</div><div style="font:400 13px/1.45 var(--font-ui);color:var(--muted);margin-top:3px">Everything on this device. No account, no subscription.</div></div></div>
+              </div>
+            </div>
+            <div style="padding:12px 20px 20px;display:flex;flex-direction:column;gap:9px">
+              <button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 16px var(--font-ui);padding:16px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Start your first lesson</button>
+              <button style="width:100%;border:1px solid var(--border);background:var(--surface);color:var(--text);font:700 15px var(--font-ui);padding:14px;border-radius:var(--r-md);cursor:pointer">Explore on my own</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Onboarding · ready</div>
+      </div>
+    </div>
+
+    <div style="max-width:1180px;margin:56px auto 28px;font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.14em">THE FIVE TABS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px 36px;justify-content:center;max-width:1180px;margin:0 auto">
+
+      <!-- 4. HOME -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="font:900 27px/1 var(--font-jp-round);color:var(--ink)">おかえり！</div>
+              <div style="font:500 13px var(--font-jp);color:var(--muted);margin-top:6px">私は明日、友達と映画を見ます。</div>
+              <div style="background:var(--surface);border-radius:var(--r-xl);box-shadow:var(--e2);padding:17px;margin-top:12px;display:flex;flex-direction:column;align-items:center">
+                <div style="width:104px;height:104px;border-radius:999px;background:conic-gradient(var(--b500) 0 .33turn,var(--surface2) .33turn 1turn);display:flex;align-items:center;justify-content:center"><div style="width:82px;height:82px;border-radius:999px;background:var(--surface);display:flex;align-items:center;justify-content:center;font:800 26px var(--font-ui);color:var(--ink)">33%</div></div>
+                <div style="font:800 16px var(--font-ui);color:var(--ink);margin-top:12px">Today&#39;s goal</div>
+                <div style="font:400 12px/1.4 var(--font-ui);color:var(--muted);margin-top:3px;text-align:center">Something to beat — going past 100% is the good part</div>
+              </div>
+              <div style="border:2px solid var(--b500);background:var(--b50);border-radius:var(--r-lg);padding:12px;display:flex;align-items:center;gap:12px;margin-top:10px">
+                <div style="width:42px;height:42px;flex:none;border-radius:13px;background:var(--b500);display:flex;align-items:center;justify-content:center;font:900 20px var(--font-jp-round);color:#fff">復</div>
+                <div style="flex:1"><div style="font:800 16px var(--font-ui);color:var(--ink)">Review</div><div style="font:600 13px var(--font-ui);color:var(--b700)">5 items ready</div></div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:12px;display:flex;align-items:center;gap:12px;margin-top:9px;box-shadow:var(--e1)">
+                <div style="width:42px;height:42px;flex:none;border-radius:13px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font:900 20px var(--font-jp-round);color:var(--ink)">学</div>
+                <div style="flex:1"><div style="font:800 16px var(--font-ui);color:var(--ink)">Today&#39;s lesson</div><div style="font:500 12px var(--font-ui);color:var(--muted)">10 of 15 items remaining today</div></div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:13px 15px;margin-top:9px;box-shadow:var(--e1)">
+                <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 16px var(--font-ui);color:var(--ink)">N5 Progress</span><span style="font:800 15px var(--font-ui);color:var(--b600)">4%</span></div>
+                <div style="height:8px;border-radius:999px;background:var(--surface2);margin-top:9px;overflow:hidden"><div style="width:4%;height:100%;background:var(--b500)"></div></div>
+                <div style="display:flex;gap:11px;margin-top:9px;flex-wrap:wrap">
+                  <span style="display:inline-flex;align-items:center;gap:5px;font:600 12px var(--font-ui);color:var(--text)"><span style="width:7px;height:7px;border-radius:999px;background:var(--kan)"></span>Kanji 4/106</span>
+                  <span style="display:inline-flex;align-items:center;gap:5px;font:600 12px var(--font-ui);color:var(--text)"><span style="width:7px;height:7px;border-radius:999px;background:var(--gra)"></span>Grammar 1/74</span>
+                  <span style="display:inline-flex;align-items:center;gap:5px;font:600 12px var(--font-ui);color:var(--text)"><span style="width:7px;height:7px;border-radius:999px;background:var(--voc)"></span>Vocab 6/716</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Home · daily dashboard</div>
+      </div>
+
+      <!-- 5. HOME SCROLLED -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)">
+                <div style="font:800 16px var(--font-ui);color:var(--ink)">This week</div>
+                <div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:3px">18 upcoming · 5 due now</div>
+                <div style="display:flex;gap:5px;margin-top:13px;align-items:flex-end">
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:100%;background:var(--b500);border-radius:5px"></div></div><div style="font:800 13px var(--font-ui);color:var(--ink);margin-top:6px">5</div><div style="font:600 10px var(--font-ui);color:var(--b600)">Today</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:26%;background:var(--b200);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--text);margin-top:6px">3</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Sun</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:60%;background:var(--b200);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--text);margin-top:6px">7</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Mon</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:18%;background:var(--b200);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--text);margin-top:6px">2</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Tue</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:9%;background:var(--surface2);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--faint);margin-top:6px">1</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Wed</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:9%;background:var(--surface2);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--faint);margin-top:6px">0</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Thu</div></div>
+                  <div style="flex:1;text-align:center"><div style="height:44px;display:flex;align-items:flex-end"><div style="width:100%;height:9%;background:var(--surface2);border-radius:5px"></div></div><div style="font:700 13px var(--font-ui);color:var(--faint);margin-top:6px">0</div><div style="font:500 10px var(--font-ui);color:var(--faint)">Fri</div></div>
+                </div>
+              </div>
+              <div style="background:var(--pas-soft);border-radius:var(--r-lg);padding:16px;margin-top:12px">
+                <div style="font:700 11px var(--font-ui);color:var(--pas-deep);letter-spacing:.14em">READING</div>
+                <div style="font:800 17px/1.3 var(--font-ui);color:var(--pas-deep);margin-top:7px">自己紹介 is 9 items away</div>
+                <div style="font:500 13px/1.45 var(--font-ui);color:var(--pas-deep);opacity:.85;margin-top:5px">Get these to Guru and the passage opens up.</div>
+                <div style="height:7px;border-radius:999px;background:rgba(61,74,115,.18);margin-top:12px;overflow:hidden"><div style="width:28%;height:100%;background:var(--pas)"></div></div>
+              </div>
+              <div style="background:var(--danger-soft);border-radius:var(--r-lg);padding:16px;margin-top:12px">
+                <div style="display:flex;align-items:center;gap:9px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg><div style="font:700 11px var(--font-ui);color:var(--danger);letter-spacing:.14em">AT RISK</div></div>
+                <div style="font:600 14px/1.45 var(--font-ui);color:var(--ink);margin-top:9px">3 items are slipping — this session will target them first.</div>
+                <div style="display:flex;gap:7px;margin-top:11px"><span style="font:700 17px var(--font-jp);color:var(--kan);background:var(--surface);border-radius:9px;padding:6px 12px">七</span><span style="font:700 17px var(--font-jp);color:var(--kan);background:var(--surface);border-radius:9px;padding:6px 12px">九</span><span style="font:700 17px var(--font-jp);color:var(--gra);background:var(--surface);border-radius:9px;padding:6px 12px">は</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Home · forecast, reading &amp; at-risk</div>
+      </div>
+
+      <!-- 6. BROWSE -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="font:800 27px var(--font-ui);color:var(--ink);letter-spacing:-.01em">Browse</div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:12px 16px;margin-top:14px;box-shadow:var(--e1)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+                <span style="font:500 15px var(--font-ui);color:var(--faint)">Search anything</span>
+              </div>
+              <div style="display:flex;gap:7px;margin-top:12px;overflow:hidden">
+                <span style="font:700 12px var(--font-ui);color:#fff;background:var(--b500);padding:8px 13px;border-radius:999px;white-space:nowrap">Level N5</span>
+                <span style="font:700 12px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:8px 13px;border-radius:999px;white-space:nowrap">Type</span>
+                <span style="font:700 12px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:8px 13px;border-radius:999px;white-space:nowrap">Performance</span>
+                <span style="font:700 12px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:8px 13px;border-radius:999px;white-space:nowrap">SRS</span>
+              </div>
+              <div style="font:600 12px var(--font-ui);color:var(--muted);margin-top:12px">1,744 results</div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-top:9px;box-shadow:var(--e1)">
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--rad)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:11px"><span style="font:900 21px var(--font-jp-round);color:var(--rad);width:32px">一</span><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">ground / one</div><div style="font:500 11px var(--font-ui);color:var(--faint)">Radical</div></div><span style="width:8px;height:8px;border-radius:999px;background:var(--srs2)"></span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--kan)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:11px"><span style="font:900 21px var(--font-jp-round);color:var(--kan);width:32px">一</span><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">one</div><div style="font:500 11px var(--font-ui);color:var(--faint)">Kanji · いち</div></div><span style="width:8px;height:8px;border-radius:999px;background:var(--srs1)"></span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:11px"><span style="font:900 21px var(--font-jp-round);color:var(--voc);width:32px">私</span><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">I / me</div><div style="font:500 11px var(--font-ui);color:var(--faint)">Vocabulary · わたし</div></div><span style="width:8px;height:8px;border-radius:999px;background:var(--srs1)"></span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--gra)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:11px"><span style="font:900 21px var(--font-jp-round);color:var(--gra);width:32px">は</span><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">topic marker</div><div style="font:500 11px var(--font-ui);color:var(--faint)">Grammar</div></div><span style="width:8px;height:8px;border-radius:999px;background:var(--srs1)"></span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--pas)"></span><div style="padding:11px 13px;flex:1"><div style="display:flex;align-items:center;gap:9px"><div style="flex:1;font:700 16px var(--font-jp);color:var(--pas-deep)">自己紹介</div><span style="font:700 10px var(--font-ui);color:var(--gra-deep);background:var(--gra-soft);padding:4px 8px;border-radius:999px;white-space:nowrap">9 to go</span></div><div style="font:500 12px/1.4 var(--font-jp);color:var(--text);margin-top:4px">イギリスから来た大学生アンナの自己紹介。</div></div></div>
+                <div style="display:flex;align-items:stretch"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:11px"><span style="font:900 21px var(--font-jp-round);color:var(--voc);width:32px">勉強</span><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">study</div><div style="font:500 11px var(--font-ui);color:var(--faint)">Vocabulary · べんきょう</div></div><span style="width:8px;height:8px;border-radius:999px;background:var(--faint)"></span></div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Browse · unified discovery</div>
+      </div>
+
+      <!-- 7. STATS -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="font:800 27px var(--font-ui);color:var(--ink);letter-spacing:-.01em">Stats</div>
+              <div style="display:flex;gap:10px;margin-top:14px">
+                <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 30px/1 var(--font-ui);color:var(--ink)">12</div><div style="font:700 12px var(--font-ui);color:var(--text);margin-top:7px">Days studied</div><div style="font:500 11px var(--font-ui);color:var(--muted);margin-top:2px">this month</div></div>
+                <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="display:flex;align-items:center;gap:7px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gra)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1.5 4-1.5 6.5A2.5 2.5 0 0 0 13 12c1.5-1 1-3 1-3 2 1.5 3 3.7 3 6a5 5 0 0 1-10 0c0-3 2.5-4.5 3-6.5.4-1.6 0-3.5 2-5.5Z"/></svg><div style="font:800 30px/1 var(--font-ui);color:var(--ink)">7</div></div><div style="font:700 12px var(--font-ui);color:var(--text);margin-top:7px">Day streak</div><div style="font:500 11px var(--font-ui);color:var(--muted);margin-top:2px">calm, not a nag</div></div>
+              </div>
+              <div style="font:800 16px var(--font-ui);color:var(--ink);margin-top:14px">SRS stages</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:9px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;display:flex;align-items:center;gap:11px;box-shadow:var(--e1)"><span style="width:10px;height:10px;border-radius:999px;background:var(--srs1)"></span><span style="flex:1;font:700 12px var(--font-ui);color:var(--kan-deep);letter-spacing:.1em">APPRENTICE</span><div style="width:76px;height:6px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:70%;height:100%;background:var(--srs1)"></div></div><span style="font:800 15px var(--font-ui);color:var(--ink);width:24px;text-align:right">21</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;display:flex;align-items:center;gap:11px;box-shadow:var(--e1)"><span style="width:10px;height:10px;border-radius:999px;background:var(--srs2)"></span><span style="flex:1;font:700 12px var(--font-ui);color:var(--voc-deep);letter-spacing:.1em">GURU</span><div style="width:76px;height:6px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:30%;height:100%;background:var(--srs2)"></div></div><span style="font:800 15px var(--font-ui);color:var(--ink);width:24px;text-align:right">9</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;display:flex;align-items:center;gap:11px;box-shadow:var(--e1)"><span style="width:10px;height:10px;border-radius:999px;background:var(--srs3)"></span><span style="flex:1;font:700 12px var(--font-ui);color:var(--rad-deep);letter-spacing:.1em">MASTER</span><div style="width:76px;height:6px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:10%;height:100%;background:var(--srs3)"></div></div><span style="font:800 15px var(--font-ui);color:var(--ink);width:24px;text-align:right">3</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;display:flex;align-items:center;gap:11px;box-shadow:var(--e1)"><span style="width:10px;height:10px;border-radius:999px;background:var(--srs4)"></span><span style="flex:1;font:700 12px var(--font-ui);color:#17A2C4;letter-spacing:.1em">ENLIGHTENED</span><div style="width:76px;height:6px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:0%;height:100%;background:var(--srs4)"></div></div><span style="font:800 15px var(--font-ui);color:var(--faint);width:24px;text-align:right">0</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:11px 14px;display:flex;align-items:center;gap:11px;box-shadow:var(--e1)"><span style="width:10px;height:10px;border-radius:999px;background:var(--srs5)"></span><span style="flex:1;font:700 12px var(--font-ui);color:var(--muted);letter-spacing:.1em">BURNED</span><div style="width:76px;height:6px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:0%;height:100%;background:var(--srs5)"></div></div><span style="font:800 15px var(--font-ui);color:var(--faint);width:24px;text-align:right">0</span></div>
+              </div>
+              <div style="font:800 16px var(--font-ui);color:var(--ink);margin-top:14px">Weak patterns</div>
+              <div style="display:flex;flex-direction:column;gap:7px;margin-top:9px">
+                <div style="background:var(--danger-soft);border-radius:var(--r-md);padding:10px 14px;display:flex;align-items:center;gap:11px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg><div style="flex:1"><div style="font:700 13px var(--font-ui);color:var(--ink)">Reading vs meaning</div><div style="font:500 11px var(--font-ui);color:var(--text)">6 mix-ups this week</div></div></div>
+                <div style="background:var(--warn-soft);border-radius:var(--r-md);padding:10px 14px;display:flex;align-items:center;gap:11px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gra-deep)" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg><div style="flex:1"><div style="font:700 13px var(--font-ui);color:var(--ink)">は vs が</div><div style="font:500 11px var(--font-ui);color:var(--text)">4 mix-ups this week</div></div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Stats · streak lives here</div>
+      </div>
+
+      <!-- 8. SETTINGS -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="font:800 27px var(--font-ui);color:var(--ink);letter-spacing:-.01em">Settings</div>
+              <div style="font:700 11px var(--font-ui);color:var(--faint);letter-spacing:.14em;margin-top:18px">SESSION</div>
+              <div style="display:flex;gap:10px;margin-top:10px">
+                <div style="flex:1;border:2px solid var(--b500);background:var(--b50);border-radius:var(--r-md);padding:13px"><div style="font:800 15px var(--font-ui);color:var(--ink)">Relaxed</div><div style="font:500 12px var(--font-ui);color:var(--text);margin-top:3px">~15 min/day</div></div>
+                <div style="flex:1;border:1px solid var(--border);background:var(--surface);border-radius:var(--r-md);padding:13px"><div style="font:800 15px var(--font-ui);color:var(--ink)">Intense</div><div style="font:500 12px var(--font-ui);color:var(--text);margin-top:3px">~30 min/day</div></div>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:13px 15px;margin-top:10px;display:flex;align-items:center;gap:12px;box-shadow:var(--e1)">
+                <div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">Daily goal</div><div style="font:500 11px var(--font-ui);color:var(--muted);margin-top:2px">load units · no upper limit</div></div>
+                <div style="display:flex;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden"><span style="width:32px;height:34px;display:flex;align-items:center;justify-content:center;font:700 17px var(--font-ui);color:var(--b600)">–</span><span style="width:40px;text-align:center;font:800 15px var(--font-ui);color:var(--ink)">30</span><span style="width:32px;height:34px;display:flex;align-items:center;justify-content:center;font:700 17px var(--font-ui);color:var(--b600)">+</span></div>
+              </div>
+              <div style="font:700 11px var(--font-ui);color:var(--faint);letter-spacing:.14em;margin-top:14px">REVIEW QUEUE</div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);margin-top:10px;box-shadow:var(--e1)">
+                <div style="padding:11px 15px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border)"><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">Bias toward weak points</div><div style="font:500 11px/1.35 var(--font-ui);color:var(--muted);margin-top:2px">Items you often miss come earlier.</div></div><div style="width:44px;height:26px;flex:none;border-radius:999px;background:var(--b500);padding:3px;display:flex;justify-content:flex-end"><div style="width:20px;height:20px;border-radius:999px;background:#fff"></div></div></div>
+                <div style="padding:11px 15px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border)"><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">Lightning Mode</div><div style="font:500 11px/1.35 var(--font-ui);color:var(--muted);margin-top:2px">Auto-advance after correct answers.</div></div><div style="width:44px;height:26px;flex:none;border-radius:999px;background:var(--surface2);border:1px solid var(--border);padding:3px;display:flex"><div style="width:20px;height:20px;border-radius:999px;background:var(--faint)"></div></div></div>
+                <div style="padding:11px 15px;display:flex;align-items:center;gap:14px"><div style="flex:1"><div style="font:600 14px var(--font-ui);color:var(--ink)">Vacation mode</div><div style="font:500 11px/1.35 var(--font-ui);color:var(--muted);margin-top:2px">Pause reviews without losing progress.</div></div><div style="width:44px;height:26px;flex:none;border-radius:999px;background:var(--surface2);border:1px solid var(--border);padding:3px;display:flex"><div style="width:20px;height:20px;border-radius:999px;background:var(--faint)"></div></div></div>
+              </div>
+              <div style="font:700 11px var(--font-ui);color:var(--faint);letter-spacing:.14em;margin-top:14px">APPEARANCE</div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 15px;margin-top:9px;display:flex;align-items:center;gap:10px;box-shadow:var(--e1)">
+                <div style="flex:1;font:600 14px var(--font-ui);color:var(--ink)">Theme</div>
+                <div style="display:inline-flex;background:var(--surface2);border-radius:999px;padding:3px;gap:2px"><span style="font:700 11px var(--font-ui);color:#fff;background:var(--b500);padding:6px 11px;border-radius:999px">Light</span><span style="font:700 11px var(--font-ui);color:var(--muted);padding:6px 11px;border-radius:999px">Dark</span><span style="font:700 11px var(--font-ui);color:var(--muted);padding:6px 11px;border-radius:999px">Auto</span></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Settings</div>
+      </div>
+    </div>
+
+    <div style="max-width:1180px;margin:56px auto 28px;font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.14em">TALK · BRING-YOUR-OWN-KEY AI PRACTICE</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px 36px;justify-content:center;max-width:1180px;margin:0 auto">
+
+      <!-- 9. TALK START -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:10px 18px 0">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font:800 27px var(--font-ui);color:var(--ink);letter-spacing:-.01em">Talk</div>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 8v4l3 2"/></svg>
+              </div>
+              <div style="font:800 24px/1.2 var(--font-ui);color:var(--ink);margin-top:16px">Start a conversation</div>
+              <div style="font:400 14px/1.5 var(--font-ui);color:var(--muted);margin-top:7px">Chat in Japanese. Nothing is corrected while you talk — you get notes once you finish.</div>
+              <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+                <div style="background:var(--surface);border:2px solid var(--gra);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1);display:flex;align-items:center;gap:13px">
+                  <div style="width:42px;height:42px;flex:none;border-radius:12px;background:var(--gra-soft);display:flex;align-items:center;justify-content:center;font:900 20px var(--font-jp-round);color:var(--gra-deep)">は</div>
+                  <div style="flex:1"><div style="font:800 15px var(--font-ui);color:var(--ink)">Practise recent grammar</div><div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:2px">は · topic marker</div></div>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 15px var(--font-ui);color:var(--ink)">Choose grammar</div><div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:3px">Pick the point you want to drill.</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 15px var(--font-ui);color:var(--ink)">Role-play</div><div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:3px">A short everyday scene with a character.</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;box-shadow:var(--e1)"><div style="font:800 15px var(--font-ui);color:var(--ink)">Surprise me</div><div style="font:500 12px var(--font-ui);color:var(--muted);margin-top:3px">A light topic chosen for you.</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--surface2);border-radius:var(--r-md);padding:11px 14px;margin-top:11px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><div style="font:500 11px/1.4 var(--font-ui);color:var(--muted)">Only online feature — key in secure storage, transcripts on-device.</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/><path d="M8 8.5h8M8 12h5"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Talk · start picker</div>
+      </div>
+
+      <!-- 10. TALK CONVERSATION (dark) -->
+      <div>
+        <div data-theme="dark" style="width:322px;height:752px;background:#0E0D0B;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 18px 12px;border-bottom:1px solid var(--border)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg>
+              <div style="flex:1"><div style="font:800 17px var(--font-ui);color:var(--ink)">Conversation</div><div style="font:600 11px var(--font-ui);color:var(--gra)">は · topic marker</div></div>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:14px 16px 0;display:flex;flex-direction:column;gap:9px">
+              <div style="align-self:flex-end;background:var(--b500);color:#fff;border-radius:var(--r-lg) var(--r-lg) 5px var(--r-lg);padding:11px 15px;font:500 16px var(--font-jp);max-width:80%">私は学生です。</div>
+              <div style="align-self:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 5px;padding:11px 15px;font:500 16px/1.95 var(--font-jp);color:var(--ink);max-width:86%">そうですか。<ruby>何<rt style="font-size:9px;color:var(--muted)">なに</rt></ruby>を<ruby>勉強<rt style="font-size:9px;color:var(--muted)">べんきょう</rt></ruby>していますか。</div>
+              <a href="#" style="align-self:flex-start;font:600 12px var(--font-ui);color:var(--b400);margin-top:-2px">Look up words</a>
+              <div style="align-self:flex-end;background:var(--b500);color:#fff;border-radius:var(--r-lg) var(--r-lg) 5px var(--r-lg);padding:11px 15px;font:500 16px var(--font-jp);max-width:80%;margin-top:4px">日本語を勉強しています。</div>
+              <div style="align-self:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg) var(--r-lg) var(--r-lg) 5px;padding:11px 15px;font:500 16px/1.95 var(--font-jp);color:var(--ink);max-width:86%"><ruby>日本語<rt style="font-size:9px;color:var(--muted)">にほんご</rt></ruby>の<ruby>勉強<rt style="font-size:9px;color:var(--muted)">べんきょう</rt></ruby>は<ruby>楽<rt style="font-size:9px;color:var(--muted)">たの</rt></ruby>しいですか。</div>
+              <a href="#" style="align-self:flex-start;font:600 12px var(--font-ui);color:var(--b400);margin-top:-2px">Look up words</a>
+              <div style="align-self:center;margin-top:8px;font:600 13px var(--font-ui);color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:8px 18px">End conversation</div>
+            </div>
+            <div style="padding:12px 14px 18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:9px">
+              <div style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:12px 16px;font:500 14px var(--font-jp);color:var(--faint)">日本語で書いてみましょう</div>
+              <div style="width:44px;height:44px;flex:none;border-radius:999px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div>
+              <div style="width:44px;height:44px;flex:none;border-radius:999px;background:var(--b500);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 20 5l-7 15-2.5-6.5Z"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Talk · conversation <span style="color:var(--faint)">(dark)</span></div>
+      </div>
+    </div>
+
+    <div style="max-width:1180px;margin:56px auto 28px;font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.14em">FULL-SCREEN SESSIONS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px 36px;justify-content:center;max-width:1180px;margin:0 auto">
+
+      <!-- 11. LESSON · MNEMONIC -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="padding:10px 18px 0;display:flex;align-items:center;gap:12px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+              <div style="flex:1;height:8px;border-radius:999px;background:var(--surface2);overflow:hidden"><div style="width:20%;height:100%;background:var(--rad)"></div></div>
+              <span style="font:700 13px var(--font-ui);color:var(--muted)">1/5</span>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:14px 18px 0">
+              <div style="display:flex;gap:6px;margin-bottom:14px">
+                <span style="flex:1;text-align:center;font:700 10px var(--font-ui);color:var(--faint);background:var(--surface2);padding:8px 3px;border-radius:999px;letter-spacing:.06em">INTRO</span>
+                <span style="flex:1;text-align:center;font:700 10px var(--font-ui);color:#fff;background:var(--rad);padding:8px 3px;border-radius:999px;letter-spacing:.06em">MNEMONIC</span>
+                <span style="flex:1;text-align:center;font:700 10px var(--font-ui);color:var(--faint);background:var(--surface2);padding:8px 3px;border-radius:999px;letter-spacing:.06em">EXAMPLES</span>
+              </div>
+              <div style="background:var(--rad-soft);border-radius:var(--r-xl);padding:20px;display:flex;flex-direction:column;align-items:center">
+                <span style="font:700 10px var(--font-ui);color:var(--rad-deep);letter-spacing:.16em;background:rgba(255,255,255,.6);padding:5px 12px;border-radius:999px">RADICAL</span>
+                <div style="font:900 68px/1 var(--font-jp-round);color:var(--rad-deep);margin:16px 0 10px">一</div>
+                <div style="font:800 18px var(--font-ui);color:var(--rad-deep)">ground / one</div>
+              </div>
+              <div style="font:400 15px/1.6 var(--font-ui);color:var(--text);margin-top:16px">Picture a single flat line stretching out in front of you — one long horizon where the flat earth meets the sky. That&#39;s the one, level <strong style="color:var(--rad);font-weight:700">ground</strong> you&#39;re standing on.</div>
+              <div style="margin-top:14px;border-radius:var(--r-lg);border:1.5px dashed var(--border);background:var(--surface);height:132px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="10" r="1.8"/><path d="m3.5 17 5-4.5 4 3.5 3-2.5 5 4"/></svg>
+                <div style="font:600 12px var(--font-ui);color:var(--faint)">AI mnemonic illustration</div>
+              </div>
+            </div>
+            <div style="padding:12px 18px 20px;display:flex;gap:10px">
+              <button style="flex:0 0 96px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:700 15px var(--font-ui);padding:15px;border-radius:var(--r-md);cursor:pointer">Back</button>
+              <button style="flex:1;border:none;background:var(--b500);color:#fff;font:800 16px var(--font-ui);padding:15px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Continue</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Lesson · mnemonic (2 of 3)</div>
+      </div>
+
+      <!-- 12. REVIEW QUIZ (dark) -->
+      <div>
+        <div data-theme="dark" style="width:322px;height:752px;background:#0E0D0B;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="padding:10px 18px 0;display:flex;align-items:center;gap:11px">
+              <div style="width:38px;height:38px;flex:none;border-radius:999px;background:conic-gradient(var(--b500) 0 .83turn,var(--surface2) .83turn 1turn);display:flex;align-items:center;justify-content:center"><div style="width:29px;height:29px;border-radius:999px;background:var(--bg);display:flex;align-items:center;justify-content:center;font:800 10px var(--font-ui);color:var(--ink)">83%</div></div>
+              <span style="font:800 17px var(--font-ui);color:var(--ink)">4 of 6</span>
+              <span style="font:700 10px var(--font-ui);color:var(--kan-deep);background:var(--kan-soft);padding:5px 10px;border-radius:999px;letter-spacing:.1em">KANJI</span>
+              <span style="flex:1"></span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px">
+              <div style="font:800 17px var(--font-ui);color:var(--rad);letter-spacing:.02em">Meaning</div>
+              <div style="font:900 132px/1 var(--font-jp-round);color:var(--ink);margin:22px 0 18px">一</div>
+              <span style="font:700 11px var(--font-ui);color:var(--kan);letter-spacing:.16em">APPRENTICE</span>
+              <div style="width:100%;background:var(--surface);border:1.5px solid var(--b500);border-radius:var(--r-md);padding:15px;margin-top:28px;font:500 16px var(--font-ui);color:var(--faint);text-align:center;box-shadow:0 0 0 4px var(--b100)">Type the meaning in English…</div>
+              <button style="background:transparent;border:none;color:var(--muted);font:600 15px var(--font-ui);margin-top:18px;cursor:pointer">Don&#39;t know</button>
+            </div>
+            <div style="padding:0 18px 20px"><button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 17px var(--font-ui);padding:16px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Submit</button></div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Review · meaning card <span style="color:var(--faint)">(dark)</span></div>
+      </div>
+
+      <!-- 13. SESSION SUMMARY (dark) -->
+      <div>
+        <div data-theme="dark" style="width:322px;height:752px;background:#0E0D0B;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="flex:1;overflow:hidden;padding:16px 18px 0;display:flex;flex-direction:column">
+              <div style="display:flex;flex-direction:column;align-items:center;margin-top:6px">
+                <div style="width:70px;height:70px;border-radius:999px;background:var(--b500);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(21,158,119,.4)"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                <div style="font:800 23px var(--font-ui);color:var(--ink);margin-top:16px">Session complete</div>
+                <div style="font:500 13px var(--font-ui);color:var(--muted);margin-top:3px">6 reviews · 4 min</div>
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:20px;margin-top:20px;display:flex;align-items:center;gap:18px">
+                <div style="width:82px;height:82px;flex:none;border-radius:999px;background:conic-gradient(var(--b500) 0 .83turn,var(--surface2) .83turn 1turn);display:flex;align-items:center;justify-content:center"><div style="width:62px;height:62px;border-radius:999px;background:var(--surface);display:flex;align-items:center;justify-content:center;font:800 20px var(--font-ui);color:var(--ink)">83%</div></div>
+                <div><div style="font:800 15px var(--font-ui);color:var(--ink)">First-try accuracy</div><div style="font:500 12px/1.45 var(--font-ui);color:var(--muted);margin-top:4px">5 of 6 right the first time.</div></div>
+              </div>
+              <div style="background:var(--b500);border-radius:var(--r-xl);padding:18px;margin-top:12px">
+                <div style="font:700 11px var(--font-ui);color:rgba(255,255,255,.82);letter-spacing:.1em">GOAL CONTRIBUTION</div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-top:7px"><div style="font:800 27px var(--font-ui);color:#fff">+18%</div><div style="font:700 15px var(--font-ui);color:rgba(255,255,255,.9)">→ 51% of today</div></div>
+                <div style="height:7px;border-radius:999px;background:rgba(255,255,255,.28);margin-top:11px;overflow:hidden"><div style="width:51%;height:100%;background:#fff"></div></div>
+              </div>
+              <div style="display:flex;gap:9px;margin-top:12px">
+                <div style="flex:1;background:var(--kan-soft);border-radius:var(--r-md);padding:13px;text-align:center"><div style="font:800 20px var(--font-ui);color:var(--kan-deep)">4</div><div style="font:600 10px var(--font-ui);color:var(--kan-deep)">Kanji</div></div>
+                <div style="flex:1;background:var(--voc-soft);border-radius:var(--r-md);padding:13px;text-align:center"><div style="font:800 20px var(--font-ui);color:var(--voc-deep)">1</div><div style="font:600 10px var(--font-ui);color:var(--voc-deep)">Vocab</div></div>
+                <div style="flex:1;background:var(--gra-soft);border-radius:var(--r-md);padding:13px;text-align:center"><div style="font:800 20px var(--font-ui);color:var(--gra-deep)">1</div><div style="font:600 10px var(--font-ui);color:var(--gra-deep)">Grammar</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--danger-soft);border-radius:var(--r-md);padding:12px 14px;margin-top:12px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg><div style="font:600 12px/1.4 var(--font-ui);color:var(--ink)">七 slipped again — queued sooner next time.</div></div>
+            </div>
+            <div style="padding:12px 18px 20px"><button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 16px var(--font-ui);padding:16px;border-radius:var(--r-md);box-shadow:0 8px 20px rgba(21,158,119,.3);cursor:pointer">Done</button></div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Session summary <span style="color:var(--faint)">(dark)</span></div>
+      </div>
+    </div>
+
+    <div style="max-width:1180px;margin:56px auto 28px;font:700 13px var(--font-ui);color:var(--faint);letter-spacing:.14em">DETAIL PAGES</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px 36px;justify-content:center;max-width:1180px;margin:0 auto">
+
+      <!-- 14. KANJI DETAIL -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 18px 12px">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg>
+              <span style="font:700 11px var(--font-ui);color:var(--kan-deep);background:var(--kan-soft);padding:5px 11px;border-radius:999px;letter-spacing:.1em">KANJI</span>
+              <span style="flex:1"></span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font:700 11px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:5px 11px;border-radius:999px"><span style="width:7px;height:7px;border-radius:999px;background:var(--srs2)"></span>GURU</span>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:0 18px">
+              <div style="background:var(--kan-soft);border-radius:var(--r-xl);padding:22px;display:flex;flex-direction:column;align-items:center">
+                <div style="font:900 76px/1 var(--font-jp-round);color:var(--kan-deep)">一</div>
+                <div style="font:800 20px var(--font-ui);color:var(--kan-deep);margin-top:8px">one</div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:12px">
+                <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 15px;box-shadow:var(--e1)"><div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em">ON&#39;YOMI</div><div style="font:700 21px var(--font-jp);color:var(--ink);margin-top:5px">いち</div></div>
+                <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:13px 15px;box-shadow:var(--e1)"><div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em">KUN&#39;YOMI</div><div style="font:700 21px var(--font-jp);color:var(--ink);margin-top:5px">ひと</div></div>
+              </div>
+              <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-top:13px">MEANING MNEMONIC</div>
+              <div style="font:400 14px/1.55 var(--font-ui);color:var(--text);margin-top:6px">One flat line of hard-packed dirt stretches across an empty plain. Standing dead centre on that <strong style="color:var(--rad);font-weight:700">ground</strong>, as always, is the smug goat — the only creature in the world, as far as she is concerned.</div>
+              <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-top:13px">BUILT FROM</div>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <div style="background:var(--rad-soft);border-radius:var(--r-sm);padding:9px 14px;text-align:center"><div style="font:700 19px var(--font-jp);color:var(--rad-deep)">一</div><div style="font:600 10px var(--font-ui);color:var(--rad-deep);margin-top:1px">ground</div></div>
+              </div>
+              <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-top:13px">VOCABULARY USING THIS KANJI</div>
+              <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:8px">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 12px"><div style="font:700 16px var(--font-jp);color:var(--voc)">一つ</div><div style="font:600 10px var(--font-ui);color:var(--muted)">one thing</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 12px"><div style="font:700 16px var(--font-jp);color:var(--voc)">一番</div><div style="font:600 10px var(--font-ui);color:var(--muted)">number one</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 12px"><div style="font:700 16px var(--font-jp);color:var(--voc)">一緒に</div><div style="font:600 10px var(--font-ui);color:var(--muted)">together</div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Kanji detail</div>
+      </div>
+
+      <!-- 15. VOCAB DETAIL -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 18px 12px">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg>
+              <span style="font:700 11px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:5px 11px;border-radius:999px;letter-spacing:.1em">VOCABULARY</span>
+              <span style="flex:1"></span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font:700 11px var(--font-ui);color:var(--kan-deep);background:var(--kan-soft);padding:5px 11px;border-radius:999px"><span style="width:7px;height:7px;border-radius:999px;background:var(--srs1)"></span>APPRENTICE</span>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:0 18px">
+              <div style="background:var(--voc-soft);border-radius:var(--r-xl);padding:22px;display:flex;flex-direction:column;align-items:center">
+                <div style="font:600 13px var(--font-jp);color:var(--voc-deep);opacity:.85">わたし</div>
+                <div style="font:900 66px/1.1 var(--font-jp-round);color:var(--voc-deep);margin-top:2px">私</div>
+                <div style="font:800 19px var(--font-ui);color:var(--voc-deep);margin-top:6px">I / me</div>
+              </div>
+              <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-top:16px">FURIGANA FOR THIS WORD</div>
+              <div style="display:flex;gap:7px;margin-top:9px">
+                <span style="flex:1;text-align:center;font:700 12px var(--font-ui);color:#fff;background:var(--b500);padding:10px 4px;border-radius:999px">Follow progress</span>
+                <span style="flex:1;text-align:center;font:700 12px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:10px 4px;border-radius:999px">Always show</span>
+                <span style="flex:1;text-align:center;font:700 12px var(--font-ui);color:var(--text);background:var(--surface);border:1px solid var(--border);padding:10px 4px;border-radius:999px">Hide</span>
+              </div>
+              <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em;margin-top:16px">EXAMPLES</div>
+              <div style="display:flex;flex-direction:column;gap:12px;margin-top:9px">
+                <div><div style="font:500 17px/2.1 var(--font-jp);color:var(--ink)"><span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>私<rt style="font-size:9px;color:var(--muted)">わたし</rt></ruby></span>は<ruby>明日<rt style="font-size:9px;color:var(--muted)">あした</rt></ruby>、<ruby>友達<rt style="font-size:9px;color:var(--muted)">ともだち</rt></ruby>と<ruby>映画<rt style="font-size:9px;color:var(--muted)">えいが</rt></ruby>を<ruby>見<rt style="font-size:9px;color:var(--muted)">み</rt></ruby>ます。</div><div style="font:400 13px var(--font-ui);color:var(--muted);margin-top:3px">I will watch a movie with my friend tomorrow.</div></div>
+                <div><div style="font:500 17px/2.1 var(--font-jp);color:var(--ink)"><span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>私<rt style="font-size:9px;color:var(--muted)">わたし</rt></ruby></span>の<ruby>部屋<rt style="font-size:9px;color:var(--muted)">へや</rt></ruby>は<ruby>寒<rt style="font-size:9px;color:var(--muted)">さむ</rt></ruby>いです。</div><div style="font:400 13px var(--font-ui);color:var(--muted);margin-top:3px">My room is cold.</div></div>
+              </div>
+              <div style="background:var(--gra-soft);border-radius:var(--r-md);padding:13px 15px;margin-top:14px">
+                <div style="font:700 10px var(--font-ui);color:var(--gra-deep);letter-spacing:.12em">GRAMMAR USING THIS WORD</div>
+                <div style="display:flex;gap:7px;margin-top:9px">
+                  <span style="font:700 15px var(--font-jp);color:var(--gra-deep);background:var(--surface);border-radius:9px;padding:7px 13px">は</span>
+                  <span style="font:700 15px var(--font-jp);color:var(--gra-deep);background:var(--surface);border-radius:9px;padding:7px 13px">の</span>
+                  <span style="font:700 15px var(--font-jp);color:var(--gra-deep);background:var(--surface);border-radius:9px;padding:7px 13px">も</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Vocabulary detail</div>
+      </div>
+
+      <!-- 16. PASSAGE LOCKED -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 18px 12px">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg>
+              <span style="font:700 11px var(--font-ui);color:var(--pas-deep);background:var(--pas-soft);padding:5px 11px;border-radius:999px;letter-spacing:.1em">PASSAGE</span>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:0 18px">
+              <div style="background:var(--pas-soft);border-radius:var(--r-xl);padding:20px">
+                <div style="font:700 25px var(--font-jp);color:var(--pas-deep)">自己紹介</div>
+                <div style="font:500 14px/1.6 var(--font-jp);color:var(--pas-deep);margin-top:7px">イギリスから来た大学生アンナの自己紹介。</div>
+                <div style="font:400 13px var(--font-ui);color:var(--pas-deep);opacity:.8;margin-top:5px">Anna, a university student from England, introduces herself.</div>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--pas-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+                  <span style="font:800 13px var(--font-ui);color:var(--gra-deep);background:var(--gra-soft);padding:6px 12px;border-radius:999px">9 to go</span>
+                  <span style="font:500 12px var(--font-ui);color:var(--pas-deep)">to Guru</span>
+                </div>
+                <div style="height:8px;border-radius:999px;background:rgba(61,74,115,.2);margin-top:13px;overflow:hidden"><div style="width:28%;height:100%;background:var(--pas)"></div></div>
+                <div style="font:500 12px var(--font-ui);color:var(--pas-deep);opacity:.85;margin-top:8px">Get these to Guru and this passage opens up.</div>
+              </div>
+              <div style="font:800 16px var(--font-ui);color:var(--ink);margin-top:18px">Still to learn</div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-top:10px;box-shadow:var(--e1)">
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font:700 17px var(--font-jp);color:var(--voc)">勉強</div><div style="font:500 12px var(--font-ui);color:var(--muted)">study</div></div><span style="font:700 10px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:4px 9px;border-radius:999px">VOCAB</span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font:700 17px var(--font-jp);color:var(--voc)">はじめまして</div><div style="font:500 12px var(--font-ui);color:var(--muted)">nice to meet you</div></div><span style="font:700 10px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:4px 9px;border-radius:999px">VOCAB</span></div></div>
+                <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--border)"><span style="width:5px;flex:none;background:var(--voc)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font:700 17px var(--font-jp);color:var(--voc)">日本語</div><div style="font:500 12px var(--font-ui);color:var(--muted)">Japanese</div></div><span style="font:700 10px var(--font-ui);color:var(--voc-deep);background:var(--voc-soft);padding:4px 9px;border-radius:999px">VOCAB</span></div></div>
+                <div style="display:flex;align-items:stretch"><span style="width:5px;flex:none;background:var(--gra)"></span><div style="padding:11px 13px;flex:1;display:flex;align-items:center;gap:10px"><div style="flex:1"><div style="font:700 17px var(--font-jp);color:var(--gra)">は</div><div style="font:500 12px var(--font-ui);color:var(--muted)">topic marker</div></div><span style="font:700 10px var(--font-ui);color:var(--gra-deep);background:var(--gra-soft);padding:4px 9px;border-radius:999px">GRAMMAR</span></div></div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Passage · locked</div>
+      </div>
+
+      <!-- 17. PASSAGE UNLOCKED -->
+      <div>
+        <div style="width:322px;height:752px;background:#1C1A17;border-radius:44px;padding:10px;box-shadow:var(--e3)">
+          <div style="width:100%;height:100%;background:var(--bg);border-radius:35px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 22px 4px"><span style="font:700 13px var(--font-ui);color:var(--ink)">9:41</span><div style="display:flex;align-items:center;gap:5px;color:var(--ink)"><svg width="15" height="11" viewBox="0 0 18 12" fill="currentColor"><rect y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" width="3" height="12" rx="1" opacity=".4"/></svg><svg width="22" height="11" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="3" width="14" height="6" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor"/></svg></div></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 18px 12px">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 4 12l7 7"/><path d="M4 12h15"/></svg>
+              <span style="font:700 11px var(--font-ui);color:var(--pas-deep);background:var(--pas-soft);padding:5px 11px;border-radius:999px;letter-spacing:.1em">PASSAGE</span>
+              <span style="flex:1"></span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font:700 11px var(--font-ui);color:var(--success);background:var(--success-soft);padding:5px 11px;border-radius:999px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>OPEN</span>
+            </div>
+            <div style="flex:1;overflow:hidden;padding:0 18px">
+              <div style="font:800 23px var(--font-jp);color:var(--ink)">自己紹介</div>
+              <div style="font:400 12px var(--font-ui);color:var(--muted);margin-top:4px">Anna, a university student from England, introduces herself.</div>
+              <div style="font:500 17px/2.35 var(--font-jp);color:var(--ink);margin-top:14px">
+                <span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)">はじめまして</span>。<ruby>私<rt style="font-size:9px;color:var(--muted)">わたし</rt></ruby>はアンナです。イギリスから<ruby>来<rt style="font-size:9px;color:var(--muted)">き</rt></ruby>ました。<ruby>今<rt style="font-size:9px;color:var(--muted)">いま</rt></ruby>、<span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>日本語<rt style="font-size:9px;color:var(--muted)">にほんご</rt></ruby></span>を<span style="color:var(--voc-deep);border-bottom:1.5px solid var(--voc)"><ruby>勉強<rt style="font-size:9px;color:var(--muted)">べんきょう</rt></ruby></span>しています。<ruby>大学生<rt style="font-size:9px;color:var(--muted)">だいがくせい</rt></ruby>です。
+              </div>
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;margin-top:16px;box-shadow:var(--e1)">
+                <div style="font:700 10px var(--font-ui);color:var(--faint);letter-spacing:.12em">COMPREHENSION · 1 OF 2</div>
+                <div style="font:500 17px/1.9 var(--font-jp);color:var(--ink);margin-top:9px">アンナさんはどこから<ruby>来<rt style="font-size:9px;color:var(--muted)">き</rt></ruby>ましたか。</div>
+                <div style="background:var(--surface2);border:1.5px solid var(--b500);border-radius:var(--r-md);padding:13px 15px;margin-top:12px;font:500 15px var(--font-jp);color:var(--faint);box-shadow:0 0 0 4px var(--b50)">こたえを入力…</div>
+                <button style="width:100%;border:none;background:var(--b500);color:#fff;font:800 15px var(--font-ui);padding:14px;border-radius:var(--r-md);margin-top:11px;cursor:pointer">Submit</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:9px;background:var(--voc-soft);border-radius:var(--r-md);padding:12px 14px;margin-top:12px"><span style="width:8px;height:8px;border-radius:999px;background:var(--voc);flex:none"></span><div style="font:600 12px/1.4 var(--font-ui);color:var(--voc-deep)">勉強 — you learned this yesterday</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-around;align-items:center;padding:9px 4px 15px;border-top:1px solid var(--border);background:var(--surface)">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9.5 20v-6h5v6"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Home</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--b500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg><span style="font:700 10px var(--font-ui);color:var(--b500)">Browse</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7A2.5 2.5 0 0 1 17.5 16H9l-5 4Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Talk</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Stats</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.8-3.1-2 .8a7.6 7.6 0 0 0-2.6-1.5L14.4 3H9.6l-.3 2.1a7.6 7.6 0 0 0-2.6 1.5l-2-.8L2.9 8.9l1.7 1.3a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.8 3.1 2-.8a7.6 7.6 0 0 0 2.6 1.5l.3 2.1h4.8l.3-2.1a7.6 7.6 0 0 0 2.6-1.5l2 .8 1.8-3.1Z"/></svg><span style="font:600 10px var(--font-ui);color:var(--faint)">Settings</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;font:700 13px var(--font-ui);color:var(--muted);margin-top:16px">Passage · unlocked</div>
+      </div>
+</div>
+  </section>
+
+  <footer style="max-width:1180px;margin:0 auto;padding:44px 40px 72px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:11px;background:linear-gradient(150deg,var(--b400),var(--b600));display:flex;align-items:center;justify-content:center"><span style="font:900 18px var(--font-jp-round);color:#fff">学</span></div>
+      <div><div style="font:700 14px var(--font-ui);color:var(--ink)">Japanese Learning</div><div style="font:500 12px var(--font-ui);color:var(--faint)">Design System · v2.0 · Home · Browse · Talk · Stats · Settings</div></div>
+    </div>
+    <div style="font:500 12px var(--font-ui);color:var(--faint)">Plus Jakarta Sans · Noto Sans JP · Zen Maru Gothic</div>
+  </footer>
+<!--END--></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1260,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;brandAccent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Jade&quot;,&quot;Vermilion&quot;,&quot;Indigo&quot;],&quot;default&quot;:&quot;Jade&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;rounding&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Soft&quot;,&quot;Rounded&quot;,&quot;Sharp&quot;],&quot;default&quot;:&quot;Rounded&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { setRoot:(el)=>{ this._root=el; if(el) this._applyTheme(); } };
+  }
+  _light(){ return {
+    '--bg':'#F7F5F2','--surface':'#FFFFFF','--surface2':'#F2EFEA','--border':'#E7E2DB','--ink':'#23201C','--text':'#46423B','--muted':'#7C766C','--faint':'#A8A199',
+    '--rad':'#2F84D0','--rad-soft':'#E6F0FB','--rad-deep':'#1E5C97',
+    '--kan':'#E14D86','--kan-soft':'#FCE6EE','--kan-deep':'#A82D5E',
+    '--voc':'#8B5AD4','--voc-soft':'#EFE8FB','--voc-deep':'#5E3A9E',
+    '--gra':'#CE912C','--gra-soft':'#FBF0DC','--gra-deep':'#8F5F16',
+    '--pas':'#5C6B99','--pas-soft':'#EAECF5','--pas-deep':'#3D4A73',
+    '--success-soft':'#E4F6EE','--warn-soft':'#FBEEDA','--danger-soft':'#FCE7E4','--info-soft':'#E6F0FB',
+    '--e1':'0 1px 2px rgba(31,29,26,.06),0 1px 3px rgba(31,29,26,.05)','--e2':'0 2px 8px rgba(31,29,26,.06),0 10px 28px rgba(31,29,26,.06)','--e3':'0 10px 40px rgba(31,29,26,.14)'
+  };}
+  _dark(){ return {
+    '--bg':'#1B1917','--surface':'#24211E','--surface2':'#2D2A26','--border':'#3A362F','--ink':'#F6F3EE','--text':'#D8D3CA','--muted':'#A29C90','--faint':'#726C61',
+    '--rad':'#5AA0DE','--rad-soft':'rgba(47,132,208,.18)','--rad-deep':'#A9CDEF',
+    '--kan':'#EC6E9E','--kan-soft':'rgba(225,77,134,.18)','--kan-deep':'#F5A9C4',
+    '--voc':'#A585E0','--voc-soft':'rgba(139,90,212,.18)','--voc-deep':'#CDB6F0',
+    '--gra':'#DFA94E','--gra-soft':'rgba(206,145,44,.18)','--gra-deep':'#EAC489',
+    '--pas':'#8E9CC4','--pas-soft':'rgba(92,107,153,.22)','--pas-deep':'#C3CCE4',
+    '--success-soft':'rgba(31,169,113,.20)','--warn-soft':'rgba(229,138,30,.20)','--danger-soft':'rgba(225,72,61,.20)','--info-soft':'rgba(47,132,208,.20)',
+    '--e1':'0 1px 2px rgba(0,0,0,.4)','--e2':'0 6px 24px rgba(0,0,0,.5)','--e3':'0 12px 44px rgba(0,0,0,.6)'
+  };}
+  _applyTheme(){
+    const root=this._root; if(!root) return;
+    const set=(o)=>Object.entries(o).forEach(([k,v])=>root.style.setProperty(k,v));
+    const t=this.props.theme||'light';
+    set(t==='dark'?this._dark():this._light());
+    set({'--b50':'#EAF7F2','--b100':'#CDEEE2','--b400':'#34B48D','--b500':'#159E77','--b600':'#0E8163','--b700':'#0C654E','--b800':'#0C503F'});
+    const acc=this.props.brandAccent||'Jade';
+    if(acc==='Vermilion') set({'--b50':'#FCEDE8','--b100':'#F8D6CB','--b400':'#E86A4E','--b500':'#E24E2E','--b600':'#C43D20','--b700':'#9E2F16','--b800':'#7A2410'});
+    if(acc==='Indigo') set({'--b50':'#ECEEFC','--b100':'#D7DBF8','--b400':'#6C77E0','--b500':'#4F5BD6','--b600':'#3E49BE','--b700':'#2F389B','--b800':'#252C7A'});
+    const rd=this.props.rounding||'Rounded';
+    if(rd==='Soft') set({'--r-sm':'14px','--r-md':'20px','--r-lg':'26px','--r-xl':'32px'});
+    else if(rd==='Sharp') set({'--r-sm':'6px','--r-md':'8px','--r-lg':'10px','--r-xl':'14px'});
+    else set({'--r-sm':'10px','--r-md':'14px','--r-lg':'18px','--r-xl':'24px'});
+    const dk=this._dark();
+    root.querySelectorAll('[data-theme="dark"]').forEach(el=>Object.entries(dk).forEach(([k,v])=>el.style.setProperty(k,v)));
+  }
+  componentDidMount(){ this._applyTheme(); }
+  componentDidUpdate(){ this._applyTheme(); }
+}
+</script>
+</body>
+</html>
