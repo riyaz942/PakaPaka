@@ -104,6 +104,47 @@
       "review_status": "draft"
     }
   },
+  "aida": {
+    "example_sentences": [
+      {
+        "japanese": "授業の間、静かに座っていました。",
+        "english": "I sat quietly during class.",
+        "vocabulary_slugs": [
+          "jugyou",
+          "aida",
+          "shizuka",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "友達を待っている間に、コーヒーを飲みました。",
+        "english": "While I was waiting for my friend, I drank some coffee.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "matsu",
+          "aida",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "朝と晩の間に、宿題をしました。",
+        "english": "I did my homework sometime between morning and evening.",
+        "vocabulary_slugs": [
+          "asa",
+          "ban",
+          "aida",
+          "shukudai",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "aka-color": {
     "example_sentences": [
       {
@@ -1906,6 +1947,45 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "chikaku": {
+    "example_sentences": [
+      {
+        "japanese": "駅の近くに図書館があります。",
+        "english": "There's a library near the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikaku",
+          "toshokan",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "私の家はこの近くです。",
+        "english": "My house is near here.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ie",
+          "kono",
+          "chikaku"
+        ]
+      },
+      {
+        "japanese": "彼は公園の近くに住んでいます。",
+        "english": "He lives near the park.",
+        "vocabulary_slugs": [
+          "kare",
+          "kouen",
+          "chikaku",
+          "sumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -7162,6 +7242,42 @@
       "review_status": "draft"
     }
   },
+  "kata-person": {
+    "example_sentences": [
+      {
+        "japanese": "あの方は先生です。",
+        "english": "That person over there is a teacher.",
+        "vocabulary_slugs": [
+          "ano",
+          "kata-person",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "この方は誰ですか。",
+        "english": "Who is this person?",
+        "vocabulary_slugs": [
+          "kono",
+          "kata-person",
+          "dare"
+        ]
+      },
+      {
+        "japanese": "その方はとても親切でした。",
+        "english": "That person was very kind.",
+        "vocabulary_slugs": [
+          "sono",
+          "kata-person",
+          "shinsetsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "katakana": {
     "example_sentences": [
       {
@@ -9466,6 +9582,46 @@
       "review_status": "draft"
     }
   },
+  "mae": {
+    "example_sentences": [
+      {
+        "japanese": "駅の前でともだちを待ちます。",
+        "english": "I'll wait for my friend in front of the station.",
+        "vocabulary_slugs": [
+          "mae",
+          "eki",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "食事の前に手を洗います。",
+        "english": "I wash my hands before meals.",
+        "vocabulary_slugs": [
+          "mae",
+          "shokuji",
+          "te-v",
+          "arau"
+        ]
+      },
+      {
+        "japanese": "三日前、私はこの町に来ました。",
+        "english": "Three days ago, I came to this town.",
+        "vocabulary_slugs": [
+          "mae",
+          "mikka",
+          "watashi",
+          "machi-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "magaru": {
     "example_sentences": [
       {
@@ -10856,6 +11012,44 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "naka": {
+    "example_sentences": [
+      {
+        "japanese": "箱の中に猫がいます。",
+        "english": "There's a cat inside the box.",
+        "vocabulary_slugs": [
+          "hako",
+          "naka",
+          "neko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "部屋の中は暗かったです。",
+        "english": "The inside of the room was dark.",
+        "vocabulary_slugs": [
+          "heya",
+          "naka",
+          "kurai"
+        ]
+      },
+      {
+        "japanese": "かばんの中に財布がありました。",
+        "english": "There was a wallet inside the bag.",
+        "vocabulary_slugs": [
+          "kaban",
+          "naka",
+          "saifu",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -14878,6 +15072,45 @@
       "review_status": "draft"
     }
   },
+  "shita-v": {
+    "example_sentences": [
+      {
+        "japanese": "猫はテーブルの下で寝ています。",
+        "english": "The cat is sleeping under the table.",
+        "vocabulary_slugs": [
+          "neko",
+          "teeburu",
+          "shita-v",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "財布を椅子の下で見つけました。",
+        "english": "I found my wallet under the chair.",
+        "vocabulary_slugs": [
+          "saifu",
+          "isu",
+          "shita-v",
+          "mitsukeru"
+        ]
+      },
+      {
+        "japanese": "山の下に川があります。",
+        "english": "There is a river below the mountain.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "shita-v",
+          "kawa-v",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shitsumon-suru": {
     "example_sentences": [
       {
@@ -15382,6 +15615,40 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "soto": {
+    "example_sentences": [
+      {
+        "japanese": "外は寒いです。",
+        "english": "It's cold outside.",
+        "vocabulary_slugs": [
+          "soto",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "犬は外にいます。",
+        "english": "The dog is outside.",
+        "vocabulary_slugs": [
+          "inu",
+          "soto",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "外で遊びましょう。",
+        "english": "Let's play outside.",
+        "vocabulary_slugs": [
+          "soto",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -16545,6 +16812,42 @@
       "review_status": "draft"
     }
   },
+  "tonari": {
+    "example_sentences": [
+      {
+        "japanese": "隣に猫がいます。",
+        "english": "There's a cat next to me.",
+        "vocabulary_slugs": [
+          "tonari",
+          "neko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "隣の部屋は静かです。",
+        "english": "The room next door is quiet.",
+        "vocabulary_slugs": [
+          "tonari",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "私の隣に座ってください。",
+        "english": "Please sit down next to me.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tonari",
+          "suwaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "too": {
     "example_sentences": [
       {
@@ -17195,6 +17498,44 @@
       "review_status": "draft"
     }
   },
+  "ue": {
+    "example_sentences": [
+      {
+        "japanese": "本は机の上にあります。",
+        "english": "The book is on the desk.",
+        "vocabulary_slugs": [
+          "hon",
+          "tsukue",
+          "ue",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "猫は木の上にいます。",
+        "english": "The cat is up in the tree.",
+        "vocabulary_slugs": [
+          "neko",
+          "ki-tree-v",
+          "ue",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "山の上は寒いです。",
+        "english": "It's cold at the top of the mountain.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "ue",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "umareru": {
     "example_sentences": [
       {
@@ -17340,6 +17681,44 @@
     ],
     "_meta": {
       "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ushiro": {
+    "example_sentences": [
+      {
+        "japanese": "後ろに猫がいます。",
+        "english": "There's a cat behind me.",
+        "vocabulary_slugs": [
+          "ushiro",
+          "neko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "彼は私の後ろに立ちました。",
+        "english": "He stood behind me.",
+        "vocabulary_slugs": [
+          "ushiro",
+          "kare",
+          "watashi",
+          "tatsu-v"
+        ]
+      },
+      {
+        "japanese": "かばんは椅子の後ろにありました。",
+        "english": "The bag was behind the chair.",
+        "vocabulary_slugs": [
+          "ushiro",
+          "kaban",
+          "isu",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-low",
       "prompt_version": "1",
       "review_status": "draft"
     }
