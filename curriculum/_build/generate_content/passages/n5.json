@@ -128,6 +128,276 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "neko-to-shukudai",
+      "position": 2,
+      "tone": "humorous",
+      "passage": {
+        "title": "タマと宿題",
+        "body": "昨日、私は宿題を書きました。タマは私の猫です。タマは宿題の上に座りました。次に、そこで寝ました。私は待ちました。タマは起きません。宿題は明日出します。",
+        "questions": [
+          {
+            "prompt": "タマは何の上に座りましたか。",
+            "accepted_answers": [
+              "宿題",
+              "宿題の上",
+              "しゅくだい"
+            ],
+            "prompt_furigana": "タマは何[なに]の上[うえ]に座[すわ]りましたか。"
+          },
+          {
+            "prompt": "宿題はいつ出しますか。",
+            "accepted_answers": [
+              "明日",
+              "あした",
+              "明日出します"
+            ],
+            "prompt_furigana": "宿[しゅく]題[だい]はいつ出[だ]しますか。"
+          }
+        ],
+        "english_translation": "Yesterday I wrote my homework. Tama is my cat. Tama sat on the homework. Next, she slept there. I waited. Tama does not wake up. I will hand in the homework tomorrow.",
+        "summary_ja": "猫のタマが宿題の上で寝ました。",
+        "summary_en": "The cat Tama went to sleep on top of the homework.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "masu",
+          "masen",
+          "mashita",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-direction",
+          "de-location"
+        ],
+        "vocabulary_slugs": [
+          "ashita",
+          "kinou",
+          "neko",
+          "shukudai",
+          "soko",
+          "tsugi",
+          "ue",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kinou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "shukudai",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 17,
+            "end": 18
+          },
+          {
+            "vocabulary_slug": "neko",
+            "start": 19,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "shukudai",
+            "start": 26,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 29,
+            "end": 30
+          },
+          {
+            "vocabulary_slug": "tsugi",
+            "start": 37,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "soko",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 48,
+            "end": 49
+          },
+          {
+            "vocabulary_slug": "shukudai",
+            "start": 65,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "ashita",
+            "start": 68,
+            "end": 70
+          }
+        ],
+        "word_count": 45,
+        "body_furigana": "昨日[きのう]、私[わたし]は宿[しゅく]題[だい]を書[か]きました。タマは私[わたし]の猫[ねこ]です。タマは宿[しゅく]題[だい]の上[うえ]に座[すわ]りました。次[つぎ]に、そこで寝[ね]ました。私[わたし]は待[ま]ちました。タマは起[お]きません。宿[しゅく]題[だい]は明日[あした]出[だ]します。",
+        "slug": "neko-to-shukudai",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "gakkou-no-ichinichi",
+      "position": 3,
+      "tone": "neutral",
+      "passage": {
+        "title": "学校の一日",
+        "body": "学校の授業は午前八時半に始まります。十二時に友達と一緒に昼ご飯を食べます。午後の授業は三時半に終わります。それから図書館で宿題をします。五時に家へ帰ります。",
+        "questions": [
+          {
+            "prompt": "授業は何時に始まりますか。",
+            "accepted_answers": [
+              "午前八時半",
+              "八時半",
+              "午前八時半に"
+            ],
+            "prompt_furigana": "授[じゅ]業[ぎょう]は何[なに]時[じ]に始[はじ]まりますか。"
+          },
+          {
+            "prompt": "昼ご飯を誰と食べますか。",
+            "accepted_answers": [
+              "友達",
+              "友達と",
+              "ともだち"
+            ],
+            "prompt_furigana": "昼[ひる]ご飯[はん]を誰[だれ]と食[た]べますか。"
+          },
+          {
+            "prompt": "何時に家へ帰りますか。",
+            "accepted_answers": [
+              "五時",
+              "五時に",
+              "ごじ"
+            ],
+            "prompt_furigana": "何[なに]時[じ]に家[いえ]へ帰[かえ]りますか。"
+          }
+        ],
+        "english_translation": "Classes at school start at 8:30 in the morning. At twelve o'clock I eat lunch together with my friends. The afternoon classes finish at 3:30. After that I do my homework at the library. At five o'clock I go home.",
+        "summary_ja": "学校の授業から家に帰る時間までの一日です。",
+        "summary_en": "A student's day, from the start of morning class to going home at five.",
+        "grammar_slugs": [
+          "wa-topic",
+          "masu",
+          "wo",
+          "no-possessive",
+          "ni-direction",
+          "he-direction",
+          "de-location",
+          "to-and",
+          "kara-from"
+        ],
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "gogo",
+          "gozen",
+          "han-time",
+          "hirugohan",
+          "ie",
+          "issho-ni",
+          "jugyou",
+          "shukudai",
+          "sore",
+          "tomodachi",
+          "toshokan"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "gakkou-v",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "jugyou",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "gozen",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "han-time",
+            "start": 10,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "issho-ni",
+            "start": 25,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "hirugohan",
+            "start": 28,
+            "end": 31
+          },
+          {
+            "vocabulary_slug": "gogo",
+            "start": 37,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "jugyou",
+            "start": 40,
+            "end": 42
+          },
+          {
+            "vocabulary_slug": "han-time",
+            "start": 45,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "sore",
+            "start": 53,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "toshokan",
+            "start": 57,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "shukudai",
+            "start": 61,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 71,
+            "end": 72
+          }
+        ],
+        "word_count": 49,
+        "body_furigana": "学[がっ]校[こう]の授[じゅ]業[ぎょう]は午[ご]前[ぜん]八[はち]時[じ]半[はん]に始[はじ]まります。十[じゅう]二[に]時[じ]に友[とも]達[だち]と一[いっ]緒[しょ]に昼[ひる]ご飯[はん]を食[た]べます。午[ご]後[ご]の授[じゅ]業[ぎょう]は三[さん]時[じ]半[はん]に終[お]わります。それから図[と]書[しょ]館[かん]で宿[しゅく]題[だい]をします。五[ご]時[じ]に家[いえ]へ帰[かえ]ります。",
+        "slug": "gakkou-no-ichinichi",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
