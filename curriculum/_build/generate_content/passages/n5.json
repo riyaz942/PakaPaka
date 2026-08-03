@@ -557,6 +557,1048 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "eki-made-no-michi",
+      "position": 5,
+      "tone": "neutral",
+      "passage": {
+        "title": "郵便局までの道",
+        "body": "今日、私は駅の前で女の人に「郵便局はどちらですか。」と聞きました。女の人は「この道を歩いて、二つ目の角を左に曲がってください。郵便局は銀行の隣です。ここから五分ですよ。」と話しました。私は歩きました。",
+        "questions": [
+          {
+            "prompt": "私は誰に聞きましたか。",
+            "accepted_answers": [
+              "女の人",
+              "おんなのひと",
+              "女の人に"
+            ],
+            "prompt_furigana": "私[わたし]は誰[だれ]に聞[き]きましたか。"
+          },
+          {
+            "prompt": "二つ目の角をどちらに曲がりますか。",
+            "accepted_answers": [
+              "左",
+              "ひだり",
+              "左に"
+            ],
+            "prompt_furigana": "二[ふた]つ目[め]の角[かど]をどちらに曲[ま]がりますか。"
+          },
+          {
+            "prompt": "郵便局は何の隣ですか。",
+            "accepted_answers": [
+              "銀行",
+              "ぎんこう",
+              "銀行の隣"
+            ],
+            "prompt_furigana": "郵[ゆう]便[びん]局[きょく]は何[なに]の隣[となり]ですか。"
+          }
+        ],
+        "english_translation": "Today, in front of the station, I asked a woman which way the post office was. The woman said, walk along this street and turn left at the second corner. The post office is next to the bank. It's five minutes from here. I walked.",
+        "summary_ja": "私は女の人に郵便局までの道を聞きました。",
+        "summary_en": "I ask a woman on the street how to get to the post office, and she gives me short, clear directions.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "mashita",
+          "wo",
+          "no-possessive",
+          "ni-direction",
+          "ni-indirect",
+          "de-location",
+          "kara-from",
+          "ka-question",
+          "yo-emphasis",
+          "te-form",
+          "te-kudasai"
+        ],
+        "vocabulary_slugs": [
+          "dochira",
+          "eki",
+          "futatsu",
+          "ginkou",
+          "hidari-v",
+          "kado",
+          "koko",
+          "kono",
+          "kyou",
+          "mae",
+          "michi-v",
+          "onnanohito",
+          "tonari",
+          "watashi",
+          "yuubinkyoku"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 7,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "onnanohito",
+            "start": 9,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "yuubinkyoku",
+            "start": 14,
+            "end": 17
+          },
+          {
+            "vocabulary_slug": "dochira",
+            "start": 18,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "onnanohito",
+            "start": 33,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "kono",
+            "start": 38,
+            "end": 40
+          },
+          {
+            "vocabulary_slug": "michi-v",
+            "start": 40,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "futatsu",
+            "start": 46,
+            "end": 48
+          },
+          {
+            "vocabulary_slug": "kado",
+            "start": 50,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "hidari-v",
+            "start": 52,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "yuubinkyoku",
+            "start": 63,
+            "end": 66
+          },
+          {
+            "vocabulary_slug": "ginkou",
+            "start": 67,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "tonari",
+            "start": 70,
+            "end": 71
+          },
+          {
+            "vocabulary_slug": "koko",
+            "start": 74,
+            "end": 76
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 92,
+            "end": 93
+          }
+        ],
+        "word_count": 63,
+        "body_furigana": "今日[きょう]、私[わたし]は駅[えき]の前[まえ]で女[おんな]の人[ひと]に「郵[ゆう]便[びん]局[きょく]はどちらですか。」と聞[き]きました。女[おんな]の人[ひと]は「この道[みち]を歩[ある]いて、二[ふた]つ目[め]の角[かど]を左[ひだり]に曲[ま]がってください。郵[ゆう]便[びん]局[きょく]は銀[ぎん]行[こう]の隣[となり]です。ここから五[ご]分[ふん]ですよ。」と話[はな]しました。私[わたし]は歩[ある]きました。",
+        "slug": "eki-made-no-michi",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "kasa-no-machigai",
+      "position": 6,
+      "tone": "humorous",
+      "passage": {
+        "title": "傘の間違い",
+        "body": "今日は朝から雨でした。私は駅の前で黒い傘を取って、家まで歩きました。雨は強くて、靴も冷たくなりました。うちのドアの前で傘を見ました。その傘は小さくて、青い子供の傘でした。私の黒い傘は今も駅の前にありますよ。",
+        "questions": [
+          {
+            "prompt": "私はどこで傘を取りましたか。",
+            "accepted_answers": [
+              "駅の前で",
+              "駅の前",
+              "駅"
+            ],
+            "prompt_furigana": "私[わたし]はどこで傘[かさ]を取[と]りましたか。"
+          },
+          {
+            "prompt": "その傘はどんな色でしたか。",
+            "accepted_answers": [
+              "青い",
+              "青",
+              "青い子供の傘"
+            ],
+            "prompt_furigana": "その傘[かさ]はどんな色[いろ]でしたか。"
+          },
+          {
+            "prompt": "今日の天気はどうでしたか。",
+            "accepted_answers": [
+              "雨",
+              "雨でした",
+              "雨です"
+            ],
+            "prompt_furigana": "今日[きょう]の天[てん]気[き]はどうでしたか。"
+          }
+        ],
+        "english_translation": "It rained from the morning today. I took a black umbrella from in front of the station and walked home. The rain was heavy, and my shoes got cold too. In front of my door at home, I looked at the umbrella. That umbrella was small, and it was a blue child's umbrella. My black umbrella is still in front of the station.",
+        "summary_ja": "私は駅で黒い傘を取って、うちの前で青い子供の傘を見ました。",
+        "summary_en": "The writer takes a black umbrella at the station, walks home in the rain, and finds at the door that it is a small blue child's umbrella.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "masu",
+          "mashita",
+          "wo",
+          "no-possessive",
+          "ni-direction",
+          "de-location",
+          "made-until",
+          "mo-also",
+          "kara-from",
+          "te-form",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "ame-v",
+          "aoi",
+          "asa",
+          "doa",
+          "eki",
+          "ie",
+          "ima",
+          "kasa",
+          "kodomo-v",
+          "kuroi",
+          "kutsu",
+          "kyou",
+          "mae",
+          "sono",
+          "uchi",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "ame-v",
+            "start": 6,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 11,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 13,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 15,
+            "end": 16
+          },
+          {
+            "vocabulary_slug": "kuroi",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 19,
+            "end": 20
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 25,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "ame-v",
+            "start": 34,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "kutsu",
+            "start": 40,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 51,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 57,
+            "end": 58
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 59,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 66,
+            "end": 68
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 68,
+            "end": 69
+          },
+          {
+            "vocabulary_slug": "aoi",
+            "start": 75,
+            "end": 77
+          },
+          {
+            "vocabulary_slug": "kodomo-v",
+            "start": 77,
+            "end": 79
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 80,
+            "end": 81
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 85,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "kuroi",
+            "start": 87,
+            "end": 89
+          },
+          {
+            "vocabulary_slug": "kasa",
+            "start": 89,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "ima",
+            "start": 91,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 93,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 95,
+            "end": 96
+          }
+        ],
+        "word_count": 69,
+        "body_furigana": "今日[きょう]は朝[あさ]から雨[あめ]でした。私[わたし]は駅[えき]の前[まえ]で黒[くろ]い傘[かさ]を取[と]って、家[いえ]まで歩[ある]きました。雨[あめ]は強[つよ]くて、靴[くつ]も冷[つめ]たくなりました。うちのドアの前[まえ]で傘[かさ]を見[み]ました。その傘[かさ]は小[ちい]さくて、青[あお]い子[こ]供[ども]の傘[かさ]でした。私[わたし]の黒[くろ]い傘[かさ]は今[いま]も駅[えき]の前[まえ]にありますよ。",
+        "slug": "kasa-no-machigai",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "jidouhanbaiki",
+      "position": 7,
+      "tone": "humorous",
+      "passage": {
+        "title": "赤い箱",
+        "body": "駅の前に飲み物の赤い箱があります。昨日、私はその箱にお金を入れました。何も出ませんでした。次に女の人が来て、同じ箱にお金を入れました。冷たいお茶が二つ出ました。その人は大きい声で笑いました。それから、私もお金を入れました。熱いコーヒーが一つ出ました。",
+        "questions": [
+          {
+            "prompt": "私は箱に何を入れましたか。",
+            "accepted_answers": [
+              "お金",
+              "おかね"
+            ],
+            "prompt_furigana": "私[わたし]は箱[はこ]に何[なに]を入[い]れましたか。"
+          },
+          {
+            "prompt": "女の人のお茶はいくつ出ましたか。",
+            "accepted_answers": [
+              "二つ",
+              "ふたつ"
+            ],
+            "prompt_furigana": "女[おんな]の人[ひと]のお茶[ちゃ]はいくつ出[で]ましたか。"
+          },
+          {
+            "prompt": "それから何が出ましたか。",
+            "accepted_answers": [
+              "熱いコーヒー",
+              "コーヒー"
+            ],
+            "prompt_furigana": "それから何[なに]が出[で]ましたか。"
+          }
+        ],
+        "english_translation": "In front of the station there is a red box for drinks. Yesterday I put money into that box. Nothing came out. Next a woman came and put money into the same box. Two cold teas came out. She laughed in a loud voice. Then I put money in too. One hot coffee came out.",
+        "summary_ja": "箱は私のお金を取って、次の女の人にお茶を二つあげました。",
+        "summary_en": "The box swallows the writer's money and then hands the next woman two teas.",
+        "grammar_slugs": [
+          "wa-topic",
+          "masu",
+          "masen",
+          "mashita",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-direction",
+          "de-location",
+          "mo-also",
+          "te-form",
+          "adj-i-conjugation",
+          "ka-question"
+        ],
+        "vocabulary_slugs": [
+          "akai",
+          "atsui-obj",
+          "eki",
+          "futatsu",
+          "hako",
+          "hito",
+          "hitotsu",
+          "kinou",
+          "koe",
+          "koohii",
+          "mae",
+          "nani",
+          "nomimono",
+          "ocha",
+          "okane",
+          "onaji",
+          "onnanohito",
+          "ookii",
+          "sono",
+          "sore",
+          "tsugi",
+          "tsumetai",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "eki",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "mae",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "nomimono",
+            "start": 4,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "akai",
+            "start": 8,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 10,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "kinou",
+            "start": 17,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 20,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 22,
+            "end": 24
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 24,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "okane",
+            "start": 26,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 35,
+            "end": 36
+          },
+          {
+            "vocabulary_slug": "tsugi",
+            "start": 45,
+            "end": 46
+          },
+          {
+            "vocabulary_slug": "onnanohito",
+            "start": 47,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "hako",
+            "start": 56,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "okane",
+            "start": 58,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "tsumetai",
+            "start": 67,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "ocha",
+            "start": 70,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "futatsu",
+            "start": 73,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 80,
+            "end": 82
+          },
+          {
+            "vocabulary_slug": "hito",
+            "start": 82,
+            "end": 83
+          },
+          {
+            "vocabulary_slug": "ookii",
+            "start": 84,
+            "end": 87
+          },
+          {
+            "vocabulary_slug": "koe",
+            "start": 87,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "sore",
+            "start": 95,
+            "end": 97
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 100,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "okane",
+            "start": 102,
+            "end": 104
+          },
+          {
+            "vocabulary_slug": "atsui-obj",
+            "start": 111,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "koohii",
+            "start": 113,
+            "end": 117
+          },
+          {
+            "vocabulary_slug": "hitotsu",
+            "start": 118,
+            "end": 120
+          }
+        ],
+        "word_count": 83,
+        "body_furigana": "駅[えき]の前[まえ]に飲[の]み物[もの]の赤[あか]い箱[はこ]があります。昨日[きのう]、私[わたし]はその箱[はこ]にお金[かね]を入[い]れました。何[なに]も出[で]ませんでした。次[つぎ]に女[おんな]の人[ひと]が来[き]て、同[おな]じ箱[はこ]にお金[かね]を入[い]れました。冷[つめ]たいお茶[ちゃ]が二[ふた]つ出[で]ました。その人[ひと]は大[おお]きい声[こえ]で笑[わら]いました。それから、私[わたし]もお金[かね]を入[い]れました。熱[あつ]いコーヒーが一[ひと]つ出[で]ました。",
+        "slug": "jidouhanbaiki",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "umi-e-ikimashita",
+      "position": 8,
+      "tone": "neutral",
+      "passage": {
+        "title": "海へ行きました",
+        "body": "先週の日曜日、私は家族と海へ行きました。朝早く起きて、六時の電車に乗りました。天気はとてもよくて、空は青かったです。父と妹は海で泳ぎました。私は近くを歩きました。昼ご飯は母が作った弁当で、とてもおいしかったです。午後、風が強くなりましたから、四時の電車で帰りました。電車の中でみんな寝ました。",
+        "questions": [
+          {
+            "prompt": "家族はどこへ行きましたか。",
+            "accepted_answers": [
+              "海",
+              "海へ",
+              "うみ"
+            ],
+            "prompt_furigana": "家[か]族[ぞく]はどこへ行[い]きましたか。"
+          },
+          {
+            "prompt": "何時の電車に乗りましたか。",
+            "accepted_answers": [
+              "六時",
+              "六時の電車",
+              "ろくじ"
+            ],
+            "prompt_furigana": "何[なに]時[じ]の電[でん]車[しゃ]に乗[の]りましたか。"
+          },
+          {
+            "prompt": "誰が海で泳ぎましたか。",
+            "accepted_answers": [
+              "父と妹",
+              "父",
+              "妹"
+            ],
+            "prompt_furigana": "誰[だれ]が海[うみ]で泳[およ]ぎましたか。"
+          }
+        ],
+        "english_translation": "Last Sunday I went to the sea with my family. We got up early in the morning and took the six o'clock train. The weather was very good, and the sky was blue. My father and my little sister swam in the sea. I walked along nearby. Lunch was the boxed lunch my mother had made, and it was very delicious. In the afternoon the wind got strong, so we went home on the four o'clock train. On the train everyone slept.",
+        "summary_ja": "家族と海へ行って、泳いで、弁当を食べました。",
+        "summary_en": "A family goes to the sea for the day, swims, eats a boxed lunch, and sleeps on the train home.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "mashita",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-direction",
+          "he-direction",
+          "de-location",
+          "to-and",
+          "kara-because",
+          "te-form",
+          "ta-form",
+          "adj-i-conjugation",
+          "adj-i-adverb"
+        ],
+        "vocabulary_slugs": [
+          "asa",
+          "bentou",
+          "chichi",
+          "chikaku",
+          "densha",
+          "gogo",
+          "haha",
+          "hirugohan",
+          "imouto",
+          "kaze-wind",
+          "kazoku",
+          "minna",
+          "naka",
+          "nichiyoubi",
+          "senshuu",
+          "sora",
+          "tenki",
+          "umi",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "senshuu",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "nichiyoubi",
+            "start": 3,
+            "end": 6
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 7,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "kazoku",
+            "start": 9,
+            "end": 11
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 12,
+            "end": 13
+          },
+          {
+            "vocabulary_slug": "asa",
+            "start": 20,
+            "end": 21
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 30,
+            "end": 32
+          },
+          {
+            "vocabulary_slug": "tenki",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "sora",
+            "start": 49,
+            "end": 50
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 58,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "imouto",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "umi",
+            "start": 62,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 70,
+            "end": 71
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 72,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "hirugohan",
+            "start": 81,
+            "end": 84
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 85,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "bentou",
+            "start": 90,
+            "end": 92
+          },
+          {
+            "vocabulary_slug": "gogo",
+            "start": 106,
+            "end": 108
+          },
+          {
+            "vocabulary_slug": "kaze-wind",
+            "start": 109,
+            "end": 110
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 124,
+            "end": 126
+          },
+          {
+            "vocabulary_slug": "densha",
+            "start": 133,
+            "end": 135
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 136,
+            "end": 137
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 138,
+            "end": 141
+          }
+        ],
+        "word_count": 87,
+        "body_furigana": "先[せん]週[しゅう]の日[にち]曜[よう]日[ひ]、私[わたし]は家[か]族[ぞく]と海[うみ]へ行[い]きました。朝[あさ]早[はや]く起[お]きて、六[ろく]時[じ]の電[でん]車[しゃ]に乗[の]りました。天[てん]気[き]はとてもよくて、空[そら]は青[あお]かったです。父[ちち]と妹[いもうと]は海[うみ]で泳[およ]ぎました。私[わたし]は近[ちか]くを歩[ある]きました。昼[ひる]ご飯[はん]は母[はは]が作[つく]った弁[べん]当[とう]で、とてもおいしかったです。午[ご]後[ご]、風[かぜ]が強[つよ]くなりましたから、四[よん]時[じ]の電[でん]車[しゃ]で帰[かえ]りました。電[でん]車[しゃ]の中[なか]でみんな寝[ね]ました。",
+        "slug": "umi-e-ikimashita",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    },
+    {
+      "seed": "inu-to-reizouko",
+      "position": 9,
+      "tone": "humorous",
+      "passage": {
+        "title": "ハナと冷蔵庫",
+        "body": "私の家に犬がいます。名前はハナです。私が名前を呼ぶとき、ハナは来ません。友達がドアから入るときも、部屋で寝ています。でも、台所で冷蔵庫を開けるとき、ハナは走って来ます。昨日の晩、三回冷蔵庫を開けました。三回、ハナが台所に立っていました。中には水と卵だけがありました。ハナの耳は冷蔵庫の声だけが聞こえるのでしょう。",
+        "questions": [
+          {
+            "prompt": "犬の名前は何ですか。",
+            "accepted_answers": [
+              "ハナ",
+              "ハナです"
+            ],
+            "prompt_furigana": "犬[いぬ]の名[な]前[まえ]は何[なに]ですか。"
+          },
+          {
+            "prompt": "ハナはどこに立っていましたか。",
+            "accepted_answers": [
+              "台所",
+              "台所に",
+              "だいどころ"
+            ],
+            "prompt_furigana": "ハナはどこに立[た]っていましたか。"
+          },
+          {
+            "prompt": "冷蔵庫の中に何がありましたか。",
+            "accepted_answers": [
+              "水と卵",
+              "水",
+              "卵",
+              "みずとたまご"
+            ],
+            "prompt_furigana": "冷[れい]蔵[ぞう]庫[こ]の中[なか]に何[なに]がありましたか。"
+          }
+        ],
+        "english_translation": "There is a dog at my house. Her name is Hana. When I call her name, Hana does not come. Even when a friend comes in through the door, she is sleeping in her room. But when I open the fridge in the kitchen, Hana comes running. Last night I opened the fridge three times. Three times, Hana was standing in the kitchen. Inside there was only water and eggs. Hana's ears can probably hear only the voice of the fridge.",
+        "summary_ja": "犬のハナは名前を呼ぶとき来ませんが、冷蔵庫を開けるとき走って来ます。",
+        "summary_en": "The dog Hana ignores her name and the door, but comes running the moment the fridge opens.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "masu",
+          "masen",
+          "mashita",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-direction",
+          "de-location",
+          "to-and",
+          "mo-also",
+          "kara-from",
+          "te-form",
+          "te-iru",
+          "toki",
+          "dake",
+          "deshou"
+        ],
+        "vocabulary_slugs": [
+          "akeru",
+          "ban",
+          "daidokoro",
+          "doa",
+          "hairu-v",
+          "heya",
+          "ie",
+          "inu",
+          "kikoeru",
+          "kinou",
+          "koe",
+          "mimi-v",
+          "mizu",
+          "naka",
+          "namae",
+          "reizouko",
+          "tamago",
+          "tomodachi",
+          "watashi",
+          "yobu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "vocabulary_slug": "inu",
+            "start": 4,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "namae",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 18,
+            "end": 19
+          },
+          {
+            "vocabulary_slug": "namae",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "yobu",
+            "start": 23,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 36,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "hairu-v",
+            "start": 43,
+            "end": 45
+          },
+          {
+            "vocabulary_slug": "heya",
+            "start": 49,
+            "end": 51
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 61,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "reizouko",
+            "start": 64,
+            "end": 67
+          },
+          {
+            "vocabulary_slug": "akeru",
+            "start": 68,
+            "end": 71
+          },
+          {
+            "vocabulary_slug": "kinou",
+            "start": 84,
+            "end": 86
+          },
+          {
+            "vocabulary_slug": "ban",
+            "start": 87,
+            "end": 88
+          },
+          {
+            "vocabulary_slug": "reizouko",
+            "start": 91,
+            "end": 94
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 107,
+            "end": 109
+          },
+          {
+            "vocabulary_slug": "naka",
+            "start": 118,
+            "end": 119
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 121,
+            "end": 122
+          },
+          {
+            "vocabulary_slug": "tamago",
+            "start": 123,
+            "end": 124
+          },
+          {
+            "vocabulary_slug": "mimi-v",
+            "start": 136,
+            "end": 137
+          },
+          {
+            "vocabulary_slug": "reizouko",
+            "start": 138,
+            "end": 141
+          },
+          {
+            "vocabulary_slug": "koe",
+            "start": 142,
+            "end": 143
+          },
+          {
+            "vocabulary_slug": "kikoeru",
+            "start": 146,
+            "end": 150
+          }
+        ],
+        "word_count": 97,
+        "body_furigana": "私[わたし]の家[いえ]に犬[いぬ]がいます。名[な]前[まえ]はハナです。私[わたし]が名[な]前[まえ]を呼[よ]ぶとき、ハナは来[き]ません。友[とも]達[だち]がドアから入[はい]るときも、部屋[へや]で寝[ね]ています。でも、台[だい]所[どころ]で冷[れい]蔵[ぞう]庫[こ]を開[あ]けるとき、ハナは走[はし]って来[き]ます。昨日[きのう]の晩[ばん]、三[さん]回[かい]冷[れい]蔵[ぞう]庫[こ]を開[あ]けました。三[さん]回[かい]、ハナが台[だい]所[どころ]に立[た]っていました。中[なか]には水[みず]と卵[たまご]だけがありました。ハナの耳[みみ]は冷[れい]蔵[ぞう]庫[こ]の声[こえ]だけが聞[き]こえるのでしょう。",
+        "slug": "inu-to-reizouko",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
