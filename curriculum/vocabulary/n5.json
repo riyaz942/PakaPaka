@@ -32000,8 +32000,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "銀行は右にあります。",
+          "english": "The bank is on the right.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "migi-v",
+            "ginkou",
+            "aru"
+          ],
+          "furigana": "銀[ぎん]行[こう]は右[みぎ]にあります。"
+        },
+        {
+          "japanese": "右の目が痛いです。",
+          "english": "My right eye hurts.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "migi-v",
+            "me-v",
+            "itai"
+          ],
+          "furigana": "右[みぎ]の目[め]が痛[いた]いです。"
+        },
+        {
+          "japanese": "あの角を右に曲がってください。",
+          "english": "Please turn right at that corner.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "kado",
+            "migi-v",
+            "magaru"
+          ],
+          "furigana": "あの角[かど]を右[みぎ]に曲[ま]がってください。"
+        }
+      ]
     },
     {
       "slug": "hidari-v",
@@ -32026,8 +32062,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼は角で左に曲がりました。",
+          "english": "He turned left at the corner.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kado",
+            "hidari-v",
+            "magaru"
+          ],
+          "furigana": "彼[かれ]は角[かど]で左[ひだり]に曲[ま]がりました。"
+        },
+        {
+          "japanese": "銀行はデパートの左にあります。",
+          "english": "The bank is to the left of the department store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ginkou",
+            "depaato",
+            "hidari-v",
+            "aru"
+          ],
+          "furigana": "銀[ぎん]行[こう]はデパートの左[ひだり]にあります。"
+        },
+        {
+          "japanese": "左の目が痛いです。",
+          "english": "My left eye hurts.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hidari-v",
+            "me-v",
+            "itai"
+          ],
+          "furigana": "左[ひだり]の目[め]が痛[いた]いです。"
+        }
+      ]
     },
     {
       "slug": "kita-v",
@@ -32052,8 +32125,46 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "北にコンビニがあります。",
+          "english": "There's a convenience store to the north.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kita-v",
+            "konbini",
+            "aru"
+          ],
+          "furigana": "北[きた]にコンビニがあります。"
+        },
+        {
+          "japanese": "私の家は北にあります。",
+          "english": "My house is to the north.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "ie",
+            "kita-v",
+            "aru"
+          ],
+          "furigana": "私[わたし]の家[いえ]は北[きた]にあります。"
+        },
+        {
+          "japanese": "北の方に大きい山があります。",
+          "english": "There's a big mountain to the north.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kita-v",
+            "hou",
+            "ookii",
+            "yama-v",
+            "aru"
+          ],
+          "furigana": "北[きた]の方[ほう]に大[おお]きい山[やま]があります。"
+        }
+      ]
     },
     {
       "slug": "minami-v",
@@ -32078,8 +32189,42 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "鳥は南へ飛びます。",
+          "english": "The birds fly south.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tori",
+            "minami-v",
+            "tobu"
+          ],
+          "furigana": "鳥[とり]は南[みなみ]へ飛[と]びます。"
+        },
+        {
+          "japanese": "南はあちらです。",
+          "english": "South is that way.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "minami-v",
+            "achira"
+          ],
+          "furigana": "南[みなみ]はあちらです。"
+        },
+        {
+          "japanese": "冬でも南は暖かいです。",
+          "english": "Even in winter, the south is warm.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "fuyu",
+            "minami-v",
+            "atatakai"
+          ],
+          "furigana": "冬[ふゆ]でも南[みなみ]は暖[あたた]かいです。"
+        }
+      ]
     },
     {
       "slug": "higashi-v",
@@ -32104,8 +32249,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の家は駅の東にあります。",
+          "english": "My house is east of the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ie",
+            "eki",
+            "higashi-v",
+            "aru"
+          ],
+          "furigana": "私[わたし]の家[いえ]は駅[えき]の東[ひがし]にあります。"
+        },
+        {
+          "japanese": "あの山は東にあります。",
+          "english": "That mountain is to the east.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "higashi-v",
+            "aru"
+          ],
+          "furigana": "あの山[やま]は東[ひがし]にあります。"
+        },
+        {
+          "japanese": "東の空に月が見えます。",
+          "english": "The moon can be seen in the eastern sky.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "higashi-v",
+            "sora",
+            "tsuki-v",
+            "mieru"
+          ],
+          "furigana": "東[ひがし]の空[そら]に月[つき]が見[み]えます。"
+        }
+      ]
     },
     {
       "slug": "nishi-v",
@@ -32130,8 +32314,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅は西にあります。",
+          "english": "The station is to the west.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "nishi-v",
+            "aru"
+          ],
+          "furigana": "駅[えき]は西[にし]にあります。"
+        },
+        {
+          "japanese": "私たちは西へ歩きました。",
+          "english": "We walked west.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "nishi-v",
+            "aruku"
+          ],
+          "furigana": "私[わたし]たちは西[にし]へ歩[ある]きました。"
+        },
+        {
+          "japanese": "山は西のほうにあります。",
+          "english": "The mountain is in the western direction.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yama-v",
+            "nishi-v",
+            "hou",
+            "aru"
+          ],
+          "furigana": "山[やま]は西[にし]のほうにあります。"
+        }
+      ]
     },
     {
       "slug": "hanbun",
@@ -32156,8 +32376,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "パンの半分を食べました。",
+          "english": "I ate half of the bread.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "pan",
+            "hanbun",
+            "taberu"
+          ],
+          "furigana": "パンの半[はん]分[ぶん]を食[た]べました。"
+        },
+        {
+          "japanese": "半分は私の物です。",
+          "english": "Half of it is mine.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hanbun",
+            "watashi",
+            "mono"
+          ],
+          "furigana": "半[はん]分[ぶん]は私[わたし]の物[もの]です。"
+        },
+        {
+          "japanese": "お金の半分を弟にあげました。",
+          "english": "I gave half the money to my younger brother.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "okane",
+            "hanbun",
+            "otouto",
+            "ageru"
+          ],
+          "furigana": "お金[かね]の半[はん]分[ぶん]を弟[おとうと]にあげました。"
+        }
+      ]
     },
     {
       "slug": "zenbu",
@@ -32182,8 +32438,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この本を全部読みました。",
+          "english": "I read this whole book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "zenbu",
+            "yomu"
+          ],
+          "furigana": "この本[ほん]を全[ぜん]部[ぶ]読[よ]みました。"
+        },
+        {
+          "japanese": "お金を全部使いました。",
+          "english": "I used up all my money.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okane",
+            "zenbu",
+            "tsukau"
+          ],
+          "furigana": "お金[かね]を全[ぜん]部[ぶ]使[つか]いました。"
+        },
+        {
+          "japanese": "全部おいしかったです。",
+          "english": "Everything was delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "zenbu",
+            "oishii"
+          ],
+          "furigana": "全[ぜん]部[ぶ]おいしかったです。"
+        }
+      ]
     },
     {
       "slug": "takusan",
@@ -32208,8 +32499,46 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は本をたくさん買いました。",
+          "english": "I bought a lot of books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hon",
+            "kau-v",
+            "takusan"
+          ],
+          "furigana": "私[わたし]は本[ほん]をたくさん買[か]いました。"
+        },
+        {
+          "japanese": "公園に猫がたくさんいます。",
+          "english": "There are a lot of cats in the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "neko",
+            "iru-exist",
+            "takusan"
+          ],
+          "furigana": "公[こう]園[えん]に猫[ねこ]がたくさんいます。"
+        },
+        {
+          "japanese": "今日は宿題がたくさんあります。",
+          "english": "There's a lot of homework today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "shukudai",
+            "aru",
+            "takusan"
+          ],
+          "furigana": "今日[きょう]は宿[しゅく]題[だい]がたくさんあります。"
+        }
+      ]
     },
     {
       "slug": "sukoshi",
@@ -32234,8 +32563,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "水を少し飲みました。",
+          "english": "I drank a little water.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "mizu",
+            "nomu-v",
+            "sukoshi"
+          ],
+          "furigana": "水[みず]を少[すこ]し飲[の]みました。"
+        },
+        {
+          "japanese": "このコーヒーは少し熱いです。",
+          "english": "This coffee is a little hot.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "koohii",
+            "atsui-obj",
+            "sukoshi"
+          ],
+          "furigana": "このコーヒーは少[すこ]し熱[あつ]いです。"
+        },
+        {
+          "japanese": "少し休みます。",
+          "english": "I'll rest a little.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sukoshi",
+            "yasumu"
+          ],
+          "furigana": "少[すこ]し休[やす]みます。"
+        }
+      ]
     },
     {
       "slug": "chotto",

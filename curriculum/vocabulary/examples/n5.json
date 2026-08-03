@@ -4268,6 +4268,43 @@
       "review_status": "draft"
     }
   },
+  "hanbun": {
+    "example_sentences": [
+      {
+        "japanese": "パンの半分を食べました。",
+        "english": "I ate half of the bread.",
+        "vocabulary_slugs": [
+          "pan",
+          "hanbun",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "半分は私の物です。",
+        "english": "Half of it is mine.",
+        "vocabulary_slugs": [
+          "hanbun",
+          "watashi",
+          "mono"
+        ]
+      },
+      {
+        "japanese": "お金の半分を弟にあげました。",
+        "english": "I gave half the money to my younger brother.",
+        "vocabulary_slugs": [
+          "okane",
+          "hanbun",
+          "otouto",
+          "ageru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hantai": {
     "example_sentences": [
       {
@@ -4699,6 +4736,84 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hidari-v": {
+    "example_sentences": [
+      {
+        "japanese": "彼は角で左に曲がりました。",
+        "english": "He turned left at the corner.",
+        "vocabulary_slugs": [
+          "kare",
+          "kado",
+          "hidari-v",
+          "magaru"
+        ]
+      },
+      {
+        "japanese": "銀行はデパートの左にあります。",
+        "english": "The bank is to the left of the department store.",
+        "vocabulary_slugs": [
+          "ginkou",
+          "depaato",
+          "hidari-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "左の目が痛いです。",
+        "english": "My left eye hurts.",
+        "vocabulary_slugs": [
+          "hidari-v",
+          "me-v",
+          "itai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "higashi-v": {
+    "example_sentences": [
+      {
+        "japanese": "私の家は駅の東にあります。",
+        "english": "My house is east of the station.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ie",
+          "eki",
+          "higashi-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "あの山は東にあります。",
+        "english": "That mountain is to the east.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "higashi-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "東の空に月が見えます。",
+        "english": "The moon can be seen in the eastern sky.",
+        "vocabulary_slugs": [
+          "higashi-v",
+          "sora",
+          "tsuki-v",
+          "mieru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -8074,6 +8189,45 @@
       "review_status": "draft"
     }
   },
+  "kita-v": {
+    "example_sentences": [
+      {
+        "japanese": "北にコンビニがあります。",
+        "english": "There's a convenience store to the north.",
+        "vocabulary_slugs": [
+          "kita-v",
+          "konbini",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "私の家は北にあります。",
+        "english": "My house is to the north.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ie",
+          "kita-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "北の方に大きい山があります。",
+        "english": "There's a big mountain to the north.",
+        "vocabulary_slugs": [
+          "kita-v",
+          "hou",
+          "ookii",
+          "yama-v",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kitanai": {
     "example_sentences": [
       {
@@ -10215,6 +10369,43 @@
       "review_status": "draft"
     }
   },
+  "migi-v": {
+    "example_sentences": [
+      {
+        "japanese": "銀行は右にあります。",
+        "english": "The bank is on the right.",
+        "vocabulary_slugs": [
+          "migi-v",
+          "ginkou",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "右の目が痛いです。",
+        "english": "My right eye hurts.",
+        "vocabulary_slugs": [
+          "migi-v",
+          "me-v",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "あの角を右に曲がってください。",
+        "english": "Please turn right at that corner.",
+        "vocabulary_slugs": [
+          "ano",
+          "kado",
+          "migi-v",
+          "magaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "mijikai": {
     "example_sentences": [
       {
@@ -10317,6 +10508,41 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "minami-v": {
+    "example_sentences": [
+      {
+        "japanese": "鳥は南へ飛びます。",
+        "english": "The birds fly south.",
+        "vocabulary_slugs": [
+          "tori",
+          "minami-v",
+          "tobu"
+        ]
+      },
+      {
+        "japanese": "南はあちらです。",
+        "english": "South is that way.",
+        "vocabulary_slugs": [
+          "minami-v",
+          "achira"
+        ]
+      },
+      {
+        "japanese": "冬でも南は暖かいです。",
+        "english": "Even in winter, the south is warm.",
+        "vocabulary_slugs": [
+          "fuyu",
+          "minami-v",
+          "atatakai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -11875,6 +12101,43 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "nishi-v": {
+    "example_sentences": [
+      {
+        "japanese": "駅は西にあります。",
+        "english": "The station is to the west.",
+        "vocabulary_slugs": [
+          "eki",
+          "nishi-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "私たちは西へ歩きました。",
+        "english": "We walked west.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "nishi-v",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "山は西のほうにあります。",
+        "english": "The mountain is in the western direction.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "nishi-v",
+          "hou",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -15759,6 +16022,42 @@
       "review_status": "draft"
     }
   },
+  "sukoshi": {
+    "example_sentences": [
+      {
+        "japanese": "水を少し飲みました。",
+        "english": "I drank a little water.",
+        "vocabulary_slugs": [
+          "mizu",
+          "nomu-v",
+          "sukoshi"
+        ]
+      },
+      {
+        "japanese": "このコーヒーは少し熱いです。",
+        "english": "This coffee is a little hot.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "atsui-obj",
+          "sukoshi"
+        ]
+      },
+      {
+        "japanese": "少し休みます。",
+        "english": "I'll rest a little.",
+        "vocabulary_slugs": [
+          "sukoshi",
+          "yasumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "sumu": {
     "example_sentences": [
       {
@@ -16153,6 +16452,45 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "takusan": {
+    "example_sentences": [
+      {
+        "japanese": "私は本をたくさん買いました。",
+        "english": "I bought a lot of books.",
+        "vocabulary_slugs": [
+          "watashi",
+          "hon",
+          "kau-v",
+          "takusan"
+        ]
+      },
+      {
+        "japanese": "公園に猫がたくさんいます。",
+        "english": "There are a lot of cats in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "neko",
+          "iru-exist",
+          "takusan"
+        ]
+      },
+      {
+        "japanese": "今日は宿題がたくさんあります。",
+        "english": "There's a lot of homework today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "shukudai",
+          "aru",
+          "takusan"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -18845,6 +19183,42 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "zenbu": {
+    "example_sentences": [
+      {
+        "japanese": "この本を全部読みました。",
+        "english": "I read this whole book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "zenbu",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "お金を全部使いました。",
+        "english": "I used up all my money.",
+        "vocabulary_slugs": [
+          "okane",
+          "zenbu",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "全部おいしかったです。",
+        "english": "Everything was delicious.",
+        "vocabulary_slugs": [
+          "zenbu",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
