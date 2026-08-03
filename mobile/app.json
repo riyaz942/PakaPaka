@@ -1,28 +1,28 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Kizamu",
+    "slug": "kizamu",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "mobile",
+    "scheme": "kizamu",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.anonymous.mobile"
+      "icon": "./assets/kizamu.icon",
+      "bundleIdentifier": "com.kizamu.app"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#E23E32",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.mobile"
+      "package": "com.kizamu.app"
     },
     "web": {
       "output": "static",
@@ -39,10 +39,10 @@
             "backgroundColor": "#1B1917"
           },
           "android": {
-            "image": "./assets/images/android-icon-foreground.png",
+            "image": "./assets/images/splash-icon.png",
             "imageWidth": 200,
             "dark": {
-              "image": "./assets/images/android-icon-foreground.png"
+              "image": "./assets/images/splash-icon.png"
             }
           }
         }
