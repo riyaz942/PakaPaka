@@ -32624,8 +32624,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "ちょっと待って。",
+          "english": "Wait a second.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chotto",
+            "matsu"
+          ],
+          "furigana": "ちょっと待[ま]って。"
+        },
+        {
+          "japanese": "このコーヒーはちょっと熱いです。",
+          "english": "This coffee is a bit hot.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "koohii",
+            "chotto",
+            "atsui-obj"
+          ],
+          "furigana": "このコーヒーはちょっと熱[あつ]いです。"
+        },
+        {
+          "japanese": "今日はちょっと忙しいです。",
+          "english": "I'm a little busy today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "chotto",
+            "isogashii"
+          ],
+          "furigana": "今日[きょう]はちょっと忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "hoka",
@@ -32650,8 +32685,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "他の色はありますか。",
+          "english": "Do you have this in another color?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hoka",
+            "iro",
+            "aru"
+          ],
+          "furigana": "他[ほか]の色[いろ]はありますか。"
+        },
+        {
+          "japanese": "他の店で買います。",
+          "english": "I'll buy it at a different shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hoka",
+            "mise",
+            "kau-v"
+          ],
+          "furigana": "他[ほか]の店[みせ]で買[か]います。"
+        },
+        {
+          "japanese": "他の人に聞きます。",
+          "english": "I'll ask someone else.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hoka",
+            "hito",
+            "kiku-v"
+          ],
+          "furigana": "他[ほか]の人[ひと]に聞[き]きます。"
+        }
+      ]
     },
     {
       "slug": "betsu",
@@ -32676,8 +32746,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "これは別の本です。",
+          "english": "This is a different book.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "betsu",
+            "hon"
+          ],
+          "furigana": "これは別[べつ]の本[ほん]です。"
+        },
+        {
+          "japanese": "別の店で靴を買いました。",
+          "english": "I bought shoes at a different shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "betsu",
+            "mise",
+            "kutsu",
+            "kau-v"
+          ],
+          "furigana": "別[べつ]の店[みせ]で靴[くつ]を買[か]いました。"
+        },
+        {
+          "japanese": "弟の部屋は別です。",
+          "english": "My younger brother's room is separate.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otouto",
+            "heya",
+            "betsu"
+          ],
+          "furigana": "弟[おとうと]の部屋[へや]は別[べつ]です。"
+        }
+      ]
     },
     {
       "slug": "byouki",
@@ -32702,8 +32808,46 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父は病気で病院にいます。",
+          "english": "My father is sick and he's at the hospital.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "byouki",
+            "byouin",
+            "iru-exist"
+          ],
+          "furigana": "父[ちち]は病[びょう]気[き]で病[びょう]院[いん]にいます。"
+        },
+        {
+          "japanese": "彼は病気で仕事を休みました。",
+          "english": "He was sick, so he took the day off work.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "byouki",
+            "shigoto",
+            "yasumu"
+          ],
+          "furigana": "彼[かれ]は病[びょう]気[き]で仕[し]事[ごと]を休[やす]みました。"
+        },
+        {
+          "japanese": "病気の人は医者に会います。",
+          "english": "A sick person goes to see a doctor.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "byouki",
+            "hito",
+            "isha",
+            "au"
+          ],
+          "furigana": "病[びょう]気[き]の人[ひと]は医[い]者[しゃ]に会[あ]います。"
+        }
+      ]
     },
     {
       "slug": "kaze-cold",
@@ -32729,8 +32873,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は風邪で学校を休みました。",
+          "english": "She was absent from school because of a cold.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kaze-cold",
+            "gakkou-v",
+            "yasumu"
+          ],
+          "furigana": "彼[かの]女[じょ]は風邪[かぜ]で学[がっ]校[こう]を休[やす]みました。"
+        },
+        {
+          "japanese": "風邪で頭が痛いです。",
+          "english": "My head hurts because of a cold.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kaze-cold",
+            "atama",
+            "itai"
+          ],
+          "furigana": "風邪[かぜ]で頭[あたま]が痛[いた]いです。"
+        },
+        {
+          "japanese": "母は風邪です。",
+          "english": "My mother has a cold.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "kaze-cold"
+          ],
+          "furigana": "母[はは]は風邪[かぜ]です。"
+        }
+      ]
     },
     {
       "slug": "kusuri",
@@ -32755,8 +32934,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "朝と晩に薬を飲みます。",
+          "english": "I take medicine in the morning and at night.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "asa",
+            "ban",
+            "kusuri",
+            "nomu-v"
+          ],
+          "furigana": "朝[あさ]と晩[ばん]に薬[くすり]を飲[の]みます。"
+        },
+        {
+          "japanese": "薬を病院でもらいました。",
+          "english": "I got the medicine at the hospital.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kusuri",
+            "byouin",
+            "morau"
+          ],
+          "furigana": "薬[くすり]を病[びょう]院[いん]でもらいました。"
+        },
+        {
+          "japanese": "薬をかばんに入れました。",
+          "english": "I put the medicine in my bag.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kusuri",
+            "kaban",
+            "ireru-v"
+          ],
+          "furigana": "薬[くすり]をかばんに入[い]れました。"
+        }
+      ]
     },
     {
       "slug": "chizu",
@@ -32781,8 +32996,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "地図をかばんに入れました。",
+          "english": "I put the map in my bag.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chizu",
+            "kaban",
+            "ireru-v"
+          ],
+          "furigana": "地[ち]図[ず]をかばんに入[い]れました。"
+        },
+        {
+          "japanese": "この地図は古いです。",
+          "english": "This map is old.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "chizu",
+            "furui-adj"
+          ],
+          "furigana": "この地[ち]図[ず]は古[ふる]いです。"
+        },
+        {
+          "japanese": "地図で駅を見つけました。",
+          "english": "I found the station on the map.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chizu",
+            "eki",
+            "mitsukeru"
+          ],
+          "furigana": "地[ち]図[ず]で駅[えき]を見[み]つけました。"
+        }
+      ]
     },
     {
       "slug": "kippu",
@@ -32807,8 +33057,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅で切符を買いました。",
+          "english": "I bought a ticket at the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "kippu",
+            "kau-v"
+          ],
+          "furigana": "駅[えき]で切[きっ]符[ぷ]を買[か]いました。"
+        },
+        {
+          "japanese": "私は切符をかばんに入れました。",
+          "english": "I put the ticket in my bag.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "kippu",
+            "kaban",
+            "ireru-v"
+          ],
+          "furigana": "私[わたし]は切[きっ]符[ぷ]をかばんに入[い]れました。"
+        },
+        {
+          "japanese": "その切符を友達にあげました。",
+          "english": "I gave that ticket to my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "kippu",
+            "tomodachi",
+            "ageru"
+          ],
+          "furigana": "その切[きっ]符[ぷ]を友[とも]達[だち]にあげました。"
+        }
+      ]
     },
     {
       "slug": "nimotsu",
@@ -32833,8 +33120,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は荷物を持って駅に行きました。",
+          "english": "I carried my luggage to the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "nimotsu",
+            "motsu",
+            "iku-v",
+            "eki"
+          ],
+          "furigana": "私[わたし]は荷[に]物[もつ]を持[も]って駅[えき]に行[い]きました。"
+        },
+        {
+          "japanese": "その荷物はとても重いです。",
+          "english": "That luggage is very heavy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "nimotsu",
+            "omoi"
+          ],
+          "furigana": "その荷[に]物[もつ]はとても重[おも]いです。"
+        },
+        {
+          "japanese": "彼が私の荷物を運んでくれました。",
+          "english": "He carried my luggage for me.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "watashi",
+            "nimotsu",
+            "hakobu",
+            "kureru"
+          ],
+          "furigana": "彼[かれ]が私[わたし]の荷[に]物[もつ]を運[はこ]んでくれました。"
+        }
+      ]
     },
     {
       "slug": "densha",
@@ -32859,8 +33185,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝電車で学校へ行きます。",
+          "english": "I go to school by train every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "densha",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]電[でん]車[しゃ]で学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "駅で電車を待ちました。",
+          "english": "I waited for the train at the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "densha",
+            "matsu"
+          ],
+          "furigana": "駅[えき]で電[でん]車[しゃ]を待[ま]ちました。"
+        },
+        {
+          "japanese": "その電車はとても速いです。",
+          "english": "That train is very fast.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "densha",
+            "hayai-fast"
+          ],
+          "furigana": "その電[でん]車[しゃ]はとても速[はや]いです。"
+        }
+      ]
     },
     {
       "slug": "kuruma",
@@ -32885,8 +33248,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は新しい車を買いました。",
+          "english": "I bought a new car.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "atarashii-adj",
+            "kuruma",
+            "kau-v"
+          ],
+          "furigana": "私[わたし]は新[あたら]しい車[くるま]を買[か]いました。"
+        },
+        {
+          "japanese": "彼の車は駅の近くにあります。",
+          "english": "His car is near the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "kuruma",
+            "eki",
+            "chikaku",
+            "aru"
+          ],
+          "furigana": "彼[かれ]の車[くるま]は駅[えき]の近[ちか]くにあります。"
+        },
+        {
+          "japanese": "車の中に犬がいます。",
+          "english": "There is a dog inside the car.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuruma",
+            "naka",
+            "inu",
+            "iru-exist"
+          ],
+          "furigana": "車[くるま]の中[なか]に犬[いぬ]がいます。"
+        }
+      ]
     },
     {
       "slug": "jitensha",
@@ -32911,8 +33313,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日自転車で学校に行きます。",
+          "english": "I go to school by bicycle every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "jitensha",
+            "gakkou-v",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]自[じ]転[てん]車[くるま]で学[がっ]校[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "弟は新しい自転車が欲しいです。",
+          "english": "My younger brother wants a new bicycle.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "atarashii-adj",
+            "jitensha",
+            "hoshii"
+          ],
+          "furigana": "弟[おとうと]は新[あたら]しい自[じ]転[てん]車[くるま]が欲[ほ]しいです。"
+        },
+        {
+          "japanese": "公園に自転車がたくさんあります。",
+          "english": "There are a lot of bicycles at the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kouen",
+            "jitensha",
+            "takusan",
+            "aru"
+          ],
+          "furigana": "公[こう]園[えん]に自[じ]転[てん]車[くるま]がたくさんあります。"
+        }
+      ]
     },
     {
       "slug": "hikouki",
@@ -32937,8 +33378,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は飛行機で日本へ行きます。",
+          "english": "I'm going to Japan by airplane.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "hikouki",
+            "nihon",
+            "iku-v"
+          ],
+          "furigana": "私[わたし]は飛[ひ]行[こう]機[き]で日本[にほん]へ行[い]きます。"
+        },
+        {
+          "japanese": "あの飛行機は空を大変低く飛んでいます。",
+          "english": "That airplane over there is flying very low across the sky.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "hikouki",
+            "sora",
+            "taihen",
+            "hikui",
+            "tobu"
+          ],
+          "furigana": "あの飛[ひ]行[こう]機[き]は空[そら]を大[たい]変[へん]低[ひく]く飛[と]んでいます。"
+        },
+        {
+          "japanese": "空港で飛行機を見ました。",
+          "english": "I saw an airplane at the airport.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kuukou",
+            "hikouki",
+            "miru-v"
+          ],
+          "furigana": "空[くう]港[こう]で飛[ひ]行[こう]機[き]を見[み]ました。"
+        }
+      ]
     },
     {
       "slug": "fune",
@@ -32963,8 +33443,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "船で海を渡ります。",
+          "english": "We cross the sea by ship.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "fune",
+            "umi",
+            "watar"
+          ],
+          "furigana": "船[ふね]で海[うみ]を渡[わた]ります。"
+        },
+        {
+          "japanese": "彼は今船に乗っています。",
+          "english": "He's on the ship right now.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "ima",
+            "fune",
+            "noru"
+          ],
+          "furigana": "彼[かれ]は今[いま]船[ふね]に乗[の]っています。"
+        },
+        {
+          "japanese": "あの船は大きいです。",
+          "english": "That ship over there is big.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "fune",
+            "ookii"
+          ],
+          "furigana": "あの船[ふね]は大[おお]きいです。"
+        }
+      ]
     },
     {
       "slug": "chikatetsu",
@@ -32989,8 +33505,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は地下鉄に乗ります。",
+          "english": "I take the subway.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "chikatetsu",
+            "noru"
+          ],
+          "furigana": "私[わたし]は地[ち]下[か]鉄[てつ]に乗[の]ります。"
+        },
+        {
+          "japanese": "駅の近くに地下鉄があります。",
+          "english": "There's a subway near the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "chikaku",
+            "chikatetsu",
+            "aru"
+          ],
+          "furigana": "駅[えき]の近[ちか]くに地[ち]下[か]鉄[てつ]があります。"
+        },
+        {
+          "japanese": "地下鉄は便利です。",
+          "english": "The subway is convenient.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chikatetsu",
+            "benri"
+          ],
+          "furigana": "地[ち]下[か]鉄[てつ]は便[べん]利[り]です。"
+        }
+      ]
     },
     {
       "slug": "kai-times",
@@ -33015,8 +33566,48 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝三回犬と歩きます。",
+          "english": "Every morning I walk with my dog three times.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "san-v",
+            "inu",
+            "aruku",
+            "kai-times"
+          ],
+          "furigana": "毎[まい]朝[あさ]三[さん]回[かい]犬[いぬ]と歩[ある]きます。"
+        },
+        {
+          "japanese": "今日は二回コーヒーを飲みました。",
+          "english": "Today I drank coffee twice.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "ni-v",
+            "koohii",
+            "nomu-v",
+            "kai-times"
+          ],
+          "furigana": "今日[きょう]は二[に]回[かい]コーヒーを飲[の]みました。"
+        },
+        {
+          "japanese": "彼に一回電話しました。",
+          "english": "I called him once.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "ichi-v",
+            "denwa-suru",
+            "kai-times"
+          ],
+          "furigana": "彼[かれ]に一[いち]回[かい]電[でん]話[わ]しました。"
+        }
+      ]
     },
     {
       "slug": "ko-counter",
@@ -33041,8 +33632,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "卵を五個買いました。",
+          "english": "I bought five eggs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tamago",
+            "go-v",
+            "ko-counter",
+            "kau-v"
+          ],
+          "furigana": "卵[たまご]を五[ご]個[こ]買[か]いました。"
+        },
+        {
+          "japanese": "パンを二個食べました。",
+          "english": "I ate two pieces of bread.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "pan",
+            "ni-v",
+            "ko-counter",
+            "taberu"
+          ],
+          "furigana": "パンを二[に]個[こ]食[た]べました。"
+        },
+        {
+          "japanese": "かばんに卵が十個あります。",
+          "english": "There are ten eggs in the bag.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaban",
+            "tamago",
+            "juu-v",
+            "ko-counter",
+            "aru"
+          ],
+          "furigana": "かばんに卵[たまご]が十[じゅう]個[こ]あります。"
+        }
+      ]
     },
     {
       "slug": "hon-counter",
@@ -33067,8 +33697,47 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "傘を二本買いました。",
+          "english": "I bought two umbrellas.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kasa",
+            "ni-v",
+            "kau-v",
+            "hon-counter"
+          ],
+          "furigana": "傘[かさ]を二[に]本[ほん]買[か]いました。"
+        },
+        {
+          "japanese": "公園に木が三本あります。",
+          "english": "There are three trees in the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kouen",
+            "ki-tree-v",
+            "san-v",
+            "aru",
+            "hon-counter"
+          ],
+          "furigana": "公[こう]園[えん]に木[き]が三[さん]本[ほん]あります。"
+        },
+        {
+          "japanese": "ペンを一本持っています。",
+          "english": "I have one pen.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "pen",
+            "ichi-v",
+            "motsu",
+            "hon-counter"
+          ],
+          "furigana": "ペンを一[いち]本[ほん]持[も]っています。"
+        }
+      ]
     },
     {
       "slug": "mai-counter",
@@ -33093,8 +33762,48 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "紙を三枚買いました。",
+          "english": "I bought three sheets of paper.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kami-paper",
+            "san-v",
+            "kau-v",
+            "mai-counter"
+          ],
+          "furigana": "紙[かみ]を三[さん]枚[まい]買[か]いました。"
+        },
+        {
+          "japanese": "友達に切符を二枚あげました。",
+          "english": "I gave two tickets to my friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kippu",
+            "ni-v",
+            "ageru",
+            "mai-counter"
+          ],
+          "furigana": "友[とも]達[だち]に切[きっ]符[ぷ]を二[に]枚[まい]あげました。"
+        },
+        {
+          "japanese": "彼女は写真を一枚見せました。",
+          "english": "She showed one photo.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "shashin",
+            "ichi-v",
+            "miseru",
+            "mai-counter"
+          ],
+          "furigana": "彼[かの]女[じょ]は写[しゃ]真[しん]を一[いち]枚[まい]見[み]せました。"
+        }
+      ]
     },
     {
       "slug": "hiki",
@@ -33119,8 +33828,49 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "犬を二匹飼っています。",
+          "english": "I have two dogs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "inu",
+            "kau-v",
+            "hiki",
+            "ni-v"
+          ],
+          "furigana": "犬[いぬ]を二[に]匹[ひき]飼[か]っています。"
+        },
+        {
+          "japanese": "猫を一匹と犬を一匹飼っています。",
+          "english": "I have a cat and a dog.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "neko",
+            "inu",
+            "kau-v",
+            "hiki",
+            "ichi-v"
+          ],
+          "furigana": "猫[ねこ]を一[いち]匹[ひき]と犬[いぬ]を一[いち]匹[ひき]飼[か]っています。"
+        },
+        {
+          "japanese": "彼女の家には猫が三匹います。",
+          "english": "There are three cats at her house.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ie",
+            "neko",
+            "iru-exist",
+            "hiki",
+            "san-v"
+          ],
+          "furigana": "彼[かの]女[じょ]の家[いえ]には猫[ねこ]が三[さん]匹[ひき]います。"
+        }
+      ]
     },
     {
       "slug": "nin-counter",
