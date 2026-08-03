@@ -398,6 +398,165 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "tamago-o-kaisugiru",
+      "position": 4,
+      "tone": "humorous",
+      "passage": {
+        "title": "卵が五十六",
+        "body": "今日、母の手紙をうちに忘れましたので、スーパーで卵を十買いました。家に帰って、台所のドアを開けました。テーブルの上に卵がたくさんあります。父も姉も卵を買いましたよ。全部で五十六です。",
+        "questions": [
+          {
+            "prompt": "どこで卵を買いましたか。",
+            "accepted_answers": [
+              "スーパー",
+              "スーパーで",
+              "スーパーで買いました"
+            ],
+            "prompt_furigana": "どこで卵[たまご]を買[か]いましたか。"
+          },
+          {
+            "prompt": "卵は全部でいくつありますか。",
+            "accepted_answers": [
+              "五十六",
+              "五十六です",
+              "五十六の卵"
+            ],
+            "prompt_furigana": "卵[たまご]は全[ぜん]部[ぶ]でいくつありますか。"
+          }
+        ],
+        "english_translation": "Today I left my mother's note at home, so I bought ten eggs at the supermarket. I came home and opened the kitchen door. There are a lot of eggs on the table. My father bought eggs too, and so did my older sister. Fifty-six in all.",
+        "summary_ja": "卵を十買って帰りましたが、家には卵が五十六ありました。",
+        "summary_en": "The writer forgets the shopping note, buys ten eggs to be safe, and comes home to fifty-six of them.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "masu",
+          "mashita",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-direction",
+          "de-location",
+          "node-because",
+          "mo-also",
+          "te-form",
+          "yo-emphasis"
+        ],
+        "vocabulary_slugs": [
+          "ane",
+          "chichi",
+          "daidokoro",
+          "doa",
+          "haha",
+          "ie",
+          "kyou",
+          "suupaa",
+          "takusan",
+          "tamago",
+          "teeburu",
+          "tegami",
+          "uchi",
+          "ue",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "haha",
+            "start": 3,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "tegami",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "vocabulary_slug": "uchi",
+            "start": 8,
+            "end": 10
+          },
+          {
+            "vocabulary_slug": "suupaa",
+            "start": 19,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "tamago",
+            "start": 24,
+            "end": 25
+          },
+          {
+            "vocabulary_slug": "ie",
+            "start": 33,
+            "end": 34
+          },
+          {
+            "vocabulary_slug": "daidokoro",
+            "start": 39,
+            "end": 41
+          },
+          {
+            "vocabulary_slug": "doa",
+            "start": 42,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "teeburu",
+            "start": 51,
+            "end": 55
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 56,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "tamago",
+            "start": 58,
+            "end": 59
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 60,
+            "end": 64
+          },
+          {
+            "vocabulary_slug": "chichi",
+            "start": 69,
+            "end": 70
+          },
+          {
+            "vocabulary_slug": "ane",
+            "start": 71,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "tamago",
+            "start": 73,
+            "end": 74
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 82,
+            "end": 84
+          }
+        ],
+        "word_count": 55,
+        "body_furigana": "今日[きょう]、母[はは]の手[て]紙[がみ]をうちに忘[わす]れましたので、スーパーで卵[たまご]を十[じゅう]買[か]いました。家[いえ]に帰[かえ]って、台[だい]所[どころ]のドアを開[あ]けました。テーブルの上[うえ]に卵[たまご]がたくさんあります。父[ちち]も姉[あね]も卵[たまご]を買[か]いましたよ。全[ぜん]部[ぶ]で五[ご]十[じゅう]六[ろく]です。",
+        "slug": "tamago-o-kaisugiru",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }
