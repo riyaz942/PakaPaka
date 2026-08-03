@@ -30131,8 +30131,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "鈴木先生は英語を教えます。",
+          "english": "Mr Suzuki teaches English.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "eigo",
+            "oshieru"
+          ],
+          "furigana": "鈴木[すずき]先[せん]生[せい]は英[えい]語[ご]を教[おし]えます。"
+        },
+        {
+          "japanese": "彼女は毎日英語を勉強しています。",
+          "english": "She studies English every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "mainichi",
+            "eigo",
+            "benkyou-suru"
+          ],
+          "furigana": "彼[かの]女[じょ]は毎[まい]日[にち]英[えい]語[ご]を勉[べん]強[きょう]しています。"
+        },
+        {
+          "japanese": "私は英語が分かります。",
+          "english": "I understand English.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "eigo",
+            "wakaru"
+          ],
+          "furigana": "私[わたし]は英[えい]語[ご]が分[わ]かります。"
+        }
+      ]
     },
     {
       "slug": "nihongo",
@@ -30157,8 +30193,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日日本語を勉強します。",
+          "english": "I study Japanese every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "nihongo",
+            "benkyou-suru"
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]日本[にほん]語[ご]を勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "先生は日本語で話しました。",
+          "english": "The teacher spoke in Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "nihongo",
+            "hanasu-v"
+          ],
+          "furigana": "先[せん]生[せい]は日本[にほん]語[ご]で話[はな]しました。"
+        },
+        {
+          "japanese": "彼女は日本語が上手です。",
+          "english": "She is good at Japanese.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "nihongo",
+            "jouzu"
+          ],
+          "furigana": "彼[かの]女[じょ]は日本[にほん]語[ご]が上手[じょうず]です。"
+        }
+      ]
     },
     {
       "slug": "nihon",
@@ -30183,8 +30255,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は日本が好きです。",
+          "english": "I like Japan.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "nihon",
+            "suki"
+          ],
+          "furigana": "私[わたし]は日本[にほん]が好[す]きです。"
+        },
+        {
+          "japanese": "兄は日本に住んでいます。",
+          "english": "My older brother lives in Japan.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ani",
+            "nihon",
+            "sumu"
+          ],
+          "furigana": "兄[あに]は日本[にほん]に住[す]んでいます。"
+        },
+        {
+          "japanese": "日本の食べ物はおいしいです。",
+          "english": "Japanese food is delicious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "nihon",
+            "tabemono",
+            "oishii"
+          ],
+          "furigana": "日本[にほん]の食[た]べ物[もの]はおいしいです。"
+        }
+      ]
     },
     {
       "slug": "gaikoku",
@@ -30209,8 +30316,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は外国に住みたいです。",
+          "english": "I want to live in a foreign country.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "gaikoku",
+            "sumu"
+          ],
+          "furigana": "私[わたし]は外[がい]国[こく]に住[す]みたいです。"
+        },
+        {
+          "japanese": "彼女は外国で日本語を教えました。",
+          "english": "She taught Japanese in a foreign country.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "gaikoku",
+            "nihongo",
+            "oshieru"
+          ],
+          "furigana": "彼[かの]女[じょ]は外[がい]国[こく]で日本[にほん]語[ご]を教[おし]えました。"
+        },
+        {
+          "japanese": "来年、外国へ旅行します。",
+          "english": "Next year, I'll travel to a foreign country.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "rainen",
+            "gaikoku",
+            "ryokou-suru"
+          ],
+          "furigana": "来[らい]年[ねん]、外[がい]国[こく]へ旅[りょ]行[こう]します。"
+        }
+      ]
     },
     {
       "slug": "kaigi",
@@ -30235,8 +30378,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日会議があります。",
+          "english": "There's a meeting tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "kaigi",
+            "aru"
+          ],
+          "furigana": "明日[あした]会[かい]議[ぎ]があります。"
+        },
+        {
+          "japanese": "彼女は会議で話しました。",
+          "english": "She spoke at the meeting.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kaigi",
+            "hanasu-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は会[かい]議[ぎ]で話[はな]しました。"
+        },
+        {
+          "japanese": "今日の会議は長かったです。",
+          "english": "Today's meeting was long.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "kaigi",
+            "nagai-adj"
+          ],
+          "furigana": "今日[きょう]の会[かい]議[ぎ]は長[なが]かったです。"
+        }
+      ]
     },
     {
       "slug": "yakusoku",
@@ -30261,8 +30439,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女と会う約束をしました。",
+          "english": "I made a promise to meet my girlfriend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "au",
+            "yakusoku",
+            "suru"
+          ],
+          "furigana": "彼[かの]女[じょ]と会[あ]う約[やく]束[そく]をしました。"
+        },
+        {
+          "japanese": "明日、彼と約束があります。",
+          "english": "I have an appointment with him tomorrow.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "kare",
+            "yakusoku",
+            "aru"
+          ],
+          "furigana": "明日[あした]、彼[かれ]と約[やく]束[そく]があります。"
+        },
+        {
+          "japanese": "友達との約束を忘れました。",
+          "english": "I forgot my promise with my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "yakusoku",
+            "wasureru"
+          ],
+          "furigana": "友[とも]達[だち]との約[やく]束[そく]を忘[わす]れました。"
+        }
+      ]
     },
     {
       "slug": "okane",
@@ -30287,8 +30502,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "財布にお金がありません。",
+          "english": "There's no money in my wallet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "saifu",
+            "okane",
+            "aru"
+          ],
+          "furigana": "財[さい]布[ふ]にお金[かね]がありません。"
+        },
+        {
+          "japanese": "友達にお金を借りました。",
+          "english": "I borrowed money from a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "okane",
+            "kariru"
+          ],
+          "furigana": "友[とも]達[だち]にお金[かね]を借[か]りました。"
+        },
+        {
+          "japanese": "銀行でお金を払います。",
+          "english": "I'll pay the money at the bank.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ginkou",
+            "okane",
+            "harau"
+          ],
+          "furigana": "銀[ぎん]行[こう]でお金[かね]を払[はら]います。"
+        }
+      ]
     },
     {
       "slug": "ryokou",
@@ -30313,8 +30563,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "旅行は楽しかったです。",
+          "english": "The trip was fun.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ryokou",
+            "tanoshii"
+          ],
+          "furigana": "旅[りょ]行[こう]は楽[たの]しかったです。"
+        },
+        {
+          "japanese": "来年家族と旅行に行きます。",
+          "english": "Next year I'll go on a trip with my family.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "rainen",
+            "kazoku",
+            "ryokou",
+            "iku-v"
+          ],
+          "furigana": "来[らい]年[ねん]家[か]族[ぞく]と旅[りょ]行[こう]に行[い]きます。"
+        },
+        {
+          "japanese": "友達との旅行は楽しいです。",
+          "english": "A trip with a friend is fun.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "ryokou",
+            "tanoshii"
+          ],
+          "furigana": "友[とも]達[だち]との旅[りょ]行[こう]は楽[たの]しいです。"
+        }
+      ]
     },
     {
       "slug": "kaimono",
@@ -30339,8 +30624,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は友達と買い物に行きます。",
+          "english": "Today I'm going shopping with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "tomodachi",
+            "kaimono",
+            "iku-v"
+          ],
+          "furigana": "今日[きょう]は友[とも]達[だち]と買[か]い物[もの]に行[い]きます。"
+        },
+        {
+          "japanese": "昨日デパートで買い物をしました。",
+          "english": "I did some shopping at the department store yesterday.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinou",
+            "depaato",
+            "kaimono"
+          ],
+          "furigana": "昨日[きのう]デパートで買[か]い物[もの]をしました。"
+        },
+        {
+          "japanese": "妹は買い物が好きです。",
+          "english": "My younger sister likes shopping.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "kaimono",
+            "suki"
+          ],
+          "furigana": "妹[いもうと]は買[か]い物[もの]が好[す]きです。"
+        }
+      ]
     },
     {
       "slug": "supootsu",
@@ -30365,8 +30686,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はスポーツが好きです。",
+          "english": "I like sports.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "supootsu",
+            "suki"
+          ],
+          "furigana": "私[わたし]はスポーツが好[す]きです。"
+        },
+        {
+          "japanese": "弟は毎週スポーツをします。",
+          "english": "My younger brother does sports every week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "maishuu",
+            "supootsu",
+            "suru"
+          ],
+          "furigana": "弟[おとうと]は毎[まい]週[しゅう]スポーツをします。"
+        },
+        {
+          "japanese": "彼はどんなスポーツも上手です。",
+          "english": "He's good at every kind of sport.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "donna",
+            "supootsu",
+            "jouzu"
+          ],
+          "furigana": "彼[かれ]はどんなスポーツも上手[じょうず]です。"
+        }
+      ]
     },
     {
       "slug": "ongaku",
