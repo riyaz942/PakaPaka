@@ -1,0 +1,42 @@
+{
+  "level": "n5",
+  "seed": "neko-to-shukudai",
+  "expect": [
+    "the seed asks for 32–48"
+  ],
+  "note": "passage runs well past the seed's word band",
+  "passage": {
+    "title": "宿題とタマ",
+    "body": "昨日、宿題をしました。でも、今日、先生に出しません。猫のタマが宿題の上に寝ました。私はタマの名前を呼びました。タマは私を見ませんでした。私は先生に電話をしました。先生は宿題を待ちます。私は猫を見ました。猫は寝ています。私も寝ました。",
+    "english_translation": "Yesterday I did my homework. But today I am not handing it in to the teacher. My cat Tama went to sleep on top of the homework. I called Tama's name. Tama did not look at me.",
+    "summary_ja": "猫のタマが宿題の上に寝ました。",
+    "summary_en": "The homework is finished, but the cat is asleep on top of it.",
+    "questions": [
+      {
+        "prompt": "猫の名前は何ですか。",
+        "accepted_answers": [
+          "タマ"
+        ]
+      },
+      {
+        "prompt": "タマは宿題のどこに寝ましたか。",
+        "accepted_answers": [
+          "宿題の上",
+          "上",
+          "上に"
+        ]
+      }
+    ],
+    "grammar_slugs": [
+      "wa-topic",
+      "desu",
+      "masu",
+      "masen",
+      "mashita",
+      "wo",
+      "ga",
+      "no-possessive",
+      "ni-direction"
+    ]
+  }
+}

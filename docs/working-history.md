@@ -149,7 +149,13 @@ lifted verbatim from the item's own `example_sentences` exempt from the vocabula
 - N4 grammar lessons (0) and N4 mnemonic/example authoring
 - Cast-coherence / ship gate for draft → reviewed mnemonics & examples
 - Phase 3 radical images only (KanjiVG Tier 1 + Tier 2 art → `mobile/assets/radicals/`, bundled; drop HTTPS-only `visual_mnemonic_url`; no kanji images)
-- Phase 4 closed-loop reading generation + 50–60% humorous tone mix (`word_count` never set — 0/10 N5 and 0/9 N4 passages)
+- Phase 4 closed-loop reading generation: **N5 tooling built, generation has not run**
+  (seeds + prompt + context + gate + driver under `generate_content/`, 10 N5 seeds at a
+  60% humour mix; `word_spans`/`vocabulary_slugs`/`word_count` derived by the tokenizer,
+  gate self-checks against 2 good + 8 bad fixtures — see
+  [phase-4-reading-passage-tooling.md](./content/phase-4-reading-passage-tooling.md)).
+  Still owed: the run itself, N4 seeds, and the maintainer decision on which of the 10
+  hand-authored N5 passages the generated set replaces (`word_count` still 0/10 N5, 0/9 N4)
 - Phase 5 review tooling (`npm run review-content` / local HTML review UI)
 - Settings → About attribution UI (NOTICE exists; in-app surface does not)
 - Default CI compile does not `--fail-on-draft`

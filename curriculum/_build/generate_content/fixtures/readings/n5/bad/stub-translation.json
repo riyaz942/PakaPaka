@@ -1,0 +1,57 @@
+{
+  "level": "n5",
+  "seed": "eki-made-no-michi",
+  "expect": [
+    "english_translation"
+  ],
+  "note": "translation is a one-line gloss rather than the whole passage",
+  "passage": {
+    "title": "郵便局への道",
+    "body": "今日、郵便局へ行きました。でも、道がわかりませんでした。駅の前で、男の人に聞きました。この道を歩いてください。二つ目の角を左に曲がってください。郵便局は銀行の隣にありました。駅から歩いて五分でした。",
+    "english_translation": "I asked for directions.",
+    "summary_ja": "駅で道を聞いて、郵便局まで歩きました。",
+    "summary_en": "Asking a stranger for directions to the post office, and finding it next to the bank.",
+    "questions": [
+      {
+        "prompt": "郵便局はどこにありましたか。",
+        "accepted_answers": [
+          "銀行の隣",
+          "銀行の隣にありました",
+          "隣"
+        ]
+      },
+      {
+        "prompt": "駅から郵便局まで何分でしたか。",
+        "accepted_answers": [
+          "五分",
+          "ごふん",
+          "5分"
+        ]
+      },
+      {
+        "prompt": "どこで男の人に聞きましたか。",
+        "accepted_answers": [
+          "駅の前",
+          "駅の前で",
+          "駅"
+        ]
+      }
+    ],
+    "grammar_slugs": [
+      "wa-topic",
+      "desu",
+      "masu",
+      "masen",
+      "mashita",
+      "wo",
+      "ga",
+      "no-possessive",
+      "ni-direction",
+      "he-direction",
+      "de-location",
+      "te-form",
+      "te-kudasai",
+      "kara-from"
+    ]
+  }
+}

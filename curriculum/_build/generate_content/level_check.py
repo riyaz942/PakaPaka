@@ -48,6 +48,12 @@ FUNCTION_WORD_ALLOWLIST = {
     # everyday grammatical adverbs
     "とても", "少し", "ちょっと", "もう", "まだ", "よく", "たくさん", "沢山",
     "こう", "そう", "ああ", "どう",
+    # machinery of taught patterns that is not itself a vocabulary entry:
+    # しれる only ever surfaces inside かもしれない (an N5 grammar point), and
+    # ごろ is the time approximator ("十一時ごろ"), the noun-side twin of ぐらい,
+    # which passes already as a particle. Both are absent from N5 *and* N4
+    # vocabulary, so without these the gate rejects the patterns we teach.
+    "しれる", "知れる", "ごろ", "頃",
     # bare evaluatives/negation that surface inside patterns (てもいい, ない形)
     "いい", "良い", "よい", "ない", "無い",
     # name suffixes

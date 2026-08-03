@@ -469,6 +469,10 @@ _PASSAGE_AUTHORED_KEYS = (
     "grammar_slugs",
     "vocabulary_slugs",
     "word_spans",
+    # Phase 4 derives word_count in _build alongside the spans; the shipped
+    # hand-authored passages carry none, so this is a no-op until a generated
+    # set is wired in (generate_content/generate_readings.py).
+    "word_count",
 )
 
 

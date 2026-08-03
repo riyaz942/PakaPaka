@@ -700,6 +700,24 @@ difference between filler and a real graded reader:
 Target: 8–10 passages per level with increasing length/complexity, replacing the
 current 2 per level.
 
+*Status: N5 tooling built; generation has not run.*
+`generate_content/` gains the seeds (`reading_seeds.py` — 10 N5 seeds carrying
+position, tone tag, word band, question count and topic brief, 6 humorous / 4
+neutral, mix checked mechanically), the context builder (`reading_context.py` —
+option-(a) positional cutoff over *both* vocabulary and grammar), the prompt
+(`prompts/reading-passage.md`, persona v2 as system), the closed-loop gate
+(`validate_readings.py`) and the driver (`generate_readings.py`, same
+batch/requeue/web-chat shape as 2b/2c). The model writes prose only:
+`word_spans`, `vocabulary_slugs` and `word_count` are derived from the body by
+the tokenizer in `_build`, since `compile-curriculum` requires each span's slice
+to equal the vocabulary `primary_form` at UTF-16 offsets, in order and
+non-overlapping. Step 3's loop is enforced for vocabulary; the **grammar** half
+is not fully mechanical — the gate checks *declared* `grammar_slugs` against the
+allowed set, because no tokenizer extracts grammar points from text. Runbook,
+decisions and the not-automated wiring step (which of the 10 hand-authored N5
+passages a generated set replaces) are in
+[phase-4-reading-passage-tooling.md](./phase-4-reading-passage-tooling.md).
+
 ## Phase 5 — Human review loop
 
 Review is what actually reaches the MaruMori bar; make it cheap:
