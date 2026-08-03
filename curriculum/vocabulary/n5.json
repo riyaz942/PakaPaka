@@ -30749,8 +30749,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は音楽が好きです。",
+          "english": "I like music.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ongaku",
+            "suki"
+          ],
+          "furigana": "私[わたし]は音[おん]楽[がく]が好[す]きです。"
+        },
+        {
+          "japanese": "彼女は毎朝音楽を聞きます。",
+          "english": "She listens to music every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "maiasa",
+            "ongaku",
+            "kiku-v"
+          ],
+          "furigana": "彼[かの]女[じょ]は毎[まい]朝[あさ]音[おん]楽[がく]を聞[き]きます。"
+        },
+        {
+          "japanese": "この音楽は面白いですね。",
+          "english": "This music is interesting, isn't it.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "ongaku",
+            "omoshiroi"
+          ],
+          "furigana": "この音[おん]楽[がく]は面[おも]白[しろ]いですね。"
+        }
+      ]
     },
     {
       "slug": "eiga",
@@ -30775,8 +30811,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は映画が好きです。",
+          "english": "I like movies.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "eiga",
+            "suki"
+          ],
+          "furigana": "私[わたし]は映[えい]画[が]が好[す]きです。"
+        },
+        {
+          "japanese": "明日、友達と映画を見ます。",
+          "english": "Tomorrow I'll watch a movie with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "eiga",
+            "miru-v"
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と映[えい]画[が]を見[み]ます。"
+        },
+        {
+          "japanese": "その映画は面白かったです。",
+          "english": "That movie was interesting.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "eiga",
+            "omoshiroi"
+          ],
+          "furigana": "その映[えい]画[が]は面白[おもしろ]かったです。"
+        }
+      ]
     },
     {
       "slug": "uta",
@@ -30801,8 +30873,46 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女はいつも楽しい歌を歌います。",
+          "english": "She always sings fun songs.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "itsu",
+            "tanoshii",
+            "uta",
+            "utau"
+          ],
+          "furigana": "彼[かの]女[じょ]はいつも楽[たの]しい歌[うた]を歌[うた]います。"
+        },
+        {
+          "japanese": "この歌は好きですか。",
+          "english": "Do you like this song?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "uta",
+            "suki"
+          ],
+          "furigana": "この歌[うた]は好[す]きですか。"
+        },
+        {
+          "japanese": "友達と一緒に歌を歌いました。",
+          "english": "I sang a song together with my friend.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "issho-ni",
+            "uta",
+            "utau"
+          ],
+          "furigana": "友[とも]達[だち]と一[いっ]緒[しょ]に歌[うた]を歌[うた]いました。"
+        }
+      ]
     },
     {
       "slug": "e-picture",
@@ -30827,8 +30937,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "娘は絵が好きです。",
+          "english": "My daughter likes drawing.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "musume",
+            "e-picture",
+            "suki"
+          ],
+          "furigana": "娘[むすめ]は絵[え]が好[す]きです。"
+        },
+        {
+          "japanese": "彼は部屋で絵を見ました。",
+          "english": "He looked at a picture in the room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "heya",
+            "e-picture",
+            "miru-v"
+          ],
+          "furigana": "彼[かれ]は部屋[へや]で絵[え]を見[み]ました。"
+        },
+        {
+          "japanese": "この絵は古いです。",
+          "english": "This picture is old.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "e-picture",
+            "furui-adj"
+          ],
+          "furigana": "この絵[え]は古[ふる]いです。"
+        }
+      ]
     },
     {
       "slug": "hanashi",
@@ -30853,8 +30999,45 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はよく友達と話します。",
+          "english": "I often talk with my friends.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "tomodachi",
+            "hanasu-v"
+          ],
+          "furigana": "私[わたし]はよく友[とも]達[だち]と話[はな]します。"
+        },
+        {
+          "japanese": "その話は面白いですか？",
+          "english": "Is that story interesting?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "hanashi",
+            "omoshiroi"
+          ],
+          "furigana": "その話[はなし]は面[おも]白[しろ]いですか？"
+        },
+        {
+          "japanese": "先生は昨日、面白い話をしました。",
+          "english": "The teacher told an interesting story yesterday.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "kinou",
+            "omoshiroi",
+            "hanashi",
+            "suru"
+          ],
+          "furigana": "先[せん]生[せい]は昨日[きのう]、面[おも]白[しろ]い話[はなし]をしました。"
+        }
+      ]
     },
     {
       "slug": "shitsumon",
@@ -30879,8 +31062,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は先生に質問しました。",
+          "english": "I asked the teacher a question.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "sensei",
+            "shitsumon-suru"
+          ],
+          "furigana": "私[わたし]は先[せん]生[せい]に質[しつ]問[もん]しました。"
+        },
+        {
+          "japanese": "その質問は難しいです。",
+          "english": "That question is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "shitsumon",
+            "muzukashii"
+          ],
+          "furigana": "その質[しつ]問[もん]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "彼女は授業で質問をしました。",
+          "english": "She asked a question during class.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "jugyou",
+            "shitsumon-suru"
+          ],
+          "furigana": "彼[かの]女[じょ]は授[じゅ]業[ぎょう]で質[しつ]問[もん]をしました。"
+        }
+      ]
     },
     {
       "slug": "mono",
@@ -30905,8 +31123,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "これは私の物です。",
+          "english": "This is my thing.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "watashi",
+            "mono"
+          ],
+          "furigana": "これは私[わたし]の物[もの]です。"
+        },
+        {
+          "japanese": "その箱の物は何ですか。",
+          "english": "What are the things in that box?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "hako",
+            "nani",
+            "mono"
+          ],
+          "furigana": "その箱[はこ]の物[もの]は何[なに]ですか。"
+        },
+        {
+          "japanese": "その物を取ってください。",
+          "english": "Please take that thing.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "toru",
+            "mono"
+          ],
+          "furigana": "その物[もの]を取[と]ってください。"
+        }
+      ]
     },
     {
       "slug": "koto",
@@ -30931,8 +31185,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の言う事を聞いてください。",
+          "english": "Please listen to what I say.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "iu-v",
+            "kiku-v",
+            "koto"
+          ],
+          "furigana": "私[わたし]の言[い]う事[こと]を聞[き]いてください。"
+        },
+        {
+          "japanese": "それは面白い事ですね。",
+          "english": "That's an interesting thing, isn't it.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sore",
+            "omoshiroi",
+            "koto"
+          ],
+          "furigana": "それは面[おも]白[しろ]い事[こと]ですね。"
+        },
+        {
+          "japanese": "好きな事をしました。",
+          "english": "I did something I like.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "suki",
+            "suru",
+            "koto"
+          ],
+          "furigana": "好[す]きな事[こと]をしました。"
+        }
+      ]
     },
     {
       "slug": "tokoro",
@@ -30957,8 +31247,44 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "ここは静かな所です。",
+          "english": "This is a quiet place.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "koko",
+            "shizuka",
+            "tokoro"
+          ],
+          "furigana": "ここは静[しず]かな所[ところ]です。"
+        },
+        {
+          "japanese": "私は静かな所が好きです。",
+          "english": "I like quiet places.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "shizuka",
+            "tokoro",
+            "suki"
+          ],
+          "furigana": "私[わたし]は静[しず]かな所[ところ]が好[す]きです。"
+        },
+        {
+          "japanese": "あそこは有名な所です。",
+          "english": "That place over there is famous.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "asoko",
+            "yuumei",
+            "tokoro"
+          ],
+          "furigana": "あそこは有[ゆう]名[めい]な所[ところ]です。"
+        }
+      ]
     },
     {
       "slug": "hou",
@@ -30983,8 +31309,43 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "すみません、駅はどちらの方ですか。",
+          "english": "Excuse me, which way is the station?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "dochira",
+            "hou"
+          ],
+          "furigana": "すみません、駅[えき]はどちらの方[ほう]ですか。"
+        },
+        {
+          "japanese": "郵便局はあちらの方です。",
+          "english": "The post office is that way.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "yuubinkyoku",
+            "achira",
+            "hou"
+          ],
+          "furigana": "郵[ゆう]便[びん]局[きょく]はあちらの方[ほう]です。"
+        },
+        {
+          "japanese": "こちらの方が近いです。",
+          "english": "This way is closer.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kochira",
+            "chikai",
+            "hou"
+          ],
+          "furigana": "こちらの方[ほう]が近[ちか]いです。"
+        }
+      ]
     },
     {
       "slug": "kata-person",

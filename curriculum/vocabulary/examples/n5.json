@@ -2691,6 +2691,80 @@
       "review_status": "draft"
     }
   },
+  "e-picture": {
+    "example_sentences": [
+      {
+        "japanese": "娘は絵が好きです。",
+        "english": "My daughter likes drawing.",
+        "vocabulary_slugs": [
+          "musume",
+          "e-picture",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "彼は部屋で絵を見ました。",
+        "english": "He looked at a picture in the room.",
+        "vocabulary_slugs": [
+          "kare",
+          "heya",
+          "e-picture",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この絵は古いです。",
+        "english": "This picture is old.",
+        "vocabulary_slugs": [
+          "kono",
+          "e-picture",
+          "furui-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "eiga": {
+    "example_sentences": [
+      {
+        "japanese": "私は映画が好きです。",
+        "english": "I like movies.",
+        "vocabulary_slugs": [
+          "watashi",
+          "eiga",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "明日、友達と映画を見ます。",
+        "english": "Tomorrow I'll watch a movie with a friend.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "その映画は面白かったです。",
+        "english": "That movie was interesting.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "omoshiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "eigakan": {
     "example_sentences": [
       {
@@ -4040,6 +4114,44 @@
       "review_status": "draft"
     }
   },
+  "hanashi": {
+    "example_sentences": [
+      {
+        "japanese": "私はよく友達と話します。",
+        "english": "I often talk with my friends.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "その話は面白いですか？",
+        "english": "Is that story interesting?",
+        "vocabulary_slugs": [
+          "sono",
+          "hanashi",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "先生は昨日、面白い話をしました。",
+        "english": "The teacher told an interesting story yesterday.",
+        "vocabulary_slugs": [
+          "sensei",
+          "kinou",
+          "omoshiroi",
+          "hanashi",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hanasu-v": {
     "example_sentences": [
       {
@@ -4910,6 +5022,42 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hou": {
+    "example_sentences": [
+      {
+        "japanese": "すみません、駅はどちらの方ですか。",
+        "english": "Excuse me, which way is the station?",
+        "vocabulary_slugs": [
+          "eki",
+          "dochira",
+          "hou"
+        ]
+      },
+      {
+        "japanese": "郵便局はあちらの方です。",
+        "english": "The post office is that way.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "achira",
+          "hou"
+        ]
+      },
+      {
+        "japanese": "こちらの方が近いです。",
+        "english": "This way is closer.",
+        "vocabulary_slugs": [
+          "kochira",
+          "chikai",
+          "hou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -8485,6 +8633,43 @@
       "review_status": "draft"
     }
   },
+  "koto": {
+    "example_sentences": [
+      {
+        "japanese": "私の言う事を聞いてください。",
+        "english": "Please listen to what I say.",
+        "vocabulary_slugs": [
+          "watashi",
+          "iu-v",
+          "kiku-v",
+          "koto"
+        ]
+      },
+      {
+        "japanese": "それは面白い事ですね。",
+        "english": "That's an interesting thing, isn't it.",
+        "vocabulary_slugs": [
+          "sore",
+          "omoshiroi",
+          "koto"
+        ]
+      },
+      {
+        "japanese": "好きな事をしました。",
+        "english": "I did something I like.",
+        "vocabulary_slugs": [
+          "suki",
+          "suru",
+          "koto"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kotoba": {
     "example_sentences": [
       {
@@ -10343,6 +10528,43 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mono": {
+    "example_sentences": [
+      {
+        "japanese": "これは私の物です。",
+        "english": "This is my thing.",
+        "vocabulary_slugs": [
+          "kore",
+          "watashi",
+          "mono"
+        ]
+      },
+      {
+        "japanese": "その箱の物は何ですか。",
+        "english": "What are the things in that box?",
+        "vocabulary_slugs": [
+          "sono",
+          "hako",
+          "nani",
+          "mono"
+        ]
+      },
+      {
+        "japanese": "その物を取ってください。",
+        "english": "Please take that thing.",
+        "vocabulary_slugs": [
+          "sono",
+          "toru",
+          "mono"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -12453,6 +12675,43 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ongaku": {
+    "example_sentences": [
+      {
+        "japanese": "私は音楽が好きです。",
+        "english": "I like music.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ongaku",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "彼女は毎朝音楽を聞きます。",
+        "english": "She listens to music every morning.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "maiasa",
+          "ongaku",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "この音楽は面白いですね。",
+        "english": "This music is interesting, isn't it.",
+        "vocabulary_slugs": [
+          "kono",
+          "ongaku",
+          "omoshiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -14654,6 +14913,42 @@
       "review_status": "draft"
     }
   },
+  "shitsumon": {
+    "example_sentences": [
+      {
+        "japanese": "私は先生に質問しました。",
+        "english": "I asked the teacher a question.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "shitsumon-suru"
+        ]
+      },
+      {
+        "japanese": "その質問は難しいです。",
+        "english": "That question is difficult.",
+        "vocabulary_slugs": [
+          "sono",
+          "shitsumon",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "彼女は授業で質問をしました。",
+        "english": "She asked a question during class.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "jugyou",
+          "shitsumon-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shizuka": {
     "example_sentences": [
       {
@@ -16107,6 +16402,43 @@
       "review_status": "draft"
     }
   },
+  "tokoro": {
+    "example_sentences": [
+      {
+        "japanese": "ここは静かな所です。",
+        "english": "This is a quiet place.",
+        "vocabulary_slugs": [
+          "koko",
+          "shizuka",
+          "tokoro"
+        ]
+      },
+      {
+        "japanese": "私は静かな所が好きです。",
+        "english": "I like quiet places.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shizuka",
+          "tokoro",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "あそこは有名な所です。",
+        "english": "That place over there is famous.",
+        "vocabulary_slugs": [
+          "asoko",
+          "yuumei",
+          "tokoro"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tomaru-stay": {
     "example_sentences": [
       {
@@ -17008,6 +17340,45 @@
     ],
     "_meta": {
       "generator_model": "gpt-5.5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "uta": {
+    "example_sentences": [
+      {
+        "japanese": "彼女はいつも楽しい歌を歌います。",
+        "english": "She always sings fun songs.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "itsu",
+          "tanoshii",
+          "uta",
+          "utau"
+        ]
+      },
+      {
+        "japanese": "この歌は好きですか。",
+        "english": "Do you like this song?",
+        "vocabulary_slugs": [
+          "kono",
+          "uta",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "友達と一緒に歌を歌いました。",
+        "english": "I sang a song together with my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "issho-ni",
+          "uta",
+          "utau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5-medium",
       "prompt_version": "1",
       "review_status": "draft"
     }
