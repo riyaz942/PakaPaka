@@ -1599,6 +1599,278 @@
           "review_status": "draft"
         }
       }
+    },
+    {
+      "seed": "onaji-hana",
+      "position": 10,
+      "tone": "humorous",
+      "passage": {
+        "title": "同じ花",
+        "body": "今日、教室に白い花がたくさんありました。学生が六人、先生に花をあげました。学生たちは何も話しませんでしたが、同じ日に同じ店で花を買いました。その店は駅の近くにあります。花はたくさんありましたが、教室に水がありませんでした。先生も学生たちもびっくりしました。先生は花が好きですから、うれしかったです。先生は花を全部机の上に置きました。教室は賑やかになりました。みんな笑いました。",
+        "questions": [
+          {
+            "prompt": "学生は何人、花をあげましたか。",
+            "accepted_answers": [
+              "六人",
+              "学生が六人",
+              "六人です"
+            ],
+            "prompt_furigana": "学[がく]生[せい]は何[なん]人[にん]、花[はな]をあげましたか。"
+          },
+          {
+            "prompt": "花の色は何でしたか。",
+            "accepted_answers": [
+              "白い",
+              "白い花",
+              "白"
+            ],
+            "prompt_furigana": "花[はな]の色[いろ]は何[なに]でしたか。"
+          },
+          {
+            "prompt": "店はどこにありますか。",
+            "accepted_answers": [
+              "駅の近く",
+              "駅の近くにあります",
+              "駅の近くです"
+            ],
+            "prompt_furigana": "店[みせ]はどこにありますか。"
+          }
+        ],
+        "english_translation": "Today, there were a lot of white flowers in the classroom. Six students gave the teacher flowers. The students hadn't talked to each other about it, but they bought the flowers at the same shop on the same day. That shop is near the station. There were plenty of flowers, but there was no water in the classroom. Both the teacher and the students were surprised. The teacher likes flowers, so she was happy. The teacher put all the flowers on top of the desk. The classroom became lively. Everyone laughed.",
+        "summary_ja": "学生が六人、同じ日に先生へ白い花をあげました。",
+        "summary_en": "Six students each gave the teacher the same white flowers from the same shop on the same day, and the classroom had no water for them.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "mashita",
+          "masen",
+          "wo",
+          "ga",
+          "no-possessive",
+          "ni-indirect",
+          "ni-direction",
+          "de-location",
+          "mo-also",
+          "kara-because",
+          "adj-i-conjugation",
+          "adj-na-conjugation",
+          "adj-na-adverb",
+          "naru-become"
+        ],
+        "vocabulary_slugs": [
+          "chikaku",
+          "eki",
+          "gakusei",
+          "hana-v",
+          "hi-sun-v",
+          "kyou",
+          "kyoushitsu",
+          "minna",
+          "mise",
+          "mizu",
+          "nani",
+          "nigiyaka",
+          "onaji",
+          "sensei",
+          "shiroi",
+          "sono",
+          "suki",
+          "takusan",
+          "tsukue",
+          "ue",
+          "zenbu"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "kyou",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "vocabulary_slug": "shiroi",
+            "start": 6,
+            "end": 8
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 8,
+            "end": 9
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 10,
+            "end": 14
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 20,
+            "end": 22
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 26,
+            "end": 28
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 29,
+            "end": 30
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 37,
+            "end": 39
+          },
+          {
+            "vocabulary_slug": "nani",
+            "start": 42,
+            "end": 43
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 54,
+            "end": 56
+          },
+          {
+            "vocabulary_slug": "hi-sun-v",
+            "start": 56,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "onaji",
+            "start": 58,
+            "end": 60
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 60,
+            "end": 61
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 62,
+            "end": 63
+          },
+          {
+            "vocabulary_slug": "sono",
+            "start": 70,
+            "end": 72
+          },
+          {
+            "vocabulary_slug": "mise",
+            "start": 72,
+            "end": 73
+          },
+          {
+            "vocabulary_slug": "eki",
+            "start": 74,
+            "end": 75
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 76,
+            "end": 78
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 84,
+            "end": 85
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 86,
+            "end": 90
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 97,
+            "end": 99
+          },
+          {
+            "vocabulary_slug": "mizu",
+            "start": 100,
+            "end": 101
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 111,
+            "end": 113
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 114,
+            "end": 116
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 128,
+            "end": 130
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 131,
+            "end": 132
+          },
+          {
+            "vocabulary_slug": "suki",
+            "start": 133,
+            "end": 135
+          },
+          {
+            "vocabulary_slug": "sensei",
+            "start": 149,
+            "end": 151
+          },
+          {
+            "vocabulary_slug": "hana-v",
+            "start": 152,
+            "end": 153
+          },
+          {
+            "vocabulary_slug": "zenbu",
+            "start": 154,
+            "end": 156
+          },
+          {
+            "vocabulary_slug": "tsukue",
+            "start": 156,
+            "end": 157
+          },
+          {
+            "vocabulary_slug": "ue",
+            "start": 158,
+            "end": 159
+          },
+          {
+            "vocabulary_slug": "kyoushitsu",
+            "start": 166,
+            "end": 168
+          },
+          {
+            "vocabulary_slug": "nigiyaka",
+            "start": 169,
+            "end": 172
+          },
+          {
+            "vocabulary_slug": "minna",
+            "start": 179,
+            "end": 182
+          }
+        ],
+        "word_count": 110,
+        "body_furigana": "今日[きょう]、教[きょう]室[しつ]に白[しろ]い花[はな]がたくさんありました。学[がく]生[せい]が六[ろく]人[にん]、先[せん]生[せい]に花[はな]をあげました。学[がく]生[せい]たちは何[なに]も話[はな]しませんでしたが、同[おな]じ日[ひ]に同[おな]じ店[みせ]で花[はな]を買[か]いました。その店[みせ]は駅[えき]の近[ちか]くにあります。花[はな]はたくさんありましたが、教[きょう]室[しつ]に水[みず]がありませんでした。先[せん]生[せい]も学[がく]生[せい]たちもびっくりしました。先[せん]生[せい]は花[はな]が好[す]きですから、うれしかったです。先[せん]生[せい]は花[はな]を全[ぜん]部[ぶ]机[つくえ]の上[うえ]に置[お]きました。教[きょう]室[しつ]は賑[にぎ]やかになりました。みんな笑[わら]いました。",
+        "slug": "onaji-hana",
+        "_meta": {
+          "generator_model": "opus-5",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
     }
   ]
 }

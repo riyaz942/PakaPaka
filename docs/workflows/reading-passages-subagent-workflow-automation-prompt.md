@@ -33,7 +33,7 @@ Model notes
 
 Batch size (how many seeds this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 5>
+<batch-size = 1>
 
 There are only 10 N5 seeds in total, and a passage is far more expensive per item
 than an example sentence. **Start with `<batch-size = 1>` and read the passage
