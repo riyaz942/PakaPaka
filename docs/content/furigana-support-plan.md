@@ -69,9 +69,30 @@ Generation in `curriculum/_build/`:
   JmdictFurigana alignment; fall back to the tokenizer's own reading for tokens not
   in the dataset. Kana/punctuation tokens pass through unannotated.
 - Output is written into the existing per-level JSON files, so annotations get
-  reviewed in git diffs like any other content change. Tokenizer mistakes (rare at
-  N5/N4, mostly names and counters) are fixed by hand-editing the JSON — the
-  validator keeps hand edits honest.
+  reviewed in git diffs like any other content change.
+
+**Choosing the reading is the whole problem** (revised 2026-08-03, after ~230
+wrong annotations shipped). Hand-editing the JSON was the original answer and it
+is the wrong one: a regeneration silently overwrites the edit, so every rule
+below lives in `furigana.py`. A wrong reading renders exactly like a right one —
+nothing surfaces it — which is why these are rules and not spot fixes.
+
+- **Never resolve by surface alone.** JmdictFurigana lists every reading a word
+  has, so a surface-keyed lookup returns whichever line sorts first: 来 came back
+  らい in all 68 places it appeared, including 来ました. The reading is settled
+  from context first, then looked up.
+- **The curriculum's `known_readings` override is for free-standing words only.**
+  It exists so 私 is わたし rather than unidic's isolated-form わたくし, but keyed
+  by surface it also hijacked the 人 of 日本人 (じん, not the taught ひと) and the
+  三 of 三日 (みっ, not さん).
+- **A host fused to a suffix is looked up whole.** unidic reads the two lemmas
+  separately and models no sound change between them — 一 + 本 is イチ + ポン
+  where 一本 is いっぽん. When the composed reading is not a reading the
+  dictionary lists for the compound, the compound's own entry wins.
+- **The suffix analysis needs dictionary evidence.** unidic tags suffixes from
+  the lemma, not from context, so an ordinary noun following a counter gets
+  mislabelled: 三回犬と歩きます had 犬 as a suffix read けん. Requiring the pair to
+  be a real compound drops the accidents.
 
 ## Phase 2 — Parser + `<FuriganaText>` component (~1–2 days)
 

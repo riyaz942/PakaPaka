@@ -696,11 +696,16 @@ difference between filler and a real graded reader:
 4. Store `grammar_slugs` / `vocabulary_slugs` on the passage — this is what powers the
    cross-domain reinforcement display ("食べる ← you learned this yesterday") planned
    for Epic 5.
+5. **Derive the reader's two affordances mechanically, in the same pass:**
+   `word_spans` (the underlined, tappable vocabulary) and `body_furigana` /
+   `prompt_furigana` (bracket annotations). Both come from the tokenizer, never
+   from the model — a passage without them renders as bare kanji that cannot be
+   tapped, and the reader degrades to that silently.
 
 Target: 8–10 passages per level with increasing length/complexity, replacing the
 current 2 per level.
 
-*Status: N5 tooling built; generation has not run.*
+*Status: N5 tooling built; generation under way, nothing shipped.*
 `generate_content/` gains the seeds (`reading_seeds.py` — 10 N5 seeds carrying
 position, tone tag, word band, question count and topic brief, 6 humorous / 4
 neutral, mix checked mechanically), the context builder (`reading_context.py` —
@@ -708,14 +713,18 @@ option-(a) positional cutoff over *both* vocabulary and grammar), the prompt
 (`prompts/reading-passage.md`, persona v2 as system), the closed-loop gate
 (`validate_readings.py`) and the driver (`generate_readings.py`, same
 batch/requeue/web-chat shape as 2b/2c). The model writes prose only:
-`word_spans`, `vocabulary_slugs` and `word_count` are derived from the body by
-the tokenizer in `_build`, since `compile-curriculum` requires each span's slice
-to equal the vocabulary `primary_form` at UTF-16 offsets, in order and
-non-overlapping. Step 3's loop is enforced for vocabulary; the **grammar** half
-is not fully mechanical — the gate checks *declared* `grammar_slugs` against the
-allowed set, because no tokenizer extracts grammar points from text. Runbook,
-decisions and the not-automated wiring step (which of the 10 hand-authored N5
-passages a generated set replaces) are in
+`word_spans`, `vocabulary_slugs`, `word_count` and the furigana annotations are
+derived from the body by the tokenizer in `_build` (`validate_readings.enrich`),
+since `compile-curriculum` requires each span's slice to equal the vocabulary
+`primary_form` at UTF-16 offsets, in order and non-overlapping. Deriving the
+furigana in the artifact as well as at build time is deliberate — it is what
+makes a draft reviewable the way the app renders it, and `generate.py` produces
+the identical strings, so the wire-in stays a no-op. Step 3's loop is enforced
+for vocabulary; the **grammar** half is not fully mechanical — the gate checks
+*declared* `grammar_slugs` against the allowed set, because no tokenizer
+extracts grammar points from text. Runbook, decisions and the wire-in procedure
+(the generated set replaces **all 10** hand-authored N5 passages — decided
+2026-08-03 — gated on the Phase 5 read, not on a script) are in
 [phase-4-reading-passage-tooling.md](./phase-4-reading-passage-tooling.md).
 
 ## Phase 5 — Human review loop

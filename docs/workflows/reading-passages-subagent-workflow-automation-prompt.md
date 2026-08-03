@@ -141,7 +141,10 @@ Give the subagent these instructions:
     pipeline derives all three from the body with a tokenizer; anything you write
     for them is discarded.
   - `body` is one continuous paragraph of plain Japanese — no line breaks, no
-    furigana, no romaji, no markdown, no brackets. The pipeline adds furigana.
+    furigana, no romaji, no markdown, no brackets. Ingestion annotates the body
+    and every question prompt with the tokenizer and stores the result as
+    `body_furigana` / `prompt_furigana`; brackets you write are rejected as
+    markup, not merged.
   - Keep the passage inside the word band the prompt states. The count is
     tokenizer words (punctuation excluded), not characters, so aim mid-band.
   - Every content word in `body` **and in `summary_ja`** must come from the
@@ -173,10 +176,16 @@ pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
-The passage is enriched (word spans, vocabulary slugs, word count derived by the
-tokenizer) and merged into the build artifact:
+The passage is enriched — word spans, vocabulary slugs, word count, and the
+`body_furigana` / `prompt_furigana` annotations, all derived by the tokenizer —
+and merged into the build artifact:
 
 curriculum/_build/generate_content/passages/n5.json
+
+Every enriched passage should carry a non-empty `body_furigana` (the only
+exception is a body with no kanji at all, which will not happen at these
+positions). If one is missing, do not paper over it: report it, because the
+reader renders a passage without readings as bare kanji and shows no error.
 
 Record the seed as successful and proceed to the next seed.
 
@@ -262,11 +271,14 @@ shipped curriculum**, and you must not add a build step that does:
 
 - Do NOT run `generate.py`, `npm run validate-schema`, or `npm run compile-curriculum`
   as part of this run. Nothing this workflow writes is an input to them.
-- Do NOT write to or edit `curriculum/readings/n5.json`. Its 10 passages are
-  hand-authored and shipped. Replacing them means deciding which survive and in
-  what order — a maintainer content decision, deliberately not automated. See
-  `docs/content/phase-4-reading-passage-tooling.md` § "The step that is
-  deliberately not automated".
+- Do NOT write to or edit `curriculum/readings/n5.json`, and do NOT edit
+  `curriculum/_build/n5_readings.py`. All 10 hand-authored N5 passages are
+  being retired and the generated set replaces them — that decision is already
+  made, and it is *not* what holds the wire-in back. What holds it back is the
+  Phase 5 human read, which has not happened for anything this workflow
+  produces. Passages ship as a reviewed level, never a seed at a time. The
+  procedure is in `docs/content/phase-4-reading-passage-tooling.md` § "The step
+  that is deliberately not automated".
 
 The run ends at `curriculum/_build/generate_content/passages/n5.json`. That file
 is a build artifact for a human to read.
@@ -280,6 +292,8 @@ Provide a summary containing:
 - <batch-size> and the exact auto-selected seed set for this run (with the count vs. <batch-size>)
 - The model actually used for generation and repair
 - ✅ Successfully ingested seeds, each with its tone tag and derived word count
+- Any ingested passage missing `body_furigana`, or any question missing
+  `prompt_furigana` where the prompt contains kanji
 - ⚠️ Skipped seeds
 - ❌ Failed seeds
 - The number of subagent repair attempts used for each affected seed
@@ -287,8 +301,8 @@ Provide a summary containing:
   that failed on a missing word, the word itself
 - How many of the 10 N5 seeds remain not-yet-passing (re-run Step 1a to get the
   count), so it's clear whether another run is needed
-- A reminder that the output is a build artifact and that wiring it into shipped
-  readings is still an open maintainer decision
+- A reminder that the output is a build artifact, and that it ships only after
+  a human reads the whole level (Phase 5) and performs the documented wire-in
 - Any manual follow-up required
 
 Do not modify or set review_status to reviewed.

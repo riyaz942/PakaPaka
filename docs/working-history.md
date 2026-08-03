@@ -59,6 +59,13 @@ Grammar floor in lesson planner. Daily lesson allowance (migration 013) + “Lea
 ### [Furigana support plan](./content/furigana-support-plan.md)
 **Done:** Schema + compile/validate, generation pipeline, corpus coverage (vocab / examples / passages / questions), `FuriganaText`, Settings preference (`auto` / `shown` / `hidden`), mastery-aware auto + per-word overrides (Phase 4 shipped early). Review prompts correctly omit furigana.
 
+**Reading-accuracy fix (2026-08-03):** the annotator picked wrong readings in
+~230 places across shipped N5/N4 content — 来[らい]ました, 日本[にほん]人[ひと],
+三[さん]日[ひ], 一[いち]本[ほん] — from resolving by surface instead of by
+context. Four rules in `furigana.py` (see the plan's Phase 1) plus a regenerated
+corpus and seed db. Nothing was flagging it: a wrong reading renders exactly
+like a right one.
+
 **Not done:** Per-passage eye toggle (Phase 3). Open product questions in the plan (default by JLPT, katakana policy) still unresolved — not shipping blockers.
 
 ### [05 — Session UX polish](./feedback/05-session-ux-polish.md)
@@ -151,11 +158,12 @@ lifted verbatim from the item's own `example_sentences` exempt from the vocabula
 - Phase 3 radical images only (KanjiVG Tier 1 + Tier 2 art → `mobile/assets/radicals/`, bundled; drop HTTPS-only `visual_mnemonic_url`; no kanji images)
 - Phase 4 closed-loop reading generation: **N5 tooling built, generation has not run**
   (seeds + prompt + context + gate + driver under `generate_content/`, 10 N5 seeds at a
-  60% humour mix; `word_spans`/`vocabulary_slugs`/`word_count` derived by the tokenizer,
-  gate self-checks against 2 good + 8 bad fixtures — see
+  60% humour mix; `word_spans`/`vocabulary_slugs`/`word_count`/furigana derived by the
+  tokenizer, gate self-checks against 2 good + 8 bad fixtures — see
   [phase-4-reading-passage-tooling.md](./content/phase-4-reading-passage-tooling.md)).
-  Still owed: the run itself, N4 seeds, and the maintainer decision on which of the 10
-  hand-authored N5 passages the generated set replaces (`word_count` still 0/10 N5, 0/9 N4)
+  Still owed: the run itself, N4 seeds, the Phase 5 read, and the wire-in — the generated
+  set retires all 10 hand-authored N5 passages, decided 2026-08-03 (`word_count` still
+  0/10 N5, 0/9 N4)
 - Phase 5 review tooling (`npm run review-content` / local HTML review UI)
 - Settings → About attribution UI (NOTICE exists; in-app surface does not)
 - Default CI compile does not `--fail-on-draft`

@@ -1,0 +1,133 @@
+{
+  "jlpt_level": "N5",
+  "passages": [
+    {
+      "seed": "atarashii-kurasu",
+      "position": 1,
+      "tone": "neutral",
+      "passage": {
+        "title": "はじめての授業",
+        "body": "私の名前はリサです。日本人ではありません。学校の近くに住んでいます。私は学生です。日本語を勉強します。授業は楽しいです。友達とたくさん話しましょう。",
+        "questions": [
+          {
+            "prompt": "リサさんは何を勉強しますか。",
+            "accepted_answers": [
+              "日本語",
+              "日本語を勉強します",
+              "にほんご"
+            ],
+            "prompt_furigana": "リサさんは何[なに]を勉[べん]強[きょう]しますか。"
+          },
+          {
+            "prompt": "リサさんはどこに住んでいますか。",
+            "accepted_answers": [
+              "学校の近く",
+              "学校の近くに住んでいます",
+              "がっこうのちかく"
+            ],
+            "prompt_furigana": "リサさんはどこに住[す]んでいますか。"
+          }
+        ],
+        "english_translation": "My name is Lisa. I am not Japanese. I live near the school. I am a student. I study Japanese. The class is fun. Let's talk a lot with my friends.",
+        "summary_ja": "リサさんは学校の近くに住んでいる学生です。",
+        "summary_en": "Lisa is a student who lives near the school.",
+        "grammar_slugs": [
+          "wa-topic",
+          "desu",
+          "dewa-arimasen",
+          "masu",
+          "mashou"
+        ],
+        "vocabulary_slugs": [
+          "benkyou",
+          "chikaku",
+          "gakkou-v",
+          "gakusei",
+          "jugyou",
+          "namae",
+          "nihon",
+          "nihongo",
+          "takusan",
+          "tanoshii",
+          "tomodachi",
+          "watashi"
+        ],
+        "word_spans": [
+          {
+            "vocabulary_slug": "watashi",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "vocabulary_slug": "namae",
+            "start": 2,
+            "end": 4
+          },
+          {
+            "vocabulary_slug": "nihon",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "vocabulary_slug": "gakkou-v",
+            "start": 21,
+            "end": 23
+          },
+          {
+            "vocabulary_slug": "chikaku",
+            "start": 24,
+            "end": 26
+          },
+          {
+            "vocabulary_slug": "watashi",
+            "start": 34,
+            "end": 35
+          },
+          {
+            "vocabulary_slug": "gakusei",
+            "start": 36,
+            "end": 38
+          },
+          {
+            "vocabulary_slug": "nihongo",
+            "start": 41,
+            "end": 44
+          },
+          {
+            "vocabulary_slug": "benkyou",
+            "start": 45,
+            "end": 47
+          },
+          {
+            "vocabulary_slug": "jugyou",
+            "start": 51,
+            "end": 53
+          },
+          {
+            "vocabulary_slug": "tanoshii",
+            "start": 54,
+            "end": 57
+          },
+          {
+            "vocabulary_slug": "tomodachi",
+            "start": 60,
+            "end": 62
+          },
+          {
+            "vocabulary_slug": "takusan",
+            "start": 63,
+            "end": 67
+          }
+        ],
+        "word_count": 40,
+        "body_furigana": "私[わたし]の名[な]前[まえ]はリサです。日本[にほん]人[じん]ではありません。学[がっ]校[こう]の近[ちか]くに住[す]んでいます。私[わたし]は学[がく]生[せい]です。日本[にほん]語[ご]を勉[べん]強[きょう]します。授[じゅ]業[ぎょう]は楽[たの]しいです。友[とも]達[だち]とたくさん話[はな]しましょう。",
+        "slug": "atarashii-kurasu",
+        "_meta": {
+          "generator_model": "opus-5-highh",
+          "prompt_version": "1",
+          "review_status": "draft"
+        }
+      }
+    }
+  ]
+}

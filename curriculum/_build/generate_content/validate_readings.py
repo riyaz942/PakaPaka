@@ -22,9 +22,12 @@ Everything positional or phonetic is **derived here**, never asked for:
     convention the shipped passages already follow (conjugated usage is not
     marked).
   * `word_count` — tokenizer token count, punctuation excluded.
-  * `body_furigana` / `prompt_furigana` — added by `generate.py` from the same
-    fugashi tagger as everything else. The gate only proves annotation *can*
-    succeed; a body it cannot annotate is rejected here.
+  * `body_furigana` / `prompt_furigana` — bracket annotations from the same
+    fugashi tagger as everything else. Never asked of the model: it writes
+    plain prose (the same rule the grammar-lesson lane follows), and check 5
+    below rejects a body the tagger cannot round-trip, so the annotation
+    `enrich()` stores is one the gate already proved. `generate.py` derives the
+    identical strings at build time, which keeps the wire-in a no-op.
 
 `enrich()` is what produces the derived fields, and the assembled draft carries
 them, so the enrichment lives in `_build` where regeneration reproduces it (the
@@ -175,23 +178,49 @@ def build_word_spans(body, span_forms):
     return spans
 
 
+def _annotated(text, known_readings):
+    """Bracket-annotated `text`, or None when there is nothing to annotate.
+
+    Kanji-free text gets no field at all rather than a copy of itself, matching
+    `generate.py`. Annotation *failure* cannot reach here: check 5 of the gate
+    rejects a body the tagger cannot round-trip, so by the time `enrich` runs
+    the only None left is "no kanji"."""
+    if not any(furigana_lib.is_kanji(ch) for ch in text):
+        return None
+    return furigana_lib.annotate_sentence(text, known_readings)
+
+
+def _enriched_question(question, known_readings):
+    out = {
+        "prompt": question["prompt"].strip(),
+        "accepted_answers": list(question["accepted_answers"]),
+    }
+    prompt_furigana = _annotated(out["prompt"], known_readings)
+    if prompt_furigana:
+        out["prompt_furigana"] = prompt_furigana
+    return out
+
+
 def enrich(draft, ctx):
     """The model's submission plus every derived field.
 
     The result is shaped like a `readingPassage` in the curriculum schema (bar
-    `slug`, `sort_order` and the furigana `generate.py` adds), so wiring the
-    generated set into the shipped readings is a lift, not a translation."""
+    `slug` and `sort_order`), so wiring the generated set into the shipped
+    readings is a lift, not a translation.
+
+    Furigana is derived here, from the same fugashi tagger as everything else —
+    the model writes plain prose and never authors brackets. `generate.py`
+    annotates identically at build time, so an artifact that already carries
+    readings survives the wire-in unchanged; deriving it here is what makes the
+    artifact reviewable *with* readings, the way the app will show it."""
     body = draft["body"].strip()
     spans = build_word_spans(body, ctx["span_forms"])
-    return {
+    known_readings = _known_readings(ctx["level"])
+    passage = {
         "title": draft["title"].strip(),
         "body": body,
         "questions": [
-            {
-                "prompt": q["prompt"].strip(),
-                "accepted_answers": list(q["accepted_answers"]),
-            }
-            for q in draft.get("questions", [])
+            _enriched_question(q, known_readings) for q in draft.get("questions", [])
         ],
         "english_translation": draft["english_translation"].strip(),
         "summary_ja": draft["summary_ja"].strip(),
@@ -201,6 +230,10 @@ def enrich(draft, ctx):
         "word_spans": spans,
         "word_count": word_count(body),
     }
+    body_furigana = _annotated(body, known_readings)
+    if body_furigana:
+        passage["body_furigana"] = body_furigana
+    return passage
 
 
 # --- gate ------------------------------------------------------------------

@@ -82,8 +82,21 @@ def _to_bracket_notation(word, spans):
 
 @functools.lru_cache(maxsize=1)
 def _load_dataset():
+    """Two indexes over JmdictFurigana.
+
+    `by_word_reading` — {(word, reading): notation}, and the only one the
+    annotator's main path uses. A reading is settled from context first and
+    then looked up, because JmdictFurigana lists *every* reading a word has:
+    a surface-keyed lookup resolves to whichever line sorts first rather than
+    the one this sentence means (来 → 来[らい], never 来[き]).
+
+    `primary_by_word` — {word: notation} for the first line per word, which is
+    JMdict's primary reading. Safe only where context has already been shown
+    to produce a reading that cannot be right; its single caller is
+    `_numeral_compound_notation`.
+    """
     by_word_reading = {}
-    by_word = {}
+    primary_by_word = {}
     if not os.path.exists(DATASET_PATH):
         raise FileNotFoundError(
             f"JmdictFurigana dataset not found at {DATASET_PATH}. "
@@ -103,9 +116,9 @@ def _load_dataset():
             key = (word, reading)
             if key not in by_word_reading:
                 by_word_reading[key] = notation
-            if word not in by_word:
-                by_word[word] = notation
-    return by_word_reading, by_word
+            if word not in primary_by_word:
+                primary_by_word[word] = notation
+    return by_word_reading, primary_by_word
 
 
 def annotate_word(form, reading):
@@ -117,7 +130,7 @@ def annotate_word(form, reading):
     than no furigana for a curated word list."""
     if not reading:
         return None
-    by_word_reading, _by_word = _load_dataset()
+    by_word_reading, _primary = _load_dataset()
     notation = by_word_reading.get((form, reading))
     if notation is not None and strip_furigana(notation) == form:
         return notation
@@ -150,6 +163,92 @@ def _token_reading(token):
     if not kana or kana == "*":
         return None
     return katakana_to_hiragana(kana)
+
+
+def _fused_to_previous(tokens, i, primary_by_word):
+    """Whether `tokens[i]` is a suffix genuinely bound to the token before it.
+
+    unidic tags a suffix from its own lemma rather than from context, so an
+    ordinary noun gets mislabelled when it happens to follow a counter: in
+    三回犬と歩きます it calls 犬 a suffix and reads it けん. Requiring the pair
+    to be a compound the dictionary actually knows keeps the real cases
+    (日本人, 三人, 何冊) and drops the accidents — 回犬 is not a word.
+    """
+    if i == 0 or getattr(tokens[i].feature, "pos1", None) != "接尾辞":
+        return False
+    return (tokens[i - 1].surface + tokens[i].surface) in primary_by_word
+
+
+def _known_reading(tokens, i, known_readings, primary_by_word):
+    """The curriculum's own reading for this token, where it legitimately wins.
+
+    `known_readings` is keyed by surface alone, so left unchecked it hijacks
+    any token that looks like a vocabulary entry regardless of what the token
+    actually is. Two exclusions keep it to the case it exists for — 私 → わたし
+    rather than unidic's isolated-form わたくし — and leave the rest to the
+    tokenizer, which reads its tokens in context:
+
+      * a suffix fused into a compound is not the word the curriculum teaches
+        (the 人 of 日本人 is じん, not the noun ひと)
+      * either half of a numeral compound is read as part of that compound,
+        and those readings are irregular: 三日 is みっか, not the taught
+        さん + ひ; the 日 of 一日中 is にち; 十日 とおか; 一本 いっぽん
+    """
+    feature = tokens[i].feature
+    if _fused_to_previous(tokens, i, primary_by_word):
+        return None
+    if getattr(feature, "pos2", None) == "数詞" and i + 1 < len(tokens):
+        if getattr(tokens[i + 1].feature, "pos1", None) == "接尾辞":
+            return None
+    if i > 0 and getattr(tokens[i - 1].feature, "pos2", None) == "数詞":
+        return None
+    return known_readings.get(tokens[i].surface)
+
+
+def _suffix_compound_notation(tokens, i, by_word_reading, primary_by_word):
+    """Notation for a word fused to a suffix, where the tokenizer can't win.
+
+    unidic reads a host and its suffix as two independent lemmas and does not
+    model the sound change between them: 一 + 本 comes back イチ + ポン though
+    一本 is いっぽん, 四 + つ comes back ヨン + ツ though 四つ is よっつ, and
+    日本 + 人 comes back ニッポン + ニン though 日本人 is にほんじん. Neither
+    `pron` nor `kanaBase` carries the fused form, so there is nothing better
+    to read off the tokens themselves.
+
+    The tell is that the composed reading is not one JmdictFurigana lists for
+    the compound at all — the tokenizer glued two readings together and made a
+    non-word. Only then is the dictionary's primary reading taken for the
+    pair, which also gets the segmentation right (一[いっ]本[ぽん]).
+
+    Returns None whenever the composed reading *is* a real reading of the
+    compound, so anything genuinely ambiguous keeps what context chose. The
+    lexicalised compounds never reach here at all — unidic emits 一人 and 二人
+    as single tokens.
+    """
+    if i + 1 >= len(tokens):
+        return None
+    host, suffix = tokens[i], tokens[i + 1]
+    if getattr(suffix.feature, "pos1", None) != "接尾辞":
+        return None
+    # A host already bound to a numeral belongs to the larger compound, so
+    # pairing it rightwards would annotate a word that isn't there: the 日中
+    # of 一日中 is not にっちゅう.
+    if i > 0 and getattr(tokens[i - 1].feature, "pos2", None) == "数詞":
+        return None
+
+    host_reading = _token_reading(host)
+    suffix_reading = _token_reading(suffix)
+    if host_reading is None or suffix_reading is None:
+        return None
+
+    compound = host.surface + suffix.surface
+    if (compound, host_reading + suffix_reading) in by_word_reading:
+        return None
+
+    notation = primary_by_word.get(compound)
+    if notation is None or strip_furigana(notation) != compound:
+        return None
+    return notation
 
 
 def _fallback_annotate_token(surface, reading):
@@ -186,14 +285,30 @@ def annotate_sentence(text, known_readings=None):
     tokenizer's guess: unidic's default reading for a word in isolation
     (e.g. 私 -> わたくし) can differ from the reading the curriculum actually
     teaches for it (わたし), even when both are valid dictionary readings.
+    See `_known_reading` for where that override stops applying.
     """
-    by_word_reading, by_word = _load_dataset()
+    by_word_reading, primary_by_word = _load_dataset()
     tagger = _get_tagger()
     known_readings = known_readings or {}
 
+    tokens = list(tagger(text))
     pieces = []
-    for token in tagger(text):
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
         surface = token.surface
+
+        compound = _suffix_compound_notation(
+            tokens, i, by_word_reading, primary_by_word
+        )
+        if compound is not None:
+            pieces.append(compound)
+            i += 2
+            continue
+
+        index = i
+        i += 1
+
         if not any(is_kanji(ch) for ch in surface):
             pieces.append(surface)
             continue
@@ -203,26 +318,22 @@ def annotate_sentence(text, known_readings=None):
             pieces.append(surface)
             continue
 
-        # Prefer the curriculum's own reading, then the token's actual
-        # (contextual) reading — many kanji are homographs (本 "ほん"/"もと",
-        # 彼 "かれ"/"あれ") and by_word alone (first entry in file order)
-        # picks whichever reading happens to sort first, right or wrong.
-        candidate_readings = [known_readings.get(surface), reading]
-        dataset_notation = None
-        for candidate in candidate_readings:
-            if candidate is None:
-                continue
-            dataset_notation = by_word_reading.get((surface, candidate))
-            if dataset_notation is not None:
-                break
-        if dataset_notation is None:
-            dataset_notation = by_word.get(surface)
+        # The reading is settled first, from context, and only then looked up:
+        # many kanji are homographs (本 "ほん"/"もと", 彼 "かれ"/"あれ", 来
+        # "らい"/"き"), so a surface-keyed lookup cannot be the tiebreaker.
+        # The curriculum's own reading wins where it applies, otherwise the
+        # tokenizer's reading of this token in this sentence.
+        chosen = _known_reading(tokens, index, known_readings, primary_by_word) or reading
 
+        # The dataset is consulted only for its *segmentation* (大[だい]学[がく]
+        # rather than 大学[だいがく]); a miss costs granularity, not accuracy,
+        # so the fallback keeps the same reading in one bracket.
+        dataset_notation = by_word_reading.get((surface, chosen))
         if dataset_notation is not None:
             pieces.append(dataset_notation)
             continue
 
-        pieces.append(_fallback_annotate_token(surface, known_readings.get(surface) or reading))
+        pieces.append(_fallback_annotate_token(surface, chosen))
 
     annotated = "".join(pieces)
     if strip_furigana(annotated) != text:
