@@ -1,11 +1,12 @@
 # Phase 4 — reading-passage tooling (N5)
 
-Status: **tooling built, generation under way, nothing shipped yet.** Drafts
-are accumulating in the build artifact; no committed passage has been touched.
+Status: **wired in (2026-08-04).** All 10 N5 seeds generated, gate-passed, and
+human-reviewed; `curriculum/_build/n5_readings.py` now holds the generated set
+and `curriculum/readings/n5.json` / the compiled `curriculum.db` reflect it.
 This is the runbook for the run itself, plus the decisions baked into the
 tooling.
 
-The N5 replacement decision is settled: the generated set retires all 10
+The N5 replacement decision is settled: the generated set retired all 10
 hand-authored passages (see § "The step that is deliberately not automated").
 
 See [content-pipeline-plan.md](./content-pipeline-plan.md) § Phase 4 and R1.6.
