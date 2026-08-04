@@ -73,6 +73,151 @@
       "review_status": "draft"
     }
   },
+  "anata": {
+    "example_sentences": [
+      {
+        "japanese": "あなたは先生ですか。",
+        "english": "Are you a teacher?",
+        "vocabulary_slugs": [
+          "anata",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "あなたは水を飲みますか。",
+        "english": "Do you drink water?",
+        "vocabulary_slugs": [
+          "anata",
+          "mizu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "私はあなたと海に行きました。",
+        "english": "I went to the sea with you.",
+        "vocabulary_slugs": [
+          "watashi",
+          "anata",
+          "umi",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ano": {
+    "example_sentences": [
+      {
+        "japanese": "あの本を読みました。",
+        "english": "I read that book over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "あの先生は忙しいです。",
+        "english": "That teacher over there is busy.",
+        "vocabulary_slugs": [
+          "ano",
+          "sensei",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "あの公園で猫と遊びました。",
+        "english": "I played with a cat in that park over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "kouen",
+          "neko",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "are": {
+    "example_sentences": [
+      {
+        "japanese": "あれは私の家です。",
+        "english": "That one over there is my house.",
+        "vocabulary_slugs": [
+          "are",
+          "watashi",
+          "ie"
+        ]
+      },
+      {
+        "japanese": "あれを買いました。",
+        "english": "I bought that one over there.",
+        "vocabulary_slugs": [
+          "are",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "あなたはあれを知っていますか。",
+        "english": "Do you know that thing over there?",
+        "vocabulary_slugs": [
+          "anata",
+          "are",
+          "shiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "asoko": {
+    "example_sentences": [
+      {
+        "japanese": "あそこで友達と話しました。",
+        "english": "I talked with my friend over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "tomodachi",
+          "hanasu-v"
+        ]
+      },
+      {
+        "japanese": "あそこの部屋は寒いです。",
+        "english": "The room over there is cold.",
+        "vocabulary_slugs": [
+          "asoko",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "彼はあそこで本を読みました。",
+        "english": "He read a book over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "kare",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ban-order": {
     "example_sentences": [
       {
@@ -150,6 +295,45 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "boku": {
+    "example_sentences": [
+      {
+        "japanese": "僕は今日学校へ行きます。",
+        "english": "I'm going to school today.",
+        "vocabulary_slugs": [
+          "boku",
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "僕は友達と公園で遊びました。",
+        "english": "I played at the park with a friend.",
+        "vocabulary_slugs": [
+          "boku",
+          "tomodachi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "僕は朝ご飯にパンを食べます。",
+        "english": "I eat bread for breakfast.",
+        "vocabulary_slugs": [
+          "boku",
+          "asagohan",
+          "pan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -237,6 +421,113 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "doko": {
+    "example_sentences": [
+      {
+        "japanese": "どこで昼ご飯を食べますか。",
+        "english": "Where are you eating lunch?",
+        "vocabulary_slugs": [
+          "doko",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "明日どこへ行きますか。",
+        "english": "Where are you going tomorrow?",
+        "vocabulary_slugs": [
+          "doko",
+          "ashita",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達とどこで会いましたか。",
+        "english": "Where did you meet your friend?",
+        "vocabulary_slugs": [
+          "doko",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dono": {
+    "example_sentences": [
+      {
+        "japanese": "どの本を読みましたか。",
+        "english": "Which book did you read?",
+        "vocabulary_slugs": [
+          "dono",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "どのパンがおいしいですか。",
+        "english": "Which bread is delicious?",
+        "vocabulary_slugs": [
+          "dono",
+          "pan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "どの犬と遊びますか。",
+        "english": "Which dog will you play with?",
+        "vocabulary_slugs": [
+          "dono",
+          "inu",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "dore": {
+    "example_sentences": [
+      {
+        "japanese": "どれが私の本ですか。",
+        "english": "Which one is my book?",
+        "vocabulary_slugs": [
+          "dore",
+          "watashi",
+          "hon"
+        ]
+      },
+      {
+        "japanese": "あなたの猫はどれですか。",
+        "english": "Which one is your cat?",
+        "vocabulary_slugs": [
+          "anata",
+          "neko",
+          "dore"
+        ]
+      },
+      {
+        "japanese": "どれを買いますか。",
+        "english": "Which one will you buy?",
+        "vocabulary_slugs": [
+          "dore",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -817,6 +1108,80 @@
       "review_status": "draft"
     }
   },
+  "kanojo": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は朝ご飯を食べます。",
+        "english": "She eats breakfast.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼女は公園で犬と遊びました。",
+        "english": "She played with the dog in the park.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "彼女は今、忙しいです。",
+        "english": "She's busy right now.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ima",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kare": {
+    "example_sentences": [
+      {
+        "japanese": "彼は明日、公園に行きます。",
+        "english": "He is going to the park tomorrow.",
+        "vocabulary_slugs": [
+          "kare",
+          "ashita",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "私は彼を待ちます。",
+        "english": "I will wait for him.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kare",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "彼の部屋は寒い。",
+        "english": "His room is cold.",
+        "vocabulary_slugs": [
+          "kare",
+          "heya",
+          "samui"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kawaru": {
     "example_sentences": [
       {
@@ -891,6 +1256,116 @@
       "review_status": "draft"
     }
   },
+  "kimi": {
+    "example_sentences": [
+      {
+        "japanese": "君は今、忙しいですか。",
+        "english": "Are you busy right now?",
+        "vocabulary_slugs": [
+          "kimi",
+          "ima",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "君と一緒に映画を見ます。",
+        "english": "I'll watch a movie together with you.",
+        "vocabulary_slugs": [
+          "kimi",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "君は昨日、学校に来ましたか。",
+        "english": "Did you come to school yesterday?",
+        "vocabulary_slugs": [
+          "kimi",
+          "kinou",
+          "gakkou-v",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kochira": {
+    "example_sentences": [
+      {
+        "japanese": "こちらは私の先生です。",
+        "english": "This is my teacher.",
+        "vocabulary_slugs": [
+          "kochira",
+          "watashi",
+          "sensei"
+        ]
+      },
+      {
+        "japanese": "彼はこちらへ来ます。",
+        "english": "He is coming this way.",
+        "vocabulary_slugs": [
+          "kare",
+          "kochira",
+          "kuru-v"
+        ]
+      },
+      {
+        "japanese": "こちらはあなたの猫ですか。",
+        "english": "Is this your cat?",
+        "vocabulary_slugs": [
+          "kochira",
+          "anata",
+          "neko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "koko": {
+    "example_sentences": [
+      {
+        "japanese": "私はここに座りました。",
+        "english": "I sat down here.",
+        "vocabulary_slugs": [
+          "watashi",
+          "koko",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "ここで昼ご飯を食べます。",
+        "english": "I'll eat lunch here.",
+        "vocabulary_slugs": [
+          "koko",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼はここに来ませんでした。",
+        "english": "He didn't come here.",
+        "vocabulary_slugs": [
+          "kare",
+          "koko",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "komaru": {
     "example_sentences": [
       {
@@ -925,6 +1400,76 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kono": {
+    "example_sentences": [
+      {
+        "japanese": "このパンはおいしいです。",
+        "english": "This bread is delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "pan",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "この部屋は寒いです。",
+        "english": "This room is cold.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "この本を読みます。",
+        "english": "I'll read this book.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "yomu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kore": {
+    "example_sentences": [
+      {
+        "japanese": "これはおいしいですか。",
+        "english": "Is this delicious?",
+        "vocabulary_slugs": [
+          "kore",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "これを買いました。",
+        "english": "I bought this.",
+        "vocabulary_slugs": [
+          "kore",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "これは友達の写真です。",
+        "english": "This is a photo of my friend.",
+        "vocabulary_slugs": [
+          "kore",
+          "tomodachi",
+          "shashin"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1697,6 +2242,112 @@
       "review_status": "draft"
     }
   },
+  "soko": {
+    "example_sentences": [
+      {
+        "japanese": "そこで待ちます。",
+        "english": "I'll wait there.",
+        "vocabulary_slugs": [
+          "soko",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "そこに座りました。",
+        "english": "I sat there.",
+        "vocabulary_slugs": [
+          "soko",
+          "suwaru"
+        ]
+      },
+      {
+        "japanese": "猫はそこで寝ました。",
+        "english": "The cat slept there.",
+        "vocabulary_slugs": [
+          "neko",
+          "soko",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sono": {
+    "example_sentences": [
+      {
+        "japanese": "私はその本を読みました。",
+        "english": "I read that book.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sono",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "その部屋は寒いです。",
+        "english": "That room is cold.",
+        "vocabulary_slugs": [
+          "sono",
+          "heya",
+          "samui"
+        ]
+      },
+      {
+        "japanese": "その猫は公園で遊びます。",
+        "english": "That cat plays in the park.",
+        "vocabulary_slugs": [
+          "sono",
+          "neko",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sore": {
+    "example_sentences": [
+      {
+        "japanese": "それは私の本です。",
+        "english": "That is my book.",
+        "vocabulary_slugs": [
+          "sore",
+          "watashi",
+          "hon"
+        ]
+      },
+      {
+        "japanese": "それを食べました。",
+        "english": "I ate that.",
+        "vocabulary_slugs": [
+          "sore",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "それはおいしいです。",
+        "english": "That is delicious.",
+        "vocabulary_slugs": [
+          "sore",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "tetsudau": {
     "example_sentences": [
       {
@@ -1841,6 +2492,82 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "watashi": {
+    "example_sentences": [
+      {
+        "japanese": "私は今日、公園で友達に会いました。",
+        "english": "I met my friend at the park today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyou",
+          "kouen",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "私は忙しいです。",
+        "english": "I'm busy.",
+        "vocabulary_slugs": [
+          "watashi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "私は明日、学校へ行きます。",
+        "english": "I'm going to school tomorrow.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ashita",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "watashitachi": {
+    "example_sentences": [
+      {
+        "japanese": "私たちは一緒に映画を見ます。",
+        "english": "We watch a movie together.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "issho-ni",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "私たちは公園で友達に会いました。",
+        "english": "We met a friend at the park.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kouen",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "私たちは今日忙しいです。",
+        "english": "We are busy today.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kyou",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5-high",
       "prompt_version": "1",
       "review_status": "draft"
     }
