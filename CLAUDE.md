@@ -101,21 +101,6 @@ Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architectu
 - **Styling** — Semantic NativeWind tokens (`bg-background`, `text-primary`, SRS/content accents, etc.). No deprecated `Colors` in `src/constants/theme.ts`; no raw hex in new code.
 - **Path alias** — `@/*` → `mobile/src/*`; `@/assets/*` → `mobile/assets/*`.
 
-## Repository layout
-
-```
-curriculum/   # JSON source → compiled SQLite
-scripts/      # validate-schema, compile-curriculum
-mobile/       # Expo app (all app code)
-  src/app/          # Expo Router routes
-  src/components/   # UI by feature
-  src/core/         # Pure logic (answer eval, FSRS, import mappers)
-  src/data/         # Repos, hooks, migrations, DB init
-  src/providers/    # React contexts (DB, sessions, etc.)
-docs/         # Working docs — see docs/README.md
-_bmad-output/ # PRD, architecture, epics, sprint-status
-```
-
 ## Commands
 
 ```bash
