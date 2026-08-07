@@ -40,6 +40,7 @@ export function FuriganaOverrideControl({ itemId }: { itemId: string }) {
       <SectionHeading label="Furigana for this word" />
       <SegmentedPill
         className="mt-space-sm"
+        expand
         options={CHOICES}
         value={current}
         onChange={choose}

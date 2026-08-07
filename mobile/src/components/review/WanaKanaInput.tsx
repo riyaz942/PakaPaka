@@ -142,7 +142,7 @@ export const WanaKanaInput = forwardRef<WanaKanaInputRef, WanaKanaInputProps>(
           <View
             testID={testID ? `${testID}-focus-halo` : undefined}
             pointerEvents="none"
-            className="absolute -inset-1 rounded-radius-md border-4 border-brand-soft"
+            className="absolute -inset-1 rounded-radius-md border-4 border-brand-soft-strong"
           />
         ) : null}
 

@@ -181,6 +181,29 @@ describe('KanjiDetail Rev 1 content', () => {
     ).toBeTruthy();
   });
 
+  it('omits a tautological composition line when the sole parent matches the kanji glyph', () => {
+    const primaryKanji: CurriculumItemDetail = {
+      ...revisedItem,
+      primaryForm: '三',
+      meaning: 'three',
+    };
+    const selfRadical: CurriculumParentItem[] = [
+      { id: 'r3', primaryForm: '三', itemType: 'radical', meaning: 'three' },
+    ];
+
+    render(
+      <KanjiDetail
+        item={primaryKanji}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+        parents={selfRadical}
+      />,
+    );
+
+    expect(screen.queryByTestId('kanji-composition-line')).toBeNull();
+    expect(screen.queryByText('三 = 三')).toBeNull();
+  });
+
   it('drops the legacy single mnemonic once split mnemonics exist', () => {
     render(
       <KanjiDetail

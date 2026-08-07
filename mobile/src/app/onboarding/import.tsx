@@ -215,6 +215,7 @@ export default function ImportScreen() {
         accessibilityLabel="Import source"
         className="mt-space-lg"
         disabled={isImporting}
+        expand
         onChange={handleSourceChange}
         options={SOURCE_OPTIONS}
         value={selectedSource}

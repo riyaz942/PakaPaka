@@ -47,10 +47,14 @@ export function ItemMnemonicSections({
   readingSlot = null,
 }: ItemMnemonicSectionsProps) {
   const hasSplitMnemonics = Boolean(item.meaningMnemonic || item.readingMnemonic);
-  const compositionLine =
-    item.itemType === 'kanji' && parents.length > 0
-      ? `${parents.map((parent) => parent.primaryForm).join(' + ')} = ${item.primaryForm}`
-      : null;
+  // Skip tautologies like 三 = 三 (sole radical parent shares the kanji glyph).
+  const showsComposition =
+    item.itemType === 'kanji' &&
+    parents.length > 0 &&
+    !(parents.length === 1 && parents[0].primaryForm === item.primaryForm);
+  const compositionLine = showsComposition
+    ? `${parents.map((parent) => parent.primaryForm).join(' + ')} = ${item.primaryForm}`
+    : null;
 
   return (
     <View testID="item-mnemonics">

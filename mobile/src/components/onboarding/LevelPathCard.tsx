@@ -8,7 +8,6 @@ type LevelPathCardProps = {
   description: string;
   selected?: boolean;
   badge?: string;
-  accentBorder?: boolean;
   onPress: () => void;
   testID?: string;
   children?: React.ReactNode;
@@ -19,21 +18,17 @@ type LevelPathCardProps = {
  * button: two of the three paths navigate on press rather than sitting in a
  * radiogroup waiting for Continue.
  *
- * `accentBorder` is the spec's highlighted-but-unchosen state (the import card),
- * drawn the same as selected so the eye lands on it first.
+ * Highlighted chrome only means the user selected this path (`selected`).
  */
 export function LevelPathCard({
   title,
   description,
   selected = false,
   badge,
-  accentBorder = false,
   onPress,
   testID,
   children,
 }: LevelPathCardProps) {
-  const highlighted = selected || accentBorder;
-
   return (
     <Pressable
       accessibilityRole="button"
@@ -42,21 +37,21 @@ export function LevelPathCard({
       testID={testID}
       className={cn(
         'min-h-[44px] rounded-radius-lg p-space-md',
-        highlighted
+        selected
           ? 'border-2 border-brand-500 bg-brand-soft'
           : 'border border-border bg-surface shadow-e1',
       )}>
       <Text
         className={cn(
           'text-body font-ui-extrabold',
-          highlighted ? 'text-brand-text' : 'text-primary',
+          selected ? 'text-brand-text' : 'text-primary',
         )}>
         {title}
       </Text>
       <Text
         className={cn(
           'mt-space-xs text-body-sm font-ui',
-          highlighted ? 'text-secondary' : 'text-muted',
+          selected ? 'text-secondary' : 'text-muted',
         )}>
         {description}
       </Text>

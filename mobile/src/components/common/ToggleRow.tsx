@@ -18,6 +18,9 @@ type ToggleRowProps = {
  * on the right (jade when on, surface-elevated when off). Built from a
  * `Pressable` with `accessibilityRole="switch"` rather than the platform
  * `Switch` so the knob follows the v2 palette on both platforms.
+ *
+ * Off and on both reserve a 1px border (transparent when on) so the knob stays
+ * optically centered; the track is a row so the thumb slides start/end.
  */
 export function ToggleRow({
   label,
@@ -50,13 +53,15 @@ export function ToggleRow({
       <View
         testID={testID ? `${testID}-track` : undefined}
         className={cn(
-          'h-[28px] w-[48px] justify-center rounded-radius-full p-[3px]',
-          value ? 'bg-brand-600' : 'border border-border bg-surface-elevated',
+          'h-[28px] w-[48px] flex-row items-center rounded-radius-full border p-[3px]',
+          value
+            ? 'justify-end border-transparent bg-brand-600'
+            : 'justify-start border-border bg-surface-elevated',
         )}>
         <View
           className={cn(
-            'h-[22px] w-[22px] rounded-radius-full',
-            value ? 'self-end bg-on-primary' : 'self-start bg-faint',
+            'h-[20px] w-[20px] rounded-radius-full',
+            value ? 'bg-on-primary' : 'bg-faint',
           )}
         />
       </View>

@@ -77,7 +77,6 @@ export default function WelcomeScreen() {
           <LevelPathCard
             title="I have existing knowledge"
             description="Import from WaniKani, Bunpro, or Anki — keep everything you've learned."
-            accentBorder
             onPress={() => {
               setOnboardingPath(userDb, 'import');
               router.push('/onboarding/import');

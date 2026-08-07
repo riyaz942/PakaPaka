@@ -56,4 +56,34 @@ describe('SegmentedPill', () => {
     expect(onChange).not.toHaveBeenCalled();
     expect(screen.getByTestId('pill-light').props.accessibilityState.disabled).toBe(true);
   });
+
+  it('sizes to content by default and expands when expand is set', () => {
+    const { rerender } = render(
+      <SegmentedPill
+        accessibilityLabel="Theme"
+        options={OPTIONS}
+        value="light"
+        onChange={jest.fn()}
+        testID="theme-pill"
+      />,
+    );
+
+    expect(screen.getByTestId('theme-pill').props.className).toContain('self-start');
+    expect(screen.getByTestId('theme-pill').props.className).not.toContain('w-full');
+    expect(screen.getByTestId('pill-light').props.className).not.toContain('flex-1');
+
+    rerender(
+      <SegmentedPill
+        accessibilityLabel="Theme"
+        expand
+        options={OPTIONS}
+        value="light"
+        onChange={jest.fn()}
+        testID="theme-pill"
+      />,
+    );
+
+    expect(screen.getByTestId('theme-pill').props.className).toContain('w-full');
+    expect(screen.getByTestId('pill-light').props.className).toContain('flex-1');
+  });
 });

@@ -307,13 +307,8 @@ export default function SettingsScreen() {
         <View className="mt-space-lg">
           <SectionHeading label="Appearance" />
           <SettingsCard>
-            <View className="min-h-[56px] flex-row items-center gap-space-md py-space-sm">
-              <View className="flex-1">
-                <Text className="text-body font-ui-semibold text-primary">Theme</Text>
-                <Text className="mt-[3px] text-caption font-ui-medium text-muted">
-                  Auto follows your device setting.
-                </Text>
-              </View>
+            <View className="flex-row items-center justify-between gap-space-md py-space-sm">
+              <Text className="text-body font-ui-semibold text-primary">Theme</Text>
               <SegmentedPill
                 accessibilityLabel="Theme"
                 options={THEME_MODE_OPTIONS}
