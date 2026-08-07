@@ -13,8 +13,14 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+let mockOverrides = new Map<string, 'shown' | 'hidden'>();
+
 jest.mock('@/data/hooks/useFuriganaPreference', () => ({
-  useFuriganaPreference: () => ({ mode: 'shown', knownKanji: new Set<string>() }),
+  useFuriganaPreference: () => ({
+    mode: 'shown',
+    knownKanji: new Set<string>(),
+    modeForItem: (itemId: string) => mockOverrides.get(itemId) ?? 'shown',
+  }),
 }));
 
 const linkedSentence: ExampleSentence = {
@@ -41,6 +47,19 @@ const inertSentence: ExampleSentence = {
 describe('ExampleSentencesSection (Plan 11.6)', () => {
   beforeEach(() => {
     mockPush.mockClear();
+    mockOverrides = new Map();
+  });
+
+  it('applies a linked word\'s per-word furigana override to its span', () => {
+    mockOverrides = new Map([['11', 'hidden']]);
+
+    render(
+      <ExampleSentencesSection sentences={[linkedSentence]} testIDPrefix="override-example" />,
+    );
+
+    // 学生 is hidden by its own override; 私 still follows the global mode.
+    expect(screen.queryByText('がくせい')).toBeNull();
+    expect(screen.getByText('わたし')).toBeTruthy();
   });
 
   it('renders linked words as pressable spans that navigate via useItemHref', () => {

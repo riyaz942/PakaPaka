@@ -87,8 +87,9 @@ export function defaultFuriganaVisible(
  * Renders annotated Japanese text with furigana readings above kanji runs.
  * Each annotated run is individually tappable to flip its reading's
  * visibility, overriding the computed default for that run only (resets
- * when `text` changes). Falls back to a plain `<Text>` when there's nothing
- * to annotate, so plain strings and not-yet-annotated content keep working.
+ * when `text` or `mode` changes). Falls back to a plain `<Text>` when there's
+ * nothing to annotate, so plain strings and not-yet-annotated content keep
+ * working.
  */
 export function FuriganaText({
   text,
@@ -101,11 +102,15 @@ export function FuriganaText({
   interactive = true,
 }: FuriganaTextProps) {
   const segments = parseFurigana(text);
-  const [toggled, setToggled] = useState<Set<number>>(() => new Set());
+  // Peeked runs hold an *explicit* visibility, not "invert the default": a
+  // stored inversion outlives the default it was taken against, so a later
+  // mode change (per-word override or Settings) would flip back to the state
+  // the learner just asked to leave.
+  const [peeked, setPeeked] = useState<Map<number, boolean>>(() => new Map());
 
   useEffect(() => {
-    setToggled(new Set());
-  }, [text]);
+    setPeeked(new Map());
+  }, [text, mode]);
 
   const hasReadings = segments.some((segment) => segment.reading);
   if (!hasReadings) {
@@ -118,14 +123,10 @@ export function FuriganaText({
 
   const plainLabel = segments.map((segment) => segment.text).join('');
 
-  function toggleSegment(index: number): void {
-    setToggled((previous) => {
-      const next = new Set(previous);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
+  function peekSegment(index: number, visible: boolean): void {
+    setPeeked((previous) => {
+      const next = new Map(previous);
+      next.set(index, visible);
       return next;
     });
   }
@@ -152,9 +153,9 @@ export function FuriganaText({
 
         const visibleByDefault = defaultFuriganaVisible(segment, mode, knownKanji, isKnownWord);
         // The tap is a stateless peek (FR79): it flips this render's default
-        // and resets on `text` change — it never persists.
-        const isVisible =
-          interactive && toggled.has(index) ? !visibleByDefault : visibleByDefault;
+        // and resets on `text` / `mode` change — it never persists.
+        const peek = interactive ? peeked.get(index) : undefined;
+        const isVisible = peek ?? visibleByDefault;
 
         const readingBlock = (
           <View className="items-center">
@@ -178,7 +179,7 @@ export function FuriganaText({
         }
 
         return (
-          <Pressable key={index} accessible={false} onPress={() => toggleSegment(index)}>
+          <Pressable key={index} accessible={false} onPress={() => peekSegment(index, !isVisible)}>
             {readingBlock}
           </Pressable>
         );

@@ -33,7 +33,7 @@ export function ExampleSentencesSection({
   sentences,
   testIDPrefix,
 }: ExampleSentencesSectionProps) {
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem } = useFuriganaPreference();
   const hrefFor = useItemHref();
 
   if (sentences.length === 0) {
@@ -50,6 +50,7 @@ export function ExampleSentencesSection({
               sentence={sentence}
               furiganaMode={furiganaMode}
               knownKanji={knownKanji}
+              modeForItem={modeForItem}
               hrefFor={hrefFor}
               testIDPrefix={testIDPrefix}
             />
@@ -65,12 +66,14 @@ function ExampleSentenceJapanese({
   sentence,
   furiganaMode,
   knownKanji,
+  modeForItem,
   hrefFor,
   testIDPrefix,
 }: {
   sentence: ExampleSentence;
   furiganaMode: ReturnType<typeof useFuriganaPreference>['mode'];
   knownKanji: ReturnType<typeof useFuriganaPreference>['knownKanji'];
+  modeForItem: ReturnType<typeof useFuriganaPreference>['modeForItem'];
   hrefFor: (itemId: string) => string;
   testIDPrefix: string;
 }) {
@@ -128,7 +131,9 @@ function ExampleSentenceJapanese({
             testID={`${testIDPrefix}-word-${vocabularyItemId}-${index}`}>
             <FuriganaText
               text={part.text}
-              mode={furiganaMode}
+              // A linked span *is* one vocabulary item, so its per-word
+              // override applies here just as it does on the word's own hero.
+              mode={modeForItem(vocabularyItemId)}
               knownKanji={knownKanji}
               // Nested furigana toggles would steal the span tap (NFR29).
               interactive={false}

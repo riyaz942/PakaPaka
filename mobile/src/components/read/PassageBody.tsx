@@ -40,7 +40,7 @@ export function PassageBody({
   wordSpans,
   onWordPress,
 }: PassageBodyProps) {
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem } = useFuriganaPreference();
   const parts = useMemo(
     () => buildPassageBodyParts(body, bodyFurigana, wordSpans),
     [body, bodyFurigana, wordSpans],
@@ -79,7 +79,9 @@ export function PassageBody({
             testID={`passage-word-${vocabularyItemId}-${index}`}>
             <FuriganaText
               text={part.text}
-              mode={furiganaMode}
+              // A word span *is* one vocabulary item, so hiding that word from
+              // its detail sheet applies to the passage text too.
+              mode={modeForItem(vocabularyItemId)}
               knownKanji={knownKanji}
               // Nested furigana toggles would steal the span tap (NFR29).
               interactive={false}

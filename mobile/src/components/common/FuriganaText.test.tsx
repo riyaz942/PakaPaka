@@ -65,6 +65,31 @@ describe('FuriganaText', () => {
     expect(screen.queryByText('の')).toBeNull();
   });
 
+  // A peek used to be stored as "invert the default", so a mode arriving after
+  // it (a per-word override set on the detail page, or the Settings mode)
+  // landed inverted — choosing "Hide" on a peeked word left it showing.
+  describe('a peek never survives a mode change', () => {
+    it('honours a later hidden mode over a peek that revealed the reading', () => {
+      const { rerender } = render(<FuriganaText text={SENTENCE} mode="auto" isKnownWord />);
+      fireEvent.press(screen.getByText('食'));
+      expect(screen.getByText('た')).toBeTruthy();
+
+      rerender(<FuriganaText text={SENTENCE} mode="hidden" isKnownWord />);
+      expect(screen.queryByText('た')).toBeNull();
+    });
+
+    it('honours a later shown mode over a peek that hid the reading', () => {
+      const { rerender } = render(
+        <FuriganaText text={SENTENCE} mode="auto" isKnownWord={false} />,
+      );
+      fireEvent.press(screen.getByText('食'));
+      expect(screen.queryByText('た')).toBeNull();
+
+      rerender(<FuriganaText text={SENTENCE} mode="shown" isKnownWord={false} />);
+      expect(screen.getByText('た')).toBeTruthy();
+    });
+  });
+
   // BUG6 / FR78: when the caller is rendering exactly one vocabulary item's own
   // word, mastery of *that word* decides — not whether its component kanji
   // happen to be known.
