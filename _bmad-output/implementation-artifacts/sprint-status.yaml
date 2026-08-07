@@ -36,7 +36,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-07-20
-last_updated: 2026-07-21
+last_updated: 2026-08-06
 project: japanese-learning
 project_key: NOKEY
 tracking_system: file-system
@@ -67,3 +67,12 @@ development_status:
   5-1-platform-floor-byok-chat-session-summary: done
   5-2-push-to-talk-voice-with-on-device-tts-stt: done
   epic-5-retrospective: optional
+
+  epic-6: in-progress
+  6-1-placement-quiz-range-and-cutoff-flexibility: ready-for-dev
+  epic-6-retrospective: optional
+
+  epic-9: in-progress
+  9-1-backup-format-and-export: ready-for-dev
+  9-2-restore-preview-and-backup-nudge: backlog
+  epic-9-retrospective: optional

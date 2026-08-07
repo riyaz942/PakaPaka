@@ -472,7 +472,22 @@ Learners practise Japanese in a BYOK Conversation tab (chat default, optional on
 **FRs covered:** FR87–FR100
 **Also:** NFR23–NFR30 · UX-DR21–24, UX-DR33 · platform floor + New Architecture + executorch · migrations `016+`
 
-**Natural implementation order:** Epic 1 → 2 → 3 → 4 → 5 (matches Architecture). Platform floor / New Arch opens Epic 5 (no separate Epic 0). Epic 3 may leave a Conversation placeholder tab until Epic 5.
+### Epic 6: Onboarding Personalization
+Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept.
+**FRs covered:** New scope, post-PRD — see brainstorm session `_bmad-output/brainstorming/brainstorm-intensity-and-placement-range-2026-08-06/.memlog.md`
+**Also:** Fixes a scoring bug in `resolvePlacementKnownIds` found while planning this epic (see Story 6.1)
+
+### Epic 7: Just-In-Time Contextual Guidance
+Learners get a short day-1 primer plus the app's non-obvious behavior explained the moment it actually happens — first wrong answer, an item repeating, a locked passage, the ring passing 100%, furigana disappearing — instead of one upfront explainer deck, through a single card registry that also powers "explain this" affordances and a Settings library.
+**FRs covered:** New scope, post-PRD — see brainstorm session `_bmad-output/brainstorming/brainstorm-onboarding-experience-2026-07-27/.memlog.md` (CHOSEN DIRECTIONS a–d)
+**Also:** Reuses the shipped FR73 (`ExplainerSheet`/`SectionHeading` info affordance) as the rendering surface for new cards; FR74's existing in-lesson primer (`useKanjiReadingPrimer`) is left untouched on purpose — the day-1 deck covers scripts + spacing only, not readings, to avoid explaining on'yomi/kun'yomi twice (decision, see Story 7.1)
+
+### Epic 9: Backup & Restore
+Learners can export their own progress to a file they keep, and restore it onto a fresh install — the only answer to "will I lose my data" in an app with no accounts and no cloud.
+**FRs covered:** New scope, post-PRD — see `docs/design/backup-and-web-plan.md` (Part A)
+**Also:** Prerequisite for the web build (Part B) — browser storage is evictable, so shipping web without this would be shipping a data-loss bug. Epic 8 is reserved for the post-MVP AI-reading / community-contribution scope in `docs/design/ai-reading-and-community-contribution-design-note.md`.
+
+**Natural implementation order:** Epic 1 → 2 → 3 → 4 → 5 (matches Architecture). Platform floor / New Arch opens Epic 5 (no separate Epic 0). Epic 3 may leave a Conversation placeholder tab until Epic 5. Epic 6 is independent follow-on work against the already-shipped onboarding flow and can land anytime. Epic 7 is likewise independent; Story 7.2 reuses Epic 4's shipped `ExplainerSheet` and adds affordances to `FuriganaText`/`FuriganaOverrideControl` — sequence after confirming Epic 4 is done (it is, per `sprint-status.yaml`). Epic 4's `useKanjiReadingPrimer` is explicitly not touched by this epic.
 
 ## Epic 1: Kanji Review Clarity
 
@@ -879,3 +894,227 @@ So that I can speak Japanese in full-screen PTT mode without silent cloud fallba
 **Given** cloud STT
 **When** transcription is configured
 **Then** cloud STT is an explicit Settings opt-in only — never an automatic fallback (FR99, UX-DR33)
+
+## Epic 6: Onboarding Personalization
+
+Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept.
+
+### Story 6.1: Placement Quiz Range & Cutoff Flexibility
+
+As a learner setting up the app,
+I want to choose which JLPT levels the placement quiz checks and adjust its guess before it's applied,
+So that my starting point reflects what I actually know instead of being locked to one level and one blended, all-or-nothing guess.
+
+**Acceptance Criteria:**
+
+**Given** I reach the placement quiz intro (manual onboarding path, `getStartingJlptLevel` already set)
+**When** the screen renders
+**Then** I see a level-range control letting me pick a "from" and "to" JLPT level to test, defaulting to my chosen starting level for both ends (today's single-level behavior, untouched if I don't adjust it)
+**And** the control is built from two instances of the existing `JlptLevelPicker` (`components/common/JlptLevelPicker.tsx`) labeled "Test from" / "Test up to", not a new custom drag component — same accessible radiogroup pattern already shipped, no new gesture code or dependency
+**And** "to" cannot be set below "from" (JLPT_LEVELS order: N5 easiest → N1 hardest)
+
+**Given** I've set a range spanning more than one level (e.g. N5 → N3)
+**When** the quiz samples items
+**Then** `samplePlacementItems` (or its replacement) draws its ~12-item stratified sample across every level in the range, not just one, still spanning all four item types per level
+**And** each answered item still records which level and type it belongs to, so scoring can stay per-level and per-type
+
+**Given** I answer the sampled items
+**When** placement is scored
+**Then** the known-ratio is computed independently **per item type** (fixes the current bug: `resolvePlacementKnownIds` blends every answer into one ratio and applies it to all four types even though `samplePlacementItems` already stratifies by type)
+**And**, for a multi-level range, the ratio is also computed independently **per level** — acing N5 and struggling on N4 must not average into one flat cutoff for both
+**And** a type or level with zero sampled items keeps today's behavior (no crash, cutoff simply not applied there)
+
+**Given** the quiz is finished and the summary screen renders
+**When** I view the computed result
+**Then** I see the assumed known-count broken out per tested level (today shows one N-level number; this must show one per level in the range)
+**And** I can hand-adjust each level's assumed cutoff before confirming — recommend a stepper (`-`/`+` on the known-count, or equivalent tap-based control) over a freeform drag handle, since a stepper needs no new native dependency and is trivially screen-reader accessible where a custom drag gesture is not
+**And** adjusting the count live-updates a plain-language line (e.g. "247 of 340 N5 vocabulary marked known")
+
+**Given** I confirm without adjusting anything
+**When** placement is applied
+**Then** the applied result is byte-for-byte what today's single-level, computed-ratio flow would produce — this story must not regress the default path
+**And** `applyPlacement` in `data/user/placementRepository.ts` generalizes from a single `level` + one known-id list to an ordered list of tested levels each with their own known-id list; a single-level range is simply a list of length one, so this is a superset of today's behavior, not a parallel code path
+**And** everything below the *lowest* tested level is still marked known via `levelsBelow` + `listItemIdsForLevels`, unchanged in spirit from today
+
+**Given** I choose "Start from scratch instead"
+**When** I confirm
+**Then** behavior is identical to today (nothing marked known within any tested level; levels below the lowest tested level are still marked known)
+
+**Given** `applyPlacement` and `PlacementResult` are the only placement functions with call sites outside `core/placement/` and `data/user/placementRepository.ts` (confirmed: only `app/onboarding/placement.tsx` imports them)
+**When** their signatures change
+**Then** there is no other call site to update or break — this is a contained change
+
+## Dev Notes — Story 6.1
+
+**Files this story touches (read fully before changing, per project convention):**
+- `mobile/src/core/placement/placementEngine.ts` (UPDATE) — `samplePlacementItems`, `computeKnownRatio`, `resolvePlacementKnownIds` all currently operate on a single implicit level passed in via `itemsByType`. Extend to accept a `JLPTLevel[]` range; `computeKnownRatio`/`resolvePlacementKnownIds` must key their ratio by `(level, itemType)` pair, not one global number.
+- `mobile/src/data/user/placementRepository.ts` (UPDATE) — `applyPlacement(userDb, curriculumDb, level, withinLevelKnownIds)` → generalize to accept the tested level range + per-level known-id lists. `levelsBelow` / `listItemIdsForLevels` stay as-is and compose against the range's lowest level.
+- `mobile/src/app/onboarding/placement.tsx` (UPDATE) — currently reads a single `level` from `getStartingJlptLevel`; add the range picker before the quiz and the per-level adjustable summary after it. `placement.test.tsx` has the current test conventions (mocked `expo-sqlite`, `expo-router`) to follow.
+- `mobile/src/components/common/JlptLevelPicker.tsx` (reuse, not reinvent) — already an accessible single-select JLPT chip row; the range control is two of these, not a new slider.
+- `mobile/src/data/curriculum/itemRepository.ts` (read-only reference) — `listItemsByLevelAndType(curriculumDb, level, itemType)` already takes one level at a time; multi-level sampling calls it once per level in the range, no change needed here.
+
+**Explicit deviation from the earlier brainstorm mockup:** that visual used a continuous two-handle drag slider and a draggable cutoff line for spectacle. This story recommends tap-based controls instead (paired `JlptLevelPicker`s; a stepper for the cutoff) because: (a) the app's a11y lint gate blocks merge without a suppression rationale, and a custom drag gesture needs real accessibility work (`accessibilityRole="adjustable"` + increment/decrement actions) to clear it; (b) no slider dependency exists in `package.json` today (checked — no `@react-native-community/slider`, only `react-native-gesture-handler`/`react-native-reanimated`), so a drag slider is new surface area, not reuse; (c) CLAUDE.md's Simplicity First. If product wants the drag interaction specifically, that's a follow-up, not blocking this story.
+
+**Result type / async convention:** `placementEngine.ts` and `placementRepository.ts` are synchronous SQLite calls today — neither uses `Result<T, AppError>`. Keep it that way; don't introduce Result wrapping here, it isn't the existing pattern for this module.
+
+**Testing:** `core/placement/placementEngine.test.ts` and `app/onboarding/placement.test.tsx` exist today and must be extended, not replaced — study their existing fixtures (`kanji(id, form, sortOrder, level)` helper in `placement.test.tsx`) before adding cases. No test file currently exists for `placementRepository.ts`; add one alongside the signature change.
+
+**Source:** brainstorm session `_bmad-output/brainstorming/brainstorm-intensity-and-placement-range-2026-08-06/.memlog.md` — range-slider approach was chosen over a fix-only approach, then the per-type/per-level ratio fix was folded into this same story by the user.
+
+## Epic 7: Just-In-Time Contextual Guidance
+
+Learners get a short day-1 primer plus the app's non-obvious behavior explained the moment it actually happens, instead of one upfront explainer deck.
+
+### Story 7.1: Card Registry & Day-1 Beginner Deck
+
+As a first-time learner on the beginner onboarding path,
+I want a short day-1 deck covering the three scripts and word spacing — built from real curriculum items, not screenshots,
+So that I'm not lost the moment my first lesson or review starts, without sitting through an explanation of everything the app does up front.
+
+**Acceptance Criteria:**
+
+**Given** the onboarding flow after `welcome.tsx` sets `onboarding_path`
+**When** a beginner-path learner reaches the end of the existing onboarding stack (after `intensity.tsx`, before `complete.tsx`)
+**Then** they see a 2-card deck: three scripts (hiragana/katakana/kanji, each with its job) and no-spaces-between-words
+**And** manual and import onboarding paths skip the deck entirely (day 1 is beginner-path only)
+**And** each card renders real data — actual glyphs from `curriculum.db`, not mockup images or hardcoded strings
+
+**Given** the deck's card content
+**When** a card is authored
+**Then** it is one entry in a new card registry (e.g. `core/onboarding/cardRegistry.ts`) — a single list of `{ id, title, render, trigger }` definitions — not three one-off screen components
+**And** the registry is the same list Story 7.2's triggered cards and Settings library read from (one object, three surfaces)
+
+**Given** seen-state for any registry card
+**When** a card is shown or dismissed
+**Then** it is recorded in a new `card_seen` table (`card_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL`) added via a numbered migration, not the existing per-flag columns in `preferences` — the registry can grow without a new migration per card
+**And** a card already marked seen is never re-fired unprompted (still reachable from the Settings library, Story 7.2)
+
+**Given** I tap "Skip all, I know how apps work" on the first card
+**When** the skip fires
+**Then** both day-1 cards are marked seen and I proceed to `complete.tsx`
+**And** the Settings library (Story 7.2) still lists both, unabridged
+
+**Given** the existing on'yomi/kun'yomi primer (`useKanjiReadingPrimer` + `KanjiReadingPrimer.tsx`, FR74) already explains this live, in-lesson, the moment a beginner hits their first dual-reading kanji
+**When** this story's day-1 deck is scoped
+**Then** on'yomi/kun'yomi is deliberately left out of the day-1 deck, and the existing primer, its trigger, and its test coverage are left untouched — one explanation, delivered at the moment it's actually confusing, not two (decision, resolved 2026-08-07: keep the shipped in-lesson primer as-is rather than retire it; see Dev Notes)
+
+**Given** WaniKani-importer and manual onboarding paths
+**When** this story ships
+**Then** they get no deck (unchanged from today) — a WaniKani-diff deck and a glossary card for those paths were raised in the brainstorm (SYNTHESIS-6) but are **not** in the chosen directions; explicitly out of scope here, left as a follow-on idea
+
+### Story 7.2: Triggered Contextual Cards, Explain-This Affordances & Settings Library
+
+As a learner already using the app,
+I want the app's non-obvious behavior explained the moment I actually hit it, plus an "explain this" button wherever that behavior shows up, and a full list in Settings,
+So that I understand why the app just did something instead of assuming it's broken or hunting for an explanation.
+
+**Acceptance Criteria:**
+
+**Given** the confusion timeline from the brainstorm synthesis
+**When** each trigger condition is met for the first time
+**Then** the matching registry card fires once, non-blocking, dismissable:
+- first incorrect review answer → reframes the miss as the SRS mechanism working, not a strike (fires from the review result path, not onboarding — a wrong answer means nothing before the learner has tried)
+- an item is presented again after already being seen → explains spaced repetition live, using that actual item
+- Browse renders a locked passage for the first time → reframes locks as a map/destination (reuses FR60's reading-readiness framing, doesn't duplicate it)
+- the goal ring first renders >100% → confirms overshoot is allowed and the ring never drops (ties into FR55/FR57's existing overshoot behavior, explains it rather than re-implementing it)
+- furigana first auto-hides on a newly-mastered vocabulary item → explains the vocabulary-mastery trigger (FR78) and points at the Settings override (FR79)
+
+**Given** any of the above triggers
+**When** the condition has already fired once (`card_seen` has a row for that card id)
+**Then** it never fires unprompted again
+
+**Given** the goal ring (`GoalRing.tsx`), the SRS stage indicator (`SRSStageIndicator.tsx`), and furigana controls (`FuriganaText.tsx` / `FuriganaOverrideControl.tsx`)
+**When** I look for an explanation without waiting for the trigger
+**Then** each carries an "explain this" info affordance opening the matching registry card
+**And** it reuses the existing `ExplainerSheet` bottom-sheet component (FR73) as the rendering surface — no new sheet/modal primitive
+
+**Given** the two kanji review card types (meaning card, on'yomi card)
+**When** I'm mid-review and want to know why there are two cards
+**Then** the same info affordance is available on the review card header, opening a registry card explaining two-card grading (FR81) without leaving the review session
+
+**Given** Settings
+**When** I open "How this works"
+**Then** I see every registry card as a flat list — the same list feeding the Day-1 deck and the contextual triggers — each replayable on tap regardless of seen-state
+
+**Given** the registry now covers both onboarding-only cards (Story 7.1) and app-lifetime triggered cards (this story)
+**When** a card definition specifies its trigger
+**Then** the trigger is one of a closed set (`'onboarding-deck' | 'contextual' | 'library-only'`) so Settings can render every card while onboarding and contextual surfaces only render their own subset
+
+## Dev Notes — Epic 7
+
+**Files this epic touches (read fully before changing, per project convention):**
+- `mobile/src/data/migrations/` (NEW) — next migration is `019_card_registry.ts` (last is `018_ai_session_topic_ids.ts`); creates `card_seen(card_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL)`
+- `mobile/src/data/hooks/useKanjiReadingPrimer.ts`, `useKanjiReadingPrimer.test.tsx`, `mobile/src/components/lesson/KanjiReadingPrimer.tsx`, and `preferencesRepository.ts`'s `seenKanjiReadingPrimer` key (DO NOT TOUCH) — FR74's shipped in-lesson primer and its trigger stay exactly as they are; the day-1 deck deliberately excludes on'yomi/kun'yomi instead of retiring this code (see decision note below)
+- `mobile/src/components/learn/explainerContent.ts` + `mobile/src/components/common/ExplainerSheet.tsx` (REUSE, do not replace) — already the exact "one topic, one bottom sheet" primitive FR73 shipped; the registry's `render` for library/contextual cards should call into this pattern rather than inventing a second sheet component
+- `mobile/src/components/common/SectionHeading.tsx` (reference pattern) — shows the existing `infoTopic` → `ExplainerSheet` wiring to replicate on `GoalRing.tsx`, `SRSStageIndicator.tsx`, `FuriganaText.tsx` / `FuriganaOverrideControl.tsx`
+- `mobile/src/components/engagement/GoalRing.tsx`, `mobile/src/components/common/SRSStageIndicator.tsx`, `mobile/src/components/common/FuriganaText.tsx`, `mobile/src/components/learn/FuriganaOverrideControl.tsx` (UPDATE) — add the info affordance
+- `mobile/src/app/onboarding/welcome.tsx` (read-only reference) — confirms `onboarding_path` values (`'beginner' | 'manual' | 'import'`) already written at welcome; Story 7.1's deck gate reads this, doesn't write it
+- `mobile/src/app/onboarding/complete.tsx`, `mobile/src/app/onboarding/intensity.tsx`, `mobile/src/app/onboarding/_layout.tsx` (UPDATE, Story 7.1) — day-1 deck screen(s) slot between intensity and complete in the existing onboarding stack
+- `preferencesRepository.ts`'s `getPreference`/`setPreference` generic-KV pattern (precedent, not reused directly) — `card_seen` needs its own table because it's keyed by an open-ended card id, not one of a fixed set of preference keys
+
+**Decision (resolved 2026-08-07):** the artifact's day-1 deck included an on'yomi/kun'yomi card, but that would duplicate what `useKanjiReadingPrimer` (shipped, tested, Story 4.1) already delivers live, in-lesson, at the first dual-reading kanji — explaining the same fact twice in a beginner's first session. Two options were weighed: retire the shipped primer and move the explanation to Day 1 (bigger diff, touches tested code, explains it before it's confusing), or leave the primer as-is and simply drop the reading card from the day-1 deck (smaller diff, no shipped-code risk, explanation stays timed to the actual moment of confusion). Chosen: the second — day-1 ships two cards (scripts, spacing); `useKanjiReadingPrimer` is untouched.
+
+**Explicitly out of scope (raised in brainstorm, not in the four chosen directions):** WaniKani-diff deck for importers, glossary card for manual-path learners (SYNTHESIS-6 possible branches, not committed), shareable-image export, "last card doubles as Start button," replay-count badge, trust/backup cards (who-made-this, no-account-means-no-cloud-backup — these track the separate `docs/design/backup-and-web-plan.md` topic, not this epic).
+
+**Result type / async convention:** new `card_seen` repository functions follow the existing `preferencesRepository.ts` pattern — synchronous SQLite, no `Result<T, AppError>` wrapping, matching sibling preference/primer code, not the async `Result`-wrapped modules elsewhere.
+
+**Testing:** `SectionHeading.test.tsx` / `ExplainerSheet.test.tsx` conventions (topic-keyed content, no curriculum dependency) are the template for registry-card content tests. `useKanjiReadingPrimer.test.tsx` is untouched by this epic.
+
+**Source:** brainstorm session `_bmad-output/brainstorming/brainstorm-onboarding-experience-2026-07-27/.memlog.md` and `brainstorm.html` (Persona Journey / Alien Anthropologist / One Feature Only techniques; CHOSEN DIRECTIONS a–d; confusion timeline). Visual reference: Claude artifact `d4be81aa-43e9-46b3-9185-c7c63c5056a5` ("Teach it when it's confusing") — explicitly marked "not yet built" in its own footer.
+
+---
+
+## Epic 9: Backup & Restore
+
+### Story 9.1: Backup Format & Export
+
+As a learner,
+I want to export my progress to a file I keep,
+so that reinstalling, switching phones, or a browser clearing its storage does not erase months of study.
+
+**Acceptance Criteria**
+
+1. **Slug-keyed, not id-keyed:** every item reference in the backup is a `{item_type, slug}` pair, never a `curriculum.db` integer row id. Row ids are assigned by the compile step and shift on recompile/OTA, so an id-keyed backup silently reattaches progress to the wrong kanji after a curriculum update.
+2. **Covers all user state:** every table in `user.db` that represents learner progress is exported — `item_study_status`, `srs_states`, `user_preferences`, `personal_mnemonics`, `user_synonyms`, `furigana_overrides`, `related_item_boosts`, `goal_ring_state`, `daily_lesson_log`, `cognitive_load_history`, `streaks`, `passage_practice_results`, `weakness_stats`, `import_metadata`. `schema_migrations` is recorded as a version number, not exported as rows.
+3. **Credentials are never exported:** BYOK provider keys live in secure storage and are excluded unconditionally — not behind a toggle. A backup file is something learners email to themselves.
+4. **AI transcripts are opt-in, default off:** `ai_sessions` / `ai_messages` are the only unbounded, free-text tables. Excluded unless the learner explicitly ticks the option.
+5. **Format is gzipped JSON, one `.json.gz` file** carrying `format`, `formatVersion`, `schemaVersion` (max applied migration), `curriculumVersion`, `exportedAt`, and `includesConversations`. Transparent and inspectable by design, matching the open-source / no-accounts posture (decision 2026-08-07).
+6. **Export is offline and local:** the file is written on-device and handed to the OS share sheet. Nothing is uploaded anywhere.
+
+### Story 9.2: Restore, Preview & Backup Nudge
+
+As a learner,
+I want to restore a backup and see exactly what it will do before it happens,
+so that I can move to a new device without silently losing or corrupting my review schedule.
+
+**Acceptance Criteria**
+
+1. **Preview before commit:** restore parses the file and shows item counts and unmatched-slug counts before anything is written, reusing the existing preview-then-confirm pattern from `importPreviewStore.ts` rather than a second mechanism.
+2. **Replace-all, never merge:** restore replaces user tables wholesale inside one transaction. Merging two FSRS histories has no correct answer, and a half-merged schedule is worse than either input. The confirm step says plainly that current progress will be replaced.
+3. **Unmatched slugs are surfaced, not dropped:** slugs absent from the current curriculum are counted and shown, matching the transparency precedent set by Story 3.5 (import summary).
+4. **Corrupt input fails as a typed error:** a truncated, non-gzip, wrong-`format`, or future-`formatVersion` file produces a `Result<T, AppError>` — never an uncaught throw, per the project Result convention.
+5. **Cross-platform round trip:** a backup exported on mobile restores on web and vice versa, since the format is platform-neutral JSON rather than SQLite bytes.
+6. **Backup nudge:** a "last backed up N days ago" indicator in Settings, clearing on export. On web it also takes the existing Home conditional-banner slot, because browser storage is evictable.
+7. **Restore is an onboarding import source:** "Kizamu backup" joins WaniKani / Bunpro / Anki as a fourth option on `src/app/onboarding/import.tsx`, reusing the same file-pick → preview → summary flow the Anki path already uses. A fresh install is the primary moment a learner restores, so it must not be buried in Settings.
+8. **Restoring skips the rest of onboarding:** a backup already carries `user_preferences` (intensity, daily goal, theme, furigana mode) and `item_study_status`. After a successful restore the learner goes straight to `complete` — never through `intensity` or `placement`, which would re-ask answered questions and let placement overwrite restored study status. This differs from the other three import sources, which continue to `intensity`.
+
+## Dev Notes — Epic 9
+
+**Source:** `docs/design/backup-and-web-plan.md` Part A. Read it before starting — the format decisions there (slug keying, credential exclusion, replace-all semantics) are the acceptance criteria above and were settled deliberately.
+
+**Files this epic touches:**
+- `mobile/src/core/backup/` (NEW) — pure serialize/deserialize, no I/O, mirroring how `src/core/import/` splits pure mapping from `src/data/import/` clients. This is where the round-trip tests live.
+- `mobile/src/data/user/` (NEW files) — `exportBackup()` / `restoreBackup()` performing the actual DB reads/writes and file I/O.
+- `mobile/src/data/import/importPreviewStore.ts` (REUSE, do not replace) — already the preview-then-confirm primitive; the restore screen should route through it.
+- `mobile/src/core/import/import.types.ts` (reference pattern) — `ImportPreview` / `ImportSummary` are the shape to mirror for `BackupPreview` / `BackupSummary`.
+- `mobile/src/app/(tabs)/settings.tsx` (UPDATE) — backup/restore entry points and the last-backed-up indicator.
+- `mobile/src/app/onboarding/import.tsx` (UPDATE, Story 9.2) — adds a fourth `ImportSource` pill. The local `type ImportSource = 'wanikani' | 'bunpro' | 'anki'` at line ~29 and `SOURCE_OPTIONS` at line ~34 are the extension points; the Anki branch (file pick via `expo-document-picker` → preview → `./import-summary`) is the pattern to follow, not the API-key branches. Note four pills may crowd the segmented control — check the layout rather than assuming it scales.
+- `mobile/src/app/onboarding/import-summary.tsx` (UPDATE, Story 9.2) — currently hard-routes to `/onboarding/intensity` at line ~61; the restore path must branch to `complete` instead (AC8).
+- `expo-document-picker` (already a dependency, already used in `src/app/onboarding/import.tsx`) — file picking, and it already works on web.
+- `jszip` (already a dependency) — only if gzip needs a helper; prefer whatever is smallest.
+
+**No migration required.** This epic reads and writes existing tables; it adds no schema. The last migration is `018_ai_session_topic_ids.ts` and Epic 7 has already claimed `019_card_registry.ts` — do not take `019`.
+
+**Explicitly out of scope:** cloud sync, accounts, any server, merge/conflict resolution between two devices, automatic scheduled backups on mobile (the OS already backs up the app sandbox), and a branded `.kizamu` file association (deferred — the format supports adding it later without change).
+
+**Relationship to the web build:** this epic ships *before* Part B of the plan. It is independently valuable on mobile and is not blocked by any of the web unknowns.
