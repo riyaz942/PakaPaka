@@ -106,6 +106,18 @@ describe('IntensityScreen', () => {
     expect(mockPush).toHaveBeenCalledWith('/onboarding/placement');
   });
 
+  it('persists a newly added tier selected from the widened picker', async () => {
+    const db = await createUserDb();
+    setOnboardingPath(db, 'beginner');
+    renderIntensityScreen(db);
+
+    fireEvent.press(screen.getByTestId('session-intensity-picker-immersive'));
+    fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+
+    expect(getSessionIntensity(db)).toBe('immersive');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
+  });
+
   it('routes import path to complete on Continue', async () => {
     const db = await createUserDb();
     runMigrations(db, [migration003SrsStatesAndImportMetadata]);

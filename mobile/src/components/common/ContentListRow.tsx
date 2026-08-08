@@ -11,7 +11,7 @@ import { cn } from '@/utils/cn';
 type ContentListRowProps = {
   /** `passage` rows share the list but are not curriculum items (FR63). */
   rowType: ItemType | 'passage';
-  /** The Japanese form, set in Zen Maru at the type's base hue. */
+  /** The Japanese form, set in Zen Kaku Gothic New at the type's base hue. */
   glyph?: string;
   title: string;
   caption?: string;
@@ -81,7 +81,7 @@ export function ContentListRow({
           <Text
             numberOfLines={1}
             className={cn(
-              'min-w-9 max-w-[120px] font-jp-round-black',
+              'min-w-9 max-w-[120px] font-jp-hero-black',
               glyphSizeClass(glyph),
               accent.glyph,
             )}>

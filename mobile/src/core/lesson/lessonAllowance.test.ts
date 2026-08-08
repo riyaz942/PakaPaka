@@ -21,6 +21,17 @@ describe('computeDailyAllowance', () => {
     expect(intense.total).toBe(LESSON_SIZE_BY_INTENSITY.intense * DAILY_LESSON_BATCHES);
   });
 
+  it('scales the allowance for the light, steady and immersive tiers', () => {
+    for (const intensity of ['light', 'steady', 'immersive'] as const) {
+      const allowance = computeDailyAllowance({
+        intensity,
+        itemsStartedToday: 0,
+        reviewsDueCount: 0,
+      });
+      expect(allowance.total).toBe(LESSON_SIZE_BY_INTENSITY[intensity] * DAILY_LESSON_BATCHES);
+    }
+  });
+
   it('defaults to relaxed when intensity is unset', () => {
     const allowance = computeDailyAllowance({
       intensity: null,

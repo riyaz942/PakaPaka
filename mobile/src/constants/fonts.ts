@@ -12,10 +12,10 @@ import {
   PlusJakartaSans_800ExtraBold,
 } from '@expo-google-fonts/plus-jakarta-sans';
 import {
-  ZenMaruGothic_500Medium,
-  ZenMaruGothic_700Bold,
-  ZenMaruGothic_900Black,
-} from '@expo-google-fonts/zen-maru-gothic';
+  ZenKakuGothicNew_500Medium,
+  ZenKakuGothicNew_700Bold,
+  ZenKakuGothicNew_900Black,
+} from '@expo-google-fonts/zen-kaku-gothic-new';
 
 /**
  * Design System v2 typefaces. Every face is a bundled asset — the app is
@@ -26,7 +26,7 @@ import {
  * `fontFamily` block in `tailwind.config.js`.
  *
  * - Plus Jakarta Sans (`font-ui*`) — all interface text
- * - Zen Maru Gothic (`font-jp-round*`) — heroed Japanese characters
+ * - Zen Kaku Gothic New (`font-jp-hero*`) — heroed Japanese characters
  * - Noto Sans JP (`font-jp*`) — readings, furigana, passages, chat
  */
 export const appFonts = {
@@ -39,7 +39,7 @@ export const appFonts = {
   NotoSansJP_500Medium,
   NotoSansJP_700Bold,
   NotoSansJP_900Black,
-  ZenMaruGothic_500Medium,
-  ZenMaruGothic_700Bold,
-  ZenMaruGothic_900Black,
+  ZenKakuGothicNew_500Medium,
+  ZenKakuGothicNew_700Bold,
+  ZenKakuGothicNew_900Black,
 };

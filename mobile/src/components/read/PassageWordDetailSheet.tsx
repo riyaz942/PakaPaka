@@ -64,7 +64,7 @@ export function PassageWordDetailSheet({
                 isKnownWord={isVocabulary ? isKnownWord : undefined}
                 knownKanji={isVocabulary ? undefined : knownKanji}
                 accessibilityRole="header"
-                className={cn('text-title-lg font-jp-round-black', accent?.glyph)}
+                className={cn('text-title-lg font-jp-hero-black', accent?.glyph)}
               />
               <ContentTypeBadge itemType={item.itemType} />
             </View>

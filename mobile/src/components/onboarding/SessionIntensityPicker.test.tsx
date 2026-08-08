@@ -1,10 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import React from 'react';
 
+import { SESSION_INTENSITY_MINUTES } from '@/config/constants';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
+import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
+import { SESSION_INTENSITY_VALUES } from '@/data/user/sessionIntensity.types';
 
 describe('SessionIntensityPicker', () => {
-  it('renders radiogroup with two radio options', () => {
+  it('renders radiogroup with five radio options', () => {
     render(
       <SessionIntensityPicker
         selectedIntensity={null}
@@ -15,11 +18,65 @@ describe('SessionIntensityPicker', () => {
 
     expect(screen.getByTestId('intensity-picker')).toBeTruthy();
     expect(screen.getByTestId('intensity-picker').props.accessibilityRole).toBe('radiogroup');
-    expect(screen.getAllByRole('radio')).toHaveLength(2);
+    expect(screen.getAllByRole('radio')).toHaveLength(5);
+    expect(screen.getByText('Light')).toBeTruthy();
     expect(screen.getByText('Relaxed')).toBeTruthy();
+    expect(screen.getByText('Steady')).toBeTruthy();
     expect(screen.getByText('Intense')).toBeTruthy();
-    expect(screen.getByText('~15 min/day')).toBeTruthy();
-    expect(screen.getByText('~30 min/day')).toBeTruthy();
+    expect(screen.getByText('Immersive')).toBeTruthy();
+  });
+
+  it('derives each sublabel from the minutes and lesson-size maps', () => {
+    render(
+      <SessionIntensityPicker
+        selectedIntensity={null}
+        onSelect={jest.fn()}
+        testID="intensity-picker"
+      />,
+    );
+
+    for (const intensity of SESSION_INTENSITY_VALUES) {
+      const minutes = SESSION_INTENSITY_MINUTES[intensity];
+      const newItems = LESSON_SIZE_BY_INTENSITY[intensity];
+      expect(screen.getByText(`~${minutes} min/day · ${newItems} new items`)).toBeTruthy();
+    }
+  });
+
+  it('pins the minutes for each tier', () => {
+    expect(SESSION_INTENSITY_MINUTES).toEqual({
+      light: 5,
+      relaxed: 15,
+      steady: 22,
+      intense: 30,
+      immersive: 45,
+    });
+  });
+
+  it('badges only Relaxed as recommended for new learners', () => {
+    render(
+      <SessionIntensityPicker
+        selectedIntensity={null}
+        onSelect={jest.fn()}
+        testID="intensity-picker"
+      />,
+    );
+
+    expect(screen.getAllByText('Recommended for new learners')).toHaveLength(1);
+  });
+
+  it('calls onSelect for a newly added tier', () => {
+    const onSelect = jest.fn();
+
+    render(
+      <SessionIntensityPicker
+        selectedIntensity={null}
+        onSelect={onSelect}
+        testID="intensity-picker"
+      />,
+    );
+
+    fireEvent.press(screen.getByTestId('intensity-picker-immersive'));
+    expect(onSelect).toHaveBeenCalledWith('immersive');
   });
 
   it('calls onSelect when an option is pressed', () => {

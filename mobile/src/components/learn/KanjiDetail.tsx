@@ -54,7 +54,7 @@ export function KanjiDetail({
     <View testID="kanji-detail">
       <ItemDetailHeader itemType="kanji" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-jp-round-black', CONTENT_TYPE_ACCENT.kanji.deep)}
+          className={cn('text-center font-jp-hero-black', CONTENT_TYPE_ACCENT.kanji.deep)}
           style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
         </Text>

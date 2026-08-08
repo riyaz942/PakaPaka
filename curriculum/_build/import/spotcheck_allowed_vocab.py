@@ -32,7 +32,7 @@ REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 LEVELS = ["n5", "n4"]
 # Mirrors lessonPlanner.ts ROUND_QUOTAS (order matters: radicals lead).
 ROUND_QUOTAS = [("radical", 2), ("kanji", 2), ("vocabulary", 2), ("grammar", 1)]
-LESSON_SIZES = {"relaxed": 5, "intense": 10}
+LESSON_SIZES = {"light": 3, "relaxed": 5, "steady": 7, "intense": 10, "immersive": 15}
 # Grammar points to detail in the report, per level: first, early, middle, last.
 SAMPLE_POSITIONS = [0, 4, "mid", -1]
 

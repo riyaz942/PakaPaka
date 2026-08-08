@@ -1,8 +1,11 @@
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 export const SESSION_INTENSITY_MINUTES: Record<SessionIntensity, number> = {
+  light: 5,
   relaxed: 15,
+  steady: 22,
   intense: 30,
+  immersive: 45,
 };
 
 /** Max items held in the prefetch buffer ahead of the current item. */
@@ -85,12 +88,18 @@ export const INCORRECT_LOAD_SURCHARGE = 1.5;
 
 /**
  * Base daily load threshold by session intensity (load units, not minutes).
- * Relaxed (~15 items): avg ~2 units/item × 15 ≈ 30 → 100% at threshold 30.
- * Intense (~30 items): higher ceiling so sustained study can fill the ring more gradually.
+ * The scale is anchored on two calibrated tiers and interpolated between them:
+ * Relaxed (~15 min): avg ~2 units/item × 15 ≈ 30 → 100% at threshold 30.
+ * Intense (~30 min): 55 — a higher ceiling so sustained study fills the ring
+ * more gradually. That gives ~1.67 load units per minute; light, steady and
+ * immersive follow that line, rounded and kept strictly increasing.
  */
 export const COGNITIVE_LOAD_THRESHOLD_BASE: Record<SessionIntensity, number> = {
+  light: 15,
   relaxed: 30,
+  steady: 42,
   intense: 55,
+  immersive: 80,
 };
 
 /** Floor for adapted threshold — never collapses below this on light days. */

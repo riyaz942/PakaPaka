@@ -26,8 +26,11 @@ export type LessonPlanInput = {
 };
 
 export const LESSON_SIZE_BY_INTENSITY: Record<SessionIntensity, number> = {
+  light: 3,
   relaxed: 5,
+  steady: 7,
   intense: 10,
+  immersive: 15,
 };
 
 export function lessonSizeForIntensity(intensity: SessionIntensity | null): number {

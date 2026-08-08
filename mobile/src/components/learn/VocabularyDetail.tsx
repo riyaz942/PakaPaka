@@ -57,7 +57,7 @@ export function VocabularyDetail({
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={cn('font-jp-round-black', CONTENT_TYPE_ACCENT.vocabulary.deep)}
+          className={cn('font-jp-hero-black', CONTENT_TYPE_ACCENT.vocabulary.deep)}
           style={isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word}
         />
       </ItemDetailHeader>

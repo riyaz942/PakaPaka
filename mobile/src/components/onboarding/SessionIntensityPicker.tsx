@@ -2,24 +2,32 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { ChoiceCard } from '@/components/common/ChoiceCard';
+import { SESSION_INTENSITY_MINUTES } from '@/config/constants';
+import { LESSON_SIZE_BY_INTENSITY } from '@/core/lesson/lessonPlanner';
 import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 
 type IntensityOption = {
   value: SessionIntensity;
   title: string;
-  sublabel: string;
   badge?: string;
 };
 
+/** Lightest → heaviest. Sublabels are derived so they can never drift from the maps. */
 const INTENSITY_OPTIONS: IntensityOption[] = [
+  { value: 'light', title: 'Light' },
   {
     value: 'relaxed',
     title: 'Relaxed',
-    sublabel: '~15 min/day',
     badge: 'Recommended for new learners',
   },
-  { value: 'intense', title: 'Intense', sublabel: '~30 min/day' },
+  { value: 'steady', title: 'Steady' },
+  { value: 'intense', title: 'Intense' },
+  { value: 'immersive', title: 'Immersive' },
 ];
+
+function sublabelFor(intensity: SessionIntensity): string {
+  return `~${SESSION_INTENSITY_MINUTES[intensity]} min/day · ${LESSON_SIZE_BY_INTENSITY[intensity]} new items`;
+}
 
 type SessionIntensityPickerProps = {
   selectedIntensity: SessionIntensity | null;
@@ -33,17 +41,16 @@ export function SessionIntensityPicker({
   testID,
 }: SessionIntensityPickerProps) {
   return (
-    <View accessibilityRole="radiogroup" testID={testID} className="flex-row gap-space-sm">
+    <View accessibilityRole="radiogroup" testID={testID} className="gap-space-sm">
       {INTENSITY_OPTIONS.map((option) => (
         <ChoiceCard
           key={option.value}
           title={option.title}
-          description={option.sublabel}
+          description={sublabelFor(option.value)}
           badgeLabel={option.badge}
           selected={selectedIntensity === option.value}
           onPress={() => onSelect(option.value)}
           testID={testID ? `${testID}-${option.value}` : undefined}
-          className="flex-1"
         />
       ))}
     </View>

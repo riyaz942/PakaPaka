@@ -1,5 +1,11 @@
 # Deferred Work
 
+## Deferred from: code review of 6-2-five-tier-daily-pace-scale (2026-08-08)
+
+- **"Recommended for new learners" badge invisible to screen readers** — `ChoiceCard` builds `accessibilityLabel` from title + description only; the badge is a decorative View/Text. With five pace options the badge is the sole nudge toward Relaxed, and VoiceOver/TalkBack users never hear it. Pre-existing `ChoiceCard` pattern (`mobile/src/components/common/ChoiceCard.tsx:39`).
+- **Stale goal ring on intensity downgrade amplified by wider range** — intensity only seeds the goal when no sticky goal exists; switching immersive→light leaves a goal 5.3× the new pace's base until the weekly ratchet's opt-in reduction kicks in. Pre-existing for relaxed↔intense (`mobile/src/data/user/goalRingRepository.ts:64-70`).
+- **Downgrade forward-compat gap for newly stored tiers** — an older build rejects `light`/`steady`/`immersive` via `isSessionIntensity` → `getSessionIntensity` returns null → `useOnboardingRedirect` routes the user back to `/onboarding/intensity` and re-picking overwrites their choice (`mobile/src/hooks/useOnboardingRedirect.ts:46-60`). Only matters on rollback/older-build-over-newer-data.
+
 ## Deferred from: code review of 5-2-push-to-talk-voice-with-on-device-tts-stt (2026-07-21)
 
 - **Presence check is basename-only (no size/hash)** — `areVoiceModelsDownloaded` trusts listed filenames; cache-then-move already keeps half-files out of the listing. Deeper integrity (size/hash) deferred pending on-device soak (`modelDownloadManager.ts`).

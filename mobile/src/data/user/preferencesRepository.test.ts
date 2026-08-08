@@ -125,6 +125,9 @@ describe('preferencesRepository JLPT onboarding preferences', () => {
         PREFERENCE_KEYS.sessionIntensity,
       )?.value,
     ).toBe('intense');
+
+    setSessionIntensity(db, 'steady');
+    expect(getSessionIntensity(db)).toBe('steady');
   });
 
   it('rejects invalid session intensity values', async () => {

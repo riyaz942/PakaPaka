@@ -95,9 +95,9 @@ module.exports = {
         'jp-medium': ['NotoSansJP_500Medium'],
         'jp-bold': ['NotoSansJP_700Bold'],
         'jp-black': ['NotoSansJP_900Black'],
-        'jp-round': ['ZenMaruGothic_500Medium'],
-        'jp-round-bold': ['ZenMaruGothic_700Bold'],
-        'jp-round-black': ['ZenMaruGothic_900Black'],
+        'jp-hero': ['ZenKakuGothicNew_500Medium'],
+        'jp-hero-bold': ['ZenKakuGothicNew_700Bold'],
+        'jp-hero-black': ['ZenKakuGothicNew_900Black'],
       },
       // v2 — typography scale
       fontSize: {

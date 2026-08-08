@@ -9,6 +9,7 @@ import {
   initialGoalForIntensity,
   weekStartKey,
 } from '@/core/cognitive-load/thresholdCalculator';
+import { SESSION_INTENSITY_VALUES } from '@/data/user/sessionIntensity.types';
 
 describe('initialGoalForIntensity', () => {
   it('seeds from the intensity base', () => {
@@ -20,6 +21,18 @@ describe('initialGoalForIntensity', () => {
     expect(COGNITIVE_LOAD_THRESHOLD_BASE.intense).toBeGreaterThan(
       COGNITIVE_LOAD_THRESHOLD_BASE.relaxed,
     );
+  });
+
+  it('seeds from the base for the light, steady and immersive tiers too', () => {
+    expect(initialGoalForIntensity('light')).toBe(COGNITIVE_LOAD_THRESHOLD_BASE.light);
+    expect(initialGoalForIntensity('steady')).toBe(COGNITIVE_LOAD_THRESHOLD_BASE.steady);
+    expect(initialGoalForIntensity('immersive')).toBe(COGNITIVE_LOAD_THRESHOLD_BASE.immersive);
+  });
+
+  it('rises strictly across the five tiers', () => {
+    const bases = SESSION_INTENSITY_VALUES.map((tier) => COGNITIVE_LOAD_THRESHOLD_BASE[tier]);
+    const ascending = bases.every((base, index) => index === 0 || base > bases[index - 1]);
+    expect(ascending).toBe(true);
   });
 });
 

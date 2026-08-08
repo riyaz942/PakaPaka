@@ -77,8 +77,8 @@ SRS stages (both themes): apprentice `#E14D86` · guru `#8B5AD4` · master `#2F8
 
 ### Type, space, radius, elevation
 
-- **Fonts:** `Plus Jakarta Sans` (all UI text; 400–800) · `Zen Maru Gothic` (heroed JP characters; 500/700/900) · `Noto Sans JP` (readings, furigana, passages, chat; 400/500/700/900). Tailwind families: `font-ui`, `font-jp-round`, `font-jp`.
-- **Type scale:** Display 40/800 · Title 28/800 · Heading 20/700 · Body 16/400 · Label 14/600 · Kicker 12/700 uppercase tracked · Caption 12/500. Hero glyphs up to 132px Zen Maru 900.
+- **Fonts:** `Plus Jakarta Sans` (all UI text; 400–800) · `Zen Kaku Gothic New` (heroed JP characters; 500/700/900) · `Noto Sans JP` (readings, furigana, passages, chat; 400/500/700/900). Tailwind families: `font-ui`, `font-jp-hero`, `font-jp`.
+- **Type scale:** Display 40/800 · Title 28/800 · Heading 20/700 · Body 16/400 · Label 14/600 · Kicker 12/700 uppercase tracked · Caption 12/500. Hero glyphs up to 132px Zen Kaku Gothic New 900.
 - **Space:** 4pt grid; 16 = screen gutter.
 - **Radius:** sm 10 (chips/inputs) · md 14 (buttons/tiles) · lg 18 (cards/chat bubbles) · xl 24 (goal/hero cards) · full 999 (pills).
 - **Elevation:** e1 resting `0 1px 2px rgba(31,29,26,.06), 0 1px 3px rgba(31,29,26,.05)` · e2 raised `0 2px 8px …, 0 10px 28px …(.06)` · e3 overlay `0 10px 40px rgba(31,29,26,.14)`. Dark: `0 1px 2px rgba(0,0,0,.4)` / `0 6px 24px rgba(0,0,0,.5)` / `0 12px 44px rgba(0,0,0,.6)`. Primary CTA glow: `0 8px 20px rgba(21,158,119,.3)`.
@@ -379,6 +379,6 @@ Contrast figures below are WCAG 2.1 ratios; the gate is `npm run check-contrast`
 
 ### Font bundle size — accepted
 
-All 12 faces the spec documents ship bundled, as offline-first requires: Plus Jakarta Sans 400/500/600/700/800, Noto Sans JP 400/500/700/900, Zen Maru Gothic 500/700/900. That is **~32 MB** of the binary — Plus Jakarta Sans is 96 KB/weight, but Noto Sans JP runs 5.2 MB/weight and Zen Maru Gothic 3.6 MB/weight.
+All 12 faces the spec documents ship bundled, as offline-first requires: Plus Jakarta Sans 400/500/600/700/800, Noto Sans JP 400/500/700/900, Zen Kaku Gothic New 500/700/900. That is **~28 MB** of the binary — Plus Jakarta Sans is 96 KB/weight, but Noto Sans JP runs 5.2 MB/weight and Zen Kaku Gothic New 2.3 MB/weight.
 
 **Decision (2026-08-02): accepted, no trimming.** Later sessions should use any weight in this list freely rather than working around the size. Subsetting the JP faces to the curriculum's character set would recover roughly 90% of it via a build step (fonttools/pyftsubset in the curriculum pipeline) — worth revisiting only if store limits force it, not as a design constraint.

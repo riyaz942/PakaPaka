@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
@@ -73,7 +73,7 @@ export function OnboardingStep({
         <Text className="mt-[9px] text-body-sm font-ui text-muted">{description}</Text>
       ) : null}
 
-      <View className="mt-space-lg flex-1">{children}</View>
+      <ScrollView className="mt-space-lg flex-1">{children}</ScrollView>
 
       <View className="gap-space-sm">
         <Button

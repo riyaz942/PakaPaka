@@ -171,7 +171,7 @@ export function ReviewCard({
     ) : (
       <Text
         testID="review-prompt-glyph"
-        className="text-center font-jp-round-black text-primary"
+        className="text-center font-jp-hero-black text-primary"
         style={promptFontSize(display)}>
         {display}
       </Text>
