@@ -21,6 +21,7 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 | [10](10-grammar-hints-and-nearmiss.md) | Grammar hints & near-miss | P1 | Nudge→EN hints; incomplete = incorrect |
 | [12](12-android-playtest-round-2.md) | Android playtest round 2 | P0–P3 | Status bar unreadable; refresher opens "No Reviews Due"; prompt disappears on correct/typo; abrupt feedback; forecast detail; remove "separate apps" claim |
 | [13](13-vacation-mode.md) | Vacation mode | — | WaniKani-style pause; due dates shift forward on resume; closes goal-ring O4 |
+| [14](14-conjugated-form-linking-and-furigana-gesture.md) | Conjugated-form linking & furigana gesture | — | 来ます should link to 来る (hero note + conjugated-forms section); tap = details, long-press = hide/show furigana |
 
 ## Suggested sequencing
 

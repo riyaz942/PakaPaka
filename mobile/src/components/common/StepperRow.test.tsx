@@ -34,6 +34,28 @@ describe('StepperRow', () => {
     expect(onValueChange).not.toHaveBeenCalled();
   });
 
+  it('lands on the bound with a partial step rather than stranding short of it', () => {
+    const onValueChange = jest.fn();
+    render(
+      <StepperRow
+        label="Known items"
+        value={7}
+        step={5}
+        min={0}
+        max={10}
+        onValueChange={onValueChange}
+        testID="known"
+      />,
+    );
+
+    // 7 − 5 = 2 and 7 + 5 = 12 both overshoot, but 0 and 10 must stay reachable.
+    fireEvent.press(screen.getByTestId('known-decrement'));
+    expect(onValueChange).toHaveBeenCalledWith(2);
+
+    fireEvent.press(screen.getByTestId('known-increment'));
+    expect(onValueChange).toHaveBeenCalledWith(10);
+  });
+
   it('leaves the increment live when there is no upper limit', () => {
     render(<StepperRow label="Daily goal" value={999} onValueChange={jest.fn()} testID="goal" />);
     expect(screen.getByTestId('goal-increment').props.accessibilityState).toMatchObject({

@@ -1,19 +1,27 @@
 import { router } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import { OnboardingStep } from '@/components/common/OnboardingStep';
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
 import { LevelPathCard } from '@/components/onboarding/LevelPathCard';
-import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
+import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
+import { listLevelsWithContent } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { setOnboardingPath, setStartingJlptLevel } from '@/data/user/preferencesRepository';
 
 export default function WelcomeScreen() {
-  const { userDb } = useDatabase();
+  const { curriculumDb, userDb } = useDatabase();
   const [showLevelPicker, setShowLevelPicker] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<JLPTLevel | null>(null);
+
+  // Starting on a level with no authored content leaves the placement check
+  // nothing to ask about, so it is not offered.
+  const emptyLevels = useMemo(() => {
+    const withContent = new Set(listLevelsWithContent(curriculumDb));
+    return JLPT_LEVELS.filter((level) => !withContent.has(level));
+  }, [curriculumDb]);
 
   const handleBeginner = () => {
     setStartingJlptLevel(userDb, 'N5');
@@ -67,6 +75,7 @@ export default function WelcomeScreen() {
               <JlptLevelPicker
                 selectedLevel={selectedLevel}
                 onSelect={setSelectedLevel}
+                disabledLevels={emptyLevels}
                 testID="jlpt-picker"
               />
             ) : null}

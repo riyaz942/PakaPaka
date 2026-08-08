@@ -7,24 +7,40 @@ import { cn } from '@/utils/cn';
 type JlptLevelPickerProps = {
   selectedLevel: JLPTLevel | null;
   onSelect: (level: JLPTLevel) => void;
+  /** Distinguishes the group when a screen shows more than one picker. */
+  accessibilityLabel?: string;
+  /** Levels shown but not selectable — e.g. no curriculum content shipped yet. */
+  disabledLevels?: readonly JLPTLevel[];
   testID?: string;
 };
 
-export function JlptLevelPicker({ selectedLevel, onSelect, testID }: JlptLevelPickerProps) {
+export function JlptLevelPicker({
+  selectedLevel,
+  onSelect,
+  accessibilityLabel = 'JLPT level',
+  disabledLevels = [],
+  testID,
+}: JlptLevelPickerProps) {
   return (
     <View
       accessibilityRole="radiogroup"
-      accessibilityLabel="JLPT level"
+      accessibilityLabel={accessibilityLabel}
       testID={testID}
       className="mt-space-sm flex-row flex-wrap gap-space-sm">
       {JLPT_LEVELS.map((level) => {
         const isSelected = selectedLevel === level;
+        const isDisabled = disabledLevels.includes(level);
         return (
           <Pressable
             key={level}
             accessibilityRole="radio"
-            accessibilityState={{ selected: isSelected, checked: isSelected }}
+            accessibilityState={{
+              selected: isSelected,
+              checked: isSelected,
+              disabled: isDisabled,
+            }}
             accessibilityLabel={`JLPT ${level}`}
+            disabled={isDisabled}
             onPress={() => onSelect(level)}
             testID={`jlpt-level-${level}`}
             className={cn(
@@ -36,7 +52,7 @@ export function JlptLevelPicker({ selectedLevel, onSelect, testID }: JlptLevelPi
             <Text
               className={cn(
                 'text-label font-ui-bold',
-                isSelected ? 'text-brand-text' : 'text-primary',
+                isDisabled ? 'text-faint' : isSelected ? 'text-brand-text' : 'text-primary',
               )}>
               {level}
             </Text>

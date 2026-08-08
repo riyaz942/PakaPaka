@@ -1,6 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
+import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import type { RelatedItem } from '@/core/content/content.types';
 import { chunkForSqlVariables } from '@/data/sqlChunk';
 
@@ -124,6 +124,18 @@ export function countItemsByLevel(
   }
 
   return counts;
+}
+
+/**
+ * Levels that actually ship content, in curriculum order. Levels authored later
+ * simply appear here once their items exist — nothing to update by hand.
+ */
+export function listLevelsWithContent(db: SQLiteDatabase): JLPTLevel[] {
+  const rows = db.getAllSync<{ jlpt_level: JLPTLevel }>(
+    `SELECT DISTINCT jlpt_level FROM items`,
+  );
+  const present = new Set(rows.map((row) => row.jlpt_level));
+  return JLPT_LEVELS.filter((level) => present.has(level));
 }
 
 export function listItemsByLevelAndType(

@@ -3,7 +3,7 @@ import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
+import { __mockResetSqlite, __mockSetItems } from '../../../__mocks__/expo-sqlite';
 
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
@@ -57,6 +57,24 @@ describe('WelcomeScreen', () => {
     const db = await openDatabaseAsync('user.db');
     const result = runMigrations(db, [migration001Initial]);
     expect(result.ok).toBe(true);
+
+    // The screen doubles as the curriculum handle here; N5–N3 ship content,
+    // N2 and N1 do not.
+    __mockSetItems(
+      'user.db',
+      ['N5', 'N4', 'N3'].map((level, index) => ({
+        id: index + 1,
+        item_type: 'kanji',
+        jlpt_level: level,
+        slug: `slug-${index + 1}`,
+        primary_form: `form-${index + 1}`,
+        meaning: `meaning-${index + 1}`,
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: index + 1,
+      })),
+    );
+
     return db;
   }
 
@@ -100,5 +118,23 @@ describe('WelcomeScreen', () => {
     expect(getStartingJlptLevel(db)).toBe('N3');
     expect(getOnboardingPath(db)).toBe('manual');
     expect(mockPush).toHaveBeenCalledWith('/onboarding/intensity');
+  });
+
+  it('does not offer levels with no curriculum content', async () => {
+    const db = await createUserDb();
+    renderWelcomeScreen(db);
+
+    fireEvent.press(screen.getByTestId('path-intermediate'));
+
+    // Starting on an unauthored level leaves the placement check nothing to ask
+    // about, which used to mark the whole shipped curriculum known instead.
+    expect(screen.getByTestId('jlpt-level-N1').props.accessibilityState.disabled).toBe(true);
+    expect(screen.getByTestId('jlpt-level-N3').props.accessibilityState.disabled).toBe(false);
+
+    fireEvent.press(screen.getByTestId('jlpt-level-N1'));
+    fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+
+    expect(getStartingJlptLevel(db)).toBeNull();
+    expect(mockPush).not.toHaveBeenCalled();
   });
 });

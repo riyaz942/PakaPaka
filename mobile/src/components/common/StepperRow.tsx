@@ -19,8 +19,10 @@ type StepperRowProps = {
 
 /**
  * Settings stepper row: −/value/+ in a surface-elevated capsule. Each button is
- * a 44px tap target and disables itself at the bound rather than clamping
- * silently, so the limit is visible rather than felt.
+ * a 44px tap target and disables itself *at* the bound rather than clamping
+ * silently, so the limit is visible rather than felt. A final partial step still
+ * lands on the bound — otherwise a `step` that does not divide the range evenly
+ * leaves min and max unreachable.
  */
 export function StepperRow({
   label,
@@ -33,8 +35,8 @@ export function StepperRow({
   unitLabel,
   testID,
 }: StepperRowProps) {
-  const canDecrease = value - step >= min;
-  const canIncrease = max === undefined || value + step <= max;
+  const canDecrease = value > min;
+  const canIncrease = max === undefined || value < max;
   const spokenValue = unitLabel ? `${value} ${unitLabel}` : `${value}`;
 
   return (
@@ -52,7 +54,7 @@ export function StepperRow({
           accessibilityLabel={`Decrease ${label}`}
           accessibilityState={{ disabled: !canDecrease }}
           disabled={!canDecrease}
-          onPress={() => onValueChange(value - step)}
+          onPress={() => onValueChange(Math.max(min, value - step))}
           testID={testID ? `${testID}-decrement` : undefined}
           className="h-[44px] w-[44px] items-center justify-center">
           <Text className={cn('text-title font-ui-bold', canDecrease ? 'text-brand-text' : 'text-faint')}>
@@ -72,7 +74,7 @@ export function StepperRow({
           accessibilityLabel={`Increase ${label}`}
           accessibilityState={{ disabled: !canIncrease }}
           disabled={!canIncrease}
-          onPress={() => onValueChange(value + step)}
+          onPress={() => onValueChange(max === undefined ? value + step : Math.min(max, value + step))}
           testID={testID ? `${testID}-increment` : undefined}
           className="h-[44px] w-[44px] items-center justify-center">
           <Text className={cn('text-title font-ui-bold', canIncrease ? 'text-brand-text' : 'text-faint')}>

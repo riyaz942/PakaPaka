@@ -11,6 +11,7 @@ For detailed done / not-done status, see [working-history.md](./working-history.
 | [app-overview.md](./app-overview.md) | What the app is, the learner flow, and what each screen does |
 | [known-issues.md](./known-issues.md) | Confirmed open defects found outside their discovering story's scope |
 | [content/content-pipeline-plan.md](./content/content-pipeline-plan.md) | Master content-quality plan (grammar depth, mnemonics, attribution) |
+| [content/content-audit-plan.md](./content/content-audit-plan.md) | Whole-level content audit: four tiers (structural, dataset, AI semantic, human), checklist→check mapping, cost model |
 | [workflows/](./workflows/) | No-API generation runbooks: web-chat + browser automation prompts, and subagent automation prompts |
 | [design/redesign-v2/](./design/redesign-v2/README.md) | Design System v2 restyle — **done** (Sessions 1–8). Spec + decisions/deviations log. |
 | [design/backup-and-web-plan.md](./design/backup-and-web-plan.md) | Backup/restore (Part A) then web build + PWA (Part B) — planned, not started |

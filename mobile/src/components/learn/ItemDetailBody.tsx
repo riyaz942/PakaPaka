@@ -6,6 +6,7 @@ import { GrammarDetail } from '@/components/learn/GrammarDetail';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
 import { RadicalDetail } from '@/components/learn/RadicalDetail';
 import { StudyStatusBanner } from '@/components/learn/StudyStatusBanner';
+import { StudyStatusControl } from '@/components/learn/StudyStatusControl';
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
 import { useComponentParents } from '@/data/hooks/useComponentParents';
 import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
@@ -62,6 +63,8 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
         isLocked={isLocked}
         unmetPrerequisites={unmetPrerequisites}
       />
+
+      <StudyStatusControl itemId={item.id} />
 
       {item.itemType === 'radical' ? (
         <RadicalDetail item={item} related={related} lookAlikes={visuallySimilar} />
