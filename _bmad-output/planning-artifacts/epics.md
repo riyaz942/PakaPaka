@@ -473,7 +473,7 @@ Learners practise Japanese in a BYOK Conversation tab (chat default, optional on
 **Also:** NFR23–NFR30 · UX-DR21–24, UX-DR33 · platform floor + New Architecture + executorch · migrations `016+`
 
 ### Epic 6: Onboarding Personalization
-Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept.
+Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept; they also pick from a wider range of daily pace tiers instead of a single two-way switch.
 **FRs covered:** New scope, post-PRD — see brainstorm session `_bmad-output/brainstorming/brainstorm-intensity-and-placement-range-2026-08-06/.memlog.md`
 **Also:** Fixes a scoring bug in `resolvePlacementKnownIds` found while planning this epic (see Story 6.1)
 
@@ -897,7 +897,7 @@ So that I can speak Japanese in full-screen PTT mode without silent cloud fallba
 
 ## Epic 6: Onboarding Personalization
 
-Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept.
+Learners choose how much of the curriculum the placement quiz checks and can hand-adjust its guess afterward, instead of one fixed level and an all-or-nothing accept; they also pick from a wider range of daily pace tiers instead of a single two-way switch.
 
 ### Story 6.1: Placement Quiz Range & Cutoff Flexibility
 
@@ -960,6 +960,56 @@ So that my starting point reflects what I actually know instead of being locked 
 **Testing:** `core/placement/placementEngine.test.ts` and `app/onboarding/placement.test.tsx` exist today and must be extended, not replaced — study their existing fixtures (`kanji(id, form, sortOrder, level)` helper in `placement.test.tsx`) before adding cases. No test file currently exists for `placementRepository.ts`; add one alongside the signature change.
 
 **Source:** brainstorm session `_bmad-output/brainstorming/brainstorm-intensity-and-placement-range-2026-08-06/.memlog.md` — range-slider approach was chosen over a fix-only approach, then the per-type/per-level ratio fix was folded into this same story by the user.
+
+### Story 6.2: Five-Tier Daily Pace Scale
+
+As a learner setting my daily pace,
+I want to choose from a wider range of daily study intensities instead of just two,
+So that my pace matches how much time I actually have, without over- or under-shooting the two extremes.
+
+**Acceptance Criteria:**
+
+**Given** the onboarding pace screen (`onboarding/intensity.tsx`) or the Settings pace row
+**When** the picker renders
+**Then** it presents five tiers instead of two: **Light** (~5 min/day, 2–3 new items), **Relaxed** (~15 min/day, 5 new items), **Steady** (~22 min/day, 7 new items), **Intense** (~30 min/day, 10 new items), **Immersive** (~45 min/day, 15 new items)
+**And** Relaxed and Intense keep exactly their existing minute values (15 / 30) — an existing user's already-stored preference must continue to mean exactly what it did before this story
+**And** the picker becomes a single-column vertical list (`accessibilityRole="radiogroup"`, each row `radio`, `accessibilityState={{ selected }}`) rather than today's two-card side-by-side row — five cards no longer fit `flex-row`
+**And** touch targets stay ≥44×44pt; the selected row keeps the existing non-color-only visible border/focus treatment
+
+**Given** `SessionIntensity` is defined twice today (`data/user/sessionIntensity.types.ts` and, separately, `core/cognitive-load/cognitiveLoad.types.ts`)
+**When** the type widens to 5 literals
+**Then** both definitions move in lockstep (or are consolidated into one canonical export — dev's call), and every `Record<SessionIntensity, number>` map is extended to all 5 keys: `SESSION_INTENSITY_MINUTES` and `COGNITIVE_LOAD_THRESHOLD_BASE` (`config/constants.ts`), `LESSON_SIZE_BY_INTENSITY` (`core/lesson/lessonPlanner.ts`)
+**And** a new `SESSION_INTENSITY_NEW_ITEMS: Record<SessionIntensity, number>` map is added for the "2–3 / 5 / 7 / 10 / 15 new items" figures shown per tier — no existing map covers this today (`lessonAllowance.ts` derives its batch size from `LESSON_SIZE_BY_INTENSITY` alone)
+**And** no map is left with only 2 of 5 keys — TypeScript's exhaustive `Record<SessionIntensity, number>` check is the safety net here, not extra scope
+
+**Given** a learner who already has `session_intensity = 'relaxed'` or `'intense'` stored in `user.db` from before this story shipped
+**When** the app updates
+**Then** their stored value is still accepted by `isSessionIntensity` and still resolves to the same minutes / lesson size / cognitive-load threshold as before — no migration, no forced re-pick
+
+**Given** the Settings pace row and the onboarding `intensity.tsx` screen
+**When** either renders
+**Then** both use the same widened `SessionIntensityPicker` component with all 5 tiers — one option list, not two maintained copies
+
+**Explicitly out of scope for this story:**
+
+- **The placement-based recommendation line** from the brainstorm artifact ("Based on your placement check, we suggest Steady"). Today's onboarding order is `intensity` → `placement`, and placement is skipped entirely on the beginner and import paths — pace is chosen *before* any placement data exists for the one path (manual) that even reaches placement, so there is nothing to recommend from yet at the point this screen renders. Wiring this up means reordering onboarding for the manual path specifically, which is a separate, bigger decision — follow-on story if wanted.
+- **Re-offering the pace screen after the first real lesson** (the artifact's "also queued" idea) — same reasoning, separate follow-on.
+
+## Dev Notes — Story 6.2
+
+**Files this story touches (read fully before changing, per project convention):**
+- `mobile/src/data/user/sessionIntensity.types.ts` (UPDATE) — widen `SessionIntensity` + `SESSION_INTENSITY_VALUES` to 5 literals: `'light' | 'relaxed' | 'steady' | 'intense' | 'immersive'`.
+- `mobile/src/core/cognitive-load/cognitiveLoad.types.ts` (UPDATE or CONSOLIDATE) — duplicate `SessionIntensity` type; recommend re-exporting the canonical `data/user` type from here instead of maintaining two literal unions in sync by hand, now that there's a reason to touch both.
+- `mobile/src/config/constants.ts` (UPDATE) — widen `SESSION_INTENSITY_MINUTES` and `COGNITIVE_LOAD_THRESHOLD_BASE` to 5 keys; add the new `SESSION_INTENSITY_NEW_ITEMS` map.
+- `mobile/src/core/lesson/lessonPlanner.ts`, `mobile/src/core/lesson/lessonAllowance.ts` (UPDATE) — widen `LESSON_SIZE_BY_INTENSITY`; existing `?? 'relaxed'` fallback pattern is unchanged.
+- `mobile/src/core/cognitive-load/thresholdCalculator.ts` (UPDATE) — `initialGoalForIntensity` consumes the widened `COGNITIVE_LOAD_THRESHOLD_BASE`; confirm no exhaustive switch needs a 5th branch added separately.
+- `mobile/src/components/onboarding/SessionIntensityPicker.tsx` (UPDATE) — `INTENSITY_OPTIONS` grows to 5 entries; container switches from `flex-row` to `flex-col`; `ChoiceCard` is reused per row as-is (already accepts `className` externally, confirmed no internal `flex-row` assumption).
+- `SessionIntensityPicker.test.tsx`, `mobile/src/app/onboarding/intensity.test.tsx`, `sessionIntensity.types.test.ts`, `preferencesRepository.test.ts` (UPDATE) — extend fixtures/boundaries for 5 values.
+- `mobile/src/app/(tabs)/settings.tsx` — no logic change expected; already renders `SessionIntensityPicker` generically against whatever options it's given.
+
+**Naming decision:** the artifact's 5 tiers are Light / Relaxed / Steady / Intense / Immersive. Relaxed and Intense are the two existing literal values and must keep exactly their current minute figures (15/30) so already-stored preferences don't silently change meaning underneath existing users.
+
+**Source:** brainstorm session `_bmad-output/brainstorming/brainstorm-intensity-and-placement-range-2026-08-06/.memlog.md`; visual reference: Claude artifact `12098d14-c0ca-4d11-82c0-3ed2a08a1bf9` ("From a switch to a scale") — "Pace: five stops, not two" section. The recommendation-line and re-offer-after-first-lesson ideas from the same artifact are explicitly deferred (see Acceptance Criteria above).
 
 ## Epic 7: Just-In-Time Contextual Guidance
 
