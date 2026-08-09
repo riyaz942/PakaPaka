@@ -7,6 +7,7 @@ import { Button } from '@/components/common/Button';
 import { ContentTypeBadge } from '@/components/common/ContentTypeBadge';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
+import { conjugatedFormNote, type WordInflection } from '@/core/content/inflection';
 import type { CurriculumItemDetail } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
@@ -17,6 +18,8 @@ type PassageWordDetailSheetProps = {
   item: CurriculumItemDetail | null;
   /** Surface form that was pressed, shown while the item is still resolving. */
   surface: string | null;
+  /** Taught inflection of the pressed surface, when it was a conjugation. */
+  inflection?: WordInflection | null;
   visible: boolean;
   onDismiss: () => void;
 };
@@ -31,10 +34,16 @@ type PassageWordDetailSheetProps = {
 export function PassageWordDetailSheet({
   item,
   surface,
+  inflection = null,
   visible,
   onDismiss,
 }: PassageWordDetailSheetProps) {
   const { modeForItem, knownKanji } = useFuriganaPreference();
+  // The sheet heroes the dictionary form, so a conjugated tap needs the bridge
+  // back to what the learner actually pressed (14.1).
+  const conjugatedNote = item
+    ? conjugatedFormNote(surface, item.primaryForm, inflection)
+    : null;
   const isVocabulary = item?.itemType === 'vocabulary';
   // Tier 1 only for vocabulary: a defined `isKnownWord` short-circuits Tier 2,
   // so kanji/radical/grammar must omit the prop and use knownKanji instead.
@@ -68,6 +77,14 @@ export function PassageWordDetailSheet({
               />
               <ContentTypeBadge itemType={item.itemType} />
             </View>
+
+            {conjugatedNote ? (
+              <Text
+                testID="passage-word-detail-conjugated-note"
+                className="text-body-sm font-ui text-secondary">
+                {conjugatedNote}
+              </Text>
+            ) : null}
 
             <Text className="text-body-lg font-ui-semibold text-primary">{item.meaning}</Text>
 

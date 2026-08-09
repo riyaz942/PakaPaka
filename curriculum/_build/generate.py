@@ -29,6 +29,7 @@ sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
 from generate_content import frontmatter as frontmatter_lib  # noqa: E402
+from generate_content import spans as spans_lib  # noqa: E402
 from visually_similar import build_similar_map  # noqa: E402
 
 #: Rev 1 look-alike pairs (R1.3), emitted as `visually_similar_slugs` on
@@ -104,7 +105,20 @@ def _merge_sidecar_meta(item, meta):
         existing["review_status"] = min(statuses, key=lambda s: order.get(s, 0))
 
 
-def _inline_examples(item, entry, known_readings, vocab_slugs, label, errors):
+def _example_word_spans(japanese, vocabulary_slugs, vocab_forms):
+    """Tappable occurrences of the sentence's linked vocabulary (feedback 14.1a).
+
+    Derived, never authored: dictionary forms plus the taught inflections of the
+    same linked words (来ます for 来る). Nothing positional was stored for
+    examples before — the app located a link by the first literal `primary_form`
+    match, which conjugated surfaces never hit."""
+    forms_by_slug = {
+        slug: vocab_forms[slug] for slug in vocabulary_slugs if slug in vocab_forms
+    }
+    return spans_lib.derive_spans(japanese, forms_by_slug)
+
+
+def _inline_examples(item, entry, known_readings, vocab_forms, label, errors):
     """Inlines a 2c example-sentence sidecar entry into a kanji/vocab item.
     Furigana comes from the tokenizer at build time (never the LLM); the 2c
     gate already rejected drafts the tokenizer can't annotate, so a failure
@@ -112,7 +126,7 @@ def _inline_examples(item, entry, known_readings, vocab_slugs, label, errors):
     sentences = []
     for j, s in enumerate(entry.get("example_sentences", [])):
         for vs in s.get("vocabulary_slugs", []):
-            if vs not in vocab_slugs:
+            if vs not in vocab_forms:
                 errors.append(f"{label} example {j} references unknown vocab '{vs}'")
         sentence = {
             "japanese": s["japanese"],
@@ -121,6 +135,11 @@ def _inline_examples(item, entry, known_readings, vocab_slugs, label, errors):
         }
         if s.get("vocabulary_slugs"):
             sentence["vocabulary_slugs"] = s["vocabulary_slugs"]
+            word_spans = _example_word_spans(
+                s["japanese"], s["vocabulary_slugs"], vocab_forms
+            )
+            if word_spans:
+                sentence["word_spans"] = word_spans
         furigana = furigana_lib.annotate_sentence(s["japanese"], known_readings)
         if furigana:
             sentence["furigana"] = furigana
@@ -183,7 +202,7 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
 
 
 def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=None,
-                       vocab_slugs=None):
+                       vocab_forms=None):
     mnemonics = _load_sidecar(KANJI_MNEMONICS_DIR, slug_prefix)
     examples = _load_sidecar(KANJI_EXAMPLES_DIR, slug_prefix)
     errors = []
@@ -231,7 +250,7 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=No
                 item["_meta"] = meta
         example_entry = examples.get(slug)
         if example_entry:
-            _inline_examples(item, example_entry, known_readings, vocab_slugs or set(),
+            _inline_examples(item, example_entry, known_readings, vocab_forms or {},
                              f"kanji {slug}", errors)
         items.append(item)
     if errors:
@@ -240,10 +259,11 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=No
 
 
 def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
-                       extra_vocab_slugs=None):
+                       extra_vocab_forms=None):
     mnemonics = _load_sidecar(VOCAB_MNEMONICS_DIR, jlpt_level.lower())
     examples = _load_sidecar(VOCAB_EXAMPLES_DIR, jlpt_level.lower())
-    vocab_slugs = {v["slug"] for v in vocab_entries} | set(extra_vocab_slugs or ())
+    vocab_forms = {**(extra_vocab_forms or {}),
+                   **{v["slug"]: v["form"] for v in vocab_entries}}
     errors = []
     items = []
     for i, v in enumerate(vocab_entries, start=1):
@@ -273,7 +293,7 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
             _merge_sidecar_meta(item, _sidecar_meta(mnemonic))
         example_entry = examples.get(v["slug"])
         if example_entry:
-            _inline_examples(item, example_entry, known_readings, vocab_slugs,
+            _inline_examples(item, example_entry, known_readings, vocab_forms,
                              f"vocabulary {v['slug']}", errors)
         items.append(item)
     if errors:
@@ -291,10 +311,10 @@ def build_n5_radicals():
     return _build_radicals_level("N5", "n5", N5_RADICALS)
 
 
-def build_n5_kanji(known_readings=None, vocab_slugs=None):
+def build_n5_kanji(known_readings=None, vocab_forms=None):
     from n5_kanji import N5_KANJI
 
-    return _build_kanji_level("N5", "n5", N5_KANJI, known_readings, vocab_slugs)
+    return _build_kanji_level("N5", "n5", N5_KANJI, known_readings, vocab_forms)
 
 
 def build_n5_vocab(known_readings=None):
@@ -384,14 +404,14 @@ def _load_lesson(level_slug, slug, known_readings):
     return meta, _annotate_lesson_markdown(body, known_readings, label)
 
 
-def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_readings=None):
+def _build_grammar_level(jlpt_level, grammar_entries, vocab_forms, known_readings=None):
     errors = []
     items = []
     for i, g in enumerate(grammar_entries, start=1):
         example_sentences = []
         for j, (jp, en, vslugs) in enumerate(g["examples"]):
             for vs in vslugs:
-                if vs not in vocab_slugs:
+                if vs not in vocab_forms:
                     errors.append(f"grammar {g['slug']} example {j} references unknown vocab '{vs}'")
             sentence = {
                 "japanese": jp,
@@ -402,9 +422,12 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_reading
             sentence_furigana = furigana_lib.annotate_sentence(jp, known_readings)
             if sentence_furigana:
                 sentence["furigana"] = sentence_furigana
+            word_spans = _example_word_spans(jp, vslugs, vocab_forms)
+            if word_spans:
+                sentence["word_spans"] = word_spans
             example_sentences.append(sentence)
         for vs in g["vocabulary_slugs"]:
-            if vs not in vocab_slugs:
+            if vs not in vocab_forms:
                 errors.append(f"grammar {g['slug']} vocabulary_slugs references unknown vocab '{vs}'")
         item = {
             "slug": g["slug"],
@@ -452,10 +475,10 @@ def _build_grammar_level(jlpt_level, grammar_entries, vocab_slugs, known_reading
     return {"jlpt_level": jlpt_level, "items": items}
 
 
-def build_n5_grammar(vocab_slugs, known_readings=None):
+def build_n5_grammar(vocab_forms, known_readings=None):
     from n5_grammar import N5_GRAMMAR
 
-    return _build_grammar_level("N5", N5_GRAMMAR, vocab_slugs, known_readings)
+    return _build_grammar_level("N5", N5_GRAMMAR, vocab_forms, known_readings)
 
 
 #: Passage fields authored in the n5/n4 readings datasets and copied through
@@ -476,7 +499,26 @@ _PASSAGE_AUTHORED_KEYS = (
 )
 
 
-def _build_readings_level(jlpt_level, reading_entries, known_readings=None):
+def _passage_word_spans(body, authored_spans, vocab_forms):
+    """The authored dictionary spans plus the taught inflections of the same
+    words (feedback 14.1a).
+
+    The dictionary layer is the shipped, reviewed data and wins every overlap,
+    and only words it already links are candidates — so a passage's
+    `vocabulary_slugs` (and with it the ≥90% Guru+ unlock bar) is untouched.
+    Re-running over a set that already carries inflected spans is a no-op."""
+    forms_by_slug = {
+        span["vocabulary_slug"]: vocab_forms[span["vocabulary_slug"]]
+        for span in authored_spans
+        if "inflection" not in span and span["vocabulary_slug"] in vocab_forms
+    }
+    return spans_lib.merge_spans(
+        authored_spans, spans_lib.build_inflected_spans(body, forms_by_slug)
+    )
+
+
+def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
+                          vocab_forms=None):
     passages = []
     for i, p in enumerate(reading_entries, start=1):
         questions = []
@@ -502,14 +544,18 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None):
         for key in _PASSAGE_AUTHORED_KEYS:
             if key in p:
                 passage[key] = p[key]
+        if passage.get("word_spans"):
+            passage["word_spans"] = _passage_word_spans(
+                p["body"], passage["word_spans"], vocab_forms or {}
+            )
         passages.append(passage)
     return {"jlpt_level": jlpt_level, "passages": passages}
 
 
-def build_n5_readings(known_readings=None):
+def build_n5_readings(known_readings=None, vocab_forms=None):
     from n5_readings import N5_READINGS
 
-    return _build_readings_level("N5", N5_READINGS, known_readings)
+    return _build_readings_level("N5", N5_READINGS, known_readings, vocab_forms)
 
 
 # ---------------------------------------------------------------------------
@@ -522,28 +568,28 @@ def build_n4_radicals():
     return _build_radicals_level("N4", "n4", N4_RADICALS)
 
 
-def build_n4_kanji(known_readings=None, vocab_slugs=None):
+def build_n4_kanji(known_readings=None, vocab_forms=None):
     from n4_kanji import N4_KANJI
 
-    return _build_kanji_level("N4", "n4", N4_KANJI, known_readings, vocab_slugs)
+    return _build_kanji_level("N4", "n4", N4_KANJI, known_readings, vocab_forms)
 
 
-def build_n4_vocab(known_readings=None, extra_vocab_slugs=None):
+def build_n4_vocab(known_readings=None, extra_vocab_forms=None):
     from n4_vocab import N4_VOCAB
 
-    return _build_vocab_level("N4", N4_VOCAB, known_readings, extra_vocab_slugs)
+    return _build_vocab_level("N4", N4_VOCAB, known_readings, extra_vocab_forms)
 
 
-def build_n4_grammar(vocab_slugs, known_readings=None):
+def build_n4_grammar(vocab_forms, known_readings=None):
     from n4_grammar import N4_GRAMMAR
 
-    return _build_grammar_level("N4", N4_GRAMMAR, vocab_slugs, known_readings)
+    return _build_grammar_level("N4", N4_GRAMMAR, vocab_forms, known_readings)
 
 
-def build_n4_readings(known_readings=None):
+def build_n4_readings(known_readings=None, vocab_forms=None):
     from n4_readings import N4_READINGS
 
-    return _build_readings_level("N4", N4_READINGS, known_readings)
+    return _build_readings_level("N4", N4_READINGS, known_readings, vocab_forms)
 
 
 # ---------------------------------------------------------------------------
@@ -557,40 +603,45 @@ def generate_level(level):
 
         known_readings = _vocab_reading_map(N5_VOCAB)
         vocab = build_n5_vocab(known_readings)
-        vocab_slugs = {v["slug"] for v in vocab["items"]}
+        # {slug: primary_form}: the cross-reference check *and* the span
+        # derivation, which needs the dictionary form to recognise inflections.
+        vocab_forms = {v["slug"]: v["primary_form"] for v in vocab["items"]}
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n5.json"), build_n5_radicals())
         write_json(os.path.join(CURRICULUM_DIR, "kanji", "n5.json"),
-                   build_n5_kanji(known_readings, vocab_slugs))
+                   build_n5_kanji(known_readings, vocab_forms))
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n5.json"), vocab)
         write_json(
             os.path.join(CURRICULUM_DIR, "grammar", "n5.json"),
-            build_n5_grammar(vocab_slugs, known_readings),
+            build_n5_grammar(vocab_forms, known_readings),
         )
         write_json(
             os.path.join(CURRICULUM_DIR, "readings", "n5.json"),
-            build_n5_readings(known_readings),
+            build_n5_readings(known_readings, vocab_forms),
         )
     elif level == "n4":
         from n4_vocab import N4_VOCAB
         from n5_vocab import N5_VOCAB
 
         known_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
-        n5_vocab_slugs = {v["slug"] for v in N5_VOCAB}
+        n5_vocab_forms = {v["slug"]: v["form"] for v in N5_VOCAB}
         # N4 is additive on N5: examples may reinforce previously learned N5
         # vocabulary, so validate against the combined slug set.
-        vocab = build_n4_vocab(known_readings, n5_vocab_slugs)
-        vocab_slugs = {v["slug"] for v in vocab["items"]} | n5_vocab_slugs
+        vocab = build_n4_vocab(known_readings, n5_vocab_forms)
+        vocab_forms = {
+            **n5_vocab_forms,
+            **{v["slug"]: v["primary_form"] for v in vocab["items"]},
+        }
         write_json(os.path.join(CURRICULUM_DIR, "radicals", "n4.json"), build_n4_radicals())
         write_json(os.path.join(CURRICULUM_DIR, "kanji", "n4.json"),
-                   build_n4_kanji(known_readings, vocab_slugs))
+                   build_n4_kanji(known_readings, vocab_forms))
         write_json(os.path.join(CURRICULUM_DIR, "vocabulary", "n4.json"), vocab)
         write_json(
             os.path.join(CURRICULUM_DIR, "grammar", "n4.json"),
-            build_n4_grammar(vocab_slugs, known_readings),
+            build_n4_grammar(vocab_forms, known_readings),
         )
         write_json(
             os.path.join(CURRICULUM_DIR, "readings", "n4.json"),
-            build_n4_readings(known_readings),
+            build_n4_readings(known_readings, vocab_forms),
         )
     else:
         raise ValueError(f"unknown level {level}")

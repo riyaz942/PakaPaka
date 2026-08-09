@@ -2,6 +2,8 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import type { RelatedItem } from '@/core/content/content.types';
+import { WORD_INFLECTIONS, type WordInflection } from '@/core/content/inflection';
+import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 import { chunkForSqlVariables } from '@/data/sqlChunk';
 
 export type ItemType = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
@@ -432,6 +434,12 @@ export type ExampleSentence = {
   sortOrder: number;
   /** Authored vocab links (Plan 11.6); empty when the sentence has none. */
   vocabularyLinks: ExampleSentenceVocabLink[];
+  /**
+   * Compile-time word spans over `japanese` (14.1a) — every occurrence of a
+   * linked word, dictionary form and taught inflection alike, in body order.
+   * Empty when the sentence has none.
+   */
+  spans: PassageWordSpan[];
 };
 
 export type GrammarVocabLink = {
@@ -500,9 +508,18 @@ type ExampleSentenceVocabRow = {
   primary_form: string;
 };
 
+type ExampleSentenceSpanRow = {
+  sentence_id: number | string;
+  item_id: number | string;
+  start_offset: number;
+  end_offset: number;
+  inflection: WordInflection | null;
+};
+
 function mapExampleSentenceRow(
   row: ExampleSentenceRow,
   vocabularyLinks: ExampleSentenceVocabLink[],
+  spans: PassageWordSpan[],
 ): ExampleSentence {
   return {
     id: String(row.id),
@@ -511,6 +528,7 @@ function mapExampleSentenceRow(
     english: row.english,
     sortOrder: row.sort_order,
     vocabularyLinks,
+    spans,
   };
 }
 
@@ -864,8 +882,84 @@ export function getExampleSentences(
     // Pre-Plan-11.6 DB without the example_sentence_vocab table.
   }
 
+  const spansBySentence = new Map<string, PassageWordSpan[]>();
+  try {
+    const placeholders = rows.map(() => '?').join(', ');
+    const spanRows = db.getAllSync<ExampleSentenceSpanRow>(
+      `SELECT sentence_id, item_id, start_offset, end_offset, inflection
+       FROM example_sentence_spans
+       WHERE sentence_id IN (${placeholders})
+       ORDER BY sort_order ASC`,
+      ...rows.map((row) => Number(row.id)),
+    );
+    for (const span of spanRows) {
+      const sentenceId = String(span.sentence_id);
+      const list = spansBySentence.get(sentenceId) ?? [];
+      list.push({
+        vocabularyItemId: String(span.item_id),
+        startOffset: span.start_offset,
+        endOffset: span.end_offset,
+        inflection: span.inflection ?? null,
+      });
+      spansBySentence.set(sentenceId, list);
+    }
+  } catch {
+    // Pre-14.1a DB without the example_sentence_spans table: the sentence
+    // renders as plain text until the curriculum update lands.
+  }
+
   return rows.map((row) =>
-    mapExampleSentenceRow(row, linksBySentence.get(String(row.id)) ?? []),
+    mapExampleSentenceRow(
+      row,
+      linksBySentence.get(String(row.id)) ?? [],
+      spansBySentence.get(String(row.id)) ?? [],
+    ),
+  );
+}
+
+export type TaughtConjugatedForm = {
+  inflection: WordInflection;
+  /** One representative surface, sliced from the sentence it occurs in. */
+  surface: string;
+};
+
+/**
+ * The taught inflections of a word that the curriculum actually shows it in
+ * (14.1) — one representative surface per category, in teaching order.
+ *
+ * Deliberately not a generated paradigm: the list is what the learner will
+ * meet in the examples, so a word with no conjugated usage lists nothing.
+ */
+export function getTaughtConjugatedForms(
+  db: SQLiteDatabase,
+  itemId: string,
+): TaughtConjugatedForm[] {
+  let rows: (ExampleSentenceSpanRow & { japanese: string })[];
+  try {
+    rows = db.getAllSync<ExampleSentenceSpanRow & { japanese: string }>(
+      `SELECT sp.inflection, sp.start_offset, sp.end_offset, es.japanese
+       FROM example_sentence_spans sp
+       JOIN example_sentences es ON es.id = sp.sentence_id
+       WHERE sp.item_id = ? AND sp.inflection IS NOT NULL
+       ORDER BY sp.sentence_id ASC, sp.sort_order ASC`,
+      Number(itemId),
+    );
+  } catch {
+    // Pre-14.1a DB without the example_sentence_spans table.
+    return [];
+  }
+
+  const surfaceByInflection = new Map<WordInflection, string>();
+  for (const row of rows) {
+    if (!row.inflection || surfaceByInflection.has(row.inflection)) continue;
+    const surface = row.japanese.slice(row.start_offset, row.end_offset);
+    if (surface) {
+      surfaceByInflection.set(row.inflection, surface);
+    }
+  }
+
+  return WORD_INFLECTIONS.filter((inflection) => surfaceByInflection.has(inflection)).map(
+    (inflection) => ({ inflection, surface: surfaceByInflection.get(inflection) as string }),
   );
 }
 

@@ -7,6 +7,7 @@ import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ItemDetailBody } from '@/components/learn/ItemDetailBody';
 import { ItemDetailHeaderBar } from '@/components/learn/ItemDetailHeaderBar';
 import { MaxContentWidth } from '@/constants/theme';
+import { parseInflection } from '@/core/content/inflection';
 
 /**
  * Item detail body, shared by the Browse item route (`/browse/item/[id]`).
@@ -16,7 +17,9 @@ import { MaxContentWidth } from '@/constants/theme';
  * Cross-references default to `/browse/item` links here (see `ItemLinkContext`).
  */
 export function ItemDetailScreen() {
-  const params = useLocalSearchParams<{ id: string }>();
+  // `surface`/`inflection` are set when the learner tapped a conjugated span
+  // (14.1): the route is the base word's, the note names the form they saw.
+  const params = useLocalSearchParams<{ id: string; surface?: string; inflection?: string }>();
   const itemId = params.id ?? null;
 
   return (
@@ -41,7 +44,11 @@ export function ItemDetailScreen() {
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator
             testID="learn-item-scroll">
-            <ItemDetailBody itemId={itemId} />
+            <ItemDetailBody
+              itemId={itemId}
+              surface={params.surface ?? null}
+              inflection={parseInflection(params.inflection)}
+            />
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>

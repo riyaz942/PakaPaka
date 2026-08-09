@@ -853,6 +853,37 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
       });
   }
 
+  if (/FROM example_sentence_spans/i.test(trimmed)) {
+    const spans = [...(state.tables.get('example_sentence_spans') ?? [])];
+
+    // Taught conjugated forms for one item (14.1), sliced from its sentence.
+    if (/JOIN example_sentences/i.test(trimmed)) {
+      const sentences = state.tables.get('example_sentences') ?? [];
+      return spans
+        .filter(
+          (span) => Number(span.item_id) === Number(params[0]) && span.inflection != null,
+        )
+        .sort(
+          (left, right) =>
+            Number(left.sentence_id) - Number(right.sentence_id) ||
+            Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0),
+        )
+        .map((span) => ({
+          inflection: span.inflection,
+          start_offset: span.start_offset,
+          end_offset: span.end_offset,
+          japanese:
+            sentences.find((sentence) => Number(sentence.id) === Number(span.sentence_id))
+              ?.japanese ?? '',
+        }));
+    }
+
+    const spanSentenceIds = new Set(params.map((value) => Number(value)));
+    return spans
+      .filter((span) => spanSentenceIds.has(Number(span.sentence_id)))
+      .sort((left, right) => Number(left.sort_order ?? 0) - Number(right.sort_order ?? 0));
+  }
+
   if (/FROM example_sentence_vocab/i.test(trimmed) && /JOIN items/i.test(trimmed)) {
     const links = [...(state.tables.get('example_sentence_vocab') ?? [])];
     const items = state.tables.get('items') ?? [];
@@ -1428,6 +1459,11 @@ export function __mockSetExampleSentences(databaseName: string, rows: Row[]) {
 export function __mockSetExampleSentenceVocab(databaseName: string, rows: Row[]) {
   const state = getDatabaseState(databaseName);
   state.tables.set('example_sentence_vocab', rows.map((row) => ({ ...row })));
+}
+
+export function __mockSetExampleSentenceSpans(databaseName: string, rows: Row[]) {
+  const state = getDatabaseState(databaseName);
+  state.tables.set('example_sentence_spans', rows.map((row) => ({ ...row })));
 }
 
 export function __mockSetGrammarVocabLinks(databaseName: string, rows: Row[]) {

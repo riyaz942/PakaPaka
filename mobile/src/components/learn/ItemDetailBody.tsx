@@ -8,6 +8,7 @@ import { RadicalDetail } from '@/components/learn/RadicalDetail';
 import { StudyStatusBanner } from '@/components/learn/StudyStatusBanner';
 import { StudyStatusControl } from '@/components/learn/StudyStatusControl';
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
+import type { WordInflection } from '@/core/content/inflection';
 import { useComponentParents } from '@/data/hooks/useComponentParents';
 import { useItemDependencyStatus } from '@/data/hooks/useItemDependencyStatus';
 import { useItemDetail } from '@/data/hooks/useItemDetail';
@@ -16,6 +17,13 @@ import { useRelatedItems } from '@/data/hooks/useRelatedItems';
 
 type ItemDetailBodyProps = {
   itemId: string | null;
+  /**
+   * The conjugated surface the learner tapped to get here, and which taught
+   * form it was (14.1) — set by the route params when they arrived from an
+   * inflected span rather than the word's dictionary form.
+   */
+  surface?: string | null;
+  inflection?: WordInflection | null;
 };
 
 /**
@@ -26,7 +34,11 @@ type ItemDetailBodyProps = {
  * always fully visible. It is never a lesson entry point — the lesson
  * composition is `components/lesson/LessonItemView` (D-DET-1).
  */
-export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
+export function ItemDetailBody({
+  itemId,
+  surface = null,
+  inflection = null,
+}: ItemDetailBodyProps) {
   const {
     item,
     kanjiReadings,
@@ -86,6 +98,8 @@ export function ItemDetailBody({ itemId }: ItemDetailBodyProps) {
           grammarVocabLinks={grammarVocabLinks}
           parents={componentParents}
           related={related}
+          surface={surface}
+          inflection={inflection}
         />
       ) : item.itemType === 'grammar' ? (
         <GrammarDetail

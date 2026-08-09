@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
+import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -37,7 +38,10 @@ export function FuriganaOverrideControl({ itemId }: { itemId: string }) {
 
   return (
     <View className="mt-space-md" testID="furigana-override-control">
-      <SectionHeading label="Furigana for this word" />
+      <View className="flex-row items-center gap-space-xs">
+        <SectionHeading label="Furigana for this word" />
+        <GuidanceInfoButton cardId="furigana-auto-hide" />
+      </View>
       <SegmentedPill
         className="mt-space-sm"
         expand

@@ -16,7 +16,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
+import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { DailyThresholdNotice } from '@/components/engagement';
+import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import {
   GrammarMcOptions,
   ReviewCard,
@@ -37,6 +39,7 @@ import {
 import type { PromptType } from '@/core/srs/promptResolver';
 import type { ReviewGrade, StageTransition } from '@/core/srs/srs.types';
 import { useAnswerCollision } from '@/data/hooks/useAnswerCollision';
+import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useReviewRevealDetails } from '@/data/hooks/useReviewRevealDetails';
 import { useReviewSession, type AddSynonymOutcome } from '@/providers/ReviewSessionProvider';
@@ -93,6 +96,37 @@ export default function ReviewScreen() {
   const [incompleteAnswer, setIncompleteAnswer] = useState(false);
   // The submitted answer matched a different item's accepted answer (FR86).
   const [answerCollision, setAnswerCollision] = useState<AnswerCollision | null>(null);
+
+  // Contextual guidance (Epic 7). Both must be called unconditionally, above the
+  // loading/error/empty/complete early returns below — and after `cardState`,
+  // which the first one keys on. Each fires at most once per mounted session.
+  const firstMissCard = useGuidanceCard('first-miss', cardState === 'incorrect');
+  // Suppressed on the incorrect reveal — first-miss owns that moment, and two
+  // stacked notices would duplicate testIDs.
+  const spacedRepetitionCard = useGuidanceCard(
+    'spaced-repetition',
+    (currentItem?.srsState.reps ?? 0) >= 1 && cardState !== 'incorrect',
+  );
+  // Reps stay >= 1 across consecutive repeat items, so `active` never gets the
+  // false edge that would hide this notice on advance. Track the item it fired
+  // for and gate the render on it — the notice can never sit over the next
+  // prompt — and dismiss once the session has moved on.
+  const currentItemId = currentItem?.itemId ?? null;
+  const { visible: srCardVisible, dismiss: srCardDismiss } = spacedRepetitionCard;
+  const [srShownItemId, setSrShownItemId] = useState<string | null>(null);
+  useEffect(() => {
+    if (!srCardVisible) {
+      setSrShownItemId(null);
+      return;
+    }
+    if (srShownItemId !== null && srShownItemId !== currentItemId) {
+      setSrShownItemId(null);
+      srCardDismiss();
+      return;
+    }
+    setSrShownItemId(currentItemId);
+  }, [srCardVisible, currentItemId, srShownItemId, srCardDismiss]);
+
   const inputRef = useRef<WanaKanaInputRef>(null);
   const resultRef = useRef<RNView>(null);
   const continueButtonRef = useRef<RNView>(null);
@@ -531,6 +565,21 @@ export default function ReviewScreen() {
             onAddSynonym={handleAddSynonym}
             answerCollision={answerCollision}
           />
+
+          {firstMissCard.visible ? (
+            <GuidanceCardNotice
+              card={GUIDANCE_CARD_BY_ID['first-miss']}
+              onDismiss={firstMissCard.dismiss}
+            />
+          ) : null}
+
+          {srCardVisible && srShownItemId === currentItemId ? (
+            <GuidanceCardNotice
+              card={GUIDANCE_CARD_BY_ID['spaced-repetition']}
+              subject={currentItem.primaryForm}
+              onDismiss={srCardDismiss}
+            />
+          ) : null}
         </ScrollView>
 
         {cardState === 'incorrect' ? (

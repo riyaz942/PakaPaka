@@ -5,7 +5,7 @@ describe('buildPassageBodyParts', () => {
     const parts = buildPassageBodyParts('私は学生です。', null, []);
 
     expect(parts).toEqual([
-      { vocabularyItemId: null, text: '私は学生です。', surface: '私は学生です。' },
+      { vocabularyItemId: null, text: '私は学生です。', surface: '私は学生です。', inflection: null },
     ]);
   });
 
@@ -17,10 +17,10 @@ describe('buildPassageBodyParts', () => {
     ]);
 
     expect(parts).toEqual([
-      { vocabularyItemId: '10', text: '私', surface: '私' },
-      { vocabularyItemId: null, text: 'は', surface: 'は' },
-      { vocabularyItemId: '11', text: '学生', surface: '学生' },
-      { vocabularyItemId: null, text: 'です。', surface: 'です。' },
+      { vocabularyItemId: '10', text: '私', surface: '私', inflection: null },
+      { vocabularyItemId: null, text: 'は', surface: 'は', inflection: null },
+      { vocabularyItemId: '11', text: '学生', surface: '学生', inflection: null },
+      { vocabularyItemId: null, text: 'です。', surface: 'です。', inflection: null },
     ]);
   });
 
@@ -32,9 +32,9 @@ describe('buildPassageBodyParts', () => {
     );
 
     expect(parts).toEqual([
-      { vocabularyItemId: null, text: '私[わたし]は', surface: '私は' },
-      { vocabularyItemId: '11', text: '学生[がくせい]', surface: '学生' },
-      { vocabularyItemId: null, text: 'です。', surface: 'です。' },
+      { vocabularyItemId: null, text: '私[わたし]は', surface: '私は', inflection: null },
+      { vocabularyItemId: '11', text: '学生[がくせい]', surface: '学生', inflection: null },
+      { vocabularyItemId: null, text: 'です。', surface: 'です。', inflection: null },
     ]);
   });
 
@@ -45,8 +45,8 @@ describe('buildPassageBodyParts', () => {
     ]);
 
     expect(parts).toEqual([
-      { vocabularyItemId: '10', text: '私', surface: '私' },
-      { vocabularyItemId: '11', text: 'は', surface: 'は' },
+      { vocabularyItemId: '10', text: '私', surface: '私', inflection: null },
+      { vocabularyItemId: '11', text: 'は', surface: 'は', inflection: null },
     ]);
   });
 
@@ -55,7 +55,7 @@ describe('buildPassageBodyParts', () => {
       { vocabularyItemId: '10', startOffset: 5, endOffset: 9 },
     ]);
 
-    expect(parts).toEqual([{ vocabularyItemId: null, text: '私は', surface: '私は' }]);
+    expect(parts).toEqual([{ vocabularyItemId: null, text: '私は', surface: '私は', inflection: null }]);
   });
 
   it('ignores spans with a non-increasing range', () => {
@@ -63,7 +63,7 @@ describe('buildPassageBodyParts', () => {
       { vocabularyItemId: '10', startOffset: 1, endOffset: 1 },
     ]);
 
-    expect(parts).toEqual([{ vocabularyItemId: null, text: '私は', surface: '私は' }]);
+    expect(parts).toEqual([{ vocabularyItemId: null, text: '私は', surface: '私は', inflection: null }]);
   });
 
   it('reproduces the whole body across all parts', () => {
@@ -88,6 +88,22 @@ describe('buildPassageBodyParts', () => {
     const spanPart = parts.find((part) => part.vocabularyItemId === '11');
     expect(spanPart?.text).toBe('学生[がくせい]');
     expect(parts.map((part) => part.surface).join('')).toBe('私は学生です。');
+  });
+
+  it('carries a span\'s taught inflection onto its part, and only that part (14.1)', () => {
+    // 来ます straddles the annotated 来[き] and the plain ます, and the span
+    // resolves to the base item 来る — never a synthetic conjugated item.
+    const parts = buildPassageBodyParts('猫がここへ来ます。', '猫[ねこ]がここへ来[き]ます。', [
+      { vocabularyItemId: '30', startOffset: 0, endOffset: 1, inflection: null },
+      { vocabularyItemId: '537', startOffset: 5, endOffset: 8, inflection: 'masu' },
+    ]);
+
+    expect(parts).toEqual([
+      { vocabularyItemId: '30', text: '猫[ねこ]', surface: '猫', inflection: null },
+      { vocabularyItemId: null, text: 'がここへ', surface: 'がここへ', inflection: null },
+      { vocabularyItemId: '537', text: '来[き]ます', surface: '来ます', inflection: 'masu' },
+      { vocabularyItemId: null, text: '。', surface: '。', inflection: null },
+    ]);
   });
 
   it('emits re-parseable notation for a span that punctuation follows', () => {

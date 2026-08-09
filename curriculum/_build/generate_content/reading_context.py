@@ -148,10 +148,10 @@ def seed_context(level, slug):
 def _span_forms(allowed_vocab):
     """{primary_form: slug} for span derivation.
 
-    `compile-curriculum` requires `body.slice(start, end) === primary_form`
-    exactly, so only literal occurrences of the dictionary form can ever become
-    a span — conjugated usage (食べました for 食べる) is real vocabulary use but
-    is not markable, which is also the convention the shipped passages follow.
+    This is the *dictionary* layer: literal occurrences of the form, which is
+    what decides a passage's `vocabulary_slugs`. Conjugated usage (食べました for
+    食べる) is spanned on top of it by `generate_content/spans.py`, but only for
+    words this layer already linked, so it never changes the link set.
     Duplicate forms across slugs keep the first in curriculum order.
     """
     forms = {}

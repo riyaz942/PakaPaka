@@ -4,6 +4,7 @@ import {
   __mockResetSqlite,
   __mockSetAcceptedAnswers,
   __mockSetExampleSentences,
+  __mockSetExampleSentenceSpans,
   __mockSetExampleSentenceVocab,
   __mockSetGrammarRelatedLinks,
   __mockSetGrammarRules,
@@ -31,6 +32,7 @@ import {
   getRequiredParentsForItems,
   getRelatedGrammarItems,
   getRelatedItemsForItems,
+  getTaughtConjugatedForms,
   getVisuallySimilarItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
@@ -573,6 +575,7 @@ describe('itemRepository', () => {
         english: 'This is a book.',
         sortOrder: 1,
         vocabularyLinks: [],
+        spans: [],
       },
       {
         id: '2',
@@ -581,6 +584,7 @@ describe('itemRepository', () => {
         english: 'I am a student.',
         sortOrder: 2,
         vocabularyLinks: [],
+        spans: [],
       },
     ]);
   });
@@ -638,8 +642,97 @@ describe('itemRepository', () => {
           { itemId: '20', primaryForm: '私' },
           { itemId: '21', primaryForm: '学生' },
         ],
+        spans: [],
       },
     ]);
+  });
+
+  it('attaches compiled word spans, inflected occurrences included (14.1a)', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetExampleSentences('curriculum.db.test', [
+      {
+        id: 6,
+        item_id: 537,
+        japanese: '猫がここへ来ます。',
+        furigana: '猫[ねこ]がここへ来[き]ます。',
+        english: 'The cat comes here.',
+        sort_order: 0,
+      },
+    ]);
+    __mockSetExampleSentenceSpans('curriculum.db.test', [
+      {
+        id: 2,
+        sentence_id: 6,
+        item_id: 537,
+        start_offset: 5,
+        end_offset: 8,
+        inflection: 'masu',
+        sort_order: 1,
+      },
+      {
+        id: 1,
+        sentence_id: 6,
+        item_id: 30,
+        start_offset: 0,
+        end_offset: 1,
+        inflection: null,
+        sort_order: 0,
+      },
+      // Another sentence's span must not leak in.
+      {
+        id: 3,
+        sentence_id: 7,
+        item_id: 30,
+        start_offset: 0,
+        end_offset: 1,
+        inflection: null,
+        sort_order: 0,
+      },
+    ]);
+
+    expect(getExampleSentences(db, '537')[0].spans).toEqual([
+      { vocabularyItemId: '30', startOffset: 0, endOffset: 1, inflection: null },
+      // The inflected span still resolves to the base item, never a synthetic one.
+      { vocabularyItemId: '537', startOffset: 5, endOffset: 8, inflection: 'masu' },
+    ]);
+  });
+
+  it('lists a word\'s taught conjugated forms, one representative surface each', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetExampleSentences('curriculum.db.test', [
+      { id: 6, item_id: 537, japanese: '二十日に彼女が来ます。', english: '', sort_order: 0 },
+      { id: 7, item_id: 537, japanese: '学生が百人来ました。', english: '', sort_order: 1 },
+      { id: 8, item_id: 537, japanese: '来て、座ってください。', english: '', sort_order: 2 },
+    ]);
+    __mockSetExampleSentenceSpans('curriculum.db.test', [
+      { id: 1, sentence_id: 6, item_id: 537, start_offset: 7, end_offset: 10, inflection: 'masu', sort_order: 0 },
+      { id: 2, sentence_id: 7, item_id: 537, start_offset: 5, end_offset: 9, inflection: 'masu', sort_order: 0 },
+      { id: 3, sentence_id: 8, item_id: 537, start_offset: 0, end_offset: 2, inflection: 'te', sort_order: 0 },
+      // A dictionary-form occurrence is not a conjugated form.
+      { id: 4, sentence_id: 8, item_id: 537, start_offset: 0, end_offset: 2, inflection: null, sort_order: 1 },
+      // Another word's forms stay out.
+      { id: 5, sentence_id: 6, item_id: 30, start_offset: 0, end_offset: 1, inflection: 'ta', sort_order: 1 },
+    ]);
+
+    expect(getTaughtConjugatedForms(db, '537')).toEqual([
+      { inflection: 'masu', surface: '来ます' },
+      { inflection: 'te', surface: '来て' },
+    ]);
+  });
+
+  it('lists no conjugated forms for a word the curriculum never inflects', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetExampleSentences('curriculum.db.test', [
+      { id: 6, item_id: 20, japanese: '私は学生です。', english: '', sort_order: 0 },
+    ]);
+    __mockSetExampleSentenceSpans('curriculum.db.test', [
+      { id: 1, sentence_id: 6, item_id: 20, start_offset: 0, end_offset: 1, inflection: null, sort_order: 0 },
+    ]);
+
+    expect(getTaughtConjugatedForms(db, '20')).toEqual([]);
   });
 
   it('returns grammar links for vocabulary with grammar item details', async () => {

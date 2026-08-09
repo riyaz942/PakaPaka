@@ -4,6 +4,8 @@ import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
+import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
+import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { PressableScale } from '@/components/common/PressableScale';
 import {
@@ -18,6 +20,7 @@ import {
   ShadowModeSwitchPrompt,
   WelcomeBackCard,
 } from '@/components/engagement';
+import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { MaxContentWidth } from '@/constants/theme';
 import {
   computeDailyAllowance,
@@ -25,6 +28,7 @@ import {
 } from '@/core/lesson/lessonAllowance';
 import { useCognitiveLoad } from '@/data/hooks/useCognitiveLoad';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useLevelProgress } from '@/data/hooks/useLevelProgress';
 import { useAtRiskItems } from '@/data/hooks/useAtRiskItems';
 import { useReadingReadiness } from '@/data/hooks/useReadingReadiness';
@@ -145,6 +149,10 @@ export default function HomeScreen() {
   const [importNudgeDismissed, setImportNudgeDismissed] = useState(false);
   const [showImportNudge, setShowImportNudge] = useState(false);
   const [onVacation, setOnVacation] = useState(false);
+  // `onVacation` defaults to false and only becomes true once the focus effect
+  // has read it. The overshoot card must wait for that answer — firing on the
+  // default would mark it seen for a learner who is actually paused.
+  const [vacationResolved, setVacationResolved] = useState(false);
 
   const readLessonAllowance = useCallback(
     (reviewsDueCount: number) => {
@@ -166,11 +174,18 @@ export default function HomeScreen() {
   const {
     percent: cognitiveLoadPercent,
     threshold: dailyGoal,
+    isOvershoot,
     pendingRiseTo,
     pendingReductionTo,
     isLoading: loadLoading,
     refetch: refetchLoad,
   } = useCognitiveLoad();
+  // Suppressed on vacation, matching the ring itself — the paused hero has no
+  // overshoot to explain.
+  const goalOvershootCard = useGuidanceCard(
+    'goal-overshoot',
+    vacationResolved && isOvershoot && !onVacation,
+  );
   // Dismiss hides only the current pending rise value. A later week's different
   // offer reappears even while Home stays mounted (tab screens are long-lived).
   const [dismissedRiseTo, setDismissedRiseTo] = useState<number | null>(null);
@@ -267,7 +282,10 @@ export default function HomeScreen() {
       let paused = false;
       try {
         paused = isVacationActive(userDb);
+        setVacationResolved(true);
       } catch {
+        // A failed read leaves the overshoot trigger unresolved — fail closed
+        // rather than fire (and mark seen) on a guessed vacation state.
         paused = false;
       }
       setOnVacation(paused);
@@ -388,15 +406,25 @@ export default function HomeScreen() {
             ) : (
               <View className="items-center rounded-radius-xl bg-surface p-space-md shadow-e2">
                 <GoalRing variant="hero" percent={cognitiveLoadPercent} />
-                <Text className="mt-space-sm text-body font-ui-extrabold text-primary">
-                  Today&apos;s goal
-                </Text>
+                <View className="mt-space-sm flex-row items-center gap-space-xs">
+                  <Text className="text-body font-ui-extrabold text-primary">
+                    Today&apos;s goal
+                  </Text>
+                  <GuidanceInfoButton cardId="goal-overshoot" />
+                </View>
                 <Text className="mt-space-xs text-center text-caption font-ui text-muted">
                   Something to beat — going past 100% is the good part
                 </Text>
               </View>
             )}
           </FadeSlideIn>
+
+          {goalOvershootCard.visible ? (
+            <GuidanceCardNotice
+              card={GUIDANCE_CARD_BY_ID['goal-overshoot']}
+              onDismiss={goalOvershootCard.dismiss}
+            />
+          ) : null}
 
           {!onVacation && pendingRiseTo !== null && pendingRiseTo !== dismissedRiseTo ? (
             <GoalRisePrompt

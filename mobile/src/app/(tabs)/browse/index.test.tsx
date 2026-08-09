@@ -30,6 +30,16 @@ jest.mock('@/data/hooks/useDatabase', () => {
   return { useDatabase: () => handles };
 });
 
+/** In-memory stand-in for the `card_seen` table (Epic 7). */
+const mockSeenGuidanceCards = new Set<string>();
+
+jest.mock('@/data/user/cardSeenRepository', () => ({
+  isCardSeen: (_userDb: unknown, cardId: string) => mockSeenGuidanceCards.has(cardId),
+  markCardSeen: (_userDb: unknown, cardId: string) => {
+    mockSeenGuidanceCards.add(cardId);
+  },
+}));
+
 jest.mock('@/data/curriculum/browseRepository', () => ({
   listBrowsePage: jest.fn(),
   countBrowse: jest.fn(),
@@ -81,6 +91,7 @@ function renderBrowse() {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  mockSeenGuidanceCards.clear();
   mockUseLocalSearchParams.mockReturnValue({});
   mockListPassageUnlockStates.mockReturnValue(new Map());
   mockListBrowsePage.mockReturnValue([KANJI_ROW, LOCKED_PASSAGE_ROW]);
@@ -333,5 +344,44 @@ describe('BrowseScreen', () => {
     await waitFor(() => expect(screen.getByTestId('browse-error')).toBeTruthy());
     expect(screen.getByTestId('browse-error-retry')).toBeTruthy();
     expect(screen.queryByTestId('browse-empty')).toBeNull();
+  });
+});
+
+describe('BrowseScreen — passage lock guidance (Epic 7)', () => {
+  it('explains the lock the first time a locked passage is in the results', async () => {
+    renderBrowse();
+
+    await waitFor(() =>
+      expect(screen.getByTestId('guidance-card-notice-passage-locks')).toBeTruthy(),
+    );
+    expect(screen.getByText('Locked passages are a destination')).toBeTruthy();
+    expect(screen.getByText(/at least 90% of the vocabulary and grammar/)).toBeTruthy();
+    expect(mockSeenGuidanceCards.has('passage-locks')).toBe(true);
+  });
+
+  it('says nothing when no locked passage is in the current result set', async () => {
+    mockListBrowsePage.mockReturnValue([
+      KANJI_ROW,
+      { ...LOCKED_PASSAGE_ROW, locked: false, itemsRemainingToUnlock: 0 },
+    ]);
+
+    renderBrowse();
+
+    await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+    expect(screen.queryByTestId('guidance-card-notice-passage-locks')).toBeNull();
+    expect(mockSeenGuidanceCards.has('passage-locks')).toBe(false);
+  });
+
+  it('dismisses in one tap and does not come back', async () => {
+    renderBrowse();
+
+    await waitFor(() =>
+      expect(screen.getByTestId('guidance-card-notice-passage-locks')).toBeTruthy(),
+    );
+
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('guidance-card-notice-dismiss'));
+    });
+    expect(screen.queryByTestId('guidance-card-notice-passage-locks')).toBeNull();
   });
 });

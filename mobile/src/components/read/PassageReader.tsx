@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { PassageBody } from '@/components/read/PassageBody';
 import { PassageQuestion } from '@/components/read/PassageQuestion';
 import { PassageWordDetailSheet } from '@/components/read/PassageWordDetailSheet';
+import type { WordInflection } from '@/core/content/inflection';
 import {
   getItemById,
   type CurriculumItemDetail,
@@ -42,11 +43,16 @@ export function PassageReader({
   const [selectedWord, setSelectedWord] = useState<{
     item: CurriculumItemDetail | null;
     surface: string;
+    inflection: WordInflection | null;
   } | null>(null);
 
   const handleWordPress = useCallback(
-    (vocabularyItemId: string, surface: string) => {
-      setSelectedWord({ item: getItemById(curriculumDb, vocabularyItemId), surface });
+    (vocabularyItemId: string, surface: string, inflection: WordInflection | null) => {
+      setSelectedWord({
+        item: getItemById(curriculumDb, vocabularyItemId),
+        surface,
+        inflection,
+      });
     },
     [curriculumDb],
   );
@@ -106,6 +112,7 @@ export function PassageReader({
       <PassageWordDetailSheet
         item={selectedWord?.item ?? null}
         surface={selectedWord?.surface ?? null}
+        inflection={selectedWord?.inflection ?? null}
         visible={selectedWord !== null}
         onDismiss={() => setSelectedWord(null)}
       />

@@ -22,6 +22,7 @@ describe('passageSpans', () => {
         vocabulary_item_id: 11,
         start_offset: 2,
         end_offset: 4,
+        inflection: null,
         sort_order: 1,
       },
       {
@@ -30,6 +31,7 @@ describe('passageSpans', () => {
         vocabulary_item_id: 10,
         start_offset: 0,
         end_offset: 1,
+        inflection: null,
         sort_order: 0,
       },
       {
@@ -38,6 +40,8 @@ describe('passageSpans', () => {
         vocabulary_item_id: 12,
         start_offset: 0,
         end_offset: 1,
+        // A taught inflection resolving to the *base* item (14.1a).
+        inflection: 'masu',
         sort_order: 0,
       },
     ]);
@@ -49,8 +53,8 @@ describe('passageSpans', () => {
     const db = await seedSpans();
 
     expect(getPassageWordSpans(db, '1')).toEqual([
-      { vocabularyItemId: '10', startOffset: 0, endOffset: 1 },
-      { vocabularyItemId: '11', startOffset: 2, endOffset: 4 },
+      { vocabularyItemId: '10', startOffset: 0, endOffset: 1, inflection: null },
+      { vocabularyItemId: '11', startOffset: 2, endOffset: 4, inflection: null },
     ]);
   });
 
@@ -58,7 +62,7 @@ describe('passageSpans', () => {
     const db = await seedSpans();
 
     expect(getPassageWordSpans(db, '2')).toEqual([
-      { vocabularyItemId: '12', startOffset: 0, endOffset: 1 },
+      { vocabularyItemId: '12', startOffset: 0, endOffset: 1, inflection: 'masu' },
     ]);
   });
 

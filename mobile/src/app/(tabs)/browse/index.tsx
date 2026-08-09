@@ -7,7 +7,9 @@ import { BrowseList } from '@/components/browse/BrowseList';
 import { FilterDrawer } from '@/components/browse/FilterDrawer';
 import { FilterPill } from '@/components/browse/FilterPill';
 import { SearchField } from '@/components/browse/SearchField';
+import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
+import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { MaxContentWidth } from '@/constants/theme';
 import {
   BROWSE_FACET_KEYS,
@@ -22,6 +24,7 @@ import {
 } from '@/core/browse/browseFilters';
 import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useBrowseDraftCount, useBrowseItems } from '@/data/hooks/useBrowseItems';
+import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 
 function firstParam(value: string | string[] | undefined): string | null {
   if (Array.isArray(value)) return value[0] ?? null;
@@ -67,6 +70,13 @@ export default function BrowseScreen() {
 
   const [openFacet, setOpenFacet] = useState<BrowseFacetKey | null>(null);
   const [draft, setDraft] = useState<BrowseFilters>(filters);
+
+  // A filter that excludes passages simply makes this false — "renders a locked
+  // passage" means one is in the current result set, not in the catalogue.
+  const passageLocksCard = useGuidanceCard(
+    'passage-locks',
+    rows.some((row) => row.kind === 'passage' && row.locked),
+  );
 
   // Passage unlock is derived from SRS state, so returning from a review or
   // lesson can change which passages are locked. Stable unlock Map identity
@@ -196,6 +206,15 @@ export default function BrowseScreen() {
             testID="browse-result-count">
             {totalCount === 1 ? '1 result' : `${totalCount} results`}
           </Text>
+        ) : null}
+
+        {/* Outside the list, never a row: the notice explains the lock chip,
+            it is not one of the results. */}
+        {passageLocksCard.visible ? (
+          <GuidanceCardNotice
+            card={GUIDANCE_CARD_BY_ID['passage-locks']}
+            onDismiss={passageLocksCard.dismiss}
+          />
         ) : null}
 
         <View className="flex-1 pb-space-sm">

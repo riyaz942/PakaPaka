@@ -391,7 +391,18 @@ describe('BrowsePassageRoute', () => {
           sort_order: 1,
         },
       ]);
-      // Body is 私は学生です。— 学生 sits at offsets [2, 4).
+      // Body is 私は学生です。— 学生 sits at offsets [2, 4); annotated so the
+      // reading is actually on screen to assert the furigana toggle against.
+      __mockSetReadingPassages('curriculum.db.test', [
+        {
+          id: 1,
+          jlpt_level: 'N5',
+          title: '自己紹介',
+          body: '私は学生です。',
+          body_furigana: '私は学生[がくせい]です。',
+          sort_order: 1,
+        },
+      ]);
       __mockSetPassageWordSpans('curriculum.db.test', [
         {
           id: 1,
@@ -419,14 +430,18 @@ describe('BrowsePassageRoute', () => {
       });
     });
 
-    it('opens the same detail sheet on long press', async () => {
+    it('toggles the word\'s furigana on long press instead of opening the detail sheet', async () => {
       await renderWithSpans();
+
+      // No mastery data seeded, so 'auto' mode shows the reading by default.
+      expect(screen.getByText('がくせい')).toBeTruthy();
 
       fireEvent(screen.getByTestId(/^passage-word-10-/), 'longPress');
 
       await waitFor(() => {
-        expect(screen.getByText('student')).toBeTruthy();
+        expect(screen.queryByText('がくせい')).toBeNull();
       });
+      expect(screen.queryByText('student')).toBeNull();
     });
 
     it('labels the span as a button naming the word and the action', async () => {

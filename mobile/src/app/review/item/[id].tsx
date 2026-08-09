@@ -8,6 +8,7 @@ import { ItemDetailBody } from '@/components/learn/ItemDetailBody';
 import { ItemDetailHeaderBar } from '@/components/learn/ItemDetailHeaderBar';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { MaxContentWidth } from '@/constants/theme';
+import { parseInflection } from '@/core/content/inflection';
 
 /**
  * Full item detail reached from the review answer reveal (FR85). Mounted as a
@@ -20,7 +21,7 @@ import { MaxContentWidth } from '@/constants/theme';
  * the session.
  */
 export default function ReviewItemDetailScreen() {
-  const params = useLocalSearchParams<{ id: string }>();
+  const params = useLocalSearchParams<{ id: string; surface?: string; inflection?: string }>();
   const itemId = params.id ?? null;
 
   return (
@@ -42,7 +43,11 @@ export default function ReviewItemDetailScreen() {
           showsVerticalScrollIndicator
           testID="review-item-scroll">
           <ItemLinkProvider base="/review/item">
-            <ItemDetailBody itemId={itemId} />
+            <ItemDetailBody
+              itemId={itemId}
+              surface={params.surface ?? null}
+              inflection={parseInflection(params.inflection)}
+            />
           </ItemLinkProvider>
         </ScrollView>
       </SafeAreaView>

@@ -420,4 +420,102 @@ describe('compile-curriculum', () => {
       /Passage word span surface mismatch/,
     );
   });
+
+  // --- taught-inflection spans (feedback 14.1a) ----------------------------
+
+  it('accepts an inflected passage span whose surface is its own surface_form', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+    const readingsPath = path.join(curriculumDir, 'readings', 'n5.json');
+    const readingsFile = JSON.parse(fs.readFileSync(readingsPath, 'utf8'));
+    readingsFile.passages[0].word_spans = [
+      { vocabulary_slug: 'ichi-v', start: 0, end: 3, surface_form: '一です', inflection: 'masu' },
+    ];
+    fs.writeFileSync(readingsPath, JSON.stringify(readingsFile));
+
+    const dbPath = path.join(tempDir, 'curriculum.db');
+    compileCurriculum(dbPath, curriculumDir);
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const span = db
+        .prepare('SELECT start_offset, end_offset, inflection FROM passage_word_spans')
+        .get() as { start_offset: number; end_offset: number; inflection: string | null };
+      expect(span).toEqual({ start_offset: 0, end_offset: 3, inflection: 'masu' });
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  // The JSON schema is the first gate on the inflection fields, so these two
+  // never reach the compiler's own check (which still guards direct callers).
+  it('rejects an inflection outside the taught families', () => {
+    expect(
+      compileWithWordSpans([
+        { vocabulary_slug: 'ichi-v', start: 0, end: 3, surface_form: '一です', inflection: 'potential' },
+      ]),
+    ).toThrow(/inflection: must be equal to one of the allowed values/);
+  });
+
+  it('rejects a span that claims a surface_form without an inflection', () => {
+    expect(
+      compileWithWordSpans([{ vocabulary_slug: 'ichi-v', start: 0, end: 3, surface_form: '一です' }]),
+    ).toThrow(/must have property inflection when property surface_form is present/);
+  });
+
+  function compileWithExampleSpans(wordSpans: unknown[]): {
+    dbPath: string;
+    tempDir: string;
+    run: () => void;
+  } {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'curriculum-compile-'));
+    const curriculumDir = path.join(tempDir, 'curriculum');
+    fs.cpSync(FIXTURE_DIR, curriculumDir, { recursive: true });
+
+    const vocabPath = path.join(curriculumDir, 'vocabulary', 'n5.json');
+    const vocabFile = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
+    vocabFile.items[0].example_sentences[0].word_spans = wordSpans;
+    fs.writeFileSync(vocabPath, JSON.stringify(vocabFile));
+
+    const dbPath = path.join(tempDir, 'curriculum.db');
+    return { dbPath, tempDir, run: () => compileCurriculum(dbPath, curriculumDir) };
+  }
+
+  it('compiles example sentence spans, dictionary and inflected', () => {
+    // "一があります。" — 一 in its dictionary form, and (as a stand-in for a
+    // conjugated verb) an inflected span the fixture vocabulary can carry.
+    const { dbPath, tempDir, run } = compileWithExampleSpans([
+      { vocabulary_slug: 'ichi-v', start: 0, end: 1 },
+      { vocabulary_slug: 'ichi-v', start: 2, end: 6, surface_form: 'あります', inflection: 'masu' },
+    ]);
+    run();
+    const db = new Database(dbPath, { readonly: true });
+    try {
+      const spans = db
+        .prepare(
+          `SELECT vocab.slug AS slug, span.start_offset, span.end_offset, span.inflection, span.sort_order
+           FROM example_sentence_spans span
+           JOIN items vocab ON vocab.id = span.item_id
+           JOIN example_sentences sentence ON sentence.id = span.sentence_id
+           ORDER BY span.sort_order ASC`,
+        )
+        .all();
+      expect(spans).toEqual([
+        { slug: 'ichi-v', start_offset: 0, end_offset: 1, inflection: null, sort_order: 0 },
+        { slug: 'ichi-v', start_offset: 2, end_offset: 6, inflection: 'masu', sort_order: 1 },
+      ]);
+    } finally {
+      db.close();
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('throws when an example sentence span does not slice its own surface', () => {
+    const { tempDir, run } = compileWithExampleSpans([
+      { vocabulary_slug: 'ichi-v', start: 2, end: 4, surface_form: 'あります', inflection: 'masu' },
+    ]);
+    expect(run).toThrow(/Example sentence span surface mismatch/);
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  });
 });

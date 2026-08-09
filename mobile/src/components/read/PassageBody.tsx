@@ -1,10 +1,13 @@
 import React, { useMemo } from 'react';
-import { Pressable, View } from 'react-native';
+import { type AccessibilityActionEvent, Pressable, View } from 'react-native';
 
-import { FuriganaText } from '@/components/common/FuriganaText';
+import { defaultFuriganaVisible, FuriganaText } from '@/components/common/FuriganaText';
+import type { WordInflection } from '@/core/content/inflection';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
+import { parseFurigana } from '@/core/furigana/parseFurigana';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
+import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
 
 /**
  * The spec sets the body at 17px with 2.35 leading — neither is a type token,
@@ -15,11 +18,35 @@ import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
  */
 const PASSAGE_LINE_STYLE = { fontSize: 17, lineHeight: 30 };
 
+/**
+ * Whether a word's furigana is currently visible to the learner, given its
+ * resolved display mode — mirrors `FuriganaText`'s own per-segment logic so a
+ * long-press toggle flips what is actually on screen, not just the raw
+ * 'auto'/'shown'/'hidden' preference value.
+ */
+function isWordFuriganaVisible(
+  text: string,
+  mode: FuriganaDisplayMode,
+  knownKanji: ReadonlySet<string>,
+): boolean {
+  return parseFurigana(text).some(
+    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
+  );
+}
+
 type PassageBodyProps = {
   body: string;
   bodyFurigana: string | null;
   wordSpans: PassageWordSpan[];
-  onWordPress: (vocabularyItemId: string, surface: string) => void;
+  /**
+   * `vocabularyItemId` is always the base word; `inflection` names the taught
+   * form when the pressed surface is a conjugation of it (14.1).
+   */
+  onWordPress: (
+    vocabularyItemId: string,
+    surface: string,
+    inflection: WordInflection | null,
+  ) => void;
 };
 
 /**
@@ -40,7 +67,7 @@ export function PassageBody({
   wordSpans,
   onWordPress,
 }: PassageBodyProps) {
-  const { mode: furiganaMode, knownKanji, modeForItem } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem, setOverride } = useFuriganaPreference();
   const parts = useMemo(
     () => buildPassageBodyParts(body, bodyFurigana, wordSpans),
     [body, bodyFurigana, wordSpans],
@@ -65,17 +92,36 @@ export function PassageBody({
         }
 
         const vocabularyItemId = part.vocabularyItemId;
-        const handlePress = (): void => onWordPress(vocabularyItemId, part.surface);
+        const handlePress = (): void =>
+          onWordPress(vocabularyItemId, part.surface, part.inflection);
+        const handleToggleFurigana = (): void => {
+          const visible = isWordFuriganaVisible(
+            part.text,
+            modeForItem(vocabularyItemId),
+            knownKanji,
+          );
+          setOverride(vocabularyItemId, visible ? 'hidden' : 'shown');
+        };
+        const handleAccessibilityAction = (event: AccessibilityActionEvent): void => {
+          if (event.nativeEvent.actionName === 'toggleFurigana') {
+            handleToggleFurigana();
+            return;
+          }
+          handlePress();
+        };
 
         return (
           <Pressable
             key={key}
             accessibilityRole="button"
             accessibilityLabel={`${part.surface}, show word details`}
-            accessibilityActions={[{ name: 'activate', label: 'Show word details' }]}
-            onAccessibilityAction={handlePress}
+            accessibilityActions={[
+              { name: 'activate', label: 'Show word details' },
+              { name: 'toggleFurigana', label: 'Toggle furigana' },
+            ]}
+            onAccessibilityAction={handleAccessibilityAction}
             onPress={handlePress}
-            onLongPress={handlePress}
+            onLongPress={handleToggleFurigana}
             testID={`passage-word-${vocabularyItemId}-${index}`}>
             <FuriganaText
               text={part.text}

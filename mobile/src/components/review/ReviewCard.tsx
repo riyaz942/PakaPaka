@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
 import { heroWeightClass } from '@/components/learn/ItemDetailHeader';
@@ -244,13 +245,20 @@ export function ReviewCard({
 
   return (
     <View className="gap-space-md w-full items-center">
-      <Text className={`text-body-lg font-ui-extrabold ${MODE_LABEL_CLASS[promptType]}`}>
-        {modeLabel}
-      </Text>
+      <View className="flex-row items-center gap-space-xs">
+        <Text className={`text-body-lg font-ui-extrabold ${MODE_LABEL_CLASS[promptType]}`}>
+          {modeLabel}
+        </Text>
+        {/* Only the kanji pair needs explaining, and only where the pair is
+            visible — the incorrect reveal returns above without a kicker. */}
+        {item.isTwoCardItem ? <GuidanceInfoButton cardId="two-card-kanji" /> : null}
+      </View>
 
       {promptNode}
 
-      {correctReveal ? null : <SRSStageIndicator stage={srsState.srsStageLabel} />}
+      {correctReveal ? null : (
+        <SRSStageIndicator stage={srsState.srsStageLabel} infoCardId="spaced-repetition" />
+      )}
 
       {itemType === 'grammar' && !correctReveal ? (
         <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />

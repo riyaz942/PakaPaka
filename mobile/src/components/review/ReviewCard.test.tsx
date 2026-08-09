@@ -286,7 +286,7 @@ describe('ReviewCard — result states', () => {
             { id: 'r2', readingType: 'kunyomi', reading: 'た', sortOrder: 1 },
           ],
           exampleSentences: [
-            { id: 's1', japanese: '食べます', furigana: null, english: 'I eat.', sortOrder: 0, vocabularyLinks: [] },
+            { id: 's1', japanese: '食べます', furigana: null, english: 'I eat.', sortOrder: 0, vocabularyLinks: [], spans: [] },
           ],
         }}
       />,
@@ -601,5 +601,30 @@ describe('ReviewCard — near-miss incomplete reveal (Plan 10)', () => {
     expect(screen.getByText('Incorrect')).toBeTruthy();
     expect(screen.getByText('Correct answer: は')).toBeTruthy();
     expect(screen.queryByText(/right idea/)).toBeNull();
+  });
+});
+
+describe('ReviewCard — two-card kanji affordance (FR81)', () => {
+  it('offers an explanation beside the kicker on a two-card kanji', () => {
+    render(<ReviewCard item={makeItem({ isTwoCardItem: true })} state="prompting" />);
+
+    const info = screen.getByTestId('guidance-info-two-card-kanji');
+    expect(info.props.accessibilityLabel).toBe('Explain: Why kanji ask twice');
+
+    fireEvent.press(info);
+    expect(screen.getByText('Why kanji ask twice')).toBeTruthy();
+  });
+
+  it('omits it for an item that is not part of a pair', () => {
+    render(<ReviewCard item={makeItem({ isTwoCardItem: false })} state="prompting" />);
+
+    expect(screen.queryByTestId('guidance-info-two-card-kanji')).toBeNull();
+  });
+
+  it('offers the stage explanation from the stage indicator', () => {
+    render(<ReviewCard item={makeItem()} state="prompting" />);
+
+    fireEvent.press(screen.getByTestId('guidance-info-spaced-repetition'));
+    expect(screen.getByText('Why items come back')).toBeTruthy();
   });
 });

@@ -35,13 +35,16 @@ const mockRefetchLoad = jest.fn();
 let mockPendingRiseTo: number | null = null;
 let mockPendingReductionTo: number | null = null;
 
+let mockLoadPercent = 42;
+let mockIsOvershoot = false;
+
 jest.mock('@/data/hooks/useCognitiveLoad', () => ({
   useCognitiveLoad: () => ({
     todayLoad: 13,
     threshold: 30,
-    percent: 42,
-    isComplete: false,
-    isOvershoot: false,
+    percent: mockLoadPercent,
+    isComplete: mockLoadPercent >= 100,
+    isOvershoot: mockIsOvershoot,
     pendingRiseTo: mockPendingRiseTo,
     pendingReductionTo: mockPendingReductionTo,
     isLoading: false,
@@ -166,9 +169,23 @@ jest.mock('@/data/reviewEligibility', () => ({
 }));
 
 let mockOnVacation = false;
+let mockVacationReadThrows = false;
 
 jest.mock('@/data/user/vacationRepository', () => ({
-  isVacationActive: () => mockOnVacation,
+  isVacationActive: () => {
+    if (mockVacationReadThrows) throw new Error('vacation read failed');
+    return mockOnVacation;
+  },
+}));
+
+/** In-memory stand-in for the `card_seen` table (Epic 7). */
+const mockSeenGuidanceCards = new Set<string>();
+
+jest.mock('@/data/user/cardSeenRepository', () => ({
+  isCardSeen: (_userDb: unknown, cardId: string) => mockSeenGuidanceCards.has(cardId),
+  markCardSeen: (_userDb: unknown, cardId: string) => {
+    mockSeenGuidanceCards.add(cardId);
+  },
 }));
 
 const mockShadowModeDisable = jest.fn();
@@ -207,6 +224,9 @@ describe('HomeScreen', () => {
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
     mockOnVacation = false;
+    mockLoadPercent = 42;
+    mockIsOvershoot = false;
+    mockSeenGuidanceCards.clear();
     clearReviewPriority();
   });
 
@@ -547,5 +567,80 @@ describe('HomeScreen', () => {
         false,
       );
     });
+  });
+});
+
+describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockCountServableDueItems.mockReturnValue(0);
+    mockShouldShowSwitchPrompt = false;
+    mockShadowModeDaysActive = 0;
+    mockPendingRiseTo = null;
+    mockPendingReductionTo = null;
+    mockGreetingSentence = null;
+    mockForecast = null;
+    mockReadingTarget = null;
+    mockAtRisk = { totalCount: 0, topItems: [], allItems: [], rankedItemIds: [] };
+    mockOnboardingCompleted = true;
+    mockLastActiveDate = null;
+    mockImportCount = 1;
+    mockShowCurriculumBanner = false;
+    mockOnVacation = false;
+    mockVacationReadThrows = false;
+    mockLoadPercent = 42;
+    mockIsOvershoot = false;
+    mockSeenGuidanceCards.clear();
+    clearReviewPriority();
+  });
+
+  it('explains the ring the first time it goes past 100%', () => {
+    mockLoadPercent = 140;
+    mockIsOvershoot = true;
+
+    render(<HomeScreen />);
+
+    expect(screen.getByTestId('guidance-card-notice-goal-overshoot')).toBeTruthy();
+    expect(screen.getByText('Past 100% is the good part')).toBeTruthy();
+    expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(true);
+  });
+
+  it('says nothing while the ring is still short of the goal', () => {
+    render(<HomeScreen />);
+
+    expect(screen.queryByTestId('guidance-card-notice-goal-overshoot')).toBeNull();
+    expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(false);
+  });
+
+  it('stays quiet on vacation, where the ring is not shown at all', () => {
+    mockOnVacation = true;
+    mockLoadPercent = 140;
+    mockIsOvershoot = true;
+
+    render(<HomeScreen />);
+
+    expect(screen.getByTestId('home-vacation-card')).toBeTruthy();
+    expect(screen.queryByTestId('guidance-card-notice-goal-overshoot')).toBeNull();
+    expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(false);
+  });
+
+  it('stays quiet when the vacation read fails, rather than firing on a guess', () => {
+    mockLoadPercent = 140;
+    mockIsOvershoot = true;
+    mockVacationReadThrows = true;
+
+    render(<HomeScreen />);
+
+    expect(screen.queryByTestId('guidance-card-notice-goal-overshoot')).toBeNull();
+    expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(false);
+  });
+
+  it('offers the same explanation on demand from the goal card', () => {
+    render(<HomeScreen />);
+
+    fireEvent.press(screen.getByTestId('guidance-info-goal-overshoot'));
+    expect(screen.getByText('Past 100% is the good part')).toBeTruthy();
+    // Asking never consumes the just-in-time moment.
+    expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(false);
   });
 });

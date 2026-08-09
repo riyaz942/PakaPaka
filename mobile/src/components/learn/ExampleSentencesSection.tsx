@@ -1,20 +1,37 @@
 import { router, type Href } from 'expo-router';
 import React, { useMemo } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { type AccessibilityActionEvent, Pressable, Text, View } from 'react-native';
 
-import { FuriganaText } from '@/components/common/FuriganaText';
+import { defaultFuriganaVisible, FuriganaText } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
-import { buildExampleSentenceSpans } from '@/core/content/exampleSentenceSpans';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
+import { parseFurigana } from '@/core/furigana/parseFurigana';
 import type { ExampleSentence } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
 
 /**
  * Example Japanese sits a step above body copy so ruby has room and the kanji
  * stay legible — the spec's 17px rounds to the 18px `body-lg` step.
  */
 const EXAMPLE_JAPANESE = 'text-body-lg font-jp-medium text-primary';
+
+/**
+ * Whether a word's furigana is currently visible to the learner, given its
+ * resolved display mode — mirrors `FuriganaText`'s own per-segment logic so a
+ * long-press toggle flips what is actually on screen, not just the raw
+ * 'auto'/'shown'/'hidden' preference value.
+ */
+function isWordFuriganaVisible(
+  text: string,
+  mode: FuriganaDisplayMode,
+  knownKanji: ReadonlySet<string>,
+): boolean {
+  return parseFurigana(text).some(
+    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
+  );
+}
 
 type ExampleSentencesSectionProps = {
   sentences: ExampleSentence[];
@@ -27,13 +44,15 @@ type ExampleSentencesSectionProps = {
  * details scroll so the rows are authored once. Empty set renders nothing.
  *
  * Linked vocabulary (Plan 11.6) is pressable via tap and long-press (NFR29),
- * located by the first `primary_form` match — never auto-segmented.
+ * located by the compiled spans shipped with the sentence (14.1a) — every
+ * occurrence, dictionary form and taught inflection alike, never
+ * auto-segmented at runtime.
  */
 export function ExampleSentencesSection({
   sentences,
   testIDPrefix,
 }: ExampleSentencesSectionProps) {
-  const { mode: furiganaMode, knownKanji, modeForItem } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem, setOverride } = useFuriganaPreference();
   const hrefFor = useItemHref();
 
   if (sentences.length === 0) {
@@ -51,6 +70,7 @@ export function ExampleSentencesSection({
               furiganaMode={furiganaMode}
               knownKanji={knownKanji}
               modeForItem={modeForItem}
+              setOverride={setOverride}
               hrefFor={hrefFor}
               testIDPrefix={testIDPrefix}
             />
@@ -67,6 +87,7 @@ function ExampleSentenceJapanese({
   furiganaMode,
   knownKanji,
   modeForItem,
+  setOverride,
   hrefFor,
   testIDPrefix,
 }: {
@@ -74,13 +95,14 @@ function ExampleSentenceJapanese({
   furiganaMode: ReturnType<typeof useFuriganaPreference>['mode'];
   knownKanji: ReturnType<typeof useFuriganaPreference>['knownKanji'];
   modeForItem: ReturnType<typeof useFuriganaPreference>['modeForItem'];
+  setOverride: ReturnType<typeof useFuriganaPreference>['setOverride'];
   hrefFor: (itemId: string) => string;
   testIDPrefix: string;
 }) {
-  const parts = useMemo(() => {
-    const spans = buildExampleSentenceSpans(sentence.japanese, sentence.vocabularyLinks);
-    return buildPassageBodyParts(sentence.japanese, sentence.furigana, spans);
-  }, [sentence.japanese, sentence.furigana, sentence.vocabularyLinks]);
+  const parts = useMemo(
+    () => buildPassageBodyParts(sentence.japanese, sentence.furigana, sentence.spans),
+    [sentence.japanese, sentence.furigana, sentence.spans],
+  );
 
   const hasLinks = parts.some((part) => part.vocabularyItemId !== null);
 
@@ -116,7 +138,32 @@ function ExampleSentenceJapanese({
 
         const vocabularyItemId = part.vocabularyItemId;
         const handlePress = (): void => {
-          router.push(hrefFor(vocabularyItemId) as Href);
+          const pathname = hrefFor(vocabularyItemId);
+          // A conjugated span opens the *base* word, so the detail screen is
+          // told which surface sent the learner there (14.1).
+          if (part.inflection) {
+            router.push({
+              pathname,
+              params: { surface: part.surface, inflection: part.inflection },
+            } as Href);
+            return;
+          }
+          router.push(pathname as Href);
+        };
+        const handleToggleFurigana = (): void => {
+          const visible = isWordFuriganaVisible(
+            part.text,
+            modeForItem(vocabularyItemId),
+            knownKanji,
+          );
+          setOverride(vocabularyItemId, visible ? 'hidden' : 'shown');
+        };
+        const handleAccessibilityAction = (event: AccessibilityActionEvent): void => {
+          if (event.nativeEvent.actionName === 'toggleFurigana') {
+            handleToggleFurigana();
+            return;
+          }
+          handlePress();
         };
 
         return (
@@ -124,10 +171,13 @@ function ExampleSentenceJapanese({
             key={key}
             accessibilityRole="button"
             accessibilityLabel={`${part.surface}, show word details`}
-            accessibilityActions={[{ name: 'activate', label: 'Show word details' }]}
-            onAccessibilityAction={handlePress}
+            accessibilityActions={[
+              { name: 'activate', label: 'Show word details' },
+              { name: 'toggleFurigana', label: 'Toggle furigana' },
+            ]}
+            onAccessibilityAction={handleAccessibilityAction}
             onPress={handlePress}
-            onLongPress={handlePress}
+            onLongPress={handleToggleFurigana}
             testID={`${testIDPrefix}-word-${vocabularyItemId}-${index}`}>
             <FuriganaText
               text={part.text}

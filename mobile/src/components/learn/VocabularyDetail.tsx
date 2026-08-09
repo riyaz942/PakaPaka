@@ -1,8 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { FuriganaText } from '@/components/common/FuriganaText';
+import { GuidanceCardNotice } from '@/components/common/GuidanceCardNotice';
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
+import { ConjugatedFormsSection } from '@/components/learn/ConjugatedFormsSection';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
 import { FuriganaOverrideControl } from '@/components/learn/FuriganaOverrideControl';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
@@ -15,8 +17,10 @@ import {
 import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
+import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { RelatedItem } from '@/core/content/content.types';
+import { conjugatedFormNote, type WordInflection } from '@/core/content/inflection';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -25,6 +29,7 @@ import type {
   GrammarVocabLink,
 } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { useGuidanceCard } from '@/data/hooks/useGuidanceCard';
 import { useIsKnownWord } from '@/data/hooks/useIsKnownWord';
 import { cn } from '@/utils/cn';
 
@@ -35,6 +40,10 @@ type VocabularyDetailProps = {
   grammarVocabLinks: GrammarVocabLink[];
   parents?: CurriculumParentItem[];
   related?: RelatedItem[];
+  /** Conjugated surface the learner tapped to get here, when they came from one. */
+  surface?: string | null;
+  /** Which taught form that surface was (14.1). */
+  inflection?: WordInflection | null;
 };
 
 export function VocabularyDetail({
@@ -44,11 +53,22 @@ export function VocabularyDetail({
   grammarVocabLinks,
   parents = [],
   related = [],
+  surface = null,
+  inflection = null,
 }: VocabularyDetailProps) {
   const isLongWord = item.primaryForm.length > 4;
   const heroSize = isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word;
   const { modeForItem } = useFuriganaPreference();
   const isKnownWord = useIsKnownWord(item.id);
+  // Mastery is what hid the reading; an explicit per-word override means it was
+  // not auto-hidden, so there is nothing to explain.
+  const furiganaAutoHideCard = useGuidanceCard(
+    'furigana-auto-hide',
+    isKnownWord && modeForItem(item.id) === 'auto',
+  );
+  // The page heroes the dictionary form; this names the conjugation that sent
+  // the learner here so the two forms connect (14.1).
+  const conjugatedNote = conjugatedFormNote(surface, item.primaryForm, inflection);
 
   return (
     <View testID="vocabulary-detail">
@@ -64,13 +84,30 @@ export function VocabularyDetail({
         />
       </ItemDetailHeader>
 
+      {conjugatedNote ? (
+        <Text
+          testID="conjugated-form-note"
+          className="mt-space-sm text-center text-body-sm font-ui text-secondary">
+          {conjugatedNote}
+        </Text>
+      ) : null}
+
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
+
+      {furiganaAutoHideCard.visible ? (
+        <GuidanceCardNotice
+          card={GUIDANCE_CARD_BY_ID['furigana-auto-hide']}
+          onDismiss={furiganaAutoHideCard.dismiss}
+        />
+      ) : null}
 
       <FuriganaOverrideControl itemId={item.id} />
 
       <ItemMnemonicSections item={item} />
 
       <ItemDescriptionSection item={item} />
+
+      <ConjugatedFormsSection itemId={item.id} />
 
       <PersonalMnemonicEditor itemId={item.id} />
       <UserSynonymEditor itemId={item.id} />

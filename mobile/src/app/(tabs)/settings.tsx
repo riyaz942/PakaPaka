@@ -5,12 +5,19 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/common/Button';
 import { ChoiceCard } from '@/components/common/ChoiceCard';
+import { ExplainerSheet } from '@/components/common/ExplainerSheet';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
 import { StepperRow } from '@/components/common/StepperRow';
 import { ToggleRow } from '@/components/common/ToggleRow';
 import { ByokSettingsSection } from '@/components/converse/ByokSettingsSection';
+import {
+  GUIDANCE_CARD_BY_ID,
+  GUIDANCE_CARDS,
+  type GuidanceCard,
+  type GuidanceCardId,
+} from '@/components/onboarding/cardRegistry';
 import { SessionIntensityPicker } from '@/components/onboarding/SessionIntensityPicker';
 import {
   cancelAllNotifications,
@@ -89,6 +96,35 @@ function CardDivider({ children }: { children: React.ReactNode }) {
   return <View className="border-b border-border">{children}</View>;
 }
 
+/**
+ * One row of the "How this works" library. Not a `ChoiceCard`: that is a radio
+ * with a required `selected` prop, and nothing here is being selected — the row
+ * just opens the card.
+ */
+function GuidanceLibraryRow({ card, onPress }: { card: GuidanceCard; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`Explain: ${card.title}`}
+      onPress={onPress}
+      testID={`settings-guidance-card-${card.id}`}
+      className="min-h-[44px] justify-center py-space-sm">
+      <Text className="text-body font-ui-medium text-primary">{card.title}</Text>
+    </Pressable>
+  );
+}
+
+/** One sheet for the whole section, driven by which row was tapped. */
+function GuidanceLibrarySheet({ card, onDismiss }: { card: GuidanceCard; onDismiss: () => void }) {
+  const { Render } = card;
+
+  return (
+    <ExplainerSheet title={card.title} visible onDismiss={onDismiss}>
+      <Render />
+    </ExplainerSheet>
+  );
+}
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
@@ -120,7 +156,10 @@ export default function SettingsScreen() {
   const [notificationPermissionDenied, setNotificationPermissionDenied] = useState(false);
   const [dailyGoal, setDailyGoal] = useState(DAILY_GOAL_STEP);
   const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
+  const [openCardId, setOpenCardId] = useState<GuidanceCardId | null>(null);
   const isRequestingPermission = useRef(false);
+
+  const openCard = openCardId ? GUIDANCE_CARD_BY_ID[openCardId] : null;
 
   useEffect(() => {
     setSelectedIntensity(getSessionIntensity(userDb));
@@ -445,6 +484,33 @@ export default function SettingsScreen() {
         ) : null}
 
         <ByokSettingsSection />
+
+        {/* The whole registry, in registry order, deck cards included — the
+            library is how the day-1 deck stays reachable after onboarding.
+            Opening a card here never writes `card_seen`: reading the manual
+            does not consume the just-in-time moment. */}
+        <View className="mt-space-lg">
+          <SectionHeading label="How this works" />
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Short explanations of the things the app does that are easy to
+            mistake for a bug.
+          </Text>
+          <SettingsCard>
+            {GUIDANCE_CARDS.map((card, index) => {
+              const row = (
+                <GuidanceLibraryRow card={card} onPress={() => setOpenCardId(card.id)} />
+              );
+              return index === GUIDANCE_CARDS.length - 1 ? (
+                <React.Fragment key={card.id}>{row}</React.Fragment>
+              ) : (
+                <CardDivider key={card.id}>{row}</CardDivider>
+              );
+            })}
+          </SettingsCard>
+          {openCard ? (
+            <GuidanceLibrarySheet card={openCard} onDismiss={() => setOpenCardId(null)} />
+          ) : null}
+        </View>
 
         {__DEV__ ? (
           <View className="mt-space-lg">

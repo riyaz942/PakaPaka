@@ -77,3 +77,16 @@ describe('FuriganaOverrideControl', () => {
     }
   });
 });
+
+describe('FuriganaOverrideControl — explain-this affordance (Epic 7)', () => {
+  it('opens the furigana guidance card from beside the heading', () => {
+    render(<FuriganaOverrideControl itemId="vocab-1" />);
+
+    const info = screen.getByTestId('guidance-info-furigana-auto-hide');
+    expect(info.props.accessibilityLabel).toBe('Explain: Where the readings went');
+
+    fireEvent.press(info);
+    expect(screen.getByText('Where the readings went')).toBeTruthy();
+    expect(screen.getByText(/never on the kanji inside it/)).toBeTruthy();
+  });
+});

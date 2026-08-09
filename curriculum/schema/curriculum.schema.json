@@ -198,6 +198,10 @@
           "type": "array",
           "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
           "uniqueItems": true
+        },
+        "word_spans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/wordSpan" }
         }
       }
     },
@@ -289,7 +293,7 @@
         "sort_order": { "type": "integer", "minimum": 0 }
       }
     },
-    "passageWordSpan": {
+    "wordSpan": {
       "type": "object",
       "additionalProperties": false,
       "required": ["vocabulary_slug", "start", "end"],
@@ -299,7 +303,13 @@
         "end": {
           "type": "integer",
           "exclusiveMinimum": { "$data": "1/start" }
-        }
+        },
+        "surface_form": { "type": "string", "minLength": 1 },
+        "inflection": { "type": "string", "enum": ["masu", "te", "nai", "ta"] }
+      },
+      "dependencies": {
+        "surface_form": ["inflection"],
+        "inflection": ["surface_form"]
       }
     },
     "readingPassage": {
@@ -317,7 +327,7 @@
         "summary_en": { "type": "string", "minLength": 1 },
         "word_spans": {
           "type": "array",
-          "items": { "$ref": "#/$defs/passageWordSpan" }
+          "items": { "$ref": "#/$defs/wordSpan" }
         },
         "grammar_slugs": {
           "type": "array",

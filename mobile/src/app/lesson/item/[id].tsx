@@ -7,6 +7,7 @@ import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { ItemDetailBody } from '@/components/learn/ItemDetailBody';
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { MaxContentWidth } from '@/constants/theme';
+import { parseInflection } from '@/core/content/inflection';
 
 /**
  * Full item detail reached from a lesson (Plan 11.7). Mounted as a nested
@@ -17,7 +18,7 @@ import { MaxContentWidth } from '@/constants/theme';
  * pushing a Browse route from here would leave the lesson stack.
  */
 export default function LessonItemDetailScreen() {
-  const params = useLocalSearchParams<{ id: string }>();
+  const params = useLocalSearchParams<{ id: string; surface?: string; inflection?: string }>();
   const itemId = params.id ?? null;
 
   return (
@@ -37,7 +38,11 @@ export default function LessonItemDetailScreen() {
           showsVerticalScrollIndicator
           testID="lesson-item-scroll">
           <ItemLinkProvider base="/lesson/item">
-            <ItemDetailBody itemId={itemId} />
+            <ItemDetailBody
+              itemId={itemId}
+              surface={params.surface ?? null}
+              inflection={parseInflection(params.inflection)}
+            />
           </ItemLinkProvider>
         </ScrollView>
       </SafeAreaView>

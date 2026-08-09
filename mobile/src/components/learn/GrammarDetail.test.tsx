@@ -45,11 +45,11 @@ const grammarRule: GrammarRule = {
 };
 
 const exampleSentences: ExampleSentence[] = [
-  { id: '1', japanese: 'これは本です。', furigana: null, english: 'This is a book.', sortOrder: 1, vocabularyLinks: [] },
-  { id: '2', japanese: '私は学生です。', furigana: null, english: 'I am a student.', sortOrder: 2, vocabularyLinks: [] },
-  { id: '3', japanese: '彼は先生です。', furigana: null, english: 'He is a teacher.', sortOrder: 3, vocabularyLinks: [] },
-  { id: '4', japanese: 'それは犬です。', furigana: null, english: 'That is a dog.', sortOrder: 4, vocabularyLinks: [] },
-  { id: '5', japanese: '今日は月曜日です。', furigana: null, english: 'Today is Monday.', sortOrder: 5, vocabularyLinks: [] },
+  { id: '1', japanese: 'これは本です。', furigana: null, english: 'This is a book.', sortOrder: 1, vocabularyLinks: [], spans: [] },
+  { id: '2', japanese: '私は学生です。', furigana: null, english: 'I am a student.', sortOrder: 2, vocabularyLinks: [], spans: [] },
+  { id: '3', japanese: '彼は先生です。', furigana: null, english: 'He is a teacher.', sortOrder: 3, vocabularyLinks: [], spans: [] },
+  { id: '4', japanese: 'それは犬です。', furigana: null, english: 'That is a dog.', sortOrder: 4, vocabularyLinks: [], spans: [] },
+  { id: '5', japanese: '今日は月曜日です。', furigana: null, english: 'Today is Monday.', sortOrder: 5, vocabularyLinks: [], spans: [] },
 ];
 
 const acceptedAnswers: AcceptedAnswer[] = [

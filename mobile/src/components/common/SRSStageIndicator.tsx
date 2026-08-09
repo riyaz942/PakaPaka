@@ -1,10 +1,18 @@
 import { Text, View } from 'react-native';
 
+import { GuidanceInfoButton } from '@/components/common/GuidanceInfoButton';
+import type { GuidanceCardId } from '@/components/onboarding/cardRegistry';
 import type { SRSStageLabel, StageTransition } from '@/core/srs/srs.types';
 import { cn } from '@/utils/cn';
 
 type Props = {
   stage: SRSStageLabel;
+  /**
+   * Adds an "explain this" affordance beside the stage name. Only the review
+   * card passes it — the dot and the pill sit on every Browse row and detail
+   * header, where an info button would be noise.
+   */
+  infoCardId?: GuidanceCardId;
 };
 
 const STAGE_ORDER: Record<SRSStageLabel, number> = {
@@ -119,15 +127,26 @@ export function SRSStageTransitionBadge({ transition }: { transition: StageTrans
   );
 }
 
-export function SRSStageIndicator({ stage }: Props) {
+export function SRSStageIndicator({ stage, infoCardId }: Props) {
   const label = STAGE_LABEL[stage];
   const colorClass = STAGE_CLASS[stage];
 
-  return (
+  const stageText = (
     <Text
       accessibilityLabel={`SRS stage: ${label}`}
       className={`text-overline font-ui-bold uppercase tracking-[0.08em] ${colorClass}`}>
       {label}
     </Text>
+  );
+
+  if (!infoCardId) {
+    return stageText;
+  }
+
+  return (
+    <View className="flex-row items-center gap-space-xs">
+      {stageText}
+      <GuidanceInfoButton cardId={infoCardId} />
+    </View>
   );
 }

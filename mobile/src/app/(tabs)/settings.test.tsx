@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { Appearance } from 'react-native';
 
+import { GUIDANCE_CARDS } from '@/components/onboarding/cardRegistry';
+
 import SettingsScreen from './settings';
 
 const mockSetReducedMotion = jest.fn();
@@ -36,6 +38,16 @@ jest.mock('@/data/hooks/useDatabase', () => ({
   // Stable reference: a fresh object per render would re-run [userDb] effects
   // on every render and reset screen state mid-test.
   useDatabase: () => ({ userDb: mockUserDb }),
+}));
+
+/** In-memory stand-in for the `card_seen` table (Epic 7). */
+const mockSeenGuidanceCards = new Set<string>();
+
+jest.mock('@/data/user/cardSeenRepository', () => ({
+  isCardSeen: (_userDb: unknown, cardId: string) => mockSeenGuidanceCards.has(cardId),
+  markCardSeen: (_userDb: unknown, cardId: string) => {
+    mockSeenGuidanceCards.add(cardId);
+  },
 }));
 
 jest.mock('@/data/hooks/useReducedMotion', () => ({
@@ -422,5 +434,58 @@ describe('SettingsScreen appearance (light/dark palette)', () => {
     fireEvent.press(screen.getByTestId('settings-theme-mode-system'));
     expect(mockSetThemeMode).toHaveBeenCalledWith(mockUserDb, 'system');
     expect(setColorScheme).toHaveBeenLastCalledWith('unspecified');
+  });
+});
+
+describe('SettingsScreen — "How this works" library (Epic 7)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockSeenGuidanceCards.clear();
+  });
+
+  it('lists every registry card, deck cards included, in registry order', () => {
+    render(<SettingsScreen />);
+
+    expect(screen.getByText('How this works')).toBeTruthy();
+
+    const rows = GUIDANCE_CARDS.map((card) =>
+      screen.getByTestId(`settings-guidance-card-${card.id}`),
+    );
+    expect(rows).toHaveLength(GUIDANCE_CARDS.length);
+
+    for (const card of GUIDANCE_CARDS) {
+      const row = screen.getByTestId(`settings-guidance-card-${card.id}`);
+      expect(row.props.accessibilityLabel).toBe(`Explain: ${card.title}`);
+      expect(row.props.accessibilityRole).toBe('button');
+      expect(row.props.className).toContain('min-h-[44px]');
+    }
+  });
+
+  it('opens a card in the shared sheet, whatever its trigger', () => {
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-guidance-card-first-miss'));
+    expect(screen.getByTestId('explainer-sheet')).toBeTruthy();
+    expect(screen.getByText(/not a strike against you/)).toBeTruthy();
+
+    fireEvent.press(screen.getByTestId('explainer-sheet-close'));
+    expect(screen.queryByText(/not a strike against you/)).toBeNull();
+  });
+
+  it('reads the library-only card that never fires on its own', () => {
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-guidance-card-two-card-kanji'));
+    expect(screen.getByText(/becomes two review cards/)).toBeTruthy();
+  });
+
+  it('never consumes the just-in-time moment — reading here writes no seen flag', () => {
+    render(<SettingsScreen />);
+
+    fireEvent.press(screen.getByTestId('settings-guidance-card-passage-locks'));
+    expect(screen.getByText(/at least 90% of the vocabulary and grammar/)).toBeTruthy();
+
+    expect(mockSeenGuidanceCards.has('passage-locks')).toBe(false);
+    expect(mockSeenGuidanceCards.size).toBe(0);
   });
 });

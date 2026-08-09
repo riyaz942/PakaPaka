@@ -128,6 +128,26 @@ jest.mock('@/data/hooks/useAnswerCollision', () => ({
       mockDetectAnswerCollision(...args),
 }));
 
+// Stable handle: an unstable identity would re-fire every [userDb] effect.
+const mockDatabaseHandles = { curriculumDb: {}, userDb: {}, isReady: true, error: null };
+
+jest.mock('@/data/hooks/useDatabase', () => ({
+  useDatabase: () => mockDatabaseHandles,
+}));
+
+/**
+ * In-memory stand-in for the `card_seen` table. Real repository semantics, no
+ * SQLite: seen-state is asserted through this set, never by spying on writes.
+ */
+const mockSeenGuidanceCards = new Set<string>();
+
+jest.mock('@/data/user/cardSeenRepository', () => ({
+  isCardSeen: (_userDb: unknown, cardId: string) => mockSeenGuidanceCards.has(cardId),
+  markCardSeen: (_userDb: unknown, cardId: string) => {
+    mockSeenGuidanceCards.add(cardId);
+  },
+}));
+
 jest.mock('@/components/review/WanaKanaInput', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports -- jest mock factory
   const { forwardRef, useImperativeHandle } = require('react');
@@ -179,6 +199,7 @@ jest.mock('@/components/review/WanaKanaInput', () => {
 describe('ReviewScreen accessibility', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockSeenGuidanceCards.clear();
     mockCurrentItem = makeReviewItem();
     mockCurrentIndex = 0;
     mockCursor = 0;
@@ -601,6 +622,7 @@ describe('ReviewScreen — Return-to-advance pacing (Story 1.2, FR84)', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
+    mockSeenGuidanceCards.clear();
     mockCurrentItem = makeReviewItem();
     mockCurrentIndex = 0;
     mockCursor = 0;
@@ -927,5 +949,171 @@ describe('ReviewScreen — hints never affect grading (Plan 10.2)', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
     expect(mockGradeCurrentItem).toHaveBeenCalledTimes(1);
     expect(mockGradeCurrentItem).toHaveBeenCalledWith(1);
+  });
+});
+
+describe('ReviewScreen — contextual guidance cards (Epic 7)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockSeenGuidanceCards.clear();
+    mockCurrentItem = makeReviewItem();
+    mockCurrentIndex = 0;
+    mockCursor = 0;
+    mockAutoAdvanceEnabled = false;
+    mockDetectAnswerCollision.mockReturnValue(null);
+    mockFocusScreenReaderOn.mockResolvedValue(undefined);
+
+    jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+      cb(0);
+      return 0;
+    });
+    jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockResolvedValue(false);
+    jest.spyOn(AccessibilityInfo, 'announceForAccessibility').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  async function submitWrongAnswer() {
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'wrong');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+  }
+
+  it('explains the first miss inline, then clears it on Continue', async () => {
+    render(<ReviewScreen />);
+
+    expect(screen.queryByTestId('guidance-card-notice-first-miss')).toBeNull();
+
+    await submitWrongAnswer();
+    expect(screen.getByTestId('guidance-card-notice-first-miss')).toBeTruthy();
+    expect(screen.getByText('Getting it wrong is the point')).toBeTruthy();
+    // Seen is written the moment it is visible, not on dismiss.
+    expect(mockSeenGuidanceCards.has('first-miss')).toBe(true);
+
+    await act(async () => {
+      fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    });
+    mockCursor = 1;
+    await act(async () => {
+      screen.rerender(<ReviewScreen />);
+    });
+
+    expect(screen.queryByTestId('guidance-card-notice-first-miss')).toBeNull();
+  });
+
+  it('does not re-show the miss card on a second wrong answer in the same session', async () => {
+    render(<ReviewScreen />);
+
+    await submitWrongAnswer();
+    expect(screen.getByTestId('guidance-card-notice-first-miss')).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
+    });
+    mockCurrentItem = makeReviewItem({ itemId: 'test-2' });
+    mockCursor = 1;
+    await act(async () => {
+      screen.rerender(<ReviewScreen />);
+    });
+
+    await submitWrongAnswer();
+    expect(screen.queryByTestId('guidance-card-notice-first-miss')).toBeNull();
+  });
+
+  it('leaves the miss card alone for a non-terminal wrong-script answer', async () => {
+    mockCurrentItem = makeReviewItem({ promptType: 'meaning' });
+    render(<ReviewScreen />);
+
+    fireEvent.changeText(screen.getByTestId('review-answer-input'), 'たべる');
+    await act(async () => {
+      fireEvent(screen.getByTestId('review-answer-input'), 'submitEditing');
+    });
+
+    expect(screen.queryByTestId('guidance-card-notice-first-miss')).toBeNull();
+    expect(mockSeenGuidanceCards.has('first-miss')).toBe(false);
+  });
+
+  it('explains a repeat sighting and names the item', async () => {
+    mockCurrentItem = makeReviewItem({
+      primaryForm: '水',
+      srsState: { ...makeReviewItem().srsState, reps: 2 },
+    });
+
+    render(<ReviewScreen />);
+
+    expect(screen.getByTestId('guidance-card-notice-spaced-repetition')).toBeTruthy();
+    expect(screen.getByText('Why items come back')).toBeTruthy();
+    expect(screen.getByText(/You have met 水 before/)).toBeTruthy();
+  });
+
+  it('says nothing about repeats on an item’s first review', async () => {
+    mockCurrentItem = makeReviewItem({ srsState: { ...makeReviewItem().srsState, reps: 0 } });
+
+    render(<ReviewScreen />);
+
+    expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
+    expect(mockSeenGuidanceCards.has('spaced-repetition')).toBe(false);
+  });
+
+  it('dismisses the repeat notice in one tap and keeps it gone', async () => {
+    mockCurrentItem = makeReviewItem({
+      srsState: { ...makeReviewItem().srsState, reps: 3 },
+    });
+
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('guidance-card-notice-spaced-repetition')).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('guidance-card-notice-dismiss'));
+    });
+    expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
+
+    mockCursor = 1;
+    await act(async () => {
+      screen.rerender(<ReviewScreen />);
+    });
+    expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
+  });
+
+  it('shows only the miss card when a repeat item is answered incorrectly', async () => {
+    mockCurrentItem = makeReviewItem({
+      srsState: { ...makeReviewItem().srsState, reps: 2 },
+    });
+
+    render(<ReviewScreen />);
+    // The repeat sighting fires during the prompt…
+    expect(screen.getByTestId('guidance-card-notice-spaced-repetition')).toBeTruthy();
+
+    await submitWrongAnswer();
+
+    // …and the incorrect reveal belongs to first-miss alone.
+    expect(screen.getByTestId('guidance-card-notice-first-miss')).toBeTruthy();
+    expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
+  });
+
+  it('hides the repeat notice when the session advances to another repeat item', async () => {
+    mockCurrentItem = makeReviewItem({
+      srsState: { ...makeReviewItem().srsState, reps: 2 },
+    });
+
+    render(<ReviewScreen />);
+    expect(screen.getByTestId('guidance-card-notice-spaced-repetition')).toBeTruthy();
+
+    // Consecutive repeat items keep the trigger true, so the notice must be
+    // cleared by the advance itself, not by an `active` edge.
+    mockCurrentItem = makeReviewItem({
+      itemId: 'test-2',
+      primaryForm: '水',
+      srsState: { ...makeReviewItem().srsState, itemId: 'test-2', reps: 5 },
+    });
+    mockCursor = 1;
+    await act(async () => {
+      screen.rerender(<ReviewScreen />);
+    });
+
+    expect(screen.queryByTestId('guidance-card-notice-spaced-repetition')).toBeNull();
   });
 });

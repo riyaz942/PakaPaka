@@ -14,13 +14,17 @@ The model submits only what a model can be trusted with:
 
 Everything positional or phonetic is **derived here**, never asked for:
 
-  * `word_spans` — literal, non-overlapping occurrences of allowed vocabulary
-    dictionary forms in the body. `compile-curriculum` requires
-    `body.slice(start, end) === primary_form` and spans in body order with no
-    overlap; an LLM counting UTF-16 offsets would fail that on most passages.
-  * `vocabulary_slugs` — the unique slugs of those spans, which is the
-    convention the shipped passages already follow (conjugated usage is not
-    marked).
+  * `word_spans` — non-overlapping occurrences of allowed vocabulary in the
+    body: the dictionary form (来る), plus the taught inflections of the words
+    that dictionary layer already linked (来ます, 開けました — see
+    `generate_content/spans.py`). `compile-curriculum` requires
+    `body.slice(start, end) === span.surface_form ?? primary_form` and spans in
+    body order with no overlap; an LLM counting UTF-16 offsets would fail that
+    on most passages.
+  * `vocabulary_slugs` — the unique slugs of the *dictionary* spans, which is
+    the convention the shipped passages already follow. An inflected span never
+    introduces a slug of its own: a word that appears only conjugated stays
+    unlinked, so adding inflected spans cannot move a passage's unlock bar.
   * `word_count` — tokenizer token count, punctuation excluded.
   * `body_furigana` / `prompt_furigana` — bracket annotations from the same
     fugashi tagger as everything else. Never asked of the model: it writes
@@ -47,7 +51,9 @@ shipped JSON).
      REJECTION for generated content, not silent no-furigana
   6. declared `grammar_slugs` exist and are inside the seed's allowed set
   7. derived spans satisfy the compile-time contract (in range, ordered,
-     non-overlapping, surface equals primary_form)
+     non-overlapping, surface equals the span's own claimed form) and the
+     inflection contract (every taught-inflected occurrence of a linked word is
+     spanned, and no span names a word the passage does not link)
 
 **Not checked, by design:** whether the passage actually *uses* only allowed
 grammar (a tokenizer cannot extract grammar points — see `reading_context`),
@@ -70,7 +76,7 @@ BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BUILD_DIR)
 
 import furigana as furigana_lib  # noqa: E402
-from generate_content import level_check, reading_context, reading_seeds  # noqa: E402
+from generate_content import level_check, reading_context, reading_seeds, spans  # noqa: E402
 from generate_content.validate_drafts import _known_readings  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -106,76 +112,22 @@ def word_count(text):
     )
 
 
-#: Longest vocabulary entry, in tokens, a span may cover (朝ご飯 → 朝/ご飯,
-#: 日本語 → 日本/語, 一緒に → 一緒/に).
-MAX_SPAN_TOKENS = 4
+#: Span derivation lives in `generate_content/spans.py` — the readings lane and
+#: the example-sentence lane build the same spans from the same tokenizer.
+build_word_spans = spans.build_word_spans
 
 
-def _tokens_with_offsets(body):
-    tokens = []
-    cursor = 0
-    for token in furigana_lib.get_tagger()(body):
-        start = body.index(token.surface, cursor)
-        cursor = start + len(token.surface)
-        tokens.append({
-            "surface": token.surface,
-            "start": start,
-            "end": cursor,
-            "pos1": getattr(token.feature, "pos1", None),
-            "pos2": getattr(token.feature, "pos2", None),
-        })
-    return tokens
-
-
-def _span_may_start_at(tokens, i, run_length):
-    """Whether a token run is a word the reader should be able to tap.
-
-    Spans are built on *token* boundaries rather than by substring search,
-    because raw string matching marks things that are not words: 「は」+「いつも」
-    contains はい, 十分 contains 分, 日曜日 contains 日. Three exclusions on top
-    of that, all of them matching the convention the shipped passages follow:
-
-      * a run may not begin at a suffix (接尾辞) — 二つ**目**, 一**匹**. Prefixes
-        are *not* excluded: they head their own word (お茶, お願いします), and a
-        bare prefix never matches a dictionary form anyway.
-      * a bare numeral is not a tappable word (十, 百), though a multi-token
-        entry that starts with one is (二つ)
-      * a counter bound to a numeral is part of the number, not a word on its
-        own — the 分 of 十分, the 円 of 百円, the 時 of 十一時
-    """
-    head = tokens[i]
-    if head["pos1"] == "接尾辞":
-        return False
-    if run_length == 1 and head["pos2"] == "数詞":
-        return False
-    if i > 0 and tokens[i - 1]["pos2"] == "数詞":
-        return False
-    return True
-
-
-def build_word_spans(body, span_forms):
-    """Vocabulary occurrences in `body` as token-aligned, non-overlapping spans.
-
-    Scans left to right; at each token the longest run of consecutive tokens
-    whose surface is an allowed dictionary form wins, and the scan resumes
-    after it. Spans therefore come out in body order and cannot overlap —
-    exactly what `compile-curriculum` requires.
-    """
-    tokens = _tokens_with_offsets(body)
-    spans = []
-    i = 0
-    while i < len(tokens):
-        for length in range(min(MAX_SPAN_TOKENS, len(tokens) - i), 0, -1):
-            start = tokens[i]["start"]
-            end = tokens[i + length - 1]["end"]
-            slug = span_forms.get(body[start:end])
-            if slug and _span_may_start_at(tokens, i, length):
-                spans.append({"vocabulary_slug": slug, "start": start, "end": end})
-                i += length
-                break
-        else:
-            i += 1
-    return spans
+def build_passage_spans(body, span_forms):
+    """The passage's dictionary spans plus the taught inflections of the words
+    those spans link (see the `word_spans` note in the module docstring)."""
+    dictionary_spans = spans.build_word_spans(body, span_forms)
+    forms_by_slug = {
+        span["vocabulary_slug"]: body[span["start"]:span["end"]]
+        for span in dictionary_spans
+    }
+    return spans.merge_spans(
+        dictionary_spans, spans.build_inflected_spans(body, forms_by_slug)
+    )
 
 
 def _annotated(text, known_readings):
@@ -214,7 +166,7 @@ def enrich(draft, ctx):
     readings survives the wire-in unchanged; deriving it here is what makes the
     artifact reviewable *with* readings, the way the app will show it."""
     body = draft["body"].strip()
-    spans = build_word_spans(body, ctx["span_forms"])
+    word_spans = build_passage_spans(body, ctx["span_forms"])
     known_readings = _known_readings(ctx["level"])
     passage = {
         "title": draft["title"].strip(),
@@ -226,8 +178,8 @@ def enrich(draft, ctx):
         "summary_ja": draft["summary_ja"].strip(),
         "summary_en": draft["summary_en"].strip(),
         "grammar_slugs": list(draft.get("grammar_slugs", [])),
-        "vocabulary_slugs": sorted({s["vocabulary_slug"] for s in spans}),
-        "word_spans": spans,
+        "vocabulary_slugs": sorted({s["vocabulary_slug"] for s in word_spans}),
+        "word_spans": word_spans,
         "word_count": word_count(body),
     }
     body_furigana = _annotated(body, known_readings)
@@ -345,19 +297,20 @@ def _question_errors(draft, ctx, known_readings):
     return errors
 
 
-def _span_errors(spans, body, ctx):
+def _span_errors(word_spans, body, ctx):
     """Re-checks the compile-time span contract over the derived spans. They
     hold by construction; this catches a regression in the builder before it
     reaches `compile-curriculum`, where the same violation is a hard throw."""
     errors = []
-    if not spans:
+    linked = {s["vocabulary_slug"] for s in word_spans if "inflection" not in s}
+    if not linked:
         errors.append(
             "no allowed vocabulary appears in the passage in its dictionary form, so "
             "the reader has nothing to tap — rewrite around words the learner knows"
         )
     forms_by_slug = {slug: form for form, slug in ctx["span_forms"].items()}
     previous_end = 0
-    for span in spans:
+    for span in word_spans:
         label = span["vocabulary_slug"]
         if not 0 <= span["start"] < span["end"] <= len(body):
             errors.append(f"span {label} [{span['start']}, {span['end']}) is out of range")
@@ -369,11 +322,53 @@ def _span_errors(spans, body, ctx):
             )
         previous_end = span["end"]
         surface = body[span["start"]:span["end"]]
-        if surface != forms_by_slug.get(label):
-            errors.append(
-                f"span {label} surface {surface!r} != primary_form "
-                f"{forms_by_slug.get(label)!r}"
-            )
+        expected = span.get("surface_form", forms_by_slug.get(label))
+        if surface != expected:
+            errors.append(f"span {label} surface {surface!r} != {expected!r}")
+        errors += _inflected_span_errors(span, linked, forms_by_slug)
+
+    # Completeness: an inflected occurrence of a linked word that carries no
+    # span is a word the learner has been taught and cannot tap.
+    derived = {
+        (s["start"], s["end"]) for s in build_passage_spans(body, ctx["span_forms"])
+    }
+    for start, end in sorted(derived - {(s["start"], s["end"]) for s in word_spans}):
+        errors.append(
+            f"unspanned taught-inflected occurrence {body[start:end]!r} at "
+            f"[{start}, {end}) — every inflected use of a linked word is tappable"
+        )
+    return errors
+
+
+def _inflected_span_errors(span, linked, forms_by_slug):
+    """The inflection contract on one span: a taught family, a word the passage
+    already links, and a surface that is really a form of that word."""
+    inflection = span.get("inflection")
+    label = span["vocabulary_slug"]
+    if inflection is None:
+        return (
+            []
+            if "surface_form" not in span
+            else [f"span {label} carries surface_form without an inflection"]
+        )
+    errors = []
+    if inflection not in spans.TAUGHT_INFLECTIONS:
+        errors.append(
+            f"span {label} inflection {inflection!r} is not taught "
+            f"(expected one of {', '.join(spans.TAUGHT_INFLECTIONS)})"
+        )
+    if label not in linked:
+        errors.append(
+            f"span {label} is an inflected form of a word the passage does not link"
+        )
+    primary_form = forms_by_slug.get(label)
+    surface = span.get("surface_form", "")
+    stem = spans.inflection_stem(primary_form) if primary_form else None
+    if stem is not None and (surface == primary_form or not surface.startswith(stem)):
+        errors.append(
+            f"span {label} surface {surface!r} is not an inflection of "
+            f"primary_form {primary_form!r}"
+        )
     return errors
 
 
@@ -429,7 +424,7 @@ def validate_draft(level, slug, draft, ctx=None):
             )
 
     errors += _question_errors(draft, ctx, known_readings)
-    errors += _span_errors(build_word_spans(body, ctx["span_forms"]), body, ctx)
+    errors += _span_errors(build_passage_spans(body, ctx["span_forms"]), body, ctx)
     return errors
 
 

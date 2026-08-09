@@ -24,6 +24,9 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+/** Rows the curriculum `example_sentence_spans` join returns for this word. */
+let mockConjugatedSpanRows: Record<string, unknown>[] = [];
+
 jest.mock('@/data/hooks/useDatabase', () => {
   // Stable object: an unstable identity would re-fire db-keyed effects every render.
   const databases = {
@@ -32,10 +35,45 @@ jest.mock('@/data/hooks/useDatabase', () => {
       getAllSync: jest.fn(() => []),
       runSync: jest.fn(),
     },
-    curriculumDb: {},
+    curriculumDb: {
+      getFirstSync: jest.fn(() => null),
+      getAllSync: jest.fn(() => mockConjugatedSpanRows),
+      runSync: jest.fn(),
+    },
   };
   return { useDatabase: () => databases };
 });
+
+let mockIsKnownWord = false;
+let mockFuriganaModeForItem: 'auto' | 'shown' | 'hidden' = 'auto';
+
+jest.mock('@/data/hooks/useIsKnownWord', () => ({
+  useIsKnownWord: () => mockIsKnownWord,
+}));
+
+jest.mock('@/data/hooks/useFuriganaPreference', () => ({
+  useFuriganaPreference: () => ({
+    mode: 'auto',
+    setMode: jest.fn(),
+    knownKanji: new Set<string>(),
+    refreshKnownKanji: jest.fn(),
+    overrides: new Map<string, 'shown' | 'hidden'>(),
+    modeForItem: () => mockFuriganaModeForItem,
+    setOverride: jest.fn(),
+    clearOverride: jest.fn(),
+    clearAllOverrides: jest.fn(),
+  }),
+}));
+
+/** In-memory stand-in for the `card_seen` table (Epic 7). */
+const mockSeenGuidanceCards = new Set<string>();
+
+jest.mock('@/data/user/cardSeenRepository', () => ({
+  isCardSeen: (_userDb: unknown, cardId: string) => mockSeenGuidanceCards.has(cardId),
+  markCardSeen: (_userDb: unknown, cardId: string) => {
+    mockSeenGuidanceCards.add(cardId);
+  },
+}));
 
 const baseItem: CurriculumItemDetail = {
   id: '20',
@@ -64,6 +102,7 @@ const exampleSentences: ExampleSentence[] = [
     english: 'I am a student.',
     sortOrder: 1,
     vocabularyLinks: [],
+    spans: [],
   },
 ];
 
@@ -79,6 +118,10 @@ const grammarVocabLinks: GrammarVocabLink[] = [
 describe('VocabularyDetail', () => {
   beforeEach(() => {
     mockPush.mockClear();
+    mockIsKnownWord = false;
+    mockFuriganaModeForItem = 'auto';
+    mockSeenGuidanceCards.clear();
+    mockConjugatedSpanRows = [];
   });
 
   it('renders meaning, examples, mnemonic, and grammar links', () => {
@@ -198,5 +241,136 @@ describe('VocabularyDetail Rev 1 content', () => {
     expect(screen.getByText('Mnemonic')).toBeTruthy();
     expect(screen.getByText('Think of private self.')).toBeTruthy();
     expect(screen.queryByText('Meaning mnemonic')).toBeNull();
+  });
+});
+
+describe('VocabularyDetail — furigana auto-hide guidance (Epic 7)', () => {
+  beforeEach(() => {
+    mockPush.mockClear();
+    mockIsKnownWord = false;
+    mockFuriganaModeForItem = 'auto';
+    mockSeenGuidanceCards.clear();
+    mockConjugatedSpanRows = [];
+  });
+
+  function renderDetail() {
+    return render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+  }
+
+  it('explains where the reading went once the word is known', () => {
+    mockIsKnownWord = true;
+
+    renderDetail();
+
+    expect(screen.getByTestId('guidance-card-notice-furigana-auto-hide')).toBeTruthy();
+    expect(screen.getByText('Where the readings went')).toBeTruthy();
+    expect(mockSeenGuidanceCards.has('furigana-auto-hide')).toBe(true);
+  });
+
+  it('says nothing when the word carries an explicit override', () => {
+    mockIsKnownWord = true;
+    mockFuriganaModeForItem = 'shown';
+
+    renderDetail();
+
+    expect(screen.queryByTestId('guidance-card-notice-furigana-auto-hide')).toBeNull();
+    expect(mockSeenGuidanceCards.has('furigana-auto-hide')).toBe(false);
+  });
+
+  it('says nothing for a word that is not known yet', () => {
+    renderDetail();
+
+    expect(screen.queryByTestId('guidance-card-notice-furigana-auto-hide')).toBeNull();
+    expect(mockSeenGuidanceCards.has('furigana-auto-hide')).toBe(false);
+  });
+});
+
+describe('VocabularyDetail — conjugated forms (14.1)', () => {
+  const kuru: CurriculumItemDetail = {
+    ...baseItem,
+    id: '537',
+    slug: 'kuru-v',
+    primaryForm: '来る',
+    furigana: '来[く]る',
+    meaning: 'to come',
+  };
+
+  beforeEach(() => {
+    mockPush.mockClear();
+    mockIsKnownWord = false;
+    mockFuriganaModeForItem = 'shown';
+    mockSeenGuidanceCards.clear();
+    mockConjugatedSpanRows = [];
+  });
+
+  function renderKuru(props: { surface?: string | null; inflection?: 'masu' | null } = {}) {
+    return render(
+      <VocabularyDetail
+        item={kuru}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+        {...props}
+      />,
+    );
+  }
+
+  it('notes the conjugation the learner arrived from, naming its category', () => {
+    renderKuru({ surface: '来ます', inflection: 'masu' });
+
+    expect(screen.getByTestId('conjugated-form-note')).toBeTruthy();
+    expect(screen.getByText('来ます is the polite / ます-form of 来る')).toBeTruthy();
+  });
+
+  it('falls back to a plain note when the category is unknown', () => {
+    renderKuru({ surface: '来ちゃった', inflection: null });
+
+    expect(screen.getByText('来ちゃった is a conjugated form of 来る')).toBeTruthy();
+  });
+
+  it('says nothing when the learner arrived at the dictionary form', () => {
+    renderKuru({ surface: '来る', inflection: null });
+
+    expect(screen.queryByTestId('conjugated-form-note')).toBeNull();
+  });
+
+  it('says nothing when the learner arrived without a surface at all', () => {
+    renderKuru();
+
+    expect(screen.queryByTestId('conjugated-form-note')).toBeNull();
+  });
+
+  it('lists the taught forms the curriculum actually shows the word in', () => {
+    mockConjugatedSpanRows = [
+      { inflection: 'masu', start_offset: 7, end_offset: 10, japanese: '二十日に彼女が来ます。' },
+      // A second ます occurrence must not add a second row.
+      { inflection: 'masu', start_offset: 5, end_offset: 9, japanese: '学生が百人来ました。' },
+      { inflection: 'te', start_offset: 0, end_offset: 2, japanese: '来て、座ってください。' },
+    ];
+
+    renderKuru();
+
+    expect(screen.getByTestId('conjugated-forms-section')).toBeTruthy();
+    expect(screen.getByText('来ます')).toBeTruthy();
+    expect(screen.getByText('polite / ます-form')).toBeTruthy();
+    expect(screen.getByTestId('conjugated-form-te')).toBeTruthy();
+    expect(screen.getByText('て-form')).toBeTruthy();
+    // ない / た never occur, so they are never invented.
+    expect(screen.queryByTestId('conjugated-form-nai')).toBeNull();
+    expect(screen.queryByTestId('conjugated-form-ta')).toBeNull();
+  });
+
+  it('renders nothing extra for a word with no conjugated usage', () => {
+    renderKuru();
+
+    expect(screen.queryByTestId('conjugated-forms-section')).toBeNull();
+    expect(screen.queryByText('Conjugated forms')).toBeNull();
   });
 });

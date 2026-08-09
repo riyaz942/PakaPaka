@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import type { SRSStageLabel } from '@/core/srs/srs.types';
 
@@ -41,4 +41,21 @@ describe('SRSStageIndicator', () => {
       expect(node.props.className).toContain(STAGE_TOKEN_CLASS[stage]);
     });
   }
+});
+
+describe('SRSStageIndicator — explain-this affordance', () => {
+  it('adds no affordance when no card id is given', () => {
+    render(<SRSStageIndicator stage="guru" />);
+
+    expect(screen.queryByTestId('guidance-info-spaced-repetition')).toBeNull();
+  });
+
+  it('opens the named guidance card beside the stage name', () => {
+    render(<SRSStageIndicator stage="guru" infoCardId="spaced-repetition" />);
+
+    expect(screen.getByText('Guru')).toBeTruthy();
+
+    fireEvent.press(screen.getByTestId('guidance-info-spaced-repetition'));
+    expect(screen.getByText('Why items come back')).toBeTruthy();
+  });
 });

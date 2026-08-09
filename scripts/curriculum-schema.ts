@@ -95,13 +95,28 @@ CREATE TABLE example_sentences (
   reinforcement_tags TEXT
 );
 
--- Authored vocabulary links on example sentences (Plan 11.6). Spans are
--- located at runtime by the first primary_form match in the japanese text —
--- never auto-segmented. Unmatched surfaces stay inert.
+-- Authored vocabulary links on example sentences (Plan 11.6). Which characters
+-- each link covers lives in example_sentence_spans below; a link with no span
+-- has no occurrence the pipeline could locate and stays inert.
 CREATE TABLE example_sentence_vocab (
   id INTEGER PRIMARY KEY NOT NULL,
   sentence_id INTEGER NOT NULL REFERENCES example_sentences(id),
   item_id INTEGER NOT NULL REFERENCES items(id),
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+-- Word boundaries into example_sentences.japanese (feedback 14.1a), the
+-- example-sentence twin of passage_word_spans: same UTF-16 offsets, same
+-- ordered non-overlapping contract, same inflection column. Derived at build
+-- time by the curriculum pipeline, never at runtime — a conjugated surface
+-- (来ます) cannot be found by matching the linked item's primary_form (来る).
+CREATE TABLE example_sentence_spans (
+  id INTEGER PRIMARY KEY NOT NULL,
+  sentence_id INTEGER NOT NULL REFERENCES example_sentences(id),
+  item_id INTEGER NOT NULL REFERENCES items(id),
+  start_offset INTEGER NOT NULL,
+  end_offset INTEGER NOT NULL,
+  inflection TEXT CHECK(inflection IN ('masu', 'te', 'nai', 'ta')),
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
@@ -131,17 +146,23 @@ CREATE TABLE reading_passages (
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
--- Authored word boundaries into reading_passages.body (Story 3.2 / FR70).
--- Offsets are UTF-16 (JavaScript string) indices into the body, inclusive
--- start and exclusive end, so body.slice(start_offset, end_offset) is the
--- surface form. Spans are authored, never auto-segmented; unspanned text
--- stays inert.
+-- Word boundaries into reading_passages.body (Story 3.2 / FR70). Offsets are
+-- UTF-16 (JavaScript string) indices into the body, inclusive start and
+-- exclusive end, so body.slice(start_offset, end_offset) is the surface form.
+-- Spans are derived by the curriculum pipeline, never auto-segmented at
+-- runtime; unspanned text stays inert.
+--
+-- The inflection column is NULL when the surface is the item's dictionary form, and
+-- otherwise names the taught inflection family the surface belongs to
+-- (feedback 14.1a): 'masu' 来ます, 'te' 走って, 'nai' 食べない, 'ta' 開けた. An
+-- inflected span still points at the *base* vocabulary item.
 CREATE TABLE passage_word_spans (
   id INTEGER PRIMARY KEY NOT NULL,
   passage_id INTEGER NOT NULL REFERENCES reading_passages(id),
   vocabulary_item_id INTEGER NOT NULL REFERENCES items(id),
   start_offset INTEGER NOT NULL,
   end_offset INTEGER NOT NULL,
+  inflection TEXT CHECK(inflection IN ('masu', 'te', 'nai', 'ta')),
   sort_order INTEGER NOT NULL DEFAULT 0
 );
 
@@ -179,6 +200,7 @@ CREATE INDEX idx_visually_similar_links_item ON visually_similar_links(item_id);
 CREATE INDEX idx_passage_grammar_links_passage ON passage_grammar_links(passage_id);
 CREATE INDEX idx_passage_vocabulary_links_passage ON passage_vocabulary_links(passage_id);
 CREATE INDEX idx_passage_word_spans_passage ON passage_word_spans(passage_id);
+CREATE INDEX idx_example_sentence_spans_sentence ON example_sentence_spans(sentence_id);
 CREATE INDEX idx_items_item_type ON items(item_type);
 CREATE INDEX idx_items_jlpt_level ON items(jlpt_level);
 CREATE INDEX idx_item_relationships_parent ON item_relationships(parent_item_id);

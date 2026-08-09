@@ -1,3 +1,4 @@
+import type { WordInflection } from '@/core/content/inflection';
 import { parseFurigana, type FuriganaSegment } from '@/core/furigana/parseFurigana';
 
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
@@ -13,6 +14,12 @@ export type PassageBodyPart = {
   text: string;
   /** Plain surface form as it appears in the body, for a11y labels. */
   surface: string;
+  /**
+   * Which taught inflection the span is, when the surface is conjugated —
+   * carried through so the detail surface can say "来ます is the ます-form of
+   * 来る" (14.1). Null on dictionary-form spans and on inert text.
+   */
+  inflection: WordInflection | null;
 };
 
 function toAnnotated(segments: FuriganaSegment[]): string {
@@ -65,6 +72,7 @@ export function buildPassageBodyParts(
       vocabularyItemId: runSpan?.vocabularyItemId ?? null,
       text: toAnnotated(runSegments),
       surface: toSurface(runSegments),
+      inflection: runSpan?.inflection ?? null,
     });
     runSegments = [];
   };

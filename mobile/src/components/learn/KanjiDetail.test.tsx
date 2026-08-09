@@ -125,6 +125,7 @@ describe('KanjiDetail', () => {
         english: 'I read a book every day.',
         sortOrder: 1,
         vocabularyLinks: [],
+        spans: [],
       },
     ];
 

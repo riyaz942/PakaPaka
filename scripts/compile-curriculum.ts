@@ -112,6 +112,7 @@ type ExampleSentence = {
   sort_order?: number;
   reinforcement_tags?: string[];
   vocabulary_slugs?: string[];
+  word_spans?: WordSpan[];
 };
 
 type GrammarClozeVariant = {
@@ -149,16 +150,117 @@ type PassageQuestion = {
   sort_order?: number;
 };
 
+/** The inflection families the N5/N4 grammar curriculum teaches (feedback 14.1a). */
+const TAUGHT_INFLECTIONS = new Set(['masu', 'te', 'nai', 'ta']);
+
 /**
- * Authored word boundary into a passage `body`. `start`/`end` are UTF-16
- * (JavaScript string) indices, inclusive start and exclusive end, measured
- * against `body` — never against `body_furigana` markup.
+ * Derived word boundary into a passage `body` or an example sentence's
+ * `japanese`. `start`/`end` are UTF-16 (JavaScript string) indices, inclusive
+ * start and exclusive end, measured against the plain text — never against the
+ * `furigana` markup.
+ *
+ * A dictionary-form span carries neither extra field and its surface must be
+ * the item's `primary_form`. An inflected span carries both: `surface_form` is
+ * the conjugated text it claims to cover (来ます) and `inflection` names the
+ * taught family. The item is the *base* word in either case.
  */
-type PassageWordSpan = {
+type WordSpan = {
   vocabulary_slug: string;
   start: number;
   end: number;
+  surface_form?: string;
+  inflection?: string;
 };
+
+/**
+ * The prefix every taught inflection of `primaryForm` keeps — mirrors
+ * `inflection_stem` in `curriculum/_build/generate_content/spans.py`. Checking
+ * it here is what makes an inflected span verifiable without a tokenizer.
+ */
+function inflectionStem(primaryForm: string): string {
+  return primaryForm.endsWith('する') ? primaryForm.slice(0, -2) : primaryForm.slice(0, -1);
+}
+
+type ResolvedWordSpan = {
+  item_id: number;
+  start_offset: number;
+  end_offset: number;
+  inflection: string | null;
+  sort_order: number;
+};
+
+/**
+ * Word spans in text order, checked against the text they claim to cover.
+ * `kind` only shapes the error messages ("passage word span" / "example
+ * sentence span"); the contract is identical for both.
+ */
+function resolveWordSpans(
+  text: string,
+  spans: WordSpan[],
+  kind: string,
+  label: string,
+  idByKey: Map<string, number>,
+  primaryFormByVocabSlug: Map<string, string>,
+): ResolvedWordSpan[] {
+  // Spans are stored in text order and must not overlap: the reader composes
+  // the text as [plain, span, plain, span, ...] segments.
+  const sorted = [...spans].sort((left, right) => left.start - right.start);
+  const Kind = kind.charAt(0).toUpperCase() + kind.slice(1);
+  const resolved: ResolvedWordSpan[] = [];
+  let previousEnd = 0;
+  for (const [spanIndex, span] of sorted.entries()) {
+    const target = `${label} -> vocabulary:${span.vocabulary_slug}`;
+    const vocabId = idByKey.get(itemKey('vocabulary', span.vocabulary_slug));
+    if (!vocabId) {
+      throw new Error(`Unresolved ${kind}: ${target}`);
+    }
+    if (span.start < 0 || span.end > text.length || span.start >= span.end) {
+      throw new Error(
+        `Invalid ${kind} offsets: ${target} [${span.start}, ${span.end}) outside text of length ${text.length}`,
+      );
+    }
+    if (span.start < previousEnd) {
+      throw new Error(
+        `Overlapping ${kind}: ${target} starts at ${span.start} before previous span ends at ${previousEnd}`,
+      );
+    }
+    previousEnd = span.end;
+
+    const primaryForm = primaryFormByVocabSlug.get(span.vocabulary_slug);
+    const surface = text.slice(span.start, span.end);
+    const claimed = span.surface_form ?? primaryForm;
+    if (claimed !== undefined && surface !== claimed) {
+      throw new Error(`${Kind} surface mismatch: ${target} slice "${surface}" !== "${claimed}"`);
+    }
+    if ((span.inflection === undefined) !== (span.surface_form === undefined)) {
+      throw new Error(
+        `${Kind} must carry surface_form and inflection together: ${target} has only one of them`,
+      );
+    }
+    if (span.inflection !== undefined) {
+      if (!TAUGHT_INFLECTIONS.has(span.inflection)) {
+        throw new Error(
+          `${Kind} inflection not taught: ${target} claims "${span.inflection}"`,
+        );
+      }
+      const stem = primaryForm === undefined ? undefined : inflectionStem(primaryForm);
+      if (stem !== undefined && (surface === primaryForm || !surface.startsWith(stem))) {
+        throw new Error(
+          `${Kind} is not an inflection of its item: ${target} slice "${surface}" is not a taught form of primary_form "${primaryForm}"`,
+        );
+      }
+    }
+
+    resolved.push({
+      item_id: vocabId,
+      start_offset: span.start,
+      end_offset: span.end,
+      inflection: span.inflection ?? null,
+      sort_order: spanIndex,
+    });
+  }
+  return resolved;
+}
 
 type ReadingPassage = {
   _meta?: SidecarMeta;
@@ -169,7 +271,7 @@ type ReadingPassage = {
   english_translation?: string;
   summary_ja?: string;
   summary_en?: string;
-  word_spans?: PassageWordSpan[];
+  word_spans?: WordSpan[];
   grammar_slugs?: string[];
   vocabulary_slugs?: string[];
   word_count?: number;
@@ -415,14 +517,19 @@ export function compileCurriculum(
       INSERT INTO example_sentence_vocab (sentence_id, item_id, sort_order)
       VALUES (@sentence_id, @item_id, @sort_order)
     `);
-    // Example-sentence vocab links can point at vocabulary items that compile
-    // later than the owning kanji/grammar row, so resolve ids up front and
-    // insert after every item row exists.
+    const insertExampleSpan = db.prepare(`
+      INSERT INTO example_sentence_spans (sentence_id, item_id, start_offset, end_offset, inflection, sort_order)
+      VALUES (@sentence_id, @item_id, @start_offset, @end_offset, @inflection, @sort_order)
+    `);
+    // Example-sentence vocab links and spans can point at vocabulary items that
+    // compile later than the owning kanji/grammar row, so resolve ids up front
+    // and insert after every item row exists.
     const pendingExampleVocabLinks: {
       sentence_id: number;
       item_id: number;
       sort_order: number;
     }[] = [];
+    const pendingExampleSpans: (ResolvedWordSpan & { sentence_id: number })[] = [];
     const insertVisuallySimilarLink = db.prepare(`
       INSERT INTO visually_similar_links (item_id, similar_item_id, sort_order)
       VALUES (@item_id, @similar_item_id, @sort_order)
@@ -485,6 +592,16 @@ export function compileCurriculum(
             item_id: vocabId,
             sort_order: slugIndex,
           });
+        }
+        for (const span of resolveWordSpans(
+          sentence.japanese,
+          sentence.word_spans ?? [],
+          'example sentence span',
+          `${ownerLabel} example[${index}]`,
+          idByKey,
+          primaryFormByVocabSlug,
+        )) {
+          pendingExampleSpans.push({ ...span, sentence_id: sentenceId });
         }
       }
     };
@@ -700,6 +817,10 @@ export function compileCurriculum(
       insertExampleVocab.run(link);
     }
 
+    for (const span of pendingExampleSpans) {
+      insertExampleSpan.run(span);
+    }
+
     const insertRelationship = db.prepare(`
       INSERT INTO item_relationships (parent_item_id, child_item_id, relationship_type)
       VALUES (@parent_item_id, @child_item_id, @relationship_type)
@@ -725,8 +846,8 @@ export function compileCurriculum(
       VALUES (@jlpt_level, @title, @body, @body_furigana, @english_translation, @summary_ja, @summary_en, @word_count, @sort_order)
     `);
     const insertPassageWordSpan = db.prepare(`
-      INSERT INTO passage_word_spans (passage_id, vocabulary_item_id, start_offset, end_offset, sort_order)
-      VALUES (@passage_id, @vocabulary_item_id, @start_offset, @end_offset, @sort_order)
+      INSERT INTO passage_word_spans (passage_id, vocabulary_item_id, start_offset, end_offset, inflection, sort_order)
+      VALUES (@passage_id, @vocabulary_item_id, @start_offset, @end_offset, @inflection, @sort_order)
     `);
     const insertQuestion = db.prepare(`
       INSERT INTO passage_questions (passage_id, prompt, prompt_furigana, accepted_answers, sort_order)
@@ -777,48 +898,22 @@ export function compileCurriculum(
           insertPassageVocabLink.run({ passage_id: passageId, vocabulary_item_id: vocabId });
         }
 
-        // Word spans are stored in body order and must not overlap: the reader
-        // composes the body as [plain, span, plain, span, ...] segments.
-        const sortedSpans = [...(passage.word_spans ?? [])].sort(
-          (left, right) => left.start - right.start,
+        const resolvedSpans = resolveWordSpans(
+          passage.body,
+          passage.word_spans ?? [],
+          'passage word span',
+          passageLabel,
+          idByKey,
+          primaryFormByVocabSlug,
         );
-        let previousEnd = 0;
-        for (const [spanIndex, span] of sortedSpans.entries()) {
-          const vocabId = idByKey.get(itemKey('vocabulary', span.vocabulary_slug));
-          if (!vocabId) {
-            throw new Error(
-              `Unresolved passage word span: ${passageLabel} -> vocabulary:${span.vocabulary_slug}`,
-            );
-          }
-          if (span.start < 0 || span.end > passage.body.length || span.start >= span.end) {
-            throw new Error(
-              `Invalid passage word span offsets: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
-                `[${span.start}, ${span.end}) outside body of length ${passage.body.length}`,
-            );
-          }
-          if (span.start < previousEnd) {
-            throw new Error(
-              `Overlapping passage word span: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
-                `starts at ${span.start} before previous span ends at ${previousEnd}`,
-            );
-          }
-          previousEnd = span.end;
-
-          const primaryForm = primaryFormByVocabSlug.get(span.vocabulary_slug);
-          const surface = passage.body.slice(span.start, span.end);
-          if (primaryForm !== undefined && surface !== primaryForm) {
-            throw new Error(
-              `Passage word span surface mismatch: ${passageLabel} -> vocabulary:${span.vocabulary_slug} ` +
-                `slice "${surface}" !== primary_form "${primaryForm}"`,
-            );
-          }
-
+        for (const span of resolvedSpans) {
           insertPassageWordSpan.run({
             passage_id: passageId,
-            vocabulary_item_id: vocabId,
-            start_offset: span.start,
-            end_offset: span.end,
-            sort_order: spanIndex,
+            vocabulary_item_id: span.item_id,
+            start_offset: span.start_offset,
+            end_offset: span.end_offset,
+            inflection: span.inflection,
+            sort_order: span.sort_order,
           });
         }
 
