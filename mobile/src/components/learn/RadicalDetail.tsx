@@ -49,7 +49,7 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
     <View testID="radical-detail">
       <ItemDetailHeader itemType="radical" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-jp-hero-black', CONTENT_TYPE_ACCENT.radical.deep)}
+          className={cn('text-center font-jp-hero', CONTENT_TYPE_ACCENT.radical.deep)}
           style={DETAIL_HERO_FONT_SIZE.glyph}>
           {item.primaryForm}
         </Text>

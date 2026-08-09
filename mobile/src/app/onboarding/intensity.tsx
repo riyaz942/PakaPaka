@@ -15,8 +15,10 @@ import type { SessionIntensity } from '@/data/user/sessionIntensity.types';
 export default function IntensityScreen() {
   const { userDb } = useDatabase();
   const [selectedIntensity, setSelectedIntensity] = useState<SessionIntensity | null>('relaxed');
+  // Answers a different question than the routing branch below: it also counts
+  // imported rows when the preference is unset, and only drives preview copy.
   const importPath = isImportOnboardingPath(userDb);
-  const manualPath = getOnboardingPath(userDb) === 'manual';
+  const onboardingPath = getOnboardingPath(userDb);
 
   const lessonSize = LESSON_SIZE_BY_INTENSITY[selectedIntensity ?? 'relaxed'];
 
@@ -26,7 +28,17 @@ export default function IntensityScreen() {
     }
 
     setSessionIntensity(userDb, selectedIntensity);
-    router.push(manualPath ? '/onboarding/placement' : '/onboarding/complete');
+
+    if (onboardingPath === 'manual') {
+      router.push('/onboarding/placement');
+      return;
+    }
+    // Absolute beginners get the day-1 deck; importers already know the ropes.
+    if (onboardingPath === 'beginner') {
+      router.push('/onboarding/day-one');
+      return;
+    }
+    router.push('/onboarding/complete');
   };
 
   return (

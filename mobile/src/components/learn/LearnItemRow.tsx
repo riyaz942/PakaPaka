@@ -37,7 +37,7 @@ export function LearnItemRow({
           // hue; the smaller forms are copy, so they take `-deep` like every
           // other type-coloured label.
           isJapaneseForm
-            ? cn('text-display font-jp-hero-black', accent.glyph)
+            ? cn('text-display font-jp-hero-bold', accent.glyph)
             : cn('text-body font-jp-medium', accent.deep),
         )}>
         {item.primaryForm}

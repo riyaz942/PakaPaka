@@ -107,7 +107,7 @@ export function IncorrectReveal({
             className="text-body-lg text-secondary text-center"
           />
         ) : null}
-        <Text className="text-display text-center font-jp-hero-black text-primary">
+        <Text className="text-display text-center font-jp-hero-bold text-primary">
           {isIncomplete ? displayAnswer : item.primaryForm}
         </Text>
         {isIncomplete ? (

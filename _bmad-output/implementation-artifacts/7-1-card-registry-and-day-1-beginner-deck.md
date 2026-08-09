@@ -4,7 +4,7 @@ baseline_commit: 004e211d350d309104657e4b316ebea250c80873
 
 # Story 7.1: Card Registry & Day-1 Beginner Deck
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -55,21 +55,21 @@ so that I'm not lost the moment my first lesson starts, without sitting through 
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1 — `card_seen` storage (AC: #6)**
-  - [ ] `data/migrations/019_card_seen.ts`: `export const migration019CardSeen: Migration = { version: 19, name: '019_card_seen', up: (db) => db.execSync('CREATE TABLE IF NOT EXISTS card_seen (card_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL);') }`. Header comment says *why* it is its own table rather than preference keys (open-ended card ids vs. a fixed key set).
-  - [ ] `data/migrations/index.ts`: import and append `migration019CardSeen` — last in the array, after `migration018AiSessionTopicIds`.
-  - [ ] `data/user/cardSeenRepository.ts`: `isCardSeen` (`SELECT card_id FROM card_seen WHERE card_id = ?`, `getFirstSync`, return `row !== null`) and `markCardSeen` (`INSERT INTO card_seen (card_id, seen_at) VALUES (?, ?) ON CONFLICT(card_id) DO NOTHING` — re-marking must not move `seen_at`). No other exports.
-  - [ ] **Extend `mobile/__mocks__/expo-sqlite.ts` (mandatory — see Dev Notes → Mock pitfall):** add an `INSERT INTO card_seen` branch to `applySql` and a `FROM card_seen` branch with `WHERE card_id = ?` to `queryRows`. Without both, the write is a silent no-op and the read returns `[]` — every seen-state test would pass while asserting nothing.
-  - [ ] `cardSeenRepository.test.ts`: unseen → false; after `markCardSeen` → true; second `markCardSeen` keeps the original `seen_at`; a different card id stays unseen.
-  - [ ] `019_card_seen.test.ts`: mirrors `018_ai_session_topic_ids.test.ts` — run the migration, assert the table exists and is idempotent on re-run.
+- [x] **Task 1 — `card_seen` storage (AC: #6)**
+  - [x] `data/migrations/019_card_seen.ts`: `export const migration019CardSeen: Migration = { version: 19, name: '019_card_seen', up: (db) => db.execSync('CREATE TABLE IF NOT EXISTS card_seen (card_id TEXT PRIMARY KEY, seen_at TEXT NOT NULL);') }`. Header comment says *why* it is its own table rather than preference keys (open-ended card ids vs. a fixed key set).
+  - [x] `data/migrations/index.ts`: import and append `migration019CardSeen` — last in the array, after `migration018AiSessionTopicIds`.
+  - [x] `data/user/cardSeenRepository.ts`: `isCardSeen` (`SELECT card_id FROM card_seen WHERE card_id = ?`, `getFirstSync`, return `row !== null`) and `markCardSeen` (`INSERT INTO card_seen (card_id, seen_at) VALUES (?, ?) ON CONFLICT(card_id) DO NOTHING` — re-marking must not move `seen_at`). No other exports.
+  - [x] **Extend `mobile/__mocks__/expo-sqlite.ts` (mandatory — see Dev Notes → Mock pitfall):** add an `INSERT INTO card_seen` branch to `applySql` and a `FROM card_seen` branch with `WHERE card_id = ?` to `queryRows`. Without both, the write is a silent no-op and the read returns `[]` — every seen-state test would pass while asserting nothing.
+  - [x] `cardSeenRepository.test.ts`: unseen → false; after `markCardSeen` → true; second `markCardSeen` keeps the original `seen_at`; a different card id stays unseen.
+  - [x] `019_card_seen.test.ts`: mirrors `018_ai_session_topic_ids.test.ts` — run the migration, assert the table exists and is idempotent on re-run.
 
-- [ ] **Task 2 — Slug lookup in the curriculum layer (AC: #4)**
-  - [ ] `data/curriculum/itemRepository.ts`: add `getItemBySlug(db, itemType: ItemType, slug: string): CurriculumItemDetail | null`. Same `SELECT` column list and `mapRowToDetail` call as `getItemById` (`itemRepository.ts:190`) — do not duplicate the mapper. Query `WHERE item_type = ? AND slug = ?` (the table's `UNIQUE (item_type, slug)`).
-  - [ ] **Extend the sqlite mock again:** the `FROM items` branch (`__mocks__/expo-sqlite.ts:1192`) has no `slug` handling, so a slug query silently returns the *whole* items table and `getFirstSync` hands back an arbitrary row. Add `if (/WHERE item_type = \? AND slug = \?/i.test(trimmed))` before the existing filters.
-  - [ ] `itemRepository.test.ts`: `getItemBySlug` returns the matching row; returns `null` for an unknown slug; does not cross item types (same slug on two types resolves to the requested one).
+- [x] **Task 2 — Slug lookup in the curriculum layer (AC: #4)**
+  - [x] `data/curriculum/itemRepository.ts`: add `getItemBySlug(db, itemType: ItemType, slug: string): CurriculumItemDetail | null`. Same `SELECT` column list and `mapRowToDetail` call as `getItemById` (`itemRepository.ts:190`) — do not duplicate the mapper. Query `WHERE item_type = ? AND slug = ?` (the table's `UNIQUE (item_type, slug)`).
+  - [x] **Extend the sqlite mock again:** the `FROM items` branch (`__mocks__/expo-sqlite.ts:1192`) has no `slug` handling, so a slug query silently returns the *whole* items table and `getFirstSync` hands back an arbitrary row. Add `if (/WHERE item_type = \? AND slug = \?/i.test(trimmed))` before the existing filters.
+  - [x] `itemRepository.test.ts`: `getItemBySlug` returns the matching row; returns `null` for an unknown slug; does not cross item types (same slug on two types resolves to the requested one).
 
-- [ ] **Task 3 — The card registry (AC: #1, #2, #3)**
-  - [ ] `components/onboarding/cardRegistry.ts` (`.ts`, not `.tsx` — it holds no JSX, only component references, so `core/`'s JSX-free rule is irrelevant and the file stays a plain module):
+- [x] **Task 3 — The card registry (AC: #1, #2, #3)**
+  - [x] `components/onboarding/cardRegistry.ts` (`.ts`, not `.tsx` — it holds no JSX, only component references, so `core/`'s JSX-free rule is irrelevant and the file stays a plain module):
     ```ts
     export type GuidanceCardId = 'three-scripts' | 'word-spacing';
     export type GuidanceCardTrigger = 'onboarding-deck' | 'contextual' | 'library-only';
@@ -81,37 +81,48 @@ so that I'm not lost the moment my first lesson starts, without sitting through 
     };
     export const GUIDANCE_CARDS: readonly GuidanceCard[] = [ /* two entries */ ];
     ```
-  - [ ] Add a header comment stating the registry is the single list behind the day-1 deck, 7.2's contextual triggers, and 7.2's Settings library — so a future card is one array entry, not a new screen.
-  - [ ] `cardRegistry.test.ts`: every id is unique; every deck card has a non-empty title and a `Render`; the deck filter returns exactly `['three-scripts', 'word-spacing']` in that order.
+  - [x] Add a header comment stating the registry is the single list behind the day-1 deck, 7.2's contextual triggers, and 7.2's Settings library — so a future card is one array entry, not a new screen.
+  - [x] `cardRegistry.test.ts`: every id is unique; every deck card has a non-empty title and a `Render`; the deck filter returns exactly `['three-scripts', 'word-spacing']` in that order.
 
-- [ ] **Task 4 — `ThreeScriptsCard` (AC: #4)**
-  - [ ] `components/onboarding/cards/ThreeScriptsCard.tsx`. Reads `curriculumDb` from `useDatabase()`, resolves the three vocabulary slugs with `getItemBySlug`, renders three rows: the real `primaryForm` (via `FuriganaText` with `mode="shown"` so 日本語's reading is visible), the real `meaning`, and an app-authored one-line job ("the glue…", "borrowed words…", "meaning at a glance…").
-  - [ ] Wrap the lookups in `useMemo` keyed on `curriculumDb` — the row set is fixed, so do not re-query per render.
-  - [ ] `ThreeScriptsCard.test.tsx`: seed the three items with `__mockSetItems`, assert the rendered glyphs are ひらがな / バス / 日本語 and that the katakana row's meaning reads "bus" — i.e. the copy came from the DB, not a literal.
+- [x] **Task 4 — `ThreeScriptsCard` (AC: #4)**
+  - [x] `components/onboarding/cards/ThreeScriptsCard.tsx`. Reads `curriculumDb` from `useDatabase()`, resolves the three vocabulary slugs with `getItemBySlug`, renders three rows: the real `primaryForm` (via `FuriganaText` with `mode="shown"` so 日本語's reading is visible), the real `meaning`, and an app-authored one-line job ("the glue…", "borrowed words…", "meaning at a glance…").
+  - [x] Wrap the lookups in `useMemo` keyed on `curriculumDb` — the row set is fixed, so do not re-query per render.
+  - [x] `ThreeScriptsCard.test.tsx`: seed the three items with `__mockSetItems`, assert the rendered glyphs are ひらがな / バス / 日本語 and that the katakana row's meaning reads "bus" — i.e. the copy came from the DB, not a literal.
 
-- [ ] **Task 5 — `WordSpacingCard` (AC: #4, #5)**
-  - [ ] `components/onboarding/cards/WordSpacingCard.tsx`. `getItemBySlug(curriculumDb, 'grammar', 'wa-topic')` → `getExampleSentences(curriculumDb, item.id)[0]`.
-  - [ ] Render (a) the sentence verbatim via `FuriganaText` (`mode="shown"`, `text={sentence.furigana ?? sentence.japanese}`), (b) the same sentence pulled apart, (c) `sentence.english`.
-  - [ ] Build (b) with `buildExampleSentenceSpans(sentence.japanese, sentence.vocabularyLinks)` → `buildPassageBodyParts(sentence.japanese, sentence.furigana, spans)`, then lay the returned parts out with a visible gap between them (each part in its own `View`, `flex-row flex-wrap gap-…`). `buildPassageBodyParts` already returns *alternating* span and interstitial runs, so the particle は and です。 come back as their own parts for free — that is the whole demonstration. Render each part's `text` through `FuriganaText`; do not make the parts pressable (that is `PassageBody`'s job, not a teaching card's).
-  - [ ] `WordSpacingCard.test.tsx`: seed the grammar item, its sentence and the two vocab links; assert the verbatim line contains 私は学生です。 and that the separated view renders 4 parts with 私 / は / 学生 / です。 as their surfaces.
+- [x] **Task 5 — `WordSpacingCard` (AC: #4, #5)**
+  - [x] `components/onboarding/cards/WordSpacingCard.tsx`. `getItemBySlug(curriculumDb, 'grammar', 'wa-topic')` → `getExampleSentences(curriculumDb, item.id)[0]`.
+  - [x] Render (a) the sentence verbatim via `FuriganaText` (`mode="shown"`, `text={sentence.furigana ?? sentence.japanese}`), (b) the same sentence pulled apart, (c) `sentence.english`.
+  - [x] Build (b) with `buildExampleSentenceSpans(sentence.japanese, sentence.vocabularyLinks)` → `buildPassageBodyParts(sentence.japanese, sentence.furigana, spans)`, then lay the returned parts out with a visible gap between them (each part in its own `View`, `flex-row flex-wrap gap-…`). `buildPassageBodyParts` already returns *alternating* span and interstitial runs, so the particle は and です。 come back as their own parts for free — that is the whole demonstration. Render each part's `text` through `FuriganaText`; do not make the parts pressable (that is `PassageBody`'s job, not a teaching card's).
+  - [x] `WordSpacingCard.test.tsx`: seed the grammar item, its sentence and the two vocab links; assert the verbatim line contains 私は学生です。 and that the separated view renders 4 parts with 私 / は / 学生 / です。 as their surfaces.
 
-- [ ] **Task 6 — The day-one screen (AC: #2, #7, #8, #9, #10, #12)**
-  - [ ] `app/onboarding/day-one.tsx`: filter `GUIDANCE_CARDS` to `trigger === 'onboarding-deck'`, then to cards with no `card_seen` row. Hold a `cardIndex` state; render the active card's `Render` inside `OnboardingStep` (`title` = the card's title, `stepIndex={3}`, `stepCount={4}`, `testID="day-one-screen"`).
-  - [ ] `markCardSeen` on the card *becoming visible* (effect keyed on the active card id), not on Continue (AC #8).
-  - [ ] Primary action: "Next" while more cards remain, "Continue" on the last, which `router.push('/onboarding/complete')`. Skip action only on the first card, label "Skip all, I know how apps work" — marks **every** deck card seen (not just the unseen ones on screen) then pushes to complete.
-  - [ ] Empty-after-filter case: `router.replace('/onboarding/complete')` from an effect; render nothing. Guard the navigation with a ref so a re-render cannot fire it twice (`complete.tsx:49`'s `submittedRef` is the pattern).
-  - [ ] `app/onboarding/_layout.tsx`: add `<Stack.Screen name="day-one" />` between `intensity` and `placement`.
-  - [ ] `day-one.test.tsx`: two cards advance in order; card 1 is marked seen on mount; skip marks both and pushes to `/onboarding/complete`; a userDb with both `card_seen` rows already present navigates straight to complete without rendering a card.
+- [x] **Task 6 — The day-one screen (AC: #2, #7, #8, #9, #10, #12)**
+  - [x] `app/onboarding/day-one.tsx`: filter `GUIDANCE_CARDS` to `trigger === 'onboarding-deck'`, then to cards with no `card_seen` row. Hold a `cardIndex` state; render the active card's `Render` inside `OnboardingStep` (`title` = the card's title, `stepIndex={3}`, `stepCount={4}`, `testID="day-one-screen"`).
+  - [x] `markCardSeen` on the card *becoming visible* (effect keyed on the active card id), not on Continue (AC #8).
+  - [x] Primary action: "Next" while more cards remain, "Continue" on the last, which `router.push('/onboarding/complete')`. Skip action only on the first card, label "Skip all, I know how apps work" — marks **every** deck card seen (not just the unseen ones on screen) then pushes to complete.
+  - [x] Empty-after-filter case: `router.replace('/onboarding/complete')` from an effect; render nothing. Guard the navigation with a ref so a re-render cannot fire it twice (`complete.tsx:49`'s `submittedRef` is the pattern).
+  - [x] `app/onboarding/_layout.tsx`: add `<Stack.Screen name="day-one" />` between `intensity` and `placement`.
+  - [x] `day-one.test.tsx`: two cards advance in order; card 1 is marked seen on mount; skip marks both and pushes to `/onboarding/complete`; a userDb with both `card_seen` rows already present navigates straight to complete without rendering a card.
 
-- [ ] **Task 7 — Route the beginner path (AC: #7)**
-  - [ ] `app/onboarding/intensity.tsx` `handleContinue`: replace the two-way `manualPath ? placement : complete` with the three-way branch on `getOnboardingPath(userDb)`. Keep `setSessionIntensity` first and the `!selectedIntensity` guard unchanged. Leave the `importPath` / `isImportOnboardingPath` usage in the preview copy exactly as it is — it answers a different question than the routing branch does (see Dev Notes).
-  - [ ] `intensity.test.tsx`: extend the existing routing assertions — beginner → `/onboarding/day-one`, manual → `/onboarding/placement` (must still pass), import → `/onboarding/complete` (must still pass).
+- [x] **Task 7 — Route the beginner path (AC: #7)**
+  - [x] `app/onboarding/intensity.tsx` `handleContinue`: replace the two-way `manualPath ? placement : complete` with the three-way branch on `getOnboardingPath(userDb)`. Keep `setSessionIntensity` first and the `!selectedIntensity` guard unchanged. Leave the `importPath` / `isImportOnboardingPath` usage in the preview copy exactly as it is — it answers a different question than the routing branch does (see Dev Notes).
+  - [x] `intensity.test.tsx`: extend the existing routing assertions — beginner → `/onboarding/day-one`, manual → `/onboarding/placement` (must still pass), import → `/onboarding/complete` (must still pass).
 
-- [ ] **Task 8 — Regenerate typed routes, then verify (AC: #13)**
-  - [ ] **`router.push('/onboarding/day-one')` will not typecheck until `.expo/types/router.d.ts` is regenerated** — `app.json` sets `experiments.typedRoutes: true` and the checked-in `router.d.ts` predates this route. Run `npx expo start` briefly (or `npx expo customize tsconfig.json`) until the types file is rewritten, then kill it. Do not hand-edit `router.d.ts`, and do not work around it by casting the href.
-  - [ ] `npm run lint` (a11y rules block merge — the deck's actions go through `Button`/`OnboardingStep`, which are already labelled; anything new that is pressable needs `accessibilityRole` + label).
-  - [ ] `npm run typecheck` — clean.
-  - [ ] `npm test` — full suite. `useKanjiReadingPrimer.test.tsx` must pass untouched (AC #11).
+- [x] **Task 8 — Regenerate typed routes, then verify (AC: #13)**
+  - [x] **`router.push('/onboarding/day-one')` will not typecheck until `.expo/types/router.d.ts` is regenerated** — `app.json` sets `experiments.typedRoutes: true` and the checked-in `router.d.ts` predates this route. Run `npx expo start` briefly (or `npx expo customize tsconfig.json`) until the types file is rewritten, then kill it. Do not hand-edit `router.d.ts`, and do not work around it by casting the href.
+  - [x] `npm run lint` (a11y rules block merge — the deck's actions go through `Button`/`OnboardingStep`, which are already labelled; anything new that is pressable needs `accessibilityRole` + label).
+  - [x] `npm run typecheck` — clean.
+  - [x] `npm test` — full suite. `useKanjiReadingPrimer.test.tsx` must pass untouched (AC #11).
+
+### Review Findings
+
+- [x] [Review][Defer] Back from complete resurfaces a stale deck card — `day-one.tsx` exits via `router.push('/onboarding/complete')`, so Back from complete reveals the last card in stale state (all cards marked seen; the empty-deck effect can't fire because `activeCard` is non-null) [mobile/src/app/onboarding/day-one.tsx:56] — deferred: push is spec-mandated by Task 6 and the state self-corrects on Continue.
+- [x] [Review][Patch] Double-tap "Next" overshoots the deck and strands a card unmarked [mobile/src/app/onboarding/day-one.tsx:59]
+- [x] [Review][Patch] Double-tap "Continue"/"Skip all" pushes `/onboarding/complete` twice [mobile/src/app/onboarding/day-one.tsx:56]
+- [x] [Review][Patch] Mock `INSERT INTO card_seen` branch applies conflict-dedupe without requiring the `ON CONFLICT` text, unlike its neighbors — a dropped clause in the real SQL would stay green in tests [mobile/__mocks__/expo-sqlite.ts:335]
+- [x] [Review][Patch] `019_card_seen.test.ts` reintroduces the fragile `migrations[migrations.length - 1]` "registered last" assertion one file after the diff fixed it in 018's test [mobile/src/data/migrations/019_card_seen.test.ts:16]
+- [x] [Review][Patch] `React.ComponentType` used with no React import — compiles only via the UMD global; `import type { ComponentType } from 'react'` is robust to tsconfig changes [mobile/src/components/onboarding/cardRegistry.ts:26]
+- [x] [Review][Defer] Mock masks the real "no such table: card_seen" crash path — `FROM card_seen` returns `[]` regardless of table existence, so a pre-migration read crashes on device but stays green in tests [mobile/__mocks__/expo-sqlite.ts:1065] — deferred, pre-existing (same trade-off as `preferencesRepository`; migrations always run before any screen reads `card_seen`)
+- [x] [Review][Defer] No path guard on the `day-one` route — a deep link drops manual/import-path users into the beginner deck and marks cards seen on their behalf [mobile/src/app/onboarding/_layout.tsx:9] — deferred, pre-existing (no onboarding route guards deep links; out of scope for this story)
 
 ## Dev Notes
 
@@ -242,12 +253,74 @@ Naming conventions in play (architecture.md § Naming Patterns): components `Pas
 
 ### Agent Model Used
 
+claude-opus-5 (bmad-dev-story workflow)
+
 ### Debug Log References
+
+- `npm run lint` — 0 errors, 1 pre-existing warning (`browse/passage/[id].test.tsx` require-import), untouched by this story.
+- `npm run typecheck` — clean.
+- `npm test` — 217 suites / 1871 tests passing.
+- Typed-routes check: `.expo/types/router.d.ts` regenerated itself during `npm run typecheck`, and `/onboarding/day-one` resolves. Verified the guard is real by temporarily pointing the push at a bogus route — `tsc` rejected it — then restoring. The file is gitignored (`mobile/.gitignore:7`), so it is not part of the diff.
 
 ### Completion Notes List
 
+**Deviations from the epic's sketch (both flagged in Dev Notes, both taken):**
+
+- Registry lives at `components/onboarding/cardRegistry.ts`, not `core/onboarding/`. `GuidanceCard.Render` is a `React.ComponentType`; putting it in `core/` would have been the first `core → components` dependency in the codebase.
+- Migration named `019_card_seen.ts`, not `019_card_registry.ts`, matching the existing convention of naming a migration for the table it creates.
+
+**Two files changed outside the story's declared file set**, both because appending migration 019 invalidated an assertion that hard-coded 018 as the last registered migration:
+
+- `018_ai_session_topic_ids.test.ts` — "registered last" → "registered in version order" (`migrations[17]`).
+- `migrationRunner.test.ts` — expected last-migration name updated to `019_card_seen`.
+
+Both are regressions caused directly by this story's change rather than opportunistic edits; no production code outside the declared set was touched.
+
+**Mock work (the flagged failure mode) done and proven:**
+
+- `applySql` gained an `INSERT INTO card_seen` branch honouring `DO NOTHING` (first `seen_at` wins); `queryRows` gained a `FROM card_seen` branch with `WHERE card_id = ?`. Seen-state assertions read back through `isCardSeen`, so they would fail without both.
+- The `FROM items` branch gained a `WHERE item_type = ? AND slug = ?` filter placed *before* the generic filters. The `getItemBySlug` test seeds the same slug on two item types and asserts no cross-type leak — without the branch the whole table returns and the first row wins.
+- `cardSeenRepository.test.ts` uses fake timers for the re-mark case; on a real clock two calls land in the same millisecond and the assertion would be vacuous.
+
+**Behaviour notes:**
+
+- The day-one screen snapshots its unseen-card list at mount (`useState` initialiser). Re-filtering per render would pull the current card off screen the instant it is marked seen.
+- Skip marks *every* deck card from `DECK_CARDS`, not only the ones still unseen on screen, and the cards stay in `GUIDANCE_CARDS` for 7.2's Settings library.
+- Missing-slug handling follows the no-hidden-fallback rule: a card omits the row (or renders nothing) — no substitute item, no "content unavailable" copy. Covered by a test per card.
+- AC #11 held: `useKanjiReadingPrimer.ts`, its test, `KanjiReadingPrimer.tsx` and `seenKanjiReadingPrimer` are absent from the diff.
+
 ### File List
+
+**New**
+
+- `mobile/src/data/migrations/019_card_seen.ts`
+- `mobile/src/data/migrations/019_card_seen.test.ts`
+- `mobile/src/data/user/cardSeenRepository.ts`
+- `mobile/src/data/user/cardSeenRepository.test.ts`
+- `mobile/src/components/onboarding/cardRegistry.ts`
+- `mobile/src/components/onboarding/cardRegistry.test.ts`
+- `mobile/src/components/onboarding/cards/ThreeScriptsCard.tsx`
+- `mobile/src/components/onboarding/cards/ThreeScriptsCard.test.tsx`
+- `mobile/src/components/onboarding/cards/WordSpacingCard.tsx`
+- `mobile/src/components/onboarding/cards/WordSpacingCard.test.tsx`
+- `mobile/src/app/onboarding/day-one.tsx`
+- `mobile/src/app/onboarding/day-one.test.tsx`
+
+**Modified**
+
+- `mobile/src/data/migrations/index.ts`
+- `mobile/src/data/curriculum/itemRepository.ts`
+- `mobile/src/data/curriculum/itemRepository.test.ts`
+- `mobile/src/app/onboarding/_layout.tsx`
+- `mobile/src/app/onboarding/intensity.tsx`
+- `mobile/src/app/onboarding/intensity.test.tsx`
+- `mobile/__mocks__/expo-sqlite.ts`
+- `mobile/src/data/migrations/018_ai_session_topic_ids.test.ts` (outside declared set — see notes)
+- `mobile/src/data/migrations/migrationRunner.test.ts` (outside declared set — see notes)
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
 
 ## Change Log
 
 - 2026-08-08 — Story created. Status → ready-for-dev.
+- 2026-08-08 — Implemented card registry, `card_seen` storage, both day-1 cards, the day-one deck screen and the beginner routing branch. Lint/typecheck/full suite green. Status → review.
+- 2026-08-08 — Code review (3 layers: blind, edge-case, acceptance). All 13 ACs pass. 5 patches applied (double-tap guards + clamp on the deck screen, mock `ON CONFLICT` strictness, 019 test assertion style, `ComponentType` type import); 3 findings deferred to `deferred-work.md`; 7 dismissed as spec-mandated. Full suite re-run green (217/217). Status → done.

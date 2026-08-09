@@ -81,7 +81,7 @@ export function ContentListRow({
           <Text
             numberOfLines={1}
             className={cn(
-              'min-w-9 max-w-[120px] font-jp-hero-black',
+              'min-w-9 max-w-[120px] font-jp-hero-bold',
               glyphSizeClass(glyph),
               accent.glyph,
             )}>

@@ -5,6 +5,7 @@ import { FadeSlideIn } from '@/components/common/FadeSlideIn';
 import { FuriganaText } from '@/components/common/FuriganaText';
 import { Icon } from '@/components/common/Icon';
 import { SRSStageIndicator, SRSStageTransitionBadge } from '@/components/common/SRSStageIndicator';
+import { heroWeightClass } from '@/components/learn/ItemDetailHeader';
 import { buildGrammarHintLevels } from '@/core/content/hintLevels';
 import { blankFormsInStructure } from '@/core/grammar/clozeBuilder';
 import { englishHintsAllowed } from '@/core/grammar/inputMode';
@@ -14,6 +15,7 @@ import type { ReviewItem, StageTransition } from '@/core/srs/srs.types';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 
 import type { ReviewRevealDetail } from '@/data/hooks/useReviewRevealDetails';
+import { cn } from '@/utils/cn';
 
 import { AnswerReveal, type AnswerCollision } from './AnswerReveal';
 import { IncorrectReveal, type AddSynonymUiState } from './IncorrectReveal';
@@ -171,7 +173,7 @@ export function ReviewCard({
     ) : (
       <Text
         testID="review-prompt-glyph"
-        className="text-center font-jp-hero-black text-primary"
+        className={cn('text-center text-primary', heroWeightClass(promptFontSize(display)))}
         style={promptFontSize(display)}>
         {display}
       </Text>

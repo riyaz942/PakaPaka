@@ -360,7 +360,7 @@ export default function PlacementScreen() {
               <ContentTypeBadge itemType={current.itemType} className="bg-surface" />
               <Text
                 className={cn(
-                  'mt-space-lg text-[64px] leading-[1.1] font-jp-hero-black',
+                  'mt-space-lg text-[64px] leading-[1.1] font-jp-hero',
                   CONTENT_TYPE_ACCENT[current.itemType].deep,
                 )}>
                 {current.primaryForm}

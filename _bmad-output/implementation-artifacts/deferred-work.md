@@ -1,5 +1,11 @@
 # Deferred Work
 
+## Deferred from: code review of 7-1-card-registry-and-day-1-beginner-deck (2026-08-08)
+
+- **Back from "You're ready" resurfaces a stale deck card** — day-one exits via `router.push('/onboarding/complete')`, so Back from complete reveals the last card in stale state (all cards marked seen; the empty-deck redirect can't fire because `activeCard` is non-null). Continue re-pushes complete, so it self-corrects. Deferred: push is spec-mandated by Task 6. [`mobile/src/app/onboarding/day-one.tsx:56,68`]
+- **Mock masks the real "no such table: card_seen" crash path** — the `FROM card_seen` query branch returns `[]` regardless of table existence, so a read before migration 019 runs (e.g. a future Settings "How this works" library screen) throws synchronously on device while every test stays green. Same known trade-off as `preferencesRepository`; migrations always run before any current screen reads `card_seen`. [`mobile/__mocks__/expo-sqlite.ts:1065`, `mobile/src/data/user/cardSeenRepository.ts`]
+- **No path guard on the `day-one` route** — a deep link or stray navigation drops manual/import-path users into the beginner deck, which then marks cards seen on their behalf. No onboarding route guards deep links today; out of scope for this story. [`mobile/src/app/onboarding/_layout.tsx:9`]
+
 ## Deferred from: code review of 6-2-five-tier-daily-pace-scale (2026-08-08)
 
 - **"Recommended for new learners" badge invisible to screen readers** — `ChoiceCard` builds `accessibilityLabel` from title + description only; the badge is a decorative View/Text. With five pace options the badge is the sole nudge toward Relaxed, and VoiceOver/TalkBack users never hear it. Pre-existing `ChoiceCard` pattern (`mobile/src/components/common/ChoiceCard.tsx:39`).

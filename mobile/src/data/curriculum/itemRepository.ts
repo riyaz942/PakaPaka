@@ -201,6 +201,29 @@ export function getItemById(
 }
 
 /**
+ * The same lookup as `getItemById`, keyed on the authored slug.
+ *
+ * App code that names a specific curriculum item (the day-1 guidance cards,
+ * FR-Epic-7) must reference it by slug: integer ids are assigned by the compile
+ * step and shift on recompile or a curriculum OTA, while slugs are authored and
+ * stable. `(item_type, slug)` is unique in the schema.
+ */
+export function getItemBySlug(
+  db: SQLiteDatabase,
+  itemType: ItemType,
+  slug: string,
+): CurriculumItemDetail | null {
+  const row = db.getFirstSync<ItemDetailRow>(
+    `SELECT id, slug, item_type, jlpt_level, primary_form, furigana, meaning, mnemonic_text,
+            meaning_mnemonic, reading_mnemonic, description, visual_mnemonic_url
+     FROM items WHERE item_type = ? AND slug = ?`,
+    itemType,
+    slug,
+  );
+  return row ? mapRowToDetail(row) : null;
+}
+
+/**
  * Compact labels for a set of item ids, in the order the ids were given.
  *
  * Used by the locked passage to-do list (FR69), which needs a surface form,

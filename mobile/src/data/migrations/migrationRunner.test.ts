@@ -65,7 +65,7 @@ describe('runMigrations', () => {
     expect(db.getAllSync('SELECT version FROM schema_migrations')).toHaveLength(2);
   });
 
-  it('applies the full migration list, ending with 017_ai_sessions', async () => {
+  it('applies the full migration list, ending with the newest migration', async () => {
     const db = await openDatabaseAsync('user.db');
 
     const result = runMigrations(db, migrations);
@@ -74,7 +74,7 @@ describe('runMigrations', () => {
     expect(migrations.map((migration) => migration.version)).toEqual(
       migrations.map((_, index) => index + 1),
     );
-    expect(migrations[migrations.length - 1].name).toBe('018_ai_session_topic_ids');
+    expect(migrations[migrations.length - 1].name).toBe('019_card_seen');
     expect(
       // Parameterized form: the shared mock only special-cases a few literal
       // table names in sqlite_master queries, but handles `name = ?` generically.

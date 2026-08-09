@@ -106,7 +106,7 @@ function ActionCard({
         )}>
         <Text
           className={cn(
-            'text-title font-jp-hero-black',
+            'text-title font-jp-hero-bold',
             accent ? 'text-on-primary' : 'text-primary',
           )}>
           {glyph}
@@ -346,7 +346,7 @@ export default function HomeScreen() {
           <FadeSlideIn index={0} className="py-space-sm">
             {/* The greeting is the one place a JP glyph opens a tab screen, so it
                 is set in the rounded display face rather than the UI family. */}
-            <Text className="text-title-lg font-jp-hero-black text-primary">おかえり！</Text>
+            <Text className="text-title-lg font-jp-hero-bold text-primary">おかえり！</Text>
             {/* Comprehensible sentence from started vocab; calm invitation on day 1.
                 The day-1 fallback is English, so it keeps the UI face. */}
             <Text
@@ -368,7 +368,7 @@ export default function HomeScreen() {
                 className="items-center rounded-radius-xl bg-surface px-space-md py-space-xl shadow-e2"
                 testID="home-vacation-card">
                 <View className="h-24 w-24 items-center justify-center rounded-radius-full bg-surface-elevated">
-                  <Text className="text-display font-jp-hero-black text-muted">休</Text>
+                  <Text className="text-display font-jp-hero-bold text-muted">休</Text>
                 </View>
                 <Text className="mt-space-md text-body font-ui-extrabold text-primary">
                   Vacation mode is on

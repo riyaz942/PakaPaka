@@ -57,7 +57,7 @@ export function GrammarDetail({
     <View testID="grammar-detail">
       <ItemDetailHeader itemType="grammar" meaning={item.meaning} showTypeBadge={false}>
         <Text
-          className={cn('text-center font-jp-hero-black', CONTENT_TYPE_ACCENT.grammar.deep)}
+          className={cn('text-center font-jp-hero-bold', CONTENT_TYPE_ACCENT.grammar.deep)}
           style={DETAIL_HERO_FONT_SIZE.pattern}>
           {item.primaryForm}
         </Text>

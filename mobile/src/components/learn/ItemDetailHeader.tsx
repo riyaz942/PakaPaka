@@ -37,6 +37,17 @@ export const DETAIL_HERO_FONT_SIZE = {
   pattern: { fontSize: 34, lineHeight: 44 },
 } as const;
 
+/**
+ * The spec sets the hero face at 500 for large heroes and 700 for small tiles.
+ * It never draws a 500 below 66px nor a 700 above 38px, so the break goes in
+ * that gap — 64px keeps the placement card's hero on the light face. Callers
+ * whose variant is fixed name the weight class directly; this is for the ones
+ * that pick a size at runtime.
+ */
+export function heroWeightClass({ fontSize }: { fontSize: number }) {
+  return fontSize >= 64 ? 'font-jp-hero' : 'font-jp-hero-bold';
+}
+
 type ItemDetailHeaderProps = {
   itemType: ItemType;
   meaning: string;

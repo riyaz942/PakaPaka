@@ -24,6 +24,7 @@ import {
   getGrammarLinksForVocab,
   getGrammarRule,
   getItemById,
+  getItemBySlug,
   getKanjiReadings,
   getRequiredParentLabels,
   getRequiredParentLabelsForItems,
@@ -182,6 +183,45 @@ describe('itemRepository', () => {
       visualMnemonicUrl: 'https://example.com/one.png',
     });
     expect(getItemById(db, '999')).toBeNull();
+  });
+
+  it('returns item detail by slug, scoped to the requested item type', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'grammar',
+        jlpt_level: 'N5',
+        slug: 'nihongo',
+        primary_form: 'grammar-nihongo',
+        meaning: 'not the one we want',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'nihongo',
+        primary_form: '日本語',
+        furigana: '日本[にほん]語[ご]',
+        meaning: 'Japanese',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 2,
+      },
+    ]);
+
+    const detail = getItemBySlug(db, 'vocabulary', 'nihongo');
+    expect(detail?.id).toBe('2');
+    expect(detail?.primaryForm).toBe('日本語');
+    expect(detail?.furigana).toBe('日本[にほん]語[ご]');
+
+    // The same slug on another type must not leak across.
+    expect(getItemBySlug(db, 'grammar', 'nihongo')?.primaryForm).toBe('grammar-nihongo');
+    expect(getItemBySlug(db, 'vocabulary', 'no-such-slug')).toBeNull();
   });
 
   it('returns required parents with ids for batched kanji ids', async () => {

@@ -14,7 +14,6 @@ import {
 import {
   ZenKakuGothicNew_500Medium,
   ZenKakuGothicNew_700Bold,
-  ZenKakuGothicNew_900Black,
 } from '@expo-google-fonts/zen-kaku-gothic-new';
 
 /**
@@ -41,5 +40,4 @@ export const appFonts = {
   NotoSansJP_900Black,
   ZenKakuGothicNew_500Medium,
   ZenKakuGothicNew_700Bold,
-  ZenKakuGothicNew_900Black,
 };

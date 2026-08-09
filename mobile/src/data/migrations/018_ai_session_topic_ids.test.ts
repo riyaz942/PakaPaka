@@ -2,10 +2,10 @@ import { migrations } from '@/data/migrations';
 import { migration018AiSessionTopicIds } from '@/data/migrations/018_ai_session_topic_ids';
 
 describe('018_ai_session_topic_ids', () => {
-  it('claims version 18 and is registered last', () => {
+  it('claims version 18 and is registered in version order', () => {
     expect(migration018AiSessionTopicIds.version).toBe(18);
     expect(migration018AiSessionTopicIds.name).toBe('018_ai_session_topic_ids');
-    expect(migrations[migrations.length - 1]).toBe(migration018AiSessionTopicIds);
+    expect(migrations[17]).toBe(migration018AiSessionTopicIds);
   });
 
   it('adds the column only when it is not already there', () => {

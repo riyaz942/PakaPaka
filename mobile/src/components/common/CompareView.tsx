@@ -58,12 +58,12 @@ function CompareGlyph({ item, side }: { item: CurriculumItemDetail; side: Side }
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={cn('font-jp-hero-black', accent.deep)}
+          className={cn('font-jp-hero-bold', accent.deep)}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}
         />
       ) : (
         <Text
-          className={cn('text-center font-jp-hero-black', accent.deep)}
+          className={cn('text-center font-jp-hero-bold', accent.deep)}
           style={isLongForm ? { fontSize: 28, lineHeight: 34 } : { fontSize: 40, lineHeight: 46 }}>
           {item.primaryForm}
         </Text>

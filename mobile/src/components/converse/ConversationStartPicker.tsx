@@ -171,7 +171,7 @@ export function ConversationStartPicker({
                 )}>
                 {isHighlighted ? (
                   <View className="h-[42px] w-[42px] items-center justify-center rounded-[12px] bg-content-grammar-soft">
-                    <Text className="text-title font-jp-hero-black text-content-grammar-deep">
+                    <Text className="text-title font-jp-hero-bold text-content-grammar-deep">
                       {glyph}
                     </Text>
                   </View>

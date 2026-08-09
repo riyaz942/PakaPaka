@@ -83,7 +83,7 @@ describe('IntensityScreen', () => {
     });
   });
 
-  it('persists relaxed and routes the beginner path straight to complete', async () => {
+  it('persists relaxed and routes the beginner path to the day-1 deck', async () => {
     const db = await createUserDb();
     setOnboardingPath(db, 'beginner');
     renderIntensityScreen(db);
@@ -91,7 +91,7 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('relaxed');
-    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/day-one');
   });
 
   it('persists intense and routes the manual path to the placement check', async () => {
@@ -115,7 +115,7 @@ describe('IntensityScreen', () => {
     fireEvent.press(screen.getByRole('button', { name: 'Continue' }));
 
     expect(getSessionIntensity(db)).toBe('immersive');
-    expect(mockPush).toHaveBeenCalledWith('/onboarding/complete');
+    expect(mockPush).toHaveBeenCalledWith('/onboarding/day-one');
   });
 
   it('routes import path to complete on Continue', async () => {

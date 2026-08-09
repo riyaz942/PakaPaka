@@ -10,6 +10,7 @@ import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSectio
 import {
   DETAIL_HERO_FONT_SIZE,
   ItemDetailHeader,
+  heroWeightClass,
 } from '@/components/learn/ItemDetailHeader';
 import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
@@ -45,6 +46,7 @@ export function VocabularyDetail({
   related = [],
 }: VocabularyDetailProps) {
   const isLongWord = item.primaryForm.length > 4;
+  const heroSize = isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word;
   const { modeForItem } = useFuriganaPreference();
   const isKnownWord = useIsKnownWord(item.id);
 
@@ -57,8 +59,8 @@ export function VocabularyDetail({
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={cn('font-jp-hero-black', CONTENT_TYPE_ACCENT.vocabulary.deep)}
-          style={isLongWord ? DETAIL_HERO_FONT_SIZE.pattern : DETAIL_HERO_FONT_SIZE.word}
+          className={cn(heroWeightClass(heroSize), CONTENT_TYPE_ACCENT.vocabulary.deep)}
+          style={heroSize}
         />
       </ItemDetailHeader>
 

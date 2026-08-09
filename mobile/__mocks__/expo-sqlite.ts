@@ -332,6 +332,17 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     return;
   }
 
+  if (/^INSERT INTO card_seen/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
+    const [cardId, seenAt] = params;
+    const rows = state.tables.get('card_seen') ?? [];
+    // DO NOTHING on conflict: the first sighting keeps its `seen_at`.
+    if (!rows.some((row) => row.card_id === cardId)) {
+      rows.push({ card_id: cardId, seen_at: seenAt });
+    }
+    state.tables.set('card_seen', rows);
+    return;
+  }
+
   if (/^INSERT INTO passage_practice_results/i.test(trimmed) && trimmed.includes('ON CONFLICT')) {
     upsertPassagePracticeResult(state, params);
     return;
@@ -1051,6 +1062,14 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
     return rows;
   }
 
+  if (/FROM card_seen/i.test(trimmed)) {
+    let rows = [...(state.tables.get('card_seen') ?? [])];
+    if (/WHERE card_id = \?/i.test(trimmed)) {
+      rows = rows.filter((row) => row.card_id === params[0]);
+    }
+    return rows;
+  }
+
   if (/FROM related_item_boosts/i.test(trimmed)) {
     let rows = [...(state.tables.get('related_item_boosts') ?? [])];
     if (/WHERE item_id IN/i.test(trimmed)) {
@@ -1194,6 +1213,13 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
     if (/WHERE id = \?/i.test(trimmed)) {
       return rows.filter((row) => row.id === params[0]);
+    }
+
+    // Before the generic filters below: an unhandled slug lookup would fall
+    // through them and return the whole table, so `getFirstSync` would hand
+    // back an arbitrary item and the caller's test would look green.
+    if (/WHERE item_type = \? AND slug = \?/i.test(trimmed)) {
+      return rows.filter((row) => row.item_type === params[0] && row.slug === params[1]);
     }
 
     if (/WHERE id IN/i.test(trimmed)) {

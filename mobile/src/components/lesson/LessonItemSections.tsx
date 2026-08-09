@@ -8,7 +8,11 @@ import { LessonMarkdown } from '@/components/common/LessonMarkdown';
 import { MnemonicImage } from '@/components/common/MnemonicImage';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
-import { HERO_FONT_SIZE, ItemDetailHeader } from '@/components/learn/ItemDetailHeader';
+import {
+  HERO_FONT_SIZE,
+  ItemDetailHeader,
+  heroWeightClass,
+} from '@/components/learn/ItemDetailHeader';
 import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import {
@@ -75,24 +79,24 @@ export function LessonHero({ item }: { item: CurriculumItemDetail }) {
 
   if (item.itemType === 'vocabulary') {
     const isLongWord = item.primaryForm.length > 4;
+    const heroSize = isLongWord ? HERO_FONT_SIZE.word : HERO_FONT_SIZE.glyph;
     return (
       <ItemDetailHeader itemType="vocabulary" meaning={item.meaning} size="lg">
         <FuriganaText
           text={item.furigana ?? item.primaryForm}
           mode={modeForItem(item.id)}
           isKnownWord={isKnownWord}
-          className={cn('font-jp-hero-black', accent.deep)}
-          style={isLongWord ? HERO_FONT_SIZE.word : HERO_FONT_SIZE.glyph}
+          className={cn(heroWeightClass(heroSize), accent.deep)}
+          style={heroSize}
         />
       </ItemDetailHeader>
     );
   }
 
+  const heroSize = item.itemType === 'grammar' ? HERO_FONT_SIZE.pattern : HERO_FONT_SIZE.glyph;
   return (
     <ItemDetailHeader itemType={item.itemType} meaning={item.meaning} size="lg">
-      <Text
-        className={cn('text-center font-jp-hero-black', accent.deep)}
-        style={item.itemType === 'grammar' ? HERO_FONT_SIZE.pattern : HERO_FONT_SIZE.glyph}>
+      <Text className={cn('text-center', heroWeightClass(heroSize), accent.deep)} style={heroSize}>
         {item.primaryForm}
       </Text>
     </ItemDetailHeader>
