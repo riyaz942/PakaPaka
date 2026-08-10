@@ -20,43 +20,43 @@
     }
   },
   "n5-ao": {
-    "meaning_mnemonic": "Picture a tiny sprout pushing up over the moon. It's young, fresh, and glowing that impossible color between <radical>blue</radical> and green — the shade of new leaves at dusk. That youthful sprout-over-moon is blue-green.",
+    "meaning_mnemonic": "Picture a tiny sprout pushing up over the <radical>moon</radical>. It's young, fresh, and glowing that impossible color between <radical>blue</radical> and green — the shade of new leaves at dusk. That youthful sprout-over-moon is blue-green.",
     "reading_mnemonic": "Sei, the star student, holds up a jar of blue-green ink and says the color is called 「<reading>せい</reading>」 — of course she knew it first. She's already dipping her perfect brush in before anyone else can answer.",
     "description": "Means blue or green (the fresh blue-green range); shows up in color words and in compounds about youth and freshness.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-ashi": {
-    "meaning_mnemonic": "Picture a mouth perched on top of a pair of stopping legs — the legs have skidded to a halt, and the mouth is barking orders down at them. Those legs end in one thing: a <radical>foot</radical>. That mouth-over-stopping-legs shape is your foot, your leg, the thing you plant when you've had just enough.",
+    "meaning_mnemonic": "Picture a <radical>mouth</radical> perched on top of a pair of <radical>stopping</radical> legs — the legs have skidded to a halt, and the mouth is barking orders down at them. Those legs end in one thing: a <radical>foot</radical>. That mouth-over-stopping-legs shape is your foot, your leg, the thing you plant when you've had just enough.",
     "reading_mnemonic": "On the mountain trail, a hiker named Sok is nursing a blister on her foot. Every painful step she counts out loud, 「<reading>そく</reading>、そく、そく」, until she finally reaches the vending machine at the top and decides that's enough walking for one day.",
     "description": "Means foot, leg, or to suffice/be enough; shows up in words for body parts and in verbs about having sufficient amounts.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-atarashii": {
-    "meaning_mnemonic": "You walk into a showroom and there, front and center, someone is proudly <radical>standing</radical> (立) beside the thing they just built. The person planted on the ground won't stop grinning because everything here is fresh off the line — untouched, gleaming, new.",
+    "meaning_mnemonic": "The <radical>spicy</radical> man hauls his pepper skewer into the showroom, eyes streaming, hat still riding its column of sweat, swearing the sauce is mild. Behind him a <radical>tree</radical> sits on the plinth, dug up roots and all, sap still wet where the branch was cut this morning, and the person on the platform is <radical>standing</radical> beside it with both arms thrown out so nobody touches anything. Just cut, just picked, just unwrapped — everything in here is new.",
     "reading_mnemonic": "The showroom greeter is Shin, and every time a new model rolls in he shouts his own name — <reading>しん</reading>! — as he yanks the cover off. Whatever Shin unveils is always brand new.",
     "description": "Means \"new\"; a very common kanji appearing in words for new things, newspapers, and freshness.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-bun-minute": {
-    "meaning_mnemonic": "Picture a knife coming down on a pie, <radical>splitting</radical> it into eight (the two strokes spreading apart). Each slice is now a part of the whole, and every part is a minute wedge of the original. Once you can split something into its parts like this, you finally understand it: minute, part, understand.",
+    "meaning_mnemonic": "The very small rabbit is still gripping its full-sized <radical>sword</radical> in both paws, and this time it brings the blade down on a pie instead of toast. The crust falls apart into <radical>eight</radical> leaning wedges, each one split clean down the middle like a log under an axe. Every wedge is a part, a minute portion of the whole — and once you can cut a thing into its parts like that, you finally understand it: minute, part, understand.",
     "reading_mnemonic": "A pastry chef at Koichi's konbini slices a cake into perfectly equal parts and blows a \"phew\" of relief — <reading>ふん</reading> — when the timer hits one last minute. Every ふん she counts is one more minute closer to closing.",
     "description": "Means minute, part, or understand; shows up in time expressions (分), in words for portions and parts, and in the verb 分かる, to understand.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-chikara": {
@@ -80,13 +80,13 @@
     }
   },
   "n5-denki-den": {
-    "meaning_mnemonic": "A storm is hammering the <radical>rain</radical> against your window frame, drops streaking down the glass, when a jagged bolt splits the sky and lights the whole room. That flash coming out of the rain crackles with pure energy — electricity.",
+    "meaning_mnemonic": "The <radical>rain</radical> is hammering your window, four dashes frozen mid-fall on the glass, and out beyond it the farmer's flooded <radical>rice field</radical> lies there like a giant square battery, the dirt paths chopping it into four bright plots. A bolt splits the sky, hits the water, and every plot lights up at once — the whole grid crackling with electricity.",
     "reading_mnemonic": "The lightning hits a power line and the whole street goes DEN — <reading>でん</reading> — every fluorescent tube in Koichi's konbini surging bright at once. You feel that でん in your teeth as the electricity floods back.",
     "description": "Means \"electricity\"; shows up in everyday words for trains, phones, lights, and anything electrical.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-deru": {
@@ -109,12 +109,12 @@
     }
   },
   "n5-dokusho": {
-    "meaning_mnemonic": "On the right, a merchant is hawking his wares, and next to him stands <radical>words</radical> and speech, that mouth stacking line after line into the air. But the merchant isn't selling — he's leaning in, eyes moving down the columns of speech, drinking in every line. He isn't listening; he's there to read.",
+    "meaning_mnemonic": "On the left the <radical>speech</radical> is doing its usual thing, sentence after sentence stacking up out of that little mouth. On the right the very serious armoured <radical>samurai</radical> duck has climbed down off the garden wall and planted himself on a pair of sturdy <radical>human legs</radical>, feet apart, refusing to blink. He isn't listening to a word of it — his eyes are running down the stacked lines, top to bottom, silently. That is not hearing speech. That is reading it.",
     "reading_mnemonic": "The reader you find hunched over those lines of speech is a poison-pen critic, and you nickname her Doku (<reading>どく</reading>) because every review she reads she then tears apart. Watch her read a page and you can practically see the どく venom drip off her pen.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-eki-station": {
@@ -128,23 +128,23 @@
     }
   },
   "n5-en": {
-    "meaning_mnemonic": "Look at this character straight on: it's a rounded box, a coin flattened into a frame. Picture a single shiny coin held tight inside a square window, so perfectly round it's almost a circle. That coin is a yen, and its round shape is the circle.",
+    "meaning_mnemonic": "Look at this character straight on: it's a rounded <radical>box</radical>, a coin flattened into a frame. Picture a single shiny coin held tight inside a square window, so perfectly round it's almost a circle. That coin is a yen, and its round shape is the circle.",
     "reading_mnemonic": "At Koichi's konbini the beeping till spits out change, and a friend named En scoops up every round coin, grinning \"these <reading>えん</reading> are mine.\" Every time you hear the till beep, picture En pocketing えん.",
     "description": "Means yen (Japan's currency) and also circle or round; shows up on money, prices, and words for round shapes.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-furui": {
-    "meaning_mnemonic": "Above the <radical>mouth</radical> balances a little cross of stacked crossbars, like the beams of a house that's been standing for centuries. Every mouth that has passed through here has told the same worn-out story, over and over. A mouth held up by ancient timber can only mean one thing: old.",
+    "meaning_mnemonic": "Above the <radical>mouth</radical> balances a little <radical>cross</radical> of stacked crossbars, like the beams of a house that's been standing for centuries. Every mouth that has passed through here has told the same worn-out story, over and over. A mouth held up by ancient timber can only mean one thing: old.",
     "reading_mnemonic": "Koichi finds an ancient rice ball at the very back of his konbini shelf, so far past its date the wrapper has yellowed. He picks it up, sighs, and mutters just one syllable at how old it is: 「<reading>こ</reading>」.",
     "description": "Means \"old,\" as in old and worn from age; appears in words about age and antiquity and in the common word for \"used/secondhand.\"",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-gaku": {
@@ -207,13 +207,13 @@
     }
   },
   "n5-hana": {
-    "meaning_mnemonic": "Picture a single tall stem topped by a wide, open bloom leaning to one side, its petals spilling over the edge of the pot. That whole leaning shape is the character: stem below, blossom bursting out above. Every time you see it, you're looking at a flower.",
+    "meaning_mnemonic": "A fresh patch of <radical>grass</radical> is sprouting out of the soil the way it always does, two clumps poking up over one line of dirt — except this morning one clump has gone rogue and shot a tall stem straight up with a wide open bloom on the end, petals spilling over sideways. The rest of the grass sits underneath it looking embarrassed. Grass with a blossom bursting out of the top of it is a flower.",
     "reading_mnemonic": "Kaa, the fire-breathing crow, lands right in the middle of the flowerbed and lets out a proud 「<reading>か</reading>」, singeing every petal within reach. Now the only flower left standing is the scorched one under her claws.",
     "description": "Means \"flower\"; a very common everyday kanji seen in words for flowers, plants, and blossoms.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-hanashi-wa": {
@@ -227,33 +227,33 @@
     }
   },
   "n5-hantime": {
-    "meaning_mnemonic": "Look at this character straight on: it's a fat exclamation point standing dead center, with two little legs kicked out symmetrically at the top, one left and one right. Those legs split the whole thing right down the middle — perfectly even, one side mirroring the other. Whenever you see something sliced clean into two equal parts, you've found half.",
+    "meaning_mnemonic": "Two matchsticks lie crossed on the counter making that little <radical>ten</radical> mark, and a cleaver comes down straight through the middle of it. What's left is a fat upright with two legs kicked out symmetrically at the top, one left and one right, each side mirroring the other exactly. Ten cut clean down the centre, sliced into two equal parts, is half.",
     "reading_mnemonic": "Han, the half-and-half chef, holds up a plate where one side is rice and the other is curry, split exactly down the center. \"<reading>はん</reading>!\" he barks, tapping the dividing line — because to Han, half is the only portion worth serving.",
     "description": "半 and 羊 both sit horizontal bars on a vertical under a split top. Count the bars: 半 has two, 羊 has three. That extra horizontal is the only reliable difference.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-hayai": {
-    "meaning_mnemonic": "Picture the <radical>sun</radical> — that window with a bar in it, a whole day — rising up over a stick planted in the ground. It's cresting the horizon way sooner than you expected, before your alarm even goes off. When the sun comes up that early, you're forced to move fast.",
+    "meaning_mnemonic": "Someone has scratched the <radical>ten</radical> mark into the dirt — two matchsticks crossed, the tally you cut when you've counted both hands — and stood it upright like a fencepost. Behind it the <radical>sun</radical>, that window with a bar in it, comes climbing up to start a new <radical>day</radical> and clears the top of the post before you've counted anywhere near ten. It's up hours ahead of your alarm, and now everything you do today has to be fast: early, fast.",
     "reading_mnemonic": "There's a rooster at Grandma Kane's shrine who crows the moment the sun peeks over the mossy steps, way too early: \"<reading>そう</reading>! そう!\" he screams, so loud the cats scatter. Now you're up before dawn whether you like it or not.",
     "description": "Means \"early\" or \"fast,\" and shows up in everyday words about time and speed like 早い (early/fast) and 早く (quickly).",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-hidari": {
-    "meaning_mnemonic": "Picture a carpenter's square held in a working hand, the arm braced hard so it doesn't slip while measuring. That steadying hand is doing the supporting job — the one that isn't the writing hand, the one on your other side. That's the hand on the left.",
+    "meaning_mnemonic": "A badger in a hard hat stands on the level <radical>ground</radical> of the <radical>construction</radical> site while the crane lowers the steel I-beam toward its slot. His right hand is busy holding a sandwich, so he steadies the swinging girder with the other one, arm braced flat and taking the whole weight. That steadying hand is the hand on the left.",
     "reading_mnemonic": "A samurai marches into Koichi's konbini and slams down a coin with his left hand, barking \"<reading>さ</reading>!\" as he demands the last onigiri. Every time you see this kanji, hear that samurai's sharp さ ringing off the beeping till.",
     "description": "Means \"left,\" the opposite of right; shows up constantly in directions and in the compound 左右 (left and right).",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-hidariuma": {
@@ -286,13 +286,13 @@
     }
   },
   "n5-hoku": {
-    "meaning_mnemonic": "Picture a person standing at a slanted gate, half turned away, one foot already off the property. They're not coming in — they're headed the other way, out past the fence and into the open air. That's someone stepping firmly outside.",
+    "meaning_mnemonic": "The tortoise is out on the balcony again with its hand mirror, squinting at the two cracks on its own shell and announcing by <radical>divination</radical> that tonight will be clear. So the hedgehog drags its fork out under the thin crescent moon for another <radical>evening</radical> of trying to take a bite out of it. Neither of them is going back in until the reading is finished, so both sit there in the cold with the fence at their backs — firmly outside.",
     "reading_mnemonic": "You lock yourself out of Koichi's konbini after hours and a guy named Guy comes tapping the glass from the cold, calling \"<reading>がい</reading>! I'm still stuck out here!\" He is very much on the outside.",
     "description": "Means \"outside\"; a common N5 kanji appearing in words for the outdoors and things that are external.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-hon": {
@@ -326,13 +326,13 @@
     }
   },
   "n5-iku-go": {
-    "meaning_mnemonic": "Picture a stick figure caught mid-stride, legs split wide, one arm swinging forward — the whole character leans into the step. That's a person who won't stand still, always moving to the next place. When you see this shape, you see someone about to go.",
+    "meaning_mnemonic": "Picture a stick figure caught mid-stride, legs split wide, one arm swinging forward — the whole character leans into the <radical>step</radical>. That's a person who won't stand still, always moving to the next place. When you see this shape, you see someone about to go.",
     "reading_mnemonic": "Koichi, the konbini king, can't sit still either — the second a shelf goes empty he's out the door to go restock it, muttering \"<reading>こう</reading>, こう, keep it moving.\" Wherever he needs to go, he goes at a run.",
     "description": "Means \"go\" and shows up constantly in verbs of movement and travel, such as 行く (to go).",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-iu-gen": {
@@ -345,13 +345,13 @@
     }
   },
   "n5-jikan-ji": {
-    "meaning_mnemonic": "You're at the shrine watching the <radical>sun</radical> climb the sky, day after day, and you realize the sun is nothing but a giant clock. Every time you glance up at that window-with-a-bar, the sun, a whole day has ticked by. That slow, steady march of the sun is how you tell the time.",
+    "meaning_mnemonic": "The <radical>sun</radical> climbs its window over the shrine to start another <radical>day</radical>, and its shadow falls across a signpost hammered into a patch of <radical>earth</radical>. Somebody has laid the carpenter's ruler flat in the soil beside it, thumb pinning it down, and ticks off one more <radical>inch</radical> every time the shadow creeps forward. Sun, post and ruler together turn plain dirt into a clock — which is how you measure time, hour by hour.",
     "reading_mnemonic": "A cheerful clockmaker named Jiro keeps every timepiece in Koichi's konbini ticking, and each hour on the hour he shouts \"<reading>じ</reading>! じ!\" as the alarms go off. Whenever you need to know the time, you listen for Jiro's じ.",
     "description": "Means time or hour, and shows up everywhere you talk about clock time and telling the hour.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-juu": {
@@ -374,23 +374,23 @@
     }
   },
   "n5-kaeru": {
-    "meaning_mnemonic": "Picture a weary traveler with a walking stick slung over one shoulder, striding toward the little house that fills the right side of this character. After a long day, the whole shape leans homeward — feet turning, roof waiting. That pull back to the front door is the feeling of return.",
+    "meaning_mnemonic": "You push your own front door open and the <radical>broom</radical> is still going, three stiff prongs driving crumbs and one increasingly indignant cat down the hallway ahead of it, exactly as you left it this morning. On the hook by the wall your rectangle of <radical>cloth</radical> hangs in its two long folds, limp, waiting. You take it down, wipe the day off your face, and step over the cat. Coming back to the same broom and the same hanging cloth is what it is to return.",
     "reading_mnemonic": "Kiki, the tree spirit, has been out riding the wind all day, and now she giggles as she slips back inside her old tree with a soft <reading>き</reading>. Watch her return home and you'll hear that き every time.",
     "description": "Means \"return,\" as in going or coming back home; the core kanji in the verb 帰る, to return.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kaku-write": {
-    "meaning_mnemonic": "You're at your desk when a <radical>sun</radical>, that window with a bar in it, slowly sinks below your notebook. As its last light hits the page, your hand starts to move on its own, filling line after line. That daily sun-to-paper ritual is how you learn to write.",
+    "meaning_mnemonic": "The <radical>brush</radical> is back on your desk, three prongs clamped round its shaft, still flecked with ink from the certificate it ruined. You dip it, and the <radical>sun</radical> — that window with a bar in it — sinks below the edge of your notebook, its last light lying flat across the page. Line after line goes down under that glow until the whole <radical>day</radical> is on paper. Sun on the page, brush in your fist: that is write.",
     "reading_mnemonic": "Kaa, the fire-breathing crow, lands on your notebook and squints at your terrible handwriting, muttering \"<reading>しょ</reading>, しょ\" every time you smudge a letter. Each little puff of flame dries the ink so you can keep writing.",
     "description": "Means \"write\"; shows up in words about writing, documents, and books, like 書く (to write).",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kane-gold-dup": {
@@ -424,13 +424,13 @@
     }
   },
   "n5-ki-spirit": {
-    "meaning_mnemonic": "Picture a little puff of steam curling up off a hot bowl of rice — that swirling, rising shape is exactly this character. You can almost see the wisp lifting into the air, alive and moving. That invisible thing rising off warm things is the very idea of spirit and energy.",
+    "meaning_mnemonic": "Picture a little puff of <radical>steam</radical> curling up off a hot bowl of rice — that swirling, rising shape is exactly this character. You can almost see the wisp lifting into the air, alive and moving. That invisible thing rising off warm things is the very idea of spirit and energy.",
     "reading_mnemonic": "The steam curls up and out pops Kiki, the tree spirit, giggling as the wind stirs her branches. She rides that rising energy on a breeze of 「<reading>き</reading>」.",
     "description": "Means spirit or energy; a very common kanji found in words about mood, feeling, weather, and vitality.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kiku-hear": {
@@ -453,12 +453,12 @@
     }
   },
   "n5-kita": {
-    "meaning_mnemonic": "Picture two people sitting back-to-back on a frozen bench, shoulders hunched against a bitter wind. That's the whole shape of this kanji — two figures turned away from each other, both refusing to face the cold gale howling down from the north. Whenever you see them sitting spine-to-spine like that, you know the icy wind is blowing from the north.",
+    "meaning_mnemonic": "The raccoon has finally landed. It came down in a snowdrift at the top of the map, still gripping the bent <radical>spoon</radical> it levered out of the ice cream tub, and it's now sitting back-to-back with a second raccoon on a frozen bench, both hunched away from each other against the gale — which is exactly the shape of this character. The <radical>spoon</radical> is frozen solid to its paws. That wind is coming straight down from the north.",
     "reading_mnemonic": "Up on the mountain trail, the wind off the northern peak is so brutal that a hiker named Hoku pulls his hood tight and mutters \"<reading>ほく</reading>, ほく\" through chattering teeth as he trudges. Hear him — ほく — every time you point north.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-ko-child": {
@@ -482,12 +482,12 @@
     }
   },
   "n5-kou-school": {
-    "meaning_mnemonic": "Picture a single <radical>tree</radical> standing in the middle of a courtyard, its trunk, roots, and branches spreading over a crowd of kids at recess. Every institution built around that one old tree runs on the same schedule: bells, classrooms, homework. A tree at the heart of the yard means school.",
+    "meaning_mnemonic": "A <radical>tree</radical> stands in the middle of the courtyard, roots gripping the soil, one wide branch spread over the whole yard. Your <radical>father</radical> has dragged the barbecue out under it, tongs held high in both hands, announcing lunch to four hundred children at once, and he's snapped the pot <radical>lid</radical> down over the grill by its little knob so the smoke doesn't set off the alarm in the hallway. Bells, classrooms, homework and dad grilling under the tree — this is school.",
     "reading_mnemonic": "Koichi, the konbini king, has set up a pop-up shop right inside the school gate, restocking onigiri between classes and muttering <reading>こう</reading>, こう as he lines up the shelves. The kids buy their lunch from him before the bell.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kuchi": {
@@ -511,13 +511,13 @@
     }
   },
   "n5-kuru-rai": {
-    "meaning_mnemonic": "Picture a tree standing at a crossroads with two little travelers resting under its branches, one on each side of the trunk. The tree can't move, so it waves the travelers over: \"Come! Come to me, sit in my shade.\" Everyone always comes to the tree.",
+    "meaning_mnemonic": "Picture a <radical>tree</radical> standing at a crossroads with two little travelers resting under its branches, one on each side of the trunk. The tree can't move, so it waves the travelers over: \"Come! Come to me, sit in my shade.\" Everyone always comes to the tree.",
     "reading_mnemonic": "The traveler who comes to the tree is Rye, and he never arrives quietly — he shouts \"<reading>らい</reading>, I'm here!\" as he strolls up the path. Whenever someone comes into view down the road, listen for that らい.",
     "description": "来 is 米 with an extra horizontal across the top. Count the horizontal bars: 米 has one, 来 has two.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kyuu": {
@@ -541,33 +541,33 @@
     }
   },
   "n5-machi": {
-    "meaning_mnemonic": "Picture this whole character as a bird's-eye view of a settlement: a neat grid of rice fields on the left pressed up against a straight main road running down the right. Fields plus a road is the smallest complete place people can live in — that's a town.",
+    "meaning_mnemonic": "Picture this whole character as a bird's-eye view of a settlement: a neat grid of <radical>rice fields</radical> on the left pressed up against a straight main road running down the right. Fields plus a road is the smallest complete place people can live in — that's a town.",
     "reading_mnemonic": "The town mayor climbs onto a soapbox in the square and announces he's the big chief now: \"I'm in charge — call me <reading>ちょう</reading>!\" Every time you walk into this town, you hear that same booming ちょう echoing off the buildings.",
     "description": "Means \"town\" and shows up in place names and words for local districts and neighborhoods.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-mae": {
-    "meaning_mnemonic": "Picture a fancy storefront with a wide awning sticking out over the sidewalk and two little legs of a display stand planted underneath. It's the face of the shop — the part that greets you before you ever step inside. That whole shape, the thing you meet first and out in front, means front, or before.",
+    "meaning_mnemonic": "Picture a fancy storefront with a wide awning over the sidewalk, and set into the wall beneath it that tall narrow window with two bars across the middle. The crescent <radical>moon</radical> has drifted down and wedged itself inside the frame, glowing there like a display piece. It is in position before opening, before the staff, before anyone, hanging out ahead of the whole shop and greeting you before you step inside. That shape is front, and before.",
     "reading_mnemonic": "A calm Zen monk stands out front of the shop, arriving before everyone else, and he bows and murmurs <reading>ぜん</reading> as he settles into place. He's always in ぜん — front and center, before the doors open.",
     "description": "Means front or before; extremely common in words for physical position (in front of) and time (before, previous), such as before an event or the front of a building.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-mai-every": {
-    "meaning_mnemonic": "Look at 毎 as a tightly wound wind-up alarm clock: a fat body with the key twisting out the top and two little feet at the bottom. You crank it up and it goes off the same way, at the same hour, without fail — every single day. That relentless, clockwork repetition is exactly what this character means: every.",
+    "meaning_mnemonic": "A wind-up alarm clock is bolted to the pole outside the station, and every morning that <radical>mother</radical> leans out of the departing train window, posts a forgotten lunchbox onto the pole, and shouts reheating instructions over the ringing. Same train, same pole, same hour, without fail. That relentless, clockwork repetition is exactly what this character means: every.",
     "reading_mnemonic": "The clock belongs to Mai, who winds it every morning and shouts \"My time!\" as it rings. Hear her name <reading>まい</reading> as the sound that hammers home the routine — every day, まい, まい, まい.",
     "description": "Means \"every\" and shows up in common time words for recurring events, such as every day, every week, and every morning.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-man": {
@@ -591,33 +591,33 @@
     }
   },
   "n5-meiname": {
-    "meaning_mnemonic": "Something is missing above the <radical>mouth</radical> — a marker of who you are. You open your mouth to speak the one word that fills that gap: your name. Every mouth carries a name.",
+    "meaning_mnemonic": "Up on the balcony the hedgehog is out with its fork again, watching the crescent get bitten away for the <radical>evening</radical>, and it still cannot remember what the thief is called. So it leans over the railing, opens its <radical>mouth</radical> as wide as it goes, and yells the one word that fills the gap. An evening sky plus a mouth shouting into it gives you a name.",
     "reading_mnemonic": "A performer named Mei struts into Koichi's konbini and belts out \"<reading>めい</reading>, that's my name, don't wear it out!\" She spells it letter by letter until the whole shop knows exactly who she is.",
     "description": "名 and 多 both start with the same slanted three-stroke piece. 名 finishes with a small closed box beneath it. 多 repeats that slanted piece a second time instead, so it is one shape stacked twice.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-michi": {
-    "meaning_mnemonic": "You step onto a winding <radical>road</radical> that advances up the mountain trail, twisting past every switchback. There's nothing else here but that one long ribbon of path unrolling ahead of you. Follow it and it takes you exactly where a road should — this kanji is road, or the way forward.",
+    "meaning_mnemonic": "The giraffe in the business suit is late, so it lowers its telescoping <radical>neck</radical> flat to the ground and lets the winding <radical>road</radical> unroll straight along the top of it, spots and all. Commuters simply walk up the giraffe and keep going, and by lunchtime nobody can tell where the animal ends and the way forward begins — this kanji is road, the way.",
     "reading_mnemonic": "Halfway up the road you meet a doe standing in the middle of the path, blocking the way. She won't budge, so you call out \"<reading>どう</reading> do I get past you?\" — and the doe just chews and stares, owning the whole road.",
     "description": "Means road or way; a very common kanji seen in words for streets, paths, and figurative \"ways\" of doing things.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-migi": {
-    "meaning_mnemonic": "Picture a hand reaching down into an open mouth to pull something free — the fingers and the little box of the mouth locked together in one shape. That hand is always your dominant one, the one you shove in to grab a stuck snack. It's the hand on the right.",
+    "meaning_mnemonic": "Picture the flat horizon line of the <radical>ground</radical>, and a hand reaching down under it into an open <radical>mouth</radical> to pull something free — the fingers and the little box of the mouth locked together in one shape. That hand is always your dominant one, the one you shove in to grab a stuck snack. It's the hand on the right.",
     "reading_mnemonic": "You reach for the last onigiri on Koichi's shelf with your right hand and your fingers close on nothing but air, so you let out a soft \"<reading>う</reading>う\" of disappointment. That little \"うう\" is the sound you make when your right hand comes up empty.",
     "description": "右, 左 and 石 all park something under a two-stroke top. 右 and 左 differ in what sits below: 右 has a small box, 左 a short cross-like piece. 石 shares 右's box but writes the top as a cliff, the horizontal running along the top with only its left end turning down.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-mimi": {
@@ -631,12 +631,12 @@
     }
   },
   "n5-minami": {
-    "meaning_mnemonic": "Look at this character straight on and you'll see a little tent standing tall with a wind chime dangling under its roof. This is the tent you pitch on the warmest, sunniest patch of ground you can find — because you've dragged it all the way south, where the wind is soft enough to make that chime sing. Set up your tent and let it point you south.",
+    "meaning_mnemonic": "Somebody has upended a <radical>wide box</radical> on the hot sand, and across its flat top two matchsticks are laid in a <radical>cross</radical>, like the world's worst weather vane. A flamingo nudges the box round and round all afternoon, and the arm of the cross that ends up warmest is the one pointing south.",
     "reading_mnemonic": "A backpacker named Nan has been hiking down the mountain trail for days, always heading south toward warmer weather. Every time someone asks which way she's going, she just points and sighs, \"<reading>なん</reading>... south, always south.\" The word なん sticks because Nan won't stop saying it.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-miru": {
@@ -680,23 +680,23 @@
     }
   },
   "n5-nana": {
-    "meaning_mnemonic": "Look at the whole character: a single upright stroke with a long arm sweeping across it, like a bent nail hammered halfway into a wall and then hooked to hang something on. Picture yourself hanging exactly seven coats on that one crooked hook by the door. When it bends under all that weight, you know it's holding seven.",
+    "meaning_mnemonic": "The raccoon is still airborne, still gripping that bent <radical>spoon</radical>, and the handle has come out of the ice cream twisted into a crooked hook. Someone hammers it into the wall by the door and hangs exactly seven coats on it. When it sags under all that weight, you know what it is holding: seven.",
     "reading_mnemonic": "A shy cat at Grandma Kane's shrine will only come out when you call it exactly seven times — and each time you call, you shush the other cats: <reading>しち</reading>, しち, quiet now. By the seventh しち, it finally pads down the mossy steps.",
     "description": "七 and 十 are both a bar crossed by a second stroke. 十 keeps that stroke straight, running top to bottom. 七 bends it: it drops, curves right, and flicks upward at the end.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-nen": {
-    "meaning_mnemonic": "Look at this whole character and see a scarecrow leaning in a field, arms of straw stretched out, its head tilted from standing there through every season. It has watched the rice grow, get harvested, and grow again — the full turn of the seasons. One complete loop of that scarecrow's silent watch is a year.",
+    "meaning_mnemonic": "The scarecrow in the field is propped up on a warrior's shield, that flat board left out in the sun until it is cracked and completely <radical>dry</radical>. It has stood there watching the rice grow, get harvested, and grow again, straight through the full turn of the seasons. One complete loop of that dry board's silent watch is a year.",
     "reading_mnemonic": "A tired farmer counts the passing seasons by taking a nap in the shade of that scarecrow each time the harvest ends. He mumbles \"<reading>ねん</reading>、ねん\" — like the sleepy sound of nodding off — once for every year that rolls by.",
     "description": "Means \"year\"; a very common kanji appearing in dates, ages, and words about time.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-ni": {
@@ -720,12 +720,12 @@
     }
   },
   "n5-nichiyou": {
-    "meaning_mnemonic": "You flip your calendar and see the <radical>sun</radical>, a day, sitting bright at the left edge, while a busy tangle of feathers and squawking birds crowds in beside it. That's how each square is labeled: a sun for the day, plus all the noisy little markings that name it. Each one is a named weekday.",
+    "meaning_mnemonic": "You flip your calendar and the <radical>sun</radical> is sitting bright at the left edge, marking the day, while someone sweeps the rest of the square clean with that stiff-pronged <radical>broom</radical>, cat still asleep across the top prong. Every morning the sun climbs up, the broom shoves yesterday off the grid, and the fresh square gets its label. Each swept-and-sunned box is one named weekday.",
     "reading_mnemonic": "Yoko, exhausted, groans \"no more, no more\" as she crosses off day after day on the wall calendar. Every square she reaches she moans <reading>よう</reading>, よう, because to her every single weekday feels the same.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-nishi": {
@@ -759,13 +759,13 @@
     }
   },
   "n5-ooi-ta": {
-    "meaning_mnemonic": "Picture two little dumplings stacked one on top of the other, leaning slightly like a lopsided snowman. One dumpling is never enough — you always want another, and then another, until the plate is piled high. Two stacked and always craving more: that's how you get many.",
+    "meaning_mnemonic": "The hedgehog is back on the balcony with its fork, watching the crescent get bitten away for the <radical>evening</radical>, when a second <radical>evening</radical> stacks up underneath the first, leaning like a lopsided snowman. One moon is never enough. It wants another, and another, until the plate is piled high. Two stacked and still craving more: that is how you get many.",
     "reading_mnemonic": "At the top of the mountain trail, Ta counts the coins in the improbable vending machine, and there are far too many to hold. \"<reading>た</reading>, た, た,\" she taps each one as they spill from her hands — there are just too many.",
     "description": "多 is the same slanted piece written twice, one stacked below the other. 名 writes that piece once and puts a small closed box underneath it instead.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-otoko": {
@@ -778,13 +778,13 @@
     }
   },
   "n5-roku": {
-    "meaning_mnemonic": "Picture the <radical>number eight</radical> standing tall, and then set a little lid right on top of it. That lid caps the eight and knocks it down two — from eight, you drop to six. The lid on top of eight always means six.",
+    "meaning_mnemonic": "Picture the <radical>number eight</radical> standing tall, and then set a little <radical>lid</radical> right on top of it. That lid caps the eight and knocks it down two — from eight, you drop to six. The lid on top of eight always means six.",
     "reading_mnemonic": "A rock star climbs onto the vending machine at the top of the mountain trail and belts out six songs to the empty air. Every time he screams \"<reading>ろく</reading>!\" a cat appears, until six of them are yowling backup. That rock (ろく) show is how you hear six.",
     "description": "Means six; the basic number 6, seen everywhere from counting and prices to dates and times.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-san": {
@@ -837,13 +837,13 @@
     }
   },
   "n5-shi-city": {
-    "meaning_mnemonic": "You stroll into the town square and above every stall hangs a bright piece of <radical>cloth</radical> on a rod, snapping in the wind. Each cloth marks a different seller, and rows of them stretch as far as you can see. So many stalls under so much cloth — this is the heart of the city, its bustling market.",
+    "meaning_mnemonic": "You stroll into the town square and above every stall hangs a bright piece of <radical>cloth</radical> on a rod, snapping in the wind. On the biggest stall a pot steams away, and the vendor keeps slamming the flat disc of its <radical>lid</radical> back down over the rim so nobody smells the stew for free. Rows of cloth and clanging lids stretch as far as you can see. This is the heart of the city, its bustling market.",
     "reading_mnemonic": "The busiest stall belongs to Shi, a sharp-eyed vendor who greets every shopper crossing the market with a cheerful 「<reading>し</reading>!」. Follow her voice and you'll always find the center of the city.",
     "description": "Means city or market; shows up in words for towns and municipal places like 市 (city) and city names.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-shiro-white": {
@@ -857,13 +857,13 @@
     }
   },
   "n5-shita": {
-    "meaning_mnemonic": "Picture a single horizontal shelf with a little mark hanging beneath it, dropping away toward the floor. Everything about the shape leans downward, pointing at the space under that shelf. That dangling tail tells you exactly where to look: down, below.",
+    "meaning_mnemonic": "The tortoise props its hand mirror flat on the level <radical>ground</radical>, squints at the two cracks running along underneath it, and announces the week's forecast by <radical>divination</radical>. The prediction never changes: everything worth knowing is under that line, in the space beneath your feet. That little crack hanging below the horizon points exactly where to look, which is down, below.",
     "reading_mnemonic": "Kaa, the fire-breathing crow, dives straight down off the power line and lets out a sharp 「<reading>か</reading>」 as she plummets toward the ground below. Every time she drops down, that same caw of 「か」 rings out.",
     "description": "Means down or below; a very common kanji appearing in words about lower position, direction, and going down.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-shou-small": {
@@ -877,12 +877,12 @@
     }
   },
   "n5-shu-week": {
-    "meaning_mnemonic": "Picture a boxy calendar page with a winding path snaking across it, threading from one square to the next through all seven days. You trace that path with your finger, day by day, until it loops right back to where it started. One full loop around that little grid is exactly one week.",
+    "meaning_mnemonic": "Picture a boxy calendar page laid flat, and the winding <radical>road</radical> comes sweeping in and threads across it, square to square, through all seven days. You put your own footsteps down on it and <radical>advance</radical> one box at a time until the road curves right back to where it started. One full loop of that road around the little grid is exactly one week.",
     "reading_mnemonic": "A woman named Shu (<reading>しゅう</reading>) plans her whole week on that looping calendar path, and every seven days she sighs \"しゅう, another one done!\" as she starts the loop again. Hear her say しゅう each time the week resets.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-sui": {
@@ -905,13 +905,13 @@
     }
   },
   "n5-suwaru": {
-    "meaning_mnemonic": "Picture two people who came inside from the cold, both dropping down onto the same patch of <radical>earth</radical> to warm up. They plant themselves right on that soil, side by side, and refuse to get up. When two bodies settle onto the earth like that, all they want to do is sit.",
+    "meaning_mnemonic": "Two of those striding <radical>person</radical> figures come in from the cold, legs still mid-stride, and drop straight down onto the same patch of <radical>earth</radical> at the foot of the signpost. They plant themselves on that soil, shoulder to shoulder, and flatly refuse to get up again. When two walkers settle onto the earth like that, all they want to do is sit.",
     "reading_mnemonic": "The person who settles onto that patch of earth is Zara, and the moment she sits she lets out a long, satisfied \"<reading>ざ</reading>あ\" of relief. Every time you see someone plop down here, you hear Zara's ざ.",
     "description": "Means \"sit\"; shows up in words about sitting down, seats, and taking a seat.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-taberu": {
@@ -954,13 +954,13 @@
     }
   },
   "n5-ten": {
-    "meaning_mnemonic": "Picture a stick figure standing with arms flung wide, and then a long flat line laid across the very top of them — a ceiling stretched over the whole world. That line above everyone's outstretched arms is the ceiling of everything: the heaven, the sky.",
+    "meaning_mnemonic": "Picture a stick figure standing with arms flung wide, and someone has peeled up the flat horizon, the one long level <radical>ground</radical> you stand on, and laid it right across the top of those outstretched arms. The ground is up there now, a ceiling stretched over the whole world. Ground hanging above everyone's head is the ceiling of everything: heaven, the sky.",
     "reading_mnemonic": "A tent-pitcher hikes to the top of the mountain trail and, instead of camping on the ground, throws a giant tent (<reading>てん</reading>) up into the air to sleep among the clouds. When you crane your neck at the sky, you spot that tent (てん) floating right there in heaven.",
     "description": "天 is 大 with an extra horizontal laid across the top, above the outstretched arms. 大 has one horizontal, 天 has two.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-tomeru": {
@@ -974,31 +974,31 @@
     }
   },
   "n5-uenagashi": {
-    "meaning_mnemonic": "Picture a single horizontal line — the ground — with a little mark standing tall right on top of it, reaching up into the air. Everything about this shape points one way: away from the ground and skyward. That thing sticking up above the line is exactly what it means — up, above.",
+    "meaning_mnemonic": "Picture a single flat line of <radical>ground</radical>, and standing on it a tortoise squinting at the cracks in its own shell. Its <radical>divination</radical> keeps coming out the same, so it plants one claw pointing straight at the sky and refuses to lower it. Everything in this shape leans away from the ground and skyward: up, above.",
     "reading_mnemonic": "A cheerful mountaineer plants her flag at the summit and shouts \"Joe!\" as she looks up at the sky — <reading>じょう</reading> rings out across the peak. Every time you look up and above you, you hear her じょう echoing back down.",
     "description": "Means \"up\" or \"above\"; a very common N5 kanji appearing in words for direction, position, and going up.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-uru-baku": {
-    "meaning_mnemonic": "Picture a street vendor with a wide table: a little lid or sign propped up top, a body of stacked goods below, and two legs kicked out to the sides as he leans back. He's got everything laid out and he's shouting prices at the crowd. That's the whole posture of someone whose only job is to sell.",
+    "meaning_mnemonic": "The very serious armoured <radical>samurai</radical> duck has abandoned the garden wall and set up a stall, balanced on a pair of sturdy <radical>human legs</radical> planted wide behind a table of stacked goods. It still refuses to blink, it refuses to come down on the price, and it shouts at everyone who slows down. A samurai on braced legs behind a loaded table has exactly one job: to sell.",
     "reading_mnemonic": "The vendor keeps yelling one thing at every customer who walks past: \"Buy! <reading>ばい</reading>, ばい, one for you and one for the baby!\" He'll sell to anyone who slows down, and every pitch ends on that same ばい.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-ushiro": {
-    "meaning_mnemonic": "Picture a runner frozen mid-stride, one leg trailing far behind and a little string dangling off their heel. They're always a step too late, always the one bringing up the rear. Whatever the pack does, this figure comes after — trailing behind.",
+    "meaning_mnemonic": "The penguin in the tipped hat commits to one enormous sideways <radical>step</radical> across the buttered kitchen floor, and snagged on its heel is a <radical>tiny thread</radical>, that flimsy dangling loop, with the duckling still tied to the far end. So the duckling gets towed along as a permanent <radical>trailing foot</radical>, one webbed foot skidding a full body-length back. Whatever the penguin does, the duckling comes after, behind.",
     "reading_mnemonic": "The trailing runner finally staggers across the finish line, dead last, and gasps out a weak \"<reading>ご</reading>... ご...\" — trying to say \"go\" but only managing to arrive after everyone else. That breathless ご is the sound that lands whenever this kanji shows up.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-yama": {
@@ -1012,13 +1012,13 @@
     }
   },
   "n5-yasui": {
-    "meaning_mnemonic": "Picture a <radical>woman</radical> kneeling gracefully inside a snug little house, the roof pulled down over her like a blanket. Nothing can reach her in here — she is safe, the rent is nothing, everything is calm. A woman tucked safely under a roof is cheap and peaceful.",
+    "meaning_mnemonic": "Picture a <radical>woman</radical> kneeling gracefully inside a snug little house, the <radical>roof</radical> pulled down over her like a blanket. Nothing can reach her in here — she is safe, the rent is nothing, everything is calm. A woman tucked safely under a roof is cheap and peaceful.",
     "reading_mnemonic": "She's spreading sweet red <reading>あん</reading> (bean paste) on a bun, humming, utterly at peace. Every bite is cheap comfort — say あん and taste that calm.",
     "description": "安 means cheap or peaceful, and shows up in words for low prices, safety, and being at ease.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-yasumu": {

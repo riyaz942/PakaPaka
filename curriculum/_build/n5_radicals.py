@@ -86,4 +86,21 @@ N5_RADICALS = [
     {"slug": "uma", "form": "馬", "meaning": "horse", "mnemonic": "A galloping horse with a flowing mane and four legs."},
     {"slug": "takai", "form": "高", "meaning": "tall", "mnemonic": "A tall tower with windows: high."},
     {"slug": "kuro", "form": "黒", "meaning": "black", "mnemonic": "A sooty village over a fire: black."},
+    # Components of N5 kanji that had no taught radical until the decomposition
+    # sweep (2026-08-09). Appended, not inserted, so existing sort_order values
+    # are untouched.
+    {"slug": "katana", "form": "刀", "meaning": "sword", "mnemonic": "A curved blade with a handle: a sword."},
+    {"slug": "boku-divination", "form": "卜", "meaning": "divination", "mnemonic": "A crack read for omens: divination."},
+    {"slug": "hi-spoon", "form": "匕", "meaning": "spoon", "mnemonic": "A small ladle with a curved handle: a spoon."},
+    {"slug": "ukanmuri", "form": "宀", "meaning": "roof", "mnemonic": "A peaked roof with a chimney dot on top."},
+    {"slug": "yuu-evening", "form": "夕", "meaning": "evening", "mnemonic": "A crescent moon missing a stroke: dusk."},
+    {"slug": "fuyugashira", "form": "夂", "meaning": "trailing foot", "mnemonic": "A foot dragging behind: coming after."},
+    {"slug": "samurai", "form": "士", "meaning": "samurai", "mnemonic": "A figure at attention, shoulders wider than feet: a samurai."},
+    {"slug": "gyouninben", "form": "彳", "meaning": "step (left)", "mnemonic": "Two short strides down the left side: going."},
+    {"slug": "keigashira", "form": "ヨ", "meaning": "broom", "mnemonic": "Three stacked strokes: a hand gripping a broom."},
+    {"slug": "kigamae", "form": "气", "meaning": "steam", "mnemonic": "A wisp curling off something hot: steam."},
+    {"slug": "haha", "form": "母", "meaning": "mother", "mnemonic": "A seated figure with two dots: a nursing mother."},
+    {"slug": "fudezukuri", "form": "聿", "meaning": "brush", "mnemonic": "A hand gripping an upright writing brush."},
+    {"slug": "karai", "form": "辛", "meaning": "spicy", "mnemonic": "A needle over a stand: sharp, bitter, spicy."},
+    {"slug": "kubi", "form": "首", "meaning": "neck", "mnemonic": "A head with hair on top, sitting on a neck."},
 ]

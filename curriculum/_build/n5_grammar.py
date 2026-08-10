@@ -918,7 +918,9 @@ N5_GRAMMAR = [
         "structure": "Verb-た + ことがある",
         "mnemonic": "There's a past 'thing' you've experienced.",
         "conjugation_rules": {"experience": True},
-        "accepted_forms": ["たことがある", "たことがあります"],
+        "accepted_forms": [
+            "たことがある", "たことがあります", "たことがない", "たことがありません",
+        ],
         "examples": [
             ex("日本へ行ったことがあります。", "I have been to Japan.", ["nihon", "iku-v"]),
             ex("寿司を食べたことがあります。", "I have eaten sushi.", ["taberu"]),
@@ -1011,7 +1013,14 @@ N5_GRAMMAR = [
         "structure": "Verb stem + に + 行く/来る/帰る",
         "mnemonic": "に + a motion verb marks the purpose of going.",
         "conjugation_rules": {"purpose": True},
-        "accepted_forms": ["に行く", "に来る", "に帰る"],
+        # The motion verb conjugates freely — the taught point is the purpose
+        # construction, not the tense — so each of the three is accepted plain,
+        # polite and polite-past.
+        "accepted_forms": [
+            "に行く", "に行きます", "に行きました",
+            "に来る", "に来ます", "に来ました",
+            "に帰る", "に帰ります", "に帰りました",
+        ],
         "examples": [
             ex("映画を見に行きます。", "I go to see a movie.", ["eiga", "miru-v", "iku-v"]),
             ex("本を買いに行きました。", "I went to buy a book.", ["hon", "kau-v", "iku-v"]),
@@ -1103,7 +1112,9 @@ N5_GRAMMAR = [
         "structure": "Verb (dict) + ことができる",
         "mnemonic": "The 'thing' of doing is possible: you can do it.",
         "conjugation_rules": {"ability": True},
-        "accepted_forms": ["ことができる", "ことができます"],
+        "accepted_forms": [
+            "ことができる", "ことができます", "ことができない", "ことができません",
+        ],
         "examples": [
             ex("日本語を話すことができます。", "I can speak Japanese.", ["nihongo", "hanasu-v"]),
             ex("漢字を読むことができます。", "I can read kanji.", ["kanji-word", "yomu"]),
@@ -1264,7 +1275,7 @@ N5_GRAMMAR = [
         "structure": "Noun + はどうですか",
         "mnemonic": "Ask an opinion or make an offer with どうですか.",
         "conjugation_rules": {"question": True},
-        "accepted_forms": ["どうですか", "いかがですか"],
+        "accepted_forms": ["どうですか", "いかがですか", "どうでしたか", "いかがでしたか"],
         "examples": [
             ex("お茶はどうですか。", "How about some tea?", ["ocha"]),
             ex("日本の生活はどうですか。", "How is life in Japan?", ["nihon"]),
@@ -1379,7 +1390,7 @@ N5_GRAMMAR = [
         "structure": "Verb stem / adj stem + すぎる",
         "mnemonic": "すぎる pushes past the limit: too ___.",
         "conjugation_rules": {"excess": True},
-        "accepted_forms": ["すぎる", "すぎます", "すぎた"],
+        "accepted_forms": ["すぎる", "すぎます", "すぎた", "すぎました"],
         "examples": [
             ex("食べすぎました。", "I ate too much.", ["taberu"]),
             ex("この服は高すぎます。", "These clothes are too expensive.", ["kono", "fuku", "takai-adj"]),
@@ -1449,7 +1460,12 @@ N5_GRAMMAR = [
         "structure": "まだ + Verb-て + いない",
         "mnemonic": "Still not done — まだ + ていない.",
         "conjugation_rules": {"not_yet": True},
-        "accepted_forms": ["まだ〜ていない", "まだ〜ていません"],
+        # The 〜 templates are the display shape; the two literal chunks after
+        # them are what a learner actually types (and what clozeBuilder can
+        # blank), mirroring mou-past's ["もう〜ました", "もう"].
+        "accepted_forms": [
+            "まだ〜ていない", "まだ〜ていません", "ていません", "ていない",
+        ],
         "examples": [
             ex("まだ食べていません。", "I haven't eaten yet.", ["mada", "taberu"]),
             ex("宿題はまだ終わっていません。", "The homework isn't finished yet.", ["shukudai", "owaru"]),
@@ -1740,7 +1756,11 @@ N5_GRAMMAR = [
         "structure": "Person に + あげる / が + くれる / から + もらう",
         "mnemonic": "Direction of the gift decides which verb you use.",
         "conjugation_rules": {"giving_receiving": True},
-        "accepted_forms": ["あげる", "くれる", "もらう"],
+        "accepted_forms": [
+            "あげる", "あげます", "あげました",
+            "くれる", "くれます", "くれました",
+            "もらう", "もらいます", "もらいました",
+        ],
         "examples": [
             ex("友達に本をあげました。", "I gave a book to my friend.", ["tomodachi", "hon", "ageru"]),
             ex("母がプレゼントをくれました。", "My mother gave me a present.", ["haha", "kureru"]),

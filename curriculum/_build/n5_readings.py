@@ -157,7 +157,6 @@ N5_READINGS = [
             "masen",
             "mashita",
             "wo",
-            "ga",
             "no-possessive",
             "ni-direction",
             "de-location",
@@ -399,7 +398,6 @@ N5_READINGS = [
         "summary_ja": "卵を十買って帰りましたが、家には卵が五十六ありました。",
         "summary_en": "The writer forgets the shopping note, buys ten eggs to be safe, and comes home to fifty-six of them.",
         "grammar_slugs": [
-            "wa-topic",
             "desu",
             "masu",
             "mashita",

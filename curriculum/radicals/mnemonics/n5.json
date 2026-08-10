@@ -39,6 +39,14 @@
       "review_status": "reviewed"
     }
   },
+  "boku-divination": {
+    "mnemonic_text": "One straight crack runs down the shell, and a tiny second crack pokes out sideways halfway along it. A tortoise squints at its own back in a hand mirror, reads those two lines like tea leaves, and announces next week's weather by <radical>divination</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "bou": {
     "mnemonic_text": "Picture a single line drawn straight up and down, perfectly vertical with nothing else around it — that's exactly what you'd sketch if someone handed you a plain wooden stick and told you to draw it. One clean line, standing on end: a <radical>stick</radical>.",
     "_meta": {
@@ -64,12 +72,36 @@
       "review_status": "reviewed"
     }
   },
+  "fudezukuri": {
+    "mnemonic_text": "Three prongs clamp around a long vertical shaft like a fist on a handle, and two bars cross low down where the ink-soaked tip sits. Someone is signing a very formal certificate with it when a cat lunges at the shaft, and the signature leaves the page as a metre-long streak flung off the <radical>brush</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fuyugashira": {
+    "mnemonic_text": "A short tick sits at the top, then two long strokes swing apart beneath it like a leg mid-stride that never quite catches up. A duckling is being towed across a polished floor by its own bootlace, one webbed foot skidding along behind as a permanent <radical>trailing foot</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "gonben": {
     "mnemonic_text": "Picture a mouth at the bottom — that little box — stacked with horizontal lines rising off it like speech bubbles floating upward, one on top of another. Every line is another sentence leaving the mouth: this is words spilling out as <radical>speech</radical>.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "gyouninben": {
+    "mnemonic_text": "Two short flicks peel off to the left, a tipped hat and a flung-out arm, and under them one long stroke plants itself as a single skinny leg. A penguin wearing that hat is frozen mid-lunge on a buttered kitchen floor, fully committed to one enormous sideways <radical>step</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   },
   "haba": {
@@ -89,12 +121,28 @@
       "review_status": "reviewed"
     }
   },
+  "haha": {
+    "mnemonic_text": "A crooked box is pierced through the middle by one long horizontal stroke, with two dots pinned inside it like a pair of narrowed eyes. It is a woman leaning out of a departing train window, posting a forgotten lunchbox onto a pole and still shouting reheating instructions at a grown adult, because that is a <radical>mother</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "hi-fire": {
     "mnemonic_text": "Picture a single log standing upright, with two sparks flicking off its sides — that's exactly what 火 looks like. Those sparks jumping into the air tell you the whole thing is on <radical>fire</radical>.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "hi-spoon": {
+    "mnemonic_text": "A slanted handle leans down to the left, and the stroke crossing it swings right and flicks up into a little scoop at the end. A raccoon jammed it into a tub of frozen ice cream, levered too hard, and is now airborne, still gripping the bent <radical>spoon</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   },
   "hi-sun": {
@@ -224,6 +272,22 @@
       "review_status": "reviewed"
     }
   },
+  "karai": {
+    "mnemonic_text": "A tiny hat perches on top, and beneath it one spike drives straight down through three stacked bars like a skewer loaded with peppers. The man holding it stands rigid at the counter, eyes streaming, hat lifting off his head on a column of sweat, insisting nothing here is <radical>spicy</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "katana": {
+    "mnemonic_text": "A short flick leans in at the top left, and the long stroke beside it turns a corner and hooks back at the bottom like a blade curving to its point. A very small rabbit grips it upright in both paws, trying to butter one slice of toast with a full-sized <radical>sword</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "kawa": {
     "mnemonic_text": "Look at 川 and you're standing on a bank watching three long streams of water pour down the page side by side, the outer two bending with the current. Those three vertical channels flowing together are a <radical>river</radical>.",
     "_meta": {
@@ -241,12 +305,28 @@
       "review_status": "reviewed"
     }
   },
+  "keigashira": {
+    "mnemonic_text": "Three flat prongs jut out to the left off one straight spine, stiff as a garden rake. A cat has fallen asleep across the top prong, and nobody stops sweeping, so crumbs and one increasingly indignant cat go skidding down the hallway ahead of the <radical>broom</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ki": {
     "mnemonic_text": "See that vertical stroke as a trunk, the horizontal line as a branch spreading out, and the two legs sweeping down as roots gripping the soil — it's a <radical>tree</radical> standing right there in front of you.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "kigamae": {
+    "mnemonic_text": "A short flick sits on a flat lid, and off the bottom edge one stroke slides right and hooks upward, exactly like the last wisp leaving a kettle spout. That kettle has just whistled a sleeping cat clean off the counter, and it drops through the rising <radical>steam</radical> with its legs still tucked.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   },
   "ko": {
@@ -289,6 +369,14 @@
       "generator_model": "claude-opus-4-8",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "kubi": {
+    "mnemonic_text": "Two stray hairs stick up over a flat brow, and beneath them a boxed-in face is craning at the top shelf. It is a giraffe in a business suit, and as it stretches, every shirt button pops off one by one down its telescoping <radical>neck</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   },
   "kuchi": {
@@ -448,6 +536,14 @@
       "review_status": "reviewed"
     }
   },
+  "samurai": {
+    "mnemonic_text": "The top line is broad, the bottom line is short, and one upright stroke pins them together like wide shoulders over a narrow belt. A very serious duck stands to attention on a garden wall in exactly that outfit, refusing to blink, a fully armoured <radical>samurai</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "san": {
     "mnemonic_text": "Picture three thin pancakes stacked flat on a plate, one on top of another with a little gap between each — that's exactly the three horizontal lines of 三, so every time you see it, you're literally counting <radical>three</radical>.",
     "_meta": {
@@ -597,6 +693,14 @@
       "review_status": "reviewed"
     }
   },
+  "ukanmuri": {
+    "mnemonic_text": "A single dot perches on top like a chimney, and beneath it a flat line spreads wide with both edges dropping into eaves. A pigeon landed on that chimney, overbalanced, and is now sliding on its belly down the entire slick length of the <radical>roof</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "uma": {
     "mnemonic_text": "Look at 馬 side-on: the top box is the head, and those four little legs dashing along the bottom are hooves kicking up dust. Picture that boxy body galloping past you and you're looking at a <radical>horse</radical>.",
     "_meta": {
@@ -628,6 +732,14 @@
       "generator_model": "claude-opus-4-8",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "yuu-evening": {
+    "mnemonic_text": "A curve leans in from the top, folds back on itself, and one short stroke slips through the middle like a cloud drifting across a thin crescent moon. A hedgehog on a balcony holds a fork up to it, convinced someone takes another bite out of that moon every <radical>evening</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   }
 }
