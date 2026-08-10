@@ -1,28 +1,26 @@
 {
   "expo": {
-    "name": "Kizamu",
-    "slug": "kizamu",
+    "name": "NihongoCore",
+    "slug": "nihongocore",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "kizamu",
+    "scheme": "nihongocore",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/kizamu.icon",
-      "bundleIdentifier": "com.kizamu.app"
+      "bundleIdentifier": "com.nihongocore.app"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E23E32",
+        "backgroundColor": "#FCF2E5",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "backgroundImage": "./assets/images/android-icon-background.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.kizamu.app"
+      "package": "com.nihongocore.app"
     },
     "web": {
       "output": "static",
