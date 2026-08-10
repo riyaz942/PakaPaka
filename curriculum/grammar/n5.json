@@ -3238,18 +3238,24 @@
           ]
         },
         {
-          "japanese": "water も飲みます。",
+          "japanese": "水も飲みます。",
           "english": "I drink water too.",
           "sort_order": 3,
           "vocabulary_slugs": [
             "mizu",
             "nomu-v"
           ],
+          "furigana": "水[みず]も飲[の]みます。",
           "word_spans": [
             {
+              "vocabulary_slug": "mizu",
+              "start": 0,
+              "end": 1
+            },
+            {
               "vocabulary_slug": "nomu-v",
-              "start": 7,
-              "end": 11,
+              "start": 2,
+              "end": 6,
               "surface_form": "飲みます",
               "inflection": "masu"
             }
@@ -6948,7 +6954,7 @@
         },
         {
           "japanese": "授業の前に本を読みます。",
-          "english": "I read before class.",
+          "english": "I read a book before class.",
           "sort_order": 2,
           "vocabulary_slugs": [
             "jugyou",
@@ -7241,7 +7247,7 @@
         },
         {
           "japanese": "暇なとき、本を読みます。",
-          "english": "When I'm free, I read.",
+          "english": "When I'm free, I read a book.",
           "sort_order": 1,
           "vocabulary_slugs": [
             "hima",
