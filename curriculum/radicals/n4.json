@@ -118,44 +118,17 @@
       "visual_mnemonic_url": "radicals/n4/shikabane.webp",
       "sort_order": 12,
       "visually_similar_slugs": [
-        "shikabane-kan",
+        "tobira",
         "madare"
       ]
     },
     {
-      "slug": "yumihen",
-      "primary_form": "弓",
-      "meaning": "bow",
-      "mnemonic_text": "A curved archer's bow, ready to fire.",
-      "visual_mnemonic_url": "radicals/n4/yumihen.webp",
-      "sort_order": 13
-    },
-    {
-      "slug": "madogamae",
-      "primary_form": "門",
-      "meaning": "gate",
-      "mnemonic_text": "Two swinging doors forming a gate frame.",
-      "visual_mnemonic_url": "radicals/n4/madogamae.webp",
-      "sort_order": 14
-    },
-    {
-      "slug": "kanmuri",
-      "primary_form": "冖",
-      "meaning": "cover",
-      "mnemonic_text": "A flat cloth draped over something: a cover.",
-      "visual_mnemonic_url": "radicals/n4/kanmuri.webp",
-      "sort_order": 15,
-      "visually_similar_slugs": [
-        "keigamae"
-      ]
-    },
-    {
-      "slug": "shikabane-kan",
+      "slug": "tobira",
       "primary_form": "戸",
       "meaning": "door",
       "mnemonic_text": "A single swinging door panel.",
-      "visual_mnemonic_url": "radicals/n4/shikabane-kan.webp",
-      "sort_order": 16,
+      "visual_mnemonic_url": "radicals/n4/tobira.webp",
+      "sort_order": 13,
       "visually_similar_slugs": [
         "shikabane"
       ]
@@ -166,15 +139,26 @@
       "meaning": "halberd",
       "mnemonic_text": "A long-handled blade: a weapon of war.",
       "visual_mnemonic_url": "radicals/n4/hoko.webp",
-      "sort_order": 17
+      "sort_order": 14
     },
     {
-      "slug": "koro",
+      "slug": "wakanmuri",
+      "primary_form": "冖",
+      "meaning": "cover",
+      "mnemonic_text": "A flat cloth draped over something: a cover.",
+      "visual_mnemonic_url": "radicals/n4/wakanmuri.webp",
+      "sort_order": 15,
+      "visually_similar_slugs": [
+        "keigamae"
+      ]
+    },
+    {
+      "slug": "oogai",
       "primary_form": "頁",
       "meaning": "page / head",
       "mnemonic_text": "A head with hair on top, counted page by page.",
-      "visual_mnemonic_url": "radicals/n4/koro.webp",
-      "sort_order": 18
+      "visual_mnemonic_url": "radicals/n4/oogai.webp",
+      "sort_order": 16
     },
     {
       "slug": "tori-bird",
@@ -182,7 +166,7 @@
       "meaning": "bird",
       "mnemonic_text": "A bird's body, wings, and tail feathers all in one shape.",
       "visual_mnemonic_url": "radicals/n4/tori-bird.webp",
-      "sort_order": 19
+      "sort_order": 17
     },
     {
       "slug": "uo",
@@ -190,23 +174,7 @@
       "meaning": "fish",
       "mnemonic_text": "A fish shape: head, body, and fins.",
       "visual_mnemonic_url": "radicals/n4/uo.webp",
-      "sort_order": 20
-    },
-    {
-      "slug": "takehen",
-      "primary_form": "竹",
-      "meaning": "bamboo (top)",
-      "mnemonic_text": "Two drooping bamboo leaves forming a crown over a kanji.",
-      "visual_mnemonic_url": "radicals/n4/takehen.webp",
-      "sort_order": 21
-    },
-    {
-      "slug": "shime",
-      "primary_form": "示",
-      "meaning": "altar / show",
-      "mnemonic_text": "An altar on which offerings are shown.",
-      "visual_mnemonic_url": "radicals/n4/shime.webp",
-      "sort_order": 22
+      "sort_order": 18
     },
     {
       "slug": "koromohen",
@@ -214,23 +182,7 @@
       "meaning": "clothing (left)",
       "mnemonic_text": "A robe's sleeve squeezed to the left of a kanji.",
       "visual_mnemonic_url": "radicals/n4/koromohen.webp",
-      "sort_order": 23
-    },
-    {
-      "slug": "nikuzuki",
-      "primary_form": "月",
-      "meaning": "flesh (moon shape)",
-      "mnemonic_text": "The moon-shaped body radical marking flesh and organs.",
-      "visual_mnemonic_url": "radicals/n4/nikuzuki.webp",
-      "sort_order": 24
-    },
-    {
-      "slug": "shinnyou-n4",
-      "primary_form": "辶",
-      "meaning": "road / advance (reused)",
-      "mnemonic_text": "A winding road you walk along.",
-      "visual_mnemonic_url": "radicals/n4/shinnyou-n4.webp",
-      "sort_order": 25
+      "sort_order": 19
     },
     {
       "slug": "tsutsumu",
@@ -238,63 +190,103 @@
       "meaning": "wrap",
       "mnemonic_text": "Arms curling around to wrap something up.",
       "visual_mnemonic_url": "radicals/n4/tsutsumu.webp",
+      "sort_order": 20
+    },
+    {
+      "slug": "mu",
+      "primary_form": "厶",
+      "meaning": "private / cocoon",
+      "mnemonic_text": "A shape curled in on itself, keeping something private.",
+      "visual_mnemonic_url": "radicals/n4/mu.webp",
+      "sort_order": 21
+    },
+    {
+      "slug": "oigashira",
+      "primary_form": "耂",
+      "meaning": "old",
+      "mnemonic_text": "A bent back over a walking stick: old age.",
+      "visual_mnemonic_url": "radicals/n4/oigashira.webp",
+      "sort_order": 22
+    },
+    {
+      "slug": "ya",
+      "primary_form": "矢",
+      "meaning": "arrow",
+      "mnemonic_text": "A shaft with a notched tail and a sharp head: an arrow.",
+      "visual_mnemonic_url": "radicals/n4/ya.webp",
+      "sort_order": 23
+    },
+    {
+      "slug": "mata",
+      "primary_form": "又",
+      "meaning": "again / right hand",
+      "mnemonic_text": "A right hand reaching out to do it again.",
+      "visual_mnemonic_url": "radicals/n4/mata.webp",
+      "sort_order": 24
+    },
+    {
+      "slug": "nisui",
+      "primary_form": "冫",
+      "meaning": "ice",
+      "mnemonic_text": "Two frozen ticks clinging to the left: ice.",
+      "visual_mnemonic_url": "radicals/n4/nisui.webp",
+      "sort_order": 25
+    },
+    {
+      "slug": "to-dipper",
+      "primary_form": "斗",
+      "meaning": "dipper / measure",
+      "mnemonic_text": "A ladle with two drips: the measuring dipper.",
+      "visual_mnemonic_url": "radicals/n4/to-dipper.webp",
       "sort_order": 26
     },
     {
-      "slug": "shita-tongue",
-      "primary_form": "舌",
-      "meaning": "tongue",
-      "mnemonic_text": "A tongue sticking out from an open mouth.",
-      "visual_mnemonic_url": "radicals/n4/shita-tongue.webp",
+      "slug": "shikigamae",
+      "primary_form": "弋",
+      "meaning": "stake / ceremony",
+      "mnemonic_text": "A stake driven in to mark a formal spot.",
+      "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
       "sort_order": 27
     },
     {
-      "slug": "tatsuhen",
-      "primary_form": "立",
-      "meaning": "stand (left)",
-      "mnemonic_text": "A person standing firm, used as a side component.",
-      "visual_mnemonic_url": "radicals/n4/tatsuhen.webp",
+      "slug": "sato",
+      "primary_form": "里",
+      "meaning": "village",
+      "mnemonic_text": "A rice field over the earth: the village that farms it.",
+      "visual_mnemonic_url": "radicals/n4/sato.webp",
       "sort_order": 28
     },
     {
-      "slug": "kai-shellhen",
-      "primary_form": "貝",
-      "meaning": "shell / money (left)",
-      "mnemonic_text": "A cowrie shell squeezed to the left of a kanji, marking value.",
-      "visual_mnemonic_url": "radicals/n4/kai-shellhen.webp",
+      "slug": "hatsugashira",
+      "primary_form": "癶",
+      "meaning": "outspread legs",
+      "mnemonic_text": "Two feet splayed apart, about to push off.",
+      "visual_mnemonic_url": "radicals/n4/hatsugashira.webp",
       "sort_order": 29
     },
     {
-      "slug": "kuchihen",
-      "primary_form": "口",
-      "meaning": "mouth (left)",
-      "mnemonic_text": "An open mouth squeezed to the left side of a kanji.",
-      "visual_mnemonic_url": "radicals/n4/kuchihen.webp",
+      "slug": "hane",
+      "primary_form": "羽",
+      "meaning": "feather",
+      "mnemonic_text": "Two wings side by side, each with its feathers marked.",
+      "visual_mnemonic_url": "radicals/n4/hane.webp",
       "sort_order": 30
     },
     {
-      "slug": "mizuhen",
-      "primary_form": "水",
-      "meaning": "water (component)",
-      "mnemonic_text": "Splashing water used as a side or bottom component.",
-      "visual_mnemonic_url": "radicals/n4/mizuhen.webp",
+      "slug": "inoko",
+      "primary_form": "豕",
+      "meaning": "pig",
+      "mnemonic_text": "A snout, a fat body, and four trotters: a pig.",
+      "visual_mnemonic_url": "radicals/n4/inoko.webp",
       "sort_order": 31
     },
     {
-      "slug": "takai-tall",
-      "primary_form": "高",
-      "meaning": "tall",
-      "mnemonic_text": "A tall tower with windows and a base.",
-      "visual_mnemonic_url": "radicals/n4/takai-tall.webp",
+      "slug": "nari",
+      "primary_form": "也",
+      "meaning": "to be / snake tail",
+      "mnemonic_text": "A curling tail flicking out: a snake, and the old word 'to be'.",
+      "visual_mnemonic_url": "radicals/n4/nari.webp",
       "sort_order": 32
-    },
-    {
-      "slug": "shou-small-n4",
-      "primary_form": "小",
-      "meaning": "small",
-      "mnemonic_text": "A tiny hook with two flanking dots: small.",
-      "visual_mnemonic_url": "radicals/n4/shou-small-n4.webp",
-      "sort_order": 33
     }
   ]
 }

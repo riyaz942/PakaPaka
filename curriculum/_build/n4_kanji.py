@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
-"""N4 kanji dataset (additive on top of N5's ~103, ~78 new kanji, cumulative ~181).
+"""N4 kanji dataset (additive on top of N5's 108, 85 new kanji, cumulative 193).
 
 Each entry: a dict with keys suffix, char, meaning, onyomi, kunyomi, mnemonic.
 slug is "n4-<suffix>". onyomi/kunyomi are kana strings (may be empty).
 The primary reading (first non-empty of onyomi/kunyomi) is used as the
 `reading`-type accepted answer.
+
+Strictly additive: a `char` already taught at N5 must NOT be repeated here.
+Nine entries (目 口 手 力 言 電 車 駅 道) once duplicated their N5 kanji with the
+same meaning and readings, which would teach and SRS-test the identical card
+twice; they were dropped in the N4 skeleton pass (2026-08-10). Vocabulary still
+resolves, because `requires` edges are derived by scanning the character across
+every taught level, not by level.
 """
 
 # {suffix, char, meaning, onyomi, kunyomi, mnemonic}
@@ -22,19 +29,10 @@ N4_KANJI = [
     {"suffix": "ba", "char": "場", "meaning": "place", "onyomi": "じょう", "kunyomi": "ば", "mnemonic": "Earth (土) where the sun (陽 implied) opens up a place."},
     {"suffix": "tokoro", "char": "所", "meaning": "place", "onyomi": "しょ", "kunyomi": "ところ", "mnemonic": "An axe (斤) beside a door (戸): the place where work is done."},
     {"suffix": "shin-heart", "char": "心", "meaning": "heart / mind", "onyomi": "しん", "kunyomi": "こころ", "mnemonic": "A stylized heart shape with three drips of feeling."},
-    {"suffix": "te-kanji", "char": "手", "meaning": "hand", "onyomi": "しゅ", "kunyomi": "て", "mnemonic": "Fingers and a wrist branching out: a hand."},
-    {"suffix": "me-kanji", "char": "目", "meaning": "eye", "onyomi": "もく", "kunyomi": "め", "mnemonic": "An upright frame with pupils inside: an eye."},
-    {"suffix": "kuchi-kanji", "char": "口", "meaning": "mouth", "onyomi": "こう", "kunyomi": "くち", "mnemonic": "An open square: a mouth."},
-    {"suffix": "ryoku", "char": "力", "meaning": "power / strength", "onyomi": "りょく", "kunyomi": "ちから", "mnemonic": "A flexed arm pushing: power and strength."},
-    {"suffix": "sha-car", "char": "車", "meaning": "car / vehicle", "onyomi": "しゃ", "kunyomi": "くるま", "mnemonic": "A cart seen from above with an axle: a vehicle."},
-    {"suffix": "den", "char": "電", "meaning": "electricity", "onyomi": "でん", "kunyomi": "", "mnemonic": "Rain (雨) with lightning stretching down: electricity."},
-    {"suffix": "eki", "char": "駅", "meaning": "station", "onyomi": "えき", "kunyomi": "", "mnemonic": "A horse (馬) waiting where trains stop: a station."},
-    {"suffix": "michi", "char": "道", "meaning": "road / way", "onyomi": "どう", "kunyomi": "みち", "mnemonic": "A neck (首) moving down a path: the road, the way."},
     {"suffix": "mise", "char": "店", "meaning": "shop", "onyomi": "てん", "kunyomi": "みせ", "mnemonic": "A roof (广) over a stopping point (占): a shop."},
     {"suffix": "ie-kanji", "char": "家", "meaning": "house", "onyomi": "か", "kunyomi": "いえ", "mnemonic": "A roof over a pig (豕): the traditional house."},
     {"suffix": "shitsu", "char": "室", "meaning": "room", "onyomi": "しつ", "kunyomi": "むろ", "mnemonic": "A roof (宀) reaching (至) to enclose a room."},
     {"suffix": "zu", "char": "図", "meaning": "diagram / map", "onyomi": "ず", "kunyomi": "はか", "mnemonic": "A box enclosing plotted lines: a diagram, a map."},
-    {"suffix": "gen-say", "char": "言", "meaning": "say / word", "onyomi": "げん", "kunyomi": "い", "mnemonic": "A mouth releasing stacked lines of speech: to say."},
     {"suffix": "shi-try", "char": "試", "meaning": "try / test", "onyomi": "し", "kunyomi": "こころ", "mnemonic": "Words (言) given a式 (form/ceremony): a formal test."},
     {"suffix": "ken-exam", "char": "験", "meaning": "examine", "onyomi": "けん", "kunyomi": "", "mnemonic": "A horse (馬) inspected all over (侴): to test, examine."},
     {"suffix": "kyou-teach", "char": "教", "meaning": "teach", "onyomi": "きょう", "kunyomi": "おし", "mnemonic": "An old man's staff (攵) guiding a child (孝): to teach."},

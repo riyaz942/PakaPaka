@@ -1037,9 +1037,107 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "nagai",
+      "from_type": "radical",
+      "to_slug": "n5-nagai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bokuzukuri",
+      "from_type": "radical",
+      "to_slug": "n4-kyou-teach",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "furutori",
+      "from_type": "radical",
+      "to_slug": "n4-atsumeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gatsuhen",
+      "from_type": "radical",
+      "to_slug": "n4-nokoru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gatsuhen",
+      "from_type": "radical",
+      "to_slug": "n4-shinu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hane",
+      "from_type": "radical",
+      "to_slug": "n4-narau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hatsugashira",
+      "from_type": "radical",
+      "to_slug": "n4-hatsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitsuji",
+      "from_type": "radical",
+      "to_slug": "n4-gyou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitsuji",
+      "from_type": "radical",
+      "to_slug": "n4-kiru-wear",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hoko",
+      "from_type": "radical",
+      "to_slug": "n4-heru-decrease",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hoko",
+      "from_type": "radical",
+      "to_slug": "n4-nokoru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "inoko",
+      "from_type": "radical",
+      "to_slug": "n4-ie-kanji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "itaru",
+      "from_type": "radical",
+      "to_slug": "n4-shitsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "kokoro",
       "from_type": "radical",
-      "to_slug": "n4-shin-heart",
+      "to_slug": "n4-hitsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kokoro",
+      "from_type": "radical",
+      "to_slug": "n4-isogu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1053,7 +1151,7 @@
     {
       "from_slug": "kokoro",
       "from_type": "radical",
-      "to_slug": "n4-isogu",
+      "to_slug": "n4-shin-heart",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1072,16 +1170,9 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kokoro",
+      "from_slug": "madare",
       "from_type": "radical",
-      "to_slug": "n4-hitsu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "bokuzukuri",
-      "from_type": "radical",
-      "to_slug": "n4-kyou-teach",
+      "to_slug": "n4-hiroi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1093,44 +1184,93 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "madare",
+      "from_slug": "mata",
+      "from_type": "radical",
+      "to_slug": "n4-karui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mata",
+      "from_type": "radical",
+      "to_slug": "n4-kei-pass",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mu",
+      "from_type": "radical",
+      "to_slug": "n4-hajimeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mu",
       "from_type": "radical",
       "to_slug": "n4-hiroi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitsuji",
+      "from_slug": "mu",
       "from_type": "radical",
-      "to_slug": "n4-kiru-wear",
+      "to_slug": "n4-kai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "furutori",
+      "from_slug": "mu",
       "from_type": "radical",
-      "to_slug": "n4-atsumeru",
+      "to_slug": "n4-tsuyoi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "inu",
+      "from_slug": "nari",
       "from_type": "radical",
-      "to_slug": "n4-modoru",
+      "to_slug": "n4-chi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "gatsuhen",
+      "from_slug": "nisui",
       "from_type": "radical",
-      "to_slug": "n4-shinu",
+      "to_slug": "n4-yowai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "gatsuhen",
+      "from_slug": "oigashira",
       "from_type": "radical",
-      "to_slug": "n4-nokoru",
+      "to_slug": "n4-kangaeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "oigashira",
+      "from_type": "radical",
+      "to_slug": "n4-kyou-teach",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "oigashira",
+      "from_type": "radical",
+      "to_slug": "n4-mono",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ono",
+      "from_type": "radical",
+      "to_slug": "n4-shitsu-quality",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ono",
+      "from_type": "radical",
+      "to_slug": "n4-tokoro",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1142,23 +1282,23 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ono",
+      "from_slug": "ou-king",
       "from_type": "radical",
-      "to_slug": "n4-tokoro",
+      "to_slug": "n4-shu-main",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ono",
+      "from_slug": "sato",
       "from_type": "radical",
-      "to_slug": "n4-shitsu-quality",
+      "to_slug": "n4-omoi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "itaru",
+      "from_slug": "sato",
       "from_type": "radical",
-      "to_slug": "n4-shitsu",
+      "to_slug": "n4-ri",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1170,261 +1310,191 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "yumihen",
-      "from_type": "radical",
-      "to_slug": "n4-hiku",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "yumihen",
-      "from_type": "radical",
-      "to_slug": "n4-yowai",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "yumihen",
-      "from_type": "radical",
-      "to_slug": "n4-tsuyoi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shikabane-kan",
-      "from_type": "radical",
-      "to_slug": "n4-tokoro",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shikabane-kan",
-      "from_type": "radical",
-      "to_slug": "n4-modoru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "takehen",
-      "from_type": "radical",
-      "to_slug": "n4-kotae",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shime",
-      "from_type": "radical",
-      "to_slug": "n4-sha",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "nikuzuki",
-      "from_type": "radical",
-      "to_slug": "n4-akarui",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shinnyou-n4",
-      "from_type": "radical",
-      "to_slug": "n4-asobu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shinnyou-n4",
-      "from_type": "radical",
-      "to_slug": "n4-chigau",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shinnyou-n4",
-      "from_type": "radical",
-      "to_slug": "n4-hakobu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shinnyou-n4",
-      "from_type": "radical",
-      "to_slug": "n4-okuru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shinnyou-n4",
-      "from_type": "radical",
-      "to_slug": "n4-erabu",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tatsuhen",
-      "from_type": "radical",
-      "to_slug": "n4-oya",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shellhen",
+      "from_slug": "shikigamae",
       "from_type": "radical",
       "to_slug": "n4-kasu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kai-shellhen",
+      "from_slug": "shikigamae",
       "from_type": "radical",
-      "to_slug": "n4-shitsu-quality",
+      "to_slug": "n4-shi-try",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kuchihen",
+      "from_slug": "to-dipper",
+      "from_type": "radical",
+      "to_slug": "n4-ryou-fee",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tobira",
+      "from_type": "radical",
+      "to_slug": "n4-modoru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tobira",
+      "from_type": "radical",
+      "to_slug": "n4-tokoro",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsutsumu",
+      "from_type": "radical",
+      "to_slug": "n4-iro",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsutsumu",
+      "from_type": "radical",
+      "to_slug": "n4-isogu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsutsumu",
+      "from_type": "radical",
+      "to_slug": "n4-kangaeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "wakanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-hakobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "wakanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-oboeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "wakanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-tsuzukeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ya",
       "from_type": "radical",
       "to_slug": "n4-shiru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kuchihen",
+      "from_slug": "ya",
       "from_type": "radical",
-      "to_slug": "n4-aji",
+      "to_slug": "n4-zoku",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kuchihen",
+      "from_slug": "boku-divination",
       "from_type": "radical",
-      "to_slug": "n4-ani",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mizuhen",
-      "from_type": "radical",
-      "to_slug": "n4-arau",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mizuhen",
-      "from_type": "radical",
-      "to_slug": "n4-kimeru",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mizuhen",
-      "from_type": "radical",
-      "to_slug": "n4-heru-decrease",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "onna",
-      "from_type": "radical",
-      "to_slug": "n4-suki",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "onna",
-      "from_type": "radical",
-      "to_slug": "n4-ane",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "onna",
-      "from_type": "radical",
-      "to_slug": "n4-imouto",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ki",
-      "from_type": "radical",
-      "to_slug": "n4-oya",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kuruma",
-      "from_type": "radical",
-      "to_slug": "n4-sha-car",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kuruma",
-      "from_type": "radical",
-      "to_slug": "n4-karui",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kuruma",
-      "from_type": "radical",
-      "to_slug": "n4-omoi",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ame",
-      "from_type": "radical",
-      "to_slug": "n4-den",
+      "to_slug": "n4-mise",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
       "from_slug": "chikara",
       "from_type": "radical",
-      "to_slug": "n4-ryoku",
+      "to_slug": "n4-betsu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "sanzui",
+      "from_slug": "chikara",
       "from_type": "radical",
-      "to_slug": "n4-arau",
+      "to_slug": "n4-hataraku",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "sanzui",
+      "from_slug": "fuyugashira",
       "from_type": "radical",
-      "to_slug": "n4-kimeru",
+      "to_slug": "n4-kawaru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "sanzui",
+      "from_slug": "fuyugashira",
       "from_type": "radical",
-      "to_slug": "n4-heru-decrease",
+      "to_slug": "n4-owaru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "te",
+      "from_slug": "gonben",
       "from_type": "radical",
-      "to_slug": "n4-te-kanji",
+      "to_slug": "n4-shi-try",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "tsuchi",
+      "from_slug": "gonben",
       "from_type": "radical",
-      "to_slug": "n4-chi",
+      "to_slug": "n4-shiraberu",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "tsuchi",
+      "from_slug": "haba",
+      "from_type": "radical",
+      "to_slug": "n4-ane",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-spoon",
+      "from_type": "radical",
+      "to_slug": "n4-shinu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n4-akarui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
       "from_type": "radical",
       "to_slug": "n4-ba",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n4-fueru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n4-hataraku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hi-sun",
+      "from_type": "radical",
+      "to_slug": "n4-kariru",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1438,14 +1508,399 @@
     {
       "from_slug": "hi-sun",
       "from_type": "radical",
-      "to_slug": "n4-akarui",
+      "to_slug": "n4-mono",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "tsuki",
+      "from_slug": "hi-sun",
       "from_type": "radical",
-      "to_slug": "n4-akarui",
+      "to_slug": "n4-omoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hito",
+      "from_type": "radical",
+      "to_slug": "n4-kai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n4-ani",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n4-arau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n4-hatsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoashi",
+      "from_type": "radical",
+      "to_slug": "n4-tsuzukeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoyane",
+      "from_type": "radical",
+      "to_slug": "n4-ane",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitoyane",
+      "from_type": "radical",
+      "to_slug": "n4-kawaru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-ba",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-dou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-gyou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-hataraku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-kotae",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-koto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-omoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-tsukau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ichi",
+      "from_type": "radical",
+      "to_slug": "n4-uta",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "itohen",
+      "from_type": "radical",
+      "to_slug": "n4-hosoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "itohen",
+      "from_type": "radical",
+      "to_slug": "n4-kei-pass",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "itohen",
+      "from_type": "radical",
+      "to_slug": "n4-owaru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "itohen",
+      "from_type": "radical",
+      "to_slug": "n4-tsuzukeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n4-kasu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n4-shitsu-quality",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kakeru",
+      "from_type": "radical",
+      "to_slug": "n4-uta",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "katana",
+      "from_type": "radical",
+      "to_slug": "n4-betsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "keigamae",
+      "from_type": "radical",
+      "to_slug": "n4-dou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "keigashira",
+      "from_type": "radical",
+      "to_slug": "n4-isogu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "keigashira",
+      "from_type": "radical",
+      "to_slug": "n4-koto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n4-aji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n4-atsumeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n4-gyou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n4-imouto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ki",
+      "from_type": "radical",
+      "to_slug": "n4-oya",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ko",
+      "from_type": "radical",
+      "to_slug": "n4-asobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ko",
+      "from_type": "radical",
+      "to_slug": "n4-kyou-teach",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ko",
+      "from_type": "radical",
+      "to_slug": "n4-suki",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kome",
+      "from_type": "radical",
+      "to_slug": "n4-ryou-fee",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kougatsu",
+      "from_type": "radical",
+      "to_slug": "n4-shi-try",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-aji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-ani",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-betsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-chigau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-dou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-hajimeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-heru-decrease",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-kotae",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-koto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-mise",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-shiru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-tsukau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuchi",
+      "from_type": "radical",
+      "to_slug": "n4-uta",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kunigamae",
+      "from_type": "radical",
+      "to_slug": "n4-zu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuruma",
+      "from_type": "radical",
+      "to_slug": "n4-hakobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kuruma",
+      "from_type": "radical",
+      "to_slug": "n4-karui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "me",
+      "from_type": "radical",
+      "to_slug": "n4-ji-self",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "me",
+      "from_type": "radical",
+      "to_slug": "n4-kiru-wear",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -1457,16 +1912,359 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "gonben",
+      "from_slug": "miru",
       "from_type": "radical",
-      "to_slug": "n4-shi-try",
+      "to_slug": "n4-oya",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kai-shell",
+      "from_slug": "mushi",
+      "from_type": "radical",
+      "to_slug": "n4-tsuyoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ni",
+      "from_type": "radical",
+      "to_slug": "n4-hatsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ni",
+      "from_type": "radical",
+      "to_slug": "n4-kai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ni",
+      "from_type": "radical",
+      "to_slug": "n4-kariru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ninben",
+      "from_type": "radical",
+      "to_slug": "n4-hataraku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ninben",
+      "from_type": "radical",
+      "to_slug": "n4-kariru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ninben",
       "from_type": "radical",
       "to_slug": "n4-kasu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ninben",
+      "from_type": "radical",
+      "to_slug": "n4-tsukau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n4-ane",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n4-hajimeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n4-imouto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n4-suki",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "onna",
+      "from_type": "radical",
+      "to_slug": "n4-you-need",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "samurai",
+      "from_type": "radical",
+      "to_slug": "n4-tsuzukeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "sanzui",
+      "from_type": "radical",
+      "to_slug": "n4-arau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "sanzui",
+      "from_type": "radical",
+      "to_slug": "n4-heru-decrease",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "sanzui",
+      "from_type": "radical",
+      "to_slug": "n4-kimeru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shimesu",
+      "from_type": "radical",
+      "to_slug": "n4-sha",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n4-asobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n4-chigau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n4-erabu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n4-hakobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shinnyou",
+      "from_type": "radical",
+      "to_slug": "n4-okuru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shiro",
+      "from_type": "radical",
+      "to_slug": "n4-narau",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "sun",
+      "from_type": "radical",
+      "to_slug": "n4-motsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ta",
+      "from_type": "radical",
+      "to_slug": "n4-fueru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ta",
+      "from_type": "radical",
+      "to_slug": "n4-hosoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ta",
+      "from_type": "radical",
+      "to_slug": "n4-omou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "takekanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-kotae",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tatsu",
+      "from_type": "radical",
+      "to_slug": "n4-kurai",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tatsu",
+      "from_type": "radical",
+      "to_slug": "n4-oya",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tehen",
+      "from_type": "radical",
+      "to_slug": "n4-motsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ten",
+      "from_type": "radical",
+      "to_slug": "n4-futoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ten",
+      "from_type": "radical",
+      "to_slug": "n4-shu-main",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-ba",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-chi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-fueru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-hashiru",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-karui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-kei-pass",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-motsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuchi",
+      "from_type": "radical",
+      "to_slug": "n4-sha",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsuki",
+      "from_type": "radical",
+      "to_slug": "n4-akarui",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ukanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-ie-kanji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ukanmuri",
+      "from_type": "radical",
+      "to_slug": "n4-shitsu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "uma",
+      "from_type": "radical",
+      "to_slug": "n4-ken-exam",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "yumi",
+      "from_type": "radical",
+      "to_slug": "n4-hiku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "yumi",
+      "from_type": "radical",
+      "to_slug": "n4-otouto",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "yumi",
+      "from_type": "radical",
+      "to_slug": "n4-tsuyoi",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "yumi",
+      "from_type": "radical",
+      "to_slug": "n4-yowai",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5237,258 +6035,6 @@
       "relationship_type": "requires"
     },
     {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "te-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "otearai",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "tegami",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "kitte",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "jouzu",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "heta",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "tetsudau",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "aite",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "nigate",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "tetsudatte-kureru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "tebukuro",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-te-kanji",
-      "from_type": "kanji",
-      "to_slug": "shujutsu",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-me-kanji",
-      "from_type": "kanji",
-      "to_slug": "me-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-me-kanji",
-      "from_type": "kanji",
-      "to_slug": "majime",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-me-kanji",
-      "from_type": "kanji",
-      "to_slug": "me-ga-warui",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-me-kanji",
-      "from_type": "kanji",
-      "to_slug": "mokuhyou",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-me-kanji",
-      "from_type": "kanji",
-      "to_slug": "mokuteki",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-kuchi-kanji",
-      "from_type": "kanji",
-      "to_slug": "kuchi-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-kuchi-kanji",
-      "from_type": "kanji",
-      "to_slug": "iriguchi",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-kuchi-kanji",
-      "from_type": "kanji",
-      "to_slug": "deguchi",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-kuchi-kanji",
-      "from_type": "kanji",
-      "to_slug": "madoguchi",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-kuchi-kanji",
-      "from_type": "kanji",
-      "to_slug": "kouza",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-ryoku",
-      "from_type": "kanji",
-      "to_slug": "chikara-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-ryoku",
-      "from_type": "kanji",
-      "to_slug": "doryoku-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-ryoku",
-      "from_type": "kanji",
-      "to_slug": "kyouryoku-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-sha-car",
-      "from_type": "kanji",
-      "to_slug": "densha",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-sha-car",
-      "from_type": "kanji",
-      "to_slug": "kuruma",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-sha-car",
-      "from_type": "kanji",
-      "to_slug": "jitensha",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-den",
-      "from_type": "kanji",
-      "to_slug": "denwa",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-den",
-      "from_type": "kanji",
-      "to_slug": "denki",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-den",
-      "from_type": "kanji",
-      "to_slug": "denwa-suru",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-den",
-      "from_type": "kanji",
-      "to_slug": "densha",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-den",
-      "from_type": "kanji",
-      "to_slug": "denwabangou",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-eki",
-      "from_type": "kanji",
-      "to_slug": "ekiin",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-eki",
-      "from_type": "kanji",
-      "to_slug": "eki",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-michi",
-      "from_type": "kanji",
-      "to_slug": "michi-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
       "from_slug": "n4-mise",
       "from_type": "kanji",
       "to_slug": "kissaten",
@@ -5583,27 +6129,6 @@
       "from_slug": "n4-zu",
       "from_type": "kanji",
       "to_slug": "chizuchou",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-gen-say",
-      "from_type": "kanji",
-      "to_slug": "iu-v",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-gen-say",
-      "from_type": "kanji",
-      "to_slug": "kotoba",
-      "to_type": "vocabulary",
-      "relationship_type": "requires"
-    },
-    {
-      "from_slug": "n4-gen-say",
-      "from_type": "kanji",
-      "to_slug": "dengon",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },

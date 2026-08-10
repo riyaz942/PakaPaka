@@ -18,8 +18,6 @@ has not confirmed. Regenerate the candidate report with:
 #: (slug_a, slug_b) — symmetric; order within the tuple is not meaningful.
 #: Radical slugs are bare ("hito"), kanji slugs carry the level prefix
 #: ("n5-hito-jin"); compile-curriculum resolves each side by slug.
-#: Kanji that are re-taught at N4 under a second slug (手, 目, 口, 力, 車, 電,
-#: 駅, 道, 言) carry their pairs on the first-taught N5 slug only.
 VISUALLY_SIMILAR_PAIRS = [
     # --- kanji ↔ kanji ---
     ("n5-hito-jin", "n5-hairu"),        # 人 / 入
@@ -64,10 +62,10 @@ VISUALLY_SIMILAR_PAIRS = [
     ("hi-sun", "shiro"),                # 日 / 白
     ("hi-sun", "ta"),                   # 日 / 田
     ("me", "ta"),                       # 目 / 田
-    ("keigamae", "kanmuri"),            # 冂 / 冖
+    ("keigamae", "wakanmuri"),          # 冂 / 冖
     ("keigamae", "kunigamae"),          # 冂 / 囗
     ("kuchi", "kunigamae"),             # 口 / 囗
-    ("shikabane", "shikabane-kan"),     # 尸 / 戸
+    ("shikabane", "tobira"),            # 尸 / 戸
     ("madare", "yamaidare"),            # 广 / 疒
     ("shikabane", "madare"),            # 尸 / 广
     ("sun", "tehen"),                   # 寸 / 扌

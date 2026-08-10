@@ -395,241 +395,11 @@
       ]
     },
     {
-      "slug": "n4-te-kanji",
-      "primary_form": "手",
-      "meaning": "hand",
-      "mnemonic_text": "Fingers and a wrist branching out: a hand.",
-      "sort_order": 14,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "しゅ",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "て",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "hand",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "しゅ"
-        }
-      ]
-    },
-    {
-      "slug": "n4-me-kanji",
-      "primary_form": "目",
-      "meaning": "eye",
-      "mnemonic_text": "An upright frame with pupils inside: an eye.",
-      "sort_order": 15,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "もく",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "め",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "eye",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "もく"
-        }
-      ]
-    },
-    {
-      "slug": "n4-kuchi-kanji",
-      "primary_form": "口",
-      "meaning": "mouth",
-      "mnemonic_text": "An open square: a mouth.",
-      "sort_order": 16,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "こう",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "くち",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "mouth",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "こう"
-        }
-      ]
-    },
-    {
-      "slug": "n4-ryoku",
-      "primary_form": "力",
-      "meaning": "power / strength",
-      "mnemonic_text": "A flexed arm pushing: power and strength.",
-      "sort_order": 17,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "りょく",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "ちから",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "power / strength",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "りょく"
-        }
-      ]
-    },
-    {
-      "slug": "n4-sha-car",
-      "primary_form": "車",
-      "meaning": "car / vehicle",
-      "mnemonic_text": "A cart seen from above with an axle: a vehicle.",
-      "sort_order": 18,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "しゃ",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "くるま",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "car / vehicle",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "しゃ"
-        }
-      ]
-    },
-    {
-      "slug": "n4-den",
-      "primary_form": "電",
-      "meaning": "electricity",
-      "mnemonic_text": "Rain (雨) with lightning stretching down: electricity.",
-      "sort_order": 19,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "でん",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "electricity",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "でん"
-        }
-      ]
-    },
-    {
-      "slug": "n4-eki",
-      "primary_form": "駅",
-      "meaning": "station",
-      "mnemonic_text": "A horse (馬) waiting where trains stop: a station.",
-      "sort_order": 20,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "えき",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "station",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "えき"
-        }
-      ]
-    },
-    {
-      "slug": "n4-michi",
-      "primary_form": "道",
-      "meaning": "road / way",
-      "mnemonic_text": "A neck (首) moving down a path: the road, the way.",
-      "sort_order": 21,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "どう",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "みち",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "road / way",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "どう"
-        }
-      ]
-    },
-    {
       "slug": "n4-mise",
       "primary_form": "店",
       "meaning": "shop",
       "mnemonic_text": "A roof (广) over a stopping point (占): a shop.",
-      "sort_order": 22,
+      "sort_order": 14,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -659,7 +429,7 @@
       "primary_form": "家",
       "meaning": "house",
       "mnemonic_text": "A roof over a pig (豕): the traditional house.",
-      "sort_order": 23,
+      "sort_order": 15,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -689,7 +459,7 @@
       "primary_form": "室",
       "meaning": "room",
       "mnemonic_text": "A roof (宀) reaching (至) to enclose a room.",
-      "sort_order": 24,
+      "sort_order": 16,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -719,7 +489,7 @@
       "primary_form": "図",
       "meaning": "diagram / map",
       "mnemonic_text": "A box enclosing plotted lines: a diagram, a map.",
-      "sort_order": 25,
+      "sort_order": 17,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -745,41 +515,11 @@
       ]
     },
     {
-      "slug": "n4-gen-say",
-      "primary_form": "言",
-      "meaning": "say / word",
-      "mnemonic_text": "A mouth releasing stacked lines of speech: to say.",
-      "sort_order": 26,
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "げん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "い",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "say / word",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "げん"
-        }
-      ]
-    },
-    {
       "slug": "n4-shi-try",
       "primary_form": "試",
       "meaning": "try / test",
       "mnemonic_text": "Words (言) given a式 (form/ceremony): a formal test.",
-      "sort_order": 27,
+      "sort_order": 18,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -809,7 +549,7 @@
       "primary_form": "験",
       "meaning": "examine",
       "mnemonic_text": "A horse (馬) inspected all over (侴): to test, examine.",
-      "sort_order": 28,
+      "sort_order": 19,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -834,7 +574,7 @@
       "primary_form": "教",
       "meaning": "teach",
       "mnemonic_text": "An old man's staff (攵) guiding a child (孝): to teach.",
-      "sort_order": 29,
+      "sort_order": 20,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -864,7 +604,7 @@
       "primary_form": "思",
       "meaning": "think",
       "mnemonic_text": "A field (田) sitting over the heart (心): thoughts forming.",
-      "sort_order": 30,
+      "sort_order": 21,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -894,7 +634,7 @@
       "primary_form": "引",
       "meaning": "pull",
       "mnemonic_text": "A bow (弓) with its string pulled taut: to pull.",
-      "sort_order": 31,
+      "sort_order": 22,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -924,7 +664,7 @@
       "primary_form": "歌",
       "meaning": "song",
       "mnemonic_text": "Repeated breaths (可可) beside a yawning mouth (欠): a song.",
-      "sort_order": 32,
+      "sort_order": 23,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -954,7 +694,7 @@
       "primary_form": "持",
       "meaning": "hold",
       "mnemonic_text": "A hand (扌) keeping something steady like a temple (寺): to hold.",
-      "sort_order": 33,
+      "sort_order": 24,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -984,7 +724,7 @@
       "primary_form": "使",
       "meaning": "use",
       "mnemonic_text": "A person (亻) directing an official (吏): to use, to employ.",
-      "sort_order": 34,
+      "sort_order": 25,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1014,7 +754,7 @@
       "primary_form": "働",
       "meaning": "work",
       "mnemonic_text": "A person (亻) in motion (動): working.",
-      "sort_order": 35,
+      "sort_order": 26,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1044,7 +784,7 @@
       "primary_form": "借",
       "meaning": "borrow",
       "mnemonic_text": "A person (亻) relying on old (昔) favors: to borrow.",
-      "sort_order": 36,
+      "sort_order": 27,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1074,7 +814,7 @@
       "primary_form": "貸",
       "meaning": "lend",
       "mnemonic_text": "Money (貝) replacing (代) what's missing: to lend.",
-      "sort_order": 37,
+      "sort_order": 28,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1104,7 +844,7 @@
       "primary_form": "知",
       "meaning": "know",
       "mnemonic_text": "An arrow (矢) hitting the mouth's (口) point: to know for certain.",
-      "sort_order": 38,
+      "sort_order": 29,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1134,7 +874,7 @@
       "primary_form": "始",
       "meaning": "begin",
       "mnemonic_text": "A woman (女) with her own (台) fresh start: to begin.",
-      "sort_order": 39,
+      "sort_order": 30,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1164,7 +904,7 @@
       "primary_form": "終",
       "meaning": "end",
       "mnemonic_text": "Thread (糸) wound to its winter (冬) finish: to end.",
-      "sort_order": 40,
+      "sort_order": 31,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1194,7 +934,7 @@
       "primary_form": "急",
       "meaning": "hurry",
       "mnemonic_text": "Grasping (⺈) at the heart (心): an urgent hurry.",
-      "sort_order": 41,
+      "sort_order": 32,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1224,7 +964,7 @@
       "primary_form": "走",
       "meaning": "run",
       "mnemonic_text": "A person (土-like legs) bounding forward: to run.",
-      "sort_order": 42,
+      "sort_order": 33,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1254,7 +994,7 @@
       "primary_form": "飛",
       "meaning": "fly",
       "mnemonic_text": "Wings spread mid-motion: to fly.",
-      "sort_order": 43,
+      "sort_order": 34,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1284,7 +1024,7 @@
       "primary_form": "洗",
       "meaning": "wash",
       "mnemonic_text": "Water (氵) poured over first (先) rinse: to wash.",
-      "sort_order": 44,
+      "sort_order": 35,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1314,7 +1054,7 @@
       "primary_form": "死",
       "meaning": "die",
       "mnemonic_text": "Bad luck (歹) beside a person collapsed: to die.",
-      "sort_order": 45,
+      "sort_order": 36,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1344,7 +1084,7 @@
       "primary_form": "遊",
       "meaning": "play",
       "mnemonic_text": "A wandering road (辶) with a flag (斿) of fun: to play.",
-      "sort_order": 46,
+      "sort_order": 37,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1374,7 +1114,7 @@
       "primary_form": "着",
       "meaning": "wear / arrive",
       "mnemonic_text": "Sheep (羊) settling onto the eye's (目) view: to arrive, to wear.",
-      "sort_order": 47,
+      "sort_order": 38,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1404,7 +1144,7 @@
       "primary_form": "違",
       "meaning": "differ",
       "mnemonic_text": "A road (辶) that splits away (韋): to differ.",
-      "sort_order": 48,
+      "sort_order": 39,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1434,7 +1174,7 @@
       "primary_form": "集",
       "meaning": "gather",
       "mnemonic_text": "A bird (隹) landing on a tree (木) with the flock: to gather.",
-      "sort_order": 49,
+      "sort_order": 40,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1464,7 +1204,7 @@
       "primary_form": "別",
       "meaning": "separate",
       "mnemonic_text": "A knife (刂) cutting a shape (另) apart: to separate.",
-      "sort_order": 50,
+      "sort_order": 41,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1494,7 +1234,7 @@
       "primary_form": "主",
       "meaning": "main / lord",
       "mnemonic_text": "A lamp's flame steady atop its stand: the main, central one.",
-      "sort_order": 51,
+      "sort_order": 42,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1527,7 +1267,7 @@
       "primary_form": "兄",
       "meaning": "older brother",
       "mnemonic_text": "A mouth (口) atop legs (儿): the elder brother who speaks first.",
-      "sort_order": 52,
+      "sort_order": 43,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1557,7 +1297,7 @@
       "primary_form": "弟",
       "meaning": "younger brother",
       "mnemonic_text": "A cord wound down a post: the younger, lower-ranked brother.",
-      "sort_order": 53,
+      "sort_order": 44,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1587,7 +1327,7 @@
       "primary_form": "姉",
       "meaning": "older sister",
       "mnemonic_text": "A woman (女) who is already (市-like) senior: the older sister.",
-      "sort_order": 54,
+      "sort_order": 45,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1620,7 +1360,7 @@
       "primary_form": "妹",
       "meaning": "younger sister",
       "mnemonic_text": "A woman (女) not yet (未) grown: the younger sister.",
-      "sort_order": 55,
+      "sort_order": 46,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1653,7 +1393,7 @@
       "primary_form": "親",
       "meaning": "parent",
       "mnemonic_text": "Standing (立) by a tree (木) watching (見): a parent's love.",
-      "sort_order": 56,
+      "sort_order": 47,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1683,7 +1423,7 @@
       "primary_form": "色",
       "meaning": "color",
       "mnemonic_text": "A person kneeling beside a seal: the color of one's mood.",
-      "sort_order": 57,
+      "sort_order": 48,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1713,7 +1453,7 @@
       "primary_form": "味",
       "meaning": "taste",
       "mnemonic_text": "A mouth (口) not yet (未) full: tasting a bit.",
-      "sort_order": 58,
+      "sort_order": 49,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1743,7 +1483,7 @@
       "primary_form": "好",
       "meaning": "like / fond",
       "mnemonic_text": "A woman (女) beside her child (子): a fondness, to like.",
-      "sort_order": 59,
+      "sort_order": 50,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1773,7 +1513,7 @@
       "primary_form": "悪",
       "meaning": "bad",
       "mnemonic_text": "A twisted shape over the heart (心): a bad feeling.",
-      "sort_order": 60,
+      "sort_order": 51,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1803,7 +1543,7 @@
       "primary_form": "太",
       "meaning": "thick / fat",
       "mnemonic_text": "Big (大) with an extra drop of size: thick, fat.",
-      "sort_order": 61,
+      "sort_order": 52,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1837,7 +1577,7 @@
       "primary_form": "細",
       "meaning": "thin / fine",
       "mnemonic_text": "Thread (糸) drawn out fine over a field (田): thin, detailed.",
-      "sort_order": 62,
+      "sort_order": 53,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1867,7 +1607,7 @@
       "primary_form": "軽",
       "meaning": "light (weight)",
       "mnemonic_text": "A cart (車) that passes lightly (圣): not heavy.",
-      "sort_order": 63,
+      "sort_order": 54,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1897,7 +1637,7 @@
       "primary_form": "重",
       "meaning": "heavy",
       "mnemonic_text": "A cart's heavy load stacked high: heavy, important.",
-      "sort_order": 64,
+      "sort_order": 55,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1930,7 +1670,7 @@
       "primary_form": "弱",
       "meaning": "weak",
       "mnemonic_text": "Two bent bows losing their tension: weak.",
-      "sort_order": 65,
+      "sort_order": 56,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1960,7 +1700,7 @@
       "primary_form": "強",
       "meaning": "strong",
       "mnemonic_text": "A bow (弓) reinforced with a hard shell (虽): strong.",
-      "sort_order": 66,
+      "sort_order": 57,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -1990,7 +1730,7 @@
       "primary_form": "暗",
       "meaning": "dark",
       "mnemonic_text": "The sun (日) hidden behind sound (音) of night: dark.",
-      "sort_order": 67,
+      "sort_order": 58,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2020,7 +1760,7 @@
       "primary_form": "明",
       "meaning": "bright",
       "mnemonic_text": "The sun (日) beside the moon (月): both lighting up, bright.",
-      "sort_order": 68,
+      "sort_order": 59,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2050,7 +1790,7 @@
       "primary_form": "広",
       "meaning": "wide / spacious",
       "mnemonic_text": "A shelter (广) opening onto open ground: wide, spacious.",
-      "sort_order": 69,
+      "sort_order": 60,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2080,7 +1820,7 @@
       "primary_form": "決",
       "meaning": "decide",
       "mnemonic_text": "Water (氵) breaking through a levee (夬): a decisive break.",
-      "sort_order": 70,
+      "sort_order": 61,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2110,7 +1850,7 @@
       "primary_form": "考",
       "meaning": "think",
       "mnemonic_text": "An old man's (耂) bent posture, deep in thought.",
-      "sort_order": 71,
+      "sort_order": 62,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2140,7 +1880,7 @@
       "primary_form": "調",
       "meaning": "investigate",
       "mnemonic_text": "Words (言) matched all around (周): to check, investigate.",
-      "sort_order": 72,
+      "sort_order": 63,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2170,7 +1910,7 @@
       "primary_form": "習",
       "meaning": "learn / practice",
       "mnemonic_text": "Feathers (羽) over white (白): a bird practicing to fly, to learn.",
-      "sort_order": 73,
+      "sort_order": 64,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2200,7 +1940,7 @@
       "primary_form": "覚",
       "meaning": "remember",
       "mnemonic_text": "Learning (⺍) opening one's view (見): to remember, realize.",
-      "sort_order": 74,
+      "sort_order": 65,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2230,7 +1970,7 @@
       "primary_form": "忘",
       "meaning": "forget",
       "mnemonic_text": "A dying (亡) heart (心) losing its memory: to forget.",
-      "sort_order": 75,
+      "sort_order": 66,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2260,7 +2000,7 @@
       "primary_form": "運",
       "meaning": "carry / luck",
       "mnemonic_text": "A wagon (軍) moving down a road (辶): to carry, one's fortune.",
-      "sort_order": 76,
+      "sort_order": 67,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2290,7 +2030,7 @@
       "primary_form": "送",
       "meaning": "send",
       "mnemonic_text": "A road (辶) release (关) sending something off: to send.",
-      "sort_order": 77,
+      "sort_order": 68,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2320,7 +2060,7 @@
       "primary_form": "質",
       "meaning": "quality / question",
       "mnemonic_text": "Two axes (斤斤) weighing shells (貝) of value: quality, substance.",
-      "sort_order": 78,
+      "sort_order": 69,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2345,7 +2085,7 @@
       "primary_form": "答",
       "meaning": "answer",
       "mnemonic_text": "Bamboo (竹) matching (合) the right response: an answer.",
-      "sort_order": 79,
+      "sort_order": 70,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2375,7 +2115,7 @@
       "primary_form": "族",
       "meaning": "family / clan",
       "mnemonic_text": "A flag (方 side) rallying an arrow's (矢) clan together: family.",
-      "sort_order": 80,
+      "sort_order": 71,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2400,7 +2140,7 @@
       "primary_form": "料",
       "meaning": "fee / materials",
       "mnemonic_text": "Rice (米) measured with a dipper (斗): materials, a fee.",
-      "sort_order": 81,
+      "sort_order": 72,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2425,7 +2165,7 @@
       "primary_form": "理",
       "meaning": "reason / logic",
       "mnemonic_text": "A jewel (王) cut along its natural grain (里): reason, logic.",
-      "sort_order": 82,
+      "sort_order": 73,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2450,7 +2190,7 @@
       "primary_form": "必",
       "meaning": "necessary",
       "mnemonic_text": "A heart (心) pierced by a single resolved stroke: certainly necessary.",
-      "sort_order": 83,
+      "sort_order": 74,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2483,7 +2223,7 @@
       "primary_form": "要",
       "meaning": "need / important",
       "mnemonic_text": "A woman (女) under a covering (覀): the essential point, needed.",
-      "sort_order": 84,
+      "sort_order": 75,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2513,7 +2253,7 @@
       "primary_form": "経",
       "meaning": "pass through / sutra",
       "mnemonic_text": "Thread (糸) running straight through the loom (圣): to pass through time.",
-      "sort_order": 85,
+      "sort_order": 76,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2543,7 +2283,7 @@
       "primary_form": "続",
       "meaning": "continue",
       "mnemonic_text": "Thread (糸) sold (売) onward without a break: to continue.",
-      "sort_order": 86,
+      "sort_order": 77,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2573,7 +2313,7 @@
       "primary_form": "比",
       "meaning": "compare",
       "mnemonic_text": "Two people standing side by side: to compare.",
-      "sort_order": 87,
+      "sort_order": 78,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2603,7 +2343,7 @@
       "primary_form": "選",
       "meaning": "choose",
       "mnemonic_text": "Feet advancing (辶) among matched (巽) options: to choose.",
-      "sort_order": 88,
+      "sort_order": 79,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2633,7 +2373,7 @@
       "primary_form": "残",
       "meaning": "remain",
       "mnemonic_text": "Bones (歹) left over after the cut (戔): what remains.",
-      "sort_order": 89,
+      "sort_order": 80,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2663,7 +2403,7 @@
       "primary_form": "増",
       "meaning": "increase",
       "mnemonic_text": "Earth (土) piled ever higher (曽): to increase.",
-      "sort_order": 90,
+      "sort_order": 81,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2693,7 +2433,7 @@
       "primary_form": "減",
       "meaning": "decrease",
       "mnemonic_text": "Water (氵) cut down (咸) to less: to decrease.",
-      "sort_order": 91,
+      "sort_order": 82,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2723,7 +2463,7 @@
       "primary_form": "変",
       "meaning": "change",
       "mnemonic_text": "Threads (糸-like) twisted into something strange: to change.",
-      "sort_order": 92,
+      "sort_order": 83,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2753,7 +2493,7 @@
       "primary_form": "戻",
       "meaning": "return",
       "mnemonic_text": "A dog (犬) squeezing back under a door (戸): to return.",
-      "sort_order": 93,
+      "sort_order": 84,
       "readings": [
         {
           "reading_type": "onyomi",
@@ -2783,7 +2523,7 @@
       "primary_form": "届",
       "meaning": "reach / deliver",
       "mnemonic_text": "A body (尸) stretching (由) out to reach: to deliver, arrive.",
-      "sort_order": 94,
+      "sort_order": 85,
       "readings": [
         {
           "reading_type": "onyomi",

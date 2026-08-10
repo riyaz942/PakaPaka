@@ -61,7 +61,6 @@ N5_DECOMPOSITION = {
     "tsuki": ["gatsu", "mae", "ao"],
     "ki": ["moku", "higashi", "hon", "kou-school", "yasumu", "atarashii", "kuru-rai"],
     "mizu": ["sui"],
-    "sanzui": [],
     "hi-fire": ["ka-fire"],
     "kanehen": ["kin"],
     "kai-shell": ["kau"],
@@ -107,49 +106,95 @@ N5_DECOMPOSITION = {
     "fudezukuri": ["kaku-write"],
     "karai": ["atarashii"],
     "kubi": ["michi"],
+    # 長 is taught as both a radical and a kanji; every other such pair is
+    # linked, so 長's kanji was the only one shipping with no component chip.
+    "nagai": ["nagai"],
 }
 
 
 # Curated radical (slug) -> kanji (suffix) decomposition for N4.
 # Keyed by radical slug from n4_radicals.py (new radicals) or n5_radicals.py
 # (reused components); values are kanji suffixes from n4_kanji.py.
+#
+# Rebuilt in the N4 skeleton pass (2026-08-10) against KRADFILE: every taught
+# component of every N4 kanji is now either an edge here or an entry in
+# audit_shipped.DECOMPOSITION_EXCEPTIONS. A component already taught at N5 is
+# keyed by its N5 slug — the 13 N4 radicals that re-taught an N5 form are gone.
 N4_DECOMPOSITION = {
-    "kokoro": ["shin-heart", "omou", "isogu", "warui", "wasureru", "hitsu"],
+    # Radicals introduced at N4.
     "bokuzukuri": ["kyou-teach"],
-    "madare": ["mise", "hiroi"],
-    "hitsuji": ["kiru-wear"],
     "furutori": ["atsumeru"],
-    "inu": ["modoru"],
-    "gatsuhen": ["shinu", "nokoru"],
-    "ou-king": ["ri"],
-    "ono": ["tokoro", "shitsu-quality"],
+    "gatsuhen": ["nokoru", "shinu"],
+    "hane": ["narau"],
+    "hatsugashira": ["hatsu"],
+    "hitsuji": ["gyou", "kiru-wear"],
+    "hoko": ["heru-decrease", "nokoru"],
+    "inoko": ["ie-kanji"],
     "itaru": ["shitsu"],
+    "kokoro": ["hitsu", "isogu", "omou", "shin-heart", "warui", "wasureru"],
+    "madare": ["hiroi", "mise"],
+    "mata": ["karui", "kei-pass"],
+    "mu": ["hajimeru", "hiroi", "kai", "tsuyoi"],
+    "nari": ["chi"],
+    "nisui": ["yowai"],
+    "oigashira": ["kangaeru", "kyou-teach", "mono"],
+    "ono": ["shitsu-quality", "tokoro"],
+    "ou-king": ["ri", "shu-main"],
+    "sato": ["omoi", "ri"],
     "shikabane": ["todoku"],
-    "yumihen": ["hiku", "yowai", "tsuyoi"],
-    "shikabane-kan": ["tokoro", "modoru"],
-    "takehen": ["kotae"],
-    "shime": ["sha"],
-    "nikuzuki": ["akarui"],
-    "shinnyou-n4": ["asobu", "chigau", "hakobu", "okuru", "erabu"],
-    "tatsuhen": ["oya"],
-    "kai-shellhen": ["kasu", "shitsu-quality"],
-    "kuchihen": ["shiru", "aji", "ani"],
-    "mizuhen": ["arau", "kimeru", "heru-decrease"],
-    # Reused N5 radicals as components of new N4 kanji.
-    "onna": ["suki", "ane", "imouto"],
-    "ki": ["oya"],
-    "kuruma": ["sha-car", "karui", "omoi"],
-    "ame": ["den"],
-    "chikara": ["ryoku"],
-    "sanzui": ["arau", "kimeru", "heru-decrease"],
-    "te": ["te-kanji"],
-    "tsuchi": ["chi", "ba"],
-    "hi-sun": ["kurai", "akarui"],
+    "shikigamae": ["kasu", "shi-try"],
+    "to-dipper": ["ryou-fee"],
+    "tobira": ["modoru", "tokoro"],
+    "tsutsumu": ["iro", "isogu", "kangaeru"],
+    "wakanmuri": ["hakobu", "oboeru", "tsuzukeru"],
+    "ya": ["shiru", "zoku"],
+    # N5 radicals reused as components of N4 kanji.
+    "boku-divination": ["mise"],
+    "chikara": ["betsu", "hataraku"],
+    "fuyugashira": ["kawaru", "owaru"],
+    "gonben": ["shi-try", "shiraberu"],
+    "haba": ["ane"],
+    "hi-spoon": ["shinu"],
+    "hi-sun": ["akarui", "ba", "fueru", "hataraku", "kariru", "kurai", "mono", "omoi"],
+    "hito": ["kai"],
+    "hitoashi": ["ani", "arau", "hatsu", "tsuzukeru"],
+    "hitoyane": ["ane", "kawaru"],
+    "ichi": ["ba", "dou", "gyou", "hataraku", "kotae", "koto", "omoi", "tsukau", "uta"],
+    "itohen": ["hosoi", "kei-pass", "owaru", "tsuzukeru"],
+    "kai-shell": ["kasu", "shitsu-quality"],
+    "kakeru": ["uta"],
+    "katana": ["betsu"],
+    "keigamae": ["dou"],
+    "keigashira": ["isogu", "koto"],
+    "ki": ["aji", "atsumeru", "gyou", "imouto", "oya"],
+    "ko": ["asobu", "kyou-teach", "suki"],
+    "kome": ["ryou-fee"],
+    "kougatsu": ["shi-try"],
+    "kuchi": ["aji", "ani", "betsu", "chigau", "dou", "hajimeru", "heru-decrease", "kotae", "koto", "mise", "shiru", "tsukau", "uta"],
+    "kunigamae": ["zu"],
+    "kuruma": ["hakobu", "karui"],
+    "me": ["ji-self", "kiru-wear"],
+    "miru": ["oboeru", "oya"],
+    "mushi": ["tsuyoi"],
+    "ni": ["hatsu", "kai", "kariru"],
+    "ninben": ["hataraku", "kariru", "kasu", "tsukau"],
+    "onna": ["ane", "hajimeru", "imouto", "suki", "you-need"],
+    "samurai": ["tsuzukeru"],
+    "sanzui": ["arau", "heru-decrease", "kimeru"],
+    "shimesu": ["sha"],
+    "shinnyou": ["asobu", "chigau", "erabu", "hakobu", "okuru"],
+    "shiro": ["narau"],
+    "sun": ["motsu"],
+    "ta": ["fueru", "hosoi", "omou"],
+    "takekanmuri": ["kotae"],
+    "tatsu": ["kurai", "oya"],
+    "tehen": ["motsu"],
+    "ten": ["futoi", "shu-main"],
+    "tsuchi": ["ba", "chi", "fueru", "hashiru", "karui", "kei-pass", "motsu", "sha"],
     "tsuki": ["akarui"],
-    "miru": ["oboeru"],
-    "gonben": ["shi-try"],
-    "kai-shell": ["kasu"],
-    "mimi": [],
+    "ukanmuri": ["ie-kanji", "shitsu"],
+    "uma": ["ken-exam"],
+    "yumi": ["hiku", "otouto", "tsuyoi", "yowai"],
 }
 
 
@@ -190,15 +235,29 @@ def build_edges(levels):
 
     # radical -> kanji (builds_on), from curated decomposition maps per level.
     decomposition_by_level = {"n5": N5_DECOMPOSITION, "n4": N4_DECOMPOSITION}
+    # A key that resolves to nothing is a typo or a renamed/removed item, and
+    # silently skipping it is how radicals went missing from kanji chips
+    # unnoticed. Fail the build instead.
     for lvl in levels:
         decomposition = decomposition_by_level.get(lvl, {})
         for rad_slug, kanji_suffixes in decomposition.items():
             if rad_slug not in radical_slugs:
-                continue
+                raise ValueError(
+                    f"{lvl} decomposition: radical slug {rad_slug!r} is not a taught radical"
+                )
+            if not kanji_suffixes:
+                raise ValueError(
+                    f"{lvl} decomposition: radical slug {rad_slug!r} has an empty kanji list; "
+                    "drop the key instead"
+                )
             for suf in kanji_suffixes:
                 kslug = f"{lvl}-{suf}"
-                if kslug in kanji_slugs:
-                    add(rad_slug, "radical", kslug, "kanji", "builds_on")
+                if kslug not in kanji_slugs:
+                    raise ValueError(
+                        f"{lvl} decomposition: {rad_slug!r} lists kanji {kslug!r}, which is not "
+                        "a taught kanji"
+                    )
+                add(rad_slug, "radical", kslug, "kanji", "builds_on")
 
     # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
     for k in kanji:

@@ -142,7 +142,9 @@ KRAD_VARIANTS = {
     "八": ["八", "ハ", "并"],
     "人": ["人", "化", "个"],
     "氵": ["汁"],
-    "水": ["水", "汁"],
+    # 汁 belongs to 氵 alone: both 水 and 氵 claiming it made the owner depend
+    # on dataset order, and the N4 pass needs 洗/決/減 to resolve to sanzui.
+    "水": ["水"],
     "辶": ["込"],
     "⻌": ["込"],
     "示": ["示", "礼"],
@@ -150,6 +152,10 @@ KRAD_VARIANTS = {
     "⺾": ["艾"],
     "艹": ["艾"],
     "刂": ["刈"],
+    # 刂 is not taught; 刀 is the radical the curriculum uses for it (分, 別).
+    "刀": ["刀", "刈"],
+    "扌": ["扌", "扎"],
+    "耂": ["耂", "老"],
     "阝": ["阡", "邦"],
     "𠆢": ["个"],
 }

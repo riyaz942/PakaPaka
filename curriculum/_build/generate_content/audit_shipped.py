@@ -87,15 +87,16 @@ DECOMPOSITION_EXCEPTIONS = {
 
     # --- 1. component radical is taught in N4 -------------------------------
     ("ono", "n5-atarashii"): "斤 is an N4 radical; an N5 kanji cannot build on a component the learner meets a level later.",
-    ("kanmuri", "n5-dokusho"): "冖 is an N4 radical; 読 cannot build on a component taught a level later.",
-    ("kanmuri", "n5-gaku"): "冖 is an N4 radical; 学 cannot build on a component taught a level later.",
-    ("kanmuri", "n5-kaeru"): "冖 is an N4 radical; 帰 cannot build on a component taught a level later.",
-    ("kanmuri", "n5-uru-baku"): "冖 is an N4 radical; 売 cannot build on a component taught a level later.",
+    ("wakanmuri", "n5-dokusho"): "冖 is an N4 radical; 読 cannot build on a component taught a level later.",
+    ("wakanmuri", "n5-gaku"): "冖 is an N4 radical; 学 cannot build on a component taught a level later.",
+    ("wakanmuri", "n5-kaeru"): "冖 is an N4 radical; 帰 cannot build on a component taught a level later.",
+    ("wakanmuri", "n5-uru-baku"): "冖 is an N4 radical; 売 cannot build on a component taught a level later.",
     ("shikabane", "n5-eki-station"): "尸 is an N4 radical (and here only half of 尺); 駅 cannot build on a component taught a level later.",
     ("ou-king", "n5-kin"): "王 is an N4 radical; 金 cannot build on a component taught a level later.",
     ("ou-king", "n5-kuni"): "王 is an N4 radical; 国 cannot build on a component taught a level later.",
     ("madare", "n5-suwaru"): "广 is a real component of 座 but an N4 radical; an N5 kanji cannot depend on it.",
     ("furutori", "n5-nichiyou"): "隹 is a real component of 曜 but an N4 radical; an N5 kanji cannot depend on it.",
+    ("sato", "n5-kane-gold-dup"): "里 is a real component of 黒 (and already its taught story's 'village') but an N4 radical; an N5 kanji cannot depend on it.",
 
     # --- 2. KRADFILE splits a sub-kanji the taught story does not -----------
     ("me", "n5-kau"): "目 is the top of 貝; 買 already builds on 貝 whole.",
@@ -141,6 +142,8 @@ DECOMPOSITION_EXCEPTIONS = {
     ("keigamae", "n5-takai"): "冂 indexes 高's lower frame; 高 is already taught from 口 and its own radical.",
     ("ni", "n5-ten"): "二 indexes 天's two horizontals; 天 is taught from 一 over the whole 大 shape, which is a kanji, not a radical.",
     ("hitoashi", "n5-yon"): "儿 indexes the interior strokes of 四; 四 is already taught from 口 and 囗.",
+    ("katana", "n5-kaeru"): "刀 indexes the ⺈ strokes at 帰's top left; the reviewed story builds 帰 from the broom and the cloth.",
+    ("katana", "n5-mae"): "刂 is the right edge of 前 and a real etymological piece, but the reviewed story builds 前 from 月 under an awning; adding the edge would oblige a mnemonic rewrite of shipped N5 content.",
 
     # --- 4. taught as one whole shape --------------------------------------
     ("tsuchi", "n5-aka"): "赤 is taught as its own whole-shape radical; 土 is only how KRADFILE indexes its top.",
@@ -148,6 +151,73 @@ DECOMPOSITION_EXCEPTIONS = {
     ("ichi", "n5-man"): "万 is taught as one whole shape; 一 is only its top stroke.",
     ("ichi", "n5-san"): "三 is taught as its own whole-shape radical; 一 and 二 are the strokes it is drawn from, not pieces it borrows.",
     ("ni", "n5-san"): "三 is taught as its own whole-shape radical; 二 is a stroke subset of it, not a component.",
+
+    # --- N4 pass (2026-08-10, skeleton fix ahead of content generation) ----
+    # Same four kinds as the N5 pass above. The 亻 group is a fifth,
+    # KRADFILE-specific case: 化 is its index entry for 亻, and 人 claims 化
+    # before 亻 does, so the confirmed 亻 edge still leaves a 人 diff.
+    ("hachigashira", "n4-aji"): "ハ indexes 未's splayed lower strokes.",
+    ("hitoyane", "n4-aji"): "亠 indexes the top stroke of that same 未.",
+    ("ni", "n4-aji"): "二 indexes the two horizontals of 未; 味 builds on 木.",
+    ("tsuchi", "n4-arau"): "土 indexes the 生-like top of 先; 洗 is taught from 氵 and 儿.",
+    ("tsutsumu", "n4-betsu"): "勹 indexes the hooked stroke of 另; 別 is taught from 口 and 力.",
+    ("hachigashira", "n4-erabu"): "ハ/并 index the splayed strokes of that same 巽.",
+    ("ni", "n4-erabu"): "二 indexes a horizontal of 巽, a sub-kanji the curriculum does not teach.",
+    ("hachigashira", "n4-fueru"): "并 indexes the 丷 top of 曽; not a meaning-bearing component.",
+    ("hachigashira", "n4-gyou"): "并 indexes the splayed strokes of that same 丵.",
+    ("ou-king", "n4-gyou"): "王 indexes the same 丵 top 業 already builds on through 羊.",
+    ("hito", "n4-hataraku"): "化 is how KRADFILE indexes 亻; 働 builds on 亻 (ninben) directly.",
+    ("itoko", "n4-hosoi"): "幺 is the upper half of 糸; 細 builds on 糸 whole.",
+    ("shou", "n4-hosoi"): "小 is the lower half of that same 糸.",
+    ("hachigashira", "n4-imouto"): "ハ indexes 未's splayed lower strokes.",
+    ("hitoyane", "n4-imouto"): "亠 indexes the top stroke of that same 未.",
+    ("ni", "n4-imouto"): "二 indexes the two horizontals of 未; 妹 builds on 木.",
+    ("hito", "n4-kariru"): "化 is how KRADFILE indexes 亻; 借 builds on 亻 (ninben) directly.",
+    ("hachigashira", "n4-kasu"): "ハ is the two legs of that same 貝.",
+    ("hito", "n4-kasu"): "化 is how KRADFILE indexes 亻; 貸 builds on 亻 (ninben) directly.",
+    ("me", "n4-kasu"): "目 is the top of 貝; 貸 already builds on 貝 whole.",
+    ("itoko", "n4-kei-pass"): "幺 is the upper half of 糸; 経 builds on 糸 whole.",
+    ("shou", "n4-kei-pass"): "小 is the lower half of that same 糸.",
+    ("hito", "n4-ken-exam"): "人/个 index the 亼 roof of 僉, a sub-kanji the curriculum never teaches; 験 is taught from 馬.",
+    ("kuchi", "n4-ken-exam"): "口 indexes the paired mouths inside that same untaught 僉.",
+    ("hito", "n4-kimeru"): "人 indexes the splayed foot of 夬, a sub-kanji the curriculum does not teach.",
+    ("ni", "n4-kimeru"): "二 indexes a horizontal of that same 夬.",
+    ("hachigashira", "n4-kiru-wear"): "并 indexes 着's 丷 top; 着 builds on 羊 whole.",
+    ("ou-king", "n4-kiru-wear"): "王 indexes the same 羊 top 着 already builds on.",
+    ("hito", "n4-kotae"): "个 indexes the 亼 roof of 合; 答 is taught from 竹 over 口.",
+    ("ichi", "n4-modoru"): "一 is the top stroke of 戸, which 戻 already builds on whole.",
+    ("shikabane", "n4-modoru"): "尸 is the body of that same 戸.",
+    ("nisui", "n4-narau"): "冫 indexes the interior ticks of 羽; 習 builds on 羽 whole.",
+    ("ni", "n4-nokoru"): "二 indexes the paired horizontals of 戔; 残 builds on 戈.",
+    ("hachigashira", "n4-okuru"): "并 indexes 关's 丷 top.",
+    ("ichi", "n4-okuru"): "一 indexes a horizontal of 关, a sub-kanji the curriculum does not teach.",
+    ("ni", "n4-okuru"): "二 indexes the paired horizontals of that same 关.",
+    ("hachigashira", "n4-otouto"): "并 indexes 弟's 丷 top; not a meaning-bearing component.",
+    ("itoko", "n4-owaru"): "幺 is the upper half of 糸; 終 builds on 糸 whole.",
+    ("shou", "n4-owaru"): "小 is the lower half of that same 糸.",
+    ("hachigashira", "n4-oya"): "并 indexes 亲's splayed strokes.",
+    ("hitoyane", "n4-oya"): "亠 is the top stroke of that same 立.",
+    ("karai", "n4-oya"): "辛 is a whole-shape lookup for 亲; 親 is taught from 立 over 木.",
+    ("ichi", "n4-shinu"): "一 is the top stroke of 歹; 死 builds on 歹 whole.",
+    ("yuu-evening", "n4-shinu"): "夕 is the body of that same 歹.",
+    ("keigamae", "n4-shiraberu"): "冂 is the outer frame of that same 周.",
+    ("kuchi", "n4-shiraberu"): "口 is a stroke-lookup piece of 周; 調's taught story does not split 周.",
+    ("tsuchi", "n4-shiraberu"): "土 is a stroke-lookup piece of that same 周.",
+    ("mu", "n4-shitsu"): "厶 is the waist of that same 至.",
+    ("tsuchi", "n4-shitsu"): "土 is the foot of 至; 室 builds on 至 whole.",
+    ("hachigashira", "n4-shitsu-quality"): "ハ is the two legs of that same 貝.",
+    ("me", "n4-shitsu-quality"): "目 is the top of 貝; 質 already builds on 貝 whole.",
+    ("hi-sun", "n4-todoku"): "日 indexes the boxed lower half of 由; 届 is taught from 尸.",
+    ("ta", "n4-todoku"): "田 is a whole-shape lookup for that same 由.",
+    ("ichi", "n4-tokoro"): "一 is the top stroke of that same 戸.",
+    ("shikabane", "n4-tokoro"): "尸 is the top of 戸; 所 builds on 戸 whole.",
+    ("hito", "n4-tsukau"): "化 is how KRADFILE indexes 亻; 使 builds on 亻 (ninben) directly.",
+    ("itoko", "n4-tsuzukeru"): "幺 is the upper half of 糸; 続 builds on 糸 whole.",
+    ("shou", "n4-tsuzukeru"): "小 is the lower half of that same 糸.",
+    ("ichi", "n4-warui"): "一 indexes a stroke of 亜, a sub-kanji the curriculum does not teach.",
+    ("kuchi", "n4-warui"): "口 indexes the boxed interior of that same 亜.",
+    ("hitoyane", "n4-wasureru"): "亠 is the top stroke of 亡, which the curriculum does not teach as a piece.",
+    ("to-dipper", "n4-zu"): "斗 is a stroke-lookup shape for 図's interior; the taught story is the enclosure.",
 }
 
 #: Non-kanji characters KRADFILE and JmdictFurigana still treat as "carries
@@ -490,8 +560,17 @@ def decomposition_gaps(level, all_levels_present, kradfile):
     edges = audit_facts.load_json("dependencies", "graph.json")["edges"]
     edge_set = {(e["from_slug"], e["to_slug"]) for e in edges if e["relationship_type"] == "builds_on"}
 
+    # A component can also be taught as a *kanji* rather than a radical. The
+    # graph only carries radical -> kanji `builds_on`, so no edge is expressible
+    # (天 can never chip 大); reporting those as "taught nowhere" sent readers
+    # looking for a radical to author that already exists as a kanji.
+    kanji_by_char = {}
+    for kslug, kan in kanji_char.items():
+        kanji_by_char.setdefault(kan, kslug)
+
     missing_edge = []
     untaught = {}
+    taught_as_kanji = {}
     for kslug, kan in kanji_char.items():
         if not kslug.startswith(f"{level}-"):
             continue
@@ -500,14 +579,19 @@ def decomposition_gaps(level, all_levels_present, kradfile):
                 continue
             rslug = taught_chars.get(comp)
             if rslug is None:
-                untaught.setdefault(comp, set()).add((kslug, kan))
+                if comp in kanji_by_char:
+                    taught_as_kanji.setdefault(comp, set()).add((kslug, kan))
+                else:
+                    untaught.setdefault(comp, set()).add((kslug, kan))
             elif (rslug, kslug) not in edge_set and (rslug, kslug) not in DECOMPOSITION_EXCEPTIONS:
                 missing_edge.append((rslug, radical_char[rslug], kslug, kan))
-    return missing_edge, untaught
+    return missing_edge, untaught, taught_as_kanji
 
 
 def decomposition_errors(level, all_levels_present, kradfile):
-    missing_edge, untaught = decomposition_gaps(level, all_levels_present, kradfile)
+    missing_edge, untaught, taught_as_kanji = decomposition_gaps(
+        level, all_levels_present, kradfile
+    )
     results = []
     for rslug, rchar, kslug, kan in sorted(missing_edge, key=lambda t: t[2]):
         results.append((
@@ -520,8 +604,16 @@ def decomposition_errors(level, all_levels_present, kradfile):
         examples = ", ".join(f"{kslug} ({kan})" for kslug, kan in sorted(users)[:8])
         results.append((
             "INFO",
-            f"{comp}: KRADFILE component of {len(users)} taught kanji has no corresponding "
-            f"taught radical (neither radical nor kanji) — {examples}"
+            f"{comp}: KRADFILE component of {len(users)} taught kanji is taught nowhere, as "
+            f"neither radical nor kanji — {examples}"
+            + (" …" if len(users) > 8 else ""),
+        ))
+    for comp, users in sorted(taught_as_kanji.items(), key=lambda kv: -len(kv[1])):
+        examples = ", ".join(f"{kslug} ({kan})" for kslug, kan in sorted(users)[:8])
+        results.append((
+            "INFO",
+            f"{comp}: KRADFILE component of {len(users)} taught kanji is taught as a kanji, not "
+            f"a radical, so no builds_on edge is expressible — {examples}"
             + (" …" if len(users) > 8 else ""),
         ))
     return results
@@ -655,6 +747,47 @@ def hygiene_errors(all_levels_present):
                 dup_forms = _duplicates([it["primary_form"] for it in items])
                 if dup_forms:
                     results.append(("WARNING", f"{label}: duplicate primary_form(s) {dup_forms}"))
+
+    # Same, but *across* levels — the case a per-file scan cannot see. N4 once
+    # re-taught 13 N5 radical forms and 9 N5 kanji outright, which shows the
+    # learner one shape as two review cards and let 明/貸 render the same
+    # component chip twice.
+    for kind_dir in ("radicals", "kanji"):
+        by_form = {}
+        for lvl in all_levels_present:
+            for it in audit_facts.load_json(kind_dir, f"{lvl}.json")["items"]:
+                by_form.setdefault(it["primary_form"], []).append(f"{lvl}:{it['slug']}")
+        for form, owners in sorted(by_form.items()):
+            if len(owners) > 1:
+                results.append((
+                    "ERROR",
+                    f"{kind_dir}: {form} is taught {len(owners)} times across levels "
+                    f"({', '.join(owners)}); a later level must reuse the first slug, not re-teach the form",
+                ))
+
+    # Every radical whose form is also a taught kanji must build it. KRADFILE
+    # lists such a character's only component as itself, so `comp == kan` skips
+    # it and check 3 can never see the gap — this is how 長 shipped as a taught
+    # radical with no children and a taught kanji with no parents.
+    radical_by_form, kanji_by_form = {}, {}
+    for lvl in all_levels_present:
+        for r in audit_facts.load_json("radicals", f"{lvl}.json")["items"]:
+            radical_by_form.setdefault(r["primary_form"], r["slug"])
+        for k in audit_facts.load_json("kanji", f"{lvl}.json")["items"]:
+            kanji_by_form.setdefault(k["primary_form"], k["slug"])
+    builds_on = {
+        (e["from_slug"], e["to_slug"])
+        for e in audit_facts.load_json("dependencies", "graph.json")["edges"]
+        if e["relationship_type"] == "builds_on"
+    }
+    for form, rslug in sorted(radical_by_form.items()):
+        kslug = kanji_by_form.get(form)
+        if kslug and (rslug, kslug) not in builds_on:
+            results.append((
+                "WARNING",
+                f"{form} is taught as radical `{rslug}` and kanji `{kslug}` but has no "
+                f"builds_on edge between them; the kanji ships with no component chip",
+            ))
 
             sort_orders = [it["sort_order"] for it in items if "sort_order" in it]
             dup_sort = _duplicates(sort_orders)
