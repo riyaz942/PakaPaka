@@ -22,6 +22,7 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 | [12](12-android-playtest-round-2.md) | Android playtest round 2 | P0–P3 | Status bar unreadable; refresher opens "No Reviews Due"; prompt disappears on correct/typo; abrupt feedback; forecast detail; remove "separate apps" claim |
 | [13](13-vacation-mode.md) | Vacation mode | — | WaniKani-style pause; due dates shift forward on resume; closes goal-ring O4 |
 | [14](14-conjugated-form-linking-and-furigana-gesture.md) | Conjugated-form linking & furigana gesture | — | 来ます should link to 来る (hero note + conjugated-forms section); tap = details, long-press = hide/show furigana |
+| [15](15-chatbubble-word-linking-and-furigana-toggle.md) | ChatBubble word linking & furigana toggle | — | Split out of 14: per-word linking + gesture split for AI chat replies (Talk tab) — **done**, boundaries come from the reply's own furigana brackets |
 
 ## Suggested sequencing
 
@@ -41,6 +42,12 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 
 ## Two decisions that need the product owner
 
+- **Plan 14** — resolved 2026-08-10: (1) expand passage `vocabulary_slugs` to
+  include conjugation-only words, accepting the ≥90% Guru+ unlock bar moving
+  on affected passages (implementation in progress); (2) ChatBubble per-word
+  linking/furigana toggle is out of scope for 14 — split into
+  [Plan 15](15-chatbubble-word-linking-and-furigana-toggle.md), which has since
+  shipped.
 - **Plan 02 Q1** — one FSRS card per item, or one per (item, prompt type)? The WaniKani "meaning *and* reading" model the feedback describes needs the split. Recommended as a follow-on story, not a blocker.
 - **Plan 05 §5.1** — removing the time-compression display deletes a documented PRD differentiator. The feedback is clear, but confirm before deleting.
 

@@ -39,14 +39,17 @@
         "mashou"
       ],
       "vocabulary_slugs": [
+        "aru",
         "benkyou",
         "chikaku",
         "gakkou-v",
         "gakusei",
+        "iru-exist",
         "jugyou",
         "namae",
         "nihon",
         "nihongo",
+        "sumu",
         "takusan",
         "tanoshii",
         "tomodachi",
@@ -69,6 +72,13 @@
           "end": 12
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 15,
+          "end": 20,
+          "surface_form": "ありません",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "gakkou-v",
           "start": 21,
           "end": 23
@@ -77,6 +87,20 @@
           "vocabulary_slug": "chikaku",
           "start": 24,
           "end": 26
+        },
+        {
+          "vocabulary_slug": "sumu",
+          "start": 27,
+          "end": 30,
+          "surface_form": "住んで",
+          "inflection": "te"
+        },
+        {
+          "vocabulary_slug": "iru-exist",
+          "start": 30,
+          "end": 33,
+          "surface_form": "います",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "watashi",
@@ -164,10 +188,16 @@
       ],
       "vocabulary_slugs": [
         "ashita",
+        "dasu",
+        "kaku",
         "kinou",
+        "matsu",
         "neko",
+        "neru",
+        "okiru",
         "shukudai",
         "soko",
+        "suwaru",
         "tsugi",
         "ue",
         "watashi"
@@ -187,6 +217,13 @@
           "vocabulary_slug": "shukudai",
           "start": 5,
           "end": 7
+        },
+        {
+          "vocabulary_slug": "kaku",
+          "start": 8,
+          "end": 13,
+          "surface_form": "書きました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "watashi",
@@ -209,6 +246,13 @@
           "end": 30
         },
         {
+          "vocabulary_slug": "suwaru",
+          "start": 31,
+          "end": 36,
+          "surface_form": "座りました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "tsugi",
           "start": 37,
           "end": 38
@@ -219,9 +263,30 @@
           "end": 42
         },
         {
+          "vocabulary_slug": "neru",
+          "start": 43,
+          "end": 47,
+          "surface_form": "寝ました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "watashi",
           "start": 48,
           "end": 49
+        },
+        {
+          "vocabulary_slug": "matsu",
+          "start": 50,
+          "end": 55,
+          "surface_form": "待ちました",
+          "inflection": "masu"
+        },
+        {
+          "vocabulary_slug": "okiru",
+          "start": 59,
+          "end": 64,
+          "surface_form": "起きません",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "shukudai",
@@ -232,6 +297,13 @@
           "vocabulary_slug": "ashita",
           "start": 68,
           "end": 70
+        },
+        {
+          "vocabulary_slug": "dasu",
+          "start": 70,
+          "end": 74,
+          "surface_form": "出します",
+          "inflection": "masu"
         }
       ],
       "word_count": 45
@@ -291,13 +363,18 @@
         "gakkou-v",
         "gogo",
         "gozen",
+        "hajimaru",
         "han-time",
         "hirugohan",
         "ie",
         "issho-ni",
         "jugyou",
+        "kaeru-v",
+        "owaru",
         "shukudai",
         "sore",
+        "suru",
+        "taberu",
         "tomodachi",
         "toshokan"
       ],
@@ -323,6 +400,13 @@
           "end": 11
         },
         {
+          "vocabulary_slug": "hajimaru",
+          "start": 12,
+          "end": 17,
+          "surface_form": "始まります",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "tomodachi",
           "start": 22,
           "end": 24
@@ -336,6 +420,13 @@
           "vocabulary_slug": "hirugohan",
           "start": 28,
           "end": 31
+        },
+        {
+          "vocabulary_slug": "taberu",
+          "start": 32,
+          "end": 36,
+          "surface_form": "食べます",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "gogo",
@@ -353,6 +444,13 @@
           "end": 46
         },
         {
+          "vocabulary_slug": "owaru",
+          "start": 47,
+          "end": 52,
+          "surface_form": "終わります",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "sore",
           "start": 53,
           "end": 55
@@ -368,9 +466,23 @@
           "end": 63
         },
         {
+          "vocabulary_slug": "suru",
+          "start": 64,
+          "end": 67,
+          "surface_form": "します",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "ie",
           "start": 71,
           "end": 72
+        },
+        {
+          "vocabulary_slug": "kaeru-v",
+          "start": 73,
+          "end": 77,
+          "surface_form": "帰ります",
+          "inflection": "masu"
         }
       ],
       "word_count": 49
@@ -420,12 +532,16 @@
         "yo-emphasis"
       ],
       "vocabulary_slugs": [
+        "akeru",
         "ane",
+        "aru",
         "chichi",
         "daidokoro",
         "doa",
         "haha",
         "ie",
+        "kaeru-v",
+        "kau-v",
         "kyou",
         "suupaa",
         "takusan",
@@ -434,6 +550,7 @@
         "tegami",
         "uchi",
         "ue",
+        "wasureru",
         "zenbu"
       ],
       "word_spans": [
@@ -458,6 +575,13 @@
           "end": 10
         },
         {
+          "vocabulary_slug": "wasureru",
+          "start": 11,
+          "end": 16,
+          "surface_form": "忘れました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "suupaa",
           "start": 19,
           "end": 23
@@ -468,9 +592,23 @@
           "end": 25
         },
         {
+          "vocabulary_slug": "kau-v",
+          "start": 27,
+          "end": 32,
+          "surface_form": "買いました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "ie",
           "start": 33,
           "end": 34
+        },
+        {
+          "vocabulary_slug": "kaeru-v",
+          "start": 35,
+          "end": 38,
+          "surface_form": "帰って",
+          "inflection": "te"
         },
         {
           "vocabulary_slug": "daidokoro",
@@ -481,6 +619,13 @@
           "vocabulary_slug": "doa",
           "start": 42,
           "end": 44
+        },
+        {
+          "vocabulary_slug": "akeru",
+          "start": 45,
+          "end": 50,
+          "surface_form": "開けました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "teeburu",
@@ -503,6 +648,13 @@
           "end": 64
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 64,
+          "end": 68,
+          "surface_form": "あります",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "chichi",
           "start": 69,
           "end": 70
@@ -516,6 +668,13 @@
           "vocabulary_slug": "tamago",
           "start": 73,
           "end": 74
+        },
+        {
+          "vocabulary_slug": "kau-v",
+          "start": 75,
+          "end": 80,
+          "surface_form": "買いました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "zenbu",
@@ -581,16 +740,20 @@
         "te-kudasai"
       ],
       "vocabulary_slugs": [
+        "aruku",
         "dochira",
         "eki",
         "futatsu",
         "ginkou",
+        "hanasu-v",
         "hidari-v",
         "kado",
+        "kiku-v",
         "koko",
         "kono",
         "kyou",
         "mae",
+        "magaru",
         "michi-v",
         "onnanohito",
         "tonari",
@@ -634,6 +797,13 @@
           "end": 21
         },
         {
+          "vocabulary_slug": "kiku-v",
+          "start": 27,
+          "end": 32,
+          "surface_form": "聞きました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "onnanohito",
           "start": 33,
           "end": 36
@@ -649,6 +819,13 @@
           "end": 41
         },
         {
+          "vocabulary_slug": "aruku",
+          "start": 42,
+          "end": 45,
+          "surface_form": "歩いて",
+          "inflection": "te"
+        },
+        {
           "vocabulary_slug": "futatsu",
           "start": 46,
           "end": 48
@@ -662,6 +839,13 @@
           "vocabulary_slug": "hidari-v",
           "start": 52,
           "end": 53
+        },
+        {
+          "vocabulary_slug": "magaru",
+          "start": 54,
+          "end": 58,
+          "surface_form": "曲がって",
+          "inflection": "te"
         },
         {
           "vocabulary_slug": "yuubinkyoku",
@@ -684,9 +868,23 @@
           "end": 76
         },
         {
+          "vocabulary_slug": "hanasu-v",
+          "start": 86,
+          "end": 91,
+          "surface_form": "話しました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "watashi",
           "start": 92,
           "end": 93
+        },
+        {
+          "vocabulary_slug": "aruku",
+          "start": 94,
+          "end": 99,
+          "surface_form": "歩きました",
+          "inflection": "masu"
         }
       ],
       "word_count": 63
@@ -749,7 +947,10 @@
       "vocabulary_slugs": [
         "ame-v",
         "aoi",
+        "aru",
+        "aruku",
         "asa",
+        "chiisai",
         "doa",
         "eki",
         "ie",
@@ -760,7 +961,11 @@
         "kutsu",
         "kyou",
         "mae",
+        "miru-v",
+        "naru-become",
         "sono",
+        "toru",
+        "tsuyoi",
         "uchi",
         "watashi"
       ],
@@ -806,9 +1011,23 @@
           "end": 20
         },
         {
+          "vocabulary_slug": "toru",
+          "start": 21,
+          "end": 24,
+          "surface_form": "取って",
+          "inflection": "te"
+        },
+        {
           "vocabulary_slug": "ie",
           "start": 25,
           "end": 26
+        },
+        {
+          "vocabulary_slug": "aruku",
+          "start": 28,
+          "end": 33,
+          "surface_form": "歩きました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "ame-v",
@@ -816,9 +1035,23 @@
           "end": 35
         },
         {
+          "vocabulary_slug": "tsuyoi",
+          "start": 36,
+          "end": 39,
+          "surface_form": "強くて",
+          "inflection": "te"
+        },
+        {
           "vocabulary_slug": "kutsu",
           "start": 40,
           "end": 41
+        },
+        {
+          "vocabulary_slug": "naru-become",
+          "start": 45,
+          "end": 50,
+          "surface_form": "なりました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "uchi",
@@ -841,6 +1074,13 @@
           "end": 60
         },
         {
+          "vocabulary_slug": "miru-v",
+          "start": 61,
+          "end": 65,
+          "surface_form": "見ました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "sono",
           "start": 66,
           "end": 68
@@ -849,6 +1089,13 @@
           "vocabulary_slug": "kasa",
           "start": 68,
           "end": 69
+        },
+        {
+          "vocabulary_slug": "chiisai",
+          "start": 70,
+          "end": 74,
+          "surface_form": "小さくて",
+          "inflection": "te"
         },
         {
           "vocabulary_slug": "aoi",
@@ -894,6 +1141,13 @@
           "vocabulary_slug": "mae",
           "start": 95,
           "end": 96
+        },
+        {
+          "vocabulary_slug": "aru",
+          "start": 97,
+          "end": 101,
+          "surface_form": "あります",
+          "inflection": "masu"
         }
       ],
       "word_count": 69
@@ -952,15 +1206,19 @@
       ],
       "vocabulary_slugs": [
         "akai",
+        "aru",
         "atsui-obj",
+        "deru-v",
         "eki",
         "futatsu",
         "hako",
         "hito",
         "hitotsu",
+        "ireru-v",
         "kinou",
         "koe",
         "koohii",
+        "kuru-v",
         "mae",
         "nani",
         "nomimono",
@@ -973,6 +1231,7 @@
         "sore",
         "tsugi",
         "tsumetai",
+        "warau",
         "watashi"
       ],
       "word_spans": [
@@ -1002,6 +1261,13 @@
           "end": 11
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 12,
+          "end": 16,
+          "surface_form": "あります",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "kinou",
           "start": 17,
           "end": 19
@@ -1027,9 +1293,23 @@
           "end": 28
         },
         {
+          "vocabulary_slug": "ireru-v",
+          "start": 29,
+          "end": 34,
+          "surface_form": "入れました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "nani",
           "start": 35,
           "end": 36
+        },
+        {
+          "vocabulary_slug": "deru-v",
+          "start": 37,
+          "end": 44,
+          "surface_form": "出ませんでした",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "tsugi",
@@ -1040,6 +1320,13 @@
           "vocabulary_slug": "onnanohito",
           "start": 47,
           "end": 50
+        },
+        {
+          "vocabulary_slug": "kuru-v",
+          "start": 51,
+          "end": 53,
+          "surface_form": "来て",
+          "inflection": "te"
         },
         {
           "vocabulary_slug": "onaji",
@@ -1057,6 +1344,13 @@
           "end": 60
         },
         {
+          "vocabulary_slug": "ireru-v",
+          "start": 61,
+          "end": 66,
+          "surface_form": "入れました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "tsumetai",
           "start": 67,
           "end": 70
@@ -1070,6 +1364,13 @@
           "vocabulary_slug": "futatsu",
           "start": 73,
           "end": 75
+        },
+        {
+          "vocabulary_slug": "deru-v",
+          "start": 75,
+          "end": 79,
+          "surface_form": "出ました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "sono",
@@ -1092,6 +1393,13 @@
           "end": 88
         },
         {
+          "vocabulary_slug": "warau",
+          "start": 89,
+          "end": 94,
+          "surface_form": "笑いました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "sore",
           "start": 95,
           "end": 97
@@ -1107,6 +1415,13 @@
           "end": 104
         },
         {
+          "vocabulary_slug": "ireru-v",
+          "start": 105,
+          "end": 110,
+          "surface_form": "入れました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "atsui-obj",
           "start": 111,
           "end": 113
@@ -1120,6 +1435,13 @@
           "vocabulary_slug": "hitotsu",
           "start": 118,
           "end": 120
+        },
+        {
+          "vocabulary_slug": "deru-v",
+          "start": 120,
+          "end": 124,
+          "surface_form": "出ました",
+          "inflection": "masu"
         }
       ],
       "word_count": 83
@@ -1182,6 +1504,8 @@
         "adj-i-adverb"
       ],
       "vocabulary_slugs": [
+        "aoi",
+        "aruku",
         "asa",
         "bentou",
         "chichi",
@@ -1190,15 +1514,24 @@
         "gogo",
         "haha",
         "hirugohan",
+        "iku-v",
         "imouto",
+        "kaeru-v",
         "kaze-wind",
         "kazoku",
         "minna",
         "naka",
+        "naru-become",
+        "neru",
         "nichiyoubi",
+        "noru",
+        "oishii",
+        "okiru",
+        "oyogu",
         "senshuu",
         "sora",
         "tenki",
+        "tsukuru",
         "umi",
         "watashi"
       ],
@@ -1229,14 +1562,35 @@
           "end": 13
         },
         {
+          "vocabulary_slug": "iku-v",
+          "start": 14,
+          "end": 19,
+          "surface_form": "行きました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "asa",
           "start": 20,
           "end": 21
         },
         {
+          "vocabulary_slug": "okiru",
+          "start": 23,
+          "end": 26,
+          "surface_form": "起きて",
+          "inflection": "te"
+        },
+        {
           "vocabulary_slug": "densha",
           "start": 30,
           "end": 32
+        },
+        {
+          "vocabulary_slug": "noru",
+          "start": 33,
+          "end": 38,
+          "surface_form": "乗りました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "tenki",
@@ -1247,6 +1601,13 @@
           "vocabulary_slug": "sora",
           "start": 49,
           "end": 50
+        },
+        {
+          "vocabulary_slug": "aoi",
+          "start": 51,
+          "end": 55,
+          "surface_form": "青かった",
+          "inflection": "ta"
         },
         {
           "vocabulary_slug": "chichi",
@@ -1264,6 +1625,13 @@
           "end": 63
         },
         {
+          "vocabulary_slug": "oyogu",
+          "start": 64,
+          "end": 69,
+          "surface_form": "泳ぎました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "watashi",
           "start": 70,
           "end": 71
@@ -1272,6 +1640,13 @@
           "vocabulary_slug": "chikaku",
           "start": 72,
           "end": 74
+        },
+        {
+          "vocabulary_slug": "aruku",
+          "start": 75,
+          "end": 80,
+          "surface_form": "歩きました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "hirugohan",
@@ -1284,9 +1659,23 @@
           "end": 86
         },
         {
+          "vocabulary_slug": "tsukuru",
+          "start": 87,
+          "end": 90,
+          "surface_form": "作った",
+          "inflection": "ta"
+        },
+        {
           "vocabulary_slug": "bentou",
           "start": 90,
           "end": 92
+        },
+        {
+          "vocabulary_slug": "oishii",
+          "start": 97,
+          "end": 103,
+          "surface_form": "おいしかった",
+          "inflection": "ta"
         },
         {
           "vocabulary_slug": "gogo",
@@ -1299,9 +1688,23 @@
           "end": 110
         },
         {
+          "vocabulary_slug": "naru-become",
+          "start": 113,
+          "end": 118,
+          "surface_form": "なりました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "densha",
           "start": 124,
           "end": 126
+        },
+        {
+          "vocabulary_slug": "kaeru-v",
+          "start": 127,
+          "end": 132,
+          "surface_form": "帰りました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "densha",
@@ -1317,6 +1720,13 @@
           "vocabulary_slug": "minna",
           "start": 138,
           "end": 141
+        },
+        {
+          "vocabulary_slug": "neru",
+          "start": 141,
+          "end": 145,
+          "surface_form": "寝ました",
+          "inflection": "masu"
         }
       ],
       "word_count": 87
@@ -1383,22 +1793,28 @@
       ],
       "vocabulary_slugs": [
         "akeru",
+        "aru",
         "ban",
         "daidokoro",
         "doa",
         "hairu-v",
+        "hashiru",
         "heya",
         "ie",
         "inu",
+        "iru-exist",
         "kikoeru",
         "kinou",
         "koe",
+        "kuru-v",
         "mimi-v",
         "mizu",
         "naka",
         "namae",
+        "neru",
         "reizouko",
         "tamago",
+        "tatsu-v",
         "tomodachi",
         "watashi",
         "yobu"
@@ -1418,6 +1834,13 @@
           "vocabulary_slug": "inu",
           "start": 4,
           "end": 5
+        },
+        {
+          "vocabulary_slug": "iru-exist",
+          "start": 6,
+          "end": 9,
+          "surface_form": "います",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "namae",
@@ -1440,6 +1863,13 @@
           "end": 25
         },
         {
+          "vocabulary_slug": "kuru-v",
+          "start": 31,
+          "end": 35,
+          "surface_form": "来ません",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "tomodachi",
           "start": 36,
           "end": 38
@@ -1460,6 +1890,20 @@
           "end": 51
         },
         {
+          "vocabulary_slug": "neru",
+          "start": 52,
+          "end": 54,
+          "surface_form": "寝て",
+          "inflection": "te"
+        },
+        {
+          "vocabulary_slug": "iru-exist",
+          "start": 54,
+          "end": 57,
+          "surface_form": "います",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "daidokoro",
           "start": 61,
           "end": 63
@@ -1473,6 +1917,20 @@
           "vocabulary_slug": "akeru",
           "start": 68,
           "end": 71
+        },
+        {
+          "vocabulary_slug": "hashiru",
+          "start": 77,
+          "end": 80,
+          "surface_form": "走って",
+          "inflection": "te"
+        },
+        {
+          "vocabulary_slug": "kuru-v",
+          "start": 80,
+          "end": 83,
+          "surface_form": "来ます",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "kinou",
@@ -1502,6 +1960,20 @@
           "end": 109
         },
         {
+          "vocabulary_slug": "tatsu-v",
+          "start": 110,
+          "end": 113,
+          "surface_form": "立って",
+          "inflection": "te"
+        },
+        {
+          "vocabulary_slug": "iru-exist",
+          "start": 113,
+          "end": 117,
+          "surface_form": "いました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "naka",
           "start": 118,
           "end": 119
@@ -1515,6 +1987,13 @@
           "vocabulary_slug": "tamago",
           "start": 123,
           "end": 124
+        },
+        {
+          "vocabulary_slug": "aru",
+          "start": 127,
+          "end": 132,
+          "surface_form": "ありました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "mimi-v",
@@ -1598,18 +2077,25 @@
         "naru-become"
       ],
       "vocabulary_slugs": [
+        "ageru",
+        "aru",
+        "bikkuri-suru",
         "chikaku",
         "eki",
         "gakusei",
         "hana-v",
+        "hanasu-v",
         "hi-sun-v",
+        "kau-v",
         "kyou",
         "kyoushitsu",
         "minna",
         "mise",
         "mizu",
         "nani",
+        "naru-become",
         "nigiyaka",
+        "oku",
         "onaji",
         "sensei",
         "shiroi",
@@ -1618,6 +2104,7 @@
         "takusan",
         "tsukue",
         "ue",
+        "warau",
         "zenbu"
       ],
       "word_spans": [
@@ -1647,6 +2134,13 @@
           "end": 14
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 14,
+          "end": 19,
+          "surface_form": "ありました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "gakusei",
           "start": 20,
           "end": 22
@@ -1662,6 +2156,13 @@
           "end": 30
         },
         {
+          "vocabulary_slug": "ageru",
+          "start": 31,
+          "end": 36,
+          "surface_form": "あげました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "gakusei",
           "start": 37,
           "end": 39
@@ -1670,6 +2171,13 @@
           "vocabulary_slug": "nani",
           "start": 42,
           "end": 43
+        },
+        {
+          "vocabulary_slug": "hanasu-v",
+          "start": 44,
+          "end": 52,
+          "surface_form": "話しませんでした",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "onaji",
@@ -1697,6 +2205,13 @@
           "end": 63
         },
         {
+          "vocabulary_slug": "kau-v",
+          "start": 64,
+          "end": 69,
+          "surface_form": "買いました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "sono",
           "start": 70,
           "end": 72
@@ -1717,6 +2232,13 @@
           "end": 78
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 79,
+          "end": 83,
+          "surface_form": "あります",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "hana-v",
           "start": 84,
           "end": 85
@@ -1725,6 +2247,13 @@
           "vocabulary_slug": "takusan",
           "start": 86,
           "end": 90
+        },
+        {
+          "vocabulary_slug": "aru",
+          "start": 90,
+          "end": 95,
+          "surface_form": "ありました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "kyoushitsu",
@@ -1737,6 +2266,13 @@
           "end": 101
         },
         {
+          "vocabulary_slug": "aru",
+          "start": 102,
+          "end": 110,
+          "surface_form": "ありませんでした",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "sensei",
           "start": 111,
           "end": 113
@@ -1745,6 +2281,13 @@
           "vocabulary_slug": "gakusei",
           "start": 114,
           "end": 116
+        },
+        {
+          "vocabulary_slug": "bikkuri-suru",
+          "start": 119,
+          "end": 127,
+          "surface_form": "びっくりしました",
+          "inflection": "masu"
         },
         {
           "vocabulary_slug": "sensei",
@@ -1787,6 +2330,13 @@
           "end": 159
         },
         {
+          "vocabulary_slug": "oku",
+          "start": 160,
+          "end": 165,
+          "surface_form": "置きました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "kyoushitsu",
           "start": 166,
           "end": 168
@@ -1797,9 +2347,23 @@
           "end": 172
         },
         {
+          "vocabulary_slug": "naru-become",
+          "start": 173,
+          "end": 178,
+          "surface_form": "なりました",
+          "inflection": "masu"
+        },
+        {
           "vocabulary_slug": "minna",
           "start": 179,
           "end": 182
+        },
+        {
+          "vocabulary_slug": "warau",
+          "start": 182,
+          "end": 187,
+          "surface_form": "笑いました",
+          "inflection": "masu"
         }
       ],
       "word_count": 110

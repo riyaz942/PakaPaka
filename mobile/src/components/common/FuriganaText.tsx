@@ -84,6 +84,25 @@ export function defaultFuriganaVisible(
 }
 
 /**
+ * Whether a word's furigana is currently visible to the learner, given its
+ * resolved display mode — the per-segment logic above, applied to a whole word,
+ * so a long-press toggle flips what is actually on screen rather than the raw
+ * 'auto'/'shown'/'hidden' preference value (14.2).
+ *
+ * Shared by every surface that owns the long-press toggle: passages, example
+ * sentences, and chat replies (15.2).
+ */
+export function isWordFuriganaVisible(
+  text: string,
+  mode: FuriganaDisplayMode,
+  knownKanji: ReadonlySet<string>,
+): boolean {
+  return parseFurigana(text).some(
+    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
+  );
+}
+
+/**
  * Renders annotated Japanese text with furigana readings above kanji runs.
  * Each annotated run is individually tappable to flip its reading's
  * visibility, overriding the computed default for that run only (resets

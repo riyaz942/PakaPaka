@@ -2,36 +2,18 @@ import { router, type Href } from 'expo-router';
 import React, { useMemo } from 'react';
 import { type AccessibilityActionEvent, Pressable, Text, View } from 'react-native';
 
-import { defaultFuriganaVisible, FuriganaText } from '@/components/common/FuriganaText';
+import { FuriganaText, isWordFuriganaVisible } from '@/components/common/FuriganaText';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
-import { parseFurigana } from '@/core/furigana/parseFurigana';
 import type { ExampleSentence } from '@/data/curriculum/itemRepository';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
-import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
 
 /**
  * Example Japanese sits a step above body copy so ruby has room and the kanji
  * stay legible — the spec's 17px rounds to the 18px `body-lg` step.
  */
 const EXAMPLE_JAPANESE = 'text-body-lg font-jp-medium text-primary';
-
-/**
- * Whether a word's furigana is currently visible to the learner, given its
- * resolved display mode — mirrors `FuriganaText`'s own per-segment logic so a
- * long-press toggle flips what is actually on screen, not just the raw
- * 'auto'/'shown'/'hidden' preference value.
- */
-function isWordFuriganaVisible(
-  text: string,
-  mode: FuriganaDisplayMode,
-  knownKanji: ReadonlySet<string>,
-): boolean {
-  return parseFurigana(text).some(
-    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
-  );
-}
 
 type ExampleSentencesSectionProps = {
   sentences: ExampleSentence[];

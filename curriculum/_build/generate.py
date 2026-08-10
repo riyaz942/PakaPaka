@@ -500,21 +500,34 @@ _PASSAGE_AUTHORED_KEYS = (
 
 
 def _passage_word_spans(body, authored_spans, vocab_forms):
-    """The authored dictionary spans plus the taught inflections of the same
-    words (feedback 14.1a).
+    """The authored dictionary spans plus the taught inflections of every word
+    the level teaches (feedback 14.1a, widened 2026-08-10).
 
-    The dictionary layer is the shipped, reviewed data and wins every overlap,
-    and only words it already links are candidates — so a passage's
-    `vocabulary_slugs` (and with it the ≥90% Guru+ unlock bar) is untouched.
-    Re-running over a set that already carries inflected spans is a no-op."""
-    forms_by_slug = {
-        span["vocabulary_slug"]: vocab_forms[span["vocabulary_slug"]]
-        for span in authored_spans
-        if "inflection" not in span and span["vocabulary_slug"] in vocab_forms
-    }
-    return spans_lib.merge_spans(
-        authored_spans, spans_lib.build_inflected_spans(body, forms_by_slug)
+    The dictionary layer is the shipped, reviewed data and wins every overlap.
+    The candidate set is the whole level's vocabulary, not just the words the
+    authored spans already link, so a word that appears *only* conjugated
+    (食べます in a passage that never writes 食べる) gets a span too — and with it
+    a place in `vocabulary_slugs`, which raises that passage's ≥90% Guru+ unlock
+    bar on purpose. Re-running over a set that already carries inflected spans
+    is a no-op."""
+    merged = spans_lib.merge_spans(
+        authored_spans, spans_lib.build_inflected_spans(body, vocab_forms)
     )
+    # A word the passage newly links is tappable wherever it occurs, dictionary
+    # form included (「増えている」 next to 「なっています」) — the authored span
+    # layer never listed those, since the word was not linked when it was
+    # written. Only the new slugs are re-scanned: the reviewed dictionary layer
+    # of the words already linked stays exactly as authored.
+    new_slugs = {s["vocabulary_slug"] for s in merged} - {
+        s["vocabulary_slug"] for s in authored_spans
+    }
+    if not new_slugs:
+        return merged
+    new_forms = {}
+    for slug, form in vocab_forms.items():
+        if slug in new_slugs:
+            new_forms.setdefault(form, slug)
+    return spans_lib.merge_spans(merged, spans_lib.build_word_spans(body, new_forms))
 
 
 def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
@@ -547,6 +560,13 @@ def _build_readings_level(jlpt_level, reading_entries, known_readings=None,
         if passage.get("word_spans"):
             passage["word_spans"] = _passage_word_spans(
                 p["body"], passage["word_spans"], vocab_forms or {}
+            )
+            # A conjugation-only word arrives with its span, so the link list is
+            # re-derived from the merged spans (the convention validate_readings'
+            # enrich() already follows) rather than copied from the authored JSON.
+            passage["vocabulary_slugs"] = sorted(
+                set(passage.get("vocabulary_slugs") or [])
+                | {s["vocabulary_slug"] for s in passage["word_spans"]}
             )
         passages.append(passage)
     return {"jlpt_level": jlpt_level, "passages": passages}

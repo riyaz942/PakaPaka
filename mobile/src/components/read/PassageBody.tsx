@@ -1,13 +1,11 @@
 import React, { useMemo } from 'react';
 import { type AccessibilityActionEvent, Pressable, View } from 'react-native';
 
-import { defaultFuriganaVisible, FuriganaText } from '@/components/common/FuriganaText';
+import { FuriganaText, isWordFuriganaVisible } from '@/components/common/FuriganaText';
 import type { WordInflection } from '@/core/content/inflection';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
-import { parseFurigana } from '@/core/furigana/parseFurigana';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
 import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
-import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
 
 /**
  * The spec sets the body at 17px with 2.35 leading — neither is a type token,
@@ -17,22 +15,6 @@ import type { FuriganaDisplayMode } from '@/data/user/preferencesRepository';
  * does, so the wrap gap adds the rest of the spec's air.
  */
 const PASSAGE_LINE_STYLE = { fontSize: 17, lineHeight: 30 };
-
-/**
- * Whether a word's furigana is currently visible to the learner, given its
- * resolved display mode — mirrors `FuriganaText`'s own per-segment logic so a
- * long-press toggle flips what is actually on screen, not just the raw
- * 'auto'/'shown'/'hidden' preference value.
- */
-function isWordFuriganaVisible(
-  text: string,
-  mode: FuriganaDisplayMode,
-  knownKanji: ReadonlySet<string>,
-): boolean {
-  return parseFurigana(text).some(
-    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
-  );
-}
 
 type PassageBodyProps = {
   body: string;

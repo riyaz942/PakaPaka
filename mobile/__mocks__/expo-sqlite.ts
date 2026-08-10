@@ -856,6 +856,23 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
   if (/FROM example_sentence_spans/i.test(trimmed)) {
     const spans = [...(state.tables.get('example_sentence_spans') ?? [])];
 
+    // Every taught-inflected surface in the curriculum (15.1's chat word index),
+    // which is the same join with no item filter.
+    if (/JOIN example_sentences/i.test(trimmed) && params.length === 0) {
+      const sentences = state.tables.get('example_sentences') ?? [];
+      return spans
+        .filter((span) => span.inflection != null)
+        .map((span) => ({
+          item_id: span.item_id,
+          inflection: span.inflection,
+          start_offset: span.start_offset,
+          end_offset: span.end_offset,
+          text:
+            sentences.find((sentence) => Number(sentence.id) === Number(span.sentence_id))
+              ?.japanese ?? '',
+        }));
+    }
+
     // Taught conjugated forms for one item (14.1), sliced from its sentence.
     if (/JOIN example_sentences/i.test(trimmed)) {
       const sentences = state.tables.get('example_sentences') ?? [];
@@ -1219,6 +1236,22 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
 
   if (/FROM passage_word_spans/i.test(trimmed)) {
     let rows = [...(state.tables.get('passage_word_spans') ?? [])];
+
+    // Every taught-inflected surface in the shipped passages (15.1's chat word
+    // index), sliced from the body it occurs in.
+    if (/JOIN reading_passages/i.test(trimmed)) {
+      const passages = state.tables.get('reading_passages') ?? [];
+      return rows
+        .filter((row) => row.inflection != null)
+        .map((row) => ({
+          item_id: row.vocabulary_item_id,
+          inflection: row.inflection,
+          start_offset: row.start_offset,
+          end_offset: row.end_offset,
+          text: passages.find((passage) => Number(passage.id) === Number(row.passage_id))?.body ?? '',
+        }));
+    }
+
     if (/WHERE passage_id = \?/i.test(trimmed)) {
       rows = rows.filter((row) => row.passage_id === params[0]);
     }

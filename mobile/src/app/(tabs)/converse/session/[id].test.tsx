@@ -17,6 +17,9 @@ import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import ConversationSessionScreen from './[id]';
 
 const mockUserDb = {};
+// An empty curriculum: these tests are about voice promotion, so no reply word
+// links off the chat word index (15.1).
+const mockCurriculumDb = { getAllSync: () => [] };
 // Commits the turn the way the real hook does, so "the transcript survives the
 // exit" can be asserted against a list the test actually changed.
 const mockSend = jest.fn(async (text: string) => {
@@ -32,7 +35,7 @@ jest.mock('expo-router', () => ({
 }));
 
 jest.mock('@/data/hooks/useDatabase', () => ({
-  useDatabase: () => ({ userDb: mockUserDb }),
+  useDatabase: () => ({ userDb: mockUserDb, curriculumDb: mockCurriculumDb }),
 }));
 
 jest.mock('@/data/ai/connectivity', () => ({

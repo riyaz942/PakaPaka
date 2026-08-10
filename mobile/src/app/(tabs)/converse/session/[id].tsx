@@ -24,8 +24,11 @@ import { Composer } from '@/components/converse/Composer';
 import { PttOverlay } from '@/components/converse/PttOverlay';
 import { VoiceModelDownloadPrompt } from '@/components/converse/VoiceModelDownloadPrompt';
 import { WordLookupSheet } from '@/components/converse/WordLookupSheet';
+import { buildChatWordSpans } from '@/core/ai/chatWordSpans';
 import type { GrammarPromptTopic } from '@/core/ai/systemPrompt';
 import { isOnline } from '@/data/ai/connectivity';
+import { getChatWordIndex } from '@/data/curriculum/chatWordIndex';
+import type { PassageWordSpan } from '@/data/curriculum/passageSpans';
 import { areVoiceModelsDownloaded } from '@/data/ai/voice/modelDownloadManager';
 import {
   getGrammarTopicById,
@@ -48,12 +51,12 @@ import { cn } from '@/utils/cn';
 export default function ConversationSessionScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const sessionId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
-  const { userDb } = useDatabase();
+  const { userDb, curriculumDb } = useDatabase();
   // Insets do not cross into a react-native Modal on Android, so conversation
   // mode gets its own provider seeded with what this screen already measured.
   const safeAreaFrame = useSafeAreaFrame();
   const safeAreaInsets = useSafeAreaInsets();
-  const { mode: furiganaMode, knownKanji } = useFuriganaPreference();
+  const { mode: furiganaMode, knownKanji, modeForItem, setOverride } = useFuriganaPreference();
   const [online, setOnline] = useState<boolean | null>(null);
   const [grammarTopics, setGrammarTopics] = useState<GrammarPromptTopic[]>([]);
 
@@ -222,6 +225,20 @@ export default function ConversationSessionScreen() {
   const latestAssistantText =
     [...messages].reverse().find((message) => message.role === 'assistant')?.content ?? null;
 
+  // Curriculum words in each settled reply (Plan 15.1). Resolved here rather
+  // than per bubble so the index is read once and a streaming re-render does not
+  // re-match the whole transcript on every chunk.
+  const wordSpansByMessage = useMemo(() => {
+    const index = getChatWordIndex(curriculumDb);
+    const spans = new Map<string, PassageWordSpan[]>();
+    for (const message of messages) {
+      if (message.role === 'assistant') {
+        spans.set(message.id, buildChatWordSpans(message.content, index));
+      }
+    }
+    return spans;
+  }, [curriculumDb, messages]);
+
   function handleKeepTalking() {
     setShowEndPrompt(false);
     setEndingReason(null);
@@ -302,6 +319,9 @@ export default function ConversationSessionScreen() {
                 text={message.content}
                 furiganaMode={furiganaMode}
                 knownKanji={knownKanji}
+                modeForItem={modeForItem}
+                setOverride={setOverride}
+                wordSpans={wordSpansByMessage.get(message.id)}
                 onLookupWords={
                   message.role === 'assistant' ? () => setLookupText(message.content) : undefined
                 }
@@ -314,6 +334,8 @@ export default function ConversationSessionScreen() {
                 text={pendingReply}
                 furiganaMode={furiganaMode}
                 knownKanji={knownKanji}
+                modeForItem={modeForItem}
+                setOverride={setOverride}
               />
             ) : null}
 

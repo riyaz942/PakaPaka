@@ -21,9 +21,12 @@ word is linked. The four families are exactly the `masu` / `masen` / `mashita`,
 `te-form`, `nai-form`, `ta-form` grammar points (plus the い-adjective
 くない/かった of `adj-i-conjugation`).
 
-The candidate set is always the vocabulary *already linked* to the passage or
-example sentence — a span can never introduce a word the authored links do not
-list, which is the second half of the pipeline gate.
+The candidate set is whatever the caller passes, and the two lanes differ on
+purpose. An example sentence offers only its own `vocabulary_slugs`, so a span
+can never introduce a word the authored links do not list. A passage offers
+every word the level teaches, so a word it only ever conjugates (食べます in a
+passage that never writes 食べる) gets a span — and is then added to the
+passage's `vocabulary_slugs`, which is what the ≥90% Guru+ unlock bar counts.
 
 ## The stem invariant
 
@@ -222,8 +225,8 @@ def _classify_suffix(tokens, j):
 def build_inflected_spans(text, forms_by_slug, tokens=None):
     """Taught-inflection occurrences of `forms_by_slug` ({slug: primary_form}).
 
-    Only the linked vocabulary is a candidate, so a span can never name a word
-    the passage/sentence does not already list.
+    `forms_by_slug` is the whole candidate set: the sentence's own links for an
+    example, the level's vocabulary for a passage (see the module docstring).
     """
     tokens = tokens if tokens is not None else tokens_with_offsets(text)
     slug_by_form = {}
