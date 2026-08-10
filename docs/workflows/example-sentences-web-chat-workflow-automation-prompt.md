@@ -1,9 +1,13 @@
-Task: Generate N5 Kanji/Vocab Example Sentences via Gemini Web
+Task: Generate Kanji/Vocab Example Sentences via Gemini Web
 
 Use the existing logged-in Gemini session in my Chrome browser to generate Phase 2c
 example sentences. This run is for ONE content type at a time and **auto-selects the
 next batch of not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug
 list.
+
+Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+
+<level = n5>
 
 Content type (one of `kanji` or `vocab`):
 
@@ -61,7 +65,7 @@ neither generated (absent from the committed sidecar) nor drafted (no record und
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', 10   # KIND: 'vocab' or 'kanji'
+LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', 10   # KIND: 'vocab' or 'kanji'
 subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
 sidecar = f'../{subdir}/examples/{LEVEL}.json'
 generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
@@ -82,12 +86,12 @@ outside this list is touched.
 1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
 single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level n5 --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level <level> --slugs <selected,slugs,...>
 
 Generating all prompts at once is fine, but each slug must still use its own fresh
 Gemini chat. Each prompt file is written to:
 
-curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 ---
 
@@ -143,7 +147,7 @@ Instead:
    everything up to and including the header's closing `-->` line, which is robust
    to header length:
 
-   sed '1,/-->/d' curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md | pbcopy
+   sed '1,/-->/d' curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md | pbcopy
 
    (Verify the copied text starts with `# Teaching voice`.)
 
@@ -231,7 +235,7 @@ Instead:
    - Read the downloaded JSON.
    - Rewrite it as the required fenced ```json ... ``` reply file at:
 
-   curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.reply.md
+   curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
 4. Delete the original downloaded file from Downloads after it has been moved into
    place.
@@ -249,14 +253,14 @@ Step 8: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model gemini-web
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model gemini-web
 
 If ingestion succeeds:
 
 The item is merged into the per-level sidecar:
 
-- kanji → curriculum/kanji/examples/n5.json
-- vocab → curriculum/vocabulary/examples/n5.json
+- kanji → curriculum/kanji/examples/<level>.json
+- vocab → curriculum/vocabulary/examples/<level>.json
 
 Record the slug as successful and proceed to the next slug.
 
@@ -264,7 +268,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 with validation errors appended.
 
@@ -284,8 +288,8 @@ Repair Procedure
    - Run the subagent in the foreground because ingestion must wait for the repair to finish.
 
 2. Give the subagent these files:
-   - curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
-   - curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.reply.md
+   - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
+   - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
 3. Give the subagent the following instructions:
 
@@ -321,7 +325,7 @@ Repair Procedure
 
 5. Run ingestion again:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model gemini-web
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model gemini-web
 
 6. If ingestion fails again:
    - Read the newly appended validation errors from the rewritten prompt file.
@@ -353,7 +357,7 @@ Ordering Note
 
 Each run is a single content type and covers only its auto-selected BATCH_LIMIT
 slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
-runs, and do N5 fully before N4. On the first run of a fresh type, read the assembled
+runs, and finish <level> fully before moving to the next level. On the first run of a fresh type, read the assembled
 output before launching more runs — the batch size is already pilot-sized, so one run
 doubles as the pilot.
 
@@ -370,7 +374,7 @@ curriculum/_build/generate_content/
 
 Then run:
 
-generate.py --level n5
+generate.py --level <level>
 
 Followed by:
 
@@ -430,6 +434,6 @@ Notes on differences from the mnemonic automation prompt
   array of `japanese` / `english` / `vocabulary_slugs` objects (Step 7, Step 8) —
   there are no per-type key differences as there are for mnemonics.
 - The committed artifact is a per-level, keyed-by-slug sidecar
-  (`curriculum/<kanji|vocabulary>/examples/n5.json`) that `ingest` merges into —
+  (`curriculum/<kanji|vocabulary>/examples/<level>.json`) that `ingest` merges into —
   not a per-slug file as with grammar lessons. Inspect the sidecar entry.
 - Step 4 explicitly strips the prompt file's HTML header comment before pasting.

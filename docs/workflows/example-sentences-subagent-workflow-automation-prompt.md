@@ -1,4 +1,4 @@
-Task: Generate N5 Kanji/Vocab Example Sentences via Subagents
+Task: Generate Kanji/Vocab Example Sentences via Subagents
 
 Generate Phase 2c example sentences using in-session subagents (model configurable
 below; a strong reasoning model is recommended) — no API credentials and no
@@ -12,6 +12,10 @@ background.
 
 This run is for ONE content type at a time and **auto-selects the next batch of
 not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
+
+Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+
+<level = n5>
 
 Content type (one of `kanji` or `vocab`):
 
@@ -70,7 +74,7 @@ BATCH_LIMIT, then run:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
-LEVEL, KIND, BATCH_LIMIT = 'n5', '<type>', <batch-size>   # KIND: 'vocab' or 'kanji'
+LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <batch-size>   # KIND: 'vocab' or 'kanji'
 subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
 sidecar = f'../{subdir}/examples/{LEVEL}.json'
 generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
@@ -91,11 +95,11 @@ touched.
 1b. Generate the prompt files for the selected slugs in one call. `--slugs` is a
 single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level n5 --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_examples webprompts --type <type> --level <level> --slugs <selected,slugs,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically,
 and the auto-select in 1a already excludes any slug whose prompt carries appended
@@ -109,7 +113,7 @@ For the current slug, launch ONE general-purpose subagent (using <subagent-model
 high reasoning) in the foreground — ingestion must wait for it to finish. Give the
 subagent the prompt file path:
 
-curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
@@ -123,7 +127,7 @@ Give the subagent these instructions:
   Produce the example sentences exactly as the prompt body asks, then write your
   answer to:
 
-  curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.reply.md
+  curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
   Requirements:
 
@@ -159,7 +163,7 @@ Step 3: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
 
 (The `--model` value is recorded in the sidecar entry's `_meta.generator_model`;
 pass the same `<subagent-model>` you generated with so provenance is honest.)
@@ -168,8 +172,8 @@ If ingestion succeeds:
 
 The item is merged into the per-level sidecar:
 
-- kanji → curriculum/kanji/examples/n5.json
-- vocab → curriculum/vocabulary/examples/n5.json
+- kanji → curriculum/kanji/examples/<level>.json
+- vocab → curriculum/vocabulary/examples/<level>.json
 
 Record the slug as successful and proceed to the next slug.
 
@@ -177,7 +181,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
@@ -186,8 +190,8 @@ Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
 
 Give the repair subagent these files:
 
-- curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.prompt.md
-- curriculum/_build/generate_content/web/examples/n5/<type>/<slug>.reply.md
+- curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
+- curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
 Give the repair subagent these instructions:
 
@@ -217,7 +221,7 @@ Give the repair subagent these instructions:
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_examples ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
 
 Retry Limit
 
@@ -240,7 +244,7 @@ Ordering Note
 
 Each run is a single content type and covers only its auto-selected <batch-size>
 slugs, so finishing a whole level takes several runs. Do vocab and kanji as separate
-runs, and do N5 fully before N4. On the first run of a fresh type, read the assembled
+runs, and finish <level> fully before moving to the next level. On the first run of a fresh type, read the assembled
 output before launching more runs — the batch size is already pilot-sized, so one run
 doubles as the pilot.
 
@@ -257,7 +261,7 @@ curriculum/_build/generate_content/
 
 Then run:
 
-generate.py --level n5
+generate.py --level <level>
 
 Followed by:
 
@@ -278,7 +282,7 @@ Final Report
 
 Provide a summary containing:
 
-- The content type, <batch-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
+- <level>, the content type, <batch-size>, and the exact auto-selected slug set for this run (with the count vs. <batch-size>)
 - The model actually used for generation and repair
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs

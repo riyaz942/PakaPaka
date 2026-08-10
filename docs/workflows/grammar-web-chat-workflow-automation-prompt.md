@@ -1,8 +1,20 @@
-Task: Generate N5 Grammar Lessons via Gemini Web
+Task: Generate Grammar Lessons via Gemini Web
 
 
 
-Use the existing logged-in Gemini session in my Chrome browser to generate grammar lessons for the following N5 grammar slugs:
+Use the existing logged-in Gemini session in my Chrome browser to generate grammar lessons for the following grammar slugs.
+
+
+
+Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+
+
+
+<level = n5>
+
+
+
+Slugs for this run:
 
 
 
@@ -54,7 +66,7 @@ Run:
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs <slug>
+.venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level <level> --slugs <slug>
 
 
 
@@ -310,7 +322,7 @@ Instead:
 
 
 
-curriculum/_build/generate_content/web/n5/<slug>.reply.md
+curriculum/_build/generate_content/web/<level>/<slug>.reply.md
 
 
 
@@ -342,7 +354,7 @@ Run:
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level n5
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level <level>
 
 
 
@@ -354,7 +366,7 @@ The lesson should be assembled at:
 
 
 
-curriculum/grammar/lessons/n5/<slug>.md
+curriculum/grammar/lessons/<level>/<slug>.md
 
 
 
@@ -370,7 +382,7 @@ The ingestion process rewrites:
 
 
 
-curriculum/_build/generate_content/web/n5/<slug>.prompt.md
+curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
 
 
 
@@ -410,9 +422,9 @@ Repair Procedure
 
 2. Give the subagent these files:
 
-   - curriculum/_build/generate_content/web/n5/<slug>.prompt.md
+   - curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
 
-   - curriculum/_build/generate_content/web/n5/<slug>.reply.md
+   - curriculum/_build/generate_content/web/<level>/<slug>.reply.md
 
 
 
@@ -482,7 +494,7 @@ Repair Procedure
 
 
 
-.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level n5
+.venv/bin/python -m generate_content.generate_grammar_lessons ingest --model gemini-web --slug <slug> --level <level>
 
 
 

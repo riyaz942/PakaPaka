@@ -1,4 +1,4 @@
-Task: Generate N5 Radical/Kanji/Vocabulary Mnemonics via Subagents
+Task: Generate Radical/Kanji/Vocabulary Mnemonics via Subagents
 
 Generate radical mnemonics, kanji mnemonics or vocabulary mnemonics using
 in-session subagents (model configurable below; a
@@ -15,9 +15,13 @@ the shared pipeline background.
 This run is for ONE content type at a time and **auto-selects the next batch of
 not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
+Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+
+<level = n5>
+
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = vocab>
+<type = radical>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -101,8 +105,7 @@ kanji` raises
   ValueError: component radical hi-sun has no `mnemonic_text` yet. Generate the
   radical layer first (...)
 
-if you try to skip ahead. Order for a level: **radicals → `generate.py --level
-n5` → kanji → `generate.py --level n5` → vocab**. Do N5 fully before N4. If Step
+if you try to skip ahead. Order for a level: **radicals → `generate.py --level <level>` → kanji → `generate.py --level <level>` → vocab**. Finish <level> fully before moving to the next level. If Step
 1b raises that error, stop and report it — the previous layer is not done.
 
 ---
@@ -134,7 +137,7 @@ Substitute this run's <type> for KIND, <batch-size> for BATCH_LIMIT and
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
 from generate_content.generate_mnemonics import KIND_DIR, PROMPT_VERSION
-LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = 'n5', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji' or 'vocab'
+LEVEL, KIND, BATCH_LIMIT, GROUP_SIZE = '<level>', '<type>', <batch-size>, <group-size>   # KIND: 'radical', 'kanji' or 'vocab'
 drafts_dir = f'generate_content/drafts/mnemonics/{LEVEL}/{KIND}'
 done = set()
 if os.path.isdir(drafts_dir):
@@ -204,11 +207,11 @@ once, since each slug gets its own prompt file exactly as before. `--slugs` is a
 single comma-separated string with NO spaces after the commas (use the `ALL:`
 list):
 
-.venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --level n5 --slugs <selected,slugs,...>
+.venv/bin/python -m generate_content.generate_mnemonics webprompts --type <type> --level <level> --slugs <selected,slugs,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically,
 and any appended gate errors from an earlier failure are dropped, which is correct
@@ -226,7 +229,7 @@ For the current group, launch ONE general-purpose subagent (using
 finish. List every prompt file path in the group explicitly — one line per slug,
 resolved, not a template:
 
-curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
@@ -247,7 +250,7 @@ Give the subagent these instructions:
   Write the mnemonics for every item exactly as its own prompt body asks, then
   write ONE reply file per item, each to its own path:
 
-  curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.reply.md
+  curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.reply.md
 
   Do not write a combined file, and do not put two items in one file — each slug's
   reply file must contain only that slug's JSON.
@@ -358,7 +361,7 @@ subagent below sees only the failing slug's own prompt and reply files.
 
 For each slug in the group, run:
 
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
 
 (The `--model` value is recorded in the sidecar entry's `_meta.generator_model`;
 pass the same `<subagent-model>` you generated with so provenance is honest.)
@@ -367,9 +370,9 @@ If ingestion succeeds:
 
 The item is merged into the per-level sidecar:
 
-- radical → curriculum/radicals/mnemonics/n5.json
-- kanji   → curriculum/kanji/mnemonics/n5.json
-- vocab   → curriculum/vocabulary/mnemonics/n5.json
+- radical → curriculum/radicals/mnemonics/<level>.json
+- kanji   → curriculum/kanji/mnemonics/<level>.json
+- vocab   → curriculum/vocabulary/mnemonics/<level>.json
 
 Record the slug as successful and proceed to the next slug.
 
@@ -377,7 +380,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
+curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
@@ -387,8 +390,8 @@ foreground) to repair this one slug's existing reply.
 
 Give the repair subagent these files — this slug's only, never a group-mate's:
 
-- curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.prompt.md
-- curriculum/_build/generate_content/web/mnemonics/n5/<type>/<slug>.reply.md
+- curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
+- curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.reply.md
 
 Give the repair subagent these instructions:
 
@@ -426,7 +429,7 @@ Give the repair subagent these instructions:
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level n5 --slug <slug> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_mnemonics ingest --type <type> --level <level> --slug <slug> --model <subagent-model>
 
 Retry Limit
 
@@ -462,8 +465,8 @@ Ordering Note
 Each run is a single content type and covers only its auto-selected <batch-size>
 slugs, so finishing a whole layer takes several runs, and a level is three layers.
 Do radicals fully (all runs), then kanji, then vocab, re-running `generate.py`
-between layers so the next layer's prompts read the new prose. Do N5 fully before
-N4. On the first run of a fresh type, read the assembled output in the app before
+between layers so the next layer's prompts read the new prose. Finish <level> fully before
+the next level. On the first run of a fresh type, read the assembled output in the app before
 launching more runs — the batch size is already pilot-sized, so one run doubles as
 the pilot. Read a whole group's items side by side when you do: that is the only
 way to see whether grouping is buying the variety it is meant to buy, and whether
@@ -483,7 +486,7 @@ curriculum/_build/generate_content/
 
 Then run:
 
-generate.py --level n5
+generate.py --level <level>
 
 Followed by:
 

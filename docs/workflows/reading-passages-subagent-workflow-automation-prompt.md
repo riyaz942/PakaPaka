@@ -1,4 +1,4 @@
-Task: Generate N5 Reading Passages via Subagents
+Task: Generate Reading Passages via Subagents
 
 Generate Phase 4 reading passages using in-session subagents (model configurable
 below; a strong reasoning model is recommended) — no API credentials and no
@@ -11,10 +11,14 @@ gate are identical in every lane. See
 the decisions baked into it.
 
 The unit of work here is a **seed** (a planned passage: topic, tone, length band,
-question count), not a vocabulary slug. N5 has exactly 10 seeds, defined in
-`curriculum/_build/generate_content/reading_seeds.py`. This run **auto-selects the
-next batch of seeds that have not yet passed the gate** (Step 1) — you do NOT
-paste a seed list.
+question count), not a vocabulary slug. Seeds for <level> are defined in
+`curriculum/_build/generate_content/reading_seeds.py` (N5 currently has 10).
+This run **auto-selects the next batch of seeds that have not yet passed the
+gate** (Step 1) — you do NOT paste a seed list.
+
+Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
+
+<level = n5>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -35,12 +39,12 @@ Batch size (how many seeds this run processes; used as BATCH_LIMIT in Step 1):
 
 <batch-size = 1>
 
-There are only 10 N5 seeds in total, and a passage is far more expensive per item
-than an example sentence. **Start with `<batch-size = 1>` and read the passage
-before running any more** — that is the pilot-slice rule the whole content plan
-uses, and tone is exactly the thing a gate cannot check. The auto-select makes
-stopping and resuming across sessions seamless: the next run picks up exactly
-where you left off.
+Seed count for <level> is whatever `reading_seeds.py` lists (10 for N5), and a
+passage is far more expensive per item than an example sentence. **Start with
+`<batch-size = 1>` and read the passage before running any more** — that is the
+pilot-slice rule the whole content plan uses, and tone is exactly the thing a
+gate cannot check. The auto-select makes stopping and resuming across sessions
+seamless: the next run picks up exactly where you left off.
 
 ---
 
@@ -65,7 +69,7 @@ BATCH_LIMIT, then run:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import reading_seeds
-LEVEL, BATCH_LIMIT = 'n5', <batch-size>
+LEVEL, BATCH_LIMIT = '<level>', <batch-size>
 drafts_dir = f'generate_content/drafts/readings/{LEVEL}'
 done = set()
 if os.path.isdir(drafts_dir):
@@ -87,18 +91,18 @@ If it prints any `SEED PROBLEM:` lines, stop and report them — the seed list
 itself is broken (duplicate slug, position gap, tone mix out of the 50–60% band)
 and nothing generated against it is trustworthy.
 
-If it prints 0 seeds selected, N5 is already fully drafted — stop and report that.
+If it prints 0 seeds selected, <level> is already fully drafted — stop and report that.
 Otherwise treat the printed comma list as this run's seed set: every later step
 iterates over exactly these seeds, and no seed outside this list is touched.
 
 1b. Generate the prompt files for the selected seeds in one call. `--slugs` is a
 single comma-separated string with NO spaces after the commas:
 
-.venv/bin/python -m generate_content.generate_readings webprompts --level n5 --slugs <selected,seeds,...>
+.venv/bin/python -m generate_content.generate_readings webprompts --level <level> --slugs <selected,seeds,...>
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/readings/n5/<seed>.prompt.md
+curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically.
 Note that the auto-select in 1a picks up seeds whose previous attempt failed the
@@ -115,7 +119,7 @@ For the current seed, launch ONE general-purpose subagent (using <subagent-model
 high reasoning) in the foreground — ingestion must wait for it to finish. Give the
 subagent the prompt file path:
 
-curriculum/_build/generate_content/web/readings/n5/<seed>.prompt.md
+curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
 
 Give the subagent these instructions:
 
@@ -128,7 +132,7 @@ Give the subagent these instructions:
 
   Write the passage exactly as the prompt body asks, then write your answer to:
 
-  curriculum/_build/generate_content/web/readings/n5/<seed>.reply.md
+  curriculum/_build/generate_content/web/readings/<level>/<seed>.reply.md
 
   Requirements:
 
@@ -169,7 +173,7 @@ Step 3: Ingest and Repair
 
 Run:
 
-.venv/bin/python -m generate_content.generate_readings ingest --level n5 --slug <seed> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_readings ingest --level <level> --slug <seed> --model <subagent-model>
 
 (The `--model` value is recorded in the dataset entry's `_meta.generator_model`;
 pass the same `<subagent-model>` you generated with so provenance is honest.)
@@ -180,7 +184,7 @@ The passage is enriched — word spans, vocabulary slugs, word count, and the
 `body_furigana` / `prompt_furigana` annotations, all derived by the tokenizer —
 and merged into the build artifact:
 
-curriculum/_build/generate_content/passages/n5.json
+curriculum/_build/generate_content/passages/<level>.json
 
 Every enriched passage should carry a non-empty `body_furigana` (the only
 exception is a body with no kanji at all, which will not happen at these
@@ -193,7 +197,7 @@ If ingestion fails:
 
 The ingestion process rewrites:
 
-curriculum/_build/generate_content/web/readings/n5/<seed>.prompt.md
+curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
 
 with the validation errors appended, and exits non-zero.
 
@@ -202,8 +206,8 @@ Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
 
 Give the repair subagent these files:
 
-- curriculum/_build/generate_content/web/readings/n5/<seed>.prompt.md
-- curriculum/_build/generate_content/web/readings/n5/<seed>.reply.md
+- curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
+- curriculum/_build/generate_content/web/readings/<level>/<seed>.reply.md
 
 Give the repair subagent these instructions:
 
@@ -231,7 +235,7 @@ Give the repair subagent these instructions:
 
 Then run ingestion again:
 
-.venv/bin/python -m generate_content.generate_readings ingest --level n5 --slug <seed> --model <subagent-model>
+.venv/bin/python -m generate_content.generate_readings ingest --level <level> --slug <seed> --model <subagent-model>
 
 Retry Limit
 
@@ -259,8 +263,8 @@ seed later, or reframe the topic), not another attempt.
 Ordering Note
 
 Seeds are ordered by position and the allowed vocabulary grows with position, so
-generate them in the order Step 1a prints. Do N5 fully before considering N4 —
-N4 has no seeds authored yet, so this workflow does not apply to it.
+generate them in the order Step 1a prints. Finish <level> fully before moving to the next level.
+Only run a level that has seeds in `reading_seeds.py` (N5 is authored; N4+ only once their seeds exist).
 
 ---
 
@@ -280,7 +284,7 @@ shipped curriculum**, and you must not add a build step that does:
   procedure is in `docs/content/phase-4-reading-passage-tooling.md` § "The step
   that is deliberately not automated".
 
-The run ends at `curriculum/_build/generate_content/passages/n5.json`. That file
+The run ends at `curriculum/_build/generate_content/passages/<level>.json`. That file
 is a build artifact for a human to read.
 
 ---
@@ -289,7 +293,7 @@ Final Report
 
 Provide a summary containing:
 
-- <batch-size> and the exact auto-selected seed set for this run (with the count vs. <batch-size>)
+- <level>, <batch-size>, and the exact auto-selected seed set for this run (with the count vs. <batch-size>)
 - The model actually used for generation and repair
 - ✅ Successfully ingested seeds, each with its tone tag and derived word count
 - Any ingested passage missing `body_furigana`, or any question missing
@@ -299,7 +303,7 @@ Provide a summary containing:
 - The number of subagent repair attempts used for each affected seed
 - Validation errors remaining after the final allowed attempt, and for any seed
   that failed on a missing word, the word itself
-- How many of the 10 N5 seeds remain not-yet-passing (re-run Step 1a to get the
+- How many seeds for <level> remain not-yet-passing (re-run Step 1a to get the
   count), so it's clear whether another run is needed
 - A reminder that the output is a build artifact, and that it ships only after
   a human reads the whole level (Phase 5) and performs the documented wire-in
@@ -339,5 +343,5 @@ Notes on differences from the API (Message Batches) lane
   The generation subagent writes the reply file directly and `ingest` takes over.
 - Everything else is identical: the same seeds and prompt, the same gate, the same
   3-attempt cap with errors fed back into the prompt, the same draft records under
-  `drafts/readings/n5/`, the same assembled dataset, and the same
+  `drafts/readings/<level>/`, the same assembled dataset, and the same
   `review_status: draft` discipline.

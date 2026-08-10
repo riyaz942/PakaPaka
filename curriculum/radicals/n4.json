@@ -5,288 +5,459 @@
       "slug": "kokoro",
       "primary_form": "心",
       "meaning": "heart",
-      "mnemonic_text": "A stylized heart shape with three drops of feeling below it.",
+      "mnemonic_text": "The curling hook at the start is a fishhook dragging low before it flicks sharply upward, and the three loose dots scattered above it are drops of blood flung off the barb. Proof this whole shape is nothing but one wounded, thumping <radical>heart</radical>.",
       "visual_mnemonic_url": "radicals/n4/kokoro.webp",
-      "sort_order": 1
+      "sort_order": 1,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "bokuzukuri",
       "primary_form": "攵",
       "meaning": "tap / action",
-      "mnemonic_text": "A hand holding a small stick, tapping something into action.",
+      "mnemonic_text": "A strict teacher rears a bamboo cane back over one shoulder — that's the stroke up top — and the short bar beneath it is the desk it's about to crack against. The two strokes below fly apart like splinters the instant that cane lands its one furious <radical>tap</radical>.",
       "visual_mnemonic_url": "radicals/n4/bokuzukuri.webp",
       "sort_order": 2,
       "visually_similar_slugs": [
         "chichi",
         "kakeru"
-      ]
+      ],
+      "description": "攵 has a diagonal plus crossbar on top, then two strokes splaying below like a stick recoiling. 父 peaks into a closed triangle instead, no crossbar. 欠 is one long sweep into a hooked tail, no crossbar, nothing splaying at the bottom.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "madare",
       "primary_form": "广",
       "meaning": "cliff / shelter",
-      "mnemonic_text": "A sloped roof over an open cliffside shelter.",
+      "mnemonic_text": "A single dot clings to the clifftop before a beam juts out and a wide diagonal roof sweeps down over open air. It's a lean-to nailed straight into the rock face with nothing underneath for a floor — whoever built this <radical>shelter</radical> clearly wasn't worried about falling.",
       "visual_mnemonic_url": "radicals/n4/madare.webp",
       "sort_order": 3,
       "visually_similar_slugs": [
         "yamaidare",
         "shikabane"
-      ]
+      ],
+      "description": "广 is a bare lean-to: dot, beam, sweeping eave, open underneath. 疒 draws the same roof but adds two extra strokes tucked inside, like something lying under the eave. 尸 drops the dot and folds into one bent stroke, like a seated figure's back and leg — no roof.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "yamaidare",
       "primary_form": "疒",
       "meaning": "sickness",
-      "mnemonic_text": "A sickbed leaning against the wall: illness.",
+      "mnemonic_text": "A steep roof slants overhead like it could slide off any second, and wedged underneath it two crossed strokes shiver — a thermometer snapped clean in half by whoever's shaking too hard to hold it steady. Everything under this roof reeks of <radical>sickness</radical>.",
       "visual_mnemonic_url": "radicals/n4/yamaidare.webp",
       "sort_order": 4,
       "visually_similar_slugs": [
         "madare"
-      ]
+      ],
+      "description": "疒 keeps 广's slanted roof and opening dot but adds two extra crossed strokes tucked inside near the bottom — the marks that turn a bare shelter into a sickroom. 广 stays empty under its eave; here there's clearly something lying inside.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hitsuji",
       "primary_form": "羊",
       "meaning": "sheep",
-      "mnemonic_text": "A woolly head with two curling horns: a sheep.",
+      "mnemonic_text": "Two short strokes flare out at the very top like horns snagging on a fence rail, and the frame underneath locks into four stiff crossed legs that refuse to bend. It just stands there chewing calmly through the tangle, utterly unbothered: a <radical>sheep</radical>.",
       "visual_mnemonic_url": "radicals/n4/hitsuji.webp",
       "sort_order": 5,
       "visually_similar_slugs": [
         "n5-hantime"
-      ]
+      ],
+      "description": "半 (half) starts straight from the cross-frame, with nothing above it. 羊 adds two short diagonal strokes fanning out above that same frame — those are the horns that make it a sheep, not a half.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "furutori",
       "primary_form": "隹",
       "meaning": "old bird",
-      "mnemonic_text": "A short-tailed bird perched and still.",
+      "mnemonic_text": "A stiff vertical perch holds up four short horizontal bars stacked like ruffled tail feathers, with one square patch of bare skin showing through near the foot where the plumage gave out. It hasn't flown in years and has no plans to start: just an <radical>old bird</radical> gathering dust on its rail.",
       "visual_mnemonic_url": "radicals/n4/furutori.webp",
-      "sort_order": 6
+      "sort_order": 6,
+      "description": "This shape shows up as a component inside several taught kanji, always contributing its stacked-feather look rather than standing for a full bird word on its own.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "inu",
       "primary_form": "犬",
       "meaning": "dog",
-      "mnemonic_text": "A dog sitting with one ear perked up and a wagging tail dot.",
+      "mnemonic_text": "The big figure standing with both arms flung wide suddenly sprouts a stray fleck up by its shoulder, and it snaps at that one spot again and again, never quite reaching it. It spins in a tight, undignified circle chasing its own shoulder, because no <radical>dog</radical> has ever caught its own tail either.",
       "visual_mnemonic_url": "radicals/n4/inu.webp",
       "sort_order": 7,
       "visually_similar_slugs": [
         "n5-dai-big",
         "n4-futoi"
-      ]
+      ],
+      "description": "大 (big) is just the figure with arms out, no extra mark anywhere. 太 (thick / fat) adds its dot low down, between the legs, like a belly bulge. 犬 adds its dot high up, by the shoulder, like the flea it keeps snapping at — the dot's height is the only difference between all three.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "gatsuhen",
       "primary_form": "歹",
       "meaning": "death / bad luck",
-      "mnemonic_text": "Broken bones jutting out: decay, bad luck.",
+      "mnemonic_text": "A short jagged stroke splits off at the top like a bone that has already cracked, and the rest of the frame sags underneath it, snapped clean through at the joint. Nothing about it can be set or straightened again, just plain <radical>death / bad luck</radical> drooping off the corner of the shape.",
       "visual_mnemonic_url": "radicals/n4/gatsuhen.webp",
-      "sort_order": 8
+      "sort_order": 8,
+      "description": "This shape almost always sits on the left side of a kanji as a component, quietly signaling that the meaning has to do with dying, decay, or misfortune rather than carrying a pronunciation of its own.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ou-king",
       "primary_form": "王",
       "meaning": "king / jewel",
-      "mnemonic_text": "Three strata joined by a single line: the king's authority.",
+      "mnemonic_text": "Three flat crowns get stacked because the king is too cheap to buy one tall one, and a single iron spike rams straight down through the pile to stop them sliding off his head at the ball. The bottom crown still has its gems crusted on, so the whole skewered stack reads as pure <radical>king / jewel</radical>.",
       "visual_mnemonic_url": "radicals/n4/ou-king.webp",
       "sort_order": 9,
       "visually_similar_slugs": [
         "n4-shu-main"
-      ]
+      ],
+      "description": "主 (lord) adds a short diagonal dot above the top bar, like a lit candle flame. 王 has no such mark — just three plain, level bars impaled by one straight vertical spike.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ono",
       "primary_form": "斤",
       "meaning": "axe",
-      "mnemonic_text": "An axe blade balanced on a handle.",
+      "mnemonic_text": "The top stroke is the axe head, tilted mid-swing, and the long hooked stroke underneath is the handle, buried to the hilt because the woodsman missed the log entirely and drove the blade straight into the chopping block instead. It won't come back out, so the stump now owns the <radical>axe</radical>.",
       "visual_mnemonic_url": "radicals/n4/ono.webp",
-      "sort_order": 10
+      "sort_order": 10,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "itaru",
       "primary_form": "至",
       "meaning": "arrive",
-      "mnemonic_text": "An arrow driven all the way into the ground: arriving fully.",
+      "mnemonic_text": "A dart lobbed clean across the room finally tips over into a nosedive partway there, and after that whole slow arc it thuds point-first into the floorboards, still quivering upright where it lands. Wherever it started, it has now officially <radical>arrive</radical>.",
       "visual_mnemonic_url": "radicals/n4/itaru.webp",
-      "sort_order": 11
+      "sort_order": 11,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shikabane",
       "primary_form": "尸",
       "meaning": "corpse / body",
-      "mnemonic_text": "A body slumped over, reclining.",
+      "mnemonic_text": "A stiff diagonal roof-stroke droops down over one bent leg kicked out sideways, exactly like someone who faceplanted onto the tatami hours ago and has flatly refused to get up for the rest of the party. Guests keep stepping around the sprawled <radical>corpse / body</radical>.",
       "visual_mnemonic_url": "radicals/n4/shikabane.webp",
       "sort_order": 12,
       "visually_similar_slugs": [
         "tobira",
         "madare"
-      ]
+      ],
+      "description": "戸 (door) closes its top-left corner into a squared frame with a small hinge-hook at the bottom, unlike 尸's single open, bent leg stroke. 广 (cliff/shelter) starts with a dot over a long roof stroke that overhangs open space, wider and taller than 尸's tucked-in leg.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tobira",
       "primary_form": "戸",
       "meaning": "door",
-      "mnemonic_text": "A single swinging door panel.",
+      "mnemonic_text": "That short diagonal flick at the top is a door panel just starting to swing outward, caught before it's open a crack. A raccoon rams through shoulder-first, and the hooked stroke underneath is the sill scraping its tail as it barrels into the kitchen. It never latches shut again — this is a <radical>door</radical>.",
       "visual_mnemonic_url": "radicals/n4/tobira.webp",
       "sort_order": 13,
       "visually_similar_slugs": [
         "shikabane"
-      ]
+      ],
+      "description": "尸 is the same bent frame without that extra stroke — just a horizontal roof over a long hooking body line, like a slumped figure with nothing above it. 戸 adds the short diagonal tick at the top-left corner, the door panel catching on its hinge, which 尸 never has.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hoko",
       "primary_form": "戈",
       "meaning": "halberd",
-      "mnemonic_text": "A long-handled blade: a weapon of war.",
+      "mnemonic_text": "The long diagonal slash is a halberd's shaft, propped against a gate at an angle no guard would choose; the hooked stroke off it is the crescent blade, and the lone dot above is where a passing guard's scarf snagged on the tip. The scarf yanks tight, the whole thing topples clattering — a <radical>halberd</radical>.",
       "visual_mnemonic_url": "radicals/n4/hoko.webp",
-      "sort_order": 14
+      "sort_order": 14,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "wakanmuri",
       "primary_form": "冖",
       "meaning": "cover",
-      "mnemonic_text": "A flat cloth draped over something: a cover.",
+      "mnemonic_text": "A flat stroke lies across the very top and both ends droop straight down past it, not far, just enough to tuck in the edges — a blanket someone threw over a cat curled up asleep on the porch, tail and all vanishing underneath. Nothing pokes out. That low, snug drape is a <radical>cover</radical>.",
       "visual_mnemonic_url": "radicals/n4/wakanmuri.webp",
       "sort_order": 15,
       "visually_similar_slugs": [
         "keigamae"
-      ]
+      ],
+      "description": "冂 is tall and open — its two vertical sides run most of the character's height, like a doorway frame with nothing under it. 冖's sides are short, barely drooping below the top stroke at all, more lid than frame.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "oogai",
       "primary_form": "頁",
       "meaning": "page / head",
-      "mnemonic_text": "A head with hair on top, counted page by page.",
+      "mnemonic_text": "The wide top is a face pressed flat against the paper, cheek squashed sideways mid-nap, and the two short trailing strokes are legs dangling off the bottom edge of the page. Someone fell asleep reading and never got up — now they are just furniture for the notebook. That slumped shape is a <radical>head</radical>.",
       "visual_mnemonic_url": "radicals/n4/oogai.webp",
-      "sort_order": 16
+      "sort_order": 16,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tori-bird",
       "primary_form": "鳥",
       "meaning": "bird",
-      "mnemonic_text": "A bird's body, wings, and tail feathers all in one shape.",
+      "mnemonic_text": "The top hook ducks like a pigeon's head tucked into a hunched wing. Its body lands stiff on a windowsill, and underneath, four skinny strokes splay out as separate stick legs, clattering against the glass like a badly tuned xylophone. That awkward, top-heavy stagger is a <radical>bird</radical>.",
       "visual_mnemonic_url": "radicals/n4/tori-bird.webp",
-      "sort_order": 17
+      "sort_order": 17,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "uo",
       "primary_form": "魚",
       "meaning": "fish",
-      "mnemonic_text": "A fish shape: head, body, and fins.",
+      "mnemonic_text": "A flat wedge caps the top like a chef's hat clamped on too tight. Below it, a boxy grid presses down as if a waffle iron branded scales straight into the body. At the tail, four short strokes flare and curl against the hot pan, sizzling into a stubborn <radical>fish</radical>.",
       "visual_mnemonic_url": "radicals/n4/uo.webp",
-      "sort_order": 18
+      "sort_order": 18,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "koromohen",
       "primary_form": "衤",
       "meaning": "clothing (left)",
-      "mnemonic_text": "A robe's sleeve squeezed to the left of a kanji.",
+      "mnemonic_text": "A hooked stroke swings out at the top like a collar snagging on a spinning dry-cleaner's rack. The straight spine drops down, then the last stroke flares sideways into a sleeve that whips loose and smacks the clerk before it settles, hanger and all, into a fresh set of <radical>clothing (left)</radical>.",
       "visual_mnemonic_url": "radicals/n4/koromohen.webp",
-      "sort_order": 19
+      "sort_order": 19,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "tsutsumu",
       "primary_form": "勹",
       "meaning": "wrap",
-      "mnemonic_text": "Arms curling around to wrap something up.",
+      "mnemonic_text": "The hooked stroke curls over like an undersized bandage trying to circle a watermelon on the counter, one edge overlapping just enough to keep it from rolling off. The gift-wrapper refuses to cut a bigger sheet, so the whole lopsided parcel stays a stubborn <radical>wrap</radical>.",
       "visual_mnemonic_url": "radicals/n4/tsutsumu.webp",
-      "sort_order": 20
+      "sort_order": 20,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mu",
       "primary_form": "厶",
       "meaning": "private / cocoon",
-      "mnemonic_text": "A shape curled in on itself, keeping something private.",
+      "mnemonic_text": "The short first stroke curls shut like a flap sealing itself, and the long second stroke sweeps around to close the gap completely, leaving no way in. In the gym locker room, a silkworm spins itself into that exact closed loop, wrapping tighter until it vanishes inside its own <radical>cocoon</radical>.",
       "visual_mnemonic_url": "radicals/n4/mu.webp",
-      "sort_order": 21
+      "sort_order": 21,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "oigashira",
       "primary_form": "耂",
       "meaning": "old",
-      "mnemonic_text": "A bent back over a walking stick: old age.",
+      "mnemonic_text": "The top stroke splays sideways like a tuft of white hair escaping a topknot, and the long diagonal beneath drags heavy and slow, scraping the ground the way a cane does. At the crosswalk, traffic idles a full minute while that stooped, unhurried silhouette shuffles across, unmistakably <radical>old</radical>.",
       "visual_mnemonic_url": "radicals/n4/oigashira.webp",
-      "sort_order": 22
+      "sort_order": 22,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "ya",
       "primary_form": "矢",
       "meaning": "arrow",
-      "mnemonic_text": "A shaft with a notched tail and a sharp head: an arrow.",
+      "mnemonic_text": "Two short strokes splay at the top like feathers fletched to a shaft, the line drops straight down, then splits into a sharp point already buried in something. At the fair, one wild shot skips the target and pins a vendor's pumpkin to the fence, still quivering — a stray <radical>arrow</radical>.",
       "visual_mnemonic_url": "radicals/n4/ya.webp",
-      "sort_order": 23
+      "sort_order": 23,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mata",
       "primary_form": "又",
       "meaning": "again / right hand",
-      "mnemonic_text": "A right hand reaching out to do it again.",
+      "mnemonic_text": "A hooked stroke curls at the top like a knuckle bending, then one long stroke stretches down and out like a straining arm, with a short cross-stroke pinching in for a thumb. Every time the cookie jar lid clatters shut, the exact same right hand slides back in <radical>again</radical>.",
       "visual_mnemonic_url": "radicals/n4/mata.webp",
-      "sort_order": 24
+      "sort_order": 24,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nisui",
       "primary_form": "冫",
       "meaning": "ice",
-      "mnemonic_text": "Two frozen ticks clinging to the left: ice.",
+      "mnemonic_text": "The scraper drags across the windshield and two curls of frost peel off in one motion — first a short flick, then a longer hooked slice — and instead of falling they hang there, frozen solid in midair as two chunks of pure <radical>ice</radical>.",
       "visual_mnemonic_url": "radicals/n4/nisui.webp",
-      "sort_order": 25
+      "sort_order": 25,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "to-dipper",
       "primary_form": "斗",
       "meaning": "dipper / measure",
-      "mnemonic_text": "A ladle with two drips: the measuring dipper.",
+      "mnemonic_text": "The handle juts out straight, then hooks hard right like the crook of a ladle plunged into a sack of flour — the baker lifts it out dripping level to the brim, holding it up as the exact <radical>dipper</radical> everyone in the shop trusts to measure a scoop.",
       "visual_mnemonic_url": "radicals/n4/to-dipper.webp",
-      "sort_order": 26
+      "sort_order": 26,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "shikigamae",
       "primary_form": "弋",
       "meaning": "stake / ceremony",
-      "mnemonic_text": "A stake driven in to mark a formal spot.",
+      "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
       "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
-      "sort_order": 27
+      "sort_order": 27,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "sato",
       "primary_form": "里",
       "meaning": "village",
-      "mnemonic_text": "A rice field over the earth: the village that farms it.",
+      "mnemonic_text": "Rows of square rice paddies stack neatly on top of a thick slab of packed earth, and the whole grid sits there through every season without shifting — the paddies plus the dirt underneath is what everyone just calls the <radical>village</radical>.",
       "visual_mnemonic_url": "radicals/n4/sato.webp",
-      "sort_order": 28
+      "sort_order": 28,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hatsugashira",
       "primary_form": "癶",
       "meaning": "outspread legs",
-      "mnemonic_text": "Two feet splayed apart, about to push off.",
+      "mnemonic_text": "The top two strokes fling out like a sprinter's shoulders exploding sideways off the blocks, and the bottom two skid away from each other in a dead sprint that instantly collapses into an ungainly, wincing split — nothing left standing on the track but two <radical>outspread legs</radical>.",
       "visual_mnemonic_url": "radicals/n4/hatsugashira.webp",
-      "sort_order": 29
+      "sort_order": 29,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "hane",
       "primary_form": "羽",
       "meaning": "feather",
-      "mnemonic_text": "Two wings side by side, each with its feathers marked.",
+      "mnemonic_text": "A duck panics mid-preen and yanks so hard that two matching plumes pop loose at once, each one a stack of stiff little hooked barbs jutting off a central spine, drifting down in perfect mirror image on either side of the pond — an unmistakable, still-twitching <radical>feather</radical>.",
       "visual_mnemonic_url": "radicals/n4/hane.webp",
-      "sort_order": 30
+      "sort_order": 30,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "inoko",
       "primary_form": "豕",
       "meaning": "pig",
-      "mnemonic_text": "A snout, a fat body, and four trotters: a pig.",
+      "mnemonic_text": "Someone flips it over for a belly rub and its four stubby legs shoot straight up in outrage, kicking uselessly at the air, while the little hooked stroke at the back winds itself into one tight, offended curl of a tail — a thoroughly undignified <radical>pig</radical>.",
       "visual_mnemonic_url": "radicals/n4/inoko.webp",
-      "sort_order": 31
+      "sort_order": 31,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nari",
       "primary_form": "也",
       "meaning": "to be / snake tail",
-      "mnemonic_text": "A curling tail flicking out: a snake, and the old word 'to be'.",
+      "mnemonic_text": "A snake has almost finished disappearing into a crack in the wall, and the only shape still visible is the last loop of its tail, hooked back on itself and holding dead still — not going anywhere, not doing anything, simply, statically continuing <radical>to be</radical>.",
       "visual_mnemonic_url": "radicals/n4/nari.webp",
-      "sort_order": 32
+      "sort_order": 32,
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     }
   ]
 }
