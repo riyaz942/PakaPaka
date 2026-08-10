@@ -1,0 +1,97 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1115;
+  --bg-elevated: #171a21;
+  --border: #2a2f3a;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --accent: #7aa2f7;
+  --accent-muted: #3d5a99;
+  --danger: #f7768e;
+  --warning: #e0af68;
+  --success: #9ece6a;
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.nav-link {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  cursor: not-allowed;
+}
+
+.nav-link:not(:disabled) {
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav-link:not(:disabled):hover {
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+.app-main {
+  flex: 1;
+  padding: 1.5rem 1.25rem;
+}
+
+.placeholder {
+  margin: 0;
+  color: var(--text-muted);
+  max-width: 40rem;
+}
