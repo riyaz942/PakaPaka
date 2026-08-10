@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer as createViteServer } from 'vite';
+import { createCurriculumRouter } from './curriculum/api.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '../..');
@@ -17,6 +18,8 @@ async function main(): Promise<void> {
   app.get('/api/health', (_req, res) => {
     res.json({ ok: true, curriculumDir: CURRICULUM_DIR });
   });
+
+  app.use('/api', createCurriculumRouter(REPO_ROOT, WEB_ROOT));
 
   app.use('/assets', express.static(ASSETS_DIR));
 

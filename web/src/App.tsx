@@ -1,8 +1,10 @@
+import Dashboard from './pages/Dashboard';
+
 const NAV_ITEMS = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'content', label: 'Content' },
-  { id: 'graph', label: 'Graph' },
-  { id: 'audit', label: 'Audit' },
+  { id: 'dashboard', label: 'Dashboard', active: true },
+  { id: 'content', label: 'Content', active: false },
+  { id: 'graph', label: 'Graph', active: false },
+  { id: 'audit', label: 'Audit', active: false },
 ] as const;
 
 export default function App() {
@@ -12,17 +14,22 @@ export default function App() {
         <h1 className="app-title">Curriculum Studio</h1>
         <nav className="app-nav" aria-label="Primary">
           {NAV_ITEMS.map((item) => (
-            <button key={item.id} type="button" className="nav-link" disabled>
+            <button
+              key={item.id}
+              type="button"
+              className={
+                item.active ? 'nav-link nav-link--active' : 'nav-link'
+              }
+              disabled={!item.active}
+              aria-current={item.active ? 'page' : undefined}
+            >
               {item.label}
             </button>
           ))}
         </nav>
       </header>
       <main className="app-main">
-        <p className="placeholder">
-          Local curriculum debug tool. Chunk 1 scaffold is live — content views
-          come next.
-        </p>
+        <Dashboard />
       </main>
     </div>
   );

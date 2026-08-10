@@ -1,0 +1,17 @@
+{
+  "_comment": "Edit these by hand. Remaining-to-generate on the dashboard is target − actual. Seeded from content-pipeline volume (~150 radicals, ~200 kanji, ~1,450 vocab) with grammar/readings at current shipped counts where generation is done for that level.",
+  "N5": {
+    "radicals": 90,
+    "kanji": 106,
+    "vocabulary": 716,
+    "grammar": 74,
+    "readings": 10
+  },
+  "N4": {
+    "radicals": 60,
+    "kanji": 94,
+    "vocabulary": 734,
+    "grammar": 97,
+    "readings": 15
+  }
+}
