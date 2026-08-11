@@ -9,7 +9,14 @@ import {
   type AuditFinding,
   type FindingSeverity,
 } from './audit.js';
+import {
+  buildBuildOrder,
+  buildGraphSummary,
+  buildLevelGraph,
+  buildNeighborhood,
+} from './graph.js';
 import { getCurriculum, loadTargets, reload } from './loader.js';
+import { runCompile, runValidate } from './pipeline.js';
 import {
   isSkeleton,
   itemKey,
@@ -489,6 +496,58 @@ export function createCurriculumRouter(
       total: filtered.length,
       findings: filtered.map(({ finding, links }) => ({ ...finding, links })),
     });
+  });
+
+  router.get('/graph/neighborhood', (req: Request, res: Response) => {
+    const type = parseType(req.query.type);
+    const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
+    if (!type || !slug) {
+      res.status(400).json({ error: 'type and slug are required' });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    if (!index.bySlug.has(itemKey(type, slug))) {
+      res.status(404).json({ error: 'Item not found' });
+      return;
+    }
+
+    const depthRaw = Number(req.query.depth);
+    const depth = Math.min(3, Math.max(1, Number.isFinite(depthRaw) ? depthRaw : 2));
+
+    const { nodes, edges } = buildNeighborhood(index, type, slug, depth);
+    res.json({ center: { type, slug }, nodes, edges });
+  });
+
+  router.get('/graph/level/:level', (req: Request, res: Response) => {
+    const level = parseLevel(req.params.level);
+    if (!level) {
+      res.status(400).json({ error: `Unknown level: ${req.params.level}` });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const { nodes, edges } = buildLevelGraph(index, level);
+    res.json({ level, nodes, edges });
+  });
+
+  router.get('/graph/summary', (_req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+    res.json(buildGraphSummary(index));
+  });
+
+  router.get('/graph/build-order', (req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+    const level = parseLevel(req.query.level);
+    res.json(buildBuildOrder(index, level));
+  });
+
+  router.post('/pipeline/validate', (_req: Request, res: Response) => {
+    runValidate(repoRoot).then((result) => res.json(result));
+  });
+
+  router.post('/pipeline/compile', (_req: Request, res: Response) => {
+    runCompile(repoRoot, webRoot).then((result) => res.json(result));
   });
 
   return router;

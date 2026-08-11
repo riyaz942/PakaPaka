@@ -1047,10 +1047,30 @@ rt {
   margin-top: 0.3rem;
 }
 
+/* --- Graph page --- */
+
+.graph-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 72rem;
+}
+
+.graph-canvas {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.graph-page__stats {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
+}
+
 /* --- Header actions --- */
 
 .app-header__reload {
-  margin-left: auto;
   appearance: none;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
@@ -1070,6 +1090,100 @@ rt {
 .app-header__reload:disabled {
   color: var(--text-muted);
   cursor: default;
+}
+
+.app-header__validate {
+  margin-left: auto;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.app-header__validate:hover:not(:disabled) {
+  border-color: var(--accent-muted);
+  color: var(--accent);
+}
+
+.app-header__validate:disabled {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.app-header__validate--ok {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.app-header__validate--error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* --- Pipeline page --- */
+
+.pipeline-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 72rem;
+}
+
+.pipeline-panel__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pipeline-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pipeline-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.pipeline-status--pass {
+  color: #1a1b26;
+  background: var(--success);
+}
+
+.pipeline-status--fail {
+  color: #1a1b26;
+  background: var(--danger);
+}
+
+.pipeline-log {
+  margin: 0.5rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-height: 24rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .item-header__actions {

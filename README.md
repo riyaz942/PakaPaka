@@ -33,6 +33,8 @@ npm run compile-curriculum
 
 CI workflow `.github/workflows/compile-curriculum.yml` runs the same steps on changes to `curriculum/**`, `scripts/**`, or root `package.json`. It writes `dist/curriculum.db` as an artifact; maintainers still commit `mobile/assets/curriculum-seed/curriculum.db` when content changes.
 
+For a browsable, editable view of the curriculum JSON (with the same validate/compile gates wired into the UI), run `npm run studio` — see [web/README.md](web/README.md).
+
 ## Bootstrap (clean checkout)
 
 From the repository root:

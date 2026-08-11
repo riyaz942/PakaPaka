@@ -24,6 +24,7 @@ For detailed done / not-done status, see [working-history.md](./working-history.
 | [content/radical-mnemonic-images.md](./content/radical-mnemonic-images.md) | Radical mnemonic images in-repo → bundled in app build |
 | [content/phase-4-reading-passage-tooling.md](./content/phase-4-reading-passage-tooling.md) | Reading-passage generation (N5): seeds, tone mix, closed-loop gate — tooling built, run not done |
 | [content/furigana-support-plan.md](./content/furigana-support-plan.md) | Furigana schema / pipeline / UI (shipped; reference) |
+| [../web/README.md](../web/README.md) | Curriculum Studio — local web app to browse/edit curriculum JSON (`npm run studio`); design doc: [design/curriculum-studio-web-plan.md](./design/curriculum-studio-web-plan.md) |
 
 ## Feedback plans
 

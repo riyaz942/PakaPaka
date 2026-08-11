@@ -192,3 +192,90 @@ export const MISSING_FIELD_OPTIONS: Record<ContentType, string[]> = {
     'questions',
   ],
 };
+
+export type GraphNode = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  level: JlptLevel | null;
+  reviewStatus: ReviewStatus | null;
+  completeness: number | null;
+  missing: boolean;
+};
+
+export type GraphEdgeOut = {
+  fromType: ContentType;
+  fromSlug: string;
+  toType: ContentType;
+  toSlug: string;
+  relationship: string;
+};
+
+export type GraphNeighborhoodResponse = {
+  center: { type: ContentType; slug: string };
+  nodes: GraphNode[];
+  edges: GraphEdgeOut[];
+};
+
+export type GraphLevelResponse = {
+  level: JlptLevel;
+  nodes: GraphNode[];
+  edges: GraphEdgeOut[];
+};
+
+export type GraphEdgeTypeCount = {
+  fromType: ContentType;
+  toType: ContentType;
+  relationship: string;
+  count: number;
+};
+
+export type GraphOrphan = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  level: JlptLevel;
+};
+
+export type GraphDanglingEdge = {
+  fromType: string;
+  fromSlug: string;
+  toType: string;
+  toSlug: string;
+  relationship: string;
+  missingSide: 'from' | 'to' | 'both';
+};
+
+export type GraphSummaryResponse = {
+  totalEdges: number;
+  edgeTypeCounts: GraphEdgeTypeCount[];
+  orphans: GraphOrphan[];
+  dangling: GraphDanglingEdge[];
+};
+
+export type BuildOrderReason = 'missing' | 'draft' | 'skeleton';
+
+export type BuildOrderBlocker = {
+  type: ContentType | null;
+  slug: string;
+  primaryForm: string | null;
+  relationship: string;
+  reasons: BuildOrderReason[];
+};
+
+export type BuildOrderRow = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  level: JlptLevel;
+  outDegree: number;
+  blockedBy: BuildOrderBlocker[];
+};
+
+export type PipelineRunResult = {
+  ok: boolean;
+  exitCode: number | null;
+  stdout: string;
+  stderr: string;
+  durationMs: number;
+};

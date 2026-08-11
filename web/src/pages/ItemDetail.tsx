@@ -4,6 +4,7 @@ import { AuditFindingsPanel } from '../components/AuditFindingsPanel';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
 import { EditForm } from '../components/edit/EditForm';
+import { ItemNeighborhoodGraph } from '../components/ItemNeighborhoodGraph';
 import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
@@ -149,6 +150,8 @@ function ItemDetailBody({
       <AuditFindingsPanel findings={item.auditFindings} highlight={highlight} />
 
       <DependencyPanel dependencySummary={item.dependencySummary} />
+
+      <ItemNeighborhoodGraph type={type} slug={slug} />
     </div>
   );
 }
