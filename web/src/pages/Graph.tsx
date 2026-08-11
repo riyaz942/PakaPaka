@@ -17,7 +17,7 @@ const LEVELS: JlptLevel[] = ['N5', 'N4'];
 const REASON_LABELS: Record<string, string> = {
   missing: 'missing',
   draft: 'draft',
-  skeleton: 'skeleton',
+  skeleton: 'skeleton (<60%)',
 };
 
 export default function Graph() {
@@ -161,8 +161,8 @@ export default function Graph() {
       <section className="panel">
         <h2 className="panel-title">Build order — finish these first</h2>
         <p className="panel-muted">
-          {level} items whose prerequisites are missing, still a draft, or a skeleton, sorted by
-          how many downstream items they unblock.
+          {level} items whose prerequisites are missing from the corpus, still a draft, or a
+          skeleton (&lt;60% complete), sorted by how many downstream items they unblock.
         </p>
         {buildOrder.status === 'loading' ? <p className="panel-muted">Loading…</p> : null}
         {buildOrder.status === 'error' ? (

@@ -8,6 +8,7 @@ export const LIST_CONTEXT_KEYS = [
   'audit',
   'sort',
   'page',
+  'pageSize',
 ] as const;
 
 /** Keys used when asking the neighbors API (page is list-only). */

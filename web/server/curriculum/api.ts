@@ -203,6 +203,17 @@ function sortItems(
   return sorted;
 }
 
+function matchesAuditFilter(
+  item: ContentItem,
+  audit: string,
+  auditBySlug: Map<string, AuditFinding[]>,
+): boolean {
+  const findings = auditBySlug.get(item.slug) ?? [];
+  if (audit === 'any') return findings.length > 0;
+  const severity = audit.toUpperCase();
+  return findings.some((f) => f.severity === severity);
+}
+
 function filterItems(
   items: ContentItem[],
   query: Request['query'],
@@ -228,7 +239,6 @@ function filterItems(
   return items.filter((item) => {
     if (type && item.type !== type) return false;
     if (level && item.level !== level) return false;
-    if (status && item.reviewStatus !== status) return false;
     if (skeletonOnly && !isSkeleton(item)) return false;
     if (missing && !item.completeness.missing.includes(missing)) return false;
     if (q) {
@@ -236,15 +246,17 @@ function filterItems(
         `${item.slug} ${item.primaryForm} ${item.meaning}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
-    if (audit) {
-      const findings = auditBySlug.get(item.slug) ?? [];
-      if (audit === 'any') {
-        if (findings.length === 0) return false;
-      } else {
-        const severity = audit.toUpperCase();
-        if (!findings.some((f) => f.severity === severity)) return false;
-      }
+
+    // Status and audit are OR'd when both are set (e.g. reviewed ∪ audit errors).
+    // Alone, each still narrows the list as before.
+    const statusOk = !status || item.reviewStatus === status;
+    const auditOk = !audit || matchesAuditFilter(item, audit, auditBySlug);
+    if (status && audit) {
+      if (!statusOk && !auditOk) return false;
+    } else if (!statusOk || !auditOk) {
+      return false;
     }
+
     return true;
   });
 }
@@ -353,9 +365,14 @@ export function createCurriculumRouter(
     );
 
     const page = Math.max(1, Number(req.query.page) || 1);
+    const requestedPageSize = Math.max(
+      1,
+      Math.floor(Number(req.query.pageSize) || 50),
+    );
+    // Cap at filtered length so "show all" works for any list size.
     const pageSize = Math.min(
-      200,
-      Math.max(1, Number(req.query.pageSize) || 50),
+      requestedPageSize,
+      Math.max(filtered.length, 1),
     );
     const start = (page - 1) * pageSize;
     const pageItems = filtered.slice(start, start + pageSize);

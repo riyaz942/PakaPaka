@@ -12,6 +12,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
@@ -266,6 +267,7 @@ export default function Dashboard() {
             {data.totals.reading_passages} passages ·{' '}
             {data.totals.dependency_edges} edges
           </p>
+          <BadgeLegend skeletonLabel={data.skeletonLabel} showAudit={false} />
         </div>
       </section>
 

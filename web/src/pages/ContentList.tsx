@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
@@ -26,8 +27,25 @@ const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'warning', label: 'Audit: warning' },
   { value: 'info', label: 'Audit: info' },
 ];
-const PAGE_SIZE = 50;
+const PAGE_SIZE_STEP = 50;
+const DEFAULT_PAGE_SIZE = PAGE_SIZE_STEP;
 const SEARCH_DEBOUNCE_MS = 300;
+
+function parsePageSize(value: string | null): number {
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 1) return DEFAULT_PAGE_SIZE;
+  return Math.floor(n);
+}
+
+/** 50, 100, … then the filtered total so the last choice shows everything. */
+function buildPageSizeOptions(total: number): number[] {
+  const options: number[] = [];
+  for (let n = PAGE_SIZE_STEP; n < total; n += PAGE_SIZE_STEP) {
+    options.push(n);
+  }
+  options.push(Math.max(PAGE_SIZE_STEP, total));
+  return options;
+}
 
 const SORT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'sort_order', label: 'Sort order' },
@@ -91,6 +109,7 @@ export default function ContentList() {
   const audit = searchParams.get('audit') ?? '';
   const sort = searchParams.get('sort') ?? 'sort_order';
   const page = Math.max(1, Number(searchParams.get('page')) || 1);
+  const pageSize = parsePageSize(searchParams.get('pageSize'));
 
   const [searchInput, setSearchInput] = useState(q);
 
@@ -134,14 +153,21 @@ export default function ContentList() {
     if (audit) qs.set('audit', audit);
     qs.set('sort', sort);
     qs.set('page', String(page));
-    qs.set('pageSize', String(PAGE_SIZE));
+    qs.set('pageSize', String(pageSize));
     return `/api/items?${qs.toString()}`;
-  }, [type, level, status, skeleton, missing, q, audit, sort, page]);
+  }, [type, level, status, skeleton, missing, q, audit, sort, page, pageSize]);
 
   const result = useApi<ItemsResponse>(apiUrl);
   const missingOptions = MISSING_FIELD_OPTIONS[type];
+  const pageSizeOptions =
+    result.status === 'ok' ? buildPageSizeOptions(result.data.total) : [DEFAULT_PAGE_SIZE];
+  const effectivePageSize = pageSizeOptions.includes(pageSize)
+    ? pageSize
+    : pageSizeOptions[pageSizeOptions.length - 1];
   const totalPages =
-    result.status === 'ok' ? Math.max(1, Math.ceil(result.data.total / PAGE_SIZE)) : 1;
+    result.status === 'ok'
+      ? Math.max(1, Math.ceil(result.data.total / effectivePageSize))
+      : 1;
   const detailSearch = listContextSearch(searchParams);
 
   return (
@@ -196,7 +222,7 @@ export default function ContentList() {
               updateParams({ skeleton: e.target.checked ? 'true' : null, page: null })
             }
           />
-          Skeleton only
+          Skeleton only (&lt;60%)
         </label>
 
         <select
@@ -245,6 +271,8 @@ export default function ContentList() {
           ))}
         </select>
       </div>
+
+      <BadgeLegend />
 
       {result.status === 'loading' ? <SkeletonRows /> : null}
       {result.status === 'error' ? (
@@ -342,6 +370,29 @@ export default function ContentList() {
             >
               Next
             </button>
+            <label className="pagination__page-size">
+              Show
+              <select
+                value={effectivePageSize}
+                onChange={(e) =>
+                  updateParams({
+                    pageSize:
+                      Number(e.target.value) === DEFAULT_PAGE_SIZE
+                        ? null
+                        : e.target.value,
+                    page: null,
+                  })
+                }
+                aria-label="Items per page"
+              >
+                {pageSizeOptions.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+              per page
+            </label>
           </div>
         </>
       ) : null}
