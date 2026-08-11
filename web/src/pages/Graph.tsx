@@ -93,7 +93,7 @@ export default function Graph() {
             <p className="panel-muted">No nodes for this filter.</p>
           ) : (
             <>
-              <DependencyGraph nodes={filtered.nodes} edges={filtered.edges} height={560} />
+              <DependencyGraph nodes={filtered.nodes} edges={filtered.edges} height={720} />
               <p className="panel-muted graph-page__stats">
                 {filtered.nodes.length} node(s), {filtered.edges.length} edge(s) shown
               </p>

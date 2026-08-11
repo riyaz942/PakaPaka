@@ -50,8 +50,8 @@ function computeSpacing(nodes: GraphNode[], width: number, height: number) {
   const maxPerRank = Math.max(1, ...perRank.values());
   const rankGaps = Math.max(1, perRank.size - 1);
 
-  const nodeSep = clamp(height / maxPerRank, 8, 45);
-  const rankSep = clamp(width / rankGaps, 60, 900);
+  const nodeSep = clamp(height / maxPerRank, 18, 56);
+  const rankSep = clamp(width / rankGaps, 90, 900);
   return { nodeSep, rankSep };
 }
 
@@ -92,7 +92,9 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
       })),
     ];
 
-    const dense = nodes.length > 120;
+    const dense = nodes.length > 180;
+    const nodeSize = dense ? 28 : 40;
+    const labelSize = dense ? 13 : 18;
 
     const style: StylesheetJson = [
       {
@@ -101,14 +103,20 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
           'background-color': (ele: cytoscape.NodeSingular) =>
             TYPE_COLORS[ele.data('type') as ContentType] ?? '#888',
           opacity: (ele: cytoscape.NodeSingular) =>
-            ele.data('missing') ? 0.35 : 0.35 + (ele.data('completeness') as number) * 0.65,
-          label: dense ? '' : 'data(label)',
-          'font-size': 9,
+            ele.data('missing') ? 0.4 : 0.45 + (ele.data('completeness') as number) * 0.55,
+          label: 'data(label)',
+          'font-size': labelSize,
+          'font-family':
+            'Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, Yu Gothic, sans-serif',
+          'font-weight': 600,
           color: '#e8eaed',
-          'text-outline-width': 2,
+          'text-valign': 'center',
+          'text-halign': 'center',
+          'text-outline-width': 3,
           'text-outline-color': '#0f1115',
-          width: dense ? 10 : 20,
-          height: dense ? 10 : 20,
+          'text-wrap': 'none',
+          width: nodeSize,
+          height: nodeSize,
         },
       },
       {
@@ -124,20 +132,21 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
         style: {
           'border-width': 3,
           'border-color': '#e8eaed',
-          width: 30,
-          height: 30,
+          width: nodeSize + 12,
+          height: nodeSize + 12,
+          'font-size': labelSize + 2,
         },
       },
       {
         selector: 'edge',
         style: {
-          width: 1,
-          'line-color': '#2a2f3a',
-          'target-arrow-color': '#2a2f3a',
+          width: dense ? 2 : 2.5,
+          'line-color': '#5a6270',
+          'target-arrow-color': '#5a6270',
           'target-arrow-shape': 'triangle',
-          'arrow-scale': 0.7,
+          'arrow-scale': 1.1,
           'curve-style': 'bezier',
-          opacity: 0.55,
+          opacity: 0.75,
         },
       },
     ];

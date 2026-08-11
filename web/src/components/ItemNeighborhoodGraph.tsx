@@ -47,7 +47,7 @@ export function ItemNeighborhoodGraph({ type, slug }: Props) {
         nodes={nodes}
         edges={edges}
         centerKey={`${center.type}:${center.slug}`}
-        height={300}
+        height={360}
       />
     </div>
   );

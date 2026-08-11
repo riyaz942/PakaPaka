@@ -12,6 +12,8 @@
   --success: #9ece6a;
   --font-sans: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-jp: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP',
+    'Yu Gothic', 'Segoe UI', system-ui, sans-serif;
 }
 
 *,
@@ -95,6 +97,18 @@ button {
 .app-main {
   flex: 1;
   padding: 1.5rem 1.25rem;
+}
+
+/* Keep every page column centered in the viewport */
+.dashboard,
+.content-list,
+.item-detail,
+.graph-page,
+.audit-page,
+.pipeline-page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .placeholder {
@@ -564,7 +578,8 @@ button {
 }
 
 .content-form {
-  font-size: 1.05rem;
+  font-family: var(--font-jp);
+  font-size: 1.35rem;
 }
 
 .row-link {
@@ -644,7 +659,8 @@ button {
 }
 
 .item-header__form {
-  font-size: 2.25rem;
+  font-family: var(--font-jp);
+  font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -749,14 +765,14 @@ rt {
 .related-chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.15rem 0.55rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
   color: var(--text);
   text-decoration: none;
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-family: var(--font-jp);
 }
 
 .related-chip:hover {
@@ -785,7 +801,8 @@ rt {
 }
 
 .radical-visual__fallback {
-  font-size: 5rem;
+  font-family: var(--font-jp);
+  font-size: 6rem;
   line-height: 1;
   color: var(--text-muted);
 }
@@ -832,7 +849,8 @@ rt {
 
 .example-japanese {
   margin: 0 0 0.3rem;
-  font-size: 1.05rem;
+  font-family: var(--font-jp);
+  font-size: 1.3rem;
 }
 
 .example-english {
@@ -858,8 +876,8 @@ rt {
 }
 
 .grammar-structure {
-  font-family: var(--font-mono);
-  font-size: 1rem;
+  font-family: var(--font-jp);
+  font-size: 1.2rem;
 }
 
 .grammar-family {
@@ -873,12 +891,14 @@ rt {
 }
 
 .vocab-furigana {
-  font-size: 1.4rem;
+  font-family: var(--font-jp);
+  font-size: 1.7rem;
   margin: 0 0 1rem;
 }
 
 .reading-body {
-  font-size: 1.05rem;
+  font-family: var(--font-jp);
+  font-size: 1.25rem;
   line-height: 2;
 }
 
