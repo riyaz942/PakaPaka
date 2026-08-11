@@ -36,6 +36,13 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
+/** How far below the initial fit zoom the user may zoom out. */
+const MIN_ZOOM_FIT_RATIO = 0.85;
+/** Absolute floor so dense graphs still have a sensible min zoom. */
+const MIN_ZOOM_FLOOR = 0.08;
+/** Max zoom as a multiple of the fitted zoom — keep zoom-in modest. */
+const MAX_ZOOM_FIT_RATIO = 1.4;
+
 /**
  * dagre's `fit: true` preserves aspect ratio, so a graph with few rank levels but
  * many nodes per level (e.g. 90 radicals -> 106 kanji) collapses to an unreadable
@@ -53,6 +60,54 @@ function computeSpacing(nodes: GraphNode[], width: number, height: number) {
   const nodeSep = clamp(height / maxPerRank, 18, 56);
   const rankSep = clamp(width / rankGaps, 90, 900);
   return { nodeSep, rankSep };
+}
+
+/**
+ * Keep graph content inside the canvas:
+ * - If content fits, lock it centered (no empty-side panning).
+ * - If zoomed in, clamp so the viewport never leaves the content bounds.
+ */
+function constrainPan(cy: Core) {
+  const nodes = cy.nodes();
+  if (nodes.empty()) return;
+
+  const bb = nodes.renderedBoundingBox({
+    includeLabels: true,
+    includeOverlays: false,
+  });
+  if (!Number.isFinite(bb.w) || bb.w <= 0 || !Number.isFinite(bb.h) || bb.h <= 0) return;
+
+  const pan = cy.pan();
+  const cw = cy.width();
+  const ch = cy.height();
+  let dx = 0;
+  let dy = 0;
+
+  if (bb.w <= cw) {
+    dx = (cw - bb.w) / 2 - bb.x1;
+  } else if (bb.x1 > 0) {
+    dx = -bb.x1;
+  } else if (bb.x2 < cw) {
+    dx = cw - bb.x2;
+  }
+
+  if (bb.h <= ch) {
+    dy = (ch - bb.h) / 2 - bb.y1;
+  } else if (bb.y1 > 0) {
+    dy = -bb.y1;
+  } else if (bb.y2 < ch) {
+    dy = ch - bb.y2;
+  }
+
+  if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+    cy.pan({ x: pan.x + dx, y: pan.y + dy });
+  }
+}
+
+function applyZoomLimitsFromFit(cy: Core) {
+  const fitZoom = cy.zoom();
+  cy.minZoom(Math.max(MIN_ZOOM_FLOOR, fitZoom * MIN_ZOOM_FIT_RATIO));
+  cy.maxZoom(fitZoom * MAX_ZOOM_FIT_RATIO);
 }
 
 type Props = {
@@ -159,6 +214,9 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
       container: containerRef.current,
       elements,
       style,
+      // Wide range during layout fit; tightened in layoutstop.
+      minZoom: MIN_ZOOM_FLOOR,
+      maxZoom: 20,
       layout: {
         name: 'dagre',
         rankDir: 'LR',
@@ -169,6 +227,28 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
       } as cytoscape.LayoutOptions,
     });
 
+    let constraining = false;
+    const onViewport = () => {
+      if (constraining) return;
+      constraining = true;
+      try {
+        constrainPan(cy);
+      } finally {
+        constraining = false;
+      }
+    };
+
+    cy.one('layoutstop', () => {
+      applyZoomLimitsFromFit(cy);
+      constraining = true;
+      try {
+        constrainPan(cy);
+      } finally {
+        constraining = false;
+      }
+      cy.on('viewport', onViewport);
+    });
+
     cy.on('tap', 'node', (evt) => {
       const data = evt.target.data() as { type: ContentType; slug: string; missing: boolean };
       if (data.missing) return;
@@ -176,6 +256,7 @@ export function DependencyGraph({ nodes, edges, centerKey, height = 420 }: Props
     });
 
     return () => {
+      cy.off('viewport', onViewport);
       cy.destroy();
     };
   }, [nodes, edges, centerKey, navigate]);

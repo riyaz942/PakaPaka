@@ -4,6 +4,7 @@ import Audit from './pages/Audit';
 import ContentList from './pages/ContentList';
 import Dashboard from './pages/Dashboard';
 import Graph from './pages/Graph';
+import Guide from './pages/Guide';
 import ItemDetail from './pages/ItemDetail';
 import Pipeline from './pages/Pipeline';
 import type { PipelineRunResult } from './types/api';
@@ -14,6 +15,7 @@ const NAV_LINKS = [
   { id: 'graph', label: 'Graph', to: '/graph', end: false },
   { id: 'audit', label: 'Audit', to: '/audit', end: false },
   { id: 'pipeline', label: 'Pipeline', to: '/pipeline', end: false },
+  { id: 'guide', label: 'Guide', to: '/guide', end: false },
 ] as const;
 
 export default function App() {
@@ -96,6 +98,7 @@ export default function App() {
           <Route path="/graph" element={<Graph />} />
           <Route path="/audit" element={<Audit />} />
           <Route path="/pipeline" element={<Pipeline />} />
+          <Route path="/guide" element={<Guide />} />
         </Routes>
       </main>
     </div>

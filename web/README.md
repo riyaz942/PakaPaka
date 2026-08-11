@@ -31,6 +31,11 @@ pulling changes that touch its `package.json`.
   browses its findings, with links back into Content.
 - **Pipeline** — runs `npm run validate-schema` and `npm run compile-curriculum`
   from the UI and shows their output.
+- **Guide** — the generation playbook: stage order, the exact commands per
+  content type and lane, and one "how to fix" card per audit check. Every
+  completeness percentage, remaining count, missing field and audit finding
+  elsewhere in the studio links into the matching section, and each stage links
+  back out to the filtered list of items still missing that field.
 
 ## Safety notes
 

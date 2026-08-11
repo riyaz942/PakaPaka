@@ -11,6 +11,7 @@ import {
   type AuditFinding,
   type FindingSeverity,
 } from './audit.js';
+import { expectedFields } from './completeness.js';
 import {
   buildBuildOrder,
   buildGraphSummary,
@@ -120,6 +121,16 @@ function emptyBucket(target: number): OverviewBucket {
     target,
     remaining: target,
   };
+}
+
+type GapBucket = { total: number; missing: Record<string, number> };
+
+function emptyGapBucket(type: ContentType): GapBucket {
+  const missing: Record<string, number> = {};
+  for (const field of expectedFields(type)) {
+    missing[field] = 0;
+  }
+  return { total: 0, missing };
 }
 
 function targetKeyForType(
@@ -361,6 +372,31 @@ export function createCurriculumRouter(
       skeletonThreshold: SKELETON_THRESHOLD,
       skeletonLabel: 'skeleton (<60% complete)',
     });
+  });
+
+  /**
+   * How many items are missing each completeness field, per type and level.
+   * The Guide needs one number per (type, field) to size each generation
+   * stage; asking `/items?missing=…` once per field would be ~20 requests
+   * over the same index walk.
+   */
+  router.get('/gaps', (_req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+
+    const byTypeLevel = {} as Record<ContentType, Record<JlptLevel, GapBucket>>;
+    for (const type of CONTENT_TYPES) {
+      byTypeLevel[type] = { N5: emptyGapBucket(type), N4: emptyGapBucket(type) };
+    }
+
+    for (const item of index.items) {
+      const bucket = byTypeLevel[item.type][item.level];
+      bucket.total += 1;
+      for (const field of item.completeness.missing) {
+        bucket.missing[field] = (bucket.missing[field] ?? 0) + 1;
+      }
+    }
+
+    res.json({ byTypeLevel });
   });
 
   router.get('/items', (req: Request, res: Response) => {

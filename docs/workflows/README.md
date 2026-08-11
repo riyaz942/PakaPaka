@@ -21,3 +21,8 @@ Two lanes, and most content types have both:
 
 Which of these have actually been *run* is tracked in
 [../working-history.md](../working-history.md) — the runbook existing does not mean the content exists.
+
+Curriculum Studio's **Guide** tab (`npm run studio` → <http://localhost:4701/guide>) is the
+interactive index over this folder: the same stages and commands, with live gap counts per level
+and links from every completeness percentage and audit finding into the step that fixes it. These
+files stay the full detail; the Guide is the summary you work from.

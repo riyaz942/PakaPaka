@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { AuditFindingsPanel } from '../components/AuditFindingsPanel';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
@@ -8,6 +8,7 @@ import { ItemNeighborhoodGraph } from '../components/ItemNeighborhoodGraph';
 import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
+import { guideHref, stageIdForField } from '../lib/guide';
 import { LIST_FILTER_KEYS, pickSearchParams } from '../lib/listContext';
 import {
   CONTENT_TYPES,
@@ -201,11 +202,12 @@ function ItemDetailBody({
 }) {
   const [showReadings, setShowReadings] = useState(true);
   const [editing, setEditing] = useState(false);
+  const { hash } = useLocation();
 
   useEffect(() => {
-    if (!highlight) return;
+    if (!highlight && hash !== '#audit-findings') return;
     document.getElementById('audit-findings')?.scrollIntoView({ block: 'start' });
-  }, [highlight]);
+  }, [highlight, hash]);
 
   return (
     <div className="item-detail">
@@ -238,7 +240,26 @@ function ItemDetailBody({
         </div>
         {item.completeness.missing.length > 0 ? (
           <p className="panel-muted item-header__missing">
-            Missing: {item.completeness.missing.join(', ')}
+            Missing:{' '}
+            {item.completeness.missing.map((field, i) => {
+              const stageId = stageIdForField(type, field);
+              return (
+                <span key={field}>
+                  {i > 0 ? ', ' : ''}
+                  {stageId ? (
+                    <Link
+                      to={guideHref(`stage-${stageId}`, item.level)}
+                      className="missing-field-link"
+                      title={`How to generate ${field}`}
+                    >
+                      {field}
+                    </Link>
+                  ) : (
+                    field
+                  )}
+                </span>
+              );
+            })}
           </p>
         ) : null}
       </div>

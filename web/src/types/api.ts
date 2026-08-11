@@ -102,6 +102,16 @@ export type OverviewResponse = {
   skeletonLabel: string;
 };
 
+export type GapBucket = {
+  total: number;
+  /** Field name → how many items of this type/level are missing it. */
+  missing: Record<string, number>;
+};
+
+export type GapsResponse = {
+  byTypeLevel: Record<ContentType, Record<JlptLevel, GapBucket>>;
+};
+
 export type ItemsResponse = {
   total: number;
   page: number;

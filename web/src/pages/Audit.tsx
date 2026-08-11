@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { useApi } from '../hooks/useApi';
+import { fixIdForCheck, guideHref } from '../lib/guide';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
@@ -25,6 +26,10 @@ export default function Audit() {
   const [runToken, setRunToken] = useState(0);
   const [running, setRunning] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // `?check=` is how the Guide's fix cards link back to their own findings.
+  const check = searchParams.get('check') ?? '';
 
   const summary = useApi<AuditSummary>(`/api/audit/summary?r=${runToken}`);
 
@@ -32,9 +37,10 @@ export default function Audit() {
     const qs = new URLSearchParams();
     if (severity) qs.set('severity', severity);
     if (type) qs.set('type', type);
+    if (check) qs.set('check', check);
     qs.set('r', String(runToken));
     return `/api/audit/findings?${qs.toString()}`;
-  }, [severity, type, runToken]);
+  }, [severity, type, check, runToken]);
 
   const findings = useApi<AuditFindingsResponse>(findingsUrl);
 
@@ -122,6 +128,20 @@ export default function Audit() {
               </option>
             ))}
           </select>
+          {check ? (
+            <button
+              type="button"
+              className="chip chip--active"
+              onClick={() => {
+                const next = new URLSearchParams(searchParams);
+                next.delete('check');
+                setSearchParams(next, { replace: true });
+              }}
+              title="Clear the check filter"
+            >
+              {check} ✕
+            </button>
+          ) : null}
         </div>
 
         {findings.status === 'loading' ? <p className="panel-muted">Loading findings…</p> : null}
@@ -132,19 +152,42 @@ export default function Audit() {
           <>
             <p className="panel-muted">{findings.data.total} finding(s)</p>
             <div className="draft-groups">
-              {grouped.map(([check, rows]) => (
-                <article key={check} className="audit-check-group">
+              {grouped.map(([groupCheck, rows]) => {
+                const fixId = fixIdForCheck(groupCheck);
+                return (
+                <article key={groupCheck} className="audit-check-group">
                   <header className="audit-check-group__head">
-                    <span className="audit-check-group__title">{check}</span>
-                    <span className="draft-group__count">
-                      {rows.length} finding{rows.length === 1 ? '' : 's'}
+                    <span className="audit-check-group__title">{groupCheck}</span>
+                    <span className="audit-check-group__actions">
+                      {fixId ? (
+                        <Link
+                          to={guideHref(fixId)}
+                          className="audit-fix-link"
+                          title={`How to fix: ${groupCheck}`}
+                        >
+                          How to fix →
+                        </Link>
+                      ) : null}
+                      <span className="draft-group__count">
+                        {rows.length} finding{rows.length === 1 ? '' : 's'}
+                      </span>
                     </span>
                   </header>
                   <ul className="audit-finding-list">
                     {rows.map((finding, i) => (
-                      <li key={`${check}-${i}`} className="audit-finding">
+                      <li key={`${groupCheck}-${i}`} className="audit-finding">
                         <div className="audit-finding__head">
-                          <SeverityBadge severity={finding.severity} />
+                          {fixId ? (
+                            <Link
+                              to={guideHref(fixId)}
+                              className="audit-finding__severity-link"
+                              title={`How to fix: ${groupCheck}`}
+                            >
+                              <SeverityBadge severity={finding.severity} />
+                            </Link>
+                          ) : (
+                            <SeverityBadge severity={finding.severity} />
+                          )}
                           <span className="audit-finding__check">{finding.level}</span>
                         </div>
                         <p className="audit-finding__message">{finding.message}</p>
@@ -171,7 +214,8 @@ export default function Audit() {
                     ))}
                   </ul>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </>
         ) : null}

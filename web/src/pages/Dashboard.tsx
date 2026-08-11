@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Bar,
   BarChart,
@@ -16,12 +17,14 @@ import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
+import { guideHref, stageIdForTypeGap } from '../lib/guide';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
   STATUS_LABELS,
   type ContentListItem,
   type ContentType,
+  type GapsResponse,
   type ItemsResponse,
   type JlptLevel,
   type OverviewResponse,
@@ -170,7 +173,28 @@ function ChartTooltip({
 
 export default function Dashboard() {
   const overview = useApi<OverviewResponse>('/api/overview');
+  const gapsResult = useApi<GapsResponse>('/api/gaps');
   const drafts = useDraftGroups();
+
+  // Per-field missing counts, so a completeness link points at the stage that
+  // actually owns the hole rather than the first stage touching the type.
+  const missingByType = useMemo(() => {
+    const out = {} as Record<ContentType, { all: Record<string, number>; byLevel: Record<JlptLevel, Record<string, number>> }>;
+    if (gapsResult.status !== 'ok') return out;
+    for (const type of CONTENT_TYPES) {
+      const all: Record<string, number> = {};
+      const byLevel = {} as Record<JlptLevel, Record<string, number>>;
+      for (const level of LEVELS) {
+        const bucket = gapsResult.data.byTypeLevel[type][level];
+        byLevel[level] = bucket.missing;
+        for (const [field, count] of Object.entries(bucket.missing)) {
+          all[field] = (all[field] ?? 0) + count;
+        }
+      }
+      out[type] = { all, byLevel };
+    }
+    return out;
+  }, [gapsResult]);
 
   const statusBarData = useMemo(() => {
     if (overview.status !== 'ok') return [];
@@ -269,6 +293,9 @@ export default function Dashboard() {
           </p>
           <BadgeLegend skeletonLabel={data.skeletonLabel} showAudit={false} />
         </div>
+        <Link to="/guide" className="audit-run-button">
+          How content gets made →
+        </Link>
       </section>
 
       <div className="dashboard-grid">
@@ -352,8 +379,13 @@ export default function Dashboard() {
             Completeness by type{' '}
             <span className="panel-title-hint">({data.skeletonLabel})</span>
           </h3>
+          <p className="panel-muted">
+            Click a percentage to see what fills the missing fields.
+          </p>
           <div className="completeness-list">
-            {completenessData.map((row) => (
+            {completenessData.map((row) => {
+              const stageId = stageIdForTypeGap(row.type, missingByType[row.type]?.all);
+              return (
               <div key={row.type} className="completeness-row">
                 <div className="completeness-row__head">
                   <span className="completeness-row__label">{row.label}</span>
@@ -362,6 +394,8 @@ export default function Dashboard() {
                       percent={row.mean}
                       skeleton={row.skeletonCount > 0}
                       skeletonLabel={data.skeletonLabel}
+                      href={stageId ? guideHref(`stage-${stageId}`) : undefined}
+                      title={`How to raise ${row.label} completeness`}
                     />
                     {row.skeletonCount > 0 ? (
                       <span
@@ -388,7 +422,8 @@ export default function Dashboard() {
                   />
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -396,7 +431,8 @@ export default function Dashboard() {
           <h3 className="panel-title">Remaining to generate</h3>
           <p className="panel-muted">
             Targets from <code>web/targets.json</code> (edit by hand). Remaining
-            = target − actual.
+            = target − actual. Click a remaining count for the workflow that
+            generates it.
           </p>
           <div className="table-wrap">
             <table className="data-table">
@@ -419,13 +455,29 @@ export default function Dashboard() {
                         : bucket.remaining < 0
                           ? 'num remaining--over'
                           : 'num remaining--done';
+                    const stageId = stageIdForTypeGap(
+                      type,
+                      missingByType[type]?.byLevel[level],
+                    );
                     return (
                       <tr key={`${type}-${level}`}>
                         <td>{CONTENT_TYPE_LABELS[type]}</td>
                         <td>{level}</td>
                         <td className="num">{bucket.total}</td>
                         <td className="num">{bucket.target}</td>
-                        <td className={remainingClass}>{bucket.remaining}</td>
+                        <td className={remainingClass}>
+                          {bucket.remaining > 0 && stageId ? (
+                            <Link
+                              to={guideHref(`stage-${stageId}`, level)}
+                              className="remaining-link"
+                              title={`How to generate the remaining ${level} ${CONTENT_TYPE_LABELS[type]}`}
+                            >
+                              {bucket.remaining}
+                            </Link>
+                          ) : (
+                            bucket.remaining
+                          )}
+                        </td>
                       </tr>
                     );
                   }),

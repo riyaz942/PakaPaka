@@ -5,6 +5,7 @@ import { CompletenessPill } from '../components/CompletenessPill';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
+import { guideHref, stageIdForField } from '../lib/guide';
 import { listContextSearch } from '../lib/listContext';
 import {
   CONTENT_TYPE_LABELS,
@@ -300,7 +301,14 @@ export default function ContentList() {
                   </tr>
                 </thead>
                 <tbody>
-                  {result.data.items.map((item) => (
+                  {result.data.items.map((item) => {
+                    // The first unfilled field decides where "how do I fix this
+                    // percentage" points — they are listed in generation order.
+                    const firstMissing = item.completeness.missing[0];
+                    const stageId = firstMissing
+                      ? stageIdForField(item.type, firstMissing)
+                      : undefined;
+                    return (
                     <tr key={`${item.type}:${item.slug}`}>
                       <td>
                         <Link
@@ -323,30 +331,37 @@ export default function ContentList() {
                       <td>
                         <StatusBadge status={item.reviewStatus} />
                       </td>
-                      <td
-                        title={
-                          item.completeness.missing.length > 0
-                            ? `Missing: ${item.completeness.missing.join(', ')}`
-                            : undefined
-                        }
-                      >
+                      <td>
                         <CompletenessPill
                           percent={item.completeness.percent}
                           skeleton={item.completeness.percent < 0.6}
+                          href={stageId ? guideHref(`stage-${stageId}`, item.level) : undefined}
+                          title={
+                            item.completeness.missing.length > 0
+                              ? `Missing: ${item.completeness.missing.join(', ')} — how to generate them`
+                              : undefined
+                          }
                         />
                       </td>
                       <td>
                         {item.auditSeverity ? (
-                          <SeverityBadge
-                            severity={item.auditSeverity as FindingSeverity}
-                            count={item.auditFindingCount}
-                          />
+                          <Link
+                            to={`/content/${item.type}/${item.slug}${detailSearch}#audit-findings`}
+                            className="audit-badge-link"
+                            title={`${item.auditFindingCount} audit finding(s) — open them`}
+                          >
+                            <SeverityBadge
+                              severity={item.auditSeverity as FindingSeverity}
+                              count={item.auditFindingCount}
+                            />
+                          </Link>
                         ) : (
                           <span className="panel-muted">—</span>
                         )}
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
