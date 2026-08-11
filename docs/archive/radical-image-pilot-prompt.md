@@ -1,7 +1,7 @@
 # Radical mnemonic art — 5-image pilot prompt (round 2)
 
 > **Superseded.** Round 2 passed and its five images shipped. The production process is
-> [`docs/workflows/radical-art-web-chat-workflow.md`](./workflows/radical-art-web-chat-workflow.md);
+> [`docs/workflows/radical-art-web-chat-workflow.md`](../workflows/radical-art-web-chat-workflow.md);
 > this file is kept as the record of how the style block was arrived at.
 
 Round 1 (Gemini web, Pro extended thinking) got **stroke fidelity mostly right** — the

@@ -1,45 +1,37 @@
 # Docs
 
-Working docs for the Japanese learning app. Historical BMAD planning (PRD, architecture, epics) lives in `_bmad-output/` — reference only.
+Working docs for the Japanese learning app.
 
-For detailed done / not-done status, see [working-history.md](./working-history.md).
+**Looking for what's done and what's left? → [working-history.md](./working-history.md).** That is the
+single status index for every plan in this repo, docs and BMAD alike. Nothing else tracks status.
 
-## Active work
+## Start here
 
-| Doc | Notes |
+| Doc | What it is |
 | --- | --- |
-| [app-overview.md](./app-overview.md) | What the app is, the learner flow, and what each screen does |
+| [working-history.md](./working-history.md) | **Status index** — one status per plan, plus what's left |
+| [app-overview.md](./app-overview.md) | What the app is, the learner flow, what each screen does |
+| [../README.md](../README.md) | Setup, build, and run instructions |
+
+## Plans by area
+
+| Area | Contents |
+| --- | --- |
+| [feedback/](./feedback/README.md) | Playtest and design follow-ups, plans 01–15 — the main product backlog |
+| [content/](./content/) | Curriculum content quality: pipeline plan, audit plan, furigana, radical images, passages |
+| [design/](./design/) | Design System v2 restyle, Curriculum Studio, backup/web build, platform spikes |
+| [workflows/](./workflows/) | Maintainer generation runbooks (web-chat + subagent lanes) |
+
+## Defects
+
+| Log | What goes in it |
+| --- | --- |
 | [known-issues.md](./known-issues.md) | Confirmed open defects found outside their discovering story's scope |
-| [content/content-pipeline-plan.md](./content/content-pipeline-plan.md) | Master content-quality plan (grammar depth, mnemonics, attribution) |
-| [content/content-audit-plan.md](./content/content-audit-plan.md) | Whole-level content audit: four tiers (structural, dataset, AI semantic, human), checklist→check mapping, cost model |
-| [workflows/](./workflows/) | No-API generation runbooks: web-chat + browser automation prompts, and subagent automation prompts |
-| [design/redesign-v2/](./design/redesign-v2/README.md) | Design System v2 restyle — **done** (Sessions 1–8). Spec + decisions/deviations log. |
-| [design/backup-and-web-plan.md](./design/backup-and-web-plan.md) | Backup/restore (Part A) then web build + PWA (Part B) — planned, not started |
-| [design/web-sqlite-attach-findings.md](./design/web-sqlite-attach-findings.md) | Spike result: dual-DB `ATTACH` works on web; `expo-sqlite` sync-bridge bug is the real blocker |
+| [codebase-issues.md](./codebase-issues.md) | Findings from the 2026-07-05 manual review of `mobile/src` and `scripts/` |
+| [../_bmad-output/implementation-artifacts/deferred-work.md](../_bmad-output/implementation-artifacts/deferred-work.md) | Review findings consciously *not* fixed |
 
-## Maintainer runbooks
+## Elsewhere in the repo
 
-| Doc | Notes |
-| --- | --- |
-| [content/radical-mnemonic-images.md](./content/radical-mnemonic-images.md) | Radical mnemonic images in-repo → bundled in app build |
-| [content/phase-4-reading-passage-tooling.md](./content/phase-4-reading-passage-tooling.md) | Reading-passage generation (N5): seeds, tone mix, closed-loop gate — tooling built, run not done |
-| [content/furigana-support-plan.md](./content/furigana-support-plan.md) | Furigana schema / pipeline / UI (shipped; reference) |
-| [../web/README.md](../web/README.md) | Curriculum Studio — local web app to browse/edit curriculum JSON (`npm run studio`); design doc: [design/curriculum-studio-web-plan.md](./design/curriculum-studio-web-plan.md) |
-
-## Feedback plans
-
-Playtest and grammar-review follow-ups: [feedback/](./feedback/) (plans 01–10). Most core work is done; remaining content authoring is tracked in plan 09.
-
-## Design notes
-
-| Doc | Notes |
-| --- | --- |
-| [design/ai-reading-and-community-contribution-design-note.md](./design/ai-reading-and-community-contribution-design-note.md) | Post-MVP Epic 8 scoping (no app work by design) |
-
-## Archive
-
-Closed investigations and historical notes:
-
-| Doc | Notes |
-| --- | --- |
-| [archive/bunpro-import-investigation.md](./archive/bunpro-import-investigation.md) | Bunpro API limits; best-effort import shipped |
+- [`_bmad-output/`](../_bmad-output/README.md) — PRD, architecture, epics, and story files. Reference and tracking, not a feature backlog.
+- [`web/README.md`](../web/README.md) — Curriculum Studio, the local curriculum browser/editor (`npm run studio`).
+- [`archive/`](./archive/) — closed investigations and superseded prompts.

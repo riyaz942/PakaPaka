@@ -403,5 +403,5 @@ Hold this style fixed for every image in this conversation:
 - [`radical-art-web-chat-workflow-automation-prompt.md`](./radical-art-web-chat-workflow-automation-prompt.md) — **superseded**; the old browser-automated lane, kept for its Gemini automation notes
 - [`docs/content/radical-mnemonic-images.md`](../content/radical-mnemonic-images.md) — asset spec, paths, LFS, app wiring
 - [`docs/content/content-pipeline-plan.md`](../content/content-pipeline-plan.md) — Phase 3, Tier 1 vs Tier 2
-- [`docs/radical-image-pilot-prompt.md`](../radical-image-pilot-prompt.md) — the pilot this workflow came out of
+- [`docs/archive/radical-image-pilot-prompt.md`](../archive/radical-image-pilot-prompt.md) — the pilot this workflow came out of
 - [`radical-kanji-vocab-mnemonic-web-chat-workflow.md`](./radical-kanji-vocab-mnemonic-web-chat-workflow.md) — the text lane that must run first

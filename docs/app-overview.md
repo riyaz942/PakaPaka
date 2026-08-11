@@ -88,7 +88,7 @@ Session intensity, daily goal value, weakness-bias toggle, review auto-advance, 
 
 Tracked in detail in [working-history.md](./working-history.md) and [known-issues.md](./known-issues.md):
 
-- Radical mnemonic images are wired end to end but not generated — the app still shows the text fallback.
+- Radical mnemonic images: N5 is complete (76 Tier 1 renders bundled); N4 has none, so N4 radicals show the "Illustration coming soon" placeholder.
 - N4 grammar cloze variants and families (Wave C) are unauthored.
 - `claimStreakCelebration` (`src/data/user/streakRepository.ts`) has a data path but no UI and no callers. Streaks were rejected outright by decision R2, so this is dead code awaiting removal, not a missing feature — do not build UI onto it.
 - App icon and adaptive-icon art are still Expo template assets. The launch screen is v2 (warm background, no logo); the icons need real artwork.

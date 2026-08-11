@@ -2,6 +2,8 @@
 
 Analysis of playtest feedback and follow-on design sessions, grouped into focused plans. Each plan is grounded in the actual code and lists concrete changes, acceptance criteria, and files touched.
 
+**Status of these plans lives in [../working-history.md](../working-history.md)**, not here — this page is the index and sequencing.
+
 Plans **01–06** came from the first playtest pass. Plans **07–10** come from the [2026-07-11 grammar review brainstorm](../../_bmad-output/brainstorming/brainstorming-session-2026-07-11-1800.md) — see the [grammar review overview](07-grammar-review-overview.md).
 
 ## Plans
@@ -19,6 +21,7 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 | [08](08-grammar-stage-ladder.md) | Grammar stage ladder | P1 | MC → type-in; Enlightened no-English |
 | [09](09-grammar-cloze-curriculum.md) | Cloze variants & families | P2 | Schema, 5 variants, family distractors |
 | [10](10-grammar-hints-and-nearmiss.md) | Grammar hints & near-miss | P1 | Nudge→EN hints; incomplete = incorrect |
+| [11](11-lesson-content-order-navigation-and-grammar-furigana.md) | Lesson content order, navigation & grammar furigana | P0–P2 | Content order; duplicate radical mnemonic; swipe between cards; word lookup; detail pages must stack; grammar review furigana |
 | [12](12-android-playtest-round-2.md) | Android playtest round 2 | P0–P3 | Status bar unreadable; refresher opens "No Reviews Due"; prompt disappears on correct/typo; abrupt feedback; forecast detail; remove "separate apps" claim |
 | [13](13-vacation-mode.md) | Vacation mode | — | WaniKani-style pause; due dates shift forward on resume; closes goal-ring O4 |
 | [14](14-conjugated-form-linking-and-furigana-gesture.md) | Conjugated-form linking & furigana gesture | — | 来ます should link to 来る (hero note + conjugated-forms section); tap = details, long-press = hide/show furigana |
@@ -40,19 +43,17 @@ Plans **01–06** came from the first playtest pass. Plans **07–10** come from
 2. **Plan 08 + Plan 10** in parallel — stage input modes and hint/near-miss UX.
 3. **Plan 09** in parallel for schema + Wave A content; swap interim cloze derivation when variants ship.
 
-## Two decisions that need the product owner
+## Decisions — all resolved
 
-- **Plan 14** — resolved 2026-08-10: (1) expand passage `vocabulary_slugs` to
-  include conjugation-only words, accepting the ≥90% Guru+ unlock bar moving
-  on affected passages (implementation in progress); (2) ChatBubble per-word
-  linking/furigana toggle is out of scope for 14 — split into
-  [Plan 15](15-chatbubble-word-linking-and-furigana-toggle.md), which has since
-  shipped.
-- **Plan 02 Q1** — one FSRS card per item, or one per (item, prompt type)? The WaniKani "meaning *and* reading" model the feedback describes needs the split. Recommended as a follow-on story, not a blocker.
-- **Plan 05 §5.1** — removing the time-compression display deletes a documented PRD differentiator. The feedback is clear, but confirm before deleting.
+- **Plan 14** (2026-08-10) — expand passage `vocabulary_slugs` to include conjugation-only words, accepting the ≥90% Guru+ unlock bar moving on affected passages. Shipped. ChatBubble per-word linking/furigana toggle was split out into [Plan 15](15-chatbubble-word-linking-and-furigana-toggle.md), also shipped.
+- **Plan 05 §5.1** — resolved: the time-compression display was removed, along with post-session sharing (see [Plan 12.7](12-android-playtest-round-2.md)).
+- **Plan 02 Q1** — one FSRS card per item, or one per (item, prompt type)? Closed without the DB split: two-card kanji grading (worst-of-both) delivered the WaniKani "meaning *and* reading" behaviour without splitting `srs_states`.
 
 Grammar matrix decisions from the brainstorm are **locked** (see overview); reopen only with a fresh stress-test.
 
-## Not yet reconciled with BMAD
+## Relationship to BMAD
 
-These plans describe changes to code that already exists but is ahead of `CLAUDE.md`'s status table and `_bmad-output/sprint-status.yaml` (Epics 5/6 are marked backlog there but are substantially implemented on this branch). If this work goes through the BMAD story pipeline, these plans are the raw material for `correct-course` / new story files, not a replacement for them.
+Plans 01–15 came from playtesting, ahead of the BMAD story pipeline. Most have since been absorbed by
+wave-2 stories (see [`_bmad-output/README.md`](../../_bmad-output/README.md)); the content-authoring
+leftovers in Plan 09 are tracked in [../working-history.md](../working-history.md), not in
+`sprint-status.yaml`.

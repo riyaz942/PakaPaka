@@ -1,8 +1,13 @@
 # japanese-learning
 
-Planning artifacts live under `_bmad-output/`. The **Expo (React Native) app** for this project lives in **`mobile/`**.
+The **Expo (React Native) app** lives in **`mobile/`**. Planning artifacts live under
+[`_bmad-output/`](_bmad-output/README.md).
 
-New here? [**docs/app-overview.md**](docs/app-overview.md) explains what the app is, how a learner moves through it, and what each screen does. The rest of this file is setup and build/run instructions.
+- **New here?** [**docs/app-overview.md**](docs/app-overview.md) — what the app is, how a learner moves through it, what each screen does.
+- **What's done and what's left?** [**docs/working-history.md**](docs/working-history.md) — the status index for every plan in the repo.
+- **All working docs:** [docs/README.md](docs/README.md).
+
+The rest of this file is setup and build/run instructions.
 
 ## Prerequisites
 

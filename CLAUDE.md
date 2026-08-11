@@ -84,6 +84,8 @@ Offline-first Expo (React Native) Japanese learning app for Android & iOS. Free,
 
 Prefer `docs/README.md` for working docs; `_bmad-output/` holds PRD / architecture / sprint artifacts (reference + tracking, not a feature backlog — check `docs/feedback/` before assuming a gap is intentional).
 
+**Done / not-done status for every plan lives in one place: `docs/working-history.md`.** Read it before assuming something is unbuilt, and update it when a plan's status changes. `_bmad-output/implementation-artifacts/sprint-status.yaml` is authoritative for per-story BMAD status; `_bmad-output/README.md` explains why two generations of story files share that folder.
+
 - Content: radical → kanji → vocabulary dependency graph + structured grammar + reading passages
 - SRS: FSRS with weakness biasing (`0.7 × fsrs + 0.3 × weakness`); unified interleaved review
 - Engagement: adaptive **goal ring** (lessons + reviews, may overshoot 100%, weekly ratchet up only — not a capacity ceiling). No Home streak; days-studied lives in Stats
