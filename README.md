@@ -121,13 +121,29 @@ Use this when you want to test on a real device without a USB cable, or don't ha
    npx eas-cli init    # links this project to your Expo account, if not already linked
    ```
 
-2. Build a development client in the cloud:
+2. Build in the cloud (flags below map to `mobile/eas.json`):
 
    ```bash
-   npx eas-cli build --profile development --platform android   # or --platform ios
+   npx eas-cli build --profile development --platform android
    ```
 
-   This uses the `development` profile in `mobile/eas.json` (`developmentClient: true`, `distribution: internal`). When it finishes, EAS prints an install link and QR code.
+   **`--profile`** (from `mobile/eas.json` → `build`):
+
+   | Value | What it does |
+   | --- | --- |
+   | `development` | Dev client build (`developmentClient: true`, `distribution: internal`). Installable via link/QR; pairs with `npx expo start --dev-client` for live JS reload. Use this for Option C. |
+   | `preview` | Standalone app for internal testing (`distribution: internal`). Not a dev client — no Metro connection; good for sharing a near-release binary with testers without going through the stores. |
+   | `production` | Store-ready release build (default EAS production settings). Use before App Store / Play Store submit (`eas submit` uses the matching `submit.production` profile). |
+
+   **`--platform`:**
+
+   | Value | What it does |
+   | --- | --- |
+   | `android` | Build an Android APK/AAB only. |
+   | `ios` | Build an iOS app only (Apple Developer account required for device/internal installs). |
+   | `all` | Build for both Android and iOS in one command. |
+
+   When the build finishes, EAS prints an install link and QR code.
 
 3. On the device, open the link (or scan the QR code) to download and install the build. For iOS, the device UDID must be registered with your Apple Developer account for internal distribution — EAS will prompt for this during the build if needed.
 
