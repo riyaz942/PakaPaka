@@ -955,7 +955,7 @@ def audit_level(level, all_levels_present, kradfile):
 #: each check already writes — good enough for the studio UI to link a
 #: finding back to an item; not a guarantee every slug mentioned is caught.
 _SLUG_PREFIXED_RE = re.compile(r"\bn[45]-[a-z][a-z0-9-]*\b")
-_SLUG_KIND_LEAD_RE = re.compile(r"^(?:radical|kanji|vocab|grammar) (\S+?):")
+_SLUG_KIND_LEAD_RE = re.compile(r"^(radical|kanji|vocab|grammar) (\S+?):")
 _SLUG_BACKTICK_RE = re.compile(r"`([a-zA-Z][a-zA-Z0-9_-]*)`")
 _SLUG_KRADFILE_RE = re.compile(r"KRADFILE lists \S+ \(([a-zA-Z][a-zA-Z0-9_-]*)\)")
 _SLUG_SYMMETRY_UNKNOWN_RE = re.compile(
@@ -970,7 +970,9 @@ def extract_slugs(message, level):
 
     m = _SLUG_KIND_LEAD_RE.match(message)
     if m:
-        found.add(m.group(1))
+        # Qualified with kind so same-string slugs across content types
+        # (e.g. radical "mushi" vs. vocab "mushi") don't collide downstream.
+        found.add(f"{m.group(1)}:{m.group(2)}")
 
     found.update(_SLUG_BACKTICK_RE.findall(message))
 

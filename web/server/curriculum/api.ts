@@ -3,6 +3,8 @@ import { Router as createRouter } from 'express';
 import {
   buildAuditBySlug,
   getAuditFindings,
+  getFindingsForItem,
+  parseQualifiedSlug,
   reloadAuditFindings,
   runAudit,
   summarizeAudit,
@@ -78,11 +80,16 @@ function parseSeverity(value: unknown): FindingSeverity | undefined {
 type SlugLink = { slug: string; type: ContentType | null };
 
 function resolveSlugLinks(index: CurriculumIndex, slugs: string[]): SlugLink[] {
-  return slugs.map((slug) => {
-    for (const type of CONTENT_TYPES) {
-      if (index.bySlug.has(itemKey(type, slug))) return { slug, type };
+  return slugs.map((raw) => {
+    const qualified = parseQualifiedSlug(raw);
+    if (qualified) {
+      const { type, slug } = qualified;
+      return index.bySlug.has(itemKey(type, slug)) ? { slug, type } : { slug, type: null };
     }
-    return { slug, type: null };
+    for (const type of CONTENT_TYPES) {
+      if (index.bySlug.has(itemKey(type, raw))) return { slug: raw, type };
+    }
+    return { slug: raw, type: null };
   });
 }
 
@@ -161,7 +168,7 @@ function serializeListItem(
   auditFindingCount: number;
 } {
   const { raw: _raw, ...rest } = item;
-  const findings = auditBySlug.get(item.slug) ?? [];
+  const findings = getFindingsForItem(auditBySlug, item.type, item.slug);
   return {
     ...rest,
     auditSeverity: worstSeverity(findings),
@@ -208,7 +215,7 @@ function matchesAuditFilter(
   audit: string,
   auditBySlug: Map<string, AuditFinding[]>,
 ): boolean {
-  const findings = auditBySlug.get(item.slug) ?? [];
+  const findings = getFindingsForItem(auditBySlug, item.type, item.slug);
   if (audit === 'any') return findings.length > 0;
   const severity = audit.toUpperCase();
   return findings.some((f) => f.severity === severity);
@@ -445,7 +452,7 @@ export function createCurriculumRouter(
       ...item,
       isSkeleton: isSkeleton(item),
       dependencySummary: resolveDependencySummary(index, type, item.slug),
-      auditFindings: auditBySlug.get(item.slug) ?? [],
+      auditFindings: getFindingsForItem(auditBySlug, type, item.slug),
     });
   });
 

@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import type { JlptLevel } from './types.js';
+import { itemKey, type ContentType, type JlptLevel } from './types.js';
 
 export type FindingSeverity = 'ERROR' | 'WARNING' | 'INFO';
 
@@ -62,17 +62,58 @@ export function reloadAuditFindings(root: string): AuditFinding[] {
   return getAuditFindings(root);
 }
 
-/** Findings key by bare slug (radicals have no level prefix; kanji/vocab/grammar/passage do). */
+/** audit_shipped.py's message-derived kind words -> this app's ContentType. */
+const KIND_TO_TYPE: Record<string, ContentType> = {
+  radical: 'radical',
+  kanji: 'kanji',
+  vocab: 'vocabulary',
+  grammar: 'grammar',
+};
+
+/**
+ * A finding's `slugs` entries are either `"<kind>:<slug>"` (the item the
+ * finding is actually about — see audit_shipped.py's `_SLUG_KIND_LEAD_RE`)
+ * or a bare slug (a same-string cross-reference mentioned in the message,
+ * e.g. via backticks, whose type audit_shipped.py couldn't determine from
+ * regex alone). Only the qualified form disambiguates same-string slugs
+ * that exist under multiple content types (e.g. radical "mushi" vs. vocab
+ * "mushi").
+ */
+export function parseQualifiedSlug(
+  raw: string,
+): { type: ContentType; slug: string } | null {
+  const sep = raw.indexOf(':');
+  if (sep === -1) return null;
+  const type = KIND_TO_TYPE[raw.slice(0, sep)];
+  if (!type) return null;
+  return { type, slug: raw.slice(sep + 1) };
+}
+
+/** Findings keyed by `itemKey(type, slug)` when qualified, else by bare slug. */
 export function buildAuditBySlug(findings: AuditFinding[]): Map<string, AuditFinding[]> {
   const map = new Map<string, AuditFinding[]>();
   for (const finding of findings) {
     for (const slug of finding.slugs) {
-      const list = map.get(slug);
+      const qualified = parseQualifiedSlug(slug);
+      const key = qualified ? itemKey(qualified.type, qualified.slug) : slug;
+      const list = map.get(key);
       if (list) list.push(finding);
-      else map.set(slug, [finding]);
+      else map.set(key, [finding]);
     }
   }
   return map;
+}
+
+/** Findings for one item: exact type+slug matches plus best-effort bare-slug cross-references. */
+export function getFindingsForItem(
+  auditBySlug: Map<string, AuditFinding[]>,
+  type: ContentType,
+  slug: string,
+): AuditFinding[] {
+  const qualified = auditBySlug.get(itemKey(type, slug)) ?? [];
+  const bare = auditBySlug.get(slug) ?? [];
+  if (bare.length === 0) return qualified;
+  return [...new Set([...qualified, ...bare])];
 }
 
 function lastRunAt(root: string): string | null {
