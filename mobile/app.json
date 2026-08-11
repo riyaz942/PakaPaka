@@ -20,7 +20,10 @@
         "backgroundImage": "./assets/images/android-icon-background.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.nihongocore.app"
+      "package": "com.nihongocore.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "static",
@@ -54,7 +57,9 @@
         "react-native-audio-api",
         {
           "iosMicrophonePermission": "Lets you speak Japanese during conversation practice. Speech is transcribed on this device by default. If you turn on cloud transcription in Settings, audio is sent only to the HTTPS endpoint you configured with your own key.",
-          "androidPermissions": ["android.permission.RECORD_AUDIO"],
+          "androidPermissions": [
+            "android.permission.RECORD_AUDIO"
+          ],
           "iosBackgroundMode": false,
           "androidForegroundService": false
         }
@@ -75,12 +80,12 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
+    "owner": "riyaz942",
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4998d58c-4b3f-4d72-81c6-9eb97c427935"
+        "projectId": "ab721e6a-5c64-4ea8-97aa-c04dc531198b"
       }
-    },
-    "owner": "riyaz942"
+    }
   }
 }
