@@ -107,6 +107,7 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
         {prev ? (
           <Link
             to={`/content/${prev.type}/${prev.slug}${detailSearch}`}
+            replace
             className="item-list-nav__btn"
             title={prev.meaning || prev.slug}
           >
@@ -124,6 +125,7 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
         {next ? (
           <Link
             to={`/content/${next.type}/${next.slug}${detailSearch}`}
+            replace
             className="item-list-nav__btn item-list-nav__btn--next"
             title={next.meaning || next.slug}
           >
