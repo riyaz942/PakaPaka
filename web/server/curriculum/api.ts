@@ -7,6 +7,9 @@ import {
   SKELETON_THRESHOLD,
   type ContentItem,
   type ContentType,
+  type CurriculumIndex,
+  type DependencyRef,
+  type DependencySummary,
   type JlptLevel,
   type ReviewStatus,
 } from './types.js';
@@ -166,6 +169,42 @@ function filterItems(
   });
 }
 
+function resolveDependencySummary(
+  index: CurriculumIndex,
+  type: ContentType,
+  slug: string,
+): DependencySummary {
+  const incoming: DependencyRef[] = [];
+  const outgoing: DependencyRef[] = [];
+
+  for (const edge of index.edges) {
+    if (edge.to_type === type && edge.to_slug === slug) {
+      const from = index.bySlug.get(
+        itemKey(edge.from_type as ContentType, edge.from_slug),
+      );
+      incoming.push({
+        type: edge.from_type as ContentType,
+        slug: edge.from_slug,
+        primaryForm: from?.primaryForm ?? edge.from_slug,
+        relationship: edge.relationship_type,
+      });
+    }
+    if (edge.from_type === type && edge.from_slug === slug) {
+      const to = index.bySlug.get(
+        itemKey(edge.to_type as ContentType, edge.to_slug),
+      );
+      outgoing.push({
+        type: edge.to_type as ContentType,
+        slug: edge.to_slug,
+        primaryForm: to?.primaryForm ?? edge.to_slug,
+        relationship: edge.relationship_type,
+      });
+    }
+  }
+
+  return { incoming, outgoing };
+}
+
 export function createCurriculumRouter(
   repoRoot: string,
   webRoot: string,
@@ -265,6 +304,7 @@ export function createCurriculumRouter(
     res.json({
       ...item,
       isSkeleton: isSkeleton(item),
+      dependencySummary: resolveDependencySummary(index, type, item.slug),
     });
   });
 

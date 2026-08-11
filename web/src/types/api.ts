@@ -82,6 +82,24 @@ export type ItemsResponse = {
   items: ContentListItem[];
 };
 
+export type DependencyRef = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  relationship: string;
+};
+
+export type DependencySummary = {
+  incoming: DependencyRef[];
+  outgoing: DependencyRef[];
+};
+
+export type ItemDetailResponse = ContentListItem & {
+  raw: Record<string, unknown>;
+  isSkeleton: boolean;
+  dependencySummary: DependencySummary;
+};
+
 export const CONTENT_TYPES: ContentType[] = [
   'radical',
   'kanji',
@@ -103,4 +121,46 @@ export const STATUS_LABELS: Record<ReviewStatus, string> = {
   reviewed: 'Reviewed',
   flagged_for_rewrite: 'Flagged',
   none: 'None',
+};
+
+/** Mirrors the per-type checklists in web/server/curriculum/completeness.ts. */
+export const MISSING_FIELD_OPTIONS: Record<ContentType, string[]> = {
+  radical: [
+    'mnemonic_text',
+    'description',
+    'accepted_answers',
+    'visual_mnemonic_url',
+  ],
+  kanji: [
+    'readings',
+    'accepted_answers',
+    'meaning_mnemonic',
+    'reading_mnemonic',
+    'description',
+    'example_sentences',
+  ],
+  vocabulary: [
+    'furigana',
+    'accepted_answers',
+    'meaning_mnemonic',
+    'reading_mnemonic',
+    'example_sentences',
+  ],
+  grammar: [
+    'explanation_markdown',
+    'caution_notes',
+    'accepted_forms',
+    'cloze_variants',
+    'example_sentences',
+  ],
+  reading: [
+    'body_furigana',
+    'english_translation',
+    'summary_ja',
+    'summary_en',
+    'word_spans',
+    'grammar_slugs',
+    'vocabulary_slugs',
+    'questions',
+  ],
 };

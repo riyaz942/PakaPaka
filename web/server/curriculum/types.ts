@@ -81,6 +81,18 @@ export type CurriculumIndex = {
   bySlug: Map<string, ContentItem>;
 };
 
+export type DependencyRef = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  relationship: string;
+};
+
+export type DependencySummary = {
+  incoming: DependencyRef[];
+  outgoing: DependencyRef[];
+};
+
 /** Map key for bySlug lookups. */
 export function itemKey(type: ContentType, slug: string): string {
   return `${type}:${slug}`;
