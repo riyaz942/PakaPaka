@@ -173,6 +173,34 @@ button {
   letter-spacing: 0.04em;
 }
 
+.severity-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.severity-badge--error {
+  color: #1a1b26;
+  background: var(--danger);
+}
+
+.severity-badge--warning {
+  color: #1a1b26;
+  background: var(--warning);
+}
+
+.severity-badge--info {
+  color: var(--text-muted);
+  background: #242836;
+  border: 1px solid var(--border);
+}
+
 .warning-badge {
   display: inline-flex;
   align-items: center;
@@ -912,6 +940,111 @@ rt {
   .dependency-columns {
     grid-template-columns: 1fr;
   }
+}
+
+.audit-finding-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.audit-finding {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  background: rgba(15, 17, 21, 0.45);
+}
+
+.audit-finding--highlight {
+  border-color: var(--accent);
+  background: rgba(122, 162, 247, 0.1);
+}
+
+.audit-finding__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.audit-finding__check {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.audit-finding__message {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- Audit page --- */
+
+.audit-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 72rem;
+}
+
+.audit-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.audit-run-button {
+  appearance: none;
+  border: 1px solid var(--accent-muted);
+  background: rgba(122, 162, 247, 0.16);
+  color: var(--accent);
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.audit-run-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.audit-totals {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.audit-check-group {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+  background: rgba(15, 17, 21, 0.45);
+}
+
+.audit-check-group__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.audit-check-group__title {
+  font-weight: 500;
+}
+
+.audit-finding-row__slugs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
 }
 
 /* --- Header actions --- */

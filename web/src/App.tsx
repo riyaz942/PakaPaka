@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
+import Audit from './pages/Audit';
 import ContentList from './pages/ContentList';
 import Dashboard from './pages/Dashboard';
 import ItemDetail from './pages/ItemDetail';
@@ -7,12 +8,10 @@ import ItemDetail from './pages/ItemDetail';
 const NAV_LINKS = [
   { id: 'dashboard', label: 'Dashboard', to: '/', end: true },
   { id: 'content', label: 'Content', to: '/content', end: false },
+  { id: 'audit', label: 'Audit', to: '/audit', end: false },
 ] as const;
 
-const NAV_PLACEHOLDERS = [
-  { id: 'graph', label: 'Graph' },
-  { id: 'audit', label: 'Audit' },
-] as const;
+const NAV_PLACEHOLDERS = [{ id: 'graph', label: 'Graph' }] as const;
 
 export default function App() {
   const [reloadStatus, setReloadStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
@@ -62,6 +61,7 @@ export default function App() {
           <Route path="/content" element={<Navigate to="/content/radical" replace />} />
           <Route path="/content/:type" element={<ContentList />} />
           <Route path="/content/:type/:slug" element={<ItemDetail />} />
+          <Route path="/audit" element={<Audit />} />
         </Routes>
       </main>
     </div>

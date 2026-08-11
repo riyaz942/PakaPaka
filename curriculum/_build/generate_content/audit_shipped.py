@@ -30,7 +30,9 @@ Run (from curriculum/_build):
 
 import argparse
 import glob
+import json
 import os
+import re
 import sys
 
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -946,6 +948,72 @@ def audit_level(level, all_levels_present, kradfile):
     return findings
 
 
+#: Message shapes seen across this file's `results.append((severity, message))`
+#: calls. Findings don't carry slugs as structured data (the `Findings`/
+#: `_Section` bucket is just (severity, message) pairs shared across every
+#: check), so `--json` recovers them by pattern-matching the message text
+#: each check already writes — good enough for the studio UI to link a
+#: finding back to an item; not a guarantee every slug mentioned is caught.
+_SLUG_PREFIXED_RE = re.compile(r"\bn[45]-[a-z][a-z0-9-]*\b")
+_SLUG_KIND_LEAD_RE = re.compile(r"^(?:radical|kanji|vocab|grammar) (\S+?):")
+_SLUG_BACKTICK_RE = re.compile(r"`([a-zA-Z][a-zA-Z0-9_-]*)`")
+_SLUG_KRADFILE_RE = re.compile(r"KRADFILE lists \S+ \(([a-zA-Z][a-zA-Z0-9_-]*)\)")
+_SLUG_SYMMETRY_UNKNOWN_RE = re.compile(
+    r"^(\S+): visually_similar_slugs references unknown slug '([^']*)'"
+)
+_SLUG_SYMMETRY_ASYMMETRIC_RE = re.compile(r"^(\S+) lists '([^']*)' as visually similar")
+_SLUG_PASSAGE_RE = re.compile(r"passage\[sort_order=(\d+)\]")
+
+
+def extract_slugs(message, level):
+    found = set(_SLUG_PREFIXED_RE.findall(message))
+
+    m = _SLUG_KIND_LEAD_RE.match(message)
+    if m:
+        found.add(m.group(1))
+
+    found.update(_SLUG_BACKTICK_RE.findall(message))
+
+    m = _SLUG_KRADFILE_RE.search(message)
+    if m:
+        found.add(m.group(1))
+
+    m = _SLUG_SYMMETRY_UNKNOWN_RE.match(message)
+    if m:
+        found.add(m.group(1))
+        if m.group(2):
+            found.add(m.group(2))
+
+    m = _SLUG_SYMMETRY_ASYMMETRIC_RE.match(message)
+    if m:
+        found.add(m.group(1))
+        found.add(m.group(2))
+
+    m = _SLUG_PASSAGE_RE.search(message)
+    if m:
+        found.add(f"passage-{level}-{m.group(1)}")
+
+    return sorted(found)
+
+
+def write_json_report(level, findings):
+    os.makedirs(REPORTS_DIR, exist_ok=True)
+    out_path = os.path.join(REPORTS_DIR, f"content-audit-{level}.json")
+    rows = []
+    for title, entries in findings.sections:
+        for severity, message in entries:
+            rows.append({
+                "check": title,
+                "severity": severity,
+                "message": message,
+                "slugs": extract_slugs(message, level),
+            })
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(rows, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    return out_path
+
+
 def write_report(level, findings):
     os.makedirs(REPORTS_DIR, exist_ok=True)
     out_path = os.path.join(REPORTS_DIR, f"content-audit-{level}.md")
@@ -987,6 +1055,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--level", action="append", dest="levels",
                         help="repeatable; defaults to every level present in curriculum/")
+    parser.add_argument("--json", action="store_true",
+                        help="also write content-audit-<level>.json (studio UI consumption)")
     args = parser.parse_args()
 
     all_levels_present = discover_levels()
@@ -998,6 +1068,8 @@ def main():
     for level in levels:
         findings = audit_level(level, all_levels_present, kradfile)
         out_path = write_report(level, findings)
+        if args.json:
+            write_json_report(level, findings)
         print(
             f"Wrote {out_path}: {findings.counts['ERROR']} error(s), "
             f"{findings.counts['WARNING']} warning(s), {findings.counts['INFO']} info."

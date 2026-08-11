@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { CompletenessPill } from '../components/CompletenessPill';
+import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
 import {
@@ -9,6 +10,7 @@ import {
   MISSING_FIELD_OPTIONS,
   STATUS_LABELS,
   type ContentType,
+  type FindingSeverity,
   type ItemsResponse,
   type JlptLevel,
   type ReviewStatus,
@@ -16,6 +18,13 @@ import {
 
 const LEVEL_OPTIONS: Array<JlptLevel | ''> = ['', 'N5', 'N4'];
 const STATUSES: ReviewStatus[] = ['draft', 'reviewed', 'flagged_for_rewrite', 'none'];
+const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
+  { value: '', label: 'Any audit status' },
+  { value: 'any', label: 'Has audit issues' },
+  { value: 'error', label: 'Audit: error' },
+  { value: 'warning', label: 'Audit: warning' },
+  { value: 'info', label: 'Audit: info' },
+];
 const PAGE_SIZE = 50;
 const SEARCH_DEBOUNCE_MS = 300;
 
@@ -41,12 +50,13 @@ function SkeletonRows() {
             <th>Level</th>
             <th>Status</th>
             <th>Completeness</th>
+            <th>Audit</th>
           </tr>
         </thead>
         <tbody>
           {Array.from({ length: 8 }, (_, i) => (
             <tr key={i}>
-              <td colSpan={6}>
+              <td colSpan={7}>
                 <span className="skeleton-bar" />
               </td>
             </tr>
@@ -77,6 +87,7 @@ export default function ContentList() {
   const skeleton = searchParams.get('skeleton') === 'true';
   const missing = searchParams.get('missing') ?? '';
   const q = searchParams.get('q') ?? '';
+  const audit = searchParams.get('audit') ?? '';
   const sort = searchParams.get('sort') ?? 'sort_order';
   const page = Math.max(1, Number(searchParams.get('page')) || 1);
 
@@ -119,11 +130,12 @@ export default function ContentList() {
     if (skeleton) qs.set('skeleton', 'true');
     if (missing) qs.set('missing', missing);
     if (q) qs.set('q', q);
+    if (audit) qs.set('audit', audit);
     qs.set('sort', sort);
     qs.set('page', String(page));
     qs.set('pageSize', String(PAGE_SIZE));
     return `/api/items?${qs.toString()}`;
-  }, [type, level, status, skeleton, missing, q, sort, page]);
+  }, [type, level, status, skeleton, missing, q, audit, sort, page]);
 
   const result = useApi<ItemsResponse>(apiUrl);
   const missingOptions = MISSING_FIELD_OPTIONS[type];
@@ -207,13 +219,17 @@ export default function ContentList() {
           aria-label="Search"
         />
 
-        <label
-          className="checkbox-field checkbox-field--disabled"
-          title="Coming in Chunk 7"
+        <select
+          value={audit}
+          onChange={(e) => updateParams({ audit: e.target.value || null, page: null })}
+          aria-label="Audit status"
         >
-          <input type="checkbox" disabled />
-          Has audit issues
-        </label>
+          {AUDIT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
 
         <select
           value={sort}
@@ -250,6 +266,7 @@ export default function ContentList() {
                     <th>Level</th>
                     <th>Status</th>
                     <th>Completeness</th>
+                    <th>Audit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -287,6 +304,16 @@ export default function ContentList() {
                           percent={item.completeness.percent}
                           skeleton={item.completeness.percent < 0.6}
                         />
+                      </td>
+                      <td>
+                        {item.auditSeverity ? (
+                          <SeverityBadge
+                            severity={item.auditSeverity as FindingSeverity}
+                            count={item.auditFindingCount}
+                          />
+                        ) : (
+                          <span className="panel-muted">—</span>
+                        )}
                       </td>
                     </tr>
                   ))}

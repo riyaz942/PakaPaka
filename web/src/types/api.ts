@@ -24,6 +24,31 @@ export type SidecarMeta = {
   review_status?: Exclude<ReviewStatus, 'none'>;
 };
 
+export type FindingSeverity = 'ERROR' | 'WARNING' | 'INFO';
+
+export type AuditFinding = {
+  level: JlptLevel;
+  check: string;
+  severity: FindingSeverity;
+  message: string;
+  slugs: string[];
+};
+
+export type SeverityTotals = Record<FindingSeverity, number>;
+
+export type AuditSummary = {
+  lastRunAt: string | null;
+  totals: SeverityTotals;
+  byCheck: { check: string; totals: SeverityTotals }[];
+};
+
+export type AuditFindingSlugLink = { slug: string; type: ContentType | null };
+
+export type AuditFindingsResponse = {
+  total: number;
+  findings: (AuditFinding & { links: AuditFindingSlugLink[] })[];
+};
+
 export type ContentListItem = {
   type: ContentType;
   level: JlptLevel;
@@ -34,6 +59,8 @@ export type ContentListItem = {
   reviewStatus: ReviewStatus;
   meta?: SidecarMeta;
   completeness: Completeness;
+  auditSeverity: FindingSeverity | null;
+  auditFindingCount: number;
 };
 
 export type OverviewBucket = {
@@ -98,6 +125,7 @@ export type ItemDetailResponse = ContentListItem & {
   raw: Record<string, unknown>;
   isSkeleton: boolean;
   dependencySummary: DependencySummary;
+  auditFindings: AuditFinding[];
 };
 
 export const CONTENT_TYPES: ContentType[] = [

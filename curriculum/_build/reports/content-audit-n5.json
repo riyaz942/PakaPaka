@@ -1,0 +1,171 @@
+[
+  {
+    "check": "Review-status rollup",
+    "severity": "INFO",
+    "message": "radicals (90 total): draft: 14, reviewed: 76",
+    "slugs": []
+  },
+  {
+    "check": "Review-status rollup",
+    "severity": "INFO",
+    "message": "kanji (106 total): draft: 42, reviewed: 64",
+    "slugs": []
+  },
+  {
+    "check": "Review-status rollup",
+    "severity": "INFO",
+    "message": "vocabulary (716 total): draft: 716",
+    "slugs": []
+  },
+  {
+    "check": "Review-status rollup",
+    "severity": "INFO",
+    "message": "grammar (74 total): reviewed: 74",
+    "slugs": []
+  },
+  {
+    "check": "Review-status rollup",
+    "severity": "INFO",
+    "message": "readings (10 total): (no _meta field on passages): 10",
+    "slugs": []
+  },
+  {
+    "check": "Re-run of existing draft gates on shipped content",
+    "severity": "ERROR",
+    "message": "passage[sort_order=7] '赤い箱' (seed jidouhanbaiki): summary_ja is too long (69 chars; keep <= 60)",
+    "slugs": [
+      "passage-n5-7"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "ノ: KRADFILE component of 10 taught kanji is taught nowhere, as neither radical nor kanji — n5-hidari (左), n5-hidariuma (午), n5-ki-spirit (気), n5-man (万), n5-migi (右), n5-nana (七), n5-nen (年), n5-sen (千) …",
+    "slugs": [
+      "n5-hidari",
+      "n5-hidariuma",
+      "n5-ki-spirit",
+      "n5-man",
+      "n5-migi",
+      "n5-nana",
+      "n5-nen",
+      "n5-sen"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "｜: KRADFILE component of 9 taught kanji is taught nowhere, as neither radical nor kanji — n5-deru (出), n5-en (円), n5-hantime (半), n5-higashi (東), n5-kuru-rai (来), n5-man (万), n5-naka (中), n5-shita (下) …",
+    "slugs": [
+      "n5-deru",
+      "n5-en",
+      "n5-hantime",
+      "n5-higashi",
+      "n5-kuru-rai",
+      "n5-man",
+      "n5-naka",
+      "n5-shita"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "乞: KRADFILE component of 4 taught kanji is taught nowhere, as neither radical nor kanji — n5-hidariuma (午), n5-ki-spirit (気), n5-mai-every (毎), n5-nen (年)",
+    "slugs": [
+      "n5-hidariuma",
+      "n5-ki-spirit",
+      "n5-mai-every",
+      "n5-nen"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "乙: KRADFILE component of 2 taught kanji is taught nowhere, as neither radical nor kanji — n5-denki-den (電), n5-nana (七)",
+    "slugs": [
+      "n5-denki-den",
+      "n5-nana"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "杰: KRADFILE component of 2 taught kanji is taught nowhere, as neither radical nor kanji — n5-eki-station (駅), n5-kane-gold-dup (黒)",
+    "slugs": [
+      "n5-eki-station",
+      "n5-kane-gold-dup"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "爿: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-kita (北)",
+    "slugs": [
+      "n5-kita"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "毋: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-mai-every (毎)",
+    "slugs": [
+      "n5-mai-every"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "尚: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-gaku (学)",
+    "slugs": [
+      "n5-gaku"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "凵: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-deru (出)",
+    "slugs": [
+      "n5-deru"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "亅: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-machi (町)",
+    "slugs": [
+      "n5-machi"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "大: KRADFILE component of 1 taught kanji is taught as a kanji, not a radical, so no builds_on edge is expressible — n5-ten (天)",
+    "slugs": [
+      "n5-ten"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "五: KRADFILE component of 1 taught kanji is taught as a kanji, not a radical, so no builds_on edge is expressible — n5-go-language (語)",
+    "slugs": [
+      "n5-go-language"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "食: KRADFILE component of 1 taught kanji is taught as a kanji, not a radical, so no builds_on edge is expressible — n5-nomu (飲)",
+    "slugs": [
+      "n5-nomu"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "INFO",
+    "message": "自: KRADFILE component of 1 taught kanji is taught as a kanji, not a radical, so no builds_on edge is expressible — n5-michi (道)",
+    "slugs": [
+      "n5-michi"
+    ]
+  }
+]

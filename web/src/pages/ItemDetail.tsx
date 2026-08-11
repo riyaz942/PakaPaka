@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { AuditFindingsPanel } from '../components/AuditFindingsPanel';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
 import { EditForm } from '../components/edit/EditForm';
@@ -35,8 +36,8 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
 
 export default function ItemDetail() {
   const { type: rawType, slug } = useParams<{ type: string; slug: string }>();
-  const [showReadings, setShowReadings] = useState(true);
-  const [editing, setEditing] = useState(false);
+  const [searchParams] = useSearchParams();
+  const highlight = searchParams.get('highlight');
   const [refreshToken, setRefreshToken] = useState(0);
 
   const type = isContentType(rawType) ? rawType : undefined;
@@ -60,6 +61,30 @@ export default function ItemDetail() {
   }
 
   const item = result.data;
+
+  return <ItemDetailBody item={item} type={type} slug={slug} highlight={highlight} refresh={refresh} />;
+}
+
+function ItemDetailBody({
+  item,
+  type,
+  slug,
+  highlight,
+  refresh,
+}: {
+  item: ItemDetailResponse;
+  type: ContentType;
+  slug: string;
+  highlight: string | null;
+  refresh: () => void;
+}) {
+  const [showReadings, setShowReadings] = useState(true);
+  const [editing, setEditing] = useState(false);
+
+  useEffect(() => {
+    if (!highlight) return;
+    document.getElementById('audit-findings')?.scrollIntoView({ block: 'start' });
+  }, [highlight]);
 
   return (
     <div className="item-detail">
@@ -120,6 +145,8 @@ export default function ItemDetail() {
           <TypeSection item={item} showReadings={showReadings} />
         </>
       )}
+
+      <AuditFindingsPanel findings={item.auditFindings} highlight={highlight} />
 
       <DependencyPanel dependencySummary={item.dependencySummary} />
     </div>

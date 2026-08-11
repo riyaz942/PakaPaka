@@ -1,5 +1,14 @@
 import type { Request, Response, Router } from 'express';
 import { Router as createRouter } from 'express';
+import {
+  buildAuditBySlug,
+  getAuditFindings,
+  reloadAuditFindings,
+  runAudit,
+  summarizeAudit,
+  type AuditFinding,
+  type FindingSeverity,
+} from './audit.js';
 import { getCurriculum, loadTargets, reload } from './loader.js';
 import {
   isSkeleton,
@@ -37,6 +46,38 @@ const STATUSES: ReviewStatus[] = [
   'flagged_for_rewrite',
   'none',
 ];
+
+const SEVERITIES: FindingSeverity[] = ['ERROR', 'WARNING', 'INFO'];
+const SEVERITY_RANK: Record<FindingSeverity, number> = { ERROR: 0, WARNING: 1, INFO: 2 };
+
+function worstSeverity(findings: AuditFinding[]): FindingSeverity | null {
+  let worst: FindingSeverity | null = null;
+  for (const f of findings) {
+    if (worst === null || SEVERITY_RANK[f.severity] < SEVERITY_RANK[worst]) {
+      worst = f.severity;
+    }
+  }
+  return worst;
+}
+
+function parseSeverity(value: unknown): FindingSeverity | undefined {
+  if (typeof value !== 'string') return undefined;
+  const upper = value.toUpperCase();
+  return SEVERITIES.includes(upper as FindingSeverity)
+    ? (upper as FindingSeverity)
+    : undefined;
+}
+
+type SlugLink = { slug: string; type: ContentType | null };
+
+function resolveSlugLinks(index: CurriculumIndex, slugs: string[]): SlugLink[] {
+  return slugs.map((slug) => {
+    for (const type of CONTENT_TYPES) {
+      if (index.bySlug.has(itemKey(type, slug))) return { slug, type };
+    }
+    return { slug, type: null };
+  });
+}
 
 type OverviewBucket = {
   total: number;
@@ -105,9 +146,20 @@ function parseStatus(value: unknown): ReviewStatus | undefined {
     : undefined;
 }
 
-function serializeListItem(item: ContentItem): Omit<ContentItem, 'raw'> {
+function serializeListItem(
+  item: ContentItem,
+  auditBySlug: Map<string, AuditFinding[]>,
+): Omit<ContentItem, 'raw'> & {
+  auditSeverity: FindingSeverity | null;
+  auditFindingCount: number;
+} {
   const { raw: _raw, ...rest } = item;
-  return rest;
+  const findings = auditBySlug.get(item.slug) ?? [];
+  return {
+    ...rest,
+    auditSeverity: worstSeverity(findings),
+    auditFindingCount: findings.length,
+  };
 }
 
 function sortItems(
@@ -147,6 +199,7 @@ function sortItems(
 function filterItems(
   items: ContentItem[],
   query: Request['query'],
+  auditBySlug: Map<string, AuditFinding[]>,
 ): ContentItem[] {
   const type = parseType(query.type);
   const level = parseLevel(query.level);
@@ -160,6 +213,10 @@ function filterItems(
     typeof query.q === 'string' && query.q.trim().length > 0
       ? query.q.trim().toLowerCase()
       : undefined;
+  const audit =
+    typeof query.audit === 'string' && query.audit.length > 0
+      ? query.audit.toLowerCase()
+      : undefined;
 
   return items.filter((item) => {
     if (type && item.type !== type) return false;
@@ -171,6 +228,15 @@ function filterItems(
       const haystack =
         `${item.slug} ${item.primaryForm} ${item.meaning}`.toLowerCase();
       if (!haystack.includes(q)) return false;
+    }
+    if (audit) {
+      const findings = auditBySlug.get(item.slug) ?? [];
+      if (audit === 'any') {
+        if (findings.length === 0) return false;
+      } else {
+        const severity = audit.toUpperCase();
+        if (!findings.some((f) => f.severity === severity)) return false;
+      }
     }
     return true;
   });
@@ -273,8 +339,9 @@ export function createCurriculumRouter(
 
   router.get('/items', (req: Request, res: Response) => {
     const index = getCurriculum(repoRoot);
+    const auditBySlug = buildAuditBySlug(getAuditFindings(repoRoot));
     const filtered = sortItems(
-      filterItems(index.items, req.query),
+      filterItems(index.items, req.query, auditBySlug),
       typeof req.query.sort === 'string' ? req.query.sort : undefined,
     );
 
@@ -290,7 +357,7 @@ export function createCurriculumRouter(
       total: filtered.length,
       page,
       pageSize,
-      items: pageItems.map(serializeListItem),
+      items: pageItems.map((item) => serializeListItem(item, auditBySlug)),
     });
   });
 
@@ -308,10 +375,13 @@ export function createCurriculumRouter(
       return;
     }
 
+    const auditBySlug = buildAuditBySlug(getAuditFindings(repoRoot));
+
     res.json({
       ...item,
       isSkeleton: isSkeleton(item),
       dependencySummary: resolveDependencySummary(index, type, item.slug),
+      auditFindings: auditBySlug.get(item.slug) ?? [],
     });
   });
 
@@ -379,7 +449,46 @@ export function createCurriculumRouter(
 
   router.post('/reload', (_req: Request, res: Response) => {
     const index = reload(repoRoot);
+    reloadAuditFindings(repoRoot);
     res.json({ ok: true, itemCount: index.items.length });
+  });
+
+  router.get('/audit/summary', (_req: Request, res: Response) => {
+    res.json(summarizeAudit(repoRoot));
+  });
+
+  router.post('/audit/run', (_req: Request, res: Response) => {
+    runAudit(repoRoot).then((result) => {
+      if (!result.ok) {
+        res.status(500).json(result);
+        return;
+      }
+      res.json(result);
+    });
+  });
+
+  router.get('/audit/findings', (req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+    const severity = parseSeverity(req.query.severity);
+    const check =
+      typeof req.query.check === 'string' && req.query.check.length > 0
+        ? req.query.check
+        : undefined;
+    const type = parseType(req.query.type);
+
+    const filtered = getAuditFindings(repoRoot)
+      .map((finding) => ({ finding, links: resolveSlugLinks(index, finding.slugs) }))
+      .filter(({ finding, links }) => {
+        if (severity && finding.severity !== severity) return false;
+        if (check && finding.check !== check) return false;
+        if (type && !links.some((l) => l.type === type)) return false;
+        return true;
+      });
+
+    res.json({
+      total: filtered.length,
+      findings: filtered.map(({ finding, links }) => ({ ...finding, links })),
+    });
   });
 
   return router;
