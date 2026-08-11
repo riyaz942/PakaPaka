@@ -109,6 +109,21 @@ export type ItemsResponse = {
   items: ContentListItem[];
 };
 
+export type ItemNeighbor = {
+  type: ContentType;
+  slug: string;
+  primaryForm: string;
+  meaning: string;
+};
+
+export type ItemsNeighborsResponse = {
+  total: number;
+  /** 0-based index in the filtered list, or -1 if the item is not in that list. */
+  index: number;
+  prev: ItemNeighbor | null;
+  next: ItemNeighbor | null;
+};
+
 export type DependencyRef = {
   type: ContentType;
   slug: string;

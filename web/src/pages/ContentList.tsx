@@ -4,6 +4,7 @@ import { CompletenessPill } from '../components/CompletenessPill';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
+import { listContextSearch } from '../lib/listContext';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
@@ -141,6 +142,7 @@ export default function ContentList() {
   const missingOptions = MISSING_FIELD_OPTIONS[type];
   const totalPages =
     result.status === 'ok' ? Math.max(1, Math.ceil(result.data.total / PAGE_SIZE)) : 1;
+  const detailSearch = listContextSearch(searchParams);
 
   return (
     <div className="content-list">
@@ -274,7 +276,7 @@ export default function ContentList() {
                     <tr key={`${item.type}:${item.slug}`}>
                       <td>
                         <Link
-                          to={`/content/${item.type}/${item.slug}`}
+                          to={`/content/${item.type}/${item.slug}${detailSearch}`}
                           className="row-link content-form"
                         >
                           {item.primaryForm}
@@ -282,7 +284,7 @@ export default function ContentList() {
                       </td>
                       <td>
                         <Link
-                          to={`/content/${item.type}/${item.slug}`}
+                          to={`/content/${item.type}/${item.slug}${detailSearch}`}
                           className="row-link"
                         >
                           {item.slug}

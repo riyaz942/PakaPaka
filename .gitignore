@@ -24,3 +24,6 @@ curriculum/_build/.venv/
 # Gate-passing lessons are assembled into curriculum/grammar/lessons/ (committed).
 curriculum/_build/generate_content/drafts/
 curriculum/_build/generate_content/web/
+
+# BMAD code-review scratch (diffs + per-layer agent notes)
+_bmad-output/implementation-artifacts/.review-tmp/

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { AuditFindingsPanel } from '../components/AuditFindingsPanel';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
@@ -8,7 +8,13 @@ import { ItemNeighborhoodGraph } from '../components/ItemNeighborhoodGraph';
 import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
-import { CONTENT_TYPES, type ContentType, type ItemDetailResponse } from '../types/api';
+import { LIST_FILTER_KEYS, pickSearchParams } from '../lib/listContext';
+import {
+  CONTENT_TYPES,
+  type ContentType,
+  type ItemDetailResponse,
+  type ItemsNeighborsResponse,
+} from '../types/api';
 import type { GrammarRaw, KanjiRaw, RadicalRaw, ReadingRaw, VocabRaw } from '../types/curriculumRaw';
 import { GrammarDetail } from './detail/GrammarDetail';
 import { KanjiDetail } from './detail/KanjiDetail';
@@ -35,6 +41,108 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
   }
 }
 
+function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
+  const [searchParams] = useSearchParams();
+
+  const neighborsUrl = useMemo(() => {
+    const qs = pickSearchParams(searchParams, LIST_FILTER_KEYS);
+    qs.set('type', type);
+    qs.set('slug', slug);
+    return `/api/items/neighbors?${qs.toString()}`;
+  }, [searchParams, type, slug]);
+
+  const listHref = useMemo(() => {
+    const qs = pickSearchParams(searchParams, [
+      ...LIST_FILTER_KEYS,
+      'page',
+    ]).toString();
+    return qs ? `/content/${type}?${qs}` : `/content/${type}`;
+  }, [searchParams, type]);
+
+  const detailSearch = useMemo(() => {
+    const qs = pickSearchParams(searchParams, [
+      ...LIST_FILTER_KEYS,
+      'page',
+    ]).toString();
+    return qs ? `?${qs}` : '';
+  }, [searchParams]);
+
+  const result = useApi<ItemsNeighborsResponse>(neighborsUrl);
+
+  if (result.status === 'loading') {
+    return (
+      <nav className="item-list-nav" aria-label="List navigation">
+        <Link to={listHref} className="item-list-nav__back">
+          ← Back to list
+        </Link>
+        <span className="panel-muted">Loading neighbors…</span>
+      </nav>
+    );
+  }
+
+  if (result.status === 'error') {
+    return (
+      <nav className="item-list-nav" aria-label="List navigation">
+        <Link to={listHref} className="item-list-nav__back">
+          ← Back to list
+        </Link>
+      </nav>
+    );
+  }
+
+  const { prev, next, index, total } = result.data;
+  const positionLabel =
+    index >= 0 && total > 0
+      ? `${index + 1} of ${total}`
+      : total > 0
+        ? `Not in filtered list (${total})`
+        : null;
+
+  return (
+    <nav className="item-list-nav" aria-label="List navigation">
+      <Link to={listHref} className="item-list-nav__back">
+        ← Back to list
+      </Link>
+      <div className="item-list-nav__pager">
+        {prev ? (
+          <Link
+            to={`/content/${prev.type}/${prev.slug}${detailSearch}`}
+            className="item-list-nav__btn"
+            title={prev.meaning || prev.slug}
+          >
+            ← Previous
+            <span className="item-list-nav__hint">{prev.primaryForm}</span>
+          </Link>
+        ) : (
+          <span className="item-list-nav__btn item-list-nav__btn--disabled" aria-disabled="true">
+            ← Previous
+          </span>
+        )}
+        {positionLabel ? (
+          <span className="item-list-nav__status">{positionLabel}</span>
+        ) : null}
+        {next ? (
+          <Link
+            to={`/content/${next.type}/${next.slug}${detailSearch}`}
+            className="item-list-nav__btn item-list-nav__btn--next"
+            title={next.meaning || next.slug}
+          >
+            Next →
+            <span className="item-list-nav__hint">{next.primaryForm}</span>
+          </Link>
+        ) : (
+          <span
+            className="item-list-nav__btn item-list-nav__btn--next item-list-nav__btn--disabled"
+            aria-disabled="true"
+          >
+            Next →
+          </span>
+        )}
+      </div>
+    </nav>
+  );
+}
+
 export default function ItemDetail() {
   const { type: rawType, slug } = useParams<{ type: string; slug: string }>();
   const [searchParams] = useSearchParams();
@@ -54,11 +162,21 @@ export default function ItemDetail() {
   }
 
   if (result.status === 'loading') {
-    return <p className="panel-muted">Loading…</p>;
+    return (
+      <>
+        <ItemListNav type={type} slug={slug} />
+        <p className="panel-muted">Loading…</p>
+      </>
+    );
   }
 
   if (result.status === 'error') {
-    return <p className="panel-error">Failed to load item: {result.error}</p>;
+    return (
+      <>
+        <ItemListNav type={type} slug={slug} />
+        <p className="panel-error">Failed to load item: {result.error}</p>
+      </>
+    );
   }
 
   const item = result.data;
@@ -89,6 +207,8 @@ function ItemDetailBody({
 
   return (
     <div className="item-detail">
+      <ItemListNav type={type} slug={slug} />
+
       <div className="panel item-header">
         <div className="item-header__top">
           <div>

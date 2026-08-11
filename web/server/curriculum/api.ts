@@ -368,6 +368,46 @@ export function createCurriculumRouter(
     });
   });
 
+  router.get('/items/neighbors', (req: Request, res: Response) => {
+    const type = parseType(req.query.type);
+    const slug = typeof req.query.slug === 'string' ? req.query.slug : undefined;
+    if (!type || !slug) {
+      res.status(400).json({ error: 'type and slug are required' });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const auditBySlug = buildAuditBySlug(getAuditFindings(repoRoot));
+    const filtered = sortItems(
+      filterItems(index.items, req.query, auditBySlug),
+      typeof req.query.sort === 'string' ? req.query.sort : undefined,
+    );
+
+    const indexInList = filtered.findIndex(
+      (item) => item.type === type && item.slug === slug,
+    );
+
+    const toNeighbor = (item: ContentItem | undefined) =>
+      item
+        ? {
+            type: item.type,
+            slug: item.slug,
+            primaryForm: item.primaryForm,
+            meaning: item.meaning,
+          }
+        : null;
+
+    res.json({
+      total: filtered.length,
+      index: indexInList,
+      prev: indexInList > 0 ? toNeighbor(filtered[indexInList - 1]) : null,
+      next:
+        indexInList >= 0 && indexInList < filtered.length - 1
+          ? toNeighbor(filtered[indexInList + 1])
+          : null,
+    });
+  });
+
   router.get('/item/:type/:slug', (req: Request, res: Response) => {
     const type = parseType(req.params.type);
     if (!type) {
