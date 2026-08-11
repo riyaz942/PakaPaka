@@ -8,7 +8,7 @@ const CURRICULUM_DIR = path.join(REPO_ROOT, 'curriculum');
 const SCHEMA_PATH = path.join(CURRICULUM_DIR, 'schema', 'curriculum.schema.json');
 
 
-function resolveValidatorKey(relativePath: string): string {
+export function resolveValidatorKey(relativePath: string): string {
   if (relativePath === 'metadata.json') {
     return 'metadata';
   }
@@ -126,7 +126,7 @@ function checkFuriganaField(
   }
 }
 
-function runFuriganaChecks(
+export function runFuriganaChecks(
   validatorKey: string,
   relative: string,
   data: unknown,

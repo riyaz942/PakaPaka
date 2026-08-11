@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
 import ContentList from './pages/ContentList';
 import Dashboard from './pages/Dashboard';
@@ -14,6 +15,20 @@ const NAV_PLACEHOLDERS = [
 ] as const;
 
 export default function App() {
+  const [reloadStatus, setReloadStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+
+  async function handleReload() {
+    setReloadStatus('loading');
+    try {
+      const res = await fetch('/api/reload', { method: 'POST' });
+      setReloadStatus(res.ok ? 'done' : 'error');
+    } catch {
+      setReloadStatus('error');
+    } finally {
+      setTimeout(() => setReloadStatus('idle'), 2000);
+    }
+  }
+
   return (
     <div className="app-shell">
       <header className="app-header">
@@ -37,6 +52,9 @@ export default function App() {
             </button>
           ))}
         </nav>
+        <button type="button" className="app-header__reload" onClick={handleReload} disabled={reloadStatus === 'loading'}>
+          {reloadStatus === 'loading' ? 'Reloading…' : reloadStatus === 'done' ? 'Reloaded ✓' : reloadStatus === 'error' ? 'Reload failed' : 'Reload from disk'}
+        </button>
       </header>
       <main className="app-main">
         <Routes>

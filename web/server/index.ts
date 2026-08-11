@@ -19,7 +19,7 @@ async function main(): Promise<void> {
     res.json({ ok: true, curriculumDir: CURRICULUM_DIR });
   });
 
-  app.use('/api', createCurriculumRouter(REPO_ROOT, WEB_ROOT));
+  app.use('/api', express.json({ limit: '2mb' }), createCurriculumRouter(REPO_ROOT, WEB_ROOT));
 
   app.use('/assets', express.static(ASSETS_DIR));
 

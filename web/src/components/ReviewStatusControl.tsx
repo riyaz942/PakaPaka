@@ -1,0 +1,55 @@
+import { useState } from 'react';
+import type { ContentType, ReviewStatus } from '../types/api';
+
+const EDITABLE_STATUSES: Exclude<ReviewStatus, 'none'>[] = ['draft', 'reviewed', 'flagged_for_rewrite'];
+
+type Props = {
+  type: ContentType;
+  slug: string;
+  status: ReviewStatus;
+  onChanged: () => void;
+};
+
+export function ReviewStatusControl({ type, slug, status, onChanged }: Props) {
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleChange(next: string) {
+    if (!next) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/item/${type}/${slug}/meta`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ review_status: next }),
+      });
+      const body = await res.json();
+      if (!res.ok || body.ok === false) {
+        setError(body.errors?.join('; ') ?? 'Update failed');
+        return;
+      }
+      onChanged();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Update failed');
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <span className="review-status-control">
+      <select value={status === 'none' ? '' : status} disabled={saving} onChange={(e) => handleChange(e.target.value)}>
+        <option value="" disabled>
+          set status…
+        </option>
+        {EDITABLE_STATUSES.map((s) => (
+          <option key={s} value={s}>
+            {s}
+          </option>
+        ))}
+      </select>
+      {error ? <span className="panel-error edit-inline-error">{error}</span> : null}
+    </span>
+  );
+}

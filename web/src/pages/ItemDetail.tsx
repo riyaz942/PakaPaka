@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
+import { EditForm } from '../components/edit/EditForm';
+import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
 import { CONTENT_TYPES, type ContentType, type ItemDetailResponse } from '../types/api';
@@ -34,10 +36,16 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
 export default function ItemDetail() {
   const { type: rawType, slug } = useParams<{ type: string; slug: string }>();
   const [showReadings, setShowReadings] = useState(true);
+  const [editing, setEditing] = useState(false);
+  const [refreshToken, setRefreshToken] = useState(0);
 
   const type = isContentType(rawType) ? rawType : undefined;
-  const apiUrl = type && slug ? `/api/item/${type}/${slug}` : null;
+  const apiUrl = type && slug ? `/api/item/${type}/${slug}${refreshToken ? `?r=${refreshToken}` : ''}` : null;
   const result = useApi<ItemDetailResponse>(apiUrl);
+
+  function refresh() {
+    setRefreshToken((t) => t + 1);
+  }
 
   if (!type || !slug) {
     return <p className="panel-error">Unknown content type.</p>;
@@ -63,16 +71,22 @@ export default function ItemDetail() {
               <span className="item-header__slug">{item.slug}</span>
               <span className="item-header__level">{item.level}</span>
               <StatusBadge status={item.reviewStatus} />
+              <ReviewStatusControl type={type} slug={slug} status={item.reviewStatus} onChanged={refresh} />
               <CompletenessPill percent={item.completeness.percent} skeleton={item.isSkeleton} />
             </div>
             {item.meaning ? <p className="item-header__meaning">{item.meaning}</p> : null}
           </div>
-          {item.meta ? (
-            <div className="item-header__generator">
-              {item.meta.generator_model ? <div>model: {item.meta.generator_model}</div> : null}
-              {item.meta.prompt_version ? <div>prompt v{item.meta.prompt_version}</div> : null}
-            </div>
-          ) : null}
+          <div className="item-header__actions">
+            {item.meta ? (
+              <div className="item-header__generator">
+                {item.meta.generator_model ? <div>model: {item.meta.generator_model}</div> : null}
+                {item.meta.prompt_version ? <div>prompt v{item.meta.prompt_version}</div> : null}
+              </div>
+            ) : null}
+            <button type="button" onClick={() => setEditing((v) => !v)}>
+              {editing ? 'View' : 'Edit'}
+            </button>
+          </div>
         </div>
         {item.completeness.missing.length > 0 ? (
           <p className="panel-muted item-header__missing">
@@ -81,16 +95,31 @@ export default function ItemDetail() {
         ) : null}
       </div>
 
-      <label className="checkbox-field">
-        <input
-          type="checkbox"
-          checked={showReadings}
-          onChange={(e) => setShowReadings(e.target.checked)}
+      {editing ? (
+        <EditForm
+          type={type}
+          slug={slug}
+          initialRaw={item.raw}
+          onCancel={() => setEditing(false)}
+          onSaved={() => {
+            setEditing(false);
+            refresh();
+          }}
         />
-        Show furigana readings
-      </label>
+      ) : (
+        <>
+          <label className="checkbox-field">
+            <input
+              type="checkbox"
+              checked={showReadings}
+              onChange={(e) => setShowReadings(e.target.checked)}
+            />
+            Show furigana readings
+          </label>
 
-      <TypeSection item={item} showReadings={showReadings} />
+          <TypeSection item={item} showReadings={showReadings} />
+        </>
+      )}
 
       <DependencyPanel dependencySummary={item.dependencySummary} />
     </div>

@@ -1,6 +1,6 @@
 import type { Request, Response, Router } from 'express';
 import { Router as createRouter } from 'express';
-import { getCurriculum, loadTargets } from './loader.js';
+import { getCurriculum, loadTargets, reload } from './loader.js';
 import {
   isSkeleton,
   itemKey,
@@ -13,6 +13,13 @@ import {
   type JlptLevel,
   type ReviewStatus,
 } from './types.js';
+import { saveItem, updateReviewStatus } from './writer.js';
+
+const EDITABLE_STATUSES: Exclude<ReviewStatus, 'none'>[] = [
+  'draft',
+  'reviewed',
+  'flagged_for_rewrite',
+];
 
 const CONTENT_TYPES: ContentType[] = [
   'radical',
@@ -306,6 +313,73 @@ export function createCurriculumRouter(
       isSkeleton: isSkeleton(item),
       dependencySummary: resolveDependencySummary(index, type, item.slug),
     });
+  });
+
+  router.put('/item/:type/:slug', (req: Request, res: Response) => {
+    const type = parseType(req.params.type);
+    if (!type) {
+      res.status(400).json({ error: `Unknown type: ${req.params.type}` });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const item = index.bySlug.get(itemKey(type, req.params.slug));
+    if (!item) {
+      res.status(404).json({ error: 'Item not found' });
+      return;
+    }
+
+    if (typeof req.body !== 'object' || req.body === null || Array.isArray(req.body)) {
+      res.status(400).json({ ok: false, errors: ['Request body must be the full item object'] });
+      return;
+    }
+
+    const result = saveItem(repoRoot, type, item.level, req.params.slug, req.body as Record<string, unknown>);
+    if (!result.ok) {
+      res.status(400).json(result);
+      return;
+    }
+
+    const updated = getCurriculum(repoRoot).bySlug.get(itemKey(type, req.params.slug));
+    res.json({ ok: true, item: updated });
+  });
+
+  router.patch('/item/:type/:slug/meta', (req: Request, res: Response) => {
+    const type = parseType(req.params.type);
+    if (!type) {
+      res.status(400).json({ error: `Unknown type: ${req.params.type}` });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const item = index.bySlug.get(itemKey(type, req.params.slug));
+    if (!item) {
+      res.status(404).json({ error: 'Item not found' });
+      return;
+    }
+
+    const reviewStatus = req.body?.review_status;
+    if (!EDITABLE_STATUSES.includes(reviewStatus)) {
+      res.status(400).json({
+        ok: false,
+        errors: [`review_status must be one of ${EDITABLE_STATUSES.join(', ')}`],
+      });
+      return;
+    }
+
+    const result = updateReviewStatus(repoRoot, type, item.level, req.params.slug, reviewStatus);
+    if (!result.ok) {
+      res.status(400).json(result);
+      return;
+    }
+
+    const updated = getCurriculum(repoRoot).bySlug.get(itemKey(type, req.params.slug));
+    res.json({ ok: true, item: updated });
+  });
+
+  router.post('/reload', (_req: Request, res: Response) => {
+    const index = reload(repoRoot);
+    res.json({ ok: true, itemCount: index.items.length });
   });
 
   return router;
