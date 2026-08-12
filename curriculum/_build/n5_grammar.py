@@ -451,7 +451,7 @@ N5_GRAMMAR = [
             ex("私も学生です。", "I am a student too.", ["watashi", "gakusei"]),
             ex("これもください。", "This one too, please.", ["kore"]),
             ex("彼も来ます。", "He is coming as well.", ["kare", "kuru-v"]),
-            ex("water も飲みます。", "I drink water too.", ["mizu", "nomu-v"]),
+            ex("水も飲みます。", "I drink water too.", ["mizu", "nomu-v"]),
         ],
         "vocabulary_slugs": ["watashi", "gakusei", "kore"],
         "family": "particles",
@@ -1047,7 +1047,7 @@ N5_GRAMMAR = [
         "examples": [
             ex("寝る前に歯を磨きます。", "I brush my teeth before sleeping.", ["neru", "ha-tooth"]),
             ex("食事の前に手を洗います。", "I wash my hands before a meal.", ["te-v", "arau"]),
-            ex("授業の前に本を読みます。", "I read before class.", ["jugyou", "hon", "yomu"]),
+            ex("授業の前に本を読みます。", "I read a book before class.", ["jugyou", "hon", "yomu"]),
         ],
         "vocabulary_slugs": ["neru", "arau", "jugyou"],
         "family": "connectors",
@@ -1092,7 +1092,7 @@ N5_GRAMMAR = [
         "accepted_forms": ["とき", "時"],
         "examples": [
             ex("子供のとき、よく遊びました。", "When I was a child, I played a lot.", ["kodomo-v", "yoku", "asobu"]),
-            ex("暇なとき、本を読みます。", "When I'm free, I read.", ["hima", "hon", "yomu"]),
+            ex("暇なとき、本を読みます。", "When I'm free, I read a book.", ["hima", "hon", "yomu"]),
             ex("日本へ行ったとき、写真を撮りました。", "When I went to Japan, I took photos.", ["nihon", "iku-v", "shashin"]),
         ],
         "vocabulary_slugs": ["kodomo-v", "hima", "shashin"],

@@ -396,7 +396,7 @@ N5_READINGS = [
         ],
         "english_translation": "Today I left my mother's note at home, so I bought ten eggs at the supermarket. I came home and opened the kitchen door. There are a lot of eggs on the table. My father bought eggs too, and so did my older sister. Fifty-six in all.",
         "summary_ja": "卵を十買って帰りましたが、家には卵が五十六ありました。",
-        "summary_en": "The writer forgets the shopping note, buys ten eggs to be safe, and comes home to fifty-six of them.",
+        "summary_en": "The writer leaves their mother's letter at home, buys ten eggs at the supermarket, and comes home to fifty-six eggs in total.",
         "grammar_slugs": [
             "desu",
             "masu",
@@ -552,7 +552,7 @@ N5_READINGS = [
         ],
         "english_translation": "Today, in front of the station, I asked a woman which way the post office was. The woman said, walk along this street and turn left at the second corner. The post office is next to the bank. It's five minutes from here. I walked.",
         "summary_ja": "私は女の人に郵便局までの道を聞きました。",
-        "summary_en": "I ask a woman on the street how to get to the post office, and she gives me short, clear directions.",
+        "summary_en": "I ask a woman in front of the station how to get to the post office, and she gives me short, clear directions.",
         "grammar_slugs": [
             "wa-topic",
             "desu",
@@ -913,8 +913,8 @@ N5_READINGS = [
             },
         ],
         "english_translation": "In front of the station there is a red box for drinks. Yesterday I put money into that box. Nothing came out. Next a woman came and put money into the same box. Two cold teas came out. She laughed in a loud voice. Then I put money in too. One hot coffee came out.",
-        "summary_ja": "箱は私のお金を取って、次の女の人にお茶を二つあげました。",
-        "summary_en": "The box swallows the writer's money and then hands the next woman two teas.",
+        "summary_ja": "私が箱にお金を入れても何も出ませんでしたが、次に女の人が入れるとお茶が二つ出ました。それから私がもう一度入れると、コーヒーが一つ出ました。",
+        "summary_en": "The writer's money produces nothing at first, but when a woman puts money in, two teas come out for her. When the writer tries again, one hot coffee comes out.",
         "grammar_slugs": [
             "wa-topic",
             "masu",
