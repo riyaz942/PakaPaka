@@ -456,12 +456,32 @@ def sidecar_path(level, kind):
     return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics", f"{level}.json")
 
 
-def write_sidecar(level, kind):
-    """Rebuild the per-level sidecar from every gate-passing draft on disk. The
+def write_sidecar(level, kind, only_slugs=None):
+    """Rebuild the per-level sidecar from gate-passing drafts on disk. The
     sidecar is keyed by slug; generate.py inlines it into the kanji/radical
-    JSON. Idempotent — re-running reconstructs from the drafts."""
+    JSON.
+
+    With `only_slugs=None` (the batch/API lane's usage — cmd_run, cmd_collect,
+    cmd_assemble), this reconstructs the WHOLE sidecar from every draft file on
+    disk, as before. That is only safe when the on-disk drafts are the sidecar's
+    sole source of truth for every slug in this level+kind.
+
+    With `only_slugs` given (the ingest lane's usage — cmd_ingest), only those
+    slugs' entries are (re)written; every other slug's existing entry in the
+    on-disk sidecar is carried through untouched. This is required because a
+    human reviewer may promote a sidecar entry's `review_status` to `reviewed`
+    or add a `description` directly in the sidecar, without that change ever
+    being written back to the (gitignored) per-slug draft file — a full rebuild
+    would silently drop that review work for every slug not just ingested."""
     level_dir = os.path.join(DRAFTS_DIR, level, kind)
+    path = sidecar_path(level, kind)
+
     entries = {}
+    if only_slugs is not None and os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            entries = json.load(f)
+
+    only_slugs = set(only_slugs) if only_slugs is not None else None
     if os.path.isdir(level_dir):
         for name in sorted(os.listdir(level_dir)):
             if not name.endswith(".json") or name == "requests-preview.json":
@@ -472,6 +492,8 @@ def write_sidecar(level, kind):
                 continue
             if not record.get("tool_input"):
                 continue
+            if only_slugs is not None and record["slug"] not in only_slugs:
+                continue
             meta = {
                 "generator_model": record.get("generator_model", MODEL),
                 # sidecarMeta.prompt_version is a string in the schema (matches
@@ -481,7 +503,6 @@ def write_sidecar(level, kind):
             }
             entries[record["slug"]] = {**record["tool_input"], "_meta": meta}
 
-    path = sidecar_path(level, kind)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
@@ -609,7 +630,7 @@ def cmd_ingest(args):
             print(f"  - {e}")
         raise SystemExit(1)
 
-    write_sidecar(args.level, args.kind)
+    write_sidecar(args.level, args.kind, only_slugs=[args.slug])
     print(f"{args.slug}: PASS — merged into the {args.kind} sidecar")
 
 

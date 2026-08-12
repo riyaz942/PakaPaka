@@ -1117,21 +1117,23 @@
     }
   },
   "fun-counter": {
-    "meaning_mnemonic": "Koichi slices the onigiri timer at the konbini into wedges instead of watching the clock, and each <kanji>part</kanji> he shaves away is a <kanji>minute</kanji> he can finally <kanji>understand</kanji> has passed — three wedges gone, three minutes counted.",
-    "reading_mnemonic": "The counter reading is simply 分's own taught reading 「<reading>ふん</reading>」 carried straight over, so counting minutes uses the same sound you already know.",
+    "meaning_mnemonic": "The woodcutter owns no clock. One clean swing through a log takes him exactly one <kanji>minute</kanji>, so when the villagers ask how long the noodles need, he answers in logs and starts chopping. Twelve leaning <kanji>parts</kanji> later the noodles are done: count the halves, halve the count, and you have counted minutes.",
+    "reading_mnemonic": "This is just 分 wearing its taught reading, so a number plus <reading>ふん</reading> counts your minutes.",
+    "description": "Attaches to a number to count minutes and to give clock times. The sound shifts after several numbers — one, three, four, six, eight and ten — so those number-plus-minutes combinations are worth learning as fixed forms rather than assembling them.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "fun": {
-    "meaning_mnemonic": "You are sitting on the riverbank with a massive pie. You use a heavy knife to chop off a <kanji>minute</kanji> wedge to throw to the ducks. The ducks completely ignore the pastry and aggressively bite your ankles for an entire minute.",
-    "reading_mnemonic": "The reading for this word is exactly what you learned for the kanji: <reading>ふん</reading>.",
+    "meaning_mnemonic": "The sword that redeemed itself on that first log has found steady work at the school: the woodcutter stands at the edge of the sports field and splits one every time the runners set off. Log down, two halves leaning apart, whistle. Nobody there owns a stopwatch, so a single split log is exactly one <kanji>minute</kanji>.",
+    "reading_mnemonic": "分 uses the very reading you learned with the kanji itself, so on its own it is just <reading>ふん</reading>.",
+    "description": "分 is the counter for minutes and almost never stands alone; it follows a number, and after some of them (one, three, four, six, eight, ten) its sound shifts from an f-sound to a p-sound.",
     "_meta": {
-      "generator_model": "gemini-web",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "fune": {
@@ -1510,12 +1512,12 @@
     }
   },
   "hanbun": {
-    "meaning_mnemonic": "Han the half-and-half chef takes the pie his knife already split into eight <kanji>part</kanji>s and lines up exactly four of them — the fat exclamation point standing dead center, its two legs kicked out even on both sides. Four parts here, four parts there: a clean, mirrored <kanji>half</kanji> on every plate he serves.",
-    "reading_mnemonic": "半分 simply combines the readings you already know: 半 read as はん plus 分 read as ぶん gives you <reading>はんぶん</reading>.",
+    "meaning_mnemonic": "Han the half-and-half chef cleaves the crossed matchsticks down the middle, one perfect <kanji>half</kanji> either side of the beeping till. The woodcutter, unimpressed, sets a log by the onigiri shelf and drops it into two leaning <kanji>parts</kanji>. Two men, two clean cuts, and the konbini floor is nothing but half.",
+    "reading_mnemonic": "半 gives its はん and 分 its ぶん with no surprises, so the word is simply <reading>はんぶん</reading>.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hantai": {
@@ -2181,21 +2183,23 @@
     }
   },
   "jibun-time": {
-    "meaning_mnemonic": "You drag a heavy pie all the way up the steep mountain trail to check the <kanji>time</kanji> closer to the sun. You chop it into a tiny <kanji>part</kanji> to act as a sundial needle on a flat rock. A hawk immediately swoops down and steals the slice, leaving you with absolutely no idea what time (of day) it is.",
-    "reading_mnemonic": "This word uses the exact kanji readings you already know, making it <reading>じぶん</reading>.",
+    "meaning_mnemonic": "On the shrine's mossy steps the shadow post and its ruler announce the <kanji>hour</kanji>, and the woodcutter beside it handles everything smaller: one log, one <kanji>minute</kanji>, two halves leaning apart with a cat asleep on each. The cats can tell you exactly what time of day it is by counting the woodpile.",
+    "reading_mnemonic": "時 keeps the じ you already know and 分 its ぶん, so this one reads straight through as <reading>じぶん</reading>.",
+    "description": "時分 is dated and bookish — modern speech uses plain time expressions instead. The same reading also belongs to a far commoner word meaning oneself, so context, not sound, tells you which is meant.",
     "_meta": {
-      "generator_model": "gemini-web",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "jibun": {
-    "meaning_mnemonic": "Back at the pie you already sliced into eight equal <kanji>parts</kanji> to understand it, one wedge never gets claimed - it just sits alone on the plate while Grandma Kane's cats fight over the rest. That unclaimed slice belongs to nobody else; it's yours alone, the one <kanji>part</kanji> you can never hand off. That stubborn leftover wedge is oneself.",
-    "reading_mnemonic": "Down at the riverbank, a rower's <reading>jib</reading> - the small forward sail - swings loose and snags a stray <reading>bun</reading> right out of someone else's hands. He doesn't offer a single bite to anyone rowing beside him; that jib-and-bun grab, <reading>じぶん</reading>, is entirely his own business: oneself.",
+    "meaning_mnemonic": "The woodcutter is dividing the day's woodpile, and the sword is doing the arithmetic. Every log comes down into two leaning <kanji>parts</kanji>: one part for the village, one part he plants his boot on. The sword <kanji>understands</kanji> the rule immediately and never miscounts — the half with a boot on it is oneself.",
+    "reading_mnemonic": "Koichi's konbini has a new baker, <reading>Gee Bun</reading>, who has stacked the onigiri shelf by the door with buns shaped like his own face. He sells none of them. He taps the glass, taps his chest, and says <reading>じぶん</reading> until the till beeps you out.",
+    "description": "It points at whoever is speaking or being talked about, so it comes out as myself, yourself, or herself depending on the sentence. In casual speech it also works as a plain, slightly blunt word for I.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "jikan-counter": {
@@ -2728,12 +2732,13 @@
     }
   },
   "kibun": {
-    "meaning_mnemonic": "The <kanji>spirit</kanji>-wisp that curls off warm rice drifts up the mountain trail and meets the same blade that once cut a pie into eight wedges. It slices the wisp into shifting <kanji>parts</kanji>, some warm, some sharp, and whichever part you're holding when you reach the vending machine at the summit — that's exactly your mood, your feeling.",
-    "reading_mnemonic": "気分 just stacks the readings you already know, 気（き）plus 分（ぶん）, giving you <reading>きぶん</reading> straight down the line — nothing new to learn.",
+    "meaning_mnemonic": "On the mountain trail the woodcutter's sword drops a log into two leaning <kanji>parts</kanji>, and a curl of warm steam lifts out of the fresh cut. He leans in and sniffs it. Sulky pine today. That rising <kanji>spirit</kanji> off the split wood is the log's mood, and it sets his feeling for the whole afternoon.",
+    "reading_mnemonic": "気 hands over its usual き and 分 its ぶん, so nothing bends here: the word is read <reading>きぶん</reading>.",
+    "description": "気分 covers your general mood or how you feel physically — good, bad, off — rather than an emotion aimed at a particular person or thing. Saying your 気分 is bad most often means you feel unwell.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kiiro": {
@@ -6172,13 +6177,13 @@
     }
   },
   "wakaru": {
-    "meaning_mnemonic": "The knife comes down again, splitting the pie into its eight wedges, but this time you actually taste one <kanji>part</kanji>, and the whole recipe suddenly makes sense: the cinnamon, the density, why it took so long to bake. Only once you've tasted that one part does it truly click — that click is what it means to understand.",
-    "reading_mnemonic": "分（わ）とかる（かる）がつながって、<reading>わかる</reading> — the readings you already have for 分 line up exactly to give you 「<reading>わかる</reading>」.",
-    "description": "わかる pairs with が, not を — the thing you understand is grammatically the subject, closer to \"it becomes clear to me\" than \"I understand it.\" Reaching for を here is a common learner slip.",
+    "meaning_mnemonic": "A shrine cat drags a ball of string down the mossy steps so badly knotted that nobody can find an end to it. The woodcutter sets the whole mess on his block, and the sword comes down: the knot falls open in two leaning <kanji>parts</kanji>, and every loop inside is suddenly plain. Split a thing and you <kanji>understand</kanji> it.",
+    "reading_mnemonic": "Nothing new here: 分 keeps the わ you were taught, か and る just trail along behind it, and the verb reads <reading>わかる</reading>.",
+    "description": "The thing understood takes the subject particle, not the object particle — English speakers reach for the object one for months. It stretches to knowing a fact or recognising a person, and on its own it does the work of got it.",
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "warau": {

@@ -17,15 +17,15 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
-<level = n4>
+<level = n5>
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = kanji>
+<type = radical>
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = sonnet-5>
+<subagent-model = opus-5>
 
 Subagent effort (reasoning effort every subagent in this run uses):
 
