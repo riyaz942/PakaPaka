@@ -155,10 +155,23 @@ def item_context(level, kind, slug):
 
 
 def all_slugs(level, kind):
-    """Slugs for a level in curriculum (sort) order."""
+    """Slugs for a level in curriculum (sort) order.
+
+    Kanji no in-scope vocabulary word is written with are skipped: their prompt
+    would carry an empty target-word list, so the generator has nothing taught
+    to showcase and can only invent usage for a character that may well be
+    bound (集 is not a standalone noun; 写真集 is the word). No examples beat
+    wrong ones — add the missing vocabulary and the kanji re-enters the queue.
+    """
     kind_dir = "kanji" if kind == "kanji" else "vocabulary"
     items = sorted(context.load_items(kind_dir, level), key=lambda it: it["sort_order"])
-    return [it["slug"] for it in items]
+    if kind != "kanji":
+        return [it["slug"] for it in items]
+    forms = [v["primary_form"]
+             for lvl in _lower_levels(level) + [level]
+             for v in context.load_vocab(lvl)]
+    return [it["slug"] for it in items
+            if any(it["primary_form"] in form for form in forms)]
 
 
 def format_target_words(target_words):

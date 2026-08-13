@@ -39,8 +39,104 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、友達に会います。",
+          "english": "I'm meeting my friend tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "au"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 6,
+              "end": 10,
+              "surface_form": "会います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]に会[あ]います。"
+        },
+        {
+          "japanese": "兄は会社員です。",
+          "english": "My older brother is a company employee.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ani",
+            "kaishain"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaishain",
+              "start": 2,
+              "end": 5
+            }
+          ],
+          "furigana": "兄[あに]は会[かい]社[しゃ]員[いん]です。"
+        },
+        {
+          "japanese": "来週、先生に会える機会があります。",
+          "english": "Next week I'll have a chance to meet the teacher.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "raishuu",
+            "sensei",
+            "aeru-potential",
+            "kikai-chance",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "raishuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "aeru-potential",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kikai-chance",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "来[らい]週[しゅう]、先[せん]生[せい]に会[あ]える機[き]会[かい]があります。"
+        }
+      ]
     },
     {
       "slug": "n4-dou",
@@ -76,8 +172,114 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "これとそれは同じです。",
+          "english": "This one and that one are the same.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "sore",
+            "onaji"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sore",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "onaji",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "これとそれは同[おな]じです。"
+        },
+        {
+          "japanese": "私たちは同じ会社で働いています。",
+          "english": "We work at the same company.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "onaji",
+            "kaisha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "onaji",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 9,
+              "end": 12,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "私[わたし]たちは同[おな]じ会[かい]社[しゃ]で働[はたら]いています。"
+        },
+        {
+          "japanese": "僕の傘は君のと同じ色だ。",
+          "english": "My umbrella is the same color as yours.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "kasa",
+            "kimi",
+            "onaji",
+            "iro"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kimi",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "onaji",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "iro",
+              "start": 9,
+              "end": 10
+            }
+          ],
+          "furigana": "僕[ぼく]の傘[かさ]は君[きみ]のと同[おな]じ色[いろ]だ。"
+        }
+      ]
     },
     {
       "slug": "n4-koto",
@@ -113,8 +315,118 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父は毎日仕事に行きます。",
+          "english": "My father goes to work every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "mainichi",
+            "shigoto",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "父[ちち]は毎[まい]日[にち]仕[し]事[ごと]に行[い]きます。"
+        },
+        {
+          "japanese": "家族と一緒に食事します。",
+          "english": "I have a meal together with my family.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kazoku",
+            "issho-ni",
+            "shokuji-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "issho-ni",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shokuji-suru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "食事します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "家[か]族[ぞく]と一[いっ]緒[しょ]に食[しょく]事[じ]します。"
+        },
+        {
+          "japanese": "今日はする事がたくさんあります。",
+          "english": "There are a lot of things to do today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "suru",
+            "koto",
+            "takusan",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "koto",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 7,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]はする事[こと]がたくさんあります。"
+        }
+      ]
     },
     {
       "slug": "n4-ji-self",
@@ -155,8 +467,90 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "週末は自由です。",
+          "english": "The weekend is free.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shuumatsu",
+            "jiyuu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shuumatsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "jiyuu",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "furigana": "週[しゅう]末[まつ]は自[じ]由[ゆう]です。"
+        },
+        {
+          "japanese": "自転車で公園へ行きます。",
+          "english": "I go to the park by bicycle.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "jitensha",
+            "kouen",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "jitensha",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "自[じ]転[てん]車[しゃ]で公[こう]園[えん]へ行[い]きます。"
+        },
+        {
+          "japanese": "山の自然はきれいです。",
+          "english": "The mountain's nature is beautiful.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "yama-v",
+            "shizen",
+            "kirei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shizen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kirei",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "furigana": "山[やま]の自[し]然[ぜん]はきれいです。"
+        }
+      ]
     },
     {
       "slug": "n4-sha",
@@ -193,8 +587,98 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父は会社で働いています。",
+          "english": "My father works at a company.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "kaisha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 5,
+              "end": 8,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "父[ちち]は会[かい]社[しゃ]で働[はたら]いています。"
+        },
+        {
+          "japanese": "姉は新聞社で働いています。",
+          "english": "My older sister works at a newspaper company.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ane",
+            "shinbun-sha",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shinbun-sha",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 6,
+              "end": 9,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "姉[あね]は新[しん]聞[ぶん]社[しゃ]で働[はたら]いています。"
+        },
+        {
+          "japanese": "社長はいつも忙しいです。",
+          "english": "The company president is always busy.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shachou",
+            "itsumo",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shachou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 6,
+              "end": 9
+            }
+          ],
+          "furigana": "社[しゃ]長[ちょう]はいつも忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "n4-hatsu",
@@ -225,8 +709,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "これは新しい発明です。",
+          "english": "This is a new invention.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "atarashii-adj",
+            "hatsumei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hatsumei",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "これは新[あたら]しい発[はつ]明[めい]です。"
+        },
+        {
+          "japanese": "彼はその発明が好きです。",
+          "english": "He likes that invention.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "sono",
+            "hatsumei",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hatsumei",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "彼[かれ]はその発[はつ]明[めい]が好[す]きです。"
+        },
+        {
+          "japanese": "その発明はとても便利です。",
+          "english": "That invention is very convenient.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "hatsumei",
+            "totemo",
+            "benri"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hatsumei",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "benri",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "その発[はつ]明[めい]はとても便[べん]利[り]です。"
+        }
+      ]
     },
     {
       "slug": "n4-mono",
@@ -263,8 +845,96 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の母は医者です。",
+          "english": "My mother is a doctor.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "haha",
+            "isha"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "haha",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "isha",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "私[わたし]の母[はは]は医[い]者[しゃ]です。"
+        },
+        {
+          "japanese": "あの学者は有名です。",
+          "english": "That scholar is famous.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "gakusha",
+            "yuumei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gakusha",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yuumei",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "あの学[がく]者[しゃ]は有[ゆう]名[めい]です。"
+        },
+        {
+          "japanese": "彼は科学者になりました。",
+          "english": "He became a scientist.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kagakusha",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kagakusha",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 6,
+              "end": 11,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]は科[か]学[がく]者[しゃ]になりました。"
+        }
+      ]
     },
     {
       "slug": "n4-chi",
@@ -295,8 +965,116 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "地図帳で日本の地理を勉強します。",
+          "english": "I study Japan's geography using an atlas.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chizuchou",
+            "nihon",
+            "chiri",
+            "benkyou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chizuchou",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "nihon",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "chiri",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "勉強します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "地[ち]図[ず]帳[ちょう]で日本[にほん]の地[ち]理[り]を勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "地下鉄の駅はここから近いです。",
+          "english": "The subway station is close from here.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chikatetsu",
+            "eki",
+            "koko",
+            "chikai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chikatetsu",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "chikai",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "furigana": "地[ち]下[か]鉄[てつ]の駅[えき]はここから近[ちか]いです。"
+        },
+        {
+          "japanese": "昨日、大きい地震がありました。",
+          "english": "Yesterday, there was a big earthquake.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kinou",
+            "ookii",
+            "jishin",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ookii",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "jishin",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "ありました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "昨日[きのう]、大[おお]きい地[じ]震[しん]がありました。"
+        }
+      ]
     },
     {
       "slug": "n4-gyou",
@@ -332,8 +1110,112 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "授業の前に宿題をしました。",
+          "english": "I did my homework before class.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "jugyou",
+            "mae",
+            "shukudai",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "授[じゅ]業[ぎょう]の前[まえ]に宿[しゅく]題[だい]をしました。"
+        },
+        {
+          "japanese": "彼女は来年大学を卒業します。",
+          "english": "She's graduating from university next year.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "rainen",
+            "daigaku",
+            "sotsugyou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "rainen",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "daigaku",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sotsugyou-suru",
+              "start": 8,
+              "end": 13,
+              "surface_form": "卒業します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は来[らい]年[ねん]大[だい]学[がく]を卒[そつ]業[ぎょう]します。"
+        },
+        {
+          "japanese": "今日、残業があります。",
+          "english": "I have overtime today.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "zangyou",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "zangyou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]、残[ざん]業[ぎょう]があります。"
+        }
+      ]
     },
     {
       "slug": "n4-hou",
@@ -373,8 +1255,102 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "夕方に公園を散歩します。",
+          "english": "In the evening, I take a walk in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "yuugata",
+            "kouen",
+            "sanpo-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "yuugata",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "sanpo-suru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "散歩します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "夕[ゆう]方[がた]に公[こう]園[えん]を散[さん]歩[ぽ]します。"
+        },
+        {
+          "japanese": "この方法は易しいです。",
+          "english": "This method is easy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "houhou",
+            "yasashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "houhou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yasashii",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "furigana": "この方[ほう]法[ほう]は易[やさ]しいです。"
+        },
+        {
+          "japanese": "あの方はとても親切です。",
+          "english": "That person over there is very kind.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "kata-person",
+            "totemo",
+            "shinsetsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kata-person",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "shinsetsu",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "あの方[ほう]はとても親[しん]切[せつ]です。"
+        }
+      ]
     },
     {
       "slug": "n4-ba",
@@ -410,8 +1386,118 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の仕事場は駅の近くです。",
+          "english": "My workplace is near the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "shigotoba",
+            "eki",
+            "chikaku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shigotoba",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "私[わたし]の仕[し]事[ごと]場[ば]は駅[えき]の近[ちか]くです。"
+        },
+        {
+          "japanese": "父は工場で働きます。",
+          "english": "My father works at a factory.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "chichi",
+            "koujou",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "koujou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 5,
+              "end": 9,
+              "surface_form": "働きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "父[ちち]は工[こう]場[じょう]で働[はたら]きます。"
+        },
+        {
+          "japanese": "雨の場合、傘を持って行きます。",
+          "english": "In case of rain, I'll bring an umbrella.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ame-v",
+            "baai",
+            "kasa",
+            "motsu",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "baai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 7,
+              "end": 10,
+              "surface_form": "持って",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "雨[あめ]の場[ば]合[あい]、傘[かさ]を持[も]って行[い]きます。"
+        }
+      ]
     },
     {
       "slug": "n4-tokoro",
@@ -447,8 +1533,104 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "あそこはいい所です。",
+          "english": "That place over there is nice.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "asoko",
+            "ii",
+            "tokoro"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "asoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ii",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tokoro",
+              "start": 6,
+              "end": 7
+            }
+          ],
+          "furigana": "あそこはいい所[ところ]です。"
+        },
+        {
+          "japanese": "台所で母と料理を作ります。",
+          "english": "I cook with my mother in the kitchen.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "daidokoro",
+            "haha",
+            "ryouri",
+            "tsukuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "daidokoro",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "haha",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "作ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "台[だい]所[どころ]で母[はは]と料[りょう]理[り]を作[つく]ります。"
+        },
+        {
+          "japanese": "市役所で住所を書きました。",
+          "english": "I wrote my address at city hall.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shiyakusho",
+            "juusho",
+            "kaku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiyakusho",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "juusho",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kaku",
+              "start": 7,
+              "end": 12,
+              "surface_form": "書きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "市[し]役[やく]所[しょ]で住[じゅう]所[しょ]を書[か]きました。"
+        }
+      ]
     },
     {
       "slug": "n4-shin-heart",
@@ -482,14 +1664,116 @@
       "visually_similar_slugs": [
         "n4-hitsu"
       ],
-      "meaning_mnemonic": "That dragging fishhook flicks upward one final time, flinging its three blood drops clear across the tackle box, and beneath the hook you can still feel it, thudding out of rhythm every time the line goes taut. The whole hook has become nothing but one wounded, thumping <radical>heart</radical>, still working even torn open.",
-      "reading_mnemonic": "A dockside medic named <reading>Shin</reading> presses a stethoscope to the hook and hears it clearly, <reading>しん</reading>, <reading>しん</reading>, ragged but steady, the same wounded rhythm from the tackle box.",
-      "description": "必, the kanji for necessary, is this same wounded heart with one extra diagonal stroke slashed clean through it from upper right to lower left, like a blade cutting across where 心 has nothing but hook and blood. A line piercing straight through the middle marks 必; the bare hook and three loose drops with nothing crossing them is 心.",
+      "meaning_mnemonic": "You find the cartoon <radical>heart</radical> on Grandma Kane's mossy steps, left lobe puffed, cleft pinched, point tapping the moss. Shrine cats bat the three leftover beats bouncing in the chambers, and it cannot hold one quiet thought. That jitter is a <radical>heart</radical> and a mind, still mid-thump.",
+      "reading_mnemonic": "You watch Shinny jog up the mossy steps in sandals too big. He misses the bell rope and plants his <reading>shin</reading> on the bronze rim instead, then folds onto the moss groaning <reading>しん</reading> as the leftover beats bounce once for each groan.",
+      "description": "心 is the cartoon heart: left lobe, cleft, point, and three bouncing beats. 必 is that same heart with one extra diagonal stroke slashing through it.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "cursor-grok-4.6-high",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "母はいつも私のことを心配する。",
+          "english": "My mother always worries about me.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "haha",
+            "itsumo",
+            "watashi",
+            "koto",
+            "shinpai-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shinpai-suru",
+              "start": 10,
+              "end": 14
+            }
+          ],
+          "furigana": "母[はは]はいつも私[わたし]のことを心[しん]配[ぱい]する。"
+        },
+        {
+          "japanese": "彼女はとても熱心な先生です。",
+          "english": "She is a very enthusiastic teacher.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "totemo",
+            "nesshin",
+            "sensei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "nesshin",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]はとても熱[ねっ]心[しん]な先[せん]生[せい]です。"
+        },
+        {
+          "japanese": "妹は試験のことを心配していた。",
+          "english": "My little sister was worried about the exam.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "shiken",
+            "koto",
+            "shinpai-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shinpai-suru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "心配して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "妹[いもうと]は試[し]験[けん]のことを心[しん]配[ぱい]していた。"
+        }
+      ]
     },
     {
       "slug": "n4-mise",
@@ -525,8 +1809,136 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "その店は駅の近くにあります。",
+          "english": "That shop is near the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sono",
+            "mise",
+            "eki",
+            "chikaku",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "その店[みせ]は駅[えき]の近[ちか]くにあります。"
+        },
+        {
+          "japanese": "私たちはあの喫茶店でコーヒーを飲みました。",
+          "english": "We drank coffee at that coffee shop.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "ano",
+            "kissaten",
+            "koohii",
+            "nomu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ano",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kissaten",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "koohii",
+              "start": 10,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "nomu-v",
+              "start": 15,
+              "end": 20,
+              "surface_form": "飲みました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]たちはあの喫[きっ]茶[さ]店[てん]でコーヒーを飲[の]みました。"
+        },
+        {
+          "japanese": "私はその店員に道を聞きました。",
+          "english": "I asked the shop clerk for directions.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "sono",
+            "ten-in",
+            "michi-v",
+            "kiku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ten-in",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 9,
+              "end": 14,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]はその店[てん]員[いん]に道[みち]を聞[き]きました。"
+        }
+      ]
     },
     {
       "slug": "n4-ie-kanji",
@@ -562,8 +1974,110 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の家族はみんな元気です。",
+          "english": "My whole family is doing well.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kazoku",
+            "minna",
+            "genki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "minna",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "genki",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "私[わたし]の家[か]族[ぞく]はみんな元[げん]気[き]です。"
+        },
+        {
+          "japanese": "今日、家に友達が来ます。",
+          "english": "A friend is coming to my house today.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "ie",
+            "tomodachi",
+            "kuru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "kuru-v",
+              "start": 8,
+              "end": 11,
+              "surface_form": "来ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]、家[いえ]に友[とも]達[だち]が来[き]ます。"
+        },
+        {
+          "japanese": "祖父は農家で働いています。",
+          "english": "My grandfather works on a farm.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sofu",
+            "nouka",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sofu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nouka",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 6,
+              "end": 9,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "祖[そ]父[ふ]は農[のう]家[か]で働[はたら]いています。"
+        }
+      ]
     },
     {
       "slug": "n4-shitsu",
@@ -599,8 +2113,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "教室に学生がたくさんいます。",
+          "english": "There are a lot of students in the classroom.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyoushitsu",
+            "gakusei",
+            "takusan",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyoushitsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 10,
+              "end": 13,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "教[きょう]室[しつ]に学[がく]生[せい]がたくさんいます。"
+        },
+        {
+          "japanese": "音楽室で歌を歌いました。",
+          "english": "We sang a song in the music room.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ongakushitsu",
+            "uta",
+            "utau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ongakushitsu",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "utau",
+              "start": 6,
+              "end": 11,
+              "surface_form": "歌いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "音[おん]楽[がく]室[しつ]で歌[うた]を歌[うた]いました。"
+        },
+        {
+          "japanese": "会議室で会議があります。",
+          "english": "There's a meeting in the meeting room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kaigi-shitsu",
+            "kaigi",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kaigi-shitsu",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kaigi",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "会[かい]議[ぎ]室[しつ]で会[かい]議[ぎ]があります。"
+        }
+      ]
     },
     {
       "slug": "n4-zu",
@@ -636,8 +2248,98 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "図書館で本を読みます。",
+          "english": "I read a book at the library.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "toshokan",
+            "hon",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 6,
+              "end": 10,
+              "surface_form": "読みます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "これは地図です。",
+          "english": "This is a map.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kore",
+            "chizu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "chizu",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "furigana": "これは地[ち]図[ず]です。"
+        },
+        {
+          "japanese": "地図帳は机の上にあります。",
+          "english": "The atlas is on the desk.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chizuchou",
+            "tsukue",
+            "ue",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chizuchou",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tsukue",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ue",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "地[ち]図[ず]帳[ちょう]は机[つくえ]の上[うえ]にあります。"
+        }
+      ]
     },
     {
       "slug": "n4-shi-try",
@@ -673,8 +2375,87 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、日本語の試験を受けます。",
+          "english": "Tomorrow I'm taking a Japanese exam.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "nihongo",
+            "shiken-o-ukeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "furigana": "明日[あした]、日本[にほん]語[ご]の試[し]験[けん]を受[う]けます。"
+        },
+        {
+          "japanese": "今週は試験があります。",
+          "english": "There's an exam this week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "konshuu",
+            "shiken",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "konshuu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 6,
+              "end": 10,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今[こん]週[しゅう]は試[し]験[けん]があります。"
+        },
+        {
+          "japanese": "試験は難しかったです。",
+          "english": "The exam was difficult.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shiken",
+            "muzukashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shiken",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 3,
+              "end": 8,
+              "surface_form": "難しかった",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "試[し]験[けん]は難[むずか]しかったです。"
+        }
+      ]
     },
     {
       "slug": "n4-ken-exam",
@@ -705,8 +2486,99 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日試験があります。",
+          "english": "There's an exam tomorrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "shiken",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shiken",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 5,
+              "end": 9,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "明日[あした]試[し]験[けん]があります。"
+        },
+        {
+          "japanese": "彼女は毎週実験をします。",
+          "english": "She does an experiment every week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "maishuu",
+            "jikken",
+            "suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "maishuu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "jikken",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "suru",
+              "start": 8,
+              "end": 11,
+              "surface_form": "します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は毎[まい]週[しゅう]実[じっ]験[けん]をします。"
+        },
+        {
+          "japanese": "学生は図書館で試験を受けます。",
+          "english": "The student takes the exam at the library.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "gakusei",
+            "toshokan",
+            "shiken-o-ukeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "gakusei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "furigana": "学[がく]生[せい]は図[と]書[しょ]館[かん]で試[し]験[けん]を受[う]けます。"
+        }
+      ]
     },
     {
       "slug": "n4-kyou-teach",
@@ -742,8 +2614,99 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "先生は教室で英語を教えます。",
+          "english": "The teacher teaches English in the classroom.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "sensei",
+            "kyoushitsu",
+            "eigo",
+            "oshieru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kyoushitsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eigo",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "oshieru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "教えます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "先[せん]生[せい]は教[きょう]室[しつ]で英[えい]語[ご]を教[おし]えます。"
+        },
+        {
+          "japanese": "新しい教科書を買いました。",
+          "english": "I bought a new textbook.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "atarashii-adj",
+            "kyoukasho",
+            "kau-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kyoukasho",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 7,
+              "end": 12,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "新[あたら]しい教[きょう]科[か]書[しょ]を買[か]いました。"
+        },
+        {
+          "japanese": "友達に日本語を教えてもらいました。",
+          "english": "A friend taught me Japanese.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "nihongo",
+            "oshiete-morau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "furigana": "友[とも]達[だち]に日本[にほん]語[ご]を教[おし]えてもらいました。"
+        }
+      ]
     },
     {
       "slug": "n4-omou",
@@ -779,8 +2742,90 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この本はどう思いますか。",
+          "english": "What do you think of this book?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "hon",
+            "dou-omoimasu-ka"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "dou-omoimasu-ka",
+              "start": 4,
+              "end": 11
+            }
+          ],
+          "furigana": "この本[ほん]はどう思[おも]いますか。"
+        },
+        {
+          "japanese": "私はそう思います。",
+          "english": "I think so.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "sou-omoimasu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sou-omoimasu",
+              "start": 2,
+              "end": 8
+            }
+          ],
+          "furigana": "私[わたし]はそう思[おも]います。"
+        },
+        {
+          "japanese": "彼女は忙しいと思います。",
+          "english": "I think she's busy.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "isogashii",
+            "omou"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "omou",
+              "start": 7,
+              "end": 11,
+              "surface_form": "思います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は忙[いそが]しいと思[おも]います。"
+        }
+      ]
     },
     {
       "slug": "n4-hiku",
@@ -816,8 +2861,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "引き出しの中に鍵があります。",
+          "english": "There's a key inside the drawer.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "hikidashi",
+            "naka",
+            "kagi",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hikidashi",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kagi",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 13,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "引[ひ]き出[だ]しの中[なか]に鍵[かぎ]があります。"
+        },
+        {
+          "japanese": "来月、家族で引っ越します。",
+          "english": "Next month, my family and I are moving.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "raigetsu",
+            "kazoku",
+            "hikkosu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "raigetsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kazoku",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hikkosu",
+              "start": 6,
+              "end": 12,
+              "surface_form": "引っ越します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "来[らい]月[げつ]、家[か]族[ぞく]で引[ひ]っ越[こ]します。"
+        },
+        {
+          "japanese": "割引で靴を買いました。",
+          "english": "I bought the shoes at a discount.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "waribiki",
+            "kutsu",
+            "kau-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "waribiki",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kutsu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kau-v",
+              "start": 5,
+              "end": 10,
+              "surface_form": "買いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "割[わり]引[びき]で靴[くつ]を買[か]いました。"
+        }
+      ]
     },
     {
       "slug": "n4-uta",
@@ -853,8 +2996,135 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は電車の中で小さい声で歌いました。",
+          "english": "She sang quietly on the train.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "densha",
+            "naka",
+            "chiisai",
+            "koe",
+            "utau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "densha",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "naka",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "chiisai",
+              "start": 8,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "koe",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "utau",
+              "start": 13,
+              "end": 18,
+              "surface_form": "歌いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は電[でん]車[しゃ]の中[なか]で小[ちい]さい声[こえ]で歌[うた]いました。"
+        },
+        {
+          "japanese": "弟はいつもうちで歌をうたいます。",
+          "english": "My younger brother always sings at home.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "itsumo",
+            "uchi",
+            "uta",
+            "utau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "uchi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 8,
+              "end": 9
+            }
+          ],
+          "furigana": "弟[おとうと]はいつもうちで歌[うた]をうたいます。"
+        },
+        {
+          "japanese": "先生は教室で新しい歌を教えました。",
+          "english": "The teacher taught a new song in the classroom.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "kyoushitsu",
+            "atarashii-adj",
+            "uta",
+            "oshieru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kyoushitsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "uta",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "oshieru",
+              "start": 11,
+              "end": 16,
+              "surface_form": "教えました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "先[せん]生[せい]は教[きょう]室[しつ]で新[あたら]しい歌[うた]を教[おし]えました。"
+        }
+      ]
     },
     {
       "slug": "n4-motsu",
@@ -890,8 +3160,99 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は財布を持っています。",
+          "english": "I have a wallet with me.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "saifu",
+            "motsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "saifu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "motsu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "持って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "私[わたし]は財[さい]布[ふ]を持[も]っています。"
+        },
+        {
+          "japanese": "彼は晩ご飯を持って来ました。",
+          "english": "He brought dinner.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "bangohan",
+            "mottekuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 2,
+              "end": 5
+            }
+          ],
+          "furigana": "彼[かれ]は晩[ばん]ご飯[はん]を持[も]って来[き]ました。"
+        },
+        {
+          "japanese": "妹は嬉しい気持ちで歌いました。",
+          "english": "My younger sister sang with a happy feeling.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "ureshii",
+            "kimochi",
+            "utau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ureshii",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kimochi",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "utau",
+              "start": 9,
+              "end": 14,
+              "surface_form": "歌いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "妹[いもうと]は嬉[うれ]しい気[き]持[も]ちで歌[うた]いました。"
+        }
+      ]
     },
     {
       "slug": "n4-tsukau",
@@ -927,8 +3288,118 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎日パソコンを使います。",
+          "english": "I use my computer every day.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "mainichi",
+            "pasokon",
+            "tsukau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "pasokon",
+              "start": 4,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 9,
+              "end": 13,
+              "surface_form": "使います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]パソコンを使[つか]います。"
+        },
+        {
+          "japanese": "このペンはまだ使えます。",
+          "english": "This pen still works.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "pen",
+            "mada",
+            "tsukaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "pen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mada",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tsukaeru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "使えます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "このペンはまだ使[つか]えます。"
+        },
+        {
+          "japanese": "彼はこの部屋を使いました。",
+          "english": "He used this room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "kono",
+            "heya",
+            "tsukau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tsukau",
+              "start": 7,
+              "end": 12,
+              "surface_form": "使いました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]はこの部屋[へや]を使[つか]いました。"
+        }
+      ]
     },
     {
       "slug": "n4-hataraku",
@@ -964,8 +3435,101 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は銀行で働きます。",
+          "english": "I work at a bank.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ginkou",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ginkou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 5,
+              "end": 9,
+              "surface_form": "働きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は銀[ぎん]行[こう]で働[はたら]きます。"
+        },
+        {
+          "japanese": "彼女は病院で働いています。",
+          "english": "She's working at the hospital.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "byouin",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "byouin",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 6,
+              "end": 9,
+              "surface_form": "働いて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は病[びょう]院[いん]で働[はたら]いています。"
+        },
+        {
+          "japanese": "父は毎日忙しく働きます。",
+          "english": "My father works hard every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "chichi",
+            "mainichi",
+            "isogashii",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hataraku",
+              "start": 7,
+              "end": 11,
+              "surface_form": "働きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "父[ちち]は毎[まい]日[にち]忙[いそが]しく働[はたら]きます。"
+        }
+      ]
     },
     {
       "slug": "n4-kariru",
@@ -1002,8 +3566,98 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "兄は銀行からお金を借りました。",
+          "english": "My older brother borrowed money from the bank.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ani",
+            "ginkou",
+            "okane",
+            "kariru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ginkou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "okane",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kariru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "借りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "兄[あに]は銀[ぎん]行[こう]からお金[かね]を借[か]りました。"
+        },
+        {
+          "japanese": "図書館で辞書を借りました。",
+          "english": "I borrowed a dictionary from the library.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "toshokan",
+            "jisho",
+            "kariru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "jisho",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kariru",
+              "start": 7,
+              "end": 12,
+              "surface_form": "借りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "図[と]書[しょ]館[かん]で辞[じ]書[しょ]を借[か]りました。"
+        },
+        {
+          "japanese": "借金は大変です。",
+          "english": "Debt is tough.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "shakkin",
+            "taihen"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shakkin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "furigana": "借[しゃっ]金[きん]は大[たい]変[へん]です。"
+        }
+      ]
     },
     {
       "slug": "n4-kasu",
@@ -1040,8 +3694,117 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は友達に傘を貸しました。",
+          "english": "I lent my umbrella to a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "tomodachi",
+            "kasa",
+            "kasu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kasu",
+              "start": 7,
+              "end": 12,
+              "surface_form": "貸しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は友[とも]達[だち]に傘[かさ]を貸[か]しました。"
+        },
+        {
+          "japanese": "私は先生に辞書を貸してもらいました。",
+          "english": "The teacher lent me a dictionary.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "sensei",
+            "jisho",
+            "kashite-morau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "jisho",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]は先[せん]生[せい]に辞[じ]書[しょ]を貸[か]してもらいました。"
+        },
+        {
+          "japanese": "銀行はその会社にお金を貸しました。",
+          "english": "The bank lent money to that company.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ginkou",
+            "sono",
+            "kaisha",
+            "okane",
+            "kasu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ginkou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kaisha",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "okane",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kasu",
+              "start": 11,
+              "end": 16,
+              "surface_form": "貸しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "銀[ぎん]行[こう]はその会[かい]社[しゃ]にお金[かね]を貸[か]しました。"
+        }
+      ]
     },
     {
       "slug": "n4-shiru",
@@ -1077,8 +3840,99 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はその人を知りません。",
+          "english": "I don't know that person.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "sono",
+            "hito",
+            "shiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sono",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hito",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shiru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "知りません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]はその人[ひと]を知[し]りません。"
+        },
+        {
+          "japanese": "先生が私たちに知らせました。",
+          "english": "The teacher let us know.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "watashitachi",
+            "shiraseru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 3,
+              "end": 6
+            }
+          ],
+          "furigana": "先[せん]生[せい]が私[わたし]たちに知[し]らせました。"
+        },
+        {
+          "japanese": "彼はすぐに承知しました。",
+          "english": "He agreed right away.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "sugu",
+            "shouchi-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sugu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shouchi-suru",
+              "start": 5,
+              "end": 11,
+              "surface_form": "承知しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]はすぐに承[しょう]知[ち]しました。"
+        }
+      ]
     },
     {
       "slug": "n4-hajimeru",
@@ -1114,8 +3968,102 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "授業は九時に始まります。",
+          "english": "Class starts at nine o'clock.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "jugyou",
+            "kyuu-v",
+            "ji-oclock",
+            "hajimaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "jugyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hajimaru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "始まります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "授[じゅ]業[ぎょう]は九[きゅう]時[じ]に始[はじ]まります。"
+        },
+        {
+          "japanese": "彼女は日本語の勉強を始めました。",
+          "english": "She started studying Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "nihongo",
+            "benkyou",
+            "hajimeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "benkyou",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "hajimeru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "始めました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は日本[にほん]語[ご]の勉[べん]強[きょう]を始[はじ]めました。"
+        },
+        {
+          "japanese": "映画はもう始まりましたか。",
+          "english": "Has the movie already started?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "mou",
+            "hajimaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eiga",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "hajimaru",
+              "start": 5,
+              "end": 11,
+              "surface_form": "始まりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "映[えい]画[が]はもう始[はじ]まりましたか。"
+        }
+      ]
     },
     {
       "slug": "n4-owaru",
@@ -1151,8 +4099,110 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "宿題はもう終わりました。",
+          "english": "I already finished my homework.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shukudai",
+            "mou",
+            "owaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 5,
+              "end": 11,
+              "surface_form": "終わりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "宿[しゅく]題[だい]はもう終[お]わりました。"
+        },
+        {
+          "japanese": "映画の終わりはとても悲しいです。",
+          "english": "The end of the movie is very sad.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eiga",
+            "owari",
+            "totemo",
+            "kanashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eiga",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "owari",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kanashii",
+              "start": 10,
+              "end": 13
+            }
+          ],
+          "furigana": "映[えい]画[が]の終[お]わりはとても悲[かな]しいです。"
+        },
+        {
+          "japanese": "雨はもうすぐ終わります。",
+          "english": "The rain will be over soon.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ame-v",
+            "mou",
+            "sugu",
+            "owaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sugu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "owaru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "終わります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "雨[あめ]はもうすぐ終[お]わります。"
+        }
+      ]
     },
     {
       "slug": "n4-isogu",
@@ -1188,8 +4238,107 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "駅まで急いでください。",
+          "english": "Please hurry to the station.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "eki",
+            "isogu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "isogu",
+              "start": 3,
+              "end": 6,
+              "surface_form": "急いで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "駅[えき]まで急[いそ]いでください。"
+        },
+        {
+          "japanese": "雨が降る前に、家へ急ぎましょう。",
+          "english": "Let's hurry home before it rains.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ame-v",
+            "furu-rain",
+            "mae",
+            "ie",
+            "isogu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "furu-rain",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 7,
+              "end": 8
+            }
+          ],
+          "furigana": "雨[あめ]が降[ふ]る前[まえ]に、家[いえ]へ急[いそ]ぎましょう。"
+        },
+        {
+          "japanese": "朝、学校へ急いで行きました。",
+          "english": "In the morning, I hurried to school.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "asa",
+            "gakkou-v",
+            "isogu",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "asa",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "gakkou-v",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "急いで",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "朝[あさ]、学[がっ]校[こう]へ急[いそ]いで行[い]きました。"
+        }
+      ]
     },
     {
       "slug": "n4-hashiru",
@@ -1225,8 +4374,112 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "毎朝公園を走ります。",
+          "english": "I run in the park every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiasa",
+            "kouen",
+            "hashiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 5,
+              "end": 9,
+              "surface_form": "走ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "毎[まい]朝[あさ]公[こう]園[えん]を走[はし]ります。"
+        },
+        {
+          "japanese": "今日は足が痛いから、走れません。",
+          "english": "I can't run today because my legs hurt.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kyou",
+            "ashi-v",
+            "itai",
+            "hashireru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ashi-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hashireru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "走れません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]は足[あし]が痛[いた]いから、走[はし]れません。"
+        },
+        {
+          "japanese": "電車に遅れるから、駅まで走ります。",
+          "english": "I'll run to the station because I'm going to miss the train.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "densha",
+            "okureru",
+            "eki",
+            "hashiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "densha",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okureru",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 12,
+              "end": 16,
+              "surface_form": "走ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "電[でん]車[しゃ]に遅[おく]れるから、駅[えき]まで走[はし]ります。"
+        }
+      ]
     },
     {
       "slug": "n4-tobu",
@@ -1262,8 +4515,100 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "鳥が空を飛びます。",
+          "english": "Birds fly in the sky.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tori",
+            "sora",
+            "tobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tori",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sora",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tobu",
+              "start": 4,
+              "end": 8,
+              "surface_form": "飛びます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "鳥[とり]が空[そら]を飛[と]びます。"
+        },
+        {
+          "japanese": "空港で飛行機を見ました。",
+          "english": "I saw an airplane at the airport.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kuukou",
+            "hikouki",
+            "miru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kuukou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hikouki",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 7,
+              "end": 11,
+              "surface_form": "見ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "空[くう]港[こう]で飛[ひ]行[こう]機[き]を見[み]ました。"
+        },
+        {
+          "japanese": "猫が窓から飛びました。",
+          "english": "The cat jumped from the window.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "neko",
+            "mado",
+            "tobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "tobu",
+              "start": 5,
+              "end": 10,
+              "surface_form": "飛びました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "猫[ねこ]が窓[まど]から飛[と]びました。"
+        }
+      ]
     },
     {
       "slug": "n4-arau",
@@ -1299,8 +4644,114 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "食事の前に手を洗います。",
+          "english": "I wash my hands before a meal.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "shokuji",
+            "mae",
+            "te-v",
+            "arau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "shokuji",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "te-v",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "arau",
+              "start": 7,
+              "end": 11,
+              "surface_form": "洗います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "食[しょく]事[じ]の前[まえ]に手[て]を洗[あら]います。"
+        },
+        {
+          "japanese": "妹は自分のシャツを洗濯する。",
+          "english": "My younger sister does her own laundry.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "imouto",
+            "jibun",
+            "shatsu",
+            "sentaku-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "jibun",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shatsu",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "sentaku-suru",
+              "start": 9,
+              "end": 13
+            }
+          ],
+          "furigana": "妹[いもうと]は自[じ]分[ぶん]のシャツを洗[せん]濯[たく]する。"
+        },
+        {
+          "japanese": "駅のお手洗いは出口の近くです。",
+          "english": "The station restroom is near the exit.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eki",
+            "otearai",
+            "deguchi",
+            "chikaku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "otearai",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "deguchi",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "furigana": "駅[えき]のお手[て]洗[あら]いは出[で]口[ぐち]の近[ちか]くです。"
+        }
+      ]
     },
     {
       "slug": "n4-shinu",
@@ -1336,8 +4787,112 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、猫が死にました。",
+          "english": "The cat died yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "neko",
+            "shinu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shinu",
+              "start": 5,
+              "end": 10,
+              "surface_form": "死にました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "昨日[きのう]、猫[ねこ]が死[し]にました。"
+        },
+        {
+          "japanese": "この魚はもう死んでいます。",
+          "english": "This fish is already dead.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "sakana",
+            "mou",
+            "shinu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shinu",
+              "start": 6,
+              "end": 9,
+              "surface_form": "死んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この魚[さかな]はもう死[し]んでいます。"
+        },
+        {
+          "japanese": "この木は冬に死にました。",
+          "english": "This tree died in the winter.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "ki-tree-v",
+            "fuyu",
+            "shinu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ki-tree-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shinu",
+              "start": 6,
+              "end": 11,
+              "surface_form": "死にました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この木[き]は冬[ふゆ]に死[し]にました。"
+        }
+      ]
     },
     {
       "slug": "n4-asobu",
@@ -1373,8 +4928,112 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "弟は庭で犬と遊びます。",
+          "english": "My little brother plays with the dog in the yard.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "otouto",
+            "niwa",
+            "inu",
+            "asobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "niwa",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "inu",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 6,
+              "end": 10,
+              "surface_form": "遊びます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "弟[おとうと]は庭[にわ]で犬[いぬ]と遊[あそ]びます。"
+        },
+        {
+          "japanese": "金曜日の夜、友達と遊んだ。",
+          "english": "On Friday night I hung out with friends.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kinyoubi",
+            "yoru",
+            "tomodachi",
+            "asobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinyoubi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yoru",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 9,
+              "end": 12,
+              "surface_form": "遊んだ",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "金[きん]曜[よう]日[ひ]の夜[よる]、友[とも]達[だち]と遊[あそ]んだ。"
+        },
+        {
+          "japanese": "男の子は校庭で遊んでいます。",
+          "english": "The boy is playing in the schoolyard.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otokonoko",
+            "koutei",
+            "asobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otokonoko",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "koutei",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 7,
+              "end": 10,
+              "surface_form": "遊んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "男[おとこ]の子[こ]は校[こう]庭[てい]で遊[あそ]んでいます。"
+        }
+      ]
     },
     {
       "slug": "n4-kiru-wear",
@@ -1410,8 +5069,118 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は新しいシャツを着ます。",
+          "english": "I'm wearing a new shirt today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "atarashii-adj",
+            "shatsu",
+            "kiru-wear"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shatsu",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 10,
+              "end": 13,
+              "surface_form": "着ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]は新[あたら]しいシャツを着[き]ます。"
+        },
+        {
+          "japanese": "冬はいつもコートを着ます。",
+          "english": "I always wear a coat in winter.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "fuyu",
+            "itsumo",
+            "kooto",
+            "kiru-wear"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "fuyu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kooto",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 9,
+              "end": 12,
+              "surface_form": "着ます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "冬[ふゆ]はいつもコートを着[き]ます。"
+        },
+        {
+          "japanese": "母は白い服を着ています。",
+          "english": "Mom is wearing white clothes.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "shiroi",
+            "fuku",
+            "kiru-wear"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shiroi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "fuku",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kiru-wear",
+              "start": 6,
+              "end": 8,
+              "surface_form": "着て",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "母[はは]は白[しろ]い服[ふく]を着[き]ています。"
+        }
+      ]
     },
     {
       "slug": "n4-chigau",
@@ -1447,8 +5216,100 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "テストで答えを間違えました。",
+          "english": "I got the answer wrong on the test.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tesuto",
+            "kotae",
+            "machigaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tesuto",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kotae",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 7,
+              "end": 13,
+              "surface_form": "間違えました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "テストで答[こた]えを間[ま]違[ちが]えました。"
+        },
+        {
+          "japanese": "この道は間違っています。",
+          "english": "This is the wrong road.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "machigau"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "machigau",
+              "start": 4,
+              "end": 8,
+              "surface_form": "間違って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この道[みち]は間違[まちが]っています。"
+        },
+        {
+          "japanese": "彼女は電話番号を間違えました。",
+          "english": "She got the phone number wrong.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "denwabangou",
+            "machigaeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "denwabangou",
+              "start": 3,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "machigaeru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "間違えました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は電[でん]話[わ]番[ばん]号[ごう]を間[ま]違[ちが]えました。"
+        }
+      ]
     },
     {
       "slug": "n4-atsumeru",
@@ -3158,6 +7019,43 @@
         "generator_model": "sonnet-5",
         "prompt_version": "4",
         "review_status": "reviewed"
+      }
+    },
+    {
+      "slug": "n4-hitsuji",
+      "primary_form": "羊",
+      "meaning": "sheep",
+      "mnemonic_text": "Horns flaring above a frame of stiff crossed legs: a sheep.",
+      "sort_order": 86,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "よう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひつじ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sheep",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "よう"
+        }
+      ],
+      "meaning_mnemonic": "Look at the shape and you'll find nothing new in it: two short strokes flaring out at the top like horns, and a frame beneath locked into four stiff crossed legs. Not one stroke has been added to the <radical>sheep</radical> you already know. Standing on its own, unchanged and unbothered, it is simply a sheep.",
+      "reading_mnemonic": "The flock's leader shoulders through the door of Koichi's konbini like a regular, and Koichi barely glances up before giving it the usual greeting: \"<reading>よう</reading>!\" The sheep bleats it straight back at him, <reading>よう</reading>, and heads for the onigiri shelf.",
+      "_meta": {
+        "generator_model": "opus-5",
+        "prompt_version": "4",
+        "review_status": "draft"
       }
     }
   ]

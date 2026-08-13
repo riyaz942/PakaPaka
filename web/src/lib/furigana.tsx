@@ -2,7 +2,9 @@ import { Fragment, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import type { WordSpan } from '../types/curriculumRaw';
 
-const FURIGANA_PATTERN = /([^[\]]+?)\[([^[\]]+?)\]/g;
+const BRACKET_PATTERN = /\[([^[\]]+?)\]/g;
+/** Characters a reading attaches to: CJK ideographs plus the 々/ヶ/〆 iteration marks. */
+const BASE_CHAR = /[々〆ヶ一-鿿㐀-䶿]/;
 const BLANK = '＿';
 
 type Segment = {
@@ -13,24 +15,34 @@ type Segment = {
   reading?: string;
 };
 
-/** Splits `字[よみ]` bracket text into plain and ruby segments, offset against the bracket-free text. */
+/**
+ * Splits `字[よみ]` bracket text into plain and ruby segments, offset against the bracket-free text.
+ * A reading annotates only the kanji run immediately before its bracket, so any kana ahead of that
+ * run stays a plain segment — otherwise the ruby would straddle the whole preceding phrase.
+ */
 export function parseFurigana(text: string): Segment[] {
   const segments: Segment[] = [];
   let cursor = 0;
   let plainOffset = 0;
-  FURIGANA_PATTERN.lastIndex = 0;
+  BRACKET_PATTERN.lastIndex = 0;
   let match: RegExpExecArray | null;
 
-  while ((match = FURIGANA_PATTERN.exec(text)) !== null) {
-    if (match.index > cursor) {
-      const plain = text.slice(cursor, match.index);
+  while ((match = BRACKET_PATTERN.exec(text)) !== null) {
+    let baseStart = match.index;
+    while (baseStart > cursor && BASE_CHAR.test(text[baseStart - 1])) {
+      baseStart -= 1;
+    }
+
+    if (baseStart > cursor) {
+      const plain = text.slice(cursor, baseStart);
       segments.push({ start: plainOffset, end: plainOffset + plain.length, base: plain });
       plainOffset += plain.length;
     }
-    const base = match[1];
-    segments.push({ start: plainOffset, end: plainOffset + base.length, base, reading: match[2] });
+
+    const base = text.slice(baseStart, match.index);
+    segments.push({ start: plainOffset, end: plainOffset + base.length, base, reading: match[1] });
     plainOffset += base.length;
-    cursor = FURIGANA_PATTERN.lastIndex;
+    cursor = BRACKET_PATTERN.lastIndex;
   }
 
   if (cursor < text.length) {

@@ -2856,45 +2856,6 @@
       "review_status": "reviewed"
     }
   },
-  "n5-ooi-ta": {
-    "example_sentences": [
-      {
-        "japanese": "多田さん、ここは人がたくさんいます。",
-        "english": "Ms. Tada, there are a lot of people here.",
-        "vocabulary_slugs": [
-          "koko",
-          "hito",
-          "takusan",
-          "iru-exist"
-        ]
-      },
-      {
-        "japanese": "本多さんの町は雨がたくさん降ります。",
-        "english": "It rains a lot in Mr. Honda's town.",
-        "vocabulary_slugs": [
-          "machi-v",
-          "ame-v",
-          "takusan",
-          "furu-rain"
-        ]
-      },
-      {
-        "japanese": "宇多田さんは今日仕事がたくさんあります。",
-        "english": "Ms. Utada has a lot of work today.",
-        "vocabulary_slugs": [
-          "kyou",
-          "shigoto",
-          "takusan",
-          "aru"
-        ]
-      }
-    ],
-    "_meta": {
-      "generator_model": "gemini-3.1-pro",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    }
-  },
   "n5-otoko": {
     "example_sentences": [
       {
@@ -3149,42 +3110,6 @@
           "otouto",
           "jitensha",
           "suki"
-        ]
-      }
-    ],
-    "_meta": {
-      "generator_model": "cursor-grok-4.5-high",
-      "prompt_version": "1",
-      "review_status": "reviewed"
-    }
-  },
-  "n5-shi-city": {
-    "example_sentences": [
-      {
-        "japanese": "私はこの市に住んでいます。",
-        "english": "I live in this city.",
-        "vocabulary_slugs": [
-          "watashi",
-          "kono",
-          "sumu"
-        ]
-      },
-      {
-        "japanese": "この市はとても大きいです。",
-        "english": "This city is very big.",
-        "vocabulary_slugs": [
-          "kono",
-          "totemo",
-          "ookii"
-        ]
-      },
-      {
-        "japanese": "母は市で野菜を買います。",
-        "english": "My mother buys vegetables at the market.",
-        "vocabulary_slugs": [
-          "haha",
-          "yasai",
-          "kau-v"
         ]
       }
     ],
