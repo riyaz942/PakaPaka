@@ -5382,8 +5382,112 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は特別な料理を作りました。",
+          "english": "Today I made a special dish.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "tokubetsu",
+            "ryouri",
+            "tsukuru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tokubetsu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tsukuru",
+              "start": 9,
+              "end": 14,
+              "surface_form": "作りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]は特[とく]別[べつ]な料[りょう]理[り]を作[つく]りました。"
+        },
+        {
+          "japanese": "私は別に忙しくないです。",
+          "english": "I'm not particularly busy.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "betsuni",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "betsuni",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 4,
+              "end": 9,
+              "surface_form": "忙しくない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "私[わたし]は別[べつ]に忙[いそが]しくないです。"
+        },
+        {
+          "japanese": "彼は別の部屋にいます。",
+          "english": "He's in a different room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "betsu",
+            "heya",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "betsu",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 10,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]は別[べつ]の部屋[へや]にいます。"
+        }
+      ]
     },
     {
       "slug": "n4-shu-main",
@@ -5423,8 +5527,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の姉のご主人は先生です。",
+          "english": "My older sister's husband is a teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ane",
+            "go-shujin",
+            "sensei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ane",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "go-shujin",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "私[わたし]の姉[あね]のご主[しゅ]人[じん]は先[せん]生[せい]です。"
+        },
+        {
+          "japanese": "あの女の人は主婦です。",
+          "english": "That woman is a housewife.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "onnanohito",
+            "shufu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "onnanohito",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "shufu",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "あの女[おんな]の人[ひと]は主[しゅ]婦[ふ]です。"
+        },
+        {
+          "japanese": "彼女のご主人はいつも忙しいです。",
+          "english": "Her husband is always busy.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "go-shujin",
+            "itsumo",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "go-shujin",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 10,
+              "end": 13
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]のご主[しゅ]人[じん]はいつも忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "n4-ani",
@@ -5460,8 +5662,88 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "兄は毎朝走ります。",
+          "english": "My older brother runs every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ani",
+            "maiasa",
+            "hashiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 4,
+              "end": 8,
+              "surface_form": "走ります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "兄[あに]は毎[まい]朝[あさ]走[はし]ります。"
+        },
+        {
+          "japanese": "お兄さんは医者です。",
+          "english": "Your older brother is a doctor.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "oniisan",
+            "isha"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "oniisan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isha",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "お兄[あに]さんは医[い]者[しゃ]です。"
+        },
+        {
+          "japanese": "兄弟が三人います。",
+          "english": "I have three siblings.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyoudai",
+            "san-v",
+            "nin-counter",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyoudai",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 5,
+              "end": 8,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "兄[きょう]弟[だい]が三[さん]人[にん]います。"
+        }
+      ]
     },
     {
       "slug": "n4-otouto",
@@ -5497,8 +5779,120 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の弟は今日学校を休みました。",
+          "english": "My younger brother stayed home from school today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "otouto",
+            "kyou",
+            "gakkou-v",
+            "yasumu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "otouto",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kyou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "gakkou-v",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 9,
+              "end": 14,
+              "surface_form": "休みました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]の弟[おとうと]は今日[きょう]学[がっ]校[こう]を休[やす]みました。"
+        },
+        {
+          "japanese": "弟は公園で猫と遊んでいます。",
+          "english": "My younger brother is playing with a cat in the park.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "otouto",
+            "kouen",
+            "neko",
+            "asobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 7,
+              "end": 10,
+              "surface_form": "遊んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "弟[おとうと]は公[こう]園[えん]で猫[ねこ]と遊[あそ]んでいます。"
+        },
+        {
+          "japanese": "私は兄弟が三人います。",
+          "english": "I have three siblings.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "kyoudai",
+            "san-v",
+            "nin-counter",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kyoudai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 7,
+              "end": 10,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は兄[きょう]弟[だい]が三[さん]人[にん]います。"
+        }
+      ]
     },
     {
       "slug": "n4-ane",
@@ -5538,8 +5932,94 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の姉は先生です。",
+          "english": "My older sister is a teacher.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "ane",
+            "sensei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ane",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "私[わたし]の姉[あね]は先[せん]生[せい]です。"
+        },
+        {
+          "japanese": "お姉さんは料理が上手ですか。",
+          "english": "Is your older sister good at cooking?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "oneesan",
+            "ryouri",
+            "jouzu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "oneesan",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "jouzu",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "お姉[あね]さんは料[りょう]理[り]が上手[じょうず]ですか。"
+        },
+        {
+          "japanese": "姉は毎日忙しいです。",
+          "english": "My older sister is busy every day.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ane",
+            "mainichi",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ane",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 4,
+              "end": 7
+            }
+          ],
+          "furigana": "姉[あね]は毎[まい]日[にち]忙[いそが]しいです。"
+        }
+      ]
     },
     {
       "slug": "n4-imouto",
@@ -5579,8 +6059,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "妹は毎朝六時に起きます。",
+          "english": "My younger sister gets up at six every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "imouto",
+            "maiasa",
+            "roku-v",
+            "ji-oclock",
+            "okiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "起きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "妹[いもうと]は毎[まい]朝[あさ]六[ろく]時[じ]に起[お]きます。"
+        },
+        {
+          "japanese": "妹は魚が好きです。",
+          "english": "My younger sister likes fish.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "imouto",
+            "sakana",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "妹[いもうと]は魚[さかな]が好[す]きです。"
+        },
+        {
+          "japanese": "妹は公園で本を読みます。",
+          "english": "My younger sister reads a book in the park.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "imouto",
+            "kouen",
+            "hon",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "imouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 7,
+              "end": 11,
+              "surface_form": "読みます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "妹[いもうと]は公[こう]園[えん]で本[ほん]を読[よ]みます。"
+        }
+      ]
     },
     {
       "slug": "n4-oya",
@@ -5616,8 +6194,100 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の親はいつも忙しいです。",
+          "english": "My parent is always busy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "oya",
+            "itsumo",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "oya",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "itsumo",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 7,
+              "end": 10
+            }
+          ],
+          "furigana": "私[わたし]の親[おや]はいつも忙[いそが]しいです。"
+        },
+        {
+          "japanese": "駅員はとても親切でした。",
+          "english": "The station staff was very kind.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ekiin",
+            "totemo",
+            "shinsetsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ekiin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shinsetsu",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "駅[えき]員[いん]はとても親[しん]切[せつ]でした。"
+        },
+        {
+          "japanese": "彼の親は先生です。",
+          "english": "His parent is a teacher.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "oya",
+            "sensei"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "oya",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sensei",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "彼[かれ]の親[おや]は先[せん]生[せい]です。"
+        }
+      ]
     },
     {
       "slug": "n4-iro",
@@ -5653,8 +6323,108 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は黄色が好きです。",
+          "english": "I like yellow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "kiiro",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kiiro",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]は黄[き]色[いろ]が好[す]きです。"
+        },
+        {
+          "japanese": "彼女の靴は茶色です。",
+          "english": "Her shoes are brown.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "kutsu",
+            "chairo"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kutsu",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "chairo",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]の靴[くつ]は茶[ちゃ]色[いろ]です。"
+        },
+        {
+          "japanese": "この店には色々な色があります。",
+          "english": "This shop has all kinds of colors.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "mise",
+            "iroiro",
+            "iro",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "iroiro",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iro",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この店[みせ]には色[いろ]々[いろ]な色[いろ]があります。"
+        }
+      ]
     },
     {
       "slug": "n4-aji",
@@ -5690,8 +6460,110 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の趣味は料理です。",
+          "english": "My hobby is cooking.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "shumi",
+            "ryouri"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shumi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "ryouri",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]の趣[しゅ]味[み]は料[りょう]理[り]です。"
+        },
+        {
+          "japanese": "彼女は日本語に興味があります。",
+          "english": "She's interested in Japanese.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "nihongo",
+            "kyoumi",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "kyoumi",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は日本[にほん]語[ご]に興[きょう]味[み]があります。"
+        },
+        {
+          "japanese": "この言葉の意味が分かりません。",
+          "english": "I don't understand the meaning of this word.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "kotoba",
+            "imi",
+            "wakaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kotoba",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "imi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この言[こと]葉[ば]の意[い]味[み]が分[わ]かりません。"
+        }
+      ]
     },
     {
       "slug": "n4-suki",
@@ -5727,8 +6599,100 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は猫が好きです。",
+          "english": "I like cats.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "neko",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "私[わたし]は猫[ねこ]が好[す]きです。"
+        },
+        {
+          "japanese": "彼は魚が好きだ。",
+          "english": "He likes fish.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "sakana",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "彼[かれ]は魚[さかな]が好[す]きだ。"
+        },
+        {
+          "japanese": "私の好きな飲み物はお茶です。",
+          "english": "My favorite drink is tea.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "suki",
+            "nomimono",
+            "ocha"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nomimono",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "ocha",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "私[わたし]の好[す]きな飲[の]み物[もの]はお茶[ちゃ]です。"
+        }
+      ]
     },
     {
       "slug": "n4-warui",
@@ -5764,8 +6728,88 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は天気が悪いです。",
+          "english": "The weather is bad today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "tenki",
+            "warui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tenki",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "warui",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "今日[きょう]は天[てん]気[き]が悪[わる]いです。"
+        },
+        {
+          "japanese": "彼は目が悪いです。",
+          "english": "He has poor eyesight.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "me-ga-warui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "me-ga-warui",
+              "start": 2,
+              "end": 6
+            }
+          ],
+          "furigana": "彼[かれ]は目[め]が悪[わる]いです。"
+        },
+        {
+          "japanese": "私は気分が悪いです。",
+          "english": "I feel sick.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "kibun",
+            "warui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kibun",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "warui",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]は気[き]分[ぶん]が悪[わる]いです。"
+        }
+      ]
     },
     {
       "slug": "n4-futoi",
@@ -5806,8 +6850,100 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "象の足はとても太い。",
+          "english": "An elephant's legs are very thick.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "zou",
+            "ashi-v",
+            "totemo",
+            "futoi-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "zou",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ashi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "futoi-adj",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "象[ぞう]の足[あし]はとても太[ふと]い。"
+        },
+        {
+          "japanese": "太陽は東から出る。",
+          "english": "The sun rises in the east.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "taiyou",
+            "higashi-v",
+            "deru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "taiyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "higashi-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "deru-v",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "太[たい]陽[よう]は東[ひがし]から出[で]る。"
+        },
+        {
+          "japanese": "蛇の体は太い。",
+          "english": "The snake's body is thick.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hebi",
+            "karada",
+            "futoi-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hebi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "karada",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "futoi-adj",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "蛇[へび]の体[からだ]は太[ふと]い。"
+        }
+      ]
     },
     {
       "slug": "n4-hosoi",
@@ -5843,8 +6979,108 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この道はとても細いです。",
+          "english": "This road is very narrow.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "michi-v",
+            "totemo",
+            "hosoi-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hosoi-adj",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "この道[みち]はとても細[ほそ]いです。"
+        },
+        {
+          "japanese": "彼女の足は細いです。",
+          "english": "Her legs are thin.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ashi-v",
+            "hosoi-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ashi-v",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hosoi-adj",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]の足[あし]は細[ほそ]いです。"
+        },
+        {
+          "japanese": "あの橋は細くて、危ないです。",
+          "english": "That bridge is narrow and dangerous.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ano",
+            "hashi-bridge",
+            "hosoi-adj",
+            "abunai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hashi-bridge",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hosoi-adj",
+              "start": 4,
+              "end": 7,
+              "surface_form": "細くて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "abunai",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "furigana": "あの橋[はし]は細[ほそ]くて、危[あぶ]ないです。"
+        }
+      ]
     },
     {
       "slug": "n4-karui",
@@ -5880,8 +7116,102 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "このかばんは軽いです。",
+          "english": "This bag is light.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kaban",
+            "karui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "karui",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "このかばんは軽[かる]いです。"
+        },
+        {
+          "japanese": "その荷物は軽くないです。",
+          "english": "That luggage isn't light.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sono",
+            "nimotsu",
+            "karui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "karui",
+              "start": 5,
+              "end": 9,
+              "surface_form": "軽くない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "その荷[に]物[もつ]は軽[かる]くないです。"
+        },
+        {
+          "japanese": "私の傘はとても軽いです。",
+          "english": "My umbrella is very light.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "kasa",
+            "totemo",
+            "karui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kasa",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "karui",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "私[わたし]の傘[かさ]はとても軽[かる]いです。"
+        }
+      ]
     },
     {
       "slug": "n4-omoi",
@@ -5921,8 +7251,106 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "このかばんはとても重いです。",
+          "english": "This bag is really heavy.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "kaban",
+            "totemo",
+            "omoi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "このかばんはとても重[おも]いです。"
+        },
+        {
+          "japanese": "彼は体重が重いです。",
+          "english": "He weighs a lot.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "taiju",
+            "omoi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "taiju",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "彼[かれ]は体[たい]重[じゅう]が重[おも]いです。"
+        },
+        {
+          "japanese": "この問題はとても重要です。",
+          "english": "This problem is very important.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "mondai",
+            "totemo",
+            "juuyou"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "juuyou",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "この問[もん]題[だい]はとても重[じゅう]要[よう]です。"
+        }
+      ]
     },
     {
       "slug": "n4-yowai",
@@ -5958,8 +7386,103 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は体が弱いです。",
+          "english": "I have a weak body.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "karada",
+            "yowai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "karada",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yowai",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "私[わたし]は体[からだ]が弱[よわ]いです。"
+        },
+        {
+          "japanese": "彼女の声はとても弱いです。",
+          "english": "Her voice is very weak.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kanojo",
+            "koe",
+            "totemo",
+            "yowai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "koe",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "yowai",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]の声[こえ]はとても弱[よわ]いです。"
+        },
+        {
+          "japanese": "彼は病気で弱くなりました。",
+          "english": "He became weak because of his illness.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "byouki",
+            "yowai",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "byouki",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 7,
+              "end": 12,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]は病[びょう]気[き]で弱[よわ]くなりました。"
+        }
+      ]
     },
     {
       "slug": "n4-tsuyoi",
@@ -5995,8 +7518,102 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女はとても強いです。",
+          "english": "She's very strong.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "totemo",
+            "tsuyoi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "tsuyoi",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]はとても強[つよ]いです。"
+        },
+        {
+          "japanese": "毎日日本語を勉強します。",
+          "english": "I study Japanese every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "mainichi",
+            "nihongo",
+            "benkyou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "勉強します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "毎[まい]日[にち]日本[にほん]語[ご]を勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "今日の勉強はちょっと難しいです。",
+          "english": "Today's studying is a little hard.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "benkyou",
+            "chotto",
+            "muzukashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "benkyou",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "chotto",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 10,
+              "end": 13
+            }
+          ],
+          "furigana": "今日[きょう]の勉[べん]強[きょう]はちょっと難[むずか]しいです。"
+        }
+      ]
     },
     {
       "slug": "n4-kurai",
@@ -6032,8 +7649,99 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "外はもう暗いです。",
+          "english": "It's already dark outside.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "soto",
+            "mou",
+            "kurai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "soto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mou",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kurai",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "外[そと]はもう暗[くら]いです。"
+        },
+        {
+          "japanese": "空が暗くなりました。",
+          "english": "The sky has gotten dark.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sora",
+            "kurai",
+            "naru-become"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sora",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "naru-become",
+              "start": 4,
+              "end": 9,
+              "surface_form": "なりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "空[そら]が暗[くら]くなりました。"
+        },
+        {
+          "japanese": "この部屋は暗くて狭いです。",
+          "english": "This room is dark and cramped.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "kurai",
+            "semai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kurai",
+              "start": 5,
+              "end": 8,
+              "surface_form": "暗くて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "semai",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "この部屋[へや]は暗[くら]くて狭[せま]いです。"
+        }
+      ]
     },
     {
       "slug": "n4-akarui",
@@ -6069,8 +7777,110 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "明日、友達と公園に行きます。",
+          "english": "Tomorrow I'm going to the park with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "kouen",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 9,
+              "end": 13,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]と公[こう]園[えん]に行[い]きます。"
+        },
+        {
+          "japanese": "この部屋はとても明るいです。",
+          "english": "This room is very bright.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "totemo",
+            "akarui"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "akarui",
+              "start": 8,
+              "end": 11
+            }
+          ],
+          "furigana": "この部屋[へや]はとても明[あか]るいです。"
+        },
+        {
+          "japanese": "先生が問題を説明しました。",
+          "english": "The teacher explained the problem.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "mondai",
+            "setsumei-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "setsumei-suru",
+              "start": 6,
+              "end": 12,
+              "surface_form": "説明しました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "先[せん]生[せい]が問[もん]題[だい]を説[せつ]明[めい]しました。"
+        }
+      ]
     },
     {
       "slug": "n4-hiroi",
@@ -6106,8 +7916,108 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この部屋は広いです。",
+          "english": "This room is spacious.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "hiroi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "hiroi",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "この部屋[へや]は広[ひろ]いです。"
+        },
+        {
+          "japanese": "私の家はあまり広くないです。",
+          "english": "My house isn't very big.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "ie",
+            "amari",
+            "hiroi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ie",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "amari",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hiroi",
+              "start": 7,
+              "end": 11,
+              "surface_form": "広くない",
+              "inflection": "nai"
+            }
+          ],
+          "furigana": "私[わたし]の家[いえ]はあまり広[ひろ]くないです。"
+        },
+        {
+          "japanese": "その公園はとても広いです。",
+          "english": "That park is very spacious.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "kouen",
+            "totemo",
+            "hiroi"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "totemo",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "hiroi",
+              "start": 8,
+              "end": 10
+            }
+          ],
+          "furigana": "その公[こう]園[えん]はとても広[ひろ]いです。"
+        }
+      ]
     },
     {
       "slug": "n4-kimeru",
