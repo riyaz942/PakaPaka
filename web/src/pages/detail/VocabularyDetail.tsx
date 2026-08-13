@@ -61,7 +61,11 @@ export function VocabularyDetail({ raw, showReadings }: Props) {
       ) : null}
 
       <h3 className="panel-title">Example sentences</h3>
-      <ExampleSentences sentences={raw.example_sentences} showReadings={showReadings} />
+      <ExampleSentences
+        sentences={raw.example_sentences}
+        showReadings={showReadings}
+        generatorModel={raw._meta?.generator_model}
+      />
     </div>
   );
 }

@@ -122,6 +122,10 @@ export type ItemsResponse = {
   items: ContentListItem[];
 };
 
+export type ItemsModelsResponse = {
+  models: string[];
+};
+
 export type ItemNeighbor = {
   type: ContentType;
   slug: string;

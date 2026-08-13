@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { AuditFindingsPanel } from '../components/AuditFindingsPanel';
 import { CompletenessPill } from '../components/CompletenessPill';
 import { DependencyPanel } from '../components/DependencyPanel';
@@ -9,7 +9,7 @@ import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
 import { guideHref, stageIdForField } from '../lib/guide';
-import { LIST_FILTER_KEYS, pickSearchParams } from '../lib/listContext';
+import { LIST_FILTER_KEYS, listContextSearch, pickSearchParams } from '../lib/listContext';
 import {
   CONTENT_TYPES,
   type ContentType,
@@ -44,6 +44,7 @@ function TypeSection({ item, showReadings }: { item: ItemDetailResponse; showRea
 
 function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const neighborsUrl = useMemo(() => {
     const qs = pickSearchParams(searchParams, LIST_FILTER_KEYS);
@@ -52,30 +53,24 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
     return `/api/items/neighbors?${qs.toString()}`;
   }, [searchParams, type, slug]);
 
-  const listHref = useMemo(() => {
-    const qs = pickSearchParams(searchParams, [
-      ...LIST_FILTER_KEYS,
-      'page',
-    ]).toString();
-    return qs ? `/content/${type}?${qs}` : `/content/${type}`;
-  }, [searchParams, type]);
-
-  const detailSearch = useMemo(() => {
-    const qs = pickSearchParams(searchParams, [
-      ...LIST_FILTER_KEYS,
-      'page',
-    ]).toString();
-    return qs ? `?${qs}` : '';
-  }, [searchParams]);
+  // Round-trips page + pageSize (not just filters) so links between detail
+  // pages keep the same list pagination context.
+  const detailSearch = useMemo(() => listContextSearch(searchParams), [searchParams]);
 
   const result = useApi<ItemsNeighborsResponse>(neighborsUrl);
+
+  // A real back-navigation (not a fresh push) so the list page is restored
+  // exactly as left, including pageSize and scroll position.
+  const backButton = (
+    <button type="button" className="item-list-nav__back" onClick={() => navigate(-1)}>
+      ← Back to list
+    </button>
+  );
 
   if (result.status === 'loading') {
     return (
       <nav className="item-list-nav" aria-label="List navigation">
-        <Link to={listHref} className="item-list-nav__back">
-          ← Back to list
-        </Link>
+        {backButton}
         <span className="panel-muted">Loading neighbors…</span>
       </nav>
     );
@@ -84,9 +79,7 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
   if (result.status === 'error') {
     return (
       <nav className="item-list-nav" aria-label="List navigation">
-        <Link to={listHref} className="item-list-nav__back">
-          ← Back to list
-        </Link>
+        {backButton}
       </nav>
     );
   }
@@ -101,9 +94,7 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
 
   return (
     <nav className="item-list-nav" aria-label="List navigation">
-      <Link to={listHref} className="item-list-nav__back">
-        ← Back to list
-      </Link>
+      {backButton}
       <div className="item-list-nav__pager">
         {prev ? (
           <Link

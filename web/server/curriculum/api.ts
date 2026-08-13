@@ -171,6 +171,10 @@ function parseStatus(value: unknown): ReviewStatus | undefined {
     : undefined;
 }
 
+function parseModel(value: unknown): string | undefined {
+  return typeof value === 'string' && value.length > 0 ? value : undefined;
+}
+
 function serializeListItem(
   item: ContentItem,
   auditBySlug: Map<string, AuditFinding[]>,
@@ -240,6 +244,7 @@ function filterItems(
   const type = parseType(query.type);
   const level = parseLevel(query.level);
   const status = parseStatus(query.status);
+  const model = parseModel(query.model);
   const skeletonOnly = query.skeleton === 'true' || query.skeleton === '1';
   const missing =
     typeof query.missing === 'string' && query.missing.length > 0
@@ -257,6 +262,7 @@ function filterItems(
   return items.filter((item) => {
     if (type && item.type !== type) return false;
     if (level && item.level !== level) return false;
+    if (model && item.meta?.generator_model !== model) return false;
     if (skeletonOnly && !isSkeleton(item)) return false;
     // Optional fields are filterable too — the Guide links at them so a
     // maintainer can see which items skipped one.
@@ -410,6 +416,16 @@ export function createCurriculumRouter(
     }
 
     res.json({ byTypeLevel });
+  });
+
+  /** Distinct generator_model values seen across all items, for the filter dropdown. */
+  router.get('/items/models', (_req: Request, res: Response) => {
+    const index = getCurriculum(repoRoot);
+    const models = new Set<string>();
+    for (const item of index.items) {
+      if (item.meta?.generator_model) models.add(item.meta.generator_model);
+    }
+    res.json({ models: [...models].sort() });
   });
 
   router.get('/items', (req: Request, res: Response) => {

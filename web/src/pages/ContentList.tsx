@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
-import { EDITABLE_STATUSES, ReviewStatusControl } from '../components/ReviewStatusControl';
+import { EDITABLE_STATUSES } from '../components/ReviewStatusControl';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
@@ -15,6 +15,7 @@ import {
   STATUS_LABELS,
   type ContentType,
   type FindingSeverity,
+  type ItemsModelsResponse,
   type ItemsResponse,
   type JlptLevel,
   type ReviewStatus,
@@ -32,6 +33,11 @@ const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
 const PAGE_SIZE_STEP = 50;
 const DEFAULT_PAGE_SIZE = PAGE_SIZE_STEP;
 const SEARCH_DEBOUNCE_MS = 300;
+
+// Scroll position per list URL (path + query), so navigating to a detail
+// page and back restores where the user was. Keyed off the full search
+// string, so it only applies when returning to the same filters/page/pageSize.
+const scrollPositions = new Map<string, number>();
 
 function parsePageSize(value: string | null): number {
   const n = Number(value);
@@ -65,12 +71,14 @@ function SkeletonRows() {
       <table className="data-table">
         <thead>
           <tr>
+            <th className="row-number-column" />
             <th className="checkbox-column" />
             <th>Form</th>
             <th>Slug</th>
             <th>Meaning</th>
             <th>Level</th>
             <th>Status</th>
+            <th>Model</th>
             <th>Completeness</th>
             <th>Audit</th>
           </tr>
@@ -78,7 +86,7 @@ function SkeletonRows() {
         <tbody>
           {Array.from({ length: 8 }, (_, i) => (
             <tr key={i}>
-              <td colSpan={8}>
+              <td colSpan={10}>
                 <span className="skeleton-bar" />
               </td>
             </tr>
@@ -92,7 +100,9 @@ function SkeletonRows() {
 export default function ContentList() {
   const routeParams = useParams<{ type: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const scrollKey = location.pathname + location.search;
 
   const type: ContentType = isContentType(routeParams.type)
     ? routeParams.type
@@ -110,6 +120,7 @@ export default function ContentList() {
   const missing = searchParams.get('missing') ?? '';
   const q = searchParams.get('q') ?? '';
   const audit = searchParams.get('audit') ?? '';
+  const model = searchParams.get('model') ?? '';
   const sort = searchParams.get('sort') ?? 'sort_order';
   const page = Math.max(1, Number(searchParams.get('page')) || 1);
   const pageSize = parsePageSize(searchParams.get('pageSize'));
@@ -165,14 +176,40 @@ export default function ContentList() {
     if (missing) qs.set('missing', missing);
     if (q) qs.set('q', q);
     if (audit) qs.set('audit', audit);
+    if (model) qs.set('model', model);
     qs.set('sort', sort);
     qs.set('page', String(page));
     qs.set('pageSize', String(pageSize));
     if (refreshToken) qs.set('r', String(refreshToken));
     return `/api/items?${qs.toString()}`;
-  }, [type, level, status, skeleton, missing, q, audit, sort, page, pageSize, refreshToken]);
+  }, [type, level, status, skeleton, missing, q, audit, model, sort, page, pageSize, refreshToken]);
 
   const result = useApi<ItemsResponse>(apiUrl);
+  const modelsResult = useApi<ItemsModelsResponse>('/api/items/models');
+  const modelOptions = modelsResult.status === 'ok' ? modelsResult.data.models : [];
+
+  // Track scroll position continuously (not just at unmount) so React's
+  // StrictMode dev-mode double-invoked cleanup can't clobber a real saved
+  // position with a stale 0 from right after mount.
+  useEffect(() => {
+    function handleScroll() {
+      scrollPositions.set(scrollKey, window.scrollY);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollKey]);
+
+  // Restore it once the real rows are rendered (not the skeleton), then
+  // forget it so a later in-place refetch doesn't re-apply a stale scroll.
+  useEffect(() => {
+    if (result.status !== 'ok') return;
+    const saved = scrollPositions.get(scrollKey);
+    if (saved !== undefined) {
+      window.scrollTo(0, saved);
+      scrollPositions.delete(scrollKey);
+    }
+  }, [result.status, scrollKey]);
+
   const missingOptions = MISSING_FIELD_OPTIONS[type];
   const pageSizeOptions =
     result.status === 'ok' ? buildPageSizeOptions(result.data.total) : [DEFAULT_PAGE_SIZE];
@@ -224,6 +261,7 @@ export default function ContentList() {
       if (missing) qs.set('missing', missing);
       if (q) qs.set('q', q);
       if (audit) qs.set('audit', audit);
+      if (model) qs.set('model', model);
       qs.set('sort', sort);
       qs.set('page', '1');
       qs.set('pageSize', String(totalFiltered));
@@ -352,6 +390,19 @@ export default function ContentList() {
         </select>
 
         <select
+          value={model}
+          onChange={(e) => updateParams({ model: e.target.value || null, page: null })}
+          aria-label="Generator model"
+        >
+          <option value="">Any model</option>
+          {modelOptions.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
+        </select>
+
+        <select
           value={sort}
           onChange={(e) => updateParams({ sort: e.target.value, page: null })}
           aria-label="Sort"
@@ -418,6 +469,7 @@ export default function ContentList() {
               <table className="data-table">
                 <thead>
                   <tr>
+                    <th className="row-number-column" />
                     <th className="checkbox-column">
                       <input
                         type="checkbox"
@@ -431,12 +483,13 @@ export default function ContentList() {
                     <th>Meaning</th>
                     <th>Level</th>
                     <th>Status</th>
+                    <th>Model</th>
                     <th>Completeness</th>
                     <th>Audit</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {result.data.items.map((item) => {
+                  {result.data.items.map((item, index) => {
                     // The first unfilled field decides where "how do I fix this
                     // percentage" points — they are listed in generation order.
                     const firstMissing = item.completeness.missing[0];
@@ -445,6 +498,9 @@ export default function ContentList() {
                       : undefined;
                     return (
                     <tr key={`${item.type}:${item.slug}`}>
+                      <td className="row-number-column panel-muted">
+                        {(page - 1) * effectivePageSize + index + 1}
+                      </td>
                       <td className="checkbox-column">
                         <input
                           type="checkbox"
@@ -472,16 +528,9 @@ export default function ContentList() {
                       <td>{item.meaning}</td>
                       <td>{item.level}</td>
                       <td>
-                        <div className="status-cell">
-                          <StatusBadge status={item.reviewStatus} />
-                          <ReviewStatusControl
-                            type={item.type}
-                            slug={item.slug}
-                            status={item.reviewStatus}
-                            onChanged={() => setRefreshToken((v) => v + 1)}
-                          />
-                        </div>
+                        <StatusBadge status={item.reviewStatus} />
                       </td>
+                      <td>{item.meta?.generator_model ?? <span className="panel-muted">—</span>}</td>
                       <td>
                         <CompletenessPill
                           percent={item.completeness.percent}
