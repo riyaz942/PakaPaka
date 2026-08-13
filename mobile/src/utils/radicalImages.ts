@@ -16,6 +16,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/ana.webp': require('../../assets/radicals/n5/ana.webp'),
   'radicals/n5/ao.webp': require('../../assets/radicals/n5/ao.webp'),
   'radicals/n5/ashi-foot.webp': require('../../assets/radicals/n5/ashi-foot.webp'),
+  'radicals/n5/boku-divination.webp': require('../../assets/radicals/n5/boku-divination.webp'),
   'radicals/n5/bou.webp': require('../../assets/radicals/n5/bou.webp'),
   'radicals/n5/chichi.webp': require('../../assets/radicals/n5/chichi.webp'),
   'radicals/n5/chikara.webp': require('../../assets/radicals/n5/chikara.webp'),
@@ -23,6 +24,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/haba.webp': require('../../assets/radicals/n5/haba.webp'),
   'radicals/n5/hachigashira.webp': require('../../assets/radicals/n5/hachigashira.webp'),
   'radicals/n5/hi-fire.webp': require('../../assets/radicals/n5/hi-fire.webp'),
+  'radicals/n5/hi-spoon.webp': require('../../assets/radicals/n5/hi-spoon.webp'),
   'radicals/n5/hi-sun.webp': require('../../assets/radicals/n5/hi-sun.webp'),
   'radicals/n5/hidari.webp': require('../../assets/radicals/n5/hidari.webp'),
   'radicals/n5/hito.webp': require('../../assets/radicals/n5/hito.webp'),
@@ -38,6 +40,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/kai-shell.webp': require('../../assets/radicals/n5/kai-shell.webp'),
   'radicals/n5/kakeru.webp': require('../../assets/radicals/n5/kakeru.webp'),
   'radicals/n5/kanehen.webp': require('../../assets/radicals/n5/kanehen.webp'),
+  'radicals/n5/katana.webp': require('../../assets/radicals/n5/katana.webp'),
   'radicals/n5/kawa.webp': require('../../assets/radicals/n5/kawa.webp'),
   'radicals/n5/keigamae.webp': require('../../assets/radicals/n5/keigamae.webp'),
   'radicals/n5/ki.webp': require('../../assets/radicals/n5/ki.webp'),
@@ -83,10 +86,12 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/tomeru.webp': require('../../assets/radicals/n5/tomeru.webp'),
   'radicals/n5/tsuchi.webp': require('../../assets/radicals/n5/tsuchi.webp'),
   'radicals/n5/tsuki.webp': require('../../assets/radicals/n5/tsuki.webp'),
+  'radicals/n5/ukanmuri.webp': require('../../assets/radicals/n5/ukanmuri.webp'),
   'radicals/n5/uma.webp': require('../../assets/radicals/n5/uma.webp'),
   'radicals/n5/ushi.webp': require('../../assets/radicals/n5/ushi.webp'),
   'radicals/n5/yamahen.webp': require('../../assets/radicals/n5/yamahen.webp'),
   'radicals/n5/yumi.webp': require('../../assets/radicals/n5/yumi.webp'),
+  'radicals/n5/yuu-evening.webp': require('../../assets/radicals/n5/yuu-evening.webp'),
 };
 
 export function getRadicalImage(ref: string | null | undefined): ImageSourcePropType | undefined {
