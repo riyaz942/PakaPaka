@@ -158,6 +158,8 @@ KRAD_VARIANTS = {
     "耂": ["耂", "老"],
     "阝": ["阡", "邦"],
     "𠆢": ["个"],
+    # 毋 is how KRADFILE writes the 母 inside 毎; 母 is the taught radical.
+    "母": ["母", "毋"],
 }
 
 

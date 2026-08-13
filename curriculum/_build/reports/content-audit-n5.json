@@ -2,7 +2,7 @@
   {
     "check": "Review-status rollup",
     "severity": "INFO",
-    "message": "radicals (90 total): draft: 14, reviewed: 76",
+    "message": "radicals (90 total): reviewed: 90",
     "slugs": []
   },
   {
@@ -28,14 +28,6 @@
     "severity": "INFO",
     "message": "readings (10 total): (no _meta field on passages): 10",
     "slugs": []
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "passage[sort_order=7] '赤い箱' (seed jidouhanbaiki): summary_ja is too long (69 chars; keep <= 60)",
-    "slugs": [
-      "passage-n5-7"
-    ]
   },
   {
     "check": "Graph decomposition completeness vs KRADFILE (check 3)",
@@ -102,14 +94,6 @@
     "message": "爿: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-kita (北)",
     "slugs": [
       "n5-kita"
-    ]
-  },
-  {
-    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
-    "severity": "INFO",
-    "message": "毋: KRADFILE component of 1 taught kanji is taught nowhere, as neither radical nor kanji — n5-mai-every (毎)",
-    "slugs": [
-      "n5-mai-every"
     ]
   },
   {
