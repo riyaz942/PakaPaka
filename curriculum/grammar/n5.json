@@ -9532,6 +9532,43 @@
         "shukudai"
       ],
       "family": "patterns",
+      "cloze_variants": [
+        {
+          "jp_cloze": "まだ食べ＿＿＿。",
+          "english": "I haven't eaten yet.",
+          "answer": "ていません",
+          "nudge": "The plate is still full.",
+          "sort_order": 0
+        },
+        {
+          "jp_cloze": "宿題はまだ終わっ＿＿＿。",
+          "english": "The homework isn't finished yet.",
+          "answer": "ていません",
+          "nudge": "Papers are still on the desk, half finished.",
+          "sort_order": 1
+        },
+        {
+          "jp_cloze": "まだ決め＿＿＿。",
+          "english": "I haven't decided yet.",
+          "answer": "ていません",
+          "nudge": "Nothing has been picked out.",
+          "sort_order": 2
+        },
+        {
+          "jp_cloze": "彼はまだ来＿＿＿。",
+          "english": "He hasn't come yet.",
+          "answer": "ていません",
+          "nudge": "You keep glancing at the door — no sign of him.",
+          "sort_order": 3
+        },
+        {
+          "jp_cloze": "友達はまだ起き＿＿＿。",
+          "english": "My friend hasn't woken up yet.",
+          "answer": "ていない",
+          "nudge": "The curtains are still shut; no one's stirring.",
+          "sort_order": 4
+        }
+      ],
       "explanation_markdown": "You are waiting at a coffee shop to meet a friend, and they are ten minutes late. You text another friend to ask if they know where he is. You need to tell them he hasn't shown up.\n\n```jp\n彼[かれ]はまだ来[き]ていません。\n```\n*He hasn't come yet.*\n\n## How it works\n\nTo say you haven't done something *yet*, or that something hasn't happened *yet*, you use まだ (which means \"still\" or \"not yet\") followed by the て form of the verb, plus いない (or the polite いません).\n\n```jp\n私[わたし]はまだ昼[ひる]ご飯[はん]を食[た]べていません。\n```\n*I haven't eaten lunch yet.*\n\nThink of it as literally saying \"the state of having eaten hasn't happened.\" Because the result of the action hasn't been achieved yet, we use the continuous state form (the て form) and make it negative.\n\n```jp\nあの映[えい]画[が]はまだ見[み]ていない。\n```\n*I haven't seen that movie yet.*\n\n```jp\nその本[ほん]はまだ買[か]っていません。\n```\n*I haven't bought that book yet.*\n\n## Didn't do vs. Haven't done yet\n\nThis one trips people up a lot. Why not just use the regular past tense negative to say you haven't done something?\n\nIn Japanese, the past negative means the window of opportunity is firmly closed. The event is over. If you say `宿題をしませんでした` (I didn't do the homework) to a teacher, it sounds like \"I didn't do it, and I'm not going to.\"\n\nIf you want to imply that you still plan to do it—that the window is still open—you must use the まだ〜ていない pattern.\n\n```jp\nまだ宿[しゅく]題[だい]をしていません。\n```\n*I haven't done the homework yet.*\n\n> Always use まだ〜ていない if there is still a chance the action will happen. Using the simple past negative can accidentally sound defiant!\n\n## Casual speech\n\nIn casual Japanese, speakers constantly drop the い in ていない. The pattern shrinks down to てない.\n\n```jp\n友[とも]達[だち]はまだ起[お]きていない。\n```\n*My friend hasn't woken up yet.*\n\nWhile the written sentence above keeps the い, in actual conversation with friends you will almost exclusively hear the contracted version: まだ起[お]きてない.\n\n## Connecting it up\n\nRight now, you're learning how to talk about things that haven't happened yet. Soon, you'll learn the exact opposite pattern: もう〜ました (already did). Together, these two patterns will let you coordinate schedules, check on tasks, and make plans naturally. Keep まだ in your back pocket until then!\n",
       "caution_notes": [
         "Use まだ〜ていない instead of the simple past negative if there is still a chance the action will happen."

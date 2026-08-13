@@ -1473,6 +1473,13 @@ N5_GRAMMAR = [
         ],
         "vocabulary_slugs": ["mada", "taberu", "shukudai"],
         "family": "patterns",
+        "cloze_variants": [
+            {"jp_cloze": "まだ食べ＿＿＿。", "english": "I haven't eaten yet.", "answer": "ていません", "nudge": "The plate is still full."},
+            {"jp_cloze": "宿題はまだ終わっ＿＿＿。", "english": "The homework isn't finished yet.", "answer": "ていません", "nudge": "Papers are still on the desk, half finished."},
+            {"jp_cloze": "まだ決め＿＿＿。", "english": "I haven't decided yet.", "answer": "ていません", "nudge": "Nothing has been picked out."},
+            {"jp_cloze": "彼はまだ来＿＿＿。", "english": "He hasn't come yet.", "answer": "ていません", "nudge": "You keep glancing at the door — no sign of him."},
+            {"jp_cloze": "友達はまだ起き＿＿＿。", "english": "My friend hasn't woken up yet.", "answer": "ていない", "nudge": "The curtains are still shut; no one's stirring."},
+        ],
     },
     {
         "slug": "mou-past",
