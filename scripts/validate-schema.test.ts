@@ -33,7 +33,12 @@ function writeTempCurriculumDir(vocabularyItem: Record<string, unknown>): string
   fs.mkdirSync(path.join(tempDir, 'vocabulary'));
   fs.writeFileSync(
     path.join(tempDir, 'vocabulary', 'n5.json'),
-    JSON.stringify({ jlpt_level: 'N5', items: [vocabularyItem] }),
+    JSON.stringify({
+      jlpt_level: 'N5',
+      // Every vocabulary item needs a reading answer key; supply a default so
+      // tests about other fields do not have to restate it.
+      items: [{ accepted_answers: [{ answer_type: 'reading', answer_text: 'かな' }], ...vocabularyItem }],
+    }),
   );
   return tempDir;
 }
@@ -112,6 +117,59 @@ describe('validateCurriculum furigana checks', () => {
       const result = validateCurriculum(tempDir);
       expect(result.ok).toBe(true);
       expect(result.warnings.some((w) => w.includes('not every kanji character'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+});
+
+describe('validateCurriculum vocabulary reading answer key', () => {
+  it('errors when a vocabulary item has no accepted_answers at all', () => {
+    const tempDir = writeTempCurriculumDir({
+      slug: 'taberu',
+      primary_form: '食べる',
+      furigana: '食[た]べる',
+      meaning: 'to eat',
+      accepted_answers: [],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+      expect(
+        result.ok ? [] : result.errors.filter((e) => e.includes('accepted_answers needs a reading')),
+      ).toHaveLength(1);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('errors when the only accepted answers are meanings', () => {
+    const tempDir = writeTempCurriculumDir({
+      slug: 'taberu',
+      primary_form: '食べる',
+      furigana: '食[た]べる',
+      meaning: 'to eat',
+      accepted_answers: [{ answer_type: 'meaning', answer_text: 'to eat', is_primary: true }],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(false);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('accepts a production answer in place of a reading', () => {
+    const tempDir = writeTempCurriculumDir({
+      slug: 'taberu',
+      primary_form: '食べる',
+      furigana: '食[た]べる',
+      meaning: 'to eat',
+      accepted_answers: [{ answer_type: 'production', answer_text: 'たべる' }],
+    });
+    try {
+      const result = validateCurriculum(tempDir);
+      expect(result.ok).toBe(true);
     } finally {
       fs.rmSync(tempDir, { recursive: true, force: true });
     }

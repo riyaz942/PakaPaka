@@ -15,7 +15,10 @@ export type ReviewStatus =
 
 export type Completeness = {
   percent: number;
+  /** Unfilled fields this item is expected to carry — the actual to-do list. */
   missing: string[];
+  /** Unfilled fields it may legitimately omit; tracked, but not scored. */
+  optionalMissing: string[];
 };
 
 export type SidecarMeta = {

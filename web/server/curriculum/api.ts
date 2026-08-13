@@ -258,7 +258,15 @@ function filterItems(
     if (type && item.type !== type) return false;
     if (level && item.level !== level) return false;
     if (skeletonOnly && !isSkeleton(item)) return false;
-    if (missing && !item.completeness.missing.includes(missing)) return false;
+    // Optional fields are filterable too — the Guide links at them so a
+    // maintainer can see which items skipped one.
+    if (
+      missing &&
+      !item.completeness.missing.includes(missing) &&
+      !item.completeness.optionalMissing.includes(missing)
+    ) {
+      return false;
+    }
     if (q) {
       const haystack =
         `${item.slug} ${item.primaryForm} ${item.meaning}`.toLowerCase();
@@ -391,7 +399,12 @@ export function createCurriculumRouter(
     for (const item of index.items) {
       const bucket = byTypeLevel[item.type][item.level];
       bucket.total += 1;
-      for (const field of item.completeness.missing) {
+      // Optional fields count here as well: the Guide sizes stages from these
+      // numbers and still wants to see how many items skipped one.
+      for (const field of [
+        ...item.completeness.missing,
+        ...item.completeness.optionalMissing,
+      ]) {
         bucket.missing[field] = (bucket.missing[field] ?? 0) + 1;
       }
     }

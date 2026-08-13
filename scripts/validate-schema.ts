@@ -139,10 +139,12 @@ export function runFuriganaChecks(
         slug: string;
         primary_form: string;
         furigana?: string;
+        accepted_answers?: { answer_type: string; answer_text: string }[];
         example_sentences?: { japanese: string; furigana?: string }[];
       }[];
     };
     for (const item of file.items) {
+      checkVocabularyReading(`${relative} vocabulary:${item.slug}`, item, errors);
       checkFuriganaField(
         `${relative} vocabulary:${item.slug}`,
         item.primary_form,
@@ -255,6 +257,26 @@ export function runFuriganaChecks(
         );
       }
     }
+  }
+}
+
+/**
+ * `accepted_answers` is the only source of a vocabulary reading answer key.
+ * Without a reading row the review card silently grades the meaning instead,
+ * so a missing one is an error rather than a completeness gap.
+ */
+function checkVocabularyReading(
+  label: string,
+  item: { accepted_answers?: { answer_type: string; answer_text: string }[] },
+  errors: string[],
+): void {
+  const hasReading = (item.accepted_answers ?? []).some(
+    (answer) => answer.answer_type === 'reading' || answer.answer_type === 'production',
+  );
+  if (!hasReading) {
+    errors.push(
+      `${label}: accepted_answers needs a reading (or production) entry — it is the vocabulary review's answer key`,
+    );
   }
 }
 
