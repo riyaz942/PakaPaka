@@ -13,6 +13,7 @@ import type { ImageSourcePropType } from 'react-native';
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n4/bokuzukuri.webp': require('../../assets/radicals/n4/bokuzukuri.webp'),
   'radicals/n4/hitsuji.webp': require('../../assets/radicals/n4/hitsuji.webp'),
+  'radicals/n4/kokoro.webp': require('../../assets/radicals/n4/kokoro.webp'),
   'radicals/n4/madare.webp': require('../../assets/radicals/n4/madare.webp'),
   'radicals/n4/yamaidare.webp': require('../../assets/radicals/n4/yamaidare.webp'),
   'radicals/n5/aka.webp': require('../../assets/radicals/n5/aka.webp'),
