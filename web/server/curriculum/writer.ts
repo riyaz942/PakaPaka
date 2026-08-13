@@ -139,3 +139,81 @@ export function updateReviewStatus(
 
   return saveItem(repoRoot, type, level, slug, row);
 }
+
+export type BulkUpdateItem = { type: ContentType; level: JlptLevel; slug: string };
+export type BulkUpdateResult =
+  | { ok: true; updated: number }
+  | { ok: false; errors: string[] };
+
+/**
+ * Bulk status flip for the Content list's multi-select bar. Groups the
+ * selection by source file (one file per type+level), validates every
+ * resulting file up front, and only writes any of them once all validate —
+ * so a bad item in one file can't leave other files partially updated.
+ */
+export function updateReviewStatusBulk(
+  repoRoot: string,
+  items: BulkUpdateItem[],
+  reviewStatus: Exclude<ReviewStatus, 'none'>,
+): BulkUpdateResult {
+  const curriculumDir = path.join(repoRoot, 'curriculum');
+  const errors: string[] = [];
+
+  const groups = new Map<string, { type: ContentType; level: JlptLevel; slugs: string[] }>();
+  for (const item of items) {
+    const key = `${item.type}:${item.level}`;
+    const group = groups.get(key);
+    if (group) {
+      group.slugs.push(item.slug);
+    } else {
+      groups.set(key, { type: item.type, level: item.level, slugs: [item.slug] });
+    }
+  }
+
+  const pending: Array<{ filePath: string; relative: string; file: Record<string, unknown> }> = [];
+  let updated = 0;
+
+  for (const { type, level, slugs } of groups.values()) {
+    const filePath = filePathFor(curriculumDir, type, level);
+    const relative = path.relative(curriculumDir, filePath).replace(/\\/g, '/');
+    const arrayKey = DIR_BY_TYPE[type].arrayKey;
+    const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
+    const rows = file[arrayKey] as Record<string, unknown>[] | undefined;
+    if (!Array.isArray(rows)) {
+      errors.push(`${relative}: missing "${arrayKey}" array`);
+      continue;
+    }
+
+    for (const slug of slugs) {
+      const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
+      if (index === -1) {
+        errors.push(`${relative}: no item with slug "${slug}"`);
+        continue;
+      }
+      const row = rows[index];
+      const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
+      row._meta = { ...meta, review_status: reviewStatus };
+      updated += 1;
+    }
+
+    const { errors: fileErrors } = validateFile(curriculumDir, relative, file);
+    if (fileErrors.length > 0) {
+      errors.push(...fileErrors);
+      continue;
+    }
+    pending.push({ filePath, relative, file });
+  }
+
+  if (errors.length > 0) {
+    return { ok: false, errors };
+  }
+
+  for (const { filePath, file } of pending) {
+    const tmpPath = `${filePath}.tmp`;
+    fs.writeFileSync(tmpPath, JSON.stringify(file, null, 2) + '\n', 'utf8');
+    fs.renameSync(tmpPath, filePath);
+  }
+
+  reload(repoRoot);
+  return { ok: true, updated };
+}

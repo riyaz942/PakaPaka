@@ -32,7 +32,7 @@ import {
   type JlptLevel,
   type ReviewStatus,
 } from './types.js';
-import { saveItem, updateReviewStatus } from './writer.js';
+import { saveItem, updateReviewStatus, updateReviewStatusBulk } from './writer.js';
 
 const EDITABLE_STATUSES: Exclude<ReviewStatus, 'none'>[] = [
   'draft',
@@ -552,6 +552,55 @@ export function createCurriculumRouter(
 
     const updated = getCurriculum(repoRoot).bySlug.get(itemKey(type, req.params.slug));
     res.json({ ok: true, item: updated });
+  });
+
+  router.post('/items/bulk-status', (req: Request, res: Response) => {
+    const reviewStatus = req.body?.review_status;
+    if (!EDITABLE_STATUSES.includes(reviewStatus)) {
+      res.status(400).json({
+        ok: false,
+        errors: [`review_status must be one of ${EDITABLE_STATUSES.join(', ')}`],
+      });
+      return;
+    }
+
+    const rawItems = req.body?.items;
+    if (!Array.isArray(rawItems) || rawItems.length === 0) {
+      res.status(400).json({ ok: false, errors: ['items must be a non-empty array'] });
+      return;
+    }
+
+    const index = getCurriculum(repoRoot);
+    const errors: string[] = [];
+    const resolved: { type: ContentType; level: JlptLevel; slug: string }[] = [];
+
+    for (const raw of rawItems) {
+      const type = parseType(raw?.type);
+      const slug = typeof raw?.slug === 'string' ? raw.slug : undefined;
+      if (!type || !slug) {
+        errors.push(`Invalid item: ${JSON.stringify(raw)}`);
+        continue;
+      }
+      const item = index.bySlug.get(itemKey(type, slug));
+      if (!item) {
+        errors.push(`${type}/${slug}: not found`);
+        continue;
+      }
+      resolved.push({ type, level: item.level, slug });
+    }
+
+    if (errors.length > 0) {
+      res.status(400).json({ ok: false, errors });
+      return;
+    }
+
+    const result = updateReviewStatusBulk(repoRoot, resolved, reviewStatus);
+    if (!result.ok) {
+      res.status(400).json(result);
+      return;
+    }
+
+    res.json({ ok: true, updated: result.updated });
   });
 
   router.post('/reload', (_req: Request, res: Response) => {

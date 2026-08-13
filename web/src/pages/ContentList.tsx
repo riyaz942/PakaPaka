@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
-import { ReviewStatusControl } from '../components/ReviewStatusControl';
+import { EDITABLE_STATUSES, ReviewStatusControl } from '../components/ReviewStatusControl';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
@@ -65,6 +65,7 @@ function SkeletonRows() {
       <table className="data-table">
         <thead>
           <tr>
+            <th className="checkbox-column" />
             <th>Form</th>
             <th>Slug</th>
             <th>Meaning</th>
@@ -77,7 +78,7 @@ function SkeletonRows() {
         <tbody>
           {Array.from({ length: 8 }, (_, i) => (
             <tr key={i}>
-              <td colSpan={7}>
+              <td colSpan={8}>
                 <span className="skeleton-bar" />
               </td>
             </tr>
@@ -115,10 +116,20 @@ export default function ContentList() {
 
   const [searchInput, setSearchInput] = useState(q);
   const [refreshToken, setRefreshToken] = useState(0);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [selectAllLoading, setSelectAllLoading] = useState(false);
+  const [bulkSaving, setBulkSaving] = useState<ReviewStatus | null>(null);
+  const [bulkError, setBulkError] = useState<string | null>(null);
 
   useEffect(() => {
     setSearchInput(q);
   }, [q]);
+
+  // Selection is scoped to the current type tab; a tab switch shows a
+  // different table, so any prior selection no longer refers to visible rows.
+  useEffect(() => {
+    setSelected(new Set());
+  }, [type]);
 
   const updateParams = useCallback(
     (patch: Record<string, string | null>) => {
@@ -173,6 +184,83 @@ export default function ContentList() {
       ? Math.max(1, Math.ceil(result.data.total / effectivePageSize))
       : 1;
   const detailSearch = listContextSearch(searchParams);
+
+  const pageSlugs = result.status === 'ok' ? result.data.items.map((item) => item.slug) : [];
+  const allPageSelected = pageSlugs.length > 0 && pageSlugs.every((s) => selected.has(s));
+  const totalFiltered = result.status === 'ok' ? result.data.total : 0;
+
+  function toggleSelectPage() {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (allPageSelected) {
+        for (const slug of pageSlugs) next.delete(slug);
+      } else {
+        for (const slug of pageSlugs) next.add(slug);
+      }
+      return next;
+    });
+  }
+
+  function toggleSelectOne(slug: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(slug)) {
+        next.delete(slug);
+      } else {
+        next.add(slug);
+      }
+      return next;
+    });
+  }
+
+  async function selectAllFiltered() {
+    setSelectAllLoading(true);
+    try {
+      const qs = new URLSearchParams();
+      qs.set('type', type);
+      if (level) qs.set('level', level);
+      if (status) qs.set('status', status);
+      if (skeleton) qs.set('skeleton', 'true');
+      if (missing) qs.set('missing', missing);
+      if (q) qs.set('q', q);
+      if (audit) qs.set('audit', audit);
+      qs.set('sort', sort);
+      qs.set('page', '1');
+      qs.set('pageSize', String(totalFiltered));
+      const res = await fetch(`/api/items?${qs.toString()}`);
+      const body = (await res.json()) as ItemsResponse;
+      setSelected(new Set(body.items.map((item) => item.slug)));
+    } finally {
+      setSelectAllLoading(false);
+    }
+  }
+
+  async function applyBulkStatus(nextStatus: Exclude<ReviewStatus, 'none'>) {
+    if (selected.size === 0) return;
+    setBulkSaving(nextStatus);
+    setBulkError(null);
+    try {
+      const res = await fetch('/api/items/bulk-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: Array.from(selected).map((slug) => ({ type, slug })),
+          review_status: nextStatus,
+        }),
+      });
+      const body = await res.json();
+      if (!res.ok || body.ok === false) {
+        setBulkError(body.errors?.join('; ') ?? 'Bulk update failed');
+        return;
+      }
+      setSelected(new Set());
+      setRefreshToken((v) => v + 1);
+    } catch (err) {
+      setBulkError(err instanceof Error ? err.message : 'Bulk update failed');
+    } finally {
+      setBulkSaving(null);
+    }
+  }
 
   return (
     <div className="content-list">
@@ -278,6 +366,42 @@ export default function ContentList() {
 
       <BadgeLegend />
 
+      {selected.size > 0 ? (
+        <div className="bulk-bar">
+          <span className="bulk-bar__count">{selected.size} selected</span>
+          <div className="bulk-bar__actions">
+            {EDITABLE_STATUSES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                disabled={bulkSaving !== null}
+                onClick={() => applyBulkStatus(s)}
+              >
+                {bulkSaving === s ? 'Saving…' : `Mark ${STATUS_LABELS[s]}`}
+              </button>
+            ))}
+          </div>
+          {bulkError ? <span className="panel-error">{bulkError}</span> : null}
+          <button
+            type="button"
+            className="bulk-bar__clear"
+            disabled={bulkSaving !== null}
+            onClick={() => setSelected(new Set())}
+          >
+            Clear selection
+          </button>
+        </div>
+      ) : null}
+
+      {allPageSelected && selected.size < totalFiltered ? (
+        <div className="select-all-banner">
+          All {pageSlugs.length} on this page are selected.
+          <button type="button" onClick={selectAllFiltered} disabled={selectAllLoading}>
+            {selectAllLoading ? 'Selecting…' : `Select all ${totalFiltered} matching items`}
+          </button>
+        </div>
+      ) : null}
+
       {result.status === 'loading' ? <SkeletonRows /> : null}
       {result.status === 'error' ? (
         <p className="panel-error">Failed to load items: {result.error}</p>
@@ -294,6 +418,14 @@ export default function ContentList() {
               <table className="data-table">
                 <thead>
                   <tr>
+                    <th className="checkbox-column">
+                      <input
+                        type="checkbox"
+                        aria-label="Select all on page"
+                        checked={allPageSelected}
+                        onChange={toggleSelectPage}
+                      />
+                    </th>
                     <th>Form</th>
                     <th>Slug</th>
                     <th>Meaning</th>
@@ -313,6 +445,14 @@ export default function ContentList() {
                       : undefined;
                     return (
                     <tr key={`${item.type}:${item.slug}`}>
+                      <td className="checkbox-column">
+                        <input
+                          type="checkbox"
+                          aria-label={`Select ${item.slug}`}
+                          checked={selected.has(item.slug)}
+                          onChange={() => toggleSelectOne(item.slug)}
+                        />
+                      </td>
                       <td>
                         <Link
                           to={`/content/${item.type}/${item.slug}${detailSearch}`}
