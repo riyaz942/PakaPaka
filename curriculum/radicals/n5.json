@@ -1188,7 +1188,7 @@
       "_meta": {
         "generator_model": "opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1201,7 +1201,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1214,7 +1214,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1227,7 +1227,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1240,98 +1240,99 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "fuyugashira",
       "primary_form": "夂",
       "meaning": "trailing foot",
-      "mnemonic_text": "A short tick sits at the top, then two long strokes swing apart beneath it like a leg mid-stride that never quite catches up. A duckling is being towed across a polished floor by its own bootlace, one webbed foot skidding along behind as a permanent <radical>trailing foot</radical>.",
+      "mnemonic_text": "See that little tick at the top of 夂 — that's a heel peeling off the ground, and the two strokes sweeping down and across it are the leg still stretched out behind, sole snagged in a wad of gum. That last scraping step is a <radical>trailing foot</radical>.",
       "visual_mnemonic_url": "radicals/n5/fuyugashira.webp",
       "sort_order": 82,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "samurai",
       "primary_form": "士",
       "meaning": "samurai",
-      "mnemonic_text": "The top line is broad, the bottom line is short, and one upright stroke pins them together like wide shoulders over a narrow belt. A very serious duck stands to attention on a garden wall in exactly that outfit, refusing to blink, a fully armoured <radical>samurai</radical>.",
+      "mnemonic_text": "That top stroke runs on and on — those are armoured shoulders, so broad they're wedged tight in a doorway — and the vertical is the spine dropping to the short line below, two boots planted flat and not shuffling an inch. Wide up top, rooted at the base: a <radical>samurai</radical>.",
       "visual_mnemonic_url": "radicals/n5/samurai.webp",
       "sort_order": 83,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "gyouninben",
       "primary_form": "彳",
       "meaning": "step (left)",
-      "mnemonic_text": "Two short flicks peel off to the left, a tipped hat and a flung-out arm, and under them one long stroke plants itself as a single skinny leg. A penguin wearing that hat is frozen mid-lunge on a buttered kitchen floor, fully committed to one enormous sideways <radical>step</radical>.",
+      "mnemonic_text": "That long vertical is a stair rail bolted down the left edge, and the two short slants poking out of it are the treads — shallow ones, barely a boot deep, worn shiny in the middle. The rail never swaps sides, so every climb starts with a <radical>step (left)</radical>.",
       "visual_mnemonic_url": "radicals/n5/gyouninben.webp",
       "sort_order": 84,
+      "description": "This shape only ever appears down the left-hand side of a kanji, never on the right and never on its own, which is why the meaning we teach names that position.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "keigashira",
       "primary_form": "ヨ",
       "meaning": "broom",
-      "mnemonic_text": "Three flat prongs jut out to the left off one straight spine, stiff as a garden rake. A cat has fallen asleep across the top prong, and nobody stops sweeping, so crumbs and one increasingly indignant cat go skidding down the hallway ahead of the <radical>broom</radical>.",
+      "mnemonic_text": "Turn ヨ side-on and it is a broom head swinging at you: the upright on the right is the wooden back the handle screws into, and the three prongs jutting off it are bristles, splayed stiff and grey with the dust of one very long hallway. A thoroughly used <radical>broom</radical>.",
       "visual_mnemonic_url": "radicals/n5/keigashira.webp",
       "sort_order": 85,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "kigamae",
       "primary_form": "气",
       "meaning": "steam",
-      "mnemonic_text": "A short flick sits on a flat lid, and off the bottom edge one stroke slides right and hooks upward, exactly like the last wisp leaving a kettle spout. That kettle has just whistled a sleeping cat clean off the counter, and it drops through the rising <radical>steam</radical> with its legs still tucked.",
+      "mnemonic_text": "Look at 气 side-on and it is the air above a hot spring: the flat strokes stacked at the top are layers of vapour lying on the water, and the last stroke sweeps out to the right and hooks up where a wisp peels away into the cold. All of it is <radical>steam</radical>.",
       "visual_mnemonic_url": "radicals/n5/kigamae.webp",
       "sort_order": 86,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "haha",
       "primary_form": "母",
       "meaning": "mother",
-      "mnemonic_text": "A crooked box is pierced through the middle by one long horizontal stroke, with two dots pinned inside it like a pair of narrowed eyes. It is a woman leaning out of a departing train window, posting a forgotten lunchbox onto a pole and still shouting reheating instructions at a grown adult, because that is a <radical>mother</radical>.",
+      "mnemonic_text": "See the two dots sitting inside that leaning frame? They are two small children tucked one under each arm, and the long stroke driven straight through the middle is the arms folded across to hold both of them still. That seated figure gathering them in is <radical>mother</radical>.",
       "visual_mnemonic_url": "radicals/n5/haha.webp",
       "sort_order": 87,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
       "slug": "fudezukuri",
       "primary_form": "聿",
       "meaning": "brush",
-      "mnemonic_text": "Three prongs clamp around a long vertical shaft like a fist on a handle, and two bars cross low down where the ink-soaked tip sits. Someone is signing a very formal certificate with it when a cat lunges at the shaft, and the signature leaves the page as a metre-long streak flung off the <radical>brush</radical>.",
+      "mnemonic_text": "The long vertical spearing down through those stacked bars is a slender shaft, and the strokes crossing at the top are fingers clamped tight around it. Below the bottom bar the shaft runs on into a soft, ink-heavy tip pressed to paper: one loaded <radical>brush</radical>.",
       "visual_mnemonic_url": "radicals/n5/fudezukuri.webp",
       "sort_order": 88,
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1344,7 +1345,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     },
     {
@@ -1357,7 +1358,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "draft"
+        "review_status": "reviewed"
       }
     }
   ]

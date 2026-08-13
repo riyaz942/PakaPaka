@@ -296,6 +296,30 @@ parts.append(
     'no combined object, no commentary, no preamble after the item sections.\n'
     'Each JSON object uses only that item\'s required keys.\n'
 )
+if KIND == 'radical':
+    parts.append(
+        '\nStyle calibration for radical mnemonics (not gag scenes): fuse the\n'
+        'stroke description and the meaning into ONE single image — either the\n'
+        'shape literally resembles the meaning, or the shape is compared to one\n'
+        'real-world object/scenario that shares the meaning. Do NOT describe the\n'
+        'shape correctly and then bolt on a second, unrelated scene (a stock\n'
+        'animal or bystander character doing something silly) purely for a\n'
+        'joke — that produces two competing images, which the hard rules below\n'
+        'already forbid, and reads as needlessly long. If there is humor, it\n'
+        'should be in how the shape itself is described, not in an unrelated\n'
+        'character\'s antics. Reviewed examples of the target style: 儿 "Look at\n'
+        '儿 head-on and you\'re staring at someone standing with their feet\n'
+        'planted apart, the two strokes sweeping down and out like a pair of\n'
+        'sturdy human legs mid-stride." (legs — the shape literally resembles\n'
+        'the meaning). 工 "Picture a steel I-beam standing between two flat\n'
+        'concrete slabs: the top and bottom strokes are the slabs, the line\n'
+        'down the middle is the beam being lowered into place. That single\n'
+        'girder holding the whole thing up is the heart of any construction\n'
+        'site." (construction — the shape is compared to one real-world object\n'
+        'that shares the meaning). Prefer the shorter-to-middle end of the\n'
+        'length target (roughly 180-260 characters) unless an item genuinely\n'
+        'needs the extra room to land the image clearly.\n'
+    )
 for i, slug in enumerate(GROUP_SLUGS, 1):
     path = os.path.join(base, f'{slug}.prompt.md')
     text = open(path).read()

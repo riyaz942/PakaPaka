@@ -247,6 +247,31 @@ Give the subagent these instructions:
   to all of them. Everything from "The kanji" / "The radical" / "The word" onward
   is per-item and must be obeyed per item.
 
+  If <type> = radical, add this style calibration before the item sections below
+  (radical mnemonics only — kanji and vocab already carry their own cast/reading
+  discipline and don't need this note):
+
+    These are shape-to-meaning mnemonics, not gag scenes. Fuse the stroke
+    description and the meaning into ONE single image — either the shape
+    literally resembles the meaning, or the shape is compared to one real-world
+    object/scenario that shares the meaning. Do NOT describe the shape correctly
+    and then bolt on a second, unrelated scene (a stock animal or bystander
+    character doing something silly) purely for a joke — that produces two
+    competing images, which the prompt's own hard rules already forbid, and
+    reads as needlessly long. If there's humor, it should be in how the shape
+    itself is described, not in an unrelated character's antics. Reviewed
+    examples of the target style: 儿 "Look at 儿 head-on and you're staring at
+    someone standing with their feet planted apart, the two strokes sweeping
+    down and out like a pair of sturdy human legs mid-stride." (legs — the
+    shape literally resembles the meaning). 工 "Picture a steel I-beam standing
+    between two flat concrete slabs: the top and bottom strokes are the slabs,
+    the line down the middle is the beam being lowered into place. That single
+    girder holding the whole thing up is the heart of any construction site."
+    (construction — the shape is compared to one real-world object that shares
+    the meaning). Prefer the shorter-to-middle end of the length target
+    (roughly 180–260 characters) unless an item genuinely needs the extra room
+    to land the image clearly.
+
   Write the mnemonics for every item exactly as its own prompt body asks, then
   write ONE reply file per item, each to its own path:
 

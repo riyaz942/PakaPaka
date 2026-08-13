@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
+import { ReviewStatusControl } from '../components/ReviewStatusControl';
 import { SeverityBadge } from '../components/SeverityBadge';
 import { StatusBadge } from '../components/StatusBadge';
 import { useApi } from '../hooks/useApi';
@@ -113,6 +114,7 @@ export default function ContentList() {
   const pageSize = parsePageSize(searchParams.get('pageSize'));
 
   const [searchInput, setSearchInput] = useState(q);
+  const [refreshToken, setRefreshToken] = useState(0);
 
   useEffect(() => {
     setSearchInput(q);
@@ -155,8 +157,9 @@ export default function ContentList() {
     qs.set('sort', sort);
     qs.set('page', String(page));
     qs.set('pageSize', String(pageSize));
+    if (refreshToken) qs.set('r', String(refreshToken));
     return `/api/items?${qs.toString()}`;
-  }, [type, level, status, skeleton, missing, q, audit, sort, page, pageSize]);
+  }, [type, level, status, skeleton, missing, q, audit, sort, page, pageSize, refreshToken]);
 
   const result = useApi<ItemsResponse>(apiUrl);
   const missingOptions = MISSING_FIELD_OPTIONS[type];
@@ -329,7 +332,15 @@ export default function ContentList() {
                       <td>{item.meaning}</td>
                       <td>{item.level}</td>
                       <td>
-                        <StatusBadge status={item.reviewStatus} />
+                        <div className="status-cell">
+                          <StatusBadge status={item.reviewStatus} />
+                          <ReviewStatusControl
+                            type={item.type}
+                            slug={item.slug}
+                            status={item.reviewStatus}
+                            onChanged={() => setRefreshToken((v) => v + 1)}
+                          />
+                        </div>
                       </td>
                       <td>
                         <CompletenessPill

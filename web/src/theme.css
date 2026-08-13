@@ -1405,6 +1405,13 @@ rt {
   color: var(--accent);
 }
 
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
 .review-status-control select {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
