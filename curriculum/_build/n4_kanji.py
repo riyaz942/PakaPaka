@@ -101,4 +101,5 @@ N4_KANJI = [
     {"suffix": "kawaru", "char": "変", "meaning": "change", "onyomi": "へん", "kunyomi": "か", "mnemonic": "Threads (糸-like) twisted into something strange: to change."},
     {"suffix": "modoru", "char": "戻", "meaning": "return", "onyomi": "れい", "kunyomi": "もど", "mnemonic": "A dog (犬) squeezing back under a door (戸): to return."},
     {"suffix": "todoku", "char": "届", "meaning": "reach / deliver", "onyomi": "かい", "kunyomi": "とど", "mnemonic": "A body (尸) stretching (由) out to reach: to deliver, arrive."},
+    {"suffix": "hitsuji", "char": "羊", "meaning": "sheep", "onyomi": "よう", "kunyomi": "ひつじ", "mnemonic": "Horns flaring above a frame of stiff crossed legs: a sheep."},
 ]

@@ -1100,6 +1100,13 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "hitsuji",
+      "from_type": "radical",
+      "to_slug": "n4-hitsuji",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hoko",
       "from_type": "radical",
       "to_slug": "n4-heru-decrease",
@@ -7207,6 +7214,13 @@
       "from_slug": "n4-todoku",
       "from_type": "kanji",
       "to_slug": "todokederu",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n4-hitsuji",
+      "from_type": "kanji",
+      "to_slug": "hitsuji-anim",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },

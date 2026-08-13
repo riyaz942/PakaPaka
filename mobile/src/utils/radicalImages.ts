@@ -11,6 +11,10 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/n4/bokuzukuri.webp': require('../../assets/radicals/n4/bokuzukuri.webp'),
+  'radicals/n4/hitsuji.webp': require('../../assets/radicals/n4/hitsuji.webp'),
+  'radicals/n4/madare.webp': require('../../assets/radicals/n4/madare.webp'),
+  'radicals/n4/yamaidare.webp': require('../../assets/radicals/n4/yamaidare.webp'),
   'radicals/n5/aka.webp': require('../../assets/radicals/n5/aka.webp'),
   'radicals/n5/ame.webp': require('../../assets/radicals/n5/ame.webp'),
   'radicals/n5/ana.webp': require('../../assets/radicals/n5/ana.webp'),

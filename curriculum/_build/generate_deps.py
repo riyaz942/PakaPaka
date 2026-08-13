@@ -127,7 +127,7 @@ N4_DECOMPOSITION = {
     "gatsuhen": ["nokoru", "shinu"],
     "hane": ["narau"],
     "hatsugashira": ["hatsu"],
-    "hitsuji": ["gyou", "kiru-wear"],
+    "hitsuji": ["gyou", "kiru-wear", "hitsuji"],
     "hoko": ["heru-decrease", "nokoru"],
     "inoko": ["ie-kanji"],
     "itaru": ["shitsu"],
