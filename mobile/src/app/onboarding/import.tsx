@@ -1,7 +1,7 @@
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
-import React, { useState } from 'react';
-import { ActivityIndicator, Text, TextInput, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Banner } from '@/components/common/Banner';
@@ -12,13 +12,14 @@ import { JlptLevelPicker } from '@/components/onboarding/JlptLevelPicker';
 import { getSemanticColors } from '@/constants/semantic-colors';
 import type { JLPTLevel } from '@/data/curriculum/curriculum.types';
 import { useDatabase } from '@/data/hooks/useDatabase';
-import { setImportPreview } from '@/data/import/importPreviewStore';
+import { setBackupPreview, setImportPreview } from '@/data/import/importPreviewStore';
 import { saveImportCredential } from '@/data/user/credentialStore';
 import {
   previewAnkiImport,
   previewBunproImport,
   previewWaniKaniImport,
 } from '@/data/user/importRepository';
+import { previewRestore } from '@/data/user/restoreBackup';
 import {
   getStartingJlptLevel,
   setOnboardingPath,
@@ -55,6 +56,13 @@ export default function ImportScreen() {
   const [ankiFileName, setAnkiFileName] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [isImporting, setIsImporting] = useState(false);
+  const isMountedRef = useRef(true);
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   function persistJlptLevel(level: JLPTLevel) {
     setSelectedJlptLevel(level);
@@ -186,10 +194,50 @@ export default function ImportScreen() {
     setStatusMessage(null);
   }
 
+  /**
+   * Restoring this app's own backup is not a third-party import: it needs no
+   * JLPT level (the file carries `starting_jlpt_level`) and no credential, and
+   * it replaces rather than merges. It also sits outside the source pill —
+   * a fourth `expand` segment truncates "WaniKani" at a 320pt width.
+   */
+  async function handleSelectBackupFilePress() {
+    setStatusMessage(null);
+
+    const pickerResult = await DocumentPicker.getDocumentAsync({
+      copyToCacheDirectory: true,
+      type: ['application/gzip', 'application/x-gzip', 'application/json', 'application/octet-stream', '*/*'],
+    });
+
+    if (pickerResult.canceled || !pickerResult.assets?.[0]) {
+      return;
+    }
+
+    setIsImporting(true);
+    try {
+      const previewResult = await previewRestore(userDb, pickerResult.assets[0].uri);
+      if (!isMountedRef.current) return;
+      if (!previewResult.ok) {
+        setStatusMessage(getImportErrorMessage(previewResult.error));
+        return;
+      }
+
+      setBackupPreview(previewResult.value);
+      router.push('./import-summary');
+    } finally {
+      if (isMountedRef.current) {
+        setIsImporting(false);
+      }
+    }
+  }
+
   return (
-    <View
-      className="flex-1 bg-background px-6"
-      style={{ paddingTop: insets.top + 48, paddingBottom: insets.bottom + 16 }}>
+    // Scrolls because the fourth option (restore) pushes the tallest source
+    // pane past a 667pt viewport; `grow` keeps `mt-auto` pinning the actions to
+    // the bottom when the content is short.
+    <ScrollView
+      className="flex-1 bg-background"
+      contentContainerClassName="grow px-6"
+      contentContainerStyle={{ paddingTop: insets.top + 48, paddingBottom: insets.bottom + 16 }}>
       <Text
         accessibilityRole="header"
         className="text-title-lg font-ui-extrabold tracking-[-0.01em] text-primary">
@@ -303,6 +351,27 @@ export default function ImportScreen() {
         </View>
       ) : null}
 
+      <View className="mt-space-lg">
+        <View className="rounded-radius-lg border border-border bg-surface p-space-md shadow-e1">
+          <Text className="text-body font-ui-extrabold text-primary">
+            Already used this app?
+          </Text>
+          <Text className="mt-space-sm text-body-sm font-ui text-muted">
+            Restore a Kizamu backup file to bring this device back to where you left off. This is
+            your own exported progress, not another study tool — you will see exactly what it
+            restores before anything changes.
+          </Text>
+          <Button
+            className="mt-space-md"
+            disabled={isImporting}
+            label="Restore from a Kizamu backup"
+            onPress={handleSelectBackupFilePress}
+            testID="onboarding-import-restore-backup"
+            variant="secondary"
+          />
+        </View>
+      </View>
+
       {statusMessage ? (
         <View accessibilityLiveRegion="polite">
           <Banner className="mt-space-md" message={statusMessage} variant="error" visible />
@@ -358,6 +427,6 @@ export default function ImportScreen() {
         />
         <Button label="Back" onPress={() => router.back()} variant="ghost" />
       </View>
-    </View>
+    </ScrollView>
   );
 }

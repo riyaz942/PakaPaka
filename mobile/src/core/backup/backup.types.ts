@@ -206,3 +206,25 @@ export type BackupEnvelope = BackupEnvelopeInput & {
 export type BackupBundle = BackupEnvelope & {
   data: BackupData;
 };
+
+/**
+ * What a restore would do, counted against the curriculum on *this* device.
+ * Mirrors the naming of `ImportSummary`/`ImportPreview` without joining
+ * `ImportSource` — a backup is not a third-party import (see story Dev Notes).
+ */
+export type BackupSummary = {
+  itemCount: number;
+  unmatchedSlugCount: number;
+  unmatchedPassageCount: number;
+  includesConversations: boolean;
+  exportedAt: string;
+  curriculumVersion: string | null;
+  schemaVersion: number;
+};
+
+export type BackupPreview = {
+  bundle: BackupBundle;
+  summary: BackupSummary;
+  /** The `item_type:slug` keys this device's curriculum has no item for. */
+  unmatchedSlugs: string[];
+};

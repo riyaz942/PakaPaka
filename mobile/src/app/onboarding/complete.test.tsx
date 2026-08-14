@@ -19,11 +19,14 @@ import CompleteScreen from './complete';
 const mockReplace = jest.fn();
 const mockPush = jest.fn();
 
+let mockSearchParams: Record<string, string> = {};
+
 jest.mock('expo-router', () => ({
   router: {
     replace: (...args: unknown[]) => mockReplace(...args),
     push: (...args: unknown[]) => mockPush(...args),
   },
+  useLocalSearchParams: () => mockSearchParams,
 }));
 
 function renderCompleteScreen(userDb: Awaited<ReturnType<typeof openDatabaseAsync>>) {
@@ -52,6 +55,7 @@ describe('CompleteScreen', () => {
     __mockResetSqlite();
     mockReplace.mockClear();
     mockPush.mockClear();
+    mockSearchParams = {};
   });
 
   async function createUserDb() {
@@ -94,5 +98,35 @@ describe('CompleteScreen', () => {
 
     expect(isOnboardingCompleted(userDb)).toBe(true);
     expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+  });
+
+  describe('after a backup restore (Story 9.2, AC8)', () => {
+    it('does not offer a "first lesson" to a learner who already has history', async () => {
+      mockSearchParams = { restored: '1' };
+      const userDb = await createUserDb();
+      renderCompleteScreen(userDb);
+
+      expect(screen.queryByRole('button', { name: 'Start your first lesson' })).toBeNull();
+      expect(screen.getByRole('button', { name: 'Continue learning' })).toBeTruthy();
+    });
+
+    it('lands on the tab shell without forcing a lesson', async () => {
+      mockSearchParams = { restored: '1' };
+      const userDb = await createUserDb();
+      renderCompleteScreen(userDb);
+
+      fireEvent.press(screen.getByRole('button', { name: 'Continue learning' }));
+
+      expect(isOnboardingCompleted(userDb)).toBe(true);
+      expect(mockReplace).toHaveBeenCalledWith('/(tabs)');
+      expect(mockPush).not.toHaveBeenCalled();
+    });
+
+    it('keeps the first-lesson CTA for the normal path', async () => {
+      const userDb = await createUserDb();
+      renderCompleteScreen(userDb);
+
+      expect(screen.getByRole('button', { name: 'Start your first lesson' })).toBeTruthy();
+    });
   });
 });

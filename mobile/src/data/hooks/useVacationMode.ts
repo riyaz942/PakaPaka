@@ -17,6 +17,8 @@ type UseVacationModeResult = {
   start: () => void;
   /** Resumes and reports how many cards were rescheduled. */
   end: () => Result<VacationResumeSummary, AppError>;
+  /** Re-read from user.db after an out-of-band write (restore). */
+  refetch: () => void;
 };
 
 export function useVacationMode(): UseVacationModeResult {
@@ -24,6 +26,10 @@ export function useVacationMode(): UseVacationModeResult {
   const [startedAt, setStartedAt] = useState<string | null>(() =>
     getVacationStartedAt(userDb),
   );
+
+  const refetch = useCallback(() => {
+    setStartedAt(getVacationStartedAt(userDb));
+  }, [userDb]);
 
   const start = useCallback(() => {
     startVacation(userDb);
@@ -38,5 +44,5 @@ export function useVacationMode(): UseVacationModeResult {
     return result;
   }, [userDb]);
 
-  return { isVacationActive: startedAt !== null, startedAt, start, end };
+  return { isVacationActive: startedAt !== null, startedAt, start, end, refetch };
 }

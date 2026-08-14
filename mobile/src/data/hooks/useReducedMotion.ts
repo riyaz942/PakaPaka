@@ -13,6 +13,8 @@ type UseReducedMotionResult = {
   /** In-app preference; null means follow the system setting. */
   preference: boolean | null;
   setReducedMotion: (enabled: boolean) => void;
+  /** Re-read the in-app preference after an out-of-band write (restore). */
+  refetch: () => void;
 };
 
 export function useReducedMotion(): UseReducedMotionResult {
@@ -58,7 +60,11 @@ export function useReducedMotion(): UseReducedMotionResult {
     [userDb],
   );
 
+  const refetch = useCallback(() => {
+    setPreference(getReducedMotionEnabled(userDb));
+  }, [userDb]);
+
   const reducedMotion = systemReducedMotion || preference === true;
 
-  return { reducedMotion, preference, setReducedMotion };
+  return { reducedMotion, preference, setReducedMotion, refetch };
 }

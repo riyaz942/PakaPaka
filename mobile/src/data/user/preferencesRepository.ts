@@ -39,6 +39,7 @@ export const PREFERENCE_KEYS = {
   aiAnthropicModel: 'ai_anthropic_model',
   cloudSttOptIn: 'cloud_stt_opt_in',
   wordTranslateOptIn: 'word_translate_opt_in',
+  lastBackedUpAt: 'last_backed_up_at',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -364,6 +365,18 @@ export function getSeenKanjiReadingPrimer(userDb: SQLiteDatabase): boolean {
 
 export function setSeenKanjiReadingPrimer(userDb: SQLiteDatabase): void {
   setPreference(userDb, PREFERENCE_KEYS.seenKanjiReadingPrimer, 'true');
+}
+
+/**
+ * When this device last wrote a backup file. Null means never — which is what
+ * the Settings indicator and the web Home nudge key on (Story 9.2 AC6).
+ */
+export function getLastBackedUpAt(userDb: SQLiteDatabase): string | null {
+  return getPreference(userDb, PREFERENCE_KEYS.lastBackedUpAt);
+}
+
+export function setLastBackedUpAt(userDb: SQLiteDatabase, iso: string): void {
+  setPreference(userDb, PREFERENCE_KEYS.lastBackedUpAt, iso);
 }
 
 export function setCurriculumInstallMetadata(

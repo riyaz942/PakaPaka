@@ -10,6 +10,8 @@ type UseReviewAutoAdvanceResult = {
   /** Lightning Mode: auto-advance after a correct answer. Default OFF (FR84). */
   autoAdvanceEnabled: boolean;
   setAutoAdvanceEnabled: (enabled: boolean) => void;
+  /** Re-read from user.db after an out-of-band write (restore). */
+  refetch: () => void;
 };
 
 export function useReviewAutoAdvance(): UseReviewAutoAdvanceResult {
@@ -26,5 +28,9 @@ export function useReviewAutoAdvance(): UseReviewAutoAdvanceResult {
     [userDb],
   );
 
-  return { autoAdvanceEnabled, setAutoAdvanceEnabled };
+  const refetch = useCallback(() => {
+    setEnabledState(getReviewAutoAdvanceEnabled(userDb));
+  }, [userDb]);
+
+  return { autoAdvanceEnabled, setAutoAdvanceEnabled, refetch };
 }

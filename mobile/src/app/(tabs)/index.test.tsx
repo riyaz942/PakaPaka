@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { Platform } from 'react-native';
 
 import HomeScreen from './index';
 
@@ -137,7 +138,19 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   getReducedMotionEnabled: () => null,
   setReducedMotionEnabled: jest.fn(),
   isOnboardingCompleted: () => mockOnboardingCompleted,
+  getLastBackedUpAt: () => mockLastBackedUpAt,
 }));
+
+let mockLastBackedUpAt: string | null = null;
+
+/**
+ * The backup nudge is web-only, so its tests have to move `Platform.OS`.
+ * `Platform` is a plain module object here — defineProperty is the only way in,
+ * and every test restores the native default.
+ */
+function setPlatform(os: 'ios' | 'web') {
+  Object.defineProperty(Platform, 'OS', { value: os, configurable: true });
+}
 
 let mockLastActiveDate: string | null = null;
 
@@ -223,6 +236,8 @@ describe('HomeScreen', () => {
     mockLastActiveDate = null;
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
+    mockLastBackedUpAt = null;
+    setPlatform('ios');
     mockOnVacation = false;
     mockLoadPercent = 42;
     mockIsOvershoot = false;
@@ -586,6 +601,8 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
     mockLastActiveDate = null;
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
+    mockLastBackedUpAt = null;
+    setPlatform('ios');
     mockOnVacation = false;
     mockVacationReadThrows = false;
     mockLoadPercent = 42;
@@ -642,5 +659,93 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
     expect(screen.getByText('Past 100% is the good part')).toBeTruthy();
     // Asking never consumes the just-in-time moment.
     expect(mockSeenGuidanceCards.has('goal-overshoot')).toBe(false);
+  });
+
+  describe('web backup nudge (Story 9.2, AC6)', () => {
+    beforeEach(() => {
+      mockLastBackedUpAt = null;
+      mockLastActiveDate = null;
+      mockShowCurriculumBanner = false;
+      mockImportCount = 1;
+      mockCountServableDueItems.mockReturnValue(0);
+      setPlatform('ios');
+    });
+
+    afterEach(() => {
+      setPlatform('ios');
+    });
+
+    /** Old enough to be past the ~7-day browser eviction window. */
+    const STALE = new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString();
+    const FRESH = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString();
+
+    it('never appears on native, even with no backup at all', () => {
+      setPlatform('ios');
+      mockLastBackedUpAt = null;
+      mockImportCount = 1;
+      render(<HomeScreen />);
+
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+    });
+
+    it('appears on web when the device has never been backed up', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = null;
+      render(<HomeScreen />);
+
+      expect(screen.getByTestId('backup-nudge-card')).toBeTruthy();
+      fireEvent.press(screen.getByTestId('backup-nudge-open'));
+      expect(mockRouterPush).toHaveBeenCalledWith('/settings');
+    });
+
+    it('appears on web once the last backup is past the eviction window', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = STALE;
+      render(<HomeScreen />);
+
+      expect(screen.getByTestId('backup-nudge-card')).toBeTruthy();
+    });
+
+    it('stays hidden while the backup is recent', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = FRESH;
+      render(<HomeScreen />);
+
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+    });
+
+    it('dismisses for the visit without writing a preference', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = null;
+      render(<HomeScreen />);
+
+      fireEvent.press(screen.getByTestId('backup-nudge-dismiss'));
+
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+      expect(mockRouterPush).not.toHaveBeenCalledWith('/settings');
+    });
+
+    it('outranks the import nudge but yields to welcome-back and curriculum update', () => {
+      setPlatform('web');
+      mockLastBackedUpAt = null;
+      mockImportCount = 0;
+      render(<HomeScreen />);
+
+      expect(screen.getByTestId('backup-nudge-card')).toBeTruthy();
+      expect(screen.queryByTestId('import-nudge-card')).toBeNull();
+
+      screen.unmount();
+      mockShowCurriculumBanner = true;
+      render(<HomeScreen />);
+      expect(screen.getByTestId('home-curriculum-updated-card')).toBeTruthy();
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+
+      screen.unmount();
+      mockLastActiveDate = '2026-07-01';
+      mockCountServableDueItems.mockReturnValue(45);
+      render(<HomeScreen />);
+      expect(screen.getByTestId('welcome-back-card')).toBeTruthy();
+      expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
+    });
   });
 });

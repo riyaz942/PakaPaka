@@ -1,6 +1,6 @@
 import { useFocusEffect, router } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FadeSlideIn } from '@/components/common/FadeSlideIn';
@@ -10,6 +10,7 @@ import { Icon } from '@/components/common/Icon';
 import { PressableScale } from '@/components/common/PressableScale';
 import {
   AtRiskSection,
+  BackupNudgeCard,
   GoalReductionPrompt,
   GoalRing,
   GoalRisePrompt,
@@ -37,10 +38,12 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
+  getLastBackedUpAt,
   getSessionIntensity,
   getStartingJlptLevel,
   isOnboardingCompleted,
 } from '@/data/user/preferencesRepository';
+import { isBackupStale } from '@/core/backup/backupFreshness';
 import { getLastActiveDate, todayKey } from '@/data/user/cognitiveLoadRepository';
 import {
   acceptPendingReduction,
@@ -148,6 +151,8 @@ export default function HomeScreen() {
   const [welcomeBackDismissed, setWelcomeBackDismissed] = useState(false);
   const [importNudgeDismissed, setImportNudgeDismissed] = useState(false);
   const [showImportNudge, setShowImportNudge] = useState(false);
+  const [backupNudgeDismissed, setBackupNudgeDismissed] = useState(false);
+  const [lastBackedUpAt, setLastBackedUpAt] = useState<string | null>(null);
   const [onVacation, setOnVacation] = useState(false);
   // `onVacation` defaults to false and only becomes true once the focus effect
   // has read it. The overshoot card must wait for that answer — firing on the
@@ -247,6 +252,8 @@ export default function HomeScreen() {
     router.push('/review');
   }, []);
 
+  const showBackupNudge = Platform.OS === 'web' && isBackupStale(lastBackedUpAt);
+
   const { showCurriculumUpdatedBanner, dismissCurriculumUpdatedBanner } =
     useCurriculumUpdateBanner();
   const {
@@ -328,6 +335,11 @@ export default function HomeScreen() {
         );
       } catch {
         setShowImportNudge(false);
+      }
+      try {
+        setLastBackedUpAt(getLastBackedUpAt(userDb));
+      } catch {
+        setLastBackedUpAt(null);
       }
     }, [
       refetchLoad,
@@ -481,6 +493,18 @@ export default function HomeScreen() {
                   Got it
                 </Text>
               </View>
+            </FadeSlideIn>
+          ) : /* Web only: browser storage is evictable, so a stale backup is a
+                 real risk of losing the schedule. Native keeps this in Settings
+                 — the OS already backs the sandbox up. Outranks the import
+                 nudge: losing progress beats importing more of it. */
+            !isLoading && showBackupNudge && !backupNudgeDismissed ? (
+            <FadeSlideIn index={1}>
+              <BackupNudgeCard
+                lastBackedUpAt={lastBackedUpAt}
+                onBackUp={() => router.push('/settings')}
+                onDismiss={() => setBackupNudgeDismissed(true)}
+              />
             </FadeSlideIn>
           ) : !isLoading && showImportNudge && !importNudgeDismissed ? (
             <FadeSlideIn index={1}>

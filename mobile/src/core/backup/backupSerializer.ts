@@ -25,8 +25,13 @@ export function serializeBackupBundle(bundle: BackupBundle): string {
   return JSON.stringify(bundle);
 }
 
+const DAMAGED_FILE_USER_MESSAGE = 'This backup file is damaged and cannot be restored.';
+
 function invalidShape(message: string): Result<BackupBundle, AppError> {
-  return { ok: false, error: { code: 'BACKUP_INVALID_SHAPE', message } };
+  return {
+    ok: false,
+    error: { code: 'BACKUP_INVALID_SHAPE', message, userMessage: DAMAGED_FILE_USER_MESSAGE },
+  };
 }
 
 export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppError> {
@@ -36,7 +41,12 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
   } catch (cause) {
     return {
       ok: false,
-      error: { code: 'BACKUP_INVALID_JSON', message: 'Backup file is not valid JSON', cause },
+      error: {
+        code: 'BACKUP_INVALID_JSON',
+        message: 'Backup file is not valid JSON',
+        userMessage: DAMAGED_FILE_USER_MESSAGE,
+        cause,
+      },
     };
   }
 
@@ -51,6 +61,7 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
       error: {
         code: 'BACKUP_FORMAT_MISMATCH',
         message: `Unrecognized backup format: ${String(record.format)}`,
+        userMessage: 'That file is not a Kizamu backup.',
       },
     };
   }
@@ -60,6 +71,8 @@ export function parseBackupBundle(rawJson: string): Result<BackupBundle, AppErro
       error: {
         code: 'BACKUP_VERSION_UNSUPPORTED',
         message: `Unsupported backup formatVersion: ${String(record.formatVersion)}`,
+        userMessage:
+          'This backup was made by a newer version of the app. Update Kizamu, then restore.',
       },
     };
   }

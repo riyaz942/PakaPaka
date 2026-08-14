@@ -200,6 +200,7 @@ describe('parseBackupBundle validation', () => {
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(result.error.code).toBe('BACKUP_FORMAT_MISMATCH');
+    expect(result.error.userMessage).toBe('That file is not a Kizamu backup.');
   });
 
   it('rejects an unsupported formatVersion', () => {
@@ -209,6 +210,7 @@ describe('parseBackupBundle validation', () => {
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(result.error.code).toBe('BACKUP_VERSION_UNSUPPORTED');
+    expect(result.error.userMessage).toMatch(/newer version/i);
   });
 
   it('rejects a payload missing the data object', () => {

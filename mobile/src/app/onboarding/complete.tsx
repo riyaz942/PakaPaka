@@ -1,4 +1,4 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useRef } from 'react';
 import { Text, View } from 'react-native';
 
@@ -46,6 +46,10 @@ const HIGHLIGHTS = [
 
 export default function CompleteScreen() {
   const { userDb } = useDatabase();
+  const { restored } = useLocalSearchParams<{ restored?: string }>();
+  // A restored learner already has a queue and a history — "start your first
+  // lesson" would be wrong, and a lesson is optional for them (Story 9.2 AC8).
+  const isRestored = restored === '1';
   const submittedRef = useRef(false);
 
   const finish = useCallback(
@@ -67,18 +71,24 @@ export default function CompleteScreen() {
 
   return (
     <OnboardingStep
-      title="You're ready"
-      description="Your path is set. The fastest way to make it stick? Learn something right now."
+      title={isRestored ? "You're back" : "You're ready"}
+      description={
+        isRestored
+          ? 'Your backup is restored. Your reviews are waiting exactly where you left them.'
+          : 'Your path is set. The fastest way to make it stick? Learn something right now.'
+      }
       stepIndex={4}
       stepCount={4}
-      primaryAction={{
-        label: 'Start your first lesson',
-        onPress: () => finish('/lesson'),
-      }}
-      secondaryAction={{
-        label: 'Explore on my own',
-        onPress: () => finish('/(tabs)'),
-      }}
+      primaryAction={
+        isRestored
+          ? { label: 'Continue learning', onPress: () => finish('/(tabs)') }
+          : { label: 'Start your first lesson', onPress: () => finish('/lesson') }
+      }
+      secondaryAction={
+        isRestored
+          ? { label: 'Start a lesson', onPress: () => finish('/lesson') }
+          : { label: 'Explore on my own', onPress: () => finish('/(tabs)') }
+      }
       testID="complete-screen">
       <View className="gap-space-sm">
         {HIGHLIGHTS.map((highlight, index) => (

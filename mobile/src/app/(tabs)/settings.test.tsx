@@ -2,6 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react-nativ
 import { Appearance } from 'react-native';
 
 import { GUIDANCE_CARDS } from '@/components/onboarding/cardRegistry';
+import { cancelAllNotifications, scheduleReviewReminder } from '@/config/notifications';
 
 import SettingsScreen from './settings';
 
@@ -12,6 +13,10 @@ const mockSetAutoAdvanceEnabled = jest.fn();
 let mockAutoAdvanceEnabled = false;
 const mockEnableShadowMode = jest.fn();
 const mockDisableShadowMode = jest.fn();
+const mockRefetchReducedMotion = jest.fn();
+const mockRefetchAutoAdvance = jest.fn();
+const mockRefetchVacation = jest.fn();
+const mockRefetchShadowMode = jest.fn();
 const mockSetFuriganaMode = jest.fn();
 const mockClearOneOverride = jest.fn();
 const mockClearAllOverrides = jest.fn();
@@ -55,6 +60,7 @@ jest.mock('@/data/hooks/useReducedMotion', () => ({
     reducedMotion: false,
     preference: null,
     setReducedMotion: mockSetReducedMotion,
+    refetch: mockRefetchReducedMotion,
   }),
 }));
 
@@ -62,6 +68,7 @@ jest.mock('@/data/hooks/useReviewAutoAdvance', () => ({
   useReviewAutoAdvance: () => ({
     autoAdvanceEnabled: mockAutoAdvanceEnabled,
     setAutoAdvanceEnabled: mockSetAutoAdvanceEnabled,
+    refetch: mockRefetchAutoAdvance,
   }),
 }));
 
@@ -71,6 +78,7 @@ jest.mock('@/data/hooks/useVacationMode', () => ({
     startedAt: mockVacationStartedAt,
     start: mockStartVacation,
     end: mockEndVacation,
+    refetch: mockRefetchVacation,
   }),
 }));
 
@@ -80,6 +88,7 @@ jest.mock('@/data/hooks/useShadowMode', () => ({
     isEnabled: mockShadowModeEnabled,
     enable: mockEnableShadowMode,
     disable: mockDisableShadowMode,
+    refetch: mockRefetchShadowMode,
   }),
 }));
 
@@ -134,12 +143,33 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   // Indirected like setDailyGoalTarget below: the factory runs at import time,
   // before the module-scope mock consts are initialised.
   setThemeMode: (db: unknown, mode: string) => mockSetThemeMode(db, mode),
+  // Backup section (Story 9.2) — the "last backed up" indicator and the reads
+  // the screen re-runs after a restore replaces user.db.
+  getLastBackedUpAt: () => mockLastBackedUpAt,
+  getFuriganaDisplay: () => 'auto',
 }));
 
 const mockExportBackup = jest.fn();
 
 jest.mock('@/data/user/exportBackup', () => ({
   exportBackup: (db: unknown, options: unknown) => mockExportBackup(db, options),
+}));
+
+let mockLastBackedUpAt: string | null = null;
+
+const mockPreviewRestore = jest.fn();
+const mockRestoreBackup = jest.fn();
+
+jest.mock('@/data/user/restoreBackup', () => ({
+  previewRestore: (db: unknown, uri: string) => mockPreviewRestore(db, uri),
+  restoreBackup: (db: unknown, preview: unknown, origin: string) =>
+    mockRestoreBackup(db, preview, origin),
+}));
+
+const mockGetDocumentAsync = jest.fn();
+
+jest.mock('expo-document-picker', () => ({
+  getDocumentAsync: (options: unknown) => mockGetDocumentAsync(options),
 }));
 
 const mockShareAsync = jest.fn();
@@ -652,5 +682,266 @@ describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
         'Could not open the share sheet.',
       );
     });
+  });
+});
+
+describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)', () => {
+  const PREVIEW = {
+    bundle: { exportedAt: '2026-08-10T00:00:00.000Z' },
+    unmatchedSlugs: [],
+    summary: {
+      itemCount: 12,
+      unmatchedSlugCount: 0,
+      unmatchedPassageCount: 0,
+      includesConversations: false,
+      exportedAt: '2026-08-10T00:00:00.000Z',
+      curriculumVersion: '1.4.0',
+      schemaVersion: 19,
+    },
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockLastBackedUpAt = null;
+    mockIsSharingAvailableAsync.mockResolvedValue(true);
+    mockShareAsync.mockResolvedValue(undefined);
+  });
+
+  it('says never backed up when no export has run', () => {
+    render(<SettingsScreen />);
+    expect(screen.getByTestId('settings-backup-last-backed-up')).toHaveTextContent(
+      'Never backed up',
+    );
+  });
+
+  it('shows how long ago the last backup was', () => {
+    mockLastBackedUpAt = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString();
+    render(<SettingsScreen />);
+    expect(screen.getByTestId('settings-backup-last-backed-up')).toHaveTextContent(
+      'Last backed up 3 days ago',
+    );
+  });
+
+  it('clears the never-backed-up state after a successful export', async () => {
+    mockExportBackup.mockImplementation(() => {
+      mockLastBackedUpAt = new Date().toISOString();
+      return Promise.resolve({
+        ok: true,
+        value: { fileUri: 'file:///backup.json.gz', itemCount: 3, byteSize: 256, omittedCount: 0 },
+      });
+    });
+
+    render(<SettingsScreen />);
+    expect(screen.getByTestId('settings-backup-last-backed-up')).toHaveTextContent(
+      'Never backed up',
+    );
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-last-backed-up')).toHaveTextContent(
+        'Last backed up today',
+      );
+    });
+  });
+
+  it('asks the picker for a wide set of types so .json.gz is selectable', async () => {
+    mockGetDocumentAsync.mockResolvedValue({ canceled: true });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+
+    await waitFor(() => {
+      expect(mockGetDocumentAsync).toHaveBeenCalledWith(
+        expect.objectContaining({ copyToCacheDirectory: true }),
+      );
+    });
+    const options = mockGetDocumentAsync.mock.calls[0][0] as { type: string[] };
+    expect(options.type).toEqual(expect.arrayContaining(['application/gzip', '*/*']));
+  });
+
+  it('treats a cancelled picker as a no-op', async () => {
+    mockGetDocumentAsync.mockResolvedValue({ canceled: true });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+
+    await waitFor(() => {
+      expect(mockGetDocumentAsync).toHaveBeenCalled();
+    });
+    expect(mockPreviewRestore).not.toHaveBeenCalled();
+    expect(screen.queryByTestId('restore-preview-card')).toBeNull();
+  });
+
+  it('shows the preview inline and only restores after confirmation', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz', name: 'kizamu-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+    mockRestoreBackup.mockReturnValue({
+      ok: true,
+      value: { restoredRowCount: 12, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-item-count')).toHaveTextContent(/12 rows/);
+    });
+    expect(screen.getByTestId('restore-preview-warning')).toHaveTextContent(
+      'This replaces your current progress on this device.',
+    );
+    expect(screen.getByTestId('restore-preview-all-matched')).toBeTruthy();
+    // Nothing written until confirm (AC1).
+    expect(mockRestoreBackup).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-restore-result')).toHaveTextContent(
+        'Restored 12 rows.',
+      );
+    });
+    expect(mockRestoreBackup).toHaveBeenCalledWith(expect.anything(), PREVIEW, 'settings');
+    expect(screen.queryByTestId('restore-preview-card')).toBeNull();
+    expect(mockRefetchVacation).toHaveBeenCalled();
+    expect(mockRefetchAutoAdvance).toHaveBeenCalled();
+    expect(mockRefetchReducedMotion).toHaveBeenCalled();
+    expect(mockRefetchShadowMode).toHaveBeenCalled();
+    expect(cancelAllNotifications).toHaveBeenCalled();
+    expect(scheduleReviewReminder).not.toHaveBeenCalled();
+  });
+
+  it('reports skipped slugs in the restore result', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({
+      ok: true,
+      value: { ...PREVIEW, unmatchedSlugs: ['kanji:gone'], summary: { ...PREVIEW.summary, unmatchedSlugCount: 1 } },
+    });
+    mockRestoreBackup.mockReturnValue({
+      ok: true,
+      value: { restoredRowCount: 12, unmatchedSlugCount: 1, unmatchedPassageCount: 0 },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-unmatched-list')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-restore-result')).toHaveTextContent(
+        /1 skipped \(no longer in the curriculum\)/,
+      );
+    });
+  });
+
+  it('surfaces a corrupt-file error without offering to restore', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/notes.txt' }],
+    });
+    mockPreviewRestore.mockResolvedValue({
+      ok: false,
+      error: {
+        code: 'BACKUP_INVALID_GZIP',
+        message: 'incorrect header check',
+        userMessage: 'That file is not a Kizamu backup. Pick the .json.gz file you exported.',
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-error')).toHaveTextContent(
+        /That file is not a Kizamu backup/,
+      );
+    });
+    expect(screen.queryByTestId('restore-preview-confirm')).toBeNull();
+    expect(mockRestoreBackup).not.toHaveBeenCalled();
+  });
+
+  it('says previous progress was not changed when the restore write fails', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+    mockRestoreBackup.mockReturnValue({
+      ok: false,
+      error: {
+        code: 'BACKUP_RESTORE_FAILED',
+        message: 'disk full',
+        userMessage: 'Restore could not be saved. Your previous progress was not changed.',
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-confirm')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-error')).toHaveTextContent(
+        /Your previous progress was not changed/,
+      );
+    });
+    expect(screen.queryByTestId('settings-backup-restore-result')).toBeNull();
+  });
+
+  it('re-reads the restored theme so the screen does not keep pre-restore state', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+    mockRestoreBackup.mockImplementation(() => {
+      mockStoredThemeMode = 'dark';
+      return {
+        ok: true,
+        value: { restoredRowCount: 12, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+      };
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-confirm')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+    await waitFor(() => {
+      expect(mockSetThemeMode).toHaveBeenCalledWith(expect.anything(), 'dark');
+    });
+    expect(mockSetFuriganaMode).toHaveBeenCalledWith('auto');
+
+    mockStoredThemeMode = 'system';
+  });
+
+  it('cancelling the preview leaves everything untouched', async () => {
+    mockGetDocumentAsync.mockResolvedValue({
+      canceled: false,
+      assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+    });
+    mockPreviewRestore.mockResolvedValue({ ok: true, value: PREVIEW });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-restore-button'));
+    await waitFor(() => {
+      expect(screen.getByTestId('restore-preview-cancel')).toBeTruthy();
+    });
+    fireEvent.press(screen.getByTestId('restore-preview-cancel'));
+
+    expect(screen.queryByTestId('restore-preview-card')).toBeNull();
+    expect(mockRestoreBackup).not.toHaveBeenCalled();
   });
 });

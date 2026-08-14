@@ -70,4 +70,20 @@ describe('useReviewAutoAdvance (Story 1.2, FR84)', () => {
     expect(getReviewAutoAdvanceEnabled(userDb)).toBe(true);
     expect(result.current.autoAdvanceEnabled).toBe(true);
   });
+
+  it('refetches after an out-of-band preference write', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, [migration001Initial]);
+    const wrapper = await createWrapper(userDb);
+
+    const { result } = renderHook(() => useReviewAutoAdvance(), { wrapper });
+    expect(result.current.autoAdvanceEnabled).toBe(false);
+
+    setReviewAutoAdvanceEnabled(userDb, true);
+    await act(async () => {
+      result.current.refetch();
+    });
+
+    expect(result.current.autoAdvanceEnabled).toBe(true);
+  });
 });

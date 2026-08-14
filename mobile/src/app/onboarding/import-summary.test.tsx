@@ -10,7 +10,13 @@ import { migration001Initial } from '@/data/migrations/001_initial';
 import { migration002ItemStudyStatus } from '@/data/migrations/002_item_study_status';
 import { migration003SrsStatesAndImportMetadata } from '@/data/migrations/003_srs_states_and_import_metadata';
 import { runMigrations } from '@/data/migrations/migrationRunner';
-import { clearImportPreview, setImportPreview } from '@/data/import/importPreviewStore';
+import {
+  clearBackupPreview,
+  clearImportPreview,
+  setBackupPreview,
+  setImportPreview,
+} from '@/data/import/importPreviewStore';
+import type { BackupPreview } from '@/core/backup/backup.types';
 import type { ImportPreview } from '@/core/import/import.types';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
@@ -31,6 +37,34 @@ const mockConfirmCredentialedImport = jest.fn();
 jest.mock('@/data/user/importRepository', () => ({
   confirmCredentialedImport: (...args: unknown[]) => mockConfirmCredentialedImport(...args),
 }));
+
+const mockRestoreBackup = jest.fn();
+
+jest.mock('@/data/user/restoreBackup', () => ({
+  restoreBackup: (...args: unknown[]) => mockRestoreBackup(...args),
+}));
+
+const backupPreview: BackupPreview = {
+  bundle: {
+    format: 'kizamu-backup',
+    formatVersion: 1,
+    schemaVersion: 19,
+    curriculumVersion: '1.4.0',
+    exportedAt: '2026-08-10T00:00:00.000Z',
+    includesConversations: false,
+    data: {} as BackupPreview['bundle']['data'],
+  },
+  unmatchedSlugs: [],
+  summary: {
+    itemCount: 42,
+    unmatchedSlugCount: 0,
+    unmatchedPassageCount: 0,
+    includesConversations: false,
+    exportedAt: '2026-08-10T00:00:00.000Z',
+    curriculumVersion: '1.4.0',
+    schemaVersion: 19,
+  },
+};
 
 const preview: ImportPreview = {
   source: 'wanikani',
@@ -71,9 +105,11 @@ describe('ImportSummaryScreen', () => {
     __mockResetSqlite();
     __mockResetSecureStore();
     clearImportPreview();
+    clearBackupPreview();
     mockBack.mockClear();
     mockReplace.mockClear();
     mockConfirmCredentialedImport.mockReset();
+    mockRestoreBackup.mockReset();
   });
 
   async function createUserDb() {
@@ -147,5 +183,75 @@ describe('ImportSummaryScreen', () => {
       expect(screen.getByRole('button', { name: 'Retry' })).toBeTruthy();
     });
     expect(mockReplace).not.toHaveBeenCalled();
+  });
+
+  describe('backup restore branch (Story 9.2, AC1/AC2/AC8)', () => {
+    it('renders the restore preview instead of the import summary', async () => {
+      setBackupPreview(backupPreview);
+      const userDb = await createUserDb();
+      renderImportSummaryScreen(userDb);
+
+      expect(screen.getByText('Restore summary')).toBeTruthy();
+      expect(screen.getByTestId('restore-preview-item-count')).toHaveTextContent(/42 rows/);
+      expect(screen.getByTestId('restore-preview-warning')).toHaveTextContent(
+        'This replaces your current progress on this device.',
+      );
+      expect(screen.queryByText('Import summary')).toBeNull();
+    });
+
+    it('writes nothing until the learner confirms', async () => {
+      setBackupPreview(backupPreview);
+      const userDb = await createUserDb();
+      renderImportSummaryScreen(userDb);
+
+      expect(mockRestoreBackup).not.toHaveBeenCalled();
+      fireEvent.press(screen.getByTestId('restore-preview-cancel'));
+
+      expect(mockBack).toHaveBeenCalled();
+      expect(mockRestoreBackup).not.toHaveBeenCalled();
+    });
+
+    it('restores with onboarding origin and skips intensity and placement', async () => {
+      setBackupPreview(backupPreview);
+      mockRestoreBackup.mockReturnValue({
+        ok: true,
+        value: { restoredRowCount: 42, unmatchedSlugCount: 0, unmatchedPassageCount: 0 },
+      });
+
+      const userDb = await createUserDb();
+      renderImportSummaryScreen(userDb);
+
+      fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+      await waitFor(() => {
+        expect(mockReplace).toHaveBeenCalledWith('/onboarding/complete?restored=1');
+      });
+      expect(mockRestoreBackup).toHaveBeenCalledWith(expect.anything(), backupPreview, 'onboarding');
+      expect(mockReplace).not.toHaveBeenCalledWith('/onboarding/intensity');
+    });
+
+    it('stays put and explains when the restore write fails', async () => {
+      setBackupPreview(backupPreview);
+      mockRestoreBackup.mockReturnValue({
+        ok: false,
+        error: {
+          code: 'BACKUP_RESTORE_FAILED',
+          message: 'disk full',
+          userMessage: 'Restore could not be saved. Your previous progress was not changed.',
+        },
+      });
+
+      const userDb = await createUserDb();
+      renderImportSummaryScreen(userDb);
+
+      fireEvent.press(screen.getByTestId('restore-preview-confirm'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('restore-preview-error')).toHaveTextContent(
+          /Your previous progress was not changed/,
+        );
+      });
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
   });
 });

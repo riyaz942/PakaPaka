@@ -1,5 +1,6 @@
 export { AccuracyRing } from './AccuracyRing';
 export { AtRiskSection } from './AtRiskSection';
+export { BackupNudgeCard } from './BackupNudgeCard';
 export { DailyThresholdNotice } from './DailyThresholdNotice';
 export { DaysStudiedStat } from './DaysStudiedStat';
 export { GoalRing } from './GoalRing';

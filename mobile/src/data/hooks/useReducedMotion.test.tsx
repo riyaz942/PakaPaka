@@ -133,4 +133,23 @@ describe('useReducedMotion', () => {
     expect(getReducedMotionEnabled(userDb)).toBe(true);
     expect(result.current.reducedMotion).toBe(true);
   });
+
+  it('refetches after an out-of-band preference write', async () => {
+    const userDb = await openDatabaseAsync('user.db');
+    runMigrations(userDb, [migration001Initial]);
+    const wrapper = await createWrapper(userDb);
+
+    const { result } = renderHook(() => useReducedMotion(), { wrapper });
+    await waitFor(() => {
+      expect(result.current.preference).toBeNull();
+    });
+
+    setReducedMotionEnabled(userDb, true);
+    await act(async () => {
+      result.current.refetch();
+    });
+
+    expect(result.current.preference).toBe(true);
+    expect(result.current.reducedMotion).toBe(true);
+  });
 });

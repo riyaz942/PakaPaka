@@ -11,6 +11,7 @@ import type {
 } from '@/core/backup/backup.types';
 import { buildItemIdToRefMap, resolveItemIdToRef } from '@/core/backup/slugResolver';
 import { CURRICULUM_ATTACH_ALIAS } from '@/data/database';
+import { setLastBackedUpAt } from '@/data/user/preferencesRepository';
 import type { AppError, Result } from '@/types/result.types';
 
 const C = CURRICULUM_ATTACH_ALIAS;
@@ -605,6 +606,10 @@ export async function exportBackup(
 
     const fileUri = `${resolveDocumentDirectory()}${backupFileName(exportedAt)}`;
     await writeBackupFile(fileUri, base64);
+
+    // The nudge timestamp follows the file write, not the share sheet — a
+    // cancelled share is still a backup on this device (9.1 precedent).
+    setLastBackedUpAt(userDb, exportedAt);
 
     return {
       ok: true,

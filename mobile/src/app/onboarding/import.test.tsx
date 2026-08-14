@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { openDatabaseAsync } from 'expo-sqlite';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -13,6 +13,7 @@ import {
   getStartingJlptLevel,
   setOnboardingPath,
 } from '@/data/user/preferencesRepository';
+import { clearBackupPreview, getBackupPreview } from '@/data/import/importPreviewStore';
 import { DatabaseContext, type DatabaseContextValue } from '@/providers/DatabaseContext';
 
 import ImportScreen from './import';
@@ -27,8 +28,16 @@ jest.mock('expo-router', () => ({
   },
 }));
 
+const mockGetDocumentAsync = jest.fn();
+
 jest.mock('expo-document-picker', () => ({
-  getDocumentAsync: jest.fn(),
+  getDocumentAsync: (options: unknown) => mockGetDocumentAsync(options),
+}));
+
+const mockPreviewRestore = jest.fn();
+
+jest.mock('@/data/user/restoreBackup', () => ({
+  previewRestore: (db: unknown, uri: string) => mockPreviewRestore(db, uri),
 }));
 
 jest.mock('@/data/user/credentialStore', () => ({
@@ -71,6 +80,9 @@ describe('ImportScreen', () => {
     __mockResetSecureStore();
     mockPush.mockClear();
     mockBack.mockClear();
+    mockGetDocumentAsync.mockReset();
+    mockPreviewRestore.mockReset();
+    clearBackupPreview();
   });
 
   async function createUserDb() {
@@ -128,5 +140,110 @@ describe('ImportScreen', () => {
 
     expect(getStartingJlptLevel(db)).toBe('N2');
     expect(mockPush).toHaveBeenCalledWith('/onboarding/intensity');
+  });
+
+  describe('Kizamu backup restore (Story 9.2, AC7)', () => {
+    it('offers restore alongside the third-party sources', async () => {
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      expect(screen.getByTestId('onboarding-import-restore-backup')).toBeTruthy();
+      expect(screen.getByText(/not another study tool/)).toBeTruthy();
+    });
+
+    it('previews the picked backup without requiring a JLPT level', async () => {
+      mockGetDocumentAsync.mockResolvedValue({
+        canceled: false,
+        assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      });
+      const previewValue = { bundle: {}, unmatchedSlugs: [], summary: { itemCount: 5 } };
+      mockPreviewRestore.mockResolvedValue({ ok: true, value: previewValue });
+
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      // Deliberately no JLPT tap: the backup carries starting_jlpt_level.
+      fireEvent.press(screen.getByTestId('onboarding-import-restore-backup'));
+
+      await waitFor(() => {
+        expect(mockPush).toHaveBeenCalledWith('./import-summary');
+      });
+      expect(mockPreviewRestore).toHaveBeenCalledWith(db, 'file:///picked/kizamu-backup.json.gz');
+      expect(getBackupPreview()).toBe(previewValue);
+    });
+
+    it('does not navigate if the learner left during preview', async () => {
+      let resolvePreview: (value: unknown) => void = () => {};
+      mockPreviewRestore.mockImplementation(
+        () =>
+          new Promise((resolve) => {
+            resolvePreview = resolve;
+          }),
+      );
+      mockGetDocumentAsync.mockResolvedValue({
+        canceled: false,
+        assets: [{ uri: 'file:///picked/kizamu-backup.json.gz' }],
+      });
+
+      const db = await createUserDb();
+      const { unmount } = renderImportScreen(db);
+      fireEvent.press(screen.getByTestId('onboarding-import-restore-backup'));
+
+      await waitFor(() => {
+        expect(mockPreviewRestore).toHaveBeenCalled();
+      });
+      unmount();
+
+      await act(async () => {
+        resolvePreview({
+          ok: true,
+          value: { bundle: {}, unmatchedSlugs: [], summary: { itemCount: 5 } },
+        });
+      });
+
+      expect(mockPush).not.toHaveBeenCalled();
+      expect(getBackupPreview()).toBeNull();
+    });
+
+    it('treats a cancelled picker as a no-op', async () => {
+      mockGetDocumentAsync.mockResolvedValue({ canceled: true });
+
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      fireEvent.press(screen.getByTestId('onboarding-import-restore-backup'));
+
+      await waitFor(() => {
+        expect(mockGetDocumentAsync).toHaveBeenCalled();
+      });
+      expect(mockPreviewRestore).not.toHaveBeenCalled();
+      expect(mockPush).not.toHaveBeenCalled();
+    });
+
+    it('shows a corrupt-file message instead of navigating', async () => {
+      mockGetDocumentAsync.mockResolvedValue({
+        canceled: false,
+        assets: [{ uri: 'file:///picked/notes.txt' }],
+      });
+      mockPreviewRestore.mockResolvedValue({
+        ok: false,
+        error: {
+          code: 'BACKUP_INVALID_GZIP',
+          message: 'incorrect header check',
+          userMessage: 'That file is not a Kizamu backup. Pick the .json.gz file you exported.',
+        },
+      });
+
+      const db = await createUserDb();
+      renderImportScreen(db);
+
+      fireEvent.press(screen.getByTestId('onboarding-import-restore-backup'));
+
+      await waitFor(() => {
+        expect(screen.getByText(/not a Kizamu backup/)).toBeTruthy();
+      });
+      expect(mockPush).not.toHaveBeenCalled();
+      expect(getBackupPreview()).toBeNull();
+    });
   });
 });

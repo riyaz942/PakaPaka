@@ -110,6 +110,38 @@ function restoreTables(state: MockDatabaseState, snapshot: Map<string, Row[]>): 
   }
 }
 
+/**
+ * Zip an INSERT's declared columns against its VALUES tokens, consuming one
+ * bound param per `?` and keeping literal NULL/number tokens as written. Callers
+ * that mix bound and literal values (the AI session insert, srs_states) would
+ * otherwise mis-align once a second caller binds a different column set.
+ */
+function zipInsertRow(sql: string, params: unknown[]): Row {
+  const match = sql.match(/INSERT(?:\s+OR\s+IGNORE)?\s+INTO\s+[a-zA-Z0-9_]+\s*\(([^)]+)\)\s*VALUES\s*\(([^)]+)\)/i);
+  if (!match) {
+    throw new Error(`Unrecognized insert: ${sql}`);
+  }
+  const columns = match[1].split(',').map((column) => column.trim());
+  const valueTokens = match[2].split(',').map((token) => token.trim());
+
+  const row: Row = {};
+  let paramIndex = 0;
+  columns.forEach((column, index) => {
+    const token = valueTokens[index];
+    if (token === '?') {
+      row[column] = params[paramIndex];
+      paramIndex += 1;
+    } else if (/^NULL$/i.test(token)) {
+      row[column] = null;
+    } else if (/^-?\d+(\.\d+)?$/.test(token)) {
+      row[column] = Number(token);
+    } else {
+      row[column] = token;
+    }
+  });
+  return row;
+}
+
 function upsertSrsState(
   state: MockDatabaseState,
   sql: string,
@@ -215,6 +247,15 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
 
   if (/^ROLLBACK/i.test(trimmed)) {
     state.inTransaction = false;
+    return;
+  }
+
+  // Replace-all restore empties a table wholesale. Checked before the
+  // WHERE-filtered DELETE handlers below, which would otherwise filter on an
+  // undefined param and leave every row in place.
+  const truncate = trimmed.match(/^DELETE FROM\s+([a-zA-Z0-9_]+)\s*;?$/i);
+  if (truncate) {
+    state.tables.set(truncate[1], []);
     return;
   }
 
@@ -534,20 +575,12 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
   // --- AI conversation tables (017_ai_sessions) ---
 
   if (/^INSERT INTO ai_sessions/i.test(trimmed)) {
+    // Column-aware, like the srs_states insert above: the session repository
+    // writes literal NULL/0 for the columns it does not bind, while a restore
+    // binds all twelve. Zip the column list against the VALUES tokens and
+    // consume one param per `?`.
     const rows = state.tables.get('ai_sessions') ?? [];
-    rows.push({
-      id: params[0],
-      provider: params[1],
-      model: params[2],
-      mode: params[3],
-      topic_item_id: params[4],
-      started_at: params[5],
-      ended_at: null,
-      ended_reason: null,
-      turn_count: 0,
-      summary_json: null,
-      summary_generated_at: null,
-    });
+    rows.push(zipInsertRow(trimmed, params));
     state.tables.set('ai_sessions', rows);
     return;
   }
@@ -617,10 +650,40 @@ function applySql(state: MockDatabaseState, sql: string, params: unknown[] = [])
     );
     return;
   }
+
+  // Plain parameterized INSERT, appended last so every table-specific handler
+  // above still wins. Restore (9.2) writes every user table this way.
+  const genericInsert = trimmed.match(
+    /^INSERT INTO\s+([a-zA-Z0-9_]+)\s*\(([^)]+)\)\s*VALUES\s*\(([^)]+)\)/i,
+  );
+  if (genericInsert && trimmed.includes('?')) {
+    const table = genericInsert[1];
+    const rows = state.tables.get(table) ?? [];
+    rows.push(zipInsertRow(trimmed, params));
+    state.tables.set(table, rows);
+  }
 }
 
 function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []): Row[] {
   const trimmed = sql.trim();
+
+  // There is no real ATTACH here, so the `curriculum.*` reads a restore issues
+  // resolve against tables seeded into the same mock database.
+  if (/FROM curriculum\.items/i.test(trimmed)) {
+    return [...(state.tables.get('items') ?? [])];
+  }
+
+  if (/FROM curriculum\.reading_passages/i.test(trimmed)) {
+    return [...(state.tables.get('reading_passages') ?? [])];
+  }
+
+  if (/FROM curriculum\.passage_questions/i.test(trimmed)) {
+    return [...(state.tables.get('passage_questions') ?? [])];
+  }
+
+  if (/FROM user_synonyms/i.test(trimmed)) {
+    return [...(state.tables.get('user_synonyms') ?? [])];
+  }
 
   if (/FROM ai_sessions/i.test(trimmed)) {
     let rows = [...(state.tables.get('ai_sessions') ?? [])];
@@ -1376,13 +1439,10 @@ class MockSQLiteDatabase {
 
   withTransactionSync(task: () => void): void {
     const state = getDatabaseState(this.databaseName);
-    const snapshot = snapshotTables(state, [
-      'srs_states',
-      'import_metadata',
-      'item_study_status',
-      'ai_sessions',
-      'ai_messages',
-    ]);
+    // Every table, not a fixed list: a restore rewrites all of them, and a
+    // partial snapshot would let a rollback test pass while `user_preferences`
+    // or `goal_ring_state` kept the half-written values.
+    const snapshot = snapshotTables(state, Array.from(state.tables.keys()));
     state.inTransaction = true;
     try {
       task();

@@ -1,9 +1,14 @@
+import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import {
+  RestorePreviewCard,
+  type RestorePreviewCardState,
+} from '@/components/backup/RestorePreviewCard';
 import { Button } from '@/components/common/Button';
 import { ChoiceCard } from '@/components/common/ChoiceCard';
 import { ExplainerSheet } from '@/components/common/ExplainerSheet';
@@ -26,6 +31,12 @@ import {
   scheduleReviewReminder,
 } from '@/config/notifications';
 import { MaxContentWidth } from '@/constants/theme';
+import { formatLastBackedUp } from '@/core/backup/backupFreshness';
+import {
+  clearBackupPreview,
+  getBackupPreview,
+  setBackupPreview,
+} from '@/data/import/importPreviewStore';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaOverrideList } from '@/data/hooks/useFuriganaOverrideList';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
@@ -35,8 +46,10 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { useVacationMode } from '@/data/hooks/useVacationMode';
 import { exportBackup } from '@/data/user/exportBackup';
+import { previewRestore, restoreBackup } from '@/data/user/restoreBackup';
 import {
   clearOnboardingCompleted,
+  getLastBackedUpAt,
   getNotificationTime,
   getNotificationsEnabled,
   getSessionIntensity,
@@ -46,6 +59,8 @@ import {
   setNotificationsEnabled,
   setSessionIntensity,
   setWeaknessBiasEnabled,
+  getFuriganaDisplay,
+  getThemeMode,
   type FuriganaDisplayMode,
   type NotificationTime,
   type ThemeMode,
@@ -137,7 +152,7 @@ function GuidanceLibrarySheet({ card, onDismiss }: { card: GuidanceCard; onDismi
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { userDb } = useDatabase();
-  const { reducedMotion, setReducedMotion } = useReducedMotion();
+  const { reducedMotion, setReducedMotion, refetch: refetchReducedMotion } = useReducedMotion();
   const { mode: themeMode, setMode: setThemeMode } = useThemeMode();
   const { mode: furiganaMode, setMode: setFuriganaMode } = useFuriganaPreference();
   const {
@@ -145,18 +160,24 @@ export default function SettingsScreen() {
     clearOne: clearOneFuriganaOverride,
     clearAll: clearAllFuriganaOverrides,
   } = useFuriganaOverrideList();
-  const { autoAdvanceEnabled, setAutoAdvanceEnabled } = useReviewAutoAdvance();
+  const {
+    autoAdvanceEnabled,
+    setAutoAdvanceEnabled,
+    refetch: refetchAutoAdvance,
+  } = useReviewAutoAdvance();
   const {
     isVacationActive,
     startedAt: vacationStartedAt,
     start: startVacationMode,
     end: endVacationMode,
+    refetch: refetchVacation,
   } = useVacationMode();
   const {
     canEnable: shadowModeCanEnable,
     isEnabled: shadowModeEnabled,
     enable: enableShadowMode,
     disable: disableShadowMode,
+    refetch: refetchShadowMode,
   } = useShadowMode();
   const [selectedIntensity, setSelectedIntensity] = useState<SessionIntensity | null>(null);
   const [weaknessBiasEnabled, setWeaknessBiasEnabledState] = useState(true);
@@ -174,6 +195,13 @@ export default function SettingsScreen() {
     omittedCount: number;
   } | null>(null);
   const [backupError, setBackupError] = useState<string | null>(null);
+  const [lastBackedUpAt, setLastBackedUpAtState] = useState<string | null>(null);
+  const [restoreState, setRestoreState] = useState<RestorePreviewCardState | 'idle'>('idle');
+  const [restoreError, setRestoreError] = useState<string | null>(null);
+  const [restoreResultMessage, setRestoreResultMessage] = useState<string | null>(null);
+  // Bumped after a restore replaces user.db, so the effect below re-reads every
+  // value this screen holds in React state rather than showing pre-restore ones.
+  const [settingsVersion, setSettingsVersion] = useState(0);
   const isRequestingPermission = useRef(false);
 
   const openCard = openCardId ? GUIDANCE_CARD_BY_ID[openCardId] : null;
@@ -184,7 +212,8 @@ export default function SettingsScreen() {
     setNotificationsEnabledState(getNotificationsEnabled(userDb));
     setNotificationTimeState(getNotificationTime(userDb));
     setDailyGoal(resolveDailyGoalTarget(userDb));
-  }, [userDb]);
+    setLastBackedUpAtState(getLastBackedUpAt(userDb));
+  }, [userDb, settingsVersion]);
 
   const handleGoalChange = (next: number) => {
     const result = setDailyGoalTarget(userDb, next);
@@ -287,6 +316,7 @@ export default function SettingsScreen() {
         byteSize: result.value.byteSize,
         omittedCount: result.value.omittedCount,
       });
+      setLastBackedUpAtState(getLastBackedUpAt(userDb));
 
       try {
         const canShare = await Sharing.isAvailableAsync();
@@ -306,6 +336,83 @@ export default function SettingsScreen() {
     } finally {
       setIsExportingBackup(false);
     }
+  };
+
+  /**
+   * `.json.gz` is reported as application/gzip, application/x-gzip,
+   * application/octet-stream or nothing at all depending on platform, and iOS
+   * Files filters by UTType rather than MIME — a narrow list simply hides the
+   * backup the learner is looking for.
+   */
+  const handleSelectRestoreFilePress = async () => {
+    setRestoreError(null);
+    setRestoreResultMessage(null);
+
+    const pickerResult = await DocumentPicker.getDocumentAsync({
+      copyToCacheDirectory: true,
+      type: ['application/gzip', 'application/x-gzip', 'application/json', 'application/octet-stream', '*/*'],
+    });
+
+    // A cancelled picker is not an error — the learner changed their mind.
+    if (pickerResult.canceled || !pickerResult.assets?.[0]) {
+      return;
+    }
+
+    setRestoreState('reading');
+    const previewResult = await previewRestore(userDb, pickerResult.assets[0].uri);
+    if (!previewResult.ok) {
+      setRestoreError(previewResult.error.userMessage ?? previewResult.error.message);
+      setRestoreState('error');
+      return;
+    }
+
+    setBackupPreview(previewResult.value);
+    setRestoreState('summary');
+  };
+
+  const handleConfirmRestore = async () => {
+    const preview = getBackupPreview();
+    if (!preview) {
+      setRestoreError('That backup preview is no longer available. Pick the file again.');
+      setRestoreState('error');
+      return;
+    }
+
+    setRestoreState('loading');
+    const result = restoreBackup(userDb, preview, 'settings');
+    if (!result.ok) {
+      setRestoreError(result.error.userMessage ?? result.error.message);
+      setRestoreState('error');
+      return;
+    }
+
+    clearBackupPreview();
+    setRestoreState('idle');
+    setRestoreResultMessage(
+      result.value.unmatchedSlugCount > 0
+        ? `Restored ${result.value.restoredRowCount} rows · ${result.value.unmatchedSlugCount} skipped (no longer in the curriculum).`
+        : `Restored ${result.value.restoredRowCount} rows.`,
+    );
+    // The replace wrote another device's preferences — pull every displayed
+    // value back out of user.db, including the ones that live in their own hooks.
+    setSettingsVersion((version) => version + 1);
+    setThemeMode(getThemeMode(userDb));
+    setFuriganaMode(getFuriganaDisplay(userDb));
+    refetchVacation();
+    refetchAutoAdvance();
+    refetchReducedMotion();
+    refetchShadowMode();
+    if (getNotificationsEnabled(userDb)) {
+      await scheduleReviewReminder(NOTIFICATION_TIME_HOURS[getNotificationTime(userDb)]);
+    } else {
+      await cancelAllNotifications();
+    }
+  };
+
+  const handleCancelRestore = () => {
+    clearBackupPreview();
+    setRestoreState('idle');
+    setRestoreError(null);
   };
 
   const handleResetOnboarding = () => {
@@ -499,6 +606,12 @@ export default function SettingsScreen() {
             wherever you choose to save it.
           </Text>
 
+          <Text
+            className="mt-space-xs text-caption font-ui-semibold text-secondary"
+            testID="settings-backup-last-backed-up">
+            {formatLastBackedUp(lastBackedUpAt)}
+          </Text>
+
           <SettingsCard>
             <ToggleRow
               label="Include AI conversations"
@@ -539,6 +652,39 @@ export default function SettingsScreen() {
               className="mt-space-sm text-caption font-ui-medium text-feedback-incorrect-deep"
               testID="settings-backup-error">
               {backupError}
+            </Text>
+          ) : null}
+
+          <Button
+            label="Restore from backup"
+            variant="secondary"
+            onPress={handleSelectRestoreFilePress}
+            disabled={isExportingBackup || restoreState === 'loading' || restoreState === 'reading'}
+            className="mt-space-md w-full"
+            testID="settings-backup-restore-button"
+          />
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Restoring replaces everything on this device with the contents of the file. Your saved
+            API keys are not affected.
+          </Text>
+
+          {restoreState !== 'idle' ? (
+            <View className="mt-space-sm">
+              <RestorePreviewCard
+                errorMessage={restoreError ?? undefined}
+                onCancel={handleCancelRestore}
+                onConfirm={handleConfirmRestore}
+                preview={getBackupPreview() ?? undefined}
+                state={restoreState}
+              />
+            </View>
+          ) : null}
+
+          {restoreResultMessage ? (
+            <Text
+              className="mt-space-sm text-caption font-ui-medium text-muted"
+              testID="settings-backup-restore-result">
+              {restoreResultMessage}
             </Text>
           ) : null}
         </View>

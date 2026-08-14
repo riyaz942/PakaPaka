@@ -58,7 +58,7 @@ Last verified against the codebase: **2026-08-11**
 | --- | --- |
 | [Design System v2 restyle](./design/redesign-v2/README.md) | Done — Sessions 1–8 |
 | [Curriculum Studio (web tool)](./design/curriculum-studio-web-plan.md) | Done — Chunks 1–9 live in [`web/`](../web/README.md) |
-| [Backup/restore + web build](./design/backup-and-web-plan.md) | **In progress** — Part A export is story 9-1 (`done`); restore is 9-2 (`backlog`) |
+| [Backup/restore + web build](./design/backup-and-web-plan.md) | **In progress** — Part A complete: export is story 9-1 (`done`), restore + backup nudge is 9-2 (`done`). Part B (web learner app) not started |
 | [Web SQLite ATTACH findings](./design/web-sqlite-attach-findings.md) | Done — spike closed, `ATTACH` verified working |
 | [AI reading & community contribution](./design/ai-reading-and-community-contribution-design-note.md) | Done — design note only, no app work by intent |
 
@@ -75,7 +75,7 @@ Two generations of stories share this folder. The live tracker is
 | 1 Kanji Review Clarity · 2 Goal-Driven Home · 3 Browse & Passages · 4 Lessons & Details | Done (2 stories each) |
 | 5 AI Conversation · 6 Onboarding Personalization · 7 Contextual Guidance | Done (2 stories each) |
 | 8 Shadow Mode & post-MVP backlog | **Not started** (`backlog`) |
-| 9 Backup & Restore | **In progress** — 9-1 `done`, 9-2 `backlog` |
+| 9 Backup & Restore | **In progress** — 9-1 `done`, 9-2 `done` |
 
 **Wave 1 — MVP epics** (from a superseded epics doc): 40 story files, all `done`
 except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-import-or-documented-fallback.md), still at `review`.
@@ -141,7 +141,11 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 
 ### Backup/restore + web build
 - Part A export (backup format + Settings export) is story 9-1, `done`.
-- Part A restore preview + backup nudge is story 9-2, `backlog`.
+- Part A restore preview + backup nudge is story 9-2, `done`. Replace-all restore inside one
+  transaction, preview-then-confirm in Settings and as a fourth onboarding source, "last backed up
+  N days ago" in Settings, and a web-only stale-backup banner on Home.
+- Restore keeps `passage_practice_results` on raw curriculum ids (v1); rows pointing at passages this
+  device lacks are counted in the preview and skipped, not migrated to slugs.
 - Part B (web build + PWA) not started. The `ATTACH` blocker is cleared; the real one is the `expo-sqlite` sync-bridge bug.
 
 ### BMAD open stories

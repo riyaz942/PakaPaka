@@ -14,13 +14,17 @@ import { getMockFileStore, resetMockFileSystem } from '@/test-support/file-syste
 // the SQL shape and the row -> bundle mapping instead.
 type TableRows = Record<string, unknown[]>;
 
+type WrittenStatement = { sql: string; params: unknown[] };
+
 function fakeUserDb(options: {
   curriculumItems?: { id: number | string; item_type: string; slug: string }[];
   curriculumVersion?: string | null;
   schemaVersion?: number | null;
   tables?: TableRows;
+  writes?: WrittenStatement[];
 } = {}): SQLiteDatabase {
   const tables = options.tables ?? {};
+  const writes = options.writes ?? [];
 
   const tableMatchers: [RegExp, unknown[]][] = [
     [/FROM curriculum\.items/i, options.curriculumItems ?? []],
@@ -60,6 +64,10 @@ function fakeUserDb(options: {
         return { maxVersion: options.schemaVersion ?? null };
       }
       return null;
+    }),
+    runSync: jest.fn((sql: string, ...params: unknown[]) => {
+      writes.push({ sql, params });
+      return { changes: 1, lastInsertRowId: 1 };
     }),
     withTransactionSync: jest.fn((task: () => void) => {
       task();
@@ -395,6 +403,22 @@ describe('exportBackup', () => {
       item: { itemType: 'vocabulary', slug: 'nichiyoubi' },
     });
     expect(summary.wordsMet[1]).toEqual({ text: 'ラーメン', itemId: null });
+  });
+
+  it('records last_backed_up_at on a successful file write', async () => {
+    const writes: WrittenStatement[] = [];
+    const db = fakeUserDb({ curriculumItems: CURRICULUM_ITEMS, writes });
+
+    const result = await exportBackup(db);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+
+    const backupStamp = writes.find(
+      (write) =>
+        /INSERT INTO user_preferences/i.test(write.sql) && write.params[0] === 'last_backed_up_at',
+    );
+    expect(backupStamp).toBeDefined();
+    expect(backupStamp?.params[1]).toMatch(/^\d{4}-\d{2}-\d{2}T/);
   });
 
   it('returns a userMessage when export throws', async () => {
