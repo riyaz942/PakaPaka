@@ -1,5 +1,11 @@
 # Deferred Work
 
+## Deferred from: code review of 9-1-backup-format-and-export.md (2026-08-14)
+
+- **`parseBackupBundle` only checks that each table is an array** — envelope fields are typed, then `data` is `as unknown as BackupData`. Null rows, missing `item` refs, and extra keys parse as `ok: true`. Story 9.2 A2.3 owns restore parse/validate; row-shape checking belongs there. [`mobile/src/core/backup/backupSerializer.ts:79-96`]
+- **`passage_practice_results` keyed by curriculum integer ids** — `passageId`/`questionId` are stringified compile-time row ids; `reading_passages` / `passage_questions` have no slug. Restore-after-OTA can mis-bind practice history. Deferred to Story 9.2 / a later format version; v1 keeps raw ids as documented. [`mobile/src/core/backup/backup.types.ts:118-128`]
+
+
 ## Deferred from: code review of 7-1-card-registry-and-day-1-beginner-deck (2026-08-08)
 
 - **Back from "You're ready" resurfaces a stale deck card** — day-one exits via `router.push('/onboarding/complete')`, so Back from complete reveals the last card in stale state (all cards marked seen; the empty-deck redirect can't fire because `activeCard` is non-null). Continue re-pushes complete, so it self-corrects. Deferred: push is spec-mandated by Task 6. [`mobile/src/app/onboarding/day-one.tsx:56,68`]

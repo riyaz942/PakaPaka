@@ -1,4 +1,5 @@
 import { router } from 'expo-router';
+import * as Sharing from 'expo-sharing';
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -33,6 +34,7 @@ import { useReviewAutoAdvance } from '@/data/hooks/useReviewAutoAdvance';
 import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { useThemeMode } from '@/data/hooks/useThemeMode';
 import { useVacationMode } from '@/data/hooks/useVacationMode';
+import { exportBackup } from '@/data/user/exportBackup';
 import {
   clearOnboardingCompleted,
   getNotificationTime,
@@ -76,6 +78,13 @@ const FURIGANA_DISPLAY_OPTIONS: { value: FuriganaDisplayMode; label: string }[] 
 
 /** The daily goal moves in load units; 5 is one small item's worth of load. */
 const DAILY_GOAL_STEP = 5;
+
+function formatByteSize(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  const kb = bytes / 1024;
+  if (kb < 1024) return `${kb.toFixed(1)} KB`;
+  return `${(kb / 1024).toFixed(1)} MB`;
+}
 
 function formatVacationStart(iso: string): string {
   const date = new Date(iso);
@@ -157,6 +166,14 @@ export default function SettingsScreen() {
   const [dailyGoal, setDailyGoal] = useState(DAILY_GOAL_STEP);
   const [vacationResultMessage, setVacationResultMessage] = useState<string | null>(null);
   const [openCardId, setOpenCardId] = useState<GuidanceCardId | null>(null);
+  const [includeConversationsInBackup, setIncludeConversationsInBackup] = useState(false);
+  const [isExportingBackup, setIsExportingBackup] = useState(false);
+  const [backupResult, setBackupResult] = useState<{
+    itemCount: number;
+    byteSize: number;
+    omittedCount: number;
+  } | null>(null);
+  const [backupError, setBackupError] = useState<string | null>(null);
   const isRequestingPermission = useRef(false);
 
   const openCard = openCardId ? GUIDANCE_CARD_BY_ID[openCardId] : null;
@@ -247,6 +264,47 @@ export default function SettingsScreen() {
       enableShadowMode();
     } else {
       disableShadowMode();
+    }
+  };
+
+  const handleExportBackup = async () => {
+    setIsExportingBackup(true);
+    setBackupError(null);
+    setBackupResult(null);
+
+    try {
+      const result = await exportBackup(userDb, {
+        includeConversations: includeConversationsInBackup,
+      });
+
+      if (!result.ok) {
+        setBackupError(result.error.userMessage ?? result.error.message);
+        return;
+      }
+
+      setBackupResult({
+        itemCount: result.value.itemCount,
+        byteSize: result.value.byteSize,
+        omittedCount: result.value.omittedCount,
+      });
+
+      try {
+        const canShare = await Sharing.isAvailableAsync();
+        if (!canShare) {
+          setBackupError(
+            'Sharing is unavailable. The backup was saved on this device, but the share sheet could not be opened.',
+          );
+        } else {
+          await Sharing.shareAsync(result.value.fileUri, {
+            mimeType: 'application/gzip',
+            dialogTitle: 'Back up your progress',
+          });
+        }
+      } catch {
+        setBackupError('Could not open the share sheet.');
+      }
+    } finally {
+      setIsExportingBackup(false);
     }
   };
 
@@ -431,6 +489,57 @@ export default function SettingsScreen() {
                 testID="settings-furigana-overrides-reset"
               />
             </View>
+          ) : null}
+        </View>
+
+        <View className="mt-space-lg">
+          <SectionHeading label="Backup" />
+          <Text className="mt-space-xs text-caption font-ui-medium text-muted">
+            Export your progress to a file you keep. Nothing is uploaded — the file goes straight to
+            wherever you choose to save it.
+          </Text>
+
+          <SettingsCard>
+            <ToggleRow
+              label="Include AI conversations"
+              description="Off by default. Chat transcripts can be large and are not needed to restore your progress."
+              value={includeConversationsInBackup}
+              onValueChange={setIncludeConversationsInBackup}
+              testID="settings-backup-include-conversations-toggle"
+            />
+          </SettingsCard>
+
+          <Button
+            label={isExportingBackup ? 'Exporting…' : 'Back up my progress'}
+            onPress={handleExportBackup}
+            disabled={isExportingBackup}
+            className="mt-space-sm w-full"
+            testID="settings-backup-export-button"
+          />
+
+          {backupResult ? (
+            <View className="mt-space-sm">
+              <Text
+                className="text-caption font-ui-medium text-muted"
+                testID="settings-backup-result">
+                {`Exported ${backupResult.itemCount} ${backupResult.itemCount === 1 ? 'row' : 'rows'} · ${formatByteSize(backupResult.byteSize)}`}
+              </Text>
+              {backupResult.omittedCount > 0 ? (
+                <Text
+                  className="mt-space-xs text-caption font-ui-medium text-muted"
+                  testID="settings-backup-omitted">
+                  {`${backupResult.omittedCount} ${backupResult.omittedCount === 1 ? 'item was' : 'items were'} skipped — no longer in the curriculum.`}
+                </Text>
+              ) : null}
+            </View>
+          ) : null}
+
+          {backupError ? (
+            <Text
+              className="mt-space-sm text-caption font-ui-medium text-feedback-incorrect-deep"
+              testID="settings-backup-error">
+              {backupError}
+            </Text>
           ) : null}
         </View>
 

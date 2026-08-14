@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { Appearance } from 'react-native';
 
 import { GUIDANCE_CARDS } from '@/components/onboarding/cardRegistry';
@@ -134,6 +134,20 @@ jest.mock('@/data/user/preferencesRepository', () => ({
   // Indirected like setDailyGoalTarget below: the factory runs at import time,
   // before the module-scope mock consts are initialised.
   setThemeMode: (db: unknown, mode: string) => mockSetThemeMode(db, mode),
+}));
+
+const mockExportBackup = jest.fn();
+
+jest.mock('@/data/user/exportBackup', () => ({
+  exportBackup: (db: unknown, options: unknown) => mockExportBackup(db, options),
+}));
+
+const mockShareAsync = jest.fn();
+const mockIsSharingAvailableAsync = jest.fn(() => Promise.resolve(true));
+
+jest.mock('expo-sharing', () => ({
+  isAvailableAsync: () => mockIsSharingAvailableAsync(),
+  shareAsync: (uri: string, options: unknown) => mockShareAsync(uri, options),
 }));
 
 jest.mock('@/config/notifications', () => ({
@@ -487,5 +501,156 @@ describe('SettingsScreen — "How this works" library (Epic 7)', () => {
 
     expect(mockSeenGuidanceCards.has('passage-locks')).toBe(false);
     expect(mockSeenGuidanceCards.size).toBe(0);
+  });
+});
+
+describe('SettingsScreen backup export (Story 9.1, AC3/AC4/AC6)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockIsSharingAvailableAsync.mockResolvedValue(true);
+    mockShareAsync.mockResolvedValue(undefined);
+  });
+
+  it('defaults the AI conversations toggle to off', () => {
+    render(<SettingsScreen />);
+    const toggle = screen.getByRole('switch', { name: 'Include AI conversations' });
+    expect(toggle.props.accessibilityState.checked).toBe(false);
+  });
+
+  it('exports with conversations excluded by default and hands the file to the share sheet', async () => {
+    mockExportBackup.mockResolvedValue({
+      ok: true,
+      value: {
+        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        itemCount: 42,
+        byteSize: 2048,
+        omittedCount: 0,
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(mockExportBackup).toHaveBeenCalledWith(mockUserDb, { includeConversations: false });
+    });
+
+    await waitFor(() => {
+      expect(mockShareAsync).toHaveBeenCalledWith(
+        'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        expect.objectContaining({ mimeType: 'application/gzip' }),
+      );
+    });
+
+    expect(screen.getByTestId('settings-backup-result')).toHaveTextContent(
+      'Exported 42 rows · 2.0 KB',
+    );
+  });
+
+  it('passes includeConversations through when the toggle is on', async () => {
+    mockExportBackup.mockResolvedValue({
+      ok: true,
+      value: {
+        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        itemCount: 5,
+        byteSize: 512,
+        omittedCount: 0,
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-include-conversations-toggle'));
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(mockExportBackup).toHaveBeenCalledWith(mockUserDb, { includeConversations: true });
+    });
+  });
+
+  it('surfaces the error message and skips the share sheet when export fails', async () => {
+    mockExportBackup.mockResolvedValue({
+      ok: false,
+      error: { code: 'BACKUP_EXPORT_FAILED', message: 'boom', userMessage: 'Could not export your backup.' },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-error')).toHaveTextContent(
+        'Could not export your backup.',
+      );
+    });
+    expect(mockShareAsync).not.toHaveBeenCalled();
+  });
+
+  it('shows how many orphaned items were skipped', async () => {
+    mockExportBackup.mockResolvedValue({
+      ok: true,
+      value: {
+        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        itemCount: 10,
+        byteSize: 1024,
+        omittedCount: 2,
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-omitted')).toHaveTextContent(
+        '2 items were skipped — no longer in the curriculum.',
+      );
+    });
+  });
+
+  it('keeps the export result and shows an error when sharing is unavailable', async () => {
+    mockIsSharingAvailableAsync.mockResolvedValue(false);
+    mockExportBackup.mockResolvedValue({
+      ok: true,
+      value: {
+        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        itemCount: 3,
+        byteSize: 256,
+        omittedCount: 0,
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-result')).toHaveTextContent(
+        'Exported 3 rows · 256 B',
+      );
+      expect(screen.getByTestId('settings-backup-error')).toHaveTextContent(/Sharing is unavailable/);
+    });
+    expect(mockShareAsync).not.toHaveBeenCalled();
+  });
+
+  it('keeps the export result and shows an error when the share sheet throws', async () => {
+    mockShareAsync.mockRejectedValue(new Error('share cancelled badly'));
+    mockExportBackup.mockResolvedValue({
+      ok: true,
+      value: {
+        fileUri: 'file:///mock-documents/kizamu-backup-2026-08-13T00-00-00-000Z.json.gz',
+        itemCount: 3,
+        byteSize: 256,
+        omittedCount: 0,
+      },
+    });
+
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-backup-export-button'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('settings-backup-result')).toHaveTextContent(
+        'Exported 3 rows · 256 B',
+      );
+      expect(screen.getByTestId('settings-backup-error')).toHaveTextContent(
+        'Could not open the share sheet.',
+      );
+    });
   });
 });
