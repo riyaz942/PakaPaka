@@ -26,7 +26,7 @@ sentences. The only content types are `kanji` and `vocab`.
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = sonnet-5>
+<subagent-model = opus-5>
 
 Model notes
 
@@ -40,7 +40,7 @@ Model notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 20>
+<batch-size = 10>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost

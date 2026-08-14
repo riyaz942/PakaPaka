@@ -752,6 +752,45 @@
       "review_status": "draft"
     }
   },
+  "n4-heru-decrease": {
+    "example_sentences": [
+      {
+        "japanese": "最近、体重が少し減りました。",
+        "english": "I've lost a little weight recently.",
+        "vocabulary_slugs": [
+          "saikin",
+          "taiju",
+          "sukoshi",
+          "heru-v"
+        ]
+      },
+      {
+        "japanese": "お菓子を減らして、毎朝走っています。",
+        "english": "I've cut back on sweets and I run every morning.",
+        "vocabulary_slugs": [
+          "okashi",
+          "herasu",
+          "maiasa",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "財布のお金がだんだん減っています。",
+        "english": "The money in my wallet is slowly dwindling.",
+        "vocabulary_slugs": [
+          "saifu",
+          "okane",
+          "dandan",
+          "heru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n4-hiku": {
     "example_sentences": [
       {
@@ -864,6 +903,47 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-hitsuji": {
+    "example_sentences": [
+      {
+        "japanese": "あの山に白い羊がたくさんいます。",
+        "english": "There are a lot of white sheep on that mountain.",
+        "vocabulary_slugs": [
+          "ano",
+          "yama-v",
+          "shiroi",
+          "hitsuji-anim",
+          "takusan",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "昼ご飯に羊の肉を食べました。",
+        "english": "I had lamb for lunch.",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "hitsuji-anim",
+          "niku",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "羊が道の真ん中に立っています。",
+        "english": "A sheep is standing in the middle of the road.",
+        "vocabulary_slugs": [
+          "hitsuji-anim",
+          "michi-v",
+          "mannaka",
+          "tatsu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -1315,6 +1395,47 @@
     ],
     "_meta": {
       "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-kawaru": {
+    "example_sentences": [
+      {
+        "japanese": "今日は朝から忙しくて、本当に大変でした。",
+        "english": "I was busy from the morning, so today was really rough.",
+        "vocabulary_slugs": [
+          "kyou",
+          "asa",
+          "isogashii",
+          "hontou-ni",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "駅の前の店がコンビニに変わりました。",
+        "english": "The shop in front of the station has turned into a convenience store.",
+        "vocabulary_slugs": [
+          "eki",
+          "mae",
+          "mise",
+          "konbini",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "雨なので、旅行の予定を変えました。",
+        "english": "It's raining, so we changed our travel plans.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "ryokou",
+          "yotei",
+          "kaeru-change"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "1",
       "review_status": "draft"
     }
@@ -2564,6 +2685,46 @@
     ],
     "_meta": {
       "generator_model": "cursor-grok-4.6-high",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-todoku": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、母から手紙が届きました。",
+        "english": "A letter from my mother arrived yesterday.",
+        "vocabulary_slugs": [
+          "kinou",
+          "haha",
+          "tegami",
+          "todoku-v"
+        ]
+      },
+      {
+        "japanese": "この荷物を隣の部屋に届けてください。",
+        "english": "Please take this package to the room next door.",
+        "vocabulary_slugs": [
+          "kono",
+          "nimotsu",
+          "tonari",
+          "heya",
+          "todokeru"
+        ]
+      },
+      {
+        "japanese": "財布を無くしたので、交番に届け出ました。",
+        "english": "I lost my wallet, so I reported it at the police box.",
+        "vocabulary_slugs": [
+          "saifu",
+          "nakusu",
+          "kouban",
+          "todokederu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
       "prompt_version": "1",
       "review_status": "draft"
     }

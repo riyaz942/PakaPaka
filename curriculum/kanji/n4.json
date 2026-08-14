@@ -10865,8 +10865,120 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "最近、体重が少し減りました。",
+          "english": "I've lost a little weight recently.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "saikin",
+            "taiju",
+            "sukoshi",
+            "heru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "saikin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "taiju",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "sukoshi",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "heru-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "減りました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "最[さい]近[きん]、体[たい]重[じゅう]が少[すこ]し減[へ]りました。"
+        },
+        {
+          "japanese": "お菓子を減らして、毎朝走っています。",
+          "english": "I've cut back on sweets and I run every morning.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "okashi",
+            "herasu",
+            "maiasa",
+            "hashiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "okashi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "herasu",
+              "start": 4,
+              "end": 8,
+              "surface_form": "減らして",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "vocabulary_slug": "hashiru",
+              "start": 11,
+              "end": 14,
+              "surface_form": "走って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "お菓[か]子[し]を減[へ]らして、毎[まい]朝[あさ]走[はし]っています。"
+        },
+        {
+          "japanese": "財布のお金がだんだん減っています。",
+          "english": "The money in my wallet is slowly dwindling.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "saifu",
+            "okane",
+            "dandan",
+            "heru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "saifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okane",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "dandan",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "heru-v",
+              "start": 10,
+              "end": 13,
+              "surface_form": "減って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "財[さい]布[ふ]のお金[かね]がだんだん減[へ]っています。"
+        }
+      ]
     },
     {
       "slug": "n4-kawaru",
@@ -10903,8 +11015,130 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日は朝から忙しくて、本当に大変でした。",
+          "english": "I was busy from the morning, so today was really rough.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "asa",
+            "isogashii",
+            "hontou-ni",
+            "taihen"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "asa",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 6,
+              "end": 10,
+              "surface_form": "忙しくて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "hontou-ni",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 14,
+              "end": 16
+            }
+          ],
+          "furigana": "今日[きょう]は朝[あさ]から忙[いそが]しくて、本[ほん]当[とう]に大[たい]変[へん]でした。"
+        },
+        {
+          "japanese": "駅の前の店がコンビニに変わりました。",
+          "english": "The shop in front of the station has turned into a convenience store.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "eki",
+            "mae",
+            "mise",
+            "konbini",
+            "kawaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eki",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mae",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mise",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "konbini",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kawaru",
+              "start": 11,
+              "end": 17,
+              "surface_form": "変わりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "駅[えき]の前[まえ]の店[みせ]がコンビニに変[か]わりました。"
+        },
+        {
+          "japanese": "雨なので、旅行の予定を変えました。",
+          "english": "It's raining, so we changed our travel plans.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ame-v",
+            "ryokou",
+            "yotei",
+            "kaeru-change"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ame-v",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "yotei",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "kaeru-change",
+              "start": 11,
+              "end": 16,
+              "surface_form": "変えました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "雨[あめ]なので、旅[りょ]行[こう]の予[よ]定[てい]を変[か]えました。"
+        }
+      ]
     },
     {
       "slug": "n4-modoru",
@@ -10978,8 +11212,126 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "reviewed"
-      }
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "昨日、母から手紙が届きました。",
+          "english": "A letter from my mother arrived yesterday.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kinou",
+            "haha",
+            "tegami",
+            "todoku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kinou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "haha",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tegami",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "todoku-v",
+              "start": 9,
+              "end": 14,
+              "surface_form": "届きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "昨日[きのう]、母[はは]から手[て]紙[がみ]が届[とど]きました。"
+        },
+        {
+          "japanese": "この荷物を隣の部屋に届けてください。",
+          "english": "Please take this package to the room next door.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "nimotsu",
+            "tonari",
+            "heya",
+            "todokeru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nimotsu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "tonari",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "todokeru",
+              "start": 10,
+              "end": 13,
+              "surface_form": "届けて",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "この荷[に]物[もつ]を隣[となり]の部屋[へや]に届[とど]けてください。"
+        },
+        {
+          "japanese": "財布を無くしたので、交番に届け出ました。",
+          "english": "I lost my wallet, so I reported it at the police box.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "saifu",
+            "nakusu",
+            "kouban",
+            "todokederu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "saifu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nakusu",
+              "start": 3,
+              "end": 7,
+              "surface_form": "無くした",
+              "inflection": "ta"
+            },
+            {
+              "vocabulary_slug": "kouban",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "todokederu",
+              "start": 13,
+              "end": 19,
+              "surface_form": "届け出ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "財[さい]布[ふ]を無[な]くしたので、交[こう]番[ばん]に届[とど]け出[で]ました。"
+        }
+      ]
     },
     {
       "slug": "n4-hitsuji",
@@ -11016,7 +11368,129 @@
         "generator_model": "opus-5",
         "prompt_version": "4",
         "review_status": "draft"
-      }
+      },
+      "example_sentences": [
+        {
+          "japanese": "あの山に白い羊がたくさんいます。",
+          "english": "There are a lot of white sheep on that mountain.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ano",
+            "yama-v",
+            "shiroi",
+            "hitsuji-anim",
+            "takusan",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "yama-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "shiroi",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "hitsuji-anim",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 8,
+              "end": 12
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 12,
+              "end": 15,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "あの山[やま]に白[しろ]い羊[ひつじ]がたくさんいます。"
+        },
+        {
+          "japanese": "昼ご飯に羊の肉を食べました。",
+          "english": "I had lamb for lunch.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hirugohan",
+            "hitsuji-anim",
+            "niku",
+            "taberu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hirugohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "hitsuji-anim",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "niku",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 8,
+              "end": 13,
+              "surface_form": "食べました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "昼[ひる]ご飯[はん]に羊[ひつじ]の肉[にく]を食[た]べました。"
+        },
+        {
+          "japanese": "羊が道の真ん中に立っています。",
+          "english": "A sheep is standing in the middle of the road.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "hitsuji-anim",
+            "michi-v",
+            "mannaka",
+            "tatsu-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hitsuji-anim",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "michi-v",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "mannaka",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "tatsu-v",
+              "start": 8,
+              "end": 11,
+              "surface_form": "立って",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "羊[ひつじ]が道[みち]の真[ま]ん中[なか]に立[た]っています。"
+        }
+      ]
     }
   ]
 }
