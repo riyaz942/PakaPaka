@@ -2,6 +2,7 @@ import { openDatabaseAsync } from 'expo-sqlite';
 
 import { __mockResetSqlite } from '../../../__mocks__/expo-sqlite';
 
+import { defaultHomeLayout } from '@/core/engagement/homeLayout';
 import { isJlptLevel } from '@/data/curriculum/curriculum.types';
 import { migration001Initial } from '@/data/migrations/001_initial';
 import { runMigrations } from '@/data/migrations/migrationRunner';
@@ -11,6 +12,7 @@ import {
   getAiOpenAiBaseUrl,
   getCloudSttOptIn,
   getFuriganaDisplay,
+  getHomeLayout,
   getOnboardingPath,
   getSeenKanjiReadingPrimer,
   getSessionIntensity,
@@ -30,6 +32,7 @@ import {
   setAiOpenAiBaseUrl,
   setCloudSttOptIn,
   setFuriganaDisplay,
+  setHomeLayout,
   setOnboardingCompleted,
   setOnboardingPath,
   setReducedMotionEnabled,
@@ -598,5 +601,49 @@ describe('preferencesRepository AI model and base URL guards', () => {
     setAiOpenAiBaseUrl(db, '  ');
 
     expect(getAiOpenAiBaseUrl(db)).toBeNull();
+  });
+});
+
+describe('preferencesRepository home layout', () => {
+  beforeEach(() => {
+    __mockResetSqlite();
+  });
+
+  async function createUserDb() {
+    const db = await openDatabaseAsync('user.db');
+    const result = runMigrations(db, [migration001Initial]);
+    expect(result.ok).toBe(true);
+    return db;
+  }
+
+  it('returns the default layout when nothing has been saved', async () => {
+    const db = await createUserDb();
+    expect(getHomeLayout(db)).toEqual(defaultHomeLayout());
+  });
+
+  it('round-trips home_layout as versioned JSON', async () => {
+    const db = await createUserDb();
+
+    const custom = defaultHomeLayout()
+      .slice()
+      .reverse()
+      .map((entry) => (entry.id === 'at-risk' ? { ...entry, visible: false } : entry));
+    setHomeLayout(db, custom);
+
+    expect(getHomeLayout(db)).toEqual(custom);
+    expect(
+      db.getFirstSync<{ value: string }>(
+        'SELECT value FROM user_preferences WHERE key = ?',
+        PREFERENCE_KEYS.homeLayout,
+      )?.value,
+    ).toBe(JSON.stringify({ v: 1, sections: custom }));
+  });
+
+  it('reconciles a corrupt stored value back to the default layout', async () => {
+    const db = await createUserDb();
+
+    setPreference(db, PREFERENCE_KEYS.homeLayout, 'not json at all');
+
+    expect(getHomeLayout(db)).toEqual(defaultHomeLayout());
   });
 });

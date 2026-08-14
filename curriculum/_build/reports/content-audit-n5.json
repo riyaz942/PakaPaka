@@ -2,7 +2,7 @@
   {
     "check": "Review-status rollup",
     "severity": "INFO",
-    "message": "radicals (90 total): reviewed: 90",
+    "message": "radicals (90 total): draft: 14, reviewed: 76",
     "slugs": []
   },
   {
@@ -28,6 +28,32 @@
     "severity": "INFO",
     "message": "readings (10 total): (no _meta field on passages): 10",
     "slugs": []
+  },
+  {
+    "check": "Re-run of existing draft gates on shipped content",
+    "severity": "INFO",
+    "message": "kanji n5-ooi-ta: no example sentences — no taught vocabulary is written with 多, so the generator never queues it",
+    "slugs": [
+      "kanji:n5-ooi-ta",
+      "n5-ooi-ta"
+    ]
+  },
+  {
+    "check": "Re-run of existing draft gates on shipped content",
+    "severity": "INFO",
+    "message": "kanji n5-shi-city: no example sentences — no taught vocabulary is written with 市, so the generator never queues it",
+    "slugs": [
+      "kanji:n5-shi-city",
+      "n5-shi-city"
+    ]
+  },
+  {
+    "check": "Re-run of existing draft gates on shipped content",
+    "severity": "ERROR",
+    "message": "passage[sort_order=7] '赤い箱' (seed jidouhanbaiki): summary_ja is too long (69 chars; keep <= 60)",
+    "slugs": [
+      "passage-n5-7"
+    ]
   },
   {
     "check": "Graph decomposition completeness vs KRADFILE (check 3)",
@@ -151,5 +177,23 @@
     "slugs": [
       "n5-michi"
     ]
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.kanji = 191, actual (all levels on disk) = 192",
+    "slugs": []
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.total_items = 1729, actual (all levels on disk) = 1730",
+    "slugs": []
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.dependency_edges = 1488, actual (all levels on disk) = 1490",
+    "slugs": []
   }
 ]

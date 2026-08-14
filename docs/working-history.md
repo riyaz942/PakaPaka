@@ -15,7 +15,7 @@ Last verified against the codebase: **2026-08-11**
 | --- | ---: | ---: | ---: |
 | Product plans (`docs/feedback/`) | 14 | 1 | 0 |
 | Content plans (`docs/content/`) | 2 | 3 | 0 |
-| Design & platform (`docs/design/`) | 4 | 0 | 1 |
+| Design & platform (`docs/design/`) | 4 | 0 | 2 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
 
 ---
@@ -61,6 +61,7 @@ Last verified against the codebase: **2026-08-11**
 | [Backup/restore + web build](./design/backup-and-web-plan.md) | **In progress** — Part A complete: export is story 9-1 (`done`), restore + backup nudge is 9-2 (`done`). Part B (web learner app) not started |
 | [Web SQLite ATTACH findings](./design/web-sqlite-attach-findings.md) | Done — spike closed, `ATTACH` verified working |
 | [AI reading & community contribution](./design/ai-reading-and-community-contribution-design-note.md) | Done — design note only, no app work by intent |
+| [Customizable Home screen](./design/customizable-home-screen-plan.md) | **In progress** — step 1 (settings route restructure) done; steps 2–7 remaining |
 
 ## BMAD stories — `_bmad-output/implementation-artifacts/`
 

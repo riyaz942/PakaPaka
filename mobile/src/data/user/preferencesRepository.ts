@@ -1,5 +1,10 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
+import {
+  reconcileHomeLayout,
+  serializeHomeLayout,
+  type HomeSectionEntry,
+} from '@/core/engagement/homeLayout';
 import { isAllowedOpenAiBaseUrl } from '@/data/ai/byokCredential.types';
 import type { CurriculumUpdateSource } from '@/data/curriculum/curriculumManifest.types';
 import { isJlptLevel, type JLPTLevel } from '@/data/curriculum/curriculum.types';
@@ -40,6 +45,7 @@ export const PREFERENCE_KEYS = {
   cloudSttOptIn: 'cloud_stt_opt_in',
   wordTranslateOptIn: 'word_translate_opt_in',
   lastBackedUpAt: 'last_backed_up_at',
+  homeLayout: 'home_layout',
 } as const;
 
 const ONBOARDING_PATHS: readonly OnboardingPath[] = ['beginner', 'manual', 'import'];
@@ -377,6 +383,18 @@ export function getLastBackedUpAt(userDb: SQLiteDatabase): string | null {
 
 export function setLastBackedUpAt(userDb: SQLiteDatabase, iso: string): void {
   setPreference(userDb, PREFERENCE_KEYS.lastBackedUpAt, iso);
+}
+
+/**
+ * Which Home sections show and in what order. Always reconciled against the
+ * catalog, so callers get a renderable layout even with no row stored yet.
+ */
+export function getHomeLayout(userDb: SQLiteDatabase): HomeSectionEntry[] {
+  return reconcileHomeLayout(getPreference(userDb, PREFERENCE_KEYS.homeLayout));
+}
+
+export function setHomeLayout(userDb: SQLiteDatabase, entries: HomeSectionEntry[]): void {
+  setPreference(userDb, PREFERENCE_KEYS.homeLayout, serializeHomeLayout(entries));
 }
 
 export function setCurriculumInstallMetadata(

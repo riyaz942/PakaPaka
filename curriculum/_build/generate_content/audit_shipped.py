@@ -47,6 +47,7 @@ import audit_facts  # noqa: E402
 from generate_content import (  # noqa: E402
     check_cloze,
     context,
+    example_context,
     mnemonic_context,
     reading_context,
     reading_seeds,
@@ -334,13 +335,27 @@ def rerun_mnemonic_gates(level):
 
 
 def rerun_example_gates(level):
-    """Plan check 2: `validate_examples` re-run on shipped kanji/vocab."""
+    """Plan check 2: `validate_examples` re-run on shipped kanji/vocab.
+
+    Kanji the generator never queues — no in-scope vocabulary word is written
+    with the character, so `example_context.all_slugs` skips them — are graded
+    INFO, not ERROR. Their examples are absent by design ("no examples beat
+    wrong ones"); the remedy is adding vocabulary that uses the kanji, not
+    generating usage for a character nothing taught demonstrates.
+    """
     results = []
     for kind, dirname in (("kanji", "kanji"), ("vocab", "vocabulary")):
+        queued = set(example_context.all_slugs(level, kind))
         for item in context.load_items(dirname, level):
-            errors = validate_examples.validate_draft(level, kind, item["slug"], item)
+            slug = item["slug"]
+            if kind == "kanji" and slug not in queued and not item.get("example_sentences"):
+                results.append(("INFO", f"{kind} {slug}: no example sentences — no taught "
+                                        f"vocabulary is written with {item['primary_form']}, "
+                                        f"so the generator never queues it"))
+                continue
+            errors = validate_examples.validate_draft(level, kind, slug, item)
             for e in errors:
-                results.append(("ERROR", f"{kind} {item['slug']}: {e}"))
+                results.append(("ERROR", f"{kind} {slug}: {e}"))
     return results
 
 

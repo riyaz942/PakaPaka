@@ -4,7 +4,7 @@ import { Appearance } from 'react-native';
 import { GUIDANCE_CARDS } from '@/components/onboarding/cardRegistry';
 import { cancelAllNotifications, scheduleReviewReminder } from '@/config/notifications';
 
-import SettingsScreen from './settings';
+import SettingsScreen from './index';
 
 const mockSetReducedMotion = jest.fn();
 const mockSetThemeMode = jest.fn();

@@ -8,7 +8,7 @@
   {
     "check": "Review-status rollup",
     "severity": "INFO",
-    "message": "kanji (85 total): draft: 85",
+    "message": "kanji (86 total): draft: 83, reviewed: 3",
     "slugs": []
   },
   {
@@ -8495,359 +8495,8 @@
   },
   {
     "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kai: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kai",
-      "n4-kai"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-dou: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-dou",
-      "n4-dou"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-koto: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-koto",
-      "n4-koto"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ji-self: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ji-self",
-      "n4-ji-self"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-sha: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-sha",
-      "n4-sha"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hatsu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hatsu",
-      "n4-hatsu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-mono: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-mono",
-      "n4-mono"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-chi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-chi",
-      "n4-chi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-gyou: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-gyou",
-      "n4-gyou"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hou: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hou",
-      "n4-hou"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ba: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ba",
-      "n4-ba"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-tokoro: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-tokoro",
-      "n4-tokoro"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shin-heart: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shin-heart",
-      "n4-shin-heart"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-mise: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-mise",
-      "n4-mise"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ie-kanji: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ie-kanji",
-      "n4-ie-kanji"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shitsu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shitsu",
-      "n4-shitsu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-zu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-zu",
-      "n4-zu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shi-try: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shi-try",
-      "n4-shi-try"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ken-exam: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ken-exam",
-      "n4-ken-exam"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kyou-teach: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kyou-teach",
-      "n4-kyou-teach"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-omou: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-omou",
-      "n4-omou"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hiku: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hiku",
-      "n4-hiku"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-uta: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-uta",
-      "n4-uta"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-motsu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-motsu",
-      "n4-motsu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-tsukau: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-tsukau",
-      "n4-tsukau"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hataraku: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hataraku",
-      "n4-hataraku"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kariru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kariru",
-      "n4-kariru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kasu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kasu",
-      "n4-kasu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shiru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shiru",
-      "n4-shiru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hajimeru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hajimeru",
-      "n4-hajimeru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-owaru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-owaru",
-      "n4-owaru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-isogu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-isogu",
-      "n4-isogu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hashiru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hashiru",
-      "n4-hashiru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-tobu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-tobu",
-      "n4-tobu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-arau: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-arau",
-      "n4-arau"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shinu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shinu",
-      "n4-shinu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-asobu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-asobu",
-      "n4-asobu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kiru-wear: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kiru-wear",
-      "n4-kiru-wear"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-chigau: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-chigau",
-      "n4-chigau"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-atsumeru: missing or empty field example_sentences",
+    "severity": "INFO",
+    "message": "kanji n4-atsumeru: no example sentences — no taught vocabulary is written with 集, so the generator never queues it",
     "slugs": [
       "kanji:n4-atsumeru",
       "n4-atsumeru"
@@ -8855,341 +8504,8 @@
   },
   {
     "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-betsu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-betsu",
-      "n4-betsu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shu-main: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shu-main",
-      "n4-shu-main"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ani: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ani",
-      "n4-ani"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-otouto: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-otouto",
-      "n4-otouto"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ane: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ane",
-      "n4-ane"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-imouto: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-imouto",
-      "n4-imouto"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-oya: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-oya",
-      "n4-oya"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-iro: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-iro",
-      "n4-iro"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-aji: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-aji",
-      "n4-aji"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-suki: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-suki",
-      "n4-suki"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-warui: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-warui",
-      "n4-warui"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-futoi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-futoi",
-      "n4-futoi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hosoi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hosoi",
-      "n4-hosoi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-karui: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-karui",
-      "n4-karui"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-omoi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-omoi",
-      "n4-omoi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-yowai: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-yowai",
-      "n4-yowai"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-tsuyoi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-tsuyoi",
-      "n4-tsuyoi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kurai: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kurai",
-      "n4-kurai"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-akarui: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-akarui",
-      "n4-akarui"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hiroi: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hiroi",
-      "n4-hiroi"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kimeru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kimeru",
-      "n4-kimeru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kangaeru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kangaeru",
-      "n4-kangaeru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shiraberu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shiraberu",
-      "n4-shiraberu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-narau: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-narau",
-      "n4-narau"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-oboeru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-oboeru",
-      "n4-oboeru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-wasureru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-wasureru",
-      "n4-wasureru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hakobu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hakobu",
-      "n4-hakobu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-okuru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-okuru",
-      "n4-okuru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-shitsu-quality: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-shitsu-quality",
-      "n4-shitsu-quality"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kotae: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kotae",
-      "n4-kotae"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-zoku: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-zoku",
-      "n4-zoku"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ryou-fee: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ryou-fee",
-      "n4-ryou-fee"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-ri: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-ri",
-      "n4-ri"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-hitsu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-hitsu",
-      "n4-hitsu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-you-need: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-you-need",
-      "n4-you-need"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kei-pass: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kei-pass",
-      "n4-kei-pass"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-tsuzukeru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-tsuzukeru",
-      "n4-tsuzukeru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kuraberu: missing or empty field example_sentences",
+    "severity": "INFO",
+    "message": "kanji n4-kuraberu: no example sentences — no taught vocabulary is written with 比, so the generator never queues it",
     "slugs": [
       "kanji:n4-kuraberu",
       "n4-kuraberu"
@@ -9197,65 +8513,11 @@
   },
   {
     "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-erabu: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-erabu",
-      "n4-erabu"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-nokoru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-nokoru",
-      "n4-nokoru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-fueru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-fueru",
-      "n4-fueru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-heru-decrease: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-heru-decrease",
-      "n4-heru-decrease"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-kawaru: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-kawaru",
-      "n4-kawaru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-modoru: missing or empty field example_sentences",
+    "severity": "INFO",
+    "message": "kanji n4-modoru: no example sentences — no taught vocabulary is written with 戻, so the generator never queues it",
     "slugs": [
       "kanji:n4-modoru",
       "n4-modoru"
-    ]
-  },
-  {
-    "check": "Re-run of existing draft gates on shipped content",
-    "severity": "ERROR",
-    "message": "kanji n4-todoku: missing or empty field example_sentences",
-    "slugs": [
-      "kanji:n4-todoku",
-      "n4-todoku"
     ]
   },
   {
@@ -14092,6 +13354,24 @@
   },
   {
     "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "WARNING",
+    "message": "n4-hitsuji (羊): KRADFILE lists 王 (ou-king) as a component but no builds_on edge exists; add the edge or record it in DECOMPOSITION_EXCEPTIONS with a reason",
+    "slugs": [
+      "n4-hitsuji",
+      "ou-king"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
+    "severity": "WARNING",
+    "message": "n4-hitsuji (羊): KRADFILE lists 八 (hachigashira) as a component but no builds_on edge exists; add the edge or record it in DECOMPOSITION_EXCEPTIONS with a reason",
+    "slugs": [
+      "hachigashira",
+      "n4-hitsuji"
+    ]
+  },
+  {
+    "check": "Graph decomposition completeness vs KRADFILE (check 3)",
     "severity": "INFO",
     "message": "｜: KRADFILE component of 10 taught kanji is taught nowhere, as neither radical nor kanji — n4-aji (味), n4-erabu (選), n4-gyou (業), n4-hataraku (働), n4-hiku (引), n4-imouto (妹), n4-omoi (重), n4-otouto (弟) …",
     "slugs": [
@@ -14335,6 +13615,24 @@
       "n4-youni-suru",
       "passage-n4-9"
     ]
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.kanji = 191, actual (all levels on disk) = 192",
+    "slugs": []
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.total_items = 1729, actual (all levels on disk) = 1730",
+    "slugs": []
+  },
+  {
+    "check": "Corpus hygiene (check 8, corpus-wide)",
+    "severity": "ERROR",
+    "message": "metadata.json content_counts.dependency_edges = 1488, actual (all levels on disk) = 1490",
+    "slugs": []
   },
   {
     "check": "Span re-derivation diff (check 10)",
