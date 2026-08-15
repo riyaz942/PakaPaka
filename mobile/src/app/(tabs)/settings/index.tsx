@@ -12,6 +12,7 @@ import {
 import { Button } from '@/components/common/Button';
 import { ChoiceCard } from '@/components/common/ChoiceCard';
 import { ExplainerSheet } from '@/components/common/ExplainerSheet';
+import { Icon } from '@/components/common/Icon';
 import { ScreenTitle } from '@/components/common/ScreenTitle';
 import { SectionHeading } from '@/components/common/SectionHeading';
 import { SegmentedPill, type SegmentedPillOption } from '@/components/common/SegmentedPill';
@@ -739,6 +740,21 @@ export default function SettingsScreen() {
         ) : null}
 
         <ByokSettingsSection />
+
+        <View className="mt-space-lg">
+          <SectionHeading label="Home screen" />
+          <SettingsCard>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Customize Home"
+              onPress={() => router.push('/settings/home-layout')}
+              testID="settings-customize-home"
+              className="min-h-[44px] flex-row items-center justify-between py-space-sm">
+              <Text className="text-body font-ui-medium text-primary">Customize Home</Text>
+              <Icon name="chevron" size={18} strokeWidth={2.2} className="text-faint" />
+            </Pressable>
+          </SettingsCard>
+        </View>
 
         {/* The whole registry, in registry order, deck cards included — the
             library is how the day-1 deck stays reachable after onboarding.

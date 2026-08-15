@@ -45,6 +45,16 @@ jest.mock('@/data/hooks/useDatabase', () => ({
   useDatabase: () => ({ userDb: mockUserDb }),
 }));
 
+const mockPush = jest.fn();
+const mockReplace = jest.fn();
+
+jest.mock('expo-router', () => ({
+  router: {
+    push: (...args: unknown[]) => mockPush(...args),
+    replace: (...args: unknown[]) => mockReplace(...args),
+  },
+}));
+
 /** In-memory stand-in for the `card_seen` table (Epic 7). */
 const mockSeenGuidanceCards = new Set<string>();
 
@@ -943,5 +953,17 @@ describe('SettingsScreen backup nudge and restore (Story 9.2, AC1/AC2/AC3/AC6)',
 
     expect(screen.queryByTestId('restore-preview-card')).toBeNull();
     expect(mockRestoreBackup).not.toHaveBeenCalled();
+  });
+});
+
+describe('SettingsScreen — Home screen section', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('navigates to the Home customizer', () => {
+    render(<SettingsScreen />);
+    fireEvent.press(screen.getByTestId('settings-customize-home'));
+    expect(mockPush).toHaveBeenCalledWith('/settings/home-layout');
   });
 });

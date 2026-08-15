@@ -40,7 +40,10 @@ export type IconName =
   | 'chevron'
   | 'device'
   | 'image'
-  | 'offline';
+  | 'offline'
+  | 'grip'
+  | 'eye'
+  | 'eyeOff';
 
 /** Paths are lifted verbatim from the spec's Iconography grid. */
 const ICON_PATHS: Record<IconName, React.ReactNode> = {
@@ -154,6 +157,28 @@ const ICON_PATHS: Record<IconName, React.ReactNode> = {
   offline: (
     <>
       <Path d="M6.5 16.5h11a4 4 0 0 0 .4-8 5.5 5.5 0 0 0-10.3-1.6A3.8 3.8 0 0 0 6.5 16.5Z" />
+      <Path d="M4 4l16 16" />
+    </>
+  ),
+  grip: (
+    <>
+      <Circle cx={9} cy={6} r={1.2} fill="currentColor" />
+      <Circle cx={15} cy={6} r={1.2} fill="currentColor" />
+      <Circle cx={9} cy={12} r={1.2} fill="currentColor" />
+      <Circle cx={15} cy={12} r={1.2} fill="currentColor" />
+      <Circle cx={9} cy={18} r={1.2} fill="currentColor" />
+      <Circle cx={15} cy={18} r={1.2} fill="currentColor" />
+    </>
+  ),
+  eye: (
+    <>
+      <Path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+      <Circle cx={12} cy={12} r={3} />
+    </>
+  ),
+  eyeOff: (
+    <>
+      <Path d="M4.7 6.7C3 8.3 2.5 12 2.5 12S6 18.5 12 18.5c1.6 0 3-.4 4.2-1M9.5 9.5a3 3 0 0 0 4.2 4.2M14.5 6.2c3.7 1 7 5.8 7 5.8s-.9 1.5-2.4 3" />
       <Path d="M4 4l16 16" />
     </>
   ),

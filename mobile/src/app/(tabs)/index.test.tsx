@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 
 import HomeScreen from './index';
 
+import { serializeHomeLayout } from '@/core/engagement/homeLayout';
 import { clearReviewPriority, getReviewPriority } from '@/data/reviewPriorityStore';
 
 const mockRouterPush = jest.fn();
@@ -133,12 +134,21 @@ jest.mock('@/data/hooks/useLevelProgress', () => ({
 
 let mockOnboardingCompleted = true;
 
+// Raw stored value, same shape as the `home_layout` preference row. Routed
+// through the real reconciler so tests exercise the actual required-section
+// and ordering guarantees, not a re-implementation of them.
+let mockHomeLayoutStored: string | null = null;
+
 jest.mock('@/data/user/preferencesRepository', () => ({
   getStartingJlptLevel: () => 'N5',
   getReducedMotionEnabled: () => null,
   setReducedMotionEnabled: jest.fn(),
   isOnboardingCompleted: () => mockOnboardingCompleted,
   getLastBackedUpAt: () => mockLastBackedUpAt,
+  getHomeLayout: () => {
+    const { reconcileHomeLayout } = jest.requireActual('@/core/engagement/homeLayout');
+    return reconcileHomeLayout(mockHomeLayoutStored);
+  },
 }));
 
 let mockLastBackedUpAt: string | null = null;
@@ -237,6 +247,7 @@ describe('HomeScreen', () => {
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
     mockLastBackedUpAt = null;
+    mockHomeLayoutStored = null;
     setPlatform('ios');
     mockOnVacation = false;
     mockLoadPercent = 42;
@@ -602,6 +613,7 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
     mockImportCount = 1;
     mockShowCurriculumBanner = false;
     mockLastBackedUpAt = null;
+    mockHomeLayoutStored = null;
     setPlatform('ios');
     mockOnVacation = false;
     mockVacationReadThrows = false;
@@ -747,5 +759,108 @@ describe('HomeScreen — goal overshoot guidance (Epic 7)', () => {
       expect(screen.getByTestId('welcome-back-card')).toBeTruthy();
       expect(screen.queryByTestId('backup-nudge-card')).toBeNull();
     });
+  });
+});
+
+describe('HomeScreen — customizable layout (Step 4)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockCountServableDueItems.mockReturnValue(2);
+    mockShouldShowSwitchPrompt = false;
+    mockShadowModeDaysActive = 0;
+    mockPendingRiseTo = null;
+    mockPendingReductionTo = null;
+    mockGreetingSentence = null;
+    mockForecast = null;
+    mockReadingTarget = null;
+    mockAtRisk = { totalCount: 0, topItems: [], allItems: [], rankedItemIds: [] };
+    mockOnboardingCompleted = true;
+    mockLastActiveDate = null;
+    mockImportCount = 1;
+    mockShowCurriculumBanner = false;
+    mockLastBackedUpAt = null;
+    mockHomeLayoutStored = null;
+    setPlatform('ios');
+    mockOnVacation = false;
+    mockVacationReadThrows = false;
+    mockLoadPercent = 42;
+    mockIsOvershoot = false;
+    mockSeenGuidanceCards.clear();
+    clearReviewPriority();
+  });
+
+  it('renders a stored non-default order in that order', () => {
+    mockAtRisk = {
+      totalCount: 3,
+      topItems: [
+        { itemId: '5', primaryForm: '食べる', meaning: 'to eat', itemType: 'vocabulary' },
+      ],
+      allItems: [
+        { itemId: '5', primaryForm: '食べる', meaning: 'to eat', itemType: 'vocabulary' },
+      ],
+      rankedItemIds: ['5'],
+    };
+    mockReadingTarget = {
+      passageId: '7',
+      title: '自己紹介',
+      itemsRemainingToUnlock: 4,
+      coverage: 0.55,
+      noProgressYet: false,
+    };
+    mockHomeLayoutStored = serializeHomeLayout([
+      { id: 'at-risk', visible: true },
+      { id: 'review-cta', visible: true },
+      { id: 'lesson-cta', visible: true },
+      { id: 'reading-readiness', visible: true },
+      { id: 'level-progress', visible: true },
+      { id: 'review-forecast', visible: true },
+      { id: 'goal-ring', visible: true },
+    ]);
+
+    render(<HomeScreen />);
+
+    const markers = [
+      'at-risk-section',
+      'home-review-button',
+      'home-learn-button',
+      'reading-readiness',
+      'N5 Progress',
+      'review-forecast',
+      'Goal 42 percent',
+    ];
+    const dump = JSON.stringify(screen.toJSON());
+    const positions = markers.map((marker) => dump.indexOf(marker));
+    expect(positions.every((position) => position >= 0)).toBe(true);
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+  });
+
+  it('omits a section the stored layout marks hidden', () => {
+    mockHomeLayoutStored = serializeHomeLayout([
+      { id: 'goal-ring', visible: true },
+      { id: 'review-cta', visible: true },
+      { id: 'lesson-cta', visible: true },
+      { id: 'level-progress', visible: true },
+      { id: 'review-forecast', visible: false },
+      { id: 'reading-readiness', visible: true },
+      { id: 'at-risk', visible: true },
+    ]);
+
+    render(<HomeScreen />);
+
+    expect(screen.queryByTestId('review-forecast')).toBeNull();
+    // The rest of the default layout is unaffected by hiding one section.
+    expect(screen.getByTestId('home-review-button')).toBeTruthy();
+    expect(screen.getByLabelText('Goal 42 percent')).toBeTruthy();
+  });
+
+  it('still renders the required CTAs even when the stored layout drops them', () => {
+    // Simulates a corrupted or hand-edited stored value that omits the two
+    // required sections entirely — the reconciler must restore them.
+    mockHomeLayoutStored = serializeHomeLayout([{ id: 'at-risk', visible: true }]);
+
+    render(<HomeScreen />);
+
+    expect(screen.getByTestId('home-review-button')).toBeTruthy();
+    expect(screen.getByTestId('home-learn-button')).toBeTruthy();
   });
 });

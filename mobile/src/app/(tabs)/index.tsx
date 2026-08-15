@@ -24,6 +24,11 @@ import {
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { MaxContentWidth } from '@/constants/theme';
 import {
+  defaultHomeLayout,
+  type HomeSectionEntry,
+  type HomeSectionId,
+} from '@/core/engagement/homeLayout';
+import {
   computeDailyAllowance,
   type DailyAllowance,
 } from '@/core/lesson/lessonAllowance';
@@ -38,6 +43,7 @@ import { useShadowMode } from '@/data/hooks/useShadowMode';
 import { getGreetingSentence } from '@/data/curriculum/greetingRepository';
 import { getLessonItemsStartedOn } from '@/data/user/lessonProgressRepository';
 import {
+  getHomeLayout,
   getLastBackedUpAt,
   getSessionIntensity,
   getStartingJlptLevel,
@@ -75,6 +81,7 @@ export default function HomeScreen() {
   const [backupNudgeDismissed, setBackupNudgeDismissed] = useState(false);
   const [lastBackedUpAt, setLastBackedUpAt] = useState<string | null>(null);
   const [onVacation, setOnVacation] = useState(false);
+  const [layout, setLayout] = useState<HomeSectionEntry[]>(defaultHomeLayout());
   // `onVacation` defaults to false and only becomes true once the focus effect
   // has read it. The overshoot card must wait for that answer — firing on the
   // default would mark it seen for a learner who is actually paused.
@@ -204,6 +211,11 @@ export default function HomeScreen() {
       } catch {
         setGreetingSentence(null);
       }
+      try {
+        setLayout(getHomeLayout(userDb));
+      } catch {
+        setLayout(defaultHomeLayout());
+      }
       // Vacation mode freezes everything: skip the due and allowance reads so
       // the paused surface can't quote a backlog that is still growing behind
       // it, and so nothing here re-enables the disabled CTAs.
@@ -281,6 +293,113 @@ export default function HomeScreen() {
 
   const isLoading = loadLoading || progressLoading || dueCountLoading;
 
+  // One switch per customizable section id — the learner's stored order and
+  // visibility decide *whether/where* this renders; the conditions below are
+  // unchanged from before customization existed and still have final say.
+  function renderHomeSection(id: HomeSectionId) {
+    switch (id) {
+      case 'goal-ring':
+        // The vacation card (pinned, not part of the layout) already covers
+        // this slot when paused.
+        return onVacation ? null : (
+          <View className="items-center rounded-radius-xl bg-surface p-space-md shadow-e2">
+            <GoalRing variant="hero" percent={cognitiveLoadPercent} />
+            <View className="mt-space-sm flex-row items-center gap-space-xs">
+              <Text className="text-body font-ui-extrabold text-primary">
+                Today&apos;s goal
+              </Text>
+              <GuidanceInfoButton cardId="goal-overshoot" />
+            </View>
+            <Text className="mt-space-xs text-center text-caption font-ui text-muted">
+              Something to beat — going past 100% is the good part
+            </Text>
+          </View>
+        );
+      case 'review-cta':
+        return (
+          <ActionCard
+            title={onVacation ? 'Review' : dueCount > 0 ? 'Review' : 'All caught up'}
+            subtitle={
+              onVacation
+                ? 'Paused for vacation'
+                : dueCountLoading
+                  ? 'Checking what’s due…'
+                  : dueCount > 0
+                    ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
+                    : 'No reviews due — nice work'
+            }
+            glyph="復"
+            accent={!onVacation}
+            onPress={() => router.push('/review')}
+            disabled={onVacation || dueCountLoading || dueCount === 0}
+            accessibilityLabel={
+              onVacation
+                ? 'Reviews paused for vacation mode'
+                : dueCountLoading
+                  ? 'Checking reviews due'
+                  : dueCount > 0
+                    ? `Review ${dueCount} items due`
+                    : 'All caught up, no reviews due'
+            }
+            testID="home-review-button"
+          />
+        );
+      case 'lesson-cta':
+        return (
+          <ActionCard
+            title="Today's lesson"
+            subtitle={
+              onVacation
+                ? 'Paused for vacation'
+                : lessonAllowance === null
+                  ? 'A guided lesson picked for you'
+                  : lessonAllowance.remaining > 0
+                    ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
+                    : "You've learned enough today. Come back tomorrow, or clear some reviews."
+            }
+            glyph="学"
+            disabled={onVacation}
+            muted={!onVacation && lessonAllowance !== null && lessonAllowance.remaining === 0}
+            onPress={() => router.push('/lesson')}
+            accessibilityLabel={
+              onVacation
+                ? 'Lessons paused for vacation mode'
+                : lessonAllowance !== null && lessonAllowance.remaining === 0
+                  ? 'Daily lesson limit reached'
+                  : "Start today's lesson"
+            }
+            testID="home-learn-button"
+          />
+        );
+      case 'level-progress':
+        return level ? (
+          <LevelProgressBar level={level} perType={perType} overallPercent={overallPercent} />
+        ) : null;
+      case 'review-forecast':
+        return !onVacation ? (
+          <ReviewForecast forecast={forecast ?? buildReviewForecast([])} />
+        ) : null;
+      case 'reading-readiness':
+        return readingTarget ? (
+          <ReadingReadiness
+            target={readingTarget}
+            onPress={() => router.push(`/browse/passage/${readingTarget.passageId}`)}
+          />
+        ) : null;
+      case 'at-risk':
+        return !onVacation && atRiskCount > 0 ? (
+          <AtRiskSection
+            totalCount={atRiskCount}
+            topItems={atRiskTopItems}
+            allItems={atRiskAllItems}
+            onStartRevision={handleStartRevision}
+          />
+        ) : null;
+      default:
+        return null;
+    }
+  }
+
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView
@@ -312,9 +431,12 @@ export default function HomeScreen() {
 
           {/* Vacation mode takes the hero slot outright rather than dimming the
               ring: a paused goal has nothing honest to show, and a rest that
-              looks like a failed day defeats the point of taking one. */}
-          <FadeSlideIn index={1}>
-            {onVacation ? (
+              looks like a failed day defeats the point of taking one. Pinned —
+              not part of the customizable layout — so it still shows even if
+              the learner has hidden goal-ring, since it carries the "turn off
+              vacation mode" link. */}
+          {onVacation ? (
+            <FadeSlideIn index={1}>
               <View
                 className="items-center rounded-radius-xl bg-surface px-space-md py-space-xl shadow-e2"
                 testID="home-vacation-card">
@@ -336,21 +458,8 @@ export default function HomeScreen() {
                   Turn off vacation mode
                 </Text>
               </View>
-            ) : (
-              <View className="items-center rounded-radius-xl bg-surface p-space-md shadow-e2">
-                <GoalRing variant="hero" percent={cognitiveLoadPercent} />
-                <View className="mt-space-sm flex-row items-center gap-space-xs">
-                  <Text className="text-body font-ui-extrabold text-primary">
-                    Today&apos;s goal
-                  </Text>
-                  <GuidanceInfoButton cardId="goal-overshoot" />
-                </View>
-                <Text className="mt-space-xs text-center text-caption font-ui text-muted">
-                  Something to beat — going past 100% is the good part
-                </Text>
-              </View>
-            )}
-          </FadeSlideIn>
+            </FadeSlideIn>
+          ) : null}
 
           {goalOvershootCard.visible ? (
             <GuidanceCardNotice
@@ -445,94 +554,20 @@ export default function HomeScreen() {
             </FadeSlideIn>
           ) : null}
 
-          {/* UX-DR3: Review is the primary CTA and sits first; the
-              reviews-ready count lives here only — never on a tab badge. */}
-          <FadeSlideIn index={2}>
-            <ActionCard
-              title={onVacation ? 'Review' : dueCount > 0 ? 'Review' : 'All caught up'}
-              subtitle={
-                onVacation
-                  ? 'Paused for vacation'
-                  : dueCountLoading
-                    ? 'Checking what’s due…'
-                    : dueCount > 0
-                      ? `${dueCount} ${dueCount === 1 ? 'item' : 'items'} ready`
-                      : 'No reviews due — nice work'
-              }
-              glyph="復"
-              accent={!onVacation}
-              onPress={() => router.push('/review')}
-              disabled={onVacation || dueCountLoading || dueCount === 0}
-              accessibilityLabel={
-                onVacation
-                  ? 'Reviews paused for vacation mode'
-                  : dueCountLoading
-                    ? 'Checking reviews due'
-                    : dueCount > 0
-                      ? `Review ${dueCount} items due`
-                      : 'All caught up, no reviews due'
-              }
-              testID="home-review-button"
-            />
-          </FadeSlideIn>
-          <FadeSlideIn index={3}>
-            <ActionCard
-              title="Today's lesson"
-              subtitle={
-                onVacation
-                  ? 'Paused for vacation'
-                  : lessonAllowance === null
-                    ? 'A guided lesson picked for you'
-                    : lessonAllowance.remaining > 0
-                      ? `${lessonAllowance.remaining} of ${lessonAllowance.total} lesson items remaining today`
-                      : "You've learned enough today. Come back tomorrow, or clear some reviews."
-              }
-              glyph="学"
-              disabled={onVacation}
-              muted={!onVacation && lessonAllowance !== null && lessonAllowance.remaining === 0}
-              onPress={() => router.push('/lesson')}
-              accessibilityLabel={
-                onVacation
-                  ? 'Lessons paused for vacation mode'
-                  : lessonAllowance !== null && lessonAllowance.remaining === 0
-                    ? 'Daily lesson limit reached'
-                    : "Start today's lesson"
-              }
-              testID="home-learn-button"
-            />
-          </FadeSlideIn>
-          {level ? (
-            <FadeSlideIn index={4}>
-              <LevelProgressBar
-                level={level}
-                perType={perType}
-                overallPercent={overallPercent}
-              />
-            </FadeSlideIn>
-          ) : null}
-          {!onVacation ? (
-            <FadeSlideIn index={5}>
-              <ReviewForecast forecast={forecast ?? buildReviewForecast([])} />
-            </FadeSlideIn>
-          ) : null}
-          {readingTarget ? (
-            <FadeSlideIn index={6}>
-              <ReadingReadiness
-                target={readingTarget}
-                onPress={() => router.push(`/browse/passage/${readingTarget.passageId}`)}
-              />
-            </FadeSlideIn>
-          ) : null}
-          {!onVacation && atRiskCount > 0 ? (
-            <FadeSlideIn index={7}>
-              <AtRiskSection
-                totalCount={atRiskCount}
-                topItems={atRiskTopItems}
-                allItems={atRiskAllItems}
-                onStartRevision={handleStartRevision}
-              />
-            </FadeSlideIn>
-          ) : null}
+          {/* UX-DR3: Review is the primary CTA and sits first by default; the
+              reviews-ready count lives here only — never on a tab badge.
+              Order and visibility below come from the stored layout — see
+              renderHomeSection. */}
+          {layout.map((entry, i) => {
+            if (!entry.visible) return null;
+            const content = renderHomeSection(entry.id);
+            if (content === null) return null;
+            return (
+              <FadeSlideIn key={entry.id} index={i}>
+                {content}
+              </FadeSlideIn>
+            );
+          })}
         </ScrollView>
       </SafeAreaView>
     </View>
