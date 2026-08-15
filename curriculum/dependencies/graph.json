@@ -4315,6 +4315,13 @@
     {
       "from_slug": "n5-bun-minute",
       "from_type": "kanji",
+      "to_slug": "tabun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-bun-minute",
+      "from_type": "kanji",
       "to_slug": "juubun",
       "to_type": "vocabulary",
       "relationship_type": "requires"
@@ -5384,6 +5391,20 @@
       "relationship_type": "requires"
     },
     {
+      "from_slug": "n5-ooi-ta",
+      "from_type": "kanji",
+      "to_slug": "ooi",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-ooi-ta",
+      "from_type": "kanji",
+      "to_slug": "tabun",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
       "from_slug": "n5-sukunai",
       "from_type": "kanji",
       "to_slug": "sukoshi",
@@ -5569,6 +5590,13 @@
       "from_slug": "n5-machi",
       "from_type": "kanji",
       "to_slug": "machi-v",
+      "to_type": "vocabulary",
+      "relationship_type": "requires"
+    },
+    {
+      "from_slug": "n5-shi-city",
+      "from_type": "kanji",
+      "to_slug": "shi-city",
       "to_type": "vocabulary",
       "relationship_type": "requires"
     },

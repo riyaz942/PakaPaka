@@ -2856,6 +2856,47 @@
       "review_status": "reviewed"
     }
   },
+  "n5-ooi-ta": {
+    "example_sentences": [
+      {
+        "japanese": "夏はこの公園に人が多いです。",
+        "english": "This park gets crowded in the summer.",
+        "vocabulary_slugs": [
+          "natsu",
+          "kono",
+          "kouen",
+          "hito",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "彼は多分今日会社を休みます。",
+        "english": "He's probably taking the day off work today.",
+        "vocabulary_slugs": [
+          "kare",
+          "tabun",
+          "kyou",
+          "kaisha",
+          "yasumu"
+        ]
+      },
+      {
+        "japanese": "今週は宿題が多くて大変です。",
+        "english": "There's so much homework this week that it's rough.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "shukudai",
+          "ooi",
+          "taihen"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "n5-otoko": {
     "example_sentences": [
       {
@@ -3117,6 +3158,47 @@
       "generator_model": "cursor-grok-4.5-high",
       "prompt_version": "1",
       "review_status": "reviewed"
+    }
+  },
+  "n5-shi-city": {
+    "example_sentences": [
+      {
+        "japanese": "私は去年からこの市に住んでいます。",
+        "english": "I've been living in this city since last year.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyonen",
+          "kono",
+          "shi-city",
+          "sumu"
+        ]
+      },
+      {
+        "japanese": "市の図書館は駅の隣にあります。",
+        "english": "The city library is right next to the station.",
+        "vocabulary_slugs": [
+          "shi-city",
+          "toshokan",
+          "eki",
+          "tonari",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "週末に市の公園を散歩しました。",
+        "english": "I took a walk through the city park over the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "shi-city",
+          "kouen",
+          "sanpo-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
     }
   },
   "n5-shiro-white": {

@@ -17891,6 +17891,44 @@
       "review_status": "draft"
     }
   },
+  "ooi": {
+    "example_sentences": [
+      {
+        "japanese": "週末は公園に子供が多いです。",
+        "english": "On weekends there are a lot of kids at the park.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "kouen",
+          "kodomo-v",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "去年は雪が多かった。",
+        "english": "We got a lot of snow last year.",
+        "vocabulary_slugs": [
+          "kyonen",
+          "yuki",
+          "ooi"
+        ]
+      },
+      {
+        "japanese": "私の家族は兄弟が多いです。",
+        "english": "I have a lot of siblings in my family.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kazoku",
+          "kyoudai",
+          "ooi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "ookii": {
     "example_sentences": [
       {
@@ -20315,6 +20353,49 @@
       "review_status": "draft"
     }
   },
+  "shi-city": {
+    "example_sentences": [
+      {
+        "japanese": "私はこの市の図書館で本を読みます。",
+        "english": "I read books at this city's library.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kono",
+          "shi-city",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "週末に友達と市の公園で遊びます。",
+        "english": "On the weekend I hang out with a friend at the city park.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "tomodachi",
+          "shi-city",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "先月、家族とあの市へ行きました。",
+        "english": "Last month I went to that city with my family.",
+        "vocabulary_slugs": [
+          "sengetsu",
+          "kazoku",
+          "ano",
+          "shi-city",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
   "shi-num": {
     "example_sentences": [
       {
@@ -22434,36 +22515,40 @@
   "tabun": {
     "example_sentences": [
       {
-        "japanese": "明日はたぶん雨です。",
-        "english": "It will probably rain tomorrow.",
+        "japanese": "財布は多分かばんの中にあります。",
+        "english": "My wallet is probably in my bag.",
         "vocabulary_slugs": [
-          "ashita",
+          "saifu",
           "tabun",
-          "ame-v"
+          "kaban",
+          "naka",
+          "aru"
         ]
       },
       {
-        "japanese": "彼はたぶん忙しいです。",
-        "english": "He's probably busy.",
-        "vocabulary_slugs": [
-          "kare",
-          "tabun",
-          "isogashii"
-        ]
-      },
-      {
-        "japanese": "彼女はたぶんもう帰りました。",
+        "japanese": "彼女は多分もう家に帰りました。",
         "english": "She's probably already gone home.",
         "vocabulary_slugs": [
           "kanojo",
           "tabun",
           "mou",
+          "ie",
           "kaeru-v"
+        ]
+      },
+      {
+        "japanese": "明日の会議は多分長いでしょう。",
+        "english": "Tomorrow's meeting will probably run long.",
+        "vocabulary_slugs": [
+          "ashita",
+          "kaigi",
+          "tabun",
+          "nagai-adj"
         ]
       }
     ],
     "_meta": {
-      "generator_model": "sonnet-5",
+      "generator_model": "opus-5",
       "prompt_version": "1",
       "review_status": "draft"
     }

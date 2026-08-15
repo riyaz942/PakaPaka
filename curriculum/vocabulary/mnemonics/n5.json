@@ -6530,5 +6530,25 @@
       "prompt_version": "4",
       "review_status": "reviewed"
     }
+  },
+  "shi-city": {
+    "meaning_mnemonic": "You come back to that town square: banners still snapping over the stalls, the vendor still slamming his pot shut so nobody smells the stew for free. Now there is a clerk too, desk wedged between two stalls, stamping permits and zoning the pavement. A <kanji>market</kanji> that grows this far hires staff, draws a boundary, and calls itself a <kanji>city</kanji>.",
+    "reading_mnemonic": "Nothing new to learn here: the word is the kanji standing on its own, so it simply takes the reading you already have for it, <reading>し</reading>.",
+    "description": "Read this way it is the administrative unit — the city that collects your bins and follows the place name on an address, not the general idea of a big built-up area. The character's other reading carries the market sense.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ooi": {
+    "meaning_mnemonic": "The hedgehog is still out on its balcony with the fork, and the plate of moons has become a leaning tower that wobbles each time it adds another. Nobody counts them now. You glance at the stack and it answers for itself — which is <kanji>many</kanji> made into the word you say about a pile: there is a lot of that.",
+    "reading_mnemonic": "Regular the whole way: the reading you already learned for the kanji plus the adjective ending gives you <reading>おおい</reading>.",
+    "description": "Unlike English many, this word usually sits at the end describing the subject — you say the people are many rather than putting it in front of the noun. Placed directly before a noun it sounds off in most sentences.",
+    "_meta": {
+      "generator_model": "opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
