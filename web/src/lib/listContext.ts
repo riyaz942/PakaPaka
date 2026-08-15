@@ -1,4 +1,4 @@
-/** Query keys that define the Content list filter/sort (and list page for back-nav). */
+/** Query keys that define the Content list filter/sort. */
 export const LIST_CONTEXT_KEYS = [
   'level',
   'status',
@@ -7,11 +7,9 @@ export const LIST_CONTEXT_KEYS = [
   'q',
   'audit',
   'sort',
-  'page',
-  'pageSize',
 ] as const;
 
-/** Keys used when asking the neighbors API (page is list-only). */
+/** Keys used when asking the neighbors API. */
 export const LIST_FILTER_KEYS = [
   'level',
   'status',

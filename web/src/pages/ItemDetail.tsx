@@ -53,14 +53,14 @@ function ItemListNav({ type, slug }: { type: ContentType; slug: string }) {
     return `/api/items/neighbors?${qs.toString()}`;
   }, [searchParams, type, slug]);
 
-  // Round-trips page + pageSize (not just filters) so links between detail
-  // pages keep the same list pagination context.
+  // Round-trips the list filters so links between detail pages keep the same
+  // list context (and the list restores its loaded rows on back-nav).
   const detailSearch = useMemo(() => listContextSearch(searchParams), [searchParams]);
 
   const result = useApi<ItemsNeighborsResponse>(neighborsUrl);
 
-  // A real back-navigation (not a fresh push) so the list page is restored
-  // exactly as left, including pageSize and scroll position.
+  // A real back-navigation (not a fresh push) so the list is restored exactly
+  // as left, including loaded rows and scroll position.
   const backButton = (
     <button type="button" className="item-list-nav__back" onClick={() => navigate(-1)}>
       ← Back to list

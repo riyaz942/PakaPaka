@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { BadgeLegend } from '../components/BadgeLegend';
 import { CompletenessPill } from '../components/CompletenessPill';
@@ -13,6 +13,7 @@ import {
   CONTENT_TYPES,
   MISSING_FIELD_OPTIONS,
   STATUS_LABELS,
+  type ContentListItem,
   type ContentType,
   type FindingSeverity,
   type ItemsModelsResponse,
@@ -30,30 +31,15 @@ const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'warning', label: 'Audit: warning' },
   { value: 'info', label: 'Audit: info' },
 ];
-const PAGE_SIZE_STEP = 50;
-const DEFAULT_PAGE_SIZE = PAGE_SIZE_STEP;
+const PAGE_SIZE = 50;
 const SEARCH_DEBOUNCE_MS = 300;
+/** Start loading the next chunk this far before the list end scrolls into view. */
+const LOAD_MORE_MARGIN = '600px 0px';
 
-// Scroll position per list URL (path + query), so navigating to a detail
-// page and back restores where the user was. Keyed off the full search
-// string, so it only applies when returning to the same filters/page/pageSize.
-const scrollPositions = new Map<string, number>();
-
-function parsePageSize(value: string | null): number {
-  const n = Number(value);
-  if (!Number.isFinite(n) || n < 1) return DEFAULT_PAGE_SIZE;
-  return Math.floor(n);
-}
-
-/** 50, 100, … then the filtered total so the last choice shows everything. */
-function buildPageSizeOptions(total: number): number[] {
-  const options: number[] = [];
-  for (let n = PAGE_SIZE_STEP; n < total; n += PAGE_SIZE_STEP) {
-    options.push(n);
-  }
-  options.push(Math.max(PAGE_SIZE_STEP, total));
-  return options;
-}
+// Per list URL (path + query): how many chunks were loaded and where the user
+// was scrolled, so navigating to a detail page and back restores both. Keyed
+// off the full search string, so it only applies to the same filters/sort.
+const listMemory = new Map<string, { pages: number; scrollY: number }>();
 
 const SORT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'sort_order', label: 'Sort order' },
@@ -63,6 +49,15 @@ const SORT_OPTIONS: Array<{ value: string; label: string }> = [
 
 function isContentType(value: string | undefined): value is ContentType {
   return !!value && (CONTENT_TYPES as string[]).includes(value);
+}
+
+async function fetchItems(url: string): Promise<ItemsResponse> {
+  const res = await fetch(url);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(body || `${res.status} ${res.statusText}`);
+  }
+  return (await res.json()) as ItemsResponse;
 }
 
 function SkeletonRows() {
@@ -122,8 +117,6 @@ export default function ContentList() {
   const audit = searchParams.get('audit') ?? '';
   const model = searchParams.get('model') ?? '';
   const sort = searchParams.get('sort') ?? 'sort_order';
-  const page = Math.max(1, Number(searchParams.get('page')) || 1);
-  const pageSize = parsePageSize(searchParams.get('pageSize'));
 
   const [searchInput, setSearchInput] = useState(q);
   const [refreshToken, setRefreshToken] = useState(0);
@@ -131,6 +124,14 @@ export default function ContentList() {
   const [selectAllLoading, setSelectAllLoading] = useState(false);
   const [bulkSaving, setBulkSaving] = useState<ReviewStatus | null>(null);
   const [bulkError, setBulkError] = useState<string | null>(null);
+
+  const [items, setItems] = useState<ContentListItem[]>([]);
+  const [total, setTotal] = useState(0);
+  const [loadedPages, setLoadedPages] = useState(1);
+  const [listStatus, setListStatus] = useState<'loading' | 'ok' | 'error'>('loading');
+  const [listError, setListError] = useState<string | null>(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [restorePending, setRestorePending] = useState(false);
 
   useEffect(() => {
     setSearchInput(q);
@@ -160,14 +161,14 @@ export default function ContentList() {
   useEffect(() => {
     const handle = setTimeout(() => {
       if (searchInput !== q) {
-        updateParams({ q: searchInput || null, page: null });
+        updateParams({ q: searchInput || null });
       }
     }, SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(handle);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput]);
 
-  const apiUrl = useMemo(() => {
+  const filterQs = useMemo(() => {
     const qs = new URLSearchParams();
     qs.set('type', type);
     if (level) qs.set('level', level);
@@ -178,61 +179,125 @@ export default function ContentList() {
     if (audit) qs.set('audit', audit);
     if (model) qs.set('model', model);
     qs.set('sort', sort);
-    qs.set('page', String(page));
-    qs.set('pageSize', String(pageSize));
-    if (refreshToken) qs.set('r', String(refreshToken));
-    return `/api/items?${qs.toString()}`;
-  }, [type, level, status, skeleton, missing, q, audit, model, sort, page, pageSize, refreshToken]);
+    return qs.toString();
+  }, [type, level, status, skeleton, missing, q, audit, model, sort]);
 
-  const result = useApi<ItemsResponse>(apiUrl);
+  // Identifies the current result set: any change restarts from the first
+  // chunk, and in-flight appends for an older key are discarded.
+  const requestKey = `${filterQs}|${refreshToken}`;
+  const requestKeyRef = useRef(requestKey);
+  // Suppressed while a fresh result set loads, so the momentary zero-height
+  // list can't overwrite a saved scroll position with 0.
+  const canSaveScrollRef = useRef(false);
+
   const modelsResult = useApi<ItemsModelsResponse>('/api/items/models');
   const modelOptions = modelsResult.status === 'ok' ? modelsResult.data.models : [];
 
-  // Track scroll position continuously (not just at unmount) so React's
-  // StrictMode dev-mode double-invoked cleanup can't clobber a real saved
-  // position with a stale 0 from right after mount.
+  useEffect(() => {
+    requestKeyRef.current = requestKey;
+    canSaveScrollRef.current = false;
+    // Returning to a list we scrolled through re-requests every chunk that
+    // was loaded, in one call, so the saved scroll position lands on rows.
+    const initialPages = Math.max(1, listMemory.get(scrollKey)?.pages ?? 1);
+    let cancelled = false;
+    setListStatus('loading');
+    setListError(null);
+    setItems([]);
+    fetchItems(`/api/items?${filterQs}&page=1&pageSize=${initialPages * PAGE_SIZE}`)
+      .then((body) => {
+        if (cancelled) return;
+        setItems(body.items);
+        setTotal(body.total);
+        setLoadedPages(initialPages);
+        setListStatus('ok');
+        setRestorePending(true);
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        setListError(err instanceof Error ? err.message : 'Request failed');
+        setListStatus('error');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [requestKey, filterQs, scrollKey]);
+
+  // Restore once the real rows are rendered (not the skeleton), then stop
+  // suppressing saves so further scrolling is tracked again.
+  useEffect(() => {
+    if (!restorePending) return;
+    const saved = listMemory.get(scrollKey)?.scrollY ?? 0;
+    if (saved > 0) window.scrollTo(0, saved);
+    setRestorePending(false);
+    canSaveScrollRef.current = true;
+  }, [restorePending, scrollKey]);
+
   useEffect(() => {
     function handleScroll() {
-      scrollPositions.set(scrollKey, window.scrollY);
+      if (!canSaveScrollRef.current) return;
+      const prev = listMemory.get(scrollKey);
+      listMemory.set(scrollKey, { pages: prev?.pages ?? 1, scrollY: window.scrollY });
     }
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrollKey]);
 
-  // Restore it once the real rows are rendered (not the skeleton), then
-  // forget it so a later in-place refetch doesn't re-apply a stale scroll.
+  const hasMore = listStatus === 'ok' && items.length < total;
+
+  const loadMore = useCallback(() => {
+    if (loadingMore || !hasMore) return;
+    const key = requestKey;
+    const nextPage = loadedPages + 1;
+    setLoadingMore(true);
+    setListError(null);
+    fetchItems(`/api/items?${filterQs}&page=${nextPage}&pageSize=${PAGE_SIZE}`)
+      .then((body) => {
+        if (requestKeyRef.current !== key) return;
+        setItems((prev) => [...prev, ...body.items]);
+        setTotal(body.total);
+        setLoadedPages(nextPage);
+        const prev = listMemory.get(scrollKey);
+        listMemory.set(scrollKey, { pages: nextPage, scrollY: prev?.scrollY ?? 0 });
+      })
+      .catch((err: unknown) => {
+        if (requestKeyRef.current !== key) return;
+        setListError(err instanceof Error ? err.message : 'Request failed');
+      })
+      .finally(() => {
+        if (requestKeyRef.current !== key) return;
+        setLoadingMore(false);
+      });
+  }, [loadingMore, hasMore, requestKey, loadedPages, filterQs, scrollKey]);
+
+  // Loading the next chunk changes `loadMore`, which re-arms the observer; if
+  // the end marker is still in view it fires again until the list is complete.
+  const endMarkerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (result.status !== 'ok') return;
-    const saved = scrollPositions.get(scrollKey);
-    if (saved !== undefined) {
-      window.scrollTo(0, saved);
-      scrollPositions.delete(scrollKey);
-    }
-  }, [result.status, scrollKey]);
+    const el = endMarkerRef.current;
+    if (!el || !hasMore) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) loadMore();
+      },
+      { rootMargin: LOAD_MORE_MARGIN },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasMore, loadMore]);
 
   const missingOptions = MISSING_FIELD_OPTIONS[type];
-  const pageSizeOptions =
-    result.status === 'ok' ? buildPageSizeOptions(result.data.total) : [DEFAULT_PAGE_SIZE];
-  const effectivePageSize = pageSizeOptions.includes(pageSize)
-    ? pageSize
-    : pageSizeOptions[pageSizeOptions.length - 1];
-  const totalPages =
-    result.status === 'ok'
-      ? Math.max(1, Math.ceil(result.data.total / effectivePageSize))
-      : 1;
   const detailSearch = listContextSearch(searchParams);
 
-  const pageSlugs = result.status === 'ok' ? result.data.items.map((item) => item.slug) : [];
-  const allPageSelected = pageSlugs.length > 0 && pageSlugs.every((s) => selected.has(s));
-  const totalFiltered = result.status === 'ok' ? result.data.total : 0;
+  const loadedSlugs = items.map((item) => item.slug);
+  const allLoadedSelected = loadedSlugs.length > 0 && loadedSlugs.every((s) => selected.has(s));
 
-  function toggleSelectPage() {
+  function toggleSelectLoaded() {
     setSelected((prev) => {
       const next = new Set(prev);
-      if (allPageSelected) {
-        for (const slug of pageSlugs) next.delete(slug);
+      if (allLoadedSelected) {
+        for (const slug of loadedSlugs) next.delete(slug);
       } else {
-        for (const slug of pageSlugs) next.add(slug);
+        for (const slug of loadedSlugs) next.add(slug);
       }
       return next;
     });
@@ -253,20 +318,7 @@ export default function ContentList() {
   async function selectAllFiltered() {
     setSelectAllLoading(true);
     try {
-      const qs = new URLSearchParams();
-      qs.set('type', type);
-      if (level) qs.set('level', level);
-      if (status) qs.set('status', status);
-      if (skeleton) qs.set('skeleton', 'true');
-      if (missing) qs.set('missing', missing);
-      if (q) qs.set('q', q);
-      if (audit) qs.set('audit', audit);
-      if (model) qs.set('model', model);
-      qs.set('sort', sort);
-      qs.set('page', '1');
-      qs.set('pageSize', String(totalFiltered));
-      const res = await fetch(`/api/items?${qs.toString()}`);
-      const body = (await res.json()) as ItemsResponse;
+      const body = await fetchItems(`/api/items?${filterQs}&page=1&pageSize=${total}`);
       setSelected(new Set(body.items.map((item) => item.slug)));
     } finally {
       setSelectAllLoading(false);
@@ -324,7 +376,7 @@ export default function ContentList() {
               key={lvl || 'all'}
               type="button"
               className={level === lvl ? 'chip chip--active' : 'chip'}
-              onClick={() => updateParams({ level: lvl || null, page: null })}
+              onClick={() => updateParams({ level: lvl || null })}
             >
               {lvl || 'All'}
             </button>
@@ -333,7 +385,7 @@ export default function ContentList() {
 
         <select
           value={status}
-          onChange={(e) => updateParams({ status: e.target.value || null, page: null })}
+          onChange={(e) => updateParams({ status: e.target.value || null })}
           aria-label="Review status"
         >
           <option value="">All statuses</option>
@@ -348,16 +400,14 @@ export default function ContentList() {
           <input
             type="checkbox"
             checked={skeleton}
-            onChange={(e) =>
-              updateParams({ skeleton: e.target.checked ? 'true' : null, page: null })
-            }
+            onChange={(e) => updateParams({ skeleton: e.target.checked ? 'true' : null })}
           />
           Skeleton only (&lt;60%)
         </label>
 
         <select
           value={missing}
-          onChange={(e) => updateParams({ missing: e.target.value || null, page: null })}
+          onChange={(e) => updateParams({ missing: e.target.value || null })}
           aria-label="Missing field"
         >
           <option value="">Any completeness</option>
@@ -379,7 +429,7 @@ export default function ContentList() {
 
         <select
           value={audit}
-          onChange={(e) => updateParams({ audit: e.target.value || null, page: null })}
+          onChange={(e) => updateParams({ audit: e.target.value || null })}
           aria-label="Audit status"
         >
           {AUDIT_OPTIONS.map((opt) => (
@@ -391,7 +441,7 @@ export default function ContentList() {
 
         <select
           value={model}
-          onChange={(e) => updateParams({ model: e.target.value || null, page: null })}
+          onChange={(e) => updateParams({ model: e.target.value || null })}
           aria-label="Generator model"
         >
           <option value="">Any model</option>
@@ -404,7 +454,7 @@ export default function ContentList() {
 
         <select
           value={sort}
-          onChange={(e) => updateParams({ sort: e.target.value, page: null })}
+          onChange={(e) => updateParams({ sort: e.target.value })}
           aria-label="Sort"
         >
           {SORT_OPTIONS.map((opt) => (
@@ -444,171 +494,145 @@ export default function ContentList() {
         </div>
       ) : null}
 
-      {allPageSelected && selected.size < totalFiltered ? (
+      {allLoadedSelected && selected.size < total ? (
         <div className="select-all-banner">
-          All {pageSlugs.length} on this page are selected.
+          All {loadedSlugs.length} loaded items are selected.
           <button type="button" onClick={selectAllFiltered} disabled={selectAllLoading}>
-            {selectAllLoading ? 'Selecting…' : `Select all ${totalFiltered} matching items`}
+            {selectAllLoading ? 'Selecting…' : `Select all ${total} matching items`}
           </button>
         </div>
       ) : null}
 
-      {result.status === 'loading' ? <SkeletonRows /> : null}
-      {result.status === 'error' ? (
-        <p className="panel-error">Failed to load items: {result.error}</p>
+      {listStatus === 'loading' ? <SkeletonRows /> : null}
+      {listStatus === 'error' ? (
+        <p className="panel-error">Failed to load items: {listError}</p>
       ) : null}
-      {result.status === 'ok' ? (
+      {listStatus === 'ok' ? (
         <>
           <p className="panel-muted">
-            {result.data.total} item{result.data.total === 1 ? '' : 's'}
+            {items.length < total
+              ? `Showing ${items.length} of ${total} items`
+              : `${total} item${total === 1 ? '' : 's'}`}
           </p>
-          {result.data.items.length === 0 ? (
+          {items.length === 0 ? (
             <p className="panel-muted">No items match these filters.</p>
           ) : (
-            <div className="table-wrap">
-              <table className="data-table">
-                <thead>
-                  <tr>
-                    <th className="row-number-column" />
-                    <th className="checkbox-column">
-                      <input
-                        type="checkbox"
-                        aria-label="Select all on page"
-                        checked={allPageSelected}
-                        onChange={toggleSelectPage}
-                      />
-                    </th>
-                    <th>Form</th>
-                    <th>Slug</th>
-                    <th>Meaning</th>
-                    <th>Level</th>
-                    <th>Status</th>
-                    <th>Model</th>
-                    <th>Completeness</th>
-                    <th>Audit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {result.data.items.map((item, index) => {
-                    // The first unfilled field decides where "how do I fix this
-                    // percentage" points — they are listed in generation order.
-                    const firstMissing = item.completeness.missing[0];
-                    const stageId = firstMissing
-                      ? stageIdForField(item.type, firstMissing)
-                      : undefined;
-                    return (
-                    <tr key={`${item.type}:${item.slug}`}>
-                      <td className="row-number-column panel-muted">
-                        {(page - 1) * effectivePageSize + index + 1}
-                      </td>
-                      <td className="checkbox-column">
+            <>
+              <div className="table-wrap">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th className="row-number-column" />
+                      <th className="checkbox-column">
                         <input
                           type="checkbox"
-                          aria-label={`Select ${item.slug}`}
-                          checked={selected.has(item.slug)}
-                          onChange={() => toggleSelectOne(item.slug)}
+                          aria-label="Select all loaded"
+                          checked={allLoadedSelected}
+                          onChange={toggleSelectLoaded}
                         />
-                      </td>
-                      <td>
-                        <Link
-                          to={`/content/${item.type}/${item.slug}${detailSearch}`}
-                          className="row-link content-form"
-                        >
-                          {item.primaryForm}
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          to={`/content/${item.type}/${item.slug}${detailSearch}`}
-                          className="row-link"
-                        >
-                          {item.slug}
-                        </Link>
-                      </td>
-                      <td>{item.meaning}</td>
-                      <td>{item.level}</td>
-                      <td>
-                        <StatusBadge status={item.reviewStatus} />
-                      </td>
-                      <td>{item.meta?.generator_model ?? <span className="panel-muted">—</span>}</td>
-                      <td>
-                        <CompletenessPill
-                          percent={item.completeness.percent}
-                          skeleton={item.completeness.percent < 0.6}
-                          href={stageId ? guideHref(`stage-${stageId}`, item.level) : undefined}
-                          title={
-                            item.completeness.missing.length > 0
-                              ? `Missing: ${item.completeness.missing.join(', ')} — how to generate them`
-                              : undefined
-                          }
-                        />
-                      </td>
-                      <td>
-                        {item.auditSeverity ? (
-                          <Link
-                            to={`/content/${item.type}/${item.slug}${detailSearch}#audit-findings`}
-                            className="audit-badge-link"
-                            title={`${item.auditFindingCount} audit finding(s) — open them`}
-                          >
-                            <SeverityBadge
-                              severity={item.auditSeverity as FindingSeverity}
-                              count={item.auditFindingCount}
-                            />
-                          </Link>
-                        ) : (
-                          <span className="panel-muted">—</span>
-                        )}
-                      </td>
+                      </th>
+                      <th>Form</th>
+                      <th>Slug</th>
+                      <th>Meaning</th>
+                      <th>Level</th>
+                      <th>Status</th>
+                      <th>Model</th>
+                      <th>Completeness</th>
+                      <th>Audit</th>
                     </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          )}
+                  </thead>
+                  <tbody>
+                    {items.map((item, index) => {
+                      // The first unfilled field decides where "how do I fix this
+                      // percentage" points — they are listed in generation order.
+                      const firstMissing = item.completeness.missing[0];
+                      const stageId = firstMissing
+                        ? stageIdForField(item.type, firstMissing)
+                        : undefined;
+                      return (
+                      <tr key={`${item.type}:${item.slug}`}>
+                        <td className="row-number-column panel-muted">{index + 1}</td>
+                        <td className="checkbox-column">
+                          <input
+                            type="checkbox"
+                            aria-label={`Select ${item.slug}`}
+                            checked={selected.has(item.slug)}
+                            onChange={() => toggleSelectOne(item.slug)}
+                          />
+                        </td>
+                        <td>
+                          <Link
+                            to={`/content/${item.type}/${item.slug}${detailSearch}`}
+                            className="row-link content-form"
+                          >
+                            {item.primaryForm}
+                          </Link>
+                        </td>
+                        <td>
+                          <Link
+                            to={`/content/${item.type}/${item.slug}${detailSearch}`}
+                            className="row-link"
+                          >
+                            {item.slug}
+                          </Link>
+                        </td>
+                        <td>{item.meaning}</td>
+                        <td>{item.level}</td>
+                        <td>
+                          <StatusBadge status={item.reviewStatus} />
+                        </td>
+                        <td>{item.meta?.generator_model ?? <span className="panel-muted">—</span>}</td>
+                        <td>
+                          <CompletenessPill
+                            percent={item.completeness.percent}
+                            skeleton={item.completeness.percent < 0.6}
+                            href={stageId ? guideHref(`stage-${stageId}`, item.level) : undefined}
+                            title={
+                              item.completeness.missing.length > 0
+                                ? `Missing: ${item.completeness.missing.join(', ')} — how to generate them`
+                                : undefined
+                            }
+                          />
+                        </td>
+                        <td>
+                          {item.auditSeverity ? (
+                            <Link
+                              to={`/content/${item.type}/${item.slug}${detailSearch}#audit-findings`}
+                              className="audit-badge-link"
+                              title={`${item.auditFindingCount} audit finding(s) — open them`}
+                            >
+                              <SeverityBadge
+                                severity={item.auditSeverity as FindingSeverity}
+                                count={item.auditFindingCount}
+                              />
+                            </Link>
+                          ) : (
+                            <span className="panel-muted">—</span>
+                          )}
+                        </td>
+                      </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
 
-          <div className="pagination">
-            <button
-              type="button"
-              disabled={page <= 1}
-              onClick={() => updateParams({ page: String(page - 1) })}
-            >
-              Previous
-            </button>
-            <span className="pagination__status">
-              Page {page} of {totalPages}
-            </span>
-            <button
-              type="button"
-              disabled={page >= totalPages}
-              onClick={() => updateParams({ page: String(page + 1) })}
-            >
-              Next
-            </button>
-            <label className="pagination__page-size">
-              Show
-              <select
-                value={effectivePageSize}
-                onChange={(e) =>
-                  updateParams({
-                    pageSize:
-                      Number(e.target.value) === DEFAULT_PAGE_SIZE
-                        ? null
-                        : e.target.value,
-                    page: null,
-                  })
-                }
-                aria-label="Items per page"
-              >
-                {pageSizeOptions.map((size) => (
-                  <option key={size} value={size}>
-                    {size}
-                  </option>
-                ))}
-              </select>
-              per page
-            </label>
-          </div>
+              <div className="list-end" ref={endMarkerRef} aria-live="polite">
+                {listError ? (
+                  <span className="panel-error">Failed to load more: {listError}</span>
+                ) : null}
+                {loadingMore ? (
+                  <span className="panel-muted">Loading more…</span>
+                ) : hasMore ? (
+                  <button type="button" onClick={loadMore}>
+                    Load {Math.min(PAGE_SIZE, total - items.length)} more
+                  </button>
+                ) : (
+                  <span className="panel-muted">End of list</span>
+                )}
+              </div>
+            </>
+          )}
         </>
       ) : null}
     </div>

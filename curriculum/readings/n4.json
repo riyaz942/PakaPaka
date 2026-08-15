@@ -645,6 +645,7 @@
         "kuru-v",
         "mieru",
         "naru-become",
+        "ooi",
         "shigoto",
         "suru",
         "taifuu",
@@ -691,6 +692,13 @@
           "end": 37,
           "surface_form": "行けなかった",
           "inflection": "nai"
+        },
+        {
+          "vocabulary_slug": "ooi",
+          "start": 39,
+          "end": 43,
+          "surface_form": "多かった",
+          "inflection": "ta"
         },
         {
           "vocabulary_slug": "shigoto",
