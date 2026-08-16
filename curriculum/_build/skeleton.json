@@ -1,0 +1,8574 @@
+{
+  "_generated_by": "curriculum/_build/import/build_skeleton.py",
+  "levels": [
+    "n3",
+    "n2",
+    "n1"
+  ],
+  "radicals": {
+    "n3": [
+      {
+        "slug": "bun-writing",
+        "form": "文",
+        "meaning": "writing"
+      },
+      {
+        "slug": "mochiiru",
+        "form": "用",
+        "meaning": "use"
+      },
+      {
+        "slug": "katahen",
+        "form": "方",
+        "meaning": "direction"
+      },
+      {
+        "slug": "konzukuri",
+        "form": "艮",
+        "meaning": "stopping"
+      }
+    ],
+    "n2": [
+      {
+        "slug": "men-face",
+        "form": "面",
+        "meaning": "face / surface"
+      },
+      {
+        "slug": "amai",
+        "form": "甘",
+        "meaning": "sweet"
+      },
+      {
+        "slug": "mi-body",
+        "form": "身",
+        "meaning": "body"
+      },
+      {
+        "slug": "hiyominotori",
+        "form": "酉",
+        "meaning": "sake jar"
+      },
+      {
+        "slug": "sara",
+        "form": "皿",
+        "meaning": "dish"
+      },
+      {
+        "slug": "kemonohen",
+        "form": "犭",
+        "meaning": "animal"
+      }
+    ],
+    "n1": []
+  },
+  "kanji": {
+    "n3": [
+      {
+        "suffix": "thing",
+        "char": "物",
+        "meaning": "thing",
+        "onyomi": "ぶつ",
+        "kunyomi": "もの",
+        "extra_meanings": [
+          "object",
+          "matter"
+        ],
+        "unblocks": 8
+      },
+      {
+        "suffix": "what",
+        "char": "何",
+        "meaning": "what",
+        "onyomi": "か",
+        "kunyomi": "なに",
+        "extra_meanings": [],
+        "unblocks": 7
+      },
+      {
+        "suffix": "fit",
+        "char": "合",
+        "meaning": "fit",
+        "onyomi": "ごう",
+        "kunyomi": "あ",
+        "extra_meanings": [
+          "suit",
+          "join"
+        ],
+        "unblocks": 6
+      },
+      {
+        "suffix": "brush-stroke",
+        "char": "画",
+        "meaning": "brush-stroke",
+        "onyomi": "が",
+        "kunyomi": "えが",
+        "extra_meanings": [
+          "picture"
+        ],
+        "unblocks": 6
+      },
+      {
+        "suffix": "employee",
+        "char": "員",
+        "meaning": "employee",
+        "onyomi": "いん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "member",
+          "number"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "negative",
+        "char": "不",
+        "meaning": "negative",
+        "onyomi": "ふ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "non-",
+          "bad"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "inst",
+        "char": "院",
+        "meaning": "Inst.",
+        "onyomi": "いん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "institution",
+          "temple"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "sentence",
+        "char": "文",
+        "meaning": "sentence",
+        "onyomi": "ぶん",
+        "kunyomi": "ふみ",
+        "extra_meanings": [
+          "literature",
+          "style"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "cut",
+        "char": "切",
+        "meaning": "cut",
+        "onyomi": "せつ",
+        "kunyomi": "き",
+        "extra_meanings": [
+          "cutoff",
+          "be sharp"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "music",
+        "char": "楽",
+        "meaning": "music",
+        "onyomi": "がく",
+        "kunyomi": "たの",
+        "extra_meanings": [
+          "comfort",
+          "ease"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "wind",
+        "char": "風",
+        "meaning": "wind",
+        "onyomi": "ふう",
+        "kunyomi": "かぜ",
+        "extra_meanings": [
+          "air",
+          "style"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "times",
+        "char": "回",
+        "meaning": "-times",
+        "onyomi": "かい",
+        "kunyomi": "まわ",
+        "extra_meanings": [
+          "round",
+          "game"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "question",
+        "char": "問",
+        "meaning": "question",
+        "onyomi": "もん",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "ask",
+          "problem"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "move",
+        "char": "動",
+        "meaning": "move",
+        "onyomi": "どう",
+        "kunyomi": "うご",
+        "extra_meanings": [
+          "motion",
+          "change"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "traffic",
+        "char": "通",
+        "meaning": "traffic",
+        "onyomi": "つう",
+        "kunyomi": "とお",
+        "extra_meanings": [
+          "pass through",
+          "avenue"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "idea",
+        "char": "意",
+        "meaning": "idea",
+        "onyomi": "い",
+        "kunyomi": "",
+        "extra_meanings": [
+          "mind",
+          "heart"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "plains",
+        "char": "野",
+        "meaning": "plains",
+        "onyomi": "や",
+        "kunyomi": "の",
+        "extra_meanings": [
+          "field",
+          "rustic"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "pour",
+        "char": "注",
+        "meaning": "pour",
+        "onyomi": "ちゅう",
+        "kunyomi": "そそ",
+        "extra_meanings": [
+          "irrigate",
+          "flow into"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "mother",
+        "char": "母",
+        "meaning": "mother",
+        "onyomi": "ぼ",
+        "kunyomi": "はは",
+        "extra_meanings": [],
+        "unblocks": 4
+      },
+      {
+        "suffix": "father",
+        "char": "父",
+        "meaning": "father",
+        "onyomi": "ふ",
+        "kunyomi": "ちち",
+        "extra_meanings": [],
+        "unblocks": 4
+      },
+      {
+        "suffix": "meal",
+        "char": "飯",
+        "meaning": "meal",
+        "onyomi": "はん",
+        "kunyomi": "めし",
+        "extra_meanings": [
+          "boiled rice"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "tea",
+        "char": "茶",
+        "meaning": "tea",
+        "onyomi": "ちゃ",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 4
+      },
+      {
+        "suffix": "body",
+        "char": "体",
+        "meaning": "body",
+        "onyomi": "たい",
+        "kunyomi": "からだ",
+        "extra_meanings": [
+          "substance",
+          "object"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "topic",
+        "char": "題",
+        "meaning": "topic",
+        "onyomi": "だい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "subject"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "metropolis",
+        "char": "都",
+        "meaning": "metropolis",
+        "onyomi": "と",
+        "kunyomi": "みやこ",
+        "extra_meanings": [
+          "capital",
+          "all"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "near",
+        "char": "近",
+        "meaning": "near",
+        "onyomi": "きん",
+        "kunyomi": "ちか",
+        "extra_meanings": [
+          "early",
+          "akin"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "plot",
+        "char": "計",
+        "meaning": "plot",
+        "onyomi": "けい",
+        "kunyomi": "はか",
+        "extra_meanings": [
+          "plan",
+          "scheme"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "morning",
+        "char": "朝",
+        "meaning": "morning",
+        "onyomi": "ちょう",
+        "kunyomi": "あさ",
+        "extra_meanings": [
+          "dynasty",
+          "regime"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "pedestal",
+        "char": "台",
+        "meaning": "pedestal",
+        "onyomi": "だい",
+        "kunyomi": "うてな",
+        "extra_meanings": [
+          "a stand"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "true",
+        "char": "真",
+        "meaning": "true",
+        "onyomi": "しん",
+        "kunyomi": "ま",
+        "extra_meanings": [
+          "reality",
+          "Buddhist sect"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "empty",
+        "char": "空",
+        "meaning": "empty",
+        "onyomi": "くう",
+        "kunyomi": "そら",
+        "extra_meanings": [
+          "sky",
+          "void"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "opinion",
+        "char": "説",
+        "meaning": "opinion",
+        "onyomi": "せつ",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "theory",
+          "explanation"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "wait",
+        "char": "待",
+        "meaning": "wait",
+        "onyomi": "たい",
+        "kunyomi": "ま",
+        "extra_meanings": [
+          "depend on"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "building",
+        "char": "館",
+        "meaning": "building",
+        "onyomi": "かん",
+        "kunyomi": "やかた",
+        "extra_meanings": [
+          "mansion",
+          "large building"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "medicine",
+        "char": "薬",
+        "meaning": "medicine",
+        "onyomi": "やく",
+        "kunyomi": "くすり",
+        "extra_meanings": [
+          "chemical",
+          "enamel"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "convenience",
+        "char": "便",
+        "meaning": "convenience",
+        "onyomi": "べん",
+        "kunyomi": "たよ",
+        "extra_meanings": [
+          "facility",
+          "excrement"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "trip",
+        "char": "旅",
+        "meaning": "trip",
+        "onyomi": "りょ",
+        "kunyomi": "たび",
+        "extra_meanings": [
+          "travel"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "clothing",
+        "char": "服",
+        "meaning": "clothing",
+        "onyomi": "ふく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "admit",
+          "obey"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "neck",
+        "char": "首",
+        "meaning": "neck",
+        "onyomi": "しゅ",
+        "kunyomi": "くび",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "make",
+        "char": "作",
+        "meaning": "make",
+        "onyomi": "さく",
+        "kunyomi": "つく",
+        "extra_meanings": [
+          "production",
+          "prepare"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "degrees",
+        "char": "度",
+        "meaning": "degrees",
+        "onyomi": "ど",
+        "kunyomi": "たび",
+        "extra_meanings": [
+          "occurrence",
+          "time"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "by-means",
+        "char": "以",
+        "meaning": "by means of",
+        "onyomi": "い",
+        "kunyomi": "もっ",
+        "extra_meanings": [
+          "because",
+          "in view of"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "generation",
+        "char": "世",
+        "meaning": "generation",
+        "onyomi": "せい",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "world",
+          "society"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "sea",
+        "char": "海",
+        "meaning": "sea",
+        "onyomi": "かい",
+        "kunyomi": "うみ",
+        "extra_meanings": [
+          "ocean"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "special",
+        "char": "特",
+        "meaning": "special",
+        "onyomi": "とく",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "private",
+        "char": "私",
+        "meaning": "private",
+        "onyomi": "し",
+        "kunyomi": "わたくし",
+        "extra_meanings": [
+          "I",
+          "me"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "dwell",
+        "char": "住",
+        "meaning": "dwell",
+        "onyomi": "じゅう",
+        "kunyomi": "す",
+        "extra_meanings": [
+          "reside",
+          "live"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "revolve",
+        "char": "転",
+        "meaning": "revolve",
+        "onyomi": "てん",
+        "kunyomi": "ころ",
+        "extra_meanings": [
+          "turn around",
+          "change"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ride",
+        "char": "乗",
+        "meaning": "ride",
+        "onyomi": "じょう",
+        "kunyomi": "の",
+        "extra_meanings": [
+          "power",
+          "multiplication"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ill",
+        "char": "病",
+        "meaning": "ill",
+        "onyomi": "びょう",
+        "kunyomi": "や",
+        "extra_meanings": [
+          "sick"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "reflect",
+        "char": "映",
+        "meaning": "reflect",
+        "onyomi": "えい",
+        "kunyomi": "うつ",
+        "extra_meanings": [
+          "reflection",
+          "projection"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "doctor",
+        "char": "医",
+        "meaning": "doctor",
+        "onyomi": "い",
+        "kunyomi": "い",
+        "extra_meanings": [
+          "medicine"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "attend",
+        "char": "仕",
+        "meaning": "attend",
+        "onyomi": "し",
+        "kunyomi": "つか",
+        "extra_meanings": [
+          "doing",
+          "official"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "sound",
+        "char": "音",
+        "meaning": "sound",
+        "onyomi": "おん",
+        "kunyomi": "おと",
+        "extra_meanings": [
+          "noise"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "walk",
+        "char": "歩",
+        "meaning": "walk",
+        "onyomi": "ほ",
+        "kunyomi": "ある",
+        "extra_meanings": [
+          "counter for steps"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "paper",
+        "char": "紙",
+        "meaning": "paper",
+        "onyomi": "し",
+        "kunyomi": "かみ",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "roof",
+        "char": "屋",
+        "meaning": "roof",
+        "onyomi": "おく",
+        "kunyomi": "や",
+        "extra_meanings": [
+          "house",
+          "shop"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "friend",
+        "char": "友",
+        "meaning": "friend",
+        "onyomi": "ゆう",
+        "kunyomi": "とも",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "distant",
+        "char": "遠",
+        "meaning": "distant",
+        "onyomi": "えん",
+        "kunyomi": "とお",
+        "extra_meanings": [
+          "far"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "exertion",
+        "char": "勉",
+        "meaning": "exertion",
+        "onyomi": "べん",
+        "kunyomi": "つと",
+        "extra_meanings": [
+          "endeavour",
+          "encourage"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "daytime",
+        "char": "昼",
+        "meaning": "daytime",
+        "onyomi": "ちゅう",
+        "kunyomi": "ひる",
+        "extra_meanings": [
+          "noon"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "cow",
+        "char": "牛",
+        "meaning": "cow",
+        "onyomi": "ぎゅう",
+        "kunyomi": "うし",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "vegetable",
+        "char": "菜",
+        "meaning": "vegetable",
+        "onyomi": "さい",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "side dish",
+          "greens"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "open",
+        "char": "開",
+        "meaning": "open",
+        "onyomi": "かい",
+        "kunyomi": "ひら",
+        "extra_meanings": [
+          "unfold",
+          "unseal"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rice-field",
+        "char": "田",
+        "meaning": "rice field",
+        "onyomi": "でん",
+        "kunyomi": "た",
+        "extra_meanings": [
+          "rice paddy"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "utilize",
+        "char": "用",
+        "meaning": "utilize",
+        "onyomi": "よう",
+        "kunyomi": "もち",
+        "extra_meanings": [
+          "business",
+          "service"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "correct",
+        "char": "正",
+        "meaning": "correct",
+        "onyomi": "せい",
+        "kunyomi": "ただ",
+        "extra_meanings": [
+          "justice",
+          "righteous"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "world",
+        "char": "界",
+        "meaning": "world",
+        "onyomi": "かい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "boundary"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "beginning",
+        "char": "元",
+        "meaning": "beginning",
+        "onyomi": "げん",
+        "kunyomi": "もと",
+        "extra_meanings": [
+          "former time",
+          "origin"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "goods",
+        "char": "品",
+        "meaning": "goods",
+        "onyomi": "ひん",
+        "kunyomi": "しな",
+        "extra_meanings": [
+          "refinement",
+          "dignity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "possess",
+        "char": "有",
+        "meaning": "possess",
+        "onyomi": "ゆう",
+        "kunyomi": "あ",
+        "extra_meanings": [
+          "have",
+          "exist"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "craft",
+        "char": "工",
+        "meaning": "craft",
+        "onyomi": "こう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "construction"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "polish",
+        "char": "研",
+        "meaning": "polish",
+        "onyomi": "けん",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "study of",
+          "sharpen"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "research",
+        "char": "究",
+        "meaning": "research",
+        "onyomi": "きゅう",
+        "kunyomi": "きわ",
+        "extra_meanings": [
+          "study"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rouse",
+        "char": "起",
+        "meaning": "rouse",
+        "onyomi": "き",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "wake up",
+          "get up"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "voice",
+        "char": "声",
+        "meaning": "voice",
+        "onyomi": "せい",
+        "kunyomi": "こえ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "silver",
+        "char": "銀",
+        "meaning": "silver",
+        "onyomi": "ぎん",
+        "kunyomi": "しろがね",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "england",
+        "char": "英",
+        "meaning": "England",
+        "onyomi": "えい",
+        "kunyomi": "はなぶさ",
+        "extra_meanings": [
+          "English",
+          "hero"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "head",
+        "char": "頭",
+        "meaning": "head",
+        "onyomi": "とう",
+        "kunyomi": "あたま",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lower",
+        "char": "低",
+        "meaning": "lower",
+        "onyomi": "てい",
+        "kunyomi": "ひく",
+        "extra_meanings": [
+          "short",
+          "humble"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "gone",
+        "char": "去",
+        "meaning": "gone",
+        "onyomi": "きょ",
+        "kunyomi": "さ",
+        "extra_meanings": [
+          "past",
+          "quit"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "gate",
+        "char": "門",
+        "meaning": "gate",
+        "onyomi": "もん",
+        "kunyomi": "かど",
+        "extra_meanings": [
+          "counter for cannons"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "copy",
+        "char": "写",
+        "meaning": "copy",
+        "onyomi": "しゃ",
+        "kunyomi": "うつ",
+        "extra_meanings": [
+          "be photographed",
+          "describe"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "character",
+        "char": "字",
+        "meaning": "character",
+        "onyomi": "じ",
+        "kunyomi": "あざ",
+        "extra_meanings": [
+          "letter",
+          "word"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "night",
+        "char": "夜",
+        "meaning": "night",
+        "onyomi": "や",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "evening"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ray",
+        "char": "光",
+        "meaning": "ray",
+        "onyomi": "こう",
+        "kunyomi": "ひか",
+        "extra_meanings": [
+          "light"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "springtime",
+        "char": "春",
+        "meaning": "springtime",
+        "onyomi": "しゅん",
+        "kunyomi": "はる",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "forest",
+        "char": "森",
+        "meaning": "forest",
+        "onyomi": "しん",
+        "kunyomi": "もり",
+        "extra_meanings": [
+          "woods"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "autumn",
+        "char": "秋",
+        "meaning": "autumn",
+        "onyomi": "しゅう",
+        "kunyomi": "あき",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "grove",
+        "char": "林",
+        "meaning": "grove",
+        "onyomi": "りん",
+        "kunyomi": "はやし",
+        "extra_meanings": [
+          "forest"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "summer",
+        "char": "夏",
+        "meaning": "summer",
+        "onyomi": "か",
+        "kunyomi": "なつ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "face",
+        "char": "顔",
+        "meaning": "face",
+        "onyomi": "がん",
+        "kunyomi": "かお",
+        "extra_meanings": [
+          "expression"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "short",
+        "char": "短",
+        "meaning": "short",
+        "onyomi": "たん",
+        "kunyomi": "みじか",
+        "extra_meanings": [
+          "brevity",
+          "fault"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ocean",
+        "char": "洋",
+        "meaning": "ocean",
+        "onyomi": "よう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "sea",
+          "foreign"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pond",
+        "char": "池",
+        "meaning": "pond",
+        "onyomi": "ち",
+        "kunyomi": "いけ",
+        "extra_meanings": [
+          "cistern",
+          "pool"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "evening",
+        "char": "夕",
+        "meaning": "evening",
+        "onyomi": "せき",
+        "kunyomi": "ゆう",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "meat",
+        "char": "肉",
+        "meaning": "meat",
+        "onyomi": "にく",
+        "kunyomi": "しし",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bird",
+        "char": "鳥",
+        "meaning": "bird",
+        "onyomi": "ちょう",
+        "kunyomi": "とり",
+        "extra_meanings": [
+          "chicken"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "winter",
+        "char": "冬",
+        "meaning": "winter",
+        "onyomi": "とう",
+        "kunyomi": "ふゆ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "fish",
+        "char": "魚",
+        "meaning": "fish",
+        "onyomi": "ぎょ",
+        "kunyomi": "うお",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "dog",
+        "char": "犬",
+        "meaning": "dog",
+        "onyomi": "けん",
+        "kunyomi": "いぬ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sultry",
+        "char": "暑",
+        "meaning": "sultry",
+        "onyomi": "しょ",
+        "kunyomi": "あつ",
+        "extra_meanings": [
+          "hot",
+          "summer heat"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cold",
+        "char": "寒",
+        "meaning": "cold",
+        "onyomi": "かん",
+        "kunyomi": "さむ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sino",
+        "char": "漢",
+        "meaning": "Sino-",
+        "onyomi": "かん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "China"
+        ],
+        "unblocks": 1
+      }
+    ],
+    "n2": [
+      {
+        "suffix": "turn",
+        "char": "番",
+        "meaning": "turn",
+        "onyomi": "ばん",
+        "kunyomi": "つが",
+        "extra_meanings": [
+          "number in a series"
+        ],
+        "unblocks": 7
+      },
+      {
+        "suffix": "hit",
+        "char": "当",
+        "meaning": "hit",
+        "onyomi": "とう",
+        "kunyomi": "あ",
+        "extra_meanings": [
+          "right",
+          "appropriate"
+        ],
+        "unblocks": 6
+      },
+      {
+        "suffix": "transmit",
+        "char": "伝",
+        "meaning": "transmit",
+        "onyomi": "でん",
+        "kunyomi": "つた",
+        "extra_meanings": [
+          "go along",
+          "walk along"
+        ],
+        "unblocks": 6
+      },
+      {
+        "suffix": "utmost",
+        "char": "最",
+        "meaning": "utmost",
+        "onyomi": "さい",
+        "kunyomi": "もっと",
+        "extra_meanings": [
+          "most",
+          "extreme"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "take",
+        "char": "取",
+        "meaning": "take",
+        "onyomi": "しゅ",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "fetch",
+          "take up"
+        ],
+        "unblocks": 5
+      },
+      {
+        "suffix": "section",
+        "char": "部",
+        "meaning": "section",
+        "onyomi": "ぶ",
+        "kunyomi": "べ",
+        "extra_meanings": [
+          "bureau",
+          "dept"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "whole",
+        "char": "全",
+        "meaning": "whole",
+        "onyomi": "ぜん",
+        "kunyomi": "まった",
+        "extra_meanings": [
+          "entire",
+          "all"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "mask",
+        "char": "面",
+        "meaning": "mask",
+        "onyomi": "めん",
+        "kunyomi": "おも",
+        "extra_meanings": [
+          "face",
+          "features"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "nothingness",
+        "char": "無",
+        "meaning": "nothingness",
+        "onyomi": "む",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "none",
+          "ain't"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "status",
+        "char": "格",
+        "meaning": "status",
+        "onyomi": "かく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "rank",
+          "capacity"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "husband",
+        "char": "夫",
+        "meaning": "husband",
+        "onyomi": "ふ",
+        "kunyomi": "おっと",
+        "extra_meanings": [
+          "man"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "sort-of",
+        "char": "然",
+        "meaning": "sort of thing",
+        "onyomi": "ぜん",
+        "kunyomi": "しか",
+        "extra_meanings": [
+          "so",
+          "if so"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "leader",
+        "char": "将",
+        "meaning": "leader",
+        "onyomi": "しょう",
+        "kunyomi": "まさ",
+        "extra_meanings": [
+          "commander",
+          "general"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "take-along",
+        "char": "連",
+        "meaning": "take along",
+        "onyomi": "れん",
+        "kunyomi": "つら",
+        "extra_meanings": [
+          "lead",
+          "join"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "promise",
+        "char": "約",
+        "meaning": "promise",
+        "onyomi": "やく",
+        "kunyomi": "つづ",
+        "extra_meanings": [
+          "approximately",
+          "shrink"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "sex",
+        "char": "性",
+        "meaning": "sex",
+        "onyomi": "せい",
+        "kunyomi": "さが",
+        "extra_meanings": [
+          "gender",
+          "nature"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "reign",
+        "char": "治",
+        "meaning": "reign",
+        "onyomi": "じ",
+        "kunyomi": "おさ",
+        "extra_meanings": [
+          "be at peace",
+          "calm down"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "loom",
+        "char": "機",
+        "meaning": "loom",
+        "onyomi": "き",
+        "kunyomi": "はた",
+        "extra_meanings": [
+          "mechanism",
+          "machine"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "scribe",
+        "char": "記",
+        "meaning": "scribe",
+        "onyomi": "き",
+        "kunyomi": "しる",
+        "extra_meanings": [
+          "account",
+          "narrative"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "first-time",
+        "char": "初",
+        "meaning": "first time",
+        "onyomi": "しょ",
+        "kunyomi": "はじ",
+        "extra_meanings": [
+          "beginning"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "beforehand",
+        "char": "予",
+        "meaning": "beforehand",
+        "onyomi": "よ",
+        "kunyomi": "あらかじ",
+        "extra_meanings": [
+          "previous",
+          "myself"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "nonplussed",
+        "char": "参",
+        "meaning": "nonplussed",
+        "onyomi": "さん",
+        "kunyomi": "まい",
+        "extra_meanings": [
+          "going",
+          "coming"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "profit",
+        "char": "利",
+        "meaning": "profit",
+        "onyomi": "り",
+        "kunyomi": "き",
+        "extra_meanings": [
+          "advantage",
+          "benefit"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "plan",
+        "char": "案",
+        "meaning": "plan",
+        "onyomi": "あん",
+        "kunyomi": "つくえ",
+        "extra_meanings": [
+          "suggestion",
+          "draft"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "emotion",
+        "char": "感",
+        "meaning": "emotion",
+        "onyomi": "かん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "feeling",
+          "sensation"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "straightaway",
+        "char": "直",
+        "meaning": "straightaway",
+        "onyomi": "ちょく",
+        "kunyomi": "ただ",
+        "extra_meanings": [
+          "honesty",
+          "frankness"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "art",
+        "char": "術",
+        "meaning": "art",
+        "onyomi": "じゅつ",
+        "kunyomi": "すべ",
+        "extra_meanings": [
+          "technique",
+          "skill"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "bring-up",
+        "char": "育",
+        "meaning": "bring up",
+        "onyomi": "いく",
+        "kunyomi": "そだ",
+        "extra_meanings": [
+          "grow up",
+          "raise"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "seat",
+        "char": "席",
+        "meaning": "seat",
+        "onyomi": "せき",
+        "kunyomi": "むしろ",
+        "extra_meanings": [
+          "mat",
+          "occasion"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "lose",
+        "char": "失",
+        "meaning": "lose",
+        "onyomi": "しつ",
+        "kunyomi": "うしな",
+        "extra_meanings": [
+          "error",
+          "fault"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "department",
+        "char": "科",
+        "meaning": "department",
+        "onyomi": "か",
+        "kunyomi": "",
+        "extra_meanings": [
+          "course",
+          "section"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "quick",
+        "char": "速",
+        "meaning": "quick",
+        "onyomi": "そく",
+        "kunyomi": "はや",
+        "extra_meanings": [
+          "fast"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "nickname",
+        "char": "号",
+        "meaning": "nickname",
+        "onyomi": "ごう",
+        "kunyomi": "さけ",
+        "extra_meanings": [
+          "number",
+          "item"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "return",
+        "char": "返",
+        "meaning": "return",
+        "onyomi": "へん",
+        "kunyomi": "かえ",
+        "extra_meanings": [
+          "answer",
+          "fade"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "heat",
+        "char": "熱",
+        "meaning": "heat",
+        "onyomi": "ねつ",
+        "kunyomi": "あつ",
+        "extra_meanings": [
+          "temperature",
+          "fever"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "happiness",
+        "char": "幸",
+        "meaning": "happiness",
+        "onyomi": "こう",
+        "kunyomi": "さいわ",
+        "extra_meanings": [
+          "blessing",
+          "fortune"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "slow",
+        "char": "遅",
+        "meaning": "slow",
+        "onyomi": "ち",
+        "kunyomi": "おく",
+        "extra_meanings": [
+          "late",
+          "back"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "swim",
+        "char": "泳",
+        "meaning": "swim",
+        "onyomi": "えい",
+        "kunyomi": "およ",
+        "extra_meanings": [],
+        "unblocks": 3
+      },
+      {
+        "suffix": "nightfall",
+        "char": "晩",
+        "meaning": "nightfall",
+        "onyomi": "ばん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "night"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "politics",
+        "char": "政",
+        "meaning": "politics",
+        "onyomi": "せい",
+        "kunyomi": "まつりごと",
+        "extra_meanings": [
+          "government"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "deliberation",
+        "char": "議",
+        "meaning": "deliberation",
+        "onyomi": "ぎ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "consultation",
+          "debate"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "inside",
+        "char": "内",
+        "meaning": "inside",
+        "onyomi": "ない",
+        "kunyomi": "うち",
+        "extra_meanings": [
+          "within",
+          "between"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "present",
+        "char": "現",
+        "meaning": "present",
+        "onyomi": "げん",
+        "kunyomi": "あらわ",
+        "extra_meanings": [
+          "existing",
+          "actual"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "method",
+        "char": "法",
+        "meaning": "method",
+        "onyomi": "ほう",
+        "kunyomi": "のり",
+        "extra_meanings": [
+          "law",
+          "rule"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "task",
+        "char": "務",
+        "meaning": "task",
+        "onyomi": "む",
+        "kunyomi": "つと",
+        "extra_meanings": [
+          "duties"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "turn-into",
+        "char": "成",
+        "meaning": "turn into",
+        "onyomi": "せい",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "become",
+          "get"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "public",
+        "char": "公",
+        "meaning": "public",
+        "onyomi": "こう",
+        "kunyomi": "おおやけ",
+        "extra_meanings": [
+          "prince",
+          "official"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "harmony",
+        "char": "和",
+        "meaning": "harmony",
+        "onyomi": "わ",
+        "kunyomi": "やわ",
+        "extra_meanings": [
+          "Japanese style",
+          "peace"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "add",
+        "char": "加",
+        "meaning": "add",
+        "onyomi": "か",
+        "kunyomi": "くわ",
+        "extra_meanings": [
+          "addition",
+          "increase"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "accept",
+        "char": "受",
+        "meaning": "accept",
+        "onyomi": "じゅ",
+        "kunyomi": "う",
+        "extra_meanings": [
+          "undergo",
+          "take"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "jurisdiction",
+        "char": "領",
+        "meaning": "jurisdiction",
+        "onyomi": "りょう",
+        "kunyomi": "えり",
+        "extra_meanings": [
+          "dominion",
+          "territory"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "tie",
+        "char": "結",
+        "meaning": "tie",
+        "onyomi": "けつ",
+        "kunyomi": "むす",
+        "extra_meanings": [
+          "bind",
+          "contract"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "mingle",
+        "char": "交",
+        "meaning": "mingle",
+        "onyomi": "こう",
+        "kunyomi": "まじ",
+        "extra_meanings": [
+          "mixing",
+          "association"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "next",
+        "char": "次",
+        "meaning": "next",
+        "onyomi": "じ",
+        "kunyomi": "つ",
+        "extra_meanings": [
+          "order",
+          "sequence"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "yesterday",
+        "char": "昨",
+        "meaning": "yesterday",
+        "onyomi": "さく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "previous"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "bureaucrat",
+        "char": "官",
+        "meaning": "bureaucrat",
+        "onyomi": "かん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "the government",
+          "organ"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "feelings",
+        "char": "情",
+        "meaning": "feelings",
+        "onyomi": "じょう",
+        "kunyomi": "なさ",
+        "extra_meanings": [
+          "emotion",
+          "passion"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "fruit",
+        "char": "果",
+        "meaning": "fruit",
+        "onyomi": "か",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "reward",
+          "carry out"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ability",
+        "char": "能",
+        "meaning": "ability",
+        "onyomi": "のう",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "talent",
+          "skill"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "current",
+        "char": "流",
+        "meaning": "current",
+        "onyomi": "りゅう",
+        "kunyomi": "なが",
+        "extra_meanings": [
+          "a sink",
+          "flow"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "overdo",
+        "char": "過",
+        "meaning": "overdo",
+        "onyomi": "か",
+        "kunyomi": "す",
+        "extra_meanings": [
+          "exceed",
+          "go beyond"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "bureau",
+        "char": "局",
+        "meaning": "bureau",
+        "onyomi": "きょく",
+        "kunyomi": "つぼね",
+        "extra_meanings": [
+          "board",
+          "office"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "submit",
+        "char": "供",
+        "meaning": "submit",
+        "onyomi": "きょう",
+        "kunyomi": "そな",
+        "extra_meanings": [
+          "offer",
+          "present"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "can",
+        "char": "可",
+        "meaning": "can",
+        "onyomi": "か",
+        "kunyomi": "べ",
+        "extra_meanings": [
+          "passable",
+          "approval"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "wherefore",
+        "char": "由",
+        "meaning": "wherefore",
+        "onyomi": "ゆ",
+        "kunyomi": "よし",
+        "extra_meanings": [
+          "a reason"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "income",
+        "char": "収",
+        "meaning": "income",
+        "onyomi": "しゅう",
+        "kunyomi": "おさ",
+        "extra_meanings": [
+          "obtain",
+          "reap"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "severance",
+        "char": "断",
+        "meaning": "severance",
+        "onyomi": "だん",
+        "kunyomi": "た",
+        "extra_meanings": [
+          "decline",
+          "refuse"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "extinguish",
+        "char": "消",
+        "meaning": "extinguish",
+        "onyomi": "しょう",
+        "kunyomi": "き",
+        "extra_meanings": [
+          "blow out",
+          "turn off"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "admonish",
+        "char": "警",
+        "meaning": "admonish",
+        "onyomi": "けい",
+        "kunyomi": "いまし",
+        "extra_meanings": [
+          "commandment"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "transport",
+        "char": "輸",
+        "meaning": "transport",
+        "onyomi": "ゆ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "send",
+          "be inferior"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "help",
+        "char": "助",
+        "meaning": "help",
+        "onyomi": "じょ",
+        "kunyomi": "たす",
+        "extra_meanings": [
+          "rescue",
+          "assist"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "counter-for",
+        "char": "張",
+        "meaning": "counter for bows & stringed instruments",
+        "onyomi": "ちょう",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "stretch",
+          "spread"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "fall",
+        "char": "落",
+        "meaning": "fall",
+        "onyomi": "らく",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "drop",
+          "come down"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "retreat",
+        "char": "退",
+        "meaning": "retreat",
+        "onyomi": "たい",
+        "kunyomi": "しりぞ",
+        "extra_meanings": [
+          "withdraw",
+          "retire"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "transit",
+        "char": "渡",
+        "meaning": "transit",
+        "onyomi": "と",
+        "kunyomi": "わた",
+        "extra_meanings": [
+          "ford",
+          "ferry"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "individual",
+        "char": "個",
+        "meaning": "individual",
+        "onyomi": "こ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "counter for articles"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "blessing",
+        "char": "福",
+        "meaning": "blessing",
+        "onyomi": "ふく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "fortune",
+          "luck"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "grade",
+        "char": "段",
+        "meaning": "grade",
+        "onyomi": "だん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "steps",
+          "stairs"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "have-the",
+        "char": "申",
+        "meaning": "have the honor to",
+        "onyomi": "しん",
+        "kunyomi": "もう",
+        "extra_meanings": [
+          "sign of the monkey",
+          "3-5PM"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "storey",
+        "char": "階",
+        "meaning": "storey",
+        "onyomi": "かい",
+        "kunyomi": "きざはし",
+        "extra_meanings": [
+          "stair"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "guest",
+        "char": "客",
+        "meaning": "guest",
+        "onyomi": "きゃく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "visitor",
+          "customer"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "easy",
+        "char": "易",
+        "meaning": "easy",
+        "onyomi": "えき",
+        "kunyomi": "やさ",
+        "extra_meanings": [
+          "ready to",
+          "simple"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "healthy",
+        "char": "健",
+        "meaning": "healthy",
+        "onyomi": "けん",
+        "kunyomi": "すこ",
+        "extra_meanings": [
+          "health",
+          "strength"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "kill",
+        "char": "殺",
+        "meaning": "kill",
+        "onyomi": "さつ",
+        "kunyomi": "ころ",
+        "extra_meanings": [
+          "murder",
+          "butcher"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "descend",
+        "char": "降",
+        "meaning": "descend",
+        "onyomi": "こう",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "precipitate",
+          "fall"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "dangerous",
+        "char": "危",
+        "meaning": "dangerous",
+        "onyomi": "き",
+        "kunyomi": "あぶ",
+        "extra_meanings": [
+          "fear",
+          "uneasy"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "suffering",
+        "char": "苦",
+        "meaning": "suffering",
+        "onyomi": "く",
+        "kunyomi": "くる",
+        "extra_meanings": [
+          "trial",
+          "worry"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "he",
+        "char": "彼",
+        "meaning": "he",
+        "onyomi": "ひ",
+        "kunyomi": "かれ",
+        "extra_meanings": [
+          "that",
+          "the"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "cool",
+        "char": "冷",
+        "meaning": "cool",
+        "onyomi": "れい",
+        "kunyomi": "つめ",
+        "extra_meanings": [
+          "chill"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "lady",
+        "char": "婦",
+        "meaning": "lady",
+        "onyomi": "ふ",
+        "kunyomi": "よめ",
+        "extra_meanings": [
+          "woman",
+          "wife"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "sort",
+        "char": "類",
+        "meaning": "sort",
+        "onyomi": "るい",
+        "kunyomi": "たぐ",
+        "extra_meanings": [
+          "kind",
+          "variety"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "precipitous",
+        "char": "険",
+        "meaning": "precipitous",
+        "onyomi": "けん",
+        "kunyomi": "けわ",
+        "extra_meanings": [
+          "inaccessible place",
+          "impregnable position"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ease",
+        "char": "康",
+        "meaning": "ease",
+        "onyomi": "こう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "peace"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "pay",
+        "char": "払",
+        "meaning": "pay",
+        "onyomi": "ふつ",
+        "kunyomi": "はら",
+        "extra_meanings": [
+          "clear out",
+          "prune"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "courtyard",
+        "char": "庭",
+        "meaning": "courtyard",
+        "onyomi": "てい",
+        "kunyomi": "にわ",
+        "extra_meanings": [
+          "garden",
+          "yard"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "diligence",
+        "char": "勤",
+        "meaning": "diligence",
+        "onyomi": "きん",
+        "kunyomi": "つと",
+        "extra_meanings": [
+          "become employed",
+          "serve"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "miscellaneous",
+        "char": "雑",
+        "meaning": "miscellaneous",
+        "onyomi": "ざつ",
+        "kunyomi": "まじ",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "star",
+        "char": "星",
+        "meaning": "star",
+        "onyomi": "せい",
+        "kunyomi": "ほし",
+        "extra_meanings": [
+          "spot",
+          "dot"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "petition",
+        "char": "願",
+        "meaning": "petition",
+        "onyomi": "がん",
+        "kunyomi": "ねが",
+        "extra_meanings": [
+          "request",
+          "vow"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "surpass",
+        "char": "越",
+        "meaning": "surpass",
+        "onyomi": "えつ",
+        "kunyomi": "こ",
+        "extra_meanings": [
+          "cross over",
+          "move to"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "pain",
+        "char": "痛",
+        "meaning": "pain",
+        "onyomi": "つう",
+        "kunyomi": "いた",
+        "extra_meanings": [
+          "hurt",
+          "damage"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "plank",
+        "char": "板",
+        "meaning": "plank",
+        "onyomi": "はん",
+        "kunyomi": "いた",
+        "extra_meanings": [
+          "board",
+          "plate"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "dream",
+        "char": "夢",
+        "meaning": "dream",
+        "onyomi": "む",
+        "kunyomi": "ゆめ",
+        "extra_meanings": [
+          "vision",
+          "illusion"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "burn",
+        "char": "燃",
+        "meaning": "burn",
+        "onyomi": "ねん",
+        "kunyomi": "も",
+        "extra_meanings": [
+          "blaze",
+          "glow"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "tooth",
+        "char": "歯",
+        "meaning": "tooth",
+        "onyomi": "し",
+        "kunyomi": "よわい",
+        "extra_meanings": [
+          "cog"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "sand",
+        "char": "砂",
+        "meaning": "sand",
+        "onyomi": "さ",
+        "kunyomi": "すな",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "accustomed",
+        "char": "慣",
+        "meaning": "accustomed",
+        "onyomi": "かん",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "get used to",
+          "become experienced"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "celebrate",
+        "char": "祝",
+        "meaning": "celebrate",
+        "onyomi": "しゅく",
+        "kunyomi": "いわ",
+        "extra_meanings": [
+          "congratulate"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "salute",
+        "char": "礼",
+        "meaning": "salute",
+        "onyomi": "れい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "bow",
+          "ceremony"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "window",
+        "char": "窓",
+        "meaning": "window",
+        "onyomi": "そう",
+        "kunyomi": "まど",
+        "extra_meanings": [
+          "pane"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ancestor",
+        "char": "祖",
+        "meaning": "ancestor",
+        "onyomi": "そ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "pioneer",
+          "founder"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "sweet",
+        "char": "甘",
+        "meaning": "sweet",
+        "onyomi": "かん",
+        "kunyomi": "あま",
+        "extra_meanings": [
+          "coax",
+          "pamper"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "box",
+        "char": "箱",
+        "meaning": "box",
+        "onyomi": "そう",
+        "kunyomi": "はこ",
+        "extra_meanings": [
+          "chest",
+          "case"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "cry",
+        "char": "泣",
+        "meaning": "cry",
+        "onyomi": "きゅう",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "weep",
+          "moan"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "drought",
+        "char": "乾",
+        "meaning": "drought",
+        "onyomi": "かん",
+        "kunyomi": "かわ",
+        "extra_meanings": [
+          "dry",
+          "desiccate"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "seduce",
+        "char": "召",
+        "meaning": "seduce",
+        "onyomi": "しょう",
+        "kunyomi": "め",
+        "extra_meanings": [
+          "call",
+          "send for"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "shoes",
+        "char": "靴",
+        "meaning": "shoes",
+        "onyomi": "か",
+        "kunyomi": "くつ",
+        "extra_meanings": [],
+        "unblocks": 2
+      },
+      {
+        "suffix": "seethe",
+        "char": "沸",
+        "meaning": "seethe",
+        "onyomi": "ふつ",
+        "kunyomi": "わ",
+        "extra_meanings": [
+          "boil",
+          "ferment"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "vis-a",
+        "char": "対",
+        "meaning": "vis-a-vis",
+        "onyomi": "たい",
+        "kunyomi": "あいて",
+        "extra_meanings": [
+          "opposite",
+          "even"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "inter",
+        "char": "相",
+        "meaning": "inter-",
+        "onyomi": "そう",
+        "kunyomi": "あい",
+        "extra_meanings": [
+          "mutual",
+          "together"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "determine",
+        "char": "定",
+        "meaning": "determine",
+        "onyomi": "てい",
+        "kunyomi": "さだ",
+        "extra_meanings": [
+          "fix",
+          "establish"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rice",
+        "char": "米",
+        "meaning": "rice",
+        "onyomi": "べい",
+        "kunyomi": "こめ",
+        "extra_meanings": [
+          "USA",
+          "metre"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "reality",
+        "char": "実",
+        "meaning": "reality",
+        "onyomi": "じつ",
+        "kunyomi": "み",
+        "extra_meanings": [
+          "truth",
+          "seed"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "connection",
+        "char": "関",
+        "meaning": "connection",
+        "onyomi": "かん",
+        "kunyomi": "せき",
+        "extra_meanings": [
+          "barrier",
+          "gateway"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "change",
+        "char": "化",
+        "meaning": "change",
+        "onyomi": "か",
+        "kunyomi": "ば",
+        "extra_meanings": [
+          "take the form of",
+          "influence"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bull-s",
+        "char": "的",
+        "meaning": "bull's eye",
+        "onyomi": "てき",
+        "kunyomi": "まと",
+        "extra_meanings": [
+          "mark",
+          "target"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "system",
+        "char": "制",
+        "meaning": "system",
+        "onyomi": "せい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "law",
+          "rule"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "period",
+        "char": "期",
+        "meaning": "period",
+        "onyomi": "き",
+        "kunyomi": "",
+        "extra_meanings": [
+          "time",
+          "date"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "co",
+        "char": "協",
+        "meaning": "co-",
+        "onyomi": "きょう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "cooperation"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "even",
+        "char": "平",
+        "meaning": "even",
+        "onyomi": "へい",
+        "kunyomi": "たい",
+        "extra_meanings": [
+          "flat",
+          "peace"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "protect",
+        "char": "保",
+        "meaning": "protect",
+        "onyomi": "ほ",
+        "kunyomi": "たも",
+        "extra_meanings": [
+          "guarantee",
+          "keep"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "number",
+        "char": "数",
+        "meaning": "number",
+        "onyomi": "すう",
+        "kunyomi": "かず",
+        "extra_meanings": [
+          "strength",
+          "fate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "finger",
+        "char": "指",
+        "meaning": "finger",
+        "onyomi": "し",
+        "kunyomi": "ゆび",
+        "extra_meanings": [
+          "point to",
+          "indicate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "authority",
+        "char": "権",
+        "meaning": "authority",
+        "onyomi": "けん",
+        "kunyomi": "おもり",
+        "extra_meanings": [
+          "power",
+          "rights"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "branch",
+        "char": "支",
+        "meaning": "branch",
+        "onyomi": "し",
+        "kunyomi": "ささ",
+        "extra_meanings": [
+          "support",
+          "sustain"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "no",
+        "char": "第",
+        "meaning": "No.",
+        "onyomi": "だい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "residence"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "spot",
+        "char": "点",
+        "meaning": "spot",
+        "onyomi": "てん",
+        "kunyomi": "つ",
+        "extra_meanings": [
+          "point",
+          "mark"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "report",
+        "char": "報",
+        "meaning": "report",
+        "onyomi": "ほう",
+        "kunyomi": "むく",
+        "extra_meanings": [
+          "news",
+          "reward"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "settle-debt",
+        "char": "済",
+        "meaning": "settle (debt, etc.)",
+        "onyomi": "さい",
+        "kunyomi": "す",
+        "extra_meanings": [
+          "finish",
+          "come to an end"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "borough",
+        "char": "府",
+        "meaning": "borough",
+        "onyomi": "ふ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "urban prefecture",
+          "govt office"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lively",
+        "char": "活",
+        "meaning": "lively",
+        "onyomi": "かつ",
+        "kunyomi": "い",
+        "extra_meanings": [
+          "resuscitation",
+          "being helped"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "meadow",
+        "char": "原",
+        "meaning": "meadow",
+        "onyomi": "げん",
+        "kunyomi": "はら",
+        "extra_meanings": [
+          "original",
+          "primitive"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "gain",
+        "char": "得",
+        "meaning": "gain",
+        "onyomi": "とく",
+        "kunyomi": "え",
+        "extra_meanings": [
+          "get",
+          "find"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "assets",
+        "char": "資",
+        "meaning": "assets",
+        "onyomi": "し",
+        "kunyomi": "",
+        "extra_meanings": [
+          "resources",
+          "capital"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "occasion",
+        "char": "際",
+        "meaning": "occasion",
+        "onyomi": "さい",
+        "kunyomi": "きわ",
+        "extra_meanings": [
+          "side",
+          "edge"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "investigate",
+        "char": "査",
+        "meaning": "investigate",
+        "onyomi": "さ",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "revelation",
+        "char": "告",
+        "meaning": "revelation",
+        "onyomi": "こく",
+        "kunyomi": "つ",
+        "extra_meanings": [
+          "tell",
+          "inform"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "anti",
+        "char": "反",
+        "meaning": "anti-",
+        "onyomi": "はん",
+        "kunyomi": "そ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "association",
+        "char": "組",
+        "meaning": "association",
+        "onyomi": "そ",
+        "kunyomi": "く",
+        "extra_meanings": [
+          "braid",
+          "plait"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "faith",
+        "char": "信",
+        "meaning": "faith",
+        "onyomi": "しん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "truth",
+          "fidelity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "exist",
+        "char": "在",
+        "meaning": "exist",
+        "onyomi": "ざい",
+        "kunyomi": "あ",
+        "extra_meanings": [
+          "outskirts",
+          "suburbs"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "affair",
+        "char": "件",
+        "meaning": "affair",
+        "onyomi": "けん",
+        "kunyomi": "くだん",
+        "extra_meanings": [
+          "case",
+          "matter"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "person-in",
+        "char": "係",
+        "meaning": "person in charge",
+        "onyomi": "けい",
+        "kunyomi": "かか",
+        "extra_meanings": [
+          "connection",
+          "duty"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "island",
+        "char": "島",
+        "meaning": "island",
+        "onyomi": "とう",
+        "kunyomi": "しま",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "value",
+        "char": "価",
+        "meaning": "value",
+        "onyomi": "か",
+        "kunyomi": "あたい",
+        "extra_meanings": [
+          "price"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "year-end",
+        "char": "歳",
+        "meaning": "year-end",
+        "onyomi": "さい",
+        "kunyomi": "とし",
+        "extra_meanings": [
+          "age",
+          "occasion"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "placement",
+        "char": "置",
+        "meaning": "placement",
+        "onyomi": "ち",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "put",
+          "set"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "set-free",
+        "char": "放",
+        "meaning": "set free",
+        "onyomi": "ほう",
+        "kunyomi": "はな",
+        "extra_meanings": [
+          "release",
+          "fire"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "tax",
+        "char": "税",
+        "meaning": "tax",
+        "onyomi": "ぜい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "duty"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ball",
+        "char": "球",
+        "meaning": "ball",
+        "onyomi": "きゅう",
+        "kunyomi": "たま",
+        "extra_meanings": [
+          "sphere"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "duty",
+        "char": "役",
+        "meaning": "duty",
+        "onyomi": "やく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "war",
+          "campaign"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "posture",
+        "char": "構",
+        "meaning": "posture",
+        "onyomi": "こう",
+        "kunyomi": "かま",
+        "extra_meanings": [
+          "stance",
+          "appearance"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "proportion",
+        "char": "割",
+        "meaning": "proportion",
+        "onyomi": "かつ",
+        "kunyomi": "わ",
+        "extra_meanings": [
+          "comparatively",
+          "divide"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "somebody",
+        "char": "身",
+        "meaning": "somebody",
+        "onyomi": "しん",
+        "kunyomi": "み",
+        "extra_meanings": [
+          "person"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "expense",
+        "char": "費",
+        "meaning": "expense",
+        "onyomi": "ひ",
+        "kunyomi": "つい",
+        "extra_meanings": [
+          "cost",
+          "spend"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "adhere",
+        "char": "付",
+        "meaning": "adhere",
+        "onyomi": "ふ",
+        "kunyomi": "つ",
+        "extra_meanings": [
+          "attach",
+          "refer to"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "difficult",
+        "char": "難",
+        "meaning": "difficult",
+        "onyomi": "なん",
+        "kunyomi": "かた",
+        "extra_meanings": [
+          "impossible",
+          "trouble"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ward-off",
+        "char": "防",
+        "meaning": "ward off",
+        "onyomi": "ぼう",
+        "kunyomi": "ふせ",
+        "extra_meanings": [
+          "defend",
+          "protect"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "tenderness",
+        "char": "優",
+        "meaning": "tenderness",
+        "onyomi": "ゆう",
+        "kunyomi": "やさ",
+        "extra_meanings": [
+          "excel",
+          "surpass"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "stone",
+        "char": "石",
+        "meaning": "stone",
+        "onyomi": "せき",
+        "kunyomi": "いし",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "boundary",
+        "char": "境",
+        "meaning": "boundary",
+        "onyomi": "きょう",
+        "kunyomi": "さかい",
+        "extra_meanings": [
+          "border",
+          "region"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "equip",
+        "char": "備",
+        "meaning": "equip",
+        "onyomi": "び",
+        "kunyomi": "そな",
+        "extra_meanings": [
+          "provision",
+          "preparation"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "distribute",
+        "char": "配",
+        "meaning": "distribute",
+        "onyomi": "はい",
+        "kunyomi": "くば",
+        "extra_meanings": [
+          "spouse",
+          "exile"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "calculate",
+        "char": "算",
+        "meaning": "calculate",
+        "onyomi": "さん",
+        "kunyomi": "そろ",
+        "extra_meanings": [
+          "divining",
+          "number"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "article",
+        "char": "条",
+        "meaning": "article",
+        "onyomi": "じょう",
+        "kunyomi": "えだ",
+        "extra_meanings": [
+          "clause",
+          "twig"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "agriculture",
+        "char": "農",
+        "meaning": "agriculture",
+        "onyomi": "のう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "farmers"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "wish",
+        "char": "念",
+        "meaning": "wish",
+        "onyomi": "ねん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "sense",
+          "idea"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "elephant",
+        "char": "象",
+        "meaning": "elephant",
+        "onyomi": "しょう",
+        "kunyomi": "かたど",
+        "extra_meanings": [
+          "pattern after",
+          "imitate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "example",
+        "char": "例",
+        "meaning": "example",
+        "onyomi": "れい",
+        "kunyomi": "たと",
+        "extra_meanings": [
+          "custom",
+          "usage"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ring",
+        "char": "環",
+        "meaning": "ring",
+        "onyomi": "かん",
+        "kunyomi": "わ",
+        "extra_meanings": [
+          "circle",
+          "loop"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "chase",
+        "char": "追",
+        "meaning": "chase",
+        "onyomi": "つい",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "drive away",
+          "follow"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "leaf",
+        "char": "葉",
+        "meaning": "leaf",
+        "onyomi": "よう",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "plane",
+          "lobe"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "semi",
+        "char": "準",
+        "meaning": "semi-",
+        "onyomi": "じゅん",
+        "kunyomi": "じゅん",
+        "extra_meanings": [
+          "correspond to",
+          "proportionate to"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "skill",
+        "char": "技",
+        "meaning": "skill",
+        "onyomi": "ぎ",
+        "kunyomi": "わざ",
+        "extra_meanings": [
+          "art",
+          "craft"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "distinction",
+        "char": "差",
+        "meaning": "distinction",
+        "onyomi": "さ",
+        "kunyomi": "さ",
+        "extra_meanings": [
+          "difference",
+          "variation"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "end",
+        "char": "末",
+        "meaning": "end",
+        "onyomi": "まつ",
+        "kunyomi": "すえ",
+        "extra_meanings": [
+          "close",
+          "tip"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "young",
+        "char": "若",
+        "meaning": "young",
+        "onyomi": "じゃく",
+        "kunyomi": "わか",
+        "extra_meanings": [
+          "if",
+          "perhaps"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "beauty",
+        "char": "美",
+        "meaning": "beauty",
+        "onyomi": "び",
+        "kunyomi": "うつく",
+        "extra_meanings": [
+          "beautiful"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "storehouse",
+        "char": "蔵",
+        "meaning": "storehouse",
+        "onyomi": "ぞう",
+        "kunyomi": "くら",
+        "extra_meanings": [
+          "hide",
+          "own"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ambition",
+        "char": "望",
+        "meaning": "ambition",
+        "onyomi": "ぼう",
+        "kunyomi": "のぞ",
+        "extra_meanings": [
+          "full moon",
+          "hope"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "guess",
+        "char": "察",
+        "meaning": "guess",
+        "onyomi": "さつ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "presume",
+          "surmise"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "deep",
+        "char": "深",
+        "meaning": "deep",
+        "onyomi": "しん",
+        "kunyomi": "ふか",
+        "extra_meanings": [
+          "heighten",
+          "intensify"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "esq",
+        "char": "様",
+        "meaning": "Esq.",
+        "onyomi": "よう",
+        "kunyomi": "さま",
+        "extra_meanings": [
+          "way",
+          "manner"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "property",
+        "char": "財",
+        "meaning": "property",
+        "onyomi": "ざい",
+        "kunyomi": "たから",
+        "extra_meanings": [
+          "money",
+          "wealth"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "harbor",
+        "char": "港",
+        "meaning": "harbor",
+        "onyomi": "こう",
+        "kunyomi": "みなと",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "call",
+        "char": "呼",
+        "meaning": "call",
+        "onyomi": "こ",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "call out to",
+          "invite"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "accomplished",
+        "char": "達",
+        "meaning": "accomplished",
+        "onyomi": "たつ",
+        "kunyomi": "たち",
+        "extra_meanings": [
+          "reach",
+          "arrive"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "good",
+        "char": "良",
+        "meaning": "good",
+        "onyomi": "りょう",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "pleasing",
+          "skilled"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "specialty",
+        "char": "専",
+        "meaning": "specialty",
+        "onyomi": "せん",
+        "kunyomi": "もっぱ",
+        "extra_meanings": [
+          "exclusive",
+          "mainly"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "history",
+        "char": "史",
+        "meaning": "history",
+        "onyomi": "し",
+        "kunyomi": "",
+        "extra_meanings": [
+          "chronicle"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "failure",
+        "char": "敗",
+        "meaning": "failure",
+        "onyomi": "はい",
+        "kunyomi": "やぶ",
+        "extra_meanings": [
+          "defeat",
+          "reversal"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "price",
+        "char": "値",
+        "meaning": "price",
+        "onyomi": "ち",
+        "kunyomi": "ね",
+        "extra_meanings": [
+          "cost",
+          "value"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "utensil",
+        "char": "器",
+        "meaning": "utensil",
+        "onyomi": "き",
+        "kunyomi": "うつわ",
+        "extra_meanings": [
+          "vessel",
+          "receptacle"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "impart",
+        "char": "授",
+        "meaning": "impart",
+        "onyomi": "じゅ",
+        "kunyomi": "さず",
+        "extra_meanings": [
+          "instruct",
+          "grant"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "round",
+        "char": "丸",
+        "meaning": "round",
+        "onyomi": "がん",
+        "kunyomi": "まる",
+        "extra_meanings": [
+          "perfection",
+          "-ship"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "other",
+        "char": "他",
+        "meaning": "other",
+        "onyomi": "た",
+        "kunyomi": "ほか",
+        "extra_meanings": [
+          "another",
+          "the others"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "record",
+        "char": "録",
+        "meaning": "record",
+        "onyomi": "ろく",
+        "kunyomi": "しる",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bridge",
+        "char": "橋",
+        "meaning": "bridge",
+        "onyomi": "きょう",
+        "kunyomi": "はし",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "beach",
+        "char": "岸",
+        "meaning": "beach",
+        "onyomi": "がん",
+        "kunyomi": "きし",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ascend",
+        "char": "登",
+        "meaning": "ascend",
+        "onyomi": "とう",
+        "kunyomi": "のぼ",
+        "extra_meanings": [
+          "climb up"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "exist-2",
+        "char": "存",
+        "meaning": "exist",
+        "onyomi": "そん",
+        "kunyomi": "ながら",
+        "extra_meanings": [
+          "suppose",
+          "be aware of"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "simple",
+        "char": "単",
+        "meaning": "simple",
+        "onyomi": "たん",
+        "kunyomi": "ひとえ",
+        "extra_meanings": [
+          "one",
+          "single"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "exclude",
+        "char": "除",
+        "meaning": "exclude",
+        "onyomi": "じょ",
+        "kunyomi": "のぞ",
+        "extra_meanings": [
+          "remove",
+          "abolish"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "perfect",
+        "char": "完",
+        "meaning": "perfect",
+        "onyomi": "かん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "completion",
+          "end"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "row",
+        "char": "並",
+        "meaning": "row",
+        "onyomi": "へい",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "and",
+          "besides"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "heal",
+        "char": "療",
+        "meaning": "heal",
+        "onyomi": "りょう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "cure"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "discipline",
+        "char": "修",
+        "meaning": "discipline",
+        "onyomi": "しゅう",
+        "kunyomi": "おさ",
+        "extra_meanings": [
+          "conduct oneself well",
+          "study"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "salary",
+        "char": "給",
+        "meaning": "salary",
+        "onyomi": "きゅう",
+        "kunyomi": "たま",
+        "extra_meanings": [
+          "wage",
+          "gift"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "jammed-in",
+        "char": "介",
+        "meaning": "jammed in",
+        "onyomi": "かい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "shellfish",
+          "mediate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "welcome",
+        "char": "迎",
+        "meaning": "welcome",
+        "onyomi": "げい",
+        "kunyomi": "むか",
+        "extra_meanings": [
+          "meet",
+          "greet"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "park",
+        "char": "園",
+        "meaning": "park",
+        "onyomi": "えん",
+        "kunyomi": "その",
+        "extra_meanings": [
+          "garden",
+          "yard"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "curriculum",
+        "char": "歴",
+        "meaning": "curriculum",
+        "onyomi": "れき",
+        "kunyomi": "",
+        "extra_meanings": [
+          "continuation",
+          "passage of time"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "resign",
+        "char": "辞",
+        "meaning": "resign",
+        "onyomi": "じ",
+        "kunyomi": "や",
+        "extra_meanings": [
+          "word",
+          "term"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cause",
+        "char": "因",
+        "meaning": "cause",
+        "onyomi": "いん",
+        "kunyomi": "よ",
+        "extra_meanings": [
+          "factor",
+          "be associated with"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "horse",
+        "char": "馬",
+        "meaning": "horse",
+        "onyomi": "ば",
+        "kunyomi": "うま",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "carrier",
+        "char": "般",
+        "meaning": "carrier",
+        "onyomi": "はん",
+        "kunyomi": "",
+        "extra_meanings": [
+          "carry",
+          "all"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "trade",
+        "char": "貿",
+        "meaning": "trade",
+        "onyomi": "ぼう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "exchange"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "attire",
+        "char": "装",
+        "meaning": "attire",
+        "onyomi": "そう",
+        "kunyomi": "よそお",
+        "extra_meanings": [
+          "dress",
+          "pretend"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "suitable",
+        "char": "適",
+        "meaning": "suitable",
+        "onyomi": "てき",
+        "kunyomi": "かな",
+        "extra_meanings": [
+          "occasional",
+          "rare"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "iron",
+        "char": "鉄",
+        "meaning": "iron",
+        "onyomi": "てつ",
+        "kunyomi": "くろがね",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "crowded",
+        "char": "込",
+        "meaning": "crowded",
+        "onyomi": "",
+        "kunyomi": "こ",
+        "extra_meanings": [
+          "mixture",
+          "in bulk"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "signpost",
+        "char": "標",
+        "meaning": "signpost",
+        "onyomi": "ひょう",
+        "kunyomi": "しるべ",
+        "extra_meanings": [
+          "seal",
+          "mark"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "interchange",
+        "char": "換",
+        "meaning": "interchange",
+        "onyomi": "かん",
+        "kunyomi": "か",
+        "extra_meanings": [
+          "period",
+          "change"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "wife",
+        "char": "妻",
+        "meaning": "wife",
+        "onyomi": "さい",
+        "kunyomi": "つま",
+        "extra_meanings": [
+          "spouse"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "wheel",
+        "char": "輪",
+        "meaning": "wheel",
+        "onyomi": "りん",
+        "kunyomi": "わ",
+        "extra_meanings": [
+          "ring",
+          "circle"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "inn",
+        "char": "宿",
+        "meaning": "inn",
+        "onyomi": "しゅく",
+        "kunyomi": "やど",
+        "extra_meanings": [
+          "lodging",
+          "relay station"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "trust",
+        "char": "頼",
+        "meaning": "trust",
+        "onyomi": "らい",
+        "kunyomi": "たの",
+        "extra_meanings": [
+          "request"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ship",
+        "char": "船",
+        "meaning": "ship",
+        "onyomi": "せん",
+        "kunyomi": "ふね",
+        "extra_meanings": [
+          "boat"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "signature",
+        "char": "署",
+        "meaning": "signature",
+        "onyomi": "しょ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "govt office",
+          "police station"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "waves",
+        "char": "波",
+        "meaning": "waves",
+        "onyomi": "は",
+        "kunyomi": "なみ",
+        "extra_meanings": [
+          "billows",
+          "Poland"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sash",
+        "char": "帯",
+        "meaning": "sash",
+        "onyomi": "たい",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "belt",
+          "obi"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "toil",
+        "char": "努",
+        "meaning": "toil",
+        "onyomi": "ど",
+        "kunyomi": "つと",
+        "extra_meanings": [
+          "diligent",
+          "as much as possible"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "universal",
+        "char": "普",
+        "meaning": "universal",
+        "onyomi": "ふ",
+        "kunyomi": "あまね",
+        "extra_meanings": [
+          "generally",
+          "Prussia"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "scatter",
+        "char": "散",
+        "meaning": "scatter",
+        "onyomi": "さん",
+        "kunyomi": "ち",
+        "extra_meanings": [
+          "disperse",
+          "spend"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "director",
+        "char": "司",
+        "meaning": "director",
+        "onyomi": "し",
+        "kunyomi": "つかさど",
+        "extra_meanings": [
+          "official",
+          "govt office"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "quiet",
+        "char": "静",
+        "meaning": "quiet",
+        "onyomi": "せい",
+        "kunyomi": "しず",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "marriage",
+        "char": "婚",
+        "meaning": "marriage",
+        "onyomi": "こん",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rejoice",
+        "char": "喜",
+        "meaning": "rejoice",
+        "onyomi": "き",
+        "kunyomi": "よろこ",
+        "extra_meanings": [
+          "take pleasure in"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "graduate",
+        "char": "卒",
+        "meaning": "graduate",
+        "onyomi": "そつ",
+        "kunyomi": "そっ",
+        "extra_meanings": [
+          "soldier",
+          "private"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "acquiesce",
+        "char": "承",
+        "meaning": "acquiesce",
+        "onyomi": "しょう",
+        "kunyomi": "うけたまわ",
+        "extra_meanings": [
+          "hear",
+          "listen to"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "floating",
+        "char": "浮",
+        "meaning": "floating",
+        "onyomi": "ふ",
+        "kunyomi": "う",
+        "extra_meanings": [
+          "float",
+          "rise to surface"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "boulder",
+        "char": "岩",
+        "meaning": "boulder",
+        "onyomi": "がん",
+        "kunyomi": "いわ",
+        "extra_meanings": [
+          "rock",
+          "cliff"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "practice",
+        "char": "練",
+        "meaning": "practice",
+        "onyomi": "れん",
+        "kunyomi": "ね",
+        "extra_meanings": [
+          "gloss",
+          "train"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "overthrow",
+        "char": "倒",
+        "meaning": "overthrow",
+        "onyomi": "とう",
+        "kunyomi": "たお",
+        "extra_meanings": [
+          "fall",
+          "collapse"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "stratum",
+        "char": "層",
+        "meaning": "stratum",
+        "onyomi": "そう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "social class",
+          "layer"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "angle",
+        "char": "角",
+        "meaning": "angle",
+        "onyomi": "かく",
+        "kunyomi": "かど",
+        "extra_meanings": [
+          "corner",
+          "square"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "entwine",
+        "char": "絡",
+        "meaning": "entwine",
+        "onyomi": "らく",
+        "kunyomi": "から",
+        "extra_meanings": [
+          "coil around",
+          "get caught in"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "damage",
+        "char": "損",
+        "meaning": "damage",
+        "onyomi": "そん",
+        "kunyomi": "そこ",
+        "extra_meanings": [
+          "loss",
+          "disadvantage"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bend",
+        "char": "曲",
+        "meaning": "bend",
+        "onyomi": "きょく",
+        "kunyomi": "ま",
+        "extra_meanings": [
+          "music",
+          "melody"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "on-foot",
+        "char": "徒",
+        "meaning": "on foot",
+        "onyomi": "と",
+        "kunyomi": "いたずら",
+        "extra_meanings": [
+          "junior",
+          "emptiness"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "quandary",
+        "char": "困",
+        "meaning": "quandary",
+        "onyomi": "こん",
+        "kunyomi": "こま",
+        "extra_meanings": [
+          "become distressed",
+          "annoyed"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "document",
+        "char": "誌",
+        "meaning": "document",
+        "onyomi": "し",
+        "kunyomi": "",
+        "extra_meanings": [
+          "records"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "warehouse",
+        "char": "庫",
+        "meaning": "warehouse",
+        "onyomi": "こ",
+        "kunyomi": "くら",
+        "extra_meanings": [
+          "storehouse"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lack",
+        "char": "欠",
+        "meaning": "lack",
+        "onyomi": "けつ",
+        "kunyomi": "か",
+        "extra_meanings": [
+          "gap",
+          "fail"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "engrave",
+        "char": "刻",
+        "meaning": "engrave",
+        "onyomi": "こく",
+        "kunyomi": "きざ",
+        "extra_meanings": [
+          "cut fine",
+          "chop"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "linen",
+        "char": "布",
+        "meaning": "linen",
+        "onyomi": "ふ",
+        "kunyomi": "ぬの",
+        "extra_meanings": [
+          "cloth",
+          "spread"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "breath",
+        "char": "息",
+        "meaning": "breath",
+        "onyomi": "そく",
+        "kunyomi": "いき",
+        "extra_meanings": [
+          "respiration",
+          "son"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "quake",
+        "char": "震",
+        "meaning": "quake",
+        "onyomi": "しん",
+        "kunyomi": "ふる",
+        "extra_meanings": [
+          "shake",
+          "tremble"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "picture",
+        "char": "絵",
+        "meaning": "picture",
+        "onyomi": "かい",
+        "kunyomi": "",
+        "extra_meanings": [
+          "drawing",
+          "painting"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "hope",
+        "char": "希",
+        "meaning": "hope",
+        "onyomi": "き",
+        "kunyomi": "まれ",
+        "extra_meanings": [
+          "beg",
+          "request"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "longing",
+        "char": "欲",
+        "meaning": "longing",
+        "onyomi": "よく",
+        "kunyomi": "ほっ",
+        "extra_meanings": [
+          "covetousness",
+          "greed"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "dirty",
+        "char": "汚",
+        "meaning": "dirty",
+        "onyomi": "お",
+        "kunyomi": "けが",
+        "extra_meanings": [
+          "pollute",
+          "disgrace"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sheet-of",
+        "char": "枚",
+        "meaning": "sheet of...",
+        "onyomi": "まい",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "laugh",
+        "char": "笑",
+        "meaning": "laugh",
+        "onyomi": "しょう",
+        "kunyomi": "わら",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "duplicate",
+        "char": "複",
+        "meaning": "duplicate",
+        "onyomi": "ふく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "double",
+          "compound"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "mail",
+        "char": "郵",
+        "meaning": "mail",
+        "onyomi": "ゆう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "stagecoach stop"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bundle",
+        "char": "束",
+        "meaning": "bundle",
+        "onyomi": "そく",
+        "kunyomi": "たば",
+        "extra_meanings": [
+          "sheaf",
+          "ream"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "go-between",
+        "char": "仲",
+        "meaning": "go-between",
+        "onyomi": "ちゅう",
+        "kunyomi": "なか",
+        "extra_meanings": [
+          "relationship"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "grope",
+        "char": "探",
+        "meaning": "grope",
+        "onyomi": "たん",
+        "kunyomi": "さぐ",
+        "extra_meanings": [
+          "search",
+          "look for"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "escape",
+        "char": "逃",
+        "meaning": "escape",
+        "onyomi": "とう",
+        "kunyomi": "に",
+        "extra_meanings": [
+          "flee",
+          "shirk"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "astray",
+        "char": "迷",
+        "meaning": "astray",
+        "onyomi": "めい",
+        "kunyomi": "まよ",
+        "extra_meanings": [
+          "be perplexed",
+          "in doubt"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "mister",
+        "char": "君",
+        "meaning": "mister",
+        "onyomi": "くん",
+        "kunyomi": "きみ",
+        "extra_meanings": [
+          "you",
+          "ruler"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "closed",
+        "char": "閉",
+        "meaning": "closed",
+        "onyomi": "へい",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "shut"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "thong",
+        "char": "緒",
+        "meaning": "thong",
+        "onyomi": "しょ",
+        "kunyomi": "お",
+        "extra_meanings": [
+          "beginning",
+          "inception"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "introduce",
+        "char": "紹",
+        "meaning": "introduce",
+        "onyomi": "しょう",
+        "kunyomi": "",
+        "extra_meanings": [
+          "inherit",
+          "help"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "exchange",
+        "char": "替",
+        "meaning": "exchange",
+        "onyomi": "たい",
+        "kunyomi": "か",
+        "extra_meanings": [
+          "spare",
+          "substitute"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "deposit",
+        "char": "預",
+        "meaning": "deposit",
+        "onyomi": "よ",
+        "kunyomi": "あず",
+        "extra_meanings": [
+          "custody",
+          "leave with"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "simplicity",
+        "char": "簡",
+        "meaning": "simplicity",
+        "onyomi": "かん",
+        "kunyomi": "えら",
+        "extra_meanings": [
+          "brevity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rhythm",
+        "char": "律",
+        "meaning": "rhythm",
+        "onyomi": "りつ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "law",
+          "regulation"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sake",
+        "char": "酒",
+        "meaning": "sake",
+        "onyomi": "しゅ",
+        "kunyomi": "さけ",
+        "extra_meanings": [
+          "alcohol"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "grieve",
+        "char": "悲",
+        "meaning": "grieve",
+        "onyomi": "ひ",
+        "kunyomi": "かな",
+        "extra_meanings": [
+          "sad",
+          "deplore"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "second-1",
+        "char": "秒",
+        "meaning": "second (1/60 minute)",
+        "onyomi": "びょう",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "heart",
+        "char": "奥",
+        "meaning": "heart",
+        "onyomi": "おう",
+        "kunyomi": "おく",
+        "extra_meanings": [
+          "interior"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "clear-up",
+        "char": "晴",
+        "meaning": "clear up",
+        "onyomi": "せい",
+        "kunyomi": "は",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lie-down",
+        "char": "寝",
+        "meaning": "lie down",
+        "onyomi": "しん",
+        "kunyomi": "ね",
+        "extra_meanings": [
+          "sleep",
+          "rest"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "watch-over",
+        "char": "看",
+        "meaning": "watch over",
+        "onyomi": "かん",
+        "kunyomi": "み",
+        "extra_meanings": [
+          "see"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sunshine",
+        "char": "陽",
+        "meaning": "sunshine",
+        "onyomi": "よう",
+        "kunyomi": "ひ",
+        "extra_meanings": [
+          "yang principle",
+          "positive"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "trouble",
+        "char": "悩",
+        "meaning": "trouble",
+        "onyomi": "のう",
+        "kunyomi": "なや",
+        "extra_meanings": [
+          "worry",
+          "in pain"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "fishing",
+        "char": "漁",
+        "meaning": "fishing",
+        "onyomi": "ぎょ",
+        "kunyomi": "あさ",
+        "extra_meanings": [
+          "fishery"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "ritual",
+        "char": "祭",
+        "meaning": "ritual",
+        "onyomi": "さい",
+        "kunyomi": "まつ",
+        "extra_meanings": [
+          "offer prayers",
+          "celebrate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sack",
+        "char": "袋",
+        "meaning": "sack",
+        "onyomi": "たい",
+        "kunyomi": "ふくろ",
+        "extra_meanings": [
+          "bag",
+          "pouch"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "snow",
+        "char": "雪",
+        "meaning": "snow",
+        "onyomi": "せつ",
+        "kunyomi": "ゆき",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "writing-brush",
+        "char": "筆",
+        "meaning": "writing brush",
+        "onyomi": "ひつ",
+        "kunyomi": "ふで",
+        "extra_meanings": [
+          "writing",
+          "painting brush"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "daughter",
+        "char": "娘",
+        "meaning": "daughter",
+        "onyomi": "じょう",
+        "kunyomi": "むすめ",
+        "extra_meanings": [
+          "girl"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "salt",
+        "char": "塩",
+        "meaning": "salt",
+        "onyomi": "えん",
+        "kunyomi": "しお",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "green",
+        "char": "緑",
+        "meaning": "green",
+        "onyomi": "りょく",
+        "kunyomi": "みどり",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "zero",
+        "char": "零",
+        "meaning": "zero",
+        "onyomi": "れい",
+        "kunyomi": "ぜろ",
+        "extra_meanings": [
+          "spill",
+          "overflow"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "angry",
+        "char": "怒",
+        "meaning": "angry",
+        "onyomi": "ど",
+        "kunyomi": "いか",
+        "extra_meanings": [
+          "be offended"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "baggage",
+        "char": "荷",
+        "meaning": "baggage",
+        "onyomi": "か",
+        "kunyomi": "に",
+        "extra_meanings": [
+          "shoulder-pole load",
+          "load"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "overnight-stay",
+        "char": "泊",
+        "meaning": "overnight stay",
+        "onyomi": "はく",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "put up at",
+          "ride at anchor"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "counter-for-2",
+        "char": "杯",
+        "meaning": "counter for cupfuls",
+        "onyomi": "はい",
+        "kunyomi": "さかずき",
+        "extra_meanings": [
+          "wine glass",
+          "glass"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "yellow",
+        "char": "黄",
+        "meaning": "yellow",
+        "onyomi": "こう",
+        "kunyomi": "き",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "shallow",
+        "char": "浅",
+        "meaning": "shallow",
+        "onyomi": "せん",
+        "kunyomi": "あさ",
+        "extra_meanings": [
+          "superficial",
+          "frivolous"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sweep",
+        "char": "掃",
+        "meaning": "sweep",
+        "onyomi": "そう",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "brush"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cloud",
+        "char": "雲",
+        "meaning": "cloud",
+        "onyomi": "うん",
+        "kunyomi": "くも",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "exhausted",
+        "char": "疲",
+        "meaning": "exhausted",
+        "onyomi": "ひ",
+        "kunyomi": "つか",
+        "extra_meanings": [
+          "tire",
+          "weary"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sink",
+        "char": "沈",
+        "meaning": "sink",
+        "onyomi": "ちん",
+        "kunyomi": "しず",
+        "extra_meanings": [
+          "be submerged",
+          "subside"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "chirp",
+        "char": "鳴",
+        "meaning": "chirp",
+        "onyomi": "めい",
+        "kunyomi": "な",
+        "extra_meanings": [
+          "cry",
+          "bark"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "frozen",
+        "char": "凍",
+        "meaning": "frozen",
+        "onyomi": "とう",
+        "kunyomi": "こお",
+        "extra_meanings": [
+          "congeal",
+          "refrigerate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "abdomen",
+        "char": "腹",
+        "meaning": "abdomen",
+        "onyomi": "ふく",
+        "kunyomi": "はら",
+        "extra_meanings": [
+          "belly",
+          "stomach"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "milk",
+        "char": "乳",
+        "meaning": "milk",
+        "onyomi": "にゅう",
+        "kunyomi": "ちち",
+        "extra_meanings": [
+          "breasts"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "smoke",
+        "char": "煙",
+        "meaning": "smoke",
+        "onyomi": "えん",
+        "kunyomi": "けむ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "romance",
+        "char": "恋",
+        "meaning": "romance",
+        "onyomi": "れん",
+        "kunyomi": "こ",
+        "extra_meanings": [
+          "in love",
+          "yearn for"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "jump",
+        "char": "踊",
+        "meaning": "jump",
+        "onyomi": "よう",
+        "kunyomi": "おど",
+        "extra_meanings": [
+          "dance",
+          "leap"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "tome",
+        "char": "冊",
+        "meaning": "tome",
+        "onyomi": "さつ",
+        "kunyomi": "ふみ",
+        "extra_meanings": [
+          "counter for books",
+          "volume"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "contraption",
+        "char": "械",
+        "meaning": "contraption",
+        "onyomi": "かい",
+        "kunyomi": "かせ",
+        "extra_meanings": [
+          "fetter",
+          "machine"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "dreadful",
+        "char": "怖",
+        "meaning": "dreadful",
+        "onyomi": "ふ",
+        "kunyomi": "こわ",
+        "extra_meanings": [
+          "be frightened",
+          "fearful"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "egg",
+        "char": "卵",
+        "meaning": "egg",
+        "onyomi": "らん",
+        "kunyomi": "たまご",
+        "extra_meanings": [
+          "ovum",
+          "spawn"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lake",
+        "char": "湖",
+        "meaning": "lake",
+        "onyomi": "こ",
+        "kunyomi": "みずうみ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cramped",
+        "char": "狭",
+        "meaning": "cramped",
+        "onyomi": "きょう",
+        "kunyomi": "せま",
+        "extra_meanings": [
+          "narrow",
+          "contract"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "consume",
+        "char": "喫",
+        "meaning": "consume",
+        "onyomi": "きつ",
+        "kunyomi": "の",
+        "extra_meanings": [
+          "eat",
+          "drink"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "place-on",
+        "char": "頂",
+        "meaning": "place on the head",
+        "onyomi": "ちょう",
+        "kunyomi": "いただ",
+        "extra_meanings": [
+          "receive",
+          "top of head"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "insect",
+        "char": "虫",
+        "meaning": "insect",
+        "onyomi": "ちゅう",
+        "kunyomi": "むし",
+        "extra_meanings": [
+          "bug",
+          "temper"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "melt",
+        "char": "溶",
+        "meaning": "melt",
+        "onyomi": "よう",
+        "kunyomi": "と",
+        "extra_meanings": [
+          "dissolve",
+          "thaw"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "warmth",
+        "char": "暖",
+        "meaning": "warmth",
+        "onyomi": "だん",
+        "kunyomi": "あたた",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "equal",
+        "char": "匹",
+        "meaning": "equal",
+        "onyomi": "ひつ",
+        "kunyomi": "ひき",
+        "extra_meanings": [
+          "head",
+          "roll of cloth"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "worship",
+        "char": "拝",
+        "meaning": "worship",
+        "onyomi": "はい",
+        "kunyomi": "おが",
+        "extra_meanings": [
+          "adore",
+          "pray to"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "icicle",
+        "char": "氷",
+        "meaning": "icicle",
+        "onyomi": "ひょう",
+        "kunyomi": "こおり",
+        "extra_meanings": [
+          "ice",
+          "hail"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pray",
+        "char": "祈",
+        "meaning": "pray",
+        "onyomi": "き",
+        "kunyomi": "いの",
+        "extra_meanings": [
+          "wish"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "hair-of",
+        "char": "髪",
+        "meaning": "hair of the head",
+        "onyomi": "はつ",
+        "kunyomi": "かみ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "busy",
+        "char": "忙",
+        "meaning": "busy",
+        "onyomi": "ぼう",
+        "kunyomi": "いそが",
+        "extra_meanings": [
+          "occupied",
+          "restless"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "shame",
+        "char": "恥",
+        "meaning": "shame",
+        "onyomi": "ち",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "dishonor"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "mud",
+        "char": "泥",
+        "meaning": "mud",
+        "onyomi": "でい",
+        "kunyomi": "どろ",
+        "extra_meanings": [
+          "mire",
+          "adhere to"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "accidentally",
+        "char": "偶",
+        "meaning": "accidentally",
+        "onyomi": "ぐう",
+        "kunyomi": "たま",
+        "extra_meanings": [
+          "even number",
+          "couple"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "spicy",
+        "char": "辛",
+        "meaning": "spicy",
+        "onyomi": "しん",
+        "kunyomi": "から",
+        "extra_meanings": [
+          "bitter",
+          "hot"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "nose",
+        "char": "鼻",
+        "meaning": "nose",
+        "onyomi": "び",
+        "kunyomi": "はな",
+        "extra_meanings": [
+          "snout"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "admirable",
+        "char": "偉",
+        "meaning": "admirable",
+        "onyomi": "い",
+        "kunyomi": "えら",
+        "extra_meanings": [
+          "greatness",
+          "remarkable"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "desk",
+        "char": "机",
+        "meaning": "desk",
+        "onyomi": "き",
+        "kunyomi": "つくえ",
+        "extra_meanings": [
+          "table"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "laundry",
+        "char": "濯",
+        "meaning": "laundry",
+        "onyomi": "たく",
+        "kunyomi": "すす",
+        "extra_meanings": [
+          "wash",
+          "pour on"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cat",
+        "char": "猫",
+        "meaning": "cat",
+        "onyomi": "びょう",
+        "kunyomi": "ねこ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "candy",
+        "char": "菓",
+        "meaning": "candy",
+        "onyomi": "か",
+        "kunyomi": "",
+        "extra_meanings": [
+          "cakes",
+          "fruit"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cap",
+        "char": "帽",
+        "meaning": "cap",
+        "onyomi": "ぼう",
+        "kunyomi": "ずきん",
+        "extra_meanings": [
+          "headgear"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "refreshing",
+        "char": "涼",
+        "meaning": "refreshing",
+        "onyomi": "りょう",
+        "kunyomi": "すず",
+        "extra_meanings": [
+          "nice and cool"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "token",
+        "char": "符",
+        "meaning": "token",
+        "onyomi": "ふ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "sign",
+          "mark"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "dish",
+        "char": "皿",
+        "meaning": "dish",
+        "onyomi": "べい",
+        "kunyomi": "さら",
+        "extra_meanings": [
+          "a helping",
+          "plate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pay-respects",
+        "char": "伺",
+        "meaning": "pay respects",
+        "onyomi": "し",
+        "kunyomi": "うかが",
+        "extra_meanings": [
+          "visit",
+          "ask"
+        ],
+        "unblocks": 1
+      }
+    ],
+    "n1": [
+      {
+        "suffix": "propose",
+        "char": "提",
+        "meaning": "propose",
+        "onyomi": "てい",
+        "kunyomi": "さ",
+        "extra_meanings": [
+          "take along",
+          "carry in hand"
+        ],
+        "unblocks": 4
+      },
+      {
+        "suffix": "hang",
+        "char": "掛",
+        "meaning": "hang",
+        "onyomi": "かい",
+        "kunyomi": "か",
+        "extra_meanings": [
+          "suspend",
+          "depend"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "who",
+        "char": "誰",
+        "meaning": "who",
+        "onyomi": "すい",
+        "kunyomi": "だれ",
+        "extra_meanings": [
+          "someone",
+          "somebody"
+        ],
+        "unblocks": 3
+      },
+      {
+        "suffix": "gentleman",
+        "char": "士",
+        "meaning": "gentleman",
+        "onyomi": "し",
+        "kunyomi": "さむらい",
+        "extra_meanings": [
+          "scholar",
+          "samurai"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "valve",
+        "char": "弁",
+        "meaning": "valve",
+        "onyomi": "べん",
+        "kunyomi": "かんむり",
+        "extra_meanings": [
+          "petal",
+          "braid"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "elementary",
+        "char": "素",
+        "meaning": "elementary",
+        "onyomi": "そ",
+        "kunyomi": "もと",
+        "extra_meanings": [
+          "principle",
+          "naked"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "demolition",
+        "char": "壊",
+        "meaning": "demolition",
+        "onyomi": "かい",
+        "kunyomi": "こわ",
+        "extra_meanings": [
+          "break",
+          "destroy"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "ego",
+        "char": "我",
+        "meaning": "ego",
+        "onyomi": "が",
+        "kunyomi": "われ",
+        "extra_meanings": [
+          "I",
+          "selfish"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "apologize",
+        "char": "謝",
+        "meaning": "apologize",
+        "onyomi": "しゃ",
+        "kunyomi": "あやま",
+        "extra_meanings": [
+          "thank",
+          "refuse"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "stubborn",
+        "char": "頑",
+        "meaning": "stubborn",
+        "onyomi": "がん",
+        "kunyomi": "かたく",
+        "extra_meanings": [
+          "foolish",
+          "firmly"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "length",
+        "char": "丈",
+        "meaning": "length",
+        "onyomi": "じょう",
+        "kunyomi": "たけ",
+        "extra_meanings": [
+          "ten shaku",
+          "measure"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "spare-time",
+        "char": "暇",
+        "meaning": "spare time",
+        "onyomi": "か",
+        "kunyomi": "ひま",
+        "extra_meanings": [
+          "rest",
+          "leisure"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "angling",
+        "char": "釣",
+        "meaning": "angling",
+        "onyomi": "ちょう",
+        "kunyomi": "つ",
+        "extra_meanings": [
+          "fish",
+          "catch"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "wicked",
+        "char": "邪",
+        "meaning": "wicked",
+        "onyomi": "じゃ",
+        "kunyomi": "よこし",
+        "extra_meanings": [
+          "injustice",
+          "wrong"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "suspicious",
+        "char": "怪",
+        "meaning": "suspicious",
+        "onyomi": "かい",
+        "kunyomi": "あや",
+        "extra_meanings": [
+          "mystery",
+          "apparition"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "uncle",
+        "char": "叔",
+        "meaning": "uncle",
+        "onyomi": "しゅく",
+        "kunyomi": "",
+        "extra_meanings": [
+          "youth"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "praise",
+        "char": "褒",
+        "meaning": "praise",
+        "onyomi": "ほう",
+        "kunyomi": "ほ",
+        "extra_meanings": [
+          "extol"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "scold",
+        "char": "叱",
+        "meaning": "scold",
+        "onyomi": "しつ",
+        "kunyomi": "しか",
+        "extra_meanings": [
+          "reprove"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "get-wet",
+        "char": "濡",
+        "meaning": "get wet",
+        "onyomi": "じゅ",
+        "kunyomi": "ぬれ",
+        "extra_meanings": [
+          "damp",
+          "make love"
+        ],
+        "unblocks": 2
+      },
+      {
+        "suffix": "overall",
+        "char": "統",
+        "meaning": "overall",
+        "onyomi": "とう",
+        "kunyomi": "す",
+        "extra_meanings": [
+          "relationship",
+          "ruling"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "faction",
+        "char": "派",
+        "meaning": "faction",
+        "onyomi": "は",
+        "kunyomi": "",
+        "extra_meanings": [
+          "group",
+          "party"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "undertake",
+        "char": "企",
+        "meaning": "undertake",
+        "onyomi": "き",
+        "kunyomi": "くわだ",
+        "extra_meanings": [
+          "scheme",
+          "design"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "safeguard",
+        "char": "護",
+        "meaning": "safeguard",
+        "onyomi": "ご",
+        "kunyomi": "まも",
+        "extra_meanings": [
+          "protect"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "attitude",
+        "char": "態",
+        "meaning": "attitude",
+        "onyomi": "たい",
+        "kunyomi": "わざ",
+        "extra_meanings": [
+          "condition",
+          "figure"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "righteousness",
+        "char": "義",
+        "meaning": "righteousness",
+        "onyomi": "ぎ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "justice",
+          "morality"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "stern",
+        "char": "厳",
+        "meaning": "stern",
+        "onyomi": "げん",
+        "kunyomi": "おごそ",
+        "extra_meanings": [
+          "strictness",
+          "severity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "benefit",
+        "char": "益",
+        "meaning": "benefit",
+        "onyomi": "えき",
+        "kunyomi": "ま",
+        "extra_meanings": [
+          "gain",
+          "profit"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "entertain",
+        "char": "興",
+        "meaning": "entertain",
+        "onyomi": "こう",
+        "kunyomi": "おこ",
+        "extra_meanings": [
+          "revive",
+          "retrieve"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "source",
+        "char": "源",
+        "meaning": "source",
+        "onyomi": "げん",
+        "kunyomi": "みなもと",
+        "extra_meanings": [
+          "origin"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "beguile",
+        "char": "惑",
+        "meaning": "beguile",
+        "onyomi": "わく",
+        "kunyomi": "まど",
+        "extra_meanings": [
+          "delusion",
+          "perplexity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "undress",
+        "char": "脱",
+        "meaning": "undress",
+        "onyomi": "だつ",
+        "kunyomi": "ぬ",
+        "extra_meanings": [
+          "removing",
+          "escape from"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "achievement",
+        "char": "功",
+        "meaning": "achievement",
+        "onyomi": "こう",
+        "kunyomi": "いさお",
+        "extra_meanings": [
+          "merits",
+          "success"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "doth",
+        "char": "致",
+        "meaning": "doth",
+        "onyomi": "ち",
+        "kunyomi": "いた",
+        "extra_meanings": [
+          "do",
+          "send"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "winding",
+        "char": "繰",
+        "meaning": "winding",
+        "onyomi": "そう",
+        "kunyomi": "く",
+        "extra_meanings": [
+          "reel",
+          "spin"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pledge",
+        "char": "契",
+        "meaning": "pledge",
+        "onyomi": "けい",
+        "kunyomi": "ちぎ",
+        "extra_meanings": [
+          "promise",
+          "vow"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "slacken",
+        "char": "緩",
+        "meaning": "slacken",
+        "onyomi": "かん",
+        "kunyomi": "ゆる",
+        "extra_meanings": [
+          "loosen",
+          "relax"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "shoot",
+        "char": "射",
+        "meaning": "shoot",
+        "onyomi": "しゃ",
+        "kunyomi": "い",
+        "extra_meanings": [
+          "shine into",
+          "onto"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "portable",
+        "char": "携",
+        "meaning": "portable",
+        "onyomi": "けい",
+        "kunyomi": "たずさ",
+        "extra_meanings": [
+          "armed with",
+          "bring along"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "checkup",
+        "char": "診",
+        "meaning": "checkup",
+        "onyomi": "しん",
+        "kunyomi": "み",
+        "extra_meanings": [
+          "seeing",
+          "diagnose"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "translate",
+        "char": "訳",
+        "meaning": "translate",
+        "onyomi": "やく",
+        "kunyomi": "わけ",
+        "extra_meanings": [
+          "reason",
+          "circumstance"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "neighboring",
+        "char": "隣",
+        "meaning": "neighboring",
+        "onyomi": "りん",
+        "kunyomi": "とな",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "splendor",
+        "char": "華",
+        "meaning": "splendor",
+        "onyomi": "か",
+        "kunyomi": "はな",
+        "extra_meanings": [
+          "flower",
+          "petal"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "bear",
+        "char": "熊",
+        "meaning": "bear",
+        "onyomi": "ゆう",
+        "kunyomi": "くま",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "wonder",
+        "char": "驚",
+        "meaning": "wonder",
+        "onyomi": "きょう",
+        "kunyomi": "おどろ",
+        "extra_meanings": [
+          "be surprised",
+          "frightened"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "purport",
+        "char": "趣",
+        "meaning": "purport",
+        "onyomi": "しゅ",
+        "kunyomi": "おもむき",
+        "extra_meanings": [
+          "gist",
+          "elegance"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cottage",
+        "char": "舎",
+        "meaning": "cottage",
+        "onyomi": "しゃ",
+        "kunyomi": "やど",
+        "extra_meanings": [
+          "inn",
+          "hut"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "enemy",
+        "char": "敵",
+        "meaning": "enemy",
+        "onyomi": "てき",
+        "kunyomi": "かたき",
+        "extra_meanings": [
+          "foe",
+          "opponent"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "dislike",
+        "char": "嫌",
+        "meaning": "dislike",
+        "onyomi": "けん",
+        "kunyomi": "きら",
+        "extra_meanings": [
+          "detest",
+          "hate"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "acid",
+        "char": "酸",
+        "meaning": "acid",
+        "onyomi": "さん",
+        "kunyomi": "す",
+        "extra_meanings": [
+          "bitterness",
+          "sour"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rot",
+        "char": "腐",
+        "meaning": "rot",
+        "onyomi": "ふ",
+        "kunyomi": "くさ",
+        "extra_meanings": [
+          "decay",
+          "sour"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "me",
+        "char": "僕",
+        "meaning": "me",
+        "onyomi": "ぼく",
+        "kunyomi": "しもべ",
+        "extra_meanings": [
+          "servant",
+          "manservant"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "inflammation",
+        "char": "炎",
+        "meaning": "inflammation",
+        "onyomi": "えん",
+        "kunyomi": "ほのお",
+        "extra_meanings": [
+          "flame",
+          "blaze"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "longevity",
+        "char": "寿",
+        "meaning": "longevity",
+        "onyomi": "じゅ",
+        "kunyomi": "ことぶき",
+        "extra_meanings": [
+          "congratulations",
+          "one's natural life"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "chess-piece",
+        "char": "棋",
+        "meaning": "chess piece",
+        "onyomi": "き",
+        "kunyomi": "ご",
+        "extra_meanings": [
+          "Japanese chess",
+          "shogi"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "street",
+        "char": "丁",
+        "meaning": "street",
+        "onyomi": "ちょう",
+        "kunyomi": "ひのと",
+        "extra_meanings": [
+          "ward",
+          "town"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cartoon",
+        "char": "漫",
+        "meaning": "cartoon",
+        "onyomi": "まん",
+        "kunyomi": "みだり",
+        "extra_meanings": [
+          "involuntarily",
+          "unrestrained"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "notebook",
+        "char": "帳",
+        "meaning": "notebook",
+        "onyomi": "ちょう",
+        "kunyomi": "とばり",
+        "extra_meanings": [
+          "account book",
+          "album"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "flip",
+        "char": "翻",
+        "meaning": "flip",
+        "onyomi": "ほん",
+        "kunyomi": "ひるがえ",
+        "extra_meanings": [
+          "turn over",
+          "wave"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sugar",
+        "char": "糖",
+        "meaning": "sugar",
+        "onyomi": "とう",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "burdensome",
+        "char": "駄",
+        "meaning": "burdensome",
+        "onyomi": "だ",
+        "kunyomi": "",
+        "extra_meanings": [
+          "pack horse",
+          "horse load"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "mirror",
+        "char": "鏡",
+        "meaning": "mirror",
+        "onyomi": "きょう",
+        "kunyomi": "かがみ",
+        "extra_meanings": [
+          "speculum",
+          "barrel-head"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "perusal",
+        "char": "覧",
+        "meaning": "perusal",
+        "onyomi": "らん",
+        "kunyomi": "み",
+        "extra_meanings": [
+          "see"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "eyeball",
+        "char": "眼",
+        "meaning": "eyeball",
+        "onyomi": "がん",
+        "kunyomi": "まなこ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "sigh",
+        "char": "嘆",
+        "meaning": "sigh",
+        "onyomi": "たん",
+        "kunyomi": "なげ",
+        "extra_meanings": [
+          "lament",
+          "moan"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "loneliness",
+        "char": "寂",
+        "meaning": "loneliness",
+        "onyomi": "じゃく",
+        "kunyomi": "さび",
+        "extra_meanings": [
+          "quietly",
+          "mellow"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "umbrella",
+        "char": "傘",
+        "meaning": "umbrella",
+        "onyomi": "さん",
+        "kunyomi": "かさ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "rather",
+        "char": "寧",
+        "meaning": "rather",
+        "onyomi": "ねい",
+        "kunyomi": "むし",
+        "extra_meanings": [
+          "preferably",
+          "peaceful"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "lead",
+        "char": "鉛",
+        "meaning": "lead",
+        "onyomi": "えん",
+        "kunyomi": "なまり",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "snake",
+        "char": "蛇",
+        "meaning": "snake",
+        "onyomi": "じゃ",
+        "kunyomi": "へび",
+        "extra_meanings": [
+          "serpent",
+          "hard drinker"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "monkey",
+        "char": "猿",
+        "meaning": "monkey",
+        "onyomi": "えん",
+        "kunyomi": "さる",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pot",
+        "char": "鍋",
+        "meaning": "pot",
+        "onyomi": "か",
+        "kunyomi": "なべ",
+        "extra_meanings": [
+          "pan",
+          "kettle"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "soup",
+        "char": "汁",
+        "meaning": "soup",
+        "onyomi": "じゅう",
+        "kunyomi": "しる",
+        "extra_meanings": [
+          "juice",
+          "broth"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "pork",
+        "char": "豚",
+        "meaning": "pork",
+        "onyomi": "とん",
+        "kunyomi": "ぶた",
+        "extra_meanings": [
+          "pig"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "storm",
+        "char": "嵐",
+        "meaning": "storm",
+        "onyomi": "らん",
+        "kunyomi": "あらし",
+        "extra_meanings": [
+          "tempest"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "broil",
+        "char": "炒",
+        "meaning": "broil",
+        "onyomi": "そう",
+        "kunyomi": "い",
+        "extra_meanings": [
+          "parch",
+          "roast"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "butterfly",
+        "char": "蝶",
+        "meaning": "butterfly",
+        "onyomi": "ちょう",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "key",
+        "char": "鍵",
+        "meaning": "key",
+        "onyomi": "けん",
+        "kunyomi": "かぎ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "mosquito",
+        "char": "蚊",
+        "meaning": "mosquito",
+        "onyomi": "ぶん",
+        "kunyomi": "か",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "chopsticks",
+        "char": "箸",
+        "meaning": "chopsticks",
+        "onyomi": "ちょ",
+        "kunyomi": "はし",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "fox",
+        "char": "狐",
+        "meaning": "fox",
+        "onyomi": "こ",
+        "kunyomi": "きつね",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "chair",
+        "char": "椅",
+        "meaning": "chair",
+        "onyomi": "い",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "glad",
+        "char": "嬉",
+        "meaning": "glad",
+        "onyomi": "き",
+        "kunyomi": "うれ",
+        "extra_meanings": [
+          "pleased",
+          "rejoice"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "stick",
+        "char": "貼",
+        "meaning": "stick",
+        "onyomi": "てん",
+        "kunyomi": "は",
+        "extra_meanings": [
+          "paste",
+          "apply"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "cough",
+        "char": "咳",
+        "meaning": "cough",
+        "onyomi": "かい",
+        "kunyomi": "せ",
+        "extra_meanings": [
+          "clear throat"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "boisterous",
+        "char": "噌",
+        "meaning": "boisterous",
+        "onyomi": "そう",
+        "kunyomi": "かまびす",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "itchy",
+        "char": "痒",
+        "meaning": "itchy",
+        "onyomi": "よう",
+        "kunyomi": "かゆ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "porcelain-bowl",
+        "char": "碗",
+        "meaning": "porcelain bowl",
+        "onyomi": "わん",
+        "kunyomi": "こばち",
+        "extra_meanings": [
+          "tea cup"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "envious",
+        "char": "羨",
+        "meaning": "envious",
+        "onyomi": "せん",
+        "kunyomi": "うらや",
+        "extra_meanings": [
+          "be jealous",
+          "covet"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "spider",
+        "char": "蛛",
+        "meaning": "spider",
+        "onyomi": "ちゅ",
+        "kunyomi": "",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "spider-2",
+        "char": "蜘",
+        "meaning": "spider",
+        "onyomi": "ち",
+        "kunyomi": "くも",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "fly",
+        "char": "蝿",
+        "meaning": "fly",
+        "onyomi": "よう",
+        "kunyomi": "はえ",
+        "extra_meanings": [],
+        "unblocks": 1
+      },
+      {
+        "suffix": "flourish",
+        "char": "賑",
+        "meaning": "flourish",
+        "onyomi": "しん",
+        "kunyomi": "にぎ",
+        "extra_meanings": [
+          "be bustling",
+          "prosperity"
+        ],
+        "unblocks": 1
+      },
+      {
+        "suffix": "saltiness",
+        "char": "鹸",
+        "meaning": "saltiness",
+        "onyomi": "けん",
+        "kunyomi": "あ",
+        "extra_meanings": [],
+        "unblocks": 1
+      }
+    ]
+  },
+  "decomposition": {
+    "n3": {
+      "tsutsumu": [
+        "thing",
+        "exertion",
+        "copy"
+      ],
+      "ushi": [
+        "thing",
+        "special",
+        "cow"
+      ],
+      "hito": [
+        "what",
+        "fit",
+        "tea",
+        "body",
+        "convenience",
+        "make",
+        "by-means",
+        "dwell",
+        "ill",
+        "attend",
+        "world",
+        "lower",
+        "night",
+        "springtime",
+        "meat"
+      ],
+      "ichi": [
+        "what",
+        "fit",
+        "brush-stroke",
+        "negative",
+        "move",
+        "body",
+        "true",
+        "convenience",
+        "make",
+        "degrees",
+        "generation",
+        "ride",
+        "ill",
+        "friend",
+        "daytime",
+        "open",
+        "correct",
+        "possess",
+        "polish",
+        "lower",
+        "copy",
+        "ray",
+        "springtime",
+        "summer",
+        "cold",
+        "sino"
+      ],
+      "kuchi": [
+        "what",
+        "fit",
+        "employee",
+        "times",
+        "question",
+        "pedestal",
+        "opinion",
+        "building",
+        "distant",
+        "goods",
+        "polish",
+        "head",
+        "short",
+        "sino"
+      ],
+      "ta": [
+        "brush-stroke",
+        "convenience",
+        "rice-field",
+        "world",
+        "fish"
+      ],
+      "hachigashira": [
+        "employee",
+        "topic",
+        "true",
+        "opinion",
+        "neck",
+        "ride",
+        "head",
+        "face",
+        "short",
+        "ocean",
+        "cold"
+      ],
+      "kai-shell": [
+        "employee",
+        "topic",
+        "head",
+        "face"
+      ],
+      "me": [
+        "employee",
+        "topic",
+        "true",
+        "neck",
+        "head",
+        "summer",
+        "face"
+      ],
+      "ten": [
+        "negative",
+        "pour",
+        "by-means",
+        "dwell",
+        "daytime",
+        "winter",
+        "dog",
+        "cold"
+      ],
+      "hitoashi": [
+        "inst",
+        "empty",
+        "opinion",
+        "exertion",
+        "world",
+        "beginning",
+        "research",
+        "ray"
+      ],
+      "ni": [
+        "inst",
+        "revolve",
+        "open",
+        "beginning",
+        "polish",
+        "springtime",
+        "sino"
+      ],
+      "oozato": [
+        "inst",
+        "metropolis"
+      ],
+      "ukanmuri": [
+        "inst",
+        "empty",
+        "building",
+        "research",
+        "character",
+        "cold"
+      ],
+      "bun-writing": [
+        "sentence"
+      ],
+      "hi-spoon": [
+        "cut"
+      ],
+      "katana": [
+        "cut"
+      ],
+      "ki": [
+        "music",
+        "tea",
+        "body",
+        "medicine",
+        "vegetable",
+        "forest",
+        "grove"
+      ],
+      "nisui": [
+        "music",
+        "medicine"
+      ],
+      "shiro": [
+        "music"
+      ],
+      "mushi": [
+        "wind"
+      ],
+      "kunigamae": [
+        "times"
+      ],
+      "mongamae": [
+        "question",
+        "open",
+        "gate"
+      ],
+      "chikara": [
+        "move",
+        "exertion"
+      ],
+      "hi-sun": [
+        "move",
+        "idea",
+        "topic",
+        "metropolis",
+        "morning",
+        "medicine",
+        "convenience",
+        "reflect",
+        "sound",
+        "daytime",
+        "springtime",
+        "sultry"
+      ],
+      "sato": [
+        "move",
+        "plains"
+      ],
+      "mochiiru": [
+        "traffic",
+        "utilize"
+      ],
+      "shinnyou": [
+        "traffic",
+        "near",
+        "distant"
+      ],
+      "kokoro": [
+        "idea"
+      ],
+      "tatsu": [
+        "idea",
+        "sound",
+        "face"
+      ],
+      "ou-king": [
+        "pour",
+        "dwell",
+        "ocean"
+      ],
+      "sanzui": [
+        "pour",
+        "sea",
+        "ocean",
+        "pond",
+        "sino"
+      ],
+      "haha": [
+        "mother",
+        "sea"
+      ],
+      "chichi": [
+        "father"
+      ],
+      "mata": [
+        "meal",
+        "clothing",
+        "degrees",
+        "friend"
+      ],
+      "kusakanmuri": [
+        "tea",
+        "medicine",
+        "vegetable",
+        "england",
+        "sino"
+      ],
+      "oogai": [
+        "topic",
+        "head",
+        "face"
+      ],
+      "oigashira": [
+        "metropolis",
+        "sultry"
+      ],
+      "ono": [
+        "near"
+      ],
+      "gonben": [
+        "plot",
+        "opinion"
+      ],
+      "juu": [
+        "plot",
+        "morning",
+        "true"
+      ],
+      "tsuki": [
+        "morning",
+        "clothing",
+        "possess"
+      ],
+      "mu": [
+        "pedestal",
+        "private",
+        "revolve",
+        "roof",
+        "gone"
+      ],
+      "ana": [
+        "empty",
+        "research"
+      ],
+      "kougatsu": [
+        "empty",
+        "craft"
+      ],
+      "gyouninben": [
+        "wait"
+      ],
+      "sun": [
+        "wait",
+        "special"
+      ],
+      "tsuchi": [
+        "wait",
+        "special",
+        "roof",
+        "distant",
+        "rouse",
+        "gone"
+      ],
+      "katahen": [
+        "trip"
+      ],
+      "kubi": [
+        "neck"
+      ],
+      "madare": [
+        "degrees"
+      ],
+      "kuruma": [
+        "revolve"
+      ],
+      "keigamae": [
+        "ill",
+        "meat"
+      ],
+      "yamaidare": [
+        "ill"
+      ],
+      "wakanmuri": [
+        "reflect",
+        "england",
+        "copy"
+      ],
+      "ya": [
+        "doctor",
+        "short"
+      ],
+      "samurai": [
+        "attend",
+        "voice"
+      ],
+      "shou": [
+        "walk",
+        "paper"
+      ],
+      "tomeru": [
+        "walk",
+        "correct"
+      ],
+      "itohen": [
+        "paper"
+      ],
+      "itoko": [
+        "paper"
+      ],
+      "itaru": [
+        "roof"
+      ],
+      "shikabane": [
+        "roof",
+        "daytime",
+        "voice"
+      ],
+      "koromo": [
+        "distant"
+      ],
+      "ishi": [
+        "polish"
+      ],
+      "kanehen": [
+        "silver"
+      ],
+      "konzukuri": [
+        "silver"
+      ],
+      "ko": [
+        "character"
+      ],
+      "hitoyane": [
+        "night",
+        "face"
+      ],
+      "yuu-evening": [
+        "night",
+        "evening"
+      ],
+      "hi-fire": [
+        "autumn"
+      ],
+      "fuyugashira": [
+        "summer",
+        "winter"
+      ],
+      "hitsuji": [
+        "ocean"
+      ],
+      "nari": [
+        "pond"
+      ],
+      "nikuduki": [
+        "meat"
+      ],
+      "tori-bird": [
+        "bird"
+      ],
+      "bokuzukuri": [
+        "winter"
+      ],
+      "uo": [
+        "fish"
+      ],
+      "inu": [
+        "dog"
+      ]
+    },
+    "n2": {
+      "kome": [
+        "turn",
+        "severance",
+        "sort",
+        "tooth",
+        "rice",
+        "number",
+        "astray",
+        "heart"
+      ],
+      "ta": [
+        "turn",
+        "fruit",
+        "wherefore",
+        "blessing",
+        "have-the",
+        "specialty",
+        "simple",
+        "practice",
+        "stratum",
+        "fishing",
+        "yellow",
+        "frozen",
+        "accidentally",
+        "nose",
+        "cat",
+        "candy"
+      ],
+      "keigashira": [
+        "hit",
+        "lady",
+        "ease",
+        "record",
+        "wife",
+        "quiet",
+        "mister",
+        "lie-down",
+        "snow",
+        "green",
+        "sweep",
+        "laundry"
+      ],
+      "hito": [
+        "transmit",
+        "whole",
+        "husband",
+        "lose",
+        "inside",
+        "jurisdiction",
+        "submit",
+        "transport",
+        "individual",
+        "healthy",
+        "cool",
+        "precipitous",
+        "drought",
+        "shoes",
+        "connection",
+        "change",
+        "protect",
+        "borough",
+        "faith",
+        "affair",
+        "person-in",
+        "value",
+        "adhere",
+        "tenderness",
+        "equip",
+        "wish",
+        "example",
+        "price",
+        "other",
+        "exclude",
+        "discipline",
+        "salary",
+        "jammed-in",
+        "wheel",
+        "inn",
+        "graduate",
+        "overthrow",
+        "lack",
+        "engrave",
+        "picture",
+        "longing",
+        "go-between",
+        "exchange",
+        "ritual",
+        "sack",
+        "salt",
+        "zero",
+        "baggage",
+        "abdomen",
+        "cramped",
+        "melt",
+        "accidentally",
+        "admirable",
+        "token",
+        "pay-respects"
+      ],
+      "mu": [
+        "transmit",
+        "reign",
+        "nonplussed",
+        "bring-up",
+        "method",
+        "public",
+        "ability",
+        "current",
+        "pay",
+        "window",
+        "trade",
+        "overthrow",
+        "picture",
+        "cloud",
+        "accidentally"
+      ],
+      "ni": [
+        "transmit",
+        "husband",
+        "lose",
+        "feelings",
+        "submit",
+        "diligence",
+        "connection",
+        "system",
+        "occasion",
+        "proportion",
+        "difficult",
+        "guess",
+        "perfect",
+        "row",
+        "iron",
+        "signpost",
+        "universal",
+        "scatter",
+        "quiet",
+        "acquiesce",
+        "picture",
+        "dirty",
+        "exchange",
+        "clear-up",
+        "watch-over",
+        "ritual",
+        "shallow",
+        "cloud",
+        "cramped",
+        "consume"
+      ],
+      "hi-sun": [
+        "utmost",
+        "nightfall",
+        "yesterday",
+        "wherefore",
+        "have-the",
+        "easy",
+        "star",
+        "drought",
+        "finger",
+        "gain",
+        "boundary",
+        "agriculture",
+        "heal",
+        "signature",
+        "universal",
+        "marriage",
+        "practice",
+        "stratum",
+        "bend",
+        "duplicate",
+        "thong",
+        "exchange",
+        "simplicity",
+        "clear-up",
+        "sunshine",
+        "frozen",
+        "abdomen",
+        "warmth",
+        "cap"
+      ],
+      "ichi": [
+        "utmost",
+        "nothingness",
+        "beforehand",
+        "nonplussed",
+        "straightaway",
+        "seat",
+        "quick",
+        "nickname",
+        "politics",
+        "deliberation",
+        "jurisdiction",
+        "submit",
+        "can",
+        "severance",
+        "transport",
+        "blessing",
+        "grade",
+        "cool",
+        "diligence",
+        "ancestor",
+        "drought",
+        "connection",
+        "gain",
+        "investigate",
+        "association",
+        "exist",
+        "placement",
+        "posture",
+        "tenderness",
+        "agriculture",
+        "wish",
+        "elephant",
+        "ring",
+        "end",
+        "young",
+        "property",
+        "price",
+        "exist-2",
+        "exclude",
+        "row",
+        "salary",
+        "wife",
+        "wheel",
+        "sash",
+        "universal",
+        "director",
+        "linen",
+        "hope",
+        "dirty",
+        "mail",
+        "bundle",
+        "mister",
+        "closed",
+        "deposit",
+        "watch-over",
+        "sunshine",
+        "salt",
+        "zero",
+        "baggage",
+        "counter-for-2",
+        "cloud",
+        "frozen",
+        "abdomen",
+        "tome",
+        "dreadful",
+        "place-on",
+        "warmth",
+        "worship",
+        "hair-of",
+        "pay-respects"
+      ],
+      "mata": [
+        "utmost",
+        "take",
+        "return",
+        "accept",
+        "income",
+        "transit",
+        "grade",
+        "kill",
+        "he",
+        "plank",
+        "branch",
+        "report",
+        "anti",
+        "duty",
+        "skill",
+        "impart",
+        "carrier",
+        "waves",
+        "toil",
+        "lie-down",
+        "angry",
+        "exhausted",
+        "warmth"
+      ],
+      "mimi": [
+        "utmost",
+        "take",
+        "shame"
+      ],
+      "kuchi": [
+        "section",
+        "status",
+        "reign",
+        "emotion",
+        "quick",
+        "nickname",
+        "harmony",
+        "add",
+        "tie",
+        "bureaucrat",
+        "overdo",
+        "bureau",
+        "can",
+        "admonish",
+        "fall",
+        "individual",
+        "blessing",
+        "guest",
+        "suffering",
+        "precipitous",
+        "diligence",
+        "sand",
+        "celebrate",
+        "seduce",
+        "protect",
+        "spot",
+        "lively",
+        "revelation",
+        "tax",
+        "proportion",
+        "difficult",
+        "stone",
+        "elephant",
+        "ring",
+        "chase",
+        "young",
+        "call",
+        "history",
+        "utensil",
+        "bridge",
+        "ascend",
+        "salary",
+        "park",
+        "resign",
+        "suitable",
+        "trust",
+        "ship",
+        "director",
+        "rejoice",
+        "boulder",
+        "entwine",
+        "damage",
+        "longing",
+        "bundle",
+        "go-between",
+        "mister",
+        "introduce",
+        "salt",
+        "baggage",
+        "chirp",
+        "jump",
+        "lake",
+        "consume",
+        "melt",
+        "admirable",
+        "refreshing",
+        "pay-respects"
+      ],
+      "oozato": [
+        "section",
+        "storey",
+        "descend",
+        "precipitous",
+        "occasion",
+        "ward-off",
+        "exclude",
+        "mail",
+        "sunshine"
+      ],
+      "tatsu": [
+        "section",
+        "happiness",
+        "cry",
+        "report",
+        "boundary",
+        "resign",
+        "suitable",
+        "spicy"
+      ],
+      "hachigashira": [
+        "whole",
+        "quick",
+        "slow",
+        "deliberation",
+        "public",
+        "jurisdiction",
+        "submit",
+        "sort",
+        "petition",
+        "accustomed",
+        "connection",
+        "period",
+        "even",
+        "assets",
+        "tax",
+        "expense",
+        "distinction",
+        "end",
+        "beauty",
+        "esq",
+        "property",
+        "harbor",
+        "call",
+        "accomplished",
+        "failure",
+        "ascend",
+        "row",
+        "heal",
+        "jammed-in",
+        "trade",
+        "suitable",
+        "trust",
+        "ship",
+        "universal",
+        "rejoice",
+        "practice",
+        "stratum",
+        "damage",
+        "longing",
+        "bundle",
+        "deposit",
+        "yellow",
+        "romance",
+        "cramped",
+        "place-on",
+        "melt"
+      ],
+      "ou-king": [
+        "whole",
+        "slow",
+        "deliberation",
+        "present",
+        "courtyard",
+        "ball",
+        "ring",
+        "distinction",
+        "beauty",
+        "ambition",
+        "esq",
+        "accomplished"
+      ],
+      "men-face": [
+        "mask"
+      ],
+      "fuyugashira": [
+        "status",
+        "admonish",
+        "fall",
+        "guest",
+        "descend",
+        "number",
+        "tenderness",
+        "article",
+        "entwine",
+        "duplicate",
+        "abdomen",
+        "hair-of"
+      ],
+      "ki": [
+        "status",
+        "loom",
+        "plan",
+        "art",
+        "quick",
+        "fruit",
+        "kill",
+        "miscellaneous",
+        "plank",
+        "box",
+        "inter",
+        "protect",
+        "authority",
+        "investigate",
+        "posture",
+        "article",
+        "leaf",
+        "end",
+        "deep",
+        "esq",
+        "bridge",
+        "curriculum",
+        "signpost",
+        "trust",
+        "practice",
+        "quandary",
+        "sheet-of",
+        "bundle",
+        "grope",
+        "counter-for-2",
+        "frozen",
+        "contraption",
+        "desk",
+        "candy"
+      ],
+      "hitoyane": [
+        "husband",
+        "bring-up",
+        "happiness",
+        "mingle",
+        "feelings",
+        "current",
+        "report",
+        "proportion",
+        "difficult",
+        "end",
+        "attire",
+        "suitable",
+        "quiet",
+        "graduate",
+        "engrave",
+        "exchange",
+        "clear-up",
+        "sack",
+        "romance",
+        "cramped",
+        "consume",
+        "busy",
+        "refreshing"
+      ],
+      "inu": [
+        "sort-of",
+        "burn"
+      ],
+      "yuu-evening": [
+        "sort-of",
+        "dream",
+        "burn"
+      ],
+      "sun": [
+        "leader",
+        "vis-a",
+        "borough",
+        "gain",
+        "adhere",
+        "specialty",
+        "token"
+      ],
+      "kuruma": [
+        "take-along",
+        "transport",
+        "wheel",
+        "warehouse"
+      ],
+      "shinnyou": [
+        "take-along",
+        "quick",
+        "return",
+        "slow",
+        "overdo",
+        "retreat",
+        "chase",
+        "accomplished",
+        "welcome",
+        "suitable",
+        "crowded",
+        "escape",
+        "astray"
+      ],
+      "itohen": [
+        "promise",
+        "tie",
+        "association",
+        "person-in",
+        "salary",
+        "practice",
+        "entwine",
+        "picture",
+        "thong",
+        "introduce",
+        "green"
+      ],
+      "itoko": [
+        "promise",
+        "loom",
+        "tie",
+        "association",
+        "person-in",
+        "salary",
+        "practice",
+        "entwine",
+        "picture",
+        "thong",
+        "introduce",
+        "green"
+      ],
+      "shou": [
+        "promise",
+        "tie",
+        "petition",
+        "sand",
+        "meadow",
+        "occasion",
+        "association",
+        "person-in",
+        "year-end",
+        "guess",
+        "heal",
+        "salary",
+        "signpost",
+        "practice",
+        "entwine",
+        "picture",
+        "thong",
+        "introduce",
+        "second-1",
+        "ritual",
+        "green",
+        "refreshing"
+      ],
+      "ten": [
+        "promise",
+        "loom",
+        "art",
+        "heat",
+        "swim",
+        "kill",
+        "bull-s",
+        "ball",
+        "round",
+        "engrave",
+        "egg",
+        "cramped",
+        "icicle"
+      ],
+      "tsutsumu": [
+        "promise",
+        "nickname",
+        "nightfall",
+        "admonish",
+        "easy",
+        "dangerous",
+        "bull-s",
+        "elephant",
+        "interchange",
+        "quiet",
+        "angle",
+        "lack",
+        "dirty"
+      ],
+      "kokorohen": [
+        "sex",
+        "feelings",
+        "accustomed",
+        "trouble",
+        "dreadful",
+        "busy"
+      ],
+      "sanzui": [
+        "reign",
+        "swim",
+        "method",
+        "current",
+        "extinguish",
+        "fall",
+        "transit",
+        "cry",
+        "seethe",
+        "settle-debt",
+        "lively",
+        "semi",
+        "deep",
+        "harbor",
+        "waves",
+        "floating",
+        "dirty",
+        "sake",
+        "fishing",
+        "overnight-stay",
+        "shallow",
+        "sink",
+        "lake",
+        "melt",
+        "mud",
+        "laundry",
+        "refreshing"
+      ],
+      "hoko": [
+        "loom",
+        "emotion",
+        "deliberation",
+        "turn-into",
+        "surpass",
+        "year-end",
+        "storehouse",
+        "shallow",
+        "contraption"
+      ],
+      "gonben": [
+        "scribe",
+        "deliberation",
+        "admonish",
+        "faith",
+        "document"
+      ],
+      "katana": [
+        "first-time",
+        "profit",
+        "transport",
+        "seduce",
+        "system",
+        "proportion",
+        "example",
+        "trade",
+        "overthrow",
+        "engrave",
+        "introduce",
+        "consume"
+      ],
+      "onna": [
+        "plan",
+        "lady",
+        "number",
+        "wife",
+        "toil",
+        "marriage",
+        "daughter",
+        "angry"
+      ],
+      "ukanmuri": [
+        "plan",
+        "bureaucrat",
+        "guest",
+        "window",
+        "determine",
+        "reality",
+        "proportion",
+        "guess",
+        "perfect",
+        "inn",
+        "lie-down",
+        "melt"
+      ],
+      "kokoro": [
+        "emotion",
+        "window",
+        "tenderness",
+        "wish",
+        "document",
+        "breath",
+        "grieve",
+        "angry",
+        "romance",
+        "shame"
+      ],
+      "juu": [
+        "straightaway",
+        "art",
+        "happiness",
+        "individual",
+        "descend",
+        "suffering",
+        "drought",
+        "co",
+        "branch",
+        "report",
+        "lively",
+        "placement",
+        "posture",
+        "semi",
+        "skill",
+        "specialty",
+        "price",
+        "simple",
+        "resign",
+        "suitable",
+        "graduate",
+        "lake",
+        "spicy"
+      ],
+      "me": [
+        "straightaway",
+        "jurisdiction",
+        "help",
+        "sort",
+        "petition",
+        "accustomed",
+        "ancestor",
+        "box",
+        "inter",
+        "assets",
+        "investigate",
+        "association",
+        "placement",
+        "expense",
+        "calculate",
+        "property",
+        "failure",
+        "price",
+        "trade",
+        "trust",
+        "damage",
+        "breath",
+        "deposit",
+        "watch-over",
+        "place-on",
+        "nose",
+        "cap"
+      ],
+      "gyouninben": [
+        "art",
+        "he",
+        "gain",
+        "duty",
+        "on-foot",
+        "rhythm"
+      ],
+      "tsuki": [
+        "bring-up",
+        "feelings",
+        "ability",
+        "extinguish",
+        "transport",
+        "period",
+        "ambition",
+        "scatter",
+        "quiet",
+        "angle",
+        "clear-up",
+        "abdomen",
+        "lake"
+      ],
+      "haba": [
+        "seat",
+        "lady",
+        "system",
+        "sash",
+        "linen",
+        "hope",
+        "sweep",
+        "dreadful",
+        "cap"
+      ],
+      "madare": [
+        "seat",
+        "transit",
+        "ease",
+        "courtyard",
+        "borough",
+        "curriculum",
+        "warehouse"
+      ],
+      "to-dipper": [
+        "department"
+      ],
+      "hitoashi": [
+        "heat",
+        "nightfall",
+        "celebrate",
+        "window",
+        "tax",
+        "boundary",
+        "deep",
+        "perfect",
+        "interchange",
+        "grope",
+        "escape",
+        "equal"
+      ],
+      "tsuchi": [
+        "heat",
+        "method",
+        "feelings",
+        "diligence",
+        "surpass",
+        "report",
+        "revelation",
+        "exist",
+        "proportion",
+        "boundary",
+        "accomplished",
+        "park",
+        "quiet",
+        "overthrow",
+        "on-foot",
+        "clear-up",
+        "salt",
+        "smoke",
+        "consume"
+      ],
+      "karai": [
+        "happiness",
+        "report",
+        "resign",
+        "spicy"
+      ],
+      "hitsuji": [
+        "slow",
+        "deliberation",
+        "distinction",
+        "beauty",
+        "esq",
+        "accomplished"
+      ],
+      "shikabane": [
+        "slow",
+        "bureau",
+        "stratum",
+        "mud"
+      ],
+      "mizu": [
+        "swim",
+        "ease",
+        "ball",
+        "esq",
+        "record",
+        "green",
+        "icicle"
+      ],
+      "bokuzukuri": [
+        "politics",
+        "task",
+        "admonish",
+        "number",
+        "set-free",
+        "article",
+        "failure",
+        "discipline",
+        "scatter",
+        "sheet-of"
+      ],
+      "tomeru": [
+        "politics",
+        "tooth",
+        "year-end",
+        "curriculum",
+        "jump"
+      ],
+      "te": [
+        "deliberation",
+        "acquiesce",
+        "watch-over"
+      ],
+      "keigamae": [
+        "inside",
+        "overdo",
+        "posture",
+        "bridge",
+        "suitable",
+        "interchange",
+        "heart",
+        "tome",
+        "accidentally"
+      ],
+      "miru": [
+        "present"
+      ],
+      "chikara": [
+        "task",
+        "add",
+        "help",
+        "diligence",
+        "co",
+        "toil"
+      ],
+      "wakanmuri": [
+        "accept",
+        "lady",
+        "dream",
+        "tenderness",
+        "deep",
+        "impart",
+        "sash",
+        "grope",
+        "lie-down",
+        "sweep",
+        "sink"
+      ],
+      "kai-shell": [
+        "jurisdiction",
+        "sort",
+        "petition",
+        "accustomed",
+        "assets",
+        "expense",
+        "property",
+        "failure",
+        "trade",
+        "trust",
+        "damage",
+        "deposit",
+        "place-on"
+      ],
+      "oogai": [
+        "jurisdiction",
+        "sort",
+        "petition",
+        "trust",
+        "deposit",
+        "place-on"
+      ],
+      "samurai": [
+        "tie",
+        "reality",
+        "attire",
+        "rejoice",
+        "document"
+      ],
+      "chichi": [
+        "mingle"
+      ],
+      "kakeru": [
+        "next",
+        "assets",
+        "lack",
+        "longing",
+        "deposit"
+      ],
+      "nisui": [
+        "next",
+        "cool",
+        "assets",
+        "escape",
+        "frozen"
+      ],
+      "ao": [
+        "feelings",
+        "quiet",
+        "clear-up"
+      ],
+      "hi-spoon": [
+        "ability",
+        "shoes",
+        "change",
+        "finger",
+        "mud"
+      ],
+      "kawa": [
+        "current"
+      ],
+      "ono": [
+        "severance",
+        "pray"
+      ],
+      "kusakanmuri": [
+        "admonish",
+        "fall",
+        "suffering",
+        "diligence",
+        "dream",
+        "difficult",
+        "equip",
+        "leaf",
+        "young",
+        "storehouse",
+        "baggage",
+        "cat",
+        "candy"
+      ],
+      "nagai": [
+        "counter-for",
+        "hair-of"
+      ],
+      "yumi": [
+        "counter-for",
+        "seethe",
+        "no",
+        "expense"
+      ],
+      "konzukuri": [
+        "retreat",
+        "good",
+        "daughter"
+      ],
+      "kunigamae": [
+        "individual",
+        "park",
+        "cause",
+        "quandary"
+      ],
+      "shimesu": [
+        "blessing",
+        "celebrate",
+        "salute",
+        "ancestor",
+        "occasion",
+        "guess",
+        "exclude",
+        "signpost",
+        "ritual",
+        "counter-for-2",
+        "pray"
+      ],
+      "shiro": [
+        "storey",
+        "petition",
+        "bull-s",
+        "meadow",
+        "island",
+        "tenderness",
+        "inn",
+        "overnight-stay"
+      ],
+      "fudezukuri": [
+        "healthy",
+        "rhythm",
+        "writing-brush"
+      ],
+      "tehen": [
+        "pay",
+        "finger",
+        "skill",
+        "impart",
+        "interchange",
+        "damage",
+        "grope",
+        "sweep",
+        "worship"
+      ],
+      "furutori": [
+        "miscellaneous",
+        "authority",
+        "difficult",
+        "semi",
+        "laundry"
+      ],
+      "mochiiru": [
+        "pain",
+        "equip",
+        "jump"
+      ],
+      "yamaidare": [
+        "pain",
+        "heal",
+        "exhausted"
+      ],
+      "hi-fire": [
+        "burn",
+        "smoke"
+      ],
+      "ishi": [
+        "sand",
+        "stone",
+        "boulder"
+      ],
+      "haha": [
+        "accustomed"
+      ],
+      "ana": [
+        "window",
+        "melt"
+      ],
+      "amai": [
+        "sweet",
+        "period"
+      ],
+      "takekanmuri": [
+        "box",
+        "no",
+        "calculate",
+        "laugh",
+        "simplicity",
+        "writing-brush",
+        "token"
+      ],
+      "bun-writing": [
+        "vis-a",
+        "settle-debt"
+      ],
+      "mongamae": [
+        "connection",
+        "closed",
+        "simplicity"
+      ],
+      "ushi": [
+        "system",
+        "affair"
+      ],
+      "mannaka": [
+        "even",
+        "beach",
+        "worship"
+      ],
+      "ya": [
+        "authority",
+        "iron"
+      ],
+      "boku-divination": [
+        "spot",
+        "egg"
+      ],
+      "shita": [
+        "lively",
+        "resign"
+      ],
+      "hatsugashira": [
+        "occasion",
+        "guess",
+        "ascend",
+        "ritual"
+      ],
+      "tori-bird": [
+        "island",
+        "chirp"
+      ],
+      "yamahen": [
+        "island",
+        "beach",
+        "boulder"
+      ],
+      "katahen": [
+        "set-free",
+        "ward-off"
+      ],
+      "mi-body": [
+        "somebody"
+      ],
+      "hiyominotori": [
+        "distribute",
+        "sake"
+      ],
+      "koromo": [
+        "agriculture",
+        "ring",
+        "park",
+        "attire",
+        "quake",
+        "sack"
+      ],
+      "inoko": [
+        "elephant"
+      ],
+      "gatsuhen": [
+        "example"
+      ],
+      "kougatsu": [
+        "distinction"
+      ],
+      "nari": [
+        "other"
+      ],
+      "kanehen": [
+        "record",
+        "iron"
+      ],
+      "ko": [
+        "exist-2",
+        "floating",
+        "milk"
+      ],
+      "uma": [
+        "horse"
+      ],
+      "ireru": [
+        "crowded"
+      ],
+      "oigashira": [
+        "signature",
+        "thong"
+      ],
+      "itaru": [
+        "overthrow"
+      ],
+      "ame": [
+        "quake",
+        "snow",
+        "zero",
+        "cloud"
+      ],
+      "uo": [
+        "fishing"
+      ],
+      "shikigamae": [
+        "sack"
+      ],
+      "sara": [
+        "salt",
+        "dish"
+      ],
+      "ashi-foot": [
+        "jump"
+      ],
+      "kemonohen": [
+        "cramped",
+        "cat"
+      ],
+      "mushi": [
+        "insect"
+      ]
+    },
+    "n1": {
+      "hi-sun": [
+        "propose",
+        "spare-time",
+        "cartoon",
+        "mirror",
+        "chopsticks",
+        "boisterous"
+      ],
+      "tehen": [
+        "propose",
+        "hang",
+        "portable"
+      ],
+      "boku-divination": [
+        "hang",
+        "uncle",
+        "loneliness",
+        "stick"
+      ],
+      "tsuchi": [
+        "hang",
+        "elementary",
+        "demolition",
+        "suspicious",
+        "doth",
+        "pledge",
+        "purport",
+        "cottage",
+        "monkey"
+      ],
+      "furutori": [
+        "who",
+        "safeguard",
+        "portable"
+      ],
+      "gonben": [
+        "who",
+        "apologize",
+        "safeguard",
+        "checkup",
+        "translate"
+      ],
+      "samurai": [
+        "gentleman",
+        "glad"
+      ],
+      "mu": [
+        "valve",
+        "overall",
+        "attitude",
+        "doth",
+        "bear",
+        "acid"
+      ],
+      "hitoyane": [
+        "elementary",
+        "demolition",
+        "praise",
+        "overall",
+        "pledge",
+        "enemy",
+        "cough"
+      ],
+      "itohen": [
+        "elementary",
+        "overall",
+        "winding",
+        "slacken"
+      ],
+      "itoko": [
+        "elementary",
+        "overall",
+        "winding",
+        "slacken"
+      ],
+      "ni": [
+        "elementary",
+        "stubborn",
+        "pledge",
+        "me",
+        "longevity",
+        "perusal",
+        "sigh",
+        "spider"
+      ],
+      "shou": [
+        "elementary",
+        "uncle",
+        "praise",
+        "overall",
+        "source",
+        "winding",
+        "slacken",
+        "loneliness",
+        "broil"
+      ],
+      "juu": [
+        "demolition",
+        "enemy",
+        "umbrella",
+        "soup",
+        "saltiness"
+      ],
+      "koromo": [
+        "demolition",
+        "praise",
+        "monkey",
+        "flourish"
+      ],
+      "hoko": [
+        "ego",
+        "righteousness",
+        "beguile"
+      ],
+      "te": [
+        "ego",
+        "righteousness"
+      ],
+      "mi-body": [
+        "apologize",
+        "shoot"
+      ],
+      "sun": [
+        "apologize",
+        "shoot",
+        "rot",
+        "longevity"
+      ],
+      "hachigashira": [
+        "stubborn",
+        "righteousness",
+        "benefit",
+        "entertain",
+        "undress",
+        "enemy",
+        "dislike",
+        "me",
+        "chess-piece",
+        "lead",
+        "glad",
+        "stick",
+        "boisterous",
+        "itchy",
+        "envious",
+        "spider",
+        "flourish"
+      ],
+      "hitoashi": [
+        "stubborn",
+        "overall",
+        "undress",
+        "acid",
+        "mirror"
+      ],
+      "kai-shell": [
+        "stubborn",
+        "stick",
+        "flourish"
+      ],
+      "me": [
+        "stubborn",
+        "eyeball",
+        "stick",
+        "flourish"
+      ],
+      "oogai": [
+        "stubborn"
+      ],
+      "ichi": [
+        "length",
+        "righteousness",
+        "benefit",
+        "entertain",
+        "slacken",
+        "splendor",
+        "longevity",
+        "street",
+        "sigh",
+        "rather",
+        "chair"
+      ],
+      "ten": [
+        "length",
+        "angling",
+        "translate",
+        "burdensome",
+        "cough"
+      ],
+      "mata": [
+        "spare-time",
+        "suspicious",
+        "uncle",
+        "safeguard",
+        "slacken",
+        "purport",
+        "cartoon",
+        "loneliness"
+      ],
+      "kanehen": [
+        "angling",
+        "mirror",
+        "lead",
+        "pot",
+        "key"
+      ],
+      "tsutsumu": [
+        "angling",
+        "wonder",
+        "fly"
+      ],
+      "oozato": [
+        "wicked",
+        "neighboring"
+      ],
+      "kokorohen": [
+        "suspicious"
+      ],
+      "hito": [
+        "praise",
+        "undertake",
+        "checkup",
+        "cottage",
+        "rot",
+        "me",
+        "umbrella",
+        "cough",
+        "saltiness"
+      ],
+      "kuchi": [
+        "praise",
+        "scold",
+        "entertain",
+        "beguile",
+        "undress",
+        "winding",
+        "wonder",
+        "cottage",
+        "enemy",
+        "sugar",
+        "sigh",
+        "lead",
+        "monkey",
+        "pot",
+        "chair",
+        "glad",
+        "stick",
+        "cough",
+        "boisterous",
+        "porcelain-bowl",
+        "spider-2",
+        "saltiness"
+      ],
+      "hi-spoon": [
+        "scold",
+        "attitude",
+        "bear",
+        "snake"
+      ],
+      "ame": [
+        "get-wet"
+      ],
+      "sanzui": [
+        "get-wet",
+        "faction",
+        "source",
+        "cartoon",
+        "soup",
+        "envious"
+      ],
+      "ono": [
+        "faction"
+      ],
+      "tomeru": [
+        "undertake"
+      ],
+      "kusakanmuri": [
+        "safeguard",
+        "splendor",
+        "wonder",
+        "sigh"
+      ],
+      "kokoro": [
+        "attitude",
+        "beguile",
+        "rather"
+      ],
+      "tsuki": [
+        "attitude",
+        "undress",
+        "bear",
+        "pork"
+      ],
+      "hitsuji": [
+        "righteousness",
+        "me",
+        "itchy",
+        "envious"
+      ],
+      "ou-king": [
+        "righteousness",
+        "me",
+        "itchy",
+        "envious"
+      ],
+      "bokuzukuri": [
+        "stern",
+        "doth",
+        "wonder",
+        "enemy"
+      ],
+      "mimi": [
+        "stern",
+        "purport"
+      ],
+      "sara": [
+        "benefit",
+        "rather"
+      ],
+      "keigamae": [
+        "entertain",
+        "enemy",
+        "pot"
+      ],
+      "shiro": [
+        "source"
+      ],
+      "chikara": [
+        "achievement"
+      ],
+      "kougatsu": [
+        "achievement"
+      ],
+      "itaru": [
+        "doth"
+      ],
+      "ki": [
+        "winding",
+        "chess-piece",
+        "butterfly",
+        "chair",
+        "spider"
+      ],
+      "katana": [
+        "pledge"
+      ],
+      "shikabane": [
+        "translate"
+      ],
+      "kome": [
+        "neighboring",
+        "flip",
+        "sugar"
+      ],
+      "yuu-evening": [
+        "neighboring",
+        "porcelain-bowl"
+      ],
+      "fuyugashira": [
+        "wonder",
+        "acid"
+      ],
+      "uma": [
+        "wonder",
+        "burdensome"
+      ],
+      "tatsu": [
+        "enemy",
+        "mirror"
+      ],
+      "keigashira": [
+        "dislike"
+      ],
+      "onna": [
+        "dislike",
+        "glad"
+      ],
+      "hiyominotori": [
+        "acid"
+      ],
+      "madare": [
+        "rot",
+        "sugar"
+      ],
+      "nikuduki": [
+        "rot"
+      ],
+      "hi-fire": [
+        "inflammation",
+        "broil"
+      ],
+      "amai": [
+        "chess-piece"
+      ],
+      "haba": [
+        "notebook"
+      ],
+      "nagai": [
+        "notebook"
+      ],
+      "hane": [
+        "flip"
+      ],
+      "nisui": [
+        "flip"
+      ],
+      "ta": [
+        "flip",
+        "boisterous",
+        "fly"
+      ],
+      "miru": [
+        "perusal"
+      ],
+      "konzukuri": [
+        "eyeball"
+      ],
+      "ukanmuri": [
+        "loneliness",
+        "rather",
+        "snake",
+        "porcelain-bowl"
+      ],
+      "mushi": [
+        "snake",
+        "butterfly",
+        "mosquito",
+        "spider",
+        "spider-2",
+        "fly"
+      ],
+      "kemonohen": [
+        "monkey",
+        "fox"
+      ],
+      "inoko": [
+        "pork"
+      ],
+      "yamahen": [
+        "storm"
+      ],
+      "fudezukuri": [
+        "key"
+      ],
+      "bun-writing": [
+        "mosquito"
+      ],
+      "oigashira": [
+        "chopsticks"
+      ],
+      "takekanmuri": [
+        "chopsticks"
+      ],
+      "yamaidare": [
+        "itchy"
+      ],
+      "ishi": [
+        "porcelain-bowl"
+      ],
+      "kakeru": [
+        "envious"
+      ],
+      "ushi": [
+        "spider"
+      ],
+      "ya": [
+        "spider-2"
+      ],
+      "kunigamae": [
+        "saltiness"
+      ]
+    }
+  }
+}

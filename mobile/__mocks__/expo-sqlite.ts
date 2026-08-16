@@ -1338,6 +1338,19 @@ function queryRows(state: MockDatabaseState, sql: string, params: unknown[] = []
   if (/FROM items/i.test(trimmed)) {
     let rows = [...(state.tables.get('items') ?? [])];
 
+    // `SELECT DISTINCT jlpt_level FROM items [WHERE item_type = '…']`. Without
+    // this the generic path below returns the whole table, and a level filter
+    // that does nothing would still look green.
+    const distinctLevels = /SELECT DISTINCT jlpt_level/i.exec(trimmed);
+    if (distinctLevels) {
+      const typeFilter = /item_type = '([a-z]+)'/i.exec(trimmed);
+      const scoped = typeFilter
+        ? rows.filter((row) => row.item_type === typeFilter[1])
+        : rows;
+      const levels = new Set(scoped.map((row) => String(row.jlpt_level)));
+      return Array.from(levels).map((jlpt_level) => ({ jlpt_level }));
+    }
+
     if (/WHERE id = \?/i.test(trimmed)) {
       return rows.filter((row) => row.id === params[0]);
     }

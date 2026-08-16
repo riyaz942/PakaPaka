@@ -1,0 +1,3525 @@
+{
+  "jlpt_level": "N3",
+  "items": [
+    {
+      "slug": "n3-thing",
+      "primary_form": "物",
+      "meaning": "thing",
+      "sort_order": 1,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぶつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もの",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "thing",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぶつ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "object"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "matter"
+        }
+      ]
+    },
+    {
+      "slug": "n3-what",
+      "primary_form": "何",
+      "meaning": "what",
+      "sort_order": 2,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "か",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なに",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "what",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "か"
+        }
+      ]
+    },
+    {
+      "slug": "n3-fit",
+      "primary_form": "合",
+      "meaning": "fit",
+      "sort_order": 3,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ごう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "fit",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ごう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "suit"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "join"
+        }
+      ]
+    },
+    {
+      "slug": "n3-brush-stroke",
+      "primary_form": "画",
+      "meaning": "brush-stroke",
+      "sort_order": 4,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "が",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "えが",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "brush-stroke",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "が"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "picture"
+        }
+      ]
+    },
+    {
+      "slug": "n3-employee",
+      "primary_form": "員",
+      "meaning": "employee",
+      "sort_order": 5,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "employee",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "member"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number"
+        }
+      ]
+    },
+    {
+      "slug": "n3-negative",
+      "primary_form": "不",
+      "meaning": "negative",
+      "sort_order": 6,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ふ",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "negative",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ふ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "non-"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "bad"
+        }
+      ]
+    },
+    {
+      "slug": "n3-inst",
+      "primary_form": "院",
+      "meaning": "Inst.",
+      "sort_order": 7,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "Inst.",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "institution"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "temple"
+        }
+      ]
+    },
+    {
+      "slug": "n3-sentence",
+      "primary_form": "文",
+      "meaning": "sentence",
+      "sort_order": 8,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぶん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ふみ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sentence",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぶん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "literature"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "style"
+        }
+      ]
+    },
+    {
+      "slug": "n3-cut",
+      "primary_form": "切",
+      "meaning": "cut",
+      "sort_order": 9,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "き",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "cut",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せつ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "cutoff"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be sharp"
+        }
+      ]
+    },
+    {
+      "slug": "n3-music",
+      "primary_form": "楽",
+      "meaning": "music",
+      "sort_order": 10,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "がく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たの",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "music",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "がく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "comfort"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ease"
+        }
+      ]
+    },
+    {
+      "slug": "n3-wind",
+      "primary_form": "風",
+      "meaning": "wind",
+      "sort_order": 11,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ふう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かぜ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "wind",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ふう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "air"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "style"
+        }
+      ]
+    },
+    {
+      "slug": "n3-times",
+      "primary_form": "回",
+      "meaning": "-times",
+      "sort_order": 12,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "まわ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "-times",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "round"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "game"
+        }
+      ]
+    },
+    {
+      "slug": "n3-question",
+      "primary_form": "問",
+      "meaning": "question",
+      "sort_order": 13,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "と",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "question",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ask"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "problem"
+        }
+      ]
+    },
+    {
+      "slug": "n3-move",
+      "primary_form": "動",
+      "meaning": "move",
+      "sort_order": 14,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "どう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うご",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "move",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "どう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "motion"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "change"
+        }
+      ]
+    },
+    {
+      "slug": "n3-traffic",
+      "primary_form": "通",
+      "meaning": "traffic",
+      "sort_order": 15,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "つう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "traffic",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "つう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "pass through"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "avenue"
+        }
+      ]
+    },
+    {
+      "slug": "n3-idea",
+      "primary_form": "意",
+      "meaning": "idea",
+      "sort_order": 16,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "い",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "idea",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "い"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "mind"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "n3-plains",
+      "primary_form": "野",
+      "meaning": "plains",
+      "sort_order": 17,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "や",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "の",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "plains",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "や"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "field"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "rustic"
+        }
+      ]
+    },
+    {
+      "slug": "n3-pour",
+      "primary_form": "注",
+      "meaning": "pour",
+      "sort_order": 18,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "そそ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "pour",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちゅう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "irrigate"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "flow into"
+        }
+      ]
+    },
+    {
+      "slug": "n3-mother",
+      "primary_form": "母",
+      "meaning": "mother",
+      "sort_order": 19,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぼ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はは",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "mother",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぼ"
+        }
+      ]
+    },
+    {
+      "slug": "n3-father",
+      "primary_form": "父",
+      "meaning": "father",
+      "sort_order": 20,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ふ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ちち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "father",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ふ"
+        }
+      ]
+    },
+    {
+      "slug": "n3-meal",
+      "primary_form": "飯",
+      "meaning": "meal",
+      "sort_order": 21,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "はん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "めし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "meal",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "はん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "boiled rice"
+        }
+      ]
+    },
+    {
+      "slug": "n3-tea",
+      "primary_form": "茶",
+      "meaning": "tea",
+      "sort_order": 22,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちゃ",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tea",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちゃ"
+        }
+      ]
+    },
+    {
+      "slug": "n3-body",
+      "primary_form": "体",
+      "meaning": "body",
+      "sort_order": 23,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "たい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "からだ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "body",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "たい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "substance"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "object"
+        }
+      ]
+    },
+    {
+      "slug": "n3-topic",
+      "primary_form": "題",
+      "meaning": "topic",
+      "sort_order": 24,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "だい",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "topic",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "だい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "subject"
+        }
+      ]
+    },
+    {
+      "slug": "n3-metropolis",
+      "primary_form": "都",
+      "meaning": "metropolis",
+      "sort_order": 25,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "と",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みやこ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "metropolis",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "と"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "capital"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "all"
+        }
+      ]
+    },
+    {
+      "slug": "n3-near",
+      "primary_form": "近",
+      "meaning": "near",
+      "sort_order": 26,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ちか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "near",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "early"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "akin"
+        }
+      ]
+    },
+    {
+      "slug": "n3-plot",
+      "primary_form": "計",
+      "meaning": "plot",
+      "sort_order": 27,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "けい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "plot",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "けい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "plan"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "scheme"
+        }
+      ]
+    },
+    {
+      "slug": "n3-morning",
+      "primary_form": "朝",
+      "meaning": "morning",
+      "sort_order": 28,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あさ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "morning",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちょう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "dynasty"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "regime"
+        }
+      ]
+    },
+    {
+      "slug": "n3-pedestal",
+      "primary_form": "台",
+      "meaning": "pedestal",
+      "sort_order": 29,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "だい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うてな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "pedestal",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "だい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "a stand"
+        }
+      ]
+    },
+    {
+      "slug": "n3-true",
+      "primary_form": "真",
+      "meaning": "true",
+      "sort_order": 30,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "true",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reality"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "Buddhist sect"
+        }
+      ]
+    },
+    {
+      "slug": "n3-empty",
+      "primary_form": "空",
+      "meaning": "empty",
+      "sort_order": 31,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "くう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "そら",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "empty",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "くう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "sky"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "void"
+        }
+      ]
+    },
+    {
+      "slug": "n3-opinion",
+      "primary_form": "説",
+      "meaning": "opinion",
+      "sort_order": 32,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "と",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "opinion",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せつ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "theory"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "explanation"
+        }
+      ]
+    },
+    {
+      "slug": "n3-wait",
+      "primary_form": "待",
+      "meaning": "wait",
+      "sort_order": 33,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "たい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "wait",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "たい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "depend on"
+        }
+      ]
+    },
+    {
+      "slug": "n3-building",
+      "primary_form": "館",
+      "meaning": "building",
+      "sort_order": 34,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "やかた",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "building",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "mansion"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "large building"
+        }
+      ]
+    },
+    {
+      "slug": "n3-medicine",
+      "primary_form": "薬",
+      "meaning": "medicine",
+      "sort_order": 35,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "やく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くすり",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "medicine",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "やく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "chemical"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "enamel"
+        }
+      ]
+    },
+    {
+      "slug": "n3-convenience",
+      "primary_form": "便",
+      "meaning": "convenience",
+      "sort_order": 36,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "べん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たよ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "convenience",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "べん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "facility"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "excrement"
+        }
+      ]
+    },
+    {
+      "slug": "n3-trip",
+      "primary_form": "旅",
+      "meaning": "trip",
+      "sort_order": 37,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "りょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たび",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "trip",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "りょ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "travel"
+        }
+      ]
+    },
+    {
+      "slug": "n3-clothing",
+      "primary_form": "服",
+      "meaning": "clothing",
+      "sort_order": 38,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ふく",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "clothing",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ふく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "admit"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "obey"
+        }
+      ]
+    },
+    {
+      "slug": "n3-neck",
+      "primary_form": "首",
+      "meaning": "neck",
+      "sort_order": 39,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "くび",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "neck",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅ"
+        }
+      ]
+    },
+    {
+      "slug": "n3-make",
+      "primary_form": "作",
+      "meaning": "make",
+      "sort_order": 40,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "さく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つく",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "make",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "さく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "production"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "prepare"
+        }
+      ]
+    },
+    {
+      "slug": "n3-degrees",
+      "primary_form": "度",
+      "meaning": "degrees",
+      "sort_order": 41,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ど",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たび",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "degrees",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ど"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "occurrence"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "time"
+        }
+      ]
+    },
+    {
+      "slug": "n3-by-means",
+      "primary_form": "以",
+      "meaning": "by means of",
+      "sort_order": 42,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "い",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もっ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "by means of",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "い"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "because"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "in view of"
+        }
+      ]
+    },
+    {
+      "slug": "n3-generation",
+      "primary_form": "世",
+      "meaning": "generation",
+      "sort_order": 43,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "よ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "generation",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "world"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "society"
+        }
+      ]
+    },
+    {
+      "slug": "n3-sea",
+      "primary_form": "海",
+      "meaning": "sea",
+      "sort_order": 44,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うみ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sea",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ocean"
+        }
+      ]
+    },
+    {
+      "slug": "n3-special",
+      "primary_form": "特",
+      "meaning": "special",
+      "sort_order": 45,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "とく",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "special",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "とく"
+        }
+      ]
+    },
+    {
+      "slug": "n3-private",
+      "primary_form": "私",
+      "meaning": "private",
+      "sort_order": 46,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "わたくし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "private",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "I"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "me"
+        }
+      ]
+    },
+    {
+      "slug": "n3-dwell",
+      "primary_form": "住",
+      "meaning": "dwell",
+      "sort_order": 47,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "す",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "dwell",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じゅう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reside"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "live"
+        }
+      ]
+    },
+    {
+      "slug": "n3-revolve",
+      "primary_form": "転",
+      "meaning": "revolve",
+      "sort_order": 48,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "てん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ころ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "revolve",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "てん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "turn around"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "change"
+        }
+      ]
+    },
+    {
+      "slug": "n3-ride",
+      "primary_form": "乗",
+      "meaning": "ride",
+      "sort_order": 49,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "の",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ride",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じょう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "power"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "multiplication"
+        }
+      ]
+    },
+    {
+      "slug": "n3-ill",
+      "primary_form": "病",
+      "meaning": "ill",
+      "sort_order": 50,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "びょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "や",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ill",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "びょう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "sick"
+        }
+      ]
+    },
+    {
+      "slug": "n3-reflect",
+      "primary_form": "映",
+      "meaning": "reflect",
+      "sort_order": 51,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "えい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うつ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "reflect",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "えい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reflection"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "projection"
+        }
+      ]
+    },
+    {
+      "slug": "n3-doctor",
+      "primary_form": "医",
+      "meaning": "doctor",
+      "sort_order": 52,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "い",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "い",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "doctor",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "い"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "medicine"
+        }
+      ]
+    },
+    {
+      "slug": "n3-attend",
+      "primary_form": "仕",
+      "meaning": "attend",
+      "sort_order": 53,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "attend",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "doing"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "official"
+        }
+      ]
+    },
+    {
+      "slug": "n3-sound",
+      "primary_form": "音",
+      "meaning": "sound",
+      "sort_order": 54,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "おん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "おと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sound",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "おん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "noise"
+        }
+      ]
+    },
+    {
+      "slug": "n3-walk",
+      "primary_form": "歩",
+      "meaning": "walk",
+      "sort_order": 55,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ほ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ある",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "walk",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ほ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "counter for steps"
+        }
+      ]
+    },
+    {
+      "slug": "n3-paper",
+      "primary_form": "紙",
+      "meaning": "paper",
+      "sort_order": 56,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かみ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "paper",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        }
+      ]
+    },
+    {
+      "slug": "n3-roof",
+      "primary_form": "屋",
+      "meaning": "roof",
+      "sort_order": 57,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "おく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "や",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "roof",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "おく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "house"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "shop"
+        }
+      ]
+    },
+    {
+      "slug": "n3-friend",
+      "primary_form": "友",
+      "meaning": "friend",
+      "sort_order": 58,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ゆう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とも",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "friend",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ゆう"
+        }
+      ]
+    },
+    {
+      "slug": "n3-distant",
+      "primary_form": "遠",
+      "meaning": "distant",
+      "sort_order": 59,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "えん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "distant",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "えん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "far"
+        }
+      ]
+    },
+    {
+      "slug": "n3-exertion",
+      "primary_form": "勉",
+      "meaning": "exertion",
+      "sort_order": 60,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "べん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "exertion",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "べん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "endeavour"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "encourage"
+        }
+      ]
+    },
+    {
+      "slug": "n3-daytime",
+      "primary_form": "昼",
+      "meaning": "daytime",
+      "sort_order": 61,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひる",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "daytime",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちゅう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "noon"
+        }
+      ]
+    },
+    {
+      "slug": "n3-cow",
+      "primary_form": "牛",
+      "meaning": "cow",
+      "sort_order": 62,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぎゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "cow",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぎゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n3-vegetable",
+      "primary_form": "菜",
+      "meaning": "vegetable",
+      "sort_order": 63,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "さい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "な",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "vegetable",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "さい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "side dish"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "greens"
+        }
+      ]
+    },
+    {
+      "slug": "n3-open",
+      "primary_form": "開",
+      "meaning": "open",
+      "sort_order": 64,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひら",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "open",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "unfold"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "unseal"
+        }
+      ]
+    },
+    {
+      "slug": "n3-rice-field",
+      "primary_form": "田",
+      "meaning": "rice field",
+      "sort_order": 65,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "でん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "た",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "rice field",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "でん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "rice paddy"
+        }
+      ]
+    },
+    {
+      "slug": "n3-utilize",
+      "primary_form": "用",
+      "meaning": "utilize",
+      "sort_order": 66,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "よう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もち",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "utilize",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "よう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "business"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "service"
+        }
+      ]
+    },
+    {
+      "slug": "n3-correct",
+      "primary_form": "正",
+      "meaning": "correct",
+      "sort_order": 67,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ただ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "correct",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "justice"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "righteous"
+        }
+      ]
+    },
+    {
+      "slug": "n3-world",
+      "primary_form": "界",
+      "meaning": "world",
+      "sort_order": 68,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かい",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "world",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "boundary"
+        }
+      ]
+    },
+    {
+      "slug": "n3-beginning",
+      "primary_form": "元",
+      "meaning": "beginning",
+      "sort_order": 69,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "げん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もと",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "beginning",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "げん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "former time"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "origin"
+        }
+      ]
+    },
+    {
+      "slug": "n3-goods",
+      "primary_form": "品",
+      "meaning": "goods",
+      "sort_order": 70,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ひん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "しな",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "goods",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ひん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "refinement"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "dignity"
+        }
+      ]
+    },
+    {
+      "slug": "n3-possess",
+      "primary_form": "有",
+      "meaning": "possess",
+      "sort_order": 71,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ゆう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "possess",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ゆう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "have"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "exist"
+        }
+      ]
+    },
+    {
+      "slug": "n3-craft",
+      "primary_form": "工",
+      "meaning": "craft",
+      "sort_order": 72,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "craft",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "construction"
+        }
+      ]
+    },
+    {
+      "slug": "n3-polish",
+      "primary_form": "研",
+      "meaning": "polish",
+      "sort_order": 73,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "けん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "と",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "polish",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "けん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "study of"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "sharpen"
+        }
+      ]
+    },
+    {
+      "slug": "n3-research",
+      "primary_form": "究",
+      "meaning": "research",
+      "sort_order": 74,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "きわ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "research",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きゅう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "study"
+        }
+      ]
+    },
+    {
+      "slug": "n3-rouse",
+      "primary_form": "起",
+      "meaning": "rouse",
+      "sort_order": 75,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "き",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "お",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "rouse",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "き"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "wake up"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "get up"
+        }
+      ]
+    },
+    {
+      "slug": "n3-voice",
+      "primary_form": "声",
+      "meaning": "voice",
+      "sort_order": 76,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "こえ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "voice",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せい"
+        }
+      ]
+    },
+    {
+      "slug": "n3-silver",
+      "primary_form": "銀",
+      "meaning": "silver",
+      "sort_order": 77,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぎん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "しろがね",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "silver",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぎん"
+        }
+      ]
+    },
+    {
+      "slug": "n3-england",
+      "primary_form": "英",
+      "meaning": "England",
+      "sort_order": 78,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "えい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はなぶさ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "England",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "えい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "English"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "hero"
+        }
+      ]
+    },
+    {
+      "slug": "n3-head",
+      "primary_form": "頭",
+      "meaning": "head",
+      "sort_order": 79,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "とう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あたま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "head",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "とう"
+        }
+      ]
+    },
+    {
+      "slug": "n3-lower",
+      "primary_form": "低",
+      "meaning": "lower",
+      "sort_order": 80,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "てい",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひく",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "lower",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "てい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "short"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "humble"
+        }
+      ]
+    },
+    {
+      "slug": "n3-gone",
+      "primary_form": "去",
+      "meaning": "gone",
+      "sort_order": 81,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "きょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "さ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "gone",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "きょ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "past"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "quit"
+        }
+      ]
+    },
+    {
+      "slug": "n3-gate",
+      "primary_form": "門",
+      "meaning": "gate",
+      "sort_order": 82,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かど",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "gate",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "counter for cannons"
+        }
+      ]
+    },
+    {
+      "slug": "n3-copy",
+      "primary_form": "写",
+      "meaning": "copy",
+      "sort_order": 83,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゃ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うつ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "copy",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゃ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "be photographed"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "describe"
+        }
+      ]
+    },
+    {
+      "slug": "n3-character",
+      "primary_form": "字",
+      "meaning": "character",
+      "sort_order": 84,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あざ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "character",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "letter"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "word"
+        }
+      ]
+    },
+    {
+      "slug": "n3-night",
+      "primary_form": "夜",
+      "meaning": "night",
+      "sort_order": 85,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "や",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "よ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "night",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "や"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "evening"
+        }
+      ]
+    },
+    {
+      "slug": "n3-ray",
+      "primary_form": "光",
+      "meaning": "ray",
+      "sort_order": 86,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "こう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ひか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ray",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "こう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "light"
+        }
+      ]
+    },
+    {
+      "slug": "n3-springtime",
+      "primary_form": "春",
+      "meaning": "springtime",
+      "sort_order": 87,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はる",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "springtime",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅん"
+        }
+      ]
+    },
+    {
+      "slug": "n3-forest",
+      "primary_form": "森",
+      "meaning": "forest",
+      "sort_order": 88,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もり",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "forest",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "woods"
+        }
+      ]
+    },
+    {
+      "slug": "n3-autumn",
+      "primary_form": "秋",
+      "meaning": "autumn",
+      "sort_order": 89,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あき",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "autumn",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅう"
+        }
+      ]
+    },
+    {
+      "slug": "n3-grove",
+      "primary_form": "林",
+      "meaning": "grove",
+      "sort_order": 90,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "りん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "はやし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "grove",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "りん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "forest"
+        }
+      ]
+    },
+    {
+      "slug": "n3-summer",
+      "primary_form": "夏",
+      "meaning": "summer",
+      "sort_order": 91,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "か",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "なつ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "summer",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "か"
+        }
+      ]
+    },
+    {
+      "slug": "n3-face",
+      "primary_form": "顔",
+      "meaning": "face",
+      "sort_order": 92,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "がん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "かお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "face",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "がん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "expression"
+        }
+      ]
+    },
+    {
+      "slug": "n3-short",
+      "primary_form": "短",
+      "meaning": "short",
+      "sort_order": 93,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "たん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "みじか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "short",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "たん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "brevity"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "fault"
+        }
+      ]
+    },
+    {
+      "slug": "n3-ocean",
+      "primary_form": "洋",
+      "meaning": "ocean",
+      "sort_order": 94,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "よう",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "ocean",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "よう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "sea"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "foreign"
+        }
+      ]
+    },
+    {
+      "slug": "n3-pond",
+      "primary_form": "池",
+      "meaning": "pond",
+      "sort_order": 95,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ち",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "いけ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "pond",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ち"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "cistern"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "pool"
+        }
+      ]
+    },
+    {
+      "slug": "n3-evening",
+      "primary_form": "夕",
+      "meaning": "evening",
+      "sort_order": 96,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "せき",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ゆう",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "evening",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せき"
+        }
+      ]
+    },
+    {
+      "slug": "n3-meat",
+      "primary_form": "肉",
+      "meaning": "meat",
+      "sort_order": 97,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "にく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "しし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "meat",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "にく"
+        }
+      ]
+    },
+    {
+      "slug": "n3-bird",
+      "primary_form": "鳥",
+      "meaning": "bird",
+      "sort_order": 98,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ちょう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とり",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "bird",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ちょう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "chicken"
+        }
+      ]
+    },
+    {
+      "slug": "n3-winter",
+      "primary_form": "冬",
+      "meaning": "winter",
+      "sort_order": 99,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "とう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ふゆ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "winter",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "とう"
+        }
+      ]
+    },
+    {
+      "slug": "n3-fish",
+      "primary_form": "魚",
+      "meaning": "fish",
+      "sort_order": 100,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぎょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "fish",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぎょ"
+        }
+      ]
+    },
+    {
+      "slug": "n3-dog",
+      "primary_form": "犬",
+      "meaning": "dog",
+      "sort_order": 101,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "けん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "いぬ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "dog",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "けん"
+        }
+      ]
+    },
+    {
+      "slug": "n3-sultry",
+      "primary_form": "暑",
+      "meaning": "sultry",
+      "sort_order": 102,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "あつ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "sultry",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しょ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "hot"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "summer heat"
+        }
+      ]
+    },
+    {
+      "slug": "n3-cold",
+      "primary_form": "寒",
+      "meaning": "cold",
+      "sort_order": 103,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "さむ",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "cold",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かん"
+        }
+      ]
+    },
+    {
+      "slug": "n3-sino",
+      "primary_form": "漢",
+      "meaning": "Sino-",
+      "sort_order": 104,
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "Sino-",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "China"
+        }
+      ]
+    }
+  ]
+}

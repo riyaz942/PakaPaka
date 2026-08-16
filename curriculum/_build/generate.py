@@ -171,12 +171,15 @@ def _build_radicals_level(jlpt_level, slug_prefix, radical_entries):
             "slug": r["slug"],
             "primary_form": r["form"],
             "meaning": r["meaning"],
-            "mnemonic_text": r["mnemonic"],
+        }
+        if r.get("mnemonic"):
+            item["mnemonic_text"] = r["mnemonic"]
             # Bundled asset ref, not a URL: art ships inside the app binary under
             # mobile/assets/radicals/. Missing files fall back to mnemonic text.
-            "visual_mnemonic_url": f"radicals/{slug_prefix}/{r['slug']}.webp",
-            "sort_order": i,
-        }
+            # Skeleton radicals (no mnemonic, no art) carry neither field rather
+            # than pointing at a file nobody has drawn.
+            item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
+        item["sort_order"] = i
         if r["slug"] in _SIMILAR_SLUGS:
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
@@ -229,11 +232,14 @@ def _build_kanji_level(jlpt_level, slug_prefix, kanji_entries, known_readings=No
             "slug": slug,
             "primary_form": k["char"],
             "meaning": k["meaning"],
-            "mnemonic_text": k["mnemonic"],
-            "sort_order": i,
-            "readings": readings,
-            "accepted_answers": accepted,
         }
+        # Skeleton kanji (plan Phase 2) carry no mnemonic of any kind; the app
+        # renders around the absence (hasCurriculumMnemonic).
+        if k.get("mnemonic"):
+            item["mnemonic_text"] = k["mnemonic"]
+        item["sort_order"] = i
+        item["readings"] = readings
+        item["accepted_answers"] = accepted
         if slug in _SIMILAR_SLUGS:
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[slug]
         mnemonic = mnemonics.get(slug)
@@ -613,11 +619,49 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 
 
 # ---------------------------------------------------------------------------
+# N3/N2/N1 skeleton builders
+#
+# Item lists only — the 553 kanji that shipped N5/N4 vocabulary needs but nobody
+# has authored, plus the 10 radicals required to decompose them. No mnemonics,
+# no examples, no vocabulary. The dataset is generated from KANJIDIC2/KRADFILE
+# by import/build_skeleton.py and checked in, so this reads a file rather than
+# importing a hand-written nX_*.py module.
+# ---------------------------------------------------------------------------
+
+SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
+
+
+def load_skeleton():
+    with open(SKELETON_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def generate_skeleton_level(level, skeleton):
+    slug_prefix = level.lower()
+    jlpt_level = level.upper()
+    radicals = skeleton["radicals"].get(slug_prefix, [])
+    if radicals:
+        write_json(
+            os.path.join(CURRICULUM_DIR, "radicals", f"{slug_prefix}.json"),
+            _build_radicals_level(jlpt_level, slug_prefix, radicals),
+        )
+    write_json(
+        os.path.join(CURRICULUM_DIR, "kanji", f"{slug_prefix}.json"),
+        _build_kanji_level(jlpt_level, slug_prefix, skeleton["kanji"][slug_prefix]),
+    )
+
+
+# ---------------------------------------------------------------------------
 # Level orchestration
 # ---------------------------------------------------------------------------
 
 def generate_level(level):
     level = level.lower()
+    skeleton = load_skeleton()
+    if level in skeleton["levels"]:
+        generate_skeleton_level(level, skeleton)
+        print(f"Generated {level.upper()} skeleton JSON files.")
+        return
     if level == "n5":
         from n5_vocab import N5_VOCAB
 
@@ -670,7 +714,7 @@ def generate_level(level):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--level", choices=["n5", "n4"], required=True)
+    parser.add_argument("--level", choices=["n5", "n4", "n3", "n2", "n1"], required=True)
     args = parser.parse_args()
     generate_level(args.level)
 

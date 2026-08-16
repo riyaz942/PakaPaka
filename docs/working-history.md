@@ -14,7 +14,7 @@ Last verified against the codebase: **2026-08-11**
 | Area | Done | Partial | Not started |
 | --- | ---: | ---: | ---: |
 | Product plans (`docs/feedback/`) | 14 | 1 | 0 |
-| Content plans (`docs/content/`) | 2 | 3 | 0 |
+| Content plans (`docs/content/`) | 2 | 4 | 0 |
 | Design & platform (`docs/design/`) | 4 | 0 | 2 |
 | BMAD stories (`_bmad-output/`) | 52 | 1 | 3 |
 
@@ -51,6 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **Partial** — Phases 1–2 done 2026-08-16; Phases 3–4 not started |
 
 ## Design & platform — `docs/design/`
 
@@ -134,6 +135,28 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - N5: 76/76 Tier 1 (KanjiVG render) images bundled under `mobile/assets/radicals/n5/`.
 - N4: 0/33 — directory exists and is empty.
 - Tier 2 (curated AI art) not started; production process is [radical-art-web-chat-workflow.md](./workflows/radical-art-web-chat-workflow.md).
+
+### Kanji coverage & dependency order
+- Phase 1 done: `curriculum/_build/reports/dependency_order.py` reports coverage + ordering, and the 6 same-level ordering cases are fixed.
+- Phase 2 done: 553 skeleton kanji at N3/N2/N1 (104/356/93) + 10 new radicals, generated from
+  KANJIDIC2/KRADFILE by `curriculum/_build/import/build_skeleton.py` into the checked-in
+  `curriculum/_build/skeleton.json`. Coverage is 100% — every kanji in every shipped word is
+  now taught somewhere.
+- Skeleton kanji emit **no** `requires` edges (`generate_deps.py`) until Phase 3's planner
+  lands; `requires`/`reinforces` are byte-identical to before, only `builds_on` grew
+  (325 → 1,914). 479 kanji-bearing words are still parentless, by design, until then.
+- `visual_mnemonic_url` is now optional in the schema — skeleton radicals ship without art.
+- `listLevelsWithContent` now tests for **vocabulary**, not any item: with skeleton kanji in
+  the DB, onboarding would otherwise have offered N3/N2/N1 as startable levels.
+- 115 N5 words are still gated by an N4 kanji (report ERRORs). Left for Phase 3's pull-forward planner by decision — moving the content either way would mislabel its JLPT level.
+- **Open, from Phase 1:** re-running `audit_shipped.py` after the 2026-08-16 group moves shows
+  14 N5 example sentences referencing a word taught later — 13 for 彼女 (`kanojo`), 1 for 日本
+  (`nihon`) — plus 2 `tabun` mnemonic errors. Moving 彼女 later fixed the ordering of the word
+  itself and broke the examples that used it. Not Phase 2 fallout; not yet fixed.
+- Phase 2 leaves 3 known WARNINGs on 方: `katahen` is taught at N3 for 旅, so N4's 方/遊/族 get
+  no edge to it. Resolved in Phase 4 when 方 is authored as a real radical.
+- Phases 3 (planner pull-forward) and 4 (author the 553 skeleton kanji) not started.
+- Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status.
 
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).

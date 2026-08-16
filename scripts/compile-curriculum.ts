@@ -57,7 +57,7 @@ type RadicalItem = {
   mnemonic_text?: string;
   description?: string;
   visually_similar_slugs?: string[];
-  visual_mnemonic_url: string;
+  visual_mnemonic_url?: string;
   sort_order?: number;
   accepted_answers?: AcceptedAnswer[];
 };
@@ -620,7 +620,9 @@ export function compileCurriculum(
         meaning_mnemonic: null,
         reading_mnemonic: null,
         description: radical.description ?? null,
-        visual_mnemonic_url: radical.visual_mnemonic_url,
+        // Skeleton-level radicals have no art yet; the app falls back to
+        // mnemonic text when the ref is absent (utils/radicalImages.ts).
+        visual_mnemonic_url: radical.visual_mnemonic_url ?? null,
         sort_order: radical.sort_order ?? 0,
       });
 

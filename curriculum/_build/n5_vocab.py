@@ -19,7 +19,7 @@ PRONOUNS_DEMONSTRATIVES = [
     {"slug": "anata", "form": "あなた", "reading": "あなた", "meaning": "you", "mnemonic": "'A-nata' points across at you."},
     {"slug": "kimi", "form": "君", "reading": "きみ", "meaning": "you (familiar)", "mnemonic": "A close 'kimi' for you, my friend."},
     {"slug": "kare", "form": "彼", "reading": "かれ", "meaning": "he / boyfriend", "mnemonic": "'Car-eh' — he drives up: he."},
-    {"slug": "kanojo", "form": "彼女", "reading": "かのじょ", "meaning": "she / girlfriend", "mnemonic": "kare plus woman (女): she."},
+    # 彼女 lives in PEOPLE, after the kanji 女 it is written with.
     {"slug": "kore", "form": "これ", "reading": "これ", "meaning": "this one", "mnemonic": "'Core' of what's right here: this."},
     {"slug": "sore", "form": "それ", "reading": "それ", "meaning": "that one", "mnemonic": "'Sore' spot over there: that."},
     {"slug": "are", "form": "あれ", "reading": "あれ", "meaning": "that over there", "mnemonic": "'Ah, re-mote' — that far one."},
@@ -54,7 +54,7 @@ QUESTION_WORDS = [
     {"slug": "ikaga", "form": "いかが", "reading": "いかが", "meaning": "how (polite)", "mnemonic": "polite 'how about it': ikaga."},
     {"slug": "ikutsu", "form": "いくつ", "reading": "いくつ", "meaning": "how many / how old", "mnemonic": "'iku-tsu?' — how many?"},
     {"slug": "ikura", "form": "いくら", "reading": "いくら", "meaning": "how much (cost)", "mnemonic": "'iku-ra?' — how much money?"},
-    {"slug": "nannji", "form": "何時", "reading": "なんじ", "meaning": "what time", "mnemonic": "nan plus time (時): what time?"},
+    # 何時 lives in TIME_WORDS, after the kanji 時 it is written with.
 ]
 
 NUMBERS = [
@@ -117,6 +117,7 @@ TIME_WORDS = [
     {"slug": "kotoshi", "form": "今年", "reading": "ことし", "meaning": "this year", "mnemonic": "This year: kotoshi."},
     {"slug": "rainen", "form": "来年", "reading": "らいねん", "meaning": "next year", "mnemonic": "The year coming: rainen."},
     {"slug": "kyonen", "form": "去年", "reading": "きょねん", "meaning": "last year", "mnemonic": "The year that left: kyonen."},
+    {"slug": "nannji", "form": "何時", "reading": "なんじ", "meaning": "what time", "mnemonic": "nan plus time (時): what time?"},
     {"slug": "jikan", "form": "時間", "reading": "じかん", "meaning": "time / hours", "mnemonic": "The interval of the sun: jikan."},
     {"slug": "jibun-time", "form": "時分", "reading": "じぶん", "meaning": "time (of day)", "mnemonic": "Hour and minute together: jibun."},
     {"slug": "byou", "form": "秒", "reading": "びょう", "meaning": "second", "mnemonic": "The tiniest tick: byou."},
@@ -190,6 +191,7 @@ PEOPLE = [
     {"slug": "otokonohito", "form": "男の人", "reading": "おとこのひと", "meaning": "man", "mnemonic": "A male person: otokonohito."},
     {"slug": "onnanoko", "form": "女の子", "reading": "おんなのこ", "meaning": "girl", "mnemonic": "A female child: onnanoko."},
     {"slug": "otokonoko", "form": "男の子", "reading": "おとこのこ", "meaning": "boy", "mnemonic": "A male child: otokonoko."},
+    {"slug": "kanojo", "form": "彼女", "reading": "かのじょ", "meaning": "she / girlfriend", "mnemonic": "kare plus woman (女): she."},
     {"slug": "akachan", "form": "赤ちゃん", "reading": "あかちゃん", "meaning": "baby", "mnemonic": "The little red one: akachan."},
     {"slug": "minna", "form": "みんな", "reading": "みんな", "meaning": "everyone", "mnemonic": "All the group: minna."},
     {"slug": "jibun", "form": "自分", "reading": "じぶん", "meaning": "oneself", "mnemonic": "Your own part: jibun."},

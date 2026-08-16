@@ -1,18 +1,21 @@
 {
-  "version": "1.6.0-n4-skeleton-decomposition",
+  "version": "1.7.0-n3-n1-skeleton",
   "jlpt_levels": [
     "N5",
-    "N4"
+    "N4",
+    "N3",
+    "N2",
+    "N1"
   ],
-  "description": "JLPT N5 and N4 full-depth curriculum — radicals, kanji, vocabulary, grammar, readings, and precomputed dependency graph for bundled app import.",
+  "description": "JLPT N5 and N4 full-depth curriculum — radicals, kanji, vocabulary, grammar, readings, and precomputed dependency graph for bundled app import. N3/N2/N1 carry a kanji-only skeleton (the 553 kanji N5/N4 vocabulary needs, plus the 10 radicals that decompose them): item lists, readings and meanings, no mnemonics, art, examples or vocabulary. Their kanji→vocabulary edges are deliberately held until the pull-forward planner lands (docs/content/kanji-coverage-and-dependency-order-plan.md Phase 3).",
   "maintainer_notes": "Bump version in this file before every content publish. Run npm run validate-schema && npm run compile-curriculum from repo root, then commit mobile/assets/curriculum-seed/curriculum.db via Git LFS.",
   "content_counts": {
-    "radicals": 122,
-    "kanji": 191,
-    "vocabulary": 1245,
+    "radicals": 132,
+    "kanji": 745,
+    "vocabulary": 1247,
     "grammar": 171,
-    "total_items": 1729,
+    "total_items": 2295,
     "reading_passages": 19,
-    "dependency_edges": 1488
+    "dependency_edges": 3083
   }
 }

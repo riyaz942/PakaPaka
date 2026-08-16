@@ -734,133 +734,11 @@
       ]
     },
     {
-      "slug": "kanojo",
-      "primary_form": "彼女",
-      "meaning": "she / girlfriend",
-      "mnemonic_text": "kare plus woman (女): she.",
-      "sort_order": 7,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "she / girlfriend",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "かのじょ"
-        }
-      ],
-      "furigana": "彼[かの]女[じょ]",
-      "meaning_mnemonic": "Koichi points across the konbini at the kneeling <kanji>woman</kanji> restocking the onigiri shelf, arm sweeping the row into place. He doesn't explain, just tilts his head and grins: that's the one he's been talking about all week. You don't need more than that look to know she's his girlfriend, and now you know who she is too.",
-      "reading_mnemonic": "At Grandma Kane's shrine, she keeps introducing the same woman standing by the bell alongside a man named Joe: Kane, and Joe. Say it fast — <reading>Kane-Joe</reading> — and you land on <reading>かのじょ</reading>, the word for her, the girlfriend everyone at the shrine already knows by name.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "example_sentences": [
-        {
-          "japanese": "彼女は本を読みます。",
-          "english": "She reads books.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kanojo",
-            "hon",
-            "yomu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanojo",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "hon",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "yomu",
-              "start": 5,
-              "end": 9,
-              "surface_form": "読みます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "彼[かの]女[じょ]は本[ほん]を読[よ]みます。"
-        },
-        {
-          "japanese": "僕は彼女と公園に行きます。",
-          "english": "I'm going to the park with her.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "boku",
-            "kanojo",
-            "kouen",
-            "iku-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "boku",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kanojo",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "kouen",
-              "start": 5,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 8,
-              "end": 12,
-              "surface_form": "行きます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "僕[ぼく]は彼[かの]女[じょ]と公[こう]園[えん]に行[い]きます。"
-        },
-        {
-          "japanese": "彼女は今忙しいです。",
-          "english": "She's busy right now.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "kanojo",
-            "ima",
-            "isogashii"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kanojo",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "ima",
-              "start": 3,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "isogashii",
-              "start": 4,
-              "end": 7
-            }
-          ],
-          "furigana": "彼[かの]女[じょ]は今[いま]忙[いそが]しいです。"
-        }
-      ]
-    },
-    {
       "slug": "kore",
       "primary_form": "これ",
       "meaning": "this one",
       "mnemonic_text": "'Core' of what's right here: this.",
-      "sort_order": 8,
+      "sort_order": 7,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -962,7 +840,7 @@
       "primary_form": "それ",
       "meaning": "that one",
       "mnemonic_text": "'Sore' spot over there: that.",
-      "sort_order": 9,
+      "sort_order": 8,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1065,7 +943,7 @@
       "primary_form": "あれ",
       "meaning": "that over there",
       "mnemonic_text": "'Ah, re-mote' — that far one.",
-      "sort_order": 10,
+      "sort_order": 9,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1162,7 +1040,7 @@
       "primary_form": "どれ",
       "meaning": "which one",
       "mnemonic_text": "'Do-re' — which one, do or re?",
-      "sort_order": 11,
+      "sort_order": 10,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1259,7 +1137,7 @@
       "primary_form": "この",
       "meaning": "this (+ noun)",
       "mnemonic_text": "kore's cousin that hugs a noun: this ___.",
-      "sort_order": 12,
+      "sort_order": 11,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1374,7 +1252,7 @@
       "primary_form": "その",
       "meaning": "that (+ noun)",
       "mnemonic_text": "sore's cousin that hugs a noun: that ___.",
-      "sort_order": 13,
+      "sort_order": 12,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1491,7 +1369,7 @@
       "primary_form": "あの",
       "meaning": "that (+ noun) over there",
       "mnemonic_text": "are's cousin that hugs a noun: that ___.",
-      "sort_order": 14,
+      "sort_order": 13,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1608,7 +1486,7 @@
       "primary_form": "どの",
       "meaning": "which (+ noun)",
       "mnemonic_text": "dore's cousin that hugs a noun: which ___.",
-      "sort_order": 15,
+      "sort_order": 14,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1724,7 +1602,7 @@
       "primary_form": "ここ",
       "meaning": "here",
       "mnemonic_text": "'Ko-ko' right here.",
-      "sort_order": 16,
+      "sort_order": 15,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1834,7 +1712,7 @@
       "primary_form": "そこ",
       "meaning": "there",
       "mnemonic_text": "'So-ko' over there.",
-      "sort_order": 17,
+      "sort_order": 16,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1958,7 +1836,7 @@
       "primary_form": "あそこ",
       "meaning": "over there",
       "mnemonic_text": "'A-so-ko' way over there.",
-      "sort_order": 18,
+      "sort_order": 17,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2068,7 +1946,7 @@
       "primary_form": "どこ",
       "meaning": "where",
       "mnemonic_text": "'Do-ko?' — where?",
-      "sort_order": 19,
+      "sort_order": 18,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2178,7 +2056,7 @@
       "primary_form": "こちら",
       "meaning": "this way / this person",
       "mnemonic_text": "polite 'this direction': kochira.",
-      "sort_order": 20,
+      "sort_order": 19,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2289,7 +2167,7 @@
       "primary_form": "そちら",
       "meaning": "that way",
       "mnemonic_text": "polite 'that direction': sochira.",
-      "sort_order": 21,
+      "sort_order": 20,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2393,7 +2271,7 @@
       "primary_form": "あちら",
       "meaning": "over there (polite)",
       "mnemonic_text": "polite 'that far direction': achira.",
-      "sort_order": 22,
+      "sort_order": 21,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2492,7 +2370,7 @@
       "primary_form": "どちら",
       "meaning": "which way",
       "mnemonic_text": "polite 'which direction': dochira.",
-      "sort_order": 23,
+      "sort_order": 22,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2590,7 +2468,7 @@
       "primary_form": "こんな",
       "meaning": "this kind of",
       "mnemonic_text": "'this-na' kind of thing.",
-      "sort_order": 24,
+      "sort_order": 23,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2712,7 +2590,7 @@
       "primary_form": "そんな",
       "meaning": "that kind of",
       "mnemonic_text": "'that-na' kind of thing.",
-      "sort_order": 25,
+      "sort_order": 24,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2828,7 +2706,7 @@
       "primary_form": "あんな",
       "meaning": "that kind of (far)",
       "mnemonic_text": "'that far-na' kind of thing.",
-      "sort_order": 26,
+      "sort_order": 25,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2956,7 +2834,7 @@
       "primary_form": "どんな",
       "meaning": "what kind of",
       "mnemonic_text": "'what-na' kind of thing?",
-      "sort_order": 27,
+      "sort_order": 26,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3078,7 +2956,7 @@
       "primary_form": "誰",
       "meaning": "who",
       "mnemonic_text": "'Da-re?' — who's there?",
-      "sort_order": 28,
+      "sort_order": 27,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3188,7 +3066,7 @@
       "primary_form": "どなた",
       "meaning": "who (polite)",
       "mnemonic_text": "polite 'who': donata.",
-      "sort_order": 29,
+      "sort_order": 28,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3299,7 +3177,7 @@
       "primary_form": "何",
       "meaning": "what",
       "mnemonic_text": "'Na-ni?' — what is it?",
-      "sort_order": 30,
+      "sort_order": 29,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3404,7 +3282,7 @@
       "primary_form": "何",
       "meaning": "what (before counters)",
       "mnemonic_text": "nani shortened to nan before counters.",
-      "sort_order": 31,
+      "sort_order": 30,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3508,7 +3386,7 @@
       "primary_form": "いつ",
       "meaning": "when",
       "mnemonic_text": "'It-su' — at what time, when?",
-      "sort_order": 32,
+      "sort_order": 31,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3627,7 +3505,7 @@
       "primary_form": "なぜ",
       "meaning": "why",
       "mnemonic_text": "'Na-ze?' — why?",
-      "sort_order": 33,
+      "sort_order": 32,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3750,7 +3628,7 @@
       "primary_form": "どうして",
       "meaning": "why / how come",
       "mnemonic_text": "'do-shite?' — how did that happen, why?",
-      "sort_order": 34,
+      "sort_order": 33,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3879,7 +3757,7 @@
       "primary_form": "どう",
       "meaning": "how",
       "mnemonic_text": "'Doh?' — how is it?",
-      "sort_order": 35,
+      "sort_order": 34,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3981,7 +3859,7 @@
       "primary_form": "いかが",
       "meaning": "how (polite)",
       "mnemonic_text": "polite 'how about it': ikaga.",
-      "sort_order": 36,
+      "sort_order": 35,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4081,7 +3959,7 @@
       "primary_form": "いくつ",
       "meaning": "how many / how old",
       "mnemonic_text": "'iku-tsu?' — how many?",
-      "sort_order": 37,
+      "sort_order": 36,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4191,7 +4069,7 @@
       "primary_form": "いくら",
       "meaning": "how much (cost)",
       "mnemonic_text": "'iku-ra?' — how much money?",
-      "sort_order": 38,
+      "sort_order": 37,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4288,107 +4166,11 @@
       ]
     },
     {
-      "slug": "nannji",
-      "primary_form": "何時",
-      "meaning": "what time",
-      "mnemonic_text": "nan plus time (時): what time?",
-      "sort_order": 39,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "what time",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "なんじ"
-        }
-      ],
-      "furigana": "何[なん]時[じ]",
-      "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: what <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
-      "reading_mnemonic": "At the shrine, a jetlagged traveler keeps calling to her grandmother, 'Nan, gee, what time is it?' — sliding into <reading>Nan-gee</reading> each time. The cats now answer back with that same sound, <reading>なんじ</reading>, since that's all anyone there asks: what time.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "example_sentences": [
-        {
-          "japanese": "今何時ですか。",
-          "english": "What time is it now?",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "ima",
-            "nannji"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "ima",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "nannji",
-              "start": 1,
-              "end": 3
-            }
-          ],
-          "furigana": "今[いま]何[なん]時[じ]ですか。"
-        },
-        {
-          "japanese": "何時に起きますか。",
-          "english": "What time do you get up?",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "nannji",
-            "okiru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "nannji",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "okiru",
-              "start": 3,
-              "end": 7,
-              "surface_form": "起きます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "何[なに]時[じ]に起[お]きますか。"
-        },
-        {
-          "japanese": "映画は何時ですか。",
-          "english": "What time is the movie?",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "eiga",
-            "nannji"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "eiga",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "nannji",
-              "start": 3,
-              "end": 5
-            }
-          ],
-          "furigana": "映[えい]画[が]は何[なん]時[じ]ですか。"
-        }
-      ]
-    },
-    {
       "slug": "zero",
       "primary_form": "ゼロ",
       "meaning": "zero",
       "mnemonic_text": "Borrowed straight from English: zero.",
-      "sort_order": 40,
+      "sort_order": 38,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4482,7 +4264,7 @@
       "primary_form": "零",
       "meaning": "zero (formal)",
       "mnemonic_text": "The formal nothing: rei.",
-      "sort_order": 41,
+      "sort_order": 39,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4564,7 +4346,7 @@
       "primary_form": "一",
       "meaning": "one",
       "mnemonic_text": "One flat stroke: ichi.",
-      "sort_order": 42,
+      "sort_order": 40,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4667,7 +4449,7 @@
       "primary_form": "二",
       "meaning": "two",
       "mnemonic_text": "Two stacked strokes: ni.",
-      "sort_order": 43,
+      "sort_order": 41,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4758,7 +4540,7 @@
       "primary_form": "三",
       "meaning": "three",
       "mnemonic_text": "Three stacked strokes: san.",
-      "sort_order": 44,
+      "sort_order": 42,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4867,7 +4649,7 @@
       "primary_form": "四",
       "meaning": "four",
       "mnemonic_text": "Four kicking legs in a box: yon.",
-      "sort_order": 45,
+      "sort_order": 43,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4982,7 +4764,7 @@
       "primary_form": "四",
       "meaning": "four (alt)",
       "mnemonic_text": "The alternate, ominous reading of four: shi.",
-      "sort_order": 46,
+      "sort_order": 44,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5075,7 +4857,7 @@
       "primary_form": "五",
       "meaning": "five",
       "mnemonic_text": "Five fingers held up: go.",
-      "sort_order": 47,
+      "sort_order": 45,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5178,7 +4960,7 @@
       "primary_form": "六",
       "meaning": "six",
       "mnemonic_text": "A hat over two legs: roku.",
-      "sort_order": 48,
+      "sort_order": 46,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5281,7 +5063,7 @@
       "primary_form": "七",
       "meaning": "seven",
       "mnemonic_text": "A scythe slicing seven: nana.",
-      "sort_order": 49,
+      "sort_order": 47,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5384,7 +5166,7 @@
       "primary_form": "七",
       "meaning": "seven (alt)",
       "mnemonic_text": "The alternate reading of seven: shichi.",
-      "sort_order": 50,
+      "sort_order": 48,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5480,7 +5262,7 @@
       "primary_form": "八",
       "meaning": "eight",
       "mnemonic_text": "Strokes opening like the number eight: hachi.",
-      "sort_order": 51,
+      "sort_order": 49,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5583,7 +5365,7 @@
       "primary_form": "九",
       "meaning": "nine",
       "mnemonic_text": "A hook at the top of the count: kyuu.",
-      "sort_order": 52,
+      "sort_order": 50,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5683,7 +5465,7 @@
       "primary_form": "九",
       "meaning": "nine (alt)",
       "mnemonic_text": "The short reading of nine: ku.",
-      "sort_order": 53,
+      "sort_order": 51,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5779,7 +5561,7 @@
       "primary_form": "十",
       "meaning": "ten",
       "mnemonic_text": "Both hands' fingers: juu.",
-      "sort_order": 54,
+      "sort_order": 52,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5866,7 +5648,7 @@
       "primary_form": "百",
       "meaning": "hundred",
       "mnemonic_text": "White sheets counted a hundred times: hyaku.",
-      "sort_order": 55,
+      "sort_order": 53,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5987,7 +5769,7 @@
       "primary_form": "千",
       "meaning": "thousand",
       "mnemonic_text": "Ten multiplied by a slash: sen.",
-      "sort_order": 56,
+      "sort_order": 54,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6087,7 +5869,7 @@
       "primary_form": "万",
       "meaning": "ten thousand",
       "mnemonic_text": "A single mark for ten thousand: man.",
-      "sort_order": 57,
+      "sort_order": 55,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6190,7 +5972,7 @@
       "primary_form": "一つ",
       "meaning": "one thing",
       "mnemonic_text": "One counted the native way: hitotsu.",
-      "sort_order": 58,
+      "sort_order": 56,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6313,7 +6095,7 @@
       "primary_form": "二つ",
       "meaning": "two things",
       "mnemonic_text": "Two counted the native way: futatsu.",
-      "sort_order": 59,
+      "sort_order": 57,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6436,7 +6218,7 @@
       "primary_form": "三つ",
       "meaning": "three things",
       "mnemonic_text": "Three the native way: mittsu.",
-      "sort_order": 60,
+      "sort_order": 58,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6554,7 +6336,7 @@
       "primary_form": "四つ",
       "meaning": "four things",
       "mnemonic_text": "Four the native way: yottsu.",
-      "sort_order": 61,
+      "sort_order": 59,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6670,7 +6452,7 @@
       "primary_form": "五つ",
       "meaning": "five things",
       "mnemonic_text": "Five the native way: itsutsu.",
-      "sort_order": 62,
+      "sort_order": 60,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6788,7 +6570,7 @@
       "primary_form": "六つ",
       "meaning": "six things",
       "mnemonic_text": "Six the native way: muttsu.",
-      "sort_order": 63,
+      "sort_order": 61,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6906,7 +6688,7 @@
       "primary_form": "七つ",
       "meaning": "seven things",
       "mnemonic_text": "Seven the native way: nanatsu.",
-      "sort_order": 64,
+      "sort_order": 62,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7016,7 +6798,7 @@
       "primary_form": "八つ",
       "meaning": "eight things",
       "mnemonic_text": "Eight the native way: yattsu.",
-      "sort_order": 65,
+      "sort_order": 63,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7134,7 +6916,7 @@
       "primary_form": "九つ",
       "meaning": "nine things",
       "mnemonic_text": "Nine the native way: kokonotsu.",
-      "sort_order": 66,
+      "sort_order": 64,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7252,7 +7034,7 @@
       "primary_form": "十",
       "meaning": "ten things",
       "mnemonic_text": "Ten the native way: too.",
-      "sort_order": 67,
+      "sort_order": 65,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7359,7 +7141,7 @@
       "primary_form": "今",
       "meaning": "now",
       "mnemonic_text": "The present moment, right now: ima.",
-      "sort_order": 68,
+      "sort_order": 66,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7469,7 +7251,7 @@
       "primary_form": "今日",
       "meaning": "today",
       "mnemonic_text": "'This day' — today: kyou.",
-      "sort_order": 69,
+      "sort_order": 67,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7593,7 +7375,7 @@
       "primary_form": "昨日",
       "meaning": "yesterday",
       "mnemonic_text": "The day already gone: kinou.",
-      "sort_order": 70,
+      "sort_order": 68,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7705,7 +7487,7 @@
       "primary_form": "明日",
       "meaning": "tomorrow",
       "mnemonic_text": "The bright day ahead: ashita.",
-      "sort_order": 71,
+      "sort_order": 69,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7815,7 +7597,7 @@
       "primary_form": "明後日",
       "meaning": "day after tomorrow",
       "mnemonic_text": "Two bright days ahead: asatte.",
-      "sort_order": 72,
+      "sort_order": 70,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7925,7 +7707,7 @@
       "primary_form": "一昨日",
       "meaning": "day before yesterday",
       "mnemonic_text": "Two days back: ototoi.",
-      "sort_order": 73,
+      "sort_order": 71,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8037,7 +7819,7 @@
       "primary_form": "朝",
       "meaning": "morning",
       "mnemonic_text": "The 'ah' when the sun rises: asa.",
-      "sort_order": 74,
+      "sort_order": 72,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8143,7 +7925,7 @@
       "primary_form": "昼",
       "meaning": "noon / daytime",
       "mnemonic_text": "The bright middle of the day: hiru.",
-      "sort_order": 75,
+      "sort_order": 73,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8265,7 +8047,7 @@
       "primary_form": "夕方",
       "meaning": "evening",
       "mnemonic_text": "The direction the day fades: yuugata.",
-      "sort_order": 76,
+      "sort_order": 74,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8381,7 +8163,7 @@
       "primary_form": "晩",
       "meaning": "evening / night",
       "mnemonic_text": "The late 'ban' of the day.",
-      "sort_order": 77,
+      "sort_order": 75,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8503,7 +8285,7 @@
       "primary_form": "夜",
       "meaning": "night",
       "mnemonic_text": "When you 'yo, roll' into bed: yoru.",
-      "sort_order": 78,
+      "sort_order": 76,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8619,7 +8401,7 @@
       "primary_form": "午前",
       "meaning": "a.m. / morning",
       "mnemonic_text": "Before noon: gozen.",
-      "sort_order": 79,
+      "sort_order": 77,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8737,7 +8519,7 @@
       "primary_form": "午後",
       "meaning": "p.m. / afternoon",
       "mnemonic_text": "After noon: gogo.",
-      "sort_order": 80,
+      "sort_order": 78,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8853,7 +8635,7 @@
       "primary_form": "毎日",
       "meaning": "every day",
       "mnemonic_text": "Every single day: mainichi.",
-      "sort_order": 81,
+      "sort_order": 79,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8965,7 +8747,7 @@
       "primary_form": "毎朝",
       "meaning": "every morning",
       "mnemonic_text": "Every morning: maiasa.",
-      "sort_order": 82,
+      "sort_order": 80,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9101,7 +8883,7 @@
       "primary_form": "毎晩",
       "meaning": "every night",
       "mnemonic_text": "Every night: maiban.",
-      "sort_order": 83,
+      "sort_order": 81,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9227,7 +9009,7 @@
       "primary_form": "毎週",
       "meaning": "every week",
       "mnemonic_text": "Every week: maishuu.",
-      "sort_order": 84,
+      "sort_order": 82,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9357,7 +9139,7 @@
       "primary_form": "毎月",
       "meaning": "every month",
       "mnemonic_text": "Every month: maitsuki.",
-      "sort_order": 85,
+      "sort_order": 83,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9487,7 +9269,7 @@
       "primary_form": "毎年",
       "meaning": "every year",
       "mnemonic_text": "Every year: mainen.",
-      "sort_order": 86,
+      "sort_order": 84,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9617,7 +9399,7 @@
       "primary_form": "今週",
       "meaning": "this week",
       "mnemonic_text": "This week: konshuu.",
-      "sort_order": 87,
+      "sort_order": 85,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9727,7 +9509,7 @@
       "primary_form": "来週",
       "meaning": "next week",
       "mnemonic_text": "The week coming: raishuu.",
-      "sort_order": 88,
+      "sort_order": 86,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9837,7 +9619,7 @@
       "primary_form": "先週",
       "meaning": "last week",
       "mnemonic_text": "The week ahead of now, past: senshuu.",
-      "sort_order": 89,
+      "sort_order": 87,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9955,7 +9737,7 @@
       "primary_form": "今月",
       "meaning": "this month",
       "mnemonic_text": "This month: kongetsu.",
-      "sort_order": 90,
+      "sort_order": 88,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10065,7 +9847,7 @@
       "primary_form": "来月",
       "meaning": "next month",
       "mnemonic_text": "The month coming: raigetsu.",
-      "sort_order": 91,
+      "sort_order": 89,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10181,7 +9963,7 @@
       "primary_form": "先月",
       "meaning": "last month",
       "mnemonic_text": "The prior month: sengetsu.",
-      "sort_order": 92,
+      "sort_order": 90,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10299,7 +10081,7 @@
       "primary_form": "今年",
       "meaning": "this year",
       "mnemonic_text": "This year: kotoshi.",
-      "sort_order": 93,
+      "sort_order": 91,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10409,7 +10191,7 @@
       "primary_form": "来年",
       "meaning": "next year",
       "mnemonic_text": "The year coming: rainen.",
-      "sort_order": 94,
+      "sort_order": 92,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10520,7 +10302,7 @@
       "primary_form": "去年",
       "meaning": "last year",
       "mnemonic_text": "The year that left: kyonen.",
-      "sort_order": 95,
+      "sort_order": 93,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10646,11 +10428,107 @@
       ]
     },
     {
+      "slug": "nannji",
+      "primary_form": "何時",
+      "meaning": "what time",
+      "mnemonic_text": "nan plus time (時): what time?",
+      "sort_order": 94,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "what time",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "なんじ"
+        }
+      ],
+      "furigana": "何[なん]時[じ]",
+      "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: what <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
+      "reading_mnemonic": "At the shrine, a jetlagged traveler keeps calling to her grandmother, 'Nan, gee, what time is it?' — sliding into <reading>Nan-gee</reading> each time. The cats now answer back with that same sound, <reading>なんじ</reading>, since that's all anyone there asks: what time.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今何時ですか。",
+          "english": "What time is it now?",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "ima",
+            "nannji"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ima",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "nannji",
+              "start": 1,
+              "end": 3
+            }
+          ],
+          "furigana": "今[いま]何[なん]時[じ]ですか。"
+        },
+        {
+          "japanese": "何時に起きますか。",
+          "english": "What time do you get up?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "nannji",
+            "okiru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "nannji",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "okiru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "起きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "何[なに]時[じ]に起[お]きますか。"
+        },
+        {
+          "japanese": "映画は何時ですか。",
+          "english": "What time is the movie?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "eiga",
+            "nannji"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "eiga",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "nannji",
+              "start": 3,
+              "end": 5
+            }
+          ],
+          "furigana": "映[えい]画[が]は何[なん]時[じ]ですか。"
+        }
+      ]
+    },
+    {
       "slug": "jikan",
       "primary_form": "時間",
       "meaning": "time / hours",
       "mnemonic_text": "The interval of the sun: jikan.",
-      "sort_order": 96,
+      "sort_order": 95,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10748,7 +10626,7 @@
       "primary_form": "時分",
       "meaning": "time (of day)",
       "mnemonic_text": "Hour and minute together: jibun.",
-      "sort_order": 97,
+      "sort_order": 96,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10869,7 +10747,7 @@
       "primary_form": "秒",
       "meaning": "second",
       "mnemonic_text": "The tiniest tick: byou.",
-      "sort_order": 98,
+      "sort_order": 97,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10956,7 +10834,7 @@
       "primary_form": "分",
       "meaning": "minute",
       "mnemonic_text": "A part of the hour: fun.",
-      "sort_order": 99,
+      "sort_order": 98,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11051,7 +10929,7 @@
       "primary_form": "半",
       "meaning": "half (past)",
       "mnemonic_text": "Half of the hour: han.",
-      "sort_order": 100,
+      "sort_order": 99,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11159,7 +11037,7 @@
       "primary_form": "週末",
       "meaning": "weekend",
       "mnemonic_text": "The end of the week: shuumatsu.",
-      "sort_order": 101,
+      "sort_order": 100,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11289,7 +11167,7 @@
       "primary_form": "日曜日",
       "meaning": "Sunday",
       "mnemonic_text": "Sun day: nichiyoubi.",
-      "sort_order": 102,
+      "sort_order": 101,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11413,7 +11291,7 @@
       "primary_form": "月曜日",
       "meaning": "Monday",
       "mnemonic_text": "Moon day: getsuyoubi.",
-      "sort_order": 103,
+      "sort_order": 102,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11535,7 +11413,7 @@
       "primary_form": "火曜日",
       "meaning": "Tuesday",
       "mnemonic_text": "Fire day: kayoubi.",
-      "sort_order": 104,
+      "sort_order": 103,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11651,7 +11529,7 @@
       "primary_form": "水曜日",
       "meaning": "Wednesday",
       "mnemonic_text": "Water day: suiyoubi.",
-      "sort_order": 105,
+      "sort_order": 104,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11767,7 +11645,7 @@
       "primary_form": "木曜日",
       "meaning": "Thursday",
       "mnemonic_text": "Tree day: mokuyoubi.",
-      "sort_order": 106,
+      "sort_order": 105,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11877,7 +11755,7 @@
       "primary_form": "金曜日",
       "meaning": "Friday",
       "mnemonic_text": "Gold day: kinyoubi.",
-      "sort_order": 107,
+      "sort_order": 106,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -11993,7 +11871,7 @@
       "primary_form": "土曜日",
       "meaning": "Saturday",
       "mnemonic_text": "Earth day: doyoubi.",
-      "sort_order": 108,
+      "sort_order": 107,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12110,7 +11988,7 @@
       "primary_form": "一日",
       "meaning": "1st of month",
       "mnemonic_text": "The first: tsuitachi.",
-      "sort_order": 109,
+      "sort_order": 108,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12218,7 +12096,7 @@
       "primary_form": "二日",
       "meaning": "2nd / two days",
       "mnemonic_text": "Two days: futsuka.",
-      "sort_order": 110,
+      "sort_order": 109,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12328,7 +12206,7 @@
       "primary_form": "三日",
       "meaning": "3rd / three days",
       "mnemonic_text": "Three days: mikka.",
-      "sort_order": 111,
+      "sort_order": 110,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12432,7 +12310,7 @@
       "primary_form": "四日",
       "meaning": "4th / four days",
       "mnemonic_text": "Four days: yokka.",
-      "sort_order": 112,
+      "sort_order": 111,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12542,7 +12420,7 @@
       "primary_form": "五日",
       "meaning": "5th / five days",
       "mnemonic_text": "Five days: itsuka.",
-      "sort_order": 113,
+      "sort_order": 112,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12646,7 +12524,7 @@
       "primary_form": "六日",
       "meaning": "6th / six days",
       "mnemonic_text": "Six days: muika.",
-      "sort_order": 114,
+      "sort_order": 113,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12750,7 +12628,7 @@
       "primary_form": "七日",
       "meaning": "7th / seven days",
       "mnemonic_text": "Seven days: nanoka.",
-      "sort_order": 115,
+      "sort_order": 114,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12855,7 +12733,7 @@
       "primary_form": "八日",
       "meaning": "8th / eight days",
       "mnemonic_text": "Eight days: youka.",
-      "sort_order": 116,
+      "sort_order": 115,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -12959,7 +12837,7 @@
       "primary_form": "九日",
       "meaning": "9th / nine days",
       "mnemonic_text": "Nine days: kokonoka.",
-      "sort_order": 117,
+      "sort_order": 116,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13063,7 +12941,7 @@
       "primary_form": "十日",
       "meaning": "10th / ten days",
       "mnemonic_text": "Ten days: tooka.",
-      "sort_order": 118,
+      "sort_order": 117,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13175,7 +13053,7 @@
       "primary_form": "二十日",
       "meaning": "20th / twenty days",
       "mnemonic_text": "Twenty days: hatsuka.",
-      "sort_order": 119,
+      "sort_order": 118,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13285,7 +13163,7 @@
       "primary_form": "家族",
       "meaning": "family",
       "mnemonic_text": "House group: kazoku.",
-      "sort_order": 120,
+      "sort_order": 119,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13408,7 +13286,7 @@
       "primary_form": "父",
       "meaning": "(my) father",
       "mnemonic_text": "'Chi-chi' for my own dad.",
-      "sort_order": 121,
+      "sort_order": 120,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13533,7 +13411,7 @@
       "primary_form": "お父さん",
       "meaning": "father (polite)",
       "mnemonic_text": "Honorable dad: otousan.",
-      "sort_order": 122,
+      "sort_order": 121,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13662,7 +13540,7 @@
       "primary_form": "母",
       "meaning": "(my) mother",
       "mnemonic_text": "'Ha-ha' for my own mom.",
-      "sort_order": 123,
+      "sort_order": 122,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13797,7 +13675,7 @@
       "primary_form": "お母さん",
       "meaning": "mother (polite)",
       "mnemonic_text": "Honorable mom: okaasan.",
-      "sort_order": 124,
+      "sort_order": 123,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -13915,7 +13793,7 @@
       "primary_form": "兄",
       "meaning": "(my) older brother",
       "mnemonic_text": "My older brother: ani.",
-      "sort_order": 125,
+      "sort_order": 124,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14052,7 +13930,7 @@
       "primary_form": "お兄さん",
       "meaning": "older brother (polite)",
       "mnemonic_text": "Honorable big brother: oniisan.",
-      "sort_order": 126,
+      "sort_order": 125,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14169,7 +14047,7 @@
       "primary_form": "姉",
       "meaning": "(my) older sister",
       "mnemonic_text": "My older sister: ane.",
-      "sort_order": 127,
+      "sort_order": 126,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14286,7 +14164,7 @@
       "primary_form": "お姉さん",
       "meaning": "older sister (polite)",
       "mnemonic_text": "Honorable big sister: oneesan.",
-      "sort_order": 128,
+      "sort_order": 127,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14415,7 +14293,7 @@
       "primary_form": "弟",
       "meaning": "younger brother",
       "mnemonic_text": "Little brother: otouto.",
-      "sort_order": 129,
+      "sort_order": 128,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14537,7 +14415,7 @@
       "primary_form": "妹",
       "meaning": "younger sister",
       "mnemonic_text": "Little sister: imouto.",
-      "sort_order": 130,
+      "sort_order": 129,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14659,7 +14537,7 @@
       "primary_form": "祖父",
       "meaning": "(my) grandfather",
       "mnemonic_text": "My grandpa: sofu.",
-      "sort_order": 131,
+      "sort_order": 130,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14795,7 +14673,7 @@
       "primary_form": "おじいさん",
       "meaning": "grandfather (polite)",
       "mnemonic_text": "Honorable grandpa: ojiisan.",
-      "sort_order": 132,
+      "sort_order": 131,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -14920,7 +14798,7 @@
       "primary_form": "祖母",
       "meaning": "(my) grandmother",
       "mnemonic_text": "My grandma: sobo.",
-      "sort_order": 133,
+      "sort_order": 132,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15051,7 +14929,7 @@
       "primary_form": "おばあさん",
       "meaning": "grandmother (polite)",
       "mnemonic_text": "Honorable grandma: obaasan.",
-      "sort_order": 134,
+      "sort_order": 133,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15188,7 +15066,7 @@
       "primary_form": "叔父",
       "meaning": "uncle",
       "mnemonic_text": "Your uncle: oji.",
-      "sort_order": 135,
+      "sort_order": 134,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15315,7 +15193,7 @@
       "primary_form": "叔母",
       "meaning": "aunt",
       "mnemonic_text": "Your aunt: oba.",
-      "sort_order": 136,
+      "sort_order": 135,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15470,7 +15348,7 @@
       "primary_form": "子供",
       "meaning": "child",
       "mnemonic_text": "A little one: kodomo.",
-      "sort_order": 137,
+      "sort_order": 136,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15594,7 +15472,7 @@
       "primary_form": "息子",
       "meaning": "son",
       "mnemonic_text": "Your son: musuko.",
-      "sort_order": 138,
+      "sort_order": 137,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15722,7 +15600,7 @@
       "primary_form": "娘",
       "meaning": "daughter",
       "mnemonic_text": "Your daughter: musume.",
-      "sort_order": 139,
+      "sort_order": 138,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15852,7 +15730,7 @@
       "primary_form": "大人",
       "meaning": "adult",
       "mnemonic_text": "A big person: otona.",
-      "sort_order": 140,
+      "sort_order": 139,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -15968,7 +15846,7 @@
       "primary_form": "兄弟",
       "meaning": "siblings",
       "mnemonic_text": "Brothers together: kyoudai.",
-      "sort_order": 141,
+      "sort_order": 140,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16086,7 +15964,7 @@
       "primary_form": "ご主人",
       "meaning": "(someone's) husband",
       "mnemonic_text": "The master of the house: goshujin.",
-      "sort_order": 142,
+      "sort_order": 141,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16209,7 +16087,7 @@
       "primary_form": "奥さん",
       "meaning": "(someone's) wife",
       "mnemonic_text": "The one in the back rooms: okusan.",
-      "sort_order": 143,
+      "sort_order": 142,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16328,7 +16206,7 @@
       "primary_form": "妻",
       "meaning": "(my) wife",
       "mnemonic_text": "My wife: tsuma.",
-      "sort_order": 144,
+      "sort_order": 143,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16463,7 +16341,7 @@
       "primary_form": "夫",
       "meaning": "(my) husband",
       "mnemonic_text": "My husband: otto.",
-      "sort_order": 145,
+      "sort_order": 144,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16592,7 +16470,7 @@
       "primary_form": "人",
       "meaning": "person",
       "mnemonic_text": "A walking figure: hito.",
-      "sort_order": 146,
+      "sort_order": 145,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16726,7 +16604,7 @@
       "primary_form": "友達",
       "meaning": "friend",
       "mnemonic_text": "Your buddies: tomodachi.",
-      "sort_order": 147,
+      "sort_order": 146,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16848,7 +16726,7 @@
       "primary_form": "先生",
       "meaning": "teacher",
       "mnemonic_text": "The one born before you in knowledge: sensei.",
-      "sort_order": 148,
+      "sort_order": 147,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -16970,7 +16848,7 @@
       "primary_form": "学生",
       "meaning": "student",
       "mnemonic_text": "One in the life of study: gakusei.",
-      "sort_order": 149,
+      "sort_order": 148,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17072,7 +16950,7 @@
       "primary_form": "生徒",
       "meaning": "pupil",
       "mnemonic_text": "A younger learner: seito.",
-      "sort_order": 150,
+      "sort_order": 149,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17194,7 +17072,7 @@
       "primary_form": "医者",
       "meaning": "doctor",
       "mnemonic_text": "The healing one: isha.",
-      "sort_order": 151,
+      "sort_order": 150,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17316,7 +17194,7 @@
       "primary_form": "会社員",
       "meaning": "company employee",
       "mnemonic_text": "A company person: kaishain.",
-      "sort_order": 152,
+      "sort_order": 151,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17438,7 +17316,7 @@
       "primary_form": "駅員",
       "meaning": "station staff",
       "mnemonic_text": "A station person: ekiin.",
-      "sort_order": 153,
+      "sort_order": 152,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17542,7 +17420,7 @@
       "primary_form": "警官",
       "meaning": "police officer",
       "mnemonic_text": "The guarding official: keikan.",
-      "sort_order": 154,
+      "sort_order": 153,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17660,7 +17538,7 @@
       "primary_form": "外国人",
       "meaning": "foreigner",
       "mnemonic_text": "An outside-country person: gaikokujin.",
-      "sort_order": 155,
+      "sort_order": 154,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17776,7 +17654,7 @@
       "primary_form": "女の人",
       "meaning": "woman",
       "mnemonic_text": "A female person: onnanohito.",
-      "sort_order": 156,
+      "sort_order": 155,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -17892,7 +17770,7 @@
       "primary_form": "男の人",
       "meaning": "man",
       "mnemonic_text": "A male person: otokonohito.",
-      "sort_order": 157,
+      "sort_order": 156,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -18008,7 +17886,7 @@
       "primary_form": "女の子",
       "meaning": "girl",
       "mnemonic_text": "A female child: onnanoko.",
-      "sort_order": 158,
+      "sort_order": 157,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -18130,7 +18008,7 @@
       "primary_form": "男の子",
       "meaning": "boy",
       "mnemonic_text": "A male child: otokonoko.",
-      "sort_order": 159,
+      "sort_order": 158,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -18238,6 +18116,128 @@
             }
           ],
           "furigana": "私[わたし]は男[おとこ]の子[こ]と話[はな]します。"
+        }
+      ]
+    },
+    {
+      "slug": "kanojo",
+      "primary_form": "彼女",
+      "meaning": "she / girlfriend",
+      "mnemonic_text": "kare plus woman (女): she.",
+      "sort_order": 159,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "she / girlfriend",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かのじょ"
+        }
+      ],
+      "furigana": "彼[かの]女[じょ]",
+      "meaning_mnemonic": "Koichi points across the konbini at the kneeling <kanji>woman</kanji> restocking the onigiri shelf, arm sweeping the row into place. He doesn't explain, just tilts his head and grins: that's the one he's been talking about all week. You don't need more than that look to know she's his girlfriend, and now you know who she is too.",
+      "reading_mnemonic": "At Grandma Kane's shrine, she keeps introducing the same woman standing by the bell alongside a man named Joe: Kane, and Joe. Say it fast — <reading>Kane-Joe</reading> — and you land on <reading>かのじょ</reading>, the word for her, the girlfriend everyone at the shrine already knows by name.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼女は本を読みます。",
+          "english": "She reads books.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kanojo",
+            "hon",
+            "yomu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 5,
+              "end": 9,
+              "surface_form": "読みます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "僕は彼女と公園に行きます。",
+          "english": "I'm going to the park with her.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "boku",
+            "kanojo",
+            "kouen",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 12,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "僕[ぼく]は彼[かの]女[じょ]と公[こう]園[えん]に行[い]きます。"
+        },
+        {
+          "japanese": "彼女は今忙しいです。",
+          "english": "She's busy right now.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kanojo",
+            "ima",
+            "isogashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kanojo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ima",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "isogashii",
+              "start": 4,
+              "end": 7
+            }
+          ],
+          "furigana": "彼[かの]女[じょ]は今[いま]忙[いそが]しいです。"
         }
       ]
     },

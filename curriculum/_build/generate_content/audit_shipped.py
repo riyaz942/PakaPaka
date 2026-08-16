@@ -258,11 +258,31 @@ def reading_from_furigana(annotated):
     return "".join(out)
 
 
+#: Levels that ship a kanji skeleton rather than authored content.
+SKELETON_LEVELS = ("n3", "n2", "n1")
+
+
+def load_items(kind_dir, level, key="items"):
+    """`curriculum/<kind_dir>/<level>.json` entries, or `[]` when the file does
+    not exist. Skeleton levels ship kanji (and sometimes radicals) and nothing
+    else, so the cross-level checks below cannot assume all four kinds per
+    level the way the per-level checks can."""
+    path = os.path.join(CURRICULUM_DIR, kind_dir, f"{level}.json")
+    if not os.path.exists(path):
+        return []
+    return audit_facts.load_json(kind_dir, f"{level}.json")[key]
+
+
 def discover_levels():
-    """Levels with a radicals file on disk, in curriculum teaching order."""
+    """Levels with any item file on disk, in curriculum teaching order.
+
+    Not radicals alone: a skeleton level teaches kanji whose components are all
+    already taught, so it ships no radicals file at all (N1). Missing it here
+    would drop its kanji from the content_counts cross-check below."""
     found = {
         os.path.splitext(os.path.basename(p))[0]
-        for p in glob.glob(os.path.join(CURRICULUM_DIR, "radicals", "*.json"))
+        for kind in ("radicals", "kanji", "vocabulary", "grammar")
+        for p in glob.glob(os.path.join(CURRICULUM_DIR, kind, "*.json"))
     }
     ordered = [lvl for lvl in context.LEVEL_ORDER if lvl in found]
     ordered += sorted(found - set(ordered))
@@ -563,10 +583,10 @@ def decomposition_gaps(level, all_levels_present, kradfile):
     """
     radical_char, kanji_char = {}, {}
     for lvl in all_levels_present:
-        for r in audit_facts.load_json("radicals", f"{lvl}.json")["items"]:
+        for r in load_items("radicals", lvl):
             radical_char[r["slug"]] = r["primary_form"]
     for lvl in all_levels_present:
-        for k in audit_facts.load_json("kanji", f"{lvl}.json")["items"]:
+        for k in load_items("kanji", lvl):
             kanji_char[k["slug"]] = k["primary_form"]
 
     taught_chars = {}
@@ -713,7 +733,7 @@ def symmetry_errors(all_levels_present):
     items = {}
     for lvl in all_levels_present:
         for kind_dir in ("radicals", "kanji"):
-            for it in audit_facts.load_json(kind_dir, f"{lvl}.json")["items"]:
+            for it in load_items(kind_dir, lvl):
                 items[it["slug"]] = it
     seen_pairs = set()
     results = []
@@ -747,7 +767,7 @@ def hygiene_errors(all_levels_present):
     results = []
     for kind_dir in ("radicals", "kanji", "vocabulary", "grammar"):
         for lvl in all_levels_present:
-            items = audit_facts.load_json(kind_dir, f"{lvl}.json")["items"]
+            items = load_items(kind_dir, lvl)
             label = f"{kind_dir}/{lvl}.json"
 
             dup_slugs = _duplicates([it["slug"] for it in items])
@@ -772,7 +792,7 @@ def hygiene_errors(all_levels_present):
     for kind_dir in ("radicals", "kanji"):
         by_form = {}
         for lvl in all_levels_present:
-            for it in audit_facts.load_json(kind_dir, f"{lvl}.json")["items"]:
+            for it in load_items(kind_dir, lvl):
                 by_form.setdefault(it["primary_form"], []).append(f"{lvl}:{it['slug']}")
         for form, owners in sorted(by_form.items()):
             if len(owners) > 1:
@@ -788,9 +808,9 @@ def hygiene_errors(all_levels_present):
     # radical with no children and a taught kanji with no parents.
     radical_by_form, kanji_by_form = {}, {}
     for lvl in all_levels_present:
-        for r in audit_facts.load_json("radicals", f"{lvl}.json")["items"]:
+        for r in load_items("radicals", lvl):
             radical_by_form.setdefault(r["primary_form"], r["slug"])
-        for k in audit_facts.load_json("kanji", f"{lvl}.json")["items"]:
+        for k in load_items("kanji", lvl):
             kanji_by_form.setdefault(k["primary_form"], k["slug"])
     builds_on = {
         (e["from_slug"], e["to_slug"])
@@ -824,11 +844,11 @@ def hygiene_errors(all_levels_present):
         ("vocabulary", "vocabulary"), ("grammar", "grammar"),
     ):
         counts[key] = sum(
-            len(audit_facts.load_json(kind_dir, f"{lvl}.json")["items"]) for lvl in all_levels_present
+            len(load_items(kind_dir, lvl)) for lvl in all_levels_present
         )
     counts["total_items"] = sum(counts[k] for k in ("radicals", "kanji", "vocabulary", "grammar"))
     counts["reading_passages"] = sum(
-        len(audit_facts.load_json("readings", f"{lvl}.json")["passages"]) for lvl in all_levels_present
+        len(load_items("readings", lvl, key="passages")) for lvl in all_levels_present
     )
     counts["dependency_edges"] = len(audit_facts.load_json("dependencies", "graph.json")["edges"])
 
@@ -850,7 +870,7 @@ def hygiene_errors(all_levels_present):
 def _vocab_primary_forms(all_levels_present):
     out = {}
     for lvl in all_levels_present:
-        for v in audit_facts.load_json("vocabulary", f"{lvl}.json")["items"]:
+        for v in load_items("vocabulary", lvl):
             out.setdefault(v["slug"], v["primary_form"])
     return out
 
@@ -1077,7 +1097,14 @@ def main():
     args = parser.parse_args()
 
     all_levels_present = discover_levels()
-    levels = args.levels or all_levels_present
+    # Skeleton levels are item lists by design — no mnemonics, no examples, no
+    # art (kanji-coverage plan Phase 2) — so every content check below would fire
+    # on all 553 of them. They stay in `all_levels_present` so the authored
+    # levels can still resolve components that are taught there, and `--level n3`
+    # still audits one on purpose.
+    levels = args.levels or [
+        lvl for lvl in all_levels_present if lvl not in SKELETON_LEVELS
+    ]
     print("Loading KRADFILE…")
     kradfile = sources.load_kradfile()
 

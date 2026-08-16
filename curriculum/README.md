@@ -9,6 +9,13 @@ Authoritative curriculum content for the mobile app. JSON files here are validat
 - `radicals/`, `kanji/`, `vocabulary/`, `grammar/`, `readings/` — per-level seed slices (`n5.json`, `n4.json`, …)
 - `dependencies/graph.json` — precomputed radical → kanji → vocabulary edges
 
+**N5 and N4 are authored in full. N3/N2/N1 are a kanji-only skeleton** — the 553 kanji that
+N5/N4 vocabulary is written with but nobody has authored, plus the 10 radicals that decompose
+them. They carry meanings, readings and accepted answers and nothing else: no mnemonics, no
+art, no examples, and no vocabulary, grammar or passages of their own. Their
+kanji → vocabulary edges are deliberately held out of the graph until the pull-forward planner
+lands. See [docs/content/kanji-coverage-and-dependency-order-plan.md](../docs/content/kanji-coverage-and-dependency-order-plan.md).
+
 ## Commands (repo root)
 
 ```bash

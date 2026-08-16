@@ -52,6 +52,26 @@ function grammar(id: number, form: string, sortOrder: number, level = 'N4') {
   };
 }
 
+/**
+ * A level counts as startable only when it teaches vocabulary — a level holding
+ * kanji alone is the N3+ skeleton (kanji-coverage plan Phase 2), which the
+ * pickers must not offer. Tests that assert on the pickers seed one of these per
+ * level they mean to be selectable.
+ */
+function vocabulary(id: number, form: string, sortOrder: number, level = 'N4') {
+  return {
+    id,
+    item_type: 'vocabulary',
+    jlpt_level: level,
+    slug: `slug-${id}`,
+    primary_form: form,
+    meaning: `meaning-${id}`,
+    mnemonic_text: null,
+    visual_mnemonic_url: null,
+    sort_order: sortOrder,
+  };
+}
+
 function radical(id: number, form: string, sortOrder: number, level = 'N5') {
   return {
     id,
@@ -244,6 +264,12 @@ describe('PlacementScreen', () => {
 
   it('disables levels with no curriculum content in both pickers', async () => {
     const { userDb, curriculumDb } = await createDatabases();
+    __mockSetItems('curriculum.db.test', [
+      kanji(11, '会', 1),
+      radical(1, '一', 1),
+      vocabulary(31, '会社', 1),
+      vocabulary(32, '一つ', 1, 'N5'),
+    ]);
     renderPlacementScreen(curriculumDb, userDb);
 
     await waitFor(() => {
@@ -406,6 +432,9 @@ describe('PlacementScreen', () => {
       kanji(12, '同', 2),
       kanji(21, '政', 1, 'N3'),
       kanji(22, '議', 2, 'N3'),
+      // Both levels need vocabulary to be selectable in the range pickers.
+      vocabulary(31, '会社', 1),
+      vocabulary(32, '政治', 1, 'N3'),
     ]);
     renderPlacementScreen(curriculumDb, userDb);
 
@@ -420,9 +449,12 @@ describe('PlacementScreen', () => {
       expect(screen.getByTestId('placement-screen')).toBeTruthy();
     });
 
-    // N4 first (both known), then N3 (both unknown).
+    // N4 first (2 kanji + 1 vocabulary, all known), then N3 (the same three,
+    // all unknown).
     fireEvent.press(screen.getByTestId('placement-answer-known'));
     fireEvent.press(screen.getByTestId('placement-answer-known'));
+    fireEvent.press(screen.getByTestId('placement-answer-known'));
+    fireEvent.press(screen.getByTestId('placement-answer-unknown'));
     fireEvent.press(screen.getByTestId('placement-answer-unknown'));
     fireEvent.press(screen.getByTestId('placement-answer-unknown'));
 

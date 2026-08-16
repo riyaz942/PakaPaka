@@ -59,12 +59,13 @@ describe('WelcomeScreen', () => {
     expect(result.ok).toBe(true);
 
     // The screen doubles as the curriculum handle here; N5–N3 ship content,
-    // N2 and N1 do not.
+    // N2 and N1 do not. Vocabulary is what marks a level startable — a level
+    // with only kanji is the N3+ skeleton, which teaches nothing on its own.
     __mockSetItems(
       'user.db',
       ['N5', 'N4', 'N3'].map((level, index) => ({
         id: index + 1,
-        item_type: 'kanji',
+        item_type: 'vocabulary',
         jlpt_level: level,
         slug: `slug-${index + 1}`,
         primary_form: `form-${index + 1}`,

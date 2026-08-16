@@ -9,6 +9,10 @@ Edge types produced:
 Radical->kanji edges are derived from a curated decomposition map (component
 radical slug -> list of kanji suffixes). Kanji->vocab edges are derived
 automatically by scanning vocab primary_form for the kanji character.
+
+Skeleton levels (N3/N2/N1, kanji only) take their decomposition from the
+generated map in skeleton.json, and emit *no* kanji->vocabulary edges until the
+Phase 3 planner change lands — see the comment on that loop below.
 """
 
 import json
@@ -16,6 +20,12 @@ import os
 
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
+
+#: Levels authored in full, and the skeleton levels behind them
+#: (docs/content/kanji-coverage-and-dependency-order-plan.md Phase 2).
+AUTHORED_LEVELS = ["n5", "n4"]
+SKELETON_LEVELS = ["n3", "n2", "n1"]
+ALL_LEVELS = AUTHORED_LEVELS + SKELETON_LEVELS
 
 
 def load(path):
@@ -198,6 +208,18 @@ N4_DECOMPOSITION = {
 }
 
 
+def load_skeleton_decomposition():
+    """{level: {radical slug: [kanji suffix, ...]}} for the skeleton levels.
+
+    Generated from KRADFILE by import/build_skeleton.py and checked in, so this
+    stays symmetric with the hand-curated N5/N4 maps above: same shape, same
+    validation, no source archives needed at graph-build time."""
+    path = os.path.join(BUILD_DIR, "skeleton.json")
+    if not os.path.exists(path):
+        return {}
+    return load(path)["decomposition"]
+
+
 def build_edges(levels):
     radicals = []
     kanji = []
@@ -235,6 +257,7 @@ def build_edges(levels):
 
     # radical -> kanji (builds_on), from curated decomposition maps per level.
     decomposition_by_level = {"n5": N5_DECOMPOSITION, "n4": N4_DECOMPOSITION}
+    decomposition_by_level.update(load_skeleton_decomposition())
     # A key that resolves to nothing is a typo or a renamed/removed item, and
     # silently skipping it is how radicals went missing from kanji chips
     # unnoticed. Fail the build instead.
@@ -260,7 +283,22 @@ def build_edges(levels):
                 add(rad_slug, "radical", kslug, "kanji", "builds_on")
 
     # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
+    #
+    # Held for skeleton-level kanji until the Phase 3 planner lands. A `requires`
+    # edge from an N3 kanji to an N5 word is a gate the current planner can never
+    # open — useLessonPlan.ts scopes candidates to one JLPT level, so the learner
+    # is never offered the parent and the word goes from "unlocked with no chain"
+    # to permanently locked. Phase 3 turns these on together with the
+    # pull-forward planner, never before it.
+    skeleton_kanji_slugs = {
+        item["slug"]
+        for lvl in levels
+        if lvl in SKELETON_LEVELS
+        for item in load_level_items("kanji", lvl)
+    }
     for k in kanji:
+        if k["slug"] in skeleton_kanji_slugs:
+            continue
         char = k["primary_form"]
         for v in vocab:
             if char and char in v["primary_form"]:
@@ -278,7 +316,7 @@ def build_edges(levels):
 
 def main():
     levels = []
-    for lvl in ["n5", "n4"]:
+    for lvl in ALL_LEVELS:
         if os.path.exists(os.path.join(CURRICULUM_DIR, "kanji", f"{lvl}.json")):
             levels.append(lvl)
     edges = build_edges(levels)

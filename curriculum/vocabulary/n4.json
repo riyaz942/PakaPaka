@@ -28,37 +28,11 @@
       }
     },
     {
-      "slug": "keizai",
-      "primary_form": "経済",
-      "meaning": "economy",
-      "mnemonic_text": "Passing through (経) aid (済): the flow of the economy.",
-      "sort_order": 2,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "economy",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "けいざい"
-        }
-      ],
-      "furigana": "経[けい]済[ざい]",
-      "meaning_mnemonic": "In the temple's back room, the loom keeps working: thread after thread <kanji>passes through</kanji> the frame while the monk drones on. What is threaded today is not cloth but coins, spooled from house to market to house again. That endless circuit of coin passing through the village is the economy.",
-      "reading_mnemonic": "At Koichi's konbini, the till beeps as a customer named Kay-Zai counts every coin twice, tracking how money moves through the town — konbini, rent, noodle stand. Her name says it: <reading>Kay-Zai</reading> is how you hear <reading>けいざい</reading>, the economy she watches.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      }
-    },
-    {
       "slug": "seiji",
       "primary_form": "政治",
       "meaning": "politics",
       "mnemonic_text": "Governing (政) and ordering (治): politics.",
-      "sort_order": 3,
+      "sort_order": 2,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -84,7 +58,7 @@
       "primary_form": "意見",
       "meaning": "opinion",
       "mnemonic_text": "A meaning (意) that you see (見): your opinion.",
-      "sort_order": 4,
+      "sort_order": 3,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -106,25 +80,51 @@
       }
     },
     {
-      "slug": "setsumei",
-      "primary_form": "説明",
-      "meaning": "explanation",
-      "mnemonic_text": "Speech (説) making things bright (明): an explanation.",
-      "sort_order": 5,
+      "slug": "bunka",
+      "primary_form": "文化",
+      "meaning": "culture",
+      "mnemonic_text": "Writing (文) that transforms (化) a people: culture.",
+      "sort_order": 4,
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "explanation",
+          "answer_text": "culture",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "せつめい"
+          "answer_text": "ぶんか"
         }
       ],
-      "furigana": "説[せつ]明[めい]",
-      "meaning_mnemonic": "Grandma Kane corners you over the empty offering plate. You stall until dawn's <kanji>bright</kanji> floods both shrine windows at once, sun in one pane, moon still pale in the other, till the courtyard glows so hard the cats squint. In that light your excuse turns readable, laid out plain — an explanation you never meant to give.",
-      "reading_mnemonic": "At Koichi's konbini, a customer corners him over the price hike, so he SETs a sign by the onigiri shelf that MAY as well be scripture, every reason dated. Regulars read the whole <reading>SET in MAY</reading> notice top to bottom — that rundown is <reading>せつめい</reading>.",
+      "furigana": "文[ぶん]化[か]",
+      "meaning_mnemonic": "Every hiker who reaches the vending machine atop the mountain trail leaves something behind: a haiku scratched in the paint, a coin balanced on the ledge. None of it was ever official, but by year three the machine has its own rules new climbers learn just by watching — that unwritten pile of shared habits is culture.",
+      "reading_mnemonic": "Halfway up the mountain trail, a crow snatches the coin left on the vending machine's ledge, and hikers cheer instead of chasing it off. \"What a <reading>boon</reading>,\" one laughs, and the crow caws back \"<reading>kah</reading>,\" the two sounds landing together as <reading>ぶんか</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "dentou",
+      "primary_form": "伝統",
+      "meaning": "tradition",
+      "mnemonic_text": "Passed down (伝) and unified (統): tradition.",
+      "sort_order": 5,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "tradition",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "でんとう"
+        }
+      ],
+      "furigana": "伝[でん]統[とう]",
+      "meaning_mnemonic": "Every spring the same families haul the same boat to the riverbank and launch it from the exact stone their grandparents used, though the current shifted downstream decades ago. Nobody remembers why it has to be that stone, only that it always has been — that refusal to move is tradition.",
+      "reading_mnemonic": "At Sei's school, the coach makes every new runner back into the equipment den, toe first, just like the first coach did decades ago. New kids call it dumb, until they're the ones enforcing it: that <reading>DEN, TOE</reading> shuffle, <reading>でんとう</reading>, outlives every coach who ran it.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
@@ -158,89 +158,11 @@
       }
     },
     {
-      "slug": "bunka",
-      "primary_form": "文化",
-      "meaning": "culture",
-      "mnemonic_text": "Writing (文) that transforms (化) a people: culture.",
-      "sort_order": 7,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "culture",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ぶんか"
-        }
-      ],
-      "furigana": "文[ぶん]化[か]",
-      "meaning_mnemonic": "Every hiker who reaches the vending machine atop the mountain trail leaves something behind: a haiku scratched in the paint, a coin balanced on the ledge. None of it was ever official, but by year three the machine has its own rules new climbers learn just by watching — that unwritten pile of shared habits is culture.",
-      "reading_mnemonic": "Halfway up the mountain trail, a crow snatches the coin left on the vending machine's ledge, and hikers cheer instead of chasing it off. \"What a <reading>boon</reading>,\" one laughs, and the crow caws back \"<reading>kah</reading>,\" the two sounds landing together as <reading>ぶんか</reading>.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      }
-    },
-    {
-      "slug": "dentou",
-      "primary_form": "伝統",
-      "meaning": "tradition",
-      "mnemonic_text": "Passed down (伝) and unified (統): tradition.",
-      "sort_order": 8,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "tradition",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "でんとう"
-        }
-      ],
-      "furigana": "伝[でん]統[とう]",
-      "meaning_mnemonic": "Every spring the same families haul the same boat to the riverbank and launch it from the exact stone their grandparents used, though the current shifted downstream decades ago. Nobody remembers why it has to be that stone, only that it always has been — that refusal to move is tradition.",
-      "reading_mnemonic": "At Sei's school, the coach makes every new runner back into the equipment den, toe first, just like the first coach did decades ago. New kids call it dumb, until they're the ones enforcing it: that <reading>DEN, TOE</reading> shuffle, <reading>でんとう</reading>, outlives every coach who ran it.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      }
-    },
-    {
-      "slug": "shuukan-custom",
-      "primary_form": "習慣",
-      "meaning": "custom / habit",
-      "mnemonic_text": "Learning (習) that becomes routine (慣): a habit.",
-      "sort_order": 9,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "custom / habit",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "しゅうかん"
-        }
-      ],
-      "furigana": "習[しゅう]慣[かん]",
-      "meaning_mnemonic": "That duckling from <kanji>practice</kanji> still can't land one clean flight, but it hasn't missed a single dawn either. Same rock, same launch, same scattered feathers, same untouched bead of milk on the lilypad — every morning, rain or shine. Repetition that rigid stops being practice; it becomes a habit, a fixed custom now.",
-      "reading_mnemonic": "Every day at Koichi's konbini, the same regular runs the same scam by the shoe rack — the <reading>shoe con</reading> — swiping one sandal as the till beeps. Staff set their watches by him: that unbroken daily <reading>しゅうかん</reading> hasn't varied in months.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      }
-    },
-    {
       "slug": "kokusai",
       "primary_form": "国際",
       "meaning": "international",
       "mnemonic_text": "Countries (国) meeting at the border (際): international.",
-      "sort_order": 10,
+      "sort_order": 7,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -266,7 +188,7 @@
       "primary_form": "政府",
       "meaning": "government",
       "mnemonic_text": "Governance's (政) storehouse (府): the government.",
-      "sort_order": 11,
+      "sort_order": 8,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -292,7 +214,7 @@
       "primary_form": "法律",
       "meaning": "law",
       "mnemonic_text": "A rule (法) set in rhythm (律): the law.",
-      "sort_order": 12,
+      "sort_order": 9,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -318,7 +240,7 @@
       "primary_form": "権利",
       "meaning": "right (entitlement)",
       "mnemonic_text": "Authority (権) that benefits (利): a right.",
-      "sort_order": 13,
+      "sort_order": 10,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -344,7 +266,7 @@
       "primary_form": "義務",
       "meaning": "duty / obligation",
       "mnemonic_text": "Righteousness (義) that must be worked (務): a duty.",
-      "sort_order": 14,
+      "sort_order": 11,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -370,7 +292,7 @@
       "primary_form": "新聞社",
       "meaning": "newspaper company",
       "mnemonic_text": "The newspaper (新聞) company (社).",
-      "sort_order": 15,
+      "sort_order": 12,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -396,7 +318,7 @@
       "primary_form": "企業",
       "meaning": "enterprise / business",
       "mnemonic_text": "Planning (企) an occupation (業): a company.",
-      "sort_order": 16,
+      "sort_order": 13,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -422,7 +344,7 @@
       "primary_form": "貿易",
       "meaning": "trade (commerce)",
       "mnemonic_text": "Goods traded (貿) for a change (易): commerce.",
-      "sort_order": 17,
+      "sort_order": 14,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -448,7 +370,7 @@
       "primary_form": "輸出",
       "meaning": "export",
       "mnemonic_text": "Transport (輸) that exits (出): to export.",
-      "sort_order": 18,
+      "sort_order": 15,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -474,7 +396,7 @@
       "primary_form": "輸入",
       "meaning": "import",
       "mnemonic_text": "Transport (輸) that enters (入): to import.",
-      "sort_order": 19,
+      "sort_order": 16,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -500,7 +422,7 @@
       "primary_form": "税金",
       "meaning": "tax",
       "mnemonic_text": "Money (金) taken as tax (税): a tax.",
-      "sort_order": 20,
+      "sort_order": 17,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -526,7 +448,7 @@
       "primary_form": "価格",
       "meaning": "price",
       "mnemonic_text": "Value (価) given a fixed frame (格): the price.",
-      "sort_order": 21,
+      "sort_order": 18,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -552,7 +474,7 @@
       "primary_form": "市場",
       "meaning": "market",
       "mnemonic_text": "The city's (市) open place (場): a market.",
-      "sort_order": 22,
+      "sort_order": 19,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -578,7 +500,7 @@
       "primary_form": "工場",
       "meaning": "factory",
       "mnemonic_text": "Construction's (工) open place (場): a factory.",
-      "sort_order": 23,
+      "sort_order": 20,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -604,7 +526,7 @@
       "primary_form": "農家",
       "meaning": "farmhouse / farmer",
       "mnemonic_text": "Farming's (農) household (家): a farmer's home.",
-      "sort_order": 24,
+      "sort_order": 21,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -630,7 +552,7 @@
       "primary_form": "漁業",
       "meaning": "fishing industry",
       "mnemonic_text": "Fishing (漁) as an occupation (業).",
-      "sort_order": 25,
+      "sort_order": 22,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -656,7 +578,7 @@
       "primary_form": "資源",
       "meaning": "resources",
       "mnemonic_text": "Capital's (資) source (源): natural resources.",
-      "sort_order": 26,
+      "sort_order": 23,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -682,7 +604,7 @@
       "primary_form": "環境",
       "meaning": "environment",
       "mnemonic_text": "A ring (環) around the border (境): the environment.",
-      "sort_order": 27,
+      "sort_order": 24,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -708,7 +630,7 @@
       "primary_form": "問題点",
       "meaning": "problem point",
       "mnemonic_text": "The point (点) of a problem (問題).",
-      "sort_order": 28,
+      "sort_order": 25,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -734,7 +656,7 @@
       "primary_form": "原因",
       "meaning": "cause",
       "mnemonic_text": "The origin's (原) reason (因): a cause.",
-      "sort_order": 29,
+      "sort_order": 26,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -760,7 +682,7 @@
       "primary_form": "結果",
       "meaning": "result",
       "mnemonic_text": "Tying together (結) a fruit (果): the result.",
-      "sort_order": 30,
+      "sort_order": 27,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -782,37 +704,11 @@
       }
     },
     {
-      "slug": "oya",
-      "primary_form": "親",
-      "meaning": "parent",
-      "mnemonic_text": "Standing by a tree, watching over you: a parent.",
-      "sort_order": 31,
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "parent",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "おや"
-        }
-      ],
-      "furigana": "親[おや]",
-      "meaning_mnemonic": "Long after the final whistle blows at Sei's school field, that same straining figure is still wedged in the tree, refusing to climb down until the very last player has gone home — because a <kanji>parent</kanji> doesn't stop watching just because the game is over.",
-      "reading_mnemonic": "This is simply 親's own reading you already learned, standing alone as <reading>おや</reading>.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      }
-    },
-    {
       "slug": "fuufu",
       "primary_form": "夫婦",
       "meaning": "married couple",
       "mnemonic_text": "Husband (夫) and wife (婦): a couple.",
-      "sort_order": 32,
+      "sort_order": 28,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -838,7 +734,7 @@
       "primary_form": "男性",
       "meaning": "male (gender)",
       "mnemonic_text": "Man's (男) nature (性): male.",
-      "sort_order": 33,
+      "sort_order": 29,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -865,7 +761,7 @@
       "primary_form": "女性",
       "meaning": "female (gender)",
       "mnemonic_text": "Woman's (女) nature (性): female.",
-      "sort_order": 34,
+      "sort_order": 30,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -892,7 +788,7 @@
       "primary_form": "青年",
       "meaning": "youth (young man)",
       "mnemonic_text": "Blue-green (青) years (年): a young man.",
-      "sort_order": 35,
+      "sort_order": 31,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -919,7 +815,7 @@
       "primary_form": "少年",
       "meaning": "boy",
       "mnemonic_text": "Few (少) years (年): a boy.",
-      "sort_order": 36,
+      "sort_order": 32,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -946,7 +842,7 @@
       "primary_form": "少女",
       "meaning": "girl",
       "mnemonic_text": "Few (少) years, a woman (女): a girl.",
-      "sort_order": 37,
+      "sort_order": 33,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -965,7 +861,7 @@
       "primary_form": "恋人",
       "meaning": "lover / partner",
       "mnemonic_text": "A person (人) of love (恋): a lover.",
-      "sort_order": 38,
+      "sort_order": 34,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -984,7 +880,7 @@
       "primary_form": "友人",
       "meaning": "friend (formal)",
       "mnemonic_text": "A friend (友) person (人): a friend.",
-      "sort_order": 39,
+      "sort_order": 35,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1003,7 +899,7 @@
       "primary_form": "仲間",
       "meaning": "companion / comrade",
       "mnemonic_text": "One who shares your space (間) inside (仲): a comrade.",
-      "sort_order": 40,
+      "sort_order": 36,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1022,7 +918,7 @@
       "primary_form": "個人",
       "meaning": "individual",
       "mnemonic_text": "A single (個) person (人): an individual.",
-      "sort_order": 41,
+      "sort_order": 37,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1041,7 +937,7 @@
       "primary_form": "相手",
       "meaning": "the other party",
       "mnemonic_text": "The hand (手) you face (相): your opponent or partner.",
-      "sort_order": 42,
+      "sort_order": 38,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1060,7 +956,7 @@
       "primary_form": "客",
       "meaning": "guest / customer",
       "mnemonic_text": "A visitor sheltered under a roof: a guest.",
-      "sort_order": 43,
+      "sort_order": 39,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1079,7 +975,7 @@
       "primary_form": "お客さん",
       "meaning": "customer (polite)",
       "mnemonic_text": "Polite form of guest: a customer.",
-      "sort_order": 44,
+      "sort_order": 40,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1098,7 +994,7 @@
       "primary_form": "店員",
       "meaning": "shop clerk",
       "mnemonic_text": "A shop's (店) staff member (員): a clerk.",
-      "sort_order": 45,
+      "sort_order": 41,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1117,7 +1013,7 @@
       "primary_form": "公務員",
       "meaning": "civil servant",
       "mnemonic_text": "A public (公) duty's (務) staff member (員).",
-      "sort_order": 46,
+      "sort_order": 42,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1136,7 +1032,7 @@
       "primary_form": "主婦",
       "meaning": "housewife",
       "mnemonic_text": "The main (主) woman (婦) of the house.",
-      "sort_order": 47,
+      "sort_order": 43,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1155,7 +1051,7 @@
       "primary_form": "学者",
       "meaning": "scholar",
       "mnemonic_text": "A person (者) of learning (学): a scholar.",
-      "sort_order": 48,
+      "sort_order": 44,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1174,7 +1070,7 @@
       "primary_form": "専門家",
       "meaning": "specialist / expert",
       "mnemonic_text": "A house (家) devoted to one gate (専門): an expert.",
-      "sort_order": 49,
+      "sort_order": 45,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1193,7 +1089,7 @@
       "primary_form": "成人",
       "meaning": "adult (legal)",
       "mnemonic_text": "One who has become (成) a person (人): an adult.",
-      "sort_order": 50,
+      "sort_order": 46,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1212,7 +1108,7 @@
       "primary_form": "偶然",
       "meaning": "coincidence",
       "mnemonic_text": "A paired (偶) natural (然) event: a coincidence.",
-      "sort_order": 51,
+      "sort_order": 47,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1227,11 +1123,37 @@
       "furigana": "偶[ぐう]然[ぜん]"
     },
     {
+      "slug": "oya",
+      "primary_form": "親",
+      "meaning": "parent",
+      "mnemonic_text": "Standing by a tree, watching over you: a parent.",
+      "sort_order": 48,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "parent",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "おや"
+        }
+      ],
+      "furigana": "親[おや]",
+      "meaning_mnemonic": "Long after the final whistle blows at Sei's school field, that same straining figure is still wedged in the tree, refusing to climb down until the very last player has gone home — because a <kanji>parent</kanji> doesn't stop watching just because the game is over.",
+      "reading_mnemonic": "This is simply 親's own reading you already learned, standing alone as <reading>おや</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
+    },
+    {
       "slug": "sabishii",
       "primary_form": "寂しい",
       "meaning": "lonely",
       "mnemonic_text": "A quiet (寂) still heart: lonely.",
-      "sort_order": 52,
+      "sort_order": 49,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1250,7 +1172,7 @@
       "primary_form": "恥ずかしい",
       "meaning": "embarrassing",
       "mnemonic_text": "A heart (心) that shrinks: embarrassed.",
-      "sort_order": 53,
+      "sort_order": 50,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1269,7 +1191,7 @@
       "primary_form": "羨ましい",
       "meaning": "envious",
       "mnemonic_text": "Looking sideways with longing: envious.",
-      "sort_order": 54,
+      "sort_order": 51,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1288,7 +1210,7 @@
       "primary_form": "面倒くさい",
       "meaning": "troublesome",
       "mnemonic_text": "A face (面) that's too much bother: annoying.",
-      "sort_order": 55,
+      "sort_order": 52,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1307,7 +1229,7 @@
       "primary_form": "厳しい",
       "meaning": "strict",
       "mnemonic_text": "A stern cliff of rules: strict.",
-      "sort_order": 56,
+      "sort_order": 53,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1326,7 +1248,7 @@
       "primary_form": "優しい",
       "meaning": "kind / gentle",
       "mnemonic_text": "A superior (優) gentle heart: kind.",
-      "sort_order": 57,
+      "sort_order": 54,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1345,7 +1267,7 @@
       "primary_form": "怖い",
       "meaning": "scary",
       "mnemonic_text": "A heart (忄) gripped by fear: scary.",
-      "sort_order": 58,
+      "sort_order": 55,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1364,7 +1286,7 @@
       "primary_form": "深い",
       "meaning": "deep",
       "mnemonic_text": "Water (氵) reaching far down: deep.",
-      "sort_order": 59,
+      "sort_order": 56,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1383,7 +1305,7 @@
       "primary_form": "浅い",
       "meaning": "shallow",
       "mnemonic_text": "Water (氵) barely covering: shallow.",
-      "sort_order": 60,
+      "sort_order": 57,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1402,7 +1324,7 @@
       "primary_form": "細い",
       "meaning": "thin / slender",
       "mnemonic_text": "Thread drawn out fine: thin.",
-      "sort_order": 61,
+      "sort_order": 58,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1421,7 +1343,7 @@
       "primary_form": "太い",
       "meaning": "thick / fat",
       "mnemonic_text": "A big extra drop of size: thick.",
-      "sort_order": 62,
+      "sort_order": 59,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1440,7 +1362,7 @@
       "primary_form": "ぬるい",
       "meaning": "lukewarm",
       "mnemonic_text": "Neither hot nor cold: lukewarm.",
-      "sort_order": 63,
+      "sort_order": 60,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1459,7 +1381,7 @@
       "primary_form": "きつい",
       "meaning": "tight / harsh",
       "mnemonic_text": "A tight fit that pinches: tight, harsh.",
-      "sort_order": 64,
+      "sort_order": 61,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1478,7 +1400,7 @@
       "primary_form": "緩い",
       "meaning": "loose / lax",
       "mnemonic_text": "Thread with slack in it: loose.",
-      "sort_order": 65,
+      "sort_order": 62,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1497,7 +1419,7 @@
       "primary_form": "素晴らしい",
       "meaning": "wonderful",
       "mnemonic_text": "A plain (素) clear (晴) sky: wonderful.",
-      "sort_order": 66,
+      "sort_order": 63,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1516,7 +1438,7 @@
       "primary_form": "すごい",
       "meaning": "amazing / terrible",
       "mnemonic_text": "So intense it's amazing: sugoi.",
-      "sort_order": 67,
+      "sort_order": 64,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1535,7 +1457,7 @@
       "primary_form": "偉い",
       "meaning": "great / admirable",
       "mnemonic_text": "A person (亻) of great deeds: admirable.",
-      "sort_order": 68,
+      "sort_order": 65,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1554,7 +1476,7 @@
       "primary_form": "ずるい",
       "meaning": "sly / unfair",
       "mnemonic_text": "Slipping around the rules: sly.",
-      "sort_order": 69,
+      "sort_order": 66,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1573,7 +1495,7 @@
       "primary_form": "痒い",
       "meaning": "itchy",
       "mnemonic_text": "A sickness (疒) that wants (羊) scratching: itchy.",
-      "sort_order": 70,
+      "sort_order": 67,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1592,7 +1514,7 @@
       "primary_form": "真面目",
       "meaning": "serious / diligent",
       "mnemonic_text": "A true (真) face (面) and eye (目): serious.",
-      "sort_order": 71,
+      "sort_order": 68,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1611,7 +1533,7 @@
       "primary_form": "熱心",
       "meaning": "enthusiastic",
       "mnemonic_text": "A hot (熱) heart (心): enthusiasm.",
-      "sort_order": 72,
+      "sort_order": 69,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1630,7 +1552,7 @@
       "primary_form": "完全",
       "meaning": "perfect / complete",
       "mnemonic_text": "Fully (完) whole (全): perfect.",
-      "sort_order": 73,
+      "sort_order": 70,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1649,7 +1571,7 @@
       "primary_form": "十分",
       "meaning": "sufficient / enough",
       "mnemonic_text": "Ten (十) parts (分) full: enough.",
-      "sort_order": 74,
+      "sort_order": 71,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1668,7 +1590,7 @@
       "primary_form": "不安",
       "meaning": "anxious / uneasy",
       "mnemonic_text": "Not (不) at peace (安): anxious.",
-      "sort_order": 75,
+      "sort_order": 72,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1687,7 +1609,7 @@
       "primary_form": "安全",
       "meaning": "safe (na-adj)",
       "mnemonic_text": "Peaceful (安) and whole (全): safe.",
-      "sort_order": 76,
+      "sort_order": 73,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1706,7 +1628,7 @@
       "primary_form": "危険",
       "meaning": "dangerous (na-adj)",
       "mnemonic_text": "Danger (危) that's steep (険): risky.",
-      "sort_order": 77,
+      "sort_order": 74,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1725,7 +1647,7 @@
       "primary_form": "適当",
       "meaning": "appropriate / random",
       "mnemonic_text": "Fitting (適) the situation (当): suitable, or careless.",
-      "sort_order": 78,
+      "sort_order": 75,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1744,7 +1666,7 @@
       "primary_form": "正直",
       "meaning": "honest",
       "mnemonic_text": "Correct (正) and straight (直): honest.",
-      "sort_order": 79,
+      "sort_order": 76,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1763,7 +1685,7 @@
       "primary_form": "わがまま",
       "meaning": "selfish",
       "mnemonic_text": "'My own way' repeated: selfish.",
-      "sort_order": 80,
+      "sort_order": 77,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1782,7 +1704,7 @@
       "primary_form": "立派",
       "meaning": "splendid / fine",
       "mnemonic_text": "Standing (立) in a fine faction (派): splendid.",
-      "sort_order": 81,
+      "sort_order": 78,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1801,7 +1723,7 @@
       "primary_form": "無理",
       "meaning": "unreasonable / impossible",
       "mnemonic_text": "No (無) logic (理): unreasonable.",
-      "sort_order": 82,
+      "sort_order": 79,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1820,7 +1742,7 @@
       "primary_form": "無駄",
       "meaning": "wasteful / useless",
       "mnemonic_text": "No (無) worth left: wasteful.",
-      "sort_order": 83,
+      "sort_order": 80,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1839,7 +1761,7 @@
       "primary_form": "簡単",
       "meaning": "simple (na-adj)",
       "mnemonic_text": "A bamboo (竹) slip, single (単) point: simple.",
-      "sort_order": 84,
+      "sort_order": 81,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1858,7 +1780,7 @@
       "primary_form": "複雑",
       "meaning": "complicated",
       "mnemonic_text": "Doubled (複) and mixed (雑): complicated.",
-      "sort_order": 85,
+      "sort_order": 82,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1877,7 +1799,7 @@
       "primary_form": "得意",
       "meaning": "good at / proud",
       "mnemonic_text": "Gaining (得) meaning (意): one's forte.",
-      "sort_order": 86,
+      "sort_order": 83,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1896,7 +1818,7 @@
       "primary_form": "苦手",
       "meaning": "bad at / weak point",
       "mnemonic_text": "A bitter (苦) hand (手): a weak point.",
-      "sort_order": 87,
+      "sort_order": 84,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1915,7 +1837,7 @@
       "primary_form": "自由",
       "meaning": "freedom (na-adj)",
       "mnemonic_text": "One's own (自) reason (由): free.",
-      "sort_order": 88,
+      "sort_order": 85,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1934,7 +1856,7 @@
       "primary_form": "平気",
       "meaning": "calm / unconcerned",
       "mnemonic_text": "Flat (平) energy (気): unbothered.",
-      "sort_order": 89,
+      "sort_order": 86,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1953,7 +1875,7 @@
       "primary_form": "残念",
       "meaning": "regrettable",
       "mnemonic_text": "A remaining (残) thought (念): a shame.",
-      "sort_order": 90,
+      "sort_order": 87,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1972,7 +1894,7 @@
       "primary_form": "届く",
       "meaning": "to reach / arrive",
       "mnemonic_text": "Stretching out to reach: todoku.",
-      "sort_order": 91,
+      "sort_order": 88,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -1991,7 +1913,7 @@
       "primary_form": "届ける",
       "meaning": "to deliver",
       "mnemonic_text": "Reaching it out to someone: todokeru.",
-      "sort_order": 92,
+      "sort_order": 89,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2010,7 +1932,7 @@
       "primary_form": "治る",
       "meaning": "to heal / recover",
       "mnemonic_text": "The body governing itself back to health: naoru.",
-      "sort_order": 93,
+      "sort_order": 90,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2029,7 +1951,7 @@
       "primary_form": "伝わる",
       "meaning": "to be conveyed",
       "mnemonic_text": "The message passing along on its own: tsutawaru.",
-      "sort_order": 94,
+      "sort_order": 91,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2048,7 +1970,7 @@
       "primary_form": "迎える",
       "meaning": "to welcome / greet",
       "mnemonic_text": "Going out on the road to meet someone: mukaeru.",
-      "sort_order": 95,
+      "sort_order": 92,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2067,7 +1989,7 @@
       "primary_form": "見つかる",
       "meaning": "to be found",
       "mnemonic_text": "Something turns up to the eye: mitsukaru.",
-      "sort_order": 96,
+      "sort_order": 93,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2086,7 +2008,7 @@
       "primary_form": "決まる",
       "meaning": "to be decided",
       "mnemonic_text": "The levee breaks on its own: kimaru.",
-      "sort_order": 97,
+      "sort_order": 94,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2105,7 +2027,7 @@
       "primary_form": "決める",
       "meaning": "to decide",
       "mnemonic_text": "Breaking through to a decision: kimeru.",
-      "sort_order": 98,
+      "sort_order": 95,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2124,7 +2046,7 @@
       "primary_form": "続く",
       "meaning": "to continue (intr.)",
       "mnemonic_text": "Thread sold onward without a break: tsuzuku.",
-      "sort_order": 99,
+      "sort_order": 96,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2143,7 +2065,7 @@
       "primary_form": "続ける",
       "meaning": "to continue (tr.)",
       "mnemonic_text": "Keeping the thread going: tsuzukeru.",
-      "sort_order": 100,
+      "sort_order": 97,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2162,7 +2084,7 @@
       "primary_form": "増える",
       "meaning": "to increase (intr.)",
       "mnemonic_text": "Earth piling ever higher: fueru.",
-      "sort_order": 101,
+      "sort_order": 98,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2181,7 +2103,7 @@
       "primary_form": "増やす",
       "meaning": "to increase (tr.)",
       "mnemonic_text": "Piling more earth up: fuyasu.",
-      "sort_order": 102,
+      "sort_order": 99,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2200,7 +2122,7 @@
       "primary_form": "減る",
       "meaning": "to decrease (intr.)",
       "mnemonic_text": "Water cut down to less: heru.",
-      "sort_order": 103,
+      "sort_order": 100,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2219,7 +2141,7 @@
       "primary_form": "減らす",
       "meaning": "to decrease (tr.)",
       "mnemonic_text": "Cutting the water level down: herasu.",
-      "sort_order": 104,
+      "sort_order": 101,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2238,7 +2160,7 @@
       "primary_form": "壊す",
       "meaning": "to break (tr.)",
       "mnemonic_text": "A soil clump crumbling in the hand: kowasu.",
-      "sort_order": 105,
+      "sort_order": 102,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2257,7 +2179,7 @@
       "primary_form": "壊れる",
       "meaning": "to break (intr.)",
       "mnemonic_text": "The clump crumbling apart on its own: kowareru.",
-      "sort_order": 106,
+      "sort_order": 103,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2276,7 +2198,7 @@
       "primary_form": "育てる",
       "meaning": "to raise / rear",
       "mnemonic_text": "Nurturing flesh (月) to grow: sodateru.",
-      "sort_order": 107,
+      "sort_order": 104,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2295,7 +2217,7 @@
       "primary_form": "育つ",
       "meaning": "to grow up",
       "mnemonic_text": "Growing on its own: sodatsu.",
-      "sort_order": 108,
+      "sort_order": 105,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2314,7 +2236,7 @@
       "primary_form": "乾かす",
       "meaning": "to dry (tr.)",
       "mnemonic_text": "Drying a dry (乾) stalk further: kawakasu.",
-      "sort_order": 109,
+      "sort_order": 106,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2333,7 +2255,7 @@
       "primary_form": "乾く",
       "meaning": "to dry (intr.)",
       "mnemonic_text": "Becoming dry on its own: kawaku.",
-      "sort_order": 110,
+      "sort_order": 107,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2352,7 +2274,7 @@
       "primary_form": "濡らす",
       "meaning": "to wet (tr.)",
       "mnemonic_text": "Making something wet on purpose: nurasu.",
-      "sort_order": 111,
+      "sort_order": 108,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2371,7 +2293,7 @@
       "primary_form": "濡れる",
       "meaning": "to get wet",
       "mnemonic_text": "Getting wet by chance: nureru.",
-      "sort_order": 112,
+      "sort_order": 109,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2390,7 +2312,7 @@
       "primary_form": "沸く",
       "meaning": "to boil (intr.)",
       "mnemonic_text": "Water bubbling up on its own: waku.",
-      "sort_order": 113,
+      "sort_order": 110,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2409,7 +2331,7 @@
       "primary_form": "沸かす",
       "meaning": "to boil (tr.)",
       "mnemonic_text": "Heating water until it boils: wakasu.",
-      "sort_order": 114,
+      "sort_order": 111,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2428,7 +2350,7 @@
       "primary_form": "燃える",
       "meaning": "to burn (intr.)",
       "mnemonic_text": "Fire catching on its own: moeru.",
-      "sort_order": 115,
+      "sort_order": 112,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2447,7 +2369,7 @@
       "primary_form": "燃やす",
       "meaning": "to burn (tr.)",
       "mnemonic_text": "Setting fire to something: moyasu.",
-      "sort_order": 116,
+      "sort_order": 113,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2466,7 +2388,7 @@
       "primary_form": "沈む",
       "meaning": "to sink / set (sun)",
       "mnemonic_text": "Water swallowing something down: shizumu.",
-      "sort_order": 117,
+      "sort_order": 114,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2485,7 +2407,7 @@
       "primary_form": "浮かぶ",
       "meaning": "to float",
       "mnemonic_text": "Bobbing lightly on the water: ukabu.",
-      "sort_order": 118,
+      "sort_order": 115,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2504,7 +2426,7 @@
       "primary_form": "流れる",
       "meaning": "to flow",
       "mnemonic_text": "Water running its course: nagareru.",
-      "sort_order": 119,
+      "sort_order": 116,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2523,7 +2445,7 @@
       "primary_form": "流す",
       "meaning": "to let flow",
       "mnemonic_text": "Letting the water run: nagasu.",
-      "sort_order": 120,
+      "sort_order": 117,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2542,7 +2464,7 @@
       "primary_form": "回る",
       "meaning": "to turn / go around",
       "mnemonic_text": "Spinning around a loop: mawaru.",
-      "sort_order": 121,
+      "sort_order": 118,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2561,7 +2483,7 @@
       "primary_form": "回す",
       "meaning": "to turn (tr.)",
       "mnemonic_text": "Turning something by hand: mawasu.",
-      "sort_order": 122,
+      "sort_order": 119,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2580,7 +2502,7 @@
       "primary_form": "引っ越す",
       "meaning": "to move (residence)",
       "mnemonic_text": "Pulling your life over a hill: hikkosu.",
-      "sort_order": 123,
+      "sort_order": 120,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2599,7 +2521,7 @@
       "primary_form": "通う",
       "meaning": "to commute",
       "mnemonic_text": "Passing the same road daily: kayou.",
-      "sort_order": 124,
+      "sort_order": 121,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2618,7 +2540,7 @@
       "primary_form": "通る",
       "meaning": "to pass through",
       "mnemonic_text": "Going straight through a road: tooru.",
-      "sort_order": 125,
+      "sort_order": 122,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2637,7 +2559,7 @@
       "primary_form": "通す",
       "meaning": "to let pass",
       "mnemonic_text": "Letting something pass through: toosu.",
-      "sort_order": 126,
+      "sort_order": 123,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2656,7 +2578,7 @@
       "primary_form": "凍る",
       "meaning": "to freeze",
       "mnemonic_text": "Ice locking the water still: kooru.",
-      "sort_order": 127,
+      "sort_order": 124,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2675,7 +2597,7 @@
       "primary_form": "溶ける",
       "meaning": "to melt / dissolve",
       "mnemonic_text": "A shape softening away in water: tokeru.",
-      "sort_order": 128,
+      "sort_order": 125,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2694,7 +2616,7 @@
       "primary_form": "腐る",
       "meaning": "to rot / spoil",
       "mnemonic_text": "Flesh (肉) crumbling under a roof: kusaru.",
-      "sort_order": 129,
+      "sort_order": 126,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2713,7 +2635,7 @@
       "primary_form": "逃げる",
       "meaning": "to escape / run away",
       "mnemonic_text": "Slipping off the road: nigeru.",
-      "sort_order": 130,
+      "sort_order": 127,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2732,7 +2654,7 @@
       "primary_form": "追いかける",
       "meaning": "to chase",
       "mnemonic_text": "Following closely on the road: oikakeru.",
-      "sort_order": 131,
+      "sort_order": 128,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2751,7 +2673,7 @@
       "primary_form": "断る",
       "meaning": "to refuse / decline",
       "mnemonic_text": "Cutting off a request: kotowaru.",
-      "sort_order": 132,
+      "sort_order": 129,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2770,7 +2692,7 @@
       "primary_form": "頼む",
       "meaning": "to request / rely on",
       "mnemonic_text": "Trusting your weight to a bundle: tanomu.",
-      "sort_order": 133,
+      "sort_order": 130,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2789,7 +2711,7 @@
       "primary_form": "助かる",
       "meaning": "to be saved / helped",
       "mnemonic_text": "Getting rescued on your own: tasukaru.",
-      "sort_order": 134,
+      "sort_order": 131,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2808,7 +2730,7 @@
       "primary_form": "助ける",
       "meaning": "to help / rescue",
       "mnemonic_text": "Lending strength (力) to someone: tasukeru.",
-      "sort_order": 135,
+      "sort_order": 132,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2827,7 +2749,7 @@
       "primary_form": "叱る",
       "meaning": "to scold",
       "mnemonic_text": "A mouth (口) baring teeth (七): to scold.",
-      "sort_order": 136,
+      "sort_order": 133,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2846,7 +2768,7 @@
       "primary_form": "褒める",
       "meaning": "to praise",
       "mnemonic_text": "Clothing (衤) draped in honor: homeru.",
-      "sort_order": 137,
+      "sort_order": 134,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2865,7 +2787,7 @@
       "primary_form": "謝る",
       "meaning": "to apologize",
       "mnemonic_text": "Words (言) offered like thanks: ayamaru.",
-      "sort_order": 138,
+      "sort_order": 135,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2884,7 +2806,7 @@
       "primary_form": "喜ぶ",
       "meaning": "to be pleased",
       "mnemonic_text": "A mouth (口) opening wide in joy: yorokobu.",
-      "sort_order": 139,
+      "sort_order": 136,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2903,7 +2825,7 @@
       "primary_form": "怒る",
       "meaning": "to get angry",
       "mnemonic_text": "A heart (心) enslaved (奴) by rage: okoru.",
-      "sort_order": 140,
+      "sort_order": 137,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2922,7 +2844,7 @@
       "primary_form": "悩む",
       "meaning": "to worry / agonize",
       "mnemonic_text": "A heart (忄) tangled in brains (脳): nayamu.",
-      "sort_order": 141,
+      "sort_order": 138,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2941,7 +2863,7 @@
       "primary_form": "驚く",
       "meaning": "to be surprised",
       "mnemonic_text": "A horse (馬) rearing up: odoroku.",
-      "sort_order": 142,
+      "sort_order": 139,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2960,7 +2882,7 @@
       "primary_form": "嘆く",
       "meaning": "to lament",
       "mnemonic_text": "A mouth (口) sighing hard: nageku.",
-      "sort_order": 143,
+      "sort_order": 140,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2979,7 +2901,7 @@
       "primary_form": "頑張る",
       "meaning": "to try hard / persevere",
       "mnemonic_text": "Stubbornly (頑) stretching (張) onward: ganbaru.",
-      "sort_order": 144,
+      "sort_order": 141,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -2998,7 +2920,7 @@
       "primary_form": "慣れる",
       "meaning": "to get used to",
       "mnemonic_text": "A heart (忄) settling into a pattern: nareru.",
-      "sort_order": 145,
+      "sort_order": 142,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3017,7 +2939,7 @@
       "primary_form": "経つ",
       "meaning": "for time to pass",
       "mnemonic_text": "Time threading through the loom: tatsu.",
-      "sort_order": 146,
+      "sort_order": 143,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3036,7 +2958,7 @@
       "primary_form": "過ぎる",
       "meaning": "to pass / exceed",
       "mnemonic_text": "A road (辶) going past a fold: sugiru.",
-      "sort_order": 147,
+      "sort_order": 144,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3055,7 +2977,7 @@
       "primary_form": "過ごす",
       "meaning": "to spend (time)",
       "mnemonic_text": "Letting time pass by choice: sugosu.",
-      "sort_order": 148,
+      "sort_order": 145,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3074,7 +2996,7 @@
       "primary_form": "期待する",
       "meaning": "to expect",
       "mnemonic_text": "A period (期) awaited (待): to expect.",
-      "sort_order": 149,
+      "sort_order": 146,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3093,7 +3015,7 @@
       "primary_form": "願う",
       "meaning": "to wish / request",
       "mnemonic_text": "A head bowed asking a favor: negau.",
-      "sort_order": 150,
+      "sort_order": 147,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3112,7 +3034,7 @@
       "primary_form": "祈る",
       "meaning": "to pray",
       "mnemonic_text": "An altar (示) plus an axe-shaped vow: inoru.",
-      "sort_order": 151,
+      "sort_order": 148,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3131,7 +3053,7 @@
       "primary_form": "祝う",
       "meaning": "to celebrate",
       "mnemonic_text": "An altar (示) blessing an event: iwau.",
-      "sort_order": 152,
+      "sort_order": 149,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3150,7 +3072,7 @@
       "primary_form": "祝福",
       "meaning": "blessing",
       "mnemonic_text": "A celebration (祝) of fortune (福): a blessing.",
-      "sort_order": 153,
+      "sort_order": 150,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3169,7 +3091,7 @@
       "primary_form": "感謝する",
       "meaning": "to be grateful",
       "mnemonic_text": "Feeling (感) thanks (謝): to appreciate.",
-      "sort_order": 154,
+      "sort_order": 151,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3188,7 +3110,7 @@
       "primary_form": "間違える",
       "meaning": "to make a mistake",
       "mnemonic_text": "The space (間) gone wrong (違): a mistake.",
-      "sort_order": 155,
+      "sort_order": 152,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3207,7 +3129,7 @@
       "primary_form": "間違う",
       "meaning": "to be mistaken",
       "mnemonic_text": "Falling into the wrong gap: machigau.",
-      "sort_order": 156,
+      "sort_order": 153,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3226,7 +3148,7 @@
       "primary_form": "修理する",
       "meaning": "to repair",
       "mnemonic_text": "Cultivating (修) the logic (理) back: to repair.",
-      "sort_order": 157,
+      "sort_order": 154,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3245,7 +3167,7 @@
       "primary_form": "掛かる",
       "meaning": "to take (time/cost) / hang",
       "mnemonic_text": "Hanging in the balance: kakaru.",
-      "sort_order": 158,
+      "sort_order": 155,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3264,7 +3186,7 @@
       "primary_form": "掛ける",
       "meaning": "to hang / spend",
       "mnemonic_text": "Hanging something up: kakeru.",
-      "sort_order": 159,
+      "sort_order": 156,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3283,7 +3205,7 @@
       "primary_form": "重なる",
       "meaning": "to overlap / pile up",
       "mnemonic_text": "Heavy loads stacking themselves: kasanaru.",
-      "sort_order": 160,
+      "sort_order": 157,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3302,7 +3224,7 @@
       "primary_form": "重ねる",
       "meaning": "to pile up (tr.)",
       "mnemonic_text": "Stacking heavy loads on purpose: kasaneru.",
-      "sort_order": 161,
+      "sort_order": 158,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3321,7 +3243,7 @@
       "primary_form": "知らせる",
       "meaning": "to inform / notify",
       "mnemonic_text": "Making someone know: shiraseru.",
-      "sort_order": 162,
+      "sort_order": 159,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3340,7 +3262,7 @@
       "primary_form": "届け出る",
       "meaning": "to report / file",
       "mnemonic_text": "Delivering a notice out: todokederu.",
-      "sort_order": 163,
+      "sort_order": 160,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3359,7 +3281,7 @@
       "primary_form": "信じる",
       "meaning": "to believe",
       "mnemonic_text": "A person's word (言) trusted: shinjiru.",
-      "sort_order": 164,
+      "sort_order": 161,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3378,7 +3300,7 @@
       "primary_form": "感じる",
       "meaning": "to feel",
       "mnemonic_text": "The heart's field stirred: kanjiru.",
-      "sort_order": 165,
+      "sort_order": 162,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3397,7 +3319,7 @@
       "primary_form": "提出する",
       "meaning": "to submit",
       "mnemonic_text": "Presenting (提) and putting out (出): to submit.",
-      "sort_order": 166,
+      "sort_order": 163,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3416,7 +3338,7 @@
       "primary_form": "申し込む",
       "meaning": "to apply / sign up",
       "mnemonic_text": "Speaking your request into the pile: moushikomu.",
-      "sort_order": 167,
+      "sort_order": 164,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3435,7 +3357,7 @@
       "primary_form": "申す",
       "meaning": "to say (humble)",
       "mnemonic_text": "A humble mouth speaking upward: mousu.",
-      "sort_order": 168,
+      "sort_order": 165,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3454,7 +3376,7 @@
       "primary_form": "致す",
       "meaning": "to do (humble)",
       "mnemonic_text": "A humble hand reaching to serve: itasu.",
-      "sort_order": 169,
+      "sort_order": 166,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3473,7 +3395,7 @@
       "primary_form": "参る",
       "meaning": "to go/come (humble)",
       "mnemonic_text": "Bowing low on the way: mairu.",
-      "sort_order": 170,
+      "sort_order": 167,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3492,7 +3414,7 @@
       "primary_form": "伺う",
       "meaning": "to ask/visit (humble)",
       "mnemonic_text": "A person (亻) watching (司) respectfully: ukagau.",
-      "sort_order": 171,
+      "sort_order": 168,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3511,7 +3433,7 @@
       "primary_form": "拝見する",
       "meaning": "to see (humble)",
       "mnemonic_text": "Bowing (拝) to view (見): to humbly look.",
-      "sort_order": 172,
+      "sort_order": 169,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3530,7 +3452,7 @@
       "primary_form": "ご覧になる",
       "meaning": "to see (honorific)",
       "mnemonic_text": "Honorific viewing: goran ni naru.",
-      "sort_order": 173,
+      "sort_order": 170,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3549,7 +3471,7 @@
       "primary_form": "召し上がる",
       "meaning": "to eat/drink (honorific)",
       "mnemonic_text": "Calling something up to eat: meshiagaru.",
-      "sort_order": 174,
+      "sort_order": 171,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3568,7 +3490,7 @@
       "primary_form": "いらっしゃる",
       "meaning": "to be/go/come (honorific)",
       "mnemonic_text": "The all-purpose respectful verb: irassharu.",
-      "sort_order": 175,
+      "sort_order": 172,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3587,7 +3509,7 @@
       "primary_form": "おっしゃる",
       "meaning": "to say (honorific)",
       "mnemonic_text": "The respectful way to speak: ossharu.",
-      "sort_order": 176,
+      "sort_order": 173,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3606,7 +3528,7 @@
       "primary_form": "なさる",
       "meaning": "to do (honorific)",
       "mnemonic_text": "The respectful way to do: nasaru.",
-      "sort_order": 177,
+      "sort_order": 174,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3625,7 +3547,7 @@
       "primary_form": "ご存じ",
       "meaning": "knowing (honorific)",
       "mnemonic_text": "Respectfully preserving knowledge: gozonji.",
-      "sort_order": 178,
+      "sort_order": 175,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3644,7 +3566,7 @@
       "primary_form": "頂く",
       "meaning": "to receive/eat (humble)",
       "mnemonic_text": "Receiving something atop your head: itadaku.",
-      "sort_order": 179,
+      "sort_order": 176,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3663,7 +3585,7 @@
       "primary_form": "差し上げる",
       "meaning": "to give (humble)",
       "mnemonic_text": "Offering something up respectfully: sashiageru.",
-      "sort_order": 180,
+      "sort_order": 177,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3682,7 +3604,7 @@
       "primary_form": "下さる",
       "meaning": "to give (honorific)",
       "mnemonic_text": "Graciously handing something down: kudasaru.",
-      "sort_order": 181,
+      "sort_order": 178,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3701,7 +3623,7 @@
       "primary_form": "承知する",
       "meaning": "to acknowledge (humble)",
       "mnemonic_text": "Receiving (承) knowledge (知) humbly: shouchi suru.",
-      "sort_order": 182,
+      "sort_order": 179,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3720,7 +3642,7 @@
       "primary_form": "話せる",
       "meaning": "can speak",
       "mnemonic_text": "The potential form of hanasu: able to speak.",
-      "sort_order": 183,
+      "sort_order": 180,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3739,7 +3661,7 @@
       "primary_form": "書ける",
       "meaning": "can write",
       "mnemonic_text": "The potential form of kaku: able to write.",
-      "sort_order": 184,
+      "sort_order": 181,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3758,7 +3680,7 @@
       "primary_form": "読める",
       "meaning": "can read",
       "mnemonic_text": "The potential form of yomu: able to read.",
-      "sort_order": 185,
+      "sort_order": 182,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3777,7 +3699,7 @@
       "primary_form": "使える",
       "meaning": "can use",
       "mnemonic_text": "The potential form of tsukau: usable.",
-      "sort_order": 186,
+      "sort_order": 183,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3796,7 +3718,7 @@
       "primary_form": "行ける",
       "meaning": "can go",
       "mnemonic_text": "The potential form of iku: able to go.",
-      "sort_order": 187,
+      "sort_order": 184,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3815,7 +3737,7 @@
       "primary_form": "来られる",
       "meaning": "can come",
       "mnemonic_text": "The potential form of kuru: able to come.",
-      "sort_order": 188,
+      "sort_order": 185,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3834,7 +3756,7 @@
       "primary_form": "食べられる",
       "meaning": "can eat",
       "mnemonic_text": "The potential form of taberu: able to eat.",
-      "sort_order": 189,
+      "sort_order": 186,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3853,7 +3775,7 @@
       "primary_form": "飲める",
       "meaning": "can drink",
       "mnemonic_text": "The potential form of nomu: able to drink.",
-      "sort_order": 190,
+      "sort_order": 187,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3872,7 +3794,7 @@
       "primary_form": "見られる",
       "meaning": "can see",
       "mnemonic_text": "The potential form of miru: able to see.",
-      "sort_order": 191,
+      "sort_order": 188,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3891,7 +3813,7 @@
       "primary_form": "出来る",
       "meaning": "can do / is possible",
       "mnemonic_text": "Kanji form of dekiru: to be possible.",
-      "sort_order": 192,
+      "sort_order": 189,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3910,7 +3832,7 @@
       "primary_form": "泳げる",
       "meaning": "can swim",
       "mnemonic_text": "The potential form of oyogu: able to swim.",
-      "sort_order": 193,
+      "sort_order": 190,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3929,7 +3851,7 @@
       "primary_form": "走れる",
       "meaning": "can run",
       "mnemonic_text": "The potential form of hashiru: able to run.",
-      "sort_order": 194,
+      "sort_order": 191,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3948,7 +3870,7 @@
       "primary_form": "会える",
       "meaning": "can meet",
       "mnemonic_text": "The potential form of au: able to meet.",
-      "sort_order": 195,
+      "sort_order": 192,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3967,7 +3889,7 @@
       "primary_form": "買える",
       "meaning": "can buy",
       "mnemonic_text": "The potential form of kau: able to buy.",
-      "sort_order": 196,
+      "sort_order": 193,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -3986,7 +3908,7 @@
       "primary_form": "乗れる",
       "meaning": "can ride",
       "mnemonic_text": "The potential form of noru: able to ride.",
-      "sort_order": 197,
+      "sort_order": 194,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4005,7 +3927,7 @@
       "primary_form": "行かせる",
       "meaning": "to make/let go",
       "mnemonic_text": "The causative of iku: making someone go.",
-      "sort_order": 198,
+      "sort_order": 195,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4024,7 +3946,7 @@
       "primary_form": "食べさせる",
       "meaning": "to make/let eat",
       "mnemonic_text": "The causative of taberu: making someone eat.",
-      "sort_order": 199,
+      "sort_order": 196,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4043,7 +3965,7 @@
       "primary_form": "やらせる",
       "meaning": "to make/let do",
       "mnemonic_text": "The causative of yaru: making someone do it.",
-      "sort_order": 200,
+      "sort_order": 197,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4062,7 +3984,7 @@
       "primary_form": "待たされる",
       "meaning": "to be made to wait",
       "mnemonic_text": "The causative-passive of matsu: being kept waiting.",
-      "sort_order": 201,
+      "sort_order": 198,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4081,7 +4003,7 @@
       "primary_form": "叱られる",
       "meaning": "to be scolded",
       "mnemonic_text": "The passive of shikaru: on the receiving end of a scolding.",
-      "sort_order": 202,
+      "sort_order": 199,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4100,7 +4022,7 @@
       "primary_form": "褒められる",
       "meaning": "to be praised",
       "mnemonic_text": "The passive of homeru: receiving praise.",
-      "sort_order": 203,
+      "sort_order": 200,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4119,7 +4041,7 @@
       "primary_form": "泣かれる",
       "meaning": "to be cried at (adversity)",
       "mnemonic_text": "The passive of naku: suffering from someone's crying.",
-      "sort_order": 204,
+      "sort_order": 201,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4138,7 +4060,7 @@
       "primary_form": "殺す",
       "meaning": "to kill",
       "mnemonic_text": "A blow (殳) striking down: to kill.",
-      "sort_order": 205,
+      "sort_order": 202,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4157,7 +4079,7 @@
       "primary_form": "殺される",
       "meaning": "to be killed",
       "mnemonic_text": "The passive of korosu: to be killed.",
-      "sort_order": 206,
+      "sort_order": 203,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4176,7 +4098,7 @@
       "primary_form": "出かける",
       "meaning": "to go out / head out",
       "mnemonic_text": "Exiting (出) and setting off: dekakeru.",
-      "sort_order": 207,
+      "sort_order": 204,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4195,7 +4117,7 @@
       "primary_form": "取り替える",
       "meaning": "to exchange / replace",
       "mnemonic_text": "Taking (取り) and changing (替える): to swap.",
-      "sort_order": 208,
+      "sort_order": 205,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4214,7 +4136,7 @@
       "primary_form": "繰り返す",
       "meaning": "to repeat",
       "mnemonic_text": "Reeling (繰り) something back (返す): to repeat.",
-      "sort_order": 209,
+      "sort_order": 206,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4233,7 +4155,7 @@
       "primary_form": "取り掛かる",
       "meaning": "to set about (a task)",
       "mnemonic_text": "Taking (取り) hold (掛かる) of a task: to begin work.",
-      "sort_order": 210,
+      "sort_order": 207,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4252,7 +4174,7 @@
       "primary_form": "持ち帰る",
       "meaning": "to take home / take out",
       "mnemonic_text": "Holding (持ち) and returning (帰る): to take away.",
-      "sort_order": 211,
+      "sort_order": 208,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4271,7 +4193,7 @@
       "primary_form": "連れて行く",
       "meaning": "to take (a person) along",
       "mnemonic_text": "Bringing (連れて) someone along as you go (行く).",
-      "sort_order": 212,
+      "sort_order": 209,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4290,7 +4212,7 @@
       "primary_form": "連れて来る",
       "meaning": "to bring (a person)",
       "mnemonic_text": "Bringing (連れて) someone as you come (来る).",
-      "sort_order": 213,
+      "sort_order": 210,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4309,7 +4231,7 @@
       "primary_form": "持って来る",
       "meaning": "to bring (a thing)",
       "mnemonic_text": "Holding (持って) something as you come (来る).",
-      "sort_order": 214,
+      "sort_order": 211,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4328,7 +4250,7 @@
       "primary_form": "持って行く",
       "meaning": "to take (a thing)",
       "mnemonic_text": "Holding (持って) something as you go (行く).",
-      "sort_order": 215,
+      "sort_order": 212,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4347,7 +4269,7 @@
       "primary_form": "話し合う",
       "meaning": "to discuss / talk over",
       "mnemonic_text": "Talking (話し) together (合う): to discuss.",
-      "sort_order": 216,
+      "sort_order": 213,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4366,7 +4288,7 @@
       "primary_form": "見送る",
       "meaning": "to see off",
       "mnemonic_text": "Watching (見) someone off (送る): to see off.",
-      "sort_order": 217,
+      "sort_order": 214,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4385,7 +4307,7 @@
       "primary_form": "見回す",
       "meaning": "to look around",
       "mnemonic_text": "Turning (回す) one's view (見): to look around.",
-      "sort_order": 218,
+      "sort_order": 215,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4404,7 +4326,7 @@
       "primary_form": "見つけ出す",
       "meaning": "to discover / find out",
       "mnemonic_text": "Finding (見つけ) something and drawing it out (出す).",
-      "sort_order": 219,
+      "sort_order": 216,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4423,7 +4345,7 @@
       "primary_form": "考え出す",
       "meaning": "to think up / devise",
       "mnemonic_text": "Thinking (考え) something into being (出す): to devise.",
-      "sort_order": 220,
+      "sort_order": 217,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4442,7 +4364,7 @@
       "primary_form": "やり直す",
       "meaning": "to redo / start over",
       "mnemonic_text": "Doing (やり) it fixed again (直す): to redo.",
-      "sort_order": 221,
+      "sort_order": 218,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4461,7 +4383,7 @@
       "primary_form": "やってあげる",
       "meaning": "to do (for someone)",
       "mnemonic_text": "Doing a favor and giving it: yatte ageru.",
-      "sort_order": 222,
+      "sort_order": 219,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4480,7 +4402,7 @@
       "primary_form": "やってくれる",
       "meaning": "to do (for me)",
       "mnemonic_text": "Someone doing a favor for me: yatte kureru.",
-      "sort_order": 223,
+      "sort_order": 220,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4499,7 +4421,7 @@
       "primary_form": "やってもらう",
       "meaning": "to have (someone) do",
       "mnemonic_text": "Receiving the favor of an action: yatte morau.",
-      "sort_order": 224,
+      "sort_order": 221,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4518,7 +4440,7 @@
       "primary_form": "作ってあげる",
       "meaning": "to make (for someone)",
       "mnemonic_text": "Making something and giving it: tsukutte ageru.",
-      "sort_order": 225,
+      "sort_order": 222,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4537,7 +4459,7 @@
       "primary_form": "見せてくれる",
       "meaning": "to show (to me)",
       "mnemonic_text": "Someone showing something to me: misete kureru.",
-      "sort_order": 226,
+      "sort_order": 223,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4556,7 +4478,7 @@
       "primary_form": "教えてもらう",
       "meaning": "to have (someone) teach",
       "mnemonic_text": "Receiving the favor of being taught: oshiete morau.",
-      "sort_order": 227,
+      "sort_order": 224,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4575,7 +4497,7 @@
       "primary_form": "書いてあげる",
       "meaning": "to write (for someone)",
       "mnemonic_text": "Writing something and giving it: kaite ageru.",
-      "sort_order": 228,
+      "sort_order": 225,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4594,7 +4516,7 @@
       "primary_form": "手伝ってくれる",
       "meaning": "to help (me)",
       "mnemonic_text": "Someone lending a hand for me: tetsudatte kureru.",
-      "sort_order": 229,
+      "sort_order": 226,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4613,7 +4535,7 @@
       "primary_form": "貸してもらう",
       "meaning": "to have (something) lent",
       "mnemonic_text": "Receiving the favor of a loan: kashite morau.",
-      "sort_order": 230,
+      "sort_order": 227,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4632,7 +4554,7 @@
       "primary_form": "送ってあげる",
       "meaning": "to send (for someone)",
       "mnemonic_text": "Sending something as a favor: okutte ageru.",
-      "sort_order": 231,
+      "sort_order": 228,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4651,7 +4573,7 @@
       "primary_form": "虫",
       "meaning": "insect / bug",
       "mnemonic_text": "A curling little bug: mushi.",
-      "sort_order": 232,
+      "sort_order": 229,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4670,7 +4592,7 @@
       "primary_form": "蝶",
       "meaning": "butterfly",
       "mnemonic_text": "Insect (虫) with delicate wings: a butterfly.",
-      "sort_order": 233,
+      "sort_order": 230,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4689,7 +4611,7 @@
       "primary_form": "猿",
       "meaning": "monkey",
       "mnemonic_text": "A dog-like beast (犭) still (袁): a monkey.",
-      "sort_order": 234,
+      "sort_order": 231,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4708,7 +4630,7 @@
       "primary_form": "馬",
       "meaning": "horse",
       "mnemonic_text": "A galloping horse with a flowing mane: uma.",
-      "sort_order": 235,
+      "sort_order": 232,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4727,7 +4649,7 @@
       "primary_form": "牛",
       "meaning": "cow",
       "mnemonic_text": "Horns over a body: a cow.",
-      "sort_order": 236,
+      "sort_order": 233,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4746,7 +4668,7 @@
       "primary_form": "豚",
       "meaning": "pig",
       "mnemonic_text": "Flesh (月) matched with a boar's (豕) body: a pig.",
-      "sort_order": 237,
+      "sort_order": 234,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4765,7 +4687,7 @@
       "primary_form": "羊",
       "meaning": "sheep",
       "mnemonic_text": "A woolly head with curling horns: a sheep.",
-      "sort_order": 238,
+      "sort_order": 235,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4784,7 +4706,7 @@
       "primary_form": "狐",
       "meaning": "fox",
       "mnemonic_text": "A dog-like beast (犭) melon-shaped (瓜) tail: a fox.",
-      "sort_order": 239,
+      "sort_order": 236,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4803,7 +4725,7 @@
       "primary_form": "熊",
       "meaning": "bear",
       "mnemonic_text": "A powerful beast standing over fire-like paws: a bear.",
-      "sort_order": 240,
+      "sort_order": 237,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4822,7 +4744,7 @@
       "primary_form": "象",
       "meaning": "elephant",
       "mnemonic_text": "A long-trunked beast shape: an elephant.",
-      "sort_order": 241,
+      "sort_order": 238,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4841,7 +4763,7 @@
       "primary_form": "蛇",
       "meaning": "snake",
       "mnemonic_text": "Insect (虫) shape twisting like an earth-snake (它): a snake.",
-      "sort_order": 242,
+      "sort_order": 239,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4860,7 +4782,7 @@
       "primary_form": "蜘蛛",
       "meaning": "spider",
       "mnemonic_text": "Two insect (虫) characters weaving a web: a spider.",
-      "sort_order": 243,
+      "sort_order": 240,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4879,7 +4801,7 @@
       "primary_form": "蚊",
       "meaning": "mosquito",
       "mnemonic_text": "Insect (虫) that hums like the number ten crossed: a mosquito.",
-      "sort_order": 244,
+      "sort_order": 241,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4898,7 +4820,7 @@
       "primary_form": "蝿",
       "meaning": "fly (insect)",
       "mnemonic_text": "Insect (虫) buzzing around: a fly.",
-      "sort_order": 245,
+      "sort_order": 242,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4917,7 +4839,7 @@
       "primary_form": "自然",
       "meaning": "nature",
       "mnemonic_text": "One's own (自) natural state (然): nature.",
-      "sort_order": 246,
+      "sort_order": 243,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4936,7 +4858,7 @@
       "primary_form": "太陽",
       "meaning": "sun (formal)",
       "mnemonic_text": "The great (太) yang (陽): the sun.",
-      "sort_order": 247,
+      "sort_order": 244,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4955,7 +4877,7 @@
       "primary_form": "星空",
       "meaning": "starry sky",
       "mnemonic_text": "Stars (星) filling the sky (空): a starry sky.",
-      "sort_order": 248,
+      "sort_order": 245,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4974,7 +4896,7 @@
       "primary_form": "波",
       "meaning": "wave",
       "mnemonic_text": "Water (氵) taking on skin-like (皮) ripples: a wave.",
-      "sort_order": 249,
+      "sort_order": 246,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -4993,7 +4915,7 @@
       "primary_form": "森",
       "meaning": "forest",
       "mnemonic_text": "Three trees (木) together: a forest.",
-      "sort_order": 250,
+      "sort_order": 247,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5012,7 +4934,7 @@
       "primary_form": "林",
       "meaning": "woods / grove",
       "mnemonic_text": "Two trees (木) together: a small wood.",
-      "sort_order": 251,
+      "sort_order": 248,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5031,7 +4953,7 @@
       "primary_form": "池",
       "meaning": "pond",
       "mnemonic_text": "Water (氵) pooling beside a snake-like (也) shape: a pond.",
-      "sort_order": 252,
+      "sort_order": 249,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5050,7 +4972,7 @@
       "primary_form": "岩",
       "meaning": "rock / boulder",
       "mnemonic_text": "A mountain (山) of stone (石): a boulder.",
-      "sort_order": 253,
+      "sort_order": 250,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5069,7 +4991,7 @@
       "primary_form": "砂",
       "meaning": "sand",
       "mnemonic_text": "Stone (石) broken into few (少) grains: sand.",
-      "sort_order": 254,
+      "sort_order": 251,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5088,7 +5010,7 @@
       "primary_form": "泥",
       "meaning": "mud",
       "mnemonic_text": "Water (氵) mixed with soil, given a moon-shape twist: mud.",
-      "sort_order": 255,
+      "sort_order": 252,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5107,7 +5029,7 @@
       "primary_form": "煙",
       "meaning": "smoke",
       "mnemonic_text": "Fire (火) rising through the west (西) sky: smoke.",
-      "sort_order": 256,
+      "sort_order": 253,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5126,7 +5048,7 @@
       "primary_form": "炎",
       "meaning": "flame",
       "mnemonic_text": "Two fires (火火) stacked: a flame.",
-      "sort_order": 257,
+      "sort_order": 254,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5145,7 +5067,7 @@
       "primary_form": "氷",
       "meaning": "ice",
       "mnemonic_text": "Water (水) with a frozen edge: ice.",
-      "sort_order": 258,
+      "sort_order": 255,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5164,7 +5086,7 @@
       "primary_form": "嵐",
       "meaning": "storm",
       "mnemonic_text": "A mountain (山) wind (風): a storm.",
-      "sort_order": 259,
+      "sort_order": 256,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5183,7 +5105,7 @@
       "primary_form": "台風",
       "meaning": "typhoon",
       "mnemonic_text": "A platform (台) wind (風): a typhoon.",
-      "sort_order": 260,
+      "sort_order": 257,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5202,7 +5124,7 @@
       "primary_form": "地震",
       "meaning": "earthquake",
       "mnemonic_text": "The ground (地) trembling (震): an earthquake.",
-      "sort_order": 261,
+      "sort_order": 258,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5221,7 +5143,7 @@
       "primary_form": "和風",
       "meaning": "Japanese-style",
       "mnemonic_text": "Harmony's (和) style (風): Japanese-style.",
-      "sort_order": 262,
+      "sort_order": 259,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5240,7 +5162,7 @@
       "primary_form": "洋食",
       "meaning": "Western food",
       "mnemonic_text": "Ocean-crossed (洋) food (食): Western cuisine.",
-      "sort_order": 263,
+      "sort_order": 260,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5259,7 +5181,7 @@
       "primary_form": "和食",
       "meaning": "Japanese food",
       "mnemonic_text": "Harmony's (和) food (食): Japanese cuisine.",
-      "sort_order": 264,
+      "sort_order": 261,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5278,7 +5200,7 @@
       "primary_form": "中華",
       "meaning": "Chinese (cuisine)",
       "mnemonic_text": "Middle (中) flower (華): Chinese style.",
-      "sort_order": 265,
+      "sort_order": 262,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5297,7 +5219,7 @@
       "primary_form": "メニュー",
       "meaning": "menu",
       "mnemonic_text": "Borrowed word: menyuu.",
-      "sort_order": 266,
+      "sort_order": 263,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5316,7 +5238,7 @@
       "primary_form": "注文する",
       "meaning": "to order (food)",
       "mnemonic_text": "Pouring (注) a written request (文): to order.",
-      "sort_order": 267,
+      "sort_order": 264,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5335,7 +5257,7 @@
       "primary_form": "甘み",
       "meaning": "sweetness",
       "mnemonic_text": "The quality (み) of sweet (甘): sweetness.",
-      "sort_order": 268,
+      "sort_order": 265,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5354,7 +5276,7 @@
       "primary_form": "しょっぱい",
       "meaning": "salty",
       "mnemonic_text": "A sharp salty bite: shoppai.",
-      "sort_order": 269,
+      "sort_order": 266,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5373,7 +5295,7 @@
       "primary_form": "苦い",
       "meaning": "bitter",
       "mnemonic_text": "A bitter grass taste: nigai.",
-      "sort_order": 270,
+      "sort_order": 267,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5392,7 +5314,7 @@
       "primary_form": "酸っぱい",
       "meaning": "sour",
       "mnemonic_text": "A sharp tangy bite: suppai.",
-      "sort_order": 271,
+      "sort_order": 268,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5411,7 +5333,7 @@
       "primary_form": "だし",
       "meaning": "soup stock",
       "mnemonic_text": "The extracted broth base: dashi.",
-      "sort_order": 272,
+      "sort_order": 269,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5430,7 +5352,7 @@
       "primary_form": "味噌汁",
       "meaning": "miso soup",
       "mnemonic_text": "Fermented paste (味噌) soup (汁): miso soup.",
-      "sort_order": 273,
+      "sort_order": 270,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5449,7 +5371,7 @@
       "primary_form": "鍋",
       "meaning": "pot / hotpot",
       "mnemonic_text": "The metal (金) cooking vessel: a pot.",
-      "sort_order": 274,
+      "sort_order": 271,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5468,7 +5390,7 @@
       "primary_form": "野菜炒め",
       "meaning": "stir-fried vegetables",
       "mnemonic_text": "Vegetables (野菜) fried (炒め): a stir fry.",
-      "sort_order": 275,
+      "sort_order": 272,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5487,7 +5409,7 @@
       "primary_form": "寿司",
       "meaning": "sushi",
       "mnemonic_text": "Vinegared rice with toppings: sushi.",
-      "sort_order": 276,
+      "sort_order": 273,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5506,7 +5428,7 @@
       "primary_form": "そば",
       "meaning": "soba noodles",
       "mnemonic_text": "Buckwheat noodles: soba.",
-      "sort_order": 277,
+      "sort_order": 274,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5525,7 +5447,7 @@
       "primary_form": "うどん",
       "meaning": "udon noodles",
       "mnemonic_text": "Thick wheat noodles: udon.",
-      "sort_order": 278,
+      "sort_order": 275,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5544,7 +5466,7 @@
       "primary_form": "ラーメン",
       "meaning": "ramen",
       "mnemonic_text": "Borrowed word: raamen.",
-      "sort_order": 279,
+      "sort_order": 276,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5563,7 +5485,7 @@
       "primary_form": "カレー",
       "meaning": "curry",
       "mnemonic_text": "Borrowed word: karee.",
-      "sort_order": 280,
+      "sort_order": 277,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5582,7 +5504,7 @@
       "primary_form": "サラダ",
       "meaning": "salad",
       "mnemonic_text": "Borrowed word: sarada.",
-      "sort_order": 281,
+      "sort_order": 278,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5601,7 +5523,7 @@
       "primary_form": "サンドイッチ",
       "meaning": "sandwich",
       "mnemonic_text": "Borrowed word: sandoicchi.",
-      "sort_order": 282,
+      "sort_order": 279,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5620,7 +5542,7 @@
       "primary_form": "アイスクリーム",
       "meaning": "ice cream",
       "mnemonic_text": "Borrowed word: aisukuriimu.",
-      "sort_order": 283,
+      "sort_order": 280,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5639,7 +5561,7 @@
       "primary_form": "ケーキ",
       "meaning": "cake",
       "mnemonic_text": "Borrowed word: keeki.",
-      "sort_order": 284,
+      "sort_order": 281,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5658,7 +5580,7 @@
       "primary_form": "チョコレート",
       "meaning": "chocolate",
       "mnemonic_text": "Borrowed word: chokoreeto.",
-      "sort_order": 285,
+      "sort_order": 282,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5677,7 +5599,7 @@
       "primary_form": "ジュース",
       "meaning": "juice",
       "mnemonic_text": "Borrowed word: juusu.",
-      "sort_order": 286,
+      "sort_order": 283,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5696,7 +5618,7 @@
       "primary_form": "ワイン",
       "meaning": "wine",
       "mnemonic_text": "Borrowed word: wain.",
-      "sort_order": 287,
+      "sort_order": 284,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5715,7 +5637,7 @@
       "primary_form": "服装",
       "meaning": "attire / clothing",
       "mnemonic_text": "Clothes (服) formation (装): one's outfit.",
-      "sort_order": 288,
+      "sort_order": 285,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5734,7 +5656,7 @@
       "primary_form": "制服",
       "meaning": "uniform",
       "mnemonic_text": "Regulated (制) clothing (服): a uniform.",
-      "sort_order": 289,
+      "sort_order": 286,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5753,7 +5675,7 @@
       "primary_form": "ネクタイ",
       "meaning": "necktie",
       "mnemonic_text": "Borrowed word: nekutai.",
-      "sort_order": 290,
+      "sort_order": 287,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5772,7 +5694,7 @@
       "primary_form": "スカート",
       "meaning": "skirt",
       "mnemonic_text": "Borrowed word: sukaato.",
-      "sort_order": 291,
+      "sort_order": 288,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5791,7 +5713,7 @@
       "primary_form": "ズボン",
       "meaning": "trousers",
       "mnemonic_text": "Borrowed word (from French): zubon.",
-      "sort_order": 292,
+      "sort_order": 289,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5810,7 +5732,7 @@
       "primary_form": "セーター",
       "meaning": "sweater",
       "mnemonic_text": "Borrowed word: seetaa.",
-      "sort_order": 293,
+      "sort_order": 290,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5829,7 +5751,7 @@
       "primary_form": "靴下",
       "meaning": "socks",
       "mnemonic_text": "Under (下) the shoes (靴): socks.",
-      "sort_order": 294,
+      "sort_order": 291,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5848,7 +5770,7 @@
       "primary_form": "手袋",
       "meaning": "gloves",
       "mnemonic_text": "A bag (袋) for the hand (手): gloves.",
-      "sort_order": 295,
+      "sort_order": 292,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5867,7 +5789,7 @@
       "primary_form": "指輪",
       "meaning": "ring (jewelry)",
       "mnemonic_text": "A ring (輪) for the finger (指): a ring.",
-      "sort_order": 296,
+      "sort_order": 293,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5886,7 +5808,7 @@
       "primary_form": "ネックレス",
       "meaning": "necklace",
       "mnemonic_text": "Borrowed word: nekkuresu.",
-      "sort_order": 297,
+      "sort_order": 294,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5905,7 +5827,7 @@
       "primary_form": "バッグ",
       "meaning": "bag (fashion)",
       "mnemonic_text": "Borrowed word: baggu.",
-      "sort_order": 298,
+      "sort_order": 295,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5924,7 +5846,7 @@
       "primary_form": "サイズ",
       "meaning": "size",
       "mnemonic_text": "Borrowed word: saizu.",
-      "sort_order": 299,
+      "sort_order": 296,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5943,7 +5865,7 @@
       "primary_form": "割引",
       "meaning": "discount",
       "mnemonic_text": "Splitting (割) and pulling (引) off the price: a discount.",
-      "sort_order": 300,
+      "sort_order": 297,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5962,7 +5884,7 @@
       "primary_form": "売り場",
       "meaning": "sales floor / counter",
       "mnemonic_text": "A place (場) to sell (売る): a sales counter.",
-      "sort_order": 301,
+      "sort_order": 298,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -5981,7 +5903,7 @@
       "primary_form": "支払う",
       "meaning": "to pay (formal)",
       "mnemonic_text": "Supporting (支) and paying (払う): to settle a bill.",
-      "sort_order": 302,
+      "sort_order": 299,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6000,7 +5922,7 @@
       "primary_form": "領収",
       "meaning": "receipt (formal noun)",
       "mnemonic_text": "Governing (領) collection (収): a formal receipt.",
-      "sort_order": 303,
+      "sort_order": 300,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6019,7 +5941,7 @@
       "primary_form": "注文",
       "meaning": "order (noun)",
       "mnemonic_text": "Pouring (注) a written request (文): an order.",
-      "sort_order": 304,
+      "sort_order": 301,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6038,7 +5960,7 @@
       "primary_form": "交換する",
       "meaning": "to exchange",
       "mnemonic_text": "Crossing (交) a change (換): to exchange.",
-      "sort_order": 305,
+      "sort_order": 302,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6057,7 +5979,7 @@
       "primary_form": "返品する",
       "meaning": "to return (an item)",
       "mnemonic_text": "Returning (返) the goods (品): to return an item.",
-      "sort_order": 306,
+      "sort_order": 303,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6076,7 +5998,7 @@
       "primary_form": "健康",
       "meaning": "health",
       "mnemonic_text": "Strong (健) and peaceful (康): good health.",
-      "sort_order": 307,
+      "sort_order": 304,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6095,7 +6017,7 @@
       "primary_form": "体重",
       "meaning": "body weight",
       "mnemonic_text": "The body's (体) heaviness (重): body weight.",
-      "sort_order": 308,
+      "sort_order": 305,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6114,7 +6036,7 @@
       "primary_form": "身長",
       "meaning": "height (body)",
       "mnemonic_text": "The body's (身) length (長): one's height.",
-      "sort_order": 309,
+      "sort_order": 306,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6133,7 +6055,7 @@
       "primary_form": "熱",
       "meaning": "fever / heat",
       "mnemonic_text": "A hot (熱) burning inside: a fever.",
-      "sort_order": 310,
+      "sort_order": 307,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6152,7 +6074,7 @@
       "primary_form": "咳",
       "meaning": "cough",
       "mnemonic_text": "A mouth (口) releasing air suddenly: a cough.",
-      "sort_order": 311,
+      "sort_order": 308,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6171,7 +6093,7 @@
       "primary_form": "風邪をひく",
       "meaning": "to catch a cold",
       "mnemonic_text": "Pulling (引く) the cold wind (風邪) in: to catch a cold.",
-      "sort_order": 312,
+      "sort_order": 309,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6190,7 +6112,7 @@
       "primary_form": "治療",
       "meaning": "medical treatment",
       "mnemonic_text": "Governing (治) and healing (療): treatment.",
-      "sort_order": 313,
+      "sort_order": 310,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6209,7 +6131,7 @@
       "primary_form": "注射",
       "meaning": "injection",
       "mnemonic_text": "Pouring (注) a shot (射): an injection.",
-      "sort_order": 314,
+      "sort_order": 311,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6228,7 +6150,7 @@
       "primary_form": "手術",
       "meaning": "surgery",
       "mnemonic_text": "A hand's (手) craft (術): surgery.",
-      "sort_order": 315,
+      "sort_order": 312,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6247,7 +6169,7 @@
       "primary_form": "入院する",
       "meaning": "to be hospitalized",
       "mnemonic_text": "Entering (入) the hospital (院): to be admitted.",
-      "sort_order": 316,
+      "sort_order": 313,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6266,7 +6188,7 @@
       "primary_form": "退院する",
       "meaning": "to leave hospital",
       "mnemonic_text": "Retreating (退) from the hospital (院): to be discharged.",
-      "sort_order": 317,
+      "sort_order": 314,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6285,7 +6207,7 @@
       "primary_form": "健康診断",
       "meaning": "health checkup",
       "mnemonic_text": "A health (健康) diagnosis (診断): a checkup.",
-      "sort_order": 318,
+      "sort_order": 315,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6304,7 +6226,7 @@
       "primary_form": "薬を飲む",
       "meaning": "to take medicine",
       "mnemonic_text": "Drinking (飲む) the medicine (薬): to take medicine.",
-      "sort_order": 319,
+      "sort_order": 316,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6323,7 +6245,7 @@
       "primary_form": "怪我",
       "meaning": "injury",
       "mnemonic_text": "A mysterious (怪) loss (我): an injury.",
-      "sort_order": 320,
+      "sort_order": 317,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6342,7 +6264,7 @@
       "primary_form": "怪我する",
       "meaning": "to get injured",
       "mnemonic_text": "Suffering a mysterious loss: to be injured.",
-      "sort_order": 321,
+      "sort_order": 318,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6361,7 +6283,7 @@
       "primary_form": "痛む",
       "meaning": "to hurt / ache",
       "mnemonic_text": "A sickness (疒) piercing through steadily: to ache.",
-      "sort_order": 322,
+      "sort_order": 319,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6380,7 +6302,7 @@
       "primary_form": "目が悪い",
       "meaning": "to have poor eyesight",
       "mnemonic_text": "The eyes (目) being bad (悪い): poor vision.",
-      "sort_order": 323,
+      "sort_order": 320,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6399,7 +6321,7 @@
       "primary_form": "耳が遠い",
       "meaning": "to be hard of hearing",
       "mnemonic_text": "The ears (耳) being far (遠い): hard of hearing.",
-      "sort_order": 324,
+      "sort_order": 321,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6418,7 +6340,7 @@
       "primary_form": "スポーツマン",
       "meaning": "athlete",
       "mnemonic_text": "Borrowed word: supootsuman.",
-      "sort_order": 325,
+      "sort_order": 322,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6437,7 +6359,7 @@
       "primary_form": "運動する",
       "meaning": "to exercise",
       "mnemonic_text": "Carrying (運) motion (動): to exercise.",
-      "sort_order": 326,
+      "sort_order": 323,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6456,7 +6378,7 @@
       "primary_form": "野球",
       "meaning": "baseball",
       "mnemonic_text": "Field (野) ball (球): baseball.",
-      "sort_order": 327,
+      "sort_order": 324,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6475,7 +6397,7 @@
       "primary_form": "サッカー",
       "meaning": "soccer",
       "mnemonic_text": "Borrowed word: sakkaa.",
-      "sort_order": 328,
+      "sort_order": 325,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6494,7 +6416,7 @@
       "primary_form": "バスケットボール",
       "meaning": "basketball",
       "mnemonic_text": "Borrowed word: basukettobooru.",
-      "sort_order": 329,
+      "sort_order": 326,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6513,7 +6435,7 @@
       "primary_form": "テニス",
       "meaning": "tennis",
       "mnemonic_text": "Borrowed word: tenisu.",
-      "sort_order": 330,
+      "sort_order": 327,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6532,7 +6454,7 @@
       "primary_form": "ゴルフ",
       "meaning": "golf",
       "mnemonic_text": "Borrowed word: gorufu.",
-      "sort_order": 331,
+      "sort_order": 328,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6551,7 +6473,7 @@
       "primary_form": "水泳",
       "meaning": "swimming",
       "mnemonic_text": "Water (水) swimming (泳): swimming.",
-      "sort_order": 332,
+      "sort_order": 329,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6570,7 +6492,7 @@
       "primary_form": "スキー",
       "meaning": "skiing",
       "mnemonic_text": "Borrowed word: sukii.",
-      "sort_order": 333,
+      "sort_order": 330,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6589,7 +6511,7 @@
       "primary_form": "ダンス",
       "meaning": "dance",
       "mnemonic_text": "Borrowed word: dansu.",
-      "sort_order": 334,
+      "sort_order": 331,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6608,7 +6530,7 @@
       "primary_form": "楽器",
       "meaning": "musical instrument",
       "mnemonic_text": "A music (楽) tool (器): an instrument.",
-      "sort_order": 335,
+      "sort_order": 332,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6627,7 +6549,7 @@
       "primary_form": "ピアノ",
       "meaning": "piano",
       "mnemonic_text": "Borrowed word: piano.",
-      "sort_order": 336,
+      "sort_order": 333,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6646,7 +6568,7 @@
       "primary_form": "ギター",
       "meaning": "guitar",
       "mnemonic_text": "Borrowed word: gitaa.",
-      "sort_order": 337,
+      "sort_order": 334,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6665,7 +6587,7 @@
       "primary_form": "将来の夢",
       "meaning": "future dream",
       "mnemonic_text": "A future's (将来) dream (夢): one's aspiration.",
-      "sort_order": 338,
+      "sort_order": 335,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6684,7 +6606,7 @@
       "primary_form": "読書",
       "meaning": "reading (books)",
       "mnemonic_text": "Reading (読) books (書): reading as a hobby.",
-      "sort_order": 339,
+      "sort_order": 336,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6703,7 +6625,7 @@
       "primary_form": "小説",
       "meaning": "novel",
       "mnemonic_text": "A small (小) telling (説): a novel.",
-      "sort_order": 340,
+      "sort_order": 337,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6722,7 +6644,7 @@
       "primary_form": "漫画",
       "meaning": "comic / manga",
       "mnemonic_text": "Loose (漫) drawings (画): manga.",
-      "sort_order": 341,
+      "sort_order": 338,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6741,7 +6663,7 @@
       "primary_form": "ゲーム",
       "meaning": "game",
       "mnemonic_text": "Borrowed word: geemu.",
-      "sort_order": 342,
+      "sort_order": 339,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6760,7 +6682,7 @@
       "primary_form": "釣り",
       "meaning": "fishing",
       "mnemonic_text": "Hooking (釣る) a catch: fishing.",
-      "sort_order": 343,
+      "sort_order": 340,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6779,7 +6701,7 @@
       "primary_form": "トランプ",
       "meaning": "playing cards",
       "mnemonic_text": "Borrowed word: toranpu.",
-      "sort_order": 344,
+      "sort_order": 341,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6798,7 +6720,7 @@
       "primary_form": "将棋",
       "meaning": "shogi (chess)",
       "mnemonic_text": "A general's (将) board game (棋): shogi.",
-      "sort_order": 345,
+      "sort_order": 342,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6817,7 +6739,7 @@
       "primary_form": "コンピューター",
       "meaning": "computer",
       "mnemonic_text": "Borrowed word: konpyuutaa.",
-      "sort_order": 346,
+      "sort_order": 343,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6836,7 +6758,7 @@
       "primary_form": "インターネット",
       "meaning": "internet",
       "mnemonic_text": "Borrowed word: intaanetto.",
-      "sort_order": 347,
+      "sort_order": 344,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6855,7 +6777,7 @@
       "primary_form": "メール",
       "meaning": "email",
       "mnemonic_text": "Borrowed word: meeru.",
-      "sort_order": 348,
+      "sort_order": 345,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6874,7 +6796,7 @@
       "primary_form": "サイト",
       "meaning": "website",
       "mnemonic_text": "Borrowed word: saito.",
-      "sort_order": 349,
+      "sort_order": 346,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6893,7 +6815,7 @@
       "primary_form": "アプリ",
       "meaning": "app",
       "mnemonic_text": "Borrowed word: apuri.",
-      "sort_order": 350,
+      "sort_order": 347,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6912,7 +6834,7 @@
       "primary_form": "伝言",
       "meaning": "message (spoken)",
       "mnemonic_text": "Passed (伝) words (言): a message.",
-      "sort_order": 351,
+      "sort_order": 348,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6931,7 +6853,7 @@
       "primary_form": "連絡する",
       "meaning": "to contact",
       "mnemonic_text": "Connecting (連) a network (絡): to get in touch.",
-      "sort_order": 352,
+      "sort_order": 349,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6950,7 +6872,7 @@
       "primary_form": "画面",
       "meaning": "screen (display)",
       "mnemonic_text": "A drawn (画) face (面): a screen.",
-      "sort_order": 353,
+      "sort_order": 350,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6969,7 +6891,7 @@
       "primary_form": "ソフト",
       "meaning": "software",
       "mnemonic_text": "Borrowed word: sofuto.",
-      "sort_order": 354,
+      "sort_order": 351,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -6988,7 +6910,7 @@
       "primary_form": "デジカメ",
       "meaning": "digital camera",
       "mnemonic_text": "Digital camera, shortened: dejikame.",
-      "sort_order": 355,
+      "sort_order": 352,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7007,7 +6929,7 @@
       "primary_form": "番組",
       "meaning": "TV program",
       "mnemonic_text": "A numbered (番) set (組): a program.",
-      "sort_order": 356,
+      "sort_order": 353,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7026,7 +6948,7 @@
       "primary_form": "ニュース",
       "meaning": "news",
       "mnemonic_text": "Borrowed word: nyuusu.",
-      "sort_order": 357,
+      "sort_order": 354,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7045,7 +6967,7 @@
       "primary_form": "記事",
       "meaning": "article",
       "mnemonic_text": "A recorded (記) matter (事): an article.",
-      "sort_order": 358,
+      "sort_order": 355,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7064,7 +6986,7 @@
       "primary_form": "翻訳",
       "meaning": "translation",
       "mnemonic_text": "Turning over (翻) meaning (訳): translation.",
-      "sort_order": 359,
+      "sort_order": 356,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7083,7 +7005,7 @@
       "primary_form": "市役所",
       "meaning": "city hall",
       "mnemonic_text": "The city's (市) work office (役所): city hall.",
-      "sort_order": 360,
+      "sort_order": 357,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7102,7 +7024,7 @@
       "primary_form": "大学院",
       "meaning": "graduate school",
       "mnemonic_text": "University's (大学) inner court (院): grad school.",
-      "sort_order": 361,
+      "sort_order": 358,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7121,7 +7043,7 @@
       "primary_form": "卒業する",
       "meaning": "to graduate",
       "mnemonic_text": "Finishing (卒) one's studies (業): to graduate.",
-      "sort_order": 362,
+      "sort_order": 359,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7140,7 +7062,7 @@
       "primary_form": "入学する",
       "meaning": "to enter school",
       "mnemonic_text": "Entering (入) school (学): to enroll.",
-      "sort_order": 363,
+      "sort_order": 360,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7159,7 +7081,7 @@
       "primary_form": "試験を受ける",
       "meaning": "to take an exam",
       "mnemonic_text": "Receiving (受) the test (試験): to sit an exam.",
-      "sort_order": 364,
+      "sort_order": 361,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7178,7 +7100,7 @@
       "primary_form": "合格する",
       "meaning": "to pass (an exam)",
       "mnemonic_text": "Matching (合) the standard (格): to pass.",
-      "sort_order": 365,
+      "sort_order": 362,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7197,7 +7119,7 @@
       "primary_form": "不合格",
       "meaning": "failing (an exam)",
       "mnemonic_text": "Not (不) matching the standard: failing.",
-      "sort_order": 366,
+      "sort_order": 363,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7216,7 +7138,7 @@
       "primary_form": "休暇",
       "meaning": "vacation / leave",
       "mnemonic_text": "A rest (休) period (暇): time off.",
-      "sort_order": 367,
+      "sort_order": 364,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7235,7 +7157,7 @@
       "primary_form": "出勤する",
       "meaning": "to go to work",
       "mnemonic_text": "Exiting (出) to duty (勤): to commute to work.",
-      "sort_order": 368,
+      "sort_order": 365,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7254,7 +7176,7 @@
       "primary_form": "退勤する",
       "meaning": "to leave work",
       "mnemonic_text": "Retreating (退) from duty (勤): to clock out.",
-      "sort_order": 369,
+      "sort_order": 366,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7273,7 +7195,7 @@
       "primary_form": "残業",
       "meaning": "overtime work",
       "mnemonic_text": "Remaining (残) at work (業): overtime.",
-      "sort_order": 370,
+      "sort_order": 367,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7292,7 +7214,7 @@
       "primary_form": "給料",
       "meaning": "salary",
       "mnemonic_text": "Supplied (給) materials (料): one's pay.",
-      "sort_order": 371,
+      "sort_order": 368,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7311,7 +7233,7 @@
       "primary_form": "社員",
       "meaning": "company employee",
       "mnemonic_text": "A company's (社) staff member (員): an employee.",
-      "sort_order": 372,
+      "sort_order": 369,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7330,7 +7252,7 @@
       "primary_form": "部長",
       "meaning": "department head",
       "mnemonic_text": "A department's (部) chief (長): a manager.",
-      "sort_order": 373,
+      "sort_order": 370,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7349,7 +7271,7 @@
       "primary_form": "社長",
       "meaning": "company president",
       "mnemonic_text": "A company's (社) chief (長): the president.",
-      "sort_order": 374,
+      "sort_order": 371,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7368,7 +7290,7 @@
       "primary_form": "努力する",
       "meaning": "to make an effort",
       "mnemonic_text": "Straining (努) one's strength (力): to try hard.",
-      "sort_order": 375,
+      "sort_order": 372,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7387,7 +7309,7 @@
       "primary_form": "成功する",
       "meaning": "to succeed",
       "mnemonic_text": "Becoming (成) accomplished (功): to succeed.",
-      "sort_order": 376,
+      "sort_order": 373,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7406,7 +7328,7 @@
       "primary_form": "失敗する",
       "meaning": "to fail",
       "mnemonic_text": "Losing (失) to defeat (敗): to fail.",
-      "sort_order": 377,
+      "sort_order": 374,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7425,7 +7347,7 @@
       "primary_form": "目標",
       "meaning": "goal / target",
       "mnemonic_text": "An eye's (目) marker (標): a goal.",
-      "sort_order": 378,
+      "sort_order": 375,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7444,7 +7366,7 @@
       "primary_form": "計画",
       "meaning": "plan",
       "mnemonic_text": "Counting (計) a drawn picture (画): a plan.",
-      "sort_order": 379,
+      "sort_order": 376,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7459,11 +7381,37 @@
       "furigana": "計[けい]画[かく]"
     },
     {
+      "slug": "setsumei",
+      "primary_form": "説明",
+      "meaning": "explanation",
+      "mnemonic_text": "Speech (説) making things bright (明): an explanation.",
+      "sort_order": 377,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "explanation",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "せつめい"
+        }
+      ],
+      "furigana": "説[せつ]明[めい]",
+      "meaning_mnemonic": "Grandma Kane corners you over the empty offering plate. You stall until dawn's <kanji>bright</kanji> floods both shrine windows at once, sun in one pane, moon still pale in the other, till the courtyard glows so hard the cats squint. In that light your excuse turns readable, laid out plain — an explanation you never meant to give.",
+      "reading_mnemonic": "At Koichi's konbini, a customer corners him over the price hike, so he SETs a sign by the onigiri shelf that MAY as well be scripture, every reason dated. Regulars read the whole <reading>SET in MAY</reading> notice top to bottom — that rundown is <reading>せつめい</reading>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
+    },
+    {
       "slug": "torihikisaki",
       "primary_form": "取引先",
       "meaning": "business partner/client",
       "mnemonic_text": "A dealing's (取引) destination (先): a client.",
-      "sort_order": 380,
+      "sort_order": 378,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7482,7 +7430,7 @@
       "primary_form": "売上",
       "meaning": "sales (revenue)",
       "mnemonic_text": "What's sold (売) and raised (上げ): sales figures.",
-      "sort_order": 381,
+      "sort_order": 379,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7501,7 +7449,7 @@
       "primary_form": "利益",
       "meaning": "profit",
       "mnemonic_text": "Benefit (利) and gain (益): profit.",
-      "sort_order": 382,
+      "sort_order": 380,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7520,7 +7468,7 @@
       "primary_form": "損",
       "meaning": "loss (financial)",
       "mnemonic_text": "A hand (扌) losing something valuable: a loss.",
-      "sort_order": 383,
+      "sort_order": 381,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7539,7 +7487,7 @@
       "primary_form": "予算",
       "meaning": "budget",
       "mnemonic_text": "Predicted (予) calculation (算): a budget.",
-      "sort_order": 384,
+      "sort_order": 382,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7558,7 +7506,7 @@
       "primary_form": "経費",
       "meaning": "expenses",
       "mnemonic_text": "Passing (経) costs (費): expenses.",
-      "sort_order": 385,
+      "sort_order": 383,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7573,11 +7521,37 @@
       "furigana": "経[けい]費[ひ]"
     },
     {
+      "slug": "keizai",
+      "primary_form": "経済",
+      "meaning": "economy",
+      "mnemonic_text": "Passing through (経) aid (済): the flow of the economy.",
+      "sort_order": 384,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "economy",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "けいざい"
+        }
+      ],
+      "furigana": "経[けい]済[ざい]",
+      "meaning_mnemonic": "In the temple's back room, the loom keeps working: thread after thread <kanji>passes through</kanji> the frame while the monk drones on. What is threaded today is not cloth but coins, spooled from house to market to house again. That endless circuit of coin passing through the village is the economy.",
+      "reading_mnemonic": "At Koichi's konbini, the till beeps as a customer named Kay-Zai counts every coin twice, tracking how money moves through the town — konbini, rent, noodle stand. Her name says it: <reading>Kay-Zai</reading> is how you hear <reading>けいざい</reading>, the economy she watches.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
+    },
+    {
       "slug": "torihiki",
       "primary_form": "取引",
       "meaning": "transaction / dealing",
       "mnemonic_text": "Taking (取) and pulling (引): a deal.",
-      "sort_order": 386,
+      "sort_order": 385,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7596,7 +7570,7 @@
       "primary_form": "書類提出",
       "meaning": "document submission",
       "mnemonic_text": "Submitting (提出) papers (書類): filing documents.",
-      "sort_order": 387,
+      "sort_order": 386,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7615,7 +7589,7 @@
       "primary_form": "会合",
       "meaning": "gathering / meeting",
       "mnemonic_text": "Meeting (会) and matching (合): a gathering.",
-      "sort_order": 388,
+      "sort_order": 387,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7634,7 +7608,7 @@
       "primary_form": "出席する",
       "meaning": "to attend",
       "mnemonic_text": "Exiting (出) to a seat (席): to attend.",
-      "sort_order": 389,
+      "sort_order": 388,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7653,7 +7627,7 @@
       "primary_form": "欠席する",
       "meaning": "to be absent",
       "mnemonic_text": "Lacking (欠) a seat (席): to be absent.",
-      "sort_order": 390,
+      "sort_order": 389,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7672,7 +7646,7 @@
       "primary_form": "遅刻する",
       "meaning": "to be late (for an event)",
       "mnemonic_text": "Being slow (遅) at the appointed hour (刻): to be late.",
-      "sort_order": 391,
+      "sort_order": 390,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7691,7 +7665,7 @@
       "primary_form": "提供する",
       "meaning": "to provide",
       "mnemonic_text": "Presenting (提) and offering (供): to provide.",
-      "sort_order": 392,
+      "sort_order": 391,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7710,7 +7684,7 @@
       "primary_form": "協力する",
       "meaning": "to cooperate",
       "mnemonic_text": "Joining (協) strength (力): to cooperate.",
-      "sort_order": 393,
+      "sort_order": 392,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7729,7 +7703,7 @@
       "primary_form": "参加する",
       "meaning": "to participate",
       "mnemonic_text": "Joining (参) and adding (加): to take part.",
-      "sort_order": 394,
+      "sort_order": 393,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7748,7 +7722,7 @@
       "primary_form": "最近",
       "meaning": "recently",
       "mnemonic_text": "The very (最) nearest (近) time: recently.",
-      "sort_order": 395,
+      "sort_order": 394,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7767,7 +7741,7 @@
       "primary_form": "将来",
       "meaning": "the future",
       "mnemonic_text": "About to (将) come (来): the future.",
-      "sort_order": 396,
+      "sort_order": 395,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7786,7 +7760,7 @@
       "primary_form": "現在",
       "meaning": "the present (time)",
       "mnemonic_text": "What appears (現) now (在): the present.",
-      "sort_order": 397,
+      "sort_order": 396,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7805,7 +7779,7 @@
       "primary_form": "当時",
       "meaning": "at that time",
       "mnemonic_text": "That very (当) time (時): back then.",
-      "sort_order": 398,
+      "sort_order": 397,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7824,7 +7798,7 @@
       "primary_form": "以前",
       "meaning": "before / previously",
       "mnemonic_text": "From (以) before (前): previously.",
-      "sort_order": 399,
+      "sort_order": 398,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7843,7 +7817,7 @@
       "primary_form": "以後",
       "meaning": "after / from now on",
       "mnemonic_text": "From (以) after (後): from now on.",
-      "sort_order": 400,
+      "sort_order": 399,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7862,7 +7836,7 @@
       "primary_form": "最中",
       "meaning": "in the middle of",
       "mnemonic_text": "The very (最) middle (中): right in the middle of.",
-      "sort_order": 401,
+      "sort_order": 400,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7881,7 +7855,7 @@
       "primary_form": "しばらく",
       "meaning": "for a while",
       "mnemonic_text": "A stretch of time passing: shibaraku.",
-      "sort_order": 402,
+      "sort_order": 401,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7900,7 +7874,7 @@
       "primary_form": "一時",
       "meaning": "for a time / temporarily",
       "mnemonic_text": "One (一) moment (時): temporarily.",
-      "sort_order": 403,
+      "sort_order": 402,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7919,7 +7893,7 @@
       "primary_form": "当然",
       "meaning": "naturally / of course",
       "mnemonic_text": "The fitting (当) natural (然) result: naturally.",
-      "sort_order": 404,
+      "sort_order": 403,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7938,7 +7912,7 @@
       "primary_form": "最後に",
       "meaning": "finally / lastly",
       "mnemonic_text": "At the very (最) end (後): finally.",
-      "sort_order": 405,
+      "sort_order": 404,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7957,7 +7931,7 @@
       "primary_form": "まず初めに",
       "meaning": "first of all",
       "mnemonic_text": "To start at the very beginning: mazu hajime ni.",
-      "sort_order": 406,
+      "sort_order": 405,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7976,7 +7950,7 @@
       "primary_form": "ついに",
       "meaning": "finally / at last",
       "mnemonic_text": "After all that waiting: tsuini.",
-      "sort_order": 407,
+      "sort_order": 406,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -7995,7 +7969,7 @@
       "primary_form": "やがて",
       "meaning": "soon / before long",
       "mnemonic_text": "Before long it will happen: yagate.",
-      "sort_order": 408,
+      "sort_order": 407,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8014,7 +7988,7 @@
       "primary_form": "早速",
       "meaning": "immediately / promptly",
       "mnemonic_text": "Fast (早) and speedy (速): right away.",
-      "sort_order": 409,
+      "sort_order": 408,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8033,7 +8007,7 @@
       "primary_form": "特に",
       "meaning": "especially",
       "mnemonic_text": "Specially (特) marked: especially.",
-      "sort_order": 410,
+      "sort_order": 409,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8052,7 +8026,7 @@
       "primary_form": "ほとんど",
       "meaning": "almost / mostly",
       "mnemonic_text": "Nearly all of it: hotondo.",
-      "sort_order": 411,
+      "sort_order": 410,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8071,7 +8045,7 @@
       "primary_form": "わざわざ",
       "meaning": "specially / deliberately",
       "mnemonic_text": "Going out of your way: wazawaza.",
-      "sort_order": 412,
+      "sort_order": 411,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8090,7 +8064,7 @@
       "primary_form": "やはり",
       "meaning": "as expected / after all",
       "mnemonic_text": "Just as thought: yahari.",
-      "sort_order": 413,
+      "sort_order": 412,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8109,7 +8083,7 @@
       "primary_form": "やっぱり",
       "meaning": "as expected (casual)",
       "mnemonic_text": "Casual form of yahari: yappari.",
-      "sort_order": 414,
+      "sort_order": 413,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8128,7 +8102,7 @@
       "primary_form": "必ず",
       "meaning": "definitely / without fail",
       "mnemonic_text": "A resolved heart pierced through: certainly.",
-      "sort_order": 415,
+      "sort_order": 414,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8147,7 +8121,7 @@
       "primary_form": "ぜひ",
       "meaning": "by all means",
       "mnemonic_text": "Right or wrong, just do it: zehi.",
-      "sort_order": 416,
+      "sort_order": 415,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8166,7 +8140,7 @@
       "primary_form": "もし",
       "meaning": "if (hypothetical)",
       "mnemonic_text": "Setting up a hypothetical: moshi.",
-      "sort_order": 417,
+      "sort_order": 416,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8185,7 +8159,7 @@
       "primary_form": "例えば",
       "meaning": "for example",
       "mnemonic_text": "Comparing (例) if (えば): for instance.",
-      "sort_order": 418,
+      "sort_order": 417,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8204,7 +8178,7 @@
       "primary_form": "つまり",
       "meaning": "in other words",
       "mnemonic_text": "Packed down to the point: tsumari.",
-      "sort_order": 419,
+      "sort_order": 418,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8223,7 +8197,7 @@
       "primary_form": "さらに",
       "meaning": "furthermore",
       "mnemonic_text": "Adding yet another layer: sara ni.",
-      "sort_order": 420,
+      "sort_order": 419,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8242,7 +8216,7 @@
       "primary_form": "その上",
       "meaning": "moreover",
       "mnemonic_text": "On top (上) of that (その): moreover.",
-      "sort_order": 421,
+      "sort_order": 420,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8261,7 +8235,7 @@
       "primary_form": "ところで",
       "meaning": "by the way",
       "mnemonic_text": "Shifting the place of topic: tokorode.",
-      "sort_order": 422,
+      "sort_order": 421,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8280,7 +8254,7 @@
       "primary_form": "きっと",
       "meaning": "surely / certainly",
       "mnemonic_text": "A firm certainty: kitto.",
-      "sort_order": 423,
+      "sort_order": 422,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8299,7 +8273,7 @@
       "primary_form": "まさか",
       "meaning": "no way! / surely not",
       "mnemonic_text": "Disbelief at the impossible: masaka.",
-      "sort_order": 424,
+      "sort_order": 423,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8318,7 +8292,7 @@
       "primary_form": "別に",
       "meaning": "not particularly",
       "mnemonic_text": "Nothing special going on: betsu ni.",
-      "sort_order": 425,
+      "sort_order": 424,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8337,7 +8311,7 @@
       "primary_form": "一層",
       "meaning": "even more",
       "mnemonic_text": "One (一) more layer (層): even more.",
-      "sort_order": 426,
+      "sort_order": 425,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8356,7 +8330,7 @@
       "primary_form": "次第に",
       "meaning": "gradually",
       "mnemonic_text": "Step by step in sequence: shidai ni.",
-      "sort_order": 427,
+      "sort_order": 426,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8375,7 +8349,7 @@
       "primary_form": "何となく",
       "meaning": "somehow / vaguely",
       "mnemonic_text": "Without quite knowing why: nantonaku.",
-      "sort_order": 428,
+      "sort_order": 427,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8394,7 +8368,7 @@
       "primary_form": "わざと",
       "meaning": "on purpose",
       "mnemonic_text": "Deliberately doing it: wazato.",
-      "sort_order": 429,
+      "sort_order": 428,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8413,7 +8387,7 @@
       "primary_form": "どうしましたか",
       "meaning": "what's wrong? / what happened?",
       "mnemonic_text": "Asking what happened: dou shimashita ka.",
-      "sort_order": 430,
+      "sort_order": 429,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8432,7 +8406,7 @@
       "primary_form": "何ですか",
       "meaning": "what is it?",
       "mnemonic_text": "A direct query about a thing: nan desu ka.",
-      "sort_order": 431,
+      "sort_order": 430,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8451,7 +8425,7 @@
       "primary_form": "どちらも",
       "meaning": "both / either",
       "mnemonic_text": "Both directions apply: dochira mo.",
-      "sort_order": 432,
+      "sort_order": 431,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8470,7 +8444,7 @@
       "primary_form": "誰でも",
       "meaning": "anyone",
       "mnemonic_text": "Whoever it may be: dare demo.",
-      "sort_order": 433,
+      "sort_order": 432,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8489,7 +8463,7 @@
       "primary_form": "何でも",
       "meaning": "anything",
       "mnemonic_text": "Whatever it may be: nani demo.",
-      "sort_order": 434,
+      "sort_order": 433,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8508,7 +8482,7 @@
       "primary_form": "どこでも",
       "meaning": "anywhere",
       "mnemonic_text": "Wherever it may be: doko demo.",
-      "sort_order": 435,
+      "sort_order": 434,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8527,7 +8501,7 @@
       "primary_form": "いつでも",
       "meaning": "anytime",
       "mnemonic_text": "Whenever it may be: itsu demo.",
-      "sort_order": 436,
+      "sort_order": 435,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8546,7 +8520,7 @@
       "primary_form": "誰も",
       "meaning": "no one (with negative)",
       "mnemonic_text": "Not a single person: dare mo.",
-      "sort_order": 437,
+      "sort_order": 436,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8565,7 +8539,7 @@
       "primary_form": "何も",
       "meaning": "nothing (with negative)",
       "mnemonic_text": "Not a single thing: nani mo.",
-      "sort_order": 438,
+      "sort_order": 437,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8584,7 +8558,7 @@
       "primary_form": "どこも",
       "meaning": "nowhere (with negative)",
       "mnemonic_text": "Not any place at all: doko mo.",
-      "sort_order": 439,
+      "sort_order": 438,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8603,7 +8577,7 @@
       "primary_form": "どう思いますか",
       "meaning": "what do you think?",
       "mnemonic_text": "Asking for an opinion: dou omoimasu ka.",
-      "sort_order": 440,
+      "sort_order": 439,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8622,7 +8596,7 @@
       "primary_form": "そう思います",
       "meaning": "I think so",
       "mnemonic_text": "Agreeing with a thought: sou omoimasu.",
-      "sort_order": 441,
+      "sort_order": 440,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8641,7 +8615,7 @@
       "primary_form": "そうですね",
       "meaning": "that's right / let me think",
       "mnemonic_text": "A thoughtful agreement: sou desu ne.",
-      "sort_order": 442,
+      "sort_order": 441,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8660,7 +8634,7 @@
       "primary_form": "本当ですか",
       "meaning": "really?",
       "mnemonic_text": "Questioning the truth: hontou desu ka.",
-      "sort_order": 443,
+      "sort_order": 442,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8679,7 +8653,7 @@
       "primary_form": "なるほど",
       "meaning": "I see / indeed",
       "mnemonic_text": "Understanding dawning: naruhodo.",
-      "sort_order": 444,
+      "sort_order": 443,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8698,7 +8672,7 @@
       "primary_form": "お疲れ様",
       "meaning": "thank you for your hard work",
       "mnemonic_text": "Honoring someone's tiredness: otsukaresama.",
-      "sort_order": 445,
+      "sort_order": 444,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8717,7 +8691,7 @@
       "primary_form": "お世話になる",
       "meaning": "to be in someone's care",
       "mnemonic_text": "Receiving generational (世) care: osewa ni naru.",
-      "sort_order": 446,
+      "sort_order": 445,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8736,7 +8710,7 @@
       "primary_form": "失礼します",
       "meaning": "excuse me (entering/leaving)",
       "mnemonic_text": "Politely excusing a discourtesy: shitsurei shimasu.",
-      "sort_order": 447,
+      "sort_order": 446,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8755,7 +8729,7 @@
       "primary_form": "おめでとう",
       "meaning": "congratulations",
       "mnemonic_text": "A joyful blessing: omedetou.",
-      "sort_order": 448,
+      "sort_order": 447,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8774,7 +8748,7 @@
       "primary_form": "頑張って",
       "meaning": "good luck / do your best",
       "mnemonic_text": "Encouraging perseverance: ganbatte.",
-      "sort_order": 449,
+      "sort_order": 448,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8793,7 +8767,7 @@
       "primary_form": "お大事に",
       "meaning": "take care (get well)",
       "mnemonic_text": "Wishing importance to their health: odaiji ni.",
-      "sort_order": 450,
+      "sort_order": 449,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8812,7 +8786,7 @@
       "primary_form": "よろしく",
       "meaning": "please treat me well",
       "mnemonic_text": "A request for good favor: yoroshiku.",
-      "sort_order": 451,
+      "sort_order": 450,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8831,7 +8805,7 @@
       "primary_form": "どうぞ",
       "meaning": "please (go ahead)",
       "mnemonic_text": "Offering something politely: douzo.",
-      "sort_order": 452,
+      "sort_order": 451,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8850,7 +8824,7 @@
       "primary_form": "構いません",
       "meaning": "it doesn't matter",
       "mnemonic_text": "Not minding it at all: kamaimasen.",
-      "sort_order": 453,
+      "sort_order": 452,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8869,7 +8843,7 @@
       "primary_form": "大丈夫です",
       "meaning": "it's fine / no problem",
       "mnemonic_text": "Reassuring that all is well: daijoubu desu.",
-      "sort_order": 454,
+      "sort_order": 453,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8888,7 +8862,7 @@
       "primary_form": "早速ですが",
       "meaning": "getting right to it",
       "mnemonic_text": "A polite way to start business: sassoku desu ga.",
-      "sort_order": 455,
+      "sort_order": 454,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8907,7 +8881,7 @@
       "primary_form": "お気に召す",
       "meaning": "to be pleasing (honorific)",
       "mnemonic_text": "Something entering their favored spirit: oki ni mesu.",
-      "sort_order": 456,
+      "sort_order": 455,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8926,7 +8900,7 @@
       "primary_form": "かなり",
       "meaning": "quite / considerably",
       "mnemonic_text": "A fair amount indeed: kanari.",
-      "sort_order": 457,
+      "sort_order": 456,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8945,7 +8919,7 @@
       "primary_form": "十分な",
       "meaning": "sufficient (attributive)",
       "mnemonic_text": "The na-form of juubun: sufficiently enough.",
-      "sort_order": 458,
+      "sort_order": 457,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8964,7 +8938,7 @@
       "primary_form": "普通",
       "meaning": "normal / usual",
       "mnemonic_text": "Widely (普) common (通): normal.",
-      "sort_order": 459,
+      "sort_order": 458,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -8983,7 +8957,7 @@
       "primary_form": "一般",
       "meaning": "general / common",
       "mnemonic_text": "One (一) shared category (般): general.",
-      "sort_order": 460,
+      "sort_order": 459,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9002,7 +8976,7 @@
       "primary_form": "特別",
       "meaning": "special",
       "mnemonic_text": "Specially (特) separated (別): special.",
-      "sort_order": 461,
+      "sort_order": 460,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9021,7 +8995,7 @@
       "primary_form": "重要",
       "meaning": "important",
       "mnemonic_text": "Heavy (重) and essential (要): important.",
-      "sort_order": 462,
+      "sort_order": 461,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9040,7 +9014,7 @@
       "primary_form": "大切",
       "meaning": "important / precious",
       "mnemonic_text": "Big (大) and cutting (切) close: precious.",
-      "sort_order": 463,
+      "sort_order": 462,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9059,7 +9033,7 @@
       "primary_form": "可能",
       "meaning": "possible",
       "mnemonic_text": "Permissible (可) ability (能): possible.",
-      "sort_order": 464,
+      "sort_order": 463,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9078,7 +9052,7 @@
       "primary_form": "不可能",
       "meaning": "impossible",
       "mnemonic_text": "Not (不) possible (可能): impossible.",
-      "sort_order": 465,
+      "sort_order": 464,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9097,7 +9071,7 @@
       "primary_form": "迷惑",
       "meaning": "annoying / a bother",
       "mnemonic_text": "Lost (迷) and confused (惑): a nuisance.",
-      "sort_order": 466,
+      "sort_order": 465,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9116,7 +9090,7 @@
       "primary_form": "幸福",
       "meaning": "happiness (formal)",
       "mnemonic_text": "Good fortune (幸) and blessing (福): happiness.",
-      "sort_order": 467,
+      "sort_order": 466,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9135,7 +9109,7 @@
       "primary_form": "幸せ",
       "meaning": "happy / fortunate",
       "mnemonic_text": "A blessed state of being: shiawase.",
-      "sort_order": 468,
+      "sort_order": 467,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9154,7 +9128,7 @@
       "primary_form": "不幸",
       "meaning": "unfortunate / misfortune",
       "mnemonic_text": "Not (不) fortunate (幸): unfortunate.",
-      "sort_order": 469,
+      "sort_order": 468,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9173,7 +9147,7 @@
       "primary_form": "気楽",
       "meaning": "carefree / relaxed",
       "mnemonic_text": "Easy (楽) energy (気): carefree.",
-      "sort_order": 470,
+      "sort_order": 469,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9192,7 +9166,7 @@
       "primary_form": "関係",
       "meaning": "relationship / connection",
       "mnemonic_text": "A barrier (関) tied (係): a relationship.",
-      "sort_order": 471,
+      "sort_order": 470,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9211,7 +9185,7 @@
       "primary_form": "興味",
       "meaning": "interest",
       "mnemonic_text": "Rising (興) flavor (味): interest.",
-      "sort_order": 472,
+      "sort_order": 471,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9230,7 +9204,7 @@
       "primary_form": "希望",
       "meaning": "hope / wish",
       "mnemonic_text": "A rare (希) view ahead (望): hope.",
-      "sort_order": 473,
+      "sort_order": 472,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9249,7 +9223,7 @@
       "primary_form": "目的",
       "meaning": "purpose / goal",
       "mnemonic_text": "An eye's (目) target (的): a purpose.",
-      "sort_order": 474,
+      "sort_order": 473,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9268,7 +9242,7 @@
       "primary_form": "方法",
       "meaning": "method",
       "mnemonic_text": "A direction's (方) rule (法): a method.",
-      "sort_order": 475,
+      "sort_order": 474,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9287,7 +9261,7 @@
       "primary_form": "条件",
       "meaning": "condition (requirement)",
       "mnemonic_text": "An article's (条) piece (件): a condition.",
-      "sort_order": 476,
+      "sort_order": 475,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9306,7 +9280,7 @@
       "primary_form": "提案",
       "meaning": "proposal",
       "mnemonic_text": "Presenting (提) a plan (案): a proposal.",
-      "sort_order": 477,
+      "sort_order": 476,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9325,7 +9299,7 @@
       "primary_form": "機械",
       "meaning": "machine",
       "mnemonic_text": "A mechanism's (機) frame (械): a machine.",
-      "sort_order": 478,
+      "sort_order": 477,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9344,7 +9318,7 @@
       "primary_form": "機会",
       "meaning": "opportunity",
       "mnemonic_text": "A mechanism's (機) meeting (会): a chance.",
-      "sort_order": 479,
+      "sort_order": 478,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9363,7 +9337,7 @@
       "primary_form": "場合",
       "meaning": "case / situation",
       "mnemonic_text": "A place's (場) fit (合): a case.",
-      "sort_order": 480,
+      "sort_order": 479,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9382,7 +9356,7 @@
       "primary_form": "事情",
       "meaning": "circumstances",
       "mnemonic_text": "A matter's (事) feeling (情): circumstances.",
-      "sort_order": 481,
+      "sort_order": 480,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9401,7 +9375,7 @@
       "primary_form": "感情",
       "meaning": "emotion",
       "mnemonic_text": "A feeling's (感) sentiment (情): emotion.",
-      "sort_order": 482,
+      "sort_order": 481,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9420,7 +9394,7 @@
       "primary_form": "性格",
       "meaning": "personality",
       "mnemonic_text": "One's nature's (性) frame (格): personality.",
-      "sort_order": 483,
+      "sort_order": 482,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9439,7 +9413,7 @@
       "primary_form": "態度",
       "meaning": "attitude",
       "mnemonic_text": "A shaped (態) measure (度): attitude.",
-      "sort_order": 484,
+      "sort_order": 483,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9458,7 +9432,7 @@
       "primary_form": "技術",
       "meaning": "technology / skill",
       "mnemonic_text": "A skill's (技) craft (術): technology.",
-      "sort_order": 485,
+      "sort_order": 484,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9477,7 +9451,7 @@
       "primary_form": "科学者",
       "meaning": "scientist",
       "mnemonic_text": "A science's (科学) person (者): a scientist.",
-      "sort_order": 486,
+      "sort_order": 485,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9496,7 +9470,7 @@
       "primary_form": "発明",
       "meaning": "invention",
       "mnemonic_text": "Emitting (発) a bright (明) idea: invention.",
-      "sort_order": 487,
+      "sort_order": 486,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9515,7 +9489,7 @@
       "primary_form": "研究",
       "meaning": "research",
       "mnemonic_text": "Grinding (研) to investigate (究): research.",
-      "sort_order": 488,
+      "sort_order": 487,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9534,7 +9508,7 @@
       "primary_form": "実験",
       "meaning": "experiment",
       "mnemonic_text": "A real (実) examination (験): an experiment.",
-      "sort_order": 489,
+      "sort_order": 488,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9553,7 +9527,7 @@
       "primary_form": "調査",
       "meaning": "investigation / survey",
       "mnemonic_text": "Checking (調) to examine (査): a survey.",
-      "sort_order": 490,
+      "sort_order": 489,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9572,7 +9546,7 @@
       "primary_form": "報告",
       "meaning": "report",
       "mnemonic_text": "Repaying (報) an announcement (告): a report.",
-      "sort_order": 491,
+      "sort_order": 490,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9591,7 +9565,7 @@
       "primary_form": "会議室",
       "meaning": "meeting room",
       "mnemonic_text": "A meeting's (会議) room (室): a meeting room.",
-      "sort_order": 492,
+      "sort_order": 491,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9610,7 +9584,7 @@
       "primary_form": "受付",
       "meaning": "reception (desk)",
       "mnemonic_text": "Receiving (受) and attaching (付): the front desk.",
-      "sort_order": 493,
+      "sort_order": 492,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9629,7 +9603,7 @@
       "primary_form": "案内",
       "meaning": "guidance / information",
       "mnemonic_text": "A plan (案) leading inside (内): guidance.",
-      "sort_order": 494,
+      "sort_order": 493,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9648,7 +9622,7 @@
       "primary_form": "案内する",
       "meaning": "to guide / show around",
       "mnemonic_text": "To lead someone with a plan: annai suru.",
-      "sort_order": 495,
+      "sort_order": 494,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9667,7 +9641,7 @@
       "primary_form": "注意する",
       "meaning": "to pay attention / warn",
       "mnemonic_text": "Pouring (注) meaning (意): to be careful.",
-      "sort_order": 496,
+      "sort_order": 495,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9686,7 +9660,7 @@
       "primary_form": "記録",
       "meaning": "record",
       "mnemonic_text": "Recording (記) and noting (録): a record.",
-      "sort_order": 497,
+      "sort_order": 496,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9705,7 +9679,7 @@
       "primary_form": "放送",
       "meaning": "broadcast",
       "mnemonic_text": "Releasing (放) and sending (送): a broadcast.",
-      "sort_order": 498,
+      "sort_order": 497,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9724,7 +9698,7 @@
       "primary_form": "口座",
       "meaning": "bank account",
       "mnemonic_text": "A mouth's (口) seat (座): an account.",
-      "sort_order": 499,
+      "sort_order": 498,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9743,7 +9717,7 @@
       "primary_form": "預金",
       "meaning": "savings / deposit",
       "mnemonic_text": "Entrusted (預) money (金): a deposit.",
-      "sort_order": 500,
+      "sort_order": 499,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9762,7 +9736,7 @@
       "primary_form": "借金",
       "meaning": "debt",
       "mnemonic_text": "Borrowed (借) money (金): a debt.",
-      "sort_order": 501,
+      "sort_order": 500,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9781,7 +9755,7 @@
       "primary_form": "保険",
       "meaning": "insurance",
       "mnemonic_text": "Protection (保) danger (険): insurance.",
-      "sort_order": 502,
+      "sort_order": 501,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9800,7 +9774,7 @@
       "primary_form": "契約",
       "meaning": "contract",
       "mnemonic_text": "A pledged (契) promise (約): a contract.",
-      "sort_order": 503,
+      "sort_order": 502,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9819,7 +9793,7 @@
       "primary_form": "署名",
       "meaning": "signature",
       "mnemonic_text": "A signed office's (署) name (名): a signature.",
-      "sort_order": 504,
+      "sort_order": 503,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9838,7 +9812,7 @@
       "primary_form": "はんこ",
       "meaning": "personal seal (stamp)",
       "mnemonic_text": "The name stamp used instead of a signature: hanko.",
-      "sort_order": 505,
+      "sort_order": 504,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9857,7 +9831,7 @@
       "primary_form": "弁護士",
       "meaning": "lawyer",
       "mnemonic_text": "One who speaks (弁) in protection (護): a lawyer.",
-      "sort_order": 506,
+      "sort_order": 505,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9876,7 +9850,7 @@
       "primary_form": "警察官",
       "meaning": "police officer",
       "mnemonic_text": "A police (警察) official (官): an officer.",
-      "sort_order": 507,
+      "sort_order": 506,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9895,7 +9869,7 @@
       "primary_form": "消防士",
       "meaning": "firefighter",
       "mnemonic_text": "One who extinguishes (消) defense (防): a firefighter.",
-      "sort_order": 508,
+      "sort_order": 507,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9914,7 +9888,7 @@
       "primary_form": "海岸",
       "meaning": "coast / seashore",
       "mnemonic_text": "The sea's (海) bank (岸): a coast.",
-      "sort_order": 509,
+      "sort_order": 508,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9933,7 +9907,7 @@
       "primary_form": "島",
       "meaning": "island",
       "mnemonic_text": "A bird (鳥) resting on a mountain (山): an island.",
-      "sort_order": 510,
+      "sort_order": 509,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9952,7 +9926,7 @@
       "primary_form": "野山",
       "meaning": "fields and mountains",
       "mnemonic_text": "Wide fields (野) and mountains (山): the countryside.",
-      "sort_order": 511,
+      "sort_order": 510,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9971,7 +9945,7 @@
       "primary_form": "田舎",
       "meaning": "countryside",
       "mnemonic_text": "Rice fields (田) beside a hut (舎): the countryside.",
-      "sort_order": 512,
+      "sort_order": 511,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -9990,7 +9964,7 @@
       "primary_form": "都市",
       "meaning": "city (urban)",
       "mnemonic_text": "The capital's (都) market (市): a city.",
-      "sort_order": 513,
+      "sort_order": 512,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10009,7 +9983,7 @@
       "primary_form": "首都",
       "meaning": "capital (city)",
       "mnemonic_text": "The head (首) city (都): a capital.",
-      "sort_order": 514,
+      "sort_order": 513,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10028,7 +10002,7 @@
       "primary_form": "地方",
       "meaning": "region / countryside",
       "mnemonic_text": "The ground's (地) direction (方): a region.",
-      "sort_order": 515,
+      "sort_order": 514,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10047,7 +10021,7 @@
       "primary_form": "国家",
       "meaning": "nation / state",
       "mnemonic_text": "A country's (国) household (家): a nation.",
-      "sort_order": 516,
+      "sort_order": 515,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10066,7 +10040,7 @@
       "primary_form": "文明",
       "meaning": "civilization",
       "mnemonic_text": "Writing's (文) brightness (明): civilization.",
-      "sort_order": 517,
+      "sort_order": 516,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10085,7 +10059,7 @@
       "primary_form": "生活",
       "meaning": "life / living",
       "mnemonic_text": "Life (生) in motion (活): daily living.",
-      "sort_order": 518,
+      "sort_order": 517,
       "accepted_answers": [
         {
           "answer_type": "meaning",
@@ -10098,6 +10072,32 @@
         }
       ],
       "furigana": "生[せい]活[かつ]"
+    },
+    {
+      "slug": "shuukan-custom",
+      "primary_form": "習慣",
+      "meaning": "custom / habit",
+      "mnemonic_text": "Learning (習) that becomes routine (慣): a habit.",
+      "sort_order": 518,
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "custom / habit",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しゅうかん"
+        }
+      ],
+      "furigana": "習[しゅう]慣[かん]",
+      "meaning_mnemonic": "That duckling from <kanji>practice</kanji> still can't land one clean flight, but it hasn't missed a single dawn either. Same rock, same launch, same scattered feathers, same untouched bead of milk on the lilypad — every morning, rain or shine. Repetition that rigid stops being practice; it becomes a habit, a fixed custom now.",
+      "reading_mnemonic": "Every day at Koichi's konbini, the same regular runs the same scam by the shoe rack — the <reading>shoe con</reading> — swiping one sandal as the till beeps. Staff set their watches by him: that unbroken daily <reading>しゅうかん</reading> hasn't varied in months.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "nikki",

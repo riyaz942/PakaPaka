@@ -36,6 +36,7 @@ import {
   getVisuallySimilarItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
+  listLevelsWithContent,
 } from '@/data/curriculum/itemRepository';
 
 const N5_COUNTS: Record<(typeof ITEM_TYPES)[number], number> = {
@@ -86,6 +87,39 @@ describe('itemRepository', () => {
       expect(items[0]?.sortOrder).toBe(1);
       expect(items.at(-1)?.sortOrder).toBe(N5_COUNTS[itemType]);
     }
+  });
+
+  it('reports only levels with vocabulary as having content, skipping the kanji skeleton', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+    __mockSetItems('curriculum.db.test', [
+      ...buildN5Items(),
+      // N3/N2/N1 ship kanji and their radicals and nothing else, so starting
+      // onboarding there would leave the learner nothing to study.
+      {
+        id: 900,
+        item_type: 'kanji',
+        jlpt_level: 'N3',
+        slug: 'n3-copy',
+        primary_form: '写',
+        meaning: 'copy',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 901,
+        item_type: 'radical',
+        jlpt_level: 'N3',
+        slug: 'katahen',
+        primary_form: '方',
+        meaning: 'direction',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+    ]);
+
+    expect(listLevelsWithContent(db)).toEqual(['N5']);
   });
 
   it('returns count by level and type without loading full lists', async () => {

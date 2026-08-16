@@ -12,14 +12,15 @@ Organized into themed blocks for maintainability.
 
 SOCIETY_ABSTRACT = [
     {"slug": "sekai", "form": "世界", "reading": "せかい", "meaning": "world", "mnemonic": "Generations (世) bounded (界): the whole world."},
-    {"slug": "keizai", "form": "経済", "reading": "けいざい", "meaning": "economy", "mnemonic": "Passing through (経) aid (済): the flow of the economy."},
+    # 経済 lives in BUSINESS_FORMAL, after the kanji 経 it is written with.
     {"slug": "seiji", "form": "政治", "reading": "せいじ", "meaning": "politics", "mnemonic": "Governing (政) and ordering (治): politics."},
     {"slug": "iken", "form": "意見", "reading": "いけん", "meaning": "opinion", "mnemonic": "A meaning (意) that you see (見): your opinion."},
-    {"slug": "setsumei", "form": "説明", "reading": "せつめい", "meaning": "explanation", "mnemonic": "Speech (説) making things bright (明): an explanation."},
-    {"slug": "shakai", "form": "社会", "reading": "しゃかい", "meaning": "society", "mnemonic": "A shrine (社) gathering (会) of people: society."},
+    # 説明 lives in WORK_SCHOOL_EXPANDED, after the kanji 明 it is written with.
     {"slug": "bunka", "form": "文化", "reading": "ぶんか", "meaning": "culture", "mnemonic": "Writing (文) that transforms (化) a people: culture."},
     {"slug": "dentou", "form": "伝統", "reading": "でんとう", "meaning": "tradition", "mnemonic": "Passed down (伝) and unified (統): tradition."},
-    {"slug": "shuukan-custom", "form": "習慣", "reading": "しゅうかん", "meaning": "custom / habit", "mnemonic": "Learning (習) that becomes routine (慣): a habit."},
+    # 社会 follows the kanji 社 (@5) it is written with.
+    {"slug": "shakai", "form": "社会", "reading": "しゃかい", "meaning": "society", "mnemonic": "A shrine (社) gathering (会) of people: society."},
+    # 習慣 lives in DAILY_LIFE_MISC, after the kanji 習 it is written with.
     {"slug": "kokusai", "form": "国際", "reading": "こくさい", "meaning": "international", "mnemonic": "Countries (国) meeting at the border (際): international."},
     {"slug": "seifu", "form": "政府", "reading": "せいふ", "meaning": "government", "mnemonic": "Governance's (政) storehouse (府): the government."},
     {"slug": "houritsu", "form": "法律", "reading": "ほうりつ", "meaning": "law", "mnemonic": "A rule (法) set in rhythm (律): the law."},
@@ -44,7 +45,6 @@ SOCIETY_ABSTRACT = [
 ]
 
 PEOPLE_RELATIONS = [
-    {"slug": "oya", "form": "親", "reading": "おや", "meaning": "parent", "mnemonic": "Standing by a tree, watching over you: a parent."},
     {"slug": "fuufu", "form": "夫婦", "reading": "ふうふ", "meaning": "married couple", "mnemonic": "Husband (夫) and wife (婦): a couple."},
     {"slug": "dansei", "form": "男性", "reading": "だんせい", "meaning": "male (gender)", "mnemonic": "Man's (男) nature (性): male."},
     {"slug": "josei", "form": "女性", "reading": "じょせい", "meaning": "female (gender)", "mnemonic": "Woman's (女) nature (性): female."},
@@ -65,6 +65,8 @@ PEOPLE_RELATIONS = [
     {"slug": "senmonka", "form": "専門家", "reading": "せんもんか", "meaning": "specialist / expert", "mnemonic": "A house (家) devoted to one gate (専門): an expert."},
     {"slug": "seinenki", "form": "成人", "reading": "せいじん", "meaning": "adult (legal)", "mnemonic": "One who has become (成) a person (人): an adult."},
     {"slug": "guuzen", "form": "偶然", "reading": "ぐうぜん", "meaning": "coincidence", "mnemonic": "A paired (偶) natural (然) event: a coincidence."},
+    # 親 sits at the end of the group, after the kanji 親 it is written with.
+    {"slug": "oya", "form": "親", "reading": "おや", "meaning": "parent", "mnemonic": "Standing by a tree, watching over you: a parent."},
 ]
 
 I_ADJECTIVES = [
@@ -340,6 +342,7 @@ WORK_SCHOOL_EXPANDED = [
     {"slug": "shippai-suru", "form": "失敗する", "reading": "しっぱいする", "meaning": "to fail", "mnemonic": "Losing (失) to defeat (敗): to fail."},
     {"slug": "mokuhyou", "form": "目標", "reading": "もくひょう", "meaning": "goal / target", "mnemonic": "An eye's (目) marker (標): a goal."},
     {"slug": "keikaku", "form": "計画", "reading": "けいかく", "meaning": "plan", "mnemonic": "Counting (計) a drawn picture (画): a plan."},
+    {"slug": "setsumei", "form": "説明", "reading": "せつめい", "meaning": "explanation", "mnemonic": "Speech (説) making things bright (明): an explanation."},
 ]
 
 ADVERBS_CONNECTORS_N4 = [
@@ -543,6 +546,7 @@ BUSINESS_FORMAL = [
     {"slug": "son", "form": "損", "reading": "そん", "meaning": "loss (financial)", "mnemonic": "A hand (扌) losing something valuable: a loss."},
     {"slug": "yosan", "form": "予算", "reading": "よさん", "meaning": "budget", "mnemonic": "Predicted (予) calculation (算): a budget."},
     {"slug": "keihi", "form": "経費", "reading": "けいひ", "meaning": "expenses", "mnemonic": "Passing (経) costs (費): expenses."},
+    {"slug": "keizai", "form": "経済", "reading": "けいざい", "meaning": "economy", "mnemonic": "Passing through (経) aid (済): the flow of the economy."},
     {"slug": "torihiki", "form": "取引", "reading": "とりひき", "meaning": "transaction / dealing", "mnemonic": "Taking (取) and pulling (引): a deal."},
     {"slug": "shorui-teishutsu", "form": "書類提出", "reading": "しょるいていしゅつ", "meaning": "document submission", "mnemonic": "Submitting (提出) papers (書類): filing documents."},
     {"slug": "kaigou", "form": "会合", "reading": "かいごう", "meaning": "gathering / meeting", "mnemonic": "Meeting (会) and matching (合): a gathering."},
@@ -604,6 +608,7 @@ GIVING_RECEIVING_NUANCE = [
 
 DAILY_LIFE_MISC = [
     {"slug": "seikatsu", "form": "生活", "reading": "せいかつ", "meaning": "life / living", "mnemonic": "Life (生) in motion (活): daily living."},
+    {"slug": "shuukan-custom", "form": "習慣", "reading": "しゅうかん", "meaning": "custom / habit", "mnemonic": "Learning (習) that becomes routine (慣): a habit."},
     {"slug": "nikki", "form": "日記", "reading": "にっき", "meaning": "diary", "mnemonic": "A day's (日) record (記): a diary."},
     {"slug": "okonau", "form": "行う", "reading": "おこなう", "meaning": "to carry out / conduct", "mnemonic": "Carrying an action all the way through: okonau."},
     {"slug": "sanka", "form": "参加", "reading": "さんか", "meaning": "participation (noun)", "mnemonic": "Joining (参) and adding (加): participation."},
