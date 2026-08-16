@@ -56,28 +56,12 @@ function comparePromptVersion(a: string, b: string): number {
 }
 
 async function fetchAllDrafts(): Promise<ContentListItem[]> {
-  const pageSize = 200;
-  const firstUrl = `/api/items?status=draft&sort=slug&page=1&pageSize=${pageSize}`;
-  const firstRes = await fetch(firstUrl);
-  if (!firstRes.ok) {
-    throw new Error(await firstRes.text());
+  const res = await fetch('/api/items?status=draft&sort=slug');
+  if (!res.ok) {
+    throw new Error(await res.text());
   }
-  const first = (await firstRes.json()) as ItemsResponse;
-  const items = [...first.items];
-  const totalPages = Math.ceil(first.total / pageSize);
-
-  for (let page = 2; page <= totalPages; page += 1) {
-    const res = await fetch(
-      `/api/items?status=draft&sort=slug&page=${page}&pageSize=${pageSize}`,
-    );
-    if (!res.ok) {
-      throw new Error(await res.text());
-    }
-    const body = (await res.json()) as ItemsResponse;
-    items.push(...body.items);
-  }
-
-  return items;
+  const body = (await res.json()) as ItemsResponse;
+  return body.items;
 }
 
 function groupDrafts(items: ContentListItem[]): DraftGroup[] {

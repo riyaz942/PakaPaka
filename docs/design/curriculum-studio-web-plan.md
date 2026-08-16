@@ -209,7 +209,8 @@ Chunk 2 API (`web/server/curriculum/types.ts` only).
      sort (sort_order, completeness asc, slug).
    - Table: primary_form, slug, meaning, status badge, completeness pill,
      missing-fields tooltip. Rows link to `/content/:type/:slug`.
-   - Server-side pagination (pageSize 50) + total count display.
+   - Unpaged: `/api/items` returns every match in one response (the curriculum
+     is read off local disk), plus a total count display.
 3. Empty states and loading skeletons.
 
 **Verify:** `?type=vocabulary&status=draft` shows 716; skeleton toggle on N4

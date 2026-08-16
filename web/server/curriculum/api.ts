@@ -436,24 +436,13 @@ export function createCurriculumRouter(
       typeof req.query.sort === 'string' ? req.query.sort : undefined,
     );
 
-    const page = Math.max(1, Number(req.query.page) || 1);
-    const requestedPageSize = Math.max(
-      1,
-      Math.floor(Number(req.query.pageSize) || 50),
-    );
-    // Cap at filtered length so "show all" works for any list size.
-    const pageSize = Math.min(
-      requestedPageSize,
-      Math.max(filtered.length, 1),
-    );
-    const start = (page - 1) * pageSize;
-    const pageItems = filtered.slice(start, start + pageSize);
-
+    // Unpaged on purpose: the curriculum is read off local disk and the whole
+    // filtered set is already in memory, so slicing it only forced the client
+    // into round-trips for data it was always going to ask for. The largest
+    // list (vocabulary) is ~400 KB over localhost.
     res.json({
       total: filtered.length,
-      page,
-      pageSize,
-      items: pageItems.map((item) => serializeListItem(item, auditBySlug)),
+      items: filtered.map((item) => serializeListItem(item, auditBySlug)),
     });
   });
 

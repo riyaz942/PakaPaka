@@ -20,7 +20,7 @@ pulling changes that touch its `package.json`.
 
 - **Dashboard** — content counts vs `targets.json`, review-status breakdown,
   completeness, recently-drafted items.
-- **Content** — filterable, paginated tables per content type (status,
+- **Content** — filterable tables per content type, showing every match at once (status,
   skeleton, missing field, audit findings, free text).
 - **Item detail** — every field rendered (readings, mnemonics, examples,
   dependencies), plus an edit form that writes straight to the source JSON.

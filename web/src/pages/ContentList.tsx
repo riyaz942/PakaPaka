@@ -31,15 +31,12 @@ const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'warning', label: 'Audit: warning' },
   { value: 'info', label: 'Audit: info' },
 ];
-const PAGE_SIZE = 50;
 const SEARCH_DEBOUNCE_MS = 300;
-/** Start loading the next chunk this far before the list end scrolls into view. */
-const LOAD_MORE_MARGIN = '600px 0px';
 
-// Per list URL (path + query): how many chunks were loaded and where the user
-// was scrolled, so navigating to a detail page and back restores both. Keyed
-// off the full search string, so it only applies to the same filters/sort.
-const listMemory = new Map<string, { pages: number; scrollY: number }>();
+// Per list URL (path + query): where the user was scrolled, so navigating to a
+// detail page and back restores it. Keyed off the full search string, so it
+// only applies to the same filters/sort.
+const listScrollMemory = new Map<string, number>();
 
 const SORT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'sort_order', label: 'Sort order' },
@@ -121,16 +118,12 @@ export default function ContentList() {
   const [searchInput, setSearchInput] = useState(q);
   const [refreshToken, setRefreshToken] = useState(0);
   const [selected, setSelected] = useState<Set<string>>(new Set());
-  const [selectAllLoading, setSelectAllLoading] = useState(false);
   const [bulkSaving, setBulkSaving] = useState<ReviewStatus | null>(null);
   const [bulkError, setBulkError] = useState<string | null>(null);
 
   const [items, setItems] = useState<ContentListItem[]>([]);
-  const [total, setTotal] = useState(0);
-  const [loadedPages, setLoadedPages] = useState(1);
   const [listStatus, setListStatus] = useState<'loading' | 'ok' | 'error'>('loading');
   const [listError, setListError] = useState<string | null>(null);
-  const [loadingMore, setLoadingMore] = useState(false);
   const [restorePending, setRestorePending] = useState(false);
 
   useEffect(() => {
@@ -182,10 +175,8 @@ export default function ContentList() {
     return qs.toString();
   }, [type, level, status, skeleton, missing, q, audit, model, sort]);
 
-  // Identifies the current result set: any change restarts from the first
-  // chunk, and in-flight appends for an older key are discarded.
+  // Identifies the current result set: any change re-runs the fetch.
   const requestKey = `${filterQs}|${refreshToken}`;
-  const requestKeyRef = useRef(requestKey);
   // Suppressed while a fresh result set loads, so the momentary zero-height
   // list can't overwrite a saved scroll position with 0.
   const canSaveScrollRef = useRef(false);
@@ -194,21 +185,17 @@ export default function ContentList() {
   const modelOptions = modelsResult.status === 'ok' ? modelsResult.data.models : [];
 
   useEffect(() => {
-    requestKeyRef.current = requestKey;
     canSaveScrollRef.current = false;
-    // Returning to a list we scrolled through re-requests every chunk that
-    // was loaded, in one call, so the saved scroll position lands on rows.
-    const initialPages = Math.max(1, listMemory.get(scrollKey)?.pages ?? 1);
     let cancelled = false;
     setListStatus('loading');
     setListError(null);
     setItems([]);
-    fetchItems(`/api/items?${filterQs}&page=1&pageSize=${initialPages * PAGE_SIZE}`)
+    // One request for the whole filtered list — the server reads it off local
+    // disk, so there is nothing to page in.
+    fetchItems(`/api/items?${filterQs}`)
       .then((body) => {
         if (cancelled) return;
         setItems(body.items);
-        setTotal(body.total);
-        setLoadedPages(initialPages);
         setListStatus('ok');
         setRestorePending(true);
       })
@@ -220,13 +207,13 @@ export default function ContentList() {
     return () => {
       cancelled = true;
     };
-  }, [requestKey, filterQs, scrollKey]);
+  }, [requestKey, filterQs]);
 
   // Restore once the real rows are rendered (not the skeleton), then stop
   // suppressing saves so further scrolling is tracked again.
   useEffect(() => {
     if (!restorePending) return;
-    const saved = listMemory.get(scrollKey)?.scrollY ?? 0;
+    const saved = listScrollMemory.get(scrollKey) ?? 0;
     if (saved > 0) window.scrollTo(0, saved);
     setRestorePending(false);
     canSaveScrollRef.current = true;
@@ -235,69 +222,25 @@ export default function ContentList() {
   useEffect(() => {
     function handleScroll() {
       if (!canSaveScrollRef.current) return;
-      const prev = listMemory.get(scrollKey);
-      listMemory.set(scrollKey, { pages: prev?.pages ?? 1, scrollY: window.scrollY });
+      listScrollMemory.set(scrollKey, window.scrollY);
     }
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrollKey]);
 
-  const hasMore = listStatus === 'ok' && items.length < total;
-
-  const loadMore = useCallback(() => {
-    if (loadingMore || !hasMore) return;
-    const key = requestKey;
-    const nextPage = loadedPages + 1;
-    setLoadingMore(true);
-    setListError(null);
-    fetchItems(`/api/items?${filterQs}&page=${nextPage}&pageSize=${PAGE_SIZE}`)
-      .then((body) => {
-        if (requestKeyRef.current !== key) return;
-        setItems((prev) => [...prev, ...body.items]);
-        setTotal(body.total);
-        setLoadedPages(nextPage);
-        const prev = listMemory.get(scrollKey);
-        listMemory.set(scrollKey, { pages: nextPage, scrollY: prev?.scrollY ?? 0 });
-      })
-      .catch((err: unknown) => {
-        if (requestKeyRef.current !== key) return;
-        setListError(err instanceof Error ? err.message : 'Request failed');
-      })
-      .finally(() => {
-        if (requestKeyRef.current !== key) return;
-        setLoadingMore(false);
-      });
-  }, [loadingMore, hasMore, requestKey, loadedPages, filterQs, scrollKey]);
-
-  // Loading the next chunk changes `loadMore`, which re-arms the observer; if
-  // the end marker is still in view it fires again until the list is complete.
-  const endMarkerRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    const el = endMarkerRef.current;
-    if (!el || !hasMore) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) loadMore();
-      },
-      { rootMargin: LOAD_MORE_MARGIN },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [hasMore, loadMore]);
-
   const missingOptions = MISSING_FIELD_OPTIONS[type];
   const detailSearch = listContextSearch(searchParams);
 
-  const loadedSlugs = items.map((item) => item.slug);
-  const allLoadedSelected = loadedSlugs.length > 0 && loadedSlugs.every((s) => selected.has(s));
+  const visibleSlugs = items.map((item) => item.slug);
+  const allSelected = visibleSlugs.length > 0 && visibleSlugs.every((s) => selected.has(s));
 
-  function toggleSelectLoaded() {
+  function toggleSelectAll() {
     setSelected((prev) => {
       const next = new Set(prev);
-      if (allLoadedSelected) {
-        for (const slug of loadedSlugs) next.delete(slug);
+      if (allSelected) {
+        for (const slug of visibleSlugs) next.delete(slug);
       } else {
-        for (const slug of loadedSlugs) next.add(slug);
+        for (const slug of visibleSlugs) next.add(slug);
       }
       return next;
     });
@@ -313,16 +256,6 @@ export default function ContentList() {
       }
       return next;
     });
-  }
-
-  async function selectAllFiltered() {
-    setSelectAllLoading(true);
-    try {
-      const body = await fetchItems(`/api/items?${filterQs}&page=1&pageSize=${total}`);
-      setSelected(new Set(body.items.map((item) => item.slug)));
-    } finally {
-      setSelectAllLoading(false);
-    }
   }
 
   async function applyBulkStatus(nextStatus: Exclude<ReviewStatus, 'none'>) {
@@ -494,15 +427,6 @@ export default function ContentList() {
         </div>
       ) : null}
 
-      {allLoadedSelected && selected.size < total ? (
-        <div className="select-all-banner">
-          All {loadedSlugs.length} loaded items are selected.
-          <button type="button" onClick={selectAllFiltered} disabled={selectAllLoading}>
-            {selectAllLoading ? 'Selecting…' : `Select all ${total} matching items`}
-          </button>
-        </div>
-      ) : null}
-
       {listStatus === 'loading' ? <SkeletonRows /> : null}
       {listStatus === 'error' ? (
         <p className="panel-error">Failed to load items: {listError}</p>
@@ -510,9 +434,7 @@ export default function ContentList() {
       {listStatus === 'ok' ? (
         <>
           <p className="panel-muted">
-            {items.length < total
-              ? `Showing ${items.length} of ${total} items`
-              : `${total} item${total === 1 ? '' : 's'}`}
+            {items.length} item{items.length === 1 ? '' : 's'}
           </p>
           {items.length === 0 ? (
             <p className="panel-muted">No items match these filters.</p>
@@ -526,9 +448,9 @@ export default function ContentList() {
                       <th className="checkbox-column">
                         <input
                           type="checkbox"
-                          aria-label="Select all loaded"
-                          checked={allLoadedSelected}
-                          onChange={toggleSelectLoaded}
+                          aria-label="Select all"
+                          checked={allSelected}
+                          onChange={toggleSelectAll}
                         />
                       </th>
                       <th>Form</th>
@@ -617,19 +539,8 @@ export default function ContentList() {
                 </table>
               </div>
 
-              <div className="list-end" ref={endMarkerRef} aria-live="polite">
-                {listError ? (
-                  <span className="panel-error">Failed to load more: {listError}</span>
-                ) : null}
-                {loadingMore ? (
-                  <span className="panel-muted">Loading more…</span>
-                ) : hasMore ? (
-                  <button type="button" onClick={loadMore}>
-                    Load {Math.min(PAGE_SIZE, total - items.length)} more
-                  </button>
-                ) : (
-                  <span className="panel-muted">End of list</span>
-                )}
+              <div className="list-end">
+                <span className="panel-muted">End of list</span>
               </div>
             </>
           )}

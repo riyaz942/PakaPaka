@@ -117,8 +117,6 @@ export type GapsResponse = {
 
 export type ItemsResponse = {
   total: number;
-  page: number;
-  pageSize: number;
   items: ContentListItem[];
 };
 

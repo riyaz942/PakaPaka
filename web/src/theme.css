@@ -710,17 +710,6 @@ button {
   font-size: 0.85rem;
 }
 
-.list-end button {
-  appearance: none;
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
-  color: var(--text);
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
 .bulk-bar {
   display: flex;
   align-items: center;
@@ -765,31 +754,6 @@ button {
 .bulk-bar__clear {
   margin-left: auto;
   background: transparent;
-}
-
-.select-all-banner {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.select-all-banner button {
-  appearance: none;
-  border: none;
-  background: transparent;
-  color: var(--accent);
-  cursor: pointer;
-  padding: 0;
-  font-size: 0.8rem;
-  text-decoration: underline;
-}
-
-.select-all-banner button:disabled {
-  color: var(--text-muted);
-  cursor: not-allowed;
-  text-decoration: none;
 }
 
 .checkbox-column {
