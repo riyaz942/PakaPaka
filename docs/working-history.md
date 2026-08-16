@@ -51,7 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
-| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **Partial** — Phases 1–2 done 2026-08-16; Phases 3–4 not started |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **Partial** — Phases 1–3 done 2026-08-16; Phase 4 (author the 553 kanji) not started |
 
 ## Design & platform — `docs/design/`
 
@@ -142,20 +142,35 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   KANJIDIC2/KRADFILE by `curriculum/_build/import/build_skeleton.py` into the checked-in
   `curriculum/_build/skeleton.json`. Coverage is 100% — every kanji in every shipped word is
   now taught somewhere.
-- Skeleton kanji emit **no** `requires` edges (`generate_deps.py`) until Phase 3's planner
-  lands; `requires`/`reinforces` are byte-identical to before, only `builds_on` grew
-  (325 → 1,914). 479 kanji-bearing words are still parentless, by design, until then.
 - `visual_mnemonic_url` is now optional in the schema — skeleton radicals ship without art.
 - `listLevelsWithContent` now tests for **vocabulary**, not any item: with skeleton kanji in
   the DB, onboarding would otherwise have offered N3/N2/N1 as startable levels.
-- 115 N5 words are still gated by an N4 kanji (report ERRORs). Left for Phase 3's pull-forward planner by decision — moving the content either way would mislabel its JLPT level.
+- Phase 3 done: `listLessonCandidatePool` (`itemRepository.ts`) makes the lesson pool the
+  level's items **plus their transitive `requires` parents, wherever taught**, each parent
+  taking the sort position of the earliest item that needs it. `planLesson` is unchanged — the
+  chain falls out of the existing unlock gate. Skeleton `requires` edges are on: 711 → 1,607,
+  0 kanji-bearing words left parentless (was 479), 765 words rely on pull-forward, 624 kanji
+  pulled forward, N5 pool 988 → 1,355. Nothing is permanently locked (closure is depth 1).
+- Phase 3 needed no display change: `jlpt_level` comes straight off the item row, so Browse
+  filters and item detail already showed 写 as N3. `builds_on` parents are deliberately not
+  pulled forward — radicals never gate, and it would undo Phase 2's art deferral.
+- `getParentsByRelationshipType` now chunks its `IN (…)` list; it sat one bound parameter under
+  SQLite's 999 limit and the pull-forward pool would have blown past it.
+- `dependency_order.py`'s severity model was rewritten for the new planner: cross-level
+  `requires` is INFO (pull-forward, by design) with its own section, ERROR now means a
+  `requires` chain that never bottoms out. Report is clean — 0 errors, 0 warnings. The 115 N5
+  words Phase 1 left as ERRORs are resolved by the pull-forward, as Phase 1 predicted.
+- **Live cost until Phase 4:** 624 pulled-forward kanji have no mnemonic and the planner now
+  offers them inside N5. A fresh N5 learner meets the first (私) in **lesson 2**; 4 of the
+  first 60 items render "No mnemonic for this one yet". Honest degradation, but visible.
 - **Open, from Phase 1:** re-running `audit_shipped.py` after the 2026-08-16 group moves shows
   14 N5 example sentences referencing a word taught later — 13 for 彼女 (`kanojo`), 1 for 日本
   (`nihon`) — plus 2 `tabun` mnemonic errors. Moving 彼女 later fixed the ordering of the word
   itself and broke the examples that used it. Not Phase 2 fallout; not yet fixed.
 - Phase 2 leaves 3 known WARNINGs on 方: `katahen` is taught at N3 for 旅, so N4's 方/遊/族 get
   no edge to it. Resolved in Phase 4 when 方 is authored as a real radical.
-- Phases 3 (planner pull-forward) and 4 (author the 553 skeleton kanji) not started.
+- Phase 4 (author the 553 skeleton kanji, by reuse count) not started — and it is now the
+  gate on lesson quality, not just coverage.
 - Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status.
 
 ### Phase 4 — reading passages

@@ -9,9 +9,8 @@ import {
 } from '@/core/lesson/lessonPlanner';
 import { JLPT_LEVELS, type JLPTLevel } from '@/data/curriculum/curriculum.types';
 import {
-  ITEM_TYPES,
   getRequiredParentsForItems,
-  listItemsByLevelAndType,
+  listLessonCandidatePool,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
 import { todayKey } from '@/data/user/cognitiveLoadRepository';
@@ -46,18 +45,19 @@ function buildPlanForLevel(
   level: JLPTLevel,
   size: number,
 ): LessonCandidate[] {
-  const candidates: LessonCandidate[] = [];
-  for (const itemType of ITEM_TYPES) {
-    for (const item of listItemsByLevelAndType(curriculumDb, level, itemType)) {
-      candidates.push({
-        id: item.id,
-        itemType: item.itemType,
-        primaryForm: item.primaryForm,
-        meaning: item.meaning,
-        sortOrder: item.sortOrder,
-      });
-    }
-  }
+  // The level's items *plus* their transitive required parents, wherever those
+  // are taught: an N5 learner is offered 写 and 真 before 写真, even though both
+  // kanji are N3. The pulled-forward items keep their own JLPT level in Browse,
+  // filters and item detail — only the lesson sequence moves.
+  const candidates: LessonCandidate[] = listLessonCandidatePool(curriculumDb, level).map(
+    (item) => ({
+      id: item.id,
+      itemType: item.itemType,
+      primaryForm: item.primaryForm,
+      meaning: item.meaning,
+      sortOrder: item.sortOrder,
+    }),
+  );
 
   if (candidates.length === 0) {
     return [];

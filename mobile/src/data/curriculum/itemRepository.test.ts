@@ -36,8 +36,10 @@ import {
   getVisuallySimilarItems,
   ITEM_TYPES,
   listItemsByLevelAndType,
+  listLessonCandidatePool,
   listLevelsWithContent,
 } from '@/data/curriculum/itemRepository';
+import { planLesson } from '@/core/lesson/lessonPlanner';
 
 const N5_COUNTS: Record<(typeof ITEM_TYPES)[number], number> = {
   radical: 25,
@@ -317,6 +319,148 @@ describe('itemRepository', () => {
       { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
       { id: '2', primaryForm: '口', itemType: 'radical', meaning: 'mouth' },
     ]);
+  });
+
+  describe('lesson candidate pool (pull-forward)', () => {
+    /**
+     * 写真 is the plan's worked example: an N5 word written with two N3 kanji.
+     * Scoping lesson candidates to one level left it either unreachable or
+     * offered with nothing taught behind it.
+     */
+    function setPhotoCurriculum(): void {
+      __mockSetItems('curriculum.db.test', [
+        {
+          id: 1,
+          item_type: 'vocabulary',
+          jlpt_level: 'N5',
+          slug: 'shashin',
+          primary_form: '写真',
+          meaning: 'photograph',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 261,
+        },
+        {
+          id: 2,
+          item_type: 'kanji',
+          jlpt_level: 'N3',
+          slug: 'n3-copy',
+          primary_form: '写',
+          meaning: 'copy',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 83,
+        },
+        {
+          id: 3,
+          item_type: 'kanji',
+          jlpt_level: 'N3',
+          slug: 'n3-true',
+          primary_form: '真',
+          meaning: 'true',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 30,
+        },
+        {
+          id: 4,
+          item_type: 'kanji',
+          jlpt_level: 'N5',
+          slug: 'n5-nichi',
+          primary_form: '日',
+          meaning: 'day',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 1,
+        },
+      ]);
+
+      __mockSetItemRelationships('curriculum.db.test', [
+        { child_item_id: 1, parent_item_id: 2, relationship_type: 'requires' },
+        { child_item_id: 1, parent_item_id: 3, relationship_type: 'requires' },
+      ]);
+    }
+
+    it('adds a word\'s required parents at the position of the word that needs them', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      const pool = listLessonCandidatePool(db, 'N5');
+      const bySlug = new Map(pool.map((item) => [item.slug, item]));
+
+      // The N5 level's own items, plus the two N3 kanji they require.
+      expect([...bySlug.keys()].sort()).toEqual(['n3-copy', 'n3-true', 'n5-nichi', 'shashin']);
+      // Each pulled-forward kanji takes 写真's sort position, not its own N3
+      // one, so it lands where the word sits rather than at the back.
+      expect(bySlug.get('n3-copy')?.sortOrder).toBe(261);
+      expect(bySlug.get('n3-true')?.sortOrder).toBe(261);
+      expect(bySlug.get('n5-nichi')?.sortOrder).toBe(1);
+    });
+
+    it('offers 写 and 真 before 写真 to an N5 profile', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      const pool = listLessonCandidatePool(db, 'N5');
+      const candidates = pool.map((item) => ({
+        id: item.id,
+        itemType: item.itemType,
+        primaryForm: item.primaryForm,
+        meaning: item.meaning,
+        sortOrder: item.sortOrder,
+      }));
+      const parentsByItemId = getRequiredParentsForItems(
+        db,
+        candidates.map((candidate) => candidate.id),
+      );
+
+      const firstLesson = planLesson({
+        candidates,
+        studyStatuses: new Map(),
+        startedItemIds: new Set(),
+        parentsByItemId,
+        parentStatuses: new Map(),
+        size: 10,
+      });
+
+      // 写真's parents are unstudied, so the word is still locked; both kanji
+      // are offered instead. Nothing here depends on their level. The two share
+      // a sort position (both were claimed by 写真), so their order relative to
+      // each other is not part of the contract.
+      const offered = firstLesson.map((item) => item.primaryForm);
+      expect(offered).toHaveLength(3);
+      expect(offered).toEqual(expect.arrayContaining(['日', '写', '真']));
+      expect(offered).not.toContain('写真');
+
+      const afterKanji = planLesson({
+        candidates,
+        studyStatuses: new Map([
+          ['2', 'in_progress' as const],
+          ['3', 'in_progress' as const],
+          ['4', 'in_progress' as const],
+        ]),
+        startedItemIds: new Set(['2', '3', '4']),
+        parentsByItemId,
+        parentStatuses: new Map([
+          ['2', 'in_progress' as const],
+          ['3', 'in_progress' as const],
+        ]),
+        size: 10,
+      });
+
+      expect(afterKanji.map((item) => item.primaryForm)).toEqual(['写真']);
+    });
+
+    it('leaves a pulled-forward item on its own JLPT level for Browse and detail', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      // In an N5 lesson…
+      expect(listLessonCandidatePool(db, 'N5').map((item) => item.slug)).toContain('n3-copy');
+      // …but still N3 wherever the app shows a level.
+      expect(getItemBySlug(db, 'kanji', 'n3-copy')?.jlptLevel).toBe('N3');
+      expect(getItemById(db, '2')?.jlptLevel).toBe('N3');
+    });
   });
 
   it('returns builds_on radical parents for kanji component chips', async () => {

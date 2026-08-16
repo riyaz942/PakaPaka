@@ -13,8 +13,10 @@ Authoritative curriculum content for the mobile app. JSON files here are validat
 N5/N4 vocabulary is written with but nobody has authored, plus the 10 radicals that decompose
 them. They carry meanings, readings and accepted answers and nothing else: no mnemonics, no
 art, no examples, and no vocabulary, grammar or passages of their own. Their
-kanji → vocabulary edges are deliberately held out of the graph until the pull-forward planner
-lands. See [docs/content/kanji-coverage-and-dependency-order-plan.md](../docs/content/kanji-coverage-and-dependency-order-plan.md).
+kanji → vocabulary edges are live, and the lesson planner pulls a word's required parents
+forward into whatever level the word is taught at — so an N5 learner meets 写 and 真 before
+写真, and each item keeps its own JLPT level everywhere it is displayed. See
+[docs/content/kanji-coverage-and-dependency-order-plan.md](../docs/content/kanji-coverage-and-dependency-order-plan.md).
 
 ## Commands (repo root)
 

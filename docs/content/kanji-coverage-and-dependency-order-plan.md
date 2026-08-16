@@ -174,7 +174,7 @@ mnemonic-less, art-less card into a lesson a learner reaches today. Phase 4 reso
 authoring 方 properly. Nothing about the N4 chips changed — the warnings are newly *visible*,
 not newly true.
 
-### Phase 3 — planner pull-forward, JLPT as label
+### Phase 3 — planner pull-forward, JLPT as label — **done 2026-08-16**
 
 1. Lesson candidate pool becomes *current level's items + their transitive unmet parents*,
    in dependency order (`useLessonPlan.ts`, `lessonPlanner.ts`)
@@ -187,6 +187,61 @@ not newly true.
    → verify: 0 vocabulary items reachable with unmet parents; no item permanently locked
 4. Existing planner tests still pass
    → verify: `npm test` in `mobile/`
+
+**Outcome.** `listLessonCandidatePool` (`itemRepository.ts`) replaces the per-level item list
+`useLessonPlan` used to build from. It walks `requires` upward from the level's own items and
+adds every parent it finds, wherever that parent is taught. `planLesson` itself is unchanged:
+a pulled-forward kanji has no `requires` parents of its own, so it is unlocked and offered,
+and the word stays locked until its kanji are started. The chain falls out of the existing
+gate rather than a new rule.
+
+A pulled-forward parent takes **the sort position of the earliest item that needs it**, so 写
+lands where 写真 sits instead of at the back of a 1,300-item queue. Simulating a fresh N5
+profile at 5 items/day, the parent lands in the lesson immediately before its word:
+
+| Lesson | Offered |
+| ---: | --- |
+| 2 | 私 kanji (**N3**) |
+| 3 | 私 vocabulary (N5) |
+| 5 | 僕 kanji (**N1**) |
+| 6 | 僕 vocabulary (N5) |
+
+Measured after the edges were turned on:
+
+| | Before | After |
+| --- | ---: | ---: |
+| `requires` edges | 711 | 1,607 |
+| Kanji-bearing words with no `requires` parent | 479 | 0 |
+| Words relying on pull-forward | — | 765 (399 N5, 366 N4) |
+| Kanji pulled forward | — | 624 |
+| N5 lesson pool | 988 | 1,355 |
+
+Nothing is permanently locked: every `requires` parent is a kanji with no parents of its own,
+so the closure is depth 1 and cannot cycle.
+
+Two things this did *not* need: step 2 was already true — `jlpt_level` is read straight from
+the item row, so Browse filters and item detail always showed 写 as N3, and only the lesson
+sequence ever moved. And `builds_on` parents are deliberately **not** pulled forward: radicals
+never gate, and dragging the 10 skeleton radicals into N5 lessons would undo Phase 2's
+art deferral.
+
+Two fixes the change forced:
+
+- `getParentsByRelationshipType` did not chunk its `IN (…)` list. At 988 N5 candidates plus
+  the bound relationship type it sat one parameter under SQLite's 999 limit; the pull-forward
+  pool would have walked straight past it.
+- `reports/dependency_order.py`'s severity model was written for the old planner, where a
+  cross-level `requires` parent meant an unreachable word. It called the new design 1,024
+  errors. Cross-level gating is now INFO with its own pull-forward section, ERROR is reserved
+  for an item whose `requires` chain never bottoms out (a dangling edge or a cycle), and the
+  report is clean: **0 errors, 0 warnings**. The 115 words Phase 1 deliberately left as ERRORs
+  are resolved by this phase, exactly as Phase 1 predicted.
+
+**Cost, unpaid until Phase 4.** 624 of the pulled-forward kanji have no mnemonic, and the
+planner now offers them inside N5. A fresh N5 learner meets the first one — 私 — in **lesson
+2**, and 4 of the first 60 items are kanji cards reading "No mnemonic for this one yet —
+write your own below." The app degrades honestly (meaning, readings and component chips all
+render), but this is the debt the Phase 4 note below describes, now live rather than deferred.
 
 ### Phase 4 — author kanji by reuse count
 

@@ -14,21 +14,29 @@ asks `getRequiredParentsForItems`, which filters to that relationship type.
 displayed in the app but never block an item, so their ordering is reported as
 INFO only.
 
-Severity of an ordering violation depends on the level boundary, because the
-planner exhausts one JLPT level before advancing:
+Severity turns on whether the learner can actually satisfy the parent:
 
-  ERROR   parent sits in a later level than its child — the child can never be
-          offered while the learner is on its own level.
-  WARNING parent sits later in the same level — the child is deferred until the
-          parent is learned, which happens inside the same level. Order intent
-          is broken; reachability is not.
+  ERROR   the parent is unreachable — the edge dangles, or the `requires` chain
+          above the child never bottoms out in an item with no parents of its
+          own. Either way the child is permanently locked.
+  WARNING parent sits later in the *same* level — the child is deferred until
+          the parent is learned. Order intent is broken; reachability is not.
+          Pull-forward does not reorder within a level, so this still costs.
+  INFO    parent sits in a later level (pull-forward, by design as of Phase 3),
+          or the edge does not gate at all.
+
+A cross-level `requires` parent was an ERROR until Phase 3, when the planner
+scoped lesson candidates to one JLPT level and could never offer an N3 kanji to
+an N5 learner. `listLessonCandidatePool` now adds a word's transitive required
+parents to the pool whatever level teaches them, so those edges describe the
+intended design rather than a break — 写真 is offered after 写 and 真, and all
+three keep their own JLPT level everywhere they are displayed.
 
 Study order is approximated as (level, sort_order). `sort_order` restarts per
 item type, so comparing a kanji's against a word's only works because
 `ROUND_QUOTAS` in `lessonPlanner.ts` gives radicals, kanji and vocabulary two
 slots each per round — the three buckets advance at the same rate. A change to
-those quotas invalidates the same-level comparison here (the cross-level one
-holds regardless).
+those quotas invalidates the same-level comparison here.
 
 Reads only. Writes curriculum/_build/reports/dependency-order.{md,json} and
 exits 1 if any ERROR was found — the same contract as
@@ -139,12 +147,11 @@ def ordering_violations(items):
             continue
         gates = edge["relationship_type"] == "requires"
         cross_level = parent_pos[0] > child_pos[0]
-        if not gates:
-            severity = "INFO"
-        elif cross_level:
-            severity = "ERROR"
-        else:
-            severity = "WARNING"
+        # Cross-level gating parents are the pull-forward case: the planner adds
+        # them to the pool of whatever level the child is in, so they are
+        # reported for visibility, not as a break. Same-level ones are still a
+        # real deferral — nothing reorders inside a level.
+        severity = "WARNING" if gates and not cross_level else "INFO"
         findings.append({
             "kind": "cross-level" if cross_level else "same-level",
             "severity": severity,
@@ -159,6 +166,53 @@ def ordering_violations(items):
             "child_form": child["primary_form"],
             "child_level": child["_level"],
             "child_sort_order": child.get("sort_order", 0),
+        })
+    return findings
+
+
+def unreachable_items(items):
+    """Items whose `requires` chain never bottoms out — the plan's Phase 3
+    guarantee that turning the skeleton edges on locks nothing permanently.
+
+    Every gating parent must itself be reachable. A cycle, or a chain that only
+    ever leads back into locked items, means the learner can never open the
+    gate no matter how long they study. Level plays no part: pull-forward
+    crosses levels freely, so the only question left is whether the chain
+    terminates."""
+    parents_by_child = defaultdict(list)
+    for edge in load(os.path.join(CURRICULUM_DIR, "dependencies", "graph.json"))["edges"]:
+        if edge["relationship_type"] == "requires":
+            parents_by_child[(edge["to_type"], edge["to_slug"])].append(
+                (edge["from_type"], edge["from_slug"])
+            )
+
+    # An item is reachable when every parent is reachable; items with no parents
+    # are reachable by definition. Iterate to a fixpoint rather than recursing,
+    # so a cycle simply never becomes reachable instead of blowing the stack.
+    reachable = {key for key in items if not parents_by_child[key]}
+    changed = True
+    while changed:
+        changed = False
+        for key in items:
+            if key in reachable:
+                continue
+            if all(parent in reachable for parent in parents_by_child[key]):
+                reachable.add(key)
+                changed = True
+
+    findings = []
+    for key in sorted(items.keys() - reachable):
+        item = items[key]
+        findings.append({
+            "kind": "unreachable",
+            "severity": "ERROR",
+            "relationship": "requires",
+            "child": item["slug"],
+            "child_type": key[0],
+            "child_form": item["primary_form"],
+            "child_level": item["_level"],
+            "child_sort_order": item.get("sort_order", 0),
+            "parents": [slug for _type, slug in parents_by_child[key]],
         })
     return findings
 
@@ -183,9 +237,8 @@ def group_by_child(findings):
 
 
 def render_markdown(per_level, untaught_uses, findings):
-    gating = [f for f in findings if f["relationship"] == "requires"]
-    errors = [f for f in gating if f["severity"] == "ERROR"]
-    warnings = [f for f in gating if f["severity"] == "WARNING"]
+    errors = [f for f in findings if f["severity"] == "ERROR"]
+    warnings = [f for f in findings if f["severity"] == "WARNING"]
     infos = [f for f in findings if f["severity"] == "INFO"]
 
     lines = ["# Dependency order — kanji coverage and study order", ""]
@@ -231,32 +284,70 @@ def render_markdown(per_level, untaught_uses, findings):
         lines.append(f"- {char} — {len(slugs)} word(s): {sample}")
     lines.append("")
 
-    lines += ["## ERROR — gated by a kanji taught at a later level", ""]
+    lines += ["## ERROR — permanently locked items", ""]
     lines.append(
-        "`requires` parents (kanji -> vocabulary) in a later JLPT level than the word. "
-        "The planner exhausts one level before advancing, so these words are unreachable "
-        "for the whole of their own level."
+        "An item whose `requires` chain never bottoms out: a dangling edge, or a cycle. "
+        "No amount of study opens the gate. Phase 3 turned the skeleton's kanji -> "
+        "vocabulary edges on, and this section is the check that doing so locked nothing."
     )
     lines.append("")
-    rows = group_by_child([f for f in errors if f["kind"] == "cross-level"])
+    dangling = [f for f in findings if f["kind"] == "dangling"]
+    unreachable = [f for f in findings if f["kind"] == "unreachable"]
+    if dangling or unreachable:
+        for finding in dangling:
+            lines.append(
+                f"- **ERROR** dangling {finding['relationship']} edge "
+                f"`{finding['parent']}` -> `{finding['child']}`"
+            )
+        for finding in unreachable:
+            lines.append(
+                f"- **ERROR** {finding['child_form']} `{finding['child']}` "
+                f"({finding['child_level'].upper()}) is never reachable; parents: "
+                f"{', '.join(f'`{p}`' for p in finding['parents'])}"
+            )
+    else:
+        lines.append("(clean)")
+    lines.append("")
+
+    lines += ["## Pull-forward — gated by a kanji taught at a later level", ""]
+    lines.append(
+        "`requires` parents (kanji -> vocabulary) in a later JLPT level than the word — 写真 "
+        "at N5, written with two N3 kanji. `listLessonCandidatePool` adds them to the N5 pool "
+        "so the word is offered after its kanji, and each keeps its own level in Browse and "
+        "item detail. Reported for visibility; this is the design, not a break."
+    )
+    lines.append("")
+    pull_forward = [
+        f for f in infos if f["relationship"] == "requires" and f["kind"] == "cross-level"
+    ]
+    rows = group_by_child(pull_forward)
     if rows:
+        by_level = defaultdict(int)
+        for row in rows:
+            by_level[row["child_level"]] += 1
+        summary = ", ".join(
+            f"{by_level[level]} at {level.upper()}" for level in LEVELS if by_level[level]
+        )
+        parents = {f["parent"] for f in pull_forward}
+        lines.append(
+            f"{len(rows)} word(s) rely on pull-forward ({summary}), pulling {len(parents)} kanji "
+            "forward. First 30 by study position:"
+        )
+        lines.append("")
         lines += ["| Word | Level | sort_order | Kanji taught later |",
                   "| --- | --- | ---: | --- |"]
-        for row in rows:
-            parents = ", ".join(
+        for row in rows[:30]:
+            parent_labels = ", ".join(
                 f"{p['parent_form']} (`{p['parent']}`, {p['parent_level'].upper()} "
                 f"@{p['parent_sort_order']})"
                 for p in sorted(row["parents"], key=lambda p: p["parent_sort_order"])
             )
             lines.append(
                 f"| {row['child_form']} `{row['child']}` | {row['child_level'].upper()} "
-                f"| {row['child_sort_order']} | {parents} |"
+                f"| {row['child_sort_order']} | {parent_labels} |"
             )
-        blocking = {f["parent"] for f in errors if f["kind"] == "cross-level"}
-        lines.append("")
-        lines.append(f"{len(rows)} word(s) blocked by {len(blocking)} kanji.")
     else:
-        lines.append("(clean)")
+        lines.append("(none)")
     lines.append("")
 
     lines += ["## WARNING — gated by a kanji taught later in the same level", ""]
@@ -291,6 +382,8 @@ def render_markdown(per_level, untaught_uses, findings):
     lines.append("")
     counts = defaultdict(int)
     for finding in infos:
+        if finding["relationship"] == "requires":
+            continue  # counted in the pull-forward section above
         counts[(finding["relationship"], finding["kind"])] += 1
     for (relationship, kind), count in sorted(counts.items()):
         lines.append(f"- **INFO** {count} {relationship} edge(s), {kind}")
@@ -304,7 +397,7 @@ def render_markdown(per_level, untaught_uses, findings):
 def main():
     items = load_items()
     per_level, untaught_uses = coverage(items)
-    findings = ordering_violations(items)
+    findings = unreachable_items(items) + ordering_violations(items)
 
     md_path = os.path.join(REPORTS_DIR, "dependency-order.md")
     with open(md_path, "w", encoding="utf-8") as f:

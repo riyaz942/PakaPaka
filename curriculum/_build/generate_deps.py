@@ -11,8 +11,8 @@ radical slug -> list of kanji suffixes). Kanji->vocab edges are derived
 automatically by scanning vocab primary_form for the kanji character.
 
 Skeleton levels (N3/N2/N1, kanji only) take their decomposition from the
-generated map in skeleton.json, and emit *no* kanji->vocabulary edges until the
-Phase 3 planner change lands — see the comment on that loop below.
+generated map in skeleton.json. Their kanji->vocabulary edges are live as of
+Phase 3, now that the planner pulls a word's parents forward across levels.
 """
 
 import json
@@ -284,21 +284,12 @@ def build_edges(levels):
 
     # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
     #
-    # Held for skeleton-level kanji until the Phase 3 planner lands. A `requires`
-    # edge from an N3 kanji to an N5 word is a gate the current planner can never
-    # open — useLessonPlan.ts scopes candidates to one JLPT level, so the learner
-    # is never offered the parent and the word goes from "unlocked with no chain"
-    # to permanently locked. Phase 3 turns these on together with the
-    # pull-forward planner, never before it.
-    skeleton_kanji_slugs = {
-        item["slug"]
-        for lvl in levels
-        if lvl in SKELETON_LEVELS
-        for item in load_level_items("kanji", lvl)
-    }
+    # Skeleton-level kanji included since Phase 3. These edges were held back
+    # while the planner scoped lesson candidates to one JLPT level: an N3 kanji
+    # gating an N5 word was a lock the learner could never open. The planner now
+    # pulls a word's required parents forward whatever level they are taught at
+    # (`listLessonCandidatePool`), so the gate is one the learner can satisfy.
     for k in kanji:
-        if k["slug"] in skeleton_kanji_slugs:
-            continue
         char = k["primary_form"]
         for v in vocab:
             if char and char in v["primary_form"]:

@@ -294,23 +294,29 @@ function getParentsByRelationshipType(
   }
 
   const numericIds = itemIds.map((itemId) => Number(itemId));
-  const placeholders = numericIds.map(() => '?').join(', ');
 
-  const rows = db.getAllSync<ParentRow>(
-    `SELECT r.child_item_id, p.id, p.primary_form, p.meaning, p.item_type, p.sort_order
-     FROM item_relationships r
-     JOIN items p ON p.id = r.parent_item_id
-     WHERE r.child_item_id IN (${placeholders}) AND r.relationship_type = ?
-     ORDER BY r.child_item_id ASC, p.sort_order ASC`,
-    ...numericIds,
-    relationshipType,
-  );
+  // One `?` is spent on relationshipType. The lesson candidate pool asks about
+  // a whole level plus its pulled-forward parents at once, which is well past
+  // the bound-parameter limit.
+  for (const chunk of chunkForSqlVariables(numericIds, 1)) {
+    const placeholders = chunk.map(() => '?').join(', ');
 
-  for (const row of rows) {
-    const itemId = String(row.child_item_id);
-    const parents = result.get(itemId) ?? [];
-    parents.push(mapParentRow(row));
-    result.set(itemId, parents);
+    const rows = db.getAllSync<ParentRow>(
+      `SELECT r.child_item_id, p.id, p.primary_form, p.meaning, p.item_type, p.sort_order
+       FROM item_relationships r
+       JOIN items p ON p.id = r.parent_item_id
+       WHERE r.child_item_id IN (${placeholders}) AND r.relationship_type = ?
+       ORDER BY r.child_item_id ASC, p.sort_order ASC`,
+      ...chunk,
+      relationshipType,
+    );
+
+    for (const row of rows) {
+      const itemId = String(row.child_item_id);
+      const parents = result.get(itemId) ?? [];
+      parents.push(mapParentRow(row));
+      result.set(itemId, parents);
+    }
   }
 
   return result;
@@ -328,6 +334,78 @@ export function getRequiredParentsForItems(
   itemIds: string[],
 ): Map<string, CurriculumParentItem[]> {
   return getParentsByRelationshipType(db, itemIds, 'requires');
+}
+
+/**
+ * Guard on the pull-forward walk below. `requires` runs kanji → vocabulary and
+ * nothing else, so the closure settles in two passes; the bound exists so a
+ * future edge type cannot turn a malformed graph into a hang.
+ */
+const MAX_PULL_FORWARD_DEPTH = 8;
+
+/**
+ * Everything the lesson planner may offer while the learner is on `jlptLevel`:
+ * that level's items, plus every item they transitively `require`, wherever it
+ * is taught.
+ *
+ * This is the pull-forward the curriculum's core promise rests on. JLPT word
+ * lists routinely use kanji from higher levels — 写真 is an N5 word written with
+ * two N3 kanji — so scoping candidates to a single level left those words either
+ * unreachable or, worse, offered with nothing taught behind them. Dependency
+ * order wins; JLPT level stays a label and a filter. A pulled-forward item keeps
+ * its own `jlpt_level` everywhere it is displayed — only the lesson sequence
+ * moves. See docs/content/kanji-coverage-and-dependency-order-plan.md.
+ *
+ * A pulled-forward parent takes the sort position of the earliest item that
+ * needs it, so 写 lands where 写真 sits rather than at the back of the queue.
+ * `sort_order` restarts per (level, type), so comparing a kanji's against a
+ * word's only works because ROUND_QUOTAS advances every type at the same rate —
+ * the same assumption reports/dependency_order.py is built on.
+ *
+ * Parents the learner already knows are left in; `planLesson` drops started
+ * items anyway, and filtering here would cost a second status round-trip.
+ */
+export function listLessonCandidatePool(
+  db: SQLiteDatabase,
+  jlptLevel: JLPTLevel,
+): CurriculumListItem[] {
+  const pool: CurriculumListItem[] = [];
+  for (const itemType of ITEM_TYPES) {
+    pool.push(...listItemsByLevelAndType(db, jlptLevel, itemType));
+  }
+
+  const sortOrderById = new Map(pool.map((item) => [item.id, item.sortOrder]));
+  let frontier = pool.map((item) => item.id);
+
+  for (let depth = 0; depth < MAX_PULL_FORWARD_DEPTH && frontier.length > 0; depth++) {
+    const parentsByChildId = getRequiredParentsForItems(db, frontier);
+
+    const sortOrderByNewId = new Map<string, number>();
+    for (const [childId, parents] of parentsByChildId) {
+      const childSortOrder = sortOrderById.get(childId) ?? 0;
+      for (const parent of parents) {
+        if (sortOrderById.has(parent.id)) continue;
+        const claimed = sortOrderByNewId.get(parent.id);
+        if (claimed === undefined || childSortOrder < claimed) {
+          sortOrderByNewId.set(parent.id, childSortOrder);
+        }
+      }
+    }
+    if (sortOrderByNewId.size === 0) break;
+
+    const newIds = [...sortOrderByNewId.keys()];
+    // Claim every id before fetching: an id the items table does not resolve
+    // would otherwise be rediscovered as a parent on the next pass.
+    for (const [id, sortOrder] of sortOrderByNewId) {
+      sortOrderById.set(id, sortOrder);
+    }
+    for (const item of listItemSummariesByIds(db, newIds)) {
+      pool.push({ ...item, sortOrder: sortOrderByNewId.get(item.id)! });
+    }
+    frontier = newIds;
+  }
+
+  return pool;
 }
 
 /**
