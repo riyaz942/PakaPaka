@@ -385,9 +385,16 @@ Three things the plan got wrong, corrected by the build:
 8,500 words and rebanding N3+ renumbers `items.id` across the corpus again.
 Still nothing remaps an installed `user.db`.
 
-### Phase E — author — **in progress; N5 radical layer done 2026-08-17**
+### Phase E — author — **in progress; N5+N4 radical layer and N5 kanji layer done 2026-08-17**
 
-Two independent tracks, neither blocking the other.
+~~Two independent tracks, neither blocking the other.~~ **Track 1 gates most of
+track 2, measured 2026-08-17.** A vocabulary meaning story chains from its
+component kanji's `meaning_mnemonic`, so `format_vocab_components` raises
+`component kanji <slug> has no meaning_mnemonic yet` and the prompt never builds.
+**345 of the 1,247 N5+N4 words are unreachable** until the 173 band kanji have
+prose — including 132 of the 205 words failing the gate on their meaning
+mnemonic, and 66 of the 208 waiting to be re-shaped. Track 2's *prerequisite* and
+its pilot were genuinely independent; its bulk is not. **Do track 1 first.**
 
 1. **Kanji prose** — the **173 kanji and 24 radicals** inside the N5+N4 band
    that have no mnemonic, in band order (which is first-encounter order). Down
@@ -406,8 +413,26 @@ learner *reaches* an item, never because it exists.
 
 **Track 1 progress.** The 14 N5 radicals are authored and ingested — subagent
 lane, `sonnet-5`, four groups of ≤4, every slug passing the gate on attempt 1
-with no repair. The queue is now 10 N4 radicals and 173 kanji. Layer order holds:
-the N4 radicals go next, then `generate.py --bands`, then the kanji.
+with no repair. The 10 N4 radicals followed the same way, also 10/10 on attempt
+1. All 238 radicals are now authored.
+
+**The Step 1a auto-select fix, applied 2026-08-17.** The runbook's snippet now
+reads "done" from the per-source sidecar (`curriculum/{radicals,kanji}/mnemonics/<source>.json`,
+band-mapped via `bands.json`) instead of `generate_content/drafts/mnemonics/<level>/<type>/`.
+Verified against the sidecar directly before trusting it: the fixed script
+selected exactly 10 N4 radicals, 55 N5 kanji, 118 N4 kanji — matching the counts
+this phase's queue predicted.
+
+The 55 N5 kanji are authored and ingested next — 14 subagent groups, `sonnet-5`,
+54/55 slugs passed the gate on attempt 1; `k-storey`'s `description` named an
+unlisted look-alike (二) on attempt 1 and passed on the repair attempt (2 of 3).
+`generate.py --bands` + `validate-schema` + `compile-curriculum` ran clean after
+both the radical and the kanji layer.
+
+The queue is now the **118 N4 kanji** — the last slice of track 1's 173-kanji
+debt. Layer order holds: radicals for a level must be authored and inlined
+before that level's kanji layer runs (`generate.py --bands`), which is now true
+for N5 in full and N4's radicals; N4's kanji layer runs next.
 
 **The runbook's Step 1a auto-select does not survive the reband.** It calls a
 slug done when a draft sits in `drafts/mnemonics/<level>/<type>/`, but drafts are
