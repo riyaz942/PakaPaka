@@ -48,7 +48,13 @@ GRAPH_PATH = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
 
 #: Levels whose radicals/kanji can be components or look-alikes of one another,
 #: in teaching order (a learner meets N5 before N4).
-ALL_LEVELS = ("n5", "n4")
+#:
+#: The skeleton levels are here for the *kanji and radical* layers (plan Phase
+#: 4): an N3 kanji is a real generation target with real components and real
+#: look-alikes. They deliberately do not move `vocab_context`'s taught-kanji
+#: window, which slices this tuple by `index(level)` and so still resolves to
+#: ("n5",) / ("n5", "n4") — see the note there.
+ALL_LEVELS = ("n5", "n4", "n3", "n2", "n1")
 
 _CJK_RE = re.compile(r"[㐀-䶿一-鿿々]")
 
@@ -59,7 +65,16 @@ def _load_json(path):
 
 
 def load_items(kind, level):
+    """Items of one kind at one level, or [] if that level ships none.
+
+    A level legitimately omits a kind: the skeleton levels ship kanji only, and
+    N1 not even radicals — its 93 kanji decompose entirely into components taught
+    lower down. An unknown *level* is still a caller bug and raises."""
+    if level not in ALL_LEVELS:
+        raise ValueError(f"unknown level {level!r}")
     path = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
+    if not os.path.exists(path):
+        return []
     return _load_json(path)["items"]
 
 
@@ -160,10 +175,14 @@ def decomposition_edges(level):
 
 def kanji_context(level, slug, cast=None):
     kanji = _by_slug(load_items("kanji", level))
-    radicals = _by_slug(load_items("radicals", level))
-    # Radicals from lower levels can also be components; include them all.
-    for lower in ("n5",) if level == "n4" else ():
-        radicals.update(_by_slug(load_items("radicals", lower)))
+    # A kanji's components can come from any level's radical set, not just its
+    # own. Skeleton kanji are the reason this is every level rather than "N5
+    # under N4": 旅 is N3 and builds on 方, an N3 radical, while most of its
+    # neighbours build on N5 ones. Ordering is not a concern — the planner pulls
+    # a radical forward with the kanji that needs it.
+    radicals = {}
+    for lvl in ALL_LEVELS:
+        radicals.update(_by_slug(load_items("radicals", lvl)))
     if slug not in kanji:
         raise KeyError(f"unknown kanji slug {slug!r} in level {level}")
     item = kanji[slug]
@@ -339,6 +358,15 @@ def vocab_context(level, slug, cast=None):
     # taught at N4); that kanji is not a usable component here, and dropping it
     # is also what makes the reading come out "untaught" — i.e. a full story
     # rather than a derivation note the learner could not follow.
+    #
+    # Phase 3's pull-forward has overtaken this rule and it is left standing on
+    # purpose. A learner does now meet 写 and 真 before 写真, so the word's
+    # components are taught and its reading is regular — but a vocabulary story
+    # chains from its kanji's *established* stories, and 553 of those kanji have
+    # none yet. Widening the window before the kanji layer is authored would
+    # reclassify ~390 words to `regular`, invalidating their reviewed reading
+    # stories, and chain the replacements onto empty prose. This moves when the
+    # kanji queue does (reports/kanji_priority.py), not before.
     taught_levels = ALL_LEVELS[:ALL_LEVELS.index(level) + 1]
     kanji = {}
     for lvl in taught_levels:

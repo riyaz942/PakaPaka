@@ -2,28 +2,268 @@
   "jlpt_level": "N3",
   "items": [
     {
+      "slug": "no-slide",
+      "primary_form": "ノ",
+      "meaning": "slide",
+      "sort_order": 1,
+      "mnemonic_text": "One stroke, starting high on the right and falling away to the left, thinning as it goes. Nothing interrupts it and nothing catches it at the bottom end. It is a <radical>slide</radical>: set anything down at the top and it is off the left edge and gone before you can get a hand to it.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "hakenobou",
+      "primary_form": "亅",
+      "meaning": "barb",
+      "sort_order": 2,
+      "mnemonic_text": "A single stroke drops straight down and then, right at the very bottom, flicks back up into a tiny hook. That flick is the whole point of it. It is the <radical>barb</radical> on a fishhook, the little backward tooth that means whatever you have caught is not coming off again, however hard it pulls.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "ukebako",
+      "primary_form": "凵",
+      "meaning": "open box",
+      "sort_order": 3,
+      "mnemonic_text": "Three strokes with the whole top left off: two walls going up and a floor joining them, and nothing at all across the opening. Whatever you drop in from above lands inside and stays put, because there is no lid to get in the way. It is an <radical>open box</radical>, mouth turned to the sky, waiting to catch something.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "bou-stick",
+      "primary_form": "｜",
+      "meaning": "stick",
+      "sort_order": 4,
+      "mnemonic_text": "One clean vertical line, top to bottom. No hook, no lean, no second stroke to keep it company. It is the plainest mark in the whole system: a <radical>stick</radical> stood on its end, the kind you drive into the ground to mark a spot or prop something upright before it topples.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
       "slug": "bun-writing",
       "primary_form": "文",
       "meaning": "writing",
-      "sort_order": 1
+      "sort_order": 5,
+      "mnemonic_text": "A lid across the top, and underneath it two strokes crossing each other and splaying out at the bottom like arms thrown wide. It is a figure with something draped over its shoulders and a pattern brushed right across the chest — marks made on purpose, meant to be read. Marks put there to be read are <radical>writing</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "tsukue",
+      "primary_form": "几",
+      "meaning": "table",
+      "sort_order": 6,
+      "mnemonic_text": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "ma-hook",
+      "primary_form": "マ",
+      "meaning": "hook",
+      "sort_order": 7,
+      "mnemonic_text": "One stroke slanting in from the left, and a second cutting back under it to a point. The two of them close on each other and end in a sharp little beak that turns inward. Push anything past it and it will catch and hold. It is a <radical>hook</radical>, small and mean and perfectly effective.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "mochiiru",
       "primary_form": "用",
       "meaning": "use",
-      "sort_order": 2
+      "sort_order": 8,
+      "mnemonic_text": "A frame with two uprights driven through it and a pair of bars ruled across the middle, dividing the whole thing into compartments. It is a rack, or a printing block, or a set of pigeonholes — some workshop tool that only exists because somebody had a job for it. Made to be picked up and put to <radical>use</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "gandare",
+      "primary_form": "厂",
+      "meaning": "cliff",
+      "sort_order": 9,
+      "mnemonic_text": "A flat stroke runs along the top and then drops away sharply down the left side, and there is nothing underneath it at all. That overhang is the whole picture: rock sticking out over empty air, with the ground a long way below. Stand under it for shelter or over it for the view, but it is a <radical>cliff</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "kanamuri",
+      "primary_form": "𠂉",
+      "meaning": "chevron",
+      "sort_order": 10,
+      "mnemonic_text": "Two strokes only: a short flick going one way and a longer stroke cutting down across it, meeting at a point near the top. It sits on a character like a roof beam laid crooked, or like a hairpin pushed in at an angle. That narrow angled cap is the <radical>chevron</radical> you will keep finding on top of things.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "katahen",
       "primary_form": "方",
       "meaning": "direction",
-      "sort_order": 3
+      "sort_order": 11,
+      "mnemonic_text": "A lid across the top, and below it a stroke that swings out and then hooks hard to one side, with a crossbar cutting through. It is a signpost at a crossroads: the arm juts out and points, and everyone who reaches it has to pick. That jutting arm is telling you a <radical>direction</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "warifu",
+      "primary_form": "卩",
+      "meaning": "stamp",
+      "sort_order": 12,
+      "mnemonic_text": "A short flag of a stroke at the top, then a long one dropping down the right side and hooking inward at the foot. It is a person folded down onto their knees, bowing low. It is also the carved tally-half that an official presses into wet clay to prove the order is genuine. Kneel, and take the <radical>stamp</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "nogihen",
+      "primary_form": "禾",
+      "meaning": "grain",
+      "sort_order": 13,
+      "mnemonic_text": "A tree standing upright, and laid across its crown one extra stroke drooping away to the left, as if the head of the plant has been bent over by its own weight. That droop is the whole story. The stalk is loaded, ripe and top-heavy and ready for cutting: this is <radical>grain</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "dai-big",
+      "primary_form": "大",
+      "meaning": "big",
+      "sort_order": 14,
+      "mnemonic_text": "Stand up, throw your arms straight out to the sides and plant your feet wide apart. That is the entire shape: one crossbar for the outstretched arms, and two strokes kicking away underneath for the splayed legs. A person taking up as much room as a person possibly can, because that is how you show someone just how <radical>big</radical> the thing was.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "hakogamae",
+      "primary_form": "匚",
+      "meaning": "box on its side",
+      "sort_order": 15,
+      "mnemonic_text": "Three strokes: a lid across the top, a floor across the bottom, and one wall joining them down the left. The right-hand side is simply missing. The whole container has been tipped over so its open mouth faces you, and now it is a <radical>box on its side</radical>, waiting for something to be slid straight in.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "men-exempt",
+      "primary_form": "免",
+      "meaning": "exempt",
+      "sort_order": 16,
+      "mnemonic_text": "Someone is squeezing out from underneath a heavy lid. You can see the bent head, the body pressed thin as it works through the gap, and two legs kicking free at the bottom. Everyone else is still pinned under there waiting their turn. This one wriggled out and walked off, which is precisely what it is to be <radical>exempt</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "tsume",
+      "primary_form": "爪",
+      "meaning": "claw",
+      "sort_order": 17,
+      "mnemonic_text": "A flat stroke over the top and, hanging beneath it, three short strokes curving down and in. It is a hand held palm-down with the fingers already curling under, about to close on something from above. Not a grip — a snatch. What comes down out of the sky like that is a <radical>claw</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "nijuuashi",
+      "primary_form": "廾",
+      "meaning": "two hands",
+      "sort_order": 18,
+      "mnemonic_text": "Two uprights standing side by side with a single bar laid straight across both of them. They are holding it up together, level, neither one taking more of the weight than the other. Two arms raised to carry the same load: <radical>two hands</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "hashiru-run",
+      "primary_form": "走",
+      "meaning": "run",
+      "sort_order": 19,
+      "mnemonic_text": "A cross of packed earth up top, and underneath it a leg caught mid-stride: the thigh swinging forward, the foot planting hard, the last stroke trailing off behind where the ground is still coming loose. Nobody stands like this. You only ever hold this shape when you <radical>run</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "konzukuri",
       "primary_form": "艮",
       "meaning": "stopping",
-      "sort_order": 4
+      "sort_order": 20,
+      "mnemonic_text": "An eye up at the top, and beneath it a foot planted flat with the heel dug in and the toes braced against the ground. The eye has seen something and the foot has already answered it, refusing to take one more step forward. Fixed there, staring, immovable: this is <radical>stopping</radical> dead.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "shou-esteem",
+      "primary_form": "尚",
+      "meaning": "esteem",
+      "sort_order": 21,
+      "mnemonic_text": "A small mark and a stroke splitting away at the very top, then a lid, and beneath it a mouth set into a frame. It is a shrine front: the roof flared out at the corners, the offering-slot below, and the whole thing raised a step above the street so you have to look up at it. Built to be looked up at, and held in <radical>esteem</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
+    },
+    {
+      "slug": "mizukara",
+      "primary_form": "自",
+      "meaning": "self",
+      "sort_order": 22,
+      "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      }
     }
   ]
 }

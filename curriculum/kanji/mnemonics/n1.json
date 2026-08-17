@@ -1,0 +1,29 @@
+{
+  "n1-me": {
+    "meaning_mnemonic": "A <radical>person</radical> stands at the far left, and stacked up beside him is a <radical>big</radical> load: a <radical>sheep</radical> he has to carry in, then <radical>split</radical> into portions for everyone else before he takes any himself. He does the hauling and he eats last, and when he speaks he uses the humble word for <radical>me</radical>.",
+    "reading_mnemonic": "Boku is the errand boy who answers every question about who did it with the same word: 「<reading>ぼく</reading>」. Broke the gate? ぼく. Carried the sheep up the hill? ぼく. He never says his own name, so ぼく is the only name you have for him.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "n1-who": {
+    "meaning_mnemonic": "<radical>Words</radical> stand on the left, and on the right an <radical>old bird</radical> with its head cocked, waiting. You have been talking for ten minutes and the bird still cannot work out which person you mean. It hops in closer and asks the only question you have left it: <radical>who</radical>?",
+    "reading_mnemonic": "Sui is the owl who works the gate. She leans down, blinks once, and hoots 「<reading>すい</reading>」, which in owl means name, please. Nobody gets past her without answering it. すい, すい, until you say who you are.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "n1-uncle": {
+    "meaning_mnemonic": "A stick of <radical>divination</radical> up in the corner, a <radical>small</radical> mark beside it, and a <radical>right hand</radical> reaching in underneath to scoop the pair of them up. This is the younger brother: not the head of the family, so he gets the fortune-telling twigs and the small share, and he turns up at New Year to read your future for a laugh. Your <radical>uncle</radical>.",
+    "reading_mnemonic": "Shuku is that uncle, and he arrives every year with the same trick. He shuffles the sticks, throws them down, sucks his teeth, and pronounces 「<reading>しゅく</reading>」 as though it settles the matter. Nobody knows what しゅく means. He will not explain.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  }
+}

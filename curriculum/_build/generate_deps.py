@@ -158,6 +158,16 @@ N4_DECOMPOSITION = {
     "tsutsumu": ["iro", "isogu", "kangaeru"],
     "wakanmuri": ["hakobu", "oboeru", "tsuzukeru"],
     "ya": ["shiru", "zoku"],
+    # Phase 4. `katahen` (方) arrived with the Phase 2 skeleton, keyed to N3
+    # because that is where 旅 needs it, and these three N4 kanji were left with
+    # no edge to it — 方's own kanji shipped without a component chip at all.
+    # Promoting it to N4 was rejected at the time because it would have put a
+    # mnemonic-less, art-less card into a lesson a learner reaches today. It has
+    # a mnemonic now, and `listLessonCandidatePool` pulls a component forward to
+    # sit just ahead of the kanji that needs it, so the level it is filed under
+    # no longer decides when the learner meets it. The edges are all that was
+    # missing.
+    "katahen": ["hou", "asobu", "zoku"],
     # N5 radicals reused as components of N4 kanji.
     "boku-divination": ["mise"],
     "chikara": ["betsu", "hataraku"],

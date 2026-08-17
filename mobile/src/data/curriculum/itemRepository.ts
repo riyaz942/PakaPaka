@@ -345,8 +345,8 @@ const MAX_PULL_FORWARD_DEPTH = 8;
 
 /**
  * Everything the lesson planner may offer while the learner is on `jlptLevel`:
- * that level's items, plus every item they transitively `require`, wherever it
- * is taught.
+ * that level's items, every item they transitively `require`, and the radicals
+ * those kanji `builds_on` — wherever any of it is taught.
  *
  * This is the pull-forward the curriculum's core promise rests on. JLPT word
  * lists routinely use kanji from higher levels — 写真 is an N5 word written with
@@ -403,6 +403,44 @@ export function listLessonCandidatePool(
       pool.push({ ...item, sortOrder: sortOrderByNewId.get(item.id)! });
     }
     frontier = newIds;
+  }
+
+  // A kanji's components come with it. Phase 3 left `builds_on` out on the
+  // grounds that radicals never gate and the skeleton ones had no art — true
+  // while a pulled-forward kanji was a bare card. Phase 4 gives those kanji
+  // mnemonics that *name* their components and highlight the borrowed meaning,
+  // so 私's story leans on 禾 ("grain"), an N3 radical an N5 learner would
+  // otherwise never have met.
+  //
+  // These sit half a step ahead of the kanji that needs them rather than level
+  // with it. `requires` can share a position because `isItemUnlocked` enforces
+  // the order anyway; `builds_on` does not gate, so position is the only thing
+  // deciding whether the learner meets the radical first.
+  //
+  // One pass, not a closure: `builds_on` runs radical → kanji, and radicals are
+  // never the child of one.
+  const componentsByKanjiId = getParentsByRelationshipType(
+    db,
+    pool.filter((item) => item.itemType === 'kanji').map((item) => item.id),
+    'builds_on',
+  );
+
+  const componentSortOrderById = new Map<string, number>();
+  for (const [kanjiId, components] of componentsByKanjiId) {
+    const target = (sortOrderById.get(kanjiId) ?? 0) - 0.5;
+    for (const component of components) {
+      if (sortOrderById.has(component.id)) continue;
+      const claimed = componentSortOrderById.get(component.id);
+      if (claimed === undefined || target < claimed) {
+        componentSortOrderById.set(component.id, target);
+      }
+    }
+  }
+
+  if (componentSortOrderById.size > 0) {
+    for (const item of listItemSummariesByIds(db, [...componentSortOrderById.keys()])) {
+      pool.push({ ...item, sortOrder: componentSortOrderById.get(item.id)! });
+    }
   }
 
   return pool;

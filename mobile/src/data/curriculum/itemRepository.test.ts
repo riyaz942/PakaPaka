@@ -373,11 +373,23 @@ describe('itemRepository', () => {
           visual_mnemonic_url: null,
           sort_order: 1,
         },
+        {
+          id: 5,
+          item_type: 'radical',
+          jlpt_level: 'N3',
+          slug: 'n3-crown',
+          primary_form: '冖',
+          meaning: 'crown',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 3,
+        },
       ]);
 
       __mockSetItemRelationships('curriculum.db.test', [
         { child_item_id: 1, parent_item_id: 2, relationship_type: 'requires' },
         { child_item_id: 1, parent_item_id: 3, relationship_type: 'requires' },
+        { child_item_id: 2, parent_item_id: 5, relationship_type: 'builds_on' },
       ]);
     }
 
@@ -388,13 +400,37 @@ describe('itemRepository', () => {
       const pool = listLessonCandidatePool(db, 'N5');
       const bySlug = new Map(pool.map((item) => [item.slug, item]));
 
-      // The N5 level's own items, plus the two N3 kanji they require.
-      expect([...bySlug.keys()].sort()).toEqual(['n3-copy', 'n3-true', 'n5-nichi', 'shashin']);
+      // The N5 level's own items, the two N3 kanji they require, and the N3
+      // radical one of those kanji is built from.
+      expect([...bySlug.keys()].sort()).toEqual([
+        'n3-copy',
+        'n3-crown',
+        'n3-true',
+        'n5-nichi',
+        'shashin',
+      ]);
       // Each pulled-forward kanji takes 写真's sort position, not its own N3
       // one, so it lands where the word sits rather than at the back.
       expect(bySlug.get('n3-copy')?.sortOrder).toBe(261);
       expect(bySlug.get('n3-true')?.sortOrder).toBe(261);
       expect(bySlug.get('n5-nichi')?.sortOrder).toBe(1);
+      // The component sits half a step ahead of the kanji whose story names it.
+      expect(bySlug.get('n3-crown')?.sortOrder).toBe(260.5);
+    });
+
+    it('offers 写’s component radical before 写 itself', async () => {
+      const db = await openDatabaseAsync('curriculum.db.test');
+      setPhotoCurriculum();
+
+      const order = listLessonCandidatePool(db, 'N5')
+        .slice()
+        .sort((a, b) => a.sortOrder - b.sortOrder)
+        .map((item) => item.slug);
+
+      // 写's mnemonic leans on 冖's established image, so the learner has to
+      // have met 冖 first — `builds_on` never gates, so position is the only
+      // thing enforcing that.
+      expect(order.indexOf('n3-crown')).toBeLessThan(order.indexOf('n3-copy'));
     });
 
     it('offers 写 and 真 before 写真 to an N5 profile', async () => {
@@ -424,12 +460,13 @@ describe('itemRepository', () => {
       });
 
       // 写真's parents are unstudied, so the word is still locked; both kanji
-      // are offered instead. Nothing here depends on their level. The two share
-      // a sort position (both were claimed by 写真), so their order relative to
-      // each other is not part of the contract.
+      // are offered instead, led by 写's component radical. Nothing here depends
+      // on their level. The two kanji share a sort position (both were claimed
+      // by 写真), so their order relative to each other is not part of the
+      // contract — 冖's lead over 写 is, and is asserted above.
       const offered = firstLesson.map((item) => item.primaryForm);
-      expect(offered).toHaveLength(3);
-      expect(offered).toEqual(expect.arrayContaining(['日', '写', '真']));
+      expect(offered).toHaveLength(4);
+      expect(offered).toEqual(expect.arrayContaining(['冖', '日', '写', '真']));
       expect(offered).not.toContain('写真');
 
       const afterKanji = planLesson({
@@ -438,8 +475,9 @@ describe('itemRepository', () => {
           ['2', 'in_progress' as const],
           ['3', 'in_progress' as const],
           ['4', 'in_progress' as const],
+          ['5', 'in_progress' as const],
         ]),
-        startedItemIds: new Set(['2', '3', '4']),
+        startedItemIds: new Set(['2', '3', '4', '5']),
         parentsByItemId,
         parentStatuses: new Map([
           ['2', 'in_progress' as const],

@@ -51,7 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
-| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **Partial** — Phases 1–3 done 2026-08-16; Phase 4 (author the 553 kanji) not started |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 rewritten 2026-08-17, not started.** v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Start at Phase A (reband); Phase C carries the revert and must land `requires` band-gating in the same commit or 685 words lock permanently. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
 
 ## Design & platform — `docs/design/`
 
@@ -160,18 +160,36 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   `requires` is INFO (pull-forward, by design) with its own section, ERROR now means a
   `requires` chain that never bottoms out. Report is clean — 0 errors, 0 warnings. The 115 N5
   words Phase 1 left as ERRORs are resolved by the pull-forward, as Phase 1 predicted.
-- **Live cost until Phase 4:** 624 pulled-forward kanji have no mnemonic and the planner now
-  offers them inside N5. A fresh N5 learner meets the first (私) in **lesson 2**; 4 of the
-  first 60 items render "No mnemonic for this one yet". Honest degradation, but visible.
+- ~~**Live cost until Phase 4:**~~ paid down by Phase 4 tranche 1 — see below.
 - **Open, from Phase 1:** re-running `audit_shipped.py` after the 2026-08-16 group moves shows
   14 N5 example sentences referencing a word taught later — 13 for 彼女 (`kanojo`), 1 for 日本
   (`nihon`) — plus 2 `tabun` mnemonic errors. Moving 彼女 later fixed the ordering of the word
   itself and broke the examples that used it. Not Phase 2 fallout; not yet fixed.
-- Phase 2 leaves 3 known WARNINGs on 方: `katahen` is taught at N3 for 旅, so N4's 方/遊/族 get
-  no edge to it. Resolved in Phase 4 when 方 is authored as a real radical.
-- Phase 4 (author the 553 skeleton kanji, by reuse count) not started — and it is now the
-  gate on lesson quality, not just coverage.
-- Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status.
+- ~~Phase 2 leaves 3 known WARNINGs on 方~~ — resolved in Phase 4.
+- Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status. Phase 4 fixed one instance at source (`kokoro`) by promoting the **sidecar**, which is the durable form of the fix.
+
+### Phase 4 — authoring the skeleton (tranche 1 done 2026-08-16)
+- **The plan's "order by reuse count" is obsolete.** It assumed authoring a kanji is what
+  makes its words reachable; Phase 3 turned every edge on, so coverage is already 100% and
+  what is missing is prose — met in *lesson* order. `reports/kanji_priority.py` is the queue
+  (first encounter, reuse as tie-break) and writes `kanji-priority.md` / `.json`.
+- Authored: **30 kanji** (queue #1 私 → #30 医) and **all 30 skeleton radicals**. First card
+  with no mnemonic moved from **lesson 2 to lesson 96**; 0 empty cards in the first 200
+  non-grammar cards, was 12. 523 kanji remain.
+- Three prerequisites had to land first: 20 new radicals for decompositions that dropped a
+  dominant component (私 was 厶 alone, ignoring 禾); maximal-component pruning in
+  `build_decomposition`, since KRADFILE lists sub-strokes the gate then demands a story for
+  (彼 = 彳 + 皮 now, mean 2.9 components); and `builds_on` pull-forward in
+  `listLessonCandidatePool`, at the child's position minus half a step — a kanji mnemonic
+  names its components, and `builds_on` does not gate, so position is the only ordering.
+- 灬 (`rekka`) had looked untaught on all 318 kanji carrying it: KRADFILE writes it 杰 and the
+  variant map had no entry. A mapping bug, not missing content.
+- 方/遊/族 got their `katahen` edges and their mnemonics extended to name the component; all
+  three are back to `review_status: draft`, since a sign-off does not carry to changed prose.
+- **Open:** 30 skeleton radicals owe `.webp` art (text fallback renders today, and 禾 now
+  appears in an N5 learner's lesson 1). `vocab_context`'s taught-kanji window still excludes
+  pulled-forward kanji, so ~390 words keep a reading story for a now-regular reading —
+  deliberately deferred until the kanji layer exists to chain from.
 
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).

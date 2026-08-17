@@ -10,12 +10,18 @@ Authoritative curriculum content for the mobile app. JSON files here are validat
 - `dependencies/graph.json` — precomputed radical → kanji → vocabulary edges
 
 **N5 and N4 are authored in full. N3/N2/N1 are a kanji-only skeleton** — the 553 kanji that
-N5/N4 vocabulary is written with but nobody has authored, plus the 10 radicals that decompose
-them. They carry meanings, readings and accepted answers and nothing else: no mnemonics, no
-art, no examples, and no vocabulary, grammar or passages of their own. Their
-kanji → vocabulary edges are live, and the lesson planner pulls a word's required parents
-forward into whatever level the word is taught at — so an N5 learner meets 写 and 真 before
-写真, and each item keeps its own JLPT level everywhere it is displayed. See
+N5/N4 vocabulary is written with but nobody has authored, plus the 30 radicals that decompose
+them. They carry no examples and no vocabulary, grammar or passages of their own. Their
+kanji → vocabulary edges are live, and the lesson planner pulls a word's required parents —
+and those kanji's component radicals — forward into whatever level the word is taught at, so
+an N5 learner meets 写 and 真 before 写真 and each item keeps its own JLPT level everywhere it
+is displayed.
+
+Mnemonics are being authored into the skeleton in **first-encounter order**, not by level:
+all 30 radicals and the first 30 kanji are done, 523 kanji to go. The queue lives in
+[`_build/reports/kanji-priority.md`](_build/reports/kanji-priority.md) — regenerate it with
+`python3 curriculum/_build/reports/kanji_priority.py`. Skeleton radicals still have no art
+and render as text. See
 [docs/content/kanji-coverage-and-dependency-order-plan.md](../docs/content/kanji-coverage-and-dependency-order-plan.md).
 
 ## Commands (repo root)

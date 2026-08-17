@@ -51,13 +51,32 @@ LEVEL_BY_JLPT_TAG = {"4": "n3", "3": "n3", "2": "n2", "1": "n1", None: "n1"}
 
 SKELETON_LEVELS = ("n3", "n2", "n1")
 
-#: New radicals, added only for skeleton kanji that no already-taught radical
-#: decomposes — 10 of 553. Every other skeleton kanji hangs off the 122 radicals
-#: N5/N4 already teach, which costs nothing. Each entry is the most teachable of
-#: that kanji's KRADFILE components, named the way the shipped radicals are
-#: (the Japanese radical name, romanised). `_assert_orphans_covered` fails the
-#: build if the data ever moves out from under this list.
+#: New radicals for the skeleton levels.
+#:
+#: The first ten are Phase 2's: the components of skeleton kanji that no
+#: already-taught radical decomposes at all. Phase 2's bar was one radical
+#: parent per kanji, which is all a skeleton needs — a kanji with no mnemonic
+#: has no story for a component to be missing from.
+#:
+#: The rest are Phase 4's, and the bar is different. A kanji mnemonic must
+#: account for the whole shape and may name only taught components
+#: (`mnemonic_context.format_components`), so a decomposition that quietly drops
+#: KRADFILE components produces a story about the wrong character: 私 built from
+#: 厶 alone ignores 禾, its left two-thirds. 291 of the 553 skeleton kanji had a
+#: component covered by nothing taught. These 20 close 187 of them, and are
+#: picked to cover the whole of the current authoring queue's front — see
+#: reports/kanji_priority.py — rather than by raw frequency alone: 皮 免 匚 are
+#: rare overall but each blocks a kanji a learner meets in their first fortnight.
+#:
+#: Six are also taught as kanji (大 買 自 走, plus 元 音 in the skeleton). That
+#: pairing is not new — 皿 and 長 already ship as both — and it is the honest
+#: description of the shape: 奥 contains 大 whether or not the learner has met
+#: 大 the kanji.
+#:
+#: `_assert_orphans_covered` fails the build if the data ever moves out from
+#: under this list.
 NEW_RADICALS = [
+    # Phase 2 — kanji that decompose into nothing otherwise.
     {"slug": "katahen", "form": "方", "meaning": "direction"},
     {"slug": "bun-writing", "form": "文", "meaning": "writing"},
     {"slug": "mochiiru", "form": "用", "meaning": "use"},
@@ -68,6 +87,27 @@ NEW_RADICALS = [
     {"slug": "men-face", "form": "面", "meaning": "face / surface"},
     {"slug": "hiyominotori", "form": "酉", "meaning": "sake jar"},
     {"slug": "kemonohen", "form": "犭", "meaning": "animal"},
+    # Phase 4 — components a mnemonic cannot honestly leave out.
+    {"slug": "no-slide", "form": "ノ", "meaning": "slide"},
+    {"slug": "bou-stick", "form": "｜", "meaning": "stick"},
+    {"slug": "dai-big", "form": "大", "meaning": "big"},
+    {"slug": "hakenobou", "form": "亅", "meaning": "barb"},
+    {"slug": "gandare", "form": "厂", "meaning": "cliff"},
+    {"slug": "nijuuashi", "form": "廾", "meaning": "two hands"},
+    {"slug": "kanamuri", "form": "𠂉", "meaning": "chevron"},
+    {"slug": "warifu", "form": "卩", "meaning": "stamp"},
+    {"slug": "nogihen", "form": "禾", "meaning": "grain"},
+    {"slug": "tsume", "form": "爪", "meaning": "claw"},
+    {"slug": "kau-buy", "form": "買", "meaning": "buy"},
+    {"slug": "tsukue", "form": "几", "meaning": "table"},
+    {"slug": "shou-esteem", "form": "尚", "meaning": "esteem"},
+    {"slug": "ukebako", "form": "凵", "meaning": "open box"},
+    {"slug": "ma-hook", "form": "マ", "meaning": "hook"},
+    {"slug": "mizukara", "form": "自", "meaning": "self"},
+    {"slug": "hashiru-run", "form": "走", "meaning": "run"},
+    {"slug": "kawa-skin", "form": "皮", "meaning": "skin"},
+    {"slug": "men-exempt", "form": "免", "meaning": "exempt"},
+    {"slug": "hakogamae", "form": "匚", "meaning": "box on its side"},
 ]
 
 #: KRADFILE substitutions that `audit_facts.KRAD_VARIANTS` does not carry yet.
@@ -77,6 +117,13 @@ EXTRA_KRAD_VARIANTS = {
     "忄": ["忙"],
     "疒": ["疔"],
     "犭": ["犯"],
+    # KRADFILE writes the four fire dots as 杰 and never as 灬, so `rekka` — an
+    # N5 radical since the first release — looked untaught on all 318 kanji that
+    # carry it, 魚 and 黒 among them. A mapping gap, not missing content.
+    "灬": ["杰"],
+    # Likewise the chevron: KRADFILE keys it 乞, which is a different character
+    # (`beg`) and the wrong picture to show a learner. The radical ships as 𠂉.
+    "𠂉": ["乞"],
 }
 
 #: A meaning gloss only becomes an extra accepted answer when it is a plain
@@ -196,17 +243,36 @@ def build_decomposition(kanji_by_level, kradfile, radical_by_char):
     Every component KRADFILE names that resolves to a taught radical becomes a
     `builds_on` edge — including a component that *is* the kanji (皿 is both a
     radical and a kanji, the same pairing 長 already ships with). Components
-    that resolve to nothing are dropped: the skeleton owes no art, and the plan
-    only asks that every new kanji have at least one radical parent."""
+    that resolve to nothing are still dropped, but Phase 4's NEW_RADICALS
+    entries mean far fewer of them do.
+
+    KRADFILE lists sub-strokes alongside the piece they belong to: 彼 comes back
+    as 彳 + 皮 + 又, and 又 is only there because it is inside 皮. Phase 2 could
+    ignore that — a skeleton kanji has no story for a component to clutter. A
+    mnemonic cannot: the gate requires *every* listed component to be named and
+    highlighted, so an un-pruned 彼 owes the learner a story about a right hand
+    that is not separately there. Keeping only maximal components — drop any
+    component contained in another one KRADFILE also lists — gives 彼 = 彳 + 皮,
+    晩 = 日 + 免, 徒 = 彳 + 走.
+
+    Bigger components are tested first so that mutual containment keeps the
+    larger piece rather than dropping both.
+
+    Only a *taught* component may prune another. KRADFILE lists most kanji as
+    one of their own components, so letting untaught pieces prune would let 元
+    suppress its own 二 and 儿 and leave the kanji with no parent at all — the
+    reverse of the intent."""
     decomposition = {level: {} for level in SKELETON_LEVELS}
     orphans = []
     for level, entries in kanji_by_level.items():
         for entry in entries:
-            parents = {
-                radical_by_char[comp]
-                for comp in kradfile.get(entry["char"], [])
-                if comp in radical_by_char
-            }
+            taught = [c for c in kradfile.get(entry["char"], []) if c in radical_by_char]
+            maximal = []
+            for comp in sorted(taught, key=lambda c: -len(kradfile.get(c, ()))):
+                if any(comp != kept and comp in kradfile.get(kept, ()) for kept in maximal):
+                    continue
+                maximal.append(comp)
+            parents = {radical_by_char[comp] for comp in maximal}
             if not parents:
                 orphans.append(entry["char"])
                 continue

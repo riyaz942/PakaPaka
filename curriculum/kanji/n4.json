@@ -1249,11 +1249,11 @@
       "visually_similar_slugs": [
         "n5-man"
       ],
-      "meaning_mnemonic": "Picture 方 as one warped signpost bolted into a crossroads. Its crossbar arm won't hold still — it spins in the wind until it locks facing one direction, and a lost traveler grabs the swinging arm just to have something to follow. One pole, one direction, and the person now walking it.",
+      "meaning_mnemonic": "Picture 方 as one warped signpost bolted into a crossroads. Its crossbar arm won't hold still — it spins in the wind until it locks facing one <radical>direction</radical>, and a lost traveler grabs the swinging arm just to have something to follow. One pole, one direction, and the person now walking it.",
       "reading_mnemonic": "An owl called <reading>Hoot</reading> lands on the swinging signpost's crossbar and states the obvious in one flat call, <reading>ほう</reading>, every single time the arm swings past true north.",
       "description": "万 is simpler than it looks: one long horizontal capped by a single sweeping curve that swings down and left into a hook, nothing above it. 方 carries an extra short tick above its crossbar before the vertical stroke kicks left and hooks at the bottom — that top tick is the tell. No tick, it's 万; tick present, it's 方.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "sonnet-5 + claude-opus-5 (phase 4 component edit)",
         "prompt_version": "4",
         "review_status": "draft"
       },
@@ -4923,10 +4923,10 @@
           "answer_text": "ゆう"
         }
       ],
-      "meaning_mnemonic": "The bundled-up <radical>child</radical> flings both arms wide the moment its feet hit the ground and bolts onto the winding road, footsteps <radical>advance</radical>ing in zigzags, chasing a moth, chasing nothing, laughing the whole way. Running in circles for no reason but joy: that is play.",
+      "meaning_mnemonic": "The bundled-up <radical>child</radical> flings both arms wide the moment its feet hit the ground and bolts straight past the crossroads signpost without reading a single <radical>direction</radical> off it, footsteps <radical>advance</radical>ing in zigzags down the winding road, chasing a moth, chasing nothing, laughing the whole way. Running in circles for no reason but joy: that is play.",
       "reading_mnemonic": "Back at Koichi's konbini, a kid the clerk just calls <reading>You</reading> comes skidding in, sweaty from playing, and yells <reading>ゆう</reading> at every customer like it is a battle cry, delighted with himself, before running back out to play some more.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "sonnet-5 + claude-opus-5 (phase 4 component edit)",
         "prompt_version": "4",
         "review_status": "draft"
       },
@@ -9490,10 +9490,10 @@
           "answer_text": "ぞく"
         }
       ],
-      "meaning_mnemonic": "That same stray <radical>arrow</radical>, still quivering in the vendor's pumpkin, turns out to be signed — feathers dyed the same color every year. Uncles, cousins, and a very unbothered grandmother converge on the fence, each recognizing the fletching as theirs, until a whole clan is crowded around one ruined pumpkin arguing whose family shot it.",
+      "meaning_mnemonic": "That same stray <radical>arrow</radical>, still quivering in the vendor's pumpkin, turns out to be signed — feathers dyed the same color every year. Uncles, cousins, and a very unbothered grandmother converge on the fence from every <radical>direction</radical> the crossroads signpost names, each recognizing the fletching as theirs, until a whole clan is arguing over one ruined pumpkin about whose family shot it.",
       "reading_mnemonic": "Grandma stomps up in mismatched <reading>socks</reading>, glaring at the ruined pumpkin, and mutters <reading>ぞく</reading> under her breath before anyone else speaks — the whole family already knows exactly which cousin's arrow this is, just from the socks.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "sonnet-5 + claude-opus-5 (phase 4 component edit)",
         "prompt_version": "4",
         "review_status": "draft"
       },

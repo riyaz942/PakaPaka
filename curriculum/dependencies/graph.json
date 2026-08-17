@@ -1408,6 +1408,27 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "katahen",
+      "from_type": "radical",
+      "to_slug": "n4-hou",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "katahen",
+      "from_type": "radical",
+      "to_slug": "n4-asobu",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "katahen",
+      "from_type": "radical",
+      "to_slug": "n4-zoku",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "boku-divination",
       "from_type": "radical",
       "to_slug": "n4-mise",
@@ -2276,16 +2297,86 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "tsutsumu",
+      "from_slug": "no-slide",
       "from_type": "radical",
       "to_slug": "n3-thing",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-negative",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-wind",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-move",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-convenience",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-reflect",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-walk",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-friend",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-open",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-possess",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n3-polish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "tsutsumu",
       "from_type": "radical",
-      "to_slug": "n3-exertion",
+      "to_slug": "n3-thing",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -2314,6 +2405,27 @@
       "from_slug": "ushi",
       "from_type": "radical",
       "to_slug": "n3-cow",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n3-what",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n3-plains",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n3-polish",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -2416,13 +2528,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hito",
-      "from_type": "radical",
-      "to_slug": "n3-meat",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n3-what",
@@ -2481,13 +2586,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n3-make",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n3-degrees",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -2503,13 +2601,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n3-ride",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n3-ill",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -2731,163 +2822,86 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ta",
+      "from_slug": "ukebako",
       "from_type": "radical",
-      "to_slug": "n3-fish",
+      "to_slug": "n3-brush-stroke",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "ukebako",
+      "from_type": "radical",
+      "to_slug": "n3-degrees",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
       "from_type": "radical",
       "to_slug": "n3-employee",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
       "from_type": "radical",
-      "to_slug": "n3-topic",
+      "to_slug": "n3-negative",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
       "from_type": "radical",
-      "to_slug": "n3-true",
+      "to_slug": "n3-move",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
       "from_type": "radical",
-      "to_slug": "n3-opinion",
+      "to_slug": "n3-building",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
       "from_type": "radical",
-      "to_slug": "n3-neck",
+      "to_slug": "n3-convenience",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n3-make",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n3-by-means",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n3-generation",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
       "from_type": "radical",
       "to_slug": "n3-ride",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
+      "from_slug": "bou-stick",
       "from_type": "radical",
-      "to_slug": "n3-head",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n3-face",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n3-short",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n3-ocean",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n3-cold",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n3-employee",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n3-topic",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n3-head",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n3-face",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-employee",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-topic",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-true",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-neck",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-head",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-summer",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n3-face",
+      "to_slug": "n3-polish",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -2936,13 +2950,6 @@
     {
       "from_slug": "ten",
       "from_type": "radical",
-      "to_slug": "n3-dog",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ten",
-      "from_type": "radical",
       "to_slug": "n3-cold",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -2957,21 +2964,7 @@
     {
       "from_slug": "hitoashi",
       "from_type": "radical",
-      "to_slug": "n3-empty",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoashi",
-      "from_type": "radical",
       "to_slug": "n3-opinion",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoashi",
-      "from_type": "radical",
-      "to_slug": "n3-exertion",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -2986,13 +2979,6 @@
       "from_slug": "hitoashi",
       "from_type": "radical",
       "to_slug": "n3-beginning",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoashi",
-      "from_type": "radical",
-      "to_slug": "n3-research",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3076,21 +3062,7 @@
     {
       "from_slug": "ukanmuri",
       "from_type": "radical",
-      "to_slug": "n3-empty",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ukanmuri",
-      "from_type": "radical",
       "to_slug": "n3-building",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ukanmuri",
-      "from_type": "radical",
-      "to_slug": "n3-research",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3207,9 +3179,9 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kunigamae",
+      "from_slug": "tsukue",
       "from_type": "radical",
-      "to_slug": "n3-times",
+      "to_slug": "n3-wind",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3347,6 +3319,13 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "ma-hook",
+      "from_type": "radical",
+      "to_slug": "n3-traffic",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "mochiiru",
       "from_type": "radical",
       "to_slug": "n3-traffic",
@@ -3424,13 +3403,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n3-ocean",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "sanzui",
       "from_type": "radical",
       "to_slug": "n3-pour",
@@ -3483,6 +3455,20 @@
       "from_slug": "chichi",
       "from_type": "radical",
       "to_slug": "n3-father",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n3-meal",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n3-face",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3671,14 +3657,70 @@
     {
       "from_slug": "mu",
       "from_type": "radical",
-      "to_slug": "n3-roof",
+      "to_slug": "n3-gone",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "mu",
+      "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n3-gone",
+      "to_slug": "n3-true",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-opinion",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-neck",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-ride",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-head",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-short",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-ocean",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n3-cold",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "me",
+      "from_type": "radical",
+      "to_slug": "n3-true",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3748,21 +3790,7 @@
     {
       "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n3-roof",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
       "to_slug": "n3-distant",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n3-rouse",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3774,9 +3802,37 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n3-trip",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n3-make",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n3-sea",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "katahen",
       "from_type": "radical",
       "to_slug": "n3-trip",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n3-clothing",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3795,6 +3851,27 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n3-private",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n3-ride",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n3-autumn",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "kuruma",
       "from_type": "radical",
       "to_slug": "n3-revolve",
@@ -3809,16 +3886,37 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "keigamae",
+      "from_slug": "yamaidare",
       "from_type": "radical",
-      "to_slug": "n3-meat",
+      "to_slug": "n3-ill",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "yamaidare",
+      "from_slug": "dai-big",
       "from_type": "radical",
-      "to_slug": "n3-ill",
+      "to_slug": "n3-reflect",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n3-england",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n3-springtime",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n3-sino",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3840,6 +3938,13 @@
       "from_slug": "wakanmuri",
       "from_type": "radical",
       "to_slug": "n3-copy",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakogamae",
+      "from_type": "radical",
+      "to_slug": "n3-doctor",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -3879,13 +3984,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n3-paper",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "tomeru",
       "from_type": "radical",
       "to_slug": "n3-walk",
@@ -3901,13 +3999,6 @@
     },
     {
       "from_slug": "itohen",
-      "from_type": "radical",
-      "to_slug": "n3-paper",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
       "from_type": "radical",
       "to_slug": "n3-paper",
       "to_type": "kanji",
@@ -3949,9 +4040,44 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "men-exempt",
+      "from_type": "radical",
+      "to_slug": "n3-exertion",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n3-vegetable",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n3-open",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n3-polish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "ishi",
       "from_type": "radical",
       "to_slug": "n3-polish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hashiru-run",
+      "from_type": "radical",
+      "to_slug": "n3-rouse",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4005,6 +4131,13 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n3-ray",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hi-fire",
       "from_type": "radical",
       "to_slug": "n3-autumn",
@@ -4022,6 +4155,13 @@
       "from_slug": "fuyugashira",
       "from_type": "radical",
       "to_slug": "n3-winter",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mizukara",
+      "from_type": "radical",
+      "to_slug": "n3-summer",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4050,13 +4190,6 @@
       "from_slug": "tori-bird",
       "from_type": "radical",
       "to_slug": "n3-bird",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "bokuzukuri",
-      "from_type": "radical",
-      "to_slug": "n3-winter",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4196,13 +4329,6 @@
     {
       "from_slug": "ta",
       "from_type": "radical",
-      "to_slug": "n2-fishing",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ta",
-      "from_type": "radical",
       "to_slug": "n2-yellow",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -4327,6 +4453,34 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n2-hit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n2-extinguish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n2-simple",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n2-trouble",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hito",
       "from_type": "radical",
       "to_slug": "n2-transmit",
@@ -4407,13 +4561,6 @@
       "from_slug": "hito",
       "from_type": "radical",
       "to_slug": "n2-precipitous",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hito",
-      "from_type": "radical",
-      "to_slug": "n2-drought",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4588,13 +4735,6 @@
     {
       "from_slug": "hito",
       "from_type": "radical",
-      "to_slug": "n2-lack",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hito",
-      "from_type": "radical",
       "to_slug": "n2-engrave",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -4644,13 +4784,6 @@
     {
       "from_slug": "hito",
       "from_type": "radical",
-      "to_slug": "n2-salt",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hito",
-      "from_type": "radical",
       "to_slug": "n2-zero",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -4659,13 +4792,6 @@
       "from_slug": "hito",
       "from_type": "radical",
       "to_slug": "n2-baggage",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hito",
-      "from_type": "radical",
-      "to_slug": "n2-abdomen",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4791,13 +4917,6 @@
     {
       "from_slug": "mu",
       "from_type": "radical",
-      "to_slug": "n2-overthrow",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mu",
-      "from_type": "radical",
       "to_slug": "n2-picture",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -4840,13 +4959,6 @@
     {
       "from_slug": "ni",
       "from_type": "radical",
-      "to_slug": "n2-feelings",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
       "to_slug": "n2-submit",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -4861,21 +4973,7 @@
     {
       "from_slug": "ni",
       "from_type": "radical",
-      "to_slug": "n2-connection",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
       "to_slug": "n2-system",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-occasion",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4896,21 +4994,7 @@
     {
       "from_slug": "ni",
       "from_type": "radical",
-      "to_slug": "n2-guess",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
       "to_slug": "n2-perfect",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-row",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4924,28 +5008,7 @@
     {
       "from_slug": "ni",
       "from_type": "radical",
-      "to_slug": "n2-signpost",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-universal",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
       "to_slug": "n2-scatter",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-quiet",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -4980,21 +5043,7 @@
     {
       "from_slug": "ni",
       "from_type": "radical",
-      "to_slug": "n2-clear-up",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
       "to_slug": "n2-watch-over",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-ritual",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5009,13 +5058,6 @@
       "from_slug": "ni",
       "from_type": "radical",
       "to_slug": "n2-cloud",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n2-cramped",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5239,13 +5281,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n2-nothingness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n2-beforehand",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5282,20 +5317,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n2-nickname",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-politics",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-deliberation",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5366,20 +5387,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n2-ancestor",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-drought",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-connection",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5505,13 +5512,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n2-row",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n2-salary",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5534,13 +5534,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n2-sash",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-universal",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5624,13 +5617,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n2-salt",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n2-zero",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5666,13 +5652,6 @@
     {
       "from_slug": "ichi",
       "from_type": "radical",
-      "to_slug": "n2-abdomen",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
       "to_slug": "n2-tome",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5695,13 +5674,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n2-warmth",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n2-worship",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -5778,13 +5750,6 @@
     {
       "from_slug": "mata",
       "from_type": "radical",
-      "to_slug": "n2-he",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mata",
-      "from_type": "radical",
       "to_slug": "n2-plank",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5841,13 +5806,6 @@
     {
       "from_slug": "mata",
       "from_type": "radical",
-      "to_slug": "n2-waves",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mata",
-      "from_type": "radical",
       "to_slug": "n2-toil",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -5863,13 +5821,6 @@
       "from_slug": "mata",
       "from_type": "radical",
       "to_slug": "n2-angry",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mata",
-      "from_type": "radical",
-      "to_slug": "n2-exhausted",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6324,13 +6275,6 @@
     {
       "from_slug": "kuchi",
       "from_type": "radical",
-      "to_slug": "n2-jump",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kuchi",
-      "from_type": "radical",
       "to_slug": "n2-lake",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -6443,21 +6387,7 @@
     {
       "from_slug": "tatsu",
       "from_type": "radical",
-      "to_slug": "n2-happiness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tatsu",
-      "from_type": "radical",
       "to_slug": "n2-cry",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tatsu",
-      "from_type": "radical",
-      "to_slug": "n2-report",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6471,21 +6401,7 @@
     {
       "from_slug": "tatsu",
       "from_type": "radical",
-      "to_slug": "n2-resign",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tatsu",
-      "from_type": "radical",
       "to_slug": "n2-suitable",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tatsu",
-      "from_type": "radical",
-      "to_slug": "n2-spicy",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6527,35 +6443,7 @@
     {
       "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n2-jurisdiction",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
       "to_slug": "n2-submit",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-sort",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-petition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-accustomed",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6583,21 +6471,7 @@
     {
       "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n2-assets",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
       "to_slug": "n2-tax",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-expense",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6632,13 +6506,6 @@
     {
       "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n2-property",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
       "to_slug": "n2-harbor",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -6654,13 +6521,6 @@
       "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n2-accomplished",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-failure",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6695,21 +6555,7 @@
     {
       "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n2-trade",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
       "to_slug": "n2-suitable",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-trust",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6751,13 +6597,6 @@
     {
       "from_slug": "hachigashira",
       "from_type": "radical",
-      "to_slug": "n2-damage",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
       "to_slug": "n2-longing",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -6766,13 +6605,6 @@
       "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n2-bundle",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-deposit",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6798,37 +6630,9 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-place-on",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n2-melt",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ou-king",
       "from_type": "radical",
       "to_slug": "n2-whole",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n2-slow",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n2-deliberation",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6863,35 +6667,7 @@
     {
       "from_slug": "ou-king",
       "from_type": "radical",
-      "to_slug": "n2-distinction",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n2-beauty",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
       "to_slug": "n2-ambition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n2-esq",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ou-king",
-      "from_type": "radical",
-      "to_slug": "n2-accomplished",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -6899,6 +6675,440 @@
       "from_slug": "men-face",
       "from_type": "radical",
       "to_slug": "n2-mask",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-nothingness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-straightaway",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-quick",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-yesterday",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-bureaucrat",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-fruit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-submit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-wherefore",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-income",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-severance",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-grade",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-have-the",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-seethe",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-settle-debt",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-exist",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-placement",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-expense",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-agriculture",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-chase",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-end",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-price",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-exist-2",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-row",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-discipline",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-wife",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-trust",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-universal",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-practice",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-angle",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-bend",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-mail",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-bundle",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-go-between",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-counter-for-2",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-frozen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-tome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n2-worship",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-nothingness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-politics",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-admonish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-box",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-drought",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-number",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-no",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-set-free",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-calculate",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-failure",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-discipline",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-scatter",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-sheet-of",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-laugh",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-duplicate",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-simplicity",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-writing-brush",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-salt",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-abdomen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n2-token",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n2-nothingness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n2-sort-of",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n2-heat",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n2-burn",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n2-spot",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -7225,6 +7435,118 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-husband",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-lose",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-sort",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-reality",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-connection",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-difficult",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-beauty",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-utensil",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-heal",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-cause",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-interchange",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-laugh",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-exchange",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-heart",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-cramped",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n2-consume",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hitoyane",
       "from_type": "radical",
       "to_slug": "n2-husband",
@@ -7249,13 +7571,6 @@
       "from_slug": "hitoyane",
       "from_type": "radical",
       "to_slug": "n2-mingle",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n2-feelings",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -7297,21 +7612,7 @@
     {
       "from_slug": "hitoyane",
       "from_type": "radical",
-      "to_slug": "n2-attire",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
       "to_slug": "n2-suitable",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n2-quiet",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -7339,20 +7640,6 @@
     {
       "from_slug": "hitoyane",
       "from_type": "radical",
-      "to_slug": "n2-clear-up",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n2-sack",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
       "to_slug": "n2-romance",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -7368,13 +7655,6 @@
       "from_slug": "hitoyane",
       "from_type": "radical",
       "to_slug": "n2-consume",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n2-busy",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -7466,6 +7746,48 @@
       "from_slug": "sun",
       "from_type": "radical",
       "to_slug": "n2-token",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-leader",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-accept",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-impart",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-floating",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-milk",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n2-warmth",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -7666,244 +7988,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-promise",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-loom",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-tie",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-association",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-person-in",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-salary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-practice",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-entwine",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-picture",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-thong",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-introduce",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n2-green",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-promise",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-tie",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-petition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-sand",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-meadow",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-occasion",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-association",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-person-in",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-year-end",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-guess",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-heal",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-salary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-signpost",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-practice",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-entwine",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-picture",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-thong",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-introduce",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-second-1",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-ritual",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-green",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n2-refreshing",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ten",
       "from_type": "radical",
       "to_slug": "n2-promise",
@@ -8011,13 +8095,6 @@
     {
       "from_slug": "tsutsumu",
       "from_type": "radical",
-      "to_slug": "n2-nightfall",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsutsumu",
-      "from_type": "radical",
       "to_slug": "n2-admonish",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -8068,13 +8145,6 @@
       "from_slug": "tsutsumu",
       "from_type": "radical",
       "to_slug": "n2-angle",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsutsumu",
-      "from_type": "radical",
-      "to_slug": "n2-lack",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8380,6 +8450,244 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "itoko",
+      "from_type": "radical",
+      "to_slug": "n2-loom",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-loom",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-emotion",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-lose",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-turn-into",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-yesterday",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-grade",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-easy",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-kill",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-sand",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-seethe",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-system",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-settle-debt",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-lively",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-revelation",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-exist",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-person-in",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-year-end",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-guess",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-property",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-history",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-bridge",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-exist-2",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-acquiesce",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-engrave",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-linen",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-hope",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-mister",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-closed",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-watch-over",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-counter-for-2",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-dreadful",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-egg",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n2-warmth",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "gonben",
       "from_type": "radical",
       "to_slug": "n2-scribe",
@@ -8499,6 +8807,174 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-beforehand",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-deliberation",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-can",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-property",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-call",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-director",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-quiet",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-acquiesce",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-closed",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-deposit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-baggage",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-tome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-place-on",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n2-pay-respects",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ma-hook",
+      "from_type": "radical",
+      "to_slug": "n2-beforehand",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ma-hook",
+      "from_type": "radical",
+      "to_slug": "n2-pain",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ma-hook",
+      "from_type": "radical",
+      "to_slug": "n2-deposit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ma-hook",
+      "from_type": "radical",
+      "to_slug": "n2-jump",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-profit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-department",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-harmony",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-tax",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-laugh",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nogihen",
+      "from_type": "radical",
+      "to_slug": "n2-second-1",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "onna",
       "from_type": "radical",
       "to_slug": "n2-plan",
@@ -8578,13 +9054,6 @@
     {
       "from_slug": "ukanmuri",
       "from_type": "radical",
-      "to_slug": "n2-window",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ukanmuri",
-      "from_type": "radical",
       "to_slug": "n2-determine",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -8628,13 +9097,6 @@
       "from_slug": "ukanmuri",
       "from_type": "radical",
       "to_slug": "n2-lie-down",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ukanmuri",
-      "from_type": "radical",
-      "to_slug": "n2-melt",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8725,21 +9187,7 @@
     {
       "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n2-happiness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
       "to_slug": "n2-individual",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n2-descend",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8774,20 +9222,6 @@
     {
       "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n2-report",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n2-lively",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
       "to_slug": "n2-placement",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -8796,13 +9230,6 @@
       "from_slug": "juu",
       "from_type": "radical",
       "to_slug": "n2-posture",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n2-semi",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8837,13 +9264,6 @@
     {
       "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n2-resign",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
       "to_slug": "n2-suitable",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -8852,20 +9272,6 @@
       "from_slug": "juu",
       "from_type": "radical",
       "to_slug": "n2-graduate",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n2-lake",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "juu",
-      "from_type": "radical",
-      "to_slug": "n2-spicy",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8879,35 +9285,7 @@
     {
       "from_slug": "me",
       "from_type": "radical",
-      "to_slug": "n2-jurisdiction",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
       "to_slug": "n2-help",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-sort",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-petition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-accustomed",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8935,13 +9313,6 @@
     {
       "from_slug": "me",
       "from_type": "radical",
-      "to_slug": "n2-assets",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
       "to_slug": "n2-investigate",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -8956,35 +9327,7 @@
     {
       "from_slug": "me",
       "from_type": "radical",
-      "to_slug": "n2-placement",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-expense",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
       "to_slug": "n2-calculate",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-property",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-failure",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -8998,56 +9341,7 @@
     {
       "from_slug": "me",
       "from_type": "radical",
-      "to_slug": "n2-trade",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-trust",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-damage",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-breath",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-deposit",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
       "to_slug": "n2-watch-over",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-place-on",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n2-nose",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9110,13 +9404,6 @@
     {
       "from_slug": "tsuki",
       "from_type": "radical",
-      "to_slug": "n2-feelings",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuki",
-      "from_type": "radical",
       "to_slug": "n2-ability",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -9159,21 +9446,7 @@
     {
       "from_slug": "tsuki",
       "from_type": "radical",
-      "to_slug": "n2-quiet",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuki",
-      "from_type": "radical",
       "to_slug": "n2-angle",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuki",
-      "from_type": "radical",
-      "to_slug": "n2-clear-up",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9304,9 +9577,114 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "ukebako",
+      "from_type": "radical",
+      "to_slug": "n2-seat",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ukebako",
+      "from_type": "radical",
+      "to_slug": "n2-tooth",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "ukebako",
+      "from_type": "radical",
+      "to_slug": "n2-trouble",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "to-dipper",
       "from_type": "radical",
       "to_slug": "n2-department",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-return",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-dangerous",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-petition",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-plank",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-meadow",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-anti",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-equip",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-agriculture",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-storehouse",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-beach",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-curriculum",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n2-quake",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9320,21 +9698,7 @@
     {
       "from_slug": "hitoashi",
       "from_type": "radical",
-      "to_slug": "n2-nightfall",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoashi",
-      "from_type": "radical",
       "to_slug": "n2-celebrate",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoashi",
-      "from_type": "radical",
-      "to_slug": "n2-window",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9411,21 +9775,7 @@
     {
       "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n2-feelings",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
       "to_slug": "n2-diligence",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n2-surpass",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9475,34 +9825,6 @@
       "from_slug": "tsuchi",
       "from_type": "radical",
       "to_slug": "n2-park",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n2-quiet",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n2-overthrow",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n2-on-foot",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n2-clear-up",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9675,6 +9997,13 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "men-exempt",
+      "from_type": "radical",
+      "to_slug": "n2-nightfall",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "bokuzukuri",
       "from_type": "radical",
       "to_slug": "n2-politics",
@@ -9691,13 +10020,6 @@
     {
       "from_slug": "bokuzukuri",
       "from_type": "radical",
-      "to_slug": "n2-admonish",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "bokuzukuri",
-      "from_type": "radical",
       "to_slug": "n2-number",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -9706,13 +10028,6 @@
       "from_slug": "bokuzukuri",
       "from_type": "radical",
       "to_slug": "n2-set-free",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "bokuzukuri",
-      "from_type": "radical",
-      "to_slug": "n2-article",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9769,13 +10084,6 @@
       "from_slug": "tomeru",
       "from_type": "radical",
       "to_slug": "n2-curriculum",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tomeru",
-      "from_type": "radical",
-      "to_slug": "n2-jump",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -9990,97 +10298,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-jurisdiction",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-sort",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-petition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-accustomed",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-assets",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-expense",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-property",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-failure",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-trade",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-trust",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-damage",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-deposit",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n2-place-on",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "oogai",
       "from_type": "radical",
       "to_slug": "n2-jurisdiction",
@@ -10119,6 +10336,55 @@
       "from_slug": "oogai",
       "from_type": "radical",
       "to_slug": "n2-place-on",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-jurisdiction",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-dangerous",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-cool",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-report",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-welcome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-zero",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
+      "from_type": "radical",
+      "to_slug": "n2-egg",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -10259,20 +10525,6 @@
       "from_slug": "hi-spoon",
       "from_type": "radical",
       "to_slug": "n2-ability",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hi-spoon",
-      "from_type": "radical",
-      "to_slug": "n2-shoes",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hi-spoon",
-      "from_type": "radical",
-      "to_slug": "n2-change",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -10466,34 +10718,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kunigamae",
-      "from_type": "radical",
-      "to_slug": "n2-individual",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kunigamae",
-      "from_type": "radical",
-      "to_slug": "n2-park",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kunigamae",
-      "from_type": "radical",
-      "to_slug": "n2-cause",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kunigamae",
-      "from_type": "radical",
-      "to_slug": "n2-quandary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "shimesu",
       "from_type": "radical",
       "to_slug": "n2-blessing",
@@ -10571,6 +10795,41 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "tsukue",
+      "from_type": "radical",
+      "to_slug": "n2-grade",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsukue",
+      "from_type": "radical",
+      "to_slug": "n2-kill",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsukue",
+      "from_type": "radical",
+      "to_slug": "n2-duty",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsukue",
+      "from_type": "radical",
+      "to_slug": "n2-carrier",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsukue",
+      "from_type": "radical",
+      "to_slug": "n2-desk",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "shiro",
       "from_type": "radical",
       "to_slug": "n2-storey",
@@ -10644,6 +10903,27 @@
       "from_slug": "fudezukuri",
       "from_type": "radical",
       "to_slug": "n2-writing-brush",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kawa-skin",
+      "from_type": "radical",
+      "to_slug": "n2-he",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kawa-skin",
+      "from_type": "radical",
+      "to_slug": "n2-waves",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kawa-skin",
+      "from_type": "radical",
+      "to_slug": "n2-exhausted",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -10746,6 +11026,69 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-petition",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-sand",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-meadow",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-year-end",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-heal",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-second-1",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n2-refreshing",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hashiru-run",
+      "from_type": "radical",
+      "to_slug": "n2-surpass",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hashiru-run",
+      "from_type": "radical",
+      "to_slug": "n2-on-foot",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "mochiiru",
       "from_type": "radical",
       "to_slug": "n2-pain",
@@ -10788,6 +11131,34 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n2-dream",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n2-placement",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n2-ring",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n2-signature",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hi-fire",
       "from_type": "radical",
       "to_slug": "n2-burn",
@@ -10826,6 +11197,55 @@
       "from_slug": "haha",
       "from_type": "radical",
       "to_slug": "n2-accustomed",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-accustomed",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-assets",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-expense",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-property",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-failure",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-trade",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n2-damage",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -10956,27 +11376,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "mannaka",
-      "from_type": "radical",
-      "to_slug": "n2-even",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mannaka",
-      "from_type": "radical",
-      "to_slug": "n2-beach",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mannaka",
-      "from_type": "radical",
-      "to_slug": "n2-worship",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ya",
       "from_type": "radical",
       "to_slug": "n2-authority",
@@ -11001,6 +11400,55 @@
       "from_slug": "boku-divination",
       "from_type": "radical",
       "to_slug": "n2-egg",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-settle-debt",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-calculate",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-wheel",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-scatter",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-tome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-contraption",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n2-nose",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11103,6 +11551,27 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "mizukara",
+      "from_type": "radical",
+      "to_slug": "n2-tenderness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mizukara",
+      "from_type": "radical",
+      "to_slug": "n2-breath",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mizukara",
+      "from_type": "radical",
+      "to_slug": "n2-nose",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hiyominotori",
       "from_type": "radical",
       "to_slug": "n2-distribute",
@@ -11201,6 +11670,20 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "mannaka",
+      "from_type": "radical",
+      "to_slug": "n2-beach",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "mannaka",
+      "from_type": "radical",
+      "to_slug": "n2-worship",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "ko",
       "from_type": "radical",
       "to_slug": "n2-exist-2",
@@ -11222,16 +11705,23 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "uma",
+      "from_slug": "kunigamae",
       "from_type": "radical",
-      "to_slug": "n2-horse",
+      "to_slug": "n2-cause",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ireru",
+      "from_slug": "kunigamae",
       "from_type": "radical",
-      "to_slug": "n2-crowded",
+      "to_slug": "n2-quandary",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "uma",
+      "from_type": "radical",
+      "to_slug": "n2-horse",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11337,6 +11827,13 @@
       "from_slug": "mushi",
       "from_type": "radical",
       "to_slug": "n2-insect",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakogamae",
+      "from_type": "radical",
+      "to_slug": "n2-equal",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11462,21 +11959,7 @@
     {
       "from_slug": "tsuchi",
       "from_type": "radical",
-      "to_slug": "n1-doth",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
       "to_slug": "n1-pledge",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "tsuchi",
-      "from_type": "radical",
-      "to_slug": "n1-purport",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11588,13 +12071,6 @@
     {
       "from_slug": "mu",
       "from_type": "radical",
-      "to_slug": "n1-doth",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "mu",
-      "from_type": "radical",
       "to_slug": "n1-bear",
       "to_type": "kanji",
       "relationship_type": "builds_on"
@@ -11607,23 +12083,16 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "nijuuashi",
+      "from_type": "radical",
+      "to_slug": "n1-valve",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hitoyane",
       "from_type": "radical",
       "to_slug": "n1-elementary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n1-demolition",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hitoyane",
-      "from_type": "radical",
-      "to_slug": "n1-praise",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11684,34 +12153,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n1-elementary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n1-overall",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n1-winding",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "itoko",
-      "from_type": "radical",
-      "to_slug": "n1-slacken",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ni",
       "from_type": "radical",
       "to_slug": "n1-elementary",
@@ -11729,13 +12170,6 @@
       "from_slug": "ni",
       "from_type": "radical",
       "to_slug": "n1-pledge",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ni",
-      "from_type": "radical",
-      "to_slug": "n1-me",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11768,69 +12202,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-elementary",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-uncle",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-praise",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-overall",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-source",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-winding",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-slacken",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-loneliness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "shou",
-      "from_type": "radical",
-      "to_slug": "n1-broil",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "juu",
       "from_type": "radical",
       "to_slug": "n1-demolition",
@@ -11854,14 +12225,28 @@
     {
       "from_slug": "juu",
       "from_type": "radical",
-      "to_slug": "n1-soup",
+      "to_slug": "n1-saltiness",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "juu",
+      "from_slug": "kau-buy",
       "from_type": "radical",
-      "to_slug": "n1-saltiness",
+      "to_slug": "n1-demolition",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n1-cartoon",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kau-buy",
+      "from_type": "radical",
+      "to_slug": "n1-rather",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11890,6 +12275,41 @@
       "from_slug": "koromo",
       "from_type": "radical",
       "to_slug": "n1-flourish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n1-ego",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n1-righteousness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n1-street",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n1-rather",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hakenobou",
+      "from_type": "radical",
+      "to_slug": "n1-chair",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -11971,125 +12391,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-stubborn",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-righteousness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-benefit",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-entertain",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-undress",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-enemy",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-dislike",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-me",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-chess-piece",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-lead",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-glad",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-stick",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-boisterous",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-itchy",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-envious",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-spider",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "hachigashira",
-      "from_type": "radical",
-      "to_slug": "n1-flourish",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "hitoashi",
       "from_type": "radical",
       "to_slug": "n1-stubborn",
@@ -12125,55 +12426,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n1-stubborn",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n1-stick",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kai-shell",
-      "from_type": "radical",
-      "to_slug": "n1-flourish",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n1-stubborn",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n1-eyeball",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n1-stick",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "me",
-      "from_type": "radical",
-      "to_slug": "n1-flourish",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "oogai",
       "from_type": "radical",
       "to_slug": "n1-stubborn",
@@ -12184,20 +12436,6 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n1-length",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n1-righteousness",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "ichi",
-      "from_type": "radical",
-      "to_slug": "n1-benefit",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -12254,6 +12492,55 @@
       "from_slug": "ichi",
       "from_type": "radical",
       "to_slug": "n1-chair",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-length",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-slacken",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-portable",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-longevity",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-broil",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-cough",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "no-slide",
+      "from_type": "radical",
+      "to_slug": "n1-spider",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -12426,6 +12713,41 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n1-uncle",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n1-praise",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n1-source",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n1-loneliness",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou",
+      "from_type": "radical",
+      "to_slug": "n1-broil",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "hito",
       "from_type": "radical",
       "to_slug": "n1-praise",
@@ -12720,6 +13042,27 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n1-faction",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n1-stern",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "gandare",
+      "from_type": "radical",
+      "to_slug": "n1-source",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "ono",
       "from_type": "radical",
       "to_slug": "n1-faction",
@@ -12811,56 +13154,119 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitsuji",
+      "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n1-righteousness",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitsuji",
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-benefit",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-entertain",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-undress",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-enemy",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-dislike",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n1-me",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitsuji",
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-chess-piece",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-glad",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-boisterous",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n1-itchy",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "hitsuji",
+      "from_slug": "hachigashira",
       "from_type": "radical",
       "to_slug": "n1-envious",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ou-king",
+      "from_slug": "hachigashira",
+      "from_type": "radical",
+      "to_slug": "n1-spider",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hitsuji",
       "from_type": "radical",
       "to_slug": "n1-righteousness",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ou-king",
+      "from_slug": "hitsuji",
       "from_type": "radical",
       "to_slug": "n1-me",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ou-king",
+      "from_slug": "hitsuji",
       "from_type": "radical",
       "to_slug": "n1-itchy",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "ou-king",
+      "from_slug": "hitsuji",
       "from_type": "radical",
       "to_slug": "n1-envious",
       "to_type": "kanji",
@@ -12883,14 +13289,49 @@
     {
       "from_slug": "bokuzukuri",
       "from_type": "radical",
+      "to_slug": "n1-enemy",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n1-stern",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n1-doth",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
       "to_slug": "n1-wonder",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "bokuzukuri",
+      "from_slug": "kanamuri",
       "from_type": "radical",
       "to_slug": "n1-enemy",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n1-perusal",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kanamuri",
+      "from_type": "radical",
+      "to_slug": "n1-chopsticks",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -12905,6 +13346,13 @@
       "from_slug": "mimi",
       "from_type": "radical",
       "to_slug": "n1-purport",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "shou-esteem",
+      "from_type": "radical",
+      "to_slug": "n1-stern",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -13007,9 +13455,51 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n1-pledge",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n1-me",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n1-burdensome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n1-sigh",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "dai-big",
+      "from_type": "radical",
+      "to_slug": "n1-chair",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "katana",
       "from_type": "radical",
       "to_slug": "n1-pledge",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "tsume",
+      "from_type": "radical",
+      "to_slug": "n1-slacken",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -13056,6 +13546,34 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n1-splendor",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n1-dislike",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "bou-stick",
+      "from_type": "radical",
+      "to_slug": "n1-spider",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "rekka",
+      "from_type": "radical",
+      "to_slug": "n1-bear",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "fuyugashira",
       "from_type": "radical",
       "to_slug": "n1-wonder",
@@ -13080,6 +13598,13 @@
       "from_slug": "uma",
       "from_type": "radical",
       "to_slug": "n1-burdensome",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "hashiru-run",
+      "from_type": "radical",
+      "to_slug": "n1-purport",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
@@ -13189,13 +13714,6 @@
       "relationship_type": "builds_on"
     },
     {
-      "from_slug": "nisui",
-      "from_type": "radical",
-      "to_slug": "n1-flip",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
       "from_slug": "ta",
       "from_type": "radical",
       "to_slug": "n1-flip",
@@ -13225,6 +13743,13 @@
     },
     {
       "from_slug": "konzukuri",
+      "from_type": "radical",
+      "to_slug": "n1-eyeball",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "me",
       "from_type": "radical",
       "to_slug": "n1-eyeball",
       "to_type": "kanji",
@@ -13357,6 +13882,20 @@
       "relationship_type": "builds_on"
     },
     {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n1-stick",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "kai-shell",
+      "from_type": "radical",
+      "to_slug": "n1-flourish",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
       "from_slug": "yamaidare",
       "from_type": "radical",
       "to_slug": "n1-itchy",
@@ -13365,6 +13904,13 @@
     },
     {
       "from_slug": "ishi",
+      "from_type": "radical",
+      "to_slug": "n1-porcelain-bowl",
+      "to_type": "kanji",
+      "relationship_type": "builds_on"
+    },
+    {
+      "from_slug": "warifu",
       "from_type": "radical",
       "to_slug": "n1-porcelain-bowl",
       "to_type": "kanji",
@@ -13388,13 +13934,6 @@
       "from_slug": "ya",
       "from_type": "radical",
       "to_slug": "n1-spider-2",
-      "to_type": "kanji",
-      "relationship_type": "builds_on"
-    },
-    {
-      "from_slug": "kunigamae",
-      "from_type": "radical",
-      "to_slug": "n1-saltiness",
       "to_type": "kanji",
       "relationship_type": "builds_on"
     },
