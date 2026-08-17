@@ -385,7 +385,7 @@ Three things the plan got wrong, corrected by the build:
 8,500 words and rebanding N3+ renumbers `items.id` across the corpus again.
 Still nothing remaps an installed `user.db`.
 
-### Phase E — author
+### Phase E — author — **in progress; N5 radical layer done 2026-08-17**
 
 Two independent tracks, neither blocking the other.
 
@@ -403,6 +403,23 @@ Two independent tracks, neither blocking the other.
 
 The prose debt does not scale with the skeleton. A mnemonic is owed when a
 learner *reaches* an item, never because it exists.
+
+**Track 1 progress.** The 14 N5 radicals are authored and ingested — subagent
+lane, `sonnet-5`, four groups of ≤4, every slug passing the gate on attempt 1
+with no repair. The queue is now 10 N4 radicals and 173 kanji. Layer order holds:
+the N4 radicals go next, then `generate.py --bands`, then the kanji.
+
+**The runbook's Step 1a auto-select does not survive the reband.** It calls a
+slug done when a draft sits in `drafts/mnemonics/<level>/<type>/`, but drafts are
+filed under the level an item had when it was written, while `all_slugs` reads
+the rebanded level file. 186 drafts are in the wrong folder, and the 30 skeleton
+kanji re-slugged `n3-private` → `k-private` are unreachable under either name. Run
+as written it selects 91 N5 kanji instead of 55 and regenerates ~200 authored
+items over reviewed prose. Only the drafts drifted — `write_sidecar` is already
+band-aware and keys by source dataset. This run was driven from
+`reports/kanji-priority.json` instead, which reads the shipped curriculum and is
+what this phase names as its queue. Fix before the kanji layers: test the
+sidecar, not the drafts — the sidecar is checked in and would not drift again.
 
 ## Interaction with the mnemonic pipeline
 

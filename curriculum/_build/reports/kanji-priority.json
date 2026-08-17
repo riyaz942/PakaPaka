@@ -1,5 +1,5 @@
 {
-  "radicals_pending": 24,
+  "radicals_pending": 10,
   "kanji_pending": 173,
   "coverage_curve": [
     {
@@ -29,118 +29,6 @@
     }
   ],
   "radicals": [
-    {
-      "slug": "tooth",
-      "form": "歯",
-      "meaning": "tooth",
-      "level": "n5",
-      "sort_order": 69,
-      "authored": false
-    },
-    {
-      "slug": "not",
-      "form": "勿",
-      "meaning": "not",
-      "level": "n5",
-      "sort_order": 70,
-      "authored": false
-    },
-    {
-      "slug": "eat",
-      "form": "食",
-      "meaning": "eat",
-      "level": "n5",
-      "sort_order": 72,
-      "authored": false
-    },
-    {
-      "slug": "beginning",
-      "form": "元",
-      "meaning": "beginning",
-      "level": "n5",
-      "sort_order": 81,
-      "authored": false
-    },
-    {
-      "slug": "long-stride",
-      "form": "廴",
-      "meaning": "long stride or stretching",
-      "level": "n5",
-      "sort_order": 92,
-      "authored": false
-    },
-    {
-      "slug": "separate",
-      "form": "釆",
-      "meaning": "separate",
-      "level": "n5",
-      "sort_order": 93,
-      "authored": false
-    },
-    {
-      "slug": "family-name",
-      "form": "氏",
-      "meaning": "family name",
-      "level": "n5",
-      "sort_order": 94,
-      "authored": false
-    },
-    {
-      "slug": "wind",
-      "form": "風",
-      "meaning": "wind",
-      "level": "n5",
-      "sort_order": 97,
-      "authored": false
-    },
-    {
-      "slug": "nothingness",
-      "form": "無",
-      "meaning": "nothingness",
-      "level": "n5",
-      "sort_order": 108,
-      "authored": false
-    },
-    {
-      "slug": "head",
-      "form": "疋",
-      "meaning": "head",
-      "level": "n5",
-      "sort_order": 111,
-      "authored": false
-    },
-    {
-      "slug": "sound",
-      "form": "音",
-      "meaning": "sound",
-      "level": "n5",
-      "sort_order": 113,
-      "authored": false
-    },
-    {
-      "slug": "compare",
-      "form": "比",
-      "meaning": "compare",
-      "level": "n5",
-      "sort_order": 115,
-      "authored": false
-    },
-    {
-      "slug": "pike",
-      "form": "殳",
-      "meaning": "pike",
-      "level": "n5",
-      "sort_order": 117,
-      "authored": false
-    },
-    {
-      "slug": "first-time",
-      "form": "初",
-      "meaning": "first time",
-      "level": "n5",
-      "sort_order": 118,
-      "authored": false
-    },
     {
       "slug": "generation",
       "form": "世",
