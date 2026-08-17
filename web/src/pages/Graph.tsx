@@ -4,6 +4,7 @@ import { DependencyGraph } from '../components/DependencyGraph';
 import { useApi } from '../hooks/useApi';
 import {
   CONTENT_TYPE_LABELS,
+  JLPT_LEVELS,
   type BuildOrderRow,
   type ContentType,
   type GraphLevelResponse,
@@ -12,7 +13,7 @@ import {
 } from '../types/api';
 
 const GRAPH_TYPES: ContentType[] = ['radical', 'kanji', 'vocabulary', 'grammar'];
-const LEVELS: JlptLevel[] = ['N5', 'N4'];
+const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 
 const REASON_LABELS: Record<string, string> = {
   missing: 'missing',

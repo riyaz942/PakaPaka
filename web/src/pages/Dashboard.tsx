@@ -21,6 +21,7 @@ import { guideHref, stageIdForTypeGap } from '../lib/guide';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
+  JLPT_LEVELS,
   STATUS_LABELS,
   type ContentListItem,
   type ContentType,
@@ -38,7 +39,7 @@ const STATUS_COLORS: Record<ReviewStatus, string> = {
   none: '#565f89',
 };
 
-const LEVELS: JlptLevel[] = ['N5', 'N4'];
+const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 
 type DraftGroup = {
   key: string;

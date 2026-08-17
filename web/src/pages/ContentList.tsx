@@ -11,6 +11,7 @@ import { listContextSearch } from '../lib/listContext';
 import {
   CONTENT_TYPE_LABELS,
   CONTENT_TYPES,
+  JLPT_LEVELS,
   MISSING_FIELD_OPTIONS,
   STATUS_LABELS,
   type ContentListItem,
@@ -22,7 +23,7 @@ import {
   type ReviewStatus,
 } from '../types/api';
 
-const LEVEL_OPTIONS: Array<JlptLevel | ''> = ['', 'N5', 'N4'];
+const LEVEL_OPTIONS: Array<JlptLevel | ''> = ['', ...JLPT_LEVELS];
 const STATUSES: ReviewStatus[] = ['draft', 'reviewed', 'flagged_for_rewrite', 'none'];
 const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: '', label: 'Any audit status' },
@@ -33,10 +34,16 @@ const AUDIT_OPTIONS: Array<{ value: string; label: string }> = [
 ];
 const SEARCH_DEBOUNCE_MS = 300;
 
-// Per list URL (path + query): where the user was scrolled, so navigating to a
-// detail page and back restores it. Keyed off the full search string, so it
-// only applies to the same filters/sort.
-const listScrollMemory = new Map<string, number>();
+// Rows rendered per page. The whole filtered set arrives in one response — this
+// only caps how much of it is in the DOM at once, because a full vocabulary
+// list is ~9,700 rows and rendering all of them janks the page.
+const PAGE_SIZE = 500;
+
+// Per list URL (path + query): where the user was scrolled and how many pages
+// were open, so navigating to a detail page and back restores both. Keyed off
+// the full search string, so it only applies to the same filters/sort.
+type ListPosition = { scrollY: number; visibleCount: number };
+const listScrollMemory = new Map<string, ListPosition>();
 
 const SORT_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'sort_order', label: 'Sort order' },
@@ -122,6 +129,7 @@ export default function ContentList() {
   const [bulkError, setBulkError] = useState<string | null>(null);
 
   const [items, setItems] = useState<ContentListItem[]>([]);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [listStatus, setListStatus] = useState<'loading' | 'ok' | 'error'>('loading');
   const [listError, setListError] = useState<string | null>(null);
   const [restorePending, setRestorePending] = useState(false);
@@ -190,6 +198,7 @@ export default function ContentList() {
     setListStatus('loading');
     setListError(null);
     setItems([]);
+    setVisibleCount(PAGE_SIZE);
     // One request for the whole filtered list — the server reads it off local
     // disk, so there is nothing to page in.
     fetchItems(`/api/items?${filterQs}`)
@@ -210,28 +219,60 @@ export default function ContentList() {
   }, [requestKey, filterQs]);
 
   // Restore once the real rows are rendered (not the skeleton), then stop
-  // suppressing saves so further scrolling is tracked again.
+  // suppressing saves so further scrolling is tracked again. Two passes when
+  // the saved position sat past the first page: the rows have to exist before
+  // a scroll can land on them, so reopen the pages first and re-run.
   useEffect(() => {
     if (!restorePending) return;
-    const saved = listScrollMemory.get(scrollKey) ?? 0;
-    if (saved > 0) window.scrollTo(0, saved);
+    const saved = listScrollMemory.get(scrollKey);
+    if (saved && saved.visibleCount > visibleCount) {
+      setVisibleCount(saved.visibleCount);
+      return;
+    }
+    if (saved && saved.scrollY > 0) window.scrollTo(0, saved.scrollY);
     setRestorePending(false);
     canSaveScrollRef.current = true;
-  }, [restorePending, scrollKey]);
+  }, [restorePending, scrollKey, visibleCount]);
 
   useEffect(() => {
-    function handleScroll() {
+    function save() {
       if (!canSaveScrollRef.current) return;
-      listScrollMemory.set(scrollKey, window.scrollY);
+      listScrollMemory.set(scrollKey, { scrollY: window.scrollY, visibleCount });
     }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollKey]);
+    // Also once per page opened: the last page can open without a scroll event
+    // after it, and an unrecorded page makes the restore land short.
+    save();
+    window.addEventListener('scroll', save, { passive: true });
+    return () => window.removeEventListener('scroll', save);
+  }, [scrollKey, visibleCount]);
+
+  const shownItems = items.slice(0, visibleCount);
+  const hasMore = visibleCount < items.length;
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  // Next page opens as the sentinel nears the viewport. Held off during a
+  // restore, which is mid-flight setting the count itself.
+  useEffect(() => {
+    if (!hasMore || restorePending) return;
+    const node = sentinelRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        setVisibleCount((count) => Math.min(count + PAGE_SIZE, items.length));
+      },
+      { rootMargin: '600px' },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasMore, restorePending, items.length]);
 
   const missingOptions = MISSING_FIELD_OPTIONS[type];
   const detailSearch = listContextSearch(searchParams);
 
-  const visibleSlugs = items.map((item) => item.slug);
+  // Header checkbox covers the rows on screen, not the whole filtered set —
+  // bulk status writes files, so it must not reach rows the user never saw.
+  const visibleSlugs = shownItems.map((item) => item.slug);
   const allSelected = visibleSlugs.length > 0 && visibleSlugs.every((s) => selected.has(s));
 
   function toggleSelectAll() {
@@ -434,7 +475,9 @@ export default function ContentList() {
       {listStatus === 'ok' ? (
         <>
           <p className="panel-muted">
-            {items.length} item{items.length === 1 ? '' : 's'}
+            {hasMore
+              ? `Showing ${shownItems.length} of ${items.length} items`
+              : `${items.length} item${items.length === 1 ? '' : 's'}`}
           </p>
           {items.length === 0 ? (
             <p className="panel-muted">No items match these filters.</p>
@@ -464,7 +507,7 @@ export default function ContentList() {
                     </tr>
                   </thead>
                   <tbody>
-                    {items.map((item, index) => {
+                    {shownItems.map((item, index) => {
                       // The first unfilled field decides where "how do I fix this
                       // percentage" points — they are listed in generation order.
                       const firstMissing = item.completeness.missing[0];
@@ -539,8 +582,14 @@ export default function ContentList() {
                 </table>
               </div>
 
-              <div className="list-end">
-                <span className="panel-muted">End of list</span>
+              <div className="list-end" ref={sentinelRef}>
+                {hasMore ? (
+                  <span className="panel-muted">
+                    Loading {Math.min(PAGE_SIZE, items.length - shownItems.length)} more…
+                  </span>
+                ) : (
+                  <span className="panel-muted">End of list</span>
+                )}
               </div>
             </>
           )}

@@ -23,6 +23,7 @@ import { runCompile, runValidate } from './pipeline.js';
 import {
   isSkeleton,
   itemKey,
+  JLPT_LEVELS,
   SKELETON_THRESHOLD,
   type ContentItem,
   type ContentType,
@@ -48,7 +49,7 @@ const CONTENT_TYPES: ContentType[] = [
   'reading',
 ];
 
-const LEVELS: JlptLevel[] = ['N5', 'N4'];
+const LEVELS: readonly JlptLevel[] = JLPT_LEVELS;
 
 const STATUSES: ReviewStatus[] = [
   'draft',
@@ -345,10 +346,12 @@ export function createCurriculumRouter(
     >;
 
     for (const type of CONTENT_TYPES) {
-      byTypeLevel[type] = {
-        N5: emptyBucket(targets.N5[targetKeyForType(type)]),
-        N4: emptyBucket(targets.N4[targetKeyForType(type)]),
-      };
+      byTypeLevel[type] = {} as Record<JlptLevel, OverviewBucket>;
+      for (const level of LEVELS) {
+        byTypeLevel[type][level] = emptyBucket(
+          targets[level][targetKeyForType(type)],
+        );
+      }
     }
 
     for (const item of index.items) {
@@ -399,7 +402,10 @@ export function createCurriculumRouter(
 
     const byTypeLevel = {} as Record<ContentType, Record<JlptLevel, GapBucket>>;
     for (const type of CONTENT_TYPES) {
-      byTypeLevel[type] = { N5: emptyGapBucket(type), N4: emptyGapBucket(type) };
+      byTypeLevel[type] = {} as Record<JlptLevel, GapBucket>;
+      for (const level of LEVELS) {
+        byTypeLevel[type][level] = emptyGapBucket(type);
+      }
     }
 
     for (const item of index.items) {

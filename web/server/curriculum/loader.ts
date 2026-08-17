@@ -3,6 +3,7 @@ import path from 'node:path';
 import { computeCompleteness } from './completeness.js';
 import {
   itemKey,
+  JLPT_LEVELS,
   type ContentItem,
   type ContentType,
   type CurriculumIndex,
@@ -60,7 +61,9 @@ function discoverShippedFiles(curriculumDir: string): string[] {
 }
 
 function parseLevel(value: unknown): JlptLevel {
-  if (value === 'N5' || value === 'N4') return value;
+  if (typeof value === 'string' && (JLPT_LEVELS as readonly string[]).includes(value)) {
+    return value as JlptLevel;
+  }
   throw new Error(`Unsupported jlpt_level: ${String(value)}`);
 }
 
@@ -195,6 +198,14 @@ export function reload(root: string): CurriculumIndex {
 
 export function loadTargets(webRoot: string): TargetsFile {
   const filePath = path.join(webRoot, 'targets.json');
-  const raw = readJson<TargetsFile & { _comment?: string }>(filePath);
-  return { N5: raw.N5, N4: raw.N4 };
+  const raw = readJson<Partial<TargetsFile> & { _comment?: string }>(filePath);
+  const targets = {} as TargetsFile;
+  for (const level of JLPT_LEVELS) {
+    const entry = raw[level];
+    if (!entry) {
+      throw new Error(`targets.json is missing an entry for ${level}`);
+    }
+    targets[level] = entry;
+  }
+  return targets;
 }

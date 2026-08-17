@@ -5,7 +5,10 @@ export type ContentType =
   | 'grammar'
   | 'reading';
 
-export type JlptLevel = 'N5' | 'N4';
+/** Curriculum teaching order. N3–N1 ship as skeleton (kanji-coverage plan Phase 2). */
+export const JLPT_LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1'] as const;
+
+export type JlptLevel = (typeof JLPT_LEVELS)[number];
 
 export type ReviewStatus =
   | 'draft'
@@ -72,10 +75,7 @@ export type LevelTargets = {
   readings: number;
 };
 
-export type TargetsFile = {
-  N5: LevelTargets;
-  N4: LevelTargets;
-};
+export type TargetsFile = Record<JlptLevel, LevelTargets>;
 
 export type CurriculumIndex = {
   items: ContentItem[];

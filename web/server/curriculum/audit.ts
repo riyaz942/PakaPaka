@@ -21,6 +21,11 @@ export type AuditSummary = {
   byCheck: { check: string; totals: SeverityTotals }[];
 };
 
+/**
+ * Authored levels only. audit_shipped.py skips N3–N1 by default because they
+ * ship as item-list skeletons — no mnemonics, examples or art — so every
+ * content check would fire on all of them.
+ */
 const REPORT_LEVELS: { level: JlptLevel; fileSuffix: string }[] = [
   { level: 'N5', fileSuffix: 'n5' },
   { level: 'N4', fileSuffix: 'n4' },

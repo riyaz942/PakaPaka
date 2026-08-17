@@ -21,10 +21,15 @@ import {
   type JlptLevel,
 } from '../types/api';
 
+/**
+ * Authored levels only — deliberately not every JlptLevel. Every stage here
+ * writes mnemonics, examples, grammar or passages, and N3–N1 ship as
+ * item-list skeletons that none of those stages produce.
+ */
 const LEVELS: JlptLevel[] = ['N5', 'N4'];
 
 function isLevel(value: string | null): value is JlptLevel {
-  return value === 'N5' || value === 'N4';
+  return LEVELS.includes(value as JlptLevel);
 }
 
 /** Missing count for one produced field, or null while gaps are loading. */
