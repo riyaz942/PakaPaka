@@ -1,69 +1,36 @@
-import { resolvePromptType } from './promptResolver';
-import type { SRSState } from './srs.types';
-
-function makeSrsState(reps: number): SRSState {
-  return {
-    itemId: 'test-id',
-    stability: 1,
-    difficulty: 5,
-    dueDate: new Date().toISOString(),
-    fsrsState: 'new',
-    reps,
-    lapses: 0,
-    learningSteps: 0,
-    isBurned: false,
-    srsStageLabel: 'apprentice',
-    lastReviewedAt: null,
-    updatedAt: new Date().toISOString(),
-  };
-}
+import { isVocabularyReadingUnlocked, resolvePromptType } from './promptResolver';
 
 describe('resolvePromptType', () => {
-  describe('radical', () => {
-    it('always returns meaning regardless of reps', () => {
-      expect(resolvePromptType('radical', makeSrsState(0), '二')).toBe('meaning');
-      expect(resolvePromptType('radical', makeSrsState(1), '二')).toBe('meaning');
-      expect(resolvePromptType('radical', makeSrsState(5), '二')).toBe('meaning');
-    });
+  it('asks radicals for their meaning', () => {
+    expect(resolvePromptType('radical')).toBe('meaning');
   });
 
-  describe('kanji', () => {
-    it('always returns meaning regardless of parity — the queue builder emits the paired reading card (Story 1.1)', () => {
-      expect(resolvePromptType('kanji', makeSrsState(0), '一')).toBe('meaning');
-      expect(resolvePromptType('kanji', makeSrsState(1), '一')).toBe('meaning');
-      expect(resolvePromptType('kanji', makeSrsState(2), '一')).toBe('meaning');
-      expect(resolvePromptType('kanji', makeSrsState(10), '一')).toBe('meaning');
-    });
+  it('asks grammar for production', () => {
+    expect(resolvePromptType('grammar')).toBe('production');
   });
 
-  describe('vocabulary', () => {
-    it('returns reading when reps is even', () => {
-      expect(resolvePromptType('vocabulary', makeSrsState(0), '食べる')).toBe('reading');
-      expect(resolvePromptType('vocabulary', makeSrsState(4), '食べる')).toBe('reading');
-    });
-
-    it('returns meaning when reps is odd', () => {
-      expect(resolvePromptType('vocabulary', makeSrsState(1), '食べる')).toBe('meaning');
-      expect(resolvePromptType('vocabulary', makeSrsState(7), '食べる')).toBe('meaning');
-    });
-
-    it('always returns meaning for kana-only vocabulary regardless of parity', () => {
-      expect(resolvePromptType('vocabulary', makeSrsState(0), 'これ')).toBe('meaning');
-      expect(resolvePromptType('vocabulary', makeSrsState(1), 'これ')).toBe('meaning');
-      expect(resolvePromptType('vocabulary', makeSrsState(2), 'あなた')).toBe('meaning');
-      expect(resolvePromptType('vocabulary', makeSrsState(6), 'カメラ')).toBe('meaning');
-    });
-
-    it('treats mixed kanji-kana forms as kanji vocabulary', () => {
-      expect(resolvePromptType('vocabulary', makeSrsState(0), '食べる')).toBe('reading');
-    });
+  it('asks kanji for their meaning — the queue builder emits the paired reading card', () => {
+    expect(resolvePromptType('kanji')).toBe('meaning');
   });
 
-  describe('grammar', () => {
-    it('always returns production regardless of reps', () => {
-      expect(resolvePromptType('grammar', makeSrsState(0), '〜です')).toBe('production');
-      expect(resolvePromptType('grammar', makeSrsState(3), '〜です')).toBe('production');
-      expect(resolvePromptType('grammar', makeSrsState(100), '〜です')).toBe('production');
-    });
+  it('asks vocabulary for its meaning: rep parity is gone (v2 rule 2)', () => {
+    expect(resolvePromptType('vocabulary')).toBe('meaning');
+  });
+});
+
+describe('isVocabularyReadingUnlocked', () => {
+  it('is false while any kanji in the word is unlearned (v2 rule 1)', () => {
+    expect(isVocabularyReadingUnlocked('写真', ['写', '真'])).toBe(false);
+    expect(isVocabularyReadingUnlocked('写真', ['真'])).toBe(false);
+  });
+
+  it('is true once every kanji in the word is learned', () => {
+    expect(isVocabularyReadingUnlocked('写真', [])).toBe(true);
+    expect(isVocabularyReadingUnlocked('食べる', [])).toBe(true);
+  });
+
+  it('is false for kana-only vocabulary — its reading is its surface form', () => {
+    expect(isVocabularyReadingUnlocked('これ', [])).toBe(false);
+    expect(isVocabularyReadingUnlocked('カメラ', [])).toBe(false);
   });
 });

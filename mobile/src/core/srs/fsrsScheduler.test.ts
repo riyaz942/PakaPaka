@@ -280,3 +280,34 @@ describe('gradeItem burn transition', () => {
     expect(result.srsStageLabel).toBe('burned');
   });
 });
+
+describe('master cap (v2 rule 3)', () => {
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  const intervalDays = (state: SRSState) =>
+    (new Date(state.dueDate).getTime() - NOW.getTime()) / DAY_MS;
+
+  it('never lets a capped item cross the master ceiling, in stability or interval', () => {
+    // Start well inside master and grade Easy repeatedly: uncapped this runs
+    // away to enlightened and then burned.
+    let state = makeState({ stability: 100, difficulty: 1, reps: 20, fsrsState: 'review' });
+    for (let i = 0; i < 10; i++) {
+      state = gradeItem(state, 4, NOW, { capAtMaster: true });
+      expect(state.stability).toBeLessThan(120);
+      expect(intervalDays(state)).toBeLessThanOrEqual(120);
+      expect(state.srsStageLabel).toBe('master');
+      expect(state.isBurned).toBe(false);
+    }
+  });
+
+  it('leaves a capped item below the ceiling untouched', () => {
+    const state = makeState({ stability: 30, reps: 10, fsrsState: 'review' });
+    expect(gradeItem(state, 3, NOW, { capAtMaster: true })).toEqual(gradeItem(state, 3, NOW));
+  });
+
+  it('lets an uncapped item climb past master', () => {
+    const state = makeState({ stability: 100, difficulty: 1, reps: 20, fsrsState: 'review' });
+    const result = gradeItem(state, 4, NOW);
+    expect(result.stability).toBeGreaterThanOrEqual(120);
+    expect(result.srsStageLabel).toBe('enlightened');
+  });
+});

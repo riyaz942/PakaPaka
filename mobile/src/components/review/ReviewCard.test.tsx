@@ -628,3 +628,46 @@ describe('ReviewCard — two-card kanji affordance (FR81)', () => {
     expect(screen.getByText('Why items come back')).toBeTruthy();
   });
 });
+
+describe('ReviewCard — reading-locked vocabulary (v2 rules 1/3/5)', () => {
+  function makeLockedWord(overrides: Partial<ReviewItem> = {}): ReviewItem {
+    return makeItem({
+      itemType: 'vocabulary',
+      primaryForm: '写真',
+      furigana: '写[しゃ]真[しん]',
+      promptType: 'meaning',
+      displayMeaning: 'photograph',
+      readingLocked: true,
+      readingLockedBy: ['写', '真'],
+      ...overrides,
+    });
+  }
+
+  it('annotates the meaning prompt so an untaught word is still readable', () => {
+    render(<ReviewCard item={makeLockedWord()} state="prompting" />);
+
+    expect(screen.getByText('写')).toBeTruthy();
+    expect(screen.getByText('しゃ')).toBeTruthy();
+    expect(screen.getByText('真')).toBeTruthy();
+    expect(screen.getByText('しん')).toBeTruthy();
+  });
+
+  it('names the kanji the word is waiting on', () => {
+    render(<ReviewCard item={makeLockedWord()} state="prompting" />);
+
+    expect(screen.getByTestId('reading-locked-note').props.children).toContain('写 and 真');
+  });
+
+  it('leaves an unlocked word bare — its reading card must not be given away', () => {
+    render(
+      <ReviewCard
+        item={makeLockedWord({ readingLocked: false, readingLockedBy: undefined })}
+        state="prompting"
+      />,
+    );
+
+    expect(screen.getByTestId('review-prompt-glyph').props.children).toBe('写真');
+    expect(screen.queryByText('しゃ')).toBeNull();
+    expect(screen.queryByTestId('reading-locked-note')).toBeNull();
+  });
+});

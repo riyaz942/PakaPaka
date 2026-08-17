@@ -123,6 +123,12 @@ const WRONG_READING_TYPE_NUDGE = "We're looking for the on'yomi reading.";
 
 const TYPO_NUDGE = '~ Close! Try again.';
 
+/** "写", "写 and 真", "写, 真 and 番" */
+function joinForms(forms: string[]): string {
+  if (forms.length <= 1) return forms.join('');
+  return `${forms.slice(0, -1).join(', ')} and ${forms[forms.length - 1]}`;
+}
+
 // Short enough that the feedback still lands inside NFR1's <100ms perception
 // budget — decoration on top of information already on screen, never a gate.
 const FEEDBACK_ANIMATION_MS = 200;
@@ -163,6 +169,12 @@ export function ReviewCard({
   // The prompt is heroed in ink, not the type hue (spec screen 12) — the header
   // badge already names the type, and at this size the glyph reads as the page.
   const grammarPromptClass = 'text-title-lg font-jp-bold text-center text-primary';
+  // v2 rule 1/5: a meaning prompt on a word whose kanji are untaught is
+  // unreadable as bare text, so it is annotated. Only the meaning card of a
+  // reading-locked word — on any word that also gets a reading card, printing
+  // the reading here would hand over that card's answer.
+  const annotatedPrompt =
+    item.readingLocked && promptType === 'meaning' ? item.furigana : null;
   const renderPrompt = (display: string) =>
     isGrammarCloze ? (
       <FuriganaText
@@ -170,6 +182,18 @@ export function ReviewCard({
         mode={furiganaMode}
         knownKanji={knownKanji}
         className={grammarPromptClass}
+      />
+    ) : annotatedPrompt ? (
+      <FuriganaText
+        testID="review-prompt-glyph"
+        text={annotatedPrompt}
+        mode={furiganaMode}
+        // The word is reading-locked, so it is by definition not mastered —
+        // 'auto' must show the reading. The learner's global 'hidden' setting
+        // still wins; that is their explicit choice, not a silent default.
+        isKnownWord={false}
+        className={cn('text-center text-primary', heroWeightClass(promptFontSize(display)))}
+        style={promptFontSize(display)}
       />
     ) : (
       <Text
@@ -249,9 +273,12 @@ export function ReviewCard({
         <Text className={`text-body-lg font-ui-extrabold ${MODE_LABEL_CLASS[promptType]}`}>
           {modeLabel}
         </Text>
-        {/* Only the kanji pair needs explaining, and only where the pair is
-            visible — the incorrect reveal returns above without a kicker. */}
-        {item.isTwoCardItem ? <GuidanceInfoButton cardId="two-card-kanji" /> : null}
+        {/* Only where the pair is visible — the incorrect reveal returns above
+            without a kicker. Vocabulary pairs (v2 rule 2) are excluded: this
+            card's copy is about kanji and would misname what is on screen. */}
+        {item.isTwoCardItem && itemType === 'kanji' ? (
+          <GuidanceInfoButton cardId="two-card-kanji" />
+        ) : null}
       </View>
 
       {promptNode}
@@ -259,6 +286,14 @@ export function ReviewCard({
       {correctReveal ? null : (
         <SRSStageIndicator stage={srsState.srsStageLabel} infoCardId="spaced-repetition" />
       )}
+
+      {/* v2 rule 3: the word is held at master until its kanji are learned. A
+          word frozen with no explanation reads as a bug. */}
+      {!correctReveal && item.readingLocked && item.readingLockedBy?.length ? (
+        <Text testID="reading-locked-note" className="text-caption font-ui-medium text-secondary text-center">
+          Master until you learn {joinForms(item.readingLockedBy)}
+        </Text>
+      ) : null}
 
       {itemType === 'grammar' && !correctReveal ? (
         <ProgressiveHint key={item.itemId} levels={hintLevels} onReveal={onHintReveal} />

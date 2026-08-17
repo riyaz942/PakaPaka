@@ -9,7 +9,7 @@ import type {
   ReinforcementLink,
 } from '@/core/content/content.types';
 
-import { resolvePromptType } from './promptResolver';
+import { isVocabularyReadingUnlocked, resolvePromptType } from './promptResolver';
 import type { ReviewItem, QueueBuildOptions, SRSState, ReviewAnswerKey } from './srs.types';
 import { computePriority, normalizeFsrsUrgency } from './weaknessEngine';
 
@@ -60,6 +60,12 @@ export type QueueInputItem = {
    * meaning card only. Ignored for non-kanji types.
    */
   kanjiHasOnyomi?: boolean;
+  /**
+   * Kanji written in this vocabulary item that the learner has not reached guru
+   * on (v2 rule 1). Empty/absent means the reading card is live, so the word is
+   * emitted as a two-card pair like kanji. Ignored for non-vocabulary types.
+   */
+  unlearnedKanji?: string[];
   /** Bounded ordering nudge from related-item boosts; default 0 */
   boost?: number;
   relatedItems?: RelatedItem[];
@@ -155,10 +161,11 @@ export function buildReviewQueue(
     }
   }
 
-  // Two-card expansion (Story 1.1): each kanji with on'yomi becomes a meaning
-  // card plus an on'yomi reading card. The reading card is deferred at least
-  // KANJI_PAIR_MIN_GAP cards so the pair never lands back-to-back unless the
-  // queue is too short to allow it.
+  // Two-card expansion (Story 1.1, extended by v2 rule 2): each kanji with
+  // on'yomi becomes a meaning card plus an on'yomi reading card, and so does
+  // each vocabulary item whose kanji are all learned. The reading card is
+  // deferred at least PAIR_MIN_GAP cards so the pair never lands back-to-back
+  // unless the queue is too short to allow it.
   const result: ReviewItem[] = [];
   const pendingReadingCards: { earliestIndex: number; card: ReviewItem }[] = [];
   const flushReadyReadingCards = () => {
@@ -171,10 +178,10 @@ export function buildReviewQueue(
   };
   for (const input of ordered) {
     flushReadyReadingCards();
-    if (input.curriculumItem.itemType === 'kanji' && input.kanjiHasOnyomi) {
+    if (isTwoCardInput(input)) {
       result.push(mapToReviewItem(input, { promptType: 'meaning', isTwoCardItem: true }));
       pendingReadingCards.push({
-        earliestIndex: result.length + KANJI_PAIR_MIN_GAP,
+        earliestIndex: result.length + PAIR_MIN_GAP,
         card: mapToReviewItem(input, { promptType: 'reading', isTwoCardItem: true }),
       });
     } else {
@@ -242,28 +249,47 @@ function applyQueueLimit(items: ReviewItem[], limit: number): ReviewItem[] {
   return sliced;
 }
 
-/** Minimum other cards between a kanji's meaning card and its reading card. */
-export const KANJI_PAIR_MIN_GAP = 2;
+/** Minimum other cards between an item's meaning card and its reading card. */
+export const PAIR_MIN_GAP = 2;
+
+/**
+ * Which items emit both a meaning and a reading card: kanji that have an
+ * on'yomi to ask for, and vocabulary whose every kanji has reached guru.
+ */
+function isTwoCardInput(item: QueueInputItem): boolean {
+  if (item.curriculumItem.itemType === 'kanji') return item.kanjiHasOnyomi === true;
+  if (item.curriculumItem.itemType === 'vocabulary') {
+    return isVocabularyReadingUnlocked(
+      item.curriculumItem.primaryForm,
+      item.unlearnedKanji ?? [],
+    );
+  }
+  return false;
+}
 
 function mapToReviewItem(
   item: QueueInputItem,
   overrides?: { promptType: 'reading' | 'meaning'; isTwoCardItem: boolean },
 ): ReviewItem {
+  // v2 rule 3: a word still waiting on its kanji is capped at master, and the
+  // card says which kanji it is waiting for.
+  const readingLockedBy =
+    item.curriculumItem.itemType === 'vocabulary' && item.unlearnedKanji?.length
+      ? item.unlearnedKanji
+      : undefined;
+
   return {
     itemId: item.srsState.itemId,
     itemType: item.curriculumItem.itemType,
     primaryForm: item.curriculumItem.primaryForm,
+    furigana: item.curriculumItem.furigana ?? null,
     displayMeaning: item.curriculumItem.meaning,
     meanings: item.answerKey.acceptedMeanings,
     srsState: item.srsState,
-    promptType:
-      overrides?.promptType ??
-      resolvePromptType(
-        item.curriculumItem.itemType,
-        item.srsState,
-        item.curriculumItem.primaryForm,
-      ),
+    promptType: overrides?.promptType ?? resolvePromptType(item.curriculumItem.itemType),
     isTwoCardItem: overrides?.isTwoCardItem,
+    readingLocked: readingLockedBy !== undefined,
+    readingLockedBy,
     clozePrompt: item.clozePrompt ?? null,
     clozePromptFurigana: item.clozePromptFurigana ?? null,
     clozeAnswer: item.clozeAnswer ?? null,

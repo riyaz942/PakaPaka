@@ -427,7 +427,7 @@ describe('buildReviewQueue', () => {
       expect(result.every((card) => card.isTwoCardItem === undefined)).toBe(true);
       const grammar = result.find((card) => card.itemType === 'grammar')!;
       expect(grammar.promptType).toBe('production');
-      // reps=3 (odd) → vocabulary parity gives meaning, unchanged from 5.x.
+      // Kana-only vocabulary (the fixture's `form-v1`) never gets a reading card.
       const vocab = result.find((card) => card.itemType === 'vocabulary')!;
       expect(vocab.promptType).toBe('meaning');
     });
@@ -478,6 +478,50 @@ describe('buildReviewQueue', () => {
       expect(pair).toHaveLength(2);
       expect(pair.map((c) => c.promptType).sort()).toEqual(['meaning', 'reading']);
       expect(pair.every((c) => c.isTwoCardItem)).toBe(true);
+    });
+  });
+
+  describe('two-card vocabulary expansion (v2 rule 2)', () => {
+    function makeWord(id: string, overrides: Partial<QueueInputItem> = {}): QueueInputItem {
+      const base = makeQueueItem(id, 'vocabulary', PAST, overrides);
+      return {
+        ...base,
+        curriculumItem: { ...base.curriculumItem, primaryForm: '写真', furigana: '写[しゃ]真[しん]' },
+      };
+    }
+
+    it('emits a meaning card only while any kanji in the word is unlearned', () => {
+      const result = buildReviewQueue([makeWord('v1', { unlearnedKanji: ['写', '真'] })], {
+        now: NOW,
+      });
+
+      expect(result).toHaveLength(1);
+      expect(result[0].promptType).toBe('meaning');
+      expect(result[0].isTwoCardItem).toBeUndefined();
+      expect(result[0].readingLocked).toBe(true);
+      expect(result[0].readingLockedBy).toEqual(['写', '真']);
+    });
+
+    it('emits meaning + reading once every kanji in the word is learned', () => {
+      const result = buildReviewQueue([makeWord('v1', { unlearnedKanji: [] })], { now: NOW });
+
+      expect(result).toHaveLength(2);
+      expect(result.map((card) => card.promptType).sort()).toEqual(['meaning', 'reading']);
+      expect(result.every((card) => card.isTwoCardItem)).toBe(true);
+      expect(result.every((card) => card.readingLocked === false)).toBe(true);
+      expect(result[0].srsState).toBe(result[1].srsState);
+    });
+
+    it('leaves kana-only vocabulary single-card and unlocked — its reading is its surface form', () => {
+      const result = buildReviewQueue([makeQueueItem('v1', 'vocabulary', PAST)], { now: NOW });
+
+      expect(result).toHaveLength(1);
+      expect(result[0].readingLocked).toBe(false);
+    });
+
+    it('carries the word furigana onto the card so a locked meaning prompt stays readable', () => {
+      const result = buildReviewQueue([makeWord('v1', { unlearnedKanji: ['写'] })], { now: NOW });
+      expect(result[0].furigana).toBe('写[しゃ]真[しん]');
     });
   });
 });

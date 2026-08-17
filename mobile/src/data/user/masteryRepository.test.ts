@@ -1,7 +1,9 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
 import {
+  countReadingLockedVocabulary,
   getKnownVocabularyCharacters,
+  getUnlearnedKanjiForItems,
   isVocabularyItemKnown,
 } from '@/data/user/masteryRepository';
 
@@ -37,15 +39,28 @@ describe('getKnownVocabularyCharacters', () => {
     expect(getKnownVocabularyCharacters(db)).toEqual(new Set(['学', '校', '生']));
   });
 
-  it('sources mastery from vocabulary items, not kanji items', () => {
+  it('selects vocabulary items, and reads kanji only as their reading gate', () => {
     const db = fakeUserDb([]);
     getKnownVocabularyCharacters(db);
     const [sql, ...params] = (db.getAllSync as jest.Mock).mock.calls[0];
-    expect(sql).toContain("item_type = 'vocabulary'");
-    expect(sql).not.toContain("item_type = 'kanji'");
+    expect(sql).toContain("i.item_type = 'vocabulary'");
+    // Kanji appear only inside the reading-live subquery — never as the
+    // selected row, which is still the word (FR78 / BUG6).
+    expect(sql).toContain("p.item_type = 'kanji'");
     expect(sql).toContain('item_study_status');
     expect(sql).toContain('srs_states');
-    expect(params).toEqual(['guru', 'master', 'enlightened', 'burned']);
+    // Word mastery is master+ (v2 rule 4); the kanji gate stays at guru+.
+    expect(params).toEqual([
+      'master',
+      'enlightened',
+      'burned',
+      'requires',
+      'builds_on',
+      'guru',
+      'master',
+      'enlightened',
+      'burned',
+    ]);
   });
 });
 
@@ -60,18 +75,86 @@ describe('isVocabularyItemKnown', () => {
     expect(isVocabularyItemKnown(db, 'vocab-1')).toBe(true);
   });
 
-  it('checks the item itself against the same guru+/known predicate', () => {
+  it('checks the item itself against the same master+/known predicate', () => {
     const db = { getFirstSync: jest.fn().mockReturnValue(null) } as unknown as SQLiteDatabase;
     isVocabularyItemKnown(db, 'vocab-1');
     const [sql, ...params] = (db.getFirstSync as jest.Mock).mock.calls[0];
     expect(sql).toContain('item_study_status');
     expect(sql).toContain('srs_states');
-    expect(params).toEqual(['vocab-1', 'vocab-1', 'guru', 'master', 'enlightened', 'burned']);
+    expect(params).toEqual([
+      'vocab-1',
+      'vocab-1',
+      'master',
+      'enlightened',
+      'burned',
+      'vocab-1',
+      'requires',
+      'builds_on',
+      'guru',
+      'master',
+      'enlightened',
+      'burned',
+    ]);
   });
 
   it('is false for a missing item id', () => {
     const db = { getFirstSync: jest.fn() } as unknown as SQLiteDatabase;
     expect(isVocabularyItemKnown(db, null)).toBe(false);
     expect(db.getFirstSync as jest.Mock).not.toHaveBeenCalled();
+  });
+});
+
+describe('getUnlearnedKanjiForItems', () => {
+  function fakeDb(rows: { child_item_id: number; primary_form: string }[]): SQLiteDatabase {
+    return { getAllSync: jest.fn().mockReturnValue(rows) } as unknown as SQLiteDatabase;
+  }
+
+  it('queries nothing for an empty id list', () => {
+    const db = fakeDb([]);
+    expect(getUnlearnedKanjiForItems(db, [])).toEqual(new Map());
+    expect(db.getAllSync as jest.Mock).not.toHaveBeenCalled();
+  });
+
+  it('groups the unlearned kanji under the word that needs them', () => {
+    const db = fakeDb([
+      { child_item_id: 10, primary_form: '写' },
+      { child_item_id: 10, primary_form: '真' },
+      { child_item_id: 11, primary_form: '番' },
+    ]);
+
+    expect(getUnlearnedKanjiForItems(db, ['10', '11', '12'])).toEqual(
+      new Map([
+        ['10', ['写', '真']],
+        ['11', ['番']],
+      ]),
+    );
+  });
+
+  it('reads both edge types and treats guru+ or an explicit known mark as learned', () => {
+    const db = fakeDb([]);
+    getUnlearnedKanjiForItems(db, ['10']);
+    const [sql, ...params] = (db.getAllSync as jest.Mock).mock.calls[0];
+    expect(sql).toContain("p.item_type = 'kanji'");
+    expect(sql).toContain("status = 'known'");
+    expect(params).toEqual([10, 'requires', 'builds_on', 'guru', 'master', 'enlightened', 'burned']);
+  });
+});
+
+describe('countReadingLockedVocabulary', () => {
+  it('counts tracked, unburned words whose reading is not live yet', () => {
+    const db = {
+      getFirstSync: jest.fn().mockReturnValue({ locked: 42 }),
+    } as unknown as SQLiteDatabase;
+
+    expect(countReadingLockedVocabulary(db)).toBe(42);
+    const [sql] = (db.getFirstSync as jest.Mock).mock.calls[0];
+    expect(sql).toContain("i.item_type = 'vocabulary'");
+    expect(sql).toContain('s.is_burned = 0');
+    expect(sql).toContain('NOT EXISTS');
+  });
+
+  it('is zero when the count query returns nothing', () => {
+    const db = { getFirstSync: jest.fn().mockReturnValue(null) } as unknown as SQLiteDatabase;
+    expect(countReadingLockedVocabulary(db)).toBe(0);
   });
 });

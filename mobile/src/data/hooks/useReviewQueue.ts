@@ -29,6 +29,7 @@ import {
   getGrammarDistractorPools,
 } from '@/data/curriculum/itemRepository';
 import { useDatabase } from '@/data/hooks/useDatabase';
+import { getUnlearnedKanjiForItems } from '@/data/user/masteryRepository';
 import { getPersonalMnemonic } from '@/data/user/mnemonicRepository';
 import { listSynonymsForItems, type UserSynonym } from '@/data/user/userSynonymRepository';
 import { listStudyStatusesForItems } from '@/data/user/itemStudyStatusRepository';
@@ -212,6 +213,10 @@ export function useReviewQueue(): UseReviewQueueResult {
       const itemIds = dueSrsStates.map((s) => s.itemId);
 
       const parentsMap = getRequiredParentsForItems(curriculumDb, itemIds);
+      // v2 rule 1: which kanji a word is still waiting on. Only kanji → vocabulary
+      // edges exist, so passing every due id costs one query and returns rows for
+      // vocabulary alone.
+      const unlearnedKanjiMap = getUnlearnedKanjiForItems(userDb, itemIds);
       const relatedItemsMap = getRelatedItemsForItems(curriculumDb, itemIds);
       const boostMap = getBoosts(userDb, itemIds);
       const synonymMap = listSynonymsForItems(userDb, itemIds);
@@ -358,6 +363,7 @@ export function useReviewQueue(): UseReviewQueueResult {
           inputMode,
           mcOptions,
           kanjiHasOnyomi,
+          unlearnedKanji: unlearnedKanjiMap.get(srsState.itemId),
           boost: boostMap.get(srsState.itemId) ?? 0,
           relatedItems,
           reinforcementLink: reinforcementLinks[0] ?? null,

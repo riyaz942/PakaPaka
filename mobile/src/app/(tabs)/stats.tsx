@@ -26,6 +26,7 @@ export default function StatsScreen() {
   const {
     counts,
     total: srsTotal,
+    readingLockedCount,
     isLoading: srsLoading,
     error: srsError,
     refetch: refetchSrsBreakdown,
@@ -90,6 +91,18 @@ export default function StatsScreen() {
               <View className="mt-space-sm">
                 <SrsStageBreakdown counts={counts} />
               </View>
+              {/* Rule 3 holds meaning-only words at master, so the stages above
+                  contain a population that cannot climb yet. Without this line
+                  it reads as stalled progress. */}
+              {readingLockedCount > 0 ? (
+                <Text
+                  testID="reading-locked-note"
+                  className="mt-space-sm text-caption font-ui-medium text-secondary">
+                  {readingLockedCount === 1
+                    ? '1 word is held at Master until you learn the kanji it is written with.'
+                    : `${readingLockedCount} words are held at Master until you learn the kanji they are written with.`}
+                </Text>
+              ) : null}
             </View>
 
             <View>

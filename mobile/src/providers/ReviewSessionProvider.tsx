@@ -252,7 +252,9 @@ export function ReviewSessionProvider({ children }: Props) {
   const applyItemGrade = useCallback(
     (item: ReviewItem, grade: ReviewGrade, options: { recordWeakness: boolean }) => {
       isGrading.current = true;
-      const nextState = gradeItem(item.srsState, grade, new Date());
+      const nextState = gradeItem(item.srsState, grade, new Date(), {
+        capAtMaster: item.readingLocked,
+      });
       const outcomeResult: 'correct' | 'incorrect' = grade === 1 ? 'incorrect' : 'correct';
       const promptType = item.promptType;
       const itemId = item.itemId;
@@ -444,7 +446,9 @@ export function ReviewSessionProvider({ children }: Props) {
         effectiveGrade = combinePairGrades(otherGrade, grade);
       }
       const from = item.srsState.srsStageLabel;
-      const to = gradeItem(item.srsState, effectiveGrade, new Date()).srsStageLabel;
+      const to = gradeItem(item.srsState, effectiveGrade, new Date(), {
+        capAtMaster: item.readingLocked,
+      }).srsStageLabel;
       return from === to ? null : { from, to };
     },
     [currentEntry],

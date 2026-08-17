@@ -245,26 +245,46 @@ regresses. It simply has less to do.
 integers. Rebanding renumbers nearly the whole corpus, so an installed profile
 would map onto the wrong items after an OTA swap. Nothing remaps them today.
 
-### Phase B — app rules
+### Phase B — app rules — **done 2026-08-17**
 
 All four rules. Under pull-forward every kanji is already taught before its word,
-so **rules 1–4 are no-ops on landing** — they can ship and be tested safely
-before Phase C activates them.
+so **no word is permanently locked** — they ship and are tested safely before
+Phase C activates them at scale.
 
-1. `promptResolver` takes the learned-kanji set and withholds reading prompts
-   → verify: unit test — a word with an un-guru kanji resolves to `meaning`
-2. `queueBuilder` emits vocabulary as one or two cards on the same flag
-   → verify: unit test — two cards once every kanji is guru, one before
-3. Master cap in the scheduler; interval clamped, reason surfaced on the item
-   → verify: unit test — a capped item's next interval never crosses 120 days
-4. Furigana threshold to master + reading-live; `knownKanji` sourced from learned
-   kanji items, not `getKnownVocabularyCharacters`
-   → verify: existing `FuriganaText` and `useFuriganaPreference` tests updated
-5. `ReviewCard.tsx:176` renders prompts as bare `<Text>`. A meaning prompt on
-   untaught kanji is unreadable without furigana
-   → verify: a meaning prompt on 写真 shows 写[しゃ]真[しん]
-6. Stats note for the capped population
-   → verify: "% burned" no longer reads as stalled
+1. ~~`promptResolver` takes the learned-kanji set and withholds reading
+   prompts~~ — `isVocabularyReadingUnlocked` in `promptResolver.ts`, fed by
+   `getUnlearnedKanjiForItems` (`masteryRepository.ts`). Rep parity is deleted:
+   `resolvePromptType` now takes the item type alone
+2. ~~`queueBuilder` emits vocabulary as one or two cards on the same flag~~ —
+   the kanji pair path generalized to `isTwoCardInput`; `KANJI_PAIR_MIN_GAP`
+   is now `PAIR_MIN_GAP`
+3. ~~Master cap in the scheduler; interval clamped, reason surfaced on the
+   item~~ — `gradeItem(..., { capAtMaster })` clamps stability *and* due date
+   under the enlightened boundary; the review card carries
+   *"Master until you learn 写 and 真"*
+4. ~~Furigana threshold to master + reading-live~~ — in `masteryRepository`, so
+   every surface moves at once
+5. ~~Annotated meaning prompt~~ — only on a **reading-locked** word. On a word
+   that also gets a reading card, printing the reading in the meaning prompt
+   would hand over that card's answer
+6. ~~Stats note for the capped population~~ — under the SRS stage breakdown
+
+Two things the plan got wrong, corrected by the build:
+
+- **`knownKanji` was to be sourced from learned kanji items rather than
+  `getKnownVocabularyCharacters`.** Not done: it contradicts this rule's own
+  body ("hiding stays per word") and would reverse the FR78/BUG6 fix — knowing
+  一 and 人 does not mean you can read 一人 (ひとり). The unit stays the word,
+  now at master+ **and** reading-live. An explicit `known` bulk-mark still hides
+  furigana on its own.
+- **"Rules 1–4 are no-ops on landing"** — not quite. Rule 1 gates on *guru*,
+  not on lesson-completed, so a word learned today is meaning-only for about a
+  week while its kanji climb. That is the rule working, not a regression.
+
+Not built, and not required by this phase: the two-card explainer covers kanji
+only, so a vocabulary pair shows no guidance card (the kanji copy would misname
+what is on screen), and the reason line for rule 3 appears on the review card,
+not on the Browse detail header.
 
 ### Phase C — drop pull-forward, band-gate edges
 

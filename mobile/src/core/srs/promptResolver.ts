@@ -1,26 +1,35 @@
 import { hasKanji } from '@/core/answer/scriptDetection';
 
-import type { SRSState } from './srs.types';
-
 export type PromptType = 'reading' | 'meaning' | 'production';
 
 export type ItemTypeForPrompt = 'radical' | 'kanji' | 'vocabulary' | 'grammar';
 
-export function resolvePromptType(
-  itemType: ItemTypeForPrompt,
-  srsState: SRSState,
-  primaryForm: string,
-): PromptType {
-  if (itemType === 'radical') return 'meaning';
+/**
+ * The prompt for a single-card item. Both two-card types — kanji (meaning +
+ * on'yomi) and vocabulary with a live reading card — are expanded by the queue
+ * builder, which sets the prompt on each card explicitly.
+ *
+ * Vocabulary no longer alternates by rep parity: under v2 rule 2 a word is
+ * either meaning-only or a meaning + reading pair, and this resolver only ever
+ * sees the meaning-only side of that.
+ */
+export function resolvePromptType(itemType: ItemTypeForPrompt): PromptType {
   if (itemType === 'grammar') return 'production';
-  // Kanji never alternate by parity: every due kanji gets both a meaning card
-  // and an on'yomi reading card, emitted by the queue builder (Story 1.1).
-  // This resolver only covers the meaning-only edge (kanji with no on'yomi).
-  if (itemType === 'kanji') return 'meaning';
-  // Kana-only vocabulary has a reading identical to its surface form —
-  // asking for it is "type what you see", so only ever prompt for meaning.
-  if (!hasKanji(primaryForm)) return 'meaning';
-  // vocabulary alternates by rep parity; guard against negative reps from data layer
-  const parity = Math.abs(srsState.reps) % 2;
-  return parity === 0 ? 'reading' : 'meaning';
+  return 'meaning';
+}
+
+/**
+ * v2 rule 1 — a vocabulary item is asked for its reading only once every kanji
+ * in it has reached guru. `unlearnedKanji` is the shortfall (see
+ * `getUnlearnedKanjiForItems`); empty means every kanji is learned.
+ *
+ * Kana-only vocabulary never gets a reading card: its reading is identical to
+ * its surface form, so asking for it is "type what you see".
+ */
+export function isVocabularyReadingUnlocked(
+  primaryForm: string,
+  unlearnedKanji: readonly string[],
+): boolean {
+  if (!hasKanji(primaryForm)) return false;
+  return unlearnedKanji.length === 0;
 }

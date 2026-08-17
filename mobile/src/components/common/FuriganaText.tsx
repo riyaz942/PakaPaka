@@ -42,6 +42,8 @@ type FuriganaTextProps = {
   style?: StyleProp<TextStyle>;
   /** Passed through to the container (or plain-text fallback) for a11y parity with a bare <Text>. */
   accessibilityRole?: AccessibilityRole;
+  /** Passed through to the container (or plain-text fallback), same as a bare <Text>. */
+  testID?: string;
   /**
    * When false, annotated runs render without nested Pressables so a parent
    * Pressable (e.g. passage word spans) can own the tap. Readings still follow
@@ -118,6 +120,7 @@ export function FuriganaText({
   className,
   style,
   accessibilityRole,
+  testID,
   interactive = true,
 }: FuriganaTextProps) {
   const segments = parseFurigana(text);
@@ -134,7 +137,11 @@ export function FuriganaText({
   const hasReadings = segments.some((segment) => segment.reading);
   if (!hasReadings) {
     return (
-      <Text className={className} style={style} accessibilityRole={accessibilityRole}>
+      <Text
+        className={className}
+        style={style}
+        accessibilityRole={accessibilityRole}
+        testID={testID}>
         {text}
       </Text>
     );
@@ -156,6 +163,7 @@ export function FuriganaText({
       // above; gap-y separates wrapped lines so a line's furigana never
       // collides with the text of the line above it.
       className="flex-row flex-wrap items-end gap-y-space-sm"
+      testID={testID}
       // When nested under a parent Pressable, stay non-accessible so the
       // parent's button role/label is what screen readers hit.
       accessible={interactive}

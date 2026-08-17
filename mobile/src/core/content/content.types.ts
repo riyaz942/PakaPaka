@@ -14,6 +14,8 @@ export type ContentItemSummary = {
   id: string;
   itemType: ContentItemType;
   primaryForm: string;
+  /** Bracket-annotated reading of `primaryForm`; vocabulary only. */
+  furigana?: string | null;
   meaning: string;
   mnemonicText: string | null;
 };

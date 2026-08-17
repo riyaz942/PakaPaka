@@ -50,6 +50,12 @@ export type ReviewItem = {
   itemId: string;
   itemType: 'radical' | 'kanji' | 'vocabulary' | 'grammar';
   primaryForm: string;
+  /**
+   * Bracket-annotated reading of `primaryForm` (vocabulary only). The meaning
+   * prompt renders through it so a word written with untaught kanji is still
+   * readable; the reading prompt never does — that would be the answer.
+   */
+  furigana?: string | null;
   /** Curriculum display meaning, shown prominently (may pack alternatives: "ground / one"). */
   displayMeaning: string;
   /** Every accepted meaning — curriculum answers, derived candidates, and user synonyms. */
@@ -62,6 +68,14 @@ export type ReviewItem = {
    * single worst-of-both FSRS write when both are terminal (FR83).
    */
   isTwoCardItem?: boolean;
+  /**
+   * v2 rule 3: a vocabulary item asked for its meaning only, because some kanji
+   * written in it is not yet at guru. Its FSRS interval is capped at the master
+   * ceiling — you cannot burn a word you cannot read.
+   */
+  readingLocked?: boolean;
+  /** The un-learned kanji holding `readingLocked`, in teaching order. */
+  readingLockedBy?: string[];
   /**
    * Grammar cloze prompt (Plan 07): a JP sentence or structure frame with the
    * grammar chunk blanked. When present, the review card shows this instead of

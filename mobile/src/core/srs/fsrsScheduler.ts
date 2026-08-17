@@ -14,6 +14,15 @@ const SCHEDULER = fsrs({
 
 // Stability (days) at which an item transitions to "burned" stage
 const BURN_STABILITY_THRESHOLD = 365;
+// Stability (days) at which an item transitions from "master" to "enlightened"
+const ENLIGHTENED_STABILITY_THRESHOLD = 120;
+/**
+ * Highest stability a reading-locked item may reach — an hour under the
+ * enlightened boundary, so both the stage label and the interval stop at
+ * master. Clamping only the label would let the item silently accrue a
+ * two-year interval and stop coming back, the opposite of the intent.
+ */
+const MASTER_STABILITY_CAP = ENLIGHTENED_STABILITY_THRESHOLD - 1 / 24;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 function fsrsStateToString(state: State): FsrsStateString {
@@ -95,8 +104,26 @@ export function mapFsrsStateToStageLabel(card: Card, isBurned: boolean): SRSStag
   // WaniKani stages 3-4 to Review state with stability < 7).
   if (card.stability < 7) return 'apprentice';
   if (card.stability < 21) return 'guru';
-  if (card.stability < 120) return 'master';
+  if (card.stability < ENLIGHTENED_STABILITY_THRESHOLD) return 'master';
   return 'enlightened';
+}
+
+/**
+ * v2 rule 3 — hold a meaning-only word at master. Both the stability and the
+ * scheduled interval are pulled under the enlightened boundary; the label
+ * follows from the stability, so it needs no separate handling.
+ */
+function capAtMaster(card: Card, now: Date): Card {
+  const maxDue = new Date(now.getTime() + MASTER_STABILITY_CAP * DAY_MS);
+  const due = card.due instanceof Date ? card.due : new Date(card.due);
+  if (card.stability < MASTER_STABILITY_CAP && due.getTime() <= maxDue.getTime()) {
+    return card;
+  }
+  return {
+    ...card,
+    stability: Math.min(card.stability, MASTER_STABILITY_CAP),
+    due: due.getTime() > maxDue.getTime() ? maxDue : due,
+  };
 }
 
 export function fromFsrsCard(card: Card, previous: SRSState, now: Date = new Date()): SRSState {
@@ -127,11 +154,25 @@ const REVIEW_GRADE_TO_RATING: Record<ReviewGrade, Grade> = {
   4: Rating.Easy,
 };
 
-export function gradeItem(state: SRSState, grade: ReviewGrade, now: Date = new Date()): SRSState {
+export type GradeOptions = {
+  /**
+   * v2 rule 3: hold the item at master. Set for a vocabulary item whose reading
+   * card is not live yet — you cannot burn a word you cannot read.
+   */
+  capAtMaster?: boolean;
+};
+
+export function gradeItem(
+  state: SRSState,
+  grade: ReviewGrade,
+  now: Date = new Date(),
+  options: GradeOptions = {},
+): SRSState {
   const card = toFsrsCard(state, now);
   const rating = REVIEW_GRADE_TO_RATING[grade];
   const result = SCHEDULER.next(card, now, rating);
-  return fromFsrsCard(result.card, state, now);
+  const next = options.capAtMaster ? capAtMaster(result.card, now) : result.card;
+  return fromFsrsCard(next, state, now);
 }
 
 /** Seed a fresh FSRS card for an in_progress item without existing SRS state. */
