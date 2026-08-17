@@ -8,12 +8,17 @@ import { useDatabase } from '@/data/hooks/useDatabase';
  * Type-appropriate graph children for one item (FR72), read straight from
  * `item_relationships` — no parallel relationship table, no curated lookalikes.
  *
- * | Viewing    | Edge                          | Reads as                        |
- * | ---------- | ----------------------------- | ------------------------------- |
- * | radical    | `builds_on` → kanji           | kanji built from this radical   |
- * | kanji      | `requires` → vocabulary       | vocabulary using this kanji     |
- * | grammar    | `reinforces` → vocabulary     | vocabulary using this pattern   |
- * | vocabulary | _(none)_                      | components come from parents    |
+ * | Viewing    | Edge                                 | Reads as                       |
+ * | ---------- | ------------------------------------ | ------------------------------ |
+ * | radical    | `builds_on` → kanji                  | kanji built from this radical  |
+ * | kanji      | `requires`/`builds_on` → vocabulary  | vocabulary using this kanji    |
+ * | grammar    | `reinforces` → vocabulary            | vocabulary using this pattern  |
+ * | vocabulary | _(none)_                             | components come from parents   |
+ *
+ * A kanji reads both of its vocabulary edges: since plan v2 Phase C, a word
+ * whose kanji is banded later than the word itself carries the non-gating
+ * `builds_on` form instead of `requires` (see `generate_deps.py`). The question
+ * here is which words use the kanji, not which words it gates, so both count.
  *
  * Vocabulary's own cross-refs are its component kanji (graph *parents*, via
  * `useComponentParents`) and its grammar links (`getGrammarLinksForVocab`),
@@ -21,11 +26,11 @@ import { useDatabase } from '@/data/hooks/useDatabase';
  */
 const RELATED_EDGE_BY_TYPE: Record<
   ItemType,
-  { relationshipType: RelatedItem['relationshipType']; childType: ItemType } | null
+  { relationshipTypes: RelatedItem['relationshipType'][]; childType: ItemType } | null
 > = {
-  radical: { relationshipType: 'builds_on', childType: 'kanji' },
-  kanji: { relationshipType: 'requires', childType: 'vocabulary' },
-  grammar: { relationshipType: 'reinforces', childType: 'vocabulary' },
+  radical: { relationshipTypes: ['builds_on'], childType: 'kanji' },
+  kanji: { relationshipTypes: ['requires', 'builds_on'], childType: 'vocabulary' },
+  grammar: { relationshipTypes: ['reinforces'], childType: 'vocabulary' },
   vocabulary: null,
 };
 
@@ -44,7 +49,8 @@ export function useRelatedItems(
     const children = getRelatedItemsForItems(curriculumDb, [itemId]).get(itemId) ?? [];
     return children.filter(
       (child) =>
-        child.relationshipType === edge.relationshipType && child.itemType === edge.childType,
+        edge.relationshipTypes.includes(child.relationshipType) &&
+        child.itemType === edge.childType,
     );
   }, [curriculumDb, itemId, itemType]);
 }

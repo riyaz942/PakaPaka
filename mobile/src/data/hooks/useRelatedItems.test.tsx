@@ -95,6 +95,23 @@ describe('useRelatedItems', () => {
     expect(result.current[0].itemType).toBe('vocabulary');
   });
 
+  it('returns vocabulary an out-of-band kanji is written in (builds_on)', async () => {
+    const { curriculumDb, userDb } = await createDb();
+    // A kanji banded later than the word it appears in holds the non-gating
+    // edge (plan v2 Phase C). The word still uses the kanji, so it still lists.
+    __mockSetItemRelationships('curriculum.db.test', [
+      { parent_item_id: 1, child_item_id: 2, relationship_type: 'builds_on' },
+      { parent_item_id: 2, child_item_id: 3, relationship_type: 'requires' },
+      { parent_item_id: 2, child_item_id: 5, relationship_type: 'builds_on' },
+    ]);
+
+    const { result } = renderRelated(curriculumDb, userDb, '2', 'kanji');
+
+    // The radical's own kanji child is not swept in — the child type still filters.
+    expect(result.current.map((entry) => entry.id)).toEqual(['3', '5']);
+    expect(result.current.every((entry) => entry.itemType === 'vocabulary')).toBe(true);
+  });
+
   it('returns vocabulary using a grammar pattern (reinforces)', async () => {
     const { curriculumDb, userDb } = await createDb();
 

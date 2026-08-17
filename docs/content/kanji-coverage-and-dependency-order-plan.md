@@ -286,19 +286,50 @@ only, so a vocabulary pair shows no guidance card (the kanji copy would misname
 what is on screen), and the reason line for rule 3 appears on the review card,
 not on the Browse detail header.
 
-### Phase C — drop pull-forward, band-gate edges
+### Phase C — drop pull-forward, band-gate edges — **done 2026-08-17**
 
 One commit. See [the sequencing constraint](#the-sequencing-constraint-inverted).
 
-1. `generate_deps.py` emits `requires` only from same-or-earlier-band kanji;
-   out-of-band kanji get a non-gating edge
-   → verify: 0 items permanently locked for a fresh N5 profile
-2. `listLessonCandidatePool` reverts to a per-level pool
-   → verify: an N5 profile's pool contains N5 items only
-3. Rework `dependency_order.py` severity for the new model
-   → verify: 0 errors, 0 warnings
-4. → verify: `npm test` in `mobile/`; a fresh N5 profile meets no prose-less card
-   in the first 200 non-grammar cards
+1. ~~`generate_deps.py` emits `requires` only from same-or-earlier-band kanji;
+   out-of-band kanji get a non-gating edge~~ — 1,607 `requires` split into
+   **1,023 gating + 584 non-gating**; total edges unchanged at 8,059
+2. ~~`listLessonCandidatePool` reverts to a per-level pool~~ — the transitive
+   walk and the `builds_on` component pass are both gone
+3. ~~Rework `dependency_order.py` severity for the new model~~ — a `requires`
+   parent banded later than its child is now an **ERROR** (the pool never
+   leaves the level), and the pull-forward section is replaced by a reading-gate
+   table
+4. ~~Verify~~ — 0 errors; `npm test` 2,145 passing in `mobile/`, 62 at root;
+   lint and typecheck clean; a fresh N5 profile meets its first prose-less card
+   at **205**, past the 200-card bar
+
+**The non-gating edge is `builds_on`, not a fourth relationship type.** The
+schema enum, the DB CHECK constraint and both apps' types are untouched.
+`builds_on` already means *is a component of, never gates*, which is exactly
+the edge wanted; Phase B's `masteryRepository` was written reading both types,
+so rule 1's reading gate needed no change at all.
+
+Two display surfaces did need widening, because an out-of-band kanji stopped
+being a `requires` parent: the component chips on a word
+(`getComponentParentsForItem`) and "vocabulary using this kanji" on a kanji
+(`useRelatedItems`). Both now read either edge — the question they ask is what a
+word is written with, not what gates it. Without that, 写真 would show no
+component chips at all.
+
+**Not `0 warnings`, as step 3 asked.** 11 same-level ordering WARNINGs stand,
+unchanged and pre-existing: Phase A's reband left 11 words (彼, 世界, 政治 …)
+sorted just ahead of a kanji they need at the same level, so each waits one
+lesson. Fixing them means re-ordering inside a level, which this plan puts
+[out of scope](#out-of-scope).
+
+**Reading-gate coverage, measured:** 727 of 1,247 words (58%) have a live
+reading card by the end of their level — N5 **407 of 718 (56%)**, N4 320 of 529
+(60%). The plan predicted 417 at N5 (58%) and 65% across N5+N4, so the real
+figure is a few points below the estimate. 520 words are meaning-only, held by
+501 out-of-band kanji.
+
+A learner who starts above N5 is unaffected: placement marks every earlier level
+known, so an earlier-band `requires` parent is already satisfied.
 
 ### Phase D — skeleton to full scale
 

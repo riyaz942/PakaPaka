@@ -51,7 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
-| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 Phases A–B done 2026-08-17** (A: corpus 2,000 kanji, bands 150/300/700/1000/2000, 238 radicals. B: all four app rules — reading prompts gated on guru+ kanji, two-card vocabulary, master cap with the reason on the card, furigana at master + reading-live, annotated meaning prompts, Stats note); Phases C–E open. v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Start at Phase A (reband); Phase C carries the revert and must land `requires` band-gating in the same commit or 685 words lock permanently. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 Phases A–C done 2026-08-17** (A: corpus 2,000 kanji, bands 150/300/700/1000/2000, 238 radicals. B: all four app rules — reading prompts gated on guru+ kanji, two-card vocabulary, master cap with the reason on the card, furigana at master + reading-live, annotated meaning prompts, Stats note. C: pull-forward dropped, `requires` band-gated — 1,023 gating + 584 non-gating `builds_on` edges); Phases D–E open. v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
 
 ## Design & platform — `docs/design/`
 
@@ -151,6 +151,7 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   chain falls out of the existing unlock gate. Skeleton `requires` edges are on: 711 → 1,607,
   0 kanji-bearing words left parentless (was 479), 765 words rely on pull-forward, 624 kanji
   pulled forward, N5 pool 988 → 1,355. Nothing is permanently locked (closure is depth 1).
+  **Reverted by v2 Phase C** — the pool is one level again and `requires` is band-gated.
 - Phase 3 needed no display change: `jlpt_level` comes straight off the item row, so Browse
   filters and item detail already showed 写 as N3. `builds_on` parents are deliberately not
   pulled forward — radicals never gate, and it would undo Phase 2's art deferral.
@@ -160,6 +161,8 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   `requires` is INFO (pull-forward, by design) with its own section, ERROR now means a
   `requires` chain that never bottoms out. Report is clean — 0 errors, 0 warnings. The 115 N5
   words Phase 1 left as ERRORs are resolved by the pull-forward, as Phase 1 predicted.
+  **Superseded by v2 Phase C:** cross-level `requires` is an ERROR again, and the section is
+  now a reading-gate table.
 - ~~**Live cost until Phase 4:**~~ paid down by Phase 4 tranche 1 — see below.
 - **Open, from Phase 1:** re-running `audit_shipped.py` after the 2026-08-16 group moves shows
   14 N5 example sentences referencing a word taught later — 13 for 彼女 (`kanojo`), 1 for 日本
@@ -239,6 +242,33 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   (level, type, slug), and `user.db` stores progress against those integers. Rebanding
   renumbers essentially the whole corpus, so any installed profile would map onto the wrong
   items after an OTA swap. Nothing in this repo remaps them.
+
+### v2 Phase C — drop pull-forward, band-gate edges (done 2026-08-17)
+- **The non-gating edge is `builds_on`, not a new relationship type.** A kanji banded at or
+  before the word's level emits `requires` (gates the lesson); a later-banded one emits
+  `builds_on`, which already means *is a component of, never gates*. Schema enum, the DB
+  CHECK constraint and both apps' types are untouched, and Phase B's `masteryRepository`
+  already read both edge types, so rule 1's reading gate needed no change.
+- `generate_deps.py`: 1,607 `requires` became **1,023 gating + 584 non-gating**. Edge total
+  unchanged at 8,059; DB still 3.6 MB.
+- `listLessonCandidatePool` is the level's own items and nothing else — the transitive
+  `requires` walk and the `builds_on` component pass are both deleted. Radicals need no
+  pull-forward because Phase A re-filed each to the level of its first kanji.
+- **Two display surfaces had to widen**, or an out-of-band kanji would vanish from the UI:
+  component chips on a word (`getComponentParentsForItem`) and "vocabulary using this kanji"
+  (`useRelatedItems`) read either edge. Without it 写真 shows no components at all.
+- `dependency_order.py`: a `requires` parent banded later than its child is now an **ERROR**
+  — the pool never leaves the level, so it is a permanent lock. The pull-forward section is
+  replaced by a reading-gate table.
+- **Reading-gate coverage measured: 727 of 1,247 words (58%)** have a live reading card by
+  their level's end — N5 407/718 (56%), N4 320/529 (60%), against the plan's estimate of 417
+  at N5 and 65% overall. 520 words are meaning-only, held by 501 out-of-band kanji.
+- Verified: `validate-schema` and `compile-curriculum` clean, `dependency_order.py` 0 errors,
+  mobile `npm test` 2,145 passing, root 62, lint + typecheck clean. A fresh N5 profile meets
+  its first prose-less card at position **205** (bar was 200); N4 hits one at position 1 —
+  that is Phase E's authoring debt (173 kanji + 24 radicals), not a Phase C regression.
+- **Open, not fixed:** the 11 same-level ordering WARNINGs from Phase A's reband stand.
+  Fixing them means re-ordering inside a level, which the plan puts out of scope.
 
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).

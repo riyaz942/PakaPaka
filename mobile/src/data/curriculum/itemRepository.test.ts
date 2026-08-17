@@ -321,11 +321,13 @@ describe('itemRepository', () => {
     ]);
   });
 
-  describe('lesson candidate pool (pull-forward)', () => {
+  describe('lesson candidate pool (band-gated)', () => {
     /**
      * 写真 is the plan's worked example: an N5 word written with two N3 kanji.
-     * Scoping lesson candidates to one level left it either unreachable or
-     * offered with nothing taught behind it.
+     * Under plan v2 the out-of-band kanji hold `builds_on` edges, which never
+     * gate, so the word is offered on its own level and asked for its meaning
+     * until those kanji reach guru. 日本 is the control: 日 is banded at N5, so
+     * that edge is `requires` and still gates.
      */
     function setPhotoCurriculum(): void {
       __mockSetItems('curriculum.db.test', [
@@ -384,56 +386,45 @@ describe('itemRepository', () => {
           visual_mnemonic_url: null,
           sort_order: 3,
         },
+        {
+          id: 6,
+          item_type: 'vocabulary',
+          jlpt_level: 'N5',
+          slug: 'nihon',
+          primary_form: '日本',
+          meaning: 'Japan',
+          mnemonic_text: null,
+          visual_mnemonic_url: null,
+          sort_order: 4,
+        },
       ]);
 
       __mockSetItemRelationships('curriculum.db.test', [
-        { child_item_id: 1, parent_item_id: 2, relationship_type: 'requires' },
-        { child_item_id: 1, parent_item_id: 3, relationship_type: 'requires' },
+        // 写 and 真 are banded at N3, later than the N5 word they are written
+        // in, so their edges do not gate.
+        { child_item_id: 1, parent_item_id: 2, relationship_type: 'builds_on' },
+        { child_item_id: 1, parent_item_id: 3, relationship_type: 'builds_on' },
         { child_item_id: 2, parent_item_id: 5, relationship_type: 'builds_on' },
+        // 日 is banded at N5, in band for an N5 word, so its edge gates.
+        { child_item_id: 6, parent_item_id: 4, relationship_type: 'requires' },
       ]);
     }
 
-    it('adds a word\'s required parents at the position of the word that needs them', async () => {
+    it('holds the pool to the level being studied', async () => {
       const db = await openDatabaseAsync('curriculum.db.test');
       setPhotoCurriculum();
 
       const pool = listLessonCandidatePool(db, 'N5');
       const bySlug = new Map(pool.map((item) => [item.slug, item]));
 
-      // The N5 level's own items, the two N3 kanji they require, and the N3
-      // radical one of those kanji is built from.
-      expect([...bySlug.keys()].sort()).toEqual([
-        'n3-copy',
-        'n3-crown',
-        'n3-true',
-        'n5-nichi',
-        'shashin',
-      ]);
-      // Each pulled-forward kanji takes 写真's sort position, not its own N3
-      // one, so it lands where the word sits rather than at the back.
-      expect(bySlug.get('n3-copy')?.sortOrder).toBe(261);
-      expect(bySlug.get('n3-true')?.sortOrder).toBe(261);
+      // The N5 level's own items and nothing else: no N3 kanji, no N3 radical.
+      expect([...bySlug.keys()].sort()).toEqual(['n5-nichi', 'nihon', 'shashin']);
+      // Each item keeps its own authored position — nothing is reseated.
       expect(bySlug.get('n5-nichi')?.sortOrder).toBe(1);
-      // The component sits half a step ahead of the kanji whose story names it.
-      expect(bySlug.get('n3-crown')?.sortOrder).toBe(260.5);
+      expect(bySlug.get('shashin')?.sortOrder).toBe(261);
     });
 
-    it('offers 写’s component radical before 写 itself', async () => {
-      const db = await openDatabaseAsync('curriculum.db.test');
-      setPhotoCurriculum();
-
-      const order = listLessonCandidatePool(db, 'N5')
-        .slice()
-        .sort((a, b) => a.sortOrder - b.sortOrder)
-        .map((item) => item.slug);
-
-      // 写's mnemonic leans on 冖's established image, so the learner has to
-      // have met 冖 first — `builds_on` never gates, so position is the only
-      // thing enforcing that.
-      expect(order.indexOf('n3-crown')).toBeLessThan(order.indexOf('n3-copy'));
-    });
-
-    it('offers 写 and 真 before 写真 to an N5 profile', async () => {
+    it('offers 写真 to an N5 profile without teaching its N3 kanji first', async () => {
       const db = await openDatabaseAsync('curriculum.db.test');
       setPhotoCurriculum();
 
@@ -458,44 +449,29 @@ describe('itemRepository', () => {
         parentStatuses: new Map(),
         size: 10,
       });
-
-      // 写真's parents are unstudied, so the word is still locked; both kanji
-      // are offered instead, led by 写's component radical. Nothing here depends
-      // on their level. The two kanji share a sort position (both were claimed
-      // by 写真), so their order relative to each other is not part of the
-      // contract — 冖's lead over 写 is, and is asserted above.
       const offered = firstLesson.map((item) => item.primaryForm);
-      expect(offered).toHaveLength(4);
-      expect(offered).toEqual(expect.arrayContaining(['冖', '日', '写', '真']));
-      expect(offered).not.toContain('写真');
+
+      // 写真 carries only non-gating edges, so it ships in the first lesson.
+      // 日本 does not: 日 is in band, unstudied, and still gates.
+      expect(offered).toEqual(expect.arrayContaining(['写真', '日']));
+      expect(offered).not.toContain('日本');
 
       const afterKanji = planLesson({
         candidates,
-        studyStatuses: new Map([
-          ['2', 'in_progress' as const],
-          ['3', 'in_progress' as const],
-          ['4', 'in_progress' as const],
-          ['5', 'in_progress' as const],
-        ]),
-        startedItemIds: new Set(['2', '3', '4', '5']),
+        studyStatuses: new Map([['4', 'in_progress' as const]]),
+        startedItemIds: new Set(['1', '4']),
         parentsByItemId,
-        parentStatuses: new Map([
-          ['2', 'in_progress' as const],
-          ['3', 'in_progress' as const],
-        ]),
+        parentStatuses: new Map([['4', 'in_progress' as const]]),
         size: 10,
       });
 
-      expect(afterKanji.map((item) => item.primaryForm)).toEqual(['写真']);
+      expect(afterKanji.map((item) => item.primaryForm)).toEqual(['日本']);
     });
 
-    it('leaves a pulled-forward item on its own JLPT level for Browse and detail', async () => {
+    it('keeps an out-of-band kanji on its own JLPT level for Browse and detail', async () => {
       const db = await openDatabaseAsync('curriculum.db.test');
       setPhotoCurriculum();
 
-      // In an N5 lesson…
-      expect(listLessonCandidatePool(db, 'N5').map((item) => item.slug)).toContain('n3-copy');
-      // …but still N3 wherever the app shows a level.
       expect(getItemBySlug(db, 'kanji', 'n3-copy')?.jlptLevel).toBe('N3');
       expect(getItemById(db, '2')?.jlptLevel).toBe('N3');
     });
@@ -541,6 +517,58 @@ describe('itemRepository', () => {
       { id: '1', primaryForm: '日', itemType: 'radical', meaning: 'sun' },
     ]);
     expect(getRequiredParentsForItems(db, ['10']).get('10')).toBeUndefined();
+  });
+
+  it('lists both in-band and out-of-band kanji as a word’s component chips', async () => {
+    const db = await openDatabaseAsync('curriculum.db.test');
+
+    __mockSetItems('curriculum.db.test', [
+      {
+        id: 1,
+        item_type: 'kanji',
+        jlpt_level: 'N5',
+        slug: 'n5-nichi',
+        primary_form: '日',
+        meaning: 'day',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        item_type: 'kanji',
+        jlpt_level: 'N3',
+        slug: 'n3-record',
+        primary_form: '記',
+        meaning: 'record',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 9,
+      },
+      {
+        id: 10,
+        item_type: 'vocabulary',
+        jlpt_level: 'N5',
+        slug: 'nikki',
+        primary_form: '日記',
+        meaning: 'diary',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 5,
+      },
+    ]);
+
+    __mockSetItemRelationships('curriculum.db.test', [
+      { child_item_id: 10, parent_item_id: 1, relationship_type: 'requires' },
+      // 記 is banded at N3, so its edge is the non-gating kind — the chip must
+      // still show, or 日記 would read as a word written with one kanji.
+      { child_item_id: 10, parent_item_id: 2, relationship_type: 'builds_on' },
+    ]);
+
+    expect(getComponentParentsForItem(db, '10', 'vocabulary')).toEqual([
+      { id: '1', primaryForm: '日', itemType: 'kanji', meaning: 'day' },
+      { id: '2', primaryForm: '記', itemType: 'kanji', meaning: 'record' },
+    ]);
   });
 
   it('returns kanji readings ordered by sort_order', async () => {

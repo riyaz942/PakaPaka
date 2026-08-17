@@ -359,14 +359,13 @@ def vocab_context(level, slug, cast=None):
     # is also what makes the reading come out "untaught" — i.e. a full story
     # rather than a derivation note the learner could not follow.
     #
-    # Phase 3's pull-forward has overtaken this rule and it is left standing on
-    # purpose. A learner does now meet 写 and 真 before 写真, so the word's
-    # components are taught and its reading is regular — but a vocabulary story
-    # chains from its kanji's *established* stories, and 553 of those kanji have
-    # none yet. Widening the window before the kanji layer is authored would
-    # reclassify ~390 words to `regular`, invalidating their reviewed reading
-    # stories, and chain the replacements onto empty prose. This moves when the
-    # kanji queue does (reports/kanji_priority.py), not before.
+    # Plan v2 Phase C put this rule back in force: pull-forward is gone, so a
+    # learner really does reach 写真 without having met 写 or 真. The window is
+    # right, and it is also what a vocabulary story needs — a story chains from
+    # its kanji's *established* stories, and most band kanji have none yet.
+    # The plan's separate change, judging reading regularity against KANJIDIC
+    # readings rather than taught-status, moves with the authoring queue
+    # (reports/kanji_priority.py), not here.
     taught_levels = ALL_LEVELS[:ALL_LEVELS.index(level) + 1]
     kanji = {}
     for lvl in taught_levels:

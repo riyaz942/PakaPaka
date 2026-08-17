@@ -337,33 +337,21 @@ export function getRequiredParentsForItems(
 }
 
 /**
- * Guard on the pull-forward walk below. `requires` runs kanji → vocabulary and
- * nothing else, so the closure settles in two passes; the bound exists so a
- * future edge type cannot turn a malformed graph into a hang.
- */
-const MAX_PULL_FORWARD_DEPTH = 8;
-
-/**
  * Everything the lesson planner may offer while the learner is on `jlptLevel`:
- * that level's items, every item they transitively `require`, and the radicals
- * those kanji `builds_on` — wherever any of it is taught.
+ * that level's own items, and nothing else.
  *
- * This is the pull-forward the curriculum's core promise rests on. JLPT word
- * lists routinely use kanji from higher levels — 写真 is an N5 word written with
- * two N3 kanji — so scoping candidates to a single level left those words either
- * unreachable or, worse, offered with nothing taught behind them. Dependency
- * order wins; JLPT level stays a label and a filter. A pulled-forward item keeps
- * its own `jlpt_level` everywhere it is displayed — only the lesson sequence
- * moves. See docs/content/kanji-coverage-and-dependency-order-plan.md.
+ * Plan v2 Phase C dropped the pull-forward walk that used to add a word's
+ * out-of-level `requires` parents to the pool. It is no longer needed, and it
+ * would now be harmful: `generate_deps.py` emits `requires` only from a kanji
+ * banded at or before the word's level, so every gate an item carries is one
+ * this level (or an earlier, already-studied one) teaches. A kanji from a later
+ * band — 写 at N3 in the N5 word 写真 — holds a non-gating `builds_on` edge
+ * instead, and the word ships on schedule, asked for its meaning until that
+ * kanji reaches guru. See docs/content/kanji-coverage-and-dependency-order-plan.md.
  *
- * A pulled-forward parent takes the sort position of the earliest item that
- * needs it, so 写 lands where 写真 sits rather than at the back of the queue.
- * `sort_order` restarts per (level, type), so comparing a kanji's against a
- * word's only works because ROUND_QUOTAS advances every type at the same rate —
- * the same assumption reports/dependency_order.py is built on.
- *
- * Parents the learner already knows are left in; `planLesson` drops started
- * items anyway, and filtering here would cost a second status round-trip.
+ * Radicals need no pull-forward either: Phase A re-filed every radical to the
+ * level of the first kanji that needs it, so a component of an N5 kanji is an
+ * N5 item.
  */
 export function listLessonCandidatePool(
   db: SQLiteDatabase,
@@ -373,85 +361,20 @@ export function listLessonCandidatePool(
   for (const itemType of ITEM_TYPES) {
     pool.push(...listItemsByLevelAndType(db, jlptLevel, itemType));
   }
-
-  const sortOrderById = new Map(pool.map((item) => [item.id, item.sortOrder]));
-  let frontier = pool.map((item) => item.id);
-
-  for (let depth = 0; depth < MAX_PULL_FORWARD_DEPTH && frontier.length > 0; depth++) {
-    const parentsByChildId = getRequiredParentsForItems(db, frontier);
-
-    const sortOrderByNewId = new Map<string, number>();
-    for (const [childId, parents] of parentsByChildId) {
-      const childSortOrder = sortOrderById.get(childId) ?? 0;
-      for (const parent of parents) {
-        if (sortOrderById.has(parent.id)) continue;
-        const claimed = sortOrderByNewId.get(parent.id);
-        if (claimed === undefined || childSortOrder < claimed) {
-          sortOrderByNewId.set(parent.id, childSortOrder);
-        }
-      }
-    }
-    if (sortOrderByNewId.size === 0) break;
-
-    const newIds = [...sortOrderByNewId.keys()];
-    // Claim every id before fetching: an id the items table does not resolve
-    // would otherwise be rediscovered as a parent on the next pass.
-    for (const [id, sortOrder] of sortOrderByNewId) {
-      sortOrderById.set(id, sortOrder);
-    }
-    for (const item of listItemSummariesByIds(db, newIds)) {
-      pool.push({ ...item, sortOrder: sortOrderByNewId.get(item.id)! });
-    }
-    frontier = newIds;
-  }
-
-  // A kanji's components come with it. Phase 3 left `builds_on` out on the
-  // grounds that radicals never gate and the skeleton ones had no art — true
-  // while a pulled-forward kanji was a bare card. Phase 4 gives those kanji
-  // mnemonics that *name* their components and highlight the borrowed meaning,
-  // so 私's story leans on 禾 ("grain"), an N3 radical an N5 learner would
-  // otherwise never have met.
-  //
-  // These sit half a step ahead of the kanji that needs them rather than level
-  // with it. `requires` can share a position because `isItemUnlocked` enforces
-  // the order anyway; `builds_on` does not gate, so position is the only thing
-  // deciding whether the learner meets the radical first.
-  //
-  // One pass, not a closure: `builds_on` runs radical → kanji, and radicals are
-  // never the child of one.
-  const componentsByKanjiId = getParentsByRelationshipType(
-    db,
-    pool.filter((item) => item.itemType === 'kanji').map((item) => item.id),
-    'builds_on',
-  );
-
-  const componentSortOrderById = new Map<string, number>();
-  for (const [kanjiId, components] of componentsByKanjiId) {
-    const target = (sortOrderById.get(kanjiId) ?? 0) - 0.5;
-    for (const component of components) {
-      if (sortOrderById.has(component.id)) continue;
-      const claimed = componentSortOrderById.get(component.id);
-      if (claimed === undefined || target < claimed) {
-        componentSortOrderById.set(component.id, target);
-      }
-    }
-  }
-
-  if (componentSortOrderById.size > 0) {
-    for (const item of listItemSummariesByIds(db, [...componentSortOrderById.keys()])) {
-      pool.push({ ...item, sortOrder: componentSortOrderById.get(item.id)! });
-    }
-  }
-
   return pool;
 }
 
 /**
  * Graph parents for FR72 component chips ("Built from" / "Kanji in this word").
  *
- * Vocabulary components use `requires` (kanji → vocab). Kanji components use
- * `builds_on` (radical → kanji) — not `requires`, which the curriculum never
- * authors for that edge.
+ * Vocabulary reads both kanji → vocabulary edges: `requires` for the in-band
+ * kanji and `builds_on` for the later-band ones. The chips answer "what is this
+ * word written with", which does not depend on whether the kanji gates the
+ * word — dropping the non-gating half would leave 写真 with no components at
+ * all. In-band first, then out-of-band; each group in curriculum order.
+ *
+ * Kanji components use `builds_on` (radical → kanji) — not `requires`, which
+ * the curriculum never authors for that edge.
  */
 export function getComponentParentsForItem(
   db: SQLiteDatabase,
@@ -459,7 +382,10 @@ export function getComponentParentsForItem(
   itemType: ItemType,
 ): CurriculumParentItem[] {
   if (itemType === 'vocabulary') {
-    return getRequiredParentsForItems(db, [itemId]).get(itemId) ?? [];
+    return [
+      ...(getRequiredParentsForItems(db, [itemId]).get(itemId) ?? []),
+      ...(getParentsByRelationshipType(db, [itemId], 'builds_on').get(itemId) ?? []),
+    ];
   }
   if (itemType === 'kanji') {
     return getParentsByRelationshipType(db, [itemId], 'builds_on').get(itemId) ?? [];

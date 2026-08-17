@@ -3,16 +3,26 @@
 
 Edge types produced:
   - radical  -> kanji       (builds_on)  : radical is a visual component of the kanji
-  - kanji    -> vocabulary  (requires)   : the kanji character appears in the vocab's written form
+  - kanji    -> vocabulary  (requires)   : kanji in the word, taught at or before
+                                           the word's level — gates the word
+  - kanji    -> vocabulary  (builds_on)  : kanji in the word, taught at a later
+                                           level — does not gate the word
   - grammar  -> vocabulary  (reinforces) : vocab explicitly linked from a grammar point
 
 Radical->kanji edges are derived from a curated decomposition map (component
 radical slug -> list of kanji suffixes). Kanji->vocab edges are derived
 automatically by scanning vocab primary_form for the kanji character.
 
+Kanji->vocabulary edges are **band-gated** (plan v2 Phase C). Only a kanji whose
+band is the word's level or earlier emits `requires`; the lesson planner scopes
+candidates to one level, so a later-band parent would be a gate the learner can
+never open. Out-of-band kanji still get an edge — `builds_on`, the graph's
+non-gating "is a component of" relationship — because the app reads it for two
+things: the component chips on the word, and rule 1's reading gate, which
+withholds a word's reading prompt until every kanji in it reaches guru.
+
 Skeleton levels (N3/N2/N1, kanji only) take their decomposition from the
-generated map in skeleton.json. Their kanji->vocabulary edges are live as of
-Phase 3, now that the planner pulls a word's parents forward across levels.
+generated map in skeleton.json.
 """
 
 import json
@@ -27,6 +37,9 @@ AUTHORED_LEVELS = ["n5", "n4"]
 SKELETON_LEVELS = ["n3", "n2", "n1"]
 ALL_LEVELS = AUTHORED_LEVELS + SKELETON_LEVELS
 
+#: Teaching order of the levels, for the band comparison on kanji->vocab edges.
+LEVEL_ORDER = {level: index for index, level in enumerate(ALL_LEVELS)}
+
 
 def load(path):
     with open(path, encoding="utf-8") as f:
@@ -34,10 +47,11 @@ def load(path):
 
 
 def load_level_items(kind, level):
+    """Items of one kind at one level, each tagged with the level it came from."""
     p = os.path.join(CURRICULUM_DIR, kind, f"{level}.json")
     if not os.path.exists(p):
         return []
-    return load(p)["items"]
+    return [dict(item, _level=level) for item in load(p)["items"]]
 
 
 # Curated radical (slug) -> kanji (suffix) decomposition for N5.
@@ -310,18 +324,25 @@ def build_edges(levels):
                 )
             add(rad_slug, "radical", kslug, "kanji", "builds_on")
 
-    # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
+    # kanji -> vocabulary: kanji char appears in vocab primary_form.
     #
-    # Skeleton-level kanji included since Phase 3. These edges were held back
-    # while the planner scoped lesson candidates to one JLPT level: an N3 kanji
-    # gating an N5 word was a lock the learner could never open. The planner now
-    # pulls a word's required parents forward whatever level they are taught at
-    # (`listLessonCandidatePool`), so the gate is one the learner can satisfy.
+    # `requires` only from a kanji whose band is the word's level or earlier —
+    # the gate the learner can satisfy inside the level they are studying. A
+    # later-band kanji (写 at N3 in the N5 word 写真) keeps a `builds_on` edge:
+    # the word is taught on schedule and asked for its meaning, and the edge is
+    # what tells the app the reading prompt is not live yet.
     for k in kanji:
         char = k["primary_form"]
+        if not char:
+            continue
+        kanji_band = LEVEL_ORDER[k["_level"]]
         for v in vocab:
-            if char and char in v["primary_form"]:
-                add(k["slug"], "kanji", v["slug"], "vocabulary", "requires")
+            if char in v["primary_form"]:
+                in_band = kanji_band <= LEVEL_ORDER[v["_level"]]
+                add(
+                    k["slug"], "kanji", v["slug"], "vocabulary",
+                    "requires" if in_band else "builds_on",
+                )
 
     # grammar -> vocabulary (reinforces): explicit vocabulary_slugs links.
     vocab_slugs = {v["slug"] for v in vocab}

@@ -7,7 +7,10 @@ Authoritative curriculum content for the mobile app. JSON files here are validat
 - `schema/curriculum.schema.json` — JSON Schema (`$defs` per file type)
 - `metadata.json` — semantic version and maintainer counts
 - `radicals/`, `kanji/`, `vocabulary/`, `grammar/`, `readings/` — per-level seed slices (`n5.json`, `n4.json`, …)
-- `dependencies/graph.json` — precomputed radical → kanji → vocabulary edges
+- `dependencies/graph.json` — precomputed radical → kanji → vocabulary edges. A kanji → word
+  edge is `requires` (gates the lesson) only when the kanji is banded at or before the word's
+  level; an out-of-band kanji gets the non-gating `builds_on` form, which is what withholds
+  the word's reading prompt
 
 **N5 and N4 are authored in full. N3/N2/N1 carry kanji and radicals only** — item lists,
 readings and meanings, no examples and no vocabulary, grammar or passages of their own.
