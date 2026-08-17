@@ -452,8 +452,24 @@ def cmd_assemble(args):
 
 # --- assembly into sidecars generate.py inlines ----------------------------
 
-def sidecar_path(level, kind):
-    return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics", f"{level}.json")
+#: Vocabulary is still authored per level, so its sidecar is still named by
+#: one. Radicals and kanji are banded (reports/kanji_bands.py) and a band mixes
+#: sources, so their sidecar is named by the *source dataset* — the thing that
+#: stays put when the band moves. generate.py reads them back the same way.
+BANDED_KINDS = ("kanji", "radical")
+
+
+def _source_map(kind):
+    """{slug: source} from bands.json, for the kinds a band can move."""
+    with open(os.path.join(mc.BUILD_DIR, "bands.json"), encoding="utf-8") as f:
+        bands = json.load(f)
+    return {slug: entry["source"]
+            for slug, entry in bands["radicals" if kind == "radical" else "kanji"].items()}
+
+
+def sidecar_path(name, kind):
+    """`name` is a level for vocabulary, a source for radicals and kanji."""
+    return os.path.join(mc.CURRICULUM_DIR, KIND_DIR[kind], "mnemonics", f"{name}.json")
 
 
 def write_sidecar(level, kind, only_slugs=None):
@@ -474,12 +490,11 @@ def write_sidecar(level, kind, only_slugs=None):
     being written back to the (gitignored) per-slug draft file — a full rebuild
     would silently drop that review work for every slug not just ingested."""
     level_dir = os.path.join(DRAFTS_DIR, level, kind)
-    path = sidecar_path(level, kind)
-
-    entries = {}
-    if only_slugs is not None and os.path.exists(path):
-        with open(path, encoding="utf-8") as f:
-            entries = json.load(f)
+    # One level's drafts can land in more than one sidecar: a band mixes source
+    # datasets, and the sidecar follows the source. Vocabulary is unbanded, so
+    # its "source" is the level itself.
+    source_by_slug = _source_map(kind) if kind in BANDED_KINDS else {}
+    drafted = {}
 
     only_slugs = set(only_slugs) if only_slugs is not None else None
     if os.path.isdir(level_dir):
@@ -501,16 +516,36 @@ def write_sidecar(level, kind, only_slugs=None):
                 "prompt_version": str(record.get("prompt_version", PROMPT_VERSION[kind])),
                 "review_status": "draft",
             }
-            entries[record["slug"]] = {**record["tool_input"], "_meta": meta}
+            source = source_by_slug.get(record["slug"], level)
+            drafted.setdefault(source, {})[record["slug"]] = {
+                **record["tool_input"], "_meta": meta,
+            }
 
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(entries, f, ensure_ascii=False, indent=2)
-        f.write("\n")
-    print(f"wrote {len(entries)} {kind} mnemonic(s) to {path}")
-    print("run generate.py --level "
-          f"{level}, then validate-schema + compile-curriculum from the repo root.")
-    return path
+    # A full rebuild of an unbanded kind still rewrites the level's sidecar from
+    # scratch, drafts being its sole source of truth. A banded sidecar is shared
+    # by every level that draws on that source, so a rebuild driven by one
+    # level's drafts must merge — rewriting it would drop the other levels'
+    # entries, which no draft of *this* level can restore.
+    banded = kind in BANDED_KINDS
+    sources = set(drafted) if banded or only_slugs is not None else {level}
+    paths = []
+    for source in sorted(sources):
+        path = sidecar_path(source, kind)
+        entries = {}
+        if (banded or only_slugs is not None) and os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                entries = json.load(f)
+        entries.update(drafted.get(source, {}))
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(entries, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        print(f"wrote {len(entries)} {kind} mnemonic(s) to {path}")
+        paths.append(path)
+    print("run generate.py "
+          + ("--bands" if kind in BANDED_KINDS else f"--level {level}")
+          + ", then validate-schema + compile-curriculum from the repo root.")
+    return paths[0] if len(paths) == 1 else paths
 
 
 # --- web-chat (no-API) lane, mirroring 2a ----------------------------------

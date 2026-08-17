@@ -51,7 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
-| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 rewritten 2026-08-17, not started.** v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Start at Phase A (reband); Phase C carries the revert and must land `requires` band-gating in the same commit or 685 words lock permanently. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 Phase A done 2026-08-17** (corpus 2,000 kanji, bands 150/300/700/1000/2000, 238 radicals); Phases B–E open. v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Start at Phase A (reband); Phase C carries the revert and must land `requires` band-gating in the same commit or 685 words lock permanently. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
 
 ## Design & platform — `docs/design/`
 
@@ -190,6 +190,55 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   appears in an N5 learner's lesson 1). `vocab_context`'s taught-kanji window still excludes
   pulled-forward kanji, so ~390 words keep a reading story for a now-regular reading —
   deliberately deferred until the kanji layer exists to chain from.
+
+### v2 Phase A — reband (done 2026-08-17)
+- **Corpus is 2,000 kanji.** The user held the ladder's N2/N1 figures at 1,000 / 2,000
+  cumulative, and a band size is a count, so Phase D step 1 had to land inside Phase A:
+  `import/build_skeleton.py` now derives the whole corpus (192 hand-authored +
+  **1,808 derived**) instead of only the 553 kanji shipped words needed. Selection is every
+  kanji a shipped word uses, then jōyō by KANJIDIC frequency rank until 2,000. 136 of the
+  2,136 jōyō are left out.
+- **Bands are exactly 150 / 300 / 700 / 1,000 / 2,000 cumulative.** New
+  `reports/kanji_bands.py` ranks by corpus reuse (how many of a level's *own* words each
+  kanji appears in), tie-breaks by KANJIDIC grade, and writes the checked-in
+  `_build/bands.json` plus `reports/kanji-bands.md`. N3+ has no vocabulary to rank on and
+  falls back to frequency.
+- **Radicals: 152 → 238**, derived not curated. `build_skeleton.py` now mints a radical for
+  every KRADFILE component of a derived kanji that nothing already teaches (86 new), rather
+  than waiting for someone to hand-list it. Each files at the level of the first kanji that
+  needs it: 122 / 40 / 42 / 15 / 19.
+- **A slug no longer names a level.** It names the *source dataset* — `n5`/`n4` hand-authored,
+  `k` derived — and is frozen, because the mnemonic sidecars, the bundled radical art and
+  `user.db` are all keyed by it. `n5-en` ships in `kanji/n3.json`. The 553 old `n3-`/`n2-`/
+  `n1-` kanji slugs were rewritten to `k-` with their suffixes intact, and their 30 mnemonic
+  sidecar entries merged into `kanji/mnemonics/k.json` (radicals likewise into
+  `radicals/mnemonics/k.json`).
+- `generate.py` gained `--bands`: radicals and kanji can no longer be written per level,
+  because a band mixes sources. `--level` now writes vocabulary, grammar and readings only.
+  `generate_deps.py` resolves the curated decomposition maps by source, not level.
+- `generate_mnemonics.py`'s sidecar now follows the slug's source and merges rather than
+  rewrites for banded kinds — one level's drafts can no longer drop another level's entries.
+- **113 hand-authored kanji changed level; 188 derived kanji moved up into N5/N4.** 53 kanji
+  with written prose fell out of the 300-band and now wait, 百 千 万 円 東 西 南 北 道 高 足
+  雨 among them. Their prose is not lost.
+- Authoring debt is **173 kanji + 24 radicals** in the N5+N4 bands (plan estimated ~180
+  kanji). `reports/kanji_priority.py` was rewritten against bands — its pull-forward
+  reconstruction is gone, the queue is simply band order.
+- **Plan claim corrected:** "every radical the 300-kanji N5+N4 band needs already exists" is
+  false. 24 of the newly derived radicals land in N5/N4 with no mnemonic; they need prose
+  (art is optional — text fallback renders).
+- Verified: `validate-schema` clean, `compile-curriculum` clean (DB 3.6 MB, 3,656 items,
+  8,059 edges), `dependency_order.py` 0 errors, mobile `npm test` 2,130 passing. 0 radicals
+  file at a later *level* than a kanji that needs them; the 18 remaining within-level
+  off-by-ones are a pre-existing artifact of radicals and kanji being separate streams, down
+  from 48. The 8 kanji with no radical parent are unchanged from before.
+- **Not done here:** Phase B (app rules), Phase C (drop pull-forward, band-gate `requires`),
+  the rest of Phase D (N3+ vocabulary, Browse marker), Phase E (authoring). Pull-forward is
+  still on, as Phase A intends.
+- **Open risk, pre-existing and now acute:** `compile-curriculum` assigns `items.id` by
+  (level, type, slug), and `user.db` stores progress against those integers. Rebanding
+  renumbers essentially the whole corpus, so any installed profile would map onto the wrong
+  items after an OTA swap. Nothing in this repo remaps them.
 
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).

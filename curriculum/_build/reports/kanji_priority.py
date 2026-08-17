@@ -1,37 +1,23 @@
 # -*- coding: utf-8 -*-
-"""Authoring order for the skeleton kanji (plan Phase 4).
+"""Authoring queue for kanji and radicals without prose (plan v2 Phase E).
 
-The 553 N3/N2/N1 kanji shipped by Phase 2 carry meanings, readings and accepted
-answers and nothing else. Phase 3 turned their kanji -> vocabulary edges on and
-taught the planner to pull them forward, so a learner now *meets* them inside
-N5/N4 lessons with no mnemonic. This report says which one to author next.
+Under plan v1 this report had to reconstruct when a learner would meet a kanji:
+the planner pulled parents forward across levels, so a kanji's own level said
+nothing about when it arrived, and the queue was ranked by walking every word's
+parents back to their earliest encounter.
 
-**Order is by first encounter, not by reuse count.** The plan's Phase 4 sketch
-proposed ranking by "how many words each unblocks", written when the model was
-still "flip edges on as coverage lands" — authoring a kanji was what made its
-words reachable, so unblocking the most words per kanji was the whole game.
-Phase 3 changed that: every edge is already on and coverage is already 100%, so
-no kanji unblocks anything. What is missing is prose, and a learner meets the
-missing prose in *lesson order*. 私 has a reuse count of 2 and is met in lesson
-2; 物 has the highest reuse count in the set (8) and is not met until well after.
-Ranking by reuse would author 物 first and leave the lesson-2 learner looking at
-an empty mnemonic card.
+v2 deletes that question. A band *is* the teaching order — `kanji_bands.py`
+assigns each kanji a level and a position inside it, and the planner offers a
+level's own items — so the queue is simply: band order, prose missing, stop at
+the end of the levels that ship content.
 
-Reuse count survives as the tie-break — among kanji a learner reaches at the
-same moment, the one carrying more of the curriculum is worth more — and the
-reuse-ordered coverage curve is still reported, because it is the number the
-plan's table quotes.
+A mnemonic is owed when a learner **reaches** an item, never because it exists.
+N3+ is 1,700 kanji of skeleton and none of it is in this queue; a kanji enters
+only when a band a learner studies contains it.
 
-Encounter position mirrors `listLessonCandidatePool` (`itemRepository.ts`): a
-pulled-forward kanji takes the sort position of the earliest item that needs it,
-inside the earliest level that needs it. As in `dependency_order.py`, study
-order is approximated as (level, sort_order), which compares a kanji's
-sort_order against a word's only because `ROUND_QUOTAS` in `lessonPlanner.ts`
-gives radicals, kanji and vocabulary two slots each per round.
-
-Skeleton radicals are reported as prerequisites rather than ranked: a kanji
-mnemonic continues its components' established images (`mnemonic_context.py`),
-so a radical must be authored before any kanji that builds on it.
+Radicals come first inside each level. A kanji mnemonic continues its
+components' established images (`generate_content/mnemonic_context.py`), so a
+radical with no story of its own is a story the kanji cannot tell.
 
 Reads only. Writes curriculum/_build/reports/kanji-priority.{md,json}.
 
@@ -49,13 +35,9 @@ BUILD_DIR = os.path.dirname(REPORTS_DIR)
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
-#: Levels whose vocabulary is authored. A skeleton kanji is only ever reached
-#: through one of these words — N3+ ships no vocabulary of its own.
-TAUGHT_VOCAB_LEVELS = ["n5", "n4"]
-SKELETON_LEVELS = ["n3", "n2", "n1"]
 
-#: Tranche sizes the plan's coverage table quotes.
-CURVE_POINTS = [50, 100, 150, 200, 300, 400, 553]
+#: Levels that ship full content, and so the only ones a mnemonic is owed for.
+AUTHORED_LEVELS = ["n5", "n4"]
 
 
 def load(path):
@@ -70,45 +52,26 @@ def load_items(kind, level):
     return load(path)["items"]
 
 
-def has_mnemonic(item):
+def has_prose(item):
     """Authored prose, by the same fields `generate.py` inlines from the
     sidecars. `mnemonic_text` alone is the pre-2b one-liner and still counts."""
     return any(item.get(f) for f in ("meaning_mnemonic", "reading_mnemonic", "mnemonic_text"))
 
 
-def collect():
-    kanji = {}
+def collect(kind):
+    """{slug: {...}} across every band, in band order."""
+    out = {}
     for level in LEVELS:
-        for item in load_items("kanji", level):
-            kanji[item["slug"]] = {
-                "slug": item["slug"],
-                "char": item["primary_form"],
-                "meaning": item["meaning"],
-                "level": level,
-                "sort_order": item["sort_order"],
-                "readings": [r["reading"] for r in item.get("readings", [])],
-                "authored": has_mnemonic(item),
-            }
-    radicals = {}
-    for level in LEVELS:
-        for item in load_items("radicals", level):
-            radicals[item["slug"]] = {
+        for item in load_items(kind, level):
+            out[item["slug"]] = {
                 "slug": item["slug"],
                 "form": item["primary_form"],
                 "meaning": item["meaning"],
                 "level": level,
-                "authored": has_mnemonic(item),
-            }
-    vocab = {}
-    for level in TAUGHT_VOCAB_LEVELS:
-        for item in load_items("vocabulary", level):
-            vocab[item["slug"]] = {
-                "slug": item["slug"],
-                "form": item["primary_form"],
-                "level": level,
                 "sort_order": item["sort_order"],
+                "authored": has_prose(item),
             }
-    return kanji, radicals, vocab
+    return out
 
 
 def edges():
@@ -124,186 +87,133 @@ def edges():
     return requires, builds_on
 
 
-def encounter(word_slugs, vocab):
-    """Where the planner first offers this kanji: the position of the earliest
-    word that requires it. Returns (level_rank, sort_order, level)."""
-    best = None
-    for slug in word_slugs:
-        word = vocab.get(slug)
-        if not word:
+def load_vocabulary():
+    vocab = {}
+    for level in AUTHORED_LEVELS:
+        for item in load_items("vocabulary", level):
+            vocab[item["slug"]] = {"form": item["primary_form"], "level": level}
+    return vocab
+
+
+def in_band(items):
+    """Band order across the levels that ship content."""
+    return sorted(
+        (i for i in items.values() if i["level"] in AUTHORED_LEVELS),
+        key=lambda i: (AUTHORED_LEVELS.index(i["level"]), i["sort_order"]),
+    )
+
+
+def coverage_curve(queue, kanji, requires, vocab, points):
+    """Words every kanji of which has prose, after the first N of the queue.
+
+    The number that matters is not how many items are written but how many words
+    a learner can be told a whole story about."""
+    parents = defaultdict(set)
+    for slug, info in kanji.items():
+        if info["level"] not in AUTHORED_LEVELS:
             continue
-        key = (TAUGHT_VOCAB_LEVELS.index(word["level"]), word["sort_order"])
-        if best is None or key < best[0]:
-            best = (key, word["level"])
-    return best
-
-
-def rank(kanji, radicals, vocab, requires, builds_on):
-    rows = []
-    for slug, k in kanji.items():
-        if k["level"] not in SKELETON_LEVELS:
-            continue
-        words = sorted(
-            (vocab[w] for w in requires.get(slug, []) if w in vocab),
-            key=lambda w: (TAUGHT_VOCAB_LEVELS.index(w["level"]), w["sort_order"]),
-        )
-        met = encounter(requires.get(slug, []), vocab)
-        if met is None:
-            # Phase 2 built the skeleton from the kanji shipped vocabulary uses,
-            # so every one of them is required by a word. A kanji that is not is
-            # a build bug, not a low priority.
-            raise SystemExit(f"skeleton kanji {slug!r} is required by no shipped word")
-        (level_rank, sort_order), met_level = met
-        components = [radicals[r] for r in builds_on.get(slug, []) if r in radicals]
-        rows.append({
-            **k,
-            "met_in_level": met_level,
-            "met_at_sort_order": sort_order,
-            "reuse": len(words),
-            "words": [{"slug": w["slug"], "form": w["form"], "level": w["level"]} for w in words],
-            "unauthored_components": [
-                {"slug": c["slug"], "form": c["form"], "meaning": c["meaning"], "level": c["level"]}
-                for c in components if not c["authored"]
-            ],
-            "_key": (level_rank, sort_order, -len(words), slug),
-        })
-    rows.sort(key=lambda r: r["_key"])
-    for i, row in enumerate(rows, start=1):
-        row["priority"] = i
-        del row["_key"]
-    return rows
-
-
-def kanji_stream_positions(kanji, rows, requires, vocab):
-    """Ordinal of each kanji within the stream of kanji a learner of that level
-    sees — the level's own kanji merged with the ones pulled forward into it, in
-    effective sort order. `met as N5 kanji #12` is the honest answer to "when",
-    where a raw sort_order is not comparable across the two populations."""
-    pulled = defaultdict(list)
-    for row in rows:
-        pulled[row["met_in_level"]].append((row["met_at_sort_order"], row["slug"]))
-    positions = {}
-    for level in TAUGHT_VOCAB_LEVELS:
-        own = [(k["sort_order"], k["slug"]) for k in kanji.values() if k["level"] == level]
-        merged = sorted(own + pulled[level])
-        for i, (_, slug) in enumerate(merged, start=1):
-            if slug not in positions:
-                positions[slug] = (level, i, len(merged))
-    return positions
-
-
-def coverage_curve(order, rows_by_slug, vocab, requires):
-    """Words whose every skeleton parent is authored, after the first N kanji of
-    `order`. The plan's table measures reachability; with every edge on since
-    Phase 3 it measures prose completeness instead."""
-    skeleton_parents = defaultdict(set)
-    for slug in rows_by_slug:
         for word in requires.get(slug, []):
             if word in vocab:
-                skeleton_parents[word].add(slug)
+                parents[word].add(slug)
+    written = {i["slug"] for i in kanji.values() if i["authored"]}
     curve = []
-    for n in CURVE_POINTS:
-        done = set(order[:n])
-        covered = sum(1 for w in vocab if skeleton_parents[w] <= done)
-        curve.append({"authored": n, "words": covered, "pct": round(100 * covered / len(vocab))})
-    return curve, sum(1 for w in vocab if not skeleton_parents[w])
+    for n in points:
+        done = written | {row["slug"] for row in queue[:n]}
+        covered = sum(1 for w in vocab if parents[w] <= done)
+        curve.append({"authored": n, "words": covered,
+                      "pct": round(100 * covered / len(vocab))})
+    return curve
 
 
-def render_markdown(rows, positions, by_encounter, by_reuse, base_covered, total_words,
-                    pending_radicals):
+def render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on, requires,
+                    vocab, curve):
     out = []
-    out.append("# Skeleton kanji authoring order (Phase 4)\n")
+    out.append("# Authoring queue (plan v2 Phase E)\n")
     out.append("Generated by `curriculum/_build/reports/kanji_priority.py`. "
                "Do not edit by hand.\n")
-    unauthored = [r for r in rows if not r["authored"]]
-    out.append(f"{len(rows)} skeleton kanji, **{len(unauthored)} still without a mnemonic**. "
-               f"Ordered by first encounter under Phase 3 pull-forward, "
-               f"reuse count as tie-break.\n")
+    banded_kanji = in_band(kanji)
+    banded_radicals = in_band(radicals)
+    out.append(f"{len(banded_radicals)} radicals and {len(banded_kanji)} kanji sit in the "
+               f"N5+N4 bands. **{len(radical_queue)} radicals and {len(kanji_queue)} kanji "
+               f"have no mnemonic.** Order is band order, which is the order a learner "
+               f"meets them.\n")
+    out.append("Everything at N3+ is out of the queue by design — a band a learner does "
+               "not study owes no prose.\n")
 
-    out.append("## Prerequisite radicals\n")
-    if pending_radicals:
-        out.append("A kanji mnemonic continues its components' established images, so these "
-                   "radicals must be authored before the kanji listed against them.\n")
-        out.append("| Radical | Meaning | Level | First needed by | Kanji waiting |")
-        out.append("| --- | --- | --- | ---: | ---: |")
-        for r in pending_radicals:
-            out.append(f"| {r['form']} `{r['slug']}` | {r['meaning']} | {r['level'].upper()} "
-                       f"| #{r['first_priority']} {r['first_char']} | {r['waiting']} |")
+    out.append("## Radicals\n")
+    if radical_queue:
+        out.append("| # | Radical | Meaning | Level | Kanji waiting |")
+        out.append("| ---: | --- | --- | --- | ---: |")
+        waiting = defaultdict(int)
+        for slug, info in kanji.items():
+            if info["level"] in AUTHORED_LEVELS and not info["authored"]:
+                for rad in builds_on.get(slug, []):
+                    waiting[rad] += 1
+        for i, row in enumerate(radical_queue, start=1):
+            out.append(f"| {i} | {row['form']} `{row['slug']}` | {row['meaning']} "
+                       f"| {row['level'].upper()} | {waiting[row['slug']]} |")
     else:
-        out.append("None — every component of every skeleton kanji is authored.\n")
+        out.append("None — every radical in the N5+N4 bands has a mnemonic.\n")
     out.append("")
 
     out.append("## Coverage curve\n")
-    out.append(f"Words with a full chain *and* full prose behind it, out of {total_words} "
-               f"N5+N4 vocabulary items. {base_covered} need no skeleton kanji at all.\n")
-    out.append("| Kanji authored | By encounter order | By reuse order |")
-    out.append("| ---: | ---: | ---: |")
-    for enc, reu in zip(by_encounter, by_reuse):
-        out.append(f"| +{enc['authored']} | {enc['words']} ({enc['pct']}%) "
-                   f"| {reu['words']} ({reu['pct']}%) |")
-    out.append("\nReuse order finishes any given word sooner, which is what the plan's table "
-               "measured. Encounter order reaches the learner sooner, which is what an empty "
-               "mnemonic card costs.\n")
+    out.append(f"Words every kanji of which has prose, out of {len(vocab)} N5+N4 "
+               f"vocabulary items, as the kanji queue is worked through.\n")
+    out.append("| Kanji authored | Words fully told |")
+    out.append("| ---: | ---: |")
+    for point in curve:
+        out.append(f"| +{point['authored']} | {point['words']} ({point['pct']}%) |")
+    out.append("")
 
-    out.append("## Authoring queue\n")
-    out.append("| # | Kanji | Meaning | Level | Met as | Reuse | Unblocks |")
-    out.append("| ---: | --- | --- | --- | --- | ---: | --- |")
-    for row in rows:
-        if row["authored"]:
-            continue
-        level, index, total = positions.get(row["slug"], (row["met_in_level"], 0, 0))
-        words = ", ".join(w["form"] for w in row["words"][:4])
-        if len(row["words"]) > 4:
-            words += f", +{len(row['words']) - 4}"
-        out.append(f"| {row['priority']} | {row['char']} `{row['slug']}` | {row['meaning']} "
-                   f"| {row['level'].upper()} | {level.upper()} kanji #{index}/{total} "
-                   f"| {row['reuse']} | {words} |")
+    out.append("## Kanji\n")
+    if kanji_queue:
+        out.append("| # | Kanji | Meaning | Level | Band pos. | Words | Components missing |")
+        out.append("| ---: | --- | --- | --- | ---: | ---: | --- |")
+        for i, row in enumerate(kanji_queue, start=1):
+            missing = [
+                radicals[r]["form"]
+                for r in builds_on.get(row["slug"], [])
+                if r in radicals and not radicals[r]["authored"]
+            ]
+            words = sum(1 for w in requires.get(row["slug"], []) if w in vocab)
+            out.append(f"| {i} | {row['form']} `{row['slug']}` | {row['meaning']} "
+                       f"| {row['level'].upper()} | {row['sort_order']} | {words} "
+                       f"| {' '.join(missing) or '—'} |")
+    else:
+        out.append("None — every kanji in the N5+N4 bands has a mnemonic.\n")
     out.append("")
     return "\n".join(out)
 
 
 def main():
-    kanji, radicals, vocab = collect()
+    radicals = collect("radicals")
+    kanji = collect("kanji")
     requires, builds_on = edges()
-    rows = rank(kanji, radicals, vocab, requires, builds_on)
-    rows_by_slug = {r["slug"]: r for r in rows}
-    positions = kanji_stream_positions(kanji, rows, requires, vocab)
+    vocab = load_vocabulary()
 
-    encounter_order = [r["slug"] for r in rows]
-    reuse_order = [r["slug"] for r in sorted(rows, key=lambda r: (-r["reuse"], r["priority"]))]
-    by_encounter, base_covered = coverage_curve(encounter_order, rows_by_slug, vocab, requires)
-    by_reuse, _ = coverage_curve(reuse_order, rows_by_slug, vocab, requires)
+    radical_queue = [r for r in in_band(radicals) if not r["authored"]]
+    kanji_queue = [k for k in in_band(kanji) if not k["authored"]]
 
-    pending = {}
-    for row in rows:
-        if row["authored"]:
-            continue
-        for comp in row["unauthored_components"]:
-            entry = pending.setdefault(comp["slug"], {
-                **comp, "waiting": 0,
-                "first_priority": row["priority"], "first_char": row["char"],
-            })
-            entry["waiting"] += 1
-    pending_radicals = sorted(pending.values(), key=lambda r: r["first_priority"])
+    points = [n for n in (25, 50, 100, 150, 200, 300) if n < len(kanji_queue)]
+    points.append(len(kanji_queue))
+    curve = coverage_curve(kanji_queue, kanji, requires, vocab, points)
 
-    md = render_markdown(rows, positions, by_encounter, by_reuse, base_covered,
-                         len(vocab), pending_radicals)
+    md = render_markdown(radical_queue, kanji_queue, radicals, kanji, builds_on,
+                         requires, vocab, curve)
     with open(os.path.join(REPORTS_DIR, "kanji-priority.md"), "w", encoding="utf-8") as f:
         f.write(md)
     with open(os.path.join(REPORTS_DIR, "kanji-priority.json"), "w", encoding="utf-8") as f:
         json.dump({
-            "total": len(rows),
-            "unauthored": sum(1 for r in rows if not r["authored"]),
-            "prerequisite_radicals": pending_radicals,
-            "coverage_by_encounter_order": by_encounter,
-            "coverage_by_reuse_order": by_reuse,
-            "queue": rows,
+            "radicals_pending": len(radical_queue),
+            "kanji_pending": len(kanji_queue),
+            "coverage_curve": curve,
+            "radicals": radical_queue,
+            "kanji": kanji_queue,
         }, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
-    remaining = sum(1 for r in rows if not r["authored"])
-    print(f"{len(rows)} skeleton kanji, {remaining} unauthored, "
-          f"{len(pending_radicals)} prerequisite radical(s) pending.")
+    print(f"{len(radical_queue)} radicals and {len(kanji_queue)} kanji in the N5+N4 "
+          f"bands have no mnemonic.")
     print("Wrote kanji-priority.md / .json")
     return 0
 

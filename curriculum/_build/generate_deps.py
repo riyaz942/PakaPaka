@@ -219,11 +219,12 @@ N4_DECOMPOSITION = {
 
 
 def load_skeleton_decomposition():
-    """{level: {radical slug: [kanji suffix, ...]}} for the skeleton levels.
+    """{radical slug: [kanji slug, ...]} for the derived corpus.
 
     Generated from KRADFILE by import/build_skeleton.py and checked in, so this
-    stays symmetric with the hand-curated N5/N4 maps above: same shape, same
-    validation, no source archives needed at graph-build time."""
+    stays symmetric with the hand-curated N5/N4 maps above: same validation, no
+    source archives needed at graph-build time. It names kanji by slug rather
+    than by suffix because a derived kanji has no separate suffix to key on."""
     path = os.path.join(BUILD_DIR, "skeleton.json")
     if not os.path.exists(path):
         return {}
@@ -265,32 +266,49 @@ def build_edges(levels):
     radical_slugs = {r["slug"] for r in radicals}
     kanji_slugs = {k["slug"] for k in kanji}
 
-    # radical -> kanji (builds_on), from curated decomposition maps per level.
-    decomposition_by_level = {"n5": N5_DECOMPOSITION, "n4": N4_DECOMPOSITION}
-    decomposition_by_level.update(load_skeleton_decomposition())
+    # radical -> kanji (builds_on), from the curated maps plus the derived one.
+    #
+    # Keyed by *source dataset*, not by level: since plan v2 a kanji's level is
+    # a band it can move between, while its slug keeps the prefix of whoever
+    # wrote it. `n5-en` stays `n5-en` in the N3 band, so the curated N5 map
+    # still resolves it.
+    decomposition_by_source = {"n5": N5_DECOMPOSITION, "n4": N4_DECOMPOSITION}
     # A key that resolves to nothing is a typo or a renamed/removed item, and
     # silently skipping it is how radicals went missing from kanji chips
     # unnoticed. Fail the build instead.
-    for lvl in levels:
-        decomposition = decomposition_by_level.get(lvl, {})
+    for source, decomposition in decomposition_by_source.items():
         for rad_slug, kanji_suffixes in decomposition.items():
             if rad_slug not in radical_slugs:
                 raise ValueError(
-                    f"{lvl} decomposition: radical slug {rad_slug!r} is not a taught radical"
+                    f"{source} decomposition: radical slug {rad_slug!r} is not a taught radical"
                 )
             if not kanji_suffixes:
                 raise ValueError(
-                    f"{lvl} decomposition: radical slug {rad_slug!r} has an empty kanji list; "
-                    "drop the key instead"
+                    f"{source} decomposition: radical slug {rad_slug!r} has an empty kanji "
+                    "list; drop the key instead"
                 )
             for suf in kanji_suffixes:
-                kslug = f"{lvl}-{suf}"
+                kslug = f"{source}-{suf}"
                 if kslug not in kanji_slugs:
                     raise ValueError(
-                        f"{lvl} decomposition: {rad_slug!r} lists kanji {kslug!r}, which is not "
-                        "a taught kanji"
+                        f"{source} decomposition: {rad_slug!r} lists kanji {kslug!r}, which is "
+                        "not a taught kanji"
                     )
                 add(rad_slug, "radical", kslug, "kanji", "builds_on")
+
+    # The derived corpus names kanji by slug already.
+    for rad_slug, kanji_slugs_listed in load_skeleton_decomposition().items():
+        if rad_slug not in radical_slugs:
+            raise ValueError(
+                f"skeleton decomposition: radical slug {rad_slug!r} is not a taught radical"
+            )
+        for kslug in kanji_slugs_listed:
+            if kslug not in kanji_slugs:
+                raise ValueError(
+                    f"skeleton decomposition: {rad_slug!r} lists kanji {kslug!r}, which is "
+                    "not a taught kanji"
+                )
+            add(rad_slug, "radical", kslug, "kanji", "builds_on")
 
     # kanji -> vocabulary (requires): kanji char appears in vocab primary_form.
     #

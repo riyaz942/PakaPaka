@@ -1,19 +1,29 @@
 # -*- coding: utf-8 -*-
-"""Build the N3/N2/N1 skeleton dataset (plan Phase 2).
+"""Build the derived kanji corpus (plan v2 Phase A).
 
-The skeleton exists for one reason: every kanji in a word must be taught before
-the word is. 553 kanji are used by shipped N5/N4 vocabulary and authored
-nowhere, so those words reach the learner with no chain behind them. This
-script derives an item list for exactly those 553 — no more — and writes it to
-`curriculum/_build/skeleton.json`, which `generate.py` and `generate_deps.py`
-read.
+The curriculum ships a 2,000-kanji ladder. 192 of them are hand-authored in
+`n5_kanji.py` / `n4_kanji.py`; the rest are derived here from KANJIDIC2 and
+KRADFILE and written to `curriculum/_build/skeleton.json`, which `generate.py`
+and `generate_deps.py` read.
 
-Skeleton, not content: slug, primary_form, meaning, readings, accepted_answers,
-sort_order. No mnemonics, no examples, no art, and no N3+ vocabulary — N3+ words
-would drag in their own untaught kanji and restart the same problem one level up.
+Skeleton, not content: slug, primary_form, meaning, readings, accepted_answers.
+No mnemonics, no examples and no art — a mnemonic is owed when a learner
+*reaches* an item, never because it exists.
+
+**This file assigns no levels.** Under plan v1 it did: the old-JLPT tag picked
+n3/n2/n1 and the slug carried that prefix. v2 makes the level a *band* — a
+teaching budget ranked by how many of a level's own words each kanji unlocks —
+so `reports/kanji_bands.py` owns level assignment and every kanji here is
+level-free. Slugs are prefixed `k-` for the same reason: a slug that named a
+level would be a second, stale label for the one the band already carries.
+
+Corpus selection, in priority order:
+  1. every kanji a shipped N5/N4 word is written with — dropping one would
+     orphan a word that is already authored;
+  2. the most frequent jōyō kanji, by KANJIDIC2 frequency rank, until 2,000.
 
 Sources (EDRDG, CC BY-SA 4.0; see repo-root NOTICE):
-  - KANJIDIC2 — meanings, on'/kun'yomi, the old JLPT tag used to pick a level
+  - KANJIDIC2 — meanings, on'/kun'yomi, grade and frequency rank
   - KRADFILE  — the component decomposition behind radical -> kanji edges
 
 The output is checked in, so a graph rebuild never needs the source archives.
@@ -33,23 +43,21 @@ BUILD_DIR = os.path.dirname(IMPORT_DIR)
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 sys.path.insert(0, IMPORT_DIR)
+sys.path.insert(0, BUILD_DIR)
 
 import audit_facts  # noqa: E402
 import sources  # noqa: E402
 
-#: Levels the curriculum authors in full. Everything else is skeleton.
+#: Levels the curriculum authors vocabulary for. Only these have words, so only
+#: these can require a kanji.
 AUTHORED_LEVELS = ("n5", "n4")
 
-#: KANJIDIC2's `jlpt` tag is the *old* four-level exam (4 easiest, 1 hardest).
-#: It is the only per-kanji difficulty signal the open sources carry, so it
-#: picks the skeleton level. Tag 4 means "old-JLPT easiest" — the six kanji that
-#: carry it are gaps in the shipped N5/N4 lists (何 空 父 母 友 魚), not N3
-#: content; they sit at N3 with the rest of the skeleton until someone authors
-#: them properly (plan Phase 4). Untagged kanji were on no old list at all
-#: (誰 箸 鍋 …); modern lists put them at N1.
-LEVEL_BY_JLPT_TAG = {"4": "n3", "3": "n3", "2": "n2", "1": "n1", None: "n1"}
+#: Total kanji on the ladder (plan v2, "The ladder"): 150 + 150 + 400 + 300 +
+#: 1,000. 2,136 kanji carry a jōyō grade, so 136 of the rarest are left out.
+CORPUS_SIZE = 2000
 
-SKELETON_LEVELS = ("n3", "n2", "n1")
+#: Slug prefix for every derived kanji. Not a level — see the module docstring.
+SLUG_PREFIX = "k"
 
 #: New radicals for the skeleton levels.
 #:
@@ -73,8 +81,12 @@ SKELETON_LEVELS = ("n3", "n2", "n1")
 #: description of the shape: 奥 contains 大 whether or not the learner has met
 #: 大 the kanji.
 #:
-#: `_assert_orphans_covered` fails the build if the data ever moves out from
-#: under this list.
+#: This list is now the *hand-glossed* head only. v2's corpus is the whole jōyō
+#: set, and `derive_radicals()` below picks up every remaining KRADFILE
+#: component automatically, so a new component no longer has to be noticed by a
+#: person before it can be taught. Entries stay here because KANJIDIC has no
+#: gloss for the form at all (ノ ｜ 亅 𠂉 マ) or because its gloss describes the
+#: whole kanji rather than the shape a learner sees in a component slot.
 NEW_RADICALS = [
     # Phase 2 — kanji that decompose into nothing otherwise.
     {"slug": "katahen", "form": "方", "meaning": "direction"},
@@ -126,6 +138,18 @@ EXTRA_KRAD_VARIANTS = {
     "𠂉": ["乞"],
 }
 
+#: Components KANJIDIC2 has no entry for, so `derive_radicals()` cannot gloss
+#: them. Katakana and kana-like strokes that KRADFILE uses as component keys.
+MANUAL_COMPONENT_MEANINGS = {
+    "ユ": "elbow",
+}
+
+#: KANJIDIC glosses a few components with their Kangxi dictionary entry rather
+#: than a picture — "long stride or stretching radical (no. 54)". The number and
+#: the word "radical" are catalogue metadata, not a meaning a learner can hold.
+_RADICAL_GLOSS_RE = re.compile(r"\s*\(?\bno\.\s*\d+\)?", re.IGNORECASE)
+_RADICAL_WORD_RE = re.compile(r"\s*\bradical\b\s*(variant)?", re.IGNORECASE)
+
 #: A meaning gloss only becomes an extra accepted answer when it is a plain
 #: short synonym. KANJIDIC's tail glosses run to "counter for occurrences" and
 #: parenthetical notes, which are documentation, not answers.
@@ -145,32 +169,79 @@ def is_kanji_char(ch):
     return "一" <= ch <= "鿿"
 
 
-def untaught_kanji():
-    """{char: [vocab slug, ...]} — kanji used by shipped vocabulary, taught
-    nowhere. Same measurement as reports/dependency_order.py's coverage table."""
-    taught = {
-        item["primary_form"]
-        for level in AUTHORED_LEVELS
-        for item in load_level_items("kanji", level)
-    }
+def authored_chars():
+    """The kanji `n5_kanji.py` / `n4_kanji.py` define.
+
+    Read from the datasets, not from `curriculum/kanji/n*.json`: the generated
+    files are grouped by *band* now, so an authored kanji may sit in any of the
+    five, and "which file is it in" no longer answers "who wrote it"."""
+    from n4_kanji import N4_KANJI
+    from n5_kanji import N5_KANJI
+
+    return {k["char"] for k in N5_KANJI} | {k["char"] for k in N4_KANJI}
+
+
+def vocabulary_uses():
+    """{char: [vocab slug, ...]} — kanji the shipped N5/N4 words are written
+    with. Every one of these must be in the corpus, however rare: 蜘 ranks
+    nowhere in KANJIDIC's frequency list and 蜘蛛 is still a shipped word."""
     uses = {}
     for level in AUTHORED_LEVELS:
         for item in load_level_items("vocabulary", level):
             for ch in dict.fromkeys(item["primary_form"]):
-                if is_kanji_char(ch) and ch not in taught:
+                if is_kanji_char(ch):
                     uses.setdefault(ch, []).append(item["slug"])
     return uses
 
 
-def slugify(meaning):
-    """A kanji's slug suffix from its primary English gloss.
+def select_corpus(kanjidic, required):
+    """The CORPUS_SIZE kanji the ladder teaches.
 
-    The shipped N5/N4 suffixes are hand-picked romaji; 553 generated entries
+    `required` first — a shipped word may not lose a parent — then jōyō kanji by
+    KANJIDIC frequency rank. Frequency, not grade: grade is the order Japanese
+    schools teach in, which tracks stroke count and school year rather than what
+    a learner meets in text."""
+    def freq(char):
+        raw = kanjidic[char].get("freq")
+        return int(raw) if raw else 99999
+
+    def grade(char):
+        raw = kanjidic[char].get("grade")
+        return int(raw) if raw else 99
+
+    if len(required) > CORPUS_SIZE:
+        raise SystemExit(
+            f"{len(required)} kanji are required by shipped content but the corpus is "
+            f"{CORPUS_SIZE}; raise CORPUS_SIZE or cut vocabulary."
+        )
+    joyo = sorted(
+        (c for c in kanjidic if grade(c) <= 8 and c not in required),
+        key=lambda c: (freq(c), grade(c), c),
+    )
+    corpus = sorted(required) + joyo[: CORPUS_SIZE - len(required)]
+    if len(corpus) < CORPUS_SIZE:
+        raise SystemExit(
+            f"only {len(corpus)} kanji available for a corpus of {CORPUS_SIZE}"
+        )
+    return corpus
+
+
+def slugify(meaning):
+    """A slug suffix from a primary English gloss.
+
+    The shipped N5/N4 suffixes are hand-picked romaji; 1,808 generated entries
     need a rule instead, and the gloss is the one field that is short, ASCII and
     near-unique. Two words is enough to stay readable (`brush-stroke`) without
     turning a gloss like "counter for occurrences" into a sentence."""
     words = re.sub(r"[^a-z0-9]+", "-", meaning.lower()).strip("-").split("-")
     return "-".join(w for w in words[:2] if w)
+
+
+def clean_gloss(meaning):
+    """KANJIDIC's Kangxi catalogue wording stripped back to the picture."""
+    cleaned = _RADICAL_GLOSS_RE.sub("", meaning)
+    cleaned = _RADICAL_WORD_RE.sub("", cleaned)
+    return cleaned.strip(" ()") or meaning
 
 
 def clean_kunyomi(reading):
@@ -180,56 +251,99 @@ def clean_kunyomi(reading):
     return reading.split(".")[0].strip("-")
 
 
-def build_kanji_entries(uses, kanjidic):
-    """One skeleton entry per untaught kanji, grouped by level.
+def load_previous_slugs():
+    """{char: slug} from the checked-in skeleton.json.
 
-    Ordered by how many shipped words each kanji unblocks, which is the order
-    Phase 4 authors them in and the order the Phase 3 planner will pull them
-    forward in."""
-    by_level = {level: [] for level in SKELETON_LEVELS}
+    A slug is an identity: `user.db` rows and the mnemonic sidecars are keyed by
+    it, and the gloss a slug is minted from can shift when KANJIDIC is refreshed.
+    So a char that already has a slug keeps it, and only new corpus entries mint
+    one."""
+    path = os.path.join(BUILD_DIR, "skeleton.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        kanji = json.load(f).get("kanji", [])
+    if isinstance(kanji, dict):
+        # v1 shape: {level: [{suffix, char, ...}]}, slug "n3-<suffix>". The
+        # suffix is the identity and survives; the level prefix was the label
+        # v2 deleted, so it is rewritten rather than frozen.
+        return {
+            entry["char"]: f"{SLUG_PREFIX}-{entry['suffix']}"
+            for entries in kanji.values()
+            for entry in entries
+        }
+    return {k["char"]: k["slug"] for k in kanji}
+
+
+def build_kanji_entries(corpus, authored, uses, kanjidic):
+    """One entry per corpus kanji that no hand-authored dataset defines.
+
+    Level-free and order-free: `reports/kanji_bands.py` assigns both. The list
+    is emitted in frequency order only so a diff of skeleton.json stays legible.
+    """
+    previous = load_previous_slugs()
+    taken = set(previous.values())
     suffix_counts = Counter()
-    ranked = sorted(
-        uses.items(),
-        key=lambda kv: (-len(kv[1]), int(kanjidic[kv[0]]["freq"] or 99999), kv[0]),
-    )
-    for char, vocab_slugs in ranked:
+    entries = []
+    for char in corpus:
+        if char in authored:
+            continue
         kd = kanjidic[char]
-        level = LEVEL_BY_JLPT_TAG[kd["jlpt"]]
-        suffix = slugify(kd["meanings"][0])
-        suffix_counts[suffix] += 1
-        if suffix_counts[suffix] > 1:
-            suffix = f"{suffix}-{suffix_counts[suffix]}"
+        slug = previous.get(char)
+        if not slug:
+            suffix = slugify(kd["meanings"][0])
+            suffix_counts[suffix] += 1
+            slug = f"{SLUG_PREFIX}-{suffix}"
+            while slug in taken:
+                suffix_counts[suffix] += 1
+                slug = f"{SLUG_PREFIX}-{suffix}-{suffix_counts[suffix]}"
+            taken.add(slug)
         extras = [
             m
             for m in kd["meanings"][1:]
             if len(m) <= _MAX_EXTRA_MEANING_LEN and "(" not in m
         ][:_MAX_EXTRA_MEANINGS]
-        by_level[level].append(
+        entries.append(
             {
-                "suffix": suffix,
+                "slug": slug,
                 "char": char,
                 "meaning": kd["meanings"][0],
                 "onyomi": kd["onyomi"][0] if kd["onyomi"] else "",
                 "kunyomi": clean_kunyomi(kd["kunyomi"][0]) if kd["kunyomi"] else "",
                 "extra_meanings": extras,
-                "unblocks": len(vocab_slugs),
+                # Band inputs. `unblocks` is reuse across shipped words; `grade`
+                # and `freq` are the tie-breaks for the levels that have no
+                # vocabulary of their own yet.
+                "unblocks": len(uses.get(char, [])),
+                "grade": int(kd["grade"]) if kd.get("grade") else None,
+                "freq": int(kd["freq"]) if kd.get("freq") else None,
             }
         )
-    return by_level
+    entries.sort(key=lambda e: (e["freq"] or 99999, e["grade"] or 99, e["char"]))
+    return entries
 
 
-def taught_radical_slug_by_krad_char():
-    """{KRADFILE component char: radical slug} over the shipped radicals plus
-    the new skeleton ones, expanded through the substitution table."""
+def authored_radicals():
+    """(form, slug) for every radical `n5_radicals.py` / `n4_radicals.py`
+    defines. Read from the datasets for the same reason as `authored_chars`:
+    the generated files are grouped by band, not by author."""
+    from n4_radicals import N4_RADICALS
+    from n5_radicals import N5_RADICALS
+
+    return [(r["form"], r["slug"]) for r in list(N5_RADICALS) + list(N4_RADICALS)]
+
+
+def krad_variants():
     variants = dict(audit_facts.KRAD_VARIANTS)
     for form, subs in EXTRA_KRAD_VARIANTS.items():
         variants[form] = sorted(set(variants.get(form, [])) | set(subs))
-    radicals = [
-        (item["primary_form"], item["slug"])
-        for level in AUTHORED_LEVELS
-        for item in load_level_items("radicals", level)
-    ]
-    radicals += [(r["form"], r["slug"]) for r in NEW_RADICALS]
+    return variants
+
+
+def index_by_krad_char(radicals, variants):
+    """{KRADFILE component char: radical slug}, expanded through the
+    substitution table. First writer wins, so hand-authored radicals keep any
+    component a derived one would also claim."""
     by_char = {}
     for form, slug in radicals:
         for variant in set(variants.get(form, [form])) | {form}:
@@ -237,8 +351,67 @@ def taught_radical_slug_by_krad_char():
     return by_char
 
 
-def build_decomposition(kanji_by_level, kradfile, radical_by_char):
-    """{level: {radical slug: [kanji suffix, ...]}} from KRADFILE.
+def load_previous_radical_slugs():
+    """{form: slug} from the checked-in skeleton.json, frozen for the same
+    reason kanji slugs are."""
+    path = os.path.join(BUILD_DIR, "skeleton.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        radicals = json.load(f).get("radicals", [])
+    if isinstance(radicals, dict):  # v1 shape: {level: [...]}
+        radicals = [r for entries in radicals.values() for r in entries]
+    return {r["form"]: r["slug"] for r in radicals}
+
+
+def derive_radicals(chars, kradfile, kanjidic, covered, taken):
+    """A radical for every KRADFILE component of a *derived* kanji that nothing
+    already teaches.
+
+    Derived kanji only, because this script owns only their decomposition —
+    N5/N4's is the curated map in `generate_deps.py`, and a radical it will
+    never name would ship building nothing.
+
+    v1 hand-listed these, which set the bar at "someone noticed": 87 components
+    of the jōyō set had no radical, and a kanji mnemonic may only name taught
+    components, so each one silently shortened a story. Deriving them makes the
+    decomposition complete by construction — the ladder's ~240 radicals are the
+    KRADFILE component set, not a curated subset of it.
+
+    Most components are kanji in their own right, so KANJIDIC glosses them.
+    MANUAL_COMPONENT_MEANINGS covers the rest."""
+    previous = load_previous_radical_slugs()
+    missing = Counter()
+    for char in chars:
+        for comp in kradfile.get(char, ()):
+            if comp not in covered:
+                missing[comp] += 1
+    derived = []
+    suffix_counts = Counter()
+    for comp, _count in sorted(missing.items(), key=lambda kv: (-kv[1], kv[0])):
+        gloss = MANUAL_COMPONENT_MEANINGS.get(comp)
+        if not gloss and comp in kanjidic and kanjidic[comp]["meanings"]:
+            gloss = clean_gloss(kanjidic[comp]["meanings"][0])
+        if not gloss:
+            raise SystemExit(
+                f"component {comp!r} has no KANJIDIC gloss; add it to "
+                "MANUAL_COMPONENT_MEANINGS."
+            )
+        slug = previous.get(comp)
+        if not slug:
+            suffix = slugify(gloss)
+            slug = suffix
+            while slug in taken:
+                suffix_counts[suffix] += 1
+                slug = f"{suffix}-{suffix_counts[suffix] + 1}"
+        taken.add(slug)
+        derived.append({"slug": slug, "form": comp, "meaning": gloss})
+    return derived
+
+
+def build_decomposition(kanji_entries, kradfile, radical_by_char):
+    """{radical slug: [kanji slug, ...]} from KRADFILE, for derived kanji only.
+    N5/N4's hand-authored kanji keep the curated maps in `generate_deps.py`.
 
     Every component KRADFILE names that resolves to a taught radical becomes a
     `builds_on` edge — including a component that *is* the kanji (皿 is both a
@@ -262,33 +435,22 @@ def build_decomposition(kanji_by_level, kradfile, radical_by_char):
     one of their own components, so letting untaught pieces prune would let 元
     suppress its own 二 and 儿 and leave the kanji with no parent at all — the
     reverse of the intent."""
-    decomposition = {level: {} for level in SKELETON_LEVELS}
+    decomposition = {}
     orphans = []
-    for level, entries in kanji_by_level.items():
-        for entry in entries:
-            taught = [c for c in kradfile.get(entry["char"], []) if c in radical_by_char]
-            maximal = []
-            for comp in sorted(taught, key=lambda c: -len(kradfile.get(c, ()))):
-                if any(comp != kept and comp in kradfile.get(kept, ()) for kept in maximal):
-                    continue
-                maximal.append(comp)
-            parents = {radical_by_char[comp] for comp in maximal}
-            if not parents:
-                orphans.append(entry["char"])
+    for entry in kanji_entries:
+        taught = [c for c in kradfile.get(entry["char"], []) if c in radical_by_char]
+        maximal = []
+        for comp in sorted(taught, key=lambda c: -len(kradfile.get(c, ()))):
+            if any(comp != kept and comp in kradfile.get(kept, ()) for kept in maximal):
                 continue
-            for slug in sorted(parents):
-                decomposition[level].setdefault(slug, []).append(entry["suffix"])
+            maximal.append(comp)
+        parents = {radical_by_char[comp] for comp in maximal}
+        if not parents:
+            orphans.append(entry["char"])
+            continue
+        for slug in sorted(parents):
+            decomposition.setdefault(slug, []).append(entry["slug"])
     return decomposition, orphans
-
-
-def radical_levels(decomposition):
-    """The level each new radical is taught at: the earliest level of any kanji
-    it builds, so a component is never studied after the kanji that needs it."""
-    level_by_slug = {}
-    for level in SKELETON_LEVELS:
-        for slug in decomposition[level]:
-            level_by_slug.setdefault(slug, level)
-    return level_by_slug
 
 
 def main():
@@ -296,38 +458,49 @@ def main():
     kanjidic = sources.load_kanjidic2()
     kradfile = sources.load_kradfile()
 
-    uses = untaught_kanji()
-    unknown = [ch for ch in uses if ch not in kanjidic]
+    authored = authored_chars()
+    uses = vocabulary_uses()
+    required = set(uses) | authored
+    unknown = [ch for ch in sorted(required) if ch not in kanjidic]
     if unknown:
         raise SystemExit(f"not in KANJIDIC2: {''.join(unknown)}")
 
-    kanji_by_level = build_kanji_entries(uses, kanjidic)
-    radical_by_char = taught_radical_slug_by_krad_char()
+    corpus = select_corpus(kanjidic, required)
+    kanji_entries = build_kanji_entries(corpus, authored, uses, kanjidic)
+
+    variants = krad_variants()
+    hand = authored_radicals() + [(r["form"], r["slug"]) for r in NEW_RADICALS]
+    covered = index_by_krad_char(hand, variants)
+    derived = derive_radicals(
+        [e["char"] for e in kanji_entries], kradfile, kanjidic, covered,
+        taken={slug for _form, slug in hand},
+    )
+    radical_by_char = index_by_krad_char(
+        hand + [(r["form"], r["slug"]) for r in derived], variants
+    )
+
     decomposition, orphans = build_decomposition(
-        kanji_by_level, kradfile, radical_by_char
+        kanji_entries, kradfile, radical_by_char
     )
     if orphans:
         raise SystemExit(
-            f"{len(orphans)} skeleton kanji have no taught component: {''.join(orphans)}\n"
-            "Add the missing component to NEW_RADICALS (or EXTRA_KRAD_VARIANTS if "
-            "KRADFILE is only writing an already-taught radical a different way)."
+            f"{len(orphans)} corpus kanji have no taught component: {''.join(orphans)}\n"
+            "KRADFILE lists no component for them at all — add the shape to "
+            "NEW_RADICALS, or to EXTRA_KRAD_VARIANTS if KRADFILE is only writing an "
+            "already-taught radical a different way."
         )
 
-    new_by_slug = {r["slug"]: r for r in NEW_RADICALS}
-    level_by_slug = radical_levels(decomposition)
-    unused = sorted(set(new_by_slug) - set(level_by_slug))
+    used = set(decomposition)
+    unused = sorted({r["slug"] for r in NEW_RADICALS + derived} - used)
     if unused:
-        raise SystemExit(f"NEW_RADICALS entries that build nothing: {unused}")
-    radicals_by_level = {level: [] for level in SKELETON_LEVELS}
-    for slug, level in level_by_slug.items():
-        if slug in new_by_slug:
-            radicals_by_level[level].append(new_by_slug[slug])
+        raise SystemExit(f"skeleton radicals that build nothing: {unused}")
+    radicals = [r for r in NEW_RADICALS + derived if r["slug"] in used]
 
     out = {
         "_generated_by": "curriculum/_build/import/build_skeleton.py",
-        "levels": list(SKELETON_LEVELS),
-        "radicals": radicals_by_level,
-        "kanji": kanji_by_level,
+        "corpus_size": len(corpus),
+        "radicals": radicals,
+        "kanji": kanji_entries,
         "decomposition": decomposition,
     }
     path = os.path.join(BUILD_DIR, "skeleton.json")
@@ -335,14 +508,11 @@ def main():
         json.dump(out, f, ensure_ascii=False, indent=2, sort_keys=False)
         f.write("\n")
 
-    total_kanji = sum(len(v) for v in kanji_by_level.values())
-    total_radicals = sum(len(v) for v in radicals_by_level.values())
-    print(f"Wrote {os.path.relpath(path, CURRICULUM_DIR)}: "
-          f"{total_kanji} kanji, {total_radicals} new radicals.")
-    for level in SKELETON_LEVELS:
-        print(f"  {level.upper()}: {len(kanji_by_level[level])} kanji, "
-              f"{len(radicals_by_level[level])} radicals, "
-              f"{sum(len(v) for v in decomposition[level].values())} builds_on edges")
+    edges = sum(len(v) for v in decomposition.values())
+    print(f"Wrote {os.path.relpath(path, CURRICULUM_DIR)}: corpus {len(corpus)} kanji "
+          f"({len(authored)} hand-authored, {len(kanji_entries)} derived), "
+          f"{len(radicals)} skeleton radicals ({len(derived)} newly derived), "
+          f"{edges} builds_on edges.")
 
 
 if __name__ == "__main__":

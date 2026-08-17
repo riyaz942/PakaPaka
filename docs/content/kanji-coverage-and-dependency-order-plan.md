@@ -200,24 +200,50 @@ The edge survives; only its power to gate is removed.
 
 Start at **Phase A**. Each phase is shippable on its own.
 
-### Phase A — reband
+### Phase A — reband — **done 2026-08-17**
 
 Content only. Reversible. Everything downstream depends on the bands existing.
 
-1. Extend `reports/kanji_priority.py` (or a sibling) to emit the reuse ranking
-   per level and the resulting band assignment
-   → verify: report committed under `curriculum/_build/reports/`
-2. Move kanji between `curriculum/kanji/n*.json` to match the bands; overflow
-   moves one level up
-   → verify: `npm run validate-schema` clean; band sizes are 150 / 300 / 700 /
-     1000 / 2000 cumulative
-3. Re-file radicals to the level of their first kanji
-   → verify: no radical files later than a kanji that needs it
-4. Rebuild and compile
-   → verify: `npm run compile-curriculum` clean
+1. ~~Extend `reports/kanji_priority.py` (or a sibling) to emit the reuse ranking
+   per level and the resulting band assignment~~ — sibling
+   `reports/kanji_bands.py`, writing the checked-in `_build/bands.json` and
+   `reports/kanji-bands.md`
+2. ~~Move kanji between `curriculum/kanji/n*.json` to match the bands~~ — bands
+   are 150 / 300 / 700 / 1000 / 2000 cumulative, `validate-schema` clean
+3. ~~Re-file radicals to the level of their first kanji~~ — 238 radicals,
+   122 / 40 / 42 / 15 / 19; no radical files at a later level than a kanji that
+   needs it
+4. ~~Rebuild and compile~~ — 3,656 items, 8,059 edges, 3.6 MB
+
+**Phase D step 1 landed here.** A band size is a count, and N2/N1 cumulative are
+1,000 and 2,000, so the corpus had to reach 2,000 kanji before the bands could
+be assigned at all. `build_skeleton.py` now derives the whole corpus rather than
+only the kanji shipped words need.
+
+**Overflow does not move one level up.** It falls out of the 300-band into
+whichever band frequency puts it in, which for the 53 authored kanji that
+overflowed is N3 or later. "One level later" was written before the tail bands
+existed.
+
+Two things the plan got wrong, corrected by the build:
+
+- **48 authored kanji fall outside a reuse-ranked 300** — it is 53.
+- **"Every radical the 300-kanji N5+N4 band needs already exists"** — false. The
+  jōyō corpus needs 86 radicals nothing taught, and 24 of them file into N5/N4
+  with no mnemonic. They are in the Phase E queue. Art is still not needed:
+  a radical without an image renders as text.
+
+A slug does not follow its band. It names the source dataset — `n5`/`n4`
+hand-authored, `k` derived — and is frozen, because the mnemonic sidecars, the
+bundled radical art and `user.db` are all keyed by it.
 
 Pull-forward is still on through this phase, so nothing locks and nothing
 regresses. It simply has less to do.
+
+**Open risk this phase makes acute, not new:** `compile-curriculum` assigns
+`items.id` by (level, type, slug) and `user.db` stores progress against those
+integers. Rebanding renumbers nearly the whole corpus, so an installed profile
+would map onto the wrong items after an OTA swap. Nothing remaps them today.
 
 ### Phase B — app rules
 
@@ -258,8 +284,9 @@ One commit. See [the sequencing constraint](#the-sequencing-constraint-inverted)
 
 Machine-generated. No prose.
 
-1. `build_skeleton.py` to 2,000 kanji and ~240 radicals
-   → verify: every kanji has ≥1 radical parent; no edge names an unknown slug
+1. ~~`build_skeleton.py` to 2,000 kanji and ~240 radicals~~ — **done in Phase A**
+   (2,000 kanji, 238 radicals). 8 kanji still have no radical parent, unchanged
+   from before the rebuild.
 2. N3/N2/N1 **vocabulary** skeleton — ~8,500 words from JMdict + JmdictFurigana,
    frequency-ranked
    → verify: `npm run validate-schema` clean; furigana present on every entry
@@ -277,9 +304,12 @@ prose-less. Acceptable for a bundled asset, and it is already Git LFS.
 
 Two independent tracks, neither blocking the other.
 
-1. **Kanji prose** — the ~180 kanji inside the N5+N4 band that have no mnemonic,
-   in first-encounter order. Down from 523 under v1, because a band kanji is the
-   only kind a learner now meets.
+1. **Kanji prose** — the **173 kanji and 24 radicals** inside the N5+N4 band
+   that have no mnemonic, in band order (which is first-encounter order). Down
+   from 523 under v1, because a band kanji is the only kind a learner now meets.
+   The queue is `reports/kanji-priority.md`. Radicals go first inside each
+   level: a kanji mnemonic continues its components' images, so a component with
+   no story is a story the kanji cannot tell.
 2. **Vocabulary top-up** — ~80 words to bring N5 to ~800 and ~700 to bring N4 to
    ~1,500. These are **full-content** levels: meaning mnemonic, reading mnemonic,
    example sentences, review. This is the only part of the whole plan that costs
@@ -323,11 +353,18 @@ and you will know how to read this."*
 ## Reproducing the numbers
 
 ```bash
-python3 curriculum/_build/reports/kanji_priority.py     # authoring queue + bands
-python3 curriculum/_build/reports/dependency_order.py   # ordering + coverage
 python3 curriculum/_build/import/build_skeleton.py      # needs EDRDG archives
-python3 curriculum/_build/generate_deps.py
+python3 curriculum/_build/reports/kanji_bands.py        # bands -> _build/bands.json
+python3 curriculum/_build/reports/kanji_priority.py     # authoring queue
+python3 curriculum/_build/reports/dependency_order.py   # ordering + coverage
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n5
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n4
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --bands
+curriculum/_build/.venv/bin/python curriculum/_build/generate_deps.py
 ```
+
+`--bands` writes radicals and kanji for all five levels at once; they cannot be
+written per level, because a band draws from every source dataset.
 
 Archives come from `curriculum/_build/import/fetch_sources.sh` (KANJIDIC2,
 JMdict, KRADFILE; `--all` adds Tatoeba and KanjiVG).
