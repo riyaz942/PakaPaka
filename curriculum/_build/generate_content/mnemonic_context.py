@@ -20,8 +20,8 @@ inputs the generator prompt and the mechanical gate both need:
   * vocabulary (Rev 1, 2d): the component kanji (kanji -> vocabulary `requires`
     edges) with their established meaning mnemonics, plus the **reading
     regularity** of the word — computed mechanically from the word's reading
-    against its kanji's taught readings, so the "full reading story vs. one-line
-    derivation note" choice is checkable by the gate.
+    against its kanji's KANJIDIC readings, so the "full reading story vs.
+    one-line derivation note" choice is checkable by the gate.
 
 Look-alike pairs come from the reviewed R1.3 dataset (_build/visually_similar.py)
 — never from the model.
@@ -45,6 +45,12 @@ from visually_similar import build_similar_map  # noqa: E402
 from generate_content import cast as cast_lib  # noqa: E402
 
 GRAPH_PATH = os.path.join(CURRICULUM_DIR, "dependencies", "graph.json")
+
+#: {kanji: {"on": [...], "kun": [...]}} for all of KANJIDIC2, distilled by
+#: `import/build_kanjidic_readings.py` because KANJIDIC2 itself is not committed.
+#: Reading regularity is judged against these, not against taught readings.
+with open(os.path.join(BUILD_DIR, "kanjidic_readings.json"), encoding="utf-8") as _f:
+    KANJIDIC_READINGS = json.load(_f)
 
 #: Levels whose radicals/kanji can be components or look-alikes of one another,
 #: in teaching order (a learner meets N5 before N4).
@@ -316,34 +322,58 @@ def _segment(form, reading, variants_by_char, i=0, pos=0):
     return None
 
 
-def reading_regularity(form, reading, components):
-    """How the word's reading relates to its component kanji's taught readings.
+def _kanjidic_variants(char):
+    entry = KANJIDIC_READINGS.get(char)
+    if not entry:
+        return set()
+    variants = set()
+    for r in entry["on"] + entry["kun"]:
+        variants |= _reading_variants(r)
+    return variants
+
+
+def _is_onyomi(char, chunk):
+    entry = KANJIDIC_READINGS.get(char)
+    return bool(entry) and any(chunk in _reading_variants(r) for r in entry["on"])
+
+
+def reading_regularity(form, reading):
+    """How the word's reading relates to its kanji's *dictionary* readings.
+
+    Judged against KANJIDIC, not against which readings our curriculum teaches
+    (plan v2, "Interaction with the mnemonic pipeline"). Taught-status is the
+    wrong test: under band-gated teaching most jukugo contain a kanji the learner
+    has not met, which sent nearly every compound down the "write a full story"
+    branch. It is also the wrong *question* — a reading card is withheld until
+    the word's kanji are learned (Phase B rule 1), so by the time the learner
+    reads this note, the readings it points at are ones they know.
 
     kind is one of:
       * "kana_only"  — no kanji in the written form; the word is its own reading
-      * "untaught"   — the form contains a kanji outside the taught component
-                       set, so regularity cannot be judged (treat as a story)
-      * "regular"    — every kanji uses one of its taught readings (allowing
-                       rendaku/gemination); a one-line derivation note is correct
-      * "irregular"  — the reading cannot be built from the taught readings; it
-                       needs a full reading story
+      * "regular"    — the reading assembles from dictionary readings (allowing
+                       rendaku/gemination) and the learner can get there from
+                       their kanji cards; a one-line derivation note is correct
+      * "kun_word"   — a lone kanji read with its kun'yomi (秋 あき, 危ない
+                       あぶない). Mechanically derivable, but the kanji card
+                       teaches meaning and on'yomi only, so the word is where
+                       that reading is learned: it needs a full story
+      * "irregular"  — the reading cannot be assembled at all (明日 あした,
+                       部屋 へや); it needs a full story
     `segments` is the [(char, reading_chunk)] breakdown when regular."""
     reading = _hira(reading)
     kanji_in_form = _CJK_RE.findall(form)
     if not kanji_in_form:
         return {"kind": "kana_only", "segments": []}
-    variants_by_char = {}
-    for comp in components:
-        variants = set()
-        for r in comp["onyomi"] + comp["kunyomi"]:
-            variants |= _reading_variants(r)
-        if variants:
-            variants_by_char[comp["char"]] = variants
-    if any(ch not in variants_by_char for ch in kanji_in_form):
-        return {"kind": "untaught", "segments": []}
+    variants_by_char = {ch: v for ch in set(kanji_in_form)
+                        if (v := _kanjidic_variants(ch))}
     segments = _segment(form, reading, variants_by_char)
     if segments is None:
         return {"kind": "irregular", "segments": []}
+    if len(kanji_in_form) == 1:
+        char = kanji_in_form[0]
+        chunk = next(chunk for ch, chunk in segments if ch == char)
+        if not _is_onyomi(char, chunk):
+            return {"kind": "kun_word", "segments": segments}
     return {"kind": "regular", "segments": segments}
 
 
@@ -355,17 +385,17 @@ def vocab_context(level, slug, cast=None):
 
     # Only kanji the learner has already met may appear in a word's story. A
     # word can sit at a level *below* one of its own kanji (N5's 明日 uses 明,
-    # taught at N4); that kanji is not a usable component here, and dropping it
-    # is also what makes the reading come out "untaught" — i.e. a full story
-    # rather than a derivation note the learner could not follow.
+    # taught at N4); that kanji is not a usable component for the *meaning*
+    # story, so it is dropped here.
     #
     # Plan v2 Phase C put this rule back in force: pull-forward is gone, so a
     # learner really does reach 写真 without having met 写 or 真. The window is
     # right, and it is also what a vocabulary story needs — a story chains from
     # its kanji's *established* stories, and most band kanji have none yet.
-    # The plan's separate change, judging reading regularity against KANJIDIC
-    # readings rather than taught-status, moves with the authoring queue
-    # (reports/kanji_priority.py), not here.
+    #
+    # `reading_regularity` deliberately does *not* use this window: it judges
+    # against KANJIDIC, because whether a reading is derivable is a fact about
+    # the language, not about lesson order. See its docstring.
     taught_levels = ALL_LEVELS[:ALL_LEVELS.index(level) + 1]
     kanji = {}
     for lvl in taught_levels:
@@ -402,7 +432,7 @@ def vocab_context(level, slug, cast=None):
     components.sort(key=lambda c: form.find(c["char"]) if c["char"] in form else len(form))
 
     cast = cast or cast_lib.load_cast()
-    regularity = reading_regularity(form, reading, components)
+    regularity = reading_regularity(form, reading)
 
     return {
         "type": "vocab",
@@ -490,10 +520,11 @@ def format_vocab_components(components):
 
 _REGULARITY_BLOCK = {
     "regular": (
-        "**Regular.** The reading is exactly what the kanji you already taught "
-        "say: {segments}. Do NOT write a reading story for this word — write a "
-        "one-line derivation note that points at the readings the learner "
-        "already knows and contains 「{reading}」."
+        "**Regular.** The reading is exactly what this word's kanji say: "
+        "{segments}. Do NOT write a reading story for this word — write a "
+        "one-line derivation note that points at those kanji readings and "
+        "contains 「{reading}」. The learner meets this card only once they have "
+        "learned the kanji, so you may treat the readings as known."
     ),
     "kana_only": (
         "**Kana only.** This word is written the way it sounds, so there is no "
@@ -502,14 +533,17 @@ _REGULARITY_BLOCK = {
         "「{reading}」."
     ),
     "irregular": (
-        "**Irregular.** 「{reading}」 cannot be assembled from the taught readings "
-        "of this word's kanji, so the learner has nothing to fall back on. Write "
-        "a full reading story, cast-driven, with 「{reading}」 in it verbatim."
+        "**Irregular.** 「{reading}」 cannot be assembled from any dictionary "
+        "reading of this word's kanji, so the learner has nothing to fall back "
+        "on. Write a full reading story, cast-driven, with 「{reading}」 in it "
+        "verbatim."
     ),
-    "untaught": (
-        "**Not derivable.** This word contains kanji outside the taught set, so "
-        "the reading cannot be derived from anything the learner knows. Write a "
-        "full reading story, cast-driven, with 「{reading}」 in it verbatim."
+    "kun_word": (
+        "**Kun reading.** This is a single kanji read 「{reading}」 — its kun'yomi. "
+        "The kanji card teaches the meaning and the on'yomi, so this word is "
+        "where the learner meets this reading for the first time and there is "
+        "nothing to derive it from. Write a full reading story, cast-driven, "
+        "with 「{reading}」 in it verbatim."
     ),
 }
 

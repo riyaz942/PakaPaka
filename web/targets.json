@@ -1,5 +1,5 @@
 {
-  "_comment": "Edit these by hand. Remaining-to-generate on the dashboard is target − actual. Seeded from content-pipeline volume (~150 radicals, ~200 kanji, ~1,450 vocab) with grammar/readings at current shipped counts where generation is done for that level. N4 radicals/kanji are NOT from that seed: they are the settled counts from the 2026-08-10 N4 skeleton pass (KRADFILE-derived decomposition, duplicates of N5 forms removed) — see docs/content/radical-coverage-audit.md.",
+  "_comment": "Edit these by hand. Remaining-to-generate on the dashboard is target − actual. Seeded from content-pipeline volume (~150 radicals, ~200 kanji, ~1,450 vocab) with grammar/readings at current shipped counts where generation is done for that level. N4 radicals/kanji are NOT from that seed: they are the settled counts from the 2026-08-10 N4 skeleton pass (KRADFILE-derived decomposition, duplicates of N5 forms removed) — see docs/content/radical-coverage-audit.md. N3/N2/N1 kanji and vocabulary are the band sizes from docs/content/kanji-coverage-and-dependency-order-plan.md; their radical counts are the shipped band split (radicals are partitioned by band, not authored per level), and grammar/readings are 0 because N3+ grammar and passages are not in that plan.",
   "N5": {
     "radicals": 90,
     "kanji": 106,
@@ -13,5 +13,26 @@
     "vocabulary": 734,
     "grammar": 97,
     "readings": 15
+  },
+  "N3": {
+    "radicals": 44,
+    "kanji": 400,
+    "vocabulary": 2250,
+    "grammar": 0,
+    "readings": 0
+  },
+  "N2": {
+    "radicals": 17,
+    "kanji": 300,
+    "vocabulary": 2250,
+    "grammar": 0,
+    "readings": 0
+  },
+  "N1": {
+    "radicals": 15,
+    "kanji": 1000,
+    "vocabulary": 4000,
+    "grammar": 0,
+    "readings": 0
   }
 }

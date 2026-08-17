@@ -437,8 +437,8 @@ def validate_vocab(level, slug, draft, ctx=None):
             "write a story)", reading_plain, DERIVATION_NOTE_BOUNDS)
     else:
         errors += _length_errors(
-            "reading_mnemonic (a full story — this reading is not derivable "
-            "from the taught readings)", reading_plain, READING_STORY_BOUNDS)
+            "reading_mnemonic (a full story — this reading is a lone kun'yomi "
+            "or is not derivable at all)", reading_plain, READING_STORY_BOUNDS)
 
     # 4. description (Rev 2: optional — only when the word carries a nuance the
     #    mnemonics cannot). When present it still names no stray kanji, since it

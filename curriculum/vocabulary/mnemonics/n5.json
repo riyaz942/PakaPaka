@@ -378,12 +378,12 @@
     }
   },
   "ban": {
-    "meaning_mnemonic": "At Koichi's konbini, the automatic doors sigh shut for the day just as the fluorescent sign outside buzzes off, leaving one register light glowing over the empty onigiri shelf. That last dim bulb holding on while everything else goes dark is the whole picture: evening has arrived, and night is settling in right behind it.",
-    "reading_mnemonic": "At Grandma Kane's shrine, the caretaker everyone calls <reading>Ban</reading> shows up right as the sky bruises purple, unlocking the gate for the evening service while the cats crowd the mossy steps behind him. His arrival marks the hour itself — <reading>ばん</reading>, evening settling over the shrine.",
+    "meaning_mnemonic": "At Koichi's konbini, the automatic doors sigh shut for the day just as the fluorescent sign outside buzzes off, leaving one register light glowing over the empty onigiri shelf. That last dim bulb holding on while everything else goes dark is the whole picture: evening has arrived, and <kanji>night</kanji> is settling in right behind it.",
+    "reading_mnemonic": "晩 keeps the reading you already learned for the kanji itself, carried straight through: <reading>ばん</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "bangohan": {
@@ -1765,11 +1765,11 @@
   },
   "hito": {
     "meaning_mnemonic": "In Sei's school hallway, someone rounds the corner: just two legs mid-stride, a body carried along above them, heading forward without dragging anything else behind. Strip away every job title, every role, every name — what's left striding down that hallway is simply a <kanji>person</kanji>.",
-    "reading_mnemonic": "人 keeps the exact reading you already learned for this kanji: <reading>ひと</reading>.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a lone figure climbs the mossy steps at dusk, no name tag, just a shape moving past the cats. One cat swats at a bare foot and the figure yelps <reading>he-toe</reading>, which is exactly the sound of <reading>ひと</reading>, the word for person.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "hitori-de": {
@@ -1967,11 +1967,11 @@
   },
   "ima": {
     "meaning_mnemonic": "At Grandma Kane's shrine, a cat ducks under the eaves the instant the rain starts — exactly the <kanji>now</kanji> image, a person taking cover under a wide roof, caring about nothing before or after. It won't budge from that dry spot even when the enormous bell rings, because for that cat there is no later, only this exact drip-free moment: now.",
-    "reading_mnemonic": "This word is just 今 read with the kun'yomi you already know, standing alone as 「<reading>いま</reading>」.",
+    "reading_mnemonic": "At Koichi's konbini, the till beeps the moment <reading>Emma</reading> grabs the last onigiri and eats it standing right there, refusing to wait — because for her there is only <reading>いま</reading>, this exact beeping instant, never later, never before: now.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "imi": {
@@ -2678,12 +2678,12 @@
     }
   },
   "kazoku": {
-    "meaning_mnemonic": "Zookeeper Zoe stopped filing her animals by species years ago. Now every enclosure is sorted by family: otters piled in one tank, meerkats packed into one den, and the daily headcount sheet has only one column, because at her zoo the only unit that ever matters is the whole family showing up together.",
-    "reading_mnemonic": "Every evening Zoe cups her hands at the gate and calls out, a shout that lands in your ear as <reading>call-a-zoo, koo</reading>, the same two beats as <reading>かぞく</reading>. Every parent and cub trots out together the second they hear it, because that call means the whole family, not one animal.",
+    "meaning_mnemonic": "Zookeeper Zoe stopped filing her animals by species years ago. Now every enclosure is sorted by family: otters piled into one <kanji>house</kanji>, meerkats packed into one den, and the daily headcount sheet has only one column, because at her zoo the only unit that ever matters is the whole family showing up together.",
+    "reading_mnemonic": "The reading is just its kanji stacked together: 家 read か, plus 族 read ぞく, gives <reading>かぞく</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "keikan": {
@@ -2934,11 +2934,11 @@
   },
   "kokonoka": {
     "meaning_mnemonic": "Every <kanji>day</kanji> a fresh sun climbs through its window and lights one more switchback on the mountain trail, but you don't stop until the final bend, the one curled like a cane — the shape of <kanji>nine</kanji>. Eight sunrises come and go while you climb. On the ninth sunrise you finally round that hooked bend and lean your whole weight on the cane at last: nine days of switchbacks to reach the ninth.",
-    "reading_mnemonic": "At the top of the mountain trail, past the hooked bend of nine, a vendor next to the lone vending machine sells nothing but <reading>coconut</reading>s, shouting the word at every exhausted hiker. It sounds close enough to <reading>ここのか</reading> that hikers now just call this spot the ninth — nine days of trail to reach a man and his coconuts.",
+    "reading_mnemonic": "The reading is just its kanji speaking: 九 as ここの, 日 as か, combining straight into <reading>ここのか</reading>, nine days exactly as read.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kokonotsu": {
@@ -3173,11 +3173,11 @@
   },
   "kuchi-v": {
     "meaning_mnemonic": "That open square is still hanging there mid-yawn, exactly as you left it — nothing has been drawn inside it, because nothing needs to be. A hole with nothing inside was already the whole idea: it's just a <kanji>mouth</kanji>, caught wide open and refusing to close until you've said the word for it.",
-    "reading_mnemonic": "The kanji 口 already taught you both of its readings, and this word simply picks the plain <reading>くち</reading> one straight off it.",
+    "reading_mnemonic": "At Koichi's konbini, a customer's mouth hangs open under the buzzing lights, coughing, insisting he caught the <reading>cooties</reading> from someone's open <reading>くち</reading>. Koichi shoos him out before the till starts beeping and restocks the onigiri.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "kudamono": {
@@ -3398,12 +3398,12 @@
     }
   },
   "maiasa": {
-    "meaning_mnemonic": "The wind-up alarm clock that means <kanji>every</kanji> doesn't sit on a nightstand — it sits on the windowsill, cranked so tight that the instant morning light touches it, it detonates. Every morning: same crank, same detonation, same jolt out of bed. You can set your dawn by it.",
-    "reading_mnemonic": "Every morning, Sei's school gate creaks open for a boy called Asa — never late, never early, wound up like clockwork. Call the roll and mutter that <reading>my Asa</reading>'s here again, and you've said <reading>まいあさ</reading>. Same boy, same gate, every single morning.",
+    "meaning_mnemonic": "The wind-up alarm clock that means <kanji>every</kanji> doesn't sit on a nightstand — it sits on the windowsill, cranked so tight that the instant <kanji>morning</kanji> light touches it, it detonates. Every morning: same crank, same detonation, same jolt out of bed. You can set your dawn by it.",
+    "reading_mnemonic": "This word simply stacks the readings you already know: 毎 as まい plus 朝 as あさ gives you <reading>まいあさ</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "maiban": {
@@ -3662,11 +3662,11 @@
   },
   "mizu": {
     "meaning_mnemonic": "You're back at the riverbank where the streams splash outward in every direction, cold spray hitting your face. Cup your hands in that spray, and the streaks resolve into something you can actually drink: <kanji>water</kanji>.",
-    "reading_mnemonic": "Same kanji, same sound you already know from 水: <reading>みず</reading>.",
+    "reading_mnemonic": "At the riverbank, a keeper named <reading>Miss Zoo</reading> dives in after an escaped otter. She surfaces coughing, gasping that she swallowed a mouthful of <reading>みず</reading>, spits it out, and trudges home soaked to teach the otter a lesson.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "mizuumi": {
@@ -3754,11 +3754,11 @@
   },
   "muika": {
     "meaning_mnemonic": "The eight stands tall until someone claps a lid on top, capping it down to <kanji>six</kanji>. That very lid turns out to be the window's bar swinging shut over the <kanji>sun</kanji>, sealing off one whole <kanji>day</kanji> at a time — six lids, six sunsets, and that's the 6th, six days gone.",
-    "reading_mnemonic": "Down at the riverbank a cow wades in to wash off and lets out six long moos in a row, counting each one on its hooves. On the sixth <reading>moo</reading> it wobbles and calls out <reading>むいか</reading> before toppling into the current — six days, six moos, one soaked cow.",
+    "reading_mnemonic": "六 supplies its むい reading and 日 keeps か, so together they simply combine into <reading>むいか</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "musuko": {
@@ -3899,21 +3899,21 @@
     }
   },
   "nannji": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: what <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
-    "reading_mnemonic": "At the shrine, a jetlagged traveler keeps calling to her grandmother, 'Nan, gee, what time is it?' — sliding into <reading>Nan-gee</reading> each time. The cats now answer back with that same sound, <reading>なんじ</reading>, since that's all anyone there asks: what time.",
+    "meaning_mnemonic": "At Grandma Kane's shrine, the <kanji>time</kanji>-sun still crawls its slow arc overhead. A dazed tourist wanders in, squinting up, unable to read a single hour off it, and grabs a passing cat to blurt the same question over and over: <kanji>what</kanji> <kanji>time</kanji> is it? Her whole visit is just that one question: what time.",
+    "reading_mnemonic": "何 reads なん here and 時 keeps じ, combining straight into <reading>なんじ</reading> — exactly what you would expect when asking the time.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "nanoka": {
     "meaning_mnemonic": "The bent nail hook holds seven coats until one more lands and it creaks under the weight, confirming <kanji>seven</kanji>. Framed just behind it, the window's bar lets the <kanji>sun</kanji> through for one more <kanji>day</kanji> to close out — seven coats, seven days, the 7th of the month.",
-    "reading_mnemonic": "At Grandma Kane's shrine the enormous bell tolls seven times, and on the last strike she looks up bewildered and mutters '<reading>Nan, oh, kah</reading>?' — her way of asking if it's really day seven already. The cats don't answer, and <reading>なのか</reading> is what she calls the day from then on.",
+    "reading_mnemonic": "七 lends its なな reading, shortened to なの, and 日 supplies its か reading, together giving <reading>なのか</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "naosu": {
@@ -6342,11 +6342,11 @@
   },
   "yokka": {
     "meaning_mnemonic": "Trapped inside the enclosure, the mouth keeps counting under its breath, and on the try that decides everything it finally lands on <kanji>four</kanji>. The instant it shouts the number, the window's bar snaps back and the <kanji>sun</kanji> pours through into a brand new <kanji>day</kanji>. Four counted breaths, one sunrise — that's the 4th, four days gone.",
-    "reading_mnemonic": "At Koichi's konbini the onigiri shelf is stocked with egg yolks instead of rice this morning. He counts them rolling off one by one — one, two, three — and on the <reading>yolk</reading> that nearly hits the floor he calls out <reading>よっか</reading>, the fourth yolk saved just before day four's shift ends.",
+    "reading_mnemonic": "四's reading よっ and 日's reading か combine straight into <reading>よっか</reading>, exactly the regular reading you'd expect for four days.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "yoku": {

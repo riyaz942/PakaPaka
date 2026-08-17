@@ -421,29 +421,107 @@ band-aware and keys by source dataset. This run was driven from
 what this phase names as its queue. Fix before the kanji layers: test the
 sidecar, not the drafts — the sidecar is checked in and would not drift again.
 
-## Interaction with the mnemonic pipeline
+**Track 2 progress.** The prerequisite is done — see [Interaction with the
+mnemonic pipeline](#interaction-with-the-mnemonic-pipeline--done-2026-08-17).
+No words are written yet. The real sizes, against the ladder's cumulative
+~1,500:
 
-`reading_regularity()` (`generate_content/mnemonic_context.py`) calls a reading
+| | Shipped | Target | New words |
+| --- | ---: | ---: | ---: |
+| N5 | 718 | ~800 | **+82** |
+| N4 | 529 | ~700 | **+171** |
+
+Plus the fix's own **220-word re-authoring queue** on words already written.
+
+**188 of those 220 are `review_status: reviewed`, not draft.** The shipped
+`vocabulary/n5.json` says draft for all 718 words, which is `_merge_sidecar_meta`
+working as documented — a word carries both a mnemonic sidecar and an examples
+sidecar, all 718 example sets are draft, and the least-reviewed status wins. The
+per-mnemonic truth is in `vocabulary/mnemonics/<level>.json`. **Read the sidecar,
+not the shipped file, before deciding anything about vocabulary review status.**
+
+**Pilot, 12 words, 2026-08-17 — 12/12 pass.** Both directions, so the two can be
+judged against what they replaced: 8 `regular` (晩, 毎朝, 何時, 家族, 四日, 六日,
+七日, 九日 — a ~250-char story becomes a ~120-char derivation note) and 4
+`kun_word` (人, 水, 今, 口 — a ~85-char note becomes a ~260-char story). Run as a
+**seed-and-repair**, not fresh generation: each reply file was seeded with the
+word's current prose, so `ingest` reported exactly what the new contract rejects
+and a per-slug repair subagent changed only that. Every meaning mnemonic not
+named in an error came out byte-identical. Attempt 1 is the mechanical seed, so
+all 12 cleared on attempt 2 with no second repair.
+
+**Separately: 209 shipped words fail the gate on their *meaning* mnemonic** — 189
+of them reviewed, only 92 overlapping the 220. The errors are "never references
+the component kanji X" and "references X but never wraps it in `<kanji>`". This
+is not from the regularity fix, which touches no component code; the likely cause
+is Phase A's reband moving kanji into a word's taught window after its story was
+written. It needs its own pass — 4 of the 12 pilot words carried one, and 家族's
+repair had to extend a reviewed meaning story to reach 家.
+
+**The top-up words are not in `vocab_skeleton.json`.** The skeleton is ranked on
+newspaper frequency and its N3 head is 安保, 加盟, 欧州 — right for N3, wrong for
+N4. Completing N5/N4 means completing the *JLPT lists* those two hand-authored
+datasets already claim to be, which is a source this repo does not hold. Whatever
+list is used, every candidate is checkable against JMdict for form, reading and
+gloss, against JmdictFurigana for an alignment, and against the shipped 1,247 for
+duplicates — the same four tests `build_vocab_skeleton.py` already applies.
+
+**Adding words re-ranks the bands.** A band is ranked on how many of its level's
+words a kanji unlocks ("Vocabulary comes before bands"), so `kanji_bands.py` must
+re-run after the top-up, and a reband renumbers `items.id` — the open risk Phase A
+already names. Sequence it as one reband, after all 253 words land, not per batch.
+
+## Interaction with the mnemonic pipeline — **done 2026-08-17**
+
+`reading_regularity()` (`generate_content/mnemonic_context.py`) called a reading
 regular only when **every kanji is taught**. Under v2 most jukugo have an
-untaught kanji, so they fall to the "write a full reading story" branch — the
+untaught kanji, so they fell to the "write a full reading story" branch — the
 opposite of what is wanted.
 
-**It must judge against KANJIDIC dictionary readings instead of taught-status.**
-v1 listed this as an optional interim rule, only needed if authoring slipped. It
-is now mandatory.
+~~**It must judge against KANJIDIC dictionary readings instead of
+taught-status.**~~ It does. Taught-status was also the wrong *question*: a
+reading card is withheld until the word's kanji are learned (Phase B rule 1), so
+by the time the learner reads the note, the readings it points at are known.
 
-Re-judging the 430 story-bearing words:
+KANJIDIC2 is not committed (`_build/data/` is gitignored), so
+`import/build_kanjidic_readings.py` distills it to the checked-in
+`_build/kanjidic_readings.json` — **all 12,356 kanji that carry a reading, not
+just the ones the curriculum uses**. Filtering to current usage saves 500 KB and
+buys a stale-artifact bug: a top-up word with a new kanji would silently fall
+through to "irregular". This is the same failure the runbook's Step 1a auto-select
+already has, and it is not worth having twice.
 
-| Count | Bucket | Treatment |
+Four kinds, replacing the old `untaught`:
+
+| N5+N4 words | Kind | Treatment |
 | ---: | --- | --- |
-| 157 | pure on'yomi jukugo (写真, 番号, 勉強) | one-line note |
-| 222 | single kanji, kun reading (秋, 危ない) | keep the story |
-| 29 | mixed regular (場所, 茶色) | one-line note |
-| 20 | genuinely irregular (明日, 部屋) | keep the story |
+| 538 | `regular` — assembles from dictionary readings (写真, 番号, 場所, 手紙) | one-line note |
+| 459 | `kun_word` — a lone kanji read with its kun'yomi (秋, 危ない, 私) | full story |
+| 207 | `kana_only` | one-line note |
+| 43 | `irregular` — assembles from nothing (明日, 部屋, 日本) | full story |
 
-The one-liner, for existing and future generations: *"This is a jukugo word,
-which usually takes the on'yomi readings of its kanji. Learn the kanji readings
-and you will know how to read this."*
+**`kun_word` is the rule the old code could not express, and it is why the fix
+is not simply "use the dictionary".** 秋 あき is mechanically derivable, but the
+kanji card teaches meaning and on'yomi only — kun'yomi comes through vocabulary
+— so the word is where that reading is first met and it has nothing to derive
+from. Every word this plan named lands in the bucket the plan predicted.
+
+The counts in the table above supersede the v1 estimate of 430 story-bearing
+words split 157 / 222 / 29 / 20, which predates Phase A's reband.
+
+**The note is written per word from the computed segments** (写（しゃ）＋真（しん）),
+not from the fixed sentence v1 proposed. That sentence asserts on'yomi, and 手紙
+てがみ is `regular` on two kun readings; a note that names the actual segments is
+both truthful and more use.
+
+**Re-authoring queue: 220 shipped words are now mis-shaped** — 158 stories that
+must shrink to notes (130 N5, 28 N4) and 62 notes that must grow into stories
+(61 N5, 1 N4). `audit_shipped --level n5` reports all 191 of the N5 half. Every
+one is `review_status: draft`, so no reviewed prose is at stake.
+
+`PROMPT_VERSION["vocab"]` **stays at 4 on purpose.** Bumping it marks all 754
+authored words stale, and 534 of them still conform. The queue is the gate's
+output, not a version sweep.
 
 ## Out of scope
 
