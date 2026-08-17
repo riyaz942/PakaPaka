@@ -74,6 +74,9 @@ jobs:
         run: |
           python curriculum/_build/generate.py --level n5
           python curriculum/_build/generate.py --level n4
+          python curriculum/_build/generate.py --level n3
+          python curriculum/_build/generate.py --level n2
+          python curriculum/_build/generate.py --level n1
 
       # Fields authored only in the JSON (not in the _build datasets) are
       # optional in the schema, so dropping them still validates and compiles.

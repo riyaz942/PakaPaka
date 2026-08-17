@@ -121,6 +121,17 @@ def _load_dataset():
     return by_word_reading, primary_by_word
 
 
+def has_alignment(form, reading):
+    """Whether JmdictFurigana aligns this exact (form, reading) pair.
+
+    The dictionary check `annotate_word` does first, without its tokenizer
+    fallback. Corpus selection (import/build_vocab_skeleton.py) asks it of
+    22,000 candidates, and a word that only annotates through the tokenizer is
+    one whose furigana nobody has checked."""
+    by_word_reading, _primary = _load_dataset()
+    return (form, reading) in by_word_reading
+
+
 def annotate_word(form, reading):
     """Exact (form, reading) lookup for vocabulary primary_form, falling back
     to tokenized annotation for compound/conjugated forms not in the

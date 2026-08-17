@@ -91,12 +91,24 @@ describe('itemRepository', () => {
     }
   });
 
-  it('reports only levels with vocabulary as having content, skipping the kanji skeleton', async () => {
+  it('reports only levels with grammar as having content, skipping the derived skeleton', async () => {
     const db = await openDatabaseAsync('curriculum.db.test');
     __mockSetItems('curriculum.db.test', [
       ...buildN5Items(),
-      // N3/N2/N1 ship kanji and their radicals and nothing else, so starting
-      // onboarding there would leave the learner nothing to study.
+      // N3/N2/N1 ship radicals, kanji and derived vocabulary and no grammar at
+      // all, so starting onboarding there would drop the learner into a level
+      // with no lessons to explain anything (plan v2 Phase D).
+      {
+        id: 902,
+        item_type: 'vocabulary',
+        jlpt_level: 'N3',
+        slug: 'v-anpo',
+        primary_form: '安保',
+        meaning: 'security',
+        mnemonic_text: null,
+        visual_mnemonic_url: null,
+        sort_order: 1,
+      },
       {
         id: 900,
         item_type: 'kanji',

@@ -264,9 +264,9 @@ SKELETON_LEVELS = ("n3", "n2", "n1")
 
 def load_items(kind_dir, level, key="items"):
     """`curriculum/<kind_dir>/<level>.json` entries, or `[]` when the file does
-    not exist. Skeleton levels ship kanji (and sometimes radicals) and nothing
-    else, so the cross-level checks below cannot assume all four kinds per
-    level the way the per-level checks can."""
+    not exist. Skeleton levels ship radicals, kanji and vocabulary as bare item
+    lists and no grammar or passages at all, so the cross-level checks below
+    cannot assume all four kinds per level the way the per-level checks can."""
     path = os.path.join(CURRICULUM_DIR, kind_dir, f"{level}.json")
     if not os.path.exists(path):
         return []

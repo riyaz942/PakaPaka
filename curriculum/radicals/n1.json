@@ -2,132 +2,94 @@
   "jlpt_level": "N1",
   "items": [
     {
-      "slug": "ninben",
-      "primary_form": "亻",
-      "meaning": "person (left)",
-      "mnemonic_text": "See those two strokes leaning together — a tall body with one leg striding forward, forever caught mid-step on the left edge of the kanji. That's a <radical>person</radical> walking, always shoved over to the left side to make room for the rest of the character.",
-      "visual_mnemonic_url": "radicals/n5/ninben.webp",
-      "_meta": {
-        "generator_model": "claude-opus-4-8",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
+      "slug": "drum",
+      "primary_form": "鼓",
+      "meaning": "drum",
       "sort_order": 1
-    },
-    {
-      "slug": "takai",
-      "primary_form": "高",
-      "meaning": "tall",
-      "mnemonic_text": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
-      "visual_mnemonic_url": "radicals/n5/takai.webp",
-      "_meta": {
-        "generator_model": "claude-opus-4-8",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "sort_order": 2
-    },
-    {
-      "slug": "tortoise",
-      "primary_form": "亀",
-      "meaning": "tortoise",
-      "sort_order": 3
-    },
-    {
-      "slug": "tusk",
-      "primary_form": "牙",
-      "meaning": "tusk",
-      "sort_order": 4
-    },
-    {
-      "slug": "snake",
-      "primary_form": "豸",
-      "meaning": "snake",
-      "sort_order": 5
-    },
-    {
-      "slug": "dragon",
-      "primary_form": "竜",
-      "meaning": "dragon",
-      "sort_order": 6
-    },
-    {
-      "slug": "ghost",
-      "primary_form": "鬼",
-      "meaning": "ghost",
-      "sort_order": 7
-    },
-    {
-      "slug": "melon",
-      "primary_form": "瓜",
-      "meaning": "melon",
-      "sort_order": 8
-    },
-    {
-      "slug": "crooked-big",
-      "primary_form": "尢",
-      "meaning": "crooked-big",
-      "sort_order": 9
-    },
-    {
-      "slug": "five",
-      "primary_form": "五",
-      "meaning": "five",
-      "sort_order": 10
-    },
-    {
-      "slug": "comma-design",
-      "primary_form": "巴",
-      "meaning": "comma-design",
-      "sort_order": 11
-    },
-    {
-      "slug": "hair-hanging",
-      "primary_form": "髟",
-      "meaning": "hair hanging long",
-      "sort_order": 12
-    },
-    {
-      "slug": "tile",
-      "primary_form": "瓦",
-      "meaning": "tile",
-      "sort_order": 13
     },
     {
       "slug": "tin-can",
       "primary_form": "缶",
       "meaning": "tin can",
-      "sort_order": 14
+      "sort_order": 2
     },
     {
       "slug": "barley",
       "primary_form": "麦",
       "meaning": "barley",
-      "sort_order": 15
+      "sort_order": 3
     },
     {
-      "slug": "nose",
-      "primary_form": "鼻",
-      "meaning": "nose",
-      "sort_order": 16
+      "slug": "ghost",
+      "primary_form": "鬼",
+      "meaning": "ghost",
+      "sort_order": 4
     },
     {
-      "slug": "drum",
-      "primary_form": "鼓",
-      "meaning": "drum",
-      "sort_order": 17
+      "slug": "barracks",
+      "primary_form": "屯",
+      "meaning": "barracks",
+      "sort_order": 5
+    },
+    {
+      "slug": "comma-design",
+      "primary_form": "巴",
+      "meaning": "comma-design",
+      "sort_order": 6
     },
     {
       "slug": "cover",
       "primary_form": "奄",
       "meaning": "cover",
-      "sort_order": 18
+      "sort_order": 7
+    },
+    {
+      "slug": "dragon",
+      "primary_form": "竜",
+      "meaning": "dragon",
+      "sort_order": 8
+    },
+    {
+      "slug": "snake",
+      "primary_form": "豸",
+      "meaning": "snake",
+      "sort_order": 9
+    },
+    {
+      "slug": "hair-hanging",
+      "primary_form": "髟",
+      "meaning": "hair hanging long",
+      "sort_order": 10
+    },
+    {
+      "slug": "tile",
+      "primary_form": "瓦",
+      "meaning": "tile",
+      "sort_order": 11
+    },
+    {
+      "slug": "crooked-big",
+      "primary_form": "尢",
+      "meaning": "crooked-big",
+      "sort_order": 12
+    },
+    {
+      "slug": "five",
+      "primary_form": "五",
+      "meaning": "five",
+      "sort_order": 13
+    },
+    {
+      "slug": "nose",
+      "primary_form": "鼻",
+      "meaning": "nose",
+      "sort_order": 14
     },
     {
       "slug": "salt",
       "primary_form": "鹵",
       "meaning": "salt",
-      "sort_order": 19
+      "sort_order": 15
     }
   ]
 }

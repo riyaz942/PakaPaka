@@ -6,6 +6,9 @@
   curriculum/grammar/<level>.json
   curriculum/readings/<level>.json
 
+--level n3|n2|n1 emits that level's derived vocabulary alone:
+  curriculum/vocabulary/<level>.json
+
 --bands emits radicals and kanji for all five levels at once:
   curriculum/radicals/{n5,n4,n3,n2,n1}.json
   curriculum/kanji/{n5,n4,n3,n2,n1}.json
@@ -284,14 +287,19 @@ def _build_vocab_level(jlpt_level, vocab_entries, known_readings=None,
         accepted = [{"answer_type": "meaning", "answer_text": v["meaning"], "is_primary": True}]
         if v["reading"]:
             accepted.append({"answer_type": "reading", "answer_text": v["reading"]})
+        for extra in v.get("extra_meanings", []):
+            accepted.append({"answer_type": "meaning", "answer_text": extra})
         item = {
             "slug": v["slug"],
             "primary_form": v["form"],
             "meaning": v["meaning"],
-            "mnemonic_text": v["mnemonic"],
-            "sort_order": i,
-            "accepted_answers": accepted,
         }
+        # Skeleton vocabulary (plan v2 Phase D) carries no mnemonic of any kind,
+        # as skeleton kanji do; the app renders around the absence.
+        if v.get("mnemonic"):
+            item["mnemonic_text"] = v["mnemonic"]
+        item["sort_order"] = i
+        item["accepted_answers"] = accepted
         furigana = furigana_lib.annotate_word(v["form"], v["reading"])
         if furigana:
             item["furigana"] = furigana
@@ -642,9 +650,14 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 # ---------------------------------------------------------------------------
 
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
+VOCAB_SKELETON_PATH = os.path.join(BUILD_DIR, "vocab_skeleton.json")
 BANDS_PATH = os.path.join(BUILD_DIR, "bands.json")
 
 BAND_LEVELS = ["n5", "n4", "n3", "n2", "n1"]
+
+#: Levels whose vocabulary is derived rather than hand-authored (plan v2 Phase
+#: D). They ship words, readings and meanings — no mnemonics, no examples.
+SKELETON_VOCAB_LEVELS = ["n3", "n2", "n1"]
 
 
 def load_skeleton():
@@ -720,12 +733,36 @@ def generate_bands():
 # Level orchestration
 # ---------------------------------------------------------------------------
 
+def build_skeleton_vocab(level):
+    """One skeleton level's vocabulary, from the derived corpus.
+
+    The level is already assigned — a word's level is its frequency rank, which
+    `import/build_vocab_skeleton.py` owns — so this only filters and orders. The
+    corpus is written most-frequent-first, and that is the teaching order."""
+    with open(VOCAB_SKELETON_PATH, encoding="utf-8") as f:
+        words = json.load(f)["words"]
+    entries = [w for w in words if w["level"] == level]
+    if not entries:
+        raise ValueError(
+            f"no {level.upper()} words in vocab_skeleton.json; run "
+            "import/build_vocab_skeleton.py"
+        )
+    return _build_vocab_level(level.upper(), entries)
+
+
 def generate_level(level):
     """Vocabulary, grammar and readings for one level.
 
     Radicals and kanji are not here: their level is a band spanning every source
     dataset, so they are written together by `generate_bands`."""
     level = level.lower()
+    if level in SKELETON_VOCAB_LEVELS:
+        # Vocabulary only: N3+ grammar and reading passages are out of scope for
+        # this plan (docs/content/kanji-coverage-and-dependency-order-plan.md).
+        vocab = build_skeleton_vocab(level)
+        write_json(os.path.join(CURRICULUM_DIR, "vocabulary", f"{level}.json"), vocab)
+        print(f"Generated {level.upper()} vocabulary: {len(vocab['items'])} words.")
+        return
     if level == "n5":
         from n5_vocab import N5_VOCAB
 
@@ -772,8 +809,9 @@ def generate_level(level):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--level", choices=["n5", "n4"],
-                        help="vocabulary, grammar and readings for one level")
+    parser.add_argument("--level", choices=["n5", "n4", "n3", "n2", "n1"],
+                        help="vocabulary, grammar and readings for one level "
+                             "(N3+ is vocabulary only, and derived)")
     parser.add_argument("--bands", action="store_true",
                         help="all five radical and kanji level files, from every source")
     args = parser.parse_args()

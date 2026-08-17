@@ -312,15 +312,22 @@ def render_markdown(per_level, untaught_uses, reading_per_level, blocking, findi
         f"| {totals['partial']} | {totals['kana']} |"
     )
     lines.append("")
-    lines.append(
-        f"{len(untaught_uses)} distinct kanji are used by taught vocabulary but authored nowhere. "
-        "Top 30 by how many words each unblocks:"
-    )
-    lines.append("")
-    ranked = sorted(untaught_uses.items(), key=lambda kv: (-len(kv[1]), kv[0]))
-    for char, slugs in ranked[:30]:
-        sample = ", ".join(slugs[:5]) + (" …" if len(slugs) > 5 else "")
-        lines.append(f"- {char} — {len(slugs)} word(s): {sample}")
+    if untaught_uses:
+        lines.append(
+            f"{len(untaught_uses)} distinct kanji are used by taught vocabulary but "
+            "authored nowhere. Top 30 by how many words each unblocks:"
+        )
+        lines.append("")
+        ranked = sorted(untaught_uses.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+        for char, slugs in ranked[:30]:
+            sample = ", ".join(slugs[:5]) + (" …" if len(slugs) > 5 else "")
+            lines.append(f"- {char} — {len(slugs)} word(s): {sample}")
+    else:
+        lines.append(
+            "Every kanji any taught word is written with is on the ladder. Word "
+            "selection enforces it: `build_vocab_skeleton.py` drops a candidate "
+            "written with a kanji outside the 2,000."
+        )
     lines.append("")
 
     lines += ["## Reading gate — words asked for meaning only", ""]

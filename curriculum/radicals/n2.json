@@ -2,89 +2,76 @@
   "jlpt_level": "N2",
   "items": [
     {
-      "slug": "mortar",
-      "primary_form": "臼",
-      "meaning": "mortar",
+      "slug": "dancing",
+      "primary_form": "舛",
+      "meaning": "dancing",
       "sort_order": 1
-    },
-    {
-      "slug": "hane",
-      "primary_form": "羽",
-      "meaning": "feather",
-      "mnemonic_text": "A duck panics mid-preen and yanks so hard that two matching plumes pop loose at once, each one a stack of stiff little hooked barbs jutting off a central spine, drifting down in perfect mirror image on either side of the pond — an unmistakable, still-twitching <radical>feather</radical>.",
-      "visual_mnemonic_url": "radicals/n4/hane.webp",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "sort_order": 2
-    },
-    {
-      "slug": "color",
-      "primary_form": "色",
-      "meaning": "color",
-      "sort_order": 3
-    },
-    {
-      "slug": "one-sided",
-      "primary_form": "片",
-      "meaning": "one-sided",
-      "sort_order": 4
-    },
-    {
-      "slug": "from",
-      "primary_form": "乃",
-      "meaning": "from",
-      "sort_order": 5
-    },
-    {
-      "slug": "incense",
-      "primary_form": "香",
-      "meaning": "incense",
-      "sort_order": 6
-    },
-    {
-      "slug": "gigantic",
-      "primary_form": "巨",
-      "meaning": "gigantic",
-      "sort_order": 7
     },
     {
       "slug": "fur",
       "primary_form": "毛",
       "meaning": "fur",
+      "sort_order": 2
+    },
+    {
+      "slug": "from",
+      "primary_form": "乃",
+      "meaning": "from",
+      "sort_order": 3
+    },
+    {
+      "slug": "incense",
+      "primary_form": "香",
+      "meaning": "incense",
+      "sort_order": 4
+    },
+    {
+      "slug": "mount",
+      "primary_form": "岡",
+      "meaning": "mount",
+      "sort_order": 5
+    },
+    {
+      "slug": "tusk",
+      "primary_form": "牙",
+      "meaning": "tusk",
+      "sort_order": 6
+    },
+    {
+      "slug": "tortoise",
+      "primary_form": "亀",
+      "meaning": "tortoise",
+      "sort_order": 7
+    },
+    {
+      "slug": "long-time",
+      "primary_form": "久",
+      "meaning": "long time",
       "sort_order": 8
     },
     {
-      "slug": "come",
-      "primary_form": "耒",
-      "meaning": "come",
+      "slug": "melon",
+      "primary_form": "瓜",
+      "meaning": "melon",
       "sort_order": 9
     },
     {
-      "slug": "pig-s",
-      "primary_form": "彑",
-      "meaning": "pig's head",
+      "slug": "color",
+      "primary_form": "色",
+      "meaning": "color",
       "sort_order": 10
+    },
+    {
+      "slug": "hemp",
+      "primary_form": "麻",
+      "meaning": "hemp",
+      "sort_order": 11
     },
     {
       "slug": "skeleton",
       "primary_form": "骨",
       "meaning": "skeleton",
-      "sort_order": 11
-    },
-    {
-      "slug": "deer",
-      "primary_form": "鹿",
-      "meaning": "deer",
       "sort_order": 12
-    },
-    {
-      "slug": "curving-river",
-      "primary_form": "巛",
-      "meaning": "curving river",
-      "sort_order": 13
     },
     {
       "slug": "nikuduki",
@@ -97,13 +84,31 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
+      "sort_order": 13
+    },
+    {
+      "slug": "reasonable",
+      "primary_form": "尤",
+      "meaning": "reasonable",
       "sort_order": 14
     },
     {
-      "slug": "barracks",
-      "primary_form": "屯",
-      "meaning": "barracks",
+      "slug": "come",
+      "primary_form": "耒",
+      "meaning": "come",
       "sort_order": 15
+    },
+    {
+      "slug": "left-hand",
+      "primary_form": "屮",
+      "meaning": "left hand",
+      "sort_order": 16
+    },
+    {
+      "slug": "deer",
+      "primary_form": "鹿",
+      "meaning": "deer",
+      "sort_order": 17
     }
   ]
 }

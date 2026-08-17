@@ -132,15 +132,16 @@ export function countItemsByLevel(
  * Levels that actually ship content, in curriculum order. Levels authored later
  * simply appear here once their vocabulary exists — nothing to update by hand.
  *
- * Vocabulary is the test, not any item at all: N3/N2/N1 ship a kanji-only
- * skeleton (the kanji N5/N4 words are built from, with no mnemonics, examples,
- * vocabulary or grammar — see docs/content/kanji-coverage-and-dependency-order-plan.md).
- * Starting onboarding on one of those would leave the placement check nothing to
- * ask about and the learner nothing to study.
+ * Grammar is the test, not any item at all. N3/N2/N1 ship a derived skeleton —
+ * kanji, radicals and 8,500 words with readings and meanings, but no mnemonics,
+ * no examples, no grammar and no passages (plan v2 Phase D). Grammar is the one
+ * kind only a full-content level has, so it is what separates a level a learner
+ * may *start* on from one the ladder merely continues into. Vocabulary was that
+ * test until Phase D gave every level words.
  */
 export function listLevelsWithContent(db: SQLiteDatabase): JLPTLevel[] {
   const rows = db.getAllSync<{ jlpt_level: JLPTLevel }>(
-    `SELECT DISTINCT jlpt_level FROM items WHERE item_type = 'vocabulary'`,
+    `SELECT DISTINCT jlpt_level FROM items WHERE item_type = 'grammar'`,
   );
   const present = new Set(rows.map((row) => row.jlpt_level));
   return JLPT_LEVELS.filter((level) => present.has(level));

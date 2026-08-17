@@ -79,6 +79,64 @@ def load_kradfile():
     return decomposition
 
 
+def load_jmdict_entries():
+    """Returns [entry, ...] in JMdict order, keeping the element structure.
+
+    `load_jmdict` below flattens an entry into one bag of kebs, rebs and
+    glosses, which is all the audits need. Frequency-ranked selection
+    (import/build_vocab_skeleton.py) needs the structure instead: the priority
+    tags belong to a *particular* headword, a reading may be restricted to some
+    of them, and "usually kana" is a sense-level tag.
+
+    Each entry is {seq, kanji, readings, senses}:
+      seq      JMdict's ent_seq, a stable id across releases
+      kanji    [{form, pri, inf}]   — pri is ke_pri (ichi1, news1, nf12, …)
+      readings [{form, pri, restr}] — restr is the kebs the reading applies to
+      senses   [{glosses, pos, misc}]
+
+    XML entities are expanded to their descriptive text by the parser, so a
+    tag reads "word usually written using kana alone" rather than "uk".
+    """
+    entries = []
+    with gzip.open(_data_path("JMdict_e.gz"), "rb") as f:
+        for _event, elem in ET.iterparse(f, events=("end",)):
+            if elem.tag != "entry":
+                continue
+            entries.append({
+                "seq": int(elem.findtext("ent_seq")),
+                "kanji": [
+                    {
+                        "form": k.findtext("keb"),
+                        "pri": [p.text for p in k.iter("ke_pri")],
+                        "inf": [i.text for i in k.iter("ke_inf")],
+                    }
+                    for k in elem.iter("k_ele")
+                ],
+                "readings": [
+                    {
+                        "form": r.findtext("reb"),
+                        "pri": [p.text for p in r.iter("re_pri")],
+                        "restr": [x.text for x in r.iter("re_restr")],
+                        "inf": [i.text for i in r.iter("re_inf")],
+                    }
+                    for r in elem.iter("r_ele")
+                ],
+                "senses": [
+                    {
+                        "glosses": [
+                            g.text for g in s.iter("gloss")
+                            if g.text and not g.attrib.get("g_type")
+                        ],
+                        "pos": [p.text for p in s.iter("pos")],
+                        "misc": [m.text for m in s.iter("misc")],
+                    }
+                    for s in elem.iter("sense")
+                ],
+            })
+            elem.clear()
+    return entries
+
+
 def load_jmdict():
     """Returns {written_form: [entry, ...]} where entry is
     {kebs, rebs, glosses, pos, common}.

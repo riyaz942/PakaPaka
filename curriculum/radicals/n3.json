@@ -2,35 +2,28 @@
   "jlpt_level": "N3",
   "items": [
     {
-      "slug": "shikigamae",
-      "primary_form": "弋",
-      "meaning": "stake / ceremony",
-      "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
-      "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
+      "slug": "sara",
+      "primary_form": "皿",
+      "meaning": "dish",
+      "mnemonic_text": "A shallow container drawn face-on: two walls, a flat base, and a pair of uprights inside marking the ridges. It is far too shallow to be a pot and far too wide to be a cup. Set it down on the table and put the food on it, because it is a <radical>dish</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "sort_order": 1
-    },
-    {
-      "slug": "branch",
-      "primary_form": "支",
-      "meaning": "branch",
-      "sort_order": 2
-    },
-    {
-      "slug": "adjusted",
-      "primary_form": "斉",
-      "meaning": "adjusted",
-      "sort_order": 3
     },
     {
       "slug": "angle",
       "primary_form": "角",
       "meaning": "angle",
-      "sort_order": 4
+      "sort_order": 2
+    },
+    {
+      "slug": "leather",
+      "primary_form": "革",
+      "meaning": "leather",
+      "sort_order": 3
     },
     {
       "slug": "hatsugashira",
@@ -43,68 +36,87 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
+      "sort_order": 4
+    },
+    {
+      "slug": "shikigamae",
+      "primary_form": "弋",
+      "meaning": "stake / ceremony",
+      "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
+      "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
       "sort_order": 5
     },
     {
-      "slug": "goods",
-      "primary_form": "品",
-      "meaning": "goods",
+      "slug": "tripod",
+      "primary_form": "鬲",
+      "meaning": "tripod",
       "sort_order": 6
     },
     {
-      "slug": "tome",
-      "primary_form": "冊",
-      "meaning": "tome",
+      "slug": "elbow",
+      "primary_form": "ユ",
+      "meaning": "elbow",
       "sort_order": 7
     },
     {
-      "slug": "tori-bird",
-      "primary_form": "鳥",
-      "meaning": "bird",
-      "mnemonic_text": "The top hook ducks like a pigeon's head tucked into a hunched wing. Its body lands stiff on a windowsill, and underneath, four skinny strokes splay out as separate stick legs, clattering against the glass like a badly tuned xylophone. That awkward, top-heavy stagger is a <radical>bird</radical>.",
-      "visual_mnemonic_url": "radicals/n4/tori-bird.webp",
+      "slug": "takai",
+      "primary_form": "高",
+      "meaning": "tall",
+      "mnemonic_text": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
+      "visual_mnemonic_url": "radicals/n5/takai.webp",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
       "sort_order": 8
     },
     {
-      "slug": "leather",
-      "primary_form": "革",
-      "meaning": "leather",
+      "slug": "goods",
+      "primary_form": "品",
+      "meaning": "goods",
       "sort_order": 9
+    },
+    {
+      "slug": "branch",
+      "primary_form": "支",
+      "meaning": "branch",
+      "sort_order": 10
+    },
+    {
+      "slug": "tanned-leather",
+      "primary_form": "韋",
+      "meaning": "tanned leather",
+      "sort_order": 11
+    },
+    {
+      "slug": "the-latter",
+      "primary_form": "乙",
+      "meaning": "the latter",
+      "sort_order": 12
     },
     {
       "slug": "west",
       "primary_form": "西",
       "meaning": "west",
-      "sort_order": 10
+      "sort_order": 13
     },
     {
       "slug": "valley",
       "primary_form": "谷",
       "meaning": "valley",
-      "sort_order": 11
+      "sort_order": 14
     },
     {
-      "slug": "mizukara",
-      "primary_form": "自",
-      "meaning": "self",
-      "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
-      "_meta": {
-        "generator_model": "claude-opus-5",
-        "prompt_version": "1",
-        "review_status": "draft"
-      },
-      "sort_order": 12
-    },
-    {
-      "slug": "well",
-      "primary_form": "井",
-      "meaning": "well",
-      "sort_order": 13
+      "slug": "sign-of",
+      "primary_form": "辰",
+      "meaning": "sign of the dragon",
+      "sort_order": 15
     },
     {
       "slug": "uo",
@@ -117,31 +129,13 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 14
-    },
-    {
-      "slug": "the-latter",
-      "primary_form": "乙",
-      "meaning": "the latter",
-      "sort_order": 15
-    },
-    {
-      "slug": "hiyominotori",
-      "primary_form": "酉",
-      "meaning": "sake jar",
-      "mnemonic_text": "A lid across the top, then a wide vessel with a bar ruled across its middle and legs under it. It is a narrow-necked jar standing on the floor, sealed, with the line showing how far down the liquid has got. Nobody seals a jar like that for water. It is a <radical>sake jar</radical>.",
-      "_meta": {
-        "generator_model": "claude-opus-5",
-        "prompt_version": "1",
-        "review_status": "draft"
-      },
       "sort_order": 16
     },
     {
-      "slug": "kemonohen",
-      "primary_form": "犭",
-      "meaning": "animal",
-      "mnemonic_text": "Three strokes crowded down the left edge: a short flick at the top, then a long stroke dropping and curving, then a leg kicking out. It is a beast in profile, all snout and haunch, pressed up against the side of the character and ready to bolt. Whenever this is on the left, the word is about an <radical>animal</radical>.",
+      "slug": "mizukara",
+      "primary_form": "自",
+      "meaning": "self",
+      "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -150,34 +144,41 @@
       "sort_order": 17
     },
     {
-      "slug": "mysterious",
-      "primary_form": "玄",
-      "meaning": "mysterious",
+      "slug": "tome",
+      "primary_form": "冊",
+      "meaning": "tome",
       "sort_order": 18
     },
     {
-      "slug": "sign-of",
-      "primary_form": "辰",
-      "meaning": "sign of the dragon",
+      "slug": "ninben",
+      "primary_form": "亻",
+      "meaning": "person (left)",
+      "mnemonic_text": "See those two strokes leaning together — a tall body with one leg striding forward, forever caught mid-step on the left edge of the kanji. That's a <radical>person</radical> walking, always shoved over to the left side to make room for the rest of the character.",
+      "visual_mnemonic_url": "radicals/n5/ninben.webp",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
       "sort_order": 19
     },
     {
-      "slug": "tanned-leather",
-      "primary_form": "韋",
-      "meaning": "tanned leather",
+      "slug": "tiger-spots",
+      "primary_form": "虍",
+      "meaning": "tiger spots",
       "sort_order": 20
     },
     {
-      "slug": "retainer",
-      "primary_form": "臣",
-      "meaning": "retainer",
+      "slug": "boat",
+      "primary_form": "舟",
+      "meaning": "boat",
       "sort_order": 21
     },
     {
-      "slug": "sara",
-      "primary_form": "皿",
-      "meaning": "dish",
-      "mnemonic_text": "A shallow container drawn face-on: two walls, a flat base, and a pair of uprights inside marking the ridges. It is far too shallow to be a pot and far too wide to be a cup. Set it down on the table and put the food on it, because it is a <radical>dish</radical>.",
+      "slug": "tsukue",
+      "primary_form": "几",
+      "meaning": "table",
+      "mnemonic_text": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -186,52 +187,16 @@
       "sort_order": 22
     },
     {
-      "slug": "beans",
-      "primary_form": "豆",
-      "meaning": "beans",
+      "slug": "well",
+      "primary_form": "井",
+      "meaning": "well",
       "sort_order": 23
     },
     {
-      "slug": "blood",
-      "primary_form": "血",
-      "meaning": "blood",
+      "slug": "beans",
+      "primary_form": "豆",
+      "meaning": "beans",
       "sort_order": 24
-    },
-    {
-      "slug": "mount",
-      "primary_form": "岡",
-      "meaning": "mount",
-      "sort_order": 25
-    },
-    {
-      "slug": "deceased",
-      "primary_form": "亡",
-      "meaning": "deceased",
-      "sort_order": 26
-    },
-    {
-      "slug": "un",
-      "primary_form": "非",
-      "meaning": "un-",
-      "sort_order": 27
-    },
-    {
-      "slug": "yellow",
-      "primary_form": "黄",
-      "meaning": "yellow",
-      "sort_order": 28
-    },
-    {
-      "slug": "tripod",
-      "primary_form": "鬲",
-      "meaning": "tripod",
-      "sort_order": 29
-    },
-    {
-      "slug": "elbow",
-      "primary_form": "ユ",
-      "meaning": "elbow",
-      "sort_order": 30
     },
     {
       "slug": "ashi-foot",
@@ -244,79 +209,147 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 31
+      "sort_order": 25
     },
     {
-      "slug": "reach-out",
-      "primary_form": "及",
-      "meaning": "reach out",
-      "sort_order": 32
-    },
-    {
-      "slug": "tsukue",
-      "primary_form": "几",
-      "meaning": "table",
-      "mnemonic_text": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
+      "slug": "kemonohen",
+      "primary_form": "犭",
+      "meaning": "animal",
+      "mnemonic_text": "Three strokes crowded down the left edge: a short flick at the top, then a long stroke dropping and curving, then a leg kicking out. It is a beast in profile, all snout and haunch, pressed up against the side of the character and ready to bolt. Whenever this is on the left, the word is about an <radical>animal</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
         "review_status": "draft"
       },
-      "sort_order": 33
+      "sort_order": 26
+    },
+    {
+      "slug": "un",
+      "primary_form": "非",
+      "meaning": "un-",
+      "sort_order": 27
+    },
+    {
+      "slug": "hane",
+      "primary_form": "羽",
+      "meaning": "feather",
+      "mnemonic_text": "A duck panics mid-preen and yanks so hard that two matching plumes pop loose at once, each one a stack of stiff little hooked barbs jutting off a central spine, drifting down in perfect mirror image on either side of the pond — an unmistakable, still-twitching <radical>feather</radical>.",
+      "visual_mnemonic_url": "radicals/n4/hane.webp",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "sort_order": 28
+    },
+    {
+      "slug": "pig-s",
+      "primary_form": "彑",
+      "meaning": "pig's head",
+      "sort_order": 29
+    },
+    {
+      "slug": "yellow",
+      "primary_form": "黄",
+      "meaning": "yellow",
+      "sort_order": 30
+    },
+    {
+      "slug": "gigantic",
+      "primary_form": "巨",
+      "meaning": "gigantic",
+      "sort_order": 31
     },
     {
       "slug": "name-of",
       "primary_form": "禹",
       "meaning": "name of a Chinese emperor",
+      "sort_order": 32
+    },
+    {
+      "slug": "blood",
+      "primary_form": "血",
+      "meaning": "blood",
+      "sort_order": 33
+    },
+    {
+      "slug": "curving-river",
+      "primary_form": "巛",
+      "meaning": "curving river",
       "sort_order": 34
+    },
+    {
+      "slug": "hiyominotori",
+      "primary_form": "酉",
+      "meaning": "sake jar",
+      "mnemonic_text": "A lid across the top, then a wide vessel with a bar ruled across its middle and legs under it. It is a narrow-necked jar standing on the floor, sealed, with the line showing how far down the liquid has got. Nobody seals a jar like that for water. It is a <radical>sake jar</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "sort_order": 35
+    },
+    {
+      "slug": "one-sided",
+      "primary_form": "片",
+      "meaning": "one-sided",
+      "sort_order": 36
+    },
+    {
+      "slug": "retainer",
+      "primary_form": "臣",
+      "meaning": "retainer",
+      "sort_order": 37
+    },
+    {
+      "slug": "mysterious",
+      "primary_form": "玄",
+      "meaning": "mysterious",
+      "sort_order": 38
+    },
+    {
+      "slug": "adjusted",
+      "primary_form": "斉",
+      "meaning": "adjusted",
+      "sort_order": 39
+    },
+    {
+      "slug": "reach-out",
+      "primary_form": "及",
+      "meaning": "reach out",
+      "sort_order": 40
+    },
+    {
+      "slug": "mortar",
+      "primary_form": "臼",
+      "meaning": "mortar",
+      "sort_order": 41
+    },
+    {
+      "slug": "tori-bird",
+      "primary_form": "鳥",
+      "meaning": "bird",
+      "mnemonic_text": "The top hook ducks like a pigeon's head tucked into a hunched wing. Its body lands stiff on a windowsill, and underneath, four skinny strokes splay out as separate stick legs, clattering against the glass like a badly tuned xylophone. That awkward, top-heavy stagger is a <radical>bird</radical>.",
+      "visual_mnemonic_url": "radicals/n4/tori-bird.webp",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "sort_order": 42
     },
     {
       "slug": "drip",
       "primary_form": "滴",
       "meaning": "drip",
-      "sort_order": 35
+      "sort_order": 43
     },
     {
-      "slug": "reasonable",
-      "primary_form": "尤",
-      "meaning": "reasonable",
-      "sort_order": 36
-    },
-    {
-      "slug": "hemp",
-      "primary_form": "麻",
-      "meaning": "hemp",
-      "sort_order": 37
-    },
-    {
-      "slug": "boat",
-      "primary_form": "舟",
-      "meaning": "boat",
-      "sort_order": 38
-    },
-    {
-      "slug": "dancing",
-      "primary_form": "舛",
-      "meaning": "dancing",
-      "sort_order": 39
-    },
-    {
-      "slug": "tiger-spots",
-      "primary_form": "虍",
-      "meaning": "tiger spots",
-      "sort_order": 40
-    },
-    {
-      "slug": "left-hand",
-      "primary_form": "屮",
-      "meaning": "left hand",
-      "sort_order": 41
-    },
-    {
-      "slug": "long-time",
-      "primary_form": "久",
-      "meaning": "long time",
-      "sort_order": 42
+      "slug": "deceased",
+      "primary_form": "亡",
+      "meaning": "deceased",
+      "sort_order": 44
     }
   ]
 }

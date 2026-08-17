@@ -53,10 +53,10 @@ function grammar(id: number, form: string, sortOrder: number, level = 'N4') {
 }
 
 /**
- * A level counts as startable only when it teaches vocabulary — a level holding
- * kanji alone is the N3+ skeleton (kanji-coverage plan Phase 2), which the
- * pickers must not offer. Tests that assert on the pickers seed one of these per
- * level they mean to be selectable.
+ * A level counts as startable only when it teaches **grammar** — a level holding
+ * radicals, kanji and derived words alone is the N3+ skeleton (kanji-coverage
+ * plan v2 Phase D), which the pickers must not offer. Tests that assert on the
+ * pickers seed a `grammar` item per level they mean to be selectable.
  */
 function vocabulary(id: number, form: string, sortOrder: number, level = 'N4') {
   return {
@@ -269,6 +269,8 @@ describe('PlacementScreen', () => {
       radical(1, '一', 1),
       vocabulary(31, '会社', 1),
       vocabulary(32, '一つ', 1, 'N5'),
+      grammar(41, 'から', 1),
+      grammar(42, 'です', 1, 'N5'),
     ]);
     renderPlacementScreen(curriculumDb, userDb);
 
@@ -432,9 +434,11 @@ describe('PlacementScreen', () => {
       kanji(12, '同', 2),
       kanji(21, '政', 1, 'N3'),
       kanji(22, '議', 2, 'N3'),
-      // Both levels need vocabulary to be selectable in the range pickers.
+      // Both levels need grammar to be selectable in the range pickers.
       vocabulary(31, '会社', 1),
       vocabulary(32, '政治', 1, 'N3'),
+      grammar(41, 'から', 1),
+      grammar(42, 'ので', 1, 'N3'),
     ]);
     renderPlacementScreen(curriculumDb, userDb);
 
@@ -449,14 +453,14 @@ describe('PlacementScreen', () => {
       expect(screen.getByTestId('placement-screen')).toBeTruthy();
     });
 
-    // N4 first (2 kanji + 1 vocabulary, all known), then N3 (the same three,
-    // all unknown).
-    fireEvent.press(screen.getByTestId('placement-answer-known'));
-    fireEvent.press(screen.getByTestId('placement-answer-known'));
-    fireEvent.press(screen.getByTestId('placement-answer-known'));
-    fireEvent.press(screen.getByTestId('placement-answer-unknown'));
-    fireEvent.press(screen.getByTestId('placement-answer-unknown'));
-    fireEvent.press(screen.getByTestId('placement-answer-unknown'));
+    // N4 first (2 kanji + 1 vocabulary + 1 grammar, all known), then N3 (the
+    // same four, all unknown).
+    for (let i = 0; i < 4; i += 1) {
+      fireEvent.press(screen.getByTestId('placement-answer-known'));
+    }
+    for (let i = 0; i < 4; i += 1) {
+      fireEvent.press(screen.getByTestId('placement-answer-unknown'));
+    }
 
     await waitFor(() => {
       expect(screen.getByTestId('placement-summary')).toBeTruthy();

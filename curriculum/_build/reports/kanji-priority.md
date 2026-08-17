@@ -41,10 +41,10 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 
 | Kanji authored | Words fully told |
 | ---: | ---: |
-| +25 | 937 (75%) |
-| +50 | 999 (80%) |
-| +100 | 1103 (88%) |
-| +150 | 1202 (96%) |
+| +25 | 969 (78%) |
+| +50 | 1032 (83%) |
+| +100 | 1125 (90%) |
+| +150 | 1211 (97%) |
 | +173 | 1247 (100%) |
 
 ## Kanji
@@ -110,11 +110,11 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 | 57 | 界 `k-world` | world | N4 | 2 | 1 | — |
 | 58 | 政 `k-politics` | politics | N4 | 3 | 2 | — |
 | 59 | 治 `k-reign` | reign | N4 | 4 | 3 | — |
-| 60 | 意 `k-idea` | idea | N4 | 5 | 4 | 音 |
+| 60 | 意 `k-idea` | idea | N4 | 5 | 3 | 音 |
 | 61 | 化 `k-change` | change | N4 | 6 | 1 | — |
-| 62 | 文 `k-sentence` | sentence | N4 | 7 | 5 | — |
+| 62 | 文 `k-sentence` | sentence | N4 | 7 | 4 | — |
 | 63 | 法 `k-method` | method | N4 | 11 | 2 | — |
-| 64 | 利 `k-profit` | profit | N4 | 13 | 3 | — |
+| 64 | 利 `k-profit` | profit | N4 | 13 | 2 | — |
 | 65 | 務 `k-task` | task | N4 | 14 | 2 | 矛 |
 | 66 | 輸 `k-transport` | transport | N4 | 15 | 2 | — |
 | 67 | 格 `k-status` | status | N4 | 16 | 4 | — |
@@ -125,27 +125,27 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 | 72 | 性 `k-sex` | sex | N4 | 25 | 3 | 生 |
 | 73 | 相 `k-inter` | inter- | N4 | 29 | 1 | — |
 | 74 | 客 `k-guest` | guest | N4 | 30 | 2 | — |
-| 75 | 公 `k-public` | public | N4 | 33 | 2 | — |
+| 75 | 公 `k-public` | public | N4 | 33 | 1 | — |
 | 76 | 門 `k-gate` | gate | N4 | 34 | 1 | — |
 | 77 | 成 `k-turn-into` | turn into | N4 | 35 | 2 | — |
-| 78 | 然 `k-sort-of` | sort of thing | N4 | 36 | 4 | — |
-| 79 | 面 `k-mask` | mask | N4 | 37 | 4 | — |
+| 78 | 然 `k-sort-of` | sort of thing | N4 | 36 | 3 | — |
+| 79 | 面 `k-mask` | mask | N4 | 37 | 3 | — |
 | 80 | 晴 `k-clear-up` | clear up | N4 | 41 | 1 | — |
-| 81 | 熱 `k-heat` | heat | N4 | 44 | 3 | 九 |
-| 82 | 不 `k-negative` | negative | N4 | 45 | 5 | — |
+| 81 | 熱 `k-heat` | heat | N4 | 44 | 2 | 九 |
+| 82 | 不 `k-negative` | negative | N4 | 45 | 4 | — |
 | 83 | 険 `k-precipitous` | precipitous | N4 | 47 | 2 | — |
 | 84 | 正 `k-correct` | correct | N4 | 48 | 1 | — |
-| 85 | 直 `k-straightaway` | straightaway | N4 | 49 | 3 | — |
+| 85 | 直 `k-straightaway` | straightaway | N4 | 49 | 2 | — |
 | 86 | 苦 `k-suffering` | suffering | N4 | 55 | 2 | — |
 | 87 | 平 `k-even` | even | N4 | 57 | 1 | — |
 | 88 | 壊 `k-demolition` | demolition | N4 | 58 | 2 | — |
-| 89 | 育 `k-bring-up` | bring up | N4 | 59 | 3 | — |
+| 89 | 育 `k-bring-up` | bring up | N4 | 59 | 2 | — |
 | 90 | 乾 `k-drought` | drought | N4 | 60 | 2 | — |
 | 91 | 濡 `k-get-wet` | get wet | N4 | 61 | 2 | 而 |
 | 92 | 沸 `k-seethe` | seethe | N4 | 62 | 2 | — |
 | 93 | 燃 `k-burn` | burn | N4 | 63 | 2 | — |
 | 94 | 流 `k-current` | current | N4 | 64 | 2 | — |
-| 95 | 回 `k-times` | -times | N4 | 65 | 4 | — |
+| 95 | 回 `k-times` | -times | N4 | 65 | 3 | — |
 | 96 | 越 `k-surpass` | surpass | N4 | 66 | 2 | — |
 | 97 | 通 `k-traffic` | traffic | N4 | 67 | 4 | — |
 | 98 | 断 `k-severance` | severance | N4 | 68 | 2 | — |
@@ -158,7 +158,7 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 | 105 | 慣 `k-accustomed` | accustomed | N4 | 75 | 2 | — |
 | 106 | 過 `k-overdo` | overdo | N4 | 76 | 2 | — |
 | 107 | 期 `k-period` | period | N4 | 77 | 1 | — |
-| 108 | 待 `k-wait` | wait | N4 | 78 | 3 | — |
+| 108 | 待 `k-wait` | wait | N4 | 78 | 2 | — |
 | 109 | 祝 `k-celebrate` | celebrate | N4 | 79 | 2 | — |
 | 110 | 福 `k-blessing` | blessing | N4 | 80 | 2 | — |
 | 111 | 感 `k-emotion` | emotion | N4 | 81 | 3 | — |
@@ -167,60 +167,60 @@ Words every kanji of which has prose, out of 1247 N5+N4 vocabulary items, as the
 | 114 | 申 `k-have-the` | have the honor to | N4 | 84 | 2 | — |
 | 115 | 参 `k-nonplussed` | nonplussed | N4 | 85 | 3 | 彡 |
 | 116 | 召 `k-seduce` | seduce | N4 | 86 | 2 | — |
-| 117 | 泳 `k-swim` | swim | N4 | 89 | 3 | — |
+| 117 | 泳 `k-swim` | swim | N4 | 89 | 2 | — |
 | 118 | 殺 `k-kill` | kill | N4 | 90 | 2 | 殳 |
-| 119 | 取 `k-take` | take | N4 | 91 | 5 | — |
-| 120 | 返 `k-return` | return | N4 | 92 | 3 | — |
+| 119 | 取 `k-take` | take | N4 | 91 | 4 | — |
+| 120 | 返 `k-return` | return | N4 | 92 | 2 | — |
 | 121 | 連 `k-take-along` | take along | N4 | 93 | 3 | — |
-| 122 | 合 `k-fit` | fit | N4 | 94 | 6 | — |
-| 123 | 作 `k-make` | make | N4 | 95 | 2 | — |
+| 122 | 合 `k-fit` | fit | N4 | 94 | 5 | — |
+| 123 | 作 `k-make` | make | N4 | 95 | 1 | — |
 | 124 | 虫 `k-insect` | insect | N4 | 96 | 1 | — |
 | 125 | 馬 `k-horse` | horse | N4 | 97 | 1 | — |
-| 126 | 牛 `k-cow` | cow | N4 | 98 | 2 | — |
-| 127 | 星 `k-star` | star | N4 | 99 | 2 | 生 |
+| 126 | 牛 `k-cow` | cow | N4 | 98 | 1 | — |
+| 127 | 星 `k-star` | star | N4 | 99 | 1 | 生 |
 | 128 | 森 `k-forest` | forest | N4 | 100 | 1 | — |
 | 129 | 林 `k-grove` | grove | N4 | 101 | 1 | — |
 | 130 | 池 `k-pond` | pond | N4 | 102 | 1 | — |
 | 131 | 岩 `k-boulder` | boulder | N4 | 103 | 1 | — |
 | 132 | 和 `k-harmony` | harmony | N4 | 104 | 2 | — |
 | 133 | 注 `k-pour` | pour | N4 | 105 | 4 | — |
-| 134 | 野 `k-plains` | plains | N4 | 106 | 4 | 矛 |
-| 135 | 服 `k-clothing` | clothing | N4 | 107 | 3 | — |
+| 134 | 野 `k-plains` | plains | N4 | 106 | 3 | 矛 |
+| 135 | 服 `k-clothing` | clothing | N4 | 107 | 2 | — |
 | 136 | 指 `k-finger` | finger | N4 | 108 | 1 | — |
-| 137 | 交 `k-mingle` | mingle | N4 | 110 | 2 | — |
+| 137 | 交 `k-mingle` | mingle | N4 | 110 | 1 | — |
 | 138 | 康 `k-ease` | ease | N4 | 111 | 2 | 隶 |
 | 139 | 健 `k-healthy` | healthy | N4 | 112 | 2 | 廴 |
-| 140 | 術 `k-art` | art | N4 | 114 | 3 | 行 |
+| 140 | 術 `k-art` | art | N4 | 114 | 2 | 行 |
 | 141 | 退 `k-retreat` | retreat | N4 | 115 | 2 | — |
 | 142 | 我 `k-ego` | ego | N4 | 116 | 2 | — |
 | 143 | 怪 `k-suspicious` | suspicious | N4 | 117 | 2 | — |
-| 144 | 遠 `k-distant` | distant | N4 | 118 | 2 | — |
+| 144 | 遠 `k-distant` | distant | N4 | 118 | 1 | — |
 | 145 | 将 `k-leader` | leader | N4 | 119 | 4 | 爿 |
-| 146 | 説 `k-opinion` | opinion | N4 | 120 | 3 | — |
+| 146 | 説 `k-opinion` | opinion | N4 | 120 | 2 | — |
 | 147 | 組 `k-association` | association | N4 | 121 | 1 | — |
 | 148 | 記 `k-scribe` | scribe | N4 | 122 | 3 | 已 |
 | 149 | 受 `k-accept` | accept | N4 | 123 | 2 | — |
 | 150 | 勤 `k-diligence` | diligence | N4 | 124 | 2 | — |
-| 151 | 失 `k-lose` | lose | N4 | 126 | 3 | — |
-| 152 | 計 `k-plot` | plot | N4 | 127 | 3 | — |
+| 151 | 失 `k-lose` | lose | N4 | 126 | 2 | — |
+| 152 | 計 `k-plot` | plot | N4 | 127 | 2 | — |
 | 153 | 算 `k-calculate` | calculate | N4 | 128 | 1 | — |
-| 154 | 席 `k-seat` | seat | N4 | 129 | 3 | — |
+| 154 | 席 `k-seat` | seat | N4 | 129 | 2 | — |
 | 155 | 加 `k-add` | add | N4 | 130 | 2 | — |
 | 156 | 以 `k-by-means` | by means of | N4 | 131 | 2 | — |
-| 157 | 速 `k-quick` | quick | N4 | 132 | 3 | — |
+| 157 | 速 `k-quick` | quick | N4 | 132 | 2 | — |
 | 158 | 特 `k-special` | special | N4 | 134 | 2 | — |
 | 159 | 能 `k-ability` | ability | N4 | 136 | 2 | — |
 | 160 | 可 `k-can` | can | N4 | 137 | 2 | — |
 | 161 | 幸 `k-happiness` | happiness | N4 | 138 | 3 | — |
 | 162 | 案 `k-plan` | plan | N4 | 139 | 3 | — |
-| 163 | 機 `k-loom` | loom | N4 | 140 | 3 | — |
+| 163 | 機 `k-loom` | loom | N4 | 140 | 2 | — |
 | 164 | 情 `k-feelings` | feelings | N4 | 141 | 2 | — |
-| 165 | 度 `k-degrees` | degrees | N4 | 142 | 2 | — |
+| 165 | 度 `k-degrees` | degrees | N4 | 142 | 1 | — |
 | 166 | 実 `k-reality` | reality | N4 | 143 | 1 | — |
 | 167 | 内 `k-inside` | inside | N4 | 144 | 2 | — |
 | 168 | 士 `k-gentleman` | gentleman | N4 | 145 | 2 | — |
-| 169 | 海 `k-sea` | sea | N4 | 146 | 2 | — |
+| 169 | 海 `k-sea` | sea | N4 | 146 | 1 | — |
 | 170 | 田 `k-rice-field` | rice field | N4 | 147 | 1 | — |
-| 171 | 都 `k-metropolis` | metropolis | N4 | 148 | 3 | — |
-| 172 | 首 `k-neck` | neck | N4 | 149 | 2 | — |
+| 171 | 都 `k-metropolis` | metropolis | N4 | 148 | 2 | — |
+| 172 | 首 `k-neck` | neck | N4 | 149 | 1 | — |
 | 173 | 活 `k-lively` | lively | N4 | 150 | 1 | — |

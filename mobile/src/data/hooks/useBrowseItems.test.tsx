@@ -43,6 +43,7 @@ function itemRow(id: number): BrowseRowModel {
     reading: 'みず',
     studyStatus: 'not_started',
     srsStage: null,
+    hasMnemonic: true,
   };
 }
 

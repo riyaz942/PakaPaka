@@ -49,6 +49,13 @@ export type BrowseItemRow = {
   studyStatus: StudyStatus;
   /** Null when the item has never entered SRS — never a placeholder stage. */
   srsStage: SRSStageLabel | null;
+  /**
+   * Whether the curriculum carries mnemonic prose for this item (plan v2 Phase
+   * D). Most of the ladder is a derived skeleton — 8,500 N3+ words and 1,778
+   * kanji ship with readings and meanings and no story — so the row says which
+   * kind of entry it is instead of letting the learner find out by tapping.
+   */
+  hasMnemonic: boolean;
 };
 
 export type BrowsePassageRow = {
@@ -220,6 +227,10 @@ function buildItemBranch(input: BrowseQueryInput): QueryFragment | null {
       `  WHERE aa.item_id = i.id AND aa.answer_type = 'reading'` +
       `  ORDER BY aa.is_primary DESC, aa.id ASC LIMIT 1) AS reading,` +
       ` s.status AS study_status, r.srs_stage_label AS srs_stage,` +
+      // Grammar carries its prose in `grammar_rules.explanation_markdown`, not
+      // in a mnemonic column, so it is never a skeleton row.
+      ` (i.item_type = 'grammar' OR i.mnemonic_text IS NOT NULL` +
+      `  OR i.meaning_mnemonic IS NOT NULL OR i.reading_mnemonic IS NOT NULL) AS has_mnemonic,` +
       ` NULL AS title, NULL AS english_translation, NULL AS summary_ja, NULL AS summary_en` +
       ` FROM ${C}.items i` +
       ` LEFT JOIN item_study_status s ON s.item_id = i.id` +
@@ -268,7 +279,7 @@ function buildPassageBranch(input: BrowseQueryInput): QueryFragment | null {
       `SELECT 'passage' AS kind, p.id AS id, p.jlpt_level AS jlpt_level, p.sort_order AS sort_order,` +
       ` ${levelRankExpression('p.jlpt_level')} AS level_rank,` +
       ` NULL AS item_type, NULL AS primary_form, NULL AS meaning, NULL AS reading,` +
-      ` NULL AS study_status, NULL AS srs_stage,` +
+      ` NULL AS study_status, NULL AS srs_stage, NULL AS has_mnemonic,` +
       ` p.title AS title, p.english_translation AS english_translation,` +
       ` p.summary_ja AS summary_ja, p.summary_en AS summary_en` +
       ` FROM ${C}.reading_passages p` +
@@ -331,6 +342,8 @@ type BrowseRow = {
   reading: string | null;
   study_status: StudyStatus | null;
   srs_stage: SRSStageLabel | null;
+  /** SQLite has no boolean: 1 / 0 on item rows, null on passage rows. */
+  has_mnemonic: number | null;
   title: string | null;
   english_translation: string | null;
   summary_ja: string | null;
@@ -376,6 +389,7 @@ function mapRow(
     reading: row.reading ?? null,
     studyStatus: row.study_status ?? 'not_started',
     srsStage: row.srs_stage ?? null,
+    hasMnemonic: row.has_mnemonic === 1,
   };
 }
 

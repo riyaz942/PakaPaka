@@ -21,15 +21,15 @@ The consequence, accepted deliberately: the level a kanji sits at is this app's
 ladder, not the exam's. 百 and 東 are N5 on the exam and unlock two words each
 here, so they wait.
 
-N3/N2/N1 have no vocabulary of their own yet (plan Phase D), so nothing can
-measure reuse for them. They fall back to KANJIDIC frequency rank — the order a
-reader actually meets them in text.
+Every level has vocabulary since Phase D, so every band ranks on reuse. The
+frequency-rank fallback below stays for the case of a level whose word list is
+missing, which is a build in progress rather than a shipped state.
 
 **Sort order inside a band.** Kanji the hand-authored N5/N4 datasets already
 place keep their curated order; the plan puts re-ordering N5/N4 out of scope.
 An incoming kanji is inserted at the position of the earliest word that needs
-it, which is the same first-encounter rule `kanji_priority.py` ranks by. Level
-order for N3+ is frequency order.
+it, which is the same first-encounter rule `kanji_priority.py` ranks by, and a
+kanji no word at this level needs sorts after them in frequency order.
 
 **Radicals are derived, not chosen.** Each files at the level of the first kanji
 that needs it, so the split falls out of the decomposition rather than a list
@@ -60,8 +60,15 @@ from generate_deps import N4_DECOMPOSITION, N5_DECOMPOSITION  # noqa: E402
 BAND_SIZES = {"n5": 150, "n4": 150, "n3": 400, "n2": 300, "n1": 1000}
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 
+#: Levels that ship hand-authored prose. The report calls out prose-less items
+#: landing in these, because that is the queue Phase E authors against.
+AUTHORED_LEVELS = ["n5", "n4"]
+
 #: Levels with vocabulary of their own, and so the only ones reuse can rank.
-VOCAB_LEVELS = ["n5", "n4"]
+#: Every level, since plan v2 Phase D derived N3/N2/N1 vocabulary. A word's
+#: level is its frequency rank and is decided without reference to kanji, so
+#: ranking a band on that level's words is not circular.
+VOCAB_LEVELS = LEVELS
 
 
 def load(path):
@@ -323,15 +330,15 @@ def render_markdown(corpus, bands, kanji_order, reuse_by_level, radicals,
         out.append(f"| {level.upper()} | {n} | {cum} | {r} | {rad_cum} | {floor} |")
     out.append("")
     out.append("Reuse floor is the fewest same-level words any kanji in the band "
-               "appears in. N3+ has no vocabulary yet, so its bands rank on "
-               "KANJIDIC frequency and the floor reads 0.\n")
+               "appears in. A floor of 0 means the band ran out of kanji that "
+               "any of its own words use and fell back to frequency rank.\n")
 
     out.append("## Coverage\n")
     out.append("Words every kanji of which is inside the cumulative band — the "
                "population that gets a reading prompt rather than meaning only.\n")
     banded = set()
-    out.append("| After | N5 words | N4 words |")
-    out.append("| --- | ---: | ---: |")
+    out.append("| After | " + " | ".join(f"{l.upper()} words" for l in VOCAB_LEVELS) + " |")
+    out.append("| --- |" + " ---: |" * len(VOCAB_LEVELS))
     for level in VOCAB_LEVELS:
         banded |= {corpus[s]["char"] for s in bands if bands[s] == level}
         cells = []
@@ -343,12 +350,13 @@ def render_markdown(corpus, bands, kanji_order, reuse_by_level, radicals,
                 if all(not is_kanji(ch) or ch in banded for ch in form)
             )
             cells.append(f"{full} ({round(100 * full / total)}%)")
-        out.append(f"| {level.upper()} | {cells[0]} | {cells[1]} |")
+        out.append(f"| {level.upper()} | " + " | ".join(cells) + " |")
     out.append("")
 
     out.append("## Moves\n")
     moved = [s for s in bands if corpus[s]["source"] != bands[s] and corpus[s]["source"] != "k"]
-    incoming = [s for s in bands if corpus[s]["source"] == "k" and bands[s] in VOCAB_LEVELS]
+    incoming = [s for s in bands if corpus[s]["source"] == "k"
+                and bands[s] in AUTHORED_LEVELS]
     out.append(f"{len(moved)} hand-authored kanji change level; {len(incoming)} derived "
                f"kanji move up into N5/N4.\n")
     out.append("| Kanji | Meaning | Was | Now | Reuse | Prose |")
@@ -361,7 +369,7 @@ def render_markdown(corpus, bands, kanji_order, reuse_by_level, radicals,
     out.append("")
 
     out.append("## Radicals in the N5+N4 band without prose\n")
-    in_band = [s for s in radical_levels if radical_levels[s] in VOCAB_LEVELS]
+    in_band = [s for s in radical_levels if radical_levels[s] in AUTHORED_LEVELS]
     no_prose = [s for s in in_band if not radicals[s]["prose"]]
     no_art = [s for s in in_band if radicals[s]["prose"] and not radicals[s]["art"]]
     out.append(f"{len(in_band)} radicals file at a level that ships full content. "

@@ -51,7 +51,7 @@ Last verified against the codebase: **2026-08-11**
 | [Radical mnemonic images](./content/radical-mnemonic-images.md) | **Partial** |
 | [Phase 4 — reading passage tooling](./content/phase-4-reading-passage-tooling.md) | **Partial** |
 | [Radical coverage audit](./content/radical-coverage-audit.md) | Done — N4 skeleton findings fixed 2026-08-10 |
-| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 Phases A–C done 2026-08-17** (A: corpus 2,000 kanji, bands 150/300/700/1000/2000, 238 radicals. B: all four app rules — reading prompts gated on guru+ kanji, two-card vocabulary, master cap with the reason on the card, furigana at master + reading-live, annotated meaning prompts, Stats note. C: pull-forward dropped, `requires` band-gated — 1,023 gating + 584 non-gating `builds_on` edges); Phases D–E open. v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
+| [Kanji coverage & dependency order](./content/kanji-coverage-and-dependency-order-plan.md) | **v2 Phases A–D done 2026-08-17** (A: corpus 2,000 kanji, bands 150/300/700/1000/2000, 238 radicals. B: all four app rules — reading prompts gated on guru+ kanji, two-card vocabulary, master cap with the reason on the card, furigana at master + reading-live, annotated meaning prompts, Stats note. C: pull-forward dropped, `requires` band-gated. D: 8,500 derived N3/N2/N1 words, every band ranked on reuse, "No mnemonic" marker in Browse — 12,156 items, 25,124 edges, 6.5 MB); Phase E open. v1 Phases 1–4 tranche 1 shipped 2026-08-16 but the design is superseded: pull-forward is reverted in favour of gating the *question* (reading prompts withheld until a kanji is guru) rather than the display. New ladder 150/300/700/1000/2000 kanji, ~10,000 vocabulary, ~240 radicals. Kept from v1: Phase 1 ordering moves, Phase 2 skeleton, Phase 4 tranche-1 prose (30 kanji + 30 radicals), the `getParentsByRelationshipType` chunking fix |
 
 ## Design & platform — `docs/design/`
 
@@ -269,6 +269,41 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   that is Phase E's authoring debt (173 kanji + 24 radicals), not a Phase C regression.
 - **Open, not fixed:** the 11 same-level ordering WARNINGs from Phase A's reband stand.
   Fixing them means re-ordering inside a level, which the plan puts out of scope.
+
+### v2 Phase D — skeleton to full scale (done 2026-08-17)
+- Step 1 (2,000-kanji corpus) landed back in Phase A. This is steps 2 and 3.
+- **N3/N2/N1 vocabulary: 8,500 derived words**, 2,250 / 2,250 / 4,000.
+  `import/build_vocab_skeleton.py` selects them from JMdict by `nfXX` frequency bucket
+  (nf01–nf19) into the checked-in `_build/vocab_skeleton.json`; `generate.py --level n3|n2|n1`
+  writes the vocabulary files. Slug is `v-<romaji reading>`, frozen once minted, as `k-` is
+  for derived kanji.
+- **Furigana is a selection filter, not an output step.** A candidate with no JmdictFurigana
+  alignment for its exact (form, reading) is dropped — 49 of them — so every shipped entry has
+  furigana without the tokenizer guessing at build time.
+- **Bands now rank on reuse at every level.** `kanji_bands.py`'s N3+ frequency fallback only
+  existed because those levels had no words. Ranking N3/N2/N1 on their own words moved 492
+  kanji between those three bands (N5/N4 untouched — they are assigned first, from their own
+  words) and took reading-gate coverage at the tail from 21/18/18% to **78% N3, 85% N2, 100%
+  N1**. Overall 8,422 of 9,747 words (86%) get a live reading card by their level's end.
+- **Word selection is constrained by the kanji corpus, not by band.** A word written with a
+  kanji outside the 2,000 is dropped (556 candidates): its reading card would otherwise go
+  live at the end of N1 having never taught the kanji. Coverage is 100% at every level, and
+  `dependency_order.py`'s "authored nowhere" section is empty for the first time.
+- **JMdict `ateji` is not a rejection reason** — 時計, 試合, 支払う, 拠出 are all tagged ateji
+  and are the normal spellings; rejecting the tag taught them as bare kana. Rejected instead:
+  search-only / rarely-used / out-dated / irregular spellings, digit headwords (４０ beside
+  四十), and first senses that are only a particle, auxiliary, affix or numeral.
+- **Browse marker, not a filter:** a `has_mnemonic` column on the item branch of the browse
+  query drives a **"No mnemonic"** pill on the row. Grammar is exempt — its prose is
+  `explanation_markdown`, not a mnemonic column.
+- Verified: `validate-schema` clean (3 pre-existing warnings), `compile-curriculum` clean,
+  `dependency_order.py` 0 errors / 11 pre-existing warnings, mobile `npm test` 2,148 passing,
+  root 62, lint + typecheck clean. **12,156 items, 25,124 edges, curriculum.db 6.5 MB** —
+  under the plan's 10–14 MB estimate. metadata 1.12.0.
+- **Open, and now larger:** `items.id` is assigned by (level, type, slug), so 8,500 new words
+  plus the N3+ reband renumber the corpus again. Nothing remaps an installed `user.db`.
+- **Not done:** N3+ grammar, examples, mnemonics and passages — all out of scope by the plan.
+  Phase E (author 173 kanji + 24 radicals, top up N5/N4 vocabulary) is untouched.
 
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).

@@ -10,20 +10,23 @@ A band is a teaching budget, not a coverage gate. Kanji outside a learner's band
 | --- | ---: | ---: | ---: | ---: | ---: |
 | N5 | 150 | 150 | 122 | 122 | 2 |
 | N4 | 150 | 300 | 40 | 162 | 1 |
-| N3 | 400 | 700 | 42 | 204 | 0 |
-| N2 | 300 | 1000 | 15 | 219 | 0 |
-| N1 | 1000 | 2000 | 19 | 238 | 0 |
+| N3 | 400 | 700 | 44 | 206 | 2 |
+| N2 | 300 | 1000 | 17 | 223 | 1 |
+| N1 | 1000 | 2000 | 15 | 238 | 0 |
 
-Reuse floor is the fewest same-level words any kanji in the band appears in. N3+ has no vocabulary yet, so its bands rank on KANJIDIC frequency and the floor reads 0.
+Reuse floor is the fewest same-level words any kanji in the band appears in. A floor of 0 means the band ran out of kanji that any of its own words use and fell back to frequency rank.
 
 ## Coverage
 
 Words every kanji of which is inside the cumulative band — the population that gets a reading prompt rather than meaning only.
 
-| After | N5 words | N4 words |
-| --- | ---: | ---: |
-| N5 | 407 (57%) | 131 (25%) |
-| N4 | 459 (64%) | 320 (60%) |
+| After | N5 words | N4 words | N3 words | N2 words | N1 words |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| N5 | 407 (57%) | 131 (25%) | 196 (9%) | 170 (8%) | 290 (7%) |
+| N4 | 459 (64%) | 320 (60%) | 463 (21%) | 406 (18%) | 707 (18%) |
+| N3 | 555 (77%) | 406 (77%) | 1763 (78%) | 1291 (57%) | 2162 (54%) |
+| N2 | 624 (87%) | 450 (85%) | 1943 (86%) | 1932 (86%) | 2869 (72%) |
+| N1 | 718 (100%) | 529 (100%) | 2250 (100%) | 2250 (100%) | 4000 (100%) |
 
 ## Moves
 
@@ -64,86 +67,86 @@ Words every kanji of which is inside the cumulative band — the population that
 | 長 `n5-nagai` | long / leader | N5 | N4 | 3 | written |
 | 力 `n5-chikara` | power / strength | N5 | N4 | 2 | written |
 | 早 `n5-hayai` | early / fast | N5 | N4 | 2 | written |
-| 同 `n4-dou` | same | N4 | N1 | 0 | written |
-| 発 `n4-hatsu` | depart / emit | N4 | N1 | 0 | written |
-| 百 `n5-hyaku` | hundred | N5 | N1 | 0 | written |
-| 千 `n5-sen` | thousand | N5 | N1 | 0 | written |
-| 心 `n4-shin-heart` | heart / mind | N4 | N1 | 0 | written |
-| 万 `n5-man` | ten thousand | N5 | N1 | 0 | written |
-| 円 `n5-en` | yen / circle | N5 | N1 | 0 | written |
-| 火 `n5-ka-fire` | fire | N5 | N1 | 0 | written |
-| 試 `n4-shi-try` | try / test | N4 | N1 | 0 | written |
-| 水 `n5-sui` | water | N5 | N1 | 0 | written |
-| 木 `n5-moku` | tree | N5 | N1 | 0 | written |
-| 土 `n5-do-earth` | earth / soil | N5 | N1 | 0 | written |
-| 山 `n5-yama` | mountain | N5 | N1 | 0 | written |
-| 歌 `n4-uta` | song | N4 | N1 | 0 | written |
-| 川 `n5-kawa` | river | N5 | N1 | 0 | written |
-| 天 `n5-ten` | heaven / sky | N5 | N1 | 0 | written |
-| 使 `n4-tsukau` | use | N4 | N1 | 0 | written |
-| 働 `n4-hataraku` | work | N4 | N1 | 0 | written |
-| 花 `n5-hana` | flower | N5 | N1 | 0 | written |
-| 借 `n4-kariru` | borrow | N4 | N1 | 0 | written |
-| 貸 `n4-kasu` | lend | N4 | N1 | 0 | written |
-| 終 `n4-owaru` | end | N4 | N1 | 0 | written |
-| 小 `n5-shou-small` | small | N5 | N1 | 0 | written |
-| 急 `n4-isogu` | hurry | N4 | N1 | 0 | written |
-| 左 `n5-hidari` | left | N5 | N1 | 0 | written |
-| 走 `n4-hashiru` | run | N4 | N1 | 0 | written |
-| 右 `n5-migi` | right | N5 | N1 | 0 | written |
-| 飛 `n4-tobu` | fly | N4 | N1 | 0 | written |
-| 東 `n5-higashi` | east | N5 | N1 | 0 | written |
-| 西 `n5-nishi` | west | N5 | N1 | 0 | written |
-| 死 `n4-shinu` | die | N4 | N1 | 0 | written |
-| 南 `n5-minami` | south | N5 | N1 | 0 | written |
-| 遊 `n4-asobu` | play | N4 | N1 | 0 | written |
-| 北 `n5-kita` | north | N5 | N1 | 0 | written |
-| 着 `n4-kiru-wear` | wear / arrive | N4 | N1 | 0 | written |
-| 集 `n4-atsumeru` | gather | N4 | N1 | 0 | written |
-| 主 `n4-shu-main` | main / lord | N4 | N1 | 0 | written |
-| 男 `n5-otoko` | man | N5 | N1 | 0 | written |
+| 運 `n4-hakobu` | carry / luck | N4 | N3 | 8 | written |
+| 発 `n4-hatsu` | depart / emit | N4 | N3 | 18 | written |
+| 心 `n4-shin-heart` | heart / mind | N4 | N3 | 9 | written |
+| 考 `n4-kangaeru` | think | N4 | N3 | 4 | written |
+| 校 `n5-kou-school` | school | N5 | N3 | 5 | written |
+| 高 `n5-takai` | tall / expensive | N5 | N3 | 19 | written |
+| 終 `n4-owaru` | end | N4 | N3 | 10 | written |
+| 死 `n4-shinu` | die | N4 | N3 | 10 | written |
+| 試 `n4-shi-try` | try / test | N4 | N3 | 3 | written |
+| 新 `n5-atarashii` | new | N5 | N3 | 10 | written |
+| 言 `n5-iu-gen` | say / word | N5 | N3 | 5 | written |
+| 選 `n4-erabu` | choose | N4 | N3 | 11 | written |
+| 主 `n4-shu-main` | main / lord | N4 | N3 | 26 | written |
+| 男 `n5-otoko` | man | N5 | N3 | 4 | written |
+| 調 `n4-shiraberu` | investigate | N4 | N3 | 10 | written |
+| 土 `n5-do-earth` | earth / soil | N5 | N3 | 5 | written |
+| 東 `n5-higashi` | east | N5 | N3 | 9 | written |
+| 同 `n4-dou` | same | N4 | N3 | 23 | written |
+| 必 `n4-hitsu` | necessary | N4 | N3 | 4 | written |
+| 要 `n4-you-need` | need / important | N4 | N3 | 11 | written |
+| 道 `n5-michi` | road / way | N5 | N3 | 9 | written |
+| 北 `n5-kita` | north | N5 | N3 | 6 | written |
+| 立 `n5-tatsu` | stand | N5 | N3 | 19 | written |
+| 働 `n4-hataraku` | work | N4 | N3 | 4 | written |
+| 火 `n5-ka-fire` | fire | N5 | N3 | 3 | written |
+| 答 `n4-kotae` | answer | N4 | N3 | 3 | written |
+| 西 `n5-nishi` | west | N5 | N3 | 5 | written |
+| 止 `n5-tomeru` | stop | N5 | N3 | 6 | written |
+| 急 `n4-isogu` | hurry | N4 | N3 | 7 | written |
+| 広 `n4-hiroi` | wide / spacious | N4 | N3 | 3 | written |
+| 座 `n5-suwaru` | sit | N5 | N3 | 4 | written |
+| 使 `n4-tsukau` | use | N4 | N3 | 5 | written |
+| 料 `n4-ryou-fee` | fee / materials | N4 | N3 | 7 | written |
+| 集 `n4-atsumeru` | gather | N4 | N3 | 6 | written |
+| 南 `n5-minami` | south | N5 | N3 | 3 | written |
+| 比 `n4-kuraberu` | compare | N4 | N3 | 4 | written |
+| 足 `n5-ashi` | foot / leg / suffice | N5 | N3 | 3 | written |
+| 親 `n4-oya` | parent | N4 | N3 | 4 | written |
+| 習 `n4-narau` | learn / practice | N4 | N3 | 3 | written |
+| 小 `n5-shou-small` | small | N5 | N3 | 7 | written |
+| 好 `n4-suki` | like / fond | N4 | N3 | 3 | written |
+| 質 `n4-shitsu-quality` | quality / question | N4 | N3 | 6 | written |
+| 左 `n5-hidari` | left | N5 | N3 | 3 | written |
+| 悪 `n4-warui` | bad | N4 | N3 | 3 | written |
+| 山 `n5-yama` | mountain | N5 | N3 | 3 | written |
+| 休 `n5-yasumu` | rest | N5 | N3 | 3 | written |
+| 川 `n5-kawa` | river | N5 | N2 | 3 | written |
+| 水 `n5-sui` | water | N5 | N2 | 11 | written |
+| 走 `n4-hashiru` | run | N4 | N2 | 3 | written |
+| 町 `n5-machi` | town | N5 | N2 | 3 | written |
+| 天 `n5-ten` | heaven / sky | N5 | N2 | 7 | written |
+| 木 `n5-moku` | tree | N5 | N2 | 5 | written |
+| 着 `n4-kiru-wear` | wear / arrive | N4 | N2 | 8 | written |
+| 右 `n5-migi` | right | N5 | N2 | 5 | written |
+| 円 `n5-en` | yen / circle | N5 | N2 | 4 | written |
+| 覚 `n4-oboeru` | remember | N4 | N2 | 4 | written |
+| 古 `n5-furui` | old | N5 | N2 | 2 | written |
+| 百 `n5-hyaku` | hundred | N5 | N2 | 2 | written |
+| 青 `n5-ao` | blue / green | N5 | N2 | 2 | written |
+| 歌 `n4-uta` | song | N4 | N2 | 5 | written |
+| 族 `n4-zoku` | family / clan | N4 | N2 | 3 | written |
+| 語 `n5-go-language` | language / word | N5 | N2 | 7 | written |
+| 貸 `n4-kasu` | lend | N4 | N2 | 4 | written |
+| 借 `n4-kariru` | borrow | N4 | N2 | 3 | written |
+| 軽 `n4-karui` | light (weight) | N4 | N2 | 5 | written |
+| 細 `n4-hosoi` | thin / fine | N4 | N2 | 4 | written |
+| 飛 `n4-tobu` | fly | N4 | N2 | 4 | written |
+| 遊 `n4-asobu` | play | N4 | N2 | 2 | written |
+| 万 `n5-man` | ten thousand | N5 | N2 | 2 | written |
+| 弱 `n4-yowai` | weak | N4 | N1 | 4 | written |
+| 暗 `n4-kurai` | dark | N4 | N1 | 6 | written |
+| 雨 `n5-ame-rain` | rain | N5 | N1 | 10 | written |
+| 千 `n5-sen` | thousand | N5 | N1 | 4 | written |
+| 戻 `n4-modoru` | return | N4 | N1 | 3 | written |
+| 花 `n5-hana` | flower | N5 | N1 | 11 | written |
+| 駅 `n5-eki-station` | station | N5 | N1 | 1 | written |
 | 妹 `n4-imouto` | younger sister | N4 | N1 | 0 | written |
-| 親 `n4-oya` | parent | N4 | N1 | 0 | written |
 | 耳 `n5-mimi` | ear | N5 | N1 | 0 | written |
-| 好 `n4-suki` | like / fond | N4 | N1 | 0 | written |
-| 悪 `n4-warui` | bad | N4 | N1 | 0 | written |
-| 足 `n5-ashi` | foot / leg / suffice | N5 | N1 | 0 | written |
-| 細 `n4-hosoi` | thin / fine | N4 | N1 | 0 | written |
-| 軽 `n4-karui` | light (weight) | N4 | N1 | 0 | written |
-| 弱 `n4-yowai` | weak | N4 | N1 | 0 | written |
-| 暗 `n4-kurai` | dark | N4 | N1 | 0 | written |
-| 広 `n4-hiroi` | wide / spacious | N4 | N1 | 0 | written |
-| 考 `n4-kangaeru` | think | N4 | N1 | 0 | written |
-| 調 `n4-shiraberu` | investigate | N4 | N1 | 0 | written |
-| 習 `n4-narau` | learn / practice | N4 | N1 | 0 | written |
-| 覚 `n4-oboeru` | remember | N4 | N1 | 0 | written |
-| 校 `n5-kou-school` | school | N5 | N1 | 0 | written |
 | 忘 `n4-wasureru` | forget | N4 | N1 | 0 | written |
-| 運 `n4-hakobu` | carry / luck | N4 | N1 | 0 | written |
-| 語 `n5-go-language` | language / word | N5 | N1 | 0 | written |
-| 質 `n4-shitsu-quality` | quality / question | N4 | N1 | 0 | written |
-| 答 `n4-kotae` | answer | N4 | N1 | 0 | written |
-| 族 `n4-zoku` | family / clan | N4 | N1 | 0 | written |
-| 料 `n4-ryou-fee` | fee / materials | N4 | N1 | 0 | written |
-| 必 `n4-hitsu` | necessary | N4 | N1 | 0 | written |
-| 要 `n4-you-need` | need / important | N4 | N1 | 0 | written |
-| 比 `n4-kuraberu` | compare | N4 | N1 | 0 | written |
-| 止 `n5-tomeru` | stop | N5 | N1 | 0 | written |
-| 選 `n4-erabu` | choose | N4 | N1 | 0 | written |
-| 立 `n5-tatsu` | stand | N5 | N1 | 0 | written |
-| 座 `n5-suwaru` | sit | N5 | N1 | 0 | written |
-| 休 `n5-yasumu` | rest | N5 | N1 | 0 | written |
-| 言 `n5-iu-gen` | say / word | N5 | N1 | 0 | written |
-| 戻 `n4-modoru` | return | N4 | N1 | 0 | written |
 | 羊 `n4-hitsuji` | sheep | N4 | N1 | 0 | written |
-| 青 `n5-ao` | blue / green | N5 | N1 | 0 | written |
-| 高 `n5-takai` | tall / expensive | N5 | N1 | 0 | written |
-| 新 `n5-atarashii` | new | N5 | N1 | 0 | written |
-| 古 `n5-furui` | old | N5 | N1 | 0 | written |
-| 雨 `n5-ame-rain` | rain | N5 | N1 | 0 | written |
-| 駅 `n5-eki-station` | station | N5 | N1 | 0 | written |
-| 道 `n5-michi` | road / way | N5 | N1 | 0 | written |
-| 町 `n5-machi` | town | N5 | N1 | 0 | written |
 
 ## Radicals in the N5+N4 band without prose
 

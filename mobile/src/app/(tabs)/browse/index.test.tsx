@@ -63,6 +63,7 @@ const KANJI_ROW: BrowseRowModel = {
   reading: 'みず',
   studyStatus: 'not_started',
   srsStage: null,
+  hasMnemonic: true,
 };
 
 const LOCKED_PASSAGE_ROW: BrowseRowModel = {
@@ -126,6 +127,19 @@ describe('BrowseScreen', () => {
     );
     // The caption already names the type, so the row carries no type badge.
     expect(screen.queryByText('KANJI')).toBeNull();
+  });
+
+  it('marks a skeleton item as having no mnemonic, and says nothing on an authored one', async () => {
+    // Plan v2 Phase D: 8,500 derived words and 1,778 derived kanji ship with a
+    // reading and a meaning and no story. The row says so rather than letting
+    // the learner find out by tapping.
+    mockListBrowsePage.mockReturnValue([KANJI_ROW, { ...KANJI_ROW, id: '2', hasMnemonic: false }]);
+    mockCountBrowse.mockReturnValue(2);
+    renderBrowse();
+
+    await waitFor(() => expect(screen.getByTestId('browse-item-2')).toBeTruthy());
+    expect(screen.getByTestId('browse-item-2-no-mnemonic')).toHaveTextContent('No mnemonic');
+    expect(screen.queryByTestId('browse-item-1-no-mnemonic')).toBeNull();
   });
 
   it('never renders a dependency lock or "learn first" affordance on item rows (BUG7)', async () => {

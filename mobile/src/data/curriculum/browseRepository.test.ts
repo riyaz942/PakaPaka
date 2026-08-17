@@ -41,6 +41,9 @@ describe('buildBrowsePageQuery', () => {
 
     expect(query).not.toBeNull();
     expect(query?.sql).toContain('UNION ALL');
+    // Both branches must select the same columns in the same order, or a
+    // positional UNION silently reads a passage's title as an item's meaning.
+    expect(query?.sql.match(/has_mnemonic/g)).toHaveLength(2);
     expect(query?.sql).toContain('curriculum.items');
     expect(query?.sql).toContain('curriculum.reading_passages');
   });
@@ -268,6 +271,7 @@ describe('listBrowsePage', () => {
         reading: 'みず',
         study_status: 'in_progress',
         srs_stage: 'guru',
+        has_mnemonic: 1,
         title: null,
         english_translation: null,
       },
@@ -286,9 +290,32 @@ describe('listBrowsePage', () => {
       reading: 'みず',
       studyStatus: 'in_progress',
       srsStage: 'guru',
+      hasMnemonic: true,
     });
     expect(row).not.toHaveProperty('locked');
     expect(row).not.toHaveProperty('isLocked');
+  });
+
+  it('reports a skeleton item as having no mnemonic (plan v2 Phase D)', () => {
+    const db = fakeDb([
+      {
+        kind: 'item',
+        id: 9,
+        jlpt_level: 'N3',
+        sort_order: 1,
+        item_type: 'vocabulary',
+        primary_form: '安保',
+        meaning: 'security',
+        reading: 'あんぽ',
+        study_status: null,
+        srs_stage: null,
+        has_mnemonic: 0,
+      },
+    ]);
+
+    const [row] = listBrowsePage(db, input(), { limit: 40, offset: 0 });
+
+    expect(row).toMatchObject({ hasMnemonic: false });
   });
 
   it('defaults a missing study status to not_started and a missing SRS stage to null', () => {

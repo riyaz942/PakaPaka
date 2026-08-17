@@ -331,25 +331,59 @@ figure is a few points below the estimate. 520 words are meaning-only, held by
 A learner who starts above N5 is unaffected: placement marks every earlier level
 known, so an earlier-band `requires` parent is already satisfied.
 
-### Phase D — skeleton to full scale
+### Phase D — skeleton to full scale — **done 2026-08-17**
 
 Machine-generated. No prose.
 
 1. ~~`build_skeleton.py` to 2,000 kanji and ~240 radicals~~ — **done in Phase A**
    (2,000 kanji, 238 radicals). 8 kanji still have no radical parent, unchanged
    from before the rebuild.
-2. N3/N2/N1 **vocabulary** skeleton — ~8,500 words from JMdict + JmdictFurigana,
-   frequency-ranked
-   → verify: `npm run validate-schema` clean; furigana present on every entry
-3. Browse filter or marker for prose-less items
-   → verify: ~9,700 skeleton items do not read as a half-built app
+2. ~~N3/N2/N1 **vocabulary** skeleton — ~8,500 words from JMdict +
+   JmdictFurigana, frequency-ranked~~ — `import/build_vocab_skeleton.py` writes
+   the checked-in `_build/vocab_skeleton.json`; `generate.py --level n3|n2|n1`
+   emits the three vocabulary files. 8,500 words, **2,250 / 2,250 / 4,000**,
+   ranked on JMdict's `nfXX` buckets and running to nf19. `validate-schema`
+   clean, and every entry carries furigana — selection *requires* a
+   JmdictFurigana alignment for (form, reading), so a word whose reading nobody
+   has aligned is dropped rather than shipped bare
+3. ~~Browse filter or marker for prose-less items~~ — a marker: the Browse row
+   carries a **"No mnemonic"** pill, from a `has_mnemonic` column on the item
+   branch of the browse query. Grammar is exempt — its prose lives in
+   `explanation_markdown`, not in a mnemonic column
 
 v1 Phase 2 refused N3+ vocabulary because it "would drag in its own untaught
 kanji and restart the problem one level up". **That objection is dead** — untaught
 kanji no longer gate anything.
 
-Database: 3.1 MB today for 2,315 items; expect **10–14 MB** at ~12,400, mostly
-prose-less. Acceptable for a bundled asset, and it is already Git LFS.
+Database: **6.5 MB** for 12,156 items and 25,124 edges, against the 10–14 MB
+estimate.
+
+Three things the plan got wrong, corrected by the build:
+
+- **Every band ranks on reuse now, not just N5/N4.** `kanji_bands.py` fell back
+  to KANJIDIC frequency at N3+ only because those levels had no words; Phase D
+  is what removes the excuse. A word's level is its own frequency rank, decided
+  without reference to kanji, so ranking a band on that level's words is not
+  circular. It moved 492 kanji between the N3/N2/N1 bands — N5 and N4 are
+  untouched, because they are assigned first from their own words — and it is
+  what makes the tail levels readable: **78% of N3's own words have a live
+  reading card by the end of N3, 85% at N2, 100% at N1**, against 21% / 18% /
+  18% under frequency ranking. Overall 8,422 of 9,747 words (86%).
+- **Word selection is constrained by the kanji corpus after all.** Not by band —
+  that is the coverage gate this plan deleted — but a word written with a kanji
+  outside the 2,000 can never be read, however long the learner studies, so its
+  reading card would go live at the end of N1 having never taught 琵 or 椿. 556
+  candidates are dropped for it, and coverage is now 100% at every level.
+- **A JMdict `ateji` tag is not a reason to reject a spelling.** 時計, 試合,
+  支払う and 拠出 are all tagged ateji and are all the normal way to write those
+  words; rejecting the tag wholesale taught them as bare kana. What is rejected
+  is a spelling nobody uses — search-only, rarely used, out-dated, irregular —
+  plus JMdict's digit headwords (４０ beside 四十), particles, auxiliaries, bare
+  affixes and numerals, which the curriculum teaches elsewhere or not at all.
+
+**The renumbering risk Phase A raised is now larger, not different.** Adding
+8,500 words and rebanding N3+ renumbers `items.id` across the corpus again.
+Still nothing remaps an installed `user.db`.
 
 ### Phase E — author
 
@@ -404,15 +438,24 @@ and you will know how to read this."*
 ## Reproducing the numbers
 
 ```bash
-python3 curriculum/_build/import/build_skeleton.py      # needs EDRDG archives
-python3 curriculum/_build/reports/kanji_bands.py        # bands -> _build/bands.json
-python3 curriculum/_build/reports/kanji_priority.py     # authoring queue
-python3 curriculum/_build/reports/dependency_order.py   # ordering + coverage
+python3 curriculum/_build/import/build_skeleton.py        # needs EDRDG archives
+python3 curriculum/_build/import/build_vocab_skeleton.py  # needs EDRDG archives
 curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n5
 curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n4
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n3
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n2
+curriculum/_build/.venv/bin/python curriculum/_build/generate.py --level n1
+python3 curriculum/_build/reports/kanji_bands.py        # bands -> _build/bands.json
 curriculum/_build/.venv/bin/python curriculum/_build/generate.py --bands
 curriculum/_build/.venv/bin/python curriculum/_build/generate_deps.py
+python3 curriculum/_build/reports/kanji_priority.py     # authoring queue
+python3 curriculum/_build/reports/dependency_order.py   # ordering + coverage
 ```
+
+**Vocabulary comes before bands.** A band is ranked on how many of its level's
+own words each kanji unlocks, so every level's word list has to exist before
+`kanji_bands.py` runs. Nothing points the other way: a word's level is its
+frequency rank alone.
 
 `--bands` writes radicals and kanji for all five levels at once; they cannot be
 written per level, because a band draws from every source dataset.

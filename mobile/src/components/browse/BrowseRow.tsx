@@ -24,6 +24,11 @@ function BrowseRowComponent({ row, onPress, testID }: BrowseRowProps) {
   // The type lives in the caption here (spec, Browse), so the row carries no
   // separate type badge — the 5px edge and the glyph already colour-code it.
   const caption = row.reading ? `${typeLabel} · ${row.reading}` : typeLabel;
+  // Most of the ladder above N4 is a derived skeleton (plan v2 Phase D): a real
+  // entry with a reading and a meaning, but no mnemonic. Saying so on the row
+  // is what keeps the list honest — the learner knows what the tap opens
+  // instead of finding out.
+  const trailingLabel = row.hasMnemonic ? undefined : 'No mnemonic';
 
   return (
     <ContentListRow
@@ -32,8 +37,12 @@ function BrowseRowComponent({ row, onPress, testID }: BrowseRowProps) {
       title={row.meaning}
       caption={caption}
       srsStage={row.srsStage ?? undefined}
+      trailingLabel={trailingLabel}
+      trailingTestID={trailingLabel && testID ? `${testID}-no-mnemonic` : undefined}
       onPress={onPress}
-      accessibilityLabel={`${typeLabel}: ${row.primaryForm}, ${row.meaning}`}
+      accessibilityLabel={`${typeLabel}: ${row.primaryForm}, ${row.meaning}${
+        trailingLabel ? ', no mnemonic' : ''
+      }`}
       testID={testID}
     />
   );
