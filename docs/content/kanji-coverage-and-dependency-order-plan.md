@@ -461,7 +461,8 @@ is updated in place with the corrected Step 1a snippet.
 
 **Track 2 progress.** The prerequisite is done — see [Interaction with the
 mnemonic pipeline](#interaction-with-the-mnemonic-pipeline--done-2026-08-17).
-No words are written yet. The real sizes, against the ladder's cumulative
+The re-authoring queue is in progress (pilot 12 + batch 1 50 + batch 2 36 =
+98 of the 191 N5 half). The real sizes, against the ladder's cumulative
 ~1,500:
 
 | | Shipped | Target | New words |
@@ -509,6 +510,22 @@ error count dropped from 413 to 333 lines (all 50 batch slugs now gate-clean).
 129 N5 words remain in the regularity queue, plus N4's smaller slice (29 words,
 per the live gate re-run — see below). Every touched word reverted to
 `review_status: draft`; nothing here marks anything reviewed.
+
+**Batch 2, 36 N5 words, 2026-08-18 — 36/36 pass.** Next 36 of the 129 remaining
+after batch 1, still curriculum order. Same seed-and-repair method: `webprompts`
+for all 36, a script seeded each `reply.md` from the sidecar, `ingest` reported
+gate errors, then 5 parallel repair subagents (`claude-sonnet-5-low` — the
+available sonnet-5 slug; high-effort sonnet-5 is not in this environment's model
+list), groups of ≤8, one subagent per group. 29 of the 36 needed only a
+reading_mnemonic reshape (22 note→story, 7 story→note); 7 also carried a
+meaning-component gap and got both fixes in the same pass, grafting into the
+existing scene (`doubutsu`, `chairo`, `shinsetsu`, `benri`, `fuben`,
+`daijoubu`, `taihen`). All 36 cleared on the first repair attempt — no second
+repair, no hand trim. `generate.py --level n5` + `validate-schema` +
+`compile-curriculum` ran clean; the shipped N5 vocab gate error count dropped
+from 333 to 288 lines (all 36 batch slugs now gate-clean). **93 N5 words remain
+in the regularity queue**, plus N4's 29. Every touched word reverted to
+`review_status: draft`.
 
 **Separately: 209 shipped words fail the gate on their *meaning* mnemonic** — 189
 of them reviewed, only 92 overlapping the 220. The errors are "never references
