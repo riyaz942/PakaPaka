@@ -461,8 +461,8 @@ is updated in place with the corrected Step 1a snippet.
 
 **Track 2 progress.** The prerequisite is done — see [Interaction with the
 mnemonic pipeline](#interaction-with-the-mnemonic-pipeline--done-2026-08-17).
-The re-authoring queue is in progress (pilot 12 + batch 1 50 + batch 2 36 =
-98 of the 191 N5 half). The real sizes, against the ladder's cumulative
+The re-authoring queue is in progress (pilot 12 + batch 1 50 + batch 2 36 +
+batch 3 36 = 134 of the 191 N5 half). The real sizes, against the ladder's cumulative
 ~1,500:
 
 | | Shipped | Target | New words |
@@ -526,6 +526,21 @@ repair, no hand trim. `generate.py --level n5` + `validate-schema` +
 from 333 to 288 lines (all 36 batch slugs now gate-clean). **93 N5 words remain
 in the regularity queue**, plus N4's 29. Every touched word reverted to
 `review_status: draft`.
+
+**Batch 3, 36 N5 words, 2026-08-18 — 36/36 pass.** Next 36 of the 93 remaining
+after batch 2, still curriculum order. Same seed-and-repair method: `webprompts`
+for all 36, a script seeded each `reply.md` from the sidecar, `ingest` reported
+gate errors, then 9 parallel repair subagents (`cursor-grok-4.6-high`), groups
+of ≤4, one subagent per group. 24 of the 36 needed only a reading_mnemonic
+reshape (19 note→story, 5 story→note); 12 also carried a meaning-component gap
+and got both fixes in the same pass, grafting into the existing scene
+(`benkyou-suru`, `shitsumon-suru`, `kaimono-suru`, `sanpo-suru`, `ryouri-suru`,
+`shigoto`, `shukudai`, `imi`, `kaigi`, `yakusoku`, `ongaku`, `eiga`). All 36
+cleared on the first repair attempt — no second repair, no hand trim.
+`generate.py --level n5` + `validate-schema` + `compile-curriculum` ran clean;
+the shipped N5 vocab gate error count dropped from 288 to 243 lines (all 36
+batch slugs now gate-clean). **57 N5 words remain in the regularity queue**,
+plus N4's 29. Every touched word reverted to `review_status: draft`.
 
 **Separately: 209 shipped words fail the gate on their *meaning* mnemonic** — 189
 of them reviewed, only 92 overlapping the 220. The errors are "never references
