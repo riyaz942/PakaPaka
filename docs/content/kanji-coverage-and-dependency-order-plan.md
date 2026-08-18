@@ -461,8 +461,10 @@ is updated in place with the corrected Step 1a snippet.
 
 **Track 2 progress.** The prerequisite is done — see [Interaction with the
 mnemonic pipeline](#interaction-with-the-mnemonic-pipeline--done-2026-08-17).
-The re-authoring queue is in progress (pilot 12 + batch 1 50 + batch 2 36 +
-batch 3 36 = 134 of the 191 N5 half). The real sizes, against the ladder's cumulative
+The N5 half of the re-authoring queue is done (pilot 12 + batch 1 50 +
+batch 2 36 + batch 3 36 + batch 4's 57 regularity = 191 of 191). Batch 4
+also started the meaning-mnemonic pass (43 words). The N4 regularity
+slice (29) is next. The real sizes, against the ladder's cumulative
 ~1,500:
 
 | | Shipped | Target | New words |
@@ -542,13 +544,33 @@ the shipped N5 vocab gate error count dropped from 288 to 243 lines (all 36
 batch slugs now gate-clean). **57 N5 words remain in the regularity queue**,
 plus N4's 29. Every touched word reverted to `review_status: draft`.
 
-**Separately: 209 shipped words fail the gate on their *meaning* mnemonic** — 189
-of them reviewed, only 92 overlapping the 220. The errors are "never references
-the component kanji X" and "references X but never wraps it in `<kanji>`". This
-is not from the regularity fix, which touches no component code; the likely cause
-is Phase A's reband moving kanji into a word's taught window after its story was
-written. It needs its own pass — 4 of the 12 pilot words carried one, and 家族's
-repair had to extend a reviewed meaning story to reach 家.
+**Batch 4, 100 N5 words, 2026-08-18 — 100/100 pass.** Finished the remaining 57
+of the N5 regularity queue and filled to 100 from the meaning-only pass
+(next 43 in curriculum order). Same seed-and-repair method: `webprompts` for
+all 100, a script seeded each `reply.md` from the sidecar, `ingest` reported
+gate errors, then 25 parallel repair subagents (`cursor-grok-4.6-high`), groups
+of ≤4, one subagent per group, launched in three waves. Of the 57 regularity
+words, 27 needed only a reading_mnemonic reshape (4 note→story: `minami-v`,
+`higashi-v`, `nishi-v`, `ittekimasu`; 23 story→note) and 30 also carried a
+meaning-component gap and got both fixes in the same pass. The other 43 were
+meaning-only wraps/grafts with reading left byte-identical. All 100 cleared
+on the first repair attempt — no second repair, no hand trim.
+`generate.py --level n5` + `validate-schema` + `compile-curriculum` ran clean;
+the shipped N5 vocab gate error count dropped from 243 to 89 lines (all 100
+batch slugs now gate-clean). **N5 regularity is done (0 remaining).** N4's 29
+regularity words remain, plus **73 N5 + 1 N4** meaning-only fails. Every
+touched word reverted to `review_status: draft`.
+
+**Separately: the meaning-mnemonic queue.** The errors are "never references
+the component kanji X" and "references X but never wraps it in `<kanji>`".
+This is not from the regularity fix; the likely cause is Phase A's reband
+moving kanji into a word's taught window after its story was written. Live
+gate after batch 4: **73 N5 + 1 N4** remaining (down from 116 N5 other-fails
+before this batch; the 209 figure earlier in this phase included overlap
+with the regularity queue, which N5 no longer has). 家族's repair in the
+pilot had to extend a reviewed meaning story to reach 家 — the same graft
+pattern this batch used on the 73 meaning fixes (30 overlapping regularity
++ 43 meaning-only).
 
 **The top-up words are not in `vocab_skeleton.json`.** The skeleton is ranked on
 newspaper frequency and its N3 head is 安保, 加盟, 欧州 — right for N3, wrong for

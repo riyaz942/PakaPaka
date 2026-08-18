@@ -25,7 +25,7 @@ Content type (one of `radical`, `kanji` or `vocab`):
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = cursor-grok-4.6-high>
+<subagent-model = sonnet-5>
 
 Subagent effort (reasoning effort every subagent in this run uses):
 
