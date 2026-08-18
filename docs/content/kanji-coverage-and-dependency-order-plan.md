@@ -385,7 +385,7 @@ Three things the plan got wrong, corrected by the build:
 8,500 words and rebanding N3+ renumbers `items.id` across the corpus again.
 Still nothing remaps an installed `user.db`.
 
-### Phase E — author — **track 1 done 2026-08-17; track 2 not started**
+### Phase E — author — **track 1 done 2026-08-17; track 2 in progress**
 
 ~~Two independent tracks, neither blocking the other.~~ **Track 1 gates most of
 track 2, measured 2026-08-17.** A vocabulary meaning story chains from its
@@ -487,6 +487,28 @@ word's current prose, so `ingest` reported exactly what the new contract rejects
 and a per-slug repair subagent changed only that. Every meaning mnemonic not
 named in an error came out byte-identical. Attempt 1 is the mechanical seed, so
 all 12 cleared on attempt 2 with no second repair.
+
+**Batch 1, 50 N5 words, 2026-08-18 — 50/50 pass.** Continued straight from the
+pilot's remaining queue (curriculum order, next 50 of the 179 N5 words still
+failing the gate after the pilot's 12). Same seed-and-repair method, run at
+subagent scale: `webprompts` built all 50 prompt files in one call, a script
+seeded each `reply.md` mechanically from the shipped sidecar prose (no model
+call — attempt 1 is a deterministic copy, not a generation), `ingest` reported
+each slug's exact gate errors, then 7 parallel repair subagents (`sonnet-5`,
+groups of 8, one subagent per group, each touching only its own group's reply
+files) fixed what was flagged. 30 of the 50 needed only a reading_mnemonic
+reshape (13 note→story, 17 story→note); 20 also carried the separate
+meaning-component gap described below and got both fixes in the same pass,
+grafting the missing kanji reference into the existing scene rather than
+rewriting it — the same pattern 家族 set in the pilot. 49/50 cleared on the
+first repair attempt; `kyoudai`'s graft pushed `meaning_mnemonic` 51 characters
+over the 450 cap, trimmed by hand (not a subagent — a mechanical cut, no prose
+change) and passed on the second attempt. `generate.py --level n5` +
+`validate-schema` + `compile-curriculum` ran clean; the shipped N5 vocab gate
+error count dropped from 413 to 333 lines (all 50 batch slugs now gate-clean).
+129 N5 words remain in the regularity queue, plus N4's smaller slice (29 words,
+per the live gate re-run — see below). Every touched word reverted to
+`review_status: draft`; nothing here marks anything reviewed.
 
 **Separately: 209 shipped words fail the gate on their *meaning* mnemonic** — 189
 of them reviewed, only 92 overlapping the 220. The errors are "never references
