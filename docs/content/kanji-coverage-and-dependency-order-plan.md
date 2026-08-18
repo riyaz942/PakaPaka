@@ -385,7 +385,7 @@ Three things the plan got wrong, corrected by the build:
 8,500 words and rebanding N3+ renumbers `items.id` across the corpus again.
 Still nothing remaps an installed `user.db`.
 
-### Phase E — author — **in progress; N5+N4 radical layer and N5 kanji layer done 2026-08-17**
+### Phase E — author — **track 1 done 2026-08-17; track 2 not started**
 
 ~~Two independent tracks, neither blocking the other.~~ **Track 1 gates most of
 track 2, measured 2026-08-17.** A vocabulary meaning story chains from its
@@ -429,22 +429,35 @@ unlisted look-alike (二) on attempt 1 and passed on the repair attempt (2 of 3)
 `generate.py --bands` + `validate-schema` + `compile-curriculum` ran clean after
 both the radical and the kanji layer.
 
-The queue is now the **118 N4 kanji** — the last slice of track 1's 173-kanji
-debt. Layer order holds: radicals for a level must be authored and inlined
-before that level's kanji layer runs (`generate.py --bands`), which is now true
-for N5 in full and N4's radicals; N4's kanji layer runs next.
+The last slice of track 1's 173-kanji debt — the **118 N4 kanji** — is authored
+and ingested the same way: 30 subagent groups, `sonnet-5`, 116/118 on attempt 1;
+`k-have-the`'s `description` named an unlisted look-alike (上, inside the
+compound 申し上げる) and passed on the repair attempt, the same failure shape as
+`k-storey`. `generate.py --bands` + `validate-schema` + `compile-curriculum` ran
+clean, and the sidecar-based auto-select confirms **0 remaining** across all four
+layers (N5 radicals, N4 radicals, N5 kanji, N4 kanji).
 
-**The runbook's Step 1a auto-select does not survive the reband.** It calls a
-slug done when a draft sits in `drafts/mnemonics/<level>/<type>/`, but drafts are
-filed under the level an item had when it was written, while `all_slugs` reads
-the rebanded level file. 186 drafts are in the wrong folder, and the 30 skeleton
-kanji re-slugged `n3-private` → `k-private` are unreachable under either name. Run
-as written it selects 91 N5 kanji instead of 55 and regenerates ~200 authored
-items over reviewed prose. Only the drafts drifted — `write_sidecar` is already
-band-aware and keys by source dataset. This run was driven from
-`reports/kanji-priority.json` instead, which reads the shipped curriculum and is
-what this phase names as its queue. Fix before the kanji layers: test the
-sidecar, not the drafts — the sidecar is checked in and would not drift again.
+**Track 1 is done.** All 238 radicals and all 300 N5+N4 band kanji are authored,
+ingested, and compiled. 197 of those items are net-new this phase — the 24
+radicals (14 N5 + 10 N4) and 173 kanji (55 N5 + 118 N4) named at the top of this
+section as track 1's queue; the rest were already authored before Phase E
+started. Two slugs needed one repair each
+(`k-storey`, `k-have-the`), both the same gate error: a `description` naming a
+Japanese character not on the item's reviewed look-alike list. Every other slug
+passed the gate on the subagent's first attempt — a materially higher first-pass
+rate than track 2's pilot, plausibly because kanji/radical prompts carry a
+tighter, more mechanical contract (component + reading only, no reading-
+regularity judgment call) than vocabulary's.
+
+**(Historical, fixed above.)** The runbook's Step 1a auto-select did not survive
+the reband: it called a slug done when a draft sat in
+`drafts/mnemonics/<level>/<type>/`, but drafts are filed under the level an item
+had when *written*, while `all_slugs` reads the rebanded level file — run as
+originally written it would have selected 91 N5 kanji instead of 55 and
+regenerated ~200 authored items over reviewed prose. The fix (see above) reads
+the checked-in sidecar instead, which is band-aware already and does not drift.
+The runbook doc (`docs/workflows/radical-kanji-vocab-mnemonic-subagent-workflow-automation-prompt.md`)
+is updated in place with the corrected Step 1a snippet.
 
 **Track 2 progress.** The prerequisite is done — see [Interaction with the
 mnemonic pipeline](#interaction-with-the-mnemonic-pipeline--done-2026-08-17).
