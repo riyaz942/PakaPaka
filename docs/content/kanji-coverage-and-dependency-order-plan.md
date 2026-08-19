@@ -561,6 +561,43 @@ batch slugs now gate-clean). **N5 regularity is done (0 remaining).** N4's 29
 regularity words remain, plus **73 N5 + 1 N4** meaning-only fails. Every
 touched word reverted to `review_status: draft`.
 
+**Batch 5, 100 words, 2026-08-19 — 100/100 pass.** Finished the re-authoring
+queue: all 73 remaining N5 meaning-only words, plus the first 27 of N4's 30
+remaining words (regularity reshapes and meaning grafts, curriculum order),
+leaving 3 N4 words for the next batch. Same seed-and-repair method as
+batches 1–4: `webprompts` built all 100 prompt files, a script seeded each
+`reply.md` mechanically from the shipped sidecar prose (deterministic copy,
+no model call), `ingest` reported each slug's exact gate errors — 100/100
+failed attempt 1, exactly reproducing the pre-batch gate state — then 26
+parallel repair subagents (`sonnet-5`, general-purpose, groups of ≤4, three
+waves) fixed what was flagged, each touching only its own group's reply
+files. Unlike batches 1–4, the N4 half of this batch carried **two** error
+kinds per item, not one: a meaning-mnemonic component graft/tag (same as
+N5) *and* a reading-mnemonic reshape, because N4's regularity fix had never
+been applied to these words before — every regular-reading N4 story in this
+batch was replaced with a one-sentence derivation note built from the
+prompt's own KANJIDIC segment breakdown (e.g. 世(せ)＋界(かい)), and the one
+kun'yomi-only word (`oya`) got its under-length note grown into a full cast
+story instead. All 100 cleared on the first repair attempt — no second
+repair, no hand trim. `generate.py --level n5` + `generate.py --level n4` +
+`validate-schema` + `compile-curriculum` ran clean; a direct
+`validate_mnemonics.validate_draft` re-check of all 100 shipped items
+confirms 0 gate failures. **The re-authoring queue is down to 3 N4 words**
+(`setsumei`, `keizai`, `shuukan-custom`). Every touched word reverted to
+`review_status: draft`.
+
+**Found while scoping this batch, not previously tracked here: N4's bulk
+vocabulary authoring has barely started.** Only 36 of N4's 529 shipped words
+have ever had a mnemonic generated through this pipeline — the other 493
+ship with empty `meaning_mnemonic`/`reading_mnemonic` fields entirely (not a
+gate-reshape problem; nothing to seed-and-repair). This is a materially
+larger task than the 103-word re-authoring queue this section has been
+tracking, uses the standard fresh-generation runbook rather than
+seed-and-repair, and is separate from the +171-word N4 top-up (which adds
+words beyond the 529, rather than authoring the 529 that already shipped).
+Not yet scheduled; flagged here so it isn't mistaken for done because the
+words are "shipped."
+
 **Separately: the meaning-mnemonic queue.** The errors are "never references
 the component kanji X" and "references X but never wraps it in `<kanji>`".
 This is not from the regularity fix; the likely cause is Phase A's reband
