@@ -10,7 +10,7 @@
   },
   "keizai": {
     "meaning_mnemonic": "In the temple's back room, the loom keeps working: thread after thread <kanji>passes through</kanji> the frame while the monk drones on. What is threaded today is not cloth but coins, spooled from house to market to house again. That endless circuit of coin passing through the village is the economy.",
-    "reading_mnemonic": "At Koichi's konbini, the till beeps as a customer named Kay-Zai counts every coin twice, tracking how money moves through the town — konbini, rent, noodle stand. Her name says it: <reading>Kay-Zai</reading> is how you hear <reading>けいざい</reading>, the economy she watches.",
+    "reading_mnemonic": "経（けい）＋済（ざい）read straight through give <reading>けいざい</reading>, the thread of coin passing through the whole economy.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -36,8 +36,8 @@
     }
   },
   "setsumei": {
-    "meaning_mnemonic": "Grandma Kane corners you over the empty offering plate. You stall until dawn's <kanji>bright</kanji> floods both shrine windows at once, sun in one pane, moon still pale in the other, till the courtyard glows so hard the cats squint. In that light your excuse turns readable, laid out plain — an explanation you never meant to give.",
-    "reading_mnemonic": "At Koichi's konbini, a customer corners him over the price hike, so he SETs a sign by the onigiri shelf that MAY as well be scripture, every reason dated. Regulars read the whole <reading>SET in MAY</reading> notice top to bottom — that rundown is <reading>せつめい</reading>.",
+    "meaning_mnemonic": "Grandma Kane corners you over the empty offering plate. You stall until dawn's <kanji>bright</kanji> floods both shrine windows at once, sun in one pane, moon still pale in the other, till the courtyard glows so hard the cats squint. In that light your excuse turns readable, laid out plain — an <kanji>explanation</kanji> you never meant to give.",
+    "reading_mnemonic": "説（せつ）＋明（めい）read straight through give <reading>せつめい</reading>, the explanation laid out plain.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
@@ -216,8 +216,8 @@
     }
   },
   "shuukan-custom": {
-    "meaning_mnemonic": "That duckling from <kanji>practice</kanji> still can't land one clean flight, but it hasn't missed a single dawn either. Same rock, same launch, same scattered feathers, same untouched bead of milk on the lilypad — every morning, rain or shine. Repetition that rigid stops being practice; it becomes a habit, a fixed custom now.",
-    "reading_mnemonic": "Every day at Koichi's konbini, the same regular runs the same scam by the shoe rack — the <reading>shoe con</reading> — swiping one sandal as the till beeps. Staff set their watches by him: that unbroken daily <reading>しゅうかん</reading> hasn't varied in months.",
+    "meaning_mnemonic": "That duckling from <kanji>practice</kanji> still can't land one clean flight, but it hasn't missed a single dawn either. Same rock, same launch, same scattered feathers, same untouched bead of milk on the lilypad — every morning, rain or shine. Repetition that rigid stops being practice; it <kanji>becomes</kanji> a habit, a fixed custom now.",
+    "reading_mnemonic": "習（しゅう）＋慣（かん）read straight through give <reading>しゅうかん</reading>, the fixed daily custom.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",

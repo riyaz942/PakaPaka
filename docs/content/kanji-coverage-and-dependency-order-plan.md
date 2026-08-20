@@ -586,6 +586,30 @@ confirms 0 gate failures. **The re-authoring queue is down to 3 N4 words**
 (`setsumei`, `keizai`, `shuukan-custom`). Every touched word reverted to
 `review_status: draft`.
 
+**Batch 6, 3 N4 words, 2026-08-20 — 3/3 pass. Re-authoring queue done.**
+Closed out the last 3 words, same seed-and-repair method: `webprompts` built
+the 3 prompt files, each `reply.md` seeded mechanically from the shipped
+sidecar prose, `ingest` reproduced the exact gate errors the audit had
+recorded (2 for `setsumei`, 1 for `keizai`, 2 for `shuukan-custom`) — a
+regularity reshape on all three (a reading-mnemonic story rewritten as a
+one-sentence derivation note from the KANJIDIC segment breakdown, e.g.
+説（せつ）＋明（めい）), plus a meaning-component wrap on two: the taught
+meaning was already present as a plain word — "explanation" (説) in
+`setsumei`, "become[s]" (慣, from the synonym "become experienced") in
+`shuukan-custom` — just missing its `<kanji>` tag, so the fix wrapped the
+existing word rather than rewriting the scene. Small enough to fix directly
+rather than through a repair subagent, but the same discipline: smallest
+change, no touched field rewritten beyond what the gate flagged. All 3
+cleared on the first repair attempt. `generate.py --level n4` +
+`validate-schema` + `compile-curriculum` ran clean; a full `audit_shipped
+--level n4` re-run confirms all three slugs carry no remaining ERROR (only a
+pre-existing, non-gating WARNING stands on `shuukan-custom`: its
+`<kanji>practice</kanji>` tag matches no taught component on this item,
+because only 慣 — not 習 — is listed as this word's component kanji; out of
+scope for this queue, which tracks gate ERRORs). Every touched word reverted
+to `review_status: draft`. **The 103-word re-authoring queue opened by the
+reading-regularity fix is now fully closed.**
+
 **Found while scoping this batch, not previously tracked here: N4's bulk
 vocabulary authoring has barely started.** Only 36 of N4's 529 shipped words
 have ever had a mnemonic generated through this pipeline — the other 493
