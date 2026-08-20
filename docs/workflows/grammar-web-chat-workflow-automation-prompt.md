@@ -2,23 +2,31 @@ Task: Generate Grammar Lessons via Gemini Web
 
 
 
-Use the existing logged-in Gemini session in my Chrome browser to generate grammar lessons for the following grammar slugs.
+Use the existing logged-in Gemini session in my Chrome browser to generate grammar lessons for this level.
 
-
+This run **auto-selects remaining unwritten slugs** unless you fill "Slugs for this run" below with a real comma list. Do not invent slugs — they are existing grammar-point ids.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
-
-
 <level = n5>
 
-
-
-Slugs for this run:
-
-
+Slugs for this run (optional override; leave the placeholder to auto-select):
 
 <slug, slug>
+
+If that is still the placeholder `<slug, slug>` (or empty), list remaining unwritten slugs from `curriculum/_build` and use the next batch in curriculum order (~10 is a practical sitting):
+
+.venv/bin/python - <<'PY'
+import os, sys; sys.path.insert(0, '.')
+from generate_content import context
+level = '<level>'
+done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{level}')} if os.path.isdir(f'../grammar/lessons/{level}') else set()
+todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
+print(f'{len(todo)} {level} points left:')
+print(','.join(todo[:10]))
+PY
+
+If it prints 0 slugs, this level is already fully written — stop and report that. Otherwise treat the printed comma list as this run's slug set. Pass it as one string with **no spaces after the commas** to Step 1.
 
 
 
@@ -62,7 +70,7 @@ curriculum/_build
 
 
 
-Run:
+Run, using the comma list from the listing above (one string, no spaces after commas):
 
 
 

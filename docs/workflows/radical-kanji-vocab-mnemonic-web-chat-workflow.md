@@ -29,7 +29,8 @@ cd curriculum/_build
 The one command you use is the mnemonic generator with two subcommands,
 `webprompts` and `ingest`. **Every command takes `--type radical`, `--type kanji` or
 `--type vocab`** — the three content types are generated separately, in that order
-(see "Doing a batch efficiently" below):
+(see "Doing a batch efficiently" below). Slugs are existing curriculum ids — list
+them first (see "List remaining slugs" below), then pass them to `webprompts`:
 
 ```bash
 .venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji   --level n5 --slugs <slug,slug,...>
@@ -86,9 +87,51 @@ to `reviewed`.
 
 ---
 
+## List remaining slugs
+
+Slugs already exist as curriculum ids (`n5-higashi` is one kanji; they live in
+`curriculum/{radicals|kanji|vocabulary}/<level>.json`). `webprompts` writes a
+prompt *for* a slug; it does not invent the slug. From `curriculum/_build`, list
+the items of this type that have **no** sidecar entry yet:
+
+```bash
+# list the remaining (not-yet-generated) N5 kanji slugs
+.venv/bin/python - <<'PY'
+import json, os, sys; sys.path.insert(0, '.')
+from generate_content import mnemonic_context as mc
+from generate_content.generate_mnemonics import KIND_DIR
+level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
+subdir = KIND_DIR[kind]
+sidecar = f'../{subdir}/mnemonics/{level}.json'
+done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
+todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
+print(f'{len(todo)} {level} {kind} items left:')
+print(','.join(todo))
+PY
+```
+
+Take one slug from that list for the one-item loop below, or keep the whole comma
+list for a batch. Omitting `--slugs` writes a prompt for **every** item of the
+type — useful for a full-level dump, not for a sitting of ~10.
+
+> The snippet lists items that have **no** sidecar entry yet. After a
+> `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
+> whole level rather than the gaps, and let `ingest` overwrite. The API path does
+> this for you — `run` re-queues any draft recorded under an older prompt version.
+> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
+> because the three prompts move independently. Radicals sitting at 1 is
+> deliberate: Rev 3 reverted the radical contract to the original shape — a
+> `mnemonic_text` of ~150–300 characters, description demoted to optional — so a
+> draft written under the original prompt is exactly what the current one asks
+> for, and is correctly not re-selected.
+
+---
+
 ## The loop (one item)
 
 ### 1. Generate the prompt
+
+`n5-higashi` is a worked example. Substitute a slug from the list above.
 
 ```bash
 .venv/bin/python -m generate_content.generate_mnemonics webprompts --type kanji --level n5 --slugs n5-higashi
@@ -168,42 +211,16 @@ stubborn item.
 
 `webprompts` accepts a comma-separated `--slugs` list (and defaults to **every**
 item of the type when you omit `--slugs`), so generate a screenful at once, then
-work them one chat at a time:
+work them one chat at a time.
 
-```bash
-# list the remaining (not-yet-generated) N5 kanji slugs
-.venv/bin/python - <<'PY'
-import json, os, sys; sys.path.insert(0, '.')
-from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import KIND_DIR
-level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
-subdir = KIND_DIR[kind]
-sidecar = f'../{subdir}/mnemonics/{level}.json'
-done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
-todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
-print(f'{len(todo)} {level} {kind} items left:')
-print(','.join(todo))
-PY
-```
-
-Paste that comma list into `webprompts --type kanji --slugs ...`. Work in
+Run the listing snippet above. Paste that comma list into
+`webprompts --type kanji --slugs ...`. Work in
 curriculum order (the list is already sorted by `sort_order`). Do **radicals, then
 kanji, then vocabulary** — a kanji story continues its radicals' descriptions and a
 vocabulary story hooks into its kanji's meaning mnemonics, so each layer must be
 settled (and ideally reviewed) before the layer built on it, and `generate.py` has
 to be re-run between layers so the next layer's prompts read the new prose. And do
 N5 fully before N4 (`--level n4`).
-
-> The snippet lists items that have **no** sidecar entry yet. After a
-> `PROMPT_VERSION` bump the existing entries are stale, not done: regenerate the
-> whole level rather than the gaps, and let `ingest` overwrite. The API path does
-> this for you — `run` re-queues any draft recorded under an older prompt version.
-> `PROMPT_VERSION` is keyed by type (`{"radical": 1, "kanji": 4, "vocab": 4}`),
-> because the three prompts move independently. Radicals sitting at 1 is
-> deliberate: Rev 3 reverted the radical contract to the original shape — a
-> `mnemonic_text` of ~150–300 characters, description demoted to optional — so a
-> draft written under the original prompt is exactly what the current one asks
-> for, and is correctly not re-selected.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.
@@ -241,6 +258,7 @@ fail on it, so unreviewed prose can't silently ship.
 
 | Step | Command / action |
 |---|---|
+| List remaining slugs | the Python snippet under "List remaining slugs" |
 | Make prompts | `... webprompts --type <radical|kanji|vocab> --level n5 --slugs a,b,c` |
 | Paste | one item per fresh Claude/Gemini chat (skip the header comment) |
 | Save reply | `web/mnemonics/<level>/<type>/<slug>.reply.md` |

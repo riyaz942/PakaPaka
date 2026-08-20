@@ -20,7 +20,8 @@ cd curriculum/_build
 ```
 
 The one command you use is the grammar generator with two new subcommands,
-`webprompts` and `ingest`:
+`webprompts` and `ingest`. Slugs are existing grammar-point ids — list them first
+(see "List remaining slugs" below), then pass them to `webprompts`:
 
 ```bash
 .venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs <slug,slug,...>
@@ -55,9 +56,36 @@ lesson in the app's lesson renderer before flipping `review_status` to `reviewed
 
 ---
 
+## List remaining slugs
+
+Slugs already exist as grammar-point ids (`mo-also` is one; they live in the
+grammar catalog `context.load_grammar` reads). `webprompts` writes a prompt
+*for* a slug; it does not invent the slug. From `curriculum/_build`, list the
+points that have **no** assembled lesson yet:
+
+```bash
+# list the remaining (unwritten) N5 grammar slugs
+.venv/bin/python - <<'PY'
+import os, sys; sys.path.insert(0, '.')
+from generate_content import context
+level = 'n5'
+done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{level}')} if os.path.isdir(f'../grammar/lessons/{level}') else set()
+todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
+print(f'{len(todo)} {level} points left:')
+print(','.join(todo))
+PY
+```
+
+Take one slug from that list for the one-item loop below, or keep the whole comma
+list for a batch.
+
+---
+
 ## The loop (one grammar point)
 
 ### 1. Generate the prompt
+
+`mo-also` is a worked example. Substitute a slug from the list above.
 
 ```bash
 .venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs mo-also
@@ -122,25 +150,13 @@ come back — don't burn a session on one stubborn point.
 ## Doing a batch efficiently
 
 `webprompts` accepts a comma-separated `--slugs` list, so generate a screenful at
-once, then work them one chat at a time:
+once, then work them one chat at a time.
 
-```bash
-# list the remaining (unwritten) N5 grammar slugs
-.venv/bin/python - <<'PY'
-import os, sys; sys.path.insert(0, '.')
-from generate_content import context
-level = 'n5'
-done = {f[:-3] for f in os.listdir(f'../grammar/lessons/{level}')} if os.path.isdir(f'../grammar/lessons/{level}') else set()
-todo = [g['slug'] for g in context.load_grammar(level) if g['slug'] not in done]
-print(f'{len(todo)} {level} points left:')
-print(','.join(todo))
-PY
-```
-
-Paste that comma list into `webprompts --slugs ...`. Work in curriculum order
-(the list is already sorted by `sort_order`) so contrast sections reference points
-you've already seen. Do N5 fully before N4 (`--level n4`) — N4 lessons are allowed
-to reference all N5 vocabulary, so N5 should be settled first.
+Run the listing snippet above. Paste that comma list into `webprompts --slugs ...`.
+Work in curriculum order (the list is already sorted by `sort_order`) so contrast
+sections reference points you've already seen. Do N5 fully before N4 (`--level n4`)
+— N4 lessons are allowed to reference all N5 vocabulary, so N5 should be settled
+first.
 
 A practical cadence: batch ~10 prompts, then do the paste → save → ingest loop for
 each. Keep a terminal open in `curriculum/_build` and a browser tab on the chat.
@@ -175,6 +191,7 @@ ship.
 
 | Step | Command / action |
 |---|---|
+| List remaining slugs | the Python snippet under "List remaining slugs" |
 | Make prompts | `... webprompts --level n5 --slugs a,b,c` |
 | Paste | one point per fresh Claude/Gemini chat |
 | Save reply | `web/<level>/<slug>.reply.md` |

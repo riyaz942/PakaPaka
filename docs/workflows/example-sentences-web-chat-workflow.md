@@ -26,7 +26,9 @@ cd curriculum/_build
 
 The one command you use is the example generator with two subcommands,
 `webprompts` and `ingest`. **Every command takes `--type kanji` or
-`--type vocab`** — the two content types are generated separately:
+`--type vocab`** — the two content types are generated separately. Slugs are
+existing curriculum ids — list them first (see "List remaining slugs" below),
+then pass them to `webprompts`:
 
 ```bash
 .venv/bin/python -m generate_content.generate_examples webprompts --type vocab --level n5 --slugs <slug,slug,...>
@@ -91,9 +93,39 @@ varied*. Read the assembled examples before flipping `review_status` to
 
 ---
 
+## List remaining slugs
+
+Slugs already exist as curriculum ids (`taberu` is one vocab item; they live in
+the files listed under "Slug sources" above). `webprompts` writes a prompt *for*
+a slug; it does not invent the slug. From `curriculum/_build`, list the items of
+this type that have **no** sidecar entry yet:
+
+```bash
+# list the remaining (not-yet-generated) N5 vocab example slugs
+.venv/bin/python - <<'PY'
+import json, os, sys; sys.path.insert(0, '.')
+from generate_content import example_context as ec
+level, kind = 'n5', 'vocab'                 # kind: 'vocab' or 'kanji'
+subdir = 'vocabulary' if kind == 'vocab' else 'kanji'
+sidecar = f'../{subdir}/examples/{level}.json'
+done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
+todo = [s for s in ec.all_slugs(level, kind) if s not in done]
+print(f'{len(todo)} {level} {kind} items left:')
+print(','.join(todo))
+PY
+```
+
+Take one slug from that list for the one-item loop below, or keep the whole comma
+list for a batch. Omitting `--slugs` writes a prompt for **every** item of the
+type — useful for a full-level dump, not for a sitting of ~10.
+
+---
+
 ## The loop (one item)
 
 ### 1. Generate the prompt
+
+`taberu` is a worked example. Substitute a slug from the list above.
 
 ```bash
 .venv/bin/python -m generate_content.generate_examples webprompts --type vocab --level n5 --slugs taberu
@@ -172,24 +204,10 @@ item.
 
 `webprompts` accepts a comma-separated `--slugs` list (and defaults to **every**
 item of the type when you omit `--slugs`), so generate a screenful at once, then
-work them one chat at a time:
+work them one chat at a time.
 
-```bash
-# list the remaining (not-yet-generated) N5 vocab example slugs
-.venv/bin/python - <<'PY'
-import json, os, sys; sys.path.insert(0, '.')
-from generate_content import example_context as ec
-level, kind = 'n5', 'vocab'                 # kind: 'vocab' or 'kanji'
-subdir = 'vocabulary' if kind == 'vocab' else 'kanji'
-sidecar = f'../{subdir}/examples/{level}.json'
-done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
-todo = [s for s in ec.all_slugs(level, kind) if s not in done]
-print(f'{len(todo)} {level} {kind} items left:')
-print(','.join(todo))
-PY
-```
-
-Paste that comma list into `webprompts --type vocab --slugs ...`. Work in
+Run the listing snippet above. Paste that comma list into
+`webprompts --type vocab --slugs ...`. Work in
 curriculum order (the list is already sorted by `sort_order`). **Do vocab and
 kanji as separate runs** — they use different prompts and different allowed-vocab
 derivations, and each run is one type. And do **N5 fully before N4**
@@ -236,6 +254,7 @@ unreviewed prose can't silently ship.
 
 | Step | Command / action |
 |---|---|
+| List remaining slugs | the Python snippet under "List remaining slugs" |
 | Make prompts | `... webprompts --type vocab --level n5 --slugs a,b,c` |
 | Paste | one item per fresh Claude/Gemini chat (skip the header comment) |
 | Save reply | `web/examples/<level>/<type>/<slug>.reply.md` |
