@@ -670,5 +670,330 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "kanzen": {
+    "meaning_mnemonic": "Koichi rings up the <kanji>whole</kanji> onigiri shelf in one beep, sweeping every last rice ball into his basket. He studies the bare metal shelf after: no wrapper, no crumb, nothing left behind. The <kanji>whole</kanji> shelf is gone without a trace — flawless, missing nothing. That is perfect, complete.",
+    "reading_mnemonic": "You already know 完 as かん and 全 as ぜん, so simply chain them together to get <reading>かんぜん</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "anzen": {
+    "meaning_mnemonic": "Rain floods the riverbank, but under her little roof everyone stays <kanji>peaceful</kanji> — the storm can't reach in here. Koichi checks the house room by room until the <kanji>whole</kanji> family is accounted for, every single one tucked inside. Peaceful and entire together: nothing missing, nothing exposed. That's what safe means.",
+    "reading_mnemonic": "You already know 安 as あん and 全 as ぜん, so chain them straight together to get <reading>あんぜん</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "juubun": {
+    "meaning_mnemonic": "At the mountain trail's summit, a hiker holds up all ten fingers — a perfect <kanji>ten</kanji> — and feeds it into the lone vending machine. Out drops a rice cake, and the woodcutter's sword remembers its old trick: one clean strike, and the cake leans into two even <kanji>parts</kanji>. Ten fingers, one log split evenly — plenty for two hikers, with rations left to spare. That's sufficient, enough.",
+    "reading_mnemonic": "You already know 十 as じゅう and 分 as ぶん, so chain them together to get <reading>じゅうぶん</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fuan": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the stiff figure still won't budge off the mossy steps — <kanji>negative</kanji>, flat refusal, blocking the bell from ever ringing. Cats slip past toward where it should be <kanji>peaceful</kanji>, but the calm never arrives; every attempt to relax gets shut down cold. Blocked peace, permanent refusal — that itch of never quite settling is what anxious, uneasy feels like.",
+    "reading_mnemonic": "You already know 不 as ふ and 安 as あん, so chain them together to get <reading>ふあん</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kiken": {
+    "meaning_mnemonic": "The mountain trail's ridge narrows to its usual knife-edge, ground so <kanji>precipitous</kanji> that the vending machine at the top might as well be on the moon. Someone tries the crossing anyway, boots skidding on gravel, arms out over drops on both sides. Ground this <kanji>impregnable</kanji> and exposed, with nothing to catch you, is exactly what dangerous means.",
+    "reading_mnemonic": "「きけん」 is just the kanji you already know stacked together — 危（き）plus 険（けん） — so read <reading>きけん</reading> straight off the page.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tekitou": {
+    "meaning_mnemonic": "At Grandma Kane's shrine festival, a cat streaks across the dart stall and knocks the thrower's arm mid-swing. The dart wobbles off any real aim but still drives dead center into the target, feathers up, point on the mark — <kanji>hit</kanji> and <kanji>appropriate</kanji> whether anyone meant it or not. Skill or luck, it works: appropriate, or just random.",
+    "reading_mnemonic": "「てきとう」 comes straight from the kanji readings you already have — 適（てき）plus 当（とう） — so <reading>てきとう</reading> is just those two sounds glued together.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shoujiki": {
+    "meaning_mnemonic": "Sei finishes sprinting the sports field, toe planted dead <kanji>correct</kanji> on the chalk line, then jogs down to the riverbank to watch the ferryman. Everything there bends — reeds, ripples, the mooring rope — but his eye never wavers, poling <kanji>straightaway</kanji> across without glancing at the crooked water. Two people who refuse to fudge the line is what honest looks like.",
+    "reading_mnemonic": "「しょうじき」 is just 正（しょう）plus 直（じき）, the readings you already learned for Sei's line and the ferryman's straight crossing — say them together and you get <reading>しょうじき</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "wagamama": {
+    "meaning_mnemonic": "A kid parks in front of Koichi's onigiri shelf and refuses to move until the till stops beeping their way — not that salmon one, the other salmon one, no, back to the first. Koichi restocks the shelf three times before the kid looks up. Getting exactly what you want, exactly when you want it, every time: selfish, through and through.",
+    "reading_mnemonic": "This word is written exactly the way it sounds, kana all the way through, so <reading>わがまま</reading> is simply read as spelled — no kanji, no decoding needed.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "rippa": {
+    "meaning_mnemonic": "You groan the whole way up the mountain trail, bracing for the usual dented vending machine at the top. Instead it stands gleaming, fully stocked, not a scratch on it, like it was airlifted in that morning. Nothing about this altitude explains a machine this splendid, this fine — but there it is.",
+    "reading_mnemonic": "The reading is just 立（りっ）＋派（ぱ）read straight through: 「<reading>りっぱ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "muri": {
+    "meaning_mnemonic": "The king rams his spiked crown into the ground for pure <kanji>reason / logic</kanji>, measuring every paddy edge against it — but the village has burned down to the same scorched, empty rectangle that <kanji>nothingness</kanji> always leaves. No paddies, no lines, nothing left to measure. He jams the spike into the ash anyway, still demanding perfectly straight rows out of nothing at all. Unreasonable. Impossible.",
+    "reading_mnemonic": "The reading is 無（む）＋理（り）read straight through: 「<reading>むり</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "muda": {
+    "meaning_mnemonic": "At Koichi's konbini, someone piles the counter with rice balls, then drops the whole armful reaching for their wallet — every one skids under the beverage case, unrecoverable. What's left on the counter is the same scorched, empty rectangle that <kanji>nothingness</kanji> leaves behind after the gym fire: money spent, nothing to show for it. Wasteful. Useless.",
+    "reading_mnemonic": "The reading is 無（む）＋駄（だ）read straight through: 「<reading>むだ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kantan-n4": {
+    "meaning_mnemonic": "Everyone treats Grandma Kane's shrine bell like it needs a whole ritual — bowing twice, clapping, murmuring a wish. But the cats have figured out you can just swat the rope once and the enormous bell rings anyway. One paw, one clang, done. No ceremony required: simple.",
+    "reading_mnemonic": "The reading is 簡（かん）＋単（たん）read straight through: 「<reading>かんたん</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fukuzatsu": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, an old woman ties one wish thread to the bell rope, then another, then a stray cat drags a third one under the mossy steps, and by dusk the whole rope is a knotted mess nobody can trace from start to end — hopelessly, thoroughly complicated.",
+    "reading_mnemonic": "複 keeps its plain reading ふく and 雑 keeps ざつ, stacking together exactly as expected into 「<reading>ふくざつ</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tokui": {
+    "meaning_mnemonic": "In that same hallway at Sei's school, you get so much practice cracking the heart's iron lid that you can do it on command now — a clean little burst of <kanji>idea</kanji> every single time, no fumbling, no missed sparks. You're good at it, and it shows on your face: chin up, proud, ready for the next one.",
+    "reading_mnemonic": "得 keeps its taught とく reading and 意 keeps い, combining plainly into 「<reading>とくい</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nigate": {
+    "meaning_mnemonic": "Back at Koichi's konbini, the same customer who bit into that spoiled onigiri now can't make himself reach for another one — his <kanji>hand</kanji> hovers an inch from the shelf and stalls every time, flinching at the memory of that <kanji>suffering</kanji> under the fluorescent lights. Some things you're just bad at facing twice; this shelf is his weak point now.",
+    "reading_mnemonic": "苦 keeps its taught にが reading and 手 keeps て, joining plainly into 「<reading>にがて</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "jiyuu": {
+    "meaning_mnemonic": "Once the eye in that cracked mirror at Sei's school finally recognizes <kanji>self</kanji>, it stops needing to stare at anything else. It rolls back out of the bathroom, drifts down the empty hallway, out past the sports field and the gate, answering to nobody — total freedom.",
+    "reading_mnemonic": "自 keeps its taught じ reading and 由 gives ゆう, combining directly into 「<reading>じゆう</reading>」.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "heiki": {
+    "meaning_mnemonic": "At the top of the mountain trail, the punishing climb just stops — the ground goes <kanji>flat</kanji> around the vending machine. The steam-spirit <kanji>energy</kanji> that was rising off you in frantic puffs the whole way up stops swirling too; it just hangs there, unbothered. Flat ground, settled spirit — that's calm, unconcerned.",
+    "reading_mnemonic": "平（へい）＋気（き）＝<reading>へいき</reading> — straight from the kanji readings you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "zannen": {
+    "meaning_mnemonic": "Passing the shrine gate the next day, the guard's broken halberd is still lying where it fell, shaft cracked. All that <kanji>remains</kanji> is the wreckage — a little reminder of what got wrecked, sitting there so nobody can forget it. Looking at it stings every time. That sinking feeling is regrettable.",
+    "reading_mnemonic": "残（ざん）＋念（ねん）＝<reading>ざんねん</reading> — straight from the kanji readings you already know.",
+    "description": "残念 is very often used on its own as an exclamation — 残念！ — meaning roughly 'too bad!' or 'what a shame,' not only as a descriptive adjective inside a full sentence.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "todoku-v": {
+    "meaning_mnemonic": "Same room, same sprawled body nobody expects to move for the doorbell. This time nobody's carrying anything — a gust from the open window just nudges the package across the tatami by itself, inch by inch, until it bumps his outstretched leg on its own. Nothing dragged it there. It simply <kanji>reached</kanji> him. That's arriving.",
+    "reading_mnemonic": "The package never gets carried the last stretch — it slides itself across the tatami until it stops dead against his <reading>toe</reading>, docking there on its own. Nothing pushed it home; it just <reading>とどく</reading>, arrives, all by itself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "todokeru": {
+    "meaning_mnemonic": "The courier from that story refuses to let it slide the rest of the way — he shoulders the whole package himself, weaves past the onigiri shelf, and doesn't stop until he's set it down directly in the customer's hands. Nobody let this one arrive on its own; he made sure it <kanji>reached</kanji> them. That's delivering it, personally.",
+    "reading_mnemonic": "Koichi's courier won't let the box dock itself — he carries it the last few steps by hand and sets it down himself, making sure he's the one who gets to <reading>dock it</reading> at the counter. That deliberate, hand-carried finish is <reading>とどける</reading>: to deliver, on purpose.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "naoru": {
+    "meaning_mnemonic": "Your ankle throbs the whole way down the mountain trail, and by the riverbank it's swollen and furious. You lower it into the water behind the stone wall — the wall that <kanji>calms</kanji> the thrashing current into one flat pool. Your ankle obeys the trick: the throbbing settles, goes still — that stillness is what it means to heal, to recover.",
+    "reading_mnemonic": "Nao, the medic who patrols the riverbank, carries a first-aid kit that smells like kitchen roux. She kneels by your ankle, says her own name like a charm, <reading>Nao</reading>, then stirs in a spoonful, <reading>roux</reading>. Say the two fast and you get <reading>なおる</reading>: the ankle stops hurting, healed.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tsutawaru": {
+    "meaning_mnemonic": "The courier's message reaches the enormous bell, and the ring takes over on its own: sound rolls off the bell straight through the shrine, mossy step to mossy step, cat to cat, without anyone touching it again. It just <kanji>transmits</kanji> itself outward until the whole hill has heard it — that is what it means to be conveyed.",
+    "reading_mnemonic": "The courier's daughter, Sue, runs messages down from the shrine too, and her catchphrase when she arrives out of breath is <reading>Sue-tah-wah-roo</reading> — her way of saying the news made it through untouched. Shout it after her and you're saying <reading>つたわる</reading>: it got through.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mukaeru": {
+    "meaning_mnemonic": "You step off the train at Sei's school stop on your first day, dreading the walk alone across the sports field. Instead a whole line of upperclassmen is standing at the gate for you, waving you in before you've taken three steps alone. That's the meaning in one scene: someone comes out to welcome you in.",
+    "reading_mnemonic": "The greeter at Sei's school gate has one running joke: he moos like a cow before calling your name, so it comes out as <reading>moo-kai-eh-rue</reading>. That ridiculous chant is close enough to <reading>むかえる</reading> that you never forget it: someone coming out to welcome you in.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mitsukaru": {
+    "meaning_mnemonic": "The eye that grew legs is still out wandering the world, and one afternoon it rounds a corner and stops dead in front of you. You'd been hiding under Grandma Kane's shrine steps, sure nobody would look there, but the moment those legs plant themselves and the eye finally <kanji>sees</kanji> your face, hiding is over — you have been found.",
+    "reading_mnemonic": "A kid named Mitsu hides behind the onigiri shelf at Koichi's konbini, certain the seeker will never check there. The seeker rounds the shelf and shouts her name like a chant, <reading>Mitsu-kah-rew</reading> — the whole sound of <reading>みつかる</reading>: the moment hiding stops working.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kimaru": {
+    "meaning_mnemonic": "Back on the mountain trail, the signpost stands long after the hiker has gone. Rain keeps falling, and the wrong arrow's paint keeps washing away on its own, drop by drop, until only the left one is legible. Nobody is holding the brush anymore — the fork simply <kanji>decides</kanji> itself. It's decided, and no one chose it.",
+    "reading_mnemonic": "Kiki the tree spirit feels it settle deep in the trunk's <reading>key marrow</reading> — a knot shaped like a key, hidden in the grain. The wind confirms it and she giggles: <reading>きまる</reading>. Nobody chose this; it simply became so, all on its own.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kimeru-v": {
+    "meaning_mnemonic": "On the same trail, the hiker doesn't wait for rain. She grips the brush herself and drags three deliberate strokes across the wrong arrow, blotting it out on purpose. She wanted this settled, so she <kanji>decides</kanji> for the trail — nobody else touches the brush. Her choice, made by her own hand.",
+    "reading_mnemonic": "Kiki holds up a hand mirror shaped like a <reading>key mirror</reading> and stares herself down, choosing on purpose this time. <reading>きめる</reading>, she declares, and taps the glass twice. Her decision, made deliberately, not left to the wind.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tsuzuku": {
+    "meaning_mnemonic": "The stray thread from the shrine cat's blanket keeps unspooling down the mossy steps by itself, past the marching legs, past the saluting duck, with nobody pulling it. It just keeps going under its own momentum — the thread <kanji>continues</kanji>, on and on, because nothing stops it.",
+    "reading_mnemonic": "A keeper named Zuzu chases the runaway thread down the shrine steps, muttering under her breath as she follows: <reading>too-zoo-coo</reading>. The sound lands right on <reading>つづく</reading> — and fittingly, her chase never actually ends, she just keeps going.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "tsuzukeru-v": {
+    "meaning_mnemonic": "This time it's the samurai duck himself, not the thread, taking initiative: he grabs the loose end and marches it forward on purpose, refusing to let the line stop under his own feet. He isn't watching it continue — he's the one who <kanji>continues</kanji> it, step after deliberate step, by choice.",
+    "reading_mnemonic": "Zuzu returns, but this time she isn't chasing — she's hauling the thread forward herself, calling it her <reading>too-zoo-carry</reading> job. She won't put it down, repeating <reading>つづける</reading> under her breath, keeping herself going on purpose, forever.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fueru-v": {
+    "meaning_mnemonic": "The farmer from the <kanji>increase</kanji> story checks his flooded plots at dawn and finds they have already crept past the signpost with no one wading out to widen them — the mud and water simply spread wider in the night, on their own. Nothing pushed the boundary forward; it just grew there by itself. That is what it means to increase, untouched.",
+    "reading_mnemonic": "Koichi checks the onigiri shelf and swears it has a <reading>fever</reading> — turn your back for five minutes and the trays have doubled, then tripled, spreading like a fever nobody ordered or restocked. That unasked-for multiplying is exactly <reading>ふえる</reading>: things quietly increasing on their own.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fuyasu": {
+    "meaning_mnemonic": "The same farmer behind <kanji>increase</kanji> grabs a shovel at dawn and drags the signpost forward himself, hauling extra buckets of river water into the plots until the mud spreads past yesterday's marker — sweat on his back, deliberately claiming more ground with his own two hands. Nothing about this happens on its own; he is the one making it increase.",
+    "reading_mnemonic": "Sei corners the copier at school and mutters '<reading>for us</reading>' every time he hits print, deliberately cranking out more flyers than anyone asked for — twenty becomes forty becomes eighty, stacked on purpose by his own hand. That's <reading>ふやす</reading>: not multiplying by itself, but someone making it increase.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "heru-v": {
+    "meaning_mnemonic": "The guard's cup from the <kanji>decrease</kanji> story sits forgotten on the gatepost after the halberd clatters down, and through the day it just evaporates on its own — no mouth waiting below this time, only sun and wind pulling one drop after another into the air until the cup stands dry by dusk. Nobody touched it; it simply decreased.",
+    "reading_mnemonic": "At Grandma Kane's shrine, the cats shed clumps of <reading>hair</reading> across the mossy steps every single day, and by evening whatever pile you swept that morning has quietly thinned to nothing on its own — nobody brushes them, it just happens. That fading pile is <reading>へる</reading>: things dwindling by themselves.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "herasu": {
+    "meaning_mnemonic": "That same guard from <kanji>decrease</kanji> gets thirsty on watch and starts deliberately tipping his cup toward his own mouth, gulping it down on purpose drop by drop until nothing is left — he chose every swallow, tilting the cup himself rather than waiting for it to spill or dry. He is the one decreasing it.",
+    "reading_mnemonic": "On the mountain trail, a hiker chugs bottle after bottle at the vending machine, calling each empty can '<reading>her loss</reading>' as she deliberately drains the six-pack down to two before the climb — she is choosing to thin the load herself. That's <reading>へらす</reading>: someone forcing the shrinkage, not letting it happen.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kowasu": {
+    "meaning_mnemonic": "Grandma Kane's cat isn't done causing trouble. Now her grandson wants a turn — he grabs a leftover festival mallet and swings at the cracked bell just to see if he can finish the job himself. Every hit is pure, deliberate <kanji>demolition</kanji>: he means to break that bell, on purpose, until it can't ring again.",
+    "reading_mnemonic": "At Grandma Kane's shrine, a delivery koala waves a lawsuit against the bell for scaring off customers. He slaps a notice on the mossy steps and grunts <reading>koala sues</reading> — the same sound as <reading>こわす</reading> — then smashes the noticeboard himself, just to make his point.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kowareru": {
+    "meaning_mnemonic": "Grandma Kane never touches the bell again after the cat incident, yet the cracked steps keep crumbling anyway — a slow, ongoing <kanji>demolition</kanji> nobody is causing. Moss creeps into the cracks, another step gives way each spring on its own, the shrine breaking itself apart with nobody to blame.",
+    "reading_mnemonic": "Up on the mountain trail, the vending machine gives out mid-sale, lights flickering off with nobody around to blame. A hiker mutters <reading>Cora, we're through</reading> — which lands right on <reading>こわれる</reading> — as it keeps dying quietly, no one having touched it.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sodateru": {
+    "meaning_mnemonic": "On Sei's sports field, the groundskeeper isn't satisfied just watering that droopy sunflower — he measures its height every Monday and stakes the stem before storms. He's not letting it fend for itself; he's deliberately <kanji>bring up</kanji>ing it, staking his own reputation on raising one seedling past the goalposts.",
+    "reading_mnemonic": "Every recess, the groundskeeper hands his assistant a can and yells <reading>soda, Teru</reading> — it sounds like <reading>そだてる</reading> — because watering that stubborn sunflower is Teru's whole job now, one fizzy can at a time, until it stands taller than the goalposts.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sodatsu": {
+    "meaning_mnemonic": "Over summer break, the gates to Sei's sports field stay locked and nobody waters the sunflower at all — no groundskeeper, no stake, nothing. Yet it's still there in September, taller than the goalposts, leaves like small hands reaching skyward: it managed to <kanji>grow up</kanji> entirely on its own, no help required.",
+    "reading_mnemonic": "Weeks later, nobody's watering the sunflower on Sei's field, and it doesn't care — it keeps climbing on its own. A kid passing by shrugs, cracks open a can, and mutters <reading>soda, too</reading>, exactly how <reading>そだつ</reading> sounds, as the plant grows two more inches unattended.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
