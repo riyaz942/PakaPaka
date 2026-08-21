@@ -78,6 +78,13 @@ Workflow
 
 Step 1: Select This Run's Radicals and Split Them into Sessions
 
+WARNING (2026-08-21): the selector below is WRONG and must not be copied. A
+level is a band and a band mixes source datasets, so a radical taught at N5 can
+have its art at radicals/n4/<slug>.webp; listing mobile/assets/radicals/<level>/
+reports every such radical as missing art and regenerates work that already
+shipped. Select on the item's own visual_mnemonic_url instead — see Step 0 of
+radical-art-web-chat-workflow.md, which is the live lane.
+
 Do NOT hand-pick radicals. From the repository root, substituting <level>,
 <images-per-session> and <session-count>:
 

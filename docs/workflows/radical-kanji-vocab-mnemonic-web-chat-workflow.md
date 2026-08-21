@@ -99,16 +99,31 @@ the items of this type that have **no** sidecar entry yet:
 .venv/bin/python - <<'PY'
 import json, os, sys; sys.path.insert(0, '.')
 from generate_content import mnemonic_context as mc
-from generate_content.generate_mnemonics import KIND_DIR
+from generate_content.generate_mnemonics import (
+    KIND_DIR, BANDED_KINDS, _source_map, sidecar_path)
 level, kind = 'n5', 'kanji'            # kind: 'radical', 'kanji' or 'vocab'
 subdir = KIND_DIR[kind]
-sidecar = f'../{subdir}/mnemonics/{level}.json'
-done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
-todo = [s for s in mc.all_slugs(level, subdir) if s not in done]
+# Radicals and kanji are banded: an item taught at this level may have been
+# written by another dataset, and its sidecar entry follows the *source*, not
+# the band. Reading only <level>.json reports those as not-yet-generated.
+source = _source_map(kind) if kind in BANDED_KINDS else {}
+done = {}
+for name in sorted({source.get(s, level) for s in mc.all_slugs(level, subdir)}):
+    p = sidecar_path(name, kind)
+    if os.path.exists(p):
+        done[name] = set(json.load(open(p)))
+todo = [s for s in mc.all_slugs(level, subdir)
+        if s not in done.get(source.get(s, level), set())]
 print(f'{len(todo)} {level} {kind} items left:')
 print(','.join(todo))
 PY
 ```
+
+**Do not swap this for `set(json.load(open(f'../{subdir}/mnemonics/{level}.json')))`.**
+A level is a *band* (`curriculum/_build/bands.json`) and a band mixes source datasets, so
+the level file holds only the entries this level's own dataset wrote. Reading it alone
+reports every item sourced elsewhere — including the whole derived `k` corpus — as
+un-generated, and following that regenerates prose that already exists and is reviewed.
 
 Take one slug from that list for the one-item loop below, or keep the whole comma
 list for a batch. Omitting `--slugs` writes a prompt for **every** item of the

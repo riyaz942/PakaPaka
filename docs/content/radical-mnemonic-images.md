@@ -14,7 +14,7 @@ Rationale: the taught radical set is small and finite (~150 for N5+N4; Kangxi ce
 
 - **FR34** — Maintainers manage mnemonic image assets (in-repo files + curriculum refs).
 - **FR4b** — Learners see radical mnemonic images in the app.
-- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** in `items.visual_mnemonic_url`: `radicals/{level}/{slug}.webp`, relative to `mobile/assets/`. The schema rejects `https://` values, so a remote URL cannot be reintroduced by accident.
+- **FR37b (revised)** — Curriculum points each radical at a **bundled asset path** in `items.visual_mnemonic_url`: `radicals/n[1-5]/{slug}.webp`, relative to `mobile/assets/`. The directory is the radical's *source dataset*, which is not always the level it is taught at — see "Curriculum / app wiring" below. The schema rejects `https://` values, so a remote URL cannot be reintroduced by accident.
 - **NFR20** — Missing or unloadable assets fall back to text (`mnemonic_text` / meaning). No broken-image icon.
 
 ## Where files live
@@ -56,11 +56,19 @@ Review checklist before commit:
 
 ## Curriculum / app wiring
 
-Every radical already carries its ref (`radicals/{level}/{slug}.webp`), written by
+Every radical that has `mnemonic_text` already carries its ref, written by
 `curriculum/_build/generate.py`. Adding art is therefore just dropping the file in and
 regenerating the map — no curriculum edit needed unless the slug changes.
 
-1. Save the image as `mobile/assets/radicals/{level}/{slug}.webp` (≤80 KB).
+**The `{level}` in the path is the *source dataset*, not the band the radical is taught
+at.** `generate.py` keys the ref to whoever authored the radical — n5/n4 for the
+hand-authored datasets, and for the derived `k` corpus the band it landed in, since `k`
+has no asset directory of its own. A band mixes sources, so 厶 (`mu`) is taught at N5 and
+its art lives at `radicals/n4/mu.webp`. Always read the destination off the item's own
+`visual_mnemonic_url`; never derive it from the level the radical is taught at.
+
+1. Save the image at the path the item's `visual_mnemonic_url` names, under
+   `mobile/assets/` (≤80 KB).
 2. From `mobile/`, rebuild the bundler's asset map:
 
    ```bash

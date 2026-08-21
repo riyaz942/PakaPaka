@@ -186,11 +186,6 @@ def _build_radical_items(slug_prefix, radical_entries):
         }
         if r.get("mnemonic"):
             item["mnemonic_text"] = r["mnemonic"]
-            # Bundled asset ref, not a URL: art ships inside the app binary under
-            # mobile/assets/radicals/. Missing files fall back to mnemonic text.
-            # Skeleton radicals (no mnemonic, no art) carry neither field rather
-            # than pointing at a file nobody has drawn.
-            item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
         if r["slug"] in _SIMILAR_SLUGS:
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
@@ -205,6 +200,16 @@ def _build_radical_items(slug_prefix, radical_entries):
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta
+        if item.get("mnemonic_text") and slug_prefix in BAND_LEVELS:
+            # Bundled asset ref, not a URL: art ships inside the app binary under
+            # mobile/assets/radicals/. Missing files fall back to mnemonic text.
+            # Radicals with no mnemonic text at all (raw or sidecar) carry
+            # neither field rather than pointing at a file nobody has drawn.
+            # `slug_prefix` is only a valid asset directory for the n5/n4/...
+            # source datasets; the derived `k` corpus has no such directory
+            # (the schema only allows radicals/n[1-5]/...), so its items get
+            # their url filled in by `_write_banded` once the band is known.
+            item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
                 {"answer_type": "meaning", "answer_text": m} if j else
@@ -689,7 +694,14 @@ def _write_banded(kind, items, bands):
         entries.sort(key=lambda pair: pair[0])
         items_out = []
         for i, (_key, item) in enumerate(entries, start=1):
-            items_out.append({**item, "sort_order": i})
+            item = {**item, "sort_order": i}
+            if (kind == "radicals" and item.get("mnemonic_text")
+                    and "visual_mnemonic_url" not in item):
+                # Deferred from _build_radical_items: the derived `k` corpus
+                # has no asset directory of its own, so its art is keyed by
+                # the band it lands in instead.
+                item["visual_mnemonic_url"] = f"radicals/{level}/{item['slug']}.webp"
+            items_out.append(item)
         write_json(
             os.path.join(CURRICULUM_DIR, kind, f"{level}.json"),
             {"jlpt_level": level.upper(), "items": items_out},

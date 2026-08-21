@@ -40,7 +40,7 @@ STYLE block.
 | --- | --- |
 | `<batch-size>` | How many radicals one run covers. Each gets its own chat, so this is purely how much you want to paste in one sitting |
 | Sessions | **One fresh Gemini chat per radical**, single message. No chat is reused, and chat history carries nothing |
-| Levels | N5 (76 radicals, all mnemonics reviewed — ready) · N4 (33 radicals, **0 reviewed — not ready**) |
+| Levels | Counted by *band*, not by source dataset — run Step 0 for the live number. As of 2026-08-21: N5 122 radicals, 122 reviewed, 25 still need art · N4 40 radicals, 18 reviewed, 0 need art · N3 44/8/0 · N2 17/1/0 · N1 15/0/0 |
 | Model | Gemini web, Pro with extended thinking. AI Studio was tried and rejected |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
@@ -69,15 +69,25 @@ python3 - <<'PY'
 import json, os
 LEVEL, BATCH_SIZE = 'n5', 5
 items = json.load(open(f'curriculum/radicals/{LEVEL}.json'))['items']
-have = {f[:-5] for f in os.listdir(f'mobile/assets/radicals/{LEVEL}') if f.endswith('.webp')}
-todo = [i for i in items if i['slug'] not in have
-        and i.get('_meta', {}).get('review_status') == 'reviewed']
+todo = [i for i in items
+        if i.get('_meta', {}).get('review_status') == 'reviewed'
+        and i.get('visual_mnemonic_url')
+        and not os.path.exists(os.path.join('mobile/assets', i['visual_mnemonic_url']))]
 print(f'{len(todo)} {LEVEL} radicals still need art\n')
 for i in todo[:BATCH_SIZE]:
     print(f"--- {i['slug']}  {i['primary_form']}  ({i['meaning']})")
+    print(f"    install to: mobile/assets/{i['visual_mnemonic_url']}")
     print(i['mnemonic_text'], '\n')
 PY
 ```
+
+**A radical's art does not necessarily live under the level it is taught at.** A level is a
+*band* (`curriculum/_build/bands.json`) and a band mixes source datasets, so an N4-authored
+radical can be taught at N5 while its art stays at `radicals/n4/{slug}.webp` — the path the
+item's own `visual_mnemonic_url` names. Select on that field and on whether the file it
+names exists, never on `ls mobile/assets/radicals/{level}/`: listing the level directory
+reports every banded-elsewhere radical as missing art, and following it regenerates and
+overwrites art that already shipped.
 
 If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
 selects fewer than `<batch-size>`, the level is running out; use what it found.
@@ -238,13 +248,33 @@ visible to a human before it becomes a commit.
 
 Once the whole batch is staged. From the repo root:
 
+Each image goes where **its own `visual_mnemonic_url` says**, which for a banded-elsewhere
+radical is not the level directory you selected from. Step 0 printed the destination per
+slug; this derives it again rather than trusting a single `DEST`:
+
 ```bash
 STAGE=curriculum/_build/generate_content/web/radical-art
-DEST=mobile/assets/radicals/n5
-for f in "$STAGE"/*.png; do
-  cwebp -quiet -resize 640 0 -q 80 "$f" -o "$DEST/$(basename "$f" .png).webp"
-done
-stat -f "%z bytes  %N" "$DEST"/*.webp
+python3 - <<'PY'
+import json, os, subprocess
+STAGE = 'curriculum/_build/generate_content/web/radical-art'
+urls = {}
+for lvl in ('n5', 'n4', 'n3', 'n2', 'n1'):
+    p = f'curriculum/radicals/{lvl}.json'
+    if os.path.exists(p):
+        for i in json.load(open(p))['items']:
+            if i.get('visual_mnemonic_url'):
+                urls[i['slug']] = i['visual_mnemonic_url']
+for f in sorted(os.listdir(STAGE)):
+    if not f.endswith('.png'):
+        continue
+    slug = f[:-4]
+    if slug not in urls:
+        raise SystemExit(f'{slug}: no radical carries a visual_mnemonic_url for this slug')
+    dest = os.path.join('mobile/assets', urls[slug])
+    subprocess.run(['cwebp', '-quiet', '-resize', '640', '0', '-q', '80',
+                    os.path.join(STAGE, f), '-o', dest], check=True)
+    print(f'{os.path.getsize(dest):>7} bytes  {dest}')
+PY
 cd mobile && npm run generate-radical-assets && npm run typecheck && cd -
 ```
 
@@ -323,9 +353,11 @@ Confirm every `.webp` shows under **LFS** in `git lfs status`, not as a plain Gi
 `.gitattributes` tracks `mobile/assets/radicals/**/*.webp`; if a file slipped through as
 a Git blob it means the pattern didn't match — fix the path rather than committing it.
 
-No curriculum JSON changes are needed. `generate.py` already writes
-`visual_mnemonic_url: radicals/{level}/{slug}.webp` for every radical, so the ref exists
-before the art does and simply resolves to text until the file lands.
+No curriculum JSON changes are needed. `generate.py` already writes a
+`visual_mnemonic_url` for every radical that has `mnemonic_text`, so the ref exists before
+the art does and simply resolves to text until the file lands. A radical with no mnemonic
+text carries no ref at all — that is why Step 0 filters on the field being present rather
+than assuming it.
 
 ---
 
