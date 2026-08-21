@@ -326,5 +326,349 @@
       "prompt_version": "4",
       "review_status": "draft"
     }
+  },
+  "shoujo": {
+    "meaning_mnemonic": "The kneeling figure — one arm sweeping, one resting low — is how you spot a <kanji>woman</kanji>. Slice a dot from her, the way <kanji>little</kanji> pared itself down to barely anything, and shrink that same graceful kneel down small: little years on her now. What's left kneeling there, barely more than a sliver of woman, is a girl.",
+    "reading_mnemonic": "少 keeps its しょう reading — the same しょう as tiny showy Sho — and 女 keeps its じょ, so together they give you <reading>しょうじょ</reading> exactly as taught.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "koibito": {
+    "meaning_mnemonic": "Two legs mid-stride, carrying nothing else — that's all it takes to be a <kanji>person</kanji>. Put two of them on the same street, circling back to the same doorway again and again until the gap between their reaching hands stops meaning anything. The person who keeps walking that loop back to you, on purpose, is your lover.",
+    "reading_mnemonic": "You already have 恋 as こい and 人 softening to びと here, so stacked together they spell out <reading>こいびと</reading> straight from parts you know.",
+    "description": "恋人 means a romantic partner you are dating, not a general term for someone you love — don't reach for it with family or close friends, and it carries a much milder, more ordinary tone than the English word 'lover' often implies.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yuujin": {
+    "meaning_mnemonic": "Two hands reach in from opposite directions and close on each other — no pay, nobody's in charge, just a <kanji>friend</kanji>. Give that handshake two legs and send it into a room where everyone stands straighter and full names get read off cards. A <kanji>friend</kanji> greeted like a <kanji>person</kanji> at a podium, not grabbed by the sleeve at recess, is the formal kind.",
+    "reading_mnemonic": "友 keeps its ゆう reading, and 人 shows up as Jin's familiar じん, so stacked together they give you <reading>ゆうじん</reading> right from the parts you already know.",
+    "description": "友人 is the formal, written-register word for friend — the kind used in a news report or a wedding speech — not the word you'd reach for casually with a close buddy in spoken conversation.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nakama": {
+    "meaning_mnemonic": "That sliver of sun trapped in the open gate — the <kanji>interval</kanji> between the swinging doors — never sits there alone for long. Someone else keeps stepping into the same shaft of light, closing the gap just by standing there instead of walking through. The one who keeps showing up to stand in your <kanji>interval</kanji> is your companion.",
+    "reading_mnemonic": "仲 keeps its なか reading and 間 shortens down to a bare ま, so together they give you <reading>なかま</reading> straight from the parts you already know.",
+    "description": "仲間 covers anyone who shares your group or team — teammates, coworkers, even members of a gang — not just people you're personally close to the way 'friend' implies in English; the emphasis is on belonging to the same side, not on affection.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kojin": {
+    "meaning_mnemonic": "Picture the crowd moving as one shuffling mass, every stride in lockstep. Then a single <kanji>person</kanji> peels off — two legs striding their own rhythm, carrying nothing else along with them, matching nobody's pace. Cut loose from the mass like that: one set of legs walking its own line is what individual means.",
+    "reading_mnemonic": "個 keeps its own こ, and 人 supplies the じん you already know, together spelling <reading>こじん</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "aite": {
+    "meaning_mnemonic": "At the riverbank your reflection keeps up its <kanji>mutual</kanji> mirroring, matching every twitch back at you. This time it lifts a dripping <kanji>hand</kanji>, fingers spread from a wrist, out of the water to shake. Whoever's hand meets yours on the far side of that mirror is exactly what the word names — the other party.",
+    "reading_mnemonic": "相's あい reading and 手's て reading sit side by side unchanged, giving you <reading>あいて</reading>.",
+    "description": "This word rarely maps to one fixed English word — depending on context it can mean an opponent in a competition, a partner in a conversation or relationship, or simply the other side of a deal. Let the situation, not a single gloss, tell you which one fits.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kyaku": {
+    "meaning_mnemonic": "The hiker is still camped at the vending machine, boots off, waiting for tea nobody's bringing. A second hiker trudges up, sees the pack and boots claiming the landing, and steps around rather than start a fight. Unbothered, he's still the <kanji>guest</kanji>, still the <kanji>customer</kanji>, whether the mountain agrees or not.",
+    "reading_mnemonic": "客 only ever says きゃく, exactly as taught, giving you <reading>きゃく</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "okyakusan": {
+    "meaning_mnemonic": "The self-appointed guest from the mountain trail wanders into Koichi's konbini trailing dust, boots over one shoulder, and Koichi doesn't blink — he bows, pulls the good stool from behind the onigiri shelf, and treats him like royalty. Wrap that same <kanji>guest</kanji> in that much ceremony and you've got a customer addressed with real respect.",
+    "reading_mnemonic": "The polite お prefix and the familiar さん suffix wrap around 客's own きゃく, spelling out <reading>おきゃくさん</reading>.",
+    "description": "This is the polite, everyday way to refer to or address a customer or guest — the word shop and restaurant staff use for their patrons, equally natural for a guest visiting someone's home. You would never use it to refer to yourself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "ten-in": {
+    "meaning_mnemonic": "The <kanji>shop</kanji>'s mouth-doorway swallows another customer, and behind the counter the same shell-reading tortoise clips on a laminated badge-purse lanyard — no free fortunes until it's stamped. Ledger updated, badge visible: the shop's own fortune-teller is now on the clock as its <kanji>employee</kanji>, ringing up onigiri and fortunes alike as the shop clerk.",
+    "reading_mnemonic": "<reading>てんいん</reading> is just 店's てん plus 員's いん stacked together, exactly as taught.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "koumuin": {
+    "meaning_mnemonic": "Koichi treats the konbini as <kanji>public</kanji> property, doors open to anyone — so when the town needs its <kanji>tasks</kanji> hauled up the mountain trail, spear on one shoulder, stick raised, arm flexed under the load, he's first in line. At the summit the badge-purse gatekeeper stamps his lanyard: Koichi is now an <kanji>employee</kanji> of everyone's business — a civil servant.",
+    "reading_mnemonic": "<reading>こうむいん</reading> stacks 公's こう, 務's む, and 員's いん in order, exactly as Koichi the konbini king already taught you.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "shufu": {
+    "meaning_mnemonic": "Fumi doesn't just sweep Grandma Kane's shrine steps — by dawn she's decided which cats get fed first, when the big bell rings, and who's allowed near the incense, running the whole mossy compound like her own home, corner by corner. Nobody assigned her the shrine; she simply is the <kanji>lady</kanji> of the house — exactly what a housewife is.",
+    "reading_mnemonic": "<reading>しゅふ</reading> is simply 主's しゅ plus 婦's ふ, the readings you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "gakusha": {
+    "meaning_mnemonic": "That swaddled child parked under the roof of scribbled lessons never leaves the <kanji>study</kanji> habit — decades later it's the same stooped shuffle crossing at dawn, toward the library instead of the crosswalk. The neighborhood still can't name that <kanji>person</kanji>, only recognizes the routine: someone who shows up daily for nothing but study. That routine has a name — scholar.",
+    "reading_mnemonic": "<reading>がくしゃ</reading> is 学's がく plus 者's しゃ, back to back, just as you already learned them.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "senmonka": {
+    "meaning_mnemonic": "Grandma Kane's shrine keeper turned his own <kanji>house</kanji> into a shrine to one gate, sketching the twin panels for hours, timing the clap that traps the darting cat. Ask him anything else and he blinks; ask about the <kanji>gate</kanji> and he won't stop talking. That single-minded devotion is a specialist.",
+    "reading_mnemonic": "専門家 is just each kanji's known reading stacked in order — 専 as せん, 門 as もん, 家 as か — giving you <reading>せんもんか</reading> straight down the line.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "seinenki": {
+    "meaning_mnemonic": "That same vending machine at the mountain trail summit works on the <kanji>person</kanji> feeding it, not just drinks: put in a coin on your twentieth birthday, and you <kanji>turn into</kanji> someone else, the way the machine folded into a bench. One climb up you're a hiker; by the walk down, the paperwork calls you an adult.",
+    "reading_mnemonic": "成人 is simply 成 read せい plus 人 read じん side by side, spelling out <reading>せいじん</reading>.",
+    "description": "This names the legal, official threshold of adulthood — the age at which the law starts treating you as a full adult — rather than the everyday sense of simply being grown up. You'll meet it mostly in legal, civic, or ceremonial contexts, not casual talk about someone's age or maturity.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "guuzen": {
+    "meaning_mnemonic": "Two customers at Koichi's konbini reach for the same torn-label onigiri at once, both getting the clerk's usual shrug — <kanji>sort of thing</kanji>, probably that kind. Neither planned it, neither knew the other was there; they just wanted the same item off the same shelf, together. That collision, from nowhere, is a coincidence.",
+    "reading_mnemonic": "偶然 stacks 偶 read ぐう and 然 read ぜん back to back, spelling out <reading>ぐうぜん</reading> exactly as you'd expect.",
+    "description": "偶然 usually functions as its own adverb, 'by coincidence,' sitting directly in front of a verb with no particle attached, rather than needing a grammatical marker the way many nouns do.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sabishii": {
+    "meaning_mnemonic": "Picture Sei's school five minutes after the final bell — lockers slam shut, footsteps fade down the hallway, and the sports field empties out until it's just you and the last echo bouncing off the walls. Nobody waits around for the sound to answer back. That empty hallway, echoing at nobody, is what lonely feels like.",
+    "reading_mnemonic": "At the riverbank, a heron named Sabi stands alone in the current each evening as the boats head home without her. Passersby murmur 'sob, she—' watching her — the sound of <reading>さびしい</reading>, <reading>sob, she</reading> stares at the water instead. One bird, alone at dusk: lonely.",
+    "description": "寂しい describes the feeling of loneliness itself, not simply the physical state of being alone — you can feel this in a crowd, and you can be by yourself without feeling it at all.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hazukashii": {
+    "meaning_mnemonic": "At Sei's school, the whole gym class watches Sei's shorts split clean down the seam mid-cartwheel. Sei freezes with both arms still overhead, sweatband slipping over one eye, as the room goes dead silent — then the sports field erupts in laughter. That specific horror, every eye in the building aimed straight at you, is embarrassing.",
+    "reading_mnemonic": "At Sei's school festival, a boy named Zooka runs the petting-zoo till. When Sei fumbles for coins, Zooka calls out, 'Has our <reading>zoo cashier</reading> caught you short again?' The crowd giggles, Sei's ears burn — that sting is <reading>はずかしい</reading>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "urayamashii": {
+    "meaning_mnemonic": "At Koichi's konbini, the till beeps and the very last cream bun — the only one left on the whole shelf — slides into somebody else's bag two customers ahead of you in line. You watch it vanish out the door, coins still in your open palm, staring at the empty hook where it used to hang. That specific hollow ache is envious.",
+    "reading_mnemonic": "At Koichi's konbini, another customer waves the last cream bun overhead and croons, '<reading>Oo-rah, ya mushy!</reading>' — teasing you with how soft and fresh it is. That taunting little chant is <reading>うらやましい</reading>, muttered every time someone else gets the good stuff.",
+    "description": "This is envy without malice — wanting what someone else has, not begrudging them for having it. English envious can carry a bitter edge; this word usually stays wistful instead.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "mendokusai": {
+    "meaning_mnemonic": "Back at the riverbank, that same <kanji>mask</kanji> won't stay caught. Every time you wade in and grab it, the current tugs it loose again, snagging on reeds, drifting off, needing you to slog back in all over. Chasing one soggy mask for the fifth time, boots soaked through, is exactly the grinding annoyance of troublesome.",
+    "reading_mnemonic": "Every week that riverbank mask washes up snagged in the reeds again, and old Ken must wade in to fetch it. '<reading>Mend the dock, I sigh</reading>,' he mutters, hauling his tackle box out again. That worn-out groan is exactly <reading>めんどくさい</reading> — a chore that never stays fixed.",
+    "description": "Very casual and blunt — something you'd grumble to a friend or mutter to yourself about a chore, not language you'd use with a boss or in polite conversation.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kibishii": {
+    "meaning_mnemonic": "Near the top of the mountain trail, the vending machine takes exact change only — no bills, no rounding up, no exceptions — and a hiker who's climbed for an hour gets turned away for being three yen short. No amount of pleading moves it. That is strict — a rule that will not bend for anybody, ever.",
+    "reading_mnemonic": "At the top of the mountain trail, the vending machine's owner is a stone-faced woman hikers nickname '<reading>Kibi, she...</reading>' for never bending the exact-change rule. Say it three times fast and you land on <reading>きびしい</reading> — the sound hikers hiss when she turns them away.",
+    "description": "Describes more than strict people — it also covers harsh weather, tough conditions, and demanding standards, wherever something allows no slack.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yasashii-n4": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, a stray cat limps up the mossy steps, hissing, ready to bolt. Grandma Kane doesn't grab for it. She kneels, sets down a sliver of dried fish, and waits, hands open, saying nothing. Minutes later the cat eats straight from her palm. That unhurried patience is the whole word: kind, gentle.",
+    "reading_mnemonic": "Grandma Kane keeps her voice to a near-whisper as she offers the fish, the sound landing like <reading>yah, sashi</reading> — almost sashimi without its last beat: <reading>やさしい</reading>. The cat's ears drop, and it eats calmly from her open hand.",
+    "description": "やさしい shares its exact sound with a completely unrelated adjective meaning easy or simple (different kanji, different word). Context — a person's disposition versus how hard a task is — is what separates them, not the sound itself.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kowai": {
+    "meaning_mnemonic": "Sei stays late to finish laps alone in the empty gym. One by one, the hallway lights click off on their own, and past the vending machine something drags its feet, slow and deliberate. Sei stops breathing. Every echo in that empty school suddenly sounds aimed straight at her. That cold-sweat freeze is the whole word: scary.",
+    "reading_mnemonic": "The footsteps stop right behind Sei, and all she can do is <reading>cower</reading> against the lockers, too frightened to turn around. That instinct to shrink back and hide is exactly the sound of <reading>こわい</reading>: scary.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "fukai": {
+    "meaning_mnemonic": "At the riverbank, Ren cannonballs off the rope swing expecting his feet to hit sand in two seconds flat. Four seconds pass. Then six. He's still sinking, arms flailing, sunlight shrinking to a coin far above him, before his toes finally brush the bottom. That long drop with no floor in sight is the whole word: deep.",
+    "reading_mnemonic": "Ren's friend Kai jumps in and doesn't surface. Ren cups his hands and yells <reading>Fu... Kai?!</reading> — who, Kai?! — into water that swallows the shout whole: <reading>ふかい</reading>. Kai is fine; the river is just that deep.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "asai": {
+    "meaning_mnemonic": "Near the vending machine at the top of the mountain trail, a hiker spots a wide pool and cannonballs in, arms crossed, bracing for a plunge. His palms slap the bottom half a second later, mud smearing up both elbows while his knees are still bent for a dive that never comes. The pool barely reaches his shins: shallow.",
+    "reading_mnemonic": "Mud-streaked, sitting in ankle-deep water, the hiker lets out a flat <reading>ah, sigh</reading> — exactly the sound of <reading>あさい</reading> — and just pours the puddle out of his boots instead of swimming anywhere.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "hosoi-adj": {
+    "meaning_mnemonic": "At Koichi's konbini the last straw left in the box is impossibly narrow, thinner than the beeping wire rack it hangs from. You loop it twice around your finger before the tip even reaches your drink, and it still doesn't touch the ice. That barely-there strand is what thin, slender feels like.",
+    "reading_mnemonic": "At the riverbank, fisherman Hoshi drags out his rubber <reading>hose</reading> to rinse the day's catch, but years in the sun have worn it paper-thin — one squeeze and it goes flat as a ribbon. He groans, \"<reading>ほそい</reading>,\" mourning how skinny it's become.",
+    "description": "This word covers more than physical width. Japanese also uses it for a thin, faint voice, or slim odds, the way English says a \"slender chance\" — keep that broader thin/weak sense in mind, not just narrow objects.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "futoi-adj": {
+    "meaning_mnemonic": "The ladle-fed X-shaped man from that stew story doesn't stop at one drop tonight. Bowl after bowl gets poured onto his belly until his arms shove out even further and his stomach strains his shirt at the seams. There is no other word for a body gone that <kanji>thick</kanji>, that <kanji>fat</kanji>.",
+    "reading_mnemonic": "On the mountain trail, hiker Futoshi stubs his toe on a root and it swells thick as that stew-fed belly from the X-shaped man. He hops toward the summit's vending machine yelling \"<reading>foot, oy!</reading>\" — that yelp is <reading>ふとい</reading>: thick, fat, swollen.",
+    "description": "太い also describes a deep, booming voice or a bold, nervy personality — someone called 太い isn't always overweight, they might just sound big or act shamelessly confident.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nurui": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the tea you left as an offering sits forgotten past the enormous bell's evening ring. It's neither steaming nor cold, just a flat, tepid puddle the shrine cats sniff once and abandon, unimpressed. That disappointing in-between is lukewarm.",
+    "reading_mnemonic": "ぬるい is written entirely in kana, exactly as it's read — there's no reading to derive, just <reading>ぬるい</reading>.",
+    "description": "Beyond temperature, ぬるい is common slang for something too soft or lenient — a lax rule, a halfhearted apology, or an opponent who isn't trying hard enough.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kitsui": {
+    "meaning_mnemonic": "At Sei's school, your gym shirt comes back from the wash shrunk two sizes, seams biting into your shoulders on the sports field. The coach notices you wincing and barks at you to keep running anyway, his voice as unforgiving as the collar choking your neck. Between the shirt and the shouting, everything today is tight, harsh.",
+    "reading_mnemonic": "きつい is written entirely in kana, exactly as it's read — there's no reading to derive, just <reading>きつい</reading>.",
+    "description": "きつい also describes anything physically or mentally grueling, like a packed schedule or a brutal workout, not just tight clothing or a harsh tone.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "yurui": {
+    "meaning_mnemonic": "At Grandma Kane's shrine, the caretaker gave up retying the huge bell's rope years ago. It sags across the mossy steps, a cat dozing in the slack loop like another coil. Tourists yank it hard for luck and get one soft, wobbling clonk — the rope, the latch, the whole afternoon: loose.",
+    "reading_mnemonic": "Picture Koichi's new hire at the konbini: a guard named <reading>Yuri</reading>, belt notched three holes too big, trousers sliding every time he bows. Koichi keeps yelling to fix it, but <reading>ゆるい</reading> is simply how Yuri operates — sagging, slack, in no hurry to change.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "subarashii": {
+    "meaning_mnemonic": "The last runner crosses the line the instant that shaft of sun lands, steam still curling off the soaked track. The drenched crowd forgets their dripping umbrellas and roars anyway — after all that mud, this sudden <kanji>clear up</kanji> isn't just nice weather, it's wonderful.",
+    "reading_mnemonic": "Sound out each piece and you already have it — 素（す）＋晴（ば）＋ら＋し＋い spells exactly <reading>すばらしい</reading>, nothing hidden.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "sugoi": {
+    "meaning_mnemonic": "Overnight the riverbank swells into a churning brown flood, flinging fish onto the road and swallowing someone's bicycle whole. Villagers can't decide whether to grab a camera or grab their neighbors and run — it's the kind of amazing that's also terrible, water too enormous to look away from.",
+    "reading_mnemonic": "No kanji hides underneath this one — <reading>すごい</reading> is written exactly the way it sounds, kana straight through.",
+    "description": "すごい covers more ground than English amazing: the same word fits a breathtaking view and a disaster, so whether it lands as delighted or alarmed depends entirely on what's happening around it.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "erai": {
+    "meaning_mnemonic": "At the top of the mountain trail, a kid arrives dead last, dragging their pack past the vending machine everyone else already raided. Nobody laughs — the group claps instead, because finishing at all after that climb makes the kid great, an admirable kind of great that has nothing to do with coming first.",
+    "reading_mnemonic": "At the riverbank, an old delivery man named <reading>Ray</reading> wades across every dawn with a crate balanced on his head. Grandma Kane watches from the shrine steps and murmurs <reading>えらい</reading> — not to a genius, only to someone who quietly does the hard thing every day.",
+    "description": "えらい praises effort or character more than raw achievement, and it's usually said downward — a boss to a junior, an adult to a child — so aiming it at someone above you can land as presumptuous rather than respectful.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "zurui": {
+    "meaning_mnemonic": "Partway up the mountain trail, a line of hikers waits at the one vending machine, patience gone in the heat. A kid slips to the front, feeds it a washer instead of a coin, and walks off with the last cold drink before anyone can stop him. Every hiker behind him mutters the same complaint: sly, and completely unfair.",
+    "reading_mnemonic": "ずるい is pure kana front to back — read exactly as written, 「<reading>ずるい</reading>」, with no kanji hiding behind it to decode.",
+    "description": "In casual speech ずるい often works as its own exclamation — kids and friends shout it the way English speakers shout \"no fair!\", not just describe someone as sly.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "kayui": {
+    "meaning_mnemonic": "During warm-ups on Sei's school field, a kid drops into push-up position onto an anthill nobody flagged. Within seconds he's rolling sideways, one arm twisted behind his back scratching a spot he can't reach, refusing to stop the exercise. The coach just blows the whistle again. Itchy doesn't begin to cover it.",
+    "reading_mnemonic": "At the riverbank, Kay wades in barefoot and steps straight into a patch of stinging weed. She scrambles out clawing at one shin, yelping “<reading>kah-you-ee</reading>!” loud enough to send the herons flying. That yelp is the reading itself — <reading>かゆい</reading> — scratched right into the sound of the word.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "majime": {
+    "meaning_mnemonic": "The kid who fished the <kanji>mask</kanji> out of the river straps it on for the shrine play, but he won't clown around like the others. He plays it <kanji>true</kanji> — nothing held back, nothing faked. Through the mask's two carved holes, his <kanji>eye</kanji>s never once break their stare. That unfaked, unblinking focus is serious, diligent.",
+    "reading_mnemonic": "At the school gate, Jimmy's mother catches him skipping homework again and barks the same two words every time: “<reading>Ma, Jimmy</reading>!” Said fast, that scold collapses into the reading itself, <reading>まじめ</reading> — exactly what she wants him to become: serious, diligent.",
+    "description": "真面目 is usually praise for hard work, but Japanese speakers also use it teasingly, to call someone a stickler or no fun — closer to English \"goody two-shoes\" than a plain compliment, depending on tone.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
+  },
+  "nesshin": {
+    "meaning_mnemonic": "Ever since that wall of <kanji>heat</kanji> rolled out of Koichi's microwave, one regular is back every morning for it, first in line before the shutters even lift, practically vibrating while she waits. She doesn't want the onigiri cold — she wants that exact blast, every day, without fail. That relentless craving is enthusiastic.",
+    "reading_mnemonic": "熱's ねつ contracts to ねっ before 心's しん, giving 「<reading>ねっしん</reading>」 straight from kanji you already know.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "4",
+      "review_status": "draft"
+    }
   }
 }
