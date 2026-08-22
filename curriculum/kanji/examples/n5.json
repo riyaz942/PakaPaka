@@ -5433,5 +5433,748 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "k-section": {
+    "example_sentences": [
+      {
+        "japanese": "私の部屋は狭いです。",
+        "english": "My room is small.",
+        "vocabulary_slugs": [
+          "watashi",
+          "heya",
+          "semai"
+        ]
+      },
+      {
+        "japanese": "部屋番号を忘れました。",
+        "english": "I forgot the room number.",
+        "vocabulary_slugs": [
+          "heya-bangou",
+          "wasureru"
+        ]
+      },
+      {
+        "japanese": "この店の魚は全部おいしいです。",
+        "english": "All the fish at this shop are delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "sakana",
+          "zenbu",
+          "oishii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-arau": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝手を洗う。",
+        "english": "I wash my hands every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "te-v",
+          "arau"
+        ]
+      },
+      {
+        "japanese": "母は今日洗濯する。",
+        "english": "Mother is doing the laundry today.",
+        "vocabulary_slugs": [
+          "haha",
+          "kyou",
+          "sentaku-suru"
+        ]
+      },
+      {
+        "japanese": "お手洗いはどこですか。",
+        "english": "Where is the restroom?",
+        "vocabulary_slugs": [
+          "otearai",
+          "doko"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-pedestal": {
+    "example_sentences": [
+      {
+        "japanese": "母は台所で料理しています。",
+        "english": "My mother is cooking in the kitchen.",
+        "vocabulary_slugs": [
+          "haha",
+          "daidokoro",
+          "ryouri-suru"
+        ]
+      },
+      {
+        "japanese": "台所に猫がいます。",
+        "english": "There is a cat in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "neko",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "私はテレビを二台持っています。",
+        "english": "I have two televisions.",
+        "vocabulary_slugs": [
+          "watashi",
+          "terebi",
+          "ni-v",
+          "dai-counter",
+          "motsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-tokoro": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎朝、台所で朝ご飯を作ります。",
+        "english": "My mother makes breakfast in the kitchen every morning.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiasa",
+          "daidokoro",
+          "asagohan",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "そこはいい場所ですね。",
+        "english": "That's a nice place, isn't it.",
+        "vocabulary_slugs": [
+          "soko",
+          "ii",
+          "basho"
+        ]
+      },
+      {
+        "japanese": "この紙に住所を書いてください。",
+        "english": "Please write your address on this paper.",
+        "vocabulary_slugs": [
+          "kono",
+          "kami-paper",
+          "juusho",
+          "kaku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-courtyard": {
+    "example_sentences": [
+      {
+        "japanese": "犬が庭で走っています。",
+        "english": "The dog is running in the yard.",
+        "vocabulary_slugs": [
+          "inu",
+          "niwa",
+          "hashiru"
+        ]
+      },
+      {
+        "japanese": "庭に大きい木があります。",
+        "english": "There is a big tree in the garden.",
+        "vocabulary_slugs": [
+          "niwa",
+          "ookii",
+          "ki-tree-v",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "子供たちは校庭で遊んでいます。",
+        "english": "The children are playing in the schoolyard.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "koutei",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-turn": {
+    "example_sentences": [
+      {
+        "japanese": "交番はどこですか。",
+        "english": "Where is the police box?",
+        "vocabulary_slugs": [
+          "kouban",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "電話番号を教えてください。",
+        "english": "Please tell me your phone number.",
+        "vocabulary_slugs": [
+          "denwabangou",
+          "oshieru"
+        ]
+      },
+      {
+        "japanese": "彼は一番忙しいです。",
+        "english": "He is the busiest.",
+        "vocabulary_slugs": [
+          "kare",
+          "ichiban",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-paper": {
+    "example_sentences": [
+      {
+        "japanese": "この紙に名前を書いてください。",
+        "english": "Please write your name on this paper.",
+        "vocabulary_slugs": [
+          "kono",
+          "kami-paper",
+          "namae",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "彼は毎日彼女に手紙を書きます。",
+        "english": "He writes her a letter every day.",
+        "vocabulary_slugs": [
+          "kare",
+          "mainichi",
+          "kanojo",
+          "tegami",
+          "kaku"
+        ]
+      },
+      {
+        "japanese": "紙とペンを見つけました。",
+        "english": "I found some paper and a pen.",
+        "vocabulary_slugs": [
+          "kami-paper",
+          "pen",
+          "mitsukeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-window": {
+    "example_sentences": [
+      {
+        "japanese": "彼は窓を開けました。",
+        "english": "He opened the window.",
+        "vocabulary_slugs": [
+          "kare",
+          "mado",
+          "akeru"
+        ]
+      },
+      {
+        "japanese": "窓口はあそこです。",
+        "english": "The service window is over there.",
+        "vocabulary_slugs": [
+          "madoguchi",
+          "asoko"
+        ]
+      },
+      {
+        "japanese": "私は窓から山を見ます。",
+        "english": "I look at the mountain from the window.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mado",
+          "yama-v",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-true": {
+    "example_sentences": [
+      {
+        "japanese": "彼は公園で写真を撮った。",
+        "english": "He took a photo in the park.",
+        "vocabulary_slugs": [
+          "kare",
+          "kouen",
+          "shashin",
+          "toru"
+        ]
+      },
+      {
+        "japanese": "私の写真はかばんにある。",
+        "english": "My photo is in my bag.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shashin",
+          "kaban",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "猫は部屋の真ん中で寝ている。",
+        "english": "The cat is sleeping in the middle of the room.",
+        "vocabulary_slugs": [
+          "neko",
+          "heya",
+          "mannaka",
+          "neru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-cut": {
+    "example_sentences": [
+      {
+        "japanese": "私は駅で切符を買いました。",
+        "english": "I bought a ticket at the station.",
+        "vocabulary_slugs": [
+          "watashi",
+          "eki",
+          "kippu",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女は親切です。",
+        "english": "She is kind.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "shinsetsu"
+        ]
+      },
+      {
+        "japanese": "母は野菜を切ります。",
+        "english": "My mother cuts the vegetables.",
+        "vocabulary_slugs": [
+          "haha",
+          "yasai",
+          "kiru-cut"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-wind": {
+    "example_sentences": [
+      {
+        "japanese": "今日は風が強いです。",
+        "english": "The wind is strong today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaze-wind",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "弟は風邪です。",
+        "english": "My younger brother has a cold.",
+        "vocabulary_slugs": [
+          "otouto",
+          "kaze-cold"
+        ]
+      },
+      {
+        "japanese": "冷たい風の日に風邪になりました。",
+        "english": "I got a cold on a day with a cold wind.",
+        "vocabulary_slugs": [
+          "tsumetai",
+          "kaze-wind",
+          "hi-sun-v",
+          "kaze-cold",
+          "naru-become"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-move": {
+    "example_sentences": [
+      {
+        "japanese": "動物園に猫がたくさんいます。",
+        "english": "There are a lot of cats at the zoo.",
+        "vocabulary_slugs": [
+          "doubutsu",
+          "neko",
+          "takusan",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "この椅子は重くて動きません。",
+        "english": "This chair is heavy and won't move.",
+        "vocabulary_slugs": [
+          "kono",
+          "isu",
+          "omoi",
+          "ugoku"
+        ]
+      },
+      {
+        "japanese": "彼は机を動かした。",
+        "english": "He moved the desk.",
+        "vocabulary_slugs": [
+          "kare",
+          "tsukue",
+          "ugokasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-iro": {
+    "example_sentences": [
+      {
+        "japanese": "この靴の色が好きです。",
+        "english": "I like the color of these shoes.",
+        "vocabulary_slugs": [
+          "kono",
+          "kutsu",
+          "iro",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "妹の帽子は黄色です。",
+        "english": "My younger sister's hat is yellow.",
+        "vocabulary_slugs": [
+          "imouto",
+          "boushi",
+          "kiiro"
+        ]
+      },
+      {
+        "japanese": "彼のかばんは茶色で、私のは色々な色です。",
+        "english": "His bag is brown, and mine is various colors.",
+        "vocabulary_slugs": [
+          "kare",
+          "kaban",
+          "chairo",
+          "watashi",
+          "iroiro",
+          "iro"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-cool": {
+    "example_sentences": [
+      {
+        "japanese": "冷蔵庫にビールがあります。",
+        "english": "There's beer in the refrigerator.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "biiru",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "この水は冷たいです。",
+        "english": "This water is cold.",
+        "vocabulary_slugs": [
+          "kono",
+          "mizu",
+          "tsumetai"
+        ]
+      },
+      {
+        "japanese": "冷蔵庫の中の卵は冷たかったです。",
+        "english": "The eggs in the refrigerator were cold.",
+        "vocabulary_slugs": [
+          "reizouko",
+          "naka",
+          "tamago",
+          "tsumetai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-music": {
+    "example_sentences": [
+      {
+        "japanese": "私は音楽が好きです。",
+        "english": "I like music.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ongaku",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "音楽室に彼女がいました。",
+        "english": "She was in the music room.",
+        "vocabulary_slugs": [
+          "ongakushitsu",
+          "kanojo",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "友達と歌うのは楽しいです。",
+        "english": "Singing with friends is fun.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "utau",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-near": {
+    "example_sentences": [
+      {
+        "japanese": "駅は近いです。",
+        "english": "The station is near.",
+        "vocabulary_slugs": [
+          "eki",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "この近くに公園があります。",
+        "english": "There's a park near here.",
+        "vocabulary_slugs": [
+          "kono",
+          "chikaku",
+          "kouen",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "図書館はあなたの家から近いですか。",
+        "english": "Is the library near your house from your place?",
+        "vocabulary_slugs": [
+          "toshokan",
+          "anata",
+          "ie",
+          "chikai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-slow": {
+    "example_sentences": [
+      {
+        "japanese": "このバスは遅いです。",
+        "english": "This bus is slow.",
+        "vocabulary_slugs": [
+          "kore",
+          "basu",
+          "osoi"
+        ]
+      },
+      {
+        "japanese": "彼は約束の時間に遅れました。",
+        "english": "He was late for the appointment.",
+        "vocabulary_slugs": [
+          "kare",
+          "yakusoku",
+          "jikan",
+          "okureru"
+        ]
+      },
+      {
+        "japanese": "今日は少し遅く起きました。",
+        "english": "I woke up a little late today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "sukoshi",
+          "osoi",
+          "okiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-tsuyoi": {
+    "example_sentences": [
+      {
+        "japanese": "彼は強いです。",
+        "english": "He is strong.",
+        "vocabulary_slugs": [
+          "kare",
+          "tsuyoi"
+        ]
+      },
+      {
+        "japanese": "今日図書館で勉強します。",
+        "english": "I'm going to study at the library today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "toshokan",
+          "benkyou-suru"
+        ]
+      },
+      {
+        "japanese": "毎晩日本語を勉強します。",
+        "english": "I study Japanese every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "nihongo",
+          "benkyou-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-kawaru": {
+    "example_sentences": [
+      {
+        "japanese": "天気が変わりました。",
+        "english": "The weather changed.",
+        "vocabulary_slugs": [
+          "tenki",
+          "kawaru"
+        ]
+      },
+      {
+        "japanese": "部屋の色を変えました。",
+        "english": "I changed the color of the room.",
+        "vocabulary_slugs": [
+          "heya",
+          "iro",
+          "kaeru-change"
+        ]
+      },
+      {
+        "japanese": "今日の仕事は大変でした。",
+        "english": "Today's work was tough.",
+        "vocabulary_slugs": [
+          "kyou",
+          "shigoto",
+          "taihen"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-walk": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日公園を散歩します。",
+        "english": "I take a walk in the park every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "kouen",
+          "sanpo-suru"
+        ]
+      },
+      {
+        "japanese": "犬と一緒に道を歩きます。",
+        "english": "I walk along the road with my dog.",
+        "vocabulary_slugs": [
+          "inu",
+          "issho-ni",
+          "michi-v",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "兄は毎朝公園で散歩します。",
+        "english": "My older brother takes a walk in the park every morning.",
+        "vocabulary_slugs": [
+          "ani",
+          "maiasa",
+          "kouen",
+          "sanpo-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
