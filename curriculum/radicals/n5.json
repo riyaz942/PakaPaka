@@ -24,8 +24,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 2,
-      "visual_mnemonic_url": "radicals/n5/nogihen.webp"
+      "visual_mnemonic_url": "radicals/k/nogihen.webp",
+      "sort_order": 2
     },
     {
       "slug": "ichi",
@@ -174,8 +174,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 9,
-      "visual_mnemonic_url": "radicals/n5/kawa-skin.webp"
+      "visual_mnemonic_url": "radicals/k/kawa-skin.webp",
+      "sort_order": 9
     },
     {
       "slug": "hachigashira",
@@ -318,6 +318,23 @@
       "sort_order": 16
     },
     {
+      "slug": "ou-king",
+      "primary_form": "王",
+      "meaning": "king / jewel",
+      "mnemonic_text": "Three flat crowns get stacked because the king is too cheap to buy one tall one, and a single iron spike rams straight down through the pile to stop them sliding off his head at the ball. The bottom crown still has its gems crusted on, so the whole skewered stack reads as pure <radical>king / jewel</radical>.",
+      "visually_similar_slugs": [
+        "n4-shu-main"
+      ],
+      "description": "主 (lord) adds a short diagonal dot above the top bar, like a lit candle flame. 王 has no such mark — just three plain, level bars impaled by one straight vertical spike.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/ou-king.webp",
+      "sort_order": 17
+    },
+    {
       "slug": "kigamae",
       "primary_form": "气",
       "meaning": "steam",
@@ -328,7 +345,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kigamae.webp",
-      "sort_order": 17
+      "sort_order": 18
     },
     {
       "slug": "boku-divination",
@@ -341,7 +358,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/boku-divination.webp",
-      "sort_order": 18
+      "sort_order": 19
     },
     {
       "slug": "hakenobou",
@@ -353,8 +370,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 19,
-      "visual_mnemonic_url": "radicals/n5/hakenobou.webp"
+      "visual_mnemonic_url": "radicals/k/hakenobou.webp",
+      "sort_order": 20
     },
     {
       "slug": "hito",
@@ -372,7 +389,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/hito.webp",
-      "sort_order": 20
+      "sort_order": 21
     },
     {
       "slug": "yuu-evening",
@@ -385,7 +402,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/yuu-evening.webp",
-      "sort_order": 21
+      "sort_order": 22
     },
     {
       "slug": "fuyugashira",
@@ -398,7 +415,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/fuyugashira.webp",
-      "sort_order": 22
+      "sort_order": 23
     },
     {
       "slug": "itoko",
@@ -411,7 +428,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/itoko.webp",
-      "sort_order": 23
+      "sort_order": 24
     },
     {
       "slug": "ki",
@@ -424,7 +441,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ki.webp",
-      "sort_order": 24
+      "sort_order": 25
     },
     {
       "slug": "onna",
@@ -437,7 +454,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/onna.webp",
-      "sort_order": 25
+      "sort_order": 26
     },
     {
       "slug": "ko",
@@ -450,7 +467,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ko.webp",
-      "sort_order": 26
+      "sort_order": 27
     },
     {
       "slug": "te",
@@ -463,7 +480,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/te.webp",
-      "sort_order": 27
+      "sort_order": 28
     },
     {
       "slug": "tsuchi",
@@ -476,7 +493,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/tsuchi.webp",
-      "sort_order": 28
+      "sort_order": 29
     },
     {
       "slug": "mannaka",
@@ -494,7 +511,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/mannaka.webp",
-      "sort_order": 29
+      "sort_order": 30
     },
     {
       "slug": "sun",
@@ -511,7 +528,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/sun.webp",
-      "sort_order": 30
+      "sort_order": 31
     },
     {
       "slug": "mongamae",
@@ -524,7 +541,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/mongamae.webp",
-      "sort_order": 31
+      "sort_order": 32
     },
     {
       "slug": "keigashira",
@@ -537,7 +554,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/keigashira.webp",
-      "sort_order": 32
+      "sort_order": 33
     },
     {
       "slug": "shinnyou",
@@ -550,7 +567,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/shinnyou.webp",
-      "sort_order": 33
+      "sort_order": 34
     },
     {
       "slug": "haha",
@@ -563,7 +580,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/haha.webp",
-      "sort_order": 34
+      "sort_order": 35
     },
     {
       "slug": "katana",
@@ -576,7 +593,24 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/katana.webp",
-      "sort_order": 35
+      "sort_order": 36
+    },
+    {
+      "slug": "wakanmuri",
+      "primary_form": "冖",
+      "meaning": "cover",
+      "mnemonic_text": "A flat stroke lies across the very top and both ends droop straight down past it, not far, just enough to tuck in the edges — a blanket someone threw over a cat curled up asleep on the porch, tail and all vanishing underneath. Nothing pokes out. That low, snug drape is a <radical>cover</radical>.",
+      "visually_similar_slugs": [
+        "keigamae"
+      ],
+      "description": "冂 is tall and open — its two vertical sides run most of the character's height, like a doorway frame with nothing under it. 冖's sides are short, barely drooping below the top stroke at all, more lid than frame.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/wakanmuri.webp",
+      "sort_order": 37
     },
     {
       "slug": "hitoashi",
@@ -589,7 +623,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/hitoashi.webp",
-      "sort_order": 36
+      "sort_order": 38
     },
     {
       "slug": "bou-stick",
@@ -601,8 +635,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 37,
-      "visual_mnemonic_url": "radicals/n5/bou-stick.webp"
+      "visual_mnemonic_url": "radicals/k/bou-stick.webp",
+      "sort_order": 39
     },
     {
       "slug": "no-slide",
@@ -614,8 +648,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 38,
-      "visual_mnemonic_url": "radicals/n5/no-slide.webp"
+      "visual_mnemonic_url": "radicals/k/no-slide.webp",
+      "sort_order": 40
     },
     {
       "slug": "gonben",
@@ -628,7 +662,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/gonben.webp",
-      "sort_order": 39
+      "sort_order": 41
     },
     {
       "slug": "shita",
@@ -641,7 +675,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/shita.webp",
-      "sort_order": 40
+      "sort_order": 42
     },
     {
       "slug": "fudezukuri",
@@ -654,7 +688,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/fudezukuri.webp",
-      "sort_order": 41
+      "sort_order": 43
     },
     {
       "slug": "mimi",
@@ -667,7 +701,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/mimi.webp",
-      "sort_order": 42
+      "sort_order": 44
     },
     {
       "slug": "shikabane",
@@ -685,7 +719,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/shikabane.webp",
-      "sort_order": 43
+      "sort_order": 45
     },
     {
       "slug": "ten",
@@ -698,7 +732,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ten.webp",
-      "sort_order": 44
+      "sort_order": 46
     },
     {
       "slug": "katahen",
@@ -710,8 +744,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 45,
-      "visual_mnemonic_url": "radicals/n5/katahen.webp"
+      "visual_mnemonic_url": "radicals/k/katahen.webp",
+      "sort_order": 47
     },
     {
       "slug": "haba",
@@ -724,7 +758,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/haba.webp",
-      "sort_order": 46
+      "sort_order": 48
     },
     {
       "slug": "men-exempt",
@@ -736,8 +770,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 47,
-      "visual_mnemonic_url": "radicals/n5/men-exempt.webp"
+      "visual_mnemonic_url": "radicals/k/men-exempt.webp",
+      "sort_order": 49
     },
     {
       "slug": "yamahen",
@@ -750,7 +784,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/yamahen.webp",
-      "sort_order": 48
+      "sort_order": 50
     },
     {
       "slug": "ireru",
@@ -767,7 +801,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ireru.webp",
-      "sort_order": 49
+      "sort_order": 51
     },
     {
       "slug": "me",
@@ -785,7 +819,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/me.webp",
-      "sort_order": 50
+      "sort_order": 52
     },
     {
       "slug": "miru",
@@ -802,7 +836,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/miru.webp",
-      "sort_order": 51
+      "sort_order": 53
     },
     {
       "slug": "kai-shell",
@@ -819,7 +853,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kai-shell.webp",
-      "sort_order": 52
+      "sort_order": 54
     },
     {
       "slug": "shiro",
@@ -836,7 +870,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/shiro.webp",
-      "sort_order": 53
+      "sort_order": 55
     },
     {
       "slug": "aka",
@@ -849,7 +883,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/aka.webp",
-      "sort_order": 54
+      "sort_order": 56
     },
     {
       "slug": "kuro",
@@ -862,7 +896,20 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kuro.webp",
-      "sort_order": 55
+      "sort_order": 57
+    },
+    {
+      "slug": "sato",
+      "primary_form": "里",
+      "meaning": "village",
+      "mnemonic_text": "Rows of square rice paddies stack neatly on top of a thick slab of packed earth, and the whole grid sits there through every season without shifting — the paddies plus the dirt underneath is what everyone just calls the <radical>village</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/sato.webp",
+      "sort_order": 58
     },
     {
       "slug": "ame",
@@ -875,7 +922,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ame.webp",
-      "sort_order": 56
+      "sort_order": 59
     },
     {
       "slug": "ta",
@@ -893,7 +940,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ta.webp",
-      "sort_order": 57
+      "sort_order": 60
     },
     {
       "slug": "kuruma",
@@ -906,7 +953,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kuruma.webp",
-      "sort_order": 58
+      "sort_order": 61
     },
     {
       "slug": "inoko",
@@ -919,7 +966,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/inoko.webp",
-      "sort_order": 59
+      "sort_order": 62
     },
     {
       "slug": "ukanmuri",
@@ -932,7 +979,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ukanmuri.webp",
-      "sort_order": 60
+      "sort_order": 63
     },
     {
       "slug": "chichi",
@@ -949,7 +996,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/chichi.webp",
-      "sort_order": 61
+      "sort_order": 64
     },
     {
       "slug": "yumi",
@@ -962,7 +1009,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/yumi.webp",
-      "sort_order": 62
+      "sort_order": 65
     },
     {
       "slug": "shimesu",
@@ -975,7 +1022,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/shimesu.webp",
-      "sort_order": 63
+      "sort_order": 66
     },
     {
       "slug": "mata",
@@ -988,7 +1035,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/mata.webp",
-      "sort_order": 64
+      "sort_order": 67
     },
     {
       "slug": "shou",
@@ -1001,7 +1048,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/shou.webp",
-      "sort_order": 65
+      "sort_order": 68
     },
     {
       "slug": "dai-big",
@@ -1013,8 +1060,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 66,
-      "visual_mnemonic_url": "radicals/n5/dai-big.webp"
+      "visual_mnemonic_url": "radicals/k/dai-big.webp",
+      "sort_order": 69
     },
     {
       "slug": "hakogamae",
@@ -1026,8 +1073,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 67,
-      "visual_mnemonic_url": "radicals/n5/hakogamae.webp"
+      "visual_mnemonic_url": "radicals/k/hakogamae.webp",
+      "sort_order": 70
     },
     {
       "slug": "ya",
@@ -1040,7 +1087,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/ya.webp",
-      "sort_order": 68
+      "sort_order": 71
     },
     {
       "slug": "tooth",
@@ -1052,8 +1099,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 69,
-      "visual_mnemonic_url": "radicals/n5/tooth.webp"
+      "visual_mnemonic_url": "radicals/k/tooth.webp",
+      "sort_order": 72
     },
     {
       "slug": "not",
@@ -1065,8 +1112,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 70,
-      "visual_mnemonic_url": "radicals/n5/not.webp"
+      "visual_mnemonic_url": "radicals/k/not.webp",
+      "sort_order": 73
     },
     {
       "slug": "ushi",
@@ -1084,7 +1131,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ushi.webp",
-      "sort_order": 71
+      "sort_order": 74
     },
     {
       "slug": "eat",
@@ -1096,8 +1143,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 72,
-      "visual_mnemonic_url": "radicals/n5/eat.webp"
+      "visual_mnemonic_url": "radicals/k/eat.webp",
+      "sort_order": 75
     },
     {
       "slug": "gandare",
@@ -1109,8 +1156,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 73,
-      "visual_mnemonic_url": "radicals/n5/gandare.webp"
+      "visual_mnemonic_url": "radicals/k/gandare.webp",
+      "sort_order": 76
     },
     {
       "slug": "kusakanmuri",
@@ -1123,37 +1170,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kusakanmuri.webp",
-      "sort_order": 74
-    },
-    {
-      "slug": "ou-king",
-      "primary_form": "王",
-      "meaning": "king / jewel",
-      "mnemonic_text": "Three flat crowns get stacked because the king is too cheap to buy one tall one, and a single iron spike rams straight down through the pile to stop them sliding off his head at the ball. The bottom crown still has its gems crusted on, so the whole skewered stack reads as pure <radical>king / jewel</radical>.",
-      "visually_similar_slugs": [
-        "n4-shu-main"
-      ],
-      "description": "主 (lord) adds a short diagonal dot above the top bar, like a lit candle flame. 王 has no such mark — just three plain, level bars impaled by one straight vertical spike.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/n4/ou-king.webp",
-      "sort_order": 75
-    },
-    {
-      "slug": "sato",
-      "primary_form": "里",
-      "meaning": "village",
-      "mnemonic_text": "Rows of square rice paddies stack neatly on top of a thick slab of packed earth, and the whole grid sits there through every season without shifting — the paddies plus the dirt underneath is what everyone just calls the <radical>village</radical>.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/n4/sato.webp",
-      "sort_order": 76
+      "sort_order": 77
     },
     {
       "slug": "shou-esteem",
@@ -1165,8 +1182,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 77,
-      "visual_mnemonic_url": "radicals/n5/shou-esteem.webp"
+      "visual_mnemonic_url": "radicals/k/shou-esteem.webp",
+      "sort_order": 78
     },
     {
       "slug": "madare",
@@ -1184,7 +1201,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/madare.webp",
-      "sort_order": 78
+      "sort_order": 79
     },
     {
       "slug": "keigamae",
@@ -1202,7 +1219,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/keigamae.webp",
-      "sort_order": 79
+      "sort_order": 80
     },
     {
       "slug": "yamaidare",
@@ -1219,7 +1236,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/yamaidare.webp",
-      "sort_order": 80
+      "sort_order": 81
     },
     {
       "slug": "beginning",
@@ -1231,8 +1248,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 81,
-      "visual_mnemonic_url": "radicals/n5/beginning.webp"
+      "visual_mnemonic_url": "radicals/k/beginning.webp",
+      "sort_order": 82
     },
     {
       "slug": "oozato",
@@ -1245,7 +1262,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/oozato.webp",
-      "sort_order": 82
+      "sort_order": 83
     },
     {
       "slug": "ana",
@@ -1258,7 +1275,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ana.webp",
-      "sort_order": 83
+      "sort_order": 84
     },
     {
       "slug": "kougatsu",
@@ -1271,7 +1288,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/kougatsu.webp",
-      "sort_order": 84
+      "sort_order": 85
     },
     {
       "slug": "ukebako",
@@ -1283,24 +1300,7 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 85,
-      "visual_mnemonic_url": "radicals/n5/ukebako.webp"
-    },
-    {
-      "slug": "wakanmuri",
-      "primary_form": "冖",
-      "meaning": "cover",
-      "mnemonic_text": "A flat stroke lies across the very top and both ends droop straight down past it, not far, just enough to tuck in the edges — a blanket someone threw over a cat curled up asleep on the porch, tail and all vanishing underneath. Nothing pokes out. That low, snug drape is a <radical>cover</radical>.",
-      "visually_similar_slugs": [
-        "keigamae"
-      ],
-      "description": "冂 is tall and open — its two vertical sides run most of the character's height, like a doorway frame with nothing under it. 冖's sides are short, barely drooping below the top stroke at all, more lid than frame.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/n4/wakanmuri.webp",
+      "visual_mnemonic_url": "radicals/k/ukebako.webp",
       "sort_order": 86
     },
     {
@@ -1386,8 +1386,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 92,
-      "visual_mnemonic_url": "radicals/n5/long-stride.webp"
+      "visual_mnemonic_url": "radicals/k/long-stride.webp",
+      "sort_order": 92
     },
     {
       "slug": "separate",
@@ -1399,8 +1399,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 93,
-      "visual_mnemonic_url": "radicals/n5/separate.webp"
+      "visual_mnemonic_url": "radicals/k/separate.webp",
+      "sort_order": 93
     },
     {
       "slug": "family-name",
@@ -1412,8 +1412,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 94,
-      "visual_mnemonic_url": "radicals/n5/family-name.webp"
+      "visual_mnemonic_url": "radicals/k/family-name.webp",
+      "sort_order": 94
     },
     {
       "slug": "itohen",
@@ -1451,8 +1451,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 97,
-      "visual_mnemonic_url": "radicals/n5/wind.webp"
+      "visual_mnemonic_url": "radicals/k/wind.webp",
+      "sort_order": 97
     },
     {
       "slug": "chikara",
@@ -1503,8 +1503,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 101,
-      "visual_mnemonic_url": "radicals/n5/warifu.webp"
+      "visual_mnemonic_url": "radicals/k/warifu.webp",
+      "sort_order": 101
     },
     {
       "slug": "hitsuji",
@@ -1607,8 +1607,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 108,
-      "visual_mnemonic_url": "radicals/n5/nothingness.webp"
+      "visual_mnemonic_url": "radicals/k/nothingness.webp",
+      "sort_order": 108
     },
     {
       "slug": "kanamuri",
@@ -1620,8 +1620,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 109,
-      "visual_mnemonic_url": "radicals/n5/kanamuri.webp"
+      "visual_mnemonic_url": "radicals/k/kanamuri.webp",
+      "sort_order": 109
     },
     {
       "slug": "samurai",
@@ -1646,8 +1646,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 111,
-      "visual_mnemonic_url": "radicals/n5/head.webp"
+      "visual_mnemonic_url": "radicals/k/head.webp",
+      "sort_order": 111
     },
     {
       "slug": "oogai",
@@ -1672,8 +1672,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 113,
-      "visual_mnemonic_url": "radicals/n5/sound.webp"
+      "visual_mnemonic_url": "radicals/k/sound.webp",
+      "sort_order": 113
     },
     {
       "slug": "nari",
@@ -1698,8 +1698,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 115,
-      "visual_mnemonic_url": "radicals/n5/compare.webp"
+      "visual_mnemonic_url": "radicals/k/compare.webp",
+      "sort_order": 115
     },
     {
       "slug": "ma-hook",
@@ -1711,8 +1711,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 116,
-      "visual_mnemonic_url": "radicals/n5/ma-hook.webp"
+      "visual_mnemonic_url": "radicals/k/ma-hook.webp",
+      "sort_order": 116
     },
     {
       "slug": "pike",
@@ -1724,8 +1724,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 117,
-      "visual_mnemonic_url": "radicals/n5/pike.webp"
+      "visual_mnemonic_url": "radicals/k/pike.webp",
+      "sort_order": 117
     },
     {
       "slug": "first-time",
@@ -1737,8 +1737,8 @@
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "sort_order": 118,
-      "visual_mnemonic_url": "radicals/n5/first-time.webp"
+      "visual_mnemonic_url": "radicals/k/first-time.webp",
+      "sort_order": 118
     },
     {
       "slug": "to-dipper",

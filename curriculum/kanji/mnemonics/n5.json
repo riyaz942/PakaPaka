@@ -40,7 +40,7 @@
     }
   },
   "n5-atarashii": {
-    "meaning_mnemonic": "The <radical>spicy</radical> man hauls his pepper skewer into the showroom, eyes streaming, hat still riding its column of sweat, swearing the sauce is mild. Behind him a <radical>tree</radical> sits on the plinth, dug up roots and all, sap still wet where the branch was cut this morning, and the person on the platform is <radical>standing</radical> beside it with both arms thrown out so nobody touches anything. Just cut, just picked, just unwrapped — everything in here is new.",
+    "meaning_mnemonic": "The <radical>spicy</radical> man hauls his pepper skewer into the showroom, eyes streaming, swearing the sauce is mild. Behind him a <radical>tree</radical> sits on the plinth, dug up roots and all, sap still wet where the <radical>axe</radical> took the branch off this morning — the blade is still buried in the chopping block by the door. The attendant <radical>standing</radical> beside it throws both arms out so nobody touches anything. Just cut, just felled, just unwrapped: everything in here is new.",
     "reading_mnemonic": "The showroom greeter is Shin, and every time a new model rolls in he shouts his own name — <reading>しん</reading>! — as he yanks the cover off. Whatever Shin unveils is always brand new.",
     "description": "Means \"new\"; a very common kanji appearing in words for new things, newspapers, and freshness.",
     "_meta": {
@@ -108,7 +108,7 @@
     }
   },
   "n5-dokusho": {
-    "meaning_mnemonic": "On the left the <radical>speech</radical> is doing its usual thing, sentence after sentence stacking up out of that little mouth. On the right the very serious armoured <radical>samurai</radical> duck has climbed down off the garden wall and planted himself on a pair of sturdy <radical>human legs</radical>, feet apart, refusing to blink. He isn't listening to a word of it — his eyes are running down the stacked lines, top to bottom, silently. That is not hearing speech. That is reading it.",
+    "meaning_mnemonic": "On the left the <radical>speech</radical> is doing its usual thing, sentence after sentence stacking out of that little mouth. On the right the armoured <radical>samurai</radical> duck has climbed down off the garden wall onto a pair of sturdy <radical>human legs</radical>, a blanket <radical>cover</radical> pulled snug over his shoulders against the draught. He isn't listening to a word of it — his eyes run down the stacked lines, top to bottom, silently. That is not hearing speech. That is reading it.",
     "reading_mnemonic": "The reader you find hunched over those lines of speech is a poison-pen critic, and you nickname her Doku (<reading>どく</reading>) because every review she reads she then tears apart. Watch her read a page and you can practically see the どく venom drip off her pen.",
     "_meta": {
       "generator_model": "claude-opus-5",
@@ -117,13 +117,13 @@
     }
   },
   "n5-eki-station": {
-    "meaning_mnemonic": "You're waiting on a platform when a galloping <radical>horse</radical>, flowing mane and all four legs pounding, thunders straight past you and onto the tracks. The conductor sighs — this happens every day here, horses treating the place like a pasture. Where else would a runaway horse end up but the station?",
+    "meaning_mnemonic": "You're waiting on a platform when a galloping <radical>horse</radical>, mane flowing and all four legs pounding, thunders straight past you and onto the tracks. It has to hurdle the <radical>body</radical> sprawled across the end of the bench, the same commuter who faceplanted hours ago and has refused to get up since. The conductor sighs — every day here, horses on the rails and sleepers on the benches. Where else but the station?",
     "reading_mnemonic": "A commuter named Eki misses the last train and shouts \"<reading>えき</reading>! えき!\" across the empty platform, hoping the station master will hear her and hold the doors.",
     "description": "Means \"station\" — the word for a train or subway station, seen constantly in place names and on transit signs.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-en": {
@@ -147,13 +147,13 @@
     }
   },
   "n5-gaku": {
-    "meaning_mnemonic": "Picture a swaddled <radical>child</radical>, arms out, sitting under a little roof of scribbled notes and diagrams. That's what a child does under that roof all day: they study. A child parked beneath a canopy of lessons is study and learning.",
+    "meaning_mnemonic": "Picture a swaddled <radical>child</radical>, arms out, parked under a low <radical>cover</radical> of scribbled notes and diagrams, tucked in at the edges the way that blanket drapes over a sleeping cat. Nothing gets out from under it but the sound of pencil scratching. A child kept all day beneath a canopy of lessons is study and learning.",
     "reading_mnemonic": "At the school, the star pupil Gaku is the one who never stops studying, and everyone in the echoing hallways calls out <reading>がく</reading> whenever they need the answer. Hear がく and you hear the kid who lives to learn.",
     "description": "Means study or learning; a very common kanji that shows up in words for student, school, and academic subjects.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-gatsu": {
@@ -373,7 +373,7 @@
     }
   },
   "n5-kaeru": {
-    "meaning_mnemonic": "You push your own front door open and the <radical>broom</radical> is still going, three stiff prongs driving crumbs and one increasingly indignant cat down the hallway ahead of it, exactly as you left it this morning. On the hook by the wall your rectangle of <radical>cloth</radical> hangs in its two long folds, limp, waiting. You take it down, wipe the day off your face, and step over the cat. Coming back to the same broom and the same hanging cloth is what it is to return.",
+    "meaning_mnemonic": "You push your own front door open and the <radical>broom</radical> is still going, three stiff prongs driving crumbs and one indignant cat down the hallway, exactly as you left it this morning. The cat gives up and burrows under its <radical>cover</radical> on the porch. On the hook your rectangle of <radical>cloth</radical> hangs in two long folds, limp, waiting. You take it down and wipe the day off your face. Coming back to the same broom, blanket and cloth is what it is to return.",
     "reading_mnemonic": "Kiki, the tree spirit, has been out riding the wind all day, and now she giggles as she slips back inside her old tree with a soft <reading>き</reading>. Watch her return home and you'll hear that き every time.",
     "description": "Means \"return,\" as in going or coming back home; the core kanji in the verb 帰る, to return.",
     "_meta": {
@@ -393,13 +393,13 @@
     }
   },
   "n5-kane-gold-dup": {
-    "meaning_mnemonic": "Picture the whole village at dusk, its wooden houses caked in soot, huddled over one big cooking fire. The smoke has stained every wall until the sooty village over a fire is one single color: <radical>black</radical>.",
+    "meaning_mnemonic": "Picture the whole <radical>village</radical> at dusk — its stacked paddies, its slab of packed earth, its wooden houses — huddled over one big cooking fire. The smoke climbs and stains every wall until the sooty village standing over that fire has settled into one single color: <radical>black</radical>.",
     "reading_mnemonic": "The soot-covered villagers cough up thick black lungfuls, hacking <reading>こく</reading>, こく into the night air. Every cough is darker than the last — that's the sound of black.",
     "description": "Means \"black\"; the everyday word for the color (くろ) and a common on'yomi こく in compounds.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kau": {
@@ -443,12 +443,12 @@
     }
   },
   "n5-kin": {
-    "meaning_mnemonic": "Picture a solid little roof, and buried right underneath it, a stash of gleaming nuggets you'd never leave lying around. That roof over buried nuggets is exactly what this character shows you: precious <radical>metal</radical> tucked away safe. Dig it up and you've got gold and money.",
+    "meaning_mnemonic": "Picture a solid little roof, and buried right underneath it the <radical>king</radical>'s own skewered stack of crowns, gems still crusted on, with two loose nuggets shaken off into the dirt beside it. A roof over a buried king is exactly what this character shows you: precious <radical>metal</radical> tucked away where nobody digs. Turn it up and you've got gold and money.",
     "reading_mnemonic": "Grandma Kane keeps her real fortune under the shrine's giant bell, and every time a cat brushes it, it goes <reading>きん</reading>. That soft きん ring is the sound of gold sitting safe underneath.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kita": {
@@ -500,13 +500,13 @@
     }
   },
   "n5-kuni": {
-    "meaning_mnemonic": "Picture an <radical>enclosure</radical> — a closed box with walls around everything inside. Draw those walls big enough and you're no longer fencing a garden; you're fencing a whole nation. Walls that wrap around an entire people give you a country.",
+    "meaning_mnemonic": "Picture an <radical>enclosure</radical>, a closed box with walls around everything inside, and set the <radical>jewel</radical> — that skewered stack of crowns, gems and all — down in the middle of it. Draw those walls big enough and you're no longer fencing a garden; you're fencing a whole people in around their crown. Walls wrapped around a king give you a country.",
     "reading_mnemonic": "At the border of this walled country stands a guard named Koku, who stamps every passport with a cheerful <reading>こく</reading> sound. No stamp, no entry — こく, こく, all day long.",
     "description": "Means \"country\" or \"nation\"; a very common kanji seen in words for countries and citizenship, read こく in compounds and くに on its own.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "n5-kuru-rai": {
@@ -904,7 +904,7 @@
     }
   },
   "n5-suwaru": {
-    "meaning_mnemonic": "Two of those striding <radical>person</radical> figures come in from the cold, legs still mid-stride, and drop straight down onto the same patch of <radical>earth</radical> at the foot of the signpost. They plant themselves on that soil, shoulder to shoulder, and flatly refuse to get up again. When two walkers settle onto the earth like that, all they want to do is sit.",
+    "meaning_mnemonic": "Two of those striding <radical>person</radical> figures come in from the cold and duck under the lean-to <radical>shelter</radical> nailed into the rock face, out of the rain at last. They drop straight down onto the same patch of <radical>earth</radical> underneath it, shoulder to shoulder, and flatly refuse to get up again. Two walkers on the ground under a roof want exactly one thing: to sit.",
     "reading_mnemonic": "The person who settles onto that patch of earth is Zara, and the moment she sits she lets out a long, satisfied \"<reading>ざ</reading>あ\" of relief. Every time you see someone plop down here, you hear Zara's ざ.",
     "description": "Means \"sit\"; shows up in words about sitting down, seats, and taking a seat.",
     "_meta": {
@@ -983,7 +983,7 @@
     }
   },
   "n5-uru-baku": {
-    "meaning_mnemonic": "The very serious armoured <radical>samurai</radical> duck has abandoned the garden wall and set up a stall, balanced on a pair of sturdy <radical>human legs</radical> planted wide behind a table of stacked goods. It still refuses to blink, it refuses to come down on the price, and it shouts at everyone who slows down. A samurai on braced legs behind a loaded table has exactly one job: to sell.",
+    "meaning_mnemonic": "The armoured <radical>samurai</radical> duck has abandoned the garden wall and set up a stall, balanced on a pair of sturdy <radical>human legs</radical> planted wide behind a table of stacked goods, an awning pulled taut over the lot as a <radical>cover</radical> against the rain. It still refuses to blink, it refuses to come down on the price, and it shouts at everyone who slows down. A samurai under his awning on braced legs has exactly one job: to sell.",
     "reading_mnemonic": "The vendor keeps yelling one thing at every customer who walks past: \"Buy! <reading>ばい</reading>, ばい, one for you and one for the baby!\" He'll sell to anyone who slows down, and every pitch ends on that same ばい.",
     "_meta": {
       "generator_model": "claude-opus-5",

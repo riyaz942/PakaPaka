@@ -478,7 +478,7 @@ export const GUIDE_STAGES: GuideStage[] = [
           {
             title: 'Agent: install',
             detail:
-              'It matches each download to its radical, converts to WebP, installs under mobile/assets/radicals/<level>/, regenerates radicalImages.ts and runs the gates.',
+              'It matches each download to its radical, converts to WebP, installs under mobile/assets/radicals/<source>/ (the dataset that wrote the radical, not its band), regenerates radicalImages.ts and runs the gates.',
           },
           {
             title: 'You: judge, then re-roll',

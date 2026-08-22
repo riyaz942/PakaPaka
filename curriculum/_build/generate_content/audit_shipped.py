@@ -74,7 +74,7 @@ REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 #: sub-kanji the curriculum never teaches. The taught decomposition is
 #: pedagogical — the pieces a mnemonic can actually build a story from — so most
 #: of the diff below is expected, not a gap. Four kinds of expected diff:
-#:   1. the component radical is taught a level later (N4 under an N5 kanji)
+#:   1. the component radical bands *after* the kanji that would build on it
 #:   2. KRADFILE splits a sub-kanji the taught story keeps whole (or never uses)
 #:   3. the component is a bare search stroke, not a meaning-bearing piece
 #:   4. the kanji is taught as one whole shape (its own radical / a pictograph)
@@ -88,18 +88,15 @@ REPORTS_DIR = os.path.join(BUILD_DIR, "reports")
 DECOMPOSITION_EXCEPTIONS = {
     # ("radical-slug", "n5-kanji-slug"): "reason",
 
-    # --- 1. component radical is taught in N4 -------------------------------
-    ("ono", "n5-atarashii"): "斤 is an N4 radical; an N5 kanji cannot build on a component the learner meets a level later.",
-    ("wakanmuri", "n5-dokusho"): "冖 is an N4 radical; 読 cannot build on a component taught a level later.",
-    ("wakanmuri", "n5-gaku"): "冖 is an N4 radical; 学 cannot build on a component taught a level later.",
-    ("wakanmuri", "n5-kaeru"): "冖 is an N4 radical; 帰 cannot build on a component taught a level later.",
-    ("wakanmuri", "n5-uru-baku"): "冖 is an N4 radical; 売 cannot build on a component taught a level later.",
-    ("shikabane", "n5-eki-station"): "尸 is an N4 radical (and here only half of 尺); 駅 cannot build on a component taught a level later.",
-    ("ou-king", "n5-kin"): "王 is an N4 radical; 金 cannot build on a component taught a level later.",
-    ("ou-king", "n5-kuni"): "王 is an N4 radical; 国 cannot build on a component taught a level later.",
-    ("madare", "n5-suwaru"): "广 is a real component of 座 but an N4 radical; an N5 kanji cannot depend on it.",
-    ("furutori", "n5-nichiyou"): "隹 is a real component of 曜 but an N4 radical; an N5 kanji cannot depend on it.",
-    ("sato", "n5-kane-gold-dup"): "里 is a real component of 黒 (and already its taught story's 'village') but an N4 radical; an N5 kanji cannot depend on it.",
+    # --- 1. component radical bands after the kanji -------------------------
+    # A radical is no longer filed by the dataset that wrote it: banding files
+    # it at the level of the first kanji that needs it. That emptied this group
+    # of the ten entries it carried, whose reason ("斤 is an N4 radical") stopped
+    # being true once 斤 banded N5 — their edges are in
+    # `generate_deps.N5_DECOMPOSITION` now. One case survives the reband, and it
+    # is the only shape that still can: the radical's *first* kanji sits in an
+    # earlier band than this one.
+    ("furutori", "n5-nichiyou"): "隹 bands N4 — 集 is the first kanji that needs it — while 曜 bands N5, so the learner meets 曜 first and the edge would be an ordering inversion.",
 
     # --- 2. KRADFILE splits a sub-kanji the taught story does not -----------
     ("me", "n5-kau"): "目 is the top of 貝; 買 already builds on 貝 whole.",

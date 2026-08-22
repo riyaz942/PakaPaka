@@ -21,12 +21,12 @@ Rationale: the taught radical set is small and finite (~150 for N5+N4; Kangxi ce
 
 | Role | Path |
 | --- | --- |
-| Radical art (source of truth) | `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` |
+| Radical art (source of truth) | `mobile/assets/radicals/{source}/{slug}.webp` — `{source}` is the dataset that wrote the radical (`n5`, `n4`, `k`), never its band |
 | Git | **Git LFS**, via `mobile/assets/radicals/**/*.webp` in `.gitattributes` (same pattern as `curriculum.db`) so clones stay lean |
 | App | `mobile/src/utils/radicalImages.ts` — generated `require()` map; never hand-edited |
 | App | Expo packs `mobile/assets/` into the binary; images update with app releases, not a separate media deploy |
 
-Slug must match the radical entry in `curriculum/radicals/*.json`. JLPT segment is lowercase (`n5`, `n4`, …).
+Slug must match the radical entry in `curriculum/radicals/*.json`. The source segment is lowercase (`n5`, `n4`, `k`).
 
 Examples:
 
@@ -60,12 +60,14 @@ Every radical that has `mnemonic_text` already carries its ref, written by
 `curriculum/_build/generate.py`. Adding art is therefore just dropping the file in and
 regenerating the map — no curriculum edit needed unless the slug changes.
 
-**The `{level}` in the path is the *source dataset*, not the band the radical is taught
-at.** `generate.py` keys the ref to whoever authored the radical — n5/n4 for the
-hand-authored datasets, and for the derived `k` corpus the band it landed in, since `k`
-has no asset directory of its own. A band mixes sources, so 厶 (`mu`) is taught at N5 and
-its art lives at `radicals/n4/mu.webp`. Always read the destination off the item's own
-`visual_mnemonic_url`; never derive it from the level the radical is taught at.
+**The first path segment is the *source dataset*, not the band the radical is taught
+at.** `generate.py` keys the ref to whoever authored the radical: `n5`/`n4` for the
+hand-authored datasets, `k` for the KANJIDIC2-derived corpus, which has an asset
+directory of its own for exactly this reason. A band mixes sources, so 厶 (`mu`) is taught
+at N5 and its art lives at `radicals/n4/mu.webp`. Keying to the band instead would be a
+silent-loss bug: a radical that rebands would move its ref while the file stayed put, and
+the art would vanish behind the text fallback. Always read the destination off the item's
+own `visual_mnemonic_url`; never derive it from the level the radical is taught at.
 
 1. Save the image at the path the item's `visual_mnemonic_url` names, under
    `mobile/assets/` (≤80 KB).
@@ -77,7 +79,7 @@ its art lives at `radicals/n4/mu.webp`. Always read the destination off the item
 
    This rewrites `src/utils/radicalImages.ts` with one literal `require()` per file — Metro
    cannot resolve a path built at runtime, so the map has to be checked in. The script exits
-   non-zero on anything that is not `{n1-n5}/{slug}.webp`.
+   non-zero on anything that is not `{n1-n5,k}/{slug}.webp`.
 
 3. If you changed any curriculum JSON, from repo root:
 

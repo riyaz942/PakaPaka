@@ -6,11 +6,16 @@ import type { ImageSourcePropType } from 'react-native';
 
 /**
  * Radical mnemonic art bundled into the app binary, keyed by the value the
- * curriculum stores in `visual_mnemonic_url` (`radicals/{level}/{slug}.webp`).
+ * curriculum stores in `visual_mnemonic_url` (`radicals/{source}/{slug}.webp`,
+ * keyed by the dataset that wrote the radical, not by its band).
  * There is no remote image host, so a key missing here means that radical's art
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/k/bou-stick.webp': require('../../assets/radicals/k/bou-stick.webp'),
+  'radicals/k/hakenobou.webp': require('../../assets/radicals/k/hakenobou.webp'),
+  'radicals/k/kawa-skin.webp': require('../../assets/radicals/k/kawa-skin.webp'),
+  'radicals/k/nogihen.webp': require('../../assets/radicals/k/nogihen.webp'),
   'radicals/n4/bokuzukuri.webp': require('../../assets/radicals/n4/bokuzukuri.webp'),
   'radicals/n4/furutori.webp': require('../../assets/radicals/n4/furutori.webp'),
   'radicals/n4/gatsuhen.webp': require('../../assets/radicals/n4/gatsuhen.webp'),
@@ -49,7 +54,6 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/ao.webp': require('../../assets/radicals/n5/ao.webp'),
   'radicals/n5/ashi-foot.webp': require('../../assets/radicals/n5/ashi-foot.webp'),
   'radicals/n5/boku-divination.webp': require('../../assets/radicals/n5/boku-divination.webp'),
-  'radicals/n5/bou-stick.webp': require('../../assets/radicals/n5/bou-stick.webp'),
   'radicals/n5/bou.webp': require('../../assets/radicals/n5/bou.webp'),
   'radicals/n5/chichi.webp': require('../../assets/radicals/n5/chichi.webp'),
   'radicals/n5/chikara.webp': require('../../assets/radicals/n5/chikara.webp'),
@@ -60,7 +64,6 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/haba.webp': require('../../assets/radicals/n5/haba.webp'),
   'radicals/n5/hachigashira.webp': require('../../assets/radicals/n5/hachigashira.webp'),
   'radicals/n5/haha.webp': require('../../assets/radicals/n5/haha.webp'),
-  'radicals/n5/hakenobou.webp': require('../../assets/radicals/n5/hakenobou.webp'),
   'radicals/n5/hi-fire.webp': require('../../assets/radicals/n5/hi-fire.webp'),
   'radicals/n5/hi-spoon.webp': require('../../assets/radicals/n5/hi-spoon.webp'),
   'radicals/n5/hi-sun.webp': require('../../assets/radicals/n5/hi-sun.webp'),
@@ -80,7 +83,6 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/kanehen.webp': require('../../assets/radicals/n5/kanehen.webp'),
   'radicals/n5/karai.webp': require('../../assets/radicals/n5/karai.webp'),
   'radicals/n5/katana.webp': require('../../assets/radicals/n5/katana.webp'),
-  'radicals/n5/kawa-skin.webp': require('../../assets/radicals/n5/kawa-skin.webp'),
   'radicals/n5/kawa.webp': require('../../assets/radicals/n5/kawa.webp'),
   'radicals/n5/keigamae.webp': require('../../assets/radicals/n5/keigamae.webp'),
   'radicals/n5/keigashira.webp': require('../../assets/radicals/n5/keigashira.webp'),
@@ -108,7 +110,6 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/n5/ni.webp': require('../../assets/radicals/n5/ni.webp'),
   'radicals/n5/nikuduki.webp': require('../../assets/radicals/n5/nikuduki.webp'),
   'radicals/n5/ninben.webp': require('../../assets/radicals/n5/ninben.webp'),
-  'radicals/n5/nogihen.webp': require('../../assets/radicals/n5/nogihen.webp'),
   'radicals/n5/onna.webp': require('../../assets/radicals/n5/onna.webp'),
   'radicals/n5/oozato.webp': require('../../assets/radicals/n5/oozato.webp'),
   'radicals/n5/rekka.webp': require('../../assets/radicals/n5/rekka.webp'),

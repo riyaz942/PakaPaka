@@ -200,15 +200,16 @@ def _build_radical_items(slug_prefix, radical_entries):
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta
-        if item.get("mnemonic_text") and slug_prefix in BAND_LEVELS:
+        if item.get("mnemonic_text"):
             # Bundled asset ref, not a URL: art ships inside the app binary under
             # mobile/assets/radicals/. Missing files fall back to mnemonic text.
             # Radicals with no mnemonic text at all (raw or sidecar) carry
             # neither field rather than pointing at a file nobody has drawn.
-            # `slug_prefix` is only a valid asset directory for the n5/n4/...
-            # source datasets; the derived `k` corpus has no such directory
-            # (the schema only allows radicals/n[1-5]/...), so its items get
-            # their url filled in by `_write_banded` once the band is known.
+            # The directory is `slug_prefix` — the dataset that wrote the entry,
+            # including the derived `k` corpus, which has its own directory. It
+            # is deliberately not the band: a slug does not follow its band, so
+            # keying the ref to the band would point it at a path the file never
+            # moves to the moment a radical rebands.
             item["visual_mnemonic_url"] = f"radicals/{slug_prefix}/{r['slug']}.webp"
         if r.get("accepted_meanings"):
             item["accepted_answers"] = [
@@ -694,14 +695,7 @@ def _write_banded(kind, items, bands):
         entries.sort(key=lambda pair: pair[0])
         items_out = []
         for i, (_key, item) in enumerate(entries, start=1):
-            item = {**item, "sort_order": i}
-            if (kind == "radicals" and item.get("mnemonic_text")
-                    and "visual_mnemonic_url" not in item):
-                # Deferred from _build_radical_items: the derived `k` corpus
-                # has no asset directory of its own, so its art is keyed by
-                # the band it lands in instead.
-                item["visual_mnemonic_url"] = f"radicals/{level}/{item['slug']}.webp"
-            items_out.append(item)
+            items_out.append({**item, "sort_order": i})
         write_json(
             os.path.join(CURRICULUM_DIR, kind, f"{level}.json"),
             {"jlpt_level": level.upper(), "items": items_out},

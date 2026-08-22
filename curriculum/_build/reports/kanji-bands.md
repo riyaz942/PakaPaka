@@ -150,31 +150,7 @@ Words every kanji of which is inside the cumulative band — the population that
 
 ## Radicals in the N5+N4 band without prose
 
-162 radicals file at a level that ships full content. 25 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
+162 radicals file at a level that ships full content. 49 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
 
-| Radical | Meaning | Level | First needed by |
-| --- | --- | --- | --- |
-| 歯 `tooth` | tooth | N5 | 歯 |
-| 勿 `not` | not | N5 | 物 |
-| 食 `eat` | eat | N5 | 飯 |
-| 元 `beginning` | beginning | N5 | 院 |
-| 廴 `long-stride` | long stride or stretching | N5 | 庭 |
-| 釆 `separate` | separate | N5 | 番 |
-| 氏 `family-name` | family name | N5 | 紙 |
-| 風 `wind` | wind | N5 | 風 |
-| 無 `nothingness` | nothingness | N5 | 無 |
-| 疋 `head` | head | N5 | 題 |
-| 音 `sound` | sound | N5 | 音 |
-| 比 `compare` | compare | N5 | 階 |
-| 殳 `pike` | pike | N5 | 段 |
-| 初 `first-time` | first time | N5 | 初 |
-| 世 `generation` | generation | N4 | 世 |
-| 矛 `halberd` | halberd | N4 | 務 |
-| 生 `life` | life | N4 | 性 |
-| 九 `nine` | nine | N4 | 熱 |
-| 而 `and-yet` | and yet | N4 | 濡 |
-| 彡 `three` | three | N4 | 参 |
-| 隶 `extend` | extend | N4 | 康 |
-| 行 `going` | going | N4 | 術 |
-| 爿 `left-side` | left-side kata | N4 | 将 |
-| 已 `stop` | stop | N4 | 記 |
+Every one of them has a mnemonic.
+

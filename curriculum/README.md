@@ -71,7 +71,7 @@ Set `COMPILE_OUTPUT_PATH` to write elsewhere (CI uses `dist/curriculum.db`).
 
 ## Radical mnemonic images (FR37b)
 
-**Decision:** radical images live **in the repo and are bundled with the app** — no CDN, and **no kanji images**. Files go under `mobile/assets/radicals/{jlpt_lower}/{slug}.webp` (Git LFS preferred), with a hard per-image size budget so the pack stays small (~5–12 MB for ~150 radicals).
+**Decision:** radical images live **in the repo and are bundled with the app** — no CDN, and **no kanji images**. Files go under `mobile/assets/radicals/{source}/{slug}.webp` (Git LFS preferred), with a hard per-image size budget so the pack stays small (~5–12 MB for ~150 radicals). `{source}` is the dataset that wrote the radical — `n5`/`n4`/`k`, the same prefix its slug carries — and never its band, so art does not move when a radical rebands.
 
 Curriculum rows will point at those bundled assets (schema/app wiring lands with Phase 3). Seed data may still carry legacy placeholder `https://…` values until then; the app shows **text fallback** when an image is missing — that is expected, not a hosting plan.
 

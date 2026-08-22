@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
  * Regenerates src/utils/radicalImages.ts from the art committed under
- * assets/radicals/{level}/{slug}.webp.
+ * assets/radicals/{source}/{slug}.webp, where {source} is the dataset that
+ * wrote the radical (n5/n4 for the hand-authored lists, k for the derived
+ * corpus) — not its band, which moves.
  *
  * Metro cannot require() a path built at runtime, so every bundled image needs a
  * literal require in a checked-in file. Run this after adding or removing art.
@@ -14,7 +16,7 @@ const MOBILE_ROOT = path.resolve(__dirname, '..');
 const ASSETS_DIR = path.join(MOBILE_ROOT, 'assets', 'radicals');
 const OUTPUT_FILE = path.join(MOBILE_ROOT, 'src', 'utils', 'radicalImages.ts');
 
-const LEVEL_PATTERN = /^n[1-5]$/;
+const SOURCE_PATTERN = /^(n[1-5]|k)$/;
 const FILE_PATTERN = /^[a-z0-9-]+\.webp$/;
 const MAX_BYTES = 80 * 1024;
 
@@ -23,29 +25,29 @@ function collectImages() {
   const rejected = [];
   const oversize = [];
 
-  for (const level of fs.readdirSync(ASSETS_DIR).sort()) {
-    const levelDir = path.join(ASSETS_DIR, level);
-    if (!fs.statSync(levelDir).isDirectory()) {
-      if (level !== '.gitkeep') rejected.push(level);
+  for (const source of fs.readdirSync(ASSETS_DIR).sort()) {
+    const sourceDir = path.join(ASSETS_DIR, source);
+    if (!fs.statSync(sourceDir).isDirectory()) {
+      if (source !== '.gitkeep') rejected.push(source);
       continue;
     }
-    if (!LEVEL_PATTERN.test(level)) {
-      rejected.push(`${level}/`);
+    if (!SOURCE_PATTERN.test(source)) {
+      rejected.push(`${source}/`);
       continue;
     }
 
-    for (const file of fs.readdirSync(levelDir).sort()) {
+    for (const file of fs.readdirSync(sourceDir).sort()) {
       if (file === '.gitkeep') continue;
       if (!FILE_PATTERN.test(file)) {
-        rejected.push(`${level}/${file}`);
+        rejected.push(`${source}/${file}`);
         continue;
       }
-      const bytes = fs.statSync(path.join(levelDir, file)).size;
+      const bytes = fs.statSync(path.join(sourceDir, file)).size;
       if (bytes > MAX_BYTES) {
-        oversize.push(`${level}/${file} (${Math.round(bytes / 1024)} KB)`);
+        oversize.push(`${source}/${file} (${Math.round(bytes / 1024)} KB)`);
         continue;
       }
-      refs.push(`radicals/${level}/${file}`);
+      refs.push(`radicals/${source}/${file}`);
     }
   }
 
@@ -56,7 +58,7 @@ const { refs, rejected, oversize } = collectImages();
 
 if (rejected.length > 0) {
   console.error(
-    'Unexpected entries under assets/radicals/ (expected {n1-n5}/{slug}.webp):\n' +
+    'Unexpected entries under assets/radicals/ (expected {n1-n5,k}/{slug}.webp):\n' +
       rejected.map((entry) => `  ${entry}`).join('\n') +
       '\nConvert art to WebP (≤80 KB) and name it after the curriculum slug.',
   );
@@ -82,7 +84,8 @@ import type { ImageSourcePropType } from 'react-native';
 
 /**
  * Radical mnemonic art bundled into the app binary, keyed by the value the
- * curriculum stores in \`visual_mnemonic_url\` (\`radicals/{level}/{slug}.webp\`).
+ * curriculum stores in \`visual_mnemonic_url\` (\`radicals/{source}/{slug}.webp\`,
+ * keyed by the dataset that wrote the radical, not by its band).
  * There is no remote image host, so a key missing here means that radical's art
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */

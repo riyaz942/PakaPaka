@@ -135,6 +135,17 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - N5: 76/76 Tier 1 (KanjiVG render) images bundled under `mobile/assets/radicals/n5/`.
 - N4: 0/33 — directory exists and is empty.
 - Tier 2 (curated AI art) not started; production process is [radical-art-web-chat-workflow.md](./workflows/radical-art-web-chat-workflow.md).
+- **`k`-corpus art made reband-safe (done 2026-08-22).** The art path's first segment is the
+  *source dataset*, and `k` had no directory of its own, so `generate.py` fell back to keying
+  `k` radicals' `visual_mnemonic_url` to their **band** — a silent-loss bug, because a slug
+  does not follow its band: reband a `k` radical and its ref moves while the file stays put,
+  and the art disappears behind the text fallback. Four files were exposed (`bou-stick`,
+  `hakenobou`, `kawa-skin`, `nogihen`). `k` now has `mobile/assets/radicals/k/`, the schema
+  pattern is `^radicals/(n[1-5]|k)/…`, `generate-radical-asset-map.js` accepts the directory,
+  and the band-keyed fallback in `_write_banded` is deleted — every ref is now keyed to the
+  dataset that wrote the radical, for all three sources. 126 files, 0 orphans, every ref's
+  directory equals its source. Docs corrected in `radical-mnemonic-images.md`,
+  `curriculum/README.md`, the art workflow and `web/src/lib/guide.ts`.
 
 ### Kanji coverage & dependency order
 - Phase 1 done: `curriculum/_build/reports/dependency_order.py` reports coverage + ordering, and the 6 same-level ordering cases are fixed.
@@ -269,6 +280,23 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   that is Phase E's authoring debt (173 kanji + 24 radicals), not a Phase C regression.
 - **Open, not fixed:** the 11 same-level ordering WARNINGs from Phase A's reband stand.
   Fixing them means re-ordering inside a level, which the plan puts out of scope.
+- **Stale decomposition exceptions cleared (done 2026-08-22).** Ten of
+  `audit_shipped.DECOMPOSITION_EXCEPTIONS`'s group 1 suppressed a missing `builds_on` edge
+  with the reason "the component radical is taught a level later". Banding files a radical at
+  the level of the first kanji that needs it, so after Phase A all ten radicals band N5 and
+  the reason was false — those kanji were shipping without a component chip for a radical the
+  learner already knows, and the mnemonic generator was never told about the component. The
+  ten edges are in `generate_deps.N5_DECOMPOSITION` now (斤→新, 冖→学/帰/売/読, 尸→駅,
+  王→金/国, 广→座, 里→黒) and each child's `meaning_mnemonic` was rewritten to reference and
+  tag the new component, back to `review_status: draft` for a human read. One group-1
+  exception survives and is the only shape that still can: 隹→曜, where the radical's first
+  kanji (集) bands N4 while 曜 bands N5. Adding the edges also pulls 冖 (86→37), 王 (75→17)
+  and 里 (76→58) forward inside N5; no radical or kanji changed **level**.
+- **Cost of that fix, accepted:** non-gating radical→kanji edges out of order went 18 → 21
+  (INFO in `dependency_order.py` — presentation only, never a lesson gate). One is the new
+  王→金 edge; two are collateral, radicals pushed a slot later by 王 jumping ahead. Radicals
+  and kanji are separate dense ranks, so the k-th radical cannot always precede the k-th
+  kanji; removing these would mean re-ordering inside a level, still out of scope.
 
 ### v2 Phase D — skeleton to full scale (done 2026-08-17)
 - Step 1 (2,000-kanji corpus) landed back in Phase A. This is steps 2 and 3.

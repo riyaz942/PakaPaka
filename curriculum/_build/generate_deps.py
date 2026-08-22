@@ -133,6 +133,20 @@ N5_DECOMPOSITION = {
     # 長 is taught as both a radical and a kanji; every other such pair is
     # linked, so 長's kanji was the only one shipping with no component chip.
     "nagai": ["nagai"],
+    # Reband cleanup (2026-08-22). These six components were filed in
+    # `n4_radicals.py` and were held out of the N5 map by
+    # `audit_shipped.DECOMPOSITION_EXCEPTIONS` group 1, whose reason was "the
+    # radical is taught a level later". Banding files a radical at the level of
+    # the first kanji that needs it, so all six now band N5 and the reason no
+    # longer holds. Adding the edges is also what pulls 冖/王/里 forward *within*
+    # N5, ahead of the kanji below. The one group-1 exception that survives is
+    # 隹 -> 曜: 隹 bands N4 (集 claims it first) while 曜 bands N5.
+    "ono": ["atarashii"],
+    "wakanmuri": ["gaku", "kaeru", "uru-baku", "dokusho"],
+    "shikabane": ["eki-station"],
+    "ou-king": ["kin", "kuni"],
+    "madare": ["suwaru"],
+    "sato": ["kane-gold-dup"],
 }
 
 

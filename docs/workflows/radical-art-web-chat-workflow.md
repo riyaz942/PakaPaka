@@ -44,7 +44,7 @@ STYLE block.
 | Model | Gemini web, Pro with extended thinking. AI Studio was tried and rejected |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |
-| Committed | `mobile/assets/radicals/{level}/{slug}.webp` (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
+| Committed | `mobile/assets/radicals/{source}/{slug}.webp` — `{source}` is the dataset that wrote the radical (`n5`/`n4`/`k`), not its band (Git LFS) + regenerated `mobile/src/utils/radicalImages.ts` |
 
 Batch size is a comfort setting now, not a quality one. The old lane capped a session at 5
 because a chat's grip on the style loosened after that; with one chat per radical there is
@@ -84,10 +84,11 @@ PY
 **A radical's art does not necessarily live under the level it is taught at.** A level is a
 *band* (`curriculum/_build/bands.json`) and a band mixes source datasets, so an N4-authored
 radical can be taught at N5 while its art stays at `radicals/n4/{slug}.webp` — the path the
-item's own `visual_mnemonic_url` names. Select on that field and on whether the file it
-names exists, never on `ls mobile/assets/radicals/{level}/`: listing the level directory
-reports every banded-elsewhere radical as missing art, and following it regenerates and
-overwrites art that already shipped.
+item's own `visual_mnemonic_url` names. The three source directories are `n5`, `n4` and
+`k` (the KANJIDIC2-derived corpus); a band can draw from all three. Select on that field
+and on whether the file it names exists, never on `ls mobile/assets/radicals/{level}/`:
+listing the level directory reports every banded-elsewhere radical as missing art, and
+following it regenerates and overwrites art that already shipped.
 
 If it selects nothing, that level's mnemonics aren't reviewed yet — stop and say so. If it
 selects fewer than `<batch-size>`, the level is running out; use what it found.
