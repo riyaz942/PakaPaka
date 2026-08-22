@@ -12,6 +12,7 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/k/and-yet.webp': require('../../assets/radicals/k/and-yet.webp'),
   'radicals/k/beginning.webp': require('../../assets/radicals/k/beginning.webp'),
   'radicals/k/bou-stick.webp': require('../../assets/radicals/k/bou-stick.webp'),
   'radicals/k/bun-writing.webp': require('../../assets/radicals/k/bun-writing.webp'),
@@ -25,15 +26,19 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/hakenobou.webp': require('../../assets/radicals/k/hakenobou.webp'),
   'radicals/k/hakogamae.webp': require('../../assets/radicals/k/hakogamae.webp'),
   'radicals/k/halberd.webp': require('../../assets/radicals/k/halberd.webp'),
+  'radicals/k/hashiru-run.webp': require('../../assets/radicals/k/hashiru-run.webp'),
   'radicals/k/head.webp': require('../../assets/radicals/k/head.webp'),
   'radicals/k/kanamuri.webp': require('../../assets/radicals/k/kanamuri.webp'),
   'radicals/k/katahen.webp': require('../../assets/radicals/k/katahen.webp'),
+  'radicals/k/kau-buy.webp': require('../../assets/radicals/k/kau-buy.webp'),
   'radicals/k/kawa-skin.webp': require('../../assets/radicals/k/kawa-skin.webp'),
   'radicals/k/life.webp': require('../../assets/radicals/k/life.webp'),
   'radicals/k/long-stride.webp': require('../../assets/radicals/k/long-stride.webp'),
   'radicals/k/ma-hook.webp': require('../../assets/radicals/k/ma-hook.webp'),
   'radicals/k/men-exempt.webp': require('../../assets/radicals/k/men-exempt.webp'),
   'radicals/k/men-face.webp': require('../../assets/radicals/k/men-face.webp'),
+  'radicals/k/mochiiru.webp': require('../../assets/radicals/k/mochiiru.webp'),
+  'radicals/k/nine.webp': require('../../assets/radicals/k/nine.webp'),
   'radicals/k/no-slide.webp': require('../../assets/radicals/k/no-slide.webp'),
   'radicals/k/nogihen.webp': require('../../assets/radicals/k/nogihen.webp'),
   'radicals/k/not.webp': require('../../assets/radicals/k/not.webp'),
