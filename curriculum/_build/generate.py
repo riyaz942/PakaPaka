@@ -712,7 +712,11 @@ def generate_bands():
     bands = load_bands()
 
     # Per source, with that source's own reference scope: an N5 kanji example
-    # may only name N5 words, an N4 one may also reinforce N5.
+    # may only name N5 words, an N4 one may also reinforce N5. The "k" source
+    # is itself banded across every level (bands.json), so its examples are
+    # generated under whichever band the kanji lands in — currently always N5
+    # or N4 (N3+ has no example-sentence pipeline yet) — and n4_forms, being
+    # the N5+N4 union already, is a safe superset reference scope for it.
     n5_readings = _vocab_reading_map(N5_VOCAB)
     n5_forms = {v["slug"]: v["form"] for v in N5_VOCAB}
     n4_readings = _vocab_reading_map(N5_VOCAB, N4_VOCAB)
@@ -726,7 +730,7 @@ def generate_bands():
     kanji = (
         build_n5_kanji(n5_readings, n5_forms)
         + build_n4_kanji(n4_readings, n4_forms)
-        + _build_kanji_items("k", skeleton["kanji"])
+        + _build_kanji_items("k", skeleton["kanji"], n4_readings, n4_forms)
     )
     rad_counts = _write_banded("radicals", radicals, bands["radicals"])
     kanji_counts = _write_banded("kanji", kanji, bands["kanji"])

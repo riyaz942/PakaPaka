@@ -39,10 +39,15 @@ then pass them to `webprompts`:
 (`watashi,taberu,mizu`). Working files live under
 `curriculum/_build/generate_content/web/examples/<level>/<type>/` and are
 **gitignored** (like `drafts/`) — they are throwaway. The committed artifact is
-**not** a per-item file; it is the per-level, keyed-by-slug **sidecar** that
-`ingest` merges each passing item into:
+**not** a per-item file; it is the keyed-by-slug **sidecar** that `ingest`
+merges each passing item into. Vocab is unbanded, so its sidecar is named by
+level. Kanji is banded (a band mixes source datasets — see
+`curriculum/_build/bands.json`), so its sidecar is named by the item's own
+**source dataset** (`n5`, `n4` or `k`), not by `<level>` — a kanji taught at
+N5 can be sourced from `n4` or `k`, and `ingest` writes its entry to that
+source's file instead:
 
-- kanji → `curriculum/kanji/examples/<level>.json`
+- kanji → `curriculum/kanji/examples/<source>.json` (source per `bands.json`, not `<level>`)
 - vocab → `curriculum/vocabulary/examples/<level>.json`
 
 `generate.py` inlines those sidecars into the shipped kanji/vocab JSON at build
@@ -107,8 +112,18 @@ import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 level, kind = 'n5', 'vocab'                 # kind: 'vocab' or 'kanji'
 subdir = 'vocabulary' if kind == 'vocab' else 'kanji'
-sidecar = f'../{subdir}/examples/{level}.json'
-done = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
+sidecar_dir = f'../{subdir}/examples'
+if kind == 'kanji':
+    # Kanji is banded: "done" means present in ANY source sidecar
+    # (n5/n4/k.json), not just {level}.json — see bands.json.
+    done = set()
+    for name in ('n5.json', 'n4.json', 'k.json'):
+        path = os.path.join(sidecar_dir, name)
+        if os.path.exists(path):
+            done |= set(json.load(open(path)))
+else:
+    path = os.path.join(sidecar_dir, f'{level}.json')
+    done = set(json.load(open(path))) if os.path.exists(path) else set()
 todo = [s for s in ec.all_slugs(level, kind) if s not in done]
 print(f'{len(todo)} {level} {kind} items left:')
 print(','.join(todo))
@@ -233,6 +248,10 @@ doc):
 ```bash
 # 1. inline the sidecars into the kanji/vocab JSON (adds tokenizer furigana)
 cd curriculum/_build && .venv/bin/python generate.py --level n5 && cd -
+# kanji is a band spanning every source dataset (n5, n4, k) — `--level` alone
+# never rebuilds it, only `--bands` reads the per-source example sidecars
+# back in. Run this too whenever the batch included any kanji:
+cd curriculum/_build && .venv/bin/python generate.py --bands && cd -
 # 2. validate + compile
 npm run validate-schema
 npm run compile-curriculum

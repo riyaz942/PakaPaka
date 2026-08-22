@@ -76,8 +76,20 @@ import json, os, sys; sys.path.insert(0, '.')
 from generate_content import example_context as ec
 LEVEL, KIND, BATCH_LIMIT = '<level>', '<type>', <batch-size>   # KIND: 'vocab' or 'kanji'
 subdir = 'vocabulary' if KIND == 'vocab' else 'kanji'
-sidecar = f'../{subdir}/examples/{LEVEL}.json'
-generated = set(json.load(open(sidecar))) if os.path.exists(sidecar) else set()
+sidecar_dir = f'../{subdir}/examples'
+if KIND == 'kanji':
+    # Kanji is banded: an N5-taught kanji can be sourced from n4 or k, and its
+    # sidecar follows the source (bands.json), not this run's <level> — so
+    # "already generated" means present in ANY of the source sidecars, not
+    # just {LEVEL}.json, or already-done slugs would be regenerated.
+    generated = set()
+    for name in ('n5.json', 'n4.json', 'k.json'):
+        path = os.path.join(sidecar_dir, name)
+        if os.path.exists(path):
+            generated |= set(json.load(open(path)))
+else:
+    path = os.path.join(sidecar_dir, f'{LEVEL}.json')
+    generated = set(json.load(open(path))) if os.path.exists(path) else set()
 drafts_dir = f'generate_content/drafts/examples/{LEVEL}/{KIND}'
 drafted = {n[:-5] for n in os.listdir(drafts_dir) if n.endswith('.json')} if os.path.isdir(drafts_dir) else set()
 drafted.discard('requests-preview')
@@ -170,9 +182,14 @@ pass the same `<subagent-model>` you generated with so provenance is honest.)
 
 If ingestion succeeds:
 
-The item is merged into the per-level sidecar:
+The item is merged into its sidecar. Vocab is unbanded, so its sidecar is
+named by level; kanji is banded (a band mixes source datasets — see
+`curriculum/_build/bands.json`) so its sidecar is named by the item's own
+*source dataset* (`n5`, `n4` or `k`), not by `<level>` — a kanji taught at N5
+can be sourced from `n4` or `k` and its example sentence lands in that
+source's file instead:
 
-- kanji → curriculum/kanji/examples/<level>.json
+- kanji → curriculum/kanji/examples/<source>.json (source per `bands.json`, not `<level>`)
 - vocab → curriculum/vocabulary/examples/<level>.json
 
 Record the slug as successful and proceed to the next slug.
@@ -262,6 +279,11 @@ curriculum/_build/generate_content/
 Then run:
 
 generate.py --level <level>
+
+For a `kanji` run, also run `generate.py --bands` — kanji is a band spanning
+every source dataset (`n5`, `n4`, `k`), and `--level` alone never rebuilds it;
+only `--bands` reads the per-source example sidecars back in. Vocab is
+unbanded, so `--level` alone is sufficient for a `vocab` run.
 
 Followed by:
 
