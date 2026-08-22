@@ -4688,5 +4688,750 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "n4-kai": {
+    "example_sentences": [
+      {
+        "japanese": "明日、駅で友達に会います。",
+        "english": "I'm meeting my friend at the station tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "eki",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "父は毎朝会社に行きます。",
+        "english": "My father goes to the office every morning.",
+        "vocabulary_slugs": [
+          "chichi",
+          "maiasa",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "今日は会議が長いです。",
+        "english": "Today's meeting is long.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kaigi",
+          "nagai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-tooth": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝歯ブラシを使います。",
+        "english": "I use a toothbrush every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "haburashi",
+          "tsukau"
+        ]
+      },
+      {
+        "japanese": "弟は歯が痛いです。",
+        "english": "My younger brother has a toothache.",
+        "vocabulary_slugs": [
+          "otouto",
+          "ha-tooth",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "あの子供の歯は白いです。",
+        "english": "That child's teeth are white.",
+        "vocabulary_slugs": [
+          "ano",
+          "kodomo-v",
+          "ha-tooth",
+          "shiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-body": {
+    "example_sentences": [
+      {
+        "japanese": "彼女の体は元気です。",
+        "english": "She is in good physical shape.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "karada",
+          "genki"
+        ]
+      },
+      {
+        "japanese": "今日は体育がありません。",
+        "english": "There is no P.E. today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "taiiku"
+        ]
+      },
+      {
+        "japanese": "彼の体はとても大きいです。",
+        "english": "His body is very big.",
+        "vocabulary_slugs": [
+          "kare",
+          "karada",
+          "ookii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-thing": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝果物を食べます。",
+        "english": "I eat fruit every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kudamono",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "犬は動物です。",
+        "english": "A dog is an animal.",
+        "vocabulary_slugs": [
+          "inu",
+          "doubutsu"
+        ]
+      },
+      {
+        "japanese": "母と一緒にデパートで買い物します。",
+        "english": "I go shopping at the department store with my mother.",
+        "vocabulary_slugs": [
+          "haha",
+          "issho-ni",
+          "depaato",
+          "kaimono-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-meal": {
+    "example_sentences": [
+      {
+        "japanese": "朝ご飯を食べます。",
+        "english": "I eat breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "昼ご飯はレストランで食べます。",
+        "english": "I'm eating lunch at a restaurant.",
+        "vocabulary_slugs": [
+          "hirugohan",
+          "resutoran",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "晩ご飯は魚と野菜です。",
+        "english": "Dinner is fish and vegetables.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "sakana",
+          "yasai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-tea": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝、母がお茶を入れます。",
+        "english": "Every morning, mom makes tea.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "haha",
+          "ocha"
+        ]
+      },
+      {
+        "japanese": "喫茶店でコーヒーを飲みます。",
+        "english": "I drink coffee at the coffee shop.",
+        "vocabulary_slugs": [
+          "kissaten",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "彼女の目は茶色です。",
+        "english": "Her eyes are brown.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "me-v",
+          "chairo"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-ri": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎晩料理します。",
+        "english": "My mother cooks every night.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiban",
+          "ryouri-suru"
+        ]
+      },
+      {
+        "japanese": "彼が来ない理由が分かりません。",
+        "english": "I don't understand the reason he isn't coming.",
+        "vocabulary_slugs": [
+          "kare",
+          "kuru-v",
+          "riyuu",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "私は日本の地理が好きです。",
+        "english": "I like Japanese geography.",
+        "vocabulary_slugs": [
+          "watashi",
+          "chiri",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-koto": {
+    "example_sentences": [
+      {
+        "japanese": "毎日仕事場で食事します。",
+        "english": "I eat a meal at my workplace every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "shigotoba",
+          "shokuji-suru"
+        ]
+      },
+      {
+        "japanese": "その事は分かりません。",
+        "english": "I don't understand that matter.",
+        "vocabulary_slugs": [
+          "sono",
+          "koto",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "今日は用事があります。",
+        "english": "I have an errand today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "youji",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-hit": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日弁当を作ります。",
+        "english": "I make a boxed lunch every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "bentou",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "この弁当は本当においしいです。",
+        "english": "This boxed lunch is really delicious.",
+        "vocabulary_slugs": [
+          "kono",
+          "bentou",
+          "hontou-ni",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "彼は本当に忙しいです。",
+        "english": "He is really busy.",
+        "vocabulary_slugs": [
+          "kare",
+          "hontou-ni",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-mise": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝喫茶店でコーヒーを飲みます。",
+        "english": "I drink coffee at the coffee shop every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "kissaten",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "私たちはあの店でパンを買います。",
+        "english": "We buy bread at that shop.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "ano",
+          "mise",
+          "pan",
+          "kau-v"
+        ]
+      },
+      {
+        "japanese": "彼女はその店でかばんを買いました。",
+        "english": "She bought a bag at that shop.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "sono",
+          "mise",
+          "kaban",
+          "kau-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-ill": {
+    "example_sentences": [
+      {
+        "japanese": "父は病気で病院に行きました。",
+        "english": "My father was sick, so he went to the hospital.",
+        "vocabulary_slugs": [
+          "chichi",
+          "byouki",
+          "byouin",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "祖母は先週から病気です。",
+        "english": "My grandmother has been ill since last week.",
+        "vocabulary_slugs": [
+          "sobo",
+          "senshuu",
+          "byouki"
+        ]
+      },
+      {
+        "japanese": "その病院は駅にあります。",
+        "english": "That hospital is by the station.",
+        "vocabulary_slugs": [
+          "sono",
+          "byouin",
+          "eki",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-inst": {
+    "example_sentences": [
+      {
+        "japanese": "父は毎朝病院で働きます。",
+        "english": "My father works at the hospital every morning.",
+        "vocabulary_slugs": [
+          "chichi",
+          "maiasa",
+          "byouin",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "お腹が痛いので医院へ行きました。",
+        "english": "My stomach hurt, so I went to the clinic.",
+        "vocabulary_slugs": [
+          "onaka",
+          "itai",
+          "iin",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "この病院は駅から近いです。",
+        "english": "This hospital is close to the station.",
+        "vocabulary_slugs": [
+          "kono",
+          "byouin",
+          "eki",
+          "chikai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-bureau": {
+    "example_sentences": [
+      {
+        "japanese": "郵便局は駅に近いです。",
+        "english": "The post office is close to the station.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "eki",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "母は薬局で働いています。",
+        "english": "My mother works at the pharmacy.",
+        "vocabulary_slugs": [
+          "haha",
+          "yakkyoku",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "郵便局で手紙を出します。",
+        "english": "I'll send a letter at the post office.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "tegami",
+          "dasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-convenience": {
+    "example_sentences": [
+      {
+        "japanese": "郵便局はあそこにあります。",
+        "english": "The post office is over there.",
+        "vocabulary_slugs": [
+          "yuubinkyoku",
+          "asoko",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "駅のコンビニはとても便利です。",
+        "english": "The convenience store at the station is very convenient.",
+        "vocabulary_slugs": [
+          "eki",
+          "konbini",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "バスがないので、この町は不便です。",
+        "english": "There's no bus, so this town is inconvenient.",
+        "vocabulary_slugs": [
+          "basu",
+          "kono",
+          "machi-v",
+          "fuben"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-building": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎週図書館で本を読みます。",
+        "english": "I read books at the library every week.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maishuu",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "友達と映画館で映画を見ました。",
+        "english": "I watched a movie at the cinema with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "eigakan",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "その旅館の部屋はとても静かでした。",
+        "english": "That inn's room was very quiet.",
+        "vocabulary_slugs": [
+          "sono",
+          "ryokan",
+          "heya",
+          "shizuka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-zu": {
+    "example_sentences": [
+      {
+        "japanese": "図書館で地図を見ます。",
+        "english": "I look at a map at the library.",
+        "vocabulary_slugs": [
+          "toshokan",
+          "chizu",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "この地図帳は大きいです。",
+        "english": "This atlas is big.",
+        "vocabulary_slugs": [
+          "kono",
+          "chizuchou",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "彼は図書館で地図帳を借りた。",
+        "english": "He borrowed an atlas at the library.",
+        "vocabulary_slugs": [
+          "kare",
+          "toshokan",
+          "chizuchou",
+          "kariru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-empty": {
+    "example_sentences": [
+      {
+        "japanese": "空港はここから遠いです。",
+        "english": "The airport is far from here.",
+        "vocabulary_slugs": [
+          "kuukou",
+          "koko",
+          "tooi"
+        ]
+      },
+      {
+        "japanese": "空はとても青いです。",
+        "english": "The sky is very blue.",
+        "vocabulary_slugs": [
+          "sora",
+          "aoi"
+        ]
+      },
+      {
+        "japanese": "私たちは明日空港で会います。",
+        "english": "We'll meet at the airport tomorrow.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "ashita",
+          "kuukou",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-brush-stroke": {
+    "example_sentences": [
+      {
+        "japanese": "私は明日、友達と映画を見ます。",
+        "english": "I'm watching a movie with a friend tomorrow.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ashita",
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      },
+      {
+        "japanese": "映画館は駅にあります。",
+        "english": "The cinema is at the station.",
+        "vocabulary_slugs": [
+          "eigakan",
+          "eki",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "その映画は面白いです。",
+        "english": "That movie is interesting.",
+        "vocabulary_slugs": [
+          "sono",
+          "eiga",
+          "omoshiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-reflect": {
+    "example_sentences": [
+      {
+        "japanese": "映画は今日始まった。",
+        "english": "The movie started today.",
+        "vocabulary_slugs": [
+          "eiga",
+          "kyou",
+          "hajimaru"
+        ]
+      },
+      {
+        "japanese": "明日、映画館に行く。",
+        "english": "I'm going to the cinema tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "eigakan",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "友達と映画を見た。",
+        "english": "I watched a movie with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "eiga",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-roof": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は静かです。",
+        "english": "This room is quiet.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "部屋番号は何ですか。",
+        "english": "What is the room number?",
+        "vocabulary_slugs": [
+          "heya-bangou",
+          "nani"
+        ]
+      },
+      {
+        "japanese": "私の部屋に窓があります。",
+        "english": "There is a window in my room.",
+        "vocabulary_slugs": [
+          "watashi",
+          "heya",
+          "mado",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
