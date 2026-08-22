@@ -364,6 +364,20 @@ export const GUIDE_STAGES: GuideStage[] = [
           },
         ],
       },
+      {
+        id: 'subagent',
+        label: 'Subagent',
+        summary:
+          'Same commands and same gate, lessons written by in-session subagents instead of a browser. One subagent per point — no grouping.',
+        runbook: 'docs/workflows/grammar-subagent-workflow-automation-prompt.md',
+        steps: [
+          {
+            title: 'Hand the automation prompt to Claude Code',
+            detail:
+              'Set level, batch size and subagent model at the top of the runbook; it auto-selects the next unwritten points in curriculum order. Keep the batch small — a lesson is long to generate and longer to review.',
+          },
+        ],
+      },
     ],
     finish: assembleSteps(),
     finishNote: 'Grammar lessons are the highest-leverage content and the most expensive to review — read every one in the app’s lesson renderer before flipping it to reviewed.',

@@ -11,6 +11,9 @@ the quality bar, vocabulary constraints, or validation changes.
 
 For a copy-paste browser-automation task (Gemini web), see
 [`grammar-web-chat-workflow-automation-prompt.md`](./grammar-web-chat-workflow-automation-prompt.md).
+For the no-browser lane — same prompts, same gate, lessons written by in-session
+subagents — see
+[`grammar-subagent-workflow-automation-prompt.md`](./grammar-subagent-workflow-automation-prompt.md).
 
 Everything runs from `curriculum/_build` with the existing venv:
 

@@ -12,6 +12,7 @@ import type { ImageSourcePropType } from 'react-native';
  * has not been drawn yet and the caller renders the mnemonic text instead.
  */
 const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
+  'radicals/k/amai.webp': require('../../assets/radicals/k/amai.webp'),
   'radicals/k/and-yet.webp': require('../../assets/radicals/k/and-yet.webp'),
   'radicals/k/beginning.webp': require('../../assets/radicals/k/beginning.webp'),
   'radicals/k/bou-stick.webp': require('../../assets/radicals/k/bou-stick.webp'),
@@ -19,10 +20,12 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/compare.webp': require('../../assets/radicals/k/compare.webp'),
   'radicals/k/dai-big.webp': require('../../assets/radicals/k/dai-big.webp'),
   'radicals/k/eat.webp': require('../../assets/radicals/k/eat.webp'),
+  'radicals/k/extend.webp': require('../../assets/radicals/k/extend.webp'),
   'radicals/k/family-name.webp': require('../../assets/radicals/k/family-name.webp'),
   'radicals/k/first-time.webp': require('../../assets/radicals/k/first-time.webp'),
   'radicals/k/gandare.webp': require('../../assets/radicals/k/gandare.webp'),
   'radicals/k/generation.webp': require('../../assets/radicals/k/generation.webp'),
+  'radicals/k/going.webp': require('../../assets/radicals/k/going.webp'),
   'radicals/k/hakenobou.webp': require('../../assets/radicals/k/hakenobou.webp'),
   'radicals/k/hakogamae.webp': require('../../assets/radicals/k/hakogamae.webp'),
   'radicals/k/halberd.webp': require('../../assets/radicals/k/halberd.webp'),
@@ -37,6 +40,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/ma-hook.webp': require('../../assets/radicals/k/ma-hook.webp'),
   'radicals/k/men-exempt.webp': require('../../assets/radicals/k/men-exempt.webp'),
   'radicals/k/men-face.webp': require('../../assets/radicals/k/men-face.webp'),
+  'radicals/k/mi-body.webp': require('../../assets/radicals/k/mi-body.webp'),
   'radicals/k/mochiiru.webp': require('../../assets/radicals/k/mochiiru.webp'),
   'radicals/k/nine.webp': require('../../assets/radicals/k/nine.webp'),
   'radicals/k/no-slide.webp': require('../../assets/radicals/k/no-slide.webp'),
@@ -47,6 +51,7 @@ const RADICAL_IMAGES: Record<string, ImageSourcePropType> = {
   'radicals/k/separate.webp': require('../../assets/radicals/k/separate.webp'),
   'radicals/k/shou-esteem.webp': require('../../assets/radicals/k/shou-esteem.webp'),
   'radicals/k/sound.webp': require('../../assets/radicals/k/sound.webp'),
+  'radicals/k/three.webp': require('../../assets/radicals/k/three.webp'),
   'radicals/k/tooth.webp': require('../../assets/radicals/k/tooth.webp'),
   'radicals/k/ukebako.webp': require('../../assets/radicals/k/ukebako.webp'),
   'radicals/k/warifu.webp': require('../../assets/radicals/k/warifu.webp'),
