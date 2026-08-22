@@ -2518,5 +2518,1144 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "k-generation": {
+    "example_sentences": [
+      {
+        "japanese": "私は世界の地図が好きです。",
+        "english": "I like maps of the world.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sekai",
+          "chizu",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "先生には本当にお世話になりました。",
+        "english": "I was truly in my teacher's care.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hontou-ni",
+          "osewa-ni-naru"
+        ]
+      },
+      {
+        "japanese": "世界には色々な文化があります。",
+        "english": "There are various cultures in the world.",
+        "vocabulary_slugs": [
+          "sekai",
+          "iroiro",
+          "bunka",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-world": {
+    "example_sentences": [
+      {
+        "japanese": "私は世界地図が好きです。",
+        "english": "I like world maps.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sekai",
+          "chizu",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "世界には色々な言葉があります。",
+        "english": "There are all kinds of languages in the world.",
+        "vocabulary_slugs": [
+          "sekai",
+          "iroiro",
+          "kotoba",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "世界は広いです。",
+        "english": "The world is wide.",
+        "vocabulary_slugs": [
+          "sekai",
+          "hiroi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-politics": {
+    "example_sentences": [
+      {
+        "japanese": "彼は政治の仕事をしています。",
+        "english": "He works in politics.",
+        "vocabulary_slugs": [
+          "kare",
+          "seiji",
+          "shigoto",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "政府はとても忙しいです。",
+        "english": "The government is very busy.",
+        "vocabulary_slugs": [
+          "seifu",
+          "totemo",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "私たちは政治の話をしました。",
+        "english": "We talked about politics.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "seiji",
+          "hanashi",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-reign": {
+    "example_sentences": [
+      {
+        "japanese": "政治はとても難しいです。",
+        "english": "Politics is very difficult.",
+        "vocabulary_slugs": [
+          "seiji",
+          "totemo",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "風邪が治りました。",
+        "english": "My cold got better.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "naoru"
+        ]
+      },
+      {
+        "japanese": "医者が治療をします。",
+        "english": "The doctor gives treatment.",
+        "vocabulary_slugs": [
+          "isha",
+          "chiryou",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-idea": {
+    "example_sentences": [
+      {
+        "japanese": "この言葉の意味が分かりません。",
+        "english": "I don't understand the meaning of this word.",
+        "vocabulary_slugs": [
+          "kono",
+          "kotoba",
+          "imi",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "彼の意見はいつも面白いです。",
+        "english": "His opinions are always interesting.",
+        "vocabulary_slugs": [
+          "kare",
+          "iken",
+          "itsumo",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "車に注意してください。",
+        "english": "Please watch out for cars.",
+        "vocabulary_slugs": [
+          "kuruma",
+          "chuui-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-change": {
+    "example_sentences": [
+      {
+        "japanese": "私は日本の文化が好きです。",
+        "english": "I like Japanese culture.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihon",
+          "bunka",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "この本は日本の文化の話です。",
+        "english": "This book is a story about Japanese culture.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "nihon",
+          "bunka",
+          "hanashi"
+        ]
+      },
+      {
+        "japanese": "先生はいつも文化の話をします。",
+        "english": "The teacher always talks about culture.",
+        "vocabulary_slugs": [
+          "sensei",
+          "itsumo",
+          "bunka",
+          "hanashi",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-sentence": {
+    "example_sentences": [
+      {
+        "japanese": "レストランで魚を注文しました。",
+        "english": "I ordered fish at the restaurant.",
+        "vocabulary_slugs": [
+          "resutoran",
+          "sakana",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "私は日本の文化が好きです。",
+        "english": "I like Japanese culture.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihon",
+          "bunka",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "彼は大学で文学を勉強しています。",
+        "english": "He is studying literature at university.",
+        "vocabulary_slugs": [
+          "kare",
+          "daigaku",
+          "bungaku",
+          "benkyou-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-method": {
+    "example_sentences": [
+      {
+        "japanese": "日本の法律は難しいです。",
+        "english": "Japan's laws are difficult.",
+        "vocabulary_slugs": [
+          "nihon",
+          "houritsu",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "彼は新しい方法を考えました。",
+        "english": "He came up with a new method.",
+        "vocabulary_slugs": [
+          "kare",
+          "atarashii-adj",
+          "houhou",
+          "kangaeru"
+        ]
+      },
+      {
+        "japanese": "彼女は大学で法律を勉強しています。",
+        "english": "She is studying law at university.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "daigaku",
+          "houritsu",
+          "benkyou-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-profit": {
+    "example_sentences": [
+      {
+        "japanese": "このスーパーはとても便利です。",
+        "english": "This supermarket is very convenient.",
+        "vocabulary_slugs": [
+          "kono",
+          "suupaa",
+          "totemo",
+          "benri"
+        ]
+      },
+      {
+        "japanese": "学生にも意見を言う権利があります。",
+        "english": "Students also have the right to voice their opinions.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "iken",
+          "iu-v",
+          "kenri",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "その会社は今年、大きい利益を出した。",
+        "english": "That company made a big profit this year.",
+        "vocabulary_slugs": [
+          "sono",
+          "kaisha",
+          "kotoshi",
+          "ookii",
+          "rieki",
+          "dasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-task": {
+    "example_sentences": [
+      {
+        "japanese": "兄は公務員です。",
+        "english": "My older brother is a civil servant.",
+        "vocabulary_slugs": [
+          "ani",
+          "koumuin"
+        ]
+      },
+      {
+        "japanese": "学生には勉強する義務があります。",
+        "english": "Students have a duty to study.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "benkyou-suru",
+          "gimu",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "父は公務員で、毎日忙しいです。",
+        "english": "My father is a civil servant and he is busy every day.",
+        "vocabulary_slugs": [
+          "chichi",
+          "koumuin",
+          "mainichi",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-transport": {
+    "example_sentences": [
+      {
+        "japanese": "この工場は魚を外国に輸出しています。",
+        "english": "This factory exports fish to foreign countries.",
+        "vocabulary_slugs": [
+          "kono",
+          "koujou",
+          "sakana",
+          "gaikoku",
+          "yushutsu"
+        ]
+      },
+      {
+        "japanese": "私たちは肉をたくさん輸入しています。",
+        "english": "We import a lot of meat.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "niku",
+          "takusan",
+          "yunyuu"
+        ]
+      },
+      {
+        "japanese": "その会社は野菜も輸出しています。",
+        "english": "That company also exports vegetables.",
+        "vocabulary_slugs": [
+          "sono",
+          "kaisha",
+          "yasai",
+          "yushutsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-status": {
+    "example_sentences": [
+      {
+        "japanese": "この本の価格は高いです。",
+        "english": "This book's price is high.",
+        "vocabulary_slugs": [
+          "kono",
+          "hon",
+          "kakaku",
+          "takai-adj"
+        ]
+      },
+      {
+        "japanese": "彼は試験に合格しました。",
+        "english": "He passed the exam.",
+        "vocabulary_slugs": [
+          "kare",
+          "shiken",
+          "goukaku-suru"
+        ]
+      },
+      {
+        "japanese": "彼女は性格がいいです。",
+        "english": "She has a good personality.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "seikaku",
+          "ii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-craft": {
+    "example_sentences": [
+      {
+        "japanese": "父は工場で働いています。",
+        "english": "My father works at a factory.",
+        "vocabulary_slugs": [
+          "chichi",
+          "koujou",
+          "hataraku"
+        ]
+      },
+      {
+        "japanese": "この工場はとても大きいです。",
+        "english": "This factory is very big.",
+        "vocabulary_slugs": [
+          "kono",
+          "koujou",
+          "totemo",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "工場の近くにコンビニがあります。",
+        "english": "There's a convenience store near the factory.",
+        "vocabulary_slugs": [
+          "koujou",
+          "chikaku",
+          "konbini",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-spot": {
+    "example_sentences": [
+      {
+        "japanese": "それが問題点です。",
+        "english": "That's the problem point.",
+        "vocabulary_slugs": [
+          "sore",
+          "mondaiten"
+        ]
+      },
+      {
+        "japanese": "先生はその問題点を説明した。",
+        "english": "The teacher explained that problem point.",
+        "vocabulary_slugs": [
+          "sensei",
+          "sono",
+          "mondaiten",
+          "setsumei-suru"
+        ]
+      },
+      {
+        "japanese": "僕はその問題点が分かりません。",
+        "english": "I don't understand that problem point.",
+        "vocabulary_slugs": [
+          "boku",
+          "sono",
+          "mondaiten",
+          "wakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-meadow": {
+    "example_sentences": [
+      {
+        "japanese": "彼の病気の原因が分かりました。",
+        "english": "We found out the cause of his illness.",
+        "vocabulary_slugs": [
+          "kare",
+          "byouki",
+          "genin",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "その問題の原因はお金でした。",
+        "english": "The cause of that problem was money.",
+        "vocabulary_slugs": [
+          "sono",
+          "mondai",
+          "genin",
+          "okane"
+        ]
+      },
+      {
+        "japanese": "風邪の原因はまだ分かりません。",
+        "english": "The cause of the cold is still unknown.",
+        "vocabulary_slugs": [
+          "kaze-cold",
+          "genin",
+          "mada",
+          "wakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-lady": {
+    "example_sentences": [
+      {
+        "japanese": "あの夫婦はいつも公園を歩いています。",
+        "english": "That married couple always walks in the park.",
+        "vocabulary_slugs": [
+          "ano",
+          "fuufu",
+          "itsumo",
+          "kouen",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "私の母は主婦です。",
+        "english": "My mother is a housewife.",
+        "vocabulary_slugs": [
+          "watashi",
+          "haha",
+          "shufu"
+        ]
+      },
+      {
+        "japanese": "その夫婦は来月新しい家に住みます。",
+        "english": "That couple will live in a new house next month.",
+        "vocabulary_slugs": [
+          "sono",
+          "fuufu",
+          "raigetsu",
+          "atarashii-adj",
+          "ie",
+          "sumu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-sex": {
+    "example_sentences": [
+      {
+        "japanese": "あの男性は駅員です。",
+        "english": "That man is a station staff member.",
+        "vocabulary_slugs": [
+          "ano",
+          "dansei",
+          "ekiin"
+        ]
+      },
+      {
+        "japanese": "その女性は私の姉です。",
+        "english": "That woman is my older sister.",
+        "vocabulary_slugs": [
+          "sono",
+          "josei",
+          "watashi",
+          "ane"
+        ]
+      },
+      {
+        "japanese": "彼の性格はとても優しいです。",
+        "english": "His personality is very kind.",
+        "vocabulary_slugs": [
+          "kare",
+          "seikaku",
+          "totemo",
+          "yasashii-n4"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-friend": {
+    "example_sentences": [
+      {
+        "japanese": "友達と公園で遊びました。",
+        "english": "I played in the park with a friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "彼は私の友人です。",
+        "english": "He is my friend.",
+        "vocabulary_slugs": [
+          "kare",
+          "watashi",
+          "yuujin"
+        ]
+      },
+      {
+        "japanese": "明日、友達に会います。",
+        "english": "I'm meeting a friend tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-inter": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は相手の話をよく聞きます。",
+        "english": "She listens closely to what the other person says.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "aite",
+          "hanashi",
+          "yoku",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "相手の名前が分かりません。",
+        "english": "I don't know the other person's name.",
+        "vocabulary_slugs": [
+          "aite",
+          "namae",
+          "wakaru"
+        ]
+      },
+      {
+        "japanese": "私は相手を待っています。",
+        "english": "I'm waiting for the other person.",
+        "vocabulary_slugs": [
+          "watashi",
+          "aite",
+          "matsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-guest": {
+    "example_sentences": [
+      {
+        "japanese": "レストランに客がたくさんいる。",
+        "english": "There are a lot of customers in the restaurant.",
+        "vocabulary_slugs": [
+          "resutoran",
+          "kyaku",
+          "takusan",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "店員はお客さんに水を出した。",
+        "english": "The clerk brought the customer some water.",
+        "vocabulary_slugs": [
+          "ten-in",
+          "okyakusan",
+          "mizu",
+          "dasu"
+        ]
+      },
+      {
+        "japanese": "今日は客が少しだけで、店は静かだ。",
+        "english": "There are only a few customers today, so the shop is quiet.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kyaku",
+          "sukoshi",
+          "mise",
+          "shizuka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-public": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日公園を歩きます。",
+        "english": "I walk in the park every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "kouen",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "兄は公務員です。",
+        "english": "My older brother is a civil servant.",
+        "vocabulary_slugs": [
+          "ani",
+          "koumuin"
+        ]
+      },
+      {
+        "japanese": "子供は公園で遊びます。",
+        "english": "The child plays in the park.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "kouen",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-gate": {
+    "example_sentences": [
+      {
+        "japanese": "彼は歴史の専門家です。",
+        "english": "He is a historian.",
+        "vocabulary_slugs": [
+          "kare",
+          "rekishi",
+          "senmonka"
+        ]
+      },
+      {
+        "japanese": "父は英語の専門家です。",
+        "english": "My father is an English expert.",
+        "vocabulary_slugs": [
+          "chichi",
+          "eigo",
+          "senmonka"
+        ]
+      },
+      {
+        "japanese": "あの人は料理の専門家です。",
+        "english": "That person is a cooking expert.",
+        "vocabulary_slugs": [
+          "ano",
+          "hito",
+          "ryouri",
+          "senmonka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-turn-into": {
+    "example_sentences": [
+      {
+        "japanese": "娘は今年成人になります。",
+        "english": "My daughter becomes a legal adult this year.",
+        "vocabulary_slugs": [
+          "musume",
+          "kotoshi",
+          "seinenki"
+        ]
+      },
+      {
+        "japanese": "彼は試験に成功すると思います。",
+        "english": "I think he'll succeed on the exam.",
+        "vocabulary_slugs": [
+          "kare",
+          "shiken",
+          "seikou-suru",
+          "omou"
+        ]
+      },
+      {
+        "japanese": "私たちの旅行は成功しました。",
+        "english": "Our trip was a success.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "ryokou",
+          "seikou-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-sort-of": {
+    "example_sentences": [
+      {
+        "japanese": "私は今日全然忙しくないです。",
+        "english": "I'm not busy at all today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyou",
+          "zenzen",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "駅で偶然友達に会いました。",
+        "english": "I happened to run into a friend at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "guuzen",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "この公園の自然はとてもきれいです。",
+        "english": "This park's nature is very beautiful.",
+        "vocabulary_slugs": [
+          "kono",
+          "kouen",
+          "shizen",
+          "totemo",
+          "kirei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-mask": {
+    "example_sentences": [
+      {
+        "japanese": "この映画はとても面白いです。",
+        "english": "This movie is really interesting.",
+        "vocabulary_slugs": [
+          "kono",
+          "eiga",
+          "totemo",
+          "omoshiroi"
+        ]
+      },
+      {
+        "japanese": "宿題は面倒くさいです。",
+        "english": "Homework is such a hassle.",
+        "vocabulary_slugs": [
+          "shukudai",
+          "mendokusai"
+        ]
+      },
+      {
+        "japanese": "彼は真面目な学生です。",
+        "english": "He is a serious student.",
+        "vocabulary_slugs": [
+          "kare",
+          "majime",
+          "gakusei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-clear-up": {
+    "example_sentences": [
+      {
+        "japanese": "この映画は素晴らしいです。",
+        "english": "This movie is wonderful.",
+        "vocabulary_slugs": [
+          "eiga",
+          "subarashii"
+        ]
+      },
+      {
+        "japanese": "彼女の料理は素晴らしい。",
+        "english": "Her cooking is wonderful.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ryouri",
+          "subarashii"
+        ]
+      },
+      {
+        "japanese": "今日の天気は素晴らしいですね。",
+        "english": "Today's weather is wonderful, isn't it.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tenki",
+          "subarashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-heat": {
+    "example_sentences": [
+      {
+        "japanese": "熱いお茶を飲みます。",
+        "english": "I drink hot tea.",
+        "vocabulary_slugs": [
+          "atsui-obj",
+          "ocha",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "彼は熱心に日本語を勉強します。",
+        "english": "He studies Japanese enthusiastically.",
+        "vocabulary_slugs": [
+          "kare",
+          "nesshin",
+          "nihongo",
+          "benkyou-suru"
+        ]
+      },
+      {
+        "japanese": "少し熱があります。",
+        "english": "I have a slight fever.",
+        "vocabulary_slugs": [
+          "sukoshi",
+          "netsu",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-negative": {
+    "example_sentences": [
+      {
+        "japanese": "この部屋は駅から遠くて不便です。",
+        "english": "This room is inconvenient because it's far from the station.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "eki",
+          "tooi",
+          "fuben"
+        ]
+      },
+      {
+        "japanese": "明日の試験のことを考えると不安です。",
+        "english": "Thinking about tomorrow's exam makes me anxious.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shiken",
+          "koto",
+          "kangaeru",
+          "fuan"
+        ]
+      },
+      {
+        "japanese": "一人でこの荷物を運ぶのは不可能です。",
+        "english": "Carrying this luggage alone is impossible.",
+        "vocabulary_slugs": [
+          "hitori-de",
+          "kono",
+          "nimotsu",
+          "hakobu",
+          "fukanou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-precipitous": {
+    "example_sentences": [
+      {
+        "japanese": "夜、この道を歩くのは危険です。",
+        "english": "Walking this road at night is dangerous.",
+        "vocabulary_slugs": [
+          "yoru",
+          "kono",
+          "michi-v",
+          "aruku",
+          "kiken"
+        ]
+      },
+      {
+        "japanese": "彼は保険の仕事をしています。",
+        "english": "He works in insurance.",
+        "vocabulary_slugs": [
+          "kare",
+          "hoken",
+          "shigoto",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "車の保険はとても高いです。",
+        "english": "Car insurance is very expensive.",
+        "vocabulary_slugs": [
+          "kuruma",
+          "hoken",
+          "totemo",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-correct": {
+    "example_sentences": [
+      {
+        "japanese": "彼は正直な人です。",
+        "english": "He's an honest person.",
+        "vocabulary_slugs": [
+          "kare",
+          "shoujiki",
+          "hito"
+        ]
+      },
+      {
+        "japanese": "正直に言ってください。",
+        "english": "Please tell me honestly.",
+        "vocabulary_slugs": [
+          "shoujiki",
+          "iu-v"
+        ]
+      },
+      {
+        "japanese": "私は正直ではありません。",
+        "english": "I'm not an honest person.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shoujiki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
