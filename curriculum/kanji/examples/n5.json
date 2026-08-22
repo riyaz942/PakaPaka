@@ -3940,5 +3940,753 @@
       "prompt_version": "1",
       "review_status": "reviewed"
     }
+  },
+  "k-what": {
+    "example_sentences": [
+      {
+        "japanese": "これは何ですか。",
+        "english": "What is this?",
+        "vocabulary_slugs": [
+          "kore",
+          "nani"
+        ]
+      },
+      {
+        "japanese": "今、何時ですか。",
+        "english": "What time is it now?",
+        "vocabulary_slugs": [
+          "ima",
+          "nannji"
+        ]
+      },
+      {
+        "japanese": "朝ご飯に何を食べますか。",
+        "english": "What will you eat for breakfast?",
+        "vocabulary_slugs": [
+          "asagohan",
+          "nani",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-private": {
+    "example_sentences": [
+      {
+        "japanese": "私は今コーヒーを飲みます。",
+        "english": "I'm drinking coffee now.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ima",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "私たちは公園で遊びます。",
+        "english": "We play in the park.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kouen",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "私は今日学校へ行きます。",
+        "english": "I'm going to school today.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kyou",
+          "gakkou-v",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-he": {
+    "example_sentences": [
+      {
+        "japanese": "彼は今、公園にいます。",
+        "english": "He's at the park right now.",
+        "vocabulary_slugs": [
+          "kare",
+          "ima",
+          "kouen"
+        ]
+      },
+      {
+        "japanese": "彼女は今、コーヒーを飲みます。",
+        "english": "She's drinking coffee now.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "彼女は彼の家に来ました。",
+        "english": "She came to his house.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kare",
+          "ie",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-yesterday": {
+    "example_sentences": [
+      {
+        "japanese": "私は昨日図書館で本を読みました。",
+        "english": "I read a book at the library yesterday.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kinou",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "彼女は一昨日友達に会いました。",
+        "english": "She met a friend the day before yesterday.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ototoi",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "昨日の朝、公園で犬と遊びました。",
+        "english": "Yesterday morning, I played with a dog in the park.",
+        "vocabulary_slugs": [
+          "kinou",
+          "asa",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-akarui": {
+    "example_sentences": [
+      {
+        "japanese": "明日は友達に会います。",
+        "english": "I'm meeting a friend tomorrow.",
+        "vocabulary_slugs": [
+          "ashita",
+          "tomodachi",
+          "au"
+        ]
+      },
+      {
+        "japanese": "この部屋は明るいです。",
+        "english": "This room is bright.",
+        "vocabulary_slugs": [
+          "kono",
+          "heya",
+          "akarui"
+        ]
+      },
+      {
+        "japanese": "先生が本を説明する。",
+        "english": "The teacher explains the book.",
+        "vocabulary_slugs": [
+          "sensei",
+          "hon",
+          "setsumei-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-morning": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝六時に起きます。",
+        "english": "I get up at six every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "roku-v",
+          "okiru"
+        ]
+      },
+      {
+        "japanese": "朝ご飯にパンを食べます。",
+        "english": "I eat bread for breakfast.",
+        "vocabulary_slugs": [
+          "asagohan",
+          "pan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "朝、公園で犬と遊びます。",
+        "english": "In the morning, I play with the dog in the park.",
+        "vocabulary_slugs": [
+          "asa",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-daytime": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日昼ご飯を食べます。",
+        "english": "I eat lunch every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "hirugohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "彼とは昼頃会いました。",
+        "english": "I met him around noon.",
+        "vocabulary_slugs": [
+          "kare",
+          "hiru",
+          "au"
+        ]
+      },
+      {
+        "japanese": "今日の昼ご飯はパンでした。",
+        "english": "Today's lunch was bread.",
+        "vocabulary_slugs": [
+          "kyou",
+          "hirugohan",
+          "pan"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-hou": {
+    "example_sentences": [
+      {
+        "japanese": "夕方に公園で犬と遊びます。",
+        "english": "In the evening I play with my dog at the park.",
+        "vocabulary_slugs": [
+          "yuugata",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "この方が安いです。",
+        "english": "This one is cheaper.",
+        "vocabulary_slugs": [
+          "kono",
+          "hou",
+          "yasui-adj"
+        ]
+      },
+      {
+        "japanese": "あの方は先生です。",
+        "english": "That person over there is a teacher.",
+        "vocabulary_slugs": [
+          "ano",
+          "kata-person",
+          "sensei"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-nightfall": {
+    "example_sentences": [
+      {
+        "japanese": "晩に魚を食べます。",
+        "english": "I'll eat fish this evening.",
+        "vocabulary_slugs": [
+          "ban",
+          "sakana",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "毎晩九時に寝ます。",
+        "english": "I go to sleep at nine every night.",
+        "vocabulary_slugs": [
+          "maiban",
+          "ku-num",
+          "neru"
+        ]
+      },
+      {
+        "japanese": "晩ご飯はレストランで食べましょう。",
+        "english": "Let's eat dinner at a restaurant.",
+        "vocabulary_slugs": [
+          "bangohan",
+          "resutoran",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-ie-kanji": {
+    "example_sentences": [
+      {
+        "japanese": "今日は家族と晩ご飯を食べます。",
+        "english": "Today I'll eat dinner with my family.",
+        "vocabulary_slugs": [
+          "kyou",
+          "kazoku",
+          "bangohan",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "私の家は駅から近いです。",
+        "english": "My house is close to the station.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ie",
+          "eki",
+          "chikai"
+        ]
+      },
+      {
+        "japanese": "家族はみんな家にいます。",
+        "english": "My whole family is at home.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "minna",
+          "ie"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-father": {
+    "example_sentences": [
+      {
+        "japanese": "父は毎日忙しいです。",
+        "english": "My father is busy every day.",
+        "vocabulary_slugs": [
+          "chichi",
+          "mainichi",
+          "isogashii"
+        ]
+      },
+      {
+        "japanese": "お父さんは今日会社に行きます。",
+        "english": "Father is going to the office today.",
+        "vocabulary_slugs": [
+          "otousan",
+          "kyou",
+          "kaisha",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "祖父は公園で犬と遊びます。",
+        "english": "My grandfather plays with the dog at the park.",
+        "vocabulary_slugs": [
+          "sofu",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-ani": {
+    "example_sentences": [
+      {
+        "japanese": "私の兄は医者です。",
+        "english": "My older brother is a doctor.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ani",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "お兄さんは今どこにいますか。",
+        "english": "Where is your older brother right now?",
+        "vocabulary_slugs": [
+          "oniisan",
+          "ima",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "彼には兄弟が三人います。",
+        "english": "He has three siblings.",
+        "vocabulary_slugs": [
+          "kare",
+          "kyoudai",
+          "san-v",
+          "hito"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-ane": {
+    "example_sentences": [
+      {
+        "japanese": "姉は毎朝コーヒーを飲みます。",
+        "english": "My older sister drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "ane",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "お姉さんは今どこにいますか。",
+        "english": "Where is your older sister now?",
+        "vocabulary_slugs": [
+          "oneesan",
+          "ima",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "姉の部屋は狭いです。",
+        "english": "My older sister's room is small.",
+        "vocabulary_slugs": [
+          "ane",
+          "heya",
+          "semai"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "n4-otouto": {
+    "example_sentences": [
+      {
+        "japanese": "私の弟は毎朝コーヒーを飲みます。",
+        "english": "My younger brother drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "watashi",
+          "otouto",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "弟は今、図書館で本を読んでいます。",
+        "english": "My younger brother is reading a book at the library right now.",
+        "vocabulary_slugs": [
+          "otouto",
+          "ima",
+          "toshokan",
+          "hon",
+          "yomu"
+        ]
+      },
+      {
+        "japanese": "私たちの兄弟は四人います。",
+        "english": "There are four siblings in our family.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kyoudai",
+          "yon-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-uncle": {
+    "example_sentences": [
+      {
+        "japanese": "叔父は毎週土曜日に公園で犬と遊びます。",
+        "english": "My uncle plays with his dog in the park every Saturday.",
+        "vocabulary_slugs": [
+          "oji",
+          "maishuu",
+          "doyoubi",
+          "kouen",
+          "inu",
+          "asobu"
+        ]
+      },
+      {
+        "japanese": "叔母は台所で魚を料理しています。",
+        "english": "My aunt is cooking fish in the kitchen.",
+        "vocabulary_slugs": [
+          "oba",
+          "daidokoro",
+          "sakana",
+          "ryouri"
+        ]
+      },
+      {
+        "japanese": "叔父と叔母は今日私の家に来ます。",
+        "english": "My uncle and aunt are coming to my house today.",
+        "vocabulary_slugs": [
+          "oji",
+          "oba",
+          "kyou",
+          "watashi",
+          "ie",
+          "kuru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-husband": {
+    "example_sentences": [
+      {
+        "japanese": "夫は毎朝コーヒーを飲みます。",
+        "english": "My husband drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "otto",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "大丈夫ですか。",
+        "english": "Are you okay?",
+        "vocabulary_slugs": [
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "夫は今、忙しいです。",
+        "english": "My husband is busy right now.",
+        "vocabulary_slugs": [
+          "otto",
+          "ima",
+          "isogashii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-doctor": {
+    "example_sentences": [
+      {
+        "japanese": "私の父は医者です。",
+        "english": "My father is a doctor.",
+        "vocabulary_slugs": [
+          "watashi",
+          "chichi",
+          "isha"
+        ]
+      },
+      {
+        "japanese": "あの医院はどこにありますか。",
+        "english": "Where is that clinic?",
+        "vocabulary_slugs": [
+          "ano",
+          "iin",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "僕は医者になりたいです。",
+        "english": "I want to become a doctor.",
+        "vocabulary_slugs": [
+          "boku",
+          "isha"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-employee": {
+    "example_sentences": [
+      {
+        "japanese": "彼は会社員です。",
+        "english": "He's a company employee.",
+        "vocabulary_slugs": [
+          "kare",
+          "kaishain"
+        ]
+      },
+      {
+        "japanese": "駅員に聞きました。",
+        "english": "I asked a station staff member.",
+        "vocabulary_slugs": [
+          "ekiin",
+          "kiku-v"
+        ]
+      },
+      {
+        "japanese": "私の父は会社員です。",
+        "english": "My father is a company employee.",
+        "vocabulary_slugs": [
+          "watashi",
+          "chichi",
+          "kaishain"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-mother": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎朝コーヒーを飲みます。",
+        "english": "My mother drinks coffee every morning.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiasa",
+          "koohii",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "お母さんは今どこにいますか。",
+        "english": "Where is your mother right now?",
+        "vocabulary_slugs": [
+          "okaasan",
+          "ima",
+          "doko"
+        ]
+      },
+      {
+        "japanese": "叔母は毎年家族の写真を見ます。",
+        "english": "Every year my aunt looks at the family photos.",
+        "vocabulary_slugs": [
+          "oba",
+          "mainen",
+          "kazoku",
+          "shashin",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-ancestor": {
+    "example_sentences": [
+      {
+        "japanese": "祖父は毎朝公園に行きます。",
+        "english": "My grandfather goes to the park every morning.",
+        "vocabulary_slugs": [
+          "sofu",
+          "maiasa",
+          "kouen",
+          "iku-v"
+        ]
+      },
+      {
+        "japanese": "祖母の料理はとてもおいしいです。",
+        "english": "My grandmother's cooking is very delicious.",
+        "vocabulary_slugs": [
+          "sobo",
+          "ryouri",
+          "oishii"
+        ]
+      },
+      {
+        "japanese": "今週、祖父と祖母に会います。",
+        "english": "I'll meet my grandfather and grandmother this week.",
+        "vocabulary_slugs": [
+          "konshuu",
+          "sofu",
+          "sobo",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
