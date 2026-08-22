@@ -23,7 +23,8 @@ pulling changes that touch its `package.json`.
 - **Content** — filterable tables per content type, showing every match at once (status,
   skeleton, missing field, audit findings, free text).
 - **Item detail** — every field rendered (readings, mnemonics, examples,
-  dependencies), plus an edit form that writes straight to the source JSON.
+  dependencies), plus an edit form that writes straight to the source JSON —
+  see the write-back rules under Safety notes.
 - **Graph** — the radical → kanji → vocab → grammar dependency graph
   (Cytoscape + dagre), a per-item neighborhood view, and a "build order" list
   of what's blocked on missing/draft/skeleton prerequisites.
@@ -44,15 +45,34 @@ pulling changes that touch its `package.json`.
   touched. Review your changes with git before committing.
 - Every save is validated (Ajv schema + furigana checks) before it touches
   disk; a failing edit is rejected and the file is left untouched.
+- **`curriculum/{kind}/{level}.json` is generated output.**
+  `curriculum/_build/generate.py` rebuilds it from the Python datasets plus the
+  mnemonic/example sidecars, so anything written only to the level file is
+  destroyed by the next generate run. Every save therefore also writes the
+  sidecar generate.py reads back (`server/curriculum/sidecar.ts`), and an edit
+  to a field with no sidecar behind it is **refused**, naming the dataset to
+  edit instead. Locked fields are shown 🔒 and disabled in the edit form.
+  Editable through the studio: radical `mnemonic_text` / `description`; kanji
+  and vocabulary `meaning_mnemonic` / `reading_mnemonic` / `description` and
+  the `japanese` / `english` / `vocabulary_slugs` of their example sentences;
+  review status for everything except reading passages (grammar's goes to its
+  lesson frontmatter). Everything else — meanings, readings, accepted answers,
+  furigana, word spans, grammar and reading bodies — is authored in
+  `curriculum/_build/` and has to be edited there.
+- Sidecars for radicals and kanji are keyed by **source dataset**, not by the
+  level the item is taught at (a band mixes sources), so a save for a radical
+  taught at N5 can land in `curriculum/radicals/mnemonics/n4.json`. The source
+  comes from `curriculum/_build/bands.json`.
 - The **Pipeline → compile-curriculum** run writes to a scratch path
   (`web/.build/curriculum.db`, gitignored) — it never overwrites
   `mobile/assets/curriculum-seed/curriculum.db`. Run the real
   `npm run compile-curriculum` from the repo root (no `COMPILE_OUTPUT_PATH`
   override) when you actually want to update the shipped seed, then commit it
   through Git LFS as usual.
-- This tool never writes to `curriculum/_build/`, `*/mnemonics/`,
-  `*/examples/`, or `curriculum/dependencies/graph.json` — those are pipeline
-  outputs, not hand-edited sources.
+- This tool never writes to `curriculum/_build/` or
+  `curriculum/dependencies/graph.json`. It does write `*/mnemonics/` and
+  `*/examples/` sidecars — those are the generator's *inputs*, and the only
+  place an edit survives a regeneration.
 
 ## Targets and audit
 

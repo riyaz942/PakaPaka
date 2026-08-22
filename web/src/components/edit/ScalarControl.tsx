@@ -5,9 +5,15 @@ type Props = {
   kind: ItemFieldKind;
   value: unknown;
   onChange: (value: unknown) => void;
+  /** Field is rebuilt by generate.py — show the value, refuse the edit. */
+  readOnly?: boolean;
 };
 
-function JsonControl({ value, onChange }: { value: unknown; onChange: (value: unknown) => void }) {
+function JsonControl({
+  value,
+  onChange,
+  readOnly,
+}: { value: unknown; onChange: (value: unknown) => void; readOnly?: boolean }) {
   const [text, setText] = useState(() => JSON.stringify(value ?? null, null, 2));
   const [error, setError] = useState<string | null>(null);
 
@@ -16,6 +22,7 @@ function JsonControl({ value, onChange }: { value: unknown; onChange: (value: un
       <textarea
         className="edit-textarea edit-textarea--json"
         rows={4}
+        disabled={readOnly}
         value={text}
         onChange={(e) => {
           const next = e.target.value;
@@ -33,13 +40,14 @@ function JsonControl({ value, onChange }: { value: unknown; onChange: (value: un
   );
 }
 
-export function ScalarControl({ kind, value, onChange }: Props) {
+export function ScalarControl({ kind, value, onChange, readOnly }: Props) {
   switch (kind) {
     case 'text':
       return (
         <input
           type="text"
           className="edit-input"
+          disabled={readOnly}
           value={typeof value === 'string' ? value : ''}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -49,6 +57,7 @@ export function ScalarControl({ kind, value, onChange }: Props) {
         <textarea
           className="edit-textarea"
           rows={4}
+          disabled={readOnly}
           value={typeof value === 'string' ? value : ''}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -58,6 +67,7 @@ export function ScalarControl({ kind, value, onChange }: Props) {
         <input
           type="number"
           className="edit-input edit-input--number"
+          disabled={readOnly}
           value={typeof value === 'number' ? value : 0}
           onChange={(e) => onChange(Number(e.target.value))}
         />
@@ -66,6 +76,7 @@ export function ScalarControl({ kind, value, onChange }: Props) {
       return (
         <input
           type="checkbox"
+          disabled={readOnly}
           checked={value === true}
           onChange={(e) => onChange(e.target.checked)}
         />
@@ -77,6 +88,7 @@ export function ScalarControl({ kind, value, onChange }: Props) {
           type="text"
           className="edit-input"
           placeholder="comma-separated"
+          disabled={readOnly}
           value={arr.join(', ')}
           onChange={(e) =>
             onChange(
@@ -90,15 +102,15 @@ export function ScalarControl({ kind, value, onChange }: Props) {
       );
     }
     case 'json':
-      return <JsonControl value={value} onChange={onChange} />;
+      return <JsonControl value={value} onChange={onChange} readOnly={readOnly} />;
     default:
       return null;
   }
 }
 
-export function SelectControl({ value, onChange, options }: { value: unknown; onChange: (value: unknown) => void; options: string[] }) {
+export function SelectControl({ value, onChange, options, readOnly }: { value: unknown; onChange: (value: unknown) => void; options: string[]; readOnly?: boolean }) {
   return (
-    <select className="edit-input" value={typeof value === 'string' ? value : ''} onChange={(e) => onChange(e.target.value)}>
+    <select className="edit-input" disabled={readOnly} value={typeof value === 'string' ? value : ''} onChange={(e) => onChange(e.target.value)}>
       <option value="">—</option>
       {options.map((opt) => (
         <option key={opt} value={opt}>

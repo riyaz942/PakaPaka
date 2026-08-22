@@ -169,7 +169,7 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   (`nihon`) — plus 2 `tabun` mnemonic errors. Moving 彼女 later fixed the ordering of the word
   itself and broke the examples that used it. Not Phase 2 fallout; not yet fixed.
 - ~~Phase 2 leaves 3 known WARNINGs on 方~~ — resolved in Phase 4.
-- Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status. Phase 4 fixed one instance at source (`kokoro`) by promoting the **sidecar**, which is the durable form of the fix.
+- ~~Running `generate.py --level <n>` reverts Studio review-status flips in `radicals/*.json` and `kanji/n5.json`; those files must be `git checkout`-ed after a regeneration until the sidecars carry the status.~~ **Fixed 2026-08-21** in `web/server/curriculum/sidecar.ts`: every Studio save now writes the sidecar generate.py reads back (source-keyed for radicals/kanji, level-keyed for vocabulary, lesson frontmatter for grammar), and an edit to a field with no sidecar behind it is refused instead of written to a file the next generate run overwrites. Verified: after a Studio save, `generate.py --bands` + `--level n5` reproduces the level files byte-for-byte.
 
 ### Phase 4 — authoring the skeleton (tranche 1 done 2026-08-16)
 - **The plan's "order by reuse count" is obsolete.** It assumed authoring a kanji is what

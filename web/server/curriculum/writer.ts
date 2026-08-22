@@ -7,6 +7,11 @@ import {
   runFuriganaChecks,
 } from '../../../scripts/validate-schema.js';
 import { reload } from './loader.js';
+import {
+  checkReviewStatusTarget,
+  persistItemEdit,
+  persistReviewStatus,
+} from './sidecar.js';
 import type { ContentType, JlptLevel, ReviewStatus } from './types.js';
 
 const DIR_BY_TYPE: Record<ContentType, { dir: string; arrayKey: 'items' | 'passages' }> = {
@@ -67,11 +72,45 @@ function validateFile(
   return { errors, warnings };
 }
 
+type OpenedFile = {
+  filePath: string;
+  relative: string;
+  file: Record<string, unknown>;
+  rows: Record<string, unknown>[];
+};
+
+function openLevelFile(
+  curriculumDir: string,
+  type: ContentType,
+  level: JlptLevel,
+): OpenedFile | { errors: string[] } {
+  const filePath = filePathFor(curriculumDir, type, level);
+  const relative = path.relative(curriculumDir, filePath).replace(/\\/g, '/');
+  const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
+  const arrayKey = DIR_BY_TYPE[type].arrayKey;
+  const rows = file[arrayKey] as Record<string, unknown>[] | undefined;
+  if (!Array.isArray(rows)) {
+    return { errors: [`${relative}: missing "${arrayKey}" array`] };
+  }
+  return { filePath, relative, file, rows };
+}
+
+function writeLevelFile(filePath: string, file: Record<string, unknown>): void {
+  const tmpPath = `${filePath}.tmp`;
+  fs.writeFileSync(tmpPath, JSON.stringify(file, null, 2) + '\n', 'utf8');
+  fs.renameSync(tmpPath, filePath);
+}
+
 /**
  * Replaces the item matching (type, level, slug) in its shipped file, in
  * place, then validates the whole file and atomically writes it back.
  * `updatedRaw` must be the full item object (client-side edited copy of the
  * `raw` field returned by GET /api/item/:type/:slug).
+ *
+ * The shipped file is generated output. Every change is written to the sidecar
+ * generate.py rebuilds it from as well (sidecar.ts), and a change to a field
+ * with no such sidecar is refused rather than written to a file the next
+ * generate run overwrites.
  */
 export function saveItem(
   repoRoot: string,
@@ -81,21 +120,18 @@ export function saveItem(
   updatedRaw: Record<string, unknown>,
 ): SaveResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
-  const filePath = filePathFor(curriculumDir, type, level);
-  const relative = path.relative(curriculumDir, filePath).replace(/\\/g, '/');
-
-  const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
-  const arrayKey = DIR_BY_TYPE[type].arrayKey;
-  const rows = file[arrayKey] as Record<string, unknown>[] | undefined;
-  if (!Array.isArray(rows)) {
-    return { ok: false, errors: [`${relative}: missing "${arrayKey}" array`] };
+  const opened = openLevelFile(curriculumDir, type, level);
+  if ('errors' in opened) {
+    return { ok: false, errors: opened.errors };
   }
+  const { filePath, relative, file, rows } = opened;
 
   const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
   if (index === -1) {
     return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
   }
 
+  const currentRaw = rows[index];
   rows[index] = updatedRaw;
 
   const { errors } = validateFile(curriculumDir, relative, file);
@@ -103,15 +139,21 @@ export function saveItem(
     return { ok: false, errors };
   }
 
-  const tmpPath = `${filePath}.tmp`;
-  fs.writeFileSync(tmpPath, JSON.stringify(file, null, 2) + '\n', 'utf8');
-  fs.renameSync(tmpPath, filePath);
+  const persisted = persistItemEdit(repoRoot, type, level, slug, currentRaw, updatedRaw);
+  if (!persisted.ok) {
+    return persisted;
+  }
 
+  writeLevelFile(filePath, file);
   reload(repoRoot);
   return { ok: true };
 }
 
-/** One-click draft/reviewed/flagged_for_rewrite flip — same validate + atomic-write path as saveItem. */
+/**
+ * One-click draft/reviewed/flagged_for_rewrite flip. The status lives in the
+ * sidecar `_meta` (or, for grammar, the lesson frontmatter); the shipped file
+ * is updated to match so the UI reflects it without a generate run.
+ */
 export function updateReviewStatus(
   repoRoot: string,
   type: ContentType,
@@ -120,24 +162,34 @@ export function updateReviewStatus(
   reviewStatus: Exclude<ReviewStatus, 'none'>,
 ): SaveResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
-  const filePath = filePathFor(curriculumDir, type, level);
-  const arrayKey = DIR_BY_TYPE[type].arrayKey;
-  const file = JSON.parse(fs.readFileSync(filePath, 'utf8')) as Record<string, unknown>;
-  const rows = file[arrayKey] as Record<string, unknown>[] | undefined;
-  if (!Array.isArray(rows)) {
-    return { ok: false, errors: [`missing "${arrayKey}" array`] };
+  const opened = openLevelFile(curriculumDir, type, level);
+  if ('errors' in opened) {
+    return { ok: false, errors: opened.errors };
   }
+  const { filePath, relative, file, rows } = opened;
 
   const index = rows.findIndex((row, i) => rowSlug(type, row, level, i) === slug);
   if (index === -1) {
-    return { ok: false, errors: [`no item with slug "${slug}"`] };
+    return { ok: false, errors: [`${relative}: no item with slug "${slug}"`] };
   }
 
   const row = rows[index];
   const meta = (row._meta && typeof row._meta === 'object' ? row._meta : {}) as Record<string, unknown>;
   row._meta = { ...meta, review_status: reviewStatus };
 
-  return saveItem(repoRoot, type, level, slug, row);
+  const { errors } = validateFile(curriculumDir, relative, file);
+  if (errors.length > 0) {
+    return { ok: false, errors };
+  }
+
+  const persisted = persistReviewStatus(repoRoot, type, level, slug, reviewStatus);
+  if (!persisted.ok) {
+    return persisted;
+  }
+
+  writeLevelFile(filePath, file);
+  reload(repoRoot);
+  return { ok: true };
 }
 
 export type BulkUpdateItem = { type: ContentType; level: JlptLevel; slug: string };
@@ -148,8 +200,9 @@ export type BulkUpdateResult =
 /**
  * Bulk status flip for the Content list's multi-select bar. Groups the
  * selection by source file (one file per type+level), validates every
- * resulting file up front, and only writes any of them once all validate —
- * so a bad item in one file can't leave other files partially updated.
+ * resulting file up front — and checks every item has a sidecar to persist the
+ * status to — and only writes once all of them pass, so a bad item in one file
+ * can't leave other files partially updated.
  */
 export function updateReviewStatusBulk(
   repoRoot: string,
@@ -158,6 +211,13 @@ export function updateReviewStatusBulk(
 ): BulkUpdateResult {
   const curriculumDir = path.join(repoRoot, 'curriculum');
   const errors: string[] = [];
+
+  for (const item of items) {
+    errors.push(...checkReviewStatusTarget(repoRoot, item.type, item.level, item.slug));
+  }
+  if (errors.length > 0) {
+    return { ok: false, errors };
+  }
 
   const groups = new Map<string, { type: ContentType; level: JlptLevel; slugs: string[] }>();
   for (const item of items) {
@@ -208,10 +268,17 @@ export function updateReviewStatusBulk(
     return { ok: false, errors };
   }
 
+  for (const item of items) {
+    const persisted = persistReviewStatus(
+      repoRoot, item.type, item.level, item.slug, reviewStatus,
+    );
+    if (!persisted.ok) {
+      return { ok: false, errors: persisted.errors };
+    }
+  }
+
   for (const { filePath, file } of pending) {
-    const tmpPath = `${filePath}.tmp`;
-    fs.writeFileSync(tmpPath, JSON.stringify(file, null, 2) + '\n', 'utf8');
-    fs.renameSync(tmpPath, filePath);
+    writeLevelFile(filePath, file);
   }
 
   reload(repoRoot);

@@ -37,9 +37,18 @@ export function ReviewStatusControl({ type, slug, status, onChanged }: Props) {
     }
   }
 
+  // Reading passages have no sidecar, so a status set here would be dropped by
+  // the next generate.py run (server/curriculum/sidecar.ts refuses it too).
+  const unsupported = type === 'reading';
+
   return (
     <span className="review-status-control">
-      <select value={status === 'none' ? '' : status} disabled={saving} onChange={(e) => handleChange(e.target.value)}>
+      <select
+        value={status === 'none' ? '' : status}
+        disabled={saving || unsupported}
+        title={unsupported ? 'Reading passages are authored in curriculum/_build/{n5,n4}_readings.py' : undefined}
+        onChange={(e) => handleChange(e.target.value)}
+      >
         <option value="" disabled>
           set status…
         </option>

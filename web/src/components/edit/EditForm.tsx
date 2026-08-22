@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { EDIT_SCHEMAS } from '../../lib/editSchema';
+import { EDIT_SCHEMAS, GENERATED_FIELD_NOTE } from '../../lib/editSchema';
 import type { ContentType } from '../../types/api';
 import { ObjectArrayEditor } from './ObjectArrayEditor';
 import { ScalarControl, SelectControl } from './ScalarControl';
@@ -78,19 +78,25 @@ export function EditForm({ type, slug, initialRaw, onCancel, onSaved }: Props) {
         </ul>
       ) : null}
 
+      <p className="panel-muted">{GENERATED_FIELD_NOTE[type]}</p>
+
       {EDIT_SCHEMAS[type].map((field) => (
         <label className="edit-field" key={field.key}>
-          <span className="edit-field__label">{field.label}</span>
+          <span className="edit-field__label">
+            {field.label}
+            {field.readOnly ? <span className="edit-field__lock" title="Generated — not editable here"> 🔒</span> : null}
+          </span>
           {field.kind === 'select' ? (
-            <SelectControl value={draft[field.key]} onChange={(v) => setField(field.key, v)} options={field.options} />
+            <SelectControl value={draft[field.key]} onChange={(v) => setField(field.key, v)} options={field.options} readOnly={field.readOnly} />
           ) : field.kind === 'objectArray' ? (
             <ObjectArrayEditor
               itemFields={field.itemFields}
               value={draft[field.key]}
               onChange={(rows) => setField(field.key, rows)}
+              readOnly={field.readOnly}
             />
           ) : (
-            <ScalarControl kind={field.kind} value={draft[field.key]} onChange={(v) => setField(field.key, v)} />
+            <ScalarControl kind={field.kind} value={draft[field.key]} onChange={(v) => setField(field.key, v)} readOnly={field.readOnly} />
           )}
         </label>
       ))}
