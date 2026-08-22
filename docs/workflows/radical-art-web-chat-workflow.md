@@ -40,7 +40,7 @@ STYLE block.
 | --- | --- |
 | `<batch-size>` | How many radicals one run covers. Each gets its own chat, so this is purely how much you want to paste in one sitting |
 | Sessions | **One fresh Gemini chat per radical**, single message. No chat is reused, and chat history carries nothing |
-| Levels | Counted by *band*, not by source dataset — run Step 0 for the live number. As of 2026-08-21: N5 122 radicals, 122 reviewed, 25 still need art · N4 40 radicals, 18 reviewed, 0 need art · N3 44/8/0 · N2 17/1/0 · N1 15/0/0 |
+| Levels | Counted by *band*, not by source dataset — run Step 0 for the live number. As of 2026-08-22: N5 122 radicals, 122 reviewed, 25 still need art · N4 40 radicals, 23 reviewed, 5 in this batch · N3 44/8/0 · N2 17/1/0 · N1 15/0/0 |
 | Model | Gemini web, Pro with extended thinking. AI Studio was tried and rejected |
 | Style carrier | The STYLE block, embedded in every prompt. **No reference image is attached** |
 | Staging | `curriculum/_build/generate_content/web/radical-art/` (gitignored) |

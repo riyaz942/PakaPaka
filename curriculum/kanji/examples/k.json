@@ -3657,5 +3657,2252 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "k-straightaway": {
+    "example_sentences": [
+      {
+        "japanese": "時計を直します。",
+        "english": "I'll fix the clock.",
+        "vocabulary_slugs": [
+          "tokei",
+          "naosu"
+        ]
+      },
+      {
+        "japanese": "彼は正直です。",
+        "english": "He's honest.",
+        "vocabulary_slugs": [
+          "kare",
+          "shoujiki"
+        ]
+      },
+      {
+        "japanese": "またやり直しましょう。",
+        "english": "Let's start over again.",
+        "vocabulary_slugs": [
+          "mata",
+          "yarinaosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-suffering": {
+    "example_sentences": [
+      {
+        "japanese": "僕は料理が苦手です。",
+        "english": "I'm bad at cooking.",
+        "vocabulary_slugs": [
+          "boku",
+          "ryouri",
+          "nigate"
+        ]
+      },
+      {
+        "japanese": "このコーヒーは苦いです。",
+        "english": "This coffee is bitter.",
+        "vocabulary_slugs": [
+          "kono",
+          "koohii",
+          "nigai"
+        ]
+      },
+      {
+        "japanese": "彼は英語が苦手だ。",
+        "english": "He's bad at English.",
+        "vocabulary_slugs": [
+          "kare",
+          "eigo",
+          "nigate"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-even": {
+    "example_sentences": [
+      {
+        "japanese": "猫が椅子から落ちても平気です。",
+        "english": "Even if the cat falls off the chair, it's fine.",
+        "vocabulary_slugs": [
+          "neko",
+          "isu",
+          "ochiru",
+          "heiki"
+        ]
+      },
+      {
+        "japanese": "彼は宿題を忘れても平気だった。",
+        "english": "He didn't care even though he forgot his homework.",
+        "vocabulary_slugs": [
+          "kare",
+          "shukudai",
+          "wasureru",
+          "heiki"
+        ]
+      },
+      {
+        "japanese": "雨でも彼女は平気で歩く。",
+        "english": "Even in the rain, she walks along unconcerned.",
+        "vocabulary_slugs": [
+          "ame-v",
+          "kanojo",
+          "heiki",
+          "aruku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-demolition": {
+    "example_sentences": [
+      {
+        "japanese": "弟が私の時計を壊した。",
+        "english": "My younger brother broke my watch.",
+        "vocabulary_slugs": [
+          "otouto",
+          "watashi",
+          "tokei",
+          "kowasu"
+        ]
+      },
+      {
+        "japanese": "パソコンが壊れた。",
+        "english": "The computer broke.",
+        "vocabulary_slugs": [
+          "pasokon",
+          "kowareru"
+        ]
+      },
+      {
+        "japanese": "誰が窓を壊しましたか。",
+        "english": "Who broke the window?",
+        "vocabulary_slugs": [
+          "dare",
+          "mado",
+          "kowasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-bring-up": {
+    "example_sentences": [
+      {
+        "japanese": "私は体育が好きです。",
+        "english": "I like physical education.",
+        "vocabulary_slugs": [
+          "watashi",
+          "taiiku",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "父は子供を育てた。",
+        "english": "My father raised the child.",
+        "vocabulary_slugs": [
+          "chichi",
+          "kodomo-v",
+          "sodateru"
+        ]
+      },
+      {
+        "japanese": "子供は元気に育った。",
+        "english": "The child grew up healthy.",
+        "vocabulary_slugs": [
+          "kodomo-v",
+          "genki",
+          "sodatsu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-drought": {
+    "example_sentences": [
+      {
+        "japanese": "この服はまだ乾いていません。",
+        "english": "These clothes aren't dry yet.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "mada",
+          "kawaku"
+        ]
+      },
+      {
+        "japanese": "彼は毎朝髪を乾かします。",
+        "english": "He dries his hair every morning.",
+        "vocabulary_slugs": [
+          "kare",
+          "maiasa",
+          "kami-hair",
+          "kawakasu"
+        ]
+      },
+      {
+        "japanese": "タオルを窓の近くに置いて乾かしましょう。",
+        "english": "Let's put the towel near the window to dry it.",
+        "vocabulary_slugs": [
+          "taoru",
+          "mado",
+          "chikaku",
+          "oku",
+          "kawakasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-get-wet": {
+    "example_sentences": [
+      {
+        "japanese": "靴が雨で濡れました。",
+        "english": "My shoes got wet in the rain.",
+        "vocabulary_slugs": [
+          "kutsu",
+          "ame-v"
+        ]
+      },
+      {
+        "japanese": "彼は服を濡らしました。",
+        "english": "He got his clothes wet.",
+        "vocabulary_slugs": [
+          "kare",
+          "fuku"
+        ]
+      },
+      {
+        "japanese": "犬が水で濡れています。",
+        "english": "The dog is wet from the water.",
+        "vocabulary_slugs": [
+          "inu",
+          "mizu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-seethe": {
+    "example_sentences": [
+      {
+        "japanese": "姉が朝、お茶のために水を沸かします。",
+        "english": "My sister boils water for tea in the morning.",
+        "vocabulary_slugs": [
+          "ane",
+          "asa",
+          "ocha",
+          "mizu",
+          "wakasu"
+        ]
+      },
+      {
+        "japanese": "台所で水が沸いています。",
+        "english": "The water is boiling in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "mizu",
+          "waku"
+        ]
+      },
+      {
+        "japanese": "僕は毎朝コーヒーのために水を沸かす。",
+        "english": "I boil water for coffee every morning.",
+        "vocabulary_slugs": [
+          "boku",
+          "maiasa",
+          "koohii",
+          "mizu",
+          "wakasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-burn": {
+    "example_sentences": [
+      {
+        "japanese": "台所で紙が燃えている。",
+        "english": "Paper is burning in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "kami-paper",
+          "moeru"
+        ]
+      },
+      {
+        "japanese": "彼は庭で木を燃やした。",
+        "english": "He burned wood in the garden.",
+        "vocabulary_slugs": [
+          "kare",
+          "niwa",
+          "ki-tree-v",
+          "moyasu"
+        ]
+      },
+      {
+        "japanese": "公園の木が燃えている。",
+        "english": "A tree in the park is burning.",
+        "vocabulary_slugs": [
+          "kouen",
+          "ki-tree-v",
+          "moeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-current": {
+    "example_sentences": [
+      {
+        "japanese": "川の水がゆっくり流れる。",
+        "english": "The river's water flows slowly.",
+        "vocabulary_slugs": [
+          "kawa-v",
+          "mizu",
+          "nagareru"
+        ]
+      },
+      {
+        "japanese": "台所で水を流した。",
+        "english": "I let the water run in the kitchen.",
+        "vocabulary_slugs": [
+          "daidokoro",
+          "mizu",
+          "nagasu"
+        ]
+      },
+      {
+        "japanese": "時間がとても速く流れる。",
+        "english": "Time flows by very fast.",
+        "vocabulary_slugs": [
+          "jikan",
+          "totemo",
+          "hayai-fast",
+          "nagareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-times": {
+    "example_sentences": [
+      {
+        "japanese": "毎日二回散歩する。",
+        "english": "I take a walk twice every day.",
+        "vocabulary_slugs": [
+          "mainichi",
+          "ni-v",
+          "kai-times",
+          "sanpo-suru"
+        ]
+      },
+      {
+        "japanese": "彼は鍵を回す。",
+        "english": "He turns the key.",
+        "vocabulary_slugs": [
+          "kare",
+          "kagi",
+          "mawasu"
+        ]
+      },
+      {
+        "japanese": "彼女は部屋を見回した。",
+        "english": "She looked around the room.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "heya",
+          "mimawasu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-surpass": {
+    "example_sentences": [
+      {
+        "japanese": "来月、新しい家に引っ越します。",
+        "english": "I'm moving to a new house next month.",
+        "vocabulary_slugs": [
+          "raigetsu",
+          "atarashii-adj",
+          "ie",
+          "hikkosu"
+        ]
+      },
+      {
+        "japanese": "引っ越しは大変です。",
+        "english": "Moving is tough.",
+        "vocabulary_slugs": [
+          "hikkoshi",
+          "taihen"
+        ]
+      },
+      {
+        "japanese": "友達が来週引っ越します。",
+        "english": "My friend is moving next week.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "raishuu",
+          "hikkosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-traffic": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日大学に通っています。",
+        "english": "I commute to university every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "daigaku",
+          "kayou"
+        ]
+      },
+      {
+        "japanese": "この道はいつも車がたくさん通ります。",
+        "english": "A lot of cars always pass through this road.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "itsumo",
+          "kuruma",
+          "takusan",
+          "tooru"
+        ]
+      },
+      {
+        "japanese": "彼は普通、朝ご飯を食べません。",
+        "english": "He doesn't usually eat breakfast.",
+        "vocabulary_slugs": [
+          "kare",
+          "futsuu",
+          "asagohan",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-severance": {
+    "example_sentences": [
+      {
+        "japanese": "彼はその仕事を断った。",
+        "english": "He turned down that job.",
+        "vocabulary_slugs": [
+          "kare",
+          "sono",
+          "shigoto",
+          "kotowaru"
+        ]
+      },
+      {
+        "japanese": "忙しかったので、友達との約束を断った。",
+        "english": "I was busy, so I turned down my friend's plans.",
+        "vocabulary_slugs": [
+          "isogashii",
+          "tomodachi",
+          "yakusoku",
+          "kotowaru"
+        ]
+      },
+      {
+        "japanese": "会社で毎年健康診断がある。",
+        "english": "There's a health checkup at the company every year.",
+        "vocabulary_slugs": [
+          "kaisha",
+          "mainen",
+          "kenkoushindan",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-help": {
+    "example_sentences": [
+      {
+        "japanese": "友達が私を助けてくれました。",
+        "english": "My friend helped me.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "watashi",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "彼が手伝ってくれて助かりました。",
+        "english": "It was a huge help that he pitched in.",
+        "vocabulary_slugs": [
+          "kare",
+          "tetsudau",
+          "kureru"
+        ]
+      },
+      {
+        "japanese": "兄はいつも困っている人を助けます。",
+        "english": "My older brother always helps people in trouble.",
+        "vocabulary_slugs": [
+          "ani",
+          "itsumo",
+          "komaru",
+          "hito"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-scold": {
+    "example_sentences": [
+      {
+        "japanese": "母は弟を叱った。",
+        "english": "My mother scolded my younger brother.",
+        "vocabulary_slugs": [
+          "haha",
+          "otouto",
+          "shikaru"
+        ]
+      },
+      {
+        "japanese": "私は先生に叱られた。",
+        "english": "I was scolded by the teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "shikarareru"
+        ]
+      },
+      {
+        "japanese": "兄は父に叱られて泣いた。",
+        "english": "My older brother got scolded by our father and cried.",
+        "vocabulary_slugs": [
+          "ani",
+          "chichi",
+          "shikarareru",
+          "naku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-praise": {
+    "example_sentences": [
+      {
+        "japanese": "先生は私を褒めました。",
+        "english": "The teacher praised me.",
+        "vocabulary_slugs": [
+          "sensei",
+          "watashi",
+          "homeru"
+        ]
+      },
+      {
+        "japanese": "彼は宿題をして先生に褒められた。",
+        "english": "He did his homework and was praised by the teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "shukudai",
+          "suru",
+          "sensei",
+          "homerareru"
+        ]
+      },
+      {
+        "japanese": "母はいつも妹を褒める。",
+        "english": "My mother always praises my younger sister.",
+        "vocabulary_slugs": [
+          "haha",
+          "itsumo",
+          "imouto",
+          "homeru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-apologize": {
+    "example_sentences": [
+      {
+        "japanese": "私は友達にすぐ謝った。",
+        "english": "I apologized to my friend right away.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "sugu",
+          "ayamaru"
+        ]
+      },
+      {
+        "japanese": "彼は先生に感謝しています。",
+        "english": "He is grateful to his teacher.",
+        "vocabulary_slugs": [
+          "kare",
+          "sensei",
+          "kansha-suru"
+        ]
+      },
+      {
+        "japanese": "私はいつも家族に感謝しています。",
+        "english": "I'm always grateful to my family.",
+        "vocabulary_slugs": [
+          "watashi",
+          "itsumo",
+          "kazoku",
+          "kansha-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-counter-for": {
+    "example_sentences": [
+      {
+        "japanese": "明日試験です。頑張ってください。",
+        "english": "The exam is tomorrow. Good luck.",
+        "vocabulary_slugs": [
+          "ashita",
+          "shiken",
+          "ganbatte"
+        ]
+      },
+      {
+        "japanese": "彼はいつも仕事を頑張っている。",
+        "english": "He always works hard.",
+        "vocabulary_slugs": [
+          "kare",
+          "itsumo",
+          "shigoto",
+          "ganbaru"
+        ]
+      },
+      {
+        "japanese": "私は毎日日本語を頑張っています。",
+        "english": "I try hard at Japanese every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "nihongo",
+          "ganbaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-stubborn": {
+    "example_sentences": [
+      {
+        "japanese": "彼は毎日仕事を頑張っています。",
+        "english": "He works hard at his job every day.",
+        "vocabulary_slugs": [
+          "kare",
+          "mainichi",
+          "shigoto",
+          "ganbaru"
+        ]
+      },
+      {
+        "japanese": "頑張って、テストは難しくないよ。",
+        "english": "Do your best, the test isn't hard.",
+        "vocabulary_slugs": [
+          "ganbatte",
+          "tesuto",
+          "muzukashii"
+        ]
+      },
+      {
+        "japanese": "僕は日本語をもっと頑張りたいです。",
+        "english": "I want to try harder at Japanese.",
+        "vocabulary_slugs": [
+          "boku",
+          "nihongo",
+          "motto",
+          "ganbaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-accustomed": {
+    "example_sentences": [
+      {
+        "japanese": "私は日本の食べ物に慣れました。",
+        "english": "I got used to Japanese food.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihon",
+          "tabemono",
+          "nareru"
+        ]
+      },
+      {
+        "japanese": "彼は毎朝早く起きる習慣があります。",
+        "english": "He has a habit of waking up early every morning.",
+        "vocabulary_slugs": [
+          "kare",
+          "maiasa",
+          "hayai-early",
+          "okiru",
+          "shuukan-custom",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "新しい仕事に慣れるのに時間がかかりました。",
+        "english": "It took time to get used to the new job.",
+        "vocabulary_slugs": [
+          "atarashii-adj",
+          "shigoto",
+          "nareru",
+          "jikan",
+          "kakaru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-overdo": {
+    "example_sentences": [
+      {
+        "japanese": "週末は家でゆっくり過ごした。",
+        "english": "I spent the weekend relaxing at home.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "ie",
+          "yukkuri",
+          "sugosu"
+        ]
+      },
+      {
+        "japanese": "もう九時を過ぎた。",
+        "english": "It's already past nine o'clock.",
+        "vocabulary_slugs": [
+          "mou",
+          "kyuu-v",
+          "ji-oclock",
+          "sugiru"
+        ]
+      },
+      {
+        "japanese": "彼はお酒を飲み過ぎた。",
+        "english": "He drank too much alcohol.",
+        "vocabulary_slugs": [
+          "kare",
+          "osake",
+          "nomu-v",
+          "sugiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-period": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は僕が手伝うのを期待している。",
+        "english": "She expects me to help.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "boku",
+          "tetsudau",
+          "kitaisuru"
+        ]
+      },
+      {
+        "japanese": "先生は学生に期待している。",
+        "english": "The teacher has expectations for the students.",
+        "vocabulary_slugs": [
+          "sensei",
+          "gakusei",
+          "kitaisuru"
+        ]
+      },
+      {
+        "japanese": "父は僕の試験の結果を期待している。",
+        "english": "My father is expecting good results from my exam.",
+        "vocabulary_slugs": [
+          "chichi",
+          "boku",
+          "shiken",
+          "kekka",
+          "kitaisuru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-wait": {
+    "example_sentences": [
+      {
+        "japanese": "駅で友達を待ちます。",
+        "english": "I'll wait for my friend at the station.",
+        "vocabulary_slugs": [
+          "eki",
+          "tomodachi",
+          "matsu"
+        ]
+      },
+      {
+        "japanese": "先生は私に期待しています。",
+        "english": "My teacher has expectations for me.",
+        "vocabulary_slugs": [
+          "sensei",
+          "watashi",
+          "kitaisuru"
+        ]
+      },
+      {
+        "japanese": "病院で二時間待たされました。",
+        "english": "I was made to wait two hours at the hospital.",
+        "vocabulary_slugs": [
+          "byouin",
+          "ni-v",
+          "jikan",
+          "matasareru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-celebrate": {
+    "example_sentences": [
+      {
+        "japanese": "今年もみんなで一緒に祝いましょう。",
+        "english": "Let's all celebrate together again this year.",
+        "vocabulary_slugs": [
+          "kotoshi",
+          "minna",
+          "issho-ni",
+          "iwau"
+        ]
+      },
+      {
+        "japanese": "息子が生まれて、家族みんなで祝いました。",
+        "english": "When our son was born, the whole family celebrated.",
+        "vocabulary_slugs": [
+          "musuko",
+          "umareru",
+          "kazoku",
+          "minna",
+          "iwau"
+        ]
+      },
+      {
+        "japanese": "先生は私たちに祝福の言葉をくれました。",
+        "english": "Our teacher gave us words of blessing.",
+        "vocabulary_slugs": [
+          "sensei",
+          "watashitachi",
+          "shukufuku",
+          "kotoba",
+          "kureru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-blessing": {
+    "example_sentences": [
+      {
+        "japanese": "私は彼女の幸福を願っています。",
+        "english": "I hope for her happiness.",
+        "vocabulary_slugs": [
+          "watashi",
+          "kanojo",
+          "koufuku",
+          "negau"
+        ]
+      },
+      {
+        "japanese": "友達の結婚を祝福します。",
+        "english": "I congratulate my friend on their marriage.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kekkon-suru",
+          "shukufuku"
+        ]
+      },
+      {
+        "japanese": "家族の幸福を祈っています。",
+        "english": "I'm praying for my family's happiness.",
+        "vocabulary_slugs": [
+          "kazoku",
+          "koufuku",
+          "inoru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-emotion": {
+    "example_sentences": [
+      {
+        "japanese": "私は先生に感謝する。",
+        "english": "I'm grateful to my teacher.",
+        "vocabulary_slugs": [
+          "watashi",
+          "sensei",
+          "kansha-suru"
+        ]
+      },
+      {
+        "japanese": "今日は寒いと感じる。",
+        "english": "It feels cold today.",
+        "vocabulary_slugs": [
+          "kyou",
+          "samui",
+          "kanjiru"
+        ]
+      },
+      {
+        "japanese": "彼女の感情がよくわかる。",
+        "english": "I understand her feelings well.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "kanjou",
+          "yoku",
+          "wakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-hang": {
+    "example_sentences": [
+      {
+        "japanese": "帽子を窓の近くに掛けた。",
+        "english": "I hung the hat near the window.",
+        "vocabulary_slugs": [
+          "boushi",
+          "mado",
+          "chikaku",
+          "kakeru-hang"
+        ]
+      },
+      {
+        "japanese": "学校まで一時間掛かる。",
+        "english": "It takes one hour to get to school.",
+        "vocabulary_slugs": [
+          "gakkou-v",
+          "ichi-v",
+          "jikan-counter",
+          "kakaru-v"
+        ]
+      },
+      {
+        "japanese": "彼は宿題に取り掛かった。",
+        "english": "He got started on his homework.",
+        "vocabulary_slugs": [
+          "kare",
+          "shukudai",
+          "torikakaru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-propose": {
+    "example_sentences": [
+      {
+        "japanese": "私は宿題を提出した。",
+        "english": "I submitted my homework.",
+        "vocabulary_slugs": [
+          "watashi",
+          "shukudai",
+          "teishutsu-suru"
+        ]
+      },
+      {
+        "japanese": "彼は会社に書類提出をした。",
+        "english": "He submitted documents to the company.",
+        "vocabulary_slugs": [
+          "kare",
+          "kaisha",
+          "shorui-teishutsu",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "友達は旅行を提案した。",
+        "english": "My friend proposed a trip.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "ryokou",
+          "teian",
+          "suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-have-the": {
+    "example_sentences": [
+      {
+        "japanese": "私は日本語の授業に申し込みました。",
+        "english": "I applied for the Japanese class.",
+        "vocabulary_slugs": [
+          "watashi",
+          "nihongo",
+          "jugyou",
+          "moushikomu"
+        ]
+      },
+      {
+        "japanese": "彼は大学に申し込みました。",
+        "english": "He applied to the university.",
+        "vocabulary_slugs": [
+          "kare",
+          "daigaku",
+          "moushikomu"
+        ]
+      },
+      {
+        "japanese": "私は田中と申します。",
+        "english": "My name is Tanaka.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mousu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "claude-sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-nonplussed": {
+    "example_sentences": [
+      {
+        "japanese": "私たちは会議に参加します。",
+        "english": "We will participate in the meeting.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "kaigi",
+          "sanka-suru"
+        ]
+      },
+      {
+        "japanese": "彼女は旅行に参加しませんでした。",
+        "english": "She did not participate in the trip.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "ryokou",
+          "sanka-suru"
+        ]
+      },
+      {
+        "japanese": "私は今から参ります。",
+        "english": "I will go now.",
+        "vocabulary_slugs": [
+          "watashi",
+          "ima",
+          "mairu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-seduce": {
+    "example_sentences": [
+      {
+        "japanese": "先生は朝ご飯を召し上がりました。",
+        "english": "The teacher ate breakfast.",
+        "vocabulary_slugs": [
+          "sensei",
+          "asagohan",
+          "meshiagaru"
+        ]
+      },
+      {
+        "japanese": "お客さん、お茶を召し上がりますか。",
+        "english": "Would you like some tea, guest?",
+        "vocabulary_slugs": [
+          "okyakusan",
+          "ocha",
+          "meshiagaru"
+        ]
+      },
+      {
+        "japanese": "この歌はお客さんのお気に召しましたか。",
+        "english": "Did this song please the guest?",
+        "vocabulary_slugs": [
+          "kore",
+          "uta",
+          "okyakusan",
+          "oki-ni-mesu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-swim": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日海で泳ぎます。",
+        "english": "I swim in the sea every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "umi",
+          "oyogu"
+        ]
+      },
+      {
+        "japanese": "彼は上手に泳げます。",
+        "english": "He can swim well.",
+        "vocabulary_slugs": [
+          "kare",
+          "jouzu",
+          "oyogeru"
+        ]
+      },
+      {
+        "japanese": "水泳はとても楽しいです。",
+        "english": "Swimming is a lot of fun.",
+        "vocabulary_slugs": [
+          "suiei",
+          "totemo",
+          "tanoshii"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-kill": {
+    "example_sentences": [
+      {
+        "japanese": "猫が鳥を殺した。",
+        "english": "The cat killed the bird.",
+        "vocabulary_slugs": [
+          "neko",
+          "tori",
+          "korosu"
+        ]
+      },
+      {
+        "japanese": "彼は誰かに殺された。",
+        "english": "He was killed by someone.",
+        "vocabulary_slugs": [
+          "kare",
+          "dare",
+          "korosareru"
+        ]
+      },
+      {
+        "japanese": "男の人が猫を殺した。",
+        "english": "The man killed the cat.",
+        "vocabulary_slugs": [
+          "otokonohito",
+          "neko",
+          "korosu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-take": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝、新聞を取ります。",
+        "english": "Every morning, I take the newspaper.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "shinbun",
+          "toru"
+        ]
+      },
+      {
+        "japanese": "靴を脱いで、新しい靴に取り替えます。",
+        "english": "I take off my shoes and change into new shoes.",
+        "vocabulary_slugs": [
+          "kutsu",
+          "nugu",
+          "atarashii-adj",
+          "torikaeru"
+        ]
+      },
+      {
+        "japanese": "明日、取引先と会います。",
+        "english": "Tomorrow, I will meet with our business partner.",
+        "vocabulary_slugs": [
+          "ashita",
+          "torihikisaki",
+          "au"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-return": {
+    "example_sentences": [
+      {
+        "japanese": "この本を図書館に返します。",
+        "english": "I'll return this book to the library.",
+        "vocabulary_slugs": [
+          "kore",
+          "hon",
+          "toshokan",
+          "kaesu"
+        ]
+      },
+      {
+        "japanese": "先生は同じ質問を繰り返しました。",
+        "english": "The teacher repeated the same question.",
+        "vocabulary_slugs": [
+          "sensei",
+          "onaji",
+          "shitsumon",
+          "kurikaesu"
+        ]
+      },
+      {
+        "japanese": "その服は小さいので、デパートで返品します。",
+        "english": "Those clothes are too small, so I'll return them at the department store.",
+        "vocabulary_slugs": [
+          "sono",
+          "fuku",
+          "chiisai",
+          "depaato",
+          "henpin-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-take-along": {
+    "example_sentences": [
+      {
+        "japanese": "友達を公園に連れて行きます。",
+        "english": "I'll take my friend along to the park.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "kouen",
+          "tsuredeiku"
+        ]
+      },
+      {
+        "japanese": "弟を家に連れて来ました。",
+        "english": "I brought my younger brother home.",
+        "vocabulary_slugs": [
+          "otouto",
+          "ie",
+          "tsuretekuru"
+        ]
+      },
+      {
+        "japanese": "今日先生に連絡します。",
+        "english": "I'll contact the teacher today.",
+        "vocabulary_slugs": [
+          "sensei",
+          "renraku-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-fit": {
+    "example_sentences": [
+      {
+        "japanese": "今日は都合が悪いです。",
+        "english": "Today doesn't work for me.",
+        "vocabulary_slugs": [
+          "kyou",
+          "tsugou",
+          "warui"
+        ]
+      },
+      {
+        "japanese": "友達と話し合いました。",
+        "english": "I talked it over with my friend.",
+        "vocabulary_slugs": [
+          "tomodachi",
+          "hanashiau"
+        ]
+      },
+      {
+        "japanese": "試験に合格しました。",
+        "english": "I passed the exam.",
+        "vocabulary_slugs": [
+          "shiken",
+          "goukaku-suru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-make": {
+    "example_sentences": [
+      {
+        "japanese": "母は毎朝朝ご飯を作ります。",
+        "english": "My mother makes breakfast every morning.",
+        "vocabulary_slugs": [
+          "haha",
+          "maiasa",
+          "asagohan",
+          "tsukuru"
+        ]
+      },
+      {
+        "japanese": "私は友達に料理を作ってあげました。",
+        "english": "I made a dish for my friend.",
+        "vocabulary_slugs": [
+          "watashi",
+          "tomodachi",
+          "ryouri",
+          "tsukutte-ageru"
+        ]
+      },
+      {
+        "japanese": "これは父が作った物です。",
+        "english": "This is something my father made.",
+        "vocabulary_slugs": [
+          "kore",
+          "chichi",
+          "tsukuru",
+          "mono"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-insect": {
+    "example_sentences": [
+      {
+        "japanese": "庭に虫がいます。",
+        "english": "There is a bug in the yard.",
+        "vocabulary_slugs": [
+          "niwa",
+          "mushi",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "この虫は小さいです。",
+        "english": "This bug is small.",
+        "vocabulary_slugs": [
+          "kono",
+          "mushi",
+          "chiisai"
+        ]
+      },
+      {
+        "japanese": "弟は虫が好きです。",
+        "english": "My younger brother likes bugs.",
+        "vocabulary_slugs": [
+          "otouto",
+          "mushi",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-horse": {
+    "example_sentences": [
+      {
+        "japanese": "馬は大きいです。",
+        "english": "The horse is big.",
+        "vocabulary_slugs": [
+          "uma",
+          "ookii"
+        ]
+      },
+      {
+        "japanese": "あの馬はとても速いです。",
+        "english": "That horse over there is very fast.",
+        "vocabulary_slugs": [
+          "ano",
+          "uma",
+          "totemo",
+          "hayai-fast"
+        ]
+      },
+      {
+        "japanese": "私は馬が好きです。",
+        "english": "I like horses.",
+        "vocabulary_slugs": [
+          "watashi",
+          "uma",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-cow": {
+    "example_sentences": [
+      {
+        "japanese": "毎朝、牛乳を飲みます。",
+        "english": "I drink milk every morning.",
+        "vocabulary_slugs": [
+          "maiasa",
+          "gyuunyuu",
+          "nomu-v"
+        ]
+      },
+      {
+        "japanese": "あそこに牛がいます。",
+        "english": "There is a cow over there.",
+        "vocabulary_slugs": [
+          "asoko",
+          "ushi",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "冷たい牛乳が好きです。",
+        "english": "I like cold milk.",
+        "vocabulary_slugs": [
+          "tsumetai",
+          "gyuunyuu",
+          "suki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-star": {
+    "example_sentences": [
+      {
+        "japanese": "夜、空に星がたくさん見えます。",
+        "english": "At night, you can see a lot of stars in the sky.",
+        "vocabulary_slugs": [
+          "yoru",
+          "sora",
+          "hoshi",
+          "takusan",
+          "mieru"
+        ]
+      },
+      {
+        "japanese": "星空はとてもきれいでした。",
+        "english": "The starry sky was very pretty.",
+        "vocabulary_slugs": [
+          "hoshizora",
+          "totemo",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "私たちは山で星を見ました。",
+        "english": "We watched the stars on the mountain.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "yama-v",
+          "hoshi",
+          "miru-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-forest": {
+    "example_sentences": [
+      {
+        "japanese": "森は静かです。",
+        "english": "The forest is quiet.",
+        "vocabulary_slugs": [
+          "mori",
+          "shizuka"
+        ]
+      },
+      {
+        "japanese": "私たちは森を歩きました。",
+        "english": "We walked through the forest.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "mori",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "森に鳥がたくさんいます。",
+        "english": "There are a lot of birds in the forest.",
+        "vocabulary_slugs": [
+          "mori",
+          "tori",
+          "takusan",
+          "iru-exist"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-grove": {
+    "example_sentences": [
+      {
+        "japanese": "この道の後ろに林があります。",
+        "english": "There's a grove behind this road.",
+        "vocabulary_slugs": [
+          "kono",
+          "michi-v",
+          "ushiro",
+          "hayashi",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "私たちは林の中を歩きました。",
+        "english": "We walked through the grove.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "naka",
+          "hayashi",
+          "aruku"
+        ]
+      },
+      {
+        "japanese": "その林はとても静かです。",
+        "english": "That grove is very quiet.",
+        "vocabulary_slugs": [
+          "sono",
+          "hayashi",
+          "totemo",
+          "shizuka"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-pond": {
+    "example_sentences": [
+      {
+        "japanese": "公園に大きい池があります。",
+        "english": "There is a big pond in the park.",
+        "vocabulary_slugs": [
+          "kouen",
+          "ookii",
+          "ike",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "あの池に魚がいます。",
+        "english": "There are fish in that pond over there.",
+        "vocabulary_slugs": [
+          "ano",
+          "ike",
+          "sakana",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "犬は池の近くを走ります。",
+        "english": "The dog runs near the pond.",
+        "vocabulary_slugs": [
+          "inu",
+          "ike",
+          "chikaku",
+          "hashiru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-boulder": {
+    "example_sentences": [
+      {
+        "japanese": "山に大きい岩がありました。",
+        "english": "There was a big boulder on the mountain.",
+        "vocabulary_slugs": [
+          "yama-v",
+          "ookii",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "その岩はとても重いです。",
+        "english": "That boulder is very heavy.",
+        "vocabulary_slugs": [
+          "sono",
+          "omoi",
+          "totemo"
+        ]
+      },
+      {
+        "japanese": "川の中に岩がたくさんあります。",
+        "english": "There are a lot of boulders in the river.",
+        "vocabulary_slugs": [
+          "kawa-v",
+          "naka",
+          "takusan",
+          "aru"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-harmony": {
+    "example_sentences": [
+      {
+        "japanese": "私は和食が好きです。",
+        "english": "I like Japanese food.",
+        "vocabulary_slugs": [
+          "watashi",
+          "washoku",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "この店は和風です。",
+        "english": "This shop is Japanese-style.",
+        "vocabulary_slugs": [
+          "kono",
+          "mise",
+          "wafuu"
+        ]
+      },
+      {
+        "japanese": "私たちは晩ご飯に和食を食べます。",
+        "english": "We eat Japanese food for dinner.",
+        "vocabulary_slugs": [
+          "watashitachi",
+          "bangohan",
+          "washoku",
+          "taberu"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-pour": {
+    "example_sentences": [
+      {
+        "japanese": "レストランで魚を注文しました。",
+        "english": "I ordered fish at the restaurant.",
+        "vocabulary_slugs": [
+          "resutoran",
+          "sakana",
+          "chuumon-suru"
+        ]
+      },
+      {
+        "japanese": "病院で注射をしました。痛かったです。",
+        "english": "I got an injection at the hospital. It hurt.",
+        "vocabulary_slugs": [
+          "byouin",
+          "chuusha",
+          "itai"
+        ]
+      },
+      {
+        "japanese": "先生は道が危ないから注意してと言いました。",
+        "english": "The teacher said to pay attention because the road is dangerous.",
+        "vocabulary_slugs": [
+          "sensei",
+          "michi-v",
+          "abunai",
+          "chuui-suru",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-plains": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎日野菜を食べます。",
+        "english": "I eat vegetables every day.",
+        "vocabulary_slugs": [
+          "watashi",
+          "mainichi",
+          "yasai",
+          "taberu"
+        ]
+      },
+      {
+        "japanese": "弟は野球が好きです。",
+        "english": "My younger brother likes baseball.",
+        "vocabulary_slugs": [
+          "otouto",
+          "yakyuu",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "週末、野山を歩きました。",
+        "english": "We walked through the fields and mountains on the weekend.",
+        "vocabulary_slugs": [
+          "shuumatsu",
+          "noyama",
+          "aruku"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-clothing": {
+    "example_sentences": [
+      {
+        "japanese": "この服は新しいです。",
+        "english": "These clothes are new.",
+        "vocabulary_slugs": [
+          "kono",
+          "fuku",
+          "atarashii-adj"
+        ]
+      },
+      {
+        "japanese": "彼の服装はいつもきれいです。",
+        "english": "His attire is always neat.",
+        "vocabulary_slugs": [
+          "kare",
+          "fukusou",
+          "itsumo",
+          "kirei"
+        ]
+      },
+      {
+        "japanese": "学生は毎日制服を着ます。",
+        "english": "Students wear their uniform every day.",
+        "vocabulary_slugs": [
+          "gakusei",
+          "mainichi",
+          "seifuku",
+          "kiru-wear"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-finger": {
+    "example_sentences": [
+      {
+        "japanese": "これは彼女の指輪です。",
+        "english": "This is her ring.",
+        "vocabulary_slugs": [
+          "kore",
+          "kanojo",
+          "yubiwa"
+        ]
+      },
+      {
+        "japanese": "私は新しい指輪を買いました。",
+        "english": "I bought a new ring.",
+        "vocabulary_slugs": [
+          "watashi",
+          "atarashii-adj",
+          "kau-v",
+          "yubiwa"
+        ]
+      },
+      {
+        "japanese": "彼は指輪をなくしました。",
+        "english": "He lost his ring.",
+        "vocabulary_slugs": [
+          "kare",
+          "nakusu",
+          "yubiwa"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-mingle": {
+    "example_sentences": [
+      {
+        "japanese": "交番は駅の近くにあります。",
+        "english": "The police box is near the station.",
+        "vocabulary_slugs": [
+          "kouban",
+          "eki",
+          "chikaku",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "警官は交番にいます。",
+        "english": "The police officer is at the police box.",
+        "vocabulary_slugs": [
+          "keikan",
+          "kouban",
+          "iru-exist"
+        ]
+      },
+      {
+        "japanese": "店で靴を交換してもらいました。",
+        "english": "I had the shop exchange my shoes.",
+        "vocabulary_slugs": [
+          "mise",
+          "kutsu",
+          "koukan-suru",
+          "morau"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-ease": {
+    "example_sentences": [
+      {
+        "japanese": "私は毎朝散歩します。健康にいいです。",
+        "english": "I take a walk every morning. It's good for my health.",
+        "vocabulary_slugs": [
+          "watashi",
+          "maiasa",
+          "sanpo-suru",
+          "kenkou",
+          "ii"
+        ]
+      },
+      {
+        "japanese": "来週、病院で健康診断があります。",
+        "english": "Next week, I have a health checkup at the hospital.",
+        "vocabulary_slugs": [
+          "raishuu",
+          "byouin",
+          "kenkoushindan",
+          "aru"
+        ]
+      },
+      {
+        "japanese": "彼はとても健康です。",
+        "english": "He is very healthy.",
+        "vocabulary_slugs": [
+          "kare",
+          "totemo",
+          "kenkou"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-healthy": {
+    "example_sentences": [
+      {
+        "japanese": "彼は健康です。",
+        "english": "He is healthy.",
+        "vocabulary_slugs": [
+          "kare",
+          "kenkou"
+        ]
+      },
+      {
+        "japanese": "毎年、病院で健康診断をします。",
+        "english": "Every year I get a health checkup at the hospital.",
+        "vocabulary_slugs": [
+          "mainen",
+          "byouin",
+          "kenkoushindan",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "健康な人は元気です。",
+        "english": "Healthy people are lively.",
+        "vocabulary_slugs": [
+          "kenkou",
+          "hito",
+          "genki"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-art": {
+    "example_sentences": [
+      {
+        "japanese": "彼女は美術が好きです。",
+        "english": "She likes art.",
+        "vocabulary_slugs": [
+          "kanojo",
+          "bijutsu",
+          "suki"
+        ]
+      },
+      {
+        "japanese": "父は病院で手術をしました。",
+        "english": "My father had surgery at the hospital.",
+        "vocabulary_slugs": [
+          "chichi",
+          "byouin",
+          "shujutsu",
+          "suru"
+        ]
+      },
+      {
+        "japanese": "彼は技術が高いです。",
+        "english": "His skill level is high.",
+        "vocabulary_slugs": [
+          "kare",
+          "gijutsu",
+          "takai-adj"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-retreat": {
+    "example_sentences": [
+      {
+        "japanese": "父は今日、病院を退院した。",
+        "english": "My father was discharged from the hospital today.",
+        "vocabulary_slugs": [
+          "chichi",
+          "kyou",
+          "byouin",
+          "taiin-suru"
+        ]
+      },
+      {
+        "japanese": "彼は毎日六時に会社を退勤する。",
+        "english": "He leaves work at six o'clock every day.",
+        "vocabulary_slugs": [
+          "kare",
+          "mainichi",
+          "roku-v",
+          "ji-oclock",
+          "kaisha",
+          "taikin-suru"
+        ]
+      },
+      {
+        "japanese": "医者は明日、退院すると言った。",
+        "english": "The doctor said he would be discharged tomorrow.",
+        "vocabulary_slugs": [
+          "isha",
+          "ashita",
+          "taiin-suru",
+          "iu-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-ego": {
+    "example_sentences": [
+      {
+        "japanese": "弟は公園で怪我しました。",
+        "english": "My younger brother got injured at the park.",
+        "vocabulary_slugs": [
+          "otouto",
+          "kouen",
+          "kegasuru"
+        ]
+      },
+      {
+        "japanese": "足の怪我はもう大丈夫ですか。",
+        "english": "Is your leg injury already all right?",
+        "vocabulary_slugs": [
+          "ashi-v",
+          "kega",
+          "mou",
+          "daijoubu"
+        ]
+      },
+      {
+        "japanese": "頭を怪我して、病院に行きました。",
+        "english": "I hurt my head and went to the hospital.",
+        "vocabulary_slugs": [
+          "atama",
+          "kegasuru",
+          "byouin",
+          "iku-v"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-suspicious": {
+    "example_sentences": [
+      {
+        "japanese": "昨日、公園で怪我しました。",
+        "english": "Yesterday, I got injured at the park.",
+        "vocabulary_slugs": [
+          "kinou",
+          "kouen"
+        ]
+      },
+      {
+        "japanese": "兄は自転車で怪我しました。",
+        "english": "My older brother got injured on his bicycle.",
+        "vocabulary_slugs": [
+          "ani",
+          "jitensha"
+        ]
+      },
+      {
+        "japanese": "頭を怪我して、病院へ行きました。",
+        "english": "I injured my head and went to the hospital.",
+        "vocabulary_slugs": [
+          "atama",
+          "byouin"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "k-distant": {
+    "example_sentences": [
+      {
+        "japanese": "駅は家から遠いです。",
+        "english": "The station is far from home.",
+        "vocabulary_slugs": [
+          "eki",
+          "ie",
+          "tooi"
+        ]
+      },
+      {
+        "japanese": "祖父は耳が遠いです。",
+        "english": "My grandfather is hard of hearing.",
+        "vocabulary_slugs": [
+          "sofu",
+          "mimi-v",
+          "tooi"
+        ]
+      },
+      {
+        "japanese": "あの公園はここから遠いです。",
+        "english": "That park over there is far from here.",
+        "vocabulary_slugs": [
+          "ano",
+          "kouen",
+          "koko",
+          "tooi"
+        ]
+      }
+    ],
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }
