@@ -20,7 +20,7 @@ fully written):
 
 Subagent model (which model every subagent in this run uses):
 
-<subagent-model = opus-5>
+<subagent-model = sonnet-5>
 
 Subagent effort (reasoning effort every subagent in this run uses):
 
