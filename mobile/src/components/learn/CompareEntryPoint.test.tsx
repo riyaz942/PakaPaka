@@ -16,12 +16,12 @@ describe('CompareEntryPoint', () => {
   });
 
   it('opens the Browse compare picker with this item as the left side', () => {
-    render(<CompareEntryPoint itemId="vocab-1" />);
+    render(<CompareEntryPoint itemId="vocab-1" itemType="vocabulary" />);
 
     fireEvent.press(screen.getByTestId('compare-entry-point'));
     expect(mockPush).toHaveBeenCalledWith({
       pathname: '/browse/compare',
-      params: { left: 'vocab-1' },
+      params: { left: 'vocab-1', leftType: 'vocabulary' },
     });
   });
 
@@ -30,7 +30,7 @@ describe('CompareEntryPoint', () => {
     // surface reaches Compare through its own answer-collision link instead.
     render(
       <ItemLinkProvider base="/review/item">
-        <CompareEntryPoint itemId="vocab-1" />
+        <CompareEntryPoint itemId="vocab-1" itemType="vocabulary" />
       </ItemLinkProvider>,
     );
 
@@ -40,10 +40,20 @@ describe('CompareEntryPoint', () => {
   it('renders on the Browse details surface', () => {
     render(
       <ItemLinkProvider base="/browse/item">
-        <CompareEntryPoint itemId="vocab-1" />
+        <CompareEntryPoint itemId="vocab-1" itemType="vocabulary" />
       </ItemLinkProvider>,
     );
 
     expect(screen.getByTestId('compare-entry-point')).toBeTruthy();
+  });
+
+  it('renders nothing for grammar, even on the Browse details surface', () => {
+    render(
+      <ItemLinkProvider base="/browse/item">
+        <CompareEntryPoint itemId="grammar-1" itemType="grammar" />
+      </ItemLinkProvider>,
+    );
+
+    expect(screen.queryByTestId('compare-entry-point')).toBeNull();
   });
 });

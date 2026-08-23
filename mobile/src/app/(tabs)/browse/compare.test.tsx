@@ -9,6 +9,8 @@ const mockSetParams = jest.fn();
 const mockUseLocalSearchParams = jest.fn();
 const mockCompareView = jest.fn();
 const mockSetSearchInput = jest.fn();
+const mockApplyFilters = jest.fn();
+let mockLoading = false;
 let mockRows: { kind: 'item'; id: string; primaryForm: string; meaning: string }[] = [];
 
 jest.mock('expo-router', () => ({
@@ -32,9 +34,10 @@ jest.mock('@/components/common/CompareView', () => {
 jest.mock('@/data/hooks/useBrowseItems', () => ({
   useBrowseItems: () => ({
     rows: mockRows,
-    loading: false,
+    loading: mockLoading,
     searchInput: '',
     setSearchInput: mockSetSearchInput,
+    applyFilters: mockApplyFilters,
   }),
 }));
 
@@ -53,6 +56,7 @@ function renderCompare() {
 describe('BrowseCompareScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockLoading = false;
     mockRows = [
       { kind: 'item', id: 'item-1', primaryForm: '食', meaning: 'eat' },
       { kind: 'item', id: 'item-2', primaryForm: '飲', meaning: 'drink' },
@@ -108,5 +112,40 @@ describe('BrowseCompareScreen', () => {
 
     fireEvent.press(screen.getByTestId('browse-compare-back'));
     expect(mockBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not query on every keystroke — only when Search is pressed', () => {
+    mockUseLocalSearchParams.mockReturnValue({ left: 'item-1' });
+    renderCompare();
+
+    fireEvent.changeText(screen.getByTestId('compare-picker-search'), 'tabe');
+    expect(mockSetSearchInput).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByTestId('compare-picker-search-button'));
+    expect(mockSetSearchInput).toHaveBeenCalledWith('tabe');
+  });
+
+  it('pins the type filter to the item Compare was opened from', () => {
+    mockUseLocalSearchParams.mockReturnValue({ left: 'item-1', leftType: 'kanji' });
+    renderCompare();
+
+    expect(mockApplyFilters).toHaveBeenCalledWith(expect.objectContaining({ types: ['kanji'] }));
+  });
+
+  it('excludes grammar from the candidate types when no leftType is given', () => {
+    mockUseLocalSearchParams.mockReturnValue({ left: 'item-1' });
+    renderCompare();
+
+    const call = mockApplyFilters.mock.calls[0][0];
+    expect(call.types).not.toContain('grammar');
+  });
+
+  it('shows a centered loader in place of the list while searching', () => {
+    mockLoading = true;
+    mockUseLocalSearchParams.mockReturnValue({ left: 'item-1' });
+    renderCompare();
+
+    expect(screen.getByLabelText('Searching')).toBeTruthy();
+    expect(screen.queryByTestId('compare-picker-item-item-2')).toBeNull();
   });
 });

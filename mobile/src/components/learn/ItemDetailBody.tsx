@@ -112,7 +112,7 @@ export function ItemDetailBody({
         />
       ) : null}
 
-      <CompareEntryPoint itemId={item.id} />
+      <CompareEntryPoint itemId={item.id} itemType={item.itemType} />
     </>
   );
 }
