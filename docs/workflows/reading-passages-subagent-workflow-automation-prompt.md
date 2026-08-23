@@ -201,15 +201,22 @@ curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
 
 with the validation errors appended, and exits non-zero.
 
-Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
-(<subagent-model>, high reasoning, foreground) to repair the existing reply.
+Do not regenerate from scratch. Count the validation errors appended to the
+prompt file and choose the repair method:
 
-Give the repair subagent these files:
+- **Fewer than 7 errors — inline fix.** Edit `<seed>.reply.md` yourself, in
+  this session. A small fix does not need a subagent.
+- **7 or more errors — repair subagent.** Launch a FRESH general-purpose
+  subagent (<subagent-model>, high reasoning, foreground) to repair the
+  existing reply.
+
+Whichever method repairs the reply, it works from these files:
 
 - curriculum/_build/generate_content/web/readings/<level>/<seed>.prompt.md
 - curriculum/_build/generate_content/web/readings/<level>/<seed>.reply.md
 
-Give the repair subagent these instructions:
+The repair instructions are the same for both methods (an inline fix follows
+them exactly as a repair subagent would):
 
   Read the validation errors appended to `<seed>.prompt.md`. Inspect the existing
   `<seed>.reply.md` and the output contract in the prompt. Edit `<seed>.reply.md`
@@ -242,10 +249,16 @@ Retry Limit
 Allow at most three ingestion attempts per seed, including the initial attempt:
 
 - Attempt 1: original generation subagent (Step 2)
-- Attempt 2: first repair subagent
-- Attempt 3: second repair subagent
+- Attempt 2: first repair — an inline fix if the failure reported fewer than 7
+  errors, otherwise a repair subagent
+- Attempt 3: second repair — same rule
 
-Use a fresh subagent for each attempt. If the third ingestion attempt fails:
+Use a fresh subagent for each repair that needs one. If the third ingestion
+attempt fails, the repair retry threshold is reached: make ONE last-resort
+inline fix — edit the reply file yourself, no subagent, whatever the error
+count — and run ingestion a fourth and final time.
+
+If the fourth ingestion attempt fails:
 
 - Stop retrying the seed.
 - Record it as failed or skipped (the draft record keeps the errors; the seed is
@@ -254,7 +267,7 @@ Use a fresh subagent for each attempt. If the third ingestion attempt fails:
 - Proceed to the next seed.
 
 A seed can legitimately be unwritable at its position — the topic may need a word
-the cutoff has not reached yet. If a seed fails three times on the same missing
+the cutoff has not reached yet. If a seed keeps failing on the same missing
 word, say so in the report and name the word: the fix is a seed edit (move the
 seed later, or reframe the topic), not another attempt.
 
@@ -300,7 +313,8 @@ Provide a summary containing:
   `prompt_furigana` where the prompt contains kanji
 - ⚠️ Skipped seeds
 - ❌ Failed seeds
-- The number of subagent repair attempts used for each affected seed
+- The number of repair attempts used for each affected seed, split into inline
+  fixes and subagent repairs
 - Validation errors remaining after the final allowed attempt, and for any seed
   that failed on a missing word, the word itself
 - How many seeds for <level> remain not-yet-passing (re-run Step 1a to get the
@@ -341,7 +355,8 @@ Notes on differences from the API (Message Batches) lane
 - The model is called via an in-session subagent (Step 2), not the Batches API, so
   there are no credentials, no batch polling, and no `run` / `collect` commands.
   The generation subagent writes the reply file directly and `ingest` takes over.
-- Everything else is identical: the same seeds and prompt, the same gate, the same
-  3-attempt cap with errors fed back into the prompt, the same draft records under
-  `drafts/readings/<level>/`, the same assembled dataset, and the same
-  `review_status: draft` discipline.
+- Everything else is identical: the same seeds and prompt, the same gate, the
+  same repair rules (inline fix under 7 errors, 3-attempt cap plus one
+  last-resort inline fix) with errors fed back into the prompt, the same draft
+  records under `drafts/readings/<level>/`, the same assembled dataset, and the
+  same `review_status: draft` discipline.

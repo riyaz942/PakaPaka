@@ -202,15 +202,22 @@ curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
-Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
-(<subagent-model>, high reasoning, foreground) to repair the existing reply.
+Do not regenerate from scratch. Count the validation errors appended to the
+prompt file and choose the repair method:
 
-Give the repair subagent these files:
+- **Fewer than 7 errors — inline fix.** Edit `<slug>.reply.md` yourself, in
+  this session. A small fix does not need a subagent.
+- **7 or more errors — repair subagent.** Launch a FRESH general-purpose
+  subagent (<subagent-model>, high reasoning, foreground) to repair the
+  existing reply.
+
+Whichever method repairs the reply, it works from these files:
 
 - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
 - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
-Give the repair subagent these instructions:
+The repair instructions are the same for both methods (an inline fix follows
+them exactly as a repair subagent would):
 
   Read the validation errors appended to `<slug>.prompt.md`. Inspect the existing
   `<slug>.reply.md` and the output contract in the prompt. Edit `<slug>.reply.md`
@@ -245,10 +252,16 @@ Retry Limit
 Allow at most three ingestion attempts per slug, including the initial attempt:
 
 - Attempt 1: original generation subagent (Step 2)
-- Attempt 2: first repair subagent
-- Attempt 3: second repair subagent
+- Attempt 2: first repair — an inline fix if the failure reported fewer than 7
+  errors, otherwise a repair subagent
+- Attempt 3: second repair — same rule
 
-Use a fresh subagent for each attempt. If the third ingestion attempt fails:
+Use a fresh subagent for each repair that needs one. If the third ingestion
+attempt fails, the repair retry threshold is reached: make ONE last-resort
+inline fix — edit the reply file yourself, no subagent, whatever the error
+count — and run ingestion a fourth and final time.
+
+If the fourth ingestion attempt fails:
 
 - Stop retrying the slug.
 - Record it as failed or skipped.
@@ -309,7 +322,8 @@ Provide a summary containing:
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs
 - ❌ Failed slugs
-- The number of subagent repair attempts used for each affected slug
+- The number of repair attempts used for each affected slug, split into inline
+  fixes and subagent repairs
 - Validation or ingestion issues encountered
 - Validation errors remaining after the final allowed attempt
 - Roughly how many slugs of this type remain not-yet-done for the level (re-run Step 1a to get the count), so it's clear whether another run is needed
@@ -343,5 +357,6 @@ Notes on differences from the Gemini web-chat automation prompt
   so there are no browser-setup, paste-integrity, completion-polling, or
   download/rename steps. The generation subagent writes the reply file directly.
 - Everything else is identical: the same auto-select (Step 1), the same
-  `webprompts`/`ingest` commands and gate, the same 3-attempt repair cap, the same
+  `webprompts`/`ingest` commands and gate, the same repair rules (inline fix
+  under 7 errors, 3-attempt cap plus one last-resort inline fix), the same
   per-level keyed-by-slug sidecar, and the same draft/`review_status` discipline.

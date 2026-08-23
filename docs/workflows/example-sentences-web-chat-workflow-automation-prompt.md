@@ -244,8 +244,8 @@ Instead:
 
 Save Gemini's initial response without modifying its content.
 
-If ingestion later fails, the repair subagent described in Step 8 may make targeted
-changes to the reply file.
+If ingestion later fails, the repair described in Step 8 (inline fix or
+subagent) may make targeted changes to the reply file.
 
 ---
 
@@ -278,20 +278,29 @@ Do not open another Gemini chat.
 
 Do not regenerate the entire set of sentences.
 
-Instead, use a subagent to repair the existing reply.
+Instead, repair the existing reply locally. Count the validation errors
+appended to the prompt file and choose the repair method:
+
+- **Fewer than 7 errors — inline fix.** Edit `<slug>.reply.md` yourself, in
+  this session, following the repair instructions below. A small fix does not
+  need a subagent.
+- **7 or more errors — repair subagent.** Launch a general-purpose subagent
+  with the files and instructions below.
 
 Repair Procedure
 
-1. Launch a general-purpose subagent.
+1. If the repair needs a subagent, launch a general-purpose one. (An inline fix
+   skips this step — you are the repairer.)
    - Prefer the latest available Opus model with high reasoning.
    - If an Opus model is unavailable, use the strongest suitable reasoning or coding model available.
    - Run the subagent in the foreground because ingestion must wait for the repair to finish.
 
-2. Give the subagent these files:
+2. The repair works from these files, whichever method is used:
    - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.prompt.md
    - curriculum/_build/generate_content/web/examples/<level>/<type>/<slug>.reply.md
 
-3. Give the subagent the following instructions:
+3. Apply the following instructions — they govern an inline fix exactly as they
+   govern a repair subagent:
 
    Read the validation errors appended to `<slug>.prompt.md`.
 
@@ -321,7 +330,8 @@ Repair Procedure
    - Do not add commentary outside the required JSON block.
    - Do not set or add any review_status field.
 
-4. Wait for the subagent to finish updating the reply file.
+4. If a subagent is doing the repair, wait for it to finish updating the reply
+   file.
 
 5. Run ingestion again:
 
@@ -329,8 +339,9 @@ Repair Procedure
 
 6. If ingestion fails again:
    - Read the newly appended validation errors from the rewritten prompt file.
-   - Launch a new repair subagent using the updated prompt and reply files.
-   - Repeat the targeted repair procedure.
+   - Re-apply the repair-method rule: fewer than 7 errors → another inline fix;
+     7 or more → a fresh repair subagent with the updated prompt and reply
+     files.
    - Run ingestion again.
    - Do not return to Gemini.
 
@@ -339,10 +350,15 @@ Retry Limit
 Allow at most three ingestion attempts per slug, including the initial ingestion attempt:
 
 - Attempt 1: Original Gemini reply
-- Attempt 2: First subagent repair
-- Attempt 3: Second subagent repair
+- Attempt 2: First repair — an inline fix if the failure reported fewer than 7
+  errors, otherwise a repair subagent
+- Attempt 3: Second repair — same rule
 
-If the third ingestion attempt fails:
+If the third ingestion attempt fails, the repair retry threshold is reached:
+make ONE last-resort inline fix — edit the reply file yourself, no subagent,
+whatever the error count — and run ingestion a fourth and final time.
+
+If the fourth ingestion attempt fails:
 
 - Stop retrying the slug.
 - Record it as failed or skipped.
@@ -400,7 +416,8 @@ Provide a summary containing:
 - ⚠️ Skipped slugs
 - ❌ Failed slugs
 - Roughly how many slugs of this type remain not-yet-done for the level (re-run Step 1a to get the count), so it's clear whether another run is needed
-- The number of subagent repair attempts used for each affected slug
+- The number of repair attempts used for each affected slug, split into inline
+  fixes and subagent repairs
 - Validation or ingestion issues encountered
 - Validation errors remaining after the final allowed attempt
 - Final build, schema-validation, and compilation results
@@ -416,9 +433,10 @@ Important Constraints
 
 - Gemini is used only to produce the first reply for each slug.
 - Never return to Gemini after an ingestion failure.
-- Repair failed replies using an Opus-preferred subagent.
-- Always rerun ingestion after a subagent updates a reply.
-- Use a fresh repair subagent for each failed repair attempt.
+- Repair failed replies locally: an inline fix when the failure reports fewer
+  than 7 errors, an Opus-preferred subagent at 7 or more.
+- Always rerun ingestion after a reply is repaired.
+- Use a fresh repair subagent for each subagent repair attempt.
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the allowed-vocab derivation, or curriculum source data to make invalid content pass.
 - Tatoeba sentences shown in a prompt are style anchors only — never copy or adapt them into a generated sentence.

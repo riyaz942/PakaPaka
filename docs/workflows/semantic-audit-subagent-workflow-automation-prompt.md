@@ -143,15 +143,24 @@ of them. If a reply is rejected, ingest's output names the batch and the exact
 reason (unknown id, wrong `evaluated` count, missing/duplicate fence, malformed
 JSON).
 
-Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
-(<subagent-model>, high reasoning, foreground) to repair the existing reply.
+Do not regenerate from scratch. Count the distinct errors ingest reported for
+the batch and choose the repair method:
 
-Give the repair subagent these files:
+- **Fewer than 7 errors — inline fix.** Edit the reply file yourself, in this
+  session. A rejection is usually one or two contract violations — a small fix
+  does not need a subagent.
+- **7 or more errors — repair subagent.** Launch a FRESH general-purpose
+  subagent (<subagent-model>, high reasoning, foreground) to repair the
+  existing reply.
+
+Whichever method repairs the reply, it works from these files:
 
 - curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.prompt.md
 - curriculum/_build/generate_content/web/semantic/<level>/<NNN>-<slugified-label>.reply.md
 
-Give the repair subagent these instructions:
+The repair instructions are the same for both methods (an inline fix follows
+them exactly as a repair subagent would; for an inline fix you already have the
+ingest error text — nothing to paste):
 
   Ingestion rejected this reply for the reason: <paste the exact ingest error
   text>. Inspect the existing `<NNN>-<slugified-label>.reply.md` against the
@@ -177,14 +186,20 @@ Retry Limit
 Allow at most three ingestion attempts per batch, including the initial attempt:
 
 - Attempt 1: original generation subagent (Step 2)
-- Attempt 2: first repair subagent
-- Attempt 3: second repair subagent
+- Attempt 2: first repair — an inline fix if the rejection reported fewer than
+  7 errors, otherwise a repair subagent
+- Attempt 3: second repair — same rule
 
-Use a fresh subagent for each attempt. If the third ingestion attempt still
-fails: stop retrying that batch, record it as failed, preserve the latest
-validation error for the final report, and move on to the next batch. A failed
-batch shows up in the report's "Failed calls" section so a human knows it was
-not checked — it does not block ingesting the batches that did pass.
+Use a fresh subagent for each repair that needs one. If the third ingestion
+attempt fails, the repair retry threshold is reached: make ONE last-resort
+inline fix — edit the reply file yourself, no subagent, whatever the error
+count — and run ingest a fourth and final time.
+
+If the fourth ingestion attempt still fails: stop retrying that batch, record
+it as failed, preserve the latest validation error for the final report, and
+move on to the next batch. A failed batch shows up in the report's "Failed
+calls" section so a human knows it was not checked — it does not block
+ingesting the batches that did pass.
 
 ---
 
@@ -230,8 +245,9 @@ Provide a summary containing:
 - The model actually used for generation and repair
 - ✅ Successfully ingested batches
 - ⚠️ Skipped batches (already had a valid reply from a prior run)
-- ❌ Failed batches (exhausted the 3-attempt cap)
-- The number of subagent repair attempts used for each affected batch
+- ❌ Failed batches (exhausted the repair budget)
+- The number of repair attempts used for each affected batch, split into inline
+  fixes and subagent repairs
 - The advisory finding count and a few representative findings
 - How many batches remain not-yet-attempted for <level>+<scope> (rerun
   `webprompts` to get the count), so it's clear whether another run is needed
@@ -271,5 +287,6 @@ Notes on differences from the example-sentences subagent lane
   reply — this is what replaces the API lane's structured-output/schema
   guarantee.
 - Everything else is the same shape: the same auto-resume-via-skip in
-  `webprompts`, a fresh subagent per unit of work, the same 3-attempt repair
-  cap, and `--model` provenance recorded at ingest.
+  `webprompts`, a fresh subagent per unit of work, the same repair rules
+  (inline fix under 7 errors, 3-attempt cap plus one last-resort inline fix),
+  and `--model` provenance recorded at ingest.

@@ -55,7 +55,6 @@ export default function WelcomeScreen() {
           <LevelPathCard
             title="I'm new to Japanese"
             description="Start from zero — radicals, first kanji, and grammar foundations. Your first lesson is minutes away."
-            badge="Most popular"
             onPress={handleBeginner}
             testID="path-beginner"
           />

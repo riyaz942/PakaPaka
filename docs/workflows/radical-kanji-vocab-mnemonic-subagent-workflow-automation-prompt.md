@@ -83,7 +83,7 @@ successive reply it writes re-bills the earlier replies as context, which eats t
 saving. Set it to 1 to get the old strictly-per-slug behaviour.
 
 Grouping never changes the unit of ingestion or repair. Each slug keeps its own
-prompt file, its own reply file, its own gate run, and its own 3-attempt budget —
+prompt file, its own reply file, its own gate run, and its own attempt budget —
 **a failing slug is repaired alone, and its passing group-mates are never
 regenerated** (Step 3).
 
@@ -387,15 +387,16 @@ per-slug repair subagent below.
 Step 3: Ingest and Repair — one slug at a time
 
 Grouping stops at the end of Step 2. From here every slug is handled entirely on
-its own: its own ingest, its own gate result, its own repair subagent, its own
-3-attempt budget. Ingest each slug in the group in turn.
+its own: its own ingest, its own gate result, its own repairs, its own
+attempt budget. Ingest each slug in the group in turn.
 
 **A failure never invalidates its group-mates.** If one slug in a group of three
 fails the gate, repair that slug alone — the other two are already ingested and
 must not be regenerated, re-ingested, or touched. Never relaunch the group's
 generation subagent to fix one item: that would rewrite passing content, cost three
 items' generation to fix one, and lose drafts that already passed. The repair
-subagent below sees only the failing slug's own prompt and reply files.
+below — inline fix or subagent — sees only the failing slug's own prompt and
+reply files.
 
 For each slug in the group, run:
 
@@ -422,16 +423,23 @@ curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
 
 with the validation errors appended.
 
-Do not regenerate from scratch, and do not regenerate the group. Instead, launch a
-FRESH general-purpose subagent (<subagent-model> at <subagent-effort> effort,
-foreground) to repair this one slug's existing reply.
+Do not regenerate from scratch, and do not regenerate the group. Count the
+validation errors appended to the prompt file and choose the repair method:
 
-Give the repair subagent these files — this slug's only, never a group-mate's:
+- **Fewer than 7 errors — inline fix.** Edit `<slug>.reply.md` yourself, in
+  this session. A small fix does not need a subagent.
+- **7 or more errors — repair subagent.** Launch a FRESH general-purpose
+  subagent (<subagent-model> at <subagent-effort> effort, foreground) to repair
+  this one slug's existing reply.
+
+Whichever method repairs the reply, it works from these files — this slug's
+only, never a group-mate's:
 
 - curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.prompt.md
 - curriculum/_build/generate_content/web/mnemonics/<level>/<type>/<slug>.reply.md
 
-Give the repair subagent these instructions:
+The repair instructions are the same for both methods (an inline fix follows
+them exactly as a repair subagent would):
 
   Read the validation errors appended to `<slug>.prompt.md`. Inspect the existing
   `<slug>.reply.md` and the output contract in the prompt. Edit `<slug>.reply.md`
@@ -475,16 +483,22 @@ The budget is **per slug, not per group**. Allow at most three ingestion attempt
 for each slug, including the initial attempt:
 
 - Attempt 1: the group's generation subagent (Step 2)
-- Attempt 2: this slug's first repair subagent
-- Attempt 3: this slug's second repair subagent
+- Attempt 2: this slug's first repair — an inline fix if the failure reported
+  fewer than 7 errors, otherwise a repair subagent
+- Attempt 3: this slug's second repair — same rule
 
 Attempt 1 is shared — one group subagent produces the first attempt for every slug
 in the group — but attempts 2 and 3 are always single-slug. Each slug's counter is
-independent: one slug burning all three attempts has no effect on its group-mates'
+independent: one slug burning its whole budget has no effect on its group-mates'
 budgets, and a group of three that fails on one item costs at most two extra repair
 subagents, not a second group pass.
 
-Use a fresh subagent for each attempt. If the third ingestion attempt fails:
+Use a fresh subagent for each repair that needs one. If the third ingestion
+attempt fails, the repair retry threshold is reached: make ONE last-resort
+inline fix — edit the reply file yourself, no subagent, whatever the error
+count — and run ingestion a fourth and final time.
+
+If the fourth ingestion attempt fails:
 
 - Stop retrying the slug.
 - Record it as failed or skipped.
@@ -556,7 +570,7 @@ Provide a summary containing:
 - ✅ Successfully generated slugs
 - ⚠️ Skipped slugs — call these out as blockers for the layer above
 - ❌ Failed slugs
-- The number of subagent repair attempts used for each affected slug, and which group it came from — a group whose items mostly needed repair is a signal that <group-size> is too high
+- The number of repair attempts used for each affected slug, split into inline fixes and subagent repairs, and which group it came from — a group whose items mostly needed repair is a signal that <group-size> is too high
 - Validation or ingestion issues encountered
 - Validation errors remaining after the final allowed attempt
 - Roughly how many slugs of this type remain not-yet-done for the level (re-run Step 1a to get the count), so it's clear whether another run is needed
@@ -576,10 +590,10 @@ Important Constraints
 - Each group's replies are produced by a fresh <subagent-model> subagent at
   <subagent-effort> effort; never
   share subagent context across groups.
-- Grouping affects only who writes the first draft. Ingestion, the gate, the repair
-  subagent and the 3-attempt budget are per slug, always.
-- Never regenerate a whole group to fix one slug, and never let a repair subagent
-  see or edit a group-mate's files.
+- Grouping affects only who writes the first draft. Ingestion, the gate, repairs
+  and the attempt budget are per slug, always.
+- Never regenerate a whole group to fix one slug, and never let a repair —
+  inline fix or subagent — see or edit a group-mate's files.
 - Do not bypass or weaken validation.
 - Do not modify validator or ingestion code, the look-alike dataset
   (`_build/visually_similar.py`), the cast bible, the prompt templates, or
@@ -603,6 +617,7 @@ Notes on differences from the Gemini web-chat automation prompt
   way — one fresh chat per group with a combined paste — rather than one chat per
   slug.
 - Everything else is identical: the same auto-select + grouping (Step 1a), the
-  same `webprompts`/`ingest` commands and gate, the same per-slug 3-attempt repair
-  cap, the same per-level keyed-by-slug sidecar, the same layer ordering, and the
+  same `webprompts`/`ingest` commands and gate, the same per-slug repair rules
+  (inline fix under 7 errors, 3-attempt cap plus one last-resort inline fix),
+  the same per-level keyed-by-slug sidecar, the same layer ordering, and the
   same draft/`review_status` discipline.
