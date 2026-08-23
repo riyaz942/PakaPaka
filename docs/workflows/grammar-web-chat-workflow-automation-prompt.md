@@ -330,7 +330,7 @@ Instead:
 
 
 
-curriculum/_build/generate_content/web/<level>/<slug>.reply.md
+curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
 
 
 
@@ -378,6 +378,11 @@ curriculum/grammar/lessons/<level>/<slug>.md
 
 
 
+Ingest also deletes the staged <slug>.prompt.md / <slug>.reply.md — no manual
+cleanup needed on a pass.
+
+
+
 Record the slug as successful and proceed to the next slug.
 
 
@@ -390,7 +395,7 @@ The ingestion process rewrites:
 
 
 
-curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
 
 
 
@@ -430,9 +435,9 @@ Repair Procedure
 
 2. Give the subagent these files:
 
-   - curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
+   - curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
 
-   - curriculum/_build/generate_content/web/<level>/<slug>.reply.md
+   - curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
 
 
 

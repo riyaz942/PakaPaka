@@ -438,6 +438,12 @@ def cmd_ingest(args):
             continue
         findings.extend(batch_findings)
         print(f"  [{i}/{len(requests)}] {fname}: {len(batch_findings)} finding(s)")
+        # Ingested successfully and folded into the report below — the staged
+        # prompt/reply have done their job, so don't leave them under web/semantic/.
+        prompt_path = os.path.join(out_dir, f"{fname}.prompt.md")
+        for staged in (reply_path, prompt_path):
+            if os.path.exists(staged):
+                os.remove(staged)
 
     counts = {"pairs": n_pairs, "passages": n_passages, "requests": len(requests)}
     out_path = write_section(

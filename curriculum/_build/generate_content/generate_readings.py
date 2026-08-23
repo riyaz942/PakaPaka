@@ -542,6 +542,15 @@ def _web_prompt_text(level, ctx, validator_errors=None):
     )
 
 
+def _remove_staging_files(*paths):
+    """Delete the paste-ready prompt/reply files once a slug has been ingested
+    successfully — their content now lives in the draft + dataset, so leaving
+    them behind just litters web/readings/<level>/."""
+    for path in paths:
+        if path and os.path.exists(path):
+            os.remove(path)
+
+
 def cmd_webprompts(args):
     out_dir = os.path.join(WEB_DIR, args.level)
     os.makedirs(out_dir, exist_ok=True)
@@ -584,6 +593,8 @@ def cmd_ingest(args):
         raise SystemExit(1)
 
     write_dataset(args.level)
+    prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
+    _remove_staging_files(reply_path, prompt_path)
     print(f"{args.slug}: PASS — merged into the {args.level} passage dataset")
 
 

@@ -39,7 +39,9 @@ PROMPTS_DIR = os.path.join(HERE, "prompts")
 DRAFTS_DIR = os.path.join(HERE, "drafts")
 #: Paste-ready prompts + pasted replies for the web-chat (no-API) workflow —
 #: docs/content/content-pipeline-plan.md step 4 alternative. See docs/workflows/grammar-web-chat-workflow.md.
-WEB_DIR = os.path.join(HERE, "web")
+#: Mirrors the web/<content-type>/<level>/ layout every other generator uses
+#: (generate_examples.py, generate_mnemonics.py, generate_readings.py).
+WEB_DIR = os.path.join(HERE, "web", "grammar")
 
 MODEL = "claude-opus-4-8"
 #: Bump together with prompts/grammar-lesson.md and prompts/persona.md.
@@ -283,7 +285,7 @@ def _web_prompt_text(level, slug, ctx, validator_errors=None):
     body = body.replace(WEB_TOOL_LINE, WEB_OUTPUT_INSTRUCTION)
     header = (
         f"<!-- Paste EVERYTHING below this line into a fresh Claude or Gemini chat.\n"
-        f"     Save the model's reply to web/{level}/{slug}.reply.md, then run:\n"
+        f"     Save the model's reply to web/grammar/{level}/{slug}.reply.md, then run:\n"
         f"       .venv/bin/python -m generate_content.generate_grammar_lessons \\\n"
         f"         ingest --level {level} --slug {slug} --model <claude-web|gemini-web>\n"
         f"     See docs/workflows/grammar-web-chat-workflow.md. -->\n\n"
@@ -302,8 +304,17 @@ def _web_prompt_text(level, slug, ctx, validator_errors=None):
     )
 
 
+def _remove_staging_files(*paths):
+    """Delete the paste-ready prompt/reply files once a slug has been ingested
+    successfully — their content now lives in the draft + assembled lesson, so
+    leaving them behind just litters web/grammar/<level>/."""
+    for path in paths:
+        if path and os.path.exists(path):
+            os.remove(path)
+
+
 def cmd_webprompts(args):
-    """Write one paste-ready prompt file per slug under web/<level>/."""
+    """Write one paste-ready prompt file per slug under web/grammar/<level>/."""
     out_dir = os.path.join(WEB_DIR, args.level)
     os.makedirs(out_dir, exist_ok=True)
     for slug in args.slugs:
@@ -391,6 +402,8 @@ def cmd_ingest(args):
     assemble.write_lesson_file(args.level, args.slug, tool_input, args.model, PROMPT_VERSION)
     assemble.write_cloze_candidates(args.level, args.slug, tool_input)
     print(f"{args.slug}: PASS — assembled curriculum/grammar/lessons/{args.level}/{args.slug}.md")
+    prompt_path = os.path.join(WEB_DIR, args.level, f"{args.slug}.prompt.md")
+    _remove_staging_files(reply_path, prompt_path)
     print("When a batch of lessons is in, run generate.py --level "
           f"{args.level}, then validate-schema + compile-curriculum from the repo root.")
 
@@ -556,7 +569,7 @@ def main():
                         help="ingest only: the single grammar slug to ingest")
     parser.add_argument("--from", dest="from_path", default=None,
                         help="ingest only: path to the pasted reply "
-                             "(default: web/<level>/<slug>.reply.md)")
+                             "(default: web/grammar/<level>/<slug>.reply.md)")
     parser.add_argument("--model", default="web-chat",
                         help="ingest only: provenance recorded in the lesson "
                              "frontmatter, e.g. claude-web or gemini-web")

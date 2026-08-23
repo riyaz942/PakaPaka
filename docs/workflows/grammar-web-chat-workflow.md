@@ -31,7 +31,7 @@ The one command you use is the grammar generator with two new subcommands,
 .venv/bin/python -m generate_content.generate_grammar_lessons ingest     --level n5 --slug <slug> --model <claude-web|gemini-web>
 ```
 
-Files live under `curriculum/_build/generate_content/web/<level>/` and are
+Files live under `curriculum/_build/generate_content/web/grammar/<level>/` and are
 **gitignored** (like `drafts/`) — they are throwaway working files. The committed
 artifact is the assembled lesson at `curriculum/grammar/lessons/<level>/<slug>.md`.
 
@@ -94,7 +94,7 @@ list for a batch.
 .venv/bin/python -m generate_content.generate_grammar_lessons webprompts --level n5 --slugs mo-also
 ```
 
-Writes `generate_content/web/n5/mo-also.prompt.md`. Open it. Everything below the
+Writes `generate_content/web/grammar/n5/mo-also.prompt.md`. Open it. Everything below the
 `<!-- ... -->` header is one self-contained block: the teaching-voice sheet, the
 grammar point, the exact allowed vocabulary, taught/upcoming siblings, the style
 anchors, the formatting rules, and a JSON output contract.
@@ -117,7 +117,7 @@ Copy the model's **entire** reply (the whole ```json block, or the raw JSON — 
 work) into:
 
 ```
-generate_content/web/n5/mo-also.reply.md
+generate_content/web/grammar/n5/mo-also.reply.md
 ```
 
 The filename must match the slug. (The prompt file's header comment restates this
@@ -130,14 +130,15 @@ path so you don't have to remember it.)
 ```
 
 **On pass:** it assembles `curriculum/grammar/lessons/n5/mo-also.md`
-(`review_status: draft`) and stashes cloze candidates in
-`drafts/n5/mo-also-cloze-candidates.json`. Done — move to the next point.
+(`review_status: draft`), stashes cloze candidates in
+`drafts/n5/mo-also-cloze-candidates.json`, and deletes the staged
+`mo-also.prompt.md` / `mo-also.reply.md`. Done — move to the next point.
 
 **On failure:** it prints the gate errors, does *not* assemble, and **rewrites the
 prompt file with the errors appended** (an "earlier draft failed mechanical
 validation" section). Re-roll:
 
-1. Open the rewritten `web/n5/mo-also.prompt.md`.
+1. Open the rewritten `web/grammar/n5/mo-also.prompt.md`.
 2. Paste it into a fresh chat (or say "regenerate fixing these" in the same chat —
    the errors are now in the prompt).
 3. Save the new reply over `mo-also.reply.md`.
@@ -197,7 +198,7 @@ ship.
 | List remaining slugs | the Python snippet under "List remaining slugs" |
 | Make prompts | `... webprompts --level n5 --slugs a,b,c` |
 | Paste | one point per fresh Claude/Gemini chat |
-| Save reply | `web/<level>/<slug>.reply.md` |
+| Save reply | `web/grammar/<level>/<slug>.reply.md` |
 | Ingest + gate | `... ingest --level n5 --slug a --model claude-web` |
 | On gate failure | reopen the rewritten `<slug>.prompt.md`, re-roll, re-save, re-ingest |
 | After a batch | `generate.py` → `npm run validate-schema` → `npm run compile-curriculum` → human review |

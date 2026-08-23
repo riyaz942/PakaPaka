@@ -105,7 +105,7 @@ single comma-separated string with NO spaces after the commas:
 
 Each prompt file is written to:
 
-curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
 
 Regenerating a prompt is a safe no-op — `webprompts` overwrites deterministically
 from the curriculum.
@@ -118,7 +118,7 @@ For the current slug, launch ONE general-purpose subagent (using
 <subagent-model> at <subagent-effort>) in the foreground — ingestion must wait for
 it to finish. Give the subagent the prompt file path:
 
-curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
 
 Give the subagent these instructions:
 
@@ -132,7 +132,7 @@ Give the subagent these instructions:
 
   Write the lesson exactly as the prompt body asks, then write your answer to:
 
-  curriculum/_build/generate_content/web/<level>/<slug>.reply.md
+  curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
 
   Requirements:
 
@@ -203,6 +203,9 @@ with `review_status: draft`, and its cloze candidates are stashed at
 
 curriculum/_build/generate_content/drafts/<level>/<slug>-cloze-candidates.json
 
+`ingest` also deletes the staged `<slug>.prompt.md` / `<slug>.reply.md` — no
+manual cleanup needed on a pass.
+
 Promoting cloze candidates onto the grammar item is separate editorial work and
 is NOT part of this run. Record the slug as successful and proceed to the next.
 
@@ -210,7 +213,7 @@ If ingestion fails:
 
 Nothing is assembled, and the ingestion process rewrites:
 
-curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
+curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
 
 with the validation errors appended (an "earlier draft failed mechanical
 validation" section).
@@ -220,8 +223,8 @@ Do not regenerate from scratch. Instead, launch a FRESH general-purpose subagent
 
 Give the repair subagent these files:
 
-- curriculum/_build/generate_content/web/<level>/<slug>.prompt.md
-- curriculum/_build/generate_content/web/<level>/<slug>.reply.md
+- curriculum/_build/generate_content/web/grammar/<level>/<slug>.prompt.md
+- curriculum/_build/generate_content/web/grammar/<level>/<slug>.reply.md
 
 Give the repair subagent these instructions:
 

@@ -272,9 +272,11 @@ for f in sorted(os.listdir(STAGE)):
     if slug not in urls:
         raise SystemExit(f'{slug}: no radical carries a visual_mnemonic_url for this slug')
     dest = os.path.join('mobile/assets', urls[slug])
+    src = os.path.join(STAGE, f)
     subprocess.run(['cwebp', '-quiet', '-resize', '640', '0', '-q', '80',
-                    os.path.join(STAGE, f), '-o', dest], check=True)
+                    src, '-o', dest], check=True)
     print(f'{os.path.getsize(dest):>7} bytes  {dest}')
+    os.remove(src)  # staged PNG is now installed as WebP — don't leave it under web/radical-art/
 PY
 cd mobile && npm run generate-radical-assets && npm run typecheck && cd -
 ```
