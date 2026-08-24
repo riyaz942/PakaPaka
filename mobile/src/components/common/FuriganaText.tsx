@@ -98,9 +98,10 @@ export function isWordFuriganaVisible(
   text: string,
   mode: FuriganaDisplayMode,
   knownKanji: ReadonlySet<string>,
+  isKnownWord?: boolean,
 ): boolean {
   return parseFurigana(text).some(
-    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji),
+    (segment) => segment.reading && defaultFuriganaVisible(segment, mode, knownKanji, isKnownWord),
   );
 }
 

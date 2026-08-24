@@ -162,10 +162,16 @@ def look_alikes(slug):
     return out
 
 
-def decomposition_edges(level):
-    """{kanji_slug: [radical_slug, ...]} for builds_on edges radical -> kanji at
-    this level. Self/kanji-kanji edges are ignored: mnemonics decompose into
-    taught *radicals* only."""
+def decomposition_edges():
+    """{kanji_slug: [radical_slug, ...]} for builds_on edges radical -> kanji.
+    Self/kanji-kanji edges are ignored: mnemonics decompose into taught
+    *radicals* only.
+
+    Not filtered by level: `to_slug` naming is not consistent across the
+    dataset (legacy slugs carry a level prefix like `n5-ichi`, newer ones
+    don't, e.g. `k-overdo`), so a level-prefix filter here silently dropped
+    components for any slug in the second convention. The caller narrows to
+    one kanji via `.get(slug, [])`, so no level filter is needed."""
     graph = _load_json(GRAPH_PATH)
     out = {}
     for e in graph["edges"]:
@@ -173,7 +179,6 @@ def decomposition_edges(level):
             e.get("relationship_type") == "builds_on"
             and e.get("from_type") == "radical"
             and e.get("to_type") == "kanji"
-            and e.get("to_slug", "").startswith(f"{level}-")
         ):
             out.setdefault(e["to_slug"], []).append(e["from_slug"])
     return out
@@ -195,7 +200,7 @@ def kanji_context(level, slug, cast=None):
 
     onyomi, kunyomi = _kanji_readings(item)
     primary = _primary_reading(item)
-    comp_slugs = decomposition_edges(level).get(slug, [])
+    comp_slugs = decomposition_edges().get(slug, [])
     components = []
     for rslug in comp_slugs:
         r = radicals.get(rslug)

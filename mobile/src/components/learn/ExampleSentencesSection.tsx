@@ -7,7 +7,9 @@ import { SectionHeading } from '@/components/common/SectionHeading';
 import { useItemHref } from '@/components/learn/ItemLinkContext';
 import { buildPassageBodyParts } from '@/core/content/passageBodyParts';
 import type { ExampleSentence } from '@/data/curriculum/itemRepository';
+import { useDatabase } from '@/data/hooks/useDatabase';
 import { useFuriganaPreference } from '@/data/hooks/useFuriganaPreference';
+import { isVocabularyItemKnown } from '@/data/user/masteryRepository';
 
 /**
  * Example Japanese sits a step above body copy so ruby has room and the kanji
@@ -81,6 +83,7 @@ function ExampleSentenceJapanese({
   hrefFor: (itemId: string) => string;
   testIDPrefix: string;
 }) {
+  const { userDb } = useDatabase();
   const parts = useMemo(
     () => buildPassageBodyParts(sentence.japanese, sentence.furigana, sentence.spans),
     [sentence.japanese, sentence.furigana, sentence.spans],
@@ -119,6 +122,10 @@ function ExampleSentenceJapanese({
         }
 
         const vocabularyItemId = part.vocabularyItemId;
+        // A linked span *is* one vocabulary item, so its own mastery is the
+        // whole answer (Tier 1) rather than a per-kanji check (Tier 2) — the
+        // same distinction the word's own hero already uses (FR78 / BUG6).
+        const isKnownWord = isVocabularyItemKnown(userDb, vocabularyItemId);
         const handlePress = (): void => {
           const pathname = hrefFor(vocabularyItemId);
           // A conjugated span opens the *base* word, so the detail screen is
@@ -137,6 +144,7 @@ function ExampleSentenceJapanese({
             part.text,
             modeForItem(vocabularyItemId),
             knownKanji,
+            isKnownWord,
           );
           setOverride(vocabularyItemId, visible ? 'hidden' : 'shown');
         };
@@ -167,6 +175,7 @@ function ExampleSentenceJapanese({
               // override applies here just as it does on the word's own hero.
               mode={modeForItem(vocabularyItemId)}
               knownKanji={knownKanji}
+              isKnownWord={isKnownWord}
               // Nested furigana toggles would steal the span tap (NFR29).
               interactive={false}
               className="text-body-lg font-jp-medium text-content-vocabulary-deep underline"

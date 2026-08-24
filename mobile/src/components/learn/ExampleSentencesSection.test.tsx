@@ -18,15 +18,32 @@ let mockOverrides = new Map<string, 'shown' | 'hidden'>();
 const mockSetOverride = jest.fn((itemId: string, mode: 'shown' | 'hidden') => {
   mockOverrides.set(itemId, mode);
 });
+let mockMode: 'auto' | 'shown' | 'hidden' = 'shown';
+let mockKnownWordIds = new Set<string>();
 
 jest.mock('@/data/hooks/useFuriganaPreference', () => ({
   useFuriganaPreference: () => ({
-    mode: 'shown',
+    mode: mockMode,
     knownKanji: new Set<string>(),
-    modeForItem: (itemId: string) => mockOverrides.get(itemId) ?? 'shown',
+    modeForItem: (itemId: string) => mockOverrides.get(itemId) ?? mockMode,
     setOverride: mockSetOverride,
   }),
 }));
+
+jest.mock('@/data/hooks/useDatabase', () => {
+  // Stable object: an unstable identity would re-fire db-keyed effects every render.
+  const databases = {
+    userDb: {
+      getFirstSync: jest.fn((_sql: string, itemId: string) =>
+        mockKnownWordIds.has(itemId) ? { known: 1 } : null,
+      ),
+      getAllSync: jest.fn(() => []),
+      runSync: jest.fn(),
+    },
+    curriculumDb: {},
+  };
+  return { useDatabase: () => databases };
+});
 
 const linkedSentence: ExampleSentence = {
   id: '1',
@@ -79,6 +96,23 @@ describe('ExampleSentencesSection (Plan 11.6)', () => {
     mockPush.mockClear();
     mockSetOverride.mockClear();
     mockOverrides = new Map();
+    mockMode = 'shown';
+    mockKnownWordIds = new Set();
+  });
+
+  it("hides a mastered multi-kanji word's furigana by whole-word mastery, not per-kanji (BUG6)", () => {
+    mockMode = 'auto';
+    mockKnownWordIds = new Set(['11']);
+
+    render(
+      <ExampleSentencesSection sentences={[linkedSentence]} testIDPrefix="mastery-example" />,
+    );
+
+    // 学生 (item 11) is mastered as a whole word — Tier 1 hides its furigana
+    // even though `knownKanji` (Tier 2, per-character) is empty here.
+    expect(screen.queryByText('がくせい')).toBeNull();
+    // 私 (item 10) is not mastered, so its reading still shows.
+    expect(screen.getByText('わたし')).toBeTruthy();
   });
 
   it('applies a linked word\'s per-word furigana override to its span', () => {
