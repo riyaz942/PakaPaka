@@ -2960,7 +2960,23 @@
         "furu-rain",
         "takai-adj",
         "wakaru"
-      ]
+      ],
+      "explanation_markdown": "You're supposed to meet a friend at the park at six. At five-thirty it starts raining, hard. You text them anyway: 雨[あめ]が降[ふ]っても、公[こう]園[えん]を歩[ある]く。 Rain or no rain, you're going. That flip — \"no matter what happens, the plan holds\" — is what ても does. It bolts onto the te-form you already know and turns any verb or adjective into \"even if / even though X.\"\n\n## How it works\n\nThe base is the same te-form you've been using for ている, てある, ておく, and the rest — you're just handing it to a new job. Take the te-form, add も (the word that works like *even / also*), and you get \"even if / even though.\"\n\n```jp\n忙[いそが]しくても、毎[まい]日[にち]勉[べん]強[きょう]する。\n```\n\n*Even if I'm busy, I study every day.*\n\nWith verbs, the te-form does all the work — も just rides on the end. With い-adjectives, drop the い, add くて, then も:\n\n```jp\n忙[いそが]しい → 忙[いそが]しくて → 忙[いそが]しくても\n```\n\nFor な-adjectives and nouns, the connector is で, and ても becomes でも (the same shape as the word for \"but\" — more on that below):\n\n```jp\n元[げん]気[き]でも、今日[きょう]は休[やす]む。\n```\n\n*Even though I'm fine, I'm resting today.*\n\n```jp\n元[げん]気[き] → 元[げん]気[き]で → 元[げん]気[き]でも\n```\n\nOne more shape worth knowing early: pair ても with a question word like 何[なに]回[かい] (how many times) and you get \"no matter how many times.\"\n\n```jp\n何[なに]回[かい]聞[き]いても、分[わ]からない。\n```\n\n*No matter how many times I ask, I don't understand.*\n\nThat's the whole mechanic. One connector, four flavors depending on what it's attached to — verb, い-adjective, な-adjective/noun, or a question word.\n\n## Rules and exceptions\n\nても doesn't care whether the outcome is good or bad, expected or not — it just says \"this condition doesn't change the result.\" Compare that to から (for reasons) or ので (softer reasons), which you'll meet elsewhere: those explain *why* something happens. ても explains why something *doesn't stop* happening.\n\n```jp\n高[たか]くても、あの時計[とけい]を買[か]う。\n```\n\n*Even if it's expensive, I'll buy that watch.*\n\nNobody's giving a reason here — 高[たか]い isn't the cause of buying the watch, it's the obstacle that fails to change the decision. That's the whole flavor of ても: expect it wherever a sentence in English has \"even if,\" \"no matter,\" or \"however X is.\"\n\n> A common first-week slip is dropping the も and just leaving the te-form alone: `忙しくて、毎日勉強する` reads as \"I'm busy, and so I study every day\" — a plain reason, the opposite of what you meant. The も is not optional decoration; it's the whole concession.\n\nでも after a noun or な-adjective looks exactly like でも the conjunction meaning \"but\" (the one sitting in your vocabulary list already). They really are the same word wearing two hats: sentence-initial でも contrasts two whole sentences, while attached でも at the end of a noun or な-adjective contrasts a single condition against its result. Context tells them apart fast — one starts a sentence, the other ends a clause.\n\n## Contrast\n\nYou already know a handful of jobs the te-form can do: ている marks something in progress, てしまう marks something finished (often with a little regret), ていく and てくる track a change moving away from or toward you. ても is another one of those jobs, and it's worth keeping straight from the others precisely because the *shape* is so similar — te-form plus one more piece.\n\nThe difference is what that piece asks. ている, てしまう, ていく, and てくる all describe what's happening *to the action itself* — is it ongoing, complete, moving. ても doesn't touch the action's own status at all; it's entirely about the relationship between a condition and a result that refuses to budge. 忙[いそが]しくても勉[べん]強[きょう]する isn't telling you anything about the studying being finished or ongoing — it's telling you the studying happens *regardless* of the business.\n\n## Closing thought\n\nEvery time you reach for ても, you're saying \"here's the obstacle, and here's the outcome that ignores it.\" Hold onto that shape — you'll want it again soon, when てもいい turns the same connector into asking permission instead of describing defiance.\n",
+      "caution_notes": [
+        "Dropping the も and leaving only the te-form turns a concession into a plain reason, so 忙しくて means 'because I'm busy,' not 'even though I'm busy.'",
+        "でも attached to a noun or な-adjective is the same word as the conjunction でも (but) — only its position in the sentence tells you which job it's doing.",
+        "ても does not explain a cause the way から or ので do; it says a condition failed to change the outcome, not why the outcome happened."
+      ],
+      "related_grammar_slugs": [
+        "n4-teshimau",
+        "n4-teiku-tekuru",
+        "n4-temoii"
+      ],
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "n4-temoii",
@@ -3034,7 +3050,24 @@
         "suwaru",
         "shashin",
         "kaeru-v"
-      ]
+      ],
+      "explanation_markdown": "You're at a friend's place and there's food on the table that looks too good to leave alone. You don't just reach for it — you check first: これ、食[た]べてもいいですか。 That's the whole shape of てもいい: te-form plus いい, and it turns any verb into \"is it okay if I—\".\n\n## How it works\n\nてもいい is built from the te-form you already know, plus いい (good). Literally it reads as \"even doing X is good\" — the て part sets up the action, いい signs off on it. Once you can make a te-form, you already have this pattern.\n\n```jp\n食[た]べる → 食[た]べても → 食[た]べてもいい\n```\n\n*to eat → even if (I) eat → it's fine if (I) eat / may I eat*\n\nAsk it as a question with か and you get permission-seeking; say it flat and you're granting permission to someone else.\n\n```jp\nここに座[すわ]ってもいいですか。\n```\n\n*May I sit here?*\n\n```jp\n窓[まど]を開[あ]けてもいいですか。\n```\n\n*May I open the window?*\n\nAnswering someone else's request uses the same form, just without the question:\n\n```jp\nもう帰[かえ]ってもいいですよ。\n```\n\n*You may go home now.*\n\nThe よ at the end isn't part of the grammar point — it's just the ordinary \"letting you know\" particle, doing the same job it always does.\n\n## Rules and exceptions\n\nてもいい attaches to the te-form of any verb — there's no group it refuses to work with. The politeness lives entirely in です: drop it and you're at plain-speech level, keep it and you're neutral-polite.\n\nThere's a second accepted shape, てもかまわない (\"even if X, it doesn't matter\" — かまう is \"to mind, to be bothered\"). It answers the same question but with a shrug instead of a nod: less \"sure, go ahead,\" more \"I genuinely don't care either way.\"\n\n```jp\n電[でん]話[わ]を使[つか]ってもいいですか。\n```\n\n*May I use the phone?*\n\n```jp\nもう帰[かえ]ってもかまわない。\n```\n\n*It's fine if you go home already.*\n\n> Don't try to build the negative by just adding a negative verb inside the pattern — `帰ってもいいじゃない` reads as a totally different thing (a rhetorical \"isn't it fine if...?\"), not \"you may not go home.\" Permission-denial is its own pattern, coming up separately.\n\nOne more trap: てもいい answers \"is this allowed,\" not \"is this necessary.\" If someone asks whether they *have* to do something, this pattern can't answer that question either way — that's a different piece of grammar you'll meet soon.\n\n## Casual speech\n\nDrop です and the question softens into something you'd say to a friend rather than a stranger:\n\n- てもいいですか → てもいい？ (rising intonation carries the question mark)\n- てもいいですよ → てもいいよ\n\nNothing about the te-form itself changes — only the politeness layer peels off, the same way it does everywhere else.\n\n## Contrast: てもいい vs ても\n\nYou already know ても for \"even if / even though\" — it sets up a condition that doesn't change the outcome. てもいい borrows that exact same て...も shape, then bolts on いい to turn \"even if\" into \"and that's fine.\" Drop いい and you're back to plain ても, which just describes a fact regardless of permission:\n\n```jp\n雨[あめ]が降[ふ]っても、公[こう]園[えん]で遊[あそ]びます。\n```\n\n*Even if it rains, (we're) playing at the park.*\n\nCompare that to 遊[あそ]んでもいいですか — one is reporting what happens no matter what, the other is asking whether something is allowed to happen at all. Same skeleton, completely different job once いい shows up.\n\nThat's the whole pattern: te-form, いい, done. Hold onto the shape — you'll meet its two mirror images soon, one for \"not allowed\" and one for \"don't have to.\"\n",
+      "caution_notes": [
+        "てもいい answers whether something is allowed, not whether it's necessary — a different pattern covers having to do something.",
+        "Don't tack a negative verb onto てもいい to mean it isn't allowed — that reads as a rhetorical question instead of a denial.",
+        "てもかまわない carries a more indifferent, don't-mind-either-way tone than the warmer, more inviting てもいい.",
+        "Dropping です only peels off the politeness layer in casual speech — the te-form underneath stays exactly the same."
+      ],
+      "related_grammar_slugs": [
+        "n4-temo",
+        "n4-tewaikenai",
+        "n4-nakutemoii"
+      ],
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "n4-tewaikenai",
@@ -3093,7 +3126,23 @@
       "vocabulary_slugs": [
         "jugyou",
         "hanasu-v"
-      ]
+      ],
+      "explanation_markdown": "You're at the library with a friend's paperback and a pen in hand, ready to underline a line you love. Before you touch the page: 図[と]書[しょ]館[かん]の本[ほん]にペンで書[か]いてはいけない。The book isn't yours to mark up — てはいけない is how Japanese slams a rule shut, no negotiation.\n\n## How it works\n\nてはいけない bolts onto the te-form of a verb — the same te-form you already use for てある, ておく, and the rest of that family — and adds はいけない, literally \"as for [doing that], it's not good.\" Together the two pieces read as a flat prohibition: *must not*.\n\n```jp\n書[か]く → 書[か]いて\n図[と]書[しょ]館[かん]の本[ほん]にペンで書[か]いてはいけない。\n```\n\n*Write → to write.*\n\n*You must not write in library books with a pen.*\n\nThe same shape works for any verb once you have its te-form. Loud talking in a library gets the same treatment.\n\n```jp\n図[と]書[しょ]館[かん]で大[おお]きい声[こえ]で話[はな]してはいけない。\n```\n\n*Don't talk in a loud voice in the library.*\n\nNotice the structure never changes shape for who's being told off — no conjugation for \"you\" versus \"everyone.\" The rule sits on the verb, not the person.\n\n## Rules and exceptions\n\nてはいけない only attaches to the **affirmative** te-form. There's no such thing as stacking a negative onto it to soften the meaning — `書かないてはいけない` isn't a real sentence, it's just two grammar pieces mashed together that don't combine that way.\n\n> てはいけない doesn't get politer or ruder by putting です/ます in front of it — the bluntness is baked into the pattern itself, which is why it shows up on signs and warnings more than in relaxed conversation between friends.\n\nSome things are worth stating flatly enough that softening them would be missing the point.\n\n```jp\n財[さい]布[ふ]を忘[わす]れてはいけない。\n```\n\n*You must not forget your wallet.*\n\nThere's also てはだめだ, a slightly more conversational cousin that swaps いけない for だめ (だめ meaning roughly \"no good\"). The meaning is identical — pick whichever one your ear likes better.\n\n```jp\nここに座[すわ]ってはだめだ。\n```\n\n*You mustn't sit here.*\n\n## Casual speech\n\nIn fast, casual speech the ては contracts down to ちゃ, and いけない or だめだ often drops off entirely, leaving just ちゃだめ hanging at the end. It's the same \"no\" as てはいけない, just worn smooth by everyday use.\n\n```jp\n話[はな]しちゃだめ。\n忘[わす]れちゃだめ。\n```\n\n*Don't talk.*\n\n*Don't forget it.*\n\nYou'll hear this constantly from parents to kids and friends to each other — it's the version people actually say, while てはいけない is the version printed on the sign.\n\n## Contrast\n\nYou already know てもいい for \"it's fine if you do this\" — permission granted. てはいけない is its mirror image: permission denied. Swap one for the other in the same sentence and you flip the entire meaning of what's allowed.\n\n```jp\nここに座[すわ]ってもいいですか。\n```\n\n*Is it okay if I sit here?*\n\nAsk that question and get 座[すわ]ってはいけない back, and you know exactly where you stand — nowhere near that chair.\n\nRules like this only cover what you can't do right now. Later you'll meet なければならない for what you *have* to do — a different kind of pressure, obligation instead of prohibition, but it rhymes with everything you just learned about how these blunt little patterns work.\n",
+      "caution_notes": [
+        "てはいけない only attaches to the affirmative te-form; there is no negative version that softens the meaning.",
+        "てはいけない and てはだめだ carry the same blunt meaning — putting です/ます in front does not make either one softer.",
+        "In casual speech ては contracts to ちゃ and いけない/だめだ often drops to leave ちゃだめ, but the meaning stays identical to the full form.",
+        "てもいい grants permission while てはいけない denies it — confusing the two flips the sentence's meaning entirely."
+      ],
+      "related_grammar_slugs": [
+        "n4-temoii",
+        "n4-nakerebanaranai"
+      ],
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "n4-nakutemoii",
@@ -3181,7 +3230,24 @@
         "ashita",
         "shinpai-suru",
         "okane"
-      ]
+      ],
+      "explanation_markdown": "It's the night before a test, and your desk is covered in 宿[しゅく]題[だい] you haven't touched. You message a classmate to panic together, and they text back something that stops you cold: not everything on that pile is actually due tomorrow.\n\n```jp\n今日[きょう]は宿[しゅく]題[だい]を全[ぜん]部[ぶ]しなくてもいい。\n```\n\n*You don't have to finish all the homework today.*\n\nThat's なくてもいい — \"don't have to,\" \"it's fine even without doing.\" It tells you a rule you assumed was strict actually has slack in it.\n\n## How it works\n\nStart from the plain negative (ない-form) of the verb, drop the final い, and add くてもいい. しない becomes しなくて, and もいい tacks on the same \"it's fine\" feeling you already know from てもいい.\n\n```jp\n行[い]く → 行[い]かなくてもいい\n```\n\n*to go → don't have to go*\n\n```jp\n食[た]べる → 食[た]べなくてもいい\n```\n\n*to eat → don't have to eat*\n\nU-verbs like 行[い]く shift to the あ-row before ない (行[い]か-), and ru-verbs like 食[た]べる just drop る and add ない — the same split you already learned for building the plain negative in the first place. なくてもいい just rides on top of a form you can already produce.\n\nYou'll also see です tacked on for politeness, and a slightly stiffer cousin, なくてもかまわない (\"it doesn't matter if you don't\"), which leans a little more formal but means the same thing.\n\n```jp\n明日[あした]は早[はや]く起[お]きなくてもいいです。\n```\n\n*You don't have to wake up early tomorrow.*\n\n```jp\n今日[きょう]は学[がっ]校[こう]へ行[い]かなくてもかまわない。\n```\n\n*It's fine even if you don't go to school today.*\n\n## Rules and exceptions\n\nThe trap almost everyone falls into first: なくてもいい looks like it should mean \"must not,\" because it has ない sitting right there next to a rule word. It doesn't. It means the opposite of forced — permission to skip, not a ban.\n\n> Don't reach for なくてもいい when you mean \"must not.\" That's a completely different pattern — てはいけない, which you already know — and mixing them up flips the meaning of your sentence.\n\nThere's no irregular twist here: any verb that has a plain negative can take なくてもいい, including する and 来[く]る once they're in their ない-forms (しない, 来[こ]ない). The pattern is mechanical once the ない-form is solid, which is exactly why it's worth double-checking that form first if a sentence feels off.\n\n## Casual speech\n\nIn relaxed conversation, もいい often just shrinks the sentence's weight rather than changing its wording — you'll hear なくてもいい said fast and clipped, sometimes with いい swapped for a shrug-toned よ at the end for warmth.\n\n```jp\nそんなに急[いそ]がなくてもいいよ。\n```\n\n*You don't have to hurry that much.*\n\n```jp\n心[しん]配[ぱい]しなくてもいいよ。\n```\n\n*You don't have to worry.*\n\nThat よ isn't part of the grammar — it's the same softening particle you've seen elsewhere — but it shows up on this pattern constantly because なくてもいい is so often said to reassure someone.\n\n## Contrast\n\nYou already have two close relatives of this pattern, and lining them up side by side is the fastest way to keep them separate.\n\nてもいい gives permission to do something; なくてもいい gives permission to skip it. Same もいい ending, opposite verb form feeding into it.\n\n```jp\n宿[しゅく]題[だい]をしてもいいですか。\n```\n\n*Is it okay if I do the homework?*\n\nCompare that to the very first example above — 宿[しゅく]題[だい]を全[ぜん]部[ぶ]しなくてもいい, \"you don't have to do all the homework\" — and the difference is entirely in that one syllable, ない, sitting in front of くてもいい.\n\nてはいけない sits at the opposite end from both of them: it forbids, full stop.\n\n```jp\n今日[きょう]は宿[しゅく]題[だい]をしなくてはいけない。\n```\n\n*You have to do the homework today.*\n\nNotice that sentence isn't even なくてもいい's opposite — しなくてはいけない (\"must do\") is built the same way as なくてもいい but swaps いい for はいけない, and the meaning flips to an obligation instead of a release from one. Three patterns, three feelings: いい lets you off the hook, はいけない locks you to it, and mixing up which one you reached for is the single most common mistake with this whole family.\n\nHold onto that hook feeling — it's the flip side of なければならない, which you'll meet soon and which says \"you must\" using the same ない-stem this pattern already taught you to build.\n",
+      "caution_notes": [
+        "Don't confuse なくてもいい with てはいけない — one grants release from a rule, the other forbids the action entirely.",
+        "なくてもいい needs a correctly formed ない-stem underneath it, so double-check that form first if the sentence feels off.",
+        "なくてもかまわない means the same thing as なくてもいい but reads a little more formal.",
+        "The casual よ often tacked onto the end is a separate softening particle, not part of this pattern's grammar."
+      ],
+      "related_grammar_slugs": [
+        "n4-temoii",
+        "n4-tewaikenai",
+        "n4-nakerebanaranai"
+      ],
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "n4-nakerebanaranai",
@@ -3244,7 +3310,24 @@
         "shukudai",
         "kusuri",
         "iku-v"
-      ]
+      ],
+      "explanation_markdown": "Your friend texts you: 明日[あした]試[し]験[けん]があります。There's a version of tonight where you watch TV until you fall asleep, and a version where you don't get to choose — because tomorrow's exam doesn't care how you feel about it. Japanese marks that second kind of night with a single ending: なければならない, \"must / have to.\" It turns a plain verb into something you don't get to skip.\n\n## How It Works\n\nなければならない attaches to the same stem you already met in なくてもいい — the ない-stem, the shape a verb takes right before ない. You already know how to build it; this ending just replaces くてもいい with ければならない.\n\n```jp\n今日[きょう]は漢[かん]字[じ]を覚[おぼ]えなければならない。\n```\n*I have to memorize kanji today.*\n\n覚[おぼ]える drops its る and takes the ない-stem 覚[おぼ]え, then ければならない tacks straight on. ならない is just the negative of なる (to become) — more on that shape in a moment.\n\n```jp\n本[ほん]も読[よ]まなければならない。\n```\n*I also have to read the book.*\n\n読[よ]む is a different kind of verb — its stem swaps む for ま before any ない-family ending, the same swap you'd make for なくてもいい. も here just means \"also,\" stacking a second obligation on top of the first.\n\nThe same swap works for 行[い]く, which turns its く into か:\n\n```jp\n学[がっ]校[こう]に行[い]かなければならない。\n```\n*I have to go to school.*\n\n## Rules and Exceptions\n\nThat なりません isn't a random polite tag — it's the negative of なる, \"to become.\" Read the whole phrase literally and it says something like \"if [this] doesn't happen, it won't become [okay]\" — which is exactly the shape of an obligation: skip the verb, and things don't turn out right. Once you see that, なければならない stops looking like a memorized chunk and starts looking like ordinary grammar wearing a long coat.\n\n> Don't split なければ off as its own negative clause. It's one fused ending, not \"if not\" plus a separate sentence — you can't remove ならない and still mean the same thing.\n\nなければいけない means the same thing and swaps in freely; いけない reads as \"it won't do,\" which lands in the same place as \"won't become okay.\" Some verbs favor one variant over the other for no reason beyond habit, and native speakers mix both without thinking about it.\n\n```jp\n今[こん]週[しゅう]、本[ほん]を返[かえ]さなければいけません。\n```\n*I have to return the book this week.*\n\n返[かえ]す swaps す for さ before this ending, same pattern as every verb so far.\n\n## Casual Speech\n\nIn speech, なければ shrinks hard — down to なきゃ — and いけない often drops entirely, leaving a bare なきゃ standing in for the whole obligation.\n\n```jp\n宿[しゅく]題[だい]、しなきゃいけない。\n```\n*Gotta do the homework.*\n\nYou'll also hear just 宿[しゅく]題[だい]、しなきゃ。 with nothing after it — the いけない is implied, understood, gone. That's normal, not sloppy; write out the full form in anything that isn't a text message to a friend.\n\n## Contrast\n\nYou already know なくてもいい from a few lessons back — it says a verb is optional, not required. Swap it in against なければならない and the meaning flips completely, not just softens.\n\n```jp\n音[おん]楽[がく]を聞[き]かなくてもいいです。\n```\n*I don't have to listen to music.*\n\nSame ない-stem, opposite conclusion: なくてもいい clears the requirement; なければならない installs it. And てはいけない — \"must not\" — sits on the far side of なければならない, not next to it: one demands an action, the other forbids one.\n\n```jp\n遅[おそ]く寝[ね]てはいけません。\n```\n*I must not go to bed late.*\n\nMixing these up is an easy early mistake: saying `寝なくてもいい` when you mean \"you must not sleep late\" tells someone the opposite of what you intended — that sleeping late is fine, just not required.\n\nFor a fast mental shortcut, the dictionary form and the obligation form line up directly:\n\n```jp\n行[い]く → 行[い]かなければならない\n```\n*to go → have to go*\n\nThat's the whole engine: find the ない-stem you already know, and decide whether you're forbidding it (てはいけない), excusing it (なくてもいい), or locking it in (なければならない). Later, when you meet ようにする, you'll see the same instinct pointed at habits instead of single obligations — making something happen on purpose, rather than being told it must.\n",
+      "caution_notes": [
+        "なりません is the polite negative of なる, not a separate negation you can remove from the ending.",
+        "なくてもいい and なければならない use the identical ない-stem but land on opposite meanings, so double-check which one you actually wrote.",
+        "なきゃいけない and the even shorter なきゃ belong to speech and texts, not formal writing.",
+        "てはいけない forbids an action, while なければならない requires one — they are not two strengths of the same rule."
+      ],
+      "related_grammar_slugs": [
+        "n4-nakutemoii",
+        "n4-tewaikenai",
+        "n4-youni-suru"
+      ],
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "2",
+        "review_status": "draft"
+      }
     },
     {
       "slug": "n4-souni-naru",
