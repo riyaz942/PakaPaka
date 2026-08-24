@@ -74,27 +74,16 @@ describe('useBrowseItems', () => {
   });
 
   describe('search', () => {
-    it('does not query until the debounce elapses', async () => {
-      jest.useFakeTimers();
-      try {
-        const { result } = renderHook(() => useBrowseItems());
-        await act(async () => {
-          jest.runOnlyPendingTimers();
-        });
-        mockListBrowsePage.mockClear();
+    it('queries immediately when setSearchInput is called — no debounce', async () => {
+      const { result } = renderHook(() => useBrowseItems());
+      await waitFor(() => expect(result.current.loading).toBe(false));
+      mockListBrowsePage.mockClear();
 
-        act(() => {
-          result.current.setSearchInput('mizu');
-        });
-        expect(mockListBrowsePage).not.toHaveBeenCalled();
+      act(() => {
+        result.current.setSearchInput('mizu');
+      });
 
-        await act(async () => {
-          jest.advanceTimersByTime(200);
-        });
-        expect(mockListBrowsePage).toHaveBeenCalled();
-      } finally {
-        jest.useRealTimers();
-      }
+      await waitFor(() => expect(mockListBrowsePage).toHaveBeenCalled());
     });
 
     it('keeps the typed text exactly as entered — never rewritten to kana', async () => {
@@ -247,33 +236,6 @@ describe('useBrowseItems', () => {
     expect(result.current.rows).toEqual([]);
     expect(result.current.totalCount).toBe(0);
     expect(result.current.error).toMatch(/couldn't load/i);
-  });
-
-  it('flushes the debounced search immediately when filters are cleared', async () => {
-    jest.useFakeTimers();
-    try {
-      const { result } = renderHook(() => useBrowseItems());
-      await act(async () => {
-        jest.runOnlyPendingTimers();
-      });
-
-      act(() => {
-        result.current.setSearchInput('mizu');
-      });
-      await act(async () => {
-        jest.advanceTimersByTime(200);
-      });
-      expect(result.current.debouncedSearch).toBe('mizu');
-
-      act(() => {
-        result.current.clearFilters();
-      });
-
-      expect(result.current.searchInput).toBe('');
-      expect(result.current.debouncedSearch).toBe('');
-    } finally {
-      jest.useRealTimers();
-    }
   });
 
   it('ignores a loadMore append after the query identity has changed', async () => {

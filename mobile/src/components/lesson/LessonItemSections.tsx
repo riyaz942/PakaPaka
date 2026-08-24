@@ -13,7 +13,7 @@ import {
   ItemDetailHeader,
   heroWeightClass,
 } from '@/components/learn/ItemDetailHeader';
-import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemCrossReferences, KanjiBuiltFromSection } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import {
   hasCurriculumMnemonic,
@@ -265,9 +265,15 @@ export function LessonMnemonicSectionView({
         <KanjiReadingsSection kanjiReadings={kanjiReadings} />
       </View>
     ) : null;
+  // Radical composition sits next to the meaning mnemonic (which references the
+  // same radicals) instead of only down on the cross-links section.
+  const builtFromSection =
+    item.itemType === 'kanji' ? <KanjiBuiltFromSection parents={parents} /> : null;
 
   return (
     <View testID="lesson-section-mnemonic">
+      {builtFromSection}
+
       {hasContent ? (
         <ItemMnemonicSections item={item} parents={parents} readingSlot={readingsBlock} />
       ) : (
@@ -293,10 +299,13 @@ export function LessonExamplesSection({
   parents,
 }: LessonSectionProps) {
   const related = useRelatedItems(item.id, item.itemType);
+  // Kanji's parents (the "Built from" radicals) now render on the mnemonic
+  // page, so a non-empty `parents` no longer means this section has content.
+  const componentsShownHere = item.itemType !== 'kanji';
   const hasNothing =
     exampleSentences.length === 0 &&
     related.length === 0 &&
-    parents.length === 0 &&
+    (!componentsShownHere || parents.length === 0) &&
     grammarVocabLinks.length === 0 &&
     relatedGrammar.length === 0;
 
@@ -312,6 +321,7 @@ export function LessonExamplesSection({
         parents={parents}
         grammarVocabLinks={grammarVocabLinks}
         relatedGrammar={relatedGrammar}
+        hideBuiltFrom
       />
       {hasNothing ? (
         <Text className="mt-4 text-body text-secondary" testID="lesson-examples-empty">

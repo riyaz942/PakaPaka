@@ -264,7 +264,9 @@ describe('BrowseItemDetailRoute', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('vocabulary-detail')).toBeTruthy();
-      expect(screen.getByText('私')).toBeTruthy();
+      // The hero and the always-visible reading section both show 私 — this
+      // fixture has no furigana, so the reading section falls back to it.
+      expect(screen.getAllByText('私').length).toBeGreaterThan(0);
       expect(screen.getByText('私は学生です。')).toBeTruthy();
       expect(screen.getByTestId('cross-ref-grammar-4')).toBeTruthy();
     });

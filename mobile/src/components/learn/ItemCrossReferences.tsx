@@ -22,6 +22,11 @@ type ItemCrossReferencesProps = {
   parents?: CurriculumParentItem[];
   grammarVocabLinks?: GrammarVocabLink[];
   relatedGrammar?: RelatedGrammarItem[];
+  /**
+   * Skips the kanji "Built from" tiles — set when the caller already rendered
+   * `KanjiBuiltFromSection` higher up the screen, next to the meaning mnemonic.
+   */
+  hideBuiltFrom?: boolean;
 };
 
 const RELATED_LABEL: Record<string, string> = {
@@ -49,6 +54,25 @@ function toChips(
 }
 
 /**
+ * A kanji's radical composition tiles, factored out of `ItemCrossReferences` so
+ * it can sit next to the meaning mnemonic (which references the same radicals)
+ * instead of only at the bottom of the screen with the other cross-links.
+ */
+export function KanjiBuiltFromSection({ parents }: { parents: CurriculumParentItem[] }) {
+  return (
+    <CrossReferenceSection
+      label={COMPONENT_LABEL.kanji}
+      items={toChips(parents)}
+      infoTopic="radical"
+      // The parts an item is built from get the layer-below hue as a fill;
+      // what it leads on to stays on plain surface tiles.
+      tileVariant="soft"
+      testID="cross-ref-components"
+    />
+  );
+}
+
+/**
  * All FR72 cross-reference directions for one item, shared by the lesson
  * "Examples & links" section and the details scroll — plus related-grammar
  * sibling links when present (details parity).
@@ -63,13 +87,15 @@ export function ItemCrossReferences({
   parents = [],
   grammarVocabLinks = [],
   relatedGrammar = [],
+  hideBuiltFrom = false,
 }: ItemCrossReferencesProps) {
   const componentLabel = COMPONENT_LABEL[item.itemType];
   const relatedLabel = RELATED_LABEL[item.itemType];
+  const skipComponentSection = hideBuiltFrom && item.itemType === 'kanji';
 
   return (
     <View testID="item-cross-references">
-      {componentLabel ? (
+      {componentLabel && !skipComponentSection ? (
         <CrossReferenceSection
           label={componentLabel}
           items={toChips(parents)}

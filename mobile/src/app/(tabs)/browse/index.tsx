@@ -57,7 +57,6 @@ export default function BrowseScreen() {
     error,
     searchInput,
     setSearchInput,
-    debouncedSearch,
     filters,
     applyFilters,
     clearFilters,
@@ -70,6 +69,19 @@ export default function BrowseScreen() {
 
   const [openFacet, setOpenFacet] = useState<BrowseFacetKey | null>(null);
   const [draft, setDraft] = useState<BrowseFilters>(filters);
+  // Typed-but-not-yet-submitted search text (FR65). Kept separate from the
+  // hook's `searchInput` so typing never fires a query — only the search
+  // button or the keyboard's submit key commits it.
+  const [searchDraft, setSearchDraft] = useState('');
+  // The SQLite read behind `loading` is synchronous, so `loading` itself
+  // never has a chance to paint true — it flips true then false within the
+  // same effect tick. `isSearching` is set synchronously on submit (so it
+  // does paint) and deferred by a tick before committing the search, giving
+  // the loader below a real frame to show on screen.
+  const [isSearching, setIsSearching] = useState(false);
+  // The draft committed by the in-flight search, so the effect below clears
+  // isSearching exactly when the hook's `searchInput` catches up to it.
+  const pendingSearchRef = useRef<string | null>(null);
 
   // A filter that excludes passages simply makes this false — "renders a locked
   // passage" means one is in the current result set, not in the catalogue.
@@ -120,9 +132,35 @@ export default function BrowseScreen() {
 
   const { count: draftCount, isCounting } = useBrowseDraftCount(
     draft,
-    debouncedSearch,
+    searchInput,
     passageUnlock,
   );
+
+  const runSearch = useCallback(() => {
+    // Nothing to do — this term is already applied.
+    if (searchDraft === searchInput) return;
+    pendingSearchRef.current = searchDraft;
+    setIsSearching(true);
+    // Deferred by a tick so the loader above actually gets painted before the
+    // synchronous SQLite read blocks the JS thread.
+    setTimeout(() => setSearchInput(searchDraft), 0);
+  }, [setSearchInput, searchDraft, searchInput]);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchDraft('');
+    setSearchInput('');
+  }, [setSearchInput]);
+
+  // `loading` flips true→false within one synchronous SQLite read, so it never
+  // commits as true and can't drive the clear. `searchInput` catching up to
+  // the committed draft is a value React reliably observes changing, so use
+  // that instead — by the time it lands, the (synchronous) query is done too.
+  useEffect(() => {
+    if (isSearching && searchInput === pendingSearchRef.current) {
+      pendingSearchRef.current = null;
+      setIsSearching(false);
+    }
+  }, [isSearching, searchInput]);
 
   const handleToggle = useCallback(
     (value: string) => {
@@ -144,6 +182,7 @@ export default function BrowseScreen() {
 
   const handleClearAll = useCallback(() => {
     clearFilters();
+    setSearchDraft('');
     lastSeedKeyRef.current = null;
     router.setParams({ level: undefined, type: undefined });
   }, [clearFilters]);
@@ -164,8 +203,10 @@ export default function BrowseScreen() {
 
         <View className="mt-space-md">
           <SearchField
-            value={searchInput}
-            onChangeText={setSearchInput}
+            value={searchDraft}
+            onChangeText={setSearchDraft}
+            onSubmit={runSearch}
+            onClear={handleClearSearch}
             testID="browse-search"
           />
         </View>
@@ -200,7 +241,7 @@ export default function BrowseScreen() {
           ) : null}
         </ScrollView>
 
-        {!loading && !error ? (
+        {!loading && !isSearching && !error ? (
           <Text
             className="mb-space-sm mt-space-sm text-caption font-ui-semibold text-muted"
             testID="browse-result-count">
@@ -220,7 +261,7 @@ export default function BrowseScreen() {
         <View className="flex-1 pb-space-sm">
           <BrowseList
             rows={rows}
-            loading={loading}
+            loading={loading || isSearching}
             loadingMore={loadingMore}
             error={error}
             onEndReached={loadMore}

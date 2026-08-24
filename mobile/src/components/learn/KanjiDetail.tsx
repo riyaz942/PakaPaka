@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import { AcceptedAnswersDisclosure } from '@/components/learn/AcceptedAnswersDisclosure';
 import { ExampleSentencesSection } from '@/components/learn/ExampleSentencesSection';
-import { ItemCrossReferences } from '@/components/learn/ItemCrossReferences';
+import { ItemCrossReferences, KanjiBuiltFromSection } from '@/components/learn/ItemCrossReferences';
 import { ItemDescriptionSection } from '@/components/learn/ItemDescriptionSection';
 import {
   DETAIL_HERO_FONT_SIZE,
@@ -13,6 +13,7 @@ import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { KanjiReadingsSection } from '@/components/learn/KanjiReadingsSection';
 import { LookAlikeSection } from '@/components/learn/LookAlikeSection';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
+import { PronunciationButton } from '@/components/learn/PronunciationButton';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { RelatedItem } from '@/core/content/content.types';
@@ -62,7 +63,13 @@ export function KanjiDetail({
 
       <KanjiReadingsSection kanjiReadings={kanjiReadings} />
 
+      <View className="mt-space-sm flex-row" testID="kanji-pronunciation-row">
+        <PronunciationButton text={item.primaryForm} testID="kanji-pronunciation-button" />
+      </View>
+
       <AcceptedAnswersDisclosure acceptedAnswers={acceptedAnswers} />
+
+      <KanjiBuiltFromSection parents={parents} />
 
       <ItemMnemonicSections item={item} parents={parents} />
 
@@ -75,7 +82,7 @@ export function KanjiDetail({
 
       <ExampleSentencesSection sentences={exampleSentences} testIDPrefix="kanji-example" />
 
-      <ItemCrossReferences item={item} related={related} parents={parents} />
+      <ItemCrossReferences item={item} related={related} parents={parents} hideBuiltFrom />
     </View>
   );
 }

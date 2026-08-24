@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { BROWSE_COUNT_DEBOUNCE_MS, BROWSE_PAGE_SIZE, BROWSE_SEARCH_DEBOUNCE_MS } from '@/config/constants';
+import { BROWSE_COUNT_DEBOUNCE_MS, BROWSE_PAGE_SIZE } from '@/config/constants';
 import {
   EMPTY_BROWSE_FILTERS,
   clearFacet,
@@ -29,11 +29,12 @@ export type UseBrowseItemsResult = {
   error: string | null;
   /** Set when passage unlock could not be derived; passage lock chips fail closed. */
   unlockError: boolean;
-  /** Raw text as typed — never rewritten to kana (FR65). */
+  /**
+   * Applied search term (FR65) — set by an explicit trigger (search button or
+   * keyboard submit), not per keystroke. Raw text, never rewritten to kana.
+   */
   searchInput: string;
   setSearchInput: (value: string) => void;
-  /** Debounced search used by the list and the Apply count (kept in sync). */
-  debouncedSearch: string;
   /** Currently applied filters (drafts live in the drawer until Apply). */
   filters: BrowseFilters;
   applyFilters: (filters: BrowseFilters) => void;
@@ -68,18 +69,19 @@ function passageUnlockMapsEqual(
 }
 
 /**
- * Browse list state (FR62–FR67): debounced search, applied facets, page
+ * Browse list state (FR62–FR67): explicit-trigger search, applied facets, page
  * accumulation and the derived passage unlock map the Lock facet and row chips
  * both read.
  *
  * SQLite reads here are synchronous, so there is no streaming or progressive
- * merge — one debounced query produces one ordered page.
+ * merge — one query produces one ordered page. Search only runs when the
+ * caller commits `setSearchInput` (a button press or keyboard submit, not per
+ * keystroke) — querying on every keystroke was slow enough to be felt.
  */
 export function useBrowseItems(): UseBrowseItemsResult {
   const { curriculumDb, userDb } = useDatabase();
 
   const [searchInput, setSearchInput] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [filters, setFilters] = useState<BrowseFilters>(EMPTY_BROWSE_FILTERS);
   const [rows, setRows] = useState<BrowseRowModel[]>([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -98,14 +100,6 @@ export function useBrowseItems(): UseBrowseItemsResult {
   // Keeps Map identity stable across focus refreshes when unlock content is
   // unchanged, so the list query does not reset scroll/pages.
   const passageUnlockCacheRef = useRef<Map<string, PassageUnlockStatus>>(new Map());
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(searchInput);
-    }, BROWSE_SEARCH_DEBOUNCE_MS);
-
-    return () => clearTimeout(timer);
-  }, [searchInput]);
 
   const { passageUnlock, unlockError } = useMemo(() => {
     try {
@@ -128,15 +122,16 @@ export function useBrowseItems(): UseBrowseItemsResult {
   const queryInput: BrowseQueryInput = useMemo(
     () => ({
       filters,
-      search: buildSearchBranches(debouncedSearch),
+      search: buildSearchBranches(searchInput),
       passageUnlock,
     }),
-    [filters, debouncedSearch, passageUnlock],
+    [filters, searchInput, passageUnlock],
   );
 
-  // First page: re-runs whenever the applied filters, debounced search, or
-  // unlock-dependent Lock facet scope changes. Stable unlock Map identity (when
-  // content is unchanged) avoids wiping scroll position on every tab focus.
+  // First page: re-runs whenever the applied filters, the committed search
+  // term, or unlock-dependent Lock facet scope changes. Stable unlock Map
+  // identity (when content is unchanged) avoids wiping scroll position on
+  // every tab focus.
   useEffect(() => {
     const generation = ++queryGenerationRef.current;
     loadingMoreRef.current = false;
@@ -201,9 +196,6 @@ export function useBrowseItems(): UseBrowseItemsResult {
   const clearFilters = useCallback(() => {
     setFilters(EMPTY_BROWSE_FILTERS);
     setSearchInput('');
-    // Flush immediately so Apply count and the list do not keep the old term
-    // for up to BROWSE_SEARCH_DEBOUNCE_MS after the user cleared.
-    setDebouncedSearch('');
   }, []);
 
   const clearFacetFilter = useCallback((facet: BrowseFacetKey) => {
@@ -229,7 +221,6 @@ export function useBrowseItems(): UseBrowseItemsResult {
     unlockError,
     searchInput,
     setSearchInput,
-    debouncedSearch,
     filters,
     applyFilters,
     clearFilters,
@@ -246,8 +237,8 @@ export function useBrowseItems(): UseBrowseItemsResult {
  * on their own short debounce so rapid chip toggling does not fire a query per
  * tap, while the number still feels immediate.
  *
- * Pass the same debounced search the list uses so Apply (N) cannot disagree
- * with the visible rows around the search debounce window.
+ * Pass the same applied search term the list uses so Apply (N) cannot
+ * disagree with the visible rows.
  */
 export function useBrowseDraftCount(
   draft: BrowseFilters,

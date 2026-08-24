@@ -1,7 +1,22 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import React from 'react';
 
+import {
+  __mockPlayedBuffers,
+  __mockResetAudioApi,
+} from '../../../__mocks__/react-native-audio-api';
+import {
+  __mockExecutorchState,
+  __mockResetExecutorch,
+  __mockSetSynthesis,
+} from '../../../__mocks__/react-native-executorch';
+import {
+  __mockMarkDownloaded,
+  __mockResetResourceFetcher,
+} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+
 import { VocabularyDetail } from '@/components/learn/VocabularyDetail';
+import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -122,6 +137,11 @@ describe('VocabularyDetail', () => {
     mockFuriganaModeForItem = 'auto';
     mockSeenGuidanceCards.clear();
     mockConjugatedSpanRows = [];
+    __mockResetAudioApi();
+    __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
+    __mockSetSynthesis(new Float32Array([0.1, 0.2]));
   });
 
   it('renders meaning, examples, mnemonic, and grammar links', () => {
@@ -135,7 +155,9 @@ describe('VocabularyDetail', () => {
     );
 
     expect(screen.getByTestId('vocabulary-detail')).toBeTruthy();
-    expect(screen.getByText('私')).toBeTruthy();
+    // The hero and the always-visible reading section both show 私 — the word
+    // has no furigana, so the reading section falls back to the primary form.
+    expect(screen.getAllByText('私').length).toBeGreaterThan(0);
     expect(screen.getByText('I, me')).toBeTruthy();
     expect(screen.getByText('私は学生です。')).toBeTruthy();
     expect(screen.getByText('I am a student.')).toBeTruthy();
@@ -196,6 +218,106 @@ describe('VocabularyDetail', () => {
 
     // Browse is the canonical discovery surface for cross-references.
     expect(mockPush).toHaveBeenCalledWith('/browse/item/50');
+  });
+
+  it('plays the word aloud through the on-device TTS pipeline', async () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    fireEvent.press(screen.getByTestId('vocabulary-pronunciation-button'));
+
+    await waitFor(() => expect(__mockExecutorchState().synthesizeCalls).toEqual(['私']));
+    await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
+  });
+});
+
+describe('VocabularyDetail — always-visible reading (parity with kanji details)', () => {
+  beforeEach(() => {
+    mockPush.mockClear();
+    mockIsKnownWord = false;
+    mockFuriganaModeForItem = 'auto';
+    mockSeenGuidanceCards.clear();
+    mockConjugatedSpanRows = [];
+    __mockResetAudioApi();
+    __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
+    __mockSetSynthesis(new Float32Array([0.1, 0.2]));
+  });
+
+  const kuru: CurriculumItemDetail = {
+    ...baseItem,
+    id: '537',
+    slug: 'kuru-v',
+    primaryForm: '来る',
+    furigana: '来[く]る',
+    meaning: 'to come',
+  };
+
+  it('shows the kana reading extracted from furigana', () => {
+    render(
+      <VocabularyDetail
+        item={kuru}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-reading')).toBeTruthy();
+    expect(screen.getByText('くる')).toBeTruthy();
+  });
+
+  it('stays visible once the word is mastered, unlike the hero furigana', () => {
+    mockIsKnownWord = true;
+
+    render(
+      <VocabularyDetail
+        item={kuru}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-reading')).toBeTruthy();
+    expect(screen.getByText('くる')).toBeTruthy();
+  });
+
+  it('stays visible when the furigana mode is hidden', () => {
+    mockFuriganaModeForItem = 'hidden';
+
+    render(
+      <VocabularyDetail
+        item={kuru}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-reading')).toBeTruthy();
+    expect(screen.getByText('くる')).toBeTruthy();
+  });
+
+  it('falls back to the primary form when the word has no furigana', () => {
+    render(
+      <VocabularyDetail
+        item={baseItem}
+        acceptedAnswers={acceptedAnswers}
+        exampleSentences={exampleSentences}
+        grammarVocabLinks={grammarVocabLinks}
+      />,
+    );
+
+    expect(screen.getByTestId('vocabulary-reading')).toBeTruthy();
+    expect(screen.getAllByText('私').length).toBeGreaterThan(0);
   });
 });
 

@@ -1,9 +1,24 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import React from 'react';
 
+import {
+  __mockPlayedBuffers,
+  __mockResetAudioApi,
+} from '../../../__mocks__/react-native-audio-api';
+import {
+  __mockExecutorchState,
+  __mockResetExecutorch,
+  __mockSetSynthesis,
+} from '../../../__mocks__/react-native-executorch';
+import {
+  __mockMarkDownloaded,
+  __mockResetResourceFetcher,
+} from '../../../__mocks__/react-native-executorch-expo-resource-fetcher';
+
 import { ItemLinkProvider } from '@/components/learn/ItemLinkContext';
 import { KanjiDetail } from '@/components/learn/KanjiDetail';
+import { voiceModelSources } from '@/data/ai/voice/voiceModels';
 import type {
   AcceptedAnswer,
   CurriculumItemDetail,
@@ -65,6 +80,11 @@ const lookAlikes: VisuallySimilarItem[] = [
 describe('KanjiDetail', () => {
   beforeEach(() => {
     jest.mocked(router.push).mockClear();
+    __mockResetAudioApi();
+    __mockResetExecutorch();
+    __mockResetResourceFetcher();
+    __mockMarkDownloaded(...(voiceModelSources() as string[]));
+    __mockSetSynthesis(new Float32Array([0.1, 0.2]));
   });
 
   it('renders glyph, meaning, labeled readings, synonyms, and mnemonic', () => {
@@ -84,6 +104,21 @@ describe('KanjiDetail', () => {
     expect(screen.getByText("Kun'yomi")).toBeTruthy();
     expect(screen.getByText('ひ')).toBeTruthy();
     expect(screen.getByText('The sun rises each day.')).toBeTruthy();
+  });
+
+  it('plays the kanji aloud through the on-device TTS pipeline', async () => {
+    render(
+      <KanjiDetail
+        item={baseItem}
+        kanjiReadings={kanjiReadings}
+        acceptedAnswers={acceptedAnswers}
+      />,
+    );
+
+    fireEvent.press(screen.getByTestId('kanji-pronunciation-button'));
+
+    await waitFor(() => expect(__mockExecutorchState().synthesizeCalls).toEqual(['日']));
+    await waitFor(() => expect(__mockPlayedBuffers()).toHaveLength(1));
   });
 
   it('opens the reading primer from the readings heading, on any path', () => {

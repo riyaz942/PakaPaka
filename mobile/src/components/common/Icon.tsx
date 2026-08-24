@@ -43,7 +43,8 @@ export type IconName =
   | 'offline'
   | 'grip'
   | 'eye'
-  | 'eyeOff';
+  | 'eyeOff'
+  | 'speaker';
 
 /** Paths are lifted verbatim from the spec's Iconography grid. */
 const ICON_PATHS: Record<IconName, React.ReactNode> = {
@@ -180,6 +181,12 @@ const ICON_PATHS: Record<IconName, React.ReactNode> = {
     <>
       <Path d="M4.7 6.7C3 8.3 2.5 12 2.5 12S6 18.5 12 18.5c1.6 0 3-.4 4.2-1M9.5 9.5a3 3 0 0 0 4.2 4.2M14.5 6.2c3.7 1 7 5.8 7 5.8s-.9 1.5-2.4 3" />
       <Path d="M4 4l16 16" />
+    </>
+  ),
+  speaker: (
+    <>
+      <Path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4Z" />
+      <Path d="M16 9a5 5 0 0 1 0 6M18.7 6.5a9 9 0 0 1 0 11" />
     </>
   ),
 };

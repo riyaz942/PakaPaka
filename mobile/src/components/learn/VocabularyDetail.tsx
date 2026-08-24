@@ -17,6 +17,7 @@ import {
 import { ItemMnemonicSections } from '@/components/learn/ItemMnemonicSections';
 import { PersonalMnemonicEditor } from '@/components/learn/PersonalMnemonicEditor';
 import { UserSynonymEditor } from '@/components/learn/UserSynonymEditor';
+import { VocabularyReadingSection } from '@/components/learn/VocabularyReadingSection';
 import { GUIDANCE_CARD_BY_ID } from '@/components/onboarding/cardRegistry';
 import { CONTENT_TYPE_ACCENT } from '@/constants/contentType';
 import type { RelatedItem } from '@/core/content/content.types';
@@ -83,6 +84,8 @@ export function VocabularyDetail({
           style={heroSize}
         />
       </ItemDetailHeader>
+
+      <VocabularyReadingSection furigana={item.furigana} primaryForm={item.primaryForm} />
 
       {conjugatedNote ? (
         <Text

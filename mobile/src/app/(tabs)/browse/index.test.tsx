@@ -249,6 +249,7 @@ describe('BrowseScreen', () => {
       mockListBrowsePage.mockReturnValue([]);
       mockCountBrowse.mockReturnValue(0);
       fireEvent.changeText(screen.getByTestId('browse-search'), 'zzzz');
+      fireEvent.press(screen.getByTestId('browse-search-submit'));
 
       await waitFor(() => expect(screen.getByTestId('browse-empty')).toBeTruthy());
       expect(screen.getByText('No matches')).toBeTruthy();
@@ -271,25 +272,55 @@ describe('BrowseScreen', () => {
       expect(screen.getByTestId('browse-search')).toHaveProp('value', 'mizu');
     });
 
-    it('debounces before querying and fans out to kana branches', async () => {
-      jest.useFakeTimers();
-      try {
-        renderBrowse();
-        await act(async () => {
-          jest.runOnlyPendingTimers();
-        });
-        mockListBrowsePage.mockClear();
+    it('does not query on every keystroke — only once Search is submitted', async () => {
+      renderBrowse();
+      await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+      mockListBrowsePage.mockClear();
 
-        fireEvent.changeText(screen.getByTestId('browse-search'), 'mizu');
-        expect(mockListBrowsePage).not.toHaveBeenCalled();
+      fireEvent.changeText(screen.getByTestId('browse-search'), 'mizu');
+      expect(mockListBrowsePage).not.toHaveBeenCalled();
 
-        await act(async () => {
-          jest.advanceTimersByTime(200);
-        });
+      fireEvent.press(screen.getByTestId('browse-search-submit'));
 
+      await waitFor(() => {
         const queryInput = mockListBrowsePage.mock.calls.at(-1)?.[1];
         expect(queryInput?.search?.raw).toBe('mizu');
         expect(queryInput?.search?.kana).toContain('みず');
+      });
+    });
+
+    it('also runs the search on the keyboard submit key', async () => {
+      renderBrowse();
+      await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+      mockListBrowsePage.mockClear();
+
+      fireEvent.changeText(screen.getByTestId('browse-search'), 'mizu');
+      fireEvent(screen.getByTestId('browse-search'), 'submitEditing');
+
+      await waitFor(() => {
+        const queryInput = mockListBrowsePage.mock.calls.at(-1)?.[1];
+        expect(queryInput?.search?.raw).toBe('mizu');
+      });
+    });
+
+    it('shows the results loader once a search is submitted, and clears it once results land', async () => {
+      jest.useFakeTimers();
+      try {
+        renderBrowse();
+        await waitFor(() => expect(screen.getByTestId('browse-list')).toBeTruthy());
+
+        fireEvent.changeText(screen.getByTestId('browse-search'), 'mizu');
+        fireEvent.press(screen.getByTestId('browse-search-submit'));
+
+        // The commit is deferred a tick so this frame — right after submit,
+        // before the query runs — actually paints the loader.
+        expect(screen.getByLabelText('Loading results')).toBeTruthy();
+
+        await act(async () => {
+          jest.runOnlyPendingTimers();
+        });
+
+        expect(screen.queryByLabelText('Loading results')).toBeNull();
       } finally {
         jest.useRealTimers();
       }

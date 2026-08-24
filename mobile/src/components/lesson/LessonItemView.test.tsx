@@ -136,6 +136,9 @@ describe('LessonItemView sections', () => {
     expect(screen.getByTestId('personal-mnemonic-editor')).toBeTruthy();
     // Paging replaced the collapsed mnemonic — nothing hides behind a tap.
     expect(screen.queryByTestId('mnemonic-disclosure')).toBeNull();
+    // Radical composition sits with the mnemonic it explains, before it.
+    expect(screen.getByText('Built from')).toBeTruthy();
+    expect(screen.getByTestId('cross-ref-components-1')).toBeTruthy();
   });
 
   it('section 3 carries examples and cross-references', async () => {
@@ -143,8 +146,9 @@ describe('LessonItemView sections', () => {
     mount(curriculumDb, userDb, 2);
 
     expect(screen.getByTestId('lesson-section-examples')).toBeTruthy();
-    expect(screen.getByText('Built from')).toBeTruthy();
-    expect(screen.getByTestId('cross-ref-components-1')).toBeTruthy();
+    // "Built from" now renders on the mnemonic page instead.
+    expect(screen.queryByText('Built from')).toBeNull();
+    expect(screen.queryByTestId('cross-ref-components-1')).toBeNull();
     expect(screen.getByText('Vocabulary using this kanji')).toBeTruthy();
     expect(screen.getByTestId('cross-ref-related-3')).toBeTruthy();
   });
@@ -235,6 +239,8 @@ describe('LessonItemView sections', () => {
         sort_order: 1,
       },
     ]);
+    // The lone remaining item has no parent of its own now that item 1 is gone.
+    __mockSetItemRelationships('curriculum.db.test', []);
 
     mount(curriculumDb, userDb, 1);
 

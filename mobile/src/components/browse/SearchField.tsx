@@ -8,6 +8,10 @@ import { usePaintedColorScheme } from '@/hooks/use-painted-color-scheme';
 type SearchFieldProps = {
   value: string;
   onChangeText: (value: string) => void;
+  /** Runs the search: fired by the search button or the keyboard's submit key. */
+  onSubmit: () => void;
+  /** Clears the field and re-runs the search so stale results do not linger. */
+  onClear: () => void;
   testID?: string;
 };
 
@@ -18,19 +22,31 @@ type SearchFieldProps = {
  * kana as you type, but here the raw text has to survive, because "mizu" may be
  * romaji for みず and an English meaning at the same time. Kana conversion
  * happens downstream as extra query branches, never in this field.
+ *
+ * Search only runs on an explicit trigger (the search icon or the keyboard's
+ * search key), not per keystroke — querying on every keystroke was slow
+ * enough to be felt.
  */
-export function SearchField({ value, onChangeText, testID }: SearchFieldProps) {
+export function SearchField({ value, onChangeText, onSubmit, onClear, testID }: SearchFieldProps) {
   const colors = getSemanticColors(usePaintedColorScheme());
 
   return (
     <View className="flex-row items-center gap-space-sm rounded-radius-full border border-border bg-surface-elevated px-space-md">
-      <Icon name="search" size={19} strokeWidth={2} className="text-muted" />
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Search"
+        onPress={onSubmit}
+        testID={testID ? `${testID}-submit` : undefined}
+        className="min-h-[44px] min-w-[44px] items-center justify-center">
+        <Icon name="search" size={19} strokeWidth={2} className="text-muted" />
+      </Pressable>
       <TextInput
         accessibilityLabel="Search radicals, kanji, vocabulary, grammar and passages"
         placeholder="Search anything"
         placeholderTextColor={colors.faint}
         value={value}
         onChangeText={onChangeText}
+        onSubmitEditing={onSubmit}
         autoCapitalize="none"
         autoCorrect={false}
         returnKeyType="search"
@@ -41,7 +57,7 @@ export function SearchField({ value, onChangeText, testID }: SearchFieldProps) {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Clear search"
-          onPress={() => onChangeText('')}
+          onPress={onClear}
           testID={testID ? `${testID}-clear` : undefined}
           className="min-h-[44px] min-w-[44px] items-center justify-center">
           <Icon name="close" size={18} strokeWidth={2} className="text-muted" />
