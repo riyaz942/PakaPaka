@@ -820,7 +820,10 @@ N4_GRAMMAR = [
         "structure": "たとえ + Te-form + も",
         "mnemonic": "たとえ〜ても stresses the concession, however extreme.",
         "conjugation_rules": {"strong_concession": True},
-        "accepted_forms": ["たとえ〜ても"],
+        # The 〜 template is the display shape; たとえ is the literal chunk a
+        # learner actually types (and clozeBuilder can blank), mirroring
+        # mou-past's ["もう〜ました", "もう"].
+        "accepted_forms": ["たとえ〜ても", "たとえ"],
         "examples": [
             ex("たとえ雨が降っても、行きます。", "Even if it rains, I'll go.", ["furu-rain"]),
             ex("たとえ難しくても、挑戦します。", "Even if it's difficult, I'll try.", ["muzukashii"]),
@@ -1310,7 +1313,10 @@ N4_GRAMMAR = [
         "structure": "Noun + さえ + Verb-ば",
         "mnemonic": "さえ〜ば narrows a condition down to just one crucial thing.",
         "conjugation_rules": {"minimal_condition": True},
-        "accepted_forms": ["さえ〜ば"],
+        # The 〜 template is the display shape; さえ is the literal chunk a
+        # learner actually types (and clozeBuilder can blank), mirroring
+        # mou-past's ["もう〜ました", "もう"].
+        "accepted_forms": ["さえ〜ば", "さえ"],
         "examples": [
             ex("お金さえあれば、幸せです。", "As long as I have money, I'm happy.", ["okane", "shiawase"]),
         ],
