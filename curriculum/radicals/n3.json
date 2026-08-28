@@ -6,6 +6,7 @@
       "primary_form": "皿",
       "meaning": "dish",
       "mnemonic_text": "A shallow container drawn face-on: two walls, a flat base, and a pair of uprights inside marking the ridges. It is far too shallow to be a pot and far too wide to be a cup. Set it down on the table and put the food on it, because it is a <radical>dish</radical>.",
+      "image_prompt": "A shallow container drawn face-on: two walls, a flat base, and a pair of uprights inside marking the ridges. It is far too shallow to be a pot and far too wide to be a cup. Set it down on the table and put the food on it, because it is a <radical>dish</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -31,6 +32,7 @@
       "primary_form": "癶",
       "meaning": "outspread legs",
       "mnemonic_text": "The top two strokes fling out like a sprinter's shoulders exploding sideways off the blocks, and the bottom two skid away from each other in a dead sprint that instantly collapses into an ungainly, wincing split — nothing left standing on the track but two <radical>outspread legs</radical>.",
+      "image_prompt": "The top two strokes fling out like a sprinter's shoulders exploding sideways off the blocks, and the bottom two skid away from each other in a dead sprint that instantly collapses into an ungainly, wincing split — nothing left standing on the track but two <radical>outspread legs</radical>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
@@ -44,6 +46,7 @@
       "primary_form": "弋",
       "meaning": "stake / ceremony",
       "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
+      "image_prompt": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
@@ -69,6 +72,7 @@
       "primary_form": "高",
       "meaning": "tall",
       "mnemonic_text": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
+      "image_prompt": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
@@ -123,11 +127,12 @@
       "slug": "uo",
       "primary_form": "魚",
       "meaning": "fish",
-      "mnemonic_text": "A flat wedge caps the top like a chef's hat clamped on too tight. Below it, a boxy grid presses down as if a waffle iron branded scales straight into the body. At the tail, four short strokes flare and curl against the hot pan, sizzling into a stubborn <radical>fish</radical>.",
+      "mnemonic_text": "A flat wedge caps the top like a hat. The boxy grid below presses scales into the body. The strokes at the tail flare and curl — a <radical>fish</radical>.",
+      "image_prompt": "A flat wedge caps the top like a chef's hat clamped on too tight. Below it, a boxy grid presses down as if a waffle iron branded scales straight into the body. At the tail, four short strokes flare and curl against the hot pan, sizzling into a stubborn <radical>fish</radical>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/n4/uo.webp",
       "sort_order": 16
@@ -137,6 +142,7 @@
       "primary_form": "自",
       "meaning": "self",
       "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
+      "image_prompt": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -156,6 +162,7 @@
       "primary_form": "亻",
       "meaning": "person (left)",
       "mnemonic_text": "See those two strokes leaning together — a tall body with one leg striding forward, forever caught mid-step on the left edge of the kanji. That's a <radical>person</radical> walking, always shoved over to the left side to make room for the rest of the character.",
+      "image_prompt": "See those two strokes leaning together — a tall body with one leg striding forward, forever caught mid-step on the left edge of the kanji. That's a <radical>person</radical> walking, always shoved over to the left side to make room for the rest of the character.",
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
@@ -181,6 +188,7 @@
       "primary_form": "几",
       "meaning": "table",
       "mnemonic_text": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
+      "image_prompt": "A short flat top with one leg dropping straight down at the left and another hooking under at the right. Nothing in the middle at all. It is the plainest piece of furniture anyone ever built: a slab held up on two legs, room enough underneath for your knees. A <radical>table</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -206,6 +214,7 @@
       "primary_form": "足",
       "meaning": "foot",
       "mnemonic_text": "Picture a square kneecap sitting on top, and below it the strokes splay out into a leg that plants down and kicks forward — that little wedge at the bottom is the heel and toes pressing into the ground. The whole shape is one stride caught mid-step: a <radical>foot</radical>.",
+      "image_prompt": "Picture a square kneecap sitting on top, and below it the strokes splay out into a leg that plants down and kicks forward — that little wedge at the bottom is the heel and toes pressing into the ground. The whole shape is one stride caught mid-step: a <radical>foot</radical>.",
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
@@ -219,6 +228,7 @@
       "primary_form": "犭",
       "meaning": "animal",
       "mnemonic_text": "Three strokes crowded down the left edge: a short flick at the top, then a long stroke dropping and curving, then a leg kicking out. It is a beast in profile, all snout and haunch, pressed up against the side of the character and ready to bolt. Whenever this is on the left, the word is about an <radical>animal</radical>.",
+      "image_prompt": "Three strokes crowded down the left edge: a short flick at the top, then a long stroke dropping and curving, then a leg kicking out. It is a beast in profile, all snout and haunch, pressed up against the side of the character and ready to bolt. Whenever this is on the left, the word is about an <radical>animal</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -238,6 +248,7 @@
       "primary_form": "羽",
       "meaning": "feather",
       "mnemonic_text": "A duck panics mid-preen and yanks so hard that two matching plumes pop loose at once, each one a stack of stiff little hooked barbs jutting off a central spine, drifting down in perfect mirror image on either side of the pond — an unmistakable, still-twitching <radical>feather</radical>.",
+      "image_prompt": "A duck panics mid-preen and yanks so hard that two matching plumes pop loose at once, each one a stack of stiff little hooked barbs jutting off a central spine, drifting down in perfect mirror image on either side of the pond — an unmistakable, still-twitching <radical>feather</radical>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
@@ -287,6 +298,7 @@
       "primary_form": "酉",
       "meaning": "sake jar",
       "mnemonic_text": "A lid across the top, then a wide vessel with a bar ruled across its middle and legs under it. It is a narrow-necked jar standing on the floor, sealed, with the line showing how far down the liquid has got. Nobody seals a jar like that for water. It is a <radical>sake jar</radical>.",
+      "image_prompt": "A lid across the top, then a wide vessel with a bar ruled across its middle and legs under it. It is a narrow-necked jar standing on the floor, sealed, with the line showing how far down the liquid has got. Nobody seals a jar like that for water. It is a <radical>sake jar</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
@@ -336,6 +348,7 @@
       "primary_form": "鳥",
       "meaning": "bird",
       "mnemonic_text": "The top hook ducks like a pigeon's head tucked into a hunched wing. Its body lands stiff on a windowsill, and underneath, four skinny strokes splay out as separate stick legs, clattering against the glass like a badly tuned xylophone. That awkward, top-heavy stagger is a <radical>bird</radical>.",
+      "image_prompt": "The top hook ducks like a pigeon's head tucked into a hunched wing. Its body lands stiff on a windowsill, and underneath, four skinny strokes splay out as separate stick legs, clattering against the glass like a badly tuned xylophone. That awkward, top-heavy stagger is a <radical>bird</radical>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
