@@ -9,7 +9,7 @@ call, drafts written under generate_content/drafts/mnemonics/, and — only afte
 passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
 sidecars that generate.py inlines into the shipped JSON:
 
-    curriculum/radicals/mnemonics/<level>.json    (mnemonic + optional description)
+    curriculum/radicals/mnemonics/<level>.json    (mnemonic + image prompt + optional description)
     curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + optional description)
     curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + optional description)
 
@@ -73,6 +73,22 @@ MODEL = "claude-opus-4-8"
 #:     the reading, description optional)
 #: 4 = Rev 3, kanji/vocab (length band recalibrated to the reviewed N5 sizes)
 #:
+#: Rev 4 (sentence-shape guidance in all three prompts + the readability gate
+#: in validate_mnemonics) deliberately bumps NOTHING. The maintainer's call:
+#: no existing item is rewritten for readability. The gate therefore runs only
+#: on freshly generated drafts (_process_outcomes, cmd_ingest); the stored-draft
+#: re-validation in cmd_run skips it, so a re-run of a finished level never
+#: requeues kept items for sentence length. New slugs get the new prompt and
+#: the new gate; old slugs keep their prose.
+#:
+#: Rev 5 (radicals only: the contract splits into two fields — image_prompt,
+#: the stroke-walked scene the Tier 2 art is drawn from, and mnemonic_text,
+#: the shorter learner-facing summary of the same scene) also bumps NOTHING.
+#: The backfill (prompts/radical-mnemonic-triage.md + radical-mnemonic-
+#: simplify.md) copies each kept mnemonic verbatim into image_prompt, so every
+#: existing radical already conforms; the gate requires image_prompt only on
+#: freshly generated drafts, the same lane as the Rev 4 readability gate.
+#:
 #: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
 #: reverts the radical contract to the original shape and size — a mnemonic_text
 #: of ~150–300 characters, with the description demoted to optional — so the
@@ -123,12 +139,16 @@ SUBMIT_TOOLS = {
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
+            # Rev 5: two texts for one scene — `image_prompt` is the
+            # stroke-walked prompt the Tier 2 art is drawn from (illustrator
+            # only), `mnemonic_text` the shorter learner-facing summary of it.
             # Rev 3: `description` is optional here too — omit it unless the
             # radical has reviewed look-alikes to contrast or a nuance the
             # mnemonic cannot carry.
-            "required": ["mnemonic_text"],
+            "required": ["mnemonic_text", "image_prompt"],
             "properties": {
                 "mnemonic_text": {"type": "string"},
+                "image_prompt": {"type": "string"},
                 "description": {"type": "string"},
             },
         },
@@ -340,7 +360,10 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
             _save_draft(record)
             continue
         tool_input = outcome["tool_input"]
-        errors = validate_draft(level, kind, slug, tool_input, ctx)
+        # Freshly generated output faces the Rev 4 readability gate; stored
+        # drafts re-validated in cmd_run do not (see PROMPT_VERSION).
+        errors = validate_draft(level, kind, slug, tool_input, ctx,
+                                enforce_readability=True)
         record["attempts"].append({"attempt": attempt, "errors": errors})
         record["tool_input"] = tool_input
         record["generator_model"] = MODEL
@@ -569,9 +592,10 @@ _SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
 WEB_SKELETON = {
     "kanji": _SPLIT_SKELETON,
     "vocab": _SPLIT_SKELETON,
-    "radical": ('```json\n{\n  "mnemonic_text": "..."\n}\n```'
+    "radical": ('```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "..."\n}\n```'
                 + _OPTIONAL_DESCRIPTION_LINE +
-                '```json\n{\n  "mnemonic_text": "...",\n  "description": "..."\n}\n```'),
+                '```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "...",\n  '
+                '"description": "..."\n}\n```'),
 }
 
 
@@ -655,7 +679,9 @@ def cmd_ingest(args):
         tool_input = _first_json_object(f.read())
 
     ctx = _context_for(args.level, args.kind, args.slug)
-    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx)
+    # The web lane generates new content, so the Rev 4 readability gate applies.
+    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx,
+                            enforce_readability=True)
     record = _load_draft(args.level, args.kind, args.slug)
     record["tool_input"] = tool_input
     record["generator_model"] = args.model

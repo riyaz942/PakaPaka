@@ -18,6 +18,15 @@ of skipping it. Treat it as the target, not a rule: going over to finish a scene
 is fine, padding to reach a number is not. (The reading mnemonic follows the
 reading section below — a derivation note stays one sentence no matter what.)
 
+## Sentence shape
+
+Short sentences. One idea per sentence — most under 18 words, none over 25.
+The learner reads this tired, on a phone, often in English as a second
+language, so the scene has to survive a skim. When a sentence wants a second
+clause, a dash, or an "-ing" tail ("eyes streaming"), make it two sentences
+instead. Concrete everyday words are always fine; a long winding sentence
+never is.
+
 ## The word
 
 - Written form: **{{FORM}}**

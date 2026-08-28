@@ -190,13 +190,19 @@ def _build_radical_items(slug_prefix, radical_entries):
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
-            # A radical's `mnemonic_text` is the image story (and the Tier 2
-            # image prompt); `description` is optional and carries look-alike
-            # contrast or usage nuance. Both paths are explicit.
+            # A radical carries two texts for one scene: `image_prompt` is the
+            # stroke-walked story the Tier 2 art is drawn from, `mnemonic_text`
+            # the shorter learner-facing summary of it; `description` is
+            # optional and carries look-alike contrast or usage nuance. All
+            # three paths are explicit. (`image_prompt` ships in the JSON for
+            # the art pipeline; compile-curriculum's explicit column mapping
+            # keeps it out of the bundled db.)
             if mnemonic.get("description"):
                 item["description"] = mnemonic["description"]
             if mnemonic.get("mnemonic_text"):
                 item["mnemonic_text"] = mnemonic["mnemonic_text"]
+            if mnemonic.get("image_prompt"):
+                item["image_prompt"] = mnemonic["image_prompt"]
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta

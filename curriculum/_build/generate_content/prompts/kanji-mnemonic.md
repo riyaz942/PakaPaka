@@ -22,6 +22,15 @@ need more, and going over to finish the job is fine. What is not fine is
 padding: a second joke, a restated ending, or a sentence that adds words without
 adding picture. If the scene is complete at 180 characters, stop there.
 
+## Sentence shape
+
+Short sentences. One idea per sentence — most under 18 words, none over 25.
+The learner reads this tired, on a phone, often in English as a second
+language, so the scene has to survive a skim. When a sentence wants a second
+clause, a dash, or an "-ing" tail ("eyes streaming"), make it two sentences
+instead. Concrete everyday words are always fine; a long winding sentence
+never is.
+
 ## The kanji
 
 - Character: **{{CHAR}}**

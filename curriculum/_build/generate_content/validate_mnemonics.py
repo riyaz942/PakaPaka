@@ -5,7 +5,8 @@ Run on every batch output before any human sees it
 (docs/content/content-pipeline-plan.md, "Mechanical validation gate", adapted
 for 2b/2d):
 
-  radical (a `mnemonic_text` that is also the Tier 2 image prompt):
+  radical (two texts for one scene: the learner-facing `mnemonic_text`, and
+  `image_prompt`, the stroke-walked version the Tier 2 art is drawn from):
     1. mnemonic_text present, non-empty, within length bounds, plain prose
     2. the radical's meaning is recognisable in the image *and wrapped in a
        <radical> tag*, so the word a kanji story will later borrow is the same
@@ -13,6 +14,11 @@ for 2b/2d):
     3. `description` is optional (Rev 3, matching kanji/vocab) and is required
        only when the item has reviewed look-alikes to contrast; when present it
        names every one of them and invents none
+    4. image_prompt (Rev 5) is required on freshly generated drafts only —
+       stored drafts predate the field, and the backfill copies their
+       mnemonic_text in verbatim. It gets the markup/length/tag checks but
+       never the readability gate: clause-stacked specification is what an
+       illustrator's prompt wants.
   kanji:
     1. both mnemonics present and non-empty, within length bounds (measured on
        the tag-stripped prose); `description` is optional and is required only
@@ -37,6 +43,12 @@ for 2b/2d):
        or kana-only reading gets a one-line derivation note (bounded short), an
        irregular one gets a full story (bounded long)
     4. the description names no kanji beyond the word and its components
+
+Rev 4 adds a sentence-shape (readability) gate, enforced only when the caller
+passes enforce_readability=True — i.e. on freshly generated drafts. Stored
+drafts are re-validated without it, so no kept item is ever requeued for a
+readability rewrite. Rev 5's radical image_prompt requirement rides the same
+flag for the same reason.
 
 This gate is a floor: the cast-coherence pass and "does it actually help you
 remember" judgement are human review (Phase 5). `validate-schema` after assembly
@@ -76,9 +88,14 @@ DRAFTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "drafts", 
 #: 250) were set from the since-discarded long radical descriptions and would
 #: have rejected most of the kept content — a band is only worth anything if the
 #: prose you like fits inside it.
+#: Rev 5 splits the radical contract: mnemonic_text is now the short
+#: learner-facing summary (prompt target ~100–180 chars, so its floor drops to
+#: 80 — a lower floor can only pass more stored drafts, never fail one), and
+#: image_prompt keeps the old stroke-walked size band.
 LEN_BOUNDS = {
     "radical": {
-        "mnemonic_text": (120, 400),
+        "mnemonic_text": (80, 400),
+        "image_prompt": (120, 500),
         "description": (60, 400),
     },
     "kanji": {
@@ -109,6 +126,8 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #: what makes "did it actually tag the components" mechanically checkable.
 #:
 #:   radical mnemonic_text    <radical>mouth</radical>
+#:   radical image_prompt     <radical>mouth</radical>  (same word; the image
+#:                             pipeline strips the tag before drawing)
 #:   kanji  meaning_mnemonic  <radical>ground</radical>
 #:   kanji  reading_mnemonic  <reading>いち</reading>
 #:   vocab  meaning_mnemonic  <kanji>one</kanji>
@@ -122,6 +141,7 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #: the learner has to reassemble.
 ALLOWED_TAG = {
     ("radical", "mnemonic_text"): "radical",
+    ("radical", "image_prompt"): "radical",
     ("kanji", "meaning_mnemonic"): "radical",
     ("kanji", "reading_mnemonic"): "reading",
     ("vocab", "meaning_mnemonic"): "kanji",
@@ -144,6 +164,50 @@ _MARKUP_CHECKS = [
 ]
 
 _WORD_SPLIT_RE = re.compile(r"[a-z]+")
+
+#: Sentence-shape guards (Rev 4), measured on the tag-stripped prose; Japanese
+#: characters never count as words. The reviewed N5 set averages 21–26 words
+#: per sentence with a worst single sentence of 56, and the readability problem
+#: lives in that clause-stacking, not in the vocabulary (its long-word rate is
+#: lower than WaniKani's). The prompts now ask for most sentences under ~18
+#: words and none over 25; these bounds sit just outside that, the same way
+#: LEN_BOUNDS sits outside the prompts' character targets. The mean check only
+#: applies once a field has enough sentences for a mean to mean anything.
+READABILITY_MAX_SENTENCE_WORDS = 35
+READABILITY_MAX_MEAN_WORDS = 20
+READABILITY_MEAN_MIN_SENTENCES = 3
+
+_SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
+_LATIN_WORD_RE = re.compile(r"[A-Za-z']+")
+
+
+def _readability_errors(field, text):
+    """Sentence-length checks. An em-dash-joined clause chain reads as one long
+    breath, so sentences split on terminal punctuation only — that is what makes
+    the gate catch the actual failure mode. Messages are written for the
+    generator's retry feedback, not for a human report."""
+    counts = [
+        len(_LATIN_WORD_RE.findall(s))
+        for s in _SENTENCE_SPLIT_RE.split(text)
+        if s.strip()
+    ]
+    errors = []
+    longest = max(counts, default=0)
+    if longest > READABILITY_MAX_SENTENCE_WORDS:
+        errors.append(
+            f"{field} has a {longest}-word sentence; keep every sentence under "
+            f"{READABILITY_MAX_SENTENCE_WORDS} words — split it at the natural "
+            "joint into two shorter ones"
+        )
+    if len(counts) >= READABILITY_MEAN_MIN_SENTENCES:
+        mean = sum(counts) / len(counts)
+        if mean > READABILITY_MAX_MEAN_WORDS:
+            errors.append(
+                f"{field} averages {mean:.0f} words per sentence; write shorter "
+                "sentences — one idea each, most under 18 words, no clause "
+                "stacked on with a dash or an -ing tail"
+            )
+    return errors
 
 
 def _hira(text):
@@ -210,17 +274,22 @@ def _tagged_spans(text, tag):
     return _tag_pattern(tag).findall(text) if tag else []
 
 
-def _field_errors(kind, field, text):
+def _field_errors(kind, field, text, enforce_readability=False):
     """Markup + length, both measured on the tag-stripped prose. Malformed tags
-    short-circuit: stripping them is meaningless until they parse."""
+    short-circuit: stripping them is meaningless until they parse. The Rev 4
+    readability gate runs only on freshly generated drafts (see validate_draft),
+    never on the re-validation of stored ones."""
     tag = ALLOWED_TAG.get((kind, field))
     if tag:
         tag_errors = _tag_errors(field, text, tag)
         if tag_errors:
             return tag_errors
     plain = _strip_tags(text, tag)
-    return _markup_errors(field, plain) + _length_errors(
+    errors = _markup_errors(field, plain) + _length_errors(
         field, plain, LEN_BOUNDS[kind][field])
+    if enforce_readability:
+        errors += _readability_errors(field, plain)
+    return errors
 
 
 def _look_alike_errors(field, text, ctx, own_form, extra_allowed_forms=()):
@@ -306,7 +375,7 @@ def _reading_errors(field, text, reading):
     return []
 
 
-def validate_kanji(level, slug, draft, ctx=None):
+def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
     ctx = ctx or mnemonic_context.kanji_context(level, slug)
     errors = []
 
@@ -318,7 +387,8 @@ def validate_kanji(level, slug, draft, ctx=None):
         return errors
 
     for field in ("meaning_mnemonic", "reading_mnemonic"):
-        errors += _field_errors("kanji", field, draft[field])
+        errors += _field_errors(
+            "kanji", field, draft[field], enforce_readability=enforce_readability)
 
     # 2. reading present and highlighted
     primary = ctx["primary_reading"]
@@ -336,7 +406,9 @@ def validate_kanji(level, slug, draft, ctx=None):
     #    an item with reviewed confusables still owes one.
     description = draft.get("description")
     if isinstance(description, str) and description.strip():
-        errors += _field_errors("kanji", "description", description)
+        errors += _field_errors(
+            "kanji", "description", description,
+            enforce_readability=enforce_readability)
         errors += _look_alike_errors(
             "description", description, ctx, ctx["char"],
             extra_allowed_forms=[c["form"] for c in ctx["components"]])
@@ -350,7 +422,7 @@ def validate_kanji(level, slug, draft, ctx=None):
     return errors
 
 
-def validate_radical(level, slug, draft, ctx=None):
+def validate_radical(level, slug, draft, ctx=None, enforce_readability=False):
     ctx = ctx or mnemonic_context.radical_context(level, slug)
     errors = []
 
@@ -358,7 +430,19 @@ def validate_radical(level, slug, draft, ctx=None):
     if not isinstance(text, str) or not text.strip():
         return ["missing or empty field mnemonic_text"]
 
-    errors += _field_errors("radical", "mnemonic_text", text)
+    errors += _field_errors(
+        "radical", "mnemonic_text", text, enforce_readability=enforce_readability)
+
+    # Rev 5: image_prompt is the stroke-walked scene the Tier 2 art is drawn
+    # from. Only fresh drafts are held to it (same lane as the readability
+    # gate): stored drafts predate the field, and the backfill copies their
+    # mnemonic_text in verbatim. No readability gate on it — clause-stacked
+    # specification is what an illustrator's prompt wants.
+    image_prompt = draft.get("image_prompt")
+    if isinstance(image_prompt, str) and image_prompt.strip():
+        errors += _field_errors("radical", "image_prompt", image_prompt)
+    elif enforce_readability:
+        errors.append("missing or empty field image_prompt")
 
     # The meaning must be reached *and* highlighted. A radical has no components
     # to borrow, so the one thing worth colouring is the word the story resolves
@@ -385,7 +469,9 @@ def validate_radical(level, slug, draft, ctx=None):
     # so a radical with reviewed confusables still owes one.
     description = draft.get("description")
     if isinstance(description, str) and description.strip():
-        errors += _field_errors("radical", "description", description)
+        errors += _field_errors(
+            "radical", "description", description,
+            enforce_readability=enforce_readability)
         errors += _look_alike_errors("description", description, ctx, ctx["form"])
     elif ctx["look_alikes"]:
         forms = ", ".join(entry["form"] for entry in ctx["look_alikes"])
@@ -396,7 +482,7 @@ def validate_radical(level, slug, draft, ctx=None):
     return errors
 
 
-def validate_vocab(level, slug, draft, ctx=None):
+def validate_vocab(level, slug, draft, ctx=None, enforce_readability=False):
     ctx = ctx or mnemonic_context.vocab_context(level, slug)
     errors = []
 
@@ -410,7 +496,9 @@ def validate_vocab(level, slug, draft, ctx=None):
     # reading_mnemonic's length is bounded by the regularity branch below, not
     # by LEN_BOUNDS, so its markup is checked here rather than via _field_errors.
     reading_text = draft["reading_mnemonic"]
-    errors += _field_errors("vocab", "meaning_mnemonic", draft["meaning_mnemonic"])
+    errors += _field_errors(
+        "vocab", "meaning_mnemonic", draft["meaning_mnemonic"],
+        enforce_readability=enforce_readability)
     tag_errors = _tag_errors("reading_mnemonic", reading_text, "reading")
     if tag_errors:
         errors += tag_errors
@@ -439,13 +527,17 @@ def validate_vocab(level, slug, draft, ctx=None):
         errors += _length_errors(
             "reading_mnemonic (a full story — this reading is a lone kun'yomi "
             "or is not derivable at all)", reading_plain, READING_STORY_BOUNDS)
+    if enforce_readability and not tag_errors:
+        errors += _readability_errors("reading_mnemonic", reading_plain)
 
     # 4. description (Rev 2: optional — only when the word carries a nuance the
     #    mnemonics cannot). When present it still names no stray kanji, since it
     #    carries no furigana.
     description = draft.get("description")
     if isinstance(description, str) and description.strip():
-        errors += _field_errors("vocab", "description", description)
+        errors += _field_errors(
+            "vocab", "description", description,
+            enforce_readability=enforce_readability)
         allowed = set(ctx["form"]) | {c["char"] for c in ctx["components"]}
         for ch in dict.fromkeys(mnemonic_context._CJK_RE.findall(description)):
             if ch not in allowed:
@@ -457,13 +549,16 @@ def validate_vocab(level, slug, draft, ctx=None):
     return errors
 
 
-def validate_draft(level, kind, slug, draft, ctx=None):
+def validate_draft(level, kind, slug, draft, ctx=None, enforce_readability=False):
+    """`enforce_readability` turns on the Rev 4 sentence-shape gate. Pass it
+    only for freshly generated drafts; stored drafts are re-validated without
+    it so kept content is never requeued for a readability rewrite."""
     if kind == "kanji":
-        return validate_kanji(level, slug, draft, ctx)
+        return validate_kanji(level, slug, draft, ctx, enforce_readability)
     if kind == "radical":
-        return validate_radical(level, slug, draft, ctx)
+        return validate_radical(level, slug, draft, ctx, enforce_readability)
     if kind == "vocab":
-        return validate_vocab(level, slug, draft, ctx)
+        return validate_vocab(level, slug, draft, ctx, enforce_readability)
     raise ValueError(f"unknown mnemonic type {kind!r}")
 
 
