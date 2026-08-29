@@ -1,0 +1,3294 @@
+{
+  "marked": [
+    {
+      "slug": "n5-aka",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"red\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ame-rain",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"rain\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ao",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"blue / green\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ashi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"foot / leg / suffice\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-atarashii",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"new\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-bun-minute",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"minute / part / understand\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-chikara",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"power / strength\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-dai-big",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"big\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-denki-den",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"electricity\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-deru",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"exit / leave\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-do-earth",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"earth / soil\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-dokusho",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"read\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-eki-station",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"station\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-en",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"yen / circle\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-furui",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"old\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-gaku",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"study / learning\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-gatsu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"month / moon\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-go-language",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"language / word\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n5-go",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"five\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hachi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"eight\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hairu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"enter\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hana",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"flower\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hanashi-wa",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"talk / story\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hantime",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"half\" not tagged <kanji>; 41-word reading sentence"
+    },
+    {
+      "slug": "n5-hayai",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"early / fast\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hidari",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"left\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hidariuma",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"noon\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-higashi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"east\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hito-jin",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"person\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hoku",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"outside\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hon",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"book / origin\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-hyaku",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"hundred\" not tagged <kanji>; 40-word reading sentence"
+    },
+    {
+      "slug": "n5-ichi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"one\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-iku-go",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"go\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-iu-gen",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"say / word\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-jikan-ji",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"time / hour\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-juu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"ten\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ka-fire",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"fire\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kaeru",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"return\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kaku-write",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"write\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kane-gold-dup",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"black\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kau",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"buy\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kawa",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"river\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ki-spirit",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"spirit / energy\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kiku-hear",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"hear / ask\" not tagged <kanji>; 38-word reading sentence"
+    },
+    {
+      "slug": "n5-kin",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"gold / money\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kita",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"north\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ko-child",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"child\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kon-now",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"now\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kou-school",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"school\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kuchi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"mouth\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kuni",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"country\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kuru-rai",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"come\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-kyuu",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"nine\" not tagged <kanji>; reading justification clause"
+    },
+    {
+      "slug": "n5-ma-interval",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"interval / between\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-machi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"town\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-mae",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"front / before\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-mai-every",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"every\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-man",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"ten thousand\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-me-eye",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"eye\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-meiname",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"name\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-michi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"road / way\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-migi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"right\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-mimi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"ear\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-minami",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"south\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-miru",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"see\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-moku",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"tree\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nagai",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"long / leader\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-naka",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"middle / inside\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nana",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"seven\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nen",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"year\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ni",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"two\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nichi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"day / sun\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nichiyou",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"weekday\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-nishi",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"west\" not tagged <kanji>; 43-word reading sentence"
+    },
+    {
+      "slug": "n5-nomu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"drink\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-onna",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"woman\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ooi-ta",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"many\" not tagged <kanji>; 39-word reading sentence"
+    },
+    {
+      "slug": "n5-otoko",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"man\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-roku",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"six\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-san",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"three\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-sei-life",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"life / birth\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-sen",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"thousand\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-sensei-saki",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"previous / ahead\" not tagged <kanji>; 36-word reading sentence"
+    },
+    {
+      "slug": "n5-sha-car",
+      "dataset": "n5",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"car / vehicle\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n5-shi-city",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"city / market\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-shiro-white",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"white\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-shita",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"down / below\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-shou-small",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"small\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-shu-week",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"week\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-sui",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"water\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-sukunai",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"few / little\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-suwaru",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"sit\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-taberu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"eat / food\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-takai",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"tall / expensive\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-tatsu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"stand\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-te-hand",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"hand\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ten",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"heaven / sky\" not tagged <kanji>; 36-word meaning sentence"
+    },
+    {
+      "slug": "n5-tomeru",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"stop\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-uenagashi",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"up / above\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-uru-baku",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"sell\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-ushiro",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"after / behind\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-yama",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"mountain\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-yasui",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"cheap / peaceful\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-yasumu",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"rest\" not tagged <kanji>"
+    },
+    {
+      "slug": "n5-yon",
+      "dataset": "n5",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"four\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-aji",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"taste\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-akarui",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"bright\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-ane",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"older sister\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-ani",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"older brother\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n4-arau",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"wash\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-asobu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"play\" not tagged <kanji>; 39-word reading sentence"
+    },
+    {
+      "slug": "n4-atsumeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"gather\" not tagged <kanji>; 37-word reading sentence"
+    },
+    {
+      "slug": "n4-ba",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"place\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-betsu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"separate\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-chi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"ground / earth\" not tagged <kanji>; 34-word meaning sentence"
+    },
+    {
+      "slug": "n4-chigau",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"differ\" not tagged <kanji>; heavy meaning & reading prose (36w/44w)"
+    },
+    {
+      "slug": "n4-dou",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"same\" not tagged <kanji>; 40-word meaning sentence"
+    },
+    {
+      "slug": "n4-erabu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"choose\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-fueru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"increase\" not tagged <kanji>; 39-word meaning sentence"
+    },
+    {
+      "slug": "n4-futoi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"thick / fat\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-gyou",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"business / occupation\" not tagged <kanji>; heavy meaning & reading prose (41w/37w)"
+    },
+    {
+      "slug": "n4-hajimeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"begin\" not tagged <kanji>; heavy meaning & reading prose (43w/37w)"
+    },
+    {
+      "slug": "n4-hakobu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"carry / luck\" not tagged <kanji>; heavy meaning & reading prose (38w/43w)"
+    },
+    {
+      "slug": "n4-hashiru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"run\" not tagged <kanji>; heavy meaning & reading prose (46w/40w)"
+    },
+    {
+      "slug": "n4-hataraku",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"work\" not tagged <kanji>; heavy meaning & reading prose (40w/38w)"
+    },
+    {
+      "slug": "n4-hatsu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"depart / emit\" missing"
+    },
+    {
+      "slug": "n4-heru-decrease",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"decrease\" not tagged <kanji>; 40-word meaning sentence"
+    },
+    {
+      "slug": "n4-hiku",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"pull\" not tagged <kanji>; 37-word meaning sentence"
+    },
+    {
+      "slug": "n4-hiroi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"wide / spacious\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-hitsu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"necessary\" not tagged <kanji>; 41-word reading sentence"
+    },
+    {
+      "slug": "n4-hitsuji",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"sheep\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-hosoi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"thin / fine\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-hou",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"direction / person\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-ie-kanji",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"house\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n4-imouto",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"younger sister\" not tagged <kanji>; 43-word meaning sentence"
+    },
+    {
+      "slug": "n4-iro",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"color\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-isogu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"hurry\" missing"
+    },
+    {
+      "slug": "n4-ji-self",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"self\" missing"
+    },
+    {
+      "slug": "n4-kai",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"meet\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-kangaeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"think\" not tagged <kanji>; heavy meaning & reading prose (34w/20w)"
+    },
+    {
+      "slug": "n4-kariru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"borrow\" not tagged <kanji>; 36-word meaning sentence"
+    },
+    {
+      "slug": "n4-karui",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"light (weight)\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-kasu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"lend\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-kawaru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"change\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n4-kei-pass",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"pass through / sutra\" not tagged <kanji>; heavy meaning & reading prose (37w/36w)"
+    },
+    {
+      "slug": "n4-ken-exam",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"examine\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-kimeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"decide\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-kiru-wear",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"wear / arrive\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n4-kotae",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"answer\" not tagged <kanji>; 37-word meaning sentence"
+    },
+    {
+      "slug": "n4-koto",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"matter / thing\" not tagged <kanji>; heavy meaning & reading prose (49w/42w)"
+    },
+    {
+      "slug": "n4-kuraberu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"compare\" not tagged <kanji>; 38-word reading sentence"
+    },
+    {
+      "slug": "n4-kurai",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"dark\" not tagged <kanji>; heavy meaning & reading prose (47w/37w)"
+    },
+    {
+      "slug": "n4-kyou-teach",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"teach\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-mise",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"shop\" not tagged <kanji>; 36-word reading sentence"
+    },
+    {
+      "slug": "n4-modoru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"return\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-mono",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"person\" not tagged <kanji>; heavy meaning & reading prose (34w/38w)"
+    },
+    {
+      "slug": "n4-motsu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"hold\" not tagged <kanji>; heavy meaning & reading prose (42w/40w)"
+    },
+    {
+      "slug": "n4-narau",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"learn / practice\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-nokoru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"remain\" not tagged <kanji>; 39-word meaning sentence"
+    },
+    {
+      "slug": "n4-oboeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"remember\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-okuru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"send\" not tagged <kanji>; 44-word reading sentence"
+    },
+    {
+      "slug": "n4-omoi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"heavy\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-omou",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"think\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-otouto",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"younger brother\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-owaru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"end\" not tagged <kanji>; heavy meaning & reading prose (39w/45w)"
+    },
+    {
+      "slug": "n4-oya",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"parent\" not tagged <kanji>; 49-word meaning sentence"
+    },
+    {
+      "slug": "n4-ri",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"reason / logic\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-ryou-fee",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"fee / materials\" not tagged <kanji>; 41-word reading sentence"
+    },
+    {
+      "slug": "n4-sha",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"company / shrine\" not tagged <kanji>; 38-word reading sentence"
+    },
+    {
+      "slug": "n4-shi-try",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"try / test\" not tagged <kanji>; heavy meaning & reading prose (55w/36w)"
+    },
+    {
+      "slug": "n4-shin-heart",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"heart / mind\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-shinu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"die\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-shiraberu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"investigate\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-shiru",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"know\" not tagged <kanji>; 44-word meaning sentence"
+    },
+    {
+      "slug": "n4-shitsu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"room\" not tagged <kanji>; heavy meaning & reading prose (35w/39w)"
+    },
+    {
+      "slug": "n4-shitsu-quality",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"quality / question\" not tagged <kanji>; 40-word meaning sentence"
+    },
+    {
+      "slug": "n4-shu-main",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"main / lord\" not tagged <kanji>; heavy meaning & reading prose (37w/35w)"
+    },
+    {
+      "slug": "n4-suki",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"like / fond\" not tagged <kanji>; 35-word reading sentence"
+    },
+    {
+      "slug": "n4-tobu",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"fly\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-todoku",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"reach / deliver\" not tagged <kanji>; 36-word reading sentence"
+    },
+    {
+      "slug": "n4-tokoro",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"place\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-tsukau",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"use\" not tagged <kanji>; 38-word reading sentence"
+    },
+    {
+      "slug": "n4-tsuyoi",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"strong\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-tsuzukeru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"continue\" not tagged <kanji>; heavy meaning & reading prose (38w/37w)"
+    },
+    {
+      "slug": "n4-uta",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"song\" not tagged <kanji>; 44-word reading sentence"
+    },
+    {
+      "slug": "n4-warui",
+      "dataset": "n4",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"bad\" not tagged <kanji>"
+    },
+    {
+      "slug": "n4-wasureru",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"forget\" not tagged <kanji>; heavy meaning & reading prose (39w/34w)"
+    },
+    {
+      "slug": "n4-you-need",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"need / important\" not tagged <kanji>; 36-word reading sentence"
+    },
+    {
+      "slug": "n4-yowai",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"weak\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "n4-zoku",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"family / clan\" not tagged <kanji>; heavy meaning & reading prose (39w/35w)"
+    },
+    {
+      "slug": "n4-zu",
+      "dataset": "n4",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"diagram / map\" not tagged <kanji>; heavy meaning & reading prose (46w/37w)"
+    },
+    {
+      "slug": "k-accomplished",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"accomplished\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-ancestor",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"ancestor\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-breath",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"breath\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-daughter",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"daughter\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "k-daytime",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"daytime\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-doctor",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"doctor\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-end",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"end\" not tagged <kanji>; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-evening",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"evening\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-father",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"father\" not tagged <kanji>; 36-word meaning sentence"
+    },
+    {
+      "slug": "k-friend",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"friend\" not tagged <kanji>; 41-word reading sentence"
+    },
+    {
+      "slug": "k-gone",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"gone\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-he",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: landing word \"he\" not tagged <kanji>; 34-word reading sentence"
+    },
+    {
+      "slug": "k-heart",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"heart\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-husband",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"husband\" not tagged <kanji>; 37-word meaning sentence"
+    },
+    {
+      "slug": "k-me",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"me\" not tagged <kanji>; 35-word meaning sentence"
+    },
+    {
+      "slug": "k-mister",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"mister\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-morning",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"morning\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-mother",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"mother\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-night",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"night\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-nightfall",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"nightfall\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-on-foot",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"on foot\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-private",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"private\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-second-1",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"second (1/60 minute)\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-submit",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"submit\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-uncle",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"uncle\" not tagged <kanji>; 36-word meaning sentence"
+    },
+    {
+      "slug": "k-what",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"what\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-who",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"who\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-wife",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"wife\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-yesterday",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"yesterday\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-zero",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: landing word \"zero\" not tagged <kanji>"
+    },
+    {
+      "slug": "k-employee",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"employee\" untagged; heavy meaning & reading prose (35w/34w)"
+    },
+    {
+      "slug": "k-tooth",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"tooth\" untagged"
+    },
+    {
+      "slug": "k-body",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"body\" untagged"
+    },
+    {
+      "slug": "k-thing",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"thing\" untagged; 36-word meaning sentence"
+    },
+    {
+      "slug": "k-meal",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"meal\" untagged"
+    },
+    {
+      "slug": "k-tea",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"tea\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-hit",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"hit\" untagged"
+    },
+    {
+      "slug": "k-ill",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"ill\" untagged; heavy meaning & reading prose (38w/39w)"
+    },
+    {
+      "slug": "k-section",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"section\" untagged"
+    },
+    {
+      "slug": "k-pedestal",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"pedestal\" untagged"
+    },
+    {
+      "slug": "k-courtyard",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"courtyard\" untagged; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-turn",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"turn\" untagged; 37-word reading sentence"
+    },
+    {
+      "slug": "k-empty",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"empty\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-brush-stroke",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"brush-stroke\" untagged"
+    },
+    {
+      "slug": "k-reflect",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"reflect\" untagged; 36-word reading sentence"
+    },
+    {
+      "slug": "k-roof",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"roof\" untagged; 35-word meaning sentence"
+    },
+    {
+      "slug": "k-inst",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"Inst.\" untagged; 44-word meaning sentence"
+    },
+    {
+      "slug": "k-bureau",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"bureau\" untagged; 37-word meaning sentence"
+    },
+    {
+      "slug": "k-convenience",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"convenience\" untagged; 41-word reading sentence"
+    },
+    {
+      "slug": "k-building",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"building\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-near",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"near\" untagged"
+    },
+    {
+      "slug": "k-slow",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"slow\" untagged"
+    },
+    {
+      "slug": "k-walk",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"walk\" untagged"
+    },
+    {
+      "slug": "k-exertion",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"exertion\" untagged"
+    },
+    {
+      "slug": "k-paper",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"paper\" untagged; 41-word reading sentence"
+    },
+    {
+      "slug": "k-window",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"window\" untagged; 42-word reading sentence"
+    },
+    {
+      "slug": "k-true",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"true\" untagged; heavy meaning & reading prose (35w/40w)"
+    },
+    {
+      "slug": "k-cut",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"cut\" untagged; heavy meaning & reading prose (36w/40w)"
+    },
+    {
+      "slug": "k-wind",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"wind\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-move",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"move\" untagged; 42-word meaning sentence"
+    },
+    {
+      "slug": "k-cool",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"cool\" untagged"
+    },
+    {
+      "slug": "k-music",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"music\" untagged; 50-word meaning sentence"
+    },
+    {
+      "slug": "k-transmit",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"transmit\" untagged"
+    },
+    {
+      "slug": "k-question",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"question\" untagged"
+    },
+    {
+      "slug": "k-trip",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"trip\" untagged"
+    },
+    {
+      "slug": "k-attend",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"attend\" untagged"
+    },
+    {
+      "slug": "k-descend",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"descend\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-transit",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"transit\" untagged; 44-word reading sentence"
+    },
+    {
+      "slug": "k-dwell",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"dwell\" untagged"
+    },
+    {
+      "slug": "k-nothingness",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"nothingness\" untagged; 36-word meaning sentence"
+    },
+    {
+      "slug": "k-first-time",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"first time\" untagged"
+    },
+    {
+      "slug": "k-department",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"department\" untagged"
+    },
+    {
+      "slug": "k-utmost",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"utmost\" untagged"
+    },
+    {
+      "slug": "k-topic",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"topic\" untagged; 35-word meaning sentence"
+    },
+    {
+      "slug": "k-promise",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"promise\" untagged; 35-word reading sentence"
+    },
+    {
+      "slug": "k-sound",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"sound\" untagged; heavy meaning & reading prose (36w/43w)"
+    },
+    {
+      "slug": "k-whole",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"whole\" untagged; heavy meaning & reading prose (40w/35w)"
+    },
+    {
+      "slug": "k-medicine",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"medicine\" untagged"
+    },
+    {
+      "slug": "k-revolve",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"revolve\" untagged"
+    },
+    {
+      "slug": "k-fall",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"fall\" untagged; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-beforehand",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"beforehand\" untagged; heavy meaning & reading prose (34w/35w)"
+    },
+    {
+      "slug": "k-grade",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"grade\" untagged; 35-word reading sentence"
+    },
+    {
+      "slug": "k-nickname",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"nickname\" untagged; 36-word reading sentence"
+    },
+    {
+      "slug": "k-plank",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"plank\" untagged; heavy meaning & reading prose (39w/41w)"
+    },
+    {
+      "slug": "k-storey",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"storey\" untagged; 44-word meaning sentence"
+    },
+    {
+      "slug": "k-craft",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"craft\" untagged"
+    },
+    {
+      "slug": "k-spot",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"spot\" untagged; 34-word reading sentence"
+    },
+    {
+      "slug": "k-meadow",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"meadow\" untagged; 36-word meaning sentence"
+    },
+    {
+      "slug": "k-lady",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"lady\" untagged; heavy meaning & reading prose (37w/34w)"
+    },
+    {
+      "slug": "k-idea",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"idea\" untagged"
+    },
+    {
+      "slug": "k-change",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"change\" untagged; 37-word meaning sentence"
+    },
+    {
+      "slug": "k-sentence",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"sentence\" untagged"
+    },
+    {
+      "slug": "k-method",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"method\" untagged; 40-word meaning sentence"
+    },
+    {
+      "slug": "k-generation",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"generation\" untagged"
+    },
+    {
+      "slug": "k-world",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"world\" untagged; heavy meaning & reading prose (37w/40w)"
+    },
+    {
+      "slug": "k-politics",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"politics\" untagged; heavy meaning & reading prose (34w/39w)"
+    },
+    {
+      "slug": "k-reign",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"reign\" untagged"
+    },
+    {
+      "slug": "k-sex",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"sex\" untagged"
+    },
+    {
+      "slug": "k-inter",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"inter-\" untagged; 35-word reading sentence"
+    },
+    {
+      "slug": "k-guest",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"guest\" untagged; heavy meaning & reading prose (41w/42w)"
+    },
+    {
+      "slug": "k-public",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"public\" untagged; 41-word reading sentence"
+    },
+    {
+      "slug": "k-profit",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"profit\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-task",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"task\" untagged; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-transport",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"transport\" untagged"
+    },
+    {
+      "slug": "k-status",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"status\" untagged; 41-word meaning sentence"
+    },
+    {
+      "slug": "k-gate",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"gate\" untagged"
+    },
+    {
+      "slug": "k-turn-into",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"turn into\" untagged"
+    },
+    {
+      "slug": "k-sort-of",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"sort of thing\" untagged"
+    },
+    {
+      "slug": "k-mask",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"mask\" untagged; 34-word reading sentence"
+    },
+    {
+      "slug": "k-demolition",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"demolition\" untagged"
+    },
+    {
+      "slug": "k-bring-up",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"bring up\" untagged"
+    },
+    {
+      "slug": "k-drought",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"drought\" untagged"
+    },
+    {
+      "slug": "k-get-wet",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"get wet\" untagged; 35-word reading sentence"
+    },
+    {
+      "slug": "k-correct",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"correct\" untagged"
+    },
+    {
+      "slug": "k-straightaway",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"straightaway\" untagged"
+    },
+    {
+      "slug": "k-suffering",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"suffering\" untagged"
+    },
+    {
+      "slug": "k-even",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"even\" untagged; heavy meaning & reading prose (46w/33w)"
+    },
+    {
+      "slug": "k-clear-up",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"clear up\" untagged; 37-word reading sentence"
+    },
+    {
+      "slug": "k-heat",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"heat\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-negative",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"negative\" untagged; 37-word reading sentence"
+    },
+    {
+      "slug": "k-precipitous",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"precipitous\" untagged; 39-word reading sentence"
+    },
+    {
+      "slug": "k-seethe",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"seethe\" untagged"
+    },
+    {
+      "slug": "k-burn",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"burn\" untagged"
+    },
+    {
+      "slug": "k-current",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"current\" untagged; 37-word reading sentence"
+    },
+    {
+      "slug": "k-times",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"-times\" untagged"
+    },
+    {
+      "slug": "k-surpass",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"surpass\" untagged"
+    },
+    {
+      "slug": "k-traffic",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"traffic\" untagged; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-severance",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"severance\" untagged; 42-word reading sentence"
+    },
+    {
+      "slug": "k-help",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"help\" untagged"
+    },
+    {
+      "slug": "k-stubborn",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"stubborn\" untagged"
+    },
+    {
+      "slug": "k-accustomed",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"accustomed\" untagged"
+    },
+    {
+      "slug": "k-overdo",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"overdo\" untagged"
+    },
+    {
+      "slug": "k-period",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"period\" untagged"
+    },
+    {
+      "slug": "k-scold",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"scold\" untagged"
+    },
+    {
+      "slug": "k-praise",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"praise\" untagged; 34-word reading sentence"
+    },
+    {
+      "slug": "k-apologize",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"apologize\" untagged"
+    },
+    {
+      "slug": "k-counter-for",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"counter for bows & stringed instruments\" untagged; heavy meaning & reading prose (35w/45w)"
+    },
+    {
+      "slug": "k-wait",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"wait\" untagged"
+    },
+    {
+      "slug": "k-celebrate",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"celebrate\" untagged; heavy meaning & reading prose (37w/44w)"
+    },
+    {
+      "slug": "k-blessing",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"blessing\" untagged; 43-word reading sentence"
+    },
+    {
+      "slug": "k-emotion",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"emotion\" untagged; heavy meaning & reading prose (42w/42w)"
+    },
+    {
+      "slug": "k-hang",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"hang\" untagged; heavy meaning & reading prose (43w/38w)"
+    },
+    {
+      "slug": "k-propose",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"propose\" untagged"
+    },
+    {
+      "slug": "k-nonplussed",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"nonplussed\" untagged; 38-word meaning sentence"
+    },
+    {
+      "slug": "k-have-the",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"have the honor to\" untagged"
+    },
+    {
+      "slug": "k-return",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"return\" untagged; heavy meaning & reading prose (34w/35w)"
+    },
+    {
+      "slug": "k-take-along",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"take along\" untagged; heavy meaning & reading prose (52w/35w)"
+    },
+    {
+      "slug": "k-fit",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"fit\" untagged; heavy meaning & reading prose (46w/38w)"
+    },
+    {
+      "slug": "k-make",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"make\" untagged; 45-word meaning sentence"
+    },
+    {
+      "slug": "k-insect",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"insect\" untagged; 41-word meaning sentence"
+    },
+    {
+      "slug": "k-horse",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"horse\" untagged; heavy meaning & reading prose (38w/36w)"
+    },
+    {
+      "slug": "k-cow",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"cow\" untagged; heavy meaning & reading prose (35w/44w)"
+    },
+    {
+      "slug": "k-star",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"star\" untagged"
+    },
+    {
+      "slug": "k-forest",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"forest\" untagged"
+    },
+    {
+      "slug": "k-grove",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"grove\" untagged; 37-word meaning sentence"
+    },
+    {
+      "slug": "k-pond",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"pond\" untagged; 40-word meaning sentence"
+    },
+    {
+      "slug": "k-boulder",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"boulder\" untagged; heavy meaning & reading prose (39w/40w)"
+    },
+    {
+      "slug": "k-seduce",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"seduce\" untagged; reading justification clause"
+    },
+    {
+      "slug": "k-swim",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"swim\" untagged"
+    },
+    {
+      "slug": "k-kill",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"kill\" untagged"
+    },
+    {
+      "slug": "k-take",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"take\" untagged; heavy meaning & reading prose (35w/35w)"
+    },
+    {
+      "slug": "k-harmony",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"harmony\" untagged; 39-word reading sentence"
+    },
+    {
+      "slug": "k-pour",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"pour\" untagged; 34-word meaning sentence"
+    },
+    {
+      "slug": "k-plains",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"plains\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-clothing",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"clothing\" untagged; 37-word reading sentence"
+    },
+    {
+      "slug": "k-finger",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"finger\" untagged"
+    },
+    {
+      "slug": "k-mingle",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"mingle\" untagged"
+    },
+    {
+      "slug": "k-ease",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"ease\" untagged; 41-word reading sentence"
+    },
+    {
+      "slug": "k-healthy",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"healthy\" untagged; 37-word meaning sentence"
+    },
+    {
+      "slug": "k-art",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"art\" untagged; 41-word reading sentence"
+    },
+    {
+      "slug": "k-retreat",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"retreat\" untagged; 40-word meaning sentence"
+    },
+    {
+      "slug": "k-ego",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"ego\" untagged; heavy meaning & reading prose (34w/35w)"
+    },
+    {
+      "slug": "k-suspicious",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"suspicious\" untagged"
+    },
+    {
+      "slug": "k-scribe",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"scribe\" untagged; 35-word meaning sentence"
+    },
+    {
+      "slug": "k-accept",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"accept\" untagged"
+    },
+    {
+      "slug": "k-diligence",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"diligence\" untagged; heavy meaning & reading prose (37w/43w)"
+    },
+    {
+      "slug": "k-lose",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"lose\" untagged; 41-word meaning sentence"
+    },
+    {
+      "slug": "k-distant",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"distant\" untagged; heavy meaning & reading prose (38w/34w)"
+    },
+    {
+      "slug": "k-leader",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"leader\" untagged; heavy meaning & reading prose (40w/37w)"
+    },
+    {
+      "slug": "k-opinion",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"opinion\" untagged"
+    },
+    {
+      "slug": "k-association",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"association\" untagged; heavy meaning & reading prose (34w/35w)"
+    },
+    {
+      "slug": "k-plot",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"plot\" untagged; 35-word meaning sentence"
+    },
+    {
+      "slug": "k-calculate",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"calculate\" untagged; 36-word reading sentence"
+    },
+    {
+      "slug": "k-seat",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"seat\" untagged; heavy meaning & reading prose (38w/37w)"
+    },
+    {
+      "slug": "k-add",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"add\" untagged; 39-word meaning sentence"
+    },
+    {
+      "slug": "k-can",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"can\" untagged"
+    },
+    {
+      "slug": "k-happiness",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"happiness\" untagged"
+    },
+    {
+      "slug": "k-plan",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"plan\" untagged; 38-word reading sentence"
+    },
+    {
+      "slug": "k-loom",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"loom\" untagged"
+    },
+    {
+      "slug": "k-by-means",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"by means of\" untagged; 34-word reading sentence"
+    },
+    {
+      "slug": "k-quick",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"quick\" untagged; heavy meaning & reading prose (39w/40w)"
+    },
+    {
+      "slug": "k-special",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"special\" untagged; heavy meaning & reading prose (38w/35w)"
+    },
+    {
+      "slug": "k-ability",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"ability\" untagged; heavy meaning & reading prose (36w/42w)"
+    },
+    {
+      "slug": "k-gentleman",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"gentleman\" untagged"
+    },
+    {
+      "slug": "k-sea",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"sea\" untagged"
+    },
+    {
+      "slug": "k-rice-field",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"rice field\" untagged; 38-word reading sentence"
+    },
+    {
+      "slug": "k-metropolis",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"metropolis\" untagged; 36-word reading sentence"
+    },
+    {
+      "slug": "k-neck",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"neck\" untagged"
+    },
+    {
+      "slug": "k-lively",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"lively\" untagged"
+    },
+    {
+      "slug": "k-feelings",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"feelings\" untagged; 40-word reading sentence"
+    },
+    {
+      "slug": "k-degrees",
+      "dataset": "k",
+      "fields": [
+        "meaning"
+      ],
+      "reason": "chain: components + landing \"degrees\" untagged"
+    },
+    {
+      "slug": "k-reality",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"reality\" untagged; 50-word reading sentence"
+    },
+    {
+      "slug": "k-inside",
+      "dataset": "k",
+      "fields": [
+        "meaning",
+        "reading"
+      ],
+      "reason": "chain: components + landing \"inside\" untagged; heavy meaning & reading prose (37w/43w)"
+    }
+  ],
+  "kept": [],
+  "stats": {
+    "total": 395,
+    "marked": 395
+  }
+}

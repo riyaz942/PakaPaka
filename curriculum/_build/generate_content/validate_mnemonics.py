@@ -122,13 +122,16 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #: Highlight markup (Rev 2). A mnemonic wraps the pieces the learner is meant to
 #: connect — the taught components it borrows, and the sound the reading hangs
 #: on — so the app can render them in the content accent colours instead of
-#: burying them in a wall of prose. Exactly one tag is legal per field, which is
-#: what makes "did it actually tag the components" mechanically checkable.
+#: burying them in a wall of prose. Each field allows one or more tags, listed
+#: as a tuple when more than one, which is what makes "did it actually tag the
+#: components" mechanically checkable.
 #:
 #:   radical mnemonic_text    <radical>mouth</radical>
 #:   radical image_prompt     <radical>mouth</radical>  (same word; the image
 #:                             pipeline strips the tag before drawing)
-#:   kanji  meaning_mnemonic  <radical>ground</radical>
+#:   kanji  meaning_mnemonic  <radical>ground</radical>  (a borrowed component)
+#:                            <kanji>one</kanji>          (the kanji's own
+#:                             meaning — the word the story lands on)
 #:   kanji  reading_mnemonic  <reading>いち</reading>
 #:   vocab  meaning_mnemonic  <kanji>one</kanji>
 #:   vocab  reading_mnemonic  <reading>ひとつ</reading>
@@ -136,13 +139,17 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #: A radical borrows nothing from below, so the piece it highlights is its own
 #: meaning — the word the story lands on, and the exact word a kanji story will
 #: later reuse. Tagging it makes the two ends of the chain match visually.
+#: A kanji's meaning_mnemonic does both: <radical> highlights each borrowed
+#: component (as before), and <kanji> highlights the kanji's own landing word
+#: — the two must render in different colours, or the learner cannot tell "a
+#: piece I already know" from "the thing this story is building toward".
 #:
 #: Descriptions carry no markup at all: they are reference prose, not a story
 #: the learner has to reassemble.
 ALLOWED_TAG = {
     ("radical", "mnemonic_text"): "radical",
     ("radical", "image_prompt"): "radical",
-    ("kanji", "meaning_mnemonic"): "radical",
+    ("kanji", "meaning_mnemonic"): ("radical", "kanji"),
     ("kanji", "reading_mnemonic"): "reading",
     ("vocab", "meaning_mnemonic"): "kanji",
     ("vocab", "reading_mnemonic"): "reading",
@@ -236,42 +243,59 @@ def _tag_pattern(tag):
     return re.compile(rf"<{tag}>(.*?)</{tag}>", re.S)
 
 
+def _as_tags(tag):
+    """Normalise a single tag name or a tuple of tag names into a tuple."""
+    if not tag:
+        return ()
+    return (tag,) if isinstance(tag, str) else tuple(tag)
+
+
 def _tag_errors(field, text, tag):
-    """Structural check on the highlight markup: the only tag in this field is
-    `tag`, every one opens and closes in order, none nest, none are empty."""
+    """Structural check on the highlight markup: the only tags in this field
+    are the allowed one(s), every one opens and closes in order, none nest,
+    none are empty."""
+    tags = _as_tags(tag)
     errors = []
-    depth = 0
+    depth = {t: 0 for t in tags}
     for match in _ANY_TAG_RE.finditer(text):
         token = match.group(0)
-        if token == f"<{tag}>":
-            if depth:
-                errors.append(f"{field} nests <{tag}> inside another <{tag}>; tags may not overlap")
-            depth += 1
-        elif token == f"</{tag}>":
-            if depth:
-                depth -= 1
-            else:
-                errors.append(f"{field} closes </{tag}> without opening one")
+        for t in tags:
+            if token == f"<{t}>":
+                if depth[t]:
+                    errors.append(f"{field} nests <{t}> inside another <{t}>; tags may not overlap")
+                depth[t] += 1
+                break
+            if token == f"</{t}>":
+                if depth[t]:
+                    depth[t] -= 1
+                else:
+                    errors.append(f"{field} closes </{t}> without opening one")
+                break
         else:
-            errors.append(
-                f"{field} contains {token}; the only markup allowed here is "
-                f"<{tag}>...</{tag}>"
-            )
-    if depth:
-        errors.append(f"{field} leaves a <{tag}> tag unclosed")
+            allowed = " or ".join(f"<{t}>...</{t}>" for t in tags)
+            errors.append(f"{field} contains {token}; the only markup allowed here is {allowed}")
+    for t in tags:
+        if depth[t]:
+            errors.append(f"{field} leaves a <{t}> tag unclosed")
     if errors:
         return errors
-    if any(not inner.strip() for inner in _tag_pattern(tag).findall(text)):
-        errors.append(f"{field} has an empty <{tag}></{tag}> pair; tag the words themselves")
+    for t in tags:
+        if any(not inner.strip() for inner in _tag_pattern(t).findall(text)):
+            errors.append(f"{field} has an empty <{t}></{t}> pair; tag the words themselves")
     return errors
 
 
 def _strip_tags(text, tag):
-    return _tag_pattern(tag).sub(lambda m: m.group(1), text) if tag else text
+    for t in _as_tags(tag):
+        text = _tag_pattern(t).sub(lambda m: m.group(1), text)
+    return text
 
 
 def _tagged_spans(text, tag):
-    return _tag_pattern(tag).findall(text) if tag else []
+    spans = []
+    for t in _as_tags(tag):
+        spans += _tag_pattern(t).findall(text)
+    return spans
 
 
 def _field_errors(kind, field, text, enforce_readability=False):
@@ -400,6 +424,21 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
         "meaning_mnemonic", draft["meaning_mnemonic"], "radical", ctx["components"],
         "the taught component",
         "the story must be built from the taught decomposition")
+
+    # 3b. the kanji's own meaning is the landing word, distinct from any
+    # borrowed component: when a <kanji> tag is present it must actually wrap
+    # that meaning. Legacy items with no <kanji> tag yet are not required to
+    # add one here — that migration is tracked by the chain-check triage pass,
+    # not this gate — but a tag that IS there must be used correctly.
+    kanji_spans = _tagged_spans(draft["meaning_mnemonic"], "kanji")
+    if kanji_spans:
+        own_words = _meaning_words(ctx["meaning_synonyms"])
+        if own_words and not any(_references(span, own_words) for span in kanji_spans):
+            errors.append(
+                f"meaning_mnemonic wraps something other than the kanji's own meaning "
+                f"“{ctx['meaning']}” in <kanji>...</kanji>; that tag is reserved for the "
+                "word the story lands on"
+            )
 
     # 4. description (Rev 2: optional — written only when the item has something
     #    a mnemonic cannot carry). Look-alike contrast prose is exactly that, so
