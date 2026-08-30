@@ -22,7 +22,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "A lid across the top, and underneath it two strokes crossing each other and splaying out at the bottom like arms thrown wide. It is a figure with something draped over its shoulders and a pattern brushed right across the chest — marks made on purpose, meant to be read. Marks put there to be read are <radical>writing</radical>."
   },
@@ -112,7 +112,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "A hand has got hold of a loose flap at the top left, and you can see its fingers braced at the bottom right as it drags downward in one long, steady pull. What comes away in that pull, in a single unbroken sheet with nothing torn, is the hide: the <radical>skin</radical> taken off whole."
   },
@@ -148,7 +148,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "Someone is squeezing out from underneath a heavy lid. You can see the bent head, the body pressed thin as it works through the gap, and two legs kicking free at the bottom. Everyone else is still pinned under there waiting their turn. This one wriggled out and walked off, which is precisely what it is to be <radical>exempt</radical>."
   },
@@ -229,7 +229,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "A small mark and a stroke splitting away at the very top, then a lid, and beneath it a mouth set into a frame. It is a shrine front: the roof flared out at the corners, the offering-slot below, and the whole thing raised a step above the street so you have to look up at it. Built to be looked up at, and held in <radical>esteem</radical>."
   },
@@ -247,7 +247,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "A flat stroke over the top and, hanging beneath it, three short strokes curving down and in. It is a hand held palm-down with the fingers already curling under, about to close on something from above. Not a grip — a snatch. What comes down out of the sky like that is a <radical>claw</radical>."
   },
@@ -265,7 +265,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "A short flag of a stroke at the top, then a long one dropping down the right side and hooking inward at the foot. It is a person folded down onto their knees, bowing low. It is also the carved tally-half that an official presses into wet clay to prove the order is genuine. Kneel, and take the <radical>stamp</radical>."
   },
@@ -427,7 +427,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "1",
-      "review_status": "draft"
+      "review_status": "reviewed"
     },
     "image_prompt": "九 shoots out long and straight, then at the last second curls into a tight hook at the bottom right, like a fishing line cast far out and yanked sharply back the moment something bites — that final snap of the hook is <radical>nine</radical>, one short of a full catch."
   },
@@ -484,5 +484,68 @@
       "review_status": "reviewed"
     },
     "image_prompt": "Seen from above, 行 is a crossroads: strokes fork left and right like two roads splitting away from a center island. Pick any branch and your feet are already moving before you decide — that's <radical>going</radical>."
+  },
+  "beans": {
+    "mnemonic_text": "豆 is a stemmed bowl, its square body bulging like it's packed full. That swollen dish, propped on crossed legs, is heaped with <radical>beans</radical>.",
+    "image_prompt": "Picture 豆 as a stemmed dish. A short cap forms the lid, the square block below is a bowl bulging because it's packed full, and the crossed legs at the bottom brace it like a pedestal. That bowl, swollen and propped up, is heaped with <radical>beans</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "valley": {
+    "mnemonic_text": "谷 draws two slopes falling from a shared peak, opening onto a boxy gap below. That V, draining into one narrow mouth, is a <radical>valley</radical>.",
+    "image_prompt": "谷 is two slopes and an opening, drawn in profile. The upper strokes splay outward like mountainsides falling from a shared peak, and the boxy mouth below is the gap where they meet. That V, draining into one narrow gap at the bottom, is a <radical>valley</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "boat": {
+    "mnemonic_text": "Look at 舟 side-on: a curved hull tapering to a point at bow and stern, a crossbar for a plank seat through the middle. That narrow hull is a <radical>boat</radical>.",
+    "image_prompt": "Look at 舟 side-on, like a hull cut from wood. The long curved stroke tapers to a point at bow and stern, and the crossbar through the middle is a plank seat braced across the deck. That narrow hull between its pointed ends is a <radical>boat</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "angle": {
+    "mnemonic_text": "角 is an angle gauge: a sharp peak where two edges meet, degree marks stacked down the arm below. Point to scale, it measures a single <radical>angle</radical>.",
+    "image_prompt": "Picture 角 as an angle gauge held to the light. The peak at top is where its two edges meet, and the stacked lines beneath are degree marks running down the arm. From that sharp point down to the ruled scale, it's a tool built to measure a single <radical>angle</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fur": {
+    "mnemonic_text": "毛 is one strand caught mid-twist: a flat scalp line, then a stroke that hooks into a curl and flicks to a point. That curling wisp is <radical>fur</radical>.",
+    "image_prompt": "The top stroke lies flat like a scalp line, then the long stroke drops and hooks into a loose curl before flicking out to a fine point. Caught mid-twist as if just lifted off an animal's back, that single curling strand is a wisp of <radical>fur</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "yellow": {
+    "mnemonic_text": "Picture an old oil lantern. A cap sits on top, and a squat glass body holds the wick. Stubby feet prop it up as the glass glows warm <radical>yellow</radical>.",
+    "image_prompt": "Picture an old oil lantern: a flat cap with two short posts on top, a squat glass body in the middle holding the wick, and two stubby feet splayed underneath so it stands on the shelf. Light the wick and the glass fills with a warm <radical>yellow</radical> glow.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "barley": {
+    "mnemonic_text": "The top of 麦 is a heavy head of grain; below it, two strokes bow outward like a stalk under that weight. That bent, top-heavy plant is <radical>barley</radical>.",
+    "image_prompt": "The top cross is a heavy head of grain, and below it two strokes splay downward and out like a stalk bowing under that weight, leaves drooping toward the ground. That bent, top-heavy plant standing in the field is <radical>barley</radical>.",
+    "_meta": {
+      "generator_model": "sonnet-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

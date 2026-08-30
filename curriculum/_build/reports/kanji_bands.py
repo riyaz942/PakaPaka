@@ -13,17 +13,35 @@ being out of band.
     | n2    |         300 |      1,000 |
     | n1    |       1,000 |      2,000 |
 
-**Ranking is by corpus reuse, not by the JLPT kanji list.** The exam list is
-blind to the word list this app ships, so it spends slots on kanji that unlock
-nothing. For each kanji, count the words *of that level* it appears in; take the
-top N; tie-break by KANJIDIC grade so equally useful kanji arrive easy-first.
-The consequence, accepted deliberately: the level a kanji sits at is this app's
-ladder, not the exam's. 百 and 東 are N5 on the exam and unlock two words each
-here, so they wait.
+**Hand-authored kanji are pinned to their dataset's level.** The N5/N4 curated
+lists are the real exam list for those 192 kanji, and a learner expects 水 and
+川 at N5 because that is where every course and exam puts them — so `source`
+(which dataset defines the kanji: `n5`/`n4`/`k`) doubles as its band for those
+two sources; it is never reranked out. This does mean a low-reuse authored
+kanji occupies a budget slot a higher-reuse derived kanji could have filled,
+which is accepted deliberately: matching the exam's placement matters more
+than squeezing every slot for reuse.
 
-Every level has vocabulary since Phase D, so every band ranks on reuse. The
-frequency-rank fallback below stays for the case of a level whose word list is
-missing, which is a build in progress rather than a shipped state.
+**A named handful of derived kanji are pinned the same way.** `PINNED_DERIVED`
+below lists personal pronouns (私/僕/君/彼/誰) — real KANJIDIC school grades of
+6, 8, or a grade 3 that still loses the reuse race, none of which match where
+every JLPT course actually teaches them (N5, day one). Same mechanism as the
+authored pin, just keyed by slug instead of by whole dataset.
+
+**The derived (`k`-sourced) corpus ranks by school grade first, reuse second.**
+Each band's authored count is subtracted from its budget; the remainder is
+filled from the still-unplaced derived corpus, sorted by KANJIDIC school grade
+(1-6 elementary, 8 secondary jouyou, 9 jinmeiyou, ungraded last) — a kanji
+Japanese schooling teaches early, like 犬 or 雪, is not held back by this app's
+own word list happening to reuse it only once. Reuse count — how many of that
+level's own words the kanji unlocks — is the tiebreaker within a grade, so
+among equally-early kanji the one that unlocks more of this level's
+vocabulary is still offered first.
+
+Every level has vocabulary since Phase D, so every band's derived fill can
+break ties on reuse. The frequency-rank fallback below stays for the case of
+a level whose word list is missing, which is a build in progress rather than
+a shipped state.
 
 **Sort order inside a band.** Kanji the hand-authored N5/N4 datasets already
 place keep their curated order; the plan puts re-ordering N5/N4 out of scope.
@@ -69,6 +87,21 @@ AUTHORED_LEVELS = ["n5", "n4"]
 #: level is its frequency rank and is decided without reference to kanji, so
 #: ranking a band on that level's words is not circular.
 VOCAB_LEVELS = LEVELS
+
+#: Derived-corpus kanji pinned to a level by name, ahead of grade/reuse
+#: ranking. Personal pronouns: every JLPT course teaches them as some of the
+#: first N5 words, but KANJIDIC's real school grade is 6 (私), 8/secondary
+#: jouyou (僕/彼/誰), or — 君 — a grade 3 that still loses the reuse race
+#: against the ~200 other grade-3 kanji. Grade-first ranking is right for the
+#: derived corpus in general; this is the deliberately named exception for
+#: words no JLPT course defers.
+PINNED_DERIVED = {
+    "k-private": "n5",  # 私 watashi — N5 vocabulary word #1 ("I / me")
+    "k-me": "n5",  # 僕 boku — N5 vocabulary word #3
+    "k-mister": "n5",  # 君 kimi — N5 vocabulary word #5
+    "k-he": "n5",  # 彼 kare — N5 vocabulary word #6
+    "k-who": "n5",  # 誰 dare — N5 vocabulary word #27
+}
 
 
 def load(path):
@@ -138,21 +171,37 @@ def reuse_and_encounter(chars, words):
 
 
 def assign_bands(corpus, words):
-    """{slug: level}, plus the per-level reuse map the report prints."""
-    remaining = dict(corpus)
-    bands = {}
+    """{slug: level}, plus the per-level reuse map the report prints.
+
+    Hand-authored kanji (`source` in LEVELS) are pinned to their dataset's
+    level up front, outside the ranking loop entirely — they never compete for
+    a slot and never lose one. PINNED_DERIVED pins a few named derived-corpus
+    exceptions the same way. Everything else in the derived corpus is ranked
+    by grade then reuse, filling whatever each band's budget has left after
+    the pinned count is subtracted."""
+    bands = {slug: info["source"] for slug, info in corpus.items()
+              if info["source"] in LEVELS}
+    bands.update(PINNED_DERIVED)
+    remaining = {slug: info for slug, info in corpus.items()
+                 if slug not in bands}
     reuse_by_level = {}
     encounter_by_level = {}
     for level in LEVELS:
-        size = BAND_SIZES[level]
+        authored = sum(1 for s in bands if bands[s] == level)
+        size = BAND_SIZES[level] - authored
+        if size < 0:
+            raise SystemExit(
+                f"band {level} has {authored} authored kanji, over its "
+                f"{BAND_SIZES[level]}-kanji budget"
+            )
         chars = {info["char"]: slug for slug, info in remaining.items()}
         if level in VOCAB_LEVELS:
             reuse, first = reuse_and_encounter(set(chars), words[level])
             ranked = sorted(
                 remaining,
                 key=lambda s: (
-                    -reuse[remaining[s]["char"]],
                     remaining[s]["grade"] or 99,
+                    -reuse[remaining[s]["char"]],
                     remaining[s]["freq"] or 99999,
                     remaining[s]["char"],
                 ),
@@ -172,7 +221,8 @@ def assign_bands(corpus, words):
         taken = ranked[:size]
         if len(taken) < size:
             raise SystemExit(
-                f"band {level} wants {size} kanji, only {len(taken)} left in the corpus"
+                f"band {level} wants {size} derived kanji, only {len(taken)} "
+                f"left in the corpus"
             )
         for slug in taken:
             bands[slug] = level
@@ -183,6 +233,14 @@ def assign_bands(corpus, words):
         }
     if remaining:
         raise SystemExit(f"{len(remaining)} kanji fit no band; BAND_SIZES is short")
+    for slug, level in PINNED_DERIVED.items():
+        # Never entered the ranking loop, so kanji_sort_orders below would
+        # otherwise sort it last (no first-encounter data) instead of at the
+        # position its own pinning was meant to fix.
+        char = corpus[slug]["char"]
+        _, first = reuse_and_encounter({char}, words[level])
+        if char in first:
+            encounter_by_level[level][slug] = first[char]
     return bands, reuse_by_level, encounter_by_level
 
 
