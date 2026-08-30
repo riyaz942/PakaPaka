@@ -185,7 +185,12 @@ def decomposition_edges():
 
 
 def kanji_context(level, slug, cast=None):
-    kanji = _by_slug(load_items("kanji", level))
+    # Banding can move a kanji to a level other than the one its draft/sidecar
+    # file was generated under, so look it up across every level rather than
+    # just `level` — same reasoning as the radical lookup below.
+    kanji = {}
+    for lvl in ALL_LEVELS:
+        kanji.update(_by_slug(load_items("kanji", lvl)))
     # A kanji's components can come from any level's radical set, not just its
     # own. Skeleton kanji are the reason this is every level rather than "N5
     # under N4": 旅 is N3 and builds on 方, an N3 radical, while most of its
