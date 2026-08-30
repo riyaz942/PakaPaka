@@ -10577,42 +10577,6 @@
       "sort_order": 81
     },
     {
-      "slug": "k-evening",
-      "primary_form": "夕",
-      "meaning": "evening",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "せき",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "ゆう",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "evening",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "せき"
-        }
-      ],
-      "meaning_mnemonic": "Three strokes and nothing else: a curve like the shoulder of a hill, with one line falling through it. It is the moon, half up, caught the moment the light goes flat and blue, the hush of <radical>evening</radical> settling in. The whole character is one picture of <kanji>evening</kanji> starting.",
-      "reading_mnemonic": "Seki comes out onto his step at this hour every night, and you hear him before you see him — that wet, rattling 「<reading>せき</reading>」 of a cough carrying right down the street. When せき starts up, the light has gone.",
-      "_meta": {
-        "generator_model": "claude-opus-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 82
-    },
-    {
       "slug": "n5-kaeru",
       "primary_form": "帰",
       "meaning": "return",
@@ -10726,7 +10690,7 @@
           "furigana": "お父[とう]さん、お帰[かえ]りなさい。"
         }
       ],
-      "sort_order": 83
+      "sort_order": 82
     },
     {
       "slug": "n5-deru",
@@ -10860,7 +10824,7 @@
           "furigana": "駅[えき]の出[で]口[ぐち]はどこですか。"
         }
       ],
-      "sort_order": 84
+      "sort_order": 83
     },
     {
       "slug": "n5-hairu",
@@ -10998,7 +10962,7 @@
           "furigana": "駅[えき]の入[いり]口[ぐち]はどこですか。"
         }
       ],
-      "sort_order": 85
+      "sort_order": 84
     },
     {
       "slug": "n5-miru",
@@ -11134,7 +11098,7 @@
           "furigana": "友[とも]達[だち]に新[あたら]しい写[しゃ]真[しん]を見[み]せました。"
         }
       ],
-      "sort_order": 86
+      "sort_order": 85
     },
     {
       "slug": "n5-tomeru",
@@ -11270,7 +11234,7 @@
           "furigana": "古[ふる]い時計[とけい]が止[と]まりました。"
         }
       ],
-      "sort_order": 87
+      "sort_order": 86
     },
     {
       "slug": "n5-tatsu",
@@ -11430,7 +11394,7 @@
           "furigana": "あそこに男[おとこ]の人[ひと]が立[た]っています。"
         }
       ],
-      "sort_order": 88
+      "sort_order": 87
     },
     {
       "slug": "n5-suwaru",
@@ -11566,7 +11530,7 @@
           "furigana": "友[とも]達[だち]の隣[となり]に座[すわ]りました。"
         }
       ],
-      "sort_order": 89
+      "sort_order": 88
     },
     {
       "slug": "n5-yasumu",
@@ -11689,7 +11653,7 @@
           "furigana": "風邪[かぜ]で学[がっ]校[こう]を休[やす]みました。"
         }
       ],
-      "sort_order": 90
+      "sort_order": 89
     },
     {
       "slug": "n5-iu-gen",
@@ -11825,7 +11789,7 @@
           "furigana": "彼[かれ]は面[おも]白[しろ]いことを言[い]います。"
         }
       ],
-      "sort_order": 91
+      "sort_order": 90
     },
     {
       "slug": "n5-kau",
@@ -11973,7 +11937,7 @@
           "furigana": "明日[あした]、母[はは]とデパートで買[か]い物[もの]します。"
         }
       ],
-      "sort_order": 92
+      "sort_order": 91
     },
     {
       "slug": "n5-uru-baku",
@@ -12110,7 +12074,7 @@
           "furigana": "その車[くるま]は売[う]りません。"
         }
       ],
-      "sort_order": 93
+      "sort_order": 92
     },
     {
       "slug": "n5-taberu",
@@ -12244,7 +12208,7 @@
           "furigana": "毎[まい]朝[あさ]、パンを食[た]べます。"
         }
       ],
-      "sort_order": 94
+      "sort_order": 93
     },
     {
       "slug": "n5-nomu",
@@ -12378,7 +12342,7 @@
           "furigana": "昨日[きのう]、友[とも]達[だち]とお酒[さけ]を飲[の]みました。"
         }
       ],
-      "sort_order": 95
+      "sort_order": 94
     },
     {
       "slug": "n5-shiro-white",
@@ -12515,7 +12479,7 @@
           "furigana": "私[わたし]の車[くるま]は白[しろ]です。"
         }
       ],
-      "sort_order": 96
+      "sort_order": 95
     },
     {
       "slug": "n5-aka",
@@ -12645,7 +12609,7 @@
           "furigana": "そのかばんは赤[あか]です。"
         }
       ],
-      "sort_order": 97
+      "sort_order": 96
     },
     {
       "slug": "n5-ao",
@@ -12793,7 +12757,7 @@
           "furigana": "青[あお]と白[しろ]の服[ふく]を着[き]ます。"
         }
       ],
-      "sort_order": 98
+      "sort_order": 97
     },
     {
       "slug": "n5-kane-gold-dup",
@@ -12925,7 +12889,7 @@
           "furigana": "先[せん]生[せい]は黒[こく]板[ばん]に書[か]きました。"
         }
       ],
-      "sort_order": 99
+      "sort_order": 98
     },
     {
       "slug": "n5-takai",
@@ -13062,7 +13026,7 @@
           "furigana": "あのレストランの肉[にく]は高[たか]いです。"
         }
       ],
-      "sort_order": 100
+      "sort_order": 99
     },
     {
       "slug": "n5-yasui",
@@ -13202,7 +13166,7 @@
           "furigana": "昨日[きのう]、安[やす]い靴[くつ]を買[か]いました。"
         }
       ],
-      "sort_order": 101
+      "sort_order": 100
     },
     {
       "slug": "n5-atarashii",
@@ -13342,7 +13306,7 @@
           "furigana": "あの新[あたら]しいレストランはおいしいです。"
         }
       ],
-      "sort_order": 102
+      "sort_order": 101
     },
     {
       "slug": "n5-furui",
@@ -13494,7 +13458,7 @@
           "furigana": "その時計[とけい]は少[すこ]し古[ふる]いです。"
         }
       ],
-      "sort_order": 103
+      "sort_order": 102
     },
     {
       "slug": "n5-ooi-ta",
@@ -13655,7 +13619,7 @@
           "furigana": "今[こん]週[しゅう]は宿[しゅく]題[だい]が多[おお]くて大[たい]変[へん]です。"
         }
       ],
-      "sort_order": 104
+      "sort_order": 103
     },
     {
       "slug": "n5-sukunai",
@@ -13790,7 +13754,7 @@
           "furigana": "日本[にほん]語[ご]を少[すこ]し話[はな]します。"
         }
       ],
-      "sort_order": 105
+      "sort_order": 104
     },
     {
       "slug": "n5-nagai",
@@ -13922,7 +13886,7 @@
           "furigana": "先[せん]生[せい]の話[はなし]は長[なが]いです。"
         }
       ],
-      "sort_order": 106
+      "sort_order": 105
     },
     {
       "slug": "n5-hayai",
@@ -14048,7 +14012,7 @@
           "furigana": "毎[まい]日[にち]早[はや]く学[がっ]校[こう]へ行[い]きます。"
         }
       ],
-      "sort_order": 107
+      "sort_order": 106
     },
     {
       "slug": "n5-kuni",
@@ -14188,7 +14152,7 @@
           "furigana": "外[がい]国[こく]の車[くるま]は高[たか]いです。"
         }
       ],
-      "sort_order": 108
+      "sort_order": 107
     },
     {
       "slug": "n5-ame-rain",
@@ -14314,7 +14278,7 @@
           "furigana": "明日[あした]は雨[あめ]ですか。"
         }
       ],
-      "sort_order": 109
+      "sort_order": 108
     },
     {
       "slug": "n5-denki-den",
@@ -14445,7 +14409,7 @@
           "furigana": "暗[くら]いから電[でん]気[き]をつけます。"
         }
       ],
-      "sort_order": 110
+      "sort_order": 109
     },
     {
       "slug": "n5-sha-car",
@@ -14586,7 +14550,7 @@
           "furigana": "弟[おとうと]は自[じ]転[てん]車[しゃ]が好[す]きです。"
         }
       ],
-      "sort_order": 111
+      "sort_order": 110
     },
     {
       "slug": "n5-eki-station",
@@ -14727,7 +14691,7 @@
           "furigana": "私[わたし]は毎[まい]朝[あさ]この駅[えき]で電[でん]車[しゃ]に乗[の]ります。"
         }
       ],
-      "sort_order": 112
+      "sort_order": 111
     },
     {
       "slug": "n5-michi",
@@ -14861,7 +14825,7 @@
           "furigana": "道[みち]の近[ちか]くに公[こう]園[えん]があります。"
         }
       ],
-      "sort_order": 113
+      "sort_order": 112
     },
     {
       "slug": "n5-machi",
@@ -14995,7 +14959,7 @@
           "furigana": "彼[かれ]はこの町[まち]に住[す]んでいます。"
         }
       ],
-      "sort_order": 114
+      "sort_order": 113
     },
     {
       "slug": "n5-shi-city",
@@ -15155,7 +15119,7 @@
           "furigana": "週[しゅう]末[まつ]に市[し]の公[こう]園[えん]を散[さん]歩[ぽ]しました。"
         }
       ],
-      "sort_order": 115
+      "sort_order": 114
     },
     {
       "slug": "k-father",
@@ -15293,7 +15257,7 @@
           "furigana": "祖[そ]父[ふ]は公[こう]園[えん]で犬[いぬ]と遊[あそ]びます。"
         }
       ],
-      "sort_order": 116
+      "sort_order": 115
     },
     {
       "slug": "k-mother",
@@ -15437,7 +15401,369 @@
           "furigana": "叔母[おば]は毎[まい]年[ねん]家[か]族[ぞく]の写[しゃ]真[しん]を見[み]ます。"
         }
       ],
+      "sort_order": 116
+    },
+    {
+      "slug": "k-friend",
+      "primary_form": "友",
+      "meaning": "friend",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ゆう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "とも",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "friend",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ゆう"
+        }
+      ],
+      "meaning_mnemonic": "One stroke <radical>slides</radical> down from the top left across a bar of <radical>ground</radical>, met by a <radical>right hand</radical> rising underneath. Two hands close on each other, nobody paid, nobody in charge: that is a <kanji>friend</kanji>.",
+      "reading_mnemonic": "Yuu is always there before you, hand already out. He draws the greeting into a long two-beat call across the car park — 「<reading>ゆう</reading>」 — before you have shut the car door. ゆう means somebody is glad to see you.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "友達と公園で遊びました。",
+          "english": "I played in the park with a friend.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "kouen",
+            "asobu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "asobu",
+              "start": 6,
+              "end": 11,
+              "surface_form": "遊びました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "友[とも]達[だち]と公[こう]園[えん]で遊[あそ]びました。"
+        },
+        {
+          "japanese": "彼は私の友人です。",
+          "english": "He is my friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "watashi",
+            "yuujin"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "watashi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "yuujin",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "彼[かれ]は私[わたし]の友[ゆう]人[じん]です。"
+        },
+        {
+          "japanese": "明日、友達に会います。",
+          "english": "I'm meeting a friend tomorrow.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ashita",
+            "tomodachi",
+            "au"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ashita",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "au",
+              "start": 6,
+              "end": 10,
+              "surface_form": "会います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "明日[あした]、友[とも]達[だち]に会[あ]います。"
+        }
+      ],
       "sort_order": 117
+    },
+    {
+      "slug": "k-doctor",
+      "primary_form": "医",
+      "meaning": "doctor",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "い",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "い",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "doctor",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "い"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "medicine"
+        }
+      ],
+      "meaning_mnemonic": "A <radical>box on its side</radical>, its open mouth turned towards you, an <radical>arrow</radical> lying inside — the one they just drew out of you. The lid comes down over the arrowhead and the wound both. Whoever owns that box is the <kanji>doctor</kanji>.",
+      "reading_mnemonic": "Ii is the noise she makes while examining you: one short noncommittal 「<reading>い</reading>」 as she looks at the wound, and another as she drops the arrow into the tray. Nothing whatsoever about い tells you whether it is bad news.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の父は医者です。",
+          "english": "My father is a doctor.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "chichi",
+            "isha"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chichi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "isha",
+              "start": 4,
+              "end": 6
+            }
+          ],
+          "furigana": "私[わたし]の父[ちち]は医[い]者[しゃ]です。"
+        },
+        {
+          "japanese": "あの医院はどこにありますか。",
+          "english": "Where is that clinic?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ano",
+            "iin",
+            "doko"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ano",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "iin",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "あの医[い]院[いん]はどこにありますか。"
+        },
+        {
+          "japanese": "僕は医者になりたいです。",
+          "english": "I want to become a doctor.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "boku",
+            "isha"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "boku",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "isha",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "furigana": "僕[ぼく]は医[い]者[しゃ]になりたいです。"
+        }
+      ],
+      "sort_order": 118
+    },
+    {
+      "slug": "k-employee",
+      "primary_form": "員",
+      "meaning": "employee",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "employee",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "member"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "number"
+        }
+      ],
+      "meaning_mnemonic": "Picture the whole character as a badge shaped like an open <radical>mouth</radical>, clipped above a fat coin-purse of <radical>money</radical>, swinging on a lanyard. At the mountain trail's summit, a gatekeeper won't sell a drink until that badge is stamped and your name goes into the ledger: you're now an <kanji>employee</kanji> of the mountain.",
+      "reading_mnemonic": "The gatekeeper is a retired innkeeper everyone calls <reading>Inn</reading>. She grunts <reading>いん</reading> every time she stamps a badge — one grunt per hire. By dusk, her voice is gone from saying it all day.",
+      "description": "員 rarely stands alone as a word for 'employee' — it is a suffix meaning roughly 'a person belonging to,' always riding on a job title, company, or club, closer to '-er' than to a stand-alone noun.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼は会社員です。",
+          "english": "He's a company employee.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kaishain"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kaishain",
+              "start": 2,
+              "end": 5
+            }
+          ],
+          "furigana": "彼[かれ]は会[かい]社[しゃ]員[いん]です。"
+        },
+        {
+          "japanese": "駅員に聞きました。",
+          "english": "I asked a station staff member.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ekiin",
+            "kiku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ekiin",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "kiku-v",
+              "start": 3,
+              "end": 8,
+              "surface_form": "聞きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "駅[えき]員[いん]に聞[き]きました。"
+        },
+        {
+          "japanese": "私の父は会社員です。",
+          "english": "My father is a company employee.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "chichi",
+            "kaishain"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "chichi",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "kaishain",
+              "start": 4,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]の父[ちち]は会[かい]社[しゃ]員[いん]です。"
+        }
+      ],
+      "sort_order": 119
     },
     {
       "slug": "k-body",
@@ -15561,7 +15887,307 @@
           "furigana": "彼[かれ]の体[からだ]はとても大[おお]きいです。"
         }
       ],
-      "sort_order": 118
+      "sort_order": 120
+    },
+    {
+      "slug": "k-thing",
+      "primary_form": "物",
+      "meaning": "thing",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぶつ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "もの",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "thing",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぶつ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "object"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "matter"
+        }
+      ],
+      "meaning_mnemonic": "Picture the whole character as a lumpy, unlabeled shape — <radical>not</radical> quite a box, not quite a creature, just a mass with no clean outline. Koichi's lost-and-found bin behind the konbini is just like this: a toy <radical>cow</radical>, a bent umbrella, half a slipper. After six months he labels the whole bin '<kanji>thing</kanji>.'",
+      "reading_mnemonic": "Koichi holds up a single lost <reading>boot</reading> from the bin and grunts <reading>ぶつ</reading> — the general word for 'thing,' because after six unclaimed months, calling it a boot feels oddly specific.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎朝果物を食べます。",
+          "english": "I eat fruit every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "maiasa",
+            "kudamono",
+            "taberu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kudamono",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 7,
+              "end": 11,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は毎[まい]朝[あさ]果物[くだもの]を食[た]べます。"
+        },
+        {
+          "japanese": "犬は動物です。",
+          "english": "A dog is an animal.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "inu",
+            "doubutsu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "inu",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "doubutsu",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "furigana": "犬[いぬ]は動[どう]物[ぶつ]です。"
+        },
+        {
+          "japanese": "母と一緒にデパートで買い物します。",
+          "english": "I go shopping at the department store with my mother.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "haha",
+            "issho-ni",
+            "depaato",
+            "kaimono-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "haha",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "issho-ni",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "depaato",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "kaimono-suru",
+              "start": 10,
+              "end": 16,
+              "surface_form": "買い物します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "母[はは]と一[いっ]緒[しょ]にデパートで買[か]い物[もの]します。"
+        }
+      ],
+      "sort_order": 121
+    },
+    {
+      "slug": "k-meal",
+      "primary_form": "飯",
+      "meaning": "meal",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "はん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "めし",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "meal",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "はん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "boiled rice"
+        }
+      ],
+      "meaning_mnemonic": "See the whole character as a plate laid out to <radical>eat</radical> from: a heaping bowl of rice on the left, resting on a <radical>cliff</radical>-ledge. Crammed against it is a second helping some <radical>right hand</radical> snuck onto the tray before anyone could stop it. Two portions in one shape: the whole <kanji>meal</kanji>, seconds included.",
+      "reading_mnemonic": "Han, the half-and-half chef, slices your whole dinner clean down the center before you can protest — that's just how he works here. You call out his name, <reading>Han</reading>, and he answers with a proud <reading>はん</reading>, holding up two identical plates like it settles the matter.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "朝ご飯を食べます。",
+          "english": "I eat breakfast.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "asagohan",
+            "taberu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "asagohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 4,
+              "end": 8,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "朝[あさ]ご飯[はん]を食[た]べます。"
+        },
+        {
+          "japanese": "昼ご飯はレストランで食べます。",
+          "english": "I'm eating lunch at a restaurant.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "hirugohan",
+            "resutoran",
+            "taberu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "hirugohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "resutoran",
+              "start": 4,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "taberu",
+              "start": 10,
+              "end": 14,
+              "surface_form": "食べます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "昼[ひる]ご飯[はん]はレストランで食[た]べます。"
+        },
+        {
+          "japanese": "晩ご飯は魚と野菜です。",
+          "english": "Dinner is fish and vegetables.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "bangohan",
+            "sakana",
+            "yasai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "bangohan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "sakana",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yasai",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "晩[ばん]ご飯[はん]は魚[さかな]と野[や]菜[さい]です。"
+        }
+      ],
+      "sort_order": 122
+    },
+    {
+      "slug": "k-fish",
+      "primary_form": "魚",
+      "meaning": "fish",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "ぎょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "うお",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "fish",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "ぎょ"
+        }
+      ],
+      "meaning_mnemonic": "At the riverbank, a vendor drops his catch and it lands upside down in the mud. The wedge lands like a cap on its head, the boxy grid presses rows of scales down its flank, and the tail strokes flare and curl as it flops back toward the water. That's the <radical>fish</radical> he was trying to sell.",
+      "reading_mnemonic": "Old Joe, working the riverbank stall, watches the same catch slip the hook again. He yelps <reading>ぎょ</reading>, sharp and startled, and it lands on the ear exactly like someone shouting <reading>Joe</reading> across the water. Same fish, same splash, same complaint every morning.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "draft"
+      },
+      "sort_order": 123
     },
     {
       "slug": "k-tea",
@@ -15680,45 +16306,41 @@
           "furigana": "彼[かの]女[じょ]の目[め]は茶[ちゃ]色[いろ]です。"
         }
       ],
-      "sort_order": 119
+      "sort_order": 124
     },
     {
-      "slug": "k-hit",
-      "primary_form": "当",
-      "meaning": "hit",
+      "slug": "k-ill",
+      "primary_form": "病",
+      "meaning": "ill",
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "とう",
+          "reading": "びょう",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "あ",
+          "reading": "や",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "hit",
+          "answer_text": "ill",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "とう"
+          "answer_text": "びょう"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "right"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "appropriate"
+          "answer_text": "sick"
         }
       ],
-      "meaning_mnemonic": "Picture the whole character as a dart thrown with quiet <radical>esteem</radical> for its own aim, flight feathers up top, and a <radical>broom</radical>-shaped tail sweeping it dead center into the target below. One clean throw, no wobble: a direct <kanji>hit</kanji>.",
-      "reading_mnemonic": "The dart thrower celebrates his bullseye by kicking the target stand in triumph and instantly regrets it, hopping and hissing through his teeth: <reading>とう</reading>, my <reading>toe</reading>, my <reading>toe</reading>! Somehow he still lands the next throw dead center.",
+      "meaning_mnemonic": "Picture the whole character as a <radical>sickness</radical> lean-to: a slanted roof over a <radical>wide box</radical> of a room. Inside it lies a <radical>person</radical> stretched flat, legs sticking out past a blanket too short to cover them. The whole shape is a tiny room built for one thing: someone too <kanji>ill</kanji> to get up.",
+      "reading_mnemonic": "The former beauty-pageant queen lies flat under the sickroom's too-short blanket, moaning into her pillow. This is the least glamorous she has ever looked: 「<reading>びょう</reading>」, she groans, sounding exactly like the first half of <reading>beauty</reading> gone hoarse.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
@@ -15726,50 +16348,227 @@
       },
       "example_sentences": [
         {
-          "japanese": "私は毎日弁当を作ります。",
-          "english": "I make a boxed lunch every day.",
+          "japanese": "父は病気で病院に行きました。",
+          "english": "My father was sick, so he went to the hospital.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "watashi",
-            "mainichi",
-            "bentou",
-            "tsukuru"
+            "chichi",
+            "byouki",
+            "byouin",
+            "iku-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "watashi",
+              "vocabulary_slug": "chichi",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "mainichi",
+              "vocabulary_slug": "byouki",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "bentou",
+              "vocabulary_slug": "byouin",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 8,
+              "end": 13,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "父[ちち]は病[びょう]気[き]で病[びょう]院[いん]に行[い]きました。"
+        },
+        {
+          "japanese": "祖母は先週から病気です。",
+          "english": "My grandmother has been ill since last week.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sobo",
+            "senshuu",
+            "byouki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sobo",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "senshuu",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "byouki",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "祖[そ]母[ぼ]は先[せん]週[しゅう]から病[びょう]気[き]です。"
+        },
+        {
+          "japanese": "その病院は駅にあります。",
+          "english": "That hospital is by the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "byouin",
+            "eki",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "byouin",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "その病[びょう]院[いん]は駅[えき]にあります。"
+        }
+      ],
+      "sort_order": 125
+    },
+    {
+      "slug": "k-inst",
+      "primary_form": "院",
+      "meaning": "Inst.",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "いん",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "Inst.",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "いん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "institution"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "temple"
+        }
+      ],
+      "meaning_mnemonic": "Grandma Kane's shrine has quietly become an institution. The mossy steps lead through a turnstile marking the <radical>beginning</radical> of the queue, under the old <radical>roof</radical>. Beyond it lies a <radical>village</radical> of numbered waiting rooms, staffed by a cat in a visor. That towering bureaucratic compound is one big <kanji>Inst.</kanji>",
+      "reading_mnemonic": "At the same window, the visor cat's ink stamp has half-dried, so every ticket comes out a pale <reading>いん</reading>. She grumbles it sounds like <reading>bean</reading> paste smeared thin, and refuses to fetch a new pad before the shrine's afternoon bell.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "父は毎朝病院で働きます。",
+          "english": "My father works at the hospital every morning.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "chichi",
+            "maiasa",
+            "byouin",
+            "hataraku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "chichi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "maiasa",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "byouin",
               "start": 4,
               "end": 6
             },
             {
-              "vocabulary_slug": "tsukuru",
+              "vocabulary_slug": "hataraku",
               "start": 7,
               "end": 11,
-              "surface_form": "作ります",
+              "surface_form": "働きます",
               "inflection": "masu"
             }
           ],
-          "furigana": "私[わたし]は毎[まい]日[にち]弁[べん]当[とう]を作[つく]ります。"
+          "furigana": "父[ちち]は毎[まい]朝[あさ]病[びょう]院[いん]で働[はたら]きます。"
         },
         {
-          "japanese": "この弁当は本当においしいです。",
-          "english": "This boxed lunch is really delicious.",
+          "japanese": "お腹が痛いので医院へ行きました。",
+          "english": "My stomach hurt, so I went to the clinic.",
           "sort_order": 1,
           "vocabulary_slugs": [
+            "onaka",
+            "itai",
+            "iin",
+            "iku-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "onaka",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "itai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "iin",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 10,
+              "end": 15,
+              "surface_form": "行きました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "お腹[なか]が痛[いた]いので医[い]院[いん]へ行[い]きました。"
+        },
+        {
+          "japanese": "この病院は駅から近いです。",
+          "english": "This hospital is close to the station.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
             "kono",
-            "bentou",
-            "hontou-ni",
-            "oishii"
+            "byouin",
+            "eki",
+            "chikai"
           ],
           "word_spans": [
             {
@@ -15778,53 +16577,183 @@
               "end": 2
             },
             {
-              "vocabulary_slug": "bentou",
+              "vocabulary_slug": "byouin",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "hontou-ni",
+              "vocabulary_slug": "eki",
               "start": 5,
-              "end": 8
+              "end": 6
             },
             {
-              "vocabulary_slug": "oishii",
+              "vocabulary_slug": "chikai",
               "start": 8,
-              "end": 12
+              "end": 10
             }
           ],
-          "furigana": "この弁[べん]当[とう]は本[ほん]当[とう]においしいです。"
+          "furigana": "この病[びょう]院[いん]は駅[えき]から近[ちか]いです。"
+        }
+      ],
+      "sort_order": 126
+    },
+    {
+      "slug": "k-building",
+      "primary_form": "館",
+      "meaning": "building",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "かん",
+          "sort_order": 0
         },
         {
-          "japanese": "彼は本当に忙しいです。",
-          "english": "He is really busy.",
-          "sort_order": 2,
+          "reading_type": "kunyomi",
+          "reading": "やかた",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "building",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "かん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "mansion"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "large building"
+        }
+      ],
+      "meaning_mnemonic": "Sei's school gym floods every spring, so the committee tears a <radical>mouth</radical> of a doorway through to the old mansion's <radical>roof</radical> next door and calls the echoing ballroom the new gym. Badminton nets hang from an iron <radical>stick</radical>, and the marble hall once built to <radical>eat</radical> in now holds trophies. Half school, half mansion: one sprawling <kanji>building</kanji>.",
+      "reading_mnemonic": "The gym teacher, thrilled with his new marble domain, now calls himself 「<reading>かん</reading>」 instead of coach — loosely, <reading>Khan</reading>. He blows his whistle from the staircase every morning like a monarch addressing the badminton court below.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私は毎週図書館で本を読みます。",
+          "english": "I read books at the library every week.",
+          "sort_order": 0,
           "vocabulary_slugs": [
-            "kare",
-            "hontou-ni",
-            "isogashii"
+            "watashi",
+            "maishuu",
+            "toshokan",
+            "hon",
+            "yomu"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "watashi",
               "start": 0,
               "end": 1
             },
             {
-              "vocabulary_slug": "hontou-ni",
+              "vocabulary_slug": "maishuu",
               "start": 2,
-              "end": 5
+              "end": 4
             },
             {
-              "vocabulary_slug": "isogashii",
-              "start": 5,
-              "end": 8
+              "vocabulary_slug": "toshokan",
+              "start": 4,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "hon",
+              "start": 8,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "yomu",
+              "start": 10,
+              "end": 14,
+              "surface_form": "読みます",
+              "inflection": "masu"
             }
           ],
-          "furigana": "彼[かれ]は本[ほん]当[とう]に忙[いそが]しいです。"
+          "furigana": "私[わたし]は毎[まい]週[しゅう]図[と]書[しょ]館[かん]で本[ほん]を読[よ]みます。"
+        },
+        {
+          "japanese": "友達と映画館で映画を見ました。",
+          "english": "I watched a movie at the cinema with a friend.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "tomodachi",
+            "eigakan",
+            "eiga",
+            "miru-v"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "tomodachi",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "eigakan",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "eiga",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "miru-v",
+              "start": 10,
+              "end": 14,
+              "surface_form": "見ました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "友[とも]達[だち]と映[えい]画[が]館[かん]で映[えい]画[が]を見[み]ました。"
+        },
+        {
+          "japanese": "その旅館の部屋はとても静かでした。",
+          "english": "That inn's room was very quiet.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "ryokan",
+            "heya",
+            "shizuka"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "ryokan",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 11,
+              "end": 13
+            }
+          ],
+          "furigana": "その旅[りょ]館[かん]の部屋[へや]はとても静[しず]かでした。"
         }
       ],
-      "sort_order": 120
+      "sort_order": 127
     },
     {
       "slug": "k-empty",
@@ -15956,7 +16885,7 @@
           "furigana": "私[わたし]たちは明日[あした]空[くう]港[こう]で会[あ]います。"
         }
       ],
-      "sort_order": 121
+      "sort_order": 128
     },
     {
       "slug": "k-brush-stroke",
@@ -16098,7 +17027,139 @@
           "furigana": "その映[えい]画[が]は面[おも]白[しろ]いです。"
         }
       ],
-      "sort_order": 122
+      "sort_order": 129
+    },
+    {
+      "slug": "k-roof",
+      "primary_form": "屋",
+      "meaning": "roof",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "おく",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "や",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "roof",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "おく"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "house"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "shop"
+        }
+      ],
+      "meaning_mnemonic": "Koichi's konbini springs a leak the night the first typhoon <radical>arrive</radical>s. Rain drums through a hole in the ceiling onto the onigiri shelf. Koichi hauls up a tarp and lashes it down flat and still as a <radical>body</radical>, muttering that a shop without one is just an expensive puddle. The neighborhood now calls the place the <kanji>roof</kanji> instead of its real name.",
+      "reading_mnemonic": "Weeks later, the tarp is still up, now painted with a crude little <reading>oak</reading> tree Koichi drew himself — <reading>おく</reading> — because customers kept asking what was holding the whole roof together. Nobody has the heart to tell him it's just tarp and string.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "この部屋は静かです。",
+          "english": "This room is quiet.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kono",
+            "heya",
+            "shizuka"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "この部屋[へや]は静[しず]かです。"
+        },
+        {
+          "japanese": "部屋番号は何ですか。",
+          "english": "What is the room number?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "heya-bangou",
+            "nani"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "heya-bangou",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "nani",
+              "start": 5,
+              "end": 6
+            }
+          ],
+          "furigana": "部屋[へや]番[ばん]号[ごう]は何[なに]ですか。"
+        },
+        {
+          "japanese": "私の部屋に窓があります。",
+          "english": "There is a window in my room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashi",
+            "heya",
+            "mado",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mado",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]の部屋[へや]に窓[まど]があります。"
+        }
+      ],
+      "sort_order": 130
     },
     {
       "slug": "k-pedestal",
@@ -16232,7 +17293,7 @@
           "furigana": "私[わたし]はテレビを二[に]台[だい]持[も]っています。"
         }
       ],
-      "sort_order": 123
+      "sort_order": 131
     },
     {
       "slug": "k-turn",
@@ -16348,7 +17409,7 @@
           "furigana": "彼[かれ]は一[いち]番[ばん]忙[いそが]しいです。"
         }
       ],
-      "sort_order": 124
+      "sort_order": 132
     },
     {
       "slug": "k-paper",
@@ -16494,7 +17555,152 @@
           "furigana": "紙[かみ]とペンを見[み]つけました。"
         }
       ],
-      "sort_order": 125
+      "sort_order": 133
+    },
+    {
+      "slug": "k-true",
+      "primary_form": "真",
+      "meaning": "true",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "しん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "ま",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "true",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "しん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reality"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "Buddhist sect"
+        }
+      ],
+      "meaning_mnemonic": "At Grandma Kane's shrine, the offering box has a slot cut in a <radical>cross</radical>, wide enough to <radical>split</radical> a coin clean in two. A single carved <radical>eye</radical> watches from the lintel above, fixed on <radical>one</radical> coin the whole time it spins. It never blinks and never looks away, the way a shrine cat won't look away from a fish. That unwavering, unblinking watch — nothing hidden, nothing faked — is <kanji>true</kanji>.",
+      "reading_mnemonic": "One of the shrine cats leaps for the ladle, misjudges the step, and slams its shin against the stand. It yowls 「<reading>しん</reading>」, the sound of the English word <reading>shin</reading>, before limping off — the truest reaction any cat has given all day.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "彼は公園で写真を撮った。",
+          "english": "He took a photo in the park.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kare",
+            "kouen",
+            "shashin",
+            "toru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "kouen",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "shashin",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "彼[かれ]は公[こう]園[えん]で写[しゃ]真[しん]を撮[と]った。"
+        },
+        {
+          "japanese": "私の写真はかばんにある。",
+          "english": "My photo is in my bag.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "watashi",
+            "shashin",
+            "kaban",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shashin",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kaban",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 9,
+              "end": 11
+            }
+          ],
+          "furigana": "私[わたし]の写[しゃ]真[しん]はかばんにある。"
+        },
+        {
+          "japanese": "猫は部屋の真ん中で寝ている。",
+          "english": "The cat is sleeping in the middle of the room.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "neko",
+            "heya",
+            "mannaka",
+            "neru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "neko",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "mannaka",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "neru",
+              "start": 9,
+              "end": 11,
+              "surface_form": "寝て",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "猫[ねこ]は部屋[へや]の真[ま]ん中[なか]で寝[ね]ている。"
+        }
+      ],
+      "sort_order": 134
     },
     {
       "slug": "k-cut",
@@ -16628,7 +17834,7 @@
           "furigana": "母[はは]は野[や]菜[さい]を切[き]ります。"
         }
       ],
-      "sort_order": 126
+      "sort_order": 135
     },
     {
       "slug": "k-wind",
@@ -16766,43 +17972,157 @@
           "furigana": "冷[つめ]たい風[かぜ]の日[ひ]に風邪[かぜ]になりました。"
         }
       ],
-      "sort_order": 127
+      "sort_order": 136
     },
     {
-      "slug": "k-dog",
-      "primary_form": "犬",
-      "meaning": "dog",
+      "slug": "k-move",
+      "primary_form": "動",
+      "meaning": "move",
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "けん",
+          "reading": "どう",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "いぬ",
+          "reading": "うご",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "dog",
+          "answer_text": "move",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "けん"
+          "answer_text": "どう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "motion"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "change"
         }
       ],
-      "meaning_mnemonic": "Arms flung wide, the figure spins after that itch on its shoulder, round and round across Grandma Kane's mossy shrine steps. Her cats watch, unimpressed, as it never once catches the spot. It finally flops down panting, tongue out, every inch a <radical>dog</radical> that lost the fight.",
-      "reading_mnemonic": "Still panting on the shrine steps, the dog corners into <reading>Ken</reading>, the shiba who guards a wall of antique swords. Ken plants himself between the blades and the newcomer, barking a short, sharp <reading>けん</reading> that echoes off the mossy stone.",
+      "meaning_mnemonic": "At Koichi's konbini, a stacked crate of onigiri suddenly rolls off on a single <radical>stick</radical> axle, one <radical>slide</radical> of momentum carrying it toward the door. Its <radical>power</radical> comes from nowhere obvious — no cord, no battery, just <radical>one</radical> crate deciding to go. It rattles past the window where the <radical>sun</radical> is setting over the distant <radical>village</radical> rooftops, and doesn't stop until it hits the beeping till. That crate, suddenly alive and unstoppable, is <kanji>move</kanji> itself.",
+      "reading_mnemonic": "Koichi lurches out of the way and yelps <reading>どう</reading> — a flat, startled <reading>doh</reading> — as the crate rumbles past the beeping till and rocks the onigiri shelf on its way through.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
-      "sort_order": 128
+      "example_sentences": [
+        {
+          "japanese": "動物園に猫がたくさんいます。",
+          "english": "There are a lot of cats at the zoo.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "doubutsu",
+            "neko",
+            "takusan",
+            "iru-exist"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "doubutsu",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "neko",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "iru-exist",
+              "start": 10,
+              "end": 13,
+              "surface_form": "います",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "動[どう]物[ぶつ]園[えん]に猫[ねこ]がたくさんいます。"
+        },
+        {
+          "japanese": "この椅子は重くて動きません。",
+          "english": "This chair is heavy and won't move.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "isu",
+            "omoi",
+            "ugoku"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "isu",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "omoi",
+              "start": 5,
+              "end": 8,
+              "surface_form": "重くて",
+              "inflection": "te"
+            },
+            {
+              "vocabulary_slug": "ugoku",
+              "start": 8,
+              "end": 13,
+              "surface_form": "動きません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "この椅[い]子[す]は重[おも]くて動[うご]きません。"
+        },
+        {
+          "japanese": "彼は机を動かした。",
+          "english": "He moved the desk.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kare",
+            "tsukue",
+            "ugokasu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "tsukue",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ugokasu",
+              "start": 4,
+              "end": 8,
+              "surface_form": "動かした",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "彼[かれ]は机[つくえ]を動[うご]かした。"
+        }
+      ],
+      "sort_order": 137
     },
     {
       "slug": "k-music",
@@ -16934,7 +18254,7 @@
           "furigana": "友[とも]達[だち]と歌[うた]うのは楽[たの]しいです。"
         }
       ],
-      "sort_order": 129
+      "sort_order": 138
     },
     {
       "slug": "k-near",
@@ -17072,7 +18392,7 @@
           "furigana": "図[と]書[しょ]館[かん]はあなたの家[いえ]から近[ちか]いですか。"
         }
       ],
-      "sort_order": 130
+      "sort_order": 139
     },
     {
       "slug": "k-walk",
@@ -17222,51 +18542,836 @@
           "furigana": "兄[あに]は毎[まい]朝[あさ]公[こう]園[えん]で散[さん]歩[ぽ]します。"
         }
       ],
-      "sort_order": 131
+      "sort_order": 140
     },
     {
-      "slug": "k-character",
-      "primary_form": "字",
-      "meaning": "character",
+      "slug": "k-exertion",
+      "primary_form": "勉",
+      "meaning": "exertion",
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "じ",
+          "reading": "べん",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "あざ",
+          "reading": "つと",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "character",
+          "answer_text": "exertion",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "じ"
+          "answer_text": "べん"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "letter"
+          "answer_text": "endeavour"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "word"
+          "answer_text": "encourage"
         }
       ],
-      "meaning_mnemonic": "Under the sloping <radical>roof</radical>, a bundled-up <radical>child</radical> comes running in from the rain, arms flung wide. Grandma catches its hand and guides it through the first stroke it has ever written on the wall. That crooked little mark becomes the family's first character.",
-      "reading_mnemonic": "Grandma claps her hands at the wall and gasps a delighted <reading>じ</reading> — it comes out just like blurting <reading>gee</reading> at the sight — proud that the scrawled little mark is already a character worth keeping.",
+      "meaning_mnemonic": "Picture 勉 as a sweatband wrung out mid-cram with sheer <radical>power</radical>, soaking the page underneath. In Koichi's konbini, a student camped by the onigiri shelf pulls an all-nighter, refusing to be <radical>exempt</radical>, wringing the band out again and again: pure <kanji>exertion</kanji>.",
+      "reading_mnemonic": "The clerk ringing up onigiri all night, <reading>Ben</reading>, groans the same sympathetic <reading>べん</reading> every time the sweatband hits the counter, cheering the cramming on until the beeping till finally goes quiet.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
-      "sort_order": 132
+      "example_sentences": [
+        {
+          "japanese": "毎晩、部屋で日本語を勉強します。",
+          "english": "Every night, I study Japanese in my room.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "maiban",
+            "heya",
+            "nihongo",
+            "benkyou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "maiban",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "heya",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "nihongo",
+              "start": 6,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 10,
+              "end": 15,
+              "surface_form": "勉強します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "毎[まい]晩[ばん]、部屋[へや]で日本[にほん]語[ご]を勉[べん]強[きょう]します。"
+        },
+        {
+          "japanese": "図書館の勉強は静かで好きです。",
+          "english": "I like studying at the library because it's quiet.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "toshokan",
+            "benkyou",
+            "shizuka",
+            "suki"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "toshokan",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "benkyou",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "shizuka",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "vocabulary_slug": "suki",
+              "start": 10,
+              "end": 12
+            }
+          ],
+          "furigana": "図[と]書[しょ]館[かん]の勉[べん]強[きょう]は静[しず]かで好[す]きです。"
+        },
+        {
+          "japanese": "兄は大学で英語を勉強しています。",
+          "english": "My older brother is studying English at university.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "ani",
+            "daigaku",
+            "eigo",
+            "benkyou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "daigaku",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "eigo",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "benkyou-suru",
+              "start": 8,
+              "end": 12,
+              "surface_form": "勉強して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "兄[あに]は大[だい]学[がく]で英[えい]語[ご]を勉[べん]強[きょう]しています。"
+        }
+      ],
+      "sort_order": 141
+    },
+    {
+      "slug": "k-dwell",
+      "primary_form": "住",
+      "meaning": "dwell",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "じゅう",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "す",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "dwell",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "じゅう"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "reside"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "live"
+        }
+      ],
+      "meaning_mnemonic": "Picture 住 as one tall lamp, its <radical>jewel</radical>-capped finial catching light, beside a smaller post — planted by some <radical>person</radical> in the same square of ground for years. Moss climbs both at the same slow rate, each <radical>drop</radical> of dew feeding it. Planted in one place so long it has stopped being separate from it: <kanji>dwell</kanji>.",
+      "reading_mnemonic": "At Grandma Kane's shrine, one cat never wanders past the mossy steps — Jusuke, who has lived under the bell so long nobody remembers him arriving. Every time it tolls, he grumbles <reading>じゅう</reading>, low in his throat, like the word <reading>chew</reading> dragged out twice as long.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私はここに住んでいます。",
+          "english": "I live here.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "koko",
+            "sumu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "koko",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sumu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "住んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "私[わたし]はここに住[す]んでいます。"
+        },
+        {
+          "japanese": "彼はどこに住んでいますか。",
+          "english": "Where does he live?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "doko",
+            "sumu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "sumu",
+              "start": 5,
+              "end": 8,
+              "surface_form": "住んで",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "彼[かれ]はどこに住[す]んでいますか。"
+        },
+        {
+          "japanese": "あなたの住所はどこですか。",
+          "english": "What's your address?",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "anata",
+            "juusho",
+            "doko"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "anata",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "juusho",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "doko",
+              "start": 7,
+              "end": 9
+            }
+          ],
+          "furigana": "あなたの住[じゅう]所[しょ]はどこですか。"
+        }
+      ],
+      "sort_order": 142
+    },
+    {
+      "slug": "k-question",
+      "primary_form": "問",
+      "meaning": "question",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "もん",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "と",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "question",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "もん"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "ask"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "problem"
+        }
+      ],
+      "meaning_mnemonic": "Picture 問 as a <radical>gate</radical> with a <radical>mouth</radical> built into the crossbar, shouting through the bars at Sei's school. A latecomer rattles the locked gate, and the mouth shouts back, demanding to know why they're late. Nobody gets in without answering the gate's <kanji>question</kanji>.",
+      "reading_mnemonic": "Outside that same gate, Mon-Bun — the scholarly rabbit twins — bicker without pause, blaming each other for muddling the question. They let out one long identical <reading>moan</reading> that comes out as <reading>もん</reading>, echoing off the bars, and they're still moaning it when the gate creaks open.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "これは難しい問題です。",
+          "english": "This is a difficult problem.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kore",
+            "muzukashii",
+            "mondai"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kore",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 6,
+              "end": 8
+            }
+          ],
+          "furigana": "これは難[むずか]しい問[もん]題[だい]です。"
+        },
+        {
+          "japanese": "先生に質問してもいいですか。",
+          "english": "May I ask the teacher a question?",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "sensei",
+            "shitsumon-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shitsumon-suru",
+              "start": 3,
+              "end": 7,
+              "surface_form": "質問して",
+              "inflection": "te"
+            }
+          ],
+          "furigana": "先[せん]生[せい]に質[しつ]問[もん]してもいいですか。"
+        },
+        {
+          "japanese": "その質問の意味が分かりません。",
+          "english": "I don't understand the meaning of that question.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sono",
+            "shitsumon",
+            "imi",
+            "wakaru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shitsumon",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "imi",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "wakaru",
+              "start": 8,
+              "end": 14,
+              "surface_form": "分かりません",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "その質[しつ]問[もん]の意[い]味[み]が分[わ]かりません。"
+        }
+      ],
+      "sort_order": 143
+    },
+    {
+      "slug": "k-trip",
+      "primary_form": "旅",
+      "meaning": "trip",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "りょ",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "たび",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "trip",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "りょ"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "travel"
+        }
+      ],
+      "meaning_mnemonic": "Picture 旅 as a tattered <radical>chevron</radical> flag flapping at the head of the trail, pointing the <radical>direction</radical> for a whole line of hikers trudging after it. Nobody questions where it leads; they just follow, boots slipping on gravel, until the trail spits them out at the vending machine on top. That staggering line is a <kanji>trip</kanji>.",
+      "reading_mnemonic": "Leading them is a llama guide named <reading>Rio</reading>, bleating <reading>りょ</reading> at every switchback to keep the line moving. By the vending machine he collapses first, legs folded, still muttering it between breaths.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私たちは来週旅行します。",
+          "english": "We're taking a trip next week.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "raishuu",
+            "ryokou-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "raishuu",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "ryokou-suru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "旅行します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]たちは来[らい]週[しゅう]旅[りょ]行[こう]します。"
+        },
+        {
+          "japanese": "旅行は楽しかったです。",
+          "english": "The trip was fun.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ryokou",
+            "tanoshii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ryokou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "tanoshii",
+              "start": 3,
+              "end": 8,
+              "surface_form": "楽しかった",
+              "inflection": "ta"
+            }
+          ],
+          "furigana": "旅[りょ]行[こう]は楽[たの]しかったです。"
+        },
+        {
+          "japanese": "私たちはあの旅館に泊まりました。",
+          "english": "We stayed at that inn.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "watashitachi",
+            "ano",
+            "ryokan",
+            "tomaru-stay"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashitachi",
+              "start": 0,
+              "end": 3
+            },
+            {
+              "vocabulary_slug": "ano",
+              "start": 4,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "ryokan",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "vocabulary_slug": "tomaru-stay",
+              "start": 9,
+              "end": 15,
+              "surface_form": "泊まりました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]たちはあの旅[りょ]館[かん]に泊[と]まりました。"
+        }
+      ],
+      "sort_order": 144
+    },
+    {
+      "slug": "k-attend",
+      "primary_form": "仕",
+      "meaning": "attend",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "し",
+          "sort_order": 0
+        },
+        {
+          "reading_type": "kunyomi",
+          "reading": "つか",
+          "sort_order": 1
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "attend",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "し"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "doing"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "official"
+        }
+      ],
+      "meaning_mnemonic": "Picture 仕 as a <radical>person</radical>, a clerk standing bolt upright behind Koichi's till, spine straight as a blade, saluting every customer like a <radical>samurai</radical> posted at his station. He never sits, never slouches, just attends the register from open to close. That rigid stance is the whole meaning: <kanji>attend</kanji>.",
+      "reading_mnemonic": "Beside him works a hedgehog cashier named <reading>Shea</reading>, who hisses <reading>し</reading> through her teeth every time the till beeps too loud. The clerk never breaks his salute, but Shea flinches at every beep, still hissing it under her breath at closing.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "私の仕事は大変です。",
+          "english": "My job is tough.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "watashi",
+            "shigoto",
+            "taihen"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "watashi",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "taihen",
+              "start": 5,
+              "end": 7
+            }
+          ],
+          "furigana": "私[わたし]の仕[し]事[ごと]は大[たい]変[へん]です。"
+        },
+        {
+          "japanese": "彼の仕事場は駅の近くにあります。",
+          "english": "His workplace is near the station.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kare",
+            "shigotoba",
+            "eki",
+            "chikaku",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kare",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "shigotoba",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "eki",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "vocabulary_slug": "chikaku",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 11,
+              "end": 15,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "彼[かれ]の仕[し]事[ごと]場[ば]は駅[えき]の近[ちか]くにあります。"
+        },
+        {
+          "japanese": "今日は仕事を休みます。",
+          "english": "I'm taking today off work.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "kyou",
+            "shigoto",
+            "yasumu"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shigoto",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "yasumu",
+              "start": 6,
+              "end": 10,
+              "surface_form": "休みます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]は仕[し]事[ごと]を休[やす]みます。"
+        }
+      ],
+      "sort_order": 145
+    },
+    {
+      "slug": "k-topic",
+      "primary_form": "題",
+      "meaning": "topic",
+      "readings": [
+        {
+          "reading_type": "onyomi",
+          "reading": "だい",
+          "sort_order": 0
+        }
+      ],
+      "accepted_answers": [
+        {
+          "answer_type": "meaning",
+          "answer_text": "topic",
+          "is_primary": true
+        },
+        {
+          "answer_type": "reading",
+          "answer_text": "だい"
+        },
+        {
+          "answer_type": "meaning",
+          "answer_text": "subject"
+        }
+      ],
+      "meaning_mnemonic": "Above the school gate, someone has bolted one steel <radical>page</radical> of a plaque so heavy it will never come down, catching the <radical>sun</radical> each morning. Nobody argues about what today's topic is — every <radical>head</radical> in the yard tips up to read the one word on it before the bell even rings: the <kanji>topic</kanji>.",
+      "reading_mnemonic": "Dai, the giant baby the size of a truck, crawls up to that same gate and still can't read the plaque. He throws his head back and wails his own name, <reading>Dai</reading>, at a pitch that registers as <reading>だい</reading> on every seismograph in town, and the plaque shudders on its bolts.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "4",
+        "review_status": "reviewed"
+      },
+      "example_sentences": [
+        {
+          "japanese": "今日、宿題がたくさんあります。",
+          "english": "I have a lot of homework today.",
+          "sort_order": 0,
+          "vocabulary_slugs": [
+            "kyou",
+            "shukudai",
+            "takusan",
+            "aru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kyou",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "takusan",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 10,
+              "end": 14,
+              "surface_form": "あります",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "今日[きょう]、宿[しゅく]題[だい]がたくさんあります。"
+        },
+        {
+          "japanese": "この問題は難しいです。",
+          "english": "This question is difficult.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "kono",
+            "mondai",
+            "muzukashii"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "kono",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "mondai",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "muzukashii",
+              "start": 5,
+              "end": 8
+            }
+          ],
+          "furigana": "この問[もん]題[だい]は難[むずか]しいです。"
+        },
+        {
+          "japanese": "先生、宿題を忘れました。",
+          "english": "Teacher, I forgot my homework.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "sensei",
+            "shukudai",
+            "wasureru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "sensei",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "vocabulary_slug": "shukudai",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "wasureru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "忘れました",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "先[せん]生[せい]、宿[しゅく]題[だい]を忘[わす]れました。"
+        }
+      ],
+      "sort_order": 146
     },
     {
       "slug": "k-sound",
@@ -17396,45 +19501,45 @@
           "furigana": "友[とも]達[だち]と音[おん]楽[がく]を聞[き]きます。"
         }
       ],
-      "sort_order": 133
+      "sort_order": 147
     },
     {
-      "slug": "k-times",
-      "primary_form": "回",
-      "meaning": "-times",
+      "slug": "k-medicine",
+      "primary_form": "薬",
+      "meaning": "medicine",
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "かい",
+          "reading": "やく",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "まわ",
+          "reading": "くすり",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "-times",
+          "answer_text": "medicine",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "かい"
+          "answer_text": "やく"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "round"
+          "answer_text": "chemical"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "game"
+          "answer_text": "enamel"
         }
       ],
-      "meaning_mnemonic": "From above, Sei's running track looks like one square course boxed inside a bigger square fence — a <radical>mouth</radical> shape from the sky. The same loop gets traced again and again by whoever's running it. Each full lap around that boxed-in course is one more <kanji>round</kanji>. The count just keeps climbing while the loop never changes shape.",
-      "reading_mnemonic": "Sei's PE teacher, a man everyone calls <reading>Kai</reading>, stands at the gate barking a number each time a runner completes the loop: <reading>かい</reading>, かい, かい, one shout per lap. By the tenth lap nobody's counting anything but Kai's voice landing on かい.",
+      "meaning_mnemonic": "At Koichi's konbini, the back shelf holds bottles kept <radical>ice</radical>-cold, <radical>grass</radical> and <radical>tree</radical> leaves poking from every cap, dripping bitter syrup onto the tiles. The night clerk swallows a capful anyway each <radical>day</radical>, grimacing — his headache is gone before he reaches the till. That crooked, leafy shelf is exactly how the character is drawn: <kanji>medicine</kanji>.",
+      "reading_mnemonic": "A <reading>Yak</reading> shoulders through the konbini door, snuffles the dripping medicine shelf, and swallows a whole bottle in one gulp. Its stomach gurgles, it throws its huge head back, and out comes a groaning <reading>やく</reading> loud enough to rattle the onigiri shelf.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
@@ -17442,127 +19547,135 @@
       },
       "example_sentences": [
         {
-          "japanese": "毎日二回散歩する。",
-          "english": "I take a walk twice every day.",
+          "japanese": "薬局はあそこにあります。",
+          "english": "The pharmacy is over there.",
           "sort_order": 0,
           "vocabulary_slugs": [
-            "mainichi",
-            "ni-v",
-            "kai-times",
-            "sanpo-suru"
+            "yakkyoku",
+            "asoko",
+            "aru"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "mainichi",
+              "vocabulary_slug": "yakkyoku",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "sanpo-suru",
-              "start": 4,
-              "end": 8
+              "vocabulary_slug": "asoko",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "vocabulary_slug": "aru",
+              "start": 7,
+              "end": 11,
+              "surface_form": "あります",
+              "inflection": "masu"
             }
           ],
-          "furigana": "毎[まい]日[にち]二[に]回[かい]散[さん]歩[ぽ]する。"
+          "furigana": "薬[やっ]局[きょく]はあそこにあります。"
         },
         {
-          "japanese": "彼は鍵を回す。",
-          "english": "He turns the key.",
+          "japanese": "毎朝薬を飲みます。",
+          "english": "I take medicine every morning.",
           "sort_order": 1,
           "vocabulary_slugs": [
-            "kare",
-            "kagi",
-            "mawasu"
+            "maiasa",
+            "kusuri",
+            "nomu-v"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kare",
+              "vocabulary_slug": "maiasa",
               "start": 0,
-              "end": 1
+              "end": 2
             },
             {
-              "vocabulary_slug": "kagi",
+              "vocabulary_slug": "kusuri",
               "start": 2,
               "end": 3
             },
             {
-              "vocabulary_slug": "mawasu",
+              "vocabulary_slug": "nomu-v",
               "start": 4,
-              "end": 6
+              "end": 8,
+              "surface_form": "飲みます",
+              "inflection": "masu"
             }
           ],
-          "furigana": "彼[かれ]は鍵[かぎ]を回[まわ]す。"
+          "furigana": "毎[まい]朝[あさ]薬[くすり]を飲[の]みます。"
         },
         {
-          "japanese": "彼女は部屋を見回した。",
-          "english": "She looked around the room.",
+          "japanese": "薬局で薬をもらいました。",
+          "english": "I got some medicine at the pharmacy.",
           "sort_order": 2,
           "vocabulary_slugs": [
-            "kanojo",
-            "heya",
-            "mimawasu"
+            "yakkyoku",
+            "kusuri",
+            "morau"
           ],
           "word_spans": [
             {
-              "vocabulary_slug": "kanojo",
+              "vocabulary_slug": "yakkyoku",
               "start": 0,
               "end": 2
             },
             {
-              "vocabulary_slug": "heya",
+              "vocabulary_slug": "kusuri",
               "start": 3,
-              "end": 5
+              "end": 4
             },
             {
-              "vocabulary_slug": "mimawasu",
-              "start": 6,
-              "end": 10,
-              "surface_form": "見回した",
-              "inflection": "ta"
+              "vocabulary_slug": "morau",
+              "start": 5,
+              "end": 11,
+              "surface_form": "もらいました",
+              "inflection": "masu"
             }
           ],
-          "furigana": "彼[かの]女[じょ]は部屋[へや]を見回[みまわ]した。"
+          "furigana": "薬[やっ]局[きょく]で薬[くすり]をもらいました。"
         }
       ],
-      "sort_order": 134
+      "sort_order": 148
     },
     {
-      "slug": "k-fit",
-      "primary_form": "合",
-      "meaning": "fit",
+      "slug": "k-revolve",
+      "primary_form": "転",
+      "meaning": "revolve",
       "readings": [
         {
           "reading_type": "onyomi",
-          "reading": "ごう",
+          "reading": "てん",
           "sort_order": 0
         },
         {
           "reading_type": "kunyomi",
-          "reading": "あ",
+          "reading": "ころ",
           "sort_order": 1
         }
       ],
       "accepted_answers": [
         {
           "answer_type": "meaning",
-          "answer_text": "fit",
+          "answer_text": "revolve",
           "is_primary": true
         },
         {
           "answer_type": "reading",
-          "answer_text": "ごう"
+          "answer_text": "てん"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "suit"
+          "answer_text": "turn around"
         },
         {
           "answer_type": "meaning",
-          "answer_text": "join"
+          "answer_text": "change"
         }
       ],
-      "meaning_mnemonic": "At the shrine, <radical>one</radical> <radical>person</radical> — you — finds two halves of a broken rice cracker scattered on the <radical>ground</radical> among the cats. The edges are gnawed by some cat's <radical>mouth</radical>. You press them back together, and the jagged edges click into place so perfectly it's like the lid of a jar snapping shut. Every crumb <kanji>fits</kanji> exactly where it broke off.",
-      "reading_mnemonic": "Grandma Kane's enormous shrine bell takes one clean hit and rings out a long <reading>ごう</reading>. It's the same low <reading>go</reading> tone the fitted rice cracker halves seem to hum back at each other.",
+      "meaning_mnemonic": "Picture the character as a single cart wheel off a <radical>vehicle</radical>, drawn mid-spin. It has broken loose at the mountain trail's top and gone rolling past the vending machine. It doesn't stop at the bend: it whips around <radical>two</radical> full turns, coiling tight as a <radical>cocoon</radical>, and keeps going in one dizzy loop downhill: <kanji>revolve</kanji>.",
+      "reading_mnemonic": "At the bottom of the trail the loose wheel clips the vending machine, and one stray coin spins out and won't lie flat, circling the gravel — a lone <reading>ten</reading>-yen piece. The hiker chases it, muttering <reading>てん</reading> each time it wobbles past again.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
@@ -17570,219 +19683,15 @@
       },
       "example_sentences": [
         {
-          "japanese": "今日は都合が悪いです。",
-          "english": "Today doesn't work for me.",
+          "japanese": "私は毎日自転車で学校へ行きます。",
+          "english": "I ride my bicycle to school every day.",
           "sort_order": 0,
-          "vocabulary_slugs": [
-            "kyou",
-            "tsugou",
-            "warui"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyou",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "tsugou",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "warui",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "furigana": "今日[きょう]は都[つ]合[ごう]が悪[わる]いです。"
-        },
-        {
-          "japanese": "友達と話し合いました。",
-          "english": "I talked it over with my friend.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "tomodachi",
-            "hanashiau"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "tomodachi",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "hanashiau",
-              "start": 3,
-              "end": 10,
-              "surface_form": "話し合いました",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "友[とも]達[だち]と話[はな]し合[あ]いました。"
-        },
-        {
-          "japanese": "試験に合格しました。",
-          "english": "I passed the exam.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "shiken",
-            "goukaku-suru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "shiken",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "goukaku-suru",
-              "start": 3,
-              "end": 9,
-              "surface_form": "合格しました",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "試[し]験[けん]に合[ごう]格[かく]しました。"
-        }
-      ],
-      "sort_order": 135
-    },
-    {
-      "slug": "k-stone",
-      "primary_form": "石",
-      "meaning": "stone",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "せき",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "いし",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "stone",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "せき"
-        }
-      ],
-      "meaning_mnemonic": "On the mountain trail, your guide's <radical>mouth</radical> falls open in a perfect square yawn, four edges framing the gap. He's yawning right under a leaning cliff, and that same gaping notch becomes the mouth of a cave. A boulder rolls loose from the ridge, drops in, and settles there for good: one solid <radical>stone</radical>.",
-      "reading_mnemonic": "At the vending machine up the mountain trail, the guide trips over that very stone and doubles over coughing. Each hack sounds exactly like <reading>せき</reading> — a dry, barking <reading>SEK</reading> that echoes off the cliff and startles two hikers resting below.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 136
-    },
-    {
-      "slug": "k-department",
-      "primary_form": "科",
-      "meaning": "department",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "か",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "department",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "か"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "course"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "section"
-        }
-      ],
-      "meaning_mnemonic": "Sei's school has one door of <radical>grain</radical>-wood at the end of the main hallway, a <radical>dipper</radical> hanging by it to tally who passes through. Its plaque is nailed on crooked, at an angle no carpenter would allow. Every subject in the building funnels through that single lopsided doorway: the <kanji>department</kanji>.",
-      "reading_mnemonic": "Kaa perches on the power line above that crooked doorway and coughs a puny puff of flame that singes the plaque a shade darker each week. The cough comes out hoarse and flat, <reading>か</reading>, like a stalling <reading>car</reading> engine — the sound the school now associates with that overworked door.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "科学は難しいですが、面白いです。",
-          "english": "Science is difficult, but it's interesting.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kagaku",
-            "muzukashii",
-            "omoshiroi"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kagaku",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "muzukashii",
-              "start": 3,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "omoshiroi",
-              "start": 10,
-              "end": 13
-            }
-          ],
-          "furigana": "科[か]学[がく]は難[むずか]しいですが、面[おも]白[しろ]いです。"
-        },
-        {
-          "japanese": "教科書を忘れました。",
-          "english": "I forgot my textbook.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kyoukasho",
-            "wasureru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kyoukasho",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "wasureru",
-              "start": 4,
-              "end": 9,
-              "surface_form": "忘れました",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "教[きょう]科[か]書[しょ]を忘[わす]れました。"
-        },
-        {
-          "japanese": "私は科学の本が好きです。",
-          "english": "I like science books.",
-          "sort_order": 2,
           "vocabulary_slugs": [
             "watashi",
-            "kagaku",
-            "hon",
-            "suki"
+            "mainichi",
+            "jitensha",
+            "gakkou-v",
+            "iku-v"
           ],
           "word_spans": [
             {
@@ -17791,25 +19700,96 @@
               "end": 1
             },
             {
-              "vocabulary_slug": "kagaku",
+              "vocabulary_slug": "mainichi",
               "start": 2,
               "end": 4
             },
             {
-              "vocabulary_slug": "hon",
-              "start": 5,
-              "end": 6
+              "vocabulary_slug": "jitensha",
+              "start": 4,
+              "end": 7
             },
             {
-              "vocabulary_slug": "suki",
-              "start": 7,
+              "vocabulary_slug": "gakkou-v",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "vocabulary_slug": "iku-v",
+              "start": 11,
+              "end": 15,
+              "surface_form": "行きます",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "私[わたし]は毎[まい]日[にち]自[じ]転[てん]車[しゃ]で学[がっ]校[こう]へ行[い]きます。"
+        },
+        {
+          "japanese": "兄は毎日車を運転します。",
+          "english": "My older brother drives a car every day.",
+          "sort_order": 1,
+          "vocabulary_slugs": [
+            "ani",
+            "mainichi",
+            "kuruma",
+            "unten-suru"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "ani",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "mainichi",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "vocabulary_slug": "kuruma",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "unten-suru",
+              "start": 6,
+              "end": 11,
+              "surface_form": "運転します",
+              "inflection": "masu"
+            }
+          ],
+          "furigana": "兄[あに]は毎[まい]日[にち]車[くるま]を運[うん]転[てん]します。"
+        },
+        {
+          "japanese": "弟の自転車は新しいです。",
+          "english": "My younger brother's bicycle is new.",
+          "sort_order": 2,
+          "vocabulary_slugs": [
+            "otouto",
+            "jitensha",
+            "atarashii-adj"
+          ],
+          "word_spans": [
+            {
+              "vocabulary_slug": "otouto",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "vocabulary_slug": "jitensha",
+              "start": 2,
+              "end": 5
+            },
+            {
+              "vocabulary_slug": "atarashii-adj",
+              "start": 6,
               "end": 9
             }
           ],
-          "furigana": "私[わたし]は科[か]学[がく]の本[ほん]が好[す]きです。"
+          "furigana": "弟[おとうと]の自[じ]転[てん]車[しゃ]は新[あたら]しいです。"
         }
       ],
-      "sort_order": 137
+      "sort_order": 149
     },
     {
       "slug": "k-sentence",
@@ -17955,949 +19935,6 @@
           "furigana": "彼[かれ]は大[だい]学[がく]で文[ぶん]学[がく]を勉[べん]強[きょう]しています。"
         }
       ],
-      "sort_order": 138
-    },
-    {
-      "slug": "k-rice-field",
-      "primary_form": "田",
-      "meaning": "rice field",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "でん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "た",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "rice field",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "でん"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "rice paddy"
-        }
-      ],
-      "meaning_mnemonic": "Picture this whole character as one <radical>rice field</radical> seen from above: a flooded square cut into four even smaller squares by raised mud paths. Each holds a flat sheet of sky-reflecting water. Nothing overflows, nothing blurs the lines — a perfect grid of <kanji>rice paddy</kanji>.",
-      "reading_mnemonic": "The farmer, Den, wades along the mud paths counting his four flooded squares aloud. Every time his boot sinks a little, he grunts a flat <reading>でん</reading>, like calling out <reading>Den</reading> to the water.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "祖父は田舎に住んでいます。",
-          "english": "My grandfather lives in the countryside.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "sofu",
-            "inaka",
-            "sumu"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "sofu",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "inaka",
-              "start": 3,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "sumu",
-              "start": 6,
-              "end": 9,
-              "surface_form": "住んで",
-              "inflection": "te"
-            }
-          ],
-          "furigana": "祖[そ]父[ふ]は田舎[いなか]に住[す]んでいます。"
-        },
-        {
-          "japanese": "田舎はとても静かです。",
-          "english": "The countryside is very quiet.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "inaka",
-            "totemo",
-            "shizuka"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "inaka",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "totemo",
-              "start": 3,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 6,
-              "end": 8
-            }
-          ],
-          "furigana": "田舎[いなか]はとても静[しず]かです。"
-        },
-        {
-          "japanese": "夏に家族と田舎へ行きます。",
-          "english": "In summer, I go to the countryside with my family.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "natsu",
-            "kazoku",
-            "inaka",
-            "iku-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "natsu",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "kazoku",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "inaka",
-              "start": 5,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "iku-v",
-              "start": 8,
-              "end": 12,
-              "surface_form": "行きます",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "夏[なつ]に家[か]族[ぞく]と田舎[いなか]へ行[い]きます。"
-        }
-      ],
-      "sort_order": 139
-    },
-    {
-      "slug": "k-correct",
-      "primary_form": "正",
-      "meaning": "correct",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "せい",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "ただ",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "correct",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "せい"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "justice"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "righteous"
-        }
-      ],
-      "meaning_mnemonic": "On the school sports field, the coach chalks <radical>one</radical> line across the track — only a toe planted exactly on it counts. Every runner skids past or <radical>stops</radical> short, except Sei, uniform spotless, who lands a toe dead on the line without even trying. Smug before the whistle blows: <kanji>correct</kanji>.",
-      "reading_mnemonic": "Back in the classroom, the teacher asks who stopped exactly on the line. Sei's hand shoots up before she finishes asking, and he answers with his own name like it settles it: <reading>Sei</reading>, <reading>せい</reading> — crisp, correct, a little too pleased with himself.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "彼は正直な人です。",
-          "english": "He's an honest person.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kare",
-            "shoujiki",
-            "hito"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kare",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "shoujiki",
-              "start": 2,
-              "end": 4
-            },
-            {
-              "vocabulary_slug": "hito",
-              "start": 5,
-              "end": 6
-            }
-          ],
-          "furigana": "彼[かれ]は正[しょう]直[じき]な人[ひと]です。"
-        },
-        {
-          "japanese": "正直に言ってください。",
-          "english": "Please tell me honestly.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "shoujiki",
-            "iu-v"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "shoujiki",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "iu-v",
-              "start": 3,
-              "end": 6,
-              "surface_form": "言って",
-              "inflection": "te"
-            }
-          ],
-          "furigana": "正[しょう]直[じき]に言[い]ってください。"
-        },
-        {
-          "japanese": "私は正直ではありません。",
-          "english": "I'm not an honest person.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "watashi",
-            "shoujiki"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashi",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "shoujiki",
-              "start": 2,
-              "end": 4
-            }
-          ],
-          "furigana": "私[わたし]は正[しょう]直[じき]ではありません。"
-        }
-      ],
-      "sort_order": 140
-    },
-    {
-      "slug": "k-village",
-      "primary_form": "村",
-      "meaning": "village",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "そん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "むら",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "village",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "そん"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "town"
-        }
-      ],
-      "meaning_mnemonic": "By the riverbank, a surveyor presses her ruler against a young <radical>tree</radical>'s trunk, notching off exactly one <radical>inch</radical> at a time. She paces the whole bank this way, planting a measured trunk every few steps, until the tidy row of trunks marks out a whole village.",
-      "reading_mnemonic": "At the riverbank, the surveyor's <reading>son</reading> grabs the ruler and marks a trunk crooked. She snaps his name flat across the water, <reading>そん</reading>, and he slinks off, apologizing for wrecking her careful measurements.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 141
-    },
-    {
-      "slug": "k-bamboo",
-      "primary_form": "竹",
-      "meaning": "bamboo",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "ちく",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "たけ",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "bamboo",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ちく"
-        }
-      ],
-      "meaning_mnemonic": "At Sei's school, the groundskeeper drives two poles into the sports field, each one capped with a crooked <radical>chevron</radical>, like a hairpin jammed on at an angle. The poles sprout leaves and lean together side by side, matching stalk for stalk, until they're a little grove of <radical>bamboo</radical> by the goalpost.",
-      "reading_mnemonic": "Back on the schoolyard, a stray <reading>chick</reading> hops under the poles and pecks at the fallen bamboo leaves, cheeping <reading>ちく</reading> at every peck, until the coach finally shoos it off the field before practice starts.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 142
-    },
-    {
-      "slug": "k-forest",
-      "primary_form": "森",
-      "meaning": "forest",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "しん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "もり",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "forest",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "しん"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "woods"
-        }
-      ],
-      "meaning_mnemonic": "On the mountain trail the path just stops. Three identical <radical>trees</radical> have crowded in so close their trunks touch, branches locking into one solid ceiling that swallows the sky whole. No gap to slip through, no light getting past — only trunks, in every direction you turn. That suffocating wall of trunks is <kanji>forest</kanji>.",
-      "reading_mnemonic": "Still on that same trail, a hiker named <reading>Shin</reading> refuses to admit he's lost among the fused trunks. He barks his shin on a hidden root and yelps <reading>しん</reading>, the sound echoing uselessly off the trunks, then keeps limping in circles.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "森は静かです。",
-          "english": "The forest is quiet.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "mori",
-            "shizuka"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "mori",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 2,
-              "end": 4
-            }
-          ],
-          "furigana": "森[もり]は静[しず]かです。"
-        },
-        {
-          "japanese": "私たちは森を歩きました。",
-          "english": "We walked through the forest.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "watashitachi",
-            "mori",
-            "aruku"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashitachi",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "mori",
-              "start": 4,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "aruku",
-              "start": 6,
-              "end": 11,
-              "surface_form": "歩きました",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "私[わたし]たちは森[もり]を歩[ある]きました。"
-        },
-        {
-          "japanese": "森に鳥がたくさんいます。",
-          "english": "There are a lot of birds in the forest.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "mori",
-            "tori",
-            "takusan",
-            "iru-exist"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "mori",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "tori",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "takusan",
-              "start": 4,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 8,
-              "end": 11,
-              "surface_form": "います",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "森[もり]に鳥[とり]がたくさんいます。"
-        }
-      ],
-      "sort_order": 143
-    },
-    {
-      "slug": "k-grove",
-      "primary_form": "林",
-      "meaning": "grove",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "りん",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "はやし",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "grove",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "りん"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "forest"
-        }
-      ],
-      "meaning_mnemonic": "At the shrine gate, only two <radical>trees</radical> stand this time — not fused into a wall. Just two trunks planted a polite few steps apart, framing a clean gap you can walk straight through, mossy steps visible beyond. That neat, breathing pair of trunks, open where the mountain forest was sealed shut, is <kanji>grove</kanji>.",
-      "reading_mnemonic": "A jogger named <reading>Rin</reading> ducks through that same gap every morning, and the small bell tied to one trunk swings with her stride, chiming <reading>りん</reading> with each step until she's through the gate.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "この道の後ろに林があります。",
-          "english": "There's a grove behind this road.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "kono",
-            "michi-v",
-            "ushiro",
-            "hayashi",
-            "aru"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kono",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "michi-v",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "ushiro",
-              "start": 4,
-              "end": 6
-            },
-            {
-              "vocabulary_slug": "hayashi",
-              "start": 7,
-              "end": 8
-            },
-            {
-              "vocabulary_slug": "aru",
-              "start": 9,
-              "end": 13,
-              "surface_form": "あります",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "この道[みち]の後[うし]ろに林[はやし]があります。"
-        },
-        {
-          "japanese": "私たちは林の中を歩きました。",
-          "english": "We walked through the grove.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "watashitachi",
-            "naka",
-            "hayashi",
-            "aruku"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "watashitachi",
-              "start": 0,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "hayashi",
-              "start": 4,
-              "end": 5
-            },
-            {
-              "vocabulary_slug": "naka",
-              "start": 6,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "aruku",
-              "start": 8,
-              "end": 13,
-              "surface_form": "歩きました",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "私[わたし]たちは林[はやし]の中[なか]を歩[ある]きました。"
-        },
-        {
-          "japanese": "その林はとても静かです。",
-          "english": "That grove is very quiet.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "sono",
-            "hayashi",
-            "totemo",
-            "shizuka"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "sono",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "hayashi",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "totemo",
-              "start": 4,
-              "end": 7
-            },
-            {
-              "vocabulary_slug": "shizuka",
-              "start": 7,
-              "end": 9
-            }
-          ],
-          "furigana": "その林[はやし]はとても静[しず]かです。"
-        }
-      ],
-      "sort_order": 144
-    },
-    {
-      "slug": "k-king",
-      "primary_form": "王",
-      "meaning": "king",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "おう",
-          "sort_order": 0
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "king",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "おう"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "rule"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "magnate"
-        }
-      ],
-      "meaning_mnemonic": "That same skewered <radical>king</radical> — three flat crowns stacked and pinned through by one iron spike — hauls himself up the mossy steps of Grandma Kane's shrine. He swings his spike into the enormous bell, scattering every cat off the steps, and stands there triumphant: unmistakably a <radical>king</radical>.",
-      "reading_mnemonic": "When the king bellows for someone to open the shrine gates, the caretaker just grunts back <reading>おう</reading>, a lazy <reading>OW</reading> vowel flattened out of boredom, and shuffles off without a bow, unimpressed by royalty.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 145
-    },
-    {
-      "slug": "k-jewel",
-      "primary_form": "玉",
-      "meaning": "jewel",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "ぎょく",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "たま",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "jewel",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ぎょく"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "ball"
-        }
-      ],
-      "meaning_mnemonic": "The <radical>king / jewel</radical> stack of crowns stays skewered upright, gems crusted on the bottom ring. A single <radical>drop</radical> slides off the palace eaves and lands square on the top crown, catching the light like cut glass. The king freezes, delighted — his cheap spiked stack now reads as one flawless jewel.",
-      "reading_mnemonic": "The royal jeweller <reading>Geo Cook</reading> leans in to inspect the new stone stuck to the king's crown. He raps it with a knuckle, and it rings glass-clear and true. He nods and stamps the papers <reading>ぎょく</reading>, the official reading for jewel, right on the spot.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 146
-    },
-    {
-      "slug": "k-grass",
-      "primary_form": "草",
-      "meaning": "grass",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "そう",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "くさ",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "grass",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "そう"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "weeds"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "herbs"
-        }
-      ],
-      "meaning_mnemonic": "Two clumps of <radical>grass</radical> push up through the soil in a windowbox. Behind the glass, the <radical>day</radical>'s sun climbs higher, coaxing them taller by noon. The gardener scratches a <radical>ten</radical> mark into the frame, counting the tenth blade to break through — the whole box calls itself grass.",
-      "reading_mnemonic": "The gardener kneels by the windowbox and mutters <reading>そう</reading> under his breath with every seed he plants, like he's saying <reading>sow</reading> to himself out of habit. By the tenth blade, the word is stitched into the dirt.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 147
-    },
-    {
-      "slug": "k-insect",
-      "primary_form": "虫",
-      "meaning": "insect",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "ちゅう",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "むし",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "insect",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ちゅう"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "bug"
-        },
-        {
-          "answer_type": "meaning",
-          "answer_text": "temper"
-        }
-      ],
-      "meaning_mnemonic": "At Grandma Kane's shrine, an <radical>insect</radical> — a beetle — drops onto the mossy steps. Its whole body writes the shape you are learning: a stiff little head, a long ribbed torso, and a tail curling into one sharp hook. Then it goes still. The shrine cats never even blink. That hooked, segmented outline is one <kanji>bug</kanji>.",
-      "reading_mnemonic": "Chuu the loyal mouse trails the beetle across the shrine steps, tiny topknot bobbing, and posts himself over its twitching antenna like an unassigned guard. Every twitch earns one crisp report — <reading>ちゅう</reading> — from the mouse everyone calls <reading>Chuu</reading>, guarding an insect nobody asked him to.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "reviewed"
-      },
-      "example_sentences": [
-        {
-          "japanese": "庭に虫がいます。",
-          "english": "There is a bug in the yard.",
-          "sort_order": 0,
-          "vocabulary_slugs": [
-            "niwa",
-            "mushi",
-            "iru-exist"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "niwa",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "mushi",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "iru-exist",
-              "start": 4,
-              "end": 7,
-              "surface_form": "います",
-              "inflection": "masu"
-            }
-          ],
-          "furigana": "庭[にわ]に虫[むし]がいます。"
-        },
-        {
-          "japanese": "この虫は小さいです。",
-          "english": "This bug is small.",
-          "sort_order": 1,
-          "vocabulary_slugs": [
-            "kono",
-            "mushi",
-            "chiisai"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "kono",
-              "start": 0,
-              "end": 2
-            },
-            {
-              "vocabulary_slug": "mushi",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "chiisai",
-              "start": 4,
-              "end": 7
-            }
-          ],
-          "furigana": "この虫[むし]は小[ちい]さいです。"
-        },
-        {
-          "japanese": "弟は虫が好きです。",
-          "english": "My younger brother likes bugs.",
-          "sort_order": 2,
-          "vocabulary_slugs": [
-            "otouto",
-            "mushi",
-            "suki"
-          ],
-          "word_spans": [
-            {
-              "vocabulary_slug": "otouto",
-              "start": 0,
-              "end": 1
-            },
-            {
-              "vocabulary_slug": "mushi",
-              "start": 2,
-              "end": 3
-            },
-            {
-              "vocabulary_slug": "suki",
-              "start": 4,
-              "end": 6
-            }
-          ],
-          "furigana": "弟[おとうと]は虫[むし]が好[す]きです。"
-        }
-      ],
-      "sort_order": 148
-    },
-    {
-      "slug": "k-thread",
-      "primary_form": "糸",
-      "meaning": "thread",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "し",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "いと",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "thread",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "し"
-        }
-      ],
-      "meaning_mnemonic": "The spool of <radical>thread</radical> teeters on the shelf, one strand trailing loose over the edge. It tips, and three frayed fibers dangling beneath it snag on a nail as it drops. By the time it hits the floor, the whole spool has unraveled into a tangled heap of thread.",
-      "reading_mnemonic": "A seamstress named <reading>Shea</reading> catches the falling spool just before it hits the floor and hisses <reading>し</reading>, a long <reading>shh</reading>, so she doesn't wake the shop cat curled up in the thread bin.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
-      "sort_order": 149
-    },
-    {
-      "slug": "k-shellfish",
-      "primary_form": "貝",
-      "meaning": "shellfish",
-      "readings": [
-        {
-          "reading_type": "onyomi",
-          "reading": "ばい",
-          "sort_order": 0
-        },
-        {
-          "reading_type": "kunyomi",
-          "reading": "かい",
-          "sort_order": 1
-        }
-      ],
-      "accepted_answers": [
-        {
-          "answer_type": "meaning",
-          "answer_text": "shellfish",
-          "is_primary": true
-        },
-        {
-          "answer_type": "reading",
-          "answer_text": "ばい"
-        }
-      ],
-      "meaning_mnemonic": "The <radical>money</radical> clam tips further on its two skinny legs, spilling more coins across the sand. A crow swoops in, snatches every coin in its beak, and hops off — leaving behind an empty, coin-broke shellfish.",
-      "reading_mnemonic": "The coin-thief crow flaps off with a coin in its beak and caws <reading>ばい</reading>, sounding exactly like it's yelling <reading>bye</reading> over its shoulder. That's the reading you shout back at every shellfish it robs.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "4",
-        "review_status": "draft"
-      },
       "sort_order": 150
     }
   ]

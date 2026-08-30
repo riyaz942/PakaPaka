@@ -340,6 +340,42 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
   prose at all** (only 36 ever went through this pipeline) — a much larger,
   separate authoring task the plan's progress notes had not surfaced.
 
+### v2 Phase A revision — JLPT-first band ranking (done 2026-08-30)
+- **Why:** N5/N4 items kept showing up at N3+ in Browse. The pronoun pins (私僕君彼誰) were a
+  named workaround for a rule that was wrong in general: `kanji_bands.py` ranked the derived
+  corpus by **KANJIDIC school grade**, the order Japanese *schooling* teaches in, while the app
+  teaches to the JLPT.
+- **Measured damage before the fix:** 58 kanji the JLPT tests at N4 (勉 医 病 薬 銀 館 英 飯 研
+  究 転 進 都 開 院 題 …) sat at N3 or N2; 38 of the 64 derived N4 slots and 12 of the 44 N5
+  slots went to early-school kanji no word at that level uses (麦 羽 矢 貝 黄 竹 森 草 …).
+- **Fix:** `import/build_skeleton.py` now emits KANJIDIC2's `jlpt` tag into `skeleton.json`
+  (additive, 1,808 lines, nothing else changed). `reports/kanji_bands.py` ranks the derived
+  corpus by that tag first, then reuse, then grade, then frequency. `PINNED_DERIVED` stays —
+  KANJIDIC tags the five pronouns 3/2/2/1/none, so JLPT-first alone does not place them at N5.
+- **Budget: N4 150 → 175, N3 400 → 375**, cumulative still 2,000. Needed because 181 kanji
+  carry the JLPT-N4 tag and 150 slots could not hold them all.
+- **Result:** 0 JLPT-N5 and 0 JLPT-N4 kanji band above N4. (会 店 社 read as N5 on the exam and
+  sit at N4 because `n4_kanji.py` hand-authors them — an authored-list call, not a ranking
+  one.) Reading-gate coverage rose: N5 357 → 375 readable words, N4 206 → 245, N3 1,327 →
+  1,645; N2 slipped 1,697 → 1,618, N1 unchanged. Total 7,187 → 7,883.
+- **Cost, open:** the N5+N4 bands grew 300 → 325 kanji and 152 → 162 radicals, and **25 kanji
+  plus 2 radicals (品, 井) inside them now have no mnemonic prose** — the authoring queue was
+  empty before this change. See `_build/reports/kanji-priority.md`.
+- **Amended the same day — two corrections inside the JLPT rank.** JLPT-first alone read wrong
+  in the other direction, which playtest caught: 番 fell to N2 although six N5 words are
+  written with it (一番, 番号, 交番, 電話番号, 部屋番号, 番), and 雲 皿 貝 虫 丸 黄 才 泳 — all
+  grade 1-3, all written into just one N5/N4 word each — sat at N2 behind kanji twice their
+  stroke count. Fixes, both acting *inside* a JLPT tier so no exam-N4 kanji is displaced:
+  `RESERVED_BY_REUSE` ({n5: 10, n4: 6}) hands the front of each band to its own highest-reuse
+  kanji, and `SIMPLE_GRADE` (3) sorts grade 1-3 ahead of the rest of its JLPT tier. Result:
+  番 → N5, the other eight → N3. Cost: N3 reading cards 1,645 → 1,575 and N4 245 → 241; N5
+  gained one (375 → 376). Budgets untouched. Rejected on the way: promoting *any* kanji this
+  level's words use, which threw 58 exam-N4 kanji straight back to N3.
+- Verified: `validate-schema` clean (6 pre-existing warnings, none new), `compile-curriculum`
+  clean, root `npm test` 62 passing, `dependency_order.py` 0 errors / 27 warnings (24 before —
+  all the same "kanji sorts one slot after its word inside a level" class, none new in kind).
+  metadata 1.13.1.
+
 ### Phase 4 — reading passages
 - N5: done. 10 generated passages reviewed and wired in; the hand-authored set was retired (`31d5cc7`).
 - N4: 9 hand-authored passages remain, not regenerated (no `word_count`, no seeds authored).

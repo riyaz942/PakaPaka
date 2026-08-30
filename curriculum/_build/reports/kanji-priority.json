@@ -1,13 +1,231 @@
 {
-  "radicals_pending": 0,
-  "kanji_pending": 0,
+  "radicals_pending": 2,
+  "kanji_pending": 25,
   "coverage_curve": [
     {
-      "authored": 0,
+      "authored": 25,
       "words": 1247,
       "pct": 100
     }
   ],
-  "radicals": [],
-  "kanji": []
+  "radicals": [
+    {
+      "slug": "goods",
+      "form": "品",
+      "meaning": "goods",
+      "level": "n4",
+      "sort_order": 29,
+      "authored": false
+    },
+    {
+      "slug": "well",
+      "form": "井",
+      "meaning": "well",
+      "level": "n4",
+      "sort_order": 45,
+      "authored": false
+    }
+  ],
+  "kanji": [
+    {
+      "slug": "k-ride",
+      "form": "乗",
+      "meaning": "ride",
+      "level": "n4",
+      "sort_order": 105,
+      "authored": false
+    },
+    {
+      "slug": "k-ocean",
+      "form": "洋",
+      "meaning": "ocean",
+      "level": "n4",
+      "sort_order": 114,
+      "authored": false
+    },
+    {
+      "slug": "k-vegetable",
+      "form": "菜",
+      "meaning": "vegetable",
+      "level": "n4",
+      "sort_order": 117,
+      "authored": false
+    },
+    {
+      "slug": "k-goods",
+      "form": "品",
+      "meaning": "goods",
+      "level": "n4",
+      "sort_order": 119,
+      "authored": false
+    },
+    {
+      "slug": "k-polish",
+      "form": "研",
+      "meaning": "polish",
+      "level": "n4",
+      "sort_order": 129,
+      "authored": false
+    },
+    {
+      "slug": "k-research",
+      "form": "究",
+      "meaning": "research",
+      "level": "n4",
+      "sort_order": 130,
+      "authored": false
+    },
+    {
+      "slug": "k-people",
+      "form": "民",
+      "meaning": "people",
+      "level": "n4",
+      "sort_order": 136,
+      "authored": false
+    },
+    {
+      "slug": "k-open",
+      "form": "開",
+      "meaning": "open",
+      "level": "n4",
+      "sort_order": 137,
+      "authored": false
+    },
+    {
+      "slug": "k-substitute",
+      "form": "代",
+      "meaning": "substitute",
+      "level": "n4",
+      "sort_order": 138,
+      "authored": false
+    },
+    {
+      "slug": "k-ward",
+      "form": "区",
+      "meaning": "ward",
+      "level": "n4",
+      "sort_order": 141,
+      "authored": false
+    },
+    {
+      "slug": "k-prefecture",
+      "form": "県",
+      "meaning": "prefecture",
+      "level": "n4",
+      "sort_order": 142,
+      "authored": false
+    },
+    {
+      "slug": "k-advance",
+      "form": "進",
+      "meaning": "advance",
+      "level": "n4",
+      "sort_order": 143,
+      "authored": false
+    },
+    {
+      "slug": "k-products",
+      "form": "産",
+      "meaning": "products",
+      "level": "n4",
+      "sort_order": 144,
+      "authored": false
+    },
+    {
+      "slug": "k-possess",
+      "form": "有",
+      "meaning": "possess",
+      "level": "n4",
+      "sort_order": 147,
+      "authored": false
+    },
+    {
+      "slug": "k-build",
+      "form": "建",
+      "meaning": "build",
+      "level": "n4",
+      "sort_order": 148,
+      "authored": false
+    },
+    {
+      "slug": "k-rouse",
+      "form": "起",
+      "meaning": "rouse",
+      "level": "n4",
+      "sort_order": 149,
+      "authored": false
+    },
+    {
+      "slug": "k-silver",
+      "form": "銀",
+      "meaning": "silver",
+      "level": "n4",
+      "sort_order": 151,
+      "authored": false
+    },
+    {
+      "slug": "k-england",
+      "form": "英",
+      "meaning": "England",
+      "level": "n4",
+      "sort_order": 153,
+      "authored": false
+    },
+    {
+      "slug": "k-lower",
+      "form": "低",
+      "meaning": "lower",
+      "level": "n4",
+      "sort_order": 155,
+      "authored": false
+    },
+    {
+      "slug": "k-copy",
+      "form": "写",
+      "meaning": "copy",
+      "level": "n4",
+      "sort_order": 157,
+      "authored": false
+    },
+    {
+      "slug": "k-short",
+      "form": "短",
+      "meaning": "short",
+      "level": "n4",
+      "sort_order": 165,
+      "authored": false
+    },
+    {
+      "slug": "k-public-chamber",
+      "form": "堂",
+      "meaning": "public chamber",
+      "level": "n4",
+      "sort_order": 169,
+      "authored": false
+    },
+    {
+      "slug": "k-sultry",
+      "form": "暑",
+      "meaning": "sultry",
+      "level": "n4",
+      "sort_order": 173,
+      "authored": false
+    },
+    {
+      "slug": "k-cold",
+      "form": "寒",
+      "meaning": "cold",
+      "level": "n4",
+      "sort_order": 174,
+      "authored": false
+    },
+    {
+      "slug": "k-sino",
+      "form": "漢",
+      "meaning": "Sino-",
+      "level": "n4",
+      "sort_order": 175,
+      "authored": false
+    }
+  ]
 }

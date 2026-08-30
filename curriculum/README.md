@@ -18,9 +18,14 @@ readings and meanings, no examples and no vocabulary, grammar or passages of the
 ### Bands
 
 Kanji and radicals are **banded**, not filed by exam level. Each level teaches a fixed budget —
-150 / 150 / 400 / 300 / 1,000, 2,000 cumulative — and a kanji earns its slot by how many of
-that level's *own words* it appears in, tie-broken by KANJIDIC grade. Radicals are derived
-from that: each files at the level of the first kanji that needs it.
+150 / 175 / 375 / 300 / 1,000, 2,000 cumulative — and a derived kanji earns its slot by the
+old-JLPT level KANJIDIC2 tags it with, then by school grade 1-3 first inside that level, then
+by how many of that level's *own words* it appears in. N4 holds 175 rather than 150 so that
+all 181 kanji the JLPT tests at N4 fit inside the N5+N4 bands; the 25 slots come out of N3.
+Ahead of all that, each band hands its first few slots (10 at N5, 6 at N4) to the kanji its own
+words lean on hardest, which is what puts 番 at N5 — six N5 words are written with it and the
+exam still grades it late. Radicals are derived from the kanji: each files at the level of the
+first kanji that needs it.
 
 A band is a teaching budget, not a coverage gate. A word whose kanji are out of band is still
 taught, in full, with furigana — it is asked for its meaning until every kanji in it reaches
@@ -53,7 +58,7 @@ kanji for all five levels at once, because a band draws from every source datase
 ### Authoring queue
 
 A mnemonic is owed when a learner *reaches* an item, never because it exists, so only the
-N5+N4 bands are in the queue: **24 radicals and 173 kanji** without prose. It lives in
+N5+N4 bands are in the queue: **2 radicals and 25 kanji** without prose. It lives in
 [`_build/reports/kanji-priority.md`](_build/reports/kanji-priority.md) — regenerate with
 `python3 curriculum/_build/reports/kanji_priority.py`. Radicals outside the hand-authored
 datasets have no art and render as text. See

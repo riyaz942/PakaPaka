@@ -14,28 +14,40 @@
       "sort_order": 2
     },
     {
-      "slug": "ghost",
-      "primary_form": "鬼",
-      "meaning": "ghost",
+      "slug": "tortoise",
+      "primary_form": "亀",
+      "meaning": "tortoise",
       "sort_order": 3
     },
     {
-      "slug": "dancing",
-      "primary_form": "舛",
-      "meaning": "dancing",
+      "slug": "curving-river",
+      "primary_form": "巛",
+      "meaning": "curving river",
       "sort_order": 4
+    },
+    {
+      "slug": "ghost",
+      "primary_form": "鬼",
+      "meaning": "ghost",
+      "sort_order": 5
     },
     {
       "slug": "tripod",
       "primary_form": "鬲",
       "meaning": "tripod",
-      "sort_order": 5
+      "sort_order": 6
+    },
+    {
+      "slug": "mount",
+      "primary_form": "岡",
+      "meaning": "mount",
+      "sort_order": 7
     },
     {
       "slug": "from",
       "primary_form": "乃",
       "meaning": "from",
-      "sort_order": 6
+      "sort_order": 8
     },
     {
       "slug": "and-yet",
@@ -49,73 +61,85 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/and-yet.webp",
-      "sort_order": 7
+      "sort_order": 9
+    },
+    {
+      "slug": "comma-design",
+      "primary_form": "巴",
+      "meaning": "comma-design",
+      "sort_order": 10
     },
     {
       "slug": "cover",
       "primary_form": "奄",
       "meaning": "cover",
-      "sort_order": 8
+      "sort_order": 11
     },
     {
-      "slug": "pig-s",
-      "primary_form": "彑",
-      "meaning": "pig's head",
-      "sort_order": 9
+      "slug": "deer",
+      "primary_form": "鹿",
+      "meaning": "deer",
+      "sort_order": 12
     },
     {
-      "slug": "gigantic",
-      "primary_form": "巨",
-      "meaning": "gigantic",
-      "sort_order": 10
+      "slug": "tusk",
+      "primary_form": "牙",
+      "meaning": "tusk",
+      "sort_order": 13
+    },
+    {
+      "slug": "reasonable",
+      "primary_form": "尤",
+      "meaning": "reasonable",
+      "sort_order": 14
+    },
+    {
+      "slug": "mortar",
+      "primary_form": "臼",
+      "meaning": "mortar",
+      "sort_order": 15
     },
     {
       "slug": "dragon",
       "primary_form": "竜",
       "meaning": "dragon",
-      "sort_order": 11
+      "sort_order": 16
     },
     {
       "slug": "snake",
       "primary_form": "豸",
       "meaning": "snake",
-      "sort_order": 12
+      "sort_order": 17
     },
     {
       "slug": "hair-hanging",
       "primary_form": "髟",
       "meaning": "hair hanging long",
-      "sort_order": 13
+      "sort_order": 18
     },
     {
       "slug": "tile",
       "primary_form": "瓦",
       "meaning": "tile",
-      "sort_order": 14
-    },
-    {
-      "slug": "crooked-big",
-      "primary_form": "尢",
-      "meaning": "crooked-big",
-      "sort_order": 15
+      "sort_order": 19
     },
     {
       "slug": "melon",
       "primary_form": "瓜",
       "meaning": "melon",
-      "sort_order": 16
+      "sort_order": 20
     },
     {
       "slug": "five",
       "primary_form": "五",
       "meaning": "five",
-      "sort_order": 17
+      "sort_order": 21
     },
     {
       "slug": "salt",
       "primary_form": "鹵",
       "meaning": "salt",
-      "sort_order": 18
+      "sort_order": 22
     }
   ]
 }

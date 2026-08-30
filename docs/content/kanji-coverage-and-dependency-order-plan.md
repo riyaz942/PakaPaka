@@ -70,24 +70,44 @@ Total shipped items: **~12,400**, against 2,315 today.
 
 ### Band assignment
 
-Rank by **corpus reuse**: for each kanji, how many of that level's own words it
-appears in. Take the top N. Tie-break by KANJIDIC grade so equally useful kanji
-arrive easy-first.
+Rank by **old-JLPT level** (KANJIDIC2's `jlpt` tag, 4 easiest); inside one level
+put the **simple kanji first** (school grade 1-3), then rank on **corpus reuse** —
+how many of that level's own words the kanji appears in. Ahead of the whole rank,
+each band hands its first few slots (10 at N5, 6 at N4) to its own highest-reuse
+kanji outright. Take the top N.
 
-Not the JLPT kanji list — it is blind to the word list you ship, so it spends
-slots on kanji that unlock nothing. Reuse ranking is what makes the coverage
-numbers real: the best 150 kanji make 417 of N5's 718 words fully readable (58%);
-a reuse-ranked 300 reaches 65% across N5+N4.
+> **Revised 2026-08-30.** This section first said "not the JLPT kanji list", and
+> ranked on reuse with grade as the tie-break. Shipped, that read wrong to a
+> learner: 58 kanji the JLPT tests at N4 (勉 医 病 薬 銀 館 英 飯 …) sat at N3 or
+> N2, while 38 of the 64 derived N4 slots went to early-school kanji no N4 word
+> uses (麦 羽 矢 貝 黄 …). Grade is the order Japanese *schooling* teaches in and
+> this app teaches to the JLPT, so grade-first was ranking on the wrong axis.
+> Reuse survives one rank down, where it still decides between kanji the exam
+> treats as equals, and the coverage numbers went **up**, not down: N5 357 → 375
+> fully readable words, N4 206 → 245. **N4's budget went 150 → 175 and N3's 400 →
+> 375** so all 181 JLPT-N4 kanji fit inside N5+N4; the ladder still totals 2,000.
+> The cost is 25 kanji and 2 radicals newly inside the N5+N4 bands that have no
+> mnemonic prose yet.
+>
+> **Amended the same day.** JLPT-first alone read wrong in the other direction:
+> 番 fell to N2 although six N5 words are written with it (一番, 番号, 交番 …),
+> and 雲 皿 貝 虫 丸 黄 才 泳 — grade 1-3 kanji this curriculum happens to write
+> one word each with — sat at N2 behind kanji twice their stroke count. Two
+> corrections, both *inside* the JLPT rank so nothing the exam tests at N4 is
+> displaced: a small reuse-reserved lane at the front of each band (`n5` 10,
+> `n4` 6), and grade 1-3 sorting ahead of the rest of its own JLPT tier
+> (`SIMPLE_GRADE`). 番 → N5, the other eight → N3. Cost: N3 loses 69 reading
+> cards (1,644 → 1,575) and N4 four (245 → 241).
 
 Vocabulary is selected by **frequency alone**, not by which kanji are in band.
 Constraining words to in-band kanji would reinstate the coverage gate this plan
 removes.
 
 **Overflow moves up a level.** A kanji that does not fit its band is filed one
-level later. 48 currently-authored N5/N4 kanji fall outside a reuse-ranked 300;
-their prose is already written and is not lost, it simply waits. The consequence,
-accepted deliberately: **the level a kanji sits at is this app's ladder, not the
-exam's**, and Browse shows it that way. One field, no second label.
+level later; its prose is already written and is not lost, it simply waits.
+**The level a kanji sits at is this app's ladder, not the exam's**, and Browse
+shows it that way — one field, no second label. Since the 2026-08-30 revision the
+two ladders agree at N5 and N4, which is where a learner notices a difference.
 
 ## The four rules
 

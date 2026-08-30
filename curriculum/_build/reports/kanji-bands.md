@@ -8,11 +8,11 @@ A band is a teaching budget, not a coverage gate. Kanji outside a learner's band
 
 | Level | Kanji | Cum. | Radicals | Rad. cum. | Reuse floor |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| N5 | 150 | 150 | 104 | 104 | 0 |
-| N4 | 150 | 300 | 48 | 152 | 0 |
-| N3 | 400 | 700 | 48 | 200 | 0 |
-| N2 | 300 | 1000 | 20 | 220 | 0 |
-| N1 | 1000 | 2000 | 18 | 238 | 0 |
+| N5 | 150 | 150 | 115 | 115 | 1 |
+| N4 | 175 | 325 | 46 | 161 | 0 |
+| N3 | 375 | 700 | 42 | 203 | 0 |
+| N2 | 300 | 1000 | 13 | 216 | 0 |
+| N1 | 1000 | 2000 | 22 | 238 | 0 |
 
 Reuse floor is the fewest same-level words any kanji in the band appears in. A floor of 0 means the band ran out of kanji that any of its own words use and fell back to frequency rank.
 
@@ -22,22 +22,24 @@ Words every kanji of which is inside the cumulative band — the population that
 
 | After | N5 words | N4 words | N3 words | N2 words | N1 words |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| N5 | 357 (50%) | 130 (25%) | 188 (8%) | 192 (9%) | 304 (8%) |
-| N4 | 478 (67%) | 206 (39%) | 441 (20%) | 426 (19%) | 727 (18%) |
-| N3 | 614 (86%) | 359 (68%) | 1327 (59%) | 1194 (53%) | 2035 (51%) |
-| N2 | 654 (91%) | 435 (82%) | 1823 (81%) | 1697 (75%) | 2879 (72%) |
+| N5 | 376 (52%) | 125 (24%) | 183 (8%) | 186 (8%) | 318 (8%) |
+| N4 | 523 (73%) | 241 (46%) | 533 (24%) | 510 (23%) | 859 (21%) |
+| N3 | 618 (86%) | 369 (70%) | 1575 (70%) | 1288 (57%) | 2188 (55%) |
+| N2 | 684 (95%) | 446 (84%) | 1759 (78%) | 1618 (72%) | 2788 (70%) |
 | N1 | 718 (100%) | 529 (100%) | 2250 (100%) | 2250 (100%) | 4000 (100%) |
 
 ## Moves
 
-0 hand-authored kanji change level; 108 derived kanji move up into N5/N4.
+0 hand-authored kanji change level; 133 derived kanji move up into N5/N4.
 
 | Kanji | Meaning | Was | Now | Reuse | Prose |
 | --- | --- | --- | --- | ---: | --- |
 
 ## Radicals in the N5+N4 band without prose
 
-152 radicals file at a level that ships full content. 33 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
+161 radicals file at a level that ships full content. 39 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
 
-Every one of them has a mnemonic.
-
+| Radical | Meaning | Level | First needed by |
+| --- | --- | --- | --- |
+| 品 `goods` | goods | N4 | 品 |
+| 井 `well` | well | N4 | 寒 |
