@@ -419,6 +419,14 @@
       "slug": "goods",
       "primary_form": "品",
       "meaning": "goods",
+      "mnemonic_text": "Look at 品 from the front and you see three square crates in a stack. One box sits on top. Two more sit side by side beneath it. Together they're one delivery of <radical>goods</radical>.",
+      "image_prompt": "Trace 品 stroke by stroke: one square crate sits alone on top, and two more identical square crates sit side by side directly beneath it, stacked like a delivery pallet outside a shop's back door. Three sealed boxes, boxed and ready to ship — that whole stack is <radical>goods</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/goods.webp",
       "sort_order": 29
     },
     {
@@ -644,6 +652,14 @@
       "slug": "well",
       "primary_form": "井",
       "meaning": "well",
+      "mnemonic_text": "Look straight down at 井 and you're staring into a timber well cap. Four beams cross like a tic-tac-toe grid over the opening. Right in the middle sits the entrance to the village <radical>well</radical>.",
+      "image_prompt": "Trace 井 stroke by stroke: two long timber beams lie flat, one above the other, and two more beams cross straight down through both, the four overlapping into a tic-tac-toe grid seen from directly above. The empty square left open in the center is the round mouth of the village <radical>well</radical>, the crossed timbers forming its cap.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/well.webp",
       "sort_order": 45
     },
     {

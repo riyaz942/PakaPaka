@@ -99,7 +99,16 @@ LEN_BOUNDS = {
         "description": (60, 400),
     },
     "kanji": {
-        "meaning_mnemonic": (140, 450),
+        # Rev 6, meaning only: the prompt now asks for 120–220 characters of
+        # plain, causally-chained prose, so the band is refitted around that
+        # target instead of around the Rev 3 corpus. The floor drops to 100
+        # because the shortest good answers are two sentences ("eight sheep by
+        # the water, it rises, that's the ocean" lands at 126), and the ceiling
+        # drops to 260 because at 300+ the model is reliably staging each
+        # component as its own event rather than writing one chain. Existing
+        # stored prose is not re-checked against this — the gate runs on freshly
+        # generated drafts only (see PROMPT_VERSION, Rev 6).
+        "meaning_mnemonic": (100, 260),
         "reading_mnemonic": (120, 380),
         "description": (50, 400),
     },

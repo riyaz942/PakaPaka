@@ -89,6 +89,15 @@ MODEL = "claude-opus-4-8"
 #: existing radical already conforms; the gate requires image_prompt only on
 #: freshly generated drafts, the same lane as the Rev 4 readability gate.
 #:
+#: Rev 6 (kanji only, and only the meaning mnemonic: 120–220 characters of plain
+#: English in one cause-and-effect chain, the <kanji> landing tag added to the
+#: generation prompt, LEN_BOUNDS refitted to 100–260) also bumps NOTHING, for the
+#: same reason as Rev 4. All 469 stored kanji are stamped 4 and 351 of them are
+#: human-reviewed; numbering this 5 would mark every one of them stale and let
+#: the next `run` overwrite reviewed prose to change its house style. Requeue the
+#: items you actually want restyled by slug (`--slugs`) instead. New slugs get the
+#: new prompt and the new band; old slugs keep their prose until asked.
+#:
 #: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
 #: reverts the radical contract to the original shape and size — a mnemonic_text
 #: of ~150–300 characters, with the description demoted to optional — so the
