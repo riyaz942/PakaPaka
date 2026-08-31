@@ -327,7 +327,9 @@ Give the subagent these instructions:
                                walked stroke by stroke, written for the
                                illustrator
       kanji meaning            roughly **120–220** characters, two or three
-                               sentences — a hard ceiling, see below
+                               sentences — a hard ceiling, see below (but
+                               **50–150** when the kanji just *is* a taught
+                               radical — see below)
       vocab meaning            roughly **180–330** characters
       kanji/vocab reading      roughly **150–280** characters (a vocab derivation
                                note stays at one sentence — see below)
@@ -355,6 +357,26 @@ Give the subagent these instructions:
       `<radical>eight</radical>` pieces. You leap onto the falling grain and
       `<kanji>ride</kanji>` it down the hill like a sled." Four components, 160
       characters, every word a learner word.
+  - **When the kanji simply *is* a taught radical, do not write a story at all.**
+    Some kanji are a radical the learner already met, unchanged in shape and in
+    meaning — 山 the radical and 山 the kanji. The prompt's "Is this kanji just a
+    radical it already knows?" section tells you which ones outright; it is
+    computed mechanically (`mnemonic_context.identical_radical`), so it is not a
+    judgement call you make. For those items the whole meaning mnemonic is one or
+    two sentences saying so:
+      - "The `<radical>mountain</radical>` radical and the
+        `<kanji>mountain</kanji>` kanji are the same."
+      - "The radical and the kanji for `<radical>direction</radical>` /
+        `<kanji>direction</kanji>` are the same! Huzzah!"
+    Both tags still go on, wrapping the same word on two different spans — that
+    is correct here, and it is what lets the app colour both ends of the chain.
+    The band is **50–150 characters, hard ceiling 200**, not 120–220; the gate
+    switches to it automatically for these items, so a full invented scene now
+    *fails* rather than merely being unwanted. Where we teach the kanji a sense
+    the radical does not carry (工 "craft" over the "construction" radical), add
+    exactly one sentence tying the two senses together — the prompt says so when
+    it applies. The **reading** mnemonic is unaffected: the reading is not
+    derivable from the radical, so it gets the usual full treatment.
   - Build the story from the components the prompt lists, reusing the object each
     component already carries — do not invent a fresh scene that competes with
     what the learner has already read. Reference every listed component by its
@@ -494,6 +516,10 @@ them exactly as a repair subagent would):
     meaning ~180–330, reading ~150–280). On a long **kanji meaning**, cut whole
     staged events and novel-register words before you touch anything else — that
     is nearly always where the excess is; never drop a component to fit.
+    A `keep <= 200` ceiling on a kanji meaning means this kanji *is* a taught
+    radical: the fix is not to trim the scene but to delete it and say the two
+    are the same, per Step 2. Likewise a "too short" error there does **not**
+    mean add scene — the floor is 40, so the item is genuinely near-empty.
   - A "never wraps it in <radical>…" or "does not highlight the reading" error
     means the words are there but untagged — add the tags around the words the
     story already uses, do not rewrite the story.

@@ -119,6 +119,16 @@ LEN_BOUNDS = {
     },
 }
 
+#: Rev 7: a kanji that *is* a taught radical (山 the radical, 山 the kanji —
+#: `mnemonic_context.identical_radical`) has no scene to build, so its meaning
+#: mnemonic is one or two sentences saying exactly that. The normal 100-char
+#: floor would reject the honest answer and push the model back into inventing
+#: a story, which is the whole thing this class exists to avoid; the 200 ceiling
+#: is what makes the short form mandatory rather than merely allowed. Applies to
+#: `meaning_mnemonic` only — the reading is not derivable from the radical and
+#: keeps the full band.
+IDENTITY_MEANING_BOUNDS = (40, 200)
+
 #: A vocab reading the learner can already derive from its kanji gets a one-line
 #: note, not a story (docs 2d: "don't pad regular readings into stories"). The
 #: regularity is computed mechanically in mnemonic_context, so which bound
@@ -307,7 +317,7 @@ def _tagged_spans(text, tag):
     return spans
 
 
-def _field_errors(kind, field, text, enforce_readability=False):
+def _field_errors(kind, field, text, enforce_readability=False, bounds=None):
     """Markup + length, both measured on the tag-stripped prose. Malformed tags
     short-circuit: stripping them is meaningless until they parse. The Rev 4
     readability gate runs only on freshly generated drafts (see validate_draft),
@@ -319,7 +329,7 @@ def _field_errors(kind, field, text, enforce_readability=False):
             return tag_errors
     plain = _strip_tags(text, tag)
     errors = _markup_errors(field, plain) + _length_errors(
-        field, plain, LEN_BOUNDS[kind][field])
+        field, plain, bounds or LEN_BOUNDS[kind][field])
     if enforce_readability:
         errors += _readability_errors(field, plain)
     return errors
@@ -421,7 +431,10 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
 
     for field in ("meaning_mnemonic", "reading_mnemonic"):
         errors += _field_errors(
-            "kanji", field, draft[field], enforce_readability=enforce_readability)
+            "kanji", field, draft[field], enforce_readability=enforce_readability,
+            bounds=(IDENTITY_MEANING_BOUNDS
+                    if field == "meaning_mnemonic" and ctx["identical_radical"]
+                    else None))
 
     # 2. reading present and highlighted
     primary = ctx["primary_reading"]

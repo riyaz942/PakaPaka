@@ -71,6 +71,13 @@ enough, and is what keeps the mnemonic inside its budget.
 
 {{COMPONENTS}}
 
+## Is this kanji just a radical it already knows?
+
+Some kanji are a radical the learner has already been taught, unchanged — same
+character, same meaning. 山 the radical and 山 the kanji are one and the same.
+
+{{IDENTITY_NOTE}}
+
 ## Look-alikes the learner will confuse this with
 
 These are the reviewed confusables from our curriculum data. They are the only
@@ -96,10 +103,14 @@ inline. Three tags, and nothing else:
   story lands on — in `<kanji>…</kanji>`: `and you <kanji>ride</kanji> it
   downhill`. A component is a piece borrowed from below; the landing word is
   what the story is building toward, and the app renders the two in different
-  colours. The tagged span must contain the taught meaning (or one of its
-  accepted answers) itself. In the rare case where a taught component's word
-  *is* this kanji's meaning word, use one of the meaning synonyms for the
-  landing tag instead, so the two tags are not the same span twice.
+  colours. **Land on the meaning we teach — the word at the top of this
+  prompt — not on one of its accepted answers.** That taught meaning is what
+  the learner is quizzed on, so it is the word the story has to end on: landing
+  米 on “USA” or 鳥 on “chicken” is wrong even though the quiz would mark both
+  right. When a taught component's word *is* this kanji's meaning word, tag that
+  same word twice, on two different spans — `<radical>` where the component
+  enters, `<kanji>` where the story lands. That is correct and expected; do not
+  reach for a synonym to keep the two spans different.
 - In `reading_mnemonic`, wrap the kana 「{{PRIMARY_READING}}」 in
   `<reading>…</reading>`, **and** wrap the English word your scene uses to carry
   that sound — the phonetic hook — in the same tag: `a hiker called
@@ -121,7 +132,9 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
    parked next to it. End on the meaning, tagged in `<kanji>`, so the last thing
    in their head is the answer. If there is no taught decomposition, paint the
    whole character as one concrete picture instead — but still never name an
-   untaught component.
+   untaught component. If the section “Is this kanji just a radical it already
+   knows?” says this one *is* a taught radical, ignore this bullet and follow
+   that section instead.
 
    **This is the target:**
 
@@ -193,8 +206,9 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
   in `<radical>` where the story uses it (or, if there are none, the
   whole-character picture). Never name a component not in that list. Wrap this
   kanji's own meaning, once, in `<kanji>`.
-- Meaning mnemonic: stay under 220 characters, tags not counted. Going over is a
-  rewrite, not a rounding error — cut words, never cut a component.
+- Meaning mnemonic: stay under 220 characters, tags not counted — or under 200
+  if the section above says this kanji simply *is* a taught radical. Going over
+  is a rewrite, not a rounding error — cut words, never cut a component.
 - Reading mnemonic: the kana 「{{PRIMARY_READING}}」 must appear verbatim, inside
   a `<reading>` tag.
 - Description, when you write one: mention every look-alike listed above and

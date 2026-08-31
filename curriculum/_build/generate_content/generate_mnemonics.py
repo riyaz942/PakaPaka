@@ -98,6 +98,15 @@ MODEL = "claude-opus-4-8"
 #: items you actually want restyled by slug (`--slugs`) instead. New slugs get the
 #: new prompt and the new band; old slugs keep their prose until asked.
 #:
+#: Rev 7 (kanji only: a kanji that *is* a taught radical — same character, same
+#: meaning, 山 over the 山 radical — states that instead of inventing a scene;
+#: mnemonic_context.identical_radical detects them, the prompt's IDENTITY_NOTE
+#: block instructs, and LEN_BOUNDS drops to IDENTITY_MEANING_BOUNDS for them)
+#: also bumps NOTHING, same reasoning again. 116 kanji are in the class and 44
+#: of those already have stored prose that a bump would silently requeue. The
+#: detector is mechanical, so `--slugs` over that list is the way to restyle
+#: them deliberately.
+#:
 #: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
 #: reverts the radical contract to the original shape and size — a mnemonic_text
 #: of ~150–300 characters, with the description demoted to optional — so the
@@ -222,6 +231,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{KUNYOMI}}": "、".join(ctx["kunyomi"]) or "(none)",
             "{{PRIMARY_READING}}": ctx["primary_reading"] or "(none)",
             "{{COMPONENTS}}": mc.format_components(ctx["components"]),
+            "{{IDENTITY_NOTE}}": mc.format_identity(ctx),
             "{{LOOK_ALIKES}}": mc.format_look_alikes(ctx["look_alikes"]),
             "{{CAST_BLOCK}}": cast_lib.format_cast_block(ctx["reading_lore"], ctx["cast"]),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),

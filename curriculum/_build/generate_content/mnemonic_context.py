@@ -34,6 +34,7 @@ import json
 import os
 import re
 import sys
+import textwrap
 
 BUILD_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
@@ -102,6 +103,55 @@ def _meaning_answers(item):
         for a in item.get("accepted_answers", [])
         if a.get("answer_type") == "meaning"
     ]
+
+
+_MEANING_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'-]*")
+
+
+def _meaning_word_set(synonyms):
+    """Lowercase content words of a meaning list, parentheticals dropped.
+
+    Deliberately the same shape as validate_mnemonics._meaning_words so the
+    prompt and the gate can never disagree about what a meaning "is".
+    """
+    words = set()
+    for syn in synonyms:
+        syn = re.sub(r"\([^)]*\)", " ", syn).lower()
+        words.update(w for w in _MEANING_WORD_RE.findall(syn) if len(w) >= 2)
+    return words
+
+
+def _shares_meaning(own, other):
+    """True when the two word sets name the same thing.
+
+    Prefix matching, because that is what the gate's `_references` already does
+    when it decides a story "mentions" a meaning: 羽 "feathers" is the 羽
+    "feather" radical, and 寸 "measurement" is the 寸 "measure" radical.
+    """
+    return any(a.startswith(b) or b.startswith(a) for a in own for b in other)
+
+
+def identical_radical(item, components):
+    """The taught radical this kanji simply *is*, or None.
+
+    A handful of kanji are a radical the learner has already met, unchanged in
+    both shape and meaning: 山 the radical and 山 the kanji. Inventing a scene
+    for those teaches nothing — the learner's memory hook is the radical they
+    already know, so the honest meaning mnemonic just says the two are the same.
+    Detection is mechanical (one component, same character, overlapping
+    meanings) so the generator prompt and the gate always agree on which items
+    these are; 用 "utilize" over the 用 "use" radical is *not* one of them,
+    because the meaning genuinely moves.
+    """
+    if len(components) != 1:
+        return None
+    comp = components[0]
+    if comp["form"] != item["primary_form"]:
+        return None
+    own = _meaning_word_set(_meaning_answers(item) or [item["meaning"]])
+    if not _shares_meaning(own, _meaning_word_set(comp["meaning_synonyms"])):
+        return None
+    return comp
 
 
 def _kanji_readings(item):
@@ -237,6 +287,7 @@ def kanji_context(level, slug, cast=None):
         "kunyomi": kunyomi,
         "primary_reading": primary,
         "components": components,
+        "identical_radical": identical_radical(item, components),
         "look_alikes": look_alikes(slug),
         "reading_lore": reading_lore,
         "cast": cast,
@@ -489,6 +540,73 @@ def format_components(components):
         lines.append(f"- {c['form']} — “{syn}”\n  Its established image, which your "
                      f"story must continue: {c['image']}")
     return "\n".join(lines)
+
+
+def format_identity(ctx):
+    """The `{{IDENTITY_NOTE}}` block: the meaning-mnemonic contract changes
+    completely for a kanji that simply *is* a taught radical, so the prompt says
+    so in one place rather than hedging every length rule above."""
+    comp = ctx.get("identical_radical")
+    if not comp:
+        return _wrap(
+            "This kanji is **not** one of those: it either has more than one "
+            "taught component, or its meaning moves away from its component's. "
+            "Write the full meaning mnemonic described above."
+        )
+    syn = " / ".join(dict.fromkeys(comp["meaning_synonyms"]))
+    paras = [
+        f"**This kanji IS a taught radical.** {ctx['char']} is the radical "
+        f"{comp['form']} — “{syn}” — unchanged in shape and in meaning, and the "
+        f"learner has already read and seen its image.",
+
+        "So do not invent a scene. There is nothing to build: the components "
+        "are the character, and a story here would be decoration the learner "
+        "has to carry for no gain. **Say plainly that the two are the same.** "
+        "That is the whole meaning mnemonic.",
+
+        f"> The <radical>{_first_word(syn)}</radical> radical and the "
+        f"<kanji>{_first_word(ctx['meaning'])}</kanji> kanji are the same.",
+
+        "Vary the wording — a short aside, a bit of relief that this one comes "
+        "free, a nudge that it pays to know the radicals well — but keep it to "
+        "one or two sentences, and never explain the joke.",
+
+        "**This overrides the 120–220 character target above: aim for 50–150 "
+        "characters here, and never go past 200.** Still tag both words: "
+        "`<radical>` where you name the radical, `<kanji>` where you name this "
+        "kanji's meaning. They are the same word on two different spans, and "
+        "that is correct — it is what makes the app colour both.",
+    ]
+    # Only when we teach this kanji a sense the radical does not carry (工
+    # "craft" over the "construction" radical) is there a second sentence to
+    # write. Where the two match outright (山), offering the option would just
+    # invite padding.
+    extra = _meaning_word_set(ctx["meaning_synonyms"])
+    if not all(_shares_meaning({w}, _meaning_word_set(comp["meaning_synonyms"]))
+               for w in extra):
+        paras.append(
+            f"We teach this kanji as “{ctx['meaning']}” (accepted: "
+            f"{', '.join(dict.fromkeys(ctx['meaning_synonyms']))}), which "
+            f"reaches past the radical's “{syn}”. Add **one** short sentence "
+            "for that extra sense, and give the learner the reason the two "
+            "senses belong together — no more than that."
+        )
+    paras.append(
+        "The reading mnemonic is unaffected: the reading is not derivable from "
+        "the radical, so write it in full as described below."
+    )
+    return "\n\n".join(_wrap(p) for p in paras)
+
+
+def _wrap(text, width=78):
+    """Match the hand-written prompt files, which wrap at 78 columns."""
+    return textwrap.fill(text, width=width) if not text.startswith(">") else text
+
+
+def _first_word(meaning):
+    """The bare word of a taught meaning, for the worked example above: the
+    slash-joined entries ("sun / day") are one answer string, not two."""
+    return meaning.split("/")[0].strip()
 
 
 def format_look_alikes(entries):
