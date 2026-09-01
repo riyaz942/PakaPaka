@@ -16,6 +16,20 @@
       "sort_order": 1
     },
     {
+      "slug": "jammed-in",
+      "primary_form": "介",
+      "meaning": "jammed in",
+      "mnemonic_text": "A person stands with a stroke wedged down each side, pinned in place by both at the same time. There is no room left to turn and nowhere to put a foot. Somebody held that tightly is <radical>jammed in</radical>.",
+      "image_prompt": "A person stands with a stroke wedged down each side, pinned in place by both at the same time. There is no room left to turn and nowhere to put a foot. Somebody held that tightly is <radical>jammed in</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/jammed-in.webp",
+      "sort_order": 2
+    },
+    {
       "slug": "kokoro",
       "primary_form": "心",
       "meaning": "heart",
@@ -27,21 +41,77 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/kokoro.webp",
-      "sort_order": 2
+      "sort_order": 3
     },
     {
-      "slug": "shimesu",
-      "primary_form": "示",
-      "meaning": "altar / show",
-      "mnemonic_text": "See that flat top line? That's the tabletop of a stone altar, resting on a single strong pillar, with two carved legs splaying out at the base to hold it steady. On its surface you set your offering out for everyone to show — a proper <radical>altar</radical>.",
-      "image_prompt": "See that flat top line? That's the tabletop of a stone altar, resting on a single strong pillar, with two carved legs splaying out at the base to hold it steady. On its surface you set your offering out for everyone to show — a proper <radical>altar</radical>.",
+      "slug": "sound",
+      "primary_form": "音",
+      "meaning": "sound",
+      "mnemonic_text": "The angled strokes on top of 音 are a record needle swinging down, and the boxed square below is a speaker cone with the crossbar marking each thump — that needle dropping is the whole scene, one speaker blasting out pure <radical>sound</radical>.",
+      "image_prompt": "The angled strokes on top of 音 are a record needle swinging down, and the boxed square below is a speaker cone with the crossbar marking each thump — that needle dropping is the whole scene, one speaker blasting out pure <radical>sound</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "visual_mnemonic_url": "radicals/n5/shimesu.webp",
-      "sort_order": 3
+      "visual_mnemonic_url": "radicals/k/sound.webp",
+      "sort_order": 4
+    },
+    {
+      "slug": "hakenobou",
+      "primary_form": "亅",
+      "meaning": "barb",
+      "mnemonic_text": "A single stroke drops straight down and then, right at the very bottom, flicks back up into a tiny hook. That flick is the whole point of it. It is the <radical>barb</radical> on a fishhook, the little backward tooth that means whatever you have caught is not coming off again, however hard it pulls.",
+      "image_prompt": "A single stroke drops straight down and then, right at the very bottom, flicks back up into a tiny hook. That flick is the whole point of it. It is the <radical>barb</radical> on a fishhook, the little backward tooth that means whatever you have caught is not coming off again, however hard it pulls.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/hakenobou.webp",
+      "sort_order": 5
+    },
+    {
+      "slug": "snout",
+      "primary_form": "⺕",
+      "meaning": "snout",
+      "mnemonic_text": "Three short bars are stacked and closed off at one end, the way a nose ridges up before it flattens out. It is the blunt front of an animal shoving through undergrowth. That leading end is a <radical>snout</radical>.",
+      "image_prompt": "Three short bars are stacked and closed off at one end, the way a nose ridges up before it flattens out. It is the blunt front of an animal shoving through undergrowth. That leading end is a <radical>snout</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/snout.webp",
+      "sort_order": 6
+    },
+    {
+      "slug": "mizukara",
+      "primary_form": "自",
+      "meaning": "self",
+      "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
+      "image_prompt": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/mizukara.webp",
+      "sort_order": 7
+    },
+    {
+      "slug": "cult",
+      "primary_form": "礻",
+      "meaning": "cult",
+      "mnemonic_text": "The altar radical is squeezed thin against the left wall, its offering table narrowed to a stroke and its hanging drops cut down to one. Everything is still there, only crowded. Devotion packed that tight turns into a <radical>cult</radical>.",
+      "image_prompt": "The altar radical is squeezed thin against the left wall, its offering table narrowed to a stroke and its hanging drops cut down to one. Everything is still there, only crowded. Devotion packed that tight turns into a <radical>cult</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/cult.webp",
+      "sort_order": 8
     },
     {
       "slug": "hatsugashira",
@@ -55,7 +125,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/hatsugashira.webp",
-      "sort_order": 4
+      "sort_order": 9
     },
     {
       "slug": "oigashira",
@@ -69,7 +139,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/oigashira.webp",
-      "sort_order": 5
+      "sort_order": 10
     },
     {
       "slug": "nari",
@@ -83,7 +153,53 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/nari.webp",
-      "sort_order": 6
+      "sort_order": 11
+    },
+    {
+      "slug": "bristles",
+      "primary_form": "业",
+      "meaning": "bristles",
+      "mnemonic_text": "A flat bar carries short stiff uprights standing along its length, all the same height and all pointing the same way. Not one of them bends or lies down. A row set that rigidly is <radical>bristles</radical>.",
+      "image_prompt": "A flat bar carries short stiff uprights standing along its length, all the same height and all pointing the same way. Not one of them bends or lies down. A row set that rigidly is <radical>bristles</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/bristles.webp",
+      "sort_order": 12
+    },
+    {
+      "slug": "hitsuji",
+      "primary_form": "羊",
+      "meaning": "sheep",
+      "mnemonic_text": "Two short strokes flare out at the very top like horns snagging on a fence rail, and the frame underneath locks into four stiff crossed legs that refuse to bend. It just stands there chewing calmly through the tangle, utterly unbothered: a <radical>sheep</radical>.",
+      "visually_similar_slugs": [
+        "n5-hantime"
+      ],
+      "description": "半 (half) starts straight from the cross-frame, with nothing above it. 羊 adds two short diagonal strokes fanning out above that same frame — those are the horns that make it a sheep, not a half.",
+      "image_prompt": "Two short strokes flare out at the very top like horns snagging on a fence rail, and the frame underneath locks into four stiff crossed legs that refuse to bend. It just stands there chewing calmly through the tangle, utterly unbothered: a <radical>sheep</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/hitsuji.webp",
+      "sort_order": 13
+    },
+    {
+      "slug": "sunbeam",
+      "primary_form": "昜",
+      "meaning": "sunbeam",
+      "mnemonic_text": "A sun sits on top with rays streaming down beneath it at an angle, every one of them leaning the same way. This light does not spread out; it points. A shaft aimed that deliberately is a <radical>sunbeam</radical>.",
+      "image_prompt": "A sun sits on top with rays streaming down beneath it at an angle, every one of them leaning the same way. This light does not spread out; it points. A shaft aimed that deliberately is a <radical>sunbeam</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/sunbeam.webp",
+      "sort_order": 14
     },
     {
       "slug": "tobira",
@@ -101,7 +217,21 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/tobira.webp",
-      "sort_order": 7
+      "sort_order": 15
+    },
+    {
+      "slug": "fortune-telling",
+      "primary_form": "占",
+      "meaning": "fortune-telling",
+      "mnemonic_text": "A cracked stick sits over a mouth, so the crack gets read first and then the mouth says what it means. The bone splits, somebody interprets the split, and the answer is spoken out loud. That sequence is <radical>fortune-telling</radical>.",
+      "image_prompt": "A cracked stick sits over a mouth, so the crack gets read first and then the mouth says what it means. The bone splits, somebody interprets the split, and the answer is spoken out loud. That sequence is <radical>fortune-telling</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/fortune-telling.webp",
+      "sort_order": 16
     },
     {
       "slug": "inoko",
@@ -115,21 +245,35 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/inoko.webp",
-      "sort_order": 8
+      "sort_order": 17
     },
     {
-      "slug": "shikigamae",
-      "primary_form": "弋",
-      "meaning": "stake / ceremony",
-      "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
-      "image_prompt": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
+      "slug": "style",
+      "primary_form": "式",
+      "meaning": "style",
+      "mnemonic_text": "A workbench is tucked under a hooked stake, which holds the tool at the same fixed angle every single time. Do a thing that way often enough and it stops being a habit. A settled way of working is a <radical>style</radical>.",
+      "image_prompt": "A workbench is tucked under a hooked stake, which holds the tool at the same fixed angle every single time. Do a thing that way often enough and it stops being a habit. A settled way of working is a <radical>style</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
-      "sort_order": 9
+      "visual_mnemonic_url": "radicals/k/style.webp",
+      "sort_order": 18
+    },
+    {
+      "slug": "assembly",
+      "primary_form": "㑒",
+      "meaning": "assembly",
+      "mnemonic_text": "One person's roof is spread over two mouths, with two more figures below, everybody packed under the same peak. Nobody arrived on their own and nobody has room to leave. A crowd under one cover is an <radical>assembly</radical>.",
+      "image_prompt": "One person's roof is spread over two mouths, with two more figures below, everybody packed under the same peak. Nobody arrived on their own and nobody has room to leave. A crowd under one cover is an <radical>assembly</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/assembly.webp",
+      "sort_order": 19
     },
     {
       "slug": "bokuzukuri",
@@ -148,7 +292,21 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/bokuzukuri.webp",
-      "sort_order": 10
+      "sort_order": 20
+    },
+    {
+      "slug": "filial-piety",
+      "primary_form": "孝",
+      "meaning": "filial piety",
+      "mnemonic_text": "An old bent figure sits on top, and a child underneath is holding it up. The child carries all of the weight, and the elder is the one left upright. A child taking that load is <radical>filial piety</radical>.",
+      "image_prompt": "An old bent figure sits on top, and a child underneath is holding it up. The child carries all of the weight, and the elder is the one left upright. A child taking that load is <radical>filial piety</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/filial-piety.webp",
+      "sort_order": 21
     },
     {
       "slug": "yumi",
@@ -162,7 +320,21 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/yumi.webp",
-      "sort_order": 11
+      "sort_order": 22
+    },
+    {
+      "slug": "big-brother",
+      "primary_form": "哥",
+      "meaning": "big brother",
+      "mnemonic_text": "The same can-do shape is written twice, one stacked directly on the other, the top one setting the pattern the bottom one follows. Whoever got there first is the one being copied. That doubled shape is your <radical>big brother</radical>.",
+      "image_prompt": "The same can-do shape is written twice, one stacked directly on the other, the top one setting the pattern the bottom one follows. Whoever got there first is the one being copied. That doubled shape is your <radical>big brother</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/big-brother.webp",
+      "sort_order": 23
     },
     {
       "slug": "tehen",
@@ -180,21 +352,119 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/tehen.webp",
-      "sort_order": 12
+      "sort_order": 24
     },
     {
-      "slug": "tsutsumu",
-      "primary_form": "勹",
-      "meaning": "wrap",
-      "mnemonic_text": "The hooked stroke curls over like an undersized bandage trying to circle a watermelon on the counter, one edge overlapping just enough to keep it from rolling off. The gift-wrapper refuses to cut a bigger sheet, so the whole lopsided parcel stays a stubborn <radical>wrap</radical>.",
-      "image_prompt": "The hooked stroke curls over like an undersized bandage trying to circle a watermelon on the counter, one edge overlapping just enough to keep it from rolling off. The gift-wrapper refuses to cut a bigger sheet, so the whole lopsided parcel stays a stubborn <radical>wrap</radical>.",
+      "slug": "officer",
+      "primary_form": "吏",
+      "meaning": "officer",
+      "mnemonic_text": "A bar runs across the top, a mouth sits in the middle, and a hand waits at the bottom. Orders come down, get spoken aloud, and a hand carries them out. Whoever stands in the middle of that chain is an <radical>officer</radical>.",
+      "image_prompt": "A bar runs across the top, a mouth sits in the middle, and a hand waits at the bottom. Orders come down, get spoken aloud, and a hand carries them out. Whoever stands in the middle of that chain is an <radical>officer</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/n4/tsutsumu.webp",
-      "sort_order": 13
+      "visual_mnemonic_url": "radicals/k/officer.webp",
+      "sort_order": 25
+    },
+    {
+      "slug": "move",
+      "primary_form": "動",
+      "meaning": "move",
+      "mnemonic_text": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
+      "image_prompt": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/move.webp",
+      "sort_order": 26
+    },
+    {
+      "slug": "once-upon",
+      "primary_form": "昔",
+      "meaning": "once upon a time",
+      "mnemonic_text": "Two layers of stacked bars are piled on a buried sun, pressing it further down the longer you look at it. Each layer is another year laid over the light. A sun sunk that deep belongs to <radical>once upon a time</radical>.",
+      "image_prompt": "Two layers of stacked bars are piled on a buried sun, pressing it further down the longer you look at it. Each layer is another year laid over the light. A sun sunk that deep belongs to <radical>once upon a time</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/once-upon.webp",
+      "sort_order": 27
+    },
+    {
+      "slug": "substitute",
+      "primary_form": "代",
+      "meaning": "substitute",
+      "mnemonic_text": "A person stands on the left, and a stake is driven in on the right, exactly where the person used to be. Same spot, same job, no person doing it. That stake is the <radical>substitute</radical>.",
+      "image_prompt": "A person stands on the left, and a stake is driven in on the right, exactly where the person used to be. Same spot, same job, no person doing it. That stake is the <radical>substitute</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/substitute.webp",
+      "sort_order": 28
+    },
+    {
+      "slug": "pedestal",
+      "primary_form": "台",
+      "meaning": "pedestal",
+      "mnemonic_text": "A small hooked top sits square on a wide open mouth, which holds it up and takes the whole weight. The bottom half exists for no reason except to raise the top half. A base like that is a <radical>pedestal</radical>.",
+      "image_prompt": "A small hooked top sits square on a wide open mouth, which holds it up and takes the whole weight. The bottom half exists for no reason except to raise the top half. A base like that is a <radical>pedestal</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/pedestal.webp",
+      "sort_order": 29
+    },
+    {
+      "slug": "winter",
+      "primary_form": "冬",
+      "meaning": "winter",
+      "mnemonic_text": "A pair of dragging feet come down with two frozen drops set underneath them. The walking has slowed right down, and whatever fell has already gone solid on the ground. Feet moving that heavily belong to <radical>winter</radical>.",
+      "image_prompt": "A pair of dragging feet come down with two frozen drops set underneath them. The walking has slowed right down, and whatever fell has already gone solid on the ground. Feet moving that heavily belong to <radical>winter</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/winter.webp",
+      "sort_order": 30
+    },
+    {
+      "slug": "fly",
+      "primary_form": "飛",
+      "meaning": "fly",
+      "mnemonic_text": "One stroke lifts off and hooks upward, and below it two short strokes beat outward, then two more, feathers pushing down against the air on both sides at once. Every stroke in the shape leans up and away from the ground, which is what it takes to <radical>fly</radical>.",
+      "image_prompt": "One stroke lifts off and hooks upward, and below it two short strokes beat outward, then two more, feathers pushing down against the air on both sides at once. Every stroke in the shape leans up and away from the ground, which is what it takes to <radical>fly</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/fly.webp",
+      "sort_order": 31
+    },
+    {
+      "slug": "before",
+      "primary_form": "先",
+      "meaning": "before",
+      "mnemonic_text": "A stroke pushes out past the top of the legs underneath it, reaching ahead of the body it belongs to. The foot is already out there while the rest is still arriving. Getting out in front like that is <radical>before</radical>.",
+      "image_prompt": "A stroke pushes out past the top of the legs underneath it, reaching ahead of the body it belongs to. The foot is already out there while the rest is still arriving. Getting out in front like that is <radical>before</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/before.webp",
+      "sort_order": 32
     },
     {
       "slug": "sanzui",
@@ -212,7 +482,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/sanzui.webp",
-      "sort_order": 14
+      "sort_order": 33
     },
     {
       "slug": "gatsuhen",
@@ -227,12 +497,174 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/gatsuhen.webp",
-      "sort_order": 15
+      "sort_order": 34
+    },
+    {
+      "slug": "hi-spoon",
+      "primary_form": "匕",
+      "meaning": "spoon",
+      "mnemonic_text": "A slanted handle leans left. The stroke crossing it curves right into a scoop. A raccoon jams it into ice cream and bends it — a bent <radical>spoon</radical>.",
+      "image_prompt": "A slanted handle leans down to the left, and the stroke crossing it swings right and flicks up into a little scoop at the end. A raccoon jammed it into a tub of frozen ice cream, levered too hard, and is now airborne, still gripping the bent <radical>spoon</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/hi-spoon.webp",
+      "sort_order": 35
+    },
+    {
+      "slug": "swim",
+      "primary_form": "斿",
+      "meaning": "swim",
+      "mnemonic_text": "A banner streams sideways on the left with a child tucked in under it, both leaning the same way the current is running. Nothing in the shape stands still or upright. Going along with the flow like that is to <radical>swim</radical>.",
+      "image_prompt": "A banner streams sideways on the left with a child tucked in under it, both leaning the same way the current is running. Nothing in the shape stands still or upright. Going along with the flow like that is to <radical>swim</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/swim.webp",
+      "sort_order": 36
+    },
+    {
+      "slug": "tanned-leather",
+      "primary_form": "韋",
+      "meaning": "tanned leather",
+      "mnemonic_text": "Two feet step in opposite directions around a hide stretched between them, pulling it flat from both ends at once. Worked over that hard and that long, skin stops being skin. It turns into <radical>tanned leather</radical>.",
+      "image_prompt": "Two feet step in opposite directions around a hide stretched between them, pulling it flat from both ends at once. Worked over that hard and that long, skin stops being skin. It turns into <radical>tanned leather</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/tanned-leather.webp",
+      "sort_order": 37
+    },
+    {
+      "slug": "tsutsumu",
+      "primary_form": "勹",
+      "meaning": "wrap",
+      "mnemonic_text": "The hooked stroke curls over like an undersized bandage trying to circle a watermelon on the counter, one edge overlapping just enough to keep it from rolling off. The gift-wrapper refuses to cut a bigger sheet, so the whole lopsided parcel stays a stubborn <radical>wrap</radical>.",
+      "image_prompt": "The hooked stroke curls over like an undersized bandage trying to circle a watermelon on the counter, one edge overlapping just enough to keep it from rolling off. The gift-wrapper refuses to cut a bigger sheet, so the whole lopsided parcel stays a stubborn <radical>wrap</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/tsutsumu.webp",
+      "sort_order": 38
+    },
+    {
+      "slug": "ou-king",
+      "primary_form": "王",
+      "meaning": "king / jewel",
+      "mnemonic_text": "Three flat crowns get stacked because the king is too cheap to buy one tall one, and a single iron spike rams straight down through the pile to stop them sliding off his head at the ball. The bottom crown still has its gems crusted on, so the whole skewered stack reads as pure <radical>king / jewel</radical>.",
+      "visually_similar_slugs": [
+        "n4-shu-main"
+      ],
+      "description": "主 (lord) adds a short diagonal dot above the top bar, like a lit candle flame. 王 has no such mark — just three plain, level bars impaled by one straight vertical spike.",
+      "image_prompt": "Three flat crowns get stacked because the king is too cheap to buy one tall one, and a single iron spike rams straight down through the pile to stop them sliding off his head at the ball. The bottom crown still has its gems crusted on, so the whole skewered stack reads as pure <radical>king / jewel</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n4/ou-king.webp",
+      "sort_order": 39
+    },
+    {
+      "slug": "condolences",
+      "primary_form": "弔",
+      "meaning": "condolences",
+      "mnemonic_text": "A bow has a single line drawn straight down through it, the string pulled taut and never let go. The weapon is present and nobody is ever going to fire it. A bow held that way offers <radical>condolences</radical>.",
+      "image_prompt": "A bow has a single line drawn straight down through it, the string pulled taut and never let go. The weapon is present and nobody is ever going to fire it. A bow held that way offers <radical>condolences</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/condolences.webp",
+      "sort_order": 40
+    },
+    {
+      "slug": "market",
+      "primary_form": "市",
+      "meaning": "market",
+      "mnemonic_text": "A lid is stretched over a cloth hanging below it, then another, all the way down the same row. Everything under there is fabric and all of it is for sale. A row of covered stalls like that is a <radical>market</radical>.",
+      "image_prompt": "A lid is stretched over a cloth hanging below it, then another, all the way down the same row. Everything under there is fabric and all of it is for sale. A row of covered stalls like that is a <radical>market</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/market.webp",
+      "sort_order": 41
+    },
+    {
+      "slug": "not-yet",
+      "primary_form": "未",
+      "meaning": "not yet",
+      "mnemonic_text": "A tree carries an extra bar across the top, except the new one is shorter than the branch beneath it. The upper growth has started and has not caught up with what is already there. Growth that falls short is <radical>not yet</radical>.",
+      "image_prompt": "A tree carries an extra bar across the top, except the new one is shorter than the branch beneath it. The upper growth has started and has not caught up with what is already there. Growth that falls short is <radical>not yet</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/not-yet.webp",
+      "sort_order": 42
+    },
+    {
+      "slug": "miru",
+      "primary_form": "見",
+      "meaning": "see",
+      "mnemonic_text": "Look at the top box of 見 as a big single eye, and the two strokes underneath are the wobbly legs it walks around on — an eyeball on legs that wanders your room, stopping to <radical>see</radical> everything it can.",
+      "visually_similar_slugs": [
+        "kai-shell"
+      ],
+      "description": "Both are a box standing on two legs. 見 ends with a straight left leg and a right leg that swings out and hooks upward. 貝 ends with two short straight strokes falling away like little feet.",
+      "image_prompt": "Look at the top box of 見 as a big single eye, and the two strokes underneath are the wobbly legs it walks around on — an eyeball on legs that wanders your room, stopping to <radical>see</radical> everything it can.",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/miru.webp",
+      "sort_order": 43
+    },
+    {
+      "slug": "comma-design",
+      "primary_form": "巴",
+      "meaning": "swirl",
+      "mnemonic_text": "The shape curls in on itself and closes, the tail wrapping back around the head with no straight edge anywhere in it. Your eye travels round and never finds a corner to stop at. That closed curl is a <radical>swirl</radical>.",
+      "image_prompt": "The shape curls in on itself and closes, the tail wrapping back around the head with no straight edge anywhere in it. Your eye travels round and never finds a corner to stop at. That closed curl is a <radical>swirl</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/comma-design.webp",
+      "sort_order": 44
+    },
+    {
+      "slug": "asia",
+      "primary_form": "亜",
+      "meaning": "Asia",
+      "mnemonic_text": "A frame carries bars stacked across its middle with legs at both ends, wide and low and symmetrical on every side. It reads like the floor plan of something enormous. A structure on that scale is <radical>Asia</radical>.",
+      "image_prompt": "A frame carries bars stacked across its middle with legs at both ends, wide and low and symmetrical on every side. It reads like the floor plan of something enormous. A structure on that scale is <radical>Asia</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/asia.webp",
+      "sort_order": 45
     },
     {
       "slug": "men-face",
       "primary_form": "面",
-      "meaning": "face / surface",
+      "meaning": "mask",
       "mnemonic_text": "An outer frame, and set inside it another box with a bar ruled across — a mask hung on a wall, with the flat plane of the cheeks around it and the eyes cut into the middle. It shows you nothing of whoever is behind it. All you get is the front of the thing, its <radical>face</radical>.",
       "image_prompt": "An outer frame, and set inside it another box with a bar ruled across — a mask hung on a wall, with the flat plane of the cheeks around it and the eyes cut into the middle. It shows you nothing of whoever is behind it. All you get is the front of the thing, its <radical>face</radical>.",
       "_meta": {
@@ -241,21 +673,77 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/men-face.webp",
-      "sort_order": 16
+      "sort_order": 46
     },
     {
-      "slug": "mushi",
-      "primary_form": "虫",
-      "meaning": "insect",
-      "mnemonic_text": "The fat box with a line through it is a plump body pinned in place. The small stroke off the corner is a leg twitching — a mounted <radical>insect</radical>.",
-      "image_prompt": "Look at 虫: that fat box with the vertical line through it is a plump body skewered on a pin, and the little stroke flicking off the bottom right is a leg twitching — a single <radical>insect</radical> mounted in a collector's display case.",
+      "slug": "ten",
+      "primary_form": "丶",
+      "meaning": "drop",
+      "mnemonic_text": "See that tiny slanted mark 丶 — it's a single droplet of water frozen mid-fall, caught the instant it slid off the tip of a leaf. That one little stroke is a <radical>drop</radical>.",
+      "image_prompt": "See that tiny slanted mark 丶 — it's a single droplet of water frozen mid-fall, caught the instant it slid off the tip of a leaf. That one little stroke is a <radical>drop</radical>.",
       "_meta": {
         "generator_model": "claude-opus-4-8",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "visual_mnemonic_url": "radicals/n5/mushi.webp",
-      "sort_order": 17
+      "visual_mnemonic_url": "radicals/n5/ten.webp",
+      "sort_order": 47
+    },
+    {
+      "slug": "holy",
+      "primary_form": "圣",
+      "meaning": "holy",
+      "mnemonic_text": "A hand is laid flat on a patch of earth, blessing the ground it rests on. The soil underneath is perfectly ordinary and the hand is not. Ground touched that way stops being ordinary and becomes <radical>holy</radical>.",
+      "image_prompt": "A hand is laid flat on a patch of earth, blessing the ground it rests on. The soil underneath is perfectly ordinary and the hand is not. Ground touched that way stops being ordinary and becomes <radical>holy</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/holy.webp",
+      "sort_order": 48
+    },
+    {
+      "slug": "thousand",
+      "primary_form": "千",
+      "meaning": "thousand",
+      "mnemonic_text": "A ten carries one short slash laid across the top of it, and that single mark multiplies everything underneath. One stroke turns a pile you could count into a number nobody bothers counting. That is a <radical>thousand</radical>.",
+      "image_prompt": "A ten carries one short slash laid across the top of it, and that single mark multiplies everything underneath. One stroke turns a pile you could count into a number nobody bothers counting. That is a <radical>thousand</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/thousand.webp",
+      "sort_order": 49
+    },
+    {
+      "slug": "decide",
+      "primary_form": "夬",
+      "meaning": "decide",
+      "mnemonic_text": "A big figure has one arm bent into a hook, already committed to the swing. There is no way to pull that arm back in now that it has started. Reaching the point of no return is what it is to <radical>decide</radical>.",
+      "image_prompt": "A big figure has one arm bent into a hook, already committed to the swing. There is no way to pull that arm back in now that it has started. Reaching the point of no return is what it is to <radical>decide</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/decide.webp",
+      "sort_order": 50
+    },
+    {
+      "slug": "kink",
+      "primary_form": "丂",
+      "meaning": "kink",
+      "mnemonic_text": "A stroke sets off straight, then catches and bends sharply back on itself before it can finish. The line meant to carry on and something stopped it partway. That caught bend is a <radical>kink</radical>.",
+      "image_prompt": "A stroke sets off straight, then catches and bends sharply back on itself before it can finish. The line meant to carry on and something stopped it partway. That caught bend is a <radical>kink</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/kink.webp",
+      "sort_order": 51
     },
     {
       "slug": "hane",
@@ -269,7 +757,63 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/hane.webp",
-      "sort_order": 18
+      "sort_order": 52
+    },
+    {
+      "slug": "deceased",
+      "primary_form": "亡",
+      "meaning": "deceased",
+      "mnemonic_text": "A lid comes down and one bent stroke disappears underneath it, with nothing showing on the far side. Whatever went under there never came out again. What the lid covers is the <radical>deceased</radical>.",
+      "image_prompt": "A lid comes down and one bent stroke disappears underneath it, with nothing showing on the far side. Whatever went under there never came out again. What the lid covers is the <radical>deceased</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/deceased.webp",
+      "sort_order": 53
+    },
+    {
+      "slug": "army",
+      "primary_form": "軍",
+      "meaning": "army",
+      "mnemonic_text": "A cover is stretched over a vehicle, hiding whatever it carries from anyone watching the road. One covered wagon is a secret, and a whole column of them is something else. A line of them is an <radical>army</radical>.",
+      "image_prompt": "A cover is stretched over a vehicle, hiding whatever it carries from anyone watching the road. One covered wagon is a secret, and a whole column of them is something else. A line of them is an <radical>army</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/army.webp",
+      "sort_order": 54
+    },
+    {
+      "slug": "frontier-gate",
+      "primary_form": "关",
+      "meaning": "frontier gate",
+      "mnemonic_text": "Two posts lean apart above a wide barrier that runs the entire way across. Everything on the far side of it belongs to somebody else. The place where those posts stand is the <radical>frontier gate</radical>.",
+      "image_prompt": "Two posts lean apart above a wide barrier that runs the entire way across. Everything on the far side of it belongs to somebody else. The place where those posts stand is the <radical>frontier gate</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/frontier-gate.webp",
+      "sort_order": 55
+    },
+    {
+      "slug": "fit",
+      "primary_form": "合",
+      "meaning": "fit",
+      "mnemonic_text": "A peaked lid comes down on a mouth with one flat rim between them, and the edges meet the whole way round with no gap left. Nothing has to be forced or trimmed. Two parts that meet that cleanly <radical>fit</radical>.",
+      "image_prompt": "A peaked lid comes down on a mouth with one flat rim between them, and the edges meet the whole way round with no gap left. Nothing has to be forced or trimmed. Two parts that meet that cleanly <radical>fit</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/fit.webp",
+      "sort_order": 56
     },
     {
       "slug": "takekanmuri",
@@ -283,25 +827,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/takekanmuri.webp",
-      "sort_order": 19
-    },
-    {
-      "slug": "kome",
-      "primary_form": "米",
-      "meaning": "rice",
-      "mnemonic_text": "Picture a single grain in the middle with husks flying off in every direction — the top strokes spraying up, the bottom strokes kicking down — like a kernel bursting apart the instant it's threshed. That little explosion of scattering pieces is a grain of <radical>rice</radical>.",
-      "visually_similar_slugs": [
-        "n5-kuru-rai"
-      ],
-      "description": "来 is 米 with one extra horizontal laid across the top. Count the horizontal strokes: 米 has one, 来 has two.",
-      "image_prompt": "Picture a single grain in the middle with husks flying off in every direction — the top strokes spraying up, the bottom strokes kicking down — like a kernel bursting apart the instant it's threshed. That little explosion of scattering pieces is a grain of <radical>rice</radical>.",
-      "_meta": {
-        "generator_model": "claude-opus-4-8",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/n5/kome.webp",
-      "sort_order": 20
+      "sort_order": 57
     },
     {
       "slug": "to-dipper",
@@ -315,91 +841,217 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/to-dipper.webp",
-      "sort_order": 21
+      "sort_order": 58
     },
     {
-      "slug": "shou-esteem",
-      "primary_form": "尚",
-      "meaning": "esteem",
-      "mnemonic_text": "A small mark splits off at the top, then a lid sits over a mouth in a frame. It's a shrine front, raised above the street and held in <radical>esteem</radical>.",
-      "image_prompt": "A small mark and a stroke splitting away at the very top, then a lid, and beneath it a mouth set into a frame. It is a shrine front: the roof flared out at the corners, the offering-slot below, and the whole thing raised a step above the street so you have to look up at it. Built to be looked up at, and held in <radical>esteem</radical>.",
+      "slug": "flat-lid",
+      "primary_form": "覀",
+      "meaning": "flat lid",
+      "mnemonic_text": "A frame is pressed down until it is far wider than it is tall, its uprights squashed into short stubs. Whatever sits underneath has no headroom left at all. The thing doing the pressing is a <radical>flat lid</radical>.",
+      "image_prompt": "A frame is pressed down until it is far wider than it is tall, its uprights squashed into short stubs. Whatever sits underneath has no headroom left at all. The thing doing the pressing is a <radical>flat lid</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/shou-esteem.webp",
-      "sort_order": 22
+      "visual_mnemonic_url": "radicals/k/flat-lid.webp",
+      "sort_order": 59
     },
     {
-      "slug": "hoko",
-      "primary_form": "戈",
-      "meaning": "halberd",
-      "mnemonic_text": "The long diagonal slash is a halberd's shaft, propped against a gate at an angle no guard would choose; the hooked stroke off it is the crescent blade, and the lone dot above is where a passing guard's scarf snagged on the tip. The scarf yanks tight, the whole thing topples clattering — a <radical>halberd</radical>.",
-      "image_prompt": "The long diagonal slash is a halberd's shaft, propped against a gate at an angle no guard would choose; the hooked stroke off it is the crescent blade, and the lone dot above is where a passing guard's scarf snagged on the tip. The scarf yanks tight, the whole thing topples clattering — a <radical>halberd</radical>.",
+      "slug": "hidden",
+      "primary_form": "乚",
+      "meaning": "hidden",
+      "mnemonic_text": "A single stroke drops straight down and then turns hard along the floor, tucking whatever it is carrying into the corner where the wall meets the ground, out of the light and out of the room. Anything left in that corner stays <radical>hidden</radical>.",
+      "image_prompt": "A single stroke drops straight down and then turns hard along the floor, tucking whatever it is carrying into the corner where the wall meets the ground, out of the light and out of the room. Anything left in that corner stays <radical>hidden</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/hidden.webp",
+      "sort_order": 60
+    },
+    {
+      "slug": "compare",
+      "primary_form": "比",
+      "meaning": "compare",
+      "mnemonic_text": "Two identical hooked strokes stand shoulder to shoulder in 比, each curling the same way like a pair of fishhooks laid side by side to see whose barb is sharper — that side-by-side sizing-up is exactly what it means to <radical>compare</radical>.",
+      "image_prompt": "Two identical hooked strokes stand shoulder to shoulder in 比, each curling the same way like a pair of fishhooks laid side by side to see whose barb is sharper — that side-by-side sizing-up is exactly what it means to <radical>compare</radical>.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "visual_mnemonic_url": "radicals/n4/hoko.webp",
-      "sort_order": 23
+      "visual_mnemonic_url": "radicals/k/compare.webp",
+      "sort_order": 61
     },
     {
-      "slug": "ma-hook",
-      "primary_form": "マ",
-      "meaning": "hook",
-      "mnemonic_text": "One stroke slanting in from the left, and a second cutting back under it to a point. The two of them close on each other and end in a sharp little beak that turns inward. Push anything past it and it will catch and hold. It is a <radical>hook</radical>, small and mean and perfectly effective.",
-      "image_prompt": "One stroke slanting in from the left, and a second cutting back under it to a point. The two of them close on each other and end in a sharp little beak that turns inward. Push anything past it and it will catch and hold. It is a <radical>hook</radical>, small and mean and perfectly effective.",
+      "slug": "southeast",
+      "primary_form": "巽",
+      "meaning": "southeast",
+      "mnemonic_text": "Two kneeling figures share one table, both turned the same way to face the corner between two directions. Neither of them is looking straight ahead at anything. The angle they are both facing is <radical>southeast</radical>.",
+      "image_prompt": "Two kneeling figures share one table, both turned the same way to face the corner between two directions. Neither of them is looking straight ahead at anything. The angle they are both facing is <radical>southeast</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/ma-hook.webp",
-      "sort_order": 24
+      "visual_mnemonic_url": "radicals/k/southeast.webp",
+      "sort_order": 62
     },
     {
-      "slug": "mochiiru",
-      "primary_form": "用",
-      "meaning": "use",
-      "mnemonic_text": "A frame with two uprights driven through it and a pair of bars ruled across the middle, dividing the whole thing into compartments. It is a rack, or a printing block, or a set of pigeonholes — some workshop tool that only exists because somebody had a job for it. Made to be picked up and put to <radical>use</radical>.",
-      "image_prompt": "A frame with two uprights driven through it and a pair of bars ruled across the middle, dividing the whole thing into compartments. It is a rack, or a printing block, or a set of pigeonholes — some workshop tool that only exists because somebody had a job for it. Made to be picked up and put to <radical>use</radical>.",
+      "slug": "shallow",
+      "primary_form": "戋",
+      "meaning": "shallow",
+      "mnemonic_text": "Two small blades are stacked, and neither one cuts deeper than the other, both stopping well short. Nothing in the shape goes the whole way in. Cuts that stop that early are <radical>shallow</radical>.",
+      "image_prompt": "Two small blades are stacked, and neither one cuts deeper than the other, both stopping well short. Nothing in the shape goes the whole way in. Cuts that stop that early are <radical>shallow</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/mochiiru.webp",
-      "sort_order": 25
+      "visual_mnemonic_url": "radicals/k/shallow.webp",
+      "sort_order": 63
     },
     {
-      "slug": "halberd",
-      "primary_form": "矛",
-      "meaning": "halberd",
-      "mnemonic_text": "The top of 矛 curls into a wicked hook, the blade, while one long stroke sweeps down and away beneath it, the wooden shaft angled like it's still mid-thrust into whatever just charged the gate. That hooked blade on a shaft is a <radical>halberd</radical>, full stop.",
-      "image_prompt": "The top of 矛 curls into a wicked hook, the blade, while one long stroke sweeps down and away beneath it, the wooden shaft angled like it's still mid-thrust into whatever just charged the gate. That hooked blade on a shaft is a <radical>halberd</radical>, full stop.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/k/halberd.webp",
-      "sort_order": 26
-    },
-    {
-      "slug": "tsume",
-      "primary_form": "爪",
-      "meaning": "claw",
-      "mnemonic_text": "A flat stroke sits over three short strokes curving down and in. It's a hand, palm-down, fingers curling to snatch — a <radical>claw</radical>.",
-      "image_prompt": "A flat stroke over the top and, hanging beneath it, three short strokes curving down and in. It is a hand held palm-down with the fingers already curling under, about to close on something from above. Not a grip — a snatch. What comes down out of the sky like that is a <radical>claw</radical>.",
+      "slug": "formerly",
+      "primary_form": "曽",
+      "meaning": "formerly",
+      "mnemonic_text": "A chimney has its smoke split off the top and sits on a stack of layers that keeps going down. Every layer down was somebody's kitchen before this one was. Counting downward is counting back to what was <radical>formerly</radical>.",
+      "image_prompt": "A chimney has its smoke split off the top and sits on a stack of layers that keeps going down. Every layer down was somebody's kitchen before this one was. Counting downward is counting back to what was <radical>formerly</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/tsume.webp",
-      "sort_order": 27
+      "visual_mnemonic_url": "radicals/k/formerly.webp",
+      "sort_order": 64
+    },
+    {
+      "slug": "all",
+      "primary_form": "咸",
+      "meaning": "all",
+      "mnemonic_text": "A halberd swings through a full arc with a mouth sitting inside it, and nothing at all is left outside the sweep. Whatever the blade can reach is included, no exceptions made. That total sweep is <radical>all</radical>.",
+      "image_prompt": "A halberd swings through a full arc with a mouth sitting inside it, and nothing at all is left outside the sweep. Whatever the blade can reach is included, no exceptions made. That total sweep is <radical>all</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/all.webp",
+      "sort_order": 65
+    },
+    {
+      "slug": "also",
+      "primary_form": "亦",
+      "meaning": "also",
+      "mnemonic_text": "A lid covers two pairs of matching strokes, one pair to each side, identical and balanced. Whatever was true of the left-hand pair is true of the right-hand pair. That matching second pair is <radical>also</radical>.",
+      "image_prompt": "A lid covers two pairs of matching strokes, one pair to each side, identical and balanced. Whatever was true of the left-hand pair is true of the right-hand pair. That matching second pair is <radical>also</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/also.webp",
+      "sort_order": 66
+    },
+    {
+      "slug": "banner",
+      "primary_form": "㐬",
+      "meaning": "banner",
+      "mnemonic_text": "A shape hangs from a crossbar with its lower strokes trailing loose off to one side, caught mid-flap. It is fixed at the top and completely free everywhere else. Cloth hung that way is a <radical>banner</radical>.",
+      "image_prompt": "A shape hangs from a crossbar with its lower strokes trailing loose off to one side, caught mid-flap. It is fixed at the top and completely free everywhere else. Cloth hung that way is a <radical>banner</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/banner.webp",
+      "sort_order": 67
+    },
+    {
+      "slug": "walled-path",
+      "primary_form": "甬",
+      "meaning": "walled path",
+      "mnemonic_text": "A frame runs downward with a straight stroke driven through its middle from top to bottom, solid on both sides the entire length. There is one way through and no way out sideways. That is a <radical>walled path</radical>.",
+      "image_prompt": "A frame runs downward with a straight stroke driven through its middle from top to bottom, solid on both sides the entire length. There is one way through and no way out sideways. That is a <radical>walled path</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/walled-path.webp",
+      "sort_order": 68
+    },
+    {
+      "slug": "moreover",
+      "primary_form": "且",
+      "meaning": "moreover",
+      "mnemonic_text": "Shelves are stacked on a base bar, and each shelf is one more added on top of what was already plenty. The pile does not stop once the point has been made. Adding another anyway is <radical>moreover</radical>.",
+      "image_prompt": "Shelves are stacked on a base bar, and each shelf is one more added on top of what was already plenty. The pile does not stop once the point has been made. Adding another anyway is <radical>moreover</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/moreover.webp",
+      "sort_order": 69
+    },
+    {
+      "slug": "abrupt",
+      "primary_form": "乍",
+      "meaning": "abrupt",
+      "mnemonic_text": "A stroke starts across, then drops without warning and cuts back with two short bars. There is no lead-in and no curve to prepare you for the turn. A change taken that sharply is <radical>abrupt</radical>.",
+      "image_prompt": "A stroke starts across, then drops without warning and cuts back with two short bars. There is no lead-in and no curve to prepare you for the turn. A change taken that sharply is <radical>abrupt</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/abrupt.webp",
+      "sort_order": 70
+    },
+    {
+      "slug": "grove",
+      "primary_form": "林",
+      "meaning": "grove",
+      "mnemonic_text": "Two trees are written side by side, close enough that their branches overlap and neither one gets its full width. Two standing that close is already too many to call it a tree. That crowd of trunks is a <radical>grove</radical>.",
+      "image_prompt": "Two trees are written side by side, close enough that their branches overlap and neither one gets its full width. Two standing that close is already too many to call it a tree. That crowd of trunks is a <radical>grove</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/grove.webp",
+      "sort_order": 71
+    },
+    {
+      "slug": "beforehand",
+      "primary_form": "予",
+      "meaning": "beforehand",
+      "mnemonic_text": "A hook is set at the top with a line dropping from it, fixed in place while there is still nothing hanging on it. The fitting gets done while the load is somewhere else entirely. Being ready that early is <radical>beforehand</radical>.",
+      "image_prompt": "A hook is set at the top with a line dropping from it, fixed in place while there is still nothing hanging on it. The fitting gets done while the load is somewhere else entirely. Being ready that early is <radical>beforehand</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/beforehand.webp",
+      "sort_order": 72
+    },
+    {
+      "slug": "pick",
+      "primary_form": "采",
+      "meaning": "pick",
+      "mnemonic_text": "A claw comes down on a tree from above and closes on exactly one thing among the branches. Everything else is left where it was growing. Taking one and only one is to <radical>pick</radical>.",
+      "image_prompt": "A claw comes down on a tree from above and closes on exactly one thing among the branches. Everything else is left where it was growing. Taking one and only one is to <radical>pick</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/pick.webp",
+      "sort_order": 73
     },
     {
       "slug": "warifu",
@@ -413,49 +1065,119 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/warifu.webp",
-      "sort_order": 28
+      "sort_order": 74
     },
     {
-      "slug": "goods",
-      "primary_form": "品",
-      "meaning": "goods",
-      "mnemonic_text": "Look at 品 from the front and you see three square crates in a stack. One box sits on top. Two more sit side by side beneath it. Together they're one delivery of <radical>goods</radical>.",
-      "image_prompt": "Trace 品 stroke by stroke: one square crate sits alone on top, and two more identical square crates sit side by side directly beneath it, stacked like a delivery pallet outside a shop's back door. Three sealed boxes, boxed and ready to ship — that whole stack is <radical>goods</radical>.",
+      "slug": "long-kimono",
+      "primary_form": "袁",
+      "meaning": "long kimono",
+      "mnemonic_text": "A lid, a mouth, and a robe's skirt spilling out well past the legs underneath it. The fabric keeps going long after the body it covers has stopped. Cloth that runs over that far is a <radical>long kimono</radical>.",
+      "image_prompt": "A lid, a mouth, and a robe's skirt spilling out well past the legs underneath it. The fabric keeps going long after the body it covers has stopped. Cloth that runs over that far is a <radical>long kimono</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
         "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/goods.webp",
-      "sort_order": 29
+      "visual_mnemonic_url": "radicals/k/long-kimono.webp",
+      "sort_order": 75
     },
     {
-      "slug": "koromo",
-      "primary_form": "衣",
-      "meaning": "clothing",
-      "mnemonic_text": "See that little cross-stroke on top as a coat hanger's hook, and the wide, splayed strokes hanging below it as the sleeves and hem draping down — the whole shape is a shirt hung up to dry, a piece of <radical>clothing</radical>.",
-      "image_prompt": "See that little cross-stroke on top as a coat hanger's hook, and the wide, splayed strokes hanging below it as the sleeves and hem draping down — the whole shape is a shirt hung up to dry, a piece of <radical>clothing</radical>.",
+      "slug": "exchange",
+      "primary_form": "兌",
+      "meaning": "exchange",
+      "mnemonic_text": "Two strokes split off the top of an elder brother, one heading each way. What leaves on the left comes back again on the right. An even swap like that is an <radical>exchange</radical>.",
+      "image_prompt": "Two strokes split off the top of an elder brother, one heading each way. What leaves on the left comes back again on the right. An even swap like that is an <radical>exchange</radical>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/exchange.webp",
+      "sort_order": 76
+    },
+    {
+      "slug": "oneself",
+      "primary_form": "己",
+      "meaning": "oneself",
+      "mnemonic_text": "A single line folds twice and ends up almost where it started, never once touching anything outside itself. It refers to nothing but its own three bends. A shape closed that tightly is <radical>oneself</radical>.",
+      "image_prompt": "A single line folds twice and ends up almost where it started, never once touching anything outside itself. It refers to nothing but its own three bends. A shape closed that tightly is <radical>oneself</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/oneself.webp",
+      "sort_order": 77
+    },
+    {
+      "slug": "tsume",
+      "primary_form": "爪",
+      "meaning": "claw",
+      "mnemonic_text": "A flat stroke sits over three short strokes curving down and in. It's a hand, palm-down, fingers curling to snatch — a <radical>claw</radical>.",
+      "image_prompt": "A flat stroke over the top and, hanging beneath it, three short strokes curving down and in. It is a hand held palm-down with the fingers already curling under, about to close on something from above. Not a grip — a snatch. What comes down out of the sky like that is a <radical>claw</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "visual_mnemonic_url": "radicals/n5/koromo.webp",
-      "sort_order": 30
+      "visual_mnemonic_url": "radicals/k/tsume.webp",
+      "sort_order": 78
     },
     {
-      "slug": "stop",
-      "primary_form": "已",
-      "meaning": "stop",
-      "mnemonic_text": "Trace 已 and the stroke curls round like it means to close the loop, then quits — the line lifting off mid-curve exactly like a parking-gate arm that drops halfway and jams, refusing to swing the rest of the way down. Everything behind it just has to <radical>stop</radical>.",
-      "image_prompt": "Trace 已 and the stroke curls round like it means to close the loop, then quits — the line lifting off mid-curve exactly like a parking-gate arm that drops halfway and jams, refusing to swing the rest of the way down. Everything behind it just has to <radical>stop</radical>.",
+      "slug": "using",
+      "primary_form": "以",
+      "meaning": "using",
+      "mnemonic_text": "Two short strokes on the left hold a tool out at arm's length, and on the right a person stands with a hand already raised to take it. A tool handed across like that is not being admired or stored, it is being put to work: <radical>using</radical> it.",
+      "image_prompt": "Two short strokes on the left hold a tool out at arm's length, and on the right a person stands with a hand already raised to take it. A tool handed across like that is not being admired or stored, it is being put to work: <radical>using</radical> it.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/stop.webp",
-      "sort_order": 31
+      "visual_mnemonic_url": "radicals/k/using.webp",
+      "sort_order": 79
+    },
+    {
+      "slug": "sprouting-stalk",
+      "primary_form": "𢆉",
+      "meaning": "sprouting stalk",
+      "mnemonic_text": "A stem pushes up through a bar and splits into two short arms just above it, with nothing at all below the ground line. It has cleared the soil and not much more than that. That first fork is a <radical>sprouting stalk</radical>.",
+      "image_prompt": "A stem pushes up through a bar and splits into two short arms just above it, with nothing at all below the ground line. It has cleared the soil and not much more than that. That first fork is a <radical>sprouting stalk</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/sprouting-stalk.webp",
+      "sort_order": 80
+    },
+    {
+      "slug": "twenty",
+      "primary_form": "廿",
+      "meaning": "twenty",
+      "mnemonic_text": "Two vertical strokes hang from one long bar, each of them a full ten, sharing the same crossbeam. Count them together instead of one after the other and you land straight on <radical>twenty</radical>.",
+      "image_prompt": "Two vertical strokes hang from one long bar, each of them a full ten, sharing the same crossbeam. Count them together instead of one after the other and you land straight on <radical>twenty</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/twenty.webp",
+      "sort_order": 81
+    },
+    {
+      "slug": "bench",
+      "primary_form": "开",
+      "meaning": "bench",
+      "mnemonic_text": "One long bar rests across two evenly spaced uprights with nothing on top of it. It is the plainest thing anybody can build out of three strokes, and it still holds a person's weight. That is a <radical>bench</radical>.",
+      "image_prompt": "One long bar rests across two evenly spaced uprights with nothing on top of it. It is the plainest thing anybody can build out of three strokes, and it still holds a person's weight. That is a <radical>bench</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/bench.webp",
+      "sort_order": 82
     },
     {
       "slug": "ishi",
@@ -473,21 +1195,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/ishi.webp",
-      "sort_order": 32
-    },
-    {
-      "slug": "nijuuashi",
-      "primary_form": "廾",
-      "meaning": "two hands",
-      "mnemonic_text": "Two uprights standing side by side with a single bar laid straight across both of them. They are holding it up together, level, neither one taking more of the weight than the other. Two arms raised to carry the same load: <radical>two hands</radical>.",
-      "image_prompt": "Two uprights standing side by side with a single bar laid straight across both of them. They are holding it up together, level, neither one taking more of the weight than the other. Two arms raised to carry the same load: <radical>two hands</radical>.",
-      "_meta": {
-        "generator_model": "claude-opus-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/k/nijuuashi.webp",
-      "sort_order": 33
+      "sort_order": 83
     },
     {
       "slug": "nine",
@@ -501,21 +1209,123 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/nine.webp",
-      "sort_order": 34
+      "sort_order": 84
     },
     {
-      "slug": "life",
-      "primary_form": "生",
-      "meaning": "life",
-      "mnemonic_text": "Three horizontal layers of soil stack up in 生, and one single stroke drills straight up through every one of them, a green shoot forcing its way through layer after layer of packed earth to break the surface — that stubborn first push upward is <radical>life</radical>.",
-      "image_prompt": "Three horizontal layers of soil stack up in 生, and one single stroke drills straight up through every one of them, a green shoot forcing its way through layer after layer of packed earth to break the surface — that stubborn first push upward is <radical>life</radical>.",
+      "slug": "every",
+      "primary_form": "毎",
+      "meaning": "every",
+      "mnemonic_text": "A mother shape carries a stroke laid across the top, counting her once more each time she turns up. She appears in one character after another and never gets skipped. That repetition is <radical>every</radical>.",
+      "image_prompt": "A mother shape carries a stroke laid across the top, counting her once more each time she turns up. She appears in one character after another and never gets skipped. That repetition is <radical>every</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/every.webp",
+      "sort_order": 85
+    },
+    {
+      "slug": "oozato",
+      "primary_form": "阝",
+      "meaning": "village (right)",
+      "mnemonic_text": "Picture a stack of little rooftops piled up on the right side of the page, each one a bump curving down into the long pole of the road that runs past them — that huddle of houses along the road is a <radical>village</radical>.",
+      "image_prompt": "Picture a stack of little rooftops piled up on the right side of the page, each one a bump curving down into the long pole of the road that runs past them — that huddle of houses along the road is a <radical>village</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/oozato.webp",
+      "sort_order": 86
+    },
+    {
+      "slug": "someone",
+      "primary_form": "者",
+      "meaning": "someone",
+      "mnemonic_text": "Earth is stacked on a buried sun, with no face and no name anywhere in the shape. A person is definitely in there and you are never told which one. That anonymous figure is <radical>someone</radical>.",
+      "image_prompt": "Earth is stacked on a buried sun, with no face and no name anywhere in the shape. A person is definitely in there and you are never told which one. That anonymous figure is <radical>someone</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/someone.webp",
+      "sort_order": 87
+    },
+    {
+      "slug": "people",
+      "primary_form": "民",
+      "meaning": "people",
+      "mnemonic_text": "A small box sits at the top of a stroke that sweeps down and out into a base broad enough to carry every household stacked above it. One roof, many under it, and the many under it are the <radical>people</radical>.",
+      "image_prompt": "A small box sits at the top of a stroke that sweeps down and out into a base broad enough to carry every household stacked above it. One roof, many under it, and the many under it are the <radical>people</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/people.webp",
+      "sort_order": 88
+    },
+    {
+      "slug": "shikigamae",
+      "primary_form": "弋",
+      "meaning": "stake / ceremony",
+      "mnemonic_text": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
+      "image_prompt": "A single post gets hammered straight into the town square, then a short diagonal peg juts off near the top where a banner gets knotted on and left flapping — that planted, flagged <radical>stake</radical> is what marks the ground for tonight's ceremony.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "1",
         "review_status": "reviewed"
       },
-      "visual_mnemonic_url": "radicals/k/life.webp",
-      "sort_order": 35
+      "visual_mnemonic_url": "radicals/n4/shikigamae.webp",
+      "sort_order": 89
+    },
+    {
+      "slug": "mochiiru",
+      "primary_form": "用",
+      "meaning": "use",
+      "mnemonic_text": "A frame with two uprights driven through it and a pair of bars ruled across the middle, dividing the whole thing into compartments. It is a rack, or a printing block, or a set of pigeonholes — some workshop tool that only exists because somebody had a job for it. Made to be picked up and put to <radical>use</radical>.",
+      "image_prompt": "A frame with two uprights driven through it and a pair of bars ruled across the middle, dividing the whole thing into compartments. It is a rack, or a printing block, or a set of pigeonholes — some workshop tool that only exists because somebody had a job for it. Made to be picked up and put to <radical>use</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/mochiiru.webp",
+      "sort_order": 90
+    },
+    {
+      "slug": "gandare",
+      "primary_form": "厂",
+      "meaning": "cliff",
+      "mnemonic_text": "A flat stroke runs along the top and then drops away sharply down the left side, and there is nothing underneath it at all. That overhang is the whole picture: rock sticking out over empty air, with the ground a long way below. Stand under it for shelter or over it for the view, but it is a <radical>cliff</radical>.",
+      "image_prompt": "A flat stroke runs along the top and then drops away sharply down the left side, and there is nothing underneath it at all. That overhang is the whole picture: rock sticking out over empty air, with the ground a long way below. Stand under it for shelter or over it for the view, but it is a <radical>cliff</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/gandare.webp",
+      "sort_order": 91
+    },
+    {
+      "slug": "sun",
+      "primary_form": "寸",
+      "meaning": "inch / measure",
+      "mnemonic_text": "Picture a carpenter's flat wooden ruler lying down, with a single tick mark dropping off its right edge — that little notch is where the thumb pins it in place to measure off exactly one <radical>inch</radical>.",
+      "visually_similar_slugs": [
+        "tehen"
+      ],
+      "description": "Both hang on a hooked vertical crossed by a bar. 寸 adds a single dot to the right of the hook. 扌 has no dot; its last stroke is a flick rising from the lower left into the vertical.",
+      "image_prompt": "Picture a carpenter's flat wooden ruler lying down, with a single tick mark dropping off its right edge — that little notch is where the thumb pins it in place to measure off exactly one <radical>inch</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/sun.webp",
+      "sort_order": 92
     },
     {
       "slug": "long-stride",
@@ -529,7 +1339,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/long-stride.webp",
-      "sort_order": 36
+      "sort_order": 93
     },
     {
       "slug": "hashiru-run",
@@ -543,7 +1353,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/hashiru-run.webp",
-      "sort_order": 37
+      "sort_order": 94
     },
     {
       "slug": "konzukuri",
@@ -557,7 +1367,21 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/konzukuri.webp",
-      "sort_order": 38
+      "sort_order": 95
+    },
+    {
+      "slug": "center",
+      "primary_form": "央",
+      "meaning": "center",
+      "mnemonic_text": "A big figure stands with a frame closed around them at exactly the same distance on every side. Shift the figure anywhere at all and the balance breaks immediately. The one spot where it holds is the <radical>center</radical>.",
+      "image_prompt": "A big figure stands with a frame closed around them at exactly the same distance on every side. Shift the figure anywhere at all and the balance breaks immediately. The one spot where it holds is the <radical>center</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/center.webp",
+      "sort_order": 96
     },
     {
       "slug": "beans",
@@ -571,35 +1395,77 @@
         "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/beans.webp",
-      "sort_order": 39
+      "sort_order": 97
     },
     {
-      "slug": "mizukara",
-      "primary_form": "自",
-      "meaning": "self",
-      "mnemonic_text": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
-      "image_prompt": "A nose, drawn as a narrow face with three lines stacked down the bridge of it. When someone here wants to ask who, me?, they do not jab a thumb at their chest the way you would. They lift one finger and point it straight at their own nose. That nose is how you say <radical>self</radical>.",
+      "slug": "bestow",
+      "primary_form": "与",
+      "meaning": "bestow",
+      "mnemonic_text": "A hook holds one bar out flat and away from the body, offering it across to whoever is standing there. Nothing at all is kept back behind the hook. Holding a thing out like that is to <radical>bestow</radical>.",
+      "image_prompt": "A hook holds one bar out flat and away from the body, offering it across to whoever is standing there. Nothing at all is kept back behind the hook. Holding a thing out like that is to <radical>bestow</radical>.",
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "1",
         "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/mizukara.webp",
-      "sort_order": 40
+      "visual_mnemonic_url": "radicals/k/bestow.webp",
+      "sort_order": 98
     },
     {
-      "slug": "three",
-      "primary_form": "彡",
-      "meaning": "three",
-      "mnemonic_text": "彡 is nothing but three diagonal slashes, raked top to bottom like claw marks down a fence post, each stroke a little shorter than the one before it. Count the gouges and you already have the meaning: <radical>three</radical>.",
-      "image_prompt": "彡 is nothing but three diagonal slashes, raked top to bottom like claw marks down a fence post, each stroke a little shorter than the one before it. Count the gouges and you already have the meaning: <radical>three</radical>.",
+      "slug": "flat-top",
+      "primary_form": "兀",
+      "meaning": "flat top",
+      "mnemonic_text": "Two legs hold up one long horizontal that runs clean across, with no peak, no hook, and nothing rising above it anywhere. Everything stops at the same height. That level ceiling is a <radical>flat top</radical>.",
+      "image_prompt": "Two legs hold up one long horizontal that runs clean across, with no peak, no hook, and nothing rising above it anywhere. Everything stops at the same height. That level ceiling is a <radical>flat top</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/k/three.webp",
-      "sort_order": 41
+      "visual_mnemonic_url": "radicals/k/flat-top.webp",
+      "sort_order": 99
+    },
+    {
+      "slug": "three-and",
+      "primary_form": "𡗗",
+      "meaning": "three and big",
+      "mnemonic_text": "Three stacked bars have a big figure pushing up through all of them at once. It takes the whole count and one whole body to make the shape work. Both halves are named in it: <radical>three and big</radical>.",
+      "image_prompt": "Three stacked bars have a big figure pushing up through all of them at once. It takes the whole count and one whole body to make the shape work. Both halves are named in it: <radical>three and big</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/three-and.webp",
+      "sort_order": 100
+    },
+    {
+      "slug": "lad",
+      "primary_form": "彦",
+      "meaning": "lad",
+      "mnemonic_text": "A figure stands under a cliff with three combed strokes streaming off the side of his head. The hair has clearly been done and the stance is entirely deliberate. A young man that groomed is a <radical>lad</radical>.",
+      "image_prompt": "A figure stands under a cliff with three combed strokes streaming off the side of his head. The hair has clearly been done and the stance is entirely deliberate. A young man that groomed is a <radical>lad</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/lad.webp",
+      "sort_order": 101
+    },
+    {
+      "slug": "renew",
+      "primary_form": "更",
+      "meaning": "renew",
+      "mnemonic_text": "A bar runs across the top, a field sits under it, and one stroke is driven down through both and out the bottom. The old boundary has been cut straight through and drawn again. Cutting through to start over is to <radical>renew</radical>.",
+      "image_prompt": "A bar runs across the top, a field sits under it, and one stroke is driven down through both and out the bottom. The old boundary has been cut straight through and drawn again. Cutting through to start over is to <radical>renew</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/renew.webp",
+      "sort_order": 102
     },
     {
       "slug": "nikuduki",
@@ -613,7 +1479,21 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n5/nikuduki.webp",
-      "sort_order": 42
+      "sort_order": 103
+    },
+    {
+      "slug": "shou-esteem",
+      "primary_form": "尚",
+      "meaning": "esteem",
+      "mnemonic_text": "A small mark splits off at the top, then a lid sits over a mouth in a frame. It's a shrine front, raised above the street and held in <radical>esteem</radical>.",
+      "image_prompt": "A small mark and a stroke splitting away at the very top, then a lid, and beneath it a mouth set into a frame. It is a shrine front: the roof flared out at the corners, the offering-slot below, and the whole thing raised a step above the street so you have to look up at it. Built to be looked up at, and held in <radical>esteem</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/shou-esteem.webp",
+      "sort_order": 104
     },
     {
       "slug": "tori-bird",
@@ -627,26 +1507,7 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/n4/tori-bird.webp",
-      "sort_order": 43
-    },
-    {
-      "slug": "inu",
-      "primary_form": "犬",
-      "meaning": "dog",
-      "mnemonic_text": "The big figure standing with both arms flung wide suddenly sprouts a stray fleck up by its shoulder, and it snaps at that one spot again and again, never quite reaching it. It spins in a tight, undignified circle chasing its own shoulder, because no <radical>dog</radical> has ever caught its own tail either.",
-      "visually_similar_slugs": [
-        "n5-dai-big",
-        "n4-futoi"
-      ],
-      "description": "大 (big) is just the figure with arms out, no extra mark anywhere. 太 (thick / fat) adds its dot low down, between the legs, like a belly bulge. 犬 adds its dot high up, by the shoulder, like the flea it keeps snapping at — the dot's height is the only difference between all three.",
-      "image_prompt": "The big figure standing with both arms flung wide suddenly sprouts a stray fleck up by its shoulder, and it snaps at that one spot again and again, never quite reaching it. It spins in a tight, undignified circle chasing its own shoulder, because no <radical>dog</radical> has ever caught its own tail either.",
-      "_meta": {
-        "generator_model": "sonnet-5",
-        "prompt_version": "1",
-        "review_status": "reviewed"
-      },
-      "visual_mnemonic_url": "radicals/n4/inu.webp",
-      "sort_order": 44
+      "sort_order": 105
     },
     {
       "slug": "well",
@@ -660,21 +1521,21 @@
         "review_status": "draft"
       },
       "visual_mnemonic_url": "radicals/k/well.webp",
-      "sort_order": 45
+      "sort_order": 106
     },
     {
-      "slug": "koromohen",
-      "primary_form": "衤",
-      "meaning": "clothing (left)",
-      "mnemonic_text": "A hooked stroke at the top is a collar. The spine drops straight down. The flared stroke at the bottom is a sleeve — <radical>clothing (left)</radical>.",
-      "image_prompt": "A hooked stroke swings out at the top like a collar snagging on a spinning dry-cleaner's rack. The straight spine drops down, then the last stroke flares sideways into a sleeve that whips loose and smacks the clerk before it settles, hanger and all, into a fresh set of <radical>clothing (left)</radical>.",
+      "slug": "husband",
+      "primary_form": "夫",
+      "meaning": "husband",
+      "mnemonic_text": "A big figure carries one extra bar laid across the shoulders, a pin through the hair saying the arrangement is settled. The stance has not changed at all; the status has. That pin makes him a <radical>husband</radical>.",
+      "image_prompt": "A big figure carries one extra bar laid across the shoulders, a pin through the hair saying the arrangement is settled. The stance has not changed at all; the status has. That pin makes him a <radical>husband</radical>.",
       "_meta": {
-        "generator_model": "sonnet-5",
+        "generator_model": "claude-opus-5",
         "prompt_version": "1",
-        "review_status": "reviewed"
+        "review_status": "draft"
       },
-      "visual_mnemonic_url": "radicals/n4/koromohen.webp",
-      "sort_order": 46
+      "visual_mnemonic_url": "radicals/k/husband.webp",
+      "sort_order": 107
     }
   ]
 }

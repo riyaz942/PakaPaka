@@ -89,7 +89,7 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 sys.path.insert(0, BUILD_DIR)
 
-from generate_deps import N4_DECOMPOSITION, N5_DECOMPOSITION  # noqa: E402
+# Curated N5/N4 decomposition maps are no longer read here; see load_decomposition.
 
 #: The ladder. Sums to the 2,000 `import/build_skeleton.py` derives.
 BAND_SIZES = {"n5": 150, "n4": 175, "n3": 375, "n2": 300, "n1": 1000}
@@ -356,7 +356,12 @@ def kanji_sort_orders(corpus, bands, encounter_by_level):
     return order
 
 
-def load_radicals(skeleton):
+def load_decomposition():
+    """The KanjiVG decomposition: its radical inventory and its kanji map."""
+    return load(os.path.join(BUILD_DIR, "decomposition.json"))
+
+
+def load_radicals(decomposition):
     """{slug: {form, meaning, source, order, prose, art}}.
 
     `prose` is a mnemonic from either the dataset or the sidecar; `art` is the
@@ -372,7 +377,7 @@ def load_radicals(skeleton):
 
     radicals = {}
     for source, entries in (("n5", N5_RADICALS), ("n4", N4_RADICALS), ("k", None)):
-        entries = skeleton["radicals"] if entries is None else entries
+        entries = decomposition["radicals"] if entries is None else entries
         written = sidecar(source)
         for i, r in enumerate(entries, start=1):
             radicals[r["slug"]] = {
@@ -387,19 +392,21 @@ def load_radicals(skeleton):
     return radicals
 
 
-def decomposition(skeleton):
+def decomposition(decomposition_data, corpus):
     """{radical slug: [kanji slug]} over the whole corpus.
 
-    Three sources, one shape: the two curated N5/N4 maps in `generate_deps.py`,
-    keyed by kanji suffix, and the derived map in `skeleton.json`, already keyed
-    by slug."""
+    One source since the KanjiVG switch. `decomposition.json` is keyed by kanji
+    *form*, so the corpus supplies the form -> slug join."""
+    by_form = {r["form"]: r["slug"] for r in decomposition_data["radicals"]}
+    from n4_radicals import N4_RADICALS
+    from n5_radicals import N5_RADICALS
+    for r in list(N5_RADICALS) + list(N4_RADICALS):
+        by_form.setdefault(r["form"], r["slug"])
+
     edges = defaultdict(list)
-    for source, curated in (("n5", N5_DECOMPOSITION), ("n4", N4_DECOMPOSITION)):
-        for rad_slug, suffixes in curated.items():
-            for suffix in suffixes:
-                edges[rad_slug].append(f"{source}-{suffix}")
-    for rad_slug, kanji_slugs in skeleton["decomposition"].items():
-        edges[rad_slug].extend(kanji_slugs)
+    for kanji_slug, info in corpus.items():
+        for form in decomposition_data["decomposition"].get(info["char"], ()):
+            edges[by_form[form]].append(kanji_slug)
     return edges
 
 
@@ -537,8 +544,9 @@ def main():
     bands, reuse_by_level, encounter_by_level = assign_bands(corpus, words)
     kanji_order = kanji_sort_orders(corpus, bands, encounter_by_level)
 
-    radicals = load_radicals(skeleton)
-    edges = decomposition(skeleton)
+    decomposition_data = load_decomposition()
+    radicals = load_radicals(decomposition_data)
+    edges = decomposition(decomposition_data, corpus)
     radical_levels, radical_order, radical_first = radical_bands(
         radicals, edges, bands, kanji_order
     )

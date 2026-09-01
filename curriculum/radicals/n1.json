@@ -2,52 +2,366 @@
   "jlpt_level": "N1",
   "items": [
     {
-      "slug": "drum",
-      "primary_form": "鼓",
-      "meaning": "drum",
+      "slug": "young",
+      "primary_form": "若",
+      "meaning": "young",
       "sort_order": 1
+    },
+    {
+      "slug": "allot",
+      "primary_form": "充",
+      "meaning": "allot",
+      "sort_order": 2
+    },
+    {
+      "slug": "add",
+      "primary_form": "加",
+      "meaning": "add",
+      "sort_order": 3
+    },
+    {
+      "slug": "shield",
+      "primary_form": "盾",
+      "meaning": "shield",
+      "sort_order": 4
+    },
+    {
+      "slug": "prize",
+      "primary_form": "賞",
+      "meaning": "prize",
+      "sort_order": 5
+    },
+    {
+      "slug": "ability",
+      "primary_form": "能",
+      "meaning": "ability",
+      "sort_order": 6
+    },
+    {
+      "slug": "departure",
+      "primary_form": "発",
+      "meaning": "departure",
+      "sort_order": 7
+    },
+    {
+      "slug": "name-of",
+      "primary_form": "禹",
+      "meaning": "name of a Chinese emperor",
+      "sort_order": 8
+    },
+    {
+      "slug": "drum-stand",
+      "primary_form": "壴",
+      "meaning": "drum stand",
+      "sort_order": 9
+    },
+    {
+      "slug": "companion",
+      "primary_form": "朋",
+      "meaning": "companion",
+      "sort_order": 10
+    },
+    {
+      "slug": "sovereign",
+      "primary_form": "帝",
+      "meaning": "sovereign",
+      "sort_order": 11
+    },
+    {
+      "slug": "bring-up",
+      "primary_form": "育",
+      "meaning": "bring up",
+      "sort_order": 12
+    },
+    {
+      "slug": "rib",
+      "primary_form": "肋",
+      "meaning": "rib",
+      "sort_order": 13
+    },
+    {
+      "slug": "to-cut",
+      "primary_form": "𢦏",
+      "meaning": "to cut",
+      "sort_order": 14
     },
     {
       "slug": "tin-can",
       "primary_form": "缶",
       "meaning": "tin can",
-      "sort_order": 2
+      "sort_order": 15
     },
     {
-      "slug": "tortoise",
-      "primary_form": "亀",
-      "meaning": "tortoise",
-      "sort_order": 3
+      "slug": "a-vase",
+      "primary_form": "䍃",
+      "meaning": "a vase",
+      "sort_order": 16
+    },
+    {
+      "slug": "turn",
+      "primary_form": "番",
+      "meaning": "turn",
+      "sort_order": 17
+    },
+    {
+      "slug": "cleverness",
+      "primary_form": "敏",
+      "meaning": "cleverness",
+      "sort_order": 18
+    },
+    {
+      "slug": "to-help",
+      "primary_form": "㐮",
+      "meaning": "to help",
+      "sort_order": 19
+    },
+    {
+      "slug": "south",
+      "primary_form": "南",
+      "meaning": "south",
+      "sort_order": 20
+    },
+    {
+      "slug": "task",
+      "primary_form": "務",
+      "meaning": "task",
+      "sort_order": 21
+    },
+    {
+      "slug": "to-dawdle",
+      "primary_form": "夌",
+      "meaning": "to dawdle",
+      "sort_order": 22
     },
     {
       "slug": "curving-river",
       "primary_form": "巛",
       "meaning": "curving river",
-      "sort_order": 4
+      "sort_order": 23
+    },
+    {
+      "slug": "precious",
+      "primary_form": "貴",
+      "meaning": "precious",
+      "sort_order": 24
+    },
+    {
+      "slug": "shoot",
+      "primary_form": "射",
+      "meaning": "shoot",
+      "sort_order": 25
+    },
+    {
+      "slug": "military-officer",
+      "primary_form": "尉",
+      "meaning": "military officer",
+      "sort_order": 26
+    },
+    {
+      "slug": "restore",
+      "primary_form": "復",
+      "meaning": "restore",
+      "sort_order": 27
     },
     {
       "slug": "ghost",
       "primary_form": "鬼",
       "meaning": "ghost",
-      "sort_order": 5
+      "sort_order": 28
+    },
+    {
+      "slug": "reside",
+      "primary_form": "居",
+      "meaning": "reside",
+      "sort_order": 29
+    },
+    {
+      "slug": "instead",
+      "primary_form": "却",
+      "meaning": "instead",
+      "sort_order": 30
+    },
+    {
+      "slug": "to-branch",
+      "primary_form": "𠂢",
+      "meaning": "to branch",
+      "sort_order": 31
+    },
+    {
+      "slug": "rise-high",
+      "primary_form": "闌",
+      "meaning": "rise high",
+      "sort_order": 32
+    },
+    {
+      "slug": "cause",
+      "primary_form": "因",
+      "meaning": "cause",
+      "sort_order": 33
+    },
+    {
+      "slug": "round-2",
+      "primary_form": "丸",
+      "meaning": "round",
+      "sort_order": 34
     },
     {
       "slug": "tripod",
       "primary_form": "鬲",
       "meaning": "tripod",
-      "sort_order": 6
+      "sort_order": 35
+    },
+    {
+      "slug": "beg",
+      "primary_form": "乞",
+      "meaning": "beg",
+      "sort_order": 36
+    },
+    {
+      "slug": "tremendously",
+      "primary_form": "甚",
+      "meaning": "tremendously",
+      "sort_order": 37
+    },
+    {
+      "slug": "ancient-musical",
+      "primary_form": "敫",
+      "meaning": "ancient musical instrument",
+      "sort_order": 38
+    },
+    {
+      "slug": "oversee",
+      "primary_form": "監",
+      "meaning": "oversee",
+      "sort_order": 39
+    },
+    {
+      "slug": "quiet",
+      "primary_form": "宓",
+      "meaning": "quiet",
+      "sort_order": 40
+    },
+    {
+      "slug": "do",
+      "primary_form": "為",
+      "meaning": "do",
+      "sort_order": 41
+    },
+    {
+      "slug": "void",
+      "primary_form": "虚",
+      "meaning": "void",
+      "sort_order": 42
+    },
+    {
+      "slug": "ego",
+      "primary_form": "我",
+      "meaning": "ego",
+      "sort_order": 43
+    },
+    {
+      "slug": "cliff",
+      "primary_form": "崔",
+      "meaning": "cliff",
+      "sort_order": 44
+    },
+    {
+      "slug": "think-2",
+      "primary_form": "思",
+      "meaning": "think",
+      "sort_order": 45
+    },
+    {
+      "slug": "to-measure",
+      "primary_form": "蒦",
+      "meaning": "to measure",
+      "sort_order": 46
+    },
+    {
+      "slug": "a-small",
+      "primary_form": "肙",
+      "meaning": "a small worm",
+      "sort_order": 47
+    },
+    {
+      "slug": "takai",
+      "primary_form": "高",
+      "meaning": "tall",
+      "mnemonic_text": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
+      "image_prompt": "Look at 高 from top to bottom: a little roof, then a window box, then another wider room stacked underneath — a slender tower building rising floor by floor into the sky. Every stroke is just one more story added, until the whole thing stands impossibly <radical>tall</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/takai.webp",
+      "sort_order": 48
+    },
+    {
+      "slug": "span",
+      "primary_form": "亘",
+      "meaning": "span",
+      "sort_order": 49
     },
     {
       "slug": "mount",
       "primary_form": "岡",
       "meaning": "mount",
-      "sort_order": 7
+      "sort_order": 50
     },
     {
-      "slug": "from",
-      "primary_form": "乃",
-      "meaning": "from",
-      "sort_order": 8
+      "slug": "this-2",
+      "primary_form": "此",
+      "meaning": "this",
+      "sort_order": 51
+    },
+    {
+      "slug": "this",
+      "primary_form": "兹",
+      "meaning": "this",
+      "sort_order": 52
+    },
+    {
+      "slug": "leader",
+      "primary_form": "将",
+      "meaning": "leader",
+      "sort_order": 53
+    },
+    {
+      "slug": "juvenile",
+      "primary_form": "童",
+      "meaning": "juvenile",
+      "sort_order": 54
+    },
+    {
+      "slug": "excel",
+      "primary_form": "秀",
+      "meaning": "excel",
+      "sort_order": 55
+    },
+    {
+      "slug": "to-fly",
+      "primary_form": "卂",
+      "meaning": "to fly rapidly",
+      "sort_order": 56
+    },
+    {
+      "slug": "marking-line",
+      "primary_form": "絜",
+      "meaning": "marking line",
+      "sort_order": 57
+    },
+    {
+      "slug": "heavens",
+      "primary_form": "天",
+      "meaning": "heavens",
+      "sort_order": 58
+    },
+    {
+      "slug": "to-quell",
+      "primary_form": "䚯",
+      "meaning": "to quell (uprising, rebellion, etc.) to punish (another nation, etc.) by force of arms",
+      "sort_order": 59
     },
     {
       "slug": "and-yet",
@@ -61,85 +375,1349 @@
         "review_status": "reviewed"
       },
       "visual_mnemonic_url": "radicals/k/and-yet.webp",
-      "sort_order": 9
+      "sort_order": 60
     },
     {
-      "slug": "comma-design",
-      "primary_form": "巴",
-      "meaning": "comma-design",
-      "sort_order": 10
+      "slug": "specialized",
+      "primary_form": "耑",
+      "meaning": "specialized",
+      "sort_order": 61
+    },
+    {
+      "slug": "livestock",
+      "primary_form": "畜",
+      "meaning": "livestock",
+      "sort_order": 62
+    },
+    {
+      "slug": "net-2",
+      "primary_form": "罔",
+      "meaning": "net",
+      "sort_order": 63
+    },
+    {
+      "slug": "upright",
+      "primary_form": "貞",
+      "meaning": "upright",
+      "sort_order": 64
+    },
+    {
+      "slug": "nun",
+      "primary_form": "尼",
+      "meaning": "nun",
+      "sort_order": 65
+    },
+    {
+      "slug": "t-ang",
+      "primary_form": "唐",
+      "meaning": "T'ang",
+      "sort_order": 66
+    },
+    {
+      "slug": "vermilion",
+      "primary_form": "朱",
+      "meaning": "vermilion",
+      "sort_order": 67
+    },
+    {
+      "slug": "inn",
+      "primary_form": "宿",
+      "meaning": "inn",
+      "sort_order": 68
+    },
+    {
+      "slug": "inside",
+      "primary_form": "内",
+      "meaning": "inside",
+      "sort_order": 69
+    },
+    {
+      "slug": "to-state",
+      "primary_form": "尃",
+      "meaning": "to state to",
+      "sort_order": 70
+    },
+    {
+      "slug": "sun-and",
+      "primary_form": "𬀷",
+      "meaning": "sun and sprout",
+      "sort_order": 71
+    },
+    {
+      "slug": "put-together",
+      "primary_form": "并",
+      "meaning": "put together",
+      "mnemonic_text": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
+      "image_prompt": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/put-together.webp",
+      "sort_order": 72
+    },
+    {
+      "slug": "rhs-of",
+      "primary_form": "旁",
+      "meaning": "RHS of character",
+      "sort_order": 73
+    },
+    {
+      "slug": "swelling",
+      "primary_form": "彭",
+      "meaning": "swelling",
+      "sort_order": 74
+    },
+    {
+      "slug": "chief",
+      "primary_form": "孟",
+      "meaning": "chief",
+      "sort_order": 75
+    },
+    {
+      "slug": "you",
+      "primary_form": "尓",
+      "meaning": "you",
+      "sort_order": 76
+    },
+    {
+      "slug": "phosphorus",
+      "primary_form": "粦",
+      "meaning": "phosphorus",
+      "sort_order": 77
     },
     {
       "slug": "cover",
       "primary_form": "奄",
       "meaning": "cover",
-      "sort_order": 11
+      "sort_order": 78
+    },
+    {
+      "slug": "house",
+      "primary_form": "家",
+      "meaning": "house",
+      "sort_order": 79
+    },
+    {
+      "slug": "protection",
+      "primary_form": "戍",
+      "meaning": "protection",
+      "sort_order": 80
+    },
+    {
+      "slug": "the-stride",
+      "primary_form": "奞",
+      "meaning": "the stride made by a man",
+      "sort_order": 81
+    },
+    {
+      "slug": "char",
+      "primary_form": "焦",
+      "meaning": "char",
+      "sort_order": 82
     },
     {
       "slug": "deer",
       "primary_form": "鹿",
       "meaning": "deer",
-      "sort_order": 12
+      "sort_order": 83
+    },
+    {
+      "slug": "casing",
+      "primary_form": "壳",
+      "meaning": "casing",
+      "sort_order": 84
+    },
+    {
+      "slug": "village-streamer",
+      "primary_form": "乡",
+      "meaning": "village streamer",
+      "sort_order": 85
+    },
+    {
+      "slug": "exit",
+      "primary_form": "出",
+      "meaning": "exit",
+      "sort_order": 86
+    },
+    {
+      "slug": "why",
+      "primary_form": "曷",
+      "meaning": "why",
+      "sort_order": 87
+    },
+    {
+      "slug": "measuring-box-2",
+      "primary_form": "桀",
+      "meaning": "measuring box",
+      "sort_order": 88
+    },
+    {
+      "slug": "concurrently",
+      "primary_form": "兼",
+      "meaning": "concurrently",
+      "sort_order": 89
+    },
+    {
+      "slug": "daring",
+      "primary_form": "敢",
+      "meaning": "daring",
+      "sort_order": 90
+    },
+    {
+      "slug": "empty",
+      "primary_form": "空",
+      "meaning": "empty",
+      "sort_order": 91
+    },
+    {
+      "slug": "prosperous",
+      "primary_form": "昌",
+      "meaning": "prosperous",
+      "sort_order": 92
+    },
+    {
+      "slug": "nonplussed",
+      "primary_form": "参",
+      "meaning": "nonplussed",
+      "sort_order": 93
+    },
+    {
+      "slug": "dispatch",
+      "primary_form": "遣",
+      "meaning": "dispatch",
+      "sort_order": 94
+    },
+    {
+      "slug": "office",
+      "primary_form": "曹",
+      "meaning": "office",
+      "sort_order": 95
+    },
+    {
+      "slug": "which",
+      "primary_form": "孰",
+      "meaning": "which",
+      "sort_order": 96
+    },
+    {
+      "slug": "prolong",
+      "primary_form": "延",
+      "meaning": "prolong",
+      "sort_order": 97
+    },
+    {
+      "slug": "godown",
+      "primary_form": "倉",
+      "meaning": "godown",
+      "sort_order": 98
+    },
+    {
+      "slug": "to-state-2",
+      "primary_form": "旉",
+      "meaning": "to state to",
+      "sort_order": 99
+    },
+    {
+      "slug": "uncle",
+      "primary_form": "叔",
+      "meaning": "uncle",
+      "sort_order": 100
+    },
+    {
+      "slug": "death",
+      "primary_form": "死",
+      "meaning": "death",
+      "sort_order": 101
+    },
+    {
+      "slug": "rare-beast",
+      "primary_form": "离",
+      "meaning": "rare beast",
+      "sort_order": 102
+    },
+    {
+      "slug": "left-hand",
+      "primary_form": "屮",
+      "meaning": "left hand",
+      "sort_order": 103
+    },
+    {
+      "slug": "above",
+      "primary_form": "上",
+      "meaning": "above",
+      "sort_order": 104
+    },
+    {
+      "slug": "below",
+      "primary_form": "下",
+      "meaning": "below",
+      "sort_order": 105
+    },
+    {
+      "slug": "roof",
+      "primary_form": "屋",
+      "meaning": "roof",
+      "sort_order": 106
+    },
+    {
+      "slug": "seedling",
+      "primary_form": "苗",
+      "meaning": "seedling",
+      "sort_order": 107
+    },
+    {
+      "slug": "wall",
+      "primary_form": "屏",
+      "meaning": "wall",
+      "sort_order": 108
+    },
+    {
+      "slug": "resist",
+      "primary_form": "夆",
+      "meaning": "resist",
+      "sort_order": 109
+    },
+    {
+      "slug": "kuro",
+      "primary_form": "黒",
+      "meaning": "black",
+      "mnemonic_text": "Picture an old cast-iron stove: the grid at the top is the fuel packed inside, and the four dots along the bottom are the flames licking up underneath it. Burn it long enough and the whole thing is caked in soot — that's why this shape means <radical>black</radical>.",
+      "image_prompt": "Picture an old cast-iron stove: the grid at the top is the fuel packed inside, and the four dots along the bottom are the flames licking up underneath it. Burn it long enough and the whole thing is caked in soot — that's why this shape means <radical>black</radical>.",
+      "_meta": {
+        "generator_model": "claude-opus-4-8",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/n5/kuro.webp",
+      "sort_order": 110
+    },
+    {
+      "slug": "hundred-2",
+      "primary_form": "百",
+      "meaning": "hundred",
+      "sort_order": 111
+    },
+    {
+      "slug": "path",
+      "primary_form": "路",
+      "meaning": "path",
+      "sort_order": 112
+    },
+    {
+      "slug": "shoes",
+      "primary_form": "沓",
+      "meaning": "shoes",
+      "sort_order": 113
+    },
+    {
+      "slug": "so-and",
+      "primary_form": "某",
+      "meaning": "so-and-so",
+      "sort_order": 114
+    },
+    {
+      "slug": "wide-2",
+      "primary_form": "曼",
+      "meaning": "wide",
+      "sort_order": 115
+    },
+    {
+      "slug": "ray",
+      "primary_form": "光",
+      "meaning": "ray",
+      "sort_order": 116
+    },
+    {
+      "slug": "body",
+      "primary_form": "躬",
+      "meaning": "body",
+      "sort_order": 117
+    },
+    {
+      "slug": "servant",
+      "primary_form": "奚",
+      "meaning": "servant",
+      "sort_order": 118
+    },
+    {
+      "slug": "conspicuous",
+      "primary_form": "显",
+      "meaning": "conspicuous",
+      "sort_order": 119
+    },
+    {
+      "slug": "badge",
+      "primary_form": "章",
+      "meaning": "badge",
+      "sort_order": 120
+    },
+    {
+      "slug": "home-town",
+      "primary_form": "郷",
+      "meaning": "home town",
+      "sort_order": 121
+    },
+    {
+      "slug": "of",
+      "primary_form": "之",
+      "meaning": "of",
+      "sort_order": 122
+    },
+    {
+      "slug": "other",
+      "primary_form": "它",
+      "meaning": "other",
+      "sort_order": 123
     },
     {
       "slug": "tusk",
       "primary_form": "牙",
       "meaning": "tusk",
-      "sort_order": 13
+      "sort_order": 124
+    },
+    {
+      "slug": "hemp",
+      "primary_form": "麻",
+      "meaning": "hemp",
+      "sort_order": 125
     },
     {
       "slug": "reasonable",
       "primary_form": "尤",
       "meaning": "reasonable",
-      "sort_order": 14
+      "sort_order": 126
     },
     {
-      "slug": "mortar",
-      "primary_form": "臼",
-      "meaning": "mortar",
-      "sort_order": 15
+      "slug": "reject",
+      "primary_form": "斥",
+      "meaning": "reject",
+      "sort_order": 127
+    },
+    {
+      "slug": "melon-2",
+      "primary_form": "陏",
+      "meaning": "melon",
+      "sort_order": 128
+    },
+    {
+      "slug": "borough",
+      "primary_form": "府",
+      "meaning": "borough",
+      "sort_order": 129
+    },
+    {
+      "slug": "astray",
+      "primary_form": "迷",
+      "meaning": "astray",
+      "sort_order": 130
+    },
+    {
+      "slug": "leather-strap",
+      "primary_form": "䩗",
+      "meaning": "leather strap",
+      "sort_order": 131
+    },
+    {
+      "slug": "walk",
+      "primary_form": "歩",
+      "meaning": "walk",
+      "sort_order": 132
+    },
+    {
+      "slug": "scenery",
+      "primary_form": "景",
+      "meaning": "scenery",
+      "sort_order": 133
+    },
+    {
+      "slug": "fold",
+      "primary_form": "折",
+      "meaning": "fold",
+      "sort_order": 134
+    },
+    {
+      "slug": "profit",
+      "primary_form": "利",
+      "meaning": "profit",
+      "sort_order": 135
+    },
+    {
+      "slug": "enjoy",
+      "primary_form": "享",
+      "meaning": "enjoy",
+      "sort_order": 136
+    },
+    {
+      "slug": "a-shoe",
+      "primary_form": "舄",
+      "meaning": "a shoe",
+      "sort_order": 137
+    },
+    {
+      "slug": "previously",
+      "primary_form": "既",
+      "meaning": "previously",
+      "sort_order": 138
+    },
+    {
+      "slug": "lowly",
+      "primary_form": "卑",
+      "meaning": "lowly",
+      "sort_order": 139
+    },
+    {
+      "slug": "leaping-horse",
+      "primary_form": "駦",
+      "meaning": "leaping horse",
+      "sort_order": 140
+    },
+    {
+      "slug": "hakogamae",
+      "primary_form": "匚",
+      "meaning": "box on its side",
+      "mnemonic_text": "Three strokes: a lid across the top, a floor across the bottom, and one wall joining them down the left. The right-hand side is simply missing. The whole container has been tipped over so its open mouth faces you, and now it is a <radical>box on its side</radical>, waiting for something to be slid straight in.",
+      "image_prompt": "Three strokes: a lid across the top, a floor across the bottom, and one wall joining them down the left. The right-hand side is simply missing. The whole container has been tipped over so its open mouth faces you, and now it is a <radical>box on its side</radical>, waiting for something to be slid straight in.",
+      "_meta": {
+        "generator_model": "claude-opus-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/hakogamae.webp",
+      "sort_order": 141
+    },
+    {
+      "slug": "two-hands",
+      "primary_form": "𦥑",
+      "meaning": "two hands",
+      "sort_order": 142
+    },
+    {
+      "slug": "goods",
+      "primary_form": "品",
+      "meaning": "goods",
+      "mnemonic_text": "Look at 品 from the front and you see three square crates in a stack. One box sits on top. Two more sit side by side beneath it. Together they're one delivery of <radical>goods</radical>.",
+      "image_prompt": "Trace 品 stroke by stroke: one square crate sits alone on top, and two more identical square crates sit side by side directly beneath it, stacked like a delivery pallet outside a shop's back door. Three sealed boxes, boxed and ready to ship — that whole stack is <radical>goods</radical>.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "draft"
+      },
+      "visual_mnemonic_url": "radicals/k/goods.webp",
+      "sort_order": 143
+    },
+    {
+      "slug": "soldier-2",
+      "primary_form": "兵",
+      "meaning": "soldier",
+      "sort_order": 144
+    },
+    {
+      "slug": "guard",
+      "primary_form": "守",
+      "meaning": "guard",
+      "sort_order": 145
+    },
+    {
+      "slug": "rat",
+      "primary_form": "鼡",
+      "meaning": "rat",
+      "sort_order": 146
+    },
+    {
+      "slug": "blade",
+      "primary_form": "刃",
+      "meaning": "blade",
+      "sort_order": 147
+    },
+    {
+      "slug": "license",
+      "primary_form": "允",
+      "meaning": "license",
+      "sort_order": 148
+    },
+    {
+      "slug": "softening",
+      "primary_form": "雍",
+      "meaning": "softening",
+      "sort_order": 149
+    },
+    {
+      "slug": "accompany",
+      "primary_form": "従",
+      "meaning": "accompany",
+      "sort_order": 150
+    },
+    {
+      "slug": "omen",
+      "primary_form": "卦",
+      "meaning": "omen",
+      "sort_order": 151
     },
     {
       "slug": "dragon",
       "primary_form": "竜",
       "meaning": "dragon",
-      "sort_order": 16
+      "sort_order": 152
+    },
+    {
+      "slug": "state",
+      "primary_form": "州",
+      "meaning": "state",
+      "sort_order": 153
+    },
+    {
+      "slug": "universal",
+      "primary_form": "普",
+      "meaning": "universal",
+      "sort_order": 154
+    },
+    {
+      "slug": "edible-greens",
+      "primary_form": "莧",
+      "meaning": "edible greens",
+      "sort_order": 155
+    },
+    {
+      "slug": "sob",
+      "primary_form": "旡",
+      "meaning": "sob",
+      "sort_order": 156
+    },
+    {
+      "slug": "regiment",
+      "primary_form": "隊",
+      "meaning": "regiment",
+      "sort_order": 157
+    },
+    {
+      "slug": "solemn",
+      "primary_form": "粛",
+      "meaning": "solemn",
+      "sort_order": 158
     },
     {
       "slug": "snake",
       "primary_form": "豸",
       "meaning": "snake",
-      "sort_order": 17
+      "sort_order": 159
+    },
+    {
+      "slug": "type-of",
+      "primary_form": "舜",
+      "meaning": "type of morning glory",
+      "sort_order": 160
+    },
+    {
+      "slug": "belong",
+      "primary_form": "属",
+      "meaning": "belong",
+      "sort_order": 161
+    },
+    {
+      "slug": "trust",
+      "primary_form": "頼",
+      "meaning": "trust",
+      "sort_order": 162
+    },
+    {
+      "slug": "carrier",
+      "primary_form": "般",
+      "meaning": "carrier",
+      "sort_order": 163
+    },
+    {
+      "slug": "doubt",
+      "primary_form": "疑",
+      "meaning": "doubt",
+      "sort_order": 164
+    },
+    {
+      "slug": "second",
+      "primary_form": "亚",
+      "meaning": "second",
+      "sort_order": 165
+    },
+    {
+      "slug": "public",
+      "primary_form": "公",
+      "meaning": "public",
+      "sort_order": 166
     },
     {
       "slug": "hair-hanging",
       "primary_form": "髟",
       "meaning": "hair hanging long",
-      "sort_order": 18
+      "sort_order": 167
+    },
+    {
+      "slug": "soldier",
+      "primary_form": "卆",
+      "meaning": "soldier",
+      "sort_order": 168
+    },
+    {
+      "slug": "determine",
+      "primary_form": "定",
+      "meaning": "determine",
+      "sort_order": 169
+    },
+    {
+      "slug": "divination",
+      "primary_form": "彖",
+      "meaning": "divination",
+      "sort_order": 170
+    },
+    {
+      "slug": "employ",
+      "primary_form": "雇",
+      "meaning": "employ",
+      "sort_order": 171
+    },
+    {
+      "slug": "scroll",
+      "primary_form": "巻",
+      "meaning": "scroll",
+      "sort_order": 172
+    },
+    {
+      "slug": "laid-waste",
+      "primary_form": "荒",
+      "meaning": "laid waste",
+      "sort_order": 173
+    },
+    {
+      "slug": "consider",
+      "primary_form": "考",
+      "meaning": "consider",
+      "sort_order": 174
+    },
+    {
+      "slug": "left",
+      "primary_form": "左",
+      "meaning": "left",
+      "sort_order": 175
+    },
+    {
+      "slug": "truly",
+      "primary_form": "亶",
+      "meaning": "truly",
+      "sort_order": 176
+    },
+    {
+      "slug": "decorate",
+      "primary_form": "賁",
+      "meaning": "decorate",
+      "sort_order": 177
+    },
+    {
+      "slug": "ride",
+      "primary_form": "乗",
+      "meaning": "ride",
+      "sort_order": 178
+    },
+    {
+      "slug": "surface",
+      "primary_form": "表",
+      "meaning": "surface",
+      "sort_order": 179
+    },
+    {
+      "slug": "prohibition",
+      "primary_form": "禁",
+      "meaning": "prohibition",
+      "sort_order": 180
+    },
+    {
+      "slug": "eminent",
+      "primary_form": "卓",
+      "meaning": "eminent",
+      "sort_order": 181
+    },
+    {
+      "slug": "green-caterpillar",
+      "primary_form": "蜀",
+      "meaning": "green caterpillar",
+      "sort_order": 182
     },
     {
       "slug": "tile",
       "primary_form": "瓦",
       "meaning": "tile",
-      "sort_order": 19
+      "sort_order": 183
+    },
+    {
+      "slug": "rising-water",
+      "primary_form": "滕",
+      "meaning": "rising water",
+      "sort_order": 184
+    },
+    {
+      "slug": "commander",
+      "primary_form": "帥",
+      "meaning": "commander",
+      "sort_order": 185
+    },
+    {
+      "slug": "walk-slowly",
+      "primary_form": "夋",
+      "meaning": "walk slowly",
+      "sort_order": 186
+    },
+    {
+      "slug": "virtuous",
+      "primary_form": "善",
+      "meaning": "virtuous",
+      "sort_order": 187
+    },
+    {
+      "slug": "sash",
+      "primary_form": "帯",
+      "meaning": "sash",
+      "sort_order": 188
+    },
+    {
+      "slug": "true",
+      "primary_form": "真",
+      "meaning": "true",
+      "sort_order": 189
+    },
+    {
+      "slug": "from",
+      "primary_form": "乃",
+      "meaning": "from",
+      "sort_order": 190
+    },
+    {
+      "slug": "suddenly",
+      "primary_form": "赫",
+      "meaning": "suddenly",
+      "sort_order": 191
+    },
+    {
+      "slug": "uncommon",
+      "primary_form": "異",
+      "meaning": "uncommon",
+      "sort_order": 192
+    },
+    {
+      "slug": "be-worn",
+      "primary_form": "敝",
+      "meaning": "be worn-out",
+      "sort_order": 193
+    },
+    {
+      "slug": "name",
+      "primary_form": "名",
+      "meaning": "name",
+      "sort_order": 194
+    },
+    {
+      "slug": "boast",
+      "primary_form": "夸",
+      "meaning": "boast",
+      "sort_order": 195
+    },
+    {
+      "slug": "lacquer-tree",
+      "primary_form": "桼",
+      "meaning": "lacquer tree",
+      "sort_order": 196
+    },
+    {
+      "slug": "exchange-2",
+      "primary_form": "替",
+      "meaning": "exchange",
+      "sort_order": 197
+    },
+    {
+      "slug": "indications",
+      "primary_form": "徴",
+      "meaning": "indications",
+      "sort_order": 198
+    },
+    {
+      "slug": "lamb",
+      "primary_form": "羔",
+      "meaning": "lamb",
+      "sort_order": 199
+    },
+    {
+      "slug": "grateful",
+      "primary_form": "忝",
+      "meaning": "grateful",
+      "sort_order": 200
+    },
+    {
+      "slug": "bright",
+      "primary_form": "明",
+      "meaning": "bright",
+      "sort_order": 201
+    },
+    {
+      "slug": "the-fore",
+      "primary_form": "厷",
+      "meaning": "the fore-arm",
+      "sort_order": 202
+    },
+    {
+      "slug": "spit",
+      "primary_form": "串",
+      "meaning": "spit",
+      "sort_order": 203
+    },
+    {
+      "slug": "dispose",
+      "primary_form": "処",
+      "meaning": "dispose",
+      "sort_order": 204
+    },
+    {
+      "slug": "invariably",
+      "primary_form": "必",
+      "meaning": "invariably",
+      "sort_order": 205
+    },
+    {
+      "slug": "mound",
+      "primary_form": "冢",
+      "meaning": "mound",
+      "sort_order": 206
+    },
+    {
+      "slug": "county",
+      "primary_form": "縣",
+      "meaning": "county",
+      "sort_order": 207
+    },
+    {
+      "slug": "superior",
+      "primary_form": "隽",
+      "meaning": "superior",
+      "sort_order": 208
+    },
+    {
+      "slug": "utmost",
+      "primary_form": "最",
+      "meaning": "utmost",
+      "sort_order": 209
+    },
+    {
+      "slug": "fell",
+      "primary_form": "伐",
+      "meaning": "fell",
+      "sort_order": 210
+    },
+    {
+      "slug": "recommend",
+      "primary_form": "薦",
+      "meaning": "recommend",
+      "sort_order": 211
+    },
+    {
+      "slug": "beheading",
+      "primary_form": "斬",
+      "meaning": "beheading",
+      "sort_order": 212
+    },
+    {
+      "slug": "dragon-2",
+      "primary_form": "龍",
+      "meaning": "dragon",
+      "sort_order": 213
+    },
+    {
+      "slug": "5th-calendar",
+      "primary_form": "戊",
+      "meaning": "5th calendar sign",
+      "sort_order": 214
+    },
+    {
+      "slug": "whip",
+      "primary_form": "楚",
+      "meaning": "whip",
+      "sort_order": 215
+    },
+    {
+      "slug": "morning",
+      "primary_form": "朝",
+      "meaning": "morning",
+      "sort_order": 216
     },
     {
       "slug": "melon",
       "primary_form": "瓜",
       "meaning": "melon",
-      "sort_order": 20
+      "sort_order": 217
     },
     {
-      "slug": "five",
-      "primary_form": "五",
-      "meaning": "five",
-      "sort_order": 21
+      "slug": "possess",
+      "primary_form": "有",
+      "meaning": "possess",
+      "sort_order": 218
+    },
+    {
+      "slug": "handful",
+      "primary_form": "匊",
+      "meaning": "handful",
+      "sort_order": 219
+    },
+    {
+      "slug": "jubilation",
+      "primary_form": "慶",
+      "meaning": "jubilation",
+      "sort_order": 220
+    },
+    {
+      "slug": "investigate",
+      "primary_form": "咨",
+      "meaning": "investigate",
+      "sort_order": 221
+    },
+    {
+      "slug": "quantity",
+      "primary_form": "量",
+      "meaning": "quantity",
+      "sort_order": 222
+    },
+    {
+      "slug": "false-2",
+      "primary_form": "叚",
+      "meaning": "false",
+      "sort_order": 223
+    },
+    {
+      "slug": "guess",
+      "primary_form": "察",
+      "meaning": "guess",
+      "sort_order": 224
+    },
+    {
+      "slug": "plump",
+      "primary_form": "太",
+      "meaning": "plump",
+      "sort_order": 225
+    },
+    {
+      "slug": "precipice",
+      "primary_form": "厓",
+      "meaning": "precipice",
+      "sort_order": 226
+    },
+    {
+      "slug": "level-2",
+      "primary_form": "庄",
+      "meaning": "level",
+      "sort_order": 227
+    },
+    {
+      "slug": "ghost-head",
+      "primary_form": "甶",
+      "meaning": "ghost head",
+      "sort_order": 228
+    },
+    {
+      "slug": "phantasm",
+      "primary_form": "幻",
+      "meaning": "phantasm",
+      "sort_order": 229
+    },
+    {
+      "slug": "son",
+      "primary_form": "郎",
+      "meaning": "son",
+      "sort_order": 230
+    },
+    {
+      "slug": "what-2",
+      "primary_form": "那",
+      "meaning": "what?",
+      "sort_order": 231
+    },
+    {
+      "slug": "intercalation",
+      "primary_form": "閏",
+      "meaning": "intercalation",
+      "sort_order": 232
+    },
+    {
+      "slug": "favor",
+      "primary_form": "恵",
+      "meaning": "favor",
+      "sort_order": 233
+    },
+    {
+      "slug": "know",
+      "primary_form": "知",
+      "meaning": "know",
+      "sort_order": 234
+    },
+    {
+      "slug": "be-superior",
+      "primary_form": "愈",
+      "meaning": "be superior",
+      "sort_order": 235
+    },
+    {
+      "slug": "emotion",
+      "primary_form": "感",
+      "meaning": "emotion",
+      "sort_order": 236
+    },
+    {
+      "slug": "used-as",
+      "primary_form": "寍",
+      "meaning": "used as a term of comparison",
+      "sort_order": 237
+    },
+    {
+      "slug": "ascend",
+      "primary_form": "登",
+      "meaning": "ascend",
+      "sort_order": 238
+    },
+    {
+      "slug": "meeting-2",
+      "primary_form": "逢",
+      "meaning": "meeting",
+      "sort_order": 239
+    },
+    {
+      "slug": "breath",
+      "primary_form": "息",
+      "meaning": "breath",
+      "sort_order": 240
+    },
+    {
+      "slug": "risk",
+      "primary_form": "冒",
+      "meaning": "risk",
+      "sort_order": 241
+    },
+    {
+      "slug": "grade",
+      "primary_form": "段",
+      "meaning": "grade",
+      "sort_order": 242
+    },
+    {
+      "slug": "fiber",
+      "primary_form": "維",
+      "meaning": "fiber",
+      "sort_order": 243
+    },
+    {
+      "slug": "fish-body",
+      "primary_form": "𩵋",
+      "meaning": "fish body",
+      "sort_order": 244
+    },
+    {
+      "slug": "commoner",
+      "primary_form": "庶",
+      "meaning": "commoner",
+      "sort_order": 245
+    },
+    {
+      "slug": "cut",
+      "primary_form": "切",
+      "meaning": "cut",
+      "sort_order": 246
+    },
+    {
+      "slug": "grass",
+      "primary_form": "卉",
+      "meaning": "grass",
+      "sort_order": 247
+    },
+    {
+      "slug": "water-in",
+      "primary_form": "潘",
+      "meaning": "water in which rice has been washed",
+      "sort_order": 248
+    },
+    {
+      "slug": "cloud-2",
+      "primary_form": "雲",
+      "meaning": "cloud",
+      "sort_order": 249
+    },
+    {
+      "slug": "wind",
+      "primary_form": "風",
+      "meaning": "wind",
+      "mnemonic_text": "風's outer stroke curves out then hooks under like a curtain caught mid-billow, the whole panel bulging and snapping taut in one direction — exactly the shape a sheet takes on a clothesline when a sudden gust of <radical>wind</radical> grabs it.",
+      "image_prompt": "風's outer stroke curves out then hooks under like a curtain caught mid-billow, the whole panel bulging and snapping taut in one direction — exactly the shape a sheet takes on a clothesline when a sudden gust of <radical>wind</radical> grabs it.",
+      "_meta": {
+        "generator_model": "sonnet-5",
+        "prompt_version": "1",
+        "review_status": "reviewed"
+      },
+      "visual_mnemonic_url": "radicals/k/wind.webp",
+      "sort_order": 250
+    },
+    {
+      "slug": "younger-of",
+      "primary_form": "尗",
+      "meaning": "younger of brothers",
+      "sort_order": 251
+    },
+    {
+      "slug": "tiger",
+      "primary_form": "乕",
+      "meaning": "tiger",
+      "sort_order": 252
+    },
+    {
+      "slug": "equal-2",
+      "primary_form": "匹",
+      "meaning": "equal",
+      "sort_order": 253
+    },
+    {
+      "slug": "religion",
+      "primary_form": "宗",
+      "meaning": "religion",
+      "sort_order": 254
+    },
+    {
+      "slug": "longevity",
+      "primary_form": "寿",
+      "meaning": "longevity",
+      "sort_order": 255
+    },
+    {
+      "slug": "end-2",
+      "primary_form": "末",
+      "meaning": "end",
+      "sort_order": 256
+    },
+    {
+      "slug": "warrior-2",
+      "primary_form": "戎",
+      "meaning": "warrior",
+      "sort_order": 257
+    },
+    {
+      "slug": "narrow",
+      "primary_form": "窄",
+      "meaning": "narrow",
+      "sort_order": 258
+    },
+    {
+      "slug": "mortar",
+      "primary_form": "臼",
+      "meaning": "mortar",
+      "sort_order": 259
+    },
+    {
+      "slug": "yellow-clay",
+      "primary_form": "堇",
+      "meaning": "yellow clay",
+      "sort_order": 260
+    },
+    {
+      "slug": "courage",
+      "primary_form": "勇",
+      "meaning": "courage",
+      "sort_order": 261
+    },
+    {
+      "slug": "protect",
+      "primary_form": "保",
+      "meaning": "protect",
+      "sort_order": 262
+    },
+    {
+      "slug": "decameron",
+      "primary_form": "旬",
+      "meaning": "decameron",
+      "sort_order": 263
+    },
+    {
+      "slug": "together-2",
+      "primary_form": "胥",
+      "meaning": "together",
+      "sort_order": 264
+    },
+    {
+      "slug": "wash",
+      "primary_form": "澡",
+      "meaning": "wash",
+      "sort_order": 265
+    },
+    {
+      "slug": "curled-up",
+      "primary_form": "夗",
+      "meaning": "curled up",
+      "sort_order": 266
+    },
+    {
+      "slug": "convex",
+      "primary_form": "凸",
+      "meaning": "convex",
+      "sort_order": 267
+    },
+    {
+      "slug": "demand",
+      "primary_form": "需",
+      "meaning": "demand",
+      "sort_order": 268
+    },
+    {
+      "slug": "tenacious",
+      "primary_form": "執",
+      "meaning": "tenacious",
+      "sort_order": 269
+    },
+    {
+      "slug": "autumn",
+      "primary_form": "秋",
+      "meaning": "autumn",
+      "sort_order": 270
+    },
+    {
+      "slug": "new",
+      "primary_form": "新",
+      "meaning": "new",
+      "sort_order": 271
+    },
+    {
+      "slug": "easy",
+      "primary_form": "易",
+      "meaning": "easy",
+      "sort_order": 272
+    },
+    {
+      "slug": "whole",
+      "primary_form": "全",
+      "meaning": "whole",
+      "sort_order": 273
+    },
+    {
+      "slug": "concave",
+      "primary_form": "凹",
+      "meaning": "concave",
+      "sort_order": 274
+    },
+    {
+      "slug": "bountiful",
+      "primary_form": "豊",
+      "meaning": "bountiful",
+      "sort_order": 275
+    },
+    {
+      "slug": "rejoice",
+      "primary_form": "喜",
+      "meaning": "rejoice",
+      "sort_order": 276
     },
     {
       "slug": "salt",
       "primary_form": "鹵",
       "meaning": "salt",
-      "sort_order": 22
+      "sort_order": 277
     }
   ]
 }

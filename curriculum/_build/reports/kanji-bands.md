@@ -8,11 +8,11 @@ A band is a teaching budget, not a coverage gate. Kanji outside a learner's band
 
 | Level | Kanji | Cum. | Radicals | Rad. cum. | Reuse floor |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| N5 | 150 | 150 | 115 | 115 | 1 |
-| N4 | 175 | 325 | 46 | 161 | 0 |
-| N3 | 375 | 700 | 42 | 203 | 0 |
-| N2 | 300 | 1000 | 13 | 216 | 0 |
-| N1 | 1000 | 2000 | 22 | 238 | 0 |
+| N5 | 150 | 150 | 148 | 148 | 1 |
+| N4 | 175 | 325 | 107 | 255 | 0 |
+| N3 | 375 | 700 | 180 | 435 | 0 |
+| N2 | 300 | 1000 | 105 | 540 | 0 |
+| N1 | 1000 | 2000 | 277 | 817 | 0 |
 
 Reuse floor is the fewest same-level words any kanji in the band appears in. A floor of 0 means the band ran out of kanji that any of its own words use and fell back to frequency rank.
 
@@ -37,9 +37,7 @@ Words every kanji of which is inside the cumulative band — the population that
 
 ## Radicals in the N5+N4 band without prose
 
-161 radicals file at a level that ships full content. 39 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
+255 radicals file at a level that ships full content. 146 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
 
-| Radical | Meaning | Level | First needed by |
-| --- | --- | --- | --- |
-| 品 `goods` | goods | N4 | 品 |
-| 井 `well` | well | N4 | 寒 |
+Every one of them has a mnemonic.
+

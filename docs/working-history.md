@@ -3,7 +3,7 @@
 Every plan and story doc in this repo, with one status each. Details stay in the linked
 plan; **only leftovers are listed here**, one line per point.
 
-Last verified against the codebase: **2026-08-11**
+Last verified against the codebase: **2026-09-01**
 
 - **Done** — plan acceptance met, or the doc is a closed investigation / reference.
 - **Partial** — meaningful work shipped, leftovers listed in [What's left](#whats-left).
@@ -114,7 +114,8 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 ### Content quality pipeline
 - **N4 is untouched for every content type**: 0/97 grammar lessons, 0/94 kanji mnemonics, 0/33 radicals, 0 vocab mnemonics, 0 examples.
 - N5 vocabulary example sentences: 491/1,245 generated and all still `draft`, never reviewed.
-- N5 radical/kanji mnemonics still fail the current Rev-3 gate by design — the wholesale regen (radicals → kanji → vocab) has not run; needs API credentials or a web-chat/subagent lane.
+- ~~N5 radical/kanji mnemonics still fail the current Rev-3 gate by design~~ — **closed 2026-08-31**. All 469 stored kanji and 185 stored radicals now pass the full gate (2 length nits on one radical remain). Closed by the Rev 6/7 sweep, not by the wholesale regen, which still has not run.
+- **Rev 6/7 kanji meaning-mnemonic sweep, done 2026-08-31.** Rev 6 (previous session) retargeted the house style to 120–220 characters of plain English in one cause-and-effect chain and added the `<kanji>` landing tag; Rev 7 added the *identity* class — a kanji that simply **is** a taught radical (山 the radical, 山 the kanji) now says so in one line instead of getting an invented scene, detected mechanically by `mnemonic_context.identical_radical` (116 kanji) with its own 40–200 gate band. Applied in place over stored prose rather than regenerated: 118 drafts (Rev 6), then 35 identity items and 231 over-length reviewed items (Rev 7), 266 in this session. Only `meaning_mnemonic` was touched — reading mnemonics and descriptions are byte-identical. `PROMPT_VERSION` deliberately stays at 4 throughout (bumping would make `cmd_run` regenerate every stored draft and throw the sweep away). Corpus after: 469 kanji, meaning length 77/188/260, 0 gate failures, 0 missing landing tags. **Cost: every rewritten item dropped to `draft`, so reviewed went 351 → 86** — a re-review queue of 383 is the outstanding work.
 - Review card mnemonic (`queueBuilder`) and `PassageWordDetailSheet` still read the old `mnemonic_text` field only.
 - Phase 5 human review tool (`npm run review-content`) never built — review-status flips are ad hoc.
 - Settings → About attribution UI missing (root `NOTICE` exists, no in-app surface).
@@ -399,6 +400,91 @@ except [3-3 Bunpro import](../_bmad-output/implementation-artifacts/3-3-bunpro-i
 - `feedback-error` token used in 3 places but never defined — the review exit sheet's "End session" button renders white-on-light. See [known-issues.md](./known-issues.md).
 - Executorch main vs Expo resource-fetcher nightly skew: accepted risk, revisit on upstream release.
 - `codebase-issues.md` L1–L10: naming/perf/fragility items, all low severity, none user-visible.
+
+### Kanji decomposition switched from KRADFILE to KanjiVG (2026-09-01)
+- `curriculum/_build/import/build_decomposition.py` → `_build/decomposition.json` is now the
+  **single source** for every radical → kanji `builds_on` edge. `generate.py`,
+  `generate_deps.py` and `reports/kanji_bands.py` all read it. KRADFILE survives only as the
+  fallback for the 13 kanji KanjiVG has no entry for.
+- Why: KRADFILE is a flat search index, so it listed every search radical at any depth and
+  double-counted regions — 便 shipped as 人一ノ｜日田 and 休 as 人亻木. KanjiVG's stroke groups
+  nest by component, so the top level is the split a human would draw: 便 = 亻+更, 映 = 日+央,
+  輸 = 車+兪. 1,649 of 2,000 kanji now land on exactly two components; 33 on four or more,
+  down from 609.
+- Radicals grew **238 → 798** (N5 115→134, N4 46→99). 22 old radicals are no longer a
+  component anywhere and were dropped, 8 of them carrying reviewed prose (面 買 初 世 無 麦 and
+  the stroke-level ノ ｜, which were the point of the change). Their sidecar entries are left
+  in place, unused.
+- **Leftover:** 513 radicals at N3+ have no `mnemonic_text`. Harmless today — those levels ship
+  no kanji prose either — but they are the queue if N3 content starts.
+- **Leftover:** `N5_DECOMPOSITION` / `N4_DECOMPOSITION` in `generate_deps.py` (~200 lines of
+  curated data) are now dead and were deliberately left in place, not deleted.
+
+### Kanji meaning mnemonics restyled to one logical sentence (2026-09-01)
+- The Rev 6 "two or three sentences, one causal chain" form produced a scene the components took
+  turns acting in, with the meaning bolted on at the end. Rev 8 is **one sentence that reads as a
+  reason**: 員 went from 216 characters of gatekeeper-and-badge to "An employee is just one more
+  mouth the company has to feed with its own money."
+- Enforced by `MEANING_MAX_SENTENCES = 1` in `validate_mnemonics.py` (fresh-draft lane only) and a
+  `LEN_BOUNDS` floor drop 100 → 60. The meaning may now sit **anywhere** in the sentence, not only
+  at the end.
+- 266 kanji rewritten and ingested; 108 new N5/N4 radicals authored. Prompts updated:
+  `prompts/kanji-mnemonic.md`, `prompts/vocab-mnemonic.md` (logic rule only — vocab keeps its own
+  length), `restyle/BRIEF.md`.
+- **Leftover:** **112 stored kanji mnemonics are `flagged_for_rewrite`** — they name components
+  their kanji no longer has after the KanjiVG switch. They must be rewritten before those kanji
+  ship. Run `restyle_drafts.py dump` to batch them.
+
+### Decomposition holes closed: every split now accounts for every stroke (2026-09-01)
+- KanjiVG labels the stroke groups it has names for and leaves the rest as bare strokes, and the
+  walk in `build_decomposition.py` could only hoist *labelled* children out of an unnamed region.
+  A region with no labelled child had its strokes dropped: **229 kanji shipped a component list
+  with a hole in it** — 前 as 八+月+刂 with no ground, 右 as a mouth with no hand, 白 as 日 alone,
+  先 as 儿 alone, 鳥 as 灬 alone, and 54 kanji (大 日 月 金 口 …) with no components at all.
+- Every split is now checked against the glyph's own stroke count and a short one is not used:
+  - `KANJI_OVERRIDES` (121 entries) states the components by hand where the missing region has a
+    name — 前 = 丷+一+月+刂, 右 = 𠂇+口, 左 = 𠂇+工, 電 = 雨+电, 直 = 十+目+乚.
+  - Where it has none, the kanji is taught as **its own single radical** (140 kanji: 七 大 北 白
+    立 鳥 馬 …), which is the pairing 長/長 has always shipped and what KRADFILE says about most
+    of them.
+  - `HAND_STROKES` + the stroke-sum audit at the end of the run keep the hand table honest; it
+    prints any entry whose components do not add up.
+- "horns" moved from 䒑 to **丷**, with 一 as its own chip (`FORM_EXPANSIONS`, `SLUG_MOVES`), so
+  the slug and its prose carry over. Its sidecar text was reworded — the bar it described is gone.
+- Radicals 798 → 817. **N5 134 → 148, N4 99 → 107**, because a radical files at the level of the
+  first kanji that needs it and identity edges pull 北 右 左 七 今 … forward to N5. 面 世 無 西 came
+  back from the dropped set and recovered their prose. 10 new N5/N4 radicals were authored
+  (五 万 西 北 今 电 飛 乚 以 民); no N5/N4 radical is prose-less.
+- Kanji bands did not move (`bands.json` kanji section is byte-identical), so only the radical
+  level files were rewritten.
+- **Leftover:** **169 stored kanji mnemonics fail the gate and are all now
+  `flagged_for_rewrite`** (N5 67, N4 65, N3 28, N2 5, N1 4). 69 were newly marked in this pass:
+  64 were `draft`, 5 were `reviewed` (行 生 自 夫 夜 — flipped deliberately, on request, because
+  their decomposition moved under them). 168 of the 169 name components their kanji no longer has,
+  or are now identity items still carrying an invented scene where the contract wants one sentence
+  ("the <radical>big</radical> radical and the <kanji>big</kanji> kanji are the same"); the odd one
+  out is 重, whose description names 日 as a look-alike it does not have. No prose was edited.
+- 12 items that were already flagged now *pass* the gate (口 立 羊 糸 竹 矢 角 肉 戸 羽 鳥 谷 — all
+  became identity items and their stored prose happens to fit). They were left flagged, so the
+  regeneration list is 181 unless they are dropped by hand.
+- The flags were propagated into the shipped `curriculum/kanji/<level>.json` by hand (68 items:
+  N5 36, N4 21, N3 8, N1 3). `generate.py` normally does that — it takes the *least* reviewed
+  status of the mnemonic and example sidecars — but it cannot run here without `fugashi`, and the
+  level files were otherwise already in sync with the sidecar prose. `compile-curriculum` only
+  warns on a non-reviewed status, so nothing is withheld from the app by this.
+- Regenerate with `generate_content/generate_mnemonics.py --type kanji --level <lvl> --slugs …`.
+  `restyle_drafts.py dump` will **not** pick these up: its `drafts()` selects `draft` (and
+  optionally `reviewed`) and skips `flagged_for_rewrite`.
+- **Gate gap:** 79 kanji are identity items with stored prose, and the 30 that pass the gate are
+  all still multi-sentence scenes rather than the Rev 7 one-sentence "the radical and the kanji
+  are the same". The gate cannot see it: when the radical meaning *is* the kanji meaning, any
+  story that names it satisfies the component check, and `MEANING_MAX_SENTENCES` only runs on the
+  fresh-draft lane. 12 of the 30 are flagged for other reasons; the other 18 (雨 力 入 川 子 耳 木
+  二 女 水 手 夕 米 石 王 刀 弓 毛, 6 of them `reviewed`) are not flagged. Applying the
+  one-sentence rule to identity items on the stored lane would catch the class mechanically.
+- **Leftover:** `generate.py --bands` was not run end to end (no `fugashi` on this machine, and
+  PyPI is unreachable from here). The radical level files were written through `generate.py`'s own
+  `_write_banded`; the kanji files need no rewrite. `npm run compile-curriculum` still pending.
 
 ### Dead code to remove (not missing features)
 - `claimStreakCelebration` + migration 014 (`src/data/user/streakRepository.ts`) — Plan 05 §5.2's data path. PRD decision R2 removed streaks from Home, so this has no UI and no callers by design. Do not build onto it.

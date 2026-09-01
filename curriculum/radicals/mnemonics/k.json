@@ -565,5 +565,1067 @@
       "prompt_version": "1",
       "review_status": "draft"
     }
+  },
+  "thicket": {
+    "mnemonic_text": "A crown of stems spreads over a trunk of stacked horizontal bars, and every gap between them is filled by another shoot pushing through. Nothing in this shape grows on its own. The strokes crowd each other until no ground shows between them, which is what makes it a <radical>thicket</radical>.",
+    "image_prompt": "A crown of stems spreads over a trunk of stacked horizontal bars, and every gap between them is filled by another shoot pushing through. Nothing in this shape grows on its own. The strokes crowd each other until no ground shows between them, which is what makes it a <radical>thicket</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "official": {
+    "mnemonic_text": "A hand grips a staff of office, and the long diagonal runs clean through the stacked bars of a rank badge. The bars alone are just a title. The stroke driven through them is the authority to sign for things, and that is what makes the holder an <radical>official</radical>.",
+    "image_prompt": "A hand grips a staff of office, and the long diagonal runs clean through the stacked bars of a rank badge. The bars alone are just a title. The stroke driven through them is the authority to sign for things, and that is what makes the holder an <radical>official</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "the-latter": {
+    "mnemonic_text": "One stroke starts out flat, turns down, and flicks back up at the end. It never manages a straight line and it never gets to lead. This is the runner-up shape, the one that always comes in <radical>second</radical>.",
+    "image_prompt": "One stroke starts out flat, turns down, and flicks back up at the end. It never manages a straight line and it never gets to lead. This is the runner-up shape, the one that always comes in <radical>second</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "slash": {
+    "mnemonic_text": "A single stroke falls from the upper right to the lower left, thinning as it drops. There is no crossbar, no hook, and nothing to soften the ending. It is the plainest cut in the whole system, one clean <radical>slash</radical>.",
+    "image_prompt": "A single stroke falls from the upper right to the lower left, thinning as it drops. There is no crossbar, no hook, and nothing to soften the ending. It is the plainest cut in the whole system, one clean <radical>slash</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "put-together": {
+    "mnemonic_text": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
+    "image_prompt": "Two uprights stand shoulder to shoulder above a pair of level bars that run underneath both of them. Neither upright has a base of its own to balance on. That shared floor is exactly what lets you <radical>put together</radical> two separate things into one.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "single-item": {
+    "mnemonic_text": "A peaked top with two legs dropping straight down, and nothing at all underneath it. One tent, one pole, and no second of anything anywhere in the shape. It is how you point at exactly one thing and no more: a <radical>single item</radical>.",
+    "image_prompt": "A peaked top with two legs dropping straight down, and nothing at all underneath it. One tent, one pole, and no second of anything anywhere in the shape. It is how you point at exactly one thing and no more: a <radical>single item</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mow": {
+    "mnemonic_text": "Two strokes cross low and close to the ground, like a blade and its swing meeting in the grass. Whatever was standing upright inside that crossing is already flat. A cut taken at that height is what it means to <radical>mow</radical>.",
+    "image_prompt": "Two strokes cross low and close to the ground, like a blade and its swing meeting in the grass. Whatever was standing upright inside that crossing is already flat. A cut taken at that height is what it means to <radical>mow</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "change": {
+    "mnemonic_text": "A person stands on the left, and on the right the very same person is tipped over onto their head. Two strokes each, identical, one inverted. Watching the first shape become the second is watching a <radical>change</radical> happen.",
+    "image_prompt": "A person stands on the left, and on the right the very same person is tipped over onto their head. Two strokes each, identical, one inverted. Watching the first shape become the second is watching a <radical>change</radical> happen.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "can": {
+    "mnemonic_text": "A mouth sits under a hook that comes down and stops just short of touching it. The hook is a judgement hanging over the answer, and the mouth always gives the same one. Whatever you ask this shape, it tells you that you <radical>can</radical>.",
+    "image_prompt": "A mouth sits under a hook that comes down and stops just short of touching it. The hook is a judgement hanging over the answer, and the mouth always gives the same one. Whatever you ask this shape, it tells you that you <radical>can</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "knife": {
+    "mnemonic_text": "Two strokes stand at the right edge, one short and one long with a hook at its base. It is a blade set on its point against the wall of the character, held upright and ready to come down. That is a <radical>knife</radical>.",
+    "image_prompt": "Two strokes stand at the right edge, one short and one long with a hook at its base. It is a blade set on its point against the wall of the character, held upright and ready to come down. That is a <radical>knife</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "buddhist-temple": {
+    "mnemonic_text": "A patch of earth sits on top of a measuring hand, which holds the ground below to an exact size. Land counted out that carefully is never somebody's farm. Ground measured and set apart like this is a <radical>Buddhist temple</radical>.",
+    "image_prompt": "A patch of earth sits on top of a measuring hand, which holds the ground below to an exact size. Land counted out that carefully is never somebody's farm. Ground measured and set apart like this is a <radical>Buddhist temple</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "pheasant": {
+    "mnemonic_text": "Two folded wings sit on top of a short-tailed bird, so the shape carries more plumage than animal. No ordinary bird needs that much feather to get anywhere. Only a <radical>pheasant</radical> is built this way.",
+    "image_prompt": "Two folded wings sit on top of a short-tailed bird, so the shape carries more plumage than animal. No ordinary bird needs that much feather to get anywhere. Only a <radical>pheasant</radical> is built this way.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "circumference": {
+    "mnemonic_text": "A frame is drawn the whole way round, and the field and the mouth are packed inside it so no corner is left empty. Your eye has to travel the entire border to get back where it started. That trip around the outside is the <radical>circumference</radical>.",
+    "image_prompt": "A frame is drawn the whole way round, and the field and the mouth are packed inside it so no corner is left empty. Your eye has to travel the entire border to get back where it started. That trip around the outside is the <radical>circumference</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "do-not": {
+    "mnemonic_text": "It is the mother shape with a single stroke driven straight through the middle of it, cancelling the whole thing out. One line is all it takes to turn a thing into its own prohibition. The bar across it says <radical>do not</radical>.",
+    "image_prompt": "It is the mother shape with a single stroke driven straight through the middle of it, cancelling the whole thing out. One line is all it takes to turn a thing into its own prohibition. The bar across it says <radical>do not</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "mingle": {
+    "mnemonic_text": "A lid rests on top, and underneath it two legs cross, one thrown over the other. Nobody sits like that on their own. Those are two people's legs tangled under the same small table, which is what it is to <radical>mingle</radical>.",
+    "image_prompt": "A lid rests on top, and underneath it two legs cross, one thrown over the other. Nobody sits like that on their own. Those are two people's legs tangled under the same small table, which is what it is to <radical>mingle</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "i": {
+    "mnemonic_text": "Five stacked strokes sit directly over a mouth, so the whole count of one hand is speaking at once. Every one of those five is the same person insisting on the same point. That is nobody but <radical>I</radical>.",
+    "image_prompt": "Five stacked strokes sit directly over a mouth, so the whole count of one hand is speaking at once. Every one of those five is the same person insisting on the same point. That is nobody but <radical>I</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sell": {
+    "mnemonic_text": "A scholar's broad shoulders sit on top, a table and two legs hold everything up, and a lid covers the transaction. Somebody respectable is standing behind a counter pretending this is not commerce. It is, and what they do is <radical>sell</radical>.",
+    "image_prompt": "A scholar's broad shoulders sit on top, a table and two legs hold everything up, and a lid covers the transaction. Somebody respectable is standing behind a counter pretending this is not commerce. It is, and what they do is <radical>sell</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sunrise": {
+    "mnemonic_text": "A sun is trapped low between stacked bars, with a stalk pushing up through the middle of them. The light has not cleared the horizon yet, so it comes through cut into strips. That striped low light is <radical>sunrise</radical>.",
+    "image_prompt": "A sun is trapped low between stacked bars, with a stalk pushing up through the middle of them. The light has not cleared the horizon yet, so it comes through cut into strips. That striped low light is <radical>sunrise</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "daybreak": {
+    "mnemonic_text": "The sun sits directly on a single flat line with nothing between the two. It has not climbed anywhere yet; it is still touching the ground it came out of. The moment it lifts off that line is <radical>daybreak</radical>.",
+    "image_prompt": "The sun sits directly on a single flat line with nothing between the two. It has not climbed anywhere yet; it is still touching the ground it came out of. The moment it lifts off that line is <radical>daybreak</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ruler": {
+    "mnemonic_text": "A bent body holds one leg kicked out straight, locked rigid at exactly the length it was measured to. The body is the handle and the stiff leg is the scale. An outstretched limb held that precisely is a <radical>ruler</radical>.",
+    "image_prompt": "A bent body holds one leg kicked out straight, locked rigid at exactly the length it was measured to. The body is the handle and the stiff leg is the scale. An outstretched limb held that precisely is a <radical>ruler</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sweeper": {
+    "mnemonic_text": "A head of stacked bars sits under a cover that pins it down, with a cloth handle hanging below. This is the whole tool assembled from top to bottom, not just the bristles. Take hold of the cloth end and you have a <radical>sweeper</radical>.",
+    "image_prompt": "A head of stacked bars sits under a cover that pins it down, with a cloth handle hanging below. This is the whole tool assembled from top to bottom, not just the bristles. Take hold of the cloth end and you have a <radical>sweeper</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sit": {
+    "mnemonic_text": "Two people are planted on either side of a patch of earth, both facing inward, neither going anywhere. There is nothing underneath either of them but the ground. Staying put on the ground like that is what it is to <radical>sit</radical>.",
+    "image_prompt": "Two people are planted on either side of a patch of earth, both facing inward, neither going anywhere. There is nothing underneath either of them but the ground. Staying put on the ground like that is what it is to <radical>sit</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "net": {
+    "mnemonic_text": "A flat rectangle is divided by two uprights into a row of even square holes. Every hole is exactly the size of its neighbour, and nothing larger than one hole ever gets through. That grid of matched gaps is a <radical>net</radical>.",
+    "image_prompt": "A flat rectangle is divided by two uprights into a row of even square holes. Every hole is exactly the size of its neighbour, and nothing larger than one hole ever gets through. That grid of matched gaps is a <radical>net</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "food-left": {
+    "mnemonic_text": "The eating radical is squeezed thin to fit down the left edge: the lid stays on top, and the heap beneath it narrows to a stack of short strokes. It is a full meal pressed flat against the wall to make room, which is what <radical>food</radical> looks like on the left.",
+    "image_prompt": "The eating radical is squeezed thin to fit down the left edge: the lid stays on top, and the heap beneath it narrows to a stack of short strokes. It is a full meal pressed flat against the wall to make room, which is what <radical>food</radical> looks like on the left.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sprout": {
+    "mnemonic_text": "A single stalk pushes straight up through two horizontal bars of packed soil, splitting them apart as it rises. There is nothing above it yet, no leaves and no flower. This is the first green push of a <radical>sprout</radical>.",
+    "image_prompt": "A single stalk pushes straight up through two horizontal bars of packed soil, splitting them apart as it rises. There is nothing above it yet, no leaves and no flower. This is the first green push of a <radical>sprout</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "prairie": {
+    "mnemonic_text": "A wide frame stands open at the bottom with one small mouth adrift in the middle of all that space. The emptiness around the tiny thing is the entire point of the shape. Ground that goes on that far in every direction is a <radical>prairie</radical>.",
+    "image_prompt": "A wide frame stands open at the bottom with one small mouth adrift in the middle of all that space. The emptiness around the tiny thing is the entire point of the shape. Ground that goes on that far in every direction is a <radical>prairie</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jewel": {
+    "mnemonic_text": "The king's three bars are joined by a single upright, and one dot rests in the lower corner where nothing else sits. That dot is the one thing the king is actually holding onto rather than ruling. It is a <radical>jewel</radical>.",
+    "image_prompt": "The king's three bars are joined by a single upright, and one dot rests in the lower corner where nothing else sits. That dot is the one thing the king is actually holding onto rather than ruling. It is a <radical>jewel</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "street": {
+    "mnemonic_text": "One long horizontal runs across, and a single stroke drops from its centre and hooks to the left at the end. A road going one way, and one turning off it. That corner is where a <radical>street</radical> begins.",
+    "image_prompt": "One long horizontal runs across, and a single stroke drops from its centre and hooks to the left at the end. A road going one way, and one turning off it. That corner is where a <radical>street</radical> begins.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "left-hand-2": {
+    "mnemonic_text": "A short diagonal falls across a horizontal bar, and the two meet at the wrist. It is the arm you do not write with, held out flat to steady whatever the other one is doing. This is the <radical>left hand</radical>.",
+    "image_prompt": "A short diagonal falls across a horizontal bar, and the two meet at the wrist. It is the arm you do not write with, held out flat to steady whatever the other one is doing. This is the <radical>left hand</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hiding-enclosure": {
+    "mnemonic_text": "Three strokes make a box with the right side deliberately left open. Whatever goes inside can never be seen from the front, and can always slip out the back when it needs to. That is a <radical>hiding enclosure</radical>.",
+    "image_prompt": "Three strokes make a box with the right side deliberately left open. Whatever goes inside can never be seen from the front, and can always slip out the back when it needs to. That is a <radical>hiding enclosure</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "book": {
+    "mnemonic_text": "A tree carries one extra stroke cut across its roots, marking the exact place it was felled. Everything above that mark was flattened, stacked and bound between covers. The mark is where a tree becomes a <radical>book</radical>.",
+    "image_prompt": "A tree carries one extra stroke cut across its roots, marking the exact place it was felled. Everything above that mark was flattened, stacked and bound between covers. The mark is where a tree becomes a <radical>book</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "opposite": {
+    "mnemonic_text": "A cliff face leans out, and a hand pushes up underneath it, shoving in the one direction the rock is already coming down. Hand and cliff want exactly contrary things. That standoff is what makes this the <radical>opposite</radical>.",
+    "image_prompt": "A cliff face leans out, and a hand pushes up underneath it, shoving in the one direction the rock is already coming down. Hand and cliff want exactly contrary things. That standoff is what makes this the <radical>opposite</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "crouch": {
+    "mnemonic_text": "A stroke starts to rise, thinks better of it, and folds back down over itself into a low bent shape. It is a figure making itself small underneath something heavy. That fold is a <radical>crouch</radical>.",
+    "image_prompt": "A stroke starts to rise, thinks better of it, and folds back down over itself into a low bent shape. It is a figure making itself small underneath something heavy. That fold is a <radical>crouch</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "third-class": {
+    "mnemonic_text": "A lid sits on top, a frame sits under the lid, and a person is tucked inside at the very bottom. There are two full layers of ceiling before you reach whoever is living down there. Quarters like that are <radical>third class</radical>.",
+    "image_prompt": "A lid sits on top, a frame sits under the lid, and a person is tucked inside at the very bottom. There are two full layers of ceiling before you reach whoever is living down there. Quarters like that are <radical>third class</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hill-left": {
+    "mnemonic_text": "Two small loops are stacked on a single upright, hugging the left edge of the character. It is a slope drawn as switchbacks, the path folding back on itself each time it climbs. That folded climb is a <radical>hill</radical>.",
+    "image_prompt": "Two small loops are stacked on a single upright, hugging the left edge of the character. It is a slope drawn as switchbacks, the path folding back on itself each time it climbs. That folded climb is a <radical>hill</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "perfect": {
+    "mnemonic_text": "A roof closes over the whole original figure, head and legs and all, with nothing sticking out and nothing missing underneath. The building settled over it and the fit came out exact. Nothing left to add is what makes it <radical>perfect</radical>.",
+    "image_prompt": "A roof closes over the whole original figure, head and legs and all, with nothing sticking out and nothing missing underneath. The building settled over it and the fit came out exact. Nothing left to add is what makes it <radical>perfect</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bureaucrat": {
+    "mnemonic_text": "A roof sits over two stacked mounds of filed paper, sealed in and never leaving the building. Nobody actually lives under there; the paperwork does. Whoever keeps that roof standing over all of it is a <radical>bureaucrat</radical>.",
+    "image_prompt": "A roof sits over two stacked mounds of filed paper, sealed in and never leaving the building. Nobody actually lives under there; the paperwork does. Whoever keeps that roof standing over all of it is a <radical>bureaucrat</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "reason": {
+    "mnemonic_text": "A field has one stalk pushing up out of the top of it, breaking the frame. Everything inside the box stayed where it was put except that single line, and you can trace it straight back down to its source. That traceable line is the <radical>reason</radical>.",
+    "image_prompt": "A field has one stalk pushing up out of the top of it, breaking the frame. Everything inside the box stayed where it was put except that single line, and you can trace it straight back down to its source. That traceable line is the <radical>reason</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tool": {
+    "mnemonic_text": "An eye is stacked on a bar with two legs braced underneath. It is something you look through, held steady on its own stand so that your hands stay free the whole time. A thing built to be used like that is a <radical>tool</radical>.",
+    "image_prompt": "An eye is stacked on a bar with two legs braced underneath. It is something you look through, held steady on its own stand so that your hands stay free the whole time. A thing built to be used like that is a <radical>tool</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "seven": {
+    "mnemonic_text": "One horizontal is crossed by a stroke that bends partway and hooks up at the end. Count the bend as well as the line and you are already past six with one to spare. That awkward extra kick is <radical>seven</radical>.",
+    "image_prompt": "One horizontal is crossed by a stroke that bends partway and hooks up at the end. Count the bend as well as the line and you are already past six with one to spare. That awkward extra kick is <radical>seven</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "heavy": {
+    "mnemonic_text": "A stack of bars is pressed down onto a field, with a single upright driven through the whole pile to hold it together. Every layer rests its full weight on the one below it. A column loaded like that is <radical>heavy</radical>.",
+    "image_prompt": "A stack of bars is pressed down onto a field, with a single upright driven through the whole pile to hold it together. Every layer rests its full weight on the one below it. A column loaded like that is <radical>heavy</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "few": {
+    "mnemonic_text": "It is the small shape with one more stroke sliced off the top corner, carrying part of it away. There was not much there to begin with, and now some of that is gone as well. What is left over is <radical>few</radical>.",
+    "image_prompt": "It is the small shape with one more stroke sliced off the top corner, carrying part of it away. There was not much there to begin with, and now some of that is gone as well. What is left over is <radical>few</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "lord": {
+    "mnemonic_text": "The king's three bars carry a single dot placed above the whole stack, sitting higher than the crown does. Somebody stands over even the king. That dot above everything is the <radical>lord</radical>.",
+    "image_prompt": "The king's three bars carry a single dot placed above the whole stack, sitting higher than the crown does. Somebody stands over even the king. That dot above everything is the <radical>lord</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "right": {
+    "mnemonic_text": "The sun sits squarely on top of a foot that is planted straight. Nothing leans, nothing sits off centre, and the light lands exactly where the foot is standing. Alignment that exact is what makes a thing <radical>right</radical>.",
+    "image_prompt": "The sun sits squarely on top of a foot that is planted straight. Nothing leans, nothing sits off centre, and the light lands exactly where the foot is standing. Alignment that exact is what makes a thing <radical>right</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "music": {
+    "mnemonic_text": "A tree is strung with a white drum and a small peg on either side of it, hung where the wind can get in. Every part of the shape rings when something strikes it. A tree fitted out like that makes <radical>music</radical>.",
+    "image_prompt": "A tree is strung with a white drum and a small peg on either side of it, hung where the wind can get in. Every part of the shape rings when something strikes it. A tree fitted out like that makes <radical>music</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "cloud": {
+    "mnemonic_text": "Two flat bars drift sideways with a small curl caught underneath them. Nothing in the shape is anchored to the ground at any point along its length. A thing that floats in flat layers like that is a <radical>cloud</radical>.",
+    "image_prompt": "Two flat bars drift sideways with a small curl caught underneath them. Nothing in the shape is anchored to the ground at any point along its length. A thing that floats in flat layers like that is a <radical>cloud</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "twenty": {
+    "mnemonic_text": "Two vertical strokes hang from one long bar, each of them a full ten, sharing the same crossbeam. Count them together instead of one after the other and you land straight on <radical>twenty</radical>.",
+    "image_prompt": "Two vertical strokes hang from one long bar, each of them a full ten, sharing the same crossbeam. Count them together instead of one after the other and you land straight on <radical>twenty</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "jammed-in": {
+    "mnemonic_text": "A person stands with a stroke wedged down each side, pinned in place by both at the same time. There is no room left to turn and nowhere to put a foot. Somebody held that tightly is <radical>jammed in</radical>.",
+    "image_prompt": "A person stands with a stroke wedged down each side, pinned in place by both at the same time. There is no room left to turn and nowhere to put a foot. Somebody held that tightly is <radical>jammed in</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "snout": {
+    "mnemonic_text": "Three short bars are stacked and closed off at one end, the way a nose ridges up before it flattens out. It is the blunt front of an animal shoving through undergrowth. That leading end is a <radical>snout</radical>.",
+    "image_prompt": "Three short bars are stacked and closed off at one end, the way a nose ridges up before it flattens out. It is the blunt front of an animal shoving through undergrowth. That leading end is a <radical>snout</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "cult": {
+    "mnemonic_text": "The altar radical is squeezed thin against the left wall, its offering table narrowed to a stroke and its hanging drops cut down to one. Everything is still there, only crowded. Devotion packed that tight turns into a <radical>cult</radical>.",
+    "image_prompt": "The altar radical is squeezed thin against the left wall, its offering table narrowed to a stroke and its hanging drops cut down to one. Everything is still there, only crowded. Devotion packed that tight turns into a <radical>cult</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bristles": {
+    "mnemonic_text": "A flat bar carries short stiff uprights standing along its length, all the same height and all pointing the same way. Not one of them bends or lies down. A row set that rigidly is <radical>bristles</radical>.",
+    "image_prompt": "A flat bar carries short stiff uprights standing along its length, all the same height and all pointing the same way. Not one of them bends or lies down. A row set that rigidly is <radical>bristles</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sunbeam": {
+    "mnemonic_text": "A sun sits on top with rays streaming down beneath it at an angle, every one of them leaning the same way. This light does not spread out; it points. A shaft aimed that deliberately is a <radical>sunbeam</radical>.",
+    "image_prompt": "A sun sits on top with rays streaming down beneath it at an angle, every one of them leaning the same way. This light does not spread out; it points. A shaft aimed that deliberately is a <radical>sunbeam</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fortune-telling": {
+    "mnemonic_text": "A cracked stick sits over a mouth, so the crack gets read first and then the mouth says what it means. The bone splits, somebody interprets the split, and the answer is spoken out loud. That sequence is <radical>fortune-telling</radical>.",
+    "image_prompt": "A cracked stick sits over a mouth, so the crack gets read first and then the mouth says what it means. The bone splits, somebody interprets the split, and the answer is spoken out loud. That sequence is <radical>fortune-telling</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "style": {
+    "mnemonic_text": "A workbench is tucked under a hooked stake, which holds the tool at the same fixed angle every single time. Do a thing that way often enough and it stops being a habit. A settled way of working is a <radical>style</radical>.",
+    "image_prompt": "A workbench is tucked under a hooked stake, which holds the tool at the same fixed angle every single time. Do a thing that way often enough and it stops being a habit. A settled way of working is a <radical>style</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "assembly": {
+    "mnemonic_text": "One person's roof is spread over two mouths, with two more figures below, everybody packed under the same peak. Nobody arrived on their own and nobody has room to leave. A crowd under one cover is an <radical>assembly</radical>.",
+    "image_prompt": "One person's roof is spread over two mouths, with two more figures below, everybody packed under the same peak. Nobody arrived on their own and nobody has room to leave. A crowd under one cover is an <radical>assembly</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "filial-piety": {
+    "mnemonic_text": "An old bent figure sits on top, and a child underneath is holding it up. The child carries all of the weight, and the elder is the one left upright. A child taking that load is <radical>filial piety</radical>.",
+    "image_prompt": "An old bent figure sits on top, and a child underneath is holding it up. The child carries all of the weight, and the elder is the one left upright. A child taking that load is <radical>filial piety</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "big-brother": {
+    "mnemonic_text": "The same can-do shape is written twice, one stacked directly on the other, the top one setting the pattern the bottom one follows. Whoever got there first is the one being copied. That doubled shape is your <radical>big brother</radical>.",
+    "image_prompt": "The same can-do shape is written twice, one stacked directly on the other, the top one setting the pattern the bottom one follows. Whoever got there first is the one being copied. That doubled shape is your <radical>big brother</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "officer": {
+    "mnemonic_text": "A bar runs across the top, a mouth sits in the middle, and a hand waits at the bottom. Orders come down, get spoken aloud, and a hand carries them out. Whoever stands in the middle of that chain is an <radical>officer</radical>.",
+    "image_prompt": "A bar runs across the top, a mouth sits in the middle, and a hand waits at the bottom. Orders come down, get spoken aloud, and a hand carries them out. Whoever stands in the middle of that chain is an <radical>officer</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "move": {
+    "mnemonic_text": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
+    "image_prompt": "A heavy stack sits on the left with a bent arm of force pressed hard against its side. That pile has not shifted in years, and now something is finally leaning on it. The push is what makes it <radical>move</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "once-upon": {
+    "mnemonic_text": "Two layers of stacked bars are piled on a buried sun, pressing it further down the longer you look at it. Each layer is another year laid over the light. A sun sunk that deep belongs to <radical>once upon a time</radical>.",
+    "image_prompt": "Two layers of stacked bars are piled on a buried sun, pressing it further down the longer you look at it. Each layer is another year laid over the light. A sun sunk that deep belongs to <radical>once upon a time</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "substitute": {
+    "mnemonic_text": "A person stands on the left, and a stake is driven in on the right, exactly where the person used to be. Same spot, same job, no person doing it. That stake is the <radical>substitute</radical>.",
+    "image_prompt": "A person stands on the left, and a stake is driven in on the right, exactly where the person used to be. Same spot, same job, no person doing it. That stake is the <radical>substitute</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "pedestal": {
+    "mnemonic_text": "A small hooked top sits square on a wide open mouth, which holds it up and takes the whole weight. The bottom half exists for no reason except to raise the top half. A base like that is a <radical>pedestal</radical>.",
+    "image_prompt": "A small hooked top sits square on a wide open mouth, which holds it up and takes the whole weight. The bottom half exists for no reason except to raise the top half. A base like that is a <radical>pedestal</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "winter": {
+    "mnemonic_text": "A pair of dragging feet come down with two frozen drops set underneath them. The walking has slowed right down, and whatever fell has already gone solid on the ground. Feet moving that heavily belong to <radical>winter</radical>.",
+    "image_prompt": "A pair of dragging feet come down with two frozen drops set underneath them. The walking has slowed right down, and whatever fell has already gone solid on the ground. Feet moving that heavily belong to <radical>winter</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "measuring-box": {
+    "mnemonic_text": "Two uprights stand either side of a bar, with one stroke cut across to mark the fill line partway up. Pour past that mark and it is no longer the amount anybody agreed on. A container marked that way is a <radical>measuring box</radical>.",
+    "image_prompt": "Two uprights stand either side of a bar, with one stroke cut across to mark the fill line partway up. Pour past that mark and it is no longer the amount anybody agreed on. A container marked that way is a <radical>measuring box</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "before": {
+    "mnemonic_text": "A stroke pushes out past the top of the legs underneath it, reaching ahead of the body it belongs to. The foot is already out there while the rest is still arriving. Getting out in front like that is <radical>before</radical>.",
+    "image_prompt": "A stroke pushes out past the top of the legs underneath it, reaching ahead of the body it belongs to. The foot is already out there while the rest is still arriving. Getting out in front like that is <radical>before</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "swim": {
+    "mnemonic_text": "A banner streams sideways on the left with a child tucked in under it, both leaning the same way the current is running. Nothing in the shape stands still or upright. Going along with the flow like that is to <radical>swim</radical>.",
+    "image_prompt": "A banner streams sideways on the left with a child tucked in under it, both leaning the same way the current is running. Nothing in the shape stands still or upright. Going along with the flow like that is to <radical>swim</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "tanned-leather": {
+    "mnemonic_text": "Two feet step in opposite directions around a hide stretched between them, pulling it flat from both ends at once. Worked over that hard and that long, skin stops being skin. It turns into <radical>tanned leather</radical>.",
+    "image_prompt": "Two feet step in opposite directions around a hide stretched between them, pulling it flat from both ends at once. Worked over that hard and that long, skin stops being skin. It turns into <radical>tanned leather</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "condolences": {
+    "mnemonic_text": "A bow has a single line drawn straight down through it, the string pulled taut and never let go. The weapon is present and nobody is ever going to fire it. A bow held that way offers <radical>condolences</radical>.",
+    "image_prompt": "A bow has a single line drawn straight down through it, the string pulled taut and never let go. The weapon is present and nobody is ever going to fire it. A bow held that way offers <radical>condolences</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "market": {
+    "mnemonic_text": "A lid is stretched over a cloth hanging below it, then another, all the way down the same row. Everything under there is fabric and all of it is for sale. A row of covered stalls like that is a <radical>market</radical>.",
+    "image_prompt": "A lid is stretched over a cloth hanging below it, then another, all the way down the same row. Everything under there is fabric and all of it is for sale. A row of covered stalls like that is a <radical>market</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "not-yet": {
+    "mnemonic_text": "A tree carries an extra bar across the top, except the new one is shorter than the branch beneath it. The upper growth has started and has not caught up with what is already there. Growth that falls short is <radical>not yet</radical>.",
+    "image_prompt": "A tree carries an extra bar across the top, except the new one is shorter than the branch beneath it. The upper growth has started and has not caught up with what is already there. Growth that falls short is <radical>not yet</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "comma-design": {
+    "mnemonic_text": "The shape curls in on itself and closes, the tail wrapping back around the head with no straight edge anywhere in it. Your eye travels round and never finds a corner to stop at. That closed curl is a <radical>swirl</radical>.",
+    "image_prompt": "The shape curls in on itself and closes, the tail wrapping back around the head with no straight edge anywhere in it. Your eye travels round and never finds a corner to stop at. That closed curl is a <radical>swirl</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "asia": {
+    "mnemonic_text": "A frame carries bars stacked across its middle with legs at both ends, wide and low and symmetrical on every side. It reads like the floor plan of something enormous. A structure on that scale is <radical>Asia</radical>.",
+    "image_prompt": "A frame carries bars stacked across its middle with legs at both ends, wide and low and symmetrical on every side. It reads like the floor plan of something enormous. A structure on that scale is <radical>Asia</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "holy": {
+    "mnemonic_text": "A hand is laid flat on a patch of earth, blessing the ground it rests on. The soil underneath is perfectly ordinary and the hand is not. Ground touched that way stops being ordinary and becomes <radical>holy</radical>.",
+    "image_prompt": "A hand is laid flat on a patch of earth, blessing the ground it rests on. The soil underneath is perfectly ordinary and the hand is not. Ground touched that way stops being ordinary and becomes <radical>holy</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "thousand": {
+    "mnemonic_text": "A ten carries one short slash laid across the top of it, and that single mark multiplies everything underneath. One stroke turns a pile you could count into a number nobody bothers counting. That is a <radical>thousand</radical>.",
+    "image_prompt": "A ten carries one short slash laid across the top of it, and that single mark multiplies everything underneath. One stroke turns a pile you could count into a number nobody bothers counting. That is a <radical>thousand</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "decide": {
+    "mnemonic_text": "A big figure has one arm bent into a hook, already committed to the swing. There is no way to pull that arm back in now that it has started. Reaching the point of no return is what it is to <radical>decide</radical>.",
+    "image_prompt": "A big figure has one arm bent into a hook, already committed to the swing. There is no way to pull that arm back in now that it has started. Reaching the point of no return is what it is to <radical>decide</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "kink": {
+    "mnemonic_text": "A stroke sets off straight, then catches and bends sharply back on itself before it can finish. The line meant to carry on and something stopped it partway. That caught bend is a <radical>kink</radical>.",
+    "image_prompt": "A stroke sets off straight, then catches and bends sharply back on itself before it can finish. The line meant to carry on and something stopped it partway. That caught bend is a <radical>kink</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "deceased": {
+    "mnemonic_text": "A lid comes down and one bent stroke disappears underneath it, with nothing showing on the far side. Whatever went under there never came out again. What the lid covers is the <radical>deceased</radical>.",
+    "image_prompt": "A lid comes down and one bent stroke disappears underneath it, with nothing showing on the far side. Whatever went under there never came out again. What the lid covers is the <radical>deceased</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "army": {
+    "mnemonic_text": "A cover is stretched over a vehicle, hiding whatever it carries from anyone watching the road. One covered wagon is a secret, and a whole column of them is something else. A line of them is an <radical>army</radical>.",
+    "image_prompt": "A cover is stretched over a vehicle, hiding whatever it carries from anyone watching the road. One covered wagon is a secret, and a whole column of them is something else. A line of them is an <radical>army</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "frontier-gate": {
+    "mnemonic_text": "Two posts lean apart above a wide barrier that runs the entire way across. Everything on the far side of it belongs to somebody else. The place where those posts stand is the <radical>frontier gate</radical>.",
+    "image_prompt": "Two posts lean apart above a wide barrier that runs the entire way across. Everything on the far side of it belongs to somebody else. The place where those posts stand is the <radical>frontier gate</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fit": {
+    "mnemonic_text": "A peaked lid comes down on a mouth with one flat rim between them, and the edges meet the whole way round with no gap left. Nothing has to be forced or trimmed. Two parts that meet that cleanly <radical>fit</radical>.",
+    "image_prompt": "A peaked lid comes down on a mouth with one flat rim between them, and the edges meet the whole way round with no gap left. Nothing has to be forced or trimmed. Two parts that meet that cleanly <radical>fit</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "flat-lid": {
+    "mnemonic_text": "A frame is pressed down until it is far wider than it is tall, its uprights squashed into short stubs. Whatever sits underneath has no headroom left at all. The thing doing the pressing is a <radical>flat lid</radical>.",
+    "image_prompt": "A frame is pressed down until it is far wider than it is tall, its uprights squashed into short stubs. Whatever sits underneath has no headroom left at all. The thing doing the pressing is a <radical>flat lid</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "southeast": {
+    "mnemonic_text": "Two kneeling figures share one table, both turned the same way to face the corner between two directions. Neither of them is looking straight ahead at anything. The angle they are both facing is <radical>southeast</radical>.",
+    "image_prompt": "Two kneeling figures share one table, both turned the same way to face the corner between two directions. Neither of them is looking straight ahead at anything. The angle they are both facing is <radical>southeast</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "shallow": {
+    "mnemonic_text": "Two small blades are stacked, and neither one cuts deeper than the other, both stopping well short. Nothing in the shape goes the whole way in. Cuts that stop that early are <radical>shallow</radical>.",
+    "image_prompt": "Two small blades are stacked, and neither one cuts deeper than the other, both stopping well short. Nothing in the shape goes the whole way in. Cuts that stop that early are <radical>shallow</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "formerly": {
+    "mnemonic_text": "A chimney has its smoke split off the top and sits on a stack of layers that keeps going down. Every layer down was somebody's kitchen before this one was. Counting downward is counting back to what was <radical>formerly</radical>.",
+    "image_prompt": "A chimney has its smoke split off the top and sits on a stack of layers that keeps going down. Every layer down was somebody's kitchen before this one was. Counting downward is counting back to what was <radical>formerly</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "all": {
+    "mnemonic_text": "A halberd swings through a full arc with a mouth sitting inside it, and nothing at all is left outside the sweep. Whatever the blade can reach is included, no exceptions made. That total sweep is <radical>all</radical>.",
+    "image_prompt": "A halberd swings through a full arc with a mouth sitting inside it, and nothing at all is left outside the sweep. Whatever the blade can reach is included, no exceptions made. That total sweep is <radical>all</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "also": {
+    "mnemonic_text": "A lid covers two pairs of matching strokes, one pair to each side, identical and balanced. Whatever was true of the left-hand pair is true of the right-hand pair. That matching second pair is <radical>also</radical>.",
+    "image_prompt": "A lid covers two pairs of matching strokes, one pair to each side, identical and balanced. Whatever was true of the left-hand pair is true of the right-hand pair. That matching second pair is <radical>also</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "horns": {
+    "mnemonic_text": "Two short strokes tip away from each other, one leaning left and one leaning right, with nothing under them to join them up. They rise from the same head and point in opposite directions. Those are <radical>horns</radical>.",
+    "image_prompt": "Two short strokes tip away from each other, one leaning left and one leaning right, with nothing under them to join them up. They rise from the same head and point in opposite directions. Those are <radical>horns</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "banner": {
+    "mnemonic_text": "A shape hangs from a crossbar with its lower strokes trailing loose off to one side, caught mid-flap. It is fixed at the top and completely free everywhere else. Cloth hung that way is a <radical>banner</radical>.",
+    "image_prompt": "A shape hangs from a crossbar with its lower strokes trailing loose off to one side, caught mid-flap. It is fixed at the top and completely free everywhere else. Cloth hung that way is a <radical>banner</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "walled-path": {
+    "mnemonic_text": "A frame runs downward with a straight stroke driven through its middle from top to bottom, solid on both sides the entire length. There is one way through and no way out sideways. That is a <radical>walled path</radical>.",
+    "image_prompt": "A frame runs downward with a straight stroke driven through its middle from top to bottom, solid on both sides the entire length. There is one way through and no way out sideways. That is a <radical>walled path</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "moreover": {
+    "mnemonic_text": "Shelves are stacked on a base bar, and each shelf is one more added on top of what was already plenty. The pile does not stop once the point has been made. Adding another anyway is <radical>moreover</radical>.",
+    "image_prompt": "Shelves are stacked on a base bar, and each shelf is one more added on top of what was already plenty. The pile does not stop once the point has been made. Adding another anyway is <radical>moreover</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "abrupt": {
+    "mnemonic_text": "A stroke starts across, then drops without warning and cuts back with two short bars. There is no lead-in and no curve to prepare you for the turn. A change taken that sharply is <radical>abrupt</radical>.",
+    "image_prompt": "A stroke starts across, then drops without warning and cuts back with two short bars. There is no lead-in and no curve to prepare you for the turn. A change taken that sharply is <radical>abrupt</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "grove": {
+    "mnemonic_text": "Two trees are written side by side, close enough that their branches overlap and neither one gets its full width. Two standing that close is already too many to call it a tree. That crowd of trunks is a <radical>grove</radical>.",
+    "image_prompt": "Two trees are written side by side, close enough that their branches overlap and neither one gets its full width. Two standing that close is already too many to call it a tree. That crowd of trunks is a <radical>grove</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "beforehand": {
+    "mnemonic_text": "A hook is set at the top with a line dropping from it, fixed in place while there is still nothing hanging on it. The fitting gets done while the load is somewhere else entirely. Being ready that early is <radical>beforehand</radical>.",
+    "image_prompt": "A hook is set at the top with a line dropping from it, fixed in place while there is still nothing hanging on it. The fitting gets done while the load is somewhere else entirely. Being ready that early is <radical>beforehand</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "pick": {
+    "mnemonic_text": "A claw comes down on a tree from above and closes on exactly one thing among the branches. Everything else is left where it was growing. Taking one and only one is to <radical>pick</radical>.",
+    "image_prompt": "A claw comes down on a tree from above and closes on exactly one thing among the branches. Everything else is left where it was growing. Taking one and only one is to <radical>pick</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "long-kimono": {
+    "mnemonic_text": "A lid, a mouth, and a robe's skirt spilling out well past the legs underneath it. The fabric keeps going long after the body it covers has stopped. Cloth that runs over that far is a <radical>long kimono</radical>.",
+    "image_prompt": "A lid, a mouth, and a robe's skirt spilling out well past the legs underneath it. The fabric keeps going long after the body it covers has stopped. Cloth that runs over that far is a <radical>long kimono</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "exchange": {
+    "mnemonic_text": "Two strokes split off the top of an elder brother, one heading each way. What leaves on the left comes back again on the right. An even swap like that is an <radical>exchange</radical>.",
+    "image_prompt": "Two strokes split off the top of an elder brother, one heading each way. What leaves on the left comes back again on the right. An even swap like that is an <radical>exchange</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "oneself": {
+    "mnemonic_text": "A single line folds twice and ends up almost where it started, never once touching anything outside itself. It refers to nothing but its own three bends. A shape closed that tightly is <radical>oneself</radical>.",
+    "image_prompt": "A single line folds twice and ends up almost where it started, never once touching anything outside itself. It refers to nothing but its own three bends. A shape closed that tightly is <radical>oneself</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "sprouting-stalk": {
+    "mnemonic_text": "A stem pushes up through a bar and splits into two short arms just above it, with nothing at all below the ground line. It has cleared the soil and not much more than that. That first fork is a <radical>sprouting stalk</radical>.",
+    "image_prompt": "A stem pushes up through a bar and splits into two short arms just above it, with nothing at all below the ground line. It has cleared the soil and not much more than that. That first fork is a <radical>sprouting stalk</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bench": {
+    "mnemonic_text": "One long bar rests across two evenly spaced uprights with nothing on top of it. It is the plainest thing anybody can build out of three strokes, and it still holds a person's weight. That is a <radical>bench</radical>.",
+    "image_prompt": "One long bar rests across two evenly spaced uprights with nothing on top of it. It is the plainest thing anybody can build out of three strokes, and it still holds a person's weight. That is a <radical>bench</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "every": {
+    "mnemonic_text": "A mother shape carries a stroke laid across the top, counting her once more each time she turns up. She appears in one character after another and never gets skipped. That repetition is <radical>every</radical>.",
+    "image_prompt": "A mother shape carries a stroke laid across the top, counting her once more each time she turns up. She appears in one character after another and never gets skipped. That repetition is <radical>every</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "someone": {
+    "mnemonic_text": "Earth is stacked on a buried sun, with no face and no name anywhere in the shape. A person is definitely in there and you are never told which one. That anonymous figure is <radical>someone</radical>.",
+    "image_prompt": "Earth is stacked on a buried sun, with no face and no name anywhere in the shape. A person is definitely in there and you are never told which one. That anonymous figure is <radical>someone</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "center": {
+    "mnemonic_text": "A big figure stands with a frame closed around them at exactly the same distance on every side. Shift the figure anywhere at all and the balance breaks immediately. The one spot where it holds is the <radical>center</radical>.",
+    "image_prompt": "A big figure stands with a frame closed around them at exactly the same distance on every side. Shift the figure anywhere at all and the balance breaks immediately. The one spot where it holds is the <radical>center</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "bestow": {
+    "mnemonic_text": "A hook holds one bar out flat and away from the body, offering it across to whoever is standing there. Nothing at all is kept back behind the hook. Holding a thing out like that is to <radical>bestow</radical>.",
+    "image_prompt": "A hook holds one bar out flat and away from the body, offering it across to whoever is standing there. Nothing at all is kept back behind the hook. Holding a thing out like that is to <radical>bestow</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "flat-top": {
+    "mnemonic_text": "Two legs hold up one long horizontal that runs clean across, with no peak, no hook, and nothing rising above it anywhere. Everything stops at the same height. That level ceiling is a <radical>flat top</radical>.",
+    "image_prompt": "Two legs hold up one long horizontal that runs clean across, with no peak, no hook, and nothing rising above it anywhere. Everything stops at the same height. That level ceiling is a <radical>flat top</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "three-and": {
+    "mnemonic_text": "Three stacked bars have a big figure pushing up through all of them at once. It takes the whole count and one whole body to make the shape work. Both halves are named in it: <radical>three and big</radical>.",
+    "image_prompt": "Three stacked bars have a big figure pushing up through all of them at once. It takes the whole count and one whole body to make the shape work. Both halves are named in it: <radical>three and big</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "lad": {
+    "mnemonic_text": "A figure stands under a cliff with three combed strokes streaming off the side of his head. The hair has clearly been done and the stance is entirely deliberate. A young man that groomed is a <radical>lad</radical>.",
+    "image_prompt": "A figure stands under a cliff with three combed strokes streaming off the side of his head. The hair has clearly been done and the stance is entirely deliberate. A young man that groomed is a <radical>lad</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "renew": {
+    "mnemonic_text": "A bar runs across the top, a field sits under it, and one stroke is driven down through both and out the bottom. The old boundary has been cut straight through and drawn again. Cutting through to start over is to <radical>renew</radical>.",
+    "image_prompt": "A bar runs across the top, a field sits under it, and one stroke is driven down through both and out the bottom. The old boundary has been cut straight through and drawn again. Cutting through to start over is to <radical>renew</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "husband": {
+    "mnemonic_text": "A big figure carries one extra bar laid across the shoulders, a pin through the hair saying the arrangement is settled. The stance has not changed at all; the status has. That pin makes him a <radical>husband</radical>.",
+    "image_prompt": "A big figure carries one extra bar laid across the shoulders, a pin through the hair saying the arrangement is settled. The stance has not changed at all; the status has. That pin makes him a <radical>husband</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "five": {
+    "mnemonic_text": "A flat bar lies on top and another lies underneath, and between them one stroke doubles back on itself and turns again, counting off its own corners as it goes. Count every turn and every bar in the shape and you land on <radical>five</radical>.",
+    "image_prompt": "A flat bar lies on top and another lies underneath, and between them one stroke doubles back on itself and turns again, counting off its own corners as it goes. Count every turn and every bar in the shape and you land on <radical>five</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "ten-thousand": {
+    "mnemonic_text": "One flat line across the top, then a single stroke that hooks around a space too wide for it and a leg that sweeps out from under that hook, as if the crowd inside had burst the sides. It is the number you reach for when counting gives up: <radical>ten thousand</radical>.",
+    "image_prompt": "One flat line across the top, then a single stroke that hooks around a space too wide for it and a leg that sweeps out from under that hook, as if the crowd inside had burst the sides. It is the number you reach for when counting gives up: <radical>ten thousand</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "west": {
+    "mnemonic_text": "A wide box with a flat lid, and inside it two legs standing apart, as though the sun had walked down into a crate at the end of the day and pulled the lid shut over its own head. The sun climbs into that box in the <radical>west</radical>.",
+    "image_prompt": "A wide box with a flat lid, and inside it two legs standing apart, as though the sun had walked down into a crate at the end of the day and pulled the lid shut over its own head. The sun climbs into that box in the <radical>west</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "north": {
+    "mnemonic_text": "Two figures stand back to back, one turned to the left and one to the right, neither willing to face the other. They are standing that way because the wind is at their backs and it is too cold to face head on, and cold at your back means you are facing <radical>north</radical>.",
+    "image_prompt": "Two figures stand back to back, one turned to the left and one to the right, neither willing to face the other. They are standing that way because the wind is at their backs and it is too cold to face head on, and cold at your back means you are facing <radical>north</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "now": {
+    "mnemonic_text": "A wide roof, and under it a single stroke tucked in like the hand of a clock caught pointing straight down. Nothing else is kept under that roof — not the hour before it, not the hour after, only the one instant it is covering: <radical>now</radical>.",
+    "image_prompt": "A wide roof, and under it a single stroke tucked in like the hand of a clock caught pointing straight down. Nothing else is kept under that roof — not the hour before it, not the hour after, only the one instant it is covering: <radical>now</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "lightning": {
+    "mnemonic_text": "A box of daylight with one stroke tearing straight out of the bottom of it and hooking sideways along the ground, brighter than the box that was holding it. Light that leaves the sky in a single crooked stroke like that is <radical>lightning</radical>.",
+    "image_prompt": "A box of daylight with one stroke tearing straight out of the bottom of it and hooking sideways along the ground, brighter than the box that was holding it. Light that leaves the sky in a single crooked stroke like that is <radical>lightning</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "fly": {
+    "mnemonic_text": "One stroke lifts off and hooks upward, and below it two short strokes beat outward, then two more, feathers pushing down against the air on both sides at once. Every stroke in the shape leans up and away from the ground, which is what it takes to <radical>fly</radical>.",
+    "image_prompt": "One stroke lifts off and hooks upward, and below it two short strokes beat outward, then two more, feathers pushing down against the air on both sides at once. Every stroke in the shape leans up and away from the ground, which is what it takes to <radical>fly</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "hidden": {
+    "mnemonic_text": "A single stroke drops straight down and then turns hard along the floor, tucking whatever it is carrying into the corner where the wall meets the ground, out of the light and out of the room. Anything left in that corner stays <radical>hidden</radical>.",
+    "image_prompt": "A single stroke drops straight down and then turns hard along the floor, tucking whatever it is carrying into the corner where the wall meets the ground, out of the light and out of the room. Anything left in that corner stays <radical>hidden</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "using": {
+    "mnemonic_text": "Two short strokes on the left hold a tool out at arm's length, and on the right a person stands with a hand already raised to take it. A tool handed across like that is not being admired or stored, it is being put to work: <radical>using</radical> it.",
+    "image_prompt": "Two short strokes on the left hold a tool out at arm's length, and on the right a person stands with a hand already raised to take it. A tool handed across like that is not being admired or stored, it is being put to work: <radical>using</radical> it.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
+  },
+  "people": {
+    "mnemonic_text": "A small box sits at the top of a stroke that sweeps down and out into a base broad enough to carry every household stacked above it. One roof, many under it, and the many under it are the <radical>people</radical>.",
+    "image_prompt": "A small box sits at the top of a stroke that sweeps down and out into a base broad enough to carry every household stacked above it. One roof, many under it, and the many under it are the <radical>people</radical>.",
+    "_meta": {
+      "generator_model": "claude-opus-5",
+      "prompt_version": "1",
+      "review_status": "draft"
+    }
   }
 }

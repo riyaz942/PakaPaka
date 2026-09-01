@@ -1,4 +1,4 @@
-# Restyle brief — kanji meaning mnemonics, Rev 6
+# Restyle brief — kanji meaning mnemonics, Rev 8
 
 You are rewriting the **meaning mnemonic** of already-drafted kanji into a
 tighter house style. You are not inventing new content and not touching
@@ -7,62 +7,48 @@ scope and are not in your input.
 
 ## What is wrong with the current prose
 
-It is roughly twice as long as it should be, written in novel-register English,
-and structured as a tour of the character's parts rather than as one thing
-causing the next. Compare:
+It is a *scene* when it should be a *reason*. Three sentences give each
+component its own little event and bolt the meaning onto the end, so nothing in
+it explains why those parts mean that thing. Compare:
 
-**Before** (311 characters):
+**Before** (216 characters, three sentences):
 
-> A line of `<radical>`ground`</radical>` lies flat on the floor. A
-> `<radical>`stick`</radical>` stands planted straight into it, and lashed to
-> its top is a heavy sheaf of `<radical>`grain`</radical>`, drooping under its
-> own weight. An axe strikes the base and splits it apart in
-> `<radical>`eight`</radical>`, like a cracking log. The rig lurches, and you
-> leap onto the toppling grain, riding it downhill.
+> A badge shaped like an open `<radical>`mouth`</radical>` swings above a fat
+> purse of `<radical>`money`</radical>`. The gatekeeper will not sell you a
+> drink until he stamps it. Once your name is in his ledger you are an
+> `<kanji>`employee`</kanji>`.
 
-**After** (171 characters):
+**After** (74 characters, one sentence):
 
-> A `<radical>`stick`</radical>` planted in the `<radical>`ground`</radical>`
-> holds up a heavy bundle of `<radical>`grain`</radical>`. Suddenly it snaps
-> into `<radical>`eight`</radical>` pieces. You leap onto the falling grain and
-> `<kanji>`ride`</kanji>` it down the hill like a sled.
+> An `<kanji>`employee`</kanji>` is just one more `<radical>`mouth`</radical>`
+> the company has to feed with its own `<radical>`money`</radical>`.
 
-Same four components, same picture, half the words. Note what went: "lashed",
-"sheaf", "drooping under its own weight" and "lurches" are novel words, not
-learner words. The axe arrived from nowhere to justify "eight" and then left —
-a staged event, not a link in the chain. And the old ending trailed off in an
-"-ing" tail instead of landing on the meaning.
-
-A second target, for a kanji whose components are eight / sheep / water:
-
-> Imagine `<radical>`eight`</radical>` `<radical>`sheep`</radical>` standing by
-> the `<radical>`water`</radical>`. The water rises and spreads until the sheep
-> and the fence are gone under it. It keeps going, flat and endless, until it is
-> one giant `<kanji>`ocean`</kanji>`.
+The mouth and the money now *are* the argument. In the old version a gatekeeper
+who is not even in the decomposition did all the work, and the two real
+components just stood there being described.
 
 ## The rules
 
-1. **Length: 120–220 characters**, counting the text with the tags stripped out.
-   The gate rejects anything over 260. Finishing at 130 is a success.
-2. **Two or three sentences.** Most under 14 words, none over 20. No dash-joined
-   second clause, no "-ing" tail, no colon-joined reveal at the end.
-3. **Plain English a ten-year-old would use.** *tied* not *lashed*, *bundle* not
-   *sheaf*, *caught* not *snagged*, *tips over* not *lurches*, *splits* not
-   *cleaves*. If a sentence sounds like a novel, it is wrong.
-4. **One causal chain.** Each sentence is caused by the one before it, and the
-   last one produces the meaning. If two sentences could swap places without
-   breaking the scene, you wrote a list — rewrite it.
-5. **Components enter as ordinary things the scene already needs** — a count, an
-   object, a place — not as their own staged mini-event. "eight
-   `<radical>`sheep`</radical>` by the water" beats a whole sentence about an axe
-   splitting a log into eight. This is where nearly all the excess length is.
-6. **Keep the scene.** Reuse the actor, setting and object of the original where
-   they survive rules 1–5. You are compressing and plainly re-telling a picture,
-   not inventing a new one. Cutting a staged event that only existed to justify a
-   component is expected and is not "changing the scene".
-7. **Funny still matters.** Absurd situation, deadpan telling. The absurdity has
-   to be the mechanism the learner remembers, not a joke parked beside it. Never
-   nudge the reader and never explain the joke.
+1. **One sentence. Not two.** The gate rejects two. This is the rule that fixes
+   everything else: with three sentences available the model stages each
+   component separately, and with one it has to make them combine.
+2. **Length: 60–180 characters**, tags stripped. Finishing at 75 is a success.
+3. **The sentence must be a reason.** A reader should see why those components
+   imply that meaning. If the sentence merely describes the parts sitting near
+   each other, it is wrong.
+4. **Every component is load-bearing.** Delete a component's clause; if the
+   sentence still makes the same point, you decorated instead of explaining.
+5. **No invented bystanders.** No gatekeeper, squirrel or hiker who is not in
+   the decomposition. If your sentence needs one to make its point, the point is
+   not coming from the components.
+6. **Plain English a ten-year-old would use.** *tied* not *lashed*, *bundle* not
+   *sheaf*, *tips over* not *lurches*. If it sounds like a novel, it is wrong.
+7. **Commas are fine, semicolons and colons are not.** A four-component kanji
+   fits in one sentence with a subordinate clause. It does not need a
+   colon-joined reveal at the end.
+8. **Funny still matters** — but the absurdity has to be the mechanism. "A
+   ridiculous way to `<kanji>`transport`</kanji>` a boat, and it works" is the
+   joke *and* the reason.
 
 ## Tagging — this is a hard gate
 
@@ -71,16 +57,17 @@ A second target, for a kanji whose components are eight / sheep / water:
   span must contain the component's taught meaning word itself — one of the
   words in its `meaning_synonyms`. Tagging "sheeps" when the taught word is
   "sheep" fails.
-- The kanji's **own meaning** — the word the story lands on — must appear once,
-  wrapped in `<kanji>…</kanji>`. The span must contain the item's `meaning` or
-  one of its `meaning_synonyms`. **Many of your inputs are missing this tag
-  entirely; adding it is part of the job.**
-- **Land on the item's `meaning`, not on a synonym.** That is the word the
-  learner is quizzed on, so it is the word the story must end on. Landing 米 on
-  "USA" or 鳥 on "chicken" is a defect even though both are accepted answers.
+- The kanji's **own meaning** must appear once, wrapped in `<kanji>…</kanji>`.
+  **It may sit anywhere in the sentence** — first word, middle, or last. "An
+  `<kanji>`employee`</kanji>` is just one more mouth…" opens on it and is
+  correct. Put it where the sentence reads best; never contort the wording to
+  push it to the end.
+- **Use the item's `meaning`, not a synonym.** That is the word the learner is
+  quizzed on. Using 米 as "USA" or 鳥 as "chicken" is a defect even though both
+  are accepted answers.
 - If a component's taught word happens to *be* the kanji's meaning word, tag that
   same word **twice, on two different spans** — once in `<radical>` where the
-  component enters the scene, once in `<kanji>` where the story lands. Reach for
+  component does its work, once in `<kanji>` for the kanji's own word. Reach for
   a `meaning_synonyms` entry only when it is a near-exact substitute for the
   primary meaning, never when it shifts the sense.
 - Tag nothing else. No `<reading>` tag in this field. Never nest tags. Close
@@ -95,9 +82,9 @@ A second target, for a kanji whose components are eight / sheep / water:
   headings, no lists, no bold, no italic, no backticks, no furigana brackets, no
   romaji, no emoji. The only markup allowed is the two tags above.
 - **Make the batch's items feel different from each other.** Do not reuse a
-  scene shape, setting, animal, gag structure or sentence rhythm across two items
-  in your batch, and do not let two land the same way. Give the last item the
-  same effort as the first.
+  sentence shape, setting or gag structure across two items in your batch. "X is
+  just one more Y" is a good sentence once and a tic by the fourth time. Give
+  the last item the same effort as the first.
 - If an item is **already** in the target style — short, plain, one causal chain,
   landing on the meaning — keep its wording and change only what the rules above
   require (usually just adding the missing `<kanji>` tag). Do not rewrite good

@@ -664,6 +664,7 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
 VOCAB_SKELETON_PATH = os.path.join(BUILD_DIR, "vocab_skeleton.json")
 BANDS_PATH = os.path.join(BUILD_DIR, "bands.json")
+DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
 
 BAND_LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 
@@ -674,6 +675,17 @@ SKELETON_VOCAB_LEVELS = ["n3", "n2", "n1"]
 
 def load_skeleton():
     with open(SKELETON_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_decomposition():
+    """The KanjiVG-derived decomposition and the radicals it needs.
+
+    Owns the derived radical inventory since the KanjiVG switch: a radical
+    exists because some kanji is built from it, and that list is now this file's
+    to state. `skeleton["radicals"]` was the KRADFILE-era answer to the same
+    question and no longer feeds the build."""
+    with open(DECOMPOSITION_PATH, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -715,6 +727,7 @@ def generate_bands():
     from n5_vocab import N5_VOCAB
 
     skeleton = load_skeleton()
+    decomposition = load_decomposition()
     bands = load_bands()
 
     # Per source, with that source's own reference scope: an N5 kanji example
@@ -731,7 +744,7 @@ def generate_bands():
     radicals = (
         build_n5_radicals()
         + build_n4_radicals()
-        + _build_radical_items("k", skeleton["radicals"])
+        + _build_radical_items("k", decomposition["radicals"])
     )
     kanji = (
         build_n5_kanji(n5_readings, n5_forms)

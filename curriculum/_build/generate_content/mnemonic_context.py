@@ -569,10 +569,10 @@ def format_identity(ctx):
 
         "Vary the wording — a short aside, a bit of relief that this one comes "
         "free, a nudge that it pays to know the radicals well — but keep it to "
-        "one or two sentences, and never explain the joke.",
+        "ONE sentence, and never explain the joke.",
 
-        "**This overrides the 120–220 character target above: aim for 50–150 "
-        "characters here, and never go past 200.** Still tag both words: "
+        "**This overrides the 70–170 character target above: aim for 50–150 "
+        "characters here, and never go past 200. It is still one sentence.** Still tag both words: "
         "`<radical>` where you name the radical, `<kanji>` where you name this "
         "kanji's meaning. They are the same word on two different spans, and "
         "that is correct — it is what makes the app colour both.",

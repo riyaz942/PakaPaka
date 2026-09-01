@@ -99,16 +99,16 @@ LEN_BOUNDS = {
         "description": (60, 400),
     },
     "kanji": {
-        # Rev 6, meaning only: the prompt now asks for 120–220 characters of
-        # plain, causally-chained prose, so the band is refitted around that
-        # target instead of around the Rev 3 corpus. The floor drops to 100
-        # because the shortest good answers are two sentences ("eight sheep by
-        # the water, it rises, that's the ocean" lands at 126), and the ceiling
-        # drops to 260 because at 300+ the model is reliably staging each
-        # component as its own event rather than writing one chain. Existing
-        # stored prose is not re-checked against this — the gate runs on freshly
-        # generated drafts only (see PROMPT_VERSION, Rev 6).
-        "meaning_mnemonic": (100, 260),
+        # Rev 8, meaning only: the mnemonic is now ONE sentence that reads as a
+        # reason — the components combine into the meaning rather than acting it
+        # out (see MEANING_MAX_SENTENCES). One sentence lands at 70–170, so the
+        # floor drops to 60; "an employee is one more mouth to feed with money"
+        # is 74 characters and is the target, not a shortfall. The 260 ceiling
+        # stays where Rev 6 put it so re-validating stored Rev 6 prose does not
+        # fail on length; on freshly generated drafts the real cap is the
+        # one-sentence rule plus READABILITY_MAX_SENTENCE_WORDS, which together
+        # cannot exceed ~200 characters.
+        "meaning_mnemonic": (60, 260),
         "reading_mnemonic": (120, 380),
         "description": (50, 400),
     },
@@ -203,11 +203,20 @@ READABILITY_MAX_SENTENCE_WORDS = 35
 READABILITY_MAX_MEAN_WORDS = 20
 READABILITY_MEAN_MIN_SENTENCES = 3
 
+#: Rev 8, kanji `meaning_mnemonic` only: one sentence, no exceptions. Rev 6 asked
+#: for "two or three sentences, one causal chain" and got a list of staged
+#: events with a meaning bolted onto the end — the components took turns instead
+#: of combining. A single sentence removes the room to stage them: the only way
+#: to fit four components into one sentence is to make each one do grammatical
+#: work in the same claim, which is what "logical" means here. Rides the
+#: enforce_readability lane, so stored Rev 6 prose is never requeued by it.
+MEANING_MAX_SENTENCES = 1
+
 _SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
 _LATIN_WORD_RE = re.compile(r"[A-Za-z']+")
 
 
-def _readability_errors(field, text):
+def _readability_errors(field, text, max_sentences=None):
     """Sentence-length checks. An em-dash-joined clause chain reads as one long
     breath, so sentences split on terminal punctuation only — that is what makes
     the gate catch the actual failure mode. Messages are written for the
@@ -218,6 +227,12 @@ def _readability_errors(field, text):
         if s.strip()
     ]
     errors = []
+    if max_sentences and len(counts) > max_sentences:
+        errors.append(
+            f"{field} is {len(counts)} sentences; write exactly "
+            f"{max_sentences} — one sentence in which the components combine "
+            "into the meaning, not a scene that acts them out in turn"
+        )
     longest = max(counts, default=0)
     if longest > READABILITY_MAX_SENTENCE_WORDS:
         errors.append(
@@ -317,7 +332,8 @@ def _tagged_spans(text, tag):
     return spans
 
 
-def _field_errors(kind, field, text, enforce_readability=False, bounds=None):
+def _field_errors(kind, field, text, enforce_readability=False, bounds=None,
+                  max_sentences=None):
     """Markup + length, both measured on the tag-stripped prose. Malformed tags
     short-circuit: stripping them is meaningless until they parse. The Rev 4
     readability gate runs only on freshly generated drafts (see validate_draft),
@@ -331,7 +347,7 @@ def _field_errors(kind, field, text, enforce_readability=False, bounds=None):
     errors = _markup_errors(field, plain) + _length_errors(
         field, plain, bounds or LEN_BOUNDS[kind][field])
     if enforce_readability:
-        errors += _readability_errors(field, plain)
+        errors += _readability_errors(field, plain, max_sentences)
     return errors
 
 
@@ -434,7 +450,9 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
             "kanji", field, draft[field], enforce_readability=enforce_readability,
             bounds=(IDENTITY_MEANING_BOUNDS
                     if field == "meaning_mnemonic" and ctx["identical_radical"]
-                    else None))
+                    else None),
+            max_sentences=(MEANING_MAX_SENTENCES
+                           if field == "meaning_mnemonic" else None))
 
     # 2. reading present and highlighted
     primary = ctx["primary_reading"]

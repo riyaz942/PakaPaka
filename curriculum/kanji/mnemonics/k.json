@@ -14,7 +14,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-breath": {
@@ -32,7 +32,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-daytime": {
@@ -41,7 +41,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-doctor": {
@@ -50,7 +50,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-end": {
@@ -68,16 +68,16 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-father": {
-    "meaning_mnemonic": "Two arms cross at the top, two legs brace wide underneath — the stance of a <radical>father</radical> planted in the doorway, arms folded, filling the frame. He is waiting to hear what you have to say. Everybody recognises that silhouette: <kanji>father</kanji>.",
+    "meaning_mnemonic": "A pair of crossed arms over two planted legs is exactly the stance of a <kanji>father</kanji> who has already decided the answer.",
     "reading_mnemonic": "Fu is the long breath out through the nose that he gives you instead of an answer — 「<reading>ふ</reading>」 — arms still folded. Not angry. Not pleased either. Just ふ, and you will be hearing it for the rest of your life.",
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-friend": {
@@ -113,7 +113,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-husband": {
@@ -122,7 +122,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-me": {
@@ -131,7 +131,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-mister": {
@@ -140,7 +140,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-morning": {
@@ -149,16 +149,16 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-mother": {
-    "meaning_mnemonic": "A figure kneels like a <radical>mother</radical>, arms wrapped round in front of her, two dots marking the breasts that fed you. The entire character is built around those two points — take them out and it becomes a different word. They are the reason you call her <kanji>mother</kanji>.",
+    "meaning_mnemonic": "The one person allowed to say <radical>do not</radical> and have it actually stick is your <kanji>mother</kanji>.",
     "reading_mnemonic": "Bo is the one syllable a baby manages long before it manages anything else — 「<reading>ぼ</reading>」 — blown out with a bubble of spit and aimed straight at whoever is holding it. She answers to ぼ years before she answers to her own name.",
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-night": {
@@ -167,7 +167,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-nightfall": {
@@ -203,7 +203,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-submit": {
@@ -212,7 +212,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-uncle": {
@@ -221,7 +221,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-what": {
@@ -230,7 +230,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-who": {
@@ -248,7 +248,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-yesterday": {
@@ -257,7 +257,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-zero": {
@@ -266,53 +266,53 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-employee": {
-    "meaning_mnemonic": "Picture the whole character as a badge shaped like an open <radical>mouth</radical>, clipped above a fat coin-purse of <radical>money</radical>, swinging on a lanyard. At the mountain trail's summit, a gatekeeper won't sell a drink until that badge is stamped and your name goes into the ledger: you're now an <kanji>employee</kanji> of the mountain.",
+    "meaning_mnemonic": "An <kanji>employee</kanji> is just one more <radical>mouth</radical> the company has to feed with its own <radical>money</radical>.",
     "reading_mnemonic": "The gatekeeper is a retired innkeeper everyone calls <reading>Inn</reading>. She grunts <reading>いん</reading> every time she stamps a badge — one grunt per hire. By dusk, her voice is gone from saying it all day.",
     "description": "員 rarely stands alone as a word for 'employee' — it is a suffix meaning roughly 'a person belonging to,' always riding on a job title, company, or club, closer to '-er' than to a stand-alone noun.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-tooth": {
-    "meaning_mnemonic": "See the whole character as a gear rim cut into jagged points — a grinning mouthful of teeth. At Grandma Kane's shrine, the temple cats gnaw the rim like a giant biscuit. Their own teeth file down flat, but the metal only gleams sharper: one hard <radical>tooth</radical> makes the gear a <kanji>cog</kanji>.",
+    "meaning_mnemonic": "Grains of <radical>rice</radical> that <radical>stop</radical> inside the <radical>open box</radical> of your jaw were caught there by one <kanji>tooth</kanji>.",
     "reading_mnemonic": "One shrine cat, nicknamed <reading>Shii</reading> for the hiss she makes mid-gnaw, clamps onto the bell rim and hisses <reading>し</reading> through the gap where a tooth used to be.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-body": {
-    "meaning_mnemonic": "Picture the whole character as a lean <radical>person</radical> outline, with <radical>one</radical> rigid <radical>tree</radical> trunk running straight down its spine, arms locked out to the sides. At Sei's school, the club drags out this same stiff training dummy for every first-aid drill: everyone just calls it the <kanji>body</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> is really just a <radical>book</radical> of bones and organs bound into a single <kanji>body</kanji>.",
     "reading_mnemonic": "Someone always loops a spare <reading>tie</reading> around the training dummy's neck before drills, and the coach barks <reading>たい</reading> to snap the team to attention — same dummy, same crooked tie, every single practice.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-thing": {
-    "meaning_mnemonic": "Picture the whole character as a lumpy, unlabeled shape — <radical>not</radical> quite a box, not quite a creature, just a mass with no clean outline. Koichi's lost-and-found bin behind the konbini is just like this: a toy <radical>cow</radical>, a bent umbrella, half a slipper. After six months he labels the whole bin '<kanji>thing</kanji>.'",
+    "meaning_mnemonic": "Anything that is a <radical>cow</radical> and <radical>not</radical> a person gets filed away as a mere <kanji>thing</kanji>.",
     "reading_mnemonic": "Koichi holds up a single lost <reading>boot</reading> from the bin and grunts <reading>ぶつ</reading> — the general word for 'thing,' because after six unclaimed months, calling it a boot feels oddly specific.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-meal": {
-    "meaning_mnemonic": "See the whole character as a plate laid out to <radical>eat</radical> from: a heaping bowl of rice on the left, resting on a <radical>cliff</radical>-ledge. Crammed against it is a second helping some <radical>right hand</radical> snuck onto the tray before anyone could stop it. Two portions in one shape: the whole <kanji>meal</kanji>, seconds included.",
+    "meaning_mnemonic": "A plate of <radical>food</radical> is the <radical>opposite</radical> of an empty one, and closing that gap is what a <kanji>meal</kanji> is for.",
     "reading_mnemonic": "Han, the half-and-half chef, slices your whole dinner clean down the center before you can protest — that's just how he works here. You call out his name, <reading>Han</reading>, and he answers with a proud <reading>はん</reading>, holding up two identical plates like it settles the matter.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-tea": {
@@ -330,16 +330,16 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-ill": {
-    "meaning_mnemonic": "Picture the whole character as a <radical>sickness</radical> lean-to: a slanted roof over a <radical>wide box</radical> of a room. Inside it lies a <radical>person</radical> stretched flat, legs sticking out past a blanket too short to cover them. The whole shape is a tiny room built for one thing: someone too <kanji>ill</kanji> to get up.",
+    "meaning_mnemonic": "A <radical>sickness</radical> bad enough to put you in a <radical>third class</radical> bed is what it looks like to be genuinely <kanji>ill</kanji>.",
     "reading_mnemonic": "The former beauty-pageant queen lies flat under the sickroom's too-short blanket, moaning into her pillow. This is the least glamorous she has ever looked: 「<reading>びょう</reading>」, she groans, sounding exactly like the first half of <reading>beauty</reading> gone hoarse.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-section": {
@@ -348,7 +348,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-pedestal": {
@@ -361,12 +361,12 @@
     }
   },
   "k-courtyard": {
-    "meaning_mnemonic": "Picture 庭 as a private courtyard behind a lean-to <radical>shelter</radical>: raked white gravel, a crooked pine, and one <radical>jewel</radical>-bright stone lantern. A stubborn goat, <radical>stretching</radical> along the low wall, keeps chewing the ivy. Nobody evicts it from the family's own patch of outside: the <kanji>courtyard</kanji>.",
+    "meaning_mnemonic": "The open ground between the <radical>shelter</radical> and the <radical>courts</radical> is the <kanji>courtyard</kanji> everybody has to cross.",
     "reading_mnemonic": "The groundskeeper, named <reading>Tei</reading>, sprints after the goat squatting in the courtyard, tripping over the raked gravel and yelling <reading>てい</reading>, <reading>てい</reading> with every failed lunge, gravel spraying across the whole swept quiet.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-turn": {
@@ -379,75 +379,75 @@
     }
   },
   "k-empty": {
-    "meaning_mnemonic": "At the top of the mountain trail, a hiker jams every coin into the lone vending machine, all steel <radical>construction</radical>. The lever clunks, the tray spins over a <radical>hole</radical> where the snack should drop. No can, no snack, just a hollow clang. Every row sits bare: the whole machine as <kanji>empty</kanji> as the sky above.",
+    "meaning_mnemonic": "When the entire <radical>construction</radical> job is digging one <radical>hole</radical>, the thing you have built is an <kanji>empty</kanji> space.",
     "reading_mnemonic": "Still stuck at the summit, the hiker slumps against the machine and lets out a long, pigeon-like <reading>coo</reading> up at the empty sky. 「<reading>くう</reading>」, rising and hollow, over and over, until it's the only sound left on the mountain.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-brush-stroke": {
-    "meaning_mnemonic": "In the school art room, a boy is told to paint just <radical>one</radical> careful stroke inside the blank canvas, an <radical>open box</radical> of a frame. His hand shakes; the brush skids across a <radical>rice field</radical> grid of guide-lines. It loops corner to corner until smeared black. The teacher pins it up anyway: a <kanji>brush-stroke</kanji> made of every stroke that got away.",
+    "meaning_mnemonic": "Every <kanji>brush-stroke</kanji> is <radical>one</radical> line with a <radical>reason</radical>, laid down inside the <radical>open box</radical> of the page.",
     "reading_mnemonic": "Back in the art room, the teacher looks at the smeared frame and can only manage a flat, deflated <reading>gah</reading> — <reading>が</reading> — the sound of someone giving up on a critique before it starts. He staples a ribbon to it anyway and calls it finished.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-reflect": {
-    "meaning_mnemonic": "Down at the riverbank, a fisherman sets his lantern, glass <radical>cover</radical> and all, on a flat rock as the <radical>sun</radical> goes down. The still water lets the flame's light <radical>slide</radical> straight back up, and his own face looks oddly <radical>big</radical> staring down at it. He waves; the water waves back late — exactly what it means to <kanji>reflect</kanji>.",
+    "meaning_mnemonic": "When the <radical>sun</radical> sits at the exact <radical>center</radical> of the sky, the water below throws back its clearest <kanji>reflect</kanji>ion.",
     "reading_mnemonic": "Startled by his own doubled face in the water, the fisherman yelps 「<reading>Ay</reading>」 — 「<reading>えい</reading>」. The river throws the sound straight back at him a beat later, flat and unbothered, same as it did with the light.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-roof": {
-    "meaning_mnemonic": "Koichi's konbini springs a leak the night the first typhoon <radical>arrive</radical>s. Rain drums through a hole in the ceiling onto the onigiri shelf. Koichi hauls up a tarp and lashes it down flat and still as a <radical>body</radical>, muttering that a shop without one is just an expensive puddle. The neighborhood now calls the place the <kanji>roof</kanji> instead of its real name.",
+    "meaning_mnemonic": "Wherever your <radical>body</radical> finally <radical>arrive</radical>s at the end of the day, the thing over it is a <kanji>roof</kanji>.",
     "reading_mnemonic": "Weeks later, the tarp is still up, now painted with a crude little <reading>oak</reading> tree Koichi drew himself — <reading>おく</reading> — because customers kept asking what was holding the whole roof together. Nobody has the heart to tell him it's just tarp and string.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-inst": {
-    "meaning_mnemonic": "Grandma Kane's shrine has quietly become an institution. The mossy steps lead through a turnstile marking the <radical>beginning</radical> of the queue, under the old <radical>roof</radical>. Beyond it lies a <radical>village</radical> of numbered waiting rooms, staffed by a cat in a visor. That towering bureaucratic compound is one big <kanji>Inst.</kanji>",
+    "meaning_mnemonic": "A <radical>perfect</radical> row of buildings up on the <radical>hill</radical> is how every <kanji>Inst</kanji>itute wants to be seen.",
     "reading_mnemonic": "At the same window, the visor cat's ink stamp has half-dried, so every ticket comes out a pale <reading>いん</reading>. She grumbles it sounds like <reading>bean</reading> paste smeared thin, and refuses to fetch a new pad before the shrine's afternoon bell.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-bureau": {
-    "meaning_mnemonic": "Behind the beeping till, Koichi partitions off a booth with a <radical>mouth</radical>-sized service window and nails up a sign reading BUREAU. Every <radical>body</radical> in line — parcels, stamps, tax forms — squeezes through, three queues at once. Somehow every errand routes through that cramped booth: a whole <kanji>bureau</kanji> folded into a konbini corner.",
+    "meaning_mnemonic": "A <radical>body</radical> that answers every <radical>phrase</radical> you say with another form to fill in is working in a <kanji>bureau</kanji>.",
     "reading_mnemonic": "Wedged into that same booth, a customer three forms deep chokes on chalky bureau dust drifting off the tax stacks, coughing out something between a wheeze and <reading>きょく</reading>. Koichi just nods, because everyone who reaches window three sounds exactly like they're trying to say <reading>choke</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-convenience": {
-    "meaning_mnemonic": "Halfway up the mountain trail, a lone <radical>person</radical> finds a portable toilet bolted beside the vending machine, its door numbered with a single <radical>one</radical>. A <radical>stick</radical> props the door open while a <radical>slide</radical> of loose gravel spills over the threshold. Overhead a lantern glows like a paper <radical>sun</radical>, lighting a floor tiled in a tiny checkerboard <radical>rice field</radical> pattern. Every scrap just happens to be exactly where a tired hiker needs it: pure <kanji>convenience</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> who can <radical>renew</radical> anything for you without leaving the counter is selling pure <kanji>convenience</kanji>.",
     "reading_mnemonic": "The badger's slam sends the vending machine's change chute rattling out coins. The hiker who planned to buy one — a guy named <reading>Ben</reading> — just mutters 「<reading>べん</reading>」 under his breath, resigned to waiting outside in the rain.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-building": {
-    "meaning_mnemonic": "Sei's school gym floods every spring, so the committee tears a <radical>mouth</radical> of a doorway through to the old mansion's <radical>roof</radical> next door and calls the echoing ballroom the new gym. Badminton nets hang from an iron <radical>stick</radical>, and the marble hall once built to <radical>eat</radical> in now holds trophies. Half school, half mansion: one sprawling <kanji>building</kanji>.",
+    "meaning_mnemonic": "Put a kitchen of <radical>food</radical> under the same roof as a <radical>bureaucrat</radical> and you need a <kanji>building</kanji> big enough for both.",
     "reading_mnemonic": "The gym teacher, thrilled with his new marble domain, now calls himself 「<reading>かん</reading>」 instead of coach — loosely, <reading>Khan</reading>. He blows his whistle from the staircase every morning like a monarch addressing the badminton court below.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-near": {
@@ -460,12 +460,12 @@
     }
   },
   "k-slow": {
-    "meaning_mnemonic": "On Sei's school sports field, the very last runner limps down the <radical>road</radical>, each stride <radical>split</radical> in half by a cramped calf. A stray <radical>sheep</radical> wanders onto the track and refuses to move, forcing him to trudge around it. By the final lap his legs feel like a <radical>corpse</radical>'s, heavy and unwilling, while the whole field stands there waiting. That dragging, half-dead shuffle is <kanji>slow</kanji>.",
+    "meaning_mnemonic": "A <radical>sheep</radical> dragging its whole <radical>body</radical> up the <radical>road</radical> makes every journey behind it <kanji>slow</kanji>.",
     "reading_mnemonic": "The class hamster, <reading>Chi</reading>, is let loose to race him and loses on purpose, wheezing one flat unimpressed <reading>ち</reading> at the finish line — same track, same dragging in dead last.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-walk": {
@@ -474,7 +474,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-exertion": {
@@ -487,30 +487,30 @@
     }
   },
   "k-paper": {
-    "meaning_mnemonic": "Picture a flat gray sheet dragged from the river current, its <radical>thread</radical>-thin fibers refusing to line up. A woman known only by her <radical>family name</radical> presses it against a wooden frame in the shallows, and by the time the sun dries it stiff, it lies flat, blank, and waiting: <kanji>paper</kanji>.",
+    "meaning_mnemonic": "Mashed <radical>thread</radical> pressed flat until it can hold a <radical>family name</radical> in ink has become <kanji>paper</kanji>.",
     "reading_mnemonic": "At the same riverbank, a heron picks through the drying pulp and hisses 「<reading>し</reading>」 as the wet sheet slips under its feet. That flat <reading>sheesh</reading> of air escaping is the exact noise you make when you finally get the paper flat.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-window": {
-    "meaning_mnemonic": "Picture the back wall of Koichi's konbini, once a tight little <radical>cocoon</radical>, windowless — until someone punches a single square <radical>hole</radical> through the plaster at eye level. Light floods in, and every customer's <radical>heart</radical> goes straight to that bright square cut into the dark: a <kanji>window</kanji>.",
+    "meaning_mnemonic": "A <radical>hole</radical> cut so a lonely <radical>heart</radical> can see out of its <radical>cocoon</radical> is exactly what a <kanji>window</kanji> is.",
     "reading_mnemonic": "At the same konbini, a raccoon dog crashes through the new opening chasing a dropped onigiri and skids across the tile. The clerk can only gasp 「<reading>そう</reading>」 — that flat English <reading>so</reading> of someone watching it happen with no better word for it.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-true": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the offering box has a slot cut in a <radical>cross</radical>, wide enough to <radical>split</radical> a coin clean in two. A single carved <radical>eye</radical> watches from the lintel above, fixed on <radical>one</radical> coin the whole time it spins. It never blinks and never looks away, the way a shrine cat won't look away from a fish. That unwavering, unblinking watch — nothing hidden, nothing faked — is <kanji>true</kanji>.",
+    "meaning_mnemonic": "A <radical>tool</radical> that reads the same on all <radical>ten</radical> of its marks is telling you something <kanji>true</kanji>.",
     "reading_mnemonic": "One of the shrine cats leaps for the ladle, misjudges the step, and slams its shin against the stand. It yowls 「<reading>しん</reading>」, the sound of the English word <reading>shin</reading>, before limping off — the truest reaction any cat has given all day.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-cut": {
@@ -519,25 +519,25 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-wind": {
-    "meaning_mnemonic": "On the mountain trail, a hiker's poncho balloons into one huge sail, hood snapping sideways, a moth trapped inside hunting for an exit that isn't there. The poncho leans hard in one direction, cloth cracking like a whip. That swollen, straining shape is <radical>wind</radical> itself — nothing else moves <kanji>air</kanji> like that.",
+    "meaning_mnemonic": "An <radical>insect</radical> blown clean off the <radical>table</radical> with nobody touching it is proof of <kanji>wind</kanji>.",
     "reading_mnemonic": "At the vending machine on the trail, the hiker doubles over and breathes out one long 「<reading>ふう</reading>」. It's the same winded <reading>phew</reading> you'd sigh after a gust knocks you sideways, air rushing out just like the air that knocked you there.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-move": {
-    "meaning_mnemonic": "At Koichi's konbini, a stacked crate of onigiri suddenly rolls off on a single <radical>stick</radical> axle, one <radical>slide</radical> of momentum carrying it toward the door. Its <radical>power</radical> comes from nowhere obvious — no cord, no battery, just <radical>one</radical> crate deciding to go. It rattles past the window where the <radical>sun</radical> is setting over the distant <radical>village</radical> rooftops, and doesn't stop until it hits the beeping till. That crate, suddenly alive and unstoppable, is <kanji>move</kanji> itself.",
+    "meaning_mnemonic": "It takes real <radical>power</radical> to make anything that <radical>heavy</radical> actually <kanji>move</kanji>.",
     "reading_mnemonic": "Koichi lurches out of the way and yelps <reading>どう</reading> — a flat, startled <reading>doh</reading> — as the crate rumbles past the beeping till and rocks the onigiri shelf on its way through.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-cool": {
@@ -546,25 +546,25 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-music": {
-    "meaning_mnemonic": "In the schoolyard, a lone <radical>tree</radical> is strung branch to branch with dozens of tiny <radical>white</radical> bells that ring with an <radical>ice</radical>-sharp chime. A squirrel scrambling up sets off a cascade of ringing that spreads through the hallways, so rich that class doesn't mind the interruption: that whole chiming tree is <kanji>music</kanji>.",
+    "meaning_mnemonic": "Wind through a <radical>tree</radical> whose <radical>white</radical> branches are sealed in <radical>ice</radical> makes the oldest <kanji>music</kanji> there is.",
     "reading_mnemonic": "Sei gawks up at the tree, mouth open, murmuring <reading>がく</reading> — pure <reading>gawk</reading> — unable to look away from the bells still swinging long after the squirrel is gone.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-transmit": {
-    "meaning_mnemonic": "Picture 伝 as a hunched <radical>person</radical>, a courier crouched on Grandma Kane's steps, passing a paper folded tight as a <radical>cocoon</radical> from <radical>two</radical> hands to the next. Cats bat it along underfoot until it lands under the enormous bell. The message has crossed the shrine untouched: <kanji>transmit</kanji>.",
+    "meaning_mnemonic": "One <radical>person</radical> shouting up into a <radical>cloud</radical> is still the cheapest way anybody has found to <kanji>transmit</kanji> news.",
     "reading_mnemonic": "At the bell, an eel called <reading>Denny</reading> lives coiled in the rope. Anyone who tugs the bell to ring it gets a jolt, yelping <reading>でん</reading> as the shock jumps up their arm. The courier's paper still gets through — Denny just likes his cut of the news.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-question": {
@@ -577,111 +577,111 @@
     }
   },
   "k-trip": {
-    "meaning_mnemonic": "Picture 旅 as a tattered <radical>chevron</radical> flag flapping at the head of the trail, pointing the <radical>direction</radical> for a whole line of hikers trudging after it. Nobody questions where it leads; they just follow, boots slipping on gravel, until the trail spits them out at the vending machine on top. That staggering line is a <kanji>trip</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> who picks a <radical>direction</radical> and follows the <radical>chevron</radical> on every signpost is on a <kanji>trip</kanji>.",
     "reading_mnemonic": "Leading them is a llama guide named <reading>Rio</reading>, bleating <reading>りょ</reading> at every switchback to keep the line moving. By the vending machine he collapses first, legs folded, still muttering it between breaths.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-attend": {
-    "meaning_mnemonic": "Picture 仕 as a <radical>person</radical>, a clerk standing bolt upright behind Koichi's till, spine straight as a blade, saluting every customer like a <radical>samurai</radical> posted at his station. He never sits, never slouches, just attends the register from open to close. That rigid stance is the whole meaning: <kanji>attend</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> whose entire job is standing half a step behind a <radical>samurai</radical> is there to <kanji>attend</kanji> him.",
     "reading_mnemonic": "Beside him works a hedgehog cashier named <reading>Shea</reading>, who hisses <reading>し</reading> through her teeth every time the till beeps too loud. The clerk never breaks his salute, but Shea flinches at every beep, still hissing it under her breath at closing.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-descend": {
-    "meaning_mnemonic": "Picture 降 as a steep staircase cut into a mountainside, above a distant <radical>village</radical> at the bottom, two hurried <radical>trailing foot</radical>prints stamped down the steps. A crate tips off the vending machine and thunders down every step, bottles bouncing all the way down. A hill with feet already halfway down it: <kanji>descend</kanji>.",
+    "meaning_mnemonic": "Two feet walking down a <radical>hill</radical> is the plainest way there is <radical>to descend</radical>, so the character just means <kanji>descend</kanji>.",
     "reading_mnemonic": "Koichi treks up that same trail himself to restock the vending machine. When the last case slips from his arms and crashes down every step behind him, he just sighs 「<reading>こう</reading>」 — more <reading>cough</reading> than word — and watches it disappear downhill.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-transit": {
-    "meaning_mnemonic": "See 渡 as <radical>water</radical> drawn in three dripping strokes beside a row of measured footprints, like someone counting each step with a raised <radical>right hand</radical> from one bank to a <radical>shelter</radical> on the far side. The current never covers the marks. That is <kanji>transit</kanji>: crossing counted out, step by step.",
+    "meaning_mnemonic": "Crossing <radical>water</radical> by counting the <radical>degrees</radical> the current pushes you sideways is how you <kanji>transit</kanji> a river.",
     "reading_mnemonic": "Toto wades into the shallows with a sample door strapped to his shell, testing each stepping stone before he trusts it. Every plant of his foot lands with a flat 「<reading>と</reading>」, like a knuckle rapping a <reading>door</reading>, all the way to the far bank.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-dwell": {
-    "meaning_mnemonic": "Picture 住 as one tall lamp, its <radical>jewel</radical>-capped finial catching light, beside a smaller post — planted by some <radical>person</radical> in the same square of ground for years. Moss climbs both at the same slow rate, each <radical>drop</radical> of dew feeding it. Planted in one place so long it has stopped being separate from it: <kanji>dwell</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> who is <radical>lord</radical> of one small room is going to <kanji>dwell</kanji> in it for good.",
     "reading_mnemonic": "At Grandma Kane's shrine, one cat never wanders past the mossy steps — Jusuke, who has lived under the bell so long nobody remembers him arriving. Every time it tolls, he grumbles <reading>じゅう</reading>, low in his throat, like the word <reading>chew</reading> dragged out twice as long.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-nothingness": {
-    "meaning_mnemonic": "Picture 無 as a school gym floor scorched flat by a stage fire the night before a show. Every prop is gone, only faint threads of smoke rising off the ash line where the curtain stood. Walk onto that floor: <radical>nothingness</radical> left to trip on, nothing to see, just an empty rectangle. <kanji>None</kanji> of it remains.",
+    "meaning_mnemonic": "One <radical>slash</radical> of <radical>fire</radical> across open <radical>ground</radical> leaves behind pure <kanji>nothingness</kanji>.",
     "reading_mnemonic": "A stray cow named Muu wanders into that same burned-out gym through Sei's echoing hallway, nobody around to shoo her out. Her only sound bounces off the bare walls, a flat <reading>む</reading>, like a drawn-out <reading>moo</reading> nobody is there to hear.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-first-time": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, you grab the frayed rope and swing the huge bell for the <radical>first time</radical> in your life. The clapper catches wrong, and instead of a clean toll it screeches like a rusty gate, sending every cat bolting off at once. That flinching, unrepeatable racket marks the <kanji>beginning</kanji> of it all.",
+    "meaning_mnemonic": "Taking a <radical>sword</radical> to a good bolt of <radical>clothing</radical> is terrifying the <kanji>first time</kanji> you have to do it.",
     "reading_mnemonic": "Still ringing in your ears, the shrine's fattest cat gives one hoarse, botched yowl — not a full meow, just a wheezy <reading>しょ</reading>, like a magician trying to <reading>show</reading> off a trick that didn't land. Every disastrous first attempt at that bell gets remembered by that one broken sound.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-department": {
-    "meaning_mnemonic": "Sei's school has one door of <radical>grain</radical>-wood at the end of the main hallway, a <radical>dipper</radical> hanging by it to tally who passes through. Its plaque is nailed on crooked, at an angle no carpenter would allow. Every subject in the building funnels through that single lopsided doorway: the <kanji>department</kanji>.",
+    "meaning_mnemonic": "Anybody paid to <radical>measure</radical> <radical>grain</radical> all day long ends up with a <kanji>department</kanji> of their own.",
     "reading_mnemonic": "Kaa perches on the power line above that crooked doorway and coughs a puny puff of flame that singes the plaque a shade darker each week. The cough comes out hoarse and flat, <reading>か</reading>, like a stalling <reading>car</reading> engine — the sound the school now associates with that overworked door.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-utmost": {
-    "meaning_mnemonic": "At the very top of the mountain trail, under the beating <radical>sun</radical>, past where the vending machine has any business being, <radical>one</radical> hiker drops face-first onto the last flat rock. His <radical>right hand</radical> scrapes for a grip as his <radical>ear</radical>s ring. There's no path beyond it — just the edge of what the trail can give: the <kanji>utmost</kanji>.",
+    "meaning_mnemonic": "To <radical>take</radical> every single hour of <radical>sun</radical> there is would be the <kanji>utmost</kanji> anyone could ask for.",
     "reading_mnemonic": "Flat on that last rock, the hiker lets out one long <reading>さい</reading>, a groan that trails off exactly like an exhausted <reading>sigh</reading>. Reaching the utmost point, it turns out, feels a lot less like victory and a lot more like collapsing.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-topic": {
-    "meaning_mnemonic": "Above the school gate, someone has bolted one steel <radical>page</radical> of a plaque so heavy it will never come down, catching the <radical>sun</radical> each morning. Nobody argues about what today's topic is — every <radical>head</radical> in the yard tips up to read the one word on it before the bell even rings: the <kanji>topic</kanji>.",
+    "meaning_mnemonic": "Getting the <radical>right</radical> words across the <radical>head</radical> of the page is how you choose a <kanji>topic</kanji>.",
     "reading_mnemonic": "Dai, the giant baby the size of a truck, crawls up to that same gate and still can't read the plaque. He throws his head back and wails his own name, <reading>Dai</reading>, at a pitch that registers as <reading>だい</reading> on every seismograph in town, and the plaque shudders on its bolts.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-promise": {
-    "meaning_mnemonic": "At the riverbank, two friends <radical>wrap</radical> a rope of braided <radical>thread</radical> around two posts and swear to meet on this exact spot every year — a promise sealed with a knot. Each <radical>drop</radical> of current tugs the wet rope smaller each season, so the spot is only ever approximately where the knot has shrunk to: a <kanji>promise</kanji>.",
+    "meaning_mnemonic": "Tying a <radical>thread</radical> round the <radical>ladle</radical> so nobody else can take it is how you make a <kanji>promise</kanji>.",
     "reading_mnemonic": "A fisherman named <reading>Yaku</reading> checks that knot every morning, tugging it once and grunting 「<reading>やく</reading>」 in satisfaction when it holds. He does the same next year when it has shrunk another inch — the promise, apparently, unbroken.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-sound": {
-    "meaning_mnemonic": "At the top of the steep mountain trail, the one improbable vending machine finally takes your coin. It drops a can with a clang so loud it bounces off every rock on the way down. That clang, ringing back at you from every side at once, is the only <radical>sound</radical> for miles — pure <kanji>noise</kanji>, echoing on and on.",
+    "meaning_mnemonic": "Something that can <radical>stand</radical> in the air all <radical>day</radical> without ever being seen has to be <kanji>sound</kanji>.",
     "reading_mnemonic": "Every clang like that wakes something on the mountain: an echo spirit called <reading>On</reading>, who repeats the vending machine's ring straight back at you, moaning <reading>おん</reading> in the exact pitch of the can hitting the tray, over and over until the trail goes quiet.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-whole": {
@@ -694,94 +694,94 @@
     }
   },
   "k-medicine": {
-    "meaning_mnemonic": "At Koichi's konbini, the back shelf holds bottles kept <radical>ice</radical>-cold, <radical>grass</radical> and <radical>tree</radical> leaves poking from every cap, dripping bitter syrup onto the tiles. The night clerk swallows a capful anyway each <radical>day</radical>, grimacing — his headache is gone before he reaches the till. That crooked, leafy shelf is exactly how the character is drawn: <kanji>medicine</kanji>.",
+    "meaning_mnemonic": "<radical>Grass</radical> that works on you the way <radical>music</radical> works on a bad mood is being sold as <kanji>medicine</kanji>.",
     "reading_mnemonic": "A <reading>Yak</reading> shoulders through the konbini door, snuffles the dripping medicine shelf, and swallows a whole bottle in one gulp. Its stomach gurgles, it throws its huge head back, and out comes a groaning <reading>やく</reading> loud enough to rattle the onigiri shelf.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-revolve": {
-    "meaning_mnemonic": "Picture the character as a single cart wheel off a <radical>vehicle</radical>, drawn mid-spin. It has broken loose at the mountain trail's top and gone rolling past the vending machine. It doesn't stop at the bend: it whips around <radical>two</radical> full turns, coiling tight as a <radical>cocoon</radical>, and keeps going in one dizzy loop downhill: <kanji>revolve</kanji>.",
+    "meaning_mnemonic": "A <radical>vehicle</radical> throwing up a <radical>cloud</radical> of dust manages it by making its wheels <kanji>revolve</kanji>.",
     "reading_mnemonic": "At the bottom of the trail the loose wheel clips the vending machine, and one stray coin spins out and won't lie flat, circling the gravel — a lone <reading>ten</reading>-yen piece. The hiker chases it, muttering <reading>てん</reading> each time it wobbles past again.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-fall": {
-    "meaning_mnemonic": "Picture the character as a stone letting go of the <radical>grass</radical>y riverbank edge. It tumbles <radical>trailing foot</radical> over end through open air, vanishing into the <radical>mouth</radical> of the <radical>water</radical> with no splash anyone nearby would notice. It's gone before it hits bottom, weight giving way to gravity: <kanji>fall</kanji>.",
+    "meaning_mnemonic": "<radical>Grass</radical> growing out of a roof in <radical>Kyoto</radical> means those tiles are about to <kanji>fall</kanji>.",
     "reading_mnemonic": "Downstream, the fisherman who missed the splash finds the culprit lodged in the shallows: a plain grey <reading>rock</reading>. He nudges it loose with his boot, and it thunks back under the surface with a flat, hollow <reading>らく</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-beforehand": {
-    "meaning_mnemonic": "Every morning before the shutters lift, a <radical>hook</radical> with a sharp <radical>barb</radical> drops from the ceiling and snags tomorrow's delivery truck through <radical>one</radical> hole in time, hauling in rice balls that haven't been made yet. The clerk restocks a full day early: whatever happens here has already happened first, <kanji>beforehand</kanji>.",
+    "meaning_mnemonic": "Setting the <radical>hook</radical> while the job is nowhere near <radical>complete</radical> is doing the work <kanji>beforehand</kanji>.",
     "reading_mnemonic": "The hook-wielder greeter, a lanky clerk everyone calls <reading>Yo</reading>, hollers 「<reading>よ</reading>」 every time a snagged delivery drops through the hole in time. One flat syllable for every rice ball a day too soon.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-grade": {
-    "meaning_mnemonic": "Halfway up the trail, a stonemason has chiseled the cliff into a staircase for decades, guarding it with a <radical>pike</radical>. He refuses anyone past the third stair. Each stair takes <radical>one</radical> <radical>stick</radical>-straight <radical>slide</radical> of the chisel — a rank you must be <kanji>grade</kanji>d into before your foot may touch it.",
+    "meaning_mnemonic": "Ranking every soldier by the length of the <radical>pike</radical> he can carry gives you a rough <kanji>grade</kanji>.",
     "reading_mnemonic": "The stonemason, a squat old man everyone on the trail calls <reading>Dan</reading>, stamps your hiking permit. He grunts 「<reading>だん</reading>」 once for every stair he's decided you're worthy of, then turns his back.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-nickname": {
-    "meaning_mnemonic": "Every morning on Sei's school field, a rooster on the fence handles roll call instead of the teacher, its <radical>mouth</radical> wrapped in a feathery <radical>wrap</radical>. It refuses to crow anyone's number. <radical>One</radical> by one, it screeches the nickname class gave you last week, until the field rings with everyone's most embarrassing <kanji>nickname</kanji>.",
+    "meaning_mnemonic": "<radical>One</radical> word out of somebody else's <radical>mouth</radical> can stick to you as a <kanji>nickname</kanji> for life.",
     "reading_mnemonic": "The rooster itself has a name — the groundskeeper calls it <reading>Go</reading>. Every crow comes out as one long 「<reading>ごう</reading>」, stretched over the whole field, until the flag finally goes up and class begins.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-plank": {
-    "meaning_mnemonic": "At the riverbank a single wide plank of <radical>tree</radical>-wood has lain half in the water and half in the mud, propped against a low <radical>cliff</radical> for as long as anyone remembers. It splits down the center with every storm, but villagers' <radical>right hand</radical>s keep dragging it back to lay flat: the only board wide enough to cross on, a <kanji>plank</kanji>.",
+    "meaning_mnemonic": "Split a <radical>tree</radical> and the <radical>opposite</radical> face of that cut comes away as one flat <kanji>plank</kanji>.",
     "reading_mnemonic": "Downstream at the same crossing, the chef <reading>Han</reading> — the one who serves every dish split exactly in half — squats over the cracked plank and slices his lunch on it. He mutters 「<reading>はん</reading>」 with each cut: half for him, half for the current.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-storey": {
-    "meaning_mnemonic": "Picture the character as a tall staircase carved into the mossy steps of Grandma Kane's shrine, overlooking a <radical>village</radical> below. Each step, a little <radical>white</radical>r and greener than the last, climbs past the enormous bell toward a floor you can't yet see. <radical>Compare</radical> any two steps and one always sits higher: a <kanji>storey</kanji>.",
+    "meaning_mnemonic": "Stacking <radical>all</radical> the rooms up a <radical>hill</radical> instead of spreading them out is how you get another <kanji>storey</kanji>.",
     "reading_mnemonic": "A monk named <reading>Kai</reading> climbs the shrine steps every morning, counting each landing aloud so he doesn't lose track: <reading>かい</reading>, one floor, <reading>かい</reading>, another. The cats sunning themselves on the steps stop washing just to watch him pass.",
     "description": "階 rarely stands alone as the everyday word for a storey. In practice it almost always attaches to a number as the counter for building floors. きざはし is a rare, literary reading for a staircase; かい is the reading actually used day to day.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-craft": {
-    "meaning_mnemonic": "Picture 工 as a squat steel I-beam — flat cap on top, flat foot on the bottom, one spine welded straight down the middle: pure <radical>construction</radical>. A crew winches it upright on a bare lot and bolts it in before a single wall exists. That lone beam is the first thing raised on any job site: the shape of <kanji>craft</kanji> itself.",
+    "meaning_mnemonic": "A flat top, a flat base and one upright holding them apart is the plainest tool ever made, and the whole of <kanji>craft</kanji>.",
     "reading_mnemonic": "Koichi wheels his restocking cart past the freshly bolted beam and clips his elbow on the corner. He lets out a flat <reading>coo</reading>, dragging the vowel out long like his till's slow beep: <reading>こう</reading>. Then he reroutes the onigiri delivery around it.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-spot": {
-    "meaning_mnemonic": "Picture 点 as a hanko, carved like a tiny <radical>divination</radical> stick, stamped too hard through the school's front <radical>mouth</radical>way onto a test paper. The seal bursts, ink scattering like sparks off <radical>fire</radical>. Four droplets spatter across the score box, each drying into its own dark, unmistakable <kanji>spot</kanji>.",
+    "meaning_mnemonic": "<radical>Fortune-telling</radical> by reading where the <radical>fire</radical> scorched the bone comes down to judging one small <kanji>spot</kanji>.",
     "reading_mnemonic": "The hall monitor everyone just calls <reading>Ten</reading> finds the spattered test on the floor. He holds up all ten fingers, hissing 「<reading>てん</reading>」, counting the ink spots one by one before confiscating the paper.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-meadow": {
@@ -794,21 +794,21 @@
     }
   },
   "k-lady": {
-    "meaning_mnemonic": "Picture 婦 as a <radical>woman</radical> named Fumi, sweeping Grandma Kane's shrine steps at dawn under the <radical>cover</radical> of a long apron of <radical>cloth</radical>. Her <radical>broom</radical> scrapes stone in the same rhythm every morning while the shrine cats scatter. She works top to bottom without looking up: the picture of a <kanji>lady</kanji> running her own household.",
+    "meaning_mnemonic": "A <radical>woman</radical> handed a <radical>sweeper</radical> the moment she walks in is being called a <kanji>lady</kanji> to her face.",
     "reading_mnemonic": "At the shrine gate, Fumi leans her broom against the rail and blows out a long <reading>phew</reading> — a breathy 「<reading>ふ</reading>」 that scatters the incense smoke. Then she picks the broom up to finish the steps.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-idea": {
-    "meaning_mnemonic": "In a hallway at Sei's school, picture the kanji as one image: a heavy iron lid clamped over a beating <radical>heart</radical>, muffling every <radical>sound</radical> of its thump. Pressure builds until the lid cracks a finger's width. A single bright spark hisses free through the gap: that spark, still hot, is the <kanji>idea</kanji>.",
+    "meaning_mnemonic": "A <radical>sound</radical> that reaches the <radical>heart</radical> before you get a chance to argue with it is an <kanji>idea</kanji>.",
     "reading_mnemonic": "That escaped spark turns out to be Eeko, a firefly who only ever says one sound. She loops once around the lockers and lets out a bright <reading>い</reading> — an <reading>eek</reading>-thin squeak of light — before ducking back through the crack in the lid to cool off.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-change": {
@@ -817,509 +817,509 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-sentence": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the temple cat sleeps spread-eagle across the mossy steps, arms flung wide, legs crossed at the ankle. Afternoon light slats through the eaves. It lands across her fur in neat, deliberate lines of <radical>writing</radical>, until her whole back reads as one finished <kanji>sentence</kanji>.",
+    "meaning_mnemonic": "Put a <radical>lid</radical> on the line and <radical>mow</radical> off everything past the full stop to leave exactly one <kanji>sentence</kanji>.",
     "reading_mnemonic": "Mon-Bun, the rabbit twins, lean over the cat arguing about how it ends. One twin insists it needs a flourish on top, like a bread <reading>bun</reading>, and keeps hollering <reading>ぶん</reading> until the enormous bell rings and the cat twitches the whole sentence into a blur.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-method": {
-    "meaning_mnemonic": "At the riverbank, the <radical>water</radical> doesn't get to wander. Picture the whole kanji as a stone flume packed with <radical>earth</radical>, its narrow mouth sealed like a <radical>cocoon</radical>, forcing every drop through one channel, same order, no shortcuts. That fixed channel, followed exactly, is the <kanji>method</kanji>.",
+    "meaning_mnemonic": "Knowing where the <radical>water</radical> has already <radical>gone</radical> before you start digging is what having a <kanji>method</kanji> means.",
     "reading_mnemonic": "Hou, an owl who lives on the flume post, keeps watch for cheaters. Whenever a drop tries to leap the channel early, he swivels his head and hoots <reading>ほう</reading> — a low <reading>whoa</reading> that echoes off the water — until the drop falls back into line.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-generation": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, three fence posts lean out of the moss at different heights. A groundskeeper strings one rope low for the toddlers, higher for the parents, higher still for the grandparents, refusing to leave until all three cross the same posts. The tangle reads as one <radical>generation</radical> roped to the next: a whole <kanji>society</kanji>.",
+    "meaning_mnemonic": "Every <radical>twenty</radical> years a whole new <kanji>generation</kanji> turns up expecting to sit in your chair.",
     "reading_mnemonic": "Sei, hand up before anyone asks, elbows in to fix the groundskeeper's ropes and gets both ankles lassoed for it. She yanks free, smooths her uniform, and announces the fix in one clipped syllable that sounds exactly like you'd <reading>say</reading> it: <reading>せい</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-world": {
-    "meaning_mnemonic": "At the top of the mountain trail, past the vending machine, the ground drops away and the valley opens below: a <radical>rice field</radical> after rice field, boxed by its own low fence. A lone <radical>person</radical> stands on two <radical>human legs</radical> at the edge, taking it all in — every field at once, hemmed edge to edge, boundaries adding up to the whole <kanji>world</kanji>.",
+    "meaning_mnemonic": "Every <radical>rice field</radical> on earth <radical>jammed in</radical> edge to edge would still be only part of the <kanji>world</kanji>.",
     "reading_mnemonic": "The hiker who dragged you up here — you call him <reading>Kai</reading> for the noise he makes at every switchback — doubles over at the summit. He lets out one long 「<reading>かい</reading>」 of relief before he looks at the view.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-politics": {
-    "meaning_mnemonic": "On the sports field, the flagpole with its <radical>chevron</radical> pennant has bent sideways overnight. Sei drags it upright and raps it with a <radical>tap</radical> of her pointer each time it starts to <radical>stop</radical> and slump. The whole field stands at attention around one stick beaten straight. That correcting by force is <kanji>politics</kanji>: government as the art of straightening what keeps slumping.",
+    "meaning_mnemonic": "Deciding what is <radical>correct</radical> and then taking <radical>action</radical> on it in front of everybody is the whole of <kanji>politics</kanji>.",
     "reading_mnemonic": "Sei doesn't stop at the flagpole. She marches the whole class into rows and claps them straight. Every clap lands on the same syllable, sharp as a ruler on a desk: 「<reading>せい</reading>」 — the way you'd <reading>say</reading> a drill sergeant's count.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-reign": {
-    "meaning_mnemonic": "At the riverbank, the <radical>water</radical> thrashes every direction, slapping washing out of people's hands. Someone stacks stones into a low wall with a narrow <radical>mouth</radical> gap, sealed tight as a <radical>cocoon</radical>, and the water that fought all morning collects behind it into one flat, silent pool. That taming of the flood is <kanji>reign</kanji>: to calm down.",
+    "meaning_mnemonic": "Whoever controls the <radical>water</radical> gets the <radical>pedestal</radical>, and from up there they <kanji>reign</kanji>.",
     "reading_mnemonic": "The stone-stacker, a quiet type the other kids call <reading>Ji</reading> because he never says more than one syllable, watches his pool go still and finally speaks: <reading>じ</reading>, and nothing else, satisfied.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-sex": {
-    "meaning_mnemonic": "性 shows up as one stamped box on a school health form: the box for your inborn nature, straight from the <radical>heart</radical> of your <radical>life</radical>. Sei isn't satisfied checking it once — he stamps it three times and asks the nurse to grade his nature like an exam. Stamped and graded: that is your <kanji>sex</kanji>, your gender, your nature.",
+    "meaning_mnemonic": "The part of the <radical>heart</radical> that goes about making new <radical>life</radical> is what we politely call <kanji>sex</kanji>.",
     "reading_mnemonic": "The nurse, exhausted, waves the form away and tells him to just <reading>say</reading> his name and leave — Sei straightens up and corrects her anyway: it's <reading>せい</reading>, properly stamped, thank you.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-inter": {
-    "meaning_mnemonic": "At the riverbank the water sits mirror-still beside a lone <radical>tree</radical>: a hiker leans over and his reflection leans back, matching every twitch of his <radical>eye</radical>. He waves, the water waves back; he frowns, it frowns back — two sides doing the same thing to each other. That two-way mirroring is <kanji>inter-</kanji>: mutual, together.",
+    "meaning_mnemonic": "One <radical>eye</radical> on each side of a <radical>tree</radical>, each watching the other, is exactly what <kanji>inter</kanji>action looks like.",
     "reading_mnemonic": "The hiker, Sou, leans in close and mutters 「<reading>そう</reading>」 to his own reflection, daring it to answer. Right on cue, impossibly, the water mutters <reading>so</reading> straight back at him — word for word, syllable for syllable.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-guest": {
-    "meaning_mnemonic": "The vending machine atop the trail sits under its little <radical>roof</radical>, the only comfort after that steep climb. A hiker treats it like a hotel lobby: he drops his pack, kicks off his boots, <radical>trailing foot</radical>prints in the gravel. He opens his <radical>mouth</radical>, waiting for someone to bring him tea, self-appointed as the honored <kanji>guest</kanji>.",
+    "meaning_mnemonic": "<radical>Each</radical> new person under your <radical>roof</radical> who did not pay a thing for it is a <kanji>guest</kanji>.",
     "reading_mnemonic": "His ride up was a foul-tempered <reading>yak</reading> that refuses to leave the summit, planting itself by the machine like it's checked into a hotel. A guide radios down that a 「<reading>きゃく</reading>」 has arrived and shows no sign of ever checking out.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-public": {
-    "meaning_mnemonic": "Koichi keeps splitting open his own <radical>private</radical> stockroom, a cocoon of shelves once his alone. He never locks the doors again — day, night, holiday, it makes no difference. Every <radical>split</radical>-open shelf gets restocked for strangers, like a prince tending his own domain. That's <kanji>public</kanji>: everyone's business.",
+    "meaning_mnemonic": "<radical>Split</radical> somebody's <radical>cocoon</radical> open and whatever was private inside it has just gone <kanji>public</kanji>.",
     "reading_mnemonic": "Regulars don't use his full name anymore. They just shout the stretched <reading>Ko</reading> of Koichi as he blurs past restocking, and it clips down to one flat <reading>こう</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-profit": {
-    "meaning_mnemonic": "Picture 利 as one bare <radical>sword</radical> lying beside a heavy stalk of <radical>grain</radical>, both leaning the same way, like a scale about to tip. At Koichi's konbini, the clerk nicks a rice sack's string with that blade, and the sack weighs heavier after the cut than before. The register just prints <kanji>profit</kanji>.",
+    "meaning_mnemonic": "Taking a <radical>knife</radical> to your own <radical>grain</radical> and selling the better half of it is <kanji>profit</kanji>.",
     "reading_mnemonic": "At the same konbini scale, the clerk tucks a dry <reading>reed</reading> behind his ear for luck. Every time a sack outweighs itself, he snaps the reed and grins, muttering a stretched <reading>り</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-task": {
-    "meaning_mnemonic": "See 務 as one overloaded figure: a <radical>halberd</radical> on one shoulder, a hand raised for one sharp <radical>action</radical>. Its arm flexes with raw <radical>power</radical> under the weight — three demands, one body, none optional. On the mountain trail, the guide hauls all three past every switchback, only dropping his shoulders at the summit's vending machine. The <kanji>task</kanji> is done.",
+    "meaning_mnemonic": "A <radical>halberd</radical>, one sharp <radical>tap</radical> and every bit of <radical>power</radical> you have is what a hard <kanji>task</kanji> takes.",
     "reading_mnemonic": "A cow that wandered up years ago still blocks the trail near that vending machine until every task is read aloud to her. She answers each one with a flat <reading>moo</reading>, and that same flat sound is the reading <reading>む</reading> — one syllable, no complaints, task acknowledged.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-transport": {
-    "meaning_mnemonic": "Picture 輸 as one strange <radical>vehicle</radical>: a wagon's wheels bolted onto a hollowed boat hull. A lone <radical>person</radical> poles it, standing on one plank of bare <radical>ground</radical>. A curved <radical>sword</radical> in his belt scrapes the hull into a <radical>moon</radical>-shaped curve. Crates get loaded on and it shoves off. Wheels spin uselessly underwater, the hull scrapes stone on land, yet the ugly thing drags everything across. That is <kanji>transport</kanji>.",
+    "meaning_mnemonic": "Strapping a <radical>dugout canoe</radical> onto a <radical>vehicle</radical> is a ridiculous way to <kanji>transport</kanji> a boat, and it works.",
     "reading_mnemonic": "The ferryman poling this contraption never learns anyone's name, so he calls every passenger the same drawn-out word as the wheels hit water: a long <reading>you</reading>. That same stretched syllable is the reading <reading>ゆ</reading>, hollered once as the crates lurch forward and the hull scrapes off from the bank.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-status": {
-    "meaning_mnemonic": "See 格 as one gnarled <radical>tree</radical> at Grandma Kane's shrine. Each branch forks off at its own height and stops, a knot shaped like a small <radical>mouth</radical> marking where it holds exactly one cat. The trunk's base splits into one <radical>trailing foot</radical> root, planted and unmoving. No cat may sit on a branch that isn't hers — the top for the biggest, the lowest for the newest arrival. That fixed, branch-by-branch order is <kanji>status</kanji>.",
+    "meaning_mnemonic": "Where <radical>each</radical> branch sits on the <radical>tree</radical> tells you its <kanji>status</kanji> without anybody saying a word.",
     "reading_mnemonic": "Every visitor who climbs the shrine's mossy steps and sees the cats ranked branch by branch just stops and <reading>gawks</reading>, throat catching on the same flat sound as the reading <reading>かく</reading>. The shrine's one enormous bell seems to echo it back once for every branch in the tree.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-gate": {
-    "meaning_mnemonic": "Picture two matching wooden <radical>gate</radical> panels, hinged and identical, at Grandma Kane's shrine, flanking the mossy steps. A cat darts between them, and both panels swing shut at once, clapping together with a boom. Twin doors that only work as a pair — that's a <kanji>gate</kanji>.",
+    "meaning_mnemonic": "Two tall panels facing each other across a gap, with nothing at all holding them up, is a <kanji>gate</kanji>.",
     "reading_mnemonic": "Mon-Bun, the scholarly rabbit twins, argue at Grandma Kane's shrine, each ending every sentence with a flat <reading>もん</reading> — book-nerd slang for obviously. They stand together like the gate's own twin panels, and every <reading>Mon</reading> makes the enormous bell shiver on its hook.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-turn-into": {
-    "meaning_mnemonic": "At the top of the mountain trail, a battered vending machine waits by the summit sign. A hiker feeds it a coin, and a hidden <radical>halberd</radical> blade shoots out, then <radical>slides</radical> back in with a click. The whole machine shudders and refolds — it isn't a vending machine anymore, it's a wooden bench, still warm. That's <kanji>turn into</kanji>: one thing reshaping into another.",
+    "meaning_mnemonic": "<radical>Crouch</radical> behind a <radical>halberd</radical> for long enough and you <kanji>turn into</kanji> a soldier whether you meant to or not.",
     "reading_mnemonic": "Sei reaches the summit first, hand up before anyone can ask, and plants herself by the vending machine that just turned into a bench. She declares it like a quiz answer: a crisp, smug <reading>せい</reading>, and hikers who arrive late swear they can still hear that <reading>say</reading> echo off the rocks.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-sort-of": {
-    "meaning_mnemonic": "At Koichi's konbini, a customer holds up an onigiri with the label torn off, right as a stray <radical>dog</radical> sniffs at the counter. The clerk waves a hand over the little <radical>fire</radical> under the warming plate, out at <radical>evening</radical> hour. Sort of like those, probably that kind of thing. Nobody presses further — <kanji>sort of thing</kanji> turns out to be a real answer here.",
+    "meaning_mnemonic": "A <radical>dog</radical> roasting over a <radical>fire</radical> under a full <radical>moon</radical> is the <kanji>sort of thing</kanji> that needs explaining.",
     "reading_mnemonic": "The clerk, whom regulars just call <reading>Zen</reading> for his permanent shrug, mutters a flat <reading>ぜん</reading> every time someone asks for specifics, sliding the mystery onigiri back onto the shelf without another word. Say his name fast enough and it collapses into the same flat <reading>ぜん</reading> — shrug included.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-mask": {
-    "meaning_mnemonic": "At the riverbank, something pale and square drifts down with the current — a blank wooden mask, one oval outline, two carved eye-holes. Someone wades in, fishes it out, and holds it right over their own <radical>face</radical>. Their expression vanishes, replaced by the mask's flat stare. That's a <kanji>mask</kanji> — a face swapped for a face.",
+    "meaning_mnemonic": "A flat oval with two holes cut for eyes and a hard frame around the whole face is a <kanji>mask</kanji>.",
     "reading_mnemonic": "The fisherman who drags it from the water, everyone calls him <reading>Men</reading> for his low grunt. He holds the mask to the sky and lets out a flat <reading>めん</reading>, like a verdict.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-demolition": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a fat cat leaps onto the bell rope, snagging her <radical>clothing</radical> sleeve as it swings. The rope snaps, and the enormous bell tears free. It thunders down the mossy steps and buries itself in the bare <radical>earth</radical> below, cracking a <radical>cross</radical> of broken stone where it lands. Grandma Kane just sighs — she'll have to <radical>buy</radical> a new bell. Another Tuesday of <kanji>demolition</kanji>.",
+    "meaning_mnemonic": "A <radical>net</radical> of torn <radical>clothing</radical> and <radical>ten</radical> loads of <radical>earth</radical> is all that is left after a <kanji>demolition</kanji>.",
     "reading_mnemonic": "Grandma Kane's apprentice, a boy named <reading>Kai</reading>, surveys the wreckage and sighs the count out loud: <reading>かい</reading> — the third bell disaster this year alone. He says it flat, already reaching for the broom.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-bring-up": {
-    "meaning_mnemonic": "On Sei's sports field, the groundskeeper pries the <radical>lid</radical> off an old milk carton. He plants one droopy sunflower seedling inside, wrapped like a <radical>private</radical> cocoon of dirt. He waters it every recess, and by the second <radical>month</radical> it has shot up past the goalposts, leaves like small hands reaching for the sky. That's <kanji>bring up</kanji>: raising something all the way up.",
+    "meaning_mnemonic": "Keep a <radical>cocoon</radical> under a warm <radical>lid</radical> for a whole <radical>month</radical> and you will <kanji>bring up</kanji> something alive.",
     "reading_mnemonic": "A tiny kid named <reading>Iku</reading> waters the sunflower every morning before the bell, chanting <reading>いく</reading>, いく, grow already — as if the word itself could drag the stalk taller.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-drought": {
-    "meaning_mnemonic": "The riverbank that should be rushing with water is nothing but a maze of cracked, <radical>sun</radical>-baked mud plates. Each crack forms a stray <radical>chevron</radical> mark, and the deepest fissures cross into a perfect <radical>cross</radical>. A heron stands in the middle on one leg, unable to remember what wet ground felt like. The whole bank has gone bone dry — a total <kanji>drought</kanji>.",
+    "meaning_mnemonic": "After enough <radical>sunrise</radical>s with nothing but dust underneath them, farmers <radical>beg</radical> for the end of the <kanji>drought</kanji>.",
     "reading_mnemonic": "The same heron kicks an empty tin <reading>can</reading> across the cracked mud out of pure boredom. It rolls to a stop with a hollow <reading>かん</reading> — the only sound this drought-cracked riverbank makes all summer.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-get-wet": {
-    "meaning_mnemonic": "A customer bursts through the door of Koichi's konbini, soaked from collar to shoe. <radical>Rain</radical> sheets off him in one long trail toward the onigiri shelf. He leaves a puddle of <radical>water</radical> so deep the beeping till stutters and dies — and <radical>yet</radical> he keeps dripping. Everything about him has gotten <kanji>wet</kanji>.",
+    "meaning_mnemonic": "<radical>Water</radical> has never once stopped to <radical>demand</radical> permission before making you <kanji>get wet</kanji>.",
     "reading_mnemonic": "Koichi mops the puddle, muttering <reading>じゅ</reading>, じゅ — it sounds exactly like the first syllable of <reading>juice</reading>, which is unfortunately also what the floor smells like now.",
     "description": "This character mostly means plain physical wetness — rain, tears, sweat. The \"make love\" sense is idiomatic, from a fixed phrase for an intimate scene in film or drama. On its own as a verb, it almost always just means damp, not romance.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-correct": {
-    "meaning_mnemonic": "On the school sports field, the coach chalks <radical>one</radical> line across the track — only a toe planted exactly on it counts. Every runner skids past or <radical>stops</radical> short, except Sei, uniform spotless, who lands a toe dead on the line without even trying. Smug before the whistle blows: <kanji>correct</kanji>.",
+    "meaning_mnemonic": "Walk <radical>one</radical> straight line and <radical>stop</radical> exactly on the mark to be counted <kanji>correct</kanji>.",
     "reading_mnemonic": "Back in the classroom, the teacher asks who stopped exactly on the line. Sei's hand shoots up before she finishes asking, and he answers with his own name like it settles it: <reading>Sei</reading>, <reading>せい</reading> — crisp, correct, a little too pleased with himself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-straightaway": {
-    "meaning_mnemonic": "At the riverbank, everything bends — the reeds, the ripples, the rope holding the ferry to its post. Only the ferryman's <radical>eye</radical> stays fixed dead ahead. He plants his push-<radical>stick</radical> on the exact same spot of <radical>ground</radical> every crossing, right where a <radical>cross</radical> is scratched into the deck. He refuses to glance down at the crooked water and poles <kanji>straightaway</kanji> across — straight, no detour.",
+    "meaning_mnemonic": "<radical>Ten</radical> people in the room and one <radical>eye</radical> fixed on you means you answer <kanji>straightaway</kanji>.",
     "reading_mnemonic": "On the far bank, kids call the ferryman Chalky, because his pole is an actual stick of chalk that drags one straight white line across the water on every crossing. Ask him why and he barks the same flat answer every time: <reading>ちょく</reading>, <reading>chalk</reading> — straight, immediate, no explanation given.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-suffering": {
-    "meaning_mnemonic": "At Koichi's konbini, a customer grabs the last onigiri, its <radical>grass</radical>-green nori wrapper crossed with a faint <radical>cross</radical> of mold. He shoves it straight into his <radical>mouth</radical> before checking the date. It's turned — bitter, warm, wrong. His whole face folds in on itself, the till beeping behind him like it's keeping score of his <kanji>suffering</kanji>.",
+    "meaning_mnemonic": "<radical>Old</radical> dry <radical>grass</radical> is the only thing left to chew on, which is the plain taste of <kanji>suffering</kanji>.",
     "reading_mnemonic": "He doesn't groan, exactly — what comes out is a strangled little <reading>coo</reading>, like a dove that swallowed a coin. The cashier doesn't even look up. She's heard that same <reading>く</reading> from every unlucky customer who trusted that shelf after dark.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-even": {
-    "meaning_mnemonic": "The mountain trail climbs brutal and uneven for an hour, then <radical>splits</radical> around one huge boulder before rejoining. Past the boulder, the ground opens into one flat clearing around the vending machine — level in every direction, not a rock out of place. After all that chaos, it's suddenly, completely <kanji>even</kanji>.",
+    "meaning_mnemonic": "Lay a <radical>shield</radical> flat on the ground and its face gives you a surface that is perfectly <kanji>even</kanji>.",
     "reading_mnemonic": "A hiker drags himself into the clearing, drops his pack, and lets out one long <reading>hey</reading>. That flat exhale is exactly the sound of <reading>へい</reading>: level, calm, done.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-clear-up": {
-    "meaning_mnemonic": "Rain floods the school's sports field mid-relay, runners skidding through mud under dripping umbrellas. Then the clouds tear apart, the sky flashing <radical>blue</radical>-green overhead, and one shaft of <radical>sun</radical> lands square on the finish line. Steam lifts off the soaked track — the whole field is suddenly, brightly <kanji>clear up</kanji>.",
+    "meaning_mnemonic": "The <radical>sun</radical> getting the sky back to <radical>blue-green</radical> is what it means for the weather to <kanji>clear up</kanji>.",
     "reading_mnemonic": "As the sky clears, Sei's hand shoots up first as always, uniform spotless despite the mud. She announces it loud and smug: <reading>せい</reading> — like she's the one who <reading>said</reading> the sky would clear.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-heat": {
-    "meaning_mnemonic": "At Koichi's konbini, the microwave dings <radical>nine</radical> times on one forgotten onigiri. Koichi's <radical>human legs</radical> pump across the tiled <radical>earth</radical> floor, sweat <radical>drop</radical>s flying, chasing the smell of <radical>fire</radical> from inside the door. When it finally pops open, a wall of heat rolls out thick enough to fog the whole drink case. <kanji>Heat</kanji>, plain and total.",
+    "meaning_mnemonic": "Any <radical>art</radical> that needs a <radical>fire</radical> lit under it is really the art of controlling <kanji>heat</kanji>.",
     "reading_mnemonic": "The clerk mopping her forehead at the register is nicknamed <reading>Netsu</reading> for it. Every time that wall of heat rolls out, she groans her own name, <reading>ねつ</reading>, dragging it out like wading through hot fishing nets.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-negative": {
-    "meaning_mnemonic": "A stiff figure plants both feet on <radical>one</radical> mossy stone at the top of Grandma Kane's steps, arms flung out like two bare <radical>stick</radical>s. One arm <radical>slides</radical> down an inch and stops, blocking the path to the enormous bell. A <radical>drop</radical> of sweat rolls off its chin, but it will not move, will not budge — every request meets the same flat refusal. <kanji>Negative</kanji>.",
+    "meaning_mnemonic": "<radical>One</radical> <radical>slash</radical> through a standing <radical>stick</radical> crosses the whole thing out and makes it <kanji>negative</kanji>.",
     "reading_mnemonic": "The shrine cat everyone calls <reading>Fu</reading> curls against the stubborn figure's feet. She doesn't hiss, just sighs through her nose — a flat little <reading>ふ</reading> of a breath, unimpressed by every visitor.",
     "description": "This kanji almost never stands alone in real sentences; you meet it glued to the front of other words as a flat negation prefix, closer to un- or non- in English than a standalone word for bad.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-precipitous": {
-    "meaning_mnemonic": "The mountain trail narrows to a knife-edge ridge, pinching to nothing between two sheer drops. A lone <radical>person</radical> stands there shouting into a <radical>mouth</radical>-shaped gap in the rock. The echo bounces toward a tiny <radical>village</radical> clinging to the far cliff. No one has ever reached that village and no one ever will — the position is <kanji>precipitous</kanji>, impregnable, sealed off from the world.",
+    "meaning_mnemonic": "An <radical>assembly</radical> that has to be held halfway up a <radical>hill</radical> tells you the ground there is <kanji>precipitous</kanji>.",
     "reading_mnemonic": "Guarding that narrow ledge is <reading>Ken</reading>, the shiba who never leaves his wall of antique swords. Every hiker who nears the edge gets one warning bark of <reading>けん</reading> before he bares a blade in his teeth.",
     "description": "Beyond the literal steep-cliff picture, this kanji usually carries a broader sense of danger or risk in real vocabulary — insurance, adventure, hazard — rather than physical steepness itself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-seethe": {
-    "meaning_mnemonic": "At Koichi's konbini the hot <radical>water</radical> tap for cup noodles <radical>sticks</radical> wide open, the handle bent like a drawn <radical>bow</radical>. The broth <radical>slides</radical> up past the rim in fat white bubbles. It hisses and multiplies until foam rolls off the counter and drips past the onigiri shelf. The clerk just watches it <kanji>seethe</kanji>, boil, and go faintly sour under the fluorescent lights.",
+    "meaning_mnemonic": "Charge a <radical>dollar</radical> for one cup of <radical>water</radical> and watch the whole queue <kanji>seethe</kanji>.",
     "reading_mnemonic": "A jumpy regular named <reading>Futz</reading> keeps mashing the button, muttering <reading>ふつ</reading>, ふつ under his breath every time the noodle water surges past the rim. Say his nervous little ふつ ふつ and the reading is stuck in your head with the foam.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-burn": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, a stray <radical>dog</radical> knocks the offering candle into a bundle of incense sticks late one <radical>evening</radical>. The candle's small <radical>fire</radical> catches the incense's <radical>fire</radical>, stick by stick, each tip glowing orange. The whole bundle flares into a blaze crackling under the enormous bell. Another candle, another <kanji>burn</kanji>.",
+    "meaning_mnemonic": "Hold a match to it, the <radical>fire</radical> takes, and <radical>so it is</radical> settled that the whole thing will <kanji>burn</kanji>.",
     "reading_mnemonic": "The neighborhood kids call Grandma Kane <reading>Nan</reading>, and when the incense flares she comes flying out stamping sparks off the mossy steps, yelling the cat's name so fast it comes out <reading>ねん</reading>. Picture Nan hollering ねん at that cat, and the reading burns itself in.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-current": {
-    "meaning_mnemonic": "At the riverbank, a sandal's <radical>lid</radical>-shaped buckle pops loose on the washing stones. It swirls into a <radical>private</radical> cocoon of still <radical>water</radical> for one heartbeat. Then the <radical>river</radical> grabs it, spinning it past the reeds and around the bend before anyone can wade in. The whole <kanji>current</kanji> pulls everything the same direction, gone before you can call after it.",
+    "meaning_mnemonic": "<radical>Water</radical> that pulls a <radical>banner</radical> straight out downstream is showing you exactly where the <kanji>current</kanji> runs.",
     "reading_mnemonic": "A boy named <reading>Ryu</reading> wades out too far, and the current takes him too. His voice trails off in a long <reading>りゅう</reading> as he's carried past the reeds and around the bend.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-times": {
-    "meaning_mnemonic": "From above, Sei's running track looks like one square course boxed inside a bigger square fence — a <radical>mouth</radical> shape from the sky. The same loop gets traced again and again by whoever's running it. Each full lap around that boxed-in course is one more <kanji>round</kanji>. The count just keeps climbing while the loop never changes shape.",
+    "meaning_mnemonic": "A <radical>mouth</radical> inside an <radical>enclosure</radical> saying the same thing over is how you count the <kanji>times</kanji> it happened.",
     "reading_mnemonic": "Sei's PE teacher, a man everyone calls <reading>Kai</reading>, stands at the gate barking a number each time a runner completes the loop: <reading>かい</reading>, かい, かい, one shout per lap. By the tenth lap nobody's counting anything but Kai's voice landing on かい.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-surpass": {
-    "meaning_mnemonic": "The mountain trail switches back for an hour, calves burning, a bent <radical>halberd</radical>-shaped hiking pole jammed under one arm. Every ridge is a good place to quit, but you ignore every sane stopping point. You just keep <radical>running</radical>, legs shaking, until you <kanji>surpass</kanji> the last ridge and reach the glowing vending machine at the top.",
+    "meaning_mnemonic": "A messenger who can <radical>run</radical> faster than the <radical>warrior</radical> chasing him will <kanji>surpass</kanji> him inside a mile.",
     "reading_mnemonic": "At the summit, a hiker named <reading>Etsu</reading> collapses against the vending machine and groans <reading>えつ</reading> between gasps — the same groan echoes down the trail every time someone else finally surpasses that last ridge.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-traffic": {
-    "meaning_mnemonic": "The bell rings and the school hallway — one straight <radical>road</radical> of tile — turns into a river of students. Shoulders knock a row of coat <radical>hook</radical>s loose along the wall as everyone shoves past. Nobody walks; they get carried by the crush, every student forced to <radical>use</radical> the same narrow lane end to end. That unbroken flow is <kanji>traffic</kanji>, straight through, like the whole building is one long avenue.",
+    "meaning_mnemonic": "A <radical>walled path</radical> feeding onto one open <radical>road</radical> is where all of the <kanji>traffic</kanji> ends up.",
     "reading_mnemonic": "A hall monitor named <reading>Tsuu</reading> stands in the doorway blowing one note — <reading>つう</reading> — every few seconds, waving the flood of students through without ever telling them to stop. By the fortieth <reading>つう</reading> you can still hear it at home.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-severance": {
-    "meaning_mnemonic": "You're halfway across the rope bridge at the riverbank, braided from a single bundle of <radical>rice</radical> straw and tied to <radical>one</radical> <radical>stick</radical> post. A rusty <radical>axe</radical> left on the planks slides and slices a strand. The whole bridge swings shut behind you like a door slamming. There's no going back — the path is cut clean through: <kanji>severance</kanji>.",
+    "meaning_mnemonic": "Bringing an <radical>axe</radical> down on a standing bundle of <radical>rice</radical> stalks makes a very clean <kanji>severance</kanji>.",
     "reading_mnemonic": "A fisherman named <reading>Dan</reading> stands at the riverbank when his line goes slack. He shouts <reading>だん</reading> — the exact sound of a taut line snapping in half, sharp and final.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-help": {
-    "meaning_mnemonic": "A customer at Koichi's konbini drops an armful of onigiri and folds toward the floor. Koichi's <radical>eye</radical> catches it first. Pure <radical>power</radical> in his arms vaults him over the counter to haul them back onto their feet before the till even finishes beeping. That's <kanji>help</kanji>: the instinct to rescue someone before you've decided to.",
+    "meaning_mnemonic": "One more pair of hands, and <radical>moreover</radical> all of their <radical>power</radical> as well, is what <kanji>help</kanji> actually means.",
     "reading_mnemonic": "Back on their feet, the rescued customer, who Koichi has started calling <reading>Jo</reading>, breathes out a long shaky <reading>じょ</reading>, half relief and half embarrassment, still clutching the onigiri that never hit the floor.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-stubborn": {
-    "meaning_mnemonic": "頑 is a boulder shaped like a giant <radical>head</radical>, squatting dead center of the mountain trail since the trail's very <radical>beginning</radical>. A face is gouged into the granite — jaw set, eyes narrowed. Hikers heave against it, bribe it with vending-machine snacks, beg. It doesn't roll an inch. That immovable refusal is <kanji>stubborn</kanji>, plain and simple.",
+    "meaning_mnemonic": "Anybody who argues from the <radical>beginning</radical> using nothing but their own <radical>head</radical> is being <kanji>stubborn</kanji>.",
     "reading_mnemonic": "Every time a hiker shoves the boulder, a hermit camped beside it cups his hands and grunts <reading>がん</reading> — the same flat sound, like someone saying <reading>gone</reading> through a clenched jaw. It's the only word he says. The boulder still hasn't moved.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-accustomed": {
-    "meaning_mnemonic": "Picture the konbini clerk at 3am, scanning onigiri without glancing down, coins clinking like <radical>shell</radical> money into the till. His <radical>mother</radical> taught him this exact scan-beep-bag rhythm when he was ten. Ten thousand nights later, it's carved straight into his <radical>heart</radical>, not his head. He's not thinking about it anymore. He's simply <kanji>accustomed</kanji> to it.",
+    "meaning_mnemonic": "Let the same thing <radical>pierce</radical> your <radical>heart</radical> often enough and you will get <kanji>accustomed</kanji> to it.",
     "reading_mnemonic": "Behind the counter, Koichi restocks the drink case so many times his hand does it alone — each can lands with a flat clink that sounds like <reading>かん</reading>, someone saying <reading>khan</reading> without the h. He's stopped hearing it. That's how accustomed he's become.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-overdo": {
-    "meaning_mnemonic": "Picture the riverbank at flood stage: water pours through a <radical>wide box</radical> culvert shaped like an open <radical>mouth</radical>. It hits the marker post and keeps going — over the <radical>road</radical>, past the next post, still climbing. It doesn't know how to stop at the line. That refusal to quit at the edge is <kanji>overdoing</kanji> it — exceeding, going beyond.",
+    "meaning_mnemonic": "A <radical>crooked mouth</radical> retelling the story the whole length of the <radical>road</radical> is certain to <kanji>overdo</kanji> it.",
     "reading_mnemonic": "Kaa the fire-breathing crow watches from the power line above the flooded bank. One puff of flame would do, but she can't stop — she keeps cawing <reading>か</reading>, <reading>か</reading>, like someone stuck repeating <reading>kah</reading>, torching the same branch long after it's ash.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-period": {
-    "meaning_mnemonic": "Picture Grandma Kane's shrine bell rung <radical>eight</radical> times at the same hour every single <radical>month</radical>-end, without fail. It marks the day's turn like a page flipping. Nobody sets a clock there — they set it by the bell, and by the <radical>sweet</radical> rice cake she hands out after the last ring. Each ring closes one stretch of time and opens the next: a <kanji>period</kanji>, a date, a fixed mark in time.",
+    "meaning_mnemonic": "<radical>That</radical> same <radical>moon</radical> coming round to where it started marks the end of one <kanji>period</kanji>.",
     "reading_mnemonic": "Kiki the tree spirit lives in the tree over Grandma Kane's shrine bell. Every time it rings she giggles <reading>き</reading>, <reading>き</reading> — like someone laughing the word <reading>key</reading>. She only laughs on the ring, never between, so her giggle marks that same fixed moment each time.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-scold": {
-    "meaning_mnemonic": "Picture 叱 as one <radical>mouth</radical>, jaw clamped shut, with a bent <radical>spoon</radical> cracking down right beside it at Koichi's konbini. The crack knocks onigiri off the shelf and sets the till beeping. Out of that clenched mouth comes a single flat, furious <kanji>scold</kanji> that stops the whole aisle cold.",
+    "meaning_mnemonic": "One <radical>mouth</radical> going at you for the <radical>seven</radical>th time has stopped being advice and become a <kanji>scold</kanji>ing.",
     "reading_mnemonic": "Back at the konbini, the clerk everyone calls <reading>Sheets</reading> is still rubbing his ear from the crack of the cane. Every time the till beeps near him now, he flinches and mutters <reading>しつ</reading> under his breath, bracing for another scolding.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-praise": {
-    "meaning_mnemonic": "Picture 褒 as an enormous <radical>clothing</radical> robe billowing open to wrap one <radical>small</radical> <radical>person</radical> inside it, right on the mossy steps of Grandma Kane's shrine. Their <radical>mouth</radical> falls open in an awed little 'oh.' The cats go still, the huge bell hums instead of clangs, and the whole scene folds in soft approval. That is <kanji>praise</kanji>: wrapping someone up in it instead of striking them down.",
+    "meaning_mnemonic": "Wrapping somebody in fine <radical>clothing</radical> to <radical>protect</radical> them from criticism is one way to <kanji>praise</kanji> them.",
     "reading_mnemonic": "The shrine's caretaker, nicknamed <reading>Whoa</reading> because it's the only thing she ever says, watches the bell hum with approval. She breathes out a satisfied <reading>ほう</reading>, her robe still settling.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-apologize": {
-    "meaning_mnemonic": "Picture 謝 as one arrow of <radical>words</radical> shot clean across the riverbank, landing point-down at someone's feet instead of in their chest. Whoever fired it bends their whole <radical>body</radical> into a bow, measuring the distance to a single <radical>inch</radical>, hands empty, message delivered. That is how you <kanji>apologize</kanji>: words aimed to land soft, not to wound.",
+    "meaning_mnemonic": "<radical>Words</radical> you <radical>shoot</radical> off before thinking are exactly the ones you have to <kanji>apologize</kanji> for later.",
     "reading_mnemonic": "The archer at the riverbank, a title everyone shortens to <reading>Shah</reading>, still cannot fire a straight shot. Every arrow that misses gets the same muttered <reading>しゃ</reading>, half apology, half excuse, as he bows and fishes it out of the reeds.",
     "description": "This kanji covers more than sorry: the same character also carries formal thanks and, in some compounds, an outright refusal or decline. Underneath all three is one idea, a formal spoken response rather than plain regret, so context decides whether it reads as apology, gratitude, or a firm no.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-counter-for": {
-    "meaning_mnemonic": "Picture 張 as one enormous <radical>bow</radical> spanning the mountain trail, its string humming <radical>long</radical> behind the vending machine. Hikers count each bow strung this tight before trusting it to hold their weight across the gap. That count is the whole job of this character: the <kanji>counter for bows and stringed instruments</kanji>, pulled drum-tight.",
+    "meaning_mnemonic": "A <radical>bow</radical> strung for a <radical>long</radical> shot is the sort of thing you need a <kanji>counter for bows</kanji> to tally.",
     "reading_mnemonic": "At the top of the trail, the hiker everyone calls <reading>Chow</reading> counts the taut bows by the vending machine. He taps each string and grunts <reading>ちょう</reading> under his breath — one, two, three.",
     "description": "As a counter, this kanji counts things held taut by a string, such as bows and stringed instruments, not flat sheets or long thin objects, which take other counters. The verb sense stretch or spread is the same idea: pulling something tight, which is why the same character became the counting word for anything strung that way.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-wait": {
-    "meaning_mnemonic": "At the top of the mountain trail, one battered vending machine hums just out of reach. A boulder has rolled sideways and wedged the last switchback shut, leaving a gap measured in bare <radical>inch</radical>es. Every hiker stops at once on the bare <radical>earth</radical>, arms crossed, unable to take one more <radical>step</radical>. There is nothing left to do but <kanji>wait</kanji>.",
+    "meaning_mnemonic": "Every <radical>step</radical> up to the <radical>Buddhist temple</radical> already has somebody standing on it, so you <kanji>wait</kanji>.",
     "reading_mnemonic": "A hiker named Tai sits below the blocked switchback, stomach growling, dreaming only of <reading>Thai</reading> food waiting in the valley below. He mutters <reading>たい</reading>, <reading>たい</reading> under his breath, thinking of nothing else, until the boulder finally shifts and he can climb down to eat.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-celebrate": {
-    "meaning_mnemonic": "On Sei's school field, the loudspeaker crackles out the final score and every <radical>mouth</radical> roars at once. The team's <radical>human legs</radical> carry them sprinting to the trophy stand, an <radical>altar</radical> of plastic and tape, to show it off overhead. Caps fly, the smallest kid gets hoisted onto shoulders, someone sprays a sports drink like champagne. The whole field erupts to <kanji>celebrate</kanji>.",
+    "meaning_mnemonic": "The <radical>cult</radical> and your <radical>elder brother</radical> finally agreeing on something is reason enough to <kanji>celebrate</kanji>.",
     "reading_mnemonic": "The coach gets <reading>shook</reading> so hard by the shoulder-ride that his whistle flies into the bleachers. <reading>しゅく</reading>! <reading>しゅく</reading>! the players chant with every shake — and a second later, he tips backward into the equipment cart.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-blessing": {
-    "meaning_mnemonic": "At Grandma Kane's mossy shrine steps, <radical>one</radical> of the cats swats a fortune stick out of its cup with its <radical>mouth</radical>. It clatters down on the little offering <radical>altar</radical> beside a painted <radical>rice field</radical>, pointing at the luckiest slip in the box. The old ladies gasp and bow to the cat. From then on nobody rolls the dice on anything without rubbing its head first — pure <kanji>blessing</kanji>.",
+    "meaning_mnemonic": "A <radical>cult</radical> that promises <radical>to fill</radical> your storehouse by spring is selling you a <kanji>blessing</kanji>.",
     "reading_mnemonic": "The monk insists it isn't a <reading>fluke</reading>: that same shrine cat has picked the luckiest fortune four mornings running. <reading>ふく</reading>, he mutters, chalking another tally on the gate, certain the cat is hoarding it all for itself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-emotion": {
-    "meaning_mnemonic": "Alone at the riverbank, a man leans on his <radical>halberd</radical>-shaped fishing spear and watches one paper boat wobble past. His <radical>mouth</radical> falls open and tears <radical>slide</radical> down his face before he even knows why — something in his <radical>heart</radical> just gives way. Nothing happened. He just felt all of it at once: pure <kanji>emotion</kanji>, no reason required.",
+    "meaning_mnemonic": "<radical>All</radical> of the <radical>heart</radical> arriving at once and none of the head arriving at all is <kanji>emotion</kanji>.",
     "reading_mnemonic": "His friend picks up the crushed <reading>can</reading> and turns it over in her hands — even the dent looks like it's crying. <reading>かん</reading>, she says, tapping the metal, and that flat little sound is the whole moment collapsing.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-hang": {
-    "meaning_mnemonic": "Picture 掛 as one steel hook bolted into a post sunk deep in the <radical>earth</radical> beside the mountain trail's vending machine. A <radical>hand</radical> loops a strap through it, and from that strap swings a soaked poncho and a little <radical>divination</radical> charm. It drips onto the gravel, not falling, just swaying there. One hook holding the whole poncho in midair: to <kanji>hang</kanji>.",
+    "meaning_mnemonic": "A <radical>hand</radical> nailing an <radical>omen</radical> to the door is going to <kanji>hang</kanji> it where everybody has to look.",
     "reading_mnemonic": "Kaa lands on that same hook, tilts his head at the empty <reading>sky</reading>, and screeches <reading>かい</reading> at the swinging poncho. It's the same rasp he gives anything left dangling in his sightline.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-propose": {
-    "meaning_mnemonic": "See 提 as one rigid <radical>hand</radical>, elbow locked, fingers wrapped around a briefcase handle, thrust straight across Koichi's counter under the fluorescent <radical>sun</radical>-bright lights. It's not a purchase, it's a pitch. The clerk's <radical>head</radical> doesn't even lift from ringing up the bento. That raised hand, holding a whole idea out for someone else to take, is <kanji>propose</kanji>.",
+    "meaning_mnemonic": "Getting your <radical>hand</radical> up at the <radical>right</radical> moment is the whole skill of knowing how to <kanji>propose</kanji> something.",
     "reading_mnemonic": "Tei, a deer too formal for the konbini, holds an empty tray at arm's length over that same counter like he's presenting a proposal, and repeats <reading>てい</reading>, <reading>tray</reading>, until someone puts something on it. Nobody ever does; he holds the pose anyway.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-nonplussed": {
-    "meaning_mnemonic": "See 参 as <radical>three</radical> sharp strokes of fur snapping straight up off a shrine cat's spine the instant Grandma Kane's enormous bell tolls. It freezes mid-step, curled into a tight <radical>private</radical> cocoon of a crouch, <radical>one</radical> paw raised, eyes wide. It can't decide whether to run or stay. That frozen, hair-on-end blank is <kanji>nonplussed</kanji>.",
+    "meaning_mnemonic": "Being handed <radical>three</radical> <radical>big</radical> silk <radical>cocoon</radical>s with no explanation at all leaves anybody <kanji>nonplussed</kanji>.",
     "reading_mnemonic": "The bell's still ringing when the <reading>sun</reading> clears the shrine roof and floods the steps with light. The cat squints up at it, hisses one flat <reading>さん</reading>, and doesn't move an inch.",
     "description": "参 splits between two senses. As the humble verb 参る it means to go or come. On its own or in compounds it instead carries nonplussed, worn out, at your wit's end. The shape doesn't distinguish them; only the sentence does.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-have-the": {
-    "meaning_mnemonic": "Picture 申 as one <radical>stick</radical>-straight arrow shot clean through a paper target on Sei's school <radical>field</radical> under the midday <radical>sun</radical>. It enters top, exits bottom, one unbroken line. The captain bows so low apologizing for a miss that landed dead center anyway, offering the shot up without being asked. That straight-through, uninvited offering is <kanji>have the honor to</kanji>.",
+    "meaning_mnemonic": "A <radical>stick</radical> raised up into the <radical>sun</radical> is the old signal that you <kanji>have the honor to</kanji> speak next.",
     "reading_mnemonic": "Shin catches the arrow's fletching on his <reading>shin</reading> as it flies past the same target, yelps <reading>しん</reading>, and doubles over clutching his shin — still bowing out of habit as he hops on one foot.",
     "description": "申 covers three unrelated uses. As 申す, humble language for say, it gives have the honor to. On its own it also names the monkey sign of the zodiac, and the old two-hour block from 3 to 5PM. Only context tells you which sense you're reading.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-return": {
-    "meaning_mnemonic": "At the mountaintop vending machine, you flick a paper boomerang scrawled with your answer out over the <radical>cliff</radical> edge. It follows the switchback <radical>road</radical> down into the valley, ink fading pale in the wind, and spins past a startled hen. It slaps back into your palm, thrown <radical>again</radical> exactly where you stood. The answer <kanji>returns</kanji> to you.",
+    "meaning_mnemonic": "Turn round and take the <radical>opposite</radical> <radical>road</radical> back the way you came to <kanji>return</kanji>.",
     "reading_mnemonic": "That startled hen at the summit vending machine won't shut up about it. Every time the boomerang whips past, she screeches <reading>へん</reading>, like a slapstick chicken shouting <reading>hen</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-take-along": {
@@ -1332,102 +1332,102 @@
     }
   },
   "k-fit": {
-    "meaning_mnemonic": "At the shrine, <radical>one</radical> <radical>person</radical> — you — finds two halves of a broken rice cracker scattered on the <radical>ground</radical> among the cats. The edges are gnawed by some cat's <radical>mouth</radical>. You press them back together, and the jagged edges click into place so perfectly it's like the lid of a jar snapping shut. Every crumb <kanji>fits</kanji> exactly where it broke off.",
+    "meaning_mnemonic": "<radical>One</radical> <radical>person</radical> and one <radical>mouth</radical> for every seat at the table is when the numbers finally <kanji>fit</kanji>.",
     "reading_mnemonic": "Grandma Kane's enormous shrine bell takes one clean hit and rings out a long <reading>ごう</reading>. It's the same low <reading>go</reading> tone the fitted rice cracker halves seem to hum back at each other.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-make": {
-    "meaning_mnemonic": "Behind Koichi's konbini till, one <radical>person</radical> in a <radical>chevron</radical>-striped apron hand-carves rice into perfect triangles with a thin <radical>stick</radical> of a knife. He wraps each one before it topples off the shelf. An entire batch, built from scratch — that's how you <kanji>make</kanji> onigiri, before the register even rings up the first sale.",
+    "meaning_mnemonic": "A <radical>person</radical> with an <radical>abrupt</radical> idea at two in the morning gets straight up to <kanji>make</kanji> it.",
     "reading_mnemonic": "The onigiri-maker keeps losing his <reading>sock</reading> in the rice pile and swearing <reading>さく</reading> under his breath every time he digs another one out, sticky rice clinging to his toes.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-insect": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, an <radical>insect</radical> — a beetle — drops onto the mossy steps. Its whole body writes the shape you are learning: a stiff little head, a long ribbed torso, and a tail curling into one sharp hook. Then it goes still. The shrine cats never even blink. That hooked, segmented outline is one <kanji>bug</kanji>.",
+    "meaning_mnemonic": "Anything small enough to get <radical>in</radical> through a shut window is almost certainly an <kanji>insect</kanji>.",
     "reading_mnemonic": "Chuu the loyal mouse trails the beetle across the shrine steps, tiny topknot bobbing, and posts himself over its twitching antenna like an unassigned guard. Every twitch earns one crisp report — <reading>ちゅう</reading> — from the mouse everyone calls <reading>Chuu</reading>, guarding an insect nobody asked him to.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-horse": {
-    "meaning_mnemonic": "Near the top of the mountain trail, a <radical>horse</radical> pounds toward the lone vending machine, mane flying. Four legs hammer the dirt in a tight row, tail snapping out behind. It skids into the machine, dents the can slot, and stands there catching its breath. Just a plain <kanji>horse</kanji>.",
+    "meaning_mnemonic": "Four legs pounding hard enough to strike <radical>fire</radical> off the stones belong to a <kanji>horse</kanji>.",
     "reading_mnemonic": "Uncle Ba, the trail's sunburnt vending-machine repairman, trudges up to the fresh dent and sighs one flat <reading>ば</reading> — the same tired <reading>bah</reading> he lets out every time. The horse just watches, proud of the dent.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-cow": {
-    "meaning_mnemonic": "Inside Koichi's konbini, a <radical>cow</radical> squeezes through the sliding doors, horns catching the frame in a crossing X. Its four legs plant themselves square on the floor, solid as a stool. It just stands there in the aisle, blocking the onigiri shelf, patient and enormous. Plain old <kanji>cow</kanji>.",
+    "meaning_mnemonic": "Two horns on a crossbar above one heavy upright body is the entire shape of a <kanji>cow</kanji>.",
     "reading_mnemonic": "Gyu, the stock clerk who hugs every box too tight, wedges past the cow with an armful of onigiri and grunts out the strain: <reading>ぎゅう</reading>. That's the sound <reading>Gyu</reading> makes on every shift.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-star": {
-    "meaning_mnemonic": "Above the school's sports field at night, one point of light pierces the dark — the ghost of a <radical>day</radical>time <radical>sun</radical>, given new <radical>life</radical> after dark. It's a small, sharp dot with thin rays needling outward like a scratch scored into black paper. Nothing around it moves. That single fixed point is a <kanji>star</kanji>.",
+    "meaning_mnemonic": "A <radical>sun</radical> too far off to warm anything, with its own <radical>life</radical> still burning away, is a <kanji>star</kanji>.",
     "reading_mnemonic": "Sei, the star student, is first to point at it, hand shooting up before anyone else's, and announces it in one crisp syllable — <reading>せい</reading> — like she is always first to <reading>say</reading> the answer. The sports field goes quiet, impressed despite itself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-forest": {
-    "meaning_mnemonic": "On the mountain trail the path just stops. Three identical <radical>trees</radical> have crowded in so close their trunks touch, branches locking into one solid ceiling that swallows the sky whole. No gap to slip through, no light getting past — only trunks, in every direction you turn. That suffocating wall of trunks is <kanji>forest</kanji>.",
+    "meaning_mnemonic": "One more <radical>tree</radical> than a <radical>grove</radical> can hold and you are standing in a <kanji>forest</kanji>.",
     "reading_mnemonic": "Still on that same trail, a hiker named <reading>Shin</reading> refuses to admit he's lost among the fused trunks. He barks his shin on a hidden root and yelps <reading>しん</reading>, the sound echoing uselessly off the trunks, then keeps limping in circles.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-grove": {
-    "meaning_mnemonic": "At the shrine gate, only two <radical>trees</radical> stand this time — not fused into a wall. Just two trunks planted a polite few steps apart, framing a clean gap you can walk straight through, mossy steps visible beyond. That neat, breathing pair of trunks, open where the mountain forest was sealed shut, is <kanji>grove</kanji>.",
+    "meaning_mnemonic": "A second <radical>tree</radical> close enough to tangle branches with the first already counts as a <kanji>grove</kanji>.",
     "reading_mnemonic": "A jogger named <reading>Rin</reading> ducks through that same gap every morning, and the small bell tied to one trunk swings with her stride, chiming <reading>りん</reading> with each step until she's through the gate.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-pond": {
-    "meaning_mnemonic": "Behind Sei's school, a flooded dip of standing <radical>water</radical> in the courtyard never quite dries. A shallow, murky puddle, its edge curling like a <radical>snake</radical>'s <radical>tail</radical>, is just deep enough to swallow a dropped shoe and never give it back. Nobody bothers detouring around it anymore. That permanent, shoe-eating puddle is a <kanji>pond</kanji>.",
+    "meaning_mnemonic": "<radical>Water</radical> that goes nowhere and curls back on itself like a <radical>snake tail</radical> is a <kanji>pond</kanji>.",
     "reading_mnemonic": "A boy named <reading>Chi</reading> wades in after his shoe, ankle-deep, and yelps <reading>ち</reading> when something unseen brushes his foot in the murk, though he never actually finds out what it was.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-boulder": {
-    "meaning_mnemonic": "At the riverbank the crossing is blocked by one squat, grey <radical>stone</radical> lump, broken off the <radical>mountain</radical> upstream. A small hollow in its face looks like a stone <radical>mouth</radical>. It's planted so solid in the current that the water just splits and foams around it. Immovable, water-stubborn, taking up the whole ford — that lump is a <kanji>boulder</kanji>.",
+    "meaning_mnemonic": "A <radical>stone</radical> that came off the <radical>mountain</radical> and is still bigger than your house is a <kanji>boulder</kanji>.",
     "reading_mnemonic": "A fisherman named <reading>Gan</reading> swings his rod back to cast and cracks it straight into that lump with a flat, ugly thud: <reading>がん</reading>. He stands there rubbing the crack in the wood — the rock doesn't chip.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-seduce": {
-    "meaning_mnemonic": "Sho, the tiny stage magician, crooks one white glove into a slow curl, hooking the shape of an open <radical>mouth</radical> below it. A hidden <radical>sword</radical> prop flicks out of his sleeve at the same moment. He drags the gesture toward himself across the counter, and everyone in Koichi's konbini leans in, helpless against that single beckoning pull. That's how you <kanji>seduce</kanji>: call, send for.",
+    "meaning_mnemonic": "A <radical>mouth</radical> that can talk a drawn <radical>sword</radical> back into its sheath knows perfectly well how to <kanji>seduce</kanji>.",
     "reading_mnemonic": "Backstage, Sho takes his bow, and the crowd gasps <reading>しょう</reading> in unison — one long <reading>show</reading> of a breath. He tips his tiny top hat, and that gasp is the only applause a magician his size ever needs.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-swim": {
@@ -1436,410 +1436,410 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-kill": {
-    "meaning_mnemonic": "Picture 殺 as one downward smash: a club cut from a <radical>tree</radical> branch <radical>slides</radical> through the air and slams into something small crouched below. A single <radical>drop</radical> of sweat flies off the wielder's brow as the <radical>pike</radical>-sharp tip flattens it in one decisive blow, splinters scattering sideways. That's <kanji>kill</kanji> — murder, butcher, done in the time it takes to blink.",
+    "meaning_mnemonic": "You can <radical>mow</radical> with a <radical>tree</radical> branch if you have to, but the <radical>pike</radical> is the one built to <kanji>kill</kanji>.",
     "reading_mnemonic": "At Grandma Kane's shrine, a stray satsuma rolls off the offering tray and lands square on a fly mid-buzz — <reading>さつ</reading>, flat, gone, before the enormous bell even finishes ringing. The shrine cats stare at the <reading>satsuma</reading> like it just committed a crime.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-take": {
-    "meaning_mnemonic": "Picture one motion on the mountain trail: a <radical>hand</radical> shoots toward a sound caught by the hiker's <radical>ear</radical>. A can is teetering in the vending machine slot, and the hand closes hard around it, snapping it free in a single grab. That's how you <kanji>take</kanji> something: fetch it, already halfway back down the trail before anyone notices it's gone.",
+    "meaning_mnemonic": "Grabbing somebody by the <radical>ear</radical> with your <radical>right hand</radical> is the rudest way there is to <kanji>take</kanji> them anywhere.",
     "reading_mnemonic": "Same trail, one step later: Shu's <reading>shoe</reading> catches the vending machine's coin return and yanks out a whole handful of forgotten change. <reading>しゅ</reading>! he yelps, hopping on one foot, pockets suddenly heavier.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-harmony": {
-    "meaning_mnemonic": "Every cat at Grandma Kane's shrine wants the <radical>grain</radical> offering. Every morning it turns into a screeching heap of fur on the mossy steps, every <radical>mouth</radical> yowling at once. Then the enormous bell tolls once. The cats freeze mid-swipe, sit in a perfect row, and share the bowl in total silence. That's <kanji>harmony</kanji>, forced onto the shrine by one loud bell.",
+    "meaning_mnemonic": "Enough <radical>grain</radical> for every <radical>mouth</radical> in the village buys a whole season of <kanji>harmony</kanji>.",
     "reading_mnemonic": "The shrine's droopy-eyed monk, Wah, startles awake for the bell and breathes out a long <reading>wah</reading> of relief once the cats settle down. That same <reading>わ</reading> drifts off the mossy steps every single morning.",
     "description": "和 alone usually means harmony or peace, but as a prefix on other words it commonly means Japanese-style - Japanese food, a Japanese-style room - describing where something comes from rather than describing peacefulness itself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-pour": {
-    "meaning_mnemonic": "At the riverbank, a farmer twists a <radical>king</radical>'s <radical>jewel</radical> ring on his finger and pries up one plank of the riverbed. One <radical>drop</radical> of <radical>water</radical> escapes, then the whole river tips sideways, sheeting across every furrow in one long silver flood. He does not dig. He does not carry a bucket. He just <kanji>pour</kanji>s the river into the ground until every row glistens.",
+    "meaning_mnemonic": "<radical>Water</radical> for the <radical>lord</radical> is the one cup you never <kanji>pour</kanji> carelessly.",
     "reading_mnemonic": "Chuu the mouse wades into the flooded furrows anyway, topknot dripping, refusing to abandon his post at the farmer's side. He squeaks a soggy salute, half sound half hiccup: <reading>chew</reading>, <reading>ちゅう</reading> - loyal even ankle-deep in the river the farmer just poured across the field.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-plains": {
-    "meaning_mnemonic": "The gym teacher at Sei's school stops mowing the sports field for one week of summer break. By the time class resumes, the yard lines are buried under waist-high grass. A stray goat with <radical>barb</radical>ed horns wanders in from the nearby <radical>village</radical>, grazing at midfield beside a goalpost bent like a <radical>halberd</radical>. What used to be a field is now open, rustic <kanji>plains</kanji>.",
+    "meaning_mnemonic": "Land the <radical>village</radical> claimed <radical>beforehand</radical> and then never got round to fencing is still open <kanji>plains</kanji>.",
     "reading_mnemonic": "Groundskeeper Yaeko finally spots the goat chewing through the goal net and lets out one furious <reading>yah</reading> across the whole overgrown field. That same <reading>や</reading> echoes over Sei's plains every time the goat comes back.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-clothing": {
-    "meaning_mnemonic": "Every new hire at Koichi's konbini gets <radical>hand</radical>ed the exact same stiff green uniform on their first shift. It's freshly <radical>stamp</radical>ed with a number and due back at the end of the <radical>month</radical>. You put on the <kanji>clothing</kanji>, you obey the dress code, you admit out loud that you work there now. Under the fluorescent lights, every clerk ends up looking interchangeable in matching sleeves.",
+    "meaning_mnemonic": "A <radical>month</radical> of wear, a maker's <radical>stamp</radical> and a <radical>right hand</radical> mending it is the life of one piece of <kanji>clothing</kanji>.",
     "reading_mnemonic": "The new clerk tugs at those balloon-stiff sleeves and mutters <reading>fook</reading> under his breath, disgusted at how they puff around his wrists. That same <reading>ふく</reading> gets grumbled every single shift.",
     "description": "服 by itself almost always means clothing, as in everyday words for Western-style clothes or a uniform. The senses obey and admit only appear buried inside fixed multi-character compounds about submission or confession - standing alone, this character just means clothes.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-finger": {
-    "meaning_mnemonic": "Picture a single finger on one <radical>hand</radical>, impossibly long, uncurling like a bent <radical>spoon</radical> handle out of a steaming ramen bowl in broad <radical>day</radical>light. It keeps stretching, past the counter, out the door, down the street, until it stops and jabs hard into a stranger's shoulder to get attention. That one over-eager <kanji>finger</kanji>, forever pointing at something, is 指.",
+    "meaning_mnemonic": "The part of the <radical>hand</radical> that finds out first whether a thing is <radical>delicious</radical> is your <kanji>finger</kanji>.",
     "reading_mnemonic": "The stranger it jabs turns out to be a librarian, and she is furious. She raises her own finger to her lips and hisses <reading>し</reading> so sharply the whole street falls silent, like the world's biggest reading room just got shushed by one long <reading>shh</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-mingle": {
-    "meaning_mnemonic": "At Koichi's konbini a flash sale hits and every customer lunges for the last onigiri at once. A dropped lunchbox <radical>lid</radical> rolls underfoot as shoulders barge, arms link, and legs cross into one solid knot. Even a <radical>father</radical> in the crowd can't tell whose leg is whose anymore — just one tangled mass. That crossing, bodies learning to <kanji>mingle</kanji> into a single knot, is 交.",
+    "meaning_mnemonic": "Put a <radical>lid</radical> on the argument and send your <radical>father</radical> out to <kanji>mingle</kanji> with the guests instead.",
     "reading_mnemonic": "Koichi doesn't even blink. He steps clean over the tangled pile, scanner beeping, muttering <reading>こう</reading>, <reading>こう</reading>, <reading>こう</reading> like a checkout jingle, a steady <reading>coo coo coo</reading>, restocking the shelf before the mingled mob has even worked itself loose.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-ease": {
-    "meaning_mnemonic": "Picture a wide, low roof, <radical>extend</radical>ing far out over the back lot of the konbini, rain drumming softly above it. Underneath, in the dry, <radical>sheltered</radical> air, loose stalks of rice hang and sway, doing absolutely nothing — no rush, no scramble, just slow drifting stillness. That wide shelter over the calm is <kanji>ease</kanji>.",
+    "meaning_mnemonic": "A <radical>shelter</radical> you can <radical>extend</radical> every time more people turn up is what gives everybody <kanji>ease</kanji>.",
     "reading_mnemonic": "For once Koichi sits down under that roof, feet up on a crate, and lets out one long yawn: <reading>こう</reading>. He stretches out like someone sighing a slow <reading>kaaah</reading> into the rain, and doesn't move again for ten minutes.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-healthy": {
-    "meaning_mnemonic": "Every dawn before he opens the sword hall, Ken — one disciplined <radical>person</radical> — warms up with a hundred <radical>long stride</radical>s across the floor. Then he does perfectly straight sit-ups in front of his blade wall, spine dead straight, chest out. After each set he dips a <radical>brush</radical> to mark a tally on the wall. That unshakeable, ramrod-straight strength, drilled rep after rep, becomes <kanji>healthy</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> who can still <radical>build</radical> a wall at sixty is what <kanji>healthy</kanji> actually looks like.",
     "reading_mnemonic": "Panting, glowing with pride, Ken lets out one sharp, satisfied bark, <reading>けん</reading>, that rings off every blade on the wall, like the sound itself came stamped with <reading>Ken</reading>'s own name.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-art": {
-    "meaning_mnemonic": "On the school field, beside one bare <radical>tree</radical>, a lone performer balances six spinning plates arranged in a <radical>cross</radical>, one on each finger. He keeps <radical>going</radical>, adding a seventh on his nose without even looking. A single <radical>drop</radical> of sweat rolls off his chin. The whole team stops mid-drill just to watch, afraid one shout might break the spell. Nobody trains that many things spinning at once by accident — it is pure <kanji>art</kanji>.",
+    "meaning_mnemonic": "Turning plain <radical>millet</radical> into something worth <radical>going</radical> across town for is an <kanji>art</kanji>.",
     "reading_mnemonic": "A boy at the edge of the field is nicknamed <reading>Juts</reading> for the way his chin juts out. When that seventh plate finally lands, he shouts <reading>じゅつ</reading> so loud his chin juts out even further.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-retreat": {
-    "meaning_mnemonic": "Picture a hiker on the mountain <radical>road</radical> who finally reaches the vending machine at the top. He glances past it at a sheer drop with no path down, and comes to a dead, full <radical>stopping</radical> halt. He immediately backs down the exact steps he just climbed, both hands raised. He never even buys a drink. That backward scramble, every step retracing itself, is <kanji>retreat</kanji>.",
+    "meaning_mnemonic": "<radical>Stopping</radical> halfway down the <radical>road</radical> and walking back the way you came is a <kanji>retreat</kanji>.",
     "reading_mnemonic": "The hiker is nicknamed <reading>Ty</reading>, and halfway down his retreat he catches a bootlace and yelps <reading>たい</reading>, sliding the last few steps on his backside past the vending machine he never got to try.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-ego": {
-    "meaning_mnemonic": "At Koichi's konbini, a customer plants one <radical>hand</radical> flat on the last onigiri, elbow cocked out like a <radical>halberd</radical> guarding it. He shoots the whole line a <radical>barb</radical>ed glare. He mutters that the shelf, the till, and the entire store were built for him. Nobody else gets within an arm's length of it. That elbows-out glare is pure <kanji>ego</kanji>.",
+    "meaning_mnemonic": "A <radical>halberd</radical> with a <radical>barb</radical> on it and a <radical>slash</radical> of your own name carved down the shaft is pure <kanji>ego</kanji>.",
     "reading_mnemonic": "The staff have nicknamed him <reading>Gah</reading>. Every time a hand drifts toward his onigiri, he barks <reading>が</reading> without even looking up, elbows still locked around the shelf.",
     "description": "As a stand-alone word, 我 (われ) is formal and literary — it isn't how someone says \"I\" in an ordinary conversation. Day to day it survives mostly inside set compounds about endurance and self rather than standing alone.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-suspicious": {
-    "meaning_mnemonic": "Picture a hooded figure crouched low to the <radical>earth</radical> behind the enormous bell at Grandma Kane's shrine at dusk. One <radical>hand</radical> hovers over the offering box, <radical>heart</radical> pounding every time a cat glances his way. Nothing about him adds up — the hood, the hovering hand, the flinching at cats. That unexplained wrongness is what <kanji>suspicious</kanji> means.",
+    "meaning_mnemonic": "A <radical>heart</radical> that calls itself <radical>holy</radical> before anybody has asked it anything is deeply <kanji>suspicious</kanji>.",
     "reading_mnemonic": "The figure only gives his name as <reading>Kai</reading>, and when Grandma Kane flicks on the shrine lights without warning he yelps <reading>かい</reading> and bolts past the mossy steps, offering box completely untouched.",
     "description": "怪 carries more than a raised eyebrow of doubt — it's the character behind monsters, ghost stories, and the eerie unknown, so think uncanny and unexplained before you think of doubting someone's alibi.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-scribe": {
-    "meaning_mnemonic": "Picture the trunk of an ancient tree, bark scratched edge to edge with carved <radical>words</radical> and stick-figure notes: dates, names, gossip. Each line of carving <radical>stop</radical>s dead at the bark's edge, never spilling onto the next tree. That scratched-up trunk is the <kanji>scribe</kanji>, the record nothing forgets.",
+    "meaning_mnemonic": "A <kanji>scribe</kanji> writes down everybody else's <radical>words</radical> and keeps <radical>oneself</radical> out of every single line.",
     "reading_mnemonic": "Deep inside that trunk lives Kiki, the tree spirit, who reads every scratch aloud whenever wind slips through the hollow bark. Each giggle ends the same way — a bright little <reading>き</reading>, sharp as a turning <reading>key</reading> — because that's the sound old wood makes when it remembers.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-accept": {
-    "meaning_mnemonic": "See 受 as two <radical>hand</radical>s stacked across a middle line. The upper hand, fingers curled like a <radical>claw</radical>, tips forward and lets go of a small covered box. The lower hand cups underneath, popping the <radical>cover</radical> off as it catches the box snug before it hits the ground. That clean, certain catch is what it means to <kanji>accept</kanji> something.",
+    "meaning_mnemonic": "A <radical>claw</radical> reaching under the <radical>cover</radical> to meet a waiting <radical>right hand</radical> is how two people <kanji>accept</kanji> a parcel.",
     "reading_mnemonic": "At Koichi's konbini, the clerk Juju catches a dropped carton of <reading>juice</reading> one-handed before it hits the floor, grunting a startled <reading>じゅ</reading> as the lid pops. Regulars swear she's never once let a delivery fall.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-diligence": {
-    "meaning_mnemonic": "Picture a lone porter trudging the mountain trail every morning, hauling a crate up switchback after switchback. He's restocking the <radical>one</radical> vending machine at the summit. His <radical>mouth</radical> grits shut, jaw set with raw <radical>power</radical>, boots pounding the packed <radical>earth</radical> <radical>two</radical> strides at a time, fists grabbing tufts of <radical>grass</radical> on the steepest pitch. Rain, snow, aching knees — never late, never off. That relentless, unglamorous grind is the whole meaning: <kanji>diligence</kanji>.",
+    "meaning_mnemonic": "Growing one <radical>violet</radical> on nothing but the <radical>power</radical> of habit is what <kanji>diligence</kanji> looks like.",
     "reading_mnemonic": "Everyone on the trail just calls the porter <reading>Kin</reading> — not his real name, just the sound he wheezes at the summit every morning: a worn-out <reading>きん</reading>. Then he drops the crate and turns straight back down for the next load.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-lose": {
-    "meaning_mnemonic": "Picture one <radical>person</radical> at the riverbank, balanced on <radical>two</radical> crossing stones, arms flung wide. A foot <radical>slides</radical>, one hand tips open a beat too late, and the sandal is already gone with a <radical>big</radical> splash. It spins off into the current before anyone can grab it. That instant of open-handed too-late is the meaning: <kanji>lose</kanji>.",
+    "meaning_mnemonic": "One <radical>slash</radical> drawn through the word <radical>husband</radical> is the fastest way on record to <kanji>lose</kanji> one.",
     "reading_mnemonic": "Watching from the bank, a woman named Shizu mutters a flat <reading>sheesh</reading> — <reading>しつ</reading> — and doesn't even bother wading in after it. Some things, she says, you just let the river keep.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-distant": {
-    "meaning_mnemonic": "You squint at 遠 stretched thin across the horizon: a lone figure trudges down a <radical>road</radical> that keeps unrolling ahead. Their <radical>clothing</radical> is caked in <radical>earth</radical>-dust, <radical>mouth</radical> too parched to call out. The last utility pole shrinks to a matchstick, footsteps swallowed by heat-shimmer. Everything about the shape sags outward, straining to be far away — unmistakably <kanji>distant</kanji>.",
+    "meaning_mnemonic": "A <radical>long kimono</radical> dragging down a <radical>road</radical> with no end to it makes anywhere look <kanji>distant</kanji>.",
     "reading_mnemonic": "On that same endless road, a hiker named <reading>Enzo</reading> collapses face down at the mile marker, wheezing the sound <reading>えん</reading> into the gravel. He swears the horizon moved again while he blinked.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-leader": {
-    "meaning_mnemonic": "Picture 将 as a pint-sized drill sergeant standing at the <radical>left</radical> side of the sports field bench, balanced on a <radical>claw</radical>-tipped cane. One arm slashes out commands to a lineup twice his height, measuring each recruit to the <radical>inch</radical>. The other hand pins a rank badge to his own chest before anyone can object. Whistle short, decision final, argument over before it starts — that is a <kanji>leader</kanji>.",
+    "meaning_mnemonic": "A <radical>claw</radical> kept on the <radical>left-side</radical> and every <radical>measure</radical> taken well in advance is what marks out a <kanji>leader</kanji>.",
     "reading_mnemonic": "On that same field, Sho the tiny stage magician claps his white gloves, and a dove bursts skyward as the crowd yells <reading>Show</reading>! That's <reading>しょう</reading>, his one trick, performed the same way every time.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-opinion": {
-    "meaning_mnemonic": "Picture 説 as a placard nailed beside a doorframe, packed with tiny <radical>words</radical> of argument, every clause <radical>split</radical> into its own numbered line. A stray <radical>mouth</radical> doodled in the margin shouts 'prove it,' balanced on two stick <radical>human legs</radical>. That dense, defended little essay stapled to the door is the whole shape of an <kanji>opinion</kanji>. It's laid out, argued, and refuses to be summarized.",
+    "meaning_mnemonic": "<radical>Words</radical> you <radical>exchange</radical> all evening without either side moving an inch are just <kanji>opinion</kanji>.",
     "reading_mnemonic": "Toto the door-to-door turtle reappears at that same threshold, sample doors clacking on his shell, delivering the identical pitch word for word. He raps twice and declares the theory <reading>set</reading>, no revisions — <reading>せつ</reading> — then vanishes down the hall before you can ask a follow-up.",
     "description": "説 leans toward a formulated theory or an argued position, not a passing opinion — the kind of view that gets published, taught, or handed down as legend, something asserted and defended rather than idly mentioned; closer to 'thesis' than 'take'.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-association": {
-    "meaning_mnemonic": "Picture 組 as a knot of reed <radical>thread</radical>s someone is weaving at the riverbank into <radical>one</radical> fat braid. One <radical>eye</radical> stays fixed on every loose end as it loops back into the bundle. Three unruly reeds become a single manageable rope. Nothing is separate anymore — that bound-together rope is the <kanji>association</kanji>.",
+    "meaning_mnemonic": "One <radical>thread</radical>, and <radical>moreover</radical> a hundred more exactly like it, twisted into one rope is an <kanji>association</kanji>.",
     "reading_mnemonic": "Back at the riverbank, a lanky heron watches the braid take shape and clicks its beak, muttering <reading>so</reading>, <reading>そ</reading>, so. It only settles once the whole bundle holds.",
     "description": "組 pictures strands twisted into a braid, and that same image stretches to any group bound together the same way — a class, a team, a pair of chopsticks — so association here means an interlocking set, not a loose informal gathering.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-plot": {
-    "meaning_mnemonic": "You find the whole character scratched into the mossy step of Grandma Kane's shrine — a cramped grid of hash marks tallying every bell ring. Each mark is a tiny <radical>cross</radical>. Someone crouches there muttering <radical>words</radical> under their breath, counting the same thing for weeks, working out exactly when the shrine sits empty. That obsessive tally is the <kanji>plot</kanji> laid bare.",
+    "meaning_mnemonic": "<radical>Words</radical> counted out in <radical>ten</radical>s before a single one gets spoken aloud is a <kanji>plot</kanji>.",
     "reading_mnemonic": "The one holding the chalk turns out to be a cat calling herself <reading>Kay</reading>, perched on the shrine's enormous bell, muttering <reading>けい</reading>, <reading>けい</reading> under her breath as she recounts the marks. She never says another word, just keeps tallying.",
     "description": "計 usually means measure, plan, or total in real vocabulary, not a scheme in the dramatic sense this mnemonic uses. Treat the plot here as the calculating, tallying edge of that broader meaning, not a literal conspiracy.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-calculate": {
-    "meaning_mnemonic": "Look at the whole character as a battered <radical>bamboo</radical> abacus, a <radical>chevron</radical> brand burned into its frame, dragged onto the bleachers at Sei's school. The gym teacher's <radical>two hand</radical>s jab at the beads between whistle blasts, one <radical>eye</radical> tracking each row as it clicks past. One bead skitters loose across the bottom wire while she adds up relay times before the runners even finish. That frantic bead-counting is what it means to <kanji>calculate</kanji>.",
+    "meaning_mnemonic": "<radical>Bamboo</radical> rods laid under one <radical>eye</radical> and <radical>two hands</radical> is the oldest way anybody found to <kanji>calculate</kanji>.",
     "reading_mnemonic": "The gym teacher's whistle is shaped like a tiny <reading>sun</reading>, and every time a bead clacks into place, it flashes and squeaks <reading>さん</reading>. By the third relay, the whole bleachers are chanting さん along with it.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-seat": {
-    "meaning_mnemonic": "Picture the whole character as a straw mat of woven <radical>cloth</radical>, unrolled flat on the riverbank beneath a jutting <radical>shelter</radical> of rock. It's pulled fresh each evening from an <radical>open box</radical> nearby. It has <radical>one</radical> smooth dent worn into the middle where the same fisherman parks himself every single evening. Nobody else dares sit there anymore. That claimed, permanent dent is what <kanji>seat</kanji> means.",
+    "meaning_mnemonic": "A <radical>cloth</radical> spread under the <radical>shelter</radical> for <radical>twenty</radical> people gives every one of them a <kanji>seat</kanji>.",
     "reading_mnemonic": "The fisherman's rival is a heron he has nicknamed <reading>Sekky</reading>. It lands on that same worn dent every dusk and screeches <reading>せき</reading> until he's forced back to a different rock downstream.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-add": {
-    "meaning_mnemonic": "Picture the whole character as a leaning tower of onigiri stacked by the door of Koichi's konbini. Each one has a tiny <radical>mouth</radical>-shaped bite already taken out. Someone heaves each new triangle onto the top with a grunt of raw <radical>power</radical>, the till beeping every time. Nobody working there has the heart to stop the pile growing. One more, then one more, then one more — the stack is the whole idea of <kanji>add</kanji>.",
+    "meaning_mnemonic": "Put your own <radical>power</radical> behind one more <radical>mouth</radical> and you <kanji>add</kanji> real weight to the argument.",
     "reading_mnemonic": "Outside on the power line, <reading>Kaa</reading> watches the tower climb, and every new onigiri triggers a tiny puff of flame and a screech of <reading>か</reading>. By the tenth <reading>か</reading> the crow finally overheats and topples the whole stack just to make the counting stop.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-can": {
-    "meaning_mnemonic": "Picture 可 as a bent rubber stamp shaped like a <radical>barb</radical>ed hook jammed into a small square <radical>mouth</radical>. A clerk slams it onto exactly <radical>one</radical> form at a time on his desk, without reading a single word. The crooked hook always prints the same crooked verdict: passable. He shrugs. Fine. Approved. <kanji>Can</kanji> do.",
+    "meaning_mnemonic": "A <radical>mouth</radical> that says yes to everything it meets on the <radical>street</radical> will always tell you that you <kanji>can</kanji>.",
     "reading_mnemonic": "Kaa the fire-breathing crow lands on the power line outside the clerk's window and watches the crooked stamp fall again and again. Bored, she puffs a tiny flame and rasps <reading>か</reading>, <reading>か</reading>, mocking every half-hearted stamp of approval below.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-happiness": {
-    "meaning_mnemonic": "Picture 幸 as a stubby lucky charm shaped like a stick figure throwing both arms straight up in triumph. A tiny <radical>lid</radical> pops open on its head, releasing a puff of <radical>spicy</radical> incense. It dangles from Grandma Kane's enormous shrine bell, and every cat that swats at it sends it spinning, jingling out a shower of good fortune. It never stops swinging. <kanji>Happiness</kanji>.",
+    "meaning_mnemonic": "A <radical>sprouting stalk</radical> coming up through your own patch of <radical>earth</radical> is the cheapest <kanji>happiness</kanji> going.",
     "reading_mnemonic": "Koichi hears the shrine's jingling luck all the way across town and races back to <reading>coax</reading> every customer into buying charms, chanting <reading>こう</reading>, <reading>こう</reading> over the intercom until his shelves overflow with restocked fortune.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-plan": {
-    "meaning_mnemonic": "Picture 案 as a low desk cut from a single <radical>tree</radical>, hauled to the top of the mountain trail. It sits under a lean-to <radical>roof</radical> beside the vending machine. A <radical>woman</radical> pinned the papers flat so the wind cannot take them, covered in scrawled arrows and boxes — a route sketched out in a hurry. Whoever climbed up here left with a <kanji>plan</kanji>.",
+    "meaning_mnemonic": "Sitting down to <radical>relax</radical> under a <radical>tree</radical> is where every decent <kanji>plan</kanji> actually gets made.",
     "reading_mnemonic": "Anzu, a trail scout who reaches the mountain-top desk every dawn, unfolds the scrawled plan with a huge <reading>yawn</reading>. She mutters <reading>あん</reading> under her breath, checking the route while the vending machine hums beside her.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-loom": {
-    "meaning_mnemonic": "Picture 機 as an old loom carved from one <radical>tree</radical>, abandoned at the riverbank, its <radical>thread</radical>s so crossed and tangled they look like wiring. A <radical>halberd</radical>-shaped shuttle <radical>slides</radical> back and forth on its own, one <radical>drop</radical> of oil gleaming on its track. It weaves stray reeds into cloth without anyone touching it. A <kanji>loom</kanji>. A machine.",
+    "meaning_mnemonic": "A <radical>tree</radical> frame and <radical>how many</radical> threads you can be bothered to count is the whole of a <kanji>loom</kanji>.",
     "reading_mnemonic": "Kiki, the tree spirit living in the riverbank's hollow trunk, blows through the abandoned loom every time the wind gusts, rattling its threads. She giggles <reading>き</reading>, <reading>き</reading>, a sound like a rusty <reading>key</reading> turning, and the shuttle clacks on by itself.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-by-means": {
-    "meaning_mnemonic": "Picture 以 as one <radical>person</radical> at the riverbank, missing his boat. He wedges a bent umbrella <radical>stick</radical> under one arm and paddles the current stroke by stroke. A single <radical>drop</radical> of water flicks off the tip with each stroke. He never owned a boat — the umbrella is simply the means he has. Getting somewhere <kanji>by means of</kanji> whatever is at hand is the whole meaning here.",
+    "meaning_mnemonic": "Everything a <radical>person</radical> ever finishes gets done <kanji>by means of</kanji> one small <radical>drop</radical> of effort at a time.",
     "reading_mnemonic": "On the riverbank, a heron heckles him as he paddles, screeching a thin <reading>い</reading>, <reading>ee</reading>, every time the bent umbrella dips wrong and splashes cold water up his sleeve.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-quick": {
-    "meaning_mnemonic": "See the whole shape of 速 as one figure: a courier trussed up like a delivery bundle. His legs <radical>split</radical> into <radical>eight</radical> quick strides, <radical>mouth</radical> clenched shut, sprinting up the steep mountain <radical>road</radical>. The vending machine at the top shuts off in <radical>one</radical> minute. He vaults a fallen <radical>tree</radical> using a bent <radical>stick</radical> for balance, never slowing. Only go <kanji>quick</kanji> — that speed is the entire meaning.",
+    "meaning_mnemonic": "Carrying one tight <radical>bundle</radical> instead of three loose armfuls is what makes the <radical>road</radical> <kanji>quick</kanji>.",
     "reading_mnemonic": "At the top, the vending machine's countdown beeps in a clipped rhythm: <reading>そく</reading>, <reading>soak</reading>, <reading>そく</reading>. By the time he skids to a stop, his socks are soaked clean through from the sprint.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-special": {
-    "meaning_mnemonic": "Take in the whole shape of 特 as one scene: at Koichi's konbini, a single onigiri sits inside its own glass case. It's raised exactly one <radical>inch</radical> off the tiled <radical>earth</radical> floor, on a pedestal shaped like a tiny <radical>cow</radical>. A velvet rope rings it, spotlighted, while every other onigiri waits untouched on the open shelf. Nobody explains why; it is simply the one item singled out, treated as <kanji>special</kanji>.",
+    "meaning_mnemonic": "The one <radical>cow</radical> kept up at the <radical>Buddhist temple</radical> is never for eating, which makes it <kanji>special</kanji>.",
     "reading_mnemonic": "The intercom at Koichi's konbini loops the same announcement: that onigiri took first place today. The clerk's mumble flattens the word into <reading>とく</reading>, sounding just like <reading>took</reading>.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-ability": {
-    "meaning_mnemonic": "Picture 能 as a bear fresh out of its <radical>private</radical> hibernation cocoon this <radical>month</radical>, wandering onto the school's sports field during tryouts. It calmly out-vaults the pole-vaulters, out-lifts the shot-putters with one <radical>spoon</radical>-shaped claw, and out-sprints the runners without breaking stride. Nobody signed it up; it has the <kanji>ability</kanji> for every event at once.",
+    "meaning_mnemonic": "Getting a <radical>baby</radical> to take a <radical>spoon</radical> without wearing most of it takes real <kanji>ability</kanji>.",
     "reading_mnemonic": "The coach just stands at the edge of the field, stunned, muttering <reading>のう</reading> over and over like he's forgotten how to say <reading>know</reading>. He can't think what event to invent next for a bear that's already mastered them all.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-gentleman": {
-    "meaning_mnemonic": "Picture 士 as a single sword driven straight into the mossy step at the shrine, blade down, hilt up. One crossguard sits high and long, marking rank; a shorter belt-line crosses near the base. It never wavers, never leans — that stillness alone is what makes a <kanji>gentleman</kanji>, a scholar, a <radical>samurai</radical>.",
+    "meaning_mnemonic": "Broad shoulders on top, a narrower base below, and perfect balance held between the two is the bearing of a <kanji>gentleman</kanji>.",
     "reading_mnemonic": "At the shrine, cats keep grooming against his rigid shin, mistaking him for another statue. He never moves — just hisses a flat, warning <reading>し</reading>, like <reading>sheesh</reading> through his teeth, and the cats scatter.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-sea": {
-    "meaning_mnemonic": "Picture 海 as <radical>water</radical> waves stacked ridge after ridge in a <radical>chevron</radical> pattern, dark and endless. Each one folds over the last until the horizon disappears under them. Somewhere below, a whale <radical>mother</radical> and her calf ride the swell, unbothered. No shore survives that many rows of water — only the <kanji>sea</kanji> does.",
+    "meaning_mnemonic": "<radical>Every</radical> river's <radical>water</radical> ends up in the same place eventually, and that place is the <kanji>sea</kanji>.",
     "reading_mnemonic": "A diver named Kai plunges past ridge after ridge, lungs burning, and surfaces gasping a ragged <reading>かい</reading>, like shouting <reading>Kai</reading> into the wind, before another wave folds over him.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-rice-field": {
-    "meaning_mnemonic": "Picture this whole character as one <radical>rice field</radical> seen from above: a flooded square cut into four even smaller squares by raised mud paths. Each holds a flat sheet of sky-reflecting water. Nothing overflows, nothing blurs the lines — a perfect grid of <kanji>rice paddy</kanji>.",
+    "meaning_mnemonic": "A square split by one cross into four equal plots is a <kanji>rice field</kanji> seen from directly above.",
     "reading_mnemonic": "The farmer, Den, wades along the mud paths counting his four flooded squares aloud. Every time his boot sinks a little, he grunts a flat <reading>でん</reading>, like calling out <reading>Den</reading> to the water.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-metropolis": {
-    "meaning_mnemonic": "Picture 都 as a skyline pressed shoulder to shoulder — rooftops, wires, and windows packed so tight not one gap of <radical>day</radical>light shows through. Somewhere underneath, an <radical>old</radical> <radical>village</radical> got swallowed whole by the sprawl, its lanes buried under new towers. Every road, every shop, every person ends up folded into that same crush: a <kanji>metropolis</kanji>, a capital, all of it.",
+    "meaning_mnemonic": "A <radical>village</radical> where <radical>someone</radical> new arrives every hour of the day has quietly turned into a <kanji>metropolis</kanji>.",
     "reading_mnemonic": "Toto the door-to-door turtle drags his sample case through the crush, rapping on door after door with a brisk <reading>と</reading>, <reading>to</reading>. In a city this packed, he never runs out of doors to knock.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-neck": {
-    "meaning_mnemonic": "Picture 首 as a face staring straight at you: two tufts of hair on top, one wide unblinking eye below. It's an owl whose head has <radical>split</radical> around backward on its <radical>neck</radical> to watch you from behind its own back, eye locked on yours. That impossible backward swivel is exactly the <kanji>neck</kanji> the character draws.",
+    "meaning_mnemonic": "The narrowest part of your <radical>self</radical>, and the part everything above it depends on, is your <kanji>neck</kanji>.",
     "reading_mnemonic": "On the mountain trail, a hiker spots the swiveled owl and yells <reading>Shoo</reading> to scare it off. The owl doesn't budge — it just hisses <reading>しゅ</reading> back through its beak, head still turned the wrong way round. Every hiker who passes gets the same hiss, same stare, same unmoving neck.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-lively": {
-    "meaning_mnemonic": "Picture 活 as one scene: fizzing <radical>water</radical> <radical>slide</radical>s sideways above a shape jerking back to life below. A commuter has fainted onto the floor of Koichi's konbini, and the clerk empties an energy drink straight into his open <radical>mouth</radical>. His <radical>tongue</radical> recoils at the fizz, and he sits bolt upright mid-gasp, tapping his foot before his eyes open. That fizzing jolt is <kanji>lively</kanji>: revived, helped back onto his feet.",
+    "meaning_mnemonic": "<radical>Water</radical> loosening every <radical>tongue</radical> in the room is what turns a quiet evening <kanji>lively</kanji>.",
     "reading_mnemonic": "The commuter jolts upright and sneezes so hard he headbutts the shelf — a violent <reading>ka-choo</reading> that comes out sounding exactly like <reading>かつ</reading>, onigiri raining down around him. Koichi just restocks the shelf and waits for the next customer to keel over the same way.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-feelings": {
-    "meaning_mnemonic": "At Grandma Kane's shrine, the enormous bell doesn't ring, it weeps. Three fat drops streak down its left side in a crack shaped like a <radical>heart</radical>. On the right, a garden well is threaded straight through the metal, still sprouting <radical>green</radical>. Every cat goes still, because what's cast into that bronze, weathering in the open air, is nothing but <kanji>feelings</kanji>.",
+    "meaning_mnemonic": "A <radical>heart</radical> that goes <radical>blue-green</radical> every time she walks past is doing nothing to hide its <kanji>feelings</kanji>.",
     "reading_mnemonic": "An old pilgrim named <reading>Joe</reading> climbs to Grandma Kane's shrine every week and presses his palm flat to the weeping bell. He lets out the same low groan before the sob catches him: <reading>じょう</reading>. The cats have learned to flinch right on cue.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-degrees": {
-    "meaning_mnemonic": "Near the top of the mountain trail, tucked into a <radical>shelter</radical> carved from the cliff, the lone vending machine has a bent tin roof. It has <radical>one</radical> dent where countless palms have shoved coins into its <radical>open box</radical> of a coin slot. Every hiker presses a <radical>hand</radical> flat to the cold glass and gasps the same non-number. Past a certain switchback, exhaustion stops being counted in steps and turns into <kanji>degrees</kanji>.",
+    "meaning_mnemonic": "Counting <radical>twenty</radical> paces out from the <radical>shelter</radical> with your <radical>right hand</radical> raised measures the <kanji>degrees</kanji> of the slope.",
     "reading_mnemonic": "The machine only takes change from a hiker the others call <reading>Doe</reading>, who reaches the top gasping and drops each coin in with a flat, stamping <reading>ど</reading>, like a boot hitting mud. Nobody on that trail has ever seen her miss the slot or lose count of the climbs.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-reality": {
-    "meaning_mnemonic": "At the riverbank, someone built a lean-to <radical>roof</radical> over one <radical>big</radical> seed half-buried in the mud. A toy <radical>samurai</radical> stood propped beside it, guarding the promise that it would grow into something. The rain finally caved the roof in and cracked the seed clean open. What spilled out wasn't decoration or hope, just plain, undeniable <kanji>reality</kanji>.",
+    "meaning_mnemonic": "A <radical>roof</radical> overhead and <radical>three and big</radical> meals a day is most people's entire <kanji>reality</kanji>.",
     "reading_mnemonic": "The moment the seed cracks, the person crouched over it doesn't gasp. They let out a flat martial grunt, <reading>jits</reading> — like tapping out in a wrestling match. That's the sound <reading>じつ</reading> makes.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-inside": {
-    "meaning_mnemonic": "Late at Koichi's konbini, the beeping till stops mid-scan. The security monitor shows one <radical>person</radical> folded like origami into the walk-in fridge — a <radical>wide box</radical> of steel. Knees to chest, he's framed exactly by its edges. Not one elbow strays past the frame; every part of him is tucked precisely <kanji>inside</kanji>.",
+    "meaning_mnemonic": "A <radical>person</radical> folded neatly into a <radical>wide box</radical> is very definitely <kanji>inside</kanji>.",
     "reading_mnemonic": "Koichi flings the fridge door open and the man just shivers, chin on his knees, repeating one flat syllable: <reading>ない</reading>. It's the same sound the staff now call him by, <reading>Nye</reading> — the third time this month he's pulled the same fridge stunt.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "reviewed"
+      "review_status": "draft"
     }
   },
   "k-rice": {
@@ -1848,7 +1848,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-dog": {
@@ -1857,7 +1857,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-character": {
@@ -1893,7 +1893,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-thread": {
@@ -1902,7 +1902,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-shellfish": {
@@ -1911,7 +1911,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-stone": {
@@ -1920,7 +1920,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-village": {
@@ -1938,7 +1938,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-king": {
@@ -1947,7 +1947,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-beginning": {
@@ -1956,7 +1956,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-line": {
@@ -1965,7 +1965,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-voice": {
@@ -1974,7 +1974,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-shape": {
@@ -1983,7 +1983,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-vapor": {
@@ -2001,7 +2001,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-barley": {
@@ -2010,7 +2010,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-sword": {
@@ -2019,7 +2019,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-bow": {
@@ -2028,7 +2028,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-fur": {
@@ -2037,7 +2037,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-fish": {
@@ -2046,7 +2046,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-yellow": {
@@ -2055,7 +2055,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-dart": {
@@ -2064,7 +2064,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-capital": {
@@ -2082,7 +2082,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-ship": {
@@ -2091,7 +2091,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-angle": {
@@ -2100,7 +2100,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-picture": {
@@ -2109,7 +2109,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-meat": {
@@ -2118,7 +2118,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-door": {
@@ -2127,7 +2127,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-autumn": {
@@ -2145,7 +2145,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-bird": {
@@ -2154,7 +2154,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-chirp": {
@@ -2167,12 +2167,12 @@
     }
   },
   "k-ri": {
-    "meaning_mnemonic": "A hiker's legs give out just as the trail opens into a <radical>village</radical> of terraced rice paddies. Locals say every village down this road sits exactly one day's walk apart. They measure that whole day's distance in <kanji>ri</kanji>.",
+    "meaning_mnemonic": "The furthest you can still make out a village by <radical>sun</radical>light is roughly one <kanji>ri</kanji>.",
     "reading_mnemonic": "The village elder who waves hikers toward the paddies goes by <reading>Lee</reading>. Every exhausted hiker calls back a grateful <reading>り</reading> as thanks. That's as much of his name as anyone manages out of breath. He just nods toward the shade.",
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-snow": {
@@ -2181,7 +2181,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-number": {
@@ -2190,7 +2190,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-summer": {
@@ -2208,7 +2208,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-cloud": {
@@ -2217,7 +2217,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-face": {
@@ -2226,7 +2226,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-springtime": {
@@ -2262,7 +2262,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-ray": {
@@ -2271,7 +2271,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-round": {
@@ -2307,7 +2307,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-copy": {
@@ -2317,7 +2317,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-england": {
@@ -2327,7 +2327,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-goods": {
@@ -2364,7 +2364,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-people": {
@@ -2373,7 +2373,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-polish": {
@@ -2383,7 +2383,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-possess": {
@@ -2392,7 +2392,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-prefecture": {
@@ -2401,7 +2401,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-products": {
@@ -2439,7 +2439,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-rouse": {
@@ -2448,7 +2448,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-short": {
@@ -2477,7 +2477,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-substitute": {
@@ -2496,7 +2496,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-vegetable": {
@@ -2505,7 +2505,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   },
   "k-ward": {
@@ -2514,7 +2514,7 @@
     "_meta": {
       "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "flagged_for_rewrite"
     }
   }
 }

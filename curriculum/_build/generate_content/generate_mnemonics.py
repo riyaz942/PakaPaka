@@ -102,10 +102,16 @@ MODEL = "claude-opus-4-8"
 #: meaning, 山 over the 山 radical — states that instead of inventing a scene;
 #: mnemonic_context.identical_radical detects them, the prompt's IDENTITY_NOTE
 #: block instructs, and LEN_BOUNDS drops to IDENTITY_MEANING_BOUNDS for them)
-#: also bumps NOTHING, same reasoning again. 116 kanji are in the class and 44
-#: of those already have stored prose that a bump would silently requeue. The
-#: detector is mechanical, so `--slugs` over that list is the way to restyle
-#: them deliberately.
+#: also bumps NOTHING, same reasoning again. 116 kanji are in the class, 70 of
+#: them already have stored prose, and a bump would silently requeue every one.
+#: The detector is mechanical, so `--slugs` over that list is the way to restyle
+#: them deliberately — which is what the Rev 6/7 sweep did.
+#:
+#: After that sweep all 469 stored kanji pass the current meaning gate, so the
+#: number 4 is once again an honest "conforms to contract 4". Do not read that
+#: as licence to bump: `cmd_run` regenerates any stored draft stamped with an
+#: older version, so a bump would throw the sweep away to re-derive what is
+#: already there.
 #:
 #: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
 #: reverts the radical contract to the original shape and size — a mnemonic_text
