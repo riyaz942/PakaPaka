@@ -181,9 +181,9 @@
    "meaning": "skin"
   },
   {
-   "slug": "the-latter",
-   "form": "乙",
-   "meaning": "second"
+   "slug": "nine",
+   "form": "九",
+   "meaning": "nine"
   },
   {
    "slug": "life",
@@ -276,11 +276,6 @@
    "meaning": "exchange"
   },
   {
-   "slug": "nine",
-   "form": "九",
-   "meaning": "nine"
-  },
-  {
    "slug": "hashiru-run",
    "form": "走",
    "meaning": "run"
@@ -324,6 +319,11 @@
    "slug": "valley",
    "form": "谷",
    "meaning": "valley"
+  },
+  {
+   "slug": "the-latter",
+   "form": "乙",
+   "meaning": "second"
   },
   {
    "slug": "portent",
@@ -3523,8 +3523,7 @@
    "八"
   ],
   "九": [
-   "丿",
-   "乙"
+   "九"
   ],
   "十": [
    "十"
@@ -11811,19 +11810,19 @@
    ],
    "needs_name": false
   },
-  "丿": {
-   "used_by": 32,
-   "taught_slug": "slash",
-   "kanjidic_meanings": [
-    "katakana no radical (no. 4)"
-   ],
-   "needs_name": false
-  },
   "金": {
    "used_by": 32,
    "taught_slug": "kanehen",
    "kanjidic_meanings": [
     "gold"
+   ],
+   "needs_name": false
+  },
+  "丿": {
+   "used_by": 31,
+   "taught_slug": "slash",
+   "kanjidic_meanings": [
+    "katakana no radical (no. 4)"
    ],
    "needs_name": false
   },
@@ -12772,14 +12771,11 @@
    ],
    "needs_name": false
   },
-  "乙": {
+  "九": {
    "used_by": 7,
-   "taught_slug": "the-latter",
+   "taught_slug": "nine",
    "kanjidic_meanings": [
-    "the latter",
-    "duplicate",
-    "strange",
-    "witty"
+    "nine"
    ],
    "needs_name": false
   },
@@ -13059,14 +13055,6 @@
    ],
    "needs_name": false
   },
-  "九": {
-   "used_by": 6,
-   "taught_slug": "nine",
-   "kanjidic_meanings": [
-    "nine"
-   ],
-   "needs_name": false
-  },
   "走": {
    "used_by": 6,
    "taught_slug": "hashiru-run",
@@ -13151,6 +13139,17 @@
    "taught_slug": "valley",
    "kanjidic_meanings": [
     "valley"
+   ],
+   "needs_name": false
+  },
+  "乙": {
+   "used_by": 6,
+   "taught_slug": "the-latter",
+   "kanjidic_meanings": [
+    "the latter",
+    "duplicate",
+    "strange",
+    "witty"
    ],
    "needs_name": false
   },

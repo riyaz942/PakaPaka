@@ -231,9 +231,9 @@ KANJI_OVERRIDES = {
     "円": "冂丨一", "左": "𠂇工", "右": "𠂇口", "南": "十冂丷干", "前": "丷一月刂",
     "本": "木一", "半": "丷一十", "先": "丿土儿", "来": "一米", "電": "雨电",
     "風": "几丿虫", "楽": "白冫木", "旅": "方𠂉亻人", "年": "𠂉干一",
-    # 七 is 一 + 乙 by stroke shape, but "ground plus the latter" is a spelling,
-    # not a story. It is a taught radical of its own; so are 万 北 今 大.
-    "七": "七", "万": "万", "北": "北", "今": "今",
+    # 七 and 九 are 一/丿 + 乙 by stroke shape, but "ground plus the latter" is a
+    # spelling, not a story. Each is a taught radical of its own; so are 万 北 今 大.
+    "七": "七", "九": "九", "万": "万", "北": "北", "今": "今",
     # N4
     "事": "一口⺕亅", "不": "一丿丨丶", "直": "十目乚", "乗": "𠂉艹木",
     "県": "目乚小", "有": "𠂇月", "声": "士尸丿", "夜": "亠亻夕丶",

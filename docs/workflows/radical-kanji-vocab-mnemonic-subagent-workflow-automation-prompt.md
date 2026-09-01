@@ -17,11 +17,11 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
-<level = n4>
+<level = n5>
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = vocab>
+<type = kanji>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -51,7 +51,7 @@ Model and effort notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 36>
+<batch-size = 8>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
