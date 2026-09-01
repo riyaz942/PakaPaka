@@ -2771,12 +2771,12 @@
           "answer_text": "か"
         }
       ],
-      "meaning_mnemonic": "One figure with sparks flying off both shoulders is standing far too close to the <kanji>fire</kanji>.",
-      "reading_mnemonic": "Kaa, the fire-breathing crow, perches on the power line and lets out a puff of flame with a raspy caw: 「<reading>か</reading>!」. The flame and the sound arrive together, so when you see this fire kanji, you hear Kaa's か.",
+      "meaning_mnemonic": "You already know the <radical>fire</radical> radical, and the <kanji>fire</kanji> kanji is that same upright log with sparks flicking off both sides.",
+      "reading_mnemonic": "Kaa, the fire-breathing crow, perches on the power line above Koichi's konbini and opens her beak for one <reading>caw</reading>. A puff of flame rolls out instead, and the onigiri shelf by the door goes up black and smoking. That crow's <reading>か</reading> now sticks to every fire you meet.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2910,12 +2910,12 @@
           "answer_text": "すい"
         }
       ],
-      "meaning_mnemonic": "You stand at a riverbank while <radical>water</radical> splashes out in every direction and soaks your face. The wild branching spray freezes into that jagged shape of <kanji>water</kanji>.",
-      "reading_mnemonic": "Down at the riverbank a swimmer named Sui dives in and shouts \"<reading>すい</reading>!\" as the cold hits, then keeps splashing everyone within reach. Every time you see this kanji, hear Sui hollering すい from the water.",
+      "meaning_mnemonic": "The <radical>water</radical> radical and the <kanji>water</kanji> kanji are the exact same splash, one central stream with two trickles flying off, frozen mid-air.",
+      "reading_mnemonic": "A big white swan has claimed the riverbank, and every time someone kneels to wash clothes she flaps up and drags a hard <reading>sweep</reading> of spray across their back. You stand there soaked and dripping. That cold slap of river water off her wings is the sound <reading>すい</reading>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -3048,13 +3048,13 @@
       "visually_similar_slugs": [
         "n5-hon"
       ],
-      "meaning_mnemonic": "A straight <radical>tree</radical> trunk shoots up with roots digging into the dirt and branches spreading wide on top. Roots below and branches above, this whole shape is a <kanji>tree</kanji>.",
-      "reading_mnemonic": "Kiki, the tree spirit, giggles as she climbs to the very top and peeks over the leaves — she's playing \"<reading>もく</reading>\" (peekaboo), disappearing behind branches every time the wind blows. Whenever you spot this tree, hear her whisper もく from up in the canopy.",
-      "description": "木 is the bare tree: a horizontal, a vertical, and two strokes sweeping down from the crossing. 本 is exactly this plus one short horizontal laid across the lower trunk.",
+      "meaning_mnemonic": "Here the <radical>tree</radical> radical and the <kanji>tree</kanji> kanji line up stroke for stroke, trunk, spreading branch, and roots gripping the soil.",
+      "reading_mnemonic": "Kiki, the tree spirit, giggles inside her old oak whenever the wind blows, until a hiker carves his initials into her bark. She leans out of the trunk to <reading>mock</reading> him, repeating every word he says in a flat little voice. He drops the knife and runs, her <reading>もく</reading> chasing him down the trail.",
+      "description": "The look-alike 本 (book / origin) is this same tree with one extra short bar across the foot of the trunk, just above where the roots split. 木 leaves that space clean. A low bar on the trunk means 本, not 木.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -3188,12 +3188,12 @@
           "answer_text": "きん"
         }
       ],
-      "meaning_mnemonic": "<radical>Split</radical> the <radical>king</radical>'s hoard, <radical>put together</radical> every <radical>single item</radical> of it again, and it is all still <kanji>gold</kanji>.",
-      "reading_mnemonic": "Grandma Kane keeps her real fortune under the shrine's giant bell, and every time a cat brushes it, it goes <reading>きん</reading>. That soft きん ring is the sound of gold sitting safe underneath.",
+      "meaning_mnemonic": "The <radical>gold</radical> radical and the <kanji>gold</kanji> kanji are the very same character, which also came to mean money because for centuries gold coins were exactly what people paid with.",
+      "reading_mnemonic": "A tiny king no taller than a coin lives on the collection box at Grandma Kane's shrine and sorts the offerings into his crown. Drop one in and he stands up and announces <reading>king</reading> with a small bow. That bright <reading>きん</reading> is the sound of money landing.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -3329,12 +3329,12 @@
           "answer_text": "ど"
         }
       ],
-      "meaning_mnemonic": "A cross planted firmly on one flat line is a marker driven into open <kanji>soil</kanji>.",
-      "reading_mnemonic": "A gardener drops to his knees in the plot and starts digging with his bare hands, going \"do, do, do\" (<reading>ど</reading>) as he flings soil over his shoulder. Every heavy handful he tosses out lands with that same low ど grunt.",
+      "meaning_mnemonic": "You met this shape already as the <radical>earth</radical> radical, and the <kanji>earth</kanji> kanji is the very same character, used just as happily for the loose soil that earth breaks down into.",
+      "reading_mnemonic": "A gardener lugs a sack of soil over to mark out her new patch of earth, loses her grip near the fence, and it drops with a deep <reading>ど</reading>. The sack splits like a giant ball of <reading>dough</reading> and buries her boots in soil.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -3462,13 +3462,12 @@
           "answer_text": "さん"
         }
       ],
-      "meaning_mnemonic": "Three peaks on one base line with the middle one highest is a <kanji>mountain</kanji> range drawn in four strokes.",
-      "reading_mnemonic": "At the top of the mountain trail, the lone vending machine has a face, and it greets every exhausted hiker like an old friend: \"You made it — welcome, san (<reading>さん</reading>)!\" It calls everyone さん because on this mountain, reaching the peak earns you respect.",
-      "description": "Means \"mountain\"; a common N5 kanji seen in nature words and countless place and family names.",
+      "meaning_mnemonic": "This one is a freebie, since the <radical>mountain</radical> radical and the <kanji>mountain</kanji> kanji are the exact same character.",
+      "reading_mnemonic": "A hiker slogs up the steep mountain trail toward the lone vending machine at the top. Right as she reaches the summit the <reading>sun</reading> clears the ridge and blinds her, and all she can manage is <reading>さん</reading> before feeding in her coins.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "draft"
       },
       "example_sentences": [
         {
@@ -3594,13 +3593,12 @@
           "answer_text": "せん"
         }
       ],
-      "meaning_mnemonic": "Three thin <radical>river</radical> lines trickle down a mountainside side by side. A storm swells all three until they touch and merge together. Merged into one, they roar as a single wide <kanji>river</kanji>.",
-      "reading_mnemonic": "Down at the riverbank you meet a fisherman who has cast a line into every one of those three currents. He grins and tells you he's caught a thousand — <reading>せん</reading> — fish today, one for each ripple in the river.",
-      "description": "Means \"river\"; a common N5 kanji seen in nature words and countless place names.",
+      "meaning_mnemonic": "The <radical>river</radical> radical and the <kanji>river</kanji> kanji are the same character, drawn as the same three flowing strokes every single time.",
+      "reading_mnemonic": "A courier crouches at the riverbank, certain the fastest way to <reading>send</reading> a parcel across is to float it. The current takes it the instant it touches the water and skims it away downstream, hissing <reading>せん</reading> over the shallows.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -3739,13 +3737,13 @@
       "visually_similar_slugs": [
         "n5-dai-big"
       ],
-      "meaning_mnemonic": "A giant pulls up the flat <radical>ground</radical> from under your feet like a bedsheet. He drapes it high over your head instead. Now the ground covers the whole world as the <kanji>sky</kanji>.",
-      "reading_mnemonic": "A tent-pitcher hikes to the top of the mountain trail and, instead of camping on the ground, throws a giant tent (<reading>てん</reading>) up into the air to sleep among the clouds. When you crane your neck at the sky, you spot that tent (てん) floating right there in heaven.",
-      "description": "天 is 大 with an extra horizontal laid across the top, above the outstretched arms. 大 has one horizontal, 天 has two.",
+      "meaning_mnemonic": "One flat <radical>ground</radical> line laid above the arms of the <radical>big</radical> outstretched person turns everything higher than it into <kanji>heaven</kanji>.",
+      "reading_mnemonic": "Out on the school sports field, the gym teacher the kids call <reading>Ten</reading> makes the whole class lie flat on the ground. Arms flung out wide, faces up at the open sky, nobody moves. He walks the rows counting slowly, and the drill ends when he reaches <reading>てん</reading>.",
+      "description": "The one to watch is 大, meaning big. 天 has two horizontal strokes stacked at the top, while 大 has just the single crossbar for the arms. That short top line is the whole difference.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
