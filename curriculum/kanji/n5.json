@@ -474,12 +474,13 @@
           "answer_text": "manservant"
         }
       ],
-      "meaning_mnemonic": "A <radical>person</radical> carries a <radical>big</radical> <radical>sheep</radical> on his back. It is too heavy, and he <radical>split</radical> it into pieces for everyone else. He never eats first, so this humble word means <kanji>me</kanji>.",
-      "reading_mnemonic": "Boku is the errand boy who answers every question about who did it with the same word: 「<reading>ぼく</reading>」. Broke the gate? ぼく. Carried the sheep up the hill? ぼく. He never says his own name, so ぼく is the only name you have for him.",
+      "meaning_mnemonic": "Deep in a <radical>thicket</radical> where every other <radical>person</radical> is hidden, the only one I can still point to is <kanji>me</kanji>.",
+      "reading_mnemonic": "Lost in that same thicket, a hiker finally crashes out into the open, hugging one soggy paperback <reading>book</reading> to his chest. When the ranger asks whose it is, all he can gasp between breaths is <reading>ぼく</reading> — mine, that one is me.",
+      "description": "As a first-person word this is used mainly by boys and men and stays casual, so it is out of place in formal writing or when you must be very polite. It grew out of an older, humble word for a servant.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -876,12 +877,13 @@
           "answer_text": "ruler"
         }
       ],
-      "meaning_mnemonic": "Someone grabs a <radical>broom</radical> and gives one <radical>slide</radical> across the <radical>ground</radical> to clear it. He opens his <radical>mouth</radical> and barks out tomorrow's orders. He is not the emperor, just the man everyone calls <kanji>mister</kanji>.",
-      "reading_mnemonic": "Kun is the teacher who refuses to use first names. Every boy in the class gets the same syllable barked after his surname — 「<reading>くん</reading>」 — as the seating chart comes out. Tanaka-くん. Sato-くん. It is how you know he means you.",
+      "meaning_mnemonic": "An <radical>official</radical> whose <radical>mouth</radical> is always hanging open to bark one more order is exactly the man everyone is forced to call <kanji>mister</kanji>.",
+      "reading_mnemonic": "That same barking official trudges up the mossy steps of Grandma Kane's shrine. The cats swarm him and web him into a fat silk <reading>cocoon</reading> in seconds, and every command he keeps shouting from inside now comes out as a muffled <reading>くん</reading>.",
+      "description": "Not a polite title. As a name-suffix it marks a junior, a classmate, or a young man rather than a superior. As a stand-alone word it is a familiar 'you' that can sound blunt with someone you barely know.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -1907,13 +1909,13 @@
         "n5-sen",
         "n5-nana"
       ],
-      "meaning_mnemonic": "Two strokes crossing at dead centre with four arms of equal length is <kanji>ten</kanji>.",
-      "reading_mnemonic": "A judo champion bursts into Koichi's konbini and slaps down exactly ten coins on the beeping till, shouting <reading>じゅう</reading> with each one. Every time you picture that plus-sign cross, hear the judo master's じゅう ringing out.",
-      "description": "十 is a plain cross: one flat horizontal and one straight vertical. 千 adds a slanting flick above the bar. 七 bends the second stroke instead, curving it right and flicking upward at the end rather than running straight down.",
+      "meaning_mnemonic": "The <radical>ten</radical> radical and the <kanji>ten</kanji> kanji are the very same mark, so this is one you already know for free.",
+      "reading_mnemonic": "You dump exactly ten cartons of <reading>juice</reading> onto the beeping till at Koichi's konbini. Just as he counts them off and lands on <reading>じゅう</reading> for the total, the bottom carton splits and sprays sticky juice clear across the onigiri shelf.",
+      "description": "十 is a single upright stroke crossed by one flat horizontal. 千 (thousand) adds a short slash slanting in above that cross. 七 (seven) has no upright at all: one stroke bends and hooks up to the right beneath a high, tilted bar.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2159,13 +2161,13 @@
         "n5-hidariuma",
         "mannaka"
       ],
-      "meaning_mnemonic": "You draw a big <radical>ten</radical> cross on a market sign, then slash one more line down through its top corner. That extra cut bends the sign until it reads a much bigger number. Now the sign advertises rice for one <kanji>thousand</kanji> coins.",
-      "reading_mnemonic": "A senator named Sen shows up at the shrine and drops a thousand coins into the offering box all at once. \"That's from all my constituents,\" she says, \"<reading>せん</reading> of them exactly.\" Every time you see this kanji, hear Sen bragging about her せん coins.",
-      "description": "Count the horizontals and look at the top. 千 has one bar under a slanting flick. 十 has one bar and no flick, just a straight cross. 午 and 干 both carry two bars — 午 under a flick, 干 starting flat.",
+      "meaning_mnemonic": "Drop a single <radical>slash</radical> across your tally of <radical>ten</radical> and the whole count suddenly jumps to a <kanji>thousand</kanji>.",
+      "reading_mnemonic": "Back at that smeared tally wall in the school hallway, Sei counts the marks, gives up, and decides to just <reading>send</reading> the whole impossible number through as one lump sum. It goes as <reading>せん</reading>, a flat thousand that nobody is ever going to recount.",
+      "description": "千 opens with a slash from the upper right, above one horizontal and the upright. 十 (ten) is that shape without the slash. 午 (noon) keeps the slash but runs two horizontals. 干 (dry or shield) has two horizontals as well, but a flat straight top instead of a slash.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2276,13 +2278,13 @@
       "visually_similar_slugs": [
         "n4-hou"
       ],
-      "meaning_mnemonic": "A single banner flaps above a busy market stall. The vendor scrawls one more zero on it every time a customer buys something. By nightfall the banner is crammed with exactly <kanji>ten thousand</kanji> zeros.",
-      "reading_mnemonic": "A street vendor named Manny throws his arms wide under that banner and yells, \"Man, I've sold ten thousand of these!\" You can hear the <reading>まん</reading> right there in his ecstatic \"Man!\" as the crowd surges in.",
-      "description": "万 and 方 share a horizontal over a hooked stroke. 万 is just those two: a flat bar, then a stroke that drops and hooks left. 方 adds a dot on top and a short slash, so it runs to four strokes against 万's three.",
+      "meaning_mnemonic": "The <radical>ten thousand</radical> radical and the <kanji>ten thousand</kanji> kanji are the same, so this is one review you get for nothing.",
+      "reading_mnemonic": "Koichi is restocking the onigiri shelf when a deliveryman named <reading>Manny</reading> wheels in ten thousand identical rice balls on one groaning trolley. Asked how many more are out in the truck, Manny sighs <reading>まん</reading>, counts the pile twice, loses the number both times, and gives up.",
+      "description": "The look-alike 方 (direction / person) puts a short slanted stroke above its first horizontal line; 'ten thousand' has no stroke there. Its last stroke also drops in a near-straight squarish leg, where 'ten thousand' swings that stroke out in one wide sweep.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2380,13 +2382,12 @@
           "answer_text": "えん"
         }
       ],
-      "meaning_mnemonic": "A stray coin rolls into a <radical>wide box</radical> with no lid. It spins in loops all night and rubs its edges perfectly smooth. By morning it is a shiny <kanji>circle</kanji> of yen.",
-      "reading_mnemonic": "At Koichi's konbini the beeping till spits out change, and a friend named En scoops up every round coin, grinning \"these <reading>えん</reading> are mine.\" Every time you hear the till beep, picture En pocketing えん.",
-      "description": "Means yen (Japan's currency) and also circle or round; shows up on money, prices, and words for round shapes.",
+      "meaning_mnemonic": "A <radical>stick</radical> pinned at one end to the <radical>ground</radical> and swung all the way around the inside of a <radical>wide box</radical> scratches out the round coin you spend as one <kanji>yen</kanji>.",
+      "reading_mnemonic": "At Grandma Kane's shrine a young monk called <reading>Zen</reading> keeps trying to paint one flawless circle in a single brushstroke. Every time a shrine cat pads across the wet paper he mutters <reading>えん</reading> and reaches for a clean sheet, and by dusk the mossy steps are tiled with lopsided rings.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2505,13 +2506,13 @@
         "n5-shiro-white",
         "n5-me-eye"
       ],
-      "meaning_mnemonic": "A box with one bar straight through the middle is the <kanji>sun</kanji>, logged once and then once again.",
-      "reading_mnemonic": "At Grandma Kane's shrine, one cat wakes at dawn and greets the rising sun with the same cry every morning: \"<reading>にち</reading>! にち!\" The others answer, and that's how the whole shrine knows a new day has started.",
-      "description": "Check the top and count the bars. 日 is a plain box with one horizontal inside. 白 is the same box with a small flick added on top. 目 has no cap but carries two horizontals instead of one.",
+      "meaning_mnemonic": "Because the <radical>sun</radical> radical and the <kanji>day</kanji> kanji are the very same character, every hour you spent learning radicals is quietly paying you back here.",
+      "reading_mnemonic": "Every day a mountain-trail ranger called <reading>Neech</reading> climbs up to check the lone vending machine, and every day the sun has already cooked every can inside into warm soup. He kicks the machine once, mutters <reading>にち</reading>, and writes off another wasted day.",
+      "description": "The look-alike 白 (white) is this same barred box with one extra short stroke flicked onto the top; take that flick away and you are back to 'day'. The look-alike 目 (eye) is a taller box with two bars across the middle instead of one, stacking three sections where 'day' has only two.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -2641,13 +2642,12 @@
           "answer_text": "げつ"
         }
       ],
-      "meaning_mnemonic": "A thin crescent with two lines drawn across its middle is the <kanji>moon</kanji> half hidden behind cloud.",
-      "reading_mnemonic": "A gecko has claimed the moon as its own, scuttling across the crescent every night. Whenever it does, you hear its little feet go <reading>げつ</reading>, げつ against the pale surface. That gecko-on-the-moon sound is how you remember げつ.",
-      "description": "Means moon or month; a common kanji that shows up in dates, days of the week (Monday), and countless month-related words.",
+      "meaning_mnemonic": "The <radical>moon</radical> radical and the <kanji>month</kanji> kanji are the same character, which makes sense once you remember a month is just one lap of the moon.",
+      "reading_mnemonic": "Once a month the night janitor at Sei's school, a man called <reading>Getz</reading>, mops the echoing hallway by the light of the full moon. The moonlight through the tall windows lights up every streak he missed, so he groans <reading>げつ</reading> and mops the whole floor over again.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
