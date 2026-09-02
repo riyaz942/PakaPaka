@@ -4,17 +4,20 @@ You are writing the memory hooks a learner will actually use to recall this
 kanji. Two mnemonics — they serve two different quiz directions — and, only when
 this kanji needs one, a description. Follow the teaching voice above.
 
-Tight matters here. These are not literary set pieces — the meaning mnemonic is
-**one sentence** the learner replays in their head at 7am on the fourth review
-of the week. Funny, strange, concrete, and above all *logical*: the components
-have to add up to the meaning.
+Tight matters here. These are not literary set pieces — both mnemonics are
+what the learner replays in their head at 7am on the fourth review of the week.
+Funny, strange, concrete, and above all *logical*: the components have to add up
+to the meaning, and the sound has to add up to the meaning too.
 
 ## How long
 
 **Meaning mnemonic: ONE sentence, roughly 70–170 characters.** Not two. Not
 "two or three". One. Finishing at 80 is a success, not a shortfall.
 
-Reading mnemonic: roughly 150–280 characters — two to four sentences.
+**Reading mnemonic: ONE sentence, or two short ones, roughly 90–200
+characters.** It may run a little longer than the meaning mnemonic — it has to
+carry a sound *and* the meaning — but it is not a story with a setup and a
+payoff. If you have written three sentences, you have written the old kind.
 
 One sentence is a hard rule because of what the extra sentences were being used
 for. Given three, the model gives each component its own little event and bolts
@@ -78,6 +81,53 @@ Never invent a character to carry the logic. The gatekeeper, the squirrel and
 the hiker in the old drafts were all doing the work the components should have
 been doing. If your sentence needs somebody who is not in the decomposition,
 the decomposition is not what your sentence is about.
+
+## The reading mnemonic: the sound and the meaning in one joke
+
+The reading mnemonic has one job — make 「{{PRIMARY_READING}}」 stick to this
+kanji — and it does that job only if the meaning is in the sentence too.
+A sound floating next to a scene that could belong to any kanji is a sound the
+learner will attach to the wrong character by Thursday.
+
+So it needs all four of these, in one or two short sentences:
+
+1. **The sound.** An English phonetic hook that really sounds like
+   「{{PRIMARY_READING}}」, said by the cast character fixed to that reading.
+2. **The meaning.** This kanji's taught meaning, named in plain words, doing
+   real work in the sentence — not appended as "…and that's why it means X".
+3. **A logical link between the two.** The reason the sound-alike thing and the
+   meaning belong in the same sentence. That link is the whole mnemonic.
+4. **A laugh.** Absurd, petty, or undignified. Funny is what survives to the
+   fourth review.
+
+**Right** — the hook and the meaning are the same event:
+
+> The showroom greeter <reading>Shin</reading> yells 「<reading>しん</reading>！」
+> every time he yanks a cover off, so everything he touches turns out
+> <kanji>new</kanji>.
+
+> A cook called <reading>Chew</reading> insists you cannot say
+> 「<reading>ちゅう</reading>」 without landing your tongue right in the
+> <kanji>middle</kanji> of your mouth.
+
+> <reading>Sock</reading> the hiker limps home with one blister per
+> <kanji>foot</kanji>, counting 「<reading>そく</reading>」 for every step she
+> regrets.
+
+**Wrong** — the sound is there, the meaning is not:
+
+> The sunburned sprinter reaches the riverbank and drops the water
+> <reading>sack</reading> she dragged the whole way. She is far too parched to
+> speak, so when you ask her name, all that scrapes out is a dry
+> <reading>せき</reading>.
+
+Three sentences, a whole scene, and nothing in it says *red*. The learner ends
+up with a sprinter, a sack and a sound, and no idea which kanji they belong to.
+
+Tie the scene to the meaning mnemonic where you can — the same place, the same
+aftermath — so the two reinforce each other instead of competing for the same
+memory. Don't re-explain the decomposition here; the components belong to the
+meaning mnemonic. This one is about the *sound*.
 
 ## The kanji
 
@@ -149,6 +199,12 @@ inline. Three tags, and nothing else:
   that sound — the phonetic hook — in the same tag: `a hiker called
   <reading>Itchy</reading> groans <reading>{{PRIMARY_READING}}</reading> with
   every scratch`.
+- In `reading_mnemonic`, also wrap **this kanji's own meaning** in
+  `<kanji>…</kanji>`, exactly once, the same word and the same rule as in the
+  meaning mnemonic — the taught meaning at the top of this prompt, not one of
+  its accepted answers. The learner must be able to see, in the reading
+  mnemonic alone, which kanji this sound belongs to. `<radical>` never appears
+  here: the components are the meaning mnemonic's business.
 
 Tag the component the first time the story really uses it, and again later if
 the story returns to it. Don't tag anything else — a tag on an ordinary word
@@ -193,14 +249,15 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
    the meaning is bolted on after a colon, and nothing in it explains why those
    parts should mean "convenience".
 
-2. **`reading_mnemonic`** — a story of the same depth that makes the reading
-   「{{PRIMARY_READING}}」 stick, and may run shorter than the meaning mnemonic
-   since it carries one idea. The reading's cast character (above) drives the
-   scene, and the kana 「{{PRIMARY_READING}}」 must appear literally in the text
-   so the learner sees the sound they are recalling. Tie the scene to the
-   meaning story — same place, same aftermath — so the two mnemonics reinforce
-   each other rather than competing for the same memory. Don't re-explain the
-   decomposition here; this is about the *sound*.
+2. **`reading_mnemonic`** — one sentence, or two short ones, in which the
+   sound 「{{PRIMARY_READING}}」 and this kanji's meaning are the same joke.
+   Follow "The reading mnemonic: the sound and the meaning in one joke" above:
+   the reading's cast character (or, if none is fixed, a character whose name
+   carries the sound) does something the meaning explains, the kana
+   「{{PRIMARY_READING}}」 appears literally so the learner sees the sound they
+   are recalling, and this kanji's taught meaning appears in `<kanji>` tags. If
+   the sentence would still make sense with a different kanji's meaning dropped
+   into it, it is not finished.
 
 3. **`description`** — **optional. Omit this key entirely unless this kanji
    actually needs it.** The two mnemonics are what the learner reads; a
@@ -223,12 +280,12 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
 
 ## Hard rules
 
-- Plain prose only, apart from the two highlight tags. No markdown, no headings,
+- Plain prose only, apart from the highlight tags. No markdown, no headings,
   no lists, no bold/italic, no furigana brackets, no romaji spellings of the
   reading (write the kana). The build pipeline stores these as plain strings.
-- `<radical>` and `<kanji>` appear only in the meaning mnemonic, `<reading>`
-  only in the reading mnemonic, none of them in the description. Every tag you
-  open, close. Never nest them.
+- `<radical>` appears only in the meaning mnemonic, `<reading>` only in the
+  reading mnemonic, `<kanji>` in both (once each), none of them in the
+  description. Every tag you open, close. Never nest them.
 - Meaning mnemonic: reference every taught component listed above, each wrapped
   in `<radical>` where the story uses it (or, if there are none, the
   whole-character picture). Never name a component not in that list. Wrap this
@@ -238,7 +295,10 @@ Call the `submit_kanji_mnemonic` tool exactly once with:
   Going over is a rewrite, not a rounding error — cut words, never cut a
   component.
 - Reading mnemonic: the kana 「{{PRIMARY_READING}}」 must appear verbatim, inside
-  a `<reading>` tag.
+  a `<reading>` tag, and this kanji's taught meaning must appear inside a
+  `<kanji>` tag. **At most two sentences**, and under 240 characters with tags
+  not counted — the gate rejects a third sentence. Never name a taught
+  component here.
 - Description, when you write one: mention every look-alike listed above and
   **no other Japanese character** beyond this kanji and its taught components.
   Descriptions carry no furigana, so stray Japanese renders unreadable.

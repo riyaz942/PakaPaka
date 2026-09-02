@@ -937,19 +937,24 @@ rt {
   font-weight: 600;
 }
 
+/* These three are the app's own mnemonic highlight colors, not studio hues, so
+   a reviewer reads the prose in the colors the learner will see. Values are the
+   dark-scheme `-deep` (text) and `-soft` (fill) steps from
+   mobile/src/global.css — the studio is dark-only, so it takes that half of the
+   palette. Keep them in step with that file. */
 .mnemonic-tag--radical {
-  background: rgba(122, 162, 247, 0.16);
-  color: var(--accent);
+  background: #26333e;
+  color: #a9cdef;
 }
 
 .mnemonic-tag--kanji {
-  background: rgba(158, 206, 106, 0.16);
-  color: var(--success);
+  background: #462931;
+  color: #f5a9c4;
 }
 
 .mnemonic-tag--reading {
-  background: rgba(224, 175, 104, 0.16);
-  color: var(--warning);
+  background: #433521;
+  color: #eac489;
 }
 
 .mnemonic-text {

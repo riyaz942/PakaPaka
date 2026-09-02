@@ -58,7 +58,6 @@ export function RadicalDetail({ item, related = [], lookAlikes = [] }: RadicalDe
       {showStoryAbove && story ? (
         <AnnotatedText
           text={story}
-          itemType="radical"
           // The story stands alone under the hero rather than under a kicker,
           // so it takes the section gap instead of the kicker's tight one.
           className={cn(MNEMONIC_PROSE, 'mt-space-md')}

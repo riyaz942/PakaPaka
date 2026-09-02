@@ -107,6 +107,18 @@ MODEL = "claude-opus-4-8"
 #: The detector is mechanical, so `--slugs` over that list is the way to restyle
 #: them deliberately — which is what the Rev 6/7 sweep did.
 #:
+#: Rev 9 (kanji only, and only the reading mnemonic: one sentence or two short
+#: ones, 90–200 characters, in which the phonetic hook and the kanji's taught
+#: meaning are the same joke, with the meaning wrapped in the `<kanji>` tag the
+#: meaning mnemonic already uses) also bumps NOTHING, for the same reason as
+#: Rev 4/6/7. Every stored reading mnemonic predates the rule — the three-
+#: sentence scene with no meaning in it is exactly what the old contract asked
+#: for — and the maintainer keeps them. The sentence cap, the tighter band
+#: (READING_FRESH_BOUNDS) and the required `<kanji>` tag therefore all ride the
+#: enforce_readability lane, and LEN_BOUNDS' stored band only had its floor
+#: lowered (120 -> 90), which can pass more stored drafts but never fail one.
+#: Restyle by slug (`--slugs`) if you ever do want the old readings redone.
+#:
 #: After that sweep all 469 stored kanji pass the current meaning gate, so the
 #: number 4 is once again an honest "conforms to contract 4". Do not read that
 #: as licence to bump: `cmd_run` regenerates any stored draft stamped with an

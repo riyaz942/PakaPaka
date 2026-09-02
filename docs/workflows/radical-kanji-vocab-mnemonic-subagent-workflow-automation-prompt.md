@@ -51,7 +51,7 @@ Model and effort notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 32>
+<batch-size = 8>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
@@ -402,16 +402,23 @@ Give the subagent these instructions:
     mnemonic carries a second tag as well: the kanji's own meaning — the word the
     story lands on, distinct from any borrowed component — goes in
     `<kanji>…</kanji>`, because the app renders "a piece I already know" and "the
-    thing this story is building toward" in different colours. A radical borrows
-    nothing, so its `mnemonic_text` wraps **its own meaning** — the word the
-    picture resolves to — in `<radical>…</radical>`; that is the same word a kanji
-    story will later pull upward, so both ends of the chain highlight the same
-    thing. One kind of tag per field — the kanji meaning mnemonic's pair above is
-    the only exception — no nesting, every tag closed, and none at all in a
-    description.
-  - The reading mnemonic must contain the target reading verbatim, in kana, inside
-    a `<reading>` tag, and should use the cast character the prompt assigns for
-    that reading.
+    thing this story is building toward" in different colours. A **kanji**
+    reading mnemonic carries that same `<kanji>` tag on that same meaning word,
+    once — see the next bullet. A radical borrows nothing, so its
+    `mnemonic_text` wraps **its own meaning** — the word the picture resolves to
+    — in `<radical>…</radical>`; that is the same word a kanji story will later
+    pull upward, so both ends of the chain highlight the same thing. `<radical>`
+    never appears in a reading mnemonic, no nesting, every tag closed, and none
+    at all in a description.
+  - A **kanji** reading mnemonic is one sentence, or two short ones (roughly
+    90–200 characters), in which the sound and the meaning are the same joke: the
+    target reading verbatim in kana inside a `<reading>` tag, said by the cast
+    character the prompt assigns for that reading; this kanji's taught meaning
+    inside a `<kanji>` tag; a logical reason those two belong in the same
+    sentence; and a laugh. If the sentence would still make sense with a
+    different kanji's meaning dropped into it, it is not finished. A
+    three-sentence scene in which the sound turns up but the meaning never does
+    is the old shape and the gate rejects it.
   - For vocab, obey the reading-regularity block exactly: when it says the reading
     is regular or kana-only, write **one sentence** of derivation and stop —
     padding a regular reading into a story is a gate failure, not a stylistic

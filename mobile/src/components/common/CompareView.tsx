@@ -167,7 +167,7 @@ function Prose({
       <Text className={cn('text-caption font-jp-medium', CONTENT_TYPE_ACCENT[item.itemType].deep)}>
         {item.primaryForm}
       </Text>
-      <AnnotatedText text={text} itemType={item.itemType} className={MNEMONIC_PROSE} />
+      <AnnotatedText text={text} className={MNEMONIC_PROSE} />
     </View>
   );
 }

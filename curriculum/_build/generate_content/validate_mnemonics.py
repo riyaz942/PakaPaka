@@ -24,7 +24,9 @@ for 2b/2d):
        the tag-stripped prose); `description` is optional and is required only
        when the item has reviewed look-alikes to contrast
     2. reading_mnemonic literally contains the target reading kana
-       (kana-normalised, so コウ satisfies こう) inside a <reading> tag
+       (kana-normalised, so コウ satisfies こう) inside a <reading> tag, and
+       (Rev 9, fresh drafts only) names this kanji's own meaning inside a
+       <kanji> tag, so the sound is tied to the character it belongs to
     3. meaning_mnemonic references the taught decomposition — every taught
        component's meaning is recognisable in the story *and wrapped in a
        <radical> tag* (or, when the kanji has no taught decomposition, the check
@@ -47,8 +49,10 @@ for 2b/2d):
 Rev 4 adds a sentence-shape (readability) gate, enforced only when the caller
 passes enforce_readability=True — i.e. on freshly generated drafts. Stored
 drafts are re-validated without it, so no kept item is ever requeued for a
-readability rewrite. Rev 5's radical image_prompt requirement rides the same
-flag for the same reason.
+readability rewrite. Rev 5's radical image_prompt requirement, Rev 8's
+one-sentence meaning mnemonic and Rev 9's reading-mnemonic contract (at most
+two sentences, the tighter READING_FRESH_BOUNDS band, and the required <kanji>
+meaning tag) all ride the same flag for the same reason.
 
 This gate is a floor: the cast-coherence pass and "does it actually help you
 remember" judgement are human review (Phase 5). `validate-schema` after assembly
@@ -109,7 +113,12 @@ LEN_BOUNDS = {
         # one-sentence rule plus READABILITY_MAX_SENTENCE_WORDS, which together
         # cannot exceed ~200 characters.
         "meaning_mnemonic": (60, 260),
-        "reading_mnemonic": (120, 380),
+        # Rev 9 drops the floor from 120 the way Rev 8 dropped the meaning
+        # floor: the new reading contract lands at 90–200, and a stored Rev 9
+        # draft is re-validated on this band. A lower floor can only pass more
+        # drafts, never fail one. The 380 ceiling stays so re-validating the
+        # old three-sentence readings does not requeue them.
+        "reading_mnemonic": (90, 380),
         "description": (50, 400),
     },
     # vocab reading_mnemonic is bounded by the regularity branch below, not here.
@@ -152,6 +161,8 @@ _DERIVATION_KINDS = ("regular", "kana_only")
 #:                            <kanji>one</kanji>          (the kanji's own
 #:                             meaning — the word the story lands on)
 #:   kanji  reading_mnemonic  <reading>いち</reading>
+#:                            <kanji>one</kanji>          (Rev 9: the meaning
+#:                             the sound belongs to)
 #:   vocab  meaning_mnemonic  <kanji>one</kanji>
 #:   vocab  reading_mnemonic  <reading>ひとつ</reading>
 #:
@@ -169,7 +180,7 @@ ALLOWED_TAG = {
     ("radical", "mnemonic_text"): "radical",
     ("radical", "image_prompt"): "radical",
     ("kanji", "meaning_mnemonic"): ("radical", "kanji"),
-    ("kanji", "reading_mnemonic"): "reading",
+    ("kanji", "reading_mnemonic"): ("reading", "kanji"),
     ("vocab", "meaning_mnemonic"): "kanji",
     ("vocab", "reading_mnemonic"): "reading",
 }
@@ -212,6 +223,21 @@ READABILITY_MEAN_MIN_SENTENCES = 3
 #: enforce_readability lane, so stored Rev 6 prose is never requeued by it.
 MEANING_MAX_SENTENCES = 1
 
+#: Rev 9, kanji `reading_mnemonic` only: the same cut Rev 8 made to the meaning
+#: mnemonic, one beat later. A reading mnemonic used to be a three-sentence
+#: scene in which the sound turned up somewhere and the kanji's meaning turned
+#: up nowhere — a sprinter, a sack and 「せき」, with nothing saying *red*, so the
+#: learner ends up holding a sound they cannot attach to a character. The
+#: contract is now one sentence (two short ones allowed, since it carries a
+#: sound *and* a meaning where the meaning mnemonic carries only components)
+#: in which the phonetic hook and the taught meaning are the same joke.
+#: READING_FRESH_BOUNDS is the band that goes with it; both ride the
+#: enforce_readability lane, so the re-validation of stored drafts keeps
+#: LEN_BOUNDS' wider band and no kept reading mnemonic is ever requeued for
+#: being long, for being three sentences, or for missing the <kanji> tag.
+READING_MAX_SENTENCES = 2
+READING_FRESH_BOUNDS = (90, 240)
+
 _SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
 _LATIN_WORD_RE = re.compile(r"[A-Za-z']+")
 
@@ -228,10 +254,14 @@ def _readability_errors(field, text, max_sentences=None):
     ]
     errors = []
     if max_sentences and len(counts) > max_sentences:
+        why = ("one sentence in which the components combine into the meaning, "
+               "not a scene that acts them out in turn"
+               if max_sentences == 1 else
+               "the sound and the meaning in one joke, not a scene with a "
+               "setup and a payoff")
         errors.append(
-            f"{field} is {len(counts)} sentences; write exactly "
-            f"{max_sentences} — one sentence in which the components combine "
-            "into the meaning, not a scene that acts them out in turn"
+            f"{field} is {len(counts)} sentences; write at most "
+            f"{max_sentences} — {why}"
         )
     longest = max(counts, default=0)
     if longest > READABILITY_MAX_SENTENCE_WORDS:
@@ -421,6 +451,33 @@ def _component_errors(field, text, tag, components, noun, why):
     return errors
 
 
+def _own_meaning_tag_errors(field, text, ctx, required=False):
+    """`<kanji>` marks the kanji's own meaning — the word the story lands on,
+    as opposed to a component borrowed from below. Wherever the tag appears it
+    must wrap that meaning; `required` additionally demands that it be there at
+    all, which is Rev 9's reading-mnemonic rule (fresh drafts only)."""
+    own_words = _meaning_words(ctx["meaning_synonyms"])
+    if not own_words:
+        return []
+    spans = _tagged_spans(text, "kanji")
+    if not spans:
+        if required:
+            return [
+                f"{field} never says what this kanji means; name its meaning "
+                f"“{ctx['meaning']}” in the sentence and wrap it in "
+                "<kanji>...</kanji> — a sound with no meaning attached to it "
+                "sticks to the wrong character"
+            ]
+        return []
+    if not any(_references(span, own_words) for span in spans):
+        return [
+            f"{field} wraps something other than the kanji's own meaning "
+            f"“{ctx['meaning']}” in <kanji>...</kanji>; that tag is reserved for the "
+            "word the story lands on"
+        ]
+    return []
+
+
 def _reading_errors(field, text, reading):
     """The reading must be present verbatim *and* highlighted — the kana is the
     single thing the learner is trying to pull out of this story."""
@@ -446,13 +503,17 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
         return errors
 
     for field in ("meaning_mnemonic", "reading_mnemonic"):
+        if field == "meaning_mnemonic":
+            bounds = IDENTITY_MEANING_BOUNDS if ctx["identical_radical"] else None
+            max_sentences = MEANING_MAX_SENTENCES
+        else:
+            # Rev 9's tighter band is a fresh-draft rule; stored readings keep
+            # the wider LEN_BOUNDS one so re-validation never requeues them.
+            bounds = READING_FRESH_BOUNDS if enforce_readability else None
+            max_sentences = READING_MAX_SENTENCES
         errors += _field_errors(
             "kanji", field, draft[field], enforce_readability=enforce_readability,
-            bounds=(IDENTITY_MEANING_BOUNDS
-                    if field == "meaning_mnemonic" and ctx["identical_radical"]
-                    else None),
-            max_sentences=(MEANING_MAX_SENTENCES
-                           if field == "meaning_mnemonic" else None))
+            bounds=bounds, max_sentences=max_sentences)
 
     # 2. reading present and highlighted
     primary = ctx["primary_reading"]
@@ -470,15 +531,15 @@ def validate_kanji(level, slug, draft, ctx=None, enforce_readability=False):
     # that meaning. Legacy items with no <kanji> tag yet are not required to
     # add one here — that migration is tracked by the chain-check triage pass,
     # not this gate — but a tag that IS there must be used correctly.
-    kanji_spans = _tagged_spans(draft["meaning_mnemonic"], "kanji")
-    if kanji_spans:
-        own_words = _meaning_words(ctx["meaning_synonyms"])
-        if own_words and not any(_references(span, own_words) for span in kanji_spans):
-            errors.append(
-                f"meaning_mnemonic wraps something other than the kanji's own meaning "
-                f"“{ctx['meaning']}” in <kanji>...</kanji>; that tag is reserved for the "
-                "word the story lands on"
-            )
+    errors += _own_meaning_tag_errors("meaning_mnemonic", draft["meaning_mnemonic"], ctx)
+
+    # 3c. Rev 9: the reading mnemonic names the meaning the sound belongs to,
+    # and highlights it — otherwise the learner is left holding a sound with no
+    # character attached to it. Required on freshly generated drafts only, the
+    # same lane as the readability gate: stored readings predate the rule.
+    errors += _own_meaning_tag_errors(
+        "reading_mnemonic", draft["reading_mnemonic"], ctx,
+        required=enforce_readability)
 
     # 4. description (Rev 2: optional — written only when the item has something
     #    a mnemonic cannot carry). Look-alike contrast prose is exactly that, so

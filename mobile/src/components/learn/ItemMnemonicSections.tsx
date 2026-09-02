@@ -71,7 +71,6 @@ export function ItemMnemonicSections({
               <SectionHeading label="Meaning mnemonic" />
               <AnnotatedText
                 text={item.meaningMnemonic}
-                itemType={item.itemType}
                 className={MNEMONIC_PROSE}
               />
             </View>
@@ -84,7 +83,6 @@ export function ItemMnemonicSections({
               <SectionHeading label="Reading mnemonic" />
               <AnnotatedText
                 text={item.readingMnemonic}
-                itemType={item.itemType}
                 className={MNEMONIC_PROSE}
               />
             </View>

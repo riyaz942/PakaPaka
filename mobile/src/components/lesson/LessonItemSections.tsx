@@ -244,7 +244,6 @@ export function LessonMnemonicSectionView({
         {item.mnemonicText ? (
           <AnnotatedText
             text={item.mnemonicText}
-            itemType="radical"
             className={cn(MNEMONIC_PROSE, 'mt-space-md')}
             testID="radical-description"
           />
