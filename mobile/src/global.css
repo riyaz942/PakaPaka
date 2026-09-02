@@ -107,6 +107,15 @@
     --color-content-passage-soft: 234 236 245;
     --color-content-passage-deep: 61 74 115;
 
+    /* A mnemonic highlights three things and they must read as three: the
+       borrowed component (<radical>, blue), the item's own meaning (<kanji>,
+       pink) and the sound (<reading>). The sound used to take the item's own
+       content accent, which on a kanji made it the same pink as the meaning —
+       two different ideas in one colour. It gets the gold family instead, the
+       way reinforcement below reuses the info family: gold belongs to grammar,
+       and grammar never appears inside a mnemonic, so the hue is free here. */
+    --color-mnemonic-reading: 143 95 22;
+
     /* v2 — reinforcement (cross-domain hint) reuses the info family */
     --color-reinforcement-text: 39 111 175;
     --color-reinforcement-bg: 230 240 251;
@@ -163,6 +172,7 @@
       --color-content-passage: 142 156 196;
       --color-content-passage-soft: 48 49 57;
       --color-content-passage-deep: 195 204 228;
+      --color-mnemonic-reading: 234 196 137;
 
       --color-reinforcement-text: 97 162 219;
       --color-reinforcement-bg: 38 53 66;

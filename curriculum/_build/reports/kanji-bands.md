@@ -8,11 +8,11 @@ A band is a teaching budget, not a coverage gate. Kanji outside a learner's band
 
 | Level | Kanji | Cum. | Radicals | Rad. cum. | Reuse floor |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| N5 | 150 | 150 | 122 | 122 | 2 |
-| N4 | 150 | 300 | 40 | 162 | 1 |
-| N3 | 400 | 700 | 44 | 206 | 2 |
-| N2 | 300 | 1000 | 17 | 223 | 1 |
-| N1 | 1000 | 2000 | 15 | 238 | 0 |
+| N5 | 150 | 150 | 148 | 148 | 1 |
+| N4 | 175 | 325 | 107 | 255 | 0 |
+| N3 | 375 | 700 | 180 | 435 | 0 |
+| N2 | 300 | 1000 | 105 | 540 | 0 |
+| N1 | 1000 | 2000 | 277 | 817 | 0 |
 
 Reuse floor is the fewest same-level words any kanji in the band appears in. A floor of 0 means the band ran out of kanji that any of its own words use and fell back to frequency rank.
 
@@ -22,135 +22,22 @@ Words every kanji of which is inside the cumulative band — the population that
 
 | After | N5 words | N4 words | N3 words | N2 words | N1 words |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| N5 | 407 (57%) | 131 (25%) | 196 (9%) | 170 (8%) | 290 (7%) |
-| N4 | 459 (64%) | 320 (60%) | 463 (21%) | 406 (18%) | 707 (18%) |
-| N3 | 555 (77%) | 406 (77%) | 1763 (78%) | 1291 (57%) | 2162 (54%) |
-| N2 | 624 (87%) | 450 (85%) | 1943 (86%) | 1932 (86%) | 2869 (72%) |
+| N5 | 376 (52%) | 125 (24%) | 183 (8%) | 186 (8%) | 318 (8%) |
+| N4 | 523 (73%) | 241 (46%) | 533 (24%) | 510 (23%) | 859 (21%) |
+| N3 | 618 (86%) | 369 (70%) | 1575 (70%) | 1288 (57%) | 2188 (55%) |
+| N2 | 684 (95%) | 446 (84%) | 1759 (78%) | 1618 (72%) | 2788 (70%) |
 | N1 | 718 (100%) | 529 (100%) | 2250 (100%) | 2250 (100%) | 4000 (100%) |
 
 ## Moves
 
-113 hand-authored kanji change level; 188 derived kanji move up into N5/N4.
+0 hand-authored kanji change level; 133 derived kanji move up into N5/N4.
 
 | Kanji | Meaning | Was | Now | Reuse | Prose |
 | --- | --- | --- | --- | ---: | --- |
-| 明 `n4-akarui` | bright | N4 | N5 | 4 | written |
-| 方 `n4-hou` | direction / person | N4 | N5 | 3 | written |
-| 家 `n4-ie-kanji` | house | N4 | N5 | 2 | written |
-| 兄 `n4-ani` | older brother | N4 | N5 | 3 | written |
-| 姉 `n4-ane` | older sister | N4 | N5 | 2 | written |
-| 弟 `n4-otouto` | younger brother | N4 | N5 | 2 | written |
-| 会 `n4-kai` | meet | N4 | N5 | 4 | written |
-| 理 `n4-ri` | reason / logic | N4 | N5 | 4 | written |
-| 事 `n4-koto` | matter / thing | N4 | N5 | 6 | written |
-| 店 `n4-mise` | shop | N4 | N5 | 2 | written |
-| 図 `n4-zu` | diagram / map | N4 | N5 | 3 | written |
-| 洗 `n4-arau` | wash | N4 | N5 | 3 | written |
-| 所 `n4-tokoro` | place | N4 | N5 | 4 | written |
-| 色 `n4-iro` | color | N4 | N5 | 4 | written |
-| 強 `n4-tsuyoi` | strong | N4 | N5 | 3 | written |
-| 変 `n4-kawaru` | change | N4 | N5 | 3 | written |
-| 教 `n4-kyou-teach` | teach | N4 | N5 | 3 | written |
-| 持 `n4-motsu` | hold | N4 | N5 | 2 | written |
-| 始 `n4-hajimeru` | begin | N4 | N5 | 2 | written |
-| 味 `n4-aji` | taste | N4 | N5 | 2 | written |
-| 地 `n4-chi` | ground / earth | N4 | N5 | 5 | written |
-| 場 `n4-ba` | place | N4 | N5 | 2 | written |
-| 室 `n4-shitsu` | room | N4 | N5 | 2 | written |
-| 市 `n5-shi-city` | city / market | N5 | N4 | 3 | written |
-| 少 `n5-sukunai` | few / little | N5 | N4 | 2 | written |
-| 目 `n5-me-eye` | eye | N5 | N4 | 4 | written |
-| 安 `n5-yasui` | cheap / peaceful | N5 | N4 | 2 | written |
-| 読 `n5-dokusho` | read | N5 | N4 | 2 | written |
-| 飲 `n5-nomu` | drink | N5 | N4 | 2 | written |
-| 売 `n5-uru-baku` | sell | N5 | N4 | 2 | written |
-| 長 `n5-nagai` | long / leader | N5 | N4 | 3 | written |
-| 力 `n5-chikara` | power / strength | N5 | N4 | 2 | written |
-| 早 `n5-hayai` | early / fast | N5 | N4 | 2 | written |
-| 運 `n4-hakobu` | carry / luck | N4 | N3 | 8 | written |
-| 発 `n4-hatsu` | depart / emit | N4 | N3 | 18 | written |
-| 心 `n4-shin-heart` | heart / mind | N4 | N3 | 9 | written |
-| 考 `n4-kangaeru` | think | N4 | N3 | 4 | written |
-| 校 `n5-kou-school` | school | N5 | N3 | 5 | written |
-| 高 `n5-takai` | tall / expensive | N5 | N3 | 19 | written |
-| 終 `n4-owaru` | end | N4 | N3 | 10 | written |
-| 死 `n4-shinu` | die | N4 | N3 | 10 | written |
-| 試 `n4-shi-try` | try / test | N4 | N3 | 3 | written |
-| 新 `n5-atarashii` | new | N5 | N3 | 10 | written |
-| 言 `n5-iu-gen` | say / word | N5 | N3 | 5 | written |
-| 選 `n4-erabu` | choose | N4 | N3 | 11 | written |
-| 主 `n4-shu-main` | main / lord | N4 | N3 | 26 | written |
-| 男 `n5-otoko` | man | N5 | N3 | 4 | written |
-| 調 `n4-shiraberu` | investigate | N4 | N3 | 10 | written |
-| 土 `n5-do-earth` | earth / soil | N5 | N3 | 5 | written |
-| 東 `n5-higashi` | east | N5 | N3 | 9 | written |
-| 同 `n4-dou` | same | N4 | N3 | 23 | written |
-| 必 `n4-hitsu` | necessary | N4 | N3 | 4 | written |
-| 要 `n4-you-need` | need / important | N4 | N3 | 11 | written |
-| 道 `n5-michi` | road / way | N5 | N3 | 9 | written |
-| 北 `n5-kita` | north | N5 | N3 | 6 | written |
-| 立 `n5-tatsu` | stand | N5 | N3 | 19 | written |
-| 働 `n4-hataraku` | work | N4 | N3 | 4 | written |
-| 火 `n5-ka-fire` | fire | N5 | N3 | 3 | written |
-| 答 `n4-kotae` | answer | N4 | N3 | 3 | written |
-| 西 `n5-nishi` | west | N5 | N3 | 5 | written |
-| 止 `n5-tomeru` | stop | N5 | N3 | 6 | written |
-| 急 `n4-isogu` | hurry | N4 | N3 | 7 | written |
-| 広 `n4-hiroi` | wide / spacious | N4 | N3 | 3 | written |
-| 座 `n5-suwaru` | sit | N5 | N3 | 4 | written |
-| 使 `n4-tsukau` | use | N4 | N3 | 5 | written |
-| 料 `n4-ryou-fee` | fee / materials | N4 | N3 | 7 | written |
-| 集 `n4-atsumeru` | gather | N4 | N3 | 6 | written |
-| 南 `n5-minami` | south | N5 | N3 | 3 | written |
-| 比 `n4-kuraberu` | compare | N4 | N3 | 4 | written |
-| 足 `n5-ashi` | foot / leg / suffice | N5 | N3 | 3 | written |
-| 親 `n4-oya` | parent | N4 | N3 | 4 | written |
-| 習 `n4-narau` | learn / practice | N4 | N3 | 3 | written |
-| 小 `n5-shou-small` | small | N5 | N3 | 7 | written |
-| 好 `n4-suki` | like / fond | N4 | N3 | 3 | written |
-| 質 `n4-shitsu-quality` | quality / question | N4 | N3 | 6 | written |
-| 左 `n5-hidari` | left | N5 | N3 | 3 | written |
-| 悪 `n4-warui` | bad | N4 | N3 | 3 | written |
-| 山 `n5-yama` | mountain | N5 | N3 | 3 | written |
-| 休 `n5-yasumu` | rest | N5 | N3 | 3 | written |
-| 川 `n5-kawa` | river | N5 | N2 | 3 | written |
-| 水 `n5-sui` | water | N5 | N2 | 11 | written |
-| 走 `n4-hashiru` | run | N4 | N2 | 3 | written |
-| 町 `n5-machi` | town | N5 | N2 | 3 | written |
-| 天 `n5-ten` | heaven / sky | N5 | N2 | 7 | written |
-| 木 `n5-moku` | tree | N5 | N2 | 5 | written |
-| 着 `n4-kiru-wear` | wear / arrive | N4 | N2 | 8 | written |
-| 右 `n5-migi` | right | N5 | N2 | 5 | written |
-| 円 `n5-en` | yen / circle | N5 | N2 | 4 | written |
-| 覚 `n4-oboeru` | remember | N4 | N2 | 4 | written |
-| 古 `n5-furui` | old | N5 | N2 | 2 | written |
-| 百 `n5-hyaku` | hundred | N5 | N2 | 2 | written |
-| 青 `n5-ao` | blue / green | N5 | N2 | 2 | written |
-| 歌 `n4-uta` | song | N4 | N2 | 5 | written |
-| 族 `n4-zoku` | family / clan | N4 | N2 | 3 | written |
-| 語 `n5-go-language` | language / word | N5 | N2 | 7 | written |
-| 貸 `n4-kasu` | lend | N4 | N2 | 4 | written |
-| 借 `n4-kariru` | borrow | N4 | N2 | 3 | written |
-| 軽 `n4-karui` | light (weight) | N4 | N2 | 5 | written |
-| 細 `n4-hosoi` | thin / fine | N4 | N2 | 4 | written |
-| 飛 `n4-tobu` | fly | N4 | N2 | 4 | written |
-| 遊 `n4-asobu` | play | N4 | N2 | 2 | written |
-| 万 `n5-man` | ten thousand | N5 | N2 | 2 | written |
-| 弱 `n4-yowai` | weak | N4 | N1 | 4 | written |
-| 暗 `n4-kurai` | dark | N4 | N1 | 6 | written |
-| 雨 `n5-ame-rain` | rain | N5 | N1 | 10 | written |
-| 千 `n5-sen` | thousand | N5 | N1 | 4 | written |
-| 戻 `n4-modoru` | return | N4 | N1 | 3 | written |
-| 花 `n5-hana` | flower | N5 | N1 | 11 | written |
-| 駅 `n5-eki-station` | station | N5 | N1 | 1 | written |
-| 妹 `n4-imouto` | younger sister | N4 | N1 | 0 | written |
-| 耳 `n5-mimi` | ear | N5 | N1 | 0 | written |
-| 忘 `n4-wasureru` | forget | N4 | N1 | 0 | written |
-| 羊 `n4-hitsuji` | sheep | N4 | N1 | 0 | written |
 
 ## Radicals in the N5+N4 band without prose
 
-162 radicals file at a level that ships full content. 49 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
+255 radicals file at a level that ships full content. 146 of them have a mnemonic but no image and render as text — a shipped state, not a gap.
 
 Every one of them has a mnemonic.
 

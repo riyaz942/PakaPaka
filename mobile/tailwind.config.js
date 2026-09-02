@@ -78,6 +78,9 @@ module.exports = {
         'content-passage': 'rgb(var(--color-content-passage) / <alpha-value>)',
         'content-passage-soft': 'rgb(var(--color-content-passage-soft) / <alpha-value>)',
         'content-passage-deep': 'rgb(var(--color-content-passage-deep) / <alpha-value>)',
+        // The <reading> highlight inside a mnemonic — its own hue, so the sound
+        // never renders in the same colour as the item's own meaning.
+        'mnemonic-reading': 'rgb(var(--color-mnemonic-reading) / <alpha-value>)',
 
         // v2 — reinforcement
         'reinforcement-text': 'rgb(var(--color-reinforcement-text) / <alpha-value>)',

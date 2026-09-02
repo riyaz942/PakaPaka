@@ -21,7 +21,7 @@ Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
-<type = vocab>
+<type = kanji>
 
 Subagent model (which model every subagent in this run uses):
 
@@ -51,7 +51,7 @@ Model and effort notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 36>
+<batch-size = 32>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost
@@ -165,7 +165,7 @@ todo = [s for s in slugs if s not in done][:BATCH_LIMIT]
 # back to sequential chunks (curriculum order already clusters related radicals).
 comps = {}
 if KIND == 'kanji':
-    comps = mc.decomposition_edges(LEVEL)
+    comps = mc.decomposition_edges()  # all levels; callers filter per slug
 elif KIND == 'vocab':
     comps = mc.vocab_component_edges(LEVEL)
 remaining, groups = list(todo), []
@@ -305,8 +305,10 @@ Give the subagent these instructions:
     look-alike. Seeing the sibling items is for varying your writing, never for
     widening what an item is allowed to reference.
   - Return the keys for this type:
-      radical → `mnemonic_text`, and `description` **only if this radical needs
-                one** (see below)
+      radical → `mnemonic_text` **and** `image_prompt` (both required — the
+                first is the short learner-facing summary, the second the
+                stroke-walked scene the illustration is drawn from), plus
+                `description` **only if this radical needs one** (see below)
       kanji   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
                 if this kanji needs one**
       vocab   → `meaning_mnemonic`, `reading_mnemonic`, and `description` **only
@@ -318,21 +320,69 @@ Give the subagent these instructions:
     explains the character. A description that only restates the meaning and
     counts strokes is noise; leave it out.
   - Length, per field:
-      radical `mnemonic_text`  roughly **150–300** characters, two to three
-                               sentences — and lean funny; at this length the
-                               image itself has to be the joke
-      kanji/vocab meaning      roughly **180–330** characters
+      radical `mnemonic_text`  roughly **100–180** characters — the short
+                               learner-facing summary of the image, and lean
+                               funny; at this length the image is the joke
+      radical `image_prompt`   roughly **150–300** characters — the same scene
+                               walked stroke by stroke, written for the
+                               illustrator
+      kanji meaning            roughly **120–220** characters, two or three
+                               sentences — a hard ceiling, see below (but
+                               **50–150** when the kanji just *is* a taught
+                               radical — see below)
+      vocab meaning            roughly **180–330** characters
       kanji/vocab reading      roughly **150–280** characters (a vocab derivation
                                note stays at one sentence — see below)
-    These are targets, not rules: overrunning to finish a scene the item
-    genuinely needs is fine, padding to reach one is not. They are short on
-    purpose — the depth comes from how specific the picture is, not from how many
-    sentences it takes.
-  - Build the story from the components the prompt lists, and **continue the
-    established image each component already carries** — do not invent a fresh
-    scene that competes with what the learner has already read. Reference every
-    listed component by its taught meaning. Never name a component, radical or
-    kanji that is not in that list.
+    Except for the kanji meaning ceiling, these are targets, not rules:
+    overrunning to finish a scene the item genuinely needs is fine, padding to
+    reach one is not. They are short on purpose — the depth comes from how
+    specific the picture is, not from how many sentences it takes.
+  - **Kanji meaning mnemonics only — the Rev 6 style.** This one field is held
+    much tighter than the rest, and the gate enforces it at 260 characters:
+      - Two or three sentences, most under 14 words, none over 20. No dash-joined
+        second clauses, no "-ing" tails, no colon-joined reveal at the end.
+      - Plain English a ten-year-old would use. *tied* not *lashed*, *bundle* not
+        *sheaf*, *caught* not *snagged*, *tips over* not *lurches*. If it sounds
+        like a novel, it is wrong.
+      - **One causal chain.** Each sentence is caused by the one before it and
+        the last one produces the meaning. If two sentences could swap places
+        without breaking the scene, it is a list, not a story.
+      - Components enter as ordinary things the scene already needs — a count, an
+        object, a place — not as their own staged mini-event. "eight
+        `<radical>sheep</radical>` by the water" beats a whole sentence about an
+        axe splitting a log into eight.
+      The target, in full: "A `<radical>stick</radical>` planted in the
+      `<radical>ground</radical>` holds up a heavy bundle of
+      `<radical>grain</radical>`. Suddenly it snaps into
+      `<radical>eight</radical>` pieces. You leap onto the falling grain and
+      `<kanji>ride</kanji>` it down the hill like a sled." Four components, 160
+      characters, every word a learner word.
+  - **When the kanji simply *is* a taught radical, do not write a story at all.**
+    Some kanji are a radical the learner already met, unchanged in shape and in
+    meaning — 山 the radical and 山 the kanji. The prompt's "Is this kanji just a
+    radical it already knows?" section tells you which ones outright; it is
+    computed mechanically (`mnemonic_context.identical_radical`), so it is not a
+    judgement call you make. For those items the whole meaning mnemonic is one or
+    two sentences saying so:
+      - "The `<radical>mountain</radical>` radical and the
+        `<kanji>mountain</kanji>` kanji are the same."
+      - "The radical and the kanji for `<radical>direction</radical>` /
+        `<kanji>direction</kanji>` are the same! Huzzah!"
+    Both tags still go on, wrapping the same word on two different spans — that
+    is correct here, and it is what lets the app colour both ends of the chain.
+    The band is **50–150 characters, hard ceiling 200**, not 120–220; the gate
+    switches to it automatically for these items, so a full invented scene now
+    *fails* rather than merely being unwanted. Where we teach the kanji a sense
+    the radical does not carry (工 "craft" over the "construction" radical), add
+    exactly one sentence tying the two senses together — the prompt says so when
+    it applies. The **reading** mnemonic is unaffected: the reading is not
+    derivable from the radical, so it gets the usual full treatment.
+  - Build the story from the components the prompt lists, reusing the object each
+    component already carries — do not invent a fresh scene that competes with
+    what the learner has already read. Reference every listed component by its
+    taught meaning. Never name a component, radical or kanji that is not in that
+    list. (For kanji meanings, reusing the object is enough; restaging that
+    component's own illustrated scene is what blows the length budget.)
   - **Make the group's items feel different from each other.** This is the whole
     reason you were given them together. Do not reuse a scene shape, setting,
     animal, gag structure, or sentence rhythm across two items in the group, and do
@@ -348,15 +398,27 @@ Give the subagent these instructions:
     wrap each taught component's meaning where the story uses it —
     `<radical>…</radical>` in a kanji meaning mnemonic, `<kanji>…</kanji>` in a
     vocab one — and wrap both the target reading kana and the English phonetic
-    hook in `<reading>…</reading>` in the reading mnemonic. A radical borrows
-    nothing, so its `mnemonic_text` wraps **its own meaning** — the word the
-    picture resolves to — in `<radical>…</radical>`; that is the same word a kanji
-    story will later pull upward, so both ends of the chain highlight the same
-    thing. One kind of tag per field, no nesting, every tag closed, and none at
-    all in a description.
-  - The reading mnemonic must contain the target reading verbatim, in kana, inside
-    a `<reading>` tag, and should use the cast character the prompt assigns for
-    that reading.
+    hook in `<reading>…</reading>` in the reading mnemonic. A **kanji** meaning
+    mnemonic carries a second tag as well: the kanji's own meaning — the word the
+    story lands on, distinct from any borrowed component — goes in
+    `<kanji>…</kanji>`, because the app renders "a piece I already know" and "the
+    thing this story is building toward" in different colours. A **kanji**
+    reading mnemonic carries that same `<kanji>` tag on that same meaning word,
+    once — see the next bullet. A radical borrows nothing, so its
+    `mnemonic_text` wraps **its own meaning** — the word the picture resolves to
+    — in `<radical>…</radical>`; that is the same word a kanji story will later
+    pull upward, so both ends of the chain highlight the same thing. `<radical>`
+    never appears in a reading mnemonic, no nesting, every tag closed, and none
+    at all in a description.
+  - A **kanji** reading mnemonic is one sentence, or two short ones (roughly
+    90–200 characters), in which the sound and the meaning are the same joke: the
+    target reading verbatim in kana inside a `<reading>` tag, said by the cast
+    character the prompt assigns for that reading; this kanji's taught meaning
+    inside a `<kanji>` tag; a logical reason those two belong in the same
+    sentence; and a laugh. If the sentence would still make sense with a
+    different kanji's meaning dropped into it, it is not finished. A
+    three-sentence scene in which the sound turns up but the meaning never does
+    is the old shape and the gate rejects it.
   - For vocab, obey the reading-regularity block exactly: when it says the reading
     is regular or kana-only, write **one sentence** of derivation and stop —
     padding a regular reading into a story is a gate failure, not a stylistic
@@ -456,8 +518,15 @@ them exactly as a repair subagent would):
     unless an error asks for one.
   - A "too short" error means the story lacks substance — add scene, not filler
     clauses. A "too long" error means cut, not compress into one dense sentence;
-    the targets are in Step 2 (radical ~150–300, meaning ~180–330, reading
-    ~150–280).
+    the targets are in Step 2 (radical text ~100–180, radical image_prompt
+    ~150–300, kanji meaning ~120–220, vocab
+    meaning ~180–330, reading ~150–280). On a long **kanji meaning**, cut whole
+    staged events and novel-register words before you touch anything else — that
+    is nearly always where the excess is; never drop a component to fit.
+    A `keep <= 200` ceiling on a kanji meaning means this kanji *is* a taught
+    radical: the fix is not to trim the scene but to delete it and say the two
+    are the same, per Step 2. Likewise a "too short" error there does **not**
+    mean add scene — the floor is 40, so the item is genuinely near-empty.
   - A "never wraps it in <radical>…" or "does not highlight the reading" error
     means the words are there but untagged — add the tags around the words the
     story already uses, do not rewrite the story.

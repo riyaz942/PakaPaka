@@ -190,13 +190,19 @@ def _build_radical_items(slug_prefix, radical_entries):
             item["visually_similar_slugs"] = _SIMILAR_SLUGS[r["slug"]]
         mnemonic = mnemonics.get(r["slug"])
         if mnemonic:
-            # A radical's `mnemonic_text` is the image story (and the Tier 2
-            # image prompt); `description` is optional and carries look-alike
-            # contrast or usage nuance. Both paths are explicit.
+            # A radical carries two texts for one scene: `image_prompt` is the
+            # stroke-walked story the Tier 2 art is drawn from, `mnemonic_text`
+            # the shorter learner-facing summary of it; `description` is
+            # optional and carries look-alike contrast or usage nuance. All
+            # three paths are explicit. (`image_prompt` ships in the JSON for
+            # the art pipeline; compile-curriculum's explicit column mapping
+            # keeps it out of the bundled db.)
             if mnemonic.get("description"):
                 item["description"] = mnemonic["description"]
             if mnemonic.get("mnemonic_text"):
                 item["mnemonic_text"] = mnemonic["mnemonic_text"]
+            if mnemonic.get("image_prompt"):
+                item["image_prompt"] = mnemonic["image_prompt"]
             meta = _sidecar_meta(mnemonic)
             if meta:
                 item["_meta"] = meta
@@ -658,6 +664,7 @@ def build_n4_readings(known_readings=None, vocab_forms=None):
 SKELETON_PATH = os.path.join(BUILD_DIR, "skeleton.json")
 VOCAB_SKELETON_PATH = os.path.join(BUILD_DIR, "vocab_skeleton.json")
 BANDS_PATH = os.path.join(BUILD_DIR, "bands.json")
+DECOMPOSITION_PATH = os.path.join(BUILD_DIR, "decomposition.json")
 
 BAND_LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 
@@ -668,6 +675,17 @@ SKELETON_VOCAB_LEVELS = ["n3", "n2", "n1"]
 
 def load_skeleton():
     with open(SKELETON_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def load_decomposition():
+    """The KanjiVG-derived decomposition and the radicals it needs.
+
+    Owns the derived radical inventory since the KanjiVG switch: a radical
+    exists because some kanji is built from it, and that list is now this file's
+    to state. `skeleton["radicals"]` was the KRADFILE-era answer to the same
+    question and no longer feeds the build."""
+    with open(DECOMPOSITION_PATH, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -709,6 +727,7 @@ def generate_bands():
     from n5_vocab import N5_VOCAB
 
     skeleton = load_skeleton()
+    decomposition = load_decomposition()
     bands = load_bands()
 
     # Per source, with that source's own reference scope: an N5 kanji example
@@ -725,7 +744,7 @@ def generate_bands():
     radicals = (
         build_n5_radicals()
         + build_n4_radicals()
-        + _build_radical_items("k", skeleton["radicals"])
+        + _build_radical_items("k", decomposition["radicals"])
     )
     kanji = (
         build_n5_kanji(n5_readings, n5_forms)

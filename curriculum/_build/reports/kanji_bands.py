@@ -8,22 +8,57 @@ being out of band.
 
     | level | kanji added | cumulative |
     | n5    |         150 |        150 |
-    | n4    |         150 |        300 |
-    | n3    |         400 |        700 |
+    | n4    |         175 |        325 |
+    | n3    |         375 |        700 |
     | n2    |         300 |      1,000 |
     | n1    |       1,000 |      2,000 |
 
-**Ranking is by corpus reuse, not by the JLPT kanji list.** The exam list is
-blind to the word list this app ships, so it spends slots on kanji that unlock
-nothing. For each kanji, count the words *of that level* it appears in; take the
-top N; tie-break by KANJIDIC grade so equally useful kanji arrive easy-first.
-The consequence, accepted deliberately: the level a kanji sits at is this app's
-ladder, not the exam's. 百 and 東 are N5 on the exam and unlock two words each
-here, so they wait.
+N4 holds 175 rather than 150 so that all 181 kanji the JLPT tests at N4 fit
+inside the N5+N4 bands. The 25 slots come out of N3, which the same shift
+relieves, and the ladder still totals 2,000.
 
-Every level has vocabulary since Phase D, so every band ranks on reuse. The
-frequency-rank fallback below stays for the case of a level whose word list is
-missing, which is a build in progress rather than a shipped state.
+**Hand-authored kanji are pinned to their dataset's level.** The N5/N4 curated
+lists are the real exam list for those 192 kanji, and a learner expects 水 and
+川 at N5 because that is where every course and exam puts them — so `source`
+(which dataset defines the kanji: `n5`/`n4`/`k`) doubles as its band for those
+two sources; it is never reranked out. This does mean a low-reuse authored
+kanji occupies a budget slot a higher-reuse derived kanji could have filled,
+which is accepted deliberately: matching the exam's placement matters more
+than squeezing every slot for reuse.
+
+**A named handful of derived kanji are pinned the same way.** `PINNED_DERIVED`
+below lists personal pronouns (私/僕/君/彼/誰) — real KANJIDIC school grades of
+6, 8, or a grade 3 that still loses the reuse race, none of which match where
+every JLPT course actually teaches them (N5, day one). Same mechanism as the
+authored pin, just keyed by slug instead of by whole dataset.
+
+**The derived (`k`-sourced) corpus ranks by JLPT level first, reuse second.**
+Each band's authored count is subtracted from its budget; the remainder is
+filled from the still-unplaced derived corpus, sorted by the old-JLPT level
+KANJIDIC2 tags (4 easiest, 1 hardest, untagged last), which the skeleton
+carries as `jlpt`. Inside one JLPT level the simple kanji go first — school
+grade 1-3, see SIMPLE_GRADE — then reuse count, then grade, then frequency.
+
+**Two corrections sit on top of that rank**, because a JLPT tag alone reads
+wrong in two directions. `RESERVED_BY_REUSE` hands the first few slots of a
+band to the kanji that band's own words lean on hardest, which is how 番 gets
+to N5: six N5 words are written with it and the exam still grades it late.
+`SIMPLE_GRADE` is the other direction — 雲 皿 貝 虫 丸 黄 才 泳 are grade 1-3
+kanji this curriculum writes one word each with, so pure reuse buried them at
+N2 behind kanji twice their stroke count. Both corrections act *inside* the
+JLPT rank and never across it: no kanji the exam tests at N4 is displaced.
+
+The rank used to be school grade first. Grade is the order Japanese *schooling*
+teaches in, and this app teaches to the JLPT, so the two disagree in both
+directions: grade-first spent 38 of the 64 derived N4 slots on early-school
+kanji no N4 word uses (麦 羽 矢 貝 黄 …) while 58 kanji the JLPT tests at N4
+(勉 医 病 薬 銀 館 英 飯 …) were pushed out to N3 and N2. Grade survives as a
+tiebreaker, where 犬 and 雪 still beat an equally-JLPT-ranked rarity.
+
+Every level has vocabulary since Phase D, so every band's derived fill can
+break ties on reuse. The frequency-rank fallback below stays for the case of
+a level whose word list is missing, which is a build in progress rather than
+a shipped state.
 
 **Sort order inside a band.** Kanji the hand-authored N5/N4 datasets already
 place keep their curated order; the plan puts re-ordering N5/N4 out of scope.
@@ -54,10 +89,10 @@ CURRICULUM_DIR = os.path.dirname(BUILD_DIR)
 
 sys.path.insert(0, BUILD_DIR)
 
-from generate_deps import N4_DECOMPOSITION, N5_DECOMPOSITION  # noqa: E402
+# Curated N5/N4 decomposition maps are no longer read here; see load_decomposition.
 
 #: The ladder. Sums to the 2,000 `import/build_skeleton.py` derives.
-BAND_SIZES = {"n5": 150, "n4": 150, "n3": 400, "n2": 300, "n1": 1000}
+BAND_SIZES = {"n5": 150, "n4": 175, "n3": 375, "n2": 300, "n1": 1000}
 LEVELS = ["n5", "n4", "n3", "n2", "n1"]
 
 #: Levels that ship hand-authored prose. The report calls out prose-less items
@@ -69,6 +104,38 @@ AUTHORED_LEVELS = ["n5", "n4"]
 #: level is its frequency rank and is decided without reference to kanji, so
 #: ranking a band on that level's words is not circular.
 VOCAB_LEVELS = LEVELS
+
+#: Derived-corpus kanji pinned to a level by name, ahead of jlpt/reuse
+#: ranking. Personal pronouns: every JLPT course teaches them as some of the
+#: first N5 words, but KANJIDIC tags them old-JLPT 3 (私), 2 (君/彼), 1 (僕) or
+#: nothing at all (誰) — none of which reads as N5. JLPT-first ranking is right
+#: for the derived corpus in general; this is the deliberately named exception
+#: for words no JLPT course defers.
+#: Slots each band fills by its own words' reuse *before* the JLPT rank runs.
+#: JLPT rank is right about the exam and blind to this app's word list, so a
+#: kanji the exam grades late but N5 leans on hard — 番, which 6 of N5's own
+#: words are written with (一番, 番号, 交番, 電話番号 …) — loses to every
+#: better-graded kanji and files at N2. The lane is small on purpose: it is a
+#: correction for the handful of kanji this curriculum uses far more than the
+#: exam expects, not a second ranking.
+RESERVED_BY_REUSE = {"n5": 10, "n4": 6}
+
+#: KANJIDIC school grade at or below which a kanji counts as *simple*, and so
+#: sorts ahead of the rest of its JLPT tier. Grade 1-3 is the first three years
+#: of elementary school: 雲 皿 貝 虫 丸 黄 才 泳 are all in it. Ranking a tier
+#: on reuse alone buried them at N2 behind kanji twice their stroke count,
+#: because this curriculum happens to write only one word each with them.
+#: Simplicity is not a strong enough signal to outrank the exam — it sits
+#: *inside* a JLPT tier, never across tiers.
+SIMPLE_GRADE = 3
+
+PINNED_DERIVED = {
+    "k-private": "n5",  # 私 watashi — N5 vocabulary word #1 ("I / me")
+    "k-me": "n5",  # 僕 boku — N5 vocabulary word #3
+    "k-mister": "n5",  # 君 kimi — N5 vocabulary word #5
+    "k-he": "n5",  # 彼 kare — N5 vocabulary word #6
+    "k-who": "n5",  # 誰 dare — N5 vocabulary word #27
+}
 
 
 def load(path):
@@ -94,6 +161,7 @@ def load_corpus():
                 "meaning": k["meaning"],
                 "source": source,
                 "order": i,
+                "jlpt": None,
                 "grade": None,
                 "freq": None,
             }
@@ -104,6 +172,7 @@ def load_corpus():
             "meaning": k["meaning"],
             "source": "k",
             "order": i,
+            "jlpt": k.get("jlpt"),
             "grade": k.get("grade"),
             "freq": k.get("freq"),
         }
@@ -137,26 +206,84 @@ def reuse_and_encounter(chars, words):
     return reuse, first
 
 
+def jlpt_rank(info):
+    """0-3 easiest-first from the old-JLPT level, 4 for untagged.
+
+    KANJIDIC2 tags the pre-2010 four-level exam, where 4 is the easiest paper.
+    The new ladder is close enough to read straight across at the two ends this
+    band ranking cares about: old 4 is today's N5 (103 kanji) and old 3 is
+    today's N4 (181). Old 2 splits across N3/N2 and old 1 is N1, which is why
+    this is a rank input rather than the level itself."""
+    level = info.get("jlpt")
+    return 4 - level if level else 4
+
+
+def reserved_by_reuse(level, remaining, reuse):
+    """The slugs this band takes on its own words' reuse, ahead of JLPT rank.
+
+    Only kanji at least one of the level's words is written with are eligible,
+    ordered by how many of them, then by JLPT rank so an exam-early kanji wins
+    a tie it would have won anyway. Returns at most RESERVED_BY_REUSE[level]."""
+    size = RESERVED_BY_REUSE.get(level, 0)
+    if not size:
+        return []
+    eligible = (s for s in remaining if reuse[remaining[s]["char"]])
+    return sorted(
+        eligible,
+        key=lambda s: (
+            -reuse[remaining[s]["char"]],
+            jlpt_rank(remaining[s]),
+            remaining[s]["grade"] or 99,
+            remaining[s]["freq"] or 99999,
+            remaining[s]["char"],
+        ),
+    )[:size]
+
+
 def assign_bands(corpus, words):
-    """{slug: level}, plus the per-level reuse map the report prints."""
-    remaining = dict(corpus)
-    bands = {}
+    """{slug: level}, plus the per-level reuse map the report prints.
+
+    Hand-authored kanji (`source` in LEVELS) are pinned to their dataset's
+    level up front, outside the ranking loop entirely — they never compete for
+    a slot and never lose one. PINNED_DERIVED pins a few named derived-corpus
+    exceptions the same way. Everything else in the derived corpus is ranked
+    by JLPT level then reuse, filling whatever each band's budget has left
+    after the pinned count is subtracted — except for the RESERVED_BY_REUSE
+    slots at the front, which this level's own words claim outright."""
+    bands = {slug: info["source"] for slug, info in corpus.items()
+              if info["source"] in LEVELS}
+    bands.update(PINNED_DERIVED)
+    remaining = {slug: info for slug, info in corpus.items()
+                 if slug not in bands}
     reuse_by_level = {}
     encounter_by_level = {}
     for level in LEVELS:
-        size = BAND_SIZES[level]
+        authored = sum(1 for s in bands if bands[s] == level)
+        size = BAND_SIZES[level] - authored
+        if size < 0:
+            raise SystemExit(
+                f"band {level} has {authored} authored kanji, over its "
+                f"{BAND_SIZES[level]}-kanji budget"
+            )
         chars = {info["char"]: slug for slug, info in remaining.items()}
         if level in VOCAB_LEVELS:
             reuse, first = reuse_and_encounter(set(chars), words[level])
-            ranked = sorted(
-                remaining,
-                key=lambda s: (
-                    -reuse[remaining[s]["char"]],
-                    remaining[s]["grade"] or 99,
-                    remaining[s]["freq"] or 99999,
-                    remaining[s]["char"],
-                ),
-            )
+            reserved = reserved_by_reuse(level, remaining, reuse)
+            ranked = reserved + [
+                s
+                for s in sorted(
+                    remaining,
+                    key=lambda s: (
+                        jlpt_rank(remaining[s]),
+                        0 if (remaining[s]["grade"] or 99) <= SIMPLE_GRADE else 1,
+                        -reuse[remaining[s]["char"]],
+                        remaining[s]["grade"] or 99,
+                        remaining[s]["freq"] or 99999,
+                        remaining[s]["char"],
+                    ),
+                )
+                if s not in reserved
+            ]
         else:
             # No words at this level yet, so nothing to rank reuse on. Frequency
             # rank is the honest fallback: the order a reader meets them in.
@@ -164,6 +291,7 @@ def assign_bands(corpus, words):
             ranked = sorted(
                 remaining,
                 key=lambda s: (
+                    jlpt_rank(remaining[s]),
                     remaining[s]["freq"] or 99999,
                     remaining[s]["grade"] or 99,
                     remaining[s]["char"],
@@ -172,7 +300,8 @@ def assign_bands(corpus, words):
         taken = ranked[:size]
         if len(taken) < size:
             raise SystemExit(
-                f"band {level} wants {size} kanji, only {len(taken)} left in the corpus"
+                f"band {level} wants {size} derived kanji, only {len(taken)} "
+                f"left in the corpus"
             )
         for slug in taken:
             bands[slug] = level
@@ -183,6 +312,14 @@ def assign_bands(corpus, words):
         }
     if remaining:
         raise SystemExit(f"{len(remaining)} kanji fit no band; BAND_SIZES is short")
+    for slug, level in PINNED_DERIVED.items():
+        # Never entered the ranking loop, so kanji_sort_orders below would
+        # otherwise sort it last (no first-encounter data) instead of at the
+        # position its own pinning was meant to fix.
+        char = corpus[slug]["char"]
+        _, first = reuse_and_encounter({char}, words[level])
+        if char in first:
+            encounter_by_level[level][slug] = first[char]
     return bands, reuse_by_level, encounter_by_level
 
 
@@ -219,7 +356,12 @@ def kanji_sort_orders(corpus, bands, encounter_by_level):
     return order
 
 
-def load_radicals(skeleton):
+def load_decomposition():
+    """The KanjiVG decomposition: its radical inventory and its kanji map."""
+    return load(os.path.join(BUILD_DIR, "decomposition.json"))
+
+
+def load_radicals(decomposition):
     """{slug: {form, meaning, source, order, prose, art}}.
 
     `prose` is a mnemonic from either the dataset or the sidecar; `art` is the
@@ -235,7 +377,7 @@ def load_radicals(skeleton):
 
     radicals = {}
     for source, entries in (("n5", N5_RADICALS), ("n4", N4_RADICALS), ("k", None)):
-        entries = skeleton["radicals"] if entries is None else entries
+        entries = decomposition["radicals"] if entries is None else entries
         written = sidecar(source)
         for i, r in enumerate(entries, start=1):
             radicals[r["slug"]] = {
@@ -250,19 +392,21 @@ def load_radicals(skeleton):
     return radicals
 
 
-def decomposition(skeleton):
+def decomposition(decomposition_data, corpus):
     """{radical slug: [kanji slug]} over the whole corpus.
 
-    Three sources, one shape: the two curated N5/N4 maps in `generate_deps.py`,
-    keyed by kanji suffix, and the derived map in `skeleton.json`, already keyed
-    by slug."""
+    One source since the KanjiVG switch. `decomposition.json` is keyed by kanji
+    *form*, so the corpus supplies the form -> slug join."""
+    by_form = {r["form"]: r["slug"] for r in decomposition_data["radicals"]}
+    from n4_radicals import N4_RADICALS
+    from n5_radicals import N5_RADICALS
+    for r in list(N5_RADICALS) + list(N4_RADICALS):
+        by_form.setdefault(r["form"], r["slug"])
+
     edges = defaultdict(list)
-    for source, curated in (("n5", N5_DECOMPOSITION), ("n4", N4_DECOMPOSITION)):
-        for rad_slug, suffixes in curated.items():
-            for suffix in suffixes:
-                edges[rad_slug].append(f"{source}-{suffix}")
-    for rad_slug, kanji_slugs in skeleton["decomposition"].items():
-        edges[rad_slug].extend(kanji_slugs)
+    for kanji_slug, info in corpus.items():
+        for form in decomposition_data["decomposition"].get(info["char"], ()):
+            edges[by_form[form]].append(kanji_slug)
     return edges
 
 
@@ -400,8 +544,9 @@ def main():
     bands, reuse_by_level, encounter_by_level = assign_bands(corpus, words)
     kanji_order = kanji_sort_orders(corpus, bands, encounter_by_level)
 
-    radicals = load_radicals(skeleton)
-    edges = decomposition(skeleton)
+    decomposition_data = load_decomposition()
+    radicals = load_radicals(decomposition_data)
+    edges = decomposition(decomposition_data, corpus)
     radical_levels, radical_order, radical_first = radical_bands(
         radicals, edges, bands, kanji_order
     )

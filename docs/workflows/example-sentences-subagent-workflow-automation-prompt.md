@@ -40,7 +40,7 @@ Model notes
 
 Batch size (how many slugs this run processes; used as BATCH_LIMIT in Step 1):
 
-<batch-size = 30>
+<batch-size = 20>
 
 This run processes up to <batch-size> slugs. A text-only subagent is far lighter
 than the browser lane (no screenshots), but strong reasoning models still cost

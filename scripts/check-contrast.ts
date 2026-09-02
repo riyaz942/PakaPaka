@@ -253,6 +253,18 @@ export function contrastPairManifest(): ContrastPair[] {
       }
     }
 
+    // The <reading> highlight in a mnemonic: bold prose on a plain surface, so
+    // it is held to the same normal-text bar as the `-deep` steps above.
+    for (const bg of surfaceTokens) {
+      pairs.push({
+        name: `mnemonic-reading highlight on ${bg}`,
+        foreground: 'mnemonic-reading',
+        background: bg,
+        textClass: 'normal-text',
+        theme,
+      });
+    }
+
     for (const bg of surfaceTokens) {
       pairs.push({
         name: `goal ring arc on ${bg}`,

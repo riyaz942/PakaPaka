@@ -555,16 +555,25 @@ Repair Procedure
      unless an error asks for one.
    - A "too short" error means the story lacks substance — add scene, not filler
      clauses. A "too long" error means cut, not compress into one dense sentence;
-     targets are roughly radical ~150–300, meaning ~180–330, reading ~150–280.
+     targets are roughly radical ~150–300, kanji meaning ~70–170 (one sentence),
+     kanji reading ~90–200 (one sentence, or two short ones), vocab reading
+     ~150–280.
    - A "never wraps it in <radical>…" or "does not highlight the reading" error
      means the words are there but untagged — add the tags around the words the
      story already uses, do not rewrite the story. Highlight tags: each taught
      component's meaning is wrapped where the story uses it — `<radical>` in a
      kanji meaning mnemonic, `<kanji>` in a vocab one — and the reading kana plus
      the English phonetic hook are wrapped in `<reading>` in the reading mnemonic.
-     A radical borrows nothing, so its `mnemonic_text` wraps its own meaning — the
-     word the picture resolves to — in `<radical>`. One kind of tag per field,
-     every tag closed, none nested, and none in a description.
+     A kanji mnemonic also wraps the kanji's own taught meaning in `<kanji>`,
+     once, in **both** its meaning and its reading mnemonic. A radical borrows
+     nothing, so its `mnemonic_text` wraps its own meaning — the word the picture
+     resolves to — in `<radical>`. `<radical>` never appears in a reading
+     mnemonic, every tag closed, none nested, and none in a description.
+   - A "never says what this kanji means" error on a kanji `reading_mnemonic` is
+     the Rev 9 rule: the sound and the meaning have to be the same joke. Name the
+     kanji's taught meaning in the sentence, wrap it in `<kanji>`, and make the
+     phonetic hook and that meaning explain each other — do not bolt "…and that
+     is why it means X" onto the end of the existing scene.
    - A "description is omitted, but this item has reviewed look-alikes" error is
      the one case where you *add* a key. Add only the description; leave the
      mnemonic(s) exactly as they are.
@@ -572,7 +581,8 @@ Repair Procedure
      in the prompt's "Taught decomposition" section, and must not name any
      component that is not listed there.
    - For kanji: the reading_mnemonic must contain the target reading kana shown in
-     the prompt, verbatim, inside a `<reading>` tag.
+     the prompt, verbatim, inside a `<reading>` tag, and this kanji's taught
+     meaning inside a `<kanji>` tag, in at most two sentences.
    - For vocab: the meaning_mnemonic must reference every kanji listed in the
      prompt's "The kanji in this word" section; the reading_mnemonic must contain
      the word's reading verbatim and must follow the prompt's "The reading"

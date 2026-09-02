@@ -382,3 +382,21 @@ Contrast figures below are WCAG 2.1 ratios; the gate is `npm run check-contrast`
 All 11 faces the app actually sets ship bundled, as offline-first requires: Plus Jakarta Sans 400/500/600/700/800, Noto Sans JP 400/500/700/900, Zen Kaku Gothic New 500/700. That is **~26 MB** of the binary — Plus Jakarta Sans is 96 KB/weight, but Noto Sans JP runs 5.2 MB/weight and Zen Kaku Gothic New 2.3 MB/weight. The spec lists a 900 for the hero face; it draws nothing at that weight, so it is not bundled.
 
 **Decision (2026-08-02): accepted, no trimming.** Later sessions should use any weight in this list freely rather than working around the size. Subsetting the JP faces to the curriculum's character set would recover roughly 90% of it via a build step (fonttools/pyftsubset in the curriculum pipeline) — worth revisiting only if store limits force it, not as a design constraint.
+
+### Post-v2 palette additions
+
+**`mnemonic-reading` (2026-09-02).** A mnemonic marks three different ideas —
+the borrowed component (`<radical>`), the item's own meaning (`<kanji>`) and the
+sound (`<reading>`) — and the third had no colour of its own: `AnnotatedText`
+gave a `<reading>` span the *item's* accent, so on a kanji the sound and the
+meaning both rendered `content-kanji` pink. That is the one place the learner is
+being asked to tell those two apart. The token takes the gold family
+(light `#8F5F16`, dark `#EAC489` — the `content-grammar-deep` steps), which is
+free inside a mnemonic because grammar never appears in one: 5.06:1 light,
+10.65:1 dark on `background`. It is a single step, not a base/soft/deep triple,
+because the highlight is bold text on a plain surface and nothing fills behind
+it. `AnnotatedText` lost its `itemType` prop with this change — every tag now
+has one fixed colour wherever the prose appears. The curriculum studio's
+`.mnemonic-tag--*` rules (`web/src/theme.css`) hold the dark-scheme values of all
+three so a reviewer proofs the prose in the colours the learner sees; they are
+duplicated by hand and have to be kept in step with `global.css`.

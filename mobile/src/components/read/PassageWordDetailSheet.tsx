@@ -91,7 +91,6 @@ export function PassageWordDetailSheet({
             {item.mnemonicText ? (
               <AnnotatedText
                 text={item.mnemonicText}
-                itemType={item.itemType}
                 className="text-body text-secondary"
               />
             ) : null}

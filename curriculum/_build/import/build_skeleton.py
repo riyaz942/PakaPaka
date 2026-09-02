@@ -12,10 +12,11 @@ No mnemonics, no examples and no art — a mnemonic is owed when a learner
 
 **This file assigns no levels.** Under plan v1 it did: the old-JLPT tag picked
 n3/n2/n1 and the slug carried that prefix. v2 makes the level a *band* — a
-teaching budget ranked by how many of a level's own words each kanji unlocks —
-so `reports/kanji_bands.py` owns level assignment and every kanji here is
-level-free. Slugs are prefixed `k-` for the same reason: a slug that named a
-level would be a second, stale label for the one the band already carries.
+teaching budget — so `reports/kanji_bands.py` owns level assignment and every
+kanji here is level-free. Slugs are prefixed `k-` for the same reason: a slug
+that named a level would be a second, stale label for the one the band already
+carries. The old-JLPT tag survives as the `jlpt` field: a rank input the band
+sorts on, not a level it copies.
 
 Corpus selection, in priority order:
   1. every kanji a shipped N5/N4 word is written with — dropping one would
@@ -23,7 +24,7 @@ Corpus selection, in priority order:
   2. the most frequent jōyō kanji, by KANJIDIC2 frequency rank, until 2,000.
 
 Sources (EDRDG, CC BY-SA 4.0; see repo-root NOTICE):
-  - KANJIDIC2 — meanings, on'/kun'yomi, grade and frequency rank
+  - KANJIDIC2 — meanings, on'/kun'yomi, old-JLPT level, grade and frequency rank
   - KRADFILE  — the component decomposition behind radical -> kanji edges
 
 The output is checked in, so a graph rebuild never needs the source archives.
@@ -311,10 +312,12 @@ def build_kanji_entries(corpus, authored, uses, kanjidic):
                 "onyomi": kd["onyomi"][0] if kd["onyomi"] else "",
                 "kunyomi": clean_kunyomi(kd["kunyomi"][0]) if kd["kunyomi"] else "",
                 "extra_meanings": extras,
-                # Band inputs. `unblocks` is reuse across shipped words; `grade`
-                # and `freq` are the tie-breaks for the levels that have no
-                # vocabulary of their own yet.
+                # Band inputs. `jlpt` is the old-JLPT level KANJIDIC2 tags
+                # (4 = easiest), which `reports/kanji_bands.py` ranks on first;
+                # `unblocks` is reuse across shipped words; `grade` and `freq`
+                # are the tie-breaks below it.
                 "unblocks": len(uses.get(char, [])),
+                "jlpt": int(kd["jlpt"]) if kd.get("jlpt") else None,
                 "grade": int(kd["grade"]) if kd.get("grade") else None,
                 "freq": int(kd["freq"]) if kd.get("freq") else None,
             }

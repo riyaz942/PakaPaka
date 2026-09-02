@@ -1,56 +1,53 @@
 {
   "n5-aka": {
-    "meaning_mnemonic": "Picture the ground cracking open on the mountain trail, and underneath it the Earth is glowing — lit from below by a fire you can't see. That heat pushes up through the soil until the whole hillside burns a deep, angry <radical>red</radical>. Earth glowing under a fire: red.",
-    "reading_mnemonic": "The guy who lit that underground fire is Seki, and he's coughing his lungs out from the smoke — a wet, rattling <reading>せき</reading> that won't stop as long as the red embers keep burning. Every time he sees red he starts up again: せき, せき, せき.",
-    "description": "Means \"red\"; a common color kanji that shows up in words for the color itself and things like traffic lights.",
+    "meaning_mnemonic": "This one comes free, because the <radical>red</radical> radical and the <kanji>red</kanji> kanji are the same character in shape and in meaning.",
+    "reading_mnemonic": "The sunburned sprinter finally reaches the riverbank and drops the water <reading>sack</reading> she dragged the whole way, her face still glowing furious red. She's far too parched to speak, so when you ask her name, all that scrapes out is a dry <reading>せき</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ame-rain": {
-    "meaning_mnemonic": "Look through the window frame and watch the drops falling inside it, one after another down the glass. Those little drops caught in the frame are all you need to picture. Drops falling inside a window frame: <radical>rain</radical>.",
-    "reading_mnemonic": "A cow gets caught outside in the downpour and lets out a long, miserable \"<reading>う</reading>ー\" as the drops soak her. Every time it rains, that cow's soggy うー is the sound you hear.",
-    "description": "Means \"rain\"; the base kanji for weather words and it sits on top of many other weather-related characters as a component.",
+    "meaning_mnemonic": "You already know this one, since the <radical>rain</radical> radical you learned and the <kanji>rain</kanji> kanji are the same character down to the last dash.",
+    "reading_mnemonic": "You're pressed to the shrine window watching the rain streak down the glass, and a puddle of it starts to <reading>ooze</reading> under the door across your socks. Grandma Kane's cats line up and stare at the growing puddle, and every one of them lets out the same low, damp <reading>う</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ao": {
-    "meaning_mnemonic": "Picture a tiny sprout pushing up over the <radical>moon</radical>. It's young, fresh, and glowing that impossible color between <radical>blue</radical> and green — the shade of new leaves at dusk. That youthful sprout-over-moon is blue-green.",
-    "reading_mnemonic": "Sei, the star student, holds up a jar of blue-green ink and says the color is called 「<reading>せい</reading>」 — of course she knew it first. She's already dipping her perfect brush in before anyone else can answer.",
-    "description": "Means blue or green (the fresh blue-green range); shows up in color words and in compounds about youth and freshness.",
+    "meaning_mnemonic": "Hold a fresh green <radical>sprout</radical> up against the <radical>moon</radical> and its leaves go the same eerie colour as the moonlit sky, the one shade Japanese calls both <kanji>blue / green</kanji>.",
+    "reading_mnemonic": "After dark on the school sports field, <reading>Sei</reading> holds a sprout up to the moon and lectures you on how its leaves and the sky are one colour. You never asked. That smug little speech, delivered to nobody, is so completely <reading>せい</reading> that the name sticks to the colour for good.",
+    "description": "Japanese long treated blue and green as one colour, and 青 still spans both. A green traffic light is called 青, and unripe fruit or a raw beginner are 青 too. A separate word for green exists now, but 青 keeps the older, wider range.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-ashi": {
-    "meaning_mnemonic": "Picture a <radical>mouth</radical> perched on top of a pair of <radical>stopping</radical> legs — the legs have skidded to a halt, and the mouth is barking orders down at them. Those legs end in one thing: a <radical>foot</radical>. That mouth-over-stopping-legs shape is your foot, your leg, the thing you plant when you've had just enough.",
+    "meaning_mnemonic": "A <radical>mouth</radical> sits on top of a pair of legs. The legs have skidded to a halt — they are <radical>stopping</radical> hard. They end in one part: a <radical>foot</radical>. That's your <kanji>foot</kanji>, your leg, plenty to stand on.",
     "reading_mnemonic": "On the mountain trail, a hiker named Sok is nursing a blister on her foot. Every painful step she counts out loud, 「<reading>そく</reading>、そく、そく」, until she finally reaches the vending machine at the top and decides that's enough walking for one day.",
     "description": "Means foot, leg, or to suffice/be enough; shows up in words for body parts and in verbs about having sufficient amounts.",
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-atarashii": {
-    "meaning_mnemonic": "The <radical>spicy</radical> man hauls his pepper skewer into the showroom, eyes streaming, swearing the sauce is mild. Behind him a <radical>tree</radical> sits on the plinth, dug up roots and all, sap still wet where the <radical>axe</radical> took the branch off this morning — the blade is still buried in the chopping block by the door. The attendant <radical>standing</radical> beside it throws both arms out so nobody touches anything. Just cut, just felled, just unwrapped: everything in here is new.",
-    "reading_mnemonic": "The showroom greeter is Shin, and every time a new model rolls in he shouts his own name — <reading>しん</reading>! — as he yanks the cover off. Whatever Shin unveils is always brand new.",
-    "description": "Means \"new\"; a very common kanji appearing in words for new things, newspapers, and freshness.",
+    "meaning_mnemonic": "Take an <radical>axe</radical> to a <radical>tree</radical> that is still <radical>stand</radical>ing and the pale wood you lay bare underneath is perfectly <kanji>new</kanji>.",
+    "reading_mnemonic": "<reading>Shin</reading> the carpenter sniffs every plank, barks 「<reading>しん</reading>」 at the ones that still smell of sap, and tosses out anything that is not bright and <kanji>new</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-bun-minute": {
-    "meaning_mnemonic": "The woodcutter prises the chipped <radical>sword</radical> out of its frozen rice cake, wipes it down, and hands it one shot at redemption: a log. It comes down clean, and the two halves lean away from each other in a fresh <radical>eight</radical>. One minute, one log, two parts, and the sword finally understands what it is for.",
+    "meaning_mnemonic": "The woodcutter prises a chipped <radical>sword</radical> out of its frozen rice cake and wipes it clean. She gives it one job: split a log. It comes down clean, and the two halves lean apart into a fresh <radical>eight</radical>. One <kanji>minute</kanji>, one cut, and the sword finally earns its keep.",
     "reading_mnemonic": "The woodcutter, sawdust in her eyebrows, times herself at one log a minute and calls it the most <reading>fun</reading> you can have before breakfast. The sword, back in her hands and still chipped, snorts <reading>ふん</reading> — it was the one doing all the work.",
     "_meta": {
       "generator_model": "opus-5",
@@ -59,56 +56,55 @@
     }
   },
   "n5-chikara": {
-    "meaning_mnemonic": "Look at this single stroke and picture a bent arm flexing hard — the elbow cocked, the muscle bulging. That one flexed arm is all you need to see: it's pure <radical>power</radical>.",
-    "reading_mnemonic": "A weightlifter named Rio steps up to the bar and gives a warrior's yell as she flexes: \"<reading>りょく</reading>!\" The whole gym feels the raw strength in that shout.",
-    "description": "力 and 九 are both two strokes with a hook, and the hooks point opposite ways. 力 starts with a flat horizontal that turns down and hooks to the left, with a slash cutting through it. 九 starts with a short slash, then a stroke that curves right and flicks upward.",
+    "meaning_mnemonic": "The <radical>power</radical> radical and the <kanji>power</kanji> kanji are the same character, and strength is just that same power once you can feel it straining in your muscles.",
+    "reading_mnemonic": "Halfway up the mountain trail, a weightlifter decides the vending machine at the top is a better workout than the climb. She wraps both arms around it, heaves it up, and roars <reading>りょく</reading> as if the mountain had tried to <reading>rock</reading> her loose. It still drops one cold can when she sets it down.",
+    "description": "The one to watch is 九, 'nine'. In 力 the long stroke drops straight down the right side and ends in a small hook curling to the left. In 九 that stroke swings out wide to the right and finishes with a hook low on the right, and its first stroke pokes out past the top-left corner.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-dai-big": {
-    "meaning_mnemonic": "Picture a person standing with their arms flung out and their legs spread as wide as they can go, straining to show you just how huge the fish they caught was. That whole stretched-out stick figure is this character. When someone stands like that, they're always telling you one thing: it was big.",
-    "reading_mnemonic": "The person is stretching so wide because they're measuring Dai, the giant baby, who is the size of a truck. You gasp <reading>だい</reading> as he cries an earthquake and you realize nothing has ever been this big.",
-    "description": "All four share the same spread-armed figure. 大 is the bare shape. 太 adds a dot underneath, 犬 adds a dot at the top right, and 天 caps it with an extra horizontal above the arms. If nothing has been added, it is 大.",
+    "meaning_mnemonic": "Here is one that costs you nothing, since the <radical>big</radical> radical, arms and legs flung wide, is already the finished <kanji>big</kanji> kanji.",
+    "reading_mnemonic": "Dai, the giant baby, is truck-sized, and his crying registers as real earthquakes. When the mountain-trail vending machine takes his coin and drops nothing, he lets out one <reading>だい</reading> bellow you feel in your chest three switchbacks down. Hikers now call any tremor on that path a <reading>Dai</reading>.",
+    "description": "The look-alikes are 太 (thick), 天 (heaven), and 犬 (dog). All four are the same wide-armed figure with splayed legs. 大 has nothing added. 太 adds one short dot low between the legs. 天 lays a long flat stroke across the very top, above the arms. That top stroke is longer than the arm stroke. 犬 adds one small dot high on the right, near the arm. Any extra mark means it is not 大.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-denki-den": {
-    "meaning_mnemonic": "The <radical>rain</radical> is hammering your window, four dashes frozen mid-fall on the glass, and out beyond it the farmer's flooded <radical>rice field</radical> lies there like a giant square battery, the dirt paths chopping it into four bright plots. A bolt splits the sky, hits the water, and every plot lights up at once — the whole grid crackling with electricity.",
-    "reading_mnemonic": "The lightning hits a power line and the whole street goes DEN — <reading>でん</reading> — every fluorescent tube in Koichi's konbini surging bright at once. You feel that でん in your teeth as the electricity floods back.",
-    "description": "Means \"electricity\"; shows up in everyday words for trains, phones, lights, and anything electrical.",
+    "meaning_mnemonic": "<kanji>Electricity</kanji> is nothing but the <radical>lightning</radical> of a <radical>rain</radical> storm, caught and forced to run quietly through your walls instead of splitting the sky.",
+    "reading_mnemonic": "The rain storm is still going when the power cuts out, leaving you in your <reading>den</reading> with one flickering lamp. Each flash outside jolts the lamp bright for a heartbeat, then it fails again. You count the flashes aloud, and every number comes out as the same buzzing <reading>でん</reading>.",
+    "description": "電 almost never stands on its own; it lives inside compounds. It usually carries the sense of electricity, but by extension it also shortens words for an electric train and for the telephone.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-deru": {
-    "meaning_mnemonic": "Look closely and you see one <radical>mountain</radical> stacked right on top of another mountain — two sets of three peaks piled up. When the peaks get that tall, there's only one thing you want to do: get out and leave. So this doubled-up mountain means exit, leave.",
-    "reading_mnemonic": "At the exit of the mountain trail stands a hiker who sneezes so hard every time someone leaves — a huge \"<reading>しゅつ</reading>!\" — that the whole vending machine rattles. Every time you head for the exit, you hear that \"しゅつ\" behind you.",
-    "description": "Means exit or leave; shows up in everyday words about going out, leaving, and departures.",
+    "meaning_mnemonic": "To <kanji>exit</kanji> a lidless <radical>open box</radical>, you have to stack loose rocks into a <radical>mountain</radical> and climb out over its top.",
+    "reading_mnemonic": "A hiker hides from a downpour inside the delivery chute of the vending machine on the mountain trail, and the flap clicks locked behind her. She jams both boots on the walls, shoves hard, and with a <reading>しゅつ</reading> she <reading>shoots</reading> out onto the wet gravel. For a week she cannot leave any room without bracing first.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-do-earth": {
-    "meaning_mnemonic": "Picture a simple cross being pushed straight down into the ground, staking out a plot of dirt. The moment its base sinks in, the loose brown stuff piles up around it. That cross pressed into the ground is <radical>earth</radical>, plain soil.",
-    "reading_mnemonic": "A gardener drops to his knees in the plot and starts digging with his bare hands, going \"do, do, do\" (<reading>ど</reading>) as he flings soil over his shoulder. Every heavy handful he tosses out lands with that same low ど grunt.",
+    "meaning_mnemonic": "You met this shape already as the <radical>earth</radical> radical, and the <kanji>earth</kanji> kanji is the very same character, used just as happily for the loose soil that earth breaks down into.",
+    "reading_mnemonic": "A gardener lugs a sack of soil over to mark out her new patch of earth, loses her grip near the fence, and it drops with a deep <reading>ど</reading>. The sack splits like a giant ball of <reading>dough</reading> and buries her boots in soil.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-dokusho": {
-    "meaning_mnemonic": "On the left the <radical>speech</radical> is doing its usual thing, sentence after sentence stacking out of that little mouth. On the right the armoured <radical>samurai</radical> duck has climbed down off the garden wall onto a pair of sturdy <radical>human legs</radical>, a blanket <radical>cover</radical> pulled snug over his shoulders against the draught. He isn't listening to a word of it — his eyes run down the stacked lines, top to bottom, silently. That is not hearing speech. That is reading it.",
+    "meaning_mnemonic": "Somebody has to <radical>sell</radical> you the <radical>words</radical> before you can sit down anywhere and <kanji>read</kanji> them.",
     "reading_mnemonic": "The reader you find hunched over those lines of speech is a poison-pen critic, and you nickname her Doku (<reading>どく</reading>) because every review she reads she then tears apart. Watch her read a page and you can practically see the どく venom drip off her pen.",
     "_meta": {
       "generator_model": "claude-opus-5",
@@ -117,37 +113,35 @@
     }
   },
   "n5-eki-station": {
-    "meaning_mnemonic": "You're waiting on a platform when a galloping <radical>horse</radical>, mane flowing and all four legs pounding, thunders straight past you and onto the tracks. It has to hurdle the <radical>body</radical> sprawled across the end of the bench, the same commuter who faceplanted hours ago and has refused to get up since. The conductor sighs — every day here, horses on the rails and sleepers on the benches. Where else but the station?",
-    "reading_mnemonic": "A commuter named Eki misses the last train and shouts \"<reading>えき</reading>! えき!\" across the empty platform, hoping the station master will hear her and hold the doors.",
-    "description": "Means \"station\" — the word for a train or subway station, seen constantly in place names and on transit signs.",
+    "meaning_mnemonic": "A <kanji>station</kanji> is where a tired <radical>horse</radical> is swapped for a fresh one, set down every <radical>ruler</radical>-length along the road.",
+    "reading_mnemonic": "The old horse-swap post on the line is a train station now, and its dome is built so the smallest sound comes straight back doubled. The stationmaster murmurs the stop's name once and it <reading>echo</reading>es down the platform as <reading>えき</reading>, loud enough that passengers dozing on the benches sit bolt upright.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-en": {
-    "meaning_mnemonic": "Look at this character straight on: it's a rounded <radical>box</radical>, a coin flattened into a frame. Picture a single shiny coin held tight inside a square window, so perfectly round it's almost a circle. That coin is a yen, and its round shape is the circle.",
-    "reading_mnemonic": "At Koichi's konbini the beeping till spits out change, and a friend named En scoops up every round coin, grinning \"these <reading>えん</reading> are mine.\" Every time you hear the till beep, picture En pocketing えん.",
-    "description": "Means yen (Japan's currency) and also circle or round; shows up on money, prices, and words for round shapes.",
+    "meaning_mnemonic": "A <radical>stick</radical> pinned at one end to the <radical>ground</radical> and swung all the way around the inside of a <radical>wide box</radical> scratches out the round coin you spend as one <kanji>yen</kanji>.",
+    "reading_mnemonic": "At Grandma Kane's shrine a young monk called <reading>Zen</reading> keeps trying to paint one flawless circle in a single brushstroke. Every time a shrine cat pads across the wet paper he mutters <reading>えん</reading> and reaches for a clean sheet, and by dusk the mossy steps are tiled with lopsided rings.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-furui": {
-    "meaning_mnemonic": "Above the <radical>mouth</radical> balances a little <radical>cross</radical> of stacked crossbars, like the beams of a house that's been standing for centuries. Every mouth that has passed through here has told the same worn-out story, over and over. A mouth held up by ancient timber can only mean one thing: old.",
+    "meaning_mnemonic": "A <radical>mouth</radical> counts slowly to <radical>ten</radical> every single morning. It has counted so many mornings that the counting itself feels ancient. Something repeated this many times can only be <kanji>old</kanji>.",
     "reading_mnemonic": "Koichi finds an ancient rice ball at the very back of his konbini shelf, so far past its date the wrapper has yellowed. He picks it up, sighs, and mutters just one syllable at how old it is: 「<reading>こ</reading>」.",
     "description": "Means \"old,\" as in old and worn from age; appears in words about age and antiquity and in the common word for \"used/secondhand.\"",
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-gaku": {
-    "meaning_mnemonic": "Picture a swaddled <radical>child</radical>, arms out, parked under a low <radical>cover</radical> of scribbled notes and diagrams, tucked in at the edges the way that blanket drapes over a sleeping cat. Nothing gets out from under it but the sound of pencil scratching. A child kept all day beneath a canopy of lessons is study and learning.",
+    "meaning_mnemonic": "A <radical>small</radical> <radical>child</radical> under a <radical>cover</radical> with nothing to do but turn pages is going to <kanji>study</kanji>.",
     "reading_mnemonic": "At the school, the star pupil Gaku is the one who never stops studying, and everyone in the echoing hallways calls out <reading>がく</reading> whenever they need the answer. Hear がく and you hear the kid who lives to learn.",
     "description": "Means study or learning; a very common kanji that shows up in words for student, school, and academic subjects.",
     "_meta": {
@@ -157,18 +151,17 @@
     }
   },
   "n5-gatsu": {
-    "meaning_mnemonic": "Look up on a clear night and there it is: a thin crescent hanging in the dark, the <radical>moon</radical>. Watch that crescent fatten, fade, and swing back around, and you've just watched one whole month go by. This character is that crescent — so it means moon, and it means month.",
-    "reading_mnemonic": "A gecko has claimed the moon as its own, scuttling across the crescent every night. Whenever it does, you hear its little feet go <reading>げつ</reading>, げつ against the pale surface. That gecko-on-the-moon sound is how you remember げつ.",
-    "description": "Means moon or month; a common kanji that shows up in dates, days of the week (Monday), and countless month-related words.",
+    "meaning_mnemonic": "The <radical>moon</radical> radical and the <kanji>month</kanji> kanji are the same character, which makes sense once you remember a month is just one lap of the moon.",
+    "reading_mnemonic": "Once a month the night janitor at Sei's school, a man called <reading>Getz</reading>, mops the echoing hallway by the light of the full moon. The moonlight through the tall windows lights up every streak he missed, so he groans <reading>げつ</reading> and mops the whole floor over again.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-go-language": {
-    "meaning_mnemonic": "On the left, <radical>words/speech</radical> is already pouring out — a <radical>mouth</radical> releasing stacked lines of speech. On the right, another open mouth joins in, adding its own noise. When mouths keep stacking speech on top of speech like this, what you get is a whole language, packed with word after word.",
-    "reading_mnemonic": "Behind the beeping till at Koichi's konbini, a chatty regular named Go won't stop talking — every single language pours out of him at once, and the only word you catch is his own name, <reading>ご</reading>, ご, ご.",
+    "meaning_mnemonic": "A waterfall of <radical>speech</radical> pours down into a waiting <radical>mouth</radical> below. The mouth swallows every word whole without chewing once. Stuffed with so many words, it finally speaks a whole <kanji>language</kanji>.",
+    "reading_mnemonic": "Behind the beeping till at Koichi's konbini, a chatty regular named Go won't stop talking. Every single language pours out of him at once, and the only word you catch is his own name: <reading>ご</reading>, ご, ご.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
       "prompt_version": "4",
@@ -176,47 +169,45 @@
     }
   },
   "n5-go": {
-    "meaning_mnemonic": "Look at this character and picture a hook or a hand reaching sideways to snag things off a shelf. Now imagine you're grabbing snacks that way — one, two, three, four, and with that last crooked pull you land your fifth. That little hooked shape is you catching five things in one swipe.",
-    "reading_mnemonic": "The kid counting up his catch is Go, and once he hits five he throws his hands up and yells \"<reading>ご</reading>!\" like it's the winning number. Every time he lands a fifth thing, out comes that triumphant ご.",
-    "description": "The kanji for five, the number 5, seen everywhere from prices and dates to counting and phone numbers.",
+    "meaning_mnemonic": "You already met <radical>five</radical> as a radical, and the <kanji>five</kanji> kanji is that same shape with nothing added.",
+    "reading_mnemonic": "Five runners crouch in the blocks on Sei's school sports field. The starter means to shout the English word <reading>go</reading>, but it keeps coming out as <reading>ご</reading>. On the fifth flat little <reading>ご</reading>, all five of them finally sprint.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hachi": {
-    "meaning_mnemonic": "Look at those two strokes leaning away from each other, spreading apart at the bottom like legs mid-stride. They're <radical>splitting</radical>, opening wider and wider — and the wider they split, the bigger the number gets. That spread lands you on eight.",
-    "reading_mnemonic": "A honeybee — a <reading>はち</reading> in Japanese — drifts down to the onigiri shelf in Koichi's konbini and lands on exactly eight of them, one after another. You count the buzzing little はち as it goes: eight stops, eight onigiri.",
-    "description": "The same two falling strokes, arranged three ways. 八 leaves a clear gap at the top with both strokes leaning apart. 人 joins them into one peak. 入 tucks the short stroke under the long one so the top overhangs.",
+    "meaning_mnemonic": "There is no work to do on this one, since the radical <radical>eight</radical> and the <kanji>eight</kanji> kanji are one and the same character.",
+    "reading_mnemonic": "Koichi pulls a fresh <reading>batch</reading> of steamed buns from the warmer, eight of them, and lines them along the tray by the till. He taps each bun as he counts, and the tray tips when he reaches the eighth and says <reading>はち</reading>. Eight buns, and <reading>はち</reading> is the one that rolls onto the floor.",
+    "description": "The look-alikes are 入 (enter) and 人 (person). In 人 the two strokes join in a sharp peak at the top. In 入 they meet near the top too, but the right stroke pokes up past the join. In 八 the strokes never touch, leaving an open gap at the top.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hairu": {
-    "meaning_mnemonic": "Watch the shape closely: it's a little figure ducking their head as they pass under a low doorway. You lean, you dip, you step through — and just like that, you <radical>enter</radical>.",
-    "reading_mnemonic": "The figure ducking through the door is a new student, and as they enter the echoing school hallway everyone whispers \"the new one, <reading>にゅう</reading>, the new one.\" Every time someone new enters, that にゅう ripples down the hall.",
-    "description": "入, 人 and 八 are the same pair of strokes. In 入 the short left stroke begins partway down the long one, leaving a small overhang at the top. 人 meets at a clean point, and 八 never lets the two touch.",
+    "meaning_mnemonic": "The <radical>enter</radical> radical and the <kanji>enter</kanji> kanji are the same character, so this is one you already know if you learned your radicals well.",
+    "reading_mnemonic": "Koichi fits a brand-<reading>new</reading> automatic door at the konbini, and it reads people so eagerly that the moment a customer leans in to enter, it snaps wide and a recorded voice sings <reading>にゅう</reading>. Now a line of schoolkids leans in and back out by the onigiri shelf, setting it off over and over.",
+    "description": "入, 人, and 八 are the same two strokes in three arrangements. In 入 they overlap near the top, so the left stroke pokes out past the join. In 人 they meet at one clean point with nothing sticking up above it. In 八 the two strokes never touch at all, splayed apart with a gap at the top.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hana": {
-    "meaning_mnemonic": "A fresh patch of <radical>grass</radical> is sprouting out of the soil the way it always does, two clumps poking up over one line of dirt — except this morning one clump has gone rogue and shot a tall stem straight up with a wide open bloom on the end, petals spilling over sideways. The rest of the grass sits underneath it looking embarrassed. Grass with a blossom bursting out of the top of it is a flower.",
-    "reading_mnemonic": "Kaa, the fire-breathing crow, lands right in the middle of the flowerbed and lets out a proud 「<reading>か</reading>」, singeing every petal within reach. Now the only flower left standing is the scorched one under her claws.",
-    "description": "Means \"flower\"; a very common everyday kanji seen in words for flowers, plants, and blossoms.",
+    "meaning_mnemonic": "When ordinary <radical>grass</radical> gets tired of being green and <radical>change</radical>s its top into colour, what stands there is a <kanji>flower</kanji>.",
+    "reading_mnemonic": "Kaa the fire-breathing crow lands on the wire above your flowerbed and lets out a scratchy <reading>caw</reading>. A puff of flame slips out with the sound and singes the newest bloom black. He looks down at his work and croaks <reading>か</reading>, thoroughly pleased with himself.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-hanashi-wa": {
-    "meaning_mnemonic": "A <radical>mouth</radical> releasing stacked lines of <radical>speech</radical> leans in close, and right beside it a <radical>tongue</radical> sticks out of a mouth, wagging nonstop. Put the speech next to the busy tongue and you've got someone who just won't stop talking, spinning story after story.",
+    "meaning_mnemonic": "A <radical>mouth</radical> releasing stacked lines of <radical>speech</radical> leans in close, and right beside it a <radical>tongue</radical> sticks out of a mouth, wagging nonstop. Put the speech next to the busy tongue and you've got someone who just won't stop talking, spinning story after <kanji>story</kanji>.",
     "reading_mnemonic": "Wanda the storyteller loves an audience, so she waves both hands and calls out \"<reading>わ</reading>!\" every time she starts a new tale. That little \"わ\" is her signal that another long talk is about to begin.",
     "description": "Means talk or story; shows up in everyday words for speaking, conversation, and telephone.",
     "_meta": {
@@ -226,47 +217,47 @@
     }
   },
   "n5-hantime": {
-    "meaning_mnemonic": "Two matchsticks lie crossed on the counter making that little <radical>ten</radical> mark, and a cleaver comes down straight through the middle of it. What's left is a fat upright with two legs kicked out symmetrically at the top, one left and one right, each side mirroring the other exactly. Ten cut clean down the centre, sliced into two equal parts, is half.",
-    "reading_mnemonic": "Han, the half-and-half chef, holds up a plate where one side is rice and the other is curry, split exactly down the center. \"<reading>はん</reading>!\" he barks, tapping the dividing line — because to Han, half is the only portion worth serving.",
-    "description": "半 and 羊 both sit horizontal bars on a vertical under a split top. Count the bars: 半 has two, 羊 has three. That extra horizontal is the only reliable difference.",
+    "meaning_mnemonic": "A shape with a pair of <radical>horns</radical> above a <radical>cross</radical>, sliced straight down to the <radical>ground</radical>, leaves each side holding exactly one <kanji>half</kanji>.",
+    "reading_mnemonic": "Behind the counter at Koichi's konbini, <reading>Han</reading> the half-and-half chef lifts every onigiri off the shelf and slices it clean down the middle before he will ring it up. Ask him why, and he just holds up the two matching pieces and says his own name, <reading>はん</reading>.",
+    "description": "Keep this apart from 羊, sheep, which lines up three horizontal bars beneath its horns and lets its centre stroke stop at the lowest bar. Half has only two bars, and its centre stroke drives straight through the bottom one and pokes out underneath.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hayai": {
-    "meaning_mnemonic": "Someone has scratched the <radical>ten</radical> mark into the dirt — two matchsticks crossed, the tally you cut when you've counted both hands — and stood it upright like a fencepost. Behind it the <radical>sun</radical>, that window with a bar in it, comes climbing up to start a new <radical>day</radical> and clears the top of the post before you've counted anywhere near ten. It's up hours ahead of your alarm, and now everything you do today has to be fast: early, fast.",
-    "reading_mnemonic": "There's a rooster at Grandma Kane's shrine who crows the moment the sun peeks over the mossy steps, way too early: \"<reading>そう</reading>! そう!\" he screams, so loud the cats scatter. Now you're up before dawn whether you like it or not.",
-    "description": "Means \"early\" or \"fast,\" and shows up in everyday words about time and speed like 早い (early/fast) and 早く (quickly).",
+    "meaning_mnemonic": "It is still <kanji>early</kanji> when the <radical>sun</radical> has climbed only <radical>ten</radical> finger-widths above the hills.",
+    "reading_mnemonic": "A tailor called <reading>Sew</reading> is so set on being <kanji>early</kanji> that she turns up before the shop unlocks and hems the doormat to pass the time, humming <reading>そう</reading> to herself.",
+    "description": "The one kanji covers 'early' in time and 'fast' in pace at once; context, not the character, tells you which sense a sentence means.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hidari": {
-    "meaning_mnemonic": "A badger in a hard hat stands on the level <radical>ground</radical> of the <radical>construction</radical> site while the crane lowers the steel I-beam toward its slot. His right hand is busy holding a sandwich, so he steadies the swinging girder with the other one, arm braced flat and taking the whole weight. That steadying hand is the hand on the left.",
-    "reading_mnemonic": "A samurai marches into Koichi's konbini and slams down a coin with his left hand, barking \"<reading>さ</reading>!\" as he demands the last onigiri. Every time you see this kanji, hear that samurai's sharp さ ringing off the beeping till.",
-    "description": "Means \"left,\" the opposite of right; shows up constantly in directions and in the compound 左右 (left and right).",
+    "meaning_mnemonic": "Your flat <radical>left hand</radical> exists to hold the <radical>construction</radical> girder still while your other hand does the bolting, so <kanji>left</kanji> just means the bracing hand.",
+    "reading_mnemonic": "Sara steadies the construction beam with her left hand, exactly as that hand is built to do, and drives the saw with her right. Every stroke drags a dry <reading>さ</reading> out of the plank, the flat sound of a <reading>saw</reading> in soft pine. She keeps going until the whole site is ankle deep in sawdust.",
+    "description": "The look-alike is 右, meaning right. Both share the flat left-hand stroke across the top; the giveaway sits underneath, where left carries the construction beam and right holds a small closed box instead. In left the horizontal top stroke is the long one, while in right the slanting stroke is longer and the horizontal stays short.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-hidariuma": {
-    "meaning_mnemonic": "Picture the sundial standing on the <radical>ground</radical> — that single flat line is the earth beneath it. A pole rises up from that ground, and right at the top of the day its shadow points straight down at the line, casting no shadow at all. When the shadow vanishes onto the ground like that, you know it's exactly noon.",
-    "reading_mnemonic": "At high noon a golfer named Gordon lines up his shot and yells \"<reading>ご</reading>!\" as he swings, because he can't wait until the sun drops. His voice echoes across the empty midday field: ご, ご, ご.",
-    "description": "All three are bars on a vertical under a slanting flick. 午 has two bars and its vertical stops at the upper one. 牛 also has two, but its vertical pushes up above the top bar. 千 has only one bar.",
+    "meaning_mnemonic": "Held straight overhead at <kanji>noon</kanji>, a bone-<radical>dry</radical> shield throws almost no shadow, just one thin <radical>slash</radical>, because the sun is standing directly above it.",
+    "reading_mnemonic": "At the school sports field, a gopher called <reading>Gordon</reading> only surfaces at noon, when the sun sits straight overhead and not one shadow falls to warn him. The moment the lunch bell blares <reading>ご</reading>, he bolts across the bright grass for the echoing hallways.",
+    "description": "Two kanji crowd the same outline. 千, thousand, carries just one horizontal bar where noon stacks two, and it opens with a short flat tick instead of noon's longer left-falling slash. 牛, cow, is the nearer miss: its centre post pushes up through the top stroke, while noon's vertical stops flush against a slanted top and never breaks above it.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-higashi": {
-    "meaning_mnemonic": "Picture the <radical>sun</radical> rising and getting tangled in the branches of a <radical>tree</radical> on the horizon. You see the sun caught right behind that tree first thing in the morning — and the sun always comes up in the east. Sun plus tree, hung together at dawn: that's east.",
+    "meaning_mnemonic": "Picture the <radical>sun</radical> rising and getting tangled in the branches of a <radical>tree</radical> on the horizon. You see the sun caught right behind that tree first thing in the morning — and the sun always comes up in the east. Sun plus tree, hung together at dawn: that's <kanji>east</kanji>.",
     "reading_mnemonic": "At the top of the mountain trail, a hiker faces the sunrise and lets out a long, tired yawn — a huge \"<reading>とう</reading>\" that echoes down the slope. Every morning she climbs to greet the east with that same sleepy とう.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
@@ -275,27 +266,26 @@
     }
   },
   "n5-hito-jin": {
-    "meaning_mnemonic": "Look at the shape: two legs, mid-stride, walking forward and carrying nothing else along with them. That's the whole picture — a body up top, two legs striding out beneath. Two legs walking forward is a <radical>person</radical>.",
-    "reading_mnemonic": "Jin, the friendly giant, is the biggest person you'll ever meet, ducking through every doorway just to say hello. When you spot this character, picture him waving down at you and hear the giant himself: <reading>じん</reading>.",
-    "description": "人 is the two-stroke figure that meets at a single clean peak. 入 slides its short stroke down the long one so the top overhangs, and 八 keeps the two strokes apart with a gap between them.",
+    "meaning_mnemonic": "Knowing your radicals pays off here, because the <radical>person</radical> radical is the <kanji>person</kanji> kanji with nothing added and nothing changed.",
+    "reading_mnemonic": "Jin, the friendly giant, bends double to fit through the door of Koichi's konbini and clips the onigiri shelf every single time. As the rice balls roll across the floor he sighs <reading>じん</reading>, because a person the size of <reading>Jin</reading> spends his whole life apologising for doorways.",
+    "description": "The look-alikes are 入 (enter) and 八 (eight). In 人 the two strokes join in a sharp peak at the top with nothing poking out above the join. In 入 they meet near the top too, but the right stroke pushes up past the join like a small flag. In 八 the two strokes never touch, leaving an open gap at the top and spreading apart like a fan.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hoku": {
-    "meaning_mnemonic": "The tortoise is out on the balcony again with its hand mirror, squinting at the two cracks on its own shell and announcing by <radical>divination</radical> that tonight will be clear. So the hedgehog drags its fork out under the thin crescent moon for another <radical>evening</radical> of trying to take a bite out of it. Neither of them is going back in until the reading is finished, so both sit there in the cold with the fence at their backs — firmly outside.",
-    "reading_mnemonic": "You lock yourself out of Koichi's konbini after hours and a guy named Guy comes tapping the glass from the cold, calling \"<reading>がい</reading>! I'm still stuck out here!\" He is very much on the outside.",
-    "description": "Means \"outside\"; a common N5 kanji appearing in words for the outdoors and things that are external.",
+    "meaning_mnemonic": "A tortoise doing <radical>divination</radical> in the fading <radical>evening</radical> light has to shuffle <kanji>outside</kanji> to catch the last of the sun on its cracked shell.",
+    "reading_mnemonic": "Out behind Grandma Kane's shrine at dusk, a fortune-telling guy keeps flipping his tortoise shell for one more reading. Each blank answer drags a long <reading>がい</reading> out of him, the groan a worn-out <reading>guy</reading> makes when the cards say wait.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-hon": {
-    "meaning_mnemonic": "Picture a <radical>tree</radical> standing tall, and then draw the <radical>ground</radical> right across its trunk — a single flat line marking exactly where the roots meet the soil. That line points to the tree's source, the very origin it grew from. And the thing that captures a story's origin, pressed flat from a tree, is a book.",
+    "meaning_mnemonic": "Picture a <radical>tree</radical> standing tall, with the <radical>ground</radical> drawn as one flat line across its trunk — right where the roots meet the soil. That line marks the tree's own origin. Press pages flat from that origin, and you have a <kanji>book</kanji>.",
     "reading_mnemonic": "A monk named <reading>ほん</reading> sits on the mossy steps at Grandma Kane's shrine, reading the same book over and over. Every time a cat brushes past, he mutters \"ほん, ほん\" without looking up — he cannot put that book down.",
     "description": "本 is 木 with one extra stroke: a short horizontal laid across the lower trunk. Nothing else changes, so that little bar down at the base is the only thing to look for.",
     "_meta": {
@@ -305,8 +295,8 @@
     }
   },
   "n5-hyaku": {
-    "meaning_mnemonic": "Put the <radical>number one</radical> on top of a ray of light so bright it turns <radical>white</radical>, and look what happens: that single one stacked over the white glow multiplies into a whole crowd. One little stroke sitting above all that whiteness isn't just one anymore — it's a hundred.",
-    "reading_mnemonic": "At Koichi's konbini a hiccuping cook keeps counting onigiri, and every time he hits a full tray he lets out a huge \"<reading>ひゃく</reading>!\" — a hiccup and a yell in one, because a hundred rice balls is a lot to hiccup through.",
+    "meaning_mnemonic": "A single <radical>one</radical> stroke sits on top of a blinding <radical>white</radical> light bulb. The light is so bright the stroke multiplies into copies of itself. Soon there are exactly a <kanji>hundred</kanji> strokes glowing on the ceiling.",
+    "reading_mnemonic": "At Koichi's konbini, a hiccuping cook keeps counting onigiri. Every time he hits a full tray, he lets out a huge \"<reading>ひゃく</reading>!\" — a hiccup and a yell in one. A hundred rice balls is a lot to hiccup through.",
     "description": "百 is 白 with one extra stroke on top. 白 caps its box with a small flick; 百 turns that cap into a full-width horizontal bar.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
@@ -315,36 +305,34 @@
     }
   },
   "n5-ichi": {
-    "meaning_mnemonic": "One flat line of hard-packed dirt stretches across an empty plain. Standing dead centre on that <radical>ground</radical>, as always, is the smug goat — the only creature in the world, as far as she is concerned. Today she is holding a talent show: one contestant, one stage, one judge, all of them her. She accepts the prize from herself, which is a mouthful of the dirt she is standing on. One stroke, one goat, one winner: one.",
-    "reading_mnemonic": "The talent show finally gets an audience: a sunburnt hiker called Itchy, who has exactly one mosquito bite, right between his shoulder blades where his hands cannot reach. He sits down on the flat line of ground, scratches his back against the goat, and groans <reading>いち</reading>, いち, いち in time with every scrape.",
-    "description": "Beyond the plain counting number, 一 carries a wider sense of a single thing taken as a whole, so it turns up in words about being first, being the same, or doing something all at once. Write it as one confident horizontal stroke, left to right, and keep it flat and reasonably long — short or slanted, it starts to look like a fragment of some other character.",
+    "meaning_mnemonic": "The <radical>ground</radical> radical is already in your head, and the <kanji>one</kanji> kanji is the very same flat line.",
+    "reading_mnemonic": "A hiker called <reading>Itchy</reading> drags himself up the mountain trail to the one vending machine at the top. Bitten raw by bugs, he claws at both arms and groans <reading>いち</reading> with every scratch. One machine, one word, one sound he cannot shake.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-iku-go": {
-    "meaning_mnemonic": "Picture a stick figure caught mid-stride, legs split wide, one arm swinging forward — the whole character leans into the <radical>step</radical>. That's a person who won't stand still, always moving to the next place. When you see this shape, you see someone about to go.",
-    "reading_mnemonic": "Koichi, the konbini king, can't sit still either — the second a shelf goes empty he's out the door to go restock it, muttering \"<reading>こう</reading>, こう, keep it moving.\" Wherever he needs to go, he goes at a run.",
-    "description": "Means \"go\" and shows up constantly in verbs of movement and travel, such as 行く (to go).",
+    "meaning_mnemonic": "You already met the <radical>going</radical> radical, and the kanji for <kanji>go</kanji> is that same crossroads with not one stroke added, so take the free point.",
+    "reading_mnemonic": "Koichi the konbini king cannot stand a customer who lingers, so the moment your bag is packed he slaps a <reading>coupon</reading> into your hand and barks <reading>こう</reading>, which in his shop means get going, right now. The regulars know the drill: hear <reading>こう</reading>, take the coupon, and go.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-iu-gen": {
-    "meaning_mnemonic": "Look at the bottom of this character and you'll find a <radical>mouth</radical>, wide open. Above it, stacked up in neat horizontal lines, is everything that mouth is pushing out — layer after layer of <radical>speech</radical>. A mouth releasing stacked lines like that is exactly what it means to say a word.",
-    "reading_mnemonic": "At Grandma Kane's shrine, a general in full armor climbs the mossy steps and won't stop giving orders — every word out of his mouth is a barked command. The cats scatter as the general says \"<reading>げん</reading>!\" like it's the only word he knows.",
+    "meaning_mnemonic": "The <radical>words</radical> radical and the <kanji>say</kanji> kanji are the same character, and it reaches past the radical to also mean say, since words only become speech once you say them aloud.",
+    "reading_mnemonic": "A scruffy hen struts around Grandma Kane's shrine repeating the last word anyone says, then says it <reading>again</reading>, and <reading>again</reading>. Say one thing near it and that word comes back at you all afternoon, every time landing as <reading>げん</reading>. The shrine cats gave up chasing it days ago.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-jikan-ji": {
-    "meaning_mnemonic": "The <radical>sun</radical> climbs its window over the shrine to start another <radical>day</radical>, and its shadow falls across a signpost hammered into a patch of <radical>earth</radical>. Somebody has laid the carpenter's ruler flat in the soil beside it, thumb pinning it down, and ticks off one more <radical>inch</radical> every time the shadow creeps forward. Sun, post and ruler together turn plain dirt into a clock — which is how you measure time, hour by hour.",
+    "meaning_mnemonic": "The <radical>sun</radical> crossing the <radical>Buddhist temple</radical> roof is how the whole village used to tell the <kanji>time</kanji>.",
     "reading_mnemonic": "A cheerful clockmaker named Jiro keeps every timepiece in Koichi's konbini ticking, and each hour on the hour he shouts \"<reading>じ</reading>! じ!\" as the alarms go off. Whenever you need to know the time, you listen for Jiro's じ.",
     "description": "Means time or hour, and shows up everywhere you talk about clock time and telling the hour.",
     "_meta": {
@@ -354,26 +342,26 @@
     }
   },
   "n5-juu": {
-    "meaning_mnemonic": "Look at this character and you see one perfect plus sign, one clean <radical>cross</radical>. That plus sign is the mark you use when you count all the way up to a full set on your fingers — two hands, all of them raised. A single cross standing tall like this means ten.",
-    "reading_mnemonic": "A judo champion bursts into Koichi's konbini and slaps down exactly ten coins on the beeping till, shouting <reading>じゅう</reading> with each one. Every time you picture that plus-sign cross, hear the judo master's じゅう ringing out.",
-    "description": "十 is a plain cross: one flat horizontal and one straight vertical. 千 adds a slanting flick above the bar. 七 bends the second stroke instead, curving it right and flicking upward at the end rather than running straight down.",
+    "meaning_mnemonic": "The <radical>ten</radical> radical and the <kanji>ten</kanji> kanji are the very same mark, so this is one you already know for free.",
+    "reading_mnemonic": "You dump exactly ten cartons of <reading>juice</reading> onto the beeping till at Koichi's konbini. Just as he counts them off and lands on <reading>じゅう</reading> for the total, the bottom carton splits and sprays sticky juice clear across the onigiri shelf.",
+    "description": "十 is a single upright stroke crossed by one flat horizontal. 千 (thousand) adds a short slash slanting in above that cross. 七 (seven) has no upright at all: one stroke bends and hooks up to the right beneath a high, tilted bar.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ka-fire": {
-    "meaning_mnemonic": "Picture a person standing with their arms flung out, and sparks are flying off them in every direction. They're crackling, glowing, throwing off heat — this is a person who has become <radical>fire</radical>. Every time you see 火, see that sparking figure and think: fire.",
-    "reading_mnemonic": "Kaa, the fire-breathing crow, perches on the power line and lets out a puff of flame with a raspy caw: 「<reading>か</reading>!」. The flame and the sound arrive together, so when you see this fire kanji, you hear Kaa's か.",
+    "meaning_mnemonic": "You already know the <radical>fire</radical> radical, and the <kanji>fire</kanji> kanji is that same upright log with sparks flicking off both sides.",
+    "reading_mnemonic": "Kaa, the fire-breathing crow, perches on the power line above Koichi's konbini and opens her beak for one <reading>caw</reading>. A puff of flame rolls out instead, and the onigiri shelf by the door goes up black and smoking. That crow's <reading>か</reading> now sticks to every fire you meet.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kaeru": {
-    "meaning_mnemonic": "You push your own front door open and the <radical>broom</radical> is still going, three stiff prongs driving crumbs and one indignant cat down the hallway, exactly as you left it this morning. The cat gives up and burrows under its <radical>cover</radical> on the porch. On the hook your rectangle of <radical>cloth</radical> hangs in two long folds, limp, waiting. You take it down and wipe the day off your face. Coming back to the same broom, blanket and cloth is what it is to return.",
+    "meaning_mnemonic": "Putting down the <radical>knife</radical> and picking up the <radical>sweeper</radical> is what you do the hour you <kanji>return</kanji> home.",
     "reading_mnemonic": "Kiki, the tree spirit, has been out riding the wind all day, and now she giggles as she slips back inside her old tree with a soft <reading>き</reading>. Watch her return home and you'll hear that き every time.",
     "description": "Means \"return,\" as in going or coming back home; the core kanji in the verb 帰る, to return.",
     "_meta": {
@@ -383,7 +371,7 @@
     }
   },
   "n5-kaku-write": {
-    "meaning_mnemonic": "The <radical>brush</radical> is back on your desk, three prongs clamped round its shaft, still flecked with ink from the certificate it ruined. You dip it, and the <radical>sun</radical> — that window with a bar in it — sinks below the edge of your notebook, its last light lying flat across the page. Line after line goes down under that glow until the whole <radical>day</radical> is on paper. Sun on the page, brush in your fist: that is write.",
+    "meaning_mnemonic": "A <radical>brush</radical> moving all <radical>day</radical> with nothing to show for it but marks means somebody had to <kanji>write</kanji>.",
     "reading_mnemonic": "Kaa, the fire-breathing crow, lands on your notebook and squints at your terrible handwriting, muttering \"<reading>しょ</reading>, しょ\" every time you smudge a letter. Each little puff of flame dries the ink so you can keep writing.",
     "description": "Means \"write\"; shows up in words about writing, documents, and books, like 書く (to write).",
     "_meta": {
@@ -393,48 +381,44 @@
     }
   },
   "n5-kane-gold-dup": {
-    "meaning_mnemonic": "Picture the whole <radical>village</radical> at dusk — its stacked paddies, its slab of packed earth, its wooden houses — huddled over one big cooking fire. The smoke climbs and stains every wall until the sooty village standing over that fire has settled into one single color: <radical>black</radical>.",
-    "reading_mnemonic": "The soot-covered villagers cough up thick black lungfuls, hacking <reading>こく</reading>, こく into the night air. Every cough is darker than the last — that's the sound of black.",
-    "description": "Means \"black\"; the everyday word for the color (くろ) and a common on'yomi こく in compounds.",
+    "meaning_mnemonic": "A whole <radical>village</radical> built right on top of the <radical>fire</radical> pit slowly smokes over until every roof and paddy turns <kanji>black</kanji>.",
+    "reading_mnemonic": "Pick through that smoked-out village and the only one still working is a charcoal burner, shovelling black lumps of <reading>coke</reading> into sacks and grunting <reading>こく</reading> with every scoop. His hands, his sacks, and his beard all end up the same sooty <reading>こく</reading> black.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kau": {
-    "meaning_mnemonic": "You spot something you want, so you reach for the cowrie <radical>shell</radical> that once worked as money. You lay that shell on the counter and slide it across. Handing over the shell-money is how you buy.",
-    "reading_mnemonic": "The moment you buy your onigiri at Koichi's konbini, Kaa the fire-breathing crow swoops in and shrieks 「<reading>ばい</reading>」 as if saying \"bye-bye\" to your cash before you've even paid.",
-    "description": "Means \"buy,\" the verb 買う (to purchase); shows up constantly in shopping and everyday transactions.",
+    "meaning_mnemonic": "To <kanji>buy</kanji> a fish you throw a <radical>net</radical> over the whole stall and drop a pile of clam-shell <radical>money</radical> on the counter to haul your catch home.",
+    "reading_mnemonic": "Back at the fish stall, a sharp-elbowed haggler drags her net of fish to the counter, drops a handful of shells, and waves <reading>bye</reading> to the seller. It comes out as <reading>ばい</reading>, and now nobody at that market can hand over money without blurting <reading>ばい</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kawa": {
-    "meaning_mnemonic": "Look at this character and squint: three flowing lines running side by side down the page. That's water moving — three currents carving their way through the land. Three flowing lines: a <radical>river</radical>.",
-    "reading_mnemonic": "Down at the riverbank you meet a fisherman who has cast a line into every one of those three currents. He grins and tells you he's caught a thousand — <reading>せん</reading> — fish today, one for each ripple in the river.",
-    "description": "Means \"river\"; a common N5 kanji seen in nature words and countless place names.",
+    "meaning_mnemonic": "The <radical>river</radical> radical and the <kanji>river</kanji> kanji are the same character, drawn as the same three flowing strokes every single time.",
+    "reading_mnemonic": "A courier crouches at the riverbank, certain the fastest way to <reading>send</reading> a parcel across is to float it. The current takes it the instant it touches the water and skims it away downstream, hissing <reading>せん</reading> over the shallows.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ki-spirit": {
-    "meaning_mnemonic": "Picture a little puff of <radical>steam</radical> curling up off a hot bowl of rice — that swirling, rising shape is exactly this character. You can almost see the wisp lifting into the air, alive and moving. That invisible thing rising off warm things is the very idea of spirit and energy.",
-    "reading_mnemonic": "The steam curls up and out pops Kiki, the tree spirit, giggling as the wind stirs her branches. She rides that rising energy on a breeze of 「<reading>き</reading>」.",
-    "description": "Means spirit or energy; a very common kanji found in words about mood, feeling, weather, and vitality.",
+    "meaning_mnemonic": "A field's <kanji>spirit</kanji> is the <radical>steam</radical> that lifts off the blades the morning after you <radical>mow</radical> them down to stubble.",
+    "reading_mnemonic": "Kiki the tree spirit climbs out of her old oak beside the field you just mowed. Warm steam curls off the stubble and tickles her until she cannot stop giggling, a thin <reading>き</reading> sound like a tiny <reading>key</reading> scraping in a lock. She rides the vapour up and vanishes into the cold.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kiku-hear": {
-    "meaning_mnemonic": "You press your <radical>ear</radical> right up against a <radical>gate</radical> to catch the whispers on the other side. The wood is cold, but you hold still, straining that one ear against the swinging doors. When you press an ear to a gate like this, you're doing two things at once: you hear, and you're dying to ask what's going on.",
-    "reading_mnemonic": "Mon-Bun, the scholarly rabbit twins, press their ears to the gate to hear you ask a question — and immediately start arguing about the answer. \"<reading>ぶん</reading>!\" they squeak in unison, because those two never agree on anything they overhear.",
+    "meaning_mnemonic": "An <radical>ear</radical> pressed to the crack in the <radical>gate</radical> is there for one reason, which is to <kanji>hear</kanji>.",
+    "reading_mnemonic": "Mon-Bun, the scholarly rabbit twins, press their ears to the gate to hear you ask a question. They immediately start arguing about the answer. \"<reading>ぶん</reading>!\" they squeak in unison. Those two never agree on anything they overhear.",
     "description": "聞 and 間 are the same gate frame with different things standing inside it. 聞 puts 耳, an ear, in the gateway. 間 frames the sun there instead. What the gate contains is the whole difference.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
@@ -443,94 +427,91 @@
     }
   },
   "n5-kin": {
-    "meaning_mnemonic": "Picture a solid little roof, and buried right underneath it the <radical>king</radical>'s own skewered stack of crowns, gems still crusted on, with two loose nuggets shaken off into the dirt beside it. A roof over a buried king is exactly what this character shows you: precious <radical>metal</radical> tucked away where nobody digs. Turn it up and you've got gold and money.",
-    "reading_mnemonic": "Grandma Kane keeps her real fortune under the shrine's giant bell, and every time a cat brushes it, it goes <reading>きん</reading>. That soft きん ring is the sound of gold sitting safe underneath.",
+    "meaning_mnemonic": "The <radical>gold</radical> radical and the <kanji>gold</kanji> kanji are the very same character, which also came to mean money because for centuries gold coins were exactly what people paid with.",
+    "reading_mnemonic": "A tiny king no taller than a coin lives on the collection box at Grandma Kane's shrine and sorts the offerings into his crown. Drop one in and he stands up and announces <reading>king</reading> with a small bow. That bright <reading>きん</reading> is the sound of money landing.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kita": {
-    "meaning_mnemonic": "The raccoon has finally landed. It came down in a snowdrift at the top of the map, still gripping the bent <radical>spoon</radical> it levered out of the ice cream tub, and it's now sitting back-to-back with a second raccoon on a frozen bench, both hunched away from each other against the gale — which is exactly the shape of this character. The <radical>spoon</radical> is frozen solid to its paws. That wind is coming straight down from the north.",
-    "reading_mnemonic": "Up on the mountain trail, the wind off the northern peak is so brutal that a hiker named Hoku pulls his hood tight and mutters \"<reading>ほく</reading>, ほく\" through chattering teeth as he trudges. Hear him — ほく — every time you point north.",
+    "meaning_mnemonic": "Here is one that comes free, because the <radical>north</radical> radical and the <kanji>north</kanji> kanji are the very same character, learned once and counted twice.",
+    "reading_mnemonic": "Down at the frozen riverbank, two skaters stand back to back and guard the same net. Every time the puck clangs off the post they both bark <reading>ほく</reading>, the flat grunt a rink announcer makes yelling <reading>hockey</reading> into a dead microphone.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-ko-child": {
-    "meaning_mnemonic": "Look closely at this character: it's a swaddled baby with its little arms flung out to the sides. That bundled shape wriggling and reaching is exactly what this kanji is — a <radical>child</radical>.",
-    "reading_mnemonic": "A child at the riverbank keeps splashing everyone, so you press a finger to your lips and go \"<reading>し</reading>!\" — the sound you make to shush a rowdy kid. That soft \"し\" is how you hush this child.",
-    "description": "Means \"child\"; a very common kanji appearing in words for children and as a frequent name ending.",
+    "meaning_mnemonic": "This <kanji>child</kanji> kanji is a gift you already own, the <radical>child</radical> radical exactly as you learned it, without a single stroke changed.",
+    "reading_mnemonic": "In the echoing hallway of Sei's school, a small child keeps running laps and shrieking. The teacher on duty crouches down and makes a long <reading>し</reading> sound, the <reading>shush</reading> you do with one finger on your lips. The child copies the finger, copies the sound, and finally walks.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kon-now": {
-    "meaning_mnemonic": "You spot a <radical>person</radical> walking forward under a wide roof that shelters them from the rain. They don't dwell on where they've been or where they're headed — under that roof, in this exact spot, all that matters is the present moment. A person taking cover means: now.",
-    "reading_mnemonic": "Right now, this very second, Koichi is slamming down onigiri prices at the konbini and yelling \"<reading>こん</reading>!\" like a battle cry to get you buying before the moment passes. Every time you hear こん, you know it means now, now, now.",
-    "description": "今 and 会 wear the same wide roof. Under it 今 has only a short stroke and a small hook. 会 packs a fuller body beneath the roof, with a horizontal bar and legs below it.",
+    "meaning_mnemonic": "The <radical>now</radical> radical is the <kanji>now</kanji> kanji with nothing changed, so this one is a free point if you learned your radicals.",
+    "reading_mnemonic": "A shrine cat nudges a loose roof tile off the eaves and it lands square on a dozing raccoon, which bolts upright yelping <reading>こん</reading> as the tile <reading>conk</reading>s the step beside it. No warning comes first and no echo after, just the one hit landing right <reading>こん</reading>, meaning it lands now, this instant.",
+    "description": "The look-alike is 会, 'meet'. Both wear the same wide peaked lid on top. Beneath the lid, 今 keeps almost nothing: a short flat dash above one small hooked stroke. 会 fills that space with a full horizontal line and a small angled shape sitting under it. Crowded underneath means 会; nearly empty with only a tiny tail means 今.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kou-school": {
-    "meaning_mnemonic": "A <radical>tree</radical> stands in the middle of the courtyard, roots gripping the soil, one wide branch spread over the whole yard. Your <radical>father</radical> has dragged the barbecue out under it, tongs held high in both hands, announcing lunch to four hundred children at once, and he's snapped the pot <radical>lid</radical> down over the grill by its little knob so the smoke doesn't set off the alarm in the hallway. Bells, classrooms, homework and dad grilling under the tree — this is school.",
-    "reading_mnemonic": "Koichi, the konbini king, has set up a pop-up shop right inside the school gate, restocking onigiri between classes and muttering <reading>こう</reading>, こう as he lines up the shelves. The kids buy their lunch from him before the bell.",
+    "meaning_mnemonic": "Plant a <radical>tree</radical> along each path so hundreds of kids <radical>mingle</radical> in the shade where the walkways cross, and you have built a <kanji>school</kanji>.",
+    "reading_mnemonic": "At Sei's <kanji>school</kanji>, the gym teacher turns out to be Koichi the konbini king, who blasts his whistle and barks 「<reading>こう</reading>」 because that is all of the word <reading>coach</reading> he can be bothered to shout.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-kuchi": {
-    "meaning_mnemonic": "Look at this character: it's just an open square, a hole with nothing inside. Picture it as a <radical>mouth</radical> hanging wide open, mid-yawn or mid-shout. An open square, an opening — a mouth.",
-    "reading_mnemonic": "Koichi, the konbini king, leans across the beeping till and shouts an order to his stock boy, his mouth wide open: 「<reading>こう</reading>!」 Every time he barks like that, you picture that gaping mouth and hear こう.",
-    "description": "Means \"mouth\" or \"opening\"; a common N5 kanji that shows up in words about mouths, entrances, and exits.",
+    "meaning_mnemonic": "This one is a freebie, because the <radical>mouth</radical> radical you already know is the whole <kanji>mouth</kanji> kanji, with nothing added.",
+    "reading_mnemonic": "Koichi, the konbini king, taste-tests every new product the second it lands on his shelf. When he tips the just-boiled <reading>cocoa</reading> straight back into his mouth, he yelps one long <reading>こう</reading> that rattles the onigiri shelf and sets the till beeping.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kuni": {
-    "meaning_mnemonic": "Picture an <radical>enclosure</radical>, a closed box with walls around everything inside, and set the <radical>jewel</radical> — that skewered stack of crowns, gems and all — down in the middle of it. Draw those walls big enough and you're no longer fencing a garden; you're fencing a whole people in around their crown. Walls wrapped around a king give you a country.",
-    "reading_mnemonic": "At the border of this walled country stands a guard named Koku, who stamps every passport with a cheerful <reading>こく</reading> sound. No stamp, no entry — こく, こく, all day long.",
-    "description": "Means \"country\" or \"nation\"; a very common kanji seen in words for countries and citizenship, read こく in compounds and くに on its own.",
+    "meaning_mnemonic": "A <kanji>country</kanji> is nothing but an <radical>enclosure</radical> of walls built around the one <radical>jewel</radical> its people refuse to share.",
+    "reading_mnemonic": "Nobody crosses into the <kanji>country</kanji> until the guard <reading>Cook</reading> slaps his one stamp down and barks 「<reading>こく</reading>」, the only word he seems to own.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kuru-rai": {
-    "meaning_mnemonic": "Picture a <radical>tree</radical> standing at a crossroads with two little travelers resting under its branches, one on each side of the trunk. The tree can't move, so it waves the travelers over: \"Come! Come to me, sit in my shade.\" Everyone always comes to the tree.",
-    "reading_mnemonic": "The traveler who comes to the tree is Rye, and he never arrives quietly — he shouts \"<reading>らい</reading>, I'm here!\" as he strolls up the path. Whenever someone comes into view down the road, listen for that らい.",
-    "description": "来 is 米 with an extra horizontal across the top. Count the horizontal bars: 米 has one, 来 has two.",
+    "meaning_mnemonic": "When a single grain of <radical>rice</radical> bursts apart and the pieces scatter over the flat <radical>ground</radical>, a whole crop is about to <kanji>come</kanji> up where each one landed.",
+    "reading_mnemonic": "A heron that roosts in the rye grass by the riverbank bolts upright at every thunderclap, flaps into the same low branch with a thud, and squawks <reading>らい</reading>. Beak still stuck in the <reading>rye</reading>, it has decided <reading>らい</reading> is the noise you make when something unstoppable is about to come at you.",
+    "description": "The look-alike is 米, 'rice', the piece tucked inside this kanji too. 米 turns on one central crossing point with four loose dashes flung to the corners and nothing across the top. 来 lays a flat line along its top and a short crossbar through the middle, so its centre reads like a ladder, not an X. A flat roof on top means 来; two loose dots mean 米.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-kyuu": {
-    "meaning_mnemonic": "Look at this character and see a hook curling forward, the kind of cane you'd hang up after a long day. Picture yourself at the bottom of the mountain trail, counting the switchbacks left before the top: one, two, all the way up to that last brutal bend that looks exactly like this hooked shape. You lean on your cane at bend nine, and that curl is the number nine.",
-    "reading_mnemonic": "At bend nine on the mountain trail you finally reach the vending machine, but your legs give out — you go \"<reading>きゅう</reading>!\" as you collapse against it. That sharp little cry of relief at spot nine is exactly the sound きゅう.",
-    "description": "九 and 力 are both two strokes with a hook, hooking opposite ways. 九 opens with a short slash, then a stroke that curves right and flicks upward. 力 opens with a flat horizontal that turns down and hooks to the left, with a slash cutting through it.",
+    "meaning_mnemonic": "The <radical>nine</radical> radical and the <kanji>nine</kanji> kanji are the same character, so this one lands in your memory for free.",
+    "reading_mnemonic": "At the riverbank, a fisherman lines up a shot with a pool <reading>cue</reading> instead of a rod. The ninth ball he sinks leaps back out of the water like a hooked fish, and he shouts <reading>きゅう</reading> at the splash.",
+    "description": "Both 九 and 力 end in a hooked stroke, but the hooks point opposite ways. In 九 the final stroke sweeps wide to the right and flicks up, leaving that side open. In 力 it drops nearly straight and hooks back to the left at the foot, so the shape stays narrow. At the top, 九 has a short slant the body crosses over, while 力 opens with a bent stroke that makes a hard corner.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ma-interval": {
-    "meaning_mnemonic": "Picture a <radical>gate</radical> with its two swinging doors thrown open. Right in the gap between them, the <radical>sun</radical> is hanging low, filling the opening with light. That sliver of sun caught in the gate is the space between things — an interval, the gap between.",
+    "meaning_mnemonic": "Picture a <radical>gate</radical> with its two swinging doors thrown open. Right in the gap between them, the <radical>sun</radical> is hanging low, filling the opening with light. That sliver of sun caught in the gate is the space between things — an interval, the gap <kanji>between</kanji>.",
     "reading_mnemonic": "A guard named Kan stands watch in that gateway, timing exactly how long the sun lingers in the gap. Every time the interval passes he shouts \"<reading>かん</reading>!\" and slams one door shut.",
     "description": "間 and 聞 are the same gate frame with different contents. 間 sets 日, the sun, inside the gateway. 聞 stands an ear there instead. What is framed by the gate settles it every time.",
     "_meta": {
@@ -540,57 +521,54 @@
     }
   },
   "n5-machi": {
-    "meaning_mnemonic": "Picture this whole character as a bird's-eye view of a settlement: a neat grid of <radical>rice fields</radical> on the left pressed up against a straight main road running down the right. Fields plus a road is the smallest complete place people can live in — that's a town.",
-    "reading_mnemonic": "The town mayor climbs onto a soapbox in the square and announces he's the big chief now: \"I'm in charge — call me <reading>ちょう</reading>!\" Every time you walk into this town, you hear that same booming ちょう echoing off the buildings.",
-    "description": "Means \"town\" and shows up in place names and words for local districts and neighborhoods.",
+    "meaning_mnemonic": "A <kanji>town</kanji> springs up wherever a <radical>street</radical> pushes far enough into the <radical>rice field</radical> that farmers start building shops along both sides of it.",
+    "reading_mnemonic": "A food cart rolls down the new town's one street, and the driver bangs a bell that goes <reading>ちょう</reading> to call the farmers in from the paddies for <reading>chow</reading>. Miss that clang and lunch is gone, so everyone drops their tools the second they hear <reading>ちょう</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-mae": {
-    "meaning_mnemonic": "Picture a fancy storefront with a wide awning over the sidewalk, and set into the wall beneath it that tall narrow window with two bars across the middle. The crescent <radical>moon</radical> has drifted down and wedged itself inside the frame, glowing there like a display piece. It is in position before opening, before the staff, before anyone, hanging out ahead of the whole shop and greeting you before you step inside. That shape is front, and before.",
-    "reading_mnemonic": "A calm Zen monk stands out front of the shop, arriving before everyone else, and he bows and murmurs <reading>ぜん</reading> as he settles into place. He's always in ぜん — front and center, before the doors open.",
-    "description": "Means front or before; extremely common in words for physical position (in front of) and time (before, previous), such as before an event or the front of a building.",
+    "meaning_mnemonic": "A cow lowers its <radical>horns</radical> to the <radical>ground</radical> to guard the <radical>knife</radical> it dropped, so anyone crossing the yard by <radical>moon</radical>light has to freeze right in <kanji>front</kanji> of it.",
+    "reading_mnemonic": "Long before sunrise, a monk sweeps the gravel yard out front and bows to the last of the moon. The other monks call him <reading>Zen</reading> because, whatever the hour, he is already there, and he answers to <reading>ぜん</reading> without looking up.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-mai-every": {
-    "meaning_mnemonic": "A wind-up alarm clock is bolted to the pole outside the station, and every morning that <radical>mother</radical> leans out of the departing train window, posts a forgotten lunchbox onto the pole, and shouts reheating instructions over the ringing. Same train, same pole, same hour, without fail. That relentless, clockwork repetition is exactly what this character means: every.",
-    "reading_mnemonic": "The clock belongs to Mai, who winds it every morning and shouts \"My time!\" as it rings. Hear her name <reading>まい</reading> as the sound that hammers home the routine — every day, まい, まい, まい.",
-    "description": "Means \"every\" and shows up in common time words for recurring events, such as every day, every week, and every morning.",
+    "meaning_mnemonic": "Adding an angled <radical>chevron</radical> across the <radical>do not</radical> bar turns a single ban into one that covers <kanji>every</kanji> object in the room.",
+    "reading_mnemonic": "The konbini toddler everyone calls <reading>My</reading> jabs a finger at <kanji>every</kanji> onigiri on the shelf and yells 「<reading>まい</reading>」, claiming each one the second she sees it.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-man": {
-    "meaning_mnemonic": "Picture a single hook-shaped banner snapping in the wind above a market stall. On that one banner, someone has painted a running tally that just keeps climbing — past a thousand, past nine thousand, until the whole cloth is crammed with zeros. That one impossibly loaded banner stands for ten thousand.",
-    "reading_mnemonic": "A street vendor named Manny throws his arms wide under that banner and yells, \"Man, I've sold ten thousand of these!\" You can hear the <reading>まん</reading> right there in his ecstatic \"Man!\" as the crowd surges in.",
-    "description": "万 and 方 share a horizontal over a hooked stroke. 万 is just those two: a flat bar, then a stroke that drops and hooks left. 方 adds a dot on top and a short slash, so it runs to four strokes against 万's three.",
+    "meaning_mnemonic": "The <radical>ten thousand</radical> radical and the <kanji>ten thousand</kanji> kanji are the same, so this is one review you get for nothing.",
+    "reading_mnemonic": "Koichi is restocking the onigiri shelf when a deliveryman named <reading>Manny</reading> wheels in ten thousand identical rice balls on one groaning trolley. Asked how many more are out in the truck, Manny sighs <reading>まん</reading>, counts the pile twice, loses the number both times, and gives up.",
+    "description": "The look-alike 方 (direction / person) puts a short slanted stroke above its first horizontal line; 'ten thousand' has no stroke there. Its last stroke also drops in a near-straight squarish leg, where 'ten thousand' swings that stroke out in one wide sweep.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-me-eye": {
-    "meaning_mnemonic": "Look closely at this character: it's an upright frame with two pupils sitting inside it. Tip it on its side and it even looks like it's staring right back at you. That frame with pupils is exactly what it is — an <radical>eye</radical>.",
-    "reading_mnemonic": "A woodcarver named <reading>もく</reading> is whittling a tiny wooden eye at Koichi's konbini counter, holding it up to inspect the grain. Every time he blinks, he mutters \"もく, もく\" as he lines the carving up with his own eye.",
-    "description": "Count the bars inside the box. 目 is tall with two horizontals. 日 has one. 自 is 目 with a small slash added on top of the box.",
+    "meaning_mnemonic": "Nothing new to memorise here, because the <kanji>eye</kanji> kanji is simply the <radical>eye</radical> radical you have already seen, identical in shape and meaning.",
+    "reading_mnemonic": "Halfway up the mountain trail a birdwatcher presses both eyes to her binoculars for a solid hour, until campfire <reading>smoke</reading> drifts across her lenses and all she can splutter is <reading>もく</reading>. She rubs her streaming eyes and misses the owl completely.",
+    "description": "The look-alikes are 日 (day or sun) and 自 (self). 目 has three lines inside its upright box, splitting it into four stacked compartments. 日 has only one line across the middle, leaving just two. 自 is the same box as 目 but with a short slanted stroke added on top, like a finger pointing at your own nose.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-meiname": {
-    "meaning_mnemonic": "Up on the balcony the hedgehog is out with its fork again, watching the crescent get bitten away for the <radical>evening</radical>, and it still cannot remember what the thief is called. So it leans over the railing, opens its <radical>mouth</radical> as wide as it goes, and yells the one word that fills the gap. An evening sky plus a mouth shouting into it gives you a name.",
+    "meaning_mnemonic": "In the <radical>evening</radical> nobody can see your face, so your <radical>mouth</radical> has to give your <kanji>name</kanji>.",
     "reading_mnemonic": "A performer named Mei struts into Koichi's konbini and belts out \"<reading>めい</reading>, that's my name, don't wear it out!\" She spells it letter by letter until the whole shop knows exactly who she is.",
     "description": "名 and 多 both start with the same slanted three-stroke piece. 名 finishes with a small closed box beneath it. 多 repeats that slanted piece a second time instead, so it is one shape stacked twice.",
     "_meta": {
@@ -600,46 +578,45 @@
     }
   },
   "n5-michi": {
-    "meaning_mnemonic": "The giraffe in the business suit is late, so it lowers its telescoping <radical>neck</radical> flat to the ground and lets the winding <radical>road</radical> unroll straight along the top of it, spots and all. Commuters simply walk up the giraffe and keep going, and by lunchtime nobody can tell where the animal ends and the way forward begins — this kanji is road, the way.",
-    "reading_mnemonic": "Halfway up the road you meet a doe standing in the middle of the path, blocking the way. She won't budge, so you call out \"<reading>どう</reading> do I get past you?\" — and the doe just chews and stares, owning the whole road.",
-    "description": "Means road or way; a very common kanji seen in words for streets, paths, and figurative \"ways\" of doing things.",
+    "meaning_mnemonic": "The <kanji>road</kanji> is whatever your long <radical>neck</radical> cranes to stare at while your feet <radical>advance</radical>, because you always point your head down the path before you walk it.",
+    "reading_mnemonic": "<reading>Dough</reading> the baker rolls his batch so thin it slides out the door and down the hill as one pale <kanji>road</kanji>, and by noon the whole town has tracked jam along it while he groans 「<reading>どう</reading>」.",
+    "description": "Beyond a physical street, 道 also means 'the way' in the sense of a lifelong discipline, which is why it trails the names of pursuits like judo, kendo, and calligraphy.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-migi": {
-    "meaning_mnemonic": "Picture the flat horizon line of the <radical>ground</radical>, and a hand reaching down under it into an open <radical>mouth</radical> to pull something free — the fingers and the little box of the mouth locked together in one shape. That hand is always your dominant one, the one you shove in to grab a stuck snack. It's the hand on the right.",
-    "reading_mnemonic": "You reach for the last onigiri on Koichi's shelf with your right hand and your fingers close on nothing but air, so you let out a soft \"<reading>う</reading>う\" of disappointment. That little \"うう\" is the sound you make when your right hand comes up empty.",
-    "description": "右, 左 and 石 all park something under a two-stroke top. 右 and 左 differ in what sits below: 右 has a small box, 左 a short cross-like piece. 石 shares 右's box but writes the top as a cliff, the horizontal running along the top with only its left end turning down.",
+    "meaning_mnemonic": "Once your <radical>left hand</radical> is busy holding the bowl, the only hand free to lift food to your <radical>mouth</radical> is your <kanji>right</kanji>.",
+    "reading_mnemonic": "A fisherman named <reading>Woo</reading> eats his lunch at the riverbank one-handed, his left hand still gripping the oar, and his clumsy right keeps dropping rice down his shirt until he lets out a long <reading>う</reading>. Every lost mouthful earns another flat <reading>う</reading>.",
+    "description": "The look-alikes are 左 (left) and 石 (stone). All three place a shape beneath a hand-like top. In 右 that top is a short slant crossing a short flat stroke, with 口 right under it. 左 keeps the same top. Its lower part is a narrow shape with a flat foot, not a closed box. 石 keeps the 口 underneath. Its top stroke stretches into one long flat overhang with a square corner, like a cliff.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-mimi": {
-    "meaning_mnemonic": "Look at this character and you'll spot a dangling shape hanging off the side of a head. That soft, drooping flap catching every sound is an <radical>ear</radical>.",
-    "reading_mnemonic": "A jittery DJ named Jiji cups a hand to his ear and shouts \"<reading>じ</reading>, じ, do you hear that beat?\" — the sound goes straight into his ear as じ.",
-    "description": "Means \"ear\"; the body part, and shows up in words about hearing and listening.",
+    "meaning_mnemonic": "Good news for once, the <radical>ear</radical> radical you already know and the <kanji>ear</kanji> kanji are the very same character.",
+    "reading_mnemonic": "A cat curls up inside the one enormous bell at Grandma Kane's shrine just as a visitor swings the rope. It rockets out past your ear going <reading>じ</reading>, and all you manage is a weak <reading>gee</reading>. Every cat on the mossy steps now watches that rope instead of sleeping.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-minami": {
-    "meaning_mnemonic": "Somebody has upended a <radical>wide box</radical> on the hot sand, and across its flat top two matchsticks are laid in a <radical>cross</radical>, like the world's worst weather vane. A flamingo nudges the box round and round all afternoon, and the arm of the cross that ends up warmest is the one pointing south.",
-    "reading_mnemonic": "A backpacker named Nan has been hiking down the mountain trail for days, always heading south toward warmer weather. Every time someone asks which way she's going, she just points and sighs, \"<reading>なん</reading>... south, always south.\" The word なん sticks because Nan won't stop saying it.",
+    "meaning_mnemonic": "Two <radical>horns</radical> poke out of a <radical>wide box</radical> lashed to the only wall that stays <radical>dry</radical> and warm through <radical>ten</radical> winters, and a wall like that faces <kanji>south</kanji>.",
+    "reading_mnemonic": "Nan sets her deck chair against the south wall of the barn each morning, beside the old crate with the horns poking out. Ask why she never sits on the shady north side and she grumbles that it gets <reading>なん</reading> of the afternoon sun, dragging the word out as she tips her hat down. Everyone just calls her <reading>Nan</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-miru": {
-    "meaning_mnemonic": "Take an <radical>eye</radical> (目) and stand it up on a pair of <radical>human legs</radical> (儿), and suddenly it can walk around anywhere it wants. Where does an eye on legs go? Out into the world, to look at everything. So this is what it means to <radical>see</radical>.",
+    "meaning_mnemonic": "Take an <radical>eye</radical> (目) and stand it up on a pair of <radical>human legs</radical> (儿), and suddenly it can <radical>see</radical> and walk around anywhere it wants. Where does an eye on legs go? Out into the world, to look at everything. So this is what it means to <kanji>see</kanji>.",
     "reading_mnemonic": "Ken, the sword-collecting dog, drags you over to his wall of antique swords because he wants you to see his newest one. \"<reading>けん</reading>! けん!\" he barks, pawing at the blade until you finally look.",
     "description": "Means \"see\" and is the base of the common verb 見る (to see/look); it shows up constantly in everyday words about looking and watching.",
     "_meta": {
@@ -649,126 +626,121 @@
     }
   },
   "n5-moku": {
-    "meaning_mnemonic": "Look closely at this character and you can see it whole: a single vertical trunk, roots digging down at the bottom and branches reaching out to the sides. Stand back and the shape is unmistakable — a <radical>tree</radical>.",
-    "reading_mnemonic": "Kiki, the tree spirit, giggles as she climbs to the very top and peeks over the leaves — she's playing \"<reading>もく</reading>\" (peekaboo), disappearing behind branches every time the wind blows. Whenever you spot this tree, hear her whisper もく from up in the canopy.",
-    "description": "木 is the bare tree: a horizontal, a vertical, and two strokes sweeping down from the crossing. 本 is exactly this plus one short horizontal laid across the lower trunk.",
+    "meaning_mnemonic": "Here the <radical>tree</radical> radical and the <kanji>tree</kanji> kanji line up stroke for stroke, trunk, spreading branch, and roots gripping the soil.",
+    "reading_mnemonic": "Kiki, the tree spirit, giggles inside her old oak whenever the wind blows, until a hiker carves his initials into her bark. She leans out of the trunk to <reading>mock</reading> him, repeating every word he says in a flat little voice. He drops the knife and runs, her <reading>もく</reading> chasing him down the trail.",
+    "description": "The look-alike 本 (book / origin) is this same tree with one extra short bar across the foot of the trunk, just above where the roots split. 木 leaves that space clean. A low bar on the trunk means 本, not 木.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nagai": {
-    "meaning_mnemonic": "Look at the whole character: it's an old man standing side-on, with a flowing beard and long hair streaming down past his shoulders, and a walking stick planted at the bottom. He's the eldest, the one everyone else follows — so this is your picture of something <radical>long</radical>, and of the elder who leads.",
-    "reading_mnemonic": "That long-bearded elder is the leader of a whole troupe of butterflies, and he lets one land on his flowing hair — a <reading>ちょう</reading> (butterfly). Every time you see this kanji, picture the ちょう resting on the leader's long locks.",
-    "description": "Means long or leader; shows up in words for length, seniority, and being the head of something, like a school principal or a company chief.",
+    "meaning_mnemonic": "The <radical>long</radical> radical and the <kanji>long</kanji> kanji are the same character, and it also means leader because the one who has served longest is the one everyone follows.",
+    "reading_mnemonic": "The oldest man on the mountain trail has a beard so long it sweeps the path behind him, and everyone bows and calls him Chief <reading>Cho</reading>. Said slowly it stretches into a drawn-out <reading>ちょう</reading>, and that long <reading>ちょう</reading> is how the whole village names the one in charge.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-naka": {
-    "meaning_mnemonic": "Picture a <radical>mouth</radical>, that open square, and now imagine a single spear driven straight down through its center. The line splits the opening into two even halves, landing dead in the middle. Whatever you skewer that cleanly is right in the middle, tucked inside.",
-    "reading_mnemonic": "Chuu, the loyal mouse, refuses to guard the door or the back — he plants himself squarely in the <reading>ちゅう</reading>, the very middle of the room, so no threat can slip past on either side. \"The center is where a loyal mouse belongs,\" he squeaks.",
-    "description": "Means middle or inside; extremely common, appearing in words about being in the middle of doing something, insides, and locations like the center of town.",
+    "meaning_mnemonic": "A <radical>stick</radical> shoved straight down through a wide <radical>mouth</radical> stops dead at the exact <kanji>middle</kanji>, pinning everything trapped in there.",
+    "reading_mnemonic": "Chuu, the loyal mouse, will not budge from the dead center of that speared mouth, and each time you try to lift him off he just squeaks <reading>ちゅう</reading> and grips the stick harder. He would <reading>chew</reading> straight through it before he let anyone take his spot in the middle.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nana": {
-    "meaning_mnemonic": "The raccoon is still airborne, still gripping that bent <radical>spoon</radical>, and the handle has come out of the ice cream twisted into a crooked hook. Someone hammers it into the wall by the door and hangs exactly seven coats on it. When it sags under all that weight, you know what it is holding: seven.",
-    "reading_mnemonic": "A shy cat at Grandma Kane's shrine will only come out when you call it exactly seven times — and each time you call, you shush the other cats: <reading>しち</reading>, しち, quiet now. By the seventh しち, it finally pads down the mossy steps.",
-    "description": "七 and 十 are both a bar crossed by a second stroke. 十 keeps that stroke straight, running top to bottom. 七 bends it: it drops, curves right, and flicks upward at the end.",
+    "meaning_mnemonic": "Every hour you spent learning the radical <radical>seven</radical> is paid back here, because the <kanji>seven</kanji> kanji is the exact same character.",
+    "reading_mnemonic": "Seven of Grandma Kane's shrine cats line up on the mossy steps at supper. Grandma is certain the sly black one <reading>cheats</reading>, slipping back for seconds the moment she looks away, so she counts them aloud and the sneak always lands on <reading>しち</reading>. Seven cats, and <reading>しち</reading> is the guilty one.",
+    "description": "The look-alike is 十 (ten). In 十 the crossing stroke is a straight vertical down through the center, ending pointing straight down in a clean plus. In 七 that stroke crosses higher, then bends hard right along the bottom and flicks up, so the shape leans and hooks.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nen": {
-    "meaning_mnemonic": "The scarecrow in the field is propped up on a warrior's shield, that flat board left out in the sun until it is cracked and completely <radical>dry</radical>. It has stood there watching the rice grow, get harvested, and grow again, straight through the full turn of the seasons. One complete loop of that dry board's silent watch is a year.",
-    "reading_mnemonic": "A tired farmer counts the passing seasons by taking a nap in the shade of that scarecrow each time the harvest ends. He mumbles \"<reading>ねん</reading>、ねん\" — like the sleepy sound of nodding off — once for every year that rolls by.",
-    "description": "Means \"year\"; a very common kanji appearing in dates, ages, and words about time.",
+    "meaning_mnemonic": "Every <kanji>year</kanji> that passes, you scratch one more <radical>chevron</radical> into the sun-<radical>dry</radical> shield-board you keep staked in the <radical>ground</radical> beside the gate.",
+    "reading_mnemonic": "By the gate at Grandma Kane's shrine stands that scratched tally board, and a fat cat called <reading>Nan</reading> sharpens her claws on it every day. Each New Year, Grandma adds a fresh notch, the cat complains about the dulled edge, and her long flat meow drags out as <reading>ねん</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ni": {
-    "meaning_mnemonic": "The raccoon is back at the same noodle shop table, its broth going cold. Look at 二 and you are looking at its handiwork: one short flat line laid neatly above one longer flat line, the snapped-off half of a chopstick above the whole one it was never separated from. A second raccoon slips in, sees the arrangement, and snaps its own chopstick so the table will match. Four paws, nobody eating: <radical>two</radical>.",
-    "reading_mnemonic": "The waiter is Niko, a tired man who stopped being surprised by raccoons years ago and now simply keeps score. He carries out the second bowl, sets it beside the first, taps the table once and says <reading>に</reading>, flat as a bell — the way you announce a total rather than a discovery. The raccoons now snap chopsticks purely to hear him do it.",
-    "description": "二 is the plain counting two, used for quantities, dates, prices and floors. Its spoken form shifts with the counter that follows, so the same character sounds different in a date than in a count of objects. Write it as two level horizontals, top to bottom, the lower one clearly longer — that length difference is the whole character, and the two strokes never touch.",
+    "meaning_mnemonic": "The <radical>two</radical> radical walked straight into the kanji list without changing a stroke, so the <kanji>two</kanji> kanji costs you nothing new.",
+    "reading_mnemonic": "On the sports field at Sei's school, a sprinter called <reading>Knee</reading> clips the second hurdle and comes down hard on both knees. He stays in the grass hissing <reading>に</reading> through his teeth, one hiss for each knee. Second hurdle, two knees, one sound.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nichi": {
-    "meaning_mnemonic": "Look at the character: it's a window with a bar across the middle. Through that window you can see the <radical>sun</radical> climbing into the sky, and once the sun is up, a whole new day begins. Window plus bar, sun in the frame — that's a day.",
-    "reading_mnemonic": "At Grandma Kane's shrine, one cat wakes at dawn and greets the rising sun with the same cry every morning: \"<reading>にち</reading>! にち!\" The others answer, and that's how the whole shrine knows a new day has started.",
-    "description": "Check the top and count the bars. 日 is a plain box with one horizontal inside. 白 is the same box with a small flick added on top. 目 has no cap but carries two horizontals instead of one.",
+    "meaning_mnemonic": "Because the <radical>sun</radical> radical and the <kanji>day</kanji> kanji are the very same character, every hour you spent learning radicals is quietly paying you back here.",
+    "reading_mnemonic": "Every day a mountain-trail ranger called <reading>Neech</reading> climbs up to check the lone vending machine, and every day the sun has already cooked every can inside into warm soup. He kicks the machine once, mutters <reading>にち</reading>, and writes off another wasted day.",
+    "description": "The look-alike 白 (white) is this same barred box with one extra short stroke flicked onto the top; take that flick away and you are back to 'day'. The look-alike 目 (eye) is a taller box with two bars across the middle instead of one, stacking three sections where 'day' has only two.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nichiyou": {
-    "meaning_mnemonic": "You flip your calendar and the <radical>sun</radical> is sitting bright at the left edge, marking the day, while someone sweeps the rest of the square clean with that stiff-pronged <radical>broom</radical>, cat still asleep across the top prong. Every morning the sun climbs up, the broom shoves yesterday off the grid, and the fresh square gets its label. Each swept-and-sunned box is one named weekday.",
-    "reading_mnemonic": "Yoko, exhausted, groans \"no more, no more\" as she crosses off day after day on the wall calendar. Every square she reaches she moans <reading>よう</reading>, よう, because to her every single weekday feels the same.",
+    "meaning_mnemonic": "A <kanji>weekday</kanji> is any <radical>day</radical> that begins when a startled <radical>pheasant</radical> shoots straight up, lands right back down, and screeches until you leave for work.",
+    "reading_mnemonic": "The tired commuter <reading>Yo</reading> greets everyone with the same flat <reading>よう</reading> every <kanji>weekday</kanji>, because five mornings of packed trains have sanded his voice down to that one grunt.",
+    "description": "The gloss 'weekday' really covers the whole week, weekend included; it means 'day of the week'. You will meet this kanji almost only inside those day names and almost nowhere else.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nishi": {
-    "meaning_mnemonic": "Picture a squat bird cage with a little bird perched inside, its legs dangling below the frame. At sunset the birds all fly home to roost, settling in the cage as the sun sinks in the same direction. That cage where everything comes to rest for the night points you toward the west.",
-    "reading_mnemonic": "Sei, the star student, insists she always knows exactly where the sun sets, so she marches to the western edge of the sports field at dusk and points, calling out 「<reading>せい</reading>, that way!」 while the whole class watches the sky turn orange behind her.",
-    "description": "西 and 四 are both boxes with strokes inside. 四 is a plain rectangle with two short legs bending inward. 西 sits an extra horizontal bar across the very top, above the box, which 四 never has.",
+    "meaning_mnemonic": "No new work here, because the <radical>west</radical> radical, that sun climbing down into its crate for the night, is the <kanji>west</kanji> kanji with not one stroke moved.",
+    "reading_mnemonic": "At the school, when the teacher asks which way the sun goes down, Sei's hand is up before anyone has even finished hearing the question. Too pleased with himself to wait his turn, he leans back and says <reading>せい</reading>. It is the right answer, because that is the sound you <reading>say</reading> for west.",
+    "description": "The look-alike is 四, meaning four. West has a separate horizontal lid across the very top that pokes out past the sides, and the two upright strokes inside rise up to meet it. Four is a plain sealed rectangle with a flat top and no overhang, and its two inner strokes curl apart at the bottom without touching the top.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-nomu": {
-    "meaning_mnemonic": "On the left is the radical for food and eating, and on the right is a person opening their mouth wide in a <radical>yawn</radical>, a lack. But this yawning mouth isn't tired — it's tipping a glass back, mouth wide open to gulp something down. When you see food beside that gaping, thirsty mouth, you drink.",
-    "reading_mnemonic": "At Koichi's konbini a regular named Inn slaps a cold can on the beeping till and says the same thing every single day: \"First, I drink!\" You can hear the 「<reading>いん</reading>」 right at the front of Inn's name as he cracks it open.",
-    "description": "Means \"drink\"; the everyday kanji in the verb 飲む, to drink.",
+    "meaning_mnemonic": "A mouth stretched <radical>yawn</radical>-wide beside a flattened tray of <radical>food</radical> is begging for a <kanji>drink</kanji> poured straight in to wash the meal down.",
+    "reading_mnemonic": "A sleepy driver named <reading>Quinn</reading> has just cleared a huge meal at the mountain-trail vending machine, and a jaw-cracking yawn tells him the food left him parched. He feeds in coins and gulps the whole bottle down in one pull, each swallow carrying the same tired groan, <reading>いん</reading>, until the drink is gone.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-onna": {
-    "meaning_mnemonic": "Look closely at the character and you'll see a figure kneeling gracefully, one arm sweeping across, the other resting low. That elegant kneeling pose is exactly how you were taught to spot a <radical>woman</radical>.",
-    "reading_mnemonic": "A woman named Jo sweeps into Koichi's konbini and orders in a booming voice, \"<reading>じょ</reading>, that's me!\" The whole shelf of onigiri rattles as she says it, so じょ is stuck to this woman for good.",
-    "description": "Means \"woman\"; a very common N5 kanji that appears in words for females and in compounds relating to girls and women.",
+    "meaning_mnemonic": "You get the <kanji>woman</kanji> kanji for free today, since it is the same <radical>woman</radical> radical you already practised, shape and meaning untouched.",
+    "reading_mnemonic": "At Grandma Kane's shrine a woman called <reading>Jo</reading> has one job, which is shooing the cats off the mossy steps. Every time she lifts one down she mutters <reading>じょ</reading> under her breath, and by evening she has said it so often that the cats have started to purr the sound back at her.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ooi-ta": {
-    "meaning_mnemonic": "The hedgehog is back on the balcony with its fork, watching the crescent get bitten away for the <radical>evening</radical>, when a second <radical>evening</radical> stacks up underneath the first, leaning like a lopsided snowman. One moon is never enough. It wants another, and another, until the plate is piled high. Two stacked and still craving more: that is how you get many.",
-    "reading_mnemonic": "At the top of the mountain trail, Ta counts the coins in the improbable vending machine, and there are far too many to hold. \"<reading>た</reading>, た, た,\" she taps each one as they spill from her hands — there are just too many.",
-    "description": "多 is the same slanted piece written twice, one stacked below the other. 名 writes that piece once and puts a small closed box underneath it instead.",
+    "meaning_mnemonic": "Set one <radical>evening</radical> on top of another and the stack of spent days behind you already counts as <kanji>many</kanji>.",
+    "reading_mnemonic": "<reading>Tally</reading>, who counts the cats at Grandma Kane's shrine, says 「<reading>た</reading>」 for each one and never reaches the end, because the strays curled on those mossy steps are far too <kanji>many</kanji>.",
+    "description": "The look-alike is 名, meaning name. Both start with the same leaning crescent on top. In this kanji a second identical crescent sits directly below it, the very same shape written twice; in 名 a closed square box sits there instead.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-otoko": {
-    "meaning_mnemonic": "Picture a <radical>rice field</radical> stretching out under the sun, and the one person out there doing the heavy lifting. He bends his arm, flexes his <radical>power</radical>, and drags the plow across the paddies all day. Someone with that much power working the rice field — that's the man.",
+    "meaning_mnemonic": "Picture a <radical>rice field</radical> stretching out under the sun, and the one person out there doing the heavy lifting. He bends his arm, flexes his <radical>power</radical>, and drags the plow across the paddies all day. Someone with that much power working the rice field — that's the <kanji>man</kanji>.",
     "reading_mnemonic": "The man out in the field takes a break and starts pounding out a rhythm on his empty water bucket: <reading>だん</reading>, だん, だん. Every man on the trail can hear that drumbeat and grins.",
     "_meta": {
       "generator_model": "claude-opus-4-8",
@@ -777,7 +749,7 @@
     }
   },
   "n5-roku": {
-    "meaning_mnemonic": "Picture the <radical>number eight</radical> standing tall, and then set a little <radical>lid</radical> right on top of it. That lid caps the eight and knocks it down two — from eight, you drop to six. The lid on top of eight always means six.",
+    "meaning_mnemonic": "Picture the <radical>number eight</radical> standing tall, and then set a little <radical>lid</radical> right on top of it. That lid caps the eight and knocks it down two — from eight, you drop to six. The lid on top of eight always means <kanji>six</kanji>.",
     "reading_mnemonic": "A rock star climbs onto the vending machine at the top of the mountain trail and belts out six songs to the empty air. Every time he screams \"<reading>ろく</reading>!\" a cat appears, until six of them are yowling backup. That rock (ろく) show is how you hear six.",
     "description": "Means six; the basic number 6, seen everywhere from counting and prices to dates and times.",
     "_meta": {
@@ -787,231 +759,221 @@
     }
   },
   "n5-san": {
-    "meaning_mnemonic": "Look at this character and count what you see: <radical>three</radical> flat lines stacked neatly on top of each other. One line, then another, then a third. Three lines means, simply, three.",
-    "reading_mnemonic": "A cheerful ranch hand named San lines up three fence rails on the mountain trail, tapping each one and calling out 「<reading>さん</reading>」 as she checks the count. Three rails, three, and San says the number every time.",
-    "description": "The kanji for three, the number 3, appearing constantly in counting, dates, and prices.",
+    "meaning_mnemonic": "Copy the flat <radical>ground</radical> line, then draw it twice more above itself, and the stubby ladder of level rungs you get is <kanji>three</kanji>.",
+    "reading_mnemonic": "A shrine cat named <reading>Sun</reading> claims the third stone step at Grandma Kane's as her bed. Every visitor forced to step over her murmurs <reading>さん</reading>, half a greeting and half an apology, and by the third one she purrs for more.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sei-life": {
-    "meaning_mnemonic": "Picture a single seed pushed into the <radical>earth</radical> — that cross of soil where everything begins. A green shoot cracks through and reaches up out of the ground. From that patch of earth, something new is born: this is life.",
-    "reading_mnemonic": "Sei, the star student, is the first sprout to shoot up every spring, hand raised before anyone else has even woken. When the teacher asks who's most full of life, Sei（<reading>せい</reading>）is already standing, beaming.",
-    "description": "Means \"life\" or \"birth\"; a very common kanji that shows up in words about living, being born, students, and fresh or raw things.",
+    "meaning_mnemonic": "Nothing new here, the <radical>life</radical> radical and the <kanji>life</kanji> kanji are one character, and it also covers birth because birth is just where a life begins.",
+    "reading_mnemonic": "In a hallway at Sei's school, the teacher barely finishes asking what that first shoot through the soil stands for. Sei's hand is already up, uniform crease-perfect, and she <reading>says</reading> <reading>せい</reading> before anyone else draws breath. She looks quietly smug about beating the whole class to it.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sen": {
-    "meaning_mnemonic": "Take the plus sign for <radical>ten</radical> and lay a single slash across its top, like one bold pen-stroke scratched over it. That one extra mark turns humble ten into something enormous — you've just multiplied it a hundredfold. Ten with a lid on top means a thousand.",
-    "reading_mnemonic": "A senator named Sen shows up at the shrine and drops a thousand coins into the offering box all at once. \"That's from all my constituents,\" she says, \"<reading>せん</reading> of them exactly.\" Every time you see this kanji, hear Sen bragging about her せん coins.",
-    "description": "Count the horizontals and look at the top. 千 has one bar under a slanting flick. 十 has one bar and no flick, just a straight cross. 午 and 干 both carry two bars — 午 under a flick, 干 starting flat.",
+    "meaning_mnemonic": "Drop a single <radical>slash</radical> across your tally of <radical>ten</radical> and the whole count suddenly jumps to a <kanji>thousand</kanji>.",
+    "reading_mnemonic": "Back at that smeared tally wall in the school hallway, Sei counts the marks, gives up, and decides to just <reading>send</reading> the whole impossible number through as one lump sum. It goes as <reading>せん</reading>, a flat thousand that nobody is ever going to recount.",
+    "description": "千 opens with a slash from the upper right, above one horizontal and the upright. 十 (ten) is that shape without the slash. 午 (noon) keeps the slash but runs two horizontals. 干 (dry or shield) has two horizontals as well, but a flat straight top instead of a slash.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sensei-saki": {
-    "meaning_mnemonic": "You spot two <radical>legs</radical> left standing without a body, striding out the door ahead of everyone else. No torso to slow them down — those legs are always one step in front, gone before you've even moved. Whatever they're doing, they did it previous to you and they're already ahead.",
-    "reading_mnemonic": "Those bodiless legs sprint down the mountain trail so far ahead they trip a wire and set off a whole line of fireworks — <reading>せん</reading>, せん, せん — bursting one after another to mark how far in front they already are.",
+    "meaning_mnemonic": "The one whose striding <radical>human legs</radical> have already worn a diagonal <radical>slash</radical> of path into the bare <radical>earth</radical> is the one out <kanji>ahead</kanji> of us.",
+    "reading_mnemonic": "On the steep mountain trail, a hiker called <reading>Sen</reading> stays exactly one switchback in front of you the whole climb, so all you ever catch is her fresh bootprints in the mud. Shout up to ask how much farther, and the only word that drifts back down is <reading>せん</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sha-car": {
-    "meaning_mnemonic": "Look straight down at a cart from above: one long axle running through the middle, wheels flanking each side, a boxy frame around it all. That's exactly what this character is — a cart seen from overhead with its axle drawn right through it. Trace that shape and you're looking at a <radical>vehicle</radical>.",
-    "reading_mnemonic": "A show-off racer revs his engine outside Koichi's konbini and shouts \"Watch me!\" — but he peels out so fast all you hear is a screech of \"<reading>しゃ</reading>!\" as the vehicle vanishes down the street. Every time you see this car kanji, that \"しゃ!\" is the last sound it makes.",
-    "description": "車 and 重 are the same boxy stack, but 重 is taller and runs an extra horizontal through the middle. Count the horizontal strokes crossing the body: 重 always has one more than 車.",
+    "meaning_mnemonic": "The <radical>vehicle</radical> radical and this <kanji>car</kanji> kanji are the same character, and it narrows to car because a car is the vehicle almost everyone pictures first.",
+    "reading_mnemonic": "At the riverbank crossing, a mechanic named <reading>Sasha</reading> is shoving a stalled car up the ramp by herself. It will not move, so she jams her shoulder into the bumper and pushes with a long hiss of <reading>しゃ</reading> through her teeth. The car rolls at last, and that straining sound stays stuck to it.",
+    "description": "The look-alike 重 means heavy. 車 is a tidy sealed box with one vertical line running straight through it and a single bar closing it at top and bottom. 重 is taller, rests a short slanted stroke on top, adds an extra horizontal bar across the body, and lets its centre line push out below the base.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-shi-city": {
-    "meaning_mnemonic": "You stroll into the town square and above every stall hangs a bright piece of <radical>cloth</radical> on a rod, snapping in the wind. On the biggest stall a pot steams away, and the vendor keeps slamming the flat disc of its <radical>lid</radical> back down over the rim so nobody smells the stew for free. Rows of cloth and clanging lids stretch as far as you can see. This is the heart of the city, its bustling market.",
-    "reading_mnemonic": "The busiest stall belongs to Shi, a sharp-eyed vendor who greets every shopper crossing the market with a cheerful 「<reading>し</reading>!」. Follow her voice and you'll always find the center of the city.",
-    "description": "Means city or market; shows up in words for towns and municipal places like 市 (city) and city names.",
+    "meaning_mnemonic": "A <kanji>market</kanji> is what you get when every stall hangs out its <radical>cloth</radical> awning and the town claps one <radical>lid</radical> over the whole noisy square.",
+    "reading_mnemonic": "The fishmonger who runs the whole <kanji>market</kanji> is called <reading>Sheena</reading>, and she names her price by slapping a fish on the scale and hissing 「<reading>し</reading>」.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-shiro-white": {
-    "meaning_mnemonic": "You step outside Koichi's konbini and the morning sun hits you full in the face — a ray of light so bright everything goes pure <radical>white</radical> for a second. You blink, and the whole world is still washed out and white. That blinding ray is your picture for white.",
-    "reading_mnemonic": "The dazzling light spooks a startled hawk perched on the konbini roof; it beats its wings once and goes, <reading>はく</reading>, hacking out a cough as it flaps into the too-bright sky. Hear that はく every time you see this pure white flash.",
-    "description": "All four are the same box with bars inside, and the top settles it. 白 caps the box with a small flick. 百 turns that cap into a full-width horizontal. 自 uses a short slash instead. 日 has no cap at all.",
+    "meaning_mnemonic": "This <kanji>white</kanji> kanji is nothing new, because it is exactly the <radical>white</radical> radical you already know, in shape and in meaning.",
+    "reading_mnemonic": "A scruffy white <reading>hawk</reading> has claimed the top of Grandma Kane's shrine bell and will not stop preening. Every few seconds it hacks a loose white feather off its chest with a dry cough, <reading>はく</reading>, and by evening the mossy steps lie carpeted in white while the shrine cats seethe.",
+    "description": "Four near-identical boxes. 日 (day or sun) is the plain box with one middle bar and nothing on top. 白 puts a small slanted spark of a stroke above that box. 百 (hundred) is 白 with a full flat line laid over its top. 自 (self) stands taller, with two inner bars instead of one and a short upright nub on top.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-shita": {
-    "meaning_mnemonic": "The tortoise props its hand mirror flat on the level <radical>ground</radical>, squints at the two cracks running along underneath it, and announces the week's forecast by <radical>divination</radical>. The prediction never changes: everything worth knowing is under that line, in the space beneath your feet. That little crack hanging below the horizon points exactly where to look, which is down, below.",
-    "reading_mnemonic": "Kaa, the fire-breathing crow, dives straight down off the power line and lets out a sharp 「<reading>か</reading>」 as she plummets toward the ground below. Every time she drops down, that same caw of 「か」 rings out.",
-    "description": "Means down or below; a very common kanji appearing in words about lower position, direction, and going down.",
+    "meaning_mnemonic": "Hang the tortoise's <radical>divination</radical> mark off the underside of the <radical>ground</radical> line and it dangles <kanji>down</kanji> into the dark where no one reads it.",
+    "reading_mnemonic": "Kaa the fire-breathing crow gives up on the power lines and drops down under the riverbank bridge, into the dark below the road. It is damp and empty down there, so he just huffs one small flame and mutters <reading>か</reading> to himself. It comes out flat, like the tail end of the word <reading>car</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-shou-small": {
-    "meaning_mnemonic": "Picture a single hook standing upright with two dots flanking it, one on each side, like something delicate pinched between two fingertips. It's so slight it could vanish if you sneezed. That tiny hook with its two little dots is the very picture of <radical>small</radical>.",
-    "reading_mnemonic": "Sho, the tiny stage magician, snaps his white glove and shrinks the whole set until the doves look like specks. As everything gets impossibly small, the crowd gasps, \"<reading>しょう</reading>!\" — the man himself is the smallest thing on stage.",
-    "description": "小 is three strokes: a hooked vertical with a short dash on each side. 少 is 小 with a fourth stroke, a slash sweeping down to the left beneath it. If there is a tail, it is 少.",
+    "meaning_mnemonic": "You get this one free, because the <radical>small</radical> radical you already know is the <kanji>small</kanji> kanji unchanged, right down to the two fingers pinching that speck.",
+    "reading_mnemonic": "Sho, the tiny stage magician, sets up on the onigiri shelf at Koichi's konbini, the only stage that fits him. He snaps his small white gloves, a dove flops out, and he bills the whole trick as his big <reading>show</reading>. Over the beeping till he just shouts <reading>しょう</reading> again until a customer finally claps.",
+    "description": "The look-alike is 少, meaning few or little. It is this kanji with one stroke added: a short slanting stroke laid over the top right, making four strokes instead of three. If the centre hook and its two side marks stand alone with nothing above them, it is small; if a stray diagonal caps the top, it is few.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-shu-week": {
-    "meaning_mnemonic": "Picture a boxy calendar page laid flat, and the winding <radical>road</radical> comes sweeping in and threads across it, square to square, through all seven days. You put your own footsteps down on it and <radical>advance</radical> one box at a time until the road curves right back to where it started. One full loop of that road around the little grid is exactly one week.",
-    "reading_mnemonic": "A woman named Shu (<reading>しゅう</reading>) plans her whole week on that looping calendar path, and every seven days she sighs \"しゅう, another one done!\" as she starts the loop again. Hear her say しゅう each time the week resets.",
+    "meaning_mnemonic": "A <kanji>week</kanji> is just how long it takes to <radical>advance</radical> the whole way around the <radical>circumference</radical> of the calendar and trip back over your own Monday footprints.",
+    "reading_mnemonic": "Sei jogs one lap of the school field every morning for a week, and by the seventh her right shoe's sole has peeled clean off from tracing the same circle. She lifts the flapping <reading>shoe</reading> and groans <reading>しゅう</reading>, the wet slap it makes on the track. Seven laps, one dead <reading>しゅう</reading>, one week gone.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sui": {
-    "meaning_mnemonic": "Stand at the riverbank and watch the streams splashing outward in every direction, cold spray hitting your face. Those wild, branching streaks are the whole picture: <radical>water</radical>.",
-    "reading_mnemonic": "Down at the riverbank a swimmer named Sui dives in and shouts \"<reading>すい</reading>!\" as the cold hits, then keeps splashing everyone within reach. Every time you see this kanji, hear Sui hollering すい from the water.",
+    "meaning_mnemonic": "The <radical>water</radical> radical and the <kanji>water</kanji> kanji are the exact same splash, one central stream with two trickles flying off, frozen mid-air.",
+    "reading_mnemonic": "A big white swan has claimed the riverbank, and every time someone kneels to wash clothes she flaps up and drags a hard <reading>sweep</reading> of spray across their back. You stand there soaked and dripping. That cold slap of river water off her wings is the sound <reading>すい</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-sukunai": {
-    "meaning_mnemonic": "Take something <radical>small</radical> — that hook with two flanking dots — and slice one more dot away with a downward stroke. Now there's even less than small: barely anything left. When you take a bite out of small, what remains is few.",
-    "reading_mnemonic": "Sho, the tiny stage magician, opens his white-gloved hand to reveal only a few crumbs of confetti — \"<reading>しょう</reading> time!\" he squeaks, and even the doves look unimpressed by how little there is. His whole act, like everything about him, is small and few.",
-    "description": "少 is 小 with one extra stroke: a slash sweeping down and to the left below the base. Take that tail away and you are back to 小.",
+    "meaning_mnemonic": "One clean <radical>slash</radical> through an already <radical>small</radical> bundle of matchsticks knocks the count down from small to just a <kanji>few</kanji>.",
+    "reading_mnemonic": "Sho, the tiny stage magician, sweeps a white glove over a heaped bowl of rice, and one showy flick leaves only a few grains behind. The doves scatter as he throws his arms wide and shouts <reading>しょう</reading>. Every <reading>show</reading> Sho puts on turns plenty into next to nothing.",
+    "description": "The look-alike 小 means small. 少 is that same shape with one stroke added, a short diagonal cut across the upper right. Cover that top-right stroke and plain 小 remains; the extra slash is the whole difference between small and few.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-suwaru": {
-    "meaning_mnemonic": "Two of those striding <radical>person</radical> figures come in from the cold and duck under the lean-to <radical>shelter</radical> nailed into the rock face, out of the rain at last. They drop straight down onto the same patch of <radical>earth</radical> underneath it, shoulder to shoulder, and flatly refuse to get up again. Two walkers on the ground under a roof want exactly one thing: to sit.",
+    "meaning_mnemonic": "Anywhere with a <radical>shelter</radical> over it is somewhere two people can <radical>sit</radical>, so that is where they <kanji>sit</kanji>.",
     "reading_mnemonic": "The person who settles onto that patch of earth is Zara, and the moment she sits she lets out a long, satisfied \"<reading>ざ</reading>あ\" of relief. Every time you see someone plop down here, you hear Zara's ざ.",
     "description": "Means \"sit\"; shows up in words about sitting down, seats, and taking a seat.",
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-taberu": {
-    "meaning_mnemonic": "Look at the whole character as a little tent pitched over a full table: the peaked roof on top, and underneath it a heaped tray of rice and side dishes. It's the family shelter you duck into when you're hungry — a roof made entirely of dinner. Under that roof there's only one thing to do: eat the food.",
-    "reading_mnemonic": "A cheerful line cook at Koichi's konbini slings hot lunches under the fluorescent lights, and every time a tray lands he shouts his catchphrase: <reading>しょく</reading>, しょく, come and get it! You hear しょく and your stomach knows it's time to eat.",
-    "description": "Means eat or food; shows up in everyday words for meals, eating, and food, and as the verb \"to eat.\"",
+    "meaning_mnemonic": "The <radical>eat</radical> radical and the <kanji>eat</kanji> kanji are one and the same, and food is simply the stuff you eat, so this character carries that sense too.",
+    "reading_mnemonic": "At Koichi's konbini you pull an onigiri off the shelf by the door and take a huge bite before you reach the till. The beeping stops and the clerk just stares. That cold jolt of <reading>shock</reading> at being caught eating early is the sound <reading>しょく</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-takai": {
-    "meaning_mnemonic": "Look at the <radical>tall</radical> tower with windows standing over the town — but notice the open <radical>mouth</radical> at its base, an entrance yawning wide for anyone brave enough to climb. It's the fanciest, most expensive building around, and everyone cranes their neck to see how tall it is.",
-    "reading_mnemonic": "Koichi, the konbini king, is jealous of that tall tower, so he stacks his onigiri shelves higher and higher until they're the tallest — and priciest — display in town. As the tower of rice balls wobbles, he shouts <reading>こう</reading> to warn a customer before it topples.",
+    "meaning_mnemonic": "On the flat <radical>prairie</radical>, a lone tower capped with a pot <radical>lid</radical> and pierced by one <radical>mouth</radical> of a window is the only thing for miles, so it looks impossibly <kanji>tall</kanji>.",
+    "reading_mnemonic": "<reading>Koichi</reading> the konbini king pushes his onigiri stack up past the ceiling lights and yells 「<reading>こう</reading>」 at anyone asking how he reaches the top, since no ladder he owns is that <kanji>tall</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-tatsu": {
-    "meaning_mnemonic": "Picture a person planted firmly on the ground, feet apart, refusing to budge — they <radical>stand</radical> there, solid and upright. That single image, a person rooted on the earth, is the whole character: to stand.",
-    "reading_mnemonic": "A soldier named Ritsu snaps to attention on the mountain trail, standing so straight you could measure a wall against him. Every time someone shouts \"<reading>りつ</reading>!\" he stands up even taller.",
-    "description": "Means \"stand\"; a common N5 kanji appearing in words about standing up, standing something upright, and establishing or setting things in place.",
+    "meaning_mnemonic": "The <radical>stand</radical> radical and the <kanji>stand</kanji> kanji are the very same shape and sense, so this one costs you nothing new.",
+    "reading_mnemonic": "On the sports field the coach at Sei's school makes the whole class stand at attention until someone tips over. You outlast everyone, but your saluting <reading>wrist</reading> locks up stiff, and each hot throb of it beats out <reading>りつ</reading>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-te-hand": {
-    "meaning_mnemonic": "Look closely and you can see the fingers spreading out from a wrist. That's the whole picture: fingers plus a wrist, held up for you to shake. It's a <radical>hand</radical>.",
-    "reading_mnemonic": "A magician named Shu reaches out a bare hand and, with a flick, pulls a coin from behind your ear. As the coin lands in her palm she winks and says, \"<reading>しゅ</reading>, that's all in the hand.\"",
-    "description": "Means \"hand\"; a very common kanji that appears in everyday words for hands, gestures, and doing things by hand.",
+    "meaning_mnemonic": "This one is free if you learned your radicals well, because the <radical>hand</radical> radical and the <kanji>hand</kanji> kanji are one and the same character.",
+    "reading_mnemonic": "A pigeon strolls into Koichi's konbini and settles on the onigiri shelf by the door. Koichi waves one flat hand at it, hissing <reading>しゅ</reading>, <reading>shoo</reading>, while the till keeps beeping. It takes both hands and a broom before the bird finally leaves.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ten": {
-    "meaning_mnemonic": "Picture a stick figure standing with arms flung wide, and someone has peeled up the flat horizon, the one long level <radical>ground</radical> you stand on, and laid it right across the top of those outstretched arms. The ground is up there now, a ceiling stretched over the whole world. Ground hanging above everyone's head is the ceiling of everything: heaven, the sky.",
-    "reading_mnemonic": "A tent-pitcher hikes to the top of the mountain trail and, instead of camping on the ground, throws a giant tent (<reading>てん</reading>) up into the air to sleep among the clouds. When you crane your neck at the sky, you spot that tent (てん) floating right there in heaven.",
-    "description": "天 is 大 with an extra horizontal laid across the top, above the outstretched arms. 大 has one horizontal, 天 has two.",
+    "meaning_mnemonic": "One flat <radical>ground</radical> line laid above the arms of the <radical>big</radical> outstretched person turns everything higher than it into <kanji>heaven</kanji>.",
+    "reading_mnemonic": "Out on the school sports field, the gym teacher the kids call <reading>Ten</reading> makes the whole class lie flat on the ground. Arms flung out wide, faces up at the open sky, nobody moves. He walks the rows counting slowly, and the drill ends when he reaches <reading>てん</reading>.",
+    "description": "The one to watch is 大, meaning big. 天 has two horizontal strokes stacked at the top, while 大 has just the single crossbar for the arms. That short top line is the whole difference.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-tomeru": {
-    "meaning_mnemonic": "You're mid-stride down the mountain trail when you plant one foot flat and hard against the ground and freeze in place. That single planted foot is the whole picture: it's rooted, going nowhere. A planted foot means <radical>stop</radical>.",
-    "reading_mnemonic": "Right where you stopped, you hear a sharp \"<reading>し</reading>!\" — someone shushing you. It's the vending machine at the top of the trail, hissing \"し, し\" as it refuses to dispense until you stop and wait. That shushing し is the sound to hold onto.",
-    "description": "Means \"stop\" and is the base of common verbs like 止まる and 止める, showing up anywhere something halts or is brought to a halt.",
+    "meaning_mnemonic": "The <radical>stop</radical> radical and the <kanji>stop</kanji> kanji are identical in shape and meaning, so knowing your radicals well just handed you this one for free.",
+    "reading_mnemonic": "Toto, the door-to-door turtle, wedges a sample door into your hallway to show how well it blocks a draft. It swings shut so hard it stops the dog mid-run and cracks your <reading>shin</reading>. You hop in circles hissing <reading>し</reading> while Toto writes down the sale.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-uenagashi": {
-    "meaning_mnemonic": "Picture a single flat line of <radical>ground</radical>, and standing on it a tortoise squinting at the cracks in its own shell. Its <radical>divination</radical> keeps coming out the same, so it plants one claw pointing straight at the sky and refuses to lower it. Everything in this shape leans away from the ground and skyward: up, above.",
-    "reading_mnemonic": "A cheerful mountaineer plants her flag at the summit and shouts \"Joe!\" as she looks up at the sky — <reading>じょう</reading> rings out across the peak. Every time you look up and above you, you hear her じょう echoing back down.",
-    "description": "Means \"up\" or \"above\"; a very common N5 kanji appearing in words for direction, position, and going up.",
+    "meaning_mnemonic": "On the mossy shrine steps, the tortoise's <radical>divination</radical> crack rises from the flat <radical>ground</radical> line with everything it has to say pointing <kanji>up</kanji>.",
+    "reading_mnemonic": "Joe the window washer hangs in his cradle above the shrine roof, polishing the top of the great bell. When Grandma Kane calls to ask where he is, the only answer that floats down is <reading>じょう</reading>, the one direction he ever points. He says it like the name <reading>Joe</reading>, stretched long.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-uru-baku": {
-    "meaning_mnemonic": "The armoured <radical>samurai</radical> duck has abandoned the garden wall and set up a stall, balanced on a pair of sturdy <radical>human legs</radical> planted wide behind a table of stacked goods, an awning pulled taut over the lot as a <radical>cover</radical> against the rain. It still refuses to blink, it refuses to come down on the price, and it shouts at everyone who slows down. A samurai under his awning on braced legs has exactly one job: to sell.",
-    "reading_mnemonic": "The vendor keeps yelling one thing at every customer who walks past: \"Buy! <reading>ばい</reading>, ばい, one for you and one for the baby!\" He'll sell to anyone who slows down, and every pitch ends on that same ばい.",
+    "meaning_mnemonic": "A <radical>samurai</radical> too proud to be seen throws a <radical>cover</radical> over his face and takes to the road on his own <radical>human legs</radical>, where the only work left is to <kanji>sell</kanji>.",
+    "reading_mnemonic": "The stall owner named <reading>Bye</reading> lifts each plush toy over his head and calls 「<reading>ばい</reading>」 the instant he <kanji>sell</kanji>s it, since a man with that name treats every sale as one more sad farewell.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-ushiro": {
-    "meaning_mnemonic": "The penguin in the tipped hat commits to one enormous sideways <radical>step</radical> across the buttered kitchen floor, and snagged on its heel is a <radical>tiny thread</radical>, that flimsy dangling loop, with the duckling still tied to the far end. So the duckling gets towed along as a permanent <radical>trailing foot</radical>, one webbed foot skidding a full body-length back. Whatever the penguin does, the duckling comes after, behind.",
-    "reading_mnemonic": "The trailing runner finally staggers across the finish line, dead last, and gasps out a weak \"<reading>ご</reading>... ご...\" — trying to say \"go\" but only managing to arrive after everyone else. That breathless ご is the sound that lands whenever this kanji shows up.",
+    "meaning_mnemonic": "Each <radical>step</radical> you take drags a <radical>trailing foot</radical> caught on a <radical>tiny thread</radical>, so that foot always lands a beat <kanji>behind</kanji> the rest of you.",
+    "reading_mnemonic": "At the school sports field, a gopher lines up for the relay with a thread off his own shoe wound round his back foot. The starter yells <reading>ご</reading> to make the runners <reading>go</reading>, and the gopher spends the entire lap one step behind, picking at the knot.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-yama": {
-    "meaning_mnemonic": "Look at the shape and count them: three peaks rising side by side, the middle one tallest. You don't need a story here — the character is a picture. Those three peaks are a <radical>mountain</radical>.",
-    "reading_mnemonic": "At the top of the mountain trail, the lone vending machine has a face, and it greets every exhausted hiker like an old friend: \"You made it — welcome, san (<reading>さん</reading>)!\" It calls everyone さん because on this mountain, reaching the peak earns you respect.",
-    "description": "Means \"mountain\"; a common N5 kanji seen in nature words and countless place and family names.",
+    "meaning_mnemonic": "This one is a freebie, since the <radical>mountain</radical> radical and the <kanji>mountain</kanji> kanji are the exact same character.",
+    "reading_mnemonic": "A hiker slogs up the steep mountain trail toward the lone vending machine at the top. Right as she reaches the summit the <reading>sun</reading> clears the ridge and blinds her, and all she can manage is <reading>さん</reading> before feeding in her coins.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }
   },
   "n5-yasui": {
-    "meaning_mnemonic": "Picture a <radical>woman</radical> kneeling gracefully inside a snug little house, the <radical>roof</radical> pulled down over her like a blanket. Nothing can reach her in here — she is safe, the rent is nothing, everything is calm. A woman tucked safely under a roof is cheap and peaceful.",
+    "meaning_mnemonic": "Picture a <radical>woman</radical> kneeling gracefully inside a snug little house, the <radical>roof</radical> pulled down over her like a blanket. Nothing can reach her in here — she is safe, the rent is nothing, everything is calm. A woman tucked safely under a roof is cheap and <kanji>peaceful</kanji>.",
     "reading_mnemonic": "She's spreading sweet red <reading>あん</reading> (bean paste) on a bun, humming, utterly at peace. Every bite is cheap comfort — say あん and taste that calm.",
     "description": "安 means cheap or peaceful, and shows up in words for low prices, safety, and being at ease.",
     "_meta": {
@@ -1021,7 +983,7 @@
     }
   },
   "n5-yasumu": {
-    "meaning_mnemonic": "You're on the mountain trail and you spot a <radical>person</radical> (left) who has slumped sideways against a <radical>tree</radical>, leaning into the trunk with its roots and branches like it's the comfiest chair in the world. A <radical>person</radical> plus a tree they're propped against — that's someone taking a well-earned rest.",
+    "meaning_mnemonic": "On the mountain trail, you spot a <radical>person</radical> slumped sideways against a <radical>tree</radical>, leaning into the trunk like it's the comfiest chair in the world. A <radical>person</radical> plus the tree they're propped against — that's someone taking a well-earned <kanji>rest</kanji>.",
     "reading_mnemonic": "The hiker leaning on that tree lets out a huge, happy sigh — \"<reading>きゅう</reading>!\" — the sound of every muscle finally letting go. Every time you picture that person melting into rest, you hear that きゅう escape.",
     "description": "Means \"rest\" and shows up in everyday words for taking breaks and days off, like 休み.",
     "_meta": {
@@ -1031,11 +993,11 @@
     }
   },
   "n5-yon": {
-    "meaning_mnemonic": "You peer into the closed box of the <radical>enclosure</radical>, walls all around, and inside you find a <radical>mouth</radical> trapped in the corner. It sits there counting on its lips, and the number it keeps landing on is four. An enclosure with a mouth inside: four.",
-    "reading_mnemonic": "Inside those walls, a tiny shopkeeper named Shi is stacking exactly four onigiri and hissing \"<reading>し</reading>, し, し\" as she counts. Every time she runs out of breath, she's counted to four.",
-    "description": "四 and 西 are both boxes with strokes inside. 四 is a plain rectangle with two short strokes bending inward. 西 sits an extra horizontal bar above the box, which 四 never has.",
+    "meaning_mnemonic": "Trapped inside a doorless <radical>enclosure</radical>, your <radical>human legs</radical> pace off all <kanji>four</kanji> of its walls before you admit there is no way out.",
+    "reading_mnemonic": "A sheep called <reading>She</reading> is stuck in the same doorless enclosure you paced earlier, tramping its four walls on a loop. At each corner she halts and bleats <reading>し</reading> at the blank stone, waiting for a door to appear. Four corners, four bleats, still no way out.",
+    "description": "The look-alike is 西 west. In 四 the mark inside the box is a small pair of splayed legs that hang from the top and spread downward without touching the walls. 西 is noticeably taller, and its two inner strokes stand straight up like poles fixed to the top edge.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
       "review_status": "reviewed"
     }

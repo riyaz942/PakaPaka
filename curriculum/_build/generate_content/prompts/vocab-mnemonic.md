@@ -18,6 +18,36 @@ of skipping it. Treat it as the target, not a rule: going over to finish a scene
 is fine, padding to reach a number is not. (The reading mnemonic follows the
 reading section below — a derivation note stays one sentence no matter what.)
 
+## The kanji must add up to the word
+
+This is the rule the whole mnemonic stands on. The kanji in this word have to
+*combine into* its meaning, so that a reader can see why those characters
+produce that word. A scene in which each kanji takes a turn doing something,
+with the meaning announced at the end, teaches nothing — the learner remembers a
+squirrel and a cascade of bells and still cannot say what the word means.
+
+Test it: delete one kanji's clause. If the mnemonic still makes the same point,
+that kanji was staged as decoration rather than used as a reason. Rewrite it so
+every kanji is load-bearing.
+
+Never invent a bystander to carry the logic. If your scene needs a gatekeeper, a
+hiker, or a passing animal who is not one of this word's kanji to make the point
+land, the point is not actually coming from the kanji.
+
+The kanji mnemonics use a hard one-sentence form for this reason. A vocabulary
+word may take more room than that — it is joining whole kanji stories, not
+radicals — but the same discipline applies: shorter is better, and if you can
+say it in one sentence, say it in one sentence.
+
+## Sentence shape
+
+Short sentences. One idea per sentence — most under 18 words, none over 25.
+The learner reads this tired, on a phone, often in English as a second
+language, so the scene has to survive a skim. When a sentence wants a second
+clause, a dash, or an "-ing" tail ("eyes streaming"), make it two sentences
+instead. Concrete everyday words are always fine; a long winding sentence
+never is.
+
 ## The word
 
 - Written form: **{{FORM}}**
@@ -62,10 +92,12 @@ colour means nothing.
 Call the `submit_vocab_mnemonic` tool exactly once with:
 
 1. **`meaning_mnemonic`** — a story that runs the component kanji's meanings
-   together until they land on
-   “{{MEANING}}”. Start from the imagery those kanji already carry, put them in
-   one scene, and let the word's meaning fall out of what happens. Strange and
-   funny is what survives reviews. End on the meaning. If no kanji are listed
+   together until they *produce* “{{MEANING}}”. Start from the imagery those
+   kanji already carry, put them in one scene, and let the word's meaning fall
+   out of the logic of what they are — see “The kanji must add up to the word”
+   above; that is the part that matters most. Strange and funny is what survives
+   reviews. The meaning may sit anywhere in the prose, tagged once; do not
+   contort the wording to push it to the end. If no kanji are listed
    above — a kana word, or one whose kanji the learner hasn't met — write a
    standalone story that glues the sound to the meaning instead, and name no
    kanji at all.

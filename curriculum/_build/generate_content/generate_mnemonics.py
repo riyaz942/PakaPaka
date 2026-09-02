@@ -9,7 +9,7 @@ call, drafts written under generate_content/drafts/mnemonics/, and — only afte
 passing the mechanical gate (validate_mnemonics.py) — assembled into per-level
 sidecars that generate.py inlines into the shipped JSON:
 
-    curriculum/radicals/mnemonics/<level>.json    (mnemonic + optional description)
+    curriculum/radicals/mnemonics/<level>.json    (mnemonic + image prompt + optional description)
     curriculum/kanji/mnemonics/<level>.json       (meaning/reading mnemonic + optional description)
     curriculum/vocabulary/mnemonics/<level>.json  (meaning/reading mnemonic + optional description)
 
@@ -73,6 +73,58 @@ MODEL = "claude-opus-4-8"
 #:     the reading, description optional)
 #: 4 = Rev 3, kanji/vocab (length band recalibrated to the reviewed N5 sizes)
 #:
+#: Rev 4 (sentence-shape guidance in all three prompts + the readability gate
+#: in validate_mnemonics) deliberately bumps NOTHING. The maintainer's call:
+#: no existing item is rewritten for readability. The gate therefore runs only
+#: on freshly generated drafts (_process_outcomes, cmd_ingest); the stored-draft
+#: re-validation in cmd_run skips it, so a re-run of a finished level never
+#: requeues kept items for sentence length. New slugs get the new prompt and
+#: the new gate; old slugs keep their prose.
+#:
+#: Rev 5 (radicals only: the contract splits into two fields — image_prompt,
+#: the stroke-walked scene the Tier 2 art is drawn from, and mnemonic_text,
+#: the shorter learner-facing summary of the same scene) also bumps NOTHING.
+#: The backfill (prompts/radical-mnemonic-triage.md + radical-mnemonic-
+#: simplify.md) copies each kept mnemonic verbatim into image_prompt, so every
+#: existing radical already conforms; the gate requires image_prompt only on
+#: freshly generated drafts, the same lane as the Rev 4 readability gate.
+#:
+#: Rev 6 (kanji only, and only the meaning mnemonic: 120–220 characters of plain
+#: English in one cause-and-effect chain, the <kanji> landing tag added to the
+#: generation prompt, LEN_BOUNDS refitted to 100–260) also bumps NOTHING, for the
+#: same reason as Rev 4. All 469 stored kanji are stamped 4 and 351 of them are
+#: human-reviewed; numbering this 5 would mark every one of them stale and let
+#: the next `run` overwrite reviewed prose to change its house style. Requeue the
+#: items you actually want restyled by slug (`--slugs`) instead. New slugs get the
+#: new prompt and the new band; old slugs keep their prose until asked.
+#:
+#: Rev 7 (kanji only: a kanji that *is* a taught radical — same character, same
+#: meaning, 山 over the 山 radical — states that instead of inventing a scene;
+#: mnemonic_context.identical_radical detects them, the prompt's IDENTITY_NOTE
+#: block instructs, and LEN_BOUNDS drops to IDENTITY_MEANING_BOUNDS for them)
+#: also bumps NOTHING, same reasoning again. 116 kanji are in the class, 70 of
+#: them already have stored prose, and a bump would silently requeue every one.
+#: The detector is mechanical, so `--slugs` over that list is the way to restyle
+#: them deliberately — which is what the Rev 6/7 sweep did.
+#:
+#: Rev 9 (kanji only, and only the reading mnemonic: one sentence or two short
+#: ones, 90–200 characters, in which the phonetic hook and the kanji's taught
+#: meaning are the same joke, with the meaning wrapped in the `<kanji>` tag the
+#: meaning mnemonic already uses) also bumps NOTHING, for the same reason as
+#: Rev 4/6/7. Every stored reading mnemonic predates the rule — the three-
+#: sentence scene with no meaning in it is exactly what the old contract asked
+#: for — and the maintainer keeps them. The sentence cap, the tighter band
+#: (READING_FRESH_BOUNDS) and the required `<kanji>` tag therefore all ride the
+#: enforce_readability lane, and LEN_BOUNDS' stored band only had its floor
+#: lowered (120 -> 90), which can pass more stored drafts but never fail one.
+#: Restyle by slug (`--slugs`) if you ever do want the old readings redone.
+#:
+#: After that sweep all 469 stored kanji pass the current meaning gate, so the
+#: number 4 is once again an honest "conforms to contract 4". Do not read that
+#: as licence to bump: `cmd_run` regenerates any stored draft stamped with an
+#: older version, so a bump would throw the sweep away to re-derive what is
+#: already there.
+#:
 #: Radicals go **back to 1**, and that is deliberate rather than a typo: Rev 3
 #: reverts the radical contract to the original shape and size — a mnemonic_text
 #: of ~150–300 characters, with the description demoted to optional — so the
@@ -123,12 +175,16 @@ SUBMIT_TOOLS = {
         "input_schema": {
             "type": "object",
             "additionalProperties": False,
+            # Rev 5: two texts for one scene — `image_prompt` is the
+            # stroke-walked prompt the Tier 2 art is drawn from (illustrator
+            # only), `mnemonic_text` the shorter learner-facing summary of it.
             # Rev 3: `description` is optional here too — omit it unless the
             # radical has reviewed look-alikes to contrast or a nuance the
             # mnemonic cannot carry.
-            "required": ["mnemonic_text"],
+            "required": ["mnemonic_text", "image_prompt"],
             "properties": {
                 "mnemonic_text": {"type": "string"},
+                "image_prompt": {"type": "string"},
                 "description": {"type": "string"},
             },
         },
@@ -193,6 +249,7 @@ def build_user_prompt(kind, ctx, validator_errors=None):
             "{{KUNYOMI}}": "、".join(ctx["kunyomi"]) or "(none)",
             "{{PRIMARY_READING}}": ctx["primary_reading"] or "(none)",
             "{{COMPONENTS}}": mc.format_components(ctx["components"]),
+            "{{IDENTITY_NOTE}}": mc.format_identity(ctx),
             "{{LOOK_ALIKES}}": mc.format_look_alikes(ctx["look_alikes"]),
             "{{CAST_BLOCK}}": cast_lib.format_cast_block(ctx["reading_lore"], ctx["cast"]),
             "{{VALIDATOR_FEEDBACK}}": _feedback_block(validator_errors),
@@ -340,7 +397,10 @@ def _process_outcomes(level, kind, contexts, records, outcomes):
             _save_draft(record)
             continue
         tool_input = outcome["tool_input"]
-        errors = validate_draft(level, kind, slug, tool_input, ctx)
+        # Freshly generated output faces the Rev 4 readability gate; stored
+        # drafts re-validated in cmd_run do not (see PROMPT_VERSION).
+        errors = validate_draft(level, kind, slug, tool_input, ctx,
+                                enforce_readability=True)
         record["attempts"].append({"attempt": attempt, "errors": errors})
         record["tool_input"] = tool_input
         record["generator_model"] = MODEL
@@ -569,9 +629,10 @@ _SPLIT_SKELETON = ('```json\n{\n  "meaning_mnemonic": "...",\n  '
 WEB_SKELETON = {
     "kanji": _SPLIT_SKELETON,
     "vocab": _SPLIT_SKELETON,
-    "radical": ('```json\n{\n  "mnemonic_text": "..."\n}\n```'
+    "radical": ('```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "..."\n}\n```'
                 + _OPTIONAL_DESCRIPTION_LINE +
-                '```json\n{\n  "mnemonic_text": "...",\n  "description": "..."\n}\n```'),
+                '```json\n{\n  "mnemonic_text": "...",\n  "image_prompt": "...",\n  '
+                '"description": "..."\n}\n```'),
 }
 
 
@@ -655,7 +716,9 @@ def cmd_ingest(args):
         tool_input = _first_json_object(f.read())
 
     ctx = _context_for(args.level, args.kind, args.slug)
-    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx)
+    # The web lane generates new content, so the Rev 4 readability gate applies.
+    errors = validate_draft(args.level, args.kind, args.slug, tool_input, ctx,
+                            enforce_readability=True)
     record = _load_draft(args.level, args.kind, args.slug)
     record["tool_input"] = tool_input
     record["generator_model"] = args.model
