@@ -8399,12 +8399,13 @@
           "answer_text": "よう"
         }
       ],
-      "meaning_mnemonic": "A <radical>pheasant</radical> that only calls when the <radical>sun</radical> is properly up marks off another <kanji>weekday</kanji>.",
-      "reading_mnemonic": "Yoko, exhausted, groans \"no more, no more\" as she crosses off day after day on the wall calendar. Every square she reaches she moans <reading>よう</reading>, よう, because to her every single weekday feels the same.",
+      "meaning_mnemonic": "A <kanji>weekday</kanji> is any <radical>day</radical> that begins when a startled <radical>pheasant</radical> shoots straight up, lands right back down, and screeches until you leave for work.",
+      "reading_mnemonic": "The tired commuter <reading>Yo</reading> greets everyone with the same flat <reading>よう</reading> every <kanji>weekday</kanji>, because five mornings of packed trains have sanded his voice down to that one grunt.",
+      "description": "The gloss 'weekday' really covers the whole week, weekend included; it means 'day of the week'. You will meet this kanji almost only inside those day names and almost nowhere else.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -8798,13 +8799,12 @@
           "answer_text": "まい"
         }
       ],
-      "meaning_mnemonic": "A <radical>chevron</radical> on the sign with <radical>do not</radical> underneath it turns up at <kanji>every</kanji> single corner in town.",
-      "reading_mnemonic": "The clock belongs to Mai, who winds it every morning and shouts \"My time!\" as it rings. Hear her name <reading>まい</reading> as the sound that hammers home the routine — every day, まい, まい, まい.",
-      "description": "Means \"every\" and shows up in common time words for recurring events, such as every day, every week, and every morning.",
+      "meaning_mnemonic": "Adding an angled <radical>chevron</radical> across the <radical>do not</radical> bar turns a single ban into one that covers <kanji>every</kanji> object in the room.",
+      "reading_mnemonic": "The konbini toddler everyone calls <reading>My</reading> jabs a finger at <kanji>every</kanji> onigiri on the shelf and yells 「<reading>まい</reading>」, claiming each one the second she sees it.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -9321,12 +9321,12 @@
           "answer_text": "こう"
         }
       ],
-      "meaning_mnemonic": "A <radical>tree</radical> in a yard where children <radical>mingle</radical> between two bells is standing in a <kanji>school</kanji>.",
-      "reading_mnemonic": "Koichi, the konbini king, has set up a pop-up shop right inside the school gate, restocking onigiri between classes and muttering <reading>こう</reading>, こう as he lines up the shelves. The kids buy their lunch from him before the bell.",
+      "meaning_mnemonic": "Plant a <radical>tree</radical> along each path so hundreds of kids <radical>mingle</radical> in the shade where the walkways cross, and you have built a <kanji>school</kanji>.",
+      "reading_mnemonic": "At Sei's <kanji>school</kanji>, the gym teacher turns out to be Koichi the konbini king, who blasts his whistle and barks 「<reading>こう</reading>」 because that is all of the word <reading>coach</reading> he can be bothered to shout.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "flagged_for_rewrite"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -11621,7 +11621,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -12157,12 +12157,12 @@
           "answer_text": "ばい"
         }
       ],
-      "meaning_mnemonic": "A <radical>samurai</radical> with a <radical>cover</radical> over his crest and his <radical>human legs</radical> behind a stall has come to <kanji>sell</kanji>.",
-      "reading_mnemonic": "The vendor keeps yelling one thing at every customer who walks past: \"Buy! <reading>ばい</reading>, ばい, one for you and one for the baby!\" He'll sell to anyone who slows down, and every pitch ends on that same ばい.",
+      "meaning_mnemonic": "A <radical>samurai</radical> too proud to be seen throws a <radical>cover</radical> over his face and takes to the road on his own <radical>human legs</radical>, where the only work left is to <kanji>sell</kanji>.",
+      "reading_mnemonic": "The stall owner named <reading>Bye</reading> lifts each plush toy over his head and calls 「<reading>ばい</reading>」 the instant he <kanji>sell</kanji>s it, since a man with that name treats every sale as one more sad farewell.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -13105,12 +13105,12 @@
           "answer_text": "こう"
         }
       ],
-      "meaning_mnemonic": "A <radical>lid</radical> over a <radical>mouth</radical> looking out across open <radical>prairie</radical> has been built very <kanji>tall</kanji>.",
-      "reading_mnemonic": "Koichi, the konbini king, is jealous of that tall tower, so he stacks his onigiri shelves higher and higher until they're the tallest — and priciest — display in town. As the tower of rice balls wobbles, he shouts <reading>こう</reading> to warn a customer before it topples.",
+      "meaning_mnemonic": "On the flat <radical>prairie</radical>, a lone tower capped with a pot <radical>lid</radical> and pierced by one <radical>mouth</radical> of a window is the only thing for miles, so it looks impossibly <kanji>tall</kanji>.",
+      "reading_mnemonic": "<reading>Koichi</reading> the konbini king pushes his onigiri stack up past the ceiling lights and yells 「<reading>こう</reading>」 at anyone asking how he reaches the top, since no ladder he owns is that <kanji>tall</kanji>.",
       "_meta": {
-        "generator_model": "claude-opus-4-8",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -13382,13 +13382,12 @@
           "answer_text": "しん"
         }
       ],
-      "meaning_mnemonic": "An <radical>axe</radical> taken to a <radical>tree</radical> that used to <radical>stand</radical> there leaves you timber that is completely <kanji>new</kanji>.",
-      "reading_mnemonic": "The showroom greeter is Shin, and every time a new model rolls in he shouts his own name — <reading>しん</reading>! — as he yanks the cover off. Whatever Shin unveils is always brand new.",
-      "description": "Means \"new\"; a very common kanji appearing in words for new things, newspapers, and freshness.",
+      "meaning_mnemonic": "Take an <radical>axe</radical> to a <radical>tree</radical> that is still <radical>stand</radical>ing and the pale wood you lay bare underneath is perfectly <kanji>new</kanji>.",
+      "reading_mnemonic": "<reading>Shin</reading> the carpenter sniffs every plank, barks 「<reading>しん</reading>」 at the ones that still smell of sap, and tosses out anything that is not bright and <kanji>new</kanji>.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -13528,7 +13527,7 @@
       "_meta": {
         "generator_model": "claude-opus-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -13677,13 +13676,13 @@
       "visually_similar_slugs": [
         "n5-meiname"
       ],
-      "meaning_mnemonic": "One <radical>evening</radical> stacked straight on top of another <radical>evening</radical> is how you end up with <kanji>many</kanji>.",
-      "reading_mnemonic": "At the top of the mountain trail, Ta counts the coins in the improbable vending machine. There are far too many to hold. \"<reading>た</reading>, た, た,\" she taps each one as they spill from her hands. There are just too many.",
-      "description": "多 is the same slanted piece written twice, one stacked below the other. 名 writes that piece once and puts a small closed box underneath it instead.",
+      "meaning_mnemonic": "Set one <radical>evening</radical> on top of another and the stack of spent days behind you already counts as <kanji>many</kanji>.",
+      "reading_mnemonic": "<reading>Tally</reading>, who counts the cats at Grandma Kane's shrine, says 「<reading>た</reading>」 for each one and never reaches the end, because the strays curled on those mossy steps are far too <kanji>many</kanji>.",
+      "description": "The look-alike is 名, meaning name. Both start with the same leaning crescent on top. In this kanji a second identical crescent sits directly below it, the very same shape written twice; in 名 a closed square box sits there instead.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -14101,13 +14100,13 @@
           "answer_text": "そう"
         }
       ],
-      "meaning_mnemonic": "The <radical>sun</radical> is barely <radical>ten</radical> fingers above the horizon, which means you are up <kanji>early</kanji>.",
-      "reading_mnemonic": "There's a rooster at Grandma Kane's shrine who crows the moment the sun peeks over the mossy steps, way too early: \"<reading>そう</reading>! そう!\" he screams, so loud the cats scatter. Now you're up before dawn whether you like it or not.",
-      "description": "Means \"early\" or \"fast,\" and shows up in everyday words about time and speed like 早い (early/fast) and 早く (quickly).",
+      "meaning_mnemonic": "It is still <kanji>early</kanji> when the <radical>sun</radical> has climbed only <radical>ten</radical> finger-widths above the hills.",
+      "reading_mnemonic": "A tailor called <reading>Sew</reading> is so set on being <kanji>early</kanji> that she turns up before the shop unlocks and hems the doormat to pass the time, humming <reading>そう</reading> to herself.",
+      "description": "The one kanji covers 'early' in time and 'fast' in pace at once; context, not the character, tells you which sense a sentence means.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -14227,13 +14226,12 @@
           "answer_text": "こく"
         }
       ],
-      "meaning_mnemonic": "A <radical>jewel</radical> kept inside an <radical>enclosure</radical> that nobody may cross is what makes a <kanji>country</kanji>.",
-      "reading_mnemonic": "At the border of this walled country stands a guard named Koku, who stamps every passport with a cheerful <reading>こく</reading> sound. No stamp, no entry — こく, こく, all day long.",
-      "description": "Means \"country\" or \"nation\"; a very common kanji seen in words for countries and citizenship, read こく in compounds and くに on its own.",
+      "meaning_mnemonic": "A <kanji>country</kanji> is nothing but an <radical>enclosure</radical> of walls built around the one <radical>jewel</radical> its people refuse to share.",
+      "reading_mnemonic": "Nobody crosses into the <kanji>country</kanji> until the guard <reading>Cook</reading> slaps his one stamp down and barks 「<reading>こく</reading>」, the only word he seems to own.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -14904,13 +14902,13 @@
           "answer_text": "どう"
         }
       ],
-      "meaning_mnemonic": "A <radical>road</radical> narrow enough to feel like the <radical>neck</radical> of a bottle is still the only <kanji>way</kanji> through.",
-      "reading_mnemonic": "Halfway up the road you meet a doe standing in the middle of the path, blocking the way. She won't budge, so you call out \"<reading>どう</reading> do I get past you?\" — and the doe just chews and stares, owning the whole road.",
-      "description": "Means road or way; a very common kanji seen in words for streets, paths, and figurative \"ways\" of doing things.",
+      "meaning_mnemonic": "The <kanji>road</kanji> is whatever your long <radical>neck</radical> cranes to stare at while your feet <radical>advance</radical>, because you always point your head down the path before you walk it.",
+      "reading_mnemonic": "<reading>Dough</reading> the baker rolls his batch so thin it slides out the door and down the hill as one pale <kanji>road</kanji>, and by noon the whole town has tracked jam along it while he groans 「<reading>どう</reading>」.",
+      "description": "Beyond a physical street, 道 also means 'the way' in the sense of a lifelong discipline, which is why it trails the names of pursuits like judo, kendo, and calligraphy.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -15171,13 +15169,12 @@
           "answer_text": "し"
         }
       ],
-      "meaning_mnemonic": "A <radical>lid</radical> pulled over row after row of hanging <radical>cloth</radical> is a whole <kanji>city</kanji> of stalls.",
-      "reading_mnemonic": "The busiest stall belongs to Shi, a sharp-eyed vendor who greets every shopper crossing the market with a cheerful 「<reading>し</reading>!」. Follow her voice and you'll always find the center of the city.",
-      "description": "Means city or market; shows up in words for towns and municipal places like 市 (city) and city names.",
+      "meaning_mnemonic": "A <kanji>market</kanji> is what you get when every stall hangs out its <radical>cloth</radical> awning and the town claps one <radical>lid</radical> over the whole noisy square.",
+      "reading_mnemonic": "The fishmonger who runs the whole <kanji>market</kanji> is called <reading>Sheena</reading>, and she names her price by slapping a fish on the scale and hissing 「<reading>し</reading>」.",
       "_meta": {
-        "generator_model": "claude-opus-5",
+        "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -15867,7 +15864,7 @@
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -15982,12 +15979,12 @@
           "answer_text": "object"
         }
       ],
-      "meaning_mnemonic": "A <radical>person</radical> is really just a <radical>book</radical> of bones and organs bound into a single <kanji>body</kanji>.",
-      "reading_mnemonic": "Someone always loops a spare <reading>tie</reading> around the training dummy's neck before drills, and the coach barks <reading>たい</reading> to snap the team to attention — same dummy, same crooked tie, every single practice.",
+      "meaning_mnemonic": "A <kanji>body</kanji> is the single <radical>book</radical> every <radical>person</radical> is born already holding and can never put down, since each fresh ache is one more page turning itself.",
+      "reading_mnemonic": "No one warns you that the tailor <reading>Ty</reading> stitches the jacket straight onto your <kanji>body</kanji>, so you only notice when he yanks a seam tight against your ribs and mutters 「<reading>たい</reading>」.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -16106,12 +16103,12 @@
           "answer_text": "matter"
         }
       ],
-      "meaning_mnemonic": "Anything that is a <radical>cow</radical> and <radical>not</radical> a person gets filed away as a mere <kanji>thing</kanji>.",
-      "reading_mnemonic": "Koichi holds up a single lost <reading>boot</reading> from the bin and grunts <reading>ぶつ</reading> — the general word for 'thing,' because after six unclaimed months, calling it a boot feels oddly specific.",
+      "meaning_mnemonic": "On the farm only the <radical>cow</radical> gets a real name, so every other object that is <radical>not</radical> her is written off as a plain <kanji>thing</kanji>.",
+      "reading_mnemonic": "<reading>Boots</reading> the sulky mailman kicks every loose <kanji>thing</kanji> off the path and spits 「<reading>ぶつ</reading>」 at each one he sends flying.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -16242,12 +16239,12 @@
           "answer_text": "boiled rice"
         }
       ],
-      "meaning_mnemonic": "A plate of <radical>food</radical> is the <radical>opposite</radical> of an empty one, and closing that gap is what a <kanji>meal</kanji> is for.",
-      "reading_mnemonic": "Han, the half-and-half chef, slices your whole dinner clean down the center before you can protest — that's just how he works here. You call out his name, <reading>Han</reading>, and he answers with a proud <reading>はん</reading>, holding up two identical plates like it settles the matter.",
+      "meaning_mnemonic": "When you quit cooking <radical>food (left)</radical> and do the exact <radical>opposite</radical>, you finally sit down to a proper <kanji>meal</kanji>.",
+      "reading_mnemonic": "A <kanji>meal</kanji> from <reading>Han</reading> always turns up sliced straight down the middle, because he cannot say 「<reading>はん</reading>」 without halving whatever sits on your plate.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -16611,12 +16608,12 @@
           "answer_text": "sick"
         }
       ],
-      "meaning_mnemonic": "A <radical>sickness</radical> bad enough to put you in a <radical>third class</radical> bed is what it looks like to be genuinely <kanji>ill</kanji>.",
-      "reading_mnemonic": "The former beauty-pageant queen lies flat under the sickroom's too-short blanket, moaning into her pillow. This is the least glamorous she has ever looked: 「<reading>びょう</reading>」, she groans, sounding exactly like the first half of <reading>beauty</reading> gone hoarse.",
+      "meaning_mnemonic": "An <kanji>ill</kanji> body is just a healthy one that <radical>sickness</radical> has bumped down to <radical>third class</radical>.",
+      "reading_mnemonic": "A mangy owl called <reading>Bee-Owl</reading> is so <kanji>ill</kanji> it can no longer hoot, and every 「<reading>びょう</reading>」 it coughs up costs it another feather.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -16752,12 +16749,13 @@
           "answer_text": "temple"
         }
       ],
-      "meaning_mnemonic": "A <radical>perfect</radical> row of buildings up on the <radical>hill</radical> is how every <kanji>Inst</kanji>itute wants to be seen.",
-      "reading_mnemonic": "At the same window, the visor cat's ink stamp has half-dried, so every ticket comes out a pale <reading>いん</reading>. She grumbles it sounds like <reading>bean</reading> paste smeared thin, and refuses to fetch a new pad before the shrine's afternoon bell.",
+      "meaning_mnemonic": "Raise a truly <radical>perfect</radical> hall high on its own <radical>hill (left)</radical>, and it is grand enough to be called an <kanji>Inst.</kanji>",
+      "reading_mnemonic": "The keeper of the world's biggest <reading>inn</reading> keeps adding wings and halls, yet still bellows 「<reading>いん</reading>」 across a courtyard that has swollen into a full <kanji>Inst.</kanji>",
+      "description": "Short for institution: it names big establishments such as hospitals, temples, and government bodies, and rarely stands alone.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -16904,12 +16902,12 @@
           "answer_text": "large building"
         }
       ],
-      "meaning_mnemonic": "Put a kitchen of <radical>food</radical> under the same roof as a <radical>bureaucrat</radical> and you need a <kanji>building</kanji> big enough for both.",
-      "reading_mnemonic": "The gym teacher, thrilled with his new marble domain, now calls himself 「<reading>かん</reading>」 instead of coach — loosely, <reading>Khan</reading>. He blows his whistle from the staircase every morning like a monarch addressing the badminton court below.",
+      "meaning_mnemonic": "Any <kanji>building</kanji> is just an empty shell until a <radical>bureaucrat</radical> moves in with his stamp and there is enough <radical>food (left)</radical> over from lunch to keep him at the desk.",
+      "reading_mnemonic": "The night caretaker <reading>Khan</reading> looks after exactly one <kanji>building</kanji>, and he snaps 「<reading>かん</reading>」 at anyone who so much as leans on its door after closing.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -17062,12 +17060,12 @@
           "answer_text": "void"
         }
       ],
-      "meaning_mnemonic": "When the entire <radical>construction</radical> job is digging one <radical>hole</radical>, the thing you have built is an <kanji>empty</kanji> space.",
-      "reading_mnemonic": "Still stuck at the summit, the hiker slumps against the machine and lets out a long, pigeon-like <reading>coo</reading> up at the empty sky. 「<reading>くう</reading>」, rising and hollow, over and over, until it's the only sound left on the mountain.",
+      "meaning_mnemonic": "A <radical>cave</radical> that a whole <radical>construction</radical> crew has finished digging out is, for all that effort, still just an <kanji>empty</kanji> hollow in the hill.",
+      "reading_mnemonic": "The pigeon <reading>Coo</reading> will only settle somewhere <kanji>empty</kanji>, because he needs the bare walls to bounce his proud 「<reading>くう</reading>」 back at him.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -17190,12 +17188,12 @@
           "answer_text": "picture"
         }
       ],
-      "meaning_mnemonic": "Every <kanji>brush-stroke</kanji> is <radical>one</radical> line with a <radical>reason</radical>, laid down inside the <radical>open box</radical> of the page.",
-      "reading_mnemonic": "Back in the art room, the teacher looks at the smeared frame and can only manage a flat, deflated <reading>gah</reading> — <reading>が</reading> — the sound of someone giving up on a critique before it starts. He staples a ribbon to it anyway and calls it finished.",
+      "meaning_mnemonic": "One line dragged over flat <radical>ground</radical> is just a mark until an <radical>open box</radical> frames it, which is the entire <radical>reason</radical> it now reads as a deliberate <kanji>brush-stroke</kanji>.",
+      "reading_mnemonic": "The painter <reading>Gar</reading> grunts 「<reading>が</reading>」 on every single <kanji>brush-stroke</kanji>, so a busy afternoon of work leaves him too hoarse to speak.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -17336,12 +17334,12 @@
           "answer_text": "shop"
         }
       ],
-      "meaning_mnemonic": "Wherever your <radical>body</radical> finally <radical>arrive</radical>s at the end of the day, the thing over it is a <kanji>roof</kanji>.",
-      "reading_mnemonic": "Weeks later, the tarp is still up, now painted with a crude little <reading>oak</reading> tree Koichi drew himself — <reading>おく</reading> — because customers kept asking what was holding the whole roof together. Nobody has the heart to tell him it's just tarp and string.",
+      "meaning_mnemonic": "A <kanji>roof</kanji> is nothing but a sagging <radical>body</radical> sprawled overhead, and you only notice it the moment you <radical>arrive</radical> under it out of the rain.",
+      "reading_mnemonic": "The carpenter <reading>Oak</reading> turns down every job except a <kanji>roof</kanji>, and he barks 「<reading>おく</reading>」 down at you from the ridge beam the whole time he nails it on.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -17710,12 +17708,12 @@
           "answer_text": "し"
         }
       ],
-      "meaning_mnemonic": "Mashed <radical>thread</radical> pressed flat until it can hold a <radical>family name</radical> in ink has become <kanji>paper</kanji>.",
-      "reading_mnemonic": "At the same riverbank, a heron picks through the drying pulp and hisses 「<reading>し</reading>」 as the wet sheet slips under its feet. That flat <reading>sheesh</reading> of air escaping is the exact noise you make when you finally get the paper flat.",
+      "meaning_mnemonic": "<kanji>Paper</kanji> is a mat of <radical>thread</radical> pulp beaten flat until it can hold a <radical>family name</radical> stamped on it in one clean press.",
+      "reading_mnemonic": "Koichi's clerk <reading>Sheila</reading> won't touch plastic and wraps every sale in <kanji>paper</kanji>, hissing 「<reading>し</reading>」 with each sheet she tears off the roll.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -17864,12 +17862,13 @@
           "answer_text": "Buddhist sect"
         }
       ],
-      "meaning_mnemonic": "A <radical>tool</radical> that reads the same on all <radical>ten</radical> of its marks is telling you something <kanji>true</kanji>.",
-      "reading_mnemonic": "One of the shrine cats leaps for the ladle, misjudges the step, and slams its shin against the stand. It yowls 「<reading>しん</reading>」, the sound of the English word <reading>shin</reading>, before limping off — the truest reaction any cat has given all day.",
+      "meaning_mnemonic": "Something is <kanji>true</kanji> only when all <radical>ten</radical> inspectors, each checking with the same steady <radical>tool</radical>, come back with the same answer.",
+      "reading_mnemonic": "A courtroom lie-detector nicknamed <reading>Shin</reading> chimes <reading>しん</reading> the moment a statement is <kanji>true</kanji>, so nervous witnesses keep over-explaining just to hear it side with them.",
+      "description": "Besides 'true', this kanji often acts as a prefix meaning 'dead-' or 'exactly': dead centre, right in the middle, pure white. In that spot it means 'completely', not 'true'.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -18283,12 +18282,12 @@
           "answer_text": "change"
         }
       ],
-      "meaning_mnemonic": "It takes real <radical>power</radical> to make anything that <radical>heavy</radical> actually <kanji>move</kanji>.",
-      "reading_mnemonic": "Koichi lurches out of the way and yelps <reading>どう</reading> — a flat, startled <reading>doh</reading> — as the crate rumbles past the beeping till and rocks the onigiri shelf on its way through.",
+      "meaning_mnemonic": "Nothing <radical>heavy</radical> will <kanji>move</kanji> even a single inch until you shove a burst of raw <radical>power</radical> in behind it.",
+      "reading_mnemonic": "Lazy baker <reading>Dough</reading> won't stir by hand, so he barks 「<reading>どう</reading>」 at the mixer until the blades start to <kanji>move</kanji> on their own.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -18433,12 +18432,13 @@
           "answer_text": "ease"
         }
       ],
-      "meaning_mnemonic": "Wind through a <radical>tree</radical> whose <radical>white</radical> branches are sealed in <radical>ice</radical> makes the oldest <kanji>music</kanji> there is.",
-      "reading_mnemonic": "Sei gawks up at the tree, mouth open, murmuring <reading>がく</reading> — pure <reading>gawk</reading> — unable to look away from the bells still swinging long after the squirrel is gone.",
+      "meaning_mnemonic": "Beads of <radical>white</radical> <radical>ice</radical> strung along the branches of a bare <radical>tree</radical> knock together in the wind and shiver into faint <kanji>music</kanji>.",
+      "reading_mnemonic": "At Grandma Kane's shrine a tone-deaf monk named <reading>Gawk</reading> whacks the giant bell and howls 「<reading>がく</reading>」, and the cats bolt from what he calls <kanji>music</kanji>.",
+      "description": "This character also means comfortable, easy, or fun, not only music, and it switches to a different on'yomi in that everyday sense.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19005,12 +19005,12 @@
           "answer_text": "live"
         }
       ],
-      "meaning_mnemonic": "A <radical>person</radical> who is <radical>lord</radical> of one small room is going to <kanji>dwell</kanji> in it for good.",
-      "reading_mnemonic": "At Grandma Kane's shrine, one cat never wanders past the mossy steps — Jusuke, who has lived under the bell so long nobody remembers him arriving. Every time it tolls, he grumbles <reading>じゅう</reading>, low in his throat, like the word <reading>chew</reading> dragged out twice as long.",
+      "meaning_mnemonic": "A <radical>person</radical> who plants himself in a house long enough to be treated as its <radical>lord</radical> has done nothing but <kanji>dwell</kanji> there.",
+      "reading_mnemonic": "<reading>Jude</reading> has not stepped outside his flat in ten years, and when the landlord knocks he just groans 「<reading>じゅう</reading>」 and goes on <kanji>dwell</kanji>ing.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19269,12 +19269,12 @@
           "answer_text": "travel"
         }
       ],
-      "meaning_mnemonic": "A <radical>person</radical> who picks a <radical>direction</radical> and follows the <radical>chevron</radical> on every signpost is on a <kanji>trip</kanji>.",
-      "reading_mnemonic": "Leading them is a llama guide named <reading>Rio</reading>, bleating <reading>りょ</reading> at every switchback to keep the line moving. By the vending machine he collapses first, legs folded, still muttering it between breaths.",
+      "meaning_mnemonic": "A <radical>person</radical> up front and a second <radical>person</radical> behind, both walking after an angled <radical>chevron</radical> banner in whatever <radical>direction</radical> the signpost's arm points, are on a <kanji>trip</kanji>.",
+      "reading_mnemonic": "A tour guide called <reading>Rio</reading> begins every <kanji>trip</kanji> by barking 「<reading>りょ</reading>」 the instant the bus doors hiss shut, leaving latecomers to chase the bumper down the road.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19405,12 +19405,13 @@
           "answer_text": "official"
         }
       ],
-      "meaning_mnemonic": "A <radical>person</radical> whose entire job is standing half a step behind a <radical>samurai</radical> is there to <kanji>attend</kanji> him.",
-      "reading_mnemonic": "Beside him works a hedgehog cashier named <reading>Shea</reading>, who hisses <reading>し</reading> through her teeth every time the till beeps too loud. The clerk never breaks his salute, but Shea flinches at every beep, still hissing it under her breath at closing.",
+      "meaning_mnemonic": "A <radical>person</radical> who trails a step behind a <radical>samurai</radical> all day, carrying his sandals and his tea, is there to <kanji>attend</kanji> him.",
+      "reading_mnemonic": "A servant called <reading>Sheila</reading> is so keen to <kanji>attend</kanji> her lord that she blurts 「<reading>し</reading>」 the second he clears his throat, already halfway to the kitchen.",
+      "description": "Attend here means waiting on a master, not being present somewhere. In most compounds the character simply means doing or how a thing is done.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19542,12 +19543,13 @@
           "answer_text": "subject"
         }
       ],
-      "meaning_mnemonic": "Getting the <radical>right</radical> words across the <radical>head</radical> of the page is how you choose a <kanji>topic</kanji>.",
-      "reading_mnemonic": "Dai, the giant baby the size of a truck, crawls up to that same gate and still can't read the plaque. He throws his head back and wails his own name, <reading>Dai</reading>, at a pitch that registers as <reading>だい</reading> on every seismograph in town, and the plaque shudders on its bolts.",
+      "meaning_mnemonic": "The <kanji>topic</kanji> is the single <radical>right</radical> word that has to sit in a chapter's <radical>head</radical>ing.",
+      "reading_mnemonic": "The truck-sized baby <reading>Dai</reading> finds every family <kanji>topic</kanji> boring unless it is about him, so he bellows his own name, 「<reading>だい</reading>」, until the table gives in and talks about him.",
+      "description": "Beyond topic, this is the ordinary character for the title of a book or film and for an exam or homework question. All three senses share one idea: what the thing is about.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19678,12 +19680,12 @@
           "answer_text": "noise"
         }
       ],
-      "meaning_mnemonic": "Something that can <radical>stand</radical> in the air all <radical>day</radical> without ever being seen has to be <kanji>sound</kanji>.",
-      "reading_mnemonic": "Every clang like that wakes something on the mountain: an echo spirit called <reading>On</reading>, who repeats the vending machine's ring straight back at you, moaning <reading>おん</reading> in the exact pitch of the can hitting the tray, over and over until the trail goes quiet.",
+      "meaning_mnemonic": "A <kanji>sound</kanji> is anything that makes you <radical>stand</radical> straight up, alert, in the middle of an otherwise silent <radical>day</radical>.",
+      "reading_mnemonic": "A hoarder called Owen is certain every <kanji>sound</kanji> is his to <reading>own</reading>, so he seals each one in a jar marked <reading>おん</reading> and shelves it beside the thunder he caught last week.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19812,12 +19814,12 @@
           "answer_text": "enamel"
         }
       ],
-      "meaning_mnemonic": "<radical>Grass</radical> that works on you the way <radical>music</radical> works on a bad mood is being sold as <kanji>medicine</kanji>.",
-      "reading_mnemonic": "A <reading>Yak</reading> shoulders through the konbini door, snuffles the dripping medicine shelf, and swallows a whole bottle in one gulp. Its stomach gurgles, it throws its huge head back, and out comes a groaning <reading>やく</reading> loud enough to rattle the onigiri shelf.",
+      "meaning_mnemonic": "<radical>Grass</radical> brewed until it plays gentle <radical>music</radical> through every sore joint is the oldest kind of <kanji>medicine</kanji>.",
+      "reading_mnemonic": "Hand a <kanji>medicine</kanji> spoon to a <reading>yak</reading> and it bellows 「<reading>やく</reading>」 and sprays the syrup straight back at you, because no yak has ever swallowed a thing the vet ordered.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -19948,12 +19950,12 @@
           "answer_text": "change"
         }
       ],
-      "meaning_mnemonic": "A <radical>vehicle</radical> throwing up a <radical>cloud</radical> of dust manages it by making its wheels <kanji>revolve</kanji>.",
-      "reading_mnemonic": "At the bottom of the trail the loose wheel clips the vending machine, and one stray coin spins out and won't lie flat, circling the gravel — a lone <reading>ten</reading>-yen piece. The hiker chases it, muttering <reading>てん</reading> each time it wobbles past again.",
+      "meaning_mnemonic": "A <radical>vehicle</radical> parked on a <radical>cloud</radical> finds nothing to grip, so its wheels just <kanji>revolve</kanji> and it stays put.",
+      "reading_mnemonic": "Ten the circus bear sprints on a rolling log, spinning it under his paws while he stays in one spot, and the ringmaster shouts 「<reading>てん</reading>」, a perfect <reading>ten</reading>, every time the log <kanji>revolve</kanji>s once more.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {
@@ -20100,12 +20102,13 @@
           "answer_text": "style"
         }
       ],
-      "meaning_mnemonic": "Put a <radical>lid</radical> on the line and <radical>mow</radical> off everything past the full stop to leave exactly one <kanji>sentence</kanji>.",
-      "reading_mnemonic": "Mon-Bun, the rabbit twins, lean over the cat arguing about how it ends. One twin insists it needs a flourish on top, like a bread <reading>bun</reading>, and keeps hollering <reading>ぶん</reading> until the enormous bell rings and the cat twitches the whole sentence into a blur.",
+      "meaning_mnemonic": "A <kanji>sentence</kanji> is a row of words <radical>mow</radical>n short and then capped with a <radical>lid</radical> at the full stop.",
+      "reading_mnemonic": "Mon-Bun, the rabbit twins, never get through a single <kanji>sentence</kanji> out loud, because halfway in they both yelp 「<reading>ぶん</reading>」 and lunge for the same sticky <reading>bun</reading>.",
+      "description": "The taught gloss is sentence, but in compounds this character usually widens to writing or culture in general, as in the words for literature, composition, and civilisation.",
       "_meta": {
         "generator_model": "sonnet-5",
         "prompt_version": "4",
-        "review_status": "draft"
+        "review_status": "reviewed"
       },
       "example_sentences": [
         {

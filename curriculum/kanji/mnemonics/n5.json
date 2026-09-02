@@ -38,13 +38,12 @@
     }
   },
   "n5-atarashii": {
-    "meaning_mnemonic": "An <radical>axe</radical> taken to a <radical>tree</radical> that used to <radical>stand</radical> there leaves you timber that is completely <kanji>new</kanji>.",
-    "reading_mnemonic": "The showroom greeter is Shin, and every time a new model rolls in he shouts his own name — <reading>しん</reading>! — as he yanks the cover off. Whatever Shin unveils is always brand new.",
-    "description": "Means \"new\"; a very common kanji appearing in words for new things, newspapers, and freshness.",
+    "meaning_mnemonic": "Take an <radical>axe</radical> to a <radical>tree</radical> that is still <radical>stand</radical>ing and the pale wood you lay bare underneath is perfectly <kanji>new</kanji>.",
+    "reading_mnemonic": "<reading>Shin</reading> the carpenter sniffs every plank, barks 「<reading>しん</reading>」 at the ones that still smell of sap, and tosses out anything that is not bright and <kanji>new</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-bun-minute": {
@@ -138,7 +137,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-gaku": {
@@ -228,13 +227,13 @@
     }
   },
   "n5-hayai": {
-    "meaning_mnemonic": "The <radical>sun</radical> is barely <radical>ten</radical> fingers above the horizon, which means you are up <kanji>early</kanji>.",
-    "reading_mnemonic": "There's a rooster at Grandma Kane's shrine who crows the moment the sun peeks over the mossy steps, way too early: \"<reading>そう</reading>! そう!\" he screams, so loud the cats scatter. Now you're up before dawn whether you like it or not.",
-    "description": "Means \"early\" or \"fast,\" and shows up in everyday words about time and speed like 早い (early/fast) and 早く (quickly).",
+    "meaning_mnemonic": "It is still <kanji>early</kanji> when the <radical>sun</radical> has climbed only <radical>ten</radical> finger-widths above the hills.",
+    "reading_mnemonic": "A tailor called <reading>Sew</reading> is so set on being <kanji>early</kanji> that she turns up before the shop unlocks and hems the doormat to pass the time, humming <reading>そう</reading> to herself.",
+    "description": "The one kanji covers 'early' in time and 'fast' in pace at once; context, not the character, tells you which sense a sentence means.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-hidari": {
@@ -465,12 +464,12 @@
     }
   },
   "n5-kou-school": {
-    "meaning_mnemonic": "A <radical>tree</radical> in a yard where children <radical>mingle</radical> between two bells is standing in a <kanji>school</kanji>.",
-    "reading_mnemonic": "Koichi, the konbini king, has set up a pop-up shop right inside the school gate, restocking onigiri between classes and muttering <reading>こう</reading>, こう as he lines up the shelves. The kids buy their lunch from him before the bell.",
+    "meaning_mnemonic": "Plant a <radical>tree</radical> along each path so hundreds of kids <radical>mingle</radical> in the shade where the walkways cross, and you have built a <kanji>school</kanji>.",
+    "reading_mnemonic": "At Sei's <kanji>school</kanji>, the gym teacher turns out to be Koichi the konbini king, who blasts his whistle and barks 「<reading>こう</reading>」 because that is all of the word <reading>coach</reading> he can be bothered to shout.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "n5-kuchi": {
@@ -483,13 +482,12 @@
     }
   },
   "n5-kuni": {
-    "meaning_mnemonic": "A <radical>jewel</radical> kept inside an <radical>enclosure</radical> that nobody may cross is what makes a <kanji>country</kanji>.",
-    "reading_mnemonic": "At the border of this walled country stands a guard named Koku, who stamps every passport with a cheerful <reading>こく</reading> sound. No stamp, no entry — こく, こく, all day long.",
-    "description": "Means \"country\" or \"nation\"; a very common kanji seen in words for countries and citizenship, read こく in compounds and くに on its own.",
+    "meaning_mnemonic": "A <kanji>country</kanji> is nothing but an <radical>enclosure</radical> of walls built around the one <radical>jewel</radical> its people refuse to share.",
+    "reading_mnemonic": "Nobody crosses into the <kanji>country</kanji> until the guard <reading>Cook</reading> slaps his one stamp down and barks 「<reading>こく</reading>」, the only word he seems to own.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-kuru-rai": {
@@ -541,13 +539,12 @@
     }
   },
   "n5-mai-every": {
-    "meaning_mnemonic": "A <radical>chevron</radical> on the sign with <radical>do not</radical> underneath it turns up at <kanji>every</kanji> single corner in town.",
-    "reading_mnemonic": "The clock belongs to Mai, who winds it every morning and shouts \"My time!\" as it rings. Hear her name <reading>まい</reading> as the sound that hammers home the routine — every day, まい, まい, まい.",
-    "description": "Means \"every\" and shows up in common time words for recurring events, such as every day, every week, and every morning.",
+    "meaning_mnemonic": "Adding an angled <radical>chevron</radical> across the <radical>do not</radical> bar turns a single ban into one that covers <kanji>every</kanji> object in the room.",
+    "reading_mnemonic": "The konbini toddler everyone calls <reading>My</reading> jabs a finger at <kanji>every</kanji> onigiri on the shelf and yells 「<reading>まい</reading>」, claiming each one the second she sees it.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "n5-man": {
@@ -581,13 +578,13 @@
     }
   },
   "n5-michi": {
-    "meaning_mnemonic": "A <radical>road</radical> narrow enough to feel like the <radical>neck</radical> of a bottle is still the only <kanji>way</kanji> through.",
-    "reading_mnemonic": "Halfway up the road you meet a doe standing in the middle of the path, blocking the way. She won't budge, so you call out \"<reading>どう</reading> do I get past you?\" — and the doe just chews and stares, owning the whole road.",
-    "description": "Means road or way; a very common kanji seen in words for streets, paths, and figurative \"ways\" of doing things.",
+    "meaning_mnemonic": "The <kanji>road</kanji> is whatever your long <radical>neck</radical> cranes to stare at while your feet <radical>advance</radical>, because you always point your head down the path before you walk it.",
+    "reading_mnemonic": "<reading>Dough</reading> the baker rolls his batch so thin it slides out the door and down the hill as one pale <kanji>road</kanji>, and by noon the whole town has tracked jam along it while he groans 「<reading>どう</reading>」.",
+    "description": "Beyond a physical street, 道 also means 'the way' in the sense of a lifelong discipline, which is why it trails the names of pursuits like judo, kendo, and calligraphy.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-migi": {
@@ -695,12 +692,13 @@
     }
   },
   "n5-nichiyou": {
-    "meaning_mnemonic": "A <radical>pheasant</radical> that only calls when the <radical>sun</radical> is properly up marks off another <kanji>weekday</kanji>.",
-    "reading_mnemonic": "Yoko, exhausted, groans \"no more, no more\" as she crosses off day after day on the wall calendar. Every square she reaches she moans <reading>よう</reading>, よう, because to her every single weekday feels the same.",
+    "meaning_mnemonic": "A <kanji>weekday</kanji> is any <radical>day</radical> that begins when a startled <radical>pheasant</radical> shoots straight up, lands right back down, and screeches until you leave for work.",
+    "reading_mnemonic": "The tired commuter <reading>Yo</reading> greets everyone with the same flat <reading>よう</reading> every <kanji>weekday</kanji>, because five mornings of packed trains have sanded his voice down to that one grunt.",
+    "description": "The gloss 'weekday' really covers the whole week, weekend included; it means 'day of the week'. You will meet this kanji almost only inside those day names and almost nowhere else.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "flagged_for_rewrite"
+      "review_status": "reviewed"
     }
   },
   "n5-nishi": {
@@ -732,13 +730,13 @@
     }
   },
   "n5-ooi-ta": {
-    "meaning_mnemonic": "One <radical>evening</radical> stacked straight on top of another <radical>evening</radical> is how you end up with <kanji>many</kanji>.",
-    "reading_mnemonic": "At the top of the mountain trail, Ta counts the coins in the improbable vending machine. There are far too many to hold. \"<reading>た</reading>, た, た,\" she taps each one as they spill from her hands. There are just too many.",
-    "description": "多 is the same slanted piece written twice, one stacked below the other. 名 writes that piece once and puts a small closed box underneath it instead.",
+    "meaning_mnemonic": "Set one <radical>evening</radical> on top of another and the stack of spent days behind you already counts as <kanji>many</kanji>.",
+    "reading_mnemonic": "<reading>Tally</reading>, who counts the cats at Grandma Kane's shrine, says 「<reading>た</reading>」 for each one and never reaches the end, because the strays curled on those mossy steps are far too <kanji>many</kanji>.",
+    "description": "The look-alike is 名, meaning name. Both start with the same leaning crescent on top. In this kanji a second identical crescent sits directly below it, the very same shape written twice; in 名 a closed square box sits there instead.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-otoko": {
@@ -808,13 +806,12 @@
     }
   },
   "n5-shi-city": {
-    "meaning_mnemonic": "A <radical>lid</radical> pulled over row after row of hanging <radical>cloth</radical> is a whole <kanji>city</kanji> of stalls.",
-    "reading_mnemonic": "The busiest stall belongs to Shi, a sharp-eyed vendor who greets every shopper crossing the market with a cheerful 「<reading>し</reading>!」. Follow her voice and you'll always find the center of the city.",
-    "description": "Means city or market; shows up in words for towns and municipal places like 市 (city) and city names.",
+    "meaning_mnemonic": "A <kanji>market</kanji> is what you get when every stall hangs out its <radical>cloth</radical> awning and the town claps one <radical>lid</radical> over the whole noisy square.",
+    "reading_mnemonic": "The fishmonger who runs the whole <kanji>market</kanji> is called <reading>Sheena</reading>, and she names her price by slapping a fish on the scale and hissing 「<reading>し</reading>」.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-shiro-white": {
@@ -881,7 +878,7 @@
     "_meta": {
       "generator_model": "claude-opus-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-taberu": {
@@ -894,12 +891,12 @@
     }
   },
   "n5-takai": {
-    "meaning_mnemonic": "A <radical>lid</radical> over a <radical>mouth</radical> looking out across open <radical>prairie</radical> has been built very <kanji>tall</kanji>.",
-    "reading_mnemonic": "Koichi, the konbini king, is jealous of that tall tower, so he stacks his onigiri shelves higher and higher until they're the tallest — and priciest — display in town. As the tower of rice balls wobbles, he shouts <reading>こう</reading> to warn a customer before it topples.",
+    "meaning_mnemonic": "On the flat <radical>prairie</radical>, a lone tower capped with a pot <radical>lid</radical> and pierced by one <radical>mouth</radical> of a window is the only thing for miles, so it looks impossibly <kanji>tall</kanji>.",
+    "reading_mnemonic": "<reading>Koichi</reading> the konbini king pushes his onigiri stack up past the ceiling lights and yells 「<reading>こう</reading>」 at anyone asking how he reaches the top, since no ladder he owns is that <kanji>tall</kanji>.",
     "_meta": {
-      "generator_model": "claude-opus-4-8",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-tatsu": {
@@ -949,12 +946,12 @@
     }
   },
   "n5-uru-baku": {
-    "meaning_mnemonic": "A <radical>samurai</radical> with a <radical>cover</radical> over his crest and his <radical>human legs</radical> behind a stall has come to <kanji>sell</kanji>.",
-    "reading_mnemonic": "The vendor keeps yelling one thing at every customer who walks past: \"Buy! <reading>ばい</reading>, ばい, one for you and one for the baby!\" He'll sell to anyone who slows down, and every pitch ends on that same ばい.",
+    "meaning_mnemonic": "A <radical>samurai</radical> too proud to be seen throws a <radical>cover</radical> over his face and takes to the road on his own <radical>human legs</radical>, where the only work left is to <kanji>sell</kanji>.",
+    "reading_mnemonic": "The stall owner named <reading>Bye</reading> lifts each plush toy over his head and calls 「<reading>ばい</reading>」 the instant he <kanji>sell</kanji>s it, since a man with that name treats every sale as one more sad farewell.",
     "_meta": {
-      "generator_model": "claude-opus-5",
+      "generator_model": "sonnet-5",
       "prompt_version": "4",
-      "review_status": "draft"
+      "review_status": "reviewed"
     }
   },
   "n5-ushiro": {
