@@ -17,7 +17,7 @@ not-yet-done slugs** for that type (Step 1) — you do NOT paste a slug list.
 
 Level (one JLPT level per run; change to `n4`, `n3`, … when ready):
 
-<level = n5>
+<level = n4>
 
 Content type (one of `radical`, `kanji` or `vocab`):
 
